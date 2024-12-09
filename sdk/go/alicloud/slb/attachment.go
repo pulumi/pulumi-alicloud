@@ -12,11 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **DEPRECATED:** This resource has been deprecated from v1.153.0 and using alicloudBackendServer instead.
+// > **DEPRECATED:** This resource has been deprecated from v1.153.0 and using slb.BackendServer instead.
 //
 // Add a group of backend servers (ECS instance) to the Server Load Balancer or remove them from it.
-//
-// > **NOTE:** Deprecated since v1.153.0+.
 //
 // ## Example Usage
 //

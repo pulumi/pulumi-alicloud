@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Arms.Inputs
         public Input<string> NotifyObjectId { get; set; } = null!;
 
         /// <summary>
-        /// The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
+        /// The type of the alert contact. Valid values: ARMS_ROBOT: robot. ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
         /// </summary>
         [Input("notifyType", required: true)]
         public Input<string> NotifyType { get; set; } = null!;

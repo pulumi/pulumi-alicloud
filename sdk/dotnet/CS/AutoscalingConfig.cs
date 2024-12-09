@@ -17,6 +17,8 @@ namespace Pulumi.AliCloud.CS
     /// &gt; **NOTE:** From version 1.164.0, support for specifying whether to allow the scale-in of nodes by parameter `scale_down_enabled`.
     /// 
     /// &gt; **NOTE:** From version 1.164.0, support for selecting the policy for selecting which node pool to scale by parameter `expander`.
+    /// 
+    /// &gt; **NOTE:** From version 1.237.0, support for selecting the type of autoscaler by parameter `scaler_type`.
     /// </summary>
     [AliCloudResourceType("alicloud:cs/autoscalingConfig:AutoscalingConfig")]
     public partial class AutoscalingConfig : global::Pulumi.CustomResource
@@ -80,6 +82,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Output("scaleUpFromZero")]
         public Output<bool?> ScaleUpFromZero { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`.
+        /// </summary>
+        [Output("scalerType")]
+        public Output<string?> ScalerType { get; private set; } = null!;
 
         /// <summary>
         /// The interval at which the cluster is reevaluated for scaling. Default is `30s`.
@@ -218,6 +226,12 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? ScaleUpFromZero { get; set; }
 
         /// <summary>
+        /// The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`.
+        /// </summary>
+        [Input("scalerType")]
+        public Input<string>? ScalerType { get; set; }
+
+        /// <summary>
         /// The interval at which the cluster is reevaluated for scaling. Default is `30s`.
         /// </summary>
         [Input("scanInterval")]
@@ -314,6 +328,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("scaleUpFromZero")]
         public Input<bool>? ScaleUpFromZero { get; set; }
+
+        /// <summary>
+        /// The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`.
+        /// </summary>
+        [Input("scalerType")]
+        public Input<string>? ScalerType { get; set; }
 
         /// <summary>
         /// The interval at which the cluster is reevaluated for scaling. Default is `30s`.

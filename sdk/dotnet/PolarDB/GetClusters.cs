@@ -266,7 +266,7 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClustersClusterResult> Clusters;
         /// <summary>
-        /// `Primary` for primary cluster, `ReadOnly` for read-only cluster, `Guard` for disaster recovery cluster, and `Temp` for temporary cluster.
+        /// Database type. Value options: MySQL, PostgreSQL and Oracle.
         /// </summary>
         public readonly string? DbType;
         public readonly string? DescriptionRegex;

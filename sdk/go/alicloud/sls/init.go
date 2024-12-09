@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Alert{}
 	case "alicloud:sls/collectionPolicy:CollectionPolicy":
 		r = &CollectionPolicy{}
+	case "alicloud:sls/ossExportSink:OssExportSink":
+		r = &OssExportSink{}
 	case "alicloud:sls/scheduledSql:ScheduledSql":
 		r = &ScheduledSql{}
 	default:
@@ -48,6 +50,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"sls/collectionPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"sls/ossExportSink",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

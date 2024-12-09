@@ -30,6 +30,7 @@ __all__ = [
     'ImageFeatures',
     'ImageImportDiskDeviceMapping',
     'InstanceDataDisk',
+    'InstanceImageOptions',
     'InstanceMaintenanceTime',
     'InstanceNetworkInterfaces',
     'LaunchTemplateDataDisk',
@@ -1415,6 +1416,42 @@ class InstanceDataDisk(dict):
         The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
         """
         return pulumi.get(self, "snapshot_id")
+
+
+@pulumi.output_type
+class InstanceImageOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "loginAsNonRoot":
+            suggest = "login_as_non_root"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceImageOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceImageOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceImageOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 login_as_non_root: Optional[bool] = None):
+        """
+        :param bool login_as_non_root: Whether to allow the instance logging in with the ecs-user user.
+        """
+        if login_as_non_root is not None:
+            pulumi.set(__self__, "login_as_non_root", login_as_non_root)
+
+    @property
+    @pulumi.getter(name="loginAsNonRoot")
+    def login_as_non_root(self) -> Optional[bool]:
+        """
+        Whether to allow the instance logging in with the ecs-user user.
+        """
+        return pulumi.get(self, "login_as_non_root")
 
 
 @pulumi.output_type

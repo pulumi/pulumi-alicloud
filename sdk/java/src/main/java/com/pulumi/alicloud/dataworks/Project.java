@@ -10,15 +10,16 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import java.lang.Integer;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * Provides a Data Works Project resource.
  * 
- * For information about Data Works Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/dataworks/developer-reference/api-dataworks-public-2020-05-18-createproject).
+ * For information about Data Works Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/).
  * 
  * &gt; **NOTE:** Available since v1.229.0.
  * 
@@ -36,6 +37,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
  * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
  * import com.pulumi.alicloud.dataworks.Project;
  * import com.pulumi.alicloud.dataworks.ProjectArgs;
  * import java.util.List;
@@ -53,17 +56,22 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf_example");
- *         var default_ = new Integer("default", IntegerArgs.builder()
- *             .min(10000)
- *             .max(99999)
+ *         var randint = new Integer("randint", IntegerArgs.builder()
+ *             .max(999)
+ *             .min(1)
  *             .build());
  * 
+ *         final var default = ResourcemanagerFunctions.getResourceGroups();
+ * 
  *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
- *             .projectName(String.format("%s_%s", name,default_.result()))
- *             .projectMode("2")
- *             .description(String.format("%s_%s", name,default_.result()))
- *             .displayName(String.format("%s_%s", name,default_.result()))
- *             .status("0")
+ *             .status("Available")
+ *             .description("tf_desc")
+ *             .projectName(String.format("%s%s", name,randint.id()))
+ *             .paiTaskEnabled("false")
+ *             .displayName("tf_new_api_display")
+ *             .devRoleDisabled("true")
+ *             .devEnvironmentEnabled("false")
+ *             .resourceGroupId(default_.ids()[0])
  *             .build());
  * 
  *     }
@@ -84,92 +92,130 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:dataworks/project:Project")
 public class Project extends com.pulumi.resources.CustomResource {
     /**
-     * The creation time of the resource
-     * 
-     */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
-    private Output<String> createTime;
-
-    /**
-     * @return The creation time of the resource
-     * 
-     */
-    public Output<String> createTime() {
-        return this.createTime;
-    }
-    /**
-     * Description of the workspace
+     * Workspace Description
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
-    private Output<String> description;
+    private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the workspace
+     * @return Workspace Description
      * 
      */
-    public Output<String> description() {
-        return this.description;
+    public Output<Optional<String>> description() {
+        return Codegen.optional(this.description);
     }
     /**
-     * The display name of the workspace.
+     * Is Development Environment Enabled
+     * 
+     */
+    @Export(name="devEnvironmentEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> devEnvironmentEnabled;
+
+    /**
+     * @return Is Development Environment Enabled
+     * 
+     */
+    public Output<Boolean> devEnvironmentEnabled() {
+        return this.devEnvironmentEnabled;
+    }
+    /**
+     * Is Development Role Disabled
+     * 
+     */
+    @Export(name="devRoleDisabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> devRoleDisabled;
+
+    /**
+     * @return Is Development Role Disabled
+     * 
+     */
+    public Output<Boolean> devRoleDisabled() {
+        return this.devRoleDisabled;
+    }
+    /**
+     * Workspace Display Name
      * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
-     * @return The display name of the workspace.
+     * @return Workspace Display Name
      * 
      */
     public Output<String> displayName() {
         return this.displayName;
     }
     /**
-     * The mode of the workspace, with the following values:
-     * - 2, indicates the simple workspace mode.
-     * - 3, indicating the standard workspace mode.
+     * Create PAI Workspace Together
      * 
      */
-    @Export(name="projectMode", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> projectMode;
+    @Export(name="paiTaskEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> paiTaskEnabled;
 
     /**
-     * @return The mode of the workspace, with the following values:
-     * - 2, indicates the simple workspace mode.
-     * - 3, indicating the standard workspace mode.
+     * @return Create PAI Workspace Together
      * 
      */
-    public Output<Optional<Integer>> projectMode() {
-        return Codegen.optional(this.projectMode);
+    public Output<Boolean> paiTaskEnabled() {
+        return this.paiTaskEnabled;
     }
     /**
-     * Immutable Name of the workspace.
+     * Workspace Name
      * 
      */
     @Export(name="projectName", refs={String.class}, tree="[0]")
     private Output<String> projectName;
 
     /**
-     * @return Immutable Name of the workspace.
+     * @return Workspace Name
      * 
      */
     public Output<String> projectName() {
         return this.projectName;
     }
     /**
-     * The status of the resource
+     * Aliyun Resource Group Id
+     * 
+     */
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return Aliyun Resource Group Id
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
+     * Workspace Status
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource
+     * @return Workspace Status
      * 
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * Aliyun Resource Tag
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return Aliyun Resource Tag
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
     }
 
     /**

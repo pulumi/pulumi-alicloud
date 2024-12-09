@@ -64,7 +64,7 @@ public final class GetClustersCluster {
      */
     private String description;
     /**
-     * @return Database type. Options are `MySQL`, `Oracle` and `PostgreSQL`. If no value is specified, all types are returned.
+     * @return The database engine of the cluster, example: POLARDB.
      * 
      */
     private String engine;
@@ -196,7 +196,7 @@ public final class GetClustersCluster {
         return this.description;
     }
     /**
-     * @return Database type. Options are `MySQL`, `Oracle` and `PostgreSQL`. If no value is specified, all types are returned.
+     * @return The database engine of the cluster, example: POLARDB.
      * 
      */
     public String engine() {

@@ -64,6 +64,8 @@ import * as utilities from "../utilities";
  *             "dingTalk",
  *             "wechat",
  *         ],
+ *         notifyStartTime: "10:00",
+ *         notifyEndTime: "23:00",
  *     }],
  * });
  * ```

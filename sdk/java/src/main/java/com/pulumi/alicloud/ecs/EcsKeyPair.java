@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * For information about ECS Key Pair and how to use it, see [What is Key Pair](https://www.alibabacloud.com/help/en/doc-detail/51771.htm).
  * 
- * &gt; **NOTE:** Available in v1.121.0+.
+ * &gt; **NOTE:** Available since v1.121.0.
  * 
  * ## Example Usage
  * 
@@ -75,21 +75,35 @@ import javax.annotation.Nullable;
  * ECS Key Pair can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:ecs/ecsKeyPair:EcsKeyPair example &lt;key_name&gt;
+ * $ pulumi import alicloud:ecs/ecsKeyPair:EcsKeyPair example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:ecs/ecsKeyPair:EcsKeyPair")
 public class EcsKeyPair extends com.pulumi.resources.CustomResource {
     /**
-     * The finger print of the key pair.
+     * (Available since v1.237.0) The time when the key pair was created.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return (Available since v1.237.0) The time when the key pair was created.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * The fingerprint of the key pair.
      * 
      */
     @Export(name="fingerPrint", refs={String.class}, tree="[0]")
     private Output<String> fingerPrint;
 
     /**
-     * @return The finger print of the key pair.
+     * @return The fingerprint of the key pair.
      * 
      */
     public Output<String> fingerPrint() {
@@ -110,20 +124,14 @@ public class EcsKeyPair extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.keyFile);
     }
     /**
+     * @deprecated
      * Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
      * 
-     * @deprecated
-     * Field &#39;key_name&#39; has been deprecated from provider version 1.121.0. New field &#39;key_pair_name&#39; instead.
-     * 
      */
-    @Deprecated /* Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead. */
+    @Deprecated /* Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead. */
     @Export(name="keyName", refs={String.class}, tree="[0]")
     private Output<String> keyName;
 
-    /**
-     * @return Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
-     * 
-     */
     public Output<String> keyName() {
         return this.keyName;
     }
@@ -134,50 +142,58 @@ public class EcsKeyPair extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.keyNamePrefix);
     }
     /**
-     * The key pair&#39;s name. It is the only in one Alicloud account, the key pair&#39;s name. must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+     * The name of the key pair. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      * 
      */
     @Export(name="keyPairName", refs={String.class}, tree="[0]")
     private Output<String> keyPairName;
 
     /**
-     * @return The key pair&#39;s name. It is the only in one Alicloud account, the key pair&#39;s name. must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+     * @return The name of the key pair. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      * 
      */
     public Output<String> keyPairName() {
         return this.keyPairName;
     }
     /**
-     * You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
+     * The public key of the key pair.
      * 
      */
     @Export(name="publicKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> publicKey;
 
     /**
-     * @return You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
+     * @return The public key of the key pair.
      * 
      */
     public Output<Optional<String>> publicKey() {
         return Codegen.optional(this.publicKey);
     }
     /**
-     * The Id of resource group which the key pair belongs.
+     * The ID of the resource group to which to add the key pair.
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
-     * @return The Id of resource group which the key pair belongs.
+     * @return The ID of the resource group to which to add the key pair.
      * 
      */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
     }
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }

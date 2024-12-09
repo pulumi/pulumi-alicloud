@@ -163,14 +163,14 @@ public class Network extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * The name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+     * Specifies whether to enable IPv6. Valid values:
      * 
      */
     @Export(name="enableIpv6", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableIpv6;
 
     /**
-     * @return The name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+     * @return Specifies whether to enable IPv6. Valid values:
      * 
      */
     public Output<Optional<Boolean>> enableIpv6() {

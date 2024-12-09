@@ -820,8 +820,8 @@ class Rule(pulumi.CustomResource):
             resource_types_scopes=["ACS::RDS::DBInstance"],
             rule_name="contains-tag",
             input_parameters={
-                "key": "example",
-                "value": "example",
+                "key1": "value1",
+                "key2": "key2",
             })
         ```
 
@@ -892,8 +892,8 @@ class Rule(pulumi.CustomResource):
             resource_types_scopes=["ACS::RDS::DBInstance"],
             rule_name="contains-tag",
             input_parameters={
-                "key": "example",
-                "value": "example",
+                "key1": "value1",
+                "key2": "key2",
             })
         ```
 

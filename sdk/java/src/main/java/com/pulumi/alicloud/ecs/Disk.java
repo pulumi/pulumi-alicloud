@@ -88,10 +88,10 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * The Zone to create the disk in.
      * 
      * @deprecated
-     * Field &#39;availability_zone&#39; has been deprecated from provider version 1.122.0. New field &#39;zone_id&#39; instead
+     * Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead
      * 
      */
-    @Deprecated /* Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead */
+    @Deprecated /* Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead */
     @Export(name="availabilityZone", refs={String.class}, tree="[0]")
     private Output<String> availabilityZone;
 
@@ -101,6 +101,12 @@ public class Disk extends com.pulumi.resources.CustomResource {
      */
     public Output<String> availabilityZone() {
         return this.availabilityZone;
+    }
+    @Export(name="burstingEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> burstingEnabled;
+
+    public Output<Optional<Boolean>> burstingEnabled() {
+        return Codegen.optional(this.burstingEnabled);
     }
     /**
      * Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_entry`. Default is `cloud_efficiency`.
@@ -115,6 +121,12 @@ public class Disk extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> category() {
         return Codegen.optional(this.category);
+    }
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    public Output<String> createTime() {
+        return this.createTime;
     }
     /**
      * Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
@@ -224,14 +236,20 @@ public class Disk extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> kmsKeyId() {
         return Codegen.optional(this.kmsKeyId);
     }
+    @Export(name="multiAttach", refs={String.class}, tree="[0]")
+    private Output<String> multiAttach;
+
+    public Output<String> multiAttach() {
+        return this.multiAttach;
+    }
     /**
      * Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
      * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;disk_name&#39; instead.
+     * Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
@@ -267,6 +285,18 @@ public class Disk extends com.pulumi.resources.CustomResource {
      */
     public Output<String> performanceLevel() {
         return this.performanceLevel;
+    }
+    @Export(name="provisionedIops", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> provisionedIops;
+
+    public Output<Optional<Integer>> provisionedIops() {
+        return Codegen.optional(this.provisionedIops);
+    }
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    public Output<String> regionId() {
+        return this.regionId;
     }
     /**
      * The Id of resource group which the disk belongs.

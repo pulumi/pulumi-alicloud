@@ -72,8 +72,8 @@ import javax.annotation.Nullable;
  *             .resourceTypesScopes("ACS::RDS::DBInstance")
  *             .ruleName("contains-tag")
  *             .inputParameters(Map.ofEntries(
- *                 Map.entry("key", "example"),
- *                 Map.entry("value", "example")
+ *                 Map.entry("key1", "value1"),
+ *                 Map.entry("key2", "key2")
  *             ))
  *             .build());
  * 

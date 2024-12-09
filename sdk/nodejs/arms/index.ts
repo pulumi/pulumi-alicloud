@@ -20,6 +20,11 @@ export type AlertContactGroup = import("./alertContactGroup").AlertContactGroup;
 export const AlertContactGroup: typeof import("./alertContactGroup").AlertContactGroup = null as any;
 utilities.lazyLoad(exports, ["AlertContactGroup"], () => require("./alertContactGroup"));
 
+export { AlertRobotArgs, AlertRobotState } from "./alertRobot";
+export type AlertRobot = import("./alertRobot").AlertRobot;
+export const AlertRobot: typeof import("./alertRobot").AlertRobot = null as any;
+utilities.lazyLoad(exports, ["AlertRobot"], () => require("./alertRobot"));
+
 export { DispatchRuleArgs, DispatchRuleState } from "./dispatchRule";
 export type DispatchRule = import("./dispatchRule").DispatchRule;
 export const DispatchRule: typeof import("./dispatchRule").DispatchRule = null as any;
@@ -59,6 +64,11 @@ export { GetAlertContactsArgs, GetAlertContactsResult, GetAlertContactsOutputArg
 export const getAlertContacts: typeof import("./getAlertContacts").getAlertContacts = null as any;
 export const getAlertContactsOutput: typeof import("./getAlertContacts").getAlertContactsOutput = null as any;
 utilities.lazyLoad(exports, ["getAlertContacts","getAlertContactsOutput"], () => require("./getAlertContacts"));
+
+export { GetAlertRobotsArgs, GetAlertRobotsResult, GetAlertRobotsOutputArgs } from "./getAlertRobots";
+export const getAlertRobots: typeof import("./getAlertRobots").getAlertRobots = null as any;
+export const getAlertRobotsOutput: typeof import("./getAlertRobots").getAlertRobotsOutput = null as any;
+utilities.lazyLoad(exports, ["getAlertRobots","getAlertRobotsOutput"], () => require("./getAlertRobots"));
 
 export { GetDispatchRulesArgs, GetDispatchRulesResult, GetDispatchRulesOutputArgs } from "./getDispatchRules";
 export const getDispatchRules: typeof import("./getDispatchRules").getDispatchRules = null as any;
@@ -141,6 +151,8 @@ const _module = {
                 return new AlertContact(name, <any>undefined, { urn })
             case "alicloud:arms/alertContactGroup:AlertContactGroup":
                 return new AlertContactGroup(name, <any>undefined, { urn })
+            case "alicloud:arms/alertRobot:AlertRobot":
+                return new AlertRobot(name, <any>undefined, { urn })
             case "alicloud:arms/dispatchRule:DispatchRule":
                 return new DispatchRule(name, <any>undefined, { urn })
             case "alicloud:arms/envCustomJob:EnvCustomJob":
@@ -175,6 +187,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "arms/addonRelease", _module)
 pulumi.runtime.registerResourceModule("alicloud", "arms/alertContact", _module)
 pulumi.runtime.registerResourceModule("alicloud", "arms/alertContactGroup", _module)
+pulumi.runtime.registerResourceModule("alicloud", "arms/alertRobot", _module)
 pulumi.runtime.registerResourceModule("alicloud", "arms/dispatchRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "arms/envCustomJob", _module)
 pulumi.runtime.registerResourceModule("alicloud", "arms/envFeature", _module)

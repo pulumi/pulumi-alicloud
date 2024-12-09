@@ -24,6 +24,12 @@ namespace Pulumi.AliCloud.Arms.Inputs
             set => _notifyChannels = value;
         }
 
+        /// <summary>
+        /// End time of notification.
+        /// </summary>
+        [Input("notifyEndTime", required: true)]
+        public Input<string> NotifyEndTime { get; set; } = null!;
+
         [Input("notifyObjects", required: true)]
         private InputList<Inputs.DispatchRuleNotifyRuleNotifyObjectArgs>? _notifyObjects;
 
@@ -35,6 +41,12 @@ namespace Pulumi.AliCloud.Arms.Inputs
             get => _notifyObjects ?? (_notifyObjects = new InputList<Inputs.DispatchRuleNotifyRuleNotifyObjectArgs>());
             set => _notifyObjects = value;
         }
+
+        /// <summary>
+        /// Start time of notification.
+        /// </summary>
+        [Input("notifyStartTime", required: true)]
+        public Input<string> NotifyStartTime { get; set; } = null!;
 
         public DispatchRuleNotifyRuleArgs()
         {

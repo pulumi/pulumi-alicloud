@@ -72,13 +72,15 @@ export class Disk extends pulumi.CustomResource {
     /**
      * The Zone to create the disk in.
      *
-     * @deprecated Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
+     * @deprecated Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead
      */
     public readonly availabilityZone!: pulumi.Output<string>;
+    public readonly burstingEnabled!: pulumi.Output<boolean | undefined>;
     /**
      * Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudEssdEntry`. Default is `cloudEfficiency`.
      */
     public readonly category!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
      */
@@ -107,10 +109,11 @@ export class Disk extends pulumi.CustomResource {
      * The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
      */
     public readonly kmsKeyId!: pulumi.Output<string | undefined>;
+    public readonly multiAttach!: pulumi.Output<string>;
     /**
      * Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
      *
-     * @deprecated Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.
+     * @deprecated Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly paymentType!: pulumi.Output<string>;
@@ -121,6 +124,8 @@ export class Disk extends pulumi.CustomResource {
      * * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
      */
     public readonly performanceLevel!: pulumi.Output<string>;
+    public readonly provisionedIops!: pulumi.Output<number | undefined>;
+    public /*out*/ readonly regionId!: pulumi.Output<string>;
     /**
      * The Id of resource group which the disk belongs.
      * > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
@@ -162,7 +167,9 @@ export class Disk extends pulumi.CustomResource {
             const state = argsOrState as DiskState | undefined;
             resourceInputs["advancedFeatures"] = state ? state.advancedFeatures : undefined;
             resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
+            resourceInputs["burstingEnabled"] = state ? state.burstingEnabled : undefined;
             resourceInputs["category"] = state ? state.category : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["deleteAutoSnapshot"] = state ? state.deleteAutoSnapshot : undefined;
             resourceInputs["deleteWithInstance"] = state ? state.deleteWithInstance : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -173,9 +180,12 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["encrypted"] = state ? state.encrypted : undefined;
             resourceInputs["instanceId"] = state ? state.instanceId : undefined;
             resourceInputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
+            resourceInputs["multiAttach"] = state ? state.multiAttach : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
             resourceInputs["performanceLevel"] = state ? state.performanceLevel : undefined;
+            resourceInputs["provisionedIops"] = state ? state.provisionedIops : undefined;
+            resourceInputs["regionId"] = state ? state.regionId : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["size"] = state ? state.size : undefined;
             resourceInputs["snapshotId"] = state ? state.snapshotId : undefined;
@@ -189,6 +199,7 @@ export class Disk extends pulumi.CustomResource {
             const args = argsOrState as DiskArgs | undefined;
             resourceInputs["advancedFeatures"] = args ? args.advancedFeatures : undefined;
             resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
+            resourceInputs["burstingEnabled"] = args ? args.burstingEnabled : undefined;
             resourceInputs["category"] = args ? args.category : undefined;
             resourceInputs["deleteAutoSnapshot"] = args ? args.deleteAutoSnapshot : undefined;
             resourceInputs["deleteWithInstance"] = args ? args.deleteWithInstance : undefined;
@@ -200,9 +211,11 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["encrypted"] = args ? args.encrypted : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
             resourceInputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
+            resourceInputs["multiAttach"] = args ? args.multiAttach : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
             resourceInputs["performanceLevel"] = args ? args.performanceLevel : undefined;
+            resourceInputs["provisionedIops"] = args ? args.provisionedIops : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["size"] = args ? args.size : undefined;
             resourceInputs["snapshotId"] = args ? args.snapshotId : undefined;
@@ -211,6 +224,8 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -226,13 +241,15 @@ export interface DiskState {
     /**
      * The Zone to create the disk in.
      *
-     * @deprecated Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
+     * @deprecated Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead
      */
     availabilityZone?: pulumi.Input<string>;
+    burstingEnabled?: pulumi.Input<boolean>;
     /**
      * Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudEssdEntry`. Default is `cloudEfficiency`.
      */
     category?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
     /**
      * Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
      */
@@ -261,10 +278,11 @@ export interface DiskState {
      * The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
      */
     kmsKeyId?: pulumi.Input<string>;
+    multiAttach?: pulumi.Input<string>;
     /**
      * Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
      *
-     * @deprecated Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.
+     * @deprecated Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
      */
     name?: pulumi.Input<string>;
     paymentType?: pulumi.Input<string>;
@@ -275,6 +293,8 @@ export interface DiskState {
      * * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
      */
     performanceLevel?: pulumi.Input<string>;
+    provisionedIops?: pulumi.Input<number>;
+    regionId?: pulumi.Input<string>;
     /**
      * The Id of resource group which the disk belongs.
      * > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
@@ -310,9 +330,10 @@ export interface DiskArgs {
     /**
      * The Zone to create the disk in.
      *
-     * @deprecated Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
+     * @deprecated Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead
      */
     availabilityZone?: pulumi.Input<string>;
+    burstingEnabled?: pulumi.Input<boolean>;
     /**
      * Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudEssdEntry`. Default is `cloudEfficiency`.
      */
@@ -345,10 +366,11 @@ export interface DiskArgs {
      * The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
      */
     kmsKeyId?: pulumi.Input<string>;
+    multiAttach?: pulumi.Input<string>;
     /**
      * Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
      *
-     * @deprecated Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.
+     * @deprecated Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
      */
     name?: pulumi.Input<string>;
     paymentType?: pulumi.Input<string>;
@@ -359,6 +381,7 @@ export interface DiskArgs {
      * * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
      */
     performanceLevel?: pulumi.Input<string>;
+    provisionedIops?: pulumi.Input<number>;
     /**
      * The Id of resource group which the disk belongs.
      * > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.

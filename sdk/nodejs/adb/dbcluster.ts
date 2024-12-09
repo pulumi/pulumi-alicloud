@@ -99,6 +99,7 @@ export class DBCluster extends pulumi.CustomResource {
      * The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
      * - `8Core64GB`: If you set `elasticIoResourceSize` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
      * - `12Core96GB`: If you set `elasticIoResourceSize` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
+     * - `16Core128GB`: (Available since v1.237.0)If you set `elasticIoResourceSize` to `16Core128GB`, the specifications of an EIU are 48 cores and 384 GB memory.
      */
     public readonly elasticIoResourceSize!: pulumi.Output<string>;
     /**
@@ -328,6 +329,7 @@ export interface DBClusterState {
      * The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
      * - `8Core64GB`: If you set `elasticIoResourceSize` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
      * - `12Core96GB`: If you set `elasticIoResourceSize` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
+     * - `16Core128GB`: (Available since v1.237.0)If you set `elasticIoResourceSize` to `16Core128GB`, the specifications of an EIU are 48 cores and 384 GB memory.
      */
     elasticIoResourceSize?: pulumi.Input<string>;
     /**
@@ -465,6 +467,7 @@ export interface DBClusterArgs {
      * The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
      * - `8Core64GB`: If you set `elasticIoResourceSize` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
      * - `12Core96GB`: If you set `elasticIoResourceSize` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
+     * - `16Core128GB`: (Available since v1.237.0)If you set `elasticIoResourceSize` to `16Core128GB`, the specifications of an EIU are 48 cores and 384 GB memory.
      */
     elasticIoResourceSize?: pulumi.Input<string>;
     /**

@@ -97,6 +97,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ImageExport{}
 	case "alicloud:ecs/imageImport:ImageImport":
 		r = &ImageImport{}
+	case "alicloud:ecs/imagePipelineExecution:ImagePipelineExecution":
+		r = &ImagePipelineExecution{}
 	case "alicloud:ecs/imageSharePermission:ImageSharePermission":
 		r = &ImageSharePermission{}
 	case "alicloud:ecs/instance:Instance":
@@ -320,6 +322,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ecs/imageImport",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ecs/imagePipelineExecution",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

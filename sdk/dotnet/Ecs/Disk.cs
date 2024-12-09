@@ -65,11 +65,17 @@ namespace Pulumi.AliCloud.Ecs
         [Output("availabilityZone")]
         public Output<string> AvailabilityZone { get; private set; } = null!;
 
+        [Output("burstingEnabled")]
+        public Output<bool?> BurstingEnabled { get; private set; } = null!;
+
         /// <summary>
         /// Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_entry`. Default is `cloud_efficiency`.
         /// </summary>
         [Output("category")]
         public Output<string?> Category { get; private set; } = null!;
+
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
         /// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
@@ -119,6 +125,9 @@ namespace Pulumi.AliCloud.Ecs
         [Output("kmsKeyId")]
         public Output<string?> KmsKeyId { get; private set; } = null!;
 
+        [Output("multiAttach")]
+        public Output<string> MultiAttach { get; private set; } = null!;
+
         /// <summary>
         /// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
         /// </summary>
@@ -136,6 +145,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("performanceLevel")]
         public Output<string> PerformanceLevel { get; private set; } = null!;
+
+        [Output("provisionedIops")]
+        public Output<int?> ProvisionedIops { get; private set; } = null!;
+
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
 
         /// <summary>
         /// The Id of resource group which the disk belongs.
@@ -235,6 +250,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
 
+        [Input("burstingEnabled")]
+        public Input<bool>? BurstingEnabled { get; set; }
+
         /// <summary>
         /// Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_entry`. Default is `cloud_efficiency`.
         /// </summary>
@@ -289,6 +307,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
 
+        [Input("multiAttach")]
+        public Input<string>? MultiAttach { get; set; }
+
         /// <summary>
         /// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
         /// </summary>
@@ -306,6 +327,9 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("performanceLevel")]
         public Input<string>? PerformanceLevel { get; set; }
+
+        [Input("provisionedIops")]
+        public Input<int>? ProvisionedIops { get; set; }
 
         /// <summary>
         /// The Id of resource group which the disk belongs.
@@ -367,11 +391,17 @@ namespace Pulumi.AliCloud.Ecs
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
 
+        [Input("burstingEnabled")]
+        public Input<bool>? BurstingEnabled { get; set; }
+
         /// <summary>
         /// Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_entry`. Default is `cloud_efficiency`.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
+
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
 
         /// <summary>
         /// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
@@ -421,6 +451,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
 
+        [Input("multiAttach")]
+        public Input<string>? MultiAttach { get; set; }
+
         /// <summary>
         /// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
         /// </summary>
@@ -438,6 +471,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("performanceLevel")]
         public Input<string>? PerformanceLevel { get; set; }
+
+        [Input("provisionedIops")]
+        public Input<int>? ProvisionedIops { get; set; }
+
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
 
         /// <summary>
         /// The Id of resource group which the disk belongs.

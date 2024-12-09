@@ -21,6 +21,7 @@ class DiskArgs:
     def __init__(__self__, *,
                  advanced_features: Optional[pulumi.Input[str]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
+                 bursting_enabled: Optional[pulumi.Input[bool]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  delete_auto_snapshot: Optional[pulumi.Input[bool]] = None,
                  delete_with_instance: Optional[pulumi.Input[bool]] = None,
@@ -32,9 +33,11 @@ class DiskArgs:
                  encrypted: Optional[pulumi.Input[bool]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
+                 multi_attach: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  performance_level: Optional[pulumi.Input[str]] = None,
+                 provisioned_iops: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None,
@@ -67,10 +70,12 @@ class DiskArgs:
         if advanced_features is not None:
             pulumi.set(__self__, "advanced_features", advanced_features)
         if availability_zone is not None:
-            warnings.warn("""Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""", DeprecationWarning)
-            pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""")
+            warnings.warn("""Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead""", DeprecationWarning)
+            pulumi.log.warn("""availability_zone is deprecated: Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead""")
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
+        if bursting_enabled is not None:
+            pulumi.set(__self__, "bursting_enabled", bursting_enabled)
         if category is not None:
             pulumi.set(__self__, "category", category)
         if delete_auto_snapshot is not None:
@@ -93,15 +98,19 @@ class DiskArgs:
             pulumi.set(__self__, "instance_id", instance_id)
         if kms_key_id is not None:
             pulumi.set(__self__, "kms_key_id", kms_key_id)
+        if multi_attach is not None:
+            pulumi.set(__self__, "multi_attach", multi_attach)
         if name is not None:
-            warnings.warn("""Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.""")
+            warnings.warn("""Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
         if payment_type is not None:
             pulumi.set(__self__, "payment_type", payment_type)
         if performance_level is not None:
             pulumi.set(__self__, "performance_level", performance_level)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if size is not None:
@@ -130,7 +139,7 @@ class DiskArgs:
 
     @property
     @pulumi.getter(name="availabilityZone")
-    @_utilities.deprecated("""Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""")
+    @_utilities.deprecated("""Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead""")
     def availability_zone(self) -> Optional[pulumi.Input[str]]:
         """
         The Zone to create the disk in.
@@ -140,6 +149,15 @@ class DiskArgs:
     @availability_zone.setter
     def availability_zone(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "availability_zone", value)
+
+    @property
+    @pulumi.getter(name="burstingEnabled")
+    def bursting_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "bursting_enabled")
+
+    @bursting_enabled.setter
+    def bursting_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "bursting_enabled", value)
 
     @property
     @pulumi.getter
@@ -262,8 +280,17 @@ class DiskArgs:
         pulumi.set(self, "kms_key_id", value)
 
     @property
+    @pulumi.getter(name="multiAttach")
+    def multi_attach(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "multi_attach")
+
+    @multi_attach.setter
+    def multi_attach(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "multi_attach", value)
+
+    @property
     @pulumi.getter
-    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.""")
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
@@ -297,6 +324,15 @@ class DiskArgs:
     @performance_level.setter
     def performance_level(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "performance_level", value)
+
+    @property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "provisioned_iops")
+
+    @provisioned_iops.setter
+    def provisioned_iops(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "provisioned_iops", value)
 
     @property
     @pulumi.getter(name="resourceGroupId")
@@ -389,7 +425,9 @@ class _DiskState:
     def __init__(__self__, *,
                  advanced_features: Optional[pulumi.Input[str]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
+                 bursting_enabled: Optional[pulumi.Input[bool]] = None,
                  category: Optional[pulumi.Input[str]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  delete_auto_snapshot: Optional[pulumi.Input[bool]] = None,
                  delete_with_instance: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -400,9 +438,12 @@ class _DiskState:
                  encrypted: Optional[pulumi.Input[bool]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
+                 multi_attach: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  performance_level: Optional[pulumi.Input[str]] = None,
+                 provisioned_iops: Optional[pulumi.Input[int]] = None,
+                 region_id: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None,
@@ -437,12 +478,16 @@ class _DiskState:
         if advanced_features is not None:
             pulumi.set(__self__, "advanced_features", advanced_features)
         if availability_zone is not None:
-            warnings.warn("""Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""", DeprecationWarning)
-            pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""")
+            warnings.warn("""Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead""", DeprecationWarning)
+            pulumi.log.warn("""availability_zone is deprecated: Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead""")
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
+        if bursting_enabled is not None:
+            pulumi.set(__self__, "bursting_enabled", bursting_enabled)
         if category is not None:
             pulumi.set(__self__, "category", category)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if delete_auto_snapshot is not None:
             pulumi.set(__self__, "delete_auto_snapshot", delete_auto_snapshot)
         if delete_with_instance is not None:
@@ -463,15 +508,21 @@ class _DiskState:
             pulumi.set(__self__, "instance_id", instance_id)
         if kms_key_id is not None:
             pulumi.set(__self__, "kms_key_id", kms_key_id)
+        if multi_attach is not None:
+            pulumi.set(__self__, "multi_attach", multi_attach)
         if name is not None:
-            warnings.warn("""Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.""")
+            warnings.warn("""Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
         if payment_type is not None:
             pulumi.set(__self__, "payment_type", payment_type)
         if performance_level is not None:
             pulumi.set(__self__, "performance_level", performance_level)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if size is not None:
@@ -502,7 +553,7 @@ class _DiskState:
 
     @property
     @pulumi.getter(name="availabilityZone")
-    @_utilities.deprecated("""Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""")
+    @_utilities.deprecated("""Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead""")
     def availability_zone(self) -> Optional[pulumi.Input[str]]:
         """
         The Zone to create the disk in.
@@ -512,6 +563,15 @@ class _DiskState:
     @availability_zone.setter
     def availability_zone(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "availability_zone", value)
+
+    @property
+    @pulumi.getter(name="burstingEnabled")
+    def bursting_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "bursting_enabled")
+
+    @bursting_enabled.setter
+    def bursting_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "bursting_enabled", value)
 
     @property
     @pulumi.getter
@@ -524,6 +584,15 @@ class _DiskState:
     @category.setter
     def category(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "category", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
 
     @property
     @pulumi.getter(name="deleteAutoSnapshot")
@@ -634,8 +703,17 @@ class _DiskState:
         pulumi.set(self, "kms_key_id", value)
 
     @property
+    @pulumi.getter(name="multiAttach")
+    def multi_attach(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "multi_attach")
+
+    @multi_attach.setter
+    def multi_attach(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "multi_attach", value)
+
+    @property
     @pulumi.getter
-    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.""")
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
@@ -669,6 +747,24 @@ class _DiskState:
     @performance_level.setter
     def performance_level(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "performance_level", value)
+
+    @property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "provisioned_iops")
+
+    @provisioned_iops.setter
+    def provisioned_iops(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "provisioned_iops", value)
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region_id", value)
 
     @property
     @pulumi.getter(name="resourceGroupId")
@@ -775,6 +871,7 @@ class Disk(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  advanced_features: Optional[pulumi.Input[str]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
+                 bursting_enabled: Optional[pulumi.Input[bool]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  delete_auto_snapshot: Optional[pulumi.Input[bool]] = None,
                  delete_with_instance: Optional[pulumi.Input[bool]] = None,
@@ -786,9 +883,11 @@ class Disk(pulumi.CustomResource):
                  encrypted: Optional[pulumi.Input[bool]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
+                 multi_attach: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  performance_level: Optional[pulumi.Input[str]] = None,
+                 provisioned_iops: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None,
@@ -912,6 +1011,7 @@ class Disk(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  advanced_features: Optional[pulumi.Input[str]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
+                 bursting_enabled: Optional[pulumi.Input[bool]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  delete_auto_snapshot: Optional[pulumi.Input[bool]] = None,
                  delete_with_instance: Optional[pulumi.Input[bool]] = None,
@@ -923,9 +1023,11 @@ class Disk(pulumi.CustomResource):
                  encrypted: Optional[pulumi.Input[bool]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
+                 multi_attach: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  performance_level: Optional[pulumi.Input[str]] = None,
+                 provisioned_iops: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None,
@@ -945,6 +1047,7 @@ class Disk(pulumi.CustomResource):
 
             __props__.__dict__["advanced_features"] = advanced_features
             __props__.__dict__["availability_zone"] = availability_zone
+            __props__.__dict__["bursting_enabled"] = bursting_enabled
             __props__.__dict__["category"] = category
             __props__.__dict__["delete_auto_snapshot"] = delete_auto_snapshot
             __props__.__dict__["delete_with_instance"] = delete_with_instance
@@ -956,9 +1059,11 @@ class Disk(pulumi.CustomResource):
             __props__.__dict__["encrypted"] = encrypted
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["kms_key_id"] = kms_key_id
+            __props__.__dict__["multi_attach"] = multi_attach
             __props__.__dict__["name"] = name
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["performance_level"] = performance_level
+            __props__.__dict__["provisioned_iops"] = provisioned_iops
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["size"] = size
             __props__.__dict__["snapshot_id"] = snapshot_id
@@ -967,6 +1072,8 @@ class Disk(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["type"] = type
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["region_id"] = None
             __props__.__dict__["status"] = None
         super(Disk, __self__).__init__(
             'alicloud:ecs/disk:Disk',
@@ -980,7 +1087,9 @@ class Disk(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             advanced_features: Optional[pulumi.Input[str]] = None,
             availability_zone: Optional[pulumi.Input[str]] = None,
+            bursting_enabled: Optional[pulumi.Input[bool]] = None,
             category: Optional[pulumi.Input[str]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             delete_auto_snapshot: Optional[pulumi.Input[bool]] = None,
             delete_with_instance: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -991,9 +1100,12 @@ class Disk(pulumi.CustomResource):
             encrypted: Optional[pulumi.Input[bool]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
             kms_key_id: Optional[pulumi.Input[str]] = None,
+            multi_attach: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
             performance_level: Optional[pulumi.Input[str]] = None,
+            provisioned_iops: Optional[pulumi.Input[int]] = None,
+            region_id: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             size: Optional[pulumi.Input[int]] = None,
             snapshot_id: Optional[pulumi.Input[str]] = None,
@@ -1036,7 +1148,9 @@ class Disk(pulumi.CustomResource):
 
         __props__.__dict__["advanced_features"] = advanced_features
         __props__.__dict__["availability_zone"] = availability_zone
+        __props__.__dict__["bursting_enabled"] = bursting_enabled
         __props__.__dict__["category"] = category
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["delete_auto_snapshot"] = delete_auto_snapshot
         __props__.__dict__["delete_with_instance"] = delete_with_instance
         __props__.__dict__["description"] = description
@@ -1047,9 +1161,12 @@ class Disk(pulumi.CustomResource):
         __props__.__dict__["encrypted"] = encrypted
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["kms_key_id"] = kms_key_id
+        __props__.__dict__["multi_attach"] = multi_attach
         __props__.__dict__["name"] = name
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["performance_level"] = performance_level
+        __props__.__dict__["provisioned_iops"] = provisioned_iops
+        __props__.__dict__["region_id"] = region_id
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["size"] = size
         __props__.__dict__["snapshot_id"] = snapshot_id
@@ -1068,12 +1185,17 @@ class Disk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="availabilityZone")
-    @_utilities.deprecated("""Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""")
+    @_utilities.deprecated("""Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead""")
     def availability_zone(self) -> pulumi.Output[str]:
         """
         The Zone to create the disk in.
         """
         return pulumi.get(self, "availability_zone")
+
+    @property
+    @pulumi.getter(name="burstingEnabled")
+    def bursting_enabled(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "bursting_enabled")
 
     @property
     @pulumi.getter
@@ -1082,6 +1204,11 @@ class Disk(pulumi.CustomResource):
         Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_entry`. Default is `cloud_efficiency`.
         """
         return pulumi.get(self, "category")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="deleteAutoSnapshot")
@@ -1152,8 +1279,13 @@ class Disk(pulumi.CustomResource):
         return pulumi.get(self, "kms_key_id")
 
     @property
+    @pulumi.getter(name="multiAttach")
+    def multi_attach(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "multi_attach")
+
+    @property
     @pulumi.getter
-    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.""")
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.""")
     def name(self) -> pulumi.Output[str]:
         """
         Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
@@ -1175,6 +1307,16 @@ class Disk(pulumi.CustomResource):
         * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
         """
         return pulumi.get(self, "performance_level")
+
+    @property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> pulumi.Output[Optional[int]]:
+        return pulumi.get(self, "provisioned_iops")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "region_id")
 
     @property
     @pulumi.getter(name="resourceGroupId")

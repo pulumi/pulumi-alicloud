@@ -95,7 +95,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        /// Specifies whether to enable IPv6. Valid values:
         /// </summary>
         [Output("enableIpv6")]
         public Output<bool?> EnableIpv6 { get; private set; } = null!;
@@ -287,7 +287,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        /// Specifies whether to enable IPv6. Valid values:
         /// </summary>
         [Input("enableIpv6")]
         public Input<bool>? EnableIpv6 { get; set; }
@@ -436,7 +436,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        /// Specifies whether to enable IPv6. Valid values:
         /// </summary>
         [Input("enableIpv6")]
         public Input<bool>? EnableIpv6 { get; set; }

@@ -14,7 +14,7 @@ import (
 
 // Provides a Data Works Project resource.
 //
-// For information about Data Works Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/dataworks/developer-reference/api-dataworks-public-2020-05-18-createproject).
+// For information about Data Works Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/).
 //
 // > **NOTE:** Available since v1.229.0.
 //
@@ -30,6 +30,7 @@ import (
 //	"fmt"
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dataworks"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -43,19 +44,26 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
-//				Min: 10000,
-//				Max: 99999,
+//			randint, err := random.NewInteger(ctx, "randint", &random.IntegerArgs{
+//				Max: 999,
+//				Min: 1,
 //			})
 //			if err != nil {
 //				return err
 //			}
+//			_default, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			_, err = dataworks.NewProject(ctx, "default", &dataworks.ProjectArgs{
-//				ProjectName: pulumi.Sprintf("%v_%v", name, _default.Result),
-//				ProjectMode: pulumi.Int(2),
-//				Description: pulumi.Sprintf("%v_%v", name, _default.Result),
-//				DisplayName: pulumi.Sprintf("%v_%v", name, _default.Result),
-//				Status:      pulumi.String("0"),
+//				Status:                pulumi.String("Available"),
+//				Description:           pulumi.String("tf_desc"),
+//				ProjectName:           pulumi.Sprintf("%v%v", name, randint.Id),
+//				PaiTaskEnabled:        pulumi.Bool(false),
+//				DisplayName:           pulumi.String("tf_new_api_display"),
+//				DevRoleDisabled:       pulumi.Bool(true),
+//				DevEnvironmentEnabled: pulumi.Bool(false),
+//				ResourceGroupId:       pulumi.String(_default.Ids[0]),
 //			})
 //			if err != nil {
 //				return err
@@ -76,20 +84,24 @@ import (
 type Project struct {
 	pulumi.CustomResourceState
 
-	// The creation time of the resource
-	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Description of the workspace
-	Description pulumi.StringOutput `pulumi:"description"`
-	// The display name of the workspace.
+	// Workspace Description
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Is Development Environment Enabled
+	DevEnvironmentEnabled pulumi.BoolOutput `pulumi:"devEnvironmentEnabled"`
+	// Is Development Role Disabled
+	DevRoleDisabled pulumi.BoolOutput `pulumi:"devRoleDisabled"`
+	// Workspace Display Name
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// The mode of the workspace, with the following values:
-	// - 2, indicates the simple workspace mode.
-	// - 3, indicating the standard workspace mode.
-	ProjectMode pulumi.IntPtrOutput `pulumi:"projectMode"`
-	// Immutable Name of the workspace.
+	// Create PAI Workspace Together
+	PaiTaskEnabled pulumi.BoolOutput `pulumi:"paiTaskEnabled"`
+	// Workspace Name
 	ProjectName pulumi.StringOutput `pulumi:"projectName"`
-	// The status of the resource
+	// Aliyun Resource Group Id
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// Workspace Status
 	Status pulumi.StringOutput `pulumi:"status"`
+	// Aliyun Resource Tag
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewProject registers a new resource with the given unique name, arguments, and options.
@@ -99,11 +111,11 @@ func NewProject(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Description == nil {
-		return nil, errors.New("invalid value for required argument 'Description'")
-	}
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
+	if args.PaiTaskEnabled == nil {
+		return nil, errors.New("invalid value for required argument 'PaiTaskEnabled'")
 	}
 	if args.ProjectName == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectName'")
@@ -131,37 +143,45 @@ func GetProject(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Project resources.
 type projectState struct {
-	// The creation time of the resource
-	CreateTime *string `pulumi:"createTime"`
-	// Description of the workspace
+	// Workspace Description
 	Description *string `pulumi:"description"`
-	// The display name of the workspace.
+	// Is Development Environment Enabled
+	DevEnvironmentEnabled *bool `pulumi:"devEnvironmentEnabled"`
+	// Is Development Role Disabled
+	DevRoleDisabled *bool `pulumi:"devRoleDisabled"`
+	// Workspace Display Name
 	DisplayName *string `pulumi:"displayName"`
-	// The mode of the workspace, with the following values:
-	// - 2, indicates the simple workspace mode.
-	// - 3, indicating the standard workspace mode.
-	ProjectMode *int `pulumi:"projectMode"`
-	// Immutable Name of the workspace.
+	// Create PAI Workspace Together
+	PaiTaskEnabled *bool `pulumi:"paiTaskEnabled"`
+	// Workspace Name
 	ProjectName *string `pulumi:"projectName"`
-	// The status of the resource
+	// Aliyun Resource Group Id
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Workspace Status
 	Status *string `pulumi:"status"`
+	// Aliyun Resource Tag
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type ProjectState struct {
-	// The creation time of the resource
-	CreateTime pulumi.StringPtrInput
-	// Description of the workspace
+	// Workspace Description
 	Description pulumi.StringPtrInput
-	// The display name of the workspace.
+	// Is Development Environment Enabled
+	DevEnvironmentEnabled pulumi.BoolPtrInput
+	// Is Development Role Disabled
+	DevRoleDisabled pulumi.BoolPtrInput
+	// Workspace Display Name
 	DisplayName pulumi.StringPtrInput
-	// The mode of the workspace, with the following values:
-	// - 2, indicates the simple workspace mode.
-	// - 3, indicating the standard workspace mode.
-	ProjectMode pulumi.IntPtrInput
-	// Immutable Name of the workspace.
+	// Create PAI Workspace Together
+	PaiTaskEnabled pulumi.BoolPtrInput
+	// Workspace Name
 	ProjectName pulumi.StringPtrInput
-	// The status of the resource
+	// Aliyun Resource Group Id
+	ResourceGroupId pulumi.StringPtrInput
+	// Workspace Status
 	Status pulumi.StringPtrInput
+	// Aliyun Resource Tag
+	Tags pulumi.StringMapInput
 }
 
 func (ProjectState) ElementType() reflect.Type {
@@ -169,34 +189,46 @@ func (ProjectState) ElementType() reflect.Type {
 }
 
 type projectArgs struct {
-	// Description of the workspace
-	Description string `pulumi:"description"`
-	// The display name of the workspace.
+	// Workspace Description
+	Description *string `pulumi:"description"`
+	// Is Development Environment Enabled
+	DevEnvironmentEnabled *bool `pulumi:"devEnvironmentEnabled"`
+	// Is Development Role Disabled
+	DevRoleDisabled *bool `pulumi:"devRoleDisabled"`
+	// Workspace Display Name
 	DisplayName string `pulumi:"displayName"`
-	// The mode of the workspace, with the following values:
-	// - 2, indicates the simple workspace mode.
-	// - 3, indicating the standard workspace mode.
-	ProjectMode *int `pulumi:"projectMode"`
-	// Immutable Name of the workspace.
+	// Create PAI Workspace Together
+	PaiTaskEnabled bool `pulumi:"paiTaskEnabled"`
+	// Workspace Name
 	ProjectName string `pulumi:"projectName"`
-	// The status of the resource
+	// Aliyun Resource Group Id
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Workspace Status
 	Status *string `pulumi:"status"`
+	// Aliyun Resource Tag
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Project resource.
 type ProjectArgs struct {
-	// Description of the workspace
-	Description pulumi.StringInput
-	// The display name of the workspace.
+	// Workspace Description
+	Description pulumi.StringPtrInput
+	// Is Development Environment Enabled
+	DevEnvironmentEnabled pulumi.BoolPtrInput
+	// Is Development Role Disabled
+	DevRoleDisabled pulumi.BoolPtrInput
+	// Workspace Display Name
 	DisplayName pulumi.StringInput
-	// The mode of the workspace, with the following values:
-	// - 2, indicates the simple workspace mode.
-	// - 3, indicating the standard workspace mode.
-	ProjectMode pulumi.IntPtrInput
-	// Immutable Name of the workspace.
+	// Create PAI Workspace Together
+	PaiTaskEnabled pulumi.BoolInput
+	// Workspace Name
 	ProjectName pulumi.StringInput
-	// The status of the resource
+	// Aliyun Resource Group Id
+	ResourceGroupId pulumi.StringPtrInput
+	// Workspace Status
 	Status pulumi.StringPtrInput
+	// Aliyun Resource Tag
+	Tags pulumi.StringMapInput
 }
 
 func (ProjectArgs) ElementType() reflect.Type {
@@ -286,36 +318,49 @@ func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOu
 	return o
 }
 
-// The creation time of the resource
-func (o ProjectOutput) CreateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+// Workspace Description
+func (o ProjectOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Description of the workspace
-func (o ProjectOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+// Is Development Environment Enabled
+func (o ProjectOutput) DevEnvironmentEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.DevEnvironmentEnabled }).(pulumi.BoolOutput)
 }
 
-// The display name of the workspace.
+// Is Development Role Disabled
+func (o ProjectOutput) DevRoleDisabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.DevRoleDisabled }).(pulumi.BoolOutput)
+}
+
+// Workspace Display Name
 func (o ProjectOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// The mode of the workspace, with the following values:
-// - 2, indicates the simple workspace mode.
-// - 3, indicating the standard workspace mode.
-func (o ProjectOutput) ProjectMode() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Project) pulumi.IntPtrOutput { return v.ProjectMode }).(pulumi.IntPtrOutput)
+// Create PAI Workspace Together
+func (o ProjectOutput) PaiTaskEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.PaiTaskEnabled }).(pulumi.BoolOutput)
 }
 
-// Immutable Name of the workspace.
+// Workspace Name
 func (o ProjectOutput) ProjectName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.ProjectName }).(pulumi.StringOutput)
 }
 
-// The status of the resource
+// Aliyun Resource Group Id
+func (o ProjectOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// Workspace Status
 func (o ProjectOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Aliyun Resource Tag
+func (o ProjectOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type ProjectArrayOutput struct{ *pulumi.OutputState }

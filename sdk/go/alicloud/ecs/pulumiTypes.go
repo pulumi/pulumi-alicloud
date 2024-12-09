@@ -2342,6 +2342,143 @@ func (o InstanceDataDiskArrayOutput) Index(i pulumi.IntInput) InstanceDataDiskOu
 	}).(InstanceDataDiskOutput)
 }
 
+type InstanceImageOptions struct {
+	// Whether to allow the instance logging in with the ecs-user user.
+	LoginAsNonRoot *bool `pulumi:"loginAsNonRoot"`
+}
+
+// InstanceImageOptionsInput is an input type that accepts InstanceImageOptionsArgs and InstanceImageOptionsOutput values.
+// You can construct a concrete instance of `InstanceImageOptionsInput` via:
+//
+//	InstanceImageOptionsArgs{...}
+type InstanceImageOptionsInput interface {
+	pulumi.Input
+
+	ToInstanceImageOptionsOutput() InstanceImageOptionsOutput
+	ToInstanceImageOptionsOutputWithContext(context.Context) InstanceImageOptionsOutput
+}
+
+type InstanceImageOptionsArgs struct {
+	// Whether to allow the instance logging in with the ecs-user user.
+	LoginAsNonRoot pulumi.BoolPtrInput `pulumi:"loginAsNonRoot"`
+}
+
+func (InstanceImageOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceImageOptions)(nil)).Elem()
+}
+
+func (i InstanceImageOptionsArgs) ToInstanceImageOptionsOutput() InstanceImageOptionsOutput {
+	return i.ToInstanceImageOptionsOutputWithContext(context.Background())
+}
+
+func (i InstanceImageOptionsArgs) ToInstanceImageOptionsOutputWithContext(ctx context.Context) InstanceImageOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceImageOptionsOutput)
+}
+
+func (i InstanceImageOptionsArgs) ToInstanceImageOptionsPtrOutput() InstanceImageOptionsPtrOutput {
+	return i.ToInstanceImageOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceImageOptionsArgs) ToInstanceImageOptionsPtrOutputWithContext(ctx context.Context) InstanceImageOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceImageOptionsOutput).ToInstanceImageOptionsPtrOutputWithContext(ctx)
+}
+
+// InstanceImageOptionsPtrInput is an input type that accepts InstanceImageOptionsArgs, InstanceImageOptionsPtr and InstanceImageOptionsPtrOutput values.
+// You can construct a concrete instance of `InstanceImageOptionsPtrInput` via:
+//
+//	        InstanceImageOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceImageOptionsPtrInput interface {
+	pulumi.Input
+
+	ToInstanceImageOptionsPtrOutput() InstanceImageOptionsPtrOutput
+	ToInstanceImageOptionsPtrOutputWithContext(context.Context) InstanceImageOptionsPtrOutput
+}
+
+type instanceImageOptionsPtrType InstanceImageOptionsArgs
+
+func InstanceImageOptionsPtr(v *InstanceImageOptionsArgs) InstanceImageOptionsPtrInput {
+	return (*instanceImageOptionsPtrType)(v)
+}
+
+func (*instanceImageOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceImageOptions)(nil)).Elem()
+}
+
+func (i *instanceImageOptionsPtrType) ToInstanceImageOptionsPtrOutput() InstanceImageOptionsPtrOutput {
+	return i.ToInstanceImageOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceImageOptionsPtrType) ToInstanceImageOptionsPtrOutputWithContext(ctx context.Context) InstanceImageOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceImageOptionsPtrOutput)
+}
+
+type InstanceImageOptionsOutput struct{ *pulumi.OutputState }
+
+func (InstanceImageOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceImageOptions)(nil)).Elem()
+}
+
+func (o InstanceImageOptionsOutput) ToInstanceImageOptionsOutput() InstanceImageOptionsOutput {
+	return o
+}
+
+func (o InstanceImageOptionsOutput) ToInstanceImageOptionsOutputWithContext(ctx context.Context) InstanceImageOptionsOutput {
+	return o
+}
+
+func (o InstanceImageOptionsOutput) ToInstanceImageOptionsPtrOutput() InstanceImageOptionsPtrOutput {
+	return o.ToInstanceImageOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceImageOptionsOutput) ToInstanceImageOptionsPtrOutputWithContext(ctx context.Context) InstanceImageOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceImageOptions) *InstanceImageOptions {
+		return &v
+	}).(InstanceImageOptionsPtrOutput)
+}
+
+// Whether to allow the instance logging in with the ecs-user user.
+func (o InstanceImageOptionsOutput) LoginAsNonRoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceImageOptions) *bool { return v.LoginAsNonRoot }).(pulumi.BoolPtrOutput)
+}
+
+type InstanceImageOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceImageOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceImageOptions)(nil)).Elem()
+}
+
+func (o InstanceImageOptionsPtrOutput) ToInstanceImageOptionsPtrOutput() InstanceImageOptionsPtrOutput {
+	return o
+}
+
+func (o InstanceImageOptionsPtrOutput) ToInstanceImageOptionsPtrOutputWithContext(ctx context.Context) InstanceImageOptionsPtrOutput {
+	return o
+}
+
+func (o InstanceImageOptionsPtrOutput) Elem() InstanceImageOptionsOutput {
+	return o.ApplyT(func(v *InstanceImageOptions) InstanceImageOptions {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceImageOptions
+		return ret
+	}).(InstanceImageOptionsOutput)
+}
+
+// Whether to allow the instance logging in with the ecs-user user.
+func (o InstanceImageOptionsPtrOutput) LoginAsNonRoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceImageOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.LoginAsNonRoot
+	}).(pulumi.BoolPtrOutput)
+}
+
 type InstanceMaintenanceTime struct {
 	// The end time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `startTime` and `endTime` parameters must be specified at the same time. The `endTime` value must be 1 to 23 hours later than the `startTime` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
 	EndTime *string `pulumi:"endTime"`
@@ -16195,6 +16332,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageImportDiskDeviceMappingArrayInput)(nil)).Elem(), ImageImportDiskDeviceMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDataDiskInput)(nil)).Elem(), InstanceDataDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDataDiskArrayInput)(nil)).Elem(), InstanceDataDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceImageOptionsInput)(nil)).Elem(), InstanceImageOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceImageOptionsPtrInput)(nil)).Elem(), InstanceImageOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenanceTimeInput)(nil)).Elem(), InstanceMaintenanceTimeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenanceTimePtrInput)(nil)).Elem(), InstanceMaintenanceTimeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkInterfacesInput)(nil)).Elem(), InstanceNetworkInterfacesArgs{})
@@ -16366,6 +16505,8 @@ func init() {
 	pulumi.RegisterOutputType(ImageImportDiskDeviceMappingArrayOutput{})
 	pulumi.RegisterOutputType(InstanceDataDiskOutput{})
 	pulumi.RegisterOutputType(InstanceDataDiskArrayOutput{})
+	pulumi.RegisterOutputType(InstanceImageOptionsOutput{})
+	pulumi.RegisterOutputType(InstanceImageOptionsPtrOutput{})
 	pulumi.RegisterOutputType(InstanceMaintenanceTimeOutput{})
 	pulumi.RegisterOutputType(InstanceMaintenanceTimePtrOutput{})
 	pulumi.RegisterOutputType(InstanceNetworkInterfacesOutput{})

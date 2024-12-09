@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
 /**
  * ## Import
  * 
- * Redis Tair Instance can be imported using the id, e.g.
+ * Tair (Redis OSS-Compatible) And Memcache (KVStore) Tair Instance can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:redis/tairInstance:TairInstance example &lt;id&gt;
@@ -315,36 +315,46 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
         return this.networkType;
     }
     /**
-     * Node type, value:
-     * - `MASTER_SLAVE`: high availability (dual copy)
-     * - `STAND_ALONE`: single copy
+     * The node type. For cloud-native instances, input MASTER_SLAVE (master-replica) or STAND_ALONE (standalone). For classic instances, input double (master-replica) or single (standalone).
      * 
      */
     @Export(name="nodeType", refs={String.class}, tree="[0]")
     private Output<String> nodeType;
 
     /**
-     * @return Node type, value:
-     * - `MASTER_SLAVE`: high availability (dual copy)
-     * - `STAND_ALONE`: single copy
+     * @return The node type. For cloud-native instances, input MASTER_SLAVE (master-replica) or STAND_ALONE (standalone). For classic instances, input double (master-replica) or single (standalone).
      * 
      */
     public Output<String> nodeType() {
         return this.nodeType;
     }
     /**
-     * sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes or no. The default value is no.
+     * sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes, no. The default value is no.
      * 
      */
     @Export(name="paramNoLooseSentinelEnabled", refs={String.class}, tree="[0]")
     private Output<String> paramNoLooseSentinelEnabled;
 
     /**
-     * @return sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes or no. The default value is no.
+     * @return sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes, no. The default value is no.
      * 
      */
     public Output<String> paramNoLooseSentinelEnabled() {
         return this.paramNoLooseSentinelEnabled;
+    }
+    /**
+     * Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance
+     * 
+     */
+    @Export(name="paramNoLooseSentinelPasswordFreeAccess", refs={String.class}, tree="[0]")
+    private Output<String> paramNoLooseSentinelPasswordFreeAccess;
+
+    /**
+     * @return Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance
+     * 
+     */
+    public Output<String> paramNoLooseSentinelPasswordFreeAccess() {
+        return this.paramNoLooseSentinelPasswordFreeAccess;
     }
     /**
      * The value is semisync or async. The default value is async.

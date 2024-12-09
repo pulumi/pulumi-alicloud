@@ -341,9 +341,17 @@ if not MYPY:
         """
         The notification method. Valid values: dingTalk, sms, webhook, email, and wechat.
         """
+        notify_end_time: pulumi.Input[str]
+        """
+        End time of notification.
+        """
         notify_objects: pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleNotifyObjectArgsDict']]]
         """
         Sets the notification object. See `notify_objects` below.
+        """
+        notify_start_time: pulumi.Input[str]
+        """
+        Start time of notification.
         """
 elif False:
     DispatchRuleNotifyRuleArgsDict: TypeAlias = Mapping[str, Any]
@@ -352,13 +360,19 @@ elif False:
 class DispatchRuleNotifyRuleArgs:
     def __init__(__self__, *,
                  notify_channels: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 notify_objects: pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleNotifyObjectArgs']]]):
+                 notify_end_time: pulumi.Input[str],
+                 notify_objects: pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleNotifyObjectArgs']]],
+                 notify_start_time: pulumi.Input[str]):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notify_channels: The notification method. Valid values: dingTalk, sms, webhook, email, and wechat.
+        :param pulumi.Input[str] notify_end_time: End time of notification.
         :param pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleNotifyObjectArgs']]] notify_objects: Sets the notification object. See `notify_objects` below.
+        :param pulumi.Input[str] notify_start_time: Start time of notification.
         """
         pulumi.set(__self__, "notify_channels", notify_channels)
+        pulumi.set(__self__, "notify_end_time", notify_end_time)
         pulumi.set(__self__, "notify_objects", notify_objects)
+        pulumi.set(__self__, "notify_start_time", notify_start_time)
 
     @property
     @pulumi.getter(name="notifyChannels")
@@ -373,6 +387,18 @@ class DispatchRuleNotifyRuleArgs:
         pulumi.set(self, "notify_channels", value)
 
     @property
+    @pulumi.getter(name="notifyEndTime")
+    def notify_end_time(self) -> pulumi.Input[str]:
+        """
+        End time of notification.
+        """
+        return pulumi.get(self, "notify_end_time")
+
+    @notify_end_time.setter
+    def notify_end_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "notify_end_time", value)
+
+    @property
     @pulumi.getter(name="notifyObjects")
     def notify_objects(self) -> pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleNotifyObjectArgs']]]:
         """
@@ -383,6 +409,18 @@ class DispatchRuleNotifyRuleArgs:
     @notify_objects.setter
     def notify_objects(self, value: pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleNotifyObjectArgs']]]):
         pulumi.set(self, "notify_objects", value)
+
+    @property
+    @pulumi.getter(name="notifyStartTime")
+    def notify_start_time(self) -> pulumi.Input[str]:
+        """
+        Start time of notification.
+        """
+        return pulumi.get(self, "notify_start_time")
+
+    @notify_start_time.setter
+    def notify_start_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "notify_start_time", value)
 
 
 if not MYPY:
@@ -397,7 +435,7 @@ if not MYPY:
         """
         notify_type: pulumi.Input[str]
         """
-        The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
+        The type of the alert contact. Valid values: ARMS_ROBOT: robot. ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
         """
 elif False:
     DispatchRuleNotifyRuleNotifyObjectArgsDict: TypeAlias = Mapping[str, Any]
@@ -411,7 +449,7 @@ class DispatchRuleNotifyRuleNotifyObjectArgs:
         """
         :param pulumi.Input[str] name: The name of the contact or contact group.
         :param pulumi.Input[str] notify_object_id: The ID of the contact or contact group.
-        :param pulumi.Input[str] notify_type: The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
+        :param pulumi.Input[str] notify_type: The type of the alert contact. Valid values: ARMS_ROBOT: robot. ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "notify_object_id", notify_object_id)
@@ -445,7 +483,7 @@ class DispatchRuleNotifyRuleNotifyObjectArgs:
     @pulumi.getter(name="notifyType")
     def notify_type(self) -> pulumi.Input[str]:
         """
-        The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
+        The type of the alert contact. Valid values: ARMS_ROBOT: robot. ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
         """
         return pulumi.get(self, "notify_type")
 

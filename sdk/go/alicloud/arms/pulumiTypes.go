@@ -498,8 +498,12 @@ func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchE
 type DispatchRuleNotifyRule struct {
 	// The notification method. Valid values: dingTalk, sms, webhook, email, and wechat.
 	NotifyChannels []string `pulumi:"notifyChannels"`
+	// End time of notification.
+	NotifyEndTime string `pulumi:"notifyEndTime"`
 	// Sets the notification object. See `notifyObjects` below.
 	NotifyObjects []DispatchRuleNotifyRuleNotifyObject `pulumi:"notifyObjects"`
+	// Start time of notification.
+	NotifyStartTime string `pulumi:"notifyStartTime"`
 }
 
 // DispatchRuleNotifyRuleInput is an input type that accepts DispatchRuleNotifyRuleArgs and DispatchRuleNotifyRuleOutput values.
@@ -516,8 +520,12 @@ type DispatchRuleNotifyRuleInput interface {
 type DispatchRuleNotifyRuleArgs struct {
 	// The notification method. Valid values: dingTalk, sms, webhook, email, and wechat.
 	NotifyChannels pulumi.StringArrayInput `pulumi:"notifyChannels"`
+	// End time of notification.
+	NotifyEndTime pulumi.StringInput `pulumi:"notifyEndTime"`
 	// Sets the notification object. See `notifyObjects` below.
 	NotifyObjects DispatchRuleNotifyRuleNotifyObjectArrayInput `pulumi:"notifyObjects"`
+	// Start time of notification.
+	NotifyStartTime pulumi.StringInput `pulumi:"notifyStartTime"`
 }
 
 func (DispatchRuleNotifyRuleArgs) ElementType() reflect.Type {
@@ -576,9 +584,19 @@ func (o DispatchRuleNotifyRuleOutput) NotifyChannels() pulumi.StringArrayOutput 
 	return o.ApplyT(func(v DispatchRuleNotifyRule) []string { return v.NotifyChannels }).(pulumi.StringArrayOutput)
 }
 
+// End time of notification.
+func (o DispatchRuleNotifyRuleOutput) NotifyEndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v DispatchRuleNotifyRule) string { return v.NotifyEndTime }).(pulumi.StringOutput)
+}
+
 // Sets the notification object. See `notifyObjects` below.
 func (o DispatchRuleNotifyRuleOutput) NotifyObjects() DispatchRuleNotifyRuleNotifyObjectArrayOutput {
 	return o.ApplyT(func(v DispatchRuleNotifyRule) []DispatchRuleNotifyRuleNotifyObject { return v.NotifyObjects }).(DispatchRuleNotifyRuleNotifyObjectArrayOutput)
+}
+
+// Start time of notification.
+func (o DispatchRuleNotifyRuleOutput) NotifyStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v DispatchRuleNotifyRule) string { return v.NotifyStartTime }).(pulumi.StringOutput)
 }
 
 type DispatchRuleNotifyRuleArrayOutput struct{ *pulumi.OutputState }
@@ -606,7 +624,7 @@ type DispatchRuleNotifyRuleNotifyObject struct {
 	Name string `pulumi:"name"`
 	// The ID of the contact or contact group.
 	NotifyObjectId string `pulumi:"notifyObjectId"`
-	// The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
+	// The type of the alert contact. Valid values: ARMS_ROBOT: robot. ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
 	NotifyType string `pulumi:"notifyType"`
 }
 
@@ -626,7 +644,7 @@ type DispatchRuleNotifyRuleNotifyObjectArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The ID of the contact or contact group.
 	NotifyObjectId pulumi.StringInput `pulumi:"notifyObjectId"`
-	// The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
+	// The type of the alert contact. Valid values: ARMS_ROBOT: robot. ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
 	NotifyType pulumi.StringInput `pulumi:"notifyType"`
 }
 
@@ -691,7 +709,7 @@ func (o DispatchRuleNotifyRuleNotifyObjectOutput) NotifyObjectId() pulumi.String
 	return o.ApplyT(func(v DispatchRuleNotifyRuleNotifyObject) string { return v.NotifyObjectId }).(pulumi.StringOutput)
 }
 
-// The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
+// The type of the alert contact. Valid values: ARMS_ROBOT: robot. ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
 func (o DispatchRuleNotifyRuleNotifyObjectOutput) NotifyType() pulumi.StringOutput {
 	return o.ApplyT(func(v DispatchRuleNotifyRuleNotifyObject) string { return v.NotifyType }).(pulumi.StringOutput)
 }
@@ -4842,12 +4860,173 @@ func (o GetAlertContactsContactArrayOutput) Index(i pulumi.IntInput) GetAlertCon
 	}).(GetAlertContactsContactOutput)
 }
 
+type GetAlertRobotsRobot struct {
+	// The creation time of the resource.
+	CreateTime string `pulumi:"createTime"`
+	// Specifies whether the alert robot receives daily notifications.
+	DailyNoc string `pulumi:"dailyNoc"`
+	// The time of the daily notification.
+	DailyNocTime string `pulumi:"dailyNocTime"`
+	// The ID of the Alert Robot.
+	Id string `pulumi:"id"`
+	// The webhook url of the robot.
+	RobotAddr string `pulumi:"robotAddr"`
+	// The id of the robot.
+	RobotId string `pulumi:"robotId"`
+	// The name of the robot.
+	RobotName string `pulumi:"robotName"`
+	// The robot type.
+	RobotType string `pulumi:"robotType"`
+}
+
+// GetAlertRobotsRobotInput is an input type that accepts GetAlertRobotsRobotArgs and GetAlertRobotsRobotOutput values.
+// You can construct a concrete instance of `GetAlertRobotsRobotInput` via:
+//
+//	GetAlertRobotsRobotArgs{...}
+type GetAlertRobotsRobotInput interface {
+	pulumi.Input
+
+	ToGetAlertRobotsRobotOutput() GetAlertRobotsRobotOutput
+	ToGetAlertRobotsRobotOutputWithContext(context.Context) GetAlertRobotsRobotOutput
+}
+
+type GetAlertRobotsRobotArgs struct {
+	// The creation time of the resource.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Specifies whether the alert robot receives daily notifications.
+	DailyNoc pulumi.StringInput `pulumi:"dailyNoc"`
+	// The time of the daily notification.
+	DailyNocTime pulumi.StringInput `pulumi:"dailyNocTime"`
+	// The ID of the Alert Robot.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The webhook url of the robot.
+	RobotAddr pulumi.StringInput `pulumi:"robotAddr"`
+	// The id of the robot.
+	RobotId pulumi.StringInput `pulumi:"robotId"`
+	// The name of the robot.
+	RobotName pulumi.StringInput `pulumi:"robotName"`
+	// The robot type.
+	RobotType pulumi.StringInput `pulumi:"robotType"`
+}
+
+func (GetAlertRobotsRobotArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRobotsRobot)(nil)).Elem()
+}
+
+func (i GetAlertRobotsRobotArgs) ToGetAlertRobotsRobotOutput() GetAlertRobotsRobotOutput {
+	return i.ToGetAlertRobotsRobotOutputWithContext(context.Background())
+}
+
+func (i GetAlertRobotsRobotArgs) ToGetAlertRobotsRobotOutputWithContext(ctx context.Context) GetAlertRobotsRobotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRobotsRobotOutput)
+}
+
+// GetAlertRobotsRobotArrayInput is an input type that accepts GetAlertRobotsRobotArray and GetAlertRobotsRobotArrayOutput values.
+// You can construct a concrete instance of `GetAlertRobotsRobotArrayInput` via:
+//
+//	GetAlertRobotsRobotArray{ GetAlertRobotsRobotArgs{...} }
+type GetAlertRobotsRobotArrayInput interface {
+	pulumi.Input
+
+	ToGetAlertRobotsRobotArrayOutput() GetAlertRobotsRobotArrayOutput
+	ToGetAlertRobotsRobotArrayOutputWithContext(context.Context) GetAlertRobotsRobotArrayOutput
+}
+
+type GetAlertRobotsRobotArray []GetAlertRobotsRobotInput
+
+func (GetAlertRobotsRobotArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRobotsRobot)(nil)).Elem()
+}
+
+func (i GetAlertRobotsRobotArray) ToGetAlertRobotsRobotArrayOutput() GetAlertRobotsRobotArrayOutput {
+	return i.ToGetAlertRobotsRobotArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlertRobotsRobotArray) ToGetAlertRobotsRobotArrayOutputWithContext(ctx context.Context) GetAlertRobotsRobotArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRobotsRobotArrayOutput)
+}
+
+type GetAlertRobotsRobotOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRobotsRobotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRobotsRobot)(nil)).Elem()
+}
+
+func (o GetAlertRobotsRobotOutput) ToGetAlertRobotsRobotOutput() GetAlertRobotsRobotOutput {
+	return o
+}
+
+func (o GetAlertRobotsRobotOutput) ToGetAlertRobotsRobotOutputWithContext(ctx context.Context) GetAlertRobotsRobotOutput {
+	return o
+}
+
+// The creation time of the resource.
+func (o GetAlertRobotsRobotOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRobotsRobot) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Specifies whether the alert robot receives daily notifications.
+func (o GetAlertRobotsRobotOutput) DailyNoc() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRobotsRobot) string { return v.DailyNoc }).(pulumi.StringOutput)
+}
+
+// The time of the daily notification.
+func (o GetAlertRobotsRobotOutput) DailyNocTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRobotsRobot) string { return v.DailyNocTime }).(pulumi.StringOutput)
+}
+
+// The ID of the Alert Robot.
+func (o GetAlertRobotsRobotOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRobotsRobot) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The webhook url of the robot.
+func (o GetAlertRobotsRobotOutput) RobotAddr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRobotsRobot) string { return v.RobotAddr }).(pulumi.StringOutput)
+}
+
+// The id of the robot.
+func (o GetAlertRobotsRobotOutput) RobotId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRobotsRobot) string { return v.RobotId }).(pulumi.StringOutput)
+}
+
+// The name of the robot.
+func (o GetAlertRobotsRobotOutput) RobotName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRobotsRobot) string { return v.RobotName }).(pulumi.StringOutput)
+}
+
+// The robot type.
+func (o GetAlertRobotsRobotOutput) RobotType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRobotsRobot) string { return v.RobotType }).(pulumi.StringOutput)
+}
+
+type GetAlertRobotsRobotArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRobotsRobotArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRobotsRobot)(nil)).Elem()
+}
+
+func (o GetAlertRobotsRobotArrayOutput) ToGetAlertRobotsRobotArrayOutput() GetAlertRobotsRobotArrayOutput {
+	return o
+}
+
+func (o GetAlertRobotsRobotArrayOutput) ToGetAlertRobotsRobotArrayOutputWithContext(ctx context.Context) GetAlertRobotsRobotArrayOutput {
+	return o
+}
+
+func (o GetAlertRobotsRobotArrayOutput) Index(i pulumi.IntInput) GetAlertRobotsRobotOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlertRobotsRobot {
+		return vs[0].([]GetAlertRobotsRobot)[vs[1].(int)]
+	}).(GetAlertRobotsRobotOutput)
+}
+
 type GetDispatchRulesRule struct {
 	// Dispatch rule ID.
 	DispatchRuleId string `pulumi:"dispatchRuleId"`
 	// The name of the dispatch rule.
 	DispatchRuleName string `pulumi:"dispatchRuleName"`
-	DispatchType     string `pulumi:"dispatchType"`
+	// The type of the dispatch rule.
+	DispatchType string `pulumi:"dispatchType"`
 	// Sets the event group.
 	GroupRules []GetDispatchRulesRuleGroupRule `pulumi:"groupRules"`
 	// The ID of the Dispatch Rule.
@@ -4876,7 +5055,8 @@ type GetDispatchRulesRuleArgs struct {
 	DispatchRuleId pulumi.StringInput `pulumi:"dispatchRuleId"`
 	// The name of the dispatch rule.
 	DispatchRuleName pulumi.StringInput `pulumi:"dispatchRuleName"`
-	DispatchType     pulumi.StringInput `pulumi:"dispatchType"`
+	// The type of the dispatch rule.
+	DispatchType pulumi.StringInput `pulumi:"dispatchType"`
 	// Sets the event group.
 	GroupRules GetDispatchRulesRuleGroupRuleArrayInput `pulumi:"groupRules"`
 	// The ID of the Dispatch Rule.
@@ -4950,6 +5130,7 @@ func (o GetDispatchRulesRuleOutput) DispatchRuleName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDispatchRulesRule) string { return v.DispatchRuleName }).(pulumi.StringOutput)
 }
 
+// The type of the dispatch rule.
 func (o GetDispatchRulesRuleOutput) DispatchType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDispatchRulesRule) string { return v.DispatchType }).(pulumi.StringOutput)
 }
@@ -5002,7 +5183,6 @@ func (o GetDispatchRulesRuleArrayOutput) Index(i pulumi.IntInput) GetDispatchRul
 }
 
 type GetDispatchRulesRuleGroupRule struct {
-	GroupId int `pulumi:"groupId"`
 	// The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
 	GroupInterval int `pulumi:"groupInterval"`
 	// The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
@@ -5025,7 +5205,6 @@ type GetDispatchRulesRuleGroupRuleInput interface {
 }
 
 type GetDispatchRulesRuleGroupRuleArgs struct {
-	GroupId pulumi.IntInput `pulumi:"groupId"`
 	// The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
 	GroupInterval pulumi.IntInput `pulumi:"groupInterval"`
 	// The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
@@ -5085,10 +5264,6 @@ func (o GetDispatchRulesRuleGroupRuleOutput) ToGetDispatchRulesRuleGroupRuleOutp
 
 func (o GetDispatchRulesRuleGroupRuleOutput) ToGetDispatchRulesRuleGroupRuleOutputWithContext(ctx context.Context) GetDispatchRulesRuleGroupRuleOutput {
 	return o
-}
-
-func (o GetDispatchRulesRuleGroupRuleOutput) GroupId() pulumi.IntOutput {
-	return o.ApplyT(func(v GetDispatchRulesRuleGroupRule) int { return v.GroupId }).(pulumi.IntOutput)
 }
 
 // The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
@@ -5451,10 +5626,14 @@ func (o GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLab
 }
 
 type GetDispatchRulesRuleNotifyRule struct {
-	// The notification method.
+	// A list of notification methods.
 	NotifyChannels []string `pulumi:"notifyChannels"`
+	// (Available since v1.237.0) End time of notification.
+	NotifyEndTime string `pulumi:"notifyEndTime"`
 	// Sets the notification object.
 	NotifyObjects []GetDispatchRulesRuleNotifyRuleNotifyObject `pulumi:"notifyObjects"`
+	// (Available since v1.237.0) Start time of notification.
+	NotifyStartTime string `pulumi:"notifyStartTime"`
 }
 
 // GetDispatchRulesRuleNotifyRuleInput is an input type that accepts GetDispatchRulesRuleNotifyRuleArgs and GetDispatchRulesRuleNotifyRuleOutput values.
@@ -5469,10 +5648,14 @@ type GetDispatchRulesRuleNotifyRuleInput interface {
 }
 
 type GetDispatchRulesRuleNotifyRuleArgs struct {
-	// The notification method.
+	// A list of notification methods.
 	NotifyChannels pulumi.StringArrayInput `pulumi:"notifyChannels"`
+	// (Available since v1.237.0) End time of notification.
+	NotifyEndTime pulumi.StringInput `pulumi:"notifyEndTime"`
 	// Sets the notification object.
 	NotifyObjects GetDispatchRulesRuleNotifyRuleNotifyObjectArrayInput `pulumi:"notifyObjects"`
+	// (Available since v1.237.0) Start time of notification.
+	NotifyStartTime pulumi.StringInput `pulumi:"notifyStartTime"`
 }
 
 func (GetDispatchRulesRuleNotifyRuleArgs) ElementType() reflect.Type {
@@ -5526,9 +5709,14 @@ func (o GetDispatchRulesRuleNotifyRuleOutput) ToGetDispatchRulesRuleNotifyRuleOu
 	return o
 }
 
-// The notification method.
+// A list of notification methods.
 func (o GetDispatchRulesRuleNotifyRuleOutput) NotifyChannels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDispatchRulesRuleNotifyRule) []string { return v.NotifyChannels }).(pulumi.StringArrayOutput)
+}
+
+// (Available since v1.237.0) End time of notification.
+func (o GetDispatchRulesRuleNotifyRuleOutput) NotifyEndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDispatchRulesRuleNotifyRule) string { return v.NotifyEndTime }).(pulumi.StringOutput)
 }
 
 // Sets the notification object.
@@ -5536,6 +5724,11 @@ func (o GetDispatchRulesRuleNotifyRuleOutput) NotifyObjects() GetDispatchRulesRu
 	return o.ApplyT(func(v GetDispatchRulesRuleNotifyRule) []GetDispatchRulesRuleNotifyRuleNotifyObject {
 		return v.NotifyObjects
 	}).(GetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutput)
+}
+
+// (Available since v1.237.0) Start time of notification.
+func (o GetDispatchRulesRuleNotifyRuleOutput) NotifyStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDispatchRulesRuleNotifyRule) string { return v.NotifyStartTime }).(pulumi.StringOutput)
 }
 
 type GetDispatchRulesRuleNotifyRuleArrayOutput struct{ *pulumi.OutputState }
@@ -7112,6 +7305,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertContactGroupsGroupArrayInput)(nil)).Elem(), GetAlertContactGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertContactsContactInput)(nil)).Elem(), GetAlertContactsContactArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertContactsContactArrayInput)(nil)).Elem(), GetAlertContactsContactArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRobotsRobotInput)(nil)).Elem(), GetAlertRobotsRobotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRobotsRobotArrayInput)(nil)).Elem(), GetAlertRobotsRobotArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDispatchRulesRuleInput)(nil)).Elem(), GetDispatchRulesRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDispatchRulesRuleArrayInput)(nil)).Elem(), GetDispatchRulesRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDispatchRulesRuleGroupRuleInput)(nil)).Elem(), GetDispatchRulesRuleGroupRuleArgs{})
@@ -7192,6 +7387,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAlertContactGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetAlertContactsContactOutput{})
 	pulumi.RegisterOutputType(GetAlertContactsContactArrayOutput{})
+	pulumi.RegisterOutputType(GetAlertRobotsRobotOutput{})
+	pulumi.RegisterOutputType(GetAlertRobotsRobotArrayOutput{})
 	pulumi.RegisterOutputType(GetDispatchRulesRuleOutput{})
 	pulumi.RegisterOutputType(GetDispatchRulesRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetDispatchRulesRuleGroupRuleOutput{})

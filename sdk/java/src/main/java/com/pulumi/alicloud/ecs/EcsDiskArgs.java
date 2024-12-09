@@ -29,10 +29,10 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
      * Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
      * 
      * @deprecated
-     * Field &#39;availability_zone&#39; has been deprecated from provider version 1.122.0. New field &#39;zone_id&#39; instead
+     * Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead
      * 
      */
-    @Deprecated /* Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead */
+    @Deprecated /* Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead */
     @Import(name="availabilityZone")
     private @Nullable Output<String> availabilityZone;
 
@@ -40,23 +40,38 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
      * @return Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
      * 
      * @deprecated
-     * Field &#39;availability_zone&#39; has been deprecated from provider version 1.122.0. New field &#39;zone_id&#39; instead
+     * Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead
      * 
      */
-    @Deprecated /* Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead */
+    @Deprecated /* Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead */
     public Optional<Output<String>> availabilityZone() {
         return Optional.ofNullable(this.availabilityZone);
     }
 
     /**
-     * Category of the disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
+     * Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `bursting_enabled` is only valid when `category` is `cloud_auto`.
+     * 
+     */
+    @Import(name="burstingEnabled")
+    private @Nullable Output<Boolean> burstingEnabled;
+
+    /**
+     * @return Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `bursting_enabled` is only valid when `category` is `cloud_auto`.
+     * 
+     */
+    public Optional<Output<Boolean>> burstingEnabled() {
+        return Optional.ofNullable(this.burstingEnabled);
+    }
+
+    /**
+     * The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
      * 
      */
     @Import(name="category")
     private @Nullable Output<String> category;
 
     /**
-     * @return Category of the disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
+     * @return The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
      * 
      */
     public Optional<Output<String>> category() {
@@ -64,14 +79,14 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
+     * Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
      * 
      */
     @Import(name="deleteAutoSnapshot")
     private @Nullable Output<Boolean> deleteAutoSnapshot;
 
     /**
-     * @return Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
+     * @return Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
      * 
      */
     public Optional<Output<Boolean>> deleteAutoSnapshot() {
@@ -79,14 +94,14 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Indicates whether the disk is released together with the instance. Default value: `false`.
+     * Specifies whether to release the disk along with its associated instance. Default value: `false`.
      * 
      */
     @Import(name="deleteWithInstance")
     private @Nullable Output<Boolean> deleteWithInstance;
 
     /**
-     * @return Indicates whether the disk is released together with the instance. Default value: `false`.
+     * @return Specifies whether to release the disk along with its associated instance. Default value: `false`.
      * 
      */
     public Optional<Output<Boolean>> deleteWithInstance() {
@@ -94,14 +109,14 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+     * The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+     * @return The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      * 
      */
     public Optional<Output<String>> description() {
@@ -109,14 +124,14 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with `http://` or `https://`. Default value is `null`.
+     * The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
      * 
      */
     @Import(name="diskName")
     private @Nullable Output<String> diskName;
 
     /**
-     * @return Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with `http://` or `https://`. Default value is `null`.
+     * @return The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
      * 
      */
     public Optional<Output<String>> diskName() {
@@ -124,14 +139,14 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
+     * Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
+     * @return Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -139,14 +154,14 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Indicates whether to enable creating snapshot automatically.
+     * Specifies whether to enable the automatic snapshot policy feature for the cloud disk. Valid values: `true`, `false`.
      * 
      */
     @Import(name="enableAutoSnapshot")
     private @Nullable Output<Boolean> enableAutoSnapshot;
 
     /**
-     * @return Indicates whether to enable creating snapshot automatically.
+     * @return Specifies whether to enable the automatic snapshot policy feature for the cloud disk. Valid values: `true`, `false`.
      * 
      */
     public Optional<Output<Boolean>> enableAutoSnapshot() {
@@ -195,14 +210,14 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
+     * The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kms_key_id` is only valid when `encrypted` is `true`.
      * 
      */
     @Import(name="kmsKeyId")
     private @Nullable Output<String> kmsKeyId;
 
     /**
-     * @return The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
+     * @return The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kms_key_id` is only valid when `encrypted` is `true`.
      * 
      */
     public Optional<Output<String>> kmsKeyId() {
@@ -210,37 +225,56 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
-     * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;disk_name&#39; instead.
+     * Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `multi_attach` can only be set to `Enabled` when `category` is set to `cloud_essd`.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead. */
+    @Import(name="multiAttach")
+    private @Nullable Output<String> multiAttach;
+
+    /**
+     * @return Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `multi_attach` can only be set to `Enabled` when `category` is set to `cloud_essd`.
+     * 
+     */
+    public Optional<Output<String>> multiAttach() {
+        return Optional.ofNullable(this.multiAttach);
+    }
+
+    /**
+     * Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
+     * 
+     * &gt; **NOTE:** Disk category `cloud` has been outdated, and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+     * 
+     * @deprecated
+     * Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
+     * 
+     */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
      * 
+     * &gt; **NOTE:** Disk category `cloud` has been outdated, and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+     * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;disk_name&#39; instead.
+     * Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
     /**
-     * Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instance_id` is required.
+     * The payment type of the disk. Default to `PayAsYouGo`. Valid values: `PayAsYouGo`, `Subscription`. If you want to change the disk payment type, the `instance_id` is required.
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instance_id` is required.
+     * @return The payment type of the disk. Default to `PayAsYouGo`. Valid values: `PayAsYouGo`, `Subscription`. If you want to change the disk payment type, the `instance_id` is required.
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -271,14 +305,29 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
+     * The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. **NOTE:** `provisioned_iops` is only valid when `category` is `cloud_auto`.
+     * 
+     */
+    @Import(name="provisionedIops")
+    private @Nullable Output<Integer> provisionedIops;
+
+    /**
+     * @return The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. **NOTE:** `provisioned_iops` is only valid when `category` is `cloud_auto`.
+     * 
+     */
+    public Optional<Output<Integer>> provisionedIops() {
+        return Optional.ofNullable(this.provisionedIops);
+    }
+
+    /**
+     * The ID of the resource group to which to add the disk.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
+     * @return The ID of the resource group to which to add the disk.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -419,6 +468,7 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
     private EcsDiskArgs(EcsDiskArgs $) {
         this.advancedFeatures = $.advancedFeatures;
         this.availabilityZone = $.availabilityZone;
+        this.burstingEnabled = $.burstingEnabled;
         this.category = $.category;
         this.deleteAutoSnapshot = $.deleteAutoSnapshot;
         this.deleteWithInstance = $.deleteWithInstance;
@@ -430,9 +480,11 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         this.encrypted = $.encrypted;
         this.instanceId = $.instanceId;
         this.kmsKeyId = $.kmsKeyId;
+        this.multiAttach = $.multiAttach;
         this.name = $.name;
         this.paymentType = $.paymentType;
         this.performanceLevel = $.performanceLevel;
+        this.provisionedIops = $.provisionedIops;
         this.resourceGroupId = $.resourceGroupId;
         this.size = $.size;
         this.snapshotId = $.snapshotId;
@@ -476,10 +528,10 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field &#39;availability_zone&#39; has been deprecated from provider version 1.122.0. New field &#39;zone_id&#39; instead
+         * Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead
          * 
          */
-        @Deprecated /* Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead */
+        @Deprecated /* Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead */
         public Builder availabilityZone(@Nullable Output<String> availabilityZone) {
             $.availabilityZone = availabilityZone;
             return this;
@@ -491,16 +543,37 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field &#39;availability_zone&#39; has been deprecated from provider version 1.122.0. New field &#39;zone_id&#39; instead
+         * Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead
          * 
          */
-        @Deprecated /* Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead */
+        @Deprecated /* Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead */
         public Builder availabilityZone(String availabilityZone) {
             return availabilityZone(Output.of(availabilityZone));
         }
 
         /**
-         * @param category Category of the disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
+         * @param burstingEnabled Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `bursting_enabled` is only valid when `category` is `cloud_auto`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder burstingEnabled(@Nullable Output<Boolean> burstingEnabled) {
+            $.burstingEnabled = burstingEnabled;
+            return this;
+        }
+
+        /**
+         * @param burstingEnabled Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `bursting_enabled` is only valid when `category` is `cloud_auto`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder burstingEnabled(Boolean burstingEnabled) {
+            return burstingEnabled(Output.of(burstingEnabled));
+        }
+
+        /**
+         * @param category The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
          * 
          * @return builder
          * 
@@ -511,7 +584,7 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param category Category of the disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
+         * @param category The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
          * 
          * @return builder
          * 
@@ -521,7 +594,7 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deleteAutoSnapshot Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
+         * @param deleteAutoSnapshot Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
          * 
          * @return builder
          * 
@@ -532,7 +605,7 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deleteAutoSnapshot Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
+         * @param deleteAutoSnapshot Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
          * 
          * @return builder
          * 
@@ -542,7 +615,7 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deleteWithInstance Indicates whether the disk is released together with the instance. Default value: `false`.
+         * @param deleteWithInstance Specifies whether to release the disk along with its associated instance. Default value: `false`.
          * 
          * @return builder
          * 
@@ -553,7 +626,7 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deleteWithInstance Indicates whether the disk is released together with the instance. Default value: `false`.
+         * @param deleteWithInstance Specifies whether to release the disk along with its associated instance. Default value: `false`.
          * 
          * @return builder
          * 
@@ -563,7 +636,7 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+         * @param description The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
          * 
          * @return builder
          * 
@@ -574,7 +647,7 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+         * @param description The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
          * 
          * @return builder
          * 
@@ -584,7 +657,7 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskName Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with `http://` or `https://`. Default value is `null`.
+         * @param diskName The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
          * 
          * @return builder
          * 
@@ -595,7 +668,7 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskName Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with `http://` or `https://`. Default value is `null`.
+         * @param diskName The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
          * 
          * @return builder
          * 
@@ -605,7 +678,7 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dryRun Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
+         * @param dryRun Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -616,7 +689,7 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dryRun Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
+         * @param dryRun Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -626,7 +699,7 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableAutoSnapshot Indicates whether to enable creating snapshot automatically.
+         * @param enableAutoSnapshot Specifies whether to enable the automatic snapshot policy feature for the cloud disk. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -637,7 +710,7 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableAutoSnapshot Indicates whether to enable creating snapshot automatically.
+         * @param enableAutoSnapshot Specifies whether to enable the automatic snapshot policy feature for the cloud disk. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -702,7 +775,7 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsKeyId The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
+         * @param kmsKeyId The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kms_key_id` is only valid when `encrypted` is `true`.
          * 
          * @return builder
          * 
@@ -713,7 +786,7 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsKeyId The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
+         * @param kmsKeyId The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kms_key_id` is only valid when `encrypted` is `true`.
          * 
          * @return builder
          * 
@@ -723,15 +796,38 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param multiAttach Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `multi_attach` can only be set to `Enabled` when `category` is set to `cloud_essd`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multiAttach(@Nullable Output<String> multiAttach) {
+            $.multiAttach = multiAttach;
+            return this;
+        }
+
+        /**
+         * @param multiAttach Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `multi_attach` can only be set to `Enabled` when `category` is set to `cloud_essd`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multiAttach(String multiAttach) {
+            return multiAttach(Output.of(multiAttach));
+        }
+
+        /**
          * @param name Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
+         * 
+         * &gt; **NOTE:** Disk category `cloud` has been outdated, and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;disk_name&#39; instead.
+         * Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead. */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -740,19 +836,21 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
          * 
+         * &gt; **NOTE:** Disk category `cloud` has been outdated, and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+         * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;disk_name&#39; instead.
+         * Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead. */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
         /**
-         * @param paymentType Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instance_id` is required.
+         * @param paymentType The payment type of the disk. Default to `PayAsYouGo`. Valid values: `PayAsYouGo`, `Subscription`. If you want to change the disk payment type, the `instance_id` is required.
          * 
          * @return builder
          * 
@@ -763,7 +861,7 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instance_id` is required.
+         * @param paymentType The payment type of the disk. Default to `PayAsYouGo`. Valid values: `PayAsYouGo`, `Subscription`. If you want to change the disk payment type, the `instance_id` is required.
          * 
          * @return builder
          * 
@@ -802,7 +900,28 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
+         * @param provisionedIops The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. **NOTE:** `provisioned_iops` is only valid when `category` is `cloud_auto`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionedIops(@Nullable Output<Integer> provisionedIops) {
+            $.provisionedIops = provisionedIops;
+            return this;
+        }
+
+        /**
+         * @param provisionedIops The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. **NOTE:** `provisioned_iops` is only valid when `category` is `cloud_auto`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionedIops(Integer provisionedIops) {
+            return provisionedIops(Output.of(provisionedIops));
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group to which to add the disk.
          * 
          * @return builder
          * 
@@ -813,7 +932,7 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
+         * @param resourceGroupId The ID of the resource group to which to add the disk.
          * 
          * @return builder
          * 

@@ -29,10 +29,10 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
      * The Zone to create the disk in.
      * 
      * @deprecated
-     * Field &#39;availability_zone&#39; has been deprecated from provider version 1.122.0. New field &#39;zone_id&#39; instead
+     * Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead
      * 
      */
-    @Deprecated /* Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead */
+    @Deprecated /* Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead */
     @Import(name="availabilityZone")
     private @Nullable Output<String> availabilityZone;
 
@@ -40,12 +40,19 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
      * @return The Zone to create the disk in.
      * 
      * @deprecated
-     * Field &#39;availability_zone&#39; has been deprecated from provider version 1.122.0. New field &#39;zone_id&#39; instead
+     * Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead
      * 
      */
-    @Deprecated /* Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead */
+    @Deprecated /* Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead */
     public Optional<Output<String>> availabilityZone() {
         return Optional.ofNullable(this.availabilityZone);
+    }
+
+    @Import(name="burstingEnabled")
+    private @Nullable Output<Boolean> burstingEnabled;
+
+    public Optional<Output<Boolean>> burstingEnabled() {
+        return Optional.ofNullable(this.burstingEnabled);
     }
 
     /**
@@ -61,6 +68,13 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> category() {
         return Optional.ofNullable(this.category);
+    }
+
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
     }
 
     /**
@@ -181,14 +195,21 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.kmsKeyId);
     }
 
+    @Import(name="multiAttach")
+    private @Nullable Output<String> multiAttach;
+
+    public Optional<Output<String>> multiAttach() {
+        return Optional.ofNullable(this.multiAttach);
+    }
+
     /**
      * Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
      * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;disk_name&#39; instead.
+     * Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
@@ -196,10 +217,10 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
      * @return Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
      * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;disk_name&#39; instead.
+     * Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -230,6 +251,20 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> performanceLevel() {
         return Optional.ofNullable(this.performanceLevel);
+    }
+
+    @Import(name="provisionedIops")
+    private @Nullable Output<Integer> provisionedIops;
+
+    public Optional<Output<Integer>> provisionedIops() {
+        return Optional.ofNullable(this.provisionedIops);
+    }
+
+    @Import(name="regionId")
+    private @Nullable Output<String> regionId;
+
+    public Optional<Output<String>> regionId() {
+        return Optional.ofNullable(this.regionId);
     }
 
     /**
@@ -342,7 +377,9 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
     private DiskState(DiskState $) {
         this.advancedFeatures = $.advancedFeatures;
         this.availabilityZone = $.availabilityZone;
+        this.burstingEnabled = $.burstingEnabled;
         this.category = $.category;
+        this.createTime = $.createTime;
         this.deleteAutoSnapshot = $.deleteAutoSnapshot;
         this.deleteWithInstance = $.deleteWithInstance;
         this.description = $.description;
@@ -353,9 +390,12 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         this.encrypted = $.encrypted;
         this.instanceId = $.instanceId;
         this.kmsKeyId = $.kmsKeyId;
+        this.multiAttach = $.multiAttach;
         this.name = $.name;
         this.paymentType = $.paymentType;
         this.performanceLevel = $.performanceLevel;
+        this.provisionedIops = $.provisionedIops;
+        this.regionId = $.regionId;
         this.resourceGroupId = $.resourceGroupId;
         this.size = $.size;
         this.snapshotId = $.snapshotId;
@@ -400,10 +440,10 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field &#39;availability_zone&#39; has been deprecated from provider version 1.122.0. New field &#39;zone_id&#39; instead
+         * Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead
          * 
          */
-        @Deprecated /* Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead */
+        @Deprecated /* Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead */
         public Builder availabilityZone(@Nullable Output<String> availabilityZone) {
             $.availabilityZone = availabilityZone;
             return this;
@@ -415,12 +455,21 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field &#39;availability_zone&#39; has been deprecated from provider version 1.122.0. New field &#39;zone_id&#39; instead
+         * Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead
          * 
          */
-        @Deprecated /* Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead */
+        @Deprecated /* Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead */
         public Builder availabilityZone(String availabilityZone) {
             return availabilityZone(Output.of(availabilityZone));
+        }
+
+        public Builder burstingEnabled(@Nullable Output<Boolean> burstingEnabled) {
+            $.burstingEnabled = burstingEnabled;
+            return this;
+        }
+
+        public Builder burstingEnabled(Boolean burstingEnabled) {
+            return burstingEnabled(Output.of(burstingEnabled));
         }
 
         /**
@@ -442,6 +491,15 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder category(String category) {
             return category(Output.of(category));
+        }
+
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
         }
 
         /**
@@ -606,16 +664,25 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
             return kmsKeyId(Output.of(kmsKeyId));
         }
 
+        public Builder multiAttach(@Nullable Output<String> multiAttach) {
+            $.multiAttach = multiAttach;
+            return this;
+        }
+
+        public Builder multiAttach(String multiAttach) {
+            return multiAttach(Output.of(multiAttach));
+        }
+
         /**
          * @param name Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;disk_name&#39; instead.
+         * Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead. */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -627,10 +694,10 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;disk_name&#39; instead.
+         * Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead. */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -669,6 +736,24 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder performanceLevel(String performanceLevel) {
             return performanceLevel(Output.of(performanceLevel));
+        }
+
+        public Builder provisionedIops(@Nullable Output<Integer> provisionedIops) {
+            $.provisionedIops = provisionedIops;
+            return this;
+        }
+
+        public Builder provisionedIops(Integer provisionedIops) {
+            return provisionedIops(Output.of(provisionedIops));
+        }
+
+        public Builder regionId(@Nullable Output<String> regionId) {
+            $.regionId = regionId;
+            return this;
+        }
+
+        public Builder regionId(String regionId) {
+            return regionId(Output.of(regionId));
         }
 
         /**

@@ -65,6 +65,40 @@ __all__ = [
     'BucketVersioningArgsDict',
     'BucketWebsiteArgs',
     'BucketWebsiteArgsDict',
+    'BucketWebsiteErrorDocumentArgs',
+    'BucketWebsiteErrorDocumentArgsDict',
+    'BucketWebsiteIndexDocumentArgs',
+    'BucketWebsiteIndexDocumentArgsDict',
+    'BucketWebsiteRoutingRulesArgs',
+    'BucketWebsiteRoutingRulesArgsDict',
+    'BucketWebsiteRoutingRulesRoutingRuleArgs',
+    'BucketWebsiteRoutingRulesRoutingRuleArgsDict',
+    'BucketWebsiteRoutingRulesRoutingRuleConditionArgs',
+    'BucketWebsiteRoutingRulesRoutingRuleConditionArgsDict',
+    'BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArgs',
+    'BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArgsDict',
+    'BucketWebsiteRoutingRulesRoutingRuleLuaConfigArgs',
+    'BucketWebsiteRoutingRulesRoutingRuleLuaConfigArgsDict',
+    'BucketWebsiteRoutingRulesRoutingRuleRedirectArgs',
+    'BucketWebsiteRoutingRulesRoutingRuleRedirectArgsDict',
+    'BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthArgs',
+    'BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthArgsDict',
+    'BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersArgs',
+    'BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersArgsDict',
+    'BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArgs',
+    'BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArgsDict',
+    'BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesArgs',
+    'BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesArgsDict',
+    'BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArgs',
+    'BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArgsDict',
+    'BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersArgs',
+    'BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersArgsDict',
+    'BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArgs',
+    'BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArgsDict',
+    'BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsArgs',
+    'BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsArgsDict',
+    'BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArgs',
+    'BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArgsDict',
 ]
 
 MYPY = False
@@ -1817,5 +1851,1721 @@ class BucketWebsiteArgs:
     @error_document.setter
     def error_document(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "error_document", value)
+
+
+if not MYPY:
+    class BucketWebsiteErrorDocumentArgsDict(TypedDict):
+        http_status: NotRequired[pulumi.Input[int]]
+        """
+        The HTTP status code when the error page is returned. The default 404.
+        """
+        key: NotRequired[pulumi.Input[str]]
+        """
+        The error page file. If the Object accessed does not exist, this error page is returned.
+        """
+elif False:
+    BucketWebsiteErrorDocumentArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BucketWebsiteErrorDocumentArgs:
+    def __init__(__self__, *,
+                 http_status: Optional[pulumi.Input[int]] = None,
+                 key: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] http_status: The HTTP status code when the error page is returned. The default 404.
+        :param pulumi.Input[str] key: The error page file. If the Object accessed does not exist, this error page is returned.
+        """
+        if http_status is not None:
+            pulumi.set(__self__, "http_status", http_status)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+
+    @property
+    @pulumi.getter(name="httpStatus")
+    def http_status(self) -> Optional[pulumi.Input[int]]:
+        """
+        The HTTP status code when the error page is returned. The default 404.
+        """
+        return pulumi.get(self, "http_status")
+
+    @http_status.setter
+    def http_status(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "http_status", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The error page file. If the Object accessed does not exist, this error page is returned.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+
+if not MYPY:
+    class BucketWebsiteIndexDocumentArgsDict(TypedDict):
+        suffix: NotRequired[pulumi.Input[str]]
+        """
+        The default home page.
+        """
+        support_sub_dir: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to jump to the default home page of a subdirectory when accessing a subdirectory.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        After the default homepage is set, the behavior when an Object that ends with a non-forward slash (/) is accessed and the Object does not exist.
+        """
+elif False:
+    BucketWebsiteIndexDocumentArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BucketWebsiteIndexDocumentArgs:
+    def __init__(__self__, *,
+                 suffix: Optional[pulumi.Input[str]] = None,
+                 support_sub_dir: Optional[pulumi.Input[bool]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] suffix: The default home page.
+        :param pulumi.Input[bool] support_sub_dir: Whether to jump to the default home page of a subdirectory when accessing a subdirectory.
+        :param pulumi.Input[str] type: After the default homepage is set, the behavior when an Object that ends with a non-forward slash (/) is accessed and the Object does not exist.
+        """
+        if suffix is not None:
+            pulumi.set(__self__, "suffix", suffix)
+        if support_sub_dir is not None:
+            pulumi.set(__self__, "support_sub_dir", support_sub_dir)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def suffix(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default home page.
+        """
+        return pulumi.get(self, "suffix")
+
+    @suffix.setter
+    def suffix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "suffix", value)
+
+    @property
+    @pulumi.getter(name="supportSubDir")
+    def support_sub_dir(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to jump to the default home page of a subdirectory when accessing a subdirectory.
+        """
+        return pulumi.get(self, "support_sub_dir")
+
+    @support_sub_dir.setter
+    def support_sub_dir(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "support_sub_dir", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        After the default homepage is set, the behavior when an Object that ends with a non-forward slash (/) is accessed and the Object does not exist.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class BucketWebsiteRoutingRulesArgsDict(TypedDict):
+        routing_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleArgsDict']]]]
+        """
+        Specify a jump rule or a mirroring back-to-origin rule, with a maximum of 20 routing rules. See `routing_rule` below.
+        """
+elif False:
+    BucketWebsiteRoutingRulesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BucketWebsiteRoutingRulesArgs:
+    def __init__(__self__, *,
+                 routing_rules: Optional[pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleArgs']]] routing_rules: Specify a jump rule or a mirroring back-to-origin rule, with a maximum of 20 routing rules. See `routing_rule` below.
+        """
+        if routing_rules is not None:
+            pulumi.set(__self__, "routing_rules", routing_rules)
+
+    @property
+    @pulumi.getter(name="routingRules")
+    def routing_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleArgs']]]]:
+        """
+        Specify a jump rule or a mirroring back-to-origin rule, with a maximum of 20 routing rules. See `routing_rule` below.
+        """
+        return pulumi.get(self, "routing_rules")
+
+    @routing_rules.setter
+    def routing_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleArgs']]]]):
+        pulumi.set(self, "routing_rules", value)
+
+
+if not MYPY:
+    class BucketWebsiteRoutingRulesRoutingRuleArgsDict(TypedDict):
+        condition: NotRequired[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleConditionArgsDict']]
+        """
+        Save the criteria that the rule needs to match. See `condition` below.
+        """
+        lua_config: NotRequired[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleLuaConfigArgsDict']]
+        """
+        The Lua script configuration to be executed. See `lua_config` below.
+        """
+        redirect: NotRequired[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectArgsDict']]
+        """
+        Specifies the action to perform after this rule is matched. See `redirect` below.
+        """
+        rule_number: NotRequired[pulumi.Input[int]]
+        """
+        The sequence number of the matching and executing jump rules. OSS matches rules according to this sequence number. If the match is successful, the rule is executed and subsequent rules are not executed.
+        """
+elif False:
+    BucketWebsiteRoutingRulesRoutingRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BucketWebsiteRoutingRulesRoutingRuleArgs:
+    def __init__(__self__, *,
+                 condition: Optional[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleConditionArgs']] = None,
+                 lua_config: Optional[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleLuaConfigArgs']] = None,
+                 redirect: Optional[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectArgs']] = None,
+                 rule_number: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleConditionArgs'] condition: Save the criteria that the rule needs to match. See `condition` below.
+        :param pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleLuaConfigArgs'] lua_config: The Lua script configuration to be executed. See `lua_config` below.
+        :param pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectArgs'] redirect: Specifies the action to perform after this rule is matched. See `redirect` below.
+        :param pulumi.Input[int] rule_number: The sequence number of the matching and executing jump rules. OSS matches rules according to this sequence number. If the match is successful, the rule is executed and subsequent rules are not executed.
+        """
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if lua_config is not None:
+            pulumi.set(__self__, "lua_config", lua_config)
+        if redirect is not None:
+            pulumi.set(__self__, "redirect", redirect)
+        if rule_number is not None:
+            pulumi.set(__self__, "rule_number", rule_number)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleConditionArgs']]:
+        """
+        Save the criteria that the rule needs to match. See `condition` below.
+        """
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleConditionArgs']]):
+        pulumi.set(self, "condition", value)
+
+    @property
+    @pulumi.getter(name="luaConfig")
+    def lua_config(self) -> Optional[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleLuaConfigArgs']]:
+        """
+        The Lua script configuration to be executed. See `lua_config` below.
+        """
+        return pulumi.get(self, "lua_config")
+
+    @lua_config.setter
+    def lua_config(self, value: Optional[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleLuaConfigArgs']]):
+        pulumi.set(self, "lua_config", value)
+
+    @property
+    @pulumi.getter
+    def redirect(self) -> Optional[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectArgs']]:
+        """
+        Specifies the action to perform after this rule is matched. See `redirect` below.
+        """
+        return pulumi.get(self, "redirect")
+
+    @redirect.setter
+    def redirect(self, value: Optional[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectArgs']]):
+        pulumi.set(self, "redirect", value)
+
+    @property
+    @pulumi.getter(name="ruleNumber")
+    def rule_number(self) -> Optional[pulumi.Input[int]]:
+        """
+        The sequence number of the matching and executing jump rules. OSS matches rules according to this sequence number. If the match is successful, the rule is executed and subsequent rules are not executed.
+        """
+        return pulumi.get(self, "rule_number")
+
+    @rule_number.setter
+    def rule_number(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "rule_number", value)
+
+
+if not MYPY:
+    class BucketWebsiteRoutingRulesRoutingRuleConditionArgsDict(TypedDict):
+        http_error_code_returned_equals: NotRequired[pulumi.Input[str]]
+        """
+        When the specified Object is accessed, this status is returned to match this rule. This field must be 404 when the jump rule is mirrored back to the source.
+        """
+        include_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArgsDict']]]]
+        """
+        This rule can only be matched if the request contains the specified Header and the value is the specified value. You can specify up to 10 containers. See `include_headers` below.
+        """
+        key_prefix_equals: NotRequired[pulumi.Input[str]]
+        """
+        Only objects that match this prefix can match this rule.
+        """
+        key_suffix_equals: NotRequired[pulumi.Input[str]]
+        """
+        Only objects that match this suffix can match this rule.
+        """
+elif False:
+    BucketWebsiteRoutingRulesRoutingRuleConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BucketWebsiteRoutingRulesRoutingRuleConditionArgs:
+    def __init__(__self__, *,
+                 http_error_code_returned_equals: Optional[pulumi.Input[str]] = None,
+                 include_headers: Optional[pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArgs']]]] = None,
+                 key_prefix_equals: Optional[pulumi.Input[str]] = None,
+                 key_suffix_equals: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] http_error_code_returned_equals: When the specified Object is accessed, this status is returned to match this rule. This field must be 404 when the jump rule is mirrored back to the source.
+        :param pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArgs']]] include_headers: This rule can only be matched if the request contains the specified Header and the value is the specified value. You can specify up to 10 containers. See `include_headers` below.
+        :param pulumi.Input[str] key_prefix_equals: Only objects that match this prefix can match this rule.
+        :param pulumi.Input[str] key_suffix_equals: Only objects that match this suffix can match this rule.
+        """
+        if http_error_code_returned_equals is not None:
+            pulumi.set(__self__, "http_error_code_returned_equals", http_error_code_returned_equals)
+        if include_headers is not None:
+            pulumi.set(__self__, "include_headers", include_headers)
+        if key_prefix_equals is not None:
+            pulumi.set(__self__, "key_prefix_equals", key_prefix_equals)
+        if key_suffix_equals is not None:
+            pulumi.set(__self__, "key_suffix_equals", key_suffix_equals)
+
+    @property
+    @pulumi.getter(name="httpErrorCodeReturnedEquals")
+    def http_error_code_returned_equals(self) -> Optional[pulumi.Input[str]]:
+        """
+        When the specified Object is accessed, this status is returned to match this rule. This field must be 404 when the jump rule is mirrored back to the source.
+        """
+        return pulumi.get(self, "http_error_code_returned_equals")
+
+    @http_error_code_returned_equals.setter
+    def http_error_code_returned_equals(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_error_code_returned_equals", value)
+
+    @property
+    @pulumi.getter(name="includeHeaders")
+    def include_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArgs']]]]:
+        """
+        This rule can only be matched if the request contains the specified Header and the value is the specified value. You can specify up to 10 containers. See `include_headers` below.
+        """
+        return pulumi.get(self, "include_headers")
+
+    @include_headers.setter
+    def include_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArgs']]]]):
+        pulumi.set(self, "include_headers", value)
+
+    @property
+    @pulumi.getter(name="keyPrefixEquals")
+    def key_prefix_equals(self) -> Optional[pulumi.Input[str]]:
+        """
+        Only objects that match this prefix can match this rule.
+        """
+        return pulumi.get(self, "key_prefix_equals")
+
+    @key_prefix_equals.setter
+    def key_prefix_equals(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_prefix_equals", value)
+
+    @property
+    @pulumi.getter(name="keySuffixEquals")
+    def key_suffix_equals(self) -> Optional[pulumi.Input[str]]:
+        """
+        Only objects that match this suffix can match this rule.
+        """
+        return pulumi.get(self, "key_suffix_equals")
+
+    @key_suffix_equals.setter
+    def key_suffix_equals(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_suffix_equals", value)
+
+
+if not MYPY:
+    class BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArgsDict(TypedDict):
+        ends_with: NotRequired[pulumi.Input[str]]
+        """
+        This rule can only be matched if the request contains the Header specified by Key and the value ends with this value.
+        """
+        equals: NotRequired[pulumi.Input[str]]
+        """
+        This rule can only be matched if the request contains the Header specified by Key and the value is the specified value.
+        """
+        key: NotRequired[pulumi.Input[str]]
+        starts_with: NotRequired[pulumi.Input[str]]
+        """
+        This rule can only be matched if the request contains the Header specified by Key and the value starts with this value.
+        """
+elif False:
+    BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArgs:
+    def __init__(__self__, *,
+                 ends_with: Optional[pulumi.Input[str]] = None,
+                 equals: Optional[pulumi.Input[str]] = None,
+                 key: Optional[pulumi.Input[str]] = None,
+                 starts_with: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] ends_with: This rule can only be matched if the request contains the Header specified by Key and the value ends with this value.
+        :param pulumi.Input[str] equals: This rule can only be matched if the request contains the Header specified by Key and the value is the specified value.
+        :param pulumi.Input[str] starts_with: This rule can only be matched if the request contains the Header specified by Key and the value starts with this value.
+        """
+        if ends_with is not None:
+            pulumi.set(__self__, "ends_with", ends_with)
+        if equals is not None:
+            pulumi.set(__self__, "equals", equals)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if starts_with is not None:
+            pulumi.set(__self__, "starts_with", starts_with)
+
+    @property
+    @pulumi.getter(name="endsWith")
+    def ends_with(self) -> Optional[pulumi.Input[str]]:
+        """
+        This rule can only be matched if the request contains the Header specified by Key and the value ends with this value.
+        """
+        return pulumi.get(self, "ends_with")
+
+    @ends_with.setter
+    def ends_with(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ends_with", value)
+
+    @property
+    @pulumi.getter
+    def equals(self) -> Optional[pulumi.Input[str]]:
+        """
+        This rule can only be matched if the request contains the Header specified by Key and the value is the specified value.
+        """
+        return pulumi.get(self, "equals")
+
+    @equals.setter
+    def equals(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "equals", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter(name="startsWith")
+    def starts_with(self) -> Optional[pulumi.Input[str]]:
+        """
+        This rule can only be matched if the request contains the Header specified by Key and the value starts with this value.
+        """
+        return pulumi.get(self, "starts_with")
+
+    @starts_with.setter
+    def starts_with(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "starts_with", value)
+
+
+if not MYPY:
+    class BucketWebsiteRoutingRulesRoutingRuleLuaConfigArgsDict(TypedDict):
+        script: NotRequired[pulumi.Input[str]]
+        """
+        The Lua script name.
+        """
+elif False:
+    BucketWebsiteRoutingRulesRoutingRuleLuaConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BucketWebsiteRoutingRulesRoutingRuleLuaConfigArgs:
+    def __init__(__self__, *,
+                 script: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] script: The Lua script name.
+        """
+        if script is not None:
+            pulumi.set(__self__, "script", script)
+
+    @property
+    @pulumi.getter
+    def script(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Lua script name.
+        """
+        return pulumi.get(self, "script")
+
+    @script.setter
+    def script(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "script", value)
+
+
+if not MYPY:
+    class BucketWebsiteRoutingRulesRoutingRuleRedirectArgsDict(TypedDict):
+        enable_replace_prefix: NotRequired[pulumi.Input[bool]]
+        """
+        If this field is set to true, the prefix of Object is replaced with the value specified by ReplaceKeyPrefixWith. If this field is not specified or is blank, the Object prefix is truncated.
+        """
+        host_name: NotRequired[pulumi.Input[str]]
+        """
+        The domain name during the jump. The domain name must comply with the domain name specification.
+        """
+        http_redirect_code: NotRequired[pulumi.Input[str]]
+        """
+        The status code returned during the jump. It takes effect only when the RedirectType is set to External or AliCDN.
+        """
+        mirror_allow_get_image_info: NotRequired[pulumi.Input[bool]]
+        """
+        Image back-to-source allows getting Image information
+        """
+        mirror_allow_head_object: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to allow HeadObject in image back-to-source
+        """
+        mirror_allow_video_snapshot: NotRequired[pulumi.Input[bool]]
+        """
+        Mirror back-to-source allows support for video frame truncation
+        """
+        mirror_async_status: NotRequired[pulumi.Input[int]]
+        """
+        The status code of the mirror back-to-source trigger asynchronous pull mode.
+        """
+        mirror_auth: NotRequired[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthArgsDict']]
+        """
+        Image back Source station authentication information See `mirror_auth` below.
+        """
+        mirror_check_md5: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to check the MD5 of the source body. It takes effect only when the RedirectType is set to Mirror.
+        """
+        mirror_dst_region: NotRequired[pulumi.Input[str]]
+        """
+        Mirrored back-to-source high-speed Channel vpregion
+        """
+        mirror_dst_slave_vpc_id: NotRequired[pulumi.Input[str]]
+        """
+        Mirroring back-to-source high-speed Channel standby station VpcId
+        """
+        mirror_dst_vpc_id: NotRequired[pulumi.Input[str]]
+        """
+        Mirror back-to-source high-speed Channel VpcId
+        """
+        mirror_follow_redirect: NotRequired[pulumi.Input[bool]]
+        """
+        If the result of the image back-to-source acquisition is 3xx, whether to continue to jump to the specified Location to obtain data. It takes effect only when the RedirectType is set to Mirror.
+        """
+        mirror_headers: NotRequired[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersArgsDict']]
+        """
+        Specifies the Header carried when the image returns to the source. It takes effect only when the RedirectType is set to Mirror. See `mirror_headers` below.
+        """
+        mirror_is_express_tunnel: NotRequired[pulumi.Input[bool]]
+        """
+        Whether it is a mirror back-to-source high-speed Channel
+        """
+        mirror_multi_alternates: NotRequired[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesArgsDict']]
+        """
+        Mirror back-to-source multi-source station configuration container. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirror_multi_alternates` below.
+        """
+        mirror_pass_original_slashes: NotRequired[pulumi.Input[bool]]
+        """
+        Transparent transmission/to source Station
+        """
+        mirror_pass_query_string: NotRequired[pulumi.Input[bool]]
+        """
+        Same as PassQueryString and takes precedence over PassQueryString. It takes effect only when the RedirectType is set to Mirror.
+        """
+        mirror_proxy_pass: NotRequired[pulumi.Input[bool]]
+        """
+        Whether mirroring back to source does not save data
+        """
+        mirror_return_headers: NotRequired[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersArgsDict']]
+        """
+        The container that saves the image back to the source and returns the response header rule. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirror_return_headers` below.
+        """
+        mirror_role: NotRequired[pulumi.Input[str]]
+        """
+        Roles used when mirroring back-to-source
+        """
+        mirror_save_oss_meta: NotRequired[pulumi.Input[bool]]
+        """
+        Mirror back-to-source back-to-source OSS automatically saves user metadata
+        """
+        mirror_sni: NotRequired[pulumi.Input[bool]]
+        """
+        Transparent transmission of SNI
+        """
+        mirror_switch_all_errors: NotRequired[pulumi.Input[bool]]
+        """
+        It is used to judge the status of active-standby switching. The judgment logic of active-standby switching is that the source station returns an error. If MirrorSwitchAllErrors is true, it is considered a failure except the following status code: 200,206,301,302,303,307,404; If false, only the source Station Returns 5xx or times out is considered a failure.
+        """
+        mirror_taggings: NotRequired[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsArgsDict']]
+        """
+        Save the label according to the parameters when saving the file from the mirror back to the source. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirror_taggings` below.
+        """
+        mirror_tunnel_id: NotRequired[pulumi.Input[str]]
+        """
+        Mirror back-to-source leased line back-to-source tunnel ID
+        """
+        mirror_url: NotRequired[pulumi.Input[str]]
+        """
+        The address of the origin of the image. It takes effect only when the RedirectType is set to Mirror. The origin address must start with http:// or https:// and end with a forward slash (/). OSS takes the Object name after the Origin address to form the origin URL.
+        """
+        mirror_url_probe: NotRequired[pulumi.Input[str]]
+        """
+        Mirror back-to-source Master-backup back-to-source switching decision URL
+        """
+        mirror_url_slave: NotRequired[pulumi.Input[str]]
+        """
+        Mirror back-to-source primary backup back-to-source backup station URL
+        """
+        mirror_user_last_modified: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the source station LastModifiedTime is used for the image back-to-source save file.
+        """
+        mirror_using_role: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to use role for mirroring back to source
+        """
+        pass_query_string: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to carry the request parameters when executing the jump or mirror back-to-source rule. Did the user carry the request parameters when requesting OSS? a = B & c = d, and set PassQueryString to true. If the rule is a 302 jump, this request parameter is added to the Location header of the jump. For example Location:example.com? a = B & c = d, and the jump type is mirrored back-to-origin, this request parameter is also carried in the back-to-origin request initiated. Values: true, false (default)
+        """
+        protocol: NotRequired[pulumi.Input[str]]
+        """
+        The protocol at the time of the jump. It takes effect only when the RedirectType is set to External or AliCDN.
+        """
+        redirect_type: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the type of jump. The value range is as follows: Mirror: Mirror back to the source. External: External redirects, that is, OSS returns a 3xx request to redirect to another address. AliCDN: Alibaba Cloud CDN jump, mainly used for Alibaba Cloud CDN. Unlike External, OSS adds an additional Header. After recognizing this Header, Alibaba Cloud CDN redirects the data to the specified address and returns the obtained data to the user instead of returning the 3xx Redirection request to the user.
+        """
+        replace_key_prefix_with: NotRequired[pulumi.Input[str]]
+        """
+        The prefix of the Object name will be replaced with this value during Redirect. If the prefix is empty, this string is inserted in front of the Object name.
+        """
+        replace_key_with: NotRequired[pulumi.Input[str]]
+        """
+        During redirection, the Object name is replaced with the value specified by ReplaceKeyWith. You can set variables in ReplaceKeyWith. Currently, the supported variable is ${key}, which indicates the name of the Object in the request.
+        """
+        transparent_mirror_response_codes: NotRequired[pulumi.Input[str]]
+        """
+        Mirror back-to-source transparent source station response code list
+        """
+elif False:
+    BucketWebsiteRoutingRulesRoutingRuleRedirectArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BucketWebsiteRoutingRulesRoutingRuleRedirectArgs:
+    def __init__(__self__, *,
+                 enable_replace_prefix: Optional[pulumi.Input[bool]] = None,
+                 host_name: Optional[pulumi.Input[str]] = None,
+                 http_redirect_code: Optional[pulumi.Input[str]] = None,
+                 mirror_allow_get_image_info: Optional[pulumi.Input[bool]] = None,
+                 mirror_allow_head_object: Optional[pulumi.Input[bool]] = None,
+                 mirror_allow_video_snapshot: Optional[pulumi.Input[bool]] = None,
+                 mirror_async_status: Optional[pulumi.Input[int]] = None,
+                 mirror_auth: Optional[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthArgs']] = None,
+                 mirror_check_md5: Optional[pulumi.Input[bool]] = None,
+                 mirror_dst_region: Optional[pulumi.Input[str]] = None,
+                 mirror_dst_slave_vpc_id: Optional[pulumi.Input[str]] = None,
+                 mirror_dst_vpc_id: Optional[pulumi.Input[str]] = None,
+                 mirror_follow_redirect: Optional[pulumi.Input[bool]] = None,
+                 mirror_headers: Optional[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersArgs']] = None,
+                 mirror_is_express_tunnel: Optional[pulumi.Input[bool]] = None,
+                 mirror_multi_alternates: Optional[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesArgs']] = None,
+                 mirror_pass_original_slashes: Optional[pulumi.Input[bool]] = None,
+                 mirror_pass_query_string: Optional[pulumi.Input[bool]] = None,
+                 mirror_proxy_pass: Optional[pulumi.Input[bool]] = None,
+                 mirror_return_headers: Optional[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersArgs']] = None,
+                 mirror_role: Optional[pulumi.Input[str]] = None,
+                 mirror_save_oss_meta: Optional[pulumi.Input[bool]] = None,
+                 mirror_sni: Optional[pulumi.Input[bool]] = None,
+                 mirror_switch_all_errors: Optional[pulumi.Input[bool]] = None,
+                 mirror_taggings: Optional[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsArgs']] = None,
+                 mirror_tunnel_id: Optional[pulumi.Input[str]] = None,
+                 mirror_url: Optional[pulumi.Input[str]] = None,
+                 mirror_url_probe: Optional[pulumi.Input[str]] = None,
+                 mirror_url_slave: Optional[pulumi.Input[str]] = None,
+                 mirror_user_last_modified: Optional[pulumi.Input[bool]] = None,
+                 mirror_using_role: Optional[pulumi.Input[bool]] = None,
+                 pass_query_string: Optional[pulumi.Input[bool]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None,
+                 redirect_type: Optional[pulumi.Input[str]] = None,
+                 replace_key_prefix_with: Optional[pulumi.Input[str]] = None,
+                 replace_key_with: Optional[pulumi.Input[str]] = None,
+                 transparent_mirror_response_codes: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] enable_replace_prefix: If this field is set to true, the prefix of Object is replaced with the value specified by ReplaceKeyPrefixWith. If this field is not specified or is blank, the Object prefix is truncated.
+        :param pulumi.Input[str] host_name: The domain name during the jump. The domain name must comply with the domain name specification.
+        :param pulumi.Input[str] http_redirect_code: The status code returned during the jump. It takes effect only when the RedirectType is set to External or AliCDN.
+        :param pulumi.Input[bool] mirror_allow_get_image_info: Image back-to-source allows getting Image information
+        :param pulumi.Input[bool] mirror_allow_head_object: Whether to allow HeadObject in image back-to-source
+        :param pulumi.Input[bool] mirror_allow_video_snapshot: Mirror back-to-source allows support for video frame truncation
+        :param pulumi.Input[int] mirror_async_status: The status code of the mirror back-to-source trigger asynchronous pull mode.
+        :param pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthArgs'] mirror_auth: Image back Source station authentication information See `mirror_auth` below.
+        :param pulumi.Input[bool] mirror_check_md5: Whether to check the MD5 of the source body. It takes effect only when the RedirectType is set to Mirror.
+        :param pulumi.Input[str] mirror_dst_region: Mirrored back-to-source high-speed Channel vpregion
+        :param pulumi.Input[str] mirror_dst_slave_vpc_id: Mirroring back-to-source high-speed Channel standby station VpcId
+        :param pulumi.Input[str] mirror_dst_vpc_id: Mirror back-to-source high-speed Channel VpcId
+        :param pulumi.Input[bool] mirror_follow_redirect: If the result of the image back-to-source acquisition is 3xx, whether to continue to jump to the specified Location to obtain data. It takes effect only when the RedirectType is set to Mirror.
+        :param pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersArgs'] mirror_headers: Specifies the Header carried when the image returns to the source. It takes effect only when the RedirectType is set to Mirror. See `mirror_headers` below.
+        :param pulumi.Input[bool] mirror_is_express_tunnel: Whether it is a mirror back-to-source high-speed Channel
+        :param pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesArgs'] mirror_multi_alternates: Mirror back-to-source multi-source station configuration container. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirror_multi_alternates` below.
+        :param pulumi.Input[bool] mirror_pass_original_slashes: Transparent transmission/to source Station
+        :param pulumi.Input[bool] mirror_pass_query_string: Same as PassQueryString and takes precedence over PassQueryString. It takes effect only when the RedirectType is set to Mirror.
+        :param pulumi.Input[bool] mirror_proxy_pass: Whether mirroring back to source does not save data
+        :param pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersArgs'] mirror_return_headers: The container that saves the image back to the source and returns the response header rule. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirror_return_headers` below.
+        :param pulumi.Input[str] mirror_role: Roles used when mirroring back-to-source
+        :param pulumi.Input[bool] mirror_save_oss_meta: Mirror back-to-source back-to-source OSS automatically saves user metadata
+        :param pulumi.Input[bool] mirror_sni: Transparent transmission of SNI
+        :param pulumi.Input[bool] mirror_switch_all_errors: It is used to judge the status of active-standby switching. The judgment logic of active-standby switching is that the source station returns an error. If MirrorSwitchAllErrors is true, it is considered a failure except the following status code: 200,206,301,302,303,307,404; If false, only the source Station Returns 5xx or times out is considered a failure.
+        :param pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsArgs'] mirror_taggings: Save the label according to the parameters when saving the file from the mirror back to the source. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirror_taggings` below.
+        :param pulumi.Input[str] mirror_tunnel_id: Mirror back-to-source leased line back-to-source tunnel ID
+        :param pulumi.Input[str] mirror_url: The address of the origin of the image. It takes effect only when the RedirectType is set to Mirror. The origin address must start with http:// or https:// and end with a forward slash (/). OSS takes the Object name after the Origin address to form the origin URL.
+        :param pulumi.Input[str] mirror_url_probe: Mirror back-to-source Master-backup back-to-source switching decision URL
+        :param pulumi.Input[str] mirror_url_slave: Mirror back-to-source primary backup back-to-source backup station URL
+        :param pulumi.Input[bool] mirror_user_last_modified: Whether the source station LastModifiedTime is used for the image back-to-source save file.
+        :param pulumi.Input[bool] mirror_using_role: Whether to use role for mirroring back to source
+        :param pulumi.Input[bool] pass_query_string: Whether to carry the request parameters when executing the jump or mirror back-to-source rule. Did the user carry the request parameters when requesting OSS? a = B & c = d, and set PassQueryString to true. If the rule is a 302 jump, this request parameter is added to the Location header of the jump. For example Location:example.com? a = B & c = d, and the jump type is mirrored back-to-origin, this request parameter is also carried in the back-to-origin request initiated. Values: true, false (default)
+        :param pulumi.Input[str] protocol: The protocol at the time of the jump. It takes effect only when the RedirectType is set to External or AliCDN.
+        :param pulumi.Input[str] redirect_type: Specifies the type of jump. The value range is as follows: Mirror: Mirror back to the source. External: External redirects, that is, OSS returns a 3xx request to redirect to another address. AliCDN: Alibaba Cloud CDN jump, mainly used for Alibaba Cloud CDN. Unlike External, OSS adds an additional Header. After recognizing this Header, Alibaba Cloud CDN redirects the data to the specified address and returns the obtained data to the user instead of returning the 3xx Redirection request to the user.
+        :param pulumi.Input[str] replace_key_prefix_with: The prefix of the Object name will be replaced with this value during Redirect. If the prefix is empty, this string is inserted in front of the Object name.
+        :param pulumi.Input[str] replace_key_with: During redirection, the Object name is replaced with the value specified by ReplaceKeyWith. You can set variables in ReplaceKeyWith. Currently, the supported variable is ${key}, which indicates the name of the Object in the request.
+        :param pulumi.Input[str] transparent_mirror_response_codes: Mirror back-to-source transparent source station response code list
+        """
+        if enable_replace_prefix is not None:
+            pulumi.set(__self__, "enable_replace_prefix", enable_replace_prefix)
+        if host_name is not None:
+            pulumi.set(__self__, "host_name", host_name)
+        if http_redirect_code is not None:
+            pulumi.set(__self__, "http_redirect_code", http_redirect_code)
+        if mirror_allow_get_image_info is not None:
+            pulumi.set(__self__, "mirror_allow_get_image_info", mirror_allow_get_image_info)
+        if mirror_allow_head_object is not None:
+            pulumi.set(__self__, "mirror_allow_head_object", mirror_allow_head_object)
+        if mirror_allow_video_snapshot is not None:
+            pulumi.set(__self__, "mirror_allow_video_snapshot", mirror_allow_video_snapshot)
+        if mirror_async_status is not None:
+            pulumi.set(__self__, "mirror_async_status", mirror_async_status)
+        if mirror_auth is not None:
+            pulumi.set(__self__, "mirror_auth", mirror_auth)
+        if mirror_check_md5 is not None:
+            pulumi.set(__self__, "mirror_check_md5", mirror_check_md5)
+        if mirror_dst_region is not None:
+            pulumi.set(__self__, "mirror_dst_region", mirror_dst_region)
+        if mirror_dst_slave_vpc_id is not None:
+            pulumi.set(__self__, "mirror_dst_slave_vpc_id", mirror_dst_slave_vpc_id)
+        if mirror_dst_vpc_id is not None:
+            pulumi.set(__self__, "mirror_dst_vpc_id", mirror_dst_vpc_id)
+        if mirror_follow_redirect is not None:
+            pulumi.set(__self__, "mirror_follow_redirect", mirror_follow_redirect)
+        if mirror_headers is not None:
+            pulumi.set(__self__, "mirror_headers", mirror_headers)
+        if mirror_is_express_tunnel is not None:
+            pulumi.set(__self__, "mirror_is_express_tunnel", mirror_is_express_tunnel)
+        if mirror_multi_alternates is not None:
+            pulumi.set(__self__, "mirror_multi_alternates", mirror_multi_alternates)
+        if mirror_pass_original_slashes is not None:
+            pulumi.set(__self__, "mirror_pass_original_slashes", mirror_pass_original_slashes)
+        if mirror_pass_query_string is not None:
+            pulumi.set(__self__, "mirror_pass_query_string", mirror_pass_query_string)
+        if mirror_proxy_pass is not None:
+            pulumi.set(__self__, "mirror_proxy_pass", mirror_proxy_pass)
+        if mirror_return_headers is not None:
+            pulumi.set(__self__, "mirror_return_headers", mirror_return_headers)
+        if mirror_role is not None:
+            pulumi.set(__self__, "mirror_role", mirror_role)
+        if mirror_save_oss_meta is not None:
+            pulumi.set(__self__, "mirror_save_oss_meta", mirror_save_oss_meta)
+        if mirror_sni is not None:
+            pulumi.set(__self__, "mirror_sni", mirror_sni)
+        if mirror_switch_all_errors is not None:
+            pulumi.set(__self__, "mirror_switch_all_errors", mirror_switch_all_errors)
+        if mirror_taggings is not None:
+            pulumi.set(__self__, "mirror_taggings", mirror_taggings)
+        if mirror_tunnel_id is not None:
+            pulumi.set(__self__, "mirror_tunnel_id", mirror_tunnel_id)
+        if mirror_url is not None:
+            pulumi.set(__self__, "mirror_url", mirror_url)
+        if mirror_url_probe is not None:
+            pulumi.set(__self__, "mirror_url_probe", mirror_url_probe)
+        if mirror_url_slave is not None:
+            pulumi.set(__self__, "mirror_url_slave", mirror_url_slave)
+        if mirror_user_last_modified is not None:
+            pulumi.set(__self__, "mirror_user_last_modified", mirror_user_last_modified)
+        if mirror_using_role is not None:
+            pulumi.set(__self__, "mirror_using_role", mirror_using_role)
+        if pass_query_string is not None:
+            pulumi.set(__self__, "pass_query_string", pass_query_string)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if redirect_type is not None:
+            pulumi.set(__self__, "redirect_type", redirect_type)
+        if replace_key_prefix_with is not None:
+            pulumi.set(__self__, "replace_key_prefix_with", replace_key_prefix_with)
+        if replace_key_with is not None:
+            pulumi.set(__self__, "replace_key_with", replace_key_with)
+        if transparent_mirror_response_codes is not None:
+            pulumi.set(__self__, "transparent_mirror_response_codes", transparent_mirror_response_codes)
+
+    @property
+    @pulumi.getter(name="enableReplacePrefix")
+    def enable_replace_prefix(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If this field is set to true, the prefix of Object is replaced with the value specified by ReplaceKeyPrefixWith. If this field is not specified or is blank, the Object prefix is truncated.
+        """
+        return pulumi.get(self, "enable_replace_prefix")
+
+    @enable_replace_prefix.setter
+    def enable_replace_prefix(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_replace_prefix", value)
+
+    @property
+    @pulumi.getter(name="hostName")
+    def host_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain name during the jump. The domain name must comply with the domain name specification.
+        """
+        return pulumi.get(self, "host_name")
+
+    @host_name.setter
+    def host_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host_name", value)
+
+    @property
+    @pulumi.getter(name="httpRedirectCode")
+    def http_redirect_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status code returned during the jump. It takes effect only when the RedirectType is set to External or AliCDN.
+        """
+        return pulumi.get(self, "http_redirect_code")
+
+    @http_redirect_code.setter
+    def http_redirect_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_redirect_code", value)
+
+    @property
+    @pulumi.getter(name="mirrorAllowGetImageInfo")
+    def mirror_allow_get_image_info(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Image back-to-source allows getting Image information
+        """
+        return pulumi.get(self, "mirror_allow_get_image_info")
+
+    @mirror_allow_get_image_info.setter
+    def mirror_allow_get_image_info(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "mirror_allow_get_image_info", value)
+
+    @property
+    @pulumi.getter(name="mirrorAllowHeadObject")
+    def mirror_allow_head_object(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to allow HeadObject in image back-to-source
+        """
+        return pulumi.get(self, "mirror_allow_head_object")
+
+    @mirror_allow_head_object.setter
+    def mirror_allow_head_object(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "mirror_allow_head_object", value)
+
+    @property
+    @pulumi.getter(name="mirrorAllowVideoSnapshot")
+    def mirror_allow_video_snapshot(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Mirror back-to-source allows support for video frame truncation
+        """
+        return pulumi.get(self, "mirror_allow_video_snapshot")
+
+    @mirror_allow_video_snapshot.setter
+    def mirror_allow_video_snapshot(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "mirror_allow_video_snapshot", value)
+
+    @property
+    @pulumi.getter(name="mirrorAsyncStatus")
+    def mirror_async_status(self) -> Optional[pulumi.Input[int]]:
+        """
+        The status code of the mirror back-to-source trigger asynchronous pull mode.
+        """
+        return pulumi.get(self, "mirror_async_status")
+
+    @mirror_async_status.setter
+    def mirror_async_status(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "mirror_async_status", value)
+
+    @property
+    @pulumi.getter(name="mirrorAuth")
+    def mirror_auth(self) -> Optional[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthArgs']]:
+        """
+        Image back Source station authentication information See `mirror_auth` below.
+        """
+        return pulumi.get(self, "mirror_auth")
+
+    @mirror_auth.setter
+    def mirror_auth(self, value: Optional[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthArgs']]):
+        pulumi.set(self, "mirror_auth", value)
+
+    @property
+    @pulumi.getter(name="mirrorCheckMd5")
+    def mirror_check_md5(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to check the MD5 of the source body. It takes effect only when the RedirectType is set to Mirror.
+        """
+        return pulumi.get(self, "mirror_check_md5")
+
+    @mirror_check_md5.setter
+    def mirror_check_md5(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "mirror_check_md5", value)
+
+    @property
+    @pulumi.getter(name="mirrorDstRegion")
+    def mirror_dst_region(self) -> Optional[pulumi.Input[str]]:
+        """
+        Mirrored back-to-source high-speed Channel vpregion
+        """
+        return pulumi.get(self, "mirror_dst_region")
+
+    @mirror_dst_region.setter
+    def mirror_dst_region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mirror_dst_region", value)
+
+    @property
+    @pulumi.getter(name="mirrorDstSlaveVpcId")
+    def mirror_dst_slave_vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Mirroring back-to-source high-speed Channel standby station VpcId
+        """
+        return pulumi.get(self, "mirror_dst_slave_vpc_id")
+
+    @mirror_dst_slave_vpc_id.setter
+    def mirror_dst_slave_vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mirror_dst_slave_vpc_id", value)
+
+    @property
+    @pulumi.getter(name="mirrorDstVpcId")
+    def mirror_dst_vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Mirror back-to-source high-speed Channel VpcId
+        """
+        return pulumi.get(self, "mirror_dst_vpc_id")
+
+    @mirror_dst_vpc_id.setter
+    def mirror_dst_vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mirror_dst_vpc_id", value)
+
+    @property
+    @pulumi.getter(name="mirrorFollowRedirect")
+    def mirror_follow_redirect(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If the result of the image back-to-source acquisition is 3xx, whether to continue to jump to the specified Location to obtain data. It takes effect only when the RedirectType is set to Mirror.
+        """
+        return pulumi.get(self, "mirror_follow_redirect")
+
+    @mirror_follow_redirect.setter
+    def mirror_follow_redirect(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "mirror_follow_redirect", value)
+
+    @property
+    @pulumi.getter(name="mirrorHeaders")
+    def mirror_headers(self) -> Optional[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersArgs']]:
+        """
+        Specifies the Header carried when the image returns to the source. It takes effect only when the RedirectType is set to Mirror. See `mirror_headers` below.
+        """
+        return pulumi.get(self, "mirror_headers")
+
+    @mirror_headers.setter
+    def mirror_headers(self, value: Optional[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersArgs']]):
+        pulumi.set(self, "mirror_headers", value)
+
+    @property
+    @pulumi.getter(name="mirrorIsExpressTunnel")
+    def mirror_is_express_tunnel(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether it is a mirror back-to-source high-speed Channel
+        """
+        return pulumi.get(self, "mirror_is_express_tunnel")
+
+    @mirror_is_express_tunnel.setter
+    def mirror_is_express_tunnel(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "mirror_is_express_tunnel", value)
+
+    @property
+    @pulumi.getter(name="mirrorMultiAlternates")
+    def mirror_multi_alternates(self) -> Optional[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesArgs']]:
+        """
+        Mirror back-to-source multi-source station configuration container. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirror_multi_alternates` below.
+        """
+        return pulumi.get(self, "mirror_multi_alternates")
+
+    @mirror_multi_alternates.setter
+    def mirror_multi_alternates(self, value: Optional[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesArgs']]):
+        pulumi.set(self, "mirror_multi_alternates", value)
+
+    @property
+    @pulumi.getter(name="mirrorPassOriginalSlashes")
+    def mirror_pass_original_slashes(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Transparent transmission/to source Station
+        """
+        return pulumi.get(self, "mirror_pass_original_slashes")
+
+    @mirror_pass_original_slashes.setter
+    def mirror_pass_original_slashes(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "mirror_pass_original_slashes", value)
+
+    @property
+    @pulumi.getter(name="mirrorPassQueryString")
+    def mirror_pass_query_string(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Same as PassQueryString and takes precedence over PassQueryString. It takes effect only when the RedirectType is set to Mirror.
+        """
+        return pulumi.get(self, "mirror_pass_query_string")
+
+    @mirror_pass_query_string.setter
+    def mirror_pass_query_string(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "mirror_pass_query_string", value)
+
+    @property
+    @pulumi.getter(name="mirrorProxyPass")
+    def mirror_proxy_pass(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether mirroring back to source does not save data
+        """
+        return pulumi.get(self, "mirror_proxy_pass")
+
+    @mirror_proxy_pass.setter
+    def mirror_proxy_pass(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "mirror_proxy_pass", value)
+
+    @property
+    @pulumi.getter(name="mirrorReturnHeaders")
+    def mirror_return_headers(self) -> Optional[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersArgs']]:
+        """
+        The container that saves the image back to the source and returns the response header rule. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirror_return_headers` below.
+        """
+        return pulumi.get(self, "mirror_return_headers")
+
+    @mirror_return_headers.setter
+    def mirror_return_headers(self, value: Optional[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersArgs']]):
+        pulumi.set(self, "mirror_return_headers", value)
+
+    @property
+    @pulumi.getter(name="mirrorRole")
+    def mirror_role(self) -> Optional[pulumi.Input[str]]:
+        """
+        Roles used when mirroring back-to-source
+        """
+        return pulumi.get(self, "mirror_role")
+
+    @mirror_role.setter
+    def mirror_role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mirror_role", value)
+
+    @property
+    @pulumi.getter(name="mirrorSaveOssMeta")
+    def mirror_save_oss_meta(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Mirror back-to-source back-to-source OSS automatically saves user metadata
+        """
+        return pulumi.get(self, "mirror_save_oss_meta")
+
+    @mirror_save_oss_meta.setter
+    def mirror_save_oss_meta(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "mirror_save_oss_meta", value)
+
+    @property
+    @pulumi.getter(name="mirrorSni")
+    def mirror_sni(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Transparent transmission of SNI
+        """
+        return pulumi.get(self, "mirror_sni")
+
+    @mirror_sni.setter
+    def mirror_sni(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "mirror_sni", value)
+
+    @property
+    @pulumi.getter(name="mirrorSwitchAllErrors")
+    def mirror_switch_all_errors(self) -> Optional[pulumi.Input[bool]]:
+        """
+        It is used to judge the status of active-standby switching. The judgment logic of active-standby switching is that the source station returns an error. If MirrorSwitchAllErrors is true, it is considered a failure except the following status code: 200,206,301,302,303,307,404; If false, only the source Station Returns 5xx or times out is considered a failure.
+        """
+        return pulumi.get(self, "mirror_switch_all_errors")
+
+    @mirror_switch_all_errors.setter
+    def mirror_switch_all_errors(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "mirror_switch_all_errors", value)
+
+    @property
+    @pulumi.getter(name="mirrorTaggings")
+    def mirror_taggings(self) -> Optional[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsArgs']]:
+        """
+        Save the label according to the parameters when saving the file from the mirror back to the source. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirror_taggings` below.
+        """
+        return pulumi.get(self, "mirror_taggings")
+
+    @mirror_taggings.setter
+    def mirror_taggings(self, value: Optional[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsArgs']]):
+        pulumi.set(self, "mirror_taggings", value)
+
+    @property
+    @pulumi.getter(name="mirrorTunnelId")
+    def mirror_tunnel_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Mirror back-to-source leased line back-to-source tunnel ID
+        """
+        return pulumi.get(self, "mirror_tunnel_id")
+
+    @mirror_tunnel_id.setter
+    def mirror_tunnel_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mirror_tunnel_id", value)
+
+    @property
+    @pulumi.getter(name="mirrorUrl")
+    def mirror_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The address of the origin of the image. It takes effect only when the RedirectType is set to Mirror. The origin address must start with http:// or https:// and end with a forward slash (/). OSS takes the Object name after the Origin address to form the origin URL.
+        """
+        return pulumi.get(self, "mirror_url")
+
+    @mirror_url.setter
+    def mirror_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mirror_url", value)
+
+    @property
+    @pulumi.getter(name="mirrorUrlProbe")
+    def mirror_url_probe(self) -> Optional[pulumi.Input[str]]:
+        """
+        Mirror back-to-source Master-backup back-to-source switching decision URL
+        """
+        return pulumi.get(self, "mirror_url_probe")
+
+    @mirror_url_probe.setter
+    def mirror_url_probe(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mirror_url_probe", value)
+
+    @property
+    @pulumi.getter(name="mirrorUrlSlave")
+    def mirror_url_slave(self) -> Optional[pulumi.Input[str]]:
+        """
+        Mirror back-to-source primary backup back-to-source backup station URL
+        """
+        return pulumi.get(self, "mirror_url_slave")
+
+    @mirror_url_slave.setter
+    def mirror_url_slave(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mirror_url_slave", value)
+
+    @property
+    @pulumi.getter(name="mirrorUserLastModified")
+    def mirror_user_last_modified(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the source station LastModifiedTime is used for the image back-to-source save file.
+        """
+        return pulumi.get(self, "mirror_user_last_modified")
+
+    @mirror_user_last_modified.setter
+    def mirror_user_last_modified(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "mirror_user_last_modified", value)
+
+    @property
+    @pulumi.getter(name="mirrorUsingRole")
+    def mirror_using_role(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to use role for mirroring back to source
+        """
+        return pulumi.get(self, "mirror_using_role")
+
+    @mirror_using_role.setter
+    def mirror_using_role(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "mirror_using_role", value)
+
+    @property
+    @pulumi.getter(name="passQueryString")
+    def pass_query_string(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to carry the request parameters when executing the jump or mirror back-to-source rule. Did the user carry the request parameters when requesting OSS? a = B & c = d, and set PassQueryString to true. If the rule is a 302 jump, this request parameter is added to the Location header of the jump. For example Location:example.com? a = B & c = d, and the jump type is mirrored back-to-origin, this request parameter is also carried in the back-to-origin request initiated. Values: true, false (default)
+        """
+        return pulumi.get(self, "pass_query_string")
+
+    @pass_query_string.setter
+    def pass_query_string(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "pass_query_string", value)
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        The protocol at the time of the jump. It takes effect only when the RedirectType is set to External or AliCDN.
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "protocol", value)
+
+    @property
+    @pulumi.getter(name="redirectType")
+    def redirect_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the type of jump. The value range is as follows: Mirror: Mirror back to the source. External: External redirects, that is, OSS returns a 3xx request to redirect to another address. AliCDN: Alibaba Cloud CDN jump, mainly used for Alibaba Cloud CDN. Unlike External, OSS adds an additional Header. After recognizing this Header, Alibaba Cloud CDN redirects the data to the specified address and returns the obtained data to the user instead of returning the 3xx Redirection request to the user.
+        """
+        return pulumi.get(self, "redirect_type")
+
+    @redirect_type.setter
+    def redirect_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "redirect_type", value)
+
+    @property
+    @pulumi.getter(name="replaceKeyPrefixWith")
+    def replace_key_prefix_with(self) -> Optional[pulumi.Input[str]]:
+        """
+        The prefix of the Object name will be replaced with this value during Redirect. If the prefix is empty, this string is inserted in front of the Object name.
+        """
+        return pulumi.get(self, "replace_key_prefix_with")
+
+    @replace_key_prefix_with.setter
+    def replace_key_prefix_with(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "replace_key_prefix_with", value)
+
+    @property
+    @pulumi.getter(name="replaceKeyWith")
+    def replace_key_with(self) -> Optional[pulumi.Input[str]]:
+        """
+        During redirection, the Object name is replaced with the value specified by ReplaceKeyWith. You can set variables in ReplaceKeyWith. Currently, the supported variable is ${key}, which indicates the name of the Object in the request.
+        """
+        return pulumi.get(self, "replace_key_with")
+
+    @replace_key_with.setter
+    def replace_key_with(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "replace_key_with", value)
+
+    @property
+    @pulumi.getter(name="transparentMirrorResponseCodes")
+    def transparent_mirror_response_codes(self) -> Optional[pulumi.Input[str]]:
+        """
+        Mirror back-to-source transparent source station response code list
+        """
+        return pulumi.get(self, "transparent_mirror_response_codes")
+
+    @transparent_mirror_response_codes.setter
+    def transparent_mirror_response_codes(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "transparent_mirror_response_codes", value)
+
+
+if not MYPY:
+    class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthArgsDict(TypedDict):
+        access_key_id: NotRequired[pulumi.Input[str]]
+        """
+        Mirror back-to-source source Station back-to-source AK
+        """
+        access_key_secret: NotRequired[pulumi.Input[str]]
+        """
+        Mirroring back to the source station back to the source SK will be automatically desensitized when obtaining the configuration.
+        """
+        auth_type: NotRequired[pulumi.Input[str]]
+        """
+        Authentication type of mirror return Source
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Signature Region
+        """
+elif False:
+    BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthArgs:
+    def __init__(__self__, *,
+                 access_key_id: Optional[pulumi.Input[str]] = None,
+                 access_key_secret: Optional[pulumi.Input[str]] = None,
+                 auth_type: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] access_key_id: Mirror back-to-source source Station back-to-source AK
+        :param pulumi.Input[str] access_key_secret: Mirroring back to the source station back to the source SK will be automatically desensitized when obtaining the configuration.
+        :param pulumi.Input[str] auth_type: Authentication type of mirror return Source
+        :param pulumi.Input[str] region: Signature Region
+        """
+        if access_key_id is not None:
+            pulumi.set(__self__, "access_key_id", access_key_id)
+        if access_key_secret is not None:
+            pulumi.set(__self__, "access_key_secret", access_key_secret)
+        if auth_type is not None:
+            pulumi.set(__self__, "auth_type", auth_type)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="accessKeyId")
+    def access_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Mirror back-to-source source Station back-to-source AK
+        """
+        return pulumi.get(self, "access_key_id")
+
+    @access_key_id.setter
+    def access_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_key_id", value)
+
+    @property
+    @pulumi.getter(name="accessKeySecret")
+    def access_key_secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        Mirroring back to the source station back to the source SK will be automatically desensitized when obtaining the configuration.
+        """
+        return pulumi.get(self, "access_key_secret")
+
+    @access_key_secret.setter
+    def access_key_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_key_secret", value)
+
+    @property
+    @pulumi.getter(name="authType")
+    def auth_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Authentication type of mirror return Source
+        """
+        return pulumi.get(self, "auth_type")
+
+    @auth_type.setter
+    def auth_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_type", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        Signature Region
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+
+if not MYPY:
+    class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersArgsDict(TypedDict):
+        pass_all: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether other headers except the following headers are transmitted to the source site. It takes effect only when the RedirectType is set to Mirror. content-length, authorization2, authorization, range, date, and other headers Headers whose names start with oss-/x-oss-/x-drs-
+        """
+        passes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Pass through the specified Header to the source site. It takes effect only when the RedirectType is set to Mirror. Each Header is up to 1024 bytes in length and has A character set of 0 to 9, a to Z, A to z, and dashes (-).
+        """
+        removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Do not pass the specified Header to the source site. It takes effect only when the RedirectType is set to Mirror. Each Header is up to 1024 bytes in length and has A character set of 0 to 9, a to Z, A to z, and dashes (-).
+        """
+        sets: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArgsDict']]]]
+        """
+        Set a Header to send to the source site. Regardless of whether the request contains the specified Header, these headers will be set when returning to the source site. It takes effect only when the RedirectType is set to Mirror. See `set` below.
+        """
+elif False:
+    BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersArgs:
+    def __init__(__self__, *,
+                 pass_all: Optional[pulumi.Input[bool]] = None,
+                 passes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 sets: Optional[pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArgs']]]] = None):
+        """
+        :param pulumi.Input[bool] pass_all: Indicates whether other headers except the following headers are transmitted to the source site. It takes effect only when the RedirectType is set to Mirror. content-length, authorization2, authorization, range, date, and other headers Headers whose names start with oss-/x-oss-/x-drs-
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] passes: Pass through the specified Header to the source site. It takes effect only when the RedirectType is set to Mirror. Each Header is up to 1024 bytes in length and has A character set of 0 to 9, a to Z, A to z, and dashes (-).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] removes: Do not pass the specified Header to the source site. It takes effect only when the RedirectType is set to Mirror. Each Header is up to 1024 bytes in length and has A character set of 0 to 9, a to Z, A to z, and dashes (-).
+        :param pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArgs']]] sets: Set a Header to send to the source site. Regardless of whether the request contains the specified Header, these headers will be set when returning to the source site. It takes effect only when the RedirectType is set to Mirror. See `set` below.
+        """
+        if pass_all is not None:
+            pulumi.set(__self__, "pass_all", pass_all)
+        if passes is not None:
+            pulumi.set(__self__, "passes", passes)
+        if removes is not None:
+            pulumi.set(__self__, "removes", removes)
+        if sets is not None:
+            pulumi.set(__self__, "sets", sets)
+
+    @property
+    @pulumi.getter(name="passAll")
+    def pass_all(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether other headers except the following headers are transmitted to the source site. It takes effect only when the RedirectType is set to Mirror. content-length, authorization2, authorization, range, date, and other headers Headers whose names start with oss-/x-oss-/x-drs-
+        """
+        return pulumi.get(self, "pass_all")
+
+    @pass_all.setter
+    def pass_all(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "pass_all", value)
+
+    @property
+    @pulumi.getter
+    def passes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Pass through the specified Header to the source site. It takes effect only when the RedirectType is set to Mirror. Each Header is up to 1024 bytes in length and has A character set of 0 to 9, a to Z, A to z, and dashes (-).
+        """
+        return pulumi.get(self, "passes")
+
+    @passes.setter
+    def passes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "passes", value)
+
+    @property
+    @pulumi.getter
+    def removes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Do not pass the specified Header to the source site. It takes effect only when the RedirectType is set to Mirror. Each Header is up to 1024 bytes in length and has A character set of 0 to 9, a to Z, A to z, and dashes (-).
+        """
+        return pulumi.get(self, "removes")
+
+    @removes.setter
+    def removes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "removes", value)
+
+    @property
+    @pulumi.getter
+    def sets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArgs']]]]:
+        """
+        Set a Header to send to the source site. Regardless of whether the request contains the specified Header, these headers will be set when returning to the source site. It takes effect only when the RedirectType is set to Mirror. See `set` below.
+        """
+        return pulumi.get(self, "sets")
+
+    @sets.setter
+    def sets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArgs']]]]):
+        pulumi.set(self, "sets", value)
+
+
+if not MYPY:
+    class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Set the value of the Header to 1024 bytes at most. \\r\\n. It takes effect only when the RedirectType is set to Mirror.
+        """
+elif False:
+    BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] value: Set the value of the Header to 1024 bytes at most. \\r\\n. It takes effect only when the RedirectType is set to Mirror.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set the value of the Header to 1024 bytes at most. \\r\\n. It takes effect only when the RedirectType is set to Mirror.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesArgsDict(TypedDict):
+        mirror_multi_alternates: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArgsDict']]]]
+        """
+        Mirror back-to-source multi-source station configuration list See `mirror_multi_alternate` below.
+        """
+elif False:
+    BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesArgs:
+    def __init__(__self__, *,
+                 mirror_multi_alternates: Optional[pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArgs']]] mirror_multi_alternates: Mirror back-to-source multi-source station configuration list See `mirror_multi_alternate` below.
+        """
+        if mirror_multi_alternates is not None:
+            pulumi.set(__self__, "mirror_multi_alternates", mirror_multi_alternates)
+
+    @property
+    @pulumi.getter(name="mirrorMultiAlternates")
+    def mirror_multi_alternates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArgs']]]]:
+        """
+        Mirror back-to-source multi-source station configuration list See `mirror_multi_alternate` below.
+        """
+        return pulumi.get(self, "mirror_multi_alternates")
+
+    @mirror_multi_alternates.setter
+    def mirror_multi_alternates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArgs']]]]):
+        pulumi.set(self, "mirror_multi_alternates", value)
+
+
+if not MYPY:
+    class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArgsDict(TypedDict):
+        mirror_multi_alternate_dst_region: NotRequired[pulumi.Input[str]]
+        """
+        Mirroring back-to-source multi-station Region
+        """
+        mirror_multi_alternate_number: NotRequired[pulumi.Input[int]]
+        """
+        Image back-to-source multi-source station serial number
+        """
+        mirror_multi_alternate_url: NotRequired[pulumi.Input[str]]
+        """
+        Mirroring back-to-source multi-source site URL
+        """
+        mirror_multi_alternate_vpc_id: NotRequired[pulumi.Input[str]]
+        """
+        Mirroring back-to-source multi-source VpcId
+        """
+elif False:
+    BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArgs:
+    def __init__(__self__, *,
+                 mirror_multi_alternate_dst_region: Optional[pulumi.Input[str]] = None,
+                 mirror_multi_alternate_number: Optional[pulumi.Input[int]] = None,
+                 mirror_multi_alternate_url: Optional[pulumi.Input[str]] = None,
+                 mirror_multi_alternate_vpc_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] mirror_multi_alternate_dst_region: Mirroring back-to-source multi-station Region
+        :param pulumi.Input[int] mirror_multi_alternate_number: Image back-to-source multi-source station serial number
+        :param pulumi.Input[str] mirror_multi_alternate_url: Mirroring back-to-source multi-source site URL
+        :param pulumi.Input[str] mirror_multi_alternate_vpc_id: Mirroring back-to-source multi-source VpcId
+        """
+        if mirror_multi_alternate_dst_region is not None:
+            pulumi.set(__self__, "mirror_multi_alternate_dst_region", mirror_multi_alternate_dst_region)
+        if mirror_multi_alternate_number is not None:
+            pulumi.set(__self__, "mirror_multi_alternate_number", mirror_multi_alternate_number)
+        if mirror_multi_alternate_url is not None:
+            pulumi.set(__self__, "mirror_multi_alternate_url", mirror_multi_alternate_url)
+        if mirror_multi_alternate_vpc_id is not None:
+            pulumi.set(__self__, "mirror_multi_alternate_vpc_id", mirror_multi_alternate_vpc_id)
+
+    @property
+    @pulumi.getter(name="mirrorMultiAlternateDstRegion")
+    def mirror_multi_alternate_dst_region(self) -> Optional[pulumi.Input[str]]:
+        """
+        Mirroring back-to-source multi-station Region
+        """
+        return pulumi.get(self, "mirror_multi_alternate_dst_region")
+
+    @mirror_multi_alternate_dst_region.setter
+    def mirror_multi_alternate_dst_region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mirror_multi_alternate_dst_region", value)
+
+    @property
+    @pulumi.getter(name="mirrorMultiAlternateNumber")
+    def mirror_multi_alternate_number(self) -> Optional[pulumi.Input[int]]:
+        """
+        Image back-to-source multi-source station serial number
+        """
+        return pulumi.get(self, "mirror_multi_alternate_number")
+
+    @mirror_multi_alternate_number.setter
+    def mirror_multi_alternate_number(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "mirror_multi_alternate_number", value)
+
+    @property
+    @pulumi.getter(name="mirrorMultiAlternateUrl")
+    def mirror_multi_alternate_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        Mirroring back-to-source multi-source site URL
+        """
+        return pulumi.get(self, "mirror_multi_alternate_url")
+
+    @mirror_multi_alternate_url.setter
+    def mirror_multi_alternate_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mirror_multi_alternate_url", value)
+
+    @property
+    @pulumi.getter(name="mirrorMultiAlternateVpcId")
+    def mirror_multi_alternate_vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Mirroring back-to-source multi-source VpcId
+        """
+        return pulumi.get(self, "mirror_multi_alternate_vpc_id")
+
+    @mirror_multi_alternate_vpc_id.setter
+    def mirror_multi_alternate_vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mirror_multi_alternate_vpc_id", value)
+
+
+if not MYPY:
+    class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersArgsDict(TypedDict):
+        return_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArgsDict']]]]
+        """
+        The list of response header rules for mirroring back-to-source return. See `return_header` below.
+        """
+elif False:
+    BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersArgs:
+    def __init__(__self__, *,
+                 return_headers: Optional[pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArgs']]] return_headers: The list of response header rules for mirroring back-to-source return. See `return_header` below.
+        """
+        if return_headers is not None:
+            pulumi.set(__self__, "return_headers", return_headers)
+
+    @property
+    @pulumi.getter(name="returnHeaders")
+    def return_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArgs']]]]:
+        """
+        The list of response header rules for mirroring back-to-source return. See `return_header` below.
+        """
+        return pulumi.get(self, "return_headers")
+
+    @return_headers.setter
+    def return_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArgs']]]]):
+        pulumi.set(self, "return_headers", value)
+
+
+if not MYPY:
+    class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Set the value of the Header to 1024 bytes at most. \\r\\n. It takes effect only when the RedirectType is set to Mirror.
+        """
+elif False:
+    BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] value: Set the value of the Header to 1024 bytes at most. \\r\\n. It takes effect only when the RedirectType is set to Mirror.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set the value of the Header to 1024 bytes at most. \\r\\n. It takes effect only when the RedirectType is set to Mirror.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsArgsDict(TypedDict):
+        taggings: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArgsDict']]]]
+        """
+        Image back-to-source save label rule list See `taggings` below.
+        """
+elif False:
+    BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsArgs:
+    def __init__(__self__, *,
+                 taggings: Optional[pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArgs']]] taggings: Image back-to-source save label rule list See `taggings` below.
+        """
+        if taggings is not None:
+            pulumi.set(__self__, "taggings", taggings)
+
+    @property
+    @pulumi.getter
+    def taggings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArgs']]]]:
+        """
+        Image back-to-source save label rule list See `taggings` below.
+        """
+        return pulumi.get(self, "taggings")
+
+    @taggings.setter
+    def taggings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArgs']]]]):
+        pulumi.set(self, "taggings", value)
+
+
+if not MYPY:
+    class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Set the value of the Header to 1024 bytes at most. \\r\\n. It takes effect only when the RedirectType is set to Mirror.
+        """
+elif False:
+    BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] value: Set the value of the Header to 1024 bytes at most. \\r\\n. It takes effect only when the RedirectType is set to Mirror.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set the value of the Header to 1024 bytes at most. \\r\\n. It takes effect only when the RedirectType is set to Mirror.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 

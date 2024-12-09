@@ -398,7 +398,7 @@ class GetClustersClusterResult(dict):
         :param str db_version: The DBVersion of the PolarDB cluster.
         :param int delete_lock: The DeleteLock of the PolarDB cluster.
         :param str description: The description of the PolarDB cluster.
-        :param str engine: Database type. Options are `MySQL`, `Oracle` and `PostgreSQL`. If no value is specified, all types are returned.
+        :param str engine: The database engine of the cluster, example: POLARDB.
         :param str expire_time: Expiration time. Pay-As-You-Go clusters never expire.
         :param str expired: The expired of the PolarDB cluster.
         :param str id: The ID of the PolarDB cluster.
@@ -518,7 +518,7 @@ class GetClustersClusterResult(dict):
     @pulumi.getter
     def engine(self) -> str:
         """
-        Database type. Options are `MySQL`, `Oracle` and `PostgreSQL`. If no value is specified, all types are returned.
+        The database engine of the cluster, example: POLARDB.
         """
         return pulumi.get(self, "engine")
 

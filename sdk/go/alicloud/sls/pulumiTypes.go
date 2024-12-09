@@ -3479,6 +3479,723 @@ func (o CollectionPolicyResourceDirectoryPtrOutput) Members() pulumi.StringArray
 	}).(pulumi.StringArrayOutput)
 }
 
+type OssExportSinkConfiguration struct {
+	// The beginning of the time range to ship data. The value 1 specifies that the data shipping job ships data from the first log in the Logstore. Example value: 1718380800
+	FromTime int `pulumi:"fromTime"`
+	// The name of the Logstore.
+	Logstore string `pulumi:"logstore"`
+	// The ARN of the RAM role that is used to write data to OSS. Example value: acs:ram::xxxxxxx
+	RoleArn string `pulumi:"roleArn"`
+	// The configurations of the Object Storage Service (OSS) data shipping job. See `sink` below.
+	Sink OssExportSinkConfigurationSink `pulumi:"sink"`
+	// The end of the time range to ship data. The value 0 specifies that the data shipping job continuously ships data until the job is manually stopped. Example value: 1718380800
+	ToTime int `pulumi:"toTime"`
+}
+
+// OssExportSinkConfigurationInput is an input type that accepts OssExportSinkConfigurationArgs and OssExportSinkConfigurationOutput values.
+// You can construct a concrete instance of `OssExportSinkConfigurationInput` via:
+//
+//	OssExportSinkConfigurationArgs{...}
+type OssExportSinkConfigurationInput interface {
+	pulumi.Input
+
+	ToOssExportSinkConfigurationOutput() OssExportSinkConfigurationOutput
+	ToOssExportSinkConfigurationOutputWithContext(context.Context) OssExportSinkConfigurationOutput
+}
+
+type OssExportSinkConfigurationArgs struct {
+	// The beginning of the time range to ship data. The value 1 specifies that the data shipping job ships data from the first log in the Logstore. Example value: 1718380800
+	FromTime pulumi.IntInput `pulumi:"fromTime"`
+	// The name of the Logstore.
+	Logstore pulumi.StringInput `pulumi:"logstore"`
+	// The ARN of the RAM role that is used to write data to OSS. Example value: acs:ram::xxxxxxx
+	RoleArn pulumi.StringInput `pulumi:"roleArn"`
+	// The configurations of the Object Storage Service (OSS) data shipping job. See `sink` below.
+	Sink OssExportSinkConfigurationSinkInput `pulumi:"sink"`
+	// The end of the time range to ship data. The value 0 specifies that the data shipping job continuously ships data until the job is manually stopped. Example value: 1718380800
+	ToTime pulumi.IntInput `pulumi:"toTime"`
+}
+
+func (OssExportSinkConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OssExportSinkConfiguration)(nil)).Elem()
+}
+
+func (i OssExportSinkConfigurationArgs) ToOssExportSinkConfigurationOutput() OssExportSinkConfigurationOutput {
+	return i.ToOssExportSinkConfigurationOutputWithContext(context.Background())
+}
+
+func (i OssExportSinkConfigurationArgs) ToOssExportSinkConfigurationOutputWithContext(ctx context.Context) OssExportSinkConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OssExportSinkConfigurationOutput)
+}
+
+func (i OssExportSinkConfigurationArgs) ToOssExportSinkConfigurationPtrOutput() OssExportSinkConfigurationPtrOutput {
+	return i.ToOssExportSinkConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i OssExportSinkConfigurationArgs) ToOssExportSinkConfigurationPtrOutputWithContext(ctx context.Context) OssExportSinkConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OssExportSinkConfigurationOutput).ToOssExportSinkConfigurationPtrOutputWithContext(ctx)
+}
+
+// OssExportSinkConfigurationPtrInput is an input type that accepts OssExportSinkConfigurationArgs, OssExportSinkConfigurationPtr and OssExportSinkConfigurationPtrOutput values.
+// You can construct a concrete instance of `OssExportSinkConfigurationPtrInput` via:
+//
+//	        OssExportSinkConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type OssExportSinkConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToOssExportSinkConfigurationPtrOutput() OssExportSinkConfigurationPtrOutput
+	ToOssExportSinkConfigurationPtrOutputWithContext(context.Context) OssExportSinkConfigurationPtrOutput
+}
+
+type ossExportSinkConfigurationPtrType OssExportSinkConfigurationArgs
+
+func OssExportSinkConfigurationPtr(v *OssExportSinkConfigurationArgs) OssExportSinkConfigurationPtrInput {
+	return (*ossExportSinkConfigurationPtrType)(v)
+}
+
+func (*ossExportSinkConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OssExportSinkConfiguration)(nil)).Elem()
+}
+
+func (i *ossExportSinkConfigurationPtrType) ToOssExportSinkConfigurationPtrOutput() OssExportSinkConfigurationPtrOutput {
+	return i.ToOssExportSinkConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *ossExportSinkConfigurationPtrType) ToOssExportSinkConfigurationPtrOutputWithContext(ctx context.Context) OssExportSinkConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OssExportSinkConfigurationPtrOutput)
+}
+
+type OssExportSinkConfigurationOutput struct{ *pulumi.OutputState }
+
+func (OssExportSinkConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OssExportSinkConfiguration)(nil)).Elem()
+}
+
+func (o OssExportSinkConfigurationOutput) ToOssExportSinkConfigurationOutput() OssExportSinkConfigurationOutput {
+	return o
+}
+
+func (o OssExportSinkConfigurationOutput) ToOssExportSinkConfigurationOutputWithContext(ctx context.Context) OssExportSinkConfigurationOutput {
+	return o
+}
+
+func (o OssExportSinkConfigurationOutput) ToOssExportSinkConfigurationPtrOutput() OssExportSinkConfigurationPtrOutput {
+	return o.ToOssExportSinkConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o OssExportSinkConfigurationOutput) ToOssExportSinkConfigurationPtrOutputWithContext(ctx context.Context) OssExportSinkConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OssExportSinkConfiguration) *OssExportSinkConfiguration {
+		return &v
+	}).(OssExportSinkConfigurationPtrOutput)
+}
+
+// The beginning of the time range to ship data. The value 1 specifies that the data shipping job ships data from the first log in the Logstore. Example value: 1718380800
+func (o OssExportSinkConfigurationOutput) FromTime() pulumi.IntOutput {
+	return o.ApplyT(func(v OssExportSinkConfiguration) int { return v.FromTime }).(pulumi.IntOutput)
+}
+
+// The name of the Logstore.
+func (o OssExportSinkConfigurationOutput) Logstore() pulumi.StringOutput {
+	return o.ApplyT(func(v OssExportSinkConfiguration) string { return v.Logstore }).(pulumi.StringOutput)
+}
+
+// The ARN of the RAM role that is used to write data to OSS. Example value: acs:ram::xxxxxxx
+func (o OssExportSinkConfigurationOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v OssExportSinkConfiguration) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+// The configurations of the Object Storage Service (OSS) data shipping job. See `sink` below.
+func (o OssExportSinkConfigurationOutput) Sink() OssExportSinkConfigurationSinkOutput {
+	return o.ApplyT(func(v OssExportSinkConfiguration) OssExportSinkConfigurationSink { return v.Sink }).(OssExportSinkConfigurationSinkOutput)
+}
+
+// The end of the time range to ship data. The value 0 specifies that the data shipping job continuously ships data until the job is manually stopped. Example value: 1718380800
+func (o OssExportSinkConfigurationOutput) ToTime() pulumi.IntOutput {
+	return o.ApplyT(func(v OssExportSinkConfiguration) int { return v.ToTime }).(pulumi.IntOutput)
+}
+
+type OssExportSinkConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (OssExportSinkConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OssExportSinkConfiguration)(nil)).Elem()
+}
+
+func (o OssExportSinkConfigurationPtrOutput) ToOssExportSinkConfigurationPtrOutput() OssExportSinkConfigurationPtrOutput {
+	return o
+}
+
+func (o OssExportSinkConfigurationPtrOutput) ToOssExportSinkConfigurationPtrOutputWithContext(ctx context.Context) OssExportSinkConfigurationPtrOutput {
+	return o
+}
+
+func (o OssExportSinkConfigurationPtrOutput) Elem() OssExportSinkConfigurationOutput {
+	return o.ApplyT(func(v *OssExportSinkConfiguration) OssExportSinkConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret OssExportSinkConfiguration
+		return ret
+	}).(OssExportSinkConfigurationOutput)
+}
+
+// The beginning of the time range to ship data. The value 1 specifies that the data shipping job ships data from the first log in the Logstore. Example value: 1718380800
+func (o OssExportSinkConfigurationPtrOutput) FromTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OssExportSinkConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.FromTime
+	}).(pulumi.IntPtrOutput)
+}
+
+// The name of the Logstore.
+func (o OssExportSinkConfigurationPtrOutput) Logstore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OssExportSinkConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Logstore
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ARN of the RAM role that is used to write data to OSS. Example value: acs:ram::xxxxxxx
+func (o OssExportSinkConfigurationPtrOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OssExportSinkConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// The configurations of the Object Storage Service (OSS) data shipping job. See `sink` below.
+func (o OssExportSinkConfigurationPtrOutput) Sink() OssExportSinkConfigurationSinkPtrOutput {
+	return o.ApplyT(func(v *OssExportSinkConfiguration) *OssExportSinkConfigurationSink {
+		if v == nil {
+			return nil
+		}
+		return &v.Sink
+	}).(OssExportSinkConfigurationSinkPtrOutput)
+}
+
+// The end of the time range to ship data. The value 0 specifies that the data shipping job continuously ships data until the job is manually stopped. Example value: 1718380800
+func (o OssExportSinkConfigurationPtrOutput) ToTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OssExportSinkConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ToTime
+	}).(pulumi.IntPtrOutput)
+}
+
+type OssExportSinkConfigurationSink struct {
+	// The OSS bucket.
+	Bucket string `pulumi:"bucket"`
+	// The interval between two data shipping operations. Valid values: 300 to 900. Unit: seconds.
+	BufferInterval string `pulumi:"bufferInterval"`
+	// The size of the OSS object to which data is shipped. Valid values: 5 to 256. Unit: MB.
+	BufferSize string `pulumi:"bufferSize"`
+	// Supports four compression types, such as snappy, gzip, zstd, and none.
+	CompressionType string `pulumi:"compressionType"`
+	// The OSS file content details. Note: the value of this parameter should be updated based on the value of the contentType parameter.
+	//
+	// If the contentType value is JSON, the parameters of the contentDetail value are as follows:
+	//
+	// If the tag is allowed to be posted, the value of the parameter enableTag is true. Example:{"enableTag": true}
+	//
+	// You are not allowed to post tags. The value of the parameter enableTag is false. Example:{"enableTag": false}
+	//
+	// If the contentType value is csv, the parameters of the contentDetail value are as follows:
+	//
+	// The parameter columns is the key of the log in the source logstore.
+	//
+	// The delimiter parameter, which can be ",","|","", or "\t".
+	//
+	// The header parameter determines whether the OSS file retains the header. The optional value is true or false.
+	//
+	// The lineFeed parameter. Optional values are "\t", "\n", or "".
+	//
+	// The invalid field content parameter is null to specify the delivery content when the field name does not exist.
+	//
+	// The escape character parameter "quote". Optional values are "" "," '", or" ".
+	//
+	// Example:{"null": "-", "header": false, "lineFeed": "\n", "quote": "", "delimiter": ",", "columns": ["a", "B", "c", "d"]}
+	//
+	// When the contentType value is parquet, the parameters of the contentDetail value are as follows:
+	//
+	// The columns parameter is the key of the log in the source Logstore and must carry the data type of the key, for example:{"columns": [{"name": "a", "type": "string"}, {"name": "B", "type": "string"}, {"name": "c", "type": "string": "string"}]}
+	//
+	// When the contentType value is set to orc, the parameters of the contentDetail value are as follows:
+	//
+	// The columns parameter is the key of the log in the source Logstore and must carry the data type of the key, for example:{"columns": [{"name": "a", "type": "string"}, {"name": "B", "type": "string"}, {"name": "c", "type": "string": "string"}]}
+	ContentDetail string `pulumi:"contentDetail"`
+	// The storage format of the OSS object. Valid values: json, parquet, csv, and orc.
+	ContentType string `pulumi:"contentType"`
+	// The latency of data shipping. The value of this parameter cannot exceed the data retention period of the source Logstore.
+	DelaySeconds *int `pulumi:"delaySeconds"`
+	// The OSS Endpoint can only be an OSS intranet Endpoint and only supports the same region. Example value: https://oss-cn-hangzhou-internal.aliyuncs.com
+	Endpoint string `pulumi:"endpoint"`
+	// The directory is dynamically generated according to the time. The default value is% Y/%m/%d/%H/%M. The corresponding generated directory is, for example, 2017/01/23/12/00. Note that the partition format cannot start and end. Example values:%Y/%m/%d
+	PathFormat *string `pulumi:"pathFormat"`
+	// The partition format type. only support time
+	PathFormatType *string `pulumi:"pathFormatType"`
+	// The prefix of the OSS object.
+	Prefix *string `pulumi:"prefix"`
+	// The ARN of the RAM role that is used to write data to OSS. Example value: acs:ram::xxxxxxx
+	RoleArn string `pulumi:"roleArn"`
+	// The suffix of the OSS object.
+	Suffix *string `pulumi:"suffix"`
+	// The time zone. Example value: +0800
+	TimeZone string `pulumi:"timeZone"`
+}
+
+// OssExportSinkConfigurationSinkInput is an input type that accepts OssExportSinkConfigurationSinkArgs and OssExportSinkConfigurationSinkOutput values.
+// You can construct a concrete instance of `OssExportSinkConfigurationSinkInput` via:
+//
+//	OssExportSinkConfigurationSinkArgs{...}
+type OssExportSinkConfigurationSinkInput interface {
+	pulumi.Input
+
+	ToOssExportSinkConfigurationSinkOutput() OssExportSinkConfigurationSinkOutput
+	ToOssExportSinkConfigurationSinkOutputWithContext(context.Context) OssExportSinkConfigurationSinkOutput
+}
+
+type OssExportSinkConfigurationSinkArgs struct {
+	// The OSS bucket.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// The interval between two data shipping operations. Valid values: 300 to 900. Unit: seconds.
+	BufferInterval pulumi.StringInput `pulumi:"bufferInterval"`
+	// The size of the OSS object to which data is shipped. Valid values: 5 to 256. Unit: MB.
+	BufferSize pulumi.StringInput `pulumi:"bufferSize"`
+	// Supports four compression types, such as snappy, gzip, zstd, and none.
+	CompressionType pulumi.StringInput `pulumi:"compressionType"`
+	// The OSS file content details. Note: the value of this parameter should be updated based on the value of the contentType parameter.
+	//
+	// If the contentType value is JSON, the parameters of the contentDetail value are as follows:
+	//
+	// If the tag is allowed to be posted, the value of the parameter enableTag is true. Example:{"enableTag": true}
+	//
+	// You are not allowed to post tags. The value of the parameter enableTag is false. Example:{"enableTag": false}
+	//
+	// If the contentType value is csv, the parameters of the contentDetail value are as follows:
+	//
+	// The parameter columns is the key of the log in the source logstore.
+	//
+	// The delimiter parameter, which can be ",","|","", or "\t".
+	//
+	// The header parameter determines whether the OSS file retains the header. The optional value is true or false.
+	//
+	// The lineFeed parameter. Optional values are "\t", "\n", or "".
+	//
+	// The invalid field content parameter is null to specify the delivery content when the field name does not exist.
+	//
+	// The escape character parameter "quote". Optional values are "" "," '", or" ".
+	//
+	// Example:{"null": "-", "header": false, "lineFeed": "\n", "quote": "", "delimiter": ",", "columns": ["a", "B", "c", "d"]}
+	//
+	// When the contentType value is parquet, the parameters of the contentDetail value are as follows:
+	//
+	// The columns parameter is the key of the log in the source Logstore and must carry the data type of the key, for example:{"columns": [{"name": "a", "type": "string"}, {"name": "B", "type": "string"}, {"name": "c", "type": "string": "string"}]}
+	//
+	// When the contentType value is set to orc, the parameters of the contentDetail value are as follows:
+	//
+	// The columns parameter is the key of the log in the source Logstore and must carry the data type of the key, for example:{"columns": [{"name": "a", "type": "string"}, {"name": "B", "type": "string"}, {"name": "c", "type": "string": "string"}]}
+	ContentDetail pulumi.StringInput `pulumi:"contentDetail"`
+	// The storage format of the OSS object. Valid values: json, parquet, csv, and orc.
+	ContentType pulumi.StringInput `pulumi:"contentType"`
+	// The latency of data shipping. The value of this parameter cannot exceed the data retention period of the source Logstore.
+	DelaySeconds pulumi.IntPtrInput `pulumi:"delaySeconds"`
+	// The OSS Endpoint can only be an OSS intranet Endpoint and only supports the same region. Example value: https://oss-cn-hangzhou-internal.aliyuncs.com
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+	// The directory is dynamically generated according to the time. The default value is% Y/%m/%d/%H/%M. The corresponding generated directory is, for example, 2017/01/23/12/00. Note that the partition format cannot start and end. Example values:%Y/%m/%d
+	PathFormat pulumi.StringPtrInput `pulumi:"pathFormat"`
+	// The partition format type. only support time
+	PathFormatType pulumi.StringPtrInput `pulumi:"pathFormatType"`
+	// The prefix of the OSS object.
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+	// The ARN of the RAM role that is used to write data to OSS. Example value: acs:ram::xxxxxxx
+	RoleArn pulumi.StringInput `pulumi:"roleArn"`
+	// The suffix of the OSS object.
+	Suffix pulumi.StringPtrInput `pulumi:"suffix"`
+	// The time zone. Example value: +0800
+	TimeZone pulumi.StringInput `pulumi:"timeZone"`
+}
+
+func (OssExportSinkConfigurationSinkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OssExportSinkConfigurationSink)(nil)).Elem()
+}
+
+func (i OssExportSinkConfigurationSinkArgs) ToOssExportSinkConfigurationSinkOutput() OssExportSinkConfigurationSinkOutput {
+	return i.ToOssExportSinkConfigurationSinkOutputWithContext(context.Background())
+}
+
+func (i OssExportSinkConfigurationSinkArgs) ToOssExportSinkConfigurationSinkOutputWithContext(ctx context.Context) OssExportSinkConfigurationSinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OssExportSinkConfigurationSinkOutput)
+}
+
+func (i OssExportSinkConfigurationSinkArgs) ToOssExportSinkConfigurationSinkPtrOutput() OssExportSinkConfigurationSinkPtrOutput {
+	return i.ToOssExportSinkConfigurationSinkPtrOutputWithContext(context.Background())
+}
+
+func (i OssExportSinkConfigurationSinkArgs) ToOssExportSinkConfigurationSinkPtrOutputWithContext(ctx context.Context) OssExportSinkConfigurationSinkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OssExportSinkConfigurationSinkOutput).ToOssExportSinkConfigurationSinkPtrOutputWithContext(ctx)
+}
+
+// OssExportSinkConfigurationSinkPtrInput is an input type that accepts OssExportSinkConfigurationSinkArgs, OssExportSinkConfigurationSinkPtr and OssExportSinkConfigurationSinkPtrOutput values.
+// You can construct a concrete instance of `OssExportSinkConfigurationSinkPtrInput` via:
+//
+//	        OssExportSinkConfigurationSinkArgs{...}
+//
+//	or:
+//
+//	        nil
+type OssExportSinkConfigurationSinkPtrInput interface {
+	pulumi.Input
+
+	ToOssExportSinkConfigurationSinkPtrOutput() OssExportSinkConfigurationSinkPtrOutput
+	ToOssExportSinkConfigurationSinkPtrOutputWithContext(context.Context) OssExportSinkConfigurationSinkPtrOutput
+}
+
+type ossExportSinkConfigurationSinkPtrType OssExportSinkConfigurationSinkArgs
+
+func OssExportSinkConfigurationSinkPtr(v *OssExportSinkConfigurationSinkArgs) OssExportSinkConfigurationSinkPtrInput {
+	return (*ossExportSinkConfigurationSinkPtrType)(v)
+}
+
+func (*ossExportSinkConfigurationSinkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OssExportSinkConfigurationSink)(nil)).Elem()
+}
+
+func (i *ossExportSinkConfigurationSinkPtrType) ToOssExportSinkConfigurationSinkPtrOutput() OssExportSinkConfigurationSinkPtrOutput {
+	return i.ToOssExportSinkConfigurationSinkPtrOutputWithContext(context.Background())
+}
+
+func (i *ossExportSinkConfigurationSinkPtrType) ToOssExportSinkConfigurationSinkPtrOutputWithContext(ctx context.Context) OssExportSinkConfigurationSinkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OssExportSinkConfigurationSinkPtrOutput)
+}
+
+type OssExportSinkConfigurationSinkOutput struct{ *pulumi.OutputState }
+
+func (OssExportSinkConfigurationSinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OssExportSinkConfigurationSink)(nil)).Elem()
+}
+
+func (o OssExportSinkConfigurationSinkOutput) ToOssExportSinkConfigurationSinkOutput() OssExportSinkConfigurationSinkOutput {
+	return o
+}
+
+func (o OssExportSinkConfigurationSinkOutput) ToOssExportSinkConfigurationSinkOutputWithContext(ctx context.Context) OssExportSinkConfigurationSinkOutput {
+	return o
+}
+
+func (o OssExportSinkConfigurationSinkOutput) ToOssExportSinkConfigurationSinkPtrOutput() OssExportSinkConfigurationSinkPtrOutput {
+	return o.ToOssExportSinkConfigurationSinkPtrOutputWithContext(context.Background())
+}
+
+func (o OssExportSinkConfigurationSinkOutput) ToOssExportSinkConfigurationSinkPtrOutputWithContext(ctx context.Context) OssExportSinkConfigurationSinkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OssExportSinkConfigurationSink) *OssExportSinkConfigurationSink {
+		return &v
+	}).(OssExportSinkConfigurationSinkPtrOutput)
+}
+
+// The OSS bucket.
+func (o OssExportSinkConfigurationSinkOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v OssExportSinkConfigurationSink) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// The interval between two data shipping operations. Valid values: 300 to 900. Unit: seconds.
+func (o OssExportSinkConfigurationSinkOutput) BufferInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v OssExportSinkConfigurationSink) string { return v.BufferInterval }).(pulumi.StringOutput)
+}
+
+// The size of the OSS object to which data is shipped. Valid values: 5 to 256. Unit: MB.
+func (o OssExportSinkConfigurationSinkOutput) BufferSize() pulumi.StringOutput {
+	return o.ApplyT(func(v OssExportSinkConfigurationSink) string { return v.BufferSize }).(pulumi.StringOutput)
+}
+
+// Supports four compression types, such as snappy, gzip, zstd, and none.
+func (o OssExportSinkConfigurationSinkOutput) CompressionType() pulumi.StringOutput {
+	return o.ApplyT(func(v OssExportSinkConfigurationSink) string { return v.CompressionType }).(pulumi.StringOutput)
+}
+
+// The OSS file content details. Note: the value of this parameter should be updated based on the value of the contentType parameter.
+//
+// If the contentType value is JSON, the parameters of the contentDetail value are as follows:
+//
+// If the tag is allowed to be posted, the value of the parameter enableTag is true. Example:{"enableTag": true}
+//
+// You are not allowed to post tags. The value of the parameter enableTag is false. Example:{"enableTag": false}
+//
+// If the contentType value is csv, the parameters of the contentDetail value are as follows:
+//
+// The parameter columns is the key of the log in the source logstore.
+//
+// The delimiter parameter, which can be ",","|","", or "\t".
+//
+// The header parameter determines whether the OSS file retains the header. The optional value is true or false.
+//
+// The lineFeed parameter. Optional values are "\t", "\n", or "".
+//
+// The invalid field content parameter is null to specify the delivery content when the field name does not exist.
+//
+// The escape character parameter "quote". Optional values are "" "," '", or" ".
+//
+// Example:{"null": "-", "header": false, "lineFeed": "\n", "quote": "", "delimiter": ",", "columns": ["a", "B", "c", "d"]}
+//
+// When the contentType value is parquet, the parameters of the contentDetail value are as follows:
+//
+// The columns parameter is the key of the log in the source Logstore and must carry the data type of the key, for example:{"columns": [{"name": "a", "type": "string"}, {"name": "B", "type": "string"}, {"name": "c", "type": "string": "string"}]}
+//
+// When the contentType value is set to orc, the parameters of the contentDetail value are as follows:
+//
+// The columns parameter is the key of the log in the source Logstore and must carry the data type of the key, for example:{"columns": [{"name": "a", "type": "string"}, {"name": "B", "type": "string"}, {"name": "c", "type": "string": "string"}]}
+func (o OssExportSinkConfigurationSinkOutput) ContentDetail() pulumi.StringOutput {
+	return o.ApplyT(func(v OssExportSinkConfigurationSink) string { return v.ContentDetail }).(pulumi.StringOutput)
+}
+
+// The storage format of the OSS object. Valid values: json, parquet, csv, and orc.
+func (o OssExportSinkConfigurationSinkOutput) ContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v OssExportSinkConfigurationSink) string { return v.ContentType }).(pulumi.StringOutput)
+}
+
+// The latency of data shipping. The value of this parameter cannot exceed the data retention period of the source Logstore.
+func (o OssExportSinkConfigurationSinkOutput) DelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OssExportSinkConfigurationSink) *int { return v.DelaySeconds }).(pulumi.IntPtrOutput)
+}
+
+// The OSS Endpoint can only be an OSS intranet Endpoint and only supports the same region. Example value: https://oss-cn-hangzhou-internal.aliyuncs.com
+func (o OssExportSinkConfigurationSinkOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v OssExportSinkConfigurationSink) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// The directory is dynamically generated according to the time. The default value is% Y/%m/%d/%H/%M. The corresponding generated directory is, for example, 2017/01/23/12/00. Note that the partition format cannot start and end. Example values:%Y/%m/%d
+func (o OssExportSinkConfigurationSinkOutput) PathFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OssExportSinkConfigurationSink) *string { return v.PathFormat }).(pulumi.StringPtrOutput)
+}
+
+// The partition format type. only support time
+func (o OssExportSinkConfigurationSinkOutput) PathFormatType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OssExportSinkConfigurationSink) *string { return v.PathFormatType }).(pulumi.StringPtrOutput)
+}
+
+// The prefix of the OSS object.
+func (o OssExportSinkConfigurationSinkOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OssExportSinkConfigurationSink) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+// The ARN of the RAM role that is used to write data to OSS. Example value: acs:ram::xxxxxxx
+func (o OssExportSinkConfigurationSinkOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v OssExportSinkConfigurationSink) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+// The suffix of the OSS object.
+func (o OssExportSinkConfigurationSinkOutput) Suffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OssExportSinkConfigurationSink) *string { return v.Suffix }).(pulumi.StringPtrOutput)
+}
+
+// The time zone. Example value: +0800
+func (o OssExportSinkConfigurationSinkOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v OssExportSinkConfigurationSink) string { return v.TimeZone }).(pulumi.StringOutput)
+}
+
+type OssExportSinkConfigurationSinkPtrOutput struct{ *pulumi.OutputState }
+
+func (OssExportSinkConfigurationSinkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OssExportSinkConfigurationSink)(nil)).Elem()
+}
+
+func (o OssExportSinkConfigurationSinkPtrOutput) ToOssExportSinkConfigurationSinkPtrOutput() OssExportSinkConfigurationSinkPtrOutput {
+	return o
+}
+
+func (o OssExportSinkConfigurationSinkPtrOutput) ToOssExportSinkConfigurationSinkPtrOutputWithContext(ctx context.Context) OssExportSinkConfigurationSinkPtrOutput {
+	return o
+}
+
+func (o OssExportSinkConfigurationSinkPtrOutput) Elem() OssExportSinkConfigurationSinkOutput {
+	return o.ApplyT(func(v *OssExportSinkConfigurationSink) OssExportSinkConfigurationSink {
+		if v != nil {
+			return *v
+		}
+		var ret OssExportSinkConfigurationSink
+		return ret
+	}).(OssExportSinkConfigurationSinkOutput)
+}
+
+// The OSS bucket.
+func (o OssExportSinkConfigurationSinkPtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OssExportSinkConfigurationSink) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// The interval between two data shipping operations. Valid values: 300 to 900. Unit: seconds.
+func (o OssExportSinkConfigurationSinkPtrOutput) BufferInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OssExportSinkConfigurationSink) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BufferInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+// The size of the OSS object to which data is shipped. Valid values: 5 to 256. Unit: MB.
+func (o OssExportSinkConfigurationSinkPtrOutput) BufferSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OssExportSinkConfigurationSink) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BufferSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// Supports four compression types, such as snappy, gzip, zstd, and none.
+func (o OssExportSinkConfigurationSinkPtrOutput) CompressionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OssExportSinkConfigurationSink) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CompressionType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OSS file content details. Note: the value of this parameter should be updated based on the value of the contentType parameter.
+//
+// If the contentType value is JSON, the parameters of the contentDetail value are as follows:
+//
+// If the tag is allowed to be posted, the value of the parameter enableTag is true. Example:{"enableTag": true}
+//
+// You are not allowed to post tags. The value of the parameter enableTag is false. Example:{"enableTag": false}
+//
+// If the contentType value is csv, the parameters of the contentDetail value are as follows:
+//
+// The parameter columns is the key of the log in the source logstore.
+//
+// The delimiter parameter, which can be ",","|","", or "\t".
+//
+// The header parameter determines whether the OSS file retains the header. The optional value is true or false.
+//
+// The lineFeed parameter. Optional values are "\t", "\n", or "".
+//
+// The invalid field content parameter is null to specify the delivery content when the field name does not exist.
+//
+// The escape character parameter "quote". Optional values are "" "," '", or" ".
+//
+// Example:{"null": "-", "header": false, "lineFeed": "\n", "quote": "", "delimiter": ",", "columns": ["a", "B", "c", "d"]}
+//
+// When the contentType value is parquet, the parameters of the contentDetail value are as follows:
+//
+// The columns parameter is the key of the log in the source Logstore and must carry the data type of the key, for example:{"columns": [{"name": "a", "type": "string"}, {"name": "B", "type": "string"}, {"name": "c", "type": "string": "string"}]}
+//
+// When the contentType value is set to orc, the parameters of the contentDetail value are as follows:
+//
+// The columns parameter is the key of the log in the source Logstore and must carry the data type of the key, for example:{"columns": [{"name": "a", "type": "string"}, {"name": "B", "type": "string"}, {"name": "c", "type": "string": "string"}]}
+func (o OssExportSinkConfigurationSinkPtrOutput) ContentDetail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OssExportSinkConfigurationSink) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ContentDetail
+	}).(pulumi.StringPtrOutput)
+}
+
+// The storage format of the OSS object. Valid values: json, parquet, csv, and orc.
+func (o OssExportSinkConfigurationSinkPtrOutput) ContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OssExportSinkConfigurationSink) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ContentType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The latency of data shipping. The value of this parameter cannot exceed the data retention period of the source Logstore.
+func (o OssExportSinkConfigurationSinkPtrOutput) DelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OssExportSinkConfigurationSink) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DelaySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The OSS Endpoint can only be an OSS intranet Endpoint and only supports the same region. Example value: https://oss-cn-hangzhou-internal.aliyuncs.com
+func (o OssExportSinkConfigurationSinkPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OssExportSinkConfigurationSink) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The directory is dynamically generated according to the time. The default value is% Y/%m/%d/%H/%M. The corresponding generated directory is, for example, 2017/01/23/12/00. Note that the partition format cannot start and end. Example values:%Y/%m/%d
+func (o OssExportSinkConfigurationSinkPtrOutput) PathFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OssExportSinkConfigurationSink) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PathFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// The partition format type. only support time
+func (o OssExportSinkConfigurationSinkPtrOutput) PathFormatType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OssExportSinkConfigurationSink) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PathFormatType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The prefix of the OSS object.
+func (o OssExportSinkConfigurationSinkPtrOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OssExportSinkConfigurationSink) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ARN of the RAM role that is used to write data to OSS. Example value: acs:ram::xxxxxxx
+func (o OssExportSinkConfigurationSinkPtrOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OssExportSinkConfigurationSink) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// The suffix of the OSS object.
+func (o OssExportSinkConfigurationSinkPtrOutput) Suffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OssExportSinkConfigurationSink) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Suffix
+	}).(pulumi.StringPtrOutput)
+}
+
+// The time zone. Example value: +0800
+func (o OssExportSinkConfigurationSinkPtrOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OssExportSinkConfigurationSink) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TimeZone
+	}).(pulumi.StringPtrOutput)
+}
+
 type ScheduledSqlSchedule struct {
 	// Cron expression, minimum precision is minutes, 24-hour clock. For example, 0 0/1 **indicates that the check is performed every one hour from 00:00. When type is set to Cron, cronExpression must be set.
 	CronExpression *string `pulumi:"cronExpression"`
@@ -4191,6 +4908,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CollectionPolicyPolicyConfigPtrInput)(nil)).Elem(), CollectionPolicyPolicyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CollectionPolicyResourceDirectoryInput)(nil)).Elem(), CollectionPolicyResourceDirectoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CollectionPolicyResourceDirectoryPtrInput)(nil)).Elem(), CollectionPolicyResourceDirectoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OssExportSinkConfigurationInput)(nil)).Elem(), OssExportSinkConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OssExportSinkConfigurationPtrInput)(nil)).Elem(), OssExportSinkConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OssExportSinkConfigurationSinkInput)(nil)).Elem(), OssExportSinkConfigurationSinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OssExportSinkConfigurationSinkPtrInput)(nil)).Elem(), OssExportSinkConfigurationSinkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduledSqlScheduleInput)(nil)).Elem(), ScheduledSqlScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduledSqlSchedulePtrInput)(nil)).Elem(), ScheduledSqlScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduledSqlScheduledSqlConfigurationInput)(nil)).Elem(), ScheduledSqlScheduledSqlConfigurationArgs{})
@@ -4233,6 +4954,10 @@ func init() {
 	pulumi.RegisterOutputType(CollectionPolicyPolicyConfigPtrOutput{})
 	pulumi.RegisterOutputType(CollectionPolicyResourceDirectoryOutput{})
 	pulumi.RegisterOutputType(CollectionPolicyResourceDirectoryPtrOutput{})
+	pulumi.RegisterOutputType(OssExportSinkConfigurationOutput{})
+	pulumi.RegisterOutputType(OssExportSinkConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(OssExportSinkConfigurationSinkOutput{})
+	pulumi.RegisterOutputType(OssExportSinkConfigurationSinkPtrOutput{})
 	pulumi.RegisterOutputType(ScheduledSqlScheduleOutput{})
 	pulumi.RegisterOutputType(ScheduledSqlSchedulePtrOutput{})
 	pulumi.RegisterOutputType(ScheduledSqlScheduledSqlConfigurationOutput{})

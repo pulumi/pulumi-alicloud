@@ -13,6 +13,121 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ProjectMemberRole struct {
+	// Project Role Code.
+	Code *string `pulumi:"code"`
+	// project role name
+	Name *string `pulumi:"name"`
+	// project role type
+	Type *string `pulumi:"type"`
+}
+
+// ProjectMemberRoleInput is an input type that accepts ProjectMemberRoleArgs and ProjectMemberRoleOutput values.
+// You can construct a concrete instance of `ProjectMemberRoleInput` via:
+//
+//	ProjectMemberRoleArgs{...}
+type ProjectMemberRoleInput interface {
+	pulumi.Input
+
+	ToProjectMemberRoleOutput() ProjectMemberRoleOutput
+	ToProjectMemberRoleOutputWithContext(context.Context) ProjectMemberRoleOutput
+}
+
+type ProjectMemberRoleArgs struct {
+	// Project Role Code.
+	Code pulumi.StringPtrInput `pulumi:"code"`
+	// project role name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// project role type
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (ProjectMemberRoleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectMemberRole)(nil)).Elem()
+}
+
+func (i ProjectMemberRoleArgs) ToProjectMemberRoleOutput() ProjectMemberRoleOutput {
+	return i.ToProjectMemberRoleOutputWithContext(context.Background())
+}
+
+func (i ProjectMemberRoleArgs) ToProjectMemberRoleOutputWithContext(ctx context.Context) ProjectMemberRoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectMemberRoleOutput)
+}
+
+// ProjectMemberRoleArrayInput is an input type that accepts ProjectMemberRoleArray and ProjectMemberRoleArrayOutput values.
+// You can construct a concrete instance of `ProjectMemberRoleArrayInput` via:
+//
+//	ProjectMemberRoleArray{ ProjectMemberRoleArgs{...} }
+type ProjectMemberRoleArrayInput interface {
+	pulumi.Input
+
+	ToProjectMemberRoleArrayOutput() ProjectMemberRoleArrayOutput
+	ToProjectMemberRoleArrayOutputWithContext(context.Context) ProjectMemberRoleArrayOutput
+}
+
+type ProjectMemberRoleArray []ProjectMemberRoleInput
+
+func (ProjectMemberRoleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectMemberRole)(nil)).Elem()
+}
+
+func (i ProjectMemberRoleArray) ToProjectMemberRoleArrayOutput() ProjectMemberRoleArrayOutput {
+	return i.ToProjectMemberRoleArrayOutputWithContext(context.Background())
+}
+
+func (i ProjectMemberRoleArray) ToProjectMemberRoleArrayOutputWithContext(ctx context.Context) ProjectMemberRoleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectMemberRoleArrayOutput)
+}
+
+type ProjectMemberRoleOutput struct{ *pulumi.OutputState }
+
+func (ProjectMemberRoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectMemberRole)(nil)).Elem()
+}
+
+func (o ProjectMemberRoleOutput) ToProjectMemberRoleOutput() ProjectMemberRoleOutput {
+	return o
+}
+
+func (o ProjectMemberRoleOutput) ToProjectMemberRoleOutputWithContext(ctx context.Context) ProjectMemberRoleOutput {
+	return o
+}
+
+// Project Role Code.
+func (o ProjectMemberRoleOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectMemberRole) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+// project role name
+func (o ProjectMemberRoleOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectMemberRole) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// project role type
+func (o ProjectMemberRoleOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectMemberRole) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type ProjectMemberRoleArrayOutput struct{ *pulumi.OutputState }
+
+func (ProjectMemberRoleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectMemberRole)(nil)).Elem()
+}
+
+func (o ProjectMemberRoleArrayOutput) ToProjectMemberRoleArrayOutput() ProjectMemberRoleArrayOutput {
+	return o
+}
+
+func (o ProjectMemberRoleArrayOutput) ToProjectMemberRoleArrayOutputWithContext(ctx context.Context) ProjectMemberRoleArrayOutput {
+	return o
+}
+
+func (o ProjectMemberRoleArrayOutput) Index(i pulumi.IntInput) ProjectMemberRoleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectMemberRole {
+		return vs[0].([]ProjectMemberRole)[vs[1].(int)]
+	}).(ProjectMemberRoleOutput)
+}
+
 type GetFoldersFolder struct {
 	FolderId string `pulumi:"folderId"`
 	// Folder Path.
@@ -135,8 +250,12 @@ func (o GetFoldersFolderArrayOutput) Index(i pulumi.IntInput) GetFoldersFolderOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectMemberRoleInput)(nil)).Elem(), ProjectMemberRoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectMemberRoleArrayInput)(nil)).Elem(), ProjectMemberRoleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFoldersFolderInput)(nil)).Elem(), GetFoldersFolderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFoldersFolderArrayInput)(nil)).Elem(), GetFoldersFolderArray{})
+	pulumi.RegisterOutputType(ProjectMemberRoleOutput{})
+	pulumi.RegisterOutputType(ProjectMemberRoleArrayOutput{})
 	pulumi.RegisterOutputType(GetFoldersFolderOutput{})
 	pulumi.RegisterOutputType(GetFoldersFolderArrayOutput{})
 }

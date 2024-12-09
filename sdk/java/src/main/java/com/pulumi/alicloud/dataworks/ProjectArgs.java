@@ -6,8 +6,9 @@ package com.pulumi.alicloud.dataworks;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,29 +19,59 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     public static final ProjectArgs Empty = new ProjectArgs();
 
     /**
-     * Description of the workspace
+     * Workspace Description
      * 
      */
-    @Import(name="description", required=true)
-    private Output<String> description;
+    @Import(name="description")
+    private @Nullable Output<String> description;
 
     /**
-     * @return Description of the workspace
+     * @return Workspace Description
      * 
      */
-    public Output<String> description() {
-        return this.description;
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
     }
 
     /**
-     * The display name of the workspace.
+     * Is Development Environment Enabled
+     * 
+     */
+    @Import(name="devEnvironmentEnabled")
+    private @Nullable Output<Boolean> devEnvironmentEnabled;
+
+    /**
+     * @return Is Development Environment Enabled
+     * 
+     */
+    public Optional<Output<Boolean>> devEnvironmentEnabled() {
+        return Optional.ofNullable(this.devEnvironmentEnabled);
+    }
+
+    /**
+     * Is Development Role Disabled
+     * 
+     */
+    @Import(name="devRoleDisabled")
+    private @Nullable Output<Boolean> devRoleDisabled;
+
+    /**
+     * @return Is Development Role Disabled
+     * 
+     */
+    public Optional<Output<Boolean>> devRoleDisabled() {
+        return Optional.ofNullable(this.devRoleDisabled);
+    }
+
+    /**
+     * Workspace Display Name
      * 
      */
     @Import(name="displayName", required=true)
     private Output<String> displayName;
 
     /**
-     * @return The display name of the workspace.
+     * @return Workspace Display Name
      * 
      */
     public Output<String> displayName() {
@@ -48,33 +79,29 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The mode of the workspace, with the following values:
-     * - 2, indicates the simple workspace mode.
-     * - 3, indicating the standard workspace mode.
+     * Create PAI Workspace Together
      * 
      */
-    @Import(name="projectMode")
-    private @Nullable Output<Integer> projectMode;
+    @Import(name="paiTaskEnabled", required=true)
+    private Output<Boolean> paiTaskEnabled;
 
     /**
-     * @return The mode of the workspace, with the following values:
-     * - 2, indicates the simple workspace mode.
-     * - 3, indicating the standard workspace mode.
+     * @return Create PAI Workspace Together
      * 
      */
-    public Optional<Output<Integer>> projectMode() {
-        return Optional.ofNullable(this.projectMode);
+    public Output<Boolean> paiTaskEnabled() {
+        return this.paiTaskEnabled;
     }
 
     /**
-     * Immutable Name of the workspace.
+     * Workspace Name
      * 
      */
     @Import(name="projectName", required=true)
     private Output<String> projectName;
 
     /**
-     * @return Immutable Name of the workspace.
+     * @return Workspace Name
      * 
      */
     public Output<String> projectName() {
@@ -82,28 +109,62 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the resource
+     * Aliyun Resource Group Id
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return Aliyun Resource Group Id
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * Workspace Status
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource
+     * @return Workspace Status
      * 
      */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
 
+    /**
+     * Aliyun Resource Tag
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return Aliyun Resource Tag
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
     private ProjectArgs() {}
 
     private ProjectArgs(ProjectArgs $) {
         this.description = $.description;
+        this.devEnvironmentEnabled = $.devEnvironmentEnabled;
+        this.devRoleDisabled = $.devRoleDisabled;
         this.displayName = $.displayName;
-        this.projectMode = $.projectMode;
+        this.paiTaskEnabled = $.paiTaskEnabled;
         this.projectName = $.projectName;
+        this.resourceGroupId = $.resourceGroupId;
         this.status = $.status;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -125,18 +186,18 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the workspace
+         * @param description Workspace Description
          * 
          * @return builder
          * 
          */
-        public Builder description(Output<String> description) {
+        public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
         /**
-         * @param description Description of the workspace
+         * @param description Workspace Description
          * 
          * @return builder
          * 
@@ -146,7 +207,49 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param displayName The display name of the workspace.
+         * @param devEnvironmentEnabled Is Development Environment Enabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder devEnvironmentEnabled(@Nullable Output<Boolean> devEnvironmentEnabled) {
+            $.devEnvironmentEnabled = devEnvironmentEnabled;
+            return this;
+        }
+
+        /**
+         * @param devEnvironmentEnabled Is Development Environment Enabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder devEnvironmentEnabled(Boolean devEnvironmentEnabled) {
+            return devEnvironmentEnabled(Output.of(devEnvironmentEnabled));
+        }
+
+        /**
+         * @param devRoleDisabled Is Development Role Disabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder devRoleDisabled(@Nullable Output<Boolean> devRoleDisabled) {
+            $.devRoleDisabled = devRoleDisabled;
+            return this;
+        }
+
+        /**
+         * @param devRoleDisabled Is Development Role Disabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder devRoleDisabled(Boolean devRoleDisabled) {
+            return devRoleDisabled(Output.of(devRoleDisabled));
+        }
+
+        /**
+         * @param displayName Workspace Display Name
          * 
          * @return builder
          * 
@@ -157,7 +260,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param displayName The display name of the workspace.
+         * @param displayName Workspace Display Name
          * 
          * @return builder
          * 
@@ -167,32 +270,28 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectMode The mode of the workspace, with the following values:
-         * - 2, indicates the simple workspace mode.
-         * - 3, indicating the standard workspace mode.
+         * @param paiTaskEnabled Create PAI Workspace Together
          * 
          * @return builder
          * 
          */
-        public Builder projectMode(@Nullable Output<Integer> projectMode) {
-            $.projectMode = projectMode;
+        public Builder paiTaskEnabled(Output<Boolean> paiTaskEnabled) {
+            $.paiTaskEnabled = paiTaskEnabled;
             return this;
         }
 
         /**
-         * @param projectMode The mode of the workspace, with the following values:
-         * - 2, indicates the simple workspace mode.
-         * - 3, indicating the standard workspace mode.
+         * @param paiTaskEnabled Create PAI Workspace Together
          * 
          * @return builder
          * 
          */
-        public Builder projectMode(Integer projectMode) {
-            return projectMode(Output.of(projectMode));
+        public Builder paiTaskEnabled(Boolean paiTaskEnabled) {
+            return paiTaskEnabled(Output.of(paiTaskEnabled));
         }
 
         /**
-         * @param projectName Immutable Name of the workspace.
+         * @param projectName Workspace Name
          * 
          * @return builder
          * 
@@ -203,7 +302,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectName Immutable Name of the workspace.
+         * @param projectName Workspace Name
          * 
          * @return builder
          * 
@@ -213,7 +312,28 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the resource
+         * @param resourceGroupId Aliyun Resource Group Id
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId Aliyun Resource Group Id
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param status Workspace Status
          * 
          * @return builder
          * 
@@ -224,7 +344,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the resource
+         * @param status Workspace Status
          * 
          * @return builder
          * 
@@ -233,12 +353,33 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
             return status(Output.of(status));
         }
 
+        /**
+         * @param tags Aliyun Resource Tag
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags Aliyun Resource Tag
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
+        }
+
         public ProjectArgs build() {
-            if ($.description == null) {
-                throw new MissingRequiredPropertyException("ProjectArgs", "description");
-            }
             if ($.displayName == null) {
                 throw new MissingRequiredPropertyException("ProjectArgs", "displayName");
+            }
+            if ($.paiTaskEnabled == null) {
+                throw new MissingRequiredPropertyException("ProjectArgs", "paiTaskEnabled");
             }
             if ($.projectName == null) {
                 throw new MissingRequiredPropertyException("ProjectArgs", "projectName");

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about ECS Key Pair and how to use it, see [What is Key Pair](https://www.alibabacloud.com/help/en/doc-detail/51771.htm).
  *
- * > **NOTE:** Available in v1.121.0+.
+ * > **NOTE:** Available since v1.121.0.
  *
  * ## Example Usage
  *
@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  * ECS Key Pair can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:ecs/ecsKeyPair:EcsKeyPair example <key_name>
+ * $ pulumi import alicloud:ecs/ecsKeyPair:EcsKeyPair example <id>
  * ```
  */
 export class EcsKeyPair extends pulumi.CustomResource {
@@ -66,7 +66,11 @@ export class EcsKeyPair extends pulumi.CustomResource {
     }
 
     /**
-     * The finger print of the key pair.
+     * (Available since v1.237.0) The time when the key pair was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The fingerprint of the key pair.
      */
     public /*out*/ readonly fingerPrint!: pulumi.Output<string>;
     /**
@@ -74,24 +78,25 @@ export class EcsKeyPair extends pulumi.CustomResource {
      */
     public readonly keyFile!: pulumi.Output<string | undefined>;
     /**
-     * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
-     *
-     * @deprecated Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
+     * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      */
     public readonly keyName!: pulumi.Output<string>;
     public readonly keyNamePrefix!: pulumi.Output<string | undefined>;
     /**
-     * The key pair's name. It is the only in one Alicloud account, the key pair's name. must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+     * The name of the key pair. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      */
     public readonly keyPairName!: pulumi.Output<string>;
     /**
-     * You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
+     * The public key of the key pair.
      */
     public readonly publicKey!: pulumi.Output<string | undefined>;
     /**
-     * The Id of resource group which the key pair belongs.
+     * The ID of the resource group to which to add the key pair.
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -107,6 +112,7 @@ export class EcsKeyPair extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EcsKeyPairState | undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["fingerPrint"] = state ? state.fingerPrint : undefined;
             resourceInputs["keyFile"] = state ? state.keyFile : undefined;
             resourceInputs["keyName"] = state ? state.keyName : undefined;
@@ -124,6 +130,7 @@ export class EcsKeyPair extends pulumi.CustomResource {
             resourceInputs["publicKey"] = args ? args.publicKey : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["fingerPrint"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -136,7 +143,11 @@ export class EcsKeyPair extends pulumi.CustomResource {
  */
 export interface EcsKeyPairState {
     /**
-     * The finger print of the key pair.
+     * (Available since v1.237.0) The time when the key pair was created.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * The fingerprint of the key pair.
      */
     fingerPrint?: pulumi.Input<string>;
     /**
@@ -144,24 +155,25 @@ export interface EcsKeyPairState {
      */
     keyFile?: pulumi.Input<string>;
     /**
-     * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
-     *
-     * @deprecated Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
+     * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      */
     keyName?: pulumi.Input<string>;
     keyNamePrefix?: pulumi.Input<string>;
     /**
-     * The key pair's name. It is the only in one Alicloud account, the key pair's name. must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+     * The name of the key pair. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      */
     keyPairName?: pulumi.Input<string>;
     /**
-     * You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
+     * The public key of the key pair.
      */
     publicKey?: pulumi.Input<string>;
     /**
-     * The Id of resource group which the key pair belongs.
+     * The ID of the resource group to which to add the key pair.
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -174,23 +186,24 @@ export interface EcsKeyPairArgs {
      */
     keyFile?: pulumi.Input<string>;
     /**
-     * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
-     *
-     * @deprecated Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
+     * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      */
     keyName?: pulumi.Input<string>;
     keyNamePrefix?: pulumi.Input<string>;
     /**
-     * The key pair's name. It is the only in one Alicloud account, the key pair's name. must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+     * The name of the key pair. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      */
     keyPairName?: pulumi.Input<string>;
     /**
-     * You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
+     * The public key of the key pair.
      */
     publicKey?: pulumi.Input<string>;
     /**
-     * The Id of resource group which the key pair belongs.
+     * The ID of the resource group to which to add the key pair.
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
