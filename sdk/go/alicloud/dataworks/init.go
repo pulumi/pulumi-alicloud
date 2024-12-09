@@ -21,10 +21,16 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:dataworks/dataSource:DataSource":
+		r = &DataSource{}
+	case "alicloud:dataworks/dataSourceSharedRule:DataSourceSharedRule":
+		r = &DataSourceSharedRule{}
 	case "alicloud:dataworks/folder:Folder":
 		r = &Folder{}
 	case "alicloud:dataworks/project:Project":
 		r = &Project{}
+	case "alicloud:dataworks/projectMember:ProjectMember":
+		r = &ProjectMember{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -40,12 +46,27 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"dataworks/dataSource",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"dataworks/dataSourceSharedRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"dataworks/folder",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"dataworks/project",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"dataworks/projectMember",
 		&module{version},
 	)
 }

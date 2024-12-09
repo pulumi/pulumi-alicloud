@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Arms.Outputs
         /// </summary>
         public readonly string NotifyObjectId;
         /// <summary>
-        /// The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
+        /// The type of the alert contact. Valid values: ARMS_ROBOT: robot. ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
         /// </summary>
         public readonly string NotifyType;
 

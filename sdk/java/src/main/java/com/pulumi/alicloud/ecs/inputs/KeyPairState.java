@@ -16,6 +16,13 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
 
     public static final KeyPairState Empty = new KeyPairState();
 
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
     @Import(name="fingerPrint")
     private @Nullable Output<String> fingerPrint;
 
@@ -42,10 +49,10 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
      * The key pair&#39;s name. It is the only in one Alicloud account.
      * 
      * @deprecated
-     * Field &#39;key_name&#39; has been deprecated from provider version 1.121.0. New field &#39;key_pair_name&#39; instead.
+     * Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
      * 
      */
-    @Deprecated /* Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead. */
+    @Deprecated /* Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead. */
     @Import(name="keyName")
     private @Nullable Output<String> keyName;
 
@@ -53,10 +60,10 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
      * @return The key pair&#39;s name. It is the only in one Alicloud account.
      * 
      * @deprecated
-     * Field &#39;key_name&#39; has been deprecated from provider version 1.121.0. New field &#39;key_pair_name&#39; instead.
+     * Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
      * 
      */
-    @Deprecated /* Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead. */
+    @Deprecated /* Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead. */
     public Optional<Output<String>> keyName() {
         return Optional.ofNullable(this.keyName);
     }
@@ -115,6 +122,7 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
     private KeyPairState() {}
 
     private KeyPairState(KeyPairState $) {
+        this.createTime = $.createTime;
         this.fingerPrint = $.fingerPrint;
         this.keyFile = $.keyFile;
         this.keyName = $.keyName;
@@ -141,6 +149,15 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(KeyPairState defaults) {
             $ = new KeyPairState(Objects.requireNonNull(defaults));
+        }
+
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
         }
 
         public Builder fingerPrint(@Nullable Output<String> fingerPrint) {
@@ -179,10 +196,10 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field &#39;key_name&#39; has been deprecated from provider version 1.121.0. New field &#39;key_pair_name&#39; instead.
+         * Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
          * 
          */
-        @Deprecated /* Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead. */
+        @Deprecated /* Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead. */
         public Builder keyName(@Nullable Output<String> keyName) {
             $.keyName = keyName;
             return this;
@@ -194,10 +211,10 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field &#39;key_name&#39; has been deprecated from provider version 1.121.0. New field &#39;key_pair_name&#39; instead.
+         * Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
          * 
          */
-        @Deprecated /* Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead. */
+        @Deprecated /* Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead. */
         public Builder keyName(String keyName) {
             return keyName(Output.of(keyName));
         }

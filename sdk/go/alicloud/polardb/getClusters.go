@@ -111,7 +111,7 @@ type GetClustersArgs struct {
 type GetClustersResult struct {
 	// A list of PolarDB clusters. Each element contains the following attributes:
 	Clusters []GetClustersCluster `pulumi:"clusters"`
-	// `Primary` for primary cluster, `ReadOnly` for read-only cluster, `Guard` for disaster recovery cluster, and `Temp` for temporary cluster.
+	// Database type. Value options: MySQL, PostgreSQL and Oracle.
 	DbType           *string `pulumi:"dbType"`
 	DescriptionRegex *string `pulumi:"descriptionRegex"`
 	// A list of RDS cluster descriptions.
@@ -187,7 +187,7 @@ func (o GetClustersResultOutput) Clusters() GetClustersClusterArrayOutput {
 	return o.ApplyT(func(v GetClustersResult) []GetClustersCluster { return v.Clusters }).(GetClustersClusterArrayOutput)
 }
 
-// `Primary` for primary cluster, `ReadOnly` for read-only cluster, `Guard` for disaster recovery cluster, and `Temp` for temporary cluster.
+// Database type. Value options: MySQL, PostgreSQL and Oracle.
 func (o GetClustersResultOutput) DbType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClustersResult) *string { return v.DbType }).(pulumi.StringPtrOutput)
 }

@@ -436,14 +436,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+     * Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
      * 
      */
     @Import(name="hotStandbyCluster")
     private @Nullable Output<String> hotStandbyCluster;
 
     /**
-     * @return Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+     * @return Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
      * 
      */
     public Optional<Output<String>> hotStandbyCluster() {
@@ -1859,7 +1859,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hotStandbyCluster Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+         * @param hotStandbyCluster Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
          * 
          * @return builder
          * 
@@ -1870,7 +1870,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hotStandbyCluster Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+         * @param hotStandbyCluster Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
          * 
          * @return builder
          * 

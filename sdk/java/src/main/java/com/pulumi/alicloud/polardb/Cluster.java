@@ -421,14 +421,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.hotReplicaMode;
     }
     /**
-     * Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+     * Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
      * 
      */
     @Export(name="hotStandbyCluster", refs={String.class}, tree="[0]")
     private Output<String> hotStandbyCluster;
 
     /**
-     * @return Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+     * @return Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
      * 
      */
     public Output<String> hotStandbyCluster() {

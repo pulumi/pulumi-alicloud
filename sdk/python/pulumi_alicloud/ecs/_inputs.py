@@ -43,6 +43,8 @@ __all__ = [
     'ImageImportDiskDeviceMappingArgsDict',
     'InstanceDataDiskArgs',
     'InstanceDataDiskArgsDict',
+    'InstanceImageOptionsArgs',
+    'InstanceImageOptionsArgsDict',
     'InstanceMaintenanceTimeArgs',
     'InstanceMaintenanceTimeArgsDict',
     'InstanceNetworkInterfacesArgs',
@@ -1815,6 +1817,38 @@ class InstanceDataDiskArgs:
     @snapshot_id.setter
     def snapshot_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "snapshot_id", value)
+
+
+if not MYPY:
+    class InstanceImageOptionsArgsDict(TypedDict):
+        login_as_non_root: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to allow the instance logging in with the ecs-user user.
+        """
+elif False:
+    InstanceImageOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceImageOptionsArgs:
+    def __init__(__self__, *,
+                 login_as_non_root: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] login_as_non_root: Whether to allow the instance logging in with the ecs-user user.
+        """
+        if login_as_non_root is not None:
+            pulumi.set(__self__, "login_as_non_root", login_as_non_root)
+
+    @property
+    @pulumi.getter(name="loginAsNonRoot")
+    def login_as_non_root(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to allow the instance logging in with the ecs-user user.
+        """
+        return pulumi.get(self, "login_as_non_root")
+
+    @login_as_non_root.setter
+    def login_as_non_root(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "login_as_non_root", value)
 
 
 if not MYPY:

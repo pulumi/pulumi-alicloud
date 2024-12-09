@@ -83,14 +83,14 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+     * Specifies whether to enable IPv6. Valid values:
      * 
      */
     @Import(name="enableIpv6")
     private @Nullable Output<Boolean> enableIpv6;
 
     /**
-     * @return The name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+     * @return Specifies whether to enable IPv6. Valid values:
      * 
      */
     public Optional<Output<Boolean>> enableIpv6() {
@@ -446,7 +446,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableIpv6 The name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+         * @param enableIpv6 Specifies whether to enable IPv6. Valid values:
          * 
          * @return builder
          * 
@@ -457,7 +457,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableIpv6 The name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+         * @param enableIpv6 Specifies whether to enable IPv6. Valid values:
          * 
          * @return builder
          * 

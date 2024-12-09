@@ -88,7 +88,7 @@ import (
 //			}
 //			_, err = oss.NewBucket(ctx, "bucket-website", &oss.BucketArgs{
 //				Bucket: pulumi.Sprintf("example-value-%v", _default.Result),
-//				Website: &oss.BucketWebsiteArgs{
+//				Website: &oss.BucketWebsiteTypeArgs{
 //					IndexDocument: pulumi.String("index.html"),
 //					ErrorDocument: pulumi.String("error.html"),
 //				},
@@ -267,7 +267,7 @@ type Bucket struct {
 	// A state of versioning. See `versioning` below.
 	Versioning BucketVersioningTypePtrOutput `pulumi:"versioning"`
 	// A website configuration. See `website` below.
-	Website BucketWebsitePtrOutput `pulumi:"website"`
+	Website BucketWebsiteTypePtrOutput `pulumi:"website"`
 }
 
 // NewBucket registers a new resource with the given unique name, arguments, and options.
@@ -350,7 +350,7 @@ type bucketState struct {
 	// A state of versioning. See `versioning` below.
 	Versioning *BucketVersioningType `pulumi:"versioning"`
 	// A website configuration. See `website` below.
-	Website *BucketWebsite `pulumi:"website"`
+	Website *BucketWebsiteType `pulumi:"website"`
 }
 
 type BucketState struct {
@@ -404,7 +404,7 @@ type BucketState struct {
 	// A state of versioning. See `versioning` below.
 	Versioning BucketVersioningTypePtrInput
 	// A website configuration. See `website` below.
-	Website BucketWebsitePtrInput
+	Website BucketWebsiteTypePtrInput
 }
 
 func (BucketState) ElementType() reflect.Type {
@@ -452,7 +452,7 @@ type bucketArgs struct {
 	// A state of versioning. See `versioning` below.
 	Versioning *BucketVersioningType `pulumi:"versioning"`
 	// A website configuration. See `website` below.
-	Website *BucketWebsite `pulumi:"website"`
+	Website *BucketWebsiteType `pulumi:"website"`
 }
 
 // The set of arguments for constructing a Bucket resource.
@@ -497,7 +497,7 @@ type BucketArgs struct {
 	// A state of versioning. See `versioning` below.
 	Versioning BucketVersioningTypePtrInput
 	// A website configuration. See `website` below.
-	Website BucketWebsitePtrInput
+	Website BucketWebsiteTypePtrInput
 }
 
 func (BucketArgs) ElementType() reflect.Type {
@@ -706,8 +706,8 @@ func (o BucketOutput) Versioning() BucketVersioningTypePtrOutput {
 }
 
 // A website configuration. See `website` below.
-func (o BucketOutput) Website() BucketWebsitePtrOutput {
-	return o.ApplyT(func(v *Bucket) BucketWebsitePtrOutput { return v.Website }).(BucketWebsitePtrOutput)
+func (o BucketOutput) Website() BucketWebsiteTypePtrOutput {
+	return o.ApplyT(func(v *Bucket) BucketWebsiteTypePtrOutput { return v.Website }).(BucketWebsiteTypePtrOutput)
 }
 
 type BucketArrayOutput struct{ *pulumi.OutputState }

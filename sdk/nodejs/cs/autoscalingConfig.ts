@@ -12,6 +12,8 @@ import * as utilities from "../utilities";
  * > **NOTE:** From version 1.164.0, support for specifying whether to allow the scale-in of nodes by parameter `scaleDownEnabled`.
  *
  * > **NOTE:** From version 1.164.0, support for selecting the policy for selecting which node pool to scale by parameter `expander`.
+ *
+ * > **NOTE:** From version 1.237.0, support for selecting the type of autoscaler by parameter `scalerType`.
  */
 export class AutoscalingConfig extends pulumi.CustomResource {
     /**
@@ -82,6 +84,10 @@ export class AutoscalingConfig extends pulumi.CustomResource {
      */
     public readonly scaleUpFromZero!: pulumi.Output<boolean | undefined>;
     /**
+     * The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`.
+     */
+    public readonly scalerType!: pulumi.Output<string | undefined>;
+    /**
      * The interval at which the cluster is reevaluated for scaling. Default is `30s`.
      */
     public readonly scanInterval!: pulumi.Output<string | undefined>;
@@ -125,6 +131,7 @@ export class AutoscalingConfig extends pulumi.CustomResource {
             resourceInputs["recycleNodeDeletionEnabled"] = state ? state.recycleNodeDeletionEnabled : undefined;
             resourceInputs["scaleDownEnabled"] = state ? state.scaleDownEnabled : undefined;
             resourceInputs["scaleUpFromZero"] = state ? state.scaleUpFromZero : undefined;
+            resourceInputs["scalerType"] = state ? state.scalerType : undefined;
             resourceInputs["scanInterval"] = state ? state.scanInterval : undefined;
             resourceInputs["skipNodesWithLocalStorage"] = state ? state.skipNodesWithLocalStorage : undefined;
             resourceInputs["skipNodesWithSystemPods"] = state ? state.skipNodesWithSystemPods : undefined;
@@ -142,6 +149,7 @@ export class AutoscalingConfig extends pulumi.CustomResource {
             resourceInputs["recycleNodeDeletionEnabled"] = args ? args.recycleNodeDeletionEnabled : undefined;
             resourceInputs["scaleDownEnabled"] = args ? args.scaleDownEnabled : undefined;
             resourceInputs["scaleUpFromZero"] = args ? args.scaleUpFromZero : undefined;
+            resourceInputs["scalerType"] = args ? args.scalerType : undefined;
             resourceInputs["scanInterval"] = args ? args.scanInterval : undefined;
             resourceInputs["skipNodesWithLocalStorage"] = args ? args.skipNodesWithLocalStorage : undefined;
             resourceInputs["skipNodesWithSystemPods"] = args ? args.skipNodesWithSystemPods : undefined;
@@ -197,6 +205,10 @@ export interface AutoscalingConfigState {
      * Should CA scale up when there 0 ready nodes. Default is `true`.
      */
     scaleUpFromZero?: pulumi.Input<boolean>;
+    /**
+     * The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`.
+     */
+    scalerType?: pulumi.Input<string>;
     /**
      * The interval at which the cluster is reevaluated for scaling. Default is `30s`.
      */
@@ -263,6 +275,10 @@ export interface AutoscalingConfigArgs {
      * Should CA scale up when there 0 ready nodes. Default is `true`.
      */
     scaleUpFromZero?: pulumi.Input<boolean>;
+    /**
+     * The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`.
+     */
+    scalerType?: pulumi.Input<string>;
     /**
      * The interval at which the cluster is reevaluated for scaling. Default is `30s`.
      */

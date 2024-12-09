@@ -105,6 +105,8 @@ namespace Pulumi.AliCloud.Arms
     ///                     "dingTalk",
     ///                     "wechat",
     ///                 },
+    ///                 NotifyStartTime = "10:00",
+    ///                 NotifyEndTime = "23:00",
     ///             },
     ///         },
     ///     });

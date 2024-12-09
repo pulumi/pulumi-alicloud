@@ -365,6 +365,11 @@ export type ImageImport = import("./imageImport").ImageImport;
 export const ImageImport: typeof import("./imageImport").ImageImport = null as any;
 utilities.lazyLoad(exports, ["ImageImport"], () => require("./imageImport"));
 
+export { ImagePipelineExecutionArgs, ImagePipelineExecutionState } from "./imagePipelineExecution";
+export type ImagePipelineExecution = import("./imagePipelineExecution").ImagePipelineExecution;
+export const ImagePipelineExecution: typeof import("./imagePipelineExecution").ImagePipelineExecution = null as any;
+utilities.lazyLoad(exports, ["ImagePipelineExecution"], () => require("./imagePipelineExecution"));
+
 export { ImageSharePermissionArgs, ImageSharePermissionState } from "./imageSharePermission";
 export type ImageSharePermission = import("./imageSharePermission").ImageSharePermission;
 export const ImageSharePermission: typeof import("./imageSharePermission").ImageSharePermission = null as any;
@@ -501,6 +506,8 @@ const _module = {
                 return new ImageExport(name, <any>undefined, { urn })
             case "alicloud:ecs/imageImport:ImageImport":
                 return new ImageImport(name, <any>undefined, { urn })
+            case "alicloud:ecs/imagePipelineExecution:ImagePipelineExecution":
+                return new ImagePipelineExecution(name, <any>undefined, { urn })
             case "alicloud:ecs/imageSharePermission:ImageSharePermission":
                 return new ImageSharePermission(name, <any>undefined, { urn })
             case "alicloud:ecs/instance:Instance":
@@ -566,6 +573,7 @@ pulumi.runtime.registerResourceModule("alicloud", "ecs/image", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/imageCopy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/imageExport", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/imageImport", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ecs/imagePipelineExecution", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/imageSharePermission", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/instance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/keyPair", _module)

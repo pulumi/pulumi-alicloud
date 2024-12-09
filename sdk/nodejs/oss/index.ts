@@ -110,6 +110,11 @@ export type BucketVersioning = import("./bucketVersioning").BucketVersioning;
 export const BucketVersioning: typeof import("./bucketVersioning").BucketVersioning = null as any;
 utilities.lazyLoad(exports, ["BucketVersioning"], () => require("./bucketVersioning"));
 
+export { BucketWebsiteArgs, BucketWebsiteState } from "./bucketWebsite";
+export type BucketWebsite = import("./bucketWebsite").BucketWebsite;
+export const BucketWebsite: typeof import("./bucketWebsite").BucketWebsite = null as any;
+utilities.lazyLoad(exports, ["BucketWebsite"], () => require("./bucketWebsite"));
+
 export { GetBucketObjectsArgs, GetBucketObjectsResult, GetBucketObjectsOutputArgs } from "./getBucketObjects";
 export const getBucketObjects: typeof import("./getBucketObjects").getBucketObjects = null as any;
 export const getBucketObjectsOutput: typeof import("./getBucketObjects").getBucketObjectsOutput = null as any;
@@ -187,6 +192,8 @@ const _module = {
                 return new BucketUserDefinedLogFields(name, <any>undefined, { urn })
             case "alicloud:oss/bucketVersioning:BucketVersioning":
                 return new BucketVersioning(name, <any>undefined, { urn })
+            case "alicloud:oss/bucketWebsite:BucketWebsite":
+                return new BucketWebsite(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -213,3 +220,4 @@ pulumi.runtime.registerResourceModule("alicloud", "oss/bucketServerSideEncryptio
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketTransferAcceleration", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketUserDefinedLogFields", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketVersioning", _module)
+pulumi.runtime.registerResourceModule("alicloud", "oss/bucketWebsite", _module)

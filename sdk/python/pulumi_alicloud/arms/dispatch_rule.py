@@ -306,6 +306,8 @@ class DispatchRule(pulumi.CustomResource):
                     "dingTalk",
                     "wechat",
                 ],
+                "notify_start_time": "10:00",
+                "notify_end_time": "23:00",
             }])
         ```
 
@@ -388,6 +390,8 @@ class DispatchRule(pulumi.CustomResource):
                     "dingTalk",
                     "wechat",
                 ],
+                "notify_start_time": "10:00",
+                "notify_end_time": "23:00",
             }])
         ```
 

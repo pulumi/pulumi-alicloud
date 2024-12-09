@@ -56,6 +56,9 @@ class GetDispatchRulesResult:
     @property
     @pulumi.getter(name="dispatchRuleName")
     def dispatch_rule_name(self) -> Optional[str]:
+        """
+        The name of the dispatch rule.
+        """
         return pulumi.get(self, "dispatch_rule_name")
 
     @property
@@ -84,6 +87,9 @@ class GetDispatchRulesResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Dispatch Rule names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -94,6 +100,9 @@ class GetDispatchRulesResult:
     @property
     @pulumi.getter
     def rules(self) -> Sequence['outputs.GetDispatchRulesRuleResult']:
+        """
+        A list of Arms Dispatch Rules. Each element contains the following attributes:
+        """
         return pulumi.get(self, "rules")
 
 
@@ -122,7 +131,7 @@ def get_dispatch_rules(dispatch_rule_name: Optional[str] = None,
     """
     This data source provides the Arms Dispatch Rules of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.136.0+.
+    > **NOTE:** Available since v1.136.0.
 
     ## Example Usage
 
@@ -132,10 +141,52 @@ def get_dispatch_rules(dispatch_rule_name: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
+    default = alicloud.arms.AlertContact("default",
+        alert_contact_name="example_value",
+        email="example_value@aaa.com")
+    default_alert_contact_group = alicloud.arms.AlertContactGroup("default",
+        alert_contact_group_name="example_value",
+        contact_ids=[default.id])
+    default_dispatch_rule = alicloud.arms.DispatchRule("default",
+        dispatch_rule_name="example_value",
+        dispatch_type="CREATE_ALERT",
+        group_rules=[{
+            "group_wait_time": 5,
+            "group_interval": 15,
+            "repeat_interval": 100,
+            "grouping_fields": ["alertname"],
+        }],
+        label_match_expression_grids=[{
+            "label_match_expression_groups": [{
+                "label_match_expressions": [{
+                    "key": "_aliyun_arms_involvedObject_kind",
+                    "value": "app",
+                    "operator": "eq",
+                }],
+            }],
+        }],
+        notify_rules=[{
+            "notify_objects": [
+                {
+                    "notify_object_id": default.id,
+                    "notify_type": "ARMS_CONTACT",
+                    "name": "example_value",
+                },
+                {
+                    "notify_object_id": default_alert_contact_group.id,
+                    "notify_type": "ARMS_CONTACT_GROUP",
+                    "name": "example_value",
+                },
+            ],
+            "notify_channels": [
+                "dingTalk",
+                "wechat",
+            ],
+            "notify_start_time": "10:00",
+            "notify_end_time": "23:00",
+        }])
     ids = alicloud.arms.get_dispatch_rules()
     pulumi.export("armsDispatchRuleId1", ids.rules[0].id)
-    name_regex = alicloud.arms.get_dispatch_rules(name_regex="^my-DispatchRule")
-    pulumi.export("armsDispatchRuleId2", name_regex.rules[0].id)
     ```
 
 
@@ -172,7 +223,7 @@ def get_dispatch_rules_output(dispatch_rule_name: Optional[pulumi.Input[Optional
     """
     This data source provides the Arms Dispatch Rules of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.136.0+.
+    > **NOTE:** Available since v1.136.0.
 
     ## Example Usage
 
@@ -182,10 +233,52 @@ def get_dispatch_rules_output(dispatch_rule_name: Optional[pulumi.Input[Optional
     import pulumi
     import pulumi_alicloud as alicloud
 
+    default = alicloud.arms.AlertContact("default",
+        alert_contact_name="example_value",
+        email="example_value@aaa.com")
+    default_alert_contact_group = alicloud.arms.AlertContactGroup("default",
+        alert_contact_group_name="example_value",
+        contact_ids=[default.id])
+    default_dispatch_rule = alicloud.arms.DispatchRule("default",
+        dispatch_rule_name="example_value",
+        dispatch_type="CREATE_ALERT",
+        group_rules=[{
+            "group_wait_time": 5,
+            "group_interval": 15,
+            "repeat_interval": 100,
+            "grouping_fields": ["alertname"],
+        }],
+        label_match_expression_grids=[{
+            "label_match_expression_groups": [{
+                "label_match_expressions": [{
+                    "key": "_aliyun_arms_involvedObject_kind",
+                    "value": "app",
+                    "operator": "eq",
+                }],
+            }],
+        }],
+        notify_rules=[{
+            "notify_objects": [
+                {
+                    "notify_object_id": default.id,
+                    "notify_type": "ARMS_CONTACT",
+                    "name": "example_value",
+                },
+                {
+                    "notify_object_id": default_alert_contact_group.id,
+                    "notify_type": "ARMS_CONTACT_GROUP",
+                    "name": "example_value",
+                },
+            ],
+            "notify_channels": [
+                "dingTalk",
+                "wechat",
+            ],
+            "notify_start_time": "10:00",
+            "notify_end_time": "23:00",
+        }])
     ids = alicloud.arms.get_dispatch_rules()
     pulumi.export("armsDispatchRuleId1", ids.rules[0].id)
-    name_regex = alicloud.arms.get_dispatch_rules(name_regex="^my-DispatchRule")
-    pulumi.export("armsDispatchRuleId2", name_regex.rules[0].id)
     ```
 
 

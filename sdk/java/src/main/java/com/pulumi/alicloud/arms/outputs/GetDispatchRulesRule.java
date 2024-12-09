@@ -24,6 +24,10 @@ public final class GetDispatchRulesRule {
      * 
      */
     private String dispatchRuleName;
+    /**
+     * @return The type of the dispatch rule.
+     * 
+     */
     private String dispatchType;
     /**
      * @return Sets the event group.
@@ -66,6 +70,10 @@ public final class GetDispatchRulesRule {
     public String dispatchRuleName() {
         return this.dispatchRuleName;
     }
+    /**
+     * @return The type of the dispatch rule.
+     * 
+     */
     public String dispatchType() {
         return this.dispatchType;
     }

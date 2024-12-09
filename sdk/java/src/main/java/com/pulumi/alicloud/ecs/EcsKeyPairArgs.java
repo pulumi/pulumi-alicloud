@@ -32,24 +32,20 @@ public final class EcsKeyPairArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * @deprecated
      * Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
      * 
-     * @deprecated
-     * Field &#39;key_name&#39; has been deprecated from provider version 1.121.0. New field &#39;key_pair_name&#39; instead.
-     * 
      */
-    @Deprecated /* Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead. */
+    @Deprecated /* Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead. */
     @Import(name="keyName")
     private @Nullable Output<String> keyName;
 
     /**
-     * @return Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
-     * 
      * @deprecated
-     * Field &#39;key_name&#39; has been deprecated from provider version 1.121.0. New field &#39;key_pair_name&#39; instead.
+     * Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
      * 
      */
-    @Deprecated /* Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead. */
+    @Deprecated /* Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead. */
     public Optional<Output<String>> keyName() {
         return Optional.ofNullable(this.keyName);
     }
@@ -62,14 +58,14 @@ public final class EcsKeyPairArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The key pair&#39;s name. It is the only in one Alicloud account, the key pair&#39;s name. must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+     * The name of the key pair. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      * 
      */
     @Import(name="keyPairName")
     private @Nullable Output<String> keyPairName;
 
     /**
-     * @return The key pair&#39;s name. It is the only in one Alicloud account, the key pair&#39;s name. must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+     * @return The name of the key pair. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      * 
      */
     public Optional<Output<String>> keyPairName() {
@@ -77,14 +73,14 @@ public final class EcsKeyPairArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
+     * The public key of the key pair.
      * 
      */
     @Import(name="publicKey")
     private @Nullable Output<String> publicKey;
 
     /**
-     * @return You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
+     * @return The public key of the key pair.
      * 
      */
     public Optional<Output<String>> publicKey() {
@@ -92,23 +88,31 @@ public final class EcsKeyPairArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Id of resource group which the key pair belongs.
+     * The ID of the resource group to which to add the key pair.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The Id of resource group which the key pair belongs.
+     * @return The ID of the resource group to which to add the key pair.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
 
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
     public Optional<Output<Map<String,String>>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -165,30 +169,26 @@ public final class EcsKeyPairArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keyName Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
-         * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;key_name&#39; has been deprecated from provider version 1.121.0. New field &#39;key_pair_name&#39; instead.
+         * Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
          * 
          */
-        @Deprecated /* Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead. */
+        @Deprecated /* Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead. */
         public Builder keyName(@Nullable Output<String> keyName) {
             $.keyName = keyName;
             return this;
         }
 
         /**
-         * @param keyName Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
-         * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;key_name&#39; has been deprecated from provider version 1.121.0. New field &#39;key_pair_name&#39; instead.
+         * Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
          * 
          */
-        @Deprecated /* Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead. */
+        @Deprecated /* Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead. */
         public Builder keyName(String keyName) {
             return keyName(Output.of(keyName));
         }
@@ -203,7 +203,7 @@ public final class EcsKeyPairArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keyPairName The key pair&#39;s name. It is the only in one Alicloud account, the key pair&#39;s name. must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+         * @param keyPairName The name of the key pair. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class EcsKeyPairArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keyPairName The key pair&#39;s name. It is the only in one Alicloud account, the key pair&#39;s name. must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+         * @param keyPairName The name of the key pair. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
          * 
          * @return builder
          * 
@@ -224,7 +224,7 @@ public final class EcsKeyPairArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicKey You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
+         * @param publicKey The public key of the key pair.
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class EcsKeyPairArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicKey You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
+         * @param publicKey The public key of the key pair.
          * 
          * @return builder
          * 
@@ -245,7 +245,7 @@ public final class EcsKeyPairArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The Id of resource group which the key pair belongs.
+         * @param resourceGroupId The ID of the resource group to which to add the key pair.
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class EcsKeyPairArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The Id of resource group which the key pair belongs.
+         * @param resourceGroupId The ID of the resource group to which to add the key pair.
          * 
          * @return builder
          * 
@@ -265,11 +265,23 @@ public final class EcsKeyPairArgs extends com.pulumi.resources.ResourceArgs {
             return resourceGroupId(Output.of(resourceGroupId));
         }
 
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(@Nullable Output<Map<String,String>> tags) {
             $.tags = tags;
             return this;
         }
 
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(Map<String,String> tags) {
             return tags(Output.of(tags));
         }

@@ -14,7 +14,7 @@ import (
 
 // ## Import
 //
-// Redis Tair Instance can be imported using the id, e.g.
+// Tair (Redis OSS-Compatible) And Memcache (KVStore) Tair Instance can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:redis/tairInstance:TairInstance example <id>
@@ -74,12 +74,12 @@ type TairInstance struct {
 	ModifyMode pulumi.StringPtrOutput `pulumi:"modifyMode"`
 	// The network type of the instance.  CLASSIC(classic network), VPC.
 	NetworkType pulumi.StringOutput `pulumi:"networkType"`
-	// Node type, value:
-	// - `MASTER_SLAVE`: high availability (dual copy)
-	// - `STAND_ALONE`: single copy
+	// The node type. For cloud-native instances, input MASTER_SLAVE (master-replica) or STAND_ALONE (standalone). For classic instances, input double (master-replica) or single (standalone).
 	NodeType pulumi.StringOutput `pulumi:"nodeType"`
-	// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes or no. The default value is no.
+	// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes, no. The default value is no.
 	ParamNoLooseSentinelEnabled pulumi.StringOutput `pulumi:"paramNoLooseSentinelEnabled"`
+	// Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance
+	ParamNoLooseSentinelPasswordFreeAccess pulumi.StringOutput `pulumi:"paramNoLooseSentinelPasswordFreeAccess"`
 	// The value is semisync or async. The default value is async.
 	//
 	// The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance 。
@@ -258,12 +258,12 @@ type tairInstanceState struct {
 	ModifyMode *string `pulumi:"modifyMode"`
 	// The network type of the instance.  CLASSIC(classic network), VPC.
 	NetworkType *string `pulumi:"networkType"`
-	// Node type, value:
-	// - `MASTER_SLAVE`: high availability (dual copy)
-	// - `STAND_ALONE`: single copy
+	// The node type. For cloud-native instances, input MASTER_SLAVE (master-replica) or STAND_ALONE (standalone). For classic instances, input double (master-replica) or single (standalone).
 	NodeType *string `pulumi:"nodeType"`
-	// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes or no. The default value is no.
+	// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes, no. The default value is no.
 	ParamNoLooseSentinelEnabled *string `pulumi:"paramNoLooseSentinelEnabled"`
+	// Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance
+	ParamNoLooseSentinelPasswordFreeAccess *string `pulumi:"paramNoLooseSentinelPasswordFreeAccess"`
 	// The value is semisync or async. The default value is async.
 	//
 	// The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance 。
@@ -391,12 +391,12 @@ type TairInstanceState struct {
 	ModifyMode pulumi.StringPtrInput
 	// The network type of the instance.  CLASSIC(classic network), VPC.
 	NetworkType pulumi.StringPtrInput
-	// Node type, value:
-	// - `MASTER_SLAVE`: high availability (dual copy)
-	// - `STAND_ALONE`: single copy
+	// The node type. For cloud-native instances, input MASTER_SLAVE (master-replica) or STAND_ALONE (standalone). For classic instances, input double (master-replica) or single (standalone).
 	NodeType pulumi.StringPtrInput
-	// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes or no. The default value is no.
+	// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes, no. The default value is no.
 	ParamNoLooseSentinelEnabled pulumi.StringPtrInput
+	// Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance
+	ParamNoLooseSentinelPasswordFreeAccess pulumi.StringPtrInput
 	// The value is semisync or async. The default value is async.
 	//
 	// The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance 。
@@ -518,12 +518,12 @@ type tairInstanceArgs struct {
 	IntranetBandwidth *int `pulumi:"intranetBandwidth"`
 	// The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
 	ModifyMode *string `pulumi:"modifyMode"`
-	// Node type, value:
-	// - `MASTER_SLAVE`: high availability (dual copy)
-	// - `STAND_ALONE`: single copy
+	// The node type. For cloud-native instances, input MASTER_SLAVE (master-replica) or STAND_ALONE (standalone). For classic instances, input double (master-replica) or single (standalone).
 	NodeType *string `pulumi:"nodeType"`
-	// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes or no. The default value is no.
+	// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes, no. The default value is no.
 	ParamNoLooseSentinelEnabled *string `pulumi:"paramNoLooseSentinelEnabled"`
+	// Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance
+	ParamNoLooseSentinelPasswordFreeAccess *string `pulumi:"paramNoLooseSentinelPasswordFreeAccess"`
 	// The value is semisync or async. The default value is async.
 	//
 	// The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance 。
@@ -636,12 +636,12 @@ type TairInstanceArgs struct {
 	IntranetBandwidth pulumi.IntPtrInput
 	// The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
 	ModifyMode pulumi.StringPtrInput
-	// Node type, value:
-	// - `MASTER_SLAVE`: high availability (dual copy)
-	// - `STAND_ALONE`: single copy
+	// The node type. For cloud-native instances, input MASTER_SLAVE (master-replica) or STAND_ALONE (standalone). For classic instances, input double (master-replica) or single (standalone).
 	NodeType pulumi.StringPtrInput
-	// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes or no. The default value is no.
+	// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes, no. The default value is no.
 	ParamNoLooseSentinelEnabled pulumi.StringPtrInput
+	// Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance
+	ParamNoLooseSentinelPasswordFreeAccess pulumi.StringPtrInput
 	// The value is semisync or async. The default value is async.
 	//
 	// The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance 。
@@ -903,16 +903,19 @@ func (o TairInstanceOutput) NetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.StringOutput { return v.NetworkType }).(pulumi.StringOutput)
 }
 
-// Node type, value:
-// - `MASTER_SLAVE`: high availability (dual copy)
-// - `STAND_ALONE`: single copy
+// The node type. For cloud-native instances, input MASTER_SLAVE (master-replica) or STAND_ALONE (standalone). For classic instances, input double (master-replica) or single (standalone).
 func (o TairInstanceOutput) NodeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.StringOutput { return v.NodeType }).(pulumi.StringOutput)
 }
 
-// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes or no. The default value is no.
+// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes, no. The default value is no.
 func (o TairInstanceOutput) ParamNoLooseSentinelEnabled() pulumi.StringOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.StringOutput { return v.ParamNoLooseSentinelEnabled }).(pulumi.StringOutput)
+}
+
+// Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance
+func (o TairInstanceOutput) ParamNoLooseSentinelPasswordFreeAccess() pulumi.StringOutput {
+	return o.ApplyT(func(v *TairInstance) pulumi.StringOutput { return v.ParamNoLooseSentinelPasswordFreeAccess }).(pulumi.StringOutput)
 }
 
 // The value is semisync or async. The default value is async.

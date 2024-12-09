@@ -5,6 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { DataSourceArgs, DataSourceState } from "./dataSource";
+export type DataSource = import("./dataSource").DataSource;
+export const DataSource: typeof import("./dataSource").DataSource = null as any;
+utilities.lazyLoad(exports, ["DataSource"], () => require("./dataSource"));
+
+export { DataSourceSharedRuleArgs, DataSourceSharedRuleState } from "./dataSourceSharedRule";
+export type DataSourceSharedRule = import("./dataSourceSharedRule").DataSourceSharedRule;
+export const DataSourceSharedRule: typeof import("./dataSourceSharedRule").DataSourceSharedRule = null as any;
+utilities.lazyLoad(exports, ["DataSourceSharedRule"], () => require("./dataSourceSharedRule"));
+
 export { FolderArgs, FolderState } from "./folder";
 export type Folder = import("./folder").Folder;
 export const Folder: typeof import("./folder").Folder = null as any;
@@ -25,19 +35,33 @@ export type Project = import("./project").Project;
 export const Project: typeof import("./project").Project = null as any;
 utilities.lazyLoad(exports, ["Project"], () => require("./project"));
 
+export { ProjectMemberArgs, ProjectMemberState } from "./projectMember";
+export type ProjectMember = import("./projectMember").ProjectMember;
+export const ProjectMember: typeof import("./projectMember").ProjectMember = null as any;
+utilities.lazyLoad(exports, ["ProjectMember"], () => require("./projectMember"));
+
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:dataworks/dataSource:DataSource":
+                return new DataSource(name, <any>undefined, { urn })
+            case "alicloud:dataworks/dataSourceSharedRule:DataSourceSharedRule":
+                return new DataSourceSharedRule(name, <any>undefined, { urn })
             case "alicloud:dataworks/folder:Folder":
                 return new Folder(name, <any>undefined, { urn })
             case "alicloud:dataworks/project:Project":
                 return new Project(name, <any>undefined, { urn })
+            case "alicloud:dataworks/projectMember:ProjectMember":
+                return new ProjectMember(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "dataworks/dataSource", _module)
+pulumi.runtime.registerResourceModule("alicloud", "dataworks/dataSourceSharedRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dataworks/folder", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dataworks/project", _module)
+pulumi.runtime.registerResourceModule("alicloud", "dataworks/projectMember", _module)

@@ -53,6 +53,10 @@ __all__ = [
     'CollectionPolicyPolicyConfigArgsDict',
     'CollectionPolicyResourceDirectoryArgs',
     'CollectionPolicyResourceDirectoryArgsDict',
+    'OssExportSinkConfigurationArgs',
+    'OssExportSinkConfigurationArgsDict',
+    'OssExportSinkConfigurationSinkArgs',
+    'OssExportSinkConfigurationSinkArgsDict',
     'ScheduledSqlScheduleArgs',
     'ScheduledSqlScheduleArgsDict',
     'ScheduledSqlScheduledSqlConfigurationArgs',
@@ -1937,6 +1941,486 @@ class CollectionPolicyResourceDirectoryArgs:
     @members.setter
     def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "members", value)
+
+
+if not MYPY:
+    class OssExportSinkConfigurationArgsDict(TypedDict):
+        from_time: pulumi.Input[int]
+        """
+        The beginning of the time range to ship data. The value 1 specifies that the data shipping job ships data from the first log in the Logstore. Example value: 1718380800
+        """
+        logstore: pulumi.Input[str]
+        """
+        The name of the Logstore.
+        """
+        role_arn: pulumi.Input[str]
+        """
+        The ARN of the RAM role that is used to write data to OSS. Example value: acs:ram::xxxxxxx
+        """
+        sink: pulumi.Input['OssExportSinkConfigurationSinkArgsDict']
+        """
+        The configurations of the Object Storage Service (OSS) data shipping job. See `sink` below.
+        """
+        to_time: pulumi.Input[int]
+        """
+        The end of the time range to ship data. The value 0 specifies that the data shipping job continuously ships data until the job is manually stopped. Example value: 1718380800
+        """
+elif False:
+    OssExportSinkConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OssExportSinkConfigurationArgs:
+    def __init__(__self__, *,
+                 from_time: pulumi.Input[int],
+                 logstore: pulumi.Input[str],
+                 role_arn: pulumi.Input[str],
+                 sink: pulumi.Input['OssExportSinkConfigurationSinkArgs'],
+                 to_time: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] from_time: The beginning of the time range to ship data. The value 1 specifies that the data shipping job ships data from the first log in the Logstore. Example value: 1718380800
+        :param pulumi.Input[str] logstore: The name of the Logstore.
+        :param pulumi.Input[str] role_arn: The ARN of the RAM role that is used to write data to OSS. Example value: acs:ram::xxxxxxx
+        :param pulumi.Input['OssExportSinkConfigurationSinkArgs'] sink: The configurations of the Object Storage Service (OSS) data shipping job. See `sink` below.
+        :param pulumi.Input[int] to_time: The end of the time range to ship data. The value 0 specifies that the data shipping job continuously ships data until the job is manually stopped. Example value: 1718380800
+        """
+        pulumi.set(__self__, "from_time", from_time)
+        pulumi.set(__self__, "logstore", logstore)
+        pulumi.set(__self__, "role_arn", role_arn)
+        pulumi.set(__self__, "sink", sink)
+        pulumi.set(__self__, "to_time", to_time)
+
+    @property
+    @pulumi.getter(name="fromTime")
+    def from_time(self) -> pulumi.Input[int]:
+        """
+        The beginning of the time range to ship data. The value 1 specifies that the data shipping job ships data from the first log in the Logstore. Example value: 1718380800
+        """
+        return pulumi.get(self, "from_time")
+
+    @from_time.setter
+    def from_time(self, value: pulumi.Input[int]):
+        pulumi.set(self, "from_time", value)
+
+    @property
+    @pulumi.getter
+    def logstore(self) -> pulumi.Input[str]:
+        """
+        The name of the Logstore.
+        """
+        return pulumi.get(self, "logstore")
+
+    @logstore.setter
+    def logstore(self, value: pulumi.Input[str]):
+        pulumi.set(self, "logstore", value)
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> pulumi.Input[str]:
+        """
+        The ARN of the RAM role that is used to write data to OSS. Example value: acs:ram::xxxxxxx
+        """
+        return pulumi.get(self, "role_arn")
+
+    @role_arn.setter
+    def role_arn(self, value: pulumi.Input[str]):
+        pulumi.set(self, "role_arn", value)
+
+    @property
+    @pulumi.getter
+    def sink(self) -> pulumi.Input['OssExportSinkConfigurationSinkArgs']:
+        """
+        The configurations of the Object Storage Service (OSS) data shipping job. See `sink` below.
+        """
+        return pulumi.get(self, "sink")
+
+    @sink.setter
+    def sink(self, value: pulumi.Input['OssExportSinkConfigurationSinkArgs']):
+        pulumi.set(self, "sink", value)
+
+    @property
+    @pulumi.getter(name="toTime")
+    def to_time(self) -> pulumi.Input[int]:
+        """
+        The end of the time range to ship data. The value 0 specifies that the data shipping job continuously ships data until the job is manually stopped. Example value: 1718380800
+        """
+        return pulumi.get(self, "to_time")
+
+    @to_time.setter
+    def to_time(self, value: pulumi.Input[int]):
+        pulumi.set(self, "to_time", value)
+
+
+if not MYPY:
+    class OssExportSinkConfigurationSinkArgsDict(TypedDict):
+        bucket: pulumi.Input[str]
+        """
+        The OSS bucket.
+        """
+        buffer_interval: pulumi.Input[str]
+        """
+        The interval between two data shipping operations. Valid values: 300 to 900. Unit: seconds.
+        """
+        buffer_size: pulumi.Input[str]
+        """
+        The size of the OSS object to which data is shipped. Valid values: 5 to 256. Unit: MB.
+        """
+        compression_type: pulumi.Input[str]
+        """
+        Supports four compression types, such as snappy, gzip, zstd, and none.
+        """
+        content_detail: pulumi.Input[str]
+        """
+        The OSS file content details. Note: the value of this parameter should be updated based on the value of the contentType parameter.
+
+        If the contentType value is JSON, the parameters of the contentDetail value are as follows:
+
+        If the tag is allowed to be posted, the value of the parameter enableTag is true. Example:{"enableTag": true}
+
+        You are not allowed to post tags. The value of the parameter enableTag is false. Example:{"enableTag": false}
+
+        If the contentType value is csv, the parameters of the contentDetail value are as follows:
+
+        The parameter columns is the key of the log in the source logstore.
+
+        The delimiter parameter, which can be ",","|","", or "\\t".
+
+        The header parameter determines whether the OSS file retains the header. The optional value is true or false.
+
+        The lineFeed parameter. Optional values are "\\t", "\\n", or "".
+
+        The invalid field content parameter is null to specify the delivery content when the field name does not exist.
+
+        The escape character parameter "quote". Optional values are "" "," '", or" ".
+
+        Example:{"null": "-", "header": false, "lineFeed": "\\n", "quote": "", "delimiter": ",", "columns": ["a", "B", "c", "d"]}
+
+        When the contentType value is parquet, the parameters of the contentDetail value are as follows:
+
+        The columns parameter is the key of the log in the source Logstore and must carry the data type of the key, for example:{"columns": [{"name": "a", "type": "string"}, {"name": "B", "type": "string"}, {"name": "c", "type": "string": "string"}]}
+
+        When the contentType value is set to orc, the parameters of the contentDetail value are as follows:
+
+        The columns parameter is the key of the log in the source Logstore and must carry the data type of the key, for example:{"columns": [{"name": "a", "type": "string"}, {"name": "B", "type": "string"}, {"name": "c", "type": "string": "string"}]}
+        """
+        content_type: pulumi.Input[str]
+        """
+        The storage format of the OSS object. Valid values: json, parquet, csv, and orc.
+        """
+        endpoint: pulumi.Input[str]
+        """
+        The OSS Endpoint can only be an OSS intranet Endpoint and only supports the same region. Example value: https://oss-cn-hangzhou-internal.aliyuncs.com
+        """
+        role_arn: pulumi.Input[str]
+        """
+        The ARN of the RAM role that is used to write data to OSS. Example value: acs:ram::xxxxxxx
+        """
+        time_zone: pulumi.Input[str]
+        """
+        The time zone. Example value: +0800
+        """
+        delay_seconds: NotRequired[pulumi.Input[int]]
+        """
+        The latency of data shipping. The value of this parameter cannot exceed the data retention period of the source Logstore.
+        """
+        path_format: NotRequired[pulumi.Input[str]]
+        """
+        The directory is dynamically generated according to the time. The default value is% Y/%m/%d/%H/%M. The corresponding generated directory is, for example, 2017/01/23/12/00. Note that the partition format cannot start and end. Example values:%Y/%m/%d
+        """
+        path_format_type: NotRequired[pulumi.Input[str]]
+        """
+        The partition format type. only support time
+        """
+        prefix: NotRequired[pulumi.Input[str]]
+        """
+        The prefix of the OSS object.
+        """
+        suffix: NotRequired[pulumi.Input[str]]
+        """
+        The suffix of the OSS object.
+        """
+elif False:
+    OssExportSinkConfigurationSinkArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OssExportSinkConfigurationSinkArgs:
+    def __init__(__self__, *,
+                 bucket: pulumi.Input[str],
+                 buffer_interval: pulumi.Input[str],
+                 buffer_size: pulumi.Input[str],
+                 compression_type: pulumi.Input[str],
+                 content_detail: pulumi.Input[str],
+                 content_type: pulumi.Input[str],
+                 endpoint: pulumi.Input[str],
+                 role_arn: pulumi.Input[str],
+                 time_zone: pulumi.Input[str],
+                 delay_seconds: Optional[pulumi.Input[int]] = None,
+                 path_format: Optional[pulumi.Input[str]] = None,
+                 path_format_type: Optional[pulumi.Input[str]] = None,
+                 prefix: Optional[pulumi.Input[str]] = None,
+                 suffix: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] bucket: The OSS bucket.
+        :param pulumi.Input[str] buffer_interval: The interval between two data shipping operations. Valid values: 300 to 900. Unit: seconds.
+        :param pulumi.Input[str] buffer_size: The size of the OSS object to which data is shipped. Valid values: 5 to 256. Unit: MB.
+        :param pulumi.Input[str] compression_type: Supports four compression types, such as snappy, gzip, zstd, and none.
+        :param pulumi.Input[str] content_detail: The OSS file content details. Note: the value of this parameter should be updated based on the value of the contentType parameter.
+               
+               If the contentType value is JSON, the parameters of the contentDetail value are as follows:
+               
+               If the tag is allowed to be posted, the value of the parameter enableTag is true. Example:{"enableTag": true}
+               
+               You are not allowed to post tags. The value of the parameter enableTag is false. Example:{"enableTag": false}
+               
+               If the contentType value is csv, the parameters of the contentDetail value are as follows:
+               
+               The parameter columns is the key of the log in the source logstore.
+               
+               The delimiter parameter, which can be ",","|","", or "\\t".
+               
+               The header parameter determines whether the OSS file retains the header. The optional value is true or false.
+               
+               The lineFeed parameter. Optional values are "\\t", "\\n", or "".
+               
+               The invalid field content parameter is null to specify the delivery content when the field name does not exist.
+               
+               The escape character parameter "quote". Optional values are "" "," '", or" ".
+               
+               Example:{"null": "-", "header": false, "lineFeed": "\\n", "quote": "", "delimiter": ",", "columns": ["a", "B", "c", "d"]}
+               
+               When the contentType value is parquet, the parameters of the contentDetail value are as follows:
+               
+               The columns parameter is the key of the log in the source Logstore and must carry the data type of the key, for example:{"columns": [{"name": "a", "type": "string"}, {"name": "B", "type": "string"}, {"name": "c", "type": "string": "string"}]}
+               
+               When the contentType value is set to orc, the parameters of the contentDetail value are as follows:
+               
+               The columns parameter is the key of the log in the source Logstore and must carry the data type of the key, for example:{"columns": [{"name": "a", "type": "string"}, {"name": "B", "type": "string"}, {"name": "c", "type": "string": "string"}]}
+        :param pulumi.Input[str] content_type: The storage format of the OSS object. Valid values: json, parquet, csv, and orc.
+        :param pulumi.Input[str] endpoint: The OSS Endpoint can only be an OSS intranet Endpoint and only supports the same region. Example value: https://oss-cn-hangzhou-internal.aliyuncs.com
+        :param pulumi.Input[str] role_arn: The ARN of the RAM role that is used to write data to OSS. Example value: acs:ram::xxxxxxx
+        :param pulumi.Input[str] time_zone: The time zone. Example value: +0800
+        :param pulumi.Input[int] delay_seconds: The latency of data shipping. The value of this parameter cannot exceed the data retention period of the source Logstore.
+        :param pulumi.Input[str] path_format: The directory is dynamically generated according to the time. The default value is% Y/%m/%d/%H/%M. The corresponding generated directory is, for example, 2017/01/23/12/00. Note that the partition format cannot start and end. Example values:%Y/%m/%d
+        :param pulumi.Input[str] path_format_type: The partition format type. only support time
+        :param pulumi.Input[str] prefix: The prefix of the OSS object.
+        :param pulumi.Input[str] suffix: The suffix of the OSS object.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "buffer_interval", buffer_interval)
+        pulumi.set(__self__, "buffer_size", buffer_size)
+        pulumi.set(__self__, "compression_type", compression_type)
+        pulumi.set(__self__, "content_detail", content_detail)
+        pulumi.set(__self__, "content_type", content_type)
+        pulumi.set(__self__, "endpoint", endpoint)
+        pulumi.set(__self__, "role_arn", role_arn)
+        pulumi.set(__self__, "time_zone", time_zone)
+        if delay_seconds is not None:
+            pulumi.set(__self__, "delay_seconds", delay_seconds)
+        if path_format is not None:
+            pulumi.set(__self__, "path_format", path_format)
+        if path_format_type is not None:
+            pulumi.set(__self__, "path_format_type", path_format_type)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if suffix is not None:
+            pulumi.set(__self__, "suffix", suffix)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Input[str]:
+        """
+        The OSS bucket.
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter(name="bufferInterval")
+    def buffer_interval(self) -> pulumi.Input[str]:
+        """
+        The interval between two data shipping operations. Valid values: 300 to 900. Unit: seconds.
+        """
+        return pulumi.get(self, "buffer_interval")
+
+    @buffer_interval.setter
+    def buffer_interval(self, value: pulumi.Input[str]):
+        pulumi.set(self, "buffer_interval", value)
+
+    @property
+    @pulumi.getter(name="bufferSize")
+    def buffer_size(self) -> pulumi.Input[str]:
+        """
+        The size of the OSS object to which data is shipped. Valid values: 5 to 256. Unit: MB.
+        """
+        return pulumi.get(self, "buffer_size")
+
+    @buffer_size.setter
+    def buffer_size(self, value: pulumi.Input[str]):
+        pulumi.set(self, "buffer_size", value)
+
+    @property
+    @pulumi.getter(name="compressionType")
+    def compression_type(self) -> pulumi.Input[str]:
+        """
+        Supports four compression types, such as snappy, gzip, zstd, and none.
+        """
+        return pulumi.get(self, "compression_type")
+
+    @compression_type.setter
+    def compression_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "compression_type", value)
+
+    @property
+    @pulumi.getter(name="contentDetail")
+    def content_detail(self) -> pulumi.Input[str]:
+        """
+        The OSS file content details. Note: the value of this parameter should be updated based on the value of the contentType parameter.
+
+        If the contentType value is JSON, the parameters of the contentDetail value are as follows:
+
+        If the tag is allowed to be posted, the value of the parameter enableTag is true. Example:{"enableTag": true}
+
+        You are not allowed to post tags. The value of the parameter enableTag is false. Example:{"enableTag": false}
+
+        If the contentType value is csv, the parameters of the contentDetail value are as follows:
+
+        The parameter columns is the key of the log in the source logstore.
+
+        The delimiter parameter, which can be ",","|","", or "\\t".
+
+        The header parameter determines whether the OSS file retains the header. The optional value is true or false.
+
+        The lineFeed parameter. Optional values are "\\t", "\\n", or "".
+
+        The invalid field content parameter is null to specify the delivery content when the field name does not exist.
+
+        The escape character parameter "quote". Optional values are "" "," '", or" ".
+
+        Example:{"null": "-", "header": false, "lineFeed": "\\n", "quote": "", "delimiter": ",", "columns": ["a", "B", "c", "d"]}
+
+        When the contentType value is parquet, the parameters of the contentDetail value are as follows:
+
+        The columns parameter is the key of the log in the source Logstore and must carry the data type of the key, for example:{"columns": [{"name": "a", "type": "string"}, {"name": "B", "type": "string"}, {"name": "c", "type": "string": "string"}]}
+
+        When the contentType value is set to orc, the parameters of the contentDetail value are as follows:
+
+        The columns parameter is the key of the log in the source Logstore and must carry the data type of the key, for example:{"columns": [{"name": "a", "type": "string"}, {"name": "B", "type": "string"}, {"name": "c", "type": "string": "string"}]}
+        """
+        return pulumi.get(self, "content_detail")
+
+    @content_detail.setter
+    def content_detail(self, value: pulumi.Input[str]):
+        pulumi.set(self, "content_detail", value)
+
+    @property
+    @pulumi.getter(name="contentType")
+    def content_type(self) -> pulumi.Input[str]:
+        """
+        The storage format of the OSS object. Valid values: json, parquet, csv, and orc.
+        """
+        return pulumi.get(self, "content_type")
+
+    @content_type.setter
+    def content_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "content_type", value)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> pulumi.Input[str]:
+        """
+        The OSS Endpoint can only be an OSS intranet Endpoint and only supports the same region. Example value: https://oss-cn-hangzhou-internal.aliyuncs.com
+        """
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: pulumi.Input[str]):
+        pulumi.set(self, "endpoint", value)
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> pulumi.Input[str]:
+        """
+        The ARN of the RAM role that is used to write data to OSS. Example value: acs:ram::xxxxxxx
+        """
+        return pulumi.get(self, "role_arn")
+
+    @role_arn.setter
+    def role_arn(self, value: pulumi.Input[str]):
+        pulumi.set(self, "role_arn", value)
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> pulumi.Input[str]:
+        """
+        The time zone. Example value: +0800
+        """
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: pulumi.Input[str]):
+        pulumi.set(self, "time_zone", value)
+
+    @property
+    @pulumi.getter(name="delaySeconds")
+    def delay_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        The latency of data shipping. The value of this parameter cannot exceed the data retention period of the source Logstore.
+        """
+        return pulumi.get(self, "delay_seconds")
+
+    @delay_seconds.setter
+    def delay_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "delay_seconds", value)
+
+    @property
+    @pulumi.getter(name="pathFormat")
+    def path_format(self) -> Optional[pulumi.Input[str]]:
+        """
+        The directory is dynamically generated according to the time. The default value is% Y/%m/%d/%H/%M. The corresponding generated directory is, for example, 2017/01/23/12/00. Note that the partition format cannot start and end. Example values:%Y/%m/%d
+        """
+        return pulumi.get(self, "path_format")
+
+    @path_format.setter
+    def path_format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path_format", value)
+
+    @property
+    @pulumi.getter(name="pathFormatType")
+    def path_format_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The partition format type. only support time
+        """
+        return pulumi.get(self, "path_format_type")
+
+    @path_format_type.setter
+    def path_format_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path_format_type", value)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        The prefix of the OSS object.
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "prefix", value)
+
+    @property
+    @pulumi.getter
+    def suffix(self) -> Optional[pulumi.Input[str]]:
+        """
+        The suffix of the OSS object.
+        """
+        return pulumi.get(self, "suffix")
+
+    @suffix.setter
+    def suffix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "suffix", value)
 
 
 if not MYPY:

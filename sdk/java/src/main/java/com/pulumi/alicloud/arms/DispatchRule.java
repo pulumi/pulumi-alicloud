@@ -103,6 +103,8 @@ import javax.annotation.Nullable;
  *                 .notifyChannels(                
  *                     "dingTalk",
  *                     "wechat")
+ *                 .notifyStartTime("10:00")
+ *                 .notifyEndTime("23:00")
  *                 .build())
  *             .build());
  * 

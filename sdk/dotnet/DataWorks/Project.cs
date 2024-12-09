@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.DataWorks
     /// <summary>
     /// Provides a Data Works Project resource.
     /// 
-    /// For information about Data Works Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/dataworks/developer-reference/api-dataworks-public-2020-05-18-createproject).
+    /// For information about Data Works Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/).
     /// 
     /// &gt; **NOTE:** Available since v1.229.0.
     /// 
@@ -31,19 +31,24 @@ namespace Pulumi.AliCloud.DataWorks
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf_example";
-    ///     var @default = new Random.Index.Integer("default", new()
+    ///     var randint = new Random.Index.Integer("randint", new()
     ///     {
-    ///         Min = 10000,
-    ///         Max = 99999,
+    ///         Max = 999,
+    ///         Min = 1,
     ///     });
+    /// 
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
     ///     var defaultProject = new AliCloud.DataWorks.Project("default", new()
     ///     {
-    ///         ProjectName = $"{name}_{@default.Result}",
-    ///         ProjectMode = 2,
-    ///         Description = $"{name}_{@default.Result}",
-    ///         DisplayName = $"{name}_{@default.Result}",
-    ///         Status = "0",
+    ///         Status = "Available",
+    ///         Description = "tf_desc",
+    ///         ProjectName = $"{name}{randint.Id}",
+    ///         PaiTaskEnabled = false,
+    ///         DisplayName = "tf_new_api_display",
+    ///         DevRoleDisabled = true,
+    ///         DevEnvironmentEnabled = false,
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0])),
     ///     });
     /// 
     /// });
@@ -61,42 +66,58 @@ namespace Pulumi.AliCloud.DataWorks
     public partial class Project : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The creation time of the resource
-        /// </summary>
-        [Output("createTime")]
-        public Output<string> CreateTime { get; private set; } = null!;
-
-        /// <summary>
-        /// Description of the workspace
+        /// Workspace Description
         /// </summary>
         [Output("description")]
-        public Output<string> Description { get; private set; } = null!;
+        public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The display name of the workspace.
+        /// Is Development Environment Enabled
+        /// </summary>
+        [Output("devEnvironmentEnabled")]
+        public Output<bool> DevEnvironmentEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Is Development Role Disabled
+        /// </summary>
+        [Output("devRoleDisabled")]
+        public Output<bool> DevRoleDisabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Workspace Display Name
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// The mode of the workspace, with the following values:
-        /// - 2, indicates the simple workspace mode.
-        /// - 3, indicating the standard workspace mode.
+        /// Create PAI Workspace Together
         /// </summary>
-        [Output("projectMode")]
-        public Output<int?> ProjectMode { get; private set; } = null!;
+        [Output("paiTaskEnabled")]
+        public Output<bool> PaiTaskEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable Name of the workspace.
+        /// Workspace Name
         /// </summary>
         [Output("projectName")]
         public Output<string> ProjectName { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource
+        /// Aliyun Resource Group Id
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// Workspace Status
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// Aliyun Resource Tag
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
 
         /// <summary>
@@ -145,36 +166,64 @@ namespace Pulumi.AliCloud.DataWorks
     public sealed class ProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description of the workspace
+        /// Workspace Description
         /// </summary>
-        [Input("description", required: true)]
-        public Input<string> Description { get; set; } = null!;
+        [Input("description")]
+        public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The display name of the workspace.
+        /// Is Development Environment Enabled
+        /// </summary>
+        [Input("devEnvironmentEnabled")]
+        public Input<bool>? DevEnvironmentEnabled { get; set; }
+
+        /// <summary>
+        /// Is Development Role Disabled
+        /// </summary>
+        [Input("devRoleDisabled")]
+        public Input<bool>? DevRoleDisabled { get; set; }
+
+        /// <summary>
+        /// Workspace Display Name
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// The mode of the workspace, with the following values:
-        /// - 2, indicates the simple workspace mode.
-        /// - 3, indicating the standard workspace mode.
+        /// Create PAI Workspace Together
         /// </summary>
-        [Input("projectMode")]
-        public Input<int>? ProjectMode { get; set; }
+        [Input("paiTaskEnabled", required: true)]
+        public Input<bool> PaiTaskEnabled { get; set; } = null!;
 
         /// <summary>
-        /// Immutable Name of the workspace.
+        /// Workspace Name
         /// </summary>
         [Input("projectName", required: true)]
         public Input<string> ProjectName { get; set; } = null!;
 
         /// <summary>
-        /// The status of the resource
+        /// Aliyun Resource Group Id
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// Workspace Status
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Aliyun Resource Tag
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         public ProjectArgs()
         {
@@ -185,42 +234,64 @@ namespace Pulumi.AliCloud.DataWorks
     public sealed class ProjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The creation time of the resource
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
-        /// Description of the workspace
+        /// Workspace Description
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The display name of the workspace.
+        /// Is Development Environment Enabled
+        /// </summary>
+        [Input("devEnvironmentEnabled")]
+        public Input<bool>? DevEnvironmentEnabled { get; set; }
+
+        /// <summary>
+        /// Is Development Role Disabled
+        /// </summary>
+        [Input("devRoleDisabled")]
+        public Input<bool>? DevRoleDisabled { get; set; }
+
+        /// <summary>
+        /// Workspace Display Name
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The mode of the workspace, with the following values:
-        /// - 2, indicates the simple workspace mode.
-        /// - 3, indicating the standard workspace mode.
+        /// Create PAI Workspace Together
         /// </summary>
-        [Input("projectMode")]
-        public Input<int>? ProjectMode { get; set; }
+        [Input("paiTaskEnabled")]
+        public Input<bool>? PaiTaskEnabled { get; set; }
 
         /// <summary>
-        /// Immutable Name of the workspace.
+        /// Workspace Name
         /// </summary>
         [Input("projectName")]
         public Input<string>? ProjectName { get; set; }
 
         /// <summary>
-        /// The status of the resource
+        /// Aliyun Resource Group Id
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// Workspace Status
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Aliyun Resource Tag
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         public ProjectState()
         {

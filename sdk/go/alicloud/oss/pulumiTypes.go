@@ -3617,145 +3617,145 @@ func (o BucketVersioningTypePtrOutput) Status() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type BucketWebsite struct {
+type BucketWebsiteType struct {
 	// An absolute path to the document to return in case of a 4XX error.
 	ErrorDocument *string `pulumi:"errorDocument"`
 	// Alicloud OSS returns this index document when requests are made to the root domain or any of the subfolders.
 	IndexDocument string `pulumi:"indexDocument"`
 }
 
-// BucketWebsiteInput is an input type that accepts BucketWebsiteArgs and BucketWebsiteOutput values.
-// You can construct a concrete instance of `BucketWebsiteInput` via:
+// BucketWebsiteTypeInput is an input type that accepts BucketWebsiteTypeArgs and BucketWebsiteTypeOutput values.
+// You can construct a concrete instance of `BucketWebsiteTypeInput` via:
 //
-//	BucketWebsiteArgs{...}
-type BucketWebsiteInput interface {
+//	BucketWebsiteTypeArgs{...}
+type BucketWebsiteTypeInput interface {
 	pulumi.Input
 
-	ToBucketWebsiteOutput() BucketWebsiteOutput
-	ToBucketWebsiteOutputWithContext(context.Context) BucketWebsiteOutput
+	ToBucketWebsiteTypeOutput() BucketWebsiteTypeOutput
+	ToBucketWebsiteTypeOutputWithContext(context.Context) BucketWebsiteTypeOutput
 }
 
-type BucketWebsiteArgs struct {
+type BucketWebsiteTypeArgs struct {
 	// An absolute path to the document to return in case of a 4XX error.
 	ErrorDocument pulumi.StringPtrInput `pulumi:"errorDocument"`
 	// Alicloud OSS returns this index document when requests are made to the root domain or any of the subfolders.
 	IndexDocument pulumi.StringInput `pulumi:"indexDocument"`
 }
 
-func (BucketWebsiteArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketWebsite)(nil)).Elem()
+func (BucketWebsiteTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketWebsiteType)(nil)).Elem()
 }
 
-func (i BucketWebsiteArgs) ToBucketWebsiteOutput() BucketWebsiteOutput {
-	return i.ToBucketWebsiteOutputWithContext(context.Background())
+func (i BucketWebsiteTypeArgs) ToBucketWebsiteTypeOutput() BucketWebsiteTypeOutput {
+	return i.ToBucketWebsiteTypeOutputWithContext(context.Background())
 }
 
-func (i BucketWebsiteArgs) ToBucketWebsiteOutputWithContext(ctx context.Context) BucketWebsiteOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteOutput)
+func (i BucketWebsiteTypeArgs) ToBucketWebsiteTypeOutputWithContext(ctx context.Context) BucketWebsiteTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteTypeOutput)
 }
 
-func (i BucketWebsiteArgs) ToBucketWebsitePtrOutput() BucketWebsitePtrOutput {
-	return i.ToBucketWebsitePtrOutputWithContext(context.Background())
+func (i BucketWebsiteTypeArgs) ToBucketWebsiteTypePtrOutput() BucketWebsiteTypePtrOutput {
+	return i.ToBucketWebsiteTypePtrOutputWithContext(context.Background())
 }
 
-func (i BucketWebsiteArgs) ToBucketWebsitePtrOutputWithContext(ctx context.Context) BucketWebsitePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteOutput).ToBucketWebsitePtrOutputWithContext(ctx)
+func (i BucketWebsiteTypeArgs) ToBucketWebsiteTypePtrOutputWithContext(ctx context.Context) BucketWebsiteTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteTypeOutput).ToBucketWebsiteTypePtrOutputWithContext(ctx)
 }
 
-// BucketWebsitePtrInput is an input type that accepts BucketWebsiteArgs, BucketWebsitePtr and BucketWebsitePtrOutput values.
-// You can construct a concrete instance of `BucketWebsitePtrInput` via:
+// BucketWebsiteTypePtrInput is an input type that accepts BucketWebsiteTypeArgs, BucketWebsiteTypePtr and BucketWebsiteTypePtrOutput values.
+// You can construct a concrete instance of `BucketWebsiteTypePtrInput` via:
 //
-//	        BucketWebsiteArgs{...}
+//	        BucketWebsiteTypeArgs{...}
 //
 //	or:
 //
 //	        nil
-type BucketWebsitePtrInput interface {
+type BucketWebsiteTypePtrInput interface {
 	pulumi.Input
 
-	ToBucketWebsitePtrOutput() BucketWebsitePtrOutput
-	ToBucketWebsitePtrOutputWithContext(context.Context) BucketWebsitePtrOutput
+	ToBucketWebsiteTypePtrOutput() BucketWebsiteTypePtrOutput
+	ToBucketWebsiteTypePtrOutputWithContext(context.Context) BucketWebsiteTypePtrOutput
 }
 
-type bucketWebsitePtrType BucketWebsiteArgs
+type bucketWebsiteTypePtrType BucketWebsiteTypeArgs
 
-func BucketWebsitePtr(v *BucketWebsiteArgs) BucketWebsitePtrInput {
-	return (*bucketWebsitePtrType)(v)
+func BucketWebsiteTypePtr(v *BucketWebsiteTypeArgs) BucketWebsiteTypePtrInput {
+	return (*bucketWebsiteTypePtrType)(v)
 }
 
-func (*bucketWebsitePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketWebsite)(nil)).Elem()
+func (*bucketWebsiteTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketWebsiteType)(nil)).Elem()
 }
 
-func (i *bucketWebsitePtrType) ToBucketWebsitePtrOutput() BucketWebsitePtrOutput {
-	return i.ToBucketWebsitePtrOutputWithContext(context.Background())
+func (i *bucketWebsiteTypePtrType) ToBucketWebsiteTypePtrOutput() BucketWebsiteTypePtrOutput {
+	return i.ToBucketWebsiteTypePtrOutputWithContext(context.Background())
 }
 
-func (i *bucketWebsitePtrType) ToBucketWebsitePtrOutputWithContext(ctx context.Context) BucketWebsitePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsitePtrOutput)
+func (i *bucketWebsiteTypePtrType) ToBucketWebsiteTypePtrOutputWithContext(ctx context.Context) BucketWebsiteTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteTypePtrOutput)
 }
 
-type BucketWebsiteOutput struct{ *pulumi.OutputState }
+type BucketWebsiteTypeOutput struct{ *pulumi.OutputState }
 
-func (BucketWebsiteOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketWebsite)(nil)).Elem()
+func (BucketWebsiteTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketWebsiteType)(nil)).Elem()
 }
 
-func (o BucketWebsiteOutput) ToBucketWebsiteOutput() BucketWebsiteOutput {
+func (o BucketWebsiteTypeOutput) ToBucketWebsiteTypeOutput() BucketWebsiteTypeOutput {
 	return o
 }
 
-func (o BucketWebsiteOutput) ToBucketWebsiteOutputWithContext(ctx context.Context) BucketWebsiteOutput {
+func (o BucketWebsiteTypeOutput) ToBucketWebsiteTypeOutputWithContext(ctx context.Context) BucketWebsiteTypeOutput {
 	return o
 }
 
-func (o BucketWebsiteOutput) ToBucketWebsitePtrOutput() BucketWebsitePtrOutput {
-	return o.ToBucketWebsitePtrOutputWithContext(context.Background())
+func (o BucketWebsiteTypeOutput) ToBucketWebsiteTypePtrOutput() BucketWebsiteTypePtrOutput {
+	return o.ToBucketWebsiteTypePtrOutputWithContext(context.Background())
 }
 
-func (o BucketWebsiteOutput) ToBucketWebsitePtrOutputWithContext(ctx context.Context) BucketWebsitePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketWebsite) *BucketWebsite {
+func (o BucketWebsiteTypeOutput) ToBucketWebsiteTypePtrOutputWithContext(ctx context.Context) BucketWebsiteTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketWebsiteType) *BucketWebsiteType {
 		return &v
-	}).(BucketWebsitePtrOutput)
+	}).(BucketWebsiteTypePtrOutput)
 }
 
 // An absolute path to the document to return in case of a 4XX error.
-func (o BucketWebsiteOutput) ErrorDocument() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BucketWebsite) *string { return v.ErrorDocument }).(pulumi.StringPtrOutput)
+func (o BucketWebsiteTypeOutput) ErrorDocument() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteType) *string { return v.ErrorDocument }).(pulumi.StringPtrOutput)
 }
 
 // Alicloud OSS returns this index document when requests are made to the root domain or any of the subfolders.
-func (o BucketWebsiteOutput) IndexDocument() pulumi.StringOutput {
-	return o.ApplyT(func(v BucketWebsite) string { return v.IndexDocument }).(pulumi.StringOutput)
+func (o BucketWebsiteTypeOutput) IndexDocument() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketWebsiteType) string { return v.IndexDocument }).(pulumi.StringOutput)
 }
 
-type BucketWebsitePtrOutput struct{ *pulumi.OutputState }
+type BucketWebsiteTypePtrOutput struct{ *pulumi.OutputState }
 
-func (BucketWebsitePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketWebsite)(nil)).Elem()
+func (BucketWebsiteTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketWebsiteType)(nil)).Elem()
 }
 
-func (o BucketWebsitePtrOutput) ToBucketWebsitePtrOutput() BucketWebsitePtrOutput {
+func (o BucketWebsiteTypePtrOutput) ToBucketWebsiteTypePtrOutput() BucketWebsiteTypePtrOutput {
 	return o
 }
 
-func (o BucketWebsitePtrOutput) ToBucketWebsitePtrOutputWithContext(ctx context.Context) BucketWebsitePtrOutput {
+func (o BucketWebsiteTypePtrOutput) ToBucketWebsiteTypePtrOutputWithContext(ctx context.Context) BucketWebsiteTypePtrOutput {
 	return o
 }
 
-func (o BucketWebsitePtrOutput) Elem() BucketWebsiteOutput {
-	return o.ApplyT(func(v *BucketWebsite) BucketWebsite {
+func (o BucketWebsiteTypePtrOutput) Elem() BucketWebsiteTypeOutput {
+	return o.ApplyT(func(v *BucketWebsiteType) BucketWebsiteType {
 		if v != nil {
 			return *v
 		}
-		var ret BucketWebsite
+		var ret BucketWebsiteType
 		return ret
-	}).(BucketWebsiteOutput)
+	}).(BucketWebsiteTypeOutput)
 }
 
 // An absolute path to the document to return in case of a 4XX error.
-func (o BucketWebsitePtrOutput) ErrorDocument() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketWebsite) *string {
+func (o BucketWebsiteTypePtrOutput) ErrorDocument() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteType) *string {
 		if v == nil {
 			return nil
 		}
@@ -3764,13 +3764,3148 @@ func (o BucketWebsitePtrOutput) ErrorDocument() pulumi.StringPtrOutput {
 }
 
 // Alicloud OSS returns this index document when requests are made to the root domain or any of the subfolders.
-func (o BucketWebsitePtrOutput) IndexDocument() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketWebsite) *string {
+func (o BucketWebsiteTypePtrOutput) IndexDocument() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteType) *string {
 		if v == nil {
 			return nil
 		}
 		return &v.IndexDocument
 	}).(pulumi.StringPtrOutput)
+}
+
+type BucketWebsiteErrorDocument struct {
+	// The HTTP status code when the error page is returned. The default 404.
+	HttpStatus *int `pulumi:"httpStatus"`
+	// The error page file. If the Object accessed does not exist, this error page is returned.
+	Key *string `pulumi:"key"`
+}
+
+// BucketWebsiteErrorDocumentInput is an input type that accepts BucketWebsiteErrorDocumentArgs and BucketWebsiteErrorDocumentOutput values.
+// You can construct a concrete instance of `BucketWebsiteErrorDocumentInput` via:
+//
+//	BucketWebsiteErrorDocumentArgs{...}
+type BucketWebsiteErrorDocumentInput interface {
+	pulumi.Input
+
+	ToBucketWebsiteErrorDocumentOutput() BucketWebsiteErrorDocumentOutput
+	ToBucketWebsiteErrorDocumentOutputWithContext(context.Context) BucketWebsiteErrorDocumentOutput
+}
+
+type BucketWebsiteErrorDocumentArgs struct {
+	// The HTTP status code when the error page is returned. The default 404.
+	HttpStatus pulumi.IntPtrInput `pulumi:"httpStatus"`
+	// The error page file. If the Object accessed does not exist, this error page is returned.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+}
+
+func (BucketWebsiteErrorDocumentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketWebsiteErrorDocument)(nil)).Elem()
+}
+
+func (i BucketWebsiteErrorDocumentArgs) ToBucketWebsiteErrorDocumentOutput() BucketWebsiteErrorDocumentOutput {
+	return i.ToBucketWebsiteErrorDocumentOutputWithContext(context.Background())
+}
+
+func (i BucketWebsiteErrorDocumentArgs) ToBucketWebsiteErrorDocumentOutputWithContext(ctx context.Context) BucketWebsiteErrorDocumentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteErrorDocumentOutput)
+}
+
+func (i BucketWebsiteErrorDocumentArgs) ToBucketWebsiteErrorDocumentPtrOutput() BucketWebsiteErrorDocumentPtrOutput {
+	return i.ToBucketWebsiteErrorDocumentPtrOutputWithContext(context.Background())
+}
+
+func (i BucketWebsiteErrorDocumentArgs) ToBucketWebsiteErrorDocumentPtrOutputWithContext(ctx context.Context) BucketWebsiteErrorDocumentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteErrorDocumentOutput).ToBucketWebsiteErrorDocumentPtrOutputWithContext(ctx)
+}
+
+// BucketWebsiteErrorDocumentPtrInput is an input type that accepts BucketWebsiteErrorDocumentArgs, BucketWebsiteErrorDocumentPtr and BucketWebsiteErrorDocumentPtrOutput values.
+// You can construct a concrete instance of `BucketWebsiteErrorDocumentPtrInput` via:
+//
+//	        BucketWebsiteErrorDocumentArgs{...}
+//
+//	or:
+//
+//	        nil
+type BucketWebsiteErrorDocumentPtrInput interface {
+	pulumi.Input
+
+	ToBucketWebsiteErrorDocumentPtrOutput() BucketWebsiteErrorDocumentPtrOutput
+	ToBucketWebsiteErrorDocumentPtrOutputWithContext(context.Context) BucketWebsiteErrorDocumentPtrOutput
+}
+
+type bucketWebsiteErrorDocumentPtrType BucketWebsiteErrorDocumentArgs
+
+func BucketWebsiteErrorDocumentPtr(v *BucketWebsiteErrorDocumentArgs) BucketWebsiteErrorDocumentPtrInput {
+	return (*bucketWebsiteErrorDocumentPtrType)(v)
+}
+
+func (*bucketWebsiteErrorDocumentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketWebsiteErrorDocument)(nil)).Elem()
+}
+
+func (i *bucketWebsiteErrorDocumentPtrType) ToBucketWebsiteErrorDocumentPtrOutput() BucketWebsiteErrorDocumentPtrOutput {
+	return i.ToBucketWebsiteErrorDocumentPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketWebsiteErrorDocumentPtrType) ToBucketWebsiteErrorDocumentPtrOutputWithContext(ctx context.Context) BucketWebsiteErrorDocumentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteErrorDocumentPtrOutput)
+}
+
+type BucketWebsiteErrorDocumentOutput struct{ *pulumi.OutputState }
+
+func (BucketWebsiteErrorDocumentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketWebsiteErrorDocument)(nil)).Elem()
+}
+
+func (o BucketWebsiteErrorDocumentOutput) ToBucketWebsiteErrorDocumentOutput() BucketWebsiteErrorDocumentOutput {
+	return o
+}
+
+func (o BucketWebsiteErrorDocumentOutput) ToBucketWebsiteErrorDocumentOutputWithContext(ctx context.Context) BucketWebsiteErrorDocumentOutput {
+	return o
+}
+
+func (o BucketWebsiteErrorDocumentOutput) ToBucketWebsiteErrorDocumentPtrOutput() BucketWebsiteErrorDocumentPtrOutput {
+	return o.ToBucketWebsiteErrorDocumentPtrOutputWithContext(context.Background())
+}
+
+func (o BucketWebsiteErrorDocumentOutput) ToBucketWebsiteErrorDocumentPtrOutputWithContext(ctx context.Context) BucketWebsiteErrorDocumentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketWebsiteErrorDocument) *BucketWebsiteErrorDocument {
+		return &v
+	}).(BucketWebsiteErrorDocumentPtrOutput)
+}
+
+// The HTTP status code when the error page is returned. The default 404.
+func (o BucketWebsiteErrorDocumentOutput) HttpStatus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteErrorDocument) *int { return v.HttpStatus }).(pulumi.IntPtrOutput)
+}
+
+// The error page file. If the Object accessed does not exist, this error page is returned.
+func (o BucketWebsiteErrorDocumentOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteErrorDocument) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+type BucketWebsiteErrorDocumentPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketWebsiteErrorDocumentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketWebsiteErrorDocument)(nil)).Elem()
+}
+
+func (o BucketWebsiteErrorDocumentPtrOutput) ToBucketWebsiteErrorDocumentPtrOutput() BucketWebsiteErrorDocumentPtrOutput {
+	return o
+}
+
+func (o BucketWebsiteErrorDocumentPtrOutput) ToBucketWebsiteErrorDocumentPtrOutputWithContext(ctx context.Context) BucketWebsiteErrorDocumentPtrOutput {
+	return o
+}
+
+func (o BucketWebsiteErrorDocumentPtrOutput) Elem() BucketWebsiteErrorDocumentOutput {
+	return o.ApplyT(func(v *BucketWebsiteErrorDocument) BucketWebsiteErrorDocument {
+		if v != nil {
+			return *v
+		}
+		var ret BucketWebsiteErrorDocument
+		return ret
+	}).(BucketWebsiteErrorDocumentOutput)
+}
+
+// The HTTP status code when the error page is returned. The default 404.
+func (o BucketWebsiteErrorDocumentPtrOutput) HttpStatus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteErrorDocument) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HttpStatus
+	}).(pulumi.IntPtrOutput)
+}
+
+// The error page file. If the Object accessed does not exist, this error page is returned.
+func (o BucketWebsiteErrorDocumentPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteErrorDocument) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+type BucketWebsiteIndexDocument struct {
+	// The default home page.
+	Suffix *string `pulumi:"suffix"`
+	// Whether to jump to the default home page of a subdirectory when accessing a subdirectory.
+	SupportSubDir *bool `pulumi:"supportSubDir"`
+	// After the default homepage is set, the behavior when an Object that ends with a non-forward slash (/) is accessed and the Object does not exist.
+	Type *string `pulumi:"type"`
+}
+
+// BucketWebsiteIndexDocumentInput is an input type that accepts BucketWebsiteIndexDocumentArgs and BucketWebsiteIndexDocumentOutput values.
+// You can construct a concrete instance of `BucketWebsiteIndexDocumentInput` via:
+//
+//	BucketWebsiteIndexDocumentArgs{...}
+type BucketWebsiteIndexDocumentInput interface {
+	pulumi.Input
+
+	ToBucketWebsiteIndexDocumentOutput() BucketWebsiteIndexDocumentOutput
+	ToBucketWebsiteIndexDocumentOutputWithContext(context.Context) BucketWebsiteIndexDocumentOutput
+}
+
+type BucketWebsiteIndexDocumentArgs struct {
+	// The default home page.
+	Suffix pulumi.StringPtrInput `pulumi:"suffix"`
+	// Whether to jump to the default home page of a subdirectory when accessing a subdirectory.
+	SupportSubDir pulumi.BoolPtrInput `pulumi:"supportSubDir"`
+	// After the default homepage is set, the behavior when an Object that ends with a non-forward slash (/) is accessed and the Object does not exist.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (BucketWebsiteIndexDocumentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketWebsiteIndexDocument)(nil)).Elem()
+}
+
+func (i BucketWebsiteIndexDocumentArgs) ToBucketWebsiteIndexDocumentOutput() BucketWebsiteIndexDocumentOutput {
+	return i.ToBucketWebsiteIndexDocumentOutputWithContext(context.Background())
+}
+
+func (i BucketWebsiteIndexDocumentArgs) ToBucketWebsiteIndexDocumentOutputWithContext(ctx context.Context) BucketWebsiteIndexDocumentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteIndexDocumentOutput)
+}
+
+func (i BucketWebsiteIndexDocumentArgs) ToBucketWebsiteIndexDocumentPtrOutput() BucketWebsiteIndexDocumentPtrOutput {
+	return i.ToBucketWebsiteIndexDocumentPtrOutputWithContext(context.Background())
+}
+
+func (i BucketWebsiteIndexDocumentArgs) ToBucketWebsiteIndexDocumentPtrOutputWithContext(ctx context.Context) BucketWebsiteIndexDocumentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteIndexDocumentOutput).ToBucketWebsiteIndexDocumentPtrOutputWithContext(ctx)
+}
+
+// BucketWebsiteIndexDocumentPtrInput is an input type that accepts BucketWebsiteIndexDocumentArgs, BucketWebsiteIndexDocumentPtr and BucketWebsiteIndexDocumentPtrOutput values.
+// You can construct a concrete instance of `BucketWebsiteIndexDocumentPtrInput` via:
+//
+//	        BucketWebsiteIndexDocumentArgs{...}
+//
+//	or:
+//
+//	        nil
+type BucketWebsiteIndexDocumentPtrInput interface {
+	pulumi.Input
+
+	ToBucketWebsiteIndexDocumentPtrOutput() BucketWebsiteIndexDocumentPtrOutput
+	ToBucketWebsiteIndexDocumentPtrOutputWithContext(context.Context) BucketWebsiteIndexDocumentPtrOutput
+}
+
+type bucketWebsiteIndexDocumentPtrType BucketWebsiteIndexDocumentArgs
+
+func BucketWebsiteIndexDocumentPtr(v *BucketWebsiteIndexDocumentArgs) BucketWebsiteIndexDocumentPtrInput {
+	return (*bucketWebsiteIndexDocumentPtrType)(v)
+}
+
+func (*bucketWebsiteIndexDocumentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketWebsiteIndexDocument)(nil)).Elem()
+}
+
+func (i *bucketWebsiteIndexDocumentPtrType) ToBucketWebsiteIndexDocumentPtrOutput() BucketWebsiteIndexDocumentPtrOutput {
+	return i.ToBucketWebsiteIndexDocumentPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketWebsiteIndexDocumentPtrType) ToBucketWebsiteIndexDocumentPtrOutputWithContext(ctx context.Context) BucketWebsiteIndexDocumentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteIndexDocumentPtrOutput)
+}
+
+type BucketWebsiteIndexDocumentOutput struct{ *pulumi.OutputState }
+
+func (BucketWebsiteIndexDocumentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketWebsiteIndexDocument)(nil)).Elem()
+}
+
+func (o BucketWebsiteIndexDocumentOutput) ToBucketWebsiteIndexDocumentOutput() BucketWebsiteIndexDocumentOutput {
+	return o
+}
+
+func (o BucketWebsiteIndexDocumentOutput) ToBucketWebsiteIndexDocumentOutputWithContext(ctx context.Context) BucketWebsiteIndexDocumentOutput {
+	return o
+}
+
+func (o BucketWebsiteIndexDocumentOutput) ToBucketWebsiteIndexDocumentPtrOutput() BucketWebsiteIndexDocumentPtrOutput {
+	return o.ToBucketWebsiteIndexDocumentPtrOutputWithContext(context.Background())
+}
+
+func (o BucketWebsiteIndexDocumentOutput) ToBucketWebsiteIndexDocumentPtrOutputWithContext(ctx context.Context) BucketWebsiteIndexDocumentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketWebsiteIndexDocument) *BucketWebsiteIndexDocument {
+		return &v
+	}).(BucketWebsiteIndexDocumentPtrOutput)
+}
+
+// The default home page.
+func (o BucketWebsiteIndexDocumentOutput) Suffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteIndexDocument) *string { return v.Suffix }).(pulumi.StringPtrOutput)
+}
+
+// Whether to jump to the default home page of a subdirectory when accessing a subdirectory.
+func (o BucketWebsiteIndexDocumentOutput) SupportSubDir() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteIndexDocument) *bool { return v.SupportSubDir }).(pulumi.BoolPtrOutput)
+}
+
+// After the default homepage is set, the behavior when an Object that ends with a non-forward slash (/) is accessed and the Object does not exist.
+func (o BucketWebsiteIndexDocumentOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteIndexDocument) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type BucketWebsiteIndexDocumentPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketWebsiteIndexDocumentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketWebsiteIndexDocument)(nil)).Elem()
+}
+
+func (o BucketWebsiteIndexDocumentPtrOutput) ToBucketWebsiteIndexDocumentPtrOutput() BucketWebsiteIndexDocumentPtrOutput {
+	return o
+}
+
+func (o BucketWebsiteIndexDocumentPtrOutput) ToBucketWebsiteIndexDocumentPtrOutputWithContext(ctx context.Context) BucketWebsiteIndexDocumentPtrOutput {
+	return o
+}
+
+func (o BucketWebsiteIndexDocumentPtrOutput) Elem() BucketWebsiteIndexDocumentOutput {
+	return o.ApplyT(func(v *BucketWebsiteIndexDocument) BucketWebsiteIndexDocument {
+		if v != nil {
+			return *v
+		}
+		var ret BucketWebsiteIndexDocument
+		return ret
+	}).(BucketWebsiteIndexDocumentOutput)
+}
+
+// The default home page.
+func (o BucketWebsiteIndexDocumentPtrOutput) Suffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteIndexDocument) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Suffix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to jump to the default home page of a subdirectory when accessing a subdirectory.
+func (o BucketWebsiteIndexDocumentPtrOutput) SupportSubDir() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteIndexDocument) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SupportSubDir
+	}).(pulumi.BoolPtrOutput)
+}
+
+// After the default homepage is set, the behavior when an Object that ends with a non-forward slash (/) is accessed and the Object does not exist.
+func (o BucketWebsiteIndexDocumentPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteIndexDocument) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type BucketWebsiteRoutingRules struct {
+	// Specify a jump rule or a mirroring back-to-origin rule, with a maximum of 20 routing rules. See `routingRule` below.
+	RoutingRules []BucketWebsiteRoutingRulesRoutingRule `pulumi:"routingRules"`
+}
+
+// BucketWebsiteRoutingRulesInput is an input type that accepts BucketWebsiteRoutingRulesArgs and BucketWebsiteRoutingRulesOutput values.
+// You can construct a concrete instance of `BucketWebsiteRoutingRulesInput` via:
+//
+//	BucketWebsiteRoutingRulesArgs{...}
+type BucketWebsiteRoutingRulesInput interface {
+	pulumi.Input
+
+	ToBucketWebsiteRoutingRulesOutput() BucketWebsiteRoutingRulesOutput
+	ToBucketWebsiteRoutingRulesOutputWithContext(context.Context) BucketWebsiteRoutingRulesOutput
+}
+
+type BucketWebsiteRoutingRulesArgs struct {
+	// Specify a jump rule or a mirroring back-to-origin rule, with a maximum of 20 routing rules. See `routingRule` below.
+	RoutingRules BucketWebsiteRoutingRulesRoutingRuleArrayInput `pulumi:"routingRules"`
+}
+
+func (BucketWebsiteRoutingRulesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketWebsiteRoutingRules)(nil)).Elem()
+}
+
+func (i BucketWebsiteRoutingRulesArgs) ToBucketWebsiteRoutingRulesOutput() BucketWebsiteRoutingRulesOutput {
+	return i.ToBucketWebsiteRoutingRulesOutputWithContext(context.Background())
+}
+
+func (i BucketWebsiteRoutingRulesArgs) ToBucketWebsiteRoutingRulesOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesOutput)
+}
+
+func (i BucketWebsiteRoutingRulesArgs) ToBucketWebsiteRoutingRulesPtrOutput() BucketWebsiteRoutingRulesPtrOutput {
+	return i.ToBucketWebsiteRoutingRulesPtrOutputWithContext(context.Background())
+}
+
+func (i BucketWebsiteRoutingRulesArgs) ToBucketWebsiteRoutingRulesPtrOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesOutput).ToBucketWebsiteRoutingRulesPtrOutputWithContext(ctx)
+}
+
+// BucketWebsiteRoutingRulesPtrInput is an input type that accepts BucketWebsiteRoutingRulesArgs, BucketWebsiteRoutingRulesPtr and BucketWebsiteRoutingRulesPtrOutput values.
+// You can construct a concrete instance of `BucketWebsiteRoutingRulesPtrInput` via:
+//
+//	        BucketWebsiteRoutingRulesArgs{...}
+//
+//	or:
+//
+//	        nil
+type BucketWebsiteRoutingRulesPtrInput interface {
+	pulumi.Input
+
+	ToBucketWebsiteRoutingRulesPtrOutput() BucketWebsiteRoutingRulesPtrOutput
+	ToBucketWebsiteRoutingRulesPtrOutputWithContext(context.Context) BucketWebsiteRoutingRulesPtrOutput
+}
+
+type bucketWebsiteRoutingRulesPtrType BucketWebsiteRoutingRulesArgs
+
+func BucketWebsiteRoutingRulesPtr(v *BucketWebsiteRoutingRulesArgs) BucketWebsiteRoutingRulesPtrInput {
+	return (*bucketWebsiteRoutingRulesPtrType)(v)
+}
+
+func (*bucketWebsiteRoutingRulesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketWebsiteRoutingRules)(nil)).Elem()
+}
+
+func (i *bucketWebsiteRoutingRulesPtrType) ToBucketWebsiteRoutingRulesPtrOutput() BucketWebsiteRoutingRulesPtrOutput {
+	return i.ToBucketWebsiteRoutingRulesPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketWebsiteRoutingRulesPtrType) ToBucketWebsiteRoutingRulesPtrOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesPtrOutput)
+}
+
+type BucketWebsiteRoutingRulesOutput struct{ *pulumi.OutputState }
+
+func (BucketWebsiteRoutingRulesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketWebsiteRoutingRules)(nil)).Elem()
+}
+
+func (o BucketWebsiteRoutingRulesOutput) ToBucketWebsiteRoutingRulesOutput() BucketWebsiteRoutingRulesOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesOutput) ToBucketWebsiteRoutingRulesOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesOutput) ToBucketWebsiteRoutingRulesPtrOutput() BucketWebsiteRoutingRulesPtrOutput {
+	return o.ToBucketWebsiteRoutingRulesPtrOutputWithContext(context.Background())
+}
+
+func (o BucketWebsiteRoutingRulesOutput) ToBucketWebsiteRoutingRulesPtrOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketWebsiteRoutingRules) *BucketWebsiteRoutingRules {
+		return &v
+	}).(BucketWebsiteRoutingRulesPtrOutput)
+}
+
+// Specify a jump rule or a mirroring back-to-origin rule, with a maximum of 20 routing rules. See `routingRule` below.
+func (o BucketWebsiteRoutingRulesOutput) RoutingRules() BucketWebsiteRoutingRulesRoutingRuleArrayOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRules) []BucketWebsiteRoutingRulesRoutingRule { return v.RoutingRules }).(BucketWebsiteRoutingRulesRoutingRuleArrayOutput)
+}
+
+type BucketWebsiteRoutingRulesPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketWebsiteRoutingRulesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketWebsiteRoutingRules)(nil)).Elem()
+}
+
+func (o BucketWebsiteRoutingRulesPtrOutput) ToBucketWebsiteRoutingRulesPtrOutput() BucketWebsiteRoutingRulesPtrOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesPtrOutput) ToBucketWebsiteRoutingRulesPtrOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesPtrOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesPtrOutput) Elem() BucketWebsiteRoutingRulesOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRules) BucketWebsiteRoutingRules {
+		if v != nil {
+			return *v
+		}
+		var ret BucketWebsiteRoutingRules
+		return ret
+	}).(BucketWebsiteRoutingRulesOutput)
+}
+
+// Specify a jump rule or a mirroring back-to-origin rule, with a maximum of 20 routing rules. See `routingRule` below.
+func (o BucketWebsiteRoutingRulesPtrOutput) RoutingRules() BucketWebsiteRoutingRulesRoutingRuleArrayOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRules) []BucketWebsiteRoutingRulesRoutingRule {
+		if v == nil {
+			return nil
+		}
+		return v.RoutingRules
+	}).(BucketWebsiteRoutingRulesRoutingRuleArrayOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRule struct {
+	// Save the criteria that the rule needs to match. See `condition` below.
+	Condition *BucketWebsiteRoutingRulesRoutingRuleCondition `pulumi:"condition"`
+	// The Lua script configuration to be executed. See `luaConfig` below.
+	LuaConfig *BucketWebsiteRoutingRulesRoutingRuleLuaConfig `pulumi:"luaConfig"`
+	// Specifies the action to perform after this rule is matched. See `redirect` below.
+	Redirect *BucketWebsiteRoutingRulesRoutingRuleRedirect `pulumi:"redirect"`
+	// The sequence number of the matching and executing jump rules. OSS matches rules according to this sequence number. If the match is successful, the rule is executed and subsequent rules are not executed.
+	RuleNumber *int `pulumi:"ruleNumber"`
+}
+
+// BucketWebsiteRoutingRulesRoutingRuleInput is an input type that accepts BucketWebsiteRoutingRulesRoutingRuleArgs and BucketWebsiteRoutingRulesRoutingRuleOutput values.
+// You can construct a concrete instance of `BucketWebsiteRoutingRulesRoutingRuleInput` via:
+//
+//	BucketWebsiteRoutingRulesRoutingRuleArgs{...}
+type BucketWebsiteRoutingRulesRoutingRuleInput interface {
+	pulumi.Input
+
+	ToBucketWebsiteRoutingRulesRoutingRuleOutput() BucketWebsiteRoutingRulesRoutingRuleOutput
+	ToBucketWebsiteRoutingRulesRoutingRuleOutputWithContext(context.Context) BucketWebsiteRoutingRulesRoutingRuleOutput
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleArgs struct {
+	// Save the criteria that the rule needs to match. See `condition` below.
+	Condition BucketWebsiteRoutingRulesRoutingRuleConditionPtrInput `pulumi:"condition"`
+	// The Lua script configuration to be executed. See `luaConfig` below.
+	LuaConfig BucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrInput `pulumi:"luaConfig"`
+	// Specifies the action to perform after this rule is matched. See `redirect` below.
+	Redirect BucketWebsiteRoutingRulesRoutingRuleRedirectPtrInput `pulumi:"redirect"`
+	// The sequence number of the matching and executing jump rules. OSS matches rules according to this sequence number. If the match is successful, the rule is executed and subsequent rules are not executed.
+	RuleNumber pulumi.IntPtrInput `pulumi:"ruleNumber"`
+}
+
+func (BucketWebsiteRoutingRulesRoutingRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRule)(nil)).Elem()
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleArgs) ToBucketWebsiteRoutingRulesRoutingRuleOutput() BucketWebsiteRoutingRulesRoutingRuleOutput {
+	return i.ToBucketWebsiteRoutingRulesRoutingRuleOutputWithContext(context.Background())
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleArgs) ToBucketWebsiteRoutingRulesRoutingRuleOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesRoutingRuleOutput)
+}
+
+// BucketWebsiteRoutingRulesRoutingRuleArrayInput is an input type that accepts BucketWebsiteRoutingRulesRoutingRuleArray and BucketWebsiteRoutingRulesRoutingRuleArrayOutput values.
+// You can construct a concrete instance of `BucketWebsiteRoutingRulesRoutingRuleArrayInput` via:
+//
+//	BucketWebsiteRoutingRulesRoutingRuleArray{ BucketWebsiteRoutingRulesRoutingRuleArgs{...} }
+type BucketWebsiteRoutingRulesRoutingRuleArrayInput interface {
+	pulumi.Input
+
+	ToBucketWebsiteRoutingRulesRoutingRuleArrayOutput() BucketWebsiteRoutingRulesRoutingRuleArrayOutput
+	ToBucketWebsiteRoutingRulesRoutingRuleArrayOutputWithContext(context.Context) BucketWebsiteRoutingRulesRoutingRuleArrayOutput
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleArray []BucketWebsiteRoutingRulesRoutingRuleInput
+
+func (BucketWebsiteRoutingRulesRoutingRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BucketWebsiteRoutingRulesRoutingRule)(nil)).Elem()
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleArray) ToBucketWebsiteRoutingRulesRoutingRuleArrayOutput() BucketWebsiteRoutingRulesRoutingRuleArrayOutput {
+	return i.ToBucketWebsiteRoutingRulesRoutingRuleArrayOutputWithContext(context.Background())
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleArray) ToBucketWebsiteRoutingRulesRoutingRuleArrayOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesRoutingRuleArrayOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleOutput struct{ *pulumi.OutputState }
+
+func (BucketWebsiteRoutingRulesRoutingRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRule)(nil)).Elem()
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleOutput) ToBucketWebsiteRoutingRulesRoutingRuleOutput() BucketWebsiteRoutingRulesRoutingRuleOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleOutput) ToBucketWebsiteRoutingRulesRoutingRuleOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleOutput {
+	return o
+}
+
+// Save the criteria that the rule needs to match. See `condition` below.
+func (o BucketWebsiteRoutingRulesRoutingRuleOutput) Condition() BucketWebsiteRoutingRulesRoutingRuleConditionPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRule) *BucketWebsiteRoutingRulesRoutingRuleCondition {
+		return v.Condition
+	}).(BucketWebsiteRoutingRulesRoutingRuleConditionPtrOutput)
+}
+
+// The Lua script configuration to be executed. See `luaConfig` below.
+func (o BucketWebsiteRoutingRulesRoutingRuleOutput) LuaConfig() BucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRule) *BucketWebsiteRoutingRulesRoutingRuleLuaConfig {
+		return v.LuaConfig
+	}).(BucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrOutput)
+}
+
+// Specifies the action to perform after this rule is matched. See `redirect` below.
+func (o BucketWebsiteRoutingRulesRoutingRuleOutput) Redirect() BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRule) *BucketWebsiteRoutingRulesRoutingRuleRedirect {
+		return v.Redirect
+	}).(BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput)
+}
+
+// The sequence number of the matching and executing jump rules. OSS matches rules according to this sequence number. If the match is successful, the rule is executed and subsequent rules are not executed.
+func (o BucketWebsiteRoutingRulesRoutingRuleOutput) RuleNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRule) *int { return v.RuleNumber }).(pulumi.IntPtrOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (BucketWebsiteRoutingRulesRoutingRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BucketWebsiteRoutingRulesRoutingRule)(nil)).Elem()
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleArrayOutput) ToBucketWebsiteRoutingRulesRoutingRuleArrayOutput() BucketWebsiteRoutingRulesRoutingRuleArrayOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleArrayOutput) ToBucketWebsiteRoutingRulesRoutingRuleArrayOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleArrayOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleArrayOutput) Index(i pulumi.IntInput) BucketWebsiteRoutingRulesRoutingRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BucketWebsiteRoutingRulesRoutingRule {
+		return vs[0].([]BucketWebsiteRoutingRulesRoutingRule)[vs[1].(int)]
+	}).(BucketWebsiteRoutingRulesRoutingRuleOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleCondition struct {
+	// When the specified Object is accessed, this status is returned to match this rule. This field must be 404 when the jump rule is mirrored back to the source.
+	HttpErrorCodeReturnedEquals *string `pulumi:"httpErrorCodeReturnedEquals"`
+	// This rule can only be matched if the request contains the specified Header and the value is the specified value. You can specify up to 10 containers. See `includeHeaders` below.
+	IncludeHeaders []BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader `pulumi:"includeHeaders"`
+	// Only objects that match this prefix can match this rule.
+	KeyPrefixEquals *string `pulumi:"keyPrefixEquals"`
+	// Only objects that match this suffix can match this rule.
+	KeySuffixEquals *string `pulumi:"keySuffixEquals"`
+}
+
+// BucketWebsiteRoutingRulesRoutingRuleConditionInput is an input type that accepts BucketWebsiteRoutingRulesRoutingRuleConditionArgs and BucketWebsiteRoutingRulesRoutingRuleConditionOutput values.
+// You can construct a concrete instance of `BucketWebsiteRoutingRulesRoutingRuleConditionInput` via:
+//
+//	BucketWebsiteRoutingRulesRoutingRuleConditionArgs{...}
+type BucketWebsiteRoutingRulesRoutingRuleConditionInput interface {
+	pulumi.Input
+
+	ToBucketWebsiteRoutingRulesRoutingRuleConditionOutput() BucketWebsiteRoutingRulesRoutingRuleConditionOutput
+	ToBucketWebsiteRoutingRulesRoutingRuleConditionOutputWithContext(context.Context) BucketWebsiteRoutingRulesRoutingRuleConditionOutput
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleConditionArgs struct {
+	// When the specified Object is accessed, this status is returned to match this rule. This field must be 404 when the jump rule is mirrored back to the source.
+	HttpErrorCodeReturnedEquals pulumi.StringPtrInput `pulumi:"httpErrorCodeReturnedEquals"`
+	// This rule can only be matched if the request contains the specified Header and the value is the specified value. You can specify up to 10 containers. See `includeHeaders` below.
+	IncludeHeaders BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArrayInput `pulumi:"includeHeaders"`
+	// Only objects that match this prefix can match this rule.
+	KeyPrefixEquals pulumi.StringPtrInput `pulumi:"keyPrefixEquals"`
+	// Only objects that match this suffix can match this rule.
+	KeySuffixEquals pulumi.StringPtrInput `pulumi:"keySuffixEquals"`
+}
+
+func (BucketWebsiteRoutingRulesRoutingRuleConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleCondition)(nil)).Elem()
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleConditionArgs) ToBucketWebsiteRoutingRulesRoutingRuleConditionOutput() BucketWebsiteRoutingRulesRoutingRuleConditionOutput {
+	return i.ToBucketWebsiteRoutingRulesRoutingRuleConditionOutputWithContext(context.Background())
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleConditionArgs) ToBucketWebsiteRoutingRulesRoutingRuleConditionOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesRoutingRuleConditionOutput)
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleConditionArgs) ToBucketWebsiteRoutingRulesRoutingRuleConditionPtrOutput() BucketWebsiteRoutingRulesRoutingRuleConditionPtrOutput {
+	return i.ToBucketWebsiteRoutingRulesRoutingRuleConditionPtrOutputWithContext(context.Background())
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleConditionArgs) ToBucketWebsiteRoutingRulesRoutingRuleConditionPtrOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesRoutingRuleConditionOutput).ToBucketWebsiteRoutingRulesRoutingRuleConditionPtrOutputWithContext(ctx)
+}
+
+// BucketWebsiteRoutingRulesRoutingRuleConditionPtrInput is an input type that accepts BucketWebsiteRoutingRulesRoutingRuleConditionArgs, BucketWebsiteRoutingRulesRoutingRuleConditionPtr and BucketWebsiteRoutingRulesRoutingRuleConditionPtrOutput values.
+// You can construct a concrete instance of `BucketWebsiteRoutingRulesRoutingRuleConditionPtrInput` via:
+//
+//	        BucketWebsiteRoutingRulesRoutingRuleConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type BucketWebsiteRoutingRulesRoutingRuleConditionPtrInput interface {
+	pulumi.Input
+
+	ToBucketWebsiteRoutingRulesRoutingRuleConditionPtrOutput() BucketWebsiteRoutingRulesRoutingRuleConditionPtrOutput
+	ToBucketWebsiteRoutingRulesRoutingRuleConditionPtrOutputWithContext(context.Context) BucketWebsiteRoutingRulesRoutingRuleConditionPtrOutput
+}
+
+type bucketWebsiteRoutingRulesRoutingRuleConditionPtrType BucketWebsiteRoutingRulesRoutingRuleConditionArgs
+
+func BucketWebsiteRoutingRulesRoutingRuleConditionPtr(v *BucketWebsiteRoutingRulesRoutingRuleConditionArgs) BucketWebsiteRoutingRulesRoutingRuleConditionPtrInput {
+	return (*bucketWebsiteRoutingRulesRoutingRuleConditionPtrType)(v)
+}
+
+func (*bucketWebsiteRoutingRulesRoutingRuleConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketWebsiteRoutingRulesRoutingRuleCondition)(nil)).Elem()
+}
+
+func (i *bucketWebsiteRoutingRulesRoutingRuleConditionPtrType) ToBucketWebsiteRoutingRulesRoutingRuleConditionPtrOutput() BucketWebsiteRoutingRulesRoutingRuleConditionPtrOutput {
+	return i.ToBucketWebsiteRoutingRulesRoutingRuleConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketWebsiteRoutingRulesRoutingRuleConditionPtrType) ToBucketWebsiteRoutingRulesRoutingRuleConditionPtrOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesRoutingRuleConditionPtrOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleConditionOutput struct{ *pulumi.OutputState }
+
+func (BucketWebsiteRoutingRulesRoutingRuleConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleCondition)(nil)).Elem()
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleConditionOutput) ToBucketWebsiteRoutingRulesRoutingRuleConditionOutput() BucketWebsiteRoutingRulesRoutingRuleConditionOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleConditionOutput) ToBucketWebsiteRoutingRulesRoutingRuleConditionOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleConditionOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleConditionOutput) ToBucketWebsiteRoutingRulesRoutingRuleConditionPtrOutput() BucketWebsiteRoutingRulesRoutingRuleConditionPtrOutput {
+	return o.ToBucketWebsiteRoutingRulesRoutingRuleConditionPtrOutputWithContext(context.Background())
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleConditionOutput) ToBucketWebsiteRoutingRulesRoutingRuleConditionPtrOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketWebsiteRoutingRulesRoutingRuleCondition) *BucketWebsiteRoutingRulesRoutingRuleCondition {
+		return &v
+	}).(BucketWebsiteRoutingRulesRoutingRuleConditionPtrOutput)
+}
+
+// When the specified Object is accessed, this status is returned to match this rule. This field must be 404 when the jump rule is mirrored back to the source.
+func (o BucketWebsiteRoutingRulesRoutingRuleConditionOutput) HttpErrorCodeReturnedEquals() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleCondition) *string { return v.HttpErrorCodeReturnedEquals }).(pulumi.StringPtrOutput)
+}
+
+// This rule can only be matched if the request contains the specified Header and the value is the specified value. You can specify up to 10 containers. See `includeHeaders` below.
+func (o BucketWebsiteRoutingRulesRoutingRuleConditionOutput) IncludeHeaders() BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArrayOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleCondition) []BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader {
+		return v.IncludeHeaders
+	}).(BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArrayOutput)
+}
+
+// Only objects that match this prefix can match this rule.
+func (o BucketWebsiteRoutingRulesRoutingRuleConditionOutput) KeyPrefixEquals() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleCondition) *string { return v.KeyPrefixEquals }).(pulumi.StringPtrOutput)
+}
+
+// Only objects that match this suffix can match this rule.
+func (o BucketWebsiteRoutingRulesRoutingRuleConditionOutput) KeySuffixEquals() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleCondition) *string { return v.KeySuffixEquals }).(pulumi.StringPtrOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketWebsiteRoutingRulesRoutingRuleConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketWebsiteRoutingRulesRoutingRuleCondition)(nil)).Elem()
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleConditionPtrOutput) ToBucketWebsiteRoutingRulesRoutingRuleConditionPtrOutput() BucketWebsiteRoutingRulesRoutingRuleConditionPtrOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleConditionPtrOutput) ToBucketWebsiteRoutingRulesRoutingRuleConditionPtrOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleConditionPtrOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleConditionPtrOutput) Elem() BucketWebsiteRoutingRulesRoutingRuleConditionOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleCondition) BucketWebsiteRoutingRulesRoutingRuleCondition {
+		if v != nil {
+			return *v
+		}
+		var ret BucketWebsiteRoutingRulesRoutingRuleCondition
+		return ret
+	}).(BucketWebsiteRoutingRulesRoutingRuleConditionOutput)
+}
+
+// When the specified Object is accessed, this status is returned to match this rule. This field must be 404 when the jump rule is mirrored back to the source.
+func (o BucketWebsiteRoutingRulesRoutingRuleConditionPtrOutput) HttpErrorCodeReturnedEquals() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpErrorCodeReturnedEquals
+	}).(pulumi.StringPtrOutput)
+}
+
+// This rule can only be matched if the request contains the specified Header and the value is the specified value. You can specify up to 10 containers. See `includeHeaders` below.
+func (o BucketWebsiteRoutingRulesRoutingRuleConditionPtrOutput) IncludeHeaders() BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArrayOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleCondition) []BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeHeaders
+	}).(BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArrayOutput)
+}
+
+// Only objects that match this prefix can match this rule.
+func (o BucketWebsiteRoutingRulesRoutingRuleConditionPtrOutput) KeyPrefixEquals() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyPrefixEquals
+	}).(pulumi.StringPtrOutput)
+}
+
+// Only objects that match this suffix can match this rule.
+func (o BucketWebsiteRoutingRulesRoutingRuleConditionPtrOutput) KeySuffixEquals() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeySuffixEquals
+	}).(pulumi.StringPtrOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader struct {
+	// This rule can only be matched if the request contains the Header specified by Key and the value ends with this value.
+	EndsWith *string `pulumi:"endsWith"`
+	// This rule can only be matched if the request contains the Header specified by Key and the value is the specified value.
+	Equals *string `pulumi:"equals"`
+	Key    *string `pulumi:"key"`
+	// This rule can only be matched if the request contains the Header specified by Key and the value starts with this value.
+	StartsWith *string `pulumi:"startsWith"`
+}
+
+// BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderInput is an input type that accepts BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArgs and BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderOutput values.
+// You can construct a concrete instance of `BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderInput` via:
+//
+//	BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArgs{...}
+type BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderInput interface {
+	pulumi.Input
+
+	ToBucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderOutput() BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderOutput
+	ToBucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderOutputWithContext(context.Context) BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderOutput
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArgs struct {
+	// This rule can only be matched if the request contains the Header specified by Key and the value ends with this value.
+	EndsWith pulumi.StringPtrInput `pulumi:"endsWith"`
+	// This rule can only be matched if the request contains the Header specified by Key and the value is the specified value.
+	Equals pulumi.StringPtrInput `pulumi:"equals"`
+	Key    pulumi.StringPtrInput `pulumi:"key"`
+	// This rule can only be matched if the request contains the Header specified by Key and the value starts with this value.
+	StartsWith pulumi.StringPtrInput `pulumi:"startsWith"`
+}
+
+func (BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader)(nil)).Elem()
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArgs) ToBucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderOutput() BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderOutput {
+	return i.ToBucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderOutputWithContext(context.Background())
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArgs) ToBucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderOutput)
+}
+
+// BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArrayInput is an input type that accepts BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArray and BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArrayOutput values.
+// You can construct a concrete instance of `BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArrayInput` via:
+//
+//	BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArray{ BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArgs{...} }
+type BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArrayInput interface {
+	pulumi.Input
+
+	ToBucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArrayOutput() BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArrayOutput
+	ToBucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArrayOutputWithContext(context.Context) BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArrayOutput
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArray []BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderInput
+
+func (BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader)(nil)).Elem()
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArray) ToBucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArrayOutput() BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArrayOutput {
+	return i.ToBucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArray) ToBucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArrayOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArrayOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderOutput struct{ *pulumi.OutputState }
+
+func (BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader)(nil)).Elem()
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderOutput) ToBucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderOutput() BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderOutput) ToBucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderOutput {
+	return o
+}
+
+// This rule can only be matched if the request contains the Header specified by Key and the value ends with this value.
+func (o BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderOutput) EndsWith() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader) *string { return v.EndsWith }).(pulumi.StringPtrOutput)
+}
+
+// This rule can only be matched if the request contains the Header specified by Key and the value is the specified value.
+func (o BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderOutput) Equals() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader) *string { return v.Equals }).(pulumi.StringPtrOutput)
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// This rule can only be matched if the request contains the Header specified by Key and the value starts with this value.
+func (o BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderOutput) StartsWith() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader) *string { return v.StartsWith }).(pulumi.StringPtrOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader)(nil)).Elem()
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArrayOutput) ToBucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArrayOutput() BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArrayOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArrayOutput) ToBucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArrayOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArrayOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArrayOutput) Index(i pulumi.IntInput) BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader {
+		return vs[0].([]BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader)[vs[1].(int)]
+	}).(BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleLuaConfig struct {
+	// The Lua script name.
+	Script *string `pulumi:"script"`
+}
+
+// BucketWebsiteRoutingRulesRoutingRuleLuaConfigInput is an input type that accepts BucketWebsiteRoutingRulesRoutingRuleLuaConfigArgs and BucketWebsiteRoutingRulesRoutingRuleLuaConfigOutput values.
+// You can construct a concrete instance of `BucketWebsiteRoutingRulesRoutingRuleLuaConfigInput` via:
+//
+//	BucketWebsiteRoutingRulesRoutingRuleLuaConfigArgs{...}
+type BucketWebsiteRoutingRulesRoutingRuleLuaConfigInput interface {
+	pulumi.Input
+
+	ToBucketWebsiteRoutingRulesRoutingRuleLuaConfigOutput() BucketWebsiteRoutingRulesRoutingRuleLuaConfigOutput
+	ToBucketWebsiteRoutingRulesRoutingRuleLuaConfigOutputWithContext(context.Context) BucketWebsiteRoutingRulesRoutingRuleLuaConfigOutput
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleLuaConfigArgs struct {
+	// The Lua script name.
+	Script pulumi.StringPtrInput `pulumi:"script"`
+}
+
+func (BucketWebsiteRoutingRulesRoutingRuleLuaConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleLuaConfig)(nil)).Elem()
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleLuaConfigArgs) ToBucketWebsiteRoutingRulesRoutingRuleLuaConfigOutput() BucketWebsiteRoutingRulesRoutingRuleLuaConfigOutput {
+	return i.ToBucketWebsiteRoutingRulesRoutingRuleLuaConfigOutputWithContext(context.Background())
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleLuaConfigArgs) ToBucketWebsiteRoutingRulesRoutingRuleLuaConfigOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleLuaConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesRoutingRuleLuaConfigOutput)
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleLuaConfigArgs) ToBucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrOutput() BucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrOutput {
+	return i.ToBucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrOutputWithContext(context.Background())
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleLuaConfigArgs) ToBucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesRoutingRuleLuaConfigOutput).ToBucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrOutputWithContext(ctx)
+}
+
+// BucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrInput is an input type that accepts BucketWebsiteRoutingRulesRoutingRuleLuaConfigArgs, BucketWebsiteRoutingRulesRoutingRuleLuaConfigPtr and BucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrOutput values.
+// You can construct a concrete instance of `BucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrInput` via:
+//
+//	        BucketWebsiteRoutingRulesRoutingRuleLuaConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type BucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrInput interface {
+	pulumi.Input
+
+	ToBucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrOutput() BucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrOutput
+	ToBucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrOutputWithContext(context.Context) BucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrOutput
+}
+
+type bucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrType BucketWebsiteRoutingRulesRoutingRuleLuaConfigArgs
+
+func BucketWebsiteRoutingRulesRoutingRuleLuaConfigPtr(v *BucketWebsiteRoutingRulesRoutingRuleLuaConfigArgs) BucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrInput {
+	return (*bucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrType)(v)
+}
+
+func (*bucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketWebsiteRoutingRulesRoutingRuleLuaConfig)(nil)).Elem()
+}
+
+func (i *bucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrType) ToBucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrOutput() BucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrOutput {
+	return i.ToBucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrType) ToBucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleLuaConfigOutput struct{ *pulumi.OutputState }
+
+func (BucketWebsiteRoutingRulesRoutingRuleLuaConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleLuaConfig)(nil)).Elem()
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleLuaConfigOutput) ToBucketWebsiteRoutingRulesRoutingRuleLuaConfigOutput() BucketWebsiteRoutingRulesRoutingRuleLuaConfigOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleLuaConfigOutput) ToBucketWebsiteRoutingRulesRoutingRuleLuaConfigOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleLuaConfigOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleLuaConfigOutput) ToBucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrOutput() BucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrOutput {
+	return o.ToBucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrOutputWithContext(context.Background())
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleLuaConfigOutput) ToBucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketWebsiteRoutingRulesRoutingRuleLuaConfig) *BucketWebsiteRoutingRulesRoutingRuleLuaConfig {
+		return &v
+	}).(BucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrOutput)
+}
+
+// The Lua script name.
+func (o BucketWebsiteRoutingRulesRoutingRuleLuaConfigOutput) Script() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleLuaConfig) *string { return v.Script }).(pulumi.StringPtrOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketWebsiteRoutingRulesRoutingRuleLuaConfig)(nil)).Elem()
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrOutput) ToBucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrOutput() BucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrOutput) ToBucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrOutput) Elem() BucketWebsiteRoutingRulesRoutingRuleLuaConfigOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleLuaConfig) BucketWebsiteRoutingRulesRoutingRuleLuaConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BucketWebsiteRoutingRulesRoutingRuleLuaConfig
+		return ret
+	}).(BucketWebsiteRoutingRulesRoutingRuleLuaConfigOutput)
+}
+
+// The Lua script name.
+func (o BucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrOutput) Script() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleLuaConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Script
+	}).(pulumi.StringPtrOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirect struct {
+	// If this field is set to true, the prefix of Object is replaced with the value specified by ReplaceKeyPrefixWith. If this field is not specified or is blank, the Object prefix is truncated.
+	EnableReplacePrefix *bool `pulumi:"enableReplacePrefix"`
+	// The domain name during the jump. The domain name must comply with the domain name specification.
+	HostName *string `pulumi:"hostName"`
+	// The status code returned during the jump. It takes effect only when the RedirectType is set to External or AliCDN.
+	HttpRedirectCode *string `pulumi:"httpRedirectCode"`
+	// Image back-to-source allows getting Image information
+	MirrorAllowGetImageInfo *bool `pulumi:"mirrorAllowGetImageInfo"`
+	// Whether to allow HeadObject in image back-to-source
+	MirrorAllowHeadObject *bool `pulumi:"mirrorAllowHeadObject"`
+	// Mirror back-to-source allows support for video frame truncation
+	MirrorAllowVideoSnapshot *bool `pulumi:"mirrorAllowVideoSnapshot"`
+	// The status code of the mirror back-to-source trigger asynchronous pull mode.
+	MirrorAsyncStatus *int `pulumi:"mirrorAsyncStatus"`
+	// Image back Source station authentication information See `mirrorAuth` below.
+	MirrorAuth *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuth `pulumi:"mirrorAuth"`
+	// Whether to check the MD5 of the source body. It takes effect only when the RedirectType is set to Mirror.
+	MirrorCheckMd5 *bool `pulumi:"mirrorCheckMd5"`
+	// Mirrored back-to-source high-speed Channel vpregion
+	MirrorDstRegion *string `pulumi:"mirrorDstRegion"`
+	// Mirroring back-to-source high-speed Channel standby station VpcId
+	MirrorDstSlaveVpcId *string `pulumi:"mirrorDstSlaveVpcId"`
+	// Mirror back-to-source high-speed Channel VpcId
+	MirrorDstVpcId *string `pulumi:"mirrorDstVpcId"`
+	// If the result of the image back-to-source acquisition is 3xx, whether to continue to jump to the specified Location to obtain data. It takes effect only when the RedirectType is set to Mirror.
+	MirrorFollowRedirect *bool `pulumi:"mirrorFollowRedirect"`
+	// Specifies the Header carried when the image returns to the source. It takes effect only when the RedirectType is set to Mirror. See `mirrorHeaders` below.
+	MirrorHeaders *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeaders `pulumi:"mirrorHeaders"`
+	// Whether it is a mirror back-to-source high-speed Channel
+	MirrorIsExpressTunnel *bool `pulumi:"mirrorIsExpressTunnel"`
+	// Mirror back-to-source multi-source station configuration container. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirrorMultiAlternates` below.
+	MirrorMultiAlternates *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternates `pulumi:"mirrorMultiAlternates"`
+	// Transparent transmission/to source Station
+	MirrorPassOriginalSlashes *bool `pulumi:"mirrorPassOriginalSlashes"`
+	// Same as PassQueryString and takes precedence over PassQueryString. It takes effect only when the RedirectType is set to Mirror.
+	MirrorPassQueryString *bool `pulumi:"mirrorPassQueryString"`
+	// Whether mirroring back to source does not save data
+	MirrorProxyPass *bool `pulumi:"mirrorProxyPass"`
+	// The container that saves the image back to the source and returns the response header rule. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirrorReturnHeaders` below.
+	MirrorReturnHeaders *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeaders `pulumi:"mirrorReturnHeaders"`
+	// Roles used when mirroring back-to-source
+	MirrorRole *string `pulumi:"mirrorRole"`
+	// Mirror back-to-source back-to-source OSS automatically saves user metadata
+	MirrorSaveOssMeta *bool `pulumi:"mirrorSaveOssMeta"`
+	// Transparent transmission of SNI
+	MirrorSni *bool `pulumi:"mirrorSni"`
+	// It is used to judge the status of active-standby switching. The judgment logic of active-standby switching is that the source station returns an error. If MirrorSwitchAllErrors is true, it is considered a failure except the following status code: 200,206,301,302,303,307,404; If false, only the source Station Returns 5xx or times out is considered a failure.
+	MirrorSwitchAllErrors *bool `pulumi:"mirrorSwitchAllErrors"`
+	// Save the label according to the parameters when saving the file from the mirror back to the source. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirrorTaggings` below.
+	MirrorTaggings *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggings `pulumi:"mirrorTaggings"`
+	// Mirror back-to-source leased line back-to-source tunnel ID
+	MirrorTunnelId *string `pulumi:"mirrorTunnelId"`
+	// The address of the origin of the image. It takes effect only when the RedirectType is set to Mirror. The origin address must start with http:// or https:// and end with a forward slash (/). OSS takes the Object name after the Origin address to form the origin URL.
+	MirrorUrl *string `pulumi:"mirrorUrl"`
+	// Mirror back-to-source Master-backup back-to-source switching decision URL
+	MirrorUrlProbe *string `pulumi:"mirrorUrlProbe"`
+	// Mirror back-to-source primary backup back-to-source backup station URL
+	MirrorUrlSlave *string `pulumi:"mirrorUrlSlave"`
+	// Whether the source station LastModifiedTime is used for the image back-to-source save file.
+	MirrorUserLastModified *bool `pulumi:"mirrorUserLastModified"`
+	// Whether to use role for mirroring back to source
+	MirrorUsingRole *bool `pulumi:"mirrorUsingRole"`
+	// Whether to carry the request parameters when executing the jump or mirror back-to-source rule. Did the user carry the request parameters when requesting OSS? a = B & c = d, and set PassQueryString to true. If the rule is a 302 jump, this request parameter is added to the Location header of the jump. For example Location:example.com? a = B & c = d, and the jump type is mirrored back-to-origin, this request parameter is also carried in the back-to-origin request initiated. Values: true, false (default)
+	PassQueryString *bool `pulumi:"passQueryString"`
+	// The protocol at the time of the jump. It takes effect only when the RedirectType is set to External or AliCDN.
+	Protocol *string `pulumi:"protocol"`
+	// Specifies the type of jump. The value range is as follows: Mirror: Mirror back to the source. External: External redirects, that is, OSS returns a 3xx request to redirect to another address. AliCDN: Alibaba Cloud CDN jump, mainly used for Alibaba Cloud CDN. Unlike External, OSS adds an additional Header. After recognizing this Header, Alibaba Cloud CDN redirects the data to the specified address and returns the obtained data to the user instead of returning the 3xx Redirection request to the user.
+	RedirectType *string `pulumi:"redirectType"`
+	// The prefix of the Object name will be replaced with this value during Redirect. If the prefix is empty, this string is inserted in front of the Object name.
+	ReplaceKeyPrefixWith *string `pulumi:"replaceKeyPrefixWith"`
+	// During redirection, the Object name is replaced with the value specified by ReplaceKeyWith. You can set variables in ReplaceKeyWith. Currently, the supported variable is ${key}, which indicates the name of the Object in the request.
+	ReplaceKeyWith *string `pulumi:"replaceKeyWith"`
+	// Mirror back-to-source transparent source station response code list
+	TransparentMirrorResponseCodes *string `pulumi:"transparentMirrorResponseCodes"`
+}
+
+// BucketWebsiteRoutingRulesRoutingRuleRedirectInput is an input type that accepts BucketWebsiteRoutingRulesRoutingRuleRedirectArgs and BucketWebsiteRoutingRulesRoutingRuleRedirectOutput values.
+// You can construct a concrete instance of `BucketWebsiteRoutingRulesRoutingRuleRedirectInput` via:
+//
+//	BucketWebsiteRoutingRulesRoutingRuleRedirectArgs{...}
+type BucketWebsiteRoutingRulesRoutingRuleRedirectInput interface {
+	pulumi.Input
+
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectOutput
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectOutputWithContext(context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectOutput
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectArgs struct {
+	// If this field is set to true, the prefix of Object is replaced with the value specified by ReplaceKeyPrefixWith. If this field is not specified or is blank, the Object prefix is truncated.
+	EnableReplacePrefix pulumi.BoolPtrInput `pulumi:"enableReplacePrefix"`
+	// The domain name during the jump. The domain name must comply with the domain name specification.
+	HostName pulumi.StringPtrInput `pulumi:"hostName"`
+	// The status code returned during the jump. It takes effect only when the RedirectType is set to External or AliCDN.
+	HttpRedirectCode pulumi.StringPtrInput `pulumi:"httpRedirectCode"`
+	// Image back-to-source allows getting Image information
+	MirrorAllowGetImageInfo pulumi.BoolPtrInput `pulumi:"mirrorAllowGetImageInfo"`
+	// Whether to allow HeadObject in image back-to-source
+	MirrorAllowHeadObject pulumi.BoolPtrInput `pulumi:"mirrorAllowHeadObject"`
+	// Mirror back-to-source allows support for video frame truncation
+	MirrorAllowVideoSnapshot pulumi.BoolPtrInput `pulumi:"mirrorAllowVideoSnapshot"`
+	// The status code of the mirror back-to-source trigger asynchronous pull mode.
+	MirrorAsyncStatus pulumi.IntPtrInput `pulumi:"mirrorAsyncStatus"`
+	// Image back Source station authentication information See `mirrorAuth` below.
+	MirrorAuth BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrInput `pulumi:"mirrorAuth"`
+	// Whether to check the MD5 of the source body. It takes effect only when the RedirectType is set to Mirror.
+	MirrorCheckMd5 pulumi.BoolPtrInput `pulumi:"mirrorCheckMd5"`
+	// Mirrored back-to-source high-speed Channel vpregion
+	MirrorDstRegion pulumi.StringPtrInput `pulumi:"mirrorDstRegion"`
+	// Mirroring back-to-source high-speed Channel standby station VpcId
+	MirrorDstSlaveVpcId pulumi.StringPtrInput `pulumi:"mirrorDstSlaveVpcId"`
+	// Mirror back-to-source high-speed Channel VpcId
+	MirrorDstVpcId pulumi.StringPtrInput `pulumi:"mirrorDstVpcId"`
+	// If the result of the image back-to-source acquisition is 3xx, whether to continue to jump to the specified Location to obtain data. It takes effect only when the RedirectType is set to Mirror.
+	MirrorFollowRedirect pulumi.BoolPtrInput `pulumi:"mirrorFollowRedirect"`
+	// Specifies the Header carried when the image returns to the source. It takes effect only when the RedirectType is set to Mirror. See `mirrorHeaders` below.
+	MirrorHeaders BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrInput `pulumi:"mirrorHeaders"`
+	// Whether it is a mirror back-to-source high-speed Channel
+	MirrorIsExpressTunnel pulumi.BoolPtrInput `pulumi:"mirrorIsExpressTunnel"`
+	// Mirror back-to-source multi-source station configuration container. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirrorMultiAlternates` below.
+	MirrorMultiAlternates BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrInput `pulumi:"mirrorMultiAlternates"`
+	// Transparent transmission/to source Station
+	MirrorPassOriginalSlashes pulumi.BoolPtrInput `pulumi:"mirrorPassOriginalSlashes"`
+	// Same as PassQueryString and takes precedence over PassQueryString. It takes effect only when the RedirectType is set to Mirror.
+	MirrorPassQueryString pulumi.BoolPtrInput `pulumi:"mirrorPassQueryString"`
+	// Whether mirroring back to source does not save data
+	MirrorProxyPass pulumi.BoolPtrInput `pulumi:"mirrorProxyPass"`
+	// The container that saves the image back to the source and returns the response header rule. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirrorReturnHeaders` below.
+	MirrorReturnHeaders BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrInput `pulumi:"mirrorReturnHeaders"`
+	// Roles used when mirroring back-to-source
+	MirrorRole pulumi.StringPtrInput `pulumi:"mirrorRole"`
+	// Mirror back-to-source back-to-source OSS automatically saves user metadata
+	MirrorSaveOssMeta pulumi.BoolPtrInput `pulumi:"mirrorSaveOssMeta"`
+	// Transparent transmission of SNI
+	MirrorSni pulumi.BoolPtrInput `pulumi:"mirrorSni"`
+	// It is used to judge the status of active-standby switching. The judgment logic of active-standby switching is that the source station returns an error. If MirrorSwitchAllErrors is true, it is considered a failure except the following status code: 200,206,301,302,303,307,404; If false, only the source Station Returns 5xx or times out is considered a failure.
+	MirrorSwitchAllErrors pulumi.BoolPtrInput `pulumi:"mirrorSwitchAllErrors"`
+	// Save the label according to the parameters when saving the file from the mirror back to the source. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirrorTaggings` below.
+	MirrorTaggings BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrInput `pulumi:"mirrorTaggings"`
+	// Mirror back-to-source leased line back-to-source tunnel ID
+	MirrorTunnelId pulumi.StringPtrInput `pulumi:"mirrorTunnelId"`
+	// The address of the origin of the image. It takes effect only when the RedirectType is set to Mirror. The origin address must start with http:// or https:// and end with a forward slash (/). OSS takes the Object name after the Origin address to form the origin URL.
+	MirrorUrl pulumi.StringPtrInput `pulumi:"mirrorUrl"`
+	// Mirror back-to-source Master-backup back-to-source switching decision URL
+	MirrorUrlProbe pulumi.StringPtrInput `pulumi:"mirrorUrlProbe"`
+	// Mirror back-to-source primary backup back-to-source backup station URL
+	MirrorUrlSlave pulumi.StringPtrInput `pulumi:"mirrorUrlSlave"`
+	// Whether the source station LastModifiedTime is used for the image back-to-source save file.
+	MirrorUserLastModified pulumi.BoolPtrInput `pulumi:"mirrorUserLastModified"`
+	// Whether to use role for mirroring back to source
+	MirrorUsingRole pulumi.BoolPtrInput `pulumi:"mirrorUsingRole"`
+	// Whether to carry the request parameters when executing the jump or mirror back-to-source rule. Did the user carry the request parameters when requesting OSS? a = B & c = d, and set PassQueryString to true. If the rule is a 302 jump, this request parameter is added to the Location header of the jump. For example Location:example.com? a = B & c = d, and the jump type is mirrored back-to-origin, this request parameter is also carried in the back-to-origin request initiated. Values: true, false (default)
+	PassQueryString pulumi.BoolPtrInput `pulumi:"passQueryString"`
+	// The protocol at the time of the jump. It takes effect only when the RedirectType is set to External or AliCDN.
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	// Specifies the type of jump. The value range is as follows: Mirror: Mirror back to the source. External: External redirects, that is, OSS returns a 3xx request to redirect to another address. AliCDN: Alibaba Cloud CDN jump, mainly used for Alibaba Cloud CDN. Unlike External, OSS adds an additional Header. After recognizing this Header, Alibaba Cloud CDN redirects the data to the specified address and returns the obtained data to the user instead of returning the 3xx Redirection request to the user.
+	RedirectType pulumi.StringPtrInput `pulumi:"redirectType"`
+	// The prefix of the Object name will be replaced with this value during Redirect. If the prefix is empty, this string is inserted in front of the Object name.
+	ReplaceKeyPrefixWith pulumi.StringPtrInput `pulumi:"replaceKeyPrefixWith"`
+	// During redirection, the Object name is replaced with the value specified by ReplaceKeyWith. You can set variables in ReplaceKeyWith. Currently, the supported variable is ${key}, which indicates the name of the Object in the request.
+	ReplaceKeyWith pulumi.StringPtrInput `pulumi:"replaceKeyWith"`
+	// Mirror back-to-source transparent source station response code list
+	TransparentMirrorResponseCodes pulumi.StringPtrInput `pulumi:"transparentMirrorResponseCodes"`
+}
+
+func (BucketWebsiteRoutingRulesRoutingRuleRedirectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirect)(nil)).Elem()
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectArgs) ToBucketWebsiteRoutingRulesRoutingRuleRedirectOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectOutput {
+	return i.ToBucketWebsiteRoutingRulesRoutingRuleRedirectOutputWithContext(context.Background())
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectArgs) ToBucketWebsiteRoutingRulesRoutingRuleRedirectOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesRoutingRuleRedirectOutput)
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectArgs) ToBucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput {
+	return i.ToBucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutputWithContext(context.Background())
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectArgs) ToBucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesRoutingRuleRedirectOutput).ToBucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutputWithContext(ctx)
+}
+
+// BucketWebsiteRoutingRulesRoutingRuleRedirectPtrInput is an input type that accepts BucketWebsiteRoutingRulesRoutingRuleRedirectArgs, BucketWebsiteRoutingRulesRoutingRuleRedirectPtr and BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput values.
+// You can construct a concrete instance of `BucketWebsiteRoutingRulesRoutingRuleRedirectPtrInput` via:
+//
+//	        BucketWebsiteRoutingRulesRoutingRuleRedirectArgs{...}
+//
+//	or:
+//
+//	        nil
+type BucketWebsiteRoutingRulesRoutingRuleRedirectPtrInput interface {
+	pulumi.Input
+
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutputWithContext(context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput
+}
+
+type bucketWebsiteRoutingRulesRoutingRuleRedirectPtrType BucketWebsiteRoutingRulesRoutingRuleRedirectArgs
+
+func BucketWebsiteRoutingRulesRoutingRuleRedirectPtr(v *BucketWebsiteRoutingRulesRoutingRuleRedirectArgs) BucketWebsiteRoutingRulesRoutingRuleRedirectPtrInput {
+	return (*bucketWebsiteRoutingRulesRoutingRuleRedirectPtrType)(v)
+}
+
+func (*bucketWebsiteRoutingRulesRoutingRuleRedirectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketWebsiteRoutingRulesRoutingRuleRedirect)(nil)).Elem()
+}
+
+func (i *bucketWebsiteRoutingRulesRoutingRuleRedirectPtrType) ToBucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput {
+	return i.ToBucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketWebsiteRoutingRulesRoutingRuleRedirectPtrType) ToBucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectOutput struct{ *pulumi.OutputState }
+
+func (BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirect)(nil)).Elem()
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput {
+	return o.ToBucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutputWithContext(context.Background())
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketWebsiteRoutingRulesRoutingRuleRedirect) *BucketWebsiteRoutingRulesRoutingRuleRedirect {
+		return &v
+	}).(BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput)
+}
+
+// If this field is set to true, the prefix of Object is replaced with the value specified by ReplaceKeyPrefixWith. If this field is not specified or is blank, the Object prefix is truncated.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) EnableReplacePrefix() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirect) *bool { return v.EnableReplacePrefix }).(pulumi.BoolPtrOutput)
+}
+
+// The domain name during the jump. The domain name must comply with the domain name specification.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) HostName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirect) *string { return v.HostName }).(pulumi.StringPtrOutput)
+}
+
+// The status code returned during the jump. It takes effect only when the RedirectType is set to External or AliCDN.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) HttpRedirectCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirect) *string { return v.HttpRedirectCode }).(pulumi.StringPtrOutput)
+}
+
+// Image back-to-source allows getting Image information
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) MirrorAllowGetImageInfo() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirect) *bool { return v.MirrorAllowGetImageInfo }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to allow HeadObject in image back-to-source
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) MirrorAllowHeadObject() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirect) *bool { return v.MirrorAllowHeadObject }).(pulumi.BoolPtrOutput)
+}
+
+// Mirror back-to-source allows support for video frame truncation
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) MirrorAllowVideoSnapshot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirect) *bool { return v.MirrorAllowVideoSnapshot }).(pulumi.BoolPtrOutput)
+}
+
+// The status code of the mirror back-to-source trigger asynchronous pull mode.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) MirrorAsyncStatus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirect) *int { return v.MirrorAsyncStatus }).(pulumi.IntPtrOutput)
+}
+
+// Image back Source station authentication information See `mirrorAuth` below.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) MirrorAuth() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirect) *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuth {
+		return v.MirrorAuth
+	}).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutput)
+}
+
+// Whether to check the MD5 of the source body. It takes effect only when the RedirectType is set to Mirror.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) MirrorCheckMd5() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirect) *bool { return v.MirrorCheckMd5 }).(pulumi.BoolPtrOutput)
+}
+
+// Mirrored back-to-source high-speed Channel vpregion
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) MirrorDstRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirect) *string { return v.MirrorDstRegion }).(pulumi.StringPtrOutput)
+}
+
+// Mirroring back-to-source high-speed Channel standby station VpcId
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) MirrorDstSlaveVpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirect) *string { return v.MirrorDstSlaveVpcId }).(pulumi.StringPtrOutput)
+}
+
+// Mirror back-to-source high-speed Channel VpcId
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) MirrorDstVpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirect) *string { return v.MirrorDstVpcId }).(pulumi.StringPtrOutput)
+}
+
+// If the result of the image back-to-source acquisition is 3xx, whether to continue to jump to the specified Location to obtain data. It takes effect only when the RedirectType is set to Mirror.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) MirrorFollowRedirect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirect) *bool { return v.MirrorFollowRedirect }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the Header carried when the image returns to the source. It takes effect only when the RedirectType is set to Mirror. See `mirrorHeaders` below.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) MirrorHeaders() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirect) *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeaders {
+		return v.MirrorHeaders
+	}).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutput)
+}
+
+// Whether it is a mirror back-to-source high-speed Channel
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) MirrorIsExpressTunnel() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirect) *bool { return v.MirrorIsExpressTunnel }).(pulumi.BoolPtrOutput)
+}
+
+// Mirror back-to-source multi-source station configuration container. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirrorMultiAlternates` below.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) MirrorMultiAlternates() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirect) *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternates {
+		return v.MirrorMultiAlternates
+	}).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutput)
+}
+
+// Transparent transmission/to source Station
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) MirrorPassOriginalSlashes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirect) *bool { return v.MirrorPassOriginalSlashes }).(pulumi.BoolPtrOutput)
+}
+
+// Same as PassQueryString and takes precedence over PassQueryString. It takes effect only when the RedirectType is set to Mirror.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) MirrorPassQueryString() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirect) *bool { return v.MirrorPassQueryString }).(pulumi.BoolPtrOutput)
+}
+
+// Whether mirroring back to source does not save data
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) MirrorProxyPass() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirect) *bool { return v.MirrorProxyPass }).(pulumi.BoolPtrOutput)
+}
+
+// The container that saves the image back to the source and returns the response header rule. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirrorReturnHeaders` below.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) MirrorReturnHeaders() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirect) *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeaders {
+		return v.MirrorReturnHeaders
+	}).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutput)
+}
+
+// Roles used when mirroring back-to-source
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) MirrorRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirect) *string { return v.MirrorRole }).(pulumi.StringPtrOutput)
+}
+
+// Mirror back-to-source back-to-source OSS automatically saves user metadata
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) MirrorSaveOssMeta() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirect) *bool { return v.MirrorSaveOssMeta }).(pulumi.BoolPtrOutput)
+}
+
+// Transparent transmission of SNI
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) MirrorSni() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirect) *bool { return v.MirrorSni }).(pulumi.BoolPtrOutput)
+}
+
+// It is used to judge the status of active-standby switching. The judgment logic of active-standby switching is that the source station returns an error. If MirrorSwitchAllErrors is true, it is considered a failure except the following status code: 200,206,301,302,303,307,404; If false, only the source Station Returns 5xx or times out is considered a failure.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) MirrorSwitchAllErrors() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirect) *bool { return v.MirrorSwitchAllErrors }).(pulumi.BoolPtrOutput)
+}
+
+// Save the label according to the parameters when saving the file from the mirror back to the source. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirrorTaggings` below.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) MirrorTaggings() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirect) *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggings {
+		return v.MirrorTaggings
+	}).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutput)
+}
+
+// Mirror back-to-source leased line back-to-source tunnel ID
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) MirrorTunnelId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirect) *string { return v.MirrorTunnelId }).(pulumi.StringPtrOutput)
+}
+
+// The address of the origin of the image. It takes effect only when the RedirectType is set to Mirror. The origin address must start with http:// or https:// and end with a forward slash (/). OSS takes the Object name after the Origin address to form the origin URL.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) MirrorUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirect) *string { return v.MirrorUrl }).(pulumi.StringPtrOutput)
+}
+
+// Mirror back-to-source Master-backup back-to-source switching decision URL
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) MirrorUrlProbe() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirect) *string { return v.MirrorUrlProbe }).(pulumi.StringPtrOutput)
+}
+
+// Mirror back-to-source primary backup back-to-source backup station URL
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) MirrorUrlSlave() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirect) *string { return v.MirrorUrlSlave }).(pulumi.StringPtrOutput)
+}
+
+// Whether the source station LastModifiedTime is used for the image back-to-source save file.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) MirrorUserLastModified() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirect) *bool { return v.MirrorUserLastModified }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to use role for mirroring back to source
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) MirrorUsingRole() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirect) *bool { return v.MirrorUsingRole }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to carry the request parameters when executing the jump or mirror back-to-source rule. Did the user carry the request parameters when requesting OSS? a = B & c = d, and set PassQueryString to true. If the rule is a 302 jump, this request parameter is added to the Location header of the jump. For example Location:example.com? a = B & c = d, and the jump type is mirrored back-to-origin, this request parameter is also carried in the back-to-origin request initiated. Values: true, false (default)
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) PassQueryString() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirect) *bool { return v.PassQueryString }).(pulumi.BoolPtrOutput)
+}
+
+// The protocol at the time of the jump. It takes effect only when the RedirectType is set to External or AliCDN.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirect) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the type of jump. The value range is as follows: Mirror: Mirror back to the source. External: External redirects, that is, OSS returns a 3xx request to redirect to another address. AliCDN: Alibaba Cloud CDN jump, mainly used for Alibaba Cloud CDN. Unlike External, OSS adds an additional Header. After recognizing this Header, Alibaba Cloud CDN redirects the data to the specified address and returns the obtained data to the user instead of returning the 3xx Redirection request to the user.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) RedirectType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirect) *string { return v.RedirectType }).(pulumi.StringPtrOutput)
+}
+
+// The prefix of the Object name will be replaced with this value during Redirect. If the prefix is empty, this string is inserted in front of the Object name.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) ReplaceKeyPrefixWith() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirect) *string { return v.ReplaceKeyPrefixWith }).(pulumi.StringPtrOutput)
+}
+
+// During redirection, the Object name is replaced with the value specified by ReplaceKeyWith. You can set variables in ReplaceKeyWith. Currently, the supported variable is ${key}, which indicates the name of the Object in the request.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) ReplaceKeyWith() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirect) *string { return v.ReplaceKeyWith }).(pulumi.StringPtrOutput)
+}
+
+// Mirror back-to-source transparent source station response code list
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectOutput) TransparentMirrorResponseCodes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirect) *string { return v.TransparentMirrorResponseCodes }).(pulumi.StringPtrOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketWebsiteRoutingRulesRoutingRuleRedirect)(nil)).Elem()
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) Elem() BucketWebsiteRoutingRulesRoutingRuleRedirectOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) BucketWebsiteRoutingRulesRoutingRuleRedirect {
+		if v != nil {
+			return *v
+		}
+		var ret BucketWebsiteRoutingRulesRoutingRuleRedirect
+		return ret
+	}).(BucketWebsiteRoutingRulesRoutingRuleRedirectOutput)
+}
+
+// If this field is set to true, the prefix of Object is replaced with the value specified by ReplaceKeyPrefixWith. If this field is not specified or is blank, the Object prefix is truncated.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) EnableReplacePrefix() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableReplacePrefix
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The domain name during the jump. The domain name must comply with the domain name specification.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) HostName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The status code returned during the jump. It takes effect only when the RedirectType is set to External or AliCDN.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) HttpRedirectCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpRedirectCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Image back-to-source allows getting Image information
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) MirrorAllowGetImageInfo() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MirrorAllowGetImageInfo
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to allow HeadObject in image back-to-source
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) MirrorAllowHeadObject() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MirrorAllowHeadObject
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Mirror back-to-source allows support for video frame truncation
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) MirrorAllowVideoSnapshot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MirrorAllowVideoSnapshot
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The status code of the mirror back-to-source trigger asynchronous pull mode.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) MirrorAsyncStatus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MirrorAsyncStatus
+	}).(pulumi.IntPtrOutput)
+}
+
+// Image back Source station authentication information See `mirrorAuth` below.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) MirrorAuth() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuth {
+		if v == nil {
+			return nil
+		}
+		return v.MirrorAuth
+	}).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutput)
+}
+
+// Whether to check the MD5 of the source body. It takes effect only when the RedirectType is set to Mirror.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) MirrorCheckMd5() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MirrorCheckMd5
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Mirrored back-to-source high-speed Channel vpregion
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) MirrorDstRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MirrorDstRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Mirroring back-to-source high-speed Channel standby station VpcId
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) MirrorDstSlaveVpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MirrorDstSlaveVpcId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Mirror back-to-source high-speed Channel VpcId
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) MirrorDstVpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MirrorDstVpcId
+	}).(pulumi.StringPtrOutput)
+}
+
+// If the result of the image back-to-source acquisition is 3xx, whether to continue to jump to the specified Location to obtain data. It takes effect only when the RedirectType is set to Mirror.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) MirrorFollowRedirect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MirrorFollowRedirect
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the Header carried when the image returns to the source. It takes effect only when the RedirectType is set to Mirror. See `mirrorHeaders` below.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) MirrorHeaders() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeaders {
+		if v == nil {
+			return nil
+		}
+		return v.MirrorHeaders
+	}).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutput)
+}
+
+// Whether it is a mirror back-to-source high-speed Channel
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) MirrorIsExpressTunnel() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MirrorIsExpressTunnel
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Mirror back-to-source multi-source station configuration container. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirrorMultiAlternates` below.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) MirrorMultiAlternates() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternates {
+		if v == nil {
+			return nil
+		}
+		return v.MirrorMultiAlternates
+	}).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutput)
+}
+
+// Transparent transmission/to source Station
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) MirrorPassOriginalSlashes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MirrorPassOriginalSlashes
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Same as PassQueryString and takes precedence over PassQueryString. It takes effect only when the RedirectType is set to Mirror.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) MirrorPassQueryString() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MirrorPassQueryString
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether mirroring back to source does not save data
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) MirrorProxyPass() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MirrorProxyPass
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The container that saves the image back to the source and returns the response header rule. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirrorReturnHeaders` below.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) MirrorReturnHeaders() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeaders {
+		if v == nil {
+			return nil
+		}
+		return v.MirrorReturnHeaders
+	}).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutput)
+}
+
+// Roles used when mirroring back-to-source
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) MirrorRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MirrorRole
+	}).(pulumi.StringPtrOutput)
+}
+
+// Mirror back-to-source back-to-source OSS automatically saves user metadata
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) MirrorSaveOssMeta() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MirrorSaveOssMeta
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Transparent transmission of SNI
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) MirrorSni() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MirrorSni
+	}).(pulumi.BoolPtrOutput)
+}
+
+// It is used to judge the status of active-standby switching. The judgment logic of active-standby switching is that the source station returns an error. If MirrorSwitchAllErrors is true, it is considered a failure except the following status code: 200,206,301,302,303,307,404; If false, only the source Station Returns 5xx or times out is considered a failure.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) MirrorSwitchAllErrors() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MirrorSwitchAllErrors
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Save the label according to the parameters when saving the file from the mirror back to the source. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirrorTaggings` below.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) MirrorTaggings() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggings {
+		if v == nil {
+			return nil
+		}
+		return v.MirrorTaggings
+	}).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutput)
+}
+
+// Mirror back-to-source leased line back-to-source tunnel ID
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) MirrorTunnelId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MirrorTunnelId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The address of the origin of the image. It takes effect only when the RedirectType is set to Mirror. The origin address must start with http:// or https:// and end with a forward slash (/). OSS takes the Object name after the Origin address to form the origin URL.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) MirrorUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MirrorUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Mirror back-to-source Master-backup back-to-source switching decision URL
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) MirrorUrlProbe() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MirrorUrlProbe
+	}).(pulumi.StringPtrOutput)
+}
+
+// Mirror back-to-source primary backup back-to-source backup station URL
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) MirrorUrlSlave() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MirrorUrlSlave
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether the source station LastModifiedTime is used for the image back-to-source save file.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) MirrorUserLastModified() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MirrorUserLastModified
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to use role for mirroring back to source
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) MirrorUsingRole() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MirrorUsingRole
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to carry the request parameters when executing the jump or mirror back-to-source rule. Did the user carry the request parameters when requesting OSS? a = B & c = d, and set PassQueryString to true. If the rule is a 302 jump, this request parameter is added to the Location header of the jump. For example Location:example.com? a = B & c = d, and the jump type is mirrored back-to-origin, this request parameter is also carried in the back-to-origin request initiated. Values: true, false (default)
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) PassQueryString() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PassQueryString
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The protocol at the time of the jump. It takes effect only when the RedirectType is set to External or AliCDN.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Protocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the type of jump. The value range is as follows: Mirror: Mirror back to the source. External: External redirects, that is, OSS returns a 3xx request to redirect to another address. AliCDN: Alibaba Cloud CDN jump, mainly used for Alibaba Cloud CDN. Unlike External, OSS adds an additional Header. After recognizing this Header, Alibaba Cloud CDN redirects the data to the specified address and returns the obtained data to the user instead of returning the 3xx Redirection request to the user.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) RedirectType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RedirectType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The prefix of the Object name will be replaced with this value during Redirect. If the prefix is empty, this string is inserted in front of the Object name.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) ReplaceKeyPrefixWith() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReplaceKeyPrefixWith
+	}).(pulumi.StringPtrOutput)
+}
+
+// During redirection, the Object name is replaced with the value specified by ReplaceKeyWith. You can set variables in ReplaceKeyWith. Currently, the supported variable is ${key}, which indicates the name of the Object in the request.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) ReplaceKeyWith() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReplaceKeyWith
+	}).(pulumi.StringPtrOutput)
+}
+
+// Mirror back-to-source transparent source station response code list
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput) TransparentMirrorResponseCodes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TransparentMirrorResponseCodes
+	}).(pulumi.StringPtrOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuth struct {
+	// Mirror back-to-source source Station back-to-source AK
+	AccessKeyId *string `pulumi:"accessKeyId"`
+	// Mirroring back to the source station back to the source SK will be automatically desensitized when obtaining the configuration.
+	AccessKeySecret *string `pulumi:"accessKeySecret"`
+	// Authentication type of mirror return Source
+	AuthType *string `pulumi:"authType"`
+	// Signature Region
+	Region *string `pulumi:"region"`
+}
+
+// BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthInput is an input type that accepts BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthArgs and BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthOutput values.
+// You can construct a concrete instance of `BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthInput` via:
+//
+//	BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthArgs{...}
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthInput interface {
+	pulumi.Input
+
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthOutput
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthOutputWithContext(context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthOutput
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthArgs struct {
+	// Mirror back-to-source source Station back-to-source AK
+	AccessKeyId pulumi.StringPtrInput `pulumi:"accessKeyId"`
+	// Mirroring back to the source station back to the source SK will be automatically desensitized when obtaining the configuration.
+	AccessKeySecret pulumi.StringPtrInput `pulumi:"accessKeySecret"`
+	// Authentication type of mirror return Source
+	AuthType pulumi.StringPtrInput `pulumi:"authType"`
+	// Signature Region
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuth)(nil)).Elem()
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthArgs) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthOutput {
+	return i.ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthOutputWithContext(context.Background())
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthArgs) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthOutput)
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthArgs) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutput {
+	return i.ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutputWithContext(context.Background())
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthArgs) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthOutput).ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutputWithContext(ctx)
+}
+
+// BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrInput is an input type that accepts BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthArgs, BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtr and BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutput values.
+// You can construct a concrete instance of `BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrInput` via:
+//
+//	        BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthArgs{...}
+//
+//	or:
+//
+//	        nil
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrInput interface {
+	pulumi.Input
+
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutput
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutputWithContext(context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutput
+}
+
+type bucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrType BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthArgs
+
+func BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtr(v *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthArgs) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrInput {
+	return (*bucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrType)(v)
+}
+
+func (*bucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuth)(nil)).Elem()
+}
+
+func (i *bucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrType) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutput {
+	return i.ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrType) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthOutput struct{ *pulumi.OutputState }
+
+func (BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuth)(nil)).Elem()
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutput {
+	return o.ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutputWithContext(context.Background())
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuth) *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuth {
+		return &v
+	}).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutput)
+}
+
+// Mirror back-to-source source Station back-to-source AK
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthOutput) AccessKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuth) *string { return v.AccessKeyId }).(pulumi.StringPtrOutput)
+}
+
+// Mirroring back to the source station back to the source SK will be automatically desensitized when obtaining the configuration.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthOutput) AccessKeySecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuth) *string { return v.AccessKeySecret }).(pulumi.StringPtrOutput)
+}
+
+// Authentication type of mirror return Source
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuth) *string { return v.AuthType }).(pulumi.StringPtrOutput)
+}
+
+// Signature Region
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuth) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuth)(nil)).Elem()
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutput) Elem() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuth) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuth {
+		if v != nil {
+			return *v
+		}
+		var ret BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuth
+		return ret
+	}).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthOutput)
+}
+
+// Mirror back-to-source source Station back-to-source AK
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutput) AccessKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Mirroring back to the source station back to the source SK will be automatically desensitized when obtaining the configuration.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutput) AccessKeySecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessKeySecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Authentication type of mirror return Source
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Signature Region
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeaders struct {
+	// Indicates whether other headers except the following headers are transmitted to the source site. It takes effect only when the RedirectType is set to Mirror. content-length, authorization2, authorization, range, date, and other headers Headers whose names start with oss-/x-oss-/x-drs-
+	PassAll *bool `pulumi:"passAll"`
+	// Pass through the specified Header to the source site. It takes effect only when the RedirectType is set to Mirror. Each Header is up to 1024 bytes in length and has A character set of 0 to 9, a to Z, A to z, and dashes (-).
+	Passes []string `pulumi:"passes"`
+	// Do not pass the specified Header to the source site. It takes effect only when the RedirectType is set to Mirror. Each Header is up to 1024 bytes in length and has A character set of 0 to 9, a to Z, A to z, and dashes (-).
+	Removes []string `pulumi:"removes"`
+	// Set a Header to send to the source site. Regardless of whether the request contains the specified Header, these headers will be set when returning to the source site. It takes effect only when the RedirectType is set to Mirror. See `set` below.
+	Sets []BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSet `pulumi:"sets"`
+}
+
+// BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersInput is an input type that accepts BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersArgs and BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersOutput values.
+// You can construct a concrete instance of `BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersInput` via:
+//
+//	BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersArgs{...}
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersInput interface {
+	pulumi.Input
+
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersOutput
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersOutputWithContext(context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersOutput
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersArgs struct {
+	// Indicates whether other headers except the following headers are transmitted to the source site. It takes effect only when the RedirectType is set to Mirror. content-length, authorization2, authorization, range, date, and other headers Headers whose names start with oss-/x-oss-/x-drs-
+	PassAll pulumi.BoolPtrInput `pulumi:"passAll"`
+	// Pass through the specified Header to the source site. It takes effect only when the RedirectType is set to Mirror. Each Header is up to 1024 bytes in length and has A character set of 0 to 9, a to Z, A to z, and dashes (-).
+	Passes pulumi.StringArrayInput `pulumi:"passes"`
+	// Do not pass the specified Header to the source site. It takes effect only when the RedirectType is set to Mirror. Each Header is up to 1024 bytes in length and has A character set of 0 to 9, a to Z, A to z, and dashes (-).
+	Removes pulumi.StringArrayInput `pulumi:"removes"`
+	// Set a Header to send to the source site. Regardless of whether the request contains the specified Header, these headers will be set when returning to the source site. It takes effect only when the RedirectType is set to Mirror. See `set` below.
+	Sets BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArrayInput `pulumi:"sets"`
+}
+
+func (BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeaders)(nil)).Elem()
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersArgs) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersOutput {
+	return i.ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersOutputWithContext(context.Background())
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersArgs) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersOutput)
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersArgs) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutput {
+	return i.ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutputWithContext(context.Background())
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersArgs) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersOutput).ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutputWithContext(ctx)
+}
+
+// BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrInput is an input type that accepts BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersArgs, BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtr and BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutput values.
+// You can construct a concrete instance of `BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrInput` via:
+//
+//	        BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersArgs{...}
+//
+//	or:
+//
+//	        nil
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrInput interface {
+	pulumi.Input
+
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutput
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutputWithContext(context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutput
+}
+
+type bucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrType BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersArgs
+
+func BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtr(v *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersArgs) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrInput {
+	return (*bucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrType)(v)
+}
+
+func (*bucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeaders)(nil)).Elem()
+}
+
+func (i *bucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrType) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutput {
+	return i.ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrType) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersOutput struct{ *pulumi.OutputState }
+
+func (BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeaders)(nil)).Elem()
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutput {
+	return o.ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutputWithContext(context.Background())
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeaders) *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeaders {
+		return &v
+	}).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutput)
+}
+
+// Indicates whether other headers except the following headers are transmitted to the source site. It takes effect only when the RedirectType is set to Mirror. content-length, authorization2, authorization, range, date, and other headers Headers whose names start with oss-/x-oss-/x-drs-
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersOutput) PassAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeaders) *bool { return v.PassAll }).(pulumi.BoolPtrOutput)
+}
+
+// Pass through the specified Header to the source site. It takes effect only when the RedirectType is set to Mirror. Each Header is up to 1024 bytes in length and has A character set of 0 to 9, a to Z, A to z, and dashes (-).
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersOutput) Passes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeaders) []string { return v.Passes }).(pulumi.StringArrayOutput)
+}
+
+// Do not pass the specified Header to the source site. It takes effect only when the RedirectType is set to Mirror. Each Header is up to 1024 bytes in length and has A character set of 0 to 9, a to Z, A to z, and dashes (-).
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersOutput) Removes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeaders) []string { return v.Removes }).(pulumi.StringArrayOutput)
+}
+
+// Set a Header to send to the source site. Regardless of whether the request contains the specified Header, these headers will be set when returning to the source site. It takes effect only when the RedirectType is set to Mirror. See `set` below.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersOutput) Sets() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArrayOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeaders) []BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSet {
+		return v.Sets
+	}).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArrayOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeaders)(nil)).Elem()
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutput) Elem() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeaders) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeaders {
+		if v != nil {
+			return *v
+		}
+		var ret BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeaders
+		return ret
+	}).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersOutput)
+}
+
+// Indicates whether other headers except the following headers are transmitted to the source site. It takes effect only when the RedirectType is set to Mirror. content-length, authorization2, authorization, range, date, and other headers Headers whose names start with oss-/x-oss-/x-drs-
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutput) PassAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeaders) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PassAll
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Pass through the specified Header to the source site. It takes effect only when the RedirectType is set to Mirror. Each Header is up to 1024 bytes in length and has A character set of 0 to 9, a to Z, A to z, and dashes (-).
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutput) Passes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeaders) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Passes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Do not pass the specified Header to the source site. It takes effect only when the RedirectType is set to Mirror. Each Header is up to 1024 bytes in length and has A character set of 0 to 9, a to Z, A to z, and dashes (-).
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutput) Removes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeaders) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Removes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Set a Header to send to the source site. Regardless of whether the request contains the specified Header, these headers will be set when returning to the source site. It takes effect only when the RedirectType is set to Mirror. See `set` below.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutput) Sets() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArrayOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeaders) []BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSet {
+		if v == nil {
+			return nil
+		}
+		return v.Sets
+	}).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArrayOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSet struct {
+	Key *string `pulumi:"key"`
+	// Set the value of the Header to 1024 bytes at most. \r\n. It takes effect only when the RedirectType is set to Mirror.
+	Value *string `pulumi:"value"`
+}
+
+// BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetInput is an input type that accepts BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArgs and BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetOutput values.
+// You can construct a concrete instance of `BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetInput` via:
+//
+//	BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArgs{...}
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetInput interface {
+	pulumi.Input
+
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetOutput
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetOutputWithContext(context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetOutput
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArgs struct {
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Set the value of the Header to 1024 bytes at most. \r\n. It takes effect only when the RedirectType is set to Mirror.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSet)(nil)).Elem()
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArgs) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetOutput {
+	return i.ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetOutputWithContext(context.Background())
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArgs) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetOutput)
+}
+
+// BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArrayInput is an input type that accepts BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArray and BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArrayOutput values.
+// You can construct a concrete instance of `BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArrayInput` via:
+//
+//	BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArray{ BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArgs{...} }
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArrayInput interface {
+	pulumi.Input
+
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArrayOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArrayOutput
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArrayOutputWithContext(context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArrayOutput
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArray []BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetInput
+
+func (BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSet)(nil)).Elem()
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArray) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArrayOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArrayOutput {
+	return i.ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArrayOutputWithContext(context.Background())
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArray) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArrayOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArrayOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetOutput struct{ *pulumi.OutputState }
+
+func (BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSet)(nil)).Elem()
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSet) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Set the value of the Header to 1024 bytes at most. \r\n. It takes effect only when the RedirectType is set to Mirror.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSet) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArrayOutput struct{ *pulumi.OutputState }
+
+func (BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSet)(nil)).Elem()
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArrayOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArrayOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArrayOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArrayOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArrayOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArrayOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArrayOutput) Index(i pulumi.IntInput) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSet {
+		return vs[0].([]BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSet)[vs[1].(int)]
+	}).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternates struct {
+	// Mirror back-to-source multi-source station configuration list See `mirrorMultiAlternate` below.
+	MirrorMultiAlternates []BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternate `pulumi:"mirrorMultiAlternates"`
+}
+
+// BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesInput is an input type that accepts BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesArgs and BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesOutput values.
+// You can construct a concrete instance of `BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesInput` via:
+//
+//	BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesArgs{...}
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesInput interface {
+	pulumi.Input
+
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesOutput
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesOutputWithContext(context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesOutput
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesArgs struct {
+	// Mirror back-to-source multi-source station configuration list See `mirrorMultiAlternate` below.
+	MirrorMultiAlternates BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArrayInput `pulumi:"mirrorMultiAlternates"`
+}
+
+func (BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternates)(nil)).Elem()
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesArgs) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesOutput {
+	return i.ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesOutputWithContext(context.Background())
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesArgs) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesOutput)
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesArgs) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutput {
+	return i.ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutputWithContext(context.Background())
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesArgs) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesOutput).ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutputWithContext(ctx)
+}
+
+// BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrInput is an input type that accepts BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesArgs, BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtr and BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutput values.
+// You can construct a concrete instance of `BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrInput` via:
+//
+//	        BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesArgs{...}
+//
+//	or:
+//
+//	        nil
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrInput interface {
+	pulumi.Input
+
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutput
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutputWithContext(context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutput
+}
+
+type bucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrType BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesArgs
+
+func BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtr(v *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesArgs) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrInput {
+	return (*bucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrType)(v)
+}
+
+func (*bucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternates)(nil)).Elem()
+}
+
+func (i *bucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrType) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutput {
+	return i.ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrType) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesOutput struct{ *pulumi.OutputState }
+
+func (BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternates)(nil)).Elem()
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutput {
+	return o.ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutputWithContext(context.Background())
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternates) *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternates {
+		return &v
+	}).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutput)
+}
+
+// Mirror back-to-source multi-source station configuration list See `mirrorMultiAlternate` below.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesOutput) MirrorMultiAlternates() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArrayOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternates) []BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternate {
+		return v.MirrorMultiAlternates
+	}).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArrayOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternates)(nil)).Elem()
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutput) Elem() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternates) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternates {
+		if v != nil {
+			return *v
+		}
+		var ret BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternates
+		return ret
+	}).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesOutput)
+}
+
+// Mirror back-to-source multi-source station configuration list See `mirrorMultiAlternate` below.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutput) MirrorMultiAlternates() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArrayOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternates) []BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternate {
+		if v == nil {
+			return nil
+		}
+		return v.MirrorMultiAlternates
+	}).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArrayOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternate struct {
+	// Mirroring back-to-source multi-station Region
+	MirrorMultiAlternateDstRegion *string `pulumi:"mirrorMultiAlternateDstRegion"`
+	// Image back-to-source multi-source station serial number
+	MirrorMultiAlternateNumber *int `pulumi:"mirrorMultiAlternateNumber"`
+	// Mirroring back-to-source multi-source site URL
+	MirrorMultiAlternateUrl *string `pulumi:"mirrorMultiAlternateUrl"`
+	// Mirroring back-to-source multi-source VpcId
+	MirrorMultiAlternateVpcId *string `pulumi:"mirrorMultiAlternateVpcId"`
+}
+
+// BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateInput is an input type that accepts BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArgs and BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateOutput values.
+// You can construct a concrete instance of `BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateInput` via:
+//
+//	BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArgs{...}
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateInput interface {
+	pulumi.Input
+
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateOutput
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateOutputWithContext(context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateOutput
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArgs struct {
+	// Mirroring back-to-source multi-station Region
+	MirrorMultiAlternateDstRegion pulumi.StringPtrInput `pulumi:"mirrorMultiAlternateDstRegion"`
+	// Image back-to-source multi-source station serial number
+	MirrorMultiAlternateNumber pulumi.IntPtrInput `pulumi:"mirrorMultiAlternateNumber"`
+	// Mirroring back-to-source multi-source site URL
+	MirrorMultiAlternateUrl pulumi.StringPtrInput `pulumi:"mirrorMultiAlternateUrl"`
+	// Mirroring back-to-source multi-source VpcId
+	MirrorMultiAlternateVpcId pulumi.StringPtrInput `pulumi:"mirrorMultiAlternateVpcId"`
+}
+
+func (BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternate)(nil)).Elem()
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArgs) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateOutput {
+	return i.ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateOutputWithContext(context.Background())
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArgs) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateOutput)
+}
+
+// BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArrayInput is an input type that accepts BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArray and BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArrayOutput values.
+// You can construct a concrete instance of `BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArrayInput` via:
+//
+//	BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArray{ BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArgs{...} }
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArrayInput interface {
+	pulumi.Input
+
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArrayOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArrayOutput
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArrayOutputWithContext(context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArrayOutput
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArray []BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateInput
+
+func (BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternate)(nil)).Elem()
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArray) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArrayOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArrayOutput {
+	return i.ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArrayOutputWithContext(context.Background())
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArray) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArrayOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArrayOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateOutput struct{ *pulumi.OutputState }
+
+func (BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternate)(nil)).Elem()
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateOutput {
+	return o
+}
+
+// Mirroring back-to-source multi-station Region
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateOutput) MirrorMultiAlternateDstRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternate) *string {
+		return v.MirrorMultiAlternateDstRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Image back-to-source multi-source station serial number
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateOutput) MirrorMultiAlternateNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternate) *int {
+		return v.MirrorMultiAlternateNumber
+	}).(pulumi.IntPtrOutput)
+}
+
+// Mirroring back-to-source multi-source site URL
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateOutput) MirrorMultiAlternateUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternate) *string {
+		return v.MirrorMultiAlternateUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Mirroring back-to-source multi-source VpcId
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateOutput) MirrorMultiAlternateVpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternate) *string {
+		return v.MirrorMultiAlternateVpcId
+	}).(pulumi.StringPtrOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArrayOutput struct{ *pulumi.OutputState }
+
+func (BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternate)(nil)).Elem()
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArrayOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArrayOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArrayOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArrayOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArrayOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArrayOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArrayOutput) Index(i pulumi.IntInput) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternate {
+		return vs[0].([]BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternate)[vs[1].(int)]
+	}).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeaders struct {
+	// The list of response header rules for mirroring back-to-source return. See `returnHeader` below.
+	ReturnHeaders []BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeader `pulumi:"returnHeaders"`
+}
+
+// BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersInput is an input type that accepts BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersArgs and BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersOutput values.
+// You can construct a concrete instance of `BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersInput` via:
+//
+//	BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersArgs{...}
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersInput interface {
+	pulumi.Input
+
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersOutput
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersOutputWithContext(context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersOutput
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersArgs struct {
+	// The list of response header rules for mirroring back-to-source return. See `returnHeader` below.
+	ReturnHeaders BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArrayInput `pulumi:"returnHeaders"`
+}
+
+func (BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeaders)(nil)).Elem()
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersArgs) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersOutput {
+	return i.ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersOutputWithContext(context.Background())
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersArgs) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersOutput)
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersArgs) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutput {
+	return i.ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutputWithContext(context.Background())
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersArgs) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersOutput).ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutputWithContext(ctx)
+}
+
+// BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrInput is an input type that accepts BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersArgs, BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtr and BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutput values.
+// You can construct a concrete instance of `BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrInput` via:
+//
+//	        BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersArgs{...}
+//
+//	or:
+//
+//	        nil
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrInput interface {
+	pulumi.Input
+
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutput
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutputWithContext(context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutput
+}
+
+type bucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrType BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersArgs
+
+func BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtr(v *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersArgs) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrInput {
+	return (*bucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrType)(v)
+}
+
+func (*bucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeaders)(nil)).Elem()
+}
+
+func (i *bucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrType) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutput {
+	return i.ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrType) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersOutput struct{ *pulumi.OutputState }
+
+func (BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeaders)(nil)).Elem()
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutput {
+	return o.ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutputWithContext(context.Background())
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeaders) *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeaders {
+		return &v
+	}).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutput)
+}
+
+// The list of response header rules for mirroring back-to-source return. See `returnHeader` below.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersOutput) ReturnHeaders() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArrayOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeaders) []BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeader {
+		return v.ReturnHeaders
+	}).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArrayOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeaders)(nil)).Elem()
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutput) Elem() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeaders) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeaders {
+		if v != nil {
+			return *v
+		}
+		var ret BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeaders
+		return ret
+	}).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersOutput)
+}
+
+// The list of response header rules for mirroring back-to-source return. See `returnHeader` below.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutput) ReturnHeaders() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArrayOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeaders) []BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeader {
+		if v == nil {
+			return nil
+		}
+		return v.ReturnHeaders
+	}).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArrayOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeader struct {
+	Key *string `pulumi:"key"`
+	// Set the value of the Header to 1024 bytes at most. \r\n. It takes effect only when the RedirectType is set to Mirror.
+	Value *string `pulumi:"value"`
+}
+
+// BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderInput is an input type that accepts BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArgs and BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderOutput values.
+// You can construct a concrete instance of `BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderInput` via:
+//
+//	BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArgs{...}
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderInput interface {
+	pulumi.Input
+
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderOutput
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderOutputWithContext(context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderOutput
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArgs struct {
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Set the value of the Header to 1024 bytes at most. \r\n. It takes effect only when the RedirectType is set to Mirror.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeader)(nil)).Elem()
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArgs) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderOutput {
+	return i.ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderOutputWithContext(context.Background())
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArgs) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderOutput)
+}
+
+// BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArrayInput is an input type that accepts BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArray and BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArrayOutput values.
+// You can construct a concrete instance of `BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArrayInput` via:
+//
+//	BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArray{ BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArgs{...} }
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArrayInput interface {
+	pulumi.Input
+
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArrayOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArrayOutput
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArrayOutputWithContext(context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArrayOutput
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArray []BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderInput
+
+func (BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeader)(nil)).Elem()
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArray) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArrayOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArrayOutput {
+	return i.ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArray) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArrayOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArrayOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderOutput struct{ *pulumi.OutputState }
+
+func (BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeader)(nil)).Elem()
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeader) *string {
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Set the value of the Header to 1024 bytes at most. \r\n. It takes effect only when the RedirectType is set to Mirror.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeader) *string {
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeader)(nil)).Elem()
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArrayOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArrayOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArrayOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArrayOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArrayOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArrayOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArrayOutput) Index(i pulumi.IntInput) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeader {
+		return vs[0].([]BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeader)[vs[1].(int)]
+	}).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggings struct {
+	// Image back-to-source save label rule list See `taggings` below.
+	Taggings []BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTagging `pulumi:"taggings"`
+}
+
+// BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsInput is an input type that accepts BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsArgs and BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsOutput values.
+// You can construct a concrete instance of `BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsInput` via:
+//
+//	BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsArgs{...}
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsInput interface {
+	pulumi.Input
+
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsOutput
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsOutputWithContext(context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsOutput
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsArgs struct {
+	// Image back-to-source save label rule list See `taggings` below.
+	Taggings BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArrayInput `pulumi:"taggings"`
+}
+
+func (BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggings)(nil)).Elem()
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsArgs) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsOutput {
+	return i.ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsOutputWithContext(context.Background())
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsArgs) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsOutput)
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsArgs) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutput {
+	return i.ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutputWithContext(context.Background())
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsArgs) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsOutput).ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutputWithContext(ctx)
+}
+
+// BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrInput is an input type that accepts BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsArgs, BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtr and BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutput values.
+// You can construct a concrete instance of `BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrInput` via:
+//
+//	        BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrInput interface {
+	pulumi.Input
+
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutput
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutputWithContext(context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutput
+}
+
+type bucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrType BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsArgs
+
+func BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtr(v *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsArgs) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrInput {
+	return (*bucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrType)(v)
+}
+
+func (*bucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggings)(nil)).Elem()
+}
+
+func (i *bucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrType) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutput {
+	return i.ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrType) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsOutput struct{ *pulumi.OutputState }
+
+func (BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggings)(nil)).Elem()
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutput {
+	return o.ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutputWithContext(context.Background())
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggings) *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggings {
+		return &v
+	}).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutput)
+}
+
+// Image back-to-source save label rule list See `taggings` below.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsOutput) Taggings() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArrayOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggings) []BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTagging {
+		return v.Taggings
+	}).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArrayOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggings)(nil)).Elem()
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutput) Elem() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggings) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggings {
+		if v != nil {
+			return *v
+		}
+		var ret BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggings
+		return ret
+	}).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsOutput)
+}
+
+// Image back-to-source save label rule list See `taggings` below.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutput) Taggings() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArrayOutput {
+	return o.ApplyT(func(v *BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggings) []BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTagging {
+		if v == nil {
+			return nil
+		}
+		return v.Taggings
+	}).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArrayOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTagging struct {
+	Key *string `pulumi:"key"`
+	// Set the value of the Header to 1024 bytes at most. \r\n. It takes effect only when the RedirectType is set to Mirror.
+	Value *string `pulumi:"value"`
+}
+
+// BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingInput is an input type that accepts BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArgs and BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingOutput values.
+// You can construct a concrete instance of `BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingInput` via:
+//
+//	BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArgs{...}
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingInput interface {
+	pulumi.Input
+
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingOutput
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingOutputWithContext(context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingOutput
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArgs struct {
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Set the value of the Header to 1024 bytes at most. \r\n. It takes effect only when the RedirectType is set to Mirror.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTagging)(nil)).Elem()
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArgs) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingOutput {
+	return i.ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingOutputWithContext(context.Background())
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArgs) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingOutput)
+}
+
+// BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArrayInput is an input type that accepts BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArray and BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArrayOutput values.
+// You can construct a concrete instance of `BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArrayInput` via:
+//
+//	BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArray{ BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArgs{...} }
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArrayInput interface {
+	pulumi.Input
+
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArrayOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArrayOutput
+	ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArrayOutputWithContext(context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArrayOutput
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArray []BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingInput
+
+func (BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTagging)(nil)).Elem()
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArray) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArrayOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArrayOutput {
+	return i.ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArrayOutputWithContext(context.Background())
+}
+
+func (i BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArray) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArrayOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArrayOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingOutput struct{ *pulumi.OutputState }
+
+func (BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTagging)(nil)).Elem()
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTagging) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Set the value of the Header to 1024 bytes at most. \r\n. It takes effect only when the RedirectType is set to Mirror.
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTagging) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArrayOutput struct{ *pulumi.OutputState }
+
+func (BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTagging)(nil)).Elem()
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArrayOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArrayOutput() BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArrayOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArrayOutput) ToBucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArrayOutputWithContext(ctx context.Context) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArrayOutput {
+	return o
+}
+
+func (o BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArrayOutput) Index(i pulumi.IntInput) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTagging {
+		return vs[0].([]BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTagging)[vs[1].(int)]
+	}).(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingOutput)
 }
 
 type GetBucketObjectsObject struct {
@@ -5700,8 +8835,42 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketTransferAccelerationTypePtrInput)(nil)).Elem(), BucketTransferAccelerationTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketVersioningTypeInput)(nil)).Elem(), BucketVersioningTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketVersioningTypePtrInput)(nil)).Elem(), BucketVersioningTypeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteInput)(nil)).Elem(), BucketWebsiteArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsitePtrInput)(nil)).Elem(), BucketWebsiteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteTypeInput)(nil)).Elem(), BucketWebsiteTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteTypePtrInput)(nil)).Elem(), BucketWebsiteTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteErrorDocumentInput)(nil)).Elem(), BucketWebsiteErrorDocumentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteErrorDocumentPtrInput)(nil)).Elem(), BucketWebsiteErrorDocumentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteIndexDocumentInput)(nil)).Elem(), BucketWebsiteIndexDocumentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteIndexDocumentPtrInput)(nil)).Elem(), BucketWebsiteIndexDocumentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteRoutingRulesInput)(nil)).Elem(), BucketWebsiteRoutingRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteRoutingRulesPtrInput)(nil)).Elem(), BucketWebsiteRoutingRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleInput)(nil)).Elem(), BucketWebsiteRoutingRulesRoutingRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleArrayInput)(nil)).Elem(), BucketWebsiteRoutingRulesRoutingRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleConditionInput)(nil)).Elem(), BucketWebsiteRoutingRulesRoutingRuleConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleConditionPtrInput)(nil)).Elem(), BucketWebsiteRoutingRulesRoutingRuleConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderInput)(nil)).Elem(), BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArrayInput)(nil)).Elem(), BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleLuaConfigInput)(nil)).Elem(), BucketWebsiteRoutingRulesRoutingRuleLuaConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrInput)(nil)).Elem(), BucketWebsiteRoutingRulesRoutingRuleLuaConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectInput)(nil)).Elem(), BucketWebsiteRoutingRulesRoutingRuleRedirectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectPtrInput)(nil)).Elem(), BucketWebsiteRoutingRulesRoutingRuleRedirectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthInput)(nil)).Elem(), BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrInput)(nil)).Elem(), BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersInput)(nil)).Elem(), BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrInput)(nil)).Elem(), BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetInput)(nil)).Elem(), BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArrayInput)(nil)).Elem(), BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesInput)(nil)).Elem(), BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrInput)(nil)).Elem(), BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateInput)(nil)).Elem(), BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArrayInput)(nil)).Elem(), BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersInput)(nil)).Elem(), BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrInput)(nil)).Elem(), BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderInput)(nil)).Elem(), BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArrayInput)(nil)).Elem(), BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsInput)(nil)).Elem(), BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrInput)(nil)).Elem(), BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingInput)(nil)).Elem(), BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArrayInput)(nil)).Elem(), BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketObjectsObjectInput)(nil)).Elem(), GetBucketObjectsObjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketObjectsObjectArrayInput)(nil)).Elem(), GetBucketObjectsObjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketsBucketInput)(nil)).Elem(), GetBucketsBucketArgs{})
@@ -5774,8 +8943,42 @@ func init() {
 	pulumi.RegisterOutputType(BucketTransferAccelerationTypePtrOutput{})
 	pulumi.RegisterOutputType(BucketVersioningTypeOutput{})
 	pulumi.RegisterOutputType(BucketVersioningTypePtrOutput{})
-	pulumi.RegisterOutputType(BucketWebsiteOutput{})
-	pulumi.RegisterOutputType(BucketWebsitePtrOutput{})
+	pulumi.RegisterOutputType(BucketWebsiteTypeOutput{})
+	pulumi.RegisterOutputType(BucketWebsiteTypePtrOutput{})
+	pulumi.RegisterOutputType(BucketWebsiteErrorDocumentOutput{})
+	pulumi.RegisterOutputType(BucketWebsiteErrorDocumentPtrOutput{})
+	pulumi.RegisterOutputType(BucketWebsiteIndexDocumentOutput{})
+	pulumi.RegisterOutputType(BucketWebsiteIndexDocumentPtrOutput{})
+	pulumi.RegisterOutputType(BucketWebsiteRoutingRulesOutput{})
+	pulumi.RegisterOutputType(BucketWebsiteRoutingRulesPtrOutput{})
+	pulumi.RegisterOutputType(BucketWebsiteRoutingRulesRoutingRuleOutput{})
+	pulumi.RegisterOutputType(BucketWebsiteRoutingRulesRoutingRuleArrayOutput{})
+	pulumi.RegisterOutputType(BucketWebsiteRoutingRulesRoutingRuleConditionOutput{})
+	pulumi.RegisterOutputType(BucketWebsiteRoutingRulesRoutingRuleConditionPtrOutput{})
+	pulumi.RegisterOutputType(BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderOutput{})
+	pulumi.RegisterOutputType(BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArrayOutput{})
+	pulumi.RegisterOutputType(BucketWebsiteRoutingRulesRoutingRuleLuaConfigOutput{})
+	pulumi.RegisterOutputType(BucketWebsiteRoutingRulesRoutingRuleLuaConfigPtrOutput{})
+	pulumi.RegisterOutputType(BucketWebsiteRoutingRulesRoutingRuleRedirectOutput{})
+	pulumi.RegisterOutputType(BucketWebsiteRoutingRulesRoutingRuleRedirectPtrOutput{})
+	pulumi.RegisterOutputType(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthOutput{})
+	pulumi.RegisterOutputType(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthPtrOutput{})
+	pulumi.RegisterOutputType(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersOutput{})
+	pulumi.RegisterOutputType(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersPtrOutput{})
+	pulumi.RegisterOutputType(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetOutput{})
+	pulumi.RegisterOutputType(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArrayOutput{})
+	pulumi.RegisterOutputType(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesOutput{})
+	pulumi.RegisterOutputType(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesPtrOutput{})
+	pulumi.RegisterOutputType(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateOutput{})
+	pulumi.RegisterOutputType(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArrayOutput{})
+	pulumi.RegisterOutputType(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersOutput{})
+	pulumi.RegisterOutputType(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersPtrOutput{})
+	pulumi.RegisterOutputType(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderOutput{})
+	pulumi.RegisterOutputType(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArrayOutput{})
+	pulumi.RegisterOutputType(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsOutput{})
+	pulumi.RegisterOutputType(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsPtrOutput{})
+	pulumi.RegisterOutputType(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingOutput{})
+	pulumi.RegisterOutputType(BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArrayOutput{})
 	pulumi.RegisterOutputType(GetBucketObjectsObjectOutput{})
 	pulumi.RegisterOutputType(GetBucketObjectsObjectArrayOutput{})
 	pulumi.RegisterOutputType(GetBucketsBucketOutput{})

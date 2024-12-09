@@ -236,7 +236,7 @@ export class Application extends pulumi.CustomResource {
     /**
      * Select the Nacos registry. Valid values: `0`, `1`, `2`.
      */
-    public readonly microRegistration!: pulumi.Output<string | undefined>;
+    public readonly microRegistration!: pulumi.Output<string>;
     /**
      * Minimum Survival Instance Percentage. **NOTE:** When `minReadyInstances` and `minReadyInstanceRatio` are passed at the same time, and the value of `minReadyInstanceRatio` is not -1, the `minReadyInstanceRatio` parameter shall prevail. Assuming that `minReadyInstances` is 5 and `minReadyInstanceRatio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
      * * `-1`: Initialization value, indicating that percentages are not used.

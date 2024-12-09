@@ -13,23 +13,40 @@ import java.util.Objects;
 @CustomType
 public final class GetDispatchRulesRuleNotifyRule {
     /**
-     * @return The notification method.
+     * @return A list of notification methods.
      * 
      */
     private List<String> notifyChannels;
+    /**
+     * @return (Available since v1.237.0) End time of notification.
+     * 
+     */
+    private String notifyEndTime;
     /**
      * @return Sets the notification object.
      * 
      */
     private List<GetDispatchRulesRuleNotifyRuleNotifyObject> notifyObjects;
+    /**
+     * @return (Available since v1.237.0) Start time of notification.
+     * 
+     */
+    private String notifyStartTime;
 
     private GetDispatchRulesRuleNotifyRule() {}
     /**
-     * @return The notification method.
+     * @return A list of notification methods.
      * 
      */
     public List<String> notifyChannels() {
         return this.notifyChannels;
+    }
+    /**
+     * @return (Available since v1.237.0) End time of notification.
+     * 
+     */
+    public String notifyEndTime() {
+        return this.notifyEndTime;
     }
     /**
      * @return Sets the notification object.
@@ -37,6 +54,13 @@ public final class GetDispatchRulesRuleNotifyRule {
      */
     public List<GetDispatchRulesRuleNotifyRuleNotifyObject> notifyObjects() {
         return this.notifyObjects;
+    }
+    /**
+     * @return (Available since v1.237.0) Start time of notification.
+     * 
+     */
+    public String notifyStartTime() {
+        return this.notifyStartTime;
     }
 
     public static Builder builder() {
@@ -49,12 +73,16 @@ public final class GetDispatchRulesRuleNotifyRule {
     @CustomType.Builder
     public static final class Builder {
         private List<String> notifyChannels;
+        private String notifyEndTime;
         private List<GetDispatchRulesRuleNotifyRuleNotifyObject> notifyObjects;
+        private String notifyStartTime;
         public Builder() {}
         public Builder(GetDispatchRulesRuleNotifyRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.notifyChannels = defaults.notifyChannels;
+    	      this.notifyEndTime = defaults.notifyEndTime;
     	      this.notifyObjects = defaults.notifyObjects;
+    	      this.notifyStartTime = defaults.notifyStartTime;
         }
 
         @CustomType.Setter
@@ -69,6 +97,14 @@ public final class GetDispatchRulesRuleNotifyRule {
             return notifyChannels(List.of(notifyChannels));
         }
         @CustomType.Setter
+        public Builder notifyEndTime(String notifyEndTime) {
+            if (notifyEndTime == null) {
+              throw new MissingRequiredPropertyException("GetDispatchRulesRuleNotifyRule", "notifyEndTime");
+            }
+            this.notifyEndTime = notifyEndTime;
+            return this;
+        }
+        @CustomType.Setter
         public Builder notifyObjects(List<GetDispatchRulesRuleNotifyRuleNotifyObject> notifyObjects) {
             if (notifyObjects == null) {
               throw new MissingRequiredPropertyException("GetDispatchRulesRuleNotifyRule", "notifyObjects");
@@ -79,10 +115,20 @@ public final class GetDispatchRulesRuleNotifyRule {
         public Builder notifyObjects(GetDispatchRulesRuleNotifyRuleNotifyObject... notifyObjects) {
             return notifyObjects(List.of(notifyObjects));
         }
+        @CustomType.Setter
+        public Builder notifyStartTime(String notifyStartTime) {
+            if (notifyStartTime == null) {
+              throw new MissingRequiredPropertyException("GetDispatchRulesRuleNotifyRule", "notifyStartTime");
+            }
+            this.notifyStartTime = notifyStartTime;
+            return this;
+        }
         public GetDispatchRulesRuleNotifyRule build() {
             final var _resultValue = new GetDispatchRulesRuleNotifyRule();
             _resultValue.notifyChannels = notifyChannels;
+            _resultValue.notifyEndTime = notifyEndTime;
             _resultValue.notifyObjects = notifyObjects;
+            _resultValue.notifyStartTime = notifyStartTime;
             return _resultValue;
         }
     }
