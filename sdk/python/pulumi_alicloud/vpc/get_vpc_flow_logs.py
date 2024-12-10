@@ -251,7 +251,7 @@ def get_vpc_flow_logs_output(description: Optional[pulumi.Input[Optional[str]]] 
                              resource_type: Optional[pulumi.Input[Optional[str]]] = None,
                              status: Optional[pulumi.Input[Optional[str]]] = None,
                              traffic_type: Optional[pulumi.Input[Optional[str]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcFlowLogsResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpcFlowLogsResult]:
     """
     This data source provides the Vpc Flow Logs of the current Alibaba Cloud user.
 
@@ -295,7 +295,7 @@ def get_vpc_flow_logs_output(description: Optional[pulumi.Input[Optional[str]]] 
     __args__['resourceType'] = resource_type
     __args__['status'] = status
     __args__['trafficType'] = traffic_type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getVpcFlowLogs:getVpcFlowLogs', __args__, opts=opts, typ=GetVpcFlowLogsResult)
     return __ret__.apply(lambda __response__: GetVpcFlowLogsResult(
         description=pulumi.get(__response__, 'description'),

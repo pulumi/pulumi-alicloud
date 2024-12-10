@@ -159,7 +159,7 @@ def get_databases(db_cluster_id: Optional[str] = None,
         names=pulumi.get(__ret__, 'names'))
 def get_databases_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
                          name_regex: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabasesResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabasesResult]:
     """
     The `polardb_get_databases` data source provides a collection of PolarDB cluster database available in Alibaba Cloud account.
     Filters support regular expression for the database name, searches by clusterId.
@@ -213,7 +213,7 @@ def get_databases_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['dbClusterId'] = db_cluster_id
     __args__['nameRegex'] = name_regex
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:polardb/getDatabases:getDatabases', __args__, opts=opts, typ=GetDatabasesResult)
     return __ret__.apply(lambda __response__: GetDatabasesResult(
         databases=pulumi.get(__response__, 'databases'),

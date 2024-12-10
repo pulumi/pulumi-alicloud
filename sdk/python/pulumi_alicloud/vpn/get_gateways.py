@@ -218,7 +218,7 @@ def get_gateways_output(business_status: Optional[pulumi.Input[Optional[str]]] =
                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
                         status: Optional[pulumi.Input[Optional[str]]] = None,
                         vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGatewaysResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGatewaysResult]:
     """
     The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
 
@@ -243,7 +243,7 @@ def get_gateways_output(business_status: Optional[pulumi.Input[Optional[str]]] =
     __args__['outputFile'] = output_file
     __args__['status'] = status
     __args__['vpcId'] = vpc_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:vpn/getGateways:getGateways', __args__, opts=opts, typ=GetGatewaysResult)
     return __ret__.apply(lambda __response__: GetGatewaysResult(
         business_status=pulumi.get(__response__, 'business_status'),

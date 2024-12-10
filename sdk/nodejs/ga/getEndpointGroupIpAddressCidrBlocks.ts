@@ -90,7 +90,7 @@ export interface GetEndpointGroupIpAddressCidrBlocksResult {
  * export const gaEndpointGroupIpAddressCidrBlocksEndpointGroupRegion = _default.then(_default => _default.endpointGroupIpAddressCidrBlocks?.[0]?.endpointGroupRegion);
  * ```
  */
-export function getEndpointGroupIpAddressCidrBlocksOutput(args: GetEndpointGroupIpAddressCidrBlocksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointGroupIpAddressCidrBlocksResult> {
+export function getEndpointGroupIpAddressCidrBlocksOutput(args: GetEndpointGroupIpAddressCidrBlocksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEndpointGroupIpAddressCidrBlocksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ga/getEndpointGroupIpAddressCidrBlocks:getEndpointGroupIpAddressCidrBlocks", {
         "acceleratorId": args.acceleratorId,

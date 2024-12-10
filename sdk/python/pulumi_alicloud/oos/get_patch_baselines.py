@@ -168,7 +168,7 @@ def get_patch_baselines_output(enable_details: Optional[pulumi.Input[Optional[bo
                                operation_system: Optional[pulumi.Input[Optional[str]]] = None,
                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                share_type: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPatchBaselinesResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPatchBaselinesResult]:
     """
     This data source provides the Oos Patch Baselines of the current Alibaba Cloud user.
 
@@ -189,7 +189,7 @@ def get_patch_baselines_output(enable_details: Optional[pulumi.Input[Optional[bo
     __args__['operationSystem'] = operation_system
     __args__['outputFile'] = output_file
     __args__['shareType'] = share_type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:oos/getPatchBaselines:getPatchBaselines', __args__, opts=opts, typ=GetPatchBaselinesResult)
     return __ret__.apply(lambda __response__: GetPatchBaselinesResult(
         baselines=pulumi.get(__response__, 'baselines'),

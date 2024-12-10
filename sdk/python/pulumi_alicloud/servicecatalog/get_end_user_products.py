@@ -186,7 +186,7 @@ def get_end_user_products_output(ids: Optional[pulumi.Input[Optional[Sequence[st
                                  page_size: Optional[pulumi.Input[Optional[int]]] = None,
                                  sort_by: Optional[pulumi.Input[Optional[str]]] = None,
                                  sort_order: Optional[pulumi.Input[Optional[str]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEndUserProductsResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEndUserProductsResult]:
     """
     This data source provides Service Catalog End User Product available to the user.[What is End User Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-servicecatalog-2021-09-01-listproductsasenduser)
 
@@ -217,7 +217,7 @@ def get_end_user_products_output(ids: Optional[pulumi.Input[Optional[Sequence[st
     __args__['pageSize'] = page_size
     __args__['sortBy'] = sort_by
     __args__['sortOrder'] = sort_order
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:servicecatalog/getEndUserProducts:getEndUserProducts', __args__, opts=opts, typ=GetEndUserProductsResult)
     return __ret__.apply(lambda __response__: GetEndUserProductsResult(
         end_user_products=pulumi.get(__response__, 'end_user_products'),

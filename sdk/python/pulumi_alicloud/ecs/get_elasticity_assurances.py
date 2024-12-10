@@ -183,7 +183,7 @@ def get_elasticity_assurances_output(ids: Optional[pulumi.Input[Optional[Sequenc
                                      resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                                      status: Optional[pulumi.Input[Optional[str]]] = None,
                                      tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
-                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetElasticityAssurancesResult]:
+                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetElasticityAssurancesResult]:
     """
     This data source provides Ecs Elasticity Assurance available to the user.
 
@@ -214,7 +214,7 @@ def get_elasticity_assurances_output(ids: Optional[pulumi.Input[Optional[Sequenc
     __args__['resourceGroupId'] = resource_group_id
     __args__['status'] = status
     __args__['tags'] = tags
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getElasticityAssurances:getElasticityAssurances', __args__, opts=opts, typ=GetElasticityAssurancesResult)
     return __ret__.apply(lambda __response__: GetElasticityAssurancesResult(
         assurances=pulumi.get(__response__, 'assurances'),

@@ -196,7 +196,7 @@ def get_change_sets_output(change_set_name: Optional[pulumi.Input[Optional[str]]
                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
                            stack_id: Optional[pulumi.Input[str]] = None,
                            status: Optional[pulumi.Input[Optional[str]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetChangeSetsResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetChangeSetsResult]:
     """
     This data source provides the Ros Change Sets of the current Alibaba Cloud user.
 
@@ -233,7 +233,7 @@ def get_change_sets_output(change_set_name: Optional[pulumi.Input[Optional[str]]
     __args__['outputFile'] = output_file
     __args__['stackId'] = stack_id
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ros/getChangeSets:getChangeSets', __args__, opts=opts, typ=GetChangeSetsResult)
     return __ret__.apply(lambda __response__: GetChangeSetsResult(
         change_set_name=pulumi.get(__response__, 'change_set_name'),

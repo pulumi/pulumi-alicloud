@@ -69,7 +69,7 @@ export interface GetRegionsResult {
  * export const rosRegionRegionId1 = all.then(all => all.regions?.[0]?.regionId);
  * ```
  */
-export function getRegionsOutput(args?: GetRegionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionsResult> {
+export function getRegionsOutput(args?: GetRegionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegionsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ros/getRegions:getRegions", {

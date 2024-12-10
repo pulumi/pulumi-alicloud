@@ -139,7 +139,7 @@ def get_db_clusters(ids: Optional[Sequence[str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'))
 def get_db_clusters_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDbClustersResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDbClustersResult]:
     """
     This data source provides the SelectDB DBCluster of the current Alibaba Cloud user.
 
@@ -186,7 +186,7 @@ def get_db_clusters_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] 
     __args__ = dict()
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:selectdb/getDbClusters:getDbClusters', __args__, opts=opts, typ=GetDbClustersResult)
     return __ret__.apply(lambda __response__: GetDbClustersResult(
         clusters=pulumi.get(__response__, 'clusters'),

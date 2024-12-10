@@ -123,7 +123,7 @@ export interface GetAccessStrategiesResult {
  * export const alidnsAccessStrategyId1 = ids.then(ids => ids.strategies?.[0]?.id);
  * ```
  */
-export function getAccessStrategiesOutput(args: GetAccessStrategiesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessStrategiesResult> {
+export function getAccessStrategiesOutput(args: GetAccessStrategiesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccessStrategiesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:dns/getAccessStrategies:getAccessStrategies", {
         "enableDetails": args.enableDetails,

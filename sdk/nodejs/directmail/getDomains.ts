@@ -119,7 +119,7 @@ export interface GetDomainsResult {
  * export const directMailDomainsId0 = ids.apply(ids => ids.domains?.[0]?.id);
  * ```
  */
-export function getDomainsOutput(args?: GetDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainsResult> {
+export function getDomainsOutput(args?: GetDomainsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDomainsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:directmail/getDomains:getDomains", {

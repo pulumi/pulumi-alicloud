@@ -100,7 +100,7 @@ export interface GetEndpointAclPoliciesResult {
  * export const crEndpointAclPolicyId1 = ids.then(ids => ids.policies?.[0]?.id);
  * ```
  */
-export function getEndpointAclPoliciesOutput(args: GetEndpointAclPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointAclPoliciesResult> {
+export function getEndpointAclPoliciesOutput(args: GetEndpointAclPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEndpointAclPoliciesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cr/getEndpointAclPolicies:getEndpointAclPolicies", {
         "endpointType": args.endpointType,

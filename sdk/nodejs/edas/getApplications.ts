@@ -93,7 +93,7 @@ export interface GetApplicationsResult {
  * export const firstApplicationName = applications.then(applications => applications.applications?.[0]?.appName);
  * ```
  */
-export function getApplicationsOutput(args?: GetApplicationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationsResult> {
+export function getApplicationsOutput(args?: GetApplicationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApplicationsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:edas/getApplications:getApplications", {

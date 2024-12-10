@@ -99,7 +99,7 @@ export interface GetEcsNetworkInterfacePermissionsResult {
  * export const ecsNetworkInterfacePermissionId1 = ids.then(ids => ids.permissions?.[0]?.id);
  * ```
  */
-export function getEcsNetworkInterfacePermissionsOutput(args: GetEcsNetworkInterfacePermissionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsNetworkInterfacePermissionsResult> {
+export function getEcsNetworkInterfacePermissionsOutput(args: GetEcsNetworkInterfacePermissionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEcsNetworkInterfacePermissionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ecs/getEcsNetworkInterfacePermissions:getEcsNetworkInterfacePermissions", {
         "ids": args.ids,

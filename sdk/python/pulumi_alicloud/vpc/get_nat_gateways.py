@@ -335,7 +335,7 @@ def get_nat_gateways_output(dry_run: Optional[pulumi.Input[Optional[bool]]] = No
                             status: Optional[pulumi.Input[Optional[str]]] = None,
                             tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                             vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNatGatewaysResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNatGatewaysResult]:
     """
     This data source provides a list of Nat Gateways owned by an Alibaba Cloud account.
 
@@ -372,7 +372,7 @@ def get_nat_gateways_output(dry_run: Optional[pulumi.Input[Optional[bool]]] = No
     __args__['status'] = status
     __args__['tags'] = tags
     __args__['vpcId'] = vpc_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getNatGateways:getNatGateways', __args__, opts=opts, typ=GetNatGatewaysResult)
     return __ret__.apply(lambda __response__: GetNatGatewaysResult(
         dry_run=pulumi.get(__response__, 'dry_run'),

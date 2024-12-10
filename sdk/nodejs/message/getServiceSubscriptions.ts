@@ -121,7 +121,7 @@ export interface GetServiceSubscriptionsResult {
  * export const subscriptionId2 = name.then(name => name.subscriptions?.[0]?.id);
  * ```
  */
-export function getServiceSubscriptionsOutput(args: GetServiceSubscriptionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceSubscriptionsResult> {
+export function getServiceSubscriptionsOutput(args: GetServiceSubscriptionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServiceSubscriptionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:message/getServiceSubscriptions:getServiceSubscriptions", {
         "ids": args.ids,

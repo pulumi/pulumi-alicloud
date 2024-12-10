@@ -101,7 +101,7 @@ export interface GetSchedulesResult {
  * export const firstFnfScheduleId = example.then(example => example.schedules?.[0]?.id);
  * ```
  */
-export function getSchedulesOutput(args: GetSchedulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSchedulesResult> {
+export function getSchedulesOutput(args: GetSchedulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSchedulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:fnf/getSchedules:getSchedules", {
         "flowName": args.flowName,

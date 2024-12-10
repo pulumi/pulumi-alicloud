@@ -123,7 +123,7 @@ export interface GetPortfoliosResult {
  * export const alicloudServiceCatalogPortfolioExampleId = _default.then(_default => _default.portfolios?.[0]?.id);
  * ```
  */
-export function getPortfoliosOutput(args?: GetPortfoliosOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPortfoliosResult> {
+export function getPortfoliosOutput(args?: GetPortfoliosOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPortfoliosResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:servicecatalog/getPortfolios:getPortfolios", {

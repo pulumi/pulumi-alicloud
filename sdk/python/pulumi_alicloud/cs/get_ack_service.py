@@ -118,7 +118,7 @@ def get_ack_service(enable: Optional[str] = None,
         type=pulumi.get(__ret__, 'type'))
 def get_ack_service_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
                            type: Optional[pulumi.Input[str]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAckServiceResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAckServiceResult]:
     """
     Using this data source can open Container Service (CS) service automatically. If the service has been opened, it will return opened.
 
@@ -145,7 +145,7 @@ def get_ack_service_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
     __args__ = dict()
     __args__['enable'] = enable
     __args__['type'] = type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cs/getAckService:getAckService', __args__, opts=opts, typ=GetAckServiceResult)
     return __ret__.apply(lambda __response__: GetAckServiceResult(
         enable=pulumi.get(__response__, 'enable'),

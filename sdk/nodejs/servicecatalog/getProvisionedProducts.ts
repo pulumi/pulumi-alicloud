@@ -133,7 +133,7 @@ export interface GetProvisionedProductsResult {
  * export const alicloudServiceCatalogProvisionedProductExampleId = _default.then(_default => _default.provisionedProducts?.[0]?.id);
  * ```
  */
-export function getProvisionedProductsOutput(args?: GetProvisionedProductsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProvisionedProductsResult> {
+export function getProvisionedProductsOutput(args?: GetProvisionedProductsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProvisionedProductsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:servicecatalog/getProvisionedProducts:getProvisionedProducts", {

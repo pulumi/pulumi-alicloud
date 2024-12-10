@@ -181,7 +181,7 @@ def get_agents_output(agent_name: Optional[pulumi.Input[Optional[str]]] = None,
                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
                       page_number: Optional[pulumi.Input[Optional[int]]] = None,
                       page_size: Optional[pulumi.Input[Optional[int]]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAgentsResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAgentsResult]:
     """
     This data source provides the Chatbot Agents of the current Alibaba Cloud user.
 
@@ -208,7 +208,7 @@ def get_agents_output(agent_name: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['outputFile'] = output_file
     __args__['pageNumber'] = page_number
     __args__['pageSize'] = page_size
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:chatbot/getAgents:getAgents', __args__, opts=opts, typ=GetAgentsResult)
     return __ret__.apply(lambda __response__: GetAgentsResult(
         agent_name=pulumi.get(__response__, 'agent_name'),

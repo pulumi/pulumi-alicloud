@@ -116,7 +116,7 @@ export interface GetIndustrialPidProjectsResult {
  * export const firstBrainIndustrialPidProjectId = example.then(example => example.projects?.[0]?.id);
  * ```
  */
-export function getIndustrialPidProjectsOutput(args?: GetIndustrialPidProjectsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIndustrialPidProjectsResult> {
+export function getIndustrialPidProjectsOutput(args?: GetIndustrialPidProjectsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIndustrialPidProjectsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:brain/getIndustrialPidProjects:getIndustrialPidProjects", {

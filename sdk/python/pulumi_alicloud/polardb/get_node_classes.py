@@ -208,7 +208,7 @@ def get_node_classes_output(category: Optional[pulumi.Input[Optional[str]]] = No
                             pay_type: Optional[pulumi.Input[str]] = None,
                             region_id: Optional[pulumi.Input[Optional[str]]] = None,
                             zone_id: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodeClassesResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodeClassesResult]:
     """
     This data source provides the PolarDB node classes resource available info of Alibaba Cloud.
 
@@ -246,7 +246,7 @@ def get_node_classes_output(category: Optional[pulumi.Input[Optional[str]]] = No
     __args__['payType'] = pay_type
     __args__['regionId'] = region_id
     __args__['zoneId'] = zone_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:polardb/getNodeClasses:getNodeClasses', __args__, opts=opts, typ=GetNodeClassesResult)
     return __ret__.apply(lambda __response__: GetNodeClassesResult(
         category=pulumi.get(__response__, 'category'),

@@ -68,7 +68,7 @@ export interface GetKubernetesAddonsResult {
  * > **NOTE:** Available since v1.150.0.
  * **NOTE:** From version v1.166.0, support for returning custom configuration of kubernetes cluster addon.
  */
-export function getKubernetesAddonsOutput(args: GetKubernetesAddonsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesAddonsResult> {
+export function getKubernetesAddonsOutput(args: GetKubernetesAddonsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKubernetesAddonsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cs/getKubernetesAddons:getKubernetesAddons", {
         "clusterId": args.clusterId,

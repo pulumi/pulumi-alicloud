@@ -173,7 +173,7 @@ def get_secondary_indexes_output(ids: Optional[pulumi.Input[Optional[Sequence[st
                                  name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                  output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                  table_name: Optional[pulumi.Input[str]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecondaryIndexesResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecondaryIndexesResult]:
     """
     This data source provides the ots secondary index of the current Alibaba Cloud user.
 
@@ -196,7 +196,7 @@ def get_secondary_indexes_output(ids: Optional[pulumi.Input[Optional[Sequence[st
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['tableName'] = table_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ots/getSecondaryIndexes:getSecondaryIndexes', __args__, opts=opts, typ=GetSecondaryIndexesResult)
     return __ret__.apply(lambda __response__: GetSecondaryIndexesResult(
         id=pulumi.get(__response__, 'id'),

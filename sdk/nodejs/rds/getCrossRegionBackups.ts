@@ -126,7 +126,7 @@ export interface GetCrossRegionBackupsResult {
  * export const firstRdsCrossRegionBackups = backups.then(backups => backups.backups?.[0]?.id);
  * ```
  */
-export function getCrossRegionBackupsOutput(args: GetCrossRegionBackupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCrossRegionBackupsResult> {
+export function getCrossRegionBackupsOutput(args: GetCrossRegionBackupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCrossRegionBackupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:rds/getCrossRegionBackups:getCrossRegionBackups", {
         "backupId": args.backupId,

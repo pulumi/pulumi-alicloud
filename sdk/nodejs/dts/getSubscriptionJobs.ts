@@ -94,7 +94,7 @@ export interface GetSubscriptionJobsResult {
  * export const dtsSubscriptionJobId1 = ids.then(ids => ids.jobs?.[0]?.id);
  * ```
  */
-export function getSubscriptionJobsOutput(args?: GetSubscriptionJobsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubscriptionJobsResult> {
+export function getSubscriptionJobsOutput(args?: GetSubscriptionJobsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSubscriptionJobsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:dts/getSubscriptionJobs:getSubscriptionJobs", {

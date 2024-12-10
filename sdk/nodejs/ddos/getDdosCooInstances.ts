@@ -92,7 +92,7 @@ export interface GetDdosCooInstancesResult {
  * export const instance = _default.then(_default => _default.instances.map(__item => __item.id));
  * ```
  */
-export function getDdosCooInstancesOutput(args?: GetDdosCooInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDdosCooInstancesResult> {
+export function getDdosCooInstancesOutput(args?: GetDdosCooInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDdosCooInstancesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ddos/getDdosCooInstances:getDdosCooInstances", {

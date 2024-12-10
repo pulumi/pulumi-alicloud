@@ -152,7 +152,7 @@ export interface GetDataBackupsResult {
  * export const alicloudGpdbDataBackupExampleId = defaultGetDataBackups.then(defaultGetDataBackups => defaultGetDataBackups.backups?.[0]?.dbInstanceId);
  * ```
  */
-export function getDataBackupsOutput(args: GetDataBackupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataBackupsResult> {
+export function getDataBackupsOutput(args: GetDataBackupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDataBackupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:gpdb/getDataBackups:getDataBackups", {
         "backupMode": args.backupMode,

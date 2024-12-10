@@ -94,7 +94,7 @@ export interface GetInstanceAttachmentsResult {
  * export const firstOtsAttachmentId = attachmentsDs.then(attachmentsDs => attachmentsDs.attachments?.[0]?.id);
  * ```
  */
-export function getInstanceAttachmentsOutput(args: GetInstanceAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceAttachmentsResult> {
+export function getInstanceAttachmentsOutput(args: GetInstanceAttachmentsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceAttachmentsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ots/getInstanceAttachments:getInstanceAttachments", {
         "instanceName": args.instanceName,

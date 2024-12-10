@@ -135,7 +135,7 @@ def get_zones(accept_language: Optional[str] = None,
 def get_zones_output(accept_language: Optional[pulumi.Input[Optional[str]]] = None,
                      ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZonesResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZonesResult]:
     """
     This data source provides Gwlb Zone available to the user.[What is Zone](https://www.alibabacloud.com/help/en/)
 
@@ -163,7 +163,7 @@ def get_zones_output(accept_language: Optional[pulumi.Input[Optional[str]]] = No
     __args__['acceptLanguage'] = accept_language
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:gwlb/getZones:getZones', __args__, opts=opts, typ=GetZonesResult)
     return __ret__.apply(lambda __response__: GetZonesResult(
         accept_language=pulumi.get(__response__, 'accept_language'),

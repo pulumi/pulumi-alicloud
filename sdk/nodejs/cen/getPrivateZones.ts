@@ -114,7 +114,7 @@ export interface GetPrivateZonesResult {
  * export const firstCenPrivateZonesId = _this.then(_this => _this.zones?.[0]?.id);
  * ```
  */
-export function getPrivateZonesOutput(args: GetPrivateZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateZonesResult> {
+export function getPrivateZonesOutput(args: GetPrivateZonesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPrivateZonesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cen/getPrivateZones:getPrivateZones", {
         "cenId": args.cenId,

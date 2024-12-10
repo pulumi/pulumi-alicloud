@@ -109,7 +109,7 @@ export interface GetCompliancePacksResult {
  * export const firstConfigCompliancePackId = example.then(example => example.packs?.[0]?.id);
  * ```
  */
-export function getCompliancePacksOutput(args?: GetCompliancePacksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCompliancePacksResult> {
+export function getCompliancePacksOutput(args?: GetCompliancePacksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCompliancePacksResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cfg/getCompliancePacks:getCompliancePacks", {

@@ -100,7 +100,7 @@ export interface GetClustersResult {
  * export const firstClusterName = clustersAlicloudAlikafkaConsumerGroups.clusters[0].clusterName;
  * ```
  */
-export function getClustersOutput(args: GetClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClustersResult> {
+export function getClustersOutput(args: GetClustersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClustersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:edas/getClusters:getClusters", {
         "ids": args.ids,

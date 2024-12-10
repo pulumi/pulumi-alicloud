@@ -177,7 +177,7 @@ export interface GetTemplateApplicationsResult {
  * export const alicloudQuotasTemplateApplicationsExampleId = defaultGetTemplateApplications.apply(defaultGetTemplateApplications => defaultGetTemplateApplications.applications?.[0]?.id);
  * ```
  */
-export function getTemplateApplicationsOutput(args?: GetTemplateApplicationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTemplateApplicationsResult> {
+export function getTemplateApplicationsOutput(args?: GetTemplateApplicationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTemplateApplicationsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:quotas/getTemplateApplications:getTemplateApplications", {

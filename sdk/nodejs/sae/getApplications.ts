@@ -191,7 +191,7 @@ export interface GetApplicationsResult {
  * export const saeApplicationId = defaultGetApplications.apply(defaultGetApplications => defaultGetApplications.applications?.[0]?.id);
  * ```
  */
-export function getApplicationsOutput(args?: GetApplicationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationsResult> {
+export function getApplicationsOutput(args?: GetApplicationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApplicationsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:sae/getApplications:getApplications", {

@@ -124,7 +124,7 @@ export interface GetImageCachesResult {
  * export const imageCache = example.then(example => example.caches?.[0]?.id);
  * ```
  */
-export function getImageCachesOutput(args?: GetImageCachesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImageCachesResult> {
+export function getImageCachesOutput(args?: GetImageCachesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetImageCachesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:eci/getImageCaches:getImageCaches", {

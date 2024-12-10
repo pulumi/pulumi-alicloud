@@ -96,7 +96,7 @@ export interface GetProductsResult {
  * export const mhubProductId2 = nameRegex.then(nameRegex => nameRegex.products?.[0]?.id);
  * ```
  */
-export function getProductsOutput(args?: GetProductsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProductsResult> {
+export function getProductsOutput(args?: GetProductsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProductsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:mhub/getProducts:getProducts", {

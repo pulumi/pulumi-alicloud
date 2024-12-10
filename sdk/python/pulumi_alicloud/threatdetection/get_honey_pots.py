@@ -201,7 +201,7 @@ def get_honey_pots_output(honeypot_id: Optional[pulumi.Input[Optional[str]]] = N
                           node_id: Optional[pulumi.Input[Optional[str]]] = None,
                           node_name: Optional[pulumi.Input[Optional[str]]] = None,
                           output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHoneyPotsResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHoneyPotsResult]:
     """
     This data source provides Threat Detection Honey Pot available to the user.[What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypot)
 
@@ -238,7 +238,7 @@ def get_honey_pots_output(honeypot_id: Optional[pulumi.Input[Optional[str]]] = N
     __args__['nodeId'] = node_id
     __args__['nodeName'] = node_name
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:threatdetection/getHoneyPots:getHoneyPots', __args__, opts=opts, typ=GetHoneyPotsResult)
     return __ret__.apply(lambda __response__: GetHoneyPotsResult(
         honeypot_id=pulumi.get(__response__, 'honeypot_id'),

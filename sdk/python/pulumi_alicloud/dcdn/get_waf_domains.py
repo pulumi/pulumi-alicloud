@@ -142,7 +142,7 @@ def get_waf_domains_output(enable_details: Optional[pulumi.Input[Optional[bool]]
                            ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
                            query_args: Optional[pulumi.Input[Optional[str]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWafDomainsResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWafDomainsResult]:
     """
     This data source provides the Dcdn Waf Domains of the current Alibaba Cloud user.
 
@@ -171,7 +171,7 @@ def get_waf_domains_output(enable_details: Optional[pulumi.Input[Optional[bool]]
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
     __args__['queryArgs'] = query_args
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:dcdn/getWafDomains:getWafDomains', __args__, opts=opts, typ=GetWafDomainsResult)
     return __ret__.apply(lambda __response__: GetWafDomainsResult(
         domains=pulumi.get(__response__, 'domains'),

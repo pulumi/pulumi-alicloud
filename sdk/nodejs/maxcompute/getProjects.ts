@@ -107,7 +107,7 @@ export interface GetProjectsResult {
  * export const alicloudMaxcomputeProjectExampleId = _default.apply(_default => _default.projects?.[0]?.projectName);
  * ```
  */
-export function getProjectsOutput(args?: GetProjectsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectsResult> {
+export function getProjectsOutput(args?: GetProjectsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:maxcompute/getProjects:getProjects", {

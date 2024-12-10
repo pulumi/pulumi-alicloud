@@ -513,7 +513,7 @@ def get_ecs_disks_output(additional_attributes: Optional[pulumi.Input[Optional[S
                          tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                          type: Optional[pulumi.Input[Optional[str]]] = None,
                          zone_id: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEcsDisksResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEcsDisksResult]:
     """
     This data source provides the Ecs Disks of the current Alibaba Cloud user.
 
@@ -590,7 +590,7 @@ def get_ecs_disks_output(additional_attributes: Optional[pulumi.Input[Optional[S
     __args__['tags'] = tags
     __args__['type'] = type
     __args__['zoneId'] = zone_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getEcsDisks:getEcsDisks', __args__, opts=opts, typ=GetEcsDisksResult)
     return __ret__.apply(lambda __response__: GetEcsDisksResult(
         additional_attributes=pulumi.get(__response__, 'additional_attributes'),

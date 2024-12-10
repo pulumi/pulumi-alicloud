@@ -165,7 +165,7 @@ export interface GetLoadBalancersResult {
  * export const albLoadBalancerId2 = nameRegex.then(nameRegex => nameRegex.balancers?.[0]?.id);
  * ```
  */
-export function getLoadBalancersOutput(args?: GetLoadBalancersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLoadBalancersResult> {
+export function getLoadBalancersOutput(args?: GetLoadBalancersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLoadBalancersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:alb/getLoadBalancers:getLoadBalancers", {

@@ -33,7 +33,7 @@ export interface GetEnhancedNatAvailableZonesResult {
     readonly outputFile?: string;
     readonly zones: outputs.vpc.GetEnhancedNatAvailableZonesZone[];
 }
-export function getEnhancedNatAvailableZonesOutput(args?: GetEnhancedNatAvailableZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnhancedNatAvailableZonesResult> {
+export function getEnhancedNatAvailableZonesOutput(args?: GetEnhancedNatAvailableZonesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEnhancedNatAvailableZonesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpc/getEnhancedNatAvailableZones:getEnhancedNatAvailableZones", {

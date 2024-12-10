@@ -107,7 +107,7 @@ def get_kubernetes_permission(uid: Optional[str] = None,
         permissions=pulumi.get(__ret__, 'permissions'),
         uid=pulumi.get(__ret__, 'uid'))
 def get_kubernetes_permission_output(uid: Optional[pulumi.Input[str]] = None,
-                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKubernetesPermissionResult]:
+                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKubernetesPermissionResult]:
     """
     This data source provides a list of Ram user permissions.
 
@@ -131,7 +131,7 @@ def get_kubernetes_permission_output(uid: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['uid'] = uid
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cs/getKubernetesPermission:getKubernetesPermission', __args__, opts=opts, typ=GetKubernetesPermissionResult)
     return __ret__.apply(lambda __response__: GetKubernetesPermissionResult(
         id=pulumi.get(__response__, 'id'),

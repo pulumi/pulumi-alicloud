@@ -117,7 +117,7 @@ def get_product(available_region: Optional[str] = None,
         products=pulumi.get(__ret__, 'products'))
 def get_product_output(available_region: Optional[pulumi.Input[Optional[str]]] = None,
                        product_code: Optional[pulumi.Input[str]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProductResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProductResult]:
     """
     This data source provides the Market product item details of Alibaba Cloud.
 
@@ -142,7 +142,7 @@ def get_product_output(available_region: Optional[pulumi.Input[Optional[str]]] =
     __args__ = dict()
     __args__['availableRegion'] = available_region
     __args__['productCode'] = product_code
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:marketplace/getProduct:getProduct', __args__, opts=opts, typ=GetProductResult)
     return __ret__.apply(lambda __response__: GetProductResult(
         available_region=pulumi.get(__response__, 'available_region'),

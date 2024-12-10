@@ -94,7 +94,7 @@ export interface GetDedicatedHostAccountsResult {
  * export const cddcDedicatedHostAccountId1 = ids.then(ids => ids.accounts?.[0]?.id);
  * ```
  */
-export function getDedicatedHostAccountsOutput(args?: GetDedicatedHostAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDedicatedHostAccountsResult> {
+export function getDedicatedHostAccountsOutput(args?: GetDedicatedHostAccountsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDedicatedHostAccountsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cddc/getDedicatedHostAccounts:getDedicatedHostAccounts", {

@@ -127,7 +127,7 @@ export interface GetBgpPeersResult {
  * export const vpcBgpPeerId4 = status.then(status => status.peers?.[0]?.id);
  * ```
  */
-export function getBgpPeersOutput(args?: GetBgpPeersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBgpPeersResult> {
+export function getBgpPeersOutput(args?: GetBgpPeersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBgpPeersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpc/getBgpPeers:getBgpPeers", {

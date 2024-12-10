@@ -91,7 +91,7 @@ export interface GetWafPoliciesResult {
  * export const dcdnWafPolicyId1 = ids.then(ids => ids.policies?.[0]?.id);
  * ```
  */
-export function getWafPoliciesOutput(args?: GetWafPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWafPoliciesResult> {
+export function getWafPoliciesOutput(args?: GetWafPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWafPoliciesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:dcdn/getWafPolicies:getWafPolicies", {

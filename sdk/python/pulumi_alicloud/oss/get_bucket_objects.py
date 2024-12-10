@@ -142,7 +142,7 @@ def get_bucket_objects_output(bucket_name: Optional[pulumi.Input[str]] = None,
                               key_prefix: Optional[pulumi.Input[Optional[str]]] = None,
                               key_regex: Optional[pulumi.Input[Optional[str]]] = None,
                               output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBucketObjectsResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBucketObjectsResult]:
     """
     This data source provides the objects of an OSS bucket.
 
@@ -168,7 +168,7 @@ def get_bucket_objects_output(bucket_name: Optional[pulumi.Input[str]] = None,
     __args__['keyPrefix'] = key_prefix
     __args__['keyRegex'] = key_regex
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:oss/getBucketObjects:getBucketObjects', __args__, opts=opts, typ=GetBucketObjectsResult)
     return __ret__.apply(lambda __response__: GetBucketObjectsResult(
         bucket_name=pulumi.get(__response__, 'bucket_name'),

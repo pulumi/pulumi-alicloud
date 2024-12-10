@@ -126,7 +126,7 @@ export interface GetIndustrialPidLoopsResult {
  * export const firstBrainIndustrialPidLoopId = example.then(example => example.loops?.[0]?.id);
  * ```
  */
-export function getIndustrialPidLoopsOutput(args: GetIndustrialPidLoopsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIndustrialPidLoopsResult> {
+export function getIndustrialPidLoopsOutput(args: GetIndustrialPidLoopsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIndustrialPidLoopsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:brain/getIndustrialPidLoops:getIndustrialPidLoops", {
         "enableDetails": args.enableDetails,

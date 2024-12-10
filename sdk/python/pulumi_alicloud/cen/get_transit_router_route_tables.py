@@ -246,7 +246,7 @@ def get_transit_router_route_tables_output(ids: Optional[pulumi.Input[Optional[S
                                            transit_router_route_table_names: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                            transit_router_route_table_status: Optional[pulumi.Input[Optional[str]]] = None,
                                            transit_router_route_table_type: Optional[pulumi.Input[Optional[str]]] = None,
-                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransitRouterRouteTablesResult]:
+                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransitRouterRouteTablesResult]:
     """
     This data source provides CEN Transit Router Route Tables available to the user.[What is Cen Transit Router Route Tables](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouterroutetables)
 
@@ -297,7 +297,7 @@ def get_transit_router_route_tables_output(ids: Optional[pulumi.Input[Optional[S
     __args__['transitRouterRouteTableNames'] = transit_router_route_table_names
     __args__['transitRouterRouteTableStatus'] = transit_router_route_table_status
     __args__['transitRouterRouteTableType'] = transit_router_route_table_type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getTransitRouterRouteTables:getTransitRouterRouteTables', __args__, opts=opts, typ=GetTransitRouterRouteTablesResult)
     return __ret__.apply(lambda __response__: GetTransitRouterRouteTablesResult(
         id=pulumi.get(__response__, 'id'),

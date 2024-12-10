@@ -229,7 +229,7 @@ def get_users_output(group_name: Optional[pulumi.Input[Optional[str]]] = None,
                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
                      policy_name: Optional[pulumi.Input[Optional[str]]] = None,
                      policy_type: Optional[pulumi.Input[Optional[str]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUsersResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUsersResult]:
     """
     This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.
 
@@ -302,7 +302,7 @@ def get_users_output(group_name: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['outputFile'] = output_file
     __args__['policyName'] = policy_name
     __args__['policyType'] = policy_type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ram/getUsers:getUsers', __args__, opts=opts, typ=GetUsersResult)
     return __ret__.apply(lambda __response__: GetUsersResult(
         group_name=pulumi.get(__response__, 'group_name'),

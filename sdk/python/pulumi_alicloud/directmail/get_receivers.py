@@ -167,7 +167,7 @@ def get_receivers_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
                          name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
                          status: Optional[pulumi.Input[Optional[int]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetReceiversResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetReceiversResult]:
     """
     This data source provides the Direct Mail Receiverses of the current Alibaba Cloud user.
 
@@ -199,7 +199,7 @@ def get_receivers_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:directmail/getReceivers:getReceivers', __args__, opts=opts, typ=GetReceiversResult)
     return __ret__.apply(lambda __response__: GetReceiversResult(
         id=pulumi.get(__response__, 'id'),

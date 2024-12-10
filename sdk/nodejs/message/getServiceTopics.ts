@@ -111,7 +111,7 @@ export interface GetServiceTopicsResult {
  * export const topicId2 = name.then(name => name.topics?.[0]?.id);
  * ```
  */
-export function getServiceTopicsOutput(args?: GetServiceTopicsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceTopicsResult> {
+export function getServiceTopicsOutput(args?: GetServiceTopicsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServiceTopicsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:message/getServiceTopics:getServiceTopics", {

@@ -152,7 +152,7 @@ def get_dedicated_host_groups_output(engine: Optional[pulumi.Input[Optional[str]
                                      ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                      name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDedicatedHostGroupsResult]:
+                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDedicatedHostGroupsResult]:
     """
     This data source provides the Cddc Dedicated Host Groups of the current Alibaba Cloud user.
 
@@ -181,7 +181,7 @@ def get_dedicated_host_groups_output(engine: Optional[pulumi.Input[Optional[str]
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cddc/getDedicatedHostGroups:getDedicatedHostGroups', __args__, opts=opts, typ=GetDedicatedHostGroupsResult)
     return __ret__.apply(lambda __response__: GetDedicatedHostGroupsResult(
         engine=pulumi.get(__response__, 'engine'),

@@ -192,7 +192,7 @@ def get_access_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
                              order_type: Optional[pulumi.Input[Optional[str]]] = None,
                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
                              start_offset: Optional[pulumi.Input[Optional[int]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccessGroupsResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccessGroupsResult]:
     """
     This data source provides the Apsara File Storage for HDFS Access Groups of the current Alibaba Cloud user.
 
@@ -225,7 +225,7 @@ def get_access_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     __args__['orderType'] = order_type
     __args__['outputFile'] = output_file
     __args__['startOffset'] = start_offset
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:dfs/getAccessGroups:getAccessGroups', __args__, opts=opts, typ=GetAccessGroupsResult)
     return __ret__.apply(lambda __response__: GetAccessGroupsResult(
         groups=pulumi.get(__response__, 'groups'),

@@ -218,7 +218,7 @@ def get_route_services_output(access_region_id: Optional[pulumi.Input[Optional[s
                               host_vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
                               output_file: Optional[pulumi.Input[Optional[str]]] = None,
                               status: Optional[pulumi.Input[Optional[str]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouteServicesResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRouteServicesResult]:
     """
     This data source provides CEN Route Service available to the user.
 
@@ -253,7 +253,7 @@ def get_route_services_output(access_region_id: Optional[pulumi.Input[Optional[s
     __args__['hostVpcId'] = host_vpc_id
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getRouteServices:getRouteServices', __args__, opts=opts, typ=GetRouteServicesResult)
     return __ret__.apply(lambda __response__: GetRouteServicesResult(
         access_region_id=pulumi.get(__response__, 'access_region_id'),

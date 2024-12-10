@@ -120,7 +120,7 @@ export interface GetEcsImageComponentsResult {
  * export const ecsImageComponentId2 = nameRegex.then(nameRegex => nameRegex.components?.[0]?.id);
  * ```
  */
-export function getEcsImageComponentsOutput(args?: GetEcsImageComponentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsImageComponentsResult> {
+export function getEcsImageComponentsOutput(args?: GetEcsImageComponentsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEcsImageComponentsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ecs/getEcsImageComponents:getEcsImageComponents", {

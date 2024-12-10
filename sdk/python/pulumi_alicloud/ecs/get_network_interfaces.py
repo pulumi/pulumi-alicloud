@@ -405,7 +405,7 @@ def get_network_interfaces_output(ids: Optional[pulumi.Input[Optional[Sequence[s
                                   type: Optional[pulumi.Input[Optional[str]]] = None,
                                   vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
                                   vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkInterfacesResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkInterfacesResult]:
     """
     > **DEPRECATED:** This datasource has been renamed to ecs_get_ecs_network_interfaces from version 1.123.1.
 
@@ -514,7 +514,7 @@ def get_network_interfaces_output(ids: Optional[pulumi.Input[Optional[Sequence[s
     __args__['type'] = type
     __args__['vpcId'] = vpc_id
     __args__['vswitchId'] = vswitch_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getNetworkInterfaces:getNetworkInterfaces', __args__, opts=opts, typ=GetNetworkInterfacesResult)
     return __ret__.apply(lambda __response__: GetNetworkInterfacesResult(
         id=pulumi.get(__response__, 'id'),

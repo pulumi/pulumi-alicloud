@@ -112,7 +112,7 @@ export interface GetOrganizationsResult {
  * export const rdcOrganizationId2 = nameRegex.then(nameRegex => nameRegex.id);
  * ```
  */
-export function getOrganizationsOutput(args?: GetOrganizationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationsResult> {
+export function getOrganizationsOutput(args?: GetOrganizationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOrganizationsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:rdc/getOrganizations:getOrganizations", {

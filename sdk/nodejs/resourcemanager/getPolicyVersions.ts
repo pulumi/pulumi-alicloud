@@ -100,7 +100,7 @@ export interface GetPolicyVersionsResult {
  * export const firstPolicyVersionId = _default.then(_default => _default.versions?.[0]?.id);
  * ```
  */
-export function getPolicyVersionsOutput(args: GetPolicyVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyVersionsResult> {
+export function getPolicyVersionsOutput(args: GetPolicyVersionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPolicyVersionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:resourcemanager/getPolicyVersions:getPolicyVersions", {
         "enableDetails": args.enableDetails,

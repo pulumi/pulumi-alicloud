@@ -182,7 +182,7 @@ def get_alert_robots_output(alert_robot_name: Optional[pulumi.Input[Optional[str
                             name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
                             robot_type: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAlertRobotsResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAlertRobotsResult]:
     """
     This data source provides the Arms Alert Robots of the current Alibaba Cloud user.
 
@@ -217,7 +217,7 @@ def get_alert_robots_output(alert_robot_name: Optional[pulumi.Input[Optional[str
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['robotType'] = robot_type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:arms/getAlertRobots:getAlertRobots', __args__, opts=opts, typ=GetAlertRobotsResult)
     return __ret__.apply(lambda __response__: GetAlertRobotsResult(
         alert_robot_name=pulumi.get(__response__, 'alert_robot_name'),

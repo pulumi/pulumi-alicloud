@@ -122,7 +122,7 @@ export interface GetTrafficMirrorFiltersResult {
  * export const vpcTrafficMirrorFilterId4 = status.then(status => status.filters?.[0]?.id);
  * ```
  */
-export function getTrafficMirrorFiltersOutput(args?: GetTrafficMirrorFiltersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrafficMirrorFiltersResult> {
+export function getTrafficMirrorFiltersOutput(args?: GetTrafficMirrorFiltersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTrafficMirrorFiltersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpc/getTrafficMirrorFilters:getTrafficMirrorFilters", {

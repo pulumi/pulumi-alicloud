@@ -96,7 +96,7 @@ export interface GetEcsStorageCapacityUnitsResult {
  * export const ecsStorageCapacityUnitId2 = nameRegex.then(nameRegex => nameRegex.units?.[0]?.id);
  * ```
  */
-export function getEcsStorageCapacityUnitsOutput(args?: GetEcsStorageCapacityUnitsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsStorageCapacityUnitsResult> {
+export function getEcsStorageCapacityUnitsOutput(args?: GetEcsStorageCapacityUnitsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEcsStorageCapacityUnitsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ecs/getEcsStorageCapacityUnits:getEcsStorageCapacityUnits", {

@@ -107,7 +107,7 @@ export interface GetEcsKeyPairsResult {
  * export const firstEcsKeyPairId = example.then(example => example.pairs?.[0]?.id);
  * ```
  */
-export function getEcsKeyPairsOutput(args?: GetEcsKeyPairsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsKeyPairsResult> {
+export function getEcsKeyPairsOutput(args?: GetEcsKeyPairsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEcsKeyPairsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ecs/getEcsKeyPairs:getEcsKeyPairs", {

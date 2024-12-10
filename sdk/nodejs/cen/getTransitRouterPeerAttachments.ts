@@ -96,7 +96,7 @@ export interface GetTransitRouterPeerAttachmentsResult {
  *
  * > **NOTE:** Available in 1.128.0+
  */
-export function getTransitRouterPeerAttachmentsOutput(args: GetTransitRouterPeerAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterPeerAttachmentsResult> {
+export function getTransitRouterPeerAttachmentsOutput(args: GetTransitRouterPeerAttachmentsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTransitRouterPeerAttachmentsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cen/getTransitRouterPeerAttachments:getTransitRouterPeerAttachments", {
         "cenId": args.cenId,

@@ -132,7 +132,7 @@ def get_server_firewall_rules(ids: Optional[Sequence[str]] = None,
 def get_server_firewall_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                      instance_id: Optional[pulumi.Input[str]] = None,
                                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServerFirewallRulesResult]:
+                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServerFirewallRulesResult]:
     """
     This data source provides the Simple Application Server Firewall Rules of the current Alibaba Cloud user.
 
@@ -163,7 +163,7 @@ def get_server_firewall_rules_output(ids: Optional[pulumi.Input[Optional[Sequenc
     __args__['ids'] = ids
     __args__['instanceId'] = instance_id
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:simpleapplicationserver/getServerFirewallRules:getServerFirewallRules', __args__, opts=opts, typ=GetServerFirewallRulesResult)
     return __ret__.apply(lambda __response__: GetServerFirewallRulesResult(
         id=pulumi.get(__response__, 'id'),

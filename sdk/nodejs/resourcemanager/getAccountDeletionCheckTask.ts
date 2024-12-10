@@ -95,7 +95,7 @@ export interface GetAccountDeletionCheckTaskResult {
  * export const abandonAbleChecksIds = task.then(task => task.abandonAbleChecks.map(__item => __item.checkId));
  * ```
  */
-export function getAccountDeletionCheckTaskOutput(args: GetAccountDeletionCheckTaskOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountDeletionCheckTaskResult> {
+export function getAccountDeletionCheckTaskOutput(args: GetAccountDeletionCheckTaskOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountDeletionCheckTaskResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:resourcemanager/getAccountDeletionCheckTask:getAccountDeletionCheckTask", {
         "accountId": args.accountId,

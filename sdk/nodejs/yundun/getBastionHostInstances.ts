@@ -42,7 +42,7 @@ export interface GetBastionHostInstancesResult {
     readonly outputFile?: string;
     readonly tags?: {[key: string]: string};
 }
-export function getBastionHostInstancesOutput(args?: GetBastionHostInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBastionHostInstancesResult> {
+export function getBastionHostInstancesOutput(args?: GetBastionHostInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBastionHostInstancesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:yundun/getBastionHostInstances:getBastionHostInstances", {

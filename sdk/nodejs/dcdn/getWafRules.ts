@@ -90,7 +90,7 @@ export interface GetWafRulesResult {
  * export const alicloudDcdnWafRuleExampleId = _default.then(_default => _default.wafRules?.[0]?.id);
  * ```
  */
-export function getWafRulesOutput(args?: GetWafRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWafRulesResult> {
+export function getWafRulesOutput(args?: GetWafRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWafRulesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:dcdn/getWafRules:getWafRules", {

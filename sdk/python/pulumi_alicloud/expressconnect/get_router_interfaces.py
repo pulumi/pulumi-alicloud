@@ -200,7 +200,7 @@ def get_router_interfaces_output(filters: Optional[pulumi.Input[Optional[Sequenc
                                  output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                  page_number: Optional[pulumi.Input[Optional[int]]] = None,
                                  page_size: Optional[pulumi.Input[Optional[int]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouterInterfacesResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRouterInterfacesResult]:
     """
     This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
 
@@ -231,7 +231,7 @@ def get_router_interfaces_output(filters: Optional[pulumi.Input[Optional[Sequenc
     __args__['outputFile'] = output_file
     __args__['pageNumber'] = page_number
     __args__['pageSize'] = page_size
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:expressconnect/getRouterInterfaces:getRouterInterfaces', __args__, opts=opts, typ=GetRouterInterfacesResult)
     return __ret__.apply(lambda __response__: GetRouterInterfacesResult(
         filters=pulumi.get(__response__, 'filters'),

@@ -94,7 +94,7 @@ export interface GetFlowsResult {
  * export const firstFnfFlowId = example.then(example => example.flows?.[0]?.id);
  * ```
  */
-export function getFlowsOutput(args?: GetFlowsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlowsResult> {
+export function getFlowsOutput(args?: GetFlowsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFlowsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:fnf/getFlows:getFlows", {

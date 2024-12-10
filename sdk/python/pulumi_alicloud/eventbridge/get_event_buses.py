@@ -168,7 +168,7 @@ def get_event_buses_output(event_bus_type: Optional[pulumi.Input[Optional[str]]]
                            name_prefix: Optional[pulumi.Input[Optional[str]]] = None,
                            name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEventBusesResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEventBusesResult]:
     """
     This data source provides the Event Bridge Event Buses of the current Alibaba Cloud user.
 
@@ -201,7 +201,7 @@ def get_event_buses_output(event_bus_type: Optional[pulumi.Input[Optional[str]]]
     __args__['namePrefix'] = name_prefix
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:eventbridge/getEventBuses:getEventBuses', __args__, opts=opts, typ=GetEventBusesResult)
     return __ret__.apply(lambda __response__: GetEventBusesResult(
         buses=pulumi.get(__response__, 'buses'),

@@ -114,7 +114,7 @@ export interface GetPluginsResult {
  * export const apiGatewayPluginId2 = nameRegex.then(nameRegex => nameRegex.plugins?.[0]?.id);
  * ```
  */
-export function getPluginsOutput(args?: GetPluginsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPluginsResult> {
+export function getPluginsOutput(args?: GetPluginsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPluginsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:apigateway/getPlugins:getPlugins", {

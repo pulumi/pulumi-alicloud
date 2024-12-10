@@ -106,7 +106,7 @@ export interface GetBgpGroupsResult {
  * export const vpcBgpGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
  * ```
  */
-export function getBgpGroupsOutput(args?: GetBgpGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBgpGroupsResult> {
+export function getBgpGroupsOutput(args?: GetBgpGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBgpGroupsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpc/getBgpGroups:getBgpGroups", {

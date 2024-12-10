@@ -159,7 +159,7 @@ def get_lifecycle_policies_output(file_system_id: Optional[pulumi.Input[str]] = 
                                   ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                   name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                   output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLifecyclePoliciesResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLifecyclePoliciesResult]:
     """
     This data source provides the Nas Lifecycle Policies of the current Alibaba Cloud user.
 
@@ -195,7 +195,7 @@ def get_lifecycle_policies_output(file_system_id: Optional[pulumi.Input[str]] = 
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:nas/getLifecyclePolicies:getLifecyclePolicies', __args__, opts=opts, typ=GetLifecyclePoliciesResult)
     return __ret__.apply(lambda __response__: GetLifecyclePoliciesResult(
         file_system_id=pulumi.get(__response__, 'file_system_id'),

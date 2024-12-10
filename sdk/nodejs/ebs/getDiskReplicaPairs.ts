@@ -93,7 +93,7 @@ export interface GetDiskReplicaPairsResult {
  * export const alicloudEbsDiskReplicaPairExampleId = _default.then(_default => _default.pairs?.[0]?.id);
  * ```
  */
-export function getDiskReplicaPairsOutput(args?: GetDiskReplicaPairsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiskReplicaPairsResult> {
+export function getDiskReplicaPairsOutput(args?: GetDiskReplicaPairsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDiskReplicaPairsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ebs/getDiskReplicaPairs:getDiskReplicaPairs", {

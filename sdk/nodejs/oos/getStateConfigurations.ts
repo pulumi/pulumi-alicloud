@@ -87,7 +87,7 @@ export interface GetStateConfigurationsResult {
  * export const oosStateConfigurationId1 = ids.then(ids => ids.configurations?.[0]?.id);
  * ```
  */
-export function getStateConfigurationsOutput(args?: GetStateConfigurationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStateConfigurationsResult> {
+export function getStateConfigurationsOutput(args?: GetStateConfigurationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStateConfigurationsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:oos/getStateConfigurations:getStateConfigurations", {

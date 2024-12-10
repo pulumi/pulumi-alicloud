@@ -85,7 +85,7 @@ export interface GetAlarmsResult {
  *
  * > **NOTE** Available in 1.72.0+
  */
-export function getAlarmsOutput(args?: GetAlarmsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlarmsResult> {
+export function getAlarmsOutput(args?: GetAlarmsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAlarmsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ess/getAlarms:getAlarms", {

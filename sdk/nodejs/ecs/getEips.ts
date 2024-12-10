@@ -164,7 +164,7 @@ export interface GetEipsResult {
  * ```
  */
 /** @deprecated This function has been deprecated in favour of the getEipAddresses function */
-export function getEipsOutput(args?: GetEipsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEipsResult> {
+export function getEipsOutput(args?: GetEipsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEipsResult> {
     pulumi.log.warn("getEips is deprecated: This function has been deprecated in favour of the getEipAddresses function")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

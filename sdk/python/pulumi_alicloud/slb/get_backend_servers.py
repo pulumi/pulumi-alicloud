@@ -126,7 +126,7 @@ def get_backend_servers(ids: Optional[Sequence[str]] = None,
 def get_backend_servers_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                load_balancer_id: Optional[pulumi.Input[str]] = None,
                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBackendServersResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBackendServersResult]:
     """
     This data source provides the server load balancer backend servers related to a server load balancer..
 
@@ -151,7 +151,7 @@ def get_backend_servers_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
     __args__['ids'] = ids
     __args__['loadBalancerId'] = load_balancer_id
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:slb/getBackendServers:getBackendServers', __args__, opts=opts, typ=GetBackendServersResult)
     return __ret__.apply(lambda __response__: GetBackendServersResult(
         backend_servers=pulumi.get(__response__, 'backend_servers'),

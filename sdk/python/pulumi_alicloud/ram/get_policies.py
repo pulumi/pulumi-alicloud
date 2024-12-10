@@ -221,7 +221,7 @@ def get_policies_output(enable_details: Optional[pulumi.Input[Optional[bool]]] =
                         role_name: Optional[pulumi.Input[Optional[str]]] = None,
                         type: Optional[pulumi.Input[Optional[str]]] = None,
                         user_name: Optional[pulumi.Input[Optional[str]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPoliciesResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPoliciesResult]:
     """
     This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
 
@@ -259,7 +259,7 @@ def get_policies_output(enable_details: Optional[pulumi.Input[Optional[bool]]] =
     __args__['roleName'] = role_name
     __args__['type'] = type
     __args__['userName'] = user_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ram/getPolicies:getPolicies', __args__, opts=opts, typ=GetPoliciesResult)
     return __ret__.apply(lambda __response__: GetPoliciesResult(
         enable_details=pulumi.get(__response__, 'enable_details'),

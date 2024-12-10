@@ -92,7 +92,7 @@ export interface GetHandshakesResult {
  * export const firstHandshakeId = example.then(example => example.handshakes?.[0]?.id);
  * ```
  */
-export function getHandshakesOutput(args?: GetHandshakesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHandshakesResult> {
+export function getHandshakesOutput(args?: GetHandshakesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHandshakesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:resourcemanager/getHandshakes:getHandshakes", {

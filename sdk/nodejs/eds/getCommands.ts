@@ -175,7 +175,7 @@ export interface GetCommandsResult {
  * export const ecdCommandId1 = ids.then(ids => ids.commands?.[0]?.id);
  * ```
  */
-export function getCommandsOutput(args?: GetCommandsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCommandsResult> {
+export function getCommandsOutput(args?: GetCommandsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCommandsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:eds/getCommands:getCommands", {

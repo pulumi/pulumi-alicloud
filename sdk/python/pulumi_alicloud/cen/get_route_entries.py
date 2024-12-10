@@ -151,7 +151,7 @@ def get_route_entries_output(cidr_block: Optional[pulumi.Input[Optional[str]]] =
                              instance_id: Optional[pulumi.Input[str]] = None,
                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
                              route_table_id: Optional[pulumi.Input[str]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouteEntriesResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRouteEntriesResult]:
     """
     This data source provides CEN Route Entries available to the user.
 
@@ -177,7 +177,7 @@ def get_route_entries_output(cidr_block: Optional[pulumi.Input[Optional[str]]] =
     __args__['instanceId'] = instance_id
     __args__['outputFile'] = output_file
     __args__['routeTableId'] = route_table_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getRouteEntries:getRouteEntries', __args__, opts=opts, typ=GetRouteEntriesResult)
     return __ret__.apply(lambda __response__: GetRouteEntriesResult(
         cidr_block=pulumi.get(__response__, 'cidr_block'),

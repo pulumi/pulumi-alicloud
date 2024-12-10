@@ -95,7 +95,7 @@ export interface GetGrantRuleToCensResult {
  * export const expressConnectGrantRuleToCenId0 = ids.then(ids => ids.cens?.[0]?.id);
  * ```
  */
-export function getGrantRuleToCensOutput(args: GetGrantRuleToCensOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGrantRuleToCensResult> {
+export function getGrantRuleToCensOutput(args: GetGrantRuleToCensOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGrantRuleToCensResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:expressconnect/getGrantRuleToCens:getGrantRuleToCens", {
         "ids": args.ids,

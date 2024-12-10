@@ -94,7 +94,7 @@ export interface GetKeyPairsResult {
  * export const ensKeyPairId1 = nameRegex.then(nameRegex => nameRegex.pairs?.[0]?.id);
  * ```
  */
-export function getKeyPairsOutput(args: GetKeyPairsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyPairsResult> {
+export function getKeyPairsOutput(args: GetKeyPairsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKeyPairsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ens/getKeyPairs:getKeyPairs", {
         "keyPairName": args.keyPairName,

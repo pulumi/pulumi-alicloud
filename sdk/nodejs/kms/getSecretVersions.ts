@@ -111,7 +111,7 @@ export interface GetSecretVersionsResult {
  * export const firstSecretData = kmsSecretVersionsDs.then(kmsSecretVersionsDs => kmsSecretVersionsDs.versions?.[0]?.secretData);
  * ```
  */
-export function getSecretVersionsOutput(args: GetSecretVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretVersionsResult> {
+export function getSecretVersionsOutput(args: GetSecretVersionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecretVersionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:kms/getSecretVersions:getSecretVersions", {
         "enableDetails": args.enableDetails,

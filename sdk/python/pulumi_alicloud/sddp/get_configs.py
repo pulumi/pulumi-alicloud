@@ -131,7 +131,7 @@ def get_configs(ids: Optional[Sequence[str]] = None,
 def get_configs_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                        lang: Optional[pulumi.Input[Optional[str]]] = None,
                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConfigsResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConfigsResult]:
     """
     This data source provides the Sddp Configs of the current Alibaba Cloud user.
 
@@ -161,7 +161,7 @@ def get_configs_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
     __args__['ids'] = ids
     __args__['lang'] = lang
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:sddp/getConfigs:getConfigs', __args__, opts=opts, typ=GetConfigsResult)
     return __ret__.apply(lambda __response__: GetConfigsResult(
         configs=pulumi.get(__response__, 'configs'),

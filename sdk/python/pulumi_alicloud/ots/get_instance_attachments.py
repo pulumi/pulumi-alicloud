@@ -158,7 +158,7 @@ def get_instance_attachments(instance_name: Optional[str] = None,
 def get_instance_attachments_output(instance_name: Optional[pulumi.Input[str]] = None,
                                     name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceAttachmentsResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceAttachmentsResult]:
     """
     This data source provides the ots instance attachments of the current Alibaba Cloud user.
 
@@ -183,7 +183,7 @@ def get_instance_attachments_output(instance_name: Optional[pulumi.Input[str]] =
     __args__['instanceName'] = instance_name
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ots/getInstanceAttachments:getInstanceAttachments', __args__, opts=opts, typ=GetInstanceAttachmentsResult)
     return __ret__.apply(lambda __response__: GetInstanceAttachmentsResult(
         attachments=pulumi.get(__response__, 'attachments'),

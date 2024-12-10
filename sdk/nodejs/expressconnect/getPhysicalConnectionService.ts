@@ -74,7 +74,7 @@ export interface GetPhysicalConnectionServiceResult {
  * });
  * ```
  */
-export function getPhysicalConnectionServiceOutput(args?: GetPhysicalConnectionServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPhysicalConnectionServiceResult> {
+export function getPhysicalConnectionServiceOutput(args?: GetPhysicalConnectionServiceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPhysicalConnectionServiceResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:expressconnect/getPhysicalConnectionService:getPhysicalConnectionService", {

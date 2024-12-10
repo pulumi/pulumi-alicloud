@@ -125,7 +125,7 @@ export interface GetLogBackupsResult {
  * export const alicloudGpdbLogbackupExampleId = defaultGetLogBackups.then(defaultGetLogBackups => defaultGetLogBackups.logbackups?.[0]?.dbInstanceId);
  * ```
  */
-export function getLogBackupsOutput(args: GetLogBackupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLogBackupsResult> {
+export function getLogBackupsOutput(args: GetLogBackupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLogBackupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:gpdb/getLogBackups:getLogBackups", {
         "dbInstanceId": args.dbInstanceId,

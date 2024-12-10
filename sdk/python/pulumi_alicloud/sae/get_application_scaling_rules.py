@@ -132,7 +132,7 @@ def get_application_scaling_rules(app_id: Optional[str] = None,
 def get_application_scaling_rules_output(app_id: Optional[pulumi.Input[str]] = None,
                                          ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApplicationScalingRulesResult]:
+                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApplicationScalingRulesResult]:
     """
     This data source provides the Sae Application Scaling Rules of the current Alibaba Cloud user.
 
@@ -163,7 +163,7 @@ def get_application_scaling_rules_output(app_id: Optional[pulumi.Input[str]] = N
     __args__['appId'] = app_id
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:sae/getApplicationScalingRules:getApplicationScalingRules', __args__, opts=opts, typ=GetApplicationScalingRulesResult)
     return __ret__.apply(lambda __response__: GetApplicationScalingRulesResult(
         app_id=pulumi.get(__response__, 'app_id'),

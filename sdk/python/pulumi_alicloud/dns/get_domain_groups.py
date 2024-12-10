@@ -119,7 +119,7 @@ def get_domain_groups(ids: Optional[Sequence[str]] = None,
 def get_domain_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                              name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainGroupsResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDomainGroupsResult]:
     """
     > **NOTE:** This datasource has been deprecated from v1.3.2. Please use the datasource `dns_get_groups` instead.
     """
@@ -127,7 +127,7 @@ def get_domain_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:dns/getDomainGroups:getDomainGroups', __args__, opts=opts, typ=GetDomainGroupsResult)
     return __ret__.apply(lambda __response__: GetDomainGroupsResult(
         groups=pulumi.get(__response__, 'groups'),

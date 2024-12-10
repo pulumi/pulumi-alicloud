@@ -112,7 +112,7 @@ export interface GetGatewaysResult {
  * export const databaseGatewayGatewayId2 = nameRegex.then(nameRegex => nameRegex.gateways?.[0]?.id);
  * ```
  */
-export function getGatewaysOutput(args?: GetGatewaysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewaysResult> {
+export function getGatewaysOutput(args?: GetGatewaysOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGatewaysResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:databasegateway/getGateways:getGateways", {

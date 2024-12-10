@@ -128,7 +128,7 @@ def get_regions(current: Optional[bool] = None,
 def get_regions_output(current: Optional[pulumi.Input[Optional[bool]]] = None,
                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
                        region_id: Optional[pulumi.Input[Optional[str]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionsResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionsResult]:
     """
     This data source provides the Click House Regions of the current Alibaba Cloud user.
 
@@ -155,7 +155,7 @@ def get_regions_output(current: Optional[pulumi.Input[Optional[bool]]] = None,
     __args__['current'] = current
     __args__['outputFile'] = output_file
     __args__['regionId'] = region_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:clickhouse/getRegions:getRegions', __args__, opts=opts, typ=GetRegionsResult)
     return __ret__.apply(lambda __response__: GetRegionsResult(
         current=pulumi.get(__response__, 'current'),

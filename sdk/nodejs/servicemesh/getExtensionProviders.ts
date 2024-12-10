@@ -125,7 +125,7 @@ export interface GetExtensionProvidersResult {
  * export const serviceMeshExtensionProvidersId2 = nameRegex.then(nameRegex => nameRegex.providers?.[0]?.id);
  * ```
  */
-export function getExtensionProvidersOutput(args: GetExtensionProvidersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExtensionProvidersResult> {
+export function getExtensionProvidersOutput(args: GetExtensionProvidersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetExtensionProvidersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:servicemesh/getExtensionProviders:getExtensionProviders", {
         "ids": args.ids,

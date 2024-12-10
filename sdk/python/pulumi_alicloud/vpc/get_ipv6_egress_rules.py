@@ -207,7 +207,7 @@ def get_ipv6_egress_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[st
                                  name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                  output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                  status: Optional[pulumi.Input[Optional[str]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIpv6EgressRulesResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIpv6EgressRulesResult]:
     """
     This data source provides the Vpc Ipv6 Egress Rules of the current Alibaba Cloud user.
 
@@ -255,7 +255,7 @@ def get_ipv6_egress_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[st
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getIpv6EgressRules:getIpv6EgressRules', __args__, opts=opts, typ=GetIpv6EgressRulesResult)
     return __ret__.apply(lambda __response__: GetIpv6EgressRulesResult(
         id=pulumi.get(__response__, 'id'),

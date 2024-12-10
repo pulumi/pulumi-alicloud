@@ -87,7 +87,7 @@ export interface GetDataLimitsResult {
  * export const sddpDataLimitId1 = ids.then(ids => ids.limits?.[0]?.id);
  * ```
  */
-export function getDataLimitsOutput(args?: GetDataLimitsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataLimitsResult> {
+export function getDataLimitsOutput(args?: GetDataLimitsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDataLimitsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:sddp/getDataLimits:getDataLimits", {

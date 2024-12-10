@@ -214,7 +214,7 @@ def get_honeypot_probes_output(display_name: Optional[pulumi.Input[Optional[str]
                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                probe_status: Optional[pulumi.Input[Optional[str]]] = None,
                                probe_type: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHoneypotProbesResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHoneypotProbesResult]:
     """
     This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotprobe)
 
@@ -267,7 +267,7 @@ def get_honeypot_probes_output(display_name: Optional[pulumi.Input[Optional[str]
     __args__['outputFile'] = output_file
     __args__['probeStatus'] = probe_status
     __args__['probeType'] = probe_type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:threatdetection/getHoneypotProbes:getHoneypotProbes', __args__, opts=opts, typ=GetHoneypotProbesResult)
     return __ret__.apply(lambda __response__: GetHoneypotProbesResult(
         display_name=pulumi.get(__response__, 'display_name'),

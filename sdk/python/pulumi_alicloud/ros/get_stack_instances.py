@@ -206,7 +206,7 @@ def get_stack_instances_output(enable_details: Optional[pulumi.Input[Optional[bo
                                stack_instance_account_id: Optional[pulumi.Input[Optional[str]]] = None,
                                stack_instance_region_id: Optional[pulumi.Input[Optional[str]]] = None,
                                status: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStackInstancesResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStackInstancesResult]:
     """
     This data source provides the Ros Stack Instances of the current Alibaba Cloud user.
 
@@ -263,7 +263,7 @@ def get_stack_instances_output(enable_details: Optional[pulumi.Input[Optional[bo
     __args__['stackInstanceAccountId'] = stack_instance_account_id
     __args__['stackInstanceRegionId'] = stack_instance_region_id
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ros/getStackInstances:getStackInstances', __args__, opts=opts, typ=GetStackInstancesResult)
     return __ret__.apply(lambda __response__: GetStackInstancesResult(
         enable_details=pulumi.get(__response__, 'enable_details'),

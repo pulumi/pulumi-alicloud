@@ -97,7 +97,7 @@ export interface GetHybridMonitorSlsTasksResult {
  * export const cmsHybridMonitorSlsTaskId1 = ids.then(ids => ids.tasks?.[0]?.id);
  * ```
  */
-export function getHybridMonitorSlsTasksOutput(args?: GetHybridMonitorSlsTasksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHybridMonitorSlsTasksResult> {
+export function getHybridMonitorSlsTasksOutput(args?: GetHybridMonitorSlsTasksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHybridMonitorSlsTasksResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cms/getHybridMonitorSlsTasks:getHybridMonitorSlsTasks", {

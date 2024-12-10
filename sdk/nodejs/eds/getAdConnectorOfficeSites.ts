@@ -105,7 +105,7 @@ export interface GetAdConnectorOfficeSitesResult {
  * export const ecdAdConnectorOfficeSiteId2 = nameRegex.then(nameRegex => nameRegex.sites?.[0]?.id);
  * ```
  */
-export function getAdConnectorOfficeSitesOutput(args?: GetAdConnectorOfficeSitesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAdConnectorOfficeSitesResult> {
+export function getAdConnectorOfficeSitesOutput(args?: GetAdConnectorOfficeSitesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAdConnectorOfficeSitesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:eds/getAdConnectorOfficeSites:getAdConnectorOfficeSites", {

@@ -90,7 +90,7 @@ export interface GetSynchronizationJobsResult {
  * export const dtsSynchronizationJobId1 = ids.then(ids => ids.jobs?.[0]?.id);
  * ```
  */
-export function getSynchronizationJobsOutput(args?: GetSynchronizationJobsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSynchronizationJobsResult> {
+export function getSynchronizationJobsOutput(args?: GetSynchronizationJobsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSynchronizationJobsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:dts/getSynchronizationJobs:getSynchronizationJobs", {

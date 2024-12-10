@@ -111,7 +111,7 @@ export interface GetServiceQueuesResult {
  * export const queueId2 = name.then(name => name.queues?.[0]?.id);
  * ```
  */
-export function getServiceQueuesOutput(args?: GetServiceQueuesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceQueuesResult> {
+export function getServiceQueuesOutput(args?: GetServiceQueuesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServiceQueuesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:message/getServiceQueues:getServiceQueues", {

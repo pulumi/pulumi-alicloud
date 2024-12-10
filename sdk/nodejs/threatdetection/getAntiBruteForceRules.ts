@@ -111,7 +111,7 @@ export interface GetAntiBruteForceRulesResult {
  * export const alicloudThreatDetectionAntiBruteForceRuleExampleId = _default.apply(_default => _default.rules?.[0]?.id);
  * ```
  */
-export function getAntiBruteForceRulesOutput(args?: GetAntiBruteForceRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAntiBruteForceRulesResult> {
+export function getAntiBruteForceRulesOutput(args?: GetAntiBruteForceRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAntiBruteForceRulesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:threatdetection/getAntiBruteForceRules:getAntiBruteForceRules", {

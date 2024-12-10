@@ -79,7 +79,7 @@ export interface GetDiskReplicaGroupsResult {
  * export const ebsDiskReplicaGroupId1 = ids.then(ids => ids.groups?.[0]?.id);
  * ```
  */
-export function getDiskReplicaGroupsOutput(args?: GetDiskReplicaGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiskReplicaGroupsResult> {
+export function getDiskReplicaGroupsOutput(args?: GetDiskReplicaGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDiskReplicaGroupsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ebs/getDiskReplicaGroups:getDiskReplicaGroups", {

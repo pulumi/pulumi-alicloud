@@ -120,7 +120,7 @@ export interface GetAlertRobotsResult {
  * export const armsAlertRobotId = nameRegex.apply(nameRegex => nameRegex.robots?.[0]?.id);
  * ```
  */
-export function getAlertRobotsOutput(args?: GetAlertRobotsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlertRobotsResult> {
+export function getAlertRobotsOutput(args?: GetAlertRobotsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAlertRobotsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:arms/getAlertRobots:getAlertRobots", {

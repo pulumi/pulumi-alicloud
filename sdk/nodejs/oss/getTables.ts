@@ -82,7 +82,7 @@ export interface GetTablesResult {
  * ## Example Usage
  */
 /** @deprecated alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables */
-export function getTablesOutput(args: GetTablesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTablesResult> {
+export function getTablesOutput(args: GetTablesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTablesResult> {
     pulumi.log.warn("getTables is deprecated: alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:oss/getTables:getTables", {

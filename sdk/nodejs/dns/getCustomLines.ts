@@ -105,7 +105,7 @@ export interface GetCustomLinesResult {
  * export const alidnsCustomLineId1 = ids.then(ids => ids.lines?.[0]?.id);
  * ```
  */
-export function getCustomLinesOutput(args: GetCustomLinesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomLinesResult> {
+export function getCustomLinesOutput(args: GetCustomLinesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomLinesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:dns/getCustomLines:getCustomLines", {
         "domainName": args.domainName,

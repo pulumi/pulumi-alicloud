@@ -103,7 +103,7 @@ export interface GetNetworkPackagesResult {
  * export const ecdNetworkPackageId1 = _default.apply(_default => _default.packages?.[0]?.id);
  * ```
  */
-export function getNetworkPackagesOutput(args?: GetNetworkPackagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkPackagesResult> {
+export function getNetworkPackagesOutput(args?: GetNetworkPackagesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNetworkPackagesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:eds/getNetworkPackages:getNetworkPackages", {

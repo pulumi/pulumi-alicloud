@@ -196,7 +196,7 @@ def get_instances_output(enable_details: Optional[pulumi.Input[Optional[bool]]] 
                          query_str: Optional[pulumi.Input[Optional[str]]] = None,
                          status: Optional[pulumi.Input[Optional[str]]] = None,
                          support_engine: Optional[pulumi.Input[Optional[int]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstancesResult]:
     """
     This data source provides the Lindorm Instances of the current Alibaba Cloud user.
 
@@ -233,7 +233,7 @@ def get_instances_output(enable_details: Optional[pulumi.Input[Optional[bool]]] 
     __args__['queryStr'] = query_str
     __args__['status'] = status
     __args__['supportEngine'] = support_engine
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:lindorm/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult)
     return __ret__.apply(lambda __response__: GetInstancesResult(
         enable_details=pulumi.get(__response__, 'enable_details'),

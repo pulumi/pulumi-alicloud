@@ -251,7 +251,7 @@ export interface GetApplicationLoadBalancersResult {
  * export const firstSlbId = example.then(example => example.balancers?.[0]?.id);
  * ```
  */
-export function getApplicationLoadBalancersOutput(args?: GetApplicationLoadBalancersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationLoadBalancersResult> {
+export function getApplicationLoadBalancersOutput(args?: GetApplicationLoadBalancersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApplicationLoadBalancersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:slb/getApplicationLoadBalancers:getApplicationLoadBalancers", {

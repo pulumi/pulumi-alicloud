@@ -133,7 +133,7 @@ export interface GetInstanceEnginesResult {
  * export const firstDbCategory = resources.then(resources => resources.instanceEngines?.[0]?.category);
  * ```
  */
-export function getInstanceEnginesOutput(args?: GetInstanceEnginesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceEnginesResult> {
+export function getInstanceEnginesOutput(args?: GetInstanceEnginesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceEnginesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:rds/getInstanceEngines:getInstanceEngines", {

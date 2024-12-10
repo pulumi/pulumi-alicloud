@@ -127,7 +127,7 @@ export interface GetZoneRecordsResult {
  * export const firstRecordId = recordsDs.then(recordsDs => recordsDs.records?.[0]?.id);
  * ```
  */
-export function getZoneRecordsOutput(args: GetZoneRecordsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZoneRecordsResult> {
+export function getZoneRecordsOutput(args: GetZoneRecordsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZoneRecordsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:pvtz/getZoneRecords:getZoneRecords", {
         "ids": args.ids,

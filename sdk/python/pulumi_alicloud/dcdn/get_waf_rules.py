@@ -155,7 +155,7 @@ def get_waf_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
                          page_number: Optional[pulumi.Input[Optional[int]]] = None,
                          page_size: Optional[pulumi.Input[Optional[int]]] = None,
                          query_args: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWafRulesResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWafRulesResult]:
     """
     This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-batchcreatedcdnwafrules)
 
@@ -182,7 +182,7 @@ def get_waf_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     __args__['pageNumber'] = page_number
     __args__['pageSize'] = page_size
     __args__['queryArgs'] = query_args
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:dcdn/getWafRules:getWafRules', __args__, opts=opts, typ=GetWafRulesResult)
     return __ret__.apply(lambda __response__: GetWafRulesResult(
         id=pulumi.get(__response__, 'id'),

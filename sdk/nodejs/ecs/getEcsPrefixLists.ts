@@ -97,7 +97,7 @@ export interface GetEcsPrefixListsResult {
  * export const outputId = example.then(example => example.lists?.[0]?.id);
  * ```
  */
-export function getEcsPrefixListsOutput(args?: GetEcsPrefixListsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsPrefixListsResult> {
+export function getEcsPrefixListsOutput(args?: GetEcsPrefixListsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEcsPrefixListsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ecs/getEcsPrefixLists:getEcsPrefixLists", {

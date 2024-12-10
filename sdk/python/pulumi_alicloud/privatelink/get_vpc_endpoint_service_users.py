@@ -138,7 +138,7 @@ def get_vpc_endpoint_service_users(output_file: Optional[str] = None,
 def get_vpc_endpoint_service_users_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                           service_id: Optional[pulumi.Input[str]] = None,
                                           user_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcEndpointServiceUsersResult]:
+                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpcEndpointServiceUsersResult]:
     """
     This data source provides the Privatelink Vpc Endpoint Service Users of the current Alibaba Cloud user.
 
@@ -165,7 +165,7 @@ def get_vpc_endpoint_service_users_output(output_file: Optional[pulumi.Input[Opt
     __args__['outputFile'] = output_file
     __args__['serviceId'] = service_id
     __args__['userId'] = user_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:privatelink/getVpcEndpointServiceUsers:getVpcEndpointServiceUsers', __args__, opts=opts, typ=GetVpcEndpointServiceUsersResult)
     return __ret__.apply(lambda __response__: GetVpcEndpointServiceUsersResult(
         id=pulumi.get(__response__, 'id'),

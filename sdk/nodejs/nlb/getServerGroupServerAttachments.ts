@@ -103,7 +103,7 @@ export interface GetServerGroupServerAttachmentsResult {
  * export const nlbServerGroupServerAttachmentId1 = ids.then(ids => ids.attachments?.[0]?.id);
  * ```
  */
-export function getServerGroupServerAttachmentsOutput(args?: GetServerGroupServerAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerGroupServerAttachmentsResult> {
+export function getServerGroupServerAttachmentsOutput(args?: GetServerGroupServerAttachmentsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServerGroupServerAttachmentsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:nlb/getServerGroupServerAttachments:getServerGroupServerAttachments", {

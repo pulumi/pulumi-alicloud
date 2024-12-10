@@ -92,7 +92,7 @@ export interface GetTopicSubscriptionsResult {
  * export const firstTopicSubscriptionId = subscriptions.then(subscriptions => subscriptions.subscriptions?.[0]?.id);
  * ```
  */
-export function getTopicSubscriptionsOutput(args: GetTopicSubscriptionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTopicSubscriptionsResult> {
+export function getTopicSubscriptionsOutput(args: GetTopicSubscriptionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTopicSubscriptionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:mns/getTopicSubscriptions:getTopicSubscriptions", {
         "namePrefix": args.namePrefix,

@@ -204,7 +204,7 @@ export interface GetSwitchesResult {
  * });
  * ```
  */
-export function getSwitchesOutput(args?: GetSwitchesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSwitchesResult> {
+export function getSwitchesOutput(args?: GetSwitchesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSwitchesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpc/getSwitches:getSwitches", {

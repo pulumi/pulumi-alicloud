@@ -92,7 +92,7 @@ export interface GetConfigsResult {
  * export const sddpConfigId = _default.apply(_default => _default.ids);
  * ```
  */
-export function getConfigsOutput(args?: GetConfigsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConfigsResult> {
+export function getConfigsOutput(args?: GetConfigsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConfigsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:sddp/getConfigs:getConfigs", {

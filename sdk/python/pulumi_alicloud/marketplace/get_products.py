@@ -229,7 +229,7 @@ def get_products_output(category_id: Optional[pulumi.Input[Optional[str]]] = Non
                         suggested_price: Optional[pulumi.Input[Optional[float]]] = None,
                         supplier_id: Optional[pulumi.Input[Optional[str]]] = None,
                         supplier_name_keyword: Optional[pulumi.Input[Optional[str]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProductsResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProductsResult]:
     """
     This data source provides the Market product items of Alibaba Cloud.
 
@@ -258,7 +258,7 @@ def get_products_output(category_id: Optional[pulumi.Input[Optional[str]]] = Non
     __args__['suggestedPrice'] = suggested_price
     __args__['supplierId'] = supplier_id
     __args__['supplierNameKeyword'] = supplier_name_keyword
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:marketplace/getProducts:getProducts', __args__, opts=opts, typ=GetProductsResult)
     return __ret__.apply(lambda __response__: GetProductsResult(
         category_id=pulumi.get(__response__, 'category_id'),

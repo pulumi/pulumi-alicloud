@@ -208,7 +208,7 @@ def get_plugins_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
                        plugin_name: Optional[pulumi.Input[Optional[str]]] = None,
                        plugin_type: Optional[pulumi.Input[Optional[str]]] = None,
                        tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPluginsResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPluginsResult]:
     """
     This data source provides the Api Gateway Plugins of the current Alibaba Cloud user.
 
@@ -245,7 +245,7 @@ def get_plugins_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
     __args__['pluginName'] = plugin_name
     __args__['pluginType'] = plugin_type
     __args__['tags'] = tags
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:apigateway/getPlugins:getPlugins', __args__, opts=opts, typ=GetPluginsResult)
     return __ret__.apply(lambda __response__: GetPluginsResult(
         id=pulumi.get(__response__, 'id'),

@@ -245,7 +245,7 @@ def get_zones_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = No
                      query_vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
                      resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                      search_mode: Optional[pulumi.Input[Optional[str]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZonesResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZonesResult]:
     """
     This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
 
@@ -283,7 +283,7 @@ def get_zones_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = No
     __args__['queryVpcId'] = query_vpc_id
     __args__['resourceGroupId'] = resource_group_id
     __args__['searchMode'] = search_mode
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:pvtz/getZones:getZones', __args__, opts=opts, typ=GetZonesResult)
     return __ret__.apply(lambda __response__: GetZonesResult(
         enable_details=pulumi.get(__response__, 'enable_details'),

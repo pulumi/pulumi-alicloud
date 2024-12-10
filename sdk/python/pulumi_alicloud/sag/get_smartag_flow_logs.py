@@ -194,7 +194,7 @@ def get_smartag_flow_logs_output(description: Optional[pulumi.Input[Optional[str
                                  page_number: Optional[pulumi.Input[Optional[int]]] = None,
                                  page_size: Optional[pulumi.Input[Optional[int]]] = None,
                                  status: Optional[pulumi.Input[Optional[str]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSmartagFlowLogsResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSmartagFlowLogsResult]:
     """
     This data source provides the Smartag Flow Logs of the current Alibaba Cloud user.
 
@@ -229,7 +229,7 @@ def get_smartag_flow_logs_output(description: Optional[pulumi.Input[Optional[str
     __args__['pageNumber'] = page_number
     __args__['pageSize'] = page_size
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:sag/getSmartagFlowLogs:getSmartagFlowLogs', __args__, opts=opts, typ=GetSmartagFlowLogsResult)
     return __ret__.apply(lambda __response__: GetSmartagFlowLogsResult(
         description=pulumi.get(__response__, 'description'),

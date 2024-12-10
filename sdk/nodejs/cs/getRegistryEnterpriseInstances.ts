@@ -101,7 +101,7 @@ export interface GetRegistryEnterpriseInstancesResult {
  * export const output = myInstances.then(myInstances => myInstances.instances);
  * ```
  */
-export function getRegistryEnterpriseInstancesOutput(args?: GetRegistryEnterpriseInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryEnterpriseInstancesResult> {
+export function getRegistryEnterpriseInstancesOutput(args?: GetRegistryEnterpriseInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegistryEnterpriseInstancesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cs/getRegistryEnterpriseInstances:getRegistryEnterpriseInstances", {

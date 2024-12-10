@@ -79,7 +79,7 @@ export interface GetStocksResult {
  * export const zoneId = _default.then(_default => _default.stocks?.[0]?.zoneId);
  * ```
  */
-export function getStocksOutput(args?: GetStocksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStocksResult> {
+export function getStocksOutput(args?: GetStocksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStocksResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cloudstoragegateway/getStocks:getStocks", {

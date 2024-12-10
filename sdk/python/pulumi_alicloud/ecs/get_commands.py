@@ -209,7 +209,7 @@ def get_commands_output(command_provider: Optional[pulumi.Input[Optional[str]]] 
                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
                         type: Optional[pulumi.Input[Optional[str]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCommandsResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCommandsResult]:
     """
     This data source provides the Ecs Commands of the current Alibaba Cloud user.
 
@@ -247,7 +247,7 @@ def get_commands_output(command_provider: Optional[pulumi.Input[Optional[str]]] 
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['type'] = type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getCommands:getCommands', __args__, opts=opts, typ=GetCommandsResult)
     return __ret__.apply(lambda __response__: GetCommandsResult(
         command_provider=pulumi.get(__response__, 'command_provider'),

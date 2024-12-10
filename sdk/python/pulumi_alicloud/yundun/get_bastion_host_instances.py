@@ -132,7 +132,7 @@ def get_bastion_host_instances_output(description_regex: Optional[pulumi.Input[O
                                       ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                       tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
-                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBastionHostInstancesResult]:
+                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBastionHostInstancesResult]:
     """
     Use this data source to access information about an existing resource.
     """
@@ -141,7 +141,7 @@ def get_bastion_host_instances_output(description_regex: Optional[pulumi.Input[O
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
     __args__['tags'] = tags
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:yundun/getBastionHostInstances:getBastionHostInstances', __args__, opts=opts, typ=GetBastionHostInstancesResult)
     return __ret__.apply(lambda __response__: GetBastionHostInstancesResult(
         description_regex=pulumi.get(__response__, 'description_regex'),

@@ -248,7 +248,7 @@ def get_quotas_output(dimensions: Optional[pulumi.Input[Optional[Sequence[Union[
                       quota_category: Optional[pulumi.Input[Optional[str]]] = None,
                       sort_field: Optional[pulumi.Input[Optional[str]]] = None,
                       sort_order: Optional[pulumi.Input[Optional[str]]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetQuotasResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetQuotasResult]:
     """
     This data source provides the Quotas Quotas of the current Alibaba Cloud user.
 
@@ -290,7 +290,7 @@ def get_quotas_output(dimensions: Optional[pulumi.Input[Optional[Sequence[Union[
     __args__['quotaCategory'] = quota_category
     __args__['sortField'] = sort_field
     __args__['sortOrder'] = sort_order
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:quotas/getQuotas:getQuotas', __args__, opts=opts, typ=GetQuotasResult)
     return __ret__.apply(lambda __response__: GetQuotasResult(
         dimensions=pulumi.get(__response__, 'dimensions'),

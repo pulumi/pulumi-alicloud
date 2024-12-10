@@ -182,7 +182,7 @@ def get_acls_output(acl_name: Optional[pulumi.Input[Optional[str]]] = None,
                     name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
                     status: Optional[pulumi.Input[Optional[str]]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAclsResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAclsResult]:
     """
     This data source provides the Ga Acls of the current Alibaba Cloud user.
 
@@ -217,7 +217,7 @@ def get_acls_output(acl_name: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ga/getAcls:getAcls', __args__, opts=opts, typ=GetAclsResult)
     return __ret__.apply(lambda __response__: GetAclsResult(
         acl_name=pulumi.get(__response__, 'acl_name'),

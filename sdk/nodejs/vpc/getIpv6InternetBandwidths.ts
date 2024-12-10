@@ -121,7 +121,7 @@ export interface GetIpv6InternetBandwidthsResult {
  * export const vpcIpv6InternetBandwidthId4 = status.then(status => status.bandwidths?.[0]?.id);
  * ```
  */
-export function getIpv6InternetBandwidthsOutput(args?: GetIpv6InternetBandwidthsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpv6InternetBandwidthsResult> {
+export function getIpv6InternetBandwidthsOutput(args?: GetIpv6InternetBandwidthsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIpv6InternetBandwidthsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpc/getIpv6InternetBandwidths:getIpv6InternetBandwidths", {

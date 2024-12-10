@@ -88,7 +88,7 @@ export interface GetVulWhitelistsResult {
  * export const alicloudThreatDetectionVulWhitelistExampleId = _default.then(_default => _default.whitelists?.[0]?.id);
  * ```
  */
-export function getVulWhitelistsOutput(args?: GetVulWhitelistsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVulWhitelistsResult> {
+export function getVulWhitelistsOutput(args?: GetVulWhitelistsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVulWhitelistsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:threatdetection/getVulWhitelists:getVulWhitelists", {

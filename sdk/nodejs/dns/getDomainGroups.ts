@@ -45,7 +45,7 @@ export interface GetDomainGroupsResult {
 /**
  * > **NOTE:** This datasource has been deprecated from v1.3.2. Please use the datasource `alicloud.dns.getGroups` instead.
  */
-export function getDomainGroupsOutput(args?: GetDomainGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainGroupsResult> {
+export function getDomainGroupsOutput(args?: GetDomainGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDomainGroupsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:dns/getDomainGroups:getDomainGroups", {

@@ -173,7 +173,7 @@ def get_application_groups_output(application_name: Optional[pulumi.Input[str]] 
                                   ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                   name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                   output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApplicationGroupsResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApplicationGroupsResult]:
     """
     This data source provides the Oos Application Groups of the current Alibaba Cloud user.
 
@@ -211,7 +211,7 @@ def get_application_groups_output(application_name: Optional[pulumi.Input[str]] 
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:oos/getApplicationGroups:getApplicationGroups', __args__, opts=opts, typ=GetApplicationGroupsResult)
     return __ret__.apply(lambda __response__: GetApplicationGroupsResult(
         application_name=pulumi.get(__response__, 'application_name'),

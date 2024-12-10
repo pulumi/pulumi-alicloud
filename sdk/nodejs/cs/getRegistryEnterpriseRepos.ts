@@ -120,7 +120,7 @@ export interface GetRegistryEnterpriseReposResult {
  * export const output = myRepos.then(myRepos => myRepos.repos);
  * ```
  */
-export function getRegistryEnterpriseReposOutput(args: GetRegistryEnterpriseReposOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryEnterpriseReposResult> {
+export function getRegistryEnterpriseReposOutput(args: GetRegistryEnterpriseReposOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegistryEnterpriseReposResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cs/getRegistryEnterpriseRepos:getRegistryEnterpriseRepos", {
         "enableDetails": args.enableDetails,

@@ -63,7 +63,7 @@ export interface GetChartNamespacesResult {
  *
  * > **NOTE:** Available in v1.149.0+.
  */
-export function getChartNamespacesOutput(args: GetChartNamespacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetChartNamespacesResult> {
+export function getChartNamespacesOutput(args: GetChartNamespacesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetChartNamespacesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cr/getChartNamespaces:getChartNamespaces", {
         "ids": args.ids,

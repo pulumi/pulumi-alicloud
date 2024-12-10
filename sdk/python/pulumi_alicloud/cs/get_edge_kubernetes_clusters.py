@@ -160,7 +160,7 @@ def get_edge_kubernetes_clusters_output(enable_details: Optional[pulumi.Input[Op
                                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEdgeKubernetesClustersResult]:
+                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEdgeKubernetesClustersResult]:
     """
     This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
 
@@ -188,7 +188,7 @@ def get_edge_kubernetes_clusters_output(enable_details: Optional[pulumi.Input[Op
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cs/getEdgeKubernetesClusters:getEdgeKubernetesClusters', __args__, opts=opts, typ=GetEdgeKubernetesClustersResult)
     return __ret__.apply(lambda __response__: GetEdgeKubernetesClustersResult(
         clusters=pulumi.get(__response__, 'clusters'),

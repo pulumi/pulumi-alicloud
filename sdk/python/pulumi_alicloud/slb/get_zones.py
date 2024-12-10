@@ -194,7 +194,7 @@ def get_zones_output(available_slb_address_ip_version: Optional[pulumi.Input[Opt
                      master_zone_id: Optional[pulumi.Input[Optional[str]]] = None,
                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
                      slave_zone_id: Optional[pulumi.Input[Optional[str]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZonesResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZonesResult]:
     """
     This data source provides availability zones for SLB that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 
@@ -228,7 +228,7 @@ def get_zones_output(available_slb_address_ip_version: Optional[pulumi.Input[Opt
     __args__['masterZoneId'] = master_zone_id
     __args__['outputFile'] = output_file
     __args__['slaveZoneId'] = slave_zone_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:slb/getZones:getZones', __args__, opts=opts, typ=GetZonesResult)
     return __ret__.apply(lambda __response__: GetZonesResult(
         available_slb_address_ip_version=pulumi.get(__response__, 'available_slb_address_ip_version'),

@@ -211,7 +211,7 @@ def get_transit_router_prefix_list_associations_output(ids: Optional[pulumi.Inpu
                                                        status: Optional[pulumi.Input[Optional[str]]] = None,
                                                        transit_router_id: Optional[pulumi.Input[str]] = None,
                                                        transit_router_table_id: Optional[pulumi.Input[str]] = None,
-                                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransitRouterPrefixListAssociationsResult]:
+                                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransitRouterPrefixListAssociationsResult]:
     """
     This data source provides the Cen Transit Router Prefix List Associations of the current Alibaba Cloud user.
 
@@ -249,7 +249,7 @@ def get_transit_router_prefix_list_associations_output(ids: Optional[pulumi.Inpu
     __args__['status'] = status
     __args__['transitRouterId'] = transit_router_id
     __args__['transitRouterTableId'] = transit_router_table_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getTransitRouterPrefixListAssociations:getTransitRouterPrefixListAssociations', __args__, opts=opts, typ=GetTransitRouterPrefixListAssociationsResult)
     return __ret__.apply(lambda __response__: GetTransitRouterPrefixListAssociationsResult(
         associations=pulumi.get(__response__, 'associations'),

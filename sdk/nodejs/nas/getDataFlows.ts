@@ -108,7 +108,7 @@ export interface GetDataFlowsResult {
  * export const nasDataFlowId2 = status.then(status => status.flows?.[0]?.id);
  * ```
  */
-export function getDataFlowsOutput(args: GetDataFlowsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataFlowsResult> {
+export function getDataFlowsOutput(args: GetDataFlowsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDataFlowsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:nas/getDataFlows:getDataFlows", {
         "fileSystemId": args.fileSystemId,

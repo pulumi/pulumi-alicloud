@@ -93,7 +93,7 @@ export interface GetGreyTagRoutesResult {
  * export const saeGreyTagRoutesId = nameRegex.then(nameRegex => nameRegex.routes?.[0]?.id);
  * ```
  */
-export function getGreyTagRoutesOutput(args: GetGreyTagRoutesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGreyTagRoutesResult> {
+export function getGreyTagRoutesOutput(args: GetGreyTagRoutesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGreyTagRoutesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:sae/getGreyTagRoutes:getGreyTagRoutes", {
         "appId": args.appId,

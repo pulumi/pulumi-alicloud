@@ -106,7 +106,7 @@ export interface GetEcsDeploymentSetsResult {
  * export const ecsDeploymentSetId2 = nameRegex.then(nameRegex => nameRegex.sets?.[0]?.id);
  * ```
  */
-export function getEcsDeploymentSetsOutput(args?: GetEcsDeploymentSetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsDeploymentSetsResult> {
+export function getEcsDeploymentSetsOutput(args?: GetEcsDeploymentSetsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEcsDeploymentSetsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ecs/getEcsDeploymentSets:getEcsDeploymentSets", {

@@ -126,7 +126,7 @@ export interface GetGatewaysResult {
  * export const mseGatewayId3 = status.then(status => status.gateways?.[0]?.id);
  * ```
  */
-export function getGatewaysOutput(args?: GetGatewaysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewaysResult> {
+export function getGatewaysOutput(args?: GetGatewaysOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGatewaysResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:mse/getGateways:getGateways", {

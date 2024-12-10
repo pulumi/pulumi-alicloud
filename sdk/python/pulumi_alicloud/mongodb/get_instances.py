@@ -211,7 +211,7 @@ def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]
                          name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
                          tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstancesResult]:
     """
     The `mongodb_get_instances` data source provides a collection of MongoDB instances available in Alicloud account.
     Filters support regular expression for the instance name, engine or instance type.
@@ -245,7 +245,7 @@ def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['tags'] = tags
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:mongodb/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult)
     return __ret__.apply(lambda __response__: GetInstancesResult(
         availability_zone=pulumi.get(__response__, 'availability_zone'),

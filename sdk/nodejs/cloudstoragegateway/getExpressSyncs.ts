@@ -90,7 +90,7 @@ export interface GetExpressSyncsResult {
  * export const cloudStorageGatewayExpressSyncId2 = nameRegex.then(nameRegex => nameRegex.syncs?.[0]?.id);
  * ```
  */
-export function getExpressSyncsOutput(args?: GetExpressSyncsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExpressSyncsResult> {
+export function getExpressSyncsOutput(args?: GetExpressSyncsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetExpressSyncsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cloudstoragegateway/getExpressSyncs:getExpressSyncs", {
