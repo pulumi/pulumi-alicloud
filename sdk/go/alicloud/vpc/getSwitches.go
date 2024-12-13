@@ -139,21 +139,11 @@ type GetSwitchesResult struct {
 }
 
 func GetSwitchesOutput(ctx *pulumi.Context, args GetSwitchesOutputArgs, opts ...pulumi.InvokeOption) GetSwitchesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSwitchesResultOutput, error) {
 			args := v.(GetSwitchesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetSwitchesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:vpc/getSwitches:getSwitches", args, &rv, "", opts...)
-			if err != nil {
-				return GetSwitchesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetSwitchesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetSwitchesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:vpc/getSwitches:getSwitches", args, GetSwitchesResultOutput{}, options).(GetSwitchesResultOutput), nil
 		}).(GetSwitchesResultOutput)
 }
 

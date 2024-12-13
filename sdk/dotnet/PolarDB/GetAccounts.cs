@@ -168,6 +168,85 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         public static Output<GetAccountsResult> Invoke(GetAccountsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountsResult>("alicloud:polardb/getAccounts:getAccounts", args ?? new GetAccountsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `alicloud.polardb.getAccounts` data source provides a collection of PolarDB cluster database account available in Alibaba Cloud account.
+        /// Filters support regular expression for the account name, searches by clusterId.
+        /// 
+        /// &gt; **NOTE:** Available since v1.70.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = AliCloud.PolarDB.GetNodeClasses.Invoke(new()
+        ///     {
+        ///         DbType = "MySQL",
+        ///         DbVersion = "8.0",
+        ///         PayType = "PostPaid",
+        ///         Category = "Normal",
+        ///     });
+        /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+        ///     {
+        ///         VpcName = "terraform-example",
+        ///         CidrBlock = "172.16.0.0/16",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+        ///     {
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = "172.16.0.0/24",
+        ///         ZoneId = @this.Apply(@this =&gt; @this.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.ZoneId)),
+        ///         VswitchName = "terraform-example",
+        ///     });
+        /// 
+        ///     var cluster = new AliCloud.PolarDB.Cluster("cluster", new()
+        ///     {
+        ///         DbType = "MySQL",
+        ///         DbVersion = "8.0",
+        ///         PayType = "PostPaid",
+        ///         DbNodeCount = 2,
+        ///         DbNodeClass = @this.Apply(@this =&gt; @this.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.SupportedEngines[0]?.AvailableResources[0]?.DbNodeClass)),
+        ///         VswitchId = defaultSwitch.Id,
+        ///     });
+        /// 
+        ///     var polardbClustersDs = AliCloud.PolarDB.GetClusters.Invoke(new()
+        ///     {
+        ///         DescriptionRegex = cluster.Description,
+        ///         Status = "Running",
+        ///     });
+        /// 
+        ///     var account = new AliCloud.PolarDB.Account("account", new()
+        ///     {
+        ///         DbClusterId = polardbClustersDs.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
+        ///         AccountName = "tfnormal_01",
+        ///         AccountPassword = "Test12345",
+        ///         AccountDescription = "tf_account_description",
+        ///         AccountType = "Normal",
+        ///     });
+        /// 
+        ///     var @default = AliCloud.PolarDB.GetAccounts.Invoke(new()
+        ///     {
+        ///         DbClusterId = polardbClustersDs.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
+        ///         NameRegex = account.AccountName,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["account"] = @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.AccountName)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAccountsResult> Invoke(GetAccountsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountsResult>("alicloud:polardb/getAccounts:getAccounts", args ?? new GetAccountsInvokeArgs(), options.WithDefaults());
     }
 
 

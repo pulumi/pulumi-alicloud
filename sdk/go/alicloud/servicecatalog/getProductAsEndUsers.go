@@ -81,21 +81,11 @@ type GetProductAsEndUsersResult struct {
 }
 
 func GetProductAsEndUsersOutput(ctx *pulumi.Context, args GetProductAsEndUsersOutputArgs, opts ...pulumi.InvokeOption) GetProductAsEndUsersResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetProductAsEndUsersResultOutput, error) {
 			args := v.(GetProductAsEndUsersArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetProductAsEndUsersResult
-			secret, err := ctx.InvokePackageRaw("alicloud:servicecatalog/getProductAsEndUsers:getProductAsEndUsers", args, &rv, "", opts...)
-			if err != nil {
-				return GetProductAsEndUsersResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetProductAsEndUsersResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetProductAsEndUsersResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:servicecatalog/getProductAsEndUsers:getProductAsEndUsers", args, GetProductAsEndUsersResultOutput{}, options).(GetProductAsEndUsersResultOutput), nil
 		}).(GetProductAsEndUsersResultOutput)
 }
 

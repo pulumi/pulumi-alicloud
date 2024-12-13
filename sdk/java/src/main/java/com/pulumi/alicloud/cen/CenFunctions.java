@@ -110,6 +110,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class CenFunctions {
@@ -326,6 +327,49 @@ public final class CenFunctions {
      * 
      */
     public static Output<GetBandwidthLimitsResult> getBandwidthLimits(GetBandwidthLimitsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getBandwidthLimits:getBandwidthLimits", TypeShape.of(GetBandwidthLimitsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides CEN Bandwidth Limits available to the user.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetBandwidthLimitsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var bwl = CenFunctions.getBandwidthLimits(GetBandwidthLimitsArgs.builder()
+     *             .instanceIds("cen-id1")
+     *             .build());
+     * 
+     *         ctx.export("firstCenBandwidthLimitsLocalRegionId", bwl.applyValue(getBandwidthLimitsResult -> getBandwidthLimitsResult.limits()[0].localRegionId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetBandwidthLimitsResult> getBandwidthLimits(GetBandwidthLimitsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cen/getBandwidthLimits:getBandwidthLimits", TypeShape.of(GetBandwidthLimitsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -632,6 +676,50 @@ public final class CenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetBandwidthPackagesResult> getBandwidthPackages(GetBandwidthPackagesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getBandwidthPackages:getBandwidthPackages", TypeShape.of(GetBandwidthPackagesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides CEN Bandwidth Packages available to the user.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetBandwidthPackagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CenFunctions.getBandwidthPackages(GetBandwidthPackagesArgs.builder()
+     *             .instanceId("cen-id1")
+     *             .nameRegex("^foo")
+     *             .build());
+     * 
+     *         ctx.export("firstCenBandwidthPackageId", example.applyValue(getBandwidthPackagesResult -> getBandwidthPackagesResult.packages()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetBandwidthPackagesResult> getBandwidthPackagesPlain(GetBandwidthPackagesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cen/getBandwidthPackages:getBandwidthPackages", TypeShape.of(GetBandwidthPackagesResult.class), args, Utilities.withVersion(options));
     }
@@ -771,6 +859,52 @@ public final class CenFunctions {
      * 
      */
     public static Output<GetChildInstanceRouteEntryToAttachmentsResult> getChildInstanceRouteEntryToAttachments(GetChildInstanceRouteEntryToAttachmentsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getChildInstanceRouteEntryToAttachments:getChildInstanceRouteEntryToAttachments", TypeShape.of(GetChildInstanceRouteEntryToAttachmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cen Child Instance Route Entry To Attachment available to the user.[What is Child Instance Route Entry To Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcenchildinstancerouteentrytoattachment)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetChildInstanceRouteEntryToAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getChildInstanceRouteEntryToAttachments(GetChildInstanceRouteEntryToAttachmentsArgs.builder()
+     *             .childInstanceRouteTableId("vtb-t4nt0z5xxbti85c78nkzy")
+     *             .transitRouterAttachmentId("tr-attach-f1fd1y50rql00emvej")
+     *             .build());
+     * 
+     *         ctx.export("alicloudCenChildInstanceRouteEntryToAttachmentExampleId", default_.attachments()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetChildInstanceRouteEntryToAttachmentsResult> getChildInstanceRouteEntryToAttachments(GetChildInstanceRouteEntryToAttachmentsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cen/getChildInstanceRouteEntryToAttachments:getChildInstanceRouteEntryToAttachments", TypeShape.of(GetChildInstanceRouteEntryToAttachmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1416,6 +1550,106 @@ public final class CenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetFlowlogsResult> getFlowlogs(GetFlowlogsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getFlowlogs:getFlowlogs", TypeShape.of(GetFlowlogsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides CEN flow logs available to the user.
+     * 
+     * &gt; **NOTE:** Available since v1.78.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.log.Project;
+     * import com.pulumi.alicloud.log.ProjectArgs;
+     * import com.pulumi.alicloud.log.Store;
+     * import com.pulumi.alicloud.log.StoreArgs;
+     * import com.pulumi.alicloud.cen.FlowLog;
+     * import com.pulumi.alicloud.cen.FlowLogArgs;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetFlowlogsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("tf-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         var defaultc5kxyC = new Instance("defaultc5kxyC", InstanceArgs.builder()
+     *             .cenInstanceName(name)
+     *             .build());
+     * 
+     *         var defaultVw2U9u = new TransitRouter("defaultVw2U9u", TransitRouterArgs.builder()
+     *             .cenId(defaultc5kxyC.id())
+     *             .build());
+     * 
+     *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
+     *             .projectName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .description("terraform-example")
+     *             .build());
+     * 
+     *         var defaultStore = new Store("defaultStore", StoreArgs.builder()
+     *             .projectName(defaultProject.projectName())
+     *             .logstoreName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .shardCount(3)
+     *             .autoSplit(true)
+     *             .maxSplitShardCount(60)
+     *             .appendMeta(true)
+     *             .build());
+     * 
+     *         var defaultFlowLog = new FlowLog("defaultFlowLog", FlowLogArgs.builder()
+     *             .projectName(defaultStore.projectName())
+     *             .flowLogName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .logFormatString("${srcaddr}${dstaddr}${bytes}")
+     *             .cenId(defaultc5kxyC.id())
+     *             .logStoreName(defaultStore.logstoreName())
+     *             .interval("600")
+     *             .status("Active")
+     *             .transitRouterId(defaultVw2U9u.transitRouterId())
+     *             .description("flowlog-resource-example-1")
+     *             .build());
+     * 
+     *         final var default = CenFunctions.getFlowlogs(GetFlowlogsArgs.builder()
+     *             .ids(defaultFlowLog.id())
+     *             .build());
+     * 
+     *         ctx.export("firstCenFlowlogId", default_.applyValue(default_ -> default_.flowlogs()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetFlowlogsResult> getFlowlogsPlain(GetFlowlogsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cen/getFlowlogs:getFlowlogs", TypeShape.of(GetFlowlogsResult.class), args, Utilities.withVersion(options));
     }
@@ -1552,6 +1786,51 @@ public final class CenFunctions {
      * 
      */
     public static Output<GetInstanceAttachmentsResult> getInstanceAttachments(GetInstanceAttachmentsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getInstanceAttachments:getInstanceAttachments", TypeShape.of(GetInstanceAttachmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cen Instance Attachments of the current Alibaba Cloud User.
+     * 
+     * &gt; **NOTE:** Available in v1.97.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetInstanceAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CenFunctions.getInstanceAttachments(GetInstanceAttachmentsArgs.builder()
+     *             .instanceId("cen-o40h17ll9w********")
+     *             .build());
+     * 
+     *         ctx.export("theFirstAttachmentedInstanceId", example.applyValue(getInstanceAttachmentsResult -> getInstanceAttachmentsResult.attachments()[0].childInstanceId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInstanceAttachmentsResult> getInstanceAttachments(GetInstanceAttachmentsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cen/getInstanceAttachments:getInstanceAttachments", TypeShape.of(GetInstanceAttachmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1860,6 +2139,50 @@ public final class CenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides CEN instances available to the user.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var cenInstancesDs = CenFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids("cen-id1")
+     *             .nameRegex("^foo")
+     *             .build());
+     * 
+     *         ctx.export("firstCenInstanceId", cenInstancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cen/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
@@ -2029,6 +2352,62 @@ public final class CenFunctions {
      * 
      */
     public static Output<GetInterRegionTrafficQosPoliciesResult> getInterRegionTrafficQosPolicies(GetInterRegionTrafficQosPoliciesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getInterRegionTrafficQosPolicies:getInterRegionTrafficQosPolicies", TypeShape.of(GetInterRegionTrafficQosPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cen Inter Region Traffic Qos Policies of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.195.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetInterRegionTrafficQosPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getInterRegionTrafficQosPolicies(GetInterRegionTrafficQosPoliciesArgs.builder()
+     *             .ids("example_id")
+     *             .transitRouterId("your_transit_router_id")
+     *             .transitRouterAttachmentId("your_transit_router_attachment_id")
+     *             .build());
+     * 
+     *         ctx.export("cenInterRegionTrafficQosPolicyId0", ids.applyValue(getInterRegionTrafficQosPoliciesResult -> getInterRegionTrafficQosPoliciesResult.policies()[0].id()));
+     *         final var nameRegex = CenFunctions.getInterRegionTrafficQosPolicies(GetInterRegionTrafficQosPoliciesArgs.builder()
+     *             .nameRegex("^my-name")
+     *             .transitRouterId("your_transit_router_id")
+     *             .transitRouterAttachmentId("your_transit_router_attachment_id")
+     *             .build());
+     * 
+     *         ctx.export("cenInterRegionTrafficQosPolicyId1", nameRegex.applyValue(getInterRegionTrafficQosPoliciesResult -> getInterRegionTrafficQosPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInterRegionTrafficQosPoliciesResult> getInterRegionTrafficQosPolicies(GetInterRegionTrafficQosPoliciesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cen/getInterRegionTrafficQosPolicies:getInterRegionTrafficQosPolicies", TypeShape.of(GetInterRegionTrafficQosPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2272,6 +2651,53 @@ public final class CenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetInterRegionTrafficQosQueuesResult> getInterRegionTrafficQosQueues(GetInterRegionTrafficQosQueuesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getInterRegionTrafficQosQueues:getInterRegionTrafficQosQueues", TypeShape.of(GetInterRegionTrafficQosQueuesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cen Inter Region Traffic Qos Queue available to the user.
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetInterRegionTrafficQosQueuesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getInterRegionTrafficQosQueues(GetInterRegionTrafficQosQueuesArgs.builder()
+     *             .ids(defaultAlicloudCenInterRegionTrafficQosQueue.id())
+     *             .nameRegex(defaultAlicloudCenInterRegionTrafficQosQueue.name())
+     *             .trafficQosPolicyId("qos-xxxxxxx")
+     *             .build());
+     * 
+     *         ctx.export("alicloudCenInterRegionTrafficQosQueueExampleId", default_.queues()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetInterRegionTrafficQosQueuesResult> getInterRegionTrafficQosQueuesPlain(GetInterRegionTrafficQosQueuesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cen/getInterRegionTrafficQosQueues:getInterRegionTrafficQosQueues", TypeShape.of(GetInterRegionTrafficQosQueuesResult.class), args, Utilities.withVersion(options));
     }
@@ -2414,6 +2840,53 @@ public final class CenFunctions {
      * 
      */
     public static Output<GetPrivateZonesResult> getPrivateZones(GetPrivateZonesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getPrivateZones:getPrivateZones", TypeShape.of(GetPrivateZonesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides CEN Private Zones available to the user.
+     * 
+     * &gt; **NOTE:** Available in v1.88.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetPrivateZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = CenFunctions.getPrivateZones(GetPrivateZonesArgs.builder()
+     *             .cenId("cen-o40h17ll9w********")
+     *             .ids("cn-hangzhou")
+     *             .status("Active")
+     *             .build());
+     * 
+     *         ctx.export("firstCenPrivateZonesId", this_.zones()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPrivateZonesResult> getPrivateZones(GetPrivateZonesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cen/getPrivateZones:getPrivateZones", TypeShape.of(GetPrivateZonesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2636,6 +3109,50 @@ public final class CenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetRegionRouteEntriesResult> getRegionRouteEntries(GetRegionRouteEntriesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getRegionRouteEntries:getRegionRouteEntries", TypeShape.of(GetRegionRouteEntriesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides CEN Regional Route Entries available to the user.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetRegionRouteEntriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var entry = CenFunctions.getRegionRouteEntries(GetRegionRouteEntriesArgs.builder()
+     *             .instanceId("cen-id1")
+     *             .regionId("cn-beijing")
+     *             .build());
+     * 
+     *         ctx.export("firstRegionRouteEntriesRouteEntryCidrBlock", entry.applyValue(getRegionRouteEntriesResult -> getRegionRouteEntriesResult.entries()[0].cidrBlock()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetRegionRouteEntriesResult> getRegionRouteEntriesPlain(GetRegionRouteEntriesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cen/getRegionRouteEntries:getRegionRouteEntries", TypeShape.of(GetRegionRouteEntriesResult.class), args, Utilities.withVersion(options));
     }
@@ -2769,6 +3286,50 @@ public final class CenFunctions {
      * 
      */
     public static Output<GetRouteEntriesResult> getRouteEntries(GetRouteEntriesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getRouteEntries:getRouteEntries", TypeShape.of(GetRouteEntriesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides CEN Route Entries available to the user.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetRouteEntriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var entry = CenFunctions.getRouteEntries(GetRouteEntriesArgs.builder()
+     *             .instanceId("cen-id1")
+     *             .routeTableId("vtb-id1")
+     *             .build());
+     * 
+     *         ctx.export("firstRouteEntriesRouteEntryCidrBlock", entry.applyValue(getRouteEntriesResult -> getRouteEntriesResult.entries()[0].cidrBlock()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRouteEntriesResult> getRouteEntries(GetRouteEntriesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cen/getRouteEntries:getRouteEntries", TypeShape.of(GetRouteEntriesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -3012,6 +3573,56 @@ public final class CenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetRouteMapsResult> getRouteMaps(GetRouteMapsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getRouteMaps:getRouteMaps", TypeShape.of(GetRouteMapsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides CEN Route Maps available to the user.
+     * 
+     * &gt; **NOTE:** Available in v1.87.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetRouteMapsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = CenFunctions.getRouteMaps(GetRouteMapsArgs.builder()
+     *             .cenId("cen-ihdlgo87ai********")
+     *             .ids("cen-ihdlgo87ai:cenrmap-bnh97kb3mn********")
+     *             .descriptionRegex("datasource_test")
+     *             .cenRegionId("cn-hangzhou")
+     *             .transmitDirection("RegionIn")
+     *             .status("Active")
+     *             .build());
+     * 
+     *         ctx.export("firstCenRouteMapId", this_.maps()[0].routeMapId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetRouteMapsResult> getRouteMapsPlain(GetRouteMapsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cen/getRouteMaps:getRouteMaps", TypeShape.of(GetRouteMapsResult.class), args, Utilities.withVersion(options));
     }
@@ -3154,6 +3765,53 @@ public final class CenFunctions {
      * 
      */
     public static Output<GetRouteServicesResult> getRouteServices(GetRouteServicesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getRouteServices:getRouteServices", TypeShape.of(GetRouteServicesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides CEN Route Service available to the user.
+     * 
+     * &gt; **NOTE:** Available in v1.102.0+
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetRouteServicesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CenFunctions.getRouteServices(GetRouteServicesArgs.builder()
+     *             .cenId("cen-7qthudw0ll6jmc****")
+     *             .build());
+     * 
+     *         ctx.export("firstCenRouteServiceId", example.applyValue(getRouteServicesResult -> getRouteServicesResult.services()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRouteServicesResult> getRouteServices(GetRouteServicesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cen/getRouteServices:getRouteServices", TypeShape.of(GetRouteServicesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -3424,6 +4082,62 @@ public final class CenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetTrafficMarkingPoliciesResult> getTrafficMarkingPolicies(GetTrafficMarkingPoliciesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getTrafficMarkingPolicies:getTrafficMarkingPolicies", TypeShape.of(GetTrafficMarkingPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cen Traffic Marking Policies of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.173.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTrafficMarkingPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getTrafficMarkingPolicies(GetTrafficMarkingPoliciesArgs.builder()
+     *             .transitRouterId("example_value")
+     *             .ids(            
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .build());
+     * 
+     *         ctx.export("cenTrafficMarkingPolicyId1", ids.applyValue(getTrafficMarkingPoliciesResult -> getTrafficMarkingPoliciesResult.policies()[0].id()));
+     *         final var nameRegex = CenFunctions.getTrafficMarkingPolicies(GetTrafficMarkingPoliciesArgs.builder()
+     *             .transitRouterId("example_value")
+     *             .nameRegex("^my-TrafficMarkingPolicy")
+     *             .build());
+     * 
+     *         ctx.export("cenTrafficMarkingPolicyId2", nameRegex.applyValue(getTrafficMarkingPoliciesResult -> getTrafficMarkingPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetTrafficMarkingPoliciesResult> getTrafficMarkingPoliciesPlain(GetTrafficMarkingPoliciesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cen/getTrafficMarkingPolicies:getTrafficMarkingPolicies", TypeShape.of(GetTrafficMarkingPoliciesResult.class), args, Utilities.withVersion(options));
     }
@@ -3587,6 +4301,60 @@ public final class CenFunctions {
      * 
      */
     public static Output<GetTransitRouteTableAggregationsResult> getTransitRouteTableAggregations(GetTransitRouteTableAggregationsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getTransitRouteTableAggregations:getTransitRouteTableAggregations", TypeShape.of(GetTransitRouteTableAggregationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cen Transit Route Table Aggregations of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.202.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouteTableAggregationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getTransitRouteTableAggregations(GetTransitRouteTableAggregationsArgs.builder()
+     *             .ids("example_id")
+     *             .transitRouteTableId("your_transit_route_table_id")
+     *             .build());
+     * 
+     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.applyValue(getTransitRouteTableAggregationsResult -> getTransitRouteTableAggregationsResult.transitRouteTableAggregations()[0].id()));
+     *         final var nameRegex = CenFunctions.getTransitRouteTableAggregations(GetTransitRouteTableAggregationsArgs.builder()
+     *             .nameRegex("^my-name")
+     *             .transitRouteTableId("your_transit_route_table_id")
+     *             .build());
+     * 
+     *         ctx.export("cenTransitRouterMulticastDomainId1", nameRegex.applyValue(getTransitRouteTableAggregationsResult -> getTransitRouteTableAggregationsResult.transitRouteTableAggregations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTransitRouteTableAggregationsResult> getTransitRouteTableAggregations(GetTransitRouteTableAggregationsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cen/getTransitRouteTableAggregations:getTransitRouteTableAggregations", TypeShape.of(GetTransitRouteTableAggregationsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -3916,6 +4684,52 @@ public final class CenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetTransitRouterAvailableResourcesResult> getTransitRouterAvailableResources(GetTransitRouterAvailableResourcesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterAvailableResources:getTransitRouterAvailableResources", TypeShape.of(GetTransitRouterAvailableResourcesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the CEN Transit Router Available Resources of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.163.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterAvailableResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getTransitRouterAvailableResources();
+     * 
+     *         ctx.export("masterId", ids.applyValue(getTransitRouterAvailableResourcesResult -> getTransitRouterAvailableResourcesResult.resources()[0].masterZones()[0]));
+     *         ctx.export("slaveId", ids.applyValue(getTransitRouterAvailableResourcesResult -> getTransitRouterAvailableResourcesResult.resources()[0].slaveZones()[0]));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetTransitRouterAvailableResourcesResult> getTransitRouterAvailableResourcesPlain(GetTransitRouterAvailableResourcesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cen/getTransitRouterAvailableResources:getTransitRouterAvailableResources", TypeShape.of(GetTransitRouterAvailableResourcesResult.class), args, Utilities.withVersion(options));
     }
@@ -4079,6 +4893,60 @@ public final class CenFunctions {
      * 
      */
     public static Output<GetTransitRouterCidrsResult> getTransitRouterCidrs(GetTransitRouterCidrsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterCidrs:getTransitRouterCidrs", TypeShape.of(GetTransitRouterCidrsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cen Transit Router Cidrs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.193.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterCidrsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getTransitRouterCidrs(GetTransitRouterCidrsArgs.builder()
+     *             .ids("example_id")
+     *             .transitRouterId("tr-6ehx7q2jze8ch5ji0****")
+     *             .build());
+     * 
+     *         ctx.export("cenTransitRouterCidrId0", ids.applyValue(getTransitRouterCidrsResult -> getTransitRouterCidrsResult.cidrs()[0].id()));
+     *         final var nameRegex = CenFunctions.getTransitRouterCidrs(GetTransitRouterCidrsArgs.builder()
+     *             .nameRegex("^my-name")
+     *             .transitRouterId("tr-6ehx7q2jze8ch5ji0****")
+     *             .build());
+     * 
+     *         ctx.export("cenTransitRouterCidrId1", nameRegex.applyValue(getTransitRouterCidrsResult -> getTransitRouterCidrsResult.cidrs()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTransitRouterCidrsResult> getTransitRouterCidrs(GetTransitRouterCidrsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterCidrs:getTransitRouterCidrs", TypeShape.of(GetTransitRouterCidrsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -4324,6 +5192,54 @@ public final class CenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetTransitRouterMulticastDomainAssociationsResult> getTransitRouterMulticastDomainAssociations(GetTransitRouterMulticastDomainAssociationsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterMulticastDomainAssociations:getTransitRouterMulticastDomainAssociations", TypeShape.of(GetTransitRouterMulticastDomainAssociationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cen Transit Router Multicast Domain Associations of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.195.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainAssociationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getTransitRouterMulticastDomainAssociations(GetTransitRouterMulticastDomainAssociationsArgs.builder()
+     *             .ids("example_id")
+     *             .transitRouterMulticastDomainId("your_transit_router_multicast_domain_id")
+     *             .build());
+     * 
+     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.applyValue(getTransitRouterMulticastDomainAssociationsResult -> getTransitRouterMulticastDomainAssociationsResult.associations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetTransitRouterMulticastDomainAssociationsResult> getTransitRouterMulticastDomainAssociationsPlain(GetTransitRouterMulticastDomainAssociationsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cen/getTransitRouterMulticastDomainAssociations:getTransitRouterMulticastDomainAssociations", TypeShape.of(GetTransitRouterMulticastDomainAssociationsResult.class), args, Utilities.withVersion(options));
     }
@@ -4466,6 +5382,53 @@ public final class CenFunctions {
      * 
      */
     public static Output<GetTransitRouterMulticastDomainMembersResult> getTransitRouterMulticastDomainMembers(GetTransitRouterMulticastDomainMembersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterMulticastDomainMembers:getTransitRouterMulticastDomainMembers", TypeShape.of(GetTransitRouterMulticastDomainMembersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cen Transit Router Multicast Domain Member available to the user. [What is Transit Router Multicast Domain Member](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupmembers)
+     * 
+     * &gt; **NOTE:** Available since v1.195.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainMembersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterMulticastDomainMembers(GetTransitRouterMulticastDomainMembersArgs.builder()
+     *             .transitRouterMulticastDomainId("tr-mcast-domain-2d9oq455uk533zfr29")
+     *             .build());
+     * 
+     *         ctx.export("alicloudCenTransitRouterMulticastDomainMemberExampleId", default_.members()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTransitRouterMulticastDomainMembersResult> getTransitRouterMulticastDomainMembers(GetTransitRouterMulticastDomainMembersArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterMulticastDomainMembers:getTransitRouterMulticastDomainMembers", TypeShape.of(GetTransitRouterMulticastDomainMembersResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -4700,6 +5663,53 @@ public final class CenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetTransitRouterMulticastDomainPeerMembersResult> getTransitRouterMulticastDomainPeerMembers(GetTransitRouterMulticastDomainPeerMembersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterMulticastDomainPeerMembers:getTransitRouterMulticastDomainPeerMembers", TypeShape.of(GetTransitRouterMulticastDomainPeerMembersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cen Transit Router Multicast Domain Peer Member available to the user. [What is Transit Router Multicast Domain Peer Member](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupmembers)
+     * 
+     * &gt; **NOTE:** Available since v1.195.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainPeerMembersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterMulticastDomainPeerMembers(GetTransitRouterMulticastDomainPeerMembersArgs.builder()
+     *             .transitRouterMulticastDomainId("tr-mcast-domain-2d9oq455uk533zfrxx")
+     *             .build());
+     * 
+     *         ctx.export("alicloudCenTransitRouterMulticastDomainPeerMemberExampleId", default_.members()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetTransitRouterMulticastDomainPeerMembersResult> getTransitRouterMulticastDomainPeerMembersPlain(GetTransitRouterMulticastDomainPeerMembersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cen/getTransitRouterMulticastDomainPeerMembers:getTransitRouterMulticastDomainPeerMembers", TypeShape.of(GetTransitRouterMulticastDomainPeerMembersResult.class), args, Utilities.withVersion(options));
     }
@@ -4836,6 +5846,51 @@ public final class CenFunctions {
      * 
      */
     public static Output<GetTransitRouterMulticastDomainSourcesResult> getTransitRouterMulticastDomainSources(GetTransitRouterMulticastDomainSourcesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterMulticastDomainSources:getTransitRouterMulticastDomainSources", TypeShape.of(GetTransitRouterMulticastDomainSourcesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cen Transit Router Multicast Domain Source available to the user.[What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupsources)
+     * 
+     * &gt; **NOTE:** Available since v1.195.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainSourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterMulticastDomainSources(GetTransitRouterMulticastDomainSourcesArgs.builder()
+     *             .transitRouterMulticastDomainId("tr-mcast-domain-xxxxxx")
+     *             .build());
+     * 
+     *         ctx.export("alicloudCenTransitRouterMulticastDomainSourceExampleId", default_.sources()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTransitRouterMulticastDomainSourcesResult> getTransitRouterMulticastDomainSources(GetTransitRouterMulticastDomainSourcesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterMulticastDomainSources:getTransitRouterMulticastDomainSources", TypeShape.of(GetTransitRouterMulticastDomainSourcesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -5096,6 +6151,60 @@ public final class CenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetTransitRouterMulticastDomainsResult> getTransitRouterMulticastDomains(GetTransitRouterMulticastDomainsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterMulticastDomains:getTransitRouterMulticastDomains", TypeShape.of(GetTransitRouterMulticastDomainsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cen Transit Router Multicast Domains of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.195.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getTransitRouterMulticastDomains(GetTransitRouterMulticastDomainsArgs.builder()
+     *             .ids("example_id")
+     *             .transitRouterId("your_transit_router_id")
+     *             .build());
+     * 
+     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.applyValue(getTransitRouterMulticastDomainsResult -> getTransitRouterMulticastDomainsResult.domains()[0].id()));
+     *         final var nameRegex = CenFunctions.getTransitRouterMulticastDomains(GetTransitRouterMulticastDomainsArgs.builder()
+     *             .nameRegex("^my-name")
+     *             .transitRouterId("your_transit_router_id")
+     *             .build());
+     * 
+     *         ctx.export("cenTransitRouterMulticastDomainId1", nameRegex.applyValue(getTransitRouterMulticastDomainsResult -> getTransitRouterMulticastDomainsResult.domains()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetTransitRouterMulticastDomainsResult> getTransitRouterMulticastDomainsPlain(GetTransitRouterMulticastDomainsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cen/getTransitRouterMulticastDomains:getTransitRouterMulticastDomains", TypeShape.of(GetTransitRouterMulticastDomainsResult.class), args, Utilities.withVersion(options));
     }
@@ -5124,6 +6233,15 @@ public final class CenFunctions {
      * 
      */
     public static Output<GetTransitRouterPeerAttachmentsResult> getTransitRouterPeerAttachments(GetTransitRouterPeerAttachmentsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterPeerAttachments:getTransitRouterPeerAttachments", TypeShape.of(GetTransitRouterPeerAttachmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides CEN Transit Router peer attachments available to the user.
+     * 
+     * &gt; **NOTE:** Available in 1.128.0+
+     * 
+     */
+    public static Output<GetTransitRouterPeerAttachmentsResult> getTransitRouterPeerAttachments(GetTransitRouterPeerAttachmentsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterPeerAttachments:getTransitRouterPeerAttachments", TypeShape.of(GetTransitRouterPeerAttachmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -5324,6 +6442,54 @@ public final class CenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetTransitRouterPrefixListAssociationsResult> getTransitRouterPrefixListAssociations(GetTransitRouterPrefixListAssociationsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterPrefixListAssociations:getTransitRouterPrefixListAssociations", TypeShape.of(GetTransitRouterPrefixListAssociationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cen Transit Router Prefix List Associations of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.188.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterPrefixListAssociationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterPrefixListAssociations(GetTransitRouterPrefixListAssociationsArgs.builder()
+     *             .transitRouterId("tr-6ehx7q2jze8ch5ji0****")
+     *             .transitRouterTableId("vtb-6ehgc262hr170qgyc****")
+     *             .build());
+     * 
+     *         ctx.export("cenTransitRouterPrefixListAssociationId", default_.associations()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetTransitRouterPrefixListAssociationsResult> getTransitRouterPrefixListAssociationsPlain(GetTransitRouterPrefixListAssociationsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cen/getTransitRouterPrefixListAssociations:getTransitRouterPrefixListAssociations", TypeShape.of(GetTransitRouterPrefixListAssociationsResult.class), args, Utilities.withVersion(options));
     }
@@ -5352,6 +6518,15 @@ public final class CenFunctions {
      * 
      */
     public static Output<GetTransitRouterRouteEntriesResult> getTransitRouterRouteEntries(GetTransitRouterRouteEntriesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterRouteEntries:getTransitRouterRouteEntries", TypeShape.of(GetTransitRouterRouteEntriesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides CEN Transit Router Route Entries available to the user.[What is Cen Transit Router Route Entries](https://help.aliyun.com/document_detail/260941.html)
+     * 
+     * &gt; **NOTE:** Available in 1.126.0+
+     * 
+     */
+    public static Output<GetTransitRouterRouteEntriesResult> getTransitRouterRouteEntries(GetTransitRouterRouteEntriesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterRouteEntries:getTransitRouterRouteEntries", TypeShape.of(GetTransitRouterRouteEntriesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -5630,6 +6805,51 @@ public final class CenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetTransitRouterRouteTableAssociationsResult> getTransitRouterRouteTableAssociations(GetTransitRouterRouteTableAssociationsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterRouteTableAssociations:getTransitRouterRouteTableAssociations", TypeShape.of(GetTransitRouterRouteTableAssociationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://help.aliyun.com/document_detail/261243.html)
+     * 
+     * &gt; **NOTE:** Available in 1.126.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteTableAssociationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterRouteTableAssociations(GetTransitRouterRouteTableAssociationsArgs.builder()
+     *             .transitRouterRouteTableId("rtb-id1")
+     *             .build());
+     * 
+     *         ctx.export("firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType", default_.associations()[0].resourceType());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetTransitRouterRouteTableAssociationsResult> getTransitRouterRouteTableAssociationsPlain(GetTransitRouterRouteTableAssociationsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cen/getTransitRouterRouteTableAssociations:getTransitRouterRouteTableAssociations", TypeShape.of(GetTransitRouterRouteTableAssociationsResult.class), args, Utilities.withVersion(options));
     }
@@ -5766,6 +6986,51 @@ public final class CenFunctions {
      * 
      */
     public static Output<GetTransitRouterRouteTablePropagationsResult> getTransitRouterRouteTablePropagations(GetTransitRouterRouteTablePropagationsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterRouteTablePropagations:getTransitRouterRouteTablePropagations", TypeShape.of(GetTransitRouterRouteTablePropagationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides CEN Transit Router Route Table Propagations available to the user.[What is Cen Transit Router Route Table Propagations](https://help.aliyun.com/document_detail/261245.html)
+     * 
+     * &gt; **NOTE:** Available in 1.126.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteTablePropagationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterRouteTablePropagations(GetTransitRouterRouteTablePropagationsArgs.builder()
+     *             .transitRouterRouteTableId("rtb-id1")
+     *             .build());
+     * 
+     *         ctx.export("firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType", default_.propagations()[0].resourceType());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTransitRouterRouteTablePropagationsResult> getTransitRouterRouteTablePropagations(GetTransitRouterRouteTablePropagationsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterRouteTablePropagations:getTransitRouterRouteTablePropagations", TypeShape.of(GetTransitRouterRouteTablePropagationsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -6018,6 +7283,75 @@ public final class CenFunctions {
      * 
      */
     public static Output<GetTransitRouterRouteTablesResult> getTransitRouterRouteTables(GetTransitRouterRouteTablesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterRouteTables:getTransitRouterRouteTables", TypeShape.of(GetTransitRouterRouteTablesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides CEN Transit Router Route Tables available to the user.[What is Cen Transit Router Route Tables](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouterroutetables)
+     * 
+     * &gt; **NOTE:** Available since v1.126.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.cen.TransitRouterRouteTable;
+     * import com.pulumi.alicloud.cen.TransitRouterRouteTableArgs;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteTablesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("tf-example");
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .cenInstanceName(name)
+     *             .protectionLevel("REDUCED")
+     *             .build());
+     * 
+     *         var defaultTransitRouter = new TransitRouter("defaultTransitRouter", TransitRouterArgs.builder()
+     *             .cenId(defaultInstance.id())
+     *             .transitRouterName(name)
+     *             .build());
+     * 
+     *         var defaultTransitRouterRouteTable = new TransitRouterRouteTable("defaultTransitRouterRouteTable", TransitRouterRouteTableArgs.builder()
+     *             .transitRouterId(defaultTransitRouter.transitRouterId())
+     *             .transitRouterRouteTableDescription("desp")
+     *             .transitRouterRouteTableName(name)
+     *             .build());
+     * 
+     *         final var default = CenFunctions.getTransitRouterRouteTables(GetTransitRouterRouteTablesArgs.builder()
+     *             .transitRouterId(defaultTransitRouter.transitRouterId())
+     *             .build());
+     * 
+     *         ctx.export("firstTransitRouterRouteTableType", default_.applyValue(default_ -> default_.tables()[0].transitRouterRouteTableType()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTransitRouterRouteTablesResult> getTransitRouterRouteTables(GetTransitRouterRouteTablesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterRouteTables:getTransitRouterRouteTables", TypeShape.of(GetTransitRouterRouteTablesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -6362,6 +7696,52 @@ public final class CenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetTransitRouterServiceResult> getTransitRouterService(GetTransitRouterServiceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterService:getTransitRouterService", TypeShape.of(GetTransitRouterServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Using this data source can open CEN Transit Router Service automatically. If the service has been opened, it will return opened.
+     * 
+     * For information about CEN and how to use it, see [What is CEN](https://www.alibabacloud.com/help/en/doc-detail/59870.htm).
+     * 
+     * &gt; **NOTE:** Available since v1.139.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = CenFunctions.getTransitRouterService(GetTransitRouterServiceArgs.builder()
+     *             .enable("On")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetTransitRouterServiceResult> getTransitRouterServicePlain(GetTransitRouterServicePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cen/getTransitRouterService:getTransitRouterService", TypeShape.of(GetTransitRouterServiceResult.class), args, Utilities.withVersion(options));
     }
@@ -6390,6 +7770,15 @@ public final class CenFunctions {
      * 
      */
     public static Output<GetTransitRouterVbrAttachmentsResult> getTransitRouterVbrAttachments(GetTransitRouterVbrAttachmentsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterVbrAttachments:getTransitRouterVbrAttachments", TypeShape.of(GetTransitRouterVbrAttachmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides CEN Transit Router VBR Attachments available to the user.[What is Cen Transit Router VBR Attachments](https://help.aliyun.com/document_detail/261226.html)
+     * 
+     * &gt; **NOTE:** Available in 1.126.0+
+     * 
+     */
+    public static Output<GetTransitRouterVbrAttachmentsResult> getTransitRouterVbrAttachments(GetTransitRouterVbrAttachmentsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterVbrAttachments:getTransitRouterVbrAttachments", TypeShape.of(GetTransitRouterVbrAttachmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -6814,6 +8203,110 @@ public final class CenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetTransitRouterVpcAttachmentsResult> getTransitRouterVpcAttachments(GetTransitRouterVpcAttachmentsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterVpcAttachments:getTransitRouterVpcAttachments", TypeShape.of(GetTransitRouterVpcAttachmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the CEN Transit Router VPC Attachments of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.126.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.cen.TransitRouterVpcAttachment;
+     * import com.pulumi.alicloud.cen.TransitRouterVpcAttachmentArgs;
+     * import com.pulumi.alicloud.cen.inputs.TransitRouterVpcAttachmentZoneMappingArgs;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVpcAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getZones();
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .zoneId(default_.ids()[0])
+     *             .build());
+     * 
+     *         final var defaultMaster = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .zoneId(default_.ids()[1])
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .cenInstanceName(name)
+     *             .protectionLevel("REDUCED")
+     *             .build());
+     * 
+     *         var defaultTransitRouter = new TransitRouter("defaultTransitRouter", TransitRouterArgs.builder()
+     *             .cenId(defaultInstance.id())
+     *             .build());
+     * 
+     *         var defaultTransitRouterVpcAttachment = new TransitRouterVpcAttachment("defaultTransitRouterVpcAttachment", TransitRouterVpcAttachmentArgs.builder()
+     *             .cenId(defaultInstance.id())
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .transitRouterId(defaultTransitRouter.transitRouterId())
+     *             .transitRouterAttachmentName(name)
+     *             .transitRouterAttachmentDescription(name)
+     *             .zoneMappings(            
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .vswitchId(defaultMaster.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].id()))
+     *                     .zoneId(defaultMaster.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))
+     *                     .build(),
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].id()))
+     *                     .zoneId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))
+     *                     .build())
+     *             .build());
+     * 
+     *         final var ids = CenFunctions.getTransitRouterVpcAttachments(GetTransitRouterVpcAttachmentsArgs.builder()
+     *             .ids(defaultTransitRouterVpcAttachment.id())
+     *             .cenId(defaultInstance.id())
+     *             .build());
+     * 
+     *         ctx.export("cenTransitRouterVpcAttachmentsId0", ids.applyValue(getTransitRouterVpcAttachmentsResult -> getTransitRouterVpcAttachmentsResult).applyValue(ids -> ids.applyValue(getTransitRouterVpcAttachmentsResult -> getTransitRouterVpcAttachmentsResult.attachments()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetTransitRouterVpcAttachmentsResult> getTransitRouterVpcAttachmentsPlain(GetTransitRouterVpcAttachmentsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cen/getTransitRouterVpcAttachments:getTransitRouterVpcAttachments", TypeShape.of(GetTransitRouterVpcAttachmentsResult.class), args, Utilities.withVersion(options));
     }
@@ -6956,6 +8449,53 @@ public final class CenFunctions {
      * 
      */
     public static Output<GetTransitRouterVpnAttachmentsResult> getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterVpnAttachments:getTransitRouterVpnAttachments", TypeShape.of(GetTransitRouterVpnAttachmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cen Transit Router Vpn Attachments of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.183.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVpnAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs.builder()
+     *             .cenId("example_value")
+     *             .build());
+     * 
+     *         ctx.export("cenTransitRouterVpnAttachmentId1", ids.applyValue(getTransitRouterVpnAttachmentsResult -> getTransitRouterVpnAttachmentsResult.attachments()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTransitRouterVpnAttachmentsResult> getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterVpnAttachments:getTransitRouterVpnAttachments", TypeShape.of(GetTransitRouterVpnAttachmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -7182,6 +8722,51 @@ public final class CenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetTransitRoutersResult> getTransitRouters(GetTransitRoutersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getTransitRouters:getTransitRouters", TypeShape.of(GetTransitRoutersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides CEN Transit Routers available to the user.[What is Cen Transit Routers](https://help.aliyun.com/document_detail/261219.html)
+     * 
+     * &gt; **NOTE:** Available in 1.126.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRoutersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouters(GetTransitRoutersArgs.builder()
+     *             .cenId("cen-id1")
+     *             .build());
+     * 
+     *         ctx.export("firstTransitRoutersType", default_.transitRouters()[0].type());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetTransitRoutersResult> getTransitRoutersPlain(GetTransitRoutersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cen/getTransitRouters:getTransitRouters", TypeShape.of(GetTransitRoutersResult.class), args, Utilities.withVersion(options));
     }
@@ -7210,6 +8795,15 @@ public final class CenFunctions {
      * 
      */
     public static Output<GetVbrHealthChecksResult> getVbrHealthChecks(GetVbrHealthChecksArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getVbrHealthChecks:getVbrHealthChecks", TypeShape.of(GetVbrHealthChecksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides CEN VBR Health Checks available to the user.
+     * 
+     * &gt; **NOTE:** Available in 1.98.0+
+     * 
+     */
+    public static Output<GetVbrHealthChecksResult> getVbrHealthChecks(GetVbrHealthChecksArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cen/getVbrHealthChecks:getVbrHealthChecks", TypeShape.of(GetVbrHealthChecksResult.class), args, Utilities.withVersion(options));
     }
     /**

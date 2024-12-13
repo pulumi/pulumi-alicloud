@@ -85,21 +85,11 @@ type GetResourceGroupsResult struct {
 }
 
 func GetResourceGroupsOutput(ctx *pulumi.Context, args GetResourceGroupsOutputArgs, opts ...pulumi.InvokeOption) GetResourceGroupsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetResourceGroupsResultOutput, error) {
 			args := v.(GetResourceGroupsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetResourceGroupsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:resourcemanager/getResourceGroups:getResourceGroups", args, &rv, "", opts...)
-			if err != nil {
-				return GetResourceGroupsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetResourceGroupsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetResourceGroupsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:resourcemanager/getResourceGroups:getResourceGroups", args, GetResourceGroupsResultOutput{}, options).(GetResourceGroupsResultOutput), nil
 		}).(GetResourceGroupsResultOutput)
 }
 

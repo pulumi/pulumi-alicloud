@@ -164,6 +164,83 @@ namespace Pulumi.AliCloud.Sae
         /// </summary>
         public static Output<GetApplicationsResult> Invoke(GetApplicationsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApplicationsResult>("alicloud:sae/getApplications:getApplications", args ?? new GetApplicationsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Sae Applications of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.161.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "tf-testacc";
+        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
+        ///     {
+        ///         VpcName = "tf_testacc",
+        ///         CidrBlock = "172.16.0.0/12",
+        ///     });
+        /// 
+        ///     var vsw = new AliCloud.Vpc.Switch("vsw", new()
+        ///     {
+        ///         VpcId = vpc.Id,
+        ///         CidrBlock = "172.16.0.0/24",
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///         VswitchName = name,
+        ///     });
+        /// 
+        ///     var defaultNamespace = new AliCloud.Sae.Namespace("default", new()
+        ///     {
+        ///         NamespaceDescription = name,
+        ///         NamespaceId = "cn-hangzhou:tfacctest",
+        ///         NamespaceName = name,
+        ///     });
+        /// 
+        ///     var defaultApplication = new AliCloud.Sae.Application("default", new()
+        ///     {
+        ///         AppDescription = "tf-testaccDescription",
+        ///         AppName = "tf-testaccAppName131",
+        ///         NamespaceId = defaultNamespace.Id,
+        ///         ImageUrl = "registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5",
+        ///         PackageType = "Image",
+        ///         VswitchId = vsw.Id,
+        ///         Timezone = "Asia/Beijing",
+        ///         Replicas = 5,
+        ///         Cpu = 500,
+        ///         Memory = 2048,
+        ///     });
+        /// 
+        ///     var defaultGetApplications = AliCloud.Sae.GetApplications.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultApplication.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["saeApplicationId"] = defaultGetApplications.Apply(getApplicationsResult =&gt; getApplicationsResult.Applications[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetApplicationsResult> Invoke(GetApplicationsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetApplicationsResult>("alicloud:sae/getApplications:getApplications", args ?? new GetApplicationsInvokeArgs(), options.WithDefaults());
     }
 
 

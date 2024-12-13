@@ -65,21 +65,11 @@ type GetKvAccountResult struct {
 }
 
 func GetKvAccountOutput(ctx *pulumi.Context, args GetKvAccountOutputArgs, opts ...pulumi.InvokeOption) GetKvAccountResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetKvAccountResultOutput, error) {
 			args := v.(GetKvAccountArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetKvAccountResult
-			secret, err := ctx.InvokePackageRaw("alicloud:dcdn/getKvAccount:getKvAccount", args, &rv, "", opts...)
-			if err != nil {
-				return GetKvAccountResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetKvAccountResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetKvAccountResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:dcdn/getKvAccount:getKvAccount", args, GetKvAccountResultOutput{}, options).(GetKvAccountResultOutput), nil
 		}).(GetKvAccountResultOutput)
 }
 

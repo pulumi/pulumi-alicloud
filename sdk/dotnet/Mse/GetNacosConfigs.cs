@@ -176,6 +176,89 @@ namespace Pulumi.AliCloud.Mse
         /// </summary>
         public static Output<GetNacosConfigsResult> Invoke(GetNacosConfigsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNacosConfigsResult>("alicloud:mse/getNacosConfigs:getNacosConfigs", args ?? new GetNacosConfigsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Mse Nacos Configs of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.233.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var exampleNetwork = new AliCloud.Vpc.Network("example", new()
+        ///     {
+        ///         VpcName = "terraform-example",
+        ///         CidrBlock = "172.17.3.0/24",
+        ///     });
+        /// 
+        ///     var exampleSwitch = new AliCloud.Vpc.Switch("example", new()
+        ///     {
+        ///         VswitchName = "terraform-example",
+        ///         CidrBlock = "172.17.3.0/24",
+        ///         VpcId = exampleNetwork.Id,
+        ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///     });
+        /// 
+        ///     var exampleCluster = new AliCloud.Mse.Cluster("example", new()
+        ///     {
+        ///         ConnectionType = "slb",
+        ///         NetType = "privatenet",
+        ///         VswitchId = exampleSwitch.Id,
+        ///         ClusterSpecification = "MSE_SC_1_2_60_c",
+        ///         ClusterVersion = "NACOS_2_0_0",
+        ///         InstanceCount = 3,
+        ///         PubNetworkFlow = "1",
+        ///         ClusterAliasName = "example",
+        ///         MseVersion = "mse_pro",
+        ///         ClusterType = "Nacos-Ans",
+        ///     });
+        /// 
+        ///     var exampleEngineNamespace = new AliCloud.Mse.EngineNamespace("example", new()
+        ///     {
+        ///         InstanceId = exampleCluster.Id,
+        ///         NamespaceShowName = "example",
+        ///         NamespaceId = "example",
+        ///     });
+        /// 
+        ///     var exampleNacosConfig = new AliCloud.Mse.NacosConfig("example", new()
+        ///     {
+        ///         InstanceId = exampleCluster.Id,
+        ///         DataId = "example",
+        ///         Group = "example",
+        ///         NamespaceId = exampleEngineNamespace.NamespaceId,
+        ///         Content = "example",
+        ///         Type = "text",
+        ///         Tags = "example",
+        ///         AppName = "example",
+        ///         Desc = "example",
+        ///     });
+        /// 
+        ///     var exampleGetNacosConfigs = AliCloud.Mse.GetNacosConfigs.Invoke(new()
+        ///     {
+        ///         InstanceId = exampleCluster.Id,
+        ///         EnableDetails = true,
+        ///         NamespaceId = exampleEngineNamespace.NamespaceId,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetNacosConfigsResult> Invoke(GetNacosConfigsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNacosConfigsResult>("alicloud:mse/getNacosConfigs:getNacosConfigs", args ?? new GetNacosConfigsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -92,21 +92,11 @@ type GetServiceTopicsResult struct {
 }
 
 func GetServiceTopicsOutput(ctx *pulumi.Context, args GetServiceTopicsOutputArgs, opts ...pulumi.InvokeOption) GetServiceTopicsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetServiceTopicsResultOutput, error) {
 			args := v.(GetServiceTopicsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetServiceTopicsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:message/getServiceTopics:getServiceTopics", args, &rv, "", opts...)
-			if err != nil {
-				return GetServiceTopicsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetServiceTopicsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetServiceTopicsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:message/getServiceTopics:getServiceTopics", args, GetServiceTopicsResultOutput{}, options).(GetServiceTopicsResultOutput), nil
 		}).(GetServiceTopicsResultOutput)
 }
 

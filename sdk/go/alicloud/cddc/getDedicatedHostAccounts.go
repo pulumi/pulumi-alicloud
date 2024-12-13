@@ -80,21 +80,11 @@ type GetDedicatedHostAccountsResult struct {
 }
 
 func GetDedicatedHostAccountsOutput(ctx *pulumi.Context, args GetDedicatedHostAccountsOutputArgs, opts ...pulumi.InvokeOption) GetDedicatedHostAccountsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDedicatedHostAccountsResultOutput, error) {
 			args := v.(GetDedicatedHostAccountsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetDedicatedHostAccountsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:cddc/getDedicatedHostAccounts:getDedicatedHostAccounts", args, &rv, "", opts...)
-			if err != nil {
-				return GetDedicatedHostAccountsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetDedicatedHostAccountsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetDedicatedHostAccountsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:cddc/getDedicatedHostAccounts:getDedicatedHostAccounts", args, GetDedicatedHostAccountsResultOutput{}, options).(GetDedicatedHostAccountsResultOutput), nil
 		}).(GetDedicatedHostAccountsResultOutput)
 }
 

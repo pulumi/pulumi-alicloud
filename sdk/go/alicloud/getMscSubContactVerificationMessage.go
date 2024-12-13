@@ -78,21 +78,11 @@ type GetMscSubContactVerificationMessageResult struct {
 }
 
 func GetMscSubContactVerificationMessageOutput(ctx *pulumi.Context, args GetMscSubContactVerificationMessageOutputArgs, opts ...pulumi.InvokeOption) GetMscSubContactVerificationMessageResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetMscSubContactVerificationMessageResultOutput, error) {
 			args := v.(GetMscSubContactVerificationMessageArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetMscSubContactVerificationMessageResult
-			secret, err := ctx.InvokePackageRaw("alicloud:index/getMscSubContactVerificationMessage:getMscSubContactVerificationMessage", args, &rv, "", opts...)
-			if err != nil {
-				return GetMscSubContactVerificationMessageResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetMscSubContactVerificationMessageResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetMscSubContactVerificationMessageResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:index/getMscSubContactVerificationMessage:getMscSubContactVerificationMessage", args, GetMscSubContactVerificationMessageResultOutput{}, options).(GetMscSubContactVerificationMessageResultOutput), nil
 		}).(GetMscSubContactVerificationMessageResultOutput)
 }
 

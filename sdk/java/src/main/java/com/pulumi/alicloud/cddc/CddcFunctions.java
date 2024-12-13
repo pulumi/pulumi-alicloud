@@ -23,6 +23,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class CddcFunctions {
@@ -249,6 +250,51 @@ public final class CddcFunctions {
      * 
      */
     public static Output<GetDedicatedHostAccountsResult> getDedicatedHostAccounts(GetDedicatedHostAccountsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cddc/getDedicatedHostAccounts:getDedicatedHostAccounts", TypeShape.of(GetDedicatedHostAccountsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cddc Dedicated Host Accounts of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.148.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cddc.CddcFunctions;
+     * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CddcFunctions.getDedicatedHostAccounts();
+     * 
+     *         ctx.export("cddcDedicatedHostAccountId1", ids.applyValue(getDedicatedHostAccountsResult -> getDedicatedHostAccountsResult.accounts()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDedicatedHostAccountsResult> getDedicatedHostAccounts(GetDedicatedHostAccountsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cddc/getDedicatedHostAccounts:getDedicatedHostAccounts", TypeShape.of(GetDedicatedHostAccountsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -529,6 +575,53 @@ public final class CddcFunctions {
      * 
      */
     public static Output<GetDedicatedHostGroupsResult> getDedicatedHostGroups(GetDedicatedHostGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cddc/getDedicatedHostGroups:getDedicatedHostGroups", TypeShape.of(GetDedicatedHostGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cddc Dedicated Host Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.132.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cddc.CddcFunctions;
+     * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CddcFunctions.getDedicatedHostGroups(GetDedicatedHostGroupsArgs.builder()
+     *             .engine("MongoDB")
+     *             .build());
+     * 
+     *         ctx.export("cddcDedicatedHostGroupId", default_.id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDedicatedHostGroupsResult> getDedicatedHostGroups(GetDedicatedHostGroupsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cddc/getDedicatedHostGroups:getDedicatedHostGroups", TypeShape.of(GetDedicatedHostGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -919,6 +1012,92 @@ public final class CddcFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetDedicatedHostsResult> getDedicatedHosts(GetDedicatedHostsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cddc/getDedicatedHosts:getDedicatedHosts", TypeShape.of(GetDedicatedHostsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cddc Dedicated Hosts of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.147.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cddc.CddcFunctions;
+     * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .dedicatedHostGroupId("example_value")
+     *             .ids(            
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .build());
+     * 
+     *         ctx.export("cddcDedicatedHostId1", ids.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
+     *         final var status = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .dedicatedHostGroupId("example_value")
+     *             .ids(            
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .status("1")
+     *             .build());
+     * 
+     *         ctx.export("cddcDedicatedHostId2", status.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
+     *         final var zoneId = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .dedicatedHostGroupId("example_value")
+     *             .ids(            
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .zoneId("example_value")
+     *             .build());
+     * 
+     *         ctx.export("cddcDedicatedHostId3", zoneId.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
+     *         final var allocationStatus = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .dedicatedHostGroupId("example_value")
+     *             .ids(            
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .allocationStatus("Allocatable")
+     *             .build());
+     * 
+     *         ctx.export("cddcDedicatedHostId4", allocationStatus.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
+     *         final var hostType = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
+     *             .dedicatedHostGroupId("example_value")
+     *             .ids(            
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .hostType("dhg_cloud_ssd")
+     *             .build());
+     * 
+     *         ctx.export("cddcDedicatedHostId5", hostType.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDedicatedHostsResult> getDedicatedHostsPlain(GetDedicatedHostsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cddc/getDedicatedHosts:getDedicatedHosts", TypeShape.of(GetDedicatedHostsResult.class), args, Utilities.withVersion(options));
     }
@@ -947,6 +1126,15 @@ public final class CddcFunctions {
      * 
      */
     public static Output<GetHostEcsLevelInfosResult> getHostEcsLevelInfos(GetHostEcsLevelInfosArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cddc/getHostEcsLevelInfos:getHostEcsLevelInfos", TypeShape.of(GetHostEcsLevelInfosResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cddc Host Ecs Level Infos of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.147.0+.
+     * 
+     */
+    public static Output<GetHostEcsLevelInfosResult> getHostEcsLevelInfos(GetHostEcsLevelInfosArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cddc/getHostEcsLevelInfos:getHostEcsLevelInfos", TypeShape.of(GetHostEcsLevelInfosResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1181,6 +1369,51 @@ public final class CddcFunctions {
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cddc/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cddc Zones of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.147.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cddc.CddcFunctions;
+     * import com.pulumi.alicloud.cddc.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CddcFunctions.getZones();
+     * 
+     *         ctx.export("cddcZonesId1", example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cddc/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
     }
     /**

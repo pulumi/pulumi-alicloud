@@ -82,6 +82,42 @@ namespace Pulumi.AliCloud.Dns
         /// </summary>
         public static Output<GetAlidnsRecordsResult> Invoke(GetAlidnsRecordsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAlidnsRecordsResult>("alicloud:dns/getAlidnsRecords:getAlidnsRecords", args ?? new GetAlidnsRecordsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a list of Alidns Domain Records in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available since v1.86.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var recordsDs = AliCloud.Dns.GetAlidnsRecords.Invoke(new()
+        ///     {
+        ///         DomainName = "xiaozhu.top",
+        ///         Ids = new[]
+        ///         {
+        ///             "1978593525779****",
+        ///         },
+        ///         Type = "A",
+        ///         OutputFile = "records.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRecordId"] = recordsDs.Apply(getAlidnsRecordsResult =&gt; getAlidnsRecordsResult.Records[0]?.RecordId),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAlidnsRecordsResult> Invoke(GetAlidnsRecordsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAlidnsRecordsResult>("alicloud:dns/getAlidnsRecords:getAlidnsRecords", args ?? new GetAlidnsRecordsInvokeArgs(), options.WithDefaults());
     }
 
 

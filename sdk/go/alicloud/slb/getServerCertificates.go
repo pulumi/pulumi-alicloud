@@ -80,21 +80,11 @@ type GetServerCertificatesResult struct {
 }
 
 func GetServerCertificatesOutput(ctx *pulumi.Context, args GetServerCertificatesOutputArgs, opts ...pulumi.InvokeOption) GetServerCertificatesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetServerCertificatesResultOutput, error) {
 			args := v.(GetServerCertificatesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetServerCertificatesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:slb/getServerCertificates:getServerCertificates", args, &rv, "", opts...)
-			if err != nil {
-				return GetServerCertificatesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetServerCertificatesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetServerCertificatesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:slb/getServerCertificates:getServerCertificates", args, GetServerCertificatesResultOutput{}, options).(GetServerCertificatesResultOutput), nil
 		}).(GetServerCertificatesResultOutput)
 }
 

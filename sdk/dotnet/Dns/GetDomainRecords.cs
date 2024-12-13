@@ -22,6 +22,12 @@ namespace Pulumi.AliCloud.Dns
         /// </summary>
         public static Output<GetDomainRecordsResult> Invoke(GetDomainRecordsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDomainRecordsResult>("alicloud:dns/getDomainRecords:getDomainRecords", args ?? new GetDomainRecordsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **NOTE:** This resource has been deprecated from v1.3.2. Please use the datasource `alicloud.dns.getRecords` instead.
+        /// </summary>
+        public static Output<GetDomainRecordsResult> Invoke(GetDomainRecordsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDomainRecordsResult>("alicloud:dns/getDomainRecords:getDomainRecords", args ?? new GetDomainRecordsInvokeArgs(), options.WithDefaults());
     }
 
 

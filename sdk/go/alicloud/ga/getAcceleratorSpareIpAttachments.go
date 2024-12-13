@@ -81,21 +81,11 @@ type GetAcceleratorSpareIpAttachmentsResult struct {
 }
 
 func GetAcceleratorSpareIpAttachmentsOutput(ctx *pulumi.Context, args GetAcceleratorSpareIpAttachmentsOutputArgs, opts ...pulumi.InvokeOption) GetAcceleratorSpareIpAttachmentsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAcceleratorSpareIpAttachmentsResultOutput, error) {
 			args := v.(GetAcceleratorSpareIpAttachmentsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetAcceleratorSpareIpAttachmentsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:ga/getAcceleratorSpareIpAttachments:getAcceleratorSpareIpAttachments", args, &rv, "", opts...)
-			if err != nil {
-				return GetAcceleratorSpareIpAttachmentsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetAcceleratorSpareIpAttachmentsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetAcceleratorSpareIpAttachmentsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:ga/getAcceleratorSpareIpAttachments:getAcceleratorSpareIpAttachments", args, GetAcceleratorSpareIpAttachmentsResultOutput{}, options).(GetAcceleratorSpareIpAttachmentsResultOutput), nil
 		}).(GetAcceleratorSpareIpAttachmentsResultOutput)
 }
 

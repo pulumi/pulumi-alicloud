@@ -11,6 +11,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class DatabasegatewayFunctions {
@@ -272,6 +273,58 @@ public final class DatabasegatewayFunctions {
      * 
      */
     public static Output<GetGatewaysResult> getGateways(GetGatewaysArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:databasegateway/getGateways:getGateways", TypeShape.of(GetGatewaysResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Database Gateway Gateways of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.135.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.databasegateway.DatabasegatewayFunctions;
+     * import com.pulumi.alicloud.databasegateway.inputs.GetGatewaysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DatabasegatewayFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .ids("example_id")
+     *             .build());
+     * 
+     *         ctx.export("databaseGatewayGatewayId1", ids.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
+     *         final var nameRegex = DatabasegatewayFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .nameRegex("^my-Gateway")
+     *             .build());
+     * 
+     *         ctx.export("databaseGatewayGatewayId2", nameRegex.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGatewaysResult> getGateways(GetGatewaysArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:databasegateway/getGateways:getGateways", TypeShape.of(GetGatewaysResult.class), args, Utilities.withVersion(options));
     }
     /**

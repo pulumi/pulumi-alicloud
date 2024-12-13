@@ -86,21 +86,11 @@ type GetAclsResult struct {
 }
 
 func GetAclsOutput(ctx *pulumi.Context, args GetAclsOutputArgs, opts ...pulumi.InvokeOption) GetAclsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAclsResultOutput, error) {
 			args := v.(GetAclsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetAclsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:sag/getAcls:getAcls", args, &rv, "", opts...)
-			if err != nil {
-				return GetAclsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetAclsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetAclsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:sag/getAcls:getAcls", args, GetAclsResultOutput{}, options).(GetAclsResultOutput), nil
 		}).(GetAclsResultOutput)
 }
 

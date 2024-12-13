@@ -78,6 +78,40 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         public static Output<GetCrossRegionBackupsResult> Invoke(GetCrossRegionBackupsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCrossRegionBackupsResult>("alicloud:rds/getCrossRegionBackups:getCrossRegionBackups", args ?? new GetCrossRegionBackupsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Rds Parameter Groups of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.196.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var backups = AliCloud.Rds.GetCrossRegionBackups.Invoke(new()
+        ///     {
+        ///         DbInstanceId = "example_value",
+        ///         StartTime = "2022-12-01T00:00:00Z",
+        ///         EndTime = "2022-12-16T00:00:00Z",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRdsCrossRegionBackups"] = backups.Apply(getCrossRegionBackupsResult =&gt; getCrossRegionBackupsResult.Backups[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetCrossRegionBackupsResult> Invoke(GetCrossRegionBackupsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCrossRegionBackupsResult>("alicloud:rds/getCrossRegionBackups:getCrossRegionBackups", args ?? new GetCrossRegionBackupsInvokeArgs(), options.WithDefaults());
     }
 
 

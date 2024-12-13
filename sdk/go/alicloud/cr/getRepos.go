@@ -83,21 +83,11 @@ type GetReposResult struct {
 }
 
 func GetReposOutput(ctx *pulumi.Context, args GetReposOutputArgs, opts ...pulumi.InvokeOption) GetReposResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetReposResultOutput, error) {
 			args := v.(GetReposArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetReposResult
-			secret, err := ctx.InvokePackageRaw("alicloud:cr/getRepos:getRepos", args, &rv, "", opts...)
-			if err != nil {
-				return GetReposResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetReposResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetReposResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:cr/getRepos:getRepos", args, GetReposResultOutput{}, options).(GetReposResultOutput), nil
 		}).(GetReposResultOutput)
 }
 

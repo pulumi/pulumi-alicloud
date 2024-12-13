@@ -74,6 +74,38 @@ namespace Pulumi.AliCloud.CR
         /// </summary>
         public static Output<GetReposResult> Invoke(GetReposInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetReposResult>("alicloud:cr/getRepos:getRepos", args ?? new GetReposInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a list Container Registry repositories on Alibaba Cloud.
+        /// 
+        /// &gt; **NOTE:** Available in v1.35.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Declare the data source
+        ///     var myRepos = AliCloud.CR.GetRepos.Invoke(new()
+        ///     {
+        ///         NameRegex = "my-repos",
+        ///         OutputFile = "my-repo-json",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["output"] = myRepos.Apply(getReposResult =&gt; getReposResult.Repos),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetReposResult> Invoke(GetReposInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetReposResult>("alicloud:cr/getRepos:getRepos", args ?? new GetReposInvokeArgs(), options.WithDefaults());
     }
 
 

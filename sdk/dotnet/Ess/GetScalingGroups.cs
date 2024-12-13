@@ -76,6 +76,39 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         public static Output<GetScalingGroupsResult> Invoke(GetScalingGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetScalingGroupsResult>("alicloud:ess/getScalingGroups:getScalingGroups", args ?? new GetScalingGroupsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides available scaling group resources. 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var scalinggroupsDs = AliCloud.Ess.GetScalingGroups.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "scaling_group_id1",
+        ///             "scaling_group_id2",
+        ///         },
+        ///         NameRegex = "scaling_group_name",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstScalingGroup"] = scalinggroupsDs.Apply(getScalingGroupsResult =&gt; getScalingGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetScalingGroupsResult> Invoke(GetScalingGroupsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetScalingGroupsResult>("alicloud:ess/getScalingGroups:getScalingGroups", args ?? new GetScalingGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

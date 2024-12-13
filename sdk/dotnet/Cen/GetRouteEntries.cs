@@ -68,6 +68,35 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public static Output<GetRouteEntriesResult> Invoke(GetRouteEntriesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRouteEntriesResult>("alicloud:cen/getRouteEntries:getRouteEntries", args ?? new GetRouteEntriesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides CEN Route Entries available to the user.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var entry = AliCloud.Cen.GetRouteEntries.Invoke(new()
+        ///     {
+        ///         InstanceId = "cen-id1",
+        ///         RouteTableId = "vtb-id1",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRouteEntriesRouteEntryCidrBlock"] = entry.Apply(getRouteEntriesResult =&gt; getRouteEntriesResult.Entries[0]?.CidrBlock),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRouteEntriesResult> Invoke(GetRouteEntriesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRouteEntriesResult>("alicloud:cen/getRouteEntries:getRouteEntries", args ?? new GetRouteEntriesInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -92,6 +92,47 @@ namespace Pulumi.AliCloud.Bp
         /// </summary>
         public static Output<GetStudioApplicationsResult> Invoke(GetStudioApplicationsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetStudioApplicationsResult>("alicloud:bp/getStudioApplications:getStudioApplications", args ?? new GetStudioApplicationsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Cloud Architect Design Tools (BPStudio) Applications of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.192.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Bp.GetStudioApplications.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Bp.GetStudioApplications.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Application",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["bpStudioApplicationId1"] = ids.Apply(getStudioApplicationsResult =&gt; getStudioApplicationsResult.Applications[0]?.Id),
+        ///         ["bpStudioApplicationId2"] = nameRegex.Apply(getStudioApplicationsResult =&gt; getStudioApplicationsResult.Applications[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetStudioApplicationsResult> Invoke(GetStudioApplicationsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetStudioApplicationsResult>("alicloud:bp/getStudioApplications:getStudioApplications", args ?? new GetStudioApplicationsInvokeArgs(), options.WithDefaults());
     }
 
 

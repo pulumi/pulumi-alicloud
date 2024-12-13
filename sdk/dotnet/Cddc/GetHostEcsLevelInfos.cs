@@ -26,6 +26,14 @@ namespace Pulumi.AliCloud.Cddc
         /// </summary>
         public static Output<GetHostEcsLevelInfosResult> Invoke(GetHostEcsLevelInfosInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHostEcsLevelInfosResult>("alicloud:cddc/getHostEcsLevelInfos:getHostEcsLevelInfos", args ?? new GetHostEcsLevelInfosInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Cddc Host Ecs Level Infos of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.147.0+.
+        /// </summary>
+        public static Output<GetHostEcsLevelInfosResult> Invoke(GetHostEcsLevelInfosInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetHostEcsLevelInfosResult>("alicloud:cddc/getHostEcsLevelInfos:getHostEcsLevelInfos", args ?? new GetHostEcsLevelInfosInvokeArgs(), options.WithDefaults());
     }
 
 

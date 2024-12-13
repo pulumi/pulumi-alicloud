@@ -102,6 +102,52 @@ namespace Pulumi.AliCloud.Ddos
         /// </summary>
         public static Output<GetDdosBgpInstancesResult> Invoke(GetDdosBgpInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDdosBgpInstancesResult>("alicloud:ddos/getDdosBgpInstances:getDdosBgpInstances", args ?? new GetDdosBgpInstancesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a list of Anti-DDoS Advanced instances in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available in v1.183.0+ .
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "tf-example";
+        ///     var instanceDdosBgpInstance = new AliCloud.Ddos.DdosBgpInstance("instance", new()
+        ///     {
+        ///         Name = name,
+        ///         BaseBandwidth = 20,
+        ///         Bandwidth = -1,
+        ///         IpCount = 100,
+        ///         IpType = "IPv4",
+        ///         NormalBandwidth = 100,
+        ///         Type = "Enterprise",
+        ///     });
+        /// 
+        ///     var instance = AliCloud.Ddos.GetDdosBgpInstances.Invoke(new()
+        ///     {
+        ///         NameRegex = "ddosbgp",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["instance"] = new[]
+        ///         {
+        ///             instance,
+        ///         }.Select(__item =&gt; __item.Id).ToList(),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDdosBgpInstancesResult> Invoke(GetDdosBgpInstancesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDdosBgpInstancesResult>("alicloud:ddos/getDdosBgpInstances:getDdosBgpInstances", args ?? new GetDdosBgpInstancesInvokeArgs(), options.WithDefaults());
     }
 
 

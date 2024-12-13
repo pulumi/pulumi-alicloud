@@ -95,21 +95,11 @@ type GetTrafficMarkingPoliciesResult struct {
 }
 
 func GetTrafficMarkingPoliciesOutput(ctx *pulumi.Context, args GetTrafficMarkingPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetTrafficMarkingPoliciesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetTrafficMarkingPoliciesResultOutput, error) {
 			args := v.(GetTrafficMarkingPoliciesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetTrafficMarkingPoliciesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:cen/getTrafficMarkingPolicies:getTrafficMarkingPolicies", args, &rv, "", opts...)
-			if err != nil {
-				return GetTrafficMarkingPoliciesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetTrafficMarkingPoliciesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetTrafficMarkingPoliciesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:cen/getTrafficMarkingPolicies:getTrafficMarkingPolicies", args, GetTrafficMarkingPoliciesResultOutput{}, options).(GetTrafficMarkingPoliciesResultOutput), nil
 		}).(GetTrafficMarkingPoliciesResultOutput)
 }
 

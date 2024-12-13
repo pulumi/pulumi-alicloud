@@ -68,6 +68,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class GaFunctions {
@@ -219,6 +220,56 @@ public final class GaFunctions {
      * 
      */
     public static Output<GetAcceleratorSpareIpAttachmentsResult> getAcceleratorSpareIpAttachments(GetAcceleratorSpareIpAttachmentsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ga/getAcceleratorSpareIpAttachments:getAcceleratorSpareIpAttachments", TypeShape.of(GetAcceleratorSpareIpAttachmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Ga Accelerator Spare Ip Attachments of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.167.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetAcceleratorSpareIpAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getAcceleratorSpareIpAttachments(GetAcceleratorSpareIpAttachmentsArgs.builder()
+     *             .acceleratorId("example_value")
+     *             .ids(            
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .build());
+     * 
+     *         ctx.export("gaAcceleratorSpareIpAttachmentId1", ids.applyValue(getAcceleratorSpareIpAttachmentsResult -> getAcceleratorSpareIpAttachmentsResult.attachments()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAcceleratorSpareIpAttachmentsResult> getAcceleratorSpareIpAttachments(GetAcceleratorSpareIpAttachmentsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:ga/getAcceleratorSpareIpAttachments:getAcceleratorSpareIpAttachments", TypeShape.of(GetAcceleratorSpareIpAttachmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -504,6 +555,53 @@ public final class GaFunctions {
      * 
      */
     public static Output<GetAcceleratorsResult> getAccelerators(GetAcceleratorsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ga/getAccelerators:getAccelerators", TypeShape.of(GetAcceleratorsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Accelerators of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.111.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetAcceleratorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
+     *             .nameRegex("tf")
+     *             .build());
+     * 
+     *         ctx.export("firstGaAcceleratorId", example.applyValue(getAcceleratorsResult -> getAcceleratorsResult.accelerators()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAcceleratorsResult> getAccelerators(GetAcceleratorsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:ga/getAccelerators:getAccelerators", TypeShape.of(GetAcceleratorsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -850,6 +948,56 @@ public final class GaFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetAclsResult> getAcls(GetAclsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ga/getAcls:getAcls", TypeShape.of(GetAclsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Ga Acls of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.150.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetAclsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getAcls();
+     * 
+     *         ctx.export("gaAclId1", ids.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *         final var nameRegex = GaFunctions.getAcls(GetAclsArgs.builder()
+     *             .nameRegex("^my-Acl")
+     *             .build());
+     * 
+     *         ctx.export("gaAclId2", nameRegex.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAclsResult> getAclsPlain(GetAclsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ga/getAcls:getAcls", TypeShape.of(GetAclsResult.class), args, Utilities.withVersion(options));
     }
@@ -1004,6 +1152,57 @@ public final class GaFunctions {
      * 
      */
     public static Output<GetAdditionalCertificatesResult> getAdditionalCertificates(GetAdditionalCertificatesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ga/getAdditionalCertificates:getAdditionalCertificates", TypeShape.of(GetAdditionalCertificatesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Ga Additional Certificates of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.150.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetAdditionalCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getAdditionalCertificates(GetAdditionalCertificatesArgs.builder()
+     *             .acceleratorId("example_value")
+     *             .listenerId("example_value")
+     *             .ids(            
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .build());
+     * 
+     *         ctx.export("gaAdditionalCertificateId1", ids.applyValue(getAdditionalCertificatesResult -> getAdditionalCertificatesResult.certificates()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAdditionalCertificatesResult> getAdditionalCertificates(GetAdditionalCertificatesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:ga/getAdditionalCertificates:getAdditionalCertificates", TypeShape.of(GetAdditionalCertificatesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1342,6 +1541,54 @@ public final class GaFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetBandwidthPackagesResult> getBandwidthPackages(GetBandwidthPackagesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ga/getBandwidthPackages:getBandwidthPackages", TypeShape.of(GetBandwidthPackagesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Bandwidth Packages of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.112.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetBandwidthPackagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GaFunctions.getBandwidthPackages(GetBandwidthPackagesArgs.builder()
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
+     *             .build());
+     * 
+     *         ctx.export("firstGaBandwidthPackageId", example.applyValue(getBandwidthPackagesResult -> getBandwidthPackagesResult.packages()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetBandwidthPackagesResult> getBandwidthPackagesPlain(GetBandwidthPackagesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ga/getBandwidthPackages:getBandwidthPackages", TypeShape.of(GetBandwidthPackagesResult.class), args, Utilities.withVersion(options));
     }
@@ -1534,6 +1781,54 @@ public final class GaFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetBasicAccelerateIpEndpointRelationsResult> getBasicAccelerateIpEndpointRelations(GetBasicAccelerateIpEndpointRelationsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ga/getBasicAccelerateIpEndpointRelations:getBasicAccelerateIpEndpointRelations", TypeShape.of(GetBasicAccelerateIpEndpointRelationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Basic Accelerate Ip Endpoint Relations of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.194.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetBasicAccelerateIpEndpointRelationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getBasicAccelerateIpEndpointRelations(GetBasicAccelerateIpEndpointRelationsArgs.builder()
+     *             .ids("example_id")
+     *             .acceleratorId("example_id")
+     *             .build());
+     * 
+     *         ctx.export("gaBasicAccelerateIpEndpointRelationsId1", ids.applyValue(getBasicAccelerateIpEndpointRelationsResult -> getBasicAccelerateIpEndpointRelationsResult.relations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetBasicAccelerateIpEndpointRelationsResult> getBasicAccelerateIpEndpointRelationsPlain(GetBasicAccelerateIpEndpointRelationsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ga/getBasicAccelerateIpEndpointRelations:getBasicAccelerateIpEndpointRelations", TypeShape.of(GetBasicAccelerateIpEndpointRelationsResult.class), args, Utilities.withVersion(options));
     }
@@ -1679,6 +1974,54 @@ public final class GaFunctions {
      * 
      */
     public static Output<GetBasicAccelerateIpsResult> getBasicAccelerateIps(GetBasicAccelerateIpsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ga/getBasicAccelerateIps:getBasicAccelerateIps", TypeShape.of(GetBasicAccelerateIpsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Basic Accelerate IPs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.194.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetBasicAccelerateIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getBasicAccelerateIps(GetBasicAccelerateIpsArgs.builder()
+     *             .ids("example_id")
+     *             .ipSetId("example_ip_set_id")
+     *             .build());
+     * 
+     *         ctx.export("gaBasicAccelerateIpId1", ids.applyValue(getBasicAccelerateIpsResult -> getBasicAccelerateIpsResult.ips()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetBasicAccelerateIpsResult> getBasicAccelerateIps(GetBasicAccelerateIpsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:ga/getBasicAccelerateIps:getBasicAccelerateIps", TypeShape.of(GetBasicAccelerateIpsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2038,6 +2381,58 @@ public final class GaFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetBasicAcceleratorsResult> getBasicAccelerators(GetBasicAcceleratorsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ga/getBasicAccelerators:getBasicAccelerators", TypeShape.of(GetBasicAcceleratorsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Basic Accelerators of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.194.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetBasicAcceleratorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getBasicAccelerators(GetBasicAcceleratorsArgs.builder()
+     *             .ids("example_id")
+     *             .build());
+     * 
+     *         ctx.export("gaBasicAcceleratorId1", ids.applyValue(getBasicAcceleratorsResult -> getBasicAcceleratorsResult.accelerators()[0].id()));
+     *         final var nameRegex = GaFunctions.getBasicAccelerators(GetBasicAcceleratorsArgs.builder()
+     *             .nameRegex("tf-example")
+     *             .build());
+     * 
+     *         ctx.export("gaBasicAcceleratorId2", nameRegex.applyValue(getBasicAcceleratorsResult -> getBasicAcceleratorsResult.accelerators()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetBasicAcceleratorsResult> getBasicAcceleratorsPlain(GetBasicAcceleratorsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ga/getBasicAccelerators:getBasicAccelerators", TypeShape.of(GetBasicAcceleratorsResult.class), args, Utilities.withVersion(options));
     }
@@ -2254,6 +2649,60 @@ public final class GaFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetBasicEndpointsResult> getBasicEndpoints(GetBasicEndpointsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ga/getBasicEndpoints:getBasicEndpoints", TypeShape.of(GetBasicEndpointsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Basic Endpoints of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.194.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetBasicEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getBasicEndpoints(GetBasicEndpointsArgs.builder()
+     *             .ids("example_id")
+     *             .endpointGroupId("example_id")
+     *             .build());
+     * 
+     *         ctx.export("gaBasicEndpointsId1", ids.applyValue(getBasicEndpointsResult -> getBasicEndpointsResult.endpoints()[0].id()));
+     *         final var nameRegex = GaFunctions.getBasicEndpoints(GetBasicEndpointsArgs.builder()
+     *             .nameRegex("tf-example")
+     *             .endpointGroupId("example_id")
+     *             .build());
+     * 
+     *         ctx.export("gaBasicEndpointsId2", nameRegex.applyValue(getBasicEndpointsResult -> getBasicEndpointsResult.endpoints()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetBasicEndpointsResult> getBasicEndpointsPlain(GetBasicEndpointsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ga/getBasicEndpoints:getBasicEndpoints", TypeShape.of(GetBasicEndpointsResult.class), args, Utilities.withVersion(options));
     }
@@ -2399,6 +2848,54 @@ public final class GaFunctions {
      * 
      */
     public static Output<GetCustomRoutingEndpointGroupDestinationsResult> getCustomRoutingEndpointGroupDestinations(GetCustomRoutingEndpointGroupDestinationsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ga/getCustomRoutingEndpointGroupDestinations:getCustomRoutingEndpointGroupDestinations", TypeShape.of(GetCustomRoutingEndpointGroupDestinationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Group Destinations of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in 1.197.0+
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetCustomRoutingEndpointGroupDestinationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getCustomRoutingEndpointGroupDestinations(GetCustomRoutingEndpointGroupDestinationsArgs.builder()
+     *             .ids("example_id")
+     *             .acceleratorId("your_accelerator_id")
+     *             .build());
+     * 
+     *         ctx.export("gaCustomRoutingEndpointGroupDestinationsId1", ids.applyValue(getCustomRoutingEndpointGroupDestinationsResult -> getCustomRoutingEndpointGroupDestinationsResult.customRoutingEndpointGroupDestinations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCustomRoutingEndpointGroupDestinationsResult> getCustomRoutingEndpointGroupDestinations(GetCustomRoutingEndpointGroupDestinationsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:ga/getCustomRoutingEndpointGroupDestinations:getCustomRoutingEndpointGroupDestinations", TypeShape.of(GetCustomRoutingEndpointGroupDestinationsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2662,6 +3159,60 @@ public final class GaFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetCustomRoutingEndpointGroupsResult> getCustomRoutingEndpointGroups(GetCustomRoutingEndpointGroupsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ga/getCustomRoutingEndpointGroups:getCustomRoutingEndpointGroups", TypeShape.of(GetCustomRoutingEndpointGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in 1.197.0+
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetCustomRoutingEndpointGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getCustomRoutingEndpointGroups(GetCustomRoutingEndpointGroupsArgs.builder()
+     *             .ids("example_id")
+     *             .acceleratorId("your_accelerator_id")
+     *             .build());
+     * 
+     *         ctx.export("gaCustomRoutingEndpointGroupsId1", ids.applyValue(getCustomRoutingEndpointGroupsResult -> getCustomRoutingEndpointGroupsResult.groups()[0].id()));
+     *         final var nameRegex = GaFunctions.getCustomRoutingEndpointGroups(GetCustomRoutingEndpointGroupsArgs.builder()
+     *             .nameRegex("tf-example")
+     *             .acceleratorId("your_accelerator_id")
+     *             .build());
+     * 
+     *         ctx.export("gaCustomRoutingEndpointGroupsId2", nameRegex.applyValue(getCustomRoutingEndpointGroupsResult -> getCustomRoutingEndpointGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetCustomRoutingEndpointGroupsResult> getCustomRoutingEndpointGroupsPlain(GetCustomRoutingEndpointGroupsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ga/getCustomRoutingEndpointGroups:getCustomRoutingEndpointGroups", TypeShape.of(GetCustomRoutingEndpointGroupsResult.class), args, Utilities.withVersion(options));
     }
@@ -2807,6 +3358,54 @@ public final class GaFunctions {
      * 
      */
     public static Output<GetCustomRoutingEndpointTrafficPoliciesResult> getCustomRoutingEndpointTrafficPolicies(GetCustomRoutingEndpointTrafficPoliciesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ga/getCustomRoutingEndpointTrafficPolicies:getCustomRoutingEndpointTrafficPolicies", TypeShape.of(GetCustomRoutingEndpointTrafficPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Traffic Policies of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in 1.197.0+
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetCustomRoutingEndpointTrafficPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getCustomRoutingEndpointTrafficPolicies(GetCustomRoutingEndpointTrafficPoliciesArgs.builder()
+     *             .ids("example_id")
+     *             .acceleratorId("your_accelerator_id")
+     *             .build());
+     * 
+     *         ctx.export("gaCustomRoutingEndpointTrafficPoliciesId1", ids.applyValue(getCustomRoutingEndpointTrafficPoliciesResult -> getCustomRoutingEndpointTrafficPoliciesResult.customRoutingEndpointTrafficPolicies()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCustomRoutingEndpointTrafficPoliciesResult> getCustomRoutingEndpointTrafficPolicies(GetCustomRoutingEndpointTrafficPoliciesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:ga/getCustomRoutingEndpointTrafficPolicies:getCustomRoutingEndpointTrafficPolicies", TypeShape.of(GetCustomRoutingEndpointTrafficPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -3046,6 +3645,54 @@ public final class GaFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetCustomRoutingEndpointsResult> getCustomRoutingEndpoints(GetCustomRoutingEndpointsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ga/getCustomRoutingEndpoints:getCustomRoutingEndpoints", TypeShape.of(GetCustomRoutingEndpointsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Custom Routing Endpoints of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in 1.197.0+
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetCustomRoutingEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getCustomRoutingEndpoints(GetCustomRoutingEndpointsArgs.builder()
+     *             .ids("example_id")
+     *             .acceleratorId("your_accelerator_id")
+     *             .build());
+     * 
+     *         ctx.export("gaCustomRoutingEndpointsId1", ids.applyValue(getCustomRoutingEndpointsResult -> getCustomRoutingEndpointsResult.customRoutingEndpoints()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetCustomRoutingEndpointsResult> getCustomRoutingEndpointsPlain(GetCustomRoutingEndpointsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ga/getCustomRoutingEndpoints:getCustomRoutingEndpoints", TypeShape.of(GetCustomRoutingEndpointsResult.class), args, Utilities.withVersion(options));
     }
@@ -3188,6 +3835,53 @@ public final class GaFunctions {
      * 
      */
     public static Output<GetCustomRoutingPortMappingsResult> getCustomRoutingPortMappings(GetCustomRoutingPortMappingsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ga/getCustomRoutingPortMappings:getCustomRoutingPortMappings", TypeShape.of(GetCustomRoutingPortMappingsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Custom Routing Port Mappings of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in 1.197.0+
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetCustomRoutingPortMappingsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = GaFunctions.getCustomRoutingPortMappings(GetCustomRoutingPortMappingsArgs.builder()
+     *             .acceleratorId("your_accelerator_id")
+     *             .build());
+     * 
+     *         ctx.export("gaCustomRoutingPortMappingsAcceleratorId1", default_.customRoutingPortMappings()[0].acceleratorId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCustomRoutingPortMappingsResult> getCustomRoutingPortMappings(GetCustomRoutingPortMappingsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:ga/getCustomRoutingPortMappings:getCustomRoutingPortMappings", TypeShape.of(GetCustomRoutingPortMappingsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -3624,6 +4318,71 @@ public final class GaFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetDomainsResult> getDomains(GetDomainsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ga/getDomains:getDomains", TypeShape.of(GetDomainsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Ga Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain)
+     * 
+     * &gt; **NOTE:** Available in 1.197.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetAcceleratorsArgs;
+     * import com.pulumi.alicloud.ga.Accelerator;
+     * import com.pulumi.alicloud.ga.AcceleratorArgs;
+     * import com.pulumi.alicloud.ga.inputs.GetDomainsArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
+     *             .status("active")
+     *             .build());
+     * 
+     *         for (var i = 0; i < default_.accelerators().length() > 0 ? 0 : 1; i++) {
+     *             new Accelerator("defaultAccelerator-" + i, AcceleratorArgs.builder()
+     *                 .duration(1)
+     *                 .autoUseCoupon(true)
+     *                 .spec("1")
+     *                 .build());
+     * 
+     *         
+     * }
+     *         final var acceleratorId = default_.accelerators().length() > 0 ? default_.accelerators()[0].id() : defaultAccelerator[0].id();
+     * 
+     *         final var defaultGetDomains = GaFunctions.getDomains(GetDomainsArgs.builder()
+     *             .acceleratorId(acceleratorIdLocals)
+     *             .domain("your_domain")
+     *             .build());
+     * 
+     *         ctx.export("alicloudGaDomainExampleId", defaultGetDomains.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDomainsResult> getDomainsPlain(GetDomainsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ga/getDomains:getDomains", TypeShape.of(GetDomainsResult.class), args, Utilities.withVersion(options));
     }
@@ -3766,6 +4525,53 @@ public final class GaFunctions {
      * 
      */
     public static Output<GetEndpointGroupIpAddressCidrBlocksResult> getEndpointGroupIpAddressCidrBlocks(GetEndpointGroupIpAddressCidrBlocksArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ga/getEndpointGroupIpAddressCidrBlocks:getEndpointGroupIpAddressCidrBlocks", TypeShape.of(GetEndpointGroupIpAddressCidrBlocksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Endpoint Group Ip Address Cidr Blocks of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.213.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetEndpointGroupIpAddressCidrBlocksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = GaFunctions.getEndpointGroupIpAddressCidrBlocks(GetEndpointGroupIpAddressCidrBlocksArgs.builder()
+     *             .endpointGroupRegion("cn-hangzhou")
+     *             .build());
+     * 
+     *         ctx.export("gaEndpointGroupIpAddressCidrBlocksEndpointGroupRegion", default_.endpointGroupIpAddressCidrBlocks()[0].endpointGroupRegion());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEndpointGroupIpAddressCidrBlocksResult> getEndpointGroupIpAddressCidrBlocks(GetEndpointGroupIpAddressCidrBlocksArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:ga/getEndpointGroupIpAddressCidrBlocks:getEndpointGroupIpAddressCidrBlocks", TypeShape.of(GetEndpointGroupIpAddressCidrBlocksResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -4316,6 +5122,132 @@ public final class GaFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetEndpointGroupsResult> getEndpointGroups(GetEndpointGroupsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ga/getEndpointGroups:getEndpointGroups", TypeShape.of(GetEndpointGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Endpoint Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.113.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetAcceleratorsArgs;
+     * import com.pulumi.alicloud.ga.BandwidthPackage;
+     * import com.pulumi.alicloud.ga.BandwidthPackageArgs;
+     * import com.pulumi.alicloud.ga.BandwidthPackageAttachment;
+     * import com.pulumi.alicloud.ga.BandwidthPackageAttachmentArgs;
+     * import com.pulumi.alicloud.ga.Listener;
+     * import com.pulumi.alicloud.ga.ListenerArgs;
+     * import com.pulumi.alicloud.ga.inputs.ListenerPortRangeArgs;
+     * import com.pulumi.alicloud.ecs.EipAddress;
+     * import com.pulumi.alicloud.ecs.EipAddressArgs;
+     * import com.pulumi.alicloud.ga.EndpointGroup;
+     * import com.pulumi.alicloud.ga.EndpointGroupArgs;
+     * import com.pulumi.alicloud.ga.inputs.EndpointGroupPortOverridesArgs;
+     * import com.pulumi.alicloud.ga.inputs.EndpointGroupEndpointConfigurationArgs;
+     * import com.pulumi.alicloud.ga.inputs.GetEndpointGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var region = config.get("region").orElse("cn-hangzhou");
+     *         final var name = config.get("name").orElse("tf-example");
+     *         final var default = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
+     *             .status("active")
+     *             .build());
+     * 
+     *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()
+     *             .bandwidth(100)
+     *             .type("Basic")
+     *             .bandwidthType("Basic")
+     *             .paymentType("PayAsYouGo")
+     *             .billingType("PayBy95")
+     *             .ratio(30)
+     *             .bandwidthPackageName(name)
+     *             .autoPay(true)
+     *             .autoUseCoupon(true)
+     *             .build());
+     * 
+     *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()
+     *             .acceleratorId(default_.ids()[0])
+     *             .bandwidthPackageId(defaultBandwidthPackage.id())
+     *             .build());
+     * 
+     *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()
+     *             .acceleratorId(defaultBandwidthPackageAttachment.acceleratorId())
+     *             .clientAffinity("SOURCE_IP")
+     *             .protocol("UDP")
+     *             .name(name)
+     *             .portRanges(ListenerPortRangeArgs.builder()
+     *                 .fromPort("60")
+     *                 .toPort("70")
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()
+     *             .bandwidth("10")
+     *             .internetChargeType("PayByBandwidth")
+     *             .addressName(name)
+     *             .build());
+     * 
+     *         var defaultEndpointGroup = new EndpointGroup("defaultEndpointGroup", EndpointGroupArgs.builder()
+     *             .acceleratorId(defaultListener.acceleratorId())
+     *             .listenerId(defaultListener.id())
+     *             .description(name)
+     *             .name(name)
+     *             .thresholdCount(4)
+     *             .trafficPercentage(20)
+     *             .endpointGroupRegion("cn-hangzhou")
+     *             .healthCheckIntervalSeconds("3")
+     *             .healthCheckPath("/healthcheck")
+     *             .healthCheckPort("9999")
+     *             .healthCheckProtocol("http")
+     *             .portOverrides(EndpointGroupPortOverridesArgs.builder()
+     *                 .endpointPort("10")
+     *                 .listenerPort("60")
+     *                 .build())
+     *             .endpointConfigurations(EndpointGroupEndpointConfigurationArgs.builder()
+     *                 .endpoint(defaultEipAddress.ipAddress())
+     *                 .type("PublicIp")
+     *                 .weight("20")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var defaultGetEndpointGroups = GaFunctions.getEndpointGroups(GetEndpointGroupsArgs.builder()
+     *             .acceleratorId(defaultEndpointGroup.acceleratorId())
+     *             .ids(defaultEndpointGroup.id())
+     *             .build());
+     * 
+     *         ctx.export("firstGaEndpointGroupId", defaultGetEndpointGroups.applyValue(getEndpointGroupsResult -> getEndpointGroupsResult).applyValue(defaultGetEndpointGroups -> defaultGetEndpointGroups.applyValue(getEndpointGroupsResult -> getEndpointGroupsResult.groups()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetEndpointGroupsResult> getEndpointGroupsPlain(GetEndpointGroupsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ga/getEndpointGroups:getEndpointGroups", TypeShape.of(GetEndpointGroupsResult.class), args, Utilities.withVersion(options));
     }
@@ -4464,6 +5396,55 @@ public final class GaFunctions {
      * 
      */
     public static Output<GetForwardingRulesResult> getForwardingRules(GetForwardingRulesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ga/getForwardingRules:getForwardingRules", TypeShape.of(GetForwardingRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Forwarding Rules of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.120.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetForwardingRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GaFunctions.getForwardingRules(GetForwardingRulesArgs.builder()
+     *             .acceleratorId("example_value")
+     *             .listenerId("example_value")
+     *             .ids("example_value")
+     *             .build());
+     * 
+     *         ctx.export("firstGaForwardingRuleId", example.applyValue(getForwardingRulesResult -> getForwardingRulesResult.forwardingRules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetForwardingRulesResult> getForwardingRules(GetForwardingRulesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:ga/getForwardingRules:getForwardingRules", TypeShape.of(GetForwardingRulesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -4704,6 +5685,54 @@ public final class GaFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetIpSetsResult> getIpSets(GetIpSetsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ga/getIpSets:getIpSets", TypeShape.of(GetIpSetsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Ip Sets of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.113.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetIpSetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GaFunctions.getIpSets(GetIpSetsArgs.builder()
+     *             .acceleratorId("example_value")
+     *             .ids("example_value")
+     *             .build());
+     * 
+     *         ctx.export("firstGaIpSetId", example.applyValue(getIpSetsResult -> getIpSetsResult.sets()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetIpSetsResult> getIpSetsPlain(GetIpSetsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ga/getIpSets:getIpSets", TypeShape.of(GetIpSetsResult.class), args, Utilities.withVersion(options));
     }
@@ -4852,6 +5881,55 @@ public final class GaFunctions {
      * 
      */
     public static Output<GetListenersResult> getListeners(GetListenersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ga/getListeners:getListeners", TypeShape.of(GetListenersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Listeners of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.111.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetListenersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GaFunctions.getListeners(GetListenersArgs.builder()
+     *             .acceleratorId("example_value")
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
+     *             .build());
+     * 
+     *         ctx.export("firstGaListenerId", example.applyValue(getListenersResult -> getListenersResult.listeners()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetListenersResult> getListeners(GetListenersArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:ga/getListeners:getListeners", TypeShape.of(GetListenersResult.class), args, Utilities.withVersion(options));
     }
     /**

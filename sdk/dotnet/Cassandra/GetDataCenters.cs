@@ -70,6 +70,36 @@ namespace Pulumi.AliCloud.Cassandra
         /// </summary>
         public static Output<GetDataCentersResult> Invoke(GetDataCentersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDataCentersResult>("alicloud:cassandra/getDataCenters:getDataCenters", args ?? new GetDataCentersInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `alicloud.cassandra.getDataCenters` data source provides a collection of Cassandra Data Centers available in Alicloud account.
+        /// Filters support regular expression for the cluster name or ids.
+        /// 
+        /// &gt; **NOTE:**  Available in 1.88.0+.
+        /// 
+        /// &gt; **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var cassandra = AliCloud.Cassandra.GetDataCenters.Invoke(new()
+        ///     {
+        ///         NameRegex = "tf_testAccCassandra_dc",
+        ///         ClusterId = "cds-xxxxx",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDataCentersResult> Invoke(GetDataCentersInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDataCentersResult>("alicloud:cassandra/getDataCenters:getDataCenters", args ?? new GetDataCentersInvokeArgs(), options.WithDefaults());
     }
 
 

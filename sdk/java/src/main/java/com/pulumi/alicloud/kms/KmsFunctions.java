@@ -32,6 +32,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class KmsFunctions {
@@ -314,6 +315,53 @@ public final class KmsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetAliasesResult> getAliases(GetAliasesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:kms/getAliases:getAliases", TypeShape.of(GetAliasesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list of KMS aliases in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available in v1.79.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kms.KmsFunctions;
+     * import com.pulumi.alicloud.kms.inputs.GetAliasesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Declare the data source
+     *         final var kmsAliases = KmsFunctions.getAliases(GetAliasesArgs.builder()
+     *             .ids("d89e8a53-b708-41aa-8c67-6873axxx")
+     *             .nameRegex("alias/tf-testKmsAlias_123")
+     *             .build());
+     * 
+     *         ctx.export("firstKeyId", kmsKeysDs.keys()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAliasesResult> getAliasesPlain(GetAliasesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:kms/getAliases:getAliases", TypeShape.of(GetAliasesResult.class), args, Utilities.withVersion(options));
     }
@@ -514,6 +562,56 @@ public final class KmsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetCiphertextResult> getCiphertext(GetCiphertextArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:kms/getCiphertext:getCiphertext", TypeShape.of(GetCiphertextResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kms.Key;
+     * import com.pulumi.alicloud.kms.KeyArgs;
+     * import com.pulumi.alicloud.kms.KmsFunctions;
+     * import com.pulumi.alicloud.kms.inputs.GetCiphertextArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var key = new Key("key", KeyArgs.builder()
+     *             .description("example key")
+     *             .isEnabled(true)
+     *             .build());
+     * 
+     *         final var encrypted = KmsFunctions.getCiphertext(GetCiphertextArgs.builder()
+     *             .keyId(key.id())
+     *             .plaintext("example")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetCiphertextResult> getCiphertextPlain(GetCiphertextPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:kms/getCiphertext:getCiphertext", TypeShape.of(GetCiphertextResult.class), args, Utilities.withVersion(options));
     }
@@ -656,6 +754,53 @@ public final class KmsFunctions {
      * 
      */
     public static Output<GetKeyVersionsResult> getKeyVersions(GetKeyVersionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:kms/getKeyVersions:getKeyVersions", TypeShape.of(GetKeyVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list of KMS KeyVersions in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; NOTE: Available in v1.85.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kms.KmsFunctions;
+     * import com.pulumi.alicloud.kms.inputs.GetKeyVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Declare the data source
+     *         final var alicloudKmsKeyVersionsDs = KmsFunctions.getKeyVersions(GetKeyVersionsArgs.builder()
+     *             .keyId("08438c-b4d5-4d05-928c-07b7xxxx")
+     *             .ids("d89e8a53-b708-41aa-8c67-6873axxx")
+     *             .build());
+     * 
+     *         ctx.export("allVersions", alicloudKmsKeyVersionsDs.applyValue(getKeyVersionsResult -> getKeyVersionsResult.versions()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetKeyVersionsResult> getKeyVersions(GetKeyVersionsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:kms/getKeyVersions:getKeyVersions", TypeShape.of(GetKeyVersionsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -972,6 +1117,51 @@ public final class KmsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetKeysResult> getKeys(GetKeysArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:kms/getKeys:getKeys", TypeShape.of(GetKeysResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list of KMS keys in an Alibaba Cloud account according to the specified filters.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kms.KmsFunctions;
+     * import com.pulumi.alicloud.kms.inputs.GetKeysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Declare the data source
+     *         final var kmsKeysDs = KmsFunctions.getKeys(GetKeysArgs.builder()
+     *             .descriptionRegex("Hello KMS")
+     *             .outputFile("kms_keys.json")
+     *             .build());
+     * 
+     *         ctx.export("firstKeyId", kmsKeysDs.applyValue(getKeysResult -> getKeysResult.keys()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetKeysResult> getKeysPlain(GetKeysPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:kms/getKeys:getKeys", TypeShape.of(GetKeysResult.class), args, Utilities.withVersion(options));
     }
@@ -1200,6 +1390,63 @@ public final class KmsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetPlaintextResult> getPlaintext(GetPlaintextArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:kms/getPlaintext:getPlaintext", TypeShape.of(GetPlaintextResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kms.Key;
+     * import com.pulumi.alicloud.kms.KeyArgs;
+     * import com.pulumi.alicloud.kms.Ciphertext;
+     * import com.pulumi.alicloud.kms.CiphertextArgs;
+     * import com.pulumi.alicloud.kms.KmsFunctions;
+     * import com.pulumi.alicloud.kms.inputs.GetPlaintextArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var key = new Key("key", KeyArgs.builder()
+     *             .description("example key")
+     *             .isEnabled(true)
+     *             .build());
+     * 
+     *         // Encrypt plaintext 'example'
+     *         var encrypted = new Ciphertext("encrypted", CiphertextArgs.builder()
+     *             .keyId(key.id())
+     *             .plaintext("example")
+     *             .build());
+     * 
+     *         // Decrypt encrypted ciphertext
+     *         final var plaintext = KmsFunctions.getPlaintext(GetPlaintextArgs.builder()
+     *             .ciphertextBlob(encrypted.ciphertextBlob())
+     *             .build());
+     * 
+     *         ctx.export("decrypted", plaintext.applyValue(getPlaintextResult -> getPlaintextResult).applyValue(plaintext -> plaintext.applyValue(getPlaintextResult -> getPlaintextResult.plaintext())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetPlaintextResult> getPlaintextPlain(GetPlaintextPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:kms/getPlaintext:getPlaintext", TypeShape.of(GetPlaintextResult.class), args, Utilities.withVersion(options));
     }
@@ -1342,6 +1589,53 @@ public final class KmsFunctions {
      * 
      */
     public static Output<GetSecretVersionsResult> getSecretVersions(GetSecretVersionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:kms/getSecretVersions:getSecretVersions", TypeShape.of(GetSecretVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list of KMS Secret Versions in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available in v1.88.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kms.KmsFunctions;
+     * import com.pulumi.alicloud.kms.inputs.GetSecretVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Declare the data source
+     *         final var kmsSecretVersionsDs = KmsFunctions.getSecretVersions(GetSecretVersionsArgs.builder()
+     *             .secretName("secret_name")
+     *             .enableDetails(true)
+     *             .build());
+     * 
+     *         ctx.export("firstSecretData", kmsSecretVersionsDs.applyValue(getSecretVersionsResult -> getSecretVersionsResult.versions()[0].secretData()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSecretVersionsResult> getSecretVersions(GetSecretVersionsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:kms/getSecretVersions:getSecretVersions", TypeShape.of(GetSecretVersionsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1694,6 +1988,57 @@ public final class KmsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetSecretsResult> getSecrets(GetSecretsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:kms/getSecrets:getSecrets", TypeShape.of(GetSecretsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list of KMS Secrets in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available since v1.86.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kms.KmsFunctions;
+     * import com.pulumi.alicloud.kms.inputs.GetSecretsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Declare the data source
+     *         final var kmsSecretsDs = KmsFunctions.getSecrets(GetSecretsArgs.builder()
+     *             .fetchTags(true)
+     *             .nameRegex("name_regex")
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("k-aa", "v-aa"),
+     *                 Map.entry("k-bb", "v-bb")
+     *             ))
+     *             .build());
+     * 
+     *         ctx.export("firstSecretId", kmsSecretsDs.applyValue(getSecretsResult -> getSecretsResult.secrets()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetSecretsResult> getSecretsPlain(GetSecretsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:kms/getSecrets:getSecrets", TypeShape.of(GetSecretsResult.class), args, Utilities.withVersion(options));
     }
@@ -1925,6 +2270,52 @@ public final class KmsFunctions {
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:kms/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Using this data source can open KMS service automatically. If the service has been opened, it will return opened.
+     * 
+     * For information about KMS and how to use it, see [What is KMS](https://help.aliyun.com/document_detail/186020.html).
+     * 
+     * &gt; **NOTE:** Available in v1.108.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kms.KmsFunctions;
+     * import com.pulumi.alicloud.kms.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = KmsFunctions.getService(GetServiceArgs.builder()
+     *             .enable("On")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:kms/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
     }
     /**

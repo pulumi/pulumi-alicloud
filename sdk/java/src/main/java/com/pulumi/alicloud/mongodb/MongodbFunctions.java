@@ -29,6 +29,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class MongodbFunctions {
@@ -221,6 +222,54 @@ public final class MongodbFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetAccountsResult> getAccounts(GetAccountsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:mongodb/getAccounts:getAccounts", TypeShape.of(GetAccountsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Mongodb Accounts of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.148.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MongodbFunctions.getAccounts(GetAccountsArgs.builder()
+     *             .instanceId("example_value")
+     *             .accountName("root")
+     *             .build());
+     * 
+     *         ctx.export("mongodbAccountId1", example.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAccountsResult> getAccountsPlain(GetAccountsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:mongodb/getAccounts:getAccounts", TypeShape.of(GetAccountsResult.class), args, Utilities.withVersion(options));
     }
@@ -363,6 +412,53 @@ public final class MongodbFunctions {
      * 
      */
     public static Output<GetAuditPoliciesResult> getAuditPolicies(GetAuditPoliciesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:mongodb/getAuditPolicies:getAuditPolicies", TypeShape.of(GetAuditPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Mongodb Audit Policies of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.148.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetAuditPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MongodbFunctions.getAuditPolicies(GetAuditPoliciesArgs.builder()
+     *             .dbInstanceId("example_value")
+     *             .build());
+     * 
+     *         ctx.export("mongodbAuditPolicyId1", example.applyValue(getAuditPoliciesResult -> getAuditPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAuditPoliciesResult> getAuditPolicies(GetAuditPoliciesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:mongodb/getAuditPolicies:getAuditPolicies", TypeShape.of(GetAuditPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -640,6 +736,52 @@ public final class MongodbFunctions {
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:mongodb/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `alicloud.mongodb.getInstances` data source provides a collection of MongoDB instances available in Alicloud account.
+     * Filters support regular expression for the instance name, engine or instance type.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var mongo = MongodbFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex("dds-.+\\d+")
+     *             .instanceType("replicate")
+     *             .instanceClass("dds.mongo.mid")
+     *             .availabilityZone("eu-central-1a")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:mongodb/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1039,6 +1181,65 @@ public final class MongodbFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetServerlessInstancesResult> getServerlessInstances(GetServerlessInstancesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:mongodb/getServerlessInstances:getServerlessInstances", TypeShape.of(GetServerlessInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Mongodb Serverless Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.148.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetServerlessInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MongodbFunctions.getServerlessInstances(GetServerlessInstancesArgs.builder()
+     *             .ids("example_value")
+     *             .dbInstanceClass("example_value")
+     *             .dbInstanceDescription("example_value")
+     *             .networkType("VPC")
+     *             .resourceGroupId("example_value")
+     *             .status("Running")
+     *             .vpcId("example_value")
+     *             .vswitchId("example_value")
+     *             .zoneId("example_value")
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "MongodbServerlessInstance"),
+     *                 Map.entry("For", "TF")
+     *             ))
+     *             .build());
+     * 
+     *         ctx.export("mongodbServerlessInstanceId1", example.applyValue(getServerlessInstancesResult -> getServerlessInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetServerlessInstancesResult> getServerlessInstancesPlain(GetServerlessInstancesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:mongodb/getServerlessInstances:getServerlessInstances", TypeShape.of(GetServerlessInstancesResult.class), args, Utilities.withVersion(options));
     }
@@ -1067,6 +1268,15 @@ public final class MongodbFunctions {
      * 
      */
     public static Output<GetShardingNetworkPrivateAddressesResult> getShardingNetworkPrivateAddresses(GetShardingNetworkPrivateAddressesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:mongodb/getShardingNetworkPrivateAddresses:getShardingNetworkPrivateAddresses", TypeShape.of(GetShardingNetworkPrivateAddressesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Mongodb Sharding Network Private Addresses of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.157.0+.
+     * 
+     */
+    public static Output<GetShardingNetworkPrivateAddressesResult> getShardingNetworkPrivateAddresses(GetShardingNetworkPrivateAddressesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:mongodb/getShardingNetworkPrivateAddresses:getShardingNetworkPrivateAddresses", TypeShape.of(GetShardingNetworkPrivateAddressesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1223,6 +1433,55 @@ public final class MongodbFunctions {
      * 
      */
     public static Output<GetShardingNetworkPublicAddressesResult> getShardingNetworkPublicAddresses(GetShardingNetworkPublicAddressesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:mongodb/getShardingNetworkPublicAddresses:getShardingNetworkPublicAddresses", TypeShape.of(GetShardingNetworkPublicAddressesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Mongodb Sharding Network Public Addresses of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.149.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetShardingNetworkPublicAddressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MongodbFunctions.getShardingNetworkPublicAddresses(GetShardingNetworkPublicAddressesArgs.builder()
+     *             .dbInstanceId("example_value")
+     *             .nodeId("example_value")
+     *             .role("Primary")
+     *             .build());
+     * 
+     *         ctx.export("mongodbShardingNetworkPublicAddressDbInstanceId1", example.applyValue(getShardingNetworkPublicAddressesResult -> getShardingNetworkPublicAddressesResult.addresses()[0].dbInstanceId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetShardingNetworkPublicAddressesResult> getShardingNetworkPublicAddresses(GetShardingNetworkPublicAddressesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:mongodb/getShardingNetworkPublicAddresses:getShardingNetworkPublicAddresses", TypeShape.of(GetShardingNetworkPublicAddressesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1522,6 +1781,56 @@ public final class MongodbFunctions {
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:mongodb/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides availability zones for mongoDB that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+     * 
+     * &gt; **NOTE:** Available in v1.73.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.mongodb.Instance;
+     * import com.pulumi.alicloud.mongodb.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Declare the data source
+     *         final var zonesIds = MongodbFunctions.getZones();
+     * 
+     *         // Create an mongoDB instance with the first matched zone
+     *         var mongodb = new Instance("mongodb", InstanceArgs.builder()
+     *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:mongodb/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
     }
     /**

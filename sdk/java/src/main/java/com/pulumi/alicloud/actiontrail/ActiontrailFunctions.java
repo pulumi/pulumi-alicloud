@@ -33,6 +33,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.resources.InvokeArgs;
 import java.util.concurrent.CompletableFuture;
 
@@ -176,6 +177,53 @@ public final class ActiontrailFunctions {
      * 
      */
     public static Output<GetConsumerGroupsResult> getConsumerGroups(GetConsumerGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:actiontrail/getConsumerGroups:getConsumerGroups", TypeShape.of(GetConsumerGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list of ALIKAFKA Consumer Groups in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available in 1.56.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetConsumerGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var consumerGroupsDs = ActiontrailFunctions.getConsumerGroups(GetConsumerGroupsArgs.builder()
+     *             .instanceId("xxx")
+     *             .consumerIdRegex("CID-alikafkaGroupDatasourceName")
+     *             .outputFile("consumerGroups.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstGroupName", consumerGroupsDs.applyValue(getConsumerGroupsResult -> getConsumerGroupsResult.consumerIds()[0]));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConsumerGroupsResult> getConsumerGroups(GetConsumerGroupsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:actiontrail/getConsumerGroups:getConsumerGroups", TypeShape.of(GetConsumerGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -486,6 +534,50 @@ public final class ActiontrailFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetGlobalEventsStorageRegionResult> getGlobalEventsStorageRegion(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:actiontrail/getGlobalEventsStorageRegion:getGlobalEventsStorageRegion", TypeShape.of(GetGlobalEventsStorageRegionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Actiontrail Global Events Storage Region of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.201.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ActiontrailFunctions.getGlobalEventsStorageRegion();
+     * 
+     *         ctx.export("alicloudActiontrailGlobalEventsStorageRegion1", default_.storageRegion());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetGlobalEventsStorageRegionResult> getGlobalEventsStorageRegionPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:actiontrail/getGlobalEventsStorageRegion:getGlobalEventsStorageRegion", TypeShape.of(GetGlobalEventsStorageRegionResult.class), args, Utilities.withVersion(options));
     }
@@ -752,6 +844,59 @@ public final class ActiontrailFunctions {
      * 
      */
     public static Output<GetHistoryDeliveryJobsResult> getHistoryDeliveryJobs(GetHistoryDeliveryJobsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:actiontrail/getHistoryDeliveryJobs:getHistoryDeliveryJobs", TypeShape.of(GetHistoryDeliveryJobsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Actiontrail History Delivery Jobs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.139.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetHistoryDeliveryJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ActiontrailFunctions.getHistoryDeliveryJobs(GetHistoryDeliveryJobsArgs.builder()
+     *             .ids("example_id")
+     *             .build());
+     * 
+     *         ctx.export("actiontrailHistoryDeliveryJobId1", ids.applyValue(getHistoryDeliveryJobsResult -> getHistoryDeliveryJobsResult.jobs()[0].id()));
+     *         final var status = ActiontrailFunctions.getHistoryDeliveryJobs(GetHistoryDeliveryJobsArgs.builder()
+     *             .ids("example_id")
+     *             .status("2")
+     *             .build());
+     * 
+     *         ctx.export("actiontrailHistoryDeliveryJobId2", status.applyValue(getHistoryDeliveryJobsResult -> getHistoryDeliveryJobsResult.jobs()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetHistoryDeliveryJobsResult> getHistoryDeliveryJobs(GetHistoryDeliveryJobsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:actiontrail/getHistoryDeliveryJobs:getHistoryDeliveryJobs", TypeShape.of(GetHistoryDeliveryJobsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1284,6 +1429,86 @@ public final class ActiontrailFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:actiontrail/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list of ALIKAFKA Instances in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available in 1.59.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.alikafka.Instance;
+     * import com.pulumi.alicloud.alikafka.InstanceArgs;
+     * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var instanceName = config.get("instanceName").orElse("alikafkaInstanceName");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .cidrBlock("172.16.0.0/12")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("172.16.0.0/24")
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .name(instanceName)
+     *             .partitionNum("50")
+     *             .diskType("1")
+     *             .diskSize("500")
+     *             .deployType("4")
+     *             .ioMax("20")
+     *             .vswitchId(defaultSwitch.id())
+     *             .build());
+     * 
+     *         final var instancesDs = ActiontrailFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex("alikafkaInstanceName")
+     *             .outputFile("instances.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstInstanceName", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].name()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:actiontrail/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
@@ -1432,6 +1657,55 @@ public final class ActiontrailFunctions {
      * 
      */
     public static Output<GetSaslAclsResult> getSaslAcls(GetSaslAclsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:actiontrail/getSaslAcls:getSaslAcls", TypeShape.of(GetSaslAclsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list of ALIKAFKA Sasl acls in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available in 1.66.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetSaslAclsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var saslAclsDs = ActiontrailFunctions.getSaslAcls(GetSaslAclsArgs.builder()
+     *             .instanceId("xxx")
+     *             .username("username")
+     *             .aclResourceType("Topic")
+     *             .aclResourceName("testTopic")
+     *             .outputFile("saslAcls.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstSaslAclUsername", saslAclsDs.applyValue(getSaslAclsResult -> getSaslAclsResult.acls()[0].username()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSaslAclsResult> getSaslAcls(GetSaslAclsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:actiontrail/getSaslAcls:getSaslAcls", TypeShape.of(GetSaslAclsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1668,6 +1942,53 @@ public final class ActiontrailFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetSaslUsersResult> getSaslUsers(GetSaslUsersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:actiontrail/getSaslUsers:getSaslUsers", TypeShape.of(GetSaslUsersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list of ALIKAFKA Sasl users in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available in 1.66.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetSaslUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var saslUsersDs = ActiontrailFunctions.getSaslUsers(GetSaslUsersArgs.builder()
+     *             .instanceId("xxx")
+     *             .nameRegex("username")
+     *             .outputFile("saslUsers.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstSaslUsername", saslUsersDs.applyValue(getSaslUsersResult -> getSaslUsersResult.users()[0].username()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetSaslUsersResult> getSaslUsersPlain(GetSaslUsersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:actiontrail/getSaslUsers:getSaslUsers", TypeShape.of(GetSaslUsersResult.class), args, Utilities.withVersion(options));
     }
@@ -1810,6 +2131,53 @@ public final class ActiontrailFunctions {
      * 
      */
     public static Output<GetTopicsResult> getTopics(GetTopicsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:actiontrail/getTopics:getTopics", TypeShape.of(GetTopicsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list of ALIKAFKA Topics in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available in 1.56.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetTopicsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var topicsDs = ActiontrailFunctions.getTopics(GetTopicsArgs.builder()
+     *             .instanceId("xxx")
+     *             .nameRegex("alikafkaTopicName")
+     *             .outputFile("topics.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstTopicName", topicsDs.applyValue(getTopicsResult -> getTopicsResult.topics()[0].topic()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTopicsResult> getTopics(GetTopicsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:actiontrail/getTopics:getTopics", TypeShape.of(GetTopicsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2126,6 +2494,51 @@ public final class ActiontrailFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetTrailsResult> getTrails(GetTrailsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:actiontrail/getTrails:getTrails", TypeShape.of(GetTrailsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available in 1.95.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetTrailsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ActiontrailFunctions.getTrails(GetTrailsArgs.builder()
+     *             .nameRegex("tf-testacc-actiontrail")
+     *             .build());
+     * 
+     *         ctx.export("trailName", default_.trails()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetTrailsResult> getTrailsPlain(GetTrailsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:actiontrail/getTrails:getTrails", TypeShape.of(GetTrailsResult.class), args, Utilities.withVersion(options));
     }
@@ -2192,6 +2605,19 @@ public final class ActiontrailFunctions {
      */
     @Deprecated /* DataSource has been renamed to `getTrails` */
     public static Output<GetTrailsDeprecatedResult> getTrailsDeprecated(GetTrailsDeprecatedArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:actiontrail/getTrailsDeprecated:getTrailsDeprecated", TypeShape.of(GetTrailsDeprecatedResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **DEPRECATED:**  This datasource has been renamed to alicloud.actiontrail.getTrails from version 1.95.0.
+     * 
+     * This data source provides a list of action trail of the current Alibaba Cloud user.
+     * 
+     * @deprecated
+     * DataSource has been renamed to `getTrails`
+     * 
+     */
+    @Deprecated /* DataSource has been renamed to `getTrails` */
+    public static Output<GetTrailsDeprecatedResult> getTrailsDeprecated(GetTrailsDeprecatedArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:actiontrail/getTrailsDeprecated:getTrailsDeprecated", TypeShape.of(GetTrailsDeprecatedResult.class), args, Utilities.withVersion(options));
     }
     /**

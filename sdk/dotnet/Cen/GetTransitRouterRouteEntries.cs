@@ -26,6 +26,14 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public static Output<GetTransitRouterRouteEntriesResult> Invoke(GetTransitRouterRouteEntriesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterRouteEntriesResult>("alicloud:cen/getTransitRouterRouteEntries:getTransitRouterRouteEntries", args ?? new GetTransitRouterRouteEntriesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides CEN Transit Router Route Entries available to the user.[What is Cen Transit Router Route Entries](https://help.aliyun.com/document_detail/260941.html)
+        /// 
+        /// &gt; **NOTE:** Available in 1.126.0+
+        /// </summary>
+        public static Output<GetTransitRouterRouteEntriesResult> Invoke(GetTransitRouterRouteEntriesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterRouteEntriesResult>("alicloud:cen/getTransitRouterRouteEntries:getTransitRouterRouteEntries", args ?? new GetTransitRouterRouteEntriesInvokeArgs(), options.WithDefaults());
     }
 
 

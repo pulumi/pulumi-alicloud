@@ -29,6 +29,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class DcdnFunctions {
@@ -255,6 +256,51 @@ public final class DcdnFunctions {
      * 
      */
     public static Output<GetDomainsResult> getDomains(GetDomainsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dcdn/getDomains:getDomains", TypeShape.of(GetDomainsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a collection of DCDN Domains to the specified filters.
+     * 
+     * &gt; **NOTE:** Available in 1.94.0+.
+     * 
+     * ## Example Usage
+     * 
+     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dcdn.DcdnFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DcdnFunctions.getDomains(GetDomainsArgs.builder()
+     *             .ids("example.com")
+     *             .build());
+     * 
+     *         ctx.export("domainId", example.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDomainsResult> getDomains(GetDomainsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:dcdn/getDomains:getDomains", TypeShape.of(GetDomainsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -629,6 +675,61 @@ public final class DcdnFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetIpaDomainsResult> getIpaDomains(GetIpaDomainsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dcdn/getIpaDomains:getIpaDomains", TypeShape.of(GetIpaDomainsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Dcdn Ipa Domains of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.158.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dcdn.DcdnFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetIpaDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DcdnFunctions.getIpaDomains(GetIpaDomainsArgs.builder()
+     *             .domainName("example_value")
+     *             .ids(            
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .build());
+     * 
+     *         ctx.export("dcdnIpaDomainId1", ids.applyValue(getIpaDomainsResult -> getIpaDomainsResult.domains()[0].id()));
+     *         final var status = DcdnFunctions.getIpaDomains(GetIpaDomainsArgs.builder()
+     *             .status("online")
+     *             .build());
+     * 
+     *         ctx.export("dcdnIpaDomainId2", status.applyValue(getIpaDomainsResult -> getIpaDomainsResult.domains()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetIpaDomainsResult> getIpaDomainsPlain(GetIpaDomainsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:dcdn/getIpaDomains:getIpaDomains", TypeShape.of(GetIpaDomainsResult.class), args, Utilities.withVersion(options));
     }
@@ -850,6 +951,50 @@ public final class DcdnFunctions {
      * 
      */
     public static Output<GetKvAccountResult> getKvAccount(GetKvAccountArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dcdn/getKvAccount:getKvAccount", TypeShape.of(GetKvAccountResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides DCDN kv account available to the user.[What is DCDN Kv Account](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-describedcdnkvaccount)
+     * 
+     * &gt; **NOTE:** Available since v1.198.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dcdn.DcdnFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetKvAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var status = DcdnFunctions.getKvAccount(GetKvAccountArgs.builder()
+     *             .status("online")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetKvAccountResult> getKvAccount(GetKvAccountArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:dcdn/getKvAccount:getKvAccount", TypeShape.of(GetKvAccountResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1169,6 +1314,52 @@ public final class DcdnFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dcdn/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Using this data source can open DCDN service automatically. If the service has been opened, it will return opened.
+     * 
+     * For information about DCDN and how to use it, see [What is DCDN](https://help.aliyun.com/document_detail/197288.html).
+     * 
+     * &gt; **NOTE:** Available in v1.111.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dcdn.DcdnFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = DcdnFunctions.getService(GetServiceArgs.builder()
+     *             .enable("On")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:dcdn/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
     }
@@ -1395,6 +1586,51 @@ public final class DcdnFunctions {
      * 
      */
     public static Output<GetWafDomainsResult> getWafDomains(GetWafDomainsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dcdn/getWafDomains:getWafDomains", TypeShape.of(GetWafDomainsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Dcdn Waf Domains of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.185.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dcdn.DcdnFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetWafDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DcdnFunctions.getWafDomains();
+     * 
+     *         ctx.export("dcdnWafDomainId1", ids.applyValue(getWafDomainsResult -> getWafDomainsResult.domains()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetWafDomainsResult> getWafDomains(GetWafDomainsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:dcdn/getWafDomains:getWafDomains", TypeShape.of(GetWafDomainsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1709,6 +1945,51 @@ public final class DcdnFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetWafPoliciesResult> getWafPolicies(GetWafPoliciesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dcdn/getWafPolicies:getWafPolicies", TypeShape.of(GetWafPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Dcdn Waf Policies of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.184.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dcdn.DcdnFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetWafPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DcdnFunctions.getWafPolicies();
+     * 
+     *         ctx.export("dcdnWafPolicyId1", ids.applyValue(getWafPoliciesResult -> getWafPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetWafPoliciesResult> getWafPoliciesPlain(GetWafPoliciesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:dcdn/getWafPolicies:getWafPolicies", TypeShape.of(GetWafPoliciesResult.class), args, Utilities.withVersion(options));
     }
@@ -1935,6 +2216,51 @@ public final class DcdnFunctions {
      * 
      */
     public static Output<GetWafRulesResult> getWafRules(GetWafRulesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dcdn/getWafRules:getWafRules", TypeShape.of(GetWafRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-batchcreatedcdnwafrules)
+     * 
+     * &gt; **NOTE:** Available since v1.201.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dcdn.DcdnFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetWafRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DcdnFunctions.getWafRules(GetWafRulesArgs.builder()
+     *             .ids(defaultAlicloudDcdnWafRule.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudDcdnWafRuleExampleId", default_.wafRules()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetWafRulesResult> getWafRules(GetWafRulesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:dcdn/getWafRules:getWafRules", TypeShape.of(GetWafRulesResult.class), args, Utilities.withVersion(options));
     }
     /**

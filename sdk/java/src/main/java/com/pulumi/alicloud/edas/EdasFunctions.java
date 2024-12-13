@@ -23,6 +23,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class EdasFunctions {
@@ -299,6 +300,52 @@ public final class EdasFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetApplicationsResult> getApplications(GetApplicationsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:edas/getApplications:getApplications", TypeShape.of(GetApplicationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list of EDAS application in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available in 1.82.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.edas.EdasFunctions;
+     * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var applications = EdasFunctions.getApplications(GetApplicationsArgs.builder()
+     *             .ids("xxx")
+     *             .outputFile("application.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstApplicationName", applications.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].appName()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetApplicationsResult> getApplicationsPlain(GetApplicationsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:edas/getApplications:getApplications", TypeShape.of(GetApplicationsResult.class), args, Utilities.withVersion(options));
     }
@@ -487,6 +534,53 @@ public final class EdasFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetClustersResult> getClusters(GetClustersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:edas/getClusters:getClusters", TypeShape.of(GetClustersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list of EDAS clusters in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available in 1.82.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.edas.EdasFunctions;
+     * import com.pulumi.alicloud.edas.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var clusters = EdasFunctions.getClusters(GetClustersArgs.builder()
+     *             .logicalRegionId("cn-shenzhen:xxx")
+     *             .ids("addfs-dfsasd")
+     *             .outputFile("clusters.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstClusterName", clustersAlicloudAlikafkaConsumerGroups.clusters()[0].clusterName());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetClustersResult> getClustersPlain(GetClustersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:edas/getClusters:getClusters", TypeShape.of(GetClustersResult.class), args, Utilities.withVersion(options));
     }
@@ -629,6 +723,53 @@ public final class EdasFunctions {
      * 
      */
     public static Output<GetDeployGroupsResult> getDeployGroups(GetDeployGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:edas/getDeployGroups:getDeployGroups", TypeShape.of(GetDeployGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list of EDAS deploy groups in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available in 1.82.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.edas.EdasFunctions;
+     * import com.pulumi.alicloud.edas.inputs.GetDeployGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var groups = EdasFunctions.getDeployGroups(GetDeployGroupsArgs.builder()
+     *             .appId("xxx")
+     *             .ids("xxx")
+     *             .outputFile("groups.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstGroupName", groups.applyValue(getDeployGroupsResult -> getDeployGroupsResult.groups()[0].groupName()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDeployGroupsResult> getDeployGroups(GetDeployGroupsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:edas/getDeployGroups:getDeployGroups", TypeShape.of(GetDeployGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -987,6 +1128,58 @@ public final class EdasFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetNamespacesResult> getNamespaces(GetNamespacesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:edas/getNamespaces:getNamespaces", TypeShape.of(GetNamespacesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Edas Namespaces of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.173.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.edas.EdasFunctions;
+     * import com.pulumi.alicloud.edas.inputs.GetNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdasFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .ids("example_id")
+     *             .build());
+     * 
+     *         ctx.export("edasNamespaceId1", ids.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
+     *         final var nameRegex = EdasFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .nameRegex("^my-Namespace")
+     *             .build());
+     * 
+     *         ctx.export("edasNamespaceId2", nameRegex.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetNamespacesResult> getNamespacesPlain(GetNamespacesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:edas/getNamespaces:getNamespaces", TypeShape.of(GetNamespacesResult.class), args, Utilities.withVersion(options));
     }
@@ -1228,6 +1421,54 @@ public final class EdasFunctions {
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:edas/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Using this data source can open EDAS service automatically. If the service has been opened, it will return opened.
+     * 
+     * For information about EDAS and how to use it, see [What is EDAS](https://www.alibabacloud.com/help/product/29500.htm).
+     * 
+     * &gt; **NOTE:** Available in v1.98.0+
+     * 
+     * &gt; **NOTE:** The EDAS service is not support to be open automatically in the international site.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.edas.EdasFunctions;
+     * import com.pulumi.alicloud.edas.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = EdasFunctions.getService(GetServiceArgs.builder()
+     *             .enable("On")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:edas/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
     }
     /**

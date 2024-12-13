@@ -26,6 +26,14 @@ namespace Pulumi.AliCloud.Edas
         /// </summary>
         public static Output<GetDeployGroupsResult> Invoke(GetDeployGroupsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDeployGroupsResult>("alicloud:edas/getDeployGroups:getDeployGroups", args ?? new GetDeployGroupsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a list of EDAS deploy groups in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available in 1.82.0+
+        /// </summary>
+        public static Output<GetDeployGroupsResult> Invoke(GetDeployGroupsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDeployGroupsResult>("alicloud:edas/getDeployGroups:getDeployGroups", args ?? new GetDeployGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

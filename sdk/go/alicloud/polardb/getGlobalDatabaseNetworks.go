@@ -143,21 +143,11 @@ type GetGlobalDatabaseNetworksResult struct {
 }
 
 func GetGlobalDatabaseNetworksOutput(ctx *pulumi.Context, args GetGlobalDatabaseNetworksOutputArgs, opts ...pulumi.InvokeOption) GetGlobalDatabaseNetworksResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetGlobalDatabaseNetworksResultOutput, error) {
 			args := v.(GetGlobalDatabaseNetworksArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetGlobalDatabaseNetworksResult
-			secret, err := ctx.InvokePackageRaw("alicloud:polardb/getGlobalDatabaseNetworks:getGlobalDatabaseNetworks", args, &rv, "", opts...)
-			if err != nil {
-				return GetGlobalDatabaseNetworksResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetGlobalDatabaseNetworksResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetGlobalDatabaseNetworksResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:polardb/getGlobalDatabaseNetworks:getGlobalDatabaseNetworks", args, GetGlobalDatabaseNetworksResultOutput{}, options).(GetGlobalDatabaseNetworksResultOutput), nil
 		}).(GetGlobalDatabaseNetworksResultOutput)
 }
 

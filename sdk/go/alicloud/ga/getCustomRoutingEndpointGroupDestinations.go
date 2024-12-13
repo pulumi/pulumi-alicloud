@@ -103,21 +103,11 @@ type GetCustomRoutingEndpointGroupDestinationsResult struct {
 }
 
 func GetCustomRoutingEndpointGroupDestinationsOutput(ctx *pulumi.Context, args GetCustomRoutingEndpointGroupDestinationsOutputArgs, opts ...pulumi.InvokeOption) GetCustomRoutingEndpointGroupDestinationsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetCustomRoutingEndpointGroupDestinationsResultOutput, error) {
 			args := v.(GetCustomRoutingEndpointGroupDestinationsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetCustomRoutingEndpointGroupDestinationsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:ga/getCustomRoutingEndpointGroupDestinations:getCustomRoutingEndpointGroupDestinations", args, &rv, "", opts...)
-			if err != nil {
-				return GetCustomRoutingEndpointGroupDestinationsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetCustomRoutingEndpointGroupDestinationsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetCustomRoutingEndpointGroupDestinationsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:ga/getCustomRoutingEndpointGroupDestinations:getCustomRoutingEndpointGroupDestinations", args, GetCustomRoutingEndpointGroupDestinationsResultOutput{}, options).(GetCustomRoutingEndpointGroupDestinationsResultOutput), nil
 		}).(GetCustomRoutingEndpointGroupDestinationsResultOutput)
 }
 

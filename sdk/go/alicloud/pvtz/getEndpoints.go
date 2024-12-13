@@ -87,21 +87,11 @@ type GetEndpointsResult struct {
 }
 
 func GetEndpointsOutput(ctx *pulumi.Context, args GetEndpointsOutputArgs, opts ...pulumi.InvokeOption) GetEndpointsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetEndpointsResultOutput, error) {
 			args := v.(GetEndpointsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetEndpointsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:pvtz/getEndpoints:getEndpoints", args, &rv, "", opts...)
-			if err != nil {
-				return GetEndpointsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetEndpointsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetEndpointsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:pvtz/getEndpoints:getEndpoints", args, GetEndpointsResultOutput{}, options).(GetEndpointsResultOutput), nil
 		}).(GetEndpointsResultOutput)
 }
 

@@ -107,21 +107,11 @@ type GetDynamicTagGroupsResult struct {
 }
 
 func GetDynamicTagGroupsOutput(ctx *pulumi.Context, args GetDynamicTagGroupsOutputArgs, opts ...pulumi.InvokeOption) GetDynamicTagGroupsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDynamicTagGroupsResultOutput, error) {
 			args := v.(GetDynamicTagGroupsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetDynamicTagGroupsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:cms/getDynamicTagGroups:getDynamicTagGroups", args, &rv, "", opts...)
-			if err != nil {
-				return GetDynamicTagGroupsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetDynamicTagGroupsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetDynamicTagGroupsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:cms/getDynamicTagGroups:getDynamicTagGroups", args, GetDynamicTagGroupsResultOutput{}, options).(GetDynamicTagGroupsResultOutput), nil
 		}).(GetDynamicTagGroupsResultOutput)
 }
 

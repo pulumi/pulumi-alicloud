@@ -117,21 +117,11 @@ type GetAlidnsDomainsResult struct {
 }
 
 func GetAlidnsDomainsOutput(ctx *pulumi.Context, args GetAlidnsDomainsOutputArgs, opts ...pulumi.InvokeOption) GetAlidnsDomainsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAlidnsDomainsResultOutput, error) {
 			args := v.(GetAlidnsDomainsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetAlidnsDomainsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:dns/getAlidnsDomains:getAlidnsDomains", args, &rv, "", opts...)
-			if err != nil {
-				return GetAlidnsDomainsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetAlidnsDomainsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetAlidnsDomainsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:dns/getAlidnsDomains:getAlidnsDomains", args, GetAlidnsDomainsResultOutput{}, options).(GetAlidnsDomainsResultOutput), nil
 		}).(GetAlidnsDomainsResultOutput)
 }
 

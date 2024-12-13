@@ -98,6 +98,50 @@ namespace Pulumi.AliCloud.BastionHost
         /// </summary>
         public static Output<GetHostShareKeysResult> Invoke(GetHostShareKeysInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHostShareKeysResult>("alicloud:bastionhost/getHostShareKeys:getHostShareKeys", args ?? new GetHostShareKeysInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Bastionhost Host Share Keys of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.165.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.BastionHost.GetHostShareKeys.Invoke(new()
+        ///     {
+        ///         InstanceId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.BastionHost.GetHostShareKeys.Invoke(new()
+        ///     {
+        ///         InstanceId = "example_value",
+        ///         NameRegex = "^my-HostShareKey",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["bastionhostHostShareKeyId1"] = ids.Apply(getHostShareKeysResult =&gt; getHostShareKeysResult.Keys[0]?.Id),
+        ///         ["bastionhostHostShareKeyId2"] = nameRegex.Apply(getHostShareKeysResult =&gt; getHostShareKeysResult.Keys[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetHostShareKeysResult> Invoke(GetHostShareKeysInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetHostShareKeysResult>("alicloud:bastionhost/getHostShareKeys:getHostShareKeys", args ?? new GetHostShareKeysInvokeArgs(), options.WithDefaults());
     }
 
 

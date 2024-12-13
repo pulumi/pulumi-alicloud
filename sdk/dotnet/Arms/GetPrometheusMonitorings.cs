@@ -96,6 +96,49 @@ namespace Pulumi.AliCloud.Arms
         /// </summary>
         public static Output<GetPrometheusMonitoringsResult> Invoke(GetPrometheusMonitoringsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrometheusMonitoringsResult>("alicloud:arms/getPrometheusMonitorings:getPrometheusMonitorings", args ?? new GetPrometheusMonitoringsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Arms Prometheus Monitorings of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.210.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Arms.GetPrometheusMonitorings.Invoke(new()
+        ///     {
+        ///         ClusterId = "your_cluster_id",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Arms.GetPrometheusMonitorings.Invoke(new()
+        ///     {
+        ///         ClusterId = "your_cluster_id",
+        ///         NameRegex = "tf-example",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["armsPrometheusMonitoringsId1"] = ids.Apply(getPrometheusMonitoringsResult =&gt; getPrometheusMonitoringsResult.PrometheusMonitorings[0]?.Id),
+        ///         ["armsPrometheusMonitoringsId2"] = nameRegex.Apply(getPrometheusMonitoringsResult =&gt; getPrometheusMonitoringsResult.PrometheusMonitorings[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPrometheusMonitoringsResult> Invoke(GetPrometheusMonitoringsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPrometheusMonitoringsResult>("alicloud:arms/getPrometheusMonitorings:getPrometheusMonitorings", args ?? new GetPrometheusMonitoringsInvokeArgs(), options.WithDefaults());
     }
 
 

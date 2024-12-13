@@ -93,21 +93,11 @@ type LookupEcsImagePipelineResult struct {
 }
 
 func LookupEcsImagePipelineOutput(ctx *pulumi.Context, args LookupEcsImagePipelineOutputArgs, opts ...pulumi.InvokeOption) LookupEcsImagePipelineResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupEcsImagePipelineResultOutput, error) {
 			args := v.(LookupEcsImagePipelineArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupEcsImagePipelineResult
-			secret, err := ctx.InvokePackageRaw("alicloud:ecs/getEcsImagePipeline:getEcsImagePipeline", args, &rv, "", opts...)
-			if err != nil {
-				return LookupEcsImagePipelineResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupEcsImagePipelineResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupEcsImagePipelineResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:ecs/getEcsImagePipeline:getEcsImagePipeline", args, LookupEcsImagePipelineResultOutput{}, options).(LookupEcsImagePipelineResultOutput), nil
 		}).(LookupEcsImagePipelineResultOutput)
 }
 

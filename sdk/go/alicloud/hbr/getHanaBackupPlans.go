@@ -91,21 +91,11 @@ type GetHanaBackupPlansResult struct {
 }
 
 func GetHanaBackupPlansOutput(ctx *pulumi.Context, args GetHanaBackupPlansOutputArgs, opts ...pulumi.InvokeOption) GetHanaBackupPlansResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetHanaBackupPlansResultOutput, error) {
 			args := v.(GetHanaBackupPlansArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetHanaBackupPlansResult
-			secret, err := ctx.InvokePackageRaw("alicloud:hbr/getHanaBackupPlans:getHanaBackupPlans", args, &rv, "", opts...)
-			if err != nil {
-				return GetHanaBackupPlansResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetHanaBackupPlansResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetHanaBackupPlansResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:hbr/getHanaBackupPlans:getHanaBackupPlans", args, GetHanaBackupPlansResultOutput{}, options).(GetHanaBackupPlansResultOutput), nil
 		}).(GetHanaBackupPlansResultOutput)
 }
 

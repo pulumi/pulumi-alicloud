@@ -76,6 +76,39 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         public static Output<GetNodeClassesResult> Invoke(GetNodeClassesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNodeClassesResult>("alicloud:polardb/getNodeClasses:getNodeClasses", args ?? new GetNodeClassesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the PolarDB node classes resource available info of Alibaba Cloud.
+        /// 
+        /// &gt; **NOTE:** Available since v1.81.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var resources = AliCloud.PolarDB.GetNodeClasses.Invoke(new()
+        ///     {
+        ///         PayType = "PostPaid",
+        ///         DbType = "MySQL",
+        ///         DbVersion = "5.6",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["polardbNodeClasses"] = resources.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes),
+        ///         ["polardbAvailableZoneId"] = resources.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.ZoneId),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetNodeClassesResult> Invoke(GetNodeClassesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNodeClassesResult>("alicloud:polardb/getNodeClasses:getNodeClasses", args ?? new GetNodeClassesInvokeArgs(), options.WithDefaults());
     }
 
 

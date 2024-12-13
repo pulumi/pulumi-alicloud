@@ -110,21 +110,11 @@ type GetMetricRuleTemplatesResult struct {
 }
 
 func GetMetricRuleTemplatesOutput(ctx *pulumi.Context, args GetMetricRuleTemplatesOutputArgs, opts ...pulumi.InvokeOption) GetMetricRuleTemplatesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetMetricRuleTemplatesResultOutput, error) {
 			args := v.(GetMetricRuleTemplatesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetMetricRuleTemplatesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:cms/getMetricRuleTemplates:getMetricRuleTemplates", args, &rv, "", opts...)
-			if err != nil {
-				return GetMetricRuleTemplatesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetMetricRuleTemplatesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetMetricRuleTemplatesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:cms/getMetricRuleTemplates:getMetricRuleTemplates", args, GetMetricRuleTemplatesResultOutput{}, options).(GetMetricRuleTemplatesResultOutput), nil
 		}).(GetMetricRuleTemplatesResultOutput)
 }
 

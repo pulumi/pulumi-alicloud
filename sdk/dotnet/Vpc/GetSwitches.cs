@@ -94,6 +94,48 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public static Output<GetSwitchesResult> Invoke(GetSwitchesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSwitchesResult>("alicloud:vpc/getSwitches:getSwitches", args ?? new GetSwitchesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a list of VSwitches owned by an Alibaba Cloud account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "vswitchDatasourceName";
+        ///     var @default = AliCloud.GetZones.Invoke();
+        /// 
+        ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
+        ///     {
+        ///         CidrBlock = "172.16.0.0/16",
+        ///         VpcName = name,
+        ///     });
+        /// 
+        ///     var vswitch = new AliCloud.Vpc.Switch("vswitch", new()
+        ///     {
+        ///         VswitchName = name,
+        ///         CidrBlock = "172.16.0.0/24",
+        ///         VpcId = vpc.Id,
+        ///         AvailabilityZone = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///     });
+        /// 
+        ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+        ///     {
+        ///         NameRegex = vswitch.VswitchName,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSwitchesResult> Invoke(GetSwitchesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSwitchesResult>("alicloud:vpc/getSwitches:getSwitches", args ?? new GetSwitchesInvokeArgs(), options.WithDefaults());
     }
 
 

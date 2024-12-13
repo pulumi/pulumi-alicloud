@@ -72,6 +72,37 @@ namespace Pulumi.AliCloud.Slb
         /// </summary>
         public static Output<GetDomainExtensionsResult> Invoke(GetDomainExtensionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDomainExtensionsResult>("alicloud:slb/getDomainExtensions:getDomainExtensions", args ?? new GetDomainExtensionsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the domain extensions associated with a server load balancer listener.
+        /// 
+        /// &gt; **NOTE:** Available in 1.60.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = AliCloud.Slb.GetDomainExtensions.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "fake-de-id",
+        ///         },
+        ///         LoadBalancerId = "fake-lb-id",
+        ///         FrontendPort = "fake-port",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDomainExtensionsResult> Invoke(GetDomainExtensionsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDomainExtensionsResult>("alicloud:slb/getDomainExtensions:getDomainExtensions", args ?? new GetDomainExtensionsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -70,6 +70,36 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public static Output<GetTrafficMirrorServiceResult> Invoke(GetTrafficMirrorServiceInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTrafficMirrorServiceResult>("alicloud:vpc/getTrafficMirrorService:getTrafficMirrorService", args ?? new GetTrafficMirrorServiceInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Using this data source can open VPC Traffic Mirror service automatically. If the service has been opened, it will return opened.
+        /// 
+        /// For information about VPC Traffic Mirror and how to use it, see [What is VPC Traffic Mirror](https://www.alibabacloud.com/help/en/vpc/user-guide/traffic-mirroring-overview).
+        /// 
+        /// &gt; **NOTE:** Available since v1.141.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var open = AliCloud.Vpc.GetTrafficMirrorService.Invoke(new()
+        ///     {
+        ///         Enable = "On",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTrafficMirrorServiceResult> Invoke(GetTrafficMirrorServiceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTrafficMirrorServiceResult>("alicloud:vpc/getTrafficMirrorService:getTrafficMirrorService", args ?? new GetTrafficMirrorServiceInvokeArgs(), options.WithDefaults());
     }
 
 

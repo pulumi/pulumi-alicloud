@@ -78,21 +78,11 @@ type GetCustomerGatewaysResult struct {
 }
 
 func GetCustomerGatewaysOutput(ctx *pulumi.Context, args GetCustomerGatewaysOutputArgs, opts ...pulumi.InvokeOption) GetCustomerGatewaysResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetCustomerGatewaysResultOutput, error) {
 			args := v.(GetCustomerGatewaysArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetCustomerGatewaysResult
-			secret, err := ctx.InvokePackageRaw("alicloud:vpn/getCustomerGateways:getCustomerGateways", args, &rv, "", opts...)
-			if err != nil {
-				return GetCustomerGatewaysResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetCustomerGatewaysResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetCustomerGatewaysResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:vpn/getCustomerGateways:getCustomerGateways", args, GetCustomerGatewaysResultOutput{}, options).(GetCustomerGatewaysResultOutput), nil
 		}).(GetCustomerGatewaysResultOutput)
 }
 

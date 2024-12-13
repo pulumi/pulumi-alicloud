@@ -16,6 +16,9 @@ namespace Pulumi.AliCloud.Quotas
 
         public static Output<GetApplicationInfosResult> Invoke(GetApplicationInfosInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApplicationInfosResult>("alicloud:quotas/getApplicationInfos:getApplicationInfos", args ?? new GetApplicationInfosInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetApplicationInfosResult> Invoke(GetApplicationInfosInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetApplicationInfosResult>("alicloud:quotas/getApplicationInfos:getApplicationInfos", args ?? new GetApplicationInfosInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -67,21 +67,11 @@ type GetBlockedRegionsResult struct {
 }
 
 func GetBlockedRegionsOutput(ctx *pulumi.Context, args GetBlockedRegionsOutputArgs, opts ...pulumi.InvokeOption) GetBlockedRegionsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetBlockedRegionsResultOutput, error) {
 			args := v.(GetBlockedRegionsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetBlockedRegionsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:cdn/getBlockedRegions:getBlockedRegions", args, &rv, "", opts...)
-			if err != nil {
-				return GetBlockedRegionsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetBlockedRegionsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetBlockedRegionsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:cdn/getBlockedRegions:getBlockedRegions", args, GetBlockedRegionsResultOutput{}, options).(GetBlockedRegionsResultOutput), nil
 		}).(GetBlockedRegionsResultOutput)
 }
 

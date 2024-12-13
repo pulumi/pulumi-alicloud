@@ -53,6 +53,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class RdsFunctions {
@@ -198,6 +199,54 @@ public final class RdsFunctions {
      * 
      */
     public static Output<GetAccountsResult> getAccounts(GetAccountsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:rds/getAccounts:getAccounts", TypeShape.of(GetAccountsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Rds Accounts of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.120.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RdsFunctions.getAccounts(GetAccountsArgs.builder()
+     *             .dbInstanceId("example_value")
+     *             .nameRegex("the_resource_name")
+     *             .build());
+     * 
+     *         ctx.export("firstRdsAccountId", example.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAccountsResult> getAccounts(GetAccountsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:rds/getAccounts:getAccounts", TypeShape.of(GetAccountsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -429,6 +478,52 @@ public final class RdsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetCharacterSetNamesResult> getCharacterSetNames(GetCharacterSetNamesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:rds/getCharacterSetNames:getCharacterSetNames", TypeShape.of(GetCharacterSetNamesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source is the character set supported by querying RDS instances.
+     * 
+     * &gt; **NOTE:** Available in v1.198.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetCharacterSetNamesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Declare the data source
+     *         final var names = RdsFunctions.getCharacterSetNames(GetCharacterSetNamesArgs.builder()
+     *             .engine("MySQL")
+     *             .build());
+     * 
+     *         ctx.export("firstRdsCharacterSetNames", names.applyValue(getCharacterSetNamesResult -> getCharacterSetNamesResult.names()[0]));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetCharacterSetNamesResult> getCharacterSetNamesPlain(GetCharacterSetNamesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:rds/getCharacterSetNames:getCharacterSetNames", TypeShape.of(GetCharacterSetNamesResult.class), args, Utilities.withVersion(options));
     }
@@ -577,6 +672,55 @@ public final class RdsFunctions {
      * 
      */
     public static Output<GetClassDetailsResult> getClassDetails(GetClassDetailsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:rds/getClassDetails:getClassDetails", TypeShape.of(GetClassDetailsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides details of the Rds specifications of current Alibaba Cloud users.
+     * 
+     * For information on RDS class details and how to use it, please refer to [What is RDS class details](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeclassdetails).
+     * 
+     * &gt; **NOTE:** Available since v1.209.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetClassDetailsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = RdsFunctions.getClassDetails(GetClassDetailsArgs.builder()
+     *             .commodityCode("bards")
+     *             .classCode("mysql.n4.medium.2c")
+     *             .engineVersion("8.0")
+     *             .engine("MySQL")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetClassDetailsResult> getClassDetails(GetClassDetailsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:rds/getClassDetails:getClassDetails", TypeShape.of(GetClassDetailsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -907,6 +1051,53 @@ public final class RdsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetCollationTimeZonesResult> getCollationTimeZones(GetCollationTimeZonesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:rds/getCollationTimeZones:getCollationTimeZones", TypeShape.of(GetCollationTimeZonesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Operation to query the character set collations and time zones available for use in ApsaraDB RDS.
+     * 
+     * &gt; **NOTE:** Available in v1.198.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetCollationTimeZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zones = RdsFunctions.getCollationTimeZones(GetCollationTimeZonesArgs.builder()
+     *             .outputFile("./classes.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstRdsCollationTimeZones", zones.applyValue(getCollationTimeZonesResult -> getCollationTimeZonesResult.collationTimeZones()[0]));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetCollationTimeZonesResult> getCollationTimeZonesPlain(GetCollationTimeZonesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:rds/getCollationTimeZones:getCollationTimeZones", TypeShape.of(GetCollationTimeZonesResult.class), args, Utilities.withVersion(options));
     }
@@ -1055,6 +1246,55 @@ public final class RdsFunctions {
      * 
      */
     public static Output<GetCrossRegionBackupsResult> getCrossRegionBackups(GetCrossRegionBackupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:rds/getCrossRegionBackups:getCrossRegionBackups", TypeShape.of(GetCrossRegionBackupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Rds Parameter Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.196.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetCrossRegionBackupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var backups = RdsFunctions.getCrossRegionBackups(GetCrossRegionBackupsArgs.builder()
+     *             .dbInstanceId("example_value")
+     *             .startTime("2022-12-01T00:00:00Z")
+     *             .endTime("2022-12-16T00:00:00Z")
+     *             .build());
+     * 
+     *         ctx.export("firstRdsCrossRegionBackups", backups.applyValue(getCrossRegionBackupsResult -> getCrossRegionBackupsResult.backups()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCrossRegionBackupsResult> getCrossRegionBackups(GetCrossRegionBackupsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:rds/getCrossRegionBackups:getCrossRegionBackups", TypeShape.of(GetCrossRegionBackupsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1367,6 +1607,50 @@ public final class RdsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetCrossRegionsResult> getCrossRegions(GetCrossRegionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:rds/getCrossRegions:getCrossRegions", TypeShape.of(GetCrossRegionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides an available area for remote disaster recovery for RDS.
+     * 
+     * &gt; **NOTE:** Available in v1.193.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetCrossRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Declare the data source
+     *         final var crossRegions = RdsFunctions.getCrossRegions();
+     * 
+     *         ctx.export("firstRdsCrossRegions", regions.ids()[0]);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetCrossRegionsResult> getCrossRegionsPlain(GetCrossRegionsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:rds/getCrossRegions:getCrossRegions", TypeShape.of(GetCrossRegionsResult.class), args, Utilities.withVersion(options));
     }
@@ -1509,6 +1793,53 @@ public final class RdsFunctions {
      * 
      */
     public static Output<GetInstanceClassInfosResult> getInstanceClassInfos(GetInstanceClassInfosArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:rds/getInstanceClassInfos:getInstanceClassInfos", TypeShape.of(GetInstanceClassInfosResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source operation to query the instance types that are available to specific instances of Alibaba Cloud.
+     * 
+     * &gt; **NOTE:** Available in v1.196.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetInstanceClassInfosArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resources = RdsFunctions.getInstanceClassInfos(GetInstanceClassInfosArgs.builder()
+     *             .commodityCode("bards")
+     *             .orderType("BUY")
+     *             .outputFile("./classes.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstDbInstanceClass", resources.applyValue(getInstanceClassInfosResult -> getInstanceClassInfosResult.infos()[0]));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInstanceClassInfosResult> getInstanceClassInfos(GetInstanceClassInfosArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:rds/getInstanceClassInfos:getInstanceClassInfos", TypeShape.of(GetInstanceClassInfosResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1843,6 +2174,54 @@ public final class RdsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetInstanceClassesResult> getInstanceClasses(GetInstanceClassesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:rds/getInstanceClasses:getInstanceClasses", TypeShape.of(GetInstanceClassesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the RDS instance classes resource available info of Alibaba Cloud.
+     * 
+     * &gt; **NOTE:** Available in v1.46.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resources = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+     *             .instanceChargeType("PostPaid")
+     *             .engine("MySQL")
+     *             .engineVersion("5.6")
+     *             .outputFile("./classes.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstDbInstanceClass", resources.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].instanceClass()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetInstanceClassesResult> getInstanceClassesPlain(GetInstanceClassesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:rds/getInstanceClasses:getInstanceClasses", TypeShape.of(GetInstanceClassesResult.class), args, Utilities.withVersion(options));
     }
@@ -2084,6 +2463,54 @@ public final class RdsFunctions {
      * 
      */
     public static Output<GetInstanceEnginesResult> getInstanceEngines(GetInstanceEnginesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:rds/getInstanceEngines:getInstanceEngines", TypeShape.of(GetInstanceEnginesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the RDS instance engines resource available info of Alibaba Cloud.
+     * 
+     * &gt; **NOTE:** Available in v1.46.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetInstanceEnginesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resources = RdsFunctions.getInstanceEngines(GetInstanceEnginesArgs.builder()
+     *             .instanceChargeType("PostPaid")
+     *             .engine("MySQL")
+     *             .engineVersion("5.6")
+     *             .outputFile("./engines.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstDbCategory", resources.applyValue(getInstanceEnginesResult -> getInstanceEnginesResult.instanceEngines()[0].category()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInstanceEnginesResult> getInstanceEngines(GetInstanceEnginesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:rds/getInstanceEngines:getInstanceEngines", TypeShape.of(GetInstanceEnginesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2437,6 +2864,57 @@ public final class RdsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:rds/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `alicloud.rds.getInstances` data source provides a collection of RDS instances available in Alibaba Cloud account.
+     * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+     * 
+     * &gt; **NOTE:** Available since v1.7.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dbInstancesDs = RdsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex("data-\\d+")
+     *             .status("Running")
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("type", "database"),
+     *                 Map.entry("size", "tiny")
+     *             ))
+     *             .build());
+     * 
+     *         ctx.export("firstDbInstanceId", dbInstancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:rds/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
@@ -2582,6 +3060,54 @@ public final class RdsFunctions {
      * 
      */
     public static Output<GetModifyParameterLogsResult> getModifyParameterLogs(GetModifyParameterLogsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:rds/getModifyParameterLogs:getModifyParameterLogs", TypeShape.of(GetModifyParameterLogsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Rds Modify Parameter Logs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.174.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetModifyParameterLogsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RdsFunctions.getModifyParameterLogs(GetModifyParameterLogsArgs.builder()
+     *             .dbInstanceId("example_value")
+     *             .startTime("2022-06-04T13:56Z")
+     *             .endTime("2022-06-08T13:56Z")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetModifyParameterLogsResult> getModifyParameterLogs(GetModifyParameterLogsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:rds/getModifyParameterLogs:getModifyParameterLogs", TypeShape.of(GetModifyParameterLogsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2817,6 +3343,53 @@ public final class RdsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetRdsBackupsResult> getRdsBackups(GetRdsBackupsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:rds/getRdsBackups:getRdsBackups", TypeShape.of(GetRdsBackupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Rds Backups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.149.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetRdsBackupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RdsFunctions.getRdsBackups(GetRdsBackupsArgs.builder()
+     *             .dbInstanceId("example_value")
+     *             .build());
+     * 
+     *         ctx.export("firstRdsBackupId", example.applyValue(getRdsBackupsResult -> getRdsBackupsResult.backups()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetRdsBackupsResult> getRdsBackupsPlain(GetRdsBackupsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:rds/getRdsBackups:getRdsBackups", TypeShape.of(GetRdsBackupsResult.class), args, Utilities.withVersion(options));
     }
@@ -2833,6 +3406,9 @@ public final class RdsFunctions {
         return getRdsParameterGroupsPlain(args, InvokeOptions.Empty);
     }
     public static Output<GetRdsParameterGroupsResult> getRdsParameterGroups(GetRdsParameterGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:rds/getRdsParameterGroups:getRdsParameterGroups", TypeShape.of(GetRdsParameterGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetRdsParameterGroupsResult> getRdsParameterGroups(GetRdsParameterGroupsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:rds/getRdsParameterGroups:getRdsParameterGroups", TypeShape.of(GetRdsParameterGroupsResult.class), args, Utilities.withVersion(options));
     }
     public static CompletableFuture<GetRdsParameterGroupsResult> getRdsParameterGroupsPlain(GetRdsParameterGroupsPlainArgs args, InvokeOptions options) {
@@ -2977,6 +3553,53 @@ public final class RdsFunctions {
      * 
      */
     public static Output<GetSlotsResult> getSlots(GetSlotsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:rds/getSlots:getSlots", TypeShape.of(GetSlotsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Rds Replication Slots of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.204.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetSlotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RdsFunctions.getSlots(GetSlotsArgs.builder()
+     *             .dbInstanceId("example_value")
+     *             .build());
+     * 
+     *         ctx.export("firstRdsSlotsName", example.applyValue(getSlotsResult -> getSlotsResult.slots()[0].slotName()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSlotsResult> getSlots(GetSlotsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:rds/getSlots:getSlots", TypeShape.of(GetSlotsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -3264,6 +3887,54 @@ public final class RdsFunctions {
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:rds/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides availability zones for RDS that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+     * 
+     * &gt; **NOTE:** Available since v1.73.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RdsFunctions.getZones(GetZonesArgs.builder()
+     *             .engine("MySQL")
+     *             .engineVersion("8.0")
+     *             .instanceChargeType("PostPaid")
+     *             .category("Basic")
+     *             .dbInstanceStorageType("cloud_essd")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:rds/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
     }
     /**

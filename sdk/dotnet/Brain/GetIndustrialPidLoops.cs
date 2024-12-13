@@ -88,6 +88,45 @@ namespace Pulumi.AliCloud.Brain
         /// </summary>
         public static Output<GetIndustrialPidLoopsResult> Invoke(GetIndustrialPidLoopsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIndustrialPidLoopsResult>("alicloud:brain/getIndustrialPidLoops:getIndustrialPidLoops", args ?? new GetIndustrialPidLoopsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Brain Industrial Pid Loops of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.117.0.
+        /// 
+        /// &gt; **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Brain.GetIndustrialPidLoops.Invoke(new()
+        ///     {
+        ///         PidProjectId = "856c6b8f-ca63-40a4-xxxx-xxxx",
+        ///         Ids = new[]
+        ///         {
+        ///             "742a3d4e-d8b0-47c8-xxxx-xxxx",
+        ///         },
+        ///         NameRegex = "tf-testACC",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstBrainIndustrialPidLoopId"] = example.Apply(getIndustrialPidLoopsResult =&gt; getIndustrialPidLoopsResult.Loops[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetIndustrialPidLoopsResult> Invoke(GetIndustrialPidLoopsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetIndustrialPidLoopsResult>("alicloud:brain/getIndustrialPidLoops:getIndustrialPidLoops", args ?? new GetIndustrialPidLoopsInvokeArgs(), options.WithDefaults());
     }
 
 

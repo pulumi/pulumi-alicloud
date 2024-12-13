@@ -96,6 +96,49 @@ namespace Pulumi.AliCloud.Dcdn
         /// </summary>
         public static Output<GetIpaDomainsResult> Invoke(GetIpaDomainsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIpaDomainsResult>("alicloud:dcdn/getIpaDomains:getIpaDomains", args ?? new GetIpaDomainsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Dcdn Ipa Domains of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.158.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Dcdn.GetIpaDomains.Invoke(new()
+        ///     {
+        ///         DomainName = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
+        /// 
+        ///     var status = AliCloud.Dcdn.GetIpaDomains.Invoke(new()
+        ///     {
+        ///         Status = "online",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dcdnIpaDomainId1"] = ids.Apply(getIpaDomainsResult =&gt; getIpaDomainsResult.Domains[0]?.Id),
+        ///         ["dcdnIpaDomainId2"] = status.Apply(getIpaDomainsResult =&gt; getIpaDomainsResult.Domains[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetIpaDomainsResult> Invoke(GetIpaDomainsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetIpaDomainsResult>("alicloud:dcdn/getIpaDomains:getIpaDomains", args ?? new GetIpaDomainsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -72,21 +72,11 @@ type GetVpcEndpointServiceResourcesResult struct {
 }
 
 func GetVpcEndpointServiceResourcesOutput(ctx *pulumi.Context, args GetVpcEndpointServiceResourcesOutputArgs, opts ...pulumi.InvokeOption) GetVpcEndpointServiceResourcesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetVpcEndpointServiceResourcesResultOutput, error) {
 			args := v.(GetVpcEndpointServiceResourcesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetVpcEndpointServiceResourcesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:privatelink/getVpcEndpointServiceResources:getVpcEndpointServiceResources", args, &rv, "", opts...)
-			if err != nil {
-				return GetVpcEndpointServiceResourcesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetVpcEndpointServiceResourcesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetVpcEndpointServiceResourcesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:privatelink/getVpcEndpointServiceResources:getVpcEndpointServiceResources", args, GetVpcEndpointServiceResourcesResultOutput{}, options).(GetVpcEndpointServiceResourcesResultOutput), nil
 		}).(GetVpcEndpointServiceResourcesResultOutput)
 }
 

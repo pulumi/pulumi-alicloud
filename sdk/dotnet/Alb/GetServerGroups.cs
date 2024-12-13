@@ -80,6 +80,41 @@ namespace Pulumi.AliCloud.Alb
         /// </summary>
         public static Output<GetServerGroupsResult> Invoke(GetServerGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServerGroupsResult>("alicloud:alb/getServerGroups:getServerGroups", args ?? new GetServerGroupsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Alb Server Groups of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.131.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Alb.GetServerGroups.Invoke();
+        /// 
+        ///     var nameRegex = AliCloud.Alb.GetServerGroups.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-ServerGroup",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["albServerGroupId1"] = ids.Apply(getServerGroupsResult =&gt; getServerGroupsResult.Groups[0]?.Id),
+        ///         ["albServerGroupId2"] = nameRegex.Apply(getServerGroupsResult =&gt; getServerGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetServerGroupsResult> Invoke(GetServerGroupsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServerGroupsResult>("alicloud:alb/getServerGroups:getServerGroups", args ?? new GetServerGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

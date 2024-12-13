@@ -95,21 +95,11 @@ type GetAccessConfigurationsResult struct {
 }
 
 func GetAccessConfigurationsOutput(ctx *pulumi.Context, args GetAccessConfigurationsOutputArgs, opts ...pulumi.InvokeOption) GetAccessConfigurationsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAccessConfigurationsResultOutput, error) {
 			args := v.(GetAccessConfigurationsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetAccessConfigurationsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:cloudsso/getAccessConfigurations:getAccessConfigurations", args, &rv, "", opts...)
-			if err != nil {
-				return GetAccessConfigurationsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetAccessConfigurationsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetAccessConfigurationsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:cloudsso/getAccessConfigurations:getAccessConfigurations", args, GetAccessConfigurationsResultOutput{}, options).(GetAccessConfigurationsResultOutput), nil
 		}).(GetAccessConfigurationsResultOutput)
 }
 

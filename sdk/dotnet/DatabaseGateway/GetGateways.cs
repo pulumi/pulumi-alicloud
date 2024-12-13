@@ -92,6 +92,47 @@ namespace Pulumi.AliCloud.DatabaseGateway
         /// </summary>
         public static Output<GetGatewaysResult> Invoke(GetGatewaysInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGatewaysResult>("alicloud:databasegateway/getGateways:getGateways", args ?? new GetGatewaysInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Database Gateway Gateways of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.DatabaseGateway.GetGateways.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.DatabaseGateway.GetGateways.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Gateway",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["databaseGatewayGatewayId1"] = ids.Apply(getGatewaysResult =&gt; getGatewaysResult.Gateways[0]?.Id),
+        ///         ["databaseGatewayGatewayId2"] = nameRegex.Apply(getGatewaysResult =&gt; getGatewaysResult.Gateways[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetGatewaysResult> Invoke(GetGatewaysInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGatewaysResult>("alicloud:databasegateway/getGateways:getGateways", args ?? new GetGatewaysInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -202,6 +202,102 @@ namespace Pulumi.AliCloud.Eds
         /// </summary>
         public static Output<GetImagesResult> Invoke(GetImagesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetImagesResult>("alicloud:eds/getImages:getImages", args ?? new GetImagesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Ecd Images of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.146.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("default", new()
+        ///     {
+        ///         CidrBlock = "172.16.0.0/12",
+        ///         DesktopAccessType = "Internet",
+        ///         OfficeSiteName = "your_simple_office_site_name",
+        ///     });
+        /// 
+        ///     var @default = AliCloud.Eds.GetBundles.Invoke(new()
+        ///     {
+        ///         BundleType = "SYSTEM",
+        ///     });
+        /// 
+        ///     var defaultEcdPolicyGroup = new AliCloud.Eds.EcdPolicyGroup("default", new()
+        ///     {
+        ///         PolicyGroupName = "your_policy_group_name",
+        ///         Clipboard = "readwrite",
+        ///         LocalDrive = "read",
+        ///         AuthorizeAccessPolicyRules = new[]
+        ///         {
+        ///             new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs
+        ///             {
+        ///                 Description = "example_value",
+        ///                 CidrIp = "1.2.3.4/24",
+        ///             },
+        ///         },
+        ///         AuthorizeSecurityPolicyRules = new[]
+        ///         {
+        ///             new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs
+        ///             {
+        ///                 Type = "inflow",
+        ///                 Policy = "accept",
+        ///                 Description = "example_value",
+        ///                 PortRange = "80/80",
+        ///                 IpProtocol = "TCP",
+        ///                 Priority = "1",
+        ///                 CidrIp = "0.0.0.0/0",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var defaultDesktop = new AliCloud.Eds.Desktop("default", new()
+        ///     {
+        ///         OfficeSiteId = defaultSimpleOfficeSite.Id,
+        ///         PolicyGroupId = defaultEcdPolicyGroup.Id,
+        ///         BundleId = @default.Apply(@default =&gt; @default.Apply(getBundlesResult =&gt; getBundlesResult.Bundles[1]?.Id)),
+        ///         DesktopName = "your_desktop_name",
+        ///     });
+        /// 
+        ///     var defaultImage = new AliCloud.Eds.Image("default", new()
+        ///     {
+        ///         ImageName = "your_image_name",
+        ///         DesktopId = defaultDesktop.Id,
+        ///         Description = "example_value",
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Eds.GetImages.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultImage.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Eds.GetImages.Invoke(new()
+        ///     {
+        ///         NameRegex = defaultImage.ImageName,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecdImageId1"] = ids.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+        ///         ["ecdImageId2"] = nameRegex.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetImagesResult> Invoke(GetImagesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetImagesResult>("alicloud:eds/getImages:getImages", args ?? new GetImagesInvokeArgs(), options.WithDefaults());
     }
 
 

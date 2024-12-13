@@ -16,6 +16,9 @@ namespace Pulumi.AliCloud.Rds
 
         public static Output<GetRdsParameterGroupsResult> Invoke(GetRdsParameterGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRdsParameterGroupsResult>("alicloud:rds/getRdsParameterGroups:getRdsParameterGroups", args ?? new GetRdsParameterGroupsInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetRdsParameterGroupsResult> Invoke(GetRdsParameterGroupsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRdsParameterGroupsResult>("alicloud:rds/getRdsParameterGroups:getRdsParameterGroups", args ?? new GetRdsParameterGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

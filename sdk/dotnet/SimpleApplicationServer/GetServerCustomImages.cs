@@ -92,6 +92,47 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// </summary>
         public static Output<GetServerCustomImagesResult> Invoke(GetServerCustomImagesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServerCustomImagesResult>("alicloud:simpleapplicationserver/getServerCustomImages:getServerCustomImages", args ?? new GetServerCustomImagesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Simple Application Server Custom Images of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.143.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.SimpleApplicationServer.GetServerCustomImages.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.SimpleApplicationServer.GetServerCustomImages.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-CustomImage",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["simpleApplicationServerCustomImageId1"] = ids.Apply(getServerCustomImagesResult =&gt; getServerCustomImagesResult.Images[0]?.Id),
+        ///         ["simpleApplicationServerCustomImageId2"] = nameRegex.Apply(getServerCustomImagesResult =&gt; getServerCustomImagesResult.Images[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetServerCustomImagesResult> Invoke(GetServerCustomImagesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServerCustomImagesResult>("alicloud:simpleapplicationserver/getServerCustomImages:getServerCustomImages", args ?? new GetServerCustomImagesInvokeArgs(), options.WithDefaults());
     }
 
 

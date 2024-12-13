@@ -90,21 +90,11 @@ type GetHealthCheckTemplatesResult struct {
 }
 
 func GetHealthCheckTemplatesOutput(ctx *pulumi.Context, args GetHealthCheckTemplatesOutputArgs, opts ...pulumi.InvokeOption) GetHealthCheckTemplatesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetHealthCheckTemplatesResultOutput, error) {
 			args := v.(GetHealthCheckTemplatesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetHealthCheckTemplatesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:alb/getHealthCheckTemplates:getHealthCheckTemplates", args, &rv, "", opts...)
-			if err != nil {
-				return GetHealthCheckTemplatesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetHealthCheckTemplatesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetHealthCheckTemplatesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:alb/getHealthCheckTemplates:getHealthCheckTemplates", args, GetHealthCheckTemplatesResultOutput{}, options).(GetHealthCheckTemplatesResultOutput), nil
 		}).(GetHealthCheckTemplatesResultOutput)
 }
 

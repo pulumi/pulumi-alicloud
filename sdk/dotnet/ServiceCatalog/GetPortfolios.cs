@@ -78,6 +78,40 @@ namespace Pulumi.AliCloud.ServiceCatalog
         /// </summary>
         public static Output<GetPortfoliosResult> Invoke(GetPortfoliosInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPortfoliosResult>("alicloud:servicecatalog/getPortfolios:getPortfolios", args ?? new GetPortfoliosInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides Service Catalog Portfolio available to the user.[What is Portfolio](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-createportfolio)
+        /// 
+        /// &gt; **NOTE:** Available in 1.204.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.ServiceCatalog.GetPortfolios.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultAlicloudServiceCatalogPortfolio.Id,
+        ///         },
+        ///         NameRegex = defaultAlicloudServiceCatalogPortfolio.Name,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudServiceCatalogPortfolioExampleId"] = @default.Apply(@default =&gt; @default.Apply(getPortfoliosResult =&gt; getPortfoliosResult.Portfolios[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPortfoliosResult> Invoke(GetPortfoliosInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPortfoliosResult>("alicloud:servicecatalog/getPortfolios:getPortfolios", args ?? new GetPortfoliosInvokeArgs(), options.WithDefaults());
     }
 
 

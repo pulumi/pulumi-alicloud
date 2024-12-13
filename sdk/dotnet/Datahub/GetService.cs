@@ -70,6 +70,36 @@ namespace Pulumi.AliCloud.Datahub
         /// </summary>
         public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceResult>("alicloud:datahub/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Using this data source can open DataHub service automatically. If the service has been opened, it will return opened.
+        /// 
+        /// For information about DataHub and how to use it, see [What is DataHub](https://help.aliyun.com/product/53345.html).
+        /// 
+        /// &gt; **NOTE:** Available in v1.111.0+
+        /// 
+        /// &gt; **NOTE:** The DataHub service is not support in the international site.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var open = AliCloud.Datahub.GetService.Invoke(new()
+        ///     {
+        ///         Enable = "On",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceResult>("alicloud:datahub/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());
     }
 
 

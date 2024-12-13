@@ -11,6 +11,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class Emrv2Functions {
@@ -57,6 +58,15 @@ public final class Emrv2Functions {
      * 
      */
     public static Output<GetClustersResult> getClusters(GetClustersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:emrv2/getClusters:getClusters", TypeShape.of(GetClustersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Emr Clusters of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.199.0.
+     * 
+     */
+    public static Output<GetClustersResult> getClusters(GetClustersArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:emrv2/getClusters:getClusters", TypeShape.of(GetClustersResult.class), args, Utilities.withVersion(options));
     }
     /**

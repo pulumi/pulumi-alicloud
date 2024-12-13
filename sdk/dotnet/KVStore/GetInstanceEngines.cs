@@ -88,6 +88,45 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         public static Output<GetInstanceEnginesResult> Invoke(GetInstanceEnginesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceEnginesResult>("alicloud:kvstore/getInstanceEngines:getInstanceEngines", args ?? new GetInstanceEnginesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance engines resource available info of Alibaba Cloud.
+        /// 
+        /// &gt; **NOTE:** Available since v1.51.0
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var resources = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableResourceCreation = "KVStore",
+        ///     });
+        /// 
+        ///     var resourcesGetInstanceEngines = AliCloud.KVStore.GetInstanceEngines.Invoke(new()
+        ///     {
+        ///         ZoneId = resources.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         InstanceChargeType = "PrePaid",
+        ///         Engine = "Redis",
+        ///         EngineVersion = "5.0",
+        ///         OutputFile = "./engines.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstKvstoreInstanceClass"] = resourcesGetInstanceEngines.Apply(getInstanceEnginesResult =&gt; getInstanceEnginesResult.InstanceEngines[0]?.Engine),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetInstanceEnginesResult> Invoke(GetInstanceEnginesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceEnginesResult>("alicloud:kvstore/getInstanceEngines:getInstanceEngines", args ?? new GetInstanceEnginesInvokeArgs(), options.WithDefaults());
     }
 
 

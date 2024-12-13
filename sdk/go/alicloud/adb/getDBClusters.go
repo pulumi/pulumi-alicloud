@@ -101,21 +101,11 @@ type GetDBClustersResult struct {
 }
 
 func GetDBClustersOutput(ctx *pulumi.Context, args GetDBClustersOutputArgs, opts ...pulumi.InvokeOption) GetDBClustersResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDBClustersResultOutput, error) {
 			args := v.(GetDBClustersArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetDBClustersResult
-			secret, err := ctx.InvokePackageRaw("alicloud:adb/getDBClusters:getDBClusters", args, &rv, "", opts...)
-			if err != nil {
-				return GetDBClustersResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetDBClustersResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetDBClustersResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:adb/getDBClusters:getDBClusters", args, GetDBClustersResultOutput{}, options).(GetDBClustersResultOutput), nil
 		}).(GetDBClustersResultOutput)
 }
 

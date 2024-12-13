@@ -80,6 +80,41 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         public static Output<GetAclsResult> Invoke(GetAclsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAclsResult>("alicloud:ga/getAcls:getAcls", args ?? new GetAclsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Ga Acls of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.150.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Ga.GetAcls.Invoke();
+        /// 
+        ///     var nameRegex = AliCloud.Ga.GetAcls.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Acl",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["gaAclId1"] = ids.Apply(getAclsResult =&gt; getAclsResult.Acls[0]?.Id),
+        ///         ["gaAclId2"] = nameRegex.Apply(getAclsResult =&gt; getAclsResult.Acls[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAclsResult> Invoke(GetAclsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAclsResult>("alicloud:ga/getAcls:getAcls", args ?? new GetAclsInvokeArgs(), options.WithDefaults());
     }
 
 

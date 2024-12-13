@@ -42,21 +42,11 @@ type LookupDBAuditInstanceResult struct {
 }
 
 func LookupDBAuditInstanceOutput(ctx *pulumi.Context, args LookupDBAuditInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupDBAuditInstanceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDBAuditInstanceResultOutput, error) {
 			args := v.(LookupDBAuditInstanceArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupDBAuditInstanceResult
-			secret, err := ctx.InvokePackageRaw("alicloud:yundun/getDBAuditInstance:getDBAuditInstance", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDBAuditInstanceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDBAuditInstanceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDBAuditInstanceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:yundun/getDBAuditInstance:getDBAuditInstance", args, LookupDBAuditInstanceResultOutput{}, options).(LookupDBAuditInstanceResultOutput), nil
 		}).(LookupDBAuditInstanceResultOutput)
 }
 

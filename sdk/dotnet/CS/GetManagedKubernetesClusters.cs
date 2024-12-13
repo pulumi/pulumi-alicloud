@@ -80,6 +80,41 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         public static Output<GetManagedKubernetesClustersResult> Invoke(GetManagedKubernetesClustersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetManagedKubernetesClustersResult>("alicloud:cs/getManagedKubernetesClusters:getManagedKubernetesClusters", args ?? new GetManagedKubernetesClustersInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a list Container Service Managed Kubernetes Clusters on Alibaba Cloud.
+        /// 
+        /// &gt; **NOTE:** Available in v1.35.0+
+        /// 
+        /// &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kube_config_file_prefix`.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Declare the data source
+        ///     var k8sClusters = AliCloud.CS.GetManagedKubernetesClusters.Invoke(new()
+        ///     {
+        ///         NameRegex = "my-first-k8s",
+        ///         OutputFile = "my-first-k8s-json",
+        ///         KubeConfigFilePrefix = "~/.kube/managed",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["output"] = k8sClusters.Apply(getManagedKubernetesClustersResult =&gt; getManagedKubernetesClustersResult.Clusters),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetManagedKubernetesClustersResult> Invoke(GetManagedKubernetesClustersInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetManagedKubernetesClustersResult>("alicloud:cs/getManagedKubernetesClusters:getManagedKubernetesClusters", args ?? new GetManagedKubernetesClustersInvokeArgs(), options.WithDefaults());
     }
 
 

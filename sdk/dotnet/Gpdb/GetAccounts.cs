@@ -98,6 +98,50 @@ namespace Pulumi.AliCloud.Gpdb
         /// </summary>
         public static Output<GetAccountsResult> Invoke(GetAccountsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountsResult>("alicloud:gpdb/getAccounts:getAccounts", args ?? new GetAccountsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Gpdb Accounts of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.142.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Gpdb.GetAccounts.Invoke(new()
+        ///     {
+        ///         DbInstanceId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "my-Account-1",
+        ///             "my-Account-2",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Gpdb.GetAccounts.Invoke(new()
+        ///     {
+        ///         DbInstanceId = "example_value",
+        ///         NameRegex = "^my-Account",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["gpdbAccountId1"] = ids.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.Id),
+        ///         ["gpdbAccountId2"] = nameRegex.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAccountsResult> Invoke(GetAccountsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountsResult>("alicloud:gpdb/getAccounts:getAccounts", args ?? new GetAccountsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -11,6 +11,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class OceanFunctions {
@@ -262,6 +263,56 @@ public final class OceanFunctions {
      * 
      */
     public static Output<GetBaseInstancesResult> getBaseInstances(GetBaseInstancesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ocean/getBaseInstances:getBaseInstances", TypeShape.of(GetBaseInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Ocean Base Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.203.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ocean.OceanFunctions;
+     * import com.pulumi.alicloud.ocean.inputs.GetBaseInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = OceanFunctions.getBaseInstances();
+     * 
+     *         ctx.export("oceanBaseInstanceId1", ids.applyValue(getBaseInstancesResult -> getBaseInstancesResult.instances()[0].id()));
+     *         final var nameRegex = OceanFunctions.getBaseInstances(GetBaseInstancesArgs.builder()
+     *             .nameRegex("^my-Instance")
+     *             .build());
+     * 
+     *         ctx.export("oceanBaseInstanceId2", nameRegex.applyValue(getBaseInstancesResult -> getBaseInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetBaseInstancesResult> getBaseInstances(GetBaseInstancesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:ocean/getBaseInstances:getBaseInstances", TypeShape.of(GetBaseInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**

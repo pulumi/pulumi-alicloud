@@ -39,21 +39,11 @@ type LookupMonitorGroupInstancesResult struct {
 }
 
 func LookupMonitorGroupInstancesOutput(ctx *pulumi.Context, args LookupMonitorGroupInstancesOutputArgs, opts ...pulumi.InvokeOption) LookupMonitorGroupInstancesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupMonitorGroupInstancesResultOutput, error) {
 			args := v.(LookupMonitorGroupInstancesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupMonitorGroupInstancesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:cms/getMonitorGroupInstances:getMonitorGroupInstances", args, &rv, "", opts...)
-			if err != nil {
-				return LookupMonitorGroupInstancesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupMonitorGroupInstancesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupMonitorGroupInstancesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:cms/getMonitorGroupInstances:getMonitorGroupInstances", args, LookupMonitorGroupInstancesResultOutput{}, options).(LookupMonitorGroupInstancesResultOutput), nil
 		}).(LookupMonitorGroupInstancesResultOutput)
 }
 

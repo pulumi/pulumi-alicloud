@@ -80,6 +80,41 @@ namespace Pulumi.AliCloud
         /// </summary>
         public static Output<GetMscSubContactsResult> Invoke(GetMscSubContactsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMscSubContactsResult>("alicloud:index/getMscSubContacts:getMscSubContacts", args ?? new GetMscSubContactsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Message Center Contacts of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.GetMscSubContacts.Invoke();
+        /// 
+        ///     var nameRegex = AliCloud.GetMscSubContacts.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Contact",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mscSubContactId1"] = ids.Apply(getMscSubContactsResult =&gt; getMscSubContactsResult.Contacts[0]?.Id),
+        ///         ["mscSubContactId2"] = nameRegex.Apply(getMscSubContactsResult =&gt; getMscSubContactsResult.Contacts[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetMscSubContactsResult> Invoke(GetMscSubContactsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMscSubContactsResult>("alicloud:index/getMscSubContacts:getMscSubContacts", args ?? new GetMscSubContactsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -57,21 +57,11 @@ type GetVbrHealthChecksResult struct {
 }
 
 func GetVbrHealthChecksOutput(ctx *pulumi.Context, args GetVbrHealthChecksOutputArgs, opts ...pulumi.InvokeOption) GetVbrHealthChecksResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetVbrHealthChecksResultOutput, error) {
 			args := v.(GetVbrHealthChecksArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetVbrHealthChecksResult
-			secret, err := ctx.InvokePackageRaw("alicloud:cen/getVbrHealthChecks:getVbrHealthChecks", args, &rv, "", opts...)
-			if err != nil {
-				return GetVbrHealthChecksResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetVbrHealthChecksResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetVbrHealthChecksResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:cen/getVbrHealthChecks:getVbrHealthChecks", args, GetVbrHealthChecksResultOutput{}, options).(GetVbrHealthChecksResultOutput), nil
 		}).(GetVbrHealthChecksResultOutput)
 }
 

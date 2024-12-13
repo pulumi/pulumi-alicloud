@@ -70,6 +70,36 @@ namespace Pulumi.AliCloud.FC
         /// </summary>
         public static Output<GetCustomDomainsResult> Invoke(GetCustomDomainsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCustomDomainsResult>("alicloud:fc/getCustomDomains:getCustomDomains", args ?? new GetCustomDomainsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Function Compute custom domains of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in 1.98.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var fcDomains = AliCloud.FC.GetCustomDomains.Invoke(new()
+        ///     {
+        ///         NameRegex = "sample_fc_custom_domain",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstFcCustomDomainName"] = fcDomainsDs.Domains[0].DomainName,
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetCustomDomainsResult> Invoke(GetCustomDomainsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCustomDomainsResult>("alicloud:fc/getCustomDomains:getCustomDomains", args ?? new GetCustomDomainsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -72,6 +72,37 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         public static Output<GetCharacterSetNamesResult> Invoke(GetCharacterSetNamesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCharacterSetNamesResult>("alicloud:rds/getCharacterSetNames:getCharacterSetNames", args ?? new GetCharacterSetNamesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source is the character set supported by querying RDS instances.
+        /// 
+        /// &gt; **NOTE:** Available in v1.198.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Declare the data source
+        ///     var names = AliCloud.Rds.GetCharacterSetNames.Invoke(new()
+        ///     {
+        ///         Engine = "MySQL",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRdsCharacterSetNames"] = names.Apply(getCharacterSetNamesResult =&gt; getCharacterSetNamesResult.Names[0]),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetCharacterSetNamesResult> Invoke(GetCharacterSetNamesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCharacterSetNamesResult>("alicloud:rds/getCharacterSetNames:getCharacterSetNames", args ?? new GetCharacterSetNamesInvokeArgs(), options.WithDefaults());
     }
 
 

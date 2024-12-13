@@ -54,6 +54,28 @@ namespace Pulumi.AliCloud.Ots
         /// </summary>
         public static Output<GetTablesResult> Invoke(GetTablesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTablesResult>("alicloud:ots/getTables:getTables", args ?? new GetTablesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the ots tables of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.40.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ``` terraform
+        /// data "alicloud_ots_tables" "tables_ds" {
+        ///   instance_name = "sample-instance"
+        ///   name_regex    = "sample-table"
+        ///   output_file   = "tables.txt"
+        /// }
+        /// 
+        /// output "first_table_id" {
+        ///   value = "${data.alicloud_ots_tables.tables_ds.tables.0.id}"
+        /// }
+        /// ```
+        /// </summary>
+        public static Output<GetTablesResult> Invoke(GetTablesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTablesResult>("alicloud:ots/getTables:getTables", args ?? new GetTablesInvokeArgs(), options.WithDefaults());
     }
 
 

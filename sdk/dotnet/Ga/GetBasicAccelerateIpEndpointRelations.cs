@@ -82,6 +82,42 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         public static Output<GetBasicAccelerateIpEndpointRelationsResult> Invoke(GetBasicAccelerateIpEndpointRelationsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBasicAccelerateIpEndpointRelationsResult>("alicloud:ga/getBasicAccelerateIpEndpointRelations:getBasicAccelerateIpEndpointRelations", args ?? new GetBasicAccelerateIpEndpointRelationsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Global Accelerator (GA) Basic Accelerate Ip Endpoint Relations of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.194.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Ga.GetBasicAccelerateIpEndpointRelations.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         AcceleratorId = "example_id",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["gaBasicAccelerateIpEndpointRelationsId1"] = ids.Apply(getBasicAccelerateIpEndpointRelationsResult =&gt; getBasicAccelerateIpEndpointRelationsResult.Relations[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetBasicAccelerateIpEndpointRelationsResult> Invoke(GetBasicAccelerateIpEndpointRelationsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetBasicAccelerateIpEndpointRelationsResult>("alicloud:ga/getBasicAccelerateIpEndpointRelations:getBasicAccelerateIpEndpointRelations", args ?? new GetBasicAccelerateIpEndpointRelationsInvokeArgs(), options.WithDefaults());
     }
 
 

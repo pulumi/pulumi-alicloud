@@ -80,6 +80,41 @@ namespace Pulumi.AliCloud.Ecp
         /// </summary>
         public static Output<GetKeyPairsResult> Invoke(GetKeyPairsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKeyPairsResult>("alicloud:ecp/getKeyPairs:getKeyPairs", args ?? new GetKeyPairsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Ecp Key Pairs of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.130.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Ecp.GetKeyPairs.Invoke();
+        /// 
+        ///     var nameRegex = AliCloud.Ecp.GetKeyPairs.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-KeyPair",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecpKeyPairId1"] = ids.Apply(getKeyPairsResult =&gt; getKeyPairsResult.Pairs[0]?.Id),
+        ///         ["ecpKeyPairId2"] = nameRegex.Apply(getKeyPairsResult =&gt; getKeyPairsResult.Pairs[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetKeyPairsResult> Invoke(GetKeyPairsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetKeyPairsResult>("alicloud:ecp/getKeyPairs:getKeyPairs", args ?? new GetKeyPairsInvokeArgs(), options.WithDefaults());
     }
 
 

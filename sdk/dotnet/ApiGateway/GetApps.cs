@@ -66,6 +66,34 @@ namespace Pulumi.AliCloud.ApiGateway
         /// </summary>
         public static Output<GetAppsResult> Invoke(GetAppsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAppsResult>("alicloud:apigateway/getApps:getApps", args ?? new GetAppsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the apps of the current Alibaba Cloud user.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var dataApigatway = AliCloud.ApiGateway.GetApps.Invoke(new()
+        ///     {
+        ///         OutputFile = "outapps",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstAppId"] = dataApigatway.Apply(getAppsResult =&gt; getAppsResult.Apps[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAppsResult> Invoke(GetAppsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAppsResult>("alicloud:apigateway/getApps:getApps", args ?? new GetAppsInvokeArgs(), options.WithDefaults());
     }
 
 

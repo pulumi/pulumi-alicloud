@@ -98,6 +98,50 @@ namespace Pulumi.AliCloud.Arms
         /// </summary>
         public static Output<GetPrometheusAlertRulesResult> Invoke(GetPrometheusAlertRulesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrometheusAlertRulesResult>("alicloud:arms/getPrometheusAlertRules:getPrometheusAlertRules", args ?? new GetPrometheusAlertRulesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Arms Prometheus Alert Rules of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.136.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Arms.GetPrometheusAlertRules.Invoke(new()
+        ///     {
+        ///         ClusterId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Arms.GetPrometheusAlertRules.Invoke(new()
+        ///     {
+        ///         ClusterId = "example_value",
+        ///         NameRegex = "^my-PrometheusAlertRule",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["armsPrometheusAlertRuleId1"] = ids.Apply(getPrometheusAlertRulesResult =&gt; getPrometheusAlertRulesResult.Rules[0]?.Id),
+        ///         ["armsPrometheusAlertRuleId2"] = nameRegex.Apply(getPrometheusAlertRulesResult =&gt; getPrometheusAlertRulesResult.Rules[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPrometheusAlertRulesResult> Invoke(GetPrometheusAlertRulesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPrometheusAlertRulesResult>("alicloud:arms/getPrometheusAlertRules:getPrometheusAlertRules", args ?? new GetPrometheusAlertRulesInvokeArgs(), options.WithDefaults());
     }
 
 

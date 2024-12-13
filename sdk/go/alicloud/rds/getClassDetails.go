@@ -119,21 +119,11 @@ type GetClassDetailsResult struct {
 }
 
 func GetClassDetailsOutput(ctx *pulumi.Context, args GetClassDetailsOutputArgs, opts ...pulumi.InvokeOption) GetClassDetailsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetClassDetailsResultOutput, error) {
 			args := v.(GetClassDetailsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetClassDetailsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:rds/getClassDetails:getClassDetails", args, &rv, "", opts...)
-			if err != nil {
-				return GetClassDetailsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetClassDetailsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetClassDetailsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:rds/getClassDetails:getClassDetails", args, GetClassDetailsResultOutput{}, options).(GetClassDetailsResultOutput), nil
 		}).(GetClassDetailsResultOutput)
 }
 

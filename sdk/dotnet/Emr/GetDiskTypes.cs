@@ -80,6 +80,41 @@ namespace Pulumi.AliCloud.Emr
         /// </summary>
         public static Output<GetDiskTypesResult> Invoke(GetDiskTypesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDiskTypesResult>("alicloud:emr/getDiskTypes:getDiskTypes", args ?? new GetDiskTypesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `alicloud.emr.getDiskTypes` data source provides a collection of data disk and 
+        /// system disk types available in Alibaba Cloud account when create a emr cluster.
+        /// 
+        /// &gt; **NOTE:** Available in 1.60.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Emr.GetDiskTypes.Invoke(new()
+        ///     {
+        ///         DestinationResource = "DataDisk",
+        ///         InstanceChargeType = "PostPaid",
+        ///         ClusterType = "HADOOP",
+        ///         InstanceType = "ecs.g5.xlarge",
+        ///         ZoneId = "cn-huhehaote-a",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataDiskType"] = @default.Apply(@default =&gt; @default.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Value)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDiskTypesResult> Invoke(GetDiskTypesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDiskTypesResult>("alicloud:emr/getDiskTypes:getDiskTypes", args ?? new GetDiskTypesInvokeArgs(), options.WithDefaults());
     }
 
 

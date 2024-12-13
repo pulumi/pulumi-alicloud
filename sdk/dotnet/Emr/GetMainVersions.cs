@@ -84,6 +84,43 @@ namespace Pulumi.AliCloud.Emr
         /// </summary>
         public static Output<GetMainVersionsResult> Invoke(GetMainVersionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMainVersionsResult>("alicloud:emr/getMainVersions:getMainVersions", args ?? new GetMainVersionsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `alicloud.emr.getMainVersions` data source provides a collection of emr 
+        /// main versions available in Alibaba Cloud account when create a emr cluster.
+        /// 
+        /// &gt; **NOTE:** Available in 1.59.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Emr.GetMainVersions.Invoke(new()
+        ///     {
+        ///         EmrVersion = "EMR-3.22.0",
+        ///         ClusterTypes = new[]
+        ///         {
+        ///             "HADOOP",
+        ///             "ZOOKEEPER",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstMainVersion"] = @default.Apply(@default =&gt; @default.Apply(getMainVersionsResult =&gt; getMainVersionsResult.MainVersions[0]?.EmrVersion)),
+        ///         ["thisClusterTypes"] = @default.Apply(@default =&gt; @default.Apply(getMainVersionsResult =&gt; getMainVersionsResult.MainVersions[0]?.ClusterTypes)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetMainVersionsResult> Invoke(GetMainVersionsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMainVersionsResult>("alicloud:emr/getMainVersions:getMainVersions", args ?? new GetMainVersionsInvokeArgs(), options.WithDefaults());
     }
 
 

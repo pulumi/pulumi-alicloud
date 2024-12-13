@@ -56,6 +56,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class CmsFunctions {
@@ -287,6 +288,52 @@ public final class CmsFunctions {
      * 
      */
     public static Output<GetAlarmContactGroupsResult> getAlarmContactGroups(GetAlarmContactGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cms/getAlarmContactGroups:getAlarmContactGroups", TypeShape.of(GetAlarmContactGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the CMS Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.101.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetAlarmContactGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CmsFunctions.getAlarmContactGroups(GetAlarmContactGroupsArgs.builder()
+     *             .nameRegex("tf-testacc")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAlarmContactGroupsResult> getAlarmContactGroups(GetAlarmContactGroupsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cms/getAlarmContactGroups:getAlarmContactGroups", TypeShape.of(GetAlarmContactGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -568,6 +615,53 @@ public final class CmsFunctions {
      * 
      */
     public static Output<GetAlarmContactsResult> getAlarmContacts(GetAlarmContactsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cms/getAlarmContacts:getAlarmContacts", TypeShape.of(GetAlarmContactsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a list of alarm contact owned by an Alibaba Cloud account.
+     * 
+     * &gt; **NOTE:** Available in v1.99.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetAlarmContactsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CmsFunctions.getAlarmContacts(GetAlarmContactsArgs.builder()
+     *             .ids("tf-testAccCmsAlarmContact")
+     *             .build());
+     * 
+     *         ctx.export("first-contact", this_.contacts());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAlarmContactsResult> getAlarmContacts(GetAlarmContactsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cms/getAlarmContacts:getAlarmContacts", TypeShape.of(GetAlarmContactsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1028,6 +1122,75 @@ public final class CmsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetDynamicTagGroupsResult> getDynamicTagGroups(GetDynamicTagGroupsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cms/getDynamicTagGroups:getDynamicTagGroups", TypeShape.of(GetDynamicTagGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cms Dynamic Tag Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.142.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.AlarmContactGroup;
+     * import com.pulumi.alicloud.cms.AlarmContactGroupArgs;
+     * import com.pulumi.alicloud.cms.DynamicTagGroup;
+     * import com.pulumi.alicloud.cms.DynamicTagGroupArgs;
+     * import com.pulumi.alicloud.cms.inputs.DynamicTagGroupMatchExpressArgs;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetDynamicTagGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("example_value");
+     *         var default_ = new AlarmContactGroup("default", AlarmContactGroupArgs.builder()
+     *             .alarmContactGroupName(name)
+     *             .describe("example_value")
+     *             .enableSubscribed(true)
+     *             .build());
+     * 
+     *         var defaultDynamicTagGroup = new DynamicTagGroup("defaultDynamicTagGroup", DynamicTagGroupArgs.builder()
+     *             .contactGroupLists(default_.id())
+     *             .tagKey("your_tag_key")
+     *             .matchExpresses(DynamicTagGroupMatchExpressArgs.builder()
+     *                 .tagValue("your_tag_value")
+     *                 .tagValueMatchFunction("all")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var ids = CmsFunctions.getDynamicTagGroups(GetDynamicTagGroupsArgs.builder()
+     *             .ids(defaultDynamicTagGroup.id())
+     *             .build());
+     * 
+     *         ctx.export("cmsDynamicTagGroupId1", ids.applyValue(getDynamicTagGroupsResult -> getDynamicTagGroupsResult).applyValue(ids -> ids.applyValue(getDynamicTagGroupsResult -> getDynamicTagGroupsResult.groups()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDynamicTagGroupsResult> getDynamicTagGroupsPlain(GetDynamicTagGroupsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cms/getDynamicTagGroups:getDynamicTagGroups", TypeShape.of(GetDynamicTagGroupsResult.class), args, Utilities.withVersion(options));
     }
@@ -1289,6 +1452,58 @@ public final class CmsFunctions {
      * 
      */
     public static Output<GetEventRulesResult> getEventRules(GetEventRulesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cms/getEventRules:getEventRules", TypeShape.of(GetEventRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cms Event Rules of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.182.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetEventRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CmsFunctions.getEventRules(GetEventRulesArgs.builder()
+     *             .ids("example_id")
+     *             .build());
+     * 
+     *         ctx.export("cmsEventRuleId1", ids.applyValue(getEventRulesResult -> getEventRulesResult.rules()[0].id()));
+     *         final var nameRegex = CmsFunctions.getEventRules(GetEventRulesArgs.builder()
+     *             .nameRegex("^my-EventRule")
+     *             .build());
+     * 
+     *         ctx.export("cmsEventRuleId2", nameRegex.applyValue(getEventRulesResult -> getEventRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEventRulesResult> getEventRules(GetEventRulesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cms/getEventRules:getEventRules", TypeShape.of(GetEventRulesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1628,6 +1843,54 @@ public final class CmsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetGroupMetricRulesResult> getGroupMetricRules(GetGroupMetricRulesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cms/getGroupMetricRules:getGroupMetricRules", TypeShape.of(GetGroupMetricRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cms Group Metric Rules of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.104.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetGroupMetricRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CmsFunctions.getGroupMetricRules(GetGroupMetricRulesArgs.builder()
+     *             .ids("4a9a8978-a9cc-55ca-aa7c-530ccd91ae57")
+     *             .nameRegex("the_resource_name")
+     *             .build());
+     * 
+     *         ctx.export("firstCmsGroupMetricRuleId", example.applyValue(getGroupMetricRulesResult -> getGroupMetricRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetGroupMetricRulesResult> getGroupMetricRulesPlain(GetGroupMetricRulesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cms/getGroupMetricRules:getGroupMetricRules", TypeShape.of(GetGroupMetricRulesResult.class), args, Utilities.withVersion(options));
     }
@@ -1779,6 +2042,56 @@ public final class CmsFunctions {
      * 
      */
     public static Output<GetHybridMonitorDatasResult> getHybridMonitorDatas(GetHybridMonitorDatasArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cms/getHybridMonitorDatas:getHybridMonitorDatas", TypeShape.of(GetHybridMonitorDatasResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cms Hybrid Monitor Datas of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.177.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetHybridMonitorDatasArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CmsFunctions.getHybridMonitorDatas(GetHybridMonitorDatasArgs.builder()
+     *             .namespace("example_value")
+     *             .promSql("AliyunEcs_cpu_total")
+     *             .start("1657505665")
+     *             .end("1657520065")
+     *             .build());
+     * 
+     *         ctx.export("cmsMetricRuleTemplateId1", default_.datas()[0]);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetHybridMonitorDatasResult> getHybridMonitorDatas(GetHybridMonitorDatasArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cms/getHybridMonitorDatas:getHybridMonitorDatas", TypeShape.of(GetHybridMonitorDatasResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2110,6 +2423,53 @@ public final class CmsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetHybridMonitorFcTasksResult> getHybridMonitorFcTasks(GetHybridMonitorFcTasksArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cms/getHybridMonitorFcTasks:getHybridMonitorFcTasks", TypeShape.of(GetHybridMonitorFcTasksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cms Hybrid Monitor Fc Tasks of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.179.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetHybridMonitorFcTasksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CmsFunctions.getHybridMonitorFcTasks(GetHybridMonitorFcTasksArgs.builder()
+     *             .ids("example_value")
+     *             .build());
+     * 
+     *         ctx.export("cmsHybridMonitorFcTaskId1", ids.applyValue(getHybridMonitorFcTasksResult -> getHybridMonitorFcTasksResult.tasks()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetHybridMonitorFcTasksResult> getHybridMonitorFcTasksPlain(GetHybridMonitorFcTasksPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cms/getHybridMonitorFcTasks:getHybridMonitorFcTasks", TypeShape.of(GetHybridMonitorFcTasksResult.class), args, Utilities.withVersion(options));
     }
@@ -2392,6 +2752,53 @@ public final class CmsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetHybridMonitorSlsTasksResult> getHybridMonitorSlsTasks(GetHybridMonitorSlsTasksArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cms/getHybridMonitorSlsTasks:getHybridMonitorSlsTasks", TypeShape.of(GetHybridMonitorSlsTasksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cms Hybrid Monitor Sls Tasks of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.179.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetHybridMonitorSlsTasksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CmsFunctions.getHybridMonitorSlsTasks(GetHybridMonitorSlsTasksArgs.builder()
+     *             .ids("example_value")
+     *             .build());
+     * 
+     *         ctx.export("cmsHybridMonitorSlsTaskId1", ids.applyValue(getHybridMonitorSlsTasksResult -> getHybridMonitorSlsTasksResult.tasks()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetHybridMonitorSlsTasksResult> getHybridMonitorSlsTasksPlain(GetHybridMonitorSlsTasksPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cms/getHybridMonitorSlsTasks:getHybridMonitorSlsTasks", TypeShape.of(GetHybridMonitorSlsTasksResult.class), args, Utilities.withVersion(options));
     }
@@ -2628,6 +3035,53 @@ public final class CmsFunctions {
      * 
      */
     public static Output<GetMetricRuleBlackListsResult> getMetricRuleBlackLists(GetMetricRuleBlackListsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cms/getMetricRuleBlackLists:getMetricRuleBlackLists", TypeShape.of(GetMetricRuleBlackListsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cloud Monitor Service Metric Rule Black List available to the user.[What is Metric Rule Black List](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruleblacklist)
+     * 
+     * &gt; **NOTE:** Available in 1.194.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetMetricRuleBlackListsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CmsFunctions.getMetricRuleBlackLists(GetMetricRuleBlackListsArgs.builder()
+     *             .ids(defaultAlicloudCmsMetricRuleBlackLists.id())
+     *             .category("ecs")
+     *             .namespace("acs_ecs_dashboard")
+     *             .build());
+     * 
+     *         ctx.export("alicloudCmsRuleBlackListExampleId", lists[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetMetricRuleBlackListsResult> getMetricRuleBlackLists(GetMetricRuleBlackListsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cms/getMetricRuleBlackLists:getMetricRuleBlackLists", TypeShape.of(GetMetricRuleBlackListsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -3046,6 +3500,68 @@ public final class CmsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetMetricRuleTemplatesResult> getMetricRuleTemplates(GetMetricRuleTemplatesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cms/getMetricRuleTemplates:getMetricRuleTemplates", TypeShape.of(GetMetricRuleTemplatesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cms Metric Rule Templates of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.134.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetMetricRuleTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
+     *             .ids("example_value")
+     *             .build());
+     * 
+     *         ctx.export("cmsMetricRuleTemplateId1", ids.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
+     *         final var nameRegex = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
+     *             .nameRegex("^my-MetricRuleTemplate")
+     *             .build());
+     * 
+     *         ctx.export("cmsMetricRuleTemplateId2", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
+     *         final var keyword = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
+     *             .keyword("^my-MetricRuleTemplate")
+     *             .build());
+     * 
+     *         ctx.export("cmsMetricRuleTemplateId3", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
+     *         final var templateId = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
+     *             .templateId("example_value")
+     *             .build());
+     * 
+     *         ctx.export("cmsMetricRuleTemplateId4", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetMetricRuleTemplatesResult> getMetricRuleTemplatesPlain(GetMetricRuleTemplatesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cms/getMetricRuleTemplates:getMetricRuleTemplates", TypeShape.of(GetMetricRuleTemplatesResult.class), args, Utilities.withVersion(options));
     }
@@ -3056,6 +3572,9 @@ public final class CmsFunctions {
         return getMonitorGroupInstancesPlain(args, InvokeOptions.Empty);
     }
     public static Output<GetMonitorGroupInstancesResult> getMonitorGroupInstances(GetMonitorGroupInstancesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cms/getMonitorGroupInstances:getMonitorGroupInstances", TypeShape.of(GetMonitorGroupInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetMonitorGroupInstancesResult> getMonitorGroupInstances(GetMonitorGroupInstancesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cms/getMonitorGroupInstances:getMonitorGroupInstances", TypeShape.of(GetMonitorGroupInstancesResult.class), args, Utilities.withVersion(options));
     }
     public static CompletableFuture<GetMonitorGroupInstancesResult> getMonitorGroupInstancesPlain(GetMonitorGroupInstancesPlainArgs args, InvokeOptions options) {
@@ -3299,6 +3818,54 @@ public final class CmsFunctions {
      * 
      */
     public static Output<GetMonitorGroupsResult> getMonitorGroups(GetMonitorGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cms/getMonitorGroups:getMonitorGroups", TypeShape.of(GetMonitorGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cms Monitor Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.113.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetMonitorGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CmsFunctions.getMonitorGroups(GetMonitorGroupsArgs.builder()
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
+     *             .build());
+     * 
+     *         ctx.export("firstCmsMonitorGroupId", example.applyValue(getMonitorGroupsResult -> getMonitorGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetMonitorGroupsResult> getMonitorGroups(GetMonitorGroupsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cms/getMonitorGroups:getMonitorGroups", TypeShape.of(GetMonitorGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -3628,6 +4195,53 @@ public final class CmsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetNamespacesResult> getNamespaces(GetNamespacesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cms/getNamespaces:getNamespaces", TypeShape.of(GetNamespacesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cms Namespaces of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.171.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CmsFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .ids("example_id")
+     *             .build());
+     * 
+     *         ctx.export("cmsNamespaceId1", ids.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetNamespacesResult> getNamespacesPlain(GetNamespacesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cms/getNamespaces:getNamespaces", TypeShape.of(GetNamespacesResult.class), args, Utilities.withVersion(options));
     }
@@ -3869,6 +4483,54 @@ public final class CmsFunctions {
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cms/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Using this data source can open CMS service automatically. If the service has been opened, it will return opened.
+     * 
+     * For information about CMS and how to use it, see [What is CMS](https://help.aliyun.com/product/28572.html).
+     * 
+     * &gt; **NOTE:** Available in v1.111.0+
+     * 
+     * &gt; **DEPRECATED:**  This data source has been deprecated from version `1.219.0`. The Cloud Monitor Service is no longer needed to open in the product dimension and the OpenAPI has been taken [offline](https://api.alibabacloud.com/api/Cms/2019-01-01/OpenCmsService).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = CmsFunctions.getService(GetServiceArgs.builder()
+     *             .enable("On")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cms/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -4432,6 +5094,92 @@ public final class CmsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetSiteMonitorsResult> getSiteMonitors(GetSiteMonitorsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cms/getSiteMonitors:getSiteMonitors", TypeShape.of(GetSiteMonitorsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cloud Monitor Service Site Monitor available to the user.[What is Site Monitor](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.224.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.cms.SiteMonitor;
+     * import com.pulumi.alicloud.cms.SiteMonitorArgs;
+     * import com.pulumi.alicloud.cms.inputs.SiteMonitorIspCityArgs;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetSiteMonitorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("tf_example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         var defaultSiteMonitor = new SiteMonitor("defaultSiteMonitor", SiteMonitorArgs.builder()
+     *             .address("http://www.alibabacloud.com")
+     *             .taskName(String.format("terraform-example-%s", defaultInteger.result()))
+     *             .taskType("HTTP")
+     *             .interval(5)
+     *             .ispCities(SiteMonitorIspCityArgs.builder()
+     *                 .city("546")
+     *                 .isp("465")
+     *                 .build())
+     *             .optionsJson("""
+     * {
+     *     "http_method": "get",
+     *     "waitTime_after_completion": null,
+     *     "ipv6_task": false,
+     *     "diagnosis_ping": false,
+     *     "diagnosis_mtr": false,
+     *     "assertions": [
+     *         {
+     *             "operator": "lessThan",
+     *             "type": "response_time",
+     *             "target": 1000
+     *         }
+     *     ],
+     *     "time_out": 30000
+     * }
+     *             """)
+     *             .build());
+     * 
+     *         final var default = CmsFunctions.getSiteMonitors(GetSiteMonitorsArgs.builder()
+     *             .ids(defaultSiteMonitor.id())
+     *             .taskType("HTTP")
+     *             .build());
+     * 
+     *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(default_ -> default_.monitors()[0].taskId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetSiteMonitorsResult> getSiteMonitorsPlain(GetSiteMonitorsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cms/getSiteMonitors:getSiteMonitors", TypeShape.of(GetSiteMonitorsResult.class), args, Utilities.withVersion(options));
     }
@@ -4693,6 +5441,58 @@ public final class CmsFunctions {
      * 
      */
     public static Output<GetSlsGroupsResult> getSlsGroups(GetSlsGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cms/getSlsGroups:getSlsGroups", TypeShape.of(GetSlsGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cms Sls Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.171.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetSlsGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CmsFunctions.getSlsGroups(GetSlsGroupsArgs.builder()
+     *             .ids("example_id")
+     *             .build());
+     * 
+     *         ctx.export("cmsSlsGroupId1", ids.applyValue(getSlsGroupsResult -> getSlsGroupsResult.groups()[0].id()));
+     *         final var nameRegex = CmsFunctions.getSlsGroups(GetSlsGroupsArgs.builder()
+     *             .nameRegex("^my-SlsGroup")
+     *             .build());
+     * 
+     *         ctx.export("cmsSlsGroupId2", nameRegex.applyValue(getSlsGroupsResult -> getSlsGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSlsGroupsResult> getSlsGroups(GetSlsGroupsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cms/getSlsGroups:getSlsGroups", TypeShape.of(GetSlsGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**

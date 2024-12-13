@@ -82,6 +82,42 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public static Output<GetAutoSnapshotPoliciesResult> Invoke(GetAutoSnapshotPoliciesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAutoSnapshotPoliciesResult>("alicloud:ecs/getAutoSnapshotPolicies:getAutoSnapshotPolicies", args ?? new GetAutoSnapshotPoliciesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Ecs Auto Snapshot Policies of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.117.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Ecs.GetAutoSnapshotPolicies.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "sp-bp14e66xxxxxxxx",
+        ///         },
+        ///         NameRegex = "tf-testAcc",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstEcsAutoSnapshotPolicyId"] = example.Apply(getAutoSnapshotPoliciesResult =&gt; getAutoSnapshotPoliciesResult.Policies[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAutoSnapshotPoliciesResult> Invoke(GetAutoSnapshotPoliciesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAutoSnapshotPoliciesResult>("alicloud:ecs/getAutoSnapshotPolicies:getAutoSnapshotPolicies", args ?? new GetAutoSnapshotPoliciesInvokeArgs(), options.WithDefaults());
     }
 
 

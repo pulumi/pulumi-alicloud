@@ -121,21 +121,11 @@ type GetExecutionsResult struct {
 }
 
 func GetExecutionsOutput(ctx *pulumi.Context, args GetExecutionsOutputArgs, opts ...pulumi.InvokeOption) GetExecutionsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetExecutionsResultOutput, error) {
 			args := v.(GetExecutionsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetExecutionsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:oos/getExecutions:getExecutions", args, &rv, "", opts...)
-			if err != nil {
-				return GetExecutionsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetExecutionsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetExecutionsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:oos/getExecutions:getExecutions", args, GetExecutionsResultOutput{}, options).(GetExecutionsResultOutput), nil
 		}).(GetExecutionsResultOutput)
 }
 

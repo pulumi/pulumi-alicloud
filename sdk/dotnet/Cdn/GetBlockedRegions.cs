@@ -66,6 +66,34 @@ namespace Pulumi.AliCloud.Cdn
         /// </summary>
         public static Output<GetBlockedRegionsResult> Invoke(GetBlockedRegionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBlockedRegionsResult>("alicloud:cdn/getBlockedRegions:getBlockedRegions", args ?? new GetBlockedRegionsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Cdn blocked regions.
+        /// 
+        /// &gt; **NOTE:** Available in v1.173.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Cdn.GetBlockedRegions.Invoke(new()
+        ///     {
+        ///         Language = "zh",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetBlockedRegionsResult> Invoke(GetBlockedRegionsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetBlockedRegionsResult>("alicloud:cdn/getBlockedRegions:getBlockedRegions", args ?? new GetBlockedRegionsInvokeArgs(), options.WithDefaults());
     }
 
 

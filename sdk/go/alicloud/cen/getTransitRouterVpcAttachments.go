@@ -164,21 +164,11 @@ type GetTransitRouterVpcAttachmentsResult struct {
 }
 
 func GetTransitRouterVpcAttachmentsOutput(ctx *pulumi.Context, args GetTransitRouterVpcAttachmentsOutputArgs, opts ...pulumi.InvokeOption) GetTransitRouterVpcAttachmentsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetTransitRouterVpcAttachmentsResultOutput, error) {
 			args := v.(GetTransitRouterVpcAttachmentsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetTransitRouterVpcAttachmentsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:cen/getTransitRouterVpcAttachments:getTransitRouterVpcAttachments", args, &rv, "", opts...)
-			if err != nil {
-				return GetTransitRouterVpcAttachmentsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetTransitRouterVpcAttachmentsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetTransitRouterVpcAttachmentsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:cen/getTransitRouterVpcAttachments:getTransitRouterVpcAttachments", args, GetTransitRouterVpcAttachmentsResultOutput{}, options).(GetTransitRouterVpcAttachmentsResultOutput), nil
 		}).(GetTransitRouterVpcAttachmentsResultOutput)
 }
 

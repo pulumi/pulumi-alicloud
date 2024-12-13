@@ -20,6 +20,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class EventbridgeFunctions {
@@ -271,6 +272,56 @@ public final class EventbridgeFunctions {
      * 
      */
     public static Output<GetEventBusesResult> getEventBuses(GetEventBusesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:eventbridge/getEventBuses:getEventBuses", TypeShape.of(GetEventBusesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Event Bridge Event Buses of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.129.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
+     * import com.pulumi.alicloud.eventbridge.inputs.GetEventBusesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EventbridgeFunctions.getEventBuses();
+     * 
+     *         ctx.export("eventBridgeEventBusId1", ids.applyValue(getEventBusesResult -> getEventBusesResult.buses()[0].id()));
+     *         final var nameRegex = EventbridgeFunctions.getEventBuses(GetEventBusesArgs.builder()
+     *             .nameRegex("^my-EventBus")
+     *             .build());
+     * 
+     *         ctx.export("eventBridgeEventBusId2", nameRegex.applyValue(getEventBusesResult -> getEventBusesResult.buses()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEventBusesResult> getEventBuses(GetEventBusesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:eventbridge/getEventBuses:getEventBuses", TypeShape.of(GetEventBusesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -608,6 +659,54 @@ public final class EventbridgeFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetEventSourcesResult> getEventSources(GetEventSourcesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:eventbridge/getEventSources:getEventSources", TypeShape.of(GetEventSourcesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Event Bridge Event Sources of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.130.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
+     * import com.pulumi.alicloud.eventbridge.inputs.GetEventSourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EventbridgeFunctions.getEventSources(GetEventSourcesArgs.builder()
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
+     *             .build());
+     * 
+     *         ctx.export("firstEventBridgeEventSourceId", example.applyValue(getEventSourcesResult -> getEventSourcesResult.sources()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetEventSourcesResult> getEventSourcesPlain(GetEventSourcesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:eventbridge/getEventSources:getEventSources", TypeShape.of(GetEventSourcesResult.class), args, Utilities.withVersion(options));
     }
@@ -756,6 +855,55 @@ public final class EventbridgeFunctions {
      * 
      */
     public static Output<GetRulesResult> getRules(GetRulesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:eventbridge/getRules:getRules", TypeShape.of(GetRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Event Bridge Rules of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.129.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
+     * import com.pulumi.alicloud.eventbridge.inputs.GetRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EventbridgeFunctions.getRules(GetRulesArgs.builder()
+     *             .eventBusName("example_value")
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
+     *             .build());
+     * 
+     *         ctx.export("firstEventBridgeRuleId", example.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRulesResult> getRules(GetRulesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:eventbridge/getRules:getRules", TypeShape.of(GetRulesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1045,6 +1193,54 @@ public final class EventbridgeFunctions {
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:eventbridge/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Using this data source can open Event Bridge service automatically. If the service has been opened, it will return opened.
+     * 
+     * For information about Event Bridge and how to use it, see [What is Event Bridge](https://www.alibabacloud.com/help/en/doc-detail/163239.htm).
+     * 
+     * &gt; **NOTE:** Available in v1.126.0+
+     * 
+     * &gt; **NOTE:** This data source supports `cn-shanghai`, `cn-hangzhou` and `ap-southeast-1` regions.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
+     * import com.pulumi.alicloud.eventbridge.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = EventbridgeFunctions.getService(GetServiceArgs.builder()
+     *             .enable("On")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:eventbridge/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
     }
     /**

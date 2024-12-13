@@ -26,6 +26,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class NlbFunctions {
@@ -262,6 +263,53 @@ public final class NlbFunctions {
      * 
      */
     public static Output<GetListenersResult> getListeners(GetListenersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:nlb/getListeners:getListeners", TypeShape.of(GetListenersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Nlb Listeners of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.191.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nlb.NlbFunctions;
+     * import com.pulumi.alicloud.nlb.inputs.GetListenersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = NlbFunctions.getListeners(GetListenersArgs.builder()
+     *             .ids("example_value")
+     *             .build());
+     * 
+     *         ctx.export("alicloudNlbListenerId1", ids.applyValue(getListenersResult -> getListenersResult.listeners()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetListenersResult> getListeners(GetListenersArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:nlb/getListeners:getListeners", TypeShape.of(GetListenersResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -620,6 +668,58 @@ public final class NlbFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetLoadBalancersResult> getLoadBalancers(GetLoadBalancersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:nlb/getLoadBalancers:getLoadBalancers", TypeShape.of(GetLoadBalancersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Nlb Load Balancers of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.191.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nlb.NlbFunctions;
+     * import com.pulumi.alicloud.nlb.inputs.GetLoadBalancersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = NlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *             .ids("example_id")
+     *             .build());
+     * 
+     *         ctx.export("nlbLoadBalancerId1", ids.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
+     *         final var nameRegex = NlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *             .nameRegex("^my-LoadBalancer")
+     *             .build());
+     * 
+     *         ctx.export("nlbLoadBalancerId2", nameRegex.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetLoadBalancersResult> getLoadBalancersPlain(GetLoadBalancersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:nlb/getLoadBalancers:getLoadBalancers", TypeShape.of(GetLoadBalancersResult.class), args, Utilities.withVersion(options));
     }
@@ -920,6 +1020,56 @@ public final class NlbFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetSecurityPoliciesResult> getSecurityPolicies(GetSecurityPoliciesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:nlb/getSecurityPolicies:getSecurityPolicies", TypeShape.of(GetSecurityPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Nlb Security Policies of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.187.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nlb.NlbFunctions;
+     * import com.pulumi.alicloud.nlb.inputs.GetSecurityPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = NlbFunctions.getSecurityPolicies();
+     * 
+     *         ctx.export("nlbSecurityPolicyId1", ids.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
+     *         final var nameRegex = NlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
+     *             .nameRegex("^my-SecurityPolicy")
+     *             .build());
+     * 
+     *         ctx.export("nlbSecurityPolicyId2", nameRegex.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetSecurityPoliciesResult> getSecurityPoliciesPlain(GetSecurityPoliciesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:nlb/getSecurityPolicies:getSecurityPolicies", TypeShape.of(GetSecurityPoliciesResult.class), args, Utilities.withVersion(options));
     }
@@ -1156,6 +1306,53 @@ public final class NlbFunctions {
      * 
      */
     public static Output<GetServerGroupServerAttachmentsResult> getServerGroupServerAttachments(GetServerGroupServerAttachmentsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:nlb/getServerGroupServerAttachments:getServerGroupServerAttachments", TypeShape.of(GetServerGroupServerAttachmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Nlb Server Group Server Attachments of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.192.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nlb.NlbFunctions;
+     * import com.pulumi.alicloud.nlb.inputs.GetServerGroupServerAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = NlbFunctions.getServerGroupServerAttachments(GetServerGroupServerAttachmentsArgs.builder()
+     *             .ids("example_value")
+     *             .build());
+     * 
+     *         ctx.export("nlbServerGroupServerAttachmentId1", ids.applyValue(getServerGroupServerAttachmentsResult -> getServerGroupServerAttachmentsResult.attachments()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServerGroupServerAttachmentsResult> getServerGroupServerAttachments(GetServerGroupServerAttachmentsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:nlb/getServerGroupServerAttachments:getServerGroupServerAttachments", TypeShape.of(GetServerGroupServerAttachmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1502,6 +1699,56 @@ public final class NlbFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetServerGroupsResult> getServerGroups(GetServerGroupsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:nlb/getServerGroups:getServerGroups", TypeShape.of(GetServerGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Nlb Server Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.186.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nlb.NlbFunctions;
+     * import com.pulumi.alicloud.nlb.inputs.GetServerGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = NlbFunctions.getServerGroups();
+     * 
+     *         ctx.export("nlbServerGroupId1", ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
+     *         final var nameRegex = NlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
+     *             .nameRegex("^my-ServerGroup")
+     *             .build());
+     * 
+     *         ctx.export("nlbServerGroupId2", nameRegex.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetServerGroupsResult> getServerGroupsPlain(GetServerGroupsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:nlb/getServerGroups:getServerGroups", TypeShape.of(GetServerGroupsResult.class), args, Utilities.withVersion(options));
     }
@@ -1728,6 +1975,51 @@ public final class NlbFunctions {
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:nlb/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the available zones with the Network Load Balancer (NLB) Instance of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.191.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nlb.NlbFunctions;
+     * import com.pulumi.alicloud.nlb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = NlbFunctions.getZones();
+     * 
+     *         ctx.export("firstNlbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:nlb/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
     }
     /**

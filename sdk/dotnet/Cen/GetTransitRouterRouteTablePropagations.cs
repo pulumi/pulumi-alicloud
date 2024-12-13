@@ -70,6 +70,36 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public static Output<GetTransitRouterRouteTablePropagationsResult> Invoke(GetTransitRouterRouteTablePropagationsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterRouteTablePropagationsResult>("alicloud:cen/getTransitRouterRouteTablePropagations:getTransitRouterRouteTablePropagations", args ?? new GetTransitRouterRouteTablePropagationsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides CEN Transit Router Route Table Propagations available to the user.[What is Cen Transit Router Route Table Propagations](https://help.aliyun.com/document_detail/261245.html)
+        /// 
+        /// &gt; **NOTE:** Available in 1.126.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Cen.GetTransitRouterRouteTablePropagations.Invoke(new()
+        ///     {
+        ///         TransitRouterRouteTableId = "rtb-id1",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType"] = @default.Apply(@default =&gt; @default.Apply(getTransitRouterRouteTablePropagationsResult =&gt; getTransitRouterRouteTablePropagationsResult.Propagations[0]?.ResourceType)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTransitRouterRouteTablePropagationsResult> Invoke(GetTransitRouterRouteTablePropagationsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterRouteTablePropagationsResult>("alicloud:cen/getTransitRouterRouteTablePropagations:getTransitRouterRouteTablePropagations", args ?? new GetTransitRouterRouteTablePropagationsInvokeArgs(), options.WithDefaults());
     }
 
 

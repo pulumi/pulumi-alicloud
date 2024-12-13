@@ -68,6 +68,35 @@ namespace Pulumi.AliCloud.Dts
         /// </summary>
         public static Output<GetSubscriptionJobsResult> Invoke(GetSubscriptionJobsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSubscriptionJobsResult>("alicloud:dts/getSubscriptionJobs:getSubscriptionJobs", args ?? new GetSubscriptionJobsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Dts Subscription Jobs of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.138.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Dts.GetSubscriptionJobs.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dtsSubscriptionJobId1"] = ids.Apply(getSubscriptionJobsResult =&gt; getSubscriptionJobsResult.Jobs[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSubscriptionJobsResult> Invoke(GetSubscriptionJobsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSubscriptionJobsResult>("alicloud:dts/getSubscriptionJobs:getSubscriptionJobs", args ?? new GetSubscriptionJobsInvokeArgs(), options.WithDefaults());
     }
 
 

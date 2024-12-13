@@ -81,21 +81,11 @@ type GetFlowsResult struct {
 }
 
 func GetFlowsOutput(ctx *pulumi.Context, args GetFlowsOutputArgs, opts ...pulumi.InvokeOption) GetFlowsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetFlowsResultOutput, error) {
 			args := v.(GetFlowsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetFlowsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:fnf/getFlows:getFlows", args, &rv, "", opts...)
-			if err != nil {
-				return GetFlowsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetFlowsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetFlowsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:fnf/getFlows:getFlows", args, GetFlowsResultOutput{}, options).(GetFlowsResultOutput), nil
 		}).(GetFlowsResultOutput)
 }
 

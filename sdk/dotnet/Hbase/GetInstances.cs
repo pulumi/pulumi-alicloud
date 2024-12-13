@@ -66,6 +66,34 @@ namespace Pulumi.AliCloud.Hbase
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:hbase/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `alicloud.hbase.getInstances` data source provides a collection of HBase instances available in Alicloud account.
+        /// Filters support regular expression for the instance name, ids or availability_zone.
+        /// 
+        /// &gt; **NOTE:**  Available in 1.67.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var hbase = AliCloud.Hbase.GetInstances.Invoke(new()
+        ///     {
+        ///         NameRegex = "tf_testAccHBase",
+        ///         AvailabilityZone = "cn-shenzhen-b",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:hbase/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
     }
 
 

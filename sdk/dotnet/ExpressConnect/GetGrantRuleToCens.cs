@@ -82,6 +82,42 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// </summary>
         public static Output<GetGrantRuleToCensResult> Invoke(GetGrantRuleToCensInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGrantRuleToCensResult>("alicloud:expressconnect/getGrantRuleToCens:getGrantRuleToCens", args ?? new GetGrantRuleToCensInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Express Connect Grant Rule To Cens of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.196.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.ExpressConnect.GetGrantRuleToCens.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         InstanceId = "your_vbr_instance_id",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["expressConnectGrantRuleToCenId0"] = ids.Apply(getGrantRuleToCensResult =&gt; getGrantRuleToCensResult.Cens[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetGrantRuleToCensResult> Invoke(GetGrantRuleToCensInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGrantRuleToCensResult>("alicloud:expressconnect/getGrantRuleToCens:getGrantRuleToCens", args ?? new GetGrantRuleToCensInvokeArgs(), options.WithDefaults());
     }
 
 

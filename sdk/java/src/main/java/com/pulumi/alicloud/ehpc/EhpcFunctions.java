@@ -14,6 +14,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class EhpcFunctions {
@@ -275,6 +276,58 @@ public final class EhpcFunctions {
      * 
      */
     public static Output<GetClustersResult> getClusters(GetClustersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ehpc/getClusters:getClusters", TypeShape.of(GetClustersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Ehpc Clusters of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.173.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ehpc.EhpcFunctions;
+     * import com.pulumi.alicloud.ehpc.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EhpcFunctions.getClusters(GetClustersArgs.builder()
+     *             .ids("example_id")
+     *             .build());
+     * 
+     *         ctx.export("ehpcClusterId1", ids.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
+     *         final var nameRegex = EhpcFunctions.getClusters(GetClustersArgs.builder()
+     *             .nameRegex("^my-Cluster")
+     *             .build());
+     * 
+     *         ctx.export("ehpcClusterId2", nameRegex.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetClustersResult> getClusters(GetClustersArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:ehpc/getClusters:getClusters", TypeShape.of(GetClustersResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -597,6 +650,60 @@ public final class EhpcFunctions {
      * 
      */
     public static Output<GetJobTemplatesResult> getJobTemplates(GetJobTemplatesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ehpc/getJobTemplates:getJobTemplates", TypeShape.of(GetJobTemplatesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Ehpc Job Templates of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.133.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ehpc.JobTemplate;
+     * import com.pulumi.alicloud.ehpc.JobTemplateArgs;
+     * import com.pulumi.alicloud.ehpc.EhpcFunctions;
+     * import com.pulumi.alicloud.ehpc.inputs.GetJobTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new JobTemplate("default", JobTemplateArgs.builder()
+     *             .jobTemplateName("example_value")
+     *             .commandLine("./LammpsTest/lammps.pbs")
+     *             .build());
+     * 
+     *         final var ids = EhpcFunctions.getJobTemplates(GetJobTemplatesArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("ehpcJobTemplateId1", ids.applyValue(getJobTemplatesResult -> getJobTemplatesResult).applyValue(ids -> ids.applyValue(getJobTemplatesResult -> getJobTemplatesResult.id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetJobTemplatesResult> getJobTemplates(GetJobTemplatesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:ehpc/getJobTemplates:getJobTemplates", TypeShape.of(GetJobTemplatesResult.class), args, Utilities.withVersion(options));
     }
     /**

@@ -68,6 +68,35 @@ namespace Pulumi.AliCloud.Dms
         /// </summary>
         public static Output<GetEnterpriseProxiesResult> Invoke(GetEnterpriseProxiesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEnterpriseProxiesResult>("alicloud:dms/getEnterpriseProxies:getEnterpriseProxies", args ?? new GetEnterpriseProxiesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Dms Enterprise Proxies of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.188.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Dms.GetEnterpriseProxies.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dmsEnterpriseProxyId1"] = ids.Apply(getEnterpriseProxiesResult =&gt; getEnterpriseProxiesResult.Proxies[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetEnterpriseProxiesResult> Invoke(GetEnterpriseProxiesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetEnterpriseProxiesResult>("alicloud:dms/getEnterpriseProxies:getEnterpriseProxies", args ?? new GetEnterpriseProxiesInvokeArgs(), options.WithDefaults());
     }
 
 

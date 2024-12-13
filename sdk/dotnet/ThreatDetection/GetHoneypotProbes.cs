@@ -136,6 +136,69 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// </summary>
         public static Output<GetHoneypotProbesResult> Invoke(GetHoneypotProbesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHoneypotProbesResult>("alicloud:threatdetection/getHoneypotProbes:getHoneypotProbes", args ?? new GetHoneypotProbesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotprobe)
+        /// 
+        /// &gt; **NOTE:** Available in 1.195.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "tf-testAccThreatDetectionHoneypotProbe";
+        ///     var defaultHoneypotProbe = new AliCloud.ThreatDetection.HoneypotProbe("default", new()
+        ///     {
+        ///         Uuid = "e52c7872-29d1-4aa1-9908-0299abd53606",
+        ///         ProbeType = "host_probe",
+        ///         ControlNodeId = "e1397077-4941-4b14-b533-ca2bdebd00a3",
+        ///         Ping = true,
+        ///         HoneypotBindLists = new[]
+        ///         {
+        ///             new AliCloud.ThreatDetection.Inputs.HoneypotProbeHoneypotBindListArgs
+        ///             {
+        ///                 BindPortLists = new[]
+        ///                 {
+        ///                     new AliCloud.ThreatDetection.Inputs.HoneypotProbeHoneypotBindListBindPortListArgs
+        ///                     {
+        ///                         StartPort = 80,
+        ///                         EndPort = 80,
+        ///                     },
+        ///                 },
+        ///                 HoneypotId = "4925bf9784de992ecd017ad051528a03b3927ef814eeff76c2ebb3ab9a84bf05",
+        ///             },
+        ///         },
+        ///         DisplayName = name,
+        ///         Arp = true,
+        ///     });
+        /// 
+        ///     var @default = AliCloud.ThreatDetection.GetHoneypotProbes.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultHoneypotProbe.Id,
+        ///         },
+        ///         DisplayName = name,
+        ///         ProbeType = "host_probe",
+        ///         EnableDetails = true,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudThreatDetectionHoneypotProbeExampleId"] = @default.Apply(@default =&gt; @default.Apply(getHoneypotProbesResult =&gt; getHoneypotProbesResult.Probes[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetHoneypotProbesResult> Invoke(GetHoneypotProbesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetHoneypotProbesResult>("alicloud:threatdetection/getHoneypotProbes:getHoneypotProbes", args ?? new GetHoneypotProbesInvokeArgs(), options.WithDefaults());
     }
 
 

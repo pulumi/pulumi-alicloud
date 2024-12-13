@@ -181,21 +181,11 @@ type GetEndpointGroupsResult struct {
 }
 
 func GetEndpointGroupsOutput(ctx *pulumi.Context, args GetEndpointGroupsOutputArgs, opts ...pulumi.InvokeOption) GetEndpointGroupsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetEndpointGroupsResultOutput, error) {
 			args := v.(GetEndpointGroupsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetEndpointGroupsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:ga/getEndpointGroups:getEndpointGroups", args, &rv, "", opts...)
-			if err != nil {
-				return GetEndpointGroupsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetEndpointGroupsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetEndpointGroupsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:ga/getEndpointGroups:getEndpointGroups", args, GetEndpointGroupsResultOutput{}, options).(GetEndpointGroupsResultOutput), nil
 		}).(GetEndpointGroupsResultOutput)
 }
 

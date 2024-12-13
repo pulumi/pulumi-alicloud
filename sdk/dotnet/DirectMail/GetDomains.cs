@@ -94,6 +94,48 @@ namespace Pulumi.AliCloud.DirectMail
         /// </summary>
         public static Output<GetDomainsResult> Invoke(GetDomainsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("alicloud:directmail/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Direct Mail Domains of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.134.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example.pop.com";
+        ///     var @default = new AliCloud.DirectMail.Domain("default", new()
+        ///     {
+        ///         DomainName = name,
+        ///     });
+        /// 
+        ///     var ids = AliCloud.DirectMail.GetDomains.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             @default.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["directMailDomainsId0"] = ids.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDomainsResult> Invoke(GetDomainsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("alicloud:directmail/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithDefaults());
     }
 
 

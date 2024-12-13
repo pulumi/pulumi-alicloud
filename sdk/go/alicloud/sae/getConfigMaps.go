@@ -110,21 +110,11 @@ type GetConfigMapsResult struct {
 }
 
 func GetConfigMapsOutput(ctx *pulumi.Context, args GetConfigMapsOutputArgs, opts ...pulumi.InvokeOption) GetConfigMapsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetConfigMapsResultOutput, error) {
 			args := v.(GetConfigMapsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetConfigMapsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:sae/getConfigMaps:getConfigMaps", args, &rv, "", opts...)
-			if err != nil {
-				return GetConfigMapsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetConfigMapsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetConfigMapsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:sae/getConfigMaps:getConfigMaps", args, GetConfigMapsResultOutput{}, options).(GetConfigMapsResultOutput), nil
 		}).(GetConfigMapsResultOutput)
 }
 

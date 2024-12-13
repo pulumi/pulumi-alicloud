@@ -50,6 +50,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class CsFunctions {
@@ -238,6 +239,53 @@ public final class CsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetAckServiceResult> getAckService(GetAckServiceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cs/getAckService:getAckService", TypeShape.of(GetAckServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Using this data source can open Container Service (CS) service automatically. If the service has been opened, it will return opened.
+     * 
+     * For information about Container Service (CS) and how to use it, see [What is Container Service (CS)](https://www.alibabacloud.com/help/en/product/85222.htm).
+     * 
+     * &gt; **NOTE:** Available in v1.113.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetAckServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = CsFunctions.getAckService(GetAckServiceArgs.builder()
+     *             .enable("On")
+     *             .type("propayasgo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAckServiceResult> getAckServicePlain(GetAckServicePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cs/getAckService:getAckService", TypeShape.of(GetAckServiceResult.class), args, Utilities.withVersion(options));
     }
@@ -272,6 +320,17 @@ public final class CsFunctions {
      * 
      */
     public static Output<GetClusterCredentialResult> getClusterCredential(GetClusterCredentialArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cs/getClusterCredential:getClusterCredential", TypeShape.of(GetClusterCredentialResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Container Service cluster credential on Alibaba Cloud.
+     * 
+     * &gt; **NOTE:** Available since v1.187.0
+     * 
+     * &gt; **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
+     * 
+     */
+    public static Output<GetClusterCredentialResult> getClusterCredential(GetClusterCredentialArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cs/getClusterCredential:getClusterCredential", TypeShape.of(GetClusterCredentialResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -564,6 +623,53 @@ public final class CsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetEdgeKubernetesClustersResult> getEdgeKubernetesClusters(GetEdgeKubernetesClustersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cs/getEdgeKubernetesClusters:getEdgeKubernetesClusters", TypeShape.of(GetEdgeKubernetesClustersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
+     * 
+     * &gt; **NOTE:** Available in v1.103.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetEdgeKubernetesClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Declare the data source
+     *         final var k8sClusters = CsFunctions.getEdgeKubernetesClusters(GetEdgeKubernetesClustersArgs.builder()
+     *             .nameRegex("my-first-k8s")
+     *             .outputFile("my-first-k8s-json")
+     *             .build());
+     * 
+     *         ctx.export("output", k8sClusters.applyValue(getEdgeKubernetesClustersResult -> getEdgeKubernetesClustersResult.clusters()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetEdgeKubernetesClustersResult> getEdgeKubernetesClustersPlain(GetEdgeKubernetesClustersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cs/getEdgeKubernetesClusters:getEdgeKubernetesClusters", TypeShape.of(GetEdgeKubernetesClustersResult.class), args, Utilities.withVersion(options));
     }
@@ -592,6 +698,15 @@ public final class CsFunctions {
      * 
      */
     public static Output<GetKubernetesAddonMetadataResult> getKubernetesAddonMetadata(GetKubernetesAddonMetadataArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cs/getKubernetesAddonMetadata:getKubernetesAddonMetadata", TypeShape.of(GetKubernetesAddonMetadataResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides metadata of kubernetes cluster addons.
+     * 
+     * &gt; **NOTE:** Available in 1.166.0+.
+     * 
+     */
+    public static Output<GetKubernetesAddonMetadataResult> getKubernetesAddonMetadata(GetKubernetesAddonMetadataArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cs/getKubernetesAddonMetadata:getKubernetesAddonMetadata", TypeShape.of(GetKubernetesAddonMetadataResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -631,6 +746,16 @@ public final class CsFunctions {
      * 
      */
     public static Output<GetKubernetesAddonsResult> getKubernetesAddons(GetKubernetesAddonsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cs/getKubernetesAddons:getKubernetesAddons", TypeShape.of(GetKubernetesAddonsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list of available addons that the cluster can install.
+     * 
+     * &gt; **NOTE:** Available since v1.150.0.
+     * **NOTE:** From version v1.166.0, support for returning custom configuration of kubernetes cluster addon.
+     * 
+     */
+    public static Output<GetKubernetesAddonsResult> getKubernetesAddons(GetKubernetesAddonsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cs/getKubernetesAddons:getKubernetesAddons", TypeShape.of(GetKubernetesAddonsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -940,6 +1065,56 @@ public final class CsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetKubernetesClustersResult> getKubernetesClusters(GetKubernetesClustersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cs/getKubernetesClusters:getKubernetesClusters", TypeShape.of(GetKubernetesClustersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
+     * 
+     * &gt; **NOTE:** Available since v1.34.0+.
+     * 
+     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Declare the data source
+     *         final var k8sClusters = CsFunctions.getKubernetesClusters(GetKubernetesClustersArgs.builder()
+     *             .nameRegex("my-first-k8s")
+     *             .outputFile("my-first-k8s-json")
+     *             .kubeConfigFilePrefix("~/.kube/k8s")
+     *             .build());
+     * 
+     *         ctx.export("output", k8sClusters.applyValue(getKubernetesClustersResult -> getKubernetesClustersResult.clusters()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetKubernetesClustersResult> getKubernetesClustersPlain(GetKubernetesClustersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cs/getKubernetesClusters:getKubernetesClusters", TypeShape.of(GetKubernetesClustersResult.class), args, Utilities.withVersion(options));
     }
@@ -1094,6 +1269,57 @@ public final class CsFunctions {
      * 
      */
     public static Output<GetKubernetesPermissionResult> getKubernetesPermission(GetKubernetesPermissionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cs/getKubernetesPermission:getKubernetesPermission", TypeShape.of(GetKubernetesPermissionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list of Ram user permissions.
+     * 
+     * &gt; **NOTE:** Available since v1.122.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetUsersArgs;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesPermissionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Declare the data source
+     *         final var default = RamFunctions.getUsers();
+     * 
+     *         // permissions
+     *         final var defaultGetKubernetesPermission = CsFunctions.getKubernetesPermission(GetKubernetesPermissionArgs.builder()
+     *             .uid(default_.users()[0].id())
+     *             .build());
+     * 
+     *         ctx.export("permissions", defaultGetKubernetesPermission.applyValue(getKubernetesPermissionResult -> getKubernetesPermissionResult.permissions()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetKubernetesPermissionResult> getKubernetesPermission(GetKubernetesPermissionArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cs/getKubernetesPermission:getKubernetesPermission", TypeShape.of(GetKubernetesPermissionResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1780,6 +2006,165 @@ public final class CsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetKubernetesVersionResult> getKubernetesVersion(GetKubernetesVersionArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cs/getKubernetesVersion:getKubernetesVersion", TypeShape.of(GetKubernetesVersionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the details of the Kubernetes version supported by ACK.
+     * 
+     * &gt; **NOTE:** Available in 1.170.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Query the managed kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
+     *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
+     *             .clusterType("ManagedKubernetes")
+     *             .kubernetesVersion("1.22.3-aliyun.1")
+     *             .profile("Default")
+     *             .build());
+     * 
+     *         ctx.export("metadata", default_.metadatas());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Query the kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
+     *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
+     *             .clusterType("Kubernetes")
+     *             .kubernetesVersion("1.22.3-aliyun.1")
+     *             .profile("Default")
+     *             .build());
+     * 
+     *         ctx.export("metadata", default_.metadatas());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Query the serverless kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
+     *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
+     *             .clusterType("ManagedKubernetes")
+     *             .kubernetesVersion("1.22.3-aliyun.1")
+     *             .profile("Serverless")
+     *             .build());
+     * 
+     *         ctx.export("metadata", default_.metadatas());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Query the edge kubernetes cluster metadata of version 1.20.11-aliyunedge.1 in the region specified by the client.
+     *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
+     *             .clusterType("ManagedKubernetes")
+     *             .kubernetesVersion("1.20.11-aliyunedge.1")
+     *             .profile("Edge")
+     *             .build());
+     * 
+     *         ctx.export("metadata", default_.metadatas());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetKubernetesVersionResult> getKubernetesVersionPlain(GetKubernetesVersionPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cs/getKubernetesVersion:getKubernetesVersion", TypeShape.of(GetKubernetesVersionResult.class), args, Utilities.withVersion(options));
     }
@@ -2031,6 +2416,56 @@ public final class CsFunctions {
      * 
      */
     public static Output<GetManagedKubernetesClustersResult> getManagedKubernetesClusters(GetManagedKubernetesClustersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cs/getManagedKubernetesClusters:getManagedKubernetesClusters", TypeShape.of(GetManagedKubernetesClustersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list Container Service Managed Kubernetes Clusters on Alibaba Cloud.
+     * 
+     * &gt; **NOTE:** Available in v1.35.0+
+     * 
+     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetManagedKubernetesClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Declare the data source
+     *         final var k8sClusters = CsFunctions.getManagedKubernetesClusters(GetManagedKubernetesClustersArgs.builder()
+     *             .nameRegex("my-first-k8s")
+     *             .outputFile("my-first-k8s-json")
+     *             .kubeConfigFilePrefix("~/.kube/managed")
+     *             .build());
+     * 
+     *         ctx.export("output", k8sClusters.applyValue(getManagedKubernetesClustersResult -> getManagedKubernetesClustersResult.clusters()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetManagedKubernetesClustersResult> getManagedKubernetesClusters(GetManagedKubernetesClustersArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cs/getManagedKubernetesClusters:getManagedKubernetesClusters", TypeShape.of(GetManagedKubernetesClustersResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2362,6 +2797,53 @@ public final class CsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetRegistryEnterpriseInstancesResult> getRegistryEnterpriseInstances(GetRegistryEnterpriseInstancesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cs/getRegistryEnterpriseInstances:getRegistryEnterpriseInstances", TypeShape.of(GetRegistryEnterpriseInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list Container Registry Enterprise Edition instances on Alibaba Cloud.
+     * 
+     * &gt; **NOTE:** Available in v1.86.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Declare the data source
+     *         final var myInstances = CsFunctions.getRegistryEnterpriseInstances(GetRegistryEnterpriseInstancesArgs.builder()
+     *             .nameRegex("my-instances")
+     *             .outputFile("my-instances-json")
+     *             .build());
+     * 
+     *         ctx.export("output", myInstances.applyValue(getRegistryEnterpriseInstancesResult -> getRegistryEnterpriseInstancesResult.instances()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetRegistryEnterpriseInstancesResult> getRegistryEnterpriseInstancesPlain(GetRegistryEnterpriseInstancesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cs/getRegistryEnterpriseInstances:getRegistryEnterpriseInstances", TypeShape.of(GetRegistryEnterpriseInstancesResult.class), args, Utilities.withVersion(options));
     }
@@ -2507,6 +2989,54 @@ public final class CsFunctions {
      * 
      */
     public static Output<GetRegistryEnterpriseNamespacesResult> getRegistryEnterpriseNamespaces(GetRegistryEnterpriseNamespacesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cs/getRegistryEnterpriseNamespaces:getRegistryEnterpriseNamespaces", TypeShape.of(GetRegistryEnterpriseNamespacesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list Container Registry Enterprise Edition namespaces on Alibaba Cloud.
+     * 
+     * &gt; **NOTE:** Available in v1.86.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Declare the data source
+     *         final var myNamespaces = CsFunctions.getRegistryEnterpriseNamespaces(GetRegistryEnterpriseNamespacesArgs.builder()
+     *             .instanceId("cri-xxx")
+     *             .nameRegex("my-namespace")
+     *             .outputFile("my-namespace-json")
+     *             .build());
+     * 
+     *         ctx.export("output", myNamespaces.applyValue(getRegistryEnterpriseNamespacesResult -> getRegistryEnterpriseNamespacesResult.namespaces()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRegistryEnterpriseNamespacesResult> getRegistryEnterpriseNamespaces(GetRegistryEnterpriseNamespacesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cs/getRegistryEnterpriseNamespaces:getRegistryEnterpriseNamespaces", TypeShape.of(GetRegistryEnterpriseNamespacesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2746,6 +3276,54 @@ public final class CsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetRegistryEnterpriseReposResult> getRegistryEnterpriseRepos(GetRegistryEnterpriseReposArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cs/getRegistryEnterpriseRepos:getRegistryEnterpriseRepos", TypeShape.of(GetRegistryEnterpriseReposResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list Container Registry Enterprise Edition repositories on Alibaba Cloud.
+     * 
+     * &gt; **NOTE:** Available in v1.87.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseReposArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Declare the data source
+     *         final var myRepos = CsFunctions.getRegistryEnterpriseRepos(GetRegistryEnterpriseReposArgs.builder()
+     *             .instanceId("cri-xx")
+     *             .nameRegex("my-repos")
+     *             .outputFile("my-repo-json")
+     *             .build());
+     * 
+     *         ctx.export("output", myRepos.applyValue(getRegistryEnterpriseReposResult -> getRegistryEnterpriseReposResult.repos()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetRegistryEnterpriseReposResult> getRegistryEnterpriseReposPlain(GetRegistryEnterpriseReposPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cs/getRegistryEnterpriseRepos:getRegistryEnterpriseRepos", TypeShape.of(GetRegistryEnterpriseReposResult.class), args, Utilities.withVersion(options));
     }
@@ -2897,6 +3475,56 @@ public final class CsFunctions {
      * 
      */
     public static Output<GetRegistryEnterpriseSyncRulesResult> getRegistryEnterpriseSyncRules(GetRegistryEnterpriseSyncRulesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cs/getRegistryEnterpriseSyncRules:getRegistryEnterpriseSyncRules", TypeShape.of(GetRegistryEnterpriseSyncRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list Container Registry Enterprise Edition sync rules on Alibaba Cloud.
+     * 
+     * &gt; **NOTE:** Available in v1.90.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseSyncRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Declare the data source
+     *         final var mySyncRules = CsFunctions.getRegistryEnterpriseSyncRules(GetRegistryEnterpriseSyncRulesArgs.builder()
+     *             .instanceId("cri-xxx")
+     *             .namespaceName("test-namespace")
+     *             .repoName("test-repo")
+     *             .targetInstanceId("cri-yyy")
+     *             .nameRegex("test-rule")
+     *             .build());
+     * 
+     *         ctx.export("output", mySyncRules.applyValue(getRegistryEnterpriseSyncRulesResult -> getRegistryEnterpriseSyncRulesResult.rules()).stream().map(element -> element.id()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRegistryEnterpriseSyncRulesResult> getRegistryEnterpriseSyncRules(GetRegistryEnterpriseSyncRulesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cs/getRegistryEnterpriseSyncRules:getRegistryEnterpriseSyncRules", TypeShape.of(GetRegistryEnterpriseSyncRulesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -3197,6 +3825,56 @@ public final class CsFunctions {
      * 
      */
     public static Output<GetServerlessKubernetesClustersResult> getServerlessKubernetesClusters(GetServerlessKubernetesClustersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cs/getServerlessKubernetesClusters:getServerlessKubernetesClusters", TypeShape.of(GetServerlessKubernetesClustersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
+     * 
+     * &gt; **NOTE:** Available in 1.58.0+
+     * 
+     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetServerlessKubernetesClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Declare the data source
+     *         final var k8sClusters = CsFunctions.getServerlessKubernetesClusters(GetServerlessKubernetesClustersArgs.builder()
+     *             .nameRegex("my-first-k8s")
+     *             .outputFile("my-first-k8s-json")
+     *             .kubeConfigFilePrefix("~/.kube/serverless")
+     *             .build());
+     * 
+     *         ctx.export("output", k8sClusters.applyValue(getServerlessKubernetesClustersResult -> getServerlessKubernetesClustersResult.clusters()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServerlessKubernetesClustersResult> getServerlessKubernetesClusters(GetServerlessKubernetesClustersArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cs/getServerlessKubernetesClusters:getServerlessKubernetesClusters", TypeShape.of(GetServerlessKubernetesClustersResult.class), args, Utilities.withVersion(options));
     }
     /**

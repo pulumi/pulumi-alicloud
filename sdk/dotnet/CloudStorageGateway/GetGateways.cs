@@ -86,6 +86,44 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// </summary>
         public static Output<GetGatewaysResult> Invoke(GetGatewaysInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGatewaysResult>("alicloud:cloudstoragegateway/getGateways:getGateways", args ?? new GetGatewaysInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Cloud Storage Gateway Gateways of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = new AliCloud.CloudStorageGateway.StorageBundle("example", new()
+        ///     {
+        ///         StorageBundleName = "example_value",
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.CloudStorageGateway.GetGateways.Invoke(new()
+        ///     {
+        ///         StorageBundleId = example.Id,
+        ///         NameRegex = "^my-Gateway",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cloudStorageGatewayGatewayId"] = nameRegex.Apply(getGatewaysResult =&gt; getGatewaysResult.Gateways[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetGatewaysResult> Invoke(GetGatewaysInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGatewaysResult>("alicloud:cloudstoragegateway/getGateways:getGateways", args ?? new GetGatewaysInvokeArgs(), options.WithDefaults());
     }
 
 

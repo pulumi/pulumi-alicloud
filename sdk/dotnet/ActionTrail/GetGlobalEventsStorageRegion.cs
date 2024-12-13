@@ -68,6 +68,35 @@ namespace Pulumi.AliCloud.ActionTrail
         /// </summary>
         public static Output<GetGlobalEventsStorageRegionResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGlobalEventsStorageRegionResult>("alicloud:actiontrail/getGlobalEventsStorageRegion:getGlobalEventsStorageRegion", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Actiontrail Global Events Storage Region of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.201.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.ActionTrail.GetGlobalEventsStorageRegion.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudActiontrailGlobalEventsStorageRegion1"] = @default.Apply(@default =&gt; @default.Apply(getGlobalEventsStorageRegionResult =&gt; getGlobalEventsStorageRegionResult.StorageRegion)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetGlobalEventsStorageRegionResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGlobalEventsStorageRegionResult>("alicloud:actiontrail/getGlobalEventsStorageRegion:getGlobalEventsStorageRegion", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

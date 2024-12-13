@@ -59,21 +59,11 @@ type GetSearchIndexesResult struct {
 }
 
 func GetSearchIndexesOutput(ctx *pulumi.Context, args GetSearchIndexesOutputArgs, opts ...pulumi.InvokeOption) GetSearchIndexesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSearchIndexesResultOutput, error) {
 			args := v.(GetSearchIndexesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetSearchIndexesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:ots/getSearchIndexes:getSearchIndexes", args, &rv, "", opts...)
-			if err != nil {
-				return GetSearchIndexesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetSearchIndexesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetSearchIndexesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:ots/getSearchIndexes:getSearchIndexes", args, GetSearchIndexesResultOutput{}, options).(GetSearchIndexesResultOutput), nil
 		}).(GetSearchIndexesResultOutput)
 }
 

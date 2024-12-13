@@ -96,6 +96,49 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public static Output<GetTransitRouteTableAggregationsResult> Invoke(GetTransitRouteTableAggregationsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouteTableAggregationsResult>("alicloud:cen/getTransitRouteTableAggregations:getTransitRouteTableAggregations", args ?? new GetTransitRouteTableAggregationsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Cen Transit Route Table Aggregations of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.202.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Cen.GetTransitRouteTableAggregations.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         TransitRouteTableId = "your_transit_route_table_id",
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Cen.GetTransitRouteTableAggregations.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-name",
+        ///         TransitRouteTableId = "your_transit_route_table_id",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cenTransitRouterMulticastDomainId0"] = ids.Apply(getTransitRouteTableAggregationsResult =&gt; getTransitRouteTableAggregationsResult.TransitRouteTableAggregations[0]?.Id),
+        ///         ["cenTransitRouterMulticastDomainId1"] = nameRegex.Apply(getTransitRouteTableAggregationsResult =&gt; getTransitRouteTableAggregationsResult.TransitRouteTableAggregations[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTransitRouteTableAggregationsResult> Invoke(GetTransitRouteTableAggregationsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouteTableAggregationsResult>("alicloud:cen/getTransitRouteTableAggregations:getTransitRouteTableAggregations", args ?? new GetTransitRouteTableAggregationsInvokeArgs(), options.WithDefaults());
     }
 
 

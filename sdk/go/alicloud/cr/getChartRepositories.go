@@ -82,21 +82,11 @@ type GetChartRepositoriesResult struct {
 }
 
 func GetChartRepositoriesOutput(ctx *pulumi.Context, args GetChartRepositoriesOutputArgs, opts ...pulumi.InvokeOption) GetChartRepositoriesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetChartRepositoriesResultOutput, error) {
 			args := v.(GetChartRepositoriesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetChartRepositoriesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:cr/getChartRepositories:getChartRepositories", args, &rv, "", opts...)
-			if err != nil {
-				return GetChartRepositoriesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetChartRepositoriesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetChartRepositoriesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:cr/getChartRepositories:getChartRepositories", args, GetChartRepositoriesResultOutput{}, options).(GetChartRepositoriesResultOutput), nil
 		}).(GetChartRepositoriesResultOutput)
 }
 

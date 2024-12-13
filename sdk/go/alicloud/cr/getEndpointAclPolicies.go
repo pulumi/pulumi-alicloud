@@ -82,21 +82,11 @@ type GetEndpointAclPoliciesResult struct {
 }
 
 func GetEndpointAclPoliciesOutput(ctx *pulumi.Context, args GetEndpointAclPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetEndpointAclPoliciesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetEndpointAclPoliciesResultOutput, error) {
 			args := v.(GetEndpointAclPoliciesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetEndpointAclPoliciesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:cr/getEndpointAclPolicies:getEndpointAclPolicies", args, &rv, "", opts...)
-			if err != nil {
-				return GetEndpointAclPoliciesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetEndpointAclPoliciesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetEndpointAclPoliciesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:cr/getEndpointAclPolicies:getEndpointAclPolicies", args, GetEndpointAclPoliciesResultOutput{}, options).(GetEndpointAclPoliciesResultOutput), nil
 		}).(GetEndpointAclPoliciesResultOutput)
 }
 

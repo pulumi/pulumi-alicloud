@@ -90,21 +90,11 @@ type GetGatewayFileSharesResult struct {
 }
 
 func GetGatewayFileSharesOutput(ctx *pulumi.Context, args GetGatewayFileSharesOutputArgs, opts ...pulumi.InvokeOption) GetGatewayFileSharesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetGatewayFileSharesResultOutput, error) {
 			args := v.(GetGatewayFileSharesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetGatewayFileSharesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:cloudstoragegateway/getGatewayFileShares:getGatewayFileShares", args, &rv, "", opts...)
-			if err != nil {
-				return GetGatewayFileSharesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetGatewayFileSharesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetGatewayFileSharesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:cloudstoragegateway/getGatewayFileShares:getGatewayFileShares", args, GetGatewayFileSharesResultOutput{}, options).(GetGatewayFileSharesResultOutput), nil
 		}).(GetGatewayFileSharesResultOutput)
 }
 

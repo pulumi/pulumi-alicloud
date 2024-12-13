@@ -20,6 +20,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class SddpFunctions {
@@ -350,6 +351,61 @@ public final class SddpFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetConfigsResult> getConfigs(GetConfigsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:sddp/getConfigs:getConfigs", TypeShape.of(GetConfigsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Sddp Configs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.133.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sddp.Config;
+     * import com.pulumi.alicloud.sddp.ConfigArgs;
+     * import com.pulumi.alicloud.sddp.SddpFunctions;
+     * import com.pulumi.alicloud.sddp.inputs.GetConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultConfig = new Config("defaultConfig", ConfigArgs.builder()
+     *             .code("access_failed_cnt")
+     *             .value(10)
+     *             .build());
+     * 
+     *         final var default = SddpFunctions.getConfigs(GetConfigsArgs.builder()
+     *             .ids(defaultConfig.id())
+     *             .outputFile("./t.json")
+     *             .build());
+     * 
+     *         ctx.export("sddpConfigId", default_.applyValue(default_ -> default_.ids()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetConfigsResult> getConfigsPlain(GetConfigsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:sddp/getConfigs:getConfigs", TypeShape.of(GetConfigsResult.class), args, Utilities.withVersion(options));
     }
@@ -620,6 +676,51 @@ public final class SddpFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetDataLimitsResult> getDataLimits(GetDataLimitsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:sddp/getDataLimits:getDataLimits", TypeShape.of(GetDataLimitsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Sddp Data Limits of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.159.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sddp.SddpFunctions;
+     * import com.pulumi.alicloud.sddp.inputs.GetDataLimitsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SddpFunctions.getDataLimits();
+     * 
+     *         ctx.export("sddpDataLimitId1", ids.applyValue(getDataLimitsResult -> getDataLimitsResult.limits()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDataLimitsResult> getDataLimitsPlain(GetDataLimitsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:sddp/getDataLimits:getDataLimits", TypeShape.of(GetDataLimitsResult.class), args, Utilities.withVersion(options));
     }
@@ -846,6 +947,51 @@ public final class SddpFunctions {
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:sddp/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Sddp Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.136.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sddp.SddpFunctions;
+     * import com.pulumi.alicloud.sddp.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = SddpFunctions.getInstances();
+     * 
+     *         ctx.export("sddpInstanceId", default_.instances()[0]);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:sddp/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1176,6 +1322,63 @@ public final class SddpFunctions {
      * 
      */
     public static Output<GetRulesResult> getRules(GetRulesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:sddp/getRules:getRules", TypeShape.of(GetRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Sddp Rules of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.132.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sddp.Rule;
+     * import com.pulumi.alicloud.sddp.RuleArgs;
+     * import com.pulumi.alicloud.sddp.SddpFunctions;
+     * import com.pulumi.alicloud.sddp.inputs.GetRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()
+     *             .category("0")
+     *             .content("content")
+     *             .ruleName("rule_name")
+     *             .riskLevelId("4")
+     *             .productCode("ODPS")
+     *             .build());
+     * 
+     *         final var default = SddpFunctions.getRules(GetRulesArgs.builder()
+     *             .ids(defaultRule.id())
+     *             .build());
+     * 
+     *         ctx.export("sddpRuleId", default_.applyValue(default_ -> default_.id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRulesResult> getRules(GetRulesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:sddp/getRules:getRules", TypeShape.of(GetRulesResult.class), args, Utilities.withVersion(options));
     }
     /**

@@ -138,6 +138,70 @@ namespace Pulumi.AliCloud.SelectDB
         /// </summary>
         public static Output<GetDbInstancesResult> Invoke(GetDbInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDbInstancesResult>("alicloud:selectdb/getDbInstances:getDbInstances", args ?? new GetDbInstancesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the SelectDB DBInstance of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.229.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform_example";
+        ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+        ///     {
+        ///         NameRegex = "^default-NODELETING$",
+        ///     });
+        /// 
+        ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+        ///     {
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///     });
+        /// 
+        ///     var defaultDbInstance = new AliCloud.SelectDB.DbInstance("default", new()
+        ///     {
+        ///         DbInstanceClass = "selectdb.xlarge",
+        ///         DbInstanceDescription = name,
+        ///         CacheSize = 200,
+        ///         PaymentType = "PayAsYouGo",
+        ///         VpcId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Vswitches[0]?.VpcId),
+        ///         ZoneId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Vswitches[0]?.ZoneId),
+        ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Vswitches[0]?.Id),
+        ///     });
+        /// 
+        ///     var defaultGetDbInstances = AliCloud.SelectDB.GetDbInstances.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultDbInstance.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dbInstance"] = defaultGetDbInstances.Apply(getDbInstancesResult =&gt; getDbInstancesResult.Ids[0]),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDbInstancesResult> Invoke(GetDbInstancesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDbInstancesResult>("alicloud:selectdb/getDbInstances:getDbInstances", args ?? new GetDbInstancesInvokeArgs(), options.WithDefaults());
     }
 
 

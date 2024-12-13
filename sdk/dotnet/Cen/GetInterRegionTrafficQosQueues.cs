@@ -80,6 +80,41 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public static Output<GetInterRegionTrafficQosQueuesResult> Invoke(GetInterRegionTrafficQosQueuesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInterRegionTrafficQosQueuesResult>("alicloud:cen/getInterRegionTrafficQosQueues:getInterRegionTrafficQosQueues", args ?? new GetInterRegionTrafficQosQueuesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides Cen Inter Region Traffic Qos Queue available to the user.
+        /// 
+        /// &gt; **NOTE:** Available in 1.195.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Cen.GetInterRegionTrafficQosQueues.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultAlicloudCenInterRegionTrafficQosQueue.Id,
+        ///         },
+        ///         NameRegex = defaultAlicloudCenInterRegionTrafficQosQueue.Name,
+        ///         TrafficQosPolicyId = "qos-xxxxxxx",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudCenInterRegionTrafficQosQueueExampleId"] = @default.Apply(@default =&gt; @default.Apply(getInterRegionTrafficQosQueuesResult =&gt; getInterRegionTrafficQosQueuesResult.Queues[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetInterRegionTrafficQosQueuesResult> Invoke(GetInterRegionTrafficQosQueuesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetInterRegionTrafficQosQueuesResult>("alicloud:cen/getInterRegionTrafficQosQueues:getInterRegionTrafficQosQueues", args ?? new GetInterRegionTrafficQosQueuesInvokeArgs(), options.WithDefaults());
     }
 
 

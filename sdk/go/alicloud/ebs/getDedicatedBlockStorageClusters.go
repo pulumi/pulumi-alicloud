@@ -79,21 +79,11 @@ type GetDedicatedBlockStorageClustersResult struct {
 }
 
 func GetDedicatedBlockStorageClustersOutput(ctx *pulumi.Context, args GetDedicatedBlockStorageClustersOutputArgs, opts ...pulumi.InvokeOption) GetDedicatedBlockStorageClustersResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDedicatedBlockStorageClustersResultOutput, error) {
 			args := v.(GetDedicatedBlockStorageClustersArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetDedicatedBlockStorageClustersResult
-			secret, err := ctx.InvokePackageRaw("alicloud:ebs/getDedicatedBlockStorageClusters:getDedicatedBlockStorageClusters", args, &rv, "", opts...)
-			if err != nil {
-				return GetDedicatedBlockStorageClustersResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetDedicatedBlockStorageClustersResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetDedicatedBlockStorageClustersResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:ebs/getDedicatedBlockStorageClusters:getDedicatedBlockStorageClusters", args, GetDedicatedBlockStorageClustersResultOutput{}, options).(GetDedicatedBlockStorageClustersResultOutput), nil
 		}).(GetDedicatedBlockStorageClustersResultOutput)
 }
 

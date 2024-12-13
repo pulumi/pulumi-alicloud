@@ -68,6 +68,35 @@ namespace Pulumi.AliCloud.Amqp
         /// </summary>
         public static Output<GetBindingsResult> Invoke(GetBindingsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBindingsResult>("alicloud:amqp/getBindings:getBindings", args ?? new GetBindingsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Amqp Bindings of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var examples = AliCloud.Amqp.GetBindings.Invoke(new()
+        ///     {
+        ///         InstanceId = "amqp-cn-xxxxx",
+        ///         VirtualHostName = "my-vh",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetBindingsResult> Invoke(GetBindingsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetBindingsResult>("alicloud:amqp/getBindings:getBindings", args ?? new GetBindingsInvokeArgs(), options.WithDefaults());
     }
 
 

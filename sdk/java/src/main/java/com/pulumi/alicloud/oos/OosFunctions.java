@@ -32,6 +32,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class OosFunctions {
@@ -201,6 +202,62 @@ public final class OosFunctions {
      * 
      */
     public static Output<GetApplicationGroupsResult> getApplicationGroups(GetApplicationGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:oos/getApplicationGroups:getApplicationGroups", TypeShape.of(GetApplicationGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Oos Application Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.146.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetApplicationGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = OosFunctions.getApplicationGroups(GetApplicationGroupsArgs.builder()
+     *             .applicationName("example_value")
+     *             .ids(            
+     *                 "my-ApplicationGroup-1",
+     *                 "my-ApplicationGroup-2")
+     *             .build());
+     * 
+     *         ctx.export("oosApplicationGroupId1", ids.applyValue(getApplicationGroupsResult -> getApplicationGroupsResult.groups()[0].id()));
+     *         final var nameRegex = OosFunctions.getApplicationGroups(GetApplicationGroupsArgs.builder()
+     *             .applicationName("example_value")
+     *             .nameRegex("^my-ApplicationGroup")
+     *             .build());
+     * 
+     *         ctx.export("oosApplicationGroupId2", nameRegex.applyValue(getApplicationGroupsResult -> getApplicationGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetApplicationGroupsResult> getApplicationGroups(GetApplicationGroupsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:oos/getApplicationGroups:getApplicationGroups", TypeShape.of(GetApplicationGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -556,6 +613,56 @@ public final class OosFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetApplicationsResult> getApplications(GetApplicationsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:oos/getApplications:getApplications", TypeShape.of(GetApplicationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Oos Applications of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.145.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetApplicationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = OosFunctions.getApplications();
+     * 
+     *         ctx.export("oosApplicationId1", ids.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id()));
+     *         final var nameRegex = OosFunctions.getApplications(GetApplicationsArgs.builder()
+     *             .nameRegex("^my-Application")
+     *             .build());
+     * 
+     *         ctx.export("oosApplicationId2", nameRegex.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetApplicationsResult> getApplicationsPlain(GetApplicationsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:oos/getApplications:getApplications", TypeShape.of(GetApplicationsResult.class), args, Utilities.withVersion(options));
     }
@@ -797,6 +904,54 @@ public final class OosFunctions {
      * 
      */
     public static Output<GetExecutionsResult> getExecutions(GetExecutionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:oos/getExecutions:getExecutions", TypeShape.of(GetExecutionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list of OOS Executions in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available in v1.93.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetExecutionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Declare the data source
+     *         final var example = OosFunctions.getExecutions(GetExecutionsArgs.builder()
+     *             .ids("execution_id")
+     *             .templateName("name")
+     *             .status("Success")
+     *             .build());
+     * 
+     *         ctx.export("firstExecutionId", example.applyValue(getExecutionsResult -> getExecutionsResult.executions()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetExecutionsResult> getExecutions(GetExecutionsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:oos/getExecutions:getExecutions", TypeShape.of(GetExecutionsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1246,6 +1401,73 @@ public final class OosFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetParametersResult> getParameters(GetParametersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:oos/getParameters:getParameters", TypeShape.of(GetParametersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Oos Parameters of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.147.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetParametersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = OosFunctions.getParameters(GetParametersArgs.builder()
+     *             .ids("my-Parameter")
+     *             .build());
+     * 
+     *         ctx.export("oosParameterId1", ids.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
+     *         final var nameRegex = OosFunctions.getParameters(GetParametersArgs.builder()
+     *             .nameRegex("^my-Parameter")
+     *             .build());
+     * 
+     *         ctx.export("oosParameterId2", nameRegex.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
+     *         final var resourceGroupId = OosFunctions.getParameters(GetParametersArgs.builder()
+     *             .ids("my-Parameter")
+     *             .resourceGroupId("example_value")
+     *             .build());
+     * 
+     *         ctx.export("oosParameterId3", resourceGroupId.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
+     *         final var tags = OosFunctions.getParameters(GetParametersArgs.builder()
+     *             .ids("my-Parameter")
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "OosParameter")
+     *             ))
+     *             .build());
+     * 
+     *         ctx.export("oosParameterId4", tags.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetParametersResult> getParametersPlain(GetParametersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:oos/getParameters:getParameters", TypeShape.of(GetParametersResult.class), args, Utilities.withVersion(options));
     }
@@ -1292,6 +1514,15 @@ public final class OosFunctions {
      * 
      */
     public static Output<GetPatchBaselinesResult> getPatchBaselines(GetPatchBaselinesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:oos/getPatchBaselines:getPatchBaselines", TypeShape.of(GetPatchBaselinesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Oos Patch Baselines of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.146.0+.
+     * 
+     */
+    public static Output<GetPatchBaselinesResult> getPatchBaselines(GetPatchBaselinesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:oos/getPatchBaselines:getPatchBaselines", TypeShape.of(GetPatchBaselinesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1732,6 +1963,78 @@ public final class OosFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetSecretParametersResult> getSecretParameters(GetSecretParametersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:oos/getSecretParameters:getSecretParameters", TypeShape.of(GetSecretParametersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Oos Secret Parameters of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.147.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.SecretParameter;
+     * import com.pulumi.alicloud.oos.SecretParameterArgs;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetSecretParametersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new SecretParameter("default", SecretParameterArgs.builder()
+     *             .secretParameterName(name)
+     *             .value("tf-testacc-oos_secret_parameter")
+     *             .type("Secret")
+     *             .description(name)
+     *             .constraints("""
+     *   {
+     *     "AllowedValues": [
+     *         "tf-testacc-oos_secret_parameter"
+     *     ],
+     *     "AllowedPattern": "tf-testacc-oos_secret_parameter",
+     *     "MinLength": 1,
+     *     "MaxLength": 100
+     *   }
+     *             """)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "SecretParameter")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = OosFunctions.getSecretParameters(GetSecretParametersArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("oosSecretParameterId0", ids.applyValue(getSecretParametersResult -> getSecretParametersResult).applyValue(ids -> ids.applyValue(getSecretParametersResult -> getSecretParametersResult.parameters()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetSecretParametersResult> getSecretParametersPlain(GetSecretParametersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:oos/getSecretParameters:getSecretParameters", TypeShape.of(GetSecretParametersResult.class), args, Utilities.withVersion(options));
     }
@@ -1958,6 +2261,51 @@ public final class OosFunctions {
      * 
      */
     public static Output<GetStateConfigurationsResult> getStateConfigurations(GetStateConfigurationsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:oos/getStateConfigurations:getStateConfigurations", TypeShape.of(GetStateConfigurationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Oos State Configurations of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.147.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetStateConfigurationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = OosFunctions.getStateConfigurations();
+     * 
+     *         ctx.export("oosStateConfigurationId1", ids.applyValue(getStateConfigurationsResult -> getStateConfigurationsResult.configurations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStateConfigurationsResult> getStateConfigurations(GetStateConfigurationsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:oos/getStateConfigurations:getStateConfigurations", TypeShape.of(GetStateConfigurationsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2263,6 +2611,58 @@ public final class OosFunctions {
      * 
      */
     public static Output<GetTemplatesResult> getTemplates(GetTemplatesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:oos/getTemplates:getTemplates", TypeShape.of(GetTemplatesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list of OOS Templates in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available in v1.92.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Declare the data source
+     *         final var example = OosFunctions.getTemplates(GetTemplatesArgs.builder()
+     *             .nameRegex("test")
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "template Test")
+     *             ))
+     *             .shareType("Private")
+     *             .hasTrigger(false)
+     *             .build());
+     * 
+     *         ctx.export("firstTemplateName", example.applyValue(getTemplatesResult -> getTemplatesResult.templates()[0].templateName()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTemplatesResult> getTemplates(GetTemplatesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:oos/getTemplates:getTemplates", TypeShape.of(GetTemplatesResult.class), args, Utilities.withVersion(options));
     }
     /**

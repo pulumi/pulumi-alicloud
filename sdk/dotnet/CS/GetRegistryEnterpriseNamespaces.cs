@@ -76,6 +76,39 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         public static Output<GetRegistryEnterpriseNamespacesResult> Invoke(GetRegistryEnterpriseNamespacesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegistryEnterpriseNamespacesResult>("alicloud:cs/getRegistryEnterpriseNamespaces:getRegistryEnterpriseNamespaces", args ?? new GetRegistryEnterpriseNamespacesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a list Container Registry Enterprise Edition namespaces on Alibaba Cloud.
+        /// 
+        /// &gt; **NOTE:** Available in v1.86.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Declare the data source
+        ///     var myNamespaces = AliCloud.CS.GetRegistryEnterpriseNamespaces.Invoke(new()
+        ///     {
+        ///         InstanceId = "cri-xxx",
+        ///         NameRegex = "my-namespace",
+        ///         OutputFile = "my-namespace-json",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["output"] = myNamespaces.Apply(getRegistryEnterpriseNamespacesResult =&gt; getRegistryEnterpriseNamespacesResult.Namespaces),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRegistryEnterpriseNamespacesResult> Invoke(GetRegistryEnterpriseNamespacesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegistryEnterpriseNamespacesResult>("alicloud:cs/getRegistryEnterpriseNamespaces:getRegistryEnterpriseNamespaces", args ?? new GetRegistryEnterpriseNamespacesInvokeArgs(), options.WithDefaults());
     }
 
 

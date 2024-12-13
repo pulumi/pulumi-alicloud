@@ -72,6 +72,37 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         public static Output<GetLifecycleHooksResult> Invoke(GetLifecycleHooksInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLifecycleHooksResult>("alicloud:ess/getLifecycleHooks:getLifecycleHooks", args ?? new GetLifecycleHooksInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides available lifecycle hook resources. 
+        /// 
+        /// &gt; **NOTE:** Available in 1.72.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ds = AliCloud.Ess.GetLifecycleHooks.Invoke(new()
+        ///     {
+        ///         ScalingGroupId = "scaling_group_id",
+        ///         NameRegex = "lifecyclehook_name",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstLifecycleHook"] = ds.Apply(getLifecycleHooksResult =&gt; getLifecycleHooksResult.Hooks[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetLifecycleHooksResult> Invoke(GetLifecycleHooksInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetLifecycleHooksResult>("alicloud:ess/getLifecycleHooks:getLifecycleHooks", args ?? new GetLifecycleHooksInvokeArgs(), options.WithDefaults());
     }
 
 

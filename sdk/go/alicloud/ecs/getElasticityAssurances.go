@@ -86,21 +86,11 @@ type GetElasticityAssurancesResult struct {
 }
 
 func GetElasticityAssurancesOutput(ctx *pulumi.Context, args GetElasticityAssurancesOutputArgs, opts ...pulumi.InvokeOption) GetElasticityAssurancesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetElasticityAssurancesResultOutput, error) {
 			args := v.(GetElasticityAssurancesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetElasticityAssurancesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:ecs/getElasticityAssurances:getElasticityAssurances", args, &rv, "", opts...)
-			if err != nil {
-				return GetElasticityAssurancesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetElasticityAssurancesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetElasticityAssurancesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:ecs/getElasticityAssurances:getElasticityAssurances", args, GetElasticityAssurancesResultOutput{}, options).(GetElasticityAssurancesResultOutput), nil
 		}).(GetElasticityAssurancesResultOutput)
 }
 

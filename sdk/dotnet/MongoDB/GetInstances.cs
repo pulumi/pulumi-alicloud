@@ -66,6 +66,34 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:mongodb/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `alicloud.mongodb.getInstances` data source provides a collection of MongoDB instances available in Alicloud account.
+        /// Filters support regular expression for the instance name, engine or instance type.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mongo = AliCloud.MongoDB.GetInstances.Invoke(new()
+        ///     {
+        ///         NameRegex = "dds-.+\\d+",
+        ///         InstanceType = "replicate",
+        ///         InstanceClass = "dds.mongo.mid",
+        ///         AvailabilityZone = "eu-central-1a",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:mongodb/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
     }
 
 

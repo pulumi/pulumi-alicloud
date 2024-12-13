@@ -87,21 +87,11 @@ type GetControlPoliciesResult struct {
 }
 
 func GetControlPoliciesOutput(ctx *pulumi.Context, args GetControlPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetControlPoliciesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetControlPoliciesResultOutput, error) {
 			args := v.(GetControlPoliciesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetControlPoliciesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:resourcemanager/getControlPolicies:getControlPolicies", args, &rv, "", opts...)
-			if err != nil {
-				return GetControlPoliciesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetControlPoliciesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetControlPoliciesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:resourcemanager/getControlPolicies:getControlPolicies", args, GetControlPoliciesResultOutput{}, options).(GetControlPoliciesResultOutput), nil
 		}).(GetControlPoliciesResultOutput)
 }
 

@@ -80,6 +80,41 @@ namespace Pulumi.AliCloud
         /// </summary>
         public static Output<GetMscSubContactVerificationMessageResult> Invoke(GetMscSubContactVerificationMessageInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMscSubContactVerificationMessageResult>("alicloud:index/getMscSubContactVerificationMessage:getMscSubContactVerificationMessage", args ?? new GetMscSubContactVerificationMessageInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **NOTE:** Available in v1.156.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var defaultMscSubContract = new AliCloud.MscSubContract("default", new()
+        ///     {
+        ///         ContactName = "example_value",
+        ///         Position = "CEO",
+        ///         Email = "123@163.com",
+        ///         Mobile = "153xxxxx906",
+        ///     });
+        /// 
+        ///     var @default = AliCloud.GetMscSubContactVerificationMessage.Invoke(new()
+        ///     {
+        ///         ContactId = defaultMscSubContract.Id,
+        ///         Type = 1,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetMscSubContactVerificationMessageResult> Invoke(GetMscSubContactVerificationMessageInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMscSubContactVerificationMessageResult>("alicloud:index/getMscSubContactVerificationMessage:getMscSubContactVerificationMessage", args ?? new GetMscSubContactVerificationMessageInvokeArgs(), options.WithDefaults());
     }
 
 

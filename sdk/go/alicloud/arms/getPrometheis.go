@@ -138,21 +138,11 @@ type GetPrometheisResult struct {
 }
 
 func GetPrometheisOutput(ctx *pulumi.Context, args GetPrometheisOutputArgs, opts ...pulumi.InvokeOption) GetPrometheisResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetPrometheisResultOutput, error) {
 			args := v.(GetPrometheisArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetPrometheisResult
-			secret, err := ctx.InvokePackageRaw("alicloud:arms/getPrometheis:getPrometheis", args, &rv, "", opts...)
-			if err != nil {
-				return GetPrometheisResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetPrometheisResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetPrometheisResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:arms/getPrometheis:getPrometheis", args, GetPrometheisResultOutput{}, options).(GetPrometheisResultOutput), nil
 		}).(GetPrometheisResultOutput)
 }
 

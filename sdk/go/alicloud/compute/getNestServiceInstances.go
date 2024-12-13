@@ -97,21 +97,11 @@ type GetNestServiceInstancesResult struct {
 }
 
 func GetNestServiceInstancesOutput(ctx *pulumi.Context, args GetNestServiceInstancesOutputArgs, opts ...pulumi.InvokeOption) GetNestServiceInstancesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetNestServiceInstancesResultOutput, error) {
 			args := v.(GetNestServiceInstancesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetNestServiceInstancesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:compute/getNestServiceInstances:getNestServiceInstances", args, &rv, "", opts...)
-			if err != nil {
-				return GetNestServiceInstancesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetNestServiceInstancesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetNestServiceInstancesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:compute/getNestServiceInstances:getNestServiceInstances", args, GetNestServiceInstancesResultOutput{}, options).(GetNestServiceInstancesResultOutput), nil
 		}).(GetNestServiceInstancesResultOutput)
 }
 

@@ -82,21 +82,11 @@ type GetTriggersResult struct {
 }
 
 func GetTriggersOutput(ctx *pulumi.Context, args GetTriggersOutputArgs, opts ...pulumi.InvokeOption) GetTriggersResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetTriggersResultOutput, error) {
 			args := v.(GetTriggersArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetTriggersResult
-			secret, err := ctx.InvokePackageRaw("alicloud:fc/getTriggers:getTriggers", args, &rv, "", opts...)
-			if err != nil {
-				return GetTriggersResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetTriggersResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetTriggersResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:fc/getTriggers:getTriggers", args, GetTriggersResultOutput{}, options).(GetTriggersResultOutput), nil
 		}).(GetTriggersResultOutput)
 }
 

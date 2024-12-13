@@ -76,6 +76,39 @@ namespace Pulumi.AliCloud.Ram
         /// </summary>
         public static Output<GetPoliciesResult> Invoke(GetPoliciesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPoliciesResult>("alicloud:ram/getPolicies:getPolicies", args ?? new GetPoliciesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available since v1.0.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policiesDs = AliCloud.Ram.GetPolicies.Invoke(new()
+        ///     {
+        ///         OutputFile = "policies.txt",
+        ///         UserName = "user1",
+        ///         GroupName = "group1",
+        ///         Type = "System",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstPolicyName"] = policiesDs.Apply(getPoliciesResult =&gt; getPoliciesResult.Policies[0]?.Name),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPoliciesResult> Invoke(GetPoliciesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPoliciesResult>("alicloud:ram/getPolicies:getPolicies", args ?? new GetPoliciesInvokeArgs(), options.WithDefaults());
     }
 
 

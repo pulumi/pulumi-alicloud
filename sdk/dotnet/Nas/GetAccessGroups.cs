@@ -74,6 +74,38 @@ namespace Pulumi.AliCloud.Nas
         /// </summary>
         public static Output<GetAccessGroupsResult> Invoke(GetAccessGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccessGroupsResult>("alicloud:nas/getAccessGroups:getAccessGroups", args ?? new GetAccessGroupsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides user-available access groups. Use when you can create mount points
+        /// 
+        /// &gt; NOTE: Available in 1.35.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Nas.GetAccessGroups.Invoke(new()
+        ///     {
+        ///         NameRegex = "^foo",
+        ///         AccessGroupType = "Classic",
+        ///         Description = "tf-testAccAccessGroupsdatasource",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudNasAccessGroupsId"] = example.Apply(getAccessGroupsResult =&gt; getAccessGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAccessGroupsResult> Invoke(GetAccessGroupsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccessGroupsResult>("alicloud:nas/getAccessGroups:getAccessGroups", args ?? new GetAccessGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -74,6 +74,38 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         public static Output<GetInstanceClassInfosResult> Invoke(GetInstanceClassInfosInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceClassInfosResult>("alicloud:rds/getInstanceClassInfos:getInstanceClassInfos", args ?? new GetInstanceClassInfosInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source operation to query the instance types that are available to specific instances of Alibaba Cloud.
+        /// 
+        /// &gt; **NOTE:** Available in v1.196.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var resources = AliCloud.Rds.GetInstanceClassInfos.Invoke(new()
+        ///     {
+        ///         CommodityCode = "bards",
+        ///         OrderType = "BUY",
+        ///         OutputFile = "./classes.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstDbInstanceClass"] = resources.Apply(getInstanceClassInfosResult =&gt; getInstanceClassInfosResult.Infos[0]),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetInstanceClassInfosResult> Invoke(GetInstanceClassInfosInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceClassInfosResult>("alicloud:rds/getInstanceClassInfos:getInstanceClassInfos", args ?? new GetInstanceClassInfosInvokeArgs(), options.WithDefaults());
     }
 
 

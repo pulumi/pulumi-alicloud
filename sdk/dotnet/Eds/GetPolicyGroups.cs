@@ -134,6 +134,68 @@ namespace Pulumi.AliCloud.Eds
         /// </summary>
         public static Output<GetPolicyGroupsResult> Invoke(GetPolicyGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPolicyGroupsResult>("alicloud:eds/getPolicyGroups:getPolicyGroups", args ?? new GetPolicyGroupsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Ecd Policy Groups of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.130.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = new AliCloud.Eds.EcdPolicyGroup("default", new()
+        ///     {
+        ///         PolicyGroupName = "my-policy-group",
+        ///         Clipboard = "read",
+        ///         LocalDrive = "read",
+        ///         UsbRedirect = "off",
+        ///         Watermark = "off",
+        ///         AuthorizeAccessPolicyRules = new[]
+        ///         {
+        ///             new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs
+        ///             {
+        ///                 Description = "my-description1",
+        ///                 CidrIp = "1.2.3.45/24",
+        ///             },
+        ///         },
+        ///         AuthorizeSecurityPolicyRules = new[]
+        ///         {
+        ///             new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs
+        ///             {
+        ///                 Type = "inflow",
+        ///                 Policy = "accept",
+        ///                 Description = "my-description",
+        ///                 PortRange = "80/80",
+        ///                 IpProtocol = "TCP",
+        ///                 Priority = "1",
+        ///                 CidrIp = "1.2.3.4/24",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Eds.GetPolicyGroups.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-policy",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecdPolicyGroupId"] = nameRegex.Apply(getPolicyGroupsResult =&gt; getPolicyGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPolicyGroupsResult> Invoke(GetPolicyGroupsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPolicyGroupsResult>("alicloud:eds/getPolicyGroups:getPolicyGroups", args ?? new GetPolicyGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

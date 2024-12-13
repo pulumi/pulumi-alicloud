@@ -80,6 +80,41 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public static Output<GetPeerConnectionsResult> Invoke(GetPeerConnectionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPeerConnectionsResult>("alicloud:vpc/getPeerConnections:getPeerConnections", args ?? new GetPeerConnectionsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Vpc Peer Connections of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.186.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Vpc.GetPeerConnections.Invoke();
+        /// 
+        ///     var nameRegex = AliCloud.Vpc.GetPeerConnections.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-PeerConnection",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpcPeerConnectionId1"] = ids.Apply(getPeerConnectionsResult =&gt; getPeerConnectionsResult.Connections[0]?.Id),
+        ///         ["vpcPeerConnectionId2"] = nameRegex.Apply(getPeerConnectionsResult =&gt; getPeerConnectionsResult.Connections[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPeerConnectionsResult> Invoke(GetPeerConnectionsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPeerConnectionsResult>("alicloud:vpc/getPeerConnections:getPeerConnections", args ?? new GetPeerConnectionsInvokeArgs(), options.WithDefaults());
     }
 
 

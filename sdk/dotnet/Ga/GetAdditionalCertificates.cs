@@ -86,6 +86,44 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         public static Output<GetAdditionalCertificatesResult> Invoke(GetAdditionalCertificatesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAdditionalCertificatesResult>("alicloud:ga/getAdditionalCertificates:getAdditionalCertificates", args ?? new GetAdditionalCertificatesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Ga Additional Certificates of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.150.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Ga.GetAdditionalCertificates.Invoke(new()
+        ///     {
+        ///         AcceleratorId = "example_value",
+        ///         ListenerId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["gaAdditionalCertificateId1"] = ids.Apply(getAdditionalCertificatesResult =&gt; getAdditionalCertificatesResult.Certificates[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAdditionalCertificatesResult> Invoke(GetAdditionalCertificatesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAdditionalCertificatesResult>("alicloud:ga/getAdditionalCertificates:getAdditionalCertificates", args ?? new GetAdditionalCertificatesInvokeArgs(), options.WithDefaults());
     }
 
 

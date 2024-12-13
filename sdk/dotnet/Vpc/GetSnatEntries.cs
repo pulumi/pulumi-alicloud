@@ -154,6 +154,78 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public static Output<GetSnatEntriesResult> Invoke(GetSnatEntriesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSnatEntriesResult>("alicloud:vpc/getSnatEntries:getSnatEntries", args ?? new GetSnatEntriesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a list of Snat Entries owned by an Alibaba Cloud account.
+        /// 
+        /// &gt; **NOTE:** Available in 1.37.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "snat-entry-example-name";
+        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var fooNetwork = new AliCloud.Vpc.Network("foo", new()
+        ///     {
+        ///         Name = name,
+        ///         CidrBlock = "172.16.0.0/12",
+        ///     });
+        /// 
+        ///     var fooSwitch = new AliCloud.Vpc.Switch("foo", new()
+        ///     {
+        ///         VpcId = fooNetwork.Id,
+        ///         CidrBlock = "172.16.0.0/21",
+        ///         AvailabilityZone = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///         VswitchName = name,
+        ///     });
+        /// 
+        ///     var fooNatGateway = new AliCloud.Vpc.NatGateway("foo", new()
+        ///     {
+        ///         VpcId = fooNetwork.Id,
+        ///         Specification = "Small",
+        ///         Name = name,
+        ///     });
+        /// 
+        ///     var fooEipAddress = new AliCloud.Ecs.EipAddress("foo", new()
+        ///     {
+        ///         AddressName = name,
+        ///     });
+        /// 
+        ///     var fooEipAssociation = new AliCloud.Ecs.EipAssociation("foo", new()
+        ///     {
+        ///         AllocationId = fooEipAddress.Id,
+        ///         InstanceId = fooNatGateway.Id,
+        ///     });
+        /// 
+        ///     var fooSnatEntry = new AliCloud.Vpc.SnatEntry("foo", new()
+        ///     {
+        ///         SnatTableId = fooNatGateway.SnatTableIds,
+        ///         SourceVswitchId = fooSwitch.Id,
+        ///         SnatIp = fooEipAddress.IpAddress,
+        ///     });
+        /// 
+        ///     var foo = AliCloud.Vpc.GetSnatEntries.Invoke(new()
+        ///     {
+        ///         SnatTableId = fooSnatEntry.SnatTableId,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSnatEntriesResult> Invoke(GetSnatEntriesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSnatEntriesResult>("alicloud:vpc/getSnatEntries:getSnatEntries", args ?? new GetSnatEntriesInvokeArgs(), options.WithDefaults());
     }
 
 

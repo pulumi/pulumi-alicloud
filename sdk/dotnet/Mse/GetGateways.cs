@@ -104,6 +104,53 @@ namespace Pulumi.AliCloud.Mse
         /// </summary>
         public static Output<GetGatewaysResult> Invoke(GetGatewaysInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGatewaysResult>("alicloud:mse/getGateways:getGateways", args ?? new GetGatewaysInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Mse Gateways of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.157.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Mse.GetGateways.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Mse.GetGateways.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Gateway",
+        ///     });
+        /// 
+        ///     var status = AliCloud.Mse.GetGateways.Invoke(new()
+        ///     {
+        ///         Status = "2",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mseGatewayId1"] = ids.Apply(getGatewaysResult =&gt; getGatewaysResult.Gateways[0]?.Id),
+        ///         ["mseGatewayId2"] = nameRegex.Apply(getGatewaysResult =&gt; getGatewaysResult.Gateways[0]?.Id),
+        ///         ["mseGatewayId3"] = status.Apply(getGatewaysResult =&gt; getGatewaysResult.Gateways[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetGatewaysResult> Invoke(GetGatewaysInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGatewaysResult>("alicloud:mse/getGateways:getGateways", args ?? new GetGatewaysInvokeArgs(), options.WithDefaults());
     }
 
 

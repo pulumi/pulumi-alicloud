@@ -98,6 +98,50 @@ namespace Pulumi.AliCloud.BastionHost
         /// </summary>
         public static Output<GetHostsResult> Invoke(GetHostsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHostsResult>("alicloud:bastionhost/getHosts:getHosts", args ?? new GetHostsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Bastionhost Hosts of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.BastionHost.GetHosts.Invoke(new()
+        ///     {
+        ///         InstanceId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "1",
+        ///             "2",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.BastionHost.GetHosts.Invoke(new()
+        ///     {
+        ///         InstanceId = "example_value",
+        ///         NameRegex = "^my-Host",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["bastionhostHostId1"] = ids.Apply(getHostsResult =&gt; getHostsResult.Hosts[0]?.Id),
+        ///         ["bastionhostHostId2"] = nameRegex.Apply(getHostsResult =&gt; getHostsResult.Hosts[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetHostsResult> Invoke(GetHostsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetHostsResult>("alicloud:bastionhost/getHosts:getHosts", args ?? new GetHostsInvokeArgs(), options.WithDefaults());
     }
 
 

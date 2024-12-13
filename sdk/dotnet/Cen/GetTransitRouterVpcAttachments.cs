@@ -190,6 +190,96 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public static Output<GetTransitRouterVpcAttachmentsResult> Invoke(GetTransitRouterVpcAttachmentsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterVpcAttachmentsResult>("alicloud:cen/getTransitRouterVpcAttachments:getTransitRouterVpcAttachments", args ?? new GetTransitRouterVpcAttachmentsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the CEN Transit Router VPC Attachments of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.126.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = AliCloud.GetZones.Invoke();
+        /// 
+        ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+        ///     {
+        ///         NameRegex = "^default-NODELETING$",
+        ///     });
+        /// 
+        ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+        ///     {
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+        ///     });
+        /// 
+        ///     var defaultMaster = AliCloud.Vpc.GetSwitches.Invoke(new()
+        ///     {
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Ids[1]),
+        ///     });
+        /// 
+        ///     var defaultInstance = new AliCloud.Cen.Instance("default", new()
+        ///     {
+        ///         CenInstanceName = name,
+        ///         ProtectionLevel = "REDUCED",
+        ///     });
+        /// 
+        ///     var defaultTransitRouter = new AliCloud.Cen.TransitRouter("default", new()
+        ///     {
+        ///         CenId = defaultInstance.Id,
+        ///     });
+        /// 
+        ///     var defaultTransitRouterVpcAttachment = new AliCloud.Cen.TransitRouterVpcAttachment("default", new()
+        ///     {
+        ///         CenId = defaultInstance.Id,
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
+        ///         TransitRouterAttachmentName = name,
+        ///         TransitRouterAttachmentDescription = name,
+        ///         ZoneMappings = new[]
+        ///         {
+        ///             new AliCloud.Cen.Inputs.TransitRouterVpcAttachmentZoneMappingArgs
+        ///             {
+        ///                 VswitchId = defaultMaster.Apply(getSwitchesResult =&gt; getSwitchesResult.Vswitches[0]?.Id),
+        ///                 ZoneId = defaultMaster.Apply(getSwitchesResult =&gt; getSwitchesResult.Vswitches[0]?.ZoneId),
+        ///             },
+        ///             new AliCloud.Cen.Inputs.TransitRouterVpcAttachmentZoneMappingArgs
+        ///             {
+        ///                 VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Vswitches[0]?.Id),
+        ///                 ZoneId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Vswitches[0]?.ZoneId),
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Cen.GetTransitRouterVpcAttachments.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultTransitRouterVpcAttachment.Id,
+        ///         },
+        ///         CenId = defaultInstance.Id,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cenTransitRouterVpcAttachmentsId0"] = ids.Apply(getTransitRouterVpcAttachmentsResult =&gt; getTransitRouterVpcAttachmentsResult.Attachments[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTransitRouterVpcAttachmentsResult> Invoke(GetTransitRouterVpcAttachmentsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterVpcAttachmentsResult>("alicloud:cen/getTransitRouterVpcAttachments:getTransitRouterVpcAttachments", args ?? new GetTransitRouterVpcAttachmentsInvokeArgs(), options.WithDefaults());
     }
 
 

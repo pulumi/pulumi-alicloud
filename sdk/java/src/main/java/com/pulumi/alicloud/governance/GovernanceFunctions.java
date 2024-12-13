@@ -11,6 +11,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class GovernanceFunctions {
@@ -427,6 +428,89 @@ public final class GovernanceFunctions {
      * 
      */
     public static Output<GetBaselinesResult> getBaselines(GetBaselinesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:governance/getBaselines:getBaselines", TypeShape.of(GetBaselinesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Governance Baseline available to the user.[What is Baseline](https://next.api.aliyun.com/document/governance/2021-01-20/CreateAccountFactoryBaseline)
+     * 
+     * &gt; **NOTE:** Available since v1.228.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.governance.Baseline;
+     * import com.pulumi.alicloud.governance.BaselineArgs;
+     * import com.pulumi.alicloud.governance.inputs.BaselineBaselineItemArgs;
+     * import com.pulumi.alicloud.governance.GovernanceFunctions;
+     * import com.pulumi.alicloud.governance.inputs.GetBaselinesArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform_example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         final var itemPasswordPolicy = config.get("itemPasswordPolicy").orElse("ACS-BP_ACCOUNT_FACTORY_RAM_USER_PASSWORD_POLICY");
+     *         final var itemServices = config.get("itemServices").orElse("ACS-BP_ACCOUNT_FACTORY_SUBSCRIBE_SERVICES");
+     *         final var itemRamSecurity = config.get("itemRamSecurity").orElse("ACS-BP_ACCOUNT_FACTORY_RAM_SECURITY_PREFERENCE");
+     *         var defaultBaseline = new Baseline("defaultBaseline", BaselineArgs.builder()
+     *             .baselineItems(BaselineBaselineItemArgs.builder()
+     *                 .version("1.0")
+     *                 .name(itemPasswordPolicy)
+     *                 .config(serializeJson(
+     *                     jsonObject(
+     *                         jsonProperty("MinimumPasswordLength", 8),
+     *                         jsonProperty("RequireLowercaseCharacters", true),
+     *                         jsonProperty("RequireUppercaseCharacters", true),
+     *                         jsonProperty("RequireNumbers", true),
+     *                         jsonProperty("RequireSymbols", true),
+     *                         jsonProperty("MaxPasswordAge", 0),
+     *                         jsonProperty("HardExpiry", false),
+     *                         jsonProperty("PasswordReusePrevention", 0),
+     *                         jsonProperty("MaxLoginAttempts", 0)
+     *                     )))
+     *                 .build())
+     *             .description(name)
+     *             .baselineName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .build());
+     * 
+     *         final var default = GovernanceFunctions.getBaselines(GetBaselinesArgs.builder()
+     *             .ids(defaultBaseline.id())
+     *             .nameRegex(defaultBaseline.baselineName())
+     *             .build());
+     * 
+     *         ctx.export("alicloudGovernanceBaselineExampleId", default_.applyValue(default_ -> default_.baselines()[0].baselineId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetBaselinesResult> getBaselines(GetBaselinesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:governance/getBaselines:getBaselines", TypeShape.of(GetBaselinesResult.class), args, Utilities.withVersion(options));
     }
     /**

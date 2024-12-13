@@ -88,6 +88,45 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         public static Output<GetInstanceClassesResult> Invoke(GetInstanceClassesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceClassesResult>("alicloud:kvstore/getInstanceClasses:getInstanceClasses", args ?? new GetInstanceClassesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance classes resource available info of Alibaba Cloud.
+        /// 
+        /// &gt; **NOTE:** Available since v1.49.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var resources = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableResourceCreation = "KVStore",
+        ///     });
+        /// 
+        ///     var resourcesGetInstanceClasses = AliCloud.KVStore.GetInstanceClasses.Invoke(new()
+        ///     {
+        ///         ZoneId = resources.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         InstanceChargeType = "PrePaid",
+        ///         Engine = "Redis",
+        ///         EngineVersion = "5.0",
+        ///         OutputFile = "./classes.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstKvstoreInstanceClass"] = resourcesGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetInstanceClassesResult> Invoke(GetInstanceClassesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceClassesResult>("alicloud:kvstore/getInstanceClasses:getInstanceClasses", args ?? new GetInstanceClassesInvokeArgs(), options.WithDefaults());
     }
 
 

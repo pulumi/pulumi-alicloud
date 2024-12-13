@@ -72,6 +72,37 @@ namespace Pulumi.AliCloud.Log
         /// </summary>
         public static Output<GetAlertResourceResult> Invoke(GetAlertResourceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAlertResourceResult>("alicloud:log/getAlertResource:getAlertResource", args ?? new GetAlertResourceInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Using this data source can init SLS Alert resources automatically.
+        /// 
+        /// For information about SLS Alert and how to use it, see [SLS Alert Overview](https://www.alibabacloud.com/help/en/doc-detail/209202.html)
+        /// 
+        /// &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.219.0`. Please use new resource alicloud_log_alert_resource.
+        /// 
+        /// &gt; **NOTE:** Available since v1.161.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleUser = AliCloud.Log.GetAlertResource.Invoke(new()
+        ///     {
+        ///         Type = "user",
+        ///         Lang = "cn",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAlertResourceResult> Invoke(GetAlertResourceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAlertResourceResult>("alicloud:log/getAlertResource:getAlertResource", args ?? new GetAlertResourceInvokeArgs(), options.WithDefaults());
     }
 
 

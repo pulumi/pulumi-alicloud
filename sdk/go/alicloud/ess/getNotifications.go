@@ -75,21 +75,11 @@ type GetNotificationsResult struct {
 }
 
 func GetNotificationsOutput(ctx *pulumi.Context, args GetNotificationsOutputArgs, opts ...pulumi.InvokeOption) GetNotificationsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetNotificationsResultOutput, error) {
 			args := v.(GetNotificationsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetNotificationsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:ess/getNotifications:getNotifications", args, &rv, "", opts...)
-			if err != nil {
-				return GetNotificationsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetNotificationsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetNotificationsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:ess/getNotifications:getNotifications", args, GetNotificationsResultOutput{}, options).(GetNotificationsResultOutput), nil
 		}).(GetNotificationsResultOutput)
 }
 

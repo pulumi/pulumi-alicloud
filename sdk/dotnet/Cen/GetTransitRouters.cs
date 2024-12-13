@@ -70,6 +70,36 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public static Output<GetTransitRoutersResult> Invoke(GetTransitRoutersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitRoutersResult>("alicloud:cen/getTransitRouters:getTransitRouters", args ?? new GetTransitRoutersInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides CEN Transit Routers available to the user.[What is Cen Transit Routers](https://help.aliyun.com/document_detail/261219.html)
+        /// 
+        /// &gt; **NOTE:** Available in 1.126.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Cen.GetTransitRouters.Invoke(new()
+        ///     {
+        ///         CenId = "cen-id1",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstTransitRoutersType"] = @default.Apply(@default =&gt; @default.Apply(getTransitRoutersResult =&gt; getTransitRoutersResult.TransitRouters[0]?.Type)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTransitRoutersResult> Invoke(GetTransitRoutersInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTransitRoutersResult>("alicloud:cen/getTransitRouters:getTransitRouters", args ?? new GetTransitRoutersInvokeArgs(), options.WithDefaults());
     }
 
 

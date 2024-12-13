@@ -23,6 +23,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class DtsFunctions {
@@ -159,6 +160,51 @@ public final class DtsFunctions {
      * 
      */
     public static Output<GetConsumerChannelsResult> getConsumerChannels(GetConsumerChannelsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dts/getConsumerChannels:getConsumerChannels", TypeShape.of(GetConsumerChannelsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Dts Consumer Channels of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.146.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dts.DtsFunctions;
+     * import com.pulumi.alicloud.dts.inputs.GetConsumerChannelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DtsFunctions.getConsumerChannels();
+     * 
+     *         ctx.export("dtsConsumerChannelId1", ids.applyValue(getConsumerChannelsResult -> getConsumerChannelsResult.channels()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConsumerChannelsResult> getConsumerChannels(GetConsumerChannelsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:dts/getConsumerChannels:getConsumerChannels", TypeShape.of(GetConsumerChannelsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -434,6 +480,52 @@ public final class DtsFunctions {
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dts/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Dts Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/data-transmission-service/latest/createdtsinstance)
+     * 
+     * &gt; **NOTE:** Available in 1.198.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dts.DtsFunctions;
+     * import com.pulumi.alicloud.dts.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DtsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(defaultAlicloudDtsInstance.id())
+     *             .resourceGroupId("example_value")
+     *             .build());
+     * 
+     *         ctx.export("alicloudDtsInstanceExampleId", default_.instances()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:dts/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -761,6 +853,53 @@ public final class DtsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetMigrationJobsResult> getMigrationJobs(GetMigrationJobsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dts/getMigrationJobs:getMigrationJobs", TypeShape.of(GetMigrationJobsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Dts Migration Jobs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.157.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dts.DtsFunctions;
+     * import com.pulumi.alicloud.dts.inputs.GetMigrationJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DtsFunctions.getMigrationJobs(GetMigrationJobsArgs.builder()
+     *             .ids("dts_job_id")
+     *             .build());
+     * 
+     *         ctx.export("dtsMigrationJobId1", ids.applyValue(getMigrationJobsResult -> getMigrationJobsResult.jobs()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetMigrationJobsResult> getMigrationJobsPlain(GetMigrationJobsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:dts/getMigrationJobs:getMigrationJobs", TypeShape.of(GetMigrationJobsResult.class), args, Utilities.withVersion(options));
     }
@@ -1031,6 +1170,51 @@ public final class DtsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetSubscriptionJobsResult> getSubscriptionJobs(GetSubscriptionJobsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dts/getSubscriptionJobs:getSubscriptionJobs", TypeShape.of(GetSubscriptionJobsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Dts Subscription Jobs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.138.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dts.DtsFunctions;
+     * import com.pulumi.alicloud.dts.inputs.GetSubscriptionJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DtsFunctions.getSubscriptionJobs();
+     * 
+     *         ctx.export("dtsSubscriptionJobId1", ids.applyValue(getSubscriptionJobsResult -> getSubscriptionJobsResult.jobs()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetSubscriptionJobsResult> getSubscriptionJobsPlain(GetSubscriptionJobsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:dts/getSubscriptionJobs:getSubscriptionJobs", TypeShape.of(GetSubscriptionJobsResult.class), args, Utilities.withVersion(options));
     }
@@ -1257,6 +1441,51 @@ public final class DtsFunctions {
      * 
      */
     public static Output<GetSynchronizationJobsResult> getSynchronizationJobs(GetSynchronizationJobsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dts/getSynchronizationJobs:getSynchronizationJobs", TypeShape.of(GetSynchronizationJobsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Dts Synchronization Jobs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.138.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dts.DtsFunctions;
+     * import com.pulumi.alicloud.dts.inputs.GetSynchronizationJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DtsFunctions.getSynchronizationJobs();
+     * 
+     *         ctx.export("dtsSynchronizationJobId1", ids.applyValue(getSynchronizationJobsResult -> getSynchronizationJobsResult.jobs()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSynchronizationJobsResult> getSynchronizationJobs(GetSynchronizationJobsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:dts/getSynchronizationJobs:getSynchronizationJobs", TypeShape.of(GetSynchronizationJobsResult.class), args, Utilities.withVersion(options));
     }
     /**

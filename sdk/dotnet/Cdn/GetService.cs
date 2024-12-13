@@ -68,6 +68,35 @@ namespace Pulumi.AliCloud.Cdn
         /// </summary>
         public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceResult>("alicloud:cdn/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Using this data source can enable CDN service automatically. If the service has been enabled, it will return `Opened`.
+        /// 
+        /// For information about CDN and how to use it, see [What is CDN](https://www.alibabacloud.com/help/product/27099.htm).
+        /// 
+        /// &gt; **NOTE:** Available since v1.98.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var open = AliCloud.Cdn.GetService.Invoke(new()
+        ///     {
+        ///         Enable = "On",
+        ///         InternetChargeType = "PayByTraffic",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceResult>("alicloud:cdn/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());
     }
 
 

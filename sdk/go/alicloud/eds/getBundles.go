@@ -79,21 +79,11 @@ type GetBundlesResult struct {
 }
 
 func GetBundlesOutput(ctx *pulumi.Context, args GetBundlesOutputArgs, opts ...pulumi.InvokeOption) GetBundlesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetBundlesResultOutput, error) {
 			args := v.(GetBundlesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetBundlesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:eds/getBundles:getBundles", args, &rv, "", opts...)
-			if err != nil {
-				return GetBundlesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetBundlesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetBundlesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:eds/getBundles:getBundles", args, GetBundlesResultOutput{}, options).(GetBundlesResultOutput), nil
 		}).(GetBundlesResultOutput)
 }
 

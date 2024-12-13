@@ -109,21 +109,11 @@ type GetCommonBandwidthPackagesResult struct {
 }
 
 func GetCommonBandwidthPackagesOutput(ctx *pulumi.Context, args GetCommonBandwidthPackagesOutputArgs, opts ...pulumi.InvokeOption) GetCommonBandwidthPackagesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetCommonBandwidthPackagesResultOutput, error) {
 			args := v.(GetCommonBandwidthPackagesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetCommonBandwidthPackagesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:vpc/getCommonBandwidthPackages:getCommonBandwidthPackages", args, &rv, "", opts...)
-			if err != nil {
-				return GetCommonBandwidthPackagesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetCommonBandwidthPackagesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetCommonBandwidthPackagesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:vpc/getCommonBandwidthPackages:getCommonBandwidthPackages", args, GetCommonBandwidthPackagesResultOutput{}, options).(GetCommonBandwidthPackagesResultOutput), nil
 		}).(GetCommonBandwidthPackagesResultOutput)
 }
 

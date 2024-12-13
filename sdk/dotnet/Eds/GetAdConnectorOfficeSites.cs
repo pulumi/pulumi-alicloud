@@ -80,6 +80,41 @@ namespace Pulumi.AliCloud.Eds
         /// </summary>
         public static Output<GetAdConnectorOfficeSitesResult> Invoke(GetAdConnectorOfficeSitesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAdConnectorOfficeSitesResult>("alicloud:eds/getAdConnectorOfficeSites:getAdConnectorOfficeSites", args ?? new GetAdConnectorOfficeSitesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Ecd Ad Connector Office Sites of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.176.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Eds.GetAdConnectorOfficeSites.Invoke();
+        /// 
+        ///     var nameRegex = AliCloud.Eds.GetAdConnectorOfficeSites.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-AdConnectorOfficeSite",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecdAdConnectorOfficeSiteId1"] = ids.Apply(getAdConnectorOfficeSitesResult =&gt; getAdConnectorOfficeSitesResult.Sites[0]?.Id),
+        ///         ["ecdAdConnectorOfficeSiteId2"] = nameRegex.Apply(getAdConnectorOfficeSitesResult =&gt; getAdConnectorOfficeSitesResult.Sites[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAdConnectorOfficeSitesResult> Invoke(GetAdConnectorOfficeSitesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAdConnectorOfficeSitesResult>("alicloud:eds/getAdConnectorOfficeSites:getAdConnectorOfficeSites", args ?? new GetAdConnectorOfficeSitesInvokeArgs(), options.WithDefaults());
     }
 
 

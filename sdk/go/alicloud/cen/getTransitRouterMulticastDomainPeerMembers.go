@@ -90,21 +90,11 @@ type GetTransitRouterMulticastDomainPeerMembersResult struct {
 }
 
 func GetTransitRouterMulticastDomainPeerMembersOutput(ctx *pulumi.Context, args GetTransitRouterMulticastDomainPeerMembersOutputArgs, opts ...pulumi.InvokeOption) GetTransitRouterMulticastDomainPeerMembersResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetTransitRouterMulticastDomainPeerMembersResultOutput, error) {
 			args := v.(GetTransitRouterMulticastDomainPeerMembersArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetTransitRouterMulticastDomainPeerMembersResult
-			secret, err := ctx.InvokePackageRaw("alicloud:cen/getTransitRouterMulticastDomainPeerMembers:getTransitRouterMulticastDomainPeerMembers", args, &rv, "", opts...)
-			if err != nil {
-				return GetTransitRouterMulticastDomainPeerMembersResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetTransitRouterMulticastDomainPeerMembersResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetTransitRouterMulticastDomainPeerMembersResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:cen/getTransitRouterMulticastDomainPeerMembers:getTransitRouterMulticastDomainPeerMembers", args, GetTransitRouterMulticastDomainPeerMembersResultOutput{}, options).(GetTransitRouterMulticastDomainPeerMembersResultOutput), nil
 		}).(GetTransitRouterMulticastDomainPeerMembersResultOutput)
 }
 

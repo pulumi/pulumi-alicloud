@@ -70,6 +70,36 @@ namespace Pulumi.AliCloud.ActionTrail
         /// </summary>
         public static Output<GetTrailsResult> Invoke(GetTrailsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTrailsResult>("alicloud:actiontrail/getTrails:getTrails", args ?? new GetTrailsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available in 1.95.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.ActionTrail.GetTrails.Invoke(new()
+        ///     {
+        ///         NameRegex = "tf-testacc-actiontrail",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["trailName"] = @default.Apply(@default =&gt; @default.Apply(getTrailsResult =&gt; getTrailsResult.Trails[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTrailsResult> Invoke(GetTrailsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTrailsResult>("alicloud:actiontrail/getTrails:getTrails", args ?? new GetTrailsInvokeArgs(), options.WithDefaults());
     }
 
 

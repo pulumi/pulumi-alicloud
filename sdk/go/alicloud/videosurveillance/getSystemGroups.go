@@ -93,21 +93,11 @@ type GetSystemGroupsResult struct {
 }
 
 func GetSystemGroupsOutput(ctx *pulumi.Context, args GetSystemGroupsOutputArgs, opts ...pulumi.InvokeOption) GetSystemGroupsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSystemGroupsResultOutput, error) {
 			args := v.(GetSystemGroupsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetSystemGroupsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:videosurveillance/getSystemGroups:getSystemGroups", args, &rv, "", opts...)
-			if err != nil {
-				return GetSystemGroupsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetSystemGroupsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetSystemGroupsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:videosurveillance/getSystemGroups:getSystemGroups", args, GetSystemGroupsResultOutput{}, options).(GetSystemGroupsResultOutput), nil
 		}).(GetSystemGroupsResultOutput)
 }
 

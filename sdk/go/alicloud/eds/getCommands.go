@@ -138,21 +138,11 @@ type GetCommandsResult struct {
 }
 
 func GetCommandsOutput(ctx *pulumi.Context, args GetCommandsOutputArgs, opts ...pulumi.InvokeOption) GetCommandsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetCommandsResultOutput, error) {
 			args := v.(GetCommandsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetCommandsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:eds/getCommands:getCommands", args, &rv, "", opts...)
-			if err != nil {
-				return GetCommandsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetCommandsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetCommandsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:eds/getCommands:getCommands", args, GetCommandsResultOutput{}, options).(GetCommandsResultOutput), nil
 		}).(GetCommandsResultOutput)
 }
 

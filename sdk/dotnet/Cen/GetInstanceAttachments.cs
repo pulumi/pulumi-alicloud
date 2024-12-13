@@ -70,6 +70,36 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public static Output<GetInstanceAttachmentsResult> Invoke(GetInstanceAttachmentsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceAttachmentsResult>("alicloud:cen/getInstanceAttachments:getInstanceAttachments", args ?? new GetInstanceAttachmentsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides Cen Instance Attachments of the current Alibaba Cloud User.
+        /// 
+        /// &gt; **NOTE:** Available in v1.97.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Cen.GetInstanceAttachments.Invoke(new()
+        ///     {
+        ///         InstanceId = "cen-o40h17ll9w********",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["theFirstAttachmentedInstanceId"] = example.Apply(getInstanceAttachmentsResult =&gt; getInstanceAttachmentsResult.Attachments[0]?.ChildInstanceId),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetInstanceAttachmentsResult> Invoke(GetInstanceAttachmentsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceAttachmentsResult>("alicloud:cen/getInstanceAttachments:getInstanceAttachments", args ?? new GetInstanceAttachmentsInvokeArgs(), options.WithDefaults());
     }
 
 

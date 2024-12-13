@@ -26,6 +26,14 @@ namespace Pulumi.AliCloud.Emrv2
         /// </summary>
         public static Output<GetClustersResult> Invoke(GetClustersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:emrv2/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Emr Clusters of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.199.0.
+        /// </summary>
+        public static Output<GetClustersResult> Invoke(GetClustersInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:emrv2/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithDefaults());
     }
 
 

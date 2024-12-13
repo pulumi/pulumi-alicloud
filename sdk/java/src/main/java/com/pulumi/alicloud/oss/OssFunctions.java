@@ -26,6 +26,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class OssFunctions {
@@ -159,6 +160,50 @@ public final class OssFunctions {
      * 
      */
     public static Output<GetBucketObjectsResult> getBucketObjects(GetBucketObjectsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:oss/getBucketObjects:getBucketObjects", TypeShape.of(GetBucketObjectsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the objects of an OSS bucket.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oss.OssFunctions;
+     * import com.pulumi.alicloud.oss.inputs.GetBucketObjectsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var bucketObjectsDs = OssFunctions.getBucketObjects(GetBucketObjectsArgs.builder()
+     *             .bucketName("sample_bucket")
+     *             .keyRegex("sample/sample_object.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstObjectKey", bucketObjectsDs.applyValue(getBucketObjectsResult -> getBucketObjectsResult.objects()[0].key()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetBucketObjectsResult> getBucketObjects(GetBucketObjectsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:oss/getBucketObjects:getBucketObjects", TypeShape.of(GetBucketObjectsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -460,6 +505,49 @@ public final class OssFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetBucketsResult> getBuckets(GetBucketsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:oss/getBuckets:getBuckets", TypeShape.of(GetBucketsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the OSS buckets of the current Alibaba Cloud user.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oss.OssFunctions;
+     * import com.pulumi.alicloud.oss.inputs.GetBucketsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ossBucketsDs = OssFunctions.getBuckets(GetBucketsArgs.builder()
+     *             .nameRegex("sample_oss_bucket")
+     *             .build());
+     * 
+     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult.buckets()[0].name()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetBucketsResult> getBucketsPlain(GetBucketsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:oss/getBuckets:getBuckets", TypeShape.of(GetBucketsResult.class), args, Utilities.withVersion(options));
     }
@@ -608,6 +696,55 @@ public final class OssFunctions {
      */
     @Deprecated /* alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments */
     public static Output<GetInstanceAttachmentsResult> getInstanceAttachments(GetInstanceAttachmentsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:oss/getInstanceAttachments:getInstanceAttachments", TypeShape.of(GetInstanceAttachmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ots instance attachments of the current Alibaba Cloud user.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.ots.inputs.GetInstanceAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var attachmentsDs = OtsFunctions.getInstanceAttachments(GetInstanceAttachmentsArgs.builder()
+     *             .instanceName("sample-instance")
+     *             .nameRegex("testvpc")
+     *             .outputFile("attachments.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstOtsAttachmentId", attachmentsDs.applyValue(getInstanceAttachmentsResult -> getInstanceAttachmentsResult.attachments()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * @deprecated
+     * alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments
+     * 
+     */
+    @Deprecated /* alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments */
+    public static Output<GetInstanceAttachmentsResult> getInstanceAttachments(GetInstanceAttachmentsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:oss/getInstanceAttachments:getInstanceAttachments", TypeShape.of(GetInstanceAttachmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -950,6 +1087,55 @@ public final class OssFunctions {
      * 
      */
     @Deprecated /* alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances */
+    public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:oss/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ots instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.40.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.ots.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instancesDs = OtsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .outputFile("instances.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * @deprecated
+     * alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances
+     * 
+     */
+    @Deprecated /* alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:oss/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
@@ -1226,6 +1412,52 @@ public final class OssFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:oss/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Using this data source can enable OSS service automatically. If the service has been enabled, it will return `Opened`.
+     * 
+     * For information about OSS and how to use it, see [What is OSS](https://www.alibabacloud.com/help/product/31815.htm).
+     * 
+     * &gt; **NOTE:** Available in v1.97.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oss.OssFunctions;
+     * import com.pulumi.alicloud.oss.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = OssFunctions.getService(GetServiceArgs.builder()
+     *             .enable("On")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:oss/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
     }
@@ -1272,6 +1504,21 @@ public final class OssFunctions {
      */
     @Deprecated /* alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables */
     public static Output<GetTablesResult> getTables(GetTablesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:oss/getTables:getTables", TypeShape.of(GetTablesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ots tables of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.40.0+.
+     * 
+     * ## Example Usage
+     * 
+     * @deprecated
+     * alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables
+     * 
+     */
+    @Deprecated /* alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables */
+    public static Output<GetTablesResult> getTables(GetTablesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:oss/getTables:getTables", TypeShape.of(GetTablesResult.class), args, Utilities.withVersion(options));
     }
     /**

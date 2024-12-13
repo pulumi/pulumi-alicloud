@@ -106,6 +106,54 @@ namespace Pulumi.AliCloud.Eds
         /// </summary>
         public static Output<GetNetworkPackagesResult> Invoke(GetNetworkPackagesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworkPackagesResult>("alicloud:eds/getNetworkPackages:getNetworkPackages", args ?? new GetNetworkPackagesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Ecd Network Packages of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.142.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("default", new()
+        ///     {
+        ///         CidrBlock = "172.16.0.0/12",
+        ///         DesktopAccessType = "Internet",
+        ///         OfficeSiteName = "example_value",
+        ///     });
+        /// 
+        ///     var defaultNetworkPackage = new AliCloud.Eds.NetworkPackage("default", new()
+        ///     {
+        ///         Bandwidth = 10,
+        ///         OfficeSiteId = defaultSimpleOfficeSite.Id,
+        ///     });
+        /// 
+        ///     var @default = AliCloud.Eds.GetNetworkPackages.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultNetworkPackage.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecdNetworkPackageId1"] = @default.Apply(@default =&gt; @default.Apply(getNetworkPackagesResult =&gt; getNetworkPackagesResult.Packages[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetNetworkPackagesResult> Invoke(GetNetworkPackagesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNetworkPackagesResult>("alicloud:eds/getNetworkPackages:getNetworkPackages", args ?? new GetNetworkPackagesInvokeArgs(), options.WithDefaults());
     }
 
 

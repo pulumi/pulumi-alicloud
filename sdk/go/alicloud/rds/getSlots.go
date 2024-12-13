@@ -75,21 +75,11 @@ type GetSlotsResult struct {
 }
 
 func GetSlotsOutput(ctx *pulumi.Context, args GetSlotsOutputArgs, opts ...pulumi.InvokeOption) GetSlotsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSlotsResultOutput, error) {
 			args := v.(GetSlotsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetSlotsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:rds/getSlots:getSlots", args, &rv, "", opts...)
-			if err != nil {
-				return GetSlotsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetSlotsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetSlotsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:rds/getSlots:getSlots", args, GetSlotsResultOutput{}, options).(GetSlotsResultOutput), nil
 		}).(GetSlotsResultOutput)
 }
 

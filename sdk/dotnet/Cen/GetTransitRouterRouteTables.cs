@@ -112,6 +112,57 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public static Output<GetTransitRouterRouteTablesResult> Invoke(GetTransitRouterRouteTablesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterRouteTablesResult>("alicloud:cen/getTransitRouterRouteTables:getTransitRouterRouteTables", args ?? new GetTransitRouterRouteTablesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides CEN Transit Router Route Tables available to the user.[What is Cen Transit Router Route Tables](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouterroutetables)
+        /// 
+        /// &gt; **NOTE:** Available since v1.126.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "tf-example";
+        ///     var defaultInstance = new AliCloud.Cen.Instance("default", new()
+        ///     {
+        ///         CenInstanceName = name,
+        ///         ProtectionLevel = "REDUCED",
+        ///     });
+        /// 
+        ///     var defaultTransitRouter = new AliCloud.Cen.TransitRouter("default", new()
+        ///     {
+        ///         CenId = defaultInstance.Id,
+        ///         TransitRouterName = name,
+        ///     });
+        /// 
+        ///     var defaultTransitRouterRouteTable = new AliCloud.Cen.TransitRouterRouteTable("default", new()
+        ///     {
+        ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
+        ///         TransitRouterRouteTableDescription = "desp",
+        ///         TransitRouterRouteTableName = name,
+        ///     });
+        /// 
+        ///     var @default = AliCloud.Cen.GetTransitRouterRouteTables.Invoke(new()
+        ///     {
+        ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstTransitRouterRouteTableType"] = @default.Apply(@default =&gt; @default.Apply(getTransitRouterRouteTablesResult =&gt; getTransitRouterRouteTablesResult.Tables[0]?.TransitRouterRouteTableType)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTransitRouterRouteTablesResult> Invoke(GetTransitRouterRouteTablesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterRouteTablesResult>("alicloud:cen/getTransitRouterRouteTables:getTransitRouterRouteTables", args ?? new GetTransitRouterRouteTablesInvokeArgs(), options.WithDefaults());
     }
 
 

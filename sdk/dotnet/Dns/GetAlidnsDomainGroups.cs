@@ -76,6 +76,39 @@ namespace Pulumi.AliCloud.Dns
         /// </summary>
         public static Output<GetAlidnsDomainGroupsResult> Invoke(GetAlidnsDomainGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAlidnsDomainGroupsResult>("alicloud:dns/getAlidnsDomainGroups:getAlidnsDomainGroups", args ?? new GetAlidnsDomainGroupsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a list of Alidns Domain Groups in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:**  Available in 1.85.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Dns.GetAlidnsDomainGroups.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "c5ef2bc43064445787adf182af2****",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstDomainGroupId"] = example.Apply(getAlidnsDomainGroupsResult =&gt; getAlidnsDomainGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAlidnsDomainGroupsResult> Invoke(GetAlidnsDomainGroupsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAlidnsDomainGroupsResult>("alicloud:dns/getAlidnsDomainGroups:getAlidnsDomainGroups", args ?? new GetAlidnsDomainGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

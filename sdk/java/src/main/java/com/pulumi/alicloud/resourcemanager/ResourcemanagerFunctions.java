@@ -56,6 +56,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class ResourcemanagerFunctions {
@@ -210,6 +211,57 @@ public final class ResourcemanagerFunctions {
      * 
      */
     public static Output<GetAccountDeletionCheckTaskResult> getAccountDeletionCheckTask(GetAccountDeletionCheckTaskArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:resourcemanager/getAccountDeletionCheckTask:getAccountDeletionCheckTask", TypeShape.of(GetAccountDeletionCheckTaskResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Using this data source can open Resource Manager Account Deletion Check Task.
+     * 
+     * For information about Resource Manager Account Deletion Check Task and how to use it, see [What is Resource Manager Account Deletion Check Task](https://www.alibabacloud.com/help/en/resource-management/latest/check-account-delete).
+     * 
+     * &gt; **NOTE:** Available in v1.187.0+.
+     * 
+     * &gt; **NOTE:** The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountDeletionCheckTaskArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var task = ResourcemanagerFunctions.getAccountDeletionCheckTask(GetAccountDeletionCheckTaskArgs.builder()
+     *             .accountId("your_account_id")
+     *             .build());
+     * 
+     *         ctx.export("abandonAbleChecksIds", task.applyValue(getAccountDeletionCheckTaskResult -> getAccountDeletionCheckTaskResult.abandonAbleChecks()).stream().map(element -> element.checkId()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAccountDeletionCheckTaskResult> getAccountDeletionCheckTask(GetAccountDeletionCheckTaskArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:resourcemanager/getAccountDeletionCheckTask:getAccountDeletionCheckTask", TypeShape.of(GetAccountDeletionCheckTaskResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -476,6 +528,49 @@ public final class ResourcemanagerFunctions {
      * 
      */
     public static Output<GetAccountsResult> getAccounts(GetAccountsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:resourcemanager/getAccounts:getAccounts", TypeShape.of(GetAccountsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Resource Manager Accounts of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:**  Available in 1.86.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ResourcemanagerFunctions.getAccounts();
+     * 
+     *         ctx.export("firstAccountId", default_.accounts()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAccountsResult> getAccounts(GetAccountsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:resourcemanager/getAccounts:getAccounts", TypeShape.of(GetAccountsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -806,6 +901,54 @@ public final class ResourcemanagerFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetControlPoliciesResult> getControlPolicies(GetControlPoliciesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:resourcemanager/getControlPolicies:getControlPolicies", TypeShape.of(GetControlPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Resource Manager Control Policies of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.120.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetControlPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getControlPolicies(GetControlPoliciesArgs.builder()
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
+     *             .build());
+     * 
+     *         ctx.export("firstResourceManagerControlPolicyId", example.applyValue(getControlPoliciesResult -> getControlPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetControlPoliciesResult> getControlPoliciesPlain(GetControlPoliciesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:resourcemanager/getControlPolicies:getControlPolicies", TypeShape.of(GetControlPoliciesResult.class), args, Utilities.withVersion(options));
     }
@@ -948,6 +1091,53 @@ public final class ResourcemanagerFunctions {
      * 
      */
     public static Output<GetControlPolicyAttachmentsResult> getControlPolicyAttachments(GetControlPolicyAttachmentsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:resourcemanager/getControlPolicyAttachments:getControlPolicyAttachments", TypeShape.of(GetControlPolicyAttachmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Resource Manager Control Policy Attachments of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.120.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetControlPolicyAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getControlPolicyAttachments(GetControlPolicyAttachmentsArgs.builder()
+     *             .targetId("example_value")
+     *             .build());
+     * 
+     *         ctx.export("firstResourceManagerControlPolicyAttachmentId", example.applyValue(getControlPolicyAttachmentsResult -> getControlPolicyAttachmentsResult.attachments()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetControlPolicyAttachmentsResult> getControlPolicyAttachments(GetControlPolicyAttachmentsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:resourcemanager/getControlPolicyAttachments:getControlPolicyAttachments", TypeShape.of(GetControlPolicyAttachmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1230,6 +1420,53 @@ public final class ResourcemanagerFunctions {
      * 
      */
     public static Output<GetDelegatedAdministratorsResult> getDelegatedAdministrators(GetDelegatedAdministratorsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:resourcemanager/getDelegatedAdministrators:getDelegatedAdministrators", TypeShape.of(GetDelegatedAdministratorsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Resource Manager Delegated Administrators of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.181.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetDelegatedAdministratorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ResourcemanagerFunctions.getDelegatedAdministrators(GetDelegatedAdministratorsArgs.builder()
+     *             .ids("example_value")
+     *             .build());
+     * 
+     *         ctx.export("resourceManagerDelegatedAdministratorId1", ids.applyValue(getDelegatedAdministratorsResult -> getDelegatedAdministratorsResult.administrators()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDelegatedAdministratorsResult> getDelegatedAdministrators(GetDelegatedAdministratorsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:resourcemanager/getDelegatedAdministrators:getDelegatedAdministrators", TypeShape.of(GetDelegatedAdministratorsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1606,6 +1843,61 @@ public final class ResourcemanagerFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetFoldersResult> getFolders(GetFoldersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:resourcemanager/getFolders:getFolders", TypeShape.of(GetFoldersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Resource Manager Folders of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.84.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.Folder;
+     * import com.pulumi.alicloud.resourcemanager.FolderArgs;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetFoldersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Folder("default", FolderArgs.builder()
+     *             .folderName(name)
+     *             .build());
+     * 
+     *         final var ids = ResourcemanagerFunctions.getFolders(GetFoldersArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("resourceManagerFolderId0", ids.applyValue(getFoldersResult -> getFoldersResult).applyValue(ids -> ids.applyValue(getFoldersResult -> getFoldersResult.folders()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetFoldersResult> getFoldersPlain(GetFoldersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:resourcemanager/getFolders:getFolders", TypeShape.of(GetFoldersResult.class), args, Utilities.withVersion(options));
     }
@@ -1822,6 +2114,49 @@ public final class ResourcemanagerFunctions {
      * 
      */
     public static Output<GetHandshakesResult> getHandshakes(GetHandshakesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:resourcemanager/getHandshakes:getHandshakes", TypeShape.of(GetHandshakesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Resource Manager Handshakes of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:**  Available in 1.86.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetHandshakesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getHandshakes();
+     * 
+     *         ctx.export("firstHandshakeId", example.applyValue(getHandshakesResult -> getHandshakesResult.handshakes()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetHandshakesResult> getHandshakes(GetHandshakesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:resourcemanager/getHandshakes:getHandshakes", TypeShape.of(GetHandshakesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2146,6 +2481,53 @@ public final class ResourcemanagerFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetPoliciesResult> getPolicies(GetPoliciesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:resourcemanager/getPolicies:getPolicies", TypeShape.of(GetPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Resource Manager Policies of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:**  Available in 1.86.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .nameRegex("tftest")
+     *             .descriptionRegex("tftest_policy")
+     *             .policyType("Custom")
+     *             .build());
+     * 
+     *         ctx.export("firstPolicyId", example.applyValue(getPoliciesResult -> getPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetPoliciesResult> getPoliciesPlain(GetPoliciesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:resourcemanager/getPolicies:getPolicies", TypeShape.of(GetPoliciesResult.class), args, Utilities.withVersion(options));
     }
@@ -2404,6 +2786,49 @@ public final class ResourcemanagerFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetPolicyAttachmentsResult> getPolicyAttachments(GetPolicyAttachmentsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:resourcemanager/getPolicyAttachments:getPolicyAttachments", TypeShape.of(GetPolicyAttachmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Resource Manager Policy Attachments of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:**  Available in 1.93.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetPolicyAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getPolicyAttachments();
+     * 
+     *         ctx.export("firstAttachmentId", example.applyValue(getPolicyAttachmentsResult -> getPolicyAttachmentsResult.attachments()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetPolicyAttachmentsResult> getPolicyAttachmentsPlain(GetPolicyAttachmentsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:resourcemanager/getPolicyAttachments:getPolicyAttachments", TypeShape.of(GetPolicyAttachmentsResult.class), args, Utilities.withVersion(options));
     }
@@ -2543,6 +2968,52 @@ public final class ResourcemanagerFunctions {
      * 
      */
     public static Output<GetPolicyVersionsResult> getPolicyVersions(GetPolicyVersionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:resourcemanager/getPolicyVersions:getPolicyVersions", TypeShape.of(GetPolicyVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Resource Manager Policy Versions of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:**  Available in 1.85.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetPolicyVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ResourcemanagerFunctions.getPolicyVersions(GetPolicyVersionsArgs.builder()
+     *             .policyName("tftest")
+     *             .policyType("Custom")
+     *             .build());
+     * 
+     *         ctx.export("firstPolicyVersionId", default_.versions()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPolicyVersionsResult> getPolicyVersions(GetPolicyVersionsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:resourcemanager/getPolicyVersions:getPolicyVersions", TypeShape.of(GetPolicyVersionsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2804,6 +3275,49 @@ public final class ResourcemanagerFunctions {
      * 
      */
     public static Output<GetResourceDirectoriesResult> getResourceDirectories(GetResourceDirectoriesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:resourcemanager/getResourceDirectories:getResourceDirectories", TypeShape.of(GetResourceDirectoriesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Resource Manager Resource Directories of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:**  Available in 1.86.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceDirectoriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ResourcemanagerFunctions.getResourceDirectories();
+     * 
+     *         ctx.export("resourceDirectoryId", default_.directories()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetResourceDirectoriesResult> getResourceDirectories(GetResourceDirectoriesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:resourcemanager/getResourceDirectories:getResourceDirectories", TypeShape.of(GetResourceDirectoriesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -3128,6 +3642,53 @@ public final class ResourcemanagerFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetResourceGroupsResult> getResourceGroups(GetResourceGroupsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:resourcemanager/getResourceGroups:getResourceGroups", TypeShape.of(GetResourceGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides resource groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.84.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .nameRegex("tf")
+     *             .build());
+     * 
+     *         ctx.export("firstResourceGroupId", example.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetResourceGroupsResult> getResourceGroupsPlain(GetResourceGroupsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:resourcemanager/getResourceGroups:getResourceGroups", TypeShape.of(GetResourceGroupsResult.class), args, Utilities.withVersion(options));
     }
@@ -3276,6 +3837,55 @@ public final class ResourcemanagerFunctions {
      * 
      */
     public static Output<GetResourceSharesResult> getResourceShares(GetResourceSharesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:resourcemanager/getResourceShares:getResourceShares", TypeShape.of(GetResourceSharesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Resource Manager Resource Shares of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.111.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceSharesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getResourceShares(GetResourceSharesArgs.builder()
+     *             .resourceShareOwner("Self")
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
+     *             .build());
+     * 
+     *         ctx.export("firstResourceManagerResourceShareId", example.applyValue(getResourceSharesResult -> getResourceSharesResult.shares()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetResourceSharesResult> getResourceShares(GetResourceSharesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:resourcemanager/getResourceShares:getResourceShares", TypeShape.of(GetResourceSharesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -3594,6 +4204,51 @@ public final class ResourcemanagerFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetRolesResult> getRoles(GetRolesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:resourcemanager/getRoles:getRoles", TypeShape.of(GetRolesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Resource Manager Roles of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:**  Available in 1.86.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetRolesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ResourcemanagerFunctions.getRoles(GetRolesArgs.builder()
+     *             .nameRegex("tftest")
+     *             .build());
+     * 
+     *         ctx.export("firstRoleId", example.applyValue(getRolesResult -> getRolesResult.roles()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetRolesResult> getRolesPlain(GetRolesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:resourcemanager/getRoles:getRoles", TypeShape.of(GetRolesResult.class), args, Utilities.withVersion(options));
     }
@@ -3640,6 +4295,15 @@ public final class ResourcemanagerFunctions {
      * 
      */
     public static Output<GetSharedResourcesResult> getSharedResources(GetSharedResourcesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:resourcemanager/getSharedResources:getSharedResources", TypeShape.of(GetSharedResourcesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Resource Manager Shared Resources of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.111.0.
+     * 
+     */
+    public static Output<GetSharedResourcesResult> getSharedResources(GetSharedResourcesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:resourcemanager/getSharedResources:getSharedResources", TypeShape.of(GetSharedResourcesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -3999,6 +4663,76 @@ public final class ResourcemanagerFunctions {
      * 
      */
     public static Output<GetSharedTargetsResult> getSharedTargets(GetSharedTargetsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:resourcemanager/getSharedTargets:getSharedTargets", TypeShape.of(GetSharedTargetsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Resource Manager Shared Targets of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.111.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsArgs;
+     * import com.pulumi.alicloud.resourcemanager.ResourceShare;
+     * import com.pulumi.alicloud.resourcemanager.ResourceShareArgs;
+     * import com.pulumi.alicloud.resourcemanager.SharedTarget;
+     * import com.pulumi.alicloud.resourcemanager.SharedTargetArgs;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedTargetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("tf-example");
+     *         final var default = ResourcemanagerFunctions.getAccounts();
+     * 
+     *         var defaultResourceShare = new ResourceShare("defaultResourceShare", ResourceShareArgs.builder()
+     *             .resourceShareName(name)
+     *             .build());
+     * 
+     *         var defaultSharedTarget = new SharedTarget("defaultSharedTarget", SharedTargetArgs.builder()
+     *             .resourceShareId(defaultResourceShare.id())
+     *             .targetId(default_.ids()[0])
+     *             .build());
+     * 
+     *         final var ids = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
+     *             .ids(defaultSharedTarget.targetId())
+     *             .build());
+     * 
+     *         ctx.export("firstResourceManagerSharedTargetId", ids.applyValue(getSharedTargetsResult -> getSharedTargetsResult).applyValue(ids -> ids.applyValue(getSharedTargetsResult -> getSharedTargetsResult.targets()[0].id())));
+     *         final var resourceShareId = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
+     *             .resourceShareId(defaultSharedTarget.resourceShareId())
+     *             .build());
+     * 
+     *         ctx.export("secondResourceManagerSharedTargetId", resourceShareId.applyValue(getSharedTargetsResult -> getSharedTargetsResult).applyValue(resourceShareId -> resourceShareId.applyValue(getSharedTargetsResult -> getSharedTargetsResult.targets()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSharedTargetsResult> getSharedTargets(GetSharedTargetsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:resourcemanager/getSharedTargets:getSharedTargets", TypeShape.of(GetSharedTargetsResult.class), args, Utilities.withVersion(options));
     }
     /**

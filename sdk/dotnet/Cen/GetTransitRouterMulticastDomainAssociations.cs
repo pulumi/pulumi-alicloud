@@ -82,6 +82,42 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public static Output<GetTransitRouterMulticastDomainAssociationsResult> Invoke(GetTransitRouterMulticastDomainAssociationsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterMulticastDomainAssociationsResult>("alicloud:cen/getTransitRouterMulticastDomainAssociations:getTransitRouterMulticastDomainAssociations", args ?? new GetTransitRouterMulticastDomainAssociationsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Cen Transit Router Multicast Domain Associations of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.195.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Cen.GetTransitRouterMulticastDomainAssociations.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         TransitRouterMulticastDomainId = "your_transit_router_multicast_domain_id",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cenTransitRouterMulticastDomainId0"] = ids.Apply(getTransitRouterMulticastDomainAssociationsResult =&gt; getTransitRouterMulticastDomainAssociationsResult.Associations[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTransitRouterMulticastDomainAssociationsResult> Invoke(GetTransitRouterMulticastDomainAssociationsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterMulticastDomainAssociationsResult>("alicloud:cen/getTransitRouterMulticastDomainAssociations:getTransitRouterMulticastDomainAssociations", args ?? new GetTransitRouterMulticastDomainAssociationsInvokeArgs(), options.WithDefaults());
     }
 
 

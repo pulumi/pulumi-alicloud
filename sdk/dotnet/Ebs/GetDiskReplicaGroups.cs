@@ -80,6 +80,41 @@ namespace Pulumi.AliCloud.Ebs
         /// </summary>
         public static Output<GetDiskReplicaGroupsResult> Invoke(GetDiskReplicaGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDiskReplicaGroupsResult>("alicloud:ebs/getDiskReplicaGroups:getDiskReplicaGroups", args ?? new GetDiskReplicaGroupsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Ebs Disk Replica Groups of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.187.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Ebs.GetDiskReplicaGroups.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ebsDiskReplicaGroupId1"] = ids.Apply(getDiskReplicaGroupsResult =&gt; getDiskReplicaGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDiskReplicaGroupsResult> Invoke(GetDiskReplicaGroupsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDiskReplicaGroupsResult>("alicloud:ebs/getDiskReplicaGroups:getDiskReplicaGroups", args ?? new GetDiskReplicaGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

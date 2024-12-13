@@ -92,6 +92,47 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         public static Output<GetBasicAcceleratorsResult> Invoke(GetBasicAcceleratorsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBasicAcceleratorsResult>("alicloud:ga/getBasicAccelerators:getBasicAccelerators", args ?? new GetBasicAcceleratorsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Global Accelerator (GA) Basic Accelerators of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.194.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Ga.GetBasicAccelerators.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Ga.GetBasicAccelerators.Invoke(new()
+        ///     {
+        ///         NameRegex = "tf-example",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["gaBasicAcceleratorId1"] = ids.Apply(getBasicAcceleratorsResult =&gt; getBasicAcceleratorsResult.Accelerators[0]?.Id),
+        ///         ["gaBasicAcceleratorId2"] = nameRegex.Apply(getBasicAcceleratorsResult =&gt; getBasicAcceleratorsResult.Accelerators[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetBasicAcceleratorsResult> Invoke(GetBasicAcceleratorsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetBasicAcceleratorsResult>("alicloud:ga/getBasicAccelerators:getBasicAccelerators", args ?? new GetBasicAcceleratorsInvokeArgs(), options.WithDefaults());
     }
 
 

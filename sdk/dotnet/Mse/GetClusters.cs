@@ -154,6 +154,78 @@ namespace Pulumi.AliCloud.Mse
         /// </summary>
         public static Output<GetClustersResult> Invoke(GetClustersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:mse/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a list of MSE Clusters in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available since v1.94.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Create resource
+        ///     var example = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var exampleNetwork = new AliCloud.Vpc.Network("example", new()
+        ///     {
+        ///         VpcName = "terraform-example",
+        ///         CidrBlock = "172.17.3.0/24",
+        ///     });
+        /// 
+        ///     var exampleSwitch = new AliCloud.Vpc.Switch("example", new()
+        ///     {
+        ///         VswitchName = "terraform-example",
+        ///         CidrBlock = "172.17.3.0/24",
+        ///         VpcId = exampleNetwork.Id,
+        ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///     });
+        /// 
+        ///     var exampleCluster = new AliCloud.Mse.Cluster("example", new()
+        ///     {
+        ///         ClusterSpecification = "MSE_SC_1_2_60_c",
+        ///         ClusterType = "Nacos-Ans",
+        ///         ClusterVersion = "NACOS_2_0_0",
+        ///         InstanceCount = 3,
+        ///         NetType = "privatenet",
+        ///         PubNetworkFlow = "1",
+        ///         ConnectionType = "slb",
+        ///         ClusterAliasName = "terraform-example",
+        ///         MseVersion = "mse_pro",
+        ///         VswitchId = exampleSwitch.Id,
+        ///         VpcId = exampleNetwork.Id,
+        ///     });
+        /// 
+        ///     // Declare the data source
+        ///     var exampleGetClusters = AliCloud.Mse.GetClusters.Invoke(new()
+        ///     {
+        ///         EnableDetails = true,
+        ///         Ids = new[]
+        ///         {
+        ///             exampleCluster.Id,
+        ///         },
+        ///         Status = "INIT_SUCCESS",
+        ///         NameRegex = exampleCluster.ClusterAliasName,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["instanceId"] = exampleGetClusters.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetClustersResult> Invoke(GetClustersInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:mse/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithDefaults());
     }
 
 

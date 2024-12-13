@@ -76,21 +76,11 @@ type GetVersionsResult struct {
 }
 
 func GetVersionsOutput(ctx *pulumi.Context, args GetVersionsOutputArgs, opts ...pulumi.InvokeOption) GetVersionsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetVersionsResultOutput, error) {
 			args := v.(GetVersionsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetVersionsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:servicemesh/getVersions:getVersions", args, &rv, "", opts...)
-			if err != nil {
-				return GetVersionsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetVersionsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetVersionsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:servicemesh/getVersions:getVersions", args, GetVersionsResultOutput{}, options).(GetVersionsResultOutput), nil
 		}).(GetVersionsResultOutput)
 }
 

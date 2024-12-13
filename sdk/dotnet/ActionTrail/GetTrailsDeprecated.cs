@@ -27,6 +27,14 @@ namespace Pulumi.AliCloud.ActionTrail
         /// </summary>
         public static Output<GetTrailsDeprecatedResult> Invoke(GetTrailsDeprecatedInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTrailsDeprecatedResult>("alicloud:actiontrail/getTrailsDeprecated:getTrailsDeprecated", args ?? new GetTrailsDeprecatedInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **DEPRECATED:**  This datasource has been renamed to alicloud.actiontrail.getTrails from version 1.95.0.
+        /// 
+        /// This data source provides a list of action trail of the current Alibaba Cloud user.
+        /// </summary>
+        public static Output<GetTrailsDeprecatedResult> Invoke(GetTrailsDeprecatedInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTrailsDeprecatedResult>("alicloud:actiontrail/getTrailsDeprecated:getTrailsDeprecated", args ?? new GetTrailsDeprecatedInvokeArgs(), options.WithDefaults());
     }
 
 

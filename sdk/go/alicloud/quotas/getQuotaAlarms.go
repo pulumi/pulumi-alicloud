@@ -93,21 +93,11 @@ type GetQuotaAlarmsResult struct {
 }
 
 func GetQuotaAlarmsOutput(ctx *pulumi.Context, args GetQuotaAlarmsOutputArgs, opts ...pulumi.InvokeOption) GetQuotaAlarmsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetQuotaAlarmsResultOutput, error) {
 			args := v.(GetQuotaAlarmsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetQuotaAlarmsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:quotas/getQuotaAlarms:getQuotaAlarms", args, &rv, "", opts...)
-			if err != nil {
-				return GetQuotaAlarmsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetQuotaAlarmsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetQuotaAlarmsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:quotas/getQuotaAlarms:getQuotaAlarms", args, GetQuotaAlarmsResultOutput{}, options).(GetQuotaAlarmsResultOutput), nil
 		}).(GetQuotaAlarmsResultOutput)
 }
 

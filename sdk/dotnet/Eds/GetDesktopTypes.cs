@@ -74,6 +74,38 @@ namespace Pulumi.AliCloud.Eds
         /// </summary>
         public static Output<GetDesktopTypesResult> Invoke(GetDesktopTypesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDesktopTypesResult>("alicloud:eds/getDesktopTypes:getDesktopTypes", args ?? new GetDesktopTypesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Ecd Desktop Types of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.170.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Eds.GetDesktopTypes.Invoke(new()
+        ///     {
+        ///         InstanceTypeFamily = "eds.hf",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecdDesktopTypeId1"] = ids.Apply(getDesktopTypesResult =&gt; getDesktopTypesResult.Types[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDesktopTypesResult> Invoke(GetDesktopTypesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDesktopTypesResult>("alicloud:eds/getDesktopTypes:getDesktopTypes", args ?? new GetDesktopTypesInvokeArgs(), options.WithDefaults());
     }
 
 

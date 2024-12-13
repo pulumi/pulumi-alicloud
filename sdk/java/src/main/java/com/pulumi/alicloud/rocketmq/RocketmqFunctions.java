@@ -20,6 +20,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class RocketmqFunctions {
@@ -54,6 +55,17 @@ public final class RocketmqFunctions {
      * 
      */
     public static Output<GetGroupsResult> getGroups(GetGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:rocketmq/getGroups:getGroups", TypeShape.of(GetGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list of ONS Groups in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available in 1.53.0+
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetGroupsResult> getGroups(GetGroupsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:rocketmq/getGroups:getGroups", TypeShape.of(GetGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -400,6 +412,62 @@ public final class RocketmqFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:rocketmq/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list of ONS Instances in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available in 1.52.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rocketmq.Instance;
+     * import com.pulumi.alicloud.rocketmq.InstanceArgs;
+     * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
+     * import com.pulumi.alicloud.rocketmq.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("onsInstanceDatasourceName");
+     *         var default_ = new Instance("default", InstanceArgs.builder()
+     *             .name(name)
+     *             .remark("default_ons_instance_remark")
+     *             .build());
+     * 
+     *         final var instancesDs = RocketmqFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(default_.id())
+     *             .nameRegex(default_.name())
+     *             .outputFile("instances.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult).applyValue(instancesDs -> instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].instanceId())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:rocketmq/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
@@ -676,6 +744,52 @@ public final class RocketmqFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:rocketmq/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Using this data source can open ONS service automatically. If the service has been opened, it will return opened.
+     * 
+     * For information about ONS and how to use it, see [What is ONS](https://help.aliyun.com/product/29530.html).
+     * 
+     * &gt; **NOTE:** Available in v1.111.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
+     * import com.pulumi.alicloud.rocketmq.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = RocketmqFunctions.getService(GetServiceArgs.builder()
+     *             .enable("On")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:rocketmq/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
     }
@@ -875,6 +989,72 @@ public final class RocketmqFunctions {
      * 
      */
     public static Output<GetTopicsResult> getTopics(GetTopicsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:rocketmq/getTopics:getTopics", TypeShape.of(GetTopicsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list of ONS Topics in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available in 1.53.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rocketmq.Instance;
+     * import com.pulumi.alicloud.rocketmq.InstanceArgs;
+     * import com.pulumi.alicloud.rocketmq.Topic;
+     * import com.pulumi.alicloud.rocketmq.TopicArgs;
+     * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
+     * import com.pulumi.alicloud.rocketmq.inputs.GetTopicsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("onsInstanceName");
+     *         final var topic = config.get("topic").orElse("onsTopicDatasourceName");
+     *         var default_ = new Instance("default", InstanceArgs.builder()
+     *             .instanceName(name)
+     *             .remark("default_ons_instance_remark")
+     *             .build());
+     * 
+     *         var defaultTopic = new Topic("defaultTopic", TopicArgs.builder()
+     *             .topicName(topic)
+     *             .instanceId(default_.id())
+     *             .messageType(0)
+     *             .remark("dafault_ons_topic_remark")
+     *             .build());
+     * 
+     *         final var topicsDs = RocketmqFunctions.getTopics(GetTopicsArgs.builder()
+     *             .instanceId(defaultTopic.instanceId())
+     *             .nameRegex(topic)
+     *             .outputFile("topics.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstTopicName", topicsDs.applyValue(getTopicsResult -> getTopicsResult).applyValue(topicsDs -> topicsDs.applyValue(getTopicsResult -> getTopicsResult.topics()[0].topicName())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTopicsResult> getTopics(GetTopicsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:rocketmq/getTopics:getTopics", TypeShape.of(GetTopicsResult.class), args, Utilities.withVersion(options));
     }
     /**

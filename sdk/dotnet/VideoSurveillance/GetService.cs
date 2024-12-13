@@ -70,6 +70,36 @@ namespace Pulumi.AliCloud.VideoSurveillance
         /// </summary>
         public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceResult>("alicloud:videosurveillance/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Using this data source can open Video Surveillance System service automatically. If the service has been opened, it will return opened.
+        /// 
+        /// For information about Video Surveillance System and how to use it, see [What is VS](https://help.aliyun.com/product/108765.html).
+        /// 
+        /// &gt; **NOTE:** Available in v1.116.0+
+        /// 
+        /// &gt; **NOTE:** The Video Surveillance System service is not support in the international site.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var open = AliCloud.VideoSurveillance.GetService.Invoke(new()
+        ///     {
+        ///         Enable = "On",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceResult>("alicloud:videosurveillance/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());
     }
 
 

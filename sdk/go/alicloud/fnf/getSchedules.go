@@ -85,21 +85,11 @@ type GetSchedulesResult struct {
 }
 
 func GetSchedulesOutput(ctx *pulumi.Context, args GetSchedulesOutputArgs, opts ...pulumi.InvokeOption) GetSchedulesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSchedulesResultOutput, error) {
 			args := v.(GetSchedulesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetSchedulesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:fnf/getSchedules:getSchedules", args, &rv, "", opts...)
-			if err != nil {
-				return GetSchedulesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetSchedulesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetSchedulesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:fnf/getSchedules:getSchedules", args, GetSchedulesResultOutput{}, options).(GetSchedulesResultOutput), nil
 		}).(GetSchedulesResultOutput)
 }
 

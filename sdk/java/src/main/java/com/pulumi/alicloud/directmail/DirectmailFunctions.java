@@ -20,6 +20,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class DirectmailFunctions {
@@ -296,6 +297,61 @@ public final class DirectmailFunctions {
      * 
      */
     public static Output<GetDomainsResult> getDomains(GetDomainsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:directmail/getDomains:getDomains", TypeShape.of(GetDomainsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Direct Mail Domains of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.134.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.Domain;
+     * import com.pulumi.alicloud.directmail.DomainArgs;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.directmail.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example.pop.com");
+     *         var default_ = new Domain("default", DomainArgs.builder()
+     *             .domainName(name)
+     *             .build());
+     * 
+     *         final var ids = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("directMailDomainsId0", ids.applyValue(getDomainsResult -> getDomainsResult).applyValue(ids -> ids.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDomainsResult> getDomains(GetDomainsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:directmail/getDomains:getDomains", TypeShape.of(GetDomainsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -632,6 +688,53 @@ public final class DirectmailFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetMailAddressesResult> getMailAddresses(GetMailAddressesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:directmail/getMailAddresses:getMailAddresses", TypeShape.of(GetMailAddressesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Direct Mail Mail Addresses of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.134.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.directmail.inputs.GetMailAddressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DirectmailFunctions.getMailAddresses(GetMailAddressesArgs.builder()
+     *             .ids("example_id")
+     *             .build());
+     * 
+     *         ctx.export("directMailMailAddressId1", ids.applyValue(getMailAddressesResult -> getMailAddressesResult.addresses()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetMailAddressesResult> getMailAddressesPlain(GetMailAddressesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:directmail/getMailAddresses:getMailAddresses", TypeShape.of(GetMailAddressesResult.class), args, Utilities.withVersion(options));
     }
@@ -873,6 +976,54 @@ public final class DirectmailFunctions {
      * 
      */
     public static Output<GetReceiversResult> getReceivers(GetReceiversArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:directmail/getReceivers:getReceivers", TypeShape.of(GetReceiversResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Direct Mail Receiverses of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.125.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.directmail.inputs.GetReceiversArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DirectmailFunctions.getReceivers(GetReceiversArgs.builder()
+     *             .ids("ca73b1e4fb0df7c935a5097a****")
+     *             .nameRegex("the_resource_name")
+     *             .build());
+     * 
+     *         ctx.export("firstDirectMailReceiversId", example.applyValue(getReceiversResult -> getReceiversResult.receiverses()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetReceiversResult> getReceivers(GetReceiversArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:directmail/getReceivers:getReceivers", TypeShape.of(GetReceiversResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1181,6 +1332,58 @@ public final class DirectmailFunctions {
      * 
      */
     public static Output<GetTagsResult> getTags(GetTagsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:directmail/getTags:getTags", TypeShape.of(GetTagsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Direct Mail Tags of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.144.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.directmail.inputs.GetTagsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DirectmailFunctions.getTags(GetTagsArgs.builder()
+     *             .ids("example_id")
+     *             .build());
+     * 
+     *         ctx.export("directMailTagId1", ids.applyValue(getTagsResult -> getTagsResult.tags()[0].id()));
+     *         final var nameRegex = DirectmailFunctions.getTags(GetTagsArgs.builder()
+     *             .nameRegex("^my-Tag")
+     *             .build());
+     * 
+     *         ctx.export("directMailTagId2", nameRegex.applyValue(getTagsResult -> getTagsResult.tags()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTagsResult> getTags(GetTagsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:directmail/getTags:getTags", TypeShape.of(GetTagsResult.class), args, Utilities.withVersion(options));
     }
     /**

@@ -17,6 +17,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class DatabasefilesystemFunctions {
@@ -243,6 +244,51 @@ public final class DatabasefilesystemFunctions {
      * 
      */
     public static Output<GetAutoSnapShotPoliciesResult> getAutoSnapShotPolicies(GetAutoSnapShotPoliciesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:databasefilesystem/getAutoSnapShotPolicies:getAutoSnapShotPolicies", TypeShape.of(GetAutoSnapShotPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Dbfs Auto Snap Shot Policy available to the user.[What is Auto Snap Shot Policy](https://help.aliyun.com/document_detail/469597.html)
+     * 
+     * &gt; **NOTE:** Available in 1.202.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.databasefilesystem.DatabasefilesystemFunctions;
+     * import com.pulumi.alicloud.databasefilesystem.inputs.GetAutoSnapShotPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DatabasefilesystemFunctions.getAutoSnapShotPolicies(GetAutoSnapShotPoliciesArgs.builder()
+     *             .ids(defaultAlicloudDbfsAutoSnapShotPolicy.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudDbfsAutoSnapShotPolicyExampleId", default_.autoSnapShotPolicies()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAutoSnapShotPoliciesResult> getAutoSnapShotPolicies(GetAutoSnapShotPoliciesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:databasefilesystem/getAutoSnapShotPolicies:getAutoSnapShotPolicies", TypeShape.of(GetAutoSnapShotPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -599,6 +645,58 @@ public final class DatabasefilesystemFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:databasefilesystem/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the DBFS Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.136.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.databasefilesystem.DatabasefilesystemFunctions;
+     * import com.pulumi.alicloud.databasefilesystem.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DatabasefilesystemFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids("example_id")
+     *             .build());
+     * 
+     *         ctx.export("dbfsInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         final var nameRegex = DatabasefilesystemFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex("^my-Instance")
+     *             .build());
+     * 
+     *         ctx.export("dbfsInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:databasefilesystem/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
@@ -885,6 +983,63 @@ public final class DatabasefilesystemFunctions {
      * 
      */
     public static Output<GetSnapshotsResult> getSnapshots(GetSnapshotsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:databasefilesystem/getSnapshots:getSnapshots", TypeShape.of(GetSnapshotsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Dbfs Snapshots of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.156.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.databasefilesystem.DatabasefilesystemFunctions;
+     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DatabasefilesystemFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .ids("example_id")
+     *             .build());
+     * 
+     *         ctx.export("dbfsSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         final var nameRegex = DatabasefilesystemFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .nameRegex("^my-Snapshot")
+     *             .build());
+     * 
+     *         ctx.export("dbfsSnapshotId2", nameRegex.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         final var status = DatabasefilesystemFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .status("accomplished")
+     *             .build());
+     * 
+     *         ctx.export("dbfsSnapshotId3", status.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSnapshotsResult> getSnapshots(GetSnapshotsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:databasefilesystem/getSnapshots:getSnapshots", TypeShape.of(GetSnapshotsResult.class), args, Utilities.withVersion(options));
     }
     /**

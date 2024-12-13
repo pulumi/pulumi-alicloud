@@ -26,6 +26,14 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public static Output<GetNatGatewaysResult> Invoke(GetNatGatewaysInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNatGatewaysResult>("alicloud:vpc/getNatGateways:getNatGateways", args ?? new GetNatGatewaysInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a list of Nat Gateways owned by an Alibaba Cloud account.
+        /// 
+        /// &gt; **NOTE:** Available in 1.37.0+.
+        /// </summary>
+        public static Output<GetNatGatewaysResult> Invoke(GetNatGatewaysInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNatGatewaysResult>("alicloud:vpc/getNatGateways:getNatGateways", args ?? new GetNatGatewaysInvokeArgs(), options.WithDefaults());
     }
 
 

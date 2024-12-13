@@ -76,6 +76,39 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// </summary>
         public static Output<GetHoneypotNodesResult> Invoke(GetHoneypotNodesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHoneypotNodesResult>("alicloud:threatdetection/getHoneypotNodes:getHoneypotNodes", args ?? new GetHoneypotNodesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides Threat Detection Honeypot Node available to the user.[What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotnode)
+        /// 
+        /// &gt; **NOTE:** Available in 1.195.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.ThreatDetection.GetHoneypotNodes.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultAlicloudThreatDetectionHoneypotNode.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudThreatDetectionHoneypotNodeExampleId"] = @default.Apply(@default =&gt; @default.Apply(getHoneypotNodesResult =&gt; getHoneypotNodesResult.Nodes[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetHoneypotNodesResult> Invoke(GetHoneypotNodesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetHoneypotNodesResult>("alicloud:threatdetection/getHoneypotNodes:getHoneypotNodes", args ?? new GetHoneypotNodesInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -80,21 +80,11 @@ type GetDelegatedAdministratorsResult struct {
 }
 
 func GetDelegatedAdministratorsOutput(ctx *pulumi.Context, args GetDelegatedAdministratorsOutputArgs, opts ...pulumi.InvokeOption) GetDelegatedAdministratorsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDelegatedAdministratorsResultOutput, error) {
 			args := v.(GetDelegatedAdministratorsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetDelegatedAdministratorsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:resourcemanager/getDelegatedAdministrators:getDelegatedAdministrators", args, &rv, "", opts...)
-			if err != nil {
-				return GetDelegatedAdministratorsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetDelegatedAdministratorsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetDelegatedAdministratorsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:resourcemanager/getDelegatedAdministrators:getDelegatedAdministrators", args, GetDelegatedAdministratorsResultOutput{}, options).(GetDelegatedAdministratorsResultOutput), nil
 		}).(GetDelegatedAdministratorsResultOutput)
 }
 

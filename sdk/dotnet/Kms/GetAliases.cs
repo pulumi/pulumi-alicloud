@@ -80,6 +80,41 @@ namespace Pulumi.AliCloud.Kms
         /// </summary>
         public static Output<GetAliasesResult> Invoke(GetAliasesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAliasesResult>("alicloud:kms/getAliases:getAliases", args ?? new GetAliasesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a list of KMS aliases in an Alibaba Cloud account according to the specified filters.
+        ///  
+        /// &gt; **NOTE:** Available in v1.79.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Declare the data source
+        ///     var kmsAliases = AliCloud.Kms.GetAliases.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "d89e8a53-b708-41aa-8c67-6873axxx",
+        ///         },
+        ///         NameRegex = "alias/tf-testKmsAlias_123",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstKeyId"] = kmsKeysDs.Keys[0].Id,
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAliasesResult> Invoke(GetAliasesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAliasesResult>("alicloud:kms/getAliases:getAliases", args ?? new GetAliasesInvokeArgs(), options.WithDefaults());
     }
 
 

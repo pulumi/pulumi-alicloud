@@ -116,21 +116,11 @@ type GetEcsSnapshotsResult struct {
 }
 
 func GetEcsSnapshotsOutput(ctx *pulumi.Context, args GetEcsSnapshotsOutputArgs, opts ...pulumi.InvokeOption) GetEcsSnapshotsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetEcsSnapshotsResultOutput, error) {
 			args := v.(GetEcsSnapshotsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetEcsSnapshotsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:ecs/getEcsSnapshots:getEcsSnapshots", args, &rv, "", opts...)
-			if err != nil {
-				return GetEcsSnapshotsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetEcsSnapshotsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetEcsSnapshotsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:ecs/getEcsSnapshots:getEcsSnapshots", args, GetEcsSnapshotsResultOutput{}, options).(GetEcsSnapshotsResultOutput), nil
 		}).(GetEcsSnapshotsResultOutput)
 }
 

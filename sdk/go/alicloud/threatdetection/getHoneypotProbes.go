@@ -117,21 +117,11 @@ type GetHoneypotProbesResult struct {
 }
 
 func GetHoneypotProbesOutput(ctx *pulumi.Context, args GetHoneypotProbesOutputArgs, opts ...pulumi.InvokeOption) GetHoneypotProbesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetHoneypotProbesResultOutput, error) {
 			args := v.(GetHoneypotProbesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetHoneypotProbesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:threatdetection/getHoneypotProbes:getHoneypotProbes", args, &rv, "", opts...)
-			if err != nil {
-				return GetHoneypotProbesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetHoneypotProbesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetHoneypotProbesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:threatdetection/getHoneypotProbes:getHoneypotProbes", args, GetHoneypotProbesResultOutput{}, options).(GetHoneypotProbesResultOutput), nil
 		}).(GetHoneypotProbesResultOutput)
 }
 

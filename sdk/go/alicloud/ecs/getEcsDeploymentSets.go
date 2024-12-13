@@ -90,21 +90,11 @@ type GetEcsDeploymentSetsResult struct {
 }
 
 func GetEcsDeploymentSetsOutput(ctx *pulumi.Context, args GetEcsDeploymentSetsOutputArgs, opts ...pulumi.InvokeOption) GetEcsDeploymentSetsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetEcsDeploymentSetsResultOutput, error) {
 			args := v.(GetEcsDeploymentSetsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetEcsDeploymentSetsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:ecs/getEcsDeploymentSets:getEcsDeploymentSets", args, &rv, "", opts...)
-			if err != nil {
-				return GetEcsDeploymentSetsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetEcsDeploymentSetsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetEcsDeploymentSetsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:ecs/getEcsDeploymentSets:getEcsDeploymentSets", args, GetEcsDeploymentSetsResultOutput{}, options).(GetEcsDeploymentSetsResultOutput), nil
 		}).(GetEcsDeploymentSetsResultOutput)
 }
 

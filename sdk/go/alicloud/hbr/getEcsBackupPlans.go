@@ -81,21 +81,11 @@ type GetEcsBackupPlansResult struct {
 }
 
 func GetEcsBackupPlansOutput(ctx *pulumi.Context, args GetEcsBackupPlansOutputArgs, opts ...pulumi.InvokeOption) GetEcsBackupPlansResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetEcsBackupPlansResultOutput, error) {
 			args := v.(GetEcsBackupPlansArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetEcsBackupPlansResult
-			secret, err := ctx.InvokePackageRaw("alicloud:hbr/getEcsBackupPlans:getEcsBackupPlans", args, &rv, "", opts...)
-			if err != nil {
-				return GetEcsBackupPlansResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetEcsBackupPlansResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetEcsBackupPlansResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:hbr/getEcsBackupPlans:getEcsBackupPlans", args, GetEcsBackupPlansResultOutput{}, options).(GetEcsBackupPlansResultOutput), nil
 		}).(GetEcsBackupPlansResultOutput)
 }
 

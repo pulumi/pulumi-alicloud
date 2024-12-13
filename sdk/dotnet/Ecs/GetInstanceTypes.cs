@@ -204,6 +204,103 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public static Output<GetInstanceTypesResult> Invoke(GetInstanceTypesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceTypesResult>("alicloud:ecs/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the ECS instance types of Alibaba Cloud.
+        /// 
+        /// &gt; **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `is_outdated` to true.
+        /// 
+        /// &gt; **NOTE:** If one instance type is sold out, it will not be exported.
+        /// 
+        /// &gt; **NOTE:** Available since v1.0.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     // Declare the data source
+        ///     var defaultGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+        ///     {
+        ///         AvailabilityZone = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         InstanceTypeFamily = "ecs.sn1ne",
+        ///     });
+        /// 
+        ///     var defaultGetImages = AliCloud.Ecs.GetImages.Invoke(new()
+        ///     {
+        ///         NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
+        ///         MostRecent = true,
+        ///         Owners = "system",
+        ///     });
+        /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+        ///     {
+        ///         VpcName = name,
+        ///         CidrBlock = "192.168.0.0/16",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+        ///     {
+        ///         VswitchName = name,
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = "192.168.192.0/24",
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///     });
+        /// 
+        ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
+        ///     {
+        ///         Name = name,
+        ///         VpcId = defaultNetwork.Id,
+        ///     });
+        /// 
+        ///     var defaultEcsNetworkInterface = new AliCloud.Ecs.EcsNetworkInterface("default", new()
+        ///     {
+        ///         NetworkInterfaceName = name,
+        ///         VswitchId = defaultSwitch.Id,
+        ///         SecurityGroupIds = new[]
+        ///         {
+        ///             defaultSecurityGroup.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     var defaultInstance = new List&lt;AliCloud.Ecs.Instance&gt;();
+        ///     for (var rangeIndex = 0; rangeIndex &lt; 14; rangeIndex++)
+        ///     {
+        ///         var range = new { Value = rangeIndex };
+        ///         defaultInstance.Add(new AliCloud.Ecs.Instance($"default-{range.Value}", new()
+        ///         {
+        ///             ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+        ///             InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+        ///             InstanceName = name,
+        ///             SecurityGroups = new[]
+        ///             {
+        ///                 defaultSecurityGroup,
+        ///             }.Select(__item =&gt; __item.Id).ToList(),
+        ///             InternetChargeType = "PayByTraffic",
+        ///             InternetMaxBandwidthOut = 10,
+        ///             AvailabilityZone = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///             InstanceChargeType = "PostPaid",
+        ///             SystemDiskCategory = "cloud_efficiency",
+        ///             VswitchId = defaultSwitch.Id,
+        ///         }));
+        ///     }
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetInstanceTypesResult> Invoke(GetInstanceTypesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceTypesResult>("alicloud:ecs/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesInvokeArgs(), options.WithDefaults());
     }
 
 

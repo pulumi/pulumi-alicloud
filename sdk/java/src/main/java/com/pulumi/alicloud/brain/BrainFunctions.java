@@ -20,6 +20,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class BrainFunctions {
@@ -174,6 +175,57 @@ public final class BrainFunctions {
      * 
      */
     public static Output<GetIndustrialPidLoopsResult> getIndustrialPidLoops(GetIndustrialPidLoopsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:brain/getIndustrialPidLoops:getIndustrialPidLoops", TypeShape.of(GetIndustrialPidLoopsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Brain Industrial Pid Loops of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.117.0.
+     * 
+     * &gt; **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.brain.BrainFunctions;
+     * import com.pulumi.alicloud.brain.inputs.GetIndustrialPidLoopsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = BrainFunctions.getIndustrialPidLoops(GetIndustrialPidLoopsArgs.builder()
+     *             .pidProjectId("856c6b8f-ca63-40a4-xxxx-xxxx")
+     *             .ids("742a3d4e-d8b0-47c8-xxxx-xxxx")
+     *             .nameRegex("tf-testACC")
+     *             .build());
+     * 
+     *         ctx.export("firstBrainIndustrialPidLoopId", example.applyValue(getIndustrialPidLoopsResult -> getIndustrialPidLoopsResult.loops()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetIndustrialPidLoopsResult> getIndustrialPidLoops(GetIndustrialPidLoopsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:brain/getIndustrialPidLoops:getIndustrialPidLoops", TypeShape.of(GetIndustrialPidLoopsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -524,6 +576,56 @@ public final class BrainFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetIndustrialPidOrganizationsResult> getIndustrialPidOrganizations(GetIndustrialPidOrganizationsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:brain/getIndustrialPidOrganizations:getIndustrialPidOrganizations", TypeShape.of(GetIndustrialPidOrganizationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Brain Industrial Pid Organizations of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.113.0.
+     * 
+     * &gt; **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.brain.BrainFunctions;
+     * import com.pulumi.alicloud.brain.inputs.GetIndustrialPidOrganizationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = BrainFunctions.getIndustrialPidOrganizations(GetIndustrialPidOrganizationsArgs.builder()
+     *             .ids("3e74e684-cbb5-xxxx")
+     *             .nameRegex("tf-testAcc")
+     *             .build());
+     * 
+     *         ctx.export("firstBrainIndustrialPidOrganizationId", example.applyValue(getIndustrialPidOrganizationsResult -> getIndustrialPidOrganizationsResult.organizations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetIndustrialPidOrganizationsResult> getIndustrialPidOrganizationsPlain(GetIndustrialPidOrganizationsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:brain/getIndustrialPidOrganizations:getIndustrialPidOrganizations", TypeShape.of(GetIndustrialPidOrganizationsResult.class), args, Utilities.withVersion(options));
     }
@@ -824,6 +926,56 @@ public final class BrainFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetIndustrialPidProjectsResult> getIndustrialPidProjects(GetIndustrialPidProjectsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:brain/getIndustrialPidProjects:getIndustrialPidProjects", TypeShape.of(GetIndustrialPidProjectsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Brain Industrial Pid Projects of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.113.0.
+     * 
+     * &gt; **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.brain.BrainFunctions;
+     * import com.pulumi.alicloud.brain.inputs.GetIndustrialPidProjectsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = BrainFunctions.getIndustrialPidProjects(GetIndustrialPidProjectsArgs.builder()
+     *             .ids("3e74e684-cbb5-xxxx")
+     *             .nameRegex("tf-testAcc")
+     *             .build());
+     * 
+     *         ctx.export("firstBrainIndustrialPidProjectId", example.applyValue(getIndustrialPidProjectsResult -> getIndustrialPidProjectsResult.projects()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetIndustrialPidProjectsResult> getIndustrialPidProjectsPlain(GetIndustrialPidProjectsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:brain/getIndustrialPidProjects:getIndustrialPidProjects", TypeShape.of(GetIndustrialPidProjectsResult.class), args, Utilities.withVersion(options));
     }
@@ -1065,6 +1217,54 @@ public final class BrainFunctions {
      * 
      */
     public static Output<GetIndustrialSericeResult> getIndustrialSerice(GetIndustrialSericeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:brain/getIndustrialSerice:getIndustrialSerice", TypeShape.of(GetIndustrialSericeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Using this data source can open Brain Industrial service automatically. If the service has been opened, it will return opened.
+     * 
+     * &gt; **NOTE:** Available since v1.115.0.
+     * 
+     * &gt; **NOTE:** The Brain Industrial service is not support in the international site.
+     * 
+     * &gt; **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.brain.BrainFunctions;
+     * import com.pulumi.alicloud.brain.inputs.GetIndustrialSericeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = BrainFunctions.getIndustrialSerice(GetIndustrialSericeArgs.builder()
+     *             .enable("On")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetIndustrialSericeResult> getIndustrialSerice(GetIndustrialSericeArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:brain/getIndustrialSerice:getIndustrialSerice", TypeShape.of(GetIndustrialSericeResult.class), args, Utilities.withVersion(options));
     }
     /**

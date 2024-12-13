@@ -80,6 +80,41 @@ namespace Pulumi.AliCloud.Cms
         /// </summary>
         public static Output<GetHybridMonitorFcTasksResult> Invoke(GetHybridMonitorFcTasksInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHybridMonitorFcTasksResult>("alicloud:cms/getHybridMonitorFcTasks:getHybridMonitorFcTasks", args ?? new GetHybridMonitorFcTasksInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Cms Hybrid Monitor Fc Tasks of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.179.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Cms.GetHybridMonitorFcTasks.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cmsHybridMonitorFcTaskId1"] = ids.Apply(getHybridMonitorFcTasksResult =&gt; getHybridMonitorFcTasksResult.Tasks[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetHybridMonitorFcTasksResult> Invoke(GetHybridMonitorFcTasksInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetHybridMonitorFcTasksResult>("alicloud:cms/getHybridMonitorFcTasks:getHybridMonitorFcTasks", args ?? new GetHybridMonitorFcTasksInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -29,6 +29,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class PrivatelinkFunctions {
@@ -305,6 +306,52 @@ public final class PrivatelinkFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:privatelink/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Using this data source can open Privatelink service automatically. If the service has been opened, it will return opened.
+     * 
+     * For information about Privatelink and how to use it, see [What is Privatelink](https://www.alibabacloud.com/help/en/product/120462.htm).
+     * 
+     * &gt; **NOTE:** Available in v1.113.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.privatelink.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = PrivatelinkFunctions.getService(GetServiceArgs.builder()
+     *             .enable("On")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:privatelink/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
     }
@@ -450,6 +497,54 @@ public final class PrivatelinkFunctions {
      * 
      */
     public static Output<GetVpcEndpointConnectionsResult> getVpcEndpointConnections(GetVpcEndpointConnectionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:privatelink/getVpcEndpointConnections:getVpcEndpointConnections", TypeShape.of(GetVpcEndpointConnectionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Privatelink Vpc Endpoint Connections of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.110.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointConnectionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PrivatelinkFunctions.getVpcEndpointConnections(GetVpcEndpointConnectionsArgs.builder()
+     *             .serviceId("example_value")
+     *             .status("Connected")
+     *             .build());
+     * 
+     *         ctx.export("firstPrivatelinkVpcEndpointConnectionId", example.applyValue(getVpcEndpointConnectionsResult -> getVpcEndpointConnectionsResult.connections()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVpcEndpointConnectionsResult> getVpcEndpointConnections(GetVpcEndpointConnectionsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:privatelink/getVpcEndpointConnections:getVpcEndpointConnections", TypeShape.of(GetVpcEndpointConnectionsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -685,6 +780,53 @@ public final class PrivatelinkFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetVpcEndpointServiceResourcesResult> getVpcEndpointServiceResources(GetVpcEndpointServiceResourcesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:privatelink/getVpcEndpointServiceResources:getVpcEndpointServiceResources", TypeShape.of(GetVpcEndpointServiceResourcesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Privatelink Vpc Endpoint Service Resources of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.110.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServiceResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PrivatelinkFunctions.getVpcEndpointServiceResources(GetVpcEndpointServiceResourcesArgs.builder()
+     *             .serviceId("epsrv-gw8ii1xxxx")
+     *             .build());
+     * 
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceResourceId", example.applyValue(getVpcEndpointServiceResourcesResult -> getVpcEndpointServiceResourcesResult.resources()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetVpcEndpointServiceResourcesResult> getVpcEndpointServiceResourcesPlain(GetVpcEndpointServiceResourcesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:privatelink/getVpcEndpointServiceResources:getVpcEndpointServiceResources", TypeShape.of(GetVpcEndpointServiceResourcesResult.class), args, Utilities.withVersion(options));
     }
@@ -827,6 +969,53 @@ public final class PrivatelinkFunctions {
      * 
      */
     public static Output<GetVpcEndpointServiceUsersResult> getVpcEndpointServiceUsers(GetVpcEndpointServiceUsersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:privatelink/getVpcEndpointServiceUsers:getVpcEndpointServiceUsers", TypeShape.of(GetVpcEndpointServiceUsersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Privatelink Vpc Endpoint Service Users of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.110.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServiceUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PrivatelinkFunctions.getVpcEndpointServiceUsers(GetVpcEndpointServiceUsersArgs.builder()
+     *             .serviceId("epsrv-gw81c6vxxxxxx")
+     *             .build());
+     * 
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceUserId", example.applyValue(getVpcEndpointServiceUsersResult -> getVpcEndpointServiceUsersResult.users()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVpcEndpointServiceUsersResult> getVpcEndpointServiceUsers(GetVpcEndpointServiceUsersArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:privatelink/getVpcEndpointServiceUsers:getVpcEndpointServiceUsers", TypeShape.of(GetVpcEndpointServiceUsersResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1203,6 +1392,61 @@ public final class PrivatelinkFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetVpcEndpointServicesResult> getVpcEndpointServices(GetVpcEndpointServicesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:privatelink/getVpcEndpointServices:getVpcEndpointServices", TypeShape.of(GetVpcEndpointServicesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Privatelink Vpc Endpoint Services of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.109.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointService;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointServiceArgs;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServicesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var exampleVpcEndpointService = new VpcEndpointService("exampleVpcEndpointService", VpcEndpointServiceArgs.builder()
+     *             .serviceDescription("terraform-example")
+     *             .connectBandwidth(103)
+     *             .autoAcceptConnection(false)
+     *             .build());
+     * 
+     *         final var example = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
+     *             .ids(exampleVpcEndpointService.id())
+     *             .build());
+     * 
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult).applyValue(example -> example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult.services()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetVpcEndpointServicesResult> getVpcEndpointServicesPlain(GetVpcEndpointServicesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:privatelink/getVpcEndpointServices:getVpcEndpointServices", TypeShape.of(GetVpcEndpointServicesResult.class), args, Utilities.withVersion(options));
     }
@@ -1345,6 +1589,53 @@ public final class PrivatelinkFunctions {
      * 
      */
     public static Output<GetVpcEndpointZonesResult> getVpcEndpointZones(GetVpcEndpointZonesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:privatelink/getVpcEndpointZones:getVpcEndpointZones", TypeShape.of(GetVpcEndpointZonesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Privatelink Vpc Endpoint Zones of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.111.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PrivatelinkFunctions.getVpcEndpointZones(GetVpcEndpointZonesArgs.builder()
+     *             .endpointId("ep-gw8boxxxxx")
+     *             .build());
+     * 
+     *         ctx.export("firstPrivatelinkVpcEndpointZoneId", example.applyValue(getVpcEndpointZonesResult -> getVpcEndpointZonesResult.zones()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVpcEndpointZonesResult> getVpcEndpointZones(GetVpcEndpointZonesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:privatelink/getVpcEndpointZones:getVpcEndpointZones", TypeShape.of(GetVpcEndpointZonesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1632,6 +1923,54 @@ public final class PrivatelinkFunctions {
      * 
      */
     public static Output<GetVpcEndpointsResult> getVpcEndpoints(GetVpcEndpointsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:privatelink/getVpcEndpoints:getVpcEndpoints", TypeShape.of(GetVpcEndpointsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Privatelink Vpc Endpoints of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.109.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
+     * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PrivatelinkFunctions.getVpcEndpoints(GetVpcEndpointsArgs.builder()
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
+     *             .build());
+     * 
+     *         ctx.export("firstPrivatelinkVpcEndpointId", example.applyValue(getVpcEndpointsResult -> getVpcEndpointsResult.endpoints()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVpcEndpointsResult> getVpcEndpoints(GetVpcEndpointsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:privatelink/getVpcEndpoints:getVpcEndpoints", TypeShape.of(GetVpcEndpointsResult.class), args, Utilities.withVersion(options));
     }
     /**

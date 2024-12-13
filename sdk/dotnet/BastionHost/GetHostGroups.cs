@@ -98,6 +98,50 @@ namespace Pulumi.AliCloud.BastionHost
         /// </summary>
         public static Output<GetHostGroupsResult> Invoke(GetHostGroupsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHostGroupsResult>("alicloud:bastionhost/getHostGroups:getHostGroups", args ?? new GetHostGroupsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Bastionhost Host Groups of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.BastionHost.GetHostGroups.Invoke(new()
+        ///     {
+        ///         InstanceId = "bastionhost-cn-tl3xxxxxxx",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.BastionHost.GetHostGroups.Invoke(new()
+        ///     {
+        ///         InstanceId = "bastionhost-cn-tl3xxxxxxx",
+        ///         NameRegex = "^my-HostGroup",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["bastionhostHostGroupId1"] = ids.Apply(getHostGroupsResult =&gt; getHostGroupsResult.Groups[0]?.Id),
+        ///         ["bastionhostHostGroupId2"] = nameRegex.Apply(getHostGroupsResult =&gt; getHostGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetHostGroupsResult> Invoke(GetHostGroupsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetHostGroupsResult>("alicloud:bastionhost/getHostGroups:getHostGroups", args ?? new GetHostGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

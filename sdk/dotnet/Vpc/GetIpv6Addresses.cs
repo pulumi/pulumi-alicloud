@@ -110,6 +110,56 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public static Output<GetIpv6AddressesResult> Invoke(GetIpv6AddressesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIpv6AddressesResult>("alicloud:vpc/getIpv6Addresses:getIpv6Addresses", args ?? new GetIpv6AddressesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Vpc Ipv6 Addresses of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.142.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var associatedInstanceId = AliCloud.Vpc.GetIpv6Addresses.Invoke(new()
+        ///     {
+        ///         AssociatedInstanceId = "example_value",
+        ///     });
+        /// 
+        ///     var vswitchId = AliCloud.Vpc.GetIpv6Addresses.Invoke(new()
+        ///     {
+        ///         VswitchId = "example_value",
+        ///     });
+        /// 
+        ///     var vpcId = AliCloud.Vpc.GetIpv6Addresses.Invoke(new()
+        ///     {
+        ///         VpcId = "example_value",
+        ///     });
+        /// 
+        ///     var status = AliCloud.Vpc.GetIpv6Addresses.Invoke(new()
+        ///     {
+        ///         Status = "Available",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpcIpv6AddressId1"] = associatedInstanceId.Apply(getIpv6AddressesResult =&gt; getIpv6AddressesResult.Addresses[0]?.Id),
+        ///         ["vpcIpv6AddressId2"] = vswitchId.Apply(getIpv6AddressesResult =&gt; getIpv6AddressesResult.Addresses[0]?.Id),
+        ///         ["vpcIpv6AddressId3"] = vpcId.Apply(getIpv6AddressesResult =&gt; getIpv6AddressesResult.Addresses[0]?.Id),
+        ///         ["vpcIpv6AddressId4"] = status.Apply(getIpv6AddressesResult =&gt; getIpv6AddressesResult.Addresses[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetIpv6AddressesResult> Invoke(GetIpv6AddressesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetIpv6AddressesResult>("alicloud:vpc/getIpv6Addresses:getIpv6Addresses", args ?? new GetIpv6AddressesInvokeArgs(), options.WithDefaults());
     }
 
 

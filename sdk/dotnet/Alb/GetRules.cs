@@ -26,6 +26,14 @@ namespace Pulumi.AliCloud.Alb
         /// </summary>
         public static Output<GetRulesResult> Invoke(GetRulesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRulesResult>("alicloud:alb/getRules:getRules", args ?? new GetRulesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Alb Rules of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.133.0.
+        /// </summary>
+        public static Output<GetRulesResult> Invoke(GetRulesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRulesResult>("alicloud:alb/getRules:getRules", args ?? new GetRulesInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -99,21 +99,11 @@ type GetOrganizationsResult struct {
 }
 
 func GetOrganizationsOutput(ctx *pulumi.Context, args GetOrganizationsOutputArgs, opts ...pulumi.InvokeOption) GetOrganizationsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetOrganizationsResultOutput, error) {
 			args := v.(GetOrganizationsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetOrganizationsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:rdc/getOrganizations:getOrganizations", args, &rv, "", opts...)
-			if err != nil {
-				return GetOrganizationsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetOrganizationsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetOrganizationsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:rdc/getOrganizations:getOrganizations", args, GetOrganizationsResultOutput{}, options).(GetOrganizationsResultOutput), nil
 		}).(GetOrganizationsResultOutput)
 }
 

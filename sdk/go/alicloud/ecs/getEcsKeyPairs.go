@@ -88,21 +88,11 @@ type GetEcsKeyPairsResult struct {
 }
 
 func GetEcsKeyPairsOutput(ctx *pulumi.Context, args GetEcsKeyPairsOutputArgs, opts ...pulumi.InvokeOption) GetEcsKeyPairsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetEcsKeyPairsResultOutput, error) {
 			args := v.(GetEcsKeyPairsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetEcsKeyPairsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:ecs/getEcsKeyPairs:getEcsKeyPairs", args, &rv, "", opts...)
-			if err != nil {
-				return GetEcsKeyPairsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetEcsKeyPairsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetEcsKeyPairsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:ecs/getEcsKeyPairs:getEcsKeyPairs", args, GetEcsKeyPairsResultOutput{}, options).(GetEcsKeyPairsResultOutput), nil
 		}).(GetEcsKeyPairsResultOutput)
 }
 

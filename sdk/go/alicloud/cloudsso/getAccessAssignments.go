@@ -92,21 +92,11 @@ type GetAccessAssignmentsResult struct {
 }
 
 func GetAccessAssignmentsOutput(ctx *pulumi.Context, args GetAccessAssignmentsOutputArgs, opts ...pulumi.InvokeOption) GetAccessAssignmentsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAccessAssignmentsResultOutput, error) {
 			args := v.(GetAccessAssignmentsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetAccessAssignmentsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:cloudsso/getAccessAssignments:getAccessAssignments", args, &rv, "", opts...)
-			if err != nil {
-				return GetAccessAssignmentsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetAccessAssignmentsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetAccessAssignmentsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:cloudsso/getAccessAssignments:getAccessAssignments", args, GetAccessAssignmentsResultOutput{}, options).(GetAccessAssignmentsResultOutput), nil
 		}).(GetAccessAssignmentsResultOutput)
 }
 

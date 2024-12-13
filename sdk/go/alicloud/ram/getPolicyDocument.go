@@ -346,21 +346,11 @@ type GetPolicyDocumentResult struct {
 }
 
 func GetPolicyDocumentOutput(ctx *pulumi.Context, args GetPolicyDocumentOutputArgs, opts ...pulumi.InvokeOption) GetPolicyDocumentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetPolicyDocumentResultOutput, error) {
 			args := v.(GetPolicyDocumentArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetPolicyDocumentResult
-			secret, err := ctx.InvokePackageRaw("alicloud:ram/getPolicyDocument:getPolicyDocument", args, &rv, "", opts...)
-			if err != nil {
-				return GetPolicyDocumentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetPolicyDocumentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetPolicyDocumentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:ram/getPolicyDocument:getPolicyDocument", args, GetPolicyDocumentResultOutput{}, options).(GetPolicyDocumentResultOutput), nil
 		}).(GetPolicyDocumentResultOutput)
 }
 
