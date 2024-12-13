@@ -74,6 +74,38 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         public static Output<GetCustomRoutingPortMappingsResult> Invoke(GetCustomRoutingPortMappingsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCustomRoutingPortMappingsResult>("alicloud:ga/getCustomRoutingPortMappings:getCustomRoutingPortMappings", args ?? new GetCustomRoutingPortMappingsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Global Accelerator (GA) Custom Routing Port Mappings of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in 1.197.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Ga.GetCustomRoutingPortMappings.Invoke(new()
+        ///     {
+        ///         AcceleratorId = "your_accelerator_id",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["gaCustomRoutingPortMappingsAcceleratorId1"] = @default.Apply(@default =&gt; @default.Apply(getCustomRoutingPortMappingsResult =&gt; getCustomRoutingPortMappingsResult.CustomRoutingPortMappings[0]?.AcceleratorId)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetCustomRoutingPortMappingsResult> Invoke(GetCustomRoutingPortMappingsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCustomRoutingPortMappingsResult>("alicloud:ga/getCustomRoutingPortMappings:getCustomRoutingPortMappings", args ?? new GetCustomRoutingPortMappingsInvokeArgs(), options.WithDefaults());
     }
 
 

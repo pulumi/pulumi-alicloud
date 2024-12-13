@@ -26,6 +26,14 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// </summary>
         public static Output<GetVirtualPhysicalConnectionsResult> Invoke(GetVirtualPhysicalConnectionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVirtualPhysicalConnectionsResult>("alicloud:expressconnect/getVirtualPhysicalConnections:getVirtualPhysicalConnections", args ?? new GetVirtualPhysicalConnectionsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides Express Connect Virtual Physical Connection available to the user.
+        /// 
+        /// &gt; **NOTE:** Available in 1.196.0+
+        /// </summary>
+        public static Output<GetVirtualPhysicalConnectionsResult> Invoke(GetVirtualPhysicalConnectionsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVirtualPhysicalConnectionsResult>("alicloud:expressconnect/getVirtualPhysicalConnections:getVirtualPhysicalConnections", args ?? new GetVirtualPhysicalConnectionsInvokeArgs(), options.WithDefaults());
     }
 
 

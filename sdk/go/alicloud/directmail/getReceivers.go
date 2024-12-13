@@ -84,21 +84,11 @@ type LookupReceiversResult struct {
 }
 
 func LookupReceiversOutput(ctx *pulumi.Context, args LookupReceiversOutputArgs, opts ...pulumi.InvokeOption) LookupReceiversResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupReceiversResultOutput, error) {
 			args := v.(LookupReceiversArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupReceiversResult
-			secret, err := ctx.InvokePackageRaw("alicloud:directmail/getReceivers:getReceivers", args, &rv, "", opts...)
-			if err != nil {
-				return LookupReceiversResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupReceiversResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupReceiversResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:directmail/getReceivers:getReceivers", args, LookupReceiversResultOutput{}, options).(LookupReceiversResultOutput), nil
 		}).(LookupReceiversResultOutput)
 }
 

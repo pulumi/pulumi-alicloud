@@ -26,6 +26,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class ServicecatalogFunctions {
@@ -296,6 +297,51 @@ public final class ServicecatalogFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetEndUserProductsResult> getEndUserProducts(GetEndUserProductsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:servicecatalog/getEndUserProducts:getEndUserProducts", TypeShape.of(GetEndUserProductsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Service Catalog End User Product available to the user.[What is End User Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-servicecatalog-2021-09-01-listproductsasenduser)
+     * 
+     * &gt; **NOTE:** Available since v1.197.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
+     * import com.pulumi.alicloud.servicecatalog.inputs.GetEndUserProductsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ServicecatalogFunctions.getEndUserProducts(GetEndUserProductsArgs.builder()
+     *             .nameRegex("ram模板创建")
+     *             .build());
+     * 
+     *         ctx.export("alicloudServiceCatalogEndUserProductExampleId", default_.endUserProducts()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetEndUserProductsResult> getEndUserProductsPlain(GetEndUserProductsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:servicecatalog/getEndUserProducts:getEndUserProducts", TypeShape.of(GetEndUserProductsResult.class), args, Utilities.withVersion(options));
     }
@@ -453,6 +499,58 @@ public final class ServicecatalogFunctions {
      * 
      */
     public static Output<GetLaunchOptionsResult> getLaunchOptions(GetLaunchOptionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:servicecatalog/getLaunchOptions:getLaunchOptions", TypeShape.of(GetLaunchOptionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Service Catalog Launch Option available to the user. [What is Launch Option](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listlaunchoptions).
+     * 
+     * &gt; **NOTE:** Available since v1.196.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
+     * import com.pulumi.alicloud.servicecatalog.inputs.GetEndUserProductsArgs;
+     * import com.pulumi.alicloud.servicecatalog.inputs.GetLaunchOptionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ServicecatalogFunctions.getEndUserProducts(GetEndUserProductsArgs.builder()
+     *             .nameRegex("ram模板创建")
+     *             .build());
+     * 
+     *         final var defaultGetLaunchOptions = ServicecatalogFunctions.getLaunchOptions(GetLaunchOptionsArgs.builder()
+     *             .productId("data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id")
+     *             .build());
+     * 
+     *         ctx.export("alicloudServiceCatalogLaunchOptionExampleId", defaultGetLaunchOptions.applyValue(getLaunchOptionsResult -> getLaunchOptionsResult.launchOptions()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetLaunchOptionsResult> getLaunchOptions(GetLaunchOptionsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:servicecatalog/getLaunchOptions:getLaunchOptions", TypeShape.of(GetLaunchOptionsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -735,6 +833,52 @@ public final class ServicecatalogFunctions {
      * 
      */
     public static Output<GetPortfoliosResult> getPortfolios(GetPortfoliosArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:servicecatalog/getPortfolios:getPortfolios", TypeShape.of(GetPortfoliosResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Service Catalog Portfolio available to the user.[What is Portfolio](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-createportfolio)
+     * 
+     * &gt; **NOTE:** Available in 1.204.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
+     * import com.pulumi.alicloud.servicecatalog.inputs.GetPortfoliosArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ServicecatalogFunctions.getPortfolios(GetPortfoliosArgs.builder()
+     *             .ids(defaultAlicloudServiceCatalogPortfolio.id())
+     *             .nameRegex(defaultAlicloudServiceCatalogPortfolio.name())
+     *             .build());
+     * 
+     *         ctx.export("alicloudServiceCatalogPortfolioExampleId", default_.portfolios()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPortfoliosResult> getPortfolios(GetPortfoliosArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:servicecatalog/getPortfolios:getPortfolios", TypeShape.of(GetPortfoliosResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1068,6 +1212,54 @@ public final class ServicecatalogFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetProductAsEndUsersResult> getProductAsEndUsers(GetProductAsEndUsersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:servicecatalog/getProductAsEndUsers:getProductAsEndUsers", TypeShape.of(GetProductAsEndUsersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **DEPRECATED:** It has been deprecated from version `1.197.0`.
+     * Please use new datasource alicloud.servicecatalog.getEndUserProducts instead.
+     * 
+     * This data source provides Service Catalog Product As End User available to the user.[What is Product As End User](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listproductsasenduser)
+     * 
+     * &gt; **NOTE:** Available in 1.196.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
+     * import com.pulumi.alicloud.servicecatalog.inputs.GetProductAsEndUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ServicecatalogFunctions.getProductAsEndUsers(GetProductAsEndUsersArgs.builder()
+     *             .nameRegex("ram模板创建")
+     *             .build());
+     * 
+     *         ctx.export("alicloudServiceCatalogProductAsEndUserExampleId", default_.users()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetProductAsEndUsersResult> getProductAsEndUsersPlain(GetProductAsEndUsersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:servicecatalog/getProductAsEndUsers:getProductAsEndUsers", TypeShape.of(GetProductAsEndUsersResult.class), args, Utilities.withVersion(options));
     }
@@ -1207,6 +1399,52 @@ public final class ServicecatalogFunctions {
      * 
      */
     public static Output<GetProductVersionsResult> getProductVersions(GetProductVersionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:servicecatalog/getProductVersions:getProductVersions", TypeShape.of(GetProductVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Service Catalog Product Version available to the user.[What is Product Version](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listproductversions)
+     * 
+     * &gt; **NOTE:** Available in 1.196.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
+     * import com.pulumi.alicloud.servicecatalog.inputs.GetProductVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ServicecatalogFunctions.getProductVersions(GetProductVersionsArgs.builder()
+     *             .nameRegex("1.0.0")
+     *             .productId("prod-bp125x4k29wb7q")
+     *             .build());
+     * 
+     *         ctx.export("alicloudServiceCatalogProductVersionExampleId", default_.productVersions()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetProductVersionsResult> getProductVersions(GetProductVersionsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:servicecatalog/getProductVersions:getProductVersions", TypeShape.of(GetProductVersionsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1493,6 +1731,54 @@ public final class ServicecatalogFunctions {
      * 
      */
     public static Output<GetProvisionedProductsResult> getProvisionedProducts(GetProvisionedProductsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:servicecatalog/getProvisionedProducts:getProvisionedProducts", TypeShape.of(GetProvisionedProductsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Service Catalog Provisioned Product available to the user. [What is Provisioned Product](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-launchproduct)
+     * 
+     * &gt; **NOTE:** Available since v1.196.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
+     * import com.pulumi.alicloud.servicecatalog.inputs.GetProvisionedProductsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ServicecatalogFunctions.getProvisionedProducts(GetProvisionedProductsArgs.builder()
+     *             .ids("IdExample")
+     *             .nameRegex("NameRegexExample")
+     *             .build());
+     * 
+     *         ctx.export("alicloudServiceCatalogProvisionedProductExampleId", default_.provisionedProducts()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetProvisionedProductsResult> getProvisionedProducts(GetProvisionedProductsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:servicecatalog/getProvisionedProducts:getProvisionedProducts", TypeShape.of(GetProvisionedProductsResult.class), args, Utilities.withVersion(options));
     }
     /**

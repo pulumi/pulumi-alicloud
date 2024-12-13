@@ -16,6 +16,9 @@ namespace Pulumi.AliCloud.Yundun
 
         public static Output<GetBastionHostInstancesResult> Invoke(GetBastionHostInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBastionHostInstancesResult>("alicloud:yundun/getBastionHostInstances:getBastionHostInstances", args ?? new GetBastionHostInstancesInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetBastionHostInstancesResult> Invoke(GetBastionHostInstancesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetBastionHostInstancesResult>("alicloud:yundun/getBastionHostInstances:getBastionHostInstances", args ?? new GetBastionHostInstancesInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -74,6 +74,38 @@ namespace Pulumi.AliCloud.MarketPlace
         /// </summary>
         public static Output<GetProductResult> Invoke(GetProductInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProductResult>("alicloud:marketplace/getProduct:getProduct", args ?? new GetProductInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Market product item details of Alibaba Cloud.
+        /// 
+        /// &gt; **NOTE:** Available in 1.69.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.MarketPlace.GetProduct.Invoke(new()
+        ///     {
+        ///         ProductCode = "cmapi022206",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["productName"] = @default.Apply(@default =&gt; @default.Apply(getProductResult =&gt; getProductResult.Products[0]?.Name)),
+        ///         ["firstProductSkuCode"] = @default.Apply(@default =&gt; @default.Apply(getProductResult =&gt; getProductResult.Products[0]?.Skuses[0]?.SkuCode)),
+        ///         ["firstProductPackageVersion"] = @default.Apply(@default =&gt; @default.Apply(getProductResult =&gt; getProductResult.Products[0]?.Skuses[0]?.PackageVersions[0]?.PackageVersion)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetProductResult> Invoke(GetProductInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetProductResult>("alicloud:marketplace/getProduct:getProduct", args ?? new GetProductInvokeArgs(), options.WithDefaults());
     }
 
 

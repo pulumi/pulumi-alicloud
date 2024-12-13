@@ -86,6 +86,44 @@ namespace Pulumi.AliCloud.Brain
         /// </summary>
         public static Output<GetIndustrialPidProjectsResult> Invoke(GetIndustrialPidProjectsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIndustrialPidProjectsResult>("alicloud:brain/getIndustrialPidProjects:getIndustrialPidProjects", args ?? new GetIndustrialPidProjectsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Brain Industrial Pid Projects of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.113.0.
+        /// 
+        /// &gt; **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Brain.GetIndustrialPidProjects.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "3e74e684-cbb5-xxxx",
+        ///         },
+        ///         NameRegex = "tf-testAcc",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstBrainIndustrialPidProjectId"] = example.Apply(getIndustrialPidProjectsResult =&gt; getIndustrialPidProjectsResult.Projects[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetIndustrialPidProjectsResult> Invoke(GetIndustrialPidProjectsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetIndustrialPidProjectsResult>("alicloud:brain/getIndustrialPidProjects:getIndustrialPidProjects", args ?? new GetIndustrialPidProjectsInvokeArgs(), options.WithDefaults());
     }
 
 

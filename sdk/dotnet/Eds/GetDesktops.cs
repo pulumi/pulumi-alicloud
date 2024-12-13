@@ -212,6 +212,107 @@ namespace Pulumi.AliCloud.Eds
         /// </summary>
         public static Output<GetDesktopsResult> Invoke(GetDesktopsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDesktopsResult>("alicloud:eds/getDesktops:getDesktops", args ?? new GetDesktopsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Ecd Desktops of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.144.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("default", new()
+        ///     {
+        ///         CidrBlock = "172.16.0.0/12",
+        ///         DesktopAccessType = "Internet",
+        ///         OfficeSiteName = "your_office_site_name",
+        ///     });
+        /// 
+        ///     var @default = AliCloud.Eds.GetBundles.Invoke(new()
+        ///     {
+        ///         BundleType = "SYSTEM",
+        ///     });
+        /// 
+        ///     var defaultEcdPolicyGroup = new AliCloud.Eds.EcdPolicyGroup("default", new()
+        ///     {
+        ///         PolicyGroupName = "your_policy_group_name",
+        ///         Clipboard = "readwrite",
+        ///         LocalDrive = "read",
+        ///         AuthorizeAccessPolicyRules = new[]
+        ///         {
+        ///             new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs
+        ///             {
+        ///                 Description = "example_value",
+        ///                 CidrIp = "1.2.3.4/24",
+        ///             },
+        ///         },
+        ///         AuthorizeSecurityPolicyRules = new[]
+        ///         {
+        ///             new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs
+        ///             {
+        ///                 Type = "inflow",
+        ///                 Policy = "accept",
+        ///                 Description = "example_value",
+        ///                 PortRange = "80/80",
+        ///                 IpProtocol = "TCP",
+        ///                 Priority = "1",
+        ///                 CidrIp = "0.0.0.0/0",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var defaultUser = new AliCloud.Eds.User("default", new()
+        ///     {
+        ///         EndUserId = "your_end_user_id",
+        ///         Email = "your_email",
+        ///         Phone = "your_phone",
+        ///         Password = "your_password",
+        ///     });
+        /// 
+        ///     var defaultDesktop = new AliCloud.Eds.Desktop("default", new()
+        ///     {
+        ///         OfficeSiteId = defaultSimpleOfficeSite.Id,
+        ///         PolicyGroupId = defaultEcdPolicyGroup.Id,
+        ///         BundleId = @default.Apply(@default =&gt; @default.Apply(getBundlesResult =&gt; getBundlesResult.Bundles[0]?.Id)),
+        ///         DesktopName = "your_desktop_name",
+        ///         EndUserIds = new[]
+        ///         {
+        ///             defaultUser.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Eds.GetDesktops.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultDesktop.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Eds.GetDesktops.Invoke(new()
+        ///     {
+        ///         NameRegex = defaultDesktop.DesktopName,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecdDesktopId1"] = ids.Apply(getDesktopsResult =&gt; getDesktopsResult.Desktops[0]?.Id),
+        ///         ["ecdDesktopId2"] = nameRegex.Apply(getDesktopsResult =&gt; getDesktopsResult.Desktops[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDesktopsResult> Invoke(GetDesktopsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDesktopsResult>("alicloud:eds/getDesktops:getDesktops", args ?? new GetDesktopsInvokeArgs(), options.WithDefaults());
     }
 
 

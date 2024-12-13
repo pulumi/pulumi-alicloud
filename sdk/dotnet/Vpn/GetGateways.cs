@@ -26,6 +26,14 @@ namespace Pulumi.AliCloud.Vpn
         /// </summary>
         public static Output<GetGatewaysResult> Invoke(GetGatewaysInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGatewaysResult>("alicloud:vpn/getGateways:getGateways", args ?? new GetGatewaysInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
+        /// 
+        /// &gt; **NOTE:** Available since v1.18.0.
+        /// </summary>
+        public static Output<GetGatewaysResult> Invoke(GetGatewaysInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGatewaysResult>("alicloud:vpn/getGateways:getGateways", args ?? new GetGatewaysInvokeArgs(), options.WithDefaults());
     }
 
 

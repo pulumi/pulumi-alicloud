@@ -80,6 +80,41 @@ namespace Pulumi.AliCloud.Gpdb
         /// </summary>
         public static Output<GetDataBackupsResult> Invoke(GetDataBackupsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDataBackupsResult>("alicloud:gpdb/getDataBackups:getDataBackups", args ?? new GetDataBackupsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides Gpdb Data Backup available to the user.[What is Data Backup](https://www.alibabacloud.com/help/en/)
+        /// 
+        /// &gt; **NOTE:** Available since v1.231.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Gpdb.GetInstances.Invoke(new()
+        ///     {
+        ///         NameRegex = "^default-NODELETING$",
+        ///     });
+        /// 
+        ///     var defaultGetDataBackups = AliCloud.Gpdb.GetDataBackups.Invoke(new()
+        ///     {
+        ///         DbInstanceId = @default.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0]),
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudGpdbDataBackupExampleId"] = defaultGetDataBackups.Apply(getDataBackupsResult =&gt; getDataBackupsResult.Backups[0]?.DbInstanceId),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDataBackupsResult> Invoke(GetDataBackupsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDataBackupsResult>("alicloud:gpdb/getDataBackups:getDataBackups", args ?? new GetDataBackupsInvokeArgs(), options.WithDefaults());
     }
 
 

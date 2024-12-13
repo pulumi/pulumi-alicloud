@@ -78,6 +78,40 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         public static Output<GetShardingNetworkPublicAddressesResult> Invoke(GetShardingNetworkPublicAddressesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetShardingNetworkPublicAddressesResult>("alicloud:mongodb/getShardingNetworkPublicAddresses:getShardingNetworkPublicAddresses", args ?? new GetShardingNetworkPublicAddressesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Mongodb Sharding Network Public Addresses of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.149.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.MongoDB.GetShardingNetworkPublicAddresses.Invoke(new()
+        ///     {
+        ///         DbInstanceId = "example_value",
+        ///         NodeId = "example_value",
+        ///         Role = "Primary",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mongodbShardingNetworkPublicAddressDbInstanceId1"] = example.Apply(getShardingNetworkPublicAddressesResult =&gt; getShardingNetworkPublicAddressesResult.Addresses[0]?.DbInstanceId),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetShardingNetworkPublicAddressesResult> Invoke(GetShardingNetworkPublicAddressesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetShardingNetworkPublicAddressesResult>("alicloud:mongodb/getShardingNetworkPublicAddresses:getShardingNetworkPublicAddresses", args ?? new GetShardingNetworkPublicAddressesInvokeArgs(), options.WithDefaults());
     }
 
 

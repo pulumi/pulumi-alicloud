@@ -99,21 +99,11 @@ type GetHoneypotPresetsResult struct {
 }
 
 func GetHoneypotPresetsOutput(ctx *pulumi.Context, args GetHoneypotPresetsOutputArgs, opts ...pulumi.InvokeOption) GetHoneypotPresetsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetHoneypotPresetsResultOutput, error) {
 			args := v.(GetHoneypotPresetsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetHoneypotPresetsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:threatdetection/getHoneypotPresets:getHoneypotPresets", args, &rv, "", opts...)
-			if err != nil {
-				return GetHoneypotPresetsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetHoneypotPresetsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetHoneypotPresetsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:threatdetection/getHoneypotPresets:getHoneypotPresets", args, GetHoneypotPresetsResultOutput{}, options).(GetHoneypotPresetsResultOutput), nil
 		}).(GetHoneypotPresetsResultOutput)
 }
 

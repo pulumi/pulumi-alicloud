@@ -83,21 +83,11 @@ type GetSamlProvidersResult struct {
 }
 
 func GetSamlProvidersOutput(ctx *pulumi.Context, args GetSamlProvidersOutputArgs, opts ...pulumi.InvokeOption) GetSamlProvidersResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSamlProvidersResultOutput, error) {
 			args := v.(GetSamlProvidersArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetSamlProvidersResult
-			secret, err := ctx.InvokePackageRaw("alicloud:ram/getSamlProviders:getSamlProviders", args, &rv, "", opts...)
-			if err != nil {
-				return GetSamlProvidersResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetSamlProvidersResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetSamlProvidersResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:ram/getSamlProviders:getSamlProviders", args, GetSamlProvidersResultOutput{}, options).(GetSamlProvidersResultOutput), nil
 		}).(GetSamlProvidersResultOutput)
 }
 

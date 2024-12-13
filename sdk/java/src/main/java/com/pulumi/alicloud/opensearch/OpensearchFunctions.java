@@ -11,6 +11,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class OpensearchFunctions {
@@ -327,6 +328,69 @@ public final class OpensearchFunctions {
      * 
      */
     public static Output<GetAppGroupsResult> getAppGroups(GetAppGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:opensearch/getAppGroups:getAppGroups", TypeShape.of(GetAppGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Open Search App Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.136.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.opensearch.AppGroup;
+     * import com.pulumi.alicloud.opensearch.AppGroupArgs;
+     * import com.pulumi.alicloud.opensearch.inputs.AppGroupQuotaArgs;
+     * import com.pulumi.alicloud.opensearch.OpensearchFunctions;
+     * import com.pulumi.alicloud.opensearch.inputs.GetAppGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("tf_testacc");
+     *         var defaultAppGroup = new AppGroup("defaultAppGroup", AppGroupArgs.builder()
+     *             .appGroupName(name)
+     *             .paymentType("PayAsYouGo")
+     *             .type("standard")
+     *             .quota(AppGroupQuotaArgs.builder()
+     *                 .docSize(1)
+     *                 .computeResource(20)
+     *                 .spec("opensearch.share.common")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var default = OpensearchFunctions.getAppGroups(GetAppGroupsArgs.builder()
+     *             .ids(defaultAppGroup.id())
+     *             .build());
+     * 
+     *         ctx.export("appGroups", default_.applyValue(default_ -> default_.groups()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAppGroupsResult> getAppGroups(GetAppGroupsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:opensearch/getAppGroups:getAppGroups", TypeShape.of(GetAppGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**

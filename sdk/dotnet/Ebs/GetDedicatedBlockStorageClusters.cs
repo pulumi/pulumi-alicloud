@@ -78,6 +78,40 @@ namespace Pulumi.AliCloud.Ebs
         /// </summary>
         public static Output<GetDedicatedBlockStorageClustersResult> Invoke(GetDedicatedBlockStorageClustersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDedicatedBlockStorageClustersResult>("alicloud:ebs/getDedicatedBlockStorageClusters:getDedicatedBlockStorageClusters", args ?? new GetDedicatedBlockStorageClustersInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides Ebs Dedicated Block Storage Cluster available to the user.
+        /// 
+        /// &gt; **NOTE:** Available in 1.196.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Ebs.GetDedicatedBlockStorageClusters.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         NameRegex = defaultAlicloudEbsDedicatedBlockStorageCluster.Name,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudEbsDedicatedBlockStorageClusterExampleId"] = @default.Apply(@default =&gt; @default.Apply(getDedicatedBlockStorageClustersResult =&gt; getDedicatedBlockStorageClustersResult.Clusters[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDedicatedBlockStorageClustersResult> Invoke(GetDedicatedBlockStorageClustersInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDedicatedBlockStorageClustersResult>("alicloud:ebs/getDedicatedBlockStorageClusters:getDedicatedBlockStorageClusters", args ?? new GetDedicatedBlockStorageClustersInvokeArgs(), options.WithDefaults());
     }
 
 

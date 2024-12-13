@@ -82,6 +82,42 @@ namespace Pulumi.AliCloud.Oos
         /// </summary>
         public static Output<GetExecutionsResult> Invoke(GetExecutionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetExecutionsResult>("alicloud:oos/getExecutions:getExecutions", args ?? new GetExecutionsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a list of OOS Executions in an Alibaba Cloud account according to the specified filters.
+        ///  
+        /// &gt; **NOTE:** Available in v1.93.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Declare the data source
+        ///     var example = AliCloud.Oos.GetExecutions.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "execution_id",
+        ///         },
+        ///         TemplateName = "name",
+        ///         Status = "Success",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstExecutionId"] = example.Apply(getExecutionsResult =&gt; getExecutionsResult.Executions[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetExecutionsResult> Invoke(GetExecutionsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetExecutionsResult>("alicloud:oos/getExecutions:getExecutions", args ?? new GetExecutionsInvokeArgs(), options.WithDefaults());
     }
 
 

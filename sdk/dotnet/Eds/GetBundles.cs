@@ -66,6 +66,34 @@ namespace Pulumi.AliCloud.Eds
         /// </summary>
         public static Output<GetBundlesResult> Invoke(GetBundlesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBundlesResult>("alicloud:eds/getBundles:getBundles", args ?? new GetBundlesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Ecd bundles of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.143.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Eds.GetBundles.Invoke(new()
+        ///     {
+        ///         BundleType = "SYSTEM",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetBundlesResult> Invoke(GetBundlesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetBundlesResult>("alicloud:eds/getBundles:getBundles", args ?? new GetBundlesInvokeArgs(), options.WithDefaults());
     }
 
 

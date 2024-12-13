@@ -71,21 +71,11 @@ type GetResolverZonesResult struct {
 }
 
 func GetResolverZonesOutput(ctx *pulumi.Context, args GetResolverZonesOutputArgs, opts ...pulumi.InvokeOption) GetResolverZonesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetResolverZonesResultOutput, error) {
 			args := v.(GetResolverZonesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetResolverZonesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:pvtz/getResolverZones:getResolverZones", args, &rv, "", opts...)
-			if err != nil {
-				return GetResolverZonesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetResolverZonesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetResolverZonesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:pvtz/getResolverZones:getResolverZones", args, GetResolverZonesResultOutput{}, options).(GetResolverZonesResultOutput), nil
 		}).(GetResolverZonesResultOutput)
 }
 

@@ -26,6 +26,14 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public static Output<GetTransitRouterVbrAttachmentsResult> Invoke(GetTransitRouterVbrAttachmentsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterVbrAttachmentsResult>("alicloud:cen/getTransitRouterVbrAttachments:getTransitRouterVbrAttachments", args ?? new GetTransitRouterVbrAttachmentsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides CEN Transit Router VBR Attachments available to the user.[What is Cen Transit Router VBR Attachments](https://help.aliyun.com/document_detail/261226.html)
+        /// 
+        /// &gt; **NOTE:** Available in 1.126.0+
+        /// </summary>
+        public static Output<GetTransitRouterVbrAttachmentsResult> Invoke(GetTransitRouterVbrAttachmentsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterVbrAttachmentsResult>("alicloud:cen/getTransitRouterVbrAttachments:getTransitRouterVbrAttachments", args ?? new GetTransitRouterVbrAttachmentsInvokeArgs(), options.WithDefaults());
     }
 
 

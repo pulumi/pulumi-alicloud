@@ -82,6 +82,42 @@ namespace Pulumi.AliCloud.Dms
         /// </summary>
         public static Output<GetEnterpriseUsersResult> Invoke(GetEnterpriseUsersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEnterpriseUsersResult>("alicloud:dms/getEnterpriseUsers:getEnterpriseUsers", args ?? new GetEnterpriseUsersInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a list of DMS Enterprise Users in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available in 1.90.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Declare the data source
+        ///     var dmsEnterpriseUsersDs = AliCloud.Dms.GetEnterpriseUsers.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "uid",
+        ///         },
+        ///         Role = "USER",
+        ///         Status = "NORMAL",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstUserId"] = dmsEnterpriseUsersDs.Apply(getEnterpriseUsersResult =&gt; getEnterpriseUsersResult.Users[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetEnterpriseUsersResult> Invoke(GetEnterpriseUsersInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetEnterpriseUsersResult>("alicloud:dms/getEnterpriseUsers:getEnterpriseUsers", args ?? new GetEnterpriseUsersInvokeArgs(), options.WithDefaults());
     }
 
 

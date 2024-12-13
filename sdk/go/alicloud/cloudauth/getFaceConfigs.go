@@ -84,21 +84,11 @@ type GetFaceConfigsResult struct {
 }
 
 func GetFaceConfigsOutput(ctx *pulumi.Context, args GetFaceConfigsOutputArgs, opts ...pulumi.InvokeOption) GetFaceConfigsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetFaceConfigsResultOutput, error) {
 			args := v.(GetFaceConfigsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetFaceConfigsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:cloudauth/getFaceConfigs:getFaceConfigs", args, &rv, "", opts...)
-			if err != nil {
-				return GetFaceConfigsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetFaceConfigsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetFaceConfigsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:cloudauth/getFaceConfigs:getFaceConfigs", args, GetFaceConfigsResultOutput{}, options).(GetFaceConfigsResultOutput), nil
 		}).(GetFaceConfigsResultOutput)
 }
 

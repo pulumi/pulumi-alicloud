@@ -100,6 +100,51 @@ namespace Pulumi.AliCloud.Arms
         /// </summary>
         public static Output<GetRemoteWritesResult> Invoke(GetRemoteWritesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRemoteWritesResult>("alicloud:arms/getRemoteWrites:getRemoteWrites", args ?? new GetRemoteWritesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Arms Remote Writes of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.204.0.
+        /// 
+        /// &gt; **DEPRECATED:** This resource has been deprecated since v1.228.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Arms.GetRemoteWrites.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         ClusterId = "your_cluster_id",
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Arms.GetRemoteWrites.Invoke(new()
+        ///     {
+        ///         NameRegex = "tf-example",
+        ///         ClusterId = "your_cluster_id",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["armsRemoteWritesId1"] = ids.Apply(getRemoteWritesResult =&gt; getRemoteWritesResult.RemoteWrites[0]?.Id),
+        ///         ["armsRemoteWritesId2"] = nameRegex.Apply(getRemoteWritesResult =&gt; getRemoteWritesResult.RemoteWrites[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRemoteWritesResult> Invoke(GetRemoteWritesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRemoteWritesResult>("alicloud:arms/getRemoteWrites:getRemoteWrites", args ?? new GetRemoteWritesInvokeArgs(), options.WithDefaults());
     }
 
 

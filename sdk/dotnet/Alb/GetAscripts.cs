@@ -82,6 +82,42 @@ namespace Pulumi.AliCloud.Alb
         /// </summary>
         public static Output<GetAscriptsResult> Invoke(GetAscriptsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAscriptsResult>("alicloud:alb/getAscripts:getAscripts", args ?? new GetAscriptsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides Alb Ascript available to the user.
+        /// 
+        /// &gt; **NOTE:** Available in 1.195.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Alb.GetAscripts.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultAlicloudAlbAscript.Id,
+        ///         },
+        ///         NameRegex = defaultAlicloudAlbAscript.Name,
+        ///         AscriptName = "test",
+        ///         ListenerId = listenerId,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudAlbAscriptExampleId"] = @default.Apply(@default =&gt; @default.Apply(getAscriptsResult =&gt; getAscriptsResult.Ascripts[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAscriptsResult> Invoke(GetAscriptsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAscriptsResult>("alicloud:alb/getAscripts:getAscripts", args ?? new GetAscriptsInvokeArgs(), options.WithDefaults());
     }
 
 

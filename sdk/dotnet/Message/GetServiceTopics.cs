@@ -88,6 +88,45 @@ namespace Pulumi.AliCloud.Message
         /// </summary>
         public static Output<GetServiceTopicsResult> Invoke(GetServiceTopicsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceTopicsResult>("alicloud:message/getServiceTopics:getServiceTopics", args ?? new GetServiceTopicsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Message Notification Service Topics of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.188.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Message.GetServiceTopics.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///     });
+        /// 
+        ///     var name = AliCloud.Message.GetServiceTopics.Invoke(new()
+        ///     {
+        ///         TopicName = "tf-example",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["topicId1"] = ids.Apply(getServiceTopicsResult =&gt; getServiceTopicsResult.Topics[0]?.Id),
+        ///         ["topicId2"] = name.Apply(getServiceTopicsResult =&gt; getServiceTopicsResult.Topics[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetServiceTopicsResult> Invoke(GetServiceTopicsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceTopicsResult>("alicloud:message/getServiceTopics:getServiceTopics", args ?? new GetServiceTopicsInvokeArgs(), options.WithDefaults());
     }
 
 

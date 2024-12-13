@@ -26,6 +26,14 @@ namespace Pulumi.AliCloud.Dms
         /// </summary>
         public static Output<GetEnterpriseLogicDatabasesResult> Invoke(GetEnterpriseLogicDatabasesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEnterpriseLogicDatabasesResult>("alicloud:dms/getEnterpriseLogicDatabases:getEnterpriseLogicDatabases", args ?? new GetEnterpriseLogicDatabasesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides DMS Enterprise Logic Database available to the user. [What is Logic Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-createlogicdatabase).
+        /// 
+        /// &gt; **NOTE:** Available since v1.195.0.
+        /// </summary>
+        public static Output<GetEnterpriseLogicDatabasesResult> Invoke(GetEnterpriseLogicDatabasesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetEnterpriseLogicDatabasesResult>("alicloud:dms/getEnterpriseLogicDatabases:getEnterpriseLogicDatabases", args ?? new GetEnterpriseLogicDatabasesInvokeArgs(), options.WithDefaults());
     }
 
 

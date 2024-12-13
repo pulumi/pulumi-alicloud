@@ -26,6 +26,14 @@ namespace Pulumi.AliCloud.Bss
         /// </summary>
         public static Output<GetOpenApiProductsResult> Invoke(GetOpenApiProductsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOpenApiProductsResult>("alicloud:bss/getOpenApiProducts:getOpenApiProducts", args ?? new GetOpenApiProductsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/boa/latest/api-bssopenapi-2017-12-14-queryproductlist)
+        /// 
+        /// &gt; **NOTE:** Available since v1.195.0.
+        /// </summary>
+        public static Output<GetOpenApiProductsResult> Invoke(GetOpenApiProductsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetOpenApiProductsResult>("alicloud:bss/getOpenApiProducts:getOpenApiProducts", args ?? new GetOpenApiProductsInvokeArgs(), options.WithDefaults());
     }
 
 

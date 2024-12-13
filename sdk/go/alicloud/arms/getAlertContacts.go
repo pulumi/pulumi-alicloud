@@ -89,21 +89,11 @@ type GetAlertContactsResult struct {
 }
 
 func GetAlertContactsOutput(ctx *pulumi.Context, args GetAlertContactsOutputArgs, opts ...pulumi.InvokeOption) GetAlertContactsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAlertContactsResultOutput, error) {
 			args := v.(GetAlertContactsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetAlertContactsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:arms/getAlertContacts:getAlertContacts", args, &rv, "", opts...)
-			if err != nil {
-				return GetAlertContactsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetAlertContactsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetAlertContactsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:arms/getAlertContacts:getAlertContacts", args, GetAlertContactsResultOutput{}, options).(GetAlertContactsResultOutput), nil
 		}).(GetAlertContactsResultOutput)
 }
 

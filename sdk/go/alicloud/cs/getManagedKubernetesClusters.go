@@ -86,21 +86,11 @@ type GetManagedKubernetesClustersResult struct {
 }
 
 func GetManagedKubernetesClustersOutput(ctx *pulumi.Context, args GetManagedKubernetesClustersOutputArgs, opts ...pulumi.InvokeOption) GetManagedKubernetesClustersResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetManagedKubernetesClustersResultOutput, error) {
 			args := v.(GetManagedKubernetesClustersArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetManagedKubernetesClustersResult
-			secret, err := ctx.InvokePackageRaw("alicloud:cs/getManagedKubernetesClusters:getManagedKubernetesClusters", args, &rv, "", opts...)
-			if err != nil {
-				return GetManagedKubernetesClustersResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetManagedKubernetesClustersResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetManagedKubernetesClustersResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:cs/getManagedKubernetesClusters:getManagedKubernetesClusters", args, GetManagedKubernetesClustersResultOutput{}, options).(GetManagedKubernetesClustersResultOutput), nil
 		}).(GetManagedKubernetesClustersResultOutput)
 }
 

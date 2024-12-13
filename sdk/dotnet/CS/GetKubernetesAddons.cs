@@ -28,6 +28,15 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         public static Output<GetKubernetesAddonsResult> Invoke(GetKubernetesAddonsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKubernetesAddonsResult>("alicloud:cs/getKubernetesAddons:getKubernetesAddons", args ?? new GetKubernetesAddonsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a list of available addons that the cluster can install.
+        /// 
+        /// &gt; **NOTE:** Available since v1.150.0.
+        /// &gt; **NOTE:** From version v1.166.0, support for returning custom configuration of kubernetes cluster addon.
+        /// </summary>
+        public static Output<GetKubernetesAddonsResult> Invoke(GetKubernetesAddonsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetKubernetesAddonsResult>("alicloud:cs/getKubernetesAddons:getKubernetesAddons", args ?? new GetKubernetesAddonsInvokeArgs(), options.WithDefaults());
     }
 
 

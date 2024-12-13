@@ -82,6 +82,42 @@ namespace Pulumi.AliCloud.EipAnycast
         /// </summary>
         public static Output<GetAnycastEipAddressesResult> Invoke(GetAnycastEipAddressesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAnycastEipAddressesResult>("alicloud:eipanycast/getAnycastEipAddresses:getAnycastEipAddresses", args ?? new GetAnycastEipAddressesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Eipanycast Anycast Eip Addresses of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.113.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.EipAnycast.GetAnycastEipAddresses.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstEipanycastAnycastEipAddressId"] = example.Apply(getAnycastEipAddressesResult =&gt; getAnycastEipAddressesResult.Addresses[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAnycastEipAddressesResult> Invoke(GetAnycastEipAddressesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAnycastEipAddressesResult>("alicloud:eipanycast/getAnycastEipAddresses:getAnycastEipAddresses", args ?? new GetAnycastEipAddressesInvokeArgs(), options.WithDefaults());
     }
 
 

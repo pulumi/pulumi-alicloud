@@ -120,6 +120,61 @@ namespace Pulumi.AliCloud.CloudMonitor
         /// </summary>
         public static Output<GetServiceHybridDoubleWritesResult> Invoke(GetServiceHybridDoubleWritesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceHybridDoubleWritesResult>("alicloud:cloudmonitor/getServiceHybridDoubleWrites:getServiceHybridDoubleWrites", args ?? new GetServiceHybridDoubleWritesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Cloud Monitor Service Hybrid Double Writes of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.220.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.GetAccount.Invoke();
+        /// 
+        ///     var source = new AliCloud.Cms.Namespace("source", new()
+        ///     {
+        ///         NamespaceName = "your-source-namespace",
+        ///     });
+        /// 
+        ///     var defaultNamespace = new AliCloud.Cms.Namespace("default", new()
+        ///     {
+        ///         NamespaceName = "your-namespace",
+        ///     });
+        /// 
+        ///     var defaultServiceHybridDoubleWrite = new AliCloud.CloudMonitor.ServiceHybridDoubleWrite("default", new()
+        ///     {
+        ///         SourceNamespace = source.Id,
+        ///         SourceUserId = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
+        ///         Namespace = defaultNamespace.Id,
+        ///         UserId = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
+        ///     });
+        /// 
+        ///     var ids = AliCloud.CloudMonitor.GetServiceHybridDoubleWrites.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultServiceHybridDoubleWrite.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cloudMonitorServiceHybridDoubleWritesId1"] = ids.Apply(getServiceHybridDoubleWritesResult =&gt; getServiceHybridDoubleWritesResult.HybridDoubleWrites[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetServiceHybridDoubleWritesResult> Invoke(GetServiceHybridDoubleWritesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceHybridDoubleWritesResult>("alicloud:cloudmonitor/getServiceHybridDoubleWrites:getServiceHybridDoubleWrites", args ?? new GetServiceHybridDoubleWritesInvokeArgs(), options.WithDefaults());
     }
 
 

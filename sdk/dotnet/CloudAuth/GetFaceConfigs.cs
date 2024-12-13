@@ -94,6 +94,48 @@ namespace Pulumi.AliCloud.CloudAuth
         /// </summary>
         public static Output<GetFaceConfigsResult> Invoke(GetFaceConfigsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFaceConfigsResult>("alicloud:cloudauth/getFaceConfigs:getFaceConfigs", args ?? new GetFaceConfigsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Cloudauth Face Configs of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.137.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var defaultFaceConfig = new AliCloud.CloudAuth.FaceConfig("default", new()
+        ///     {
+        ///         BizName = "example-value",
+        ///         BizType = "example-value",
+        ///     });
+        /// 
+        ///     var @default = AliCloud.CloudAuth.GetFaceConfigs.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultFaceConfig.Id,
+        ///         },
+        ///         NameRegex = defaultFaceConfig.BizName,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["faceConfig"] = @default.Apply(@default =&gt; @default.Apply(getFaceConfigsResult =&gt; getFaceConfigsResult.Configs[0])),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetFaceConfigsResult> Invoke(GetFaceConfigsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetFaceConfigsResult>("alicloud:cloudauth/getFaceConfigs:getFaceConfigs", args ?? new GetFaceConfigsInvokeArgs(), options.WithDefaults());
     }
 
 

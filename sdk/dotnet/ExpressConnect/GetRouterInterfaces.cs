@@ -78,6 +78,40 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// </summary>
         public static Output<GetRouterInterfacesResult> Invoke(GetRouterInterfacesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRouterInterfacesResult>("alicloud:expressconnect/getRouterInterfaces:getRouterInterfaces", args ?? new GetRouterInterfacesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
+        /// 
+        /// &gt; **NOTE:** Available in 1.199.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.ExpressConnect.GetRouterInterfaces.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultAlicloudRouterInterface.Id,
+        ///         },
+        ///         NameRegex = defaultAlicloudRouterInterface.Name,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudRouterInterfaceExampleId"] = @default.Apply(@default =&gt; @default.Apply(getRouterInterfacesResult =&gt; getRouterInterfacesResult.Interfaces[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRouterInterfacesResult> Invoke(GetRouterInterfacesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRouterInterfacesResult>("alicloud:expressconnect/getRouterInterfaces:getRouterInterfaces", args ?? new GetRouterInterfacesInvokeArgs(), options.WithDefaults());
     }
 
 

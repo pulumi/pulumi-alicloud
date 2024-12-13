@@ -98,6 +98,50 @@ namespace Pulumi.AliCloud.Oos
         /// </summary>
         public static Output<GetApplicationGroupsResult> Invoke(GetApplicationGroupsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApplicationGroupsResult>("alicloud:oos/getApplicationGroups:getApplicationGroups", args ?? new GetApplicationGroupsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Oos Application Groups of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.146.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Oos.GetApplicationGroups.Invoke(new()
+        ///     {
+        ///         ApplicationName = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "my-ApplicationGroup-1",
+        ///             "my-ApplicationGroup-2",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Oos.GetApplicationGroups.Invoke(new()
+        ///     {
+        ///         ApplicationName = "example_value",
+        ///         NameRegex = "^my-ApplicationGroup",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["oosApplicationGroupId1"] = ids.Apply(getApplicationGroupsResult =&gt; getApplicationGroupsResult.Groups[0]?.Id),
+        ///         ["oosApplicationGroupId2"] = nameRegex.Apply(getApplicationGroupsResult =&gt; getApplicationGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetApplicationGroupsResult> Invoke(GetApplicationGroupsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetApplicationGroupsResult>("alicloud:oos/getApplicationGroups:getApplicationGroups", args ?? new GetApplicationGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -29,6 +29,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class RosFunctions {
@@ -177,6 +178,55 @@ public final class RosFunctions {
      * 
      */
     public static Output<GetChangeSetsResult> getChangeSets(GetChangeSetsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ros/getChangeSets:getChangeSets", TypeShape.of(GetChangeSetsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Ros Change Sets of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.105.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.ros.inputs.GetChangeSetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RosFunctions.getChangeSets(GetChangeSetsArgs.builder()
+     *             .stackId("example_value")
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
+     *             .build());
+     * 
+     *         ctx.export("firstRosChangeSetId", example.applyValue(getChangeSetsResult -> getChangeSetsResult.sets()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetChangeSetsResult> getChangeSets(GetChangeSetsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:ros/getChangeSets:getChangeSets", TypeShape.of(GetChangeSetsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -495,6 +545,51 @@ public final class RosFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetRegionsResult> getRegions(GetRegionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ros/getRegions:getRegions", TypeShape.of(GetRegionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Ros Regions of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.145.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.ros.inputs.GetRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = RosFunctions.getRegions();
+     * 
+     *         ctx.export("rosRegionRegionId1", all.applyValue(getRegionsResult -> getRegionsResult.regions()[0].regionId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetRegionsResult> getRegionsPlain(GetRegionsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ros/getRegions:getRegions", TypeShape.of(GetRegionsResult.class), args, Utilities.withVersion(options));
     }
@@ -736,6 +831,54 @@ public final class RosFunctions {
      * 
      */
     public static Output<GetStackGroupsResult> getStackGroups(GetStackGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ros/getStackGroups:getStackGroups", TypeShape.of(GetStackGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Ros Stack Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.107.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.ros.inputs.GetStackGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RosFunctions.getStackGroups(GetStackGroupsArgs.builder()
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
+     *             .build());
+     * 
+     *         ctx.export("firstRosStackGroupId", example.applyValue(getStackGroupsResult -> getStackGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStackGroupsResult> getStackGroups(GetStackGroupsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:ros/getStackGroups:getStackGroups", TypeShape.of(GetStackGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1071,6 +1214,78 @@ public final class RosFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetStackInstancesResult> getStackInstances(GetStackInstancesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ros/getStackInstances:getStackInstances", TypeShape.of(GetStackInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Ros Stack Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.145.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.ros.inputs.GetStackInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
+     *             .stackGroupName("example_value")
+     *             .ids(            
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .enableDetails(true)
+     *             .build());
+     * 
+     *         ctx.export("rosStackInstanceId1", ids.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
+     *         final var status = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
+     *             .stackGroupName("example_value")
+     *             .status("CURRENT")
+     *             .enableDetails(true)
+     *             .build());
+     * 
+     *         ctx.export("rosStackInstanceId2", status.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
+     *         final var regionId = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
+     *             .stackGroupName("example_value")
+     *             .stackInstanceRegionId("example_value")
+     *             .enableDetails(true)
+     *             .build());
+     * 
+     *         ctx.export("rosStackInstanceId3", regionId.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
+     *         final var accountId = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
+     *             .stackGroupName("example_value")
+     *             .stackInstanceAccountId("example_value")
+     *             .enableDetails(true)
+     *             .build());
+     * 
+     *         ctx.export("rosStackInstanceId4", accountId.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetStackInstancesResult> getStackInstancesPlain(GetStackInstancesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ros/getStackInstances:getStackInstances", TypeShape.of(GetStackInstancesResult.class), args, Utilities.withVersion(options));
     }
@@ -1312,6 +1527,54 @@ public final class RosFunctions {
      * 
      */
     public static Output<GetStacksResult> getStacks(GetStacksArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ros/getStacks:getStacks", TypeShape.of(GetStacksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Ros Stacks of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.106.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.ros.inputs.GetStacksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RosFunctions.getStacks(GetStacksArgs.builder()
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
+     *             .build());
+     * 
+     *         ctx.export("firstRosStackId", example.applyValue(getStacksResult -> getStacksResult.stacks()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStacksResult> getStacks(GetStacksArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:ros/getStacks:getStacks", TypeShape.of(GetStacksResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1701,6 +1964,63 @@ public final class RosFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetTemplateScratchesResult> getTemplateScratches(GetTemplateScratchesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ros/getTemplateScratches:getTemplateScratches", TypeShape.of(GetTemplateScratchesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Ros Template Scratches of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.151.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.ros.inputs.GetTemplateScratchesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
+     *             .ids("example_value")
+     *             .build());
+     * 
+     *         ctx.export("rosTemplateScratchId1", ids.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
+     *         final var status = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
+     *             .status("GENERATE_COMPLETE")
+     *             .build());
+     * 
+     *         ctx.export("rosTemplateScratchId2", status.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
+     *         final var templateScratchType = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
+     *             .templateScratchType("ResourceImport")
+     *             .build());
+     * 
+     *         ctx.export("rosTemplateScratchId3", templateScratchType.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetTemplateScratchesResult> getTemplateScratchesPlain(GetTemplateScratchesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ros/getTemplateScratches:getTemplateScratches", TypeShape.of(GetTemplateScratchesResult.class), args, Utilities.withVersion(options));
     }
@@ -1942,6 +2262,54 @@ public final class RosFunctions {
      * 
      */
     public static Output<GetTemplatesResult> getTemplates(GetTemplatesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ros/getTemplates:getTemplates", TypeShape.of(GetTemplatesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Ros Templates of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.108.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ros.RosFunctions;
+     * import com.pulumi.alicloud.ros.inputs.GetTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RosFunctions.getTemplates(GetTemplatesArgs.builder()
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
+     *             .build());
+     * 
+     *         ctx.export("firstRosTemplateId", example.applyValue(getTemplatesResult -> getTemplatesResult.templates()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTemplatesResult> getTemplates(GetTemplatesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:ros/getTemplates:getTemplates", TypeShape.of(GetTemplatesResult.class), args, Utilities.withVersion(options));
     }
     /**

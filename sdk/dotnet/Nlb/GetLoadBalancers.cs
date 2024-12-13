@@ -92,6 +92,47 @@ namespace Pulumi.AliCloud.Nlb
         /// </summary>
         public static Output<GetLoadBalancersResult> Invoke(GetLoadBalancersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLoadBalancersResult>("alicloud:nlb/getLoadBalancers:getLoadBalancers", args ?? new GetLoadBalancersInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Nlb Load Balancers of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.191.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Nlb.GetLoadBalancers.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Nlb.GetLoadBalancers.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-LoadBalancer",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["nlbLoadBalancerId1"] = ids.Apply(getLoadBalancersResult =&gt; getLoadBalancersResult.Balancers[0]?.Id),
+        ///         ["nlbLoadBalancerId2"] = nameRegex.Apply(getLoadBalancersResult =&gt; getLoadBalancersResult.Balancers[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetLoadBalancersResult> Invoke(GetLoadBalancersInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetLoadBalancersResult>("alicloud:nlb/getLoadBalancers:getLoadBalancers", args ?? new GetLoadBalancersInvokeArgs(), options.WithDefaults());
     }
 
 

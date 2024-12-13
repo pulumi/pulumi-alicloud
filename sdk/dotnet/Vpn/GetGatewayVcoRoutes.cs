@@ -262,6 +262,132 @@ namespace Pulumi.AliCloud.Vpn
         /// </summary>
         public static Output<GetGatewayVcoRoutesResult> Invoke(GetGatewayVcoRoutesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGatewayVcoRoutesResult>("alicloud:vpn/getGatewayVcoRoutes:getGatewayVcoRoutes", args ?? new GetGatewayVcoRoutesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Vpn Gateway Vco Routes of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.183.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var defaultInstance = new AliCloud.Cen.Instance("default", new()
+        ///     {
+        ///         CenInstanceName = name,
+        ///     });
+        /// 
+        ///     var defaultTransitRouter = new AliCloud.Cen.TransitRouter("default", new()
+        ///     {
+        ///         CenId = defaultInstance.Id,
+        ///         TransitRouterDescription = "desd",
+        ///         TransitRouterName = name,
+        ///     });
+        /// 
+        ///     var @default = AliCloud.Cen.GetTransitRouterAvailableResources.Invoke();
+        /// 
+        ///     var defaultCustomerGateway = new AliCloud.Vpn.CustomerGateway("default", new()
+        ///     {
+        ///         Name = name,
+        ///         IpAddress = "42.104.22.210",
+        ///         Asn = "45014",
+        ///         Description = "testAccVpnConnectionDesc",
+        ///     });
+        /// 
+        ///     var defaultGatewayVpnAttachment = new AliCloud.Vpn.GatewayVpnAttachment("default", new()
+        ///     {
+        ///         CustomerGatewayId = defaultCustomerGateway.Id,
+        ///         NetworkType = "public",
+        ///         LocalSubnet = "0.0.0.0/0",
+        ///         RemoteSubnet = "0.0.0.0/0",
+        ///         EffectImmediately = false,
+        ///         IkeConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentIkeConfigArgs
+        ///         {
+        ///             IkeAuthAlg = "md5",
+        ///             IkeEncAlg = "des",
+        ///             IkeVersion = "ikev2",
+        ///             IkeMode = "main",
+        ///             IkeLifetime = 86400,
+        ///             Psk = "tf-testvpn2",
+        ///             IkePfs = "group1",
+        ///             RemoteId = "testbob2",
+        ///             LocalId = "testalice2",
+        ///         },
+        ///         IpsecConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentIpsecConfigArgs
+        ///         {
+        ///             IpsecPfs = "group5",
+        ///             IpsecEncAlg = "des",
+        ///             IpsecAuthAlg = "md5",
+        ///             IpsecLifetime = 86400,
+        ///         },
+        ///         BgpConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentBgpConfigArgs
+        ///         {
+        ///             Enable = true,
+        ///             LocalAsn = 45014,
+        ///             TunnelCidr = "169.254.11.0/30",
+        ///             LocalBgpIp = "169.254.11.1",
+        ///         },
+        ///         HealthCheckConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentHealthCheckConfigArgs
+        ///         {
+        ///             Enable = true,
+        ///             Sip = "192.168.1.1",
+        ///             Dip = "10.0.0.1",
+        ///             Interval = 10,
+        ///             Retry = 10,
+        ///             Policy = "revoke_route",
+        ///         },
+        ///         EnableDpd = true,
+        ///         EnableNatTraversal = true,
+        ///         VpnAttachmentName = name,
+        ///     });
+        /// 
+        ///     var defaultTransitRouterVpnAttachment = new AliCloud.Cen.TransitRouterVpnAttachment("default", new()
+        ///     {
+        ///         AutoPublishRouteEnabled = false,
+        ///         TransitRouterAttachmentDescription = name,
+        ///         TransitRouterAttachmentName = name,
+        ///         CenId = defaultTransitRouter.CenId,
+        ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
+        ///         VpnId = defaultGatewayVpnAttachment.Id,
+        ///         Zones = new[]
+        ///         {
+        ///             new AliCloud.Cen.Inputs.TransitRouterVpnAttachmentZoneArgs
+        ///             {
+        ///                 ZoneId = @default.Apply(@default =&gt; @default.Apply(getTransitRouterAvailableResourcesResult =&gt; getTransitRouterAvailableResourcesResult.Resources[0]?.MasterZones[0])),
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var defaultGatewayVcoRoute = new AliCloud.Vpn.GatewayVcoRoute("default", new()
+        ///     {
+        ///         RouteDest = "192.168.12.0/24",
+        ///         NextHop = defaultTransitRouterVpnAttachment.VpnId,
+        ///         VpnConnectionId = defaultTransitRouterVpnAttachment.VpnId,
+        ///         Weight = 100,
+        ///     });
+        /// 
+        ///     var defaultGetGatewayVcoRoutes = AliCloud.Vpn.GetGatewayVcoRoutes.Invoke(new()
+        ///     {
+        ///         VpnConnectionId = defaultTransitRouterVpnAttachment.VpnId,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpnGatewayVcoRouteId1"] = ids.Routes[0].Id,
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetGatewayVcoRoutesResult> Invoke(GetGatewayVcoRoutesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGatewayVcoRoutesResult>("alicloud:vpn/getGatewayVcoRoutes:getGatewayVcoRoutes", args ?? new GetGatewayVcoRoutesInvokeArgs(), options.WithDefaults());
     }
 
 

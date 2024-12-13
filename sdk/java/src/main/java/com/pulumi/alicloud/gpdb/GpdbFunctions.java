@@ -26,6 +26,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class GpdbFunctions {
@@ -195,6 +196,62 @@ public final class GpdbFunctions {
      * 
      */
     public static Output<GetAccountsResult> getAccounts(GetAccountsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:gpdb/getAccounts:getAccounts", TypeShape.of(GetAccountsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Gpdb Accounts of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.142.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.gpdb.GpdbFunctions;
+     * import com.pulumi.alicloud.gpdb.inputs.GetAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GpdbFunctions.getAccounts(GetAccountsArgs.builder()
+     *             .dbInstanceId("example_value")
+     *             .ids(            
+     *                 "my-Account-1",
+     *                 "my-Account-2")
+     *             .build());
+     * 
+     *         ctx.export("gpdbAccountId1", ids.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
+     *         final var nameRegex = GpdbFunctions.getAccounts(GetAccountsArgs.builder()
+     *             .dbInstanceId("example_value")
+     *             .nameRegex("^my-Account")
+     *             .build());
+     * 
+     *         ctx.export("gpdbAccountId2", nameRegex.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAccountsResult> getAccounts(GetAccountsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:gpdb/getAccounts:getAccounts", TypeShape.of(GetAccountsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -450,6 +507,56 @@ public final class GpdbFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetDataBackupsResult> getDataBackups(GetDataBackupsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:gpdb/getDataBackups:getDataBackups", TypeShape.of(GetDataBackupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Gpdb Data Backup available to the user.[What is Data Backup](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.231.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.gpdb.GpdbFunctions;
+     * import com.pulumi.alicloud.gpdb.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.gpdb.inputs.GetDataBackupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = GpdbFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetDataBackups = GpdbFunctions.getDataBackups(GetDataBackupsArgs.builder()
+     *             .dbInstanceId(default_.ids()[0])
+     *             .build());
+     * 
+     *         ctx.export("alicloudGpdbDataBackupExampleId", defaultGetDataBackups.applyValue(getDataBackupsResult -> getDataBackupsResult.backups()[0].dbInstanceId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDataBackupsResult> getDataBackupsPlain(GetDataBackupsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:gpdb/getDataBackups:getDataBackups", TypeShape.of(GetDataBackupsResult.class), args, Utilities.withVersion(options));
     }
@@ -613,6 +720,60 @@ public final class GpdbFunctions {
      * 
      */
     public static Output<GetDbInstancePlansResult> getDbInstancePlans(GetDbInstancePlansArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:gpdb/getDbInstancePlans:getDbInstancePlans", TypeShape.of(GetDbInstancePlansResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Gpdb Db Instance Plans of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.189.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.gpdb.GpdbFunctions;
+     * import com.pulumi.alicloud.gpdb.inputs.GetDbInstancePlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GpdbFunctions.getDbInstancePlans(GetDbInstancePlansArgs.builder()
+     *             .dbInstanceId("example_value")
+     *             .ids("example_value")
+     *             .build());
+     * 
+     *         ctx.export("gpdbDbInstancePlanId1", ids.applyValue(getDbInstancePlansResult -> getDbInstancePlansResult.plans()[0].id()));
+     *         final var nameRegex = GpdbFunctions.getDbInstancePlans(GetDbInstancePlansArgs.builder()
+     *             .dbInstanceId("example_value")
+     *             .nameRegex("^my-DBInstancePlan")
+     *             .build());
+     * 
+     *         ctx.export("gpdbDbInstancePlanId2", nameRegex.applyValue(getDbInstancePlansResult -> getDbInstancePlansResult.plans()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDbInstancePlansResult> getDbInstancePlans(GetDbInstancePlansArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:gpdb/getDbInstancePlans:getDbInstancePlans", TypeShape.of(GetDbInstancePlansResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -936,6 +1097,51 @@ public final class GpdbFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:gpdb/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the AnalyticDB for PostgreSQL instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:**  Available in 1.47.0+
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.gpdb.GpdbFunctions;
+     * import com.pulumi.alicloud.gpdb.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GpdbFunctions.getInstances();
+     * 
+     *         ctx.export("gpdbDbInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:gpdb/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
@@ -1148,6 +1354,59 @@ public final class GpdbFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetLogBackupsResult> getLogBackups(GetLogBackupsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:gpdb/getLogBackups:getLogBackups", TypeShape.of(GetLogBackupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Gpdb Logbackup available to the user.[What is Log Backup](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.231.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.gpdb.GpdbFunctions;
+     * import com.pulumi.alicloud.gpdb.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.gpdb.inputs.GetLogBackupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = GpdbFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetLogBackups = GpdbFunctions.getLogBackups(GetLogBackupsArgs.builder()
+     *             .startTime("2022-12-12T02:00Z")
+     *             .endTime("2024-12-12T02:00Z")
+     *             .dbInstanceId(default_.ids()[0])
+     *             .ids(default_.ids()[0])
+     *             .build());
+     * 
+     *         ctx.export("alicloudGpdbLogbackupExampleId", defaultGetLogBackups.applyValue(getLogBackupsResult -> getLogBackupsResult.logbackups()[0].dbInstanceId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetLogBackupsResult> getLogBackupsPlain(GetLogBackupsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:gpdb/getLogBackups:getLogBackups", TypeShape.of(GetLogBackupsResult.class), args, Utilities.withVersion(options));
     }
@@ -1219,6 +1478,20 @@ public final class GpdbFunctions {
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:gpdb/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides availability zones for Gpdb that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+     * 
+     * &gt; **NOTE:** Available in v1.73.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:gpdb/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
     }
     /**

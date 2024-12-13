@@ -80,6 +80,41 @@ namespace Pulumi.AliCloud.Eflo
         /// </summary>
         public static Output<GetVpdsResult> Invoke(GetVpdsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpdsResult>("alicloud:eflo/getVpds:getVpds", args ?? new GetVpdsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides Eflo Vpd available to the user.[What is Vpd](https://help.aliyun.com/document_detail/604976.html)
+        /// 
+        /// &gt; **NOTE:** Available in 1.201.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Eflo.GetVpds.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultAlicloudEfloVpd.Id,
+        ///         },
+        ///         NameRegex = defaultAlicloudEfloVpd.Name,
+        ///         VpdName = "RMC-Terraform-Test",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudEfloVpdExampleId"] = @default.Apply(@default =&gt; @default.Apply(getVpdsResult =&gt; getVpdsResult.Vpds[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetVpdsResult> Invoke(GetVpdsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVpdsResult>("alicloud:eflo/getVpds:getVpds", args ?? new GetVpdsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -158,6 +158,80 @@ namespace Pulumi.AliCloud.Quotas
         /// </summary>
         public static Output<GetTemplateApplicationsResult> Invoke(GetTemplateApplicationsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTemplateApplicationsResult>("alicloud:quotas/getTemplateApplications:getTemplateApplications", args ?? new GetTemplateApplicationsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides Quotas Template Applications available to the user.[What is Template Applications](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-createquotaapplicationsfortemplate)
+        /// 
+        /// &gt; **NOTE:** Available since v1.214.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.ResourceManager.GetAccounts.Invoke(new()
+        ///     {
+        ///         Status = "CreateSuccess",
+        ///     });
+        /// 
+        ///     var defaultTemplateApplications = new AliCloud.Quotas.TemplateApplications("default", new()
+        ///     {
+        ///         QuotaActionCode = "vpc_whitelist/ha_vip_whitelist",
+        ///         ProductCode = "vpc",
+        ///         QuotaCategory = "FlowControl",
+        ///         AliyunUids = new[]
+        ///         {
+        ///             @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Ids[0])),
+        ///         },
+        ///         DesireValue = 6,
+        ///         NoticeType = 0,
+        ///         EnvLanguage = "zh",
+        ///         Reason = "example",
+        ///         Dimensions = new[]
+        ///         {
+        ///             new AliCloud.Quotas.Inputs.TemplateApplicationsDimensionArgs
+        ///             {
+        ///                 Key = "apiName",
+        ///                 Value = "GetProductQuotaDimension",
+        ///             },
+        ///             new AliCloud.Quotas.Inputs.TemplateApplicationsDimensionArgs
+        ///             {
+        ///                 Key = "apiVersion",
+        ///                 Value = "2020-05-10",
+        ///             },
+        ///             new AliCloud.Quotas.Inputs.TemplateApplicationsDimensionArgs
+        ///             {
+        ///                 Key = "regionId",
+        ///                 Value = "cn-hangzhou",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var defaultGetTemplateApplications = AliCloud.Quotas.GetTemplateApplications.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultTemplateApplications.Id,
+        ///         },
+        ///         ProductCode = "vpc",
+        ///         QuotaActionCode = "vpc_whitelist/ha_vip_whitelist",
+        ///         QuotaCategory = "FlowControl",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudQuotasTemplateApplicationsExampleId"] = defaultGetTemplateApplications.Apply(getTemplateApplicationsResult =&gt; getTemplateApplicationsResult.Applications[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTemplateApplicationsResult> Invoke(GetTemplateApplicationsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTemplateApplicationsResult>("alicloud:quotas/getTemplateApplications:getTemplateApplications", args ?? new GetTemplateApplicationsInvokeArgs(), options.WithDefaults());
     }
 
 

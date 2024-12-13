@@ -14,6 +14,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class IotFunctions {
@@ -240,6 +241,51 @@ public final class IotFunctions {
      * 
      */
     public static Output<GetDeviceGroupsResult> getDeviceGroups(GetDeviceGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:iot/getDeviceGroups:getDeviceGroups", TypeShape.of(GetDeviceGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Iot Device Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.134.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.iot.IotFunctions;
+     * import com.pulumi.alicloud.iot.inputs.GetDeviceGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = IotFunctions.getDeviceGroups();
+     * 
+     *         ctx.export("iotDeviceGroupId1", ids.applyValue(getDeviceGroupsResult -> getDeviceGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDeviceGroupsResult> getDeviceGroups(GetDeviceGroupsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:iot/getDeviceGroups:getDeviceGroups", TypeShape.of(GetDeviceGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -515,6 +561,52 @@ public final class IotFunctions {
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:iot/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Using this data source can open IOT service automatically. If the service has been opened, it will return opened.
+     * 
+     * For information about IOT and how to use it, see [What is IOT](https://www.alibabacloud.com/help/en/product/30520.htm).
+     * 
+     * &gt; **NOTE:** Available in v1.115.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.iot.IotFunctions;
+     * import com.pulumi.alicloud.iot.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = IotFunctions.getService(GetServiceArgs.builder()
+     *             .enable("On")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:iot/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
     }
     /**

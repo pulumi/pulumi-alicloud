@@ -80,6 +80,41 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// </summary>
         public static Output<GetVulWhitelistsResult> Invoke(GetVulWhitelistsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVulWhitelistsResult>("alicloud:threatdetection/getVulWhitelists:getVulWhitelists", args ?? new GetVulWhitelistsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides Threat Detection Vul Whitelists of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.195.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.ThreatDetection.GetVulWhitelists.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudThreatDetectionVulWhitelistExampleId"] = @default.Apply(@default =&gt; @default.Apply(getVulWhitelistsResult =&gt; getVulWhitelistsResult.Whitelists[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetVulWhitelistsResult> Invoke(GetVulWhitelistsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVulWhitelistsResult>("alicloud:threatdetection/getVulWhitelists:getVulWhitelists", args ?? new GetVulWhitelistsInvokeArgs(), options.WithDefaults());
     }
 
 

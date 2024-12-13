@@ -100,6 +100,51 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public static Output<GetCommonBandwidthPackagesResult> Invoke(GetCommonBandwidthPackagesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCommonBandwidthPackagesResult>("alicloud:vpc/getCommonBandwidthPackages:getCommonBandwidthPackages", args ?? new GetCommonBandwidthPackagesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a list of Common Bandwidth Packages owned by an Alibaba Cloud account.
+        /// 
+        /// &gt; **NOTE:** Available in 1.36.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var fooCommonBandwithPackage = new AliCloud.Vpc.CommonBandwithPackage("foo", new()
+        ///     {
+        ///         Bandwidth = "2",
+        ///         Name = "tf-testAccCommonBandwidthPackage",
+        ///         Description = "tf-testAcc-CommonBandwidthPackage",
+        ///     });
+        /// 
+        ///     var foo = AliCloud.Vpc.GetCommonBandwidthPackages.Invoke(new()
+        ///     {
+        ///         NameRegex = "^tf-testAcc.*",
+        ///         Ids = new[]
+        ///         {
+        ///             fooCommonBandwithPackage.Id,
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ## Public ip addresses Block
+        ///   
+        ///   The public ip addresses mapping supports the following:
+        ///   
+        ///   * `ip_address`   - The address of the EIP.
+        ///   * `allocation_id` - The ID of the EIP instance.
+        ///   * `bandwidth_package_ip_relation_status` - The IP relation status of bandwidth package.
+        /// </summary>
+        public static Output<GetCommonBandwidthPackagesResult> Invoke(GetCommonBandwidthPackagesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCommonBandwidthPackagesResult>("alicloud:vpc/getCommonBandwidthPackages:getCommonBandwidthPackages", args ?? new GetCommonBandwidthPackagesInvokeArgs(), options.WithDefaults());
     }
 
 

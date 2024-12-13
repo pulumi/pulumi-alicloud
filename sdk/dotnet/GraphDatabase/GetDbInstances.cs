@@ -120,6 +120,61 @@ namespace Pulumi.AliCloud.GraphDatabase
         /// </summary>
         public static Output<GetDbInstancesResult> Invoke(GetDbInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDbInstancesResult>("alicloud:graphdatabase/getDbInstances:getDbInstances", args ?? new GetDbInstancesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Graph Database Db Instances of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.136.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.GraphDatabase.GetDbInstances.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///     });
+        /// 
+        ///     var status = AliCloud.GraphDatabase.GetDbInstances.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         Status = "Running",
+        ///     });
+        /// 
+        ///     var description = AliCloud.GraphDatabase.GetDbInstances.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         DbInstanceDescription = "example_value",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["graphDatabaseDbInstanceId1"] = ids.Apply(getDbInstancesResult =&gt; getDbInstancesResult.Instances[0]?.Id),
+        ///         ["graphDatabaseDbInstanceId2"] = status.Apply(getDbInstancesResult =&gt; getDbInstancesResult.Instances[0]?.Id),
+        ///         ["graphDatabaseDbInstanceId3"] = description.Apply(getDbInstancesResult =&gt; getDbInstancesResult.Instances[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDbInstancesResult> Invoke(GetDbInstancesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDbInstancesResult>("alicloud:graphdatabase/getDbInstances:getDbInstances", args ?? new GetDbInstancesInvokeArgs(), options.WithDefaults());
     }
 
 

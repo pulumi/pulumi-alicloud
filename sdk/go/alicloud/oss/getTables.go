@@ -57,21 +57,11 @@ type GetTablesResult struct {
 }
 
 func GetTablesOutput(ctx *pulumi.Context, args GetTablesOutputArgs, opts ...pulumi.InvokeOption) GetTablesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetTablesResultOutput, error) {
 			args := v.(GetTablesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetTablesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:oss/getTables:getTables", args, &rv, "", opts...)
-			if err != nil {
-				return GetTablesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetTablesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetTablesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:oss/getTables:getTables", args, GetTablesResultOutput{}, options).(GetTablesResultOutput), nil
 		}).(GetTablesResultOutput)
 }
 

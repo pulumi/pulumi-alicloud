@@ -23,6 +23,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class AdbFunctions {
@@ -269,6 +270,55 @@ public final class AdbFunctions {
      * 
      */
     public static Output<GetClustersResult> getClusters(GetClustersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:adb/getClusters:getClusters", TypeShape.of(GetClustersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `alicloud.adb.getClusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
+     * Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
+     * 
+     * &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
+     * 
+     * &gt; **NOTE:** Available in v1.71.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.adb.AdbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var adbClustersDs = AdbFunctions.getClusters(GetClustersArgs.builder()
+     *             .descriptionRegex("am-\\w+")
+     *             .status("Running")
+     *             .build());
+     * 
+     *         ctx.export("firstAdbClusterId", adbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetClustersResult> getClusters(GetClustersArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:adb/getClusters:getClusters", TypeShape.of(GetClustersResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -599,6 +649,53 @@ public final class AdbFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetDBClusterLakeVersionsResult> getDBClusterLakeVersions(GetDBClusterLakeVersionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:adb/getDBClusterLakeVersions:getDBClusterLakeVersions", TypeShape.of(GetDBClusterLakeVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Adb DBCluster Lake Versions of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.190.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.adb.AdbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetDBClusterLakeVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AdbFunctions.getDBClusterLakeVersions(GetDBClusterLakeVersionsArgs.builder()
+     *             .ids("example_id")
+     *             .build());
+     * 
+     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult.versions()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDBClusterLakeVersionsResult> getDBClusterLakeVersionsPlain(GetDBClusterLakeVersionsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:adb/getDBClusterLakeVersions:getDBClusterLakeVersions", TypeShape.of(GetDBClusterLakeVersionsResult.class), args, Utilities.withVersion(options));
     }
@@ -881,6 +978,53 @@ public final class AdbFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetDBClustersResult> getDBClusters(GetDBClustersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:adb/getDBClusters:getDBClusters", TypeShape.of(GetDBClustersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Adb DBClusters of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.121.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.adb.AdbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetDBClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AdbFunctions.getDBClusters(GetDBClustersArgs.builder()
+     *             .descriptionRegex("example")
+     *             .build());
+     * 
+     *         ctx.export("firstAdbDbClusterId", example.applyValue(getDBClustersResult -> getDBClustersResult.clusters()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDBClustersResult> getDBClustersPlain(GetDBClustersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:adb/getDBClusters:getDBClusters", TypeShape.of(GetDBClustersResult.class), args, Utilities.withVersion(options));
     }
@@ -1020,6 +1164,52 @@ public final class AdbFunctions {
      * 
      */
     public static Output<GetResourceGroupsResult> getResourceGroups(GetResourceGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:adb/getResourceGroups:getResourceGroups", TypeShape.of(GetResourceGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Adb Resource Group available to the user.[What is Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describedbresourcegroup)
+     * 
+     * &gt; **NOTE:** Available since v1.195.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.adb.AdbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetResourceGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = AdbFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .dbClusterId("am-bp1a16357gty69185")
+     *             .groupName("TESTOPENAPI")
+     *             .build());
+     * 
+     *         ctx.export("alicloudAdbResourceGroupExampleId", default_.groups()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetResourceGroupsResult> getResourceGroups(GetResourceGroupsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:adb/getResourceGroups:getResourceGroups", TypeShape.of(GetResourceGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1281,6 +1471,49 @@ public final class AdbFunctions {
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:adb/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides availability zones for ADB that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+     * 
+     * &gt; **NOTE:** Available in v1.73.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.adb.AdbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Declare the data source
+     *         final var zonesIds = AdbFunctions.getZones();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:adb/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
     }
     /**

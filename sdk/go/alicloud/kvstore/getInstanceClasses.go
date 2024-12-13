@@ -132,21 +132,11 @@ type GetInstanceClassesResult struct {
 }
 
 func GetInstanceClassesOutput(ctx *pulumi.Context, args GetInstanceClassesOutputArgs, opts ...pulumi.InvokeOption) GetInstanceClassesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetInstanceClassesResultOutput, error) {
 			args := v.(GetInstanceClassesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetInstanceClassesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:kvstore/getInstanceClasses:getInstanceClasses", args, &rv, "", opts...)
-			if err != nil {
-				return GetInstanceClassesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetInstanceClassesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetInstanceClassesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:kvstore/getInstanceClasses:getInstanceClasses", args, GetInstanceClassesResultOutput{}, options).(GetInstanceClassesResultOutput), nil
 		}).(GetInstanceClassesResultOutput)
 }
 

@@ -78,6 +78,40 @@ namespace Pulumi.AliCloud.Edas
         /// </summary>
         public static Output<GetApplicationsResult> Invoke(GetApplicationsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApplicationsResult>("alicloud:edas/getApplications:getApplications", args ?? new GetApplicationsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a list of EDAS application in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available in 1.82.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var applications = AliCloud.Edas.GetApplications.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "xxx",
+        ///         },
+        ///         OutputFile = "application.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstApplicationName"] = applications.Apply(getApplicationsResult =&gt; getApplicationsResult.Applications[0]?.AppName),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetApplicationsResult> Invoke(GetApplicationsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetApplicationsResult>("alicloud:edas/getApplications:getApplications", args ?? new GetApplicationsInvokeArgs(), options.WithDefaults());
     }
 
 

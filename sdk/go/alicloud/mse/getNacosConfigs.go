@@ -167,21 +167,11 @@ type GetNacosConfigsResult struct {
 }
 
 func GetNacosConfigsOutput(ctx *pulumi.Context, args GetNacosConfigsOutputArgs, opts ...pulumi.InvokeOption) GetNacosConfigsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetNacosConfigsResultOutput, error) {
 			args := v.(GetNacosConfigsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetNacosConfigsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:mse/getNacosConfigs:getNacosConfigs", args, &rv, "", opts...)
-			if err != nil {
-				return GetNacosConfigsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetNacosConfigsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetNacosConfigsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:mse/getNacosConfigs:getNacosConfigs", args, GetNacosConfigsResultOutput{}, options).(GetNacosConfigsResultOutput), nil
 		}).(GetNacosConfigsResultOutput)
 }
 

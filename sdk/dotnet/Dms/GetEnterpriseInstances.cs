@@ -80,6 +80,41 @@ namespace Pulumi.AliCloud.Dms
         /// </summary>
         public static Output<GetEnterpriseInstancesResult> Invoke(GetEnterpriseInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEnterpriseInstancesResult>("alicloud:dms/getEnterpriseInstances:getEnterpriseInstances", args ?? new GetEnterpriseInstancesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a list of DMS Enterprise Instances in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available in 1.88.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Declare the data source
+        ///     var dmsEnterpriseInstancesDs = AliCloud.Dms.GetEnterpriseInstances.Invoke(new()
+        ///     {
+        ///         NetType = "CLASSIC",
+        ///         InstanceType = "mysql",
+        ///         EnvType = "test",
+        ///         NameRegex = "tf_testAcc",
+        ///         OutputFile = "dms_enterprise_instances.json",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstDatabaseInstanceId"] = dmsEnterpriseInstancesDs.Apply(getEnterpriseInstancesResult =&gt; getEnterpriseInstancesResult.Instances[0]?.InstanceId),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetEnterpriseInstancesResult> Invoke(GetEnterpriseInstancesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetEnterpriseInstancesResult>("alicloud:dms/getEnterpriseInstances:getEnterpriseInstances", args ?? new GetEnterpriseInstancesInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -20,6 +20,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class FnfFunctions {
@@ -171,6 +172,56 @@ public final class FnfFunctions {
      * 
      */
     public static Output<GetExecutionsResult> getExecutions(GetExecutionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:fnf/getExecutions:getExecutions", TypeShape.of(GetExecutionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the FnF Executions of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.149.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fnf.FnfFunctions;
+     * import com.pulumi.alicloud.fnf.inputs.GetExecutionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = FnfFunctions.getExecutions(GetExecutionsArgs.builder()
+     *             .flowName("example_value")
+     *             .ids(            
+     *                 "my-Execution-1",
+     *                 "my-Execution-2")
+     *             .build());
+     * 
+     *         ctx.export("fnfExecutionId1", idsAlicloudFnFExecutions.executions()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetExecutionsResult> getExecutions(GetExecutionsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:fnf/getExecutions:getExecutions", TypeShape.of(GetExecutionsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -508,6 +559,54 @@ public final class FnfFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetFlowsResult> getFlows(GetFlowsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:fnf/getFlows:getFlows", TypeShape.of(GetFlowsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Fnf Flows of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.105.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fnf.FnfFunctions;
+     * import com.pulumi.alicloud.fnf.inputs.GetFlowsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = FnfFunctions.getFlows(GetFlowsArgs.builder()
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
+     *             .build());
+     * 
+     *         ctx.export("firstFnfFlowId", example.applyValue(getFlowsResult -> getFlowsResult.flows()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetFlowsResult> getFlowsPlain(GetFlowsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:fnf/getFlows:getFlows", TypeShape.of(GetFlowsResult.class), args, Utilities.withVersion(options));
     }
@@ -656,6 +755,55 @@ public final class FnfFunctions {
      * 
      */
     public static Output<GetSchedulesResult> getSchedules(GetSchedulesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:fnf/getSchedules:getSchedules", TypeShape.of(GetSchedulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Fnf Schedules of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.105.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fnf.FnfFunctions;
+     * import com.pulumi.alicloud.fnf.inputs.GetSchedulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = FnfFunctions.getSchedules(GetSchedulesArgs.builder()
+     *             .flowName("example_value")
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
+     *             .build());
+     * 
+     *         ctx.export("firstFnfScheduleId", example.applyValue(getSchedulesResult -> getSchedulesResult.schedules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSchedulesResult> getSchedules(GetSchedulesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:fnf/getSchedules:getSchedules", TypeShape.of(GetSchedulesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -935,6 +1083,52 @@ public final class FnfFunctions {
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:fnf/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Using this data source can open Fnf service automatically. If the service has been opened, it will return opened.
+     * 
+     * For information about Fnf and how to use it, see [What is Fnf](https://www.alibabacloud.com/help/en/product/113549.htm).
+     * 
+     * &gt; **NOTE:** Available in v1.114.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fnf.FnfFunctions;
+     * import com.pulumi.alicloud.fnf.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = FnfFunctions.getService(GetServiceArgs.builder()
+     *             .enable("On")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:fnf/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
     }
     /**

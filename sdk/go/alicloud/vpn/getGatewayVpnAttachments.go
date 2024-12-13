@@ -95,21 +95,11 @@ type GetGatewayVpnAttachmentsResult struct {
 }
 
 func GetGatewayVpnAttachmentsOutput(ctx *pulumi.Context, args GetGatewayVpnAttachmentsOutputArgs, opts ...pulumi.InvokeOption) GetGatewayVpnAttachmentsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetGatewayVpnAttachmentsResultOutput, error) {
 			args := v.(GetGatewayVpnAttachmentsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetGatewayVpnAttachmentsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:vpn/getGatewayVpnAttachments:getGatewayVpnAttachments", args, &rv, "", opts...)
-			if err != nil {
-				return GetGatewayVpnAttachmentsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetGatewayVpnAttachmentsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetGatewayVpnAttachmentsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:vpn/getGatewayVpnAttachments:getGatewayVpnAttachments", args, GetGatewayVpnAttachmentsResultOutput{}, options).(GetGatewayVpnAttachmentsResultOutput), nil
 		}).(GetGatewayVpnAttachmentsResultOutput)
 }
 

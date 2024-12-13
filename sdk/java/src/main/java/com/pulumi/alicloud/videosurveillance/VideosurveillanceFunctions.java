@@ -14,6 +14,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class VideosurveillanceFunctions {
@@ -255,6 +256,54 @@ public final class VideosurveillanceFunctions {
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:videosurveillance/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Using this data source can open Video Surveillance System service automatically. If the service has been opened, it will return opened.
+     * 
+     * For information about Video Surveillance System and how to use it, see [What is VS](https://help.aliyun.com/product/108765.html).
+     * 
+     * &gt; **NOTE:** Available in v1.116.0+
+     * 
+     * &gt; **NOTE:** The Video Surveillance System service is not support in the international site.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.videosurveillance.VideosurveillanceFunctions;
+     * import com.pulumi.alicloud.videosurveillance.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = VideosurveillanceFunctions.getService(GetServiceArgs.builder()
+     *             .enable("On")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:videosurveillance/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -588,6 +637,63 @@ public final class VideosurveillanceFunctions {
      * 
      */
     public static Output<GetSystemGroupsResult> getSystemGroups(GetSystemGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:videosurveillance/getSystemGroups:getSystemGroups", TypeShape.of(GetSystemGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Video Surveillance System Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.135.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.videosurveillance.SystemGroup;
+     * import com.pulumi.alicloud.videosurveillance.SystemGroupArgs;
+     * import com.pulumi.alicloud.videosurveillance.VideosurveillanceFunctions;
+     * import com.pulumi.alicloud.videosurveillance.inputs.GetSystemGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSystemGroup = new SystemGroup("defaultSystemGroup", SystemGroupArgs.builder()
+     *             .groupName("groupname")
+     *             .inProtocol("rtmp")
+     *             .outProtocol("flv")
+     *             .playDomain("your_plan_domain")
+     *             .pushDomain("your_push_domain")
+     *             .build());
+     * 
+     *         final var default = VideosurveillanceFunctions.getSystemGroups(GetSystemGroupsArgs.builder()
+     *             .ids(defaultSystemGroup.id())
+     *             .build());
+     * 
+     *         ctx.export("vsGroup", default_.applyValue(default_ -> default_.ids()[0]));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSystemGroupsResult> getSystemGroups(GetSystemGroupsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:videosurveillance/getSystemGroups:getSystemGroups", TypeShape.of(GetSystemGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**

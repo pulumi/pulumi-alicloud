@@ -76,6 +76,39 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         public static Output<GetInstanceClassesResult> Invoke(GetInstanceClassesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceClassesResult>("alicloud:rds/getInstanceClasses:getInstanceClasses", args ?? new GetInstanceClassesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the RDS instance classes resource available info of Alibaba Cloud.
+        /// 
+        /// &gt; **NOTE:** Available in v1.46.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var resources = AliCloud.Rds.GetInstanceClasses.Invoke(new()
+        ///     {
+        ///         InstanceChargeType = "PostPaid",
+        ///         Engine = "MySQL",
+        ///         EngineVersion = "5.6",
+        ///         OutputFile = "./classes.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstDbInstanceClass"] = resources.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetInstanceClassesResult> Invoke(GetInstanceClassesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceClassesResult>("alicloud:rds/getInstanceClasses:getInstanceClasses", args ?? new GetInstanceClassesInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -83,21 +83,11 @@ type GetEcsStorageCapacityUnitsResult struct {
 }
 
 func GetEcsStorageCapacityUnitsOutput(ctx *pulumi.Context, args GetEcsStorageCapacityUnitsOutputArgs, opts ...pulumi.InvokeOption) GetEcsStorageCapacityUnitsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetEcsStorageCapacityUnitsResultOutput, error) {
 			args := v.(GetEcsStorageCapacityUnitsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetEcsStorageCapacityUnitsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:ecs/getEcsStorageCapacityUnits:getEcsStorageCapacityUnits", args, &rv, "", opts...)
-			if err != nil {
-				return GetEcsStorageCapacityUnitsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetEcsStorageCapacityUnitsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetEcsStorageCapacityUnitsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:ecs/getEcsStorageCapacityUnits:getEcsStorageCapacityUnits", args, GetEcsStorageCapacityUnitsResultOutput{}, options).(GetEcsStorageCapacityUnitsResultOutput), nil
 		}).(GetEcsStorageCapacityUnitsResultOutput)
 }
 

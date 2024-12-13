@@ -176,21 +176,11 @@ type GetDisksResult struct {
 }
 
 func GetDisksOutput(ctx *pulumi.Context, args GetDisksOutputArgs, opts ...pulumi.InvokeOption) GetDisksResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDisksResultOutput, error) {
 			args := v.(GetDisksArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetDisksResult
-			secret, err := ctx.InvokePackageRaw("alicloud:ecs/getDisks:getDisks", args, &rv, "", opts...)
-			if err != nil {
-				return GetDisksResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetDisksResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetDisksResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:ecs/getDisks:getDisks", args, GetDisksResultOutput{}, options).(GetDisksResultOutput), nil
 		}).(GetDisksResultOutput)
 }
 

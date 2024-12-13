@@ -64,6 +64,33 @@ namespace Pulumi.AliCloud
         /// </summary>
         public static Output<GetCallerIdentityResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCallerIdentityResult>("alicloud:index/getCallerIdentity:getCallerIdentity", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the identity of the current user.
+        /// 
+        /// &gt; **NOTE:** Available in 1.65.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var current = AliCloud.GetCallerIdentity.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["currentUserArn"] = current.Apply(getCallerIdentityResult =&gt; getCallerIdentityResult.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetCallerIdentityResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCallerIdentityResult>("alicloud:index/getCallerIdentity:getCallerIdentity", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

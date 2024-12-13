@@ -92,21 +92,11 @@ type GetAdConnectorOfficeSitesResult struct {
 }
 
 func GetAdConnectorOfficeSitesOutput(ctx *pulumi.Context, args GetAdConnectorOfficeSitesOutputArgs, opts ...pulumi.InvokeOption) GetAdConnectorOfficeSitesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAdConnectorOfficeSitesResultOutput, error) {
 			args := v.(GetAdConnectorOfficeSitesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetAdConnectorOfficeSitesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:eds/getAdConnectorOfficeSites:getAdConnectorOfficeSites", args, &rv, "", opts...)
-			if err != nil {
-				return GetAdConnectorOfficeSitesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetAdConnectorOfficeSitesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetAdConnectorOfficeSitesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:eds/getAdConnectorOfficeSites:getAdConnectorOfficeSites", args, GetAdConnectorOfficeSitesResultOutput{}, options).(GetAdConnectorOfficeSitesResultOutput), nil
 		}).(GetAdConnectorOfficeSitesResultOutput)
 }
 

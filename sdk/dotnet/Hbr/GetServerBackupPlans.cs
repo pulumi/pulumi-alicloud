@@ -106,6 +106,54 @@ namespace Pulumi.AliCloud.Hbr
         /// </summary>
         public static Output<GetServerBackupPlansResult> Invoke(GetServerBackupPlansInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServerBackupPlansResult>("alicloud:hbr/getServerBackupPlans:getServerBackupPlans", args ?? new GetServerBackupPlansInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Hbr Server Backup Plans of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.142.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Ecs.GetInstances.Invoke(new()
+        ///     {
+        ///         NameRegex = "no-deleteing-hbr-ecs-server-backup-plan",
+        ///         Status = "Running",
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Hbr.GetServerBackupPlans.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new AliCloud.Hbr.Inputs.GetServerBackupPlansFilterInputArgs
+        ///             {
+        ///                 Key = "instanceId",
+        ///                 Values = new[]
+        ///                 {
+        ///                     @default.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["hbrServerBackupPlanId1"] = ids.Apply(getServerBackupPlansResult =&gt; getServerBackupPlansResult.Plans[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetServerBackupPlansResult> Invoke(GetServerBackupPlansInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServerBackupPlansResult>("alicloud:hbr/getServerBackupPlans:getServerBackupPlans", args ?? new GetServerBackupPlansInvokeArgs(), options.WithDefaults());
     }
 
 

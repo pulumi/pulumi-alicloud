@@ -29,6 +29,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class CloudssoFunctions {
@@ -186,6 +187,58 @@ public final class CloudssoFunctions {
      * 
      */
     public static Output<GetAccessAssignmentsResult> getAccessAssignments(GetAccessAssignmentsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cloudsso/getAccessAssignments:getAccessAssignments", TypeShape.of(GetAccessAssignmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cloud Sso Access Assignments of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.193.0+.
+     * 
+     * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetAccessAssignmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudssoFunctions.getAccessAssignments(GetAccessAssignmentsArgs.builder()
+     *             .directoryId("example_value")
+     *             .ids(            
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .build());
+     * 
+     *         ctx.export("cloudSsoAccessAssignmentId1", ids.applyValue(getAccessAssignmentsResult -> getAccessAssignmentsResult.assignments()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAccessAssignmentsResult> getAccessAssignments(GetAccessAssignmentsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cloudsso/getAccessAssignments:getAccessAssignments", TypeShape.of(GetAccessAssignmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -412,6 +465,64 @@ public final class CloudssoFunctions {
      * 
      */
     public static Output<GetAccessConfigurationsResult> getAccessConfigurations(GetAccessConfigurationsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cloudsso/getAccessConfigurations:getAccessConfigurations", TypeShape.of(GetAccessConfigurationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cloud Sso Access Configurations of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.140.0+.
+     * 
+     * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetAccessConfigurationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudssoFunctions.getAccessConfigurations(GetAccessConfigurationsArgs.builder()
+     *             .directoryId("example_value")
+     *             .ids(            
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .build());
+     * 
+     *         ctx.export("cloudSsoAccessConfigurationId1", ids.applyValue(getAccessConfigurationsResult -> getAccessConfigurationsResult.configurations()[0].id()));
+     *         final var nameRegex = CloudssoFunctions.getAccessConfigurations(GetAccessConfigurationsArgs.builder()
+     *             .directoryId("example_value")
+     *             .nameRegex("^my-AccessConfiguration")
+     *             .build());
+     * 
+     *         ctx.export("cloudSsoAccessConfigurationId2", nameRegex.applyValue(getAccessConfigurationsResult -> getAccessConfigurationsResult.configurations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAccessConfigurationsResult> getAccessConfigurations(GetAccessConfigurationsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cloudsso/getAccessConfigurations:getAccessConfigurations", TypeShape.of(GetAccessConfigurationsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -793,6 +904,60 @@ public final class CloudssoFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetDirectoriesResult> getDirectories(GetDirectoriesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cloudsso/getDirectories:getDirectories", TypeShape.of(GetDirectoriesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cloud Sso Directories of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.135.0+.
+     * 
+     * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetDirectoriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudssoFunctions.getDirectories(GetDirectoriesArgs.builder()
+     *             .ids("example_id")
+     *             .build());
+     * 
+     *         ctx.export("cloudSsoDirectoryId1", ids.applyValue(getDirectoriesResult -> getDirectoriesResult.directories()[0].id()));
+     *         final var nameRegex = CloudssoFunctions.getDirectories(GetDirectoriesArgs.builder()
+     *             .nameRegex("^my-Directory")
+     *             .build());
+     * 
+     *         ctx.export("cloudSsoDirectoryId2", nameRegex.applyValue(getDirectoriesResult -> getDirectoriesResult.directories()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDirectoriesResult> getDirectoriesPlain(GetDirectoriesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cloudsso/getDirectories:getDirectories", TypeShape.of(GetDirectoriesResult.class), args, Utilities.withVersion(options));
     }
@@ -968,6 +1133,64 @@ public final class CloudssoFunctions {
      * 
      */
     public static Output<GetGroupsResult> getGroups(GetGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cloudsso/getGroups:getGroups", TypeShape.of(GetGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cloud Sso Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.138.0+.
+     * 
+     * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudssoFunctions.getGroups(GetGroupsArgs.builder()
+     *             .directoryId("example_value")
+     *             .ids(            
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .build());
+     * 
+     *         ctx.export("cloudSsoGroupId1", ids.applyValue(getGroupsResult -> getGroupsResult.groups()[0].id()));
+     *         final var nameRegex = CloudssoFunctions.getGroups(GetGroupsArgs.builder()
+     *             .directoryId("example_value")
+     *             .nameRegex("^my-Group")
+     *             .build());
+     * 
+     *         ctx.export("cloudSsoGroupId2", nameRegex.applyValue(getGroupsResult -> getGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGroupsResult> getGroups(GetGroupsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cloudsso/getGroups:getGroups", TypeShape.of(GetGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1233,6 +1456,58 @@ public final class CloudssoFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetScimServerCredentialsResult> getScimServerCredentials(GetScimServerCredentialsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cloudsso/getScimServerCredentials:getScimServerCredentials", TypeShape.of(GetScimServerCredentialsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cloud Sso Scim Server Credentials of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.138.0+.
+     * 
+     * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetScimServerCredentialsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudssoFunctions.getScimServerCredentials(GetScimServerCredentialsArgs.builder()
+     *             .directoryId("example_value")
+     *             .ids(            
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .build());
+     * 
+     *         ctx.export("cloudSsoScimServerCredentialId1", ids.applyValue(getScimServerCredentialsResult -> getScimServerCredentialsResult.credentials()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetScimServerCredentialsResult> getScimServerCredentialsPlain(GetScimServerCredentialsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cloudsso/getScimServerCredentials:getScimServerCredentials", TypeShape.of(GetScimServerCredentialsResult.class), args, Utilities.withVersion(options));
     }
@@ -1384,6 +1659,56 @@ public final class CloudssoFunctions {
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cloudsso/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Using this data source can open Cloud Sso Service automatically.
+     * 
+     * For information about Cloud SSO and how to use it, see [What is Cloud SSO](https://www.alibabacloud.com/help/en/doc-detail/262819.html).
+     * 
+     * &gt; **NOTE:** Available in v1.148.0+.
+     * 
+     * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = CloudssoFunctions.getService(GetServiceArgs.builder()
+     *             .enable("On")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cloudsso/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1650,6 +1975,78 @@ public final class CloudssoFunctions {
      * 
      */
     public static Output<GetUsersResult> getUsers(GetUsersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cloudsso/getUsers:getUsers", TypeShape.of(GetUsersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cloud Sso Users of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.140.0+.
+     * 
+     * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudssoFunctions.getUsers(GetUsersArgs.builder()
+     *             .directoryId("example_value")
+     *             .ids(            
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .build());
+     * 
+     *         ctx.export("cloudSsoUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         final var nameRegex = CloudssoFunctions.getUsers(GetUsersArgs.builder()
+     *             .directoryId("example_value")
+     *             .nameRegex("^my-User")
+     *             .build());
+     * 
+     *         ctx.export("cloudSsoUserId2", nameRegex.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         final var provisionType = CloudssoFunctions.getUsers(GetUsersArgs.builder()
+     *             .directoryId("example_value")
+     *             .ids("example_value-1")
+     *             .provisionType("Manual")
+     *             .build());
+     * 
+     *         ctx.export("cloudSsoUserId3", provisionType.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         final var status = CloudssoFunctions.getUsers(GetUsersArgs.builder()
+     *             .directoryId("example_value")
+     *             .ids("example_value-1")
+     *             .status("Enabled")
+     *             .build());
+     * 
+     *         ctx.export("cloudSsoUserId4", status.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetUsersResult> getUsers(GetUsersArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cloudsso/getUsers:getUsers", TypeShape.of(GetUsersResult.class), args, Utilities.withVersion(options));
     }
     /**

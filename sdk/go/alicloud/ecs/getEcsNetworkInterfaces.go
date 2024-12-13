@@ -136,21 +136,11 @@ type GetEcsNetworkInterfacesResult struct {
 }
 
 func GetEcsNetworkInterfacesOutput(ctx *pulumi.Context, args GetEcsNetworkInterfacesOutputArgs, opts ...pulumi.InvokeOption) GetEcsNetworkInterfacesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetEcsNetworkInterfacesResultOutput, error) {
 			args := v.(GetEcsNetworkInterfacesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetEcsNetworkInterfacesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:ecs/getEcsNetworkInterfaces:getEcsNetworkInterfaces", args, &rv, "", opts...)
-			if err != nil {
-				return GetEcsNetworkInterfacesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetEcsNetworkInterfacesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetEcsNetworkInterfacesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:ecs/getEcsNetworkInterfaces:getEcsNetworkInterfaces", args, GetEcsNetworkInterfacesResultOutput{}, options).(GetEcsNetworkInterfacesResultOutput), nil
 		}).(GetEcsNetworkInterfacesResultOutput)
 }
 

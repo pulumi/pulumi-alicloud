@@ -102,6 +102,52 @@ namespace Pulumi.AliCloud.Mse
         /// </summary>
         public static Output<GetZnodesResult> Invoke(GetZnodesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZnodesResult>("alicloud:mse/getZnodes:getZnodes", args ?? new GetZnodesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Mse Znodes of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.162.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Mse.GetZnodes.Invoke(new()
+        ///     {
+        ///         ClusterId = "example_value",
+        ///         Path = "/",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Mse.GetZnodes.Invoke(new()
+        ///     {
+        ///         Path = "/",
+        ///         ClusterId = "example_value",
+        ///         NameRegex = "^my-Znode",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mseZnodeId1"] = ids.Apply(getZnodesResult =&gt; getZnodesResult.Znodes[0]?.Id),
+        ///         ["mseZnodeId2"] = nameRegex.Apply(getZnodesResult =&gt; getZnodesResult.Znodes[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetZnodesResult> Invoke(GetZnodesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetZnodesResult>("alicloud:mse/getZnodes:getZnodes", args ?? new GetZnodesInvokeArgs(), options.WithDefaults());
     }
 
 

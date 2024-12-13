@@ -93,21 +93,11 @@ type GetHostShareKeysResult struct {
 }
 
 func GetHostShareKeysOutput(ctx *pulumi.Context, args GetHostShareKeysOutputArgs, opts ...pulumi.InvokeOption) GetHostShareKeysResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetHostShareKeysResultOutput, error) {
 			args := v.(GetHostShareKeysArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetHostShareKeysResult
-			secret, err := ctx.InvokePackageRaw("alicloud:bastionhost/getHostShareKeys:getHostShareKeys", args, &rv, "", opts...)
-			if err != nil {
-				return GetHostShareKeysResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetHostShareKeysResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetHostShareKeysResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:bastionhost/getHostShareKeys:getHostShareKeys", args, GetHostShareKeysResultOutput{}, options).(GetHostShareKeysResultOutput), nil
 		}).(GetHostShareKeysResultOutput)
 }
 

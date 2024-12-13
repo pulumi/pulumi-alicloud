@@ -98,6 +98,50 @@ namespace Pulumi.AliCloud.Amqp
         /// </summary>
         public static Output<GetVirtualHostsResult> Invoke(GetVirtualHostsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVirtualHostsResult>("alicloud:amqp/getVirtualHosts:getVirtualHosts", args ?? new GetVirtualHostsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Amqp Virtual Hosts of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.126.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Amqp.GetVirtualHosts.Invoke(new()
+        ///     {
+        ///         InstanceId = "amqp-abc12345",
+        ///         Ids = new[]
+        ///         {
+        ///             "my-VirtualHost-1",
+        ///             "my-VirtualHost-2",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Amqp.GetVirtualHosts.Invoke(new()
+        ///     {
+        ///         InstanceId = "amqp-abc12345",
+        ///         NameRegex = "^my-VirtualHost",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["amqpVirtualHostId1"] = ids.Apply(getVirtualHostsResult =&gt; getVirtualHostsResult.Hosts[0]?.Id),
+        ///         ["amqpVirtualHostId2"] = nameRegex.Apply(getVirtualHostsResult =&gt; getVirtualHostsResult.Hosts[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetVirtualHostsResult> Invoke(GetVirtualHostsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVirtualHostsResult>("alicloud:amqp/getVirtualHosts:getVirtualHosts", args ?? new GetVirtualHostsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -80,21 +80,11 @@ type GetStoresResult struct {
 }
 
 func GetStoresOutput(ctx *pulumi.Context, args GetStoresOutputArgs, opts ...pulumi.InvokeOption) GetStoresResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetStoresResultOutput, error) {
 			args := v.(GetStoresArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetStoresResult
-			secret, err := ctx.InvokePackageRaw("alicloud:log/getStores:getStores", args, &rv, "", opts...)
-			if err != nil {
-				return GetStoresResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetStoresResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetStoresResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:log/getStores:getStores", args, GetStoresResultOutput{}, options).(GetStoresResultOutput), nil
 		}).(GetStoresResultOutput)
 }
 

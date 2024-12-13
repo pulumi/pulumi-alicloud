@@ -80,6 +80,41 @@ namespace Pulumi.AliCloud.Kms
         /// </summary>
         public static Output<GetKeyVersionsResult> Invoke(GetKeyVersionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKeyVersionsResult>("alicloud:kms/getKeyVersions:getKeyVersions", args ?? new GetKeyVersionsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a list of KMS KeyVersions in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; NOTE: Available in v1.85.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Declare the data source
+        ///     var alicloudKmsKeyVersionsDs = AliCloud.Kms.GetKeyVersions.Invoke(new()
+        ///     {
+        ///         KeyId = "08438c-b4d5-4d05-928c-07b7xxxx",
+        ///         Ids = new[]
+        ///         {
+        ///             "d89e8a53-b708-41aa-8c67-6873axxx",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["allVersions"] = alicloudKmsKeyVersionsDs.Apply(getKeyVersionsResult =&gt; getKeyVersionsResult.Versions),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetKeyVersionsResult> Invoke(GetKeyVersionsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetKeyVersionsResult>("alicloud:kms/getKeyVersions:getKeyVersions", args ?? new GetKeyVersionsInvokeArgs(), options.WithDefaults());
     }
 
 

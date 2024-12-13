@@ -74,21 +74,11 @@ type GetAckServiceResult struct {
 }
 
 func GetAckServiceOutput(ctx *pulumi.Context, args GetAckServiceOutputArgs, opts ...pulumi.InvokeOption) GetAckServiceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAckServiceResultOutput, error) {
 			args := v.(GetAckServiceArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetAckServiceResult
-			secret, err := ctx.InvokePackageRaw("alicloud:cs/getAckService:getAckService", args, &rv, "", opts...)
-			if err != nil {
-				return GetAckServiceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetAckServiceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetAckServiceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:cs/getAckService:getAckService", args, GetAckServiceResultOutput{}, options).(GetAckServiceResultOutput), nil
 		}).(GetAckServiceResultOutput)
 }
 

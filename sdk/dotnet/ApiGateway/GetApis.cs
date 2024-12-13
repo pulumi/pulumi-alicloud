@@ -168,6 +168,85 @@ namespace Pulumi.AliCloud.ApiGateway
         /// </summary>
         public static Output<GetApisResult> Invoke(GetApisInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApisResult>("alicloud:apigateway/getApis:getApis", args ?? new GetApisInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Api Gateway APIs of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.22.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = new AliCloud.ApiGateway.Group("default", new()
+        ///     {
+        ///         Name = name,
+        ///         Description = name,
+        ///     });
+        /// 
+        ///     var defaultApi = new AliCloud.ApiGateway.Api("default", new()
+        ///     {
+        ///         GroupId = @default.Id,
+        ///         Name = name,
+        ///         Description = name,
+        ///         AuthType = "APP",
+        ///         ServiceType = "HTTP",
+        ///         RequestConfig = new AliCloud.ApiGateway.Inputs.ApiRequestConfigArgs
+        ///         {
+        ///             Protocol = "HTTP",
+        ///             Method = "GET",
+        ///             Path = "/test/path",
+        ///             Mode = "MAPPING",
+        ///         },
+        ///         HttpServiceConfig = new AliCloud.ApiGateway.Inputs.ApiHttpServiceConfigArgs
+        ///         {
+        ///             Address = "http://apigateway-backend.alicloudapi.com:8080",
+        ///             Method = "GET",
+        ///             Path = "/web/cloudapi",
+        ///             Timeout = 20,
+        ///             AoneName = "cloudapi-openapi",
+        ///         },
+        ///         RequestParameters = new[]
+        ///         {
+        ///             new AliCloud.ApiGateway.Inputs.ApiRequestParameterArgs
+        ///             {
+        ///                 Name = name,
+        ///                 Type = "STRING",
+        ///                 Required = "OPTIONAL",
+        ///                 In = "QUERY",
+        ///                 InService = "QUERY",
+        ///                 NameService = name,
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.ApiGateway.GetApis.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultApi.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["apiGatewayApisId0"] = ids.Apply(getApisResult =&gt; getApisResult.Apis[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetApisResult> Invoke(GetApisInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetApisResult>("alicloud:apigateway/getApis:getApis", args ?? new GetApisInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -78,6 +78,40 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         public static Output<GetKubernetesPermissionResult> Invoke(GetKubernetesPermissionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKubernetesPermissionResult>("alicloud:cs/getKubernetesPermission:getKubernetesPermission", args ?? new GetKubernetesPermissionInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a list of Ram user permissions.
+        /// 
+        /// &gt; **NOTE:** Available since v1.122.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Declare the data source
+        ///     var @default = AliCloud.Ram.GetUsers.Invoke();
+        /// 
+        ///     // permissions
+        ///     var defaultGetKubernetesPermission = AliCloud.CS.GetKubernetesPermission.Invoke(new()
+        ///     {
+        ///         Uid = @default.Apply(getUsersResult =&gt; getUsersResult.Users[0]?.Id),
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["permissions"] = defaultGetKubernetesPermission.Apply(getKubernetesPermissionResult =&gt; getKubernetesPermissionResult.Permissions),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetKubernetesPermissionResult> Invoke(GetKubernetesPermissionInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetKubernetesPermissionResult>("alicloud:cs/getKubernetesPermission:getKubernetesPermission", args ?? new GetKubernetesPermissionInvokeArgs(), options.WithDefaults());
     }
 
 

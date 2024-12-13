@@ -104,21 +104,11 @@ type GetNasFileSystemsResult struct {
 }
 
 func GetNasFileSystemsOutput(ctx *pulumi.Context, args GetNasFileSystemsOutputArgs, opts ...pulumi.InvokeOption) GetNasFileSystemsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetNasFileSystemsResultOutput, error) {
 			args := v.(GetNasFileSystemsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetNasFileSystemsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:eds/getNasFileSystems:getNasFileSystems", args, &rv, "", opts...)
-			if err != nil {
-				return GetNasFileSystemsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetNasFileSystemsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetNasFileSystemsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:eds/getNasFileSystems:getNasFileSystems", args, GetNasFileSystemsResultOutput{}, options).(GetNasFileSystemsResultOutput), nil
 		}).(GetNasFileSystemsResultOutput)
 }
 

@@ -82,6 +82,42 @@ namespace Pulumi.AliCloud.FNF
         /// </summary>
         public static Output<GetFlowsResult> Invoke(GetFlowsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFlowsResult>("alicloud:fnf/getFlows:getFlows", args ?? new GetFlowsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Fnf Flows of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.105.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.FNF.GetFlows.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstFnfFlowId"] = example.Apply(getFlowsResult =&gt; getFlowsResult.Flows[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetFlowsResult> Invoke(GetFlowsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetFlowsResult>("alicloud:fnf/getFlows:getFlows", args ?? new GetFlowsInvokeArgs(), options.WithDefaults());
     }
 
 

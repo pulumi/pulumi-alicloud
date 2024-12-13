@@ -66,6 +66,34 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         public static Output<GetCrossRegionsResult> Invoke(GetCrossRegionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCrossRegionsResult>("alicloud:rds/getCrossRegions:getCrossRegions", args ?? new GetCrossRegionsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides an available area for remote disaster recovery for RDS.
+        /// 
+        /// &gt; **NOTE:** Available in v1.193.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Declare the data source
+        ///     var crossRegions = AliCloud.Rds.GetCrossRegions.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRdsCrossRegions"] = regions.Ids[0],
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetCrossRegionsResult> Invoke(GetCrossRegionsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCrossRegionsResult>("alicloud:rds/getCrossRegions:getCrossRegions", args ?? new GetCrossRegionsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -74,6 +74,38 @@ namespace Pulumi.AliCloud.ActionTrail
         /// </summary>
         public static Output<GetConsumerGroupsResult> Invoke(GetConsumerGroupsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConsumerGroupsResult>("alicloud:actiontrail/getConsumerGroups:getConsumerGroups", args ?? new GetConsumerGroupsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a list of ALIKAFKA Consumer Groups in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available in 1.56.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var consumerGroupsDs = AliCloud.ActionTrail.GetConsumerGroups.Invoke(new()
+        ///     {
+        ///         InstanceId = "xxx",
+        ///         ConsumerIdRegex = "CID-alikafkaGroupDatasourceName",
+        ///         OutputFile = "consumerGroups.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstGroupName"] = consumerGroupsDs.Apply(getConsumerGroupsResult =&gt; getConsumerGroupsResult.ConsumerIds[0]),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetConsumerGroupsResult> Invoke(GetConsumerGroupsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetConsumerGroupsResult>("alicloud:actiontrail/getConsumerGroups:getConsumerGroups", args ?? new GetConsumerGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

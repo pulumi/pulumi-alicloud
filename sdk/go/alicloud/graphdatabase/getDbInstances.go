@@ -102,21 +102,11 @@ type GetDbInstancesResult struct {
 }
 
 func GetDbInstancesOutput(ctx *pulumi.Context, args GetDbInstancesOutputArgs, opts ...pulumi.InvokeOption) GetDbInstancesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDbInstancesResultOutput, error) {
 			args := v.(GetDbInstancesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetDbInstancesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:graphdatabase/getDbInstances:getDbInstances", args, &rv, "", opts...)
-			if err != nil {
-				return GetDbInstancesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetDbInstancesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetDbInstancesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:graphdatabase/getDbInstances:getDbInstances", args, GetDbInstancesResultOutput{}, options).(GetDbInstancesResultOutput), nil
 		}).(GetDbInstancesResultOutput)
 }
 

@@ -79,21 +79,11 @@ type GetDdosCooDomainResourcesResult struct {
 }
 
 func GetDdosCooDomainResourcesOutput(ctx *pulumi.Context, args GetDdosCooDomainResourcesOutputArgs, opts ...pulumi.InvokeOption) GetDdosCooDomainResourcesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDdosCooDomainResourcesResultOutput, error) {
 			args := v.(GetDdosCooDomainResourcesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetDdosCooDomainResourcesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:ddos/getDdosCooDomainResources:getDdosCooDomainResources", args, &rv, "", opts...)
-			if err != nil {
-				return GetDdosCooDomainResourcesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetDdosCooDomainResourcesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetDdosCooDomainResourcesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:ddos/getDdosCooDomainResources:getDdosCooDomainResources", args, GetDdosCooDomainResourcesResultOutput{}, options).(GetDdosCooDomainResourcesResultOutput), nil
 		}).(GetDdosCooDomainResourcesResultOutput)
 }
 

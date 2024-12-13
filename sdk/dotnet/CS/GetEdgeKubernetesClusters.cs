@@ -74,6 +74,38 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         public static Output<GetEdgeKubernetesClustersResult> Invoke(GetEdgeKubernetesClustersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEdgeKubernetesClustersResult>("alicloud:cs/getEdgeKubernetesClusters:getEdgeKubernetesClusters", args ?? new GetEdgeKubernetesClustersInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
+        /// 
+        /// &gt; **NOTE:** Available in v1.103.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Declare the data source
+        ///     var k8sClusters = AliCloud.CS.GetEdgeKubernetesClusters.Invoke(new()
+        ///     {
+        ///         NameRegex = "my-first-k8s",
+        ///         OutputFile = "my-first-k8s-json",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["output"] = k8sClusters.Apply(getEdgeKubernetesClustersResult =&gt; getEdgeKubernetesClustersResult.Clusters),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetEdgeKubernetesClustersResult> Invoke(GetEdgeKubernetesClustersInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetEdgeKubernetesClustersResult>("alicloud:cs/getEdgeKubernetesClusters:getEdgeKubernetesClusters", args ?? new GetEdgeKubernetesClustersInvokeArgs(), options.WithDefaults());
     }
 
 

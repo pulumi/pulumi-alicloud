@@ -80,6 +80,41 @@ namespace Pulumi.AliCloud.Nlb
         /// </summary>
         public static Output<GetServerGroupServerAttachmentsResult> Invoke(GetServerGroupServerAttachmentsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServerGroupServerAttachmentsResult>("alicloud:nlb/getServerGroupServerAttachments:getServerGroupServerAttachments", args ?? new GetServerGroupServerAttachmentsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Nlb Server Group Server Attachments of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.192.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Nlb.GetServerGroupServerAttachments.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["nlbServerGroupServerAttachmentId1"] = ids.Apply(getServerGroupServerAttachmentsResult =&gt; getServerGroupServerAttachmentsResult.Attachments[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetServerGroupServerAttachmentsResult> Invoke(GetServerGroupServerAttachmentsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServerGroupServerAttachmentsResult>("alicloud:nlb/getServerGroupServerAttachments:getServerGroupServerAttachments", args ?? new GetServerGroupServerAttachmentsInvokeArgs(), options.WithDefaults());
     }
 
 

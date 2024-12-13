@@ -80,6 +80,41 @@ namespace Pulumi.AliCloud.DBS
         /// </summary>
         public static Output<GetBackupPlansResult> Invoke(GetBackupPlansInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBackupPlansResult>("alicloud:dbs/getBackupPlans:getBackupPlans", args ?? new GetBackupPlansInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Dbs Backup Plans of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.185.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.DBS.GetBackupPlans.Invoke();
+        /// 
+        ///     var nameRegex = AliCloud.DBS.GetBackupPlans.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-BackupPlan",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dbsBackupPlanId1"] = ids.Apply(getBackupPlansResult =&gt; getBackupPlansResult.Plans[0]?.Id),
+        ///         ["dbsBackupPlanId2"] = nameRegex.Apply(getBackupPlansResult =&gt; getBackupPlansResult.Plans[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetBackupPlansResult> Invoke(GetBackupPlansInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetBackupPlansResult>("alicloud:dbs/getBackupPlans:getBackupPlans", args ?? new GetBackupPlansInvokeArgs(), options.WithDefaults());
     }
 
 

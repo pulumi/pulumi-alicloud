@@ -74,6 +74,38 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public static Output<GetRouterInterfacesResult> Invoke(GetRouterInterfacesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRouterInterfacesResult>("alicloud:vpc/getRouterInterfaces:getRouterInterfaces", args ?? new GetRouterInterfacesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides information about [router interfaces](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
+        /// that connect VPCs together.
+        /// 
+        /// &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.199.0`. Please use new data source alicloud_express_connect_router_interfaces.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var routerInterfacesDs = AliCloud.Vpc.GetRouterInterfaces.Invoke(new()
+        ///     {
+        ///         NameRegex = "^testenv",
+        ///         Status = "Active",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRouterInterfaceId"] = routerInterfacesDs.Apply(getRouterInterfacesResult =&gt; getRouterInterfacesResult.Interfaces[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRouterInterfacesResult> Invoke(GetRouterInterfacesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRouterInterfacesResult>("alicloud:vpc/getRouterInterfaces:getRouterInterfaces", args ?? new GetRouterInterfacesInvokeArgs(), options.WithDefaults());
     }
 
 

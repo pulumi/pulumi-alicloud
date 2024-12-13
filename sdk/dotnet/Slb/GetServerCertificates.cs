@@ -60,6 +60,31 @@ namespace Pulumi.AliCloud.Slb
         /// </summary>
         public static Output<GetServerCertificatesResult> Invoke(GetServerCertificatesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServerCertificatesResult>("alicloud:slb/getServerCertificates:getServerCertificates", args ?? new GetServerCertificatesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the server certificate list.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var sampleDs = AliCloud.Slb.GetServerCertificates.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstSlbServerCertificateId"] = sampleDs.Apply(getServerCertificatesResult =&gt; getServerCertificatesResult.Certificates[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetServerCertificatesResult> Invoke(GetServerCertificatesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServerCertificatesResult>("alicloud:slb/getServerCertificates:getServerCertificates", args ?? new GetServerCertificatesInvokeArgs(), options.WithDefaults());
     }
 
 

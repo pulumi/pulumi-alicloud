@@ -81,21 +81,11 @@ type GetRegistryEnterpriseInstancesResult struct {
 }
 
 func GetRegistryEnterpriseInstancesOutput(ctx *pulumi.Context, args GetRegistryEnterpriseInstancesOutputArgs, opts ...pulumi.InvokeOption) GetRegistryEnterpriseInstancesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetRegistryEnterpriseInstancesResultOutput, error) {
 			args := v.(GetRegistryEnterpriseInstancesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetRegistryEnterpriseInstancesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:cs/getRegistryEnterpriseInstances:getRegistryEnterpriseInstances", args, &rv, "", opts...)
-			if err != nil {
-				return GetRegistryEnterpriseInstancesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetRegistryEnterpriseInstancesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetRegistryEnterpriseInstancesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:cs/getRegistryEnterpriseInstances:getRegistryEnterpriseInstances", args, GetRegistryEnterpriseInstancesResultOutput{}, options).(GetRegistryEnterpriseInstancesResultOutput), nil
 		}).(GetRegistryEnterpriseInstancesResultOutput)
 }
 

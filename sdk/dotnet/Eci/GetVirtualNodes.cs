@@ -94,6 +94,48 @@ namespace Pulumi.AliCloud.Eci
         /// </summary>
         public static Output<GetVirtualNodesResult> Invoke(GetVirtualNodesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVirtualNodesResult>("alicloud:eci/getVirtualNodes:getVirtualNodes", args ?? new GetVirtualNodesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Eci Virtual Nodes of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.145.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Eci.GetVirtualNodes.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Eci.GetVirtualNodes.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-VirtualNode",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["eciVirtualNodeId1"] = ids.Apply(getVirtualNodesResult =&gt; getVirtualNodesResult.Nodes[0]?.Id),
+        ///         ["eciVirtualNodeId2"] = nameRegex.Apply(getVirtualNodesResult =&gt; getVirtualNodesResult.Nodes[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetVirtualNodesResult> Invoke(GetVirtualNodesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVirtualNodesResult>("alicloud:eci/getVirtualNodes:getVirtualNodes", args ?? new GetVirtualNodesInvokeArgs(), options.WithDefaults());
     }
 
 

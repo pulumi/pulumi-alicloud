@@ -82,6 +82,42 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// </summary>
         public static Output<GetHoneypotPresetsResult> Invoke(GetHoneypotPresetsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHoneypotPresetsResult>("alicloud:threatdetection/getHoneypotPresets:getHoneypotPresets", args ?? new GetHoneypotPresetsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides Threat Detection Honeypot Preset available to the user.
+        /// 
+        /// &gt; **NOTE:** Available in 1.195.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.ThreatDetection.GetHoneypotPresets.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultAlicloudThreatDetectionHoneypotPreset.Id,
+        ///         },
+        ///         HoneypotImageName = "shiro",
+        ///         NodeId = "example_value",
+        ///         PresetName = "apiapec_test",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudThreatDetectionHoneypotPresetExampleId"] = @default.Apply(@default =&gt; @default.Apply(getHoneypotPresetsResult =&gt; getHoneypotPresetsResult.Presets[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetHoneypotPresetsResult> Invoke(GetHoneypotPresetsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetHoneypotPresetsResult>("alicloud:threatdetection/getHoneypotPresets:getHoneypotPresets", args ?? new GetHoneypotPresetsInvokeArgs(), options.WithDefaults());
     }
 
 

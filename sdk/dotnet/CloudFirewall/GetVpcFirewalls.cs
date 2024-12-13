@@ -82,6 +82,42 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// </summary>
         public static Output<GetVpcFirewallsResult> Invoke(GetVpcFirewallsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpcFirewallsResult>("alicloud:cloudfirewall/getVpcFirewalls:getVpcFirewalls", args ?? new GetVpcFirewallsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://help.aliyun.com/document_detail/342932.html)
+        /// 
+        /// &gt; **NOTE:** Available in 1.194.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.CloudFirewall.GetVpcFirewalls.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "id-example",
+        ///         },
+        ///         MemberUid = "1415189284827022",
+        ///         Status = "closed",
+        ///         VpcFirewallName = "tf-test",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudCfwVpcFirewallExampleId"] = @default.Apply(@default =&gt; @default.Apply(getVpcFirewallsResult =&gt; getVpcFirewallsResult.Firewalls[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetVpcFirewallsResult> Invoke(GetVpcFirewallsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVpcFirewallsResult>("alicloud:cloudfirewall/getVpcFirewalls:getVpcFirewalls", args ?? new GetVpcFirewallsInvokeArgs(), options.WithDefaults());
     }
 
 

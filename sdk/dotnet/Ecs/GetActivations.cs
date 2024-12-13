@@ -68,6 +68,35 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public static Output<GetActivationsResult> Invoke(GetActivationsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetActivationsResult>("alicloud:ecs/getActivations:getActivations", args ?? new GetActivationsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Ecs Activations of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.177.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Ecs.GetActivations.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecsActivationId1"] = ids.Apply(getActivationsResult =&gt; getActivationsResult.Activations[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetActivationsResult> Invoke(GetActivationsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetActivationsResult>("alicloud:ecs/getActivations:getActivations", args ?? new GetActivationsInvokeArgs(), options.WithDefaults());
     }
 
 

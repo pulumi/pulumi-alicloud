@@ -83,21 +83,11 @@ type GetMainVersionsResult struct {
 }
 
 func GetMainVersionsOutput(ctx *pulumi.Context, args GetMainVersionsOutputArgs, opts ...pulumi.InvokeOption) GetMainVersionsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetMainVersionsResultOutput, error) {
 			args := v.(GetMainVersionsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetMainVersionsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:emr/getMainVersions:getMainVersions", args, &rv, "", opts...)
-			if err != nil {
-				return GetMainVersionsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetMainVersionsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetMainVersionsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:emr/getMainVersions:getMainVersions", args, GetMainVersionsResultOutput{}, options).(GetMainVersionsResultOutput), nil
 		}).(GetMainVersionsResultOutput)
 }
 

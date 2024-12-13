@@ -84,6 +84,43 @@ namespace Pulumi.AliCloud.Vpn
         /// </summary>
         public static Output<GetGatewayVpnAttachmentsResult> Invoke(GetGatewayVpnAttachmentsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGatewayVpnAttachmentsResult>("alicloud:vpn/getGatewayVpnAttachments:getGatewayVpnAttachments", args ?? new GetGatewayVpnAttachmentsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.181.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Vpn.GetGatewayVpnAttachments.Invoke();
+        /// 
+        ///     var nameRegex = AliCloud.Vpn.GetGatewayVpnAttachments.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-VpnAttachment",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpnGatewayVpnAttachmentId1"] = ids.Apply(getGatewayVpnAttachmentsResult =&gt; getGatewayVpnAttachmentsResult.Attachments[0]?.Id),
+        ///         ["vpnGatewayVpnAttachmentId2"] = nameRegex.Apply(getGatewayVpnAttachmentsResult =&gt; getGatewayVpnAttachmentsResult.Attachments[0]?.Id),
+        ///         ["localId"] = vpnAttachments.Attachments[0].IkeConfig[0].LocalId,
+        ///         ["internetIp"] = vpnAttachments.Attachments[0].InternetIp,
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetGatewayVpnAttachmentsResult> Invoke(GetGatewayVpnAttachmentsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGatewayVpnAttachmentsResult>("alicloud:vpn/getGatewayVpnAttachments:getGatewayVpnAttachments", args ?? new GetGatewayVpnAttachmentsInvokeArgs(), options.WithDefaults());
     }
 
 

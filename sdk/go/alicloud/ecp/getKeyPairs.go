@@ -83,21 +83,11 @@ type GetKeyPairsResult struct {
 }
 
 func GetKeyPairsOutput(ctx *pulumi.Context, args GetKeyPairsOutputArgs, opts ...pulumi.InvokeOption) GetKeyPairsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetKeyPairsResultOutput, error) {
 			args := v.(GetKeyPairsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetKeyPairsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:ecp/getKeyPairs:getKeyPairs", args, &rv, "", opts...)
-			if err != nil {
-				return GetKeyPairsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetKeyPairsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetKeyPairsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:ecp/getKeyPairs:getKeyPairs", args, GetKeyPairsResultOutput{}, options).(GetKeyPairsResultOutput), nil
 		}).(GetKeyPairsResultOutput)
 }
 

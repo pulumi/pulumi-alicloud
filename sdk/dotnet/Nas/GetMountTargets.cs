@@ -72,6 +72,37 @@ namespace Pulumi.AliCloud.Nas
         /// </summary>
         public static Output<GetMountTargetsResult> Invoke(GetMountTargetsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMountTargetsResult>("alicloud:nas/getMountTargets:getMountTargets", args ?? new GetMountTargetsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides MountTargets available to the user.
+        /// 
+        /// &gt; **NOTE**: Available in 1.35.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Nas.GetMountTargets.Invoke(new()
+        ///     {
+        ///         FileSystemId = "1a2sc4d",
+        ///         AccessGroupName = "tf-testAccNasConfig",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["theFirstMountTargetDomain"] = example.Apply(getMountTargetsResult =&gt; getMountTargetsResult.Targets[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetMountTargetsResult> Invoke(GetMountTargetsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMountTargetsResult>("alicloud:nas/getMountTargets:getMountTargets", args ?? new GetMountTargetsInvokeArgs(), options.WithDefaults());
     }
 
 

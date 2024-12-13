@@ -11,6 +11,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class SchedulerxFunctions {
@@ -262,6 +263,56 @@ public final class SchedulerxFunctions {
      * 
      */
     public static Output<GetNamespacesResult> getNamespaces(GetNamespacesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:schedulerx/getNamespaces:getNamespaces", TypeShape.of(GetNamespacesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Schedulerx Namespaces of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.173.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.schedulerx.SchedulerxFunctions;
+     * import com.pulumi.alicloud.schedulerx.inputs.GetNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SchedulerxFunctions.getNamespaces();
+     * 
+     *         ctx.export("schedulerxNamespaceId1", ids.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
+     *         final var nameRegex = SchedulerxFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .nameRegex("^my-Namespace")
+     *             .build());
+     * 
+     *         ctx.export("schedulerxNamespaceId2", nameRegex.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNamespacesResult> getNamespaces(GetNamespacesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:schedulerx/getNamespaces:getNamespaces", TypeShape.of(GetNamespacesResult.class), args, Utilities.withVersion(options));
     }
     /**

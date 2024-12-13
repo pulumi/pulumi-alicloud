@@ -75,21 +75,11 @@ type GetProtocolsResult struct {
 }
 
 func GetProtocolsOutput(ctx *pulumi.Context, args GetProtocolsOutputArgs, opts ...pulumi.InvokeOption) GetProtocolsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetProtocolsResultOutput, error) {
 			args := v.(GetProtocolsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetProtocolsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:nas/getProtocols:getProtocols", args, &rv, "", opts...)
-			if err != nil {
-				return GetProtocolsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetProtocolsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetProtocolsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:nas/getProtocols:getProtocols", args, GetProtocolsResultOutput{}, options).(GetProtocolsResultOutput), nil
 		}).(GetProtocolsResultOutput)
 }
 

@@ -90,6 +90,46 @@ namespace Pulumi.AliCloud.MaxCompute
         /// </summary>
         public static Output<GetProjectsResult> Invoke(GetProjectsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectsResult>("alicloud:maxcompute/getProjects:getProjects", args ?? new GetProjectsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides Max Compute Project available to the user.[What is Project](https://www.alibabacloud.com/help/en/maxcompute/)
+        /// 
+        /// &gt; **NOTE:** Available since v1.196.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "tf_example_acc";
+        ///     var defaultProject = new AliCloud.MaxCompute.Project("default", new()
+        ///     {
+        ///         DefaultQuota = "默认后付费Quota",
+        ///         ProjectName = name,
+        ///         Comment = name,
+        ///         ProductType = "PayAsYouGo",
+        ///     });
+        /// 
+        ///     var @default = AliCloud.MaxCompute.GetProjects.Invoke(new()
+        ///     {
+        ///         NameRegex = defaultProject.ProjectName,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudMaxcomputeProjectExampleId"] = @default.Apply(@default =&gt; @default.Apply(getProjectsResult =&gt; getProjectsResult.Projects[0]?.ProjectName)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetProjectsResult> Invoke(GetProjectsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectsResult>("alicloud:maxcompute/getProjects:getProjects", args ?? new GetProjectsInvokeArgs(), options.WithDefaults());
     }
 
 

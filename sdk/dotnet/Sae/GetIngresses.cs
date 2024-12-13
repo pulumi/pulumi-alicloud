@@ -26,6 +26,14 @@ namespace Pulumi.AliCloud.Sae
         /// </summary>
         public static Output<GetIngressesResult> Invoke(GetIngressesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIngressesResult>("alicloud:sae/getIngresses:getIngresses", args ?? new GetIngressesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Sae Ingresses of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.137.0+.
+        /// </summary>
+        public static Output<GetIngressesResult> Invoke(GetIngressesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetIngressesResult>("alicloud:sae/getIngresses:getIngresses", args ?? new GetIngressesInvokeArgs(), options.WithDefaults());
     }
 
 

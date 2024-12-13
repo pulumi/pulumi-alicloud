@@ -70,6 +70,36 @@ namespace Pulumi.AliCloud.Vpn
         /// </summary>
         public static Output<GetCustomerGatewaysResult> Invoke(GetCustomerGatewaysInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCustomerGatewaysResult>("alicloud:vpn/getCustomerGateways:getCustomerGateways", args ?? new GetCustomerGatewaysInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The VPN customers gateways data source lists a number of VPN customer gateways resource information owned by an Alicloud account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = AliCloud.Vpn.GetCustomerGateways.Invoke(new()
+        ///     {
+        ///         NameRegex = "testAcc*",
+        ///         Ids = new[]
+        ///         {
+        ///             "fake-id1",
+        ///             "fake-id2",
+        ///         },
+        ///         OutputFile = "/tmp/cgws",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetCustomerGatewaysResult> Invoke(GetCustomerGatewaysInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCustomerGatewaysResult>("alicloud:vpn/getCustomerGateways:getCustomerGateways", args ?? new GetCustomerGatewaysInvokeArgs(), options.WithDefaults());
     }
 
 

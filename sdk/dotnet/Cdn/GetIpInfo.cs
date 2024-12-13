@@ -66,6 +66,34 @@ namespace Pulumi.AliCloud.Cdn
         /// </summary>
         public static Output<GetIpInfoResult> Invoke(GetIpInfoInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIpInfoResult>("alicloud:cdn/getIpInfo:getIpInfo", args ?? new GetIpInfoInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the function of verifying whether an IP is a CDN node.
+        /// 
+        /// &gt; **NOTE:** Available in v1.153.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ipTest = AliCloud.Cdn.GetIpInfo.Invoke(new()
+        ///     {
+        ///         Ip = "114.114.114.114",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetIpInfoResult> Invoke(GetIpInfoInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetIpInfoResult>("alicloud:cdn/getIpInfo:getIpInfo", args ?? new GetIpInfoInvokeArgs(), options.WithDefaults());
     }
 
 

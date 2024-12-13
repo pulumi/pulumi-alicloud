@@ -74,6 +74,38 @@ namespace Pulumi.AliCloud.Hbr
         /// </summary>
         public static Output<GetVaultsResult> Invoke(GetVaultsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVaultsResult>("alicloud:hbr/getVaults:getVaults", args ?? new GetVaultsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Hbr Vaults of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.129.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Hbr.GetVaults.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Vault",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["hbrVaultId1"] = ids.Apply(getVaultsResult =&gt; getVaultsResult.Vaults[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetVaultsResult> Invoke(GetVaultsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVaultsResult>("alicloud:hbr/getVaults:getVaults", args ?? new GetVaultsInvokeArgs(), options.WithDefaults());
     }
 
 

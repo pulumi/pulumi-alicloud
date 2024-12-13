@@ -86,21 +86,11 @@ type GetDBClusterLakeVersionsResult struct {
 }
 
 func GetDBClusterLakeVersionsOutput(ctx *pulumi.Context, args GetDBClusterLakeVersionsOutputArgs, opts ...pulumi.InvokeOption) GetDBClusterLakeVersionsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDBClusterLakeVersionsResultOutput, error) {
 			args := v.(GetDBClusterLakeVersionsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetDBClusterLakeVersionsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:adb/getDBClusterLakeVersions:getDBClusterLakeVersions", args, &rv, "", opts...)
-			if err != nil {
-				return GetDBClusterLakeVersionsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetDBClusterLakeVersionsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetDBClusterLakeVersionsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:adb/getDBClusterLakeVersions:getDBClusterLakeVersions", args, GetDBClusterLakeVersionsResultOutput{}, options).(GetDBClusterLakeVersionsResultOutput), nil
 		}).(GetDBClusterLakeVersionsResultOutput)
 }
 

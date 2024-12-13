@@ -101,21 +101,11 @@ type GetHostAccountsResult struct {
 }
 
 func GetHostAccountsOutput(ctx *pulumi.Context, args GetHostAccountsOutputArgs, opts ...pulumi.InvokeOption) GetHostAccountsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetHostAccountsResultOutput, error) {
 			args := v.(GetHostAccountsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetHostAccountsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:bastionhost/getHostAccounts:getHostAccounts", args, &rv, "", opts...)
-			if err != nil {
-				return GetHostAccountsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetHostAccountsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetHostAccountsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:bastionhost/getHostAccounts:getHostAccounts", args, GetHostAccountsResultOutput{}, options).(GetHostAccountsResultOutput), nil
 		}).(GetHostAccountsResultOutput)
 }
 

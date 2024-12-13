@@ -91,21 +91,11 @@ type GetTrafficMirrorFilterIngressRulesResult struct {
 }
 
 func GetTrafficMirrorFilterIngressRulesOutput(ctx *pulumi.Context, args GetTrafficMirrorFilterIngressRulesOutputArgs, opts ...pulumi.InvokeOption) GetTrafficMirrorFilterIngressRulesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetTrafficMirrorFilterIngressRulesResultOutput, error) {
 			args := v.(GetTrafficMirrorFilterIngressRulesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetTrafficMirrorFilterIngressRulesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:vpc/getTrafficMirrorFilterIngressRules:getTrafficMirrorFilterIngressRules", args, &rv, "", opts...)
-			if err != nil {
-				return GetTrafficMirrorFilterIngressRulesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetTrafficMirrorFilterIngressRulesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetTrafficMirrorFilterIngressRulesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:vpc/getTrafficMirrorFilterIngressRules:getTrafficMirrorFilterIngressRules", args, GetTrafficMirrorFilterIngressRulesResultOutput{}, options).(GetTrafficMirrorFilterIngressRulesResultOutput), nil
 		}).(GetTrafficMirrorFilterIngressRulesResultOutput)
 }
 

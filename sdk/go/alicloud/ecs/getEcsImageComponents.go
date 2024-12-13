@@ -98,21 +98,11 @@ type GetEcsImageComponentsResult struct {
 }
 
 func GetEcsImageComponentsOutput(ctx *pulumi.Context, args GetEcsImageComponentsOutputArgs, opts ...pulumi.InvokeOption) GetEcsImageComponentsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetEcsImageComponentsResultOutput, error) {
 			args := v.(GetEcsImageComponentsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetEcsImageComponentsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:ecs/getEcsImageComponents:getEcsImageComponents", args, &rv, "", opts...)
-			if err != nil {
-				return GetEcsImageComponentsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetEcsImageComponentsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetEcsImageComponentsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:ecs/getEcsImageComponents:getEcsImageComponents", args, GetEcsImageComponentsResultOutput{}, options).(GetEcsImageComponentsResultOutput), nil
 		}).(GetEcsImageComponentsResultOutput)
 }
 

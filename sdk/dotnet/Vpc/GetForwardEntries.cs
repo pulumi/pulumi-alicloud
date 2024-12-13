@@ -164,6 +164,83 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public static Output<GetForwardEntriesResult> Invoke(GetForwardEntriesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetForwardEntriesResult>("alicloud:vpc/getForwardEntries:getForwardEntries", args ?? new GetForwardEntriesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a list of Forward Entries owned by an Alibaba Cloud account.
+        /// 
+        /// &gt; **NOTE:** Available in 1.37.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "forward-entry-config-example-name";
+        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+        ///     {
+        ///         VpcName = name,
+        ///         CidrBlock = "172.16.0.0/12",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+        ///     {
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = "172.16.0.0/21",
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///         VswitchName = name,
+        ///     });
+        /// 
+        ///     var defaultNatGateway = new AliCloud.Vpc.NatGateway("default", new()
+        ///     {
+        ///         VpcId = defaultNetwork.Id,
+        ///         InternetChargeType = "PayByLcu",
+        ///         NatGatewayName = name,
+        ///         NatType = "Enhanced",
+        ///         VswitchId = defaultSwitch.Id,
+        ///     });
+        /// 
+        ///     var defaultEipAddress = new AliCloud.Ecs.EipAddress("default", new()
+        ///     {
+        ///         AddressName = name,
+        ///     });
+        /// 
+        ///     var defaultEipAssociation = new AliCloud.Ecs.EipAssociation("default", new()
+        ///     {
+        ///         AllocationId = defaultEipAddress.Id,
+        ///         InstanceId = defaultNatGateway.Id,
+        ///     });
+        /// 
+        ///     var defaultForwardEntry = new AliCloud.Vpc.ForwardEntry("default", new()
+        ///     {
+        ///         ForwardTableId = defaultNatGateway.ForwardTableIds,
+        ///         ExternalIp = defaultEipAddress.IpAddress,
+        ///         ExternalPort = "80",
+        ///         IpProtocol = "tcp",
+        ///         InternalIp = "172.16.0.3",
+        ///         InternalPort = "8080",
+        ///     });
+        /// 
+        ///     var defaultGetForwardEntries = AliCloud.Vpc.GetForwardEntries.Invoke(new()
+        ///     {
+        ///         ForwardTableId = defaultForwardEntry.ForwardTableId,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetForwardEntriesResult> Invoke(GetForwardEntriesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetForwardEntriesResult>("alicloud:vpc/getForwardEntries:getForwardEntries", args ?? new GetForwardEntriesInvokeArgs(), options.WithDefaults());
     }
 
 

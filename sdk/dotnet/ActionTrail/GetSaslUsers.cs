@@ -74,6 +74,38 @@ namespace Pulumi.AliCloud.ActionTrail
         /// </summary>
         public static Output<GetSaslUsersResult> Invoke(GetSaslUsersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSaslUsersResult>("alicloud:actiontrail/getSaslUsers:getSaslUsers", args ?? new GetSaslUsersInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a list of ALIKAFKA Sasl users in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available in 1.66.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var saslUsersDs = AliCloud.ActionTrail.GetSaslUsers.Invoke(new()
+        ///     {
+        ///         InstanceId = "xxx",
+        ///         NameRegex = "username",
+        ///         OutputFile = "saslUsers.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstSaslUsername"] = saslUsersDs.Apply(getSaslUsersResult =&gt; getSaslUsersResult.Users[0]?.Username),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSaslUsersResult> Invoke(GetSaslUsersInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSaslUsersResult>("alicloud:actiontrail/getSaslUsers:getSaslUsers", args ?? new GetSaslUsersInvokeArgs(), options.WithDefaults());
     }
 
 

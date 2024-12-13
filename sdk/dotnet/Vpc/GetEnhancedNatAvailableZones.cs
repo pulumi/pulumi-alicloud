@@ -16,6 +16,9 @@ namespace Pulumi.AliCloud.Vpc
 
         public static Output<GetEnhancedNatAvailableZonesResult> Invoke(GetEnhancedNatAvailableZonesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEnhancedNatAvailableZonesResult>("alicloud:vpc/getEnhancedNatAvailableZones:getEnhancedNatAvailableZones", args ?? new GetEnhancedNatAvailableZonesInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetEnhancedNatAvailableZonesResult> Invoke(GetEnhancedNatAvailableZonesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetEnhancedNatAvailableZonesResult>("alicloud:vpc/getEnhancedNatAvailableZones:getEnhancedNatAvailableZones", args ?? new GetEnhancedNatAvailableZonesInvokeArgs(), options.WithDefaults());
     }
 
 

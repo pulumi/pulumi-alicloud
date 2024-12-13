@@ -14,6 +14,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class MhubFunctions {
@@ -198,6 +199,67 @@ public final class MhubFunctions {
      * 
      */
     public static Output<GetAppsResult> getApps(GetAppsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:mhub/getApps:getApps", TypeShape.of(GetAppsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Mhub Apps of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.138.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mhub.App;
+     * import com.pulumi.alicloud.mhub.AppArgs;
+     * import com.pulumi.alicloud.mhub.MhubFunctions;
+     * import com.pulumi.alicloud.mhub.inputs.GetAppsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("example_value");
+     *         var default_ = new App("default", AppArgs.builder()
+     *             .appName(name)
+     *             .productId(defaultAlicloudMhubProduct.id())
+     *             .packageName("com.test.android")
+     *             .type("2")
+     *             .build());
+     * 
+     *         final var ids = MhubFunctions.getApps();
+     * 
+     *         ctx.export("mhubAppId1", ids.applyValue(getAppsResult -> getAppsResult.apps()[0].id()));
+     *         final var nameRegex = MhubFunctions.getApps(GetAppsArgs.builder()
+     *             .nameRegex("^my-App")
+     *             .build());
+     * 
+     *         ctx.export("mhubAppId2", nameRegex.applyValue(getAppsResult -> getAppsResult.apps()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAppsResult> getApps(GetAppsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:mhub/getApps:getApps", TypeShape.of(GetAppsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -549,6 +611,64 @@ public final class MhubFunctions {
      * 
      */
     public static Output<GetProductsResult> getProducts(GetProductsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:mhub/getProducts:getProducts", TypeShape.of(GetProductsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Mhub Products of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.138.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mhub.Product;
+     * import com.pulumi.alicloud.mhub.ProductArgs;
+     * import com.pulumi.alicloud.mhub.MhubFunctions;
+     * import com.pulumi.alicloud.mhub.inputs.GetProductsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("example_value");
+     *         var default_ = new Product("default", ProductArgs.builder()
+     *             .productName(name)
+     *             .build());
+     * 
+     *         final var ids = MhubFunctions.getProducts();
+     * 
+     *         ctx.export("mhubProductId1", ids.applyValue(getProductsResult -> getProductsResult.products()[0].id()));
+     *         final var nameRegex = MhubFunctions.getProducts(GetProductsArgs.builder()
+     *             .nameRegex("^my-Product")
+     *             .build());
+     * 
+     *         ctx.export("mhubProductId2", nameRegex.applyValue(getProductsResult -> getProductsResult.products()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetProductsResult> getProducts(GetProductsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:mhub/getProducts:getProducts", TypeShape.of(GetProductsResult.class), args, Utilities.withVersion(options));
     }
     /**

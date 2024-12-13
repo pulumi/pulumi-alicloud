@@ -72,6 +72,37 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public static Output<GetChildInstanceRouteEntryToAttachmentsResult> Invoke(GetChildInstanceRouteEntryToAttachmentsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetChildInstanceRouteEntryToAttachmentsResult>("alicloud:cen/getChildInstanceRouteEntryToAttachments:getChildInstanceRouteEntryToAttachments", args ?? new GetChildInstanceRouteEntryToAttachmentsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides Cen Child Instance Route Entry To Attachment available to the user.[What is Child Instance Route Entry To Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcenchildinstancerouteentrytoattachment)
+        /// 
+        /// &gt; **NOTE:** Available in 1.195.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Cen.GetChildInstanceRouteEntryToAttachments.Invoke(new()
+        ///     {
+        ///         ChildInstanceRouteTableId = "vtb-t4nt0z5xxbti85c78nkzy",
+        ///         TransitRouterAttachmentId = "tr-attach-f1fd1y50rql00emvej",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudCenChildInstanceRouteEntryToAttachmentExampleId"] = @default.Apply(@default =&gt; @default.Apply(getChildInstanceRouteEntryToAttachmentsResult =&gt; getChildInstanceRouteEntryToAttachmentsResult.Attachments[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetChildInstanceRouteEntryToAttachmentsResult> Invoke(GetChildInstanceRouteEntryToAttachmentsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetChildInstanceRouteEntryToAttachmentsResult>("alicloud:cen/getChildInstanceRouteEntryToAttachments:getChildInstanceRouteEntryToAttachments", args ?? new GetChildInstanceRouteEntryToAttachmentsInvokeArgs(), options.WithDefaults());
     }
 
 

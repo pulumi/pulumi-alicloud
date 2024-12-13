@@ -35,6 +35,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class CfgFunctions {
@@ -183,6 +184,55 @@ public final class CfgFunctions {
      * 
      */
     public static Output<GetAggregateCompliancePacksResult> getAggregateCompliancePacks(GetAggregateCompliancePacksArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cfg/getAggregateCompliancePacks:getAggregateCompliancePacks", TypeShape.of(GetAggregateCompliancePacksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Config Aggregate Compliance Packs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.124.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetAggregateCompliancePacksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getAggregateCompliancePacks(GetAggregateCompliancePacksArgs.builder()
+     *             .aggregatorId("ca-3a9b626622af001d****")
+     *             .ids("cp-152a626622af00bc****")
+     *             .nameRegex("the_resource_name")
+     *             .build());
+     * 
+     *         ctx.export("firstConfigAggregateCompliancePackId", example.applyValue(getAggregateCompliancePacksResult -> getAggregateCompliancePacksResult.packs()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAggregateCompliancePacksResult> getAggregateCompliancePacks(GetAggregateCompliancePacksArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cfg/getAggregateCompliancePacks:getAggregateCompliancePacks", TypeShape.of(GetAggregateCompliancePacksResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -427,6 +477,55 @@ public final class CfgFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetAggregateConfigRulesResult> getAggregateConfigRules(GetAggregateConfigRulesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cfg/getAggregateConfigRules:getAggregateConfigRules", TypeShape.of(GetAggregateConfigRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Config Aggregate Config Rules of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.124.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetAggregateConfigRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getAggregateConfigRules(GetAggregateConfigRulesArgs.builder()
+     *             .aggregatorId("ca-3a9b626622af001d****")
+     *             .ids("cr-5154626622af0034****")
+     *             .nameRegex("the_resource_name")
+     *             .build());
+     * 
+     *         ctx.export("firstConfigAggregateConfigRuleId", example.applyValue(getAggregateConfigRulesResult -> getAggregateConfigRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAggregateConfigRulesResult> getAggregateConfigRulesPlain(GetAggregateConfigRulesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cfg/getAggregateConfigRules:getAggregateConfigRules", TypeShape.of(GetAggregateConfigRulesResult.class), args, Utilities.withVersion(options));
     }
@@ -578,6 +677,56 @@ public final class CfgFunctions {
      * 
      */
     public static Output<GetAggregateDeliveriesResult> getAggregateDeliveries(GetAggregateDeliveriesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cfg/getAggregateDeliveries:getAggregateDeliveries", TypeShape.of(GetAggregateDeliveriesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Config Aggregate Deliveries of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.172.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetAggregateDeliveriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CfgFunctions.getAggregateDeliveries(GetAggregateDeliveriesArgs.builder()
+     *             .aggregatorId("example_value")
+     *             .ids(            
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .build());
+     * 
+     *         ctx.export("configAggregateDeliveryId1", ids.applyValue(getAggregateDeliveriesResult -> getAggregateDeliveriesResult.deliveries()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAggregateDeliveriesResult> getAggregateDeliveries(GetAggregateDeliveriesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cfg/getAggregateDeliveries:getAggregateDeliveries", TypeShape.of(GetAggregateDeliveriesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -915,6 +1064,54 @@ public final class CfgFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetAggregatorsResult> getAggregators(GetAggregatorsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cfg/getAggregators:getAggregators", TypeShape.of(GetAggregatorsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Config Aggregators of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.124.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetAggregatorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getAggregators(GetAggregatorsArgs.builder()
+     *             .ids("ca-3ce2626622af0005****")
+     *             .nameRegex("the_resource_name")
+     *             .build());
+     * 
+     *         ctx.export("firstConfigAggregatorId", example.applyValue(getAggregatorsResult -> getAggregatorsResult.aggregators()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAggregatorsResult> getAggregatorsPlain(GetAggregatorsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cfg/getAggregators:getAggregators", TypeShape.of(GetAggregatorsResult.class), args, Utilities.withVersion(options));
     }
@@ -1156,6 +1353,54 @@ public final class CfgFunctions {
      * 
      */
     public static Output<GetCompliancePacksResult> getCompliancePacks(GetCompliancePacksArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cfg/getCompliancePacks:getCompliancePacks", TypeShape.of(GetCompliancePacksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Config Compliance Packs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.124.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetCompliancePacksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getCompliancePacks(GetCompliancePacksArgs.builder()
+     *             .ids("cp-152a626622af00bc****")
+     *             .nameRegex("the_resource_name")
+     *             .build());
+     * 
+     *         ctx.export("firstConfigCompliancePackId", example.applyValue(getCompliancePacksResult -> getCompliancePacksResult.packs()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCompliancePacksResult> getCompliancePacks(GetCompliancePacksArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cfg/getCompliancePacks:getCompliancePacks", TypeShape.of(GetCompliancePacksResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1473,6 +1718,51 @@ public final class CfgFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetConfigurationRecordersResult> getConfigurationRecorders(GetConfigurationRecordersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cfg/getConfigurationRecorders:getConfigurationRecorders", TypeShape.of(GetConfigurationRecordersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Config Configuration Recorders of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:**  Available in 1.99.0+.
+     * 
+     * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetConfigurationRecordersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getConfigurationRecorders();
+     * 
+     *         ctx.export("listOfResourceTypes", this_.recorders()[0].resourceTypes());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetConfigurationRecordersResult> getConfigurationRecordersPlain(GetConfigurationRecordersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cfg/getConfigurationRecorders:getConfigurationRecorders", TypeShape.of(GetConfigurationRecordersResult.class), args, Utilities.withVersion(options));
     }
@@ -1709,6 +1999,53 @@ public final class CfgFunctions {
      * 
      */
     public static Output<GetDeliveriesResult> getDeliveries(GetDeliveriesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cfg/getDeliveries:getDeliveries", TypeShape.of(GetDeliveriesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Config Deliveries of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.171.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetDeliveriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CfgFunctions.getDeliveries(GetDeliveriesArgs.builder()
+     *             .ids("example_id")
+     *             .build());
+     * 
+     *         ctx.export("configDeliveryId1", ids.applyValue(getDeliveriesResult -> getDeliveriesResult.deliveries()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDeliveriesResult> getDeliveries(GetDeliveriesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cfg/getDeliveries:getDeliveries", TypeShape.of(GetDeliveriesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2061,6 +2398,57 @@ public final class CfgFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetDeliveryChannelsResult> getDeliveryChannels(GetDeliveryChannelsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cfg/getDeliveryChannels:getDeliveryChannels", TypeShape.of(GetDeliveryChannelsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **DEPRECATED:**  This resource is based on Config&#39;s old version OpenAPI, and it has been deprecated from version `1.173.0`.
+     * Please use new datasource alicloud.cfg.getDeliveries instead.
+     * 
+     * This data source provides the Config Delivery Channels of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:**  Available in 1.99.0+.
+     * 
+     * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetDeliveryChannelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getDeliveryChannels(GetDeliveryChannelsArgs.builder()
+     *             .ids("cdc-49a2ad756057********")
+     *             .nameRegex("tftest")
+     *             .build());
+     * 
+     *         ctx.export("firstConfigDeliveryChannelId", example.applyValue(getDeliveryChannelsResult -> getDeliveryChannelsResult.channels()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDeliveryChannelsResult> getDeliveryChannelsPlain(GetDeliveryChannelsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cfg/getDeliveryChannels:getDeliveryChannels", TypeShape.of(GetDeliveryChannelsResult.class), args, Utilities.withVersion(options));
     }
@@ -2302,6 +2690,54 @@ public final class CfgFunctions {
      * 
      */
     public static Output<GetRulesResult> getRules(GetRulesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cfg/getRules:getRules", TypeShape.of(GetRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Config Rules of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:**  Available in 1.99.0+.
+     * 
+     * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cfg.CfgFunctions;
+     * import com.pulumi.alicloud.cfg.inputs.GetRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CfgFunctions.getRules(GetRulesArgs.builder()
+     *             .ids("cr-ed4bad756057********")
+     *             .nameRegex("tftest")
+     *             .build());
+     * 
+     *         ctx.export("firstConfigRuleId", example.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRulesResult> getRules(GetRulesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cfg/getRules:getRules", TypeShape.of(GetRulesResult.class), args, Utilities.withVersion(options));
     }
     /**

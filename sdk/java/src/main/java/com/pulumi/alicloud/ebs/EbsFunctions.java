@@ -20,6 +20,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class EbsFunctions {
@@ -251,6 +252,52 @@ public final class EbsFunctions {
      * 
      */
     public static Output<GetDedicatedBlockStorageClustersResult> getDedicatedBlockStorageClusters(GetDedicatedBlockStorageClustersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ebs/getDedicatedBlockStorageClusters:getDedicatedBlockStorageClusters", TypeShape.of(GetDedicatedBlockStorageClustersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Ebs Dedicated Block Storage Cluster available to the user.
+     * 
+     * &gt; **NOTE:** Available in 1.196.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ebs.EbsFunctions;
+     * import com.pulumi.alicloud.ebs.inputs.GetDedicatedBlockStorageClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EbsFunctions.getDedicatedBlockStorageClusters(GetDedicatedBlockStorageClustersArgs.builder()
+     *             .ids("example_id")
+     *             .nameRegex(defaultAlicloudEbsDedicatedBlockStorageCluster.name())
+     *             .build());
+     * 
+     *         ctx.export("alicloudEbsDedicatedBlockStorageClusterExampleId", default_.clusters()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDedicatedBlockStorageClustersResult> getDedicatedBlockStorageClusters(GetDedicatedBlockStorageClustersArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:ebs/getDedicatedBlockStorageClusters:getDedicatedBlockStorageClusters", TypeShape.of(GetDedicatedBlockStorageClustersResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -578,6 +625,53 @@ public final class EbsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetDiskReplicaGroupsResult> getDiskReplicaGroups(GetDiskReplicaGroupsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ebs/getDiskReplicaGroups:getDiskReplicaGroups", TypeShape.of(GetDiskReplicaGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Ebs Disk Replica Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.187.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ebs.EbsFunctions;
+     * import com.pulumi.alicloud.ebs.inputs.GetDiskReplicaGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EbsFunctions.getDiskReplicaGroups(GetDiskReplicaGroupsArgs.builder()
+     *             .ids("example_id")
+     *             .build());
+     * 
+     *         ctx.export("ebsDiskReplicaGroupId1", ids.applyValue(getDiskReplicaGroupsResult -> getDiskReplicaGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDiskReplicaGroupsResult> getDiskReplicaGroupsPlain(GetDiskReplicaGroupsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ebs/getDiskReplicaGroups:getDiskReplicaGroups", TypeShape.of(GetDiskReplicaGroupsResult.class), args, Utilities.withVersion(options));
     }
@@ -804,6 +898,51 @@ public final class EbsFunctions {
      * 
      */
     public static Output<GetDiskReplicaPairsResult> getDiskReplicaPairs(GetDiskReplicaPairsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ebs/getDiskReplicaPairs:getDiskReplicaPairs", TypeShape.of(GetDiskReplicaPairsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Ebs Disk Replica Pair available to the user.
+     * 
+     * &gt; **NOTE:** Available in 1.196.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ebs.EbsFunctions;
+     * import com.pulumi.alicloud.ebs.inputs.GetDiskReplicaPairsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EbsFunctions.getDiskReplicaPairs(GetDiskReplicaPairsArgs.builder()
+     *             .ids(defaultAlicloudEbsDiskReplicaPair.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudEbsDiskReplicaPairExampleId", default_.pairs()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDiskReplicaPairsResult> getDiskReplicaPairs(GetDiskReplicaPairsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:ebs/getDiskReplicaPairs:getDiskReplicaPairs", TypeShape.of(GetDiskReplicaPairsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1084,6 +1223,53 @@ public final class EbsFunctions {
      * 
      */
     public static Output<GetRegionsResult> getRegions(GetRegionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ebs/getRegions:getRegions", TypeShape.of(GetRegionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Ebs Regions of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.187.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ebs.EbsFunctions;
+     * import com.pulumi.alicloud.ebs.inputs.GetRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EbsFunctions.getRegions(GetRegionsArgs.builder()
+     *             .regionId("cn-hangzhou")
+     *             .build());
+     * 
+     *         ctx.export("regions", default_.regions());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRegionsResult> getRegions(GetRegionsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:ebs/getRegions:getRegions", TypeShape.of(GetRegionsResult.class), args, Utilities.withVersion(options));
     }
     /**

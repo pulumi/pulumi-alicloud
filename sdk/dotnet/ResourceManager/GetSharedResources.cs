@@ -26,6 +26,14 @@ namespace Pulumi.AliCloud.ResourceManager
         /// </summary>
         public static Output<GetSharedResourcesResult> Invoke(GetSharedResourcesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSharedResourcesResult>("alicloud:resourcemanager/getSharedResources:getSharedResources", args ?? new GetSharedResourcesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Resource Manager Shared Resources of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.111.0.
+        /// </summary>
+        public static Output<GetSharedResourcesResult> Invoke(GetSharedResourcesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSharedResourcesResult>("alicloud:resourcemanager/getSharedResources:getSharedResources", args ?? new GetSharedResourcesInvokeArgs(), options.WithDefaults());
     }
 
 

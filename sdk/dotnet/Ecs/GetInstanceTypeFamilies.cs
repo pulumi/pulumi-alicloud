@@ -72,6 +72,37 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public static Output<GetInstanceTypeFamiliesResult> Invoke(GetInstanceTypeFamiliesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceTypeFamiliesResult>("alicloud:ecs/getInstanceTypeFamilies:getInstanceTypeFamilies", args ?? new GetInstanceTypeFamiliesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the ECS instance type families of Alibaba Cloud.
+        /// 
+        /// &gt; **NOTE:** Available in 1.54.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Ecs.GetInstanceTypeFamilies.Invoke(new()
+        ///     {
+        ///         InstanceChargeType = "PrePaid",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstInstanceTypeFamilyId"] = @default.Apply(@default =&gt; @default.Apply(getInstanceTypeFamiliesResult =&gt; getInstanceTypeFamiliesResult.Families[0]?.Id)),
+        ///         ["instanceIds"] = @default.Apply(@default =&gt; @default.Apply(getInstanceTypeFamiliesResult =&gt; getInstanceTypeFamiliesResult.Ids)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetInstanceTypeFamiliesResult> Invoke(GetInstanceTypeFamiliesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceTypeFamiliesResult>("alicloud:ecs/getInstanceTypeFamilies:getInstanceTypeFamilies", args ?? new GetInstanceTypeFamiliesInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -116,21 +116,11 @@ type GetServiceHybridDoubleWritesResult struct {
 }
 
 func GetServiceHybridDoubleWritesOutput(ctx *pulumi.Context, args GetServiceHybridDoubleWritesOutputArgs, opts ...pulumi.InvokeOption) GetServiceHybridDoubleWritesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetServiceHybridDoubleWritesResultOutput, error) {
 			args := v.(GetServiceHybridDoubleWritesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetServiceHybridDoubleWritesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:cloudmonitor/getServiceHybridDoubleWrites:getServiceHybridDoubleWrites", args, &rv, "", opts...)
-			if err != nil {
-				return GetServiceHybridDoubleWritesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetServiceHybridDoubleWritesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetServiceHybridDoubleWritesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:cloudmonitor/getServiceHybridDoubleWrites:getServiceHybridDoubleWrites", args, GetServiceHybridDoubleWritesResultOutput{}, options).(GetServiceHybridDoubleWritesResultOutput), nil
 		}).(GetServiceHybridDoubleWritesResultOutput)
 }
 

@@ -70,6 +70,36 @@ namespace Pulumi.AliCloud.Kms
         /// </summary>
         public static Output<GetKeysResult> Invoke(GetKeysInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKeysResult>("alicloud:kms/getKeys:getKeys", args ?? new GetKeysInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a list of KMS keys in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Declare the data source
+        ///     var kmsKeysDs = AliCloud.Kms.GetKeys.Invoke(new()
+        ///     {
+        ///         DescriptionRegex = "Hello KMS",
+        ///         OutputFile = "kms_keys.json",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstKeyId"] = kmsKeysDs.Apply(getKeysResult =&gt; getKeysResult.Keys[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetKeysResult> Invoke(GetKeysInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetKeysResult>("alicloud:kms/getKeys:getKeys", args ?? new GetKeysInvokeArgs(), options.WithDefaults());
     }
 
 

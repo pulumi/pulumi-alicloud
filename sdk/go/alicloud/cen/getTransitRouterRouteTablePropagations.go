@@ -79,21 +79,11 @@ type GetTransitRouterRouteTablePropagationsResult struct {
 }
 
 func GetTransitRouterRouteTablePropagationsOutput(ctx *pulumi.Context, args GetTransitRouterRouteTablePropagationsOutputArgs, opts ...pulumi.InvokeOption) GetTransitRouterRouteTablePropagationsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetTransitRouterRouteTablePropagationsResultOutput, error) {
 			args := v.(GetTransitRouterRouteTablePropagationsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetTransitRouterRouteTablePropagationsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:cen/getTransitRouterRouteTablePropagations:getTransitRouterRouteTablePropagations", args, &rv, "", opts...)
-			if err != nil {
-				return GetTransitRouterRouteTablePropagationsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetTransitRouterRouteTablePropagationsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetTransitRouterRouteTablePropagationsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:cen/getTransitRouterRouteTablePropagations:getTransitRouterRouteTablePropagations", args, GetTransitRouterRouteTablePropagationsResultOutput{}, options).(GetTransitRouterRouteTablePropagationsResultOutput), nil
 		}).(GetTransitRouterRouteTablePropagationsResultOutput)
 }
 

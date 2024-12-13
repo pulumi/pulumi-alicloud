@@ -98,21 +98,11 @@ type GetQuotasResult struct {
 }
 
 func GetQuotasOutput(ctx *pulumi.Context, args GetQuotasOutputArgs, opts ...pulumi.InvokeOption) GetQuotasResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetQuotasResultOutput, error) {
 			args := v.(GetQuotasArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetQuotasResult
-			secret, err := ctx.InvokePackageRaw("alicloud:quotas/getQuotas:getQuotas", args, &rv, "", opts...)
-			if err != nil {
-				return GetQuotasResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetQuotasResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetQuotasResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:quotas/getQuotas:getQuotas", args, GetQuotasResultOutput{}, options).(GetQuotasResultOutput), nil
 		}).(GetQuotasResultOutput)
 }
 

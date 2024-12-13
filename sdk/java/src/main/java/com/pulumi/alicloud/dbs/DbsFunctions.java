@@ -11,6 +11,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class DbsFunctions {
@@ -262,6 +263,56 @@ public final class DbsFunctions {
      * 
      */
     public static Output<GetBackupPlansResult> getBackupPlans(GetBackupPlansArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dbs/getBackupPlans:getBackupPlans", TypeShape.of(GetBackupPlansResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Dbs Backup Plans of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.185.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dbs.DbsFunctions;
+     * import com.pulumi.alicloud.dbs.inputs.GetBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DbsFunctions.getBackupPlans();
+     * 
+     *         ctx.export("dbsBackupPlanId1", ids.applyValue(getBackupPlansResult -> getBackupPlansResult.plans()[0].id()));
+     *         final var nameRegex = DbsFunctions.getBackupPlans(GetBackupPlansArgs.builder()
+     *             .nameRegex("^my-BackupPlan")
+     *             .build());
+     * 
+     *         ctx.export("dbsBackupPlanId2", nameRegex.applyValue(getBackupPlansResult -> getBackupPlansResult.plans()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetBackupPlansResult> getBackupPlans(GetBackupPlansArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:dbs/getBackupPlans:getBackupPlans", TypeShape.of(GetBackupPlansResult.class), args, Utilities.withVersion(options));
     }
     /**

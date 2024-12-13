@@ -35,6 +35,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class CrFunctions {
@@ -267,6 +268,64 @@ public final class CrFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetChainsResult> getChains(GetChainsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cr/getChains:getChains", TypeShape.of(GetChainsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cr Chains of the current Alibaba Cloud user.
+     * 
+     * For information about CR Chains and how to use it, see [What is Chain](https://www.alibabacloud.com/help/en/doc-detail/357821.html).
+     * 
+     * &gt; **NOTE:** Available in v1.161.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetChainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CrFunctions.getChains(GetChainsArgs.builder()
+     *             .instanceId("example_value")
+     *             .ids(            
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .build());
+     * 
+     *         ctx.export("crChainId1", ids.applyValue(getChainsResult -> getChainsResult.chains()[0].id()));
+     *         final var nameRegex = CrFunctions.getChains(GetChainsArgs.builder()
+     *             .instanceId("example_value")
+     *             .nameRegex("^my-Chain")
+     *             .build());
+     * 
+     *         ctx.export("crChainId2", nameRegex.applyValue(getChainsResult -> getChainsResult.chains()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetChainsResult> getChainsPlain(GetChainsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cr/getChains:getChains", TypeShape.of(GetChainsResult.class), args, Utilities.withVersion(options));
     }
@@ -295,6 +354,15 @@ public final class CrFunctions {
      * 
      */
     public static Output<GetChartNamespacesResult> getChartNamespaces(GetChartNamespacesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cr/getChartNamespaces:getChartNamespaces", TypeShape.of(GetChartNamespacesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cr Chart Namespaces of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.149.0+.
+     * 
+     */
+    public static Output<GetChartNamespacesResult> getChartNamespaces(GetChartNamespacesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cr/getChartNamespaces:getChartNamespaces", TypeShape.of(GetChartNamespacesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -454,6 +522,56 @@ public final class CrFunctions {
      * 
      */
     public static Output<GetChartRepositoriesResult> getChartRepositories(GetChartRepositoriesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cr/getChartRepositories:getChartRepositories", TypeShape.of(GetChartRepositoriesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cr Chart Repositories of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.149.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetChartRepositoriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CrFunctions.getChartRepositories(GetChartRepositoriesArgs.builder()
+     *             .instanceId("example_value")
+     *             .ids(            
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .build());
+     * 
+     *         ctx.export("crChartRepositoryId1", default_.ids()[0]);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetChartRepositoriesResult> getChartRepositories(GetChartRepositoriesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cr/getChartRepositories:getChartRepositories", TypeShape.of(GetChartRepositoriesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -707,6 +825,57 @@ public final class CrFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetEndpointAclPoliciesResult> getEndpointAclPolicies(GetEndpointAclPoliciesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cr/getEndpointAclPolicies:getEndpointAclPolicies", TypeShape.of(GetEndpointAclPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cr Endpoint Acl Policies of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.139.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetEndpointAclPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CrFunctions.getEndpointAclPolicies(GetEndpointAclPoliciesArgs.builder()
+     *             .instanceId("example_value")
+     *             .endpointType("example_value")
+     *             .ids(            
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .build());
+     * 
+     *         ctx.export("crEndpointAclPolicyId1", ids.applyValue(getEndpointAclPoliciesResult -> getEndpointAclPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetEndpointAclPoliciesResult> getEndpointAclPoliciesPlain(GetEndpointAclPoliciesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cr/getEndpointAclPolicies:getEndpointAclPolicies", TypeShape.of(GetEndpointAclPoliciesResult.class), args, Utilities.withVersion(options));
     }
@@ -861,6 +1030,57 @@ public final class CrFunctions {
      * 
      */
     public static Output<GetEndpointAclServiceResult> getEndpointAclService(GetEndpointAclServiceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cr/getEndpointAclService:getEndpointAclService", TypeShape.of(GetEndpointAclServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the CR Endpoint Acl Service of the current Alibaba Cloud user.
+     * 
+     * For information about Event Bridge and how to use it, see [What is CR Endpoint Acl](https://www.alibabacloud.com/help/en/doc-detail/142246.htm).
+     * 
+     * &gt; **NOTE:** Available in v1.139.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetEndpointAclServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CrFunctions.getEndpointAclService(GetEndpointAclServiceArgs.builder()
+     *             .endpointType("internet")
+     *             .enable(true)
+     *             .instanceId("example_id")
+     *             .moduleName("Registry")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEndpointAclServiceResult> getEndpointAclService(GetEndpointAclServiceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cr/getEndpointAclService:getEndpointAclService", TypeShape.of(GetEndpointAclServiceResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1193,6 +1413,53 @@ public final class CrFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetNamespacesResult> getNamespaces(GetNamespacesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cr/getNamespaces:getNamespaces", TypeShape.of(GetNamespacesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list Container Registry namespaces on Alibaba Cloud.
+     * 
+     * &gt; **NOTE:** Available in v1.35.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Declare the data source
+     *         final var myNamespaces = CrFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .nameRegex("my-namespace")
+     *             .outputFile("my-namespace-json")
+     *             .build());
+     * 
+     *         ctx.export("output", myNamespaces.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetNamespacesResult> getNamespacesPlain(GetNamespacesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cr/getNamespaces:getNamespaces", TypeShape.of(GetNamespacesResult.class), args, Utilities.withVersion(options));
     }
@@ -1475,6 +1742,53 @@ public final class CrFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetReposResult> getRepos(GetReposArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cr/getRepos:getRepos", TypeShape.of(GetReposResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list Container Registry repositories on Alibaba Cloud.
+     * 
+     * &gt; **NOTE:** Available in v1.35.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetReposArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Declare the data source
+     *         final var myRepos = CrFunctions.getRepos(GetReposArgs.builder()
+     *             .nameRegex("my-repos")
+     *             .outputFile("my-repo-json")
+     *             .build());
+     * 
+     *         ctx.export("output", myRepos.applyValue(getReposResult -> getReposResult.repos()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetReposResult> getReposPlain(GetReposPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cr/getRepos:getRepos", TypeShape.of(GetReposResult.class), args, Utilities.withVersion(options));
     }
@@ -1617,6 +1931,53 @@ public final class CrFunctions {
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cr/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Using this data source can open Container Registry (CR) service automatically. If the service has been opened, it will return opened.
+     * 
+     * For information about Container Registry (CR) and how to use it, see [What is Container Registry (CR)](https://www.alibabacloud.com/help/en/doc-detail/142759.htm).
+     * 
+     * &gt; **NOTE:** Available in v1.116.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = CrFunctions.getService(GetServiceArgs.builder()
+     *             .enable("On")
+     *             .password("1111aaaa")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cr/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1811,6 +2172,55 @@ public final class CrFunctions {
      * 
      */
     public static Output<GetVpcEndpointLinkedVpcsResult> getVpcEndpointLinkedVpcs(GetVpcEndpointLinkedVpcsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cr/getVpcEndpointLinkedVpcs:getVpcEndpointLinkedVpcs", TypeShape.of(GetVpcEndpointLinkedVpcsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the CR Vpc Endpoint Linked Vpcs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.199.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetVpcEndpointLinkedVpcsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CrFunctions.getVpcEndpointLinkedVpcs(GetVpcEndpointLinkedVpcsArgs.builder()
+     *             .ids("example_id")
+     *             .instanceId("your_cr_instance_id")
+     *             .moduleName("Registry")
+     *             .build());
+     * 
+     *         ctx.export("alicloudCrVpcEndpointLinkedVpcsId1", ids.applyValue(getVpcEndpointLinkedVpcsResult -> getVpcEndpointLinkedVpcsResult.vpcEndpointLinkedVpcs()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVpcEndpointLinkedVpcsResult> getVpcEndpointLinkedVpcs(GetVpcEndpointLinkedVpcsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cr/getVpcEndpointLinkedVpcs:getVpcEndpointLinkedVpcs", TypeShape.of(GetVpcEndpointLinkedVpcsResult.class), args, Utilities.withVersion(options));
     }
     /**

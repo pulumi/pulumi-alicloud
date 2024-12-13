@@ -93,21 +93,11 @@ type GetPortfoliosResult struct {
 }
 
 func GetPortfoliosOutput(ctx *pulumi.Context, args GetPortfoliosOutputArgs, opts ...pulumi.InvokeOption) GetPortfoliosResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetPortfoliosResultOutput, error) {
 			args := v.(GetPortfoliosArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetPortfoliosResult
-			secret, err := ctx.InvokePackageRaw("alicloud:servicecatalog/getPortfolios:getPortfolios", args, &rv, "", opts...)
-			if err != nil {
-				return GetPortfoliosResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetPortfoliosResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetPortfoliosResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:servicecatalog/getPortfolios:getPortfolios", args, GetPortfoliosResultOutput{}, options).(GetPortfoliosResultOutput), nil
 		}).(GetPortfoliosResultOutput)
 }
 

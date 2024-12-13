@@ -80,6 +80,41 @@ namespace Pulumi.AliCloud.Eds
         /// </summary>
         public static Output<GetCustomPropertiesResult> Invoke(GetCustomPropertiesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCustomPropertiesResult>("alicloud:eds/getCustomProperties:getCustomProperties", args ?? new GetCustomPropertiesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Ecd Custom Properties of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.176.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Eds.GetCustomProperties.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecdCustomPropertyId1"] = ids.Apply(getCustomPropertiesResult =&gt; getCustomPropertiesResult.Properties[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetCustomPropertiesResult> Invoke(GetCustomPropertiesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCustomPropertiesResult>("alicloud:eds/getCustomProperties:getCustomProperties", args ?? new GetCustomPropertiesInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -101,21 +101,11 @@ type GetVpdsResult struct {
 }
 
 func GetVpdsOutput(ctx *pulumi.Context, args GetVpdsOutputArgs, opts ...pulumi.InvokeOption) GetVpdsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetVpdsResultOutput, error) {
 			args := v.(GetVpdsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetVpdsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:eflo/getVpds:getVpds", args, &rv, "", opts...)
-			if err != nil {
-				return GetVpdsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetVpdsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetVpdsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:eflo/getVpds:getVpds", args, GetVpdsResultOutput{}, options).(GetVpdsResultOutput), nil
 		}).(GetVpdsResultOutput)
 }
 

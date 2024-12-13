@@ -26,6 +26,14 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         public static Output<GetShardingNetworkPrivateAddressesResult> Invoke(GetShardingNetworkPrivateAddressesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetShardingNetworkPrivateAddressesResult>("alicloud:mongodb/getShardingNetworkPrivateAddresses:getShardingNetworkPrivateAddresses", args ?? new GetShardingNetworkPrivateAddressesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Mongodb Sharding Network Private Addresses of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.157.0+.
+        /// </summary>
+        public static Output<GetShardingNetworkPrivateAddressesResult> Invoke(GetShardingNetworkPrivateAddressesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetShardingNetworkPrivateAddressesResult>("alicloud:mongodb/getShardingNetworkPrivateAddresses:getShardingNetworkPrivateAddresses", args ?? new GetShardingNetworkPrivateAddressesInvokeArgs(), options.WithDefaults());
     }
 
 

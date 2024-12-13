@@ -68,6 +68,35 @@ namespace Pulumi.AliCloud.Pvtz
         /// </summary>
         public static Output<GetZoneRecordsResult> Invoke(GetZoneRecordsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZoneRecordsResult>("alicloud:pvtz/getZoneRecords:getZoneRecords", args ?? new GetZoneRecordsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var recordsDs = AliCloud.Pvtz.GetZoneRecords.Invoke(new()
+        ///     {
+        ///         ZoneId = basic.Id,
+        ///         Keyword = foo.Value,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRecordId"] = recordsDs.Apply(getZoneRecordsResult =&gt; getZoneRecordsResult.Records[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetZoneRecordsResult> Invoke(GetZoneRecordsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetZoneRecordsResult>("alicloud:pvtz/getZoneRecords:getZoneRecords", args ?? new GetZoneRecordsInvokeArgs(), options.WithDefaults());
     }
 
 

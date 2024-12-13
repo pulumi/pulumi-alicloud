@@ -82,6 +82,42 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public static Output<GetVpcFlowLogsResult> Invoke(GetVpcFlowLogsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpcFlowLogsResult>("alicloud:vpc/getVpcFlowLogs:getVpcFlowLogs", args ?? new GetVpcFlowLogsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Vpc Flow Logs of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.122.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Vpc.GetVpcFlowLogs.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstVpcFlowLogId"] = example.Apply(getVpcFlowLogsResult =&gt; getVpcFlowLogsResult.Logs[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetVpcFlowLogsResult> Invoke(GetVpcFlowLogsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVpcFlowLogsResult>("alicloud:vpc/getVpcFlowLogs:getVpcFlowLogs", args ?? new GetVpcFlowLogsInvokeArgs(), options.WithDefaults());
     }
 
 

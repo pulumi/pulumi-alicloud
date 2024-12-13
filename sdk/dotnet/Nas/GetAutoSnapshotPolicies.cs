@@ -76,6 +76,39 @@ namespace Pulumi.AliCloud.Nas
         /// </summary>
         public static Output<GetAutoSnapshotPoliciesResult> Invoke(GetAutoSnapshotPoliciesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAutoSnapshotPoliciesResult>("alicloud:nas/getAutoSnapshotPolicies:getAutoSnapshotPolicies", args ?? new GetAutoSnapshotPoliciesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides Auto Snapshot Policies available to the user.
+        /// 
+        /// &gt; **NOTE**: Available in v1.153.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Nas.GetAutoSnapshotPolicies.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["nasAutoSnapshotPoliciesId1"] = ids.Apply(getAutoSnapshotPoliciesResult =&gt; getAutoSnapshotPoliciesResult.Policies[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAutoSnapshotPoliciesResult> Invoke(GetAutoSnapshotPoliciesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAutoSnapshotPoliciesResult>("alicloud:nas/getAutoSnapshotPolicies:getAutoSnapshotPolicies", args ?? new GetAutoSnapshotPoliciesInvokeArgs(), options.WithDefaults());
     }
 
 

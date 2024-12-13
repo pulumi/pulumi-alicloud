@@ -11,6 +11,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class CloudmonitorFunctions {
@@ -357,6 +358,75 @@ public final class CloudmonitorFunctions {
      * 
      */
     public static Output<GetServiceHybridDoubleWritesResult> getServiceHybridDoubleWrites(GetServiceHybridDoubleWritesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cloudmonitor/getServiceHybridDoubleWrites:getServiceHybridDoubleWrites", TypeShape.of(GetServiceHybridDoubleWritesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cloud Monitor Service Hybrid Double Writes of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.220.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.cms.Namespace;
+     * import com.pulumi.alicloud.cms.NamespaceArgs;
+     * import com.pulumi.alicloud.cloudmonitor.ServiceHybridDoubleWrite;
+     * import com.pulumi.alicloud.cloudmonitor.ServiceHybridDoubleWriteArgs;
+     * import com.pulumi.alicloud.cloudmonitor.CloudmonitorFunctions;
+     * import com.pulumi.alicloud.cloudmonitor.inputs.GetServiceHybridDoubleWritesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = AlicloudFunctions.getAccount();
+     * 
+     *         var source = new Namespace("source", NamespaceArgs.builder()
+     *             .namespace("your-source-namespace")
+     *             .build());
+     * 
+     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()
+     *             .namespace("your-namespace")
+     *             .build());
+     * 
+     *         var defaultServiceHybridDoubleWrite = new ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite", ServiceHybridDoubleWriteArgs.builder()
+     *             .sourceNamespace(source.id())
+     *             .sourceUserId(default_.id())
+     *             .namespace(defaultNamespace.id())
+     *             .userId(default_.id())
+     *             .build());
+     * 
+     *         final var ids = CloudmonitorFunctions.getServiceHybridDoubleWrites(GetServiceHybridDoubleWritesArgs.builder()
+     *             .ids(defaultServiceHybridDoubleWrite.id())
+     *             .build());
+     * 
+     *         ctx.export("cloudMonitorServiceHybridDoubleWritesId1", ids.applyValue(getServiceHybridDoubleWritesResult -> getServiceHybridDoubleWritesResult).applyValue(ids -> ids.applyValue(getServiceHybridDoubleWritesResult -> getServiceHybridDoubleWritesResult.hybridDoubleWrites()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServiceHybridDoubleWritesResult> getServiceHybridDoubleWrites(GetServiceHybridDoubleWritesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cloudmonitor/getServiceHybridDoubleWrites:getServiceHybridDoubleWrites", TypeShape.of(GetServiceHybridDoubleWritesResult.class), args, Utilities.withVersion(options));
     }
     /**

@@ -115,21 +115,11 @@ type GetServerlessInstancesResult struct {
 }
 
 func GetServerlessInstancesOutput(ctx *pulumi.Context, args GetServerlessInstancesOutputArgs, opts ...pulumi.InvokeOption) GetServerlessInstancesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetServerlessInstancesResultOutput, error) {
 			args := v.(GetServerlessInstancesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetServerlessInstancesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:mongodb/getServerlessInstances:getServerlessInstances", args, &rv, "", opts...)
-			if err != nil {
-				return GetServerlessInstancesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetServerlessInstancesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetServerlessInstancesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:mongodb/getServerlessInstances:getServerlessInstances", args, GetServerlessInstancesResultOutput{}, options).(GetServerlessInstancesResultOutput), nil
 		}).(GetServerlessInstancesResultOutput)
 }
 

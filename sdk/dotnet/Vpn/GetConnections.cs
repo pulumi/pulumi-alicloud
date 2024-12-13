@@ -74,6 +74,38 @@ namespace Pulumi.AliCloud.Vpn
         /// </summary>
         public static Output<GetConnectionsResult> Invoke(GetConnectionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectionsResult>("alicloud:vpn/getConnections:getConnections", args ?? new GetConnectionsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The VPN connections data source lists lots of VPN connections resource information owned by an Alicloud account.
+        /// 
+        /// &gt; **NOTE:** Available since v1.18.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = AliCloud.Vpn.GetConnections.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "fake-conn-id",
+        ///         },
+        ///         VpnGatewayId = "fake-vpn-id",
+        ///         CustomerGatewayId = "fake-cgw-id",
+        ///         OutputFile = "/tmp/vpnconn",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetConnectionsResult> Invoke(GetConnectionsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetConnectionsResult>("alicloud:vpn/getConnections:getConnections", args ?? new GetConnectionsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -72,21 +72,11 @@ type GetTrafficMirrorServiceResult struct {
 }
 
 func GetTrafficMirrorServiceOutput(ctx *pulumi.Context, args GetTrafficMirrorServiceOutputArgs, opts ...pulumi.InvokeOption) GetTrafficMirrorServiceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetTrafficMirrorServiceResultOutput, error) {
 			args := v.(GetTrafficMirrorServiceArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetTrafficMirrorServiceResult
-			secret, err := ctx.InvokePackageRaw("alicloud:vpc/getTrafficMirrorService:getTrafficMirrorService", args, &rv, "", opts...)
-			if err != nil {
-				return GetTrafficMirrorServiceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetTrafficMirrorServiceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetTrafficMirrorServiceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:vpc/getTrafficMirrorService:getTrafficMirrorService", args, GetTrafficMirrorServiceResultOutput{}, options).(GetTrafficMirrorServiceResultOutput), nil
 		}).(GetTrafficMirrorServiceResultOutput)
 }
 

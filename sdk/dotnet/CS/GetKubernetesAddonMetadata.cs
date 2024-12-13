@@ -26,6 +26,14 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         public static Output<GetKubernetesAddonMetadataResult> Invoke(GetKubernetesAddonMetadataInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKubernetesAddonMetadataResult>("alicloud:cs/getKubernetesAddonMetadata:getKubernetesAddonMetadata", args ?? new GetKubernetesAddonMetadataInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides metadata of kubernetes cluster addons.
+        /// 
+        /// &gt; **NOTE:** Available in 1.166.0+.
+        /// </summary>
+        public static Output<GetKubernetesAddonMetadataResult> Invoke(GetKubernetesAddonMetadataInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetKubernetesAddonMetadataResult>("alicloud:cs/getKubernetesAddonMetadata:getKubernetesAddonMetadata", args ?? new GetKubernetesAddonMetadataInvokeArgs(), options.WithDefaults());
     }
 
 

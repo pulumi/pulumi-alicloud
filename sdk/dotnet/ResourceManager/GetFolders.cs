@@ -94,6 +94,48 @@ namespace Pulumi.AliCloud.ResourceManager
         /// </summary>
         public static Output<GetFoldersResult> Invoke(GetFoldersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFoldersResult>("alicloud:resourcemanager/getFolders:getFolders", args ?? new GetFoldersInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Resource Manager Folders of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.84.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = new AliCloud.ResourceManager.Folder("default", new()
+        ///     {
+        ///         FolderName = name,
+        ///     });
+        /// 
+        ///     var ids = AliCloud.ResourceManager.GetFolders.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             @default.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["resourceManagerFolderId0"] = ids.Apply(getFoldersResult =&gt; getFoldersResult.Folders[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetFoldersResult> Invoke(GetFoldersInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetFoldersResult>("alicloud:resourcemanager/getFolders:getFolders", args ?? new GetFoldersInvokeArgs(), options.WithDefaults());
     }
 
 

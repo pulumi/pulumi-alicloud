@@ -102,6 +102,52 @@ namespace Pulumi.AliCloud.Amqp
         /// </summary>
         public static Output<GetQueuesResult> Invoke(GetQueuesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetQueuesResult>("alicloud:amqp/getQueues:getQueues", args ?? new GetQueuesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Amqp Queues of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.127.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Amqp.GetQueues.Invoke(new()
+        ///     {
+        ///         InstanceId = "amqp-abc12345",
+        ///         VirtualHostName = "my-VirtualHost",
+        ///         Ids = new[]
+        ///         {
+        ///             "my-Queue-1",
+        ///             "my-Queue-2",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Amqp.GetQueues.Invoke(new()
+        ///     {
+        ///         InstanceId = "amqp-abc12345",
+        ///         VirtualHostName = "my-VirtualHost",
+        ///         NameRegex = "^my-Queue",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["amqpQueueId1"] = ids.Apply(getQueuesResult =&gt; getQueuesResult.Queues[0]?.Id),
+        ///         ["amqpQueueId2"] = nameRegex.Apply(getQueuesResult =&gt; getQueuesResult.Queues[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetQueuesResult> Invoke(GetQueuesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetQueuesResult>("alicloud:amqp/getQueues:getQueues", args ?? new GetQueuesInvokeArgs(), options.WithDefaults());
     }
 
 

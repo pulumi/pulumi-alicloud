@@ -26,6 +26,14 @@ namespace Pulumi.AliCloud.Oos
         /// </summary>
         public static Output<GetPatchBaselinesResult> Invoke(GetPatchBaselinesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPatchBaselinesResult>("alicloud:oos/getPatchBaselines:getPatchBaselines", args ?? new GetPatchBaselinesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Oos Patch Baselines of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.146.0+.
+        /// </summary>
+        public static Output<GetPatchBaselinesResult> Invoke(GetPatchBaselinesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPatchBaselinesResult>("alicloud:oos/getPatchBaselines:getPatchBaselines", args ?? new GetPatchBaselinesInvokeArgs(), options.WithDefaults());
     }
 
 

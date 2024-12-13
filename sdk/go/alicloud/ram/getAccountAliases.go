@@ -35,21 +35,11 @@ type GetAccountAliasesResult struct {
 }
 
 func GetAccountAliasesOutput(ctx *pulumi.Context, args GetAccountAliasesOutputArgs, opts ...pulumi.InvokeOption) GetAccountAliasesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAccountAliasesResultOutput, error) {
 			args := v.(GetAccountAliasesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetAccountAliasesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:ram/getAccountAliases:getAccountAliases", args, &rv, "", opts...)
-			if err != nil {
-				return GetAccountAliasesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetAccountAliasesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetAccountAliasesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:ram/getAccountAliases:getAccountAliases", args, GetAccountAliasesResultOutput{}, options).(GetAccountAliasesResultOutput), nil
 		}).(GetAccountAliasesResultOutput)
 }
 

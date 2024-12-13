@@ -80,6 +80,41 @@ namespace Pulumi.AliCloud.Ocean
         /// </summary>
         public static Output<GetBaseInstancesResult> Invoke(GetBaseInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBaseInstancesResult>("alicloud:ocean/getBaseInstances:getBaseInstances", args ?? new GetBaseInstancesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Ocean Base Instances of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.203.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Ocean.GetBaseInstances.Invoke();
+        /// 
+        ///     var nameRegex = AliCloud.Ocean.GetBaseInstances.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Instance",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["oceanBaseInstanceId1"] = ids.Apply(getBaseInstancesResult =&gt; getBaseInstancesResult.Instances[0]?.Id),
+        ///         ["oceanBaseInstanceId2"] = nameRegex.Apply(getBaseInstancesResult =&gt; getBaseInstancesResult.Instances[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetBaseInstancesResult> Invoke(GetBaseInstancesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetBaseInstancesResult>("alicloud:ocean/getBaseInstances:getBaseInstances", args ?? new GetBaseInstancesInvokeArgs(), options.WithDefaults());
     }
 
 

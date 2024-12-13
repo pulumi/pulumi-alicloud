@@ -80,21 +80,11 @@ type GetDeliveriesResult struct {
 }
 
 func GetDeliveriesOutput(ctx *pulumi.Context, args GetDeliveriesOutputArgs, opts ...pulumi.InvokeOption) GetDeliveriesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDeliveriesResultOutput, error) {
 			args := v.(GetDeliveriesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetDeliveriesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:cfg/getDeliveries:getDeliveries", args, &rv, "", opts...)
-			if err != nil {
-				return GetDeliveriesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetDeliveriesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetDeliveriesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:cfg/getDeliveries:getDeliveries", args, GetDeliveriesResultOutput{}, options).(GetDeliveriesResultOutput), nil
 		}).(GetDeliveriesResultOutput)
 }
 

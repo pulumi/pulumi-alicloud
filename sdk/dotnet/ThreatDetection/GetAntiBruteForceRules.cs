@@ -106,6 +106,54 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// </summary>
         public static Output<GetAntiBruteForceRulesResult> Invoke(GetAntiBruteForceRulesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAntiBruteForceRulesResult>("alicloud:threatdetection/getAntiBruteForceRules:getAntiBruteForceRules", args ?? new GetAntiBruteForceRulesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides Threat Detection Anti Brute Force Rule available to the user.[What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-createantibruteforcerule)
+        /// 
+        /// &gt; **NOTE:** Available since v1.195.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "example_value";
+        ///     var defaultAntiBruteForceRule = new AliCloud.ThreatDetection.AntiBruteForceRule("default", new()
+        ///     {
+        ///         AntiBruteForceRuleName = name,
+        ///         ForbiddenTime = 360,
+        ///         UuidLists = new[]
+        ///         {
+        ///             "7567806c-4ec5-4597-9543-7c9543381a13",
+        ///         },
+        ///         FailCount = 80,
+        ///         Span = 10,
+        ///     });
+        /// 
+        ///     var @default = AliCloud.ThreatDetection.GetAntiBruteForceRules.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultAntiBruteForceRule.Id,
+        ///         },
+        ///         NameRegex = defaultAntiBruteForceRule.Name,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudThreatDetectionAntiBruteForceRuleExampleId"] = @default.Apply(@default =&gt; @default.Apply(getAntiBruteForceRulesResult =&gt; getAntiBruteForceRulesResult.Rules[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAntiBruteForceRulesResult> Invoke(GetAntiBruteForceRulesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAntiBruteForceRulesResult>("alicloud:threatdetection/getAntiBruteForceRules:getAntiBruteForceRules", args ?? new GetAntiBruteForceRulesInvokeArgs(), options.WithDefaults());
     }
 
 

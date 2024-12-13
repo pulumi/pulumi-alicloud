@@ -92,6 +92,47 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// </summary>
         public static Output<GetAccessPointsResult> Invoke(GetAccessPointsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccessPointsResult>("alicloud:expressconnect/getAccessPoints:getAccessPoints", args ?? new GetAccessPointsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Express Connect Access Points of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.ExpressConnect.GetAccessPoints.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "ap-cn-hangzhou-yh-C",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.ExpressConnect.GetAccessPoints.Invoke(new()
+        ///     {
+        ///         NameRegex = "^杭州-",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["expressConnectAccessPointId1"] = ids.Apply(getAccessPointsResult =&gt; getAccessPointsResult.Points[0]?.Id),
+        ///         ["expressConnectAccessPointId2"] = nameRegex.Apply(getAccessPointsResult =&gt; getAccessPointsResult.Points[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAccessPointsResult> Invoke(GetAccessPointsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccessPointsResult>("alicloud:expressconnect/getAccessPoints:getAccessPoints", args ?? new GetAccessPointsInvokeArgs(), options.WithDefaults());
     }
 
 

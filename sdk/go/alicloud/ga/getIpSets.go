@@ -80,21 +80,11 @@ type GetIpSetsResult struct {
 }
 
 func GetIpSetsOutput(ctx *pulumi.Context, args GetIpSetsOutputArgs, opts ...pulumi.InvokeOption) GetIpSetsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetIpSetsResultOutput, error) {
 			args := v.(GetIpSetsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetIpSetsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:ga/getIpSets:getIpSets", args, &rv, "", opts...)
-			if err != nil {
-				return GetIpSetsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetIpSetsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetIpSetsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:ga/getIpSets:getIpSets", args, GetIpSetsResultOutput{}, options).(GetIpSetsResultOutput), nil
 		}).(GetIpSetsResultOutput)
 }
 

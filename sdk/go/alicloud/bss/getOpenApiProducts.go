@@ -48,21 +48,11 @@ type GetOpenApiProductsResult struct {
 }
 
 func GetOpenApiProductsOutput(ctx *pulumi.Context, args GetOpenApiProductsOutputArgs, opts ...pulumi.InvokeOption) GetOpenApiProductsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetOpenApiProductsResultOutput, error) {
 			args := v.(GetOpenApiProductsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetOpenApiProductsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:bss/getOpenApiProducts:getOpenApiProducts", args, &rv, "", opts...)
-			if err != nil {
-				return GetOpenApiProductsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetOpenApiProductsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetOpenApiProductsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:bss/getOpenApiProducts:getOpenApiProducts", args, GetOpenApiProductsResultOutput{}, options).(GetOpenApiProductsResultOutput), nil
 		}).(GetOpenApiProductsResultOutput)
 }
 

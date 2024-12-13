@@ -70,6 +70,36 @@ namespace Pulumi.AliCloud.Sae
         /// </summary>
         public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceResult>("alicloud:sae/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Using this data source can open SAE service automatically. If the service has been opened, it will return opened.
+        /// 
+        /// For information about SAE and how to use it, see [What is SAE](https://help.aliyun.com/document_detail/125720.html).
+        /// 
+        /// &gt; **NOTE:** Available in v1.120.0+
+        /// 
+        /// &gt; **NOTE:** The SAE service is not support in the international site.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var open = AliCloud.Sae.GetService.Invoke(new()
+        ///     {
+        ///         Enable = "On",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceResult>("alicloud:sae/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());
     }
 
 

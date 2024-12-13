@@ -102,6 +102,52 @@ namespace Pulumi.AliCloud.Amqp
         /// </summary>
         public static Output<GetExchangesResult> Invoke(GetExchangesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetExchangesResult>("alicloud:amqp/getExchanges:getExchanges", args ?? new GetExchangesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Amqp Exchanges of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.128.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Amqp.GetExchanges.Invoke(new()
+        ///     {
+        ///         InstanceId = "amqp-abc12345",
+        ///         VirtualHostName = "my-VirtualHost",
+        ///         Ids = new[]
+        ///         {
+        ///             "my-Exchange-1",
+        ///             "my-Exchange-2",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Amqp.GetExchanges.Invoke(new()
+        ///     {
+        ///         InstanceId = "amqp-abc12345",
+        ///         VirtualHostName = "my-VirtualHost",
+        ///         NameRegex = "^my-Exchange",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["amqpExchangeId1"] = ids.Apply(getExchangesResult =&gt; getExchangesResult.Exchanges[0]?.Id),
+        ///         ["amqpExchangeId2"] = nameRegex.Apply(getExchangesResult =&gt; getExchangesResult.Exchanges[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetExchangesResult> Invoke(GetExchangesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetExchangesResult>("alicloud:amqp/getExchanges:getExchanges", args ?? new GetExchangesInvokeArgs(), options.WithDefaults());
     }
 
 

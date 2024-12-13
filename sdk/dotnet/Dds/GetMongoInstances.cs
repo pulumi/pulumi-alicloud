@@ -16,6 +16,9 @@ namespace Pulumi.AliCloud.Dds
 
         public static Output<GetMongoInstancesResult> Invoke(GetMongoInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMongoInstancesResult>("alicloud:dds/getMongoInstances:getMongoInstances", args ?? new GetMongoInstancesInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetMongoInstancesResult> Invoke(GetMongoInstancesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMongoInstancesResult>("alicloud:dds/getMongoInstances:getMongoInstances", args ?? new GetMongoInstancesInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -84,6 +84,43 @@ namespace Pulumi.AliCloud.Cfg
         /// </summary>
         public static Output<GetAggregateDeliveriesResult> Invoke(GetAggregateDeliveriesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAggregateDeliveriesResult>("alicloud:cfg/getAggregateDeliveries:getAggregateDeliveries", args ?? new GetAggregateDeliveriesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Config Aggregate Deliveries of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.172.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Cfg.GetAggregateDeliveries.Invoke(new()
+        ///     {
+        ///         AggregatorId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["configAggregateDeliveryId1"] = ids.Apply(getAggregateDeliveriesResult =&gt; getAggregateDeliveriesResult.Deliveries[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAggregateDeliveriesResult> Invoke(GetAggregateDeliveriesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAggregateDeliveriesResult>("alicloud:cfg/getAggregateDeliveries:getAggregateDeliveries", args ?? new GetAggregateDeliveriesInvokeArgs(), options.WithDefaults());
     }
 
 

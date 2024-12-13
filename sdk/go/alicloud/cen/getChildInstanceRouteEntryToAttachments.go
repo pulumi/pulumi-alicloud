@@ -88,21 +88,11 @@ type GetChildInstanceRouteEntryToAttachmentsResult struct {
 }
 
 func GetChildInstanceRouteEntryToAttachmentsOutput(ctx *pulumi.Context, args GetChildInstanceRouteEntryToAttachmentsOutputArgs, opts ...pulumi.InvokeOption) GetChildInstanceRouteEntryToAttachmentsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetChildInstanceRouteEntryToAttachmentsResultOutput, error) {
 			args := v.(GetChildInstanceRouteEntryToAttachmentsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetChildInstanceRouteEntryToAttachmentsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:cen/getChildInstanceRouteEntryToAttachments:getChildInstanceRouteEntryToAttachments", args, &rv, "", opts...)
-			if err != nil {
-				return GetChildInstanceRouteEntryToAttachmentsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetChildInstanceRouteEntryToAttachmentsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetChildInstanceRouteEntryToAttachmentsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:cen/getChildInstanceRouteEntryToAttachments:getChildInstanceRouteEntryToAttachments", args, GetChildInstanceRouteEntryToAttachmentsResultOutput{}, options).(GetChildInstanceRouteEntryToAttachmentsResultOutput), nil
 		}).(GetChildInstanceRouteEntryToAttachmentsResultOutput)
 }
 

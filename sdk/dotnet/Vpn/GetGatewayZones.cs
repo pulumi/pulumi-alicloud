@@ -62,6 +62,32 @@ namespace Pulumi.AliCloud.Vpn
         /// </summary>
         public static Output<GetGatewayZonesResult> Invoke(GetGatewayZonesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGatewayZonesResult>("alicloud:vpn/getGatewayZones:getGatewayZones", args ?? new GetGatewayZonesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides VPN Gateway Zone available to the user.[What is Zone](https://next.api.alibabacloud.com/api/Vpc/2016-04-28/DescribeVpnGatewayAvailableZones?lang=JAVA)
+        /// 
+        /// &gt; **NOTE:** Available since v1.216.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Vpn.GetGatewayZones.Invoke(new()
+        ///     {
+        ///         Spec = "5M",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetGatewayZonesResult> Invoke(GetGatewayZonesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGatewayZonesResult>("alicloud:vpn/getGatewayZones:getGatewayZones", args ?? new GetGatewayZonesInvokeArgs(), options.WithDefaults());
     }
 
 

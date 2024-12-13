@@ -26,6 +26,14 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public static Output<GetTransitRouterPeerAttachmentsResult> Invoke(GetTransitRouterPeerAttachmentsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterPeerAttachmentsResult>("alicloud:cen/getTransitRouterPeerAttachments:getTransitRouterPeerAttachments", args ?? new GetTransitRouterPeerAttachmentsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides CEN Transit Router peer attachments available to the user.
+        /// 
+        /// &gt; **NOTE:** Available in 1.128.0+
+        /// </summary>
+        public static Output<GetTransitRouterPeerAttachmentsResult> Invoke(GetTransitRouterPeerAttachmentsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterPeerAttachmentsResult>("alicloud:cen/getTransitRouterPeerAttachments:getTransitRouterPeerAttachments", args ?? new GetTransitRouterPeerAttachmentsInvokeArgs(), options.WithDefaults());
     }
 
 

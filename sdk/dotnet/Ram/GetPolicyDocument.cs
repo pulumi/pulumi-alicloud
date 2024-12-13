@@ -844,6 +844,423 @@ namespace Pulumi.AliCloud.Ram
         /// </summary>
         public static Output<GetPolicyDocumentResult> Invoke(GetPolicyDocumentInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPolicyDocumentResult>("alicloud:ram/getPolicyDocument:getPolicyDocument", args ?? new GetPolicyDocumentInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source Generates a RAM policy document of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.184.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Basic Example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var basicExample = AliCloud.Ram.GetPolicyDocument.Invoke(new()
+        ///     {
+        ///         Version = "1",
+        ///         Statements = new[]
+        ///         {
+        ///             new AliCloud.Ram.Inputs.GetPolicyDocumentStatementInputArgs
+        ///             {
+        ///                 Effect = "Allow",
+        ///                 Actions = new[]
+        ///                 {
+        ///                     "oss:*",
+        ///                 },
+        ///                 Resources = new[]
+        ///                 {
+        ///                     "acs:oss:*:*:myphotos",
+        ///                     "acs:oss:*:*:myphotos/*",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var @default = new AliCloud.Ram.Policy("default", new()
+        ///     {
+        ///         PolicyName = "tf-example",
+        ///         PolicyDocument = basicExample.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Document),
+        ///         Force = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// `data.alicloud_ram_policy_document.basic_example.document` will evaluate to:
+        /// 
+        /// ```json
+        /// {
+        ///   "Statement": [
+        ///     {
+        ///       "Effect": "Allow",
+        ///       "Action": "oss:*",
+        ///       "Resource": [
+        ///         "acs:oss:*:*:myphotos",
+        ///         "acs:oss:*:*:myphotos/*"
+        ///       ]
+        ///     }
+        ///   ],
+        ///   "Version": "1"
+        /// }
+        /// ```
+        /// 
+        /// ### Example Multiple Condition Keys and Values
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var multipleCondition = AliCloud.Ram.GetPolicyDocument.Invoke(new()
+        ///     {
+        ///         Version = "1",
+        ///         Statements = new[]
+        ///         {
+        ///             new AliCloud.Ram.Inputs.GetPolicyDocumentStatementInputArgs
+        ///             {
+        ///                 Effect = "Allow",
+        ///                 Actions = new[]
+        ///                 {
+        ///                     "oss:ListBuckets",
+        ///                     "oss:GetBucketStat",
+        ///                     "oss:GetBucketInfo",
+        ///                     "oss:GetBucketTagging",
+        ///                     "oss:GetBucketAcl",
+        ///                 },
+        ///                 Resources = new[]
+        ///                 {
+        ///                     "acs:oss:*:*:*",
+        ///                 },
+        ///             },
+        ///             new AliCloud.Ram.Inputs.GetPolicyDocumentStatementInputArgs
+        ///             {
+        ///                 Effect = "Allow",
+        ///                 Actions = new[]
+        ///                 {
+        ///                     "oss:GetObject",
+        ///                     "oss:GetObjectAcl",
+        ///                 },
+        ///                 Resources = new[]
+        ///                 {
+        ///                     "acs:oss:*:*:myphotos/hangzhou/2015/*",
+        ///                 },
+        ///             },
+        ///             new AliCloud.Ram.Inputs.GetPolicyDocumentStatementInputArgs
+        ///             {
+        ///                 Effect = "Allow",
+        ///                 Actions = new[]
+        ///                 {
+        ///                     "oss:ListObjects",
+        ///                 },
+        ///                 Resources = new[]
+        ///                 {
+        ///                     "acs:oss:*:*:myphotos",
+        ///                 },
+        ///                 Conditions = new[]
+        ///                 {
+        ///                     new AliCloud.Ram.Inputs.GetPolicyDocumentStatementConditionInputArgs
+        ///                     {
+        ///                         Operator = "StringLike",
+        ///                         Variable = "oss:Delimiter",
+        ///                         Values = new[]
+        ///                         {
+        ///                             "/",
+        ///                         },
+        ///                     },
+        ///                     new AliCloud.Ram.Inputs.GetPolicyDocumentStatementConditionInputArgs
+        ///                     {
+        ///                         Operator = "StringLike",
+        ///                         Variable = "oss:Prefix",
+        ///                         Values = new[]
+        ///                         {
+        ///                             "",
+        ///                             "hangzhou/",
+        ///                             "hangzhou/2015/*",
+        ///                         },
+        ///                     },
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var policy = new AliCloud.Ram.Policy("policy", new()
+        ///     {
+        ///         PolicyName = "tf-example-condition",
+        ///         PolicyDocument = multipleCondition.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Document),
+        ///         Force = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// `data.alicloud_ram_policy_document.multiple_condition.document` will evaluate to:
+        /// 
+        /// ```json
+        /// {
+        ///   "Statement": [
+        ///     {
+        ///       "Effect": "Allow",
+        ///       "Action": [
+        ///         "oss:ListBuckets",
+        ///         "oss:GetBucketStat",
+        ///         "oss:GetBucketInfo",
+        ///         "oss:GetBucketTagging",
+        ///         "oss:GetBucketAcl"
+        ///       ],
+        ///       "Resource": "acs:oss:*:*:*"
+        ///     },
+        ///     {
+        ///       "Effect": "Allow",
+        ///       "Action": [
+        ///         "oss:GetObject",
+        ///         "oss:GetObjectAcl"
+        ///       ],
+        ///       "Resource": "acs:oss:*:*:myphotos/hangzhou/2015/*"
+        ///     },
+        ///     {
+        ///       "Effect": "Allow",
+        ///       "Action": "oss:ListObjects",
+        ///       "Resource": "acs:oss:*:*:myphotos",
+        ///       "Condition": {
+        ///         "StringLike": {
+        ///           "oss:Delimiter": "/",
+        ///           "oss:Prefix": [
+        ///             "",
+        ///             "hangzhou/",
+        ///             "hangzhou/2015/*"
+        ///           ]
+        ///         }
+        ///       }
+        ///     }
+        ///   ],
+        ///   "Version": "1"
+        /// }
+        /// ```
+        /// 
+        /// ### Example Assume-Role Policy with RAM Principal
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ramExample = AliCloud.Ram.GetPolicyDocument.Invoke(new()
+        ///     {
+        ///         Statements = new[]
+        ///         {
+        ///             new AliCloud.Ram.Inputs.GetPolicyDocumentStatementInputArgs
+        ///             {
+        ///                 Effect = "Allow",
+        ///                 Actions = new[]
+        ///                 {
+        ///                     "sts:AssumeRole",
+        ///                 },
+        ///                 Principals = new[]
+        ///                 {
+        ///                     new AliCloud.Ram.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+        ///                     {
+        ///                         Entity = "RAM",
+        ///                         Identifiers = new[]
+        ///                         {
+        ///                             "acs:ram::123456789012****:root",
+        ///                         },
+        ///                     },
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var role = new AliCloud.Ram.Role("role", new()
+        ///     {
+        ///         Name = "tf-example-role-ram",
+        ///         Document = ramExample.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Document),
+        ///         Force = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// `data.alicloud_ram_policy_document.ram_example.document` will evaluate to:
+        /// 
+        /// ```json
+        /// {
+        ///   "Statement": [
+        ///     {
+        ///       "Effect": "Allow",
+        ///       "Action": "sts:AssumeRole",
+        ///       "Principal": {
+        ///         "RAM": [
+        ///           "acs:ram::123456789012****:root"
+        ///         ]
+        ///       }
+        ///     }
+        ///   ],
+        ///   "Version": "1"
+        /// }
+        /// ```
+        /// 
+        /// ### Example Assume-Role Policy with Service Principal
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var serviceExample = AliCloud.Ram.GetPolicyDocument.Invoke(new()
+        ///     {
+        ///         Statements = new[]
+        ///         {
+        ///             new AliCloud.Ram.Inputs.GetPolicyDocumentStatementInputArgs
+        ///             {
+        ///                 Effect = "Allow",
+        ///                 Actions = new[]
+        ///                 {
+        ///                     "sts:AssumeRole",
+        ///                 },
+        ///                 Principals = new[]
+        ///                 {
+        ///                     new AliCloud.Ram.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+        ///                     {
+        ///                         Entity = "Service",
+        ///                         Identifiers = new[]
+        ///                         {
+        ///                             "ecs.aliyuncs.com",
+        ///                         },
+        ///                     },
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var role = new AliCloud.Ram.Role("role", new()
+        ///     {
+        ///         Name = "tf-example-role-service",
+        ///         Document = serviceExample.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Document),
+        ///         Force = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// `data.alicloud_ram_policy_document.service_example.document` will evaluate to:
+        /// 
+        /// ```json
+        /// {
+        ///   "Statement": [
+        ///     {
+        ///       "Effect": "Allow",
+        ///       "Action": "sts:AssumeRole",
+        ///       "Principal": {
+        ///         "Service": [
+        ///           "ecs.aliyuncs.com"
+        ///         ]
+        ///       }
+        ///     }
+        ///   ],
+        ///   "Version": "1"
+        /// }
+        /// ```
+        /// 
+        /// ### Example Assume-Role Policy with Federated Principal
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var federatedExample = AliCloud.Ram.GetPolicyDocument.Invoke(new()
+        ///     {
+        ///         Statements = new[]
+        ///         {
+        ///             new AliCloud.Ram.Inputs.GetPolicyDocumentStatementInputArgs
+        ///             {
+        ///                 Effect = "Allow",
+        ///                 Actions = new[]
+        ///                 {
+        ///                     "sts:AssumeRole",
+        ///                 },
+        ///                 Principals = new[]
+        ///                 {
+        ///                     new AliCloud.Ram.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+        ///                     {
+        ///                         Entity = "Federated",
+        ///                         Identifiers = new[]
+        ///                         {
+        ///                             "acs:ram::123456789012****:saml-provider/testprovider",
+        ///                         },
+        ///                     },
+        ///                 },
+        ///                 Conditions = new[]
+        ///                 {
+        ///                     new AliCloud.Ram.Inputs.GetPolicyDocumentStatementConditionInputArgs
+        ///                     {
+        ///                         Operator = "StringEquals",
+        ///                         Variable = "saml:recipient",
+        ///                         Values = new[]
+        ///                         {
+        ///                             "https://signin.aliyun.com/saml-role/sso",
+        ///                         },
+        ///                     },
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var role = new AliCloud.Ram.Role("role", new()
+        ///     {
+        ///         Name = "tf-example-role-federated",
+        ///         Document = federatedExample.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Document),
+        ///         Force = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// `data.alicloud_ram_policy_document.federated_example.document` will evaluate to:
+        /// 
+        /// ```json
+        /// {
+        ///   "Statement": [
+        ///     {
+        ///       "Effect": "Allow",
+        ///       "Action": "sts:AssumeRole",
+        ///       "Principal": {
+        ///         "Federated": [
+        ///           "acs:ram::123456789012****:saml-provider/testprovider"
+        ///         ]
+        ///       },
+        ///       "Condition": {
+        ///         "StringEquals": {
+        ///           "saml:recipient": "https://signin.aliyun.com/saml-role/sso"
+        ///         }
+        ///       }
+        ///     }
+        ///   ],
+        ///   "Version": "1"
+        /// }
+        /// ```
+        /// </summary>
+        public static Output<GetPolicyDocumentResult> Invoke(GetPolicyDocumentInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPolicyDocumentResult>("alicloud:ram/getPolicyDocument:getPolicyDocument", args ?? new GetPolicyDocumentInvokeArgs(), options.WithDefaults());
     }
 
 

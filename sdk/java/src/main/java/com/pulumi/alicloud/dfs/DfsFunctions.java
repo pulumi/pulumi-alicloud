@@ -23,6 +23,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class DfsFunctions {
@@ -335,6 +336,58 @@ public final class DfsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetAccessGroupsResult> getAccessGroups(GetAccessGroupsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dfs/getAccessGroups:getAccessGroups", TypeShape.of(GetAccessGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Apsara File Storage for HDFS Access Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.133.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dfs.DfsFunctions;
+     * import com.pulumi.alicloud.dfs.inputs.GetAccessGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DfsFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
+     *             .ids("example_id")
+     *             .build());
+     * 
+     *         ctx.export("dfsAccessGroupId1", ids.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
+     *         final var nameRegex = DfsFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
+     *             .nameRegex("^my-AccessGroup")
+     *             .build());
+     * 
+     *         ctx.export("dfsAccessGroupId2", nameRegex.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAccessGroupsResult> getAccessGroupsPlain(GetAccessGroupsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:dfs/getAccessGroups:getAccessGroups", TypeShape.of(GetAccessGroupsResult.class), args, Utilities.withVersion(options));
     }
@@ -486,6 +539,56 @@ public final class DfsFunctions {
      * 
      */
     public static Output<GetAccessRulesResult> getAccessRules(GetAccessRulesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dfs/getAccessRules:getAccessRules", TypeShape.of(GetAccessRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Dfs Access Rules of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.140.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dfs.DfsFunctions;
+     * import com.pulumi.alicloud.dfs.inputs.GetAccessRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DfsFunctions.getAccessRules(GetAccessRulesArgs.builder()
+     *             .accessGroupId("example_value")
+     *             .ids(            
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .build());
+     * 
+     *         ctx.export("dfsAccessRuleId1", ids.applyValue(getAccessRulesResult -> getAccessRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAccessRulesResult> getAccessRules(GetAccessRulesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:dfs/getAccessRules:getAccessRules", TypeShape.of(GetAccessRulesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -847,6 +950,58 @@ public final class DfsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetFileSystemsResult> getFileSystems(GetFileSystemsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dfs/getFileSystems:getFileSystems", TypeShape.of(GetFileSystemsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Dfs File Systems of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.140.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dfs.DfsFunctions;
+     * import com.pulumi.alicloud.dfs.inputs.GetFileSystemsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DfsFunctions.getFileSystems(GetFileSystemsArgs.builder()
+     *             .ids("example_id")
+     *             .build());
+     * 
+     *         ctx.export("dfsFileSystemId1", ids.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
+     *         final var nameRegex = DfsFunctions.getFileSystems(GetFileSystemsArgs.builder()
+     *             .nameRegex("^my-FileSystem")
+     *             .build());
+     * 
+     *         ctx.export("dfsFileSystemId2", nameRegex.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetFileSystemsResult> getFileSystemsPlain(GetFileSystemsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:dfs/getFileSystems:getFileSystems", TypeShape.of(GetFileSystemsResult.class), args, Utilities.withVersion(options));
     }
@@ -998,6 +1153,56 @@ public final class DfsFunctions {
      * 
      */
     public static Output<GetMountPointsResult> getMountPoints(GetMountPointsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dfs/getMountPoints:getMountPoints", TypeShape.of(GetMountPointsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Dfs Mount Points of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.140.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dfs.DfsFunctions;
+     * import com.pulumi.alicloud.dfs.inputs.GetMountPointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DfsFunctions.getMountPoints(GetMountPointsArgs.builder()
+     *             .fileSystemId("example_value")
+     *             .ids(            
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .build());
+     * 
+     *         ctx.export("dfsMountPointId1", ids.applyValue(getMountPointsResult -> getMountPointsResult.points()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetMountPointsResult> getMountPoints(GetMountPointsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:dfs/getMountPoints:getMountPoints", TypeShape.of(GetMountPointsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1268,6 +1473,50 @@ public final class DfsFunctions {
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dfs/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the DFS Zones And Configurations of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.140.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dfs.DfsFunctions;
+     * import com.pulumi.alicloud.dfs.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DfsFunctions.getZones();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:dfs/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
     }
     /**

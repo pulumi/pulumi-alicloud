@@ -74,6 +74,38 @@ namespace Pulumi.AliCloud.ServiceMesh
         /// </summary>
         public static Output<GetVersionsResult> Invoke(GetVersionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVersionsResult>("alicloud:servicemesh/getVersions:getVersions", args ?? new GetVersionsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides ASM available versions in the specified region.
+        /// 
+        /// &gt; **NOTE:** Available in v1.161.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.ServiceMesh.GetVersions.Invoke(new()
+        ///     {
+        ///         Edition = "Default",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["serviceMeshVersion"] = versions[0].Version,
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetVersionsResult> Invoke(GetVersionsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVersionsResult>("alicloud:servicemesh/getVersions:getVersions", args ?? new GetVersionsInvokeArgs(), options.WithDefaults());
     }
 
 

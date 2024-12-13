@@ -82,6 +82,42 @@ namespace Pulumi.AliCloud.Cms
         /// </summary>
         public static Output<GetMonitorGroupsResult> Invoke(GetMonitorGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMonitorGroupsResult>("alicloud:cms/getMonitorGroups:getMonitorGroups", args ?? new GetMonitorGroupsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Cms Monitor Groups of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.113.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Cms.GetMonitorGroups.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstCmsMonitorGroupId"] = example.Apply(getMonitorGroupsResult =&gt; getMonitorGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetMonitorGroupsResult> Invoke(GetMonitorGroupsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMonitorGroupsResult>("alicloud:cms/getMonitorGroups:getMonitorGroups", args ?? new GetMonitorGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

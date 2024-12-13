@@ -96,6 +96,49 @@ namespace Pulumi.AliCloud.Gpdb
         /// </summary>
         public static Output<GetDbInstancePlansResult> Invoke(GetDbInstancePlansInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDbInstancePlansResult>("alicloud:gpdb/getDbInstancePlans:getDbInstancePlans", args ?? new GetDbInstancePlansInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Gpdb Db Instance Plans of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.189.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Gpdb.GetDbInstancePlans.Invoke(new()
+        ///     {
+        ///         DbInstanceId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Gpdb.GetDbInstancePlans.Invoke(new()
+        ///     {
+        ///         DbInstanceId = "example_value",
+        ///         NameRegex = "^my-DBInstancePlan",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["gpdbDbInstancePlanId1"] = ids.Apply(getDbInstancePlansResult =&gt; getDbInstancePlansResult.Plans[0]?.Id),
+        ///         ["gpdbDbInstancePlanId2"] = nameRegex.Apply(getDbInstancePlansResult =&gt; getDbInstancePlansResult.Plans[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDbInstancePlansResult> Invoke(GetDbInstancePlansInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDbInstancePlansResult>("alicloud:gpdb/getDbInstancePlans:getDbInstancePlans", args ?? new GetDbInstancePlansInvokeArgs(), options.WithDefaults());
     }
 
 

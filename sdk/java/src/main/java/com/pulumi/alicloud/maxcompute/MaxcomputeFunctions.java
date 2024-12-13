@@ -14,6 +14,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class MaxcomputeFunctions {
@@ -350,6 +351,62 @@ public final class MaxcomputeFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetProjectsResult> getProjects(GetProjectsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:maxcompute/getProjects:getProjects", TypeShape.of(GetProjectsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Max Compute Project available to the user.[What is Project](https://www.alibabacloud.com/help/en/maxcompute/)
+     * 
+     * &gt; **NOTE:** Available since v1.196.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.maxcompute.Project;
+     * import com.pulumi.alicloud.maxcompute.ProjectArgs;
+     * import com.pulumi.alicloud.maxcompute.MaxcomputeFunctions;
+     * import com.pulumi.alicloud.maxcompute.inputs.GetProjectsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("tf_example_acc");
+     *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
+     *             .defaultQuota("默认后付费Quota")
+     *             .projectName(name)
+     *             .comment(name)
+     *             .productType("PayAsYouGo")
+     *             .build());
+     * 
+     *         final var default = MaxcomputeFunctions.getProjects(GetProjectsArgs.builder()
+     *             .nameRegex(defaultProject.projectName())
+     *             .build());
+     * 
+     *         ctx.export("alicloudMaxcomputeProjectExampleId", default_.applyValue(default_ -> default_.projects()[0].projectName()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetProjectsResult> getProjectsPlain(GetProjectsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:maxcompute/getProjects:getProjects", TypeShape.of(GetProjectsResult.class), args, Utilities.withVersion(options));
     }
@@ -601,6 +658,56 @@ public final class MaxcomputeFunctions {
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:maxcompute/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **NOTE:** When you open MaxCompute service, you&#39;d better open [DataWorks service](https://www.alibabacloud.com/help/en/product/72772.htm) as well.
+     * 
+     * Using this data source can open Maxcompute service automatically. If the service has been opened, it will return opened.
+     * 
+     * For information about Maxcompute and how to use it, see [What is Maxcompute](https://www.alibabacloud.com/help/en/product/27797.htm).
+     * 
+     * &gt; **NOTE:** Available in v1.117.0+
+     * 
+     * &gt; **NOTE:** This datasource has been deprecated since provider version v1.228.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.maxcompute.MaxcomputeFunctions;
+     * import com.pulumi.alicloud.maxcompute.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = MaxcomputeFunctions.getService(GetServiceArgs.builder()
+     *             .enable("On")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:maxcompute/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
     }
     /**

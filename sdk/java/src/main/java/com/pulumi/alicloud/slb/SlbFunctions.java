@@ -50,6 +50,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class SlbFunctions {
@@ -336,6 +337,63 @@ public final class SlbFunctions {
      * 
      */
     public static Output<GetAclsResult> getAcls(GetAclsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:slb/getAcls:getAcls", TypeShape.of(GetAclsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the acls in the region.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.slb.SlbFunctions;
+     * import com.pulumi.alicloud.slb.inputs.GetAclsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sampleDs = SlbFunctions.getAcls();
+     * 
+     *         ctx.export("firstSlbAclId", sampleDs.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Entry Block
+     * 
+     * The entry mapping supports the following:
+     * 
+     * * `entry`   - An IP addresses or CIDR blocks.
+     * * `comment` - the comment of the entry.
+     * 
+     * ## Listener Block
+     * 
+     * The Listener mapping supports the following:
+     * 
+     * * `load_balancer_id` - the id of load balancer instance, the listener belongs to.
+     * * `frontend_port` - the listener port.
+     * * `protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
+     * * `acl_type`      - the type of acl (such as white/black).
+     * 
+     */
+    public static Output<GetAclsResult> getAcls(GetAclsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:slb/getAcls:getAcls", TypeShape.of(GetAclsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -686,6 +744,55 @@ public final class SlbFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetApplicationLoadBalancersResult> getApplicationLoadBalancers(GetApplicationLoadBalancersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:slb/getApplicationLoadBalancers:getApplicationLoadBalancers", TypeShape.of(GetApplicationLoadBalancersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the server load balancers of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in 1.123.1+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.slb.SlbFunctions;
+     * import com.pulumi.alicloud.slb.inputs.GetApplicationLoadBalancersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SlbFunctions.getApplicationLoadBalancers(GetApplicationLoadBalancersArgs.builder()
+     *             .nameRegex("sample_slb")
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("tagKey1", "tagValue1"),
+     *                 Map.entry("tagKey2", "tagValue2")
+     *             ))
+     *             .build());
+     * 
+     *         ctx.export("firstSlbId", example.applyValue(getApplicationLoadBalancersResult -> getApplicationLoadBalancersResult.balancers()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetApplicationLoadBalancersResult> getApplicationLoadBalancersPlain(GetApplicationLoadBalancersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:slb/getApplicationLoadBalancers:getApplicationLoadBalancers", TypeShape.of(GetApplicationLoadBalancersResult.class), args, Utilities.withVersion(options));
     }
@@ -816,6 +923,49 @@ public final class SlbFunctions {
      * 
      */
     public static Output<GetAttachmentsResult> getAttachments(GetAttachmentsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:slb/getAttachments:getAttachments", TypeShape.of(GetAttachmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the server load balancer attachments of the current Alibaba Cloud user.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.slb.SlbFunctions;
+     * import com.pulumi.alicloud.slb.inputs.GetAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sampleDs = SlbFunctions.getAttachments(GetAttachmentsArgs.builder()
+     *             .loadBalancerId(sampleSlb.id())
+     *             .build());
+     * 
+     *         ctx.export("firstSlbAttachmentInstanceId", sampleDs.applyValue(getAttachmentsResult -> getAttachmentsResult.slbAttachments()[0].instanceId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAttachmentsResult> getAttachments(GetAttachmentsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:slb/getAttachments:getAttachments", TypeShape.of(GetAttachmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -994,6 +1144,51 @@ public final class SlbFunctions {
      * 
      */
     public static Output<GetBackendServersResult> getBackendServers(GetBackendServersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:slb/getBackendServers:getBackendServers", TypeShape.of(GetBackendServersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the server load balancer backend servers related to a server load balancer..
+     * 
+     * &gt; **NOTE:** Available in 1.53.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.slb.SlbFunctions;
+     * import com.pulumi.alicloud.slb.inputs.GetBackendServersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sampleDs = SlbFunctions.getBackendServers(GetBackendServersArgs.builder()
+     *             .loadBalancerId(sampleSlb.id())
+     *             .build());
+     * 
+     *         ctx.export("firstSlbBackendServerId", sampleDs.applyValue(getBackendServersResult -> getBackendServersResult.backendServers()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetBackendServersResult> getBackendServers(GetBackendServersArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:slb/getBackendServers:getBackendServers", TypeShape.of(GetBackendServersResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1284,6 +1479,47 @@ public final class SlbFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetCaCertificatesResult> getCaCertificates(GetCaCertificatesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:slb/getCaCertificates:getCaCertificates", TypeShape.of(GetCaCertificatesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the CA certificate list.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.slb.SlbFunctions;
+     * import com.pulumi.alicloud.slb.inputs.GetCaCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sampleDs = SlbFunctions.getCaCertificates();
+     * 
+     *         ctx.export("firstSlbCaCertificateId", sampleDs.applyValue(getCaCertificatesResult -> getCaCertificatesResult.certificates()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetCaCertificatesResult> getCaCertificatesPlain(GetCaCertificatesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:slb/getCaCertificates:getCaCertificates", TypeShape.of(GetCaCertificatesResult.class), args, Utilities.withVersion(options));
     }
@@ -1423,6 +1659,52 @@ public final class SlbFunctions {
      * 
      */
     public static Output<GetDomainExtensionsResult> getDomainExtensions(GetDomainExtensionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:slb/getDomainExtensions:getDomainExtensions", TypeShape.of(GetDomainExtensionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the domain extensions associated with a server load balancer listener.
+     * 
+     * &gt; **NOTE:** Available in 1.60.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.slb.SlbFunctions;
+     * import com.pulumi.alicloud.slb.inputs.GetDomainExtensionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = SlbFunctions.getDomainExtensions(GetDomainExtensionsArgs.builder()
+     *             .ids("fake-de-id")
+     *             .loadBalancerId("fake-lb-id")
+     *             .frontendPort("fake-port")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDomainExtensionsResult> getDomainExtensions(GetDomainExtensionsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:slb/getDomainExtensions:getDomainExtensions", TypeShape.of(GetDomainExtensionsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1676,6 +1958,75 @@ public final class SlbFunctions {
      * 
      */
     public static Output<GetListenersResult> getListeners(GetListenersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:slb/getListeners:getListeners", TypeShape.of(GetListenersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the listeners related to a server load balancer of the current Alibaba Cloud user.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.slb.ApplicationLoadBalancer;
+     * import com.pulumi.alicloud.slb.ApplicationLoadBalancerArgs;
+     * import com.pulumi.alicloud.slb.Listener;
+     * import com.pulumi.alicloud.slb.ListenerArgs;
+     * import com.pulumi.alicloud.slb.SlbFunctions;
+     * import com.pulumi.alicloud.slb.inputs.GetListenersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new ApplicationLoadBalancer("default", ApplicationLoadBalancerArgs.builder()
+     *             .loadBalancerName("tf-testAccSlbListenertcp")
+     *             .build());
+     * 
+     *         var tcp = new Listener("tcp", ListenerArgs.builder()
+     *             .loadBalancerId(default_.id())
+     *             .backendPort("22")
+     *             .frontendPort("22")
+     *             .protocol("tcp")
+     *             .bandwidth("10")
+     *             .healthCheckType("tcp")
+     *             .persistenceTimeout(3600)
+     *             .healthyThreshold(8)
+     *             .unhealthyThreshold(8)
+     *             .healthCheckTimeout(8)
+     *             .healthCheckInterval(5)
+     *             .healthCheckHttpCode("http_2xx")
+     *             .healthCheckConnectPort(20)
+     *             .healthCheckUri("/console")
+     *             .establishedTimeout(600)
+     *             .build());
+     * 
+     *         final var sampleDs = SlbFunctions.getListeners(GetListenersArgs.builder()
+     *             .loadBalancerId(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("firstSlbListenerProtocol", sampleDs.applyValue(getListenersResult -> getListenersResult).applyValue(sampleDs -> sampleDs.applyValue(getListenersResult -> getListenersResult.slbListeners()[0].protocol())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetListenersResult> getListeners(GetListenersArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:slb/getListeners:getListeners", TypeShape.of(GetListenersResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2050,6 +2401,57 @@ public final class SlbFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetLoadBalancersResult> getLoadBalancers(GetLoadBalancersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:slb/getLoadBalancers:getLoadBalancers", TypeShape.of(GetLoadBalancersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **DEPRECATED:** This datasource has been renamed to alicloud.slb.getApplicationLoadBalancers from version 1.123.1.
+     * 
+     * This data source provides the server load balancers of the current Alibaba Cloud user.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.slb.LoadBalancer;
+     * import com.pulumi.alicloud.slb.LoadBalancerArgs;
+     * import com.pulumi.alicloud.slb.SlbFunctions;
+     * import com.pulumi.alicloud.slb.inputs.GetLoadBalancersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new LoadBalancer("default", LoadBalancerArgs.builder()
+     *             .name("sample_slb")
+     *             .build());
+     * 
+     *         final var slbsDs = SlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *             .nameRegex("sample_slb")
+     *             .build());
+     * 
+     *         ctx.export("firstSlbId", slbsDs.applyValue(getLoadBalancersResult -> getLoadBalancersResult.slbs()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetLoadBalancersResult> getLoadBalancersPlain(GetLoadBalancersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:slb/getLoadBalancers:getLoadBalancers", TypeShape.of(GetLoadBalancersResult.class), args, Utilities.withVersion(options));
     }
@@ -2078,6 +2480,15 @@ public final class SlbFunctions {
      * 
      */
     public static Output<GetMasterSlaveServerGroupsResult> getMasterSlaveServerGroups(GetMasterSlaveServerGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:slb/getMasterSlaveServerGroups:getMasterSlaveServerGroups", TypeShape.of(GetMasterSlaveServerGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the master slave server groups related to a server load balancer.
+     * 
+     * &gt; **NOTE:** Available in 1.54.0+
+     * 
+     */
+    public static Output<GetMasterSlaveServerGroupsResult> getMasterSlaveServerGroups(GetMasterSlaveServerGroupsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:slb/getMasterSlaveServerGroups:getMasterSlaveServerGroups", TypeShape.of(GetMasterSlaveServerGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2502,6 +2913,110 @@ public final class SlbFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetRulesResult> getRules(GetRulesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:slb/getRules:getRules", TypeShape.of(GetRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the rules associated with a server load balancer listener.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.slb.ApplicationLoadBalancer;
+     * import com.pulumi.alicloud.slb.ApplicationLoadBalancerArgs;
+     * import com.pulumi.alicloud.slb.Listener;
+     * import com.pulumi.alicloud.slb.ListenerArgs;
+     * import com.pulumi.alicloud.slb.ServerGroup;
+     * import com.pulumi.alicloud.slb.ServerGroupArgs;
+     * import com.pulumi.alicloud.slb.Rule;
+     * import com.pulumi.alicloud.slb.RuleArgs;
+     * import com.pulumi.alicloud.slb.SlbFunctions;
+     * import com.pulumi.alicloud.slb.inputs.GetRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("slbrulebasicconfig");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableDiskCategory("cloud_efficiency")
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .name(name)
+     *             .cidrBlock("172.16.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("172.16.0.0/16")
+     *             .zoneId(default_.zones()[0].id())
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer("defaultApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()
+     *             .loadBalancerName(name)
+     *             .vswitchId(defaultSwitch.id())
+     *             .build());
+     * 
+     *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()
+     *             .loadBalancerId(defaultApplicationLoadBalancer.id())
+     *             .backendPort(22)
+     *             .frontendPort(22)
+     *             .protocol("http")
+     *             .bandwidth(5)
+     *             .healthCheckConnectPort("20")
+     *             .build());
+     * 
+     *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()
+     *             .loadBalancerId(defaultApplicationLoadBalancer.id())
+     *             .build());
+     * 
+     *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()
+     *             .loadBalancerId(defaultApplicationLoadBalancer.id())
+     *             .frontendPort(defaultListener.frontendPort())
+     *             .name(name)
+     *             .domain("*.aliyun.com")
+     *             .url("/image")
+     *             .serverGroupId(defaultServerGroup.id())
+     *             .build());
+     * 
+     *         final var sampleDs = SlbFunctions.getRules(GetRulesArgs.builder()
+     *             .loadBalancerId(defaultApplicationLoadBalancer.id())
+     *             .frontendPort(22)
+     *             .build());
+     * 
+     *         ctx.export("firstSlbRuleId", sampleDs.applyValue(getRulesResult -> getRulesResult).applyValue(sampleDs -> sampleDs.applyValue(getRulesResult -> getRulesResult.slbRules()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetRulesResult> getRulesPlain(GetRulesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:slb/getRules:getRules", TypeShape.of(GetRulesResult.class), args, Utilities.withVersion(options));
     }
@@ -2708,6 +3223,47 @@ public final class SlbFunctions {
      * 
      */
     public static Output<GetServerCertificatesResult> getServerCertificates(GetServerCertificatesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:slb/getServerCertificates:getServerCertificates", TypeShape.of(GetServerCertificatesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the server certificate list.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.slb.SlbFunctions;
+     * import com.pulumi.alicloud.slb.inputs.GetServerCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sampleDs = SlbFunctions.getServerCertificates();
+     * 
+     *         ctx.export("firstSlbServerCertificateId", sampleDs.applyValue(getServerCertificatesResult -> getServerCertificatesResult.certificates()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServerCertificatesResult> getServerCertificates(GetServerCertificatesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:slb/getServerCertificates:getServerCertificates", TypeShape.of(GetServerCertificatesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2992,6 +3548,87 @@ public final class SlbFunctions {
      * 
      */
     public static Output<GetServerGroupsResult> getServerGroups(GetServerGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:slb/getServerGroups:getServerGroups", TypeShape.of(GetServerGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the VServer groups related to a server load balancer.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.slb.ApplicationLoadBalancer;
+     * import com.pulumi.alicloud.slb.ApplicationLoadBalancerArgs;
+     * import com.pulumi.alicloud.slb.ServerGroup;
+     * import com.pulumi.alicloud.slb.ServerGroupArgs;
+     * import com.pulumi.alicloud.slb.SlbFunctions;
+     * import com.pulumi.alicloud.slb.inputs.GetServerGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("slbservergroups");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableDiskCategory("cloud_efficiency")
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("172.16.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("172.16.0.0/16")
+     *             .zoneId(default_.zones()[0].id())
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer("defaultApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()
+     *             .loadBalancerName(name)
+     *             .vswitchId(defaultSwitch.id())
+     *             .build());
+     * 
+     *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()
+     *             .loadBalancerId(defaultApplicationLoadBalancer.id())
+     *             .build());
+     * 
+     *         final var sampleDs = SlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
+     *             .loadBalancerId(defaultApplicationLoadBalancer.id())
+     *             .build());
+     * 
+     *         ctx.export("firstSlbServerGroupId", sampleDs.applyValue(getServerGroupsResult -> getServerGroupsResult).applyValue(sampleDs -> sampleDs.applyValue(getServerGroupsResult -> getServerGroupsResult.slbServerGroups()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServerGroupsResult> getServerGroups(GetServerGroupsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:slb/getServerGroups:getServerGroups", TypeShape.of(GetServerGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -3396,6 +4033,60 @@ public final class SlbFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetTlsCipherPoliciesResult> getTlsCipherPolicies(GetTlsCipherPoliciesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:slb/getTlsCipherPolicies:getTlsCipherPolicies", TypeShape.of(GetTlsCipherPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Slb Tls Cipher Policies of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.135.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.slb.SlbFunctions;
+     * import com.pulumi.alicloud.slb.inputs.GetTlsCipherPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SlbFunctions.getTlsCipherPolicies(GetTlsCipherPoliciesArgs.builder()
+     *             .ids(            
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .build());
+     * 
+     *         ctx.export("slbTlsCipherPolicyId1", ids.applyValue(getTlsCipherPoliciesResult -> getTlsCipherPoliciesResult.policies()[0].id()));
+     *         final var nameRegex = SlbFunctions.getTlsCipherPolicies(GetTlsCipherPoliciesArgs.builder()
+     *             .nameRegex("^My-TlsCipherPolicy")
+     *             .build());
+     * 
+     *         ctx.export("slbTlsCipherPolicyId2", nameRegex.applyValue(getTlsCipherPoliciesResult -> getTlsCipherPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetTlsCipherPoliciesResult> getTlsCipherPoliciesPlain(GetTlsCipherPoliciesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:slb/getTlsCipherPolicies:getTlsCipherPolicies", TypeShape.of(GetTlsCipherPoliciesResult.class), args, Utilities.withVersion(options));
     }
@@ -3622,6 +4313,51 @@ public final class SlbFunctions {
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:slb/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides availability zones for SLB that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+     * 
+     * &gt; **NOTE:** Available in v1.73.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.slb.SlbFunctions;
+     * import com.pulumi.alicloud.slb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zonesIds = SlbFunctions.getZones(GetZonesArgs.builder()
+     *             .availableSlbAddressType("vpc")
+     *             .availableSlbAddressIpVersion("ipv4")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:slb/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
     }
     /**

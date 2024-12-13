@@ -76,6 +76,39 @@ namespace Pulumi.AliCloud.Ram
         /// </summary>
         public static Output<GetRolesResult> Invoke(GetRolesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRolesResult>("alicloud:ram/getRoles:getRoles", args ?? new GetRolesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available since v1.0.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var rolesDs = AliCloud.Ram.GetRoles.Invoke(new()
+        ///     {
+        ///         OutputFile = "roles.txt",
+        ///         NameRegex = ".*test.*",
+        ///         PolicyName = "AliyunACSDefaultAccess",
+        ///         PolicyType = "Custom",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRoleId"] = rolesDs.Apply(getRolesResult =&gt; getRolesResult.Roles[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRolesResult> Invoke(GetRolesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRolesResult>("alicloud:ram/getRoles:getRoles", args ?? new GetRolesInvokeArgs(), options.WithDefaults());
     }
 
 

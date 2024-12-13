@@ -70,6 +70,36 @@ namespace Pulumi.AliCloud.Cms
         /// </summary>
         public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceResult>("alicloud:cms/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Using this data source can open CMS service automatically. If the service has been opened, it will return opened.
+        /// 
+        /// For information about CMS and how to use it, see [What is CMS](https://help.aliyun.com/product/28572.html).
+        /// 
+        /// &gt; **NOTE:** Available in v1.111.0+
+        /// 
+        /// &gt; **DEPRECATED:**  This data source has been deprecated from version `1.219.0`. The Cloud Monitor Service is no longer needed to open in the product dimension and the OpenAPI has been taken [offline](https://api.alibabacloud.com/api/Cms/2019-01-01/OpenCmsService).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var open = AliCloud.Cms.GetService.Invoke(new()
+        ///     {
+        ///         Enable = "On",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceResult>("alicloud:cms/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());
     }
 
 

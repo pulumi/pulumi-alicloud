@@ -20,6 +20,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class MnsFunctions {
@@ -246,6 +247,51 @@ public final class MnsFunctions {
      * 
      */
     public static Output<GetQueuesResult> getQueues(GetQueuesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:mns/getQueues:getQueues", TypeShape.of(GetQueuesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list of MNS queues in an Alibaba Cloud account according to the specified parameters.
+     * 
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_queues.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mns.MnsFunctions;
+     * import com.pulumi.alicloud.mns.inputs.GetQueuesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var queues = MnsFunctions.getQueues(GetQueuesArgs.builder()
+     *             .namePrefix("tf-")
+     *             .build());
+     * 
+     *         ctx.export("firstQueueId", queues.applyValue(getQueuesResult -> getQueuesResult.queues()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetQueuesResult> getQueues(GetQueuesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:mns/getQueues:getQueues", TypeShape.of(GetQueuesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -578,6 +624,54 @@ public final class MnsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:mns/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Using this data source can open MNS service automatically. If the service has been opened, it will return opened.
+     * 
+     * For information about MNS and how to use it, see [What is MNS](https://www.alibabacloud.com/help/en/product/27412.htm).
+     * 
+     * &gt; **NOTE:** Available in v1.118.0+
+     * 
+     * &gt; **NOTE:** The MNS service is not support in the international site.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mns.MnsFunctions;
+     * import com.pulumi.alicloud.mns.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = MnsFunctions.getService(GetServiceArgs.builder()
+     *             .enable("On")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:mns/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
     }
@@ -717,6 +811,52 @@ public final class MnsFunctions {
      * 
      */
     public static Output<GetTopicSubscriptionsResult> getTopicSubscriptions(GetTopicSubscriptionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:mns/getTopicSubscriptions:getTopicSubscriptions", TypeShape.of(GetTopicSubscriptionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
+     * 
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_subscriptions.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mns.MnsFunctions;
+     * import com.pulumi.alicloud.mns.inputs.GetTopicSubscriptionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subscriptions = MnsFunctions.getTopicSubscriptions(GetTopicSubscriptionsArgs.builder()
+     *             .topicName("topic_name")
+     *             .namePrefix("tf-")
+     *             .build());
+     * 
+     *         ctx.export("firstTopicSubscriptionId", subscriptions.applyValue(getTopicSubscriptionsResult -> getTopicSubscriptionsResult.subscriptions()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTopicSubscriptionsResult> getTopicSubscriptions(GetTopicSubscriptionsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:mns/getTopicSubscriptions:getTopicSubscriptions", TypeShape.of(GetTopicSubscriptionsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -988,6 +1128,51 @@ public final class MnsFunctions {
      * 
      */
     public static Output<GetTopicsResult> getTopics(GetTopicsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:mns/getTopics:getTopics", TypeShape.of(GetTopicsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list of MNS topics in an Alibaba Cloud account according to the specified parameters.
+     * 
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_topics.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mns.MnsFunctions;
+     * import com.pulumi.alicloud.mns.inputs.GetTopicsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var topics = MnsFunctions.getTopics(GetTopicsArgs.builder()
+     *             .namePrefix("tf-")
+     *             .build());
+     * 
+     *         ctx.export("firstTopicId", topics.applyValue(getTopicsResult -> getTopicsResult.topics()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTopicsResult> getTopics(GetTopicsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:mns/getTopics:getTopics", TypeShape.of(GetTopicsResult.class), args, Utilities.withVersion(options));
     }
     /**

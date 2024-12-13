@@ -52,21 +52,11 @@ type GetMasterSlaveServerGroupsResult struct {
 }
 
 func GetMasterSlaveServerGroupsOutput(ctx *pulumi.Context, args GetMasterSlaveServerGroupsOutputArgs, opts ...pulumi.InvokeOption) GetMasterSlaveServerGroupsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetMasterSlaveServerGroupsResultOutput, error) {
 			args := v.(GetMasterSlaveServerGroupsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetMasterSlaveServerGroupsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:slb/getMasterSlaveServerGroups:getMasterSlaveServerGroups", args, &rv, "", opts...)
-			if err != nil {
-				return GetMasterSlaveServerGroupsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetMasterSlaveServerGroupsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetMasterSlaveServerGroupsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:slb/getMasterSlaveServerGroups:getMasterSlaveServerGroups", args, GetMasterSlaveServerGroupsResultOutput{}, options).(GetMasterSlaveServerGroupsResultOutput), nil
 		}).(GetMasterSlaveServerGroupsResultOutput)
 }
 

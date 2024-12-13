@@ -99,21 +99,11 @@ type GetGroupMetricRulesResult struct {
 }
 
 func GetGroupMetricRulesOutput(ctx *pulumi.Context, args GetGroupMetricRulesOutputArgs, opts ...pulumi.InvokeOption) GetGroupMetricRulesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetGroupMetricRulesResultOutput, error) {
 			args := v.(GetGroupMetricRulesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetGroupMetricRulesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:cms/getGroupMetricRules:getGroupMetricRules", args, &rv, "", opts...)
-			if err != nil {
-				return GetGroupMetricRulesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetGroupMetricRulesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetGroupMetricRulesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:cms/getGroupMetricRules:getGroupMetricRules", args, GetGroupMetricRulesResultOutput{}, options).(GetGroupMetricRulesResultOutput), nil
 		}).(GetGroupMetricRulesResultOutput)
 }
 

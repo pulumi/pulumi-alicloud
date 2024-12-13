@@ -91,21 +91,11 @@ type GetHanaInstancesResult struct {
 }
 
 func GetHanaInstancesOutput(ctx *pulumi.Context, args GetHanaInstancesOutputArgs, opts ...pulumi.InvokeOption) GetHanaInstancesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetHanaInstancesResultOutput, error) {
 			args := v.(GetHanaInstancesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetHanaInstancesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:hbr/getHanaInstances:getHanaInstances", args, &rv, "", opts...)
-			if err != nil {
-				return GetHanaInstancesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetHanaInstancesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetHanaInstancesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:hbr/getHanaInstances:getHanaInstances", args, GetHanaInstancesResultOutput{}, options).(GetHanaInstancesResultOutput), nil
 		}).(GetHanaInstancesResultOutput)
 }
 

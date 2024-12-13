@@ -80,6 +80,41 @@ namespace Pulumi.AliCloud.Drds
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:drds/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `alicloud.drds.Instance` data source provides a collection of DRDS instances available in Alibaba Cloud account.
+        /// Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+        /// 
+        /// &gt; **NOTE:** Available in 1.35.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        ///  ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var drdsInstancesDs = AliCloud.Drds.GetInstances.Invoke(new()
+        ///     {
+        ///         NameRegex = "drds-\\d+",
+        ///         Ids = new[]
+        ///         {
+        ///             "drdsabc123456",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstDbInstanceId"] = drdsInstancesDs.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:drds/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
     }
 
 

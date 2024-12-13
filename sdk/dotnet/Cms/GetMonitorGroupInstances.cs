@@ -16,6 +16,9 @@ namespace Pulumi.AliCloud.Cms
 
         public static Output<GetMonitorGroupInstancesResult> Invoke(GetMonitorGroupInstancesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMonitorGroupInstancesResult>("alicloud:cms/getMonitorGroupInstances:getMonitorGroupInstances", args ?? new GetMonitorGroupInstancesInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetMonitorGroupInstancesResult> Invoke(GetMonitorGroupInstancesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMonitorGroupInstancesResult>("alicloud:cms/getMonitorGroupInstances:getMonitorGroupInstances", args ?? new GetMonitorGroupInstancesInvokeArgs(), options.WithDefaults());
     }
 
 

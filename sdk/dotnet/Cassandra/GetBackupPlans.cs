@@ -78,6 +78,40 @@ namespace Pulumi.AliCloud.Cassandra
         /// </summary>
         public static Output<GetBackupPlansResult> Invoke(GetBackupPlansInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBackupPlansResult>("alicloud:cassandra/getBackupPlans:getBackupPlans", args ?? new GetBackupPlansInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Cassandra Backup Plans of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.128.0+.
+        /// 
+        /// &gt; **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Cassandra.GetBackupPlans.Invoke(new()
+        ///     {
+        ///         ClusterId = "example_value",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstCassandraBackupPlanId"] = example.Apply(getBackupPlansResult =&gt; getBackupPlansResult.Plans[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetBackupPlansResult> Invoke(GetBackupPlansInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetBackupPlansResult>("alicloud:cassandra/getBackupPlans:getBackupPlans", args ?? new GetBackupPlansInvokeArgs(), options.WithDefaults());
     }
 
 

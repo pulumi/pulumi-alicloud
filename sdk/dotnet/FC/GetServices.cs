@@ -66,6 +66,34 @@ namespace Pulumi.AliCloud.FC
         /// </summary>
         public static Output<GetServicesResult> Invoke(GetServicesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServicesResult>("alicloud:fc/getServices:getServices", args ?? new GetServicesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Function Compute services of the current Alibaba Cloud user.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var fcServicesDs = AliCloud.FC.GetServices.Invoke(new()
+        ///     {
+        ///         NameRegex = "sample_fc_service",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstFcServiceName"] = fcServicesDs.Apply(getServicesResult =&gt; getServicesResult.Services[0]?.Name),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetServicesResult> Invoke(GetServicesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServicesResult>("alicloud:fc/getServices:getServices", args ?? new GetServicesInvokeArgs(), options.WithDefaults());
     }
 
 

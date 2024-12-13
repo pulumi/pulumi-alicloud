@@ -95,21 +95,11 @@ type GetExchangesResult struct {
 }
 
 func GetExchangesOutput(ctx *pulumi.Context, args GetExchangesOutputArgs, opts ...pulumi.InvokeOption) GetExchangesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetExchangesResultOutput, error) {
 			args := v.(GetExchangesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetExchangesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:amqp/getExchanges:getExchanges", args, &rv, "", opts...)
-			if err != nil {
-				return GetExchangesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetExchangesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetExchangesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:amqp/getExchanges:getExchanges", args, GetExchangesResultOutput{}, options).(GetExchangesResultOutput), nil
 		}).(GetExchangesResultOutput)
 }
 

@@ -110,6 +110,56 @@ namespace Pulumi.AliCloud.Eds
         /// </summary>
         public static Output<GetNasFileSystemsResult> Invoke(GetNasFileSystemsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNasFileSystemsResult>("alicloud:eds/getNasFileSystems:getNasFileSystems", args ?? new GetNasFileSystemsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Ecd Nas File Systems of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.141.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = new AliCloud.Eds.SimpleOfficeSite("default", new()
+        ///     {
+        ///         CidrBlock = "172.16.0.0/12",
+        ///         DesktopAccessType = "Internet",
+        ///         OfficeSiteName = "your_office_site_name",
+        ///         EnableInternetAccess = false,
+        ///     });
+        /// 
+        ///     var defaultNasFileSystem = new AliCloud.Eds.NasFileSystem("default", new()
+        ///     {
+        ///         Description = "your_description",
+        ///         OfficeSiteId = @default.Id,
+        ///         NasFileSystemName = "your_nas_file_system_name",
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Eds.GetNasFileSystems.Invoke();
+        /// 
+        ///     var nameRegex = AliCloud.Eds.GetNasFileSystems.Invoke(new()
+        ///     {
+        ///         NameRegex = defaultNasFileSystem.NasFileSystemName,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecdNasFileSystemId1"] = ids.Apply(getNasFileSystemsResult =&gt; getNasFileSystemsResult.Systems[0]?.Id),
+        ///         ["ecdNasFileSystemId2"] = nameRegex.Apply(getNasFileSystemsResult =&gt; getNasFileSystemsResult.Systems[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetNasFileSystemsResult> Invoke(GetNasFileSystemsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNasFileSystemsResult>("alicloud:eds/getNasFileSystems:getNasFileSystems", args ?? new GetNasFileSystemsInvokeArgs(), options.WithDefaults());
     }
 
 

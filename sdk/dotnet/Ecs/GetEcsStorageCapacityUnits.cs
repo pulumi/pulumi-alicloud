@@ -80,6 +80,41 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public static Output<GetEcsStorageCapacityUnitsResult> Invoke(GetEcsStorageCapacityUnitsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEcsStorageCapacityUnitsResult>("alicloud:ecs/getEcsStorageCapacityUnits:getEcsStorageCapacityUnits", args ?? new GetEcsStorageCapacityUnitsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Ecs Storage Capacity Units of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.155.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Ecs.GetEcsStorageCapacityUnits.Invoke();
+        /// 
+        ///     var nameRegex = AliCloud.Ecs.GetEcsStorageCapacityUnits.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-StorageCapacityUnit",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecsStorageCapacityUnitId1"] = ids.Apply(getEcsStorageCapacityUnitsResult =&gt; getEcsStorageCapacityUnitsResult.Units[0]?.Id),
+        ///         ["ecsStorageCapacityUnitId2"] = nameRegex.Apply(getEcsStorageCapacityUnitsResult =&gt; getEcsStorageCapacityUnitsResult.Units[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetEcsStorageCapacityUnitsResult> Invoke(GetEcsStorageCapacityUnitsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetEcsStorageCapacityUnitsResult>("alicloud:ecs/getEcsStorageCapacityUnits:getEcsStorageCapacityUnits", args ?? new GetEcsStorageCapacityUnitsInvokeArgs(), options.WithDefaults());
     }
 
 

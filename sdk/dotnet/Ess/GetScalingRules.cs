@@ -78,6 +78,40 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         public static Output<GetScalingRulesResult> Invoke(GetScalingRulesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetScalingRulesResult>("alicloud:ess/getScalingRules:getScalingRules", args ?? new GetScalingRulesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides available scaling rule resources. 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var scalingrulesDs = AliCloud.Ess.GetScalingRules.Invoke(new()
+        ///     {
+        ///         ScalingGroupId = "scaling_group_id",
+        ///         Ids = new[]
+        ///         {
+        ///             "scaling_rule_id1",
+        ///             "scaling_rule_id2",
+        ///         },
+        ///         NameRegex = "scaling_rule_name",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstScalingRule"] = scalingrulesDs.Apply(getScalingRulesResult =&gt; getScalingRulesResult.Rules[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetScalingRulesResult> Invoke(GetScalingRulesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetScalingRulesResult>("alicloud:ess/getScalingRules:getScalingRules", args ?? new GetScalingRulesInvokeArgs(), options.WithDefaults());
     }
 
 

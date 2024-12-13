@@ -72,6 +72,37 @@ namespace Pulumi.AliCloud.Adb
         /// </summary>
         public static Output<GetResourceGroupsResult> Invoke(GetResourceGroupsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetResourceGroupsResult>("alicloud:adb/getResourceGroups:getResourceGroups", args ?? new GetResourceGroupsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides Adb Resource Group available to the user.[What is Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describedbresourcegroup)
+        /// 
+        /// &gt; **NOTE:** Available since v1.195.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Adb.GetResourceGroups.Invoke(new()
+        ///     {
+        ///         DbClusterId = "am-bp1a16357gty69185",
+        ///         GroupName = "TESTOPENAPI",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudAdbResourceGroupExampleId"] = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetResourceGroupsResult> Invoke(GetResourceGroupsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetResourceGroupsResult>("alicloud:adb/getResourceGroups:getResourceGroups", args ?? new GetResourceGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

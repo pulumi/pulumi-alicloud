@@ -86,21 +86,11 @@ type GetRdsBackupsResult struct {
 }
 
 func GetRdsBackupsOutput(ctx *pulumi.Context, args GetRdsBackupsOutputArgs, opts ...pulumi.InvokeOption) GetRdsBackupsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetRdsBackupsResultOutput, error) {
 			args := v.(GetRdsBackupsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetRdsBackupsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:rds/getRdsBackups:getRdsBackups", args, &rv, "", opts...)
-			if err != nil {
-				return GetRdsBackupsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetRdsBackupsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetRdsBackupsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:rds/getRdsBackups:getRdsBackups", args, GetRdsBackupsResultOutput{}, options).(GetRdsBackupsResultOutput), nil
 		}).(GetRdsBackupsResultOutput)
 }
 

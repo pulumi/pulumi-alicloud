@@ -77,21 +77,11 @@ type GetSynchronizationJobsResult struct {
 }
 
 func GetSynchronizationJobsOutput(ctx *pulumi.Context, args GetSynchronizationJobsOutputArgs, opts ...pulumi.InvokeOption) GetSynchronizationJobsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSynchronizationJobsResultOutput, error) {
 			args := v.(GetSynchronizationJobsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetSynchronizationJobsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:dts/getSynchronizationJobs:getSynchronizationJobs", args, &rv, "", opts...)
-			if err != nil {
-				return GetSynchronizationJobsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetSynchronizationJobsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetSynchronizationJobsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:dts/getSynchronizationJobs:getSynchronizationJobs", args, GetSynchronizationJobsResultOutput{}, options).(GetSynchronizationJobsResultOutput), nil
 		}).(GetSynchronizationJobsResultOutput)
 }
 

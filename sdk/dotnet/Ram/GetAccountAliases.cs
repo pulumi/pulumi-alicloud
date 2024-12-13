@@ -16,6 +16,9 @@ namespace Pulumi.AliCloud.Ram
 
         public static Output<GetAccountAliasesResult> Invoke(GetAccountAliasesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountAliasesResult>("alicloud:ram/getAccountAliases:getAccountAliases", args ?? new GetAccountAliasesInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetAccountAliasesResult> Invoke(GetAccountAliasesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountAliasesResult>("alicloud:ram/getAccountAliases:getAccountAliases", args ?? new GetAccountAliasesInvokeArgs(), options.WithDefaults());
     }
 
 

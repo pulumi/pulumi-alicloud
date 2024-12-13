@@ -11,6 +11,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class GraphdatabaseFunctions {
@@ -307,6 +308,65 @@ public final class GraphdatabaseFunctions {
      * 
      */
     public static Output<GetDbInstancesResult> getDbInstances(GetDbInstancesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:graphdatabase/getDbInstances:getDbInstances", TypeShape.of(GetDbInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Graph Database Db Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.136.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.graphdatabase.GraphdatabaseFunctions;
+     * import com.pulumi.alicloud.graphdatabase.inputs.GetDbInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
+     *             .ids("example_id")
+     *             .build());
+     * 
+     *         ctx.export("graphDatabaseDbInstanceId1", ids.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
+     *         final var status = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
+     *             .ids("example_id")
+     *             .status("Running")
+     *             .build());
+     * 
+     *         ctx.export("graphDatabaseDbInstanceId2", status.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
+     *         final var description = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
+     *             .ids("example_id")
+     *             .dbInstanceDescription("example_value")
+     *             .build());
+     * 
+     *         ctx.export("graphDatabaseDbInstanceId3", description.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDbInstancesResult> getDbInstances(GetDbInstancesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:graphdatabase/getDbInstances:getDbInstances", TypeShape.of(GetDbInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**

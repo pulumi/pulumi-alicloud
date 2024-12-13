@@ -97,21 +97,11 @@ type GetServiceSubscriptionsResult struct {
 }
 
 func GetServiceSubscriptionsOutput(ctx *pulumi.Context, args GetServiceSubscriptionsOutputArgs, opts ...pulumi.InvokeOption) GetServiceSubscriptionsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetServiceSubscriptionsResultOutput, error) {
 			args := v.(GetServiceSubscriptionsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetServiceSubscriptionsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:message/getServiceSubscriptions:getServiceSubscriptions", args, &rv, "", opts...)
-			if err != nil {
-				return GetServiceSubscriptionsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetServiceSubscriptionsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetServiceSubscriptionsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:message/getServiceSubscriptions:getServiceSubscriptions", args, GetServiceSubscriptionsResultOutput{}, options).(GetServiceSubscriptionsResultOutput), nil
 		}).(GetServiceSubscriptionsResultOutput)
 }
 

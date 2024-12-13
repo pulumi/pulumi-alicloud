@@ -26,6 +26,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class PvtzFunctions {
@@ -338,6 +339,58 @@ public final class PvtzFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetEndpointsResult> getEndpoints(GetEndpointsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:pvtz/getEndpoints:getEndpoints", TypeShape.of(GetEndpointsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Pvtz Endpoints of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.143.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.pvtz.inputs.GetEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = PvtzFunctions.getEndpoints(GetEndpointsArgs.builder()
+     *             .ids("example_id")
+     *             .build());
+     * 
+     *         ctx.export("pvtzEndpointId1", ids.applyValue(getEndpointsResult -> getEndpointsResult.endpoints()[0].id()));
+     *         final var nameRegex = PvtzFunctions.getEndpoints(GetEndpointsArgs.builder()
+     *             .nameRegex("^my-Endpoint")
+     *             .build());
+     * 
+     *         ctx.export("pvtzEndpointId2", nameRegex.applyValue(getEndpointsResult -> getEndpointsResult.endpoints()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetEndpointsResult> getEndpointsPlain(GetEndpointsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:pvtz/getEndpoints:getEndpoints", TypeShape.of(GetEndpointsResult.class), args, Utilities.withVersion(options));
     }
@@ -574,6 +627,53 @@ public final class PvtzFunctions {
      * 
      */
     public static Output<GetResolverZonesResult> getResolverZones(GetResolverZonesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:pvtz/getResolverZones:getResolverZones", TypeShape.of(GetResolverZonesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the available zones with the Private Zone Resolver of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.143.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.pvtz.inputs.GetResolverZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = PvtzFunctions.getResolverZones(GetResolverZonesArgs.builder()
+     *             .status("NORMAL")
+     *             .build());
+     * 
+     *         ctx.export("firstZonesId", default_.zones()[0].zoneId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetResolverZonesResult> getResolverZones(GetResolverZonesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:pvtz/getResolverZones:getResolverZones", TypeShape.of(GetResolverZonesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -920,6 +1020,56 @@ public final class PvtzFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetRulesResult> getRules(GetRulesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:pvtz/getRules:getRules", TypeShape.of(GetRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the PrivateZone Rules of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.143.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.pvtz.inputs.GetRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = PvtzFunctions.getRules();
+     * 
+     *         ctx.export("pvtzRuleId1", ids.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
+     *         final var nameRegex = PvtzFunctions.getRules(GetRulesArgs.builder()
+     *             .nameRegex("^my-Rule")
+     *             .build());
+     * 
+     *         ctx.export("pvtzRuleId2", nameRegex.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetRulesResult> getRulesPlain(GetRulesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:pvtz/getRules:getRules", TypeShape.of(GetRulesResult.class), args, Utilities.withVersion(options));
     }
@@ -1196,6 +1346,52 @@ public final class PvtzFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:pvtz/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Using this data source can open Private Zone service automatically. If the service has been opened, it will return opened.
+     * 
+     * For information about Priavte Zone and how to use it, see [What is Private Zone](https://www.alibabacloud.com/help/en/product/64583.htm).
+     * 
+     * &gt; **NOTE:** Available in v1.114.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.pvtz.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = PvtzFunctions.getService(GetServiceArgs.builder()
+     *             .enable("On")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:pvtz/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
     }
@@ -1329,6 +1525,50 @@ public final class PvtzFunctions {
      * 
      */
     public static Output<GetZoneRecordsResult> getZoneRecords(GetZoneRecordsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:pvtz/getZoneRecords:getZoneRecords", TypeShape.of(GetZoneRecordsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.pvtz.inputs.GetZoneRecordsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var recordsDs = PvtzFunctions.getZoneRecords(GetZoneRecordsArgs.builder()
+     *             .zoneId(basic.id())
+     *             .keyword(foo.value())
+     *             .build());
+     * 
+     *         ctx.export("firstRecordId", recordsDs.applyValue(getZoneRecordsResult -> getZoneRecordsResult.records()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZoneRecordsResult> getZoneRecords(GetZoneRecordsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:pvtz/getZoneRecords:getZoneRecords", TypeShape.of(GetZoneRecordsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1588,6 +1828,49 @@ public final class PvtzFunctions {
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:pvtz/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+     * import com.pulumi.alicloud.pvtz.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var pvtzZonesDs = PvtzFunctions.getZones(GetZonesArgs.builder()
+     *             .keyword(basic.zoneName())
+     *             .build());
+     * 
+     *         ctx.export("firstZoneId", pvtzZonesDs.applyValue(getZonesResult -> getZonesResult.zones()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:pvtz/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
     }
     /**

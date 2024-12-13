@@ -74,6 +74,38 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public static Output<GetEcsNetworkInterfacesResult> Invoke(GetEcsNetworkInterfacesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEcsNetworkInterfacesResult>("alicloud:ecs/getEcsNetworkInterfaces:getEcsNetworkInterfaces", args ?? new GetEcsNetworkInterfacesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Ecs Network Interfaces of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.123.1.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Ecs.GetEcsNetworkInterfaces.Invoke(new()
+        ///     {
+        ///         NameRegex = "eni-ipv6",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstEcsNetworkInterfaceId"] = example.Apply(getEcsNetworkInterfacesResult =&gt; getEcsNetworkInterfacesResult.Interfaces[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetEcsNetworkInterfacesResult> Invoke(GetEcsNetworkInterfacesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetEcsNetworkInterfacesResult>("alicloud:ecs/getEcsNetworkInterfaces:getEcsNetworkInterfaces", args ?? new GetEcsNetworkInterfacesInvokeArgs(), options.WithDefaults());
     }
 
 

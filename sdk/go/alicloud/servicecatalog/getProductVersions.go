@@ -84,21 +84,11 @@ type GetProductVersionsResult struct {
 }
 
 func GetProductVersionsOutput(ctx *pulumi.Context, args GetProductVersionsOutputArgs, opts ...pulumi.InvokeOption) GetProductVersionsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetProductVersionsResultOutput, error) {
 			args := v.(GetProductVersionsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetProductVersionsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:servicecatalog/getProductVersions:getProductVersions", args, &rv, "", opts...)
-			if err != nil {
-				return GetProductVersionsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetProductVersionsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetProductVersionsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:servicecatalog/getProductVersions:getProductVersions", args, GetProductVersionsResultOutput{}, options).(GetProductVersionsResultOutput), nil
 		}).(GetProductVersionsResultOutput)
 }
 

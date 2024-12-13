@@ -88,21 +88,11 @@ type GetNetworkPackagesResult struct {
 }
 
 func GetNetworkPackagesOutput(ctx *pulumi.Context, args GetNetworkPackagesOutputArgs, opts ...pulumi.InvokeOption) GetNetworkPackagesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetNetworkPackagesResultOutput, error) {
 			args := v.(GetNetworkPackagesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetNetworkPackagesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:eds/getNetworkPackages:getNetworkPackages", args, &rv, "", opts...)
-			if err != nil {
-				return GetNetworkPackagesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetNetworkPackagesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetNetworkPackagesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:eds/getNetworkPackages:getNetworkPackages", args, GetNetworkPackagesResultOutput{}, options).(GetNetworkPackagesResultOutput), nil
 		}).(GetNetworkPackagesResultOutput)
 }
 
