@@ -107,21 +107,11 @@ type GetBasicEndpointsResult struct {
 }
 
 func GetBasicEndpointsOutput(ctx *pulumi.Context, args GetBasicEndpointsOutputArgs, opts ...pulumi.InvokeOption) GetBasicEndpointsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetBasicEndpointsResultOutput, error) {
 			args := v.(GetBasicEndpointsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetBasicEndpointsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:ga/getBasicEndpoints:getBasicEndpoints", args, &rv, "", opts...)
-			if err != nil {
-				return GetBasicEndpointsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetBasicEndpointsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetBasicEndpointsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:ga/getBasicEndpoints:getBasicEndpoints", args, GetBasicEndpointsResultOutput{}, options).(GetBasicEndpointsResultOutput), nil
 		}).(GetBasicEndpointsResultOutput)
 }
 

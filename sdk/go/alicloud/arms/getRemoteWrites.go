@@ -94,21 +94,11 @@ type GetRemoteWritesResult struct {
 }
 
 func GetRemoteWritesOutput(ctx *pulumi.Context, args GetRemoteWritesOutputArgs, opts ...pulumi.InvokeOption) GetRemoteWritesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetRemoteWritesResultOutput, error) {
 			args := v.(GetRemoteWritesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetRemoteWritesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:arms/getRemoteWrites:getRemoteWrites", args, &rv, "", opts...)
-			if err != nil {
-				return GetRemoteWritesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetRemoteWritesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetRemoteWritesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:arms/getRemoteWrites:getRemoteWrites", args, GetRemoteWritesResultOutput{}, options).(GetRemoteWritesResultOutput), nil
 		}).(GetRemoteWritesResultOutput)
 }
 

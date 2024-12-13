@@ -29,6 +29,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class CloudfirewallFunctions {
@@ -395,6 +396,67 @@ public final class CloudfirewallFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetAddressBooksResult> getAddressBooks(GetAddressBooksArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cloudfirewall/getAddressBooks:getAddressBooks", TypeShape.of(GetAddressBooksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cloud Firewall Address Books of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.178.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudfirewall.AddressBook;
+     * import com.pulumi.alicloud.cloudfirewall.AddressBookArgs;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetAddressBooksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("tf-example");
+     *         var default_ = new AddressBook("default", AddressBookArgs.builder()
+     *             .groupName(name)
+     *             .groupType("ip")
+     *             .description("tf-description")
+     *             .autoAddTagEcs(0)
+     *             .addressLists(            
+     *                 "10.21.0.0/16",
+     *                 "10.168.0.0/16")
+     *             .build());
+     * 
+     *         final var ids = CloudfirewallFunctions.getAddressBooks(GetAddressBooksArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("cloudFirewallAddressBookId1", ids.applyValue(getAddressBooksResult -> getAddressBooksResult).applyValue(ids -> ids.applyValue(getAddressBooksResult -> getAddressBooksResult.books()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAddressBooksResult> getAddressBooksPlain(GetAddressBooksPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cloudfirewall/getAddressBooks:getAddressBooks", TypeShape.of(GetAddressBooksResult.class), args, Utilities.withVersion(options));
     }
@@ -534,6 +596,52 @@ public final class CloudfirewallFunctions {
      * 
      */
     public static Output<GetControlPoliciesResult> getControlPolicies(GetControlPoliciesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cloudfirewall/getControlPolicies:getControlPolicies", TypeShape.of(GetControlPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cloud Firewall Control Policies of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.129.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetControlPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudfirewallFunctions.getControlPolicies(GetControlPoliciesArgs.builder()
+     *             .direction("in")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetControlPoliciesResult> getControlPolicies(GetControlPoliciesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cloudfirewall/getControlPolicies:getControlPolicies", TypeShape.of(GetControlPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -849,6 +957,51 @@ public final class CloudfirewallFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetInstanceMembersResult> getInstanceMembers(GetInstanceMembersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cloudfirewall/getInstanceMembers:getInstanceMembers", TypeShape.of(GetInstanceMembersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://help.aliyun.com/document_detail/261237.html)
+     * 
+     * &gt; **NOTE:** Available in 1.194.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetInstanceMembersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CloudfirewallFunctions.getInstanceMembers(GetInstanceMembersArgs.builder()
+     *             .ids(defaultAlicloudCloudFirewallInstanceMember.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCloudFirewallInstanceMemberExampleId", default_.members()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetInstanceMembersResult> getInstanceMembersPlain(GetInstanceMembersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cloudfirewall/getInstanceMembers:getInstanceMembers", TypeShape.of(GetInstanceMembersResult.class), args, Utilities.withVersion(options));
     }
@@ -1075,6 +1228,51 @@ public final class CloudfirewallFunctions {
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cloudfirewall/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cloud Firewall Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.139.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudfirewallFunctions.getInstances();
+     * 
+     *         ctx.export("cloudFirewallInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cloudfirewall/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1413,6 +1611,55 @@ public final class CloudfirewallFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetVpcFirewallCensResult> getVpcFirewallCens(GetVpcFirewallCensArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cloudfirewall/getVpcFirewallCens:getVpcFirewallCens", TypeShape.of(GetVpcFirewallCensResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cloud Firewall Vpc Firewall Cen available to the user.[What is Vpc Firewall Cen](https://www.alibabacloud.com/help/en/cloud-firewall/latest/describevpcfirewallcenlist)
+     * 
+     * &gt; **NOTE:** Available in 1.194.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcFirewallCensArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CloudfirewallFunctions.getVpcFirewallCens(GetVpcFirewallCensArgs.builder()
+     *             .ids(defaultAlicloudCloudFirewallVpcFirewallCen.id())
+     *             .cenId("cen-cjok7uyb5w2b27573v")
+     *             .memberUid("1415189284827022")
+     *             .status("closed")
+     *             .vpcFirewallName("tf-test")
+     *             .build());
+     * 
+     *         ctx.export("alicloudCloudFirewallVpcFirewallCenExampleId", default_.cens()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetVpcFirewallCensResult> getVpcFirewallCensPlain(GetVpcFirewallCensPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cloudfirewall/getVpcFirewallCens:getVpcFirewallCens", TypeShape.of(GetVpcFirewallCensResult.class), args, Utilities.withVersion(options));
     }
@@ -1564,6 +1811,56 @@ public final class CloudfirewallFunctions {
      * 
      */
     public static Output<GetVpcFirewallControlPoliciesResult> getVpcFirewallControlPolicies(GetVpcFirewallControlPoliciesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cloudfirewall/getVpcFirewallControlPolicies:getVpcFirewallControlPolicies", TypeShape.of(GetVpcFirewallControlPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cloud Firewall Vpc Firewall Control Policies of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.194.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcFirewallControlPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudfirewallFunctions.getVpcFirewallControlPolicies(GetVpcFirewallControlPoliciesArgs.builder()
+     *             .vpcFirewallId("example_value")
+     *             .ids(            
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .build());
+     * 
+     *         ctx.export("alicloudCloudFirewallVpcFirewallControlPoliciesId1", ids.applyValue(getVpcFirewallControlPoliciesResult -> getVpcFirewallControlPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVpcFirewallControlPoliciesResult> getVpcFirewallControlPolicies(GetVpcFirewallControlPoliciesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cloudfirewall/getVpcFirewallControlPolicies:getVpcFirewallControlPolicies", TypeShape.of(GetVpcFirewallControlPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1854,6 +2151,54 @@ public final class CloudfirewallFunctions {
      * 
      */
     public static Output<GetVpcFirewallsResult> getVpcFirewalls(GetVpcFirewallsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cloudfirewall/getVpcFirewalls:getVpcFirewalls", TypeShape.of(GetVpcFirewallsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://help.aliyun.com/document_detail/342932.html)
+     * 
+     * &gt; **NOTE:** Available in 1.194.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcFirewallsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CloudfirewallFunctions.getVpcFirewalls(GetVpcFirewallsArgs.builder()
+     *             .ids("id-example")
+     *             .memberUid("1415189284827022")
+     *             .status("closed")
+     *             .vpcFirewallName("tf-test")
+     *             .build());
+     * 
+     *         ctx.export("alicloudCfwVpcFirewallExampleId", default_.firewalls()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVpcFirewallsResult> getVpcFirewalls(GetVpcFirewallsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cloudfirewall/getVpcFirewalls:getVpcFirewalls", TypeShape.of(GetVpcFirewallsResult.class), args, Utilities.withVersion(options));
     }
     /**

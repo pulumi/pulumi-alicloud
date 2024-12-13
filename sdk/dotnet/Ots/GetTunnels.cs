@@ -80,6 +80,41 @@ namespace Pulumi.AliCloud.Ots
         /// </summary>
         public static Output<GetTunnelsResult> Invoke(GetTunnelsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTunnelsResult>("alicloud:ots/getTunnels:getTunnels", args ?? new GetTunnelsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the ots tunnels of the current Alibaba Cloud user.
+        /// 
+        /// For information about OTS tunnel and how to use it, see [Tunnel overview](https://www.alibabacloud.com/help/en/tablestore/latest/tunnel-service-overview).
+        /// 
+        /// &gt; **NOTE:** Available in v1.172.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var tunnelsDs = AliCloud.Ots.GetTunnels.Invoke(new()
+        ///     {
+        ///         InstanceName = "sample-instance",
+        ///         TableName = "sample-table",
+        ///         NameRegex = "sample-tunnel",
+        ///         OutputFile = "tunnels.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstTunnelId"] = tunnelsDs.Apply(getTunnelsResult =&gt; getTunnelsResult.Tunnels[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTunnelsResult> Invoke(GetTunnelsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTunnelsResult>("alicloud:ots/getTunnels:getTunnels", args ?? new GetTunnelsInvokeArgs(), options.WithDefaults());
     }
 
 

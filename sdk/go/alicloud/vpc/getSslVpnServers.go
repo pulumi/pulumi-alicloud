@@ -82,21 +82,11 @@ type GetSslVpnServersResult struct {
 }
 
 func GetSslVpnServersOutput(ctx *pulumi.Context, args GetSslVpnServersOutputArgs, opts ...pulumi.InvokeOption) GetSslVpnServersResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSslVpnServersResultOutput, error) {
 			args := v.(GetSslVpnServersArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetSslVpnServersResult
-			secret, err := ctx.InvokePackageRaw("alicloud:vpc/getSslVpnServers:getSslVpnServers", args, &rv, "", opts...)
-			if err != nil {
-				return GetSslVpnServersResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetSslVpnServersResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetSslVpnServersResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:vpc/getSslVpnServers:getSslVpnServers", args, GetSslVpnServersResultOutput{}, options).(GetSslVpnServersResultOutput), nil
 		}).(GetSslVpnServersResultOutput)
 }
 

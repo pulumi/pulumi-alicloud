@@ -16,6 +16,9 @@ namespace Pulumi.AliCloud.ElasticSearch
 
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:elasticsearch/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:elasticsearch/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
     }
 
 

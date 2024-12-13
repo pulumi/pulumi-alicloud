@@ -85,21 +85,11 @@ type GetInstanceAttachmentsResult struct {
 }
 
 func GetInstanceAttachmentsOutput(ctx *pulumi.Context, args GetInstanceAttachmentsOutputArgs, opts ...pulumi.InvokeOption) GetInstanceAttachmentsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetInstanceAttachmentsResultOutput, error) {
 			args := v.(GetInstanceAttachmentsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetInstanceAttachmentsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:cen/getInstanceAttachments:getInstanceAttachments", args, &rv, "", opts...)
-			if err != nil {
-				return GetInstanceAttachmentsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetInstanceAttachmentsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetInstanceAttachmentsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:cen/getInstanceAttachments:getInstanceAttachments", args, GetInstanceAttachmentsResultOutput{}, options).(GetInstanceAttachmentsResultOutput), nil
 		}).(GetInstanceAttachmentsResultOutput)
 }
 

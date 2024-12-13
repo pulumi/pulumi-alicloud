@@ -94,21 +94,11 @@ type GetEnterpriseUsersResult struct {
 }
 
 func GetEnterpriseUsersOutput(ctx *pulumi.Context, args GetEnterpriseUsersOutputArgs, opts ...pulumi.InvokeOption) GetEnterpriseUsersResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetEnterpriseUsersResultOutput, error) {
 			args := v.(GetEnterpriseUsersArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetEnterpriseUsersResult
-			secret, err := ctx.InvokePackageRaw("alicloud:dms/getEnterpriseUsers:getEnterpriseUsers", args, &rv, "", opts...)
-			if err != nil {
-				return GetEnterpriseUsersResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetEnterpriseUsersResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetEnterpriseUsersResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:dms/getEnterpriseUsers:getEnterpriseUsers", args, GetEnterpriseUsersResultOutput{}, options).(GetEnterpriseUsersResultOutput), nil
 		}).(GetEnterpriseUsersResultOutput)
 }
 

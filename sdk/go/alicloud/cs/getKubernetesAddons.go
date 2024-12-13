@@ -50,21 +50,11 @@ type GetKubernetesAddonsResult struct {
 }
 
 func GetKubernetesAddonsOutput(ctx *pulumi.Context, args GetKubernetesAddonsOutputArgs, opts ...pulumi.InvokeOption) GetKubernetesAddonsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetKubernetesAddonsResultOutput, error) {
 			args := v.(GetKubernetesAddonsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetKubernetesAddonsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:cs/getKubernetesAddons:getKubernetesAddons", args, &rv, "", opts...)
-			if err != nil {
-				return GetKubernetesAddonsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetKubernetesAddonsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetKubernetesAddonsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:cs/getKubernetesAddons:getKubernetesAddons", args, GetKubernetesAddonsResultOutput{}, options).(GetKubernetesAddonsResultOutput), nil
 		}).(GetKubernetesAddonsResultOutput)
 }
 

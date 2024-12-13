@@ -68,6 +68,35 @@ namespace Pulumi.AliCloud
         /// </summary>
         public static Output<GetMscSubSubscriptionsResult> Invoke(GetMscSubSubscriptionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMscSubSubscriptionsResult>("alicloud:index/getMscSubSubscriptions:getMscSubSubscriptions", args ?? new GetMscSubSubscriptionsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Message Center Subscriptions of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.GetMscSubSubscriptions.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mscSubSubscriptionId1"] = @default.Apply(@default =&gt; @default.Apply(getMscSubSubscriptionsResult =&gt; getMscSubSubscriptionsResult.Subscriptions[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetMscSubSubscriptionsResult> Invoke(GetMscSubSubscriptionsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMscSubSubscriptionsResult>("alicloud:index/getMscSubSubscriptions:getMscSubSubscriptions", args ?? new GetMscSubSubscriptionsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -80,6 +80,41 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         public static Output<GetRegistryEnterpriseSyncRulesResult> Invoke(GetRegistryEnterpriseSyncRulesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegistryEnterpriseSyncRulesResult>("alicloud:cs/getRegistryEnterpriseSyncRules:getRegistryEnterpriseSyncRules", args ?? new GetRegistryEnterpriseSyncRulesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a list Container Registry Enterprise Edition sync rules on Alibaba Cloud.
+        /// 
+        /// &gt; **NOTE:** Available in v1.90.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Declare the data source
+        ///     var mySyncRules = AliCloud.CS.GetRegistryEnterpriseSyncRules.Invoke(new()
+        ///     {
+        ///         InstanceId = "cri-xxx",
+        ///         NamespaceName = "test-namespace",
+        ///         RepoName = "test-repo",
+        ///         TargetInstanceId = "cri-yyy",
+        ///         NameRegex = "test-rule",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["output"] = mySyncRules.Apply(getRegistryEnterpriseSyncRulesResult =&gt; getRegistryEnterpriseSyncRulesResult.Rules).Select(__item =&gt; __item.Id).ToList(),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRegistryEnterpriseSyncRulesResult> Invoke(GetRegistryEnterpriseSyncRulesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegistryEnterpriseSyncRulesResult>("alicloud:cs/getRegistryEnterpriseSyncRules:getRegistryEnterpriseSyncRules", args ?? new GetRegistryEnterpriseSyncRulesInvokeArgs(), options.WithDefaults());
     }
 
 

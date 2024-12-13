@@ -160,21 +160,11 @@ type GetKubernetesVersionResult struct {
 }
 
 func GetKubernetesVersionOutput(ctx *pulumi.Context, args GetKubernetesVersionOutputArgs, opts ...pulumi.InvokeOption) GetKubernetesVersionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetKubernetesVersionResultOutput, error) {
 			args := v.(GetKubernetesVersionArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetKubernetesVersionResult
-			secret, err := ctx.InvokePackageRaw("alicloud:cs/getKubernetesVersion:getKubernetesVersion", args, &rv, "", opts...)
-			if err != nil {
-				return GetKubernetesVersionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetKubernetesVersionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetKubernetesVersionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:cs/getKubernetesVersion:getKubernetesVersion", args, GetKubernetesVersionResultOutput{}, options).(GetKubernetesVersionResultOutput), nil
 		}).(GetKubernetesVersionResultOutput)
 }
 

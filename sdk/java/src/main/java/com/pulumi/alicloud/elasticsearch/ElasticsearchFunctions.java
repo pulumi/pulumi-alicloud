@@ -14,6 +14,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class ElasticsearchFunctions {
@@ -30,6 +31,9 @@ public final class ElasticsearchFunctions {
         return getInstancesPlain(args, InvokeOptions.Empty);
     }
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:elasticsearch/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:elasticsearch/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
@@ -248,6 +252,49 @@ public final class ElasticsearchFunctions {
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:elasticsearch/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides availability zones for Elasticsearch that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+     * 
+     * &gt; **NOTE:** Available in v1.73.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.elasticsearch.ElasticsearchFunctions;
+     * import com.pulumi.alicloud.elasticsearch.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Declare the data source
+     *         final var zonesIds = ElasticsearchFunctions.getZones();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:elasticsearch/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
     }
     /**

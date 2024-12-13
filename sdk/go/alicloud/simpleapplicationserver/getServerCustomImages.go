@@ -84,21 +84,11 @@ type GetServerCustomImagesResult struct {
 }
 
 func GetServerCustomImagesOutput(ctx *pulumi.Context, args GetServerCustomImagesOutputArgs, opts ...pulumi.InvokeOption) GetServerCustomImagesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetServerCustomImagesResultOutput, error) {
 			args := v.(GetServerCustomImagesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetServerCustomImagesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:simpleapplicationserver/getServerCustomImages:getServerCustomImages", args, &rv, "", opts...)
-			if err != nil {
-				return GetServerCustomImagesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetServerCustomImagesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetServerCustomImagesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:simpleapplicationserver/getServerCustomImages:getServerCustomImages", args, GetServerCustomImagesResultOutput{}, options).(GetServerCustomImagesResultOutput), nil
 		}).(GetServerCustomImagesResultOutput)
 }
 

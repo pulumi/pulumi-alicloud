@@ -88,21 +88,11 @@ type GetOpenApiPricingModulesResult struct {
 }
 
 func GetOpenApiPricingModulesOutput(ctx *pulumi.Context, args GetOpenApiPricingModulesOutputArgs, opts ...pulumi.InvokeOption) GetOpenApiPricingModulesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetOpenApiPricingModulesResultOutput, error) {
 			args := v.(GetOpenApiPricingModulesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetOpenApiPricingModulesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:bss/getOpenApiPricingModules:getOpenApiPricingModules", args, &rv, "", opts...)
-			if err != nil {
-				return GetOpenApiPricingModulesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetOpenApiPricingModulesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetOpenApiPricingModulesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:bss/getOpenApiPricingModules:getOpenApiPricingModules", args, GetOpenApiPricingModulesResultOutput{}, options).(GetOpenApiPricingModulesResultOutput), nil
 		}).(GetOpenApiPricingModulesResultOutput)
 }
 

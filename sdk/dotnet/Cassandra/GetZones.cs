@@ -74,6 +74,38 @@ namespace Pulumi.AliCloud.Cassandra
         /// </summary>
         public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:cassandra/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides availability zones for Cassandra that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+        /// 
+        /// &gt; **NOTE:** Available in v1.88.0+.
+        /// 
+        /// &gt; **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Declare the data source
+        ///     var zonesIds = AliCloud.Cassandra.GetZones.Invoke();
+        /// 
+        ///     // Create an Cassandra cluster with the first matched zone
+        ///     var cassandra = new AliCloud.Cassandra.Cluster("cassandra", new()
+        ///     {
+        ///         ZoneId = zonesIds.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:cassandra/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
     }
 
 

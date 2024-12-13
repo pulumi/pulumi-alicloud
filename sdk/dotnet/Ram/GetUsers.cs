@@ -190,6 +190,96 @@ namespace Pulumi.AliCloud.Ram
         /// </summary>
         public static Output<GetUsersResult> Invoke(GetUsersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUsersResult>("alicloud:ram/getUsers:getUsers", args ?? new GetUsersInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available since v1.0.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = new AliCloud.Ram.Group("default", new()
+        ///     {
+        ///         Name = "group1",
+        ///         Comments = "group comments",
+        ///         Force = true,
+        ///     });
+        /// 
+        ///     var defaultUser = new AliCloud.Ram.User("default", new()
+        ///     {
+        ///         Name = "user-example",
+        ///         DisplayName = "displayname",
+        ///         Mobile = "86-18888888888",
+        ///         Email = "hello.uuu@aaa.com",
+        ///         Comments = "yoyoyo",
+        ///     });
+        /// 
+        ///     var defaultGroupMembership = new AliCloud.Ram.GroupMembership("default", new()
+        ///     {
+        ///         GroupName = @default.Name,
+        ///         UserNames = new[]
+        ///         {
+        ///             defaultUser.Name,
+        ///         },
+        ///     });
+        /// 
+        ///     var defaultPolicy = new AliCloud.Ram.Policy("default", new()
+        ///     {
+        ///         PolicyName = "ram-policy-example",
+        ///         PolicyDocument = @"			{
+        /// 				""Statement"": [
+        /// 				 {
+        /// 					""Action"": [
+        /// 					""oss:ListObjects"",
+        /// 					""oss:ListObjects""
+        /// 			  		],
+        /// 			  		""Effect"": ""Deny"",
+        /// 			  		""Resource"": [
+        /// 						""acs:oss:*:*:mybucket"",
+        /// 						""acs:oss:*:*:mybucket/*""
+        /// 			  		]
+        /// 				 }
+        /// 		  		],
+        /// 				""Version"": ""1""
+        /// 			}
+        /// ",
+        ///         Description = "this is a policy example",
+        ///         Force = true,
+        ///     });
+        /// 
+        ///     var defaultUserPolicyAttachment = new AliCloud.Ram.UserPolicyAttachment("default", new()
+        ///     {
+        ///         PolicyName = defaultPolicy.PolicyName,
+        ///         UserName = defaultUser.Name,
+        ///         PolicyType = defaultPolicy.Type,
+        ///     });
+        /// 
+        ///     var usersDs = AliCloud.Ram.GetUsers.Invoke(new()
+        ///     {
+        ///         OutputFile = "users.txt",
+        ///         GroupName = @default.Name,
+        ///         PolicyName = defaultPolicy.PolicyName,
+        ///         PolicyType = "Custom",
+        ///         NameRegex = defaultUser.Name,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstUserId"] = usersDs.Apply(getUsersResult =&gt; getUsersResult.Users[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetUsersResult> Invoke(GetUsersInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetUsersResult>("alicloud:ram/getUsers:getUsers", args ?? new GetUsersInvokeArgs(), options.WithDefaults());
     }
 
 

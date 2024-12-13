@@ -110,6 +110,56 @@ namespace Pulumi.AliCloud.OpenSearch
         /// </summary>
         public static Output<GetAppGroupsResult> Invoke(GetAppGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAppGroupsResult>("alicloud:opensearch/getAppGroups:getAppGroups", args ?? new GetAppGroupsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Open Search App Groups of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.136.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "tf_testacc";
+        ///     var defaultAppGroup = new AliCloud.OpenSearch.AppGroup("default", new()
+        ///     {
+        ///         AppGroupName = name,
+        ///         PaymentType = "PayAsYouGo",
+        ///         Type = "standard",
+        ///         Quota = new AliCloud.OpenSearch.Inputs.AppGroupQuotaArgs
+        ///         {
+        ///             DocSize = 1,
+        ///             ComputeResource = 20,
+        ///             Spec = "opensearch.share.common",
+        ///         },
+        ///     });
+        /// 
+        ///     var @default = AliCloud.OpenSearch.GetAppGroups.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultAppGroup.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["appGroups"] = @default.Apply(@default =&gt; @default.Apply(getAppGroupsResult =&gt; getAppGroupsResult.Groups)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAppGroupsResult> Invoke(GetAppGroupsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAppGroupsResult>("alicloud:opensearch/getAppGroups:getAppGroups", args ?? new GetAppGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -48,21 +48,11 @@ type GetIngressesResult struct {
 }
 
 func GetIngressesOutput(ctx *pulumi.Context, args GetIngressesOutputArgs, opts ...pulumi.InvokeOption) GetIngressesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetIngressesResultOutput, error) {
 			args := v.(GetIngressesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetIngressesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:sae/getIngresses:getIngresses", args, &rv, "", opts...)
-			if err != nil {
-				return GetIngressesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetIngressesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetIngressesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:sae/getIngresses:getIngresses", args, GetIngressesResultOutput{}, options).(GetIngressesResultOutput), nil
 		}).(GetIngressesResultOutput)
 }
 

@@ -81,21 +81,11 @@ type GetLifecycleHooksResult struct {
 }
 
 func GetLifecycleHooksOutput(ctx *pulumi.Context, args GetLifecycleHooksOutputArgs, opts ...pulumi.InvokeOption) GetLifecycleHooksResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetLifecycleHooksResultOutput, error) {
 			args := v.(GetLifecycleHooksArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetLifecycleHooksResult
-			secret, err := ctx.InvokePackageRaw("alicloud:ess/getLifecycleHooks:getLifecycleHooks", args, &rv, "", opts...)
-			if err != nil {
-				return GetLifecycleHooksResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetLifecycleHooksResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetLifecycleHooksResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:ess/getLifecycleHooks:getLifecycleHooks", args, GetLifecycleHooksResultOutput{}, options).(GetLifecycleHooksResultOutput), nil
 		}).(GetLifecycleHooksResultOutput)
 }
 

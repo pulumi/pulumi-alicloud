@@ -78,6 +78,40 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public static Output<GetPbrRouteEntriesResult> Invoke(GetPbrRouteEntriesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPbrRouteEntriesResult>("alicloud:vpc/getPbrRouteEntries:getPbrRouteEntries", args ?? new GetPbrRouteEntriesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **NOTE:** Available in v1.162.0+.
+        /// 
+        /// The data source lists a number of VPN Pbr Route Entries resource information owned by an Alicloud account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Vpc.GetPbrRouteEntries.Invoke(new()
+        ///     {
+        ///         VpnGatewayId = "example_vpn_gateway_id",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpnIpsecServerId1"] = ids.Apply(getPbrRouteEntriesResult =&gt; getPbrRouteEntriesResult.Entries[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPbrRouteEntriesResult> Invoke(GetPbrRouteEntriesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPbrRouteEntriesResult>("alicloud:vpc/getPbrRouteEntries:getPbrRouteEntries", args ?? new GetPbrRouteEntriesInvokeArgs(), options.WithDefaults());
     }
 
 

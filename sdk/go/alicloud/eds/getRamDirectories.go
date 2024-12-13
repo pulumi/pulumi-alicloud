@@ -87,21 +87,11 @@ type GetRamDirectoriesResult struct {
 }
 
 func GetRamDirectoriesOutput(ctx *pulumi.Context, args GetRamDirectoriesOutputArgs, opts ...pulumi.InvokeOption) GetRamDirectoriesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetRamDirectoriesResultOutput, error) {
 			args := v.(GetRamDirectoriesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetRamDirectoriesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:eds/getRamDirectories:getRamDirectories", args, &rv, "", opts...)
-			if err != nil {
-				return GetRamDirectoriesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetRamDirectoriesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetRamDirectoriesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:eds/getRamDirectories:getRamDirectories", args, GetRamDirectoriesResultOutput{}, options).(GetRamDirectoriesResultOutput), nil
 		}).(GetRamDirectoriesResultOutput)
 }
 

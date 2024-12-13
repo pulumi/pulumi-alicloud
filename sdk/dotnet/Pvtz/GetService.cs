@@ -66,6 +66,34 @@ namespace Pulumi.AliCloud.Pvtz
         /// </summary>
         public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceResult>("alicloud:pvtz/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Using this data source can open Private Zone service automatically. If the service has been opened, it will return opened.
+        /// 
+        /// For information about Priavte Zone and how to use it, see [What is Private Zone](https://www.alibabacloud.com/help/en/product/64583.htm).
+        /// 
+        /// &gt; **NOTE:** Available in v1.114.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var open = AliCloud.Pvtz.GetService.Invoke(new()
+        ///     {
+        ///         Enable = "On",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceResult>("alicloud:pvtz/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());
     }
 
 

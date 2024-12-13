@@ -32,6 +32,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class ExpressconnectFunctions {
@@ -344,6 +345,58 @@ public final class ExpressconnectFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetAccessPointsResult> getAccessPoints(GetAccessPointsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:expressconnect/getAccessPoints:getAccessPoints", TypeShape.of(GetAccessPointsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Express Connect Access Points of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.132.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetAccessPointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ExpressconnectFunctions.getAccessPoints(GetAccessPointsArgs.builder()
+     *             .ids("ap-cn-hangzhou-yh-C")
+     *             .build());
+     * 
+     *         ctx.export("expressConnectAccessPointId1", ids.applyValue(getAccessPointsResult -> getAccessPointsResult.points()[0].id()));
+     *         final var nameRegex = ExpressconnectFunctions.getAccessPoints(GetAccessPointsArgs.builder()
+     *             .nameRegex("^杭州-")
+     *             .build());
+     * 
+     *         ctx.export("expressConnectAccessPointId2", nameRegex.applyValue(getAccessPointsResult -> getAccessPointsResult.points()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAccessPointsResult> getAccessPointsPlain(GetAccessPointsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:expressconnect/getAccessPoints:getAccessPoints", TypeShape.of(GetAccessPointsResult.class), args, Utilities.withVersion(options));
     }
@@ -489,6 +542,54 @@ public final class ExpressconnectFunctions {
      * 
      */
     public static Output<GetGrantRuleToCensResult> getGrantRuleToCens(GetGrantRuleToCensArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:expressconnect/getGrantRuleToCens:getGrantRuleToCens", TypeShape.of(GetGrantRuleToCensResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Express Connect Grant Rule To Cens of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.196.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetGrantRuleToCensArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ExpressconnectFunctions.getGrantRuleToCens(GetGrantRuleToCensArgs.builder()
+     *             .ids("example_id")
+     *             .instanceId("your_vbr_instance_id")
+     *             .build());
+     * 
+     *         ctx.export("expressConnectGrantRuleToCenId0", ids.applyValue(getGrantRuleToCensResult -> getGrantRuleToCensResult.cens()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGrantRuleToCensResult> getGrantRuleToCens(GetGrantRuleToCensArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:expressconnect/getGrantRuleToCens:getGrantRuleToCens", TypeShape.of(GetGrantRuleToCensResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -767,6 +868,52 @@ public final class ExpressconnectFunctions {
      * 
      */
     public static Output<GetPhysicalConnectionServiceResult> getPhysicalConnectionService(GetPhysicalConnectionServiceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:expressconnect/getPhysicalConnectionService:getPhysicalConnectionService", TypeShape.of(GetPhysicalConnectionServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Using this data source can enable outbound traffic for an Express Connect circuit automatically. If the service has been opened, it will return opened.
+     * 
+     * For information about Express Connect and how to use it, see [What is Express Connect](https://www.alibabacloud.com/help/doc-detail/275179.htm).
+     * 
+     * &gt; **NOTE:** Available since v1.132.0
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = ExpressconnectFunctions.getPhysicalConnectionService(GetPhysicalConnectionServiceArgs.builder()
+     *             .enable("On")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPhysicalConnectionServiceResult> getPhysicalConnectionService(GetPhysicalConnectionServiceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:expressconnect/getPhysicalConnectionService:getPhysicalConnectionService", TypeShape.of(GetPhysicalConnectionServiceResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1124,6 +1271,58 @@ public final class ExpressconnectFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetPhysicalConnectionsResult> getPhysicalConnections(GetPhysicalConnectionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:expressconnect/getPhysicalConnections:getPhysicalConnections", TypeShape.of(GetPhysicalConnectionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Express Connect Physical Connections of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.132.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
+     *             .ids("pc-2345678")
+     *             .build());
+     * 
+     *         ctx.export("expressConnectPhysicalConnectionId1", ids.applyValue(getPhysicalConnectionsResult -> getPhysicalConnectionsResult.connections()[0].id()));
+     *         final var nameRegex = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
+     *             .nameRegex("^my-PhysicalConnection")
+     *             .build());
+     * 
+     *         ctx.export("expressConnectPhysicalConnectionId2", nameRegex.applyValue(getPhysicalConnectionsResult -> getPhysicalConnectionsResult.connections()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetPhysicalConnectionsResult> getPhysicalConnectionsPlain(GetPhysicalConnectionsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:expressconnect/getPhysicalConnections:getPhysicalConnections", TypeShape.of(GetPhysicalConnectionsResult.class), args, Utilities.withVersion(options));
     }
@@ -1400,6 +1599,52 @@ public final class ExpressconnectFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetRouterInterfacesResult> getRouterInterfaces(GetRouterInterfacesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:expressconnect/getRouterInterfaces:getRouterInterfaces", TypeShape.of(GetRouterInterfacesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
+     * 
+     * &gt; **NOTE:** Available in 1.199.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetRouterInterfacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ExpressconnectFunctions.getRouterInterfaces(GetRouterInterfacesArgs.builder()
+     *             .ids(defaultAlicloudRouterInterface.id())
+     *             .nameRegex(defaultAlicloudRouterInterface.name())
+     *             .build());
+     * 
+     *         ctx.export("alicloudRouterInterfaceExampleId", default_.interfaces()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetRouterInterfacesResult> getRouterInterfacesPlain(GetRouterInterfacesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:expressconnect/getRouterInterfaces:getRouterInterfaces", TypeShape.of(GetRouterInterfacesResult.class), args, Utilities.withVersion(options));
     }
@@ -1631,6 +1876,52 @@ public final class ExpressconnectFunctions {
      * 
      */
     public static Output<GetVbrPconnAssociationsResult> getVbrPconnAssociations(GetVbrPconnAssociationsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:expressconnect/getVbrPconnAssociations:getVbrPconnAssociations", TypeShape.of(GetVbrPconnAssociationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Express Connect Vbr Pconn Association available to the user.
+     * 
+     * &gt; **NOTE:** Available in 1.196.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetVbrPconnAssociationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ExpressconnectFunctions.getVbrPconnAssociations(GetVbrPconnAssociationsArgs.builder()
+     *             .ids("example_id")
+     *             .vbrId(defaultAlicloudExpressConnectVbrPconnAssociation.vbrId())
+     *             .build());
+     * 
+     *         ctx.export("alicloudExpressConnectVbrPconnAssociationExampleId", default_.associations()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVbrPconnAssociationsResult> getVbrPconnAssociations(GetVbrPconnAssociationsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:expressconnect/getVbrPconnAssociations:getVbrPconnAssociations", TypeShape.of(GetVbrPconnAssociationsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2066,6 +2357,71 @@ public final class ExpressconnectFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetVirtualBorderRoutersResult> getVirtualBorderRouters(GetVirtualBorderRoutersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:expressconnect/getVirtualBorderRouters:getVirtualBorderRouters", TypeShape.of(GetVirtualBorderRoutersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Express Connect Virtual Border Routers of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.134.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetVirtualBorderRoutersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ExpressconnectFunctions.getVirtualBorderRouters();
+     * 
+     *         ctx.export("expressConnectVirtualBorderRouterId1", ids.applyValue(getVirtualBorderRoutersResult -> getVirtualBorderRoutersResult.routers()[0].id()));
+     *         final var nameRegex = ExpressconnectFunctions.getVirtualBorderRouters(GetVirtualBorderRoutersArgs.builder()
+     *             .nameRegex("^my-VirtualBorderRouter")
+     *             .build());
+     * 
+     *         ctx.export("expressConnectVirtualBorderRouterId2", nameRegex.applyValue(getVirtualBorderRoutersResult -> getVirtualBorderRoutersResult.routers()[0].id()));
+     *         final var filter = ExpressconnectFunctions.getVirtualBorderRouters(GetVirtualBorderRoutersArgs.builder()
+     *             .filters(            
+     *                 GetVirtualBorderRoutersFilterArgs.builder()
+     *                     .key("PhysicalConnectionId")
+     *                     .values("pc-xxxx1")
+     *                     .build(),
+     *                 GetVirtualBorderRoutersFilterArgs.builder()
+     *                     .key("VbrId")
+     *                     .values(                    
+     *                         "vbr-xxxx1",
+     *                         "vbr-xxxx2")
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export("expressConnectVirtualBorderRouterId3", filter.applyValue(getVirtualBorderRoutersResult -> getVirtualBorderRoutersResult.routers()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetVirtualBorderRoutersResult> getVirtualBorderRoutersPlain(GetVirtualBorderRoutersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:expressconnect/getVirtualBorderRouters:getVirtualBorderRouters", TypeShape.of(GetVirtualBorderRoutersResult.class), args, Utilities.withVersion(options));
     }
@@ -2312,6 +2668,55 @@ public final class ExpressconnectFunctions {
      * 
      */
     public static Output<GetVirtualPhysicalConnectionsResult> getVirtualPhysicalConnections(GetVirtualPhysicalConnectionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:expressconnect/getVirtualPhysicalConnections:getVirtualPhysicalConnections", TypeShape.of(GetVirtualPhysicalConnectionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Express Connect Virtual Physical Connection available to the user.
+     * 
+     * &gt; **NOTE:** Available in 1.196.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetVirtualPhysicalConnectionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ExpressconnectFunctions.getVirtualPhysicalConnections(GetVirtualPhysicalConnectionsArgs.builder()
+     *             .ids(defaultAlicloudExpressConnectVirtualPhysicalConnection.id())
+     *             .nameRegex(defaultAlicloudExpressConnectVirtualPhysicalConnection.name())
+     *             .parentPhysicalConnectionId(defaultAlicloudExpressConnectVirtualPhysicalConnection.parentPhysicalConnectionId())
+     *             .vlanId(789)
+     *             .vpconnAliUid(1234567890)
+     *             .build());
+     * 
+     *         ctx.export("alicloudExpressConnectVirtualPhysicalConnectionExampleId", default_.connections()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVirtualPhysicalConnectionsResult> getVirtualPhysicalConnections(GetVirtualPhysicalConnectionsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:expressconnect/getVirtualPhysicalConnections:getVirtualPhysicalConnections", TypeShape.of(GetVirtualPhysicalConnectionsResult.class), args, Utilities.withVersion(options));
     }
     /**

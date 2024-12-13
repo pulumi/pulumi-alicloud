@@ -66,6 +66,34 @@ namespace Pulumi.AliCloud.Oss
         /// </summary>
         public static Output<GetBucketsResult> Invoke(GetBucketsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBucketsResult>("alicloud:oss/getBuckets:getBuckets", args ?? new GetBucketsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the OSS buckets of the current Alibaba Cloud user.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ossBucketsDs = AliCloud.Oss.GetBuckets.Invoke(new()
+        ///     {
+        ///         NameRegex = "sample_oss_bucket",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstOssBucketName"] = ossBucketsDs.Apply(getBucketsResult =&gt; getBucketsResult.Buckets[0]?.Name),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetBucketsResult> Invoke(GetBucketsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetBucketsResult>("alicloud:oss/getBuckets:getBuckets", args ?? new GetBucketsInvokeArgs(), options.WithDefaults());
     }
 
 

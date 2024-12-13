@@ -56,6 +56,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class EdsFunctions {
@@ -292,6 +293,53 @@ public final class EdsFunctions {
      * 
      */
     public static Output<GetAdConnectorDirectoriesResult> getAdConnectorDirectories(GetAdConnectorDirectoriesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:eds/getAdConnectorDirectories:getAdConnectorDirectories", TypeShape.of(GetAdConnectorDirectoriesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Ecd Ad Connector Directories of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.174.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetAdConnectorDirectoriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getAdConnectorDirectories(GetAdConnectorDirectoriesArgs.builder()
+     *             .ids("example_id")
+     *             .build());
+     * 
+     *         ctx.export("ecdAdConnectorDirectoryId1", ids.applyValue(getAdConnectorDirectoriesResult -> getAdConnectorDirectoriesResult.directories()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAdConnectorDirectoriesResult> getAdConnectorDirectories(GetAdConnectorDirectoriesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:eds/getAdConnectorDirectories:getAdConnectorDirectories", TypeShape.of(GetAdConnectorDirectoriesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -638,6 +686,56 @@ public final class EdsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetAdConnectorOfficeSitesResult> getAdConnectorOfficeSites(GetAdConnectorOfficeSitesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:eds/getAdConnectorOfficeSites:getAdConnectorOfficeSites", TypeShape.of(GetAdConnectorOfficeSitesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Ecd Ad Connector Office Sites of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.176.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetAdConnectorOfficeSitesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getAdConnectorOfficeSites();
+     * 
+     *         ctx.export("ecdAdConnectorOfficeSiteId1", ids.applyValue(getAdConnectorOfficeSitesResult -> getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *         final var nameRegex = EdsFunctions.getAdConnectorOfficeSites(GetAdConnectorOfficeSitesArgs.builder()
+     *             .nameRegex("^my-AdConnectorOfficeSite")
+     *             .build());
+     * 
+     *         ctx.export("ecdAdConnectorOfficeSiteId2", nameRegex.applyValue(getAdConnectorOfficeSitesResult -> getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAdConnectorOfficeSitesResult> getAdConnectorOfficeSitesPlain(GetAdConnectorOfficeSitesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:eds/getAdConnectorOfficeSites:getAdConnectorOfficeSites", TypeShape.of(GetAdConnectorOfficeSitesResult.class), args, Utilities.withVersion(options));
     }
@@ -869,6 +967,52 @@ public final class EdsFunctions {
      * 
      */
     public static Output<GetBundlesResult> getBundles(GetBundlesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:eds/getBundles:getBundles", TypeShape.of(GetBundlesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Ecd bundles of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.143.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *             .bundleType("SYSTEM")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetBundlesResult> getBundles(GetBundlesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:eds/getBundles:getBundles", TypeShape.of(GetBundlesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1508,6 +1652,105 @@ public final class EdsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetCommandsResult> getCommands(GetCommandsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:eds/getCommands:getCommands", TypeShape.of(GetCommandsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Ecd Commands of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.146.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroup;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.Desktop;
+     * import com.pulumi.alicloud.eds.DesktopArgs;
+     * import com.pulumi.alicloud.eds.Command;
+     * import com.pulumi.alicloud.eds.CommandArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetCommandsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
+     *             .cidrBlock("172.16.0.0/12")
+     *             .desktopAccessType("Internet")
+     *             .officeSiteName("your_office_site_name")
+     *             .build());
+     * 
+     *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *             .bundleType("SYSTEM")
+     *             .nameRegex("windows")
+     *             .build());
+     * 
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()
+     *             .policyGroupName("your_policy_group_name")
+     *             .clipboard("readwrite")
+     *             .localDrive("read")
+     *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
+     *                 .description("example_value")
+     *                 .cidrIp("1.2.3.4/24")
+     *                 .build())
+     *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
+     *                 .type("inflow")
+     *                 .policy("accept")
+     *                 .description("example_value")
+     *                 .portRange("80/80")
+     *                 .ipProtocol("TCP")
+     *                 .priority("1")
+     *                 .cidrIp("0.0.0.0/0")
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()
+     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .policyGroupId(defaultEcdPolicyGroup.id())
+     *             .bundleId(default_.bundles()[0].id())
+     *             .desktopName(name)
+     *             .build());
+     * 
+     *         var defaultCommand = new Command("defaultCommand", CommandArgs.builder()
+     *             .commandContent("ipconfig")
+     *             .commandType("RunPowerShellScript")
+     *             .desktopId(defaultDesktop.id())
+     *             .build());
+     * 
+     *         final var ids = EdsFunctions.getCommands();
+     * 
+     *         ctx.export("ecdCommandId1", ids.applyValue(getCommandsResult -> getCommandsResult.commands()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetCommandsResult> getCommandsPlain(GetCommandsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:eds/getCommands:getCommands", TypeShape.of(GetCommandsResult.class), args, Utilities.withVersion(options));
     }
@@ -1790,6 +2033,53 @@ public final class EdsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetCustomPropertiesResult> getCustomProperties(GetCustomPropertiesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:eds/getCustomProperties:getCustomProperties", TypeShape.of(GetCustomPropertiesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Ecd Custom Properties of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.176.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetCustomPropertiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getCustomProperties(GetCustomPropertiesArgs.builder()
+     *             .ids("example_id")
+     *             .build());
+     * 
+     *         ctx.export("ecdCustomPropertyId1", ids.applyValue(getCustomPropertiesResult -> getCustomPropertiesResult.properties()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetCustomPropertiesResult> getCustomPropertiesPlain(GetCustomPropertiesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:eds/getCustomProperties:getCustomProperties", TypeShape.of(GetCustomPropertiesResult.class), args, Utilities.withVersion(options));
     }
@@ -2026,6 +2316,53 @@ public final class EdsFunctions {
      * 
      */
     public static Output<GetDesktopTypesResult> getDesktopTypes(GetDesktopTypesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:eds/getDesktopTypes:getDesktopTypes", TypeShape.of(GetDesktopTypesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Ecd Desktop Types of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.170.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetDesktopTypesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getDesktopTypes(GetDesktopTypesArgs.builder()
+     *             .instanceTypeFamily("eds.hf")
+     *             .build());
+     * 
+     *         ctx.export("ecdDesktopTypeId1", ids.applyValue(getDesktopTypesResult -> getDesktopTypesResult.types()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDesktopTypesResult> getDesktopTypes(GetDesktopTypesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:eds/getDesktopTypes:getDesktopTypes", TypeShape.of(GetDesktopTypesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2608,6 +2945,113 @@ public final class EdsFunctions {
      * 
      */
     public static Output<GetDesktopsResult> getDesktops(GetDesktopsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:eds/getDesktops:getDesktops", TypeShape.of(GetDesktopsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Ecd Desktops of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.144.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroup;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.User;
+     * import com.pulumi.alicloud.eds.UserArgs;
+     * import com.pulumi.alicloud.eds.Desktop;
+     * import com.pulumi.alicloud.eds.DesktopArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetDesktopsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
+     *             .cidrBlock("172.16.0.0/12")
+     *             .desktopAccessType("Internet")
+     *             .officeSiteName("your_office_site_name")
+     *             .build());
+     * 
+     *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *             .bundleType("SYSTEM")
+     *             .build());
+     * 
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()
+     *             .policyGroupName("your_policy_group_name")
+     *             .clipboard("readwrite")
+     *             .localDrive("read")
+     *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
+     *                 .description("example_value")
+     *                 .cidrIp("1.2.3.4/24")
+     *                 .build())
+     *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
+     *                 .type("inflow")
+     *                 .policy("accept")
+     *                 .description("example_value")
+     *                 .portRange("80/80")
+     *                 .ipProtocol("TCP")
+     *                 .priority("1")
+     *                 .cidrIp("0.0.0.0/0")
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultUser = new User("defaultUser", UserArgs.builder()
+     *             .endUserId("your_end_user_id")
+     *             .email("your_email")
+     *             .phone("your_phone")
+     *             .password("your_password")
+     *             .build());
+     * 
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()
+     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .policyGroupId(defaultEcdPolicyGroup.id())
+     *             .bundleId(default_.bundles()[0].id())
+     *             .desktopName("your_desktop_name")
+     *             .endUserIds(defaultUser.id())
+     *             .build());
+     * 
+     *         final var ids = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
+     *             .ids(defaultDesktop.id())
+     *             .build());
+     * 
+     *         ctx.export("ecdDesktopId1", ids.applyValue(getDesktopsResult -> getDesktopsResult).applyValue(ids -> ids.applyValue(getDesktopsResult -> getDesktopsResult.desktops()[0].id())));
+     *         final var nameRegex = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
+     *             .nameRegex(defaultDesktop.desktopName())
+     *             .build());
+     * 
+     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(getDesktopsResult -> getDesktopsResult).applyValue(nameRegex -> nameRegex.applyValue(getDesktopsResult -> getDesktopsResult.desktops()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDesktopsResult> getDesktops(GetDesktopsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:eds/getDesktops:getDesktops", TypeShape.of(GetDesktopsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -3344,6 +3788,111 @@ public final class EdsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetImagesResult> getImages(GetImagesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:eds/getImages:getImages", TypeShape.of(GetImagesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Ecd Images of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.146.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroup;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.Desktop;
+     * import com.pulumi.alicloud.eds.DesktopArgs;
+     * import com.pulumi.alicloud.eds.Image;
+     * import com.pulumi.alicloud.eds.ImageArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
+     *             .cidrBlock("172.16.0.0/12")
+     *             .desktopAccessType("Internet")
+     *             .officeSiteName("your_simple_office_site_name")
+     *             .build());
+     * 
+     *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *             .bundleType("SYSTEM")
+     *             .build());
+     * 
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()
+     *             .policyGroupName("your_policy_group_name")
+     *             .clipboard("readwrite")
+     *             .localDrive("read")
+     *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
+     *                 .description("example_value")
+     *                 .cidrIp("1.2.3.4/24")
+     *                 .build())
+     *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
+     *                 .type("inflow")
+     *                 .policy("accept")
+     *                 .description("example_value")
+     *                 .portRange("80/80")
+     *                 .ipProtocol("TCP")
+     *                 .priority("1")
+     *                 .cidrIp("0.0.0.0/0")
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()
+     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .policyGroupId(defaultEcdPolicyGroup.id())
+     *             .bundleId(default_.bundles()[1].id())
+     *             .desktopName("your_desktop_name")
+     *             .build());
+     * 
+     *         var defaultImage = new Image("defaultImage", ImageArgs.builder()
+     *             .imageName("your_image_name")
+     *             .desktopId(defaultDesktop.id())
+     *             .description("example_value")
+     *             .build());
+     * 
+     *         final var ids = EdsFunctions.getImages(GetImagesArgs.builder()
+     *             .ids(defaultImage.id())
+     *             .build());
+     * 
+     *         ctx.export("ecdImageId1", ids.applyValue(getImagesResult -> getImagesResult).applyValue(ids -> ids.applyValue(getImagesResult -> getImagesResult.images()[0].id())));
+     *         final var nameRegex = EdsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex(defaultImage.imageName())
+     *             .build());
+     * 
+     *         ctx.export("ecdImageId2", nameRegex.applyValue(getImagesResult -> getImagesResult).applyValue(nameRegex -> nameRegex.applyValue(getImagesResult -> getImagesResult.images()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetImagesResult> getImagesPlain(GetImagesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:eds/getImages:getImages", TypeShape.of(GetImagesResult.class), args, Utilities.withVersion(options));
     }
@@ -3746,6 +4295,73 @@ public final class EdsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetNasFileSystemsResult> getNasFileSystems(GetNasFileSystemsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:eds/getNasFileSystems:getNasFileSystems", TypeShape.of(GetNasFileSystemsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Ecd Nas File Systems of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.141.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+     * import com.pulumi.alicloud.eds.NasFileSystem;
+     * import com.pulumi.alicloud.eds.NasFileSystemArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetNasFileSystemsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new SimpleOfficeSite("default", SimpleOfficeSiteArgs.builder()
+     *             .cidrBlock("172.16.0.0/12")
+     *             .desktopAccessType("Internet")
+     *             .officeSiteName("your_office_site_name")
+     *             .enableInternetAccess(false)
+     *             .build());
+     * 
+     *         var defaultNasFileSystem = new NasFileSystem("defaultNasFileSystem", NasFileSystemArgs.builder()
+     *             .description("your_description")
+     *             .officeSiteId(default_.id())
+     *             .nasFileSystemName("your_nas_file_system_name")
+     *             .build());
+     * 
+     *         final var ids = EdsFunctions.getNasFileSystems();
+     * 
+     *         ctx.export("ecdNasFileSystemId1", ids.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult.systems()[0].id()));
+     *         final var nameRegex = EdsFunctions.getNasFileSystems(GetNasFileSystemsArgs.builder()
+     *             .nameRegex(defaultNasFileSystem.nasFileSystemName())
+     *             .build());
+     * 
+     *         ctx.export("ecdNasFileSystemId2", nameRegex.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult).applyValue(nameRegex -> nameRegex.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult.systems()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetNasFileSystemsResult> getNasFileSystemsPlain(GetNasFileSystemsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:eds/getNasFileSystems:getNasFileSystems", TypeShape.of(GetNasFileSystemsResult.class), args, Utilities.withVersion(options));
     }
@@ -4057,6 +4673,68 @@ public final class EdsFunctions {
      * 
      */
     public static Output<GetNetworkPackagesResult> getNetworkPackages(GetNetworkPackagesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:eds/getNetworkPackages:getNetworkPackages", TypeShape.of(GetNetworkPackagesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Ecd Network Packages of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.142.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+     * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+     * import com.pulumi.alicloud.eds.NetworkPackage;
+     * import com.pulumi.alicloud.eds.NetworkPackageArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetNetworkPackagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
+     *             .cidrBlock("172.16.0.0/12")
+     *             .desktopAccessType("Internet")
+     *             .officeSiteName("example_value")
+     *             .build());
+     * 
+     *         var defaultNetworkPackage = new NetworkPackage("defaultNetworkPackage", NetworkPackageArgs.builder()
+     *             .bandwidth("10")
+     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .build());
+     * 
+     *         final var default = EdsFunctions.getNetworkPackages(GetNetworkPackagesArgs.builder()
+     *             .ids(defaultNetworkPackage.id())
+     *             .build());
+     * 
+     *         ctx.export("ecdNetworkPackageId1", default_.applyValue(default_ -> default_.packages()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNetworkPackagesResult> getNetworkPackages(GetNetworkPackagesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:eds/getNetworkPackages:getNetworkPackages", TypeShape.of(GetNetworkPackagesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -4550,6 +5228,78 @@ public final class EdsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetPolicyGroupsResult> getPolicyGroups(GetPolicyGroupsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:eds/getPolicyGroups:getPolicyGroups", TypeShape.of(GetPolicyGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Ecd Policy Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.130.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroup;
+     * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetPolicyGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new EcdPolicyGroup("default", EcdPolicyGroupArgs.builder()
+     *             .policyGroupName("my-policy-group")
+     *             .clipboard("read")
+     *             .localDrive("read")
+     *             .usbRedirect("off")
+     *             .watermark("off")
+     *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
+     *                 .description("my-description1")
+     *                 .cidrIp("1.2.3.45/24")
+     *                 .build())
+     *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
+     *                 .type("inflow")
+     *                 .policy("accept")
+     *                 .description("my-description")
+     *                 .portRange("80/80")
+     *                 .ipProtocol("TCP")
+     *                 .priority("1")
+     *                 .cidrIp("1.2.3.4/24")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var nameRegex = EdsFunctions.getPolicyGroups(GetPolicyGroupsArgs.builder()
+     *             .nameRegex("^my-policy")
+     *             .build());
+     * 
+     *         ctx.export("ecdPolicyGroupId", nameRegex.applyValue(getPolicyGroupsResult -> getPolicyGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetPolicyGroupsResult> getPolicyGroupsPlain(GetPolicyGroupsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:eds/getPolicyGroups:getPolicyGroups", TypeShape.of(GetPolicyGroupsResult.class), args, Utilities.withVersion(options));
     }
@@ -4811,6 +5561,58 @@ public final class EdsFunctions {
      * 
      */
     public static Output<GetRamDirectoriesResult> getRamDirectories(GetRamDirectoriesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:eds/getRamDirectories:getRamDirectories", TypeShape.of(GetRamDirectoriesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Ecd Ram Directories of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.174.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetRamDirectoriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getRamDirectories(GetRamDirectoriesArgs.builder()
+     *             .ids("example_id")
+     *             .build());
+     * 
+     *         ctx.export("ecdRamDirectoryId1", ids.applyValue(getRamDirectoriesResult -> getRamDirectoriesResult.directories()[0].id()));
+     *         final var nameRegex = EdsFunctions.getRamDirectories(GetRamDirectoriesArgs.builder()
+     *             .nameRegex("^my-RamDirectory")
+     *             .build());
+     * 
+     *         ctx.export("ecdRamDirectoryId2", nameRegex.applyValue(getRamDirectoriesResult -> getRamDirectoriesResult.directories()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRamDirectoriesResult> getRamDirectories(GetRamDirectoriesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:eds/getRamDirectories:getRamDirectories", TypeShape.of(GetRamDirectoriesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -5150,6 +5952,54 @@ public final class EdsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetSimpleOfficeSitesResult> getSimpleOfficeSites(GetSimpleOfficeSitesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:eds/getSimpleOfficeSites:getSimpleOfficeSites", TypeShape.of(GetSimpleOfficeSitesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Ecd Simple Office Sites of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.140.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetSimpleOfficeSitesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EdsFunctions.getSimpleOfficeSites(GetSimpleOfficeSitesArgs.builder()
+     *             .ids("example_id")
+     *             .status("REGISTERED")
+     *             .build());
+     * 
+     *         ctx.export("desktopAccessType", default_.sites()[0].desktopAccessType());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetSimpleOfficeSitesResult> getSimpleOfficeSitesPlain(GetSimpleOfficeSitesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:eds/getSimpleOfficeSites:getSimpleOfficeSites", TypeShape.of(GetSimpleOfficeSitesResult.class), args, Utilities.withVersion(options));
     }
@@ -5376,6 +6226,51 @@ public final class EdsFunctions {
      * 
      */
     public static Output<GetSnapshotsResult> getSnapshots(GetSnapshotsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:eds/getSnapshots:getSnapshots", TypeShape.of(GetSnapshotsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Ecd Snapshots of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.169.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EdsFunctions.getSnapshots();
+     * 
+     *         ctx.export("ecdSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSnapshotsResult> getSnapshots(GetSnapshotsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:eds/getSnapshots:getSnapshots", TypeShape.of(GetSnapshotsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -5744,6 +6639,60 @@ public final class EdsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetUsersResult> getUsers(GetUsersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:eds/getUsers:getUsers", TypeShape.of(GetUsersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Elastic Desktop Service (ECD) Users of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.142.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.User;
+     * import com.pulumi.alicloud.eds.UserArgs;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new User("default", UserArgs.builder()
+     *             .endUserId("example_value")
+     *             .email("your_email")
+     *             .phone("your_phone")
+     *             .password("your_password")
+     *             .build());
+     * 
+     *         final var ids = EdsFunctions.getUsers();
+     * 
+     *         ctx.export("ecdUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetUsersResult> getUsersPlain(GetUsersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:eds/getUsers:getUsers", TypeShape.of(GetUsersResult.class), args, Utilities.withVersion(options));
     }
@@ -5970,6 +6919,51 @@ public final class EdsFunctions {
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:eds/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the available zones with the Elastic Desktop Service (ECD) of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.174.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eds.EdsFunctions;
+     * import com.pulumi.alicloud.eds.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EdsFunctions.getZones();
+     * 
+     *         ctx.export("alicloudEcdZones", default_.zones()[0].zoneId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:eds/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
     }
     /**

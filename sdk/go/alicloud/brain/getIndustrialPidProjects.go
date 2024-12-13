@@ -90,21 +90,11 @@ type GetIndustrialPidProjectsResult struct {
 }
 
 func GetIndustrialPidProjectsOutput(ctx *pulumi.Context, args GetIndustrialPidProjectsOutputArgs, opts ...pulumi.InvokeOption) GetIndustrialPidProjectsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetIndustrialPidProjectsResultOutput, error) {
 			args := v.(GetIndustrialPidProjectsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetIndustrialPidProjectsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:brain/getIndustrialPidProjects:getIndustrialPidProjects", args, &rv, "", opts...)
-			if err != nil {
-				return GetIndustrialPidProjectsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetIndustrialPidProjectsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetIndustrialPidProjectsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:brain/getIndustrialPidProjects:getIndustrialPidProjects", args, GetIndustrialPidProjectsResultOutput{}, options).(GetIndustrialPidProjectsResultOutput), nil
 		}).(GetIndustrialPidProjectsResultOutput)
 }
 

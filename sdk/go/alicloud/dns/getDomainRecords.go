@@ -53,21 +53,11 @@ type GetDomainRecordsResult struct {
 }
 
 func GetDomainRecordsOutput(ctx *pulumi.Context, args GetDomainRecordsOutputArgs, opts ...pulumi.InvokeOption) GetDomainRecordsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDomainRecordsResultOutput, error) {
 			args := v.(GetDomainRecordsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetDomainRecordsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:dns/getDomainRecords:getDomainRecords", args, &rv, "", opts...)
-			if err != nil {
-				return GetDomainRecordsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetDomainRecordsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetDomainRecordsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:dns/getDomainRecords:getDomainRecords", args, GetDomainRecordsResultOutput{}, options).(GetDomainRecordsResultOutput), nil
 		}).(GetDomainRecordsResultOutput)
 }
 

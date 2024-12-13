@@ -63,18 +63,8 @@ type GetCallerIdentityResult struct {
 
 func GetCallerIdentityOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetCallerIdentityResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (GetCallerIdentityResultOutput, error) {
-		opts = internal.PkgInvokeDefaultOpts(opts)
-		var rv GetCallerIdentityResult
-		secret, err := ctx.InvokePackageRaw("alicloud:index/getCallerIdentity:getCallerIdentity", nil, &rv, "", opts...)
-		if err != nil {
-			return GetCallerIdentityResultOutput{}, err
-		}
-
-		output := pulumi.ToOutput(rv).(GetCallerIdentityResultOutput)
-		if secret {
-			return pulumi.ToSecret(output).(GetCallerIdentityResultOutput), nil
-		}
-		return output, nil
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("alicloud:index/getCallerIdentity:getCallerIdentity", nil, GetCallerIdentityResultOutput{}, options).(GetCallerIdentityResultOutput), nil
 	}).(GetCallerIdentityResultOutput)
 }
 

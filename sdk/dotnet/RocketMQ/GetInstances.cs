@@ -96,6 +96,49 @@ namespace Pulumi.AliCloud.RocketMQ
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:rocketmq/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a list of ONS Instances in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available in 1.52.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "onsInstanceDatasourceName";
+        ///     var @default = new AliCloud.RocketMQ.Instance("default", new()
+        ///     {
+        ///         Name = name,
+        ///         Remark = "default_ons_instance_remark",
+        ///     });
+        /// 
+        ///     var instancesDs = AliCloud.RocketMQ.GetInstances.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             @default.Id,
+        ///         },
+        ///         NameRegex = @default.Name,
+        ///         OutputFile = "instances.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstInstanceId"] = instancesDs.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.InstanceId),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:rocketmq/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
     }
 
 

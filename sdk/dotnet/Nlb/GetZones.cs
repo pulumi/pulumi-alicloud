@@ -68,6 +68,35 @@ namespace Pulumi.AliCloud.Nlb
         /// </summary>
         public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:nlb/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the available zones with the Network Load Balancer (NLB) Instance of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.191.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Nlb.GetZones.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstNlbZonesId"] = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:nlb/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
     }
 
 

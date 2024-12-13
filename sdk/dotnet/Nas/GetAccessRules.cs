@@ -26,6 +26,14 @@ namespace Pulumi.AliCloud.Nas
         /// </summary>
         public static Output<GetAccessRulesResult> Invoke(GetAccessRulesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccessRulesResult>("alicloud:nas/getAccessRules:getAccessRules", args ?? new GetAccessRulesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides AccessRule available to the user.
+        /// 
+        /// &gt; **NOTE**: Available in 1.35.0+
+        /// </summary>
+        public static Output<GetAccessRulesResult> Invoke(GetAccessRulesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccessRulesResult>("alicloud:nas/getAccessRules:getAccessRules", args ?? new GetAccessRulesInvokeArgs(), options.WithDefaults());
     }
 
 

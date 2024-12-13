@@ -42,21 +42,11 @@ type GetBastionHostInstancesResult struct {
 }
 
 func GetBastionHostInstancesOutput(ctx *pulumi.Context, args GetBastionHostInstancesOutputArgs, opts ...pulumi.InvokeOption) GetBastionHostInstancesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetBastionHostInstancesResultOutput, error) {
 			args := v.(GetBastionHostInstancesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetBastionHostInstancesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:yundun/getBastionHostInstances:getBastionHostInstances", args, &rv, "", opts...)
-			if err != nil {
-				return GetBastionHostInstancesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetBastionHostInstancesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetBastionHostInstancesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:yundun/getBastionHostInstances:getBastionHostInstances", args, GetBastionHostInstancesResultOutput{}, options).(GetBastionHostInstancesResultOutput), nil
 		}).(GetBastionHostInstancesResultOutput)
 }
 

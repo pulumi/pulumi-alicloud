@@ -80,6 +80,41 @@ namespace Pulumi.AliCloud.Cms
         /// </summary>
         public static Output<GetHybridMonitorDatasResult> Invoke(GetHybridMonitorDatasInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHybridMonitorDatasResult>("alicloud:cms/getHybridMonitorDatas:getHybridMonitorDatas", args ?? new GetHybridMonitorDatasInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Cms Hybrid Monitor Datas of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.177.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Cms.GetHybridMonitorDatas.Invoke(new()
+        ///     {
+        ///         Namespace = "example_value",
+        ///         PromSql = "AliyunEcs_cpu_total",
+        ///         Start = "1657505665",
+        ///         End = "1657520065",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cmsMetricRuleTemplateId1"] = @default.Apply(@default =&gt; @default.Apply(getHybridMonitorDatasResult =&gt; getHybridMonitorDatasResult.Datas[0])),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetHybridMonitorDatasResult> Invoke(GetHybridMonitorDatasInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetHybridMonitorDatasResult>("alicloud:cms/getHybridMonitorDatas:getHybridMonitorDatas", args ?? new GetHybridMonitorDatasInvokeArgs(), options.WithDefaults());
     }
 
 

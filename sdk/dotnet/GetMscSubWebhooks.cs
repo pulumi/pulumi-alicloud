@@ -92,6 +92,47 @@ namespace Pulumi.AliCloud
         /// </summary>
         public static Output<GetMscSubWebhooksResult> Invoke(GetMscSubWebhooksInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMscSubWebhooksResult>("alicloud:index/getMscSubWebhooks:getMscSubWebhooks", args ?? new GetMscSubWebhooksInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Msc Sub Webhooks of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.141.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.GetMscSubWebhooks.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.GetMscSubWebhooks.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Webhook",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mscSubWebhookId1"] = ids.Apply(getMscSubWebhooksResult =&gt; getMscSubWebhooksResult.Webhooks[0]?.Id),
+        ///         ["mscSubWebhookId2"] = nameRegex.Apply(getMscSubWebhooksResult =&gt; getMscSubWebhooksResult.Webhooks[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetMscSubWebhooksResult> Invoke(GetMscSubWebhooksInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMscSubWebhooksResult>("alicloud:index/getMscSubWebhooks:getMscSubWebhooks", args ?? new GetMscSubWebhooksInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -100,6 +100,51 @@ namespace Pulumi.AliCloud.Mhub
         /// </summary>
         public static Output<GetAppsResult> Invoke(GetAppsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAppsResult>("alicloud:mhub/getApps:getApps", args ?? new GetAppsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Mhub Apps of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.138.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "example_value";
+        ///     var @default = new AliCloud.Mhub.App("default", new()
+        ///     {
+        ///         AppName = name,
+        ///         ProductId = defaultAlicloudMhubProduct.Id,
+        ///         PackageName = "com.test.android",
+        ///         Type = "2",
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Mhub.GetApps.Invoke();
+        /// 
+        ///     var nameRegex = AliCloud.Mhub.GetApps.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-App",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mhubAppId1"] = ids.Apply(getAppsResult =&gt; getAppsResult.Apps[0]?.Id),
+        ///         ["mhubAppId2"] = nameRegex.Apply(getAppsResult =&gt; getAppsResult.Apps[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAppsResult> Invoke(GetAppsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAppsResult>("alicloud:mhub/getApps:getApps", args ?? new GetAppsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -32,6 +32,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class RamFunctions {
@@ -302,6 +303,51 @@ public final class RamFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetAccountAliasResult> getAccountAlias(GetAccountAliasArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ram/getAccountAlias:getAccountAlias", TypeShape.of(GetAccountAliasResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides an alias for the Alibaba Cloud account.
+     * 
+     * &gt; **NOTE:** Available since v1.0.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetAccountAliasArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var aliasDs = RamFunctions.getAccountAlias(GetAccountAliasArgs.builder()
+     *             .outputFile("alias.txt")
+     *             .build());
+     * 
+     *         ctx.export("accountAlias", aliasDs.applyValue(getAccountAliasResult -> getAccountAliasResult.accountAlias()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAccountAliasResult> getAccountAliasPlain(GetAccountAliasPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ram/getAccountAlias:getAccountAlias", TypeShape.of(GetAccountAliasResult.class), args, Utilities.withVersion(options));
     }
@@ -318,6 +364,9 @@ public final class RamFunctions {
         return getAccountAliasesPlain(args, InvokeOptions.Empty);
     }
     public static Output<GetAccountAliasesResult> getAccountAliases(GetAccountAliasesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ram/getAccountAliases:getAccountAliases", TypeShape.of(GetAccountAliasesResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetAccountAliasesResult> getAccountAliases(GetAccountAliasesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:ram/getAccountAliases:getAccountAliases", TypeShape.of(GetAccountAliasesResult.class), args, Utilities.withVersion(options));
     }
     public static CompletableFuture<GetAccountAliasesResult> getAccountAliasesPlain(GetAccountAliasesPlainArgs args, InvokeOptions options) {
@@ -556,6 +605,53 @@ public final class RamFunctions {
      * 
      */
     public static Output<GetGroupsResult> getGroups(GetGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ram/getGroups:getGroups", TypeShape.of(GetGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list of RAM Groups in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available since v1.0.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var groupsDs = RamFunctions.getGroups(GetGroupsArgs.builder()
+     *             .outputFile("groups.txt")
+     *             .userName("user1")
+     *             .nameRegex("^group[0-9]*")
+     *             .build());
+     * 
+     *         ctx.export("firstGroupName", groupsDs.applyValue(getGroupsResult -> getGroupsResult.groups()[0].name()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGroupsResult> getGroups(GetGroupsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:ram/getGroups:getGroups", TypeShape.of(GetGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -843,6 +939,54 @@ public final class RamFunctions {
      * 
      */
     public static Output<GetPoliciesResult> getPolicies(GetPoliciesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ram/getPolicies:getPolicies", TypeShape.of(GetPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available since v1.0.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .outputFile("policies.txt")
+     *             .userName("user1")
+     *             .groupName("group1")
+     *             .type("System")
+     *             .build());
+     * 
+     *         ctx.export("firstPolicyName", policiesDs.applyValue(getPoliciesResult -> getPoliciesResult.policies()[0].name()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPoliciesResult> getPolicies(GetPoliciesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:ram/getPolicies:getPolicies", TypeShape.of(GetPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2726,6 +2870,312 @@ public final class RamFunctions {
      * `data.alicloud_ram_policy_document.federated_example.document` will evaluate to:
      * 
      */
+    public static Output<GetPolicyDocumentResult> getPolicyDocument(GetPolicyDocumentArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ram/getPolicyDocument:getPolicyDocument", TypeShape.of(GetPolicyDocumentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source Generates a RAM policy document of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.184.0+.
+     * 
+     * ## Example Usage
+     * 
+     * ### Basic Example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.Policy;
+     * import com.pulumi.alicloud.ram.PolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var basicExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .version("1")
+     *             .statements(GetPolicyDocumentStatementArgs.builder()
+     *                 .effect("Allow")
+     *                 .actions("oss:*")
+     *                 .resources(                
+     *                     "acs:oss:*:*:myphotos",
+     *                     "acs:oss:*:*:myphotos/*")
+     *                 .build())
+     *             .build());
+     * 
+     *         var default_ = new Policy("default", PolicyArgs.builder()
+     *             .policyName("tf-example")
+     *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .force(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * `data.alicloud_ram_policy_document.basic_example.document` will evaluate to:
+     * 
+     * ### Example Multiple Condition Keys and Values
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.Policy;
+     * import com.pulumi.alicloud.ram.PolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var multipleCondition = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .version("1")
+     *             .statements(            
+     *                 GetPolicyDocumentStatementArgs.builder()
+     *                     .effect("Allow")
+     *                     .actions(                    
+     *                         "oss:ListBuckets",
+     *                         "oss:GetBucketStat",
+     *                         "oss:GetBucketInfo",
+     *                         "oss:GetBucketTagging",
+     *                         "oss:GetBucketAcl")
+     *                     .resources("acs:oss:*:*:*")
+     *                     .build(),
+     *                 GetPolicyDocumentStatementArgs.builder()
+     *                     .effect("Allow")
+     *                     .actions(                    
+     *                         "oss:GetObject",
+     *                         "oss:GetObjectAcl")
+     *                     .resources("acs:oss:*:*:myphotos/hangzhou/2015/*")
+     *                     .build(),
+     *                 GetPolicyDocumentStatementArgs.builder()
+     *                     .effect("Allow")
+     *                     .actions("oss:ListObjects")
+     *                     .resources("acs:oss:*:*:myphotos")
+     *                     .conditions(                    
+     *                         GetPolicyDocumentStatementConditionArgs.builder()
+     *                             .operator("StringLike")
+     *                             .variable("oss:Delimiter")
+     *                             .values("/")
+     *                             .build(),
+     *                         GetPolicyDocumentStatementConditionArgs.builder()
+     *                             .operator("StringLike")
+     *                             .variable("oss:Prefix")
+     *                             .values(                            
+     *                                 "",
+     *                                 "hangzhou/",
+     *                                 "hangzhou/2015/*")
+     *                             .build())
+     *                     .build())
+     *             .build());
+     * 
+     *         var policy = new Policy("policy", PolicyArgs.builder()
+     *             .policyName("tf-example-condition")
+     *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .force(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * `data.alicloud_ram_policy_document.multiple_condition.document` will evaluate to:
+     * 
+     * ### Example Assume-Role Policy with RAM Principal
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ramExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .statements(GetPolicyDocumentStatementArgs.builder()
+     *                 .effect("Allow")
+     *                 .actions("sts:AssumeRole")
+     *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+     *                     .entity("RAM")
+     *                     .identifiers("acs:ram::123456789012****:root")
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var role = new Role("role", RoleArgs.builder()
+     *             .name("tf-example-role-ram")
+     *             .document(ramExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .force(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * `data.alicloud_ram_policy_document.ram_example.document` will evaluate to:
+     * 
+     * ### Example Assume-Role Policy with Service Principal
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var serviceExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .statements(GetPolicyDocumentStatementArgs.builder()
+     *                 .effect("Allow")
+     *                 .actions("sts:AssumeRole")
+     *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+     *                     .entity("Service")
+     *                     .identifiers("ecs.aliyuncs.com")
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var role = new Role("role", RoleArgs.builder()
+     *             .name("tf-example-role-service")
+     *             .document(serviceExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .force(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * `data.alicloud_ram_policy_document.service_example.document` will evaluate to:
+     * 
+     * ### Example Assume-Role Policy with Federated Principal
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var federatedExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .statements(GetPolicyDocumentStatementArgs.builder()
+     *                 .effect("Allow")
+     *                 .actions("sts:AssumeRole")
+     *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+     *                     .entity("Federated")
+     *                     .identifiers("acs:ram::123456789012****:saml-provider/testprovider")
+     *                     .build())
+     *                 .conditions(GetPolicyDocumentStatementConditionArgs.builder()
+     *                     .operator("StringEquals")
+     *                     .variable("saml:recipient")
+     *                     .values("https://signin.aliyun.com/saml-role/sso")
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var role = new Role("role", RoleArgs.builder()
+     *             .name("tf-example-role-federated")
+     *             .document(federatedExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .force(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * `data.alicloud_ram_policy_document.federated_example.document` will evaluate to:
+     * 
+     */
     public static CompletableFuture<GetPolicyDocumentResult> getPolicyDocumentPlain(GetPolicyDocumentPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ram/getPolicyDocument:getPolicyDocument", TypeShape.of(GetPolicyDocumentResult.class), args, Utilities.withVersion(options));
     }
@@ -3014,6 +3464,54 @@ public final class RamFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetRolesResult> getRoles(GetRolesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ram/getRoles:getRoles", TypeShape.of(GetRolesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available since v1.0.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rolesDs = RamFunctions.getRoles(GetRolesArgs.builder()
+     *             .outputFile("roles.txt")
+     *             .nameRegex(".*test.*")
+     *             .policyName("AliyunACSDefaultAccess")
+     *             .policyType("Custom")
+     *             .build());
+     * 
+     *         ctx.export("firstRoleId", rolesDs.applyValue(getRolesResult -> getRolesResult.roles()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetRolesResult> getRolesPlain(GetRolesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ram/getRoles:getRoles", TypeShape.of(GetRolesResult.class), args, Utilities.withVersion(options));
     }
@@ -3255,6 +3753,54 @@ public final class RamFunctions {
      * 
      */
     public static Output<GetSamlProvidersResult> getSamlProviders(GetSamlProvidersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ram/getSamlProviders:getSamlProviders", TypeShape.of(GetSamlProvidersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Ram Saml Providers of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.114.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetSamlProvidersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RamFunctions.getSamlProviders(GetSamlProvidersArgs.builder()
+     *             .ids("samlProviderName")
+     *             .nameRegex("tf-testAcc")
+     *             .build());
+     * 
+     *         ctx.export("firstRamSamlProviderId", example.applyValue(getSamlProvidersResult -> getSamlProvidersResult.providers()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSamlProvidersResult> getSamlProviders(GetSamlProvidersArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:ram/getSamlProviders:getSamlProviders", TypeShape.of(GetSamlProvidersResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -3843,6 +4389,114 @@ public final class RamFunctions {
      * 
      */
     public static Output<GetUsersResult> getUsers(GetUsersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ram/getUsers:getUsers", TypeShape.of(GetUsersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available since v1.0.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.Group;
+     * import com.pulumi.alicloud.ram.GroupArgs;
+     * import com.pulumi.alicloud.ram.User;
+     * import com.pulumi.alicloud.ram.UserArgs;
+     * import com.pulumi.alicloud.ram.GroupMembership;
+     * import com.pulumi.alicloud.ram.GroupMembershipArgs;
+     * import com.pulumi.alicloud.ram.Policy;
+     * import com.pulumi.alicloud.ram.PolicyArgs;
+     * import com.pulumi.alicloud.ram.UserPolicyAttachment;
+     * import com.pulumi.alicloud.ram.UserPolicyAttachmentArgs;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         var default_ = new Group("default", GroupArgs.builder()
+     *             .name("group1")
+     *             .comments("group comments")
+     *             .force(true)
+     *             .build());
+     * 
+     *         var defaultUser = new User("defaultUser", UserArgs.builder()
+     *             .name("user-example")
+     *             .displayName("displayname")
+     *             .mobile("86-18888888888")
+     *             .email("hello.uuu}{@literal @}{@code aaa.com")
+     *             .comments("yoyoyo")
+     *             .build());
+     * 
+     *         var defaultGroupMembership = new GroupMembership("defaultGroupMembership", GroupMembershipArgs.builder()
+     *             .groupName(default_.name())
+     *             .userNames(defaultUser.name())
+     *             .build());
+     * 
+     *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
+     *             .policyName("ram-policy-example")
+     *             .policyDocument("""
+     * 			}{{@code
+     * 				"Statement": [
+     * 				 }{{@code
+     * 					"Action": [
+     * 					"oss:ListObjects",
+     * 					"oss:ListObjects"
+     * 			  		],
+     * 			  		"Effect": "Deny",
+     * 			  		"Resource": [
+     * 						"acs:oss:*:*:mybucket",
+     * 						"acs:oss:*:*:mybucket/*"
+     * 			  		]
+     * 				 }}{@code
+     * 		  		],
+     * 				"Version": "1"
+     * 			}}{@code
+     *             """)
+     *             .description("this is a policy example")
+     *             .force(true)
+     *             .build());
+     * 
+     *         var defaultUserPolicyAttachment = new UserPolicyAttachment("defaultUserPolicyAttachment", UserPolicyAttachmentArgs.builder()
+     *             .policyName(defaultPolicy.policyName())
+     *             .userName(defaultUser.name())
+     *             .policyType(defaultPolicy.type())
+     *             .build());
+     * 
+     *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
+     *             .outputFile("users.txt")
+     *             .groupName(default_.name())
+     *             .policyName(defaultPolicy.policyName())
+     *             .policyType("Custom")
+     *             .nameRegex(defaultUser.name())
+     *             .build());
+     * 
+     *         ctx.export("firstUserId", usersDs.applyValue(getUsersResult -> getUsersResult).applyValue(usersDs -> usersDs.applyValue(getUsersResult -> getUsersResult.users()[0].id())));
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetUsersResult> getUsers(GetUsersArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:ram/getUsers:getUsers", TypeShape.of(GetUsersResult.class), args, Utilities.withVersion(options));
     }
     /**

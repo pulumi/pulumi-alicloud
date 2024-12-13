@@ -90,21 +90,11 @@ type GetTransitRoutersResult struct {
 }
 
 func GetTransitRoutersOutput(ctx *pulumi.Context, args GetTransitRoutersOutputArgs, opts ...pulumi.InvokeOption) GetTransitRoutersResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetTransitRoutersResultOutput, error) {
 			args := v.(GetTransitRoutersArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetTransitRoutersResult
-			secret, err := ctx.InvokePackageRaw("alicloud:cen/getTransitRouters:getTransitRouters", args, &rv, "", opts...)
-			if err != nil {
-				return GetTransitRoutersResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetTransitRoutersResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetTransitRoutersResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:cen/getTransitRouters:getTransitRouters", args, GetTransitRoutersResultOutput{}, options).(GetTransitRoutersResultOutput), nil
 		}).(GetTransitRoutersResultOutput)
 }
 

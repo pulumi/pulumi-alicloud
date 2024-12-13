@@ -92,6 +92,47 @@ namespace Pulumi.AliCloud.Edas
         /// </summary>
         public static Output<GetNamespacesResult> Invoke(GetNamespacesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNamespacesResult>("alicloud:edas/getNamespaces:getNamespaces", args ?? new GetNamespacesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Edas Namespaces of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.173.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Edas.GetNamespaces.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Edas.GetNamespaces.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Namespace",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["edasNamespaceId1"] = ids.Apply(getNamespacesResult =&gt; getNamespacesResult.Namespaces[0]?.Id),
+        ///         ["edasNamespaceId2"] = nameRegex.Apply(getNamespacesResult =&gt; getNamespacesResult.Namespaces[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetNamespacesResult> Invoke(GetNamespacesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNamespacesResult>("alicloud:edas/getNamespaces:getNamespaces", args ?? new GetNamespacesInvokeArgs(), options.WithDefaults());
     }
 
 

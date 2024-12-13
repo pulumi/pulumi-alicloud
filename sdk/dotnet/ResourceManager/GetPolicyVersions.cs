@@ -72,6 +72,37 @@ namespace Pulumi.AliCloud.ResourceManager
         /// </summary>
         public static Output<GetPolicyVersionsResult> Invoke(GetPolicyVersionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPolicyVersionsResult>("alicloud:resourcemanager/getPolicyVersions:getPolicyVersions", args ?? new GetPolicyVersionsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Resource Manager Policy Versions of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:**  Available in 1.85.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.ResourceManager.GetPolicyVersions.Invoke(new()
+        ///     {
+        ///         PolicyName = "tftest",
+        ///         PolicyType = "Custom",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstPolicyVersionId"] = @default.Apply(@default =&gt; @default.Apply(getPolicyVersionsResult =&gt; getPolicyVersionsResult.Versions[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPolicyVersionsResult> Invoke(GetPolicyVersionsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPolicyVersionsResult>("alicloud:resourcemanager/getPolicyVersions:getPolicyVersions", args ?? new GetPolicyVersionsInvokeArgs(), options.WithDefaults());
     }
 
 

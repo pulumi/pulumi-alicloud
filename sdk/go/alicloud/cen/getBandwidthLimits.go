@@ -70,21 +70,11 @@ type GetBandwidthLimitsResult struct {
 }
 
 func GetBandwidthLimitsOutput(ctx *pulumi.Context, args GetBandwidthLimitsOutputArgs, opts ...pulumi.InvokeOption) GetBandwidthLimitsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetBandwidthLimitsResultOutput, error) {
 			args := v.(GetBandwidthLimitsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetBandwidthLimitsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:cen/getBandwidthLimits:getBandwidthLimits", args, &rv, "", opts...)
-			if err != nil {
-				return GetBandwidthLimitsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetBandwidthLimitsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetBandwidthLimitsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:cen/getBandwidthLimits:getBandwidthLimits", args, GetBandwidthLimitsResultOutput{}, options).(GetBandwidthLimitsResultOutput), nil
 		}).(GetBandwidthLimitsResultOutput)
 }
 

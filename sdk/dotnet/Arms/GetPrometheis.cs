@@ -148,6 +148,75 @@ namespace Pulumi.AliCloud.Arms
         /// </summary>
         public static Output<GetPrometheisResult> Invoke(GetPrometheisInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrometheisResult>("alicloud:arms/getPrometheis:getPrometheis", args ?? new GetPrometheisInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Arms Prometheis of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.203.0.
+        /// 
+        /// &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsDisk from version 1.214.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "tf-example";
+        ///     var @default = AliCloud.Vpc.GetNetworks.Invoke(new()
+        ///     {
+        ///         NameRegex = "default-NODELETING",
+        ///     });
+        /// 
+        ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+        ///     {
+        ///         VpcId = @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///     });
+        /// 
+        ///     var defaultGetResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+        /// 
+        ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
+        ///     {
+        ///         VpcId = @default.Apply(@default =&gt; @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0])),
+        ///     });
+        /// 
+        ///     var defaultPrometheus = new AliCloud.Arms.Prometheus("default", new()
+        ///     {
+        ///         ClusterType = "ecs",
+        ///         GrafanaInstanceId = "free",
+        ///         VpcId = @default.Apply(@default =&gt; @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0])),
+        ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+        ///         SecurityGroupId = defaultSecurityGroup.Id,
+        ///         ClusterName = @default.Apply(@default =&gt; $"{name}-{@default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0])}"),
+        ///         ResourceGroupId = defaultGetResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[1]?.Id),
+        ///         Tags = 
+        ///         {
+        ///             { "Created", "TF" },
+        ///             { "For", "Prometheus" },
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Arms.GetPrometheis.Invoke(new()
+        ///     {
+        ///         NameRegex = defaultPrometheus.ClusterName,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["armsPrometheisId"] = nameRegex.Apply(getPrometheisResult =&gt; getPrometheisResult.Prometheis[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPrometheisResult> Invoke(GetPrometheisInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPrometheisResult>("alicloud:arms/getPrometheis:getPrometheis", args ?? new GetPrometheisInvokeArgs(), options.WithDefaults());
     }
 
 

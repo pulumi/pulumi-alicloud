@@ -70,6 +70,36 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public static Output<GetDisksResult> Invoke(GetDisksInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDisksResult>("alicloud:ecs/getDisks:getDisks", args ?? new GetDisksInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsDisks from version 1.122.0.
+        /// 
+        /// This data source provides the disks of the current Alibaba Cloud user.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var disksDs = AliCloud.Ecs.GetDisks.Invoke(new()
+        ///     {
+        ///         NameRegex = "sample_disk",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstDiskId"] = disksDs.Apply(getDisksResult =&gt; getDisksResult.Disks[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDisksResult> Invoke(GetDisksInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDisksResult>("alicloud:ecs/getDisks:getDisks", args ?? new GetDisksInvokeArgs(), options.WithDefaults());
     }
 
 

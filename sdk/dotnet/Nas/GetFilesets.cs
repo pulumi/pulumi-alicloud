@@ -84,6 +84,43 @@ namespace Pulumi.AliCloud.Nas
         /// </summary>
         public static Output<GetFilesetsResult> Invoke(GetFilesetsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFilesetsResult>("alicloud:nas/getFilesets:getFilesets", args ?? new GetFilesetsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Nas Filesets of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.153.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Nas.GetFilesets.Invoke(new()
+        ///     {
+        ///         FileSystemId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["nasFilesetId1"] = ids.Apply(getFilesetsResult =&gt; getFilesetsResult.Filesets[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetFilesetsResult> Invoke(GetFilesetsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetFilesetsResult>("alicloud:nas/getFilesets:getFilesets", args ?? new GetFilesetsInvokeArgs(), options.WithDefaults());
     }
 
 

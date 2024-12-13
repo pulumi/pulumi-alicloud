@@ -80,6 +80,41 @@ namespace Pulumi.AliCloud.ResourceManager
         /// </summary>
         public static Output<GetDelegatedAdministratorsResult> Invoke(GetDelegatedAdministratorsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDelegatedAdministratorsResult>("alicloud:resourcemanager/getDelegatedAdministrators:getDelegatedAdministrators", args ?? new GetDelegatedAdministratorsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Resource Manager Delegated Administrators of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.181.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.ResourceManager.GetDelegatedAdministrators.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["resourceManagerDelegatedAdministratorId1"] = ids.Apply(getDelegatedAdministratorsResult =&gt; getDelegatedAdministratorsResult.Administrators[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDelegatedAdministratorsResult> Invoke(GetDelegatedAdministratorsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDelegatedAdministratorsResult>("alicloud:resourcemanager/getDelegatedAdministrators:getDelegatedAdministrators", args ?? new GetDelegatedAdministratorsInvokeArgs(), options.WithDefaults());
     }
 
 

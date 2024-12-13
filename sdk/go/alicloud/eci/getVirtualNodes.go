@@ -102,21 +102,11 @@ type GetVirtualNodesResult struct {
 }
 
 func GetVirtualNodesOutput(ctx *pulumi.Context, args GetVirtualNodesOutputArgs, opts ...pulumi.InvokeOption) GetVirtualNodesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetVirtualNodesResultOutput, error) {
 			args := v.(GetVirtualNodesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetVirtualNodesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:eci/getVirtualNodes:getVirtualNodes", args, &rv, "", opts...)
-			if err != nil {
-				return GetVirtualNodesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetVirtualNodesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetVirtualNodesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:eci/getVirtualNodes:getVirtualNodes", args, GetVirtualNodesResultOutput{}, options).(GetVirtualNodesResultOutput), nil
 		}).(GetVirtualNodesResultOutput)
 }
 

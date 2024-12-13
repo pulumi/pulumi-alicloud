@@ -76,6 +76,39 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// </summary>
         public static Output<GetWebLockConfigsResult> Invoke(GetWebLockConfigsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWebLockConfigsResult>("alicloud:threatdetection/getWebLockConfigs:getWebLockConfigs", args ?? new GetWebLockConfigsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides Threat Detection Web Lock Config available to the user.[What is Web Lock Config](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-describeweblockconfiglist)
+        /// 
+        /// &gt; **NOTE:** Available since v1.195.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.ThreatDetection.GetWebLockConfigs.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultAlicloudThreatDetectionWebLockConfig.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudThreatDetectionWebLockConfigExampleId"] = @default.Apply(@default =&gt; @default.Apply(getWebLockConfigsResult =&gt; getWebLockConfigsResult.Configs[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetWebLockConfigsResult> Invoke(GetWebLockConfigsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetWebLockConfigsResult>("alicloud:threatdetection/getWebLockConfigs:getWebLockConfigs", args ?? new GetWebLockConfigsInvokeArgs(), options.WithDefaults());
     }
 
 

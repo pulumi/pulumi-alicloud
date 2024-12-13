@@ -123,21 +123,11 @@ type GetStackInstancesResult struct {
 }
 
 func GetStackInstancesOutput(ctx *pulumi.Context, args GetStackInstancesOutputArgs, opts ...pulumi.InvokeOption) GetStackInstancesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetStackInstancesResultOutput, error) {
 			args := v.(GetStackInstancesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetStackInstancesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:ros/getStackInstances:getStackInstances", args, &rv, "", opts...)
-			if err != nil {
-				return GetStackInstancesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetStackInstancesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetStackInstancesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:ros/getStackInstances:getStackInstances", args, GetStackInstancesResultOutput{}, options).(GetStackInstancesResultOutput), nil
 		}).(GetStackInstancesResultOutput)
 }
 

@@ -66,6 +66,34 @@ namespace Pulumi.AliCloud.Dcdn
         /// </summary>
         public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceResult>("alicloud:dcdn/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Using this data source can open DCDN service automatically. If the service has been opened, it will return opened.
+        /// 
+        /// For information about DCDN and how to use it, see [What is DCDN](https://help.aliyun.com/document_detail/197288.html).
+        /// 
+        /// &gt; **NOTE:** Available in v1.111.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var open = AliCloud.Dcdn.GetService.Invoke(new()
+        ///     {
+        ///         Enable = "On",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceResult>("alicloud:dcdn/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());
     }
 
 

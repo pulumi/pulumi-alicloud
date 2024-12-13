@@ -168,6 +168,85 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         public static Output<GetGlobalDatabaseNetworksResult> Invoke(GetGlobalDatabaseNetworksInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGlobalDatabaseNetworksResult>("alicloud:polardb/getGlobalDatabaseNetworks:getGlobalDatabaseNetworks", args ?? new GetGlobalDatabaseNetworksInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the PolarDB Global Database Networks of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.181.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = AliCloud.PolarDB.GetNodeClasses.Invoke(new()
+        ///     {
+        ///         DbType = "MySQL",
+        ///         DbVersion = "8.0",
+        ///         PayType = "PostPaid",
+        ///         Category = "Normal",
+        ///     });
+        /// 
+        ///     var @default = new AliCloud.Vpc.Network("default", new()
+        ///     {
+        ///         VpcName = "terraform-example",
+        ///         CidrBlock = "172.16.0.0/16",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+        ///     {
+        ///         VpcId = @default.Id,
+        ///         CidrBlock = "172.16.0.0/24",
+        ///         ZoneId = @this.Apply(@this =&gt; @this.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.ZoneId)),
+        ///         VswitchName = "terraform-example",
+        ///     });
+        /// 
+        ///     var cluster = new AliCloud.PolarDB.Cluster("cluster", new()
+        ///     {
+        ///         DbType = "MySQL",
+        ///         DbVersion = "8.0",
+        ///         PayType = "PostPaid",
+        ///         DbNodeCount = 2,
+        ///         DbNodeClass = @this.Apply(@this =&gt; @this.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.SupportedEngines[0]?.AvailableResources[0]?.DbNodeClass)),
+        ///         VswitchId = defaultSwitch.Id,
+        ///     });
+        /// 
+        ///     var defaultGlobalDatabaseNetwork = new AliCloud.PolarDB.GlobalDatabaseNetwork("default", new()
+        ///     {
+        ///         DbClusterId = cluster.Id,
+        ///         Description = cluster.Id,
+        ///     });
+        /// 
+        ///     var ids = AliCloud.PolarDB.GetGlobalDatabaseNetworks.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultGlobalDatabaseNetwork.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     var description = AliCloud.PolarDB.GetGlobalDatabaseNetworks.Invoke(new()
+        ///     {
+        ///         Description = defaultGlobalDatabaseNetwork.Description,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["polardbGlobalDatabaseNetworkId1"] = ids.Apply(getGlobalDatabaseNetworksResult =&gt; getGlobalDatabaseNetworksResult.Networks[0]?.Id),
+        ///         ["polardbGlobalDatabaseNetworkId2"] = description.Apply(getGlobalDatabaseNetworksResult =&gt; getGlobalDatabaseNetworksResult.Networks[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetGlobalDatabaseNetworksResult> Invoke(GetGlobalDatabaseNetworksInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGlobalDatabaseNetworksResult>("alicloud:polardb/getGlobalDatabaseNetworks:getGlobalDatabaseNetworks", args ?? new GetGlobalDatabaseNetworksInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -80,6 +80,41 @@ namespace Pulumi.AliCloud.Hbr
         /// </summary>
         public static Output<GetHanaInstancesResult> Invoke(GetHanaInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHanaInstancesResult>("alicloud:hbr/getHanaInstances:getHanaInstances", args ?? new GetHanaInstancesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Hbr Hana Instances of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.178.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Hbr.GetHanaInstances.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["hbrHanaInstanceId1"] = ids.Apply(getHanaInstancesResult =&gt; getHanaInstancesResult.Instances[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetHanaInstancesResult> Invoke(GetHanaInstancesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetHanaInstancesResult>("alicloud:hbr/getHanaInstances:getHanaInstances", args ?? new GetHanaInstancesInvokeArgs(), options.WithDefaults());
     }
 
 

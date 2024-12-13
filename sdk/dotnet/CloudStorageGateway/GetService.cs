@@ -66,6 +66,34 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// </summary>
         public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceResult>("alicloud:cloudstoragegateway/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Using this data source can open Cloud Storage Gateway service automatically. If the service has been opened, it will return opened.
+        /// 
+        /// For information about Cloud Storage Gateway and how to use it, see [What is Cloud Storage Gateway](https://www.alibabacloud.com/help/en/product/53923.htm).
+        /// 
+        /// &gt; **NOTE:** Available in v1.117.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var open = AliCloud.CloudStorageGateway.GetService.Invoke(new()
+        ///     {
+        ///         Enable = "On",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceResult>("alicloud:cloudstoragegateway/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());
     }
 
 

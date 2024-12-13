@@ -146,6 +146,74 @@ namespace Pulumi.AliCloud.Hbr
         /// </summary>
         public static Output<GetSnapshotsResult> Invoke(GetSnapshotsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSnapshotsResult>("alicloud:hbr/getSnapshots:getSnapshots", args ?? new GetSnapshotsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Hbr Snapshots of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.133.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Hbr.GetEcsBackupPlans.Invoke(new()
+        ///     {
+        ///         NameRegex = "plan-tf-used-dont-delete",
+        ///     });
+        /// 
+        ///     var defaultGetOssBackupPlans = AliCloud.Hbr.GetOssBackupPlans.Invoke(new()
+        ///     {
+        ///         NameRegex = "plan-tf-used-dont-delete",
+        ///     });
+        /// 
+        ///     var defaultGetNasBackupPlans = AliCloud.Hbr.GetNasBackupPlans.Invoke(new()
+        ///     {
+        ///         NameRegex = "plan-tf-used-dont-delete",
+        ///     });
+        /// 
+        ///     var ecsSnapshots = AliCloud.Hbr.GetSnapshots.Invoke(new()
+        ///     {
+        ///         SourceType = "ECS_FILE",
+        ///         VaultId = @default.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.VaultId),
+        ///         InstanceId = @default.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.InstanceId),
+        ///     });
+        /// 
+        ///     var ossSnapshots = AliCloud.Hbr.GetSnapshots.Invoke(new()
+        ///     {
+        ///         SourceType = "OSS",
+        ///         VaultId = defaultGetOssBackupPlans.Apply(getOssBackupPlansResult =&gt; getOssBackupPlansResult.Plans[0]?.VaultId),
+        ///         Bucket = defaultGetOssBackupPlans.Apply(getOssBackupPlansResult =&gt; getOssBackupPlansResult.Plans[0]?.Bucket),
+        ///         CompleteTime = "2021-07-20T14:17:15CST,2021-07-24T14:17:15CST",
+        ///         CompleteTimeChecker = "BETWEEN",
+        ///     });
+        /// 
+        ///     var nasSnapshots = AliCloud.Hbr.GetSnapshots.Invoke(new()
+        ///     {
+        ///         SourceType = "NAS",
+        ///         VaultId = defaultGetNasBackupPlans.Apply(getNasBackupPlansResult =&gt; getNasBackupPlansResult.Plans[0]?.VaultId),
+        ///         FileSystemId = defaultGetNasBackupPlans.Apply(getNasBackupPlansResult =&gt; getNasBackupPlansResult.Plans[0]?.FileSystemId),
+        ///         CreateTime = defaultGetNasBackupPlans.Apply(getNasBackupPlansResult =&gt; getNasBackupPlansResult.Plans[0]?.CreateTime),
+        ///         CompleteTime = "2021-08-23T14:17:15CST",
+        ///         CompleteTimeChecker = "GREATER_THAN_OR_EQUAL",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["hbrSnapshotId1"] = nasSnapshots.Apply(getSnapshotsResult =&gt; getSnapshotsResult.Snapshots[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSnapshotsResult> Invoke(GetSnapshotsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSnapshotsResult>("alicloud:hbr/getSnapshots:getSnapshots", args ?? new GetSnapshotsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -29,6 +29,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class OtsFunctions {
@@ -165,6 +166,51 @@ public final class OtsFunctions {
      * 
      */
     public static Output<GetInstanceAttachmentsResult> getInstanceAttachments(GetInstanceAttachmentsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ots/getInstanceAttachments:getInstanceAttachments", TypeShape.of(GetInstanceAttachmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ots instance attachments of the current Alibaba Cloud user.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.ots.inputs.GetInstanceAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var attachmentsDs = OtsFunctions.getInstanceAttachments(GetInstanceAttachmentsArgs.builder()
+     *             .instanceName("sample-instance")
+     *             .nameRegex("testvpc")
+     *             .outputFile("attachments.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstOtsAttachmentId", attachmentsDs.applyValue(getInstanceAttachmentsResult -> getInstanceAttachmentsResult.attachments()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInstanceAttachmentsResult> getInstanceAttachments(GetInstanceAttachmentsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:ots/getInstanceAttachments:getInstanceAttachments", TypeShape.of(GetInstanceAttachmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -479,6 +525,51 @@ public final class OtsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ots/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ots instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.40.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.ots.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instancesDs = OtsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .outputFile("instances.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ots/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
@@ -513,6 +604,17 @@ public final class OtsFunctions {
      * 
      */
     public static Output<GetSearchIndexesResult> getSearchIndexes(GetSearchIndexesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ots/getSearchIndexes:getSearchIndexes", TypeShape.of(GetSearchIndexesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ots search index of the current Alibaba Cloud user.
+     * 
+     * For information about OTS search index and how to use it, see [Search index overview](https://www.alibabacloud.com/help/en/tablestore/latest/search-index-overview).
+     * 
+     * &gt; **NOTE:** Available in v1.187.0+.
+     * 
+     */
+    public static Output<GetSearchIndexesResult> getSearchIndexes(GetSearchIndexesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:ots/getSearchIndexes:getSearchIndexes", TypeShape.of(GetSearchIndexesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -563,6 +665,19 @@ public final class OtsFunctions {
      * 
      */
     public static Output<GetSecondaryIndexesResult> getSecondaryIndexes(GetSecondaryIndexesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ots/getSecondaryIndexes:getSecondaryIndexes", TypeShape.of(GetSecondaryIndexesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ots secondary index of the current Alibaba Cloud user.
+     * 
+     * For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
+     * 
+     * &gt; **NOTE:** Available in v1.187.0+.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetSecondaryIndexesResult> getSecondaryIndexes(GetSecondaryIndexesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:ots/getSecondaryIndexes:getSecondaryIndexes", TypeShape.of(GetSecondaryIndexesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -851,6 +966,52 @@ public final class OtsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ots/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Using this data source can enable Table Staore service automatically. If the service has been enabled, it will return `Opened`.
+     * 
+     * For information about Table Staore and how to use it, see [What is Table Staore](https://www.alibabacloud.com/help/product/27278.htm).
+     * 
+     * &gt; **NOTE:** Available in v1.97.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.ots.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = OtsFunctions.getService(GetServiceArgs.builder()
+     *             .enable("On")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ots/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
     }
@@ -885,6 +1046,17 @@ public final class OtsFunctions {
      * 
      */
     public static Output<GetTablesResult> getTables(GetTablesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ots/getTables:getTables", TypeShape.of(GetTablesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ots tables of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.40.0+.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetTablesResult> getTables(GetTablesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:ots/getTables:getTables", TypeShape.of(GetTablesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1046,6 +1218,56 @@ public final class OtsFunctions {
      * 
      */
     public static Output<GetTunnelsResult> getTunnels(GetTunnelsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ots/getTunnels:getTunnels", TypeShape.of(GetTunnelsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ots tunnels of the current Alibaba Cloud user.
+     * 
+     * For information about OTS tunnel and how to use it, see [Tunnel overview](https://www.alibabacloud.com/help/en/tablestore/latest/tunnel-service-overview).
+     * 
+     * &gt; **NOTE:** Available in v1.172.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.ots.inputs.GetTunnelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tunnelsDs = OtsFunctions.getTunnels(GetTunnelsArgs.builder()
+     *             .instanceName("sample-instance")
+     *             .tableName("sample-table")
+     *             .nameRegex("sample-tunnel")
+     *             .outputFile("tunnels.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstTunnelId", tunnelsDs.applyValue(getTunnelsResult -> getTunnelsResult.tunnels()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTunnelsResult> getTunnels(GetTunnelsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:ots/getTunnels:getTunnels", TypeShape.of(GetTunnelsResult.class), args, Utilities.withVersion(options));
     }
     /**

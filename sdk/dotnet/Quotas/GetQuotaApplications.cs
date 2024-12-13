@@ -106,6 +106,54 @@ namespace Pulumi.AliCloud.Quotas
         /// </summary>
         public static Output<GetQuotaApplicationsResult> Invoke(GetQuotaApplicationsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetQuotaApplicationsResult>("alicloud:quotas/getQuotaApplications:getQuotaApplications", args ?? new GetQuotaApplicationsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Quotas Quota Applications of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.117.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var defaultQuotaApplication = new AliCloud.Quotas.QuotaApplication("default", new()
+        ///     {
+        ///         ProductCode = "vpc",
+        ///         NoticeType = 3,
+        ///         EffectiveTime = "2023-05-22T16:00:00Z",
+        ///         ExpireTime = "2024-09-15T00:08:32Z",
+        ///         DesireValue = 1,
+        ///         Reason = "",
+        ///         QuotaActionCode = "vpc_whitelist/ha_vip_whitelist",
+        ///         AuditMode = "Sync",
+        ///         EnvLanguage = "zh",
+        ///         QuotaCategory = "WhiteListLabel",
+        ///     });
+        /// 
+        ///     var @default = AliCloud.Quotas.GetQuotaApplications.Invoke(new()
+        ///     {
+        ///         ProductCode = "vpc",
+        ///         EnableDetails = true,
+        ///         QuotaCategory = defaultQuotaApplication.QuotaCategory,
+        ///         Ids = new[]
+        ///         {
+        ///             defaultQuotaApplication.Id,
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetQuotaApplicationsResult> Invoke(GetQuotaApplicationsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetQuotaApplicationsResult>("alicloud:quotas/getQuotaApplications:getQuotaApplications", args ?? new GetQuotaApplicationsInvokeArgs(), options.WithDefaults());
     }
 
 

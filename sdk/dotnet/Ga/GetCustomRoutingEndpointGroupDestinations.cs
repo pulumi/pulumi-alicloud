@@ -82,6 +82,42 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         public static Output<GetCustomRoutingEndpointGroupDestinationsResult> Invoke(GetCustomRoutingEndpointGroupDestinationsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCustomRoutingEndpointGroupDestinationsResult>("alicloud:ga/getCustomRoutingEndpointGroupDestinations:getCustomRoutingEndpointGroupDestinations", args ?? new GetCustomRoutingEndpointGroupDestinationsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Global Accelerator (GA) Custom Routing Endpoint Group Destinations of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in 1.197.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Ga.GetCustomRoutingEndpointGroupDestinations.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         AcceleratorId = "your_accelerator_id",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["gaCustomRoutingEndpointGroupDestinationsId1"] = ids.Apply(getCustomRoutingEndpointGroupDestinationsResult =&gt; getCustomRoutingEndpointGroupDestinationsResult.CustomRoutingEndpointGroupDestinations[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetCustomRoutingEndpointGroupDestinationsResult> Invoke(GetCustomRoutingEndpointGroupDestinationsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCustomRoutingEndpointGroupDestinationsResult>("alicloud:ga/getCustomRoutingEndpointGroupDestinations:getCustomRoutingEndpointGroupDestinations", args ?? new GetCustomRoutingEndpointGroupDestinationsInvokeArgs(), options.WithDefaults());
     }
 
 

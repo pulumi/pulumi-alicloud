@@ -70,6 +70,36 @@ namespace Pulumi.AliCloud.ResourceManager
         /// </summary>
         public static Output<GetRolesResult> Invoke(GetRolesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRolesResult>("alicloud:resourcemanager/getRoles:getRoles", args ?? new GetRolesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Resource Manager Roles of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:**  Available in 1.86.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.ResourceManager.GetRoles.Invoke(new()
+        ///     {
+        ///         NameRegex = "tftest",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRoleId"] = example.Apply(getRolesResult =&gt; getRolesResult.Roles[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRolesResult> Invoke(GetRolesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRolesResult>("alicloud:resourcemanager/getRoles:getRoles", args ?? new GetRolesInvokeArgs(), options.WithDefaults());
     }
 
 

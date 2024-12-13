@@ -78,21 +78,11 @@ type GetWafPoliciesResult struct {
 }
 
 func GetWafPoliciesOutput(ctx *pulumi.Context, args GetWafPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetWafPoliciesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetWafPoliciesResultOutput, error) {
 			args := v.(GetWafPoliciesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetWafPoliciesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:dcdn/getWafPolicies:getWafPolicies", args, &rv, "", opts...)
-			if err != nil {
-				return GetWafPoliciesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetWafPoliciesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetWafPoliciesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:dcdn/getWafPolicies:getWafPolicies", args, GetWafPoliciesResultOutput{}, options).(GetWafPoliciesResultOutput), nil
 		}).(GetWafPoliciesResultOutput)
 }
 

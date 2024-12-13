@@ -156,6 +156,79 @@ namespace Pulumi.AliCloud.Governance
         /// </summary>
         public static Output<GetBaselinesResult> Invoke(GetBaselinesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBaselinesResult>("alicloud:governance/getBaselines:getBaselines", args ?? new GetBaselinesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides Governance Baseline available to the user.[What is Baseline](https://next.api.aliyun.com/document/governance/2021-01-20/CreateAccountFactoryBaseline)
+        /// 
+        /// &gt; **NOTE:** Available since v1.228.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using System.Text.Json;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// using Random = Pulumi.Random;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform_example";
+        ///     var defaultInteger = new Random.Index.Integer("default", new()
+        ///     {
+        ///         Min = 10000,
+        ///         Max = 99999,
+        ///     });
+        /// 
+        ///     var itemPasswordPolicy = config.Get("itemPasswordPolicy") ?? "ACS-BP_ACCOUNT_FACTORY_RAM_USER_PASSWORD_POLICY";
+        ///     var itemServices = config.Get("itemServices") ?? "ACS-BP_ACCOUNT_FACTORY_SUBSCRIBE_SERVICES";
+        ///     var itemRamSecurity = config.Get("itemRamSecurity") ?? "ACS-BP_ACCOUNT_FACTORY_RAM_SECURITY_PREFERENCE";
+        ///     var defaultBaseline = new AliCloud.Governance.Baseline("default", new()
+        ///     {
+        ///         BaselineItems = new[]
+        ///         {
+        ///             new AliCloud.Governance.Inputs.BaselineBaselineItemArgs
+        ///             {
+        ///                 Version = "1.0",
+        ///                 Name = itemPasswordPolicy,
+        ///                 Config = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+        ///                 {
+        ///                     ["MinimumPasswordLength"] = 8,
+        ///                     ["RequireLowercaseCharacters"] = true,
+        ///                     ["RequireUppercaseCharacters"] = true,
+        ///                     ["RequireNumbers"] = true,
+        ///                     ["RequireSymbols"] = true,
+        ///                     ["MaxPasswordAge"] = 0,
+        ///                     ["HardExpiry"] = false,
+        ///                     ["PasswordReusePrevention"] = 0,
+        ///                     ["MaxLoginAttempts"] = 0,
+        ///                 }),
+        ///             },
+        ///         },
+        ///         Description = name,
+        ///         BaselineName = $"{name}-{defaultInteger.Result}",
+        ///     });
+        /// 
+        ///     var @default = AliCloud.Governance.GetBaselines.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultBaseline.Id,
+        ///         },
+        ///         NameRegex = defaultBaseline.BaselineName,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudGovernanceBaselineExampleId"] = @default.Apply(@default =&gt; @default.Apply(getBaselinesResult =&gt; getBaselinesResult.Baselines[0]?.BaselineId)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetBaselinesResult> Invoke(GetBaselinesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetBaselinesResult>("alicloud:governance/getBaselines:getBaselines", args ?? new GetBaselinesInvokeArgs(), options.WithDefaults());
     }
 
 

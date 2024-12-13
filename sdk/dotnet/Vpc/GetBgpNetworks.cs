@@ -104,6 +104,53 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public static Output<GetBgpNetworksResult> Invoke(GetBgpNetworksInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBgpNetworksResult>("alicloud:vpc/getBgpNetworks:getBgpNetworks", args ?? new GetBgpNetworksInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Vpc Bgp Networks of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.153.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Vpc.GetBgpNetworks.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value",
+        ///         },
+        ///     });
+        /// 
+        ///     var routerId = AliCloud.Vpc.GetBgpNetworks.Invoke(new()
+        ///     {
+        ///         RouterId = "example_value",
+        ///     });
+        /// 
+        ///     var status = AliCloud.Vpc.GetBgpNetworks.Invoke(new()
+        ///     {
+        ///         Status = "Available",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpcBgpNetworkId1"] = ids.Apply(getBgpNetworksResult =&gt; getBgpNetworksResult.Networks[0]?.Id),
+        ///         ["vpcBgpNetworkId2"] = routerId.Apply(getBgpNetworksResult =&gt; getBgpNetworksResult.Networks[0]?.Id),
+        ///         ["vpcBgpNetworkId3"] = status.Apply(getBgpNetworksResult =&gt; getBgpNetworksResult.Networks[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetBgpNetworksResult> Invoke(GetBgpNetworksInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetBgpNetworksResult>("alicloud:vpc/getBgpNetworks:getBgpNetworks", args ?? new GetBgpNetworksInvokeArgs(), options.WithDefaults());
     }
 
 

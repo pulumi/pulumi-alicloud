@@ -214,6 +214,108 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         public static Output<GetKubernetesVersionResult> Invoke(GetKubernetesVersionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKubernetesVersionResult>("alicloud:cs/getKubernetesVersion:getKubernetesVersion", args ?? new GetKubernetesVersionInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the details of the Kubernetes version supported by ACK.
+        /// 
+        /// &gt; **NOTE:** Available in 1.170.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Query the managed kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
+        ///     var @default = AliCloud.CS.GetKubernetesVersion.Invoke(new()
+        ///     {
+        ///         ClusterType = "ManagedKubernetes",
+        ///         KubernetesVersion = "1.22.3-aliyun.1",
+        ///         Profile = "Default",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["metadata"] = @default.Apply(@default =&gt; @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult.Metadatas)),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Query the kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
+        ///     var @default = AliCloud.CS.GetKubernetesVersion.Invoke(new()
+        ///     {
+        ///         ClusterType = "Kubernetes",
+        ///         KubernetesVersion = "1.22.3-aliyun.1",
+        ///         Profile = "Default",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["metadata"] = @default.Apply(@default =&gt; @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult.Metadatas)),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Query the serverless kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
+        ///     var @default = AliCloud.CS.GetKubernetesVersion.Invoke(new()
+        ///     {
+        ///         ClusterType = "ManagedKubernetes",
+        ///         KubernetesVersion = "1.22.3-aliyun.1",
+        ///         Profile = "Serverless",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["metadata"] = @default.Apply(@default =&gt; @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult.Metadatas)),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Query the edge kubernetes cluster metadata of version 1.20.11-aliyunedge.1 in the region specified by the client.
+        ///     var @default = AliCloud.CS.GetKubernetesVersion.Invoke(new()
+        ///     {
+        ///         ClusterType = "ManagedKubernetes",
+        ///         KubernetesVersion = "1.20.11-aliyunedge.1",
+        ///         Profile = "Edge",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["metadata"] = @default.Apply(@default =&gt; @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult.Metadatas)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetKubernetesVersionResult> Invoke(GetKubernetesVersionInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetKubernetesVersionResult>("alicloud:cs/getKubernetesVersion:getKubernetesVersion", args ?? new GetKubernetesVersionInvokeArgs(), options.WithDefaults());
     }
 
 

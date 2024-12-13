@@ -47,6 +47,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class ThreatdetectionFunctions {
@@ -395,6 +396,64 @@ public final class ThreatdetectionFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetAntiBruteForceRulesResult> getAntiBruteForceRules(GetAntiBruteForceRulesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:threatdetection/getAntiBruteForceRules:getAntiBruteForceRules", TypeShape.of(GetAntiBruteForceRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Threat Detection Anti Brute Force Rule available to the user.[What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-createantibruteforcerule)
+     * 
+     * &gt; **NOTE:** Available since v1.195.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.AntiBruteForceRule;
+     * import com.pulumi.alicloud.threatdetection.AntiBruteForceRuleArgs;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetAntiBruteForceRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("example_value");
+     *         var defaultAntiBruteForceRule = new AntiBruteForceRule("defaultAntiBruteForceRule", AntiBruteForceRuleArgs.builder()
+     *             .antiBruteForceRuleName(name)
+     *             .forbiddenTime(360)
+     *             .uuidLists("7567806c-4ec5-4597-9543-7c9543381a13")
+     *             .failCount(80)
+     *             .span(10)
+     *             .build());
+     * 
+     *         final var default = ThreatdetectionFunctions.getAntiBruteForceRules(GetAntiBruteForceRulesArgs.builder()
+     *             .ids(defaultAntiBruteForceRule.id())
+     *             .nameRegex(defaultAntiBruteForceRule.name())
+     *             .build());
+     * 
+     *         ctx.export("alicloudThreatDetectionAntiBruteForceRuleExampleId", default_.applyValue(default_ -> default_.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAntiBruteForceRulesResult> getAntiBruteForceRulesPlain(GetAntiBruteForceRulesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:threatdetection/getAntiBruteForceRules:getAntiBruteForceRules", TypeShape.of(GetAntiBruteForceRulesResult.class), args, Utilities.withVersion(options));
     }
@@ -611,6 +670,49 @@ public final class ThreatdetectionFunctions {
      * 
      */
     public static Output<GetAssetsResult> getAssets(GetAssetsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:threatdetection/getAssets:getAssets", TypeShape.of(GetAssetsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Threat Detection Asset available to the user.[What is Asset](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describecloudcenterinstances)
+     * 
+     * &gt; **NOTE:** Available since v1.195.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetAssetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ThreatdetectionFunctions.getAssets();
+     * 
+     *         ctx.export("alicloudThreatDetectionAssetExampleId", default_.assets()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAssetsResult> getAssets(GetAssetsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:threatdetection/getAssets:getAssets", TypeShape.of(GetAssetsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -914,6 +1016,58 @@ public final class ThreatdetectionFunctions {
      * 
      */
     public static Output<GetBackupPoliciesResult> getBackupPolicies(GetBackupPoliciesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:threatdetection/getBackupPolicies:getBackupPolicies", TypeShape.of(GetBackupPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Threat Detection Backup Policies of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.195.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetBackupPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ThreatdetectionFunctions.getBackupPolicies(GetBackupPoliciesArgs.builder()
+     *             .ids("example_id")
+     *             .build());
+     * 
+     *         ctx.export("threatDetectionBackupPoliciesId1", ids.applyValue(getBackupPoliciesResult -> getBackupPoliciesResult.policies()[0].id()));
+     *         final var nameRegex = ThreatdetectionFunctions.getBackupPolicies(GetBackupPoliciesArgs.builder()
+     *             .nameRegex("tf-example")
+     *             .build());
+     * 
+     *         ctx.export("threatDetectionBackupPoliciesId2", nameRegex.applyValue(getBackupPoliciesResult -> getBackupPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetBackupPoliciesResult> getBackupPolicies(GetBackupPoliciesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:threatdetection/getBackupPolicies:getBackupPolicies", TypeShape.of(GetBackupPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1319,6 +1473,65 @@ public final class ThreatdetectionFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetBaselineStrategiesResult> getBaselineStrategies(GetBaselineStrategiesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:threatdetection/getBaselineStrategies:getBaselineStrategies", TypeShape.of(GetBaselineStrategiesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.BaselineStrategy;
+     * import com.pulumi.alicloud.threatdetection.BaselineStrategyArgs;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetBaselineStrategiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultBaselineStrategy = new BaselineStrategy("defaultBaselineStrategy", BaselineStrategyArgs.builder()
+     *             .customType("custom")
+     *             .endTime("08:00:00")
+     *             .baselineStrategyName("apispec")
+     *             .cycleDays(3)
+     *             .targetType("groupId")
+     *             .startTime("05:00:00")
+     *             .riskSubTypeName("hc_exploit_redis")
+     *             .build());
+     * 
+     *         final var default = ThreatdetectionFunctions.getBaselineStrategies(GetBaselineStrategiesArgs.builder()
+     *             .ids(defaultBaselineStrategy.id())
+     *             .nameRegex(defaultBaselineStrategy.name())
+     *             .customType("custom")
+     *             .build());
+     * 
+     *         ctx.export("alicloudThreatDetectionBaselineStrategyExampleId", defaultAlicloudThreatDetectionBaselineStrategys.strategys()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetBaselineStrategiesResult> getBaselineStrategiesPlain(GetBaselineStrategiesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:threatdetection/getBaselineStrategies:getBaselineStrategies", TypeShape.of(GetBaselineStrategiesResult.class), args, Utilities.withVersion(options));
     }
@@ -1565,6 +1778,55 @@ public final class ThreatdetectionFunctions {
      * 
      */
     public static Output<GetHoneyPotsResult> getHoneyPots(GetHoneyPotsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:threatdetection/getHoneyPots:getHoneyPots", TypeShape.of(GetHoneyPotsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Threat Detection Honey Pot available to the user.[What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypot)
+     * 
+     * &gt; **NOTE:** Available since v1.195.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetHoneyPotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ThreatdetectionFunctions.getHoneyPots(GetHoneyPotsArgs.builder()
+     *             .ids("xxxx")
+     *             .honeypotName("tf-example")
+     *             .nodeId("a44e1ab3-6945-444c-889d-5bacee7056e8")
+     *             .build());
+     * 
+     *         ctx.export("alicloudThreatDetectionHoneyPotExampleId", default_.pots()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetHoneyPotsResult> getHoneyPots(GetHoneyPotsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:threatdetection/getHoneyPots:getHoneyPots", TypeShape.of(GetHoneyPotsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1889,6 +2151,52 @@ public final class ThreatdetectionFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetHoneypotImagesResult> getHoneypotImages(GetHoneypotImagesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:threatdetection/getHoneypotImages:getHoneypotImages", TypeShape.of(GetHoneypotImagesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-listavailablehoneypot)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ThreatdetectionFunctions.getHoneypotImages(GetHoneypotImagesArgs.builder()
+     *             .ids("sha256:02882320c9a55303410127c5dc4ae2dc470150f9d7f2483102d994f5e5f4d9df")
+     *             .nameRegex("^meta")
+     *             .build());
+     * 
+     *         ctx.export("alicloudThreatDetectionHoneypotImageExampleId", default_.images()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetHoneypotImagesResult> getHoneypotImagesPlain(GetHoneypotImagesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:threatdetection/getHoneypotImages:getHoneypotImages", TypeShape.of(GetHoneypotImagesResult.class), args, Utilities.withVersion(options));
     }
@@ -2115,6 +2423,51 @@ public final class ThreatdetectionFunctions {
      * 
      */
     public static Output<GetHoneypotNodesResult> getHoneypotNodes(GetHoneypotNodesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:threatdetection/getHoneypotNodes:getHoneypotNodes", TypeShape.of(GetHoneypotNodesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Threat Detection Honeypot Node available to the user.[What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotnode)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotNodesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ThreatdetectionFunctions.getHoneypotNodes(GetHoneypotNodesArgs.builder()
+     *             .ids(defaultAlicloudThreatDetectionHoneypotNode.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudThreatDetectionHoneypotNodeExampleId", default_.nodes()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetHoneypotNodesResult> getHoneypotNodes(GetHoneypotNodesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:threatdetection/getHoneypotNodes:getHoneypotNodes", TypeShape.of(GetHoneypotNodesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2400,6 +2753,54 @@ public final class ThreatdetectionFunctions {
      * 
      */
     public static Output<GetHoneypotPresetsResult> getHoneypotPresets(GetHoneypotPresetsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:threatdetection/getHoneypotPresets:getHoneypotPresets", TypeShape.of(GetHoneypotPresetsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Threat Detection Honeypot Preset available to the user.
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotPresetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ThreatdetectionFunctions.getHoneypotPresets(GetHoneypotPresetsArgs.builder()
+     *             .ids(defaultAlicloudThreatDetectionHoneypotPreset.id())
+     *             .honeypotImageName("shiro")
+     *             .nodeId("example_value")
+     *             .presetName("apiapec_test")
+     *             .build());
+     * 
+     *         ctx.export("alicloudThreatDetectionHoneypotPresetExampleId", default_.presets()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetHoneypotPresetsResult> getHoneypotPresets(GetHoneypotPresetsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:threatdetection/getHoneypotPresets:getHoneypotPresets", TypeShape.of(GetHoneypotPresetsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2861,6 +3262,75 @@ public final class ThreatdetectionFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetHoneypotProbesResult> getHoneypotProbes(GetHoneypotProbesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:threatdetection/getHoneypotProbes:getHoneypotProbes", TypeShape.of(GetHoneypotProbesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotprobe)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.HoneypotProbe;
+     * import com.pulumi.alicloud.threatdetection.HoneypotProbeArgs;
+     * import com.pulumi.alicloud.threatdetection.inputs.HoneypotProbeHoneypotBindListArgs;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotProbesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("tf-testAccThreatDetectionHoneypotProbe");
+     *         var defaultHoneypotProbe = new HoneypotProbe("defaultHoneypotProbe", HoneypotProbeArgs.builder()
+     *             .uuid("e52c7872-29d1-4aa1-9908-0299abd53606")
+     *             .probeType("host_probe")
+     *             .controlNodeId("e1397077-4941-4b14-b533-ca2bdebd00a3")
+     *             .ping(true)
+     *             .honeypotBindLists(HoneypotProbeHoneypotBindListArgs.builder()
+     *                 .bindPortLists(HoneypotProbeHoneypotBindListBindPortListArgs.builder()
+     *                     .startPort(80)
+     *                     .endPort(80)
+     *                     .build())
+     *                 .honeypotId("4925bf9784de992ecd017ad051528a03b3927ef814eeff76c2ebb3ab9a84bf05")
+     *                 .build())
+     *             .displayName(name)
+     *             .arp(true)
+     *             .build());
+     * 
+     *         final var default = ThreatdetectionFunctions.getHoneypotProbes(GetHoneypotProbesArgs.builder()
+     *             .ids(defaultHoneypotProbe.id())
+     *             .displayName(name)
+     *             .probeType("host_probe")
+     *             .enableDetails(true)
+     *             .build());
+     * 
+     *         ctx.export("alicloudThreatDetectionHoneypotProbeExampleId", default_.applyValue(default_ -> default_.probes()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetHoneypotProbesResult> getHoneypotProbesPlain(GetHoneypotProbesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:threatdetection/getHoneypotProbes:getHoneypotProbes", TypeShape.of(GetHoneypotProbesResult.class), args, Utilities.withVersion(options));
     }
@@ -3087,6 +3557,51 @@ public final class ThreatdetectionFunctions {
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:threatdetection/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Threat Detection Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/security-center/latest/what-is-security-center)
+     * 
+     * &gt; **NOTE:** Available in 1.199.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ThreatdetectionFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(defaultAlicloudThreatDetectionInstance.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudThreatDetectionInstanceExampleId", default_.instances()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:threatdetection/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -3419,6 +3934,54 @@ public final class ThreatdetectionFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetLogShipperResult> getLogShipper(GetLogShipperArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:threatdetection/getLogShipper:getLogShipper", TypeShape.of(GetLogShipperResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Using this data source can open Threat Detection Log Shipper automatically. If the service has been enabled, it will return `Opened`.
+     * 
+     * For information about Threat Detection Log Shipper and how to use it, see [What is Log Shipper](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifyopenlogshipper).
+     * 
+     * &gt; **NOTE:** Available in v1.195.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetLogShipperArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = ThreatdetectionFunctions.getLogShipper(GetLogShipperArgs.builder()
+     *             .enable("On")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetLogShipperResult> getLogShipperPlain(GetLogShipperPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:threatdetection/getLogShipper:getLogShipper", TypeShape.of(GetLogShipperResult.class), args, Utilities.withVersion(options));
     }
@@ -3701,6 +4264,53 @@ public final class ThreatdetectionFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetVulWhitelistsResult> getVulWhitelists(GetVulWhitelistsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:threatdetection/getVulWhitelists:getVulWhitelists", TypeShape.of(GetVulWhitelistsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Threat Detection Vul Whitelists of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.195.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetVulWhitelistsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ThreatdetectionFunctions.getVulWhitelists(GetVulWhitelistsArgs.builder()
+     *             .ids("example_id")
+     *             .build());
+     * 
+     *         ctx.export("alicloudThreatDetectionVulWhitelistExampleId", default_.whitelists()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetVulWhitelistsResult> getVulWhitelistsPlain(GetVulWhitelistsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:threatdetection/getVulWhitelists:getVulWhitelists", TypeShape.of(GetVulWhitelistsResult.class), args, Utilities.withVersion(options));
     }
@@ -3927,6 +4537,51 @@ public final class ThreatdetectionFunctions {
      * 
      */
     public static Output<GetWebLockConfigsResult> getWebLockConfigs(GetWebLockConfigsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:threatdetection/getWebLockConfigs:getWebLockConfigs", TypeShape.of(GetWebLockConfigsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Threat Detection Web Lock Config available to the user.[What is Web Lock Config](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-describeweblockconfiglist)
+     * 
+     * &gt; **NOTE:** Available since v1.195.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetWebLockConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ThreatdetectionFunctions.getWebLockConfigs(GetWebLockConfigsArgs.builder()
+     *             .ids(defaultAlicloudThreatDetectionWebLockConfig.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudThreatDetectionWebLockConfigExampleId", default_.configs()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetWebLockConfigsResult> getWebLockConfigs(GetWebLockConfigsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:threatdetection/getWebLockConfigs:getWebLockConfigs", TypeShape.of(GetWebLockConfigsResult.class), args, Utilities.withVersion(options));
     }
     /**

@@ -66,6 +66,34 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public static Output<GetTransitRouterServiceResult> Invoke(GetTransitRouterServiceInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterServiceResult>("alicloud:cen/getTransitRouterService:getTransitRouterService", args ?? new GetTransitRouterServiceInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Using this data source can open CEN Transit Router Service automatically. If the service has been opened, it will return opened.
+        /// 
+        /// For information about CEN and how to use it, see [What is CEN](https://www.alibabacloud.com/help/en/doc-detail/59870.htm).
+        /// 
+        /// &gt; **NOTE:** Available since v1.139.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var open = AliCloud.Cen.GetTransitRouterService.Invoke(new()
+        ///     {
+        ///         Enable = "On",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTransitRouterServiceResult> Invoke(GetTransitRouterServiceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterServiceResult>("alicloud:cen/getTransitRouterService:getTransitRouterService", args ?? new GetTransitRouterServiceInvokeArgs(), options.WithDefaults());
     }
 
 

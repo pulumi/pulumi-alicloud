@@ -74,6 +74,38 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// </summary>
         public static Output<GetStocksResult> Invoke(GetStocksInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetStocksResult>("alicloud:cloudstoragegateway/getStocks:getStocks", args ?? new GetStocksInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Cloud Storage Gateway Stocks of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.144.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.CloudStorageGateway.GetStocks.Invoke(new()
+        ///     {
+        ///         GatewayClass = "Advanced",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["zoneId"] = @default.Apply(@default =&gt; @default.Apply(getStocksResult =&gt; getStocksResult.Stocks[0]?.ZoneId)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetStocksResult> Invoke(GetStocksInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetStocksResult>("alicloud:cloudstoragegateway/getStocks:getStocks", args ?? new GetStocksInvokeArgs(), options.WithDefaults());
     }
 
 

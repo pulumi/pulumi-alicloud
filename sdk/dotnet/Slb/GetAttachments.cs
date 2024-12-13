@@ -66,6 +66,34 @@ namespace Pulumi.AliCloud.Slb
         /// </summary>
         public static Output<GetAttachmentsResult> Invoke(GetAttachmentsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAttachmentsResult>("alicloud:slb/getAttachments:getAttachments", args ?? new GetAttachmentsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the server load balancer attachments of the current Alibaba Cloud user.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var sampleDs = AliCloud.Slb.GetAttachments.Invoke(new()
+        ///     {
+        ///         LoadBalancerId = sampleSlb.Id,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstSlbAttachmentInstanceId"] = sampleDs.Apply(getAttachmentsResult =&gt; getAttachmentsResult.SlbAttachments[0]?.InstanceId),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAttachmentsResult> Invoke(GetAttachmentsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAttachmentsResult>("alicloud:slb/getAttachments:getAttachments", args ?? new GetAttachmentsInvokeArgs(), options.WithDefaults());
     }
 
 

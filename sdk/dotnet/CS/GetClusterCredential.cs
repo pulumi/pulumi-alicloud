@@ -30,6 +30,16 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         public static Output<GetClusterCredentialResult> Invoke(GetClusterCredentialInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClusterCredentialResult>("alicloud:cs/getClusterCredential:getClusterCredential", args ?? new GetClusterCredentialInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides Container Service cluster credential on Alibaba Cloud.
+        /// 
+        /// &gt; **NOTE:** Available since v1.187.0
+        /// 
+        /// &gt; **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
+        /// </summary>
+        public static Output<GetClusterCredentialResult> Invoke(GetClusterCredentialInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetClusterCredentialResult>("alicloud:cs/getClusterCredential:getClusterCredential", args ?? new GetClusterCredentialInvokeArgs(), options.WithDefaults());
     }
 
 

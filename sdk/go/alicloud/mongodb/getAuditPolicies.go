@@ -71,21 +71,11 @@ type GetAuditPoliciesResult struct {
 }
 
 func GetAuditPoliciesOutput(ctx *pulumi.Context, args GetAuditPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetAuditPoliciesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAuditPoliciesResultOutput, error) {
 			args := v.(GetAuditPoliciesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetAuditPoliciesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:mongodb/getAuditPolicies:getAuditPolicies", args, &rv, "", opts...)
-			if err != nil {
-				return GetAuditPoliciesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetAuditPoliciesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetAuditPoliciesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:mongodb/getAuditPolicies:getAuditPolicies", args, GetAuditPoliciesResultOutput{}, options).(GetAuditPoliciesResultOutput), nil
 		}).(GetAuditPoliciesResultOutput)
 }
 

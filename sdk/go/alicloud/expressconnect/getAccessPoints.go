@@ -87,21 +87,11 @@ type GetAccessPointsResult struct {
 }
 
 func GetAccessPointsOutput(ctx *pulumi.Context, args GetAccessPointsOutputArgs, opts ...pulumi.InvokeOption) GetAccessPointsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAccessPointsResultOutput, error) {
 			args := v.(GetAccessPointsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetAccessPointsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:expressconnect/getAccessPoints:getAccessPoints", args, &rv, "", opts...)
-			if err != nil {
-				return GetAccessPointsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetAccessPointsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetAccessPointsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:expressconnect/getAccessPoints:getAccessPoints", args, GetAccessPointsResultOutput{}, options).(GetAccessPointsResultOutput), nil
 		}).(GetAccessPointsResultOutput)
 }
 

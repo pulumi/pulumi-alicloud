@@ -74,6 +74,38 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         public static Output<GetEndpointGroupIpAddressCidrBlocksResult> Invoke(GetEndpointGroupIpAddressCidrBlocksInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEndpointGroupIpAddressCidrBlocksResult>("alicloud:ga/getEndpointGroupIpAddressCidrBlocks:getEndpointGroupIpAddressCidrBlocks", args ?? new GetEndpointGroupIpAddressCidrBlocksInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Global Accelerator (GA) Endpoint Group Ip Address Cidr Blocks of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.213.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Ga.GetEndpointGroupIpAddressCidrBlocks.Invoke(new()
+        ///     {
+        ///         EndpointGroupRegion = "cn-hangzhou",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["gaEndpointGroupIpAddressCidrBlocksEndpointGroupRegion"] = @default.Apply(@default =&gt; @default.Apply(getEndpointGroupIpAddressCidrBlocksResult =&gt; getEndpointGroupIpAddressCidrBlocksResult.EndpointGroupIpAddressCidrBlocks[0]?.EndpointGroupRegion)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetEndpointGroupIpAddressCidrBlocksResult> Invoke(GetEndpointGroupIpAddressCidrBlocksInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetEndpointGroupIpAddressCidrBlocksResult>("alicloud:ga/getEndpointGroupIpAddressCidrBlocks:getEndpointGroupIpAddressCidrBlocks", args ?? new GetEndpointGroupIpAddressCidrBlocksInvokeArgs(), options.WithDefaults());
     }
 
 

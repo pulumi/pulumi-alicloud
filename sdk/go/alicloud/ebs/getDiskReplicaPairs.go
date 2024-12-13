@@ -77,21 +77,11 @@ type GetDiskReplicaPairsResult struct {
 }
 
 func GetDiskReplicaPairsOutput(ctx *pulumi.Context, args GetDiskReplicaPairsOutputArgs, opts ...pulumi.InvokeOption) GetDiskReplicaPairsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDiskReplicaPairsResultOutput, error) {
 			args := v.(GetDiskReplicaPairsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetDiskReplicaPairsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:ebs/getDiskReplicaPairs:getDiskReplicaPairs", args, &rv, "", opts...)
-			if err != nil {
-				return GetDiskReplicaPairsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetDiskReplicaPairsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetDiskReplicaPairsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:ebs/getDiskReplicaPairs:getDiskReplicaPairs", args, GetDiskReplicaPairsResultOutput{}, options).(GetDiskReplicaPairsResultOutput), nil
 		}).(GetDiskReplicaPairsResultOutput)
 }
 

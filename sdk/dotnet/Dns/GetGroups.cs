@@ -68,6 +68,35 @@ namespace Pulumi.AliCloud.Dns
         /// </summary>
         public static Output<GetGroupsResult> Invoke(GetGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupsResult>("alicloud:dns/getGroups:getGroups", args ?? new GetGroupsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a list of DNS Domain Groups in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var groupsDs = AliCloud.Dns.GetGroups.Invoke(new()
+        ///     {
+        ///         NameRegex = "^y[A-Za-z]+",
+        ///         OutputFile = "groups.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstGroupName"] = groupsDs.Apply(getGroupsResult =&gt; getGroupsResult.Groups[0]?.GroupName),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetGroupsResult> Invoke(GetGroupsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGroupsResult>("alicloud:dns/getGroups:getGroups", args ?? new GetGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -96,21 +96,11 @@ type GetTemplateScratchesResult struct {
 }
 
 func GetTemplateScratchesOutput(ctx *pulumi.Context, args GetTemplateScratchesOutputArgs, opts ...pulumi.InvokeOption) GetTemplateScratchesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetTemplateScratchesResultOutput, error) {
 			args := v.(GetTemplateScratchesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetTemplateScratchesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:ros/getTemplateScratches:getTemplateScratches", args, &rv, "", opts...)
-			if err != nil {
-				return GetTemplateScratchesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetTemplateScratchesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetTemplateScratchesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:ros/getTemplateScratches:getTemplateScratches", args, GetTemplateScratchesResultOutput{}, options).(GetTemplateScratchesResultOutput), nil
 		}).(GetTemplateScratchesResultOutput)
 }
 

@@ -100,21 +100,11 @@ type GetPrometheusMonitoringsResult struct {
 }
 
 func GetPrometheusMonitoringsOutput(ctx *pulumi.Context, args GetPrometheusMonitoringsOutputArgs, opts ...pulumi.InvokeOption) GetPrometheusMonitoringsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetPrometheusMonitoringsResultOutput, error) {
 			args := v.(GetPrometheusMonitoringsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetPrometheusMonitoringsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:arms/getPrometheusMonitorings:getPrometheusMonitorings", args, &rv, "", opts...)
-			if err != nil {
-				return GetPrometheusMonitoringsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetPrometheusMonitoringsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetPrometheusMonitoringsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:arms/getPrometheusMonitorings:getPrometheusMonitorings", args, GetPrometheusMonitoringsResultOutput{}, options).(GetPrometheusMonitoringsResultOutput), nil
 		}).(GetPrometheusMonitoringsResultOutput)
 }
 

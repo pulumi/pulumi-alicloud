@@ -29,6 +29,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class EssFunctions {
@@ -75,6 +76,15 @@ public final class EssFunctions {
      * 
      */
     public static Output<GetAlarmsResult> getAlarms(GetAlarmsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ess/getAlarms:getAlarms", TypeShape.of(GetAlarmsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides available alarm resources.
+     * 
+     * &gt; **NOTE** Available in 1.72.0+
+     * 
+     */
+    public static Output<GetAlarmsResult> getAlarms(GetAlarmsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:ess/getAlarms:getAlarms", TypeShape.of(GetAlarmsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -359,6 +369,52 @@ public final class EssFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetLifecycleHooksResult> getLifecycleHooks(GetLifecycleHooksArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ess/getLifecycleHooks:getLifecycleHooks", TypeShape.of(GetLifecycleHooksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides available lifecycle hook resources.
+     * 
+     * &gt; **NOTE:** Available in 1.72.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetLifecycleHooksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ds = EssFunctions.getLifecycleHooks(GetLifecycleHooksArgs.builder()
+     *             .scalingGroupId("scaling_group_id")
+     *             .nameRegex("lifecyclehook_name")
+     *             .build());
+     * 
+     *         ctx.export("firstLifecycleHook", ds.applyValue(getLifecycleHooksResult -> getLifecycleHooksResult.hooks()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetLifecycleHooksResult> getLifecycleHooksPlain(GetLifecycleHooksPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ess/getLifecycleHooks:getLifecycleHooks", TypeShape.of(GetLifecycleHooksResult.class), args, Utilities.withVersion(options));
     }
@@ -495,6 +551,51 @@ public final class EssFunctions {
      * 
      */
     public static Output<GetNotificationsResult> getNotifications(GetNotificationsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ess/getNotifications:getNotifications", TypeShape.of(GetNotificationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides available notification resources.
+     * 
+     * &gt; **NOTE:** Available in 1.72.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetNotificationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ds = EssFunctions.getNotifications(GetNotificationsArgs.builder()
+     *             .scalingGroupId("scaling_group_id")
+     *             .build());
+     * 
+     *         ctx.export("firstNotification", ds.applyValue(getNotificationsResult -> getNotificationsResult.notifications()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNotificationsResult> getNotifications(GetNotificationsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:ess/getNotifications:getNotifications", TypeShape.of(GetNotificationsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -821,6 +922,53 @@ public final class EssFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetScalingConfigurationsResult> getScalingConfigurations(GetScalingConfigurationsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ess/getScalingConfigurations:getScalingConfigurations", TypeShape.of(GetScalingConfigurationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides available scaling configuration resources.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetScalingConfigurationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var scalingconfigurationsDs = EssFunctions.getScalingConfigurations(GetScalingConfigurationsArgs.builder()
+     *             .scalingGroupId("scaling_group_id")
+     *             .ids(            
+     *                 "scaling_configuration_id1",
+     *                 "scaling_configuration_id2")
+     *             .nameRegex("scaling_configuration_name")
+     *             .build());
+     * 
+     *         ctx.export("firstScalingRule", scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult.configurations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetScalingConfigurationsResult> getScalingConfigurationsPlain(GetScalingConfigurationsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ess/getScalingConfigurations:getScalingConfigurations", TypeShape.of(GetScalingConfigurationsResult.class), args, Utilities.withVersion(options));
     }
@@ -1052,6 +1200,52 @@ public final class EssFunctions {
      * 
      */
     public static Output<GetScalingGroupsResult> getScalingGroups(GetScalingGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ess/getScalingGroups:getScalingGroups", TypeShape.of(GetScalingGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides available scaling group resources.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetScalingGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var scalinggroupsDs = EssFunctions.getScalingGroups(GetScalingGroupsArgs.builder()
+     *             .ids(            
+     *                 "scaling_group_id1",
+     *                 "scaling_group_id2")
+     *             .nameRegex("scaling_group_name")
+     *             .build());
+     * 
+     *         ctx.export("firstScalingGroup", scalinggroupsDs.applyValue(getScalingGroupsResult -> getScalingGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetScalingGroupsResult> getScalingGroups(GetScalingGroupsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:ess/getScalingGroups:getScalingGroups", TypeShape.of(GetScalingGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1379,6 +1573,53 @@ public final class EssFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetScalingRulesResult> getScalingRules(GetScalingRulesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ess/getScalingRules:getScalingRules", TypeShape.of(GetScalingRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides available scaling rule resources.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetScalingRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var scalingrulesDs = EssFunctions.getScalingRules(GetScalingRulesArgs.builder()
+     *             .scalingGroupId("scaling_group_id")
+     *             .ids(            
+     *                 "scaling_rule_id1",
+     *                 "scaling_rule_id2")
+     *             .nameRegex("scaling_rule_name")
+     *             .build());
+     * 
+     *         ctx.export("firstScalingRule", scalingrulesDs.applyValue(getScalingRulesResult -> getScalingRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetScalingRulesResult> getScalingRulesPlain(GetScalingRulesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ess/getScalingRules:getScalingRules", TypeShape.of(GetScalingRulesResult.class), args, Utilities.withVersion(options));
     }
@@ -1610,6 +1851,52 @@ public final class EssFunctions {
      * 
      */
     public static Output<GetScheduledTasksResult> getScheduledTasks(GetScheduledTasksArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ess/getScheduledTasks:getScheduledTasks", TypeShape.of(GetScheduledTasksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides available scheduled task resources.
+     * 
+     * &gt; **NOTE:** Available in 1.72.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ess.EssFunctions;
+     * import com.pulumi.alicloud.ess.inputs.GetScheduledTasksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ds = EssFunctions.getScheduledTasks(GetScheduledTasksArgs.builder()
+     *             .scheduledTaskId("scheduled_task_id")
+     *             .nameRegex("scheduled_task_name")
+     *             .build());
+     * 
+     *         ctx.export("firstScheduledTask", ds.applyValue(getScheduledTasksResult -> getScheduledTasksResult.tasks()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetScheduledTasksResult> getScheduledTasks(GetScheduledTasksArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:ess/getScheduledTasks:getScheduledTasks", TypeShape.of(GetScheduledTasksResult.class), args, Utilities.withVersion(options));
     }
     /**

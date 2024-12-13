@@ -30,6 +30,16 @@ namespace Pulumi.AliCloud.Ots
         /// </summary>
         public static Output<GetSearchIndexesResult> Invoke(GetSearchIndexesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSearchIndexesResult>("alicloud:ots/getSearchIndexes:getSearchIndexes", args ?? new GetSearchIndexesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the ots search index of the current Alibaba Cloud user.
+        /// 
+        /// For information about OTS search index and how to use it, see [Search index overview](https://www.alibabacloud.com/help/en/tablestore/latest/search-index-overview).
+        /// 
+        /// &gt; **NOTE:** Available in v1.187.0+.
+        /// </summary>
+        public static Output<GetSearchIndexesResult> Invoke(GetSearchIndexesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSearchIndexesResult>("alicloud:ots/getSearchIndexes:getSearchIndexes", args ?? new GetSearchIndexesInvokeArgs(), options.WithDefaults());
     }
 
 

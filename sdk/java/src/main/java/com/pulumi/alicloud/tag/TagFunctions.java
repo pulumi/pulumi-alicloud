@@ -11,6 +11,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class TagFunctions {
@@ -247,6 +248,53 @@ public final class TagFunctions {
      * 
      */
     public static Output<GetMetaTagsResult> getMetaTags(GetMetaTagsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:tag/getMetaTags:getMetaTags", TypeShape.of(GetMetaTagsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Tag Meta Tags of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.169.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.tag.TagFunctions;
+     * import com.pulumi.alicloud.tag.inputs.GetMetaTagsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = TagFunctions.getMetaTags(GetMetaTagsArgs.builder()
+     *             .keyName("example_value")
+     *             .build());
+     * 
+     *         ctx.export("tagMetaTagDefault1", default_.tags().valueName());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetMetaTagsResult> getMetaTags(GetMetaTagsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:tag/getMetaTags:getMetaTags", TypeShape.of(GetMetaTagsResult.class), args, Utilities.withVersion(options));
     }
     /**

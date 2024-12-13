@@ -74,6 +74,38 @@ namespace Pulumi.AliCloud.Ddos
         /// </summary>
         public static Output<GetDdosCooInstancesResult> Invoke(GetDdosCooInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDdosCooInstancesResult>("alicloud:ddos/getDdosCooInstances:getDdosCooInstances", args ?? new GetDdosCooInstancesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the BGP-Line Anti-DDoS Pro(DdosCoo) instances of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.39.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Ddos.GetDdosCooInstances.Invoke(new()
+        ///     {
+        ///         NameRegex = "tf",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["instance"] = @default.Apply(@default =&gt; @default.Apply(getDdosCooInstancesResult =&gt; getDdosCooInstancesResult.Instances).Select(__item =&gt; __item.Id).ToList()),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDdosCooInstancesResult> Invoke(GetDdosCooInstancesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDdosCooInstancesResult>("alicloud:ddos/getDdosCooInstances:getDdosCooInstances", args ?? new GetDdosCooInstancesInvokeArgs(), options.WithDefaults());
     }
 
 

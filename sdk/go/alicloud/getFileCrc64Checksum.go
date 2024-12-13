@@ -69,21 +69,11 @@ type GetFileCrc64ChecksumResult struct {
 }
 
 func GetFileCrc64ChecksumOutput(ctx *pulumi.Context, args GetFileCrc64ChecksumOutputArgs, opts ...pulumi.InvokeOption) GetFileCrc64ChecksumResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetFileCrc64ChecksumResultOutput, error) {
 			args := v.(GetFileCrc64ChecksumArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetFileCrc64ChecksumResult
-			secret, err := ctx.InvokePackageRaw("alicloud:index/getFileCrc64Checksum:getFileCrc64Checksum", args, &rv, "", opts...)
-			if err != nil {
-				return GetFileCrc64ChecksumResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetFileCrc64ChecksumResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetFileCrc64ChecksumResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:index/getFileCrc64Checksum:getFileCrc64Checksum", args, GetFileCrc64ChecksumResultOutput{}, options).(GetFileCrc64ChecksumResultOutput), nil
 		}).(GetFileCrc64ChecksumResultOutput)
 }
 

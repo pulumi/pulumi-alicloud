@@ -90,21 +90,11 @@ type GetPolicyAttachmentsResult struct {
 }
 
 func GetPolicyAttachmentsOutput(ctx *pulumi.Context, args GetPolicyAttachmentsOutputArgs, opts ...pulumi.InvokeOption) GetPolicyAttachmentsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetPolicyAttachmentsResultOutput, error) {
 			args := v.(GetPolicyAttachmentsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetPolicyAttachmentsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:resourcemanager/getPolicyAttachments:getPolicyAttachments", args, &rv, "", opts...)
-			if err != nil {
-				return GetPolicyAttachmentsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetPolicyAttachmentsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetPolicyAttachmentsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:resourcemanager/getPolicyAttachments:getPolicyAttachments", args, GetPolicyAttachmentsResultOutput{}, options).(GetPolicyAttachmentsResultOutput), nil
 		}).(GetPolicyAttachmentsResultOutput)
 }
 

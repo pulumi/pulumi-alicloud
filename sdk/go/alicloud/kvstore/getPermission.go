@@ -70,21 +70,11 @@ type GetPermissionResult struct {
 }
 
 func GetPermissionOutput(ctx *pulumi.Context, args GetPermissionOutputArgs, opts ...pulumi.InvokeOption) GetPermissionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetPermissionResultOutput, error) {
 			args := v.(GetPermissionArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetPermissionResult
-			secret, err := ctx.InvokePackageRaw("alicloud:kvstore/getPermission:getPermission", args, &rv, "", opts...)
-			if err != nil {
-				return GetPermissionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetPermissionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetPermissionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:kvstore/getPermission:getPermission", args, GetPermissionResultOutput{}, options).(GetPermissionResultOutput), nil
 		}).(GetPermissionResultOutput)
 }
 

@@ -78,21 +78,11 @@ type GetUserTenantsResult struct {
 }
 
 func GetUserTenantsOutput(ctx *pulumi.Context, args GetUserTenantsOutputArgs, opts ...pulumi.InvokeOption) GetUserTenantsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetUserTenantsResultOutput, error) {
 			args := v.(GetUserTenantsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetUserTenantsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:dms/getUserTenants:getUserTenants", args, &rv, "", opts...)
-			if err != nil {
-				return GetUserTenantsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetUserTenantsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetUserTenantsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:dms/getUserTenants:getUserTenants", args, GetUserTenantsResultOutput{}, options).(GetUserTenantsResultOutput), nil
 		}).(GetUserTenantsResultOutput)
 }
 

@@ -121,21 +121,11 @@ type GetGatewaySmbUsersResult struct {
 }
 
 func GetGatewaySmbUsersOutput(ctx *pulumi.Context, args GetGatewaySmbUsersOutputArgs, opts ...pulumi.InvokeOption) GetGatewaySmbUsersResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetGatewaySmbUsersResultOutput, error) {
 			args := v.(GetGatewaySmbUsersArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetGatewaySmbUsersResult
-			secret, err := ctx.InvokePackageRaw("alicloud:cloudstoragegateway/getGatewaySmbUsers:getGatewaySmbUsers", args, &rv, "", opts...)
-			if err != nil {
-				return GetGatewaySmbUsersResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetGatewaySmbUsersResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetGatewaySmbUsersResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:cloudstoragegateway/getGatewaySmbUsers:getGatewaySmbUsers", args, GetGatewaySmbUsersResultOutput{}, options).(GetGatewaySmbUsersResultOutput), nil
 		}).(GetGatewaySmbUsersResultOutput)
 }
 

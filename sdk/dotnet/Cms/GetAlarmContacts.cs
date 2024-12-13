@@ -80,6 +80,41 @@ namespace Pulumi.AliCloud.Cms
         /// </summary>
         public static Output<GetAlarmContactsResult> Invoke(GetAlarmContactsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAlarmContactsResult>("alicloud:cms/getAlarmContacts:getAlarmContacts", args ?? new GetAlarmContactsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides a list of alarm contact owned by an Alibaba Cloud account.
+        /// 
+        /// &gt; **NOTE:** Available in v1.99.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Cms.GetAlarmContacts.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "tf-testAccCmsAlarmContact",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["first-contact"] = @this.Contacts,
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAlarmContactsResult> Invoke(GetAlarmContactsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAlarmContactsResult>("alicloud:cms/getAlarmContacts:getAlarmContacts", args ?? new GetAlarmContactsInvokeArgs(), options.WithDefaults());
     }
 
 

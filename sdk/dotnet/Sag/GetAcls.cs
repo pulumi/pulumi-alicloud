@@ -88,6 +88,45 @@ namespace Pulumi.AliCloud.Sag
         /// </summary>
         public static Output<GetAclsResult> Invoke(GetAclsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAclsResult>("alicloud:sag/getAcls:getAcls", args ?? new GetAclsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides Sag Acls available to the user.
+        /// 
+        /// &gt; **NOTE:** Available in 1.60.0+
+        /// 
+        /// &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Sag.GetAcls.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultAlicloudSagAcls.Id,
+        ///         },
+        ///         NameRegex = "^tf-testAcc.*",
+        ///     });
+        /// 
+        ///     var defaultAcl = new AliCloud.RocketMQ.Acl("default", new()
+        ///     {
+        ///         Name = "tf-testAccSagAclName",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAclsResult> Invoke(GetAclsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAclsResult>("alicloud:sag/getAcls:getAcls", args ?? new GetAclsInvokeArgs(), options.WithDefaults());
     }
 
 

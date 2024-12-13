@@ -84,6 +84,43 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:rds/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `alicloud.rds.getInstances` data source provides a collection of RDS instances available in Alibaba Cloud account.
+        /// Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+        /// 
+        /// &gt; **NOTE:** Available since v1.7.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var dbInstancesDs = AliCloud.Rds.GetInstances.Invoke(new()
+        ///     {
+        ///         NameRegex = "data-\\d+",
+        ///         Status = "Running",
+        ///         Tags = 
+        ///         {
+        ///             { "type", "database" },
+        ///             { "size", "tiny" },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstDbInstanceId"] = dbInstancesDs.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:rds/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
     }
 
 

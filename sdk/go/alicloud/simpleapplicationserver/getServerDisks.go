@@ -114,21 +114,11 @@ type GetServerDisksResult struct {
 }
 
 func GetServerDisksOutput(ctx *pulumi.Context, args GetServerDisksOutputArgs, opts ...pulumi.InvokeOption) GetServerDisksResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetServerDisksResultOutput, error) {
 			args := v.(GetServerDisksArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetServerDisksResult
-			secret, err := ctx.InvokePackageRaw("alicloud:simpleapplicationserver/getServerDisks:getServerDisks", args, &rv, "", opts...)
-			if err != nil {
-				return GetServerDisksResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetServerDisksResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetServerDisksResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:simpleapplicationserver/getServerDisks:getServerDisks", args, GetServerDisksResultOutput{}, options).(GetServerDisksResultOutput), nil
 		}).(GetServerDisksResultOutput)
 }
 

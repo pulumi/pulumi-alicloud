@@ -26,6 +26,14 @@ namespace Pulumi.AliCloud.CR
         /// </summary>
         public static Output<GetChartNamespacesResult> Invoke(GetChartNamespacesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetChartNamespacesResult>("alicloud:cr/getChartNamespaces:getChartNamespaces", args ?? new GetChartNamespacesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Cr Chart Namespaces of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.149.0+.
+        /// </summary>
+        public static Output<GetChartNamespacesResult> Invoke(GetChartNamespacesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetChartNamespacesResult>("alicloud:cr/getChartNamespaces:getChartNamespaces", args ?? new GetChartNamespacesInvokeArgs(), options.WithDefaults());
     }
 
 

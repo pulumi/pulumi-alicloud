@@ -80,21 +80,11 @@ type GetHybridMonitorFcTasksResult struct {
 }
 
 func GetHybridMonitorFcTasksOutput(ctx *pulumi.Context, args GetHybridMonitorFcTasksOutputArgs, opts ...pulumi.InvokeOption) GetHybridMonitorFcTasksResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetHybridMonitorFcTasksResultOutput, error) {
 			args := v.(GetHybridMonitorFcTasksArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetHybridMonitorFcTasksResult
-			secret, err := ctx.InvokePackageRaw("alicloud:cms/getHybridMonitorFcTasks:getHybridMonitorFcTasks", args, &rv, "", opts...)
-			if err != nil {
-				return GetHybridMonitorFcTasksResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetHybridMonitorFcTasksResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetHybridMonitorFcTasksResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:cms/getHybridMonitorFcTasks:getHybridMonitorFcTasks", args, GetHybridMonitorFcTasksResultOutput{}, options).(GetHybridMonitorFcTasksResultOutput), nil
 		}).(GetHybridMonitorFcTasksResultOutput)
 }
 

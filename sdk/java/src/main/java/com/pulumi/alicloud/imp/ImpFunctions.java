@@ -11,6 +11,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class ImpFunctions {
@@ -262,6 +263,56 @@ public final class ImpFunctions {
      * 
      */
     public static Output<GetAppTemplatesResult> getAppTemplates(GetAppTemplatesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:imp/getAppTemplates:getAppTemplates", TypeShape.of(GetAppTemplatesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Imp App Templates of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.137.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.imp.ImpFunctions;
+     * import com.pulumi.alicloud.imp.inputs.GetAppTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ImpFunctions.getAppTemplates();
+     * 
+     *         ctx.export("impAppTemplateId1", ids.applyValue(getAppTemplatesResult -> getAppTemplatesResult.templates()[0].id()));
+     *         final var nameRegex = ImpFunctions.getAppTemplates(GetAppTemplatesArgs.builder()
+     *             .nameRegex("^my_AppTemplate")
+     *             .build());
+     * 
+     *         ctx.export("impAppTemplateId2", nameRegex.applyValue(getAppTemplatesResult -> getAppTemplatesResult.templates()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAppTemplatesResult> getAppTemplates(GetAppTemplatesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:imp/getAppTemplates:getAppTemplates", TypeShape.of(GetAppTemplatesResult.class), args, Utilities.withVersion(options));
     }
     /**

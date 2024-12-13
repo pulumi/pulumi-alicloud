@@ -92,6 +92,47 @@ namespace Pulumi.AliCloud.Sag
         /// </summary>
         public static Output<GetSmartagFlowLogsResult> Invoke(GetSmartagFlowLogsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSmartagFlowLogsResult>("alicloud:sag/getSmartagFlowLogs:getSmartagFlowLogs", args ?? new GetSmartagFlowLogsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Smartag Flow Logs of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.168.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Sag.GetSmartagFlowLogs.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Sag.GetSmartagFlowLogs.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-FlowLog",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["smartagFlowLogId1"] = ids.Apply(getSmartagFlowLogsResult =&gt; getSmartagFlowLogsResult.Logs[0]?.Id),
+        ///         ["smartagFlowLogId2"] = nameRegex.Apply(getSmartagFlowLogsResult =&gt; getSmartagFlowLogsResult.Logs[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSmartagFlowLogsResult> Invoke(GetSmartagFlowLogsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSmartagFlowLogsResult>("alicloud:sag/getSmartagFlowLogs:getSmartagFlowLogs", args ?? new GetSmartagFlowLogsInvokeArgs(), options.WithDefaults());
     }
 
 

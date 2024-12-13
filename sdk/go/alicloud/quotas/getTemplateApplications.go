@@ -127,21 +127,11 @@ type LookupTemplateApplicationsResult struct {
 }
 
 func LookupTemplateApplicationsOutput(ctx *pulumi.Context, args LookupTemplateApplicationsOutputArgs, opts ...pulumi.InvokeOption) LookupTemplateApplicationsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupTemplateApplicationsResultOutput, error) {
 			args := v.(LookupTemplateApplicationsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupTemplateApplicationsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:quotas/getTemplateApplications:getTemplateApplications", args, &rv, "", opts...)
-			if err != nil {
-				return LookupTemplateApplicationsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupTemplateApplicationsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupTemplateApplicationsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:quotas/getTemplateApplications:getTemplateApplications", args, LookupTemplateApplicationsResultOutput{}, options).(LookupTemplateApplicationsResultOutput), nil
 		}).(LookupTemplateApplicationsResultOutput)
 }
 

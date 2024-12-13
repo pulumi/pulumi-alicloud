@@ -80,6 +80,41 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         public static Output<GetServerlessKubernetesClustersResult> Invoke(GetServerlessKubernetesClustersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServerlessKubernetesClustersResult>("alicloud:cs/getServerlessKubernetesClusters:getServerlessKubernetesClusters", args ?? new GetServerlessKubernetesClustersInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
+        /// 
+        /// &gt; **NOTE:** Available in 1.58.0+
+        /// 
+        /// &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kube_config_file_prefix`.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Declare the data source
+        ///     var k8sClusters = AliCloud.CS.GetServerlessKubernetesClusters.Invoke(new()
+        ///     {
+        ///         NameRegex = "my-first-k8s",
+        ///         OutputFile = "my-first-k8s-json",
+        ///         KubeConfigFilePrefix = "~/.kube/serverless",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["output"] = k8sClusters.Apply(getServerlessKubernetesClustersResult =&gt; getServerlessKubernetesClustersResult.Clusters),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetServerlessKubernetesClustersResult> Invoke(GetServerlessKubernetesClustersInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServerlessKubernetesClustersResult>("alicloud:cs/getServerlessKubernetesClusters:getServerlessKubernetesClusters", args ?? new GetServerlessKubernetesClustersInvokeArgs(), options.WithDefaults());
     }
 
 

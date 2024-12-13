@@ -128,6 +128,65 @@ namespace Pulumi.AliCloud.Oos
         /// </summary>
         public static Output<GetSecretParametersResult> Invoke(GetSecretParametersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSecretParametersResult>("alicloud:oos/getSecretParameters:getSecretParameters", args ?? new GetSecretParametersInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Oos Secret Parameters of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.147.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = new AliCloud.Oos.SecretParameter("default", new()
+        ///     {
+        ///         SecretParameterName = name,
+        ///         Value = "tf-testacc-oos_secret_parameter",
+        ///         Type = "Secret",
+        ///         Description = name,
+        ///         Constraints = @"  {
+        ///     ""AllowedValues"": [
+        ///         ""tf-testacc-oos_secret_parameter""
+        ///     ],
+        ///     ""AllowedPattern"": ""tf-testacc-oos_secret_parameter"",
+        ///     ""MinLength"": 1,
+        ///     ""MaxLength"": 100
+        ///   }
+        /// ",
+        ///         Tags = 
+        ///         {
+        ///             { "Created", "TF" },
+        ///             { "For", "SecretParameter" },
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Oos.GetSecretParameters.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             @default.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["oosSecretParameterId0"] = ids.Apply(getSecretParametersResult =&gt; getSecretParametersResult.Parameters[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSecretParametersResult> Invoke(GetSecretParametersInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSecretParametersResult>("alicloud:oos/getSecretParameters:getSecretParameters", args ?? new GetSecretParametersInvokeArgs(), options.WithDefaults());
     }
 
 

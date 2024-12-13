@@ -88,21 +88,11 @@ type GetDeliveryChannelsResult struct {
 }
 
 func GetDeliveryChannelsOutput(ctx *pulumi.Context, args GetDeliveryChannelsOutputArgs, opts ...pulumi.InvokeOption) GetDeliveryChannelsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDeliveryChannelsResultOutput, error) {
 			args := v.(GetDeliveryChannelsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetDeliveryChannelsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:cfg/getDeliveryChannels:getDeliveryChannels", args, &rv, "", opts...)
-			if err != nil {
-				return GetDeliveryChannelsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetDeliveryChannelsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetDeliveryChannelsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:cfg/getDeliveryChannels:getDeliveryChannels", args, GetDeliveryChannelsResultOutput{}, options).(GetDeliveryChannelsResultOutput), nil
 		}).(GetDeliveryChannelsResultOutput)
 }
 

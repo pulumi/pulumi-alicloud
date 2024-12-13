@@ -88,6 +88,45 @@ namespace Pulumi.AliCloud.Cfg
         /// </summary>
         public static Output<GetDeliveryChannelsResult> Invoke(GetDeliveryChannelsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDeliveryChannelsResult>("alicloud:cfg/getDeliveryChannels:getDeliveryChannels", args ?? new GetDeliveryChannelsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **DEPRECATED:**  This resource is based on Config's old version OpenAPI, and it has been deprecated from version `1.173.0`.
+        /// Please use new datasource alicloud.cfg.getDeliveries instead.
+        /// 
+        /// This data source provides the Config Delivery Channels of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:**  Available in 1.99.0+.
+        /// 
+        /// &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Cfg.GetDeliveryChannels.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "cdc-49a2ad756057********",
+        ///         },
+        ///         NameRegex = "tftest",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstConfigDeliveryChannelId"] = example.Apply(getDeliveryChannelsResult =&gt; getDeliveryChannelsResult.Channels[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDeliveryChannelsResult> Invoke(GetDeliveryChannelsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDeliveryChannelsResult>("alicloud:cfg/getDeliveryChannels:getDeliveryChannels", args ?? new GetDeliveryChannelsInvokeArgs(), options.WithDefaults());
     }
 
 

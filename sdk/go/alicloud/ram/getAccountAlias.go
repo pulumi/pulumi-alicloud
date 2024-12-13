@@ -67,21 +67,11 @@ type LookupAccountAliasResult struct {
 }
 
 func LookupAccountAliasOutput(ctx *pulumi.Context, args LookupAccountAliasOutputArgs, opts ...pulumi.InvokeOption) LookupAccountAliasResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAccountAliasResultOutput, error) {
 			args := v.(LookupAccountAliasArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupAccountAliasResult
-			secret, err := ctx.InvokePackageRaw("alicloud:ram/getAccountAlias:getAccountAlias", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAccountAliasResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAccountAliasResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAccountAliasResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:ram/getAccountAlias:getAccountAlias", args, LookupAccountAliasResultOutput{}, options).(LookupAccountAliasResultOutput), nil
 		}).(LookupAccountAliasResultOutput)
 }
 

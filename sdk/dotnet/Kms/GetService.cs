@@ -66,6 +66,34 @@ namespace Pulumi.AliCloud.Kms
         /// </summary>
         public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceResult>("alicloud:kms/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Using this data source can open KMS service automatically. If the service has been opened, it will return opened.
+        /// 
+        /// For information about KMS and how to use it, see [What is KMS](https://help.aliyun.com/document_detail/186020.html).
+        /// 
+        /// &gt; **NOTE:** Available in v1.108.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var open = AliCloud.Kms.GetService.Invoke(new()
+        ///     {
+        ///         Enable = "On",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceResult>("alicloud:kms/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());
     }
 
 

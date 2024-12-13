@@ -110,6 +110,56 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// </summary>
         public static Output<GetAddressBooksResult> Invoke(GetAddressBooksInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAddressBooksResult>("alicloud:cloudfirewall/getAddressBooks:getAddressBooks", args ?? new GetAddressBooksInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Cloud Firewall Address Books of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.178.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "tf-example";
+        ///     var @default = new AliCloud.CloudFirewall.AddressBook("default", new()
+        ///     {
+        ///         GroupName = name,
+        ///         GroupType = "ip",
+        ///         Description = "tf-description",
+        ///         AutoAddTagEcs = 0,
+        ///         AddressLists = new[]
+        ///         {
+        ///             "10.21.0.0/16",
+        ///             "10.168.0.0/16",
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.CloudFirewall.GetAddressBooks.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             @default.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cloudFirewallAddressBookId1"] = ids.Apply(getAddressBooksResult =&gt; getAddressBooksResult.Books[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAddressBooksResult> Invoke(GetAddressBooksInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAddressBooksResult>("alicloud:cloudfirewall/getAddressBooks:getAddressBooks", args ?? new GetAddressBooksInvokeArgs(), options.WithDefaults());
     }
 
 

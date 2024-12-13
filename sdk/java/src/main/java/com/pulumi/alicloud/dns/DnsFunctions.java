@@ -56,6 +56,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class DnsFunctions {
@@ -213,6 +214,58 @@ public final class DnsFunctions {
      * 
      */
     public static Output<GetAccessStrategiesResult> getAccessStrategies(GetAccessStrategiesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dns/getAccessStrategies:getAccessStrategies", TypeShape.of(GetAccessStrategiesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Alidns Access Strategies of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.152.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAccessStrategiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DnsFunctions.getAccessStrategies(GetAccessStrategiesArgs.builder()
+     *             .instanceId("example_value")
+     *             .strategyMode("example_value")
+     *             .ids(            
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .nameRegex("the_resource_name")
+     *             .build());
+     * 
+     *         ctx.export("alidnsAccessStrategyId1", ids.applyValue(getAccessStrategiesResult -> getAccessStrategiesResult.strategies()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAccessStrategiesResult> getAccessStrategies(GetAccessStrategiesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:dns/getAccessStrategies:getAccessStrategies", TypeShape.of(GetAccessStrategiesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -433,6 +486,62 @@ public final class DnsFunctions {
      * 
      */
     public static Output<GetAddressPoolsResult> getAddressPools(GetAddressPoolsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dns/getAddressPools:getAddressPools", TypeShape.of(GetAddressPoolsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Alidns Address Pools of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.152.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAddressPoolsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DnsFunctions.getAddressPools(GetAddressPoolsArgs.builder()
+     *             .instanceId("example_value")
+     *             .ids(            
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .build());
+     * 
+     *         ctx.export("alidnsAddressPoolId1", ids.applyValue(getAddressPoolsResult -> getAddressPoolsResult.pools()[0].id()));
+     *         final var nameRegex = DnsFunctions.getAddressPools(GetAddressPoolsArgs.builder()
+     *             .instanceId("example_value")
+     *             .nameRegex("^my-AddressPool")
+     *             .build());
+     * 
+     *         ctx.export("alidnsAddressPoolId2", nameRegex.applyValue(getAddressPoolsResult -> getAddressPoolsResult.pools()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAddressPoolsResult> getAddressPools(GetAddressPoolsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:dns/getAddressPools:getAddressPools", TypeShape.of(GetAddressPoolsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -758,6 +867,51 @@ public final class DnsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetAlidnsDomainGroupsResult> getAlidnsDomainGroups(GetAlidnsDomainGroupsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dns/getAlidnsDomainGroups:getAlidnsDomainGroups", TypeShape.of(GetAlidnsDomainGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list of Alidns Domain Groups in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:**  Available in 1.85.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAlidnsDomainGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DnsFunctions.getAlidnsDomainGroups(GetAlidnsDomainGroupsArgs.builder()
+     *             .ids("c5ef2bc43064445787adf182af2****")
+     *             .build());
+     * 
+     *         ctx.export("firstDomainGroupId", example.applyValue(getAlidnsDomainGroupsResult -> getAlidnsDomainGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAlidnsDomainGroupsResult> getAlidnsDomainGroupsPlain(GetAlidnsDomainGroupsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:dns/getAlidnsDomainGroups:getAlidnsDomainGroups", TypeShape.of(GetAlidnsDomainGroupsResult.class), args, Utilities.withVersion(options));
     }
@@ -989,6 +1143,52 @@ public final class DnsFunctions {
      * 
      */
     public static Output<GetAlidnsDomainsResult> getAlidnsDomains(GetAlidnsDomainsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dns/getAlidnsDomains:getAlidnsDomains", TypeShape.of(GetAlidnsDomainsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list of Alidns Domains in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:**  Available in 1.95.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAlidnsDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var domainsDs = DnsFunctions.getAlidnsDomains(GetAlidnsDomainsArgs.builder()
+     *             .domainNameRegex("^hegu")
+     *             .outputFile("domains.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstDomainId", domainsDs.applyValue(getAlidnsDomainsResult -> getAlidnsDomainsResult.domains()[0].domainId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAlidnsDomainsResult> getAlidnsDomains(GetAlidnsDomainsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:dns/getAlidnsDomains:getAlidnsDomains", TypeShape.of(GetAlidnsDomainsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1304,6 +1504,51 @@ public final class DnsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetAlidnsInstancesResult> getAlidnsInstances(GetAlidnsInstancesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dns/getAlidnsInstances:getAlidnsInstances", TypeShape.of(GetAlidnsInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list of Alidns instances in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:**  Available in 1.95.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAlidnsInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DnsFunctions.getAlidnsInstances(GetAlidnsInstancesArgs.builder()
+     *             .ids("dns-cn-oew1npk****")
+     *             .build());
+     * 
+     *         ctx.export("firstInstanceId", example.applyValue(getAlidnsInstancesResult -> getAlidnsInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAlidnsInstancesResult> getAlidnsInstancesPlain(GetAlidnsInstancesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:dns/getAlidnsInstances:getAlidnsInstances", TypeShape.of(GetAlidnsInstancesResult.class), args, Utilities.withVersion(options));
     }
@@ -1449,6 +1694,54 @@ public final class DnsFunctions {
      * 
      */
     public static Output<GetAlidnsRecordsResult> getAlidnsRecords(GetAlidnsRecordsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dns/getAlidnsRecords:getAlidnsRecords", TypeShape.of(GetAlidnsRecordsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list of Alidns Domain Records in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available since v1.86.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAlidnsRecordsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var recordsDs = DnsFunctions.getAlidnsRecords(GetAlidnsRecordsArgs.builder()
+     *             .domainName("xiaozhu.top")
+     *             .ids("1978593525779****")
+     *             .type("A")
+     *             .outputFile("records.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstRecordId", recordsDs.applyValue(getAlidnsRecordsResult -> getAlidnsRecordsResult.records()[0].recordId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAlidnsRecordsResult> getAlidnsRecords(GetAlidnsRecordsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:dns/getAlidnsRecords:getAlidnsRecords", TypeShape.of(GetAlidnsRecordsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1688,6 +1981,54 @@ public final class DnsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetCustomLinesResult> getCustomLines(GetCustomLinesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dns/getCustomLines:getCustomLines", TypeShape.of(GetCustomLinesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Alidns Custom Lines of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.151.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetCustomLinesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DnsFunctions.getCustomLines(GetCustomLinesArgs.builder()
+     *             .enableDetails(true)
+     *             .domainName("your_domain_name")
+     *             .build());
+     * 
+     *         ctx.export("alidnsCustomLineId1", ids.applyValue(getCustomLinesResult -> getCustomLinesResult.lines()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetCustomLinesResult> getCustomLinesPlain(GetCustomLinesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:dns/getCustomLines:getCustomLines", TypeShape.of(GetCustomLinesResult.class), args, Utilities.withVersion(options));
     }
@@ -1730,6 +2071,13 @@ public final class DnsFunctions {
      * &gt; **NOTE:** This datasource has been deprecated from v1.3.2. Please use the datasource `alicloud.dns.getGroups` instead.
      * 
      */
+    public static Output<GetDomainGroupsResult> getDomainGroups(GetDomainGroupsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dns/getDomainGroups:getDomainGroups", TypeShape.of(GetDomainGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **NOTE:** This datasource has been deprecated from v1.3.2. Please use the datasource `alicloud.dns.getGroups` instead.
+     * 
+     */
     public static CompletableFuture<GetDomainGroupsResult> getDomainGroupsPlain(GetDomainGroupsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:dns/getDomainGroups:getDomainGroups", TypeShape.of(GetDomainGroupsResult.class), args, Utilities.withVersion(options));
     }
@@ -1752,6 +2100,13 @@ public final class DnsFunctions {
      * 
      */
     public static Output<GetDomainRecordsResult> getDomainRecords(GetDomainRecordsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dns/getDomainRecords:getDomainRecords", TypeShape.of(GetDomainRecordsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **NOTE:** This resource has been deprecated from v1.3.2. Please use the datasource `alicloud.dns.getRecords` instead.
+     * 
+     */
+    public static Output<GetDomainRecordsResult> getDomainRecords(GetDomainRecordsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:dns/getDomainRecords:getDomainRecords", TypeShape.of(GetDomainRecordsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1900,6 +2255,53 @@ public final class DnsFunctions {
      * 
      */
     public static Output<GetDomainTxtGuidResult> getDomainTxtGuid(GetDomainTxtGuidArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dns/getDomainTxtGuid:getDomainTxtGuid", TypeShape.of(GetDomainTxtGuidResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides the generation of txt records to realize the retrieval and verification of domain names.
+     * 
+     * &gt; **NOTE:** Available in v1.80.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetDomainTxtGuidArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DnsFunctions.getDomainTxtGuid(GetDomainTxtGuidArgs.builder()
+     *             .domainName("test111.abc")
+     *             .type("ADD_SUB_DOMAIN")
+     *             .build());
+     * 
+     *         ctx.export("rr", this_.rr());
+     *         ctx.export("value", this_.value());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDomainTxtGuidResult> getDomainTxtGuid(GetDomainTxtGuidArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:dns/getDomainTxtGuid:getDomainTxtGuid", TypeShape.of(GetDomainTxtGuidResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2222,6 +2624,52 @@ public final class DnsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetDomainsResult> getDomains(GetDomainsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dns/getDomains:getDomains", TypeShape.of(GetDomainsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **DEPRECATED:**  This resource has been renamed to alicloud.dns.getAlidnsDomains from version 1.95.0.
+     * 
+     * This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var domainsDs = DnsFunctions.getDomains(GetDomainsArgs.builder()
+     *             .domainNameRegex("^hegu")
+     *             .outputFile("domains.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstDomainId", domainsDs.applyValue(getDomainsResult -> getDomainsResult.domains()[0].domainId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDomainsResult> getDomainsPlain(GetDomainsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:dns/getDomains:getDomains", TypeShape.of(GetDomainsResult.class), args, Utilities.withVersion(options));
     }
@@ -2443,6 +2891,50 @@ public final class DnsFunctions {
      * 
      */
     public static Output<GetGroupsResult> getGroups(GetGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dns/getGroups:getGroups", TypeShape.of(GetGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list of DNS Domain Groups in an Alibaba Cloud account according to the specified filters.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var groupsDs = DnsFunctions.getGroups(GetGroupsArgs.builder()
+     *             .nameRegex("^y[A-Za-z]+")
+     *             .outputFile("groups.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstGroupName", groupsDs.applyValue(getGroupsResult -> getGroupsResult.groups()[0].groupName()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGroupsResult> getGroups(GetGroupsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:dns/getGroups:getGroups", TypeShape.of(GetGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2712,6 +3204,51 @@ public final class DnsFunctions {
      * 
      */
     public static Output<GetGtmInstancesResult> getGtmInstances(GetGtmInstancesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dns/getGtmInstances:getGtmInstances", TypeShape.of(GetGtmInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Alidns Gtm Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.151.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetGtmInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DnsFunctions.getGtmInstances();
+     * 
+     *         ctx.export("alidnsGtmInstanceId1", ids.applyValue(getGtmInstancesResult -> getGtmInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGtmInstancesResult> getGtmInstances(GetGtmInstancesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:dns/getGtmInstances:getGtmInstances", TypeShape.of(GetGtmInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -3038,6 +3575,53 @@ public final class DnsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dns/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **DEPRECATED:**  This resource has been renamed to alicloud.dns.getAlidnsInstances from version 1.95.0.
+     * 
+     * This data source provides a list of DNS instances in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:**  Available in 1.84.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DnsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids("dns-cn-oew1npk****")
+     *             .build());
+     * 
+     *         ctx.export("firstInstanceId", example.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:dns/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
@@ -3186,6 +3770,55 @@ public final class DnsFunctions {
      * 
      */
     public static Output<GetRecordsResult> getRecords(GetRecordsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dns/getRecords:getRecords", TypeShape.of(GetRecordsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list of DNS Domain Records in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available since v1.0.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetRecordsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         final var recordsDs = DnsFunctions.getRecords(GetRecordsArgs.builder()
+     *             .domainName("xiaozhu.top")
+     *             .isLocked(false)
+     *             .type("A")
+     *             .hostRecordRegex("^}{@literal @}{@code ")
+     *             .outputFile("records.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstRecordId", recordsDs.applyValue(getRecordsResult -> getRecordsResult.records()[0].recordId()));
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRecordsResult> getRecords(GetRecordsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:dns/getRecords:getRecords", TypeShape.of(GetRecordsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -3465,6 +4098,52 @@ public final class DnsFunctions {
      * 
      */
     public static Output<GetResolutionLinesResult> getResolutionLines(GetResolutionLinesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dns/getResolutionLines:getResolutionLines", TypeShape.of(GetResolutionLinesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a list of DNS Resolution Lines in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available in 1.60.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetResolutionLinesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resolutionLinesDs = DnsFunctions.getResolutionLines(GetResolutionLinesArgs.builder()
+     *             .lineCodes("cn_unicom_shanxi")
+     *             .outputFile("support_lines.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstLineCode", resolutionLinesDs.applyValue(getResolutionLinesResult -> getResolutionLinesResult.lines()[0].lineCode()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetResolutionLinesResult> getResolutionLines(GetResolutionLinesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:dns/getResolutionLines:getResolutionLines", TypeShape.of(GetResolutionLinesResult.class), args, Utilities.withVersion(options));
     }
     /**

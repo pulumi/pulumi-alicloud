@@ -20,6 +20,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class CassandraFunctions {
@@ -168,6 +169,55 @@ public final class CassandraFunctions {
      * 
      */
     public static Output<GetBackupPlansResult> getBackupPlans(GetBackupPlansArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cassandra/getBackupPlans:getBackupPlans", TypeShape.of(GetBackupPlansResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cassandra Backup Plans of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.128.0+.
+     * 
+     * &gt; **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cassandra.CassandraFunctions;
+     * import com.pulumi.alicloud.cassandra.inputs.GetBackupPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CassandraFunctions.getBackupPlans(GetBackupPlansArgs.builder()
+     *             .clusterId("example_value")
+     *             .build());
+     * 
+     *         ctx.export("firstCassandraBackupPlanId", example.applyValue(getBackupPlansResult -> getBackupPlansResult.plans()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetBackupPlansResult> getBackupPlans(GetBackupPlansArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cassandra/getBackupPlans:getBackupPlans", TypeShape.of(GetBackupPlansResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -498,6 +548,53 @@ public final class CassandraFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetClustersResult> getClusters(GetClustersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cassandra/getClusters:getClusters", TypeShape.of(GetClustersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `alicloud.cassandra.getClusters` data source provides a collection of Cassandra clusters available in Alicloud account.
+     * Filters support regular expression for the cluster name, ids or tags.
+     * 
+     * &gt; **NOTE:**  Available in 1.88.0+.
+     * 
+     * &gt; **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cassandra.CassandraFunctions;
+     * import com.pulumi.alicloud.cassandra.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var cassandra = CassandraFunctions.getClusters(GetClustersArgs.builder()
+     *             .nameRegex("tf_testAccCassandra")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetClustersResult> getClustersPlain(GetClustersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cassandra/getClusters:getClusters", TypeShape.of(GetClustersResult.class), args, Utilities.withVersion(options));
     }
@@ -643,6 +740,54 @@ public final class CassandraFunctions {
      * 
      */
     public static Output<GetDataCentersResult> getDataCenters(GetDataCentersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cassandra/getDataCenters:getDataCenters", TypeShape.of(GetDataCentersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `alicloud.cassandra.getDataCenters` data source provides a collection of Cassandra Data Centers available in Alicloud account.
+     * Filters support regular expression for the cluster name or ids.
+     * 
+     * &gt; **NOTE:**  Available in 1.88.0+.
+     * 
+     * &gt; **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cassandra.CassandraFunctions;
+     * import com.pulumi.alicloud.cassandra.inputs.GetDataCentersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var cassandra = CassandraFunctions.getDataCenters(GetDataCentersArgs.builder()
+     *             .nameRegex("tf_testAccCassandra_dc")
+     *             .clusterId("cds-xxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDataCentersResult> getDataCenters(GetDataCentersArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cassandra/getDataCenters:getDataCenters", TypeShape.of(GetDataCentersResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -951,6 +1096,58 @@ public final class CassandraFunctions {
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cassandra/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides availability zones for Cassandra that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+     * 
+     * &gt; **NOTE:** Available in v1.88.0+.
+     * 
+     * &gt; **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cassandra.CassandraFunctions;
+     * import com.pulumi.alicloud.cassandra.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.cassandra.Cluster;
+     * import com.pulumi.alicloud.cassandra.ClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Declare the data source
+     *         final var zonesIds = CassandraFunctions.getZones();
+     * 
+     *         // Create an Cassandra cluster with the first matched zone
+     *         var cassandra = new Cluster("cassandra", ClusterArgs.builder()
+     *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cassandra/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
     }
     /**

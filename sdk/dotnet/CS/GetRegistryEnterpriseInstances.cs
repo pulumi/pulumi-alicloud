@@ -74,6 +74,38 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         public static Output<GetRegistryEnterpriseInstancesResult> Invoke(GetRegistryEnterpriseInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegistryEnterpriseInstancesResult>("alicloud:cs/getRegistryEnterpriseInstances:getRegistryEnterpriseInstances", args ?? new GetRegistryEnterpriseInstancesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a list Container Registry Enterprise Edition instances on Alibaba Cloud.
+        /// 
+        /// &gt; **NOTE:** Available in v1.86.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Declare the data source
+        ///     var myInstances = AliCloud.CS.GetRegistryEnterpriseInstances.Invoke(new()
+        ///     {
+        ///         NameRegex = "my-instances",
+        ///         OutputFile = "my-instances-json",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["output"] = myInstances.Apply(getRegistryEnterpriseInstancesResult =&gt; getRegistryEnterpriseInstancesResult.Instances),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRegistryEnterpriseInstancesResult> Invoke(GetRegistryEnterpriseInstancesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegistryEnterpriseInstancesResult>("alicloud:cs/getRegistryEnterpriseInstances:getRegistryEnterpriseInstances", args ?? new GetRegistryEnterpriseInstancesInvokeArgs(), options.WithDefaults());
     }
 
 

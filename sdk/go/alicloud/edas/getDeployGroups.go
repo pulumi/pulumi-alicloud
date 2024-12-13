@@ -49,21 +49,11 @@ type GetDeployGroupsResult struct {
 }
 
 func GetDeployGroupsOutput(ctx *pulumi.Context, args GetDeployGroupsOutputArgs, opts ...pulumi.InvokeOption) GetDeployGroupsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDeployGroupsResultOutput, error) {
 			args := v.(GetDeployGroupsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetDeployGroupsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:edas/getDeployGroups:getDeployGroups", args, &rv, "", opts...)
-			if err != nil {
-				return GetDeployGroupsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetDeployGroupsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetDeployGroupsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:edas/getDeployGroups:getDeployGroups", args, GetDeployGroupsResultOutput{}, options).(GetDeployGroupsResultOutput), nil
 		}).(GetDeployGroupsResultOutput)
 }
 

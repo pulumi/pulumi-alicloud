@@ -92,6 +92,47 @@ namespace Pulumi.AliCloud.RocketMQ
         /// </summary>
         public static Output<GetGroupsResult> Invoke(GetGroupsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupsResult>("alicloud:rocketmq/getGroups:getGroups", args ?? new GetGroupsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a list of ONS Groups in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available in 1.53.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```terraform 
+        /// variable "name" {
+        ///   default = "onsInstanceName"
+        /// }
+        /// 
+        /// variable "group_name" {
+        ///   default = "GID-onsGroupDatasourceName"
+        /// }
+        /// 
+        /// resource "alicloud_ons_instance" "default" {
+        ///   instance_name = var.name
+        ///   remark        = "default_ons_instance_remark"
+        /// }
+        /// 
+        /// resource "alicloud_ons_group" "default" {
+        ///   group_name  = var.group_name
+        ///   instance_id = alicloud_ons_instance.default.id
+        ///   remark      = "dafault_ons_group_remark"
+        /// }
+        /// 
+        /// data "alicloud_ons_groups" "groups_ds" {
+        ///   instance_id = alicloud_ons_group.default.instance_id
+        ///   name_regex  = var.group_id
+        ///   output_file = "groups.txt"
+        /// }
+        /// 
+        /// output "first_group_name" {
+        ///   value = data.alicloud_ons_groups.groups_ds.groups.0.group_name
+        /// }
+        /// ```
+        /// </summary>
+        public static Output<GetGroupsResult> Invoke(GetGroupsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGroupsResult>("alicloud:rocketmq/getGroups:getGroups", args ?? new GetGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -92,6 +92,47 @@ namespace Pulumi.AliCloud.Slb
         /// </summary>
         public static Output<GetAclsResult> Invoke(GetAclsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAclsResult>("alicloud:slb/getAcls:getAcls", args ?? new GetAclsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the acls in the region.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var sampleDs = AliCloud.Slb.GetAcls.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstSlbAclId"] = sampleDs.Apply(getAclsResult =&gt; getAclsResult.Acls[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Entry Block
+        /// 
+        /// The entry mapping supports the following:
+        /// 
+        /// * `entry`   - An IP addresses or CIDR blocks.
+        /// * `comment` - the comment of the entry.
+        /// 
+        /// ## Listener Block
+        /// 
+        /// The Listener mapping supports the following:
+        /// 
+        /// * `load_balancer_id` - the id of load balancer instance, the listener belongs to.
+        /// * `frontend_port` - the listener port.
+        /// * `protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
+        /// * `acl_type`      - the type of acl (such as white/black).
+        /// </summary>
+        public static Output<GetAclsResult> Invoke(GetAclsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAclsResult>("alicloud:slb/getAcls:getAcls", args ?? new GetAclsInvokeArgs(), options.WithDefaults());
     }
 
 

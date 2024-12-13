@@ -36,21 +36,11 @@ type GetEnhancedNatAvailableZonesResult struct {
 }
 
 func GetEnhancedNatAvailableZonesOutput(ctx *pulumi.Context, args GetEnhancedNatAvailableZonesOutputArgs, opts ...pulumi.InvokeOption) GetEnhancedNatAvailableZonesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetEnhancedNatAvailableZonesResultOutput, error) {
 			args := v.(GetEnhancedNatAvailableZonesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetEnhancedNatAvailableZonesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:vpc/getEnhancedNatAvailableZones:getEnhancedNatAvailableZones", args, &rv, "", opts...)
-			if err != nil {
-				return GetEnhancedNatAvailableZonesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetEnhancedNatAvailableZonesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetEnhancedNatAvailableZonesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:vpc/getEnhancedNatAvailableZones:getEnhancedNatAvailableZones", args, GetEnhancedNatAvailableZonesResultOutput{}, options).(GetEnhancedNatAvailableZonesResultOutput), nil
 		}).(GetEnhancedNatAvailableZonesResultOutput)
 }
 

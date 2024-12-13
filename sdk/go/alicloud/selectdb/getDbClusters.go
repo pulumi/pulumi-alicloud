@@ -122,21 +122,11 @@ type GetDbClustersResult struct {
 }
 
 func GetDbClustersOutput(ctx *pulumi.Context, args GetDbClustersOutputArgs, opts ...pulumi.InvokeOption) GetDbClustersResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDbClustersResultOutput, error) {
 			args := v.(GetDbClustersArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetDbClustersResult
-			secret, err := ctx.InvokePackageRaw("alicloud:selectdb/getDbClusters:getDbClusters", args, &rv, "", opts...)
-			if err != nil {
-				return GetDbClustersResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetDbClustersResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetDbClustersResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:selectdb/getDbClusters:getDbClusters", args, GetDbClustersResultOutput{}, options).(GetDbClustersResultOutput), nil
 		}).(GetDbClustersResultOutput)
 }
 

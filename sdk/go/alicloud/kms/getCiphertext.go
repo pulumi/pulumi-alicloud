@@ -75,21 +75,11 @@ type LookupCiphertextResult struct {
 }
 
 func LookupCiphertextOutput(ctx *pulumi.Context, args LookupCiphertextOutputArgs, opts ...pulumi.InvokeOption) LookupCiphertextResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCiphertextResultOutput, error) {
 			args := v.(LookupCiphertextArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupCiphertextResult
-			secret, err := ctx.InvokePackageRaw("alicloud:kms/getCiphertext:getCiphertext", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCiphertextResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCiphertextResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCiphertextResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:kms/getCiphertext:getCiphertext", args, LookupCiphertextResultOutput{}, options).(LookupCiphertextResultOutput), nil
 		}).(LookupCiphertextResultOutput)
 }
 

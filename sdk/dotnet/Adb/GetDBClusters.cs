@@ -74,6 +74,38 @@ namespace Pulumi.AliCloud.Adb
         /// </summary>
         public static Output<GetDBClustersResult> Invoke(GetDBClustersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDBClustersResult>("alicloud:adb/getDBClusters:getDBClusters", args ?? new GetDBClustersInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Adb DBClusters of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.121.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Adb.GetDBClusters.Invoke(new()
+        ///     {
+        ///         DescriptionRegex = "example",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstAdbDbClusterId"] = example.Apply(getDBClustersResult =&gt; getDBClustersResult.Clusters[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDBClustersResult> Invoke(GetDBClustersInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDBClustersResult>("alicloud:adb/getDBClusters:getDBClusters", args ?? new GetDBClustersInvokeArgs(), options.WithDefaults());
     }
 
 

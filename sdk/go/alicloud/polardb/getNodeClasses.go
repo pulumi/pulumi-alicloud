@@ -93,21 +93,11 @@ type GetNodeClassesResult struct {
 }
 
 func GetNodeClassesOutput(ctx *pulumi.Context, args GetNodeClassesOutputArgs, opts ...pulumi.InvokeOption) GetNodeClassesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetNodeClassesResultOutput, error) {
 			args := v.(GetNodeClassesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetNodeClassesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:polardb/getNodeClasses:getNodeClasses", args, &rv, "", opts...)
-			if err != nil {
-				return GetNodeClassesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetNodeClassesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetNodeClassesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:polardb/getNodeClasses:getNodeClasses", args, GetNodeClassesResultOutput{}, options).(GetNodeClassesResultOutput), nil
 		}).(GetNodeClassesResultOutput)
 }
 

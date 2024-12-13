@@ -77,21 +77,11 @@ type GetActivationsResult struct {
 }
 
 func GetActivationsOutput(ctx *pulumi.Context, args GetActivationsOutputArgs, opts ...pulumi.InvokeOption) GetActivationsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetActivationsResultOutput, error) {
 			args := v.(GetActivationsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetActivationsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:ecs/getActivations:getActivations", args, &rv, "", opts...)
-			if err != nil {
-				return GetActivationsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetActivationsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetActivationsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:ecs/getActivations:getActivations", args, GetActivationsResultOutput{}, options).(GetActivationsResultOutput), nil
 		}).(GetActivationsResultOutput)
 }
 

@@ -78,6 +78,40 @@ namespace Pulumi.AliCloud.Adb
         /// </summary>
         public static Output<GetClustersResult> Invoke(GetClustersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:adb/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `alicloud.adb.getClusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
+        /// Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
+        /// 
+        /// &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
+        /// 
+        /// &gt; **NOTE:** Available in v1.71.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var adbClustersDs = AliCloud.Adb.GetClusters.Invoke(new()
+        ///     {
+        ///         DescriptionRegex = "am-\\w+",
+        ///         Status = "Running",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstAdbClusterId"] = adbClustersDs.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetClustersResult> Invoke(GetClustersInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:adb/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithDefaults());
     }
 
 

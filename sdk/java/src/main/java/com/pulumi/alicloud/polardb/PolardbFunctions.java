@@ -32,6 +32,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class PolardbFunctions {
@@ -327,6 +328,104 @@ public final class PolardbFunctions {
      * 
      */
     public static Output<GetAccountsResult> getAccounts(GetAccountsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:polardb/getAccounts:getAccounts", TypeShape.of(GetAccountsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `alicloud.polardb.getAccounts` data source provides a collection of PolarDB cluster database account available in Alibaba Cloud account.
+     * Filters support regular expression for the account name, searches by clusterId.
+     * 
+     * &gt; **NOTE:** Available since v1.70.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetNodeClassesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.polardb.Cluster;
+     * import com.pulumi.alicloud.polardb.ClusterArgs;
+     * import com.pulumi.alicloud.polardb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.polardb.Account;
+     * import com.pulumi.alicloud.polardb.AccountArgs;
+     * import com.pulumi.alicloud.polardb.inputs.GetAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .category("Normal")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.16.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("172.16.0.0/24")
+     *             .zoneId(this_.classes()[0].zoneId())
+     *             .vswitchName("terraform-example")
+     *             .build());
+     * 
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .dbNodeCount("2")
+     *             .dbNodeClass(this_.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass())
+     *             .vswitchId(defaultSwitch.id())
+     *             .build());
+     * 
+     *         final var polardbClustersDs = PolardbFunctions.getClusters(GetClustersArgs.builder()
+     *             .descriptionRegex(cluster.description())
+     *             .status("Running")
+     *             .build());
+     * 
+     *         var account = new Account("account", AccountArgs.builder()
+     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())))
+     *             .accountName("tfnormal_01")
+     *             .accountPassword("Test12345")
+     *             .accountDescription("tf_account_description")
+     *             .accountType("Normal")
+     *             .build());
+     * 
+     *         final var default = PolardbFunctions.getAccounts(GetAccountsArgs.builder()
+     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())))
+     *             .nameRegex(account.accountName())
+     *             .build());
+     * 
+     *         ctx.export("account", default_.applyValue(default_ -> default_.accounts()[0].accountName()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAccountsResult> getAccounts(GetAccountsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:polardb/getAccounts:getAccounts", TypeShape.of(GetAccountsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -916,6 +1015,88 @@ public final class PolardbFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetClustersResult> getClusters(GetClustersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:polardb/getClusters:getClusters", TypeShape.of(GetClustersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `alicloud.polardb.getClusters` data source provides a collection of PolarDB clusters available in Alibaba Cloud account.
+     * Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
+     * 
+     * &gt; **NOTE:** Available since v1.66.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetNodeClassesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.polardb.Cluster;
+     * import com.pulumi.alicloud.polardb.ClusterArgs;
+     * import com.pulumi.alicloud.polardb.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .category("Normal")
+     *             .build());
+     * 
+     *         var default_ = new Network("default", NetworkArgs.builder()
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.16.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(default_.id())
+     *             .cidrBlock("172.16.0.0/24")
+     *             .zoneId(this_.classes()[0].zoneId())
+     *             .vswitchName("terraform-example")
+     *             .build());
+     * 
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .dbNodeCount("2")
+     *             .dbNodeClass(this_.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass())
+     *             .vswitchId(defaultSwitch.id())
+     *             .build());
+     * 
+     *         final var polardbClustersDs = PolardbFunctions.getClusters(GetClustersArgs.builder()
+     *             .descriptionRegex(cluster.id())
+     *             .status("Running")
+     *             .build());
+     * 
+     *         ctx.export("firstPolardbClusterId", polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetClustersResult> getClustersPlain(GetClustersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:polardb/getClusters:getClusters", TypeShape.of(GetClustersResult.class), args, Utilities.withVersion(options));
     }
@@ -1300,6 +1481,102 @@ public final class PolardbFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetDatabasesResult> getDatabases(GetDatabasesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:polardb/getDatabases:getDatabases", TypeShape.of(GetDatabasesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `alicloud.polardb.getDatabases` data source provides a collection of PolarDB cluster database available in Alibaba Cloud account.
+     * Filters support regular expression for the database name, searches by clusterId.
+     * 
+     * &gt; **NOTE:** Available since v1.70.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetNodeClassesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.polardb.Cluster;
+     * import com.pulumi.alicloud.polardb.ClusterArgs;
+     * import com.pulumi.alicloud.polardb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.polardb.Database;
+     * import com.pulumi.alicloud.polardb.DatabaseArgs;
+     * import com.pulumi.alicloud.polardb.inputs.GetDatabasesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .category("Normal")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.16.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("172.16.0.0/24")
+     *             .zoneId(this_.classes()[0].zoneId())
+     *             .vswitchName("terraform-example")
+     *             .build());
+     * 
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .dbNodeCount("2")
+     *             .dbNodeClass(this_.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass())
+     *             .vswitchId(defaultSwitch.id())
+     *             .build());
+     * 
+     *         final var polardbClustersDs = PolardbFunctions.getClusters(GetClustersArgs.builder()
+     *             .descriptionRegex(cluster.description())
+     *             .status("Running")
+     *             .build());
+     * 
+     *         var defaultDatabase = new Database("defaultDatabase", DatabaseArgs.builder()
+     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())))
+     *             .dbName(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> String.format("tfaccountpri_%s", polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()))))
+     *             .dbDescription("from terraform")
+     *             .build());
+     * 
+     *         final var default = PolardbFunctions.getDatabases(GetDatabasesArgs.builder()
+     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())))
+     *             .nameRegex(defaultDatabase.dbName())
+     *             .build());
+     * 
+     *         ctx.export("database", default_.applyValue(default_ -> default_.databases()[0].dbName()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDatabasesResult> getDatabasesPlain(GetDatabasesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:polardb/getDatabases:getDatabases", TypeShape.of(GetDatabasesResult.class), args, Utilities.withVersion(options));
     }
@@ -1562,6 +1839,93 @@ public final class PolardbFunctions {
      * 
      */
     public static Output<GetEndpointsResult> getEndpoints(GetEndpointsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:polardb/getEndpoints:getEndpoints", TypeShape.of(GetEndpointsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `alicloud.polardb.getEndpoints` data source provides a collection of PolarDB endpoints available in Alibaba Cloud account.
+     * Filters support regular expression for the cluster name, searches by clusterId, and other filters which are listed below.
+     * 
+     * &gt; **NOTE:** Available since v1.68.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetNodeClassesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.polardb.Cluster;
+     * import com.pulumi.alicloud.polardb.ClusterArgs;
+     * import com.pulumi.alicloud.polardb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.polardb.inputs.GetEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .category("Normal")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.16.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("172.16.0.0/24")
+     *             .zoneId(this_.classes()[0].zoneId())
+     *             .vswitchName("terraform-example")
+     *             .build());
+     * 
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .dbNodeCount("2")
+     *             .dbNodeClass(this_.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass())
+     *             .vswitchId(defaultSwitch.id())
+     *             .build());
+     * 
+     *         final var polardbClustersDs = PolardbFunctions.getClusters(GetClustersArgs.builder()
+     *             .descriptionRegex(cluster.description())
+     *             .status("Running")
+     *             .build());
+     * 
+     *         final var default = PolardbFunctions.getEndpoints(GetEndpointsArgs.builder()
+     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())))
+     *             .build());
+     * 
+     *         ctx.export("endpoint", default_.applyValue(default_ -> default_.endpoints()[0].dbEndpointId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEndpointsResult> getEndpoints(GetEndpointsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:polardb/getEndpoints:getEndpoints", TypeShape.of(GetEndpointsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2212,6 +2576,100 @@ public final class PolardbFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetGlobalDatabaseNetworksResult> getGlobalDatabaseNetworks(GetGlobalDatabaseNetworksArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:polardb/getGlobalDatabaseNetworks:getGlobalDatabaseNetworks", TypeShape.of(GetGlobalDatabaseNetworksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the PolarDB Global Database Networks of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.181.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetNodeClassesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.polardb.Cluster;
+     * import com.pulumi.alicloud.polardb.ClusterArgs;
+     * import com.pulumi.alicloud.polardb.GlobalDatabaseNetwork;
+     * import com.pulumi.alicloud.polardb.GlobalDatabaseNetworkArgs;
+     * import com.pulumi.alicloud.polardb.inputs.GetGlobalDatabaseNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .category("Normal")
+     *             .build());
+     * 
+     *         var default_ = new Network("default", NetworkArgs.builder()
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.16.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(default_.id())
+     *             .cidrBlock("172.16.0.0/24")
+     *             .zoneId(this_.classes()[0].zoneId())
+     *             .vswitchName("terraform-example")
+     *             .build());
+     * 
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .dbNodeCount("2")
+     *             .dbNodeClass(this_.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass())
+     *             .vswitchId(defaultSwitch.id())
+     *             .build());
+     * 
+     *         var defaultGlobalDatabaseNetwork = new GlobalDatabaseNetwork("defaultGlobalDatabaseNetwork", GlobalDatabaseNetworkArgs.builder()
+     *             .dbClusterId(cluster.id())
+     *             .description(cluster.id())
+     *             .build());
+     * 
+     *         final var ids = PolardbFunctions.getGlobalDatabaseNetworks(GetGlobalDatabaseNetworksArgs.builder()
+     *             .ids(defaultGlobalDatabaseNetwork.id())
+     *             .build());
+     * 
+     *         ctx.export("polardbGlobalDatabaseNetworkId1", ids.applyValue(getGlobalDatabaseNetworksResult -> getGlobalDatabaseNetworksResult).applyValue(ids -> ids.applyValue(getGlobalDatabaseNetworksResult -> getGlobalDatabaseNetworksResult.networks()[0].id())));
+     *         final var description = PolardbFunctions.getGlobalDatabaseNetworks(GetGlobalDatabaseNetworksArgs.builder()
+     *             .description(defaultGlobalDatabaseNetwork.description())
+     *             .build());
+     * 
+     *         ctx.export("polardbGlobalDatabaseNetworkId2", description.applyValue(getGlobalDatabaseNetworksResult -> getGlobalDatabaseNetworksResult).applyValue(description -> description.applyValue(getGlobalDatabaseNetworksResult -> getGlobalDatabaseNetworksResult.networks()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetGlobalDatabaseNetworksResult> getGlobalDatabaseNetworksPlain(GetGlobalDatabaseNetworksPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:polardb/getGlobalDatabaseNetworks:getGlobalDatabaseNetworks", TypeShape.of(GetGlobalDatabaseNetworksResult.class), args, Utilities.withVersion(options));
     }
@@ -2357,6 +2815,54 @@ public final class PolardbFunctions {
      * 
      */
     public static Output<GetNodeClassesResult> getNodeClasses(GetNodeClassesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:polardb/getNodeClasses:getNodeClasses", TypeShape.of(GetNodeClassesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the PolarDB node classes resource available info of Alibaba Cloud.
+     * 
+     * &gt; **NOTE:** Available since v1.81.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetNodeClassesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resources = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
+     *             .payType("PostPaid")
+     *             .dbType("MySQL")
+     *             .dbVersion("5.6")
+     *             .build());
+     * 
+     *         ctx.export("polardbNodeClasses", resources.applyValue(getNodeClassesResult -> getNodeClassesResult.classes()));
+     *         ctx.export("polardbAvailableZoneId", resources.applyValue(getNodeClassesResult -> getNodeClassesResult.classes()[0].zoneId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNodeClassesResult> getNodeClasses(GetNodeClassesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:polardb/getNodeClasses:getNodeClasses", TypeShape.of(GetNodeClassesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2746,6 +3252,63 @@ public final class PolardbFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetParameterGroupsResult> getParameterGroups(GetParameterGroupsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:polardb/getParameterGroups:getParameterGroups", TypeShape.of(GetParameterGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the PolarDB Parameter Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.183.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetParameterGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = PolardbFunctions.getParameterGroups(GetParameterGroupsArgs.builder()
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .build());
+     * 
+     *         final var ids = PolardbFunctions.getParameterGroups(GetParameterGroupsArgs.builder()
+     *             .ids(default_.groups()[0].id())
+     *             .build());
+     * 
+     *         ctx.export("polardbParameterGroupId1", ids.applyValue(getParameterGroupsResult -> getParameterGroupsResult.groups()[0].id()));
+     *         final var nameRegex = PolardbFunctions.getParameterGroups(GetParameterGroupsArgs.builder()
+     *             .nameRegex(default_.groups()[0].parameterGroupName())
+     *             .build());
+     * 
+     *         ctx.export("polardbParameterGroupId2", nameRegex.applyValue(getParameterGroupsResult -> getParameterGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetParameterGroupsResult> getParameterGroupsPlain(GetParameterGroupsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:polardb/getParameterGroups:getParameterGroups", TypeShape.of(GetParameterGroupsResult.class), args, Utilities.withVersion(options));
     }
@@ -2962,6 +3525,49 @@ public final class PolardbFunctions {
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:polardb/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides availability zones for PolarDB that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+     * 
+     * &gt; **NOTE:** Available in v1.74.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Declare the data source
+     *         final var zonesIds = PolardbFunctions.getZones();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:polardb/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
     }
     /**

@@ -76,6 +76,39 @@ namespace Pulumi.AliCloud.Sae
         /// </summary>
         public static Output<GetGreyTagRoutesResult> Invoke(GetGreyTagRoutesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGreyTagRoutesResult>("alicloud:sae/getGreyTagRoutes:getGreyTagRoutes", args ?? new GetGreyTagRoutesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Sae GreyTagRoutes of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.160.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var nameRegex = AliCloud.Sae.GetGreyTagRoutes.Invoke(new()
+        ///     {
+        ///         AppId = "example_id",
+        ///         NameRegex = "^my-GreyTagRoute",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["saeGreyTagRoutesId"] = nameRegex.Apply(getGreyTagRoutesResult =&gt; getGreyTagRoutesResult.Routes[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetGreyTagRoutesResult> Invoke(GetGreyTagRoutesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGreyTagRoutesResult>("alicloud:sae/getGreyTagRoutes:getGreyTagRoutes", args ?? new GetGreyTagRoutesInvokeArgs(), options.WithDefaults());
     }
 
 

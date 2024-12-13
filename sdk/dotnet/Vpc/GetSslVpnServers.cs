@@ -70,6 +70,36 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public static Output<GetSslVpnServersResult> Invoke(GetSslVpnServersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSslVpnServersResult>("alicloud:vpc/getSslVpnServers:getSslVpnServers", args ?? new GetSslVpnServersInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The SSL-VPN servers data source lists lots of SSL-VPN servers resource information owned by an Alicloud account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = AliCloud.Vpc.GetSslVpnServers.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "fake-server-id",
+        ///         },
+        ///         VpnGatewayId = "fake-vpn-id",
+        ///         OutputFile = "/tmp/sslserver",
+        ///         NameRegex = "^foo",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSslVpnServersResult> Invoke(GetSslVpnServersInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSslVpnServersResult>("alicloud:vpc/getSslVpnServers:getSslVpnServers", args ?? new GetSslVpnServersInvokeArgs(), options.WithDefaults());
     }
 
 

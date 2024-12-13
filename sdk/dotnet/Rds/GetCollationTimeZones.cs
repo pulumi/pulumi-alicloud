@@ -74,6 +74,38 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         public static Output<GetCollationTimeZonesResult> Invoke(GetCollationTimeZonesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCollationTimeZonesResult>("alicloud:rds/getCollationTimeZones:getCollationTimeZones", args ?? new GetCollationTimeZonesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Operation to query the character set collations and time zones available for use in ApsaraDB RDS.
+        /// 
+        /// &gt; **NOTE:** Available in v1.198.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var zones = AliCloud.Rds.GetCollationTimeZones.Invoke(new()
+        ///     {
+        ///         OutputFile = "./classes.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRdsCollationTimeZones"] = zones.Apply(getCollationTimeZonesResult =&gt; getCollationTimeZonesResult.CollationTimeZones[0]),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetCollationTimeZonesResult> Invoke(GetCollationTimeZonesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCollationTimeZonesResult>("alicloud:rds/getCollationTimeZones:getCollationTimeZones", args ?? new GetCollationTimeZonesInvokeArgs(), options.WithDefaults());
     }
 
 

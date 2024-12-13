@@ -76,21 +76,11 @@ type GetCustomDomainsResult struct {
 }
 
 func GetCustomDomainsOutput(ctx *pulumi.Context, args GetCustomDomainsOutputArgs, opts ...pulumi.InvokeOption) GetCustomDomainsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetCustomDomainsResultOutput, error) {
 			args := v.(GetCustomDomainsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetCustomDomainsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:fc/getCustomDomains:getCustomDomains", args, &rv, "", opts...)
-			if err != nil {
-				return GetCustomDomainsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetCustomDomainsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetCustomDomainsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:fc/getCustomDomains:getCustomDomains", args, GetCustomDomainsResultOutput{}, options).(GetCustomDomainsResultOutput), nil
 		}).(GetCustomDomainsResultOutput)
 }
 

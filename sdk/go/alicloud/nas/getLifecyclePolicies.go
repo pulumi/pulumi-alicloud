@@ -90,21 +90,11 @@ type GetLifecyclePoliciesResult struct {
 }
 
 func GetLifecyclePoliciesOutput(ctx *pulumi.Context, args GetLifecyclePoliciesOutputArgs, opts ...pulumi.InvokeOption) GetLifecyclePoliciesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetLifecyclePoliciesResultOutput, error) {
 			args := v.(GetLifecyclePoliciesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetLifecyclePoliciesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:nas/getLifecyclePolicies:getLifecyclePolicies", args, &rv, "", opts...)
-			if err != nil {
-				return GetLifecyclePoliciesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetLifecyclePoliciesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetLifecyclePoliciesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:nas/getLifecyclePolicies:getLifecyclePolicies", args, GetLifecyclePoliciesResultOutput{}, options).(GetLifecyclePoliciesResultOutput), nil
 		}).(GetLifecyclePoliciesResultOutput)
 }
 

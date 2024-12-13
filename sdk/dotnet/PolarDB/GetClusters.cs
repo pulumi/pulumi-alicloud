@@ -138,6 +138,70 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         public static Output<GetClustersResult> Invoke(GetClustersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:polardb/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `alicloud.polardb.getClusters` data source provides a collection of PolarDB clusters available in Alibaba Cloud account.
+        /// Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
+        /// 
+        /// &gt; **NOTE:** Available since v1.66.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = AliCloud.PolarDB.GetNodeClasses.Invoke(new()
+        ///     {
+        ///         DbType = "MySQL",
+        ///         DbVersion = "8.0",
+        ///         PayType = "PostPaid",
+        ///         Category = "Normal",
+        ///     });
+        /// 
+        ///     var @default = new AliCloud.Vpc.Network("default", new()
+        ///     {
+        ///         VpcName = "terraform-example",
+        ///         CidrBlock = "172.16.0.0/16",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+        ///     {
+        ///         VpcId = @default.Id,
+        ///         CidrBlock = "172.16.0.0/24",
+        ///         ZoneId = @this.Apply(@this =&gt; @this.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.ZoneId)),
+        ///         VswitchName = "terraform-example",
+        ///     });
+        /// 
+        ///     var cluster = new AliCloud.PolarDB.Cluster("cluster", new()
+        ///     {
+        ///         DbType = "MySQL",
+        ///         DbVersion = "8.0",
+        ///         PayType = "PostPaid",
+        ///         DbNodeCount = 2,
+        ///         DbNodeClass = @this.Apply(@this =&gt; @this.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.SupportedEngines[0]?.AvailableResources[0]?.DbNodeClass)),
+        ///         VswitchId = defaultSwitch.Id,
+        ///     });
+        /// 
+        ///     var polardbClustersDs = AliCloud.PolarDB.GetClusters.Invoke(new()
+        ///     {
+        ///         DescriptionRegex = cluster.Id,
+        ///         Status = "Running",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstPolardbClusterId"] = polardbClustersDs.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetClustersResult> Invoke(GetClustersInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:polardb/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithDefaults());
     }
 
 

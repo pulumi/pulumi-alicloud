@@ -16,6 +16,9 @@ namespace Pulumi.AliCloud.Yundun
 
         public static Output<GetDBAuditInstanceResult> Invoke(GetDBAuditInstanceInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDBAuditInstanceResult>("alicloud:yundun/getDBAuditInstance:getDBAuditInstance", args ?? new GetDBAuditInstanceInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetDBAuditInstanceResult> Invoke(GetDBAuditInstanceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDBAuditInstanceResult>("alicloud:yundun/getDBAuditInstance:getDBAuditInstance", args ?? new GetDBAuditInstanceInvokeArgs(), options.WithDefaults());
     }
 
 

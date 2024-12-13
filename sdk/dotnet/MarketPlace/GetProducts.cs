@@ -26,6 +26,14 @@ namespace Pulumi.AliCloud.MarketPlace
         /// </summary>
         public static Output<GetProductsResult> Invoke(GetProductsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProductsResult>("alicloud:marketplace/getProducts:getProducts", args ?? new GetProductsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Market product items of Alibaba Cloud.
+        /// 
+        /// &gt; **NOTE:** Available in 1.64.0+
+        /// </summary>
+        public static Output<GetProductsResult> Invoke(GetProductsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetProductsResult>("alicloud:marketplace/getProducts:getProducts", args ?? new GetProductsInvokeArgs(), options.WithDefaults());
     }
 
 

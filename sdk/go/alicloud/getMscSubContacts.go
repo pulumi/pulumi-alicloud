@@ -80,21 +80,11 @@ type GetMscSubContactsResult struct {
 }
 
 func GetMscSubContactsOutput(ctx *pulumi.Context, args GetMscSubContactsOutputArgs, opts ...pulumi.InvokeOption) GetMscSubContactsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetMscSubContactsResultOutput, error) {
 			args := v.(GetMscSubContactsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetMscSubContactsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:index/getMscSubContacts:getMscSubContacts", args, &rv, "", opts...)
-			if err != nil {
-				return GetMscSubContactsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetMscSubContactsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetMscSubContactsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:index/getMscSubContacts:getMscSubContacts", args, GetMscSubContactsResultOutput{}, options).(GetMscSubContactsResultOutput), nil
 		}).(GetMscSubContactsResultOutput)
 }
 

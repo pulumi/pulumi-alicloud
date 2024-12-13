@@ -58,21 +58,11 @@ type GetTrailsDeprecatedResult struct {
 }
 
 func GetTrailsDeprecatedOutput(ctx *pulumi.Context, args GetTrailsDeprecatedOutputArgs, opts ...pulumi.InvokeOption) GetTrailsDeprecatedResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetTrailsDeprecatedResultOutput, error) {
 			args := v.(GetTrailsDeprecatedArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetTrailsDeprecatedResult
-			secret, err := ctx.InvokePackageRaw("alicloud:actiontrail/getTrailsDeprecated:getTrailsDeprecated", args, &rv, "", opts...)
-			if err != nil {
-				return GetTrailsDeprecatedResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetTrailsDeprecatedResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetTrailsDeprecatedResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:actiontrail/getTrailsDeprecated:getTrailsDeprecated", args, GetTrailsDeprecatedResultOutput{}, options).(GetTrailsDeprecatedResultOutput), nil
 		}).(GetTrailsDeprecatedResultOutput)
 }
 

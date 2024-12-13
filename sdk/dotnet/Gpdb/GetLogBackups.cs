@@ -92,6 +92,47 @@ namespace Pulumi.AliCloud.Gpdb
         /// </summary>
         public static Output<GetLogBackupsResult> Invoke(GetLogBackupsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLogBackupsResult>("alicloud:gpdb/getLogBackups:getLogBackups", args ?? new GetLogBackupsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides Gpdb Logbackup available to the user.[What is Log Backup](https://www.alibabacloud.com/help/en/)
+        /// 
+        /// &gt; **NOTE:** Available since v1.231.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Gpdb.GetInstances.Invoke(new()
+        ///     {
+        ///         NameRegex = "^default-NODELETING$",
+        ///     });
+        /// 
+        ///     var defaultGetLogBackups = AliCloud.Gpdb.GetLogBackups.Invoke(new()
+        ///     {
+        ///         StartTime = "2022-12-12T02:00Z",
+        ///         EndTime = "2024-12-12T02:00Z",
+        ///         DbInstanceId = @default.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0]),
+        ///         Ids = new[]
+        ///         {
+        ///             @default.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0]),
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudGpdbLogbackupExampleId"] = defaultGetLogBackups.Apply(getLogBackupsResult =&gt; getLogBackupsResult.Logbackups[0]?.DbInstanceId),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetLogBackupsResult> Invoke(GetLogBackupsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetLogBackupsResult>("alicloud:gpdb/getLogBackups:getLogBackups", args ?? new GetLogBackupsInvokeArgs(), options.WithDefaults());
     }
 
 

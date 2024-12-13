@@ -70,6 +70,36 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public static Output<GetSslVpnClientCertsResult> Invoke(GetSslVpnClientCertsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSslVpnClientCertsResult>("alicloud:vpc/getSslVpnClientCerts:getSslVpnClientCerts", args ?? new GetSslVpnClientCertsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The SSL-VPN client certificates data source lists lots of SSL-VPN client certificates resource information owned by an Alicloud account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = AliCloud.Vpc.GetSslVpnClientCerts.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "fake-cert-id",
+        ///         },
+        ///         SslVpnServerId = "fake-server-id",
+        ///         OutputFile = "/tmp/clientcert",
+        ///         NameRegex = "^foo",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSslVpnClientCertsResult> Invoke(GetSslVpnClientCertsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSslVpnClientCertsResult>("alicloud:vpc/getSslVpnClientCerts:getSslVpnClientCerts", args ?? new GetSslVpnClientCertsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -86,21 +86,11 @@ type GetSaslAclsResult struct {
 }
 
 func GetSaslAclsOutput(ctx *pulumi.Context, args GetSaslAclsOutputArgs, opts ...pulumi.InvokeOption) GetSaslAclsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSaslAclsResultOutput, error) {
 			args := v.(GetSaslAclsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetSaslAclsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:actiontrail/getSaslAcls:getSaslAcls", args, &rv, "", opts...)
-			if err != nil {
-				return GetSaslAclsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetSaslAclsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetSaslAclsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:actiontrail/getSaslAcls:getSaslAcls", args, GetSaslAclsResultOutput{}, options).(GetSaslAclsResultOutput), nil
 		}).(GetSaslAclsResultOutput)
 }
 

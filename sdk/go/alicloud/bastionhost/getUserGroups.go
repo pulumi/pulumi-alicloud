@@ -93,21 +93,11 @@ type GetUserGroupsResult struct {
 }
 
 func GetUserGroupsOutput(ctx *pulumi.Context, args GetUserGroupsOutputArgs, opts ...pulumi.InvokeOption) GetUserGroupsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetUserGroupsResultOutput, error) {
 			args := v.(GetUserGroupsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetUserGroupsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:bastionhost/getUserGroups:getUserGroups", args, &rv, "", opts...)
-			if err != nil {
-				return GetUserGroupsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetUserGroupsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetUserGroupsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:bastionhost/getUserGroups:getUserGroups", args, GetUserGroupsResultOutput{}, options).(GetUserGroupsResultOutput), nil
 		}).(GetUserGroupsResultOutput)
 }
 

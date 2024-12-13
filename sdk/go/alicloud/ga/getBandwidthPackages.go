@@ -87,21 +87,11 @@ type GetBandwidthPackagesResult struct {
 }
 
 func GetBandwidthPackagesOutput(ctx *pulumi.Context, args GetBandwidthPackagesOutputArgs, opts ...pulumi.InvokeOption) GetBandwidthPackagesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetBandwidthPackagesResultOutput, error) {
 			args := v.(GetBandwidthPackagesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetBandwidthPackagesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:ga/getBandwidthPackages:getBandwidthPackages", args, &rv, "", opts...)
-			if err != nil {
-				return GetBandwidthPackagesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetBandwidthPackagesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetBandwidthPackagesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:ga/getBandwidthPackages:getBandwidthPackages", args, GetBandwidthPackagesResultOutput{}, options).(GetBandwidthPackagesResultOutput), nil
 		}).(GetBandwidthPackagesResultOutput)
 }
 

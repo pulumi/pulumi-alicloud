@@ -74,6 +74,38 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         public static Output<GetSlotsResult> Invoke(GetSlotsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSlotsResult>("alicloud:rds/getSlots:getSlots", args ?? new GetSlotsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Rds Replication Slots of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.204.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Rds.GetSlots.Invoke(new()
+        ///     {
+        ///         DbInstanceId = "example_value",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRdsSlotsName"] = example.Apply(getSlotsResult =&gt; getSlotsResult.Slots[0]?.SlotName),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSlotsResult> Invoke(GetSlotsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSlotsResult>("alicloud:rds/getSlots:getSlots", args ?? new GetSlotsInvokeArgs(), options.WithDefaults());
     }
 
 

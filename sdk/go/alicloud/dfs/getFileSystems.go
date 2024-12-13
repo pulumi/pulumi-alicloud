@@ -84,21 +84,11 @@ type GetFileSystemsResult struct {
 }
 
 func GetFileSystemsOutput(ctx *pulumi.Context, args GetFileSystemsOutputArgs, opts ...pulumi.InvokeOption) GetFileSystemsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetFileSystemsResultOutput, error) {
 			args := v.(GetFileSystemsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetFileSystemsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:dfs/getFileSystems:getFileSystems", args, &rv, "", opts...)
-			if err != nil {
-				return GetFileSystemsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetFileSystemsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetFileSystemsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:dfs/getFileSystems:getFileSystems", args, GetFileSystemsResultOutput{}, options).(GetFileSystemsResultOutput), nil
 		}).(GetFileSystemsResultOutput)
 }
 

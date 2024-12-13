@@ -128,6 +128,65 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// </summary>
         public static Output<GetServerDisksResult> Invoke(GetServerDisksInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServerDisksResult>("alicloud:simpleapplicationserver/getServerDisks:getServerDisks", args ?? new GetServerDisksInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Simple Application Server Disks of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.143.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.SimpleApplicationServer.GetServerDisks.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.SimpleApplicationServer.GetServerDisks.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Disk",
+        ///     });
+        /// 
+        ///     var status = AliCloud.SimpleApplicationServer.GetServerDisks.Invoke(new()
+        ///     {
+        ///         Status = "In_use",
+        ///     });
+        /// 
+        ///     var instanceId = AliCloud.SimpleApplicationServer.GetServerDisks.Invoke(new()
+        ///     {
+        ///         InstanceId = "example_value",
+        ///     });
+        /// 
+        ///     var diskType = AliCloud.SimpleApplicationServer.GetServerDisks.Invoke(new()
+        ///     {
+        ///         DiskType = "System",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["simpleApplicationServerDiskId1"] = ids.Apply(getServerDisksResult =&gt; getServerDisksResult.Disks[0]?.Id),
+        ///         ["simpleApplicationServerDiskId2"] = nameRegex.Apply(getServerDisksResult =&gt; getServerDisksResult.Disks[0]?.Id),
+        ///         ["simpleApplicationServerDiskId3"] = status.Apply(getServerDisksResult =&gt; getServerDisksResult.Disks[0]?.Id),
+        ///         ["simpleApplicationServerDiskId4"] = instanceId.Apply(getServerDisksResult =&gt; getServerDisksResult.Disks[0]?.Id),
+        ///         ["simpleApplicationServerDiskId5"] = diskType.Apply(getServerDisksResult =&gt; getServerDisksResult.Disks[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetServerDisksResult> Invoke(GetServerDisksInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServerDisksResult>("alicloud:simpleapplicationserver/getServerDisks:getServerDisks", args ?? new GetServerDisksInvokeArgs(), options.WithDefaults());
     }
 
 

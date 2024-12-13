@@ -17,6 +17,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class ServicemeshFunctions {
@@ -241,6 +242,62 @@ public final class ServicemeshFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetExtensionProvidersResult> getExtensionProviders(GetExtensionProvidersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:servicemesh/getExtensionProviders:getExtensionProviders", TypeShape.of(GetExtensionProvidersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Service Mesh Extension Providers of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.191.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.servicemesh.ServicemeshFunctions;
+     * import com.pulumi.alicloud.servicemesh.inputs.GetExtensionProvidersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ServicemeshFunctions.getExtensionProviders(GetExtensionProvidersArgs.builder()
+     *             .ids("example_id")
+     *             .serviceMeshId("example_service_mesh_id")
+     *             .type("httpextauth")
+     *             .build());
+     * 
+     *         ctx.export("serviceMeshExtensionProvidersId1", ids.applyValue(getExtensionProvidersResult -> getExtensionProvidersResult.providers()[0].id()));
+     *         final var nameRegex = ServicemeshFunctions.getExtensionProviders(GetExtensionProvidersArgs.builder()
+     *             .nameRegex("^my-ServiceMeshExtensionProvider")
+     *             .serviceMeshId("example_service_mesh_id")
+     *             .type("httpextauth")
+     *             .build());
+     * 
+     *         ctx.export("serviceMeshExtensionProvidersId2", nameRegex.applyValue(getExtensionProvidersResult -> getExtensionProvidersResult.providers()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetExtensionProvidersResult> getExtensionProvidersPlain(GetExtensionProvidersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:servicemesh/getExtensionProviders:getExtensionProviders", TypeShape.of(GetExtensionProvidersResult.class), args, Utilities.withVersion(options));
     }
@@ -287,6 +344,15 @@ public final class ServicemeshFunctions {
      * 
      */
     public static Output<GetServiceMeshesResult> getServiceMeshes(GetServiceMeshesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:servicemesh/getServiceMeshes:getServiceMeshes", TypeShape.of(GetServiceMeshesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Service Mesh Service Meshes of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.138.0.
+     * 
+     */
+    public static Output<GetServiceMeshesResult> getServiceMeshes(GetServiceMeshesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:servicemesh/getServiceMeshes:getServiceMeshes", TypeShape.of(GetServiceMeshesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -531,6 +597,53 @@ public final class ServicemeshFunctions {
      * 
      */
     public static Output<GetVersionsResult> getVersions(GetVersionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:servicemesh/getVersions:getVersions", TypeShape.of(GetVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides ASM available versions in the specified region.
+     * 
+     * &gt; **NOTE:** Available in v1.161.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.servicemesh.ServicemeshFunctions;
+     * import com.pulumi.alicloud.servicemesh.inputs.GetVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ServicemeshFunctions.getVersions(GetVersionsArgs.builder()
+     *             .edition("Default")
+     *             .build());
+     * 
+     *         ctx.export("serviceMeshVersion", versions[0].version());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVersionsResult> getVersions(GetVersionsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:servicemesh/getVersions:getVersions", TypeShape.of(GetVersionsResult.class), args, Utilities.withVersion(options));
     }
     /**

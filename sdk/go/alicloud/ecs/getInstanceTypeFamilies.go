@@ -82,21 +82,11 @@ type GetInstanceTypeFamiliesResult struct {
 }
 
 func GetInstanceTypeFamiliesOutput(ctx *pulumi.Context, args GetInstanceTypeFamiliesOutputArgs, opts ...pulumi.InvokeOption) GetInstanceTypeFamiliesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetInstanceTypeFamiliesResultOutput, error) {
 			args := v.(GetInstanceTypeFamiliesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetInstanceTypeFamiliesResult
-			secret, err := ctx.InvokePackageRaw("alicloud:ecs/getInstanceTypeFamilies:getInstanceTypeFamilies", args, &rv, "", opts...)
-			if err != nil {
-				return GetInstanceTypeFamiliesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetInstanceTypeFamiliesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetInstanceTypeFamiliesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:ecs/getInstanceTypeFamilies:getInstanceTypeFamilies", args, GetInstanceTypeFamiliesResultOutput{}, options).(GetInstanceTypeFamiliesResultOutput), nil
 		}).(GetInstanceTypeFamiliesResultOutput)
 }
 

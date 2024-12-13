@@ -180,6 +180,91 @@ namespace Pulumi.AliCloud.Cddc
         /// </summary>
         public static Output<GetDedicatedHostsResult> Invoke(GetDedicatedHostsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDedicatedHostsResult>("alicloud:cddc/getDedicatedHosts:getDedicatedHosts", args ?? new GetDedicatedHostsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Cddc Dedicated Hosts of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.147.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Cddc.GetDedicatedHosts.Invoke(new()
+        ///     {
+        ///         DedicatedHostGroupId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
+        /// 
+        ///     var status = AliCloud.Cddc.GetDedicatedHosts.Invoke(new()
+        ///     {
+        ///         DedicatedHostGroupId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///         Status = "1",
+        ///     });
+        /// 
+        ///     var zoneId = AliCloud.Cddc.GetDedicatedHosts.Invoke(new()
+        ///     {
+        ///         DedicatedHostGroupId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///         ZoneId = "example_value",
+        ///     });
+        /// 
+        ///     var allocationStatus = AliCloud.Cddc.GetDedicatedHosts.Invoke(new()
+        ///     {
+        ///         DedicatedHostGroupId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///         AllocationStatus = "Allocatable",
+        ///     });
+        /// 
+        ///     var hostType = AliCloud.Cddc.GetDedicatedHosts.Invoke(new()
+        ///     {
+        ///         DedicatedHostGroupId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///         HostType = "dhg_cloud_ssd",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cddcDedicatedHostId1"] = ids.Apply(getDedicatedHostsResult =&gt; getDedicatedHostsResult.Hosts[0]?.Id),
+        ///         ["cddcDedicatedHostId2"] = status.Apply(getDedicatedHostsResult =&gt; getDedicatedHostsResult.Hosts[0]?.Id),
+        ///         ["cddcDedicatedHostId3"] = zoneId.Apply(getDedicatedHostsResult =&gt; getDedicatedHostsResult.Hosts[0]?.Id),
+        ///         ["cddcDedicatedHostId4"] = allocationStatus.Apply(getDedicatedHostsResult =&gt; getDedicatedHostsResult.Hosts[0]?.Id),
+        ///         ["cddcDedicatedHostId5"] = hostType.Apply(getDedicatedHostsResult =&gt; getDedicatedHostsResult.Hosts[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDedicatedHostsResult> Invoke(GetDedicatedHostsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDedicatedHostsResult>("alicloud:cddc/getDedicatedHosts:getDedicatedHosts", args ?? new GetDedicatedHostsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -160,6 +160,81 @@ namespace Pulumi.AliCloud.Cms
         /// </summary>
         public static Output<GetSiteMonitorsResult> Invoke(GetSiteMonitorsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSiteMonitorsResult>("alicloud:cms/getSiteMonitors:getSiteMonitors", args ?? new GetSiteMonitorsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides Cloud Monitor Service Site Monitor available to the user.[What is Site Monitor](https://www.alibabacloud.com/help/en/)
+        /// 
+        /// &gt; **NOTE:** Available since v1.224.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// using Random = Pulumi.Random;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "tf_example";
+        ///     var defaultInteger = new Random.Index.Integer("default", new()
+        ///     {
+        ///         Min = 10000,
+        ///         Max = 99999,
+        ///     });
+        /// 
+        ///     var defaultSiteMonitor = new AliCloud.Cms.SiteMonitor("default", new()
+        ///     {
+        ///         Address = "http://www.alibabacloud.com",
+        ///         TaskName = $"terraform-example-{defaultInteger.Result}",
+        ///         TaskType = "HTTP",
+        ///         Interval = 5,
+        ///         IspCities = new[]
+        ///         {
+        ///             new AliCloud.Cms.Inputs.SiteMonitorIspCityArgs
+        ///             {
+        ///                 City = "546",
+        ///                 Isp = "465",
+        ///             },
+        ///         },
+        ///         OptionsJson = @"{
+        ///     ""http_method"": ""get"",
+        ///     ""waitTime_after_completion"": null,
+        ///     ""ipv6_task"": false,
+        ///     ""diagnosis_ping"": false,
+        ///     ""diagnosis_mtr"": false,
+        ///     ""assertions"": [
+        ///         {
+        ///             ""operator"": ""lessThan"",
+        ///             ""type"": ""response_time"",
+        ///             ""target"": 1000
+        ///         }
+        ///     ],
+        ///     ""time_out"": 30000
+        /// }
+        /// ",
+        ///     });
+        /// 
+        ///     var @default = AliCloud.Cms.GetSiteMonitors.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultSiteMonitor.Id,
+        ///         },
+        ///         TaskType = "HTTP",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudCmsSiteMonitorExampleId"] = @default.Apply(@default =&gt; @default.Apply(getSiteMonitorsResult =&gt; getSiteMonitorsResult.Monitors[0]?.TaskId)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSiteMonitorsResult> Invoke(GetSiteMonitorsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSiteMonitorsResult>("alicloud:cms/getSiteMonitors:getSiteMonitors", args ?? new GetSiteMonitorsInvokeArgs(), options.WithDefaults());
     }
 
 

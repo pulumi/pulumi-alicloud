@@ -29,6 +29,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class SimpleapplicationserverFunctions {
@@ -305,6 +306,61 @@ public final class SimpleapplicationserverFunctions {
      * 
      */
     public static Output<GetImagesResult> getImages(GetImagesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:simpleapplicationserver/getImages:getImages", TypeShape.of(GetImagesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Simple Application Server Images of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.135.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instanceImageType = SimpleapplicationserverFunctions.getImages(GetImagesArgs.builder()
+     *             .instanceImageType("system")
+     *             .build());
+     * 
+     *         ctx.export("simpleApplicationServerImageId1", ids.images()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * The following arguments are supported:
+     * 
+     * * `ids` - (Optional, ForceNew, Computed)  A list of Image IDs.
+     * * `image_type` - (Optional, ForceNew) The image type. Valid values: `app`, `custom`, `system`.
+     * * `name_regex` - (Optional, ForceNew) A regex string to filter results by Image name.
+     * * `platform` - (Available in v1.161.0) The platform of Image supported. Valid values: [&#34;Linux&#34;, &#34;Windows&#34;].
+     * * `output_file` - (Optional) File name where to save data source results (after running `pulumi preview`).
+     * 
+     */
+    public static Output<GetImagesResult> getImages(GetImagesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:simpleapplicationserver/getImages:getImages", TypeShape.of(GetImagesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -671,6 +727,58 @@ public final class SimpleapplicationserverFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:simpleapplicationserver/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Simple Application Server Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.135.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SimpleapplicationserverFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids("example_id")
+     *             .build());
+     * 
+     *         ctx.export("simpleApplicationServerInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         final var nameRegex = SimpleapplicationserverFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex("^my-Instance")
+     *             .build());
+     * 
+     *         ctx.export("simpleApplicationServerInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:simpleapplicationserver/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
@@ -932,6 +1040,58 @@ public final class SimpleapplicationserverFunctions {
      * 
      */
     public static Output<GetServerCustomImagesResult> getServerCustomImages(GetServerCustomImagesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:simpleapplicationserver/getServerCustomImages:getServerCustomImages", TypeShape.of(GetServerCustomImagesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Simple Application Server Custom Images of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.143.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerCustomImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SimpleapplicationserverFunctions.getServerCustomImages(GetServerCustomImagesArgs.builder()
+     *             .ids("example_id")
+     *             .build());
+     * 
+     *         ctx.export("simpleApplicationServerCustomImageId1", ids.applyValue(getServerCustomImagesResult -> getServerCustomImagesResult.images()[0].id()));
+     *         final var nameRegex = SimpleapplicationserverFunctions.getServerCustomImages(GetServerCustomImagesArgs.builder()
+     *             .nameRegex("^my-CustomImage")
+     *             .build());
+     * 
+     *         ctx.export("simpleApplicationServerCustomImageId2", nameRegex.applyValue(getServerCustomImagesResult -> getServerCustomImagesResult.images()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServerCustomImagesResult> getServerCustomImages(GetServerCustomImagesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:simpleapplicationserver/getServerCustomImages:getServerCustomImages", TypeShape.of(GetServerCustomImagesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1385,6 +1545,73 @@ public final class SimpleapplicationserverFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetServerDisksResult> getServerDisks(GetServerDisksArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:simpleapplicationserver/getServerDisks:getServerDisks", TypeShape.of(GetServerDisksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Simple Application Server Disks of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.143.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerDisksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
+     *             .ids("example_id")
+     *             .build());
+     * 
+     *         ctx.export("simpleApplicationServerDiskId1", ids.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         final var nameRegex = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
+     *             .nameRegex("^my-Disk")
+     *             .build());
+     * 
+     *         ctx.export("simpleApplicationServerDiskId2", nameRegex.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         final var status = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
+     *             .status("In_use")
+     *             .build());
+     * 
+     *         ctx.export("simpleApplicationServerDiskId3", status.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         final var instanceId = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
+     *             .instanceId("example_value")
+     *             .build());
+     * 
+     *         ctx.export("simpleApplicationServerDiskId4", instanceId.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *         final var diskType = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
+     *             .diskType("System")
+     *             .build());
+     * 
+     *         ctx.export("simpleApplicationServerDiskId5", diskType.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetServerDisksResult> getServerDisksPlain(GetServerDisksPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:simpleapplicationserver/getServerDisks:getServerDisks", TypeShape.of(GetServerDisksResult.class), args, Utilities.withVersion(options));
     }
@@ -1536,6 +1763,56 @@ public final class SimpleapplicationserverFunctions {
      * 
      */
     public static Output<GetServerFirewallRulesResult> getServerFirewallRules(GetServerFirewallRulesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:simpleapplicationserver/getServerFirewallRules:getServerFirewallRules", TypeShape.of(GetServerFirewallRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Simple Application Server Firewall Rules of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.143.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerFirewallRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SimpleapplicationserverFunctions.getServerFirewallRules(GetServerFirewallRulesArgs.builder()
+     *             .instanceId("example_value")
+     *             .ids(            
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .build());
+     * 
+     *         ctx.export("simpleApplicationServerFirewallRuleId1", ids.applyValue(getServerFirewallRulesResult -> getServerFirewallRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServerFirewallRulesResult> getServerFirewallRules(GetServerFirewallRulesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:simpleapplicationserver/getServerFirewallRules:getServerFirewallRules", TypeShape.of(GetServerFirewallRulesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1841,6 +2118,57 @@ public final class SimpleapplicationserverFunctions {
      * 
      */
     public static Output<GetServerPlansResult> getServerPlans(GetServerPlansArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:simpleapplicationserver/getServerPlans:getServerPlans", TypeShape.of(GetServerPlansResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Simple Application Server Plans of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.135.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SimpleapplicationserverFunctions.getServerPlans(GetServerPlansArgs.builder()
+     *             .memory(1)
+     *             .bandwidth(3)
+     *             .diskSize(40)
+     *             .flow(6)
+     *             .core(2)
+     *             .build());
+     * 
+     *         ctx.export("simpleApplicationServerPlanId1", ids.plans()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServerPlansResult> getServerPlans(GetServerPlansArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:simpleapplicationserver/getServerPlans:getServerPlans", TypeShape.of(GetServerPlansResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2212,6 +2540,70 @@ public final class SimpleapplicationserverFunctions {
      * 
      */
     public static Output<GetServerSnapshotsResult> getServerSnapshots(GetServerSnapshotsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:simpleapplicationserver/getServerSnapshots:getServerSnapshots", TypeShape.of(GetServerSnapshotsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Simple Application Server Snapshots of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.143.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
+     *             .ids("example_id")
+     *             .build());
+     * 
+     *         ctx.export("simpleApplicationServerSnapshotId1", ids.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
+     *         final var nameRegex = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
+     *             .nameRegex("^my-Snapshot")
+     *             .build());
+     * 
+     *         ctx.export("simpleApplicationServerSnapshotId2", nameRegex.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
+     *         final var diskIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
+     *             .ids("example_id")
+     *             .diskId("example_value")
+     *             .build());
+     * 
+     *         ctx.export("simpleApplicationServerSnapshotId3", diskIdConf.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
+     *         final var instanceIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
+     *             .ids("example_id")
+     *             .instanceId("example_value")
+     *             .build());
+     * 
+     *         ctx.export("simpleApplicationServerSnapshotId4", instanceIdConf.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServerSnapshotsResult> getServerSnapshots(GetServerSnapshotsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:simpleapplicationserver/getServerSnapshots:getServerSnapshots", TypeShape.of(GetServerSnapshotsResult.class), args, Utilities.withVersion(options));
     }
     /**

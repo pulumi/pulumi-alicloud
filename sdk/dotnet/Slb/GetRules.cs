@@ -174,6 +174,88 @@ namespace Pulumi.AliCloud.Slb
         /// </summary>
         public static Output<GetRulesResult> Invoke(GetRulesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRulesResult>("alicloud:slb/getRules:getRules", args ?? new GetRulesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the rules associated with a server load balancer listener.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "slbrulebasicconfig";
+        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableDiskCategory = "cloud_efficiency",
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+        ///     {
+        ///         Name = name,
+        ///         CidrBlock = "172.16.0.0/16",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+        ///     {
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = "172.16.0.0/16",
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///         VswitchName = name,
+        ///     });
+        /// 
+        ///     var defaultApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("default", new()
+        ///     {
+        ///         LoadBalancerName = name,
+        ///         VswitchId = defaultSwitch.Id,
+        ///     });
+        /// 
+        ///     var defaultListener = new AliCloud.Slb.Listener("default", new()
+        ///     {
+        ///         LoadBalancerId = defaultApplicationLoadBalancer.Id,
+        ///         BackendPort = 22,
+        ///         FrontendPort = 22,
+        ///         Protocol = "http",
+        ///         Bandwidth = 5,
+        ///         HealthCheckConnectPort = 20,
+        ///     });
+        /// 
+        ///     var defaultServerGroup = new AliCloud.Slb.ServerGroup("default", new()
+        ///     {
+        ///         LoadBalancerId = defaultApplicationLoadBalancer.Id,
+        ///     });
+        /// 
+        ///     var defaultRule = new AliCloud.Slb.Rule("default", new()
+        ///     {
+        ///         LoadBalancerId = defaultApplicationLoadBalancer.Id,
+        ///         FrontendPort = defaultListener.FrontendPort,
+        ///         Name = name,
+        ///         Domain = "*.aliyun.com",
+        ///         Url = "/image",
+        ///         ServerGroupId = defaultServerGroup.Id,
+        ///     });
+        /// 
+        ///     var sampleDs = AliCloud.Slb.GetRules.Invoke(new()
+        ///     {
+        ///         LoadBalancerId = defaultApplicationLoadBalancer.Id,
+        ///         FrontendPort = 22,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstSlbRuleId"] = sampleDs.Apply(getRulesResult =&gt; getRulesResult.SlbRules[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRulesResult> Invoke(GetRulesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRulesResult>("alicloud:slb/getRules:getRules", args ?? new GetRulesInvokeArgs(), options.WithDefaults());
     }
 
 

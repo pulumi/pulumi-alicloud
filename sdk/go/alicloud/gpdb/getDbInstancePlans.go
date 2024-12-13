@@ -98,21 +98,11 @@ type GetDbInstancePlansResult struct {
 }
 
 func GetDbInstancePlansOutput(ctx *pulumi.Context, args GetDbInstancePlansOutputArgs, opts ...pulumi.InvokeOption) GetDbInstancePlansResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDbInstancePlansResultOutput, error) {
 			args := v.(GetDbInstancePlansArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetDbInstancePlansResult
-			secret, err := ctx.InvokePackageRaw("alicloud:gpdb/getDbInstancePlans:getDbInstancePlans", args, &rv, "", opts...)
-			if err != nil {
-				return GetDbInstancePlansResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetDbInstancePlansResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetDbInstancePlansResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:gpdb/getDbInstancePlans:getDbInstancePlans", args, GetDbInstancePlansResultOutput{}, options).(GetDbInstancePlansResultOutput), nil
 		}).(GetDbInstancePlansResultOutput)
 }
 

@@ -82,6 +82,42 @@ namespace Pulumi.AliCloud.Hbr
         /// </summary>
         public static Output<GetHanaBackupClientsResult> Invoke(GetHanaBackupClientsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHanaBackupClientsResult>("alicloud:hbr/getHanaBackupClients:getHanaBackupClients", args ?? new GetHanaBackupClientsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Hybrid Backup Recovery (HBR) Hana Backup Clients of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in 1.198.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Hbr.GetHanaBackupClients.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         VaultId = "your_vault_id",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["hbrHanaBackupClientsId1"] = ids.Apply(getHanaBackupClientsResult =&gt; getHanaBackupClientsResult.HanaBackupClients[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetHanaBackupClientsResult> Invoke(GetHanaBackupClientsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetHanaBackupClientsResult>("alicloud:hbr/getHanaBackupClients:getHanaBackupClients", args ?? new GetHanaBackupClientsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -88,6 +88,45 @@ namespace Pulumi.AliCloud.Arms
         /// </summary>
         public static Output<GetAlertRobotsResult> Invoke(GetAlertRobotsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAlertRobotsResult>("alicloud:arms/getAlertRobots:getAlertRobots", args ?? new GetAlertRobotsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Arms Alert Robots of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.237.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = new AliCloud.Arms.AlertRobot("default", new()
+        ///     {
+        ///         AlertRobotName = "my-AlertRobot",
+        ///         RobotType = "wechat",
+        ///         RobotAddr = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=1c704e23",
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Arms.GetAlertRobots.Invoke(new()
+        ///     {
+        ///         AlertRobotName = @default.AlertRobotName,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["armsAlertRobotId"] = nameRegex.Apply(getAlertRobotsResult =&gt; getAlertRobotsResult.Robots[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAlertRobotsResult> Invoke(GetAlertRobotsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAlertRobotsResult>("alicloud:arms/getAlertRobots:getAlertRobots", args ?? new GetAlertRobotsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -38,6 +38,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class ArmsFunctions {
@@ -274,6 +275,53 @@ public final class ArmsFunctions {
      * 
      */
     public static Output<GetAlertContactGroupsResult> getAlertContactGroups(GetAlertContactGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:arms/getAlertContactGroups:getAlertContactGroups", TypeShape.of(GetAlertContactGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Arms Alert Contact Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.131.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetAlertContactGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nameRegex = ArmsFunctions.getAlertContactGroups(GetAlertContactGroupsArgs.builder()
+     *             .nameRegex("^my-AlertContactGroup")
+     *             .build());
+     * 
+     *         ctx.export("armsAlertContactGroupId", nameRegex.applyValue(getAlertContactGroupsResult -> getAlertContactGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAlertContactGroupsResult> getAlertContactGroups(GetAlertContactGroupsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:arms/getAlertContactGroups:getAlertContactGroups", TypeShape.of(GetAlertContactGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -620,6 +668,56 @@ public final class ArmsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetAlertContactsResult> getAlertContacts(GetAlertContactsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:arms/getAlertContacts:getAlertContacts", TypeShape.of(GetAlertContactsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Arms Alert Contacts of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.129.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetAlertContactsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getAlertContacts();
+     * 
+     *         ctx.export("armsAlertContactId1", ids.applyValue(getAlertContactsResult -> getAlertContactsResult.contacts()[0].id()));
+     *         final var nameRegex = ArmsFunctions.getAlertContacts(GetAlertContactsArgs.builder()
+     *             .nameRegex("^my-AlertContact")
+     *             .build());
+     * 
+     *         ctx.export("armsAlertContactId2", nameRegex.applyValue(getAlertContactsResult -> getAlertContactsResult.contacts()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAlertContactsResult> getAlertContactsPlain(GetAlertContactsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:arms/getAlertContacts:getAlertContacts", TypeShape.of(GetAlertContactsResult.class), args, Utilities.withVersion(options));
     }
@@ -896,6 +994,61 @@ public final class ArmsFunctions {
      * 
      */
     public static Output<GetAlertRobotsResult> getAlertRobots(GetAlertRobotsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:arms/getAlertRobots:getAlertRobots", TypeShape.of(GetAlertRobotsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Arms Alert Robots of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.237.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.AlertRobot;
+     * import com.pulumi.alicloud.arms.AlertRobotArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetAlertRobotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new AlertRobot("default", AlertRobotArgs.builder()
+     *             .alertRobotName("my-AlertRobot")
+     *             .robotType("wechat")
+     *             .robotAddr("https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=1c704e23")
+     *             .build());
+     * 
+     *         final var nameRegex = ArmsFunctions.getAlertRobots(GetAlertRobotsArgs.builder()
+     *             .alertRobotName(default_.alertRobotName())
+     *             .build());
+     * 
+     *         ctx.export("armsAlertRobotId", nameRegex.applyValue(getAlertRobotsResult -> getAlertRobotsResult).applyValue(nameRegex -> nameRegex.applyValue(getAlertRobotsResult -> getAlertRobotsResult.robots()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAlertRobotsResult> getAlertRobots(GetAlertRobotsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:arms/getAlertRobots:getAlertRobots", TypeShape.of(GetAlertRobotsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1562,6 +1715,108 @@ public final class ArmsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetDispatchRulesResult> getDispatchRules(GetDispatchRulesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:arms/getDispatchRules:getDispatchRules", TypeShape.of(GetDispatchRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Arms Dispatch Rules of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.136.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.AlertContact;
+     * import com.pulumi.alicloud.arms.AlertContactArgs;
+     * import com.pulumi.alicloud.arms.AlertContactGroup;
+     * import com.pulumi.alicloud.arms.AlertContactGroupArgs;
+     * import com.pulumi.alicloud.arms.DispatchRule;
+     * import com.pulumi.alicloud.arms.DispatchRuleArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleGroupRuleArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleLabelMatchExpressionGridArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleNotifyRuleArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetDispatchRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         var default_ = new AlertContact("default", AlertContactArgs.builder()
+     *             .alertContactName("example_value")
+     *             .email("example_value}{@literal @}{@code aaa.com")
+     *             .build());
+     * 
+     *         var defaultAlertContactGroup = new AlertContactGroup("defaultAlertContactGroup", AlertContactGroupArgs.builder()
+     *             .alertContactGroupName("example_value")
+     *             .contactIds(default_.id())
+     *             .build());
+     * 
+     *         var defaultDispatchRule = new DispatchRule("defaultDispatchRule", DispatchRuleArgs.builder()
+     *             .dispatchRuleName("example_value")
+     *             .dispatchType("CREATE_ALERT")
+     *             .groupRules(DispatchRuleGroupRuleArgs.builder()
+     *                 .groupWaitTime(5)
+     *                 .groupInterval(15)
+     *                 .repeatInterval(100)
+     *                 .groupingFields("alertname")
+     *                 .build())
+     *             .labelMatchExpressionGrids(DispatchRuleLabelMatchExpressionGridArgs.builder()
+     *                 .labelMatchExpressionGroups(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs.builder()
+     *                     .labelMatchExpressions(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs.builder()
+     *                         .key("_aliyun_arms_involvedObject_kind")
+     *                         .value("app")
+     *                         .operator("eq")
+     *                         .build())
+     *                     .build())
+     *                 .build())
+     *             .notifyRules(DispatchRuleNotifyRuleArgs.builder()
+     *                 .notifyObjects(                
+     *                     DispatchRuleNotifyRuleNotifyObjectArgs.builder()
+     *                         .notifyObjectId(default_.id())
+     *                         .notifyType("ARMS_CONTACT")
+     *                         .name("example_value")
+     *                         .build(),
+     *                     DispatchRuleNotifyRuleNotifyObjectArgs.builder()
+     *                         .notifyObjectId(defaultAlertContactGroup.id())
+     *                         .notifyType("ARMS_CONTACT_GROUP")
+     *                         .name("example_value")
+     *                         .build())
+     *                 .notifyChannels(                
+     *                     "dingTalk",
+     *                     "wechat")
+     *                 .notifyStartTime("10:00")
+     *                 .notifyEndTime("23:00")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var ids = ArmsFunctions.getDispatchRules();
+     * 
+     *         ctx.export("armsDispatchRuleId1", ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id()));
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDispatchRulesResult> getDispatchRulesPlain(GetDispatchRulesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:arms/getDispatchRules:getDispatchRules", TypeShape.of(GetDispatchRulesResult.class), args, Utilities.withVersion(options));
     }
@@ -1710,6 +1965,55 @@ public final class ArmsFunctions {
      * 
      */
     public static Output<GetIntegrationExportersResult> getIntegrationExporters(GetIntegrationExportersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:arms/getIntegrationExporters:getIntegrationExporters", TypeShape.of(GetIntegrationExportersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Arms Integration Exporters of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.203.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetIntegrationExportersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getIntegrationExporters(GetIntegrationExportersArgs.builder()
+     *             .ids("example_id")
+     *             .clusterId("your_cluster_id")
+     *             .integrationType("kafka")
+     *             .build());
+     * 
+     *         ctx.export("armsIntegrationExportersId1", ids.applyValue(getIntegrationExportersResult -> getIntegrationExportersResult.integrationExporters()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetIntegrationExportersResult> getIntegrationExporters(GetIntegrationExportersArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:arms/getIntegrationExporters:getIntegrationExporters", TypeShape.of(GetIntegrationExportersResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2199,6 +2503,94 @@ public final class ArmsFunctions {
      * 
      */
     public static Output<GetPrometheisResult> getPrometheis(GetPrometheisArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:arms/getPrometheis:getPrometheis", TypeShape.of(GetPrometheisResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Arms Prometheis of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.203.0.
+     * 
+     * &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsDisk from version 1.214.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.arms.Prometheus;
+     * import com.pulumi.alicloud.arms.PrometheusArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetPrometheisArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("tf-example");
+     *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("default-NODELETING")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(default_.ids()[0])
+     *             .build());
+     * 
+     *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .vpcId(default_.ids()[0])
+     *             .build());
+     * 
+     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()
+     *             .clusterType("ecs")
+     *             .grafanaInstanceId("free")
+     *             .vpcId(default_.ids()[0])
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .clusterName(String.format("%s-%s", name,default_.ids()[0]))
+     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[1].id()))
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Prometheus")
+     *             ))
+     *             .build());
+     * 
+     *         final var nameRegex = ArmsFunctions.getPrometheis(GetPrometheisArgs.builder()
+     *             .nameRegex(defaultPrometheus.clusterName())
+     *             .build());
+     * 
+     *         ctx.export("armsPrometheisId", nameRegex.applyValue(getPrometheisResult -> getPrometheisResult).applyValue(nameRegex -> nameRegex.applyValue(getPrometheisResult -> getPrometheisResult.prometheis()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPrometheisResult> getPrometheis(GetPrometheisArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:arms/getPrometheis:getPrometheis", TypeShape.of(GetPrometheisResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2802,6 +3194,92 @@ public final class ArmsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetPrometheusResult> getPrometheus(GetPrometheusArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:arms/getPrometheus:getPrometheus", TypeShape.of(GetPrometheusResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Arms Prometheus of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.214.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.arms.Prometheus;
+     * import com.pulumi.alicloud.arms.PrometheusArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetPrometheusArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("tf-example");
+     *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("default-NODELETING")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(default_.ids()[0])
+     *             .build());
+     * 
+     *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .vpcId(default_.ids()[0])
+     *             .build());
+     * 
+     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()
+     *             .clusterType("ecs")
+     *             .grafanaInstanceId("free")
+     *             .vpcId(default_.ids()[0])
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .clusterName(String.format("%s-%s", name,default_.ids()[0]))
+     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[1].id()))
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Prometheus")
+     *             ))
+     *             .build());
+     * 
+     *         final var nameRegex = ArmsFunctions.getPrometheus(GetPrometheusArgs.builder()
+     *             .nameRegex(defaultPrometheus.clusterName())
+     *             .build());
+     * 
+     *         ctx.export("armsPrometheusId", nameRegex.applyValue(getPrometheusResult -> getPrometheusResult).applyValue(nameRegex -> nameRegex.applyValue(getPrometheusResult -> getPrometheusResult.prometheis()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetPrometheusResult> getPrometheusPlain(GetPrometheusPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:arms/getPrometheus:getPrometheus", TypeShape.of(GetPrometheusResult.class), args, Utilities.withVersion(options));
     }
@@ -2971,6 +3449,62 @@ public final class ArmsFunctions {
      * 
      */
     public static Output<GetPrometheusAlertRulesResult> getPrometheusAlertRules(GetPrometheusAlertRulesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:arms/getPrometheusAlertRules:getPrometheusAlertRules", TypeShape.of(GetPrometheusAlertRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Arms Prometheus Alert Rules of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.136.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetPrometheusAlertRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getPrometheusAlertRules(GetPrometheusAlertRulesArgs.builder()
+     *             .clusterId("example_value")
+     *             .ids(            
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .build());
+     * 
+     *         ctx.export("armsPrometheusAlertRuleId1", ids.applyValue(getPrometheusAlertRulesResult -> getPrometheusAlertRulesResult.rules()[0].id()));
+     *         final var nameRegex = ArmsFunctions.getPrometheusAlertRules(GetPrometheusAlertRulesArgs.builder()
+     *             .clusterId("example_value")
+     *             .nameRegex("^my-PrometheusAlertRule")
+     *             .build());
+     * 
+     *         ctx.export("armsPrometheusAlertRuleId2", nameRegex.applyValue(getPrometheusAlertRulesResult -> getPrometheusAlertRulesResult.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPrometheusAlertRulesResult> getPrometheusAlertRules(GetPrometheusAlertRulesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:arms/getPrometheusAlertRules:getPrometheusAlertRules", TypeShape.of(GetPrometheusAlertRulesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -3242,6 +3776,60 @@ public final class ArmsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetPrometheusMonitoringsResult> getPrometheusMonitorings(GetPrometheusMonitoringsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:arms/getPrometheusMonitorings:getPrometheusMonitorings", TypeShape.of(GetPrometheusMonitoringsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Arms Prometheus Monitorings of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.210.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetPrometheusMonitoringsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getPrometheusMonitorings(GetPrometheusMonitoringsArgs.builder()
+     *             .clusterId("your_cluster_id")
+     *             .ids("example_id")
+     *             .build());
+     * 
+     *         ctx.export("armsPrometheusMonitoringsId1", ids.applyValue(getPrometheusMonitoringsResult -> getPrometheusMonitoringsResult.prometheusMonitorings()[0].id()));
+     *         final var nameRegex = ArmsFunctions.getPrometheusMonitorings(GetPrometheusMonitoringsArgs.builder()
+     *             .clusterId("your_cluster_id")
+     *             .nameRegex("tf-example")
+     *             .build());
+     * 
+     *         ctx.export("armsPrometheusMonitoringsId2", nameRegex.applyValue(getPrometheusMonitoringsResult -> getPrometheusMonitoringsResult.prometheusMonitorings()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetPrometheusMonitoringsResult> getPrometheusMonitoringsPlain(GetPrometheusMonitoringsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:arms/getPrometheusMonitorings:getPrometheusMonitorings", TypeShape.of(GetPrometheusMonitoringsResult.class), args, Utilities.withVersion(options));
     }
@@ -3411,6 +3999,62 @@ public final class ArmsFunctions {
      * 
      */
     public static Output<GetRemoteWritesResult> getRemoteWrites(GetRemoteWritesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:arms/getRemoteWrites:getRemoteWrites", TypeShape.of(GetRemoteWritesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Arms Remote Writes of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.204.0.
+     * 
+     * &gt; **DEPRECATED:** This resource has been deprecated since v1.228.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetRemoteWritesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getRemoteWrites(GetRemoteWritesArgs.builder()
+     *             .ids("example_id")
+     *             .clusterId("your_cluster_id")
+     *             .build());
+     * 
+     *         ctx.export("armsRemoteWritesId1", ids.applyValue(getRemoteWritesResult -> getRemoteWritesResult.remoteWrites()[0].id()));
+     *         final var nameRegex = ArmsFunctions.getRemoteWrites(GetRemoteWritesArgs.builder()
+     *             .nameRegex("tf-example")
+     *             .clusterId("your_cluster_id")
+     *             .build());
+     * 
+     *         ctx.export("armsRemoteWritesId2", nameRegex.applyValue(getRemoteWritesResult -> getRemoteWritesResult.remoteWrites()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRemoteWritesResult> getRemoteWrites(GetRemoteWritesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:arms/getRemoteWrites:getRemoteWrites", TypeShape.of(GetRemoteWritesResult.class), args, Utilities.withVersion(options));
     }
     /**

@@ -64,6 +64,33 @@ namespace Pulumi.AliCloud.ResourceManager
         /// </summary>
         public static Output<GetResourceDirectoriesResult> Invoke(GetResourceDirectoriesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetResourceDirectoriesResult>("alicloud:resourcemanager/getResourceDirectories:getResourceDirectories", args ?? new GetResourceDirectoriesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Resource Manager Resource Directories of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:**  Available in 1.86.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.ResourceManager.GetResourceDirectories.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["resourceDirectoryId"] = @default.Apply(@default =&gt; @default.Apply(getResourceDirectoriesResult =&gt; getResourceDirectoriesResult.Directories[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetResourceDirectoriesResult> Invoke(GetResourceDirectoriesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetResourceDirectoriesResult>("alicloud:resourcemanager/getResourceDirectories:getResourceDirectories", args ?? new GetResourceDirectoriesInvokeArgs(), options.WithDefaults());
     }
 
 

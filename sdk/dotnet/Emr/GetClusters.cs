@@ -426,6 +426,214 @@ namespace Pulumi.AliCloud.Emr
         /// </summary>
         public static Output<GetClustersResult> Invoke(GetClustersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:emr/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Emr Clusters of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.204.0`. Please use new datasource emrv2_clusters.
+        /// 
+        /// &gt; **NOTE:** Available in v1.146.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "tf-testAccClusters";
+        ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+        ///     {
+        ///         Status = "OK",
+        ///     });
+        /// 
+        ///     var defaultGetMainVersions = AliCloud.Emr.GetMainVersions.Invoke();
+        /// 
+        ///     var defaultGetInstanceTypes = AliCloud.Emr.GetInstanceTypes.Invoke(new()
+        ///     {
+        ///         DestinationResource = "InstanceType",
+        ///         ClusterType = defaultGetMainVersions.Apply(getMainVersionsResult =&gt; getMainVersionsResult.MainVersions[0]?.ClusterTypes[0]),
+        ///         SupportLocalStorage = false,
+        ///         InstanceChargeType = "PostPaid",
+        ///         SupportNodeTypes = new[]
+        ///         {
+        ///             "MASTER",
+        ///             "CORE",
+        ///             "TASK",
+        ///         },
+        ///     });
+        /// 
+        ///     var dataDisk = AliCloud.Emr.GetDiskTypes.Invoke(new()
+        ///     {
+        ///         DestinationResource = "DataDisk",
+        ///         ClusterType = defaultGetMainVersions.Apply(getMainVersionsResult =&gt; getMainVersionsResult.MainVersions[0]?.ClusterTypes[0]),
+        ///         InstanceChargeType = "PostPaid",
+        ///         InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types[0]?.Id),
+        ///         ZoneId = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types[0]?.ZoneId),
+        ///     });
+        /// 
+        ///     var systemDisk = AliCloud.Emr.GetDiskTypes.Invoke(new()
+        ///     {
+        ///         DestinationResource = "SystemDisk",
+        ///         ClusterType = defaultGetMainVersions.Apply(getMainVersionsResult =&gt; getMainVersionsResult.MainVersions[0]?.ClusterTypes[0]),
+        ///         InstanceChargeType = "PostPaid",
+        ///         InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types[0]?.Id),
+        ///         ZoneId = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types[0]?.ZoneId),
+        ///     });
+        /// 
+        ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+        ///     {
+        ///         NameRegex = "default-NODELETING",
+        ///     });
+        /// 
+        ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
+        ///     {
+        ///         Name = name,
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///     });
+        /// 
+        ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+        ///     {
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         ZoneId = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types[0]?.ZoneId),
+        ///     });
+        /// 
+        ///     var defaultRole = new AliCloud.Ram.Role("default", new()
+        ///     {
+        ///         Name = name,
+        ///         Document = @"    {
+        ///         ""Statement"": [
+        ///         {
+        ///             ""Action"": ""sts:AssumeRole"",
+        ///             ""Effect"": ""Allow"",
+        ///             ""Principal"": {
+        ///             ""Service"": [
+        ///                 ""emr.aliyuncs.com"",
+        ///                 ""ecs.aliyuncs.com""
+        ///             ]
+        ///             }
+        ///         }
+        ///         ],
+        ///         ""Version"": ""1""
+        ///     }
+        /// ",
+        ///         Description = "this is a role test.",
+        ///         Force = true,
+        ///     });
+        /// 
+        ///     var defaultCluster = new AliCloud.Emr.Cluster("default", new()
+        ///     {
+        ///         Name = name,
+        ///         EmrVer = defaultGetMainVersions.Apply(getMainVersionsResult =&gt; getMainVersionsResult.MainVersions[0]?.EmrVersion),
+        ///         ClusterType = defaultGetMainVersions.Apply(getMainVersionsResult =&gt; getMainVersionsResult.MainVersions[0]?.ClusterTypes[0]),
+        ///         HostGroups = new[]
+        ///         {
+        ///             new AliCloud.Emr.Inputs.ClusterHostGroupArgs
+        ///             {
+        ///                 HostGroupName = "master_group",
+        ///                 HostGroupType = "MASTER",
+        ///                 NodeCount = "2",
+        ///                 InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types[0]?.Id),
+        ///                 DiskType = dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Value),
+        ///                 DiskCapacity = Output.Tuple(dataDisk, dataDisk).Apply(values =&gt;
+        ///                 {
+        ///                     var dataDisk = values.Item1;
+        ///                     var dataDisk1 = values.Item2;
+        ///                     return dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? dataDisk1.Types[0]?.Min : 160;
+        ///                 }),
+        ///                 DiskCount = "1",
+        ///                 SysDiskType = systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Value),
+        ///                 SysDiskCapacity = Output.Tuple(systemDisk, systemDisk).Apply(values =&gt;
+        ///                 {
+        ///                     var systemDisk = values.Item1;
+        ///                     var systemDisk1 = values.Item2;
+        ///                     return systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? systemDisk1.Types[0]?.Min : 160;
+        ///                 }),
+        ///             },
+        ///             new AliCloud.Emr.Inputs.ClusterHostGroupArgs
+        ///             {
+        ///                 HostGroupName = "core_group",
+        ///                 HostGroupType = "CORE",
+        ///                 NodeCount = "3",
+        ///                 InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types[0]?.Id),
+        ///                 DiskType = dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Value),
+        ///                 DiskCapacity = Output.Tuple(dataDisk, dataDisk).Apply(values =&gt;
+        ///                 {
+        ///                     var dataDisk = values.Item1;
+        ///                     var dataDisk1 = values.Item2;
+        ///                     return dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? dataDisk1.Types[0]?.Min : 160;
+        ///                 }),
+        ///                 DiskCount = "4",
+        ///                 SysDiskType = systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Value),
+        ///                 SysDiskCapacity = Output.Tuple(systemDisk, systemDisk).Apply(values =&gt;
+        ///                 {
+        ///                     var systemDisk = values.Item1;
+        ///                     var systemDisk1 = values.Item2;
+        ///                     return systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? systemDisk1.Types[0]?.Min : 160;
+        ///                 }),
+        ///             },
+        ///             new AliCloud.Emr.Inputs.ClusterHostGroupArgs
+        ///             {
+        ///                 HostGroupName = "task_group",
+        ///                 HostGroupType = "TASK",
+        ///                 NodeCount = "2",
+        ///                 InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types[0]?.Id),
+        ///                 DiskType = dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Value),
+        ///                 DiskCapacity = Output.Tuple(dataDisk, dataDisk).Apply(values =&gt;
+        ///                 {
+        ///                     var dataDisk = values.Item1;
+        ///                     var dataDisk1 = values.Item2;
+        ///                     return dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? dataDisk1.Types[0]?.Min : 160;
+        ///                 }),
+        ///                 DiskCount = "4",
+        ///                 SysDiskType = systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Value),
+        ///                 SysDiskCapacity = Output.Tuple(systemDisk, systemDisk).Apply(values =&gt;
+        ///                 {
+        ///                     var systemDisk = values.Item1;
+        ///                     var systemDisk1 = values.Item2;
+        ///                     return systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? systemDisk1.Types[0]?.Min : 160;
+        ///                 }),
+        ///             },
+        ///         },
+        ///         HighAvailabilityEnable = true,
+        ///         ZoneId = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types[0]?.ZoneId),
+        ///         SecurityGroupId = defaultSecurityGroup.Id,
+        ///         IsOpenPublicIp = true,
+        ///         ChargeType = "PostPaid",
+        ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+        ///         UserDefinedEmrEcsRole = defaultRole.Name,
+        ///         SshEnable = true,
+        ///         MasterPwd = "ABCtest1234!",
+        ///         Tags = 
+        ///         {
+        ///             { "Created", "TF" },
+        ///             { "For", "acceptance test" },
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Emr.GetClusters.Invoke();
+        /// 
+        ///     var nameRegex = AliCloud.Emr.GetClusters.Invoke(new()
+        ///     {
+        ///         NameRegex = defaultCluster.Name,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["emrClusterId1"] = ids.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
+        ///         ["emrClusterId2"] = nameRegex.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetClustersResult> Invoke(GetClustersInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:emr/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithDefaults());
     }
 
 

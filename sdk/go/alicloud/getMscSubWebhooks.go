@@ -84,21 +84,11 @@ type GetMscSubWebhooksResult struct {
 }
 
 func GetMscSubWebhooksOutput(ctx *pulumi.Context, args GetMscSubWebhooksOutputArgs, opts ...pulumi.InvokeOption) GetMscSubWebhooksResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetMscSubWebhooksResultOutput, error) {
 			args := v.(GetMscSubWebhooksArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetMscSubWebhooksResult
-			secret, err := ctx.InvokePackageRaw("alicloud:index/getMscSubWebhooks:getMscSubWebhooks", args, &rv, "", opts...)
-			if err != nil {
-				return GetMscSubWebhooksResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetMscSubWebhooksResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetMscSubWebhooksResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:index/getMscSubWebhooks:getMscSubWebhooks", args, GetMscSubWebhooksResultOutput{}, options).(GetMscSubWebhooksResultOutput), nil
 		}).(GetMscSubWebhooksResultOutput)
 }
 

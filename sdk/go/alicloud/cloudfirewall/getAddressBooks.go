@@ -102,21 +102,11 @@ type GetAddressBooksResult struct {
 }
 
 func GetAddressBooksOutput(ctx *pulumi.Context, args GetAddressBooksOutputArgs, opts ...pulumi.InvokeOption) GetAddressBooksResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAddressBooksResultOutput, error) {
 			args := v.(GetAddressBooksArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetAddressBooksResult
-			secret, err := ctx.InvokePackageRaw("alicloud:cloudfirewall/getAddressBooks:getAddressBooks", args, &rv, "", opts...)
-			if err != nil {
-				return GetAddressBooksResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetAddressBooksResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetAddressBooksResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:cloudfirewall/getAddressBooks:getAddressBooks", args, GetAddressBooksResultOutput{}, options).(GetAddressBooksResultOutput), nil
 		}).(GetAddressBooksResultOutput)
 }
 

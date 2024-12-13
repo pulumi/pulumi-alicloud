@@ -84,6 +84,43 @@ namespace Pulumi.AliCloud.CR
         /// </summary>
         public static Output<GetVpcEndpointLinkedVpcsResult> Invoke(GetVpcEndpointLinkedVpcsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpcEndpointLinkedVpcsResult>("alicloud:cr/getVpcEndpointLinkedVpcs:getVpcEndpointLinkedVpcs", args ?? new GetVpcEndpointLinkedVpcsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the CR Vpc Endpoint Linked Vpcs of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.199.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.CR.GetVpcEndpointLinkedVpcs.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         InstanceId = "your_cr_instance_id",
+        ///         ModuleName = "Registry",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudCrVpcEndpointLinkedVpcsId1"] = ids.Apply(getVpcEndpointLinkedVpcsResult =&gt; getVpcEndpointLinkedVpcsResult.VpcEndpointLinkedVpcs[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetVpcEndpointLinkedVpcsResult> Invoke(GetVpcEndpointLinkedVpcsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVpcEndpointLinkedVpcsResult>("alicloud:cr/getVpcEndpointLinkedVpcs:getVpcEndpointLinkedVpcs", args ?? new GetVpcEndpointLinkedVpcsInvokeArgs(), options.WithDefaults());
     }
 
 

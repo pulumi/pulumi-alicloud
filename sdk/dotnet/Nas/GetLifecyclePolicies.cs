@@ -98,6 +98,50 @@ namespace Pulumi.AliCloud.Nas
         /// </summary>
         public static Output<GetLifecyclePoliciesResult> Invoke(GetLifecyclePoliciesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLifecyclePoliciesResult>("alicloud:nas/getLifecyclePolicies:getLifecyclePolicies", args ?? new GetLifecyclePoliciesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Nas Lifecycle Policies of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.153.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Nas.GetLifecyclePolicies.Invoke(new()
+        ///     {
+        ///         FileSystemId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "my-LifecyclePolicy-1",
+        ///             "my-LifecyclePolicy-2",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Nas.GetLifecyclePolicies.Invoke(new()
+        ///     {
+        ///         FileSystemId = "example_value",
+        ///         NameRegex = "^my-LifecyclePolicy",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["nasLifecyclePolicyId1"] = ids.Apply(getLifecyclePoliciesResult =&gt; getLifecyclePoliciesResult.Policies[0]?.Id),
+        ///         ["nasLifecyclePolicyId2"] = nameRegex.Apply(getLifecyclePoliciesResult =&gt; getLifecyclePoliciesResult.Policies[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetLifecyclePoliciesResult> Invoke(GetLifecyclePoliciesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetLifecyclePoliciesResult>("alicloud:nas/getLifecyclePolicies:getLifecyclePolicies", args ?? new GetLifecyclePoliciesInvokeArgs(), options.WithDefaults());
     }
 
 

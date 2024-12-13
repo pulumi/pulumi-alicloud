@@ -81,21 +81,11 @@ type GetHavipsResult struct {
 }
 
 func GetHavipsOutput(ctx *pulumi.Context, args GetHavipsOutputArgs, opts ...pulumi.InvokeOption) GetHavipsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetHavipsResultOutput, error) {
 			args := v.(GetHavipsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetHavipsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:vpc/getHavips:getHavips", args, &rv, "", opts...)
-			if err != nil {
-				return GetHavipsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetHavipsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetHavipsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:vpc/getHavips:getHavips", args, GetHavipsResultOutput{}, options).(GetHavipsResultOutput), nil
 		}).(GetHavipsResultOutput)
 }
 

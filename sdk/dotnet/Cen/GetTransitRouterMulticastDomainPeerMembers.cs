@@ -74,6 +74,38 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public static Output<GetTransitRouterMulticastDomainPeerMembersResult> Invoke(GetTransitRouterMulticastDomainPeerMembersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterMulticastDomainPeerMembersResult>("alicloud:cen/getTransitRouterMulticastDomainPeerMembers:getTransitRouterMulticastDomainPeerMembers", args ?? new GetTransitRouterMulticastDomainPeerMembersInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides Cen Transit Router Multicast Domain Peer Member available to the user. [What is Transit Router Multicast Domain Peer Member](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupmembers)
+        /// 
+        /// &gt; **NOTE:** Available since v1.195.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Cen.GetTransitRouterMulticastDomainPeerMembers.Invoke(new()
+        ///     {
+        ///         TransitRouterMulticastDomainId = "tr-mcast-domain-2d9oq455uk533zfrxx",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudCenTransitRouterMulticastDomainPeerMemberExampleId"] = @default.Apply(@default =&gt; @default.Apply(getTransitRouterMulticastDomainPeerMembersResult =&gt; getTransitRouterMulticastDomainPeerMembersResult.Members[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTransitRouterMulticastDomainPeerMembersResult> Invoke(GetTransitRouterMulticastDomainPeerMembersInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterMulticastDomainPeerMembersResult>("alicloud:cen/getTransitRouterMulticastDomainPeerMembers:getTransitRouterMulticastDomainPeerMembers", args ?? new GetTransitRouterMulticastDomainPeerMembersInvokeArgs(), options.WithDefaults());
     }
 
 

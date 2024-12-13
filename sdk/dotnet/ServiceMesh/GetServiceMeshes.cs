@@ -26,6 +26,14 @@ namespace Pulumi.AliCloud.ServiceMesh
         /// </summary>
         public static Output<GetServiceMeshesResult> Invoke(GetServiceMeshesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceMeshesResult>("alicloud:servicemesh/getServiceMeshes:getServiceMeshes", args ?? new GetServiceMeshesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Service Mesh Service Meshes of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.138.0.
+        /// </summary>
+        public static Output<GetServiceMeshesResult> Invoke(GetServiceMeshesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceMeshesResult>("alicloud:servicemesh/getServiceMeshes:getServiceMeshes", args ?? new GetServiceMeshesInvokeArgs(), options.WithDefaults());
     }
 
 

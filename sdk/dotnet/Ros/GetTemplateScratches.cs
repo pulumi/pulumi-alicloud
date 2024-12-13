@@ -104,6 +104,53 @@ namespace Pulumi.AliCloud.Ros
         /// </summary>
         public static Output<GetTemplateScratchesResult> Invoke(GetTemplateScratchesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTemplateScratchesResult>("alicloud:ros/getTemplateScratches:getTemplateScratches", args ?? new GetTemplateScratchesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Ros Template Scratches of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.151.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Ros.GetTemplateScratches.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value",
+        ///         },
+        ///     });
+        /// 
+        ///     var status = AliCloud.Ros.GetTemplateScratches.Invoke(new()
+        ///     {
+        ///         Status = "GENERATE_COMPLETE",
+        ///     });
+        /// 
+        ///     var templateScratchType = AliCloud.Ros.GetTemplateScratches.Invoke(new()
+        ///     {
+        ///         TemplateScratchType = "ResourceImport",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["rosTemplateScratchId1"] = ids.Apply(getTemplateScratchesResult =&gt; getTemplateScratchesResult.Scratches[0]?.Id),
+        ///         ["rosTemplateScratchId2"] = status.Apply(getTemplateScratchesResult =&gt; getTemplateScratchesResult.Scratches[0]?.Id),
+        ///         ["rosTemplateScratchId3"] = templateScratchType.Apply(getTemplateScratchesResult =&gt; getTemplateScratchesResult.Scratches[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTemplateScratchesResult> Invoke(GetTemplateScratchesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTemplateScratchesResult>("alicloud:ros/getTemplateScratches:getTemplateScratches", args ?? new GetTemplateScratchesInvokeArgs(), options.WithDefaults());
     }
 
 

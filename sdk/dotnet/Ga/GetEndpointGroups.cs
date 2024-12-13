@@ -240,6 +240,121 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         public static Output<GetEndpointGroupsResult> Invoke(GetEndpointGroupsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEndpointGroupsResult>("alicloud:ga/getEndpointGroups:getEndpointGroups", args ?? new GetEndpointGroupsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Global Accelerator (GA) Endpoint Groups of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.113.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var region = config.Get("region") ?? "cn-hangzhou";
+        ///     var name = config.Get("name") ?? "tf-example";
+        ///     var @default = AliCloud.Ga.GetAccelerators.Invoke(new()
+        ///     {
+        ///         Status = "active",
+        ///     });
+        /// 
+        ///     var defaultBandwidthPackage = new AliCloud.Ga.BandwidthPackage("default", new()
+        ///     {
+        ///         Bandwidth = 100,
+        ///         Type = "Basic",
+        ///         BandwidthType = "Basic",
+        ///         PaymentType = "PayAsYouGo",
+        ///         BillingType = "PayBy95",
+        ///         Ratio = 30,
+        ///         BandwidthPackageName = name,
+        ///         AutoPay = true,
+        ///         AutoUseCoupon = true,
+        ///     });
+        /// 
+        ///     var defaultBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("default", new()
+        ///     {
+        ///         AcceleratorId = @default.Apply(@default =&gt; @default.Apply(getAcceleratorsResult =&gt; getAcceleratorsResult.Ids[0])),
+        ///         BandwidthPackageId = defaultBandwidthPackage.Id,
+        ///     });
+        /// 
+        ///     var defaultListener = new AliCloud.Ga.Listener("default", new()
+        ///     {
+        ///         AcceleratorId = defaultBandwidthPackageAttachment.AcceleratorId,
+        ///         ClientAffinity = "SOURCE_IP",
+        ///         Protocol = "UDP",
+        ///         Name = name,
+        ///         PortRanges = new[]
+        ///         {
+        ///             new AliCloud.Ga.Inputs.ListenerPortRangeArgs
+        ///             {
+        ///                 FromPort = 60,
+        ///                 ToPort = 70,
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var defaultEipAddress = new AliCloud.Ecs.EipAddress("default", new()
+        ///     {
+        ///         Bandwidth = "10",
+        ///         InternetChargeType = "PayByBandwidth",
+        ///         AddressName = name,
+        ///     });
+        /// 
+        ///     var defaultEndpointGroup = new AliCloud.Ga.EndpointGroup("default", new()
+        ///     {
+        ///         AcceleratorId = defaultListener.AcceleratorId,
+        ///         ListenerId = defaultListener.Id,
+        ///         Description = name,
+        ///         Name = name,
+        ///         ThresholdCount = 4,
+        ///         TrafficPercentage = 20,
+        ///         EndpointGroupRegion = "cn-hangzhou",
+        ///         HealthCheckIntervalSeconds = 3,
+        ///         HealthCheckPath = "/healthcheck",
+        ///         HealthCheckPort = 9999,
+        ///         HealthCheckProtocol = "http",
+        ///         PortOverrides = new AliCloud.Ga.Inputs.EndpointGroupPortOverridesArgs
+        ///         {
+        ///             EndpointPort = 10,
+        ///             ListenerPort = 60,
+        ///         },
+        ///         EndpointConfigurations = new[]
+        ///         {
+        ///             new AliCloud.Ga.Inputs.EndpointGroupEndpointConfigurationArgs
+        ///             {
+        ///                 Endpoint = defaultEipAddress.IpAddress,
+        ///                 Type = "PublicIp",
+        ///                 Weight = 20,
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var defaultGetEndpointGroups = AliCloud.Ga.GetEndpointGroups.Invoke(new()
+        ///     {
+        ///         AcceleratorId = defaultEndpointGroup.AcceleratorId,
+        ///         Ids = new[]
+        ///         {
+        ///             defaultEndpointGroup.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstGaEndpointGroupId"] = defaultGetEndpointGroups.Apply(getEndpointGroupsResult =&gt; getEndpointGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetEndpointGroupsResult> Invoke(GetEndpointGroupsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetEndpointGroupsResult>("alicloud:ga/getEndpointGroups:getEndpointGroups", args ?? new GetEndpointGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

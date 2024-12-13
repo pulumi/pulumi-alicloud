@@ -68,6 +68,35 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         public static Output<GetAckServiceResult> Invoke(GetAckServiceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAckServiceResult>("alicloud:cs/getAckService:getAckService", args ?? new GetAckServiceInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Using this data source can open Container Service (CS) service automatically. If the service has been opened, it will return opened.
+        /// 
+        /// For information about Container Service (CS) and how to use it, see [What is Container Service (CS)](https://www.alibabacloud.com/help/en/product/85222.htm).
+        /// 
+        /// &gt; **NOTE:** Available in v1.113.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var open = AliCloud.CS.GetAckService.Invoke(new()
+        ///     {
+        ///         Enable = "On",
+        ///         Type = "propayasgo",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAckServiceResult> Invoke(GetAckServiceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAckServiceResult>("alicloud:cs/getAckService:getAckService", args ?? new GetAckServiceInvokeArgs(), options.WithDefaults());
     }
 
 

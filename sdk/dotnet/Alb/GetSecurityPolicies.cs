@@ -80,6 +80,41 @@ namespace Pulumi.AliCloud.Alb
         /// </summary>
         public static Output<GetSecurityPoliciesResult> Invoke(GetSecurityPoliciesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSecurityPoliciesResult>("alicloud:alb/getSecurityPolicies:getSecurityPolicies", args ?? new GetSecurityPoliciesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Alb Security Policies of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.130.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Alb.GetSecurityPolicies.Invoke();
+        /// 
+        ///     var nameRegex = AliCloud.Alb.GetSecurityPolicies.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-SecurityPolicy",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["albSecurityPolicyId1"] = ids.Apply(getSecurityPoliciesResult =&gt; getSecurityPoliciesResult.Policies[0]?.Id),
+        ///         ["albSecurityPolicyId2"] = nameRegex.Apply(getSecurityPoliciesResult =&gt; getSecurityPoliciesResult.Policies[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSecurityPoliciesResult> Invoke(GetSecurityPoliciesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSecurityPoliciesResult>("alicloud:alb/getSecurityPolicies:getSecurityPolicies", args ?? new GetSecurityPoliciesInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -14,6 +14,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class SagFunctions {
@@ -344,6 +345,61 @@ public final class SagFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetAclsResult> getAcls(GetAclsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:sag/getAcls:getAcls", TypeShape.of(GetAclsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Sag Acls available to the user.
+     * 
+     * &gt; **NOTE:** Available in 1.60.0+
+     * 
+     * &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sag.SagFunctions;
+     * import com.pulumi.alicloud.sag.inputs.GetAclsArgs;
+     * import com.pulumi.alicloud.rocketmq.Acl;
+     * import com.pulumi.alicloud.rocketmq.AclArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = SagFunctions.getAcls(GetAclsArgs.builder()
+     *             .ids(defaultAlicloudSagAcls.id())
+     *             .nameRegex("^tf-testAcc.*")
+     *             .build());
+     * 
+     *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()
+     *             .name("tf-testAccSagAclName")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAclsResult> getAclsPlain(GetAclsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:sag/getAcls:getAcls", TypeShape.of(GetAclsResult.class), args, Utilities.withVersion(options));
     }
@@ -605,6 +661,58 @@ public final class SagFunctions {
      * 
      */
     public static Output<GetSmartagFlowLogsResult> getSmartagFlowLogs(GetSmartagFlowLogsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:sag/getSmartagFlowLogs:getSmartagFlowLogs", TypeShape.of(GetSmartagFlowLogsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Smartag Flow Logs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.168.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.sag.SagFunctions;
+     * import com.pulumi.alicloud.sag.inputs.GetSmartagFlowLogsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = SagFunctions.getSmartagFlowLogs(GetSmartagFlowLogsArgs.builder()
+     *             .ids("example_id")
+     *             .build());
+     * 
+     *         ctx.export("smartagFlowLogId1", ids.applyValue(getSmartagFlowLogsResult -> getSmartagFlowLogsResult.logs()[0].id()));
+     *         final var nameRegex = SagFunctions.getSmartagFlowLogs(GetSmartagFlowLogsArgs.builder()
+     *             .nameRegex("^my-FlowLog")
+     *             .build());
+     * 
+     *         ctx.export("smartagFlowLogId2", nameRegex.applyValue(getSmartagFlowLogsResult -> getSmartagFlowLogsResult.logs()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSmartagFlowLogsResult> getSmartagFlowLogs(GetSmartagFlowLogsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:sag/getSmartagFlowLogs:getSmartagFlowLogs", TypeShape.of(GetSmartagFlowLogsResult.class), args, Utilities.withVersion(options));
     }
     /**

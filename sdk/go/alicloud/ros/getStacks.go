@@ -96,21 +96,11 @@ type GetStacksResult struct {
 }
 
 func GetStacksOutput(ctx *pulumi.Context, args GetStacksOutputArgs, opts ...pulumi.InvokeOption) GetStacksResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetStacksResultOutput, error) {
 			args := v.(GetStacksArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetStacksResult
-			secret, err := ctx.InvokePackageRaw("alicloud:ros/getStacks:getStacks", args, &rv, "", opts...)
-			if err != nil {
-				return GetStacksResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetStacksResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetStacksResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:ros/getStacks:getStacks", args, GetStacksResultOutput{}, options).(GetStacksResultOutput), nil
 		}).(GetStacksResultOutput)
 }
 

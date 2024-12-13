@@ -74,6 +74,38 @@ namespace Pulumi.AliCloud.Ebs
         /// </summary>
         public static Output<GetRegionsResult> Invoke(GetRegionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionsResult>("alicloud:ebs/getRegions:getRegions", args ?? new GetRegionsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Ebs Regions of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.187.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Ebs.GetRegions.Invoke(new()
+        ///     {
+        ///         RegionId = "cn-hangzhou",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["regions"] = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRegionsResult> Invoke(GetRegionsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegionsResult>("alicloud:ebs/getRegions:getRegions", args ?? new GetRegionsInvokeArgs(), options.WithDefaults());
     }
 
 

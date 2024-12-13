@@ -60,18 +60,8 @@ type LookupGlobalEventsStorageRegionResult struct {
 
 func LookupGlobalEventsStorageRegionOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) LookupGlobalEventsStorageRegionResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (LookupGlobalEventsStorageRegionResultOutput, error) {
-		opts = internal.PkgInvokeDefaultOpts(opts)
-		var rv LookupGlobalEventsStorageRegionResult
-		secret, err := ctx.InvokePackageRaw("alicloud:actiontrail/getGlobalEventsStorageRegion:getGlobalEventsStorageRegion", nil, &rv, "", opts...)
-		if err != nil {
-			return LookupGlobalEventsStorageRegionResultOutput{}, err
-		}
-
-		output := pulumi.ToOutput(rv).(LookupGlobalEventsStorageRegionResultOutput)
-		if secret {
-			return pulumi.ToSecret(output).(LookupGlobalEventsStorageRegionResultOutput), nil
-		}
-		return output, nil
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("alicloud:actiontrail/getGlobalEventsStorageRegion:getGlobalEventsStorageRegion", nil, LookupGlobalEventsStorageRegionResultOutput{}, options).(LookupGlobalEventsStorageRegionResultOutput), nil
 	}).(LookupGlobalEventsStorageRegionResultOutput)
 }
 

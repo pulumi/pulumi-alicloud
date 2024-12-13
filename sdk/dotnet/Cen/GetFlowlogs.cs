@@ -176,6 +176,89 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public static Output<GetFlowlogsResult> Invoke(GetFlowlogsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFlowlogsResult>("alicloud:cen/getFlowlogs:getFlowlogs", args ?? new GetFlowlogsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides CEN flow logs available to the user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.78.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// using Random = Pulumi.Random;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "tf-example";
+        ///     var defaultInteger = new Random.Index.Integer("default", new()
+        ///     {
+        ///         Min = 10000,
+        ///         Max = 99999,
+        ///     });
+        /// 
+        ///     var defaultc5kxyC = new AliCloud.Cen.Instance("defaultc5kxyC", new()
+        ///     {
+        ///         CenInstanceName = name,
+        ///     });
+        /// 
+        ///     var defaultVw2U9u = new AliCloud.Cen.TransitRouter("defaultVw2U9u", new()
+        ///     {
+        ///         CenId = defaultc5kxyC.Id,
+        ///     });
+        /// 
+        ///     var defaultProject = new AliCloud.Log.Project("default", new()
+        ///     {
+        ///         ProjectName = $"{name}-{defaultInteger.Result}",
+        ///         Description = "terraform-example",
+        ///     });
+        /// 
+        ///     var defaultStore = new AliCloud.Log.Store("default", new()
+        ///     {
+        ///         ProjectName = defaultProject.ProjectName,
+        ///         LogstoreName = $"{name}-{defaultInteger.Result}",
+        ///         ShardCount = 3,
+        ///         AutoSplit = true,
+        ///         MaxSplitShardCount = 60,
+        ///         AppendMeta = true,
+        ///     });
+        /// 
+        ///     var defaultFlowLog = new AliCloud.Cen.FlowLog("default", new()
+        ///     {
+        ///         ProjectName = defaultStore.ProjectName,
+        ///         FlowLogName = $"{name}-{defaultInteger.Result}",
+        ///         LogFormatString = "${srcaddr}${dstaddr}${bytes}",
+        ///         CenId = defaultc5kxyC.Id,
+        ///         LogStoreName = defaultStore.LogstoreName,
+        ///         Interval = 600,
+        ///         Status = "Active",
+        ///         TransitRouterId = defaultVw2U9u.TransitRouterId,
+        ///         Description = "flowlog-resource-example-1",
+        ///     });
+        /// 
+        ///     var @default = AliCloud.Cen.GetFlowlogs.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultFlowLog.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstCenFlowlogId"] = @default.Apply(@default =&gt; @default.Apply(getFlowlogsResult =&gt; getFlowlogsResult.Flowlogs[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetFlowlogsResult> Invoke(GetFlowlogsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetFlowlogsResult>("alicloud:cen/getFlowlogs:getFlowlogs", args ?? new GetFlowlogsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -92,6 +92,47 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public static Output<GetEcsImagePipelineResult> Invoke(GetEcsImagePipelineInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEcsImagePipelineResult>("alicloud:ecs/getEcsImagePipeline:getEcsImagePipeline", args ?? new GetEcsImagePipelineInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Ecs Image Pipelines of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.163.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Ecs.GetEcsImagePipeline.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Ecs.GetEcsImagePipeline.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-ImagePipeline",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecsImagePipelineId1"] = ids.Apply(getEcsImagePipelineResult =&gt; getEcsImagePipelineResult.Pipelines[0]?.Id),
+        ///         ["ecsImagePipelineId2"] = nameRegex.Apply(getEcsImagePipelineResult =&gt; getEcsImagePipelineResult.Pipelines[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetEcsImagePipelineResult> Invoke(GetEcsImagePipelineInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetEcsImagePipelineResult>("alicloud:ecs/getEcsImagePipeline:getEcsImagePipeline", args ?? new GetEcsImagePipelineInvokeArgs(), options.WithDefaults());
     }
 
 

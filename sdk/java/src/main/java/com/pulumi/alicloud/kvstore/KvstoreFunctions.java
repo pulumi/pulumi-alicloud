@@ -29,6 +29,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class KvstoreFunctions {
@@ -217,6 +218,53 @@ public final class KvstoreFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetAccountsResult> getAccounts(GetAccountsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:kvstore/getAccounts:getAccounts", TypeShape.of(GetAccountsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Accounts of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.102.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.kvstore.inputs.GetAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = KvstoreFunctions.getAccounts(GetAccountsArgs.builder()
+     *             .instanceId("example_value")
+     *             .build());
+     * 
+     *         ctx.export("firstKvstoreAccountId", example.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAccountsResult> getAccountsPlain(GetAccountsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:kvstore/getAccounts:getAccounts", TypeShape.of(GetAccountsResult.class), args, Utilities.withVersion(options));
     }
@@ -356,6 +404,52 @@ public final class KvstoreFunctions {
      * 
      */
     public static Output<GetConnectionsResult> getConnections(GetConnectionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:kvstore/getConnections:getConnections", TypeShape.of(GetConnectionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can query the public IP of the specified Tair (Redis OSS-Compatible) And Memcache (KVStore).
+     * 
+     * &gt; **NOTE:** Available in v1.101.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.kvstore.inputs.GetConnectionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Declare the data source
+     *         final var example = KvstoreFunctions.getConnections(GetConnectionsArgs.builder()
+     *             .ids("r-wer123456")
+     *             .build());
+     * 
+     *         ctx.export("connectionString", example.applyValue(getConnectionsResult -> getConnectionsResult.connections()[0].connectionString()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConnectionsResult> getConnections(GetConnectionsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:kvstore/getConnections:getConnections", TypeShape.of(GetConnectionsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -621,6 +715,61 @@ public final class KvstoreFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetInstanceClassesResult> getInstanceClasses(GetInstanceClassesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:kvstore/getInstanceClasses:getInstanceClasses", TypeShape.of(GetInstanceClassesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance classes resource available info of Alibaba Cloud.
+     * 
+     * &gt; **NOTE:** Available since v1.49.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.kvstore.inputs.GetInstanceClassesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resources = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("KVStore")
+     *             .build());
+     * 
+     *         final var resourcesGetInstanceClasses = KvstoreFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+     *             .zoneId(resources.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .instanceChargeType("PrePaid")
+     *             .engine("Redis")
+     *             .engineVersion("5.0")
+     *             .outputFile("./classes.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstKvstoreInstanceClass", resourcesGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetInstanceClassesResult> getInstanceClassesPlain(GetInstanceClassesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:kvstore/getInstanceClasses:getInstanceClasses", TypeShape.of(GetInstanceClassesResult.class), args, Utilities.withVersion(options));
     }
@@ -787,6 +936,61 @@ public final class KvstoreFunctions {
      * 
      */
     public static Output<GetInstanceEnginesResult> getInstanceEngines(GetInstanceEnginesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:kvstore/getInstanceEngines:getInstanceEngines", TypeShape.of(GetInstanceEnginesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance engines resource available info of Alibaba Cloud.
+     * 
+     * &gt; **NOTE:** Available since v1.51.0
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.kvstore.inputs.GetInstanceEnginesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resources = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("KVStore")
+     *             .build());
+     * 
+     *         final var resourcesGetInstanceEngines = KvstoreFunctions.getInstanceEngines(GetInstanceEnginesArgs.builder()
+     *             .zoneId(resources.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .instanceChargeType("PrePaid")
+     *             .engine("Redis")
+     *             .engineVersion("5.0")
+     *             .outputFile("./engines.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstKvstoreInstanceClass", resourcesGetInstanceEngines.applyValue(getInstanceEnginesResult -> getInstanceEnginesResult.instanceEngines()[0].engine()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInstanceEnginesResult> getInstanceEngines(GetInstanceEnginesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:kvstore/getInstanceEngines:getInstanceEngines", TypeShape.of(GetInstanceEnginesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1067,6 +1271,51 @@ public final class KvstoreFunctions {
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:kvstore/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.15.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.kvstore.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = KvstoreFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex("testname")
+     *             .build());
+     * 
+     *         ctx.export("firstInstanceName", default_.instances()[0].name());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:kvstore/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1399,6 +1648,54 @@ public final class KvstoreFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetPermissionResult> getPermission(GetPermissionArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:kvstore/getPermission:getPermission", TypeShape.of(GetPermissionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Assigns a RAM role to Tair (Redis OSS-Compatible) And Memcache (KVStore).
+     * 
+     * The log management feature of Tair (Redis OSS-Compatible) And Memcache (KVStore) requires the resources of [Log Service](https://www.alibabacloud.com/help/doc-detail/48869.htm).
+     * To use the log management feature of Tair (Redis OSS-Compatible) And Memcache (KVStore), you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the Tair (Redis OSS-Compatible) And Memcache (KVStore) instance.
+     * For more information, see [Associated RAM roles of Tair (Redis OSS-Compatible) And Memcache (KVStore)](https://www.alibabacloud.com/help/doc-detail/184337.htm)
+     * 
+     * &gt; **NOTE:** Available since v1.128.0
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.kvstore.inputs.GetPermissionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = KvstoreFunctions.getPermission(GetPermissionArgs.builder()
+     *             .enable("On")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetPermissionResult> getPermissionPlain(GetPermissionPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:kvstore/getPermission:getPermission", TypeShape.of(GetPermissionResult.class), args, Utilities.withVersion(options));
     }
@@ -1625,6 +1922,51 @@ public final class KvstoreFunctions {
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:kvstore/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides availability zones for Tair (Redis OSS-Compatible) And Memcache (KVStore) that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+     * 
+     * &gt; **NOTE:** Available since v1.73.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.kvstore.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Declare the data source
+     *         final var zonesIds = KvstoreFunctions.getZones(GetZonesArgs.builder()
+     *             .instanceChargeType("PostPaid")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:kvstore/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
     }
     /**

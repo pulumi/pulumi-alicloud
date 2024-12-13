@@ -70,6 +70,36 @@ namespace Pulumi.AliCloud.Ram
         /// </summary>
         public static Output<GetAccountAliasResult> Invoke(GetAccountAliasInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountAliasResult>("alicloud:ram/getAccountAlias:getAccountAlias", args ?? new GetAccountAliasInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides an alias for the Alibaba Cloud account.
+        /// 
+        /// &gt; **NOTE:** Available since v1.0.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var aliasDs = AliCloud.Ram.GetAccountAlias.Invoke(new()
+        ///     {
+        ///         OutputFile = "alias.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["accountAlias"] = aliasDs.Apply(getAccountAliasResult =&gt; getAccountAliasResult.AccountAlias),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAccountAliasResult> Invoke(GetAccountAliasInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountAliasResult>("alicloud:ram/getAccountAlias:getAccountAlias", args ?? new GetAccountAliasInvokeArgs(), options.WithDefaults());
     }
 
 

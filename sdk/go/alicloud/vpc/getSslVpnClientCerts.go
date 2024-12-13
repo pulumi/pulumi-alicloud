@@ -82,21 +82,11 @@ type GetSslVpnClientCertsResult struct {
 }
 
 func GetSslVpnClientCertsOutput(ctx *pulumi.Context, args GetSslVpnClientCertsOutputArgs, opts ...pulumi.InvokeOption) GetSslVpnClientCertsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSslVpnClientCertsResultOutput, error) {
 			args := v.(GetSslVpnClientCertsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetSslVpnClientCertsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:vpc/getSslVpnClientCerts:getSslVpnClientCerts", args, &rv, "", opts...)
-			if err != nil {
-				return GetSslVpnClientCertsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetSslVpnClientCertsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetSslVpnClientCertsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:vpc/getSslVpnClientCerts:getSslVpnClientCerts", args, GetSslVpnClientCertsResultOutput{}, options).(GetSslVpnClientCertsResultOutput), nil
 		}).(GetSslVpnClientCertsResultOutput)
 }
 

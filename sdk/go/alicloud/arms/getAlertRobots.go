@@ -92,21 +92,11 @@ type GetAlertRobotsResult struct {
 }
 
 func GetAlertRobotsOutput(ctx *pulumi.Context, args GetAlertRobotsOutputArgs, opts ...pulumi.InvokeOption) GetAlertRobotsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAlertRobotsResultOutput, error) {
 			args := v.(GetAlertRobotsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetAlertRobotsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:arms/getAlertRobots:getAlertRobots", args, &rv, "", opts...)
-			if err != nil {
-				return GetAlertRobotsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetAlertRobotsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetAlertRobotsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:arms/getAlertRobots:getAlertRobots", args, GetAlertRobotsResultOutput{}, options).(GetAlertRobotsResultOutput), nil
 		}).(GetAlertRobotsResultOutput)
 }
 

@@ -68,6 +68,35 @@ namespace Pulumi.AliCloud.Cddc
         /// </summary>
         public static Output<GetDedicatedHostAccountsResult> Invoke(GetDedicatedHostAccountsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDedicatedHostAccountsResult>("alicloud:cddc/getDedicatedHostAccounts:getDedicatedHostAccounts", args ?? new GetDedicatedHostAccountsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Cddc Dedicated Host Accounts of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.148.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Cddc.GetDedicatedHostAccounts.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cddcDedicatedHostAccountId1"] = ids.Apply(getDedicatedHostAccountsResult =&gt; getDedicatedHostAccountsResult.Accounts[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDedicatedHostAccountsResult> Invoke(GetDedicatedHostAccountsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDedicatedHostAccountsResult>("alicloud:cddc/getDedicatedHostAccounts:getDedicatedHostAccounts", args ?? new GetDedicatedHostAccountsInvokeArgs(), options.WithDefaults());
     }
 
 

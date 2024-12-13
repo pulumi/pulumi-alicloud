@@ -70,6 +70,36 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         public static Output<GetPermissionResult> Invoke(GetPermissionInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPermissionResult>("alicloud:kvstore/getPermission:getPermission", args ?? new GetPermissionInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Assigns a RAM role to Tair (Redis OSS-Compatible) And Memcache (KVStore).
+        /// 
+        /// The log management feature of Tair (Redis OSS-Compatible) And Memcache (KVStore) requires the resources of [Log Service](https://www.alibabacloud.com/help/doc-detail/48869.htm). 
+        /// To use the log management feature of Tair (Redis OSS-Compatible) And Memcache (KVStore), you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the Tair (Redis OSS-Compatible) And Memcache (KVStore) instance. 
+        /// For more information, see [Associated RAM roles of Tair (Redis OSS-Compatible) And Memcache (KVStore)](https://www.alibabacloud.com/help/doc-detail/184337.htm)
+        /// 
+        /// &gt; **NOTE:** Available since v1.128.0
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var open = AliCloud.KVStore.GetPermission.Invoke(new()
+        ///     {
+        ///         Enable = "On",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPermissionResult> Invoke(GetPermissionInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPermissionResult>("alicloud:kvstore/getPermission:getPermission", args ?? new GetPermissionInvokeArgs(), options.WithDefaults());
     }
 
 

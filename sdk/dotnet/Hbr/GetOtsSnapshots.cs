@@ -60,6 +60,31 @@ namespace Pulumi.AliCloud.Hbr
         /// </summary>
         public static Output<GetOtsSnapshotsResult> Invoke(GetOtsSnapshotsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOtsSnapshotsResult>("alicloud:hbr/getOtsSnapshots:getOtsSnapshots", args ?? new GetOtsSnapshotsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Hbr Ots Snapshots of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.164.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var snapshots = AliCloud.Hbr.GetOtsSnapshots.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetOtsSnapshotsResult> Invoke(GetOtsSnapshotsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetOtsSnapshotsResult>("alicloud:hbr/getOtsSnapshots:getOtsSnapshots", args ?? new GetOtsSnapshotsInvokeArgs(), options.WithDefaults());
     }
 
 

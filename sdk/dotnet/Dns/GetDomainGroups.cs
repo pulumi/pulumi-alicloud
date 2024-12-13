@@ -22,6 +22,12 @@ namespace Pulumi.AliCloud.Dns
         /// </summary>
         public static Output<GetDomainGroupsResult> Invoke(GetDomainGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDomainGroupsResult>("alicloud:dns/getDomainGroups:getDomainGroups", args ?? new GetDomainGroupsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **NOTE:** This datasource has been deprecated from v1.3.2. Please use the datasource `alicloud.dns.getGroups` instead.
+        /// </summary>
+        public static Output<GetDomainGroupsResult> Invoke(GetDomainGroupsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDomainGroupsResult>("alicloud:dns/getDomainGroups:getDomainGroups", args ?? new GetDomainGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

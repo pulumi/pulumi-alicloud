@@ -104,6 +104,53 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         public static Output<GetParameterGroupsResult> Invoke(GetParameterGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetParameterGroupsResult>("alicloud:polardb/getParameterGroups:getParameterGroups", args ?? new GetParameterGroupsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the PolarDB Parameter Groups of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.183.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.PolarDB.GetParameterGroups.Invoke(new()
+        ///     {
+        ///         DbType = "MySQL",
+        ///         DbVersion = "8.0",
+        ///     });
+        /// 
+        ///     var ids = AliCloud.PolarDB.GetParameterGroups.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             @default.Apply(getParameterGroupsResult =&gt; getParameterGroupsResult.Groups[0]?.Id),
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.PolarDB.GetParameterGroups.Invoke(new()
+        ///     {
+        ///         NameRegex = @default.Apply(getParameterGroupsResult =&gt; getParameterGroupsResult.Groups[0]?.ParameterGroupName),
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["polardbParameterGroupId1"] = ids.Apply(getParameterGroupsResult =&gt; getParameterGroupsResult.Groups[0]?.Id),
+        ///         ["polardbParameterGroupId2"] = nameRegex.Apply(getParameterGroupsResult =&gt; getParameterGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetParameterGroupsResult> Invoke(GetParameterGroupsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetParameterGroupsResult>("alicloud:polardb/getParameterGroups:getParameterGroups", args ?? new GetParameterGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

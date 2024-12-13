@@ -26,6 +26,14 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public static Output<GetVbrHealthChecksResult> Invoke(GetVbrHealthChecksInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVbrHealthChecksResult>("alicloud:cen/getVbrHealthChecks:getVbrHealthChecks", args ?? new GetVbrHealthChecksInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides CEN VBR Health Checks available to the user.
+        /// 
+        /// &gt; **NOTE:** Available in 1.98.0+
+        /// </summary>
+        public static Output<GetVbrHealthChecksResult> Invoke(GetVbrHealthChecksInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVbrHealthChecksResult>("alicloud:cen/getVbrHealthChecks:getVbrHealthChecks", args ?? new GetVbrHealthChecksInvokeArgs(), options.WithDefaults());
     }
 
 

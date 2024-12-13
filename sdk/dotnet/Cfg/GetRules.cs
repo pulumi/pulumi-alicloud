@@ -82,6 +82,42 @@ namespace Pulumi.AliCloud.Cfg
         /// </summary>
         public static Output<GetRulesResult> Invoke(GetRulesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRulesResult>("alicloud:cfg/getRules:getRules", args ?? new GetRulesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Config Rules of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:**  Available in 1.99.0+.
+        /// 
+        /// &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Cfg.GetRules.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "cr-ed4bad756057********",
+        ///         },
+        ///         NameRegex = "tftest",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstConfigRuleId"] = example.Apply(getRulesResult =&gt; getRulesResult.Rules[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRulesResult> Invoke(GetRulesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRulesResult>("alicloud:cfg/getRules:getRules", args ?? new GetRulesInvokeArgs(), options.WithDefaults());
     }
 
 

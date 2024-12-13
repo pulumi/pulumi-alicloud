@@ -76,6 +76,39 @@ namespace Pulumi.AliCloud.Bss
         /// </summary>
         public static Output<GetOpenApiPricingModulesResult> Invoke(GetOpenApiPricingModulesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOpenApiPricingModulesResult>("alicloud:bss/getOpenApiPricingModules:getOpenApiPricingModules", args ?? new GetOpenApiPricingModulesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides Bss Open Api Pricing Module available to the user.[What is Pricing Module](https://www.alibabacloud.com/help/en/boa/latest/api-bssopenapi-2017-12-14-describepricingmodule)
+        /// 
+        /// &gt; **NOTE:** Available since v1.195.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Bss.GetOpenApiPricingModules.Invoke(new()
+        ///     {
+        ///         NameRegex = "国内月均日峰值带宽",
+        ///         ProductCode = "cdn",
+        ///         ProductType = "CDN",
+        ///         SubscriptionType = "PayAsYouGo",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudBssOpenapiPricingModuleExampleId"] = @default.Apply(@default =&gt; @default.Apply(getOpenApiPricingModulesResult =&gt; getOpenApiPricingModulesResult.Modules[0]?.Code)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetOpenApiPricingModulesResult> Invoke(GetOpenApiPricingModulesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetOpenApiPricingModulesResult>("alicloud:bss/getOpenApiPricingModules:getOpenApiPricingModules", args ?? new GetOpenApiPricingModulesInvokeArgs(), options.WithDefaults());
     }
 
 

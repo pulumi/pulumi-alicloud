@@ -77,21 +77,11 @@ type GetSaslUsersResult struct {
 }
 
 func GetSaslUsersOutput(ctx *pulumi.Context, args GetSaslUsersOutputArgs, opts ...pulumi.InvokeOption) GetSaslUsersResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSaslUsersResultOutput, error) {
 			args := v.(GetSaslUsersArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetSaslUsersResult
-			secret, err := ctx.InvokePackageRaw("alicloud:actiontrail/getSaslUsers:getSaslUsers", args, &rv, "", opts...)
-			if err != nil {
-				return GetSaslUsersResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetSaslUsersResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetSaslUsersResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:actiontrail/getSaslUsers:getSaslUsers", args, GetSaslUsersResultOutput{}, options).(GetSaslUsersResultOutput), nil
 		}).(GetSaslUsersResultOutput)
 }
 

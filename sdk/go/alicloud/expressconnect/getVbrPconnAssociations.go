@@ -81,21 +81,11 @@ type GetVbrPconnAssociationsResult struct {
 }
 
 func GetVbrPconnAssociationsOutput(ctx *pulumi.Context, args GetVbrPconnAssociationsOutputArgs, opts ...pulumi.InvokeOption) GetVbrPconnAssociationsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetVbrPconnAssociationsResultOutput, error) {
 			args := v.(GetVbrPconnAssociationsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetVbrPconnAssociationsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:expressconnect/getVbrPconnAssociations:getVbrPconnAssociations", args, &rv, "", opts...)
-			if err != nil {
-				return GetVbrPconnAssociationsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetVbrPconnAssociationsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetVbrPconnAssociationsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:expressconnect/getVbrPconnAssociations:getVbrPconnAssociations", args, GetVbrPconnAssociationsResultOutput{}, options).(GetVbrPconnAssociationsResultOutput), nil
 		}).(GetVbrPconnAssociationsResultOutput)
 }
 

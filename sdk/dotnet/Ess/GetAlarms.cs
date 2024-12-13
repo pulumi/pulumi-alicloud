@@ -26,6 +26,14 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         public static Output<GetAlarmsResult> Invoke(GetAlarmsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAlarmsResult>("alicloud:ess/getAlarms:getAlarms", args ?? new GetAlarmsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides available alarm resources. 
+        /// 
+        /// &gt; **NOTE** Available in 1.72.0+
+        /// </summary>
+        public static Output<GetAlarmsResult> Invoke(GetAlarmsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAlarmsResult>("alicloud:ess/getAlarms:getAlarms", args ?? new GetAlarmsInvokeArgs(), options.WithDefaults());
     }
 
 

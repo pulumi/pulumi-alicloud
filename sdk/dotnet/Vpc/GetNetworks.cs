@@ -70,6 +70,36 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public static Output<GetNetworksResult> Invoke(GetNetworksInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworksResult>("alicloud:vpc/getNetworks:getNetworks", args ?? new GetNetworksInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides VPCs available to the user.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var vpcsDs = AliCloud.Vpc.GetNetworks.Invoke(new()
+        ///     {
+        ///         CidrBlock = "172.16.0.0/12",
+        ///         Status = "Available",
+        ///         NameRegex = "^foo",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstVpcId"] = vpcsDs.Apply(getNetworksResult =&gt; getNetworksResult.Vpcs[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetNetworksResult> Invoke(GetNetworksInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNetworksResult>("alicloud:vpc/getNetworks:getNetworks", args ?? new GetNetworksInvokeArgs(), options.WithDefaults());
     }
 
 

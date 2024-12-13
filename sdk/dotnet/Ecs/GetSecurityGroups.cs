@@ -86,6 +86,44 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public static Output<GetSecurityGroupsResult> Invoke(GetSecurityGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSecurityGroupsResult>("alicloud:ecs/getSecurityGroups:getSecurityGroups", args ?? new GetSecurityGroupsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Filter security groups and print the results into a file
+        ///     var secGroupsDs = AliCloud.Ecs.GetSecurityGroups.Invoke(new()
+        ///     {
+        ///         NameRegex = "^web-",
+        ///         OutputFile = "web_access.json",
+        ///     });
+        /// 
+        ///     // In conjunction with a VPC
+        ///     var primaryVpcDs = new AliCloud.Vpc.Network("primary_vpc_ds");
+        /// 
+        ///     var primarySecGroupsDs = AliCloud.Ecs.GetSecurityGroups.Invoke(new()
+        ///     {
+        ///         VpcId = primaryVpcDs.Id,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstGroupId"] = primarySecGroupsDs.Apply(getSecurityGroupsResult =&gt; getSecurityGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSecurityGroupsResult> Invoke(GetSecurityGroupsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSecurityGroupsResult>("alicloud:ecs/getSecurityGroups:getSecurityGroups", args ?? new GetSecurityGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

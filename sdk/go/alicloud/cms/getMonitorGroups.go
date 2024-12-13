@@ -98,21 +98,11 @@ type GetMonitorGroupsResult struct {
 }
 
 func GetMonitorGroupsOutput(ctx *pulumi.Context, args GetMonitorGroupsOutputArgs, opts ...pulumi.InvokeOption) GetMonitorGroupsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetMonitorGroupsResultOutput, error) {
 			args := v.(GetMonitorGroupsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetMonitorGroupsResult
-			secret, err := ctx.InvokePackageRaw("alicloud:cms/getMonitorGroups:getMonitorGroups", args, &rv, "", opts...)
-			if err != nil {
-				return GetMonitorGroupsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetMonitorGroupsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetMonitorGroupsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:cms/getMonitorGroups:getMonitorGroups", args, GetMonitorGroupsResultOutput{}, options).(GetMonitorGroupsResultOutput), nil
 		}).(GetMonitorGroupsResultOutput)
 }
 

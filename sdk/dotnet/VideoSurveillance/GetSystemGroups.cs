@@ -98,6 +98,50 @@ namespace Pulumi.AliCloud.VideoSurveillance
         /// </summary>
         public static Output<GetSystemGroupsResult> Invoke(GetSystemGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSystemGroupsResult>("alicloud:videosurveillance/getSystemGroups:getSystemGroups", args ?? new GetSystemGroupsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the Video Surveillance System Groups of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var defaultSystemGroup = new AliCloud.VideoSurveillance.SystemGroup("default", new()
+        ///     {
+        ///         GroupName = "groupname",
+        ///         InProtocol = "rtmp",
+        ///         OutProtocol = "flv",
+        ///         PlayDomain = "your_plan_domain",
+        ///         PushDomain = "your_push_domain",
+        ///     });
+        /// 
+        ///     var @default = AliCloud.VideoSurveillance.GetSystemGroups.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultSystemGroup.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vsGroup"] = @default.Apply(@default =&gt; @default.Apply(getSystemGroupsResult =&gt; getSystemGroupsResult.Ids[0])),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSystemGroupsResult> Invoke(GetSystemGroupsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSystemGroupsResult>("alicloud:videosurveillance/getSystemGroups:getSystemGroups", args ?? new GetSystemGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

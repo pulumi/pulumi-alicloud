@@ -72,21 +72,11 @@ type GetBackendServersResult struct {
 }
 
 func GetBackendServersOutput(ctx *pulumi.Context, args GetBackendServersOutputArgs, opts ...pulumi.InvokeOption) GetBackendServersResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetBackendServersResultOutput, error) {
 			args := v.(GetBackendServersArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetBackendServersResult
-			secret, err := ctx.InvokePackageRaw("alicloud:slb/getBackendServers:getBackendServers", args, &rv, "", opts...)
-			if err != nil {
-				return GetBackendServersResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetBackendServersResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetBackendServersResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:slb/getBackendServers:getBackendServers", args, GetBackendServersResultOutput{}, options).(GetBackendServersResultOutput), nil
 		}).(GetBackendServersResultOutput)
 }
 

@@ -78,6 +78,40 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// </summary>
         public static Output<GetVbrPconnAssociationsResult> Invoke(GetVbrPconnAssociationsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVbrPconnAssociationsResult>("alicloud:expressconnect/getVbrPconnAssociations:getVbrPconnAssociations", args ?? new GetVbrPconnAssociationsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides Express Connect Vbr Pconn Association available to the user.
+        /// 
+        /// &gt; **NOTE:** Available in 1.196.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.ExpressConnect.GetVbrPconnAssociations.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         VbrId = defaultAlicloudExpressConnectVbrPconnAssociation.VbrId,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudExpressConnectVbrPconnAssociationExampleId"] = @default.Apply(@default =&gt; @default.Apply(getVbrPconnAssociationsResult =&gt; getVbrPconnAssociationsResult.Associations[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetVbrPconnAssociationsResult> Invoke(GetVbrPconnAssociationsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVbrPconnAssociationsResult>("alicloud:expressconnect/getVbrPconnAssociations:getVbrPconnAssociations", args ?? new GetVbrPconnAssociationsInvokeArgs(), options.WithDefaults());
     }
 
 

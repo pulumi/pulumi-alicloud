@@ -107,21 +107,11 @@ type GetVirtualBorderRoutersResult struct {
 }
 
 func GetVirtualBorderRoutersOutput(ctx *pulumi.Context, args GetVirtualBorderRoutersOutputArgs, opts ...pulumi.InvokeOption) GetVirtualBorderRoutersResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetVirtualBorderRoutersResultOutput, error) {
 			args := v.(GetVirtualBorderRoutersArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetVirtualBorderRoutersResult
-			secret, err := ctx.InvokePackageRaw("alicloud:expressconnect/getVirtualBorderRouters:getVirtualBorderRouters", args, &rv, "", opts...)
-			if err != nil {
-				return GetVirtualBorderRoutersResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetVirtualBorderRoutersResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetVirtualBorderRoutersResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("alicloud:expressconnect/getVirtualBorderRouters:getVirtualBorderRouters", args, GetVirtualBorderRoutersResultOutput{}, options).(GetVirtualBorderRoutersResultOutput), nil
 		}).(GetVirtualBorderRoutersResultOutput)
 }
 
