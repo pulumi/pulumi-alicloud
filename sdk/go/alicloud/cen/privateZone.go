@@ -12,11 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This topic describes how to configure PrivateZone access.
-// PrivateZone is a VPC-based resolution and management service for private domain names.
-// After you set a PrivateZone access, the Cloud Connect Network (CCN) and Virtual Border Router (VBR) attached to a CEN instance can access the PrivateZone service through CEN.
+// Provides a Cloud Enterprise Network (CEN) Private Zone resource.
 //
-// For information about CEN Private Zone and how to use it, see [Manage CEN Private Zone](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-cbn-2017-09-12-routeprivatezoneincentovpc).
+// For information about Cloud Enterprise Network (CEN) Private Zone and how to use it, see [What is Private Zone](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-cbn-2017-09-12-routeprivatezoneincentovpc).
 //
 // > **NOTE:** Available since v1.83.0.
 //
@@ -33,34 +31,40 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			_default, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			example, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String("tf_example"),
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("172.17.3.0/24"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleInstance, err := cen.NewInstance(ctx, "example", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String("tf_example"),
-//				Description:     pulumi.String("an example for cen"),
+//			defaultInstance, err := cen.NewInstance(ctx, "default", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String(name),
+//				Description:     pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "example", &cen.InstanceAttachmentArgs{
-//				InstanceId:            exampleInstance.ID(),
-//				ChildInstanceId:       example.ID(),
+//			defaultInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "default", &cen.InstanceAttachmentArgs{
+//				InstanceId:            defaultInstance.ID(),
+//				ChildInstanceId:       defaultNetwork.ID(),
 //				ChildInstanceType:     pulumi.String("VPC"),
 //				ChildInstanceRegionId: pulumi.String(_default.Regions[0].Id),
 //			})
@@ -68,10 +72,10 @@ import (
 //				return err
 //			}
 //			_, err = cen.NewPrivateZone(ctx, "default", &cen.PrivateZoneArgs{
+//				CenId:          defaultInstanceAttachment.InstanceId,
 //				AccessRegionId: pulumi.String(_default.Regions[0].Id),
-//				CenId:          exampleInstanceAttachment.InstanceId,
+//				HostVpcId:      defaultNetwork.ID(),
 //				HostRegionId:   pulumi.String(_default.Regions[0].Id),
-//				HostVpcId:      example.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -84,25 +88,25 @@ import (
 //
 // ## Import
 //
-// CEN Private Zone can be imported using the id, e.g.
+// Cloud Enterprise Network (CEN) Private Zone can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:cen/privateZone:PrivateZone example cen-abc123456:cn-hangzhou
+// $ pulumi import alicloud:cen/privateZone:PrivateZone example <cen_id>:<access_region_id>
 // ```
 type PrivateZone struct {
 	pulumi.CustomResourceState
 
-	// The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
+	// The ID of the region where PrivateZone is accessed. This region refers to the region in which PrivateZone is accessed by clients.
 	AccessRegionId pulumi.StringOutput `pulumi:"accessRegionId"`
 	// The ID of the CEN instance.
 	CenId pulumi.StringOutput `pulumi:"cenId"`
-	// The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
-	HostRegionId pulumi.StringOutput `pulumi:"hostRegionId"`
-	// The VPC that belongs to the service region.
+	// The ID of the region where PrivateZone is deployed.
 	//
-	// ->**NOTE:** The "cen.PrivateZone" resource depends on the related "cen.InstanceAttachment" resource.
+	// ->**NOTE:** The resource `cen.PrivateZone` depends on the resource `cen.InstanceAttachment`.
+	HostRegionId pulumi.StringOutput `pulumi:"hostRegionId"`
+	// The ID of the VPC that is associated with PrivateZone.
 	HostVpcId pulumi.StringOutput `pulumi:"hostVpcId"`
-	// The status of the PrivateZone service. Valid values: ["Creating", "Active", "Deleting"].
+	// The status of the Private Zone.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -148,32 +152,32 @@ func GetPrivateZone(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PrivateZone resources.
 type privateZoneState struct {
-	// The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
+	// The ID of the region where PrivateZone is accessed. This region refers to the region in which PrivateZone is accessed by clients.
 	AccessRegionId *string `pulumi:"accessRegionId"`
 	// The ID of the CEN instance.
 	CenId *string `pulumi:"cenId"`
-	// The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
-	HostRegionId *string `pulumi:"hostRegionId"`
-	// The VPC that belongs to the service region.
+	// The ID of the region where PrivateZone is deployed.
 	//
-	// ->**NOTE:** The "cen.PrivateZone" resource depends on the related "cen.InstanceAttachment" resource.
+	// ->**NOTE:** The resource `cen.PrivateZone` depends on the resource `cen.InstanceAttachment`.
+	HostRegionId *string `pulumi:"hostRegionId"`
+	// The ID of the VPC that is associated with PrivateZone.
 	HostVpcId *string `pulumi:"hostVpcId"`
-	// The status of the PrivateZone service. Valid values: ["Creating", "Active", "Deleting"].
+	// The status of the Private Zone.
 	Status *string `pulumi:"status"`
 }
 
 type PrivateZoneState struct {
-	// The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
+	// The ID of the region where PrivateZone is accessed. This region refers to the region in which PrivateZone is accessed by clients.
 	AccessRegionId pulumi.StringPtrInput
 	// The ID of the CEN instance.
 	CenId pulumi.StringPtrInput
-	// The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
-	HostRegionId pulumi.StringPtrInput
-	// The VPC that belongs to the service region.
+	// The ID of the region where PrivateZone is deployed.
 	//
-	// ->**NOTE:** The "cen.PrivateZone" resource depends on the related "cen.InstanceAttachment" resource.
+	// ->**NOTE:** The resource `cen.PrivateZone` depends on the resource `cen.InstanceAttachment`.
+	HostRegionId pulumi.StringPtrInput
+	// The ID of the VPC that is associated with PrivateZone.
 	HostVpcId pulumi.StringPtrInput
-	// The status of the PrivateZone service. Valid values: ["Creating", "Active", "Deleting"].
+	// The status of the Private Zone.
 	Status pulumi.StringPtrInput
 }
 
@@ -182,29 +186,29 @@ func (PrivateZoneState) ElementType() reflect.Type {
 }
 
 type privateZoneArgs struct {
-	// The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
+	// The ID of the region where PrivateZone is accessed. This region refers to the region in which PrivateZone is accessed by clients.
 	AccessRegionId string `pulumi:"accessRegionId"`
 	// The ID of the CEN instance.
 	CenId string `pulumi:"cenId"`
-	// The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
-	HostRegionId string `pulumi:"hostRegionId"`
-	// The VPC that belongs to the service region.
+	// The ID of the region where PrivateZone is deployed.
 	//
-	// ->**NOTE:** The "cen.PrivateZone" resource depends on the related "cen.InstanceAttachment" resource.
+	// ->**NOTE:** The resource `cen.PrivateZone` depends on the resource `cen.InstanceAttachment`.
+	HostRegionId string `pulumi:"hostRegionId"`
+	// The ID of the VPC that is associated with PrivateZone.
 	HostVpcId string `pulumi:"hostVpcId"`
 }
 
 // The set of arguments for constructing a PrivateZone resource.
 type PrivateZoneArgs struct {
-	// The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
+	// The ID of the region where PrivateZone is accessed. This region refers to the region in which PrivateZone is accessed by clients.
 	AccessRegionId pulumi.StringInput
 	// The ID of the CEN instance.
 	CenId pulumi.StringInput
-	// The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
-	HostRegionId pulumi.StringInput
-	// The VPC that belongs to the service region.
+	// The ID of the region where PrivateZone is deployed.
 	//
-	// ->**NOTE:** The "cen.PrivateZone" resource depends on the related "cen.InstanceAttachment" resource.
+	// ->**NOTE:** The resource `cen.PrivateZone` depends on the resource `cen.InstanceAttachment`.
+	HostRegionId pulumi.StringInput
+	// The ID of the VPC that is associated with PrivateZone.
 	HostVpcId pulumi.StringInput
 }
 
@@ -295,7 +299,7 @@ func (o PrivateZoneOutput) ToPrivateZoneOutputWithContext(ctx context.Context) P
 	return o
 }
 
-// The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
+// The ID of the region where PrivateZone is accessed. This region refers to the region in which PrivateZone is accessed by clients.
 func (o PrivateZoneOutput) AccessRegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateZone) pulumi.StringOutput { return v.AccessRegionId }).(pulumi.StringOutput)
 }
@@ -305,19 +309,19 @@ func (o PrivateZoneOutput) CenId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateZone) pulumi.StringOutput { return v.CenId }).(pulumi.StringOutput)
 }
 
-// The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
+// The ID of the region where PrivateZone is deployed.
+//
+// ->**NOTE:** The resource `cen.PrivateZone` depends on the resource `cen.InstanceAttachment`.
 func (o PrivateZoneOutput) HostRegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateZone) pulumi.StringOutput { return v.HostRegionId }).(pulumi.StringOutput)
 }
 
-// The VPC that belongs to the service region.
-//
-// ->**NOTE:** The "cen.PrivateZone" resource depends on the related "cen.InstanceAttachment" resource.
+// The ID of the VPC that is associated with PrivateZone.
 func (o PrivateZoneOutput) HostVpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateZone) pulumi.StringOutput { return v.HostVpcId }).(pulumi.StringOutput)
 }
 
-// The status of the PrivateZone service. Valid values: ["Creating", "Active", "Deleting"].
+// The status of the Private Zone.
 func (o PrivateZoneOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateZone) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

@@ -115,7 +115,7 @@ import javax.annotation.Nullable;
  *         var defaultTransitRouterMulticastDomainPeerMember = new TransitRouterMulticastDomainPeerMember("defaultTransitRouterMulticastDomainPeerMember", TransitRouterMulticastDomainPeerMemberArgs.builder()
  *             .transitRouterMulticastDomainId(defaultTransitRouterMulticastDomain.id())
  *             .peerTransitRouterMulticastDomainId(peerTransitRouterMulticastDomain.id())
- *             .groupIpAddress("224.0.0.1")
+ *             .groupIpAddress("224.1.0.0")
  *             .build());
  * 
  *     }

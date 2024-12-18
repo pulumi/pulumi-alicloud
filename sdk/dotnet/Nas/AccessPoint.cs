@@ -25,6 +25,7 @@ namespace Pulumi.AliCloud.Nas
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -50,10 +51,16 @@ namespace Pulumi.AliCloud.Nas
     ///         CidrBlock = "172.16.0.0/24",
     ///     });
     /// 
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
     ///     var defaultBbc7ev = new AliCloud.Nas.AccessGroup("defaultBbc7ev", new()
     ///     {
     ///         AccessGroupType = "Vpc",
-    ///         AccessGroupName = name,
+    ///         AccessGroupName = $"{name}-{defaultInteger.Result}",
     ///         FileSystemType = "standard",
     ///     });
     /// 

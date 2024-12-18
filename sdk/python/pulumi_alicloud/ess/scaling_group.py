@@ -51,6 +51,7 @@ class ScalingGroupArgs:
                  spot_allocation_strategy: Optional[pulumi.Input[str]] = None,
                  spot_instance_pools: Optional[pulumi.Input[int]] = None,
                  spot_instance_remedy: Optional[pulumi.Input[bool]] = None,
+                 stop_instance_timeout: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -99,6 +100,7 @@ class ScalingGroupArgs:
         :param pulumi.Input[str] spot_allocation_strategy: The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
         :param pulumi.Input[int] spot_instance_pools: The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
         :param pulumi.Input[bool] spot_instance_remedy: Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
+        :param pulumi.Input[int] stop_instance_timeout: The period of time required by the ECS instance to enter the Stopped state. Unit: seconds. Valid values: 30 to 240.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -163,6 +165,8 @@ class ScalingGroupArgs:
             pulumi.set(__self__, "spot_instance_pools", spot_instance_pools)
         if spot_instance_remedy is not None:
             pulumi.set(__self__, "spot_instance_remedy", spot_instance_remedy)
+        if stop_instance_timeout is not None:
+            pulumi.set(__self__, "stop_instance_timeout", stop_instance_timeout)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if vswitch_id is not None:
@@ -547,6 +551,18 @@ class ScalingGroupArgs:
         pulumi.set(self, "spot_instance_remedy", value)
 
     @property
+    @pulumi.getter(name="stopInstanceTimeout")
+    def stop_instance_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        The period of time required by the ECS instance to enter the Stopped state. Unit: seconds. Valid values: 30 to 240.
+        """
+        return pulumi.get(self, "stop_instance_timeout")
+
+    @stop_instance_timeout.setter
+    def stop_instance_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "stop_instance_timeout", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -619,6 +635,7 @@ class _ScalingGroupState:
                  spot_allocation_strategy: Optional[pulumi.Input[str]] = None,
                  spot_instance_pools: Optional[pulumi.Input[int]] = None,
                  spot_instance_remedy: Optional[pulumi.Input[bool]] = None,
+                 stop_instance_timeout: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -667,6 +684,7 @@ class _ScalingGroupState:
         :param pulumi.Input[str] spot_allocation_strategy: The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
         :param pulumi.Input[int] spot_instance_pools: The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
         :param pulumi.Input[bool] spot_instance_remedy: Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
+        :param pulumi.Input[int] stop_instance_timeout: The period of time required by the ECS instance to enter the Stopped state. Unit: seconds. Valid values: 30 to 240.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -733,6 +751,8 @@ class _ScalingGroupState:
             pulumi.set(__self__, "spot_instance_pools", spot_instance_pools)
         if spot_instance_remedy is not None:
             pulumi.set(__self__, "spot_instance_remedy", spot_instance_remedy)
+        if stop_instance_timeout is not None:
+            pulumi.set(__self__, "stop_instance_timeout", stop_instance_timeout)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if vswitch_id is not None:
@@ -1117,6 +1137,18 @@ class _ScalingGroupState:
         pulumi.set(self, "spot_instance_remedy", value)
 
     @property
+    @pulumi.getter(name="stopInstanceTimeout")
+    def stop_instance_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        The period of time required by the ECS instance to enter the Stopped state. Unit: seconds. Valid values: 30 to 240.
+        """
+        return pulumi.get(self, "stop_instance_timeout")
+
+    @stop_instance_timeout.setter
+    def stop_instance_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "stop_instance_timeout", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -1191,6 +1223,7 @@ class ScalingGroup(pulumi.CustomResource):
                  spot_allocation_strategy: Optional[pulumi.Input[str]] = None,
                  spot_instance_pools: Optional[pulumi.Input[int]] = None,
                  spot_instance_remedy: Optional[pulumi.Input[bool]] = None,
+                 stop_instance_timeout: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1327,6 +1360,7 @@ class ScalingGroup(pulumi.CustomResource):
         :param pulumi.Input[str] spot_allocation_strategy: The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
         :param pulumi.Input[int] spot_instance_pools: The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
         :param pulumi.Input[bool] spot_instance_remedy: Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
+        :param pulumi.Input[int] stop_instance_timeout: The period of time required by the ECS instance to enter the Stopped state. Unit: seconds. Valid values: 30 to 240.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -1471,6 +1505,7 @@ class ScalingGroup(pulumi.CustomResource):
                  spot_allocation_strategy: Optional[pulumi.Input[str]] = None,
                  spot_instance_pools: Optional[pulumi.Input[int]] = None,
                  spot_instance_remedy: Optional[pulumi.Input[bool]] = None,
+                 stop_instance_timeout: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1517,6 +1552,7 @@ class ScalingGroup(pulumi.CustomResource):
             __props__.__dict__["spot_allocation_strategy"] = spot_allocation_strategy
             __props__.__dict__["spot_instance_pools"] = spot_instance_pools
             __props__.__dict__["spot_instance_remedy"] = spot_instance_remedy
+            __props__.__dict__["stop_instance_timeout"] = stop_instance_timeout
             __props__.__dict__["tags"] = tags
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["vswitch_ids"] = vswitch_ids
@@ -1560,6 +1596,7 @@ class ScalingGroup(pulumi.CustomResource):
             spot_allocation_strategy: Optional[pulumi.Input[str]] = None,
             spot_instance_pools: Optional[pulumi.Input[int]] = None,
             spot_instance_remedy: Optional[pulumi.Input[bool]] = None,
+            stop_instance_timeout: Optional[pulumi.Input[int]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
             vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'ScalingGroup':
@@ -1613,6 +1650,7 @@ class ScalingGroup(pulumi.CustomResource):
         :param pulumi.Input[str] spot_allocation_strategy: The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
         :param pulumi.Input[int] spot_instance_pools: The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
         :param pulumi.Input[bool] spot_instance_remedy: Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
+        :param pulumi.Input[int] stop_instance_timeout: The period of time required by the ECS instance to enter the Stopped state. Unit: seconds. Valid values: 30 to 240.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -1653,6 +1691,7 @@ class ScalingGroup(pulumi.CustomResource):
         __props__.__dict__["spot_allocation_strategy"] = spot_allocation_strategy
         __props__.__dict__["spot_instance_pools"] = spot_instance_pools
         __props__.__dict__["spot_instance_remedy"] = spot_instance_remedy
+        __props__.__dict__["stop_instance_timeout"] = stop_instance_timeout
         __props__.__dict__["tags"] = tags
         __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["vswitch_ids"] = vswitch_ids
@@ -1910,6 +1949,14 @@ class ScalingGroup(pulumi.CustomResource):
         Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
         """
         return pulumi.get(self, "spot_instance_remedy")
+
+    @property
+    @pulumi.getter(name="stopInstanceTimeout")
+    def stop_instance_timeout(self) -> pulumi.Output[Optional[int]]:
+        """
+        The period of time required by the ECS instance to enter the Stopped state. Unit: seconds. Valid values: 30 to 240.
+        """
+        return pulumi.get(self, "stop_instance_timeout")
 
     @property
     @pulumi.getter

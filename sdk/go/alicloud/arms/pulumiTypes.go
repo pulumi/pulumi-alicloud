@@ -734,6 +734,175 @@ func (o DispatchRuleNotifyRuleNotifyObjectArrayOutput) Index(i pulumi.IntInput) 
 	}).(DispatchRuleNotifyRuleNotifyObjectOutput)
 }
 
+type DispatchRuleNotifyTemplate struct {
+	// The content of the email notification.
+	EmailContent string `pulumi:"emailContent"`
+	// The content of the email notification for restored alerts.
+	EmailRecoverContent string `pulumi:"emailRecoverContent"`
+	// The title of the email notification for restored alerts.
+	EmailRecoverTitle string `pulumi:"emailRecoverTitle"`
+	// The title of the email notification.
+	EmailTitle string `pulumi:"emailTitle"`
+	// The content of the robot notification.
+	RobotContent string `pulumi:"robotContent"`
+	// The content of the SMS notification.
+	SmsContent string `pulumi:"smsContent"`
+	// The content of the SMS notification for restored alerts.
+	SmsRecoverContent string `pulumi:"smsRecoverContent"`
+	// The content of the TTS notification.
+	TtsContent string `pulumi:"ttsContent"`
+	// The content of the TTS notification for restored alerts.
+	TtsRecoverContent string `pulumi:"ttsRecoverContent"`
+}
+
+// DispatchRuleNotifyTemplateInput is an input type that accepts DispatchRuleNotifyTemplateArgs and DispatchRuleNotifyTemplateOutput values.
+// You can construct a concrete instance of `DispatchRuleNotifyTemplateInput` via:
+//
+//	DispatchRuleNotifyTemplateArgs{...}
+type DispatchRuleNotifyTemplateInput interface {
+	pulumi.Input
+
+	ToDispatchRuleNotifyTemplateOutput() DispatchRuleNotifyTemplateOutput
+	ToDispatchRuleNotifyTemplateOutputWithContext(context.Context) DispatchRuleNotifyTemplateOutput
+}
+
+type DispatchRuleNotifyTemplateArgs struct {
+	// The content of the email notification.
+	EmailContent pulumi.StringInput `pulumi:"emailContent"`
+	// The content of the email notification for restored alerts.
+	EmailRecoverContent pulumi.StringInput `pulumi:"emailRecoverContent"`
+	// The title of the email notification for restored alerts.
+	EmailRecoverTitle pulumi.StringInput `pulumi:"emailRecoverTitle"`
+	// The title of the email notification.
+	EmailTitle pulumi.StringInput `pulumi:"emailTitle"`
+	// The content of the robot notification.
+	RobotContent pulumi.StringInput `pulumi:"robotContent"`
+	// The content of the SMS notification.
+	SmsContent pulumi.StringInput `pulumi:"smsContent"`
+	// The content of the SMS notification for restored alerts.
+	SmsRecoverContent pulumi.StringInput `pulumi:"smsRecoverContent"`
+	// The content of the TTS notification.
+	TtsContent pulumi.StringInput `pulumi:"ttsContent"`
+	// The content of the TTS notification for restored alerts.
+	TtsRecoverContent pulumi.StringInput `pulumi:"ttsRecoverContent"`
+}
+
+func (DispatchRuleNotifyTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DispatchRuleNotifyTemplate)(nil)).Elem()
+}
+
+func (i DispatchRuleNotifyTemplateArgs) ToDispatchRuleNotifyTemplateOutput() DispatchRuleNotifyTemplateOutput {
+	return i.ToDispatchRuleNotifyTemplateOutputWithContext(context.Background())
+}
+
+func (i DispatchRuleNotifyTemplateArgs) ToDispatchRuleNotifyTemplateOutputWithContext(ctx context.Context) DispatchRuleNotifyTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DispatchRuleNotifyTemplateOutput)
+}
+
+// DispatchRuleNotifyTemplateArrayInput is an input type that accepts DispatchRuleNotifyTemplateArray and DispatchRuleNotifyTemplateArrayOutput values.
+// You can construct a concrete instance of `DispatchRuleNotifyTemplateArrayInput` via:
+//
+//	DispatchRuleNotifyTemplateArray{ DispatchRuleNotifyTemplateArgs{...} }
+type DispatchRuleNotifyTemplateArrayInput interface {
+	pulumi.Input
+
+	ToDispatchRuleNotifyTemplateArrayOutput() DispatchRuleNotifyTemplateArrayOutput
+	ToDispatchRuleNotifyTemplateArrayOutputWithContext(context.Context) DispatchRuleNotifyTemplateArrayOutput
+}
+
+type DispatchRuleNotifyTemplateArray []DispatchRuleNotifyTemplateInput
+
+func (DispatchRuleNotifyTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DispatchRuleNotifyTemplate)(nil)).Elem()
+}
+
+func (i DispatchRuleNotifyTemplateArray) ToDispatchRuleNotifyTemplateArrayOutput() DispatchRuleNotifyTemplateArrayOutput {
+	return i.ToDispatchRuleNotifyTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i DispatchRuleNotifyTemplateArray) ToDispatchRuleNotifyTemplateArrayOutputWithContext(ctx context.Context) DispatchRuleNotifyTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DispatchRuleNotifyTemplateArrayOutput)
+}
+
+type DispatchRuleNotifyTemplateOutput struct{ *pulumi.OutputState }
+
+func (DispatchRuleNotifyTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DispatchRuleNotifyTemplate)(nil)).Elem()
+}
+
+func (o DispatchRuleNotifyTemplateOutput) ToDispatchRuleNotifyTemplateOutput() DispatchRuleNotifyTemplateOutput {
+	return o
+}
+
+func (o DispatchRuleNotifyTemplateOutput) ToDispatchRuleNotifyTemplateOutputWithContext(ctx context.Context) DispatchRuleNotifyTemplateOutput {
+	return o
+}
+
+// The content of the email notification.
+func (o DispatchRuleNotifyTemplateOutput) EmailContent() pulumi.StringOutput {
+	return o.ApplyT(func(v DispatchRuleNotifyTemplate) string { return v.EmailContent }).(pulumi.StringOutput)
+}
+
+// The content of the email notification for restored alerts.
+func (o DispatchRuleNotifyTemplateOutput) EmailRecoverContent() pulumi.StringOutput {
+	return o.ApplyT(func(v DispatchRuleNotifyTemplate) string { return v.EmailRecoverContent }).(pulumi.StringOutput)
+}
+
+// The title of the email notification for restored alerts.
+func (o DispatchRuleNotifyTemplateOutput) EmailRecoverTitle() pulumi.StringOutput {
+	return o.ApplyT(func(v DispatchRuleNotifyTemplate) string { return v.EmailRecoverTitle }).(pulumi.StringOutput)
+}
+
+// The title of the email notification.
+func (o DispatchRuleNotifyTemplateOutput) EmailTitle() pulumi.StringOutput {
+	return o.ApplyT(func(v DispatchRuleNotifyTemplate) string { return v.EmailTitle }).(pulumi.StringOutput)
+}
+
+// The content of the robot notification.
+func (o DispatchRuleNotifyTemplateOutput) RobotContent() pulumi.StringOutput {
+	return o.ApplyT(func(v DispatchRuleNotifyTemplate) string { return v.RobotContent }).(pulumi.StringOutput)
+}
+
+// The content of the SMS notification.
+func (o DispatchRuleNotifyTemplateOutput) SmsContent() pulumi.StringOutput {
+	return o.ApplyT(func(v DispatchRuleNotifyTemplate) string { return v.SmsContent }).(pulumi.StringOutput)
+}
+
+// The content of the SMS notification for restored alerts.
+func (o DispatchRuleNotifyTemplateOutput) SmsRecoverContent() pulumi.StringOutput {
+	return o.ApplyT(func(v DispatchRuleNotifyTemplate) string { return v.SmsRecoverContent }).(pulumi.StringOutput)
+}
+
+// The content of the TTS notification.
+func (o DispatchRuleNotifyTemplateOutput) TtsContent() pulumi.StringOutput {
+	return o.ApplyT(func(v DispatchRuleNotifyTemplate) string { return v.TtsContent }).(pulumi.StringOutput)
+}
+
+// The content of the TTS notification for restored alerts.
+func (o DispatchRuleNotifyTemplateOutput) TtsRecoverContent() pulumi.StringOutput {
+	return o.ApplyT(func(v DispatchRuleNotifyTemplate) string { return v.TtsRecoverContent }).(pulumi.StringOutput)
+}
+
+type DispatchRuleNotifyTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (DispatchRuleNotifyTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DispatchRuleNotifyTemplate)(nil)).Elem()
+}
+
+func (o DispatchRuleNotifyTemplateArrayOutput) ToDispatchRuleNotifyTemplateArrayOutput() DispatchRuleNotifyTemplateArrayOutput {
+	return o
+}
+
+func (o DispatchRuleNotifyTemplateArrayOutput) ToDispatchRuleNotifyTemplateArrayOutputWithContext(ctx context.Context) DispatchRuleNotifyTemplateArrayOutput {
+	return o
+}
+
+func (o DispatchRuleNotifyTemplateArrayOutput) Index(i pulumi.IntInput) DispatchRuleNotifyTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DispatchRuleNotifyTemplate {
+		return vs[0].([]DispatchRuleNotifyTemplate)[vs[1].(int)]
+	}).(DispatchRuleNotifyTemplateOutput)
+}
+
 type PrometheusAlertRuleAnnotation struct {
 	// The name of the annotation.
 	Name *string `pulumi:"name"`
@@ -5025,8 +5194,6 @@ type GetDispatchRulesRule struct {
 	DispatchRuleId string `pulumi:"dispatchRuleId"`
 	// The name of the dispatch rule.
 	DispatchRuleName string `pulumi:"dispatchRuleName"`
-	// The type of the dispatch rule.
-	DispatchType string `pulumi:"dispatchType"`
 	// Sets the event group.
 	GroupRules []GetDispatchRulesRuleGroupRule `pulumi:"groupRules"`
 	// The ID of the Dispatch Rule.
@@ -5035,6 +5202,8 @@ type GetDispatchRulesRule struct {
 	LabelMatchExpressionGrids []GetDispatchRulesRuleLabelMatchExpressionGrid `pulumi:"labelMatchExpressionGrids"`
 	// Sets the notification rule.
 	NotifyRules []GetDispatchRulesRuleNotifyRule `pulumi:"notifyRules"`
+	// (Available since v1.238.0) The notification method.
+	NotifyTemplates []GetDispatchRulesRuleNotifyTemplate `pulumi:"notifyTemplates"`
 	// The resource status of Alert Dispatch Rule.
 	Status string `pulumi:"status"`
 }
@@ -5055,8 +5224,6 @@ type GetDispatchRulesRuleArgs struct {
 	DispatchRuleId pulumi.StringInput `pulumi:"dispatchRuleId"`
 	// The name of the dispatch rule.
 	DispatchRuleName pulumi.StringInput `pulumi:"dispatchRuleName"`
-	// The type of the dispatch rule.
-	DispatchType pulumi.StringInput `pulumi:"dispatchType"`
 	// Sets the event group.
 	GroupRules GetDispatchRulesRuleGroupRuleArrayInput `pulumi:"groupRules"`
 	// The ID of the Dispatch Rule.
@@ -5065,6 +5232,8 @@ type GetDispatchRulesRuleArgs struct {
 	LabelMatchExpressionGrids GetDispatchRulesRuleLabelMatchExpressionGridArrayInput `pulumi:"labelMatchExpressionGrids"`
 	// Sets the notification rule.
 	NotifyRules GetDispatchRulesRuleNotifyRuleArrayInput `pulumi:"notifyRules"`
+	// (Available since v1.238.0) The notification method.
+	NotifyTemplates GetDispatchRulesRuleNotifyTemplateArrayInput `pulumi:"notifyTemplates"`
 	// The resource status of Alert Dispatch Rule.
 	Status pulumi.StringInput `pulumi:"status"`
 }
@@ -5130,11 +5299,6 @@ func (o GetDispatchRulesRuleOutput) DispatchRuleName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDispatchRulesRule) string { return v.DispatchRuleName }).(pulumi.StringOutput)
 }
 
-// The type of the dispatch rule.
-func (o GetDispatchRulesRuleOutput) DispatchType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDispatchRulesRule) string { return v.DispatchType }).(pulumi.StringOutput)
-}
-
 // Sets the event group.
 func (o GetDispatchRulesRuleOutput) GroupRules() GetDispatchRulesRuleGroupRuleArrayOutput {
 	return o.ApplyT(func(v GetDispatchRulesRule) []GetDispatchRulesRuleGroupRule { return v.GroupRules }).(GetDispatchRulesRuleGroupRuleArrayOutput)
@@ -5155,6 +5319,11 @@ func (o GetDispatchRulesRuleOutput) LabelMatchExpressionGrids() GetDispatchRules
 // Sets the notification rule.
 func (o GetDispatchRulesRuleOutput) NotifyRules() GetDispatchRulesRuleNotifyRuleArrayOutput {
 	return o.ApplyT(func(v GetDispatchRulesRule) []GetDispatchRulesRuleNotifyRule { return v.NotifyRules }).(GetDispatchRulesRuleNotifyRuleArrayOutput)
+}
+
+// (Available since v1.238.0) The notification method.
+func (o GetDispatchRulesRuleOutput) NotifyTemplates() GetDispatchRulesRuleNotifyTemplateArrayOutput {
+	return o.ApplyT(func(v GetDispatchRulesRule) []GetDispatchRulesRuleNotifyTemplate { return v.NotifyTemplates }).(GetDispatchRulesRuleNotifyTemplateArrayOutput)
 }
 
 // The resource status of Alert Dispatch Rule.
@@ -5864,6 +6033,175 @@ func (o GetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutput) Index(i pulumi.In
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDispatchRulesRuleNotifyRuleNotifyObject {
 		return vs[0].([]GetDispatchRulesRuleNotifyRuleNotifyObject)[vs[1].(int)]
 	}).(GetDispatchRulesRuleNotifyRuleNotifyObjectOutput)
+}
+
+type GetDispatchRulesRuleNotifyTemplate struct {
+	// The content of the email.
+	EmailContent string `pulumi:"emailContent"`
+	// The content of the email.
+	EmailRecoverContent string `pulumi:"emailRecoverContent"`
+	// The title of the email.
+	EmailRecoverTitle string `pulumi:"emailRecoverTitle"`
+	// The title of the email.
+	EmailTitle string `pulumi:"emailTitle"`
+	// The content of the robot.
+	RobotContent string `pulumi:"robotContent"`
+	// The content of the SMS.
+	SmsContent string `pulumi:"smsContent"`
+	// The content of the SMS.
+	SmsRecoverContent string `pulumi:"smsRecoverContent"`
+	// The content of the TTS.
+	TtsContent string `pulumi:"ttsContent"`
+	// The content of the TTS.
+	TtsRecoverContent string `pulumi:"ttsRecoverContent"`
+}
+
+// GetDispatchRulesRuleNotifyTemplateInput is an input type that accepts GetDispatchRulesRuleNotifyTemplateArgs and GetDispatchRulesRuleNotifyTemplateOutput values.
+// You can construct a concrete instance of `GetDispatchRulesRuleNotifyTemplateInput` via:
+//
+//	GetDispatchRulesRuleNotifyTemplateArgs{...}
+type GetDispatchRulesRuleNotifyTemplateInput interface {
+	pulumi.Input
+
+	ToGetDispatchRulesRuleNotifyTemplateOutput() GetDispatchRulesRuleNotifyTemplateOutput
+	ToGetDispatchRulesRuleNotifyTemplateOutputWithContext(context.Context) GetDispatchRulesRuleNotifyTemplateOutput
+}
+
+type GetDispatchRulesRuleNotifyTemplateArgs struct {
+	// The content of the email.
+	EmailContent pulumi.StringInput `pulumi:"emailContent"`
+	// The content of the email.
+	EmailRecoverContent pulumi.StringInput `pulumi:"emailRecoverContent"`
+	// The title of the email.
+	EmailRecoverTitle pulumi.StringInput `pulumi:"emailRecoverTitle"`
+	// The title of the email.
+	EmailTitle pulumi.StringInput `pulumi:"emailTitle"`
+	// The content of the robot.
+	RobotContent pulumi.StringInput `pulumi:"robotContent"`
+	// The content of the SMS.
+	SmsContent pulumi.StringInput `pulumi:"smsContent"`
+	// The content of the SMS.
+	SmsRecoverContent pulumi.StringInput `pulumi:"smsRecoverContent"`
+	// The content of the TTS.
+	TtsContent pulumi.StringInput `pulumi:"ttsContent"`
+	// The content of the TTS.
+	TtsRecoverContent pulumi.StringInput `pulumi:"ttsRecoverContent"`
+}
+
+func (GetDispatchRulesRuleNotifyTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDispatchRulesRuleNotifyTemplate)(nil)).Elem()
+}
+
+func (i GetDispatchRulesRuleNotifyTemplateArgs) ToGetDispatchRulesRuleNotifyTemplateOutput() GetDispatchRulesRuleNotifyTemplateOutput {
+	return i.ToGetDispatchRulesRuleNotifyTemplateOutputWithContext(context.Background())
+}
+
+func (i GetDispatchRulesRuleNotifyTemplateArgs) ToGetDispatchRulesRuleNotifyTemplateOutputWithContext(ctx context.Context) GetDispatchRulesRuleNotifyTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDispatchRulesRuleNotifyTemplateOutput)
+}
+
+// GetDispatchRulesRuleNotifyTemplateArrayInput is an input type that accepts GetDispatchRulesRuleNotifyTemplateArray and GetDispatchRulesRuleNotifyTemplateArrayOutput values.
+// You can construct a concrete instance of `GetDispatchRulesRuleNotifyTemplateArrayInput` via:
+//
+//	GetDispatchRulesRuleNotifyTemplateArray{ GetDispatchRulesRuleNotifyTemplateArgs{...} }
+type GetDispatchRulesRuleNotifyTemplateArrayInput interface {
+	pulumi.Input
+
+	ToGetDispatchRulesRuleNotifyTemplateArrayOutput() GetDispatchRulesRuleNotifyTemplateArrayOutput
+	ToGetDispatchRulesRuleNotifyTemplateArrayOutputWithContext(context.Context) GetDispatchRulesRuleNotifyTemplateArrayOutput
+}
+
+type GetDispatchRulesRuleNotifyTemplateArray []GetDispatchRulesRuleNotifyTemplateInput
+
+func (GetDispatchRulesRuleNotifyTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDispatchRulesRuleNotifyTemplate)(nil)).Elem()
+}
+
+func (i GetDispatchRulesRuleNotifyTemplateArray) ToGetDispatchRulesRuleNotifyTemplateArrayOutput() GetDispatchRulesRuleNotifyTemplateArrayOutput {
+	return i.ToGetDispatchRulesRuleNotifyTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i GetDispatchRulesRuleNotifyTemplateArray) ToGetDispatchRulesRuleNotifyTemplateArrayOutputWithContext(ctx context.Context) GetDispatchRulesRuleNotifyTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDispatchRulesRuleNotifyTemplateArrayOutput)
+}
+
+type GetDispatchRulesRuleNotifyTemplateOutput struct{ *pulumi.OutputState }
+
+func (GetDispatchRulesRuleNotifyTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDispatchRulesRuleNotifyTemplate)(nil)).Elem()
+}
+
+func (o GetDispatchRulesRuleNotifyTemplateOutput) ToGetDispatchRulesRuleNotifyTemplateOutput() GetDispatchRulesRuleNotifyTemplateOutput {
+	return o
+}
+
+func (o GetDispatchRulesRuleNotifyTemplateOutput) ToGetDispatchRulesRuleNotifyTemplateOutputWithContext(ctx context.Context) GetDispatchRulesRuleNotifyTemplateOutput {
+	return o
+}
+
+// The content of the email.
+func (o GetDispatchRulesRuleNotifyTemplateOutput) EmailContent() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDispatchRulesRuleNotifyTemplate) string { return v.EmailContent }).(pulumi.StringOutput)
+}
+
+// The content of the email.
+func (o GetDispatchRulesRuleNotifyTemplateOutput) EmailRecoverContent() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDispatchRulesRuleNotifyTemplate) string { return v.EmailRecoverContent }).(pulumi.StringOutput)
+}
+
+// The title of the email.
+func (o GetDispatchRulesRuleNotifyTemplateOutput) EmailRecoverTitle() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDispatchRulesRuleNotifyTemplate) string { return v.EmailRecoverTitle }).(pulumi.StringOutput)
+}
+
+// The title of the email.
+func (o GetDispatchRulesRuleNotifyTemplateOutput) EmailTitle() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDispatchRulesRuleNotifyTemplate) string { return v.EmailTitle }).(pulumi.StringOutput)
+}
+
+// The content of the robot.
+func (o GetDispatchRulesRuleNotifyTemplateOutput) RobotContent() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDispatchRulesRuleNotifyTemplate) string { return v.RobotContent }).(pulumi.StringOutput)
+}
+
+// The content of the SMS.
+func (o GetDispatchRulesRuleNotifyTemplateOutput) SmsContent() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDispatchRulesRuleNotifyTemplate) string { return v.SmsContent }).(pulumi.StringOutput)
+}
+
+// The content of the SMS.
+func (o GetDispatchRulesRuleNotifyTemplateOutput) SmsRecoverContent() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDispatchRulesRuleNotifyTemplate) string { return v.SmsRecoverContent }).(pulumi.StringOutput)
+}
+
+// The content of the TTS.
+func (o GetDispatchRulesRuleNotifyTemplateOutput) TtsContent() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDispatchRulesRuleNotifyTemplate) string { return v.TtsContent }).(pulumi.StringOutput)
+}
+
+// The content of the TTS.
+func (o GetDispatchRulesRuleNotifyTemplateOutput) TtsRecoverContent() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDispatchRulesRuleNotifyTemplate) string { return v.TtsRecoverContent }).(pulumi.StringOutput)
+}
+
+type GetDispatchRulesRuleNotifyTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDispatchRulesRuleNotifyTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDispatchRulesRuleNotifyTemplate)(nil)).Elem()
+}
+
+func (o GetDispatchRulesRuleNotifyTemplateArrayOutput) ToGetDispatchRulesRuleNotifyTemplateArrayOutput() GetDispatchRulesRuleNotifyTemplateArrayOutput {
+	return o
+}
+
+func (o GetDispatchRulesRuleNotifyTemplateArrayOutput) ToGetDispatchRulesRuleNotifyTemplateArrayOutputWithContext(ctx context.Context) GetDispatchRulesRuleNotifyTemplateArrayOutput {
+	return o
+}
+
+func (o GetDispatchRulesRuleNotifyTemplateArrayOutput) Index(i pulumi.IntInput) GetDispatchRulesRuleNotifyTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDispatchRulesRuleNotifyTemplate {
+		return vs[0].([]GetDispatchRulesRuleNotifyTemplate)[vs[1].(int)]
+	}).(GetDispatchRulesRuleNotifyTemplateOutput)
 }
 
 type GetIntegrationExportersIntegrationExporter struct {
@@ -7267,6 +7605,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DispatchRuleNotifyRuleArrayInput)(nil)).Elem(), DispatchRuleNotifyRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DispatchRuleNotifyRuleNotifyObjectInput)(nil)).Elem(), DispatchRuleNotifyRuleNotifyObjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DispatchRuleNotifyRuleNotifyObjectArrayInput)(nil)).Elem(), DispatchRuleNotifyRuleNotifyObjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DispatchRuleNotifyTemplateInput)(nil)).Elem(), DispatchRuleNotifyTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DispatchRuleNotifyTemplateArrayInput)(nil)).Elem(), DispatchRuleNotifyTemplateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrometheusAlertRuleAnnotationInput)(nil)).Elem(), PrometheusAlertRuleAnnotationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrometheusAlertRuleAnnotationArrayInput)(nil)).Elem(), PrometheusAlertRuleAnnotationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrometheusAlertRuleLabelInput)(nil)).Elem(), PrometheusAlertRuleLabelArgs{})
@@ -7321,6 +7661,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDispatchRulesRuleNotifyRuleArrayInput)(nil)).Elem(), GetDispatchRulesRuleNotifyRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDispatchRulesRuleNotifyRuleNotifyObjectInput)(nil)).Elem(), GetDispatchRulesRuleNotifyRuleNotifyObjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDispatchRulesRuleNotifyRuleNotifyObjectArrayInput)(nil)).Elem(), GetDispatchRulesRuleNotifyRuleNotifyObjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDispatchRulesRuleNotifyTemplateInput)(nil)).Elem(), GetDispatchRulesRuleNotifyTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDispatchRulesRuleNotifyTemplateArrayInput)(nil)).Elem(), GetDispatchRulesRuleNotifyTemplateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIntegrationExportersIntegrationExporterInput)(nil)).Elem(), GetIntegrationExportersIntegrationExporterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIntegrationExportersIntegrationExporterArrayInput)(nil)).Elem(), GetIntegrationExportersIntegrationExporterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrometheisPrometheiInput)(nil)).Elem(), GetPrometheisPrometheiArgs{})
@@ -7349,6 +7691,8 @@ func init() {
 	pulumi.RegisterOutputType(DispatchRuleNotifyRuleArrayOutput{})
 	pulumi.RegisterOutputType(DispatchRuleNotifyRuleNotifyObjectOutput{})
 	pulumi.RegisterOutputType(DispatchRuleNotifyRuleNotifyObjectArrayOutput{})
+	pulumi.RegisterOutputType(DispatchRuleNotifyTemplateOutput{})
+	pulumi.RegisterOutputType(DispatchRuleNotifyTemplateArrayOutput{})
 	pulumi.RegisterOutputType(PrometheusAlertRuleAnnotationOutput{})
 	pulumi.RegisterOutputType(PrometheusAlertRuleAnnotationArrayOutput{})
 	pulumi.RegisterOutputType(PrometheusAlertRuleLabelOutput{})
@@ -7403,6 +7747,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDispatchRulesRuleNotifyRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetDispatchRulesRuleNotifyRuleNotifyObjectOutput{})
 	pulumi.RegisterOutputType(GetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutput{})
+	pulumi.RegisterOutputType(GetDispatchRulesRuleNotifyTemplateOutput{})
+	pulumi.RegisterOutputType(GetDispatchRulesRuleNotifyTemplateArrayOutput{})
 	pulumi.RegisterOutputType(GetIntegrationExportersIntegrationExporterOutput{})
 	pulumi.RegisterOutputType(GetIntegrationExportersIntegrationExporterArrayOutput{})
 	pulumi.RegisterOutputType(GetPrometheisPrometheiOutput{})

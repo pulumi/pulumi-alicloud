@@ -154,6 +154,7 @@ import * as iot from "./iot";
 import * as kms from "./kms";
 import * as kvstore from "./kvstore";
 import * as lindorm from "./lindorm";
+import * as live from "./live";
 import * as log from "./log";
 import * as marketplace from "./marketplace";
 import * as maxcompute from "./maxcompute";
@@ -291,6 +292,7 @@ export {
     kms,
     kvstore,
     lindorm,
+    live,
     log,
     marketplace,
     maxcompute,

@@ -9,6 +9,7 @@ import com.pulumi.alicloud.arms.inputs.DispatchRuleState;
 import com.pulumi.alicloud.arms.outputs.DispatchRuleGroupRule;
 import com.pulumi.alicloud.arms.outputs.DispatchRuleLabelMatchExpressionGrid;
 import com.pulumi.alicloud.arms.outputs.DispatchRuleNotifyRule;
+import com.pulumi.alicloud.arms.outputs.DispatchRuleNotifyTemplate;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -47,6 +48,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.arms.inputs.DispatchRuleGroupRuleArgs;
  * import com.pulumi.alicloud.arms.inputs.DispatchRuleLabelMatchExpressionGridArgs;
  * import com.pulumi.alicloud.arms.inputs.DispatchRuleNotifyRuleArgs;
+ * import com.pulumi.alicloud.arms.inputs.DispatchRuleNotifyTemplateArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -105,6 +107,17 @@ import javax.annotation.Nullable;
  *                     "wechat")
  *                 .notifyStartTime("10:00")
  *                 .notifyEndTime("23:00")
+ *                 .build())
+ *             .notifyTemplates(DispatchRuleNotifyTemplateArgs.builder()
+ *                 .emailTitle("example_email_title")
+ *                 .emailContent("example_email_content")
+ *                 .emailRecoverTitle("example_email_recover_title")
+ *                 .emailRecoverContent("example_email_recover_content")
+ *                 .smsContent("example_sms_content")
+ *                 .smsRecoverContent("example_sms_recover_content")
+ *                 .ttsContent("example_tts_content")
+ *                 .ttsRecoverContent("example_tts_recover_content")
+ *                 .robotContent("example_robot_content")
  *                 .build())
  *             .build());
  * 
@@ -208,6 +221,20 @@ public class DispatchRule extends com.pulumi.resources.CustomResource {
      */
     public Output<List<DispatchRuleNotifyRule>> notifyRules() {
         return this.notifyRules;
+    }
+    /**
+     * Sets the notification template. See `notify_template` below.
+     * 
+     */
+    @Export(name="notifyTemplates", refs={List.class,DispatchRuleNotifyTemplate.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<DispatchRuleNotifyTemplate>> notifyTemplates;
+
+    /**
+     * @return Sets the notification template. See `notify_template` below.
+     * 
+     */
+    public Output<Optional<List<DispatchRuleNotifyTemplate>>> notifyTemplates() {
+        return Codegen.optional(this.notifyTemplates);
     }
     /**
      * The resource status of Alert Dispatch Rule.

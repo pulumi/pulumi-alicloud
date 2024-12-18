@@ -266,6 +266,10 @@ export class ScalingGroup extends pulumi.CustomResource {
      */
     public readonly spotInstanceRemedy!: pulumi.Output<boolean>;
     /**
+     * The period of time required by the ECS instance to enter the Stopped state. Unit: seconds. Valid values: 30 to 240.
+     */
+    public readonly stopInstanceTimeout!: pulumi.Output<number | undefined>;
+    /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -325,6 +329,7 @@ export class ScalingGroup extends pulumi.CustomResource {
             resourceInputs["spotAllocationStrategy"] = state ? state.spotAllocationStrategy : undefined;
             resourceInputs["spotInstancePools"] = state ? state.spotInstancePools : undefined;
             resourceInputs["spotInstanceRemedy"] = state ? state.spotInstanceRemedy : undefined;
+            resourceInputs["stopInstanceTimeout"] = state ? state.stopInstanceTimeout : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
             resourceInputs["vswitchIds"] = state ? state.vswitchIds : undefined;
@@ -366,6 +371,7 @@ export class ScalingGroup extends pulumi.CustomResource {
             resourceInputs["spotAllocationStrategy"] = args ? args.spotAllocationStrategy : undefined;
             resourceInputs["spotInstancePools"] = args ? args.spotInstancePools : undefined;
             resourceInputs["spotInstanceRemedy"] = args ? args.spotInstanceRemedy : undefined;
+            resourceInputs["stopInstanceTimeout"] = args ? args.stopInstanceTimeout : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["vswitchIds"] = args ? args.vswitchIds : undefined;
@@ -512,6 +518,10 @@ export interface ScalingGroupState {
      * Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
      */
     spotInstanceRemedy?: pulumi.Input<boolean>;
+    /**
+     * The period of time required by the ECS instance to enter the Stopped state. Unit: seconds. Valid values: 30 to 240.
+     */
+    stopInstanceTimeout?: pulumi.Input<number>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -667,6 +677,10 @@ export interface ScalingGroupArgs {
      * Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
      */
     spotInstanceRemedy?: pulumi.Input<boolean>;
+    /**
+     * The period of time required by the ECS instance to enter the Stopped state. Unit: seconds. Valid values: 30 to 240.
+     */
+    stopInstanceTimeout?: pulumi.Input<number>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.

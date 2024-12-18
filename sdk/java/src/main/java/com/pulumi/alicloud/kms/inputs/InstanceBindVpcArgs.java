@@ -5,7 +5,6 @@ package com.pulumi.alicloud.kms.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -51,13 +50,13 @@ public final class InstanceBindVpcArgs extends com.pulumi.resources.ResourceArgs
      * 
      */
     @Import(name="vpcOwnerId")
-    private @Nullable Output<Integer> vpcOwnerId;
+    private @Nullable Output<String> vpcOwnerId;
 
     /**
      * @return VPC owner root user ID.
      * 
      */
-    public Optional<Output<Integer>> vpcOwnerId() {
+    public Optional<Output<String>> vpcOwnerId() {
         return Optional.ofNullable(this.vpcOwnerId);
     }
 
@@ -151,7 +150,7 @@ public final class InstanceBindVpcArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder vpcOwnerId(@Nullable Output<Integer> vpcOwnerId) {
+        public Builder vpcOwnerId(@Nullable Output<String> vpcOwnerId) {
             $.vpcOwnerId = vpcOwnerId;
             return this;
         }
@@ -162,7 +161,7 @@ public final class InstanceBindVpcArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder vpcOwnerId(Integer vpcOwnerId) {
+        public Builder vpcOwnerId(String vpcOwnerId) {
             return vpcOwnerId(Output.of(vpcOwnerId));
         }
 

@@ -19,9 +19,14 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
+ * const _default = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
  * const foo = new alicloud.nas.AccessGroup("foo", {
- *     accessGroupName: "terraform-example",
+ *     accessGroupName: `terraform-example-${_default.result}`,
  *     accessGroupType: "Vpc",
  *     description: "terraform-example",
  *     fileSystemType: "extreme",

@@ -82,6 +82,67 @@ namespace Pulumi.AliCloud.FC
     /// });
     /// ```
     /// 
+    /// HTTP Trigger
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var functionName = config.Get("functionName") ?? "TerraformTriggerResourceAPI";
+    ///     var triggerName = config.Get("triggerName") ?? "TerraformTrigger_HTTP";
+    ///     var function = new AliCloud.FC.V3Function("function", new()
+    ///     {
+    ///         MemorySize = 512,
+    ///         Cpu = 0.5,
+    ///         Handler = "index.Handler",
+    ///         Code = new AliCloud.FC.Inputs.V3FunctionCodeArgs
+    ///         {
+    ///             ZipFile = "UEsDBBQACAAIAAAAAAAAAAAAAAAAAAAAAAAIAAAAaW5kZXgucHmEkEFKxEAQRfd9ig9ZTCJOooIwDMwNXLqXnnQlaalUhU5lRj2KZ/FOXkESGR114bJ/P/7jV4b1xRq1hijtFpM1682cuNgPmgysbRulPT0fRxXnMtwrSPyeCdYRokSLnuMLJTTkbUqEvDMbxm1VdcRD6Tk+T1LW2ldB66knsYdA5iNX17ebm6tN2VnPhcswMPmREPuBacb+CiapLarAj9gT6/H97dVlCNScY3mtYvRkxdZlwDKDEnanPWVLdrdkeXEGlFEazVdfPVHaVeHc3N15CUwppwOJXeK7HshAB8NuOU7J6sP4SRXuH/EvbUfMiqMmDqv5M5FNSfAj/wgAAP//UEsHCPl//NYAAQAArwEAAFBLAQIUABQACAAIAAAAAAD5f/zWAAEAAK8BAAAIAAAAAAAAAAAAAAAAAAAAAABpbmRleC5weVBLBQYAAAAAAQABADYAAAA2AQAAAAA=",
+    ///         },
+    ///         FunctionName = name,
+    ///         Runtime = "python3.9",
+    ///         DiskSize = 512,
+    ///         LogConfig = new AliCloud.FC.Inputs.V3FunctionLogConfigArgs
+    ///         {
+    ///             LogBeginRule = "None",
+    ///         },
+    ///     });
+    /// 
+    ///     var current = AliCloud.GetAccount.Invoke();
+    /// 
+    ///     var @default = new AliCloud.FC.V3Trigger("default", new()
+    ///     {
+    ///         TriggerType = "http",
+    ///         TriggerName = name,
+    ///         Description = "create",
+    ///         Qualifier = "LATEST",
+    ///         TriggerConfig = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["authType"] = "anonymous",
+    ///             ["methods"] = new[]
+    ///             {
+    ///                 "GET",
+    ///                 "POST",
+    ///             },
+    ///         }),
+    ///         FunctionName = function.FunctionName,
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["outputCalicloudFcv3TriggerInternet"] = alicloudFcv3Trigger.Default.HttpTrigger[0].UrlInternet,
+    ///         ["outputCalicloudFcv3TriggerIntranet"] = alicloudFcv3Trigger.Default.HttpTrigger[0].UrlIntranet,
+    ///     };
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// FCV3 Trigger can be imported using the id, e.g.

@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Arms
         /// 
         /// &gt; **NOTE:** Available since v1.203.0.
         /// 
-        /// &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsDisk from version 1.214.0.
+        /// &gt; **DEPRECATED:** This data source has been renamed to alicloud.arms.Prometheus from version 1.214.0.
         /// 
         /// ## Example Usage
         /// 
@@ -85,7 +85,7 @@ namespace Pulumi.AliCloud.Arms
         /// 
         /// &gt; **NOTE:** Available since v1.203.0.
         /// 
-        /// &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsDisk from version 1.214.0.
+        /// &gt; **DEPRECATED:** This data source has been renamed to alicloud.arms.Prometheus from version 1.214.0.
         /// 
         /// ## Example Usage
         /// 
@@ -154,7 +154,7 @@ namespace Pulumi.AliCloud.Arms
         /// 
         /// &gt; **NOTE:** Available since v1.203.0.
         /// 
-        /// &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsDisk from version 1.214.0.
+        /// &gt; **DEPRECATED:** This data source has been renamed to alicloud.arms.Prometheus from version 1.214.0.
         /// 
         /// ## Example Usage
         /// 

@@ -63,7 +63,7 @@ import * as utilities from "../utilities";
  * const defaultTransitRouterMulticastDomainPeerMember = new alicloud.cen.TransitRouterMulticastDomainPeerMember("default", {
  *     transitRouterMulticastDomainId: defaultTransitRouterMulticastDomain.id,
  *     peerTransitRouterMulticastDomainId: peerTransitRouterMulticastDomain.id,
- *     groupIpAddress: "224.0.0.1",
+ *     groupIpAddress: "224.1.0.0",
  * });
  * ```
  *

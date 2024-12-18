@@ -103,6 +103,82 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * HTTP Trigger
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.fc.V3Function;
+ * import com.pulumi.alicloud.fc.V3FunctionArgs;
+ * import com.pulumi.alicloud.fc.inputs.V3FunctionCodeArgs;
+ * import com.pulumi.alicloud.fc.inputs.V3FunctionLogConfigArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.fc.V3Trigger;
+ * import com.pulumi.alicloud.fc.V3TriggerArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var functionName = config.get("functionName").orElse("TerraformTriggerResourceAPI");
+ *         final var triggerName = config.get("triggerName").orElse("TerraformTrigger_HTTP");
+ *         var function = new V3Function("function", V3FunctionArgs.builder()
+ *             .memorySize("512")
+ *             .cpu(0.5)
+ *             .handler("index.Handler")
+ *             .code(V3FunctionCodeArgs.builder()
+ *                 .zipFile("UEsDBBQACAAIAAAAAAAAAAAAAAAAAAAAAAAIAAAAaW5kZXgucHmEkEFKxEAQRfd9ig9ZTCJOooIwDMwNXLqXnnQlaalUhU5lRj2KZ/FOXkESGR114bJ/P/7jV4b1xRq1hijtFpM1682cuNgPmgysbRulPT0fRxXnMtwrSPyeCdYRokSLnuMLJTTkbUqEvDMbxm1VdcRD6Tk+T1LW2ldB66knsYdA5iNX17ebm6tN2VnPhcswMPmREPuBacb+CiapLarAj9gT6/H97dVlCNScY3mtYvRkxdZlwDKDEnanPWVLdrdkeXEGlFEazVdfPVHaVeHc3N15CUwppwOJXeK7HshAB8NuOU7J6sP4SRXuH/EvbUfMiqMmDqv5M5FNSfAj/wgAAP//UEsHCPl//NYAAQAArwEAAFBLAQIUABQACAAIAAAAAAD5f/zWAAEAAK8BAAAIAAAAAAAAAAAAAAAAAAAAAABpbmRleC5weVBLBQYAAAAAAQABADYAAAA2AQAAAAA=")
+ *                 .build())
+ *             .functionName(name)
+ *             .runtime("python3.9")
+ *             .diskSize("512")
+ *             .logConfig(V3FunctionLogConfigArgs.builder()
+ *                 .logBeginRule("None")
+ *                 .build())
+ *             .build());
+ * 
+ *         final var current = AlicloudFunctions.getAccount();
+ * 
+ *         var default_ = new V3Trigger("default", V3TriggerArgs.builder()
+ *             .triggerType("http")
+ *             .triggerName(name)
+ *             .description("create")
+ *             .qualifier("LATEST")
+ *             .triggerConfig(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty("authType", "anonymous"),
+ *                     jsonProperty("methods", jsonArray(
+ *                         "GET", 
+ *                         "POST"
+ *                     ))
+ *                 )))
+ *             .functionName(function.functionName())
+ *             .build());
+ * 
+ *         ctx.export("outputCalicloudFcv3TriggerInternet", alicloudFcv3Trigger.default().httpTrigger()[0].urlInternet());
+ *         ctx.export("outputCalicloudFcv3TriggerIntranet", alicloudFcv3Trigger.default().httpTrigger()[0].urlIntranet());
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * FCV3 Trigger can be imported using the id, e.g.

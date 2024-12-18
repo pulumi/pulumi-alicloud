@@ -19,7 +19,7 @@ type InstanceBindVpc struct {
 	// VPC ID.
 	VpcId *string `pulumi:"vpcId"`
 	// VPC owner root user ID.
-	VpcOwnerId *int `pulumi:"vpcOwnerId"`
+	VpcOwnerId *string `pulumi:"vpcOwnerId"`
 	// vswitch id.
 	VswitchId *string `pulumi:"vswitchId"`
 }
@@ -41,7 +41,7 @@ type InstanceBindVpcArgs struct {
 	// VPC ID.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
 	// VPC owner root user ID.
-	VpcOwnerId pulumi.IntPtrInput `pulumi:"vpcOwnerId"`
+	VpcOwnerId pulumi.StringPtrInput `pulumi:"vpcOwnerId"`
 	// vswitch id.
 	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
 }
@@ -108,8 +108,8 @@ func (o InstanceBindVpcOutput) VpcId() pulumi.StringPtrOutput {
 }
 
 // VPC owner root user ID.
-func (o InstanceBindVpcOutput) VpcOwnerId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v InstanceBindVpc) *int { return v.VpcOwnerId }).(pulumi.IntPtrOutput)
+func (o InstanceBindVpcOutput) VpcOwnerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceBindVpc) *string { return v.VpcOwnerId }).(pulumi.StringPtrOutput)
 }
 
 // vswitch id.

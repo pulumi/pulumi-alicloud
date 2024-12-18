@@ -135,6 +135,10 @@ export class ScalingConfiguration extends pulumi.CustomResource {
      */
     public readonly creditSpecification!: pulumi.Output<string | undefined>;
     /**
+     * You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `customPriorities` below for details.
+     */
+    public readonly customPriorities!: pulumi.Output<outputs.ess.ScalingConfigurationCustomPriority[] | undefined>;
+    /**
      * DataDisk mappings to attach to ecs instance. See `dataDisk` below for details.
      */
     public readonly dataDisks!: pulumi.Output<outputs.ess.ScalingConfigurationDataDisk[] | undefined>;
@@ -370,6 +374,7 @@ export class ScalingConfiguration extends pulumi.CustomResource {
             const state = argsOrState as ScalingConfigurationState | undefined;
             resourceInputs["active"] = state ? state.active : undefined;
             resourceInputs["creditSpecification"] = state ? state.creditSpecification : undefined;
+            resourceInputs["customPriorities"] = state ? state.customPriorities : undefined;
             resourceInputs["dataDisks"] = state ? state.dataDisks : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["enable"] = state ? state.enable : undefined;
@@ -427,6 +432,7 @@ export class ScalingConfiguration extends pulumi.CustomResource {
             }
             resourceInputs["active"] = args ? args.active : undefined;
             resourceInputs["creditSpecification"] = args ? args.creditSpecification : undefined;
+            resourceInputs["customPriorities"] = args ? args.customPriorities : undefined;
             resourceInputs["dataDisks"] = args ? args.dataDisks : undefined;
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["enable"] = args ? args.enable : undefined;
@@ -495,6 +501,10 @@ export interface ScalingConfigurationState {
      * Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
      */
     creditSpecification?: pulumi.Input<string>;
+    /**
+     * You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `customPriorities` below for details.
+     */
+    customPriorities?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationCustomPriority>[]>;
     /**
      * DataDisk mappings to attach to ecs instance. See `dataDisk` below for details.
      */
@@ -729,6 +739,10 @@ export interface ScalingConfigurationArgs {
      * Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
      */
     creditSpecification?: pulumi.Input<string>;
+    /**
+     * You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `customPriorities` below for details.
+     */
+    customPriorities?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationCustomPriority>[]>;
     /**
      * DataDisk mappings to attach to ecs instance. See `dataDisk` below for details.
      */

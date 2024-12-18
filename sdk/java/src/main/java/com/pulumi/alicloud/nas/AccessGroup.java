@@ -34,6 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.nas.AccessGroup;
  * import com.pulumi.alicloud.nas.AccessGroupArgs;
  * import java.util.List;
@@ -49,8 +51,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
  *         var foo = new AccessGroup("foo", AccessGroupArgs.builder()
- *             .accessGroupName("terraform-example")
+ *             .accessGroupName(String.format("terraform-example-%s", default_.result()))
  *             .accessGroupType("Vpc")
  *             .description("terraform-example")
  *             .fileSystemType("extreme")

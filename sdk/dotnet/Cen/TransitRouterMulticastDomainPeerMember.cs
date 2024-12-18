@@ -91,7 +91,7 @@ namespace Pulumi.AliCloud.Cen
     ///     {
     ///         TransitRouterMulticastDomainId = defaultTransitRouterMulticastDomain.Id,
     ///         PeerTransitRouterMulticastDomainId = peerTransitRouterMulticastDomain.Id,
-    ///         GroupIpAddress = "224.0.0.1",
+    ///         GroupIpAddress = "224.1.0.0",
     ///     });
     /// 
     /// });

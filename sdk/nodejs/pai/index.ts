@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { ServiceArgs, ServiceState } from "./service";
+export type Service = import("./service").Service;
+export const Service: typeof import("./service").Service = null as any;
+utilities.lazyLoad(exports, ["Service"], () => require("./service"));
+
 export { WorkspaceCodeSourceArgs, WorkspaceCodeSourceState } from "./workspaceCodeSource";
 export type WorkspaceCodeSource = import("./workspaceCodeSource").WorkspaceCodeSource;
 export const WorkspaceCodeSource: typeof import("./workspaceCodeSource").WorkspaceCodeSource = null as any;
@@ -40,6 +45,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:pai/service:Service":
+                return new Service(name, <any>undefined, { urn })
             case "alicloud:pai/workspaceCodeSource:WorkspaceCodeSource":
                 return new WorkspaceCodeSource(name, <any>undefined, { urn })
             case "alicloud:pai/workspaceDataset:WorkspaceDataset":
@@ -57,6 +64,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "pai/service", _module)
 pulumi.runtime.registerResourceModule("alicloud", "pai/workspaceCodeSource", _module)
 pulumi.runtime.registerResourceModule("alicloud", "pai/workspaceDataset", _module)
 pulumi.runtime.registerResourceModule("alicloud", "pai/workspaceDatasetversion", _module)

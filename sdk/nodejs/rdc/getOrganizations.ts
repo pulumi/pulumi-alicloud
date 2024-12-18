@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Rdc Organizations of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.137.0+.
+ * > **NOTE:** Available since v1.137.0.
+ *
+ * > **DEPRECATED:** This data source has been deprecated from version `1.238.0`.
  *
  * ## Example Usage
  *
@@ -78,7 +80,13 @@ export interface GetOrganizationsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Organization names.
+     */
     readonly names: string[];
+    /**
+     * A list of Rdc Organizations. Each element contains the following attributes:
+     */
     readonly organizations: outputs.rdc.GetOrganizationsOrganization[];
     readonly outputFile?: string;
     readonly realPk?: string;
@@ -86,7 +94,9 @@ export interface GetOrganizationsResult {
 /**
  * This data source provides the Rdc Organizations of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.137.0+.
+ * > **NOTE:** Available since v1.137.0.
+ *
+ * > **DEPRECATED:** This data source has been deprecated from version `1.238.0`.
  *
  * ## Example Usage
  *

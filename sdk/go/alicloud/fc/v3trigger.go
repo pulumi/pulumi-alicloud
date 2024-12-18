@@ -108,6 +108,88 @@ import (
 //
 // ```
 //
+// # HTTP Trigger
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			functionName := "TerraformTriggerResourceAPI"
+//			if param := cfg.Get("functionName"); param != "" {
+//				functionName = param
+//			}
+//			triggerName := "TerraformTrigger_HTTP"
+//			if param := cfg.Get("triggerName"); param != "" {
+//				triggerName = param
+//			}
+//			function, err := fc.NewV3Function(ctx, "function", &fc.V3FunctionArgs{
+//				MemorySize: pulumi.Int(512),
+//				Cpu:        pulumi.Float64(0.5),
+//				Handler:    pulumi.String("index.Handler"),
+//				Code: &fc.V3FunctionCodeArgs{
+//					ZipFile: pulumi.String("UEsDBBQACAAIAAAAAAAAAAAAAAAAAAAAAAAIAAAAaW5kZXgucHmEkEFKxEAQRfd9ig9ZTCJOooIwDMwNXLqXnnQlaalUhU5lRj2KZ/FOXkESGR114bJ/P/7jV4b1xRq1hijtFpM1682cuNgPmgysbRulPT0fRxXnMtwrSPyeCdYRokSLnuMLJTTkbUqEvDMbxm1VdcRD6Tk+T1LW2ldB66knsYdA5iNX17ebm6tN2VnPhcswMPmREPuBacb+CiapLarAj9gT6/H97dVlCNScY3mtYvRkxdZlwDKDEnanPWVLdrdkeXEGlFEazVdfPVHaVeHc3N15CUwppwOJXeK7HshAB8NuOU7J6sP4SRXuH/EvbUfMiqMmDqv5M5FNSfAj/wgAAP//UEsHCPl//NYAAQAArwEAAFBLAQIUABQACAAIAAAAAAD5f/zWAAEAAK8BAAAIAAAAAAAAAAAAAAAAAAAAAABpbmRleC5weVBLBQYAAAAAAQABADYAAAA2AQAAAAA="),
+//				},
+//				FunctionName: pulumi.String(name),
+//				Runtime:      pulumi.String("python3.9"),
+//				DiskSize:     pulumi.Int(512),
+//				LogConfig: &fc.V3FunctionLogConfigArgs{
+//					LogBeginRule: pulumi.String("None"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = alicloud.GetAccount(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"authType": "anonymous",
+//				"methods": []string{
+//					"GET",
+//					"POST",
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = fc.NewV3Trigger(ctx, "default", &fc.V3TriggerArgs{
+//				TriggerType:   pulumi.String("http"),
+//				TriggerName:   pulumi.String(name),
+//				Description:   pulumi.String("create"),
+//				Qualifier:     pulumi.String("LATEST"),
+//				TriggerConfig: pulumi.String(json0),
+//				FunctionName:  function.FunctionName,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("outputCalicloudFcv3TriggerInternet", alicloudFcv3Trigger.Default.HttpTrigger[0].UrlInternet)
+//			ctx.Export("outputCalicloudFcv3TriggerIntranet", alicloudFcv3Trigger.Default.HttpTrigger[0].UrlIntranet)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // FCV3 Trigger can be imported using the id, e.g.

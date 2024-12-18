@@ -123,7 +123,7 @@ def get_remote_writes(cluster_id: Optional[str] = None,
 
     > **NOTE:** Available since v1.204.0.
 
-    > **DEPRECATED:** This resource has been deprecated since v1.228.0.
+    > **DEPRECATED:** This data source has been deprecated since v1.228.0.
 
     ## Example Usage
 
@@ -173,7 +173,7 @@ def get_remote_writes_output(cluster_id: Optional[pulumi.Input[str]] = None,
 
     > **NOTE:** Available since v1.204.0.
 
-    > **DEPRECATED:** This resource has been deprecated since v1.228.0.
+    > **DEPRECATED:** This data source has been deprecated since v1.228.0.
 
     ## Example Usage
 

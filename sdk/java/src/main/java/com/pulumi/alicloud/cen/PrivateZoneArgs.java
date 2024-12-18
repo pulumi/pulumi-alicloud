@@ -15,14 +15,14 @@ public final class PrivateZoneArgs extends com.pulumi.resources.ResourceArgs {
     public static final PrivateZoneArgs Empty = new PrivateZoneArgs();
 
     /**
-     * The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
+     * The ID of the region where PrivateZone is accessed. This region refers to the region in which PrivateZone is accessed by clients.
      * 
      */
     @Import(name="accessRegionId", required=true)
     private Output<String> accessRegionId;
 
     /**
-     * @return The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
+     * @return The ID of the region where PrivateZone is accessed. This region refers to the region in which PrivateZone is accessed by clients.
      * 
      */
     public Output<String> accessRegionId() {
@@ -45,14 +45,18 @@ public final class PrivateZoneArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
+     * The ID of the region where PrivateZone is deployed.
+     * 
+     * -&gt;**NOTE:** The resource `alicloud.cen.PrivateZone` depends on the resource `alicloud.cen.InstanceAttachment`.
      * 
      */
     @Import(name="hostRegionId", required=true)
     private Output<String> hostRegionId;
 
     /**
-     * @return The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
+     * @return The ID of the region where PrivateZone is deployed.
+     * 
+     * -&gt;**NOTE:** The resource `alicloud.cen.PrivateZone` depends on the resource `alicloud.cen.InstanceAttachment`.
      * 
      */
     public Output<String> hostRegionId() {
@@ -60,18 +64,14 @@ public final class PrivateZoneArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The VPC that belongs to the service region.
-     * 
-     * -&gt;**NOTE:** The &#34;alicloud.cen.PrivateZone&#34; resource depends on the related &#34;alicloud.cen.InstanceAttachment&#34; resource.
+     * The ID of the VPC that is associated with PrivateZone.
      * 
      */
     @Import(name="hostVpcId", required=true)
     private Output<String> hostVpcId;
 
     /**
-     * @return The VPC that belongs to the service region.
-     * 
-     * -&gt;**NOTE:** The &#34;alicloud.cen.PrivateZone&#34; resource depends on the related &#34;alicloud.cen.InstanceAttachment&#34; resource.
+     * @return The ID of the VPC that is associated with PrivateZone.
      * 
      */
     public Output<String> hostVpcId() {
@@ -106,7 +106,7 @@ public final class PrivateZoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessRegionId The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
+         * @param accessRegionId The ID of the region where PrivateZone is accessed. This region refers to the region in which PrivateZone is accessed by clients.
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class PrivateZoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessRegionId The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
+         * @param accessRegionId The ID of the region where PrivateZone is accessed. This region refers to the region in which PrivateZone is accessed by clients.
          * 
          * @return builder
          * 
@@ -148,7 +148,9 @@ public final class PrivateZoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostRegionId The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
+         * @param hostRegionId The ID of the region where PrivateZone is deployed.
+         * 
+         * -&gt;**NOTE:** The resource `alicloud.cen.PrivateZone` depends on the resource `alicloud.cen.InstanceAttachment`.
          * 
          * @return builder
          * 
@@ -159,7 +161,9 @@ public final class PrivateZoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostRegionId The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
+         * @param hostRegionId The ID of the region where PrivateZone is deployed.
+         * 
+         * -&gt;**NOTE:** The resource `alicloud.cen.PrivateZone` depends on the resource `alicloud.cen.InstanceAttachment`.
          * 
          * @return builder
          * 
@@ -169,9 +173,7 @@ public final class PrivateZoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostVpcId The VPC that belongs to the service region.
-         * 
-         * -&gt;**NOTE:** The &#34;alicloud.cen.PrivateZone&#34; resource depends on the related &#34;alicloud.cen.InstanceAttachment&#34; resource.
+         * @param hostVpcId The ID of the VPC that is associated with PrivateZone.
          * 
          * @return builder
          * 
@@ -182,9 +184,7 @@ public final class PrivateZoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostVpcId The VPC that belongs to the service region.
-         * 
-         * -&gt;**NOTE:** The &#34;alicloud.cen.PrivateZone&#34; resource depends on the related &#34;alicloud.cen.InstanceAttachment&#34; resource.
+         * @param hostVpcId The ID of the VPC that is associated with PrivateZone.
          * 
          * @return builder
          * 

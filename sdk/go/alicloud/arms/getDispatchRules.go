@@ -47,7 +47,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = arms.NewDispatchRule(ctx, "default", &arms.DispatchRuleArgs{
+//			defaultDispatchRule, err := arms.NewDispatchRule(ctx, "default", &arms.DispatchRuleArgs{
 //				DispatchRuleName: pulumi.String("example_value"),
 //				DispatchType:     pulumi.String("CREATE_ALERT"),
 //				GroupRules: arms.DispatchRuleGroupRuleArray{
@@ -101,11 +101,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ids, err := arms.GetDispatchRules(ctx, &arms.GetDispatchRulesArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("armsDispatchRuleId1", ids.Rules[0].Id)
+//			ids := arms.GetDispatchRulesOutput(ctx, arms.GetDispatchRulesOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultDispatchRule.ID(),
+//				},
+//			}, nil)
+//			ctx.Export("armsDispatchRuleId1", ids.ApplyT(func(ids arms.GetDispatchRulesResult) (*string, error) {
+//				return &ids.Rules[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}

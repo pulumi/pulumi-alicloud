@@ -6,6 +6,7 @@ package com.pulumi.alicloud.arms;
 import com.pulumi.alicloud.arms.inputs.DispatchRuleGroupRuleArgs;
 import com.pulumi.alicloud.arms.inputs.DispatchRuleLabelMatchExpressionGridArgs;
 import com.pulumi.alicloud.arms.inputs.DispatchRuleNotifyRuleArgs;
+import com.pulumi.alicloud.arms.inputs.DispatchRuleNotifyTemplateArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -111,6 +112,21 @@ public final class DispatchRuleArgs extends com.pulumi.resources.ResourceArgs {
         return this.notifyRules;
     }
 
+    /**
+     * Sets the notification template. See `notify_template` below.
+     * 
+     */
+    @Import(name="notifyTemplates")
+    private @Nullable Output<List<DispatchRuleNotifyTemplateArgs>> notifyTemplates;
+
+    /**
+     * @return Sets the notification template. See `notify_template` below.
+     * 
+     */
+    public Optional<Output<List<DispatchRuleNotifyTemplateArgs>>> notifyTemplates() {
+        return Optional.ofNullable(this.notifyTemplates);
+    }
+
     private DispatchRuleArgs() {}
 
     private DispatchRuleArgs(DispatchRuleArgs $) {
@@ -120,6 +136,7 @@ public final class DispatchRuleArgs extends com.pulumi.resources.ResourceArgs {
         this.isRecover = $.isRecover;
         this.labelMatchExpressionGrids = $.labelMatchExpressionGrids;
         this.notifyRules = $.notifyRules;
+        this.notifyTemplates = $.notifyTemplates;
     }
 
     public static Builder builder() {
@@ -294,6 +311,37 @@ public final class DispatchRuleArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder notifyRules(DispatchRuleNotifyRuleArgs... notifyRules) {
             return notifyRules(List.of(notifyRules));
+        }
+
+        /**
+         * @param notifyTemplates Sets the notification template. See `notify_template` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notifyTemplates(@Nullable Output<List<DispatchRuleNotifyTemplateArgs>> notifyTemplates) {
+            $.notifyTemplates = notifyTemplates;
+            return this;
+        }
+
+        /**
+         * @param notifyTemplates Sets the notification template. See `notify_template` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notifyTemplates(List<DispatchRuleNotifyTemplateArgs> notifyTemplates) {
+            return notifyTemplates(Output.of(notifyTemplates));
+        }
+
+        /**
+         * @param notifyTemplates Sets the notification template. See `notify_template` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notifyTemplates(DispatchRuleNotifyTemplateArgs... notifyTemplates) {
+            return notifyTemplates(List.of(notifyTemplates));
         }
 
         public DispatchRuleArgs build() {

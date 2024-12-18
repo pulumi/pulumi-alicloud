@@ -3688,6 +3688,45 @@ export namespace arms {
         notifyType: string;
     }
 
+    export interface DispatchRuleNotifyTemplate {
+        /**
+         * The content of the email notification.
+         */
+        emailContent: string;
+        /**
+         * The content of the email notification for restored alerts.
+         */
+        emailRecoverContent: string;
+        /**
+         * The title of the email notification for restored alerts.
+         */
+        emailRecoverTitle: string;
+        /**
+         * The title of the email notification.
+         */
+        emailTitle: string;
+        /**
+         * The content of the robot notification.
+         */
+        robotContent: string;
+        /**
+         * The content of the SMS notification.
+         */
+        smsContent: string;
+        /**
+         * The content of the SMS notification for restored alerts.
+         */
+        smsRecoverContent: string;
+        /**
+         * The content of the TTS notification.
+         */
+        ttsContent: string;
+        /**
+         * The content of the TTS notification for restored alerts.
+         */
+        ttsRecoverContent: string;
+    }
+
     export interface GetAlertContactGroupsGroup {
         /**
          * The first ID of the resource.
@@ -3795,10 +3834,6 @@ export namespace arms {
          */
         dispatchRuleName: string;
         /**
-         * The type of the dispatch rule.
-         */
-        dispatchType: string;
-        /**
          * Sets the event group.
          */
         groupRules: outputs.arms.GetDispatchRulesRuleGroupRule[];
@@ -3814,6 +3849,10 @@ export namespace arms {
          * Sets the notification rule.
          */
         notifyRules: outputs.arms.GetDispatchRulesRuleNotifyRule[];
+        /**
+         * (Available since v1.238.0) The notification method.
+         */
+        notifyTemplates: outputs.arms.GetDispatchRulesRuleNotifyTemplate[];
         /**
          * The resource status of Alert Dispatch Rule.
          */
@@ -3900,6 +3939,45 @@ export namespace arms {
          * The type of the alert contact.
          */
         notifyType: string;
+    }
+
+    export interface GetDispatchRulesRuleNotifyTemplate {
+        /**
+         * The content of the email.
+         */
+        emailContent: string;
+        /**
+         * The content of the email.
+         */
+        emailRecoverContent: string;
+        /**
+         * The title of the email.
+         */
+        emailRecoverTitle: string;
+        /**
+         * The title of the email.
+         */
+        emailTitle: string;
+        /**
+         * The content of the robot.
+         */
+        robotContent: string;
+        /**
+         * The content of the SMS.
+         */
+        smsContent: string;
+        /**
+         * The content of the SMS.
+         */
+        smsRecoverContent: string;
+        /**
+         * The content of the TTS.
+         */
+        ttsContent: string;
+        /**
+         * The content of the TTS.
+         */
+        ttsRecoverContent: string;
     }
 
     export interface GetIntegrationExportersIntegrationExporter {
@@ -28684,6 +28762,17 @@ export namespace ess {
         taskEnabled: boolean;
     }
 
+    export interface ScalingConfigurationCustomPriority {
+        /**
+         * This parameter takes effect only if you set Scaling Policy to Priority Policy and the instance type specified by CustomPriorities.N.InstanceType is contained in the scaling configuration.
+         */
+        instanceType?: string;
+        /**
+         * This parameter takes effect only if you set Scaling Policy to Priority Policy and the vSwitch specified by CustomPriorities.N.VswitchId is included in the vSwitch list of your scaling group.
+         */
+        vswitchId?: string;
+    }
+
     export interface ScalingConfigurationDataDisk {
         /**
          * The id of auto snapshot policy for data disk.
@@ -35159,7 +35248,7 @@ export namespace kms {
         /**
          * VPC owner root user ID.
          */
-        vpcOwnerId?: number;
+        vpcOwnerId?: string;
         /**
          * vswitch id.
          */

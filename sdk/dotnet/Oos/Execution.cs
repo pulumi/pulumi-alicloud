@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Oos
     /// <summary>
     /// Provides a OOS Execution resource. For information about Alicloud OOS Execution and how to use it, see [What is Resource Alicloud OOS Execution](https://www.alibabacloud.com/help/doc-detail/120771.htm).
     /// 
-    /// &gt; **NOTE:** Available in 1.93.0+.
+    /// &gt; **NOTE:** Available since v1.93.0.
     /// 
     /// ## Example Usage
     /// 
@@ -21,10 +21,17 @@ namespace Pulumi.AliCloud.Oos
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Oos.Template("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var defaultTemplate = new AliCloud.Oos.Template("default", new()
     ///     {
     ///         Content = @"  {
     ///     ""FormatVersion"": ""OOS-2019-06-01"",
@@ -49,8 +56,8 @@ namespace Pulumi.AliCloud.Oos
     ///       }]
     ///   }
     /// ",
-    ///         TemplateName = "test-name",
-    ///         VersionName = "test",
+    ///         TemplateName = $"tf-example-name-{@default.Result}",
+    ///         VersionName = "example",
     ///         Tags = 
     ///         {
     ///             { "Created", "TF" },
@@ -60,7 +67,7 @@ namespace Pulumi.AliCloud.Oos
     /// 
     ///     var example = new AliCloud.Oos.Execution("example", new()
     ///     {
-    ///         TemplateName = @default.TemplateName,
+    ///         TemplateName = defaultTemplate.TemplateName,
     ///         Description = "From TF Test",
     ///         Parameters = @"				{""Status"":""Running""}
     /// ",

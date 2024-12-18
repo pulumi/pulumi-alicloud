@@ -100,6 +100,19 @@ import (
 //						NotifyEndTime:   pulumi.String("23:00"),
 //					},
 //				},
+//				NotifyTemplates: arms.DispatchRuleNotifyTemplateArray{
+//					&arms.DispatchRuleNotifyTemplateArgs{
+//						EmailTitle:          pulumi.String("example_email_title"),
+//						EmailContent:        pulumi.String("example_email_content"),
+//						EmailRecoverTitle:   pulumi.String("example_email_recover_title"),
+//						EmailRecoverContent: pulumi.String("example_email_recover_content"),
+//						SmsContent:          pulumi.String("example_sms_content"),
+//						SmsRecoverContent:   pulumi.String("example_sms_recover_content"),
+//						TtsContent:          pulumi.String("example_tts_content"),
+//						TtsRecoverContent:   pulumi.String("example_tts_recover_content"),
+//						RobotContent:        pulumi.String("example_robot_content"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -132,6 +145,8 @@ type DispatchRule struct {
 	LabelMatchExpressionGrids DispatchRuleLabelMatchExpressionGridArrayOutput `pulumi:"labelMatchExpressionGrids"`
 	// Sets the notification rule. See `notifyRules` below. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
 	NotifyRules DispatchRuleNotifyRuleArrayOutput `pulumi:"notifyRules"`
+	// Sets the notification template. See `notifyTemplate` below.
+	NotifyTemplates DispatchRuleNotifyTemplateArrayOutput `pulumi:"notifyTemplates"`
 	// The resource status of Alert Dispatch Rule.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
@@ -190,6 +205,8 @@ type dispatchRuleState struct {
 	LabelMatchExpressionGrids []DispatchRuleLabelMatchExpressionGrid `pulumi:"labelMatchExpressionGrids"`
 	// Sets the notification rule. See `notifyRules` below. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
 	NotifyRules []DispatchRuleNotifyRule `pulumi:"notifyRules"`
+	// Sets the notification template. See `notifyTemplate` below.
+	NotifyTemplates []DispatchRuleNotifyTemplate `pulumi:"notifyTemplates"`
 	// The resource status of Alert Dispatch Rule.
 	Status *string `pulumi:"status"`
 }
@@ -207,6 +224,8 @@ type DispatchRuleState struct {
 	LabelMatchExpressionGrids DispatchRuleLabelMatchExpressionGridArrayInput
 	// Sets the notification rule. See `notifyRules` below. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
 	NotifyRules DispatchRuleNotifyRuleArrayInput
+	// Sets the notification template. See `notifyTemplate` below.
+	NotifyTemplates DispatchRuleNotifyTemplateArrayInput
 	// The resource status of Alert Dispatch Rule.
 	Status pulumi.StringPtrInput
 }
@@ -228,6 +247,8 @@ type dispatchRuleArgs struct {
 	LabelMatchExpressionGrids []DispatchRuleLabelMatchExpressionGrid `pulumi:"labelMatchExpressionGrids"`
 	// Sets the notification rule. See `notifyRules` below. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
 	NotifyRules []DispatchRuleNotifyRule `pulumi:"notifyRules"`
+	// Sets the notification template. See `notifyTemplate` below.
+	NotifyTemplates []DispatchRuleNotifyTemplate `pulumi:"notifyTemplates"`
 }
 
 // The set of arguments for constructing a DispatchRule resource.
@@ -244,6 +265,8 @@ type DispatchRuleArgs struct {
 	LabelMatchExpressionGrids DispatchRuleLabelMatchExpressionGridArrayInput
 	// Sets the notification rule. See `notifyRules` below. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
 	NotifyRules DispatchRuleNotifyRuleArrayInput
+	// Sets the notification template. See `notifyTemplate` below.
+	NotifyTemplates DispatchRuleNotifyTemplateArrayInput
 }
 
 func (DispatchRuleArgs) ElementType() reflect.Type {
@@ -363,6 +386,11 @@ func (o DispatchRuleOutput) LabelMatchExpressionGrids() DispatchRuleLabelMatchEx
 // Sets the notification rule. See `notifyRules` below. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
 func (o DispatchRuleOutput) NotifyRules() DispatchRuleNotifyRuleArrayOutput {
 	return o.ApplyT(func(v *DispatchRule) DispatchRuleNotifyRuleArrayOutput { return v.NotifyRules }).(DispatchRuleNotifyRuleArrayOutput)
+}
+
+// Sets the notification template. See `notifyTemplate` below.
+func (o DispatchRuleOutput) NotifyTemplates() DispatchRuleNotifyTemplateArrayOutput {
+	return o.ApplyT(func(v *DispatchRule) DispatchRuleNotifyTemplateArrayOutput { return v.NotifyTemplates }).(DispatchRuleNotifyTemplateArrayOutput)
 }
 
 // The resource status of Alert Dispatch Rule.

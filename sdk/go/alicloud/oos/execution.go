@@ -14,7 +14,7 @@ import (
 
 // Provides a OOS Execution resource. For information about Alicloud OOS Execution and how to use it, see [What is Resource Alicloud OOS Execution](https://www.alibabacloud.com/help/doc-detail/120771.htm).
 //
-// > **NOTE:** Available in 1.93.0+.
+// > **NOTE:** Available since v1.93.0.
 //
 // ## Example Usage
 //
@@ -23,14 +23,24 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := oos.NewTemplate(ctx, "default", &oos.TemplateArgs{
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultTemplate, err := oos.NewTemplate(ctx, "default", &oos.TemplateArgs{
 //				Content: pulumi.String(`  {
 //	    "FormatVersion": "OOS-2019-06-01",
 //	    "Description": "Update Describe instances of given status",
@@ -56,8 +66,8 @@ import (
 //
 // `),
 //
-//				TemplateName: pulumi.String("test-name"),
-//				VersionName:  pulumi.String("test"),
+//				TemplateName: pulumi.Sprintf("tf-example-name-%v", _default.Result),
+//				VersionName:  pulumi.String("example"),
 //				Tags: pulumi.StringMap{
 //					"Created": pulumi.String("TF"),
 //					"For":     pulumi.String("acceptance Test"),
@@ -67,7 +77,7 @@ import (
 //				return err
 //			}
 //			_, err = oos.NewExecution(ctx, "example", &oos.ExecutionArgs{
-//				TemplateName: _default.TemplateName,
+//				TemplateName: defaultTemplate.TemplateName,
 //				Description:  pulumi.String("From TF Test"),
 //				Parameters:   pulumi.String("				{\"Status\":\"Running\"}\n"),
 //			})

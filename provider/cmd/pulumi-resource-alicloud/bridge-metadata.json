@@ -712,6 +712,9 @@
                                 }
                             }
                         }
+                    },
+                    "notify_template": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -4198,6 +4201,9 @@
             "alicloud_ess_scaling_configuration": {
                 "current": "alicloud:ess/scalingConfiguration:ScalingConfiguration",
                 "fields": {
+                    "custom_priorities": {
+                        "maxItemsOne": false
+                    },
                     "data_disk": {
                         "maxItemsOne": false
                     },
@@ -5582,6 +5588,9 @@
                     }
                 }
             },
+            "alicloud_live_caster": {
+                "current": "alicloud:live/caster:Caster"
+            },
             "alicloud_log_alert": {
                 "current": "alicloud:log/alert:Alert",
                 "fields": {
@@ -6585,6 +6594,9 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "alicloud_pai_service": {
+                "current": "alicloud:pai/service:Service"
             },
             "alicloud_pai_workspace_code_source": {
                 "current": "alicloud:pai/workspaceCodeSource:WorkspaceCodeSource"
@@ -8220,6 +8232,9 @@
             "alicloud_vpc_ipam_ipam_pool": {
                 "current": "alicloud:vpc/ipamIpamPool:IpamIpamPool"
             },
+            "alicloud_vpc_ipam_ipam_pool_allocation": {
+                "current": "alicloud:vpc/ipamIpamPoolAllocation:IpamIpamPoolAllocation"
+            },
             "alicloud_vpc_ipam_ipam_pool_cidr": {
                 "current": "alicloud:vpc/ipamIpamPoolCidr:IpamIpamPoolCidr"
             },
@@ -9589,6 +9604,9 @@
                                             }
                                         }
                                     }
+                                },
+                                "notify_template": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }

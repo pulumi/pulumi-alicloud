@@ -14,7 +14,9 @@ namespace Pulumi.AliCloud.Rdc
         /// <summary>
         /// This data source provides the Rdc Organizations of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.137.0+.
+        /// &gt; **NOTE:** Available since v1.137.0.
+        /// 
+        /// &gt; **DEPRECATED:** This data source has been deprecated from version `1.238.0`.
         /// 
         /// ## Example Usage
         /// 
@@ -63,7 +65,9 @@ namespace Pulumi.AliCloud.Rdc
         /// <summary>
         /// This data source provides the Rdc Organizations of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.137.0+.
+        /// &gt; **NOTE:** Available since v1.137.0.
+        /// 
+        /// &gt; **DEPRECATED:** This data source has been deprecated from version `1.238.0`.
         /// 
         /// ## Example Usage
         /// 
@@ -112,7 +116,9 @@ namespace Pulumi.AliCloud.Rdc
         /// <summary>
         /// This data source provides the Rdc Organizations of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.137.0+.
+        /// &gt; **NOTE:** Available since v1.137.0.
+        /// 
+        /// &gt; **DEPRECATED:** This data source has been deprecated from version `1.238.0`.
         /// 
         /// ## Example Usage
         /// 
@@ -246,7 +252,13 @@ namespace Pulumi.AliCloud.Rdc
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Organization names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
+        /// <summary>
+        /// A list of Rdc Organizations. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetOrganizationsOrganizationResult> Organizations;
         public readonly string? OutputFile;
         public readonly string? RealPk;

@@ -61,6 +61,49 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * HTTP Trigger
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const functionName = config.get("functionName") || "TerraformTriggerResourceAPI";
+ * const triggerName = config.get("triggerName") || "TerraformTrigger_HTTP";
+ * const _function = new alicloud.fc.V3Function("function", {
+ *     memorySize: 512,
+ *     cpu: 0.5,
+ *     handler: "index.Handler",
+ *     code: {
+ *         zipFile: "UEsDBBQACAAIAAAAAAAAAAAAAAAAAAAAAAAIAAAAaW5kZXgucHmEkEFKxEAQRfd9ig9ZTCJOooIwDMwNXLqXnnQlaalUhU5lRj2KZ/FOXkESGR114bJ/P/7jV4b1xRq1hijtFpM1682cuNgPmgysbRulPT0fRxXnMtwrSPyeCdYRokSLnuMLJTTkbUqEvDMbxm1VdcRD6Tk+T1LW2ldB66knsYdA5iNX17ebm6tN2VnPhcswMPmREPuBacb+CiapLarAj9gT6/H97dVlCNScY3mtYvRkxdZlwDKDEnanPWVLdrdkeXEGlFEazVdfPVHaVeHc3N15CUwppwOJXeK7HshAB8NuOU7J6sP4SRXuH/EvbUfMiqMmDqv5M5FNSfAj/wgAAP//UEsHCPl//NYAAQAArwEAAFBLAQIUABQACAAIAAAAAAD5f/zWAAEAAK8BAAAIAAAAAAAAAAAAAAAAAAAAAABpbmRleC5weVBLBQYAAAAAAQABADYAAAA2AQAAAAA=",
+ *     },
+ *     functionName: name,
+ *     runtime: "python3.9",
+ *     diskSize: 512,
+ *     logConfig: {
+ *         logBeginRule: "None",
+ *     },
+ * });
+ * const current = alicloud.getAccount({});
+ * const _default = new alicloud.fc.V3Trigger("default", {
+ *     triggerType: "http",
+ *     triggerName: name,
+ *     description: "create",
+ *     qualifier: "LATEST",
+ *     triggerConfig: JSON.stringify({
+ *         authType: "anonymous",
+ *         methods: [
+ *             "GET",
+ *             "POST",
+ *         ],
+ *     }),
+ *     functionName: _function.functionName,
+ * });
+ * export const outputCalicloudFcv3TriggerInternet = alicloudFcv3Trigger["default"].httpTrigger[0].urlInternet;
+ * export const outputCalicloudFcv3TriggerIntranet = alicloudFcv3Trigger["default"].httpTrigger[0].urlIntranet;
+ * ```
+ *
  * ## Import
  *
  * FCV3 Trigger can be imported using the id, e.g.

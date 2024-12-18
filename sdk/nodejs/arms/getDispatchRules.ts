@@ -66,8 +66,10 @@ import * as utilities from "../utilities";
  *         notifyEndTime: "23:00",
  *     }],
  * });
- * const ids = alicloud.arms.getDispatchRules({});
- * export const armsDispatchRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
+ * const ids = alicloud.arms.getDispatchRulesOutput({
+ *     ids: [defaultDispatchRule.id],
+ * });
+ * export const armsDispatchRuleId1 = ids.apply(ids => ids.rules?.[0]?.id);
  * ```
  */
 export function getDispatchRules(args?: GetDispatchRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetDispatchRulesResult> {
@@ -193,8 +195,10 @@ export interface GetDispatchRulesResult {
  *         notifyEndTime: "23:00",
  *     }],
  * });
- * const ids = alicloud.arms.getDispatchRules({});
- * export const armsDispatchRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
+ * const ids = alicloud.arms.getDispatchRulesOutput({
+ *     ids: [defaultDispatchRule.id],
+ * });
+ * export const armsDispatchRuleId1 = ids.apply(ids => ids.rules?.[0]?.id);
  * ```
  */
 export function getDispatchRulesOutput(args?: GetDispatchRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDispatchRulesResult> {

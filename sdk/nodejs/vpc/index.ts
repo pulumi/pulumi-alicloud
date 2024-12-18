@@ -280,6 +280,11 @@ export type IpamIpamPool = import("./ipamIpamPool").IpamIpamPool;
 export const IpamIpamPool: typeof import("./ipamIpamPool").IpamIpamPool = null as any;
 utilities.lazyLoad(exports, ["IpamIpamPool"], () => require("./ipamIpamPool"));
 
+export { IpamIpamPoolAllocationArgs, IpamIpamPoolAllocationState } from "./ipamIpamPoolAllocation";
+export type IpamIpamPoolAllocation = import("./ipamIpamPoolAllocation").IpamIpamPoolAllocation;
+export const IpamIpamPoolAllocation: typeof import("./ipamIpamPoolAllocation").IpamIpamPoolAllocation = null as any;
+utilities.lazyLoad(exports, ["IpamIpamPoolAllocation"], () => require("./ipamIpamPoolAllocation"));
+
 export { IpamIpamPoolCidrArgs, IpamIpamPoolCidrState } from "./ipamIpamPoolCidr";
 export type IpamIpamPoolCidr = import("./ipamIpamPoolCidr").IpamIpamPoolCidr;
 export const IpamIpamPoolCidr: typeof import("./ipamIpamPoolCidr").IpamIpamPoolCidr = null as any;
@@ -504,6 +509,8 @@ const _module = {
                 return new IpamIpam(name, <any>undefined, { urn })
             case "alicloud:vpc/ipamIpamPool:IpamIpamPool":
                 return new IpamIpamPool(name, <any>undefined, { urn })
+            case "alicloud:vpc/ipamIpamPoolAllocation:IpamIpamPoolAllocation":
+                return new IpamIpamPoolAllocation(name, <any>undefined, { urn })
             case "alicloud:vpc/ipamIpamPoolCidr:IpamIpamPoolCidr":
                 return new IpamIpamPoolCidr(name, <any>undefined, { urn })
             case "alicloud:vpc/ipamIpamScope:IpamIpamScope":
@@ -600,6 +607,7 @@ pulumi.runtime.registerResourceModule("alicloud", "vpc/hAVipAttachment", _module
 pulumi.runtime.registerResourceModule("alicloud", "vpc/haVipv2", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/ipamIpam", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/ipamIpamPool", _module)
+pulumi.runtime.registerResourceModule("alicloud", "vpc/ipamIpamPoolAllocation", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/ipamIpamPoolCidr", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/ipamIpamScope", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/ipv4CidrBlock", _module)

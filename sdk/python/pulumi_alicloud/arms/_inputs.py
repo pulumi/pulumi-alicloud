@@ -27,6 +27,8 @@ __all__ = [
     'DispatchRuleNotifyRuleArgsDict',
     'DispatchRuleNotifyRuleNotifyObjectArgs',
     'DispatchRuleNotifyRuleNotifyObjectArgsDict',
+    'DispatchRuleNotifyTemplateArgs',
+    'DispatchRuleNotifyTemplateArgsDict',
     'PrometheusAlertRuleAnnotationArgs',
     'PrometheusAlertRuleAnnotationArgsDict',
     'PrometheusAlertRuleLabelArgs',
@@ -490,6 +492,189 @@ class DispatchRuleNotifyRuleNotifyObjectArgs:
     @notify_type.setter
     def notify_type(self, value: pulumi.Input[str]):
         pulumi.set(self, "notify_type", value)
+
+
+if not MYPY:
+    class DispatchRuleNotifyTemplateArgsDict(TypedDict):
+        email_content: pulumi.Input[str]
+        """
+        The content of the email notification.
+        """
+        email_recover_content: pulumi.Input[str]
+        """
+        The content of the email notification for restored alerts.
+        """
+        email_recover_title: pulumi.Input[str]
+        """
+        The title of the email notification for restored alerts.
+        """
+        email_title: pulumi.Input[str]
+        """
+        The title of the email notification.
+        """
+        robot_content: pulumi.Input[str]
+        """
+        The content of the robot notification.
+        """
+        sms_content: pulumi.Input[str]
+        """
+        The content of the SMS notification.
+        """
+        sms_recover_content: pulumi.Input[str]
+        """
+        The content of the SMS notification for restored alerts.
+        """
+        tts_content: pulumi.Input[str]
+        """
+        The content of the TTS notification.
+        """
+        tts_recover_content: pulumi.Input[str]
+        """
+        The content of the TTS notification for restored alerts.
+        """
+elif False:
+    DispatchRuleNotifyTemplateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DispatchRuleNotifyTemplateArgs:
+    def __init__(__self__, *,
+                 email_content: pulumi.Input[str],
+                 email_recover_content: pulumi.Input[str],
+                 email_recover_title: pulumi.Input[str],
+                 email_title: pulumi.Input[str],
+                 robot_content: pulumi.Input[str],
+                 sms_content: pulumi.Input[str],
+                 sms_recover_content: pulumi.Input[str],
+                 tts_content: pulumi.Input[str],
+                 tts_recover_content: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] email_content: The content of the email notification.
+        :param pulumi.Input[str] email_recover_content: The content of the email notification for restored alerts.
+        :param pulumi.Input[str] email_recover_title: The title of the email notification for restored alerts.
+        :param pulumi.Input[str] email_title: The title of the email notification.
+        :param pulumi.Input[str] robot_content: The content of the robot notification.
+        :param pulumi.Input[str] sms_content: The content of the SMS notification.
+        :param pulumi.Input[str] sms_recover_content: The content of the SMS notification for restored alerts.
+        :param pulumi.Input[str] tts_content: The content of the TTS notification.
+        :param pulumi.Input[str] tts_recover_content: The content of the TTS notification for restored alerts.
+        """
+        pulumi.set(__self__, "email_content", email_content)
+        pulumi.set(__self__, "email_recover_content", email_recover_content)
+        pulumi.set(__self__, "email_recover_title", email_recover_title)
+        pulumi.set(__self__, "email_title", email_title)
+        pulumi.set(__self__, "robot_content", robot_content)
+        pulumi.set(__self__, "sms_content", sms_content)
+        pulumi.set(__self__, "sms_recover_content", sms_recover_content)
+        pulumi.set(__self__, "tts_content", tts_content)
+        pulumi.set(__self__, "tts_recover_content", tts_recover_content)
+
+    @property
+    @pulumi.getter(name="emailContent")
+    def email_content(self) -> pulumi.Input[str]:
+        """
+        The content of the email notification.
+        """
+        return pulumi.get(self, "email_content")
+
+    @email_content.setter
+    def email_content(self, value: pulumi.Input[str]):
+        pulumi.set(self, "email_content", value)
+
+    @property
+    @pulumi.getter(name="emailRecoverContent")
+    def email_recover_content(self) -> pulumi.Input[str]:
+        """
+        The content of the email notification for restored alerts.
+        """
+        return pulumi.get(self, "email_recover_content")
+
+    @email_recover_content.setter
+    def email_recover_content(self, value: pulumi.Input[str]):
+        pulumi.set(self, "email_recover_content", value)
+
+    @property
+    @pulumi.getter(name="emailRecoverTitle")
+    def email_recover_title(self) -> pulumi.Input[str]:
+        """
+        The title of the email notification for restored alerts.
+        """
+        return pulumi.get(self, "email_recover_title")
+
+    @email_recover_title.setter
+    def email_recover_title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "email_recover_title", value)
+
+    @property
+    @pulumi.getter(name="emailTitle")
+    def email_title(self) -> pulumi.Input[str]:
+        """
+        The title of the email notification.
+        """
+        return pulumi.get(self, "email_title")
+
+    @email_title.setter
+    def email_title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "email_title", value)
+
+    @property
+    @pulumi.getter(name="robotContent")
+    def robot_content(self) -> pulumi.Input[str]:
+        """
+        The content of the robot notification.
+        """
+        return pulumi.get(self, "robot_content")
+
+    @robot_content.setter
+    def robot_content(self, value: pulumi.Input[str]):
+        pulumi.set(self, "robot_content", value)
+
+    @property
+    @pulumi.getter(name="smsContent")
+    def sms_content(self) -> pulumi.Input[str]:
+        """
+        The content of the SMS notification.
+        """
+        return pulumi.get(self, "sms_content")
+
+    @sms_content.setter
+    def sms_content(self, value: pulumi.Input[str]):
+        pulumi.set(self, "sms_content", value)
+
+    @property
+    @pulumi.getter(name="smsRecoverContent")
+    def sms_recover_content(self) -> pulumi.Input[str]:
+        """
+        The content of the SMS notification for restored alerts.
+        """
+        return pulumi.get(self, "sms_recover_content")
+
+    @sms_recover_content.setter
+    def sms_recover_content(self, value: pulumi.Input[str]):
+        pulumi.set(self, "sms_recover_content", value)
+
+    @property
+    @pulumi.getter(name="ttsContent")
+    def tts_content(self) -> pulumi.Input[str]:
+        """
+        The content of the TTS notification.
+        """
+        return pulumi.get(self, "tts_content")
+
+    @tts_content.setter
+    def tts_content(self, value: pulumi.Input[str]):
+        pulumi.set(self, "tts_content", value)
+
+    @property
+    @pulumi.getter(name="ttsRecoverContent")
+    def tts_recover_content(self) -> pulumi.Input[str]:
+        """
+        The content of the TTS notification for restored alerts.
+        """
+        return pulumi.get(self, "tts_recover_content")
+
+    @tts_recover_content.setter
+    def tts_recover_content(self, value: pulumi.Input[str]):
+        pulumi.set(self, "tts_recover_content", value)
 
 
 if not MYPY:

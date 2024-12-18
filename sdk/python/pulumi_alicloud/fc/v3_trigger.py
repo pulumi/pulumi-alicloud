@@ -457,6 +457,54 @@ class V3Trigger(pulumi.CustomResource):
             function_name=function.function_name)
         ```
 
+        HTTP Trigger
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        function_name = config.get("functionName")
+        if function_name is None:
+            function_name = "TerraformTriggerResourceAPI"
+        trigger_name = config.get("triggerName")
+        if trigger_name is None:
+            trigger_name = "TerraformTrigger_HTTP"
+        function = alicloud.fc.V3Function("function",
+            memory_size=512,
+            cpu=0.5,
+            handler="index.Handler",
+            code={
+                "zip_file": "UEsDBBQACAAIAAAAAAAAAAAAAAAAAAAAAAAIAAAAaW5kZXgucHmEkEFKxEAQRfd9ig9ZTCJOooIwDMwNXLqXnnQlaalUhU5lRj2KZ/FOXkESGR114bJ/P/7jV4b1xRq1hijtFpM1682cuNgPmgysbRulPT0fRxXnMtwrSPyeCdYRokSLnuMLJTTkbUqEvDMbxm1VdcRD6Tk+T1LW2ldB66knsYdA5iNX17ebm6tN2VnPhcswMPmREPuBacb+CiapLarAj9gT6/H97dVlCNScY3mtYvRkxdZlwDKDEnanPWVLdrdkeXEGlFEazVdfPVHaVeHc3N15CUwppwOJXeK7HshAB8NuOU7J6sP4SRXuH/EvbUfMiqMmDqv5M5FNSfAj/wgAAP//UEsHCPl//NYAAQAArwEAAFBLAQIUABQACAAIAAAAAAD5f/zWAAEAAK8BAAAIAAAAAAAAAAAAAAAAAAAAAABpbmRleC5weVBLBQYAAAAAAQABADYAAAA2AQAAAAA=",
+            },
+            function_name=name,
+            runtime="python3.9",
+            disk_size=512,
+            log_config={
+                "log_begin_rule": "None",
+            })
+        current = alicloud.get_account()
+        default = alicloud.fc.V3Trigger("default",
+            trigger_type="http",
+            trigger_name=name,
+            description="create",
+            qualifier="LATEST",
+            trigger_config=json.dumps({
+                "authType": "anonymous",
+                "methods": [
+                    "GET",
+                    "POST",
+                ],
+            }),
+            function_name=function.function_name)
+        pulumi.export("outputCalicloudFcv3TriggerInternet", alicloud_fcv3_trigger["default"]["httpTrigger"][0]["urlInternet"])
+        pulumi.export("outputCalicloudFcv3TriggerIntranet", alicloud_fcv3_trigger["default"]["httpTrigger"][0]["urlIntranet"])
+        ```
+
         ## Import
 
         FCV3 Trigger can be imported using the id, e.g.
@@ -540,6 +588,54 @@ class V3Trigger(pulumi.CustomResource):
             source_arn=f"acs:cdn:*:{current.id}",
             invocation_role=f"acs:ram::{current.id}:role/aliyuncdneventnotificationrole",
             function_name=function.function_name)
+        ```
+
+        HTTP Trigger
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        function_name = config.get("functionName")
+        if function_name is None:
+            function_name = "TerraformTriggerResourceAPI"
+        trigger_name = config.get("triggerName")
+        if trigger_name is None:
+            trigger_name = "TerraformTrigger_HTTP"
+        function = alicloud.fc.V3Function("function",
+            memory_size=512,
+            cpu=0.5,
+            handler="index.Handler",
+            code={
+                "zip_file": "UEsDBBQACAAIAAAAAAAAAAAAAAAAAAAAAAAIAAAAaW5kZXgucHmEkEFKxEAQRfd9ig9ZTCJOooIwDMwNXLqXnnQlaalUhU5lRj2KZ/FOXkESGR114bJ/P/7jV4b1xRq1hijtFpM1682cuNgPmgysbRulPT0fRxXnMtwrSPyeCdYRokSLnuMLJTTkbUqEvDMbxm1VdcRD6Tk+T1LW2ldB66knsYdA5iNX17ebm6tN2VnPhcswMPmREPuBacb+CiapLarAj9gT6/H97dVlCNScY3mtYvRkxdZlwDKDEnanPWVLdrdkeXEGlFEazVdfPVHaVeHc3N15CUwppwOJXeK7HshAB8NuOU7J6sP4SRXuH/EvbUfMiqMmDqv5M5FNSfAj/wgAAP//UEsHCPl//NYAAQAArwEAAFBLAQIUABQACAAIAAAAAAD5f/zWAAEAAK8BAAAIAAAAAAAAAAAAAAAAAAAAAABpbmRleC5weVBLBQYAAAAAAQABADYAAAA2AQAAAAA=",
+            },
+            function_name=name,
+            runtime="python3.9",
+            disk_size=512,
+            log_config={
+                "log_begin_rule": "None",
+            })
+        current = alicloud.get_account()
+        default = alicloud.fc.V3Trigger("default",
+            trigger_type="http",
+            trigger_name=name,
+            description="create",
+            qualifier="LATEST",
+            trigger_config=json.dumps({
+                "authType": "anonymous",
+                "methods": [
+                    "GET",
+                    "POST",
+                ],
+            }),
+            function_name=function.function_name)
+        pulumi.export("outputCalicloudFcv3TriggerInternet", alicloud_fcv3_trigger["default"]["httpTrigger"][0]["urlInternet"])
+        pulumi.export("outputCalicloudFcv3TriggerIntranet", alicloud_fcv3_trigger["default"]["httpTrigger"][0]["urlIntranet"])
         ```
 
         ## Import

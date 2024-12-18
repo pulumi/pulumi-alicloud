@@ -58,7 +58,7 @@ import (
 //				RuleName: pulumi.String("contains-tag"),
 //				InputParameters: pulumi.StringMap{
 //					"key1": pulumi.String("value1"),
-//					"key2": pulumi.String("key2"),
+//					"key2": pulumi.String("value2"),
 //				},
 //			})
 //			if err != nil {

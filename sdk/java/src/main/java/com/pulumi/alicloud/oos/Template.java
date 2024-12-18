@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a OOS Template resource. For information about Alicloud OOS Template and how to use it, see [What is Resource Alicloud OOS Template](https://www.alibabacloud.com/help/doc-detail/120761.htm).
  * 
- * &gt; **NOTE:** Available in 1.92.0+.
+ * &gt; **NOTE:** Available since v1.92.0.
  * 
  * ## Example Usage
  * 
@@ -31,6 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.oos.Template;
  * import com.pulumi.alicloud.oos.TemplateArgs;
  * import java.util.List;
@@ -46,6 +48,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
  *         var example = new Template("example", TemplateArgs.builder()
  *             .content("""
  *   {
@@ -71,8 +78,8 @@ import javax.annotation.Nullable;
  *       }]
  *   }
  *             """)
- *             .templateName("test-name")
- *             .versionName("test")
+ *             .templateName(String.format("tf-example-name-%s", default_.result()))
+ *             .versionName("example")
  *             .tags(Map.ofEntries(
  *                 Map.entry("Created", "TF"),
  *                 Map.entry("For", "acceptance Test")

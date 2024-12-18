@@ -24,7 +24,7 @@ namespace Pulumi.AliCloud.Kms.Outputs
         /// <summary>
         /// VPC owner root user ID.
         /// </summary>
-        public readonly int? VpcOwnerId;
+        public readonly string? VpcOwnerId;
         /// <summary>
         /// vswitch id.
         /// </summary>
@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud.Kms.Outputs
 
             string? vpcId,
 
-            int? vpcOwnerId,
+            string? vpcOwnerId,
 
             string? vswitchId)
         {

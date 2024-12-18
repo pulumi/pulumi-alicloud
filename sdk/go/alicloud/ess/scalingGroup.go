@@ -235,6 +235,8 @@ type ScalingGroup struct {
 	SpotInstancePools pulumi.IntOutput `pulumi:"spotInstancePools"`
 	// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
 	SpotInstanceRemedy pulumi.BoolOutput `pulumi:"spotInstanceRemedy"`
+	// The period of time required by the ECS instance to enter the Stopped state. Unit: seconds. Valid values: 30 to 240.
+	StopInstanceTimeout pulumi.IntPtrOutput `pulumi:"stopInstanceTimeout"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -356,6 +358,8 @@ type scalingGroupState struct {
 	SpotInstancePools *int `pulumi:"spotInstancePools"`
 	// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
 	SpotInstanceRemedy *bool `pulumi:"spotInstanceRemedy"`
+	// The period of time required by the ECS instance to enter the Stopped state. Unit: seconds. Valid values: 30 to 240.
+	StopInstanceTimeout *int `pulumi:"stopInstanceTimeout"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -442,6 +446,8 @@ type ScalingGroupState struct {
 	SpotInstancePools pulumi.IntPtrInput
 	// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
 	SpotInstanceRemedy pulumi.BoolPtrInput
+	// The period of time required by the ECS instance to enter the Stopped state. Unit: seconds. Valid values: 30 to 240.
+	StopInstanceTimeout pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -532,6 +538,8 @@ type scalingGroupArgs struct {
 	SpotInstancePools *int `pulumi:"spotInstancePools"`
 	// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
 	SpotInstanceRemedy *bool `pulumi:"spotInstanceRemedy"`
+	// The period of time required by the ECS instance to enter the Stopped state. Unit: seconds. Valid values: 30 to 240.
+	StopInstanceTimeout *int `pulumi:"stopInstanceTimeout"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -619,6 +627,8 @@ type ScalingGroupArgs struct {
 	SpotInstancePools pulumi.IntPtrInput
 	// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
 	SpotInstanceRemedy pulumi.BoolPtrInput
+	// The period of time required by the ECS instance to enter the Stopped state. Unit: seconds. Valid values: 30 to 240.
+	StopInstanceTimeout pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -879,6 +889,11 @@ func (o ScalingGroupOutput) SpotInstancePools() pulumi.IntOutput {
 // Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
 func (o ScalingGroupOutput) SpotInstanceRemedy() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ScalingGroup) pulumi.BoolOutput { return v.SpotInstanceRemedy }).(pulumi.BoolOutput)
+}
+
+// The period of time required by the ECS instance to enter the Stopped state. Unit: seconds. Valid values: 30 to 240.
+func (o ScalingGroupOutput) StopInstanceTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ScalingGroup) pulumi.IntPtrOutput { return v.StopInstanceTimeout }).(pulumi.IntPtrOutput)
 }
 
 // A mapping of tags to assign to the resource.

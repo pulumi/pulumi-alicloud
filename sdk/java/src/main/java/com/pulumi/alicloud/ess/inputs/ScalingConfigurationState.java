@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.ess.inputs;
 
+import com.pulumi.alicloud.ess.inputs.ScalingConfigurationCustomPriorityArgs;
 import com.pulumi.alicloud.ess.inputs.ScalingConfigurationDataDiskArgs;
 import com.pulumi.alicloud.ess.inputs.ScalingConfigurationInstancePatternInfoArgs;
 import com.pulumi.alicloud.ess.inputs.ScalingConfigurationInstanceTypeOverrideArgs;
@@ -52,6 +53,21 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
      */
     public Optional<Output<String>> creditSpecification() {
         return Optional.ofNullable(this.creditSpecification);
+    }
+
+    /**
+     * You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `custom_priorities` below for details.
+     * 
+     */
+    @Import(name="customPriorities")
+    private @Nullable Output<List<ScalingConfigurationCustomPriorityArgs>> customPriorities;
+
+    /**
+     * @return You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `custom_priorities` below for details.
+     * 
+     */
+    public Optional<Output<List<ScalingConfigurationCustomPriorityArgs>>> customPriorities() {
+        return Optional.ofNullable(this.customPriorities);
     }
 
     /**
@@ -857,6 +873,7 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
     private ScalingConfigurationState(ScalingConfigurationState $) {
         this.active = $.active;
         this.creditSpecification = $.creditSpecification;
+        this.customPriorities = $.customPriorities;
         this.dataDisks = $.dataDisks;
         this.deletionProtection = $.deletionProtection;
         this.enable = $.enable;
@@ -967,6 +984,37 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
          */
         public Builder creditSpecification(String creditSpecification) {
             return creditSpecification(Output.of(creditSpecification));
+        }
+
+        /**
+         * @param customPriorities You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `custom_priorities` below for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customPriorities(@Nullable Output<List<ScalingConfigurationCustomPriorityArgs>> customPriorities) {
+            $.customPriorities = customPriorities;
+            return this;
+        }
+
+        /**
+         * @param customPriorities You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `custom_priorities` below for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customPriorities(List<ScalingConfigurationCustomPriorityArgs> customPriorities) {
+            return customPriorities(Output.of(customPriorities));
+        }
+
+        /**
+         * @param customPriorities You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `custom_priorities` below for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customPriorities(ScalingConfigurationCustomPriorityArgs... customPriorities) {
+            return customPriorities(List.of(customPriorities));
         }
 
         /**

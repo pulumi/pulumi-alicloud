@@ -413,14 +413,18 @@ class Template(pulumi.CustomResource):
         """
         Provides a OOS Template resource. For information about Alicloud OOS Template and how to use it, see [What is Resource Alicloud OOS Template](https://www.alibabacloud.com/help/doc-detail/120761.htm).
 
-        > **NOTE:** Available in 1.92.0+.
+        > **NOTE:** Available since v1.92.0.
 
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
         example = alicloud.oos.Template("example",
             content=\"\"\"  {
             "FormatVersion": "OOS-2019-06-01",
@@ -445,8 +449,8 @@ class Template(pulumi.CustomResource):
               }]
           }
         \"\"\",
-            template_name="test-name",
-            version_name="test",
+            template_name=f"tf-example-name-{default['result']}",
+            version_name="example",
             tags={
                 "Created": "TF",
                 "For": "acceptance Test",
@@ -479,14 +483,18 @@ class Template(pulumi.CustomResource):
         """
         Provides a OOS Template resource. For information about Alicloud OOS Template and how to use it, see [What is Resource Alicloud OOS Template](https://www.alibabacloud.com/help/doc-detail/120761.htm).
 
-        > **NOTE:** Available in 1.92.0+.
+        > **NOTE:** Available since v1.92.0.
 
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
         example = alicloud.oos.Template("example",
             content=\"\"\"  {
             "FormatVersion": "OOS-2019-06-01",
@@ -511,8 +519,8 @@ class Template(pulumi.CustomResource):
               }]
           }
         \"\"\",
-            template_name="test-name",
-            version_name="test",
+            template_name=f"tf-example-name-{default['result']}",
+            version_name="example",
             tags={
                 "Created": "TF",
                 "For": "acceptance Test",

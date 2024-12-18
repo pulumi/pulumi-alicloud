@@ -162,6 +162,8 @@ type ScalingConfiguration struct {
 	Active pulumi.BoolOutput `pulumi:"active"`
 	// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
 	CreditSpecification pulumi.StringPtrOutput `pulumi:"creditSpecification"`
+	// You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `customPriorities` below for details.
+	CustomPriorities ScalingConfigurationCustomPriorityArrayOutput `pulumi:"customPriorities"`
 	// DataDisk mappings to attach to ecs instance. See `dataDisk` below for details.
 	DataDisks ScalingConfigurationDataDiskArrayOutput `pulumi:"dataDisks"`
 	// Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
@@ -321,6 +323,8 @@ type scalingConfigurationState struct {
 	Active *bool `pulumi:"active"`
 	// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
 	CreditSpecification *string `pulumi:"creditSpecification"`
+	// You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `customPriorities` below for details.
+	CustomPriorities []ScalingConfigurationCustomPriority `pulumi:"customPriorities"`
 	// DataDisk mappings to attach to ecs instance. See `dataDisk` below for details.
 	DataDisks []ScalingConfigurationDataDisk `pulumi:"dataDisks"`
 	// Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
@@ -448,6 +452,8 @@ type ScalingConfigurationState struct {
 	Active pulumi.BoolPtrInput
 	// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
 	CreditSpecification pulumi.StringPtrInput
+	// You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `customPriorities` below for details.
+	CustomPriorities ScalingConfigurationCustomPriorityArrayInput
 	// DataDisk mappings to attach to ecs instance. See `dataDisk` below for details.
 	DataDisks ScalingConfigurationDataDiskArrayInput
 	// Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
@@ -579,6 +585,8 @@ type scalingConfigurationArgs struct {
 	Active *bool `pulumi:"active"`
 	// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
 	CreditSpecification *string `pulumi:"creditSpecification"`
+	// You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `customPriorities` below for details.
+	CustomPriorities []ScalingConfigurationCustomPriority `pulumi:"customPriorities"`
 	// DataDisk mappings to attach to ecs instance. See `dataDisk` below for details.
 	DataDisks []ScalingConfigurationDataDisk `pulumi:"dataDisks"`
 	// Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
@@ -707,6 +715,8 @@ type ScalingConfigurationArgs struct {
 	Active pulumi.BoolPtrInput
 	// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
 	CreditSpecification pulumi.StringPtrInput
+	// You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `customPriorities` below for details.
+	CustomPriorities ScalingConfigurationCustomPriorityArrayInput
 	// DataDisk mappings to attach to ecs instance. See `dataDisk` below for details.
 	DataDisks ScalingConfigurationDataDiskArrayInput
 	// Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
@@ -924,6 +934,11 @@ func (o ScalingConfigurationOutput) Active() pulumi.BoolOutput {
 // Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
 func (o ScalingConfigurationOutput) CreditSpecification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.CreditSpecification }).(pulumi.StringPtrOutput)
+}
+
+// You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `customPriorities` below for details.
+func (o ScalingConfigurationOutput) CustomPriorities() ScalingConfigurationCustomPriorityArrayOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) ScalingConfigurationCustomPriorityArrayOutput { return v.CustomPriorities }).(ScalingConfigurationCustomPriorityArrayOutput)
 }
 
 // DataDisk mappings to attach to ecs instance. See `dataDisk` below for details.

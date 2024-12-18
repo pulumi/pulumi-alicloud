@@ -26,12 +26,19 @@ namespace Pulumi.AliCloud.Nas
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var @default = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
     ///     var foo = new AliCloud.Nas.AccessGroup("foo", new()
     ///     {
-    ///         AccessGroupName = "terraform-example",
+    ///         AccessGroupName = $"terraform-example-{@default.Result}",
     ///         AccessGroupType = "Vpc",
     ///         Description = "terraform-example",
     ///         FileSystemType = "extreme",

@@ -22,10 +22,6 @@ namespace Pulumi.AliCloud.Arms.Outputs
         /// </summary>
         public readonly string DispatchRuleName;
         /// <summary>
-        /// The type of the dispatch rule.
-        /// </summary>
-        public readonly string DispatchType;
-        /// <summary>
         /// Sets the event group.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDispatchRulesRuleGroupRuleResult> GroupRules;
@@ -42,6 +38,10 @@ namespace Pulumi.AliCloud.Arms.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDispatchRulesRuleNotifyRuleResult> NotifyRules;
         /// <summary>
+        /// (Available since v1.238.0) The notification method.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetDispatchRulesRuleNotifyTemplateResult> NotifyTemplates;
+        /// <summary>
         /// The resource status of Alert Dispatch Rule.
         /// </summary>
         public readonly string Status;
@@ -52,8 +52,6 @@ namespace Pulumi.AliCloud.Arms.Outputs
 
             string dispatchRuleName,
 
-            string dispatchType,
-
             ImmutableArray<Outputs.GetDispatchRulesRuleGroupRuleResult> groupRules,
 
             string id,
@@ -62,15 +60,17 @@ namespace Pulumi.AliCloud.Arms.Outputs
 
             ImmutableArray<Outputs.GetDispatchRulesRuleNotifyRuleResult> notifyRules,
 
+            ImmutableArray<Outputs.GetDispatchRulesRuleNotifyTemplateResult> notifyTemplates,
+
             string status)
         {
             DispatchRuleId = dispatchRuleId;
             DispatchRuleName = dispatchRuleName;
-            DispatchType = dispatchType;
             GroupRules = groupRules;
             Id = id;
             LabelMatchExpressionGrids = labelMatchExpressionGrids;
             NotifyRules = notifyRules;
+            NotifyTemplates = notifyTemplates;
             Status = status;
         }
     }

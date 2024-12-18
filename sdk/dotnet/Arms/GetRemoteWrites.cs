@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Arms
         /// 
         /// &gt; **NOTE:** Available since v1.204.0.
         /// 
-        /// &gt; **DEPRECATED:** This resource has been deprecated since v1.228.0.
+        /// &gt; **DEPRECATED:** This data source has been deprecated since v1.228.0.
         /// 
         /// ## Example Usage
         /// 
@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.Arms
         /// 
         /// &gt; **NOTE:** Available since v1.204.0.
         /// 
-        /// &gt; **DEPRECATED:** This resource has been deprecated since v1.228.0.
+        /// &gt; **DEPRECATED:** This data source has been deprecated since v1.228.0.
         /// 
         /// ## Example Usage
         /// 
@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.Arms
         /// 
         /// &gt; **NOTE:** Available since v1.204.0.
         /// 
-        /// &gt; **DEPRECATED:** This resource has been deprecated since v1.228.0.
+        /// &gt; **DEPRECATED:** This data source has been deprecated since v1.228.0.
         /// 
         /// ## Example Usage
         /// 

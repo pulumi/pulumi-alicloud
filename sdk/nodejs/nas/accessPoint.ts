@@ -20,6 +20,7 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
@@ -37,9 +38,13 @@ import * as utilities from "../utilities";
  *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  *     cidrBlock: "172.16.0.0/24",
  * });
+ * const defaultInteger = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
  * const defaultBbc7ev = new alicloud.nas.AccessGroup("defaultBbc7ev", {
  *     accessGroupType: "Vpc",
- *     accessGroupName: name,
+ *     accessGroupName: `${name}-${defaultInteger.result}`,
  *     fileSystemType: "standard",
  * });
  * const defaultVtUpDh = new alicloud.nas.FileSystem("defaultVtUpDh", {

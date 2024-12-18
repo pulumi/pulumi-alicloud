@@ -147,6 +147,12 @@ namespace Pulumi.AliCloud.Ess
         public Output<string?> CreditSpecification { get; private set; } = null!;
 
         /// <summary>
+        /// You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `custom_priorities` below for details.
+        /// </summary>
+        [Output("customPriorities")]
+        public Output<ImmutableArray<Outputs.ScalingConfigurationCustomPriority>> CustomPriorities { get; private set; } = null!;
+
+        /// <summary>
         /// DataDisk mappings to attach to ecs instance. See `data_disk` below for details.
         /// </summary>
         [Output("dataDisks")]
@@ -519,6 +525,18 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("creditSpecification")]
         public Input<string>? CreditSpecification { get; set; }
+
+        [Input("customPriorities")]
+        private InputList<Inputs.ScalingConfigurationCustomPriorityArgs>? _customPriorities;
+
+        /// <summary>
+        /// You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `custom_priorities` below for details.
+        /// </summary>
+        public InputList<Inputs.ScalingConfigurationCustomPriorityArgs> CustomPriorities
+        {
+            get => _customPriorities ?? (_customPriorities = new InputList<Inputs.ScalingConfigurationCustomPriorityArgs>());
+            set => _customPriorities = value;
+        }
 
         [Input("dataDisks")]
         private InputList<Inputs.ScalingConfigurationDataDiskArgs>? _dataDisks;
@@ -916,6 +934,18 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("creditSpecification")]
         public Input<string>? CreditSpecification { get; set; }
+
+        [Input("customPriorities")]
+        private InputList<Inputs.ScalingConfigurationCustomPriorityGetArgs>? _customPriorities;
+
+        /// <summary>
+        /// You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `custom_priorities` below for details.
+        /// </summary>
+        public InputList<Inputs.ScalingConfigurationCustomPriorityGetArgs> CustomPriorities
+        {
+            get => _customPriorities ?? (_customPriorities = new InputList<Inputs.ScalingConfigurationCustomPriorityGetArgs>());
+            set => _customPriorities = value;
+        }
 
         [Input("dataDisks")]
         private InputList<Inputs.ScalingConfigurationDataDiskGetArgs>? _dataDisks;

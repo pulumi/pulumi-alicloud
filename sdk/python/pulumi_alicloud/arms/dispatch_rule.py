@@ -26,7 +26,8 @@ class DispatchRuleArgs:
                  label_match_expression_grids: pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridArgs']]],
                  notify_rules: pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleArgs']]],
                  dispatch_type: Optional[pulumi.Input[str]] = None,
-                 is_recover: Optional[pulumi.Input[bool]] = None):
+                 is_recover: Optional[pulumi.Input[bool]] = None,
+                 notify_templates: Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyTemplateArgs']]]] = None):
         """
         The set of arguments for constructing a DispatchRule resource.
         :param pulumi.Input[str] dispatch_rule_name: The name of the dispatch policy.
@@ -35,6 +36,7 @@ class DispatchRuleArgs:
         :param pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleArgs']]] notify_rules: Sets the notification rule. See `notify_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
         :param pulumi.Input[str] dispatch_type: The alert handling method. Valid values: CREATE_ALERT: generates an alert. DISCARD_ALERT: discards the alert event and generates no alert.
         :param pulumi.Input[bool] is_recover: Specifies whether to send the restored alert. Valid values: true: sends the alert. false: does not send the alert.
+        :param pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyTemplateArgs']]] notify_templates: Sets the notification template. See `notify_template` below.
         """
         pulumi.set(__self__, "dispatch_rule_name", dispatch_rule_name)
         pulumi.set(__self__, "group_rules", group_rules)
@@ -44,6 +46,8 @@ class DispatchRuleArgs:
             pulumi.set(__self__, "dispatch_type", dispatch_type)
         if is_recover is not None:
             pulumi.set(__self__, "is_recover", is_recover)
+        if notify_templates is not None:
+            pulumi.set(__self__, "notify_templates", notify_templates)
 
     @property
     @pulumi.getter(name="dispatchRuleName")
@@ -117,6 +121,18 @@ class DispatchRuleArgs:
     def is_recover(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_recover", value)
 
+    @property
+    @pulumi.getter(name="notifyTemplates")
+    def notify_templates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyTemplateArgs']]]]:
+        """
+        Sets the notification template. See `notify_template` below.
+        """
+        return pulumi.get(self, "notify_templates")
+
+    @notify_templates.setter
+    def notify_templates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyTemplateArgs']]]]):
+        pulumi.set(self, "notify_templates", value)
+
 
 @pulumi.input_type
 class _DispatchRuleState:
@@ -127,6 +143,7 @@ class _DispatchRuleState:
                  is_recover: Optional[pulumi.Input[bool]] = None,
                  label_match_expression_grids: Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridArgs']]]] = None,
                  notify_rules: Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleArgs']]]] = None,
+                 notify_templates: Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyTemplateArgs']]]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DispatchRule resources.
@@ -136,6 +153,7 @@ class _DispatchRuleState:
         :param pulumi.Input[bool] is_recover: Specifies whether to send the restored alert. Valid values: true: sends the alert. false: does not send the alert.
         :param pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridArgs']]] label_match_expression_grids: Sets the dispatch rule. See `label_match_expression_grid` below.
         :param pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleArgs']]] notify_rules: Sets the notification rule. See `notify_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
+        :param pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyTemplateArgs']]] notify_templates: Sets the notification template. See `notify_template` below.
         :param pulumi.Input[str] status: The resource status of Alert Dispatch Rule.
         """
         if dispatch_rule_name is not None:
@@ -150,6 +168,8 @@ class _DispatchRuleState:
             pulumi.set(__self__, "label_match_expression_grids", label_match_expression_grids)
         if notify_rules is not None:
             pulumi.set(__self__, "notify_rules", notify_rules)
+        if notify_templates is not None:
+            pulumi.set(__self__, "notify_templates", notify_templates)
         if status is not None:
             pulumi.set(__self__, "status", status)
 
@@ -226,6 +246,18 @@ class _DispatchRuleState:
         pulumi.set(self, "notify_rules", value)
 
     @property
+    @pulumi.getter(name="notifyTemplates")
+    def notify_templates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyTemplateArgs']]]]:
+        """
+        Sets the notification template. See `notify_template` below.
+        """
+        return pulumi.get(self, "notify_templates")
+
+    @notify_templates.setter
+    def notify_templates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyTemplateArgs']]]]):
+        pulumi.set(self, "notify_templates", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -249,6 +281,7 @@ class DispatchRule(pulumi.CustomResource):
                  is_recover: Optional[pulumi.Input[bool]] = None,
                  label_match_expression_grids: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleLabelMatchExpressionGridArgs', 'DispatchRuleLabelMatchExpressionGridArgsDict']]]]] = None,
                  notify_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleNotifyRuleArgs', 'DispatchRuleNotifyRuleArgsDict']]]]] = None,
+                 notify_templates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleNotifyTemplateArgs', 'DispatchRuleNotifyTemplateArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Application Real-Time Monitoring Service (ARMS) Alert Dispatch Rule resource.
@@ -308,6 +341,17 @@ class DispatchRule(pulumi.CustomResource):
                 ],
                 "notify_start_time": "10:00",
                 "notify_end_time": "23:00",
+            }],
+            notify_templates=[{
+                "email_title": "example_email_title",
+                "email_content": "example_email_content",
+                "email_recover_title": "example_email_recover_title",
+                "email_recover_content": "example_email_recover_content",
+                "sms_content": "example_sms_content",
+                "sms_recover_content": "example_sms_recover_content",
+                "tts_content": "example_tts_content",
+                "tts_recover_content": "example_tts_recover_content",
+                "robot_content": "example_robot_content",
             }])
         ```
 
@@ -327,6 +371,7 @@ class DispatchRule(pulumi.CustomResource):
         :param pulumi.Input[bool] is_recover: Specifies whether to send the restored alert. Valid values: true: sends the alert. false: does not send the alert.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleLabelMatchExpressionGridArgs', 'DispatchRuleLabelMatchExpressionGridArgsDict']]]] label_match_expression_grids: Sets the dispatch rule. See `label_match_expression_grid` below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleNotifyRuleArgs', 'DispatchRuleNotifyRuleArgsDict']]]] notify_rules: Sets the notification rule. See `notify_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleNotifyTemplateArgs', 'DispatchRuleNotifyTemplateArgsDict']]]] notify_templates: Sets the notification template. See `notify_template` below.
         """
         ...
     @overload
@@ -392,6 +437,17 @@ class DispatchRule(pulumi.CustomResource):
                 ],
                 "notify_start_time": "10:00",
                 "notify_end_time": "23:00",
+            }],
+            notify_templates=[{
+                "email_title": "example_email_title",
+                "email_content": "example_email_content",
+                "email_recover_title": "example_email_recover_title",
+                "email_recover_content": "example_email_recover_content",
+                "sms_content": "example_sms_content",
+                "sms_recover_content": "example_sms_recover_content",
+                "tts_content": "example_tts_content",
+                "tts_recover_content": "example_tts_recover_content",
+                "robot_content": "example_robot_content",
             }])
         ```
 
@@ -424,6 +480,7 @@ class DispatchRule(pulumi.CustomResource):
                  is_recover: Optional[pulumi.Input[bool]] = None,
                  label_match_expression_grids: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleLabelMatchExpressionGridArgs', 'DispatchRuleLabelMatchExpressionGridArgsDict']]]]] = None,
                  notify_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleNotifyRuleArgs', 'DispatchRuleNotifyRuleArgsDict']]]]] = None,
+                 notify_templates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleNotifyTemplateArgs', 'DispatchRuleNotifyTemplateArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -447,6 +504,7 @@ class DispatchRule(pulumi.CustomResource):
             if notify_rules is None and not opts.urn:
                 raise TypeError("Missing required property 'notify_rules'")
             __props__.__dict__["notify_rules"] = notify_rules
+            __props__.__dict__["notify_templates"] = notify_templates
             __props__.__dict__["status"] = None
         super(DispatchRule, __self__).__init__(
             'alicloud:arms/dispatchRule:DispatchRule',
@@ -464,6 +522,7 @@ class DispatchRule(pulumi.CustomResource):
             is_recover: Optional[pulumi.Input[bool]] = None,
             label_match_expression_grids: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleLabelMatchExpressionGridArgs', 'DispatchRuleLabelMatchExpressionGridArgsDict']]]]] = None,
             notify_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleNotifyRuleArgs', 'DispatchRuleNotifyRuleArgsDict']]]]] = None,
+            notify_templates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleNotifyTemplateArgs', 'DispatchRuleNotifyTemplateArgsDict']]]]] = None,
             status: Optional[pulumi.Input[str]] = None) -> 'DispatchRule':
         """
         Get an existing DispatchRule resource's state with the given name, id, and optional extra
@@ -478,6 +537,7 @@ class DispatchRule(pulumi.CustomResource):
         :param pulumi.Input[bool] is_recover: Specifies whether to send the restored alert. Valid values: true: sends the alert. false: does not send the alert.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleLabelMatchExpressionGridArgs', 'DispatchRuleLabelMatchExpressionGridArgsDict']]]] label_match_expression_grids: Sets the dispatch rule. See `label_match_expression_grid` below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleNotifyRuleArgs', 'DispatchRuleNotifyRuleArgsDict']]]] notify_rules: Sets the notification rule. See `notify_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleNotifyTemplateArgs', 'DispatchRuleNotifyTemplateArgsDict']]]] notify_templates: Sets the notification template. See `notify_template` below.
         :param pulumi.Input[str] status: The resource status of Alert Dispatch Rule.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -490,6 +550,7 @@ class DispatchRule(pulumi.CustomResource):
         __props__.__dict__["is_recover"] = is_recover
         __props__.__dict__["label_match_expression_grids"] = label_match_expression_grids
         __props__.__dict__["notify_rules"] = notify_rules
+        __props__.__dict__["notify_templates"] = notify_templates
         __props__.__dict__["status"] = status
         return DispatchRule(resource_name, opts=opts, __props__=__props__)
 
@@ -540,6 +601,14 @@ class DispatchRule(pulumi.CustomResource):
         Sets the notification rule. See `notify_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
         """
         return pulumi.get(self, "notify_rules")
+
+    @property
+    @pulumi.getter(name="notifyTemplates")
+    def notify_templates(self) -> pulumi.Output[Optional[Sequence['outputs.DispatchRuleNotifyTemplate']]]:
+        """
+        Sets the notification template. See `notify_template` below.
+        """
+        return pulumi.get(self, "notify_templates")
 
     @property
     @pulumi.getter

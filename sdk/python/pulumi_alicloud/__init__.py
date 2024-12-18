@@ -187,6 +187,8 @@ if typing.TYPE_CHECKING:
     kvstore = __kvstore
     import pulumi_alicloud.lindorm as __lindorm
     lindorm = __lindorm
+    import pulumi_alicloud.live as __live
+    live = __live
     import pulumi_alicloud.log as __log
     log = __log
     import pulumi_alicloud.marketplace as __marketplace
@@ -374,6 +376,7 @@ else:
     kms = _utilities.lazy_import('pulumi_alicloud.kms')
     kvstore = _utilities.lazy_import('pulumi_alicloud.kvstore')
     lindorm = _utilities.lazy_import('pulumi_alicloud.lindorm')
+    live = _utilities.lazy_import('pulumi_alicloud.live')
     log = _utilities.lazy_import('pulumi_alicloud.log')
     marketplace = _utilities.lazy_import('pulumi_alicloud.marketplace')
     maxcompute = _utilities.lazy_import('pulumi_alicloud.maxcompute')
@@ -4968,6 +4971,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "live/caster",
+  "fqn": "pulumi_alicloud.live",
+  "classes": {
+   "alicloud:live/caster:Caster": "Caster"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "log/alert",
   "fqn": "pulumi_alicloud.log",
   "classes": {
@@ -5748,6 +5759,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.ots",
   "classes": {
    "alicloud:ots/tunnel:Tunnel": "Tunnel"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "pai/service",
+  "fqn": "pulumi_alicloud.pai",
+  "classes": {
+   "alicloud:pai/service:Service": "Service"
   }
  },
  {
@@ -7420,6 +7439,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.vpc",
   "classes": {
    "alicloud:vpc/ipamIpamPool:IpamIpamPool": "IpamIpamPool"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "vpc/ipamIpamPoolAllocation",
+  "fqn": "pulumi_alicloud.vpc",
+  "classes": {
+   "alicloud:vpc/ipamIpamPoolAllocation:IpamIpamPoolAllocation": "IpamIpamPoolAllocation"
   }
  },
  {

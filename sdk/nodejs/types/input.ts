@@ -1699,6 +1699,45 @@ export namespace arms {
         notifyType: pulumi.Input<string>;
     }
 
+    export interface DispatchRuleNotifyTemplate {
+        /**
+         * The content of the email notification.
+         */
+        emailContent: pulumi.Input<string>;
+        /**
+         * The content of the email notification for restored alerts.
+         */
+        emailRecoverContent: pulumi.Input<string>;
+        /**
+         * The title of the email notification for restored alerts.
+         */
+        emailRecoverTitle: pulumi.Input<string>;
+        /**
+         * The title of the email notification.
+         */
+        emailTitle: pulumi.Input<string>;
+        /**
+         * The content of the robot notification.
+         */
+        robotContent: pulumi.Input<string>;
+        /**
+         * The content of the SMS notification.
+         */
+        smsContent: pulumi.Input<string>;
+        /**
+         * The content of the SMS notification for restored alerts.
+         */
+        smsRecoverContent: pulumi.Input<string>;
+        /**
+         * The content of the TTS notification.
+         */
+        ttsContent: pulumi.Input<string>;
+        /**
+         * The content of the TTS notification for restored alerts.
+         */
+        ttsRecoverContent: pulumi.Input<string>;
+    }
+
     export interface PrometheusAlertRuleAnnotation {
         /**
          * The name of the annotation.
@@ -8859,6 +8898,17 @@ export namespace ess {
         path?: pulumi.Input<string>;
     }
 
+    export interface ScalingConfigurationCustomPriority {
+        /**
+         * This parameter takes effect only if you set Scaling Policy to Priority Policy and the instance type specified by CustomPriorities.N.InstanceType is contained in the scaling configuration.
+         */
+        instanceType?: pulumi.Input<string>;
+        /**
+         * This parameter takes effect only if you set Scaling Policy to Priority Policy and the vSwitch specified by CustomPriorities.N.VswitchId is included in the vSwitch list of your scaling group.
+         */
+        vswitchId?: pulumi.Input<string>;
+    }
+
     export interface ScalingConfigurationDataDisk {
         /**
          * The id of auto snapshot policy for data disk.
@@ -11079,7 +11129,7 @@ export namespace kms {
         /**
          * VPC owner root user ID.
          */
-        vpcOwnerId?: pulumi.Input<number>;
+        vpcOwnerId?: pulumi.Input<string>;
         /**
          * vswitch id.
          */

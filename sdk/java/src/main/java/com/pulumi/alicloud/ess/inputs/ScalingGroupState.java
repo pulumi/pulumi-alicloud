@@ -498,6 +498,21 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The period of time required by the ECS instance to enter the Stopped state. Unit: seconds. Valid values: 30 to 240.
+     * 
+     */
+    @Import(name="stopInstanceTimeout")
+    private @Nullable Output<Integer> stopInstanceTimeout;
+
+    /**
+     * @return The period of time required by the ECS instance to enter the Stopped state. Unit: seconds. Valid values: 30 to 240.
+     * 
+     */
+    public Optional<Output<Integer>> stopInstanceTimeout() {
+        return Optional.ofNullable(this.stopInstanceTimeout);
+    }
+
+    /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
@@ -587,6 +602,7 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
         this.spotAllocationStrategy = $.spotAllocationStrategy;
         this.spotInstancePools = $.spotInstancePools;
         this.spotInstanceRemedy = $.spotInstanceRemedy;
+        this.stopInstanceTimeout = $.stopInstanceTimeout;
         this.tags = $.tags;
         this.vswitchId = $.vswitchId;
         this.vswitchIds = $.vswitchIds;
@@ -1345,6 +1361,27 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder spotInstanceRemedy(Boolean spotInstanceRemedy) {
             return spotInstanceRemedy(Output.of(spotInstanceRemedy));
+        }
+
+        /**
+         * @param stopInstanceTimeout The period of time required by the ECS instance to enter the Stopped state. Unit: seconds. Valid values: 30 to 240.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stopInstanceTimeout(@Nullable Output<Integer> stopInstanceTimeout) {
+            $.stopInstanceTimeout = stopInstanceTimeout;
+            return this;
+        }
+
+        /**
+         * @param stopInstanceTimeout The period of time required by the ECS instance to enter the Stopped state. Unit: seconds. Valid values: 30 to 240.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stopInstanceTimeout(Integer stopInstanceTimeout) {
+            return stopInstanceTimeout(Output.of(stopInstanceTimeout));
         }
 
         /**
