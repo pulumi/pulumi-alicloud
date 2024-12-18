@@ -254,6 +254,7 @@ var mappedMods = map[string]string{
 	"kms":                   kmsMod,
 	"kvstore":               kvstoreMod,
 	"lindorm":               lindormMod,
+	"live":                  "Live",
 	"log":                   logMod,
 	"market":                marketPlaceMod,
 	"maxcompute":            maxComputeMod,
