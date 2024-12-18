@@ -14,7 +14,7 @@ import (
 
 // Provides a OOS Template resource. For information about Alicloud OOS Template and how to use it, see [What is Resource Alicloud OOS Template](https://www.alibabacloud.com/help/doc-detail/120761.htm).
 //
-// > **NOTE:** Available in 1.92.0+.
+// > **NOTE:** Available since v1.92.0.
 //
 // ## Example Usage
 //
@@ -23,14 +23,24 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := oos.NewTemplate(ctx, "example", &oos.TemplateArgs{
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oos.NewTemplate(ctx, "example", &oos.TemplateArgs{
 //				Content: pulumi.String(`  {
 //	    "FormatVersion": "OOS-2019-06-01",
 //	    "Description": "Update Describe instances of given status",
@@ -56,8 +66,8 @@ import (
 //
 // `),
 //
-//				TemplateName: pulumi.String("test-name"),
-//				VersionName:  pulumi.String("test"),
+//				TemplateName: pulumi.Sprintf("tf-example-name-%v", _default.Result),
+//				VersionName:  pulumi.String("example"),
 //				Tags: pulumi.StringMap{
 //					"Created": pulumi.String("TF"),
 //					"For":     pulumi.String("acceptance Test"),

@@ -108,7 +108,7 @@ import (
 //			_, err = cen.NewTransitRouterMulticastDomainPeerMember(ctx, "default", &cen.TransitRouterMulticastDomainPeerMemberArgs{
 //				TransitRouterMulticastDomainId:     defaultTransitRouterMulticastDomain.ID(),
 //				PeerTransitRouterMulticastDomainId: peerTransitRouterMulticastDomain.ID(),
-//				GroupIpAddress:                     pulumi.String("224.0.0.1"),
+//				GroupIpAddress:                     pulumi.String("224.1.0.0"),
 //			})
 //			if err != nil {
 //				return err

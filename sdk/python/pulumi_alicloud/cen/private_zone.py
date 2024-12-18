@@ -25,12 +25,12 @@ class PrivateZoneArgs:
                  host_vpc_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a PrivateZone resource.
-        :param pulumi.Input[str] access_region_id: The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
+        :param pulumi.Input[str] access_region_id: The ID of the region where PrivateZone is accessed. This region refers to the region in which PrivateZone is accessed by clients.
         :param pulumi.Input[str] cen_id: The ID of the CEN instance.
-        :param pulumi.Input[str] host_region_id: The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
-        :param pulumi.Input[str] host_vpc_id: The VPC that belongs to the service region.
+        :param pulumi.Input[str] host_region_id: The ID of the region where PrivateZone is deployed.
                
-               ->**NOTE:** The "cen.PrivateZone" resource depends on the related "cen.InstanceAttachment" resource.
+               ->**NOTE:** The resource `cen.PrivateZone` depends on the resource `cen.InstanceAttachment`.
+        :param pulumi.Input[str] host_vpc_id: The ID of the VPC that is associated with PrivateZone.
         """
         pulumi.set(__self__, "access_region_id", access_region_id)
         pulumi.set(__self__, "cen_id", cen_id)
@@ -41,7 +41,7 @@ class PrivateZoneArgs:
     @pulumi.getter(name="accessRegionId")
     def access_region_id(self) -> pulumi.Input[str]:
         """
-        The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
+        The ID of the region where PrivateZone is accessed. This region refers to the region in which PrivateZone is accessed by clients.
         """
         return pulumi.get(self, "access_region_id")
 
@@ -65,7 +65,9 @@ class PrivateZoneArgs:
     @pulumi.getter(name="hostRegionId")
     def host_region_id(self) -> pulumi.Input[str]:
         """
-        The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
+        The ID of the region where PrivateZone is deployed.
+
+        ->**NOTE:** The resource `cen.PrivateZone` depends on the resource `cen.InstanceAttachment`.
         """
         return pulumi.get(self, "host_region_id")
 
@@ -77,9 +79,7 @@ class PrivateZoneArgs:
     @pulumi.getter(name="hostVpcId")
     def host_vpc_id(self) -> pulumi.Input[str]:
         """
-        The VPC that belongs to the service region.
-
-        ->**NOTE:** The "cen.PrivateZone" resource depends on the related "cen.InstanceAttachment" resource.
+        The ID of the VPC that is associated with PrivateZone.
         """
         return pulumi.get(self, "host_vpc_id")
 
@@ -98,13 +98,13 @@ class _PrivateZoneState:
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering PrivateZone resources.
-        :param pulumi.Input[str] access_region_id: The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
+        :param pulumi.Input[str] access_region_id: The ID of the region where PrivateZone is accessed. This region refers to the region in which PrivateZone is accessed by clients.
         :param pulumi.Input[str] cen_id: The ID of the CEN instance.
-        :param pulumi.Input[str] host_region_id: The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
-        :param pulumi.Input[str] host_vpc_id: The VPC that belongs to the service region.
+        :param pulumi.Input[str] host_region_id: The ID of the region where PrivateZone is deployed.
                
-               ->**NOTE:** The "cen.PrivateZone" resource depends on the related "cen.InstanceAttachment" resource.
-        :param pulumi.Input[str] status: The status of the PrivateZone service. Valid values: ["Creating", "Active", "Deleting"].
+               ->**NOTE:** The resource `cen.PrivateZone` depends on the resource `cen.InstanceAttachment`.
+        :param pulumi.Input[str] host_vpc_id: The ID of the VPC that is associated with PrivateZone.
+        :param pulumi.Input[str] status: The status of the Private Zone.
         """
         if access_region_id is not None:
             pulumi.set(__self__, "access_region_id", access_region_id)
@@ -121,7 +121,7 @@ class _PrivateZoneState:
     @pulumi.getter(name="accessRegionId")
     def access_region_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
+        The ID of the region where PrivateZone is accessed. This region refers to the region in which PrivateZone is accessed by clients.
         """
         return pulumi.get(self, "access_region_id")
 
@@ -145,7 +145,9 @@ class _PrivateZoneState:
     @pulumi.getter(name="hostRegionId")
     def host_region_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
+        The ID of the region where PrivateZone is deployed.
+
+        ->**NOTE:** The resource `cen.PrivateZone` depends on the resource `cen.InstanceAttachment`.
         """
         return pulumi.get(self, "host_region_id")
 
@@ -157,9 +159,7 @@ class _PrivateZoneState:
     @pulumi.getter(name="hostVpcId")
     def host_vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The VPC that belongs to the service region.
-
-        ->**NOTE:** The "cen.PrivateZone" resource depends on the related "cen.InstanceAttachment" resource.
+        The ID of the VPC that is associated with PrivateZone.
         """
         return pulumi.get(self, "host_vpc_id")
 
@@ -171,7 +171,7 @@ class _PrivateZoneState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the PrivateZone service. Valid values: ["Creating", "Active", "Deleting"].
+        The status of the Private Zone.
         """
         return pulumi.get(self, "status")
 
@@ -191,11 +191,9 @@ class PrivateZone(pulumi.CustomResource):
                  host_vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This topic describes how to configure PrivateZone access.
-        PrivateZone is a VPC-based resolution and management service for private domain names.
-        After you set a PrivateZone access, the Cloud Connect Network (CCN) and Virtual Border Router (VBR) attached to a CEN instance can access the PrivateZone service through CEN.
+        Provides a Cloud Enterprise Network (CEN) Private Zone resource.
 
-        For information about CEN Private Zone and how to use it, see [Manage CEN Private Zone](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-cbn-2017-09-12-routeprivatezoneincentovpc).
+        For information about Cloud Enterprise Network (CEN) Private Zone and how to use it, see [What is Private Zone](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-cbn-2017-09-12-routeprivatezoneincentovpc).
 
         > **NOTE:** Available since v1.83.0.
 
@@ -207,41 +205,45 @@ class PrivateZone(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         default = alicloud.get_regions(current=True)
-        example = alicloud.vpc.Network("example",
-            vpc_name="tf_example",
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
             cidr_block="172.17.3.0/24")
-        example_instance = alicloud.cen.Instance("example",
-            cen_instance_name="tf_example",
-            description="an example for cen")
-        example_instance_attachment = alicloud.cen.InstanceAttachment("example",
-            instance_id=example_instance.id,
-            child_instance_id=example.id,
+        default_instance = alicloud.cen.Instance("default",
+            cen_instance_name=name,
+            description=name)
+        default_instance_attachment = alicloud.cen.InstanceAttachment("default",
+            instance_id=default_instance.id,
+            child_instance_id=default_network.id,
             child_instance_type="VPC",
             child_instance_region_id=default.regions[0].id)
         default_private_zone = alicloud.cen.PrivateZone("default",
+            cen_id=default_instance_attachment.instance_id,
             access_region_id=default.regions[0].id,
-            cen_id=example_instance_attachment.instance_id,
-            host_region_id=default.regions[0].id,
-            host_vpc_id=example.id)
+            host_vpc_id=default_network.id,
+            host_region_id=default.regions[0].id)
         ```
 
         ## Import
 
-        CEN Private Zone can be imported using the id, e.g.
+        Cloud Enterprise Network (CEN) Private Zone can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cen/privateZone:PrivateZone example cen-abc123456:cn-hangzhou
+        $ pulumi import alicloud:cen/privateZone:PrivateZone example <cen_id>:<access_region_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_region_id: The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
+        :param pulumi.Input[str] access_region_id: The ID of the region where PrivateZone is accessed. This region refers to the region in which PrivateZone is accessed by clients.
         :param pulumi.Input[str] cen_id: The ID of the CEN instance.
-        :param pulumi.Input[str] host_region_id: The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
-        :param pulumi.Input[str] host_vpc_id: The VPC that belongs to the service region.
+        :param pulumi.Input[str] host_region_id: The ID of the region where PrivateZone is deployed.
                
-               ->**NOTE:** The "cen.PrivateZone" resource depends on the related "cen.InstanceAttachment" resource.
+               ->**NOTE:** The resource `cen.PrivateZone` depends on the resource `cen.InstanceAttachment`.
+        :param pulumi.Input[str] host_vpc_id: The ID of the VPC that is associated with PrivateZone.
         """
         ...
     @overload
@@ -250,11 +252,9 @@ class PrivateZone(pulumi.CustomResource):
                  args: PrivateZoneArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This topic describes how to configure PrivateZone access.
-        PrivateZone is a VPC-based resolution and management service for private domain names.
-        After you set a PrivateZone access, the Cloud Connect Network (CCN) and Virtual Border Router (VBR) attached to a CEN instance can access the PrivateZone service through CEN.
+        Provides a Cloud Enterprise Network (CEN) Private Zone resource.
 
-        For information about CEN Private Zone and how to use it, see [Manage CEN Private Zone](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-cbn-2017-09-12-routeprivatezoneincentovpc).
+        For information about Cloud Enterprise Network (CEN) Private Zone and how to use it, see [What is Private Zone](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-cbn-2017-09-12-routeprivatezoneincentovpc).
 
         > **NOTE:** Available since v1.83.0.
 
@@ -266,31 +266,35 @@ class PrivateZone(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         default = alicloud.get_regions(current=True)
-        example = alicloud.vpc.Network("example",
-            vpc_name="tf_example",
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
             cidr_block="172.17.3.0/24")
-        example_instance = alicloud.cen.Instance("example",
-            cen_instance_name="tf_example",
-            description="an example for cen")
-        example_instance_attachment = alicloud.cen.InstanceAttachment("example",
-            instance_id=example_instance.id,
-            child_instance_id=example.id,
+        default_instance = alicloud.cen.Instance("default",
+            cen_instance_name=name,
+            description=name)
+        default_instance_attachment = alicloud.cen.InstanceAttachment("default",
+            instance_id=default_instance.id,
+            child_instance_id=default_network.id,
             child_instance_type="VPC",
             child_instance_region_id=default.regions[0].id)
         default_private_zone = alicloud.cen.PrivateZone("default",
+            cen_id=default_instance_attachment.instance_id,
             access_region_id=default.regions[0].id,
-            cen_id=example_instance_attachment.instance_id,
-            host_region_id=default.regions[0].id,
-            host_vpc_id=example.id)
+            host_vpc_id=default_network.id,
+            host_region_id=default.regions[0].id)
         ```
 
         ## Import
 
-        CEN Private Zone can be imported using the id, e.g.
+        Cloud Enterprise Network (CEN) Private Zone can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cen/privateZone:PrivateZone example cen-abc123456:cn-hangzhou
+        $ pulumi import alicloud:cen/privateZone:PrivateZone example <cen_id>:<access_region_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -356,13 +360,13 @@ class PrivateZone(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_region_id: The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
+        :param pulumi.Input[str] access_region_id: The ID of the region where PrivateZone is accessed. This region refers to the region in which PrivateZone is accessed by clients.
         :param pulumi.Input[str] cen_id: The ID of the CEN instance.
-        :param pulumi.Input[str] host_region_id: The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
-        :param pulumi.Input[str] host_vpc_id: The VPC that belongs to the service region.
+        :param pulumi.Input[str] host_region_id: The ID of the region where PrivateZone is deployed.
                
-               ->**NOTE:** The "cen.PrivateZone" resource depends on the related "cen.InstanceAttachment" resource.
-        :param pulumi.Input[str] status: The status of the PrivateZone service. Valid values: ["Creating", "Active", "Deleting"].
+               ->**NOTE:** The resource `cen.PrivateZone` depends on the resource `cen.InstanceAttachment`.
+        :param pulumi.Input[str] host_vpc_id: The ID of the VPC that is associated with PrivateZone.
+        :param pulumi.Input[str] status: The status of the Private Zone.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -379,7 +383,7 @@ class PrivateZone(pulumi.CustomResource):
     @pulumi.getter(name="accessRegionId")
     def access_region_id(self) -> pulumi.Output[str]:
         """
-        The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
+        The ID of the region where PrivateZone is accessed. This region refers to the region in which PrivateZone is accessed by clients.
         """
         return pulumi.get(self, "access_region_id")
 
@@ -395,7 +399,9 @@ class PrivateZone(pulumi.CustomResource):
     @pulumi.getter(name="hostRegionId")
     def host_region_id(self) -> pulumi.Output[str]:
         """
-        The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
+        The ID of the region where PrivateZone is deployed.
+
+        ->**NOTE:** The resource `cen.PrivateZone` depends on the resource `cen.InstanceAttachment`.
         """
         return pulumi.get(self, "host_region_id")
 
@@ -403,9 +409,7 @@ class PrivateZone(pulumi.CustomResource):
     @pulumi.getter(name="hostVpcId")
     def host_vpc_id(self) -> pulumi.Output[str]:
         """
-        The VPC that belongs to the service region.
-
-        ->**NOTE:** The "cen.PrivateZone" resource depends on the related "cen.InstanceAttachment" resource.
+        The ID of the VPC that is associated with PrivateZone.
         """
         return pulumi.get(self, "host_vpc_id")
 
@@ -413,7 +417,7 @@ class PrivateZone(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the PrivateZone service. Valid values: ["Creating", "Active", "Deleting"].
+        The status of the Private Zone.
         """
         return pulumi.get(self, "status")
 

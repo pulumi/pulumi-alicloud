@@ -47,6 +47,8 @@ __all__ = [
     'EciScalingConfigurationVolumeArgsDict',
     'EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs',
     'EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgsDict',
+    'ScalingConfigurationCustomPriorityArgs',
+    'ScalingConfigurationCustomPriorityArgsDict',
     'ScalingConfigurationDataDiskArgs',
     'ScalingConfigurationDataDiskArgsDict',
     'ScalingConfigurationInstancePatternInfoArgs',
@@ -2388,6 +2390,58 @@ class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs:
     @path.setter
     def path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path", value)
+
+
+if not MYPY:
+    class ScalingConfigurationCustomPriorityArgsDict(TypedDict):
+        instance_type: NotRequired[pulumi.Input[str]]
+        """
+        This parameter takes effect only if you set Scaling Policy to Priority Policy and the instance type specified by CustomPriorities.N.InstanceType is contained in the scaling configuration.
+        """
+        vswitch_id: NotRequired[pulumi.Input[str]]
+        """
+        This parameter takes effect only if you set Scaling Policy to Priority Policy and the vSwitch specified by CustomPriorities.N.VswitchId is included in the vSwitch list of your scaling group.
+        """
+elif False:
+    ScalingConfigurationCustomPriorityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ScalingConfigurationCustomPriorityArgs:
+    def __init__(__self__, *,
+                 instance_type: Optional[pulumi.Input[str]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] instance_type: This parameter takes effect only if you set Scaling Policy to Priority Policy and the instance type specified by CustomPriorities.N.InstanceType is contained in the scaling configuration.
+        :param pulumi.Input[str] vswitch_id: This parameter takes effect only if you set Scaling Policy to Priority Policy and the vSwitch specified by CustomPriorities.N.VswitchId is included in the vSwitch list of your scaling group.
+        """
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        This parameter takes effect only if you set Scaling Policy to Priority Policy and the instance type specified by CustomPriorities.N.InstanceType is contained in the scaling configuration.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @instance_type.setter
+    def instance_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_type", value)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        This parameter takes effect only if you set Scaling Policy to Priority Policy and the vSwitch specified by CustomPriorities.N.VswitchId is included in the vSwitch list of your scaling group.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vswitch_id", value)
 
 
 if not MYPY:

@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *             .ruleName("contains-tag")
  *             .inputParameters(Map.ofEntries(
  *                 Map.entry("key1", "value1"),
- *                 Map.entry("key2", "key2")
+ *                 Map.entry("key2", "value2")
  *             ))
  *             .build());
  * 

@@ -7,14 +7,19 @@ import * as utilities from "../utilities";
 /**
  * Provides a OOS Template resource. For information about Alicloud OOS Template and how to use it, see [What is Resource Alicloud OOS Template](https://www.alibabacloud.com/help/doc-detail/120761.htm).
  *
- * > **NOTE:** Available in 1.92.0+.
+ * > **NOTE:** Available since v1.92.0.
  *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
+ * const _default = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
  * const example = new alicloud.oos.Template("example", {
  *     content: `  {
  *     "FormatVersion": "OOS-2019-06-01",
@@ -39,8 +44,8 @@ import * as utilities from "../utilities";
  *       }]
  *   }
  * `,
- *     templateName: "test-name",
- *     versionName: "test",
+ *     templateName: `tf-example-name-${_default.result}`,
+ *     versionName: "example",
  *     tags: {
  *         Created: "TF",
  *         For: "acceptance Test",

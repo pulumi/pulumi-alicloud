@@ -67,6 +67,17 @@ import * as utilities from "../utilities";
  *         notifyStartTime: "10:00",
  *         notifyEndTime: "23:00",
  *     }],
+ *     notifyTemplates: [{
+ *         emailTitle: "example_email_title",
+ *         emailContent: "example_email_content",
+ *         emailRecoverTitle: "example_email_recover_title",
+ *         emailRecoverContent: "example_email_recover_content",
+ *         smsContent: "example_sms_content",
+ *         smsRecoverContent: "example_sms_recover_content",
+ *         ttsContent: "example_tts_content",
+ *         ttsRecoverContent: "example_tts_recover_content",
+ *         robotContent: "example_robot_content",
+ *     }],
  * });
  * ```
  *
@@ -131,6 +142,10 @@ export class DispatchRule extends pulumi.CustomResource {
      */
     public readonly notifyRules!: pulumi.Output<outputs.arms.DispatchRuleNotifyRule[]>;
     /**
+     * Sets the notification template. See `notifyTemplate` below.
+     */
+    public readonly notifyTemplates!: pulumi.Output<outputs.arms.DispatchRuleNotifyTemplate[] | undefined>;
+    /**
      * The resource status of Alert Dispatch Rule.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
@@ -154,6 +169,7 @@ export class DispatchRule extends pulumi.CustomResource {
             resourceInputs["isRecover"] = state ? state.isRecover : undefined;
             resourceInputs["labelMatchExpressionGrids"] = state ? state.labelMatchExpressionGrids : undefined;
             resourceInputs["notifyRules"] = state ? state.notifyRules : undefined;
+            resourceInputs["notifyTemplates"] = state ? state.notifyTemplates : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as DispatchRuleArgs | undefined;
@@ -175,6 +191,7 @@ export class DispatchRule extends pulumi.CustomResource {
             resourceInputs["isRecover"] = args ? args.isRecover : undefined;
             resourceInputs["labelMatchExpressionGrids"] = args ? args.labelMatchExpressionGrids : undefined;
             resourceInputs["notifyRules"] = args ? args.notifyRules : undefined;
+            resourceInputs["notifyTemplates"] = args ? args.notifyTemplates : undefined;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -211,6 +228,10 @@ export interface DispatchRuleState {
      */
     notifyRules?: pulumi.Input<pulumi.Input<inputs.arms.DispatchRuleNotifyRule>[]>;
     /**
+     * Sets the notification template. See `notifyTemplate` below.
+     */
+    notifyTemplates?: pulumi.Input<pulumi.Input<inputs.arms.DispatchRuleNotifyTemplate>[]>;
+    /**
      * The resource status of Alert Dispatch Rule.
      */
     status?: pulumi.Input<string>;
@@ -244,4 +265,8 @@ export interface DispatchRuleArgs {
      * Sets the notification rule. See `notifyRules` below. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
      */
     notifyRules: pulumi.Input<pulumi.Input<inputs.arms.DispatchRuleNotifyRule>[]>;
+    /**
+     * Sets the notification template. See `notifyTemplate` below.
+     */
+    notifyTemplates?: pulumi.Input<pulumi.Input<inputs.arms.DispatchRuleNotifyTemplate>[]>;
 }

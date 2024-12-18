@@ -6,6 +6,7 @@ package com.pulumi.alicloud.arms.outputs;
 import com.pulumi.alicloud.arms.outputs.GetDispatchRulesRuleGroupRule;
 import com.pulumi.alicloud.arms.outputs.GetDispatchRulesRuleLabelMatchExpressionGrid;
 import com.pulumi.alicloud.arms.outputs.GetDispatchRulesRuleNotifyRule;
+import com.pulumi.alicloud.arms.outputs.GetDispatchRulesRuleNotifyTemplate;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -24,11 +25,6 @@ public final class GetDispatchRulesRule {
      * 
      */
     private String dispatchRuleName;
-    /**
-     * @return The type of the dispatch rule.
-     * 
-     */
-    private String dispatchType;
     /**
      * @return Sets the event group.
      * 
@@ -50,6 +46,11 @@ public final class GetDispatchRulesRule {
      */
     private List<GetDispatchRulesRuleNotifyRule> notifyRules;
     /**
+     * @return (Available since v1.238.0) The notification method.
+     * 
+     */
+    private List<GetDispatchRulesRuleNotifyTemplate> notifyTemplates;
+    /**
      * @return The resource status of Alert Dispatch Rule.
      * 
      */
@@ -69,13 +70,6 @@ public final class GetDispatchRulesRule {
      */
     public String dispatchRuleName() {
         return this.dispatchRuleName;
-    }
-    /**
-     * @return The type of the dispatch rule.
-     * 
-     */
-    public String dispatchType() {
-        return this.dispatchType;
     }
     /**
      * @return Sets the event group.
@@ -106,6 +100,13 @@ public final class GetDispatchRulesRule {
         return this.notifyRules;
     }
     /**
+     * @return (Available since v1.238.0) The notification method.
+     * 
+     */
+    public List<GetDispatchRulesRuleNotifyTemplate> notifyTemplates() {
+        return this.notifyTemplates;
+    }
+    /**
      * @return The resource status of Alert Dispatch Rule.
      * 
      */
@@ -124,22 +125,22 @@ public final class GetDispatchRulesRule {
     public static final class Builder {
         private String dispatchRuleId;
         private String dispatchRuleName;
-        private String dispatchType;
         private List<GetDispatchRulesRuleGroupRule> groupRules;
         private String id;
         private List<GetDispatchRulesRuleLabelMatchExpressionGrid> labelMatchExpressionGrids;
         private List<GetDispatchRulesRuleNotifyRule> notifyRules;
+        private List<GetDispatchRulesRuleNotifyTemplate> notifyTemplates;
         private String status;
         public Builder() {}
         public Builder(GetDispatchRulesRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dispatchRuleId = defaults.dispatchRuleId;
     	      this.dispatchRuleName = defaults.dispatchRuleName;
-    	      this.dispatchType = defaults.dispatchType;
     	      this.groupRules = defaults.groupRules;
     	      this.id = defaults.id;
     	      this.labelMatchExpressionGrids = defaults.labelMatchExpressionGrids;
     	      this.notifyRules = defaults.notifyRules;
+    	      this.notifyTemplates = defaults.notifyTemplates;
     	      this.status = defaults.status;
         }
 
@@ -157,14 +158,6 @@ public final class GetDispatchRulesRule {
               throw new MissingRequiredPropertyException("GetDispatchRulesRule", "dispatchRuleName");
             }
             this.dispatchRuleName = dispatchRuleName;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder dispatchType(String dispatchType) {
-            if (dispatchType == null) {
-              throw new MissingRequiredPropertyException("GetDispatchRulesRule", "dispatchType");
-            }
-            this.dispatchType = dispatchType;
             return this;
         }
         @CustomType.Setter
@@ -209,6 +202,17 @@ public final class GetDispatchRulesRule {
             return notifyRules(List.of(notifyRules));
         }
         @CustomType.Setter
+        public Builder notifyTemplates(List<GetDispatchRulesRuleNotifyTemplate> notifyTemplates) {
+            if (notifyTemplates == null) {
+              throw new MissingRequiredPropertyException("GetDispatchRulesRule", "notifyTemplates");
+            }
+            this.notifyTemplates = notifyTemplates;
+            return this;
+        }
+        public Builder notifyTemplates(GetDispatchRulesRuleNotifyTemplate... notifyTemplates) {
+            return notifyTemplates(List.of(notifyTemplates));
+        }
+        @CustomType.Setter
         public Builder status(String status) {
             if (status == null) {
               throw new MissingRequiredPropertyException("GetDispatchRulesRule", "status");
@@ -220,11 +224,11 @@ public final class GetDispatchRulesRule {
             final var _resultValue = new GetDispatchRulesRule();
             _resultValue.dispatchRuleId = dispatchRuleId;
             _resultValue.dispatchRuleName = dispatchRuleName;
-            _resultValue.dispatchType = dispatchType;
             _resultValue.groupRules = groupRules;
             _resultValue.id = id;
             _resultValue.labelMatchExpressionGrids = labelMatchExpressionGrids;
             _resultValue.notifyRules = notifyRules;
+            _resultValue.notifyTemplates = notifyTemplates;
             _resultValue.status = status;
             return _resultValue;
         }

@@ -71,11 +71,17 @@ class GetOrganizationsResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Organization names.
+        """
         return pulumi.get(self, "names")
 
     @property
     @pulumi.getter
     def organizations(self) -> Sequence['outputs.GetOrganizationsOrganizationResult']:
+        """
+        A list of Rdc Organizations. Each element contains the following attributes:
+        """
         return pulumi.get(self, "organizations")
 
     @property
@@ -112,7 +118,9 @@ def get_organizations(ids: Optional[Sequence[str]] = None,
     """
     This data source provides the Rdc Organizations of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.137.0+.
+    > **NOTE:** Available since v1.137.0.
+
+    > **DEPRECATED:** This data source has been deprecated from version `1.238.0`.
 
     ## Example Usage
 
@@ -165,7 +173,9 @@ def get_organizations_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     """
     This data source provides the Rdc Organizations of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.137.0+.
+    > **NOTE:** Available since v1.137.0.
+
+    > **DEPRECATED:** This data source has been deprecated from version `1.238.0`.
 
     ## Example Usage
 

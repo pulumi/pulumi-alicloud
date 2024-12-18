@@ -243,7 +243,7 @@ class TransitRouterMulticastDomainPeerMember(pulumi.CustomResource):
         default_transit_router_multicast_domain_peer_member = alicloud.cen.TransitRouterMulticastDomainPeerMember("default",
             transit_router_multicast_domain_id=default_transit_router_multicast_domain.id,
             peer_transit_router_multicast_domain_id=peer_transit_router_multicast_domain.id,
-            group_ip_address="224.0.0.1")
+            group_ip_address="224.1.0.0")
         ```
 
         ## Import
@@ -321,7 +321,7 @@ class TransitRouterMulticastDomainPeerMember(pulumi.CustomResource):
         default_transit_router_multicast_domain_peer_member = alicloud.cen.TransitRouterMulticastDomainPeerMember("default",
             transit_router_multicast_domain_id=default_transit_router_multicast_domain.id,
             peer_transit_router_multicast_domain_id=peer_transit_router_multicast_domain.id,
-            group_ip_address="224.0.0.1")
+            group_ip_address="224.1.0.0")
         ```
 
         ## Import

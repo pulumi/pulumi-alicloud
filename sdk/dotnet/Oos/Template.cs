@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Oos
     /// <summary>
     /// Provides a OOS Template resource. For information about Alicloud OOS Template and how to use it, see [What is Resource Alicloud OOS Template](https://www.alibabacloud.com/help/doc-detail/120761.htm).
     /// 
-    /// &gt; **NOTE:** Available in 1.92.0+.
+    /// &gt; **NOTE:** Available since v1.92.0.
     /// 
     /// ## Example Usage
     /// 
@@ -21,9 +21,16 @@ namespace Pulumi.AliCloud.Oos
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var @default = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
     ///     var example = new AliCloud.Oos.Template("example", new()
     ///     {
     ///         Content = @"  {
@@ -49,8 +56,8 @@ namespace Pulumi.AliCloud.Oos
     ///       }]
     ///   }
     /// ",
-    ///         TemplateName = "test-name",
-    ///         VersionName = "test",
+    ///         TemplateName = $"tf-example-name-{@default.Result}",
+    ///         VersionName = "example",
     ///         Tags = 
     ///         {
     ///             { "Created", "TF" },

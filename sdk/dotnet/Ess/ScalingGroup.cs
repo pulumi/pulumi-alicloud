@@ -332,6 +332,12 @@ namespace Pulumi.AliCloud.Ess
         public Output<bool> SpotInstanceRemedy { get; private set; } = null!;
 
         /// <summary>
+        /// The period of time required by the ECS instance to enter the Stopped state. Unit: seconds. Valid values: 30 to 240.
+        /// </summary>
+        [Output("stopInstanceTimeout")]
+        public Output<int?> StopInstanceTimeout { get; private set; } = null!;
+
+        /// <summary>
         /// A mapping of tags to assign to the resource.
         /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -632,6 +638,12 @@ namespace Pulumi.AliCloud.Ess
         [Input("spotInstanceRemedy")]
         public Input<bool>? SpotInstanceRemedy { get; set; }
 
+        /// <summary>
+        /// The period of time required by the ECS instance to enter the Stopped state. Unit: seconds. Valid values: 30 to 240.
+        /// </summary>
+        [Input("stopInstanceTimeout")]
+        public Input<int>? StopInstanceTimeout { get; set; }
+
         [Input("tags")]
         private InputMap<string>? _tags;
 
@@ -906,6 +918,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("spotInstanceRemedy")]
         public Input<bool>? SpotInstanceRemedy { get; set; }
+
+        /// <summary>
+        /// The period of time required by the ECS instance to enter the Stopped state. Unit: seconds. Valid values: 30 to 240.
+        /// </summary>
+        [Input("stopInstanceTimeout")]
+        public Input<int>? StopInstanceTimeout { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;

@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.203.0.
  *
- * > **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsDisk from version 1.214.0.
+ * > **DEPRECATED:** This data source has been renamed to alicloud.arms.Prometheus from version 1.214.0.
  *
  * ## Example Usage
  *
@@ -127,7 +127,7 @@ export interface GetPrometheisResult {
  *
  * > **NOTE:** Available since v1.203.0.
  *
- * > **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsDisk from version 1.214.0.
+ * > **DEPRECATED:** This data source has been renamed to alicloud.arms.Prometheus from version 1.214.0.
  *
  * ## Example Usage
  *

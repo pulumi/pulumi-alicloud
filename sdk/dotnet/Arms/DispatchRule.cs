@@ -109,6 +109,21 @@ namespace Pulumi.AliCloud.Arms
     ///                 NotifyEndTime = "23:00",
     ///             },
     ///         },
+    ///         NotifyTemplates = new[]
+    ///         {
+    ///             new AliCloud.Arms.Inputs.DispatchRuleNotifyTemplateArgs
+    ///             {
+    ///                 EmailTitle = "example_email_title",
+    ///                 EmailContent = "example_email_content",
+    ///                 EmailRecoverTitle = "example_email_recover_title",
+    ///                 EmailRecoverContent = "example_email_recover_content",
+    ///                 SmsContent = "example_sms_content",
+    ///                 SmsRecoverContent = "example_sms_recover_content",
+    ///                 TtsContent = "example_tts_content",
+    ///                 TtsRecoverContent = "example_tts_recover_content",
+    ///                 RobotContent = "example_robot_content",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -160,6 +175,12 @@ namespace Pulumi.AliCloud.Arms
         /// </summary>
         [Output("notifyRules")]
         public Output<ImmutableArray<Outputs.DispatchRuleNotifyRule>> NotifyRules { get; private set; } = null!;
+
+        /// <summary>
+        /// Sets the notification template. See `notify_template` below.
+        /// </summary>
+        [Output("notifyTemplates")]
+        public Output<ImmutableArray<Outputs.DispatchRuleNotifyTemplate>> NotifyTemplates { get; private set; } = null!;
 
         /// <summary>
         /// The resource status of Alert Dispatch Rule.
@@ -267,6 +288,18 @@ namespace Pulumi.AliCloud.Arms
             set => _notifyRules = value;
         }
 
+        [Input("notifyTemplates")]
+        private InputList<Inputs.DispatchRuleNotifyTemplateArgs>? _notifyTemplates;
+
+        /// <summary>
+        /// Sets the notification template. See `notify_template` below.
+        /// </summary>
+        public InputList<Inputs.DispatchRuleNotifyTemplateArgs> NotifyTemplates
+        {
+            get => _notifyTemplates ?? (_notifyTemplates = new InputList<Inputs.DispatchRuleNotifyTemplateArgs>());
+            set => _notifyTemplates = value;
+        }
+
         public DispatchRuleArgs()
         {
         }
@@ -327,6 +360,18 @@ namespace Pulumi.AliCloud.Arms
         {
             get => _notifyRules ?? (_notifyRules = new InputList<Inputs.DispatchRuleNotifyRuleGetArgs>());
             set => _notifyRules = value;
+        }
+
+        [Input("notifyTemplates")]
+        private InputList<Inputs.DispatchRuleNotifyTemplateGetArgs>? _notifyTemplates;
+
+        /// <summary>
+        /// Sets the notification template. See `notify_template` below.
+        /// </summary>
+        public InputList<Inputs.DispatchRuleNotifyTemplateGetArgs> NotifyTemplates
+        {
+            get => _notifyTemplates ?? (_notifyTemplates = new InputList<Inputs.DispatchRuleNotifyTemplateGetArgs>());
+            set => _notifyTemplates = value;
         }
 
         /// <summary>

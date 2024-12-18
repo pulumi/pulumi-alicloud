@@ -529,15 +529,19 @@ class Execution(pulumi.CustomResource):
         """
         Provides a OOS Execution resource. For information about Alicloud OOS Execution and how to use it, see [What is Resource Alicloud OOS Execution](https://www.alibabacloud.com/help/doc-detail/120771.htm).
 
-        > **NOTE:** Available in 1.93.0+.
+        > **NOTE:** Available since v1.93.0.
 
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        default = alicloud.oos.Template("default",
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_template = alicloud.oos.Template("default",
             content=\"\"\"  {
             "FormatVersion": "OOS-2019-06-01",
             "Description": "Update Describe instances of given status",
@@ -561,14 +565,14 @@ class Execution(pulumi.CustomResource):
               }]
           }
         \"\"\",
-            template_name="test-name",
-            version_name="test",
+            template_name=f"tf-example-name-{default['result']}",
+            version_name="example",
             tags={
                 "Created": "TF",
                 "For": "acceptance Test",
             })
         example = alicloud.oos.Execution("example",
-            template_name=default.template_name,
+            template_name=default_template.template_name,
             description="From TF Test",
             parameters="\\x09\\x09\\x09\\x09{\\"Status\\":\\"Running\\"}\\n")
         ```
@@ -602,15 +606,19 @@ class Execution(pulumi.CustomResource):
         """
         Provides a OOS Execution resource. For information about Alicloud OOS Execution and how to use it, see [What is Resource Alicloud OOS Execution](https://www.alibabacloud.com/help/doc-detail/120771.htm).
 
-        > **NOTE:** Available in 1.93.0+.
+        > **NOTE:** Available since v1.93.0.
 
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        default = alicloud.oos.Template("default",
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_template = alicloud.oos.Template("default",
             content=\"\"\"  {
             "FormatVersion": "OOS-2019-06-01",
             "Description": "Update Describe instances of given status",
@@ -634,14 +642,14 @@ class Execution(pulumi.CustomResource):
               }]
           }
         \"\"\",
-            template_name="test-name",
-            version_name="test",
+            template_name=f"tf-example-name-{default['result']}",
+            version_name="example",
             tags={
                 "Created": "TF",
                 "For": "acceptance Test",
             })
         example = alicloud.oos.Execution("example",
-            template_name=default.template_name,
+            template_name=default_template.template_name,
             description="From TF Test",
             parameters="\\x09\\x09\\x09\\x09{\\"Status\\":\\"Running\\"}\\n")
         ```

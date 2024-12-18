@@ -24,6 +24,7 @@ class ScalingConfigurationArgs:
                  scaling_group_id: pulumi.Input[str],
                  active: Optional[pulumi.Input[bool]] = None,
                  credit_specification: Optional[pulumi.Input[str]] = None,
+                 custom_priorities: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationCustomPriorityArgs']]]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationDataDiskArgs']]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
@@ -78,6 +79,7 @@ class ScalingConfigurationArgs:
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a scaling configuration.
         :param pulumi.Input[bool] active: Whether active current scaling configuration in the specified scaling group. Default to `false`.
         :param pulumi.Input[str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+        :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationCustomPriorityArgs']]] custom_priorities: You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `custom_priorities` below for details.
         :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationDataDiskArgs']]] data_disks: DataDisk mappings to attach to ecs instance. See `data_disk` below for details.
         :param pulumi.Input[bool] deletion_protection: Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
         :param pulumi.Input[bool] enable: Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
@@ -149,6 +151,8 @@ class ScalingConfigurationArgs:
             pulumi.set(__self__, "active", active)
         if credit_specification is not None:
             pulumi.set(__self__, "credit_specification", credit_specification)
+        if custom_priorities is not None:
+            pulumi.set(__self__, "custom_priorities", custom_priorities)
         if data_disks is not None:
             pulumi.set(__self__, "data_disks", data_disks)
         if deletion_protection is not None:
@@ -289,6 +293,18 @@ class ScalingConfigurationArgs:
     @credit_specification.setter
     def credit_specification(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "credit_specification", value)
+
+    @property
+    @pulumi.getter(name="customPriorities")
+    def custom_priorities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationCustomPriorityArgs']]]]:
+        """
+        You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `custom_priorities` below for details.
+        """
+        return pulumi.get(self, "custom_priorities")
+
+    @custom_priorities.setter
+    def custom_priorities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationCustomPriorityArgs']]]]):
+        pulumi.set(self, "custom_priorities", value)
 
     @property
     @pulumi.getter(name="dataDisks")
@@ -902,6 +918,7 @@ class _ScalingConfigurationState:
     def __init__(__self__, *,
                  active: Optional[pulumi.Input[bool]] = None,
                  credit_specification: Optional[pulumi.Input[str]] = None,
+                 custom_priorities: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationCustomPriorityArgs']]]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationDataDiskArgs']]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
@@ -956,6 +973,7 @@ class _ScalingConfigurationState:
         Input properties used for looking up and filtering ScalingConfiguration resources.
         :param pulumi.Input[bool] active: Whether active current scaling configuration in the specified scaling group. Default to `false`.
         :param pulumi.Input[str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+        :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationCustomPriorityArgs']]] custom_priorities: You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `custom_priorities` below for details.
         :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationDataDiskArgs']]] data_disks: DataDisk mappings to attach to ecs instance. See `data_disk` below for details.
         :param pulumi.Input[bool] deletion_protection: Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
         :param pulumi.Input[bool] enable: Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
@@ -1027,6 +1045,8 @@ class _ScalingConfigurationState:
             pulumi.set(__self__, "active", active)
         if credit_specification is not None:
             pulumi.set(__self__, "credit_specification", credit_specification)
+        if custom_priorities is not None:
+            pulumi.set(__self__, "custom_priorities", custom_priorities)
         if data_disks is not None:
             pulumi.set(__self__, "data_disks", data_disks)
         if deletion_protection is not None:
@@ -1157,6 +1177,18 @@ class _ScalingConfigurationState:
     @credit_specification.setter
     def credit_specification(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "credit_specification", value)
+
+    @property
+    @pulumi.getter(name="customPriorities")
+    def custom_priorities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationCustomPriorityArgs']]]]:
+        """
+        You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `custom_priorities` below for details.
+        """
+        return pulumi.get(self, "custom_priorities")
+
+    @custom_priorities.setter
+    def custom_priorities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationCustomPriorityArgs']]]]):
+        pulumi.set(self, "custom_priorities", value)
 
     @property
     @pulumi.getter(name="dataDisks")
@@ -1784,6 +1816,7 @@ class ScalingConfiguration(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  active: Optional[pulumi.Input[bool]] = None,
                  credit_specification: Optional[pulumi.Input[str]] = None,
+                 custom_priorities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationCustomPriorityArgs', 'ScalingConfigurationCustomPriorityArgsDict']]]]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationDataDiskArgs', 'ScalingConfigurationDataDiskArgsDict']]]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
@@ -1920,6 +1953,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] active: Whether active current scaling configuration in the specified scaling group. Default to `false`.
         :param pulumi.Input[str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationCustomPriorityArgs', 'ScalingConfigurationCustomPriorityArgsDict']]]] custom_priorities: You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `custom_priorities` below for details.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationDataDiskArgs', 'ScalingConfigurationDataDiskArgsDict']]]] data_disks: DataDisk mappings to attach to ecs instance. See `data_disk` below for details.
         :param pulumi.Input[bool] deletion_protection: Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
         :param pulumi.Input[bool] enable: Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
@@ -2091,6 +2125,7 @@ class ScalingConfiguration(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  active: Optional[pulumi.Input[bool]] = None,
                  credit_specification: Optional[pulumi.Input[str]] = None,
+                 custom_priorities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationCustomPriorityArgs', 'ScalingConfigurationCustomPriorityArgsDict']]]]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationDataDiskArgs', 'ScalingConfigurationDataDiskArgsDict']]]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
@@ -2152,6 +2187,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
             __props__.__dict__["active"] = active
             __props__.__dict__["credit_specification"] = credit_specification
+            __props__.__dict__["custom_priorities"] = custom_priorities
             __props__.__dict__["data_disks"] = data_disks
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["enable"] = enable
@@ -2216,6 +2252,7 @@ class ScalingConfiguration(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             active: Optional[pulumi.Input[bool]] = None,
             credit_specification: Optional[pulumi.Input[str]] = None,
+            custom_priorities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationCustomPriorityArgs', 'ScalingConfigurationCustomPriorityArgsDict']]]]] = None,
             data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationDataDiskArgs', 'ScalingConfigurationDataDiskArgsDict']]]]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             enable: Optional[pulumi.Input[bool]] = None,
@@ -2275,6 +2312,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] active: Whether active current scaling configuration in the specified scaling group. Default to `false`.
         :param pulumi.Input[str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationCustomPriorityArgs', 'ScalingConfigurationCustomPriorityArgsDict']]]] custom_priorities: You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `custom_priorities` below for details.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationDataDiskArgs', 'ScalingConfigurationDataDiskArgsDict']]]] data_disks: DataDisk mappings to attach to ecs instance. See `data_disk` below for details.
         :param pulumi.Input[bool] deletion_protection: Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
         :param pulumi.Input[bool] enable: Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
@@ -2348,6 +2386,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
         __props__.__dict__["active"] = active
         __props__.__dict__["credit_specification"] = credit_specification
+        __props__.__dict__["custom_priorities"] = custom_priorities
         __props__.__dict__["data_disks"] = data_disks
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["enable"] = enable
@@ -2415,6 +2454,14 @@ class ScalingConfiguration(pulumi.CustomResource):
         Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         """
         return pulumi.get(self, "credit_specification")
+
+    @property
+    @pulumi.getter(name="customPriorities")
+    def custom_priorities(self) -> pulumi.Output[Optional[Sequence['outputs.ScalingConfigurationCustomPriority']]]:
+        """
+        You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `custom_priorities` below for details.
+        """
+        return pulumi.get(self, "custom_priorities")
 
     @property
     @pulumi.getter(name="dataDisks")

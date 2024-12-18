@@ -185,7 +185,7 @@ def get_dispatch_rules(dispatch_rule_name: Optional[str] = None,
             "notify_start_time": "10:00",
             "notify_end_time": "23:00",
         }])
-    ids = alicloud.arms.get_dispatch_rules()
+    ids = alicloud.arms.get_dispatch_rules_output(ids=[default_dispatch_rule.id])
     pulumi.export("armsDispatchRuleId1", ids.rules[0].id)
     ```
 
@@ -277,7 +277,7 @@ def get_dispatch_rules_output(dispatch_rule_name: Optional[pulumi.Input[Optional
             "notify_start_time": "10:00",
             "notify_end_time": "23:00",
         }])
-    ids = alicloud.arms.get_dispatch_rules()
+    ids = alicloud.arms.get_dispatch_rules_output(ids=[default_dispatch_rule.id])
     pulumi.export("armsDispatchRuleId1", ids.rules[0].id)
     ```
 

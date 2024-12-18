@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Kms.Inputs
         /// VPC owner root user ID.
         /// </summary>
         [Input("vpcOwnerId")]
-        public Input<int>? VpcOwnerId { get; set; }
+        public Input<string>? VpcOwnerId { get; set; }
 
         /// <summary>
         /// vswitch id.

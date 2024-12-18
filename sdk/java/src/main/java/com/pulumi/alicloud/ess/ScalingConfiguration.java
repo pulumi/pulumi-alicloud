@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ess;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.ess.ScalingConfigurationArgs;
 import com.pulumi.alicloud.ess.inputs.ScalingConfigurationState;
+import com.pulumi.alicloud.ess.outputs.ScalingConfigurationCustomPriority;
 import com.pulumi.alicloud.ess.outputs.ScalingConfigurationDataDisk;
 import com.pulumi.alicloud.ess.outputs.ScalingConfigurationInstancePatternInfo;
 import com.pulumi.alicloud.ess.outputs.ScalingConfigurationInstanceTypeOverride;
@@ -194,6 +195,20 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> creditSpecification() {
         return Codegen.optional(this.creditSpecification);
+    }
+    /**
+     * You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `custom_priorities` below for details.
+     * 
+     */
+    @Export(name="customPriorities", refs={List.class,ScalingConfigurationCustomPriority.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ScalingConfigurationCustomPriority>> customPriorities;
+
+    /**
+     * @return You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `custom_priorities` below for details.
+     * 
+     */
+    public Output<Optional<List<ScalingConfigurationCustomPriority>>> customPriorities() {
+        return Codegen.optional(this.customPriorities);
     }
     /**
      * DataDisk mappings to attach to ecs instance. See `data_disk` below for details.

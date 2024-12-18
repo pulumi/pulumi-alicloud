@@ -4,7 +4,6 @@
 package com.pulumi.alicloud.kms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -26,7 +25,7 @@ public final class InstanceBindVpc {
      * @return VPC owner root user ID.
      * 
      */
-    private @Nullable Integer vpcOwnerId;
+    private @Nullable String vpcOwnerId;
     /**
      * @return vswitch id.
      * 
@@ -52,7 +51,7 @@ public final class InstanceBindVpc {
      * @return VPC owner root user ID.
      * 
      */
-    public Optional<Integer> vpcOwnerId() {
+    public Optional<String> vpcOwnerId() {
         return Optional.ofNullable(this.vpcOwnerId);
     }
     /**
@@ -74,7 +73,7 @@ public final class InstanceBindVpc {
     public static final class Builder {
         private @Nullable String regionId;
         private @Nullable String vpcId;
-        private @Nullable Integer vpcOwnerId;
+        private @Nullable String vpcOwnerId;
         private @Nullable String vswitchId;
         public Builder() {}
         public Builder(InstanceBindVpc defaults) {
@@ -98,7 +97,7 @@ public final class InstanceBindVpc {
             return this;
         }
         @CustomType.Setter
-        public Builder vpcOwnerId(@Nullable Integer vpcOwnerId) {
+        public Builder vpcOwnerId(@Nullable String vpcOwnerId) {
 
             this.vpcOwnerId = vpcOwnerId;
             return this;

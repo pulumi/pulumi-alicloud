@@ -60,6 +60,7 @@ from .ha_vip_attachment import *
 from .ha_vipv2 import *
 from .ipam_ipam import *
 from .ipam_ipam_pool import *
+from .ipam_ipam_pool_allocation import *
 from .ipam_ipam_pool_cidr import *
 from .ipam_ipam_scope import *
 from .ipv4_cidr_block import *

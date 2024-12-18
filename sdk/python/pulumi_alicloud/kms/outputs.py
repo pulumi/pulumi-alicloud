@@ -51,12 +51,12 @@ class InstanceBindVpc(dict):
     def __init__(__self__, *,
                  region_id: Optional[str] = None,
                  vpc_id: Optional[str] = None,
-                 vpc_owner_id: Optional[int] = None,
+                 vpc_owner_id: Optional[str] = None,
                  vswitch_id: Optional[str] = None):
         """
         :param str region_id: region id.
         :param str vpc_id: VPC ID.
-        :param int vpc_owner_id: VPC owner root user ID.
+        :param str vpc_owner_id: VPC owner root user ID.
         :param str vswitch_id: vswitch id.
         """
         if region_id is not None:
@@ -86,7 +86,7 @@ class InstanceBindVpc(dict):
 
     @property
     @pulumi.getter(name="vpcOwnerId")
-    def vpc_owner_id(self) -> Optional[int]:
+    def vpc_owner_id(self) -> Optional[str]:
         """
         VPC owner root user ID.
         """

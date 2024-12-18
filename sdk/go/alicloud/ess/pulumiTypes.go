@@ -2429,6 +2429,112 @@ func (o EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutput
 	}).(EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput)
 }
 
+type ScalingConfigurationCustomPriority struct {
+	// This parameter takes effect only if you set Scaling Policy to Priority Policy and the instance type specified by CustomPriorities.N.InstanceType is contained in the scaling configuration.
+	InstanceType *string `pulumi:"instanceType"`
+	// This parameter takes effect only if you set Scaling Policy to Priority Policy and the vSwitch specified by CustomPriorities.N.VswitchId is included in the vSwitch list of your scaling group.
+	VswitchId *string `pulumi:"vswitchId"`
+}
+
+// ScalingConfigurationCustomPriorityInput is an input type that accepts ScalingConfigurationCustomPriorityArgs and ScalingConfigurationCustomPriorityOutput values.
+// You can construct a concrete instance of `ScalingConfigurationCustomPriorityInput` via:
+//
+//	ScalingConfigurationCustomPriorityArgs{...}
+type ScalingConfigurationCustomPriorityInput interface {
+	pulumi.Input
+
+	ToScalingConfigurationCustomPriorityOutput() ScalingConfigurationCustomPriorityOutput
+	ToScalingConfigurationCustomPriorityOutputWithContext(context.Context) ScalingConfigurationCustomPriorityOutput
+}
+
+type ScalingConfigurationCustomPriorityArgs struct {
+	// This parameter takes effect only if you set Scaling Policy to Priority Policy and the instance type specified by CustomPriorities.N.InstanceType is contained in the scaling configuration.
+	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
+	// This parameter takes effect only if you set Scaling Policy to Priority Policy and the vSwitch specified by CustomPriorities.N.VswitchId is included in the vSwitch list of your scaling group.
+	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
+}
+
+func (ScalingConfigurationCustomPriorityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingConfigurationCustomPriority)(nil)).Elem()
+}
+
+func (i ScalingConfigurationCustomPriorityArgs) ToScalingConfigurationCustomPriorityOutput() ScalingConfigurationCustomPriorityOutput {
+	return i.ToScalingConfigurationCustomPriorityOutputWithContext(context.Background())
+}
+
+func (i ScalingConfigurationCustomPriorityArgs) ToScalingConfigurationCustomPriorityOutputWithContext(ctx context.Context) ScalingConfigurationCustomPriorityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigurationCustomPriorityOutput)
+}
+
+// ScalingConfigurationCustomPriorityArrayInput is an input type that accepts ScalingConfigurationCustomPriorityArray and ScalingConfigurationCustomPriorityArrayOutput values.
+// You can construct a concrete instance of `ScalingConfigurationCustomPriorityArrayInput` via:
+//
+//	ScalingConfigurationCustomPriorityArray{ ScalingConfigurationCustomPriorityArgs{...} }
+type ScalingConfigurationCustomPriorityArrayInput interface {
+	pulumi.Input
+
+	ToScalingConfigurationCustomPriorityArrayOutput() ScalingConfigurationCustomPriorityArrayOutput
+	ToScalingConfigurationCustomPriorityArrayOutputWithContext(context.Context) ScalingConfigurationCustomPriorityArrayOutput
+}
+
+type ScalingConfigurationCustomPriorityArray []ScalingConfigurationCustomPriorityInput
+
+func (ScalingConfigurationCustomPriorityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScalingConfigurationCustomPriority)(nil)).Elem()
+}
+
+func (i ScalingConfigurationCustomPriorityArray) ToScalingConfigurationCustomPriorityArrayOutput() ScalingConfigurationCustomPriorityArrayOutput {
+	return i.ToScalingConfigurationCustomPriorityArrayOutputWithContext(context.Background())
+}
+
+func (i ScalingConfigurationCustomPriorityArray) ToScalingConfigurationCustomPriorityArrayOutputWithContext(ctx context.Context) ScalingConfigurationCustomPriorityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigurationCustomPriorityArrayOutput)
+}
+
+type ScalingConfigurationCustomPriorityOutput struct{ *pulumi.OutputState }
+
+func (ScalingConfigurationCustomPriorityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingConfigurationCustomPriority)(nil)).Elem()
+}
+
+func (o ScalingConfigurationCustomPriorityOutput) ToScalingConfigurationCustomPriorityOutput() ScalingConfigurationCustomPriorityOutput {
+	return o
+}
+
+func (o ScalingConfigurationCustomPriorityOutput) ToScalingConfigurationCustomPriorityOutputWithContext(ctx context.Context) ScalingConfigurationCustomPriorityOutput {
+	return o
+}
+
+// This parameter takes effect only if you set Scaling Policy to Priority Policy and the instance type specified by CustomPriorities.N.InstanceType is contained in the scaling configuration.
+func (o ScalingConfigurationCustomPriorityOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScalingConfigurationCustomPriority) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+// This parameter takes effect only if you set Scaling Policy to Priority Policy and the vSwitch specified by CustomPriorities.N.VswitchId is included in the vSwitch list of your scaling group.
+func (o ScalingConfigurationCustomPriorityOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScalingConfigurationCustomPriority) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+type ScalingConfigurationCustomPriorityArrayOutput struct{ *pulumi.OutputState }
+
+func (ScalingConfigurationCustomPriorityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScalingConfigurationCustomPriority)(nil)).Elem()
+}
+
+func (o ScalingConfigurationCustomPriorityArrayOutput) ToScalingConfigurationCustomPriorityArrayOutput() ScalingConfigurationCustomPriorityArrayOutput {
+	return o
+}
+
+func (o ScalingConfigurationCustomPriorityArrayOutput) ToScalingConfigurationCustomPriorityArrayOutputWithContext(ctx context.Context) ScalingConfigurationCustomPriorityArrayOutput {
+	return o
+}
+
+func (o ScalingConfigurationCustomPriorityArrayOutput) Index(i pulumi.IntInput) ScalingConfigurationCustomPriorityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScalingConfigurationCustomPriority {
+		return vs[0].([]ScalingConfigurationCustomPriority)[vs[1].(int)]
+	}).(ScalingConfigurationCustomPriorityOutput)
+}
+
 type ScalingConfigurationDataDisk struct {
 	// The id of auto snapshot policy for data disk.
 	AutoSnapshotPolicyId *string `pulumi:"autoSnapshotPolicyId"`
@@ -5616,6 +5722,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationVolumeArrayInput)(nil)).Elem(), EciScalingConfigurationVolumeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathInput)(nil)).Elem(), EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayInput)(nil)).Elem(), EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationCustomPriorityInput)(nil)).Elem(), ScalingConfigurationCustomPriorityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationCustomPriorityArrayInput)(nil)).Elem(), ScalingConfigurationCustomPriorityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationDataDiskInput)(nil)).Elem(), ScalingConfigurationDataDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationDataDiskArrayInput)(nil)).Elem(), ScalingConfigurationDataDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationInstancePatternInfoInput)(nil)).Elem(), ScalingConfigurationInstancePatternInfoArgs{})
@@ -5688,6 +5796,8 @@ func init() {
 	pulumi.RegisterOutputType(EciScalingConfigurationVolumeArrayOutput{})
 	pulumi.RegisterOutputType(EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput{})
 	pulumi.RegisterOutputType(EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutput{})
+	pulumi.RegisterOutputType(ScalingConfigurationCustomPriorityOutput{})
+	pulumi.RegisterOutputType(ScalingConfigurationCustomPriorityArrayOutput{})
 	pulumi.RegisterOutputType(ScalingConfigurationDataDiskOutput{})
 	pulumi.RegisterOutputType(ScalingConfigurationDataDiskArrayOutput{})
 	pulumi.RegisterOutputType(ScalingConfigurationInstancePatternInfoOutput{})

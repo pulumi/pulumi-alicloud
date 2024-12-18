@@ -5,11 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * This topic describes how to configure PrivateZone access.
- * PrivateZone is a VPC-based resolution and management service for private domain names.
- * After you set a PrivateZone access, the Cloud Connect Network (CCN) and Virtual Border Router (VBR) attached to a CEN instance can access the PrivateZone service through CEN.
+ * Provides a Cloud Enterprise Network (CEN) Private Zone resource.
  *
- * For information about CEN Private Zone and how to use it, see [Manage CEN Private Zone](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-cbn-2017-09-12-routeprivatezoneincentovpc).
+ * For information about Cloud Enterprise Network (CEN) Private Zone and how to use it, see [What is Private Zone](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-cbn-2017-09-12-routeprivatezoneincentovpc).
  *
  * > **NOTE:** Available since v1.83.0.
  *
@@ -21,37 +19,39 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
  * const default = alicloud.getRegions({
  *     current: true,
  * });
- * const example = new alicloud.vpc.Network("example", {
- *     vpcName: "tf_example",
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
  *     cidrBlock: "172.17.3.0/24",
  * });
- * const exampleInstance = new alicloud.cen.Instance("example", {
- *     cenInstanceName: "tf_example",
- *     description: "an example for cen",
+ * const defaultInstance = new alicloud.cen.Instance("default", {
+ *     cenInstanceName: name,
+ *     description: name,
  * });
- * const exampleInstanceAttachment = new alicloud.cen.InstanceAttachment("example", {
- *     instanceId: exampleInstance.id,
- *     childInstanceId: example.id,
+ * const defaultInstanceAttachment = new alicloud.cen.InstanceAttachment("default", {
+ *     instanceId: defaultInstance.id,
+ *     childInstanceId: defaultNetwork.id,
  *     childInstanceType: "VPC",
  *     childInstanceRegionId: _default.then(_default => _default.regions?.[0]?.id),
  * });
  * const defaultPrivateZone = new alicloud.cen.PrivateZone("default", {
+ *     cenId: defaultInstanceAttachment.instanceId,
  *     accessRegionId: _default.then(_default => _default.regions?.[0]?.id),
- *     cenId: exampleInstanceAttachment.instanceId,
+ *     hostVpcId: defaultNetwork.id,
  *     hostRegionId: _default.then(_default => _default.regions?.[0]?.id),
- *     hostVpcId: example.id,
  * });
  * ```
  *
  * ## Import
  *
- * CEN Private Zone can be imported using the id, e.g.
+ * Cloud Enterprise Network (CEN) Private Zone can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:cen/privateZone:PrivateZone example cen-abc123456:cn-hangzhou
+ * $ pulumi import alicloud:cen/privateZone:PrivateZone example <cen_id>:<access_region_id>
  * ```
  */
 export class PrivateZone extends pulumi.CustomResource {
@@ -83,7 +83,7 @@ export class PrivateZone extends pulumi.CustomResource {
     }
 
     /**
-     * The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
+     * The ID of the region where PrivateZone is accessed. This region refers to the region in which PrivateZone is accessed by clients.
      */
     public readonly accessRegionId!: pulumi.Output<string>;
     /**
@@ -91,17 +91,17 @@ export class PrivateZone extends pulumi.CustomResource {
      */
     public readonly cenId!: pulumi.Output<string>;
     /**
-     * The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
+     * The ID of the region where PrivateZone is deployed.
+     *
+     * ->**NOTE:** The resource `alicloud.cen.PrivateZone` depends on the resource `alicloud.cen.InstanceAttachment`.
      */
     public readonly hostRegionId!: pulumi.Output<string>;
     /**
-     * The VPC that belongs to the service region.
-     *
-     * ->**NOTE:** The "alicloud.cen.PrivateZone" resource depends on the related "alicloud.cen.InstanceAttachment" resource.
+     * The ID of the VPC that is associated with PrivateZone.
      */
     public readonly hostVpcId!: pulumi.Output<string>;
     /**
-     * The status of the PrivateZone service. Valid values: ["Creating", "Active", "Deleting"].
+     * The status of the Private Zone.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -153,7 +153,7 @@ export class PrivateZone extends pulumi.CustomResource {
  */
 export interface PrivateZoneState {
     /**
-     * The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
+     * The ID of the region where PrivateZone is accessed. This region refers to the region in which PrivateZone is accessed by clients.
      */
     accessRegionId?: pulumi.Input<string>;
     /**
@@ -161,17 +161,17 @@ export interface PrivateZoneState {
      */
     cenId?: pulumi.Input<string>;
     /**
-     * The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
+     * The ID of the region where PrivateZone is deployed.
+     *
+     * ->**NOTE:** The resource `alicloud.cen.PrivateZone` depends on the resource `alicloud.cen.InstanceAttachment`.
      */
     hostRegionId?: pulumi.Input<string>;
     /**
-     * The VPC that belongs to the service region.
-     *
-     * ->**NOTE:** The "alicloud.cen.PrivateZone" resource depends on the related "alicloud.cen.InstanceAttachment" resource.
+     * The ID of the VPC that is associated with PrivateZone.
      */
     hostVpcId?: pulumi.Input<string>;
     /**
-     * The status of the PrivateZone service. Valid values: ["Creating", "Active", "Deleting"].
+     * The status of the Private Zone.
      */
     status?: pulumi.Input<string>;
 }
@@ -181,7 +181,7 @@ export interface PrivateZoneState {
  */
 export interface PrivateZoneArgs {
     /**
-     * The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
+     * The ID of the region where PrivateZone is accessed. This region refers to the region in which PrivateZone is accessed by clients.
      */
     accessRegionId: pulumi.Input<string>;
     /**
@@ -189,13 +189,13 @@ export interface PrivateZoneArgs {
      */
     cenId: pulumi.Input<string>;
     /**
-     * The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
+     * The ID of the region where PrivateZone is deployed.
+     *
+     * ->**NOTE:** The resource `alicloud.cen.PrivateZone` depends on the resource `alicloud.cen.InstanceAttachment`.
      */
     hostRegionId: pulumi.Input<string>;
     /**
-     * The VPC that belongs to the service region.
-     *
-     * ->**NOTE:** The "alicloud.cen.PrivateZone" resource depends on the related "alicloud.cen.InstanceAttachment" resource.
+     * The ID of the VPC that is associated with PrivateZone.
      */
     hostVpcId: pulumi.Input<string>;
 }

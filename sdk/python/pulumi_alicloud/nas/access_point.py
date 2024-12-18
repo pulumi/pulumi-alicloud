@@ -395,6 +395,7 @@ class AccessPoint(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
@@ -414,9 +415,12 @@ class AccessPoint(pulumi.CustomResource):
             vpc_id=defaultky_vc70.id,
             zone_id=default.zones[0].id,
             cidr_block="172.16.0.0/24")
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
         default_bbc7ev = alicloud.nas.AccessGroup("defaultBbc7ev",
             access_group_type="Vpc",
-            access_group_name=name,
+            access_group_name=f"{name}-{default_integer['result']}",
             file_system_type="standard")
         default_vt_up_dh = alicloud.nas.FileSystem("defaultVtUpDh",
             storage_type="Performance",
@@ -482,6 +486,7 @@ class AccessPoint(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
@@ -501,9 +506,12 @@ class AccessPoint(pulumi.CustomResource):
             vpc_id=defaultky_vc70.id,
             zone_id=default.zones[0].id,
             cidr_block="172.16.0.0/24")
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
         default_bbc7ev = alicloud.nas.AccessGroup("defaultBbc7ev",
             access_group_type="Vpc",
-            access_group_name=name,
+            access_group_name=f"{name}-{default_integer['result']}",
             file_system_type="standard")
         default_vt_up_dh = alicloud.nas.FileSystem("defaultVtUpDh",
             storage_type="Performance",

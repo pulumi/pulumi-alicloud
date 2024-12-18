@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a OOS Execution resource. For information about Alicloud OOS Execution and how to use it, see [What is Resource Alicloud OOS Execution](https://www.alibabacloud.com/help/doc-detail/120771.htm).
  * 
- * &gt; **NOTE:** Available in 1.93.0+.
+ * &gt; **NOTE:** Available since v1.93.0.
  * 
  * ## Example Usage
  * 
@@ -30,6 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.oos.Template;
  * import com.pulumi.alicloud.oos.TemplateArgs;
  * import com.pulumi.alicloud.oos.Execution;
@@ -47,7 +49,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Template("default", TemplateArgs.builder()
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
+ *         var defaultTemplate = new Template("defaultTemplate", TemplateArgs.builder()
  *             .content("""
  *   {
  *     "FormatVersion": "OOS-2019-06-01",
@@ -72,8 +79,8 @@ import javax.annotation.Nullable;
  *       }]
  *   }
  *             """)
- *             .templateName("test-name")
- *             .versionName("test")
+ *             .templateName(String.format("tf-example-name-%s", default_.result()))
+ *             .versionName("example")
  *             .tags(Map.ofEntries(
  *                 Map.entry("Created", "TF"),
  *                 Map.entry("For", "acceptance Test")
@@ -81,7 +88,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new Execution("example", ExecutionArgs.builder()
- *             .templateName(default_.templateName())
+ *             .templateName(defaultTemplate.templateName())
  *             .description("From TF Test")
  *             .parameters("""
  * 				{"Status":"Running"}

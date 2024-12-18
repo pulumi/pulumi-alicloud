@@ -295,9 +295,13 @@ class AccessGroup(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
         foo = alicloud.nas.AccessGroup("foo",
-            access_group_name="terraform-example",
+            access_group_name=f"terraform-example-{default['result']}",
             access_group_type="Vpc",
             description="terraform-example",
             file_system_type="extreme")
@@ -344,9 +348,13 @@ class AccessGroup(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
         foo = alicloud.nas.AccessGroup("foo",
-            access_group_name="terraform-example",
+            access_group_name=f"terraform-example-{default['result']}",
             access_group_type="Vpc",
             description="terraform-example",
             file_system_type="extreme")

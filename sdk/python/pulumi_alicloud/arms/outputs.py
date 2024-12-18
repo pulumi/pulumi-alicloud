@@ -22,6 +22,7 @@ __all__ = [
     'DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression',
     'DispatchRuleNotifyRule',
     'DispatchRuleNotifyRuleNotifyObject',
+    'DispatchRuleNotifyTemplate',
     'PrometheusAlertRuleAnnotation',
     'PrometheusAlertRuleLabel',
     'SyntheticTaskAvailableAssertion',
@@ -49,6 +50,7 @@ __all__ = [
     'GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionResult',
     'GetDispatchRulesRuleNotifyRuleResult',
     'GetDispatchRulesRuleNotifyRuleNotifyObjectResult',
+    'GetDispatchRulesRuleNotifyTemplateResult',
     'GetIntegrationExportersIntegrationExporterResult',
     'GetPrometheisPrometheiResult',
     'GetPrometheusAlertRulesRuleResult',
@@ -409,6 +411,145 @@ class DispatchRuleNotifyRuleNotifyObject(dict):
         The type of the alert contact. Valid values: ARMS_ROBOT: robot. ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
         """
         return pulumi.get(self, "notify_type")
+
+
+@pulumi.output_type
+class DispatchRuleNotifyTemplate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "emailContent":
+            suggest = "email_content"
+        elif key == "emailRecoverContent":
+            suggest = "email_recover_content"
+        elif key == "emailRecoverTitle":
+            suggest = "email_recover_title"
+        elif key == "emailTitle":
+            suggest = "email_title"
+        elif key == "robotContent":
+            suggest = "robot_content"
+        elif key == "smsContent":
+            suggest = "sms_content"
+        elif key == "smsRecoverContent":
+            suggest = "sms_recover_content"
+        elif key == "ttsContent":
+            suggest = "tts_content"
+        elif key == "ttsRecoverContent":
+            suggest = "tts_recover_content"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DispatchRuleNotifyTemplate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DispatchRuleNotifyTemplate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DispatchRuleNotifyTemplate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 email_content: str,
+                 email_recover_content: str,
+                 email_recover_title: str,
+                 email_title: str,
+                 robot_content: str,
+                 sms_content: str,
+                 sms_recover_content: str,
+                 tts_content: str,
+                 tts_recover_content: str):
+        """
+        :param str email_content: The content of the email notification.
+        :param str email_recover_content: The content of the email notification for restored alerts.
+        :param str email_recover_title: The title of the email notification for restored alerts.
+        :param str email_title: The title of the email notification.
+        :param str robot_content: The content of the robot notification.
+        :param str sms_content: The content of the SMS notification.
+        :param str sms_recover_content: The content of the SMS notification for restored alerts.
+        :param str tts_content: The content of the TTS notification.
+        :param str tts_recover_content: The content of the TTS notification for restored alerts.
+        """
+        pulumi.set(__self__, "email_content", email_content)
+        pulumi.set(__self__, "email_recover_content", email_recover_content)
+        pulumi.set(__self__, "email_recover_title", email_recover_title)
+        pulumi.set(__self__, "email_title", email_title)
+        pulumi.set(__self__, "robot_content", robot_content)
+        pulumi.set(__self__, "sms_content", sms_content)
+        pulumi.set(__self__, "sms_recover_content", sms_recover_content)
+        pulumi.set(__self__, "tts_content", tts_content)
+        pulumi.set(__self__, "tts_recover_content", tts_recover_content)
+
+    @property
+    @pulumi.getter(name="emailContent")
+    def email_content(self) -> str:
+        """
+        The content of the email notification.
+        """
+        return pulumi.get(self, "email_content")
+
+    @property
+    @pulumi.getter(name="emailRecoverContent")
+    def email_recover_content(self) -> str:
+        """
+        The content of the email notification for restored alerts.
+        """
+        return pulumi.get(self, "email_recover_content")
+
+    @property
+    @pulumi.getter(name="emailRecoverTitle")
+    def email_recover_title(self) -> str:
+        """
+        The title of the email notification for restored alerts.
+        """
+        return pulumi.get(self, "email_recover_title")
+
+    @property
+    @pulumi.getter(name="emailTitle")
+    def email_title(self) -> str:
+        """
+        The title of the email notification.
+        """
+        return pulumi.get(self, "email_title")
+
+    @property
+    @pulumi.getter(name="robotContent")
+    def robot_content(self) -> str:
+        """
+        The content of the robot notification.
+        """
+        return pulumi.get(self, "robot_content")
+
+    @property
+    @pulumi.getter(name="smsContent")
+    def sms_content(self) -> str:
+        """
+        The content of the SMS notification.
+        """
+        return pulumi.get(self, "sms_content")
+
+    @property
+    @pulumi.getter(name="smsRecoverContent")
+    def sms_recover_content(self) -> str:
+        """
+        The content of the SMS notification for restored alerts.
+        """
+        return pulumi.get(self, "sms_recover_content")
+
+    @property
+    @pulumi.getter(name="ttsContent")
+    def tts_content(self) -> str:
+        """
+        The content of the TTS notification.
+        """
+        return pulumi.get(self, "tts_content")
+
+    @property
+    @pulumi.getter(name="ttsRecoverContent")
+    def tts_recover_content(self) -> str:
+        """
+        The content of the TTS notification for restored alerts.
+        """
+        return pulumi.get(self, "tts_recover_content")
 
 
 @pulumi.output_type
@@ -2446,29 +2587,29 @@ class GetDispatchRulesRuleResult(dict):
     def __init__(__self__, *,
                  dispatch_rule_id: str,
                  dispatch_rule_name: str,
-                 dispatch_type: str,
                  group_rules: Sequence['outputs.GetDispatchRulesRuleGroupRuleResult'],
                  id: str,
                  label_match_expression_grids: Sequence['outputs.GetDispatchRulesRuleLabelMatchExpressionGridResult'],
                  notify_rules: Sequence['outputs.GetDispatchRulesRuleNotifyRuleResult'],
+                 notify_templates: Sequence['outputs.GetDispatchRulesRuleNotifyTemplateResult'],
                  status: str):
         """
         :param str dispatch_rule_id: Dispatch rule ID.
         :param str dispatch_rule_name: The name of the dispatch rule.
-        :param str dispatch_type: The type of the dispatch rule.
         :param Sequence['GetDispatchRulesRuleGroupRuleArgs'] group_rules: Sets the event group.
         :param str id: The ID of the Dispatch Rule.
         :param Sequence['GetDispatchRulesRuleLabelMatchExpressionGridArgs'] label_match_expression_grids: Sets the dispatch rule.
         :param Sequence['GetDispatchRulesRuleNotifyRuleArgs'] notify_rules: Sets the notification rule.
+        :param Sequence['GetDispatchRulesRuleNotifyTemplateArgs'] notify_templates: (Available since v1.238.0) The notification method.
         :param str status: The resource status of Alert Dispatch Rule.
         """
         pulumi.set(__self__, "dispatch_rule_id", dispatch_rule_id)
         pulumi.set(__self__, "dispatch_rule_name", dispatch_rule_name)
-        pulumi.set(__self__, "dispatch_type", dispatch_type)
         pulumi.set(__self__, "group_rules", group_rules)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "label_match_expression_grids", label_match_expression_grids)
         pulumi.set(__self__, "notify_rules", notify_rules)
+        pulumi.set(__self__, "notify_templates", notify_templates)
         pulumi.set(__self__, "status", status)
 
     @property
@@ -2486,14 +2627,6 @@ class GetDispatchRulesRuleResult(dict):
         The name of the dispatch rule.
         """
         return pulumi.get(self, "dispatch_rule_name")
-
-    @property
-    @pulumi.getter(name="dispatchType")
-    def dispatch_type(self) -> str:
-        """
-        The type of the dispatch rule.
-        """
-        return pulumi.get(self, "dispatch_type")
 
     @property
     @pulumi.getter(name="groupRules")
@@ -2526,6 +2659,14 @@ class GetDispatchRulesRuleResult(dict):
         Sets the notification rule.
         """
         return pulumi.get(self, "notify_rules")
+
+    @property
+    @pulumi.getter(name="notifyTemplates")
+    def notify_templates(self) -> Sequence['outputs.GetDispatchRulesRuleNotifyTemplateResult']:
+        """
+        (Available since v1.238.0) The notification method.
+        """
+        return pulumi.get(self, "notify_templates")
 
     @property
     @pulumi.getter
@@ -2752,6 +2893,112 @@ class GetDispatchRulesRuleNotifyRuleNotifyObjectResult(dict):
         The type of the alert contact.
         """
         return pulumi.get(self, "notify_type")
+
+
+@pulumi.output_type
+class GetDispatchRulesRuleNotifyTemplateResult(dict):
+    def __init__(__self__, *,
+                 email_content: str,
+                 email_recover_content: str,
+                 email_recover_title: str,
+                 email_title: str,
+                 robot_content: str,
+                 sms_content: str,
+                 sms_recover_content: str,
+                 tts_content: str,
+                 tts_recover_content: str):
+        """
+        :param str email_content: The content of the email.
+        :param str email_recover_content: The content of the email.
+        :param str email_recover_title: The title of the email.
+        :param str email_title: The title of the email.
+        :param str robot_content: The content of the robot.
+        :param str sms_content: The content of the SMS.
+        :param str sms_recover_content: The content of the SMS.
+        :param str tts_content: The content of the TTS.
+        :param str tts_recover_content: The content of the TTS.
+        """
+        pulumi.set(__self__, "email_content", email_content)
+        pulumi.set(__self__, "email_recover_content", email_recover_content)
+        pulumi.set(__self__, "email_recover_title", email_recover_title)
+        pulumi.set(__self__, "email_title", email_title)
+        pulumi.set(__self__, "robot_content", robot_content)
+        pulumi.set(__self__, "sms_content", sms_content)
+        pulumi.set(__self__, "sms_recover_content", sms_recover_content)
+        pulumi.set(__self__, "tts_content", tts_content)
+        pulumi.set(__self__, "tts_recover_content", tts_recover_content)
+
+    @property
+    @pulumi.getter(name="emailContent")
+    def email_content(self) -> str:
+        """
+        The content of the email.
+        """
+        return pulumi.get(self, "email_content")
+
+    @property
+    @pulumi.getter(name="emailRecoverContent")
+    def email_recover_content(self) -> str:
+        """
+        The content of the email.
+        """
+        return pulumi.get(self, "email_recover_content")
+
+    @property
+    @pulumi.getter(name="emailRecoverTitle")
+    def email_recover_title(self) -> str:
+        """
+        The title of the email.
+        """
+        return pulumi.get(self, "email_recover_title")
+
+    @property
+    @pulumi.getter(name="emailTitle")
+    def email_title(self) -> str:
+        """
+        The title of the email.
+        """
+        return pulumi.get(self, "email_title")
+
+    @property
+    @pulumi.getter(name="robotContent")
+    def robot_content(self) -> str:
+        """
+        The content of the robot.
+        """
+        return pulumi.get(self, "robot_content")
+
+    @property
+    @pulumi.getter(name="smsContent")
+    def sms_content(self) -> str:
+        """
+        The content of the SMS.
+        """
+        return pulumi.get(self, "sms_content")
+
+    @property
+    @pulumi.getter(name="smsRecoverContent")
+    def sms_recover_content(self) -> str:
+        """
+        The content of the SMS.
+        """
+        return pulumi.get(self, "sms_recover_content")
+
+    @property
+    @pulumi.getter(name="ttsContent")
+    def tts_content(self) -> str:
+        """
+        The content of the TTS.
+        """
+        return pulumi.get(self, "tts_content")
+
+    @property
+    @pulumi.getter(name="ttsRecoverContent")
+    def tts_recover_content(self) -> str:
+        """
+        The content of the TTS.
+        """
+        return pulumi.get(self, "tts_recover_content")
 
 
 @pulumi.output_type

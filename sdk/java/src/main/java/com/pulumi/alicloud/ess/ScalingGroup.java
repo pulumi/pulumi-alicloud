@@ -614,6 +614,20 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
         return this.spotInstanceRemedy;
     }
     /**
+     * The period of time required by the ECS instance to enter the Stopped state. Unit: seconds. Valid values: 30 to 240.
+     * 
+     */
+    @Export(name="stopInstanceTimeout", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> stopInstanceTimeout;
+
+    /**
+     * @return The period of time required by the ECS instance to enter the Stopped state. Unit: seconds. Valid values: 30 to 240.
+     * 
+     */
+    public Output<Optional<Integer>> stopInstanceTimeout() {
+        return Codegen.optional(this.stopInstanceTimeout);
+    }
+    /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.

@@ -1195,9 +1195,11 @@ public final class ArmsFunctions {
      *                 .build())
      *             .build());
      * 
-     *         final var ids = ArmsFunctions.getDispatchRules();
+     *         final var ids = ArmsFunctions.getDispatchRules(GetDispatchRulesArgs.builder()
+     *             .ids(defaultDispatchRule.id())
+     *             .build());
      * 
-     *         ctx.export("armsDispatchRuleId1", ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id()));
+     *         ctx.export("armsDispatchRuleId1", ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult).applyValue(ids -> ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id())));
      *     }}{@code
      * }}{@code
      * }
@@ -1297,9 +1299,11 @@ public final class ArmsFunctions {
      *                 .build())
      *             .build());
      * 
-     *         final var ids = ArmsFunctions.getDispatchRules();
+     *         final var ids = ArmsFunctions.getDispatchRules(GetDispatchRulesArgs.builder()
+     *             .ids(defaultDispatchRule.id())
+     *             .build());
      * 
-     *         ctx.export("armsDispatchRuleId1", ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id()));
+     *         ctx.export("armsDispatchRuleId1", ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult).applyValue(ids -> ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id())));
      *     }}{@code
      * }}{@code
      * }
@@ -1399,9 +1403,11 @@ public final class ArmsFunctions {
      *                 .build())
      *             .build());
      * 
-     *         final var ids = ArmsFunctions.getDispatchRules();
+     *         final var ids = ArmsFunctions.getDispatchRules(GetDispatchRulesArgs.builder()
+     *             .ids(defaultDispatchRule.id())
+     *             .build());
      * 
-     *         ctx.export("armsDispatchRuleId1", ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id()));
+     *         ctx.export("armsDispatchRuleId1", ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult).applyValue(ids -> ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id())));
      *     }}{@code
      * }}{@code
      * }
@@ -1501,9 +1507,11 @@ public final class ArmsFunctions {
      *                 .build())
      *             .build());
      * 
-     *         final var ids = ArmsFunctions.getDispatchRules();
+     *         final var ids = ArmsFunctions.getDispatchRules(GetDispatchRulesArgs.builder()
+     *             .ids(defaultDispatchRule.id())
+     *             .build());
      * 
-     *         ctx.export("armsDispatchRuleId1", ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id()));
+     *         ctx.export("armsDispatchRuleId1", ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult).applyValue(ids -> ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id())));
      *     }}{@code
      * }}{@code
      * }
@@ -1603,9 +1611,11 @@ public final class ArmsFunctions {
      *                 .build())
      *             .build());
      * 
-     *         final var ids = ArmsFunctions.getDispatchRules();
+     *         final var ids = ArmsFunctions.getDispatchRules(GetDispatchRulesArgs.builder()
+     *             .ids(defaultDispatchRule.id())
+     *             .build());
      * 
-     *         ctx.export("armsDispatchRuleId1", ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id()));
+     *         ctx.export("armsDispatchRuleId1", ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult).applyValue(ids -> ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id())));
      *     }}{@code
      * }}{@code
      * }
@@ -1705,9 +1715,11 @@ public final class ArmsFunctions {
      *                 .build())
      *             .build());
      * 
-     *         final var ids = ArmsFunctions.getDispatchRules();
+     *         final var ids = ArmsFunctions.getDispatchRules(GetDispatchRulesArgs.builder()
+     *             .ids(defaultDispatchRule.id())
+     *             .build());
      * 
-     *         ctx.export("armsDispatchRuleId1", ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id()));
+     *         ctx.export("armsDispatchRuleId1", ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult).applyValue(ids -> ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id())));
      *     }}{@code
      * }}{@code
      * }
@@ -1807,9 +1819,11 @@ public final class ArmsFunctions {
      *                 .build())
      *             .build());
      * 
-     *         final var ids = ArmsFunctions.getDispatchRules();
+     *         final var ids = ArmsFunctions.getDispatchRules(GetDispatchRulesArgs.builder()
+     *             .ids(defaultDispatchRule.id())
+     *             .build());
      * 
-     *         ctx.export("armsDispatchRuleId1", ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id()));
+     *         ctx.export("armsDispatchRuleId1", ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult).applyValue(ids -> ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id())));
      *     }}{@code
      * }}{@code
      * }
@@ -2070,7 +2084,7 @@ public final class ArmsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.203.0.
      * 
-     * &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsDisk from version 1.214.0.
+     * &gt; **DEPRECATED:** This data source has been renamed to alicloud.arms.Prometheus from version 1.214.0.
      * 
      * ## Example Usage
      * 
@@ -2158,7 +2172,7 @@ public final class ArmsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.203.0.
      * 
-     * &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsDisk from version 1.214.0.
+     * &gt; **DEPRECATED:** This data source has been renamed to alicloud.arms.Prometheus from version 1.214.0.
      * 
      * ## Example Usage
      * 
@@ -2246,7 +2260,7 @@ public final class ArmsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.203.0.
      * 
-     * &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsDisk from version 1.214.0.
+     * &gt; **DEPRECATED:** This data source has been renamed to alicloud.arms.Prometheus from version 1.214.0.
      * 
      * ## Example Usage
      * 
@@ -2334,7 +2348,7 @@ public final class ArmsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.203.0.
      * 
-     * &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsDisk from version 1.214.0.
+     * &gt; **DEPRECATED:** This data source has been renamed to alicloud.arms.Prometheus from version 1.214.0.
      * 
      * ## Example Usage
      * 
@@ -2422,7 +2436,7 @@ public final class ArmsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.203.0.
      * 
-     * &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsDisk from version 1.214.0.
+     * &gt; **DEPRECATED:** This data source has been renamed to alicloud.arms.Prometheus from version 1.214.0.
      * 
      * ## Example Usage
      * 
@@ -2510,7 +2524,7 @@ public final class ArmsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.203.0.
      * 
-     * &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsDisk from version 1.214.0.
+     * &gt; **DEPRECATED:** This data source has been renamed to alicloud.arms.Prometheus from version 1.214.0.
      * 
      * ## Example Usage
      * 
@@ -2598,7 +2612,7 @@ public final class ArmsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.203.0.
      * 
-     * &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsDisk from version 1.214.0.
+     * &gt; **DEPRECATED:** This data source has been renamed to alicloud.arms.Prometheus from version 1.214.0.
      * 
      * ## Example Usage
      * 
@@ -3838,7 +3852,7 @@ public final class ArmsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.204.0.
      * 
-     * &gt; **DEPRECATED:** This resource has been deprecated since v1.228.0.
+     * &gt; **DEPRECATED:** This data source has been deprecated since v1.228.0.
      * 
      * ## Example Usage
      * 
@@ -3894,7 +3908,7 @@ public final class ArmsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.204.0.
      * 
-     * &gt; **DEPRECATED:** This resource has been deprecated since v1.228.0.
+     * &gt; **DEPRECATED:** This data source has been deprecated since v1.228.0.
      * 
      * ## Example Usage
      * 
@@ -3950,7 +3964,7 @@ public final class ArmsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.204.0.
      * 
-     * &gt; **DEPRECATED:** This resource has been deprecated since v1.228.0.
+     * &gt; **DEPRECATED:** This data source has been deprecated since v1.228.0.
      * 
      * ## Example Usage
      * 
@@ -4006,7 +4020,7 @@ public final class ArmsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.204.0.
      * 
-     * &gt; **DEPRECATED:** This resource has been deprecated since v1.228.0.
+     * &gt; **DEPRECATED:** This data source has been deprecated since v1.228.0.
      * 
      * ## Example Usage
      * 
@@ -4062,7 +4076,7 @@ public final class ArmsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.204.0.
      * 
-     * &gt; **DEPRECATED:** This resource has been deprecated since v1.228.0.
+     * &gt; **DEPRECATED:** This data source has been deprecated since v1.228.0.
      * 
      * ## Example Usage
      * 

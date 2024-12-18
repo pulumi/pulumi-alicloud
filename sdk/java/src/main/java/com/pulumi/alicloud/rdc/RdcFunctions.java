@@ -18,7 +18,9 @@ public final class RdcFunctions {
     /**
      * This data source provides the Rdc Organizations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.137.0+.
+     * &gt; **NOTE:** Available since v1.137.0.
+     * 
+     * &gt; **DEPRECATED:** This data source has been deprecated from version `1.238.0`.
      * 
      * ## Example Usage
      * 
@@ -79,7 +81,9 @@ public final class RdcFunctions {
     /**
      * This data source provides the Rdc Organizations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.137.0+.
+     * &gt; **NOTE:** Available since v1.137.0.
+     * 
+     * &gt; **DEPRECATED:** This data source has been deprecated from version `1.238.0`.
      * 
      * ## Example Usage
      * 
@@ -140,7 +144,9 @@ public final class RdcFunctions {
     /**
      * This data source provides the Rdc Organizations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.137.0+.
+     * &gt; **NOTE:** Available since v1.137.0.
+     * 
+     * &gt; **DEPRECATED:** This data source has been deprecated from version `1.238.0`.
      * 
      * ## Example Usage
      * 
@@ -201,7 +207,9 @@ public final class RdcFunctions {
     /**
      * This data source provides the Rdc Organizations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.137.0+.
+     * &gt; **NOTE:** Available since v1.137.0.
+     * 
+     * &gt; **DEPRECATED:** This data source has been deprecated from version `1.238.0`.
      * 
      * ## Example Usage
      * 
@@ -262,7 +270,9 @@ public final class RdcFunctions {
     /**
      * This data source provides the Rdc Organizations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.137.0+.
+     * &gt; **NOTE:** Available since v1.137.0.
+     * 
+     * &gt; **DEPRECATED:** This data source has been deprecated from version `1.238.0`.
      * 
      * ## Example Usage
      * 
@@ -323,7 +333,9 @@ public final class RdcFunctions {
     /**
      * This data source provides the Rdc Organizations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.137.0+.
+     * &gt; **NOTE:** Available since v1.137.0.
+     * 
+     * &gt; **DEPRECATED:** This data source has been deprecated from version `1.238.0`.
      * 
      * ## Example Usage
      * 
@@ -384,7 +396,9 @@ public final class RdcFunctions {
     /**
      * This data source provides the Rdc Organizations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.137.0+.
+     * &gt; **NOTE:** Available since v1.137.0.
+     * 
+     * &gt; **DEPRECATED:** This data source has been deprecated from version `1.238.0`.
      * 
      * ## Example Usage
      * 

@@ -21,7 +21,15 @@ public final class GetOrganizationsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Organization names.
+     * 
+     */
     private List<String> names;
+    /**
+     * @return A list of Rdc Organizations. Each element contains the following attributes:
+     * 
+     */
     private List<GetOrganizationsOrganization> organizations;
     private @Nullable String outputFile;
     private @Nullable String realPk;
@@ -40,9 +48,17 @@ public final class GetOrganizationsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Organization names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
+    /**
+     * @return A list of Rdc Organizations. Each element contains the following attributes:
+     * 
+     */
     public List<GetOrganizationsOrganization> organizations() {
         return this.organizations;
     }

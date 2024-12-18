@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:pai/service:Service":
+		r = &Service{}
 	case "alicloud:pai/workspaceCodeSource:WorkspaceCodeSource":
 		r = &WorkspaceCodeSource{}
 	case "alicloud:pai/workspaceDataset:WorkspaceDataset":
@@ -46,6 +48,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"pai/service",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"pai/workspaceCodeSource",

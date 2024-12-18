@@ -146,7 +146,7 @@ def get_prometheis(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available since v1.203.0.
 
-    > **DEPRECATED:** This resource has been renamed to ecs.EcsDisk from version 1.214.0.
+    > **DEPRECATED:** This data source has been renamed to arms.Prometheus from version 1.214.0.
 
     ## Example Usage
 
@@ -220,7 +220,7 @@ def get_prometheis_output(enable_details: Optional[pulumi.Input[Optional[bool]]]
 
     > **NOTE:** Available since v1.203.0.
 
-    > **DEPRECATED:** This resource has been renamed to ecs.EcsDisk from version 1.214.0.
+    > **DEPRECATED:** This data source has been renamed to arms.Prometheus from version 1.214.0.
 
     ## Example Usage
 

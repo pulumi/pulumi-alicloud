@@ -31,7 +31,7 @@ if not MYPY:
         """
         VPC ID.
         """
-        vpc_owner_id: NotRequired[pulumi.Input[int]]
+        vpc_owner_id: NotRequired[pulumi.Input[str]]
         """
         VPC owner root user ID.
         """
@@ -47,12 +47,12 @@ class InstanceBindVpcArgs:
     def __init__(__self__, *,
                  region_id: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
-                 vpc_owner_id: Optional[pulumi.Input[int]] = None,
+                 vpc_owner_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] region_id: region id.
         :param pulumi.Input[str] vpc_id: VPC ID.
-        :param pulumi.Input[int] vpc_owner_id: VPC owner root user ID.
+        :param pulumi.Input[str] vpc_owner_id: VPC owner root user ID.
         :param pulumi.Input[str] vswitch_id: vswitch id.
         """
         if region_id is not None:
@@ -90,14 +90,14 @@ class InstanceBindVpcArgs:
 
     @property
     @pulumi.getter(name="vpcOwnerId")
-    def vpc_owner_id(self) -> Optional[pulumi.Input[int]]:
+    def vpc_owner_id(self) -> Optional[pulumi.Input[str]]:
         """
         VPC owner root user ID.
         """
         return pulumi.get(self, "vpc_owner_id")
 
     @vpc_owner_id.setter
-    def vpc_owner_id(self, value: Optional[pulumi.Input[int]]):
+    def vpc_owner_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "vpc_owner_id", value)
 
     @property

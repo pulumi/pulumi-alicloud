@@ -42,6 +42,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.nas.AccessGroup;
  * import com.pulumi.alicloud.nas.AccessGroupArgs;
  * import com.pulumi.alicloud.nas.FileSystem;
@@ -82,9 +84,14 @@ import javax.annotation.Nullable;
  *             .cidrBlock("172.16.0.0/24")
  *             .build());
  * 
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
  *         var defaultBbc7ev = new AccessGroup("defaultBbc7ev", AccessGroupArgs.builder()
  *             .accessGroupType("Vpc")
- *             .accessGroupName(name)
+ *             .accessGroupName(String.format("%s-%s", name,defaultInteger.result()))
  *             .fileSystemType("standard")
  *             .build());
  * 

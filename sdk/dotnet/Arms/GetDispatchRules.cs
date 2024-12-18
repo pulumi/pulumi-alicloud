@@ -111,7 +111,13 @@ namespace Pulumi.AliCloud.Arms
         ///         },
         ///     });
         /// 
-        ///     var ids = AliCloud.Arms.GetDispatchRules.Invoke();
+        ///     var ids = AliCloud.Arms.GetDispatchRules.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultDispatchRule.Id,
+        ///         },
+        ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -223,7 +229,13 @@ namespace Pulumi.AliCloud.Arms
         ///         },
         ///     });
         /// 
-        ///     var ids = AliCloud.Arms.GetDispatchRules.Invoke();
+        ///     var ids = AliCloud.Arms.GetDispatchRules.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultDispatchRule.Id,
+        ///         },
+        ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -335,7 +347,13 @@ namespace Pulumi.AliCloud.Arms
         ///         },
         ///     });
         /// 
-        ///     var ids = AliCloud.Arms.GetDispatchRules.Invoke();
+        ///     var ids = AliCloud.Arms.GetDispatchRules.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultDispatchRule.Id,
+        ///         },
+        ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {

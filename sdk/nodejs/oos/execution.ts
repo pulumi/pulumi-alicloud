@@ -7,15 +7,20 @@ import * as utilities from "../utilities";
 /**
  * Provides a OOS Execution resource. For information about Alicloud OOS Execution and how to use it, see [What is Resource Alicloud OOS Execution](https://www.alibabacloud.com/help/doc-detail/120771.htm).
  *
- * > **NOTE:** Available in 1.93.0+.
+ * > **NOTE:** Available since v1.93.0.
  *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const _default = new alicloud.oos.Template("default", {
+ * const _default = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const defaultTemplate = new alicloud.oos.Template("default", {
  *     content: `  {
  *     "FormatVersion": "OOS-2019-06-01",
  *     "Description": "Update Describe instances of given status",
@@ -39,15 +44,15 @@ import * as utilities from "../utilities";
  *       }]
  *   }
  * `,
- *     templateName: "test-name",
- *     versionName: "test",
+ *     templateName: `tf-example-name-${_default.result}`,
+ *     versionName: "example",
  *     tags: {
  *         Created: "TF",
  *         For: "acceptance Test",
  *     },
  * });
  * const example = new alicloud.oos.Execution("example", {
- *     templateName: _default.templateName,
+ *     templateName: defaultTemplate.templateName,
  *     description: "From TF Test",
  *     parameters: "\x09\x09\x09\x09{\"Status\":\"Running\"}\n",
  * });

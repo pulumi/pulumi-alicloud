@@ -13,7 +13,9 @@ import (
 
 // This data source provides the Rdc Organizations of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.137.0+.
+// > **NOTE:** Available since v1.137.0.
+//
+// > **DEPRECATED:** This data source has been deprecated from version `1.238.0`.
 //
 // ## Example Usage
 //
@@ -89,10 +91,12 @@ type GetOrganizationsArgs struct {
 // A collection of values returned by getOrganizations.
 type GetOrganizationsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id            string                         `pulumi:"id"`
-	Ids           []string                       `pulumi:"ids"`
-	NameRegex     *string                        `pulumi:"nameRegex"`
-	Names         []string                       `pulumi:"names"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Organization names.
+	Names []string `pulumi:"names"`
+	// A list of Rdc Organizations. Each element contains the following attributes:
 	Organizations []GetOrganizationsOrganization `pulumi:"organizations"`
 	OutputFile    *string                        `pulumi:"outputFile"`
 	RealPk        *string                        `pulumi:"realPk"`
@@ -151,10 +155,12 @@ func (o GetOrganizationsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetOrganizationsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Organization names.
 func (o GetOrganizationsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetOrganizationsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
 
+// A list of Rdc Organizations. Each element contains the following attributes:
 func (o GetOrganizationsResultOutput) Organizations() GetOrganizationsOrganizationArrayOutput {
 	return o.ApplyT(func(v GetOrganizationsResult) []GetOrganizationsOrganization { return v.Organizations }).(GetOrganizationsOrganizationArrayOutput)
 }
