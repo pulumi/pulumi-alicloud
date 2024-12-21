@@ -10,9 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.KVStore
 {
     /// <summary>
-    /// &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.104.0`. Please use resource alicloud_kvstore_instance.
+    /// Provides a Backup Policy for Tair (Redis OSS-Compatible) And Memcache (KVStore) resource.
     /// 
-    /// Provides a backup policy for Tair (Redis OSS-Compatible) And Memcache (KVStore) resource.
+    /// For information about Backup Policy for Tair (Redis OSS-Compatible) And Memcache (KVStore) and how to use it, see [What is Backup Policy](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-modifybackuppolicy-redis).
+    /// 
+    /// &gt; **NOTE:** Available since v1.15.0.
+    /// 
+    /// &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.104.0`. Please use resource alicloud_kvstore_instance.
     /// 
     /// ## Example Usage
     /// 
@@ -27,7 +31,7 @@ namespace Pulumi.AliCloud.KVStore
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "kvstorebackuppolicyvpc";
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = AliCloud.KVStore.GetZones.Invoke();
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
@@ -84,23 +88,23 @@ namespace Pulumi.AliCloud.KVStore
     /// 
     /// ## Import
     /// 
-    /// Tair (Redis OSS-Compatible) And Memcache (KVStore) backup policy can be imported using the id, e.g.
+    /// Tair (Redis OSS-Compatible) And Memcache (KVStore) Backup Policy can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:kvstore/backupPolicy:BackupPolicy example r-abc12345678
+    /// $ pulumi import alicloud:kvstore/backupPolicy:BackupPolicy example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:kvstore/backupPolicy:BackupPolicy")]
     public partial class BackupPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+        /// Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
         /// </summary>
         [Output("backupPeriods")]
         public Output<ImmutableArray<string>> BackupPeriods { get; private set; } = null!;
 
         /// <summary>
-        /// Backup time, in the format of HH:mmZ- HH:mm Z
+        /// Backup time, in the format of HH:mmZ- HH:mm Z.
         /// </summary>
         [Output("backupTime")]
         public Output<string?> BackupTime { get; private set; } = null!;
@@ -161,7 +165,7 @@ namespace Pulumi.AliCloud.KVStore
         private InputList<string>? _backupPeriods;
 
         /// <summary>
-        /// Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+        /// Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
         /// </summary>
         public InputList<string> BackupPeriods
         {
@@ -170,7 +174,7 @@ namespace Pulumi.AliCloud.KVStore
         }
 
         /// <summary>
-        /// Backup time, in the format of HH:mmZ- HH:mm Z
+        /// Backup time, in the format of HH:mmZ- HH:mm Z.
         /// </summary>
         [Input("backupTime")]
         public Input<string>? BackupTime { get; set; }
@@ -193,7 +197,7 @@ namespace Pulumi.AliCloud.KVStore
         private InputList<string>? _backupPeriods;
 
         /// <summary>
-        /// Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+        /// Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
         /// </summary>
         public InputList<string> BackupPeriods
         {
@@ -202,7 +206,7 @@ namespace Pulumi.AliCloud.KVStore
         }
 
         /// <summary>
-        /// Backup time, in the format of HH:mmZ- HH:mm Z
+        /// Backup time, in the format of HH:mmZ- HH:mm Z.
         /// </summary>
         [Input("backupTime")]
         public Input<string>? BackupTime { get; set; }

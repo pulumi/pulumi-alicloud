@@ -142,6 +142,10 @@ export class TairInstance extends pulumi.CustomResource {
      */
     public readonly paramNoLooseSentinelPasswordFreeAccess!: pulumi.Output<string>;
     /**
+     * After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See https://help.aliyun.com/zh/redis/user-guide/parameter-support for details
+     */
+    public readonly paramNoLooseSentinelPasswordFreeCommands!: pulumi.Output<string>;
+    /**
      * The value is semisync or async. The default value is async.
      *
      * The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance 。
@@ -306,6 +310,7 @@ export class TairInstance extends pulumi.CustomResource {
             resourceInputs["nodeType"] = state ? state.nodeType : undefined;
             resourceInputs["paramNoLooseSentinelEnabled"] = state ? state.paramNoLooseSentinelEnabled : undefined;
             resourceInputs["paramNoLooseSentinelPasswordFreeAccess"] = state ? state.paramNoLooseSentinelPasswordFreeAccess : undefined;
+            resourceInputs["paramNoLooseSentinelPasswordFreeCommands"] = state ? state.paramNoLooseSentinelPasswordFreeCommands : undefined;
             resourceInputs["paramReplMode"] = state ? state.paramReplMode : undefined;
             resourceInputs["paramSemisyncReplTimeout"] = state ? state.paramSemisyncReplTimeout : undefined;
             resourceInputs["paramSentinelCompatEnable"] = state ? state.paramSentinelCompatEnable : undefined;
@@ -368,6 +373,7 @@ export class TairInstance extends pulumi.CustomResource {
             resourceInputs["nodeType"] = args ? args.nodeType : undefined;
             resourceInputs["paramNoLooseSentinelEnabled"] = args ? args.paramNoLooseSentinelEnabled : undefined;
             resourceInputs["paramNoLooseSentinelPasswordFreeAccess"] = args ? args.paramNoLooseSentinelPasswordFreeAccess : undefined;
+            resourceInputs["paramNoLooseSentinelPasswordFreeCommands"] = args ? args.paramNoLooseSentinelPasswordFreeCommands : undefined;
             resourceInputs["paramReplMode"] = args ? args.paramReplMode : undefined;
             resourceInputs["paramSemisyncReplTimeout"] = args ? args.paramSemisyncReplTimeout : undefined;
             resourceInputs["paramSentinelCompatEnable"] = args ? args.paramSentinelCompatEnable : undefined;
@@ -514,6 +520,10 @@ export interface TairInstanceState {
      * Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance
      */
     paramNoLooseSentinelPasswordFreeAccess?: pulumi.Input<string>;
+    /**
+     * After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See https://help.aliyun.com/zh/redis/user-guide/parameter-support for details
+     */
+    paramNoLooseSentinelPasswordFreeCommands?: pulumi.Input<string>;
     /**
      * The value is semisync or async. The default value is async.
      *
@@ -730,6 +740,10 @@ export interface TairInstanceArgs {
      * Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance
      */
     paramNoLooseSentinelPasswordFreeAccess?: pulumi.Input<string>;
+    /**
+     * After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See https://help.aliyun.com/zh/redis/user-guide/parameter-support for details
+     */
+    paramNoLooseSentinelPasswordFreeCommands?: pulumi.Input<string>;
     /**
      * The value is semisync or async. The default value is async.
      *

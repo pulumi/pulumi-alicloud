@@ -5,9 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * > **DEPRECATED:**  This resource  has been deprecated from version `1.104.0`. Please use resource alicloud_kvstore_instance.
+ * Provides a Backup Policy for Tair (Redis OSS-Compatible) And Memcache (KVStore) resource.
  *
- * Provides a backup policy for Tair (Redis OSS-Compatible) And Memcache (KVStore) resource.
+ * For information about Backup Policy for Tair (Redis OSS-Compatible) And Memcache (KVStore) and how to use it, see [What is Backup Policy](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-modifybackuppolicy-redis).
+ *
+ * > **NOTE:** Available since v1.15.0.
+ *
+ * > **DEPRECATED:**  This resource  has been deprecated from version `1.104.0`. Please use resource alicloud_kvstore_instance.
  *
  * ## Example Usage
  *
@@ -18,7 +22,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "kvstorebackuppolicyvpc";
+ * const name = config.get("name") || "terraform-example";
  * const default = alicloud.kvstore.getZones({});
  * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
@@ -59,10 +63,10 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Tair (Redis OSS-Compatible) And Memcache (KVStore) backup policy can be imported using the id, e.g.
+ * Tair (Redis OSS-Compatible) And Memcache (KVStore) Backup Policy can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:kvstore/backupPolicy:BackupPolicy example r-abc12345678
+ * $ pulumi import alicloud:kvstore/backupPolicy:BackupPolicy example <id>
  * ```
  */
 export class BackupPolicy extends pulumi.CustomResource {
@@ -94,11 +98,11 @@ export class BackupPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+     * Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
      */
     public readonly backupPeriods!: pulumi.Output<string[]>;
     /**
-     * Backup time, in the format of HH:mmZ- HH:mm Z
+     * Backup time, in the format of HH:mmZ- HH:mm Z.
      */
     public readonly backupTime!: pulumi.Output<string | undefined>;
     /**
@@ -141,11 +145,11 @@ export class BackupPolicy extends pulumi.CustomResource {
  */
 export interface BackupPolicyState {
     /**
-     * Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+     * Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
      */
     backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Backup time, in the format of HH:mmZ- HH:mm Z
+     * Backup time, in the format of HH:mmZ- HH:mm Z.
      */
     backupTime?: pulumi.Input<string>;
     /**
@@ -159,11 +163,11 @@ export interface BackupPolicyState {
  */
 export interface BackupPolicyArgs {
     /**
-     * Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+     * Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
      */
     backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Backup time, in the format of HH:mmZ- HH:mm Z
+     * Backup time, in the format of HH:mmZ- HH:mm Z.
      */
     backupTime?: pulumi.Input<string>;
     /**

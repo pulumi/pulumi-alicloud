@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.174.0.
  *
+ * > **DEPRECATED:** This resource has been deprecated from version `1.239.0`.
+ *
  * ## Example Usage
  *
  * Basic Usage

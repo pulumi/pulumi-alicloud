@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.PrivateLink
     /// 
     ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("example", new()
     ///     {
-    ///         Name = name,
+    ///         SecurityGroupName = name,
     ///         VpcId = exampleNetwork.Id,
     ///     });
     /// 

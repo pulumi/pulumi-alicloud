@@ -18,14 +18,29 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
     public static final SecurityGroupState Empty = new SecurityGroupState();
 
     /**
-     * The security group description. Defaults to null.
+     * (Available since v1.239.0) The time when the security group was created.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return (Available since v1.239.0) The time when the security group was created.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * The description of the security group. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The security group description. Defaults to null.
+     * @return The description of the security group. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
      * 
      */
     public Optional<Output<String>> description() {
@@ -35,39 +50,39 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
     /**
      * Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
      * 
-     * Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
-     * 
      * @deprecated
-     * Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.
+     * Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
      * 
      */
-    @Deprecated /* Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it. */
+    @Deprecated /* Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead. */
     @Import(name="innerAccess")
     private @Nullable Output<Boolean> innerAccess;
 
     /**
      * @return Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
      * 
-     * Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
-     * 
      * @deprecated
-     * Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.
+     * Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
      * 
      */
-    @Deprecated /* Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it. */
+    @Deprecated /* Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead. */
     public Optional<Output<Boolean>> innerAccess() {
         return Optional.ofNullable(this.innerAccess);
     }
 
     /**
-     * The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
+     * The internal access control policy of the security group. Valid values:
+     * - `Accept`: The internal interconnectivity policy.
+     * - `Drop`: The internal isolation policy.
      * 
      */
     @Import(name="innerAccessPolicy")
     private @Nullable Output<String> innerAccessPolicy;
 
     /**
-     * @return The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
+     * @return The internal access control policy of the security group. Valid values:
+     * - `Accept`: The internal interconnectivity policy.
+     * - `Drop`: The internal isolation policy.
      * 
      */
     public Optional<Output<String>> innerAccessPolicy() {
@@ -75,16 +90,24 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The name of the security group. Defaults to null.
+     * Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
+     * 
+     * @deprecated
+     * Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
      * 
      */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the security group. Defaults to null.
+     * @return Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
+     * 
+     * @deprecated
+     * Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
      * 
      */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -105,14 +128,29 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The type of the security group. Valid values:
+     * The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
+     * 
+     */
+    @Import(name="securityGroupName")
+    private @Nullable Output<String> securityGroupName;
+
+    /**
+     * @return The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
+     * 
+     */
+    public Optional<Output<String>> securityGroupName() {
+        return Optional.ofNullable(this.securityGroupName);
+    }
+
+    /**
+     * The type of the security group. Default value: `normal`. Valid values:
      * 
      */
     @Import(name="securityGroupType")
     private @Nullable Output<String> securityGroupType;
 
     /**
-     * @return The type of the security group. Valid values:
+     * @return The type of the security group. Default value: `normal`. Valid values:
      * 
      */
     public Optional<Output<String>> securityGroupType() {
@@ -135,14 +173,14 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The ID of the VPC.
+     * The ID of the VPC in which you want to create the security group.
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The ID of the VPC.
+     * @return The ID of the VPC in which you want to create the security group.
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -152,11 +190,13 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
     private SecurityGroupState() {}
 
     private SecurityGroupState(SecurityGroupState $) {
+        this.createTime = $.createTime;
         this.description = $.description;
         this.innerAccess = $.innerAccess;
         this.innerAccessPolicy = $.innerAccessPolicy;
         this.name = $.name;
         this.resourceGroupId = $.resourceGroupId;
+        this.securityGroupName = $.securityGroupName;
         this.securityGroupType = $.securityGroupType;
         this.tags = $.tags;
         this.vpcId = $.vpcId;
@@ -181,7 +221,28 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param description The security group description. Defaults to null.
+         * @param createTime (Available since v1.239.0) The time when the security group was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime (Available since v1.239.0) The time when the security group was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param description The description of the security group. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -192,7 +253,7 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param description The security group description. Defaults to null.
+         * @param description The description of the security group. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -204,15 +265,13 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param innerAccess Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
          * 
-         * Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
-         * 
          * @return builder
          * 
          * @deprecated
-         * Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.
+         * Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
          * 
          */
-        @Deprecated /* Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it. */
+        @Deprecated /* Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead. */
         public Builder innerAccess(@Nullable Output<Boolean> innerAccess) {
             $.innerAccess = innerAccess;
             return this;
@@ -221,21 +280,21 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param innerAccess Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
          * 
-         * Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
-         * 
          * @return builder
          * 
          * @deprecated
-         * Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.
+         * Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
          * 
          */
-        @Deprecated /* Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it. */
+        @Deprecated /* Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead. */
         public Builder innerAccess(Boolean innerAccess) {
             return innerAccess(Output.of(innerAccess));
         }
 
         /**
-         * @param innerAccessPolicy The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
+         * @param innerAccessPolicy The internal access control policy of the security group. Valid values:
+         * - `Accept`: The internal interconnectivity policy.
+         * - `Drop`: The internal isolation policy.
          * 
          * @return builder
          * 
@@ -246,7 +305,9 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param innerAccessPolicy The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
+         * @param innerAccessPolicy The internal access control policy of the security group. Valid values:
+         * - `Accept`: The internal interconnectivity policy.
+         * - `Drop`: The internal isolation policy.
          * 
          * @return builder
          * 
@@ -256,22 +317,30 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name The name of the security group. Defaults to null.
+         * @param name Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
+         * 
          */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name The name of the security group. Defaults to null.
+         * @param name Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
+         * 
          */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -298,7 +367,28 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param securityGroupType The type of the security group. Valid values:
+         * @param securityGroupName The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityGroupName(@Nullable Output<String> securityGroupName) {
+            $.securityGroupName = securityGroupName;
+            return this;
+        }
+
+        /**
+         * @param securityGroupName The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityGroupName(String securityGroupName) {
+            return securityGroupName(Output.of(securityGroupName));
+        }
+
+        /**
+         * @param securityGroupType The type of the security group. Default value: `normal`. Valid values:
          * 
          * @return builder
          * 
@@ -309,7 +399,7 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param securityGroupType The type of the security group. Valid values:
+         * @param securityGroupType The type of the security group. Default value: `normal`. Valid values:
          * 
          * @return builder
          * 
@@ -340,7 +430,7 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vpcId The ID of the VPC.
+         * @param vpcId The ID of the VPC in which you want to create the security group.
          * 
          * @return builder
          * 
@@ -351,7 +441,7 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vpcId The ID of the VPC.
+         * @param vpcId The ID of the VPC in which you want to create the security group.
          * 
          * @return builder
          * 

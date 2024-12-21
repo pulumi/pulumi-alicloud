@@ -562,7 +562,7 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public readonly int? CpuCoreCount;
         /// <summary>
-        /// The maximum number of network interfaces that an instance type can be attached to.
+        /// (Deprecated since v1.239.0) The maximum number of ENIs per instance. It sames as `eni_quantity`.
         /// </summary>
         public readonly int? EniAmount;
         public readonly int? GpuAmount;
