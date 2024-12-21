@@ -952,6 +952,21 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether the cluster has enabled strong data consistency across multiple zones. Valid values are `ON`, `OFF`. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+     * 
+     */
+    @Import(name="strictConsistency")
+    private @Nullable Output<String> strictConsistency;
+
+    /**
+     * @return Whether the cluster has enabled strong data consistency across multiple zones. Valid values are `ON`, `OFF`. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+     * 
+     */
+    public Optional<Output<String>> strictConsistency() {
+        return Optional.ofNullable(this.strictConsistency);
+    }
+
+    /**
      * The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
      * 
      */
@@ -1140,6 +1155,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.storagePayType = $.storagePayType;
         this.storageSpace = $.storageSpace;
         this.storageType = $.storageType;
+        this.strictConsistency = $.strictConsistency;
         this.subCategory = $.subCategory;
         this.tags = $.tags;
         this.targetDbRevisionVersionCode = $.targetDbRevisionVersionCode;
@@ -2486,6 +2502,27 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder storageType(String storageType) {
             return storageType(Output.of(storageType));
+        }
+
+        /**
+         * @param strictConsistency Whether the cluster has enabled strong data consistency across multiple zones. Valid values are `ON`, `OFF`. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder strictConsistency(@Nullable Output<String> strictConsistency) {
+            $.strictConsistency = strictConsistency;
+            return this;
+        }
+
+        /**
+         * @param strictConsistency Whether the cluster has enabled strong data consistency across multiple zones. Valid values are `ON`, `OFF`. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder strictConsistency(String strictConsistency) {
+            return strictConsistency(Output.of(strictConsistency));
         }
 
         /**

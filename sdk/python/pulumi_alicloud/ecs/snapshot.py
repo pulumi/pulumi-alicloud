@@ -193,12 +193,14 @@ class SnapshotArgs:
 class _SnapshotState:
     def __init__(__self__, *,
                  category: Optional[pulumi.Input[str]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_id: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
                  instant_access: Optional[pulumi.Input[bool]] = None,
                  instant_access_retention_days: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 region_id: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None,
                  snapshot_name: Optional[pulumi.Input[str]] = None,
@@ -215,6 +217,8 @@ class _SnapshotState:
         """
         if category is not None:
             pulumi.set(__self__, "category", category)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disk_id is not None:
@@ -236,6 +240,8 @@ class _SnapshotState:
             pulumi.log.warn("""name is deprecated: Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if retention_days is not None:
@@ -255,6 +261,15 @@ class _SnapshotState:
     @category.setter
     def category(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "category", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
 
     @property
     @pulumi.getter
@@ -322,6 +337,15 @@ class _SnapshotState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region_id", value)
 
     @property
     @pulumi.getter(name="resourceGroupId")
@@ -515,6 +539,8 @@ class Snapshot(pulumi.CustomResource):
             __props__.__dict__["retention_days"] = retention_days
             __props__.__dict__["snapshot_name"] = snapshot_name
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["region_id"] = None
             __props__.__dict__["status"] = None
         super(Snapshot, __self__).__init__(
             'alicloud:ecs/snapshot:Snapshot',
@@ -527,12 +553,14 @@ class Snapshot(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             category: Optional[pulumi.Input[str]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disk_id: Optional[pulumi.Input[str]] = None,
             force: Optional[pulumi.Input[bool]] = None,
             instant_access: Optional[pulumi.Input[bool]] = None,
             instant_access_retention_days: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            region_id: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             retention_days: Optional[pulumi.Input[int]] = None,
             snapshot_name: Optional[pulumi.Input[str]] = None,
@@ -557,12 +585,14 @@ class Snapshot(pulumi.CustomResource):
         __props__ = _SnapshotState.__new__(_SnapshotState)
 
         __props__.__dict__["category"] = category
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["disk_id"] = disk_id
         __props__.__dict__["force"] = force
         __props__.__dict__["instant_access"] = instant_access
         __props__.__dict__["instant_access_retention_days"] = instant_access_retention_days
         __props__.__dict__["name"] = name
+        __props__.__dict__["region_id"] = region_id
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["retention_days"] = retention_days
         __props__.__dict__["snapshot_name"] = snapshot_name
@@ -574,6 +604,11 @@ class Snapshot(pulumi.CustomResource):
     @pulumi.getter
     def category(self) -> pulumi.Output[str]:
         return pulumi.get(self, "category")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter
@@ -617,6 +652,11 @@ class Snapshot(pulumi.CustomResource):
         It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "region_id")
 
     @property
     @pulumi.getter(name="resourceGroupId")

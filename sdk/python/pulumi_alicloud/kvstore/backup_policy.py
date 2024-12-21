@@ -25,8 +25,8 @@ class BackupPolicyArgs:
         """
         The set of arguments for constructing a BackupPolicy resource.
         :param pulumi.Input[str] instance_id: The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
-        :param pulumi.Input[str] backup_time: Backup time, in the format of HH:mmZ- HH:mm Z
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+        :param pulumi.Input[str] backup_time: Backup time, in the format of HH:mmZ- HH:mm Z.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         if backup_periods is not None:
@@ -50,7 +50,7 @@ class BackupPolicyArgs:
     @pulumi.getter(name="backupPeriods")
     def backup_periods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+        Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
         """
         return pulumi.get(self, "backup_periods")
 
@@ -62,7 +62,7 @@ class BackupPolicyArgs:
     @pulumi.getter(name="backupTime")
     def backup_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Backup time, in the format of HH:mmZ- HH:mm Z
+        Backup time, in the format of HH:mmZ- HH:mm Z.
         """
         return pulumi.get(self, "backup_time")
 
@@ -79,8 +79,8 @@ class _BackupPolicyState:
                  instance_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering BackupPolicy resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
-        :param pulumi.Input[str] backup_time: Backup time, in the format of HH:mmZ- HH:mm Z
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+        :param pulumi.Input[str] backup_time: Backup time, in the format of HH:mmZ- HH:mm Z.
         :param pulumi.Input[str] instance_id: The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
         """
         if backup_periods is not None:
@@ -94,7 +94,7 @@ class _BackupPolicyState:
     @pulumi.getter(name="backupPeriods")
     def backup_periods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+        Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
         """
         return pulumi.get(self, "backup_periods")
 
@@ -106,7 +106,7 @@ class _BackupPolicyState:
     @pulumi.getter(name="backupTime")
     def backup_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Backup time, in the format of HH:mmZ- HH:mm Z
+        Backup time, in the format of HH:mmZ- HH:mm Z.
         """
         return pulumi.get(self, "backup_time")
 
@@ -137,9 +137,13 @@ class BackupPolicy(pulumi.CustomResource):
                  instance_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        > **DEPRECATED:**  This resource  has been deprecated from version `1.104.0`. Please use resource alicloud_kvstore_instance.
+        Provides a Backup Policy for Tair (Redis OSS-Compatible) And Memcache (KVStore) resource.
 
-        Provides a backup policy for Tair (Redis OSS-Compatible) And Memcache (KVStore) resource.
+        For information about Backup Policy for Tair (Redis OSS-Compatible) And Memcache (KVStore) and how to use it, see [What is Backup Policy](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-modifybackuppolicy-redis).
+
+        > **NOTE:** Available since v1.15.0.
+
+        > **DEPRECATED:**  This resource  has been deprecated from version `1.104.0`. Please use resource alicloud_kvstore_instance.
 
         ## Example Usage
 
@@ -152,7 +156,7 @@ class BackupPolicy(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "kvstorebackuppolicyvpc"
+            name = "terraform-example"
         default = alicloud.kvstore.get_zones()
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
@@ -189,16 +193,16 @@ class BackupPolicy(pulumi.CustomResource):
 
         ## Import
 
-        Tair (Redis OSS-Compatible) And Memcache (KVStore) backup policy can be imported using the id, e.g.
+        Tair (Redis OSS-Compatible) And Memcache (KVStore) Backup Policy can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:kvstore/backupPolicy:BackupPolicy example r-abc12345678
+        $ pulumi import alicloud:kvstore/backupPolicy:BackupPolicy example <id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
-        :param pulumi.Input[str] backup_time: Backup time, in the format of HH:mmZ- HH:mm Z
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+        :param pulumi.Input[str] backup_time: Backup time, in the format of HH:mmZ- HH:mm Z.
         :param pulumi.Input[str] instance_id: The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
         """
         ...
@@ -208,9 +212,13 @@ class BackupPolicy(pulumi.CustomResource):
                  args: BackupPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **DEPRECATED:**  This resource  has been deprecated from version `1.104.0`. Please use resource alicloud_kvstore_instance.
+        Provides a Backup Policy for Tair (Redis OSS-Compatible) And Memcache (KVStore) resource.
 
-        Provides a backup policy for Tair (Redis OSS-Compatible) And Memcache (KVStore) resource.
+        For information about Backup Policy for Tair (Redis OSS-Compatible) And Memcache (KVStore) and how to use it, see [What is Backup Policy](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-modifybackuppolicy-redis).
+
+        > **NOTE:** Available since v1.15.0.
+
+        > **DEPRECATED:**  This resource  has been deprecated from version `1.104.0`. Please use resource alicloud_kvstore_instance.
 
         ## Example Usage
 
@@ -223,7 +231,7 @@ class BackupPolicy(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "kvstorebackuppolicyvpc"
+            name = "terraform-example"
         default = alicloud.kvstore.get_zones()
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
@@ -260,10 +268,10 @@ class BackupPolicy(pulumi.CustomResource):
 
         ## Import
 
-        Tair (Redis OSS-Compatible) And Memcache (KVStore) backup policy can be imported using the id, e.g.
+        Tair (Redis OSS-Compatible) And Memcache (KVStore) Backup Policy can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:kvstore/backupPolicy:BackupPolicy example r-abc12345678
+        $ pulumi import alicloud:kvstore/backupPolicy:BackupPolicy example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -318,8 +326,8 @@ class BackupPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
-        :param pulumi.Input[str] backup_time: Backup time, in the format of HH:mmZ- HH:mm Z
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+        :param pulumi.Input[str] backup_time: Backup time, in the format of HH:mmZ- HH:mm Z.
         :param pulumi.Input[str] instance_id: The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -335,7 +343,7 @@ class BackupPolicy(pulumi.CustomResource):
     @pulumi.getter(name="backupPeriods")
     def backup_periods(self) -> pulumi.Output[Sequence[str]]:
         """
-        Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+        Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
         """
         return pulumi.get(self, "backup_periods")
 
@@ -343,7 +351,7 @@ class BackupPolicy(pulumi.CustomResource):
     @pulumi.getter(name="backupTime")
     def backup_time(self) -> pulumi.Output[Optional[str]]:
         """
-        Backup time, in the format of HH:mmZ- HH:mm Z
+        Backup time, in the format of HH:mmZ- HH:mm Z.
         """
         return pulumi.get(self, "backup_time")
 

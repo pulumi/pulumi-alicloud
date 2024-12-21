@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()
- *             .name(name)
+ *             .securityGroupName(name)
  *             .vpcId(exampleNetwork.id())
  *             .build());
  * 

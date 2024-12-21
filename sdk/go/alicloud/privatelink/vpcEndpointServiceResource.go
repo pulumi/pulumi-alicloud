@@ -77,8 +77,8 @@ import (
 //				return err
 //			}
 //			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String(name),
-//				VpcId: exampleNetwork.ID(),
+//				SecurityGroupName: pulumi.String(name),
+//				VpcId:             exampleNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err

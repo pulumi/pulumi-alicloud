@@ -121,14 +121,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:privatelink/vpcEndpoint:VpcEndpoint")
 public class VpcEndpoint extends com.pulumi.resources.CustomResource {
     /**
-     * The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s. Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
+     * The IP address version.
+     * 
+     */
+    @Export(name="addressIpVersion", refs={String.class}, tree="[0]")
+    private Output<String> addressIpVersion;
+
+    /**
+     * @return The IP address version.
+     * 
+     */
+    public Output<String> addressIpVersion() {
+        return this.addressIpVersion;
+    }
+    /**
+     * The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.
      * 
      */
     @Export(name="bandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> bandwidth;
 
     /**
-     * @return The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s. Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
+     * @return The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.
      * 
      */
     public Output<Integer> bandwidth() {
@@ -164,8 +178,6 @@ public class VpcEndpoint extends com.pulumi.resources.CustomResource {
     }
     /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
     @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
@@ -173,8 +185,6 @@ public class VpcEndpoint extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
@@ -223,28 +233,32 @@ public class VpcEndpoint extends com.pulumi.resources.CustomResource {
         return this.endpointDomain;
     }
     /**
-     * The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+     * The endpoint type.
+     * 
+     * Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
      * 
      */
     @Export(name="endpointType", refs={String.class}, tree="[0]")
     private Output<String> endpointType;
 
     /**
-     * @return The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+     * @return The endpoint type.
+     * 
+     * Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
      * 
      */
     public Output<String> endpointType() {
         return this.endpointType;
     }
     /**
-     * RAM access policies.
+     * RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
      * 
      */
     @Export(name="policyDocument", refs={String.class}, tree="[0]")
     private Output<String> policyDocument;
 
     /**
-     * @return RAM access policies.
+     * @return RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
      * 
      */
     public Output<String> policyDocument() {
@@ -252,8 +266,6 @@ public class VpcEndpoint extends com.pulumi.resources.CustomResource {
     }
     /**
      * Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
-     * - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
-     * - **false (default)**: disables user authentication.
      * 
      */
     @Export(name="protectedEnabled", refs={Boolean.class}, tree="[0]")
@@ -261,12 +273,24 @@ public class VpcEndpoint extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
-     * - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
-     * - **false (default)**: disables user authentication.
      * 
      */
     public Output<Optional<Boolean>> protectedEnabled() {
         return Codegen.optional(this.protectedEnabled);
+    }
+    /**
+     * (Available since v1.239.0) The region ID of the endpoint.
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return (Available since v1.239.0) The region ID of the endpoint.
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
     }
     /**
      * The resource group ID.
@@ -283,18 +307,22 @@ public class VpcEndpoint extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.The endpoint can be associated with up to 10 security groups.
+     * The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.
+     * 
+     * The endpoint can be associated with up to 10 security groups.
      * 
      */
     @Export(name="securityGroupIds", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> securityGroupIds;
+    private Output</* @Nullable */ List<String>> securityGroupIds;
 
     /**
-     * @return The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.The endpoint can be associated with up to 10 security groups.
+     * @return The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.
+     * 
+     * The endpoint can be associated with up to 10 security groups.
      * 
      */
-    public Output<List<String>> securityGroupIds() {
-        return this.securityGroupIds;
+    public Output<Optional<List<String>>> securityGroupIds() {
+        return Codegen.optional(this.securityGroupIds);
     }
     /**
      * The ID of the endpoint service with which the endpoint is associated.

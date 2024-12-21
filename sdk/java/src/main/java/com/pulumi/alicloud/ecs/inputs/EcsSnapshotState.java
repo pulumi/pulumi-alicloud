@@ -34,6 +34,21 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Available since v1.239.0) The time when the snapshot was created.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return (Available since v1.239.0) The time when the snapshot was created.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
      * The description of the snapshot.
      * 
      */
@@ -148,14 +163,29 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the resource group.
+     * (Available since v1.239.0) The region ID of the snapshot.
+     * 
+     */
+    @Import(name="regionId")
+    private @Nullable Output<String> regionId;
+
+    /**
+     * @return (Available since v1.239.0) The region ID of the snapshot.
+     * 
+     */
+    public Optional<Output<String>> regionId() {
+        return Optional.ofNullable(this.regionId);
+    }
+
+    /**
+     * The ID of the resource group. **NOTE:** From version 1.239.0, `resource_group_id` can be modified.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group.
+     * @return The ID of the resource group. **NOTE:** From version 1.239.0, `resource_group_id` can be modified.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -226,12 +256,14 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
 
     private EcsSnapshotState(EcsSnapshotState $) {
         this.category = $.category;
+        this.createTime = $.createTime;
         this.description = $.description;
         this.diskId = $.diskId;
         this.force = $.force;
         this.instantAccess = $.instantAccess;
         this.instantAccessRetentionDays = $.instantAccessRetentionDays;
         this.name = $.name;
+        this.regionId = $.regionId;
         this.resourceGroupId = $.resourceGroupId;
         this.retentionDays = $.retentionDays;
         this.snapshotName = $.snapshotName;
@@ -276,6 +308,27 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder category(String category) {
             return category(Output.of(category));
+        }
+
+        /**
+         * @param createTime (Available since v1.239.0) The time when the snapshot was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime (Available since v1.239.0) The time when the snapshot was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
         }
 
         /**
@@ -429,7 +482,28 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group.
+         * @param regionId (Available since v1.239.0) The region ID of the snapshot.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(@Nullable Output<String> regionId) {
+            $.regionId = regionId;
+            return this;
+        }
+
+        /**
+         * @param regionId (Available since v1.239.0) The region ID of the snapshot.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(String regionId) {
+            return regionId(Output.of(regionId));
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group. **NOTE:** From version 1.239.0, `resource_group_id` can be modified.
          * 
          * @return builder
          * 
@@ -440,7 +514,7 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group.
+         * @param resourceGroupId The ID of the resource group. **NOTE:** From version 1.239.0, `resource_group_id` can be modified.
          * 
          * @return builder
          * 

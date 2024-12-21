@@ -105,7 +105,13 @@ namespace Pulumi.AliCloud.PrivateLink
     public partial class VpcEndpoint : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s. Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
+        /// The IP address version.
+        /// </summary>
+        [Output("addressIpVersion")]
+        public Output<string> AddressIpVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.
         /// </summary>
         [Output("bandwidth")]
         public Output<int> Bandwidth { get; private set; } = null!;
@@ -124,8 +130,6 @@ namespace Pulumi.AliCloud.PrivateLink
 
         /// <summary>
         /// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-        /// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-        /// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
@@ -149,24 +153,30 @@ namespace Pulumi.AliCloud.PrivateLink
         public Output<string> EndpointDomain { get; private set; } = null!;
 
         /// <summary>
-        /// The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        /// The endpoint type.
+        /// 
+        /// Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
         /// </summary>
         [Output("endpointType")]
         public Output<string> EndpointType { get; private set; } = null!;
 
         /// <summary>
-        /// RAM access policies.
+        /// RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
         /// </summary>
         [Output("policyDocument")]
         public Output<string> PolicyDocument { get; private set; } = null!;
 
         /// <summary>
         /// Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
-        /// - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
-        /// - **false (default)**: disables user authentication.
         /// </summary>
         [Output("protectedEnabled")]
         public Output<bool?> ProtectedEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.239.0) The region ID of the endpoint.
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
 
         /// <summary>
         /// The resource group ID.
@@ -175,7 +185,9 @@ namespace Pulumi.AliCloud.PrivateLink
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.The endpoint can be associated with up to 10 security groups.
+        /// The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.
+        /// 
+        /// The endpoint can be associated with up to 10 security groups.
         /// </summary>
         [Output("securityGroupIds")]
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
@@ -269,9 +281,13 @@ namespace Pulumi.AliCloud.PrivateLink
     public sealed class VpcEndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The IP address version.
+        /// </summary>
+        [Input("addressIpVersion")]
+        public Input<string>? AddressIpVersion { get; set; }
+
+        /// <summary>
         /// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-        /// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-        /// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -283,21 +299,21 @@ namespace Pulumi.AliCloud.PrivateLink
         public Input<string>? EndpointDescription { get; set; }
 
         /// <summary>
-        /// The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        /// The endpoint type.
+        /// 
+        /// Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
         /// </summary>
         [Input("endpointType")]
         public Input<string>? EndpointType { get; set; }
 
         /// <summary>
-        /// RAM access policies.
+        /// RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
         /// </summary>
         [Input("policyDocument")]
         public Input<string>? PolicyDocument { get; set; }
 
         /// <summary>
         /// Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
-        /// - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
-        /// - **false (default)**: disables user authentication.
         /// </summary>
         [Input("protectedEnabled")]
         public Input<bool>? ProtectedEnabled { get; set; }
@@ -308,11 +324,13 @@ namespace Pulumi.AliCloud.PrivateLink
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
-        [Input("securityGroupIds", required: true)]
+        [Input("securityGroupIds")]
         private InputList<string>? _securityGroupIds;
 
         /// <summary>
-        /// The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.The endpoint can be associated with up to 10 security groups.
+        /// The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.
+        /// 
+        /// The endpoint can be associated with up to 10 security groups.
         /// </summary>
         public InputList<string> SecurityGroupIds
         {
@@ -371,7 +389,13 @@ namespace Pulumi.AliCloud.PrivateLink
     public sealed class VpcEndpointState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s. Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
+        /// The IP address version.
+        /// </summary>
+        [Input("addressIpVersion")]
+        public Input<string>? AddressIpVersion { get; set; }
+
+        /// <summary>
+        /// The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
@@ -390,8 +414,6 @@ namespace Pulumi.AliCloud.PrivateLink
 
         /// <summary>
         /// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-        /// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-        /// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -415,24 +437,30 @@ namespace Pulumi.AliCloud.PrivateLink
         public Input<string>? EndpointDomain { get; set; }
 
         /// <summary>
-        /// The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        /// The endpoint type.
+        /// 
+        /// Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
         /// </summary>
         [Input("endpointType")]
         public Input<string>? EndpointType { get; set; }
 
         /// <summary>
-        /// RAM access policies.
+        /// RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
         /// </summary>
         [Input("policyDocument")]
         public Input<string>? PolicyDocument { get; set; }
 
         /// <summary>
         /// Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
-        /// - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
-        /// - **false (default)**: disables user authentication.
         /// </summary>
         [Input("protectedEnabled")]
         public Input<bool>? ProtectedEnabled { get; set; }
+
+        /// <summary>
+        /// (Available since v1.239.0) The region ID of the endpoint.
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
 
         /// <summary>
         /// The resource group ID.
@@ -444,7 +472,9 @@ namespace Pulumi.AliCloud.PrivateLink
         private InputList<string>? _securityGroupIds;
 
         /// <summary>
-        /// The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.The endpoint can be associated with up to 10 security groups.
+        /// The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.
+        /// 
+        /// The endpoint can be associated with up to 10 security groups.
         /// </summary>
         public InputList<string> SecurityGroupIds
         {
