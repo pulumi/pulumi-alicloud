@@ -16,9 +16,13 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.104.0`. Please use resource alicloud_kvstore_instance.
+ * Provides a Backup Policy for Tair (Redis OSS-Compatible) And Memcache (KVStore) resource.
  * 
- * Provides a backup policy for Tair (Redis OSS-Compatible) And Memcache (KVStore) resource.
+ * For information about Backup Policy for Tair (Redis OSS-Compatible) And Memcache (KVStore) and how to use it, see [What is Backup Policy](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-modifybackuppolicy-redis).
+ * 
+ * &gt; **NOTE:** Available since v1.15.0.
+ * 
+ * &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.104.0`. Please use resource alicloud_kvstore_instance.
  * 
  * ## Example Usage
  * 
@@ -56,7 +60,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("kvstorebackuppolicyvpc");
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = KvstoreFunctions.getZones();
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
@@ -105,38 +109,38 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Tair (Redis OSS-Compatible) And Memcache (KVStore) backup policy can be imported using the id, e.g.
+ * Tair (Redis OSS-Compatible) And Memcache (KVStore) Backup Policy can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:kvstore/backupPolicy:BackupPolicy example r-abc12345678
+ * $ pulumi import alicloud:kvstore/backupPolicy:BackupPolicy example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:kvstore/backupPolicy:BackupPolicy")
 public class BackupPolicy extends com.pulumi.resources.CustomResource {
     /**
-     * Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+     * Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
      * 
      */
     @Export(name="backupPeriods", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> backupPeriods;
 
     /**
-     * @return Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+     * @return Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
      * 
      */
     public Output<List<String>> backupPeriods() {
         return this.backupPeriods;
     }
     /**
-     * Backup time, in the format of HH:mmZ- HH:mm Z
+     * Backup time, in the format of HH:mmZ- HH:mm Z.
      * 
      */
     @Export(name="backupTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> backupTime;
 
     /**
-     * @return Backup time, in the format of HH:mmZ- HH:mm Z
+     * @return Backup time, in the format of HH:mmZ- HH:mm Z.
      * 
      */
     public Output<Optional<String>> backupTime() {

@@ -879,6 +879,7 @@
         "expressconnect/index.ts",
         "expressconnect/physicalConnection.ts",
         "expressconnect/routerExpressConnectRouter.ts",
+        "expressconnect/routerGrantAssociation.ts",
         "expressconnect/routerInterface.ts",
         "expressconnect/routerTrAssociation.ts",
         "expressconnect/routerVbrChildInstance.ts",

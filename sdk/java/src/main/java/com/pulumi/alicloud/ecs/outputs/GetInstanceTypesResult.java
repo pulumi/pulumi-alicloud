@@ -24,7 +24,7 @@ public final class GetInstanceTypesResult {
      */
     private @Nullable Integer cpuCoreCount;
     /**
-     * @return The maximum number of network interfaces that an instance type can be attached to.
+     * @return (Deprecated since v1.239.0) The maximum number of ENIs per instance. It sames as `eni_quantity`.
      * 
      */
     private @Nullable Integer eniAmount;
@@ -76,7 +76,7 @@ public final class GetInstanceTypesResult {
         return Optional.ofNullable(this.cpuCoreCount);
     }
     /**
-     * @return The maximum number of network interfaces that an instance type can be attached to.
+     * @return (Deprecated since v1.239.0) The maximum number of ENIs per instance. It sames as `eni_quantity`.
      * 
      */
     public Optional<Integer> eniAmount() {

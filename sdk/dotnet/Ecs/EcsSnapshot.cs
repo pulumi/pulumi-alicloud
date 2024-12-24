@@ -65,7 +65,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
-    ///         Name = name,
+    ///         SecurityGroupName = name,
     ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 
@@ -136,6 +136,12 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> Category { get; private set; } = null!;
 
         /// <summary>
+        /// (Available since v1.239.0) The time when the snapshot was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
         /// The description of the snapshot.
         /// </summary>
         [Output("description")]
@@ -172,7 +178,13 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the resource group.
+        /// (Available since v1.239.0) The region ID of the snapshot.
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the resource group. **NOTE:** From version 1.239.0, `resource_group_id` can be modified.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string?> ResourceGroupId { get; private set; } = null!;
@@ -290,7 +302,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID of the resource group.
+        /// The ID of the resource group. **NOTE:** From version 1.239.0, `resource_group_id` can be modified.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -334,6 +346,12 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Category { get; set; }
 
         /// <summary>
+        /// (Available since v1.239.0) The time when the snapshot was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
         /// The description of the snapshot.
         /// </summary>
         [Input("description")]
@@ -370,7 +388,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID of the resource group.
+        /// (Available since v1.239.0) The region ID of the snapshot.
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group. **NOTE:** From version 1.239.0, `resource_group_id` can be modified.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }

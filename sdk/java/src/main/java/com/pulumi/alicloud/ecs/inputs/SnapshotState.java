@@ -25,6 +25,13 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.category);
     }
 
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
     /**
      * Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      * 
@@ -125,6 +132,13 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
+    @Import(name="regionId")
+    private @Nullable Output<String> regionId;
+
+    public Optional<Output<String>> regionId() {
+        return Optional.ofNullable(this.regionId);
+    }
+
     /**
      * The ID of the resource group.
      * 
@@ -180,12 +194,14 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
 
     private SnapshotState(SnapshotState $) {
         this.category = $.category;
+        this.createTime = $.createTime;
         this.description = $.description;
         this.diskId = $.diskId;
         this.force = $.force;
         this.instantAccess = $.instantAccess;
         this.instantAccessRetentionDays = $.instantAccessRetentionDays;
         this.name = $.name;
+        this.regionId = $.regionId;
         this.resourceGroupId = $.resourceGroupId;
         this.retentionDays = $.retentionDays;
         this.snapshotName = $.snapshotName;
@@ -218,6 +234,15 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
 
         public Builder category(String category) {
             return category(Output.of(category));
+        }
+
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
         }
 
         /**
@@ -350,6 +375,15 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
         @Deprecated /* Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead. */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        public Builder regionId(@Nullable Output<String> regionId) {
+            $.regionId = regionId;
+            return this;
+        }
+
+        public Builder regionId(String regionId) {
+            return regionId(Output.of(regionId));
         }
 
         /**

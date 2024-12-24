@@ -975,6 +975,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.storageType;
     }
     /**
+     * Whether the cluster has enabled strong data consistency across multiple zones. Valid values are `ON`, `OFF`. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+     * 
+     */
+    @Export(name="strictConsistency", refs={String.class}, tree="[0]")
+    private Output<String> strictConsistency;
+
+    /**
+     * @return Whether the cluster has enabled strong data consistency across multiple zones. Valid values are `ON`, `OFF`. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+     * 
+     */
+    public Output<String> strictConsistency() {
+        return this.strictConsistency;
+    }
+    /**
      * The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
      * 
      */

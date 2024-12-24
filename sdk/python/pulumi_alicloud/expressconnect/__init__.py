@@ -17,6 +17,7 @@ from .get_virtual_physical_connections import *
 from .grant_rule_to_cen import *
 from .physical_connection import *
 from .router_express_connect_router import *
+from .router_grant_association import *
 from .router_interface import *
 from .router_tr_association import *
 from .router_vbr_child_instance import *

@@ -65,6 +65,10 @@ export class VpcEndpointService extends pulumi.CustomResource {
     }
 
     /**
+     * The IP address version.
+     */
+    public readonly addressIpVersion!: pulumi.Output<string>;
+    /**
      * Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
      */
     public readonly autoAcceptConnection!: pulumi.Output<boolean | undefined>;
@@ -144,6 +148,7 @@ export class VpcEndpointService extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VpcEndpointServiceState | undefined;
+            resourceInputs["addressIpVersion"] = state ? state.addressIpVersion : undefined;
             resourceInputs["autoAcceptConnection"] = state ? state.autoAcceptConnection : undefined;
             resourceInputs["connectBandwidth"] = state ? state.connectBandwidth : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
@@ -162,6 +167,7 @@ export class VpcEndpointService extends pulumi.CustomResource {
             resourceInputs["zoneAffinityEnabled"] = state ? state.zoneAffinityEnabled : undefined;
         } else {
             const args = argsOrState as VpcEndpointServiceArgs | undefined;
+            resourceInputs["addressIpVersion"] = args ? args.addressIpVersion : undefined;
             resourceInputs["autoAcceptConnection"] = args ? args.autoAcceptConnection : undefined;
             resourceInputs["connectBandwidth"] = args ? args.connectBandwidth : undefined;
             resourceInputs["dryRun"] = args ? args.dryRun : undefined;
@@ -188,6 +194,10 @@ export class VpcEndpointService extends pulumi.CustomResource {
  * Input properties used for looking up and filtering VpcEndpointService resources.
  */
 export interface VpcEndpointServiceState {
+    /**
+     * The IP address version.
+     */
+    addressIpVersion?: pulumi.Input<string>;
     /**
      * Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
      */
@@ -260,6 +270,10 @@ export interface VpcEndpointServiceState {
  * The set of arguments for constructing a VpcEndpointService resource.
  */
 export interface VpcEndpointServiceArgs {
+    /**
+     * The IP address version.
+     */
+    addressIpVersion?: pulumi.Input<string>;
     /**
      * Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
      */
