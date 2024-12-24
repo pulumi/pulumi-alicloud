@@ -326,6 +326,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly storageType!: pulumi.Output<string>;
     /**
+     * Whether the cluster has enabled strong data consistency across multiple zones. Valid values are `ON`, `OFF`. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+     */
+    public readonly strictConsistency!: pulumi.Output<string>;
+    /**
      * The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
      */
     public readonly subCategory!: pulumi.Output<string>;
@@ -444,6 +448,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["storagePayType"] = state ? state.storagePayType : undefined;
             resourceInputs["storageSpace"] = state ? state.storageSpace : undefined;
             resourceInputs["storageType"] = state ? state.storageType : undefined;
+            resourceInputs["strictConsistency"] = state ? state.strictConsistency : undefined;
             resourceInputs["subCategory"] = state ? state.subCategory : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["targetDbRevisionVersionCode"] = state ? state.targetDbRevisionVersionCode : undefined;
@@ -522,6 +527,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["storagePayType"] = args ? args.storagePayType : undefined;
             resourceInputs["storageSpace"] = args ? args.storageSpace : undefined;
             resourceInputs["storageType"] = args ? args.storageType : undefined;
+            resourceInputs["strictConsistency"] = args ? args.strictConsistency : undefined;
             resourceInputs["subCategory"] = args ? args.subCategory : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["targetDbRevisionVersionCode"] = args ? args.targetDbRevisionVersionCode : undefined;
@@ -828,6 +834,10 @@ export interface ClusterState {
      * The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`, `ESSDPL0`, `ESSDAUTOPL`. The standard version only supports MySQL and PostgreSQL.
      */
     storageType?: pulumi.Input<string>;
+    /**
+     * Whether the cluster has enabled strong data consistency across multiple zones. Valid values are `ON`, `OFF`. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+     */
+    strictConsistency?: pulumi.Input<string>;
     /**
      * The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
      */
@@ -1138,6 +1148,10 @@ export interface ClusterArgs {
      * The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`, `ESSDPL0`, `ESSDAUTOPL`. The standard version only supports MySQL and PostgreSQL.
      */
     storageType?: pulumi.Input<string>;
+    /**
+     * Whether the cluster has enabled strong data consistency across multiple zones. Valid values are `ON`, `OFF`. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+     */
+    strictConsistency?: pulumi.Input<string>;
     /**
      * The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
      */

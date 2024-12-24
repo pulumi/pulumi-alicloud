@@ -185,7 +185,7 @@ type GetInstanceTypesResult struct {
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// Number of CPU cores.
 	CpuCoreCount *int `pulumi:"cpuCoreCount"`
-	// The maximum number of network interfaces that an instance type can be attached to.
+	// (Deprecated since v1.239.0) The maximum number of ENIs per instance. It sames as `eniQuantity`.
 	EniAmount *int    `pulumi:"eniAmount"`
 	GpuAmount *int    `pulumi:"gpuAmount"`
 	GpuSpec   *string `pulumi:"gpuSpec"`
@@ -293,7 +293,7 @@ func (o GetInstanceTypesResultOutput) CpuCoreCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetInstanceTypesResult) *int { return v.CpuCoreCount }).(pulumi.IntPtrOutput)
 }
 
-// The maximum number of network interfaces that an instance type can be attached to.
+// (Deprecated since v1.239.0) The maximum number of ENIs per instance. It sames as `eniQuantity`.
 func (o GetInstanceTypesResultOutput) EniAmount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetInstanceTypesResult) *int { return v.EniAmount }).(pulumi.IntPtrOutput)
 }

@@ -77,6 +77,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:privatelink/vpcEndpointService:VpcEndpointService")
 public class VpcEndpointService extends com.pulumi.resources.CustomResource {
     /**
+     * The IP address version.
+     * 
+     */
+    @Export(name="addressIpVersion", refs={String.class}, tree="[0]")
+    private Output<String> addressIpVersion;
+
+    /**
+     * @return The IP address version.
+     * 
+     */
+    public Output<String> addressIpVersion() {
+        return this.addressIpVersion;
+    }
+    /**
      * Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
      * 
      */

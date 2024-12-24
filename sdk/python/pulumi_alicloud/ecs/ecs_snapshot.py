@@ -39,7 +39,7 @@ class EcsSnapshotArgs:
         :param pulumi.Input[bool] instant_access: Field `instant_access` has been deprecated from provider version 1.231.0.
         :param pulumi.Input[int] instant_access_retention_days: Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group. **NOTE:** From version 1.239.0, `resource_group_id` can be modified.
         :param pulumi.Input[int] retention_days: The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retention_days` can be modified.
         :param pulumi.Input[str] snapshot_name: The name of the snapshot.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
@@ -166,7 +166,7 @@ class EcsSnapshotArgs:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the resource group.
+        The ID of the resource group. **NOTE:** From version 1.239.0, `resource_group_id` can be modified.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -215,12 +215,14 @@ class EcsSnapshotArgs:
 class _EcsSnapshotState:
     def __init__(__self__, *,
                  category: Optional[pulumi.Input[str]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_id: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
                  instant_access: Optional[pulumi.Input[bool]] = None,
                  instant_access_retention_days: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 region_id: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None,
                  snapshot_name: Optional[pulumi.Input[str]] = None,
@@ -229,13 +231,15 @@ class _EcsSnapshotState:
         """
         Input properties used for looking up and filtering EcsSnapshot resources.
         :param pulumi.Input[str] category: The category of the snapshot. Valid values:
+        :param pulumi.Input[str] create_time: (Available since v1.239.0) The time when the snapshot was created.
         :param pulumi.Input[str] description: The description of the snapshot.
         :param pulumi.Input[str] disk_id: The ID of the disk.
         :param pulumi.Input[bool] force: Specifies whether to force delete the snapshot that has been used to create disks. Valid values:
         :param pulumi.Input[bool] instant_access: Field `instant_access` has been deprecated from provider version 1.231.0.
         :param pulumi.Input[int] instant_access_retention_days: Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[str] region_id: (Available since v1.239.0) The region ID of the snapshot.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group. **NOTE:** From version 1.239.0, `resource_group_id` can be modified.
         :param pulumi.Input[int] retention_days: The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retention_days` can be modified.
         :param pulumi.Input[str] snapshot_name: The name of the snapshot.
         :param pulumi.Input[str] status: The status of the Snapshot.
@@ -243,6 +247,8 @@ class _EcsSnapshotState:
         """
         if category is not None:
             pulumi.set(__self__, "category", category)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disk_id is not None:
@@ -264,6 +270,8 @@ class _EcsSnapshotState:
             pulumi.log.warn("""name is deprecated: Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if retention_days is not None:
@@ -286,6 +294,18 @@ class _EcsSnapshotState:
     @category.setter
     def category(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "category", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.239.0) The time when the snapshot was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
 
     @property
     @pulumi.getter
@@ -363,10 +383,22 @@ class _EcsSnapshotState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.239.0) The region ID of the snapshot.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region_id", value)
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the resource group.
+        The ID of the resource group. **NOTE:** From version 1.239.0, `resource_group_id` can be modified.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -475,7 +507,7 @@ class EcsSnapshot(pulumi.CustomResource):
             cidr_block="192.168.192.0/24",
             zone_id=default.zones[0].id)
         default_security_group = alicloud.ecs.SecurityGroup("default",
-            name=name,
+            security_group_name=name,
             vpc_id=default_network.id)
         default_instance = alicloud.ecs.Instance("default",
             image_id=default_get_images.images[0].id,
@@ -523,7 +555,7 @@ class EcsSnapshot(pulumi.CustomResource):
         :param pulumi.Input[bool] instant_access: Field `instant_access` has been deprecated from provider version 1.231.0.
         :param pulumi.Input[int] instant_access_retention_days: Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group. **NOTE:** From version 1.239.0, `resource_group_id` can be modified.
         :param pulumi.Input[int] retention_days: The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retention_days` can be modified.
         :param pulumi.Input[str] snapshot_name: The name of the snapshot.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
@@ -569,7 +601,7 @@ class EcsSnapshot(pulumi.CustomResource):
             cidr_block="192.168.192.0/24",
             zone_id=default.zones[0].id)
         default_security_group = alicloud.ecs.SecurityGroup("default",
-            name=name,
+            security_group_name=name,
             vpc_id=default_network.id)
         default_instance = alicloud.ecs.Instance("default",
             image_id=default_get_images.images[0].id,
@@ -656,6 +688,8 @@ class EcsSnapshot(pulumi.CustomResource):
             __props__.__dict__["retention_days"] = retention_days
             __props__.__dict__["snapshot_name"] = snapshot_name
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["region_id"] = None
             __props__.__dict__["status"] = None
         super(EcsSnapshot, __self__).__init__(
             'alicloud:ecs/ecsSnapshot:EcsSnapshot',
@@ -668,12 +702,14 @@ class EcsSnapshot(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             category: Optional[pulumi.Input[str]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disk_id: Optional[pulumi.Input[str]] = None,
             force: Optional[pulumi.Input[bool]] = None,
             instant_access: Optional[pulumi.Input[bool]] = None,
             instant_access_retention_days: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            region_id: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             retention_days: Optional[pulumi.Input[int]] = None,
             snapshot_name: Optional[pulumi.Input[str]] = None,
@@ -687,13 +723,15 @@ class EcsSnapshot(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] category: The category of the snapshot. Valid values:
+        :param pulumi.Input[str] create_time: (Available since v1.239.0) The time when the snapshot was created.
         :param pulumi.Input[str] description: The description of the snapshot.
         :param pulumi.Input[str] disk_id: The ID of the disk.
         :param pulumi.Input[bool] force: Specifies whether to force delete the snapshot that has been used to create disks. Valid values:
         :param pulumi.Input[bool] instant_access: Field `instant_access` has been deprecated from provider version 1.231.0.
         :param pulumi.Input[int] instant_access_retention_days: Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[str] region_id: (Available since v1.239.0) The region ID of the snapshot.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group. **NOTE:** From version 1.239.0, `resource_group_id` can be modified.
         :param pulumi.Input[int] retention_days: The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retention_days` can be modified.
         :param pulumi.Input[str] snapshot_name: The name of the snapshot.
         :param pulumi.Input[str] status: The status of the Snapshot.
@@ -704,12 +742,14 @@ class EcsSnapshot(pulumi.CustomResource):
         __props__ = _EcsSnapshotState.__new__(_EcsSnapshotState)
 
         __props__.__dict__["category"] = category
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["disk_id"] = disk_id
         __props__.__dict__["force"] = force
         __props__.__dict__["instant_access"] = instant_access
         __props__.__dict__["instant_access_retention_days"] = instant_access_retention_days
         __props__.__dict__["name"] = name
+        __props__.__dict__["region_id"] = region_id
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["retention_days"] = retention_days
         __props__.__dict__["snapshot_name"] = snapshot_name
@@ -724,6 +764,14 @@ class EcsSnapshot(pulumi.CustomResource):
         The category of the snapshot. Valid values:
         """
         return pulumi.get(self, "category")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.239.0) The time when the snapshot was created.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter
@@ -777,10 +825,18 @@ class EcsSnapshot(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.239.0) The region ID of the snapshot.
+        """
+        return pulumi.get(self, "region_id")
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The ID of the resource group.
+        The ID of the resource group. **NOTE:** From version 1.239.0, `resource_group_id` can be modified.
         """
         return pulumi.get(self, "resource_group_id")
 

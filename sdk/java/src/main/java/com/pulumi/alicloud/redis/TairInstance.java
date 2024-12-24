@@ -357,6 +357,20 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
         return this.paramNoLooseSentinelPasswordFreeAccess;
     }
     /**
+     * After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See https://help.aliyun.com/zh/redis/user-guide/parameter-support for details
+     * 
+     */
+    @Export(name="paramNoLooseSentinelPasswordFreeCommands", refs={String.class}, tree="[0]")
+    private Output<String> paramNoLooseSentinelPasswordFreeCommands;
+
+    /**
+     * @return After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See https://help.aliyun.com/zh/redis/user-guide/parameter-support for details
+     * 
+     */
+    public Output<String> paramNoLooseSentinelPasswordFreeCommands() {
+        return this.paramNoLooseSentinelPasswordFreeCommands;
+    }
+    /**
      * The value is semisync or async. The default value is async.
      * 
      * The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance 。

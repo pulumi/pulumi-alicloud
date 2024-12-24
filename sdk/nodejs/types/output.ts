@@ -23561,6 +23561,18 @@ export namespace ecs {
          */
         eniAmount: number;
         /**
+         * (Available since v1.239.0) The maximum number of IPv6 addresses per ENI.
+         */
+        eniIpv6AddressQuantity: number;
+        /**
+         * (Available since v1.239.0) The maximum number of IPv4 addresses per ENI.
+         */
+        eniPrivateIpAddressQuantity: number;
+        /**
+         * (Available since v1.239.0) The maximum number of ENIs per instance.
+         */
+        eniQuantity: number;
+        /**
          * The instance type family.
          */
         family: string;
@@ -23582,6 +23594,10 @@ export namespace ecs {
          */
         localStorage: outputs.ecs.GetInstanceTypesInstanceTypeLocalStorage;
         /**
+         * (Available since v1.239.0) The maximum number of queues per ENI, including primary and secondary ENIs.
+         */
+        maximumQueueNumberPerEni: number;
+        /**
          * Filter the results to a specific memory size in GB.
          */
         memorySize: number;
@@ -23595,6 +23611,18 @@ export namespace ecs {
          * The price of instance type.
          */
         price: string;
+        /**
+         * (Available since v1.239.0) The default number of queues per primary ENI.
+         */
+        primaryEniQueueNumber: number;
+        /**
+         * (Available since v1.239.0) The default number of queues per secondary ENI.
+         */
+        secondaryEniQueueNumber: number;
+        /**
+         * (Available since v1.239.0) The maximum number of queues on ENIs that the instance type supports.
+         */
+        totalEniQueueQuantity: number;
     }
 
     export interface GetInstanceTypesInstanceTypeBurstableInstance {

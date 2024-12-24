@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Security Group resource.
+// Provides a ECS Security Group resource.
 //
-// For information about Security Group and how to use it, see [What is Security Group](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-createsecuritygroup).
+// For information about ECS Security Group and how to use it, see [What is Security Group](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-createsecuritygroup).
 //
 // > **NOTE:** Available since v1.0.0.
 //
@@ -38,8 +38,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				Name:        pulumi.String("terraform-example"),
-//				Description: pulumi.String("New security group"),
+//				SecurityGroupName: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
@@ -65,16 +64,16 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+//			_, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String("terraform-example"),
-//				CidrBlock: pulumi.String("10.1.0.0/21"),
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String("terraform-example"),
-//				VpcId: vpc.ID(),
+//			_, err = ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+//				SecurityGroupName: pulumi.String("terraform-example"),
+//				VpcId:             _default.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -92,34 +91,40 @@ import (
 //
 // ## Import
 //
-// Security Group can be imported using the id, e.g.
+// ECS Security Group can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:ecs/securityGroup:SecurityGroup example sg-abc123456
+// $ pulumi import alicloud:ecs/securityGroup:SecurityGroup example <id>
 // ```
 type SecurityGroup struct {
 	pulumi.CustomResourceState
 
-	// The security group description. Defaults to null.
+	// (Available since v1.239.0) The time when the security group was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The description of the security group. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
 	//
-	// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
-	//
-	// Deprecated: Field `innerAccess` has been deprecated from provider version 1.55.3. Use `innerAccessPolicy` replaces it.
+	// Deprecated: Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
 	InnerAccess pulumi.BoolOutput `pulumi:"innerAccess"`
-	// The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
+	// The internal access control policy of the security group. Valid values:
+	// - `Accept`: The internal interconnectivity policy.
+	// - `Drop`: The internal isolation policy.
 	InnerAccessPolicy pulumi.StringOutput `pulumi:"innerAccessPolicy"`
-	// The name of the security group. Defaults to null.
+	// Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
+	//
+	// Deprecated: Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resourceGroupId` can be modified.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
-	// The type of the security group. Valid values:
+	// The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
+	SecurityGroupName pulumi.StringOutput `pulumi:"securityGroupName"`
+	// The type of the security group. Default value: `normal`. Valid values:
 	SecurityGroupType pulumi.StringOutput `pulumi:"securityGroupType"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The ID of the VPC.
-	VpcId pulumi.StringPtrOutput `pulumi:"vpcId"`
+	// The ID of the VPC in which you want to create the security group.
+	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 }
 
 // NewSecurityGroup registers a new resource with the given unique name, arguments, and options.
@@ -152,48 +157,60 @@ func GetSecurityGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SecurityGroup resources.
 type securityGroupState struct {
-	// The security group description. Defaults to null.
+	// (Available since v1.239.0) The time when the security group was created.
+	CreateTime *string `pulumi:"createTime"`
+	// The description of the security group. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`
 	// Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
 	//
-	// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
-	//
-	// Deprecated: Field `innerAccess` has been deprecated from provider version 1.55.3. Use `innerAccessPolicy` replaces it.
+	// Deprecated: Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
 	InnerAccess *bool `pulumi:"innerAccess"`
-	// The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
+	// The internal access control policy of the security group. Valid values:
+	// - `Accept`: The internal interconnectivity policy.
+	// - `Drop`: The internal isolation policy.
 	InnerAccessPolicy *string `pulumi:"innerAccessPolicy"`
-	// The name of the security group. Defaults to null.
+	// Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
+	//
+	// Deprecated: Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
 	Name *string `pulumi:"name"`
 	// The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resourceGroupId` can be modified.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The type of the security group. Valid values:
+	// The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
+	SecurityGroupName *string `pulumi:"securityGroupName"`
+	// The type of the security group. Default value: `normal`. Valid values:
 	SecurityGroupType *string `pulumi:"securityGroupType"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
-	// The ID of the VPC.
+	// The ID of the VPC in which you want to create the security group.
 	VpcId *string `pulumi:"vpcId"`
 }
 
 type SecurityGroupState struct {
-	// The security group description. Defaults to null.
+	// (Available since v1.239.0) The time when the security group was created.
+	CreateTime pulumi.StringPtrInput
+	// The description of the security group. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrInput
 	// Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
 	//
-	// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
-	//
-	// Deprecated: Field `innerAccess` has been deprecated from provider version 1.55.3. Use `innerAccessPolicy` replaces it.
+	// Deprecated: Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
 	InnerAccess pulumi.BoolPtrInput
-	// The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
+	// The internal access control policy of the security group. Valid values:
+	// - `Accept`: The internal interconnectivity policy.
+	// - `Drop`: The internal isolation policy.
 	InnerAccessPolicy pulumi.StringPtrInput
-	// The name of the security group. Defaults to null.
+	// Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
+	//
+	// Deprecated: Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
 	Name pulumi.StringPtrInput
 	// The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resourceGroupId` can be modified.
 	ResourceGroupId pulumi.StringPtrInput
-	// The type of the security group. Valid values:
+	// The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
+	SecurityGroupName pulumi.StringPtrInput
+	// The type of the security group. Default value: `normal`. Valid values:
 	SecurityGroupType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
-	// The ID of the VPC.
+	// The ID of the VPC in which you want to create the security group.
 	VpcId pulumi.StringPtrInput
 }
 
@@ -202,49 +219,57 @@ func (SecurityGroupState) ElementType() reflect.Type {
 }
 
 type securityGroupArgs struct {
-	// The security group description. Defaults to null.
+	// The description of the security group. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`
 	// Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
 	//
-	// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
-	//
-	// Deprecated: Field `innerAccess` has been deprecated from provider version 1.55.3. Use `innerAccessPolicy` replaces it.
+	// Deprecated: Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
 	InnerAccess *bool `pulumi:"innerAccess"`
-	// The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
+	// The internal access control policy of the security group. Valid values:
+	// - `Accept`: The internal interconnectivity policy.
+	// - `Drop`: The internal isolation policy.
 	InnerAccessPolicy *string `pulumi:"innerAccessPolicy"`
-	// The name of the security group. Defaults to null.
+	// Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
+	//
+	// Deprecated: Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
 	Name *string `pulumi:"name"`
 	// The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resourceGroupId` can be modified.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The type of the security group. Valid values:
+	// The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
+	SecurityGroupName *string `pulumi:"securityGroupName"`
+	// The type of the security group. Default value: `normal`. Valid values:
 	SecurityGroupType *string `pulumi:"securityGroupType"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
-	// The ID of the VPC.
+	// The ID of the VPC in which you want to create the security group.
 	VpcId *string `pulumi:"vpcId"`
 }
 
 // The set of arguments for constructing a SecurityGroup resource.
 type SecurityGroupArgs struct {
-	// The security group description. Defaults to null.
+	// The description of the security group. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrInput
 	// Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
 	//
-	// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
-	//
-	// Deprecated: Field `innerAccess` has been deprecated from provider version 1.55.3. Use `innerAccessPolicy` replaces it.
+	// Deprecated: Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
 	InnerAccess pulumi.BoolPtrInput
-	// The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
+	// The internal access control policy of the security group. Valid values:
+	// - `Accept`: The internal interconnectivity policy.
+	// - `Drop`: The internal isolation policy.
 	InnerAccessPolicy pulumi.StringPtrInput
-	// The name of the security group. Defaults to null.
+	// Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
+	//
+	// Deprecated: Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
 	Name pulumi.StringPtrInput
 	// The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resourceGroupId` can be modified.
 	ResourceGroupId pulumi.StringPtrInput
-	// The type of the security group. Valid values:
+	// The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
+	SecurityGroupName pulumi.StringPtrInput
+	// The type of the security group. Default value: `normal`. Valid values:
 	SecurityGroupType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
-	// The ID of the VPC.
+	// The ID of the VPC in which you want to create the security group.
 	VpcId pulumi.StringPtrInput
 }
 
@@ -335,26 +360,33 @@ func (o SecurityGroupOutput) ToSecurityGroupOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The security group description. Defaults to null.
+// (Available since v1.239.0) The time when the security group was created.
+func (o SecurityGroupOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityGroup) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the security group. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
 func (o SecurityGroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
 //
-// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
-//
-// Deprecated: Field `innerAccess` has been deprecated from provider version 1.55.3. Use `innerAccessPolicy` replaces it.
+// Deprecated: Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
 func (o SecurityGroupOutput) InnerAccess() pulumi.BoolOutput {
 	return o.ApplyT(func(v *SecurityGroup) pulumi.BoolOutput { return v.InnerAccess }).(pulumi.BoolOutput)
 }
 
-// The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
+// The internal access control policy of the security group. Valid values:
+// - `Accept`: The internal interconnectivity policy.
+// - `Drop`: The internal isolation policy.
 func (o SecurityGroupOutput) InnerAccessPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGroup) pulumi.StringOutput { return v.InnerAccessPolicy }).(pulumi.StringOutput)
 }
 
-// The name of the security group. Defaults to null.
+// Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
+//
+// Deprecated: Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
 func (o SecurityGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -364,7 +396,12 @@ func (o SecurityGroupOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityGroup) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
-// The type of the security group. Valid values:
+// The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
+func (o SecurityGroupOutput) SecurityGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityGroup) pulumi.StringOutput { return v.SecurityGroupName }).(pulumi.StringOutput)
+}
+
+// The type of the security group. Default value: `normal`. Valid values:
 func (o SecurityGroupOutput) SecurityGroupType() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGroup) pulumi.StringOutput { return v.SecurityGroupType }).(pulumi.StringOutput)
 }
@@ -374,9 +411,9 @@ func (o SecurityGroupOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SecurityGroup) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The ID of the VPC.
-func (o SecurityGroupOutput) VpcId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SecurityGroup) pulumi.StringPtrOutput { return v.VpcId }).(pulumi.StringPtrOutput)
+// The ID of the VPC in which you want to create the security group.
+func (o SecurityGroupOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityGroup) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }
 
 type SecurityGroupArrayOutput struct{ *pulumi.OutputState }

@@ -80,7 +80,7 @@ import (
 // return err
 // }
 // defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-// Name: pulumi.String(name),
+// SecurityGroupName: pulumi.String(name),
 // VpcId: defaultNetwork.ID(),
 // })
 // if err != nil {
@@ -152,6 +152,8 @@ type EcsSnapshot struct {
 
 	// The category of the snapshot. Valid values:
 	Category pulumi.StringOutput `pulumi:"category"`
+	// (Available since v1.239.0) The time when the snapshot was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The description of the snapshot.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The ID of the disk.
@@ -170,7 +172,9 @@ type EcsSnapshot struct {
 	//
 	// Deprecated: Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The ID of the resource group.
+	// (Available since v1.239.0) The region ID of the snapshot.
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
+	// The ID of the resource group. **NOTE:** From version 1.239.0, `resourceGroupId` can be modified.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
 	// The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retentionDays` can be modified.
 	RetentionDays pulumi.IntPtrOutput `pulumi:"retentionDays"`
@@ -217,6 +221,8 @@ func GetEcsSnapshot(ctx *pulumi.Context,
 type ecsSnapshotState struct {
 	// The category of the snapshot. Valid values:
 	Category *string `pulumi:"category"`
+	// (Available since v1.239.0) The time when the snapshot was created.
+	CreateTime *string `pulumi:"createTime"`
 	// The description of the snapshot.
 	Description *string `pulumi:"description"`
 	// The ID of the disk.
@@ -235,7 +241,9 @@ type ecsSnapshotState struct {
 	//
 	// Deprecated: Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
 	Name *string `pulumi:"name"`
-	// The ID of the resource group.
+	// (Available since v1.239.0) The region ID of the snapshot.
+	RegionId *string `pulumi:"regionId"`
+	// The ID of the resource group. **NOTE:** From version 1.239.0, `resourceGroupId` can be modified.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retentionDays` can be modified.
 	RetentionDays *int `pulumi:"retentionDays"`
@@ -250,6 +258,8 @@ type ecsSnapshotState struct {
 type EcsSnapshotState struct {
 	// The category of the snapshot. Valid values:
 	Category pulumi.StringPtrInput
+	// (Available since v1.239.0) The time when the snapshot was created.
+	CreateTime pulumi.StringPtrInput
 	// The description of the snapshot.
 	Description pulumi.StringPtrInput
 	// The ID of the disk.
@@ -268,7 +278,9 @@ type EcsSnapshotState struct {
 	//
 	// Deprecated: Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
 	Name pulumi.StringPtrInput
-	// The ID of the resource group.
+	// (Available since v1.239.0) The region ID of the snapshot.
+	RegionId pulumi.StringPtrInput
+	// The ID of the resource group. **NOTE:** From version 1.239.0, `resourceGroupId` can be modified.
 	ResourceGroupId pulumi.StringPtrInput
 	// The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retentionDays` can be modified.
 	RetentionDays pulumi.IntPtrInput
@@ -305,7 +317,7 @@ type ecsSnapshotArgs struct {
 	//
 	// Deprecated: Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
 	Name *string `pulumi:"name"`
-	// The ID of the resource group.
+	// The ID of the resource group. **NOTE:** From version 1.239.0, `resourceGroupId` can be modified.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retentionDays` can be modified.
 	RetentionDays *int `pulumi:"retentionDays"`
@@ -337,7 +349,7 @@ type EcsSnapshotArgs struct {
 	//
 	// Deprecated: Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
 	Name pulumi.StringPtrInput
-	// The ID of the resource group.
+	// The ID of the resource group. **NOTE:** From version 1.239.0, `resourceGroupId` can be modified.
 	ResourceGroupId pulumi.StringPtrInput
 	// The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retentionDays` can be modified.
 	RetentionDays pulumi.IntPtrInput
@@ -439,6 +451,11 @@ func (o EcsSnapshotOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsSnapshot) pulumi.StringOutput { return v.Category }).(pulumi.StringOutput)
 }
 
+// (Available since v1.239.0) The time when the snapshot was created.
+func (o EcsSnapshotOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsSnapshot) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
 // The description of the snapshot.
 func (o EcsSnapshotOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsSnapshot) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -475,7 +492,12 @@ func (o EcsSnapshotOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsSnapshot) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID of the resource group.
+// (Available since v1.239.0) The region ID of the snapshot.
+func (o EcsSnapshotOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsSnapshot) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group. **NOTE:** From version 1.239.0, `resourceGroupId` can be modified.
 func (o EcsSnapshotOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsSnapshot) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
