@@ -19,6 +19,21 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
     public static final VpcEndpointServiceArgs Empty = new VpcEndpointServiceArgs();
 
     /**
+     * The IP address version.
+     * 
+     */
+    @Import(name="addressIpVersion")
+    private @Nullable Output<String> addressIpVersion;
+
+    /**
+     * @return The IP address version.
+     * 
+     */
+    public Optional<Output<String>> addressIpVersion() {
+        return Optional.ofNullable(this.addressIpVersion);
+    }
+
+    /**
      * Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
      * 
      */
@@ -175,6 +190,7 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
     private VpcEndpointServiceArgs() {}
 
     private VpcEndpointServiceArgs(VpcEndpointServiceArgs $) {
+        this.addressIpVersion = $.addressIpVersion;
         this.autoAcceptConnection = $.autoAcceptConnection;
         this.connectBandwidth = $.connectBandwidth;
         this.dryRun = $.dryRun;
@@ -203,6 +219,27 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
 
         public Builder(VpcEndpointServiceArgs defaults) {
             $ = new VpcEndpointServiceArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param addressIpVersion The IP address version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder addressIpVersion(@Nullable Output<String> addressIpVersion) {
+            $.addressIpVersion = addressIpVersion;
+            return this;
+        }
+
+        /**
+         * @param addressIpVersion The IP address version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder addressIpVersion(String addressIpVersion) {
+            return addressIpVersion(Output.of(addressIpVersion));
         }
 
         /**

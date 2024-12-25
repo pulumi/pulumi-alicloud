@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  *     zoneId: example.then(example => example.zones?.[0]?.id),
  * });
  * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("example", {
- *     name: name,
+ *     securityGroupName: name,
  *     vpcId: exampleNetwork.id,
  * });
  * const exampleApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("example", {

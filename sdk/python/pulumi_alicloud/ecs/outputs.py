@@ -8731,13 +8731,20 @@ class GetInstanceTypesInstanceTypeResult(dict):
                  burstable_instance: 'outputs.GetInstanceTypesInstanceTypeBurstableInstanceResult',
                  cpu_core_count: int,
                  eni_amount: int,
+                 eni_ipv6_address_quantity: int,
+                 eni_private_ip_address_quantity: int,
+                 eni_quantity: int,
                  family: str,
                  gpu: 'outputs.GetInstanceTypesInstanceTypeGpuResult',
                  id: str,
                  local_storage: 'outputs.GetInstanceTypesInstanceTypeLocalStorageResult',
+                 maximum_queue_number_per_eni: int,
                  memory_size: float,
                  nvme_support: str,
-                 price: str):
+                 price: str,
+                 primary_eni_queue_number: int,
+                 secondary_eni_queue_number: int,
+                 total_eni_queue_quantity: int):
         """
         :param Sequence[str] availability_zones: List of availability zones that support the instance type.
         :param 'GetInstanceTypesInstanceTypeBurstableInstanceArgs' burstable_instance: The burstable instance attribution:
@@ -8745,6 +8752,9 @@ class GetInstanceTypesInstanceTypeResult(dict):
                - baseline_credit:  The compute performance benchmark CPU credit of a burstable instance.
         :param int cpu_core_count: Filter the results to a specific number of cpu cores.
         :param int eni_amount: Filter the result whose network interface number is no more than `eni_amount`.
+        :param int eni_ipv6_address_quantity: (Available since v1.239.0) The maximum number of IPv6 addresses per ENI.
+        :param int eni_private_ip_address_quantity: (Available since v1.239.0) The maximum number of IPv4 addresses per ENI.
+        :param int eni_quantity: (Available since v1.239.0) The maximum number of ENIs per instance.
         :param str family: The instance type family.
         :param 'GetInstanceTypesInstanceTypeGpuArgs' gpu: The GPU attribution of an instance type:
                - amount: The amount of GPU of an instance type.
@@ -8754,23 +8764,34 @@ class GetInstanceTypesInstanceTypeResult(dict):
                - capacity: The capacity of a local storage in GB.
                - amount:  The number of local storage devices that an instance has been attached to.
                - category: The category of local storage that an instance has been attached to.
+        :param int maximum_queue_number_per_eni: (Available since v1.239.0) The maximum number of queues per ENI, including primary and secondary ENIs.
         :param float memory_size: Filter the results to a specific memory size in GB.
         :param str nvme_support: Indicates whether the cloud disk can be attached by using the nonvolatile memory express (NVMe) protocol. Valid values:
                - required: The cloud disk can be attached by using the NVMe protocol.
                - unsupported: The cloud disk cannot be attached by using the NVMe protocol.
         :param str price: The price of instance type.
+        :param int primary_eni_queue_number: (Available since v1.239.0) The default number of queues per primary ENI.
+        :param int secondary_eni_queue_number: (Available since v1.239.0) The default number of queues per secondary ENI.
+        :param int total_eni_queue_quantity: (Available since v1.239.0) The maximum number of queues on ENIs that the instance type supports.
         """
         pulumi.set(__self__, "availability_zones", availability_zones)
         pulumi.set(__self__, "burstable_instance", burstable_instance)
         pulumi.set(__self__, "cpu_core_count", cpu_core_count)
         pulumi.set(__self__, "eni_amount", eni_amount)
+        pulumi.set(__self__, "eni_ipv6_address_quantity", eni_ipv6_address_quantity)
+        pulumi.set(__self__, "eni_private_ip_address_quantity", eni_private_ip_address_quantity)
+        pulumi.set(__self__, "eni_quantity", eni_quantity)
         pulumi.set(__self__, "family", family)
         pulumi.set(__self__, "gpu", gpu)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "local_storage", local_storage)
+        pulumi.set(__self__, "maximum_queue_number_per_eni", maximum_queue_number_per_eni)
         pulumi.set(__self__, "memory_size", memory_size)
         pulumi.set(__self__, "nvme_support", nvme_support)
         pulumi.set(__self__, "price", price)
+        pulumi.set(__self__, "primary_eni_queue_number", primary_eni_queue_number)
+        pulumi.set(__self__, "secondary_eni_queue_number", secondary_eni_queue_number)
+        pulumi.set(__self__, "total_eni_queue_quantity", total_eni_queue_quantity)
 
     @property
     @pulumi.getter(name="availabilityZones")
@@ -8805,6 +8826,30 @@ class GetInstanceTypesInstanceTypeResult(dict):
         Filter the result whose network interface number is no more than `eni_amount`.
         """
         return pulumi.get(self, "eni_amount")
+
+    @property
+    @pulumi.getter(name="eniIpv6AddressQuantity")
+    def eni_ipv6_address_quantity(self) -> int:
+        """
+        (Available since v1.239.0) The maximum number of IPv6 addresses per ENI.
+        """
+        return pulumi.get(self, "eni_ipv6_address_quantity")
+
+    @property
+    @pulumi.getter(name="eniPrivateIpAddressQuantity")
+    def eni_private_ip_address_quantity(self) -> int:
+        """
+        (Available since v1.239.0) The maximum number of IPv4 addresses per ENI.
+        """
+        return pulumi.get(self, "eni_private_ip_address_quantity")
+
+    @property
+    @pulumi.getter(name="eniQuantity")
+    def eni_quantity(self) -> int:
+        """
+        (Available since v1.239.0) The maximum number of ENIs per instance.
+        """
+        return pulumi.get(self, "eni_quantity")
 
     @property
     @pulumi.getter
@@ -8844,6 +8889,14 @@ class GetInstanceTypesInstanceTypeResult(dict):
         return pulumi.get(self, "local_storage")
 
     @property
+    @pulumi.getter(name="maximumQueueNumberPerEni")
+    def maximum_queue_number_per_eni(self) -> int:
+        """
+        (Available since v1.239.0) The maximum number of queues per ENI, including primary and secondary ENIs.
+        """
+        return pulumi.get(self, "maximum_queue_number_per_eni")
+
+    @property
     @pulumi.getter(name="memorySize")
     def memory_size(self) -> float:
         """
@@ -8868,6 +8921,30 @@ class GetInstanceTypesInstanceTypeResult(dict):
         The price of instance type.
         """
         return pulumi.get(self, "price")
+
+    @property
+    @pulumi.getter(name="primaryEniQueueNumber")
+    def primary_eni_queue_number(self) -> int:
+        """
+        (Available since v1.239.0) The default number of queues per primary ENI.
+        """
+        return pulumi.get(self, "primary_eni_queue_number")
+
+    @property
+    @pulumi.getter(name="secondaryEniQueueNumber")
+    def secondary_eni_queue_number(self) -> int:
+        """
+        (Available since v1.239.0) The default number of queues per secondary ENI.
+        """
+        return pulumi.get(self, "secondary_eni_queue_number")
+
+    @property
+    @pulumi.getter(name="totalEniQueueQuantity")
+    def total_eni_queue_quantity(self) -> int:
+        """
+        (Available since v1.239.0) The maximum number of queues on ENIs that the instance type supports.
+        """
+        return pulumi.get(self, "total_eni_queue_quantity")
 
 
 @pulumi.output_type

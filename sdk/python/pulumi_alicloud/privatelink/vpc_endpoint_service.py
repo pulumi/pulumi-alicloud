@@ -19,6 +19,7 @@ __all__ = ['VpcEndpointServiceArgs', 'VpcEndpointService']
 @pulumi.input_type
 class VpcEndpointServiceArgs:
     def __init__(__self__, *,
+                 address_ip_version: Optional[pulumi.Input[str]] = None,
                  auto_accept_connection: Optional[pulumi.Input[bool]] = None,
                  connect_bandwidth: Optional[pulumi.Input[int]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
@@ -31,6 +32,7 @@ class VpcEndpointServiceArgs:
                  zone_affinity_enabled: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a VpcEndpointService resource.
+        :param pulumi.Input[str] address_ip_version: The IP address version.
         :param pulumi.Input[bool] auto_accept_connection: Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
         :param pulumi.Input[int] connect_bandwidth: The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
         :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request.
@@ -44,6 +46,8 @@ class VpcEndpointServiceArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The list of tags.
         :param pulumi.Input[bool] zone_affinity_enabled: Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
         """
+        if address_ip_version is not None:
+            pulumi.set(__self__, "address_ip_version", address_ip_version)
         if auto_accept_connection is not None:
             pulumi.set(__self__, "auto_accept_connection", auto_accept_connection)
         if connect_bandwidth is not None:
@@ -64,6 +68,18 @@ class VpcEndpointServiceArgs:
             pulumi.set(__self__, "tags", tags)
         if zone_affinity_enabled is not None:
             pulumi.set(__self__, "zone_affinity_enabled", zone_affinity_enabled)
+
+    @property
+    @pulumi.getter(name="addressIpVersion")
+    def address_ip_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP address version.
+        """
+        return pulumi.get(self, "address_ip_version")
+
+    @address_ip_version.setter
+    def address_ip_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "address_ip_version", value)
 
     @property
     @pulumi.getter(name="autoAcceptConnection")
@@ -191,6 +207,7 @@ class VpcEndpointServiceArgs:
 @pulumi.input_type
 class _VpcEndpointServiceState:
     def __init__(__self__, *,
+                 address_ip_version: Optional[pulumi.Input[str]] = None,
                  auto_accept_connection: Optional[pulumi.Input[bool]] = None,
                  connect_bandwidth: Optional[pulumi.Input[int]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
@@ -209,6 +226,7 @@ class _VpcEndpointServiceState:
                  zone_affinity_enabled: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering VpcEndpointService resources.
+        :param pulumi.Input[str] address_ip_version: The IP address version.
         :param pulumi.Input[bool] auto_accept_connection: Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
         :param pulumi.Input[int] connect_bandwidth: The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
         :param pulumi.Input[str] create_time: The time when the endpoint service was created.
@@ -228,6 +246,8 @@ class _VpcEndpointServiceState:
         :param pulumi.Input[str] vpc_endpoint_service_name: The name of the endpoint service.
         :param pulumi.Input[bool] zone_affinity_enabled: Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
         """
+        if address_ip_version is not None:
+            pulumi.set(__self__, "address_ip_version", address_ip_version)
         if auto_accept_connection is not None:
             pulumi.set(__self__, "auto_accept_connection", auto_accept_connection)
         if connect_bandwidth is not None:
@@ -260,6 +280,18 @@ class _VpcEndpointServiceState:
             pulumi.set(__self__, "vpc_endpoint_service_name", vpc_endpoint_service_name)
         if zone_affinity_enabled is not None:
             pulumi.set(__self__, "zone_affinity_enabled", zone_affinity_enabled)
+
+    @property
+    @pulumi.getter(name="addressIpVersion")
+    def address_ip_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP address version.
+        """
+        return pulumi.get(self, "address_ip_version")
+
+    @address_ip_version.setter
+    def address_ip_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "address_ip_version", value)
 
     @property
     @pulumi.getter(name="autoAcceptConnection")
@@ -461,6 +493,7 @@ class VpcEndpointService(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 address_ip_version: Optional[pulumi.Input[str]] = None,
                  auto_accept_connection: Optional[pulumi.Input[bool]] = None,
                  connect_bandwidth: Optional[pulumi.Input[int]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
@@ -507,6 +540,7 @@ class VpcEndpointService(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] address_ip_version: The IP address version.
         :param pulumi.Input[bool] auto_accept_connection: Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
         :param pulumi.Input[int] connect_bandwidth: The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
         :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request.
@@ -574,6 +608,7 @@ class VpcEndpointService(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 address_ip_version: Optional[pulumi.Input[str]] = None,
                  auto_accept_connection: Optional[pulumi.Input[bool]] = None,
                  connect_bandwidth: Optional[pulumi.Input[int]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
@@ -593,6 +628,7 @@ class VpcEndpointService(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = VpcEndpointServiceArgs.__new__(VpcEndpointServiceArgs)
 
+            __props__.__dict__["address_ip_version"] = address_ip_version
             __props__.__dict__["auto_accept_connection"] = auto_accept_connection
             __props__.__dict__["connect_bandwidth"] = connect_bandwidth
             __props__.__dict__["dry_run"] = dry_run
@@ -619,6 +655,7 @@ class VpcEndpointService(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            address_ip_version: Optional[pulumi.Input[str]] = None,
             auto_accept_connection: Optional[pulumi.Input[bool]] = None,
             connect_bandwidth: Optional[pulumi.Input[int]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
@@ -642,6 +679,7 @@ class VpcEndpointService(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] address_ip_version: The IP address version.
         :param pulumi.Input[bool] auto_accept_connection: Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
         :param pulumi.Input[int] connect_bandwidth: The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
         :param pulumi.Input[str] create_time: The time when the endpoint service was created.
@@ -665,6 +703,7 @@ class VpcEndpointService(pulumi.CustomResource):
 
         __props__ = _VpcEndpointServiceState.__new__(_VpcEndpointServiceState)
 
+        __props__.__dict__["address_ip_version"] = address_ip_version
         __props__.__dict__["auto_accept_connection"] = auto_accept_connection
         __props__.__dict__["connect_bandwidth"] = connect_bandwidth
         __props__.__dict__["create_time"] = create_time
@@ -682,6 +721,14 @@ class VpcEndpointService(pulumi.CustomResource):
         __props__.__dict__["vpc_endpoint_service_name"] = vpc_endpoint_service_name
         __props__.__dict__["zone_affinity_enabled"] = zone_affinity_enabled
         return VpcEndpointService(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="addressIpVersion")
+    def address_ip_version(self) -> pulumi.Output[str]:
+        """
+        The IP address version.
+        """
+        return pulumi.get(self, "address_ip_version")
 
     @property
     @pulumi.getter(name="autoAcceptConnection")

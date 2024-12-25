@@ -149,14 +149,14 @@ public final class EcsSnapshotArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the resource group.
+     * The ID of the resource group. **NOTE:** From version 1.239.0, `resource_group_id` can be modified.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group.
+     * @return The ID of the resource group. **NOTE:** From version 1.239.0, `resource_group_id` can be modified.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -414,7 +414,7 @@ public final class EcsSnapshotArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group.
+         * @param resourceGroupId The ID of the resource group. **NOTE:** From version 1.239.0, `resource_group_id` can be modified.
          * 
          * @return builder
          * 
@@ -425,7 +425,7 @@ public final class EcsSnapshotArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group.
+         * @param resourceGroupId The ID of the resource group. **NOTE:** From version 1.239.0, `resource_group_id` can be modified.
          * 
          * @return builder
          * 

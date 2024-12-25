@@ -38,6 +38,7 @@ class TairInstanceArgs:
                  node_type: Optional[pulumi.Input[str]] = None,
                  param_no_loose_sentinel_enabled: Optional[pulumi.Input[str]] = None,
                  param_no_loose_sentinel_password_free_access: Optional[pulumi.Input[str]] = None,
+                 param_no_loose_sentinel_password_free_commands: Optional[pulumi.Input[str]] = None,
                  param_repl_mode: Optional[pulumi.Input[str]] = None,
                  param_semisync_repl_timeout: Optional[pulumi.Input[str]] = None,
                  param_sentinel_compat_enable: Optional[pulumi.Input[str]] = None,
@@ -98,6 +99,7 @@ class TairInstanceArgs:
         :param pulumi.Input[str] node_type: The node type. For cloud-native instances, input MASTER_SLAVE (master-replica) or STAND_ALONE (standalone). For classic instances, input double (master-replica) or single (standalone).
         :param pulumi.Input[str] param_no_loose_sentinel_enabled: sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes, no. The default value is no.
         :param pulumi.Input[str] param_no_loose_sentinel_password_free_access: Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance
+        :param pulumi.Input[str] param_no_loose_sentinel_password_free_commands: After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See https://help.aliyun.com/zh/redis/user-guide/parameter-support for details
         :param pulumi.Input[str] param_repl_mode: The value is semisync or async. The default value is async.
                
                The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance 。
@@ -169,6 +171,8 @@ class TairInstanceArgs:
             pulumi.set(__self__, "param_no_loose_sentinel_enabled", param_no_loose_sentinel_enabled)
         if param_no_loose_sentinel_password_free_access is not None:
             pulumi.set(__self__, "param_no_loose_sentinel_password_free_access", param_no_loose_sentinel_password_free_access)
+        if param_no_loose_sentinel_password_free_commands is not None:
+            pulumi.set(__self__, "param_no_loose_sentinel_password_free_commands", param_no_loose_sentinel_password_free_commands)
         if param_repl_mode is not None:
             pulumi.set(__self__, "param_repl_mode", param_repl_mode)
         if param_semisync_repl_timeout is not None:
@@ -459,6 +463,18 @@ class TairInstanceArgs:
     @param_no_loose_sentinel_password_free_access.setter
     def param_no_loose_sentinel_password_free_access(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "param_no_loose_sentinel_password_free_access", value)
+
+    @property
+    @pulumi.getter(name="paramNoLooseSentinelPasswordFreeCommands")
+    def param_no_loose_sentinel_password_free_commands(self) -> Optional[pulumi.Input[str]]:
+        """
+        After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See https://help.aliyun.com/zh/redis/user-guide/parameter-support for details
+        """
+        return pulumi.get(self, "param_no_loose_sentinel_password_free_commands")
+
+    @param_no_loose_sentinel_password_free_commands.setter
+    def param_no_loose_sentinel_password_free_commands(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "param_no_loose_sentinel_password_free_commands", value)
 
     @property
     @pulumi.getter(name="paramReplMode")
@@ -775,6 +791,7 @@ class _TairInstanceState:
                  node_type: Optional[pulumi.Input[str]] = None,
                  param_no_loose_sentinel_enabled: Optional[pulumi.Input[str]] = None,
                  param_no_loose_sentinel_password_free_access: Optional[pulumi.Input[str]] = None,
+                 param_no_loose_sentinel_password_free_commands: Optional[pulumi.Input[str]] = None,
                  param_repl_mode: Optional[pulumi.Input[str]] = None,
                  param_semisync_repl_timeout: Optional[pulumi.Input[str]] = None,
                  param_sentinel_compat_enable: Optional[pulumi.Input[str]] = None,
@@ -843,6 +860,7 @@ class _TairInstanceState:
         :param pulumi.Input[str] node_type: The node type. For cloud-native instances, input MASTER_SLAVE (master-replica) or STAND_ALONE (standalone). For classic instances, input double (master-replica) or single (standalone).
         :param pulumi.Input[str] param_no_loose_sentinel_enabled: sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes, no. The default value is no.
         :param pulumi.Input[str] param_no_loose_sentinel_password_free_access: Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance
+        :param pulumi.Input[str] param_no_loose_sentinel_password_free_commands: After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See https://help.aliyun.com/zh/redis/user-guide/parameter-support for details
         :param pulumi.Input[str] param_repl_mode: The value is semisync or async. The default value is async.
                
                The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance 。
@@ -929,6 +947,8 @@ class _TairInstanceState:
             pulumi.set(__self__, "param_no_loose_sentinel_enabled", param_no_loose_sentinel_enabled)
         if param_no_loose_sentinel_password_free_access is not None:
             pulumi.set(__self__, "param_no_loose_sentinel_password_free_access", param_no_loose_sentinel_password_free_access)
+        if param_no_loose_sentinel_password_free_commands is not None:
+            pulumi.set(__self__, "param_no_loose_sentinel_password_free_commands", param_no_loose_sentinel_password_free_commands)
         if param_repl_mode is not None:
             pulumi.set(__self__, "param_repl_mode", param_repl_mode)
         if param_semisync_repl_timeout is not None:
@@ -1255,6 +1275,18 @@ class _TairInstanceState:
     @param_no_loose_sentinel_password_free_access.setter
     def param_no_loose_sentinel_password_free_access(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "param_no_loose_sentinel_password_free_access", value)
+
+    @property
+    @pulumi.getter(name="paramNoLooseSentinelPasswordFreeCommands")
+    def param_no_loose_sentinel_password_free_commands(self) -> Optional[pulumi.Input[str]]:
+        """
+        After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See https://help.aliyun.com/zh/redis/user-guide/parameter-support for details
+        """
+        return pulumi.get(self, "param_no_loose_sentinel_password_free_commands")
+
+    @param_no_loose_sentinel_password_free_commands.setter
+    def param_no_loose_sentinel_password_free_commands(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "param_no_loose_sentinel_password_free_commands", value)
 
     @property
     @pulumi.getter(name="paramReplMode")
@@ -1640,6 +1672,7 @@ class TairInstance(pulumi.CustomResource):
                  node_type: Optional[pulumi.Input[str]] = None,
                  param_no_loose_sentinel_enabled: Optional[pulumi.Input[str]] = None,
                  param_no_loose_sentinel_password_free_access: Optional[pulumi.Input[str]] = None,
+                 param_no_loose_sentinel_password_free_commands: Optional[pulumi.Input[str]] = None,
                  param_repl_mode: Optional[pulumi.Input[str]] = None,
                  param_semisync_repl_timeout: Optional[pulumi.Input[str]] = None,
                  param_sentinel_compat_enable: Optional[pulumi.Input[str]] = None,
@@ -1710,6 +1743,7 @@ class TairInstance(pulumi.CustomResource):
         :param pulumi.Input[str] node_type: The node type. For cloud-native instances, input MASTER_SLAVE (master-replica) or STAND_ALONE (standalone). For classic instances, input double (master-replica) or single (standalone).
         :param pulumi.Input[str] param_no_loose_sentinel_enabled: sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes, no. The default value is no.
         :param pulumi.Input[str] param_no_loose_sentinel_password_free_access: Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance
+        :param pulumi.Input[str] param_no_loose_sentinel_password_free_commands: After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See https://help.aliyun.com/zh/redis/user-guide/parameter-support for details
         :param pulumi.Input[str] param_repl_mode: The value is semisync or async. The default value is async.
                
                The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance 。
@@ -1797,6 +1831,7 @@ class TairInstance(pulumi.CustomResource):
                  node_type: Optional[pulumi.Input[str]] = None,
                  param_no_loose_sentinel_enabled: Optional[pulumi.Input[str]] = None,
                  param_no_loose_sentinel_password_free_access: Optional[pulumi.Input[str]] = None,
+                 param_no_loose_sentinel_password_free_commands: Optional[pulumi.Input[str]] = None,
                  param_repl_mode: Optional[pulumi.Input[str]] = None,
                  param_semisync_repl_timeout: Optional[pulumi.Input[str]] = None,
                  param_sentinel_compat_enable: Optional[pulumi.Input[str]] = None,
@@ -1852,6 +1887,7 @@ class TairInstance(pulumi.CustomResource):
             __props__.__dict__["node_type"] = node_type
             __props__.__dict__["param_no_loose_sentinel_enabled"] = param_no_loose_sentinel_enabled
             __props__.__dict__["param_no_loose_sentinel_password_free_access"] = param_no_loose_sentinel_password_free_access
+            __props__.__dict__["param_no_loose_sentinel_password_free_commands"] = param_no_loose_sentinel_password_free_commands
             __props__.__dict__["param_repl_mode"] = param_repl_mode
             __props__.__dict__["param_semisync_repl_timeout"] = param_semisync_repl_timeout
             __props__.__dict__["param_sentinel_compat_enable"] = param_sentinel_compat_enable
@@ -1925,6 +1961,7 @@ class TairInstance(pulumi.CustomResource):
             node_type: Optional[pulumi.Input[str]] = None,
             param_no_loose_sentinel_enabled: Optional[pulumi.Input[str]] = None,
             param_no_loose_sentinel_password_free_access: Optional[pulumi.Input[str]] = None,
+            param_no_loose_sentinel_password_free_commands: Optional[pulumi.Input[str]] = None,
             param_repl_mode: Optional[pulumi.Input[str]] = None,
             param_semisync_repl_timeout: Optional[pulumi.Input[str]] = None,
             param_sentinel_compat_enable: Optional[pulumi.Input[str]] = None,
@@ -1998,6 +2035,7 @@ class TairInstance(pulumi.CustomResource):
         :param pulumi.Input[str] node_type: The node type. For cloud-native instances, input MASTER_SLAVE (master-replica) or STAND_ALONE (standalone). For classic instances, input double (master-replica) or single (standalone).
         :param pulumi.Input[str] param_no_loose_sentinel_enabled: sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes, no. The default value is no.
         :param pulumi.Input[str] param_no_loose_sentinel_password_free_access: Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance
+        :param pulumi.Input[str] param_no_loose_sentinel_password_free_commands: After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See https://help.aliyun.com/zh/redis/user-guide/parameter-support for details
         :param pulumi.Input[str] param_repl_mode: The value is semisync or async. The default value is async.
                
                The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance 。
@@ -2067,6 +2105,7 @@ class TairInstance(pulumi.CustomResource):
         __props__.__dict__["node_type"] = node_type
         __props__.__dict__["param_no_loose_sentinel_enabled"] = param_no_loose_sentinel_enabled
         __props__.__dict__["param_no_loose_sentinel_password_free_access"] = param_no_loose_sentinel_password_free_access
+        __props__.__dict__["param_no_loose_sentinel_password_free_commands"] = param_no_loose_sentinel_password_free_commands
         __props__.__dict__["param_repl_mode"] = param_repl_mode
         __props__.__dict__["param_semisync_repl_timeout"] = param_semisync_repl_timeout
         __props__.__dict__["param_sentinel_compat_enable"] = param_sentinel_compat_enable
@@ -2281,6 +2320,14 @@ class TairInstance(pulumi.CustomResource):
         Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance
         """
         return pulumi.get(self, "param_no_loose_sentinel_password_free_access")
+
+    @property
+    @pulumi.getter(name="paramNoLooseSentinelPasswordFreeCommands")
+    def param_no_loose_sentinel_password_free_commands(self) -> pulumi.Output[str]:
+        """
+        After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See https://help.aliyun.com/zh/redis/user-guide/parameter-support for details
+        """
+        return pulumi.get(self, "param_no_loose_sentinel_password_free_commands")
 
     @property
     @pulumi.getter(name="paramReplMode")

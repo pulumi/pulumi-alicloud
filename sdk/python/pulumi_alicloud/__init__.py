@@ -4035,6 +4035,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "expressconnect/routerGrantAssociation",
+  "fqn": "pulumi_alicloud.expressconnect",
+  "classes": {
+   "alicloud:expressconnect/routerGrantAssociation:RouterGrantAssociation": "RouterGrantAssociation"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "expressconnect/routerInterface",
   "fqn": "pulumi_alicloud.expressconnect",
   "classes": {

@@ -45,7 +45,7 @@ import * as utilities from "../utilities";
  *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  * });
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
- *     name: name,
+ *     securityGroupName: name,
  *     vpcId: defaultNetwork.id,
  * });
  * const defaultInstance = new alicloud.ecs.Instance("default", {
@@ -122,6 +122,10 @@ export class EcsSnapshot extends pulumi.CustomResource {
      */
     public readonly category!: pulumi.Output<string>;
     /**
+     * (Available since v1.239.0) The time when the snapshot was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
      * The description of the snapshot.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -152,7 +156,11 @@ export class EcsSnapshot extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The ID of the resource group.
+     * (Available since v1.239.0) The region ID of the snapshot.
+     */
+    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    /**
+     * The ID of the resource group. **NOTE:** From version 1.239.0, `resourceGroupId` can be modified.
      */
     public readonly resourceGroupId!: pulumi.Output<string | undefined>;
     /**
@@ -186,12 +194,14 @@ export class EcsSnapshot extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as EcsSnapshotState | undefined;
             resourceInputs["category"] = state ? state.category : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["diskId"] = state ? state.diskId : undefined;
             resourceInputs["force"] = state ? state.force : undefined;
             resourceInputs["instantAccess"] = state ? state.instantAccess : undefined;
             resourceInputs["instantAccessRetentionDays"] = state ? state.instantAccessRetentionDays : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["regionId"] = state ? state.regionId : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["retentionDays"] = state ? state.retentionDays : undefined;
             resourceInputs["snapshotName"] = state ? state.snapshotName : undefined;
@@ -213,6 +223,8 @@ export class EcsSnapshot extends pulumi.CustomResource {
             resourceInputs["retentionDays"] = args ? args.retentionDays : undefined;
             resourceInputs["snapshotName"] = args ? args.snapshotName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -228,6 +240,10 @@ export interface EcsSnapshotState {
      * The category of the snapshot. Valid values:
      */
     category?: pulumi.Input<string>;
+    /**
+     * (Available since v1.239.0) The time when the snapshot was created.
+     */
+    createTime?: pulumi.Input<string>;
     /**
      * The description of the snapshot.
      */
@@ -259,7 +275,11 @@ export interface EcsSnapshotState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The ID of the resource group.
+     * (Available since v1.239.0) The region ID of the snapshot.
+     */
+    regionId?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group. **NOTE:** From version 1.239.0, `resourceGroupId` can be modified.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
@@ -319,7 +339,7 @@ export interface EcsSnapshotArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The ID of the resource group.
+     * The ID of the resource group. **NOTE:** From version 1.239.0, `resourceGroupId` can be modified.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**

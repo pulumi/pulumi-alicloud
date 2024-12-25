@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PhysicalConnection{}
 	case "alicloud:expressconnect/routerExpressConnectRouter:RouterExpressConnectRouter":
 		r = &RouterExpressConnectRouter{}
+	case "alicloud:expressconnect/routerGrantAssociation:RouterGrantAssociation":
+		r = &RouterGrantAssociation{}
 	case "alicloud:expressconnect/routerInterface:RouterInterface":
 		r = &RouterInterface{}
 	case "alicloud:expressconnect/routerTrAssociation:RouterTrAssociation":
@@ -82,6 +84,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"expressconnect/routerExpressConnectRouter",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"expressconnect/routerGrantAssociation",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

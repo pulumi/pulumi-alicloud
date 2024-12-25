@@ -96,7 +96,11 @@ export class VpcEndpoint extends pulumi.CustomResource {
     }
 
     /**
-     * The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s. Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
+     * The IP address version.
+     */
+    public readonly addressIpVersion!: pulumi.Output<string>;
+    /**
+     * The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.
      */
     public /*out*/ readonly bandwidth!: pulumi.Output<number>;
     /**
@@ -109,8 +113,6 @@ export class VpcEndpoint extends pulumi.CustomResource {
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
@@ -126,27 +128,33 @@ export class VpcEndpoint extends pulumi.CustomResource {
      */
     public /*out*/ readonly endpointDomain!: pulumi.Output<string>;
     /**
-     * The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+     * The endpoint type.
+     *
+     * Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
      */
     public readonly endpointType!: pulumi.Output<string>;
     /**
-     * RAM access policies.
+     * RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
      */
     public readonly policyDocument!: pulumi.Output<string>;
     /**
      * Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
-     * - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
-     * - **false (default)**: disables user authentication.
      */
     public readonly protectedEnabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * (Available since v1.239.0) The region ID of the endpoint.
+     */
+    public /*out*/ readonly regionId!: pulumi.Output<string>;
     /**
      * The resource group ID.
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
-     * The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.The endpoint can be associated with up to 10 security groups.
+     * The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.
+     *
+     * The endpoint can be associated with up to 10 security groups.
      */
-    public readonly securityGroupIds!: pulumi.Output<string[]>;
+    public readonly securityGroupIds!: pulumi.Output<string[] | undefined>;
     /**
      * The ID of the endpoint service with which the endpoint is associated.
      */
@@ -189,6 +197,7 @@ export class VpcEndpoint extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VpcEndpointState | undefined;
+            resourceInputs["addressIpVersion"] = state ? state.addressIpVersion : undefined;
             resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
             resourceInputs["connectionStatus"] = state ? state.connectionStatus : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
@@ -199,6 +208,7 @@ export class VpcEndpoint extends pulumi.CustomResource {
             resourceInputs["endpointType"] = state ? state.endpointType : undefined;
             resourceInputs["policyDocument"] = state ? state.policyDocument : undefined;
             resourceInputs["protectedEnabled"] = state ? state.protectedEnabled : undefined;
+            resourceInputs["regionId"] = state ? state.regionId : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
             resourceInputs["serviceId"] = state ? state.serviceId : undefined;
@@ -210,12 +220,10 @@ export class VpcEndpoint extends pulumi.CustomResource {
             resourceInputs["zonePrivateIpAddressCount"] = state ? state.zonePrivateIpAddressCount : undefined;
         } else {
             const args = argsOrState as VpcEndpointArgs | undefined;
-            if ((!args || args.securityGroupIds === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'securityGroupIds'");
-            }
             if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
+            resourceInputs["addressIpVersion"] = args ? args.addressIpVersion : undefined;
             resourceInputs["dryRun"] = args ? args.dryRun : undefined;
             resourceInputs["endpointDescription"] = args ? args.endpointDescription : undefined;
             resourceInputs["endpointType"] = args ? args.endpointType : undefined;
@@ -234,6 +242,7 @@ export class VpcEndpoint extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["endpointBusinessStatus"] = undefined /*out*/;
             resourceInputs["endpointDomain"] = undefined /*out*/;
+            resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -246,7 +255,11 @@ export class VpcEndpoint extends pulumi.CustomResource {
  */
 export interface VpcEndpointState {
     /**
-     * The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s. Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
+     * The IP address version.
+     */
+    addressIpVersion?: pulumi.Input<string>;
+    /**
+     * The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.
      */
     bandwidth?: pulumi.Input<number>;
     /**
@@ -259,8 +272,6 @@ export interface VpcEndpointState {
     createTime?: pulumi.Input<string>;
     /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      */
     dryRun?: pulumi.Input<boolean>;
     /**
@@ -276,25 +287,31 @@ export interface VpcEndpointState {
      */
     endpointDomain?: pulumi.Input<string>;
     /**
-     * The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+     * The endpoint type.
+     *
+     * Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
      */
     endpointType?: pulumi.Input<string>;
     /**
-     * RAM access policies.
+     * RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
      */
     policyDocument?: pulumi.Input<string>;
     /**
      * Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
-     * - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
-     * - **false (default)**: disables user authentication.
      */
     protectedEnabled?: pulumi.Input<boolean>;
+    /**
+     * (Available since v1.239.0) The region ID of the endpoint.
+     */
+    regionId?: pulumi.Input<string>;
     /**
      * The resource group ID.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.The endpoint can be associated with up to 10 security groups.
+     * The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.
+     *
+     * The endpoint can be associated with up to 10 security groups.
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -332,9 +349,11 @@ export interface VpcEndpointState {
  */
 export interface VpcEndpointArgs {
     /**
+     * The IP address version.
+     */
+    addressIpVersion?: pulumi.Input<string>;
+    /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      */
     dryRun?: pulumi.Input<boolean>;
     /**
@@ -342,17 +361,17 @@ export interface VpcEndpointArgs {
      */
     endpointDescription?: pulumi.Input<string>;
     /**
-     * The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+     * The endpoint type.
+     *
+     * Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
      */
     endpointType?: pulumi.Input<string>;
     /**
-     * RAM access policies.
+     * RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
      */
     policyDocument?: pulumi.Input<string>;
     /**
      * Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
-     * - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
-     * - **false (default)**: disables user authentication.
      */
     protectedEnabled?: pulumi.Input<boolean>;
     /**
@@ -360,9 +379,11 @@ export interface VpcEndpointArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.The endpoint can be associated with up to 10 security groups.
+     * The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.
+     *
+     * The endpoint can be associated with up to 10 security groups.
      */
-    securityGroupIds: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the endpoint service with which the endpoint is associated.
      */

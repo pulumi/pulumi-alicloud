@@ -366,6 +366,21 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See https://help.aliyun.com/zh/redis/user-guide/parameter-support for details
+     * 
+     */
+    @Import(name="paramNoLooseSentinelPasswordFreeCommands")
+    private @Nullable Output<String> paramNoLooseSentinelPasswordFreeCommands;
+
+    /**
+     * @return After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See https://help.aliyun.com/zh/redis/user-guide/parameter-support for details
+     * 
+     */
+    public Optional<Output<String>> paramNoLooseSentinelPasswordFreeCommands() {
+        return Optional.ofNullable(this.paramNoLooseSentinelPasswordFreeCommands);
+    }
+
+    /**
      * The value is semisync or async. The default value is async.
      * 
      * The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance 。
@@ -852,6 +867,7 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
         this.nodeType = $.nodeType;
         this.paramNoLooseSentinelEnabled = $.paramNoLooseSentinelEnabled;
         this.paramNoLooseSentinelPasswordFreeAccess = $.paramNoLooseSentinelPasswordFreeAccess;
+        this.paramNoLooseSentinelPasswordFreeCommands = $.paramNoLooseSentinelPasswordFreeCommands;
         this.paramReplMode = $.paramReplMode;
         this.paramSemisyncReplTimeout = $.paramSemisyncReplTimeout;
         this.paramSentinelCompatEnable = $.paramSentinelCompatEnable;
@@ -1372,6 +1388,27 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder paramNoLooseSentinelPasswordFreeAccess(String paramNoLooseSentinelPasswordFreeAccess) {
             return paramNoLooseSentinelPasswordFreeAccess(Output.of(paramNoLooseSentinelPasswordFreeAccess));
+        }
+
+        /**
+         * @param paramNoLooseSentinelPasswordFreeCommands After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See https://help.aliyun.com/zh/redis/user-guide/parameter-support for details
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paramNoLooseSentinelPasswordFreeCommands(@Nullable Output<String> paramNoLooseSentinelPasswordFreeCommands) {
+            $.paramNoLooseSentinelPasswordFreeCommands = paramNoLooseSentinelPasswordFreeCommands;
+            return this;
+        }
+
+        /**
+         * @param paramNoLooseSentinelPasswordFreeCommands After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See https://help.aliyun.com/zh/redis/user-guide/parameter-support for details
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paramNoLooseSentinelPasswordFreeCommands(String paramNoLooseSentinelPasswordFreeCommands) {
+            return paramNoLooseSentinelPasswordFreeCommands(Output.of(paramNoLooseSentinelPasswordFreeCommands));
         }
 
         /**

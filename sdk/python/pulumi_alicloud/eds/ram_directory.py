@@ -224,6 +224,8 @@ class RamDirectory(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.174.0.
 
+        > **DEPRECATED:** This resource has been deprecated from version `1.239.0`.
+
         ## Example Usage
 
         Basic Usage
@@ -280,6 +282,8 @@ class RamDirectory(pulumi.CustomResource):
         For information about ECD Ram Directory and how to use it, see [What is Ram Directory](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createramdirectory).
 
         > **NOTE:** Available since v1.174.0.
+
+        > **DEPRECATED:** This resource has been deprecated from version `1.239.0`.
 
         ## Example Usage
 
