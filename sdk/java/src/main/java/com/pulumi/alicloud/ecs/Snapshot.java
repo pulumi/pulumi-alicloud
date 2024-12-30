@@ -79,6 +79,12 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
     public Output<String> category() {
         return this.category;
     }
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    public Output<String> createTime() {
+        return this.createTime;
+    }
     /**
      * Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      * 
@@ -156,6 +162,12 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    public Output<String> regionId() {
+        return this.regionId;
     }
     /**
      * The ID of the resource group.

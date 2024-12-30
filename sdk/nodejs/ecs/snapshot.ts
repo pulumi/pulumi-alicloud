@@ -64,6 +64,7 @@ export class Snapshot extends pulumi.CustomResource {
     }
 
     public readonly category!: pulumi.Output<string>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
@@ -88,6 +89,7 @@ export class Snapshot extends pulumi.CustomResource {
      * @deprecated Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
      */
     public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly regionId!: pulumi.Output<string>;
     /**
      * The ID of the resource group.
      */
@@ -114,12 +116,14 @@ export class Snapshot extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as SnapshotState | undefined;
             resourceInputs["category"] = state ? state.category : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["diskId"] = state ? state.diskId : undefined;
             resourceInputs["force"] = state ? state.force : undefined;
             resourceInputs["instantAccess"] = state ? state.instantAccess : undefined;
             resourceInputs["instantAccessRetentionDays"] = state ? state.instantAccessRetentionDays : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["regionId"] = state ? state.regionId : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["retentionDays"] = state ? state.retentionDays : undefined;
             resourceInputs["snapshotName"] = state ? state.snapshotName : undefined;
@@ -141,6 +145,8 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["retentionDays"] = args ? args.retentionDays : undefined;
             resourceInputs["snapshotName"] = args ? args.snapshotName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -153,6 +159,7 @@ export class Snapshot extends pulumi.CustomResource {
  */
 export interface SnapshotState {
     category?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
     /**
      * Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
@@ -177,6 +184,7 @@ export interface SnapshotState {
      * @deprecated Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
      */
     name?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string>;
     /**
      * The ID of the resource group.
      */

@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
- *             .name(name)
+ *             .securityGroupName(name)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
@@ -169,6 +169,20 @@ public class EcsSnapshot extends com.pulumi.resources.CustomResource {
      */
     public Output<String> category() {
         return this.category;
+    }
+    /**
+     * (Available since v1.239.0) The time when the snapshot was created.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return (Available since v1.239.0) The time when the snapshot was created.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
     }
     /**
      * The description of the snapshot.
@@ -267,14 +281,28 @@ public class EcsSnapshot extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The ID of the resource group.
+     * (Available since v1.239.0) The region ID of the snapshot.
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return (Available since v1.239.0) The region ID of the snapshot.
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
+    }
+    /**
+     * The ID of the resource group. **NOTE:** From version 1.239.0, `resource_group_id` can be modified.
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group.
+     * @return The ID of the resource group. **NOTE:** From version 1.239.0, `resource_group_id` can be modified.
      * 
      */
     public Output<Optional<String>> resourceGroupId() {
