@@ -13619,6 +13619,12 @@ type GetInstanceTypesInstanceType struct {
 	CpuCoreCount int `pulumi:"cpuCoreCount"`
 	// Filter the result whose network interface number is no more than `eniAmount`.
 	EniAmount int `pulumi:"eniAmount"`
+	// (Available since v1.239.0) The maximum number of IPv6 addresses per ENI.
+	EniIpv6AddressQuantity int `pulumi:"eniIpv6AddressQuantity"`
+	// (Available since v1.239.0) The maximum number of IPv4 addresses per ENI.
+	EniPrivateIpAddressQuantity int `pulumi:"eniPrivateIpAddressQuantity"`
+	// (Available since v1.239.0) The maximum number of ENIs per instance.
+	EniQuantity int `pulumi:"eniQuantity"`
 	// The instance type family.
 	Family string `pulumi:"family"`
 	// The GPU attribution of an instance type:
@@ -13632,6 +13638,8 @@ type GetInstanceTypesInstanceType struct {
 	// - amount:  The number of local storage devices that an instance has been attached to.
 	// - category: The category of local storage that an instance has been attached to.
 	LocalStorage GetInstanceTypesInstanceTypeLocalStorage `pulumi:"localStorage"`
+	// (Available since v1.239.0) The maximum number of queues per ENI, including primary and secondary ENIs.
+	MaximumQueueNumberPerEni int `pulumi:"maximumQueueNumberPerEni"`
 	// Filter the results to a specific memory size in GB.
 	MemorySize float64 `pulumi:"memorySize"`
 	// Indicates whether the cloud disk can be attached by using the nonvolatile memory express (NVMe) protocol. Valid values:
@@ -13640,6 +13648,12 @@ type GetInstanceTypesInstanceType struct {
 	NvmeSupport string `pulumi:"nvmeSupport"`
 	// The price of instance type.
 	Price string `pulumi:"price"`
+	// (Available since v1.239.0) The default number of queues per primary ENI.
+	PrimaryEniQueueNumber int `pulumi:"primaryEniQueueNumber"`
+	// (Available since v1.239.0) The default number of queues per secondary ENI.
+	SecondaryEniQueueNumber int `pulumi:"secondaryEniQueueNumber"`
+	// (Available since v1.239.0) The maximum number of queues on ENIs that the instance type supports.
+	TotalEniQueueQuantity int `pulumi:"totalEniQueueQuantity"`
 }
 
 // GetInstanceTypesInstanceTypeInput is an input type that accepts GetInstanceTypesInstanceTypeArgs and GetInstanceTypesInstanceTypeOutput values.
@@ -13664,6 +13678,12 @@ type GetInstanceTypesInstanceTypeArgs struct {
 	CpuCoreCount pulumi.IntInput `pulumi:"cpuCoreCount"`
 	// Filter the result whose network interface number is no more than `eniAmount`.
 	EniAmount pulumi.IntInput `pulumi:"eniAmount"`
+	// (Available since v1.239.0) The maximum number of IPv6 addresses per ENI.
+	EniIpv6AddressQuantity pulumi.IntInput `pulumi:"eniIpv6AddressQuantity"`
+	// (Available since v1.239.0) The maximum number of IPv4 addresses per ENI.
+	EniPrivateIpAddressQuantity pulumi.IntInput `pulumi:"eniPrivateIpAddressQuantity"`
+	// (Available since v1.239.0) The maximum number of ENIs per instance.
+	EniQuantity pulumi.IntInput `pulumi:"eniQuantity"`
 	// The instance type family.
 	Family pulumi.StringInput `pulumi:"family"`
 	// The GPU attribution of an instance type:
@@ -13677,6 +13697,8 @@ type GetInstanceTypesInstanceTypeArgs struct {
 	// - amount:  The number of local storage devices that an instance has been attached to.
 	// - category: The category of local storage that an instance has been attached to.
 	LocalStorage GetInstanceTypesInstanceTypeLocalStorageInput `pulumi:"localStorage"`
+	// (Available since v1.239.0) The maximum number of queues per ENI, including primary and secondary ENIs.
+	MaximumQueueNumberPerEni pulumi.IntInput `pulumi:"maximumQueueNumberPerEni"`
 	// Filter the results to a specific memory size in GB.
 	MemorySize pulumi.Float64Input `pulumi:"memorySize"`
 	// Indicates whether the cloud disk can be attached by using the nonvolatile memory express (NVMe) protocol. Valid values:
@@ -13685,6 +13707,12 @@ type GetInstanceTypesInstanceTypeArgs struct {
 	NvmeSupport pulumi.StringInput `pulumi:"nvmeSupport"`
 	// The price of instance type.
 	Price pulumi.StringInput `pulumi:"price"`
+	// (Available since v1.239.0) The default number of queues per primary ENI.
+	PrimaryEniQueueNumber pulumi.IntInput `pulumi:"primaryEniQueueNumber"`
+	// (Available since v1.239.0) The default number of queues per secondary ENI.
+	SecondaryEniQueueNumber pulumi.IntInput `pulumi:"secondaryEniQueueNumber"`
+	// (Available since v1.239.0) The maximum number of queues on ENIs that the instance type supports.
+	TotalEniQueueQuantity pulumi.IntInput `pulumi:"totalEniQueueQuantity"`
 }
 
 func (GetInstanceTypesInstanceTypeArgs) ElementType() reflect.Type {
@@ -13762,6 +13790,21 @@ func (o GetInstanceTypesInstanceTypeOutput) EniAmount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceTypesInstanceType) int { return v.EniAmount }).(pulumi.IntOutput)
 }
 
+// (Available since v1.239.0) The maximum number of IPv6 addresses per ENI.
+func (o GetInstanceTypesInstanceTypeOutput) EniIpv6AddressQuantity() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceTypesInstanceType) int { return v.EniIpv6AddressQuantity }).(pulumi.IntOutput)
+}
+
+// (Available since v1.239.0) The maximum number of IPv4 addresses per ENI.
+func (o GetInstanceTypesInstanceTypeOutput) EniPrivateIpAddressQuantity() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceTypesInstanceType) int { return v.EniPrivateIpAddressQuantity }).(pulumi.IntOutput)
+}
+
+// (Available since v1.239.0) The maximum number of ENIs per instance.
+func (o GetInstanceTypesInstanceTypeOutput) EniQuantity() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceTypesInstanceType) int { return v.EniQuantity }).(pulumi.IntOutput)
+}
+
 // The instance type family.
 func (o GetInstanceTypesInstanceTypeOutput) Family() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTypesInstanceType) string { return v.Family }).(pulumi.StringOutput)
@@ -13787,6 +13830,11 @@ func (o GetInstanceTypesInstanceTypeOutput) LocalStorage() GetInstanceTypesInsta
 	return o.ApplyT(func(v GetInstanceTypesInstanceType) GetInstanceTypesInstanceTypeLocalStorage { return v.LocalStorage }).(GetInstanceTypesInstanceTypeLocalStorageOutput)
 }
 
+// (Available since v1.239.0) The maximum number of queues per ENI, including primary and secondary ENIs.
+func (o GetInstanceTypesInstanceTypeOutput) MaximumQueueNumberPerEni() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceTypesInstanceType) int { return v.MaximumQueueNumberPerEni }).(pulumi.IntOutput)
+}
+
 // Filter the results to a specific memory size in GB.
 func (o GetInstanceTypesInstanceTypeOutput) MemorySize() pulumi.Float64Output {
 	return o.ApplyT(func(v GetInstanceTypesInstanceType) float64 { return v.MemorySize }).(pulumi.Float64Output)
@@ -13802,6 +13850,21 @@ func (o GetInstanceTypesInstanceTypeOutput) NvmeSupport() pulumi.StringOutput {
 // The price of instance type.
 func (o GetInstanceTypesInstanceTypeOutput) Price() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTypesInstanceType) string { return v.Price }).(pulumi.StringOutput)
+}
+
+// (Available since v1.239.0) The default number of queues per primary ENI.
+func (o GetInstanceTypesInstanceTypeOutput) PrimaryEniQueueNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceTypesInstanceType) int { return v.PrimaryEniQueueNumber }).(pulumi.IntOutput)
+}
+
+// (Available since v1.239.0) The default number of queues per secondary ENI.
+func (o GetInstanceTypesInstanceTypeOutput) SecondaryEniQueueNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceTypesInstanceType) int { return v.SecondaryEniQueueNumber }).(pulumi.IntOutput)
+}
+
+// (Available since v1.239.0) The maximum number of queues on ENIs that the instance type supports.
+func (o GetInstanceTypesInstanceTypeOutput) TotalEniQueueQuantity() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceTypesInstanceType) int { return v.TotalEniQueueQuantity }).(pulumi.IntOutput)
 }
 
 type GetInstanceTypesInstanceTypeArrayOutput struct{ *pulumi.OutputState }

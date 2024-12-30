@@ -52,6 +52,12 @@ namespace Pulumi.AliCloud.PrivateLink
     public partial class VpcEndpointService : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The IP address version.
+        /// </summary>
+        [Output("addressIpVersion")]
+        public Output<string> AddressIpVersion { get; private set; } = null!;
+
+        /// <summary>
         /// Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
         /// </summary>
         [Output("autoAcceptConnection")]
@@ -196,6 +202,12 @@ namespace Pulumi.AliCloud.PrivateLink
     public sealed class VpcEndpointServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The IP address version.
+        /// </summary>
+        [Input("addressIpVersion")]
+        public Input<string>? AddressIpVersion { get; set; }
+
+        /// <summary>
         /// Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
         /// </summary>
         [Input("autoAcceptConnection")]
@@ -271,6 +283,12 @@ namespace Pulumi.AliCloud.PrivateLink
 
     public sealed class VpcEndpointServiceState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The IP address version.
+        /// </summary>
+        [Input("addressIpVersion")]
+        public Input<string>? AddressIpVersion { get; set; }
+
         /// <summary>
         /// Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
         /// </summary>

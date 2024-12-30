@@ -17,9 +17,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Security Group resource.
+ * Provides a ECS Security Group resource.
  * 
- * For information about Security Group and how to use it, see [What is Security Group](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-createsecuritygroup).
+ * For information about ECS Security Group and how to use it, see [What is Security Group](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-createsecuritygroup).
  * 
  * &gt; **NOTE:** Available since v1.0.0.
  * 
@@ -55,8 +55,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new SecurityGroup("default", SecurityGroupArgs.builder()
- *             .name("terraform-example")
- *             .description("New security group")
+ *             .securityGroupName("terraform-example")
  *             .build());
  * 
  *     }
@@ -92,14 +91,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vpc = new Network("vpc", NetworkArgs.builder()
+ *         var default_ = new Network("default", NetworkArgs.builder()
  *             .vpcName("terraform-example")
- *             .cidrBlock("10.1.0.0/21")
+ *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()
- *             .name("terraform-example")
- *             .vpcId(vpc.id())
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+ *             .securityGroupName("terraform-example")
+ *             .vpcId(default_.id())
  *             .build());
  * 
  *     }
@@ -115,24 +114,38 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Security Group can be imported using the id, e.g.
+ * ECS Security Group can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:ecs/securityGroup:SecurityGroup example sg-abc123456
+ * $ pulumi import alicloud:ecs/securityGroup:SecurityGroup example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:ecs/securityGroup:SecurityGroup")
 public class SecurityGroup extends com.pulumi.resources.CustomResource {
     /**
-     * The security group description. Defaults to null.
+     * (Available since v1.239.0) The time when the security group was created.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return (Available since v1.239.0) The time when the security group was created.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * The description of the security group. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The security group description. Defaults to null.
+     * @return The description of the security group. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
      * 
      */
     public Output<Optional<String>> description() {
@@ -141,48 +154,52 @@ public class SecurityGroup extends com.pulumi.resources.CustomResource {
     /**
      * Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
      * 
-     * Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
-     * 
      * @deprecated
-     * Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.
+     * Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
      * 
      */
-    @Deprecated /* Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it. */
+    @Deprecated /* Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead. */
     @Export(name="innerAccess", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> innerAccess;
 
     /**
      * @return Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
      * 
-     * Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
-     * 
      */
     public Output<Boolean> innerAccess() {
         return this.innerAccess;
     }
     /**
-     * The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
+     * The internal access control policy of the security group. Valid values:
+     * - `Accept`: The internal interconnectivity policy.
+     * - `Drop`: The internal isolation policy.
      * 
      */
     @Export(name="innerAccessPolicy", refs={String.class}, tree="[0]")
     private Output<String> innerAccessPolicy;
 
     /**
-     * @return The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
+     * @return The internal access control policy of the security group. Valid values:
+     * - `Accept`: The internal interconnectivity policy.
+     * - `Drop`: The internal isolation policy.
      * 
      */
     public Output<String> innerAccessPolicy() {
         return this.innerAccessPolicy;
     }
     /**
-     * The name of the security group. Defaults to null.
+     * Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
+     * 
+     * @deprecated
+     * Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
      * 
      */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the security group. Defaults to null.
+     * @return Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
      * 
      */
     public Output<String> name() {
@@ -203,14 +220,28 @@ public class SecurityGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.resourceGroupId);
     }
     /**
-     * The type of the security group. Valid values:
+     * The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
+     * 
+     */
+    @Export(name="securityGroupName", refs={String.class}, tree="[0]")
+    private Output<String> securityGroupName;
+
+    /**
+     * @return The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
+     * 
+     */
+    public Output<String> securityGroupName() {
+        return this.securityGroupName;
+    }
+    /**
+     * The type of the security group. Default value: `normal`. Valid values:
      * 
      */
     @Export(name="securityGroupType", refs={String.class}, tree="[0]")
     private Output<String> securityGroupType;
 
     /**
-     * @return The type of the security group. Valid values:
+     * @return The type of the security group. Default value: `normal`. Valid values:
      * 
      */
     public Output<String> securityGroupType() {
@@ -231,18 +262,18 @@ public class SecurityGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * The ID of the VPC.
+     * The ID of the VPC in which you want to create the security group.
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> vpcId;
+    private Output<String> vpcId;
 
     /**
-     * @return The ID of the VPC.
+     * @return The ID of the VPC in which you want to create the security group.
      * 
      */
-    public Output<Optional<String>> vpcId() {
-        return Codegen.optional(this.vpcId);
+    public Output<String> vpcId() {
+        return this.vpcId;
     }
 
     /**

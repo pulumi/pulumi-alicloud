@@ -63,6 +63,8 @@ import (
 type VpcEndpointService struct {
 	pulumi.CustomResourceState
 
+	// The IP address version.
+	AddressIpVersion pulumi.StringOutput `pulumi:"addressIpVersion"`
 	// Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
 	AutoAcceptConnection pulumi.BoolPtrOutput `pulumi:"autoAcceptConnection"`
 	// The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
@@ -129,6 +131,8 @@ func GetVpcEndpointService(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering VpcEndpointService resources.
 type vpcEndpointServiceState struct {
+	// The IP address version.
+	AddressIpVersion *string `pulumi:"addressIpVersion"`
 	// Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
 	AutoAcceptConnection *bool `pulumi:"autoAcceptConnection"`
 	// The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
@@ -166,6 +170,8 @@ type vpcEndpointServiceState struct {
 }
 
 type VpcEndpointServiceState struct {
+	// The IP address version.
+	AddressIpVersion pulumi.StringPtrInput
 	// Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
 	AutoAcceptConnection pulumi.BoolPtrInput
 	// The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
@@ -207,6 +213,8 @@ func (VpcEndpointServiceState) ElementType() reflect.Type {
 }
 
 type vpcEndpointServiceArgs struct {
+	// The IP address version.
+	AddressIpVersion *string `pulumi:"addressIpVersion"`
 	// Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
 	AutoAcceptConnection *bool `pulumi:"autoAcceptConnection"`
 	// The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
@@ -233,6 +241,8 @@ type vpcEndpointServiceArgs struct {
 
 // The set of arguments for constructing a VpcEndpointService resource.
 type VpcEndpointServiceArgs struct {
+	// The IP address version.
+	AddressIpVersion pulumi.StringPtrInput
 	// Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
 	AutoAcceptConnection pulumi.BoolPtrInput
 	// The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
@@ -342,6 +352,11 @@ func (o VpcEndpointServiceOutput) ToVpcEndpointServiceOutput() VpcEndpointServic
 
 func (o VpcEndpointServiceOutput) ToVpcEndpointServiceOutputWithContext(ctx context.Context) VpcEndpointServiceOutput {
 	return o
+}
+
+// The IP address version.
+func (o VpcEndpointServiceOutput) AddressIpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpointService) pulumi.StringOutput { return v.AddressIpVersion }).(pulumi.StringOutput)
 }
 
 // Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:

@@ -65,6 +65,11 @@ export type RouterExpressConnectRouter = import("./routerExpressConnectRouter").
 export const RouterExpressConnectRouter: typeof import("./routerExpressConnectRouter").RouterExpressConnectRouter = null as any;
 utilities.lazyLoad(exports, ["RouterExpressConnectRouter"], () => require("./routerExpressConnectRouter"));
 
+export { RouterGrantAssociationArgs, RouterGrantAssociationState } from "./routerGrantAssociation";
+export type RouterGrantAssociation = import("./routerGrantAssociation").RouterGrantAssociation;
+export const RouterGrantAssociation: typeof import("./routerGrantAssociation").RouterGrantAssociation = null as any;
+utilities.lazyLoad(exports, ["RouterGrantAssociation"], () => require("./routerGrantAssociation"));
+
 export { RouterInterfaceArgs, RouterInterfaceState } from "./routerInterface";
 export type RouterInterface = import("./routerInterface").RouterInterface;
 export const RouterInterface: typeof import("./routerInterface").RouterInterface = null as any;
@@ -133,6 +138,8 @@ const _module = {
                 return new PhysicalConnection(name, <any>undefined, { urn })
             case "alicloud:expressconnect/routerExpressConnectRouter:RouterExpressConnectRouter":
                 return new RouterExpressConnectRouter(name, <any>undefined, { urn })
+            case "alicloud:expressconnect/routerGrantAssociation:RouterGrantAssociation":
+                return new RouterGrantAssociation(name, <any>undefined, { urn })
             case "alicloud:expressconnect/routerInterface:RouterInterface":
                 return new RouterInterface(name, <any>undefined, { urn })
             case "alicloud:expressconnect/routerTrAssociation:RouterTrAssociation":
@@ -164,6 +171,7 @@ pulumi.runtime.registerResourceModule("alicloud", "expressconnect/ecFailoverTest
 pulumi.runtime.registerResourceModule("alicloud", "expressconnect/grantRuleToCen", _module)
 pulumi.runtime.registerResourceModule("alicloud", "expressconnect/physicalConnection", _module)
 pulumi.runtime.registerResourceModule("alicloud", "expressconnect/routerExpressConnectRouter", _module)
+pulumi.runtime.registerResourceModule("alicloud", "expressconnect/routerGrantAssociation", _module)
 pulumi.runtime.registerResourceModule("alicloud", "expressconnect/routerInterface", _module)
 pulumi.runtime.registerResourceModule("alicloud", "expressconnect/routerTrAssociation", _module)
 pulumi.runtime.registerResourceModule("alicloud", "expressconnect/routerVbrChildInstance", _module)

@@ -4421,6 +4421,9 @@
                     }
                 }
             },
+            "alicloud_express_connect_router_grant_association": {
+                "current": "alicloud:expressconnect/routerGrantAssociation:RouterGrantAssociation"
+            },
             "alicloud_express_connect_router_interface": {
                 "current": "alicloud:expressconnect/routerInterface:RouterInterface"
             },

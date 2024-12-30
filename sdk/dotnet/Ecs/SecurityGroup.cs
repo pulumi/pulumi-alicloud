@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     /// <summary>
-    /// Provides a Security Group resource.
+    /// Provides a ECS Security Group resource.
     /// 
-    /// For information about Security Group and how to use it, see [What is Security Group](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-createsecuritygroup).
+    /// For information about ECS Security Group and how to use it, see [What is Security Group](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-createsecuritygroup).
     /// 
     /// &gt; **NOTE:** Available since v1.0.0.
     /// 
@@ -34,8 +34,7 @@ namespace Pulumi.AliCloud.Ecs
     /// {
     ///     var @default = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
-    ///         Name = "terraform-example",
-    ///         Description = "New security group",
+    ///         SecurityGroupName = "terraform-example",
     ///     });
     /// 
     /// });
@@ -51,16 +50,16 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
+    ///     var @default = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = "terraform-example",
-    ///         CidrBlock = "10.1.0.0/21",
+    ///         CidrBlock = "172.16.0.0/16",
     ///     });
     /// 
-    ///     var @group = new AliCloud.Ecs.SecurityGroup("group", new()
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
-    ///         Name = "terraform-example",
-    ///         VpcId = vpc.Id,
+    ///         SecurityGroupName = "terraform-example",
+    ///         VpcId = @default.Id,
     ///     });
     /// 
     /// });
@@ -73,37 +72,43 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// ## Import
     /// 
-    /// Security Group can be imported using the id, e.g.
+    /// ECS Security Group can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:ecs/securityGroup:SecurityGroup example sg-abc123456
+    /// $ pulumi import alicloud:ecs/securityGroup:SecurityGroup example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/securityGroup:SecurityGroup")]
     public partial class SecurityGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The security group description. Defaults to null.
+        /// (Available since v1.239.0) The time when the security group was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of the security group. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
         /// Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
-        /// 
-        /// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
         /// </summary>
         [Output("innerAccess")]
         public Output<bool> InnerAccess { get; private set; } = null!;
 
         /// <summary>
-        /// The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
+        /// The internal access control policy of the security group. Valid values:
+        /// - `Accept`: The internal interconnectivity policy.
+        /// - `Drop`: The internal isolation policy.
         /// </summary>
         [Output("innerAccessPolicy")]
         public Output<string> InnerAccessPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the security group. Defaults to null.
+        /// Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -115,7 +120,13 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the security group. Valid values:
+        /// The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
+        /// </summary>
+        [Output("securityGroupName")]
+        public Output<string> SecurityGroupName { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of the security group. Default value: `normal`. Valid values:
         /// </summary>
         [Output("securityGroupType")]
         public Output<string> SecurityGroupType { get; private set; } = null!;
@@ -127,10 +138,10 @@ namespace Pulumi.AliCloud.Ecs
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the VPC.
+        /// The ID of the VPC in which you want to create the security group.
         /// </summary>
         [Output("vpcId")]
-        public Output<string?> VpcId { get; private set; } = null!;
+        public Output<string> VpcId { get; private set; } = null!;
 
 
         /// <summary>
@@ -179,27 +190,27 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class SecurityGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The security group description. Defaults to null.
+        /// The description of the security group. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
         /// Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
-        /// 
-        /// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
         /// </summary>
         [Input("innerAccess")]
         public Input<bool>? InnerAccess { get; set; }
 
         /// <summary>
-        /// The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
+        /// The internal access control policy of the security group. Valid values:
+        /// - `Accept`: The internal interconnectivity policy.
+        /// - `Drop`: The internal isolation policy.
         /// </summary>
         [Input("innerAccessPolicy")]
         public Input<string>? InnerAccessPolicy { get; set; }
 
         /// <summary>
-        /// The name of the security group. Defaults to null.
+        /// Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -211,7 +222,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The type of the security group. Valid values:
+        /// The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
+        /// </summary>
+        [Input("securityGroupName")]
+        public Input<string>? SecurityGroupName { get; set; }
+
+        /// <summary>
+        /// The type of the security group. Default value: `normal`. Valid values:
         /// </summary>
         [Input("securityGroupType")]
         public Input<string>? SecurityGroupType { get; set; }
@@ -229,7 +246,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The ID of the VPC.
+        /// The ID of the VPC in which you want to create the security group.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
@@ -243,27 +260,33 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class SecurityGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The security group description. Defaults to null.
+        /// (Available since v1.239.0) The time when the security group was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The description of the security group. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
         /// Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
-        /// 
-        /// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
         /// </summary>
         [Input("innerAccess")]
         public Input<bool>? InnerAccess { get; set; }
 
         /// <summary>
-        /// The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
+        /// The internal access control policy of the security group. Valid values:
+        /// - `Accept`: The internal interconnectivity policy.
+        /// - `Drop`: The internal isolation policy.
         /// </summary>
         [Input("innerAccessPolicy")]
         public Input<string>? InnerAccessPolicy { get; set; }
 
         /// <summary>
-        /// The name of the security group. Defaults to null.
+        /// Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -275,7 +298,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The type of the security group. Valid values:
+        /// The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
+        /// </summary>
+        [Input("securityGroupName")]
+        public Input<string>? SecurityGroupName { get; set; }
+
+        /// <summary>
+        /// The type of the security group. Default value: `normal`. Valid values:
         /// </summary>
         [Input("securityGroupType")]
         public Input<string>? SecurityGroupType { get; set; }
@@ -293,7 +322,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The ID of the VPC.
+        /// The ID of the VPC in which you want to create the security group.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }

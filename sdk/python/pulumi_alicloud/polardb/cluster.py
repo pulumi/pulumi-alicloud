@@ -79,6 +79,7 @@ class ClusterArgs:
                  storage_pay_type: Optional[pulumi.Input[str]] = None,
                  storage_space: Optional[pulumi.Input[int]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
+                 strict_consistency: Optional[pulumi.Input[str]] = None,
                  sub_category: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  target_db_revision_version_code: Optional[pulumi.Input[str]] = None,
@@ -177,6 +178,7 @@ class ClusterArgs:
                > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
                > **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when pay_type is `PrePaid`.
         :param pulumi.Input[str] storage_type: The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`, `ESSDPL0`, `ESSDAUTOPL`. The standard version only supports MySQL and PostgreSQL.
+        :param pulumi.Input[str] strict_consistency: Whether the cluster has enabled strong data consistency across multiple zones. Valid values are `ON`, `OFF`. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
         :param pulumi.Input[str] sub_category: The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -303,6 +305,8 @@ class ClusterArgs:
             pulumi.set(__self__, "storage_space", storage_space)
         if storage_type is not None:
             pulumi.set(__self__, "storage_type", storage_type)
+        if strict_consistency is not None:
+            pulumi.set(__self__, "strict_consistency", strict_consistency)
         if sub_category is not None:
             pulumi.set(__self__, "sub_category", sub_category)
         if tags is not None:
@@ -1047,6 +1051,18 @@ class ClusterArgs:
         pulumi.set(self, "storage_type", value)
 
     @property
+    @pulumi.getter(name="strictConsistency")
+    def strict_consistency(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether the cluster has enabled strong data consistency across multiple zones. Valid values are `ON`, `OFF`. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+        """
+        return pulumi.get(self, "strict_consistency")
+
+    @strict_consistency.setter
+    def strict_consistency(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "strict_consistency", value)
+
+    @property
     @pulumi.getter(name="subCategory")
     def sub_category(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1213,6 +1229,7 @@ class _ClusterState:
                  storage_pay_type: Optional[pulumi.Input[str]] = None,
                  storage_space: Optional[pulumi.Input[int]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
+                 strict_consistency: Optional[pulumi.Input[str]] = None,
                  sub_category: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  target_db_revision_version_code: Optional[pulumi.Input[str]] = None,
@@ -1317,6 +1334,7 @@ class _ClusterState:
                > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
                > **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when pay_type is `PrePaid`.
         :param pulumi.Input[str] storage_type: The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`, `ESSDPL0`, `ESSDAUTOPL`. The standard version only supports MySQL and PostgreSQL.
+        :param pulumi.Input[str] strict_consistency: Whether the cluster has enabled strong data consistency across multiple zones. Valid values are `ON`, `OFF`. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
         :param pulumi.Input[str] sub_category: The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -1459,6 +1477,8 @@ class _ClusterState:
             pulumi.set(__self__, "storage_space", storage_space)
         if storage_type is not None:
             pulumi.set(__self__, "storage_type", storage_type)
+        if strict_consistency is not None:
+            pulumi.set(__self__, "strict_consistency", strict_consistency)
         if sub_category is not None:
             pulumi.set(__self__, "sub_category", sub_category)
         if tags is not None:
@@ -2265,6 +2285,18 @@ class _ClusterState:
         pulumi.set(self, "storage_type", value)
 
     @property
+    @pulumi.getter(name="strictConsistency")
+    def strict_consistency(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether the cluster has enabled strong data consistency across multiple zones. Valid values are `ON`, `OFF`. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+        """
+        return pulumi.get(self, "strict_consistency")
+
+    @strict_consistency.setter
+    def strict_consistency(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "strict_consistency", value)
+
+    @property
     @pulumi.getter(name="subCategory")
     def sub_category(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2442,6 +2474,7 @@ class Cluster(pulumi.CustomResource):
                  storage_pay_type: Optional[pulumi.Input[str]] = None,
                  storage_space: Optional[pulumi.Input[int]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
+                 strict_consistency: Optional[pulumi.Input[str]] = None,
                  sub_category: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  target_db_revision_version_code: Optional[pulumi.Input[str]] = None,
@@ -2550,6 +2583,7 @@ class Cluster(pulumi.CustomResource):
                > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
                > **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when pay_type is `PrePaid`.
         :param pulumi.Input[str] storage_type: The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`, `ESSDPL0`, `ESSDAUTOPL`. The standard version only supports MySQL and PostgreSQL.
+        :param pulumi.Input[str] strict_consistency: Whether the cluster has enabled strong data consistency across multiple zones. Valid values are `ON`, `OFF`. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
         :param pulumi.Input[str] sub_category: The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -2651,6 +2685,7 @@ class Cluster(pulumi.CustomResource):
                  storage_pay_type: Optional[pulumi.Input[str]] = None,
                  storage_space: Optional[pulumi.Input[int]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
+                 strict_consistency: Optional[pulumi.Input[str]] = None,
                  sub_category: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  target_db_revision_version_code: Optional[pulumi.Input[str]] = None,
@@ -2732,6 +2767,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["storage_pay_type"] = storage_pay_type
             __props__.__dict__["storage_space"] = storage_space
             __props__.__dict__["storage_type"] = storage_type
+            __props__.__dict__["strict_consistency"] = strict_consistency
             __props__.__dict__["sub_category"] = sub_category
             __props__.__dict__["tags"] = tags
             __props__.__dict__["target_db_revision_version_code"] = target_db_revision_version_code
@@ -2819,6 +2855,7 @@ class Cluster(pulumi.CustomResource):
             storage_pay_type: Optional[pulumi.Input[str]] = None,
             storage_space: Optional[pulumi.Input[int]] = None,
             storage_type: Optional[pulumi.Input[str]] = None,
+            strict_consistency: Optional[pulumi.Input[str]] = None,
             sub_category: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             target_db_revision_version_code: Optional[pulumi.Input[str]] = None,
@@ -2928,6 +2965,7 @@ class Cluster(pulumi.CustomResource):
                > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
                > **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when pay_type is `PrePaid`.
         :param pulumi.Input[str] storage_type: The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`, `ESSDPL0`, `ESSDAUTOPL`. The standard version only supports MySQL and PostgreSQL.
+        :param pulumi.Input[str] strict_consistency: Whether the cluster has enabled strong data consistency across multiple zones. Valid values are `ON`, `OFF`. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
         :param pulumi.Input[str] sub_category: The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -3011,6 +3049,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["storage_pay_type"] = storage_pay_type
         __props__.__dict__["storage_space"] = storage_space
         __props__.__dict__["storage_type"] = storage_type
+        __props__.__dict__["strict_consistency"] = strict_consistency
         __props__.__dict__["sub_category"] = sub_category
         __props__.__dict__["tags"] = tags
         __props__.__dict__["target_db_revision_version_code"] = target_db_revision_version_code
@@ -3555,6 +3594,14 @@ class Cluster(pulumi.CustomResource):
         The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`, `ESSDPL0`, `ESSDAUTOPL`. The standard version only supports MySQL and PostgreSQL.
         """
         return pulumi.get(self, "storage_type")
+
+    @property
+    @pulumi.getter(name="strictConsistency")
+    def strict_consistency(self) -> pulumi.Output[str]:
+        """
+        Whether the cluster has enabled strong data consistency across multiple zones. Valid values are `ON`, `OFF`. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+        """
+        return pulumi.get(self, "strict_consistency")
 
     @property
     @pulumi.getter(name="subCategory")

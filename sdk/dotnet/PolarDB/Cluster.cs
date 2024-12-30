@@ -430,6 +430,12 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> StorageType { get; private set; } = null!;
 
         /// <summary>
+        /// Whether the cluster has enabled strong data consistency across multiple zones. Valid values are `ON`, `OFF`. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+        /// </summary>
+        [Output("strictConsistency")]
+        public Output<string> StrictConsistency { get; private set; } = null!;
+
+        /// <summary>
         /// The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
         /// </summary>
         [Output("subCategory")]
@@ -938,6 +944,12 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? StorageType { get; set; }
 
         /// <summary>
+        /// Whether the cluster has enabled strong data consistency across multiple zones. Valid values are `ON`, `OFF`. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+        /// </summary>
+        [Input("strictConsistency")]
+        public Input<string>? StrictConsistency { get; set; }
+
+        /// <summary>
         /// The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
         /// </summary>
         [Input("subCategory")]
@@ -1440,6 +1452,12 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("storageType")]
         public Input<string>? StorageType { get; set; }
+
+        /// <summary>
+        /// Whether the cluster has enabled strong data consistency across multiple zones. Valid values are `ON`, `OFF`. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+        /// </summary>
+        [Input("strictConsistency")]
+        public Input<string>? StrictConsistency { get; set; }
 
         /// <summary>
         /// The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.

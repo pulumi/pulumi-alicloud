@@ -21,9 +21,22 @@ public final class VpcEndpointArgs extends com.pulumi.resources.ResourceArgs {
     public static final VpcEndpointArgs Empty = new VpcEndpointArgs();
 
     /**
+     * The IP address version.
+     * 
+     */
+    @Import(name="addressIpVersion")
+    private @Nullable Output<String> addressIpVersion;
+
+    /**
+     * @return The IP address version.
+     * 
+     */
+    public Optional<Output<String>> addressIpVersion() {
+        return Optional.ofNullable(this.addressIpVersion);
+    }
+
+    /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
     @Import(name="dryRun")
@@ -31,8 +44,6 @@ public final class VpcEndpointArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -55,14 +66,18 @@ public final class VpcEndpointArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+     * The endpoint type.
+     * 
+     * Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
      * 
      */
     @Import(name="endpointType")
     private @Nullable Output<String> endpointType;
 
     /**
-     * @return The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+     * @return The endpoint type.
+     * 
+     * Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
      * 
      */
     public Optional<Output<String>> endpointType() {
@@ -70,14 +85,14 @@ public final class VpcEndpointArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * RAM access policies.
+     * RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
      * 
      */
     @Import(name="policyDocument")
     private @Nullable Output<String> policyDocument;
 
     /**
-     * @return RAM access policies.
+     * @return RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
      * 
      */
     public Optional<Output<String>> policyDocument() {
@@ -86,8 +101,6 @@ public final class VpcEndpointArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
-     * - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
-     * - **false (default)**: disables user authentication.
      * 
      */
     @Import(name="protectedEnabled")
@@ -95,8 +108,6 @@ public final class VpcEndpointArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
-     * - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
-     * - **false (default)**: disables user authentication.
      * 
      */
     public Optional<Output<Boolean>> protectedEnabled() {
@@ -119,18 +130,22 @@ public final class VpcEndpointArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.The endpoint can be associated with up to 10 security groups.
+     * The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.
+     * 
+     * The endpoint can be associated with up to 10 security groups.
      * 
      */
-    @Import(name="securityGroupIds", required=true)
-    private Output<List<String>> securityGroupIds;
+    @Import(name="securityGroupIds")
+    private @Nullable Output<List<String>> securityGroupIds;
 
     /**
-     * @return The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.The endpoint can be associated with up to 10 security groups.
+     * @return The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.
+     * 
+     * The endpoint can be associated with up to 10 security groups.
      * 
      */
-    public Output<List<String>> securityGroupIds() {
-        return this.securityGroupIds;
+    public Optional<Output<List<String>>> securityGroupIds() {
+        return Optional.ofNullable(this.securityGroupIds);
     }
 
     /**
@@ -226,6 +241,7 @@ public final class VpcEndpointArgs extends com.pulumi.resources.ResourceArgs {
     private VpcEndpointArgs() {}
 
     private VpcEndpointArgs(VpcEndpointArgs $) {
+        this.addressIpVersion = $.addressIpVersion;
         this.dryRun = $.dryRun;
         this.endpointDescription = $.endpointDescription;
         this.endpointType = $.endpointType;
@@ -260,9 +276,28 @@ public final class VpcEndpointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param addressIpVersion The IP address version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder addressIpVersion(@Nullable Output<String> addressIpVersion) {
+            $.addressIpVersion = addressIpVersion;
+            return this;
+        }
+
+        /**
+         * @param addressIpVersion The IP address version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder addressIpVersion(String addressIpVersion) {
+            return addressIpVersion(Output.of(addressIpVersion));
+        }
+
+        /**
          * @param dryRun Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-         * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-         * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
          * 
          * @return builder
          * 
@@ -274,8 +309,6 @@ public final class VpcEndpointArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dryRun Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-         * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-         * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
          * 
          * @return builder
          * 
@@ -306,7 +339,9 @@ public final class VpcEndpointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpointType The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+         * @param endpointType The endpoint type.
+         * 
+         * Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
          * 
          * @return builder
          * 
@@ -317,7 +352,9 @@ public final class VpcEndpointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpointType The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+         * @param endpointType The endpoint type.
+         * 
+         * Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
          * 
          * @return builder
          * 
@@ -327,7 +364,7 @@ public final class VpcEndpointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyDocument RAM access policies.
+         * @param policyDocument RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
          * 
          * @return builder
          * 
@@ -338,7 +375,7 @@ public final class VpcEndpointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyDocument RAM access policies.
+         * @param policyDocument RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
          * 
          * @return builder
          * 
@@ -349,8 +386,6 @@ public final class VpcEndpointArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param protectedEnabled Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
-         * - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
-         * - **false (default)**: disables user authentication.
          * 
          * @return builder
          * 
@@ -362,8 +397,6 @@ public final class VpcEndpointArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param protectedEnabled Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
-         * - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
-         * - **false (default)**: disables user authentication.
          * 
          * @return builder
          * 
@@ -394,18 +427,22 @@ public final class VpcEndpointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroupIds The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.The endpoint can be associated with up to 10 security groups.
+         * @param securityGroupIds The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.
+         * 
+         * The endpoint can be associated with up to 10 security groups.
          * 
          * @return builder
          * 
          */
-        public Builder securityGroupIds(Output<List<String>> securityGroupIds) {
+        public Builder securityGroupIds(@Nullable Output<List<String>> securityGroupIds) {
             $.securityGroupIds = securityGroupIds;
             return this;
         }
 
         /**
-         * @param securityGroupIds The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.The endpoint can be associated with up to 10 security groups.
+         * @param securityGroupIds The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.
+         * 
+         * The endpoint can be associated with up to 10 security groups.
          * 
          * @return builder
          * 
@@ -415,7 +452,9 @@ public final class VpcEndpointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroupIds The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.The endpoint can be associated with up to 10 security groups.
+         * @param securityGroupIds The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.
+         * 
+         * The endpoint can be associated with up to 10 security groups.
          * 
          * @return builder
          * 
@@ -551,9 +590,6 @@ public final class VpcEndpointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public VpcEndpointArgs build() {
-            if ($.securityGroupIds == null) {
-                throw new MissingRequiredPropertyException("VpcEndpointArgs", "securityGroupIds");
-            }
             if ($.vpcId == null) {
                 throw new MissingRequiredPropertyException("VpcEndpointArgs", "vpcId");
             }

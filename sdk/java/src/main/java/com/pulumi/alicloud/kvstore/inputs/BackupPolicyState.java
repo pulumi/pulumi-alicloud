@@ -17,14 +17,14 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
     public static final BackupPolicyState Empty = new BackupPolicyState();
 
     /**
-     * Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+     * Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
      * 
      */
     @Import(name="backupPeriods")
     private @Nullable Output<List<String>> backupPeriods;
 
     /**
-     * @return Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+     * @return Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
      * 
      */
     public Optional<Output<List<String>>> backupPeriods() {
@@ -32,14 +32,14 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Backup time, in the format of HH:mmZ- HH:mm Z
+     * Backup time, in the format of HH:mmZ- HH:mm Z.
      * 
      */
     @Import(name="backupTime")
     private @Nullable Output<String> backupTime;
 
     /**
-     * @return Backup time, in the format of HH:mmZ- HH:mm Z
+     * @return Backup time, in the format of HH:mmZ- HH:mm Z.
      * 
      */
     public Optional<Output<String>> backupTime() {
@@ -88,7 +88,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupPeriods Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+         * @param backupPeriods Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupPeriods Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+         * @param backupPeriods Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupPeriods Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+         * @param backupPeriods Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupTime Backup time, in the format of HH:mmZ- HH:mm Z
+         * @param backupTime Backup time, in the format of HH:mmZ- HH:mm Z.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupTime Backup time, in the format of HH:mmZ- HH:mm Z
+         * @param backupTime Backup time, in the format of HH:mmZ- HH:mm Z.
          * 
          * @return builder
          * 

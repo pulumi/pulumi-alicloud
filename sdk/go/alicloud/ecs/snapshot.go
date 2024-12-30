@@ -59,7 +59,8 @@ import (
 type Snapshot struct {
 	pulumi.CustomResourceState
 
-	Category pulumi.StringOutput `pulumi:"category"`
+	Category   pulumi.StringOutput `pulumi:"category"`
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The source disk ID.
@@ -73,7 +74,8 @@ type Snapshot struct {
 	// It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
 	//
 	// Deprecated: Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name     pulumi.StringOutput `pulumi:"name"`
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
 	RetentionDays   pulumi.IntPtrOutput    `pulumi:"retentionDays"`
@@ -116,7 +118,8 @@ func GetSnapshot(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Snapshot resources.
 type snapshotState struct {
-	Category *string `pulumi:"category"`
+	Category   *string `pulumi:"category"`
+	CreateTime *string `pulumi:"createTime"`
 	// Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description *string `pulumi:"description"`
 	// The source disk ID.
@@ -130,7 +133,8 @@ type snapshotState struct {
 	// It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
 	//
 	// Deprecated: Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
-	Name *string `pulumi:"name"`
+	Name     *string `pulumi:"name"`
+	RegionId *string `pulumi:"regionId"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	RetentionDays   *int    `pulumi:"retentionDays"`
@@ -141,7 +145,8 @@ type snapshotState struct {
 }
 
 type SnapshotState struct {
-	Category pulumi.StringPtrInput
+	Category   pulumi.StringPtrInput
+	CreateTime pulumi.StringPtrInput
 	// Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description pulumi.StringPtrInput
 	// The source disk ID.
@@ -155,7 +160,8 @@ type SnapshotState struct {
 	// It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
 	//
 	// Deprecated: Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
-	Name pulumi.StringPtrInput
+	Name     pulumi.StringPtrInput
+	RegionId pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	RetentionDays   pulumi.IntPtrInput
@@ -309,6 +315,10 @@ func (o SnapshotOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.Category }).(pulumi.StringOutput)
 }
 
+func (o SnapshotOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
 // Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 func (o SnapshotOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -339,6 +349,10 @@ func (o SnapshotOutput) InstantAccessRetentionDays() pulumi.IntPtrOutput {
 // Deprecated: Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
 func (o SnapshotOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o SnapshotOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
 }
 
 // The ID of the resource group.
