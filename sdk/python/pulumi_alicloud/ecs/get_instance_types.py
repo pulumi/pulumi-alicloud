@@ -112,7 +112,7 @@ class GetInstanceTypesResult:
     @pulumi.getter(name="eniAmount")
     def eni_amount(self) -> Optional[int]:
         """
-        The maximum number of network interfaces that an instance type can be attached to.
+        (Deprecated since v1.239.0) The maximum number of ENIs per instance. It sames as `eni_quantity`.
         """
         return pulumi.get(self, "eni_amount")
 

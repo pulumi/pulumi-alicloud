@@ -178,6 +178,8 @@ type Cluster struct {
 	StorageSpace pulumi.IntOutput `pulumi:"storageSpace"`
 	// The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`, `ESSDPL0`, `ESSDAUTOPL`. The standard version only supports MySQL and PostgreSQL.
 	StorageType pulumi.StringOutput `pulumi:"storageType"`
+	// Whether the cluster has enabled strong data consistency across multiple zones. Valid values are `ON`, `OFF`. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+	StrictConsistency pulumi.StringOutput `pulumi:"strictConsistency"`
 	// The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
 	SubCategory pulumi.StringOutput `pulumi:"subCategory"`
 	// A mapping of tags to assign to the resource.
@@ -399,6 +401,8 @@ type clusterState struct {
 	StorageSpace *int `pulumi:"storageSpace"`
 	// The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`, `ESSDPL0`, `ESSDAUTOPL`. The standard version only supports MySQL and PostgreSQL.
 	StorageType *string `pulumi:"storageType"`
+	// Whether the cluster has enabled strong data consistency across multiple zones. Valid values are `ON`, `OFF`. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+	StrictConsistency *string `pulumi:"strictConsistency"`
 	// The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
 	SubCategory *string `pulumi:"subCategory"`
 	// A mapping of tags to assign to the resource.
@@ -582,6 +586,8 @@ type ClusterState struct {
 	StorageSpace pulumi.IntPtrInput
 	// The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`, `ESSDPL0`, `ESSDAUTOPL`. The standard version only supports MySQL and PostgreSQL.
 	StorageType pulumi.StringPtrInput
+	// Whether the cluster has enabled strong data consistency across multiple zones. Valid values are `ON`, `OFF`. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+	StrictConsistency pulumi.StringPtrInput
 	// The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
 	SubCategory pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
@@ -759,6 +765,8 @@ type clusterArgs struct {
 	StorageSpace *int `pulumi:"storageSpace"`
 	// The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`, `ESSDPL0`, `ESSDAUTOPL`. The standard version only supports MySQL and PostgreSQL.
 	StorageType *string `pulumi:"storageType"`
+	// Whether the cluster has enabled strong data consistency across multiple zones. Valid values are `ON`, `OFF`. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+	StrictConsistency *string `pulumi:"strictConsistency"`
 	// The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
 	SubCategory *string `pulumi:"subCategory"`
 	// A mapping of tags to assign to the resource.
@@ -929,6 +937,8 @@ type ClusterArgs struct {
 	StorageSpace pulumi.IntPtrInput
 	// The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`, `ESSDPL0`, `ESSDAUTOPL`. The standard version only supports MySQL and PostgreSQL.
 	StorageType pulumi.StringPtrInput
+	// Whether the cluster has enabled strong data consistency across multiple zones. Valid values are `ON`, `OFF`. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+	StrictConsistency pulumi.StringPtrInput
 	// The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
 	SubCategory pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
@@ -1381,6 +1391,11 @@ func (o ClusterOutput) StorageSpace() pulumi.IntOutput {
 // The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`, `ESSDPL0`, `ESSDAUTOPL`. The standard version only supports MySQL and PostgreSQL.
 func (o ClusterOutput) StorageType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.StorageType }).(pulumi.StringOutput)
+}
+
+// Whether the cluster has enabled strong data consistency across multiple zones. Valid values are `ON`, `OFF`. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+func (o ClusterOutput) StrictConsistency() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.StrictConsistency }).(pulumi.StringOutput)
 }
 
 // The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.

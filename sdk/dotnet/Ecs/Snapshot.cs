@@ -54,6 +54,9 @@ namespace Pulumi.AliCloud.Ecs
         [Output("category")]
         public Output<string> Category { get; private set; } = null!;
 
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
         /// <summary>
         /// Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         /// </summary>
@@ -81,6 +84,9 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the resource group.
@@ -215,6 +221,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("category")]
         public Input<string>? Category { get; set; }
 
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
         /// <summary>
         /// Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         /// </summary>
@@ -242,6 +251,9 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
 
         /// <summary>
         /// The ID of the resource group.

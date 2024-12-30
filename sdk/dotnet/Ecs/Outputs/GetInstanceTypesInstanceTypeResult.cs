@@ -32,6 +32,18 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly int EniAmount;
         /// <summary>
+        /// (Available since v1.239.0) The maximum number of IPv6 addresses per ENI.
+        /// </summary>
+        public readonly int EniIpv6AddressQuantity;
+        /// <summary>
+        /// (Available since v1.239.0) The maximum number of IPv4 addresses per ENI.
+        /// </summary>
+        public readonly int EniPrivateIpAddressQuantity;
+        /// <summary>
+        /// (Available since v1.239.0) The maximum number of ENIs per instance.
+        /// </summary>
+        public readonly int EniQuantity;
+        /// <summary>
         /// The instance type family.
         /// </summary>
         public readonly string Family;
@@ -53,6 +65,10 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly Outputs.GetInstanceTypesInstanceTypeLocalStorageResult LocalStorage;
         /// <summary>
+        /// (Available since v1.239.0) The maximum number of queues per ENI, including primary and secondary ENIs.
+        /// </summary>
+        public readonly int MaximumQueueNumberPerEni;
+        /// <summary>
         /// Filter the results to a specific memory size in GB.
         /// </summary>
         public readonly double MemorySize;
@@ -66,6 +82,18 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// The price of instance type.
         /// </summary>
         public readonly string Price;
+        /// <summary>
+        /// (Available since v1.239.0) The default number of queues per primary ENI.
+        /// </summary>
+        public readonly int PrimaryEniQueueNumber;
+        /// <summary>
+        /// (Available since v1.239.0) The default number of queues per secondary ENI.
+        /// </summary>
+        public readonly int SecondaryEniQueueNumber;
+        /// <summary>
+        /// (Available since v1.239.0) The maximum number of queues on ENIs that the instance type supports.
+        /// </summary>
+        public readonly int TotalEniQueueQuantity;
 
         [OutputConstructor]
         private GetInstanceTypesInstanceTypeResult(
@@ -77,6 +105,12 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             int eniAmount,
 
+            int eniIpv6AddressQuantity,
+
+            int eniPrivateIpAddressQuantity,
+
+            int eniQuantity,
+
             string family,
 
             Outputs.GetInstanceTypesInstanceTypeGpuResult gpu,
@@ -85,23 +119,38 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             Outputs.GetInstanceTypesInstanceTypeLocalStorageResult localStorage,
 
+            int maximumQueueNumberPerEni,
+
             double memorySize,
 
             string nvmeSupport,
 
-            string price)
+            string price,
+
+            int primaryEniQueueNumber,
+
+            int secondaryEniQueueNumber,
+
+            int totalEniQueueQuantity)
         {
             AvailabilityZones = availabilityZones;
             BurstableInstance = burstableInstance;
             CpuCoreCount = cpuCoreCount;
             EniAmount = eniAmount;
+            EniIpv6AddressQuantity = eniIpv6AddressQuantity;
+            EniPrivateIpAddressQuantity = eniPrivateIpAddressQuantity;
+            EniQuantity = eniQuantity;
             Family = family;
             Gpu = gpu;
             Id = id;
             LocalStorage = localStorage;
+            MaximumQueueNumberPerEni = maximumQueueNumberPerEni;
             MemorySize = memorySize;
             NvmeSupport = nvmeSupport;
             Price = price;
+            PrimaryEniQueueNumber = primaryEniQueueNumber;
+            SecondaryEniQueueNumber = secondaryEniQueueNumber;
+            TotalEniQueueQuantity = totalEniQueueQuantity;
         }
     }
 }

@@ -12,9 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **DEPRECATED:**  This resource  has been deprecated from version `1.104.0`. Please use resource alicloud_kvstore_instance.
+// Provides a Backup Policy for Tair (Redis OSS-Compatible) And Memcache (KVStore) resource.
 //
-// Provides a backup policy for Tair (Redis OSS-Compatible) And Memcache (KVStore) resource.
+// For information about Backup Policy for Tair (Redis OSS-Compatible) And Memcache (KVStore) and how to use it, see [What is Backup Policy](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-modifybackuppolicy-redis).
+//
+// > **NOTE:** Available since v1.15.0.
+//
+// > **DEPRECATED:**  This resource  has been deprecated from version `1.104.0`. Please use resource alicloud_kvstore_instance.
 //
 // ## Example Usage
 //
@@ -35,7 +39,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "kvstorebackuppolicyvpc"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -100,17 +104,17 @@ import (
 //
 // ## Import
 //
-// Tair (Redis OSS-Compatible) And Memcache (KVStore) backup policy can be imported using the id, e.g.
+// Tair (Redis OSS-Compatible) And Memcache (KVStore) Backup Policy can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:kvstore/backupPolicy:BackupPolicy example r-abc12345678
+// $ pulumi import alicloud:kvstore/backupPolicy:BackupPolicy example <id>
 // ```
 type BackupPolicy struct {
 	pulumi.CustomResourceState
 
-	// Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+	// Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
 	BackupPeriods pulumi.StringArrayOutput `pulumi:"backupPeriods"`
-	// Backup time, in the format of HH:mmZ- HH:mm Z
+	// Backup time, in the format of HH:mmZ- HH:mm Z.
 	BackupTime pulumi.StringPtrOutput `pulumi:"backupTime"`
 	// The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
@@ -149,18 +153,18 @@ func GetBackupPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BackupPolicy resources.
 type backupPolicyState struct {
-	// Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+	// Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
 	BackupPeriods []string `pulumi:"backupPeriods"`
-	// Backup time, in the format of HH:mmZ- HH:mm Z
+	// Backup time, in the format of HH:mmZ- HH:mm Z.
 	BackupTime *string `pulumi:"backupTime"`
 	// The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
 	InstanceId *string `pulumi:"instanceId"`
 }
 
 type BackupPolicyState struct {
-	// Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+	// Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
 	BackupPeriods pulumi.StringArrayInput
-	// Backup time, in the format of HH:mmZ- HH:mm Z
+	// Backup time, in the format of HH:mmZ- HH:mm Z.
 	BackupTime pulumi.StringPtrInput
 	// The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
 	InstanceId pulumi.StringPtrInput
@@ -171,9 +175,9 @@ func (BackupPolicyState) ElementType() reflect.Type {
 }
 
 type backupPolicyArgs struct {
-	// Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+	// Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
 	BackupPeriods []string `pulumi:"backupPeriods"`
-	// Backup time, in the format of HH:mmZ- HH:mm Z
+	// Backup time, in the format of HH:mmZ- HH:mm Z.
 	BackupTime *string `pulumi:"backupTime"`
 	// The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
 	InstanceId string `pulumi:"instanceId"`
@@ -181,9 +185,9 @@ type backupPolicyArgs struct {
 
 // The set of arguments for constructing a BackupPolicy resource.
 type BackupPolicyArgs struct {
-	// Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+	// Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
 	BackupPeriods pulumi.StringArrayInput
-	// Backup time, in the format of HH:mmZ- HH:mm Z
+	// Backup time, in the format of HH:mmZ- HH:mm Z.
 	BackupTime pulumi.StringPtrInput
 	// The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
 	InstanceId pulumi.StringInput
@@ -276,12 +280,12 @@ func (o BackupPolicyOutput) ToBackupPolicyOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+// Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
 func (o BackupPolicyOutput) BackupPeriods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BackupPolicy) pulumi.StringArrayOutput { return v.BackupPeriods }).(pulumi.StringArrayOutput)
 }
 
-// Backup time, in the format of HH:mmZ- HH:mm Z
+// Backup time, in the format of HH:mmZ- HH:mm Z.
 func (o BackupPolicyOutput) BackupTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackupPolicy) pulumi.StringPtrOutput { return v.BackupTime }).(pulumi.StringPtrOutput)
 }

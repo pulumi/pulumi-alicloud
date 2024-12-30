@@ -24,35 +24,42 @@ class SecurityGroupArgs:
                  inner_access_policy: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 security_group_name: Optional[pulumi.Input[str]] = None,
                  security_group_type: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SecurityGroup resource.
-        :param pulumi.Input[str] description: The security group description. Defaults to null.
+        :param pulumi.Input[str] description: The description of the security group. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
         :param pulumi.Input[bool] inner_access: Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
-               
-               Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
-        :param pulumi.Input[str] inner_access_policy: The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
-        :param pulumi.Input[str] name: The name of the security group. Defaults to null.
+        :param pulumi.Input[str] inner_access_policy: The internal access control policy of the security group. Valid values:
+               - `Accept`: The internal interconnectivity policy.
+               - `Drop`: The internal isolation policy.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resource_group_id` can be modified.
-        :param pulumi.Input[str] security_group_type: The type of the security group. Valid values:
+        :param pulumi.Input[str] security_group_name: The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\\_), periods (.), and hyphens (-).
+        :param pulumi.Input[str] security_group_type: The type of the security group. Default value: `normal`. Valid values:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] vpc_id: The ID of the VPC.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC in which you want to create the security group.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
         if inner_access is not None:
-            warnings.warn("""Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.""", DeprecationWarning)
-            pulumi.log.warn("""inner_access is deprecated: Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.""")
+            warnings.warn("""Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.""", DeprecationWarning)
+            pulumi.log.warn("""inner_access is deprecated: Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.""")
         if inner_access is not None:
             pulumi.set(__self__, "inner_access", inner_access)
         if inner_access_policy is not None:
             pulumi.set(__self__, "inner_access_policy", inner_access_policy)
         if name is not None:
+            warnings.warn("""Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.""")
+        if name is not None:
             pulumi.set(__self__, "name", name)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if security_group_name is not None:
+            pulumi.set(__self__, "security_group_name", security_group_name)
         if security_group_type is not None:
             pulumi.set(__self__, "security_group_type", security_group_type)
         if tags is not None:
@@ -64,7 +71,7 @@ class SecurityGroupArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The security group description. Defaults to null.
+        The description of the security group. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
@@ -74,12 +81,10 @@ class SecurityGroupArgs:
 
     @property
     @pulumi.getter(name="innerAccess")
-    @_utilities.deprecated("""Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.""")
+    @_utilities.deprecated("""Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.""")
     def inner_access(self) -> Optional[pulumi.Input[bool]]:
         """
         Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
-
-        Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
         """
         return pulumi.get(self, "inner_access")
 
@@ -91,7 +96,9 @@ class SecurityGroupArgs:
     @pulumi.getter(name="innerAccessPolicy")
     def inner_access_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
+        The internal access control policy of the security group. Valid values:
+        - `Accept`: The internal interconnectivity policy.
+        - `Drop`: The internal isolation policy.
         """
         return pulumi.get(self, "inner_access_policy")
 
@@ -101,9 +108,10 @@ class SecurityGroupArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the security group. Defaults to null.
+        Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -124,10 +132,22 @@ class SecurityGroupArgs:
         pulumi.set(self, "resource_group_id", value)
 
     @property
+    @pulumi.getter(name="securityGroupName")
+    def security_group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\\_), periods (.), and hyphens (-).
+        """
+        return pulumi.get(self, "security_group_name")
+
+    @security_group_name.setter
+    def security_group_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_group_name", value)
+
+    @property
     @pulumi.getter(name="securityGroupType")
     def security_group_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the security group. Valid values:
+        The type of the security group. Default value: `normal`. Valid values:
         """
         return pulumi.get(self, "security_group_type")
 
@@ -151,7 +171,7 @@ class SecurityGroupArgs:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the VPC.
+        The ID of the VPC in which you want to create the security group.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -163,40 +183,51 @@ class SecurityGroupArgs:
 @pulumi.input_type
 class _SecurityGroupState:
     def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  inner_access: Optional[pulumi.Input[bool]] = None,
                  inner_access_policy: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 security_group_name: Optional[pulumi.Input[str]] = None,
                  security_group_type: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SecurityGroup resources.
-        :param pulumi.Input[str] description: The security group description. Defaults to null.
+        :param pulumi.Input[str] create_time: (Available since v1.239.0) The time when the security group was created.
+        :param pulumi.Input[str] description: The description of the security group. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
         :param pulumi.Input[bool] inner_access: Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
-               
-               Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
-        :param pulumi.Input[str] inner_access_policy: The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
-        :param pulumi.Input[str] name: The name of the security group. Defaults to null.
+        :param pulumi.Input[str] inner_access_policy: The internal access control policy of the security group. Valid values:
+               - `Accept`: The internal interconnectivity policy.
+               - `Drop`: The internal isolation policy.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resource_group_id` can be modified.
-        :param pulumi.Input[str] security_group_type: The type of the security group. Valid values:
+        :param pulumi.Input[str] security_group_name: The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\\_), periods (.), and hyphens (-).
+        :param pulumi.Input[str] security_group_type: The type of the security group. Default value: `normal`. Valid values:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] vpc_id: The ID of the VPC.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC in which you want to create the security group.
         """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if inner_access is not None:
-            warnings.warn("""Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.""", DeprecationWarning)
-            pulumi.log.warn("""inner_access is deprecated: Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.""")
+            warnings.warn("""Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.""", DeprecationWarning)
+            pulumi.log.warn("""inner_access is deprecated: Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.""")
         if inner_access is not None:
             pulumi.set(__self__, "inner_access", inner_access)
         if inner_access_policy is not None:
             pulumi.set(__self__, "inner_access_policy", inner_access_policy)
         if name is not None:
+            warnings.warn("""Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.""")
+        if name is not None:
             pulumi.set(__self__, "name", name)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if security_group_name is not None:
+            pulumi.set(__self__, "security_group_name", security_group_name)
         if security_group_type is not None:
             pulumi.set(__self__, "security_group_type", security_group_type)
         if tags is not None:
@@ -205,10 +236,22 @@ class _SecurityGroupState:
             pulumi.set(__self__, "vpc_id", vpc_id)
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.239.0) The time when the security group was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The security group description. Defaults to null.
+        The description of the security group. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
@@ -218,12 +261,10 @@ class _SecurityGroupState:
 
     @property
     @pulumi.getter(name="innerAccess")
-    @_utilities.deprecated("""Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.""")
+    @_utilities.deprecated("""Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.""")
     def inner_access(self) -> Optional[pulumi.Input[bool]]:
         """
         Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
-
-        Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
         """
         return pulumi.get(self, "inner_access")
 
@@ -235,7 +276,9 @@ class _SecurityGroupState:
     @pulumi.getter(name="innerAccessPolicy")
     def inner_access_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
+        The internal access control policy of the security group. Valid values:
+        - `Accept`: The internal interconnectivity policy.
+        - `Drop`: The internal isolation policy.
         """
         return pulumi.get(self, "inner_access_policy")
 
@@ -245,9 +288,10 @@ class _SecurityGroupState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the security group. Defaults to null.
+        Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -268,10 +312,22 @@ class _SecurityGroupState:
         pulumi.set(self, "resource_group_id", value)
 
     @property
+    @pulumi.getter(name="securityGroupName")
+    def security_group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\\_), periods (.), and hyphens (-).
+        """
+        return pulumi.get(self, "security_group_name")
+
+    @security_group_name.setter
+    def security_group_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_group_name", value)
+
+    @property
     @pulumi.getter(name="securityGroupType")
     def security_group_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the security group. Valid values:
+        The type of the security group. Default value: `normal`. Valid values:
         """
         return pulumi.get(self, "security_group_type")
 
@@ -295,7 +351,7 @@ class _SecurityGroupState:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the VPC.
+        The ID of the VPC in which you want to create the security group.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -314,14 +370,15 @@ class SecurityGroup(pulumi.CustomResource):
                  inner_access_policy: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 security_group_name: Optional[pulumi.Input[str]] = None,
                  security_group_type: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Security Group resource.
+        Provides a ECS Security Group resource.
 
-        For information about Security Group and how to use it, see [What is Security Group](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-createsecuritygroup).
+        For information about ECS Security Group and how to use it, see [What is Security Group](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-createsecuritygroup).
 
         > **NOTE:** Available since v1.0.0.
 
@@ -337,9 +394,7 @@ class SecurityGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.ecs.SecurityGroup("default",
-            name="terraform-example",
-            description="New security group")
+        default = alicloud.ecs.SecurityGroup("default", security_group_name="terraform-example")
         ```
 
         Basic Usage for VPC
@@ -348,12 +403,12 @@ class SecurityGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        vpc = alicloud.vpc.Network("vpc",
+        default = alicloud.vpc.Network("default",
             vpc_name="terraform-example",
-            cidr_block="10.1.0.0/21")
-        group = alicloud.ecs.SecurityGroup("group",
-            name="terraform-example",
-            vpc_id=vpc.id)
+            cidr_block="172.16.0.0/16")
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            security_group_name="terraform-example",
+            vpc_id=default.id)
         ```
 
         ## Module Support
@@ -363,24 +418,25 @@ class SecurityGroup(pulumi.CustomResource):
 
         ## Import
 
-        Security Group can be imported using the id, e.g.
+        ECS Security Group can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:ecs/securityGroup:SecurityGroup example sg-abc123456
+        $ pulumi import alicloud:ecs/securityGroup:SecurityGroup example <id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The security group description. Defaults to null.
+        :param pulumi.Input[str] description: The description of the security group. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
         :param pulumi.Input[bool] inner_access: Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
-               
-               Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
-        :param pulumi.Input[str] inner_access_policy: The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
-        :param pulumi.Input[str] name: The name of the security group. Defaults to null.
+        :param pulumi.Input[str] inner_access_policy: The internal access control policy of the security group. Valid values:
+               - `Accept`: The internal interconnectivity policy.
+               - `Drop`: The internal isolation policy.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resource_group_id` can be modified.
-        :param pulumi.Input[str] security_group_type: The type of the security group. Valid values:
+        :param pulumi.Input[str] security_group_name: The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\\_), periods (.), and hyphens (-).
+        :param pulumi.Input[str] security_group_type: The type of the security group. Default value: `normal`. Valid values:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] vpc_id: The ID of the VPC.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC in which you want to create the security group.
         """
         ...
     @overload
@@ -389,9 +445,9 @@ class SecurityGroup(pulumi.CustomResource):
                  args: Optional[SecurityGroupArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Security Group resource.
+        Provides a ECS Security Group resource.
 
-        For information about Security Group and how to use it, see [What is Security Group](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-createsecuritygroup).
+        For information about ECS Security Group and how to use it, see [What is Security Group](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-createsecuritygroup).
 
         > **NOTE:** Available since v1.0.0.
 
@@ -407,9 +463,7 @@ class SecurityGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.ecs.SecurityGroup("default",
-            name="terraform-example",
-            description="New security group")
+        default = alicloud.ecs.SecurityGroup("default", security_group_name="terraform-example")
         ```
 
         Basic Usage for VPC
@@ -418,12 +472,12 @@ class SecurityGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        vpc = alicloud.vpc.Network("vpc",
+        default = alicloud.vpc.Network("default",
             vpc_name="terraform-example",
-            cidr_block="10.1.0.0/21")
-        group = alicloud.ecs.SecurityGroup("group",
-            name="terraform-example",
-            vpc_id=vpc.id)
+            cidr_block="172.16.0.0/16")
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            security_group_name="terraform-example",
+            vpc_id=default.id)
         ```
 
         ## Module Support
@@ -433,10 +487,10 @@ class SecurityGroup(pulumi.CustomResource):
 
         ## Import
 
-        Security Group can be imported using the id, e.g.
+        ECS Security Group can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:ecs/securityGroup:SecurityGroup example sg-abc123456
+        $ pulumi import alicloud:ecs/securityGroup:SecurityGroup example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -459,6 +513,7 @@ class SecurityGroup(pulumi.CustomResource):
                  inner_access_policy: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 security_group_name: Optional[pulumi.Input[str]] = None,
                  security_group_type: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -476,9 +531,11 @@ class SecurityGroup(pulumi.CustomResource):
             __props__.__dict__["inner_access_policy"] = inner_access_policy
             __props__.__dict__["name"] = name
             __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["security_group_name"] = security_group_name
             __props__.__dict__["security_group_type"] = security_group_type
             __props__.__dict__["tags"] = tags
             __props__.__dict__["vpc_id"] = vpc_id
+            __props__.__dict__["create_time"] = None
         super(SecurityGroup, __self__).__init__(
             'alicloud:ecs/securityGroup:SecurityGroup',
             resource_name,
@@ -489,11 +546,13 @@ class SecurityGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             inner_access: Optional[pulumi.Input[bool]] = None,
             inner_access_policy: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
+            security_group_name: Optional[pulumi.Input[str]] = None,
             security_group_type: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None) -> 'SecurityGroup':
@@ -504,47 +563,57 @@ class SecurityGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The security group description. Defaults to null.
+        :param pulumi.Input[str] create_time: (Available since v1.239.0) The time when the security group was created.
+        :param pulumi.Input[str] description: The description of the security group. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
         :param pulumi.Input[bool] inner_access: Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
-               
-               Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
-        :param pulumi.Input[str] inner_access_policy: The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
-        :param pulumi.Input[str] name: The name of the security group. Defaults to null.
+        :param pulumi.Input[str] inner_access_policy: The internal access control policy of the security group. Valid values:
+               - `Accept`: The internal interconnectivity policy.
+               - `Drop`: The internal isolation policy.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resource_group_id` can be modified.
-        :param pulumi.Input[str] security_group_type: The type of the security group. Valid values:
+        :param pulumi.Input[str] security_group_name: The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\\_), periods (.), and hyphens (-).
+        :param pulumi.Input[str] security_group_type: The type of the security group. Default value: `normal`. Valid values:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] vpc_id: The ID of the VPC.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC in which you want to create the security group.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _SecurityGroupState.__new__(_SecurityGroupState)
 
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["inner_access"] = inner_access
         __props__.__dict__["inner_access_policy"] = inner_access_policy
         __props__.__dict__["name"] = name
         __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["security_group_name"] = security_group_name
         __props__.__dict__["security_group_type"] = security_group_type
         __props__.__dict__["tags"] = tags
         __props__.__dict__["vpc_id"] = vpc_id
         return SecurityGroup(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.239.0) The time when the security group was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The security group description. Defaults to null.
+        The description of the security group. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="innerAccess")
-    @_utilities.deprecated("""Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.""")
+    @_utilities.deprecated("""Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.""")
     def inner_access(self) -> pulumi.Output[bool]:
         """
         Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
-
-        Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
         """
         return pulumi.get(self, "inner_access")
 
@@ -552,15 +621,18 @@ class SecurityGroup(pulumi.CustomResource):
     @pulumi.getter(name="innerAccessPolicy")
     def inner_access_policy(self) -> pulumi.Output[str]:
         """
-        The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
+        The internal access control policy of the security group. Valid values:
+        - `Accept`: The internal interconnectivity policy.
+        - `Drop`: The internal isolation policy.
         """
         return pulumi.get(self, "inner_access_policy")
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.""")
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the security group. Defaults to null.
+        Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -573,10 +645,18 @@ class SecurityGroup(pulumi.CustomResource):
         return pulumi.get(self, "resource_group_id")
 
     @property
+    @pulumi.getter(name="securityGroupName")
+    def security_group_name(self) -> pulumi.Output[str]:
+        """
+        The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\\_), periods (.), and hyphens (-).
+        """
+        return pulumi.get(self, "security_group_name")
+
+    @property
     @pulumi.getter(name="securityGroupType")
     def security_group_type(self) -> pulumi.Output[str]:
         """
-        The type of the security group. Valid values:
+        The type of the security group. Default value: `normal`. Valid values:
         """
         return pulumi.get(self, "security_group_type")
 
@@ -590,9 +670,9 @@ class SecurityGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> pulumi.Output[Optional[str]]:
+    def vpc_id(self) -> pulumi.Output[str]:
         """
-        The ID of the VPC.
+        The ID of the VPC in which you want to create the security group.
         """
         return pulumi.get(self, "vpc_id")
 

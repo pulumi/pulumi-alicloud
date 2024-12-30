@@ -251,7 +251,7 @@ class VpcEndpointServiceResource(pulumi.CustomResource):
             vpc_id=example_network.id,
             zone_id=example.zones[0].id)
         example_security_group = alicloud.ecs.SecurityGroup("example",
-            name=name,
+            security_group_name=name,
             vpc_id=example_network.id)
         example_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("example",
             load_balancer_name=name,
@@ -326,7 +326,7 @@ class VpcEndpointServiceResource(pulumi.CustomResource):
             vpc_id=example_network.id,
             zone_id=example.zones[0].id)
         example_security_group = alicloud.ecs.SecurityGroup("example",
-            name=name,
+            security_group_name=name,
             vpc_id=example_network.id)
         example_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("example",
             load_balancer_name=name,
