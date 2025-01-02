@@ -170,7 +170,7 @@ def get_aggregate_config_rules(aggregate_config_rule_name: Optional[str] = None,
     """
     This data source provides the Config Aggregate Config Rules of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.124.0+.
+    > **NOTE:** Available since v1.124.0.
 
     ## Example Usage
 
@@ -193,7 +193,7 @@ def get_aggregate_config_rules(aggregate_config_rule_name: Optional[str] = None,
     :param Sequence[str] ids: A list of Aggregate Config Rule IDs.
     :param str name_regex: A regex string to filter results by Aggregate Config Rule name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param int risk_level: Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
+    :param int risk_level: The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
     :param str status: The state of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
     """
     __args__ = dict()
@@ -232,7 +232,7 @@ def get_aggregate_config_rules_output(aggregate_config_rule_name: Optional[pulum
     """
     This data source provides the Config Aggregate Config Rules of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.124.0+.
+    > **NOTE:** Available since v1.124.0.
 
     ## Example Usage
 
@@ -255,7 +255,7 @@ def get_aggregate_config_rules_output(aggregate_config_rule_name: Optional[pulum
     :param Sequence[str] ids: A list of Aggregate Config Rule IDs.
     :param str name_regex: A regex string to filter results by Aggregate Config Rule name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param int risk_level: Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
+    :param int risk_level: The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
     :param str status: The state of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
     """
     __args__ = dict()

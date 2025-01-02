@@ -80,21 +80,33 @@ class GetVpcFirewallControlPoliciesResult:
     @property
     @pulumi.getter(name="aclAction")
     def acl_action(self) -> Optional[str]:
+        """
+        Access control over VPC firewalls are set in the access traffic via Alibaba cloud firewall way (ACT).
+        """
         return pulumi.get(self, "acl_action")
 
     @property
     @pulumi.getter(name="aclUuid")
     def acl_uuid(self) -> Optional[str]:
+        """
+        Access control over VPC firewalls strategy unique identifier.
+        """
         return pulumi.get(self, "acl_uuid")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        Access control over VPC firewalls description of the strategy information.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def destination(self) -> Optional[str]:
+        """
+        Access control over VPC firewalls strategy the destination address in.
+        """
         return pulumi.get(self, "destination")
 
     @property
@@ -118,6 +130,9 @@ class GetVpcFirewallControlPoliciesResult:
     @property
     @pulumi.getter(name="memberUid")
     def member_uid(self) -> Optional[str]:
+        """
+        The UID of the member account of the current Alibaba cloud account.
+        """
         return pulumi.get(self, "member_uid")
 
     @property
@@ -138,26 +153,41 @@ class GetVpcFirewallControlPoliciesResult:
     @property
     @pulumi.getter
     def policies(self) -> Sequence['outputs.GetVpcFirewallControlPoliciesPolicyResult']:
+        """
+        A list of Cloud Firewall Vpc Firewall Control Policies. Each element contains the following attributes:
+        """
         return pulumi.get(self, "policies")
 
     @property
     @pulumi.getter
     def proto(self) -> Optional[str]:
+        """
+        Access control over VPC firewalls strategy access traffic of the protocol type.
+        """
         return pulumi.get(self, "proto")
 
     @property
     @pulumi.getter
     def release(self) -> Optional[bool]:
+        """
+        The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
+        """
         return pulumi.get(self, "release")
 
     @property
     @pulumi.getter
     def source(self) -> Optional[str]:
+        """
+        Access control over VPC firewalls strategy in the source address.
+        """
         return pulumi.get(self, "source")
 
     @property
     @pulumi.getter(name="vpcFirewallId")
     def vpc_firewall_id(self) -> str:
+        """
+        The ID of the VPC firewall instance.
+        """
         return pulumi.get(self, "vpc_firewall_id")
 
 
@@ -203,7 +233,7 @@ def get_vpc_firewall_control_policies(acl_action: Optional[str] = None,
     """
     This data source provides the Cloud Firewall Vpc Firewall Control Policies of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.194.0+.
+    > **NOTE:** Available since v1.194.0.
 
     ## Example Usage
 
@@ -292,7 +322,7 @@ def get_vpc_firewall_control_policies_output(acl_action: Optional[pulumi.Input[O
     """
     This data source provides the Cloud Firewall Vpc Firewall Control Policies of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.194.0+.
+    > **NOTE:** Available since v1.194.0.
 
     ## Example Usage
 

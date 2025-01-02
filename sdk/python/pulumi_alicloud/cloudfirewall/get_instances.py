@@ -27,7 +27,7 @@ class GetInstancesResult:
     """
     A collection of values returned by getInstances.
     """
-    def __init__(__self__, id=None, instances=None, output_file=None):
+    def __init__(__self__, id=None, instances=None, output_file=None, payment_type=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -37,6 +37,9 @@ class GetInstancesResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
+        if payment_type and not isinstance(payment_type, str):
+            raise TypeError("Expected argument 'payment_type' to be a str")
+        pulumi.set(__self__, "payment_type", payment_type)
 
     @property
     @pulumi.getter
@@ -56,6 +59,11 @@ class GetInstancesResult:
     def output_file(self) -> Optional[str]:
         return pulumi.get(self, "output_file")
 
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> Optional[str]:
+        return pulumi.get(self, "payment_type")
+
 
 class AwaitableGetInstancesResult(GetInstancesResult):
     # pylint: disable=using-constant-test
@@ -65,15 +73,17 @@ class AwaitableGetInstancesResult(GetInstancesResult):
         return GetInstancesResult(
             id=self.id,
             instances=self.instances,
-            output_file=self.output_file)
+            output_file=self.output_file,
+            payment_type=self.payment_type)
 
 
 def get_instances(output_file: Optional[str] = None,
+                  payment_type: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
     """
     This data source provides the Cloud Firewall Instances of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.139.0+.
+    > **NOTE:** Available since v1.139.0.
 
     ## Example Usage
 
@@ -89,22 +99,26 @@ def get_instances(output_file: Optional[str] = None,
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param str payment_type: The payment type of the cloud firewall instance. Valid values: `PayAsYouGo`,`Subscription`.
     """
     __args__ = dict()
     __args__['outputFile'] = output_file
+    __args__['paymentType'] = payment_type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('alicloud:cloudfirewall/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult).value
 
     return AwaitableGetInstancesResult(
         id=pulumi.get(__ret__, 'id'),
         instances=pulumi.get(__ret__, 'instances'),
-        output_file=pulumi.get(__ret__, 'output_file'))
+        output_file=pulumi.get(__ret__, 'output_file'),
+        payment_type=pulumi.get(__ret__, 'payment_type'))
 def get_instances_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                         payment_type: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstancesResult]:
     """
     This data source provides the Cloud Firewall Instances of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.139.0+.
+    > **NOTE:** Available since v1.139.0.
 
     ## Example Usage
 
@@ -120,12 +134,15 @@ def get_instances_output(output_file: Optional[pulumi.Input[Optional[str]]] = No
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param str payment_type: The payment type of the cloud firewall instance. Valid values: `PayAsYouGo`,`Subscription`.
     """
     __args__ = dict()
     __args__['outputFile'] = output_file
+    __args__['paymentType'] = payment_type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cloudfirewall/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult)
     return __ret__.apply(lambda __response__: GetInstancesResult(
         id=pulumi.get(__response__, 'id'),
         instances=pulumi.get(__response__, 'instances'),
-        output_file=pulumi.get(__response__, 'output_file')))
+        output_file=pulumi.get(__response__, 'output_file'),
+        payment_type=pulumi.get(__response__, 'payment_type')))

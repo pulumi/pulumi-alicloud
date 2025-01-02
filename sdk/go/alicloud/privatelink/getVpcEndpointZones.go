@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Privatelink Vpc Endpoint Zones of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.111.0+.
+// > **NOTE:** Available since v1.111.0.
 //
 // ## Example Usage
 //
@@ -67,11 +67,14 @@ type GetVpcEndpointZonesArgs struct {
 type GetVpcEndpointZonesResult struct {
 	EndpointId string `pulumi:"endpointId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                    `pulumi:"id"`
-	Ids        []string                  `pulumi:"ids"`
-	OutputFile *string                   `pulumi:"outputFile"`
-	Status     *string                   `pulumi:"status"`
-	Zones      []GetVpcEndpointZonesZone `pulumi:"zones"`
+	Id string `pulumi:"id"`
+	// A list of Vpc Endpoint Zone IDs.
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The Status of Vpc Endpoint Zone..
+	Status *string `pulumi:"status"`
+	// A list of Privatelink Vpc Endpoint Zones. Each element contains the following attributes:
+	Zones []GetVpcEndpointZonesZone `pulumi:"zones"`
 }
 
 func GetVpcEndpointZonesOutput(ctx *pulumi.Context, args GetVpcEndpointZonesOutputArgs, opts ...pulumi.InvokeOption) GetVpcEndpointZonesResultOutput {
@@ -121,6 +124,7 @@ func (o GetVpcEndpointZonesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcEndpointZonesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of Vpc Endpoint Zone IDs.
 func (o GetVpcEndpointZonesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetVpcEndpointZonesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
@@ -129,10 +133,12 @@ func (o GetVpcEndpointZonesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpcEndpointZonesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The Status of Vpc Endpoint Zone..
 func (o GetVpcEndpointZonesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpcEndpointZonesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// A list of Privatelink Vpc Endpoint Zones. Each element contains the following attributes:
 func (o GetVpcEndpointZonesResultOutput) Zones() GetVpcEndpointZonesZoneArrayOutput {
 	return o.ApplyT(func(v GetVpcEndpointZonesResult) []GetVpcEndpointZonesZone { return v.Zones }).(GetVpcEndpointZonesZoneArrayOutput)
 }

@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Resource Manager Control Policy Attachment resource.
  * 
- * For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/latest/api-resourcedirectorymaster-2022-04-19-attachcontrolpolicy).
+ * For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/resource-directory/developer-reference/api-resourcemanager-2020-03-31-attachcontrolpolicy).
  * 
  * &gt; **NOTE:** Available since v1.120.0.
  * 
@@ -54,13 +54,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf-example");
+ *         final var name = config.get("name").orElse("terraform-example");
  *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var example = new ControlPolicy("example", ControlPolicyArgs.builder()
+ *         var defaultControlPolicy = new ControlPolicy("defaultControlPolicy", ControlPolicyArgs.builder()
  *             .controlPolicyName(name)
  *             .description(name)
  *             .effectScope("RAM")
@@ -83,13 +83,13 @@ import javax.annotation.Nullable;
  *             """)
  *             .build());
  * 
- *         var exampleFolder = new Folder("exampleFolder", FolderArgs.builder()
+ *         var defaultFolder = new Folder("defaultFolder", FolderArgs.builder()
  *             .folderName(String.format("%s-%s", name,default_.result()))
  *             .build());
  * 
- *         var exampleControlPolicyAttachment = new ControlPolicyAttachment("exampleControlPolicyAttachment", ControlPolicyAttachmentArgs.builder()
- *             .policyId(example.id())
- *             .targetId(exampleFolder.id())
+ *         var defaultControlPolicyAttachment = new ControlPolicyAttachment("defaultControlPolicyAttachment", ControlPolicyAttachmentArgs.builder()
+ *             .policyId(defaultControlPolicy.id())
+ *             .targetId(defaultFolder.id())
  *             .build());
  * 
  *     }
@@ -110,28 +110,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment")
 public class ControlPolicyAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * The ID of control policy.
+     * The ID of the access control policy.
      * 
      */
     @Export(name="policyId", refs={String.class}, tree="[0]")
     private Output<String> policyId;
 
     /**
-     * @return The ID of control policy.
+     * @return The ID of the access control policy.
      * 
      */
     public Output<String> policyId() {
         return this.policyId;
     }
     /**
-     * The ID of target.
+     * The ID of the object to which you want to attach the access control policy.
      * 
      */
     @Export(name="targetId", refs={String.class}, tree="[0]")
     private Output<String> targetId;
 
     /**
-     * @return The ID of target.
+     * @return The ID of the object to which you want to attach the access control policy.
      * 
      */
     public Output<String> targetId() {

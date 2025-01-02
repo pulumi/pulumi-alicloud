@@ -16,6 +16,8 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'AccessPointPublicAccessBlockConfiguration',
+    'AccessPointVpcConfiguration',
     'BucketAccessMonitor',
     'BucketCnameCertificate',
     'BucketCorsCorsRule',
@@ -74,6 +76,78 @@ __all__ = [
     'GetTablesTableDefinedColumnResult',
     'GetTablesTablePrimaryKeyResult',
 ]
+
+@pulumi.output_type
+class AccessPointPublicAccessBlockConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "blockPublicAccess":
+            suggest = "block_public_access"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessPointPublicAccessBlockConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessPointPublicAccessBlockConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessPointPublicAccessBlockConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 block_public_access: Optional[bool] = None):
+        """
+        :param bool block_public_access: Block public access enabled for access point
+        """
+        if block_public_access is not None:
+            pulumi.set(__self__, "block_public_access", block_public_access)
+
+    @property
+    @pulumi.getter(name="blockPublicAccess")
+    def block_public_access(self) -> Optional[bool]:
+        """
+        Block public access enabled for access point
+        """
+        return pulumi.get(self, "block_public_access")
+
+
+@pulumi.output_type
+class AccessPointVpcConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vpcId":
+            suggest = "vpc_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessPointVpcConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessPointVpcConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessPointVpcConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 vpc_id: Optional[str] = None):
+        """
+        :param str vpc_id: The vpc ID is required only when the value of NetworkOrigin is VPC.
+        """
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[str]:
+        """
+        The vpc ID is required only when the value of NetworkOrigin is VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
 
 @pulumi.output_type
 class BucketAccessMonitor(dict):

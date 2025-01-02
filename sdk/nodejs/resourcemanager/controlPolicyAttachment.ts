@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a Resource Manager Control Policy Attachment resource.
  *
- * For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/latest/api-resourcedirectorymaster-2022-04-19-attachcontrolpolicy).
+ * For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/resource-directory/developer-reference/api-resourcemanager-2020-03-31-attachcontrolpolicy).
  *
  * > **NOTE:** Available since v1.120.0.
  *
@@ -21,12 +21,12 @@ import * as utilities from "../utilities";
  * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
+ * const name = config.get("name") || "terraform-example";
  * const _default = new random.index.Integer("default", {
  *     min: 10000,
  *     max: 99999,
  * });
- * const example = new alicloud.resourcemanager.ControlPolicy("example", {
+ * const defaultControlPolicy = new alicloud.resourcemanager.ControlPolicy("default", {
  *     controlPolicyName: name,
  *     description: name,
  *     effectScope: "RAM",
@@ -47,10 +47,10 @@ import * as utilities from "../utilities";
  *   }
  * `,
  * });
- * const exampleFolder = new alicloud.resourcemanager.Folder("example", {folderName: `${name}-${_default.result}`});
- * const exampleControlPolicyAttachment = new alicloud.resourcemanager.ControlPolicyAttachment("example", {
- *     policyId: example.id,
- *     targetId: exampleFolder.id,
+ * const defaultFolder = new alicloud.resourcemanager.Folder("default", {folderName: `${name}-${_default.result}`});
+ * const defaultControlPolicyAttachment = new alicloud.resourcemanager.ControlPolicyAttachment("default", {
+ *     policyId: defaultControlPolicy.id,
+ *     targetId: defaultFolder.id,
  * });
  * ```
  *
@@ -91,11 +91,11 @@ export class ControlPolicyAttachment extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of control policy.
+     * The ID of the access control policy.
      */
     public readonly policyId!: pulumi.Output<string>;
     /**
-     * The ID of target.
+     * The ID of the object to which you want to attach the access control policy.
      */
     public readonly targetId!: pulumi.Output<string>;
 
@@ -135,11 +135,11 @@ export class ControlPolicyAttachment extends pulumi.CustomResource {
  */
 export interface ControlPolicyAttachmentState {
     /**
-     * The ID of control policy.
+     * The ID of the access control policy.
      */
     policyId?: pulumi.Input<string>;
     /**
-     * The ID of target.
+     * The ID of the object to which you want to attach the access control policy.
      */
     targetId?: pulumi.Input<string>;
 }
@@ -149,11 +149,11 @@ export interface ControlPolicyAttachmentState {
  */
 export interface ControlPolicyAttachmentArgs {
     /**
-     * The ID of control policy.
+     * The ID of the access control policy.
      */
     policyId: pulumi.Input<string>;
     /**
-     * The ID of target.
+     * The ID of the object to which you want to attach the access control policy.
      */
     targetId: pulumi.Input<string>;
 }

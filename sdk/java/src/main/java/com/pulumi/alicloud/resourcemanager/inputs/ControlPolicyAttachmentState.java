@@ -16,14 +16,14 @@ public final class ControlPolicyAttachmentState extends com.pulumi.resources.Res
     public static final ControlPolicyAttachmentState Empty = new ControlPolicyAttachmentState();
 
     /**
-     * The ID of control policy.
+     * The ID of the access control policy.
      * 
      */
     @Import(name="policyId")
     private @Nullable Output<String> policyId;
 
     /**
-     * @return The ID of control policy.
+     * @return The ID of the access control policy.
      * 
      */
     public Optional<Output<String>> policyId() {
@@ -31,14 +31,14 @@ public final class ControlPolicyAttachmentState extends com.pulumi.resources.Res
     }
 
     /**
-     * The ID of target.
+     * The ID of the object to which you want to attach the access control policy.
      * 
      */
     @Import(name="targetId")
     private @Nullable Output<String> targetId;
 
     /**
-     * @return The ID of target.
+     * @return The ID of the object to which you want to attach the access control policy.
      * 
      */
     public Optional<Output<String>> targetId() {
@@ -71,7 +71,7 @@ public final class ControlPolicyAttachmentState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param policyId The ID of control policy.
+         * @param policyId The ID of the access control policy.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ControlPolicyAttachmentState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param policyId The ID of control policy.
+         * @param policyId The ID of the access control policy.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class ControlPolicyAttachmentState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param targetId The ID of target.
+         * @param targetId The ID of the object to which you want to attach the access control policy.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ControlPolicyAttachmentState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param targetId The ID of target.
+         * @param targetId The ID of the object to which you want to attach the access control policy.
          * 
          * @return builder
          * 

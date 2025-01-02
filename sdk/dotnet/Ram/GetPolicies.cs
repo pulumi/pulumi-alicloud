@@ -23,15 +23,56 @@ namespace Pulumi.AliCloud.Ram
         /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
+        /// using Random = Pulumi.Random;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var @default = new Random.Index.Integer("default", new()
+        ///     {
+        ///         Min = 10000,
+        ///         Max = 99999,
+        ///     });
+        /// 
+        ///     var @group = new AliCloud.Ram.Group("group", new()
+        ///     {
+        ///         Name = $"groupName-{@default.Result}",
+        ///         Comments = "this is a group comments.",
+        ///     });
+        /// 
+        ///     var policy = new AliCloud.Ram.Policy("policy", new()
+        ///     {
+        ///         PolicyName = $"tf-example-{@default.Result}",
+        ///         PolicyDocument = @"    {
+        ///       ""Statement"": [
+        ///         {
+        ///           ""Action"": [
+        ///             ""oss:ListObjects"",
+        ///             ""oss:GetObject""
+        ///           ],
+        ///           ""Effect"": ""Allow"",
+        ///           ""Resource"": [
+        ///             ""acs:oss:*:*:mybucket"",
+        ///             ""acs:oss:*:*:mybucket/*""
+        ///           ]
+        ///         }
+        ///       ],
+        ///         ""Version"": ""1""
+        ///     }
+        /// ",
+        ///         Description = "this is a policy test",
+        ///     });
+        /// 
+        ///     var attach = new AliCloud.Ram.GroupPolicyAttachment("attach", new()
+        ///     {
+        ///         PolicyName = policy.PolicyName,
+        ///         PolicyType = policy.Type,
+        ///         GroupName = @group.Name,
+        ///     });
+        /// 
         ///     var policiesDs = AliCloud.Ram.GetPolicies.Invoke(new()
         ///     {
-        ///         OutputFile = "policies.txt",
-        ///         UserName = "user1",
-        ///         GroupName = "group1",
-        ///         Type = "System",
+        ///         GroupName = attach.GroupName,
+        ///         Type = "Custom",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -56,15 +97,56 @@ namespace Pulumi.AliCloud.Ram
         /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
+        /// using Random = Pulumi.Random;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var @default = new Random.Index.Integer("default", new()
+        ///     {
+        ///         Min = 10000,
+        ///         Max = 99999,
+        ///     });
+        /// 
+        ///     var @group = new AliCloud.Ram.Group("group", new()
+        ///     {
+        ///         Name = $"groupName-{@default.Result}",
+        ///         Comments = "this is a group comments.",
+        ///     });
+        /// 
+        ///     var policy = new AliCloud.Ram.Policy("policy", new()
+        ///     {
+        ///         PolicyName = $"tf-example-{@default.Result}",
+        ///         PolicyDocument = @"    {
+        ///       ""Statement"": [
+        ///         {
+        ///           ""Action"": [
+        ///             ""oss:ListObjects"",
+        ///             ""oss:GetObject""
+        ///           ],
+        ///           ""Effect"": ""Allow"",
+        ///           ""Resource"": [
+        ///             ""acs:oss:*:*:mybucket"",
+        ///             ""acs:oss:*:*:mybucket/*""
+        ///           ]
+        ///         }
+        ///       ],
+        ///         ""Version"": ""1""
+        ///     }
+        /// ",
+        ///         Description = "this is a policy test",
+        ///     });
+        /// 
+        ///     var attach = new AliCloud.Ram.GroupPolicyAttachment("attach", new()
+        ///     {
+        ///         PolicyName = policy.PolicyName,
+        ///         PolicyType = policy.Type,
+        ///         GroupName = @group.Name,
+        ///     });
+        /// 
         ///     var policiesDs = AliCloud.Ram.GetPolicies.Invoke(new()
         ///     {
-        ///         OutputFile = "policies.txt",
-        ///         UserName = "user1",
-        ///         GroupName = "group1",
-        ///         Type = "System",
+        ///         GroupName = attach.GroupName,
+        ///         Type = "Custom",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -89,15 +171,56 @@ namespace Pulumi.AliCloud.Ram
         /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
+        /// using Random = Pulumi.Random;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var @default = new Random.Index.Integer("default", new()
+        ///     {
+        ///         Min = 10000,
+        ///         Max = 99999,
+        ///     });
+        /// 
+        ///     var @group = new AliCloud.Ram.Group("group", new()
+        ///     {
+        ///         Name = $"groupName-{@default.Result}",
+        ///         Comments = "this is a group comments.",
+        ///     });
+        /// 
+        ///     var policy = new AliCloud.Ram.Policy("policy", new()
+        ///     {
+        ///         PolicyName = $"tf-example-{@default.Result}",
+        ///         PolicyDocument = @"    {
+        ///       ""Statement"": [
+        ///         {
+        ///           ""Action"": [
+        ///             ""oss:ListObjects"",
+        ///             ""oss:GetObject""
+        ///           ],
+        ///           ""Effect"": ""Allow"",
+        ///           ""Resource"": [
+        ///             ""acs:oss:*:*:mybucket"",
+        ///             ""acs:oss:*:*:mybucket/*""
+        ///           ]
+        ///         }
+        ///       ],
+        ///         ""Version"": ""1""
+        ///     }
+        /// ",
+        ///         Description = "this is a policy test",
+        ///     });
+        /// 
+        ///     var attach = new AliCloud.Ram.GroupPolicyAttachment("attach", new()
+        ///     {
+        ///         PolicyName = policy.PolicyName,
+        ///         PolicyType = policy.Type,
+        ///         GroupName = @group.Name,
+        ///     });
+        /// 
         ///     var policiesDs = AliCloud.Ram.GetPolicies.Invoke(new()
         ///     {
-        ///         OutputFile = "policies.txt",
-        ///         UserName = "user1",
-        ///         GroupName = "group1",
-        ///         Type = "System",
+        ///         GroupName = attach.GroupName,
+        ///         Type = "Custom",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;

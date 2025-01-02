@@ -54,6 +54,13 @@ namespace Pulumi.AliCloud
             set => _accountId.Set(value);
         }
 
+        private static readonly __Value<string?> _accountType = new __Value<string?>(() => __config.Get("accountType"));
+        public static string? AccountType
+        {
+            get => _accountType.Get();
+            set => _accountType.Set(value);
+        }
+
         private static readonly __Value<Pulumi.AliCloud.Config.Types.AssumeRole?> _assumeRole = new __Value<Pulumi.AliCloud.Config.Types.AssumeRole?>(() => __config.GetObject<Pulumi.AliCloud.Config.Types.AssumeRole>("assumeRole"));
         public static Pulumi.AliCloud.Config.Types.AssumeRole? AssumeRole
         {
@@ -328,6 +335,7 @@ namespace Pulumi.AliCloud
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom AnalyticDB endpoints.
             /// </summary>
                 public string? Adb { get; set; } = null!;
+                public string? Aiworkspace { get; set; } = null!;
             /// <summary>
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alb endpoints.
             /// </summary>
@@ -344,6 +352,14 @@ namespace Pulumi.AliCloud
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ALIKAFKA endpoints.
             /// </summary>
                 public string? Alikafka { get; set; } = null!;
+            /// <summary>
+            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom onsproxy endpoints.
+            /// </summary>
+                public string? Amqp { get; set; } = null!;
+            /// <summary>
+            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ddosbasic endpoints.
+            /// </summary>
+                public string? AntiddosPublic { get; set; } = null!;
             /// <summary>
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
             /// </summary>
@@ -401,6 +417,10 @@ namespace Pulumi.AliCloud
             /// </summary>
                 public string? Cds { get; set; } = null!;
             /// <summary>
+            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom beebot endpoints.
+            /// </summary>
+                public string? Chatbot { get; set; } = null!;
+            /// <summary>
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom clickhouse endpoints.
             /// </summary>
                 public string? Clickhouse { get; set; } = null!;
@@ -455,11 +475,19 @@ namespace Pulumi.AliCloud
             /// <summary>
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dataworkspublic endpoints.
             /// </summary>
+                public string? DataworksPublic { get; set; } = null!;
+            /// <summary>
+            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dataworkspublic endpoints.
+            /// </summary>
                 public string? Dataworkspublic { get; set; } = null!;
             /// <summary>
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dbfs endpoints.
             /// </summary>
                 public string? Dbfs { get; set; } = null!;
+            /// <summary>
+            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbs endpoints.
+            /// </summary>
+                public string? Dbs { get; set; } = null!;
             /// <summary>
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dcdn endpoints.
             /// </summary>
@@ -480,10 +508,15 @@ namespace Pulumi.AliCloud
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MongoDB endpoints.
             /// </summary>
                 public string? Dds { get; set; } = null!;
+                public string? DevopsRdc { get; set; } = null!;
             /// <summary>
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom devopsrdc endpoints.
             /// </summary>
                 public string? Devopsrdc { get; set; } = null!;
+            /// <summary>
+            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidfs endpoints.
+            /// </summary>
+                public string? Dfs { get; set; } = null!;
             /// <summary>
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dg endpoints.
             /// </summary>
@@ -514,6 +547,10 @@ namespace Pulumi.AliCloud
                 public string? Dts { get; set; } = null!;
                 public string? Dysms { get; set; } = null!;
             /// <summary>
+            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dysmsapi endpoints.
+            /// </summary>
+                public string? Dysmsapi { get; set; } = null!;
+            /// <summary>
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eais endpoints.
             /// </summary>
                 public string? Eais { get; set; } = null!;
@@ -521,6 +558,10 @@ namespace Pulumi.AliCloud
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ebs endpoints.
             /// </summary>
                 public string? Ebs { get; set; } = null!;
+            /// <summary>
+            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gwsecd endpoints.
+            /// </summary>
+                public string? Ecd { get; set; } = null!;
             /// <summary>
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eci endpoints.
             /// </summary>
@@ -537,6 +578,10 @@ namespace Pulumi.AliCloud
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edasschedulerx endpoints.
             /// </summary>
                 public string? Edasschedulerx { get; set; } = null!;
+            /// <summary>
+            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edsuser endpoints.
+            /// </summary>
+                public string? EdsUser { get; set; } = null!;
             /// <summary>
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edsuser endpoints.
             /// </summary>
@@ -569,6 +614,7 @@ namespace Pulumi.AliCloud
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ens endpoints.
             /// </summary>
                 public string? Ens { get; set; } = null!;
+                public string? Esa { get; set; } = null!;
             /// <summary>
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Autoscaling endpoints.
             /// </summary>
@@ -581,6 +627,10 @@ namespace Pulumi.AliCloud
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Function Computing endpoints.
             /// </summary>
                 public string? Fc { get; set; } = null!;
+            /// <summary>
+            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Function Computing endpoints.
+            /// </summary>
+                public string? FcOpen { get; set; } = null!;
             /// <summary>
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom fnf endpoints.
             /// </summary>
@@ -596,11 +646,16 @@ namespace Pulumi.AliCloud
             /// <summary>
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gds endpoints.
             /// </summary>
+                public string? Gdb { get; set; } = null!;
+            /// <summary>
+            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gds endpoints.
+            /// </summary>
                 public string? Gds { get; set; } = null!;
             /// <summary>
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom GPDB endpoints.
             /// </summary>
                 public string? Gpdb { get; set; } = null!;
+                public string? Gwlb { get; set; } = null!;
             /// <summary>
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gwsecd endpoints.
             /// </summary>
@@ -666,6 +721,10 @@ namespace Pulumi.AliCloud
             /// </summary>
                 public string? Mns { get; set; } = null!;
             /// <summary>
+            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MNS endpoints.
+            /// </summary>
+                public string? MnsOpen { get; set; } = null!;
+            /// <summary>
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mscopensubscription endpoints.
             /// </summary>
                 public string? Mscopensubscription { get; set; } = null!;
@@ -685,6 +744,10 @@ namespace Pulumi.AliCloud
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oceanbase endpoints.
             /// </summary>
                 public string? Oceanbase { get; set; } = null!;
+            /// <summary>
+            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oceanbase endpoints.
+            /// </summary>
+                public string? Oceanbasepro { get; set; } = null!;
             /// <summary>
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ONS endpoints.
             /// </summary>
@@ -714,6 +777,10 @@ namespace Pulumi.AliCloud
             /// </summary>
                 public string? Polardb { get; set; } = null!;
             /// <summary>
+            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DRDS endpoints.
+            /// </summary>
+                public string? Polardbx { get; set; } = null!;
+            /// <summary>
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom privatelink endpoints.
             /// </summary>
                 public string? Privatelink { get; set; } = null!;
@@ -725,6 +792,10 @@ namespace Pulumi.AliCloud
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quickbi endpoints.
             /// </summary>
                 public string? Quickbi { get; set; } = null!;
+            /// <summary>
+            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quickbi endpoints.
+            /// </summary>
+                public string? QuickbiPublic { get; set; } = null!;
             /// <summary>
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quotas endpoints.
             /// </summary>
@@ -749,14 +820,20 @@ namespace Pulumi.AliCloud
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcemanager endpoints.
             /// </summary>
                 public string? Resourcemanager { get; set; } = null!;
+                public string? Resourcesharing { get; set; } = null!;
             /// <summary>
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcesharing endpoints.
             /// </summary>
                 public string? Ressharing { get; set; } = null!;
+                public string? Rocketmq { get; set; } = null!;
             /// <summary>
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ros endpoints.
             /// </summary>
                 public string? Ros { get; set; } = null!;
+            /// <summary>
+            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
+            /// </summary>
+                public string? Sae { get; set; } = null!;
             /// <summary>
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sas endpoints.
             /// </summary>
@@ -765,6 +842,10 @@ namespace Pulumi.AliCloud
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom scdn endpoints.
             /// </summary>
                 public string? Scdn { get; set; } = null!;
+            /// <summary>
+            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edasschedulerx endpoints.
+            /// </summary>
+                public string? Schedulerx2 { get; set; } = null!;
             /// <summary>
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sddp endpoints.
             /// </summary>
@@ -777,6 +858,10 @@ namespace Pulumi.AliCloud
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
             /// </summary>
                 public string? Serverless { get; set; } = null!;
+            /// <summary>
+            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom srvcatalog endpoints.
+            /// </summary>
+                public string? Servicecatalog { get; set; } = null!;
             /// <summary>
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom servicemesh endpoints.
             /// </summary>
@@ -806,6 +891,10 @@ namespace Pulumi.AliCloud
             /// </summary>
                 public string? Swas { get; set; } = null!;
             /// <summary>
+            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom swas endpoints.
+            /// </summary>
+                public string? SwasOpen { get; set; } = null!;
+            /// <summary>
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom tag endpoints.
             /// </summary>
                 public string? Tag { get; set; } = null!;
@@ -817,6 +906,7 @@ namespace Pulumi.AliCloud
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom VPC and VPN endpoints.
             /// </summary>
                 public string? Vpc { get; set; } = null!;
+                public string? Vpcipam { get; set; } = null!;
             /// <summary>
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vpcpeer endpoints.
             /// </summary>

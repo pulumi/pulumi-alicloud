@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * This data source provides the Message Center Subscriptions of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.135.0+.
+ * > **NOTE:** Available since v1.135.0.
  *
  * ## Example Usage
  *
@@ -50,12 +50,15 @@ export interface GetMscSubSubscriptionsResult {
      */
     readonly id: string;
     readonly outputFile?: string;
+    /**
+     * A list of Msc Sub Subscriptions. Each element contains the following attributes:
+     */
     readonly subscriptions: outputs.GetMscSubSubscriptionsSubscription[];
 }
 /**
  * This data source provides the Message Center Subscriptions of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.135.0+.
+ * > **NOTE:** Available since v1.135.0.
  *
  * ## Example Usage
  *

@@ -20,6 +20,10 @@ public final class GetMscSubSubscriptionsResult {
      */
     private String id;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Msc Sub Subscriptions. Each element contains the following attributes:
+     * 
+     */
     private List<GetMscSubSubscriptionsSubscription> subscriptions;
 
     private GetMscSubSubscriptionsResult() {}
@@ -33,6 +37,10 @@ public final class GetMscSubSubscriptionsResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Msc Sub Subscriptions. Each element contains the following attributes:
+     * 
+     */
     public List<GetMscSubSubscriptionsSubscription> subscriptions() {
         return this.subscriptions;
     }

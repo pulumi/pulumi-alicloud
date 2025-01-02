@@ -16,8 +16,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRulesResult {
+    /**
+     * @return Sensitive Data Identification Rules for the Type of.
+     * 
+     */
     private @Nullable Integer category;
+    /**
+     * @return The Content Classification.
+     * 
+     */
     private @Nullable String contentCategory;
+    /**
+     * @return Sensitive Data Identification Rules of Type. 0: the Built-in 1: The User-Defined.
+     * 
+     */
     private @Nullable Integer customType;
     private @Nullable Boolean enableDetails;
     /**
@@ -28,22 +40,58 @@ public final class GetRulesResult {
     private List<String> ids;
     private @Nullable String name;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Rule names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return Product ID.
+     * 
+     */
     private @Nullable String productId;
+    /**
+     * @return Sensitive Data Identification Rules of Risk Level ID. Valid values:1:S1, Weak Risk Level. 2:S2, Medium Risk Level. 3:S3 High Risk Level. 4:S4, the Highest Risk Level.
+     * 
+     */
     private @Nullable String riskLevelId;
     private @Nullable Integer ruleType;
+    /**
+     * @return A list of Sddp Rules. Each element contains the following attributes:
+     * 
+     */
     private List<GetRulesRule> rules;
+    /**
+     * @return Sensitive Data Identification Rules Detection State of.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return The Level of Risk.
+     * 
+     */
     private @Nullable Integer warnLevel;
 
     private GetRulesResult() {}
+    /**
+     * @return Sensitive Data Identification Rules for the Type of.
+     * 
+     */
     public Optional<Integer> category() {
         return Optional.ofNullable(this.category);
     }
+    /**
+     * @return The Content Classification.
+     * 
+     */
     public Optional<String> contentCategory() {
         return Optional.ofNullable(this.contentCategory);
     }
+    /**
+     * @return Sensitive Data Identification Rules of Type. 0: the Built-in 1: The User-Defined.
+     * 
+     */
     public Optional<Integer> customType() {
         return Optional.ofNullable(this.customType);
     }
@@ -66,27 +114,51 @@ public final class GetRulesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Rule names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return Product ID.
+     * 
+     */
     public Optional<String> productId() {
         return Optional.ofNullable(this.productId);
     }
+    /**
+     * @return Sensitive Data Identification Rules of Risk Level ID. Valid values:1:S1, Weak Risk Level. 2:S2, Medium Risk Level. 3:S3 High Risk Level. 4:S4, the Highest Risk Level.
+     * 
+     */
     public Optional<String> riskLevelId() {
         return Optional.ofNullable(this.riskLevelId);
     }
     public Optional<Integer> ruleType() {
         return Optional.ofNullable(this.ruleType);
     }
+    /**
+     * @return A list of Sddp Rules. Each element contains the following attributes:
+     * 
+     */
     public List<GetRulesRule> rules() {
         return this.rules;
     }
+    /**
+     * @return Sensitive Data Identification Rules Detection State of.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return The Level of Risk.
+     * 
+     */
     public Optional<Integer> warnLevel() {
         return Optional.ofNullable(this.warnLevel);
     }

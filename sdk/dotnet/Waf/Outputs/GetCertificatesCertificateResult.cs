@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Waf.Outputs
         /// </summary>
         public readonly string CommonName;
         /// <summary>
-        /// The domain that you want to add to WAF.
+        /// WAF domain name.
         /// </summary>
         public readonly string Domain;
         /// <summary>

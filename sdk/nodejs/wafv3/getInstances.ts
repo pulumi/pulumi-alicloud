@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides Wafv3 Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/web-application-firewall/latest/what-is-waf)
  *
- * > **NOTE:** Available in 1.200.0+
+ * > **NOTE:** Available since v1.200.0.
  *
  * ## Example Usage
  *
@@ -25,6 +25,7 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:wafv3/getInstances:getInstances", {
+        "ids": args.ids,
         "outputFile": args.outputFile,
     }, opts);
 }
@@ -33,6 +34,10 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
  * A collection of arguments for invoking getInstances.
  */
 export interface GetInstancesArgs {
+    /**
+     * A list of WAF v3 instance IDs.
+     */
+    ids?: string[];
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
@@ -60,7 +65,7 @@ export interface GetInstancesResult {
 /**
  * This data source provides Wafv3 Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/web-application-firewall/latest/what-is-waf)
  *
- * > **NOTE:** Available in 1.200.0+
+ * > **NOTE:** Available since v1.200.0.
  *
  * ## Example Usage
  *
@@ -76,6 +81,7 @@ export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:wafv3/getInstances:getInstances", {
+        "ids": args.ids,
         "outputFile": args.outputFile,
     }, opts);
 }
@@ -84,6 +90,10 @@ export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.
  * A collection of arguments for invoking getInstances.
  */
 export interface GetInstancesOutputArgs {
+    /**
+     * A list of WAF v3 instance IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */

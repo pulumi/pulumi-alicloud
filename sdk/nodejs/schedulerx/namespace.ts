@@ -5,23 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Schedulerx Namespace resource.
- *
- * For information about Schedulerx Namespace and how to use it, see [What is Namespace](https://help.aliyun.com/document_detail/206088.html).
- *
- * > **NOTE:** Available in v1.173.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = new alicloud.schedulerx.Namespace("example", {namespaceName: "example_value"});
- * ```
- *
  * ## Import
  *
  * Schedulerx Namespace can be imported using the id, e.g.
@@ -59,13 +42,17 @@ export class Namespace extends pulumi.CustomResource {
     }
 
     /**
-     * The description of the resource.
+     * Namespace description.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The name of the resource.
+     * Namespace name.
      */
     public readonly namespaceName!: pulumi.Output<string>;
+    /**
+     * Namespace uid.
+     */
+    public readonly namespaceUid!: pulumi.Output<string>;
 
     /**
      * Create a Namespace resource with the given unique name, arguments, and options.
@@ -82,6 +69,7 @@ export class Namespace extends pulumi.CustomResource {
             const state = argsOrState as NamespaceState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["namespaceName"] = state ? state.namespaceName : undefined;
+            resourceInputs["namespaceUid"] = state ? state.namespaceUid : undefined;
         } else {
             const args = argsOrState as NamespaceArgs | undefined;
             if ((!args || args.namespaceName === undefined) && !opts.urn) {
@@ -89,6 +77,7 @@ export class Namespace extends pulumi.CustomResource {
             }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["namespaceName"] = args ? args.namespaceName : undefined;
+            resourceInputs["namespaceUid"] = args ? args.namespaceUid : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Namespace.__pulumiType, name, resourceInputs, opts);
@@ -100,13 +89,17 @@ export class Namespace extends pulumi.CustomResource {
  */
 export interface NamespaceState {
     /**
-     * The description of the resource.
+     * Namespace description.
      */
     description?: pulumi.Input<string>;
     /**
-     * The name of the resource.
+     * Namespace name.
      */
     namespaceName?: pulumi.Input<string>;
+    /**
+     * Namespace uid.
+     */
+    namespaceUid?: pulumi.Input<string>;
 }
 
 /**
@@ -114,11 +107,15 @@ export interface NamespaceState {
  */
 export interface NamespaceArgs {
     /**
-     * The description of the resource.
+     * Namespace description.
      */
     description?: pulumi.Input<string>;
     /**
-     * The name of the resource.
+     * Namespace name.
      */
     namespaceName: pulumi.Input<string>;
+    /**
+     * Namespace uid.
+     */
+    namespaceUid?: pulumi.Input<string>;
 }

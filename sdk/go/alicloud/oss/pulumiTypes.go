@@ -13,6 +13,280 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AccessPointPublicAccessBlockConfiguration struct {
+	// Block public access enabled for access point
+	BlockPublicAccess *bool `pulumi:"blockPublicAccess"`
+}
+
+// AccessPointPublicAccessBlockConfigurationInput is an input type that accepts AccessPointPublicAccessBlockConfigurationArgs and AccessPointPublicAccessBlockConfigurationOutput values.
+// You can construct a concrete instance of `AccessPointPublicAccessBlockConfigurationInput` via:
+//
+//	AccessPointPublicAccessBlockConfigurationArgs{...}
+type AccessPointPublicAccessBlockConfigurationInput interface {
+	pulumi.Input
+
+	ToAccessPointPublicAccessBlockConfigurationOutput() AccessPointPublicAccessBlockConfigurationOutput
+	ToAccessPointPublicAccessBlockConfigurationOutputWithContext(context.Context) AccessPointPublicAccessBlockConfigurationOutput
+}
+
+type AccessPointPublicAccessBlockConfigurationArgs struct {
+	// Block public access enabled for access point
+	BlockPublicAccess pulumi.BoolPtrInput `pulumi:"blockPublicAccess"`
+}
+
+func (AccessPointPublicAccessBlockConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPointPublicAccessBlockConfiguration)(nil)).Elem()
+}
+
+func (i AccessPointPublicAccessBlockConfigurationArgs) ToAccessPointPublicAccessBlockConfigurationOutput() AccessPointPublicAccessBlockConfigurationOutput {
+	return i.ToAccessPointPublicAccessBlockConfigurationOutputWithContext(context.Background())
+}
+
+func (i AccessPointPublicAccessBlockConfigurationArgs) ToAccessPointPublicAccessBlockConfigurationOutputWithContext(ctx context.Context) AccessPointPublicAccessBlockConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPointPublicAccessBlockConfigurationOutput)
+}
+
+func (i AccessPointPublicAccessBlockConfigurationArgs) ToAccessPointPublicAccessBlockConfigurationPtrOutput() AccessPointPublicAccessBlockConfigurationPtrOutput {
+	return i.ToAccessPointPublicAccessBlockConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i AccessPointPublicAccessBlockConfigurationArgs) ToAccessPointPublicAccessBlockConfigurationPtrOutputWithContext(ctx context.Context) AccessPointPublicAccessBlockConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPointPublicAccessBlockConfigurationOutput).ToAccessPointPublicAccessBlockConfigurationPtrOutputWithContext(ctx)
+}
+
+// AccessPointPublicAccessBlockConfigurationPtrInput is an input type that accepts AccessPointPublicAccessBlockConfigurationArgs, AccessPointPublicAccessBlockConfigurationPtr and AccessPointPublicAccessBlockConfigurationPtrOutput values.
+// You can construct a concrete instance of `AccessPointPublicAccessBlockConfigurationPtrInput` via:
+//
+//	        AccessPointPublicAccessBlockConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessPointPublicAccessBlockConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToAccessPointPublicAccessBlockConfigurationPtrOutput() AccessPointPublicAccessBlockConfigurationPtrOutput
+	ToAccessPointPublicAccessBlockConfigurationPtrOutputWithContext(context.Context) AccessPointPublicAccessBlockConfigurationPtrOutput
+}
+
+type accessPointPublicAccessBlockConfigurationPtrType AccessPointPublicAccessBlockConfigurationArgs
+
+func AccessPointPublicAccessBlockConfigurationPtr(v *AccessPointPublicAccessBlockConfigurationArgs) AccessPointPublicAccessBlockConfigurationPtrInput {
+	return (*accessPointPublicAccessBlockConfigurationPtrType)(v)
+}
+
+func (*accessPointPublicAccessBlockConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPointPublicAccessBlockConfiguration)(nil)).Elem()
+}
+
+func (i *accessPointPublicAccessBlockConfigurationPtrType) ToAccessPointPublicAccessBlockConfigurationPtrOutput() AccessPointPublicAccessBlockConfigurationPtrOutput {
+	return i.ToAccessPointPublicAccessBlockConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *accessPointPublicAccessBlockConfigurationPtrType) ToAccessPointPublicAccessBlockConfigurationPtrOutputWithContext(ctx context.Context) AccessPointPublicAccessBlockConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPointPublicAccessBlockConfigurationPtrOutput)
+}
+
+type AccessPointPublicAccessBlockConfigurationOutput struct{ *pulumi.OutputState }
+
+func (AccessPointPublicAccessBlockConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPointPublicAccessBlockConfiguration)(nil)).Elem()
+}
+
+func (o AccessPointPublicAccessBlockConfigurationOutput) ToAccessPointPublicAccessBlockConfigurationOutput() AccessPointPublicAccessBlockConfigurationOutput {
+	return o
+}
+
+func (o AccessPointPublicAccessBlockConfigurationOutput) ToAccessPointPublicAccessBlockConfigurationOutputWithContext(ctx context.Context) AccessPointPublicAccessBlockConfigurationOutput {
+	return o
+}
+
+func (o AccessPointPublicAccessBlockConfigurationOutput) ToAccessPointPublicAccessBlockConfigurationPtrOutput() AccessPointPublicAccessBlockConfigurationPtrOutput {
+	return o.ToAccessPointPublicAccessBlockConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o AccessPointPublicAccessBlockConfigurationOutput) ToAccessPointPublicAccessBlockConfigurationPtrOutputWithContext(ctx context.Context) AccessPointPublicAccessBlockConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessPointPublicAccessBlockConfiguration) *AccessPointPublicAccessBlockConfiguration {
+		return &v
+	}).(AccessPointPublicAccessBlockConfigurationPtrOutput)
+}
+
+// Block public access enabled for access point
+func (o AccessPointPublicAccessBlockConfigurationOutput) BlockPublicAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessPointPublicAccessBlockConfiguration) *bool { return v.BlockPublicAccess }).(pulumi.BoolPtrOutput)
+}
+
+type AccessPointPublicAccessBlockConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessPointPublicAccessBlockConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPointPublicAccessBlockConfiguration)(nil)).Elem()
+}
+
+func (o AccessPointPublicAccessBlockConfigurationPtrOutput) ToAccessPointPublicAccessBlockConfigurationPtrOutput() AccessPointPublicAccessBlockConfigurationPtrOutput {
+	return o
+}
+
+func (o AccessPointPublicAccessBlockConfigurationPtrOutput) ToAccessPointPublicAccessBlockConfigurationPtrOutputWithContext(ctx context.Context) AccessPointPublicAccessBlockConfigurationPtrOutput {
+	return o
+}
+
+func (o AccessPointPublicAccessBlockConfigurationPtrOutput) Elem() AccessPointPublicAccessBlockConfigurationOutput {
+	return o.ApplyT(func(v *AccessPointPublicAccessBlockConfiguration) AccessPointPublicAccessBlockConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret AccessPointPublicAccessBlockConfiguration
+		return ret
+	}).(AccessPointPublicAccessBlockConfigurationOutput)
+}
+
+// Block public access enabled for access point
+func (o AccessPointPublicAccessBlockConfigurationPtrOutput) BlockPublicAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessPointPublicAccessBlockConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BlockPublicAccess
+	}).(pulumi.BoolPtrOutput)
+}
+
+type AccessPointVpcConfiguration struct {
+	// The vpc ID is required only when the value of NetworkOrigin is VPC.
+	VpcId *string `pulumi:"vpcId"`
+}
+
+// AccessPointVpcConfigurationInput is an input type that accepts AccessPointVpcConfigurationArgs and AccessPointVpcConfigurationOutput values.
+// You can construct a concrete instance of `AccessPointVpcConfigurationInput` via:
+//
+//	AccessPointVpcConfigurationArgs{...}
+type AccessPointVpcConfigurationInput interface {
+	pulumi.Input
+
+	ToAccessPointVpcConfigurationOutput() AccessPointVpcConfigurationOutput
+	ToAccessPointVpcConfigurationOutputWithContext(context.Context) AccessPointVpcConfigurationOutput
+}
+
+type AccessPointVpcConfigurationArgs struct {
+	// The vpc ID is required only when the value of NetworkOrigin is VPC.
+	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+}
+
+func (AccessPointVpcConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPointVpcConfiguration)(nil)).Elem()
+}
+
+func (i AccessPointVpcConfigurationArgs) ToAccessPointVpcConfigurationOutput() AccessPointVpcConfigurationOutput {
+	return i.ToAccessPointVpcConfigurationOutputWithContext(context.Background())
+}
+
+func (i AccessPointVpcConfigurationArgs) ToAccessPointVpcConfigurationOutputWithContext(ctx context.Context) AccessPointVpcConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPointVpcConfigurationOutput)
+}
+
+func (i AccessPointVpcConfigurationArgs) ToAccessPointVpcConfigurationPtrOutput() AccessPointVpcConfigurationPtrOutput {
+	return i.ToAccessPointVpcConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i AccessPointVpcConfigurationArgs) ToAccessPointVpcConfigurationPtrOutputWithContext(ctx context.Context) AccessPointVpcConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPointVpcConfigurationOutput).ToAccessPointVpcConfigurationPtrOutputWithContext(ctx)
+}
+
+// AccessPointVpcConfigurationPtrInput is an input type that accepts AccessPointVpcConfigurationArgs, AccessPointVpcConfigurationPtr and AccessPointVpcConfigurationPtrOutput values.
+// You can construct a concrete instance of `AccessPointVpcConfigurationPtrInput` via:
+//
+//	        AccessPointVpcConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessPointVpcConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToAccessPointVpcConfigurationPtrOutput() AccessPointVpcConfigurationPtrOutput
+	ToAccessPointVpcConfigurationPtrOutputWithContext(context.Context) AccessPointVpcConfigurationPtrOutput
+}
+
+type accessPointVpcConfigurationPtrType AccessPointVpcConfigurationArgs
+
+func AccessPointVpcConfigurationPtr(v *AccessPointVpcConfigurationArgs) AccessPointVpcConfigurationPtrInput {
+	return (*accessPointVpcConfigurationPtrType)(v)
+}
+
+func (*accessPointVpcConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPointVpcConfiguration)(nil)).Elem()
+}
+
+func (i *accessPointVpcConfigurationPtrType) ToAccessPointVpcConfigurationPtrOutput() AccessPointVpcConfigurationPtrOutput {
+	return i.ToAccessPointVpcConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *accessPointVpcConfigurationPtrType) ToAccessPointVpcConfigurationPtrOutputWithContext(ctx context.Context) AccessPointVpcConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPointVpcConfigurationPtrOutput)
+}
+
+type AccessPointVpcConfigurationOutput struct{ *pulumi.OutputState }
+
+func (AccessPointVpcConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPointVpcConfiguration)(nil)).Elem()
+}
+
+func (o AccessPointVpcConfigurationOutput) ToAccessPointVpcConfigurationOutput() AccessPointVpcConfigurationOutput {
+	return o
+}
+
+func (o AccessPointVpcConfigurationOutput) ToAccessPointVpcConfigurationOutputWithContext(ctx context.Context) AccessPointVpcConfigurationOutput {
+	return o
+}
+
+func (o AccessPointVpcConfigurationOutput) ToAccessPointVpcConfigurationPtrOutput() AccessPointVpcConfigurationPtrOutput {
+	return o.ToAccessPointVpcConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o AccessPointVpcConfigurationOutput) ToAccessPointVpcConfigurationPtrOutputWithContext(ctx context.Context) AccessPointVpcConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessPointVpcConfiguration) *AccessPointVpcConfiguration {
+		return &v
+	}).(AccessPointVpcConfigurationPtrOutput)
+}
+
+// The vpc ID is required only when the value of NetworkOrigin is VPC.
+func (o AccessPointVpcConfigurationOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessPointVpcConfiguration) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+type AccessPointVpcConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessPointVpcConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPointVpcConfiguration)(nil)).Elem()
+}
+
+func (o AccessPointVpcConfigurationPtrOutput) ToAccessPointVpcConfigurationPtrOutput() AccessPointVpcConfigurationPtrOutput {
+	return o
+}
+
+func (o AccessPointVpcConfigurationPtrOutput) ToAccessPointVpcConfigurationPtrOutputWithContext(ctx context.Context) AccessPointVpcConfigurationPtrOutput {
+	return o
+}
+
+func (o AccessPointVpcConfigurationPtrOutput) Elem() AccessPointVpcConfigurationOutput {
+	return o.ApplyT(func(v *AccessPointVpcConfiguration) AccessPointVpcConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret AccessPointVpcConfiguration
+		return ret
+	}).(AccessPointVpcConfigurationOutput)
+}
+
+// The vpc ID is required only when the value of NetworkOrigin is VPC.
+func (o AccessPointVpcConfigurationPtrOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPointVpcConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VpcId
+	}).(pulumi.StringPtrOutput)
+}
+
 type BucketAccessMonitorType struct {
 	// The access monitor state of a bucket. If you want to manage objects based on the last access time of the objects, specifies the status to `Enabled`. Valid values: `Enabled` and `Disabled`.
 	Status *string `pulumi:"status"`
@@ -8787,6 +9061,10 @@ func (o GetTablesTablePrimaryKeyArrayOutput) Index(i pulumi.IntInput) GetTablesT
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPointPublicAccessBlockConfigurationInput)(nil)).Elem(), AccessPointPublicAccessBlockConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPointPublicAccessBlockConfigurationPtrInput)(nil)).Elem(), AccessPointPublicAccessBlockConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPointVpcConfigurationInput)(nil)).Elem(), AccessPointVpcConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPointVpcConfigurationPtrInput)(nil)).Elem(), AccessPointVpcConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketAccessMonitorTypeInput)(nil)).Elem(), BucketAccessMonitorTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketAccessMonitorTypePtrInput)(nil)).Elem(), BucketAccessMonitorTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketCnameCertificateInput)(nil)).Elem(), BucketCnameCertificateArgs{})
@@ -8895,6 +9173,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTableDefinedColumnArrayInput)(nil)).Elem(), GetTablesTableDefinedColumnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTablePrimaryKeyInput)(nil)).Elem(), GetTablesTablePrimaryKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTablePrimaryKeyArrayInput)(nil)).Elem(), GetTablesTablePrimaryKeyArray{})
+	pulumi.RegisterOutputType(AccessPointPublicAccessBlockConfigurationOutput{})
+	pulumi.RegisterOutputType(AccessPointPublicAccessBlockConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(AccessPointVpcConfigurationOutput{})
+	pulumi.RegisterOutputType(AccessPointVpcConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(BucketAccessMonitorTypeOutput{})
 	pulumi.RegisterOutputType(BucketAccessMonitorTypePtrOutput{})
 	pulumi.RegisterOutputType(BucketCnameCertificateOutput{})

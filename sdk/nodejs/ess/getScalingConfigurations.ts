@@ -9,21 +9,85 @@ import * as utilities from "../utilities";
 /**
  * This data source provides available scaling configuration resources.
  *
+ * > **NOTE:** Available since v1.240.0
+ *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const scalingconfigurationsDs = alicloud.ess.getScalingConfigurations({
- *     scalingGroupId: "scaling_group_id",
- *     ids: [
- *         "scaling_configuration_id1",
- *         "scaling_configuration_id2",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultInteger = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const myName = `${name}-${defaultInteger.result}`;
+ * const default = alicloud.getZones({
+ *     availableDiskCategory: "cloud_efficiency",
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultGetInstanceTypes = _default.then(_default => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: _default.zones?.[0]?.id,
+ *     cpuCoreCount: 2,
+ *     memorySize: 4,
+ * }));
+ * const defaultGetImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_18.*64",
+ *     mostRecent: true,
+ *     owners: "system",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: myName,
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ *     vswitchName: myName,
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     securityGroupName: myName,
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultSecurityGroupRule = new alicloud.ecs.SecurityGroupRule("default", {
+ *     type: "ingress",
+ *     ipProtocol: "tcp",
+ *     nicType: "intranet",
+ *     policy: "accept",
+ *     portRange: "22/22",
+ *     priority: 1,
+ *     securityGroupId: defaultSecurityGroup.id,
+ *     cidrIp: "172.16.0.0/24",
+ * });
+ * const defaultScalingGroup = new alicloud.ess.ScalingGroup("default", {
+ *     minSize: 1,
+ *     maxSize: 1,
+ *     scalingGroupName: myName,
+ *     removalPolicies: [
+ *         "OldestInstance",
+ *         "NewestInstance",
  *     ],
+ *     vswitchIds: [defaultSwitch.id],
+ * });
+ * const defaultScalingConfiguration = new alicloud.ess.ScalingConfiguration("default", {
+ *     scalingGroupId: defaultScalingGroup.id,
+ *     imageId: defaultGetImages.then(defaultGetImages => defaultGetImages.images?.[0]?.id),
+ *     instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id),
+ *     securityGroupId: defaultSecurityGroup.id,
+ *     forceDelete: true,
+ *     active: true,
+ *     scalingConfigurationName: "scaling_configuration_name",
+ * });
+ * const scalingconfigurationsDs = alicloud.ess.getScalingConfigurationsOutput({
+ *     scalingGroupId: defaultScalingGroup.id,
+ *     ids: [defaultScalingConfiguration.id],
  *     nameRegex: "scaling_configuration_name",
  * });
- * export const firstScalingRule = scalingconfigurationsDs.then(scalingconfigurationsDs => scalingconfigurationsDs.configurations?.[0]?.id);
+ * export const firstScalingConfiguration = scalingconfigurationsDs.apply(scalingconfigurationsDs => scalingconfigurationsDs.configurations?.[0]?.id);
  * ```
  */
 export function getScalingConfigurations(args?: GetScalingConfigurationsArgs, opts?: pulumi.InvokeOptions): Promise<GetScalingConfigurationsResult> {
@@ -89,21 +153,85 @@ export interface GetScalingConfigurationsResult {
 /**
  * This data source provides available scaling configuration resources.
  *
+ * > **NOTE:** Available since v1.240.0
+ *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const scalingconfigurationsDs = alicloud.ess.getScalingConfigurations({
- *     scalingGroupId: "scaling_group_id",
- *     ids: [
- *         "scaling_configuration_id1",
- *         "scaling_configuration_id2",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultInteger = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const myName = `${name}-${defaultInteger.result}`;
+ * const default = alicloud.getZones({
+ *     availableDiskCategory: "cloud_efficiency",
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultGetInstanceTypes = _default.then(_default => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: _default.zones?.[0]?.id,
+ *     cpuCoreCount: 2,
+ *     memorySize: 4,
+ * }));
+ * const defaultGetImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_18.*64",
+ *     mostRecent: true,
+ *     owners: "system",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: myName,
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ *     vswitchName: myName,
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     securityGroupName: myName,
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultSecurityGroupRule = new alicloud.ecs.SecurityGroupRule("default", {
+ *     type: "ingress",
+ *     ipProtocol: "tcp",
+ *     nicType: "intranet",
+ *     policy: "accept",
+ *     portRange: "22/22",
+ *     priority: 1,
+ *     securityGroupId: defaultSecurityGroup.id,
+ *     cidrIp: "172.16.0.0/24",
+ * });
+ * const defaultScalingGroup = new alicloud.ess.ScalingGroup("default", {
+ *     minSize: 1,
+ *     maxSize: 1,
+ *     scalingGroupName: myName,
+ *     removalPolicies: [
+ *         "OldestInstance",
+ *         "NewestInstance",
  *     ],
+ *     vswitchIds: [defaultSwitch.id],
+ * });
+ * const defaultScalingConfiguration = new alicloud.ess.ScalingConfiguration("default", {
+ *     scalingGroupId: defaultScalingGroup.id,
+ *     imageId: defaultGetImages.then(defaultGetImages => defaultGetImages.images?.[0]?.id),
+ *     instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id),
+ *     securityGroupId: defaultSecurityGroup.id,
+ *     forceDelete: true,
+ *     active: true,
+ *     scalingConfigurationName: "scaling_configuration_name",
+ * });
+ * const scalingconfigurationsDs = alicloud.ess.getScalingConfigurationsOutput({
+ *     scalingGroupId: defaultScalingGroup.id,
+ *     ids: [defaultScalingConfiguration.id],
  *     nameRegex: "scaling_configuration_name",
  * });
- * export const firstScalingRule = scalingconfigurationsDs.then(scalingconfigurationsDs => scalingconfigurationsDs.configurations?.[0]?.id);
+ * export const firstScalingConfiguration = scalingconfigurationsDs.apply(scalingconfigurationsDs => scalingconfigurationsDs.configurations?.[0]?.id);
  * ```
  */
 export function getScalingConfigurationsOutput(args?: GetScalingConfigurationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetScalingConfigurationsResult> {

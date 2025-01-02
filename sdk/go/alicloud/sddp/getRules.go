@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Sddp Rules of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.132.0+.
+// > **NOTE:** Available since v1.132.0.
 //
 // ## Example Usage
 //
@@ -93,23 +93,32 @@ type GetRulesArgs struct {
 
 // A collection of values returned by getRules.
 type GetRulesResult struct {
-	Category        *int    `pulumi:"category"`
+	// Sensitive Data Identification Rules for the Type of.
+	Category *int `pulumi:"category"`
+	// The Content Classification.
 	ContentCategory *string `pulumi:"contentCategory"`
-	CustomType      *int    `pulumi:"customType"`
-	EnableDetails   *bool   `pulumi:"enableDetails"`
+	// Sensitive Data Identification Rules of Type. 0: the Built-in 1: The User-Defined.
+	CustomType    *int  `pulumi:"customType"`
+	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string         `pulumi:"id"`
-	Ids         []string       `pulumi:"ids"`
-	Name        *string        `pulumi:"name"`
-	NameRegex   *string        `pulumi:"nameRegex"`
-	Names       []string       `pulumi:"names"`
-	OutputFile  *string        `pulumi:"outputFile"`
-	ProductId   *string        `pulumi:"productId"`
-	RiskLevelId *string        `pulumi:"riskLevelId"`
-	RuleType    *int           `pulumi:"ruleType"`
-	Rules       []GetRulesRule `pulumi:"rules"`
-	Status      *string        `pulumi:"status"`
-	WarnLevel   *int           `pulumi:"warnLevel"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	Name      *string  `pulumi:"name"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Rule names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// Product ID.
+	ProductId *string `pulumi:"productId"`
+	// Sensitive Data Identification Rules of Risk Level ID. Valid values:1:S1, Weak Risk Level. 2:S2, Medium Risk Level. 3:S3 High Risk Level. 4:S4, the Highest Risk Level.
+	RiskLevelId *string `pulumi:"riskLevelId"`
+	RuleType    *int    `pulumi:"ruleType"`
+	// A list of Sddp Rules. Each element contains the following attributes:
+	Rules []GetRulesRule `pulumi:"rules"`
+	// Sensitive Data Identification Rules Detection State of.
+	Status *string `pulumi:"status"`
+	// The Level of Risk.
+	WarnLevel *int `pulumi:"warnLevel"`
 }
 
 func GetRulesOutput(ctx *pulumi.Context, args GetRulesOutputArgs, opts ...pulumi.InvokeOption) GetRulesResultOutput {
@@ -169,14 +178,17 @@ func (o GetRulesResultOutput) ToGetRulesResultOutputWithContext(ctx context.Cont
 	return o
 }
 
+// Sensitive Data Identification Rules for the Type of.
 func (o GetRulesResultOutput) Category() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetRulesResult) *int { return v.Category }).(pulumi.IntPtrOutput)
 }
 
+// The Content Classification.
 func (o GetRulesResultOutput) ContentCategory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRulesResult) *string { return v.ContentCategory }).(pulumi.StringPtrOutput)
 }
 
+// Sensitive Data Identification Rules of Type. 0: the Built-in 1: The User-Defined.
 func (o GetRulesResultOutput) CustomType() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetRulesResult) *int { return v.CustomType }).(pulumi.IntPtrOutput)
 }
@@ -202,6 +214,7 @@ func (o GetRulesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRulesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Rule names.
 func (o GetRulesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRulesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -210,10 +223,12 @@ func (o GetRulesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRulesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// Product ID.
 func (o GetRulesResultOutput) ProductId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRulesResult) *string { return v.ProductId }).(pulumi.StringPtrOutput)
 }
 
+// Sensitive Data Identification Rules of Risk Level ID. Valid values:1:S1, Weak Risk Level. 2:S2, Medium Risk Level. 3:S3 High Risk Level. 4:S4, the Highest Risk Level.
 func (o GetRulesResultOutput) RiskLevelId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRulesResult) *string { return v.RiskLevelId }).(pulumi.StringPtrOutput)
 }
@@ -222,14 +237,17 @@ func (o GetRulesResultOutput) RuleType() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetRulesResult) *int { return v.RuleType }).(pulumi.IntPtrOutput)
 }
 
+// A list of Sddp Rules. Each element contains the following attributes:
 func (o GetRulesResultOutput) Rules() GetRulesRuleArrayOutput {
 	return o.ApplyT(func(v GetRulesResult) []GetRulesRule { return v.Rules }).(GetRulesRuleArrayOutput)
 }
 
+// Sensitive Data Identification Rules Detection State of.
 func (o GetRulesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRulesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// The Level of Risk.
 func (o GetRulesResultOutput) WarnLevel() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetRulesResult) *int { return v.WarnLevel }).(pulumi.IntPtrOutput)
 }

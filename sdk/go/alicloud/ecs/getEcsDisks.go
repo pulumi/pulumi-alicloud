@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ecs Disks of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.122.0+.
+// > **NOTE:** Available since v1.122.0.
 //
 // ## Example Usage
 //
@@ -24,6 +24,7 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -31,16 +32,33 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := ecs.GetEcsDisks(ctx, &ecs.GetEcsDisksArgs{
-//				Ids: []string{
-//					"d-artgdsvdvxxxx",
-//				},
-//				NameRegex: pulumi.StringRef("tf-test"),
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstEcsDiskId", example.Disks[0].Id)
+//			defaultEcsDisk, err := ecs.NewEcsDisk(ctx, "default", &ecs.EcsDiskArgs{
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				DiskName:    pulumi.String("terraform-example"),
+//				Description: pulumi.String("terraform-example"),
+//				Category:    pulumi.String("cloud_efficiency"),
+//				Size:        pulumi.Int(30),
+//				Tags: pulumi.StringMap{
+//					"Name": pulumi.String("terraform-example"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ids := ecs.GetEcsDisksOutput(ctx, ecs.GetEcsDisksOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultEcsDisk.ID(),
+//				},
+//			}, nil)
+//			ctx.Export("ecsDiskId0", ids.ApplyT(func(ids ecs.GetEcsDisksResult) (*string, error) {
+//				return &ids.Disks[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}
@@ -74,7 +92,7 @@ type GetEcsDisksArgs struct {
 	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
 	// The disk name.
 	DiskName *string `pulumi:"diskName"`
-	// The disk type.
+	// The disk type. Valid values: `system`, `data`, `all`.
 	DiskType *string `pulumi:"diskType"`
 	// Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
 	DryRun *bool `pulumi:"dryRun"`
@@ -84,7 +102,7 @@ type GetEcsDisksArgs struct {
 	EnableAutomatedSnapshotPolicy *bool `pulumi:"enableAutomatedSnapshotPolicy"`
 	// Whether it is shared block storage.
 	EnableShared *bool `pulumi:"enableShared"`
-	// Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
+	// Indicate whether the disk is encrypted or not. Valid values: `on` and `off`.
 	Encrypted *string `pulumi:"encrypted"`
 	// A list of Disk IDs.
 	Ids []string `pulumi:"ids"`
@@ -93,7 +111,8 @@ type GetEcsDisksArgs struct {
 	// The kms key id.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// A regex string to filter results by Disk name.
-	NameRegex      *string                    `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// The reasons why the disk was locked. See `operationLocks` below for details.
 	OperationLocks []GetEcsDisksOperationLock `pulumi:"operationLocks"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
@@ -107,7 +126,7 @@ type GetEcsDisksArgs struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The source snapshot id.
 	SnapshotId *string `pulumi:"snapshotId"`
-	// The status of disk.
+	// The status of disk. Valid Values: `Attaching`, `Available`, `Creating`, `Detaching`, `In_use`, `Migrating`, `ReIniting`, `Transferring`.
 	Status *string `pulumi:"status"`
 	// A map of tags assigned to the disks.
 	Tags map[string]string `pulumi:"tags"`
@@ -122,40 +141,65 @@ type GetEcsDisksArgs struct {
 // A collection of values returned by getEcsDisks.
 type GetEcsDisksResult struct {
 	AdditionalAttributes []string `pulumi:"additionalAttributes"`
-	AutoSnapshotPolicyId *string  `pulumi:"autoSnapshotPolicyId"`
+	// Query cloud disks based on the automatic snapshot policy ID.
+	AutoSnapshotPolicyId *string `pulumi:"autoSnapshotPolicyId"`
+	// Availability zone of the disk.
+	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
-	AvailabilityZone              *string           `pulumi:"availabilityZone"`
-	Category                      *string           `pulumi:"category"`
-	DeleteAutoSnapshot            *bool             `pulumi:"deleteAutoSnapshot"`
-	DeleteWithInstance            *bool             `pulumi:"deleteWithInstance"`
-	DiskName                      *string           `pulumi:"diskName"`
-	DiskType                      *string           `pulumi:"diskType"`
-	Disks                         []GetEcsDisksDisk `pulumi:"disks"`
-	DryRun                        *bool             `pulumi:"dryRun"`
-	EnableAutoSnapshot            *bool             `pulumi:"enableAutoSnapshot"`
-	EnableAutomatedSnapshotPolicy *bool             `pulumi:"enableAutomatedSnapshotPolicy"`
-	EnableShared                  *bool             `pulumi:"enableShared"`
-	Encrypted                     *string           `pulumi:"encrypted"`
+	AvailabilityZone *string `pulumi:"availabilityZone"`
+	// Disk category.
+	Category *string `pulumi:"category"`
+	// Indicates whether the automatic snapshot is deleted when the disk is released.
+	DeleteAutoSnapshot *bool `pulumi:"deleteAutoSnapshot"`
+	// Indicates whether the disk is released together with the instance.
+	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
+	// The disk name.
+	DiskName *string `pulumi:"diskName"`
+	// The type of the disk.
+	DiskType *string `pulumi:"diskType"`
+	// A list of Ecs Disks. Each element contains the following attributes:
+	Disks  []GetEcsDisksDisk `pulumi:"disks"`
+	DryRun *bool             `pulumi:"dryRun"`
+	// Whether the disk implements an automatic snapshot policy.
+	EnableAutoSnapshot *bool `pulumi:"enableAutoSnapshot"`
+	// Whether the disk implements an automatic snapshot policy.
+	EnableAutomatedSnapshotPolicy *bool `pulumi:"enableAutomatedSnapshotPolicy"`
+	EnableShared                  *bool `pulumi:"enableShared"`
+	// Indicate whether the disk is encrypted or not.
+	Encrypted *string `pulumi:"encrypted"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string                     `pulumi:"id"`
-	Ids             []string                   `pulumi:"ids"`
-	InstanceId      *string                    `pulumi:"instanceId"`
-	KmsKeyId        *string                    `pulumi:"kmsKeyId"`
-	NameRegex       *string                    `pulumi:"nameRegex"`
-	Names           []string                   `pulumi:"names"`
-	OperationLocks  []GetEcsDisksOperationLock `pulumi:"operationLocks"`
-	OutputFile      *string                    `pulumi:"outputFile"`
-	PageNumber      *int                       `pulumi:"pageNumber"`
-	PageSize        *int                       `pulumi:"pageSize"`
-	PaymentType     *string                    `pulumi:"paymentType"`
-	Portable        *bool                      `pulumi:"portable"`
-	ResourceGroupId *string                    `pulumi:"resourceGroupId"`
-	SnapshotId      *string                    `pulumi:"snapshotId"`
-	Status          *string                    `pulumi:"status"`
-	Tags            map[string]string          `pulumi:"tags"`
-	TotalCount      int                        `pulumi:"totalCount"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// The instance ID of the disk mount.
+	InstanceId *string `pulumi:"instanceId"`
+	// The ID of the KMS key that is used for the cloud disk.
+	KmsKeyId  *string `pulumi:"kmsKeyId"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// A list of Disk names.
+	Names []string `pulumi:"names"`
+	// The reasons why the disk was locked.
+	OperationLocks []GetEcsDisksOperationLock `pulumi:"operationLocks"`
+	OutputFile     *string                    `pulumi:"outputFile"`
+	PageNumber     *int                       `pulumi:"pageNumber"`
+	PageSize       *int                       `pulumi:"pageSize"`
+	// Payment method for disk.
+	PaymentType *string `pulumi:"paymentType"`
+	// Whether the disk is unmountable.
+	Portable *bool `pulumi:"portable"`
+	// The Id of resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+	SnapshotId *string `pulumi:"snapshotId"`
+	// Current status.
+	Status *string `pulumi:"status"`
+	// A map of tags assigned to the disk.
+	Tags       map[string]string `pulumi:"tags"`
+	TotalCount int               `pulumi:"totalCount"`
+	// The type of the disk.
+	//
 	// Deprecated: Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.
-	Type   *string `pulumi:"type"`
+	Type *string `pulumi:"type"`
+	// The zone id.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -186,7 +230,7 @@ type GetEcsDisksOutputArgs struct {
 	DeleteWithInstance pulumi.BoolPtrInput `pulumi:"deleteWithInstance"`
 	// The disk name.
 	DiskName pulumi.StringPtrInput `pulumi:"diskName"`
-	// The disk type.
+	// The disk type. Valid values: `system`, `data`, `all`.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
 	DryRun pulumi.BoolPtrInput `pulumi:"dryRun"`
@@ -196,7 +240,7 @@ type GetEcsDisksOutputArgs struct {
 	EnableAutomatedSnapshotPolicy pulumi.BoolPtrInput `pulumi:"enableAutomatedSnapshotPolicy"`
 	// Whether it is shared block storage.
 	EnableShared pulumi.BoolPtrInput `pulumi:"enableShared"`
-	// Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
+	// Indicate whether the disk is encrypted or not. Valid values: `on` and `off`.
 	Encrypted pulumi.StringPtrInput `pulumi:"encrypted"`
 	// A list of Disk IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -205,7 +249,8 @@ type GetEcsDisksOutputArgs struct {
 	// The kms key id.
 	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
 	// A regex string to filter results by Disk name.
-	NameRegex      pulumi.StringPtrInput              `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// The reasons why the disk was locked. See `operationLocks` below for details.
 	OperationLocks GetEcsDisksOperationLockArrayInput `pulumi:"operationLocks"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
@@ -219,7 +264,7 @@ type GetEcsDisksOutputArgs struct {
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// The source snapshot id.
 	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
-	// The status of disk.
+	// The status of disk. Valid Values: `Attaching`, `Available`, `Creating`, `Detaching`, `In_use`, `Migrating`, `ReIniting`, `Transferring`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A map of tags assigned to the disks.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
@@ -254,35 +299,44 @@ func (o GetEcsDisksResultOutput) AdditionalAttributes() pulumi.StringArrayOutput
 	return o.ApplyT(func(v GetEcsDisksResult) []string { return v.AdditionalAttributes }).(pulumi.StringArrayOutput)
 }
 
+// Query cloud disks based on the automatic snapshot policy ID.
 func (o GetEcsDisksResultOutput) AutoSnapshotPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsDisksResult) *string { return v.AutoSnapshotPolicyId }).(pulumi.StringPtrOutput)
 }
 
+// Availability zone of the disk.
+//
 // Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
 func (o GetEcsDisksResultOutput) AvailabilityZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsDisksResult) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
 }
 
+// Disk category.
 func (o GetEcsDisksResultOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsDisksResult) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
+// Indicates whether the automatic snapshot is deleted when the disk is released.
 func (o GetEcsDisksResultOutput) DeleteAutoSnapshot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetEcsDisksResult) *bool { return v.DeleteAutoSnapshot }).(pulumi.BoolPtrOutput)
 }
 
+// Indicates whether the disk is released together with the instance.
 func (o GetEcsDisksResultOutput) DeleteWithInstance() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetEcsDisksResult) *bool { return v.DeleteWithInstance }).(pulumi.BoolPtrOutput)
 }
 
+// The disk name.
 func (o GetEcsDisksResultOutput) DiskName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsDisksResult) *string { return v.DiskName }).(pulumi.StringPtrOutput)
 }
 
+// The type of the disk.
 func (o GetEcsDisksResultOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsDisksResult) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ecs Disks. Each element contains the following attributes:
 func (o GetEcsDisksResultOutput) Disks() GetEcsDisksDiskArrayOutput {
 	return o.ApplyT(func(v GetEcsDisksResult) []GetEcsDisksDisk { return v.Disks }).(GetEcsDisksDiskArrayOutput)
 }
@@ -291,10 +345,12 @@ func (o GetEcsDisksResultOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetEcsDisksResult) *bool { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
+// Whether the disk implements an automatic snapshot policy.
 func (o GetEcsDisksResultOutput) EnableAutoSnapshot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetEcsDisksResult) *bool { return v.EnableAutoSnapshot }).(pulumi.BoolPtrOutput)
 }
 
+// Whether the disk implements an automatic snapshot policy.
 func (o GetEcsDisksResultOutput) EnableAutomatedSnapshotPolicy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetEcsDisksResult) *bool { return v.EnableAutomatedSnapshotPolicy }).(pulumi.BoolPtrOutput)
 }
@@ -303,6 +359,7 @@ func (o GetEcsDisksResultOutput) EnableShared() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetEcsDisksResult) *bool { return v.EnableShared }).(pulumi.BoolPtrOutput)
 }
 
+// Indicate whether the disk is encrypted or not.
 func (o GetEcsDisksResultOutput) Encrypted() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsDisksResult) *string { return v.Encrypted }).(pulumi.StringPtrOutput)
 }
@@ -316,10 +373,12 @@ func (o GetEcsDisksResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEcsDisksResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The instance ID of the disk mount.
 func (o GetEcsDisksResultOutput) InstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsDisksResult) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the KMS key that is used for the cloud disk.
 func (o GetEcsDisksResultOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsDisksResult) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
@@ -328,10 +387,12 @@ func (o GetEcsDisksResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsDisksResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Disk names.
 func (o GetEcsDisksResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEcsDisksResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
 
+// The reasons why the disk was locked.
 func (o GetEcsDisksResultOutput) OperationLocks() GetEcsDisksOperationLockArrayOutput {
 	return o.ApplyT(func(v GetEcsDisksResult) []GetEcsDisksOperationLock { return v.OperationLocks }).(GetEcsDisksOperationLockArrayOutput)
 }
@@ -348,26 +409,32 @@ func (o GetEcsDisksResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetEcsDisksResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
+// Payment method for disk.
 func (o GetEcsDisksResultOutput) PaymentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsDisksResult) *string { return v.PaymentType }).(pulumi.StringPtrOutput)
 }
 
+// Whether the disk is unmountable.
 func (o GetEcsDisksResultOutput) Portable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetEcsDisksResult) *bool { return v.Portable }).(pulumi.BoolPtrOutput)
 }
 
+// The Id of resource group.
 func (o GetEcsDisksResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsDisksResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
+// Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
 func (o GetEcsDisksResultOutput) SnapshotId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsDisksResult) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
 }
 
+// Current status.
 func (o GetEcsDisksResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsDisksResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// A map of tags assigned to the disk.
 func (o GetEcsDisksResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetEcsDisksResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -376,11 +443,14 @@ func (o GetEcsDisksResultOutput) TotalCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetEcsDisksResult) int { return v.TotalCount }).(pulumi.IntOutput)
 }
 
+// The type of the disk.
+//
 // Deprecated: Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.
 func (o GetEcsDisksResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsDisksResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// The zone id.
 func (o GetEcsDisksResultOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsDisksResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }

@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<int?> DesiredCapacity { get; private set; } = null!;
 
         /// <summary>
-        /// The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
+        /// The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 1800, Available since v1.240.0. Default value: 600
         /// </summary>
         [Output("launchExpirationTime")]
         public Output<int?> LaunchExpirationTime { get; private set; } = null!;
@@ -176,7 +176,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<int>? DesiredCapacity { get; set; }
 
         /// <summary>
-        /// The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
+        /// The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 1800, Available since v1.240.0. Default value: 600
         /// </summary>
         [Input("launchExpirationTime")]
         public Input<int>? LaunchExpirationTime { get; set; }
@@ -274,7 +274,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<int>? DesiredCapacity { get; set; }
 
         /// <summary>
-        /// The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
+        /// The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 1800, Available since v1.240.0. Default value: 600
         /// </summary>
         [Input("launchExpirationTime")]
         public Input<int>? LaunchExpirationTime { get; set; }

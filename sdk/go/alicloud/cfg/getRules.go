@@ -13,9 +13,7 @@ import (
 
 // This data source provides the Config Rules of the current Alibaba Cloud user.
 //
-// > **NOTE:**  Available in 1.99.0+.
-//
-// > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+// > **NOTE:** Available since v1.99.0.
 //
 // ## Example Usage
 //
@@ -99,7 +97,7 @@ type GetRulesResult struct {
 	RuleName *string `pulumi:"ruleName"`
 	// A list of Config Rules. Each element contains the following attributes:
 	Rules []GetRulesRule `pulumi:"rules"`
-	// (Available in 1.124.1+) The status of config rule.
+	// (Available since v1.124.1) The status of config rule.
 	Status *string `pulumi:"status"`
 }
 
@@ -202,7 +200,7 @@ func (o GetRulesResultOutput) Rules() GetRulesRuleArrayOutput {
 	return o.ApplyT(func(v GetRulesResult) []GetRulesRule { return v.Rules }).(GetRulesRuleArrayOutput)
 }
 
-// (Available in 1.124.1+) The status of config rule.
+// (Available since v1.124.1) The status of config rule.
 func (o GetRulesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRulesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

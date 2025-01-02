@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud
         /// <summary>
         /// This data source provides the Message Center Subscriptions of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// &gt; **NOTE:** Available since v1.135.0.
         /// 
         /// ## Example Usage
         /// 
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud
         /// <summary>
         /// This data source provides the Message Center Subscriptions of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// &gt; **NOTE:** Available since v1.135.0.
         /// 
         /// ## Example Usage
         /// 
@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud
         /// <summary>
         /// This data source provides the Message Center Subscriptions of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// &gt; **NOTE:** Available since v1.135.0.
         /// 
         /// ## Example Usage
         /// 
@@ -137,6 +137,9 @@ namespace Pulumi.AliCloud
         /// </summary>
         public readonly string Id;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Msc Sub Subscriptions. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetMscSubSubscriptionsSubscriptionResult> Subscriptions;
 
         [OutputConstructor]

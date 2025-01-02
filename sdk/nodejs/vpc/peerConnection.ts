@@ -5,9 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Vpc Peer Connection resource.
+ * Provides a Vpc Peer Peer Connection resource.
  *
- * For information about VPC Peer Connection and how to use it, see [What is Peer Connection](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createvpcpeer).
+ * Vpc peer connection.
+ *
+ * For information about Vpc Peer Peer Connection and how to use it, see [What is Peer Connection](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createvpcpeer).
  *
  * > **NOTE:** Available since v1.186.0.
  *
@@ -42,7 +44,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Vpc Peer Connection can be imported using the id, e.g.
+ * Vpc Peer Peer Connection can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:vpc/peerConnection:PeerConnection example <id>
@@ -77,25 +79,25 @@ export class PeerConnection extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
-     * - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
-     * - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
+     * The ID of the Alibaba Cloud account to which the accepter VPC belongs.
+     * - To create a VPC peering connection within your Alibaba Cloud account, enter the ID of your Alibaba Cloud account.
+     * - To create a VPC peering connection between your Alibaba Cloud account and another Alibaba Cloud account, enter the ID of the peer Alibaba Cloud account.
      *
-     * > **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
+     * > **NOTE:**   If the accepter is a RAM user, set `AcceptingAliUid` to the ID of the Alibaba Cloud account that created the RAM user.
      */
     public readonly acceptingAliUid!: pulumi.Output<number | undefined>;
     /**
-     * The region ID of the recipient of the VPC peering connection to be created.
-     * - When creating a VPC peer-to-peer connection in the same region, enter the same region ID as the region ID of the initiator.
-     * - When creating a cross-region VPC peer-to-peer connection, enter a region ID that is different from the region ID of the initiator.
+     * The region ID of the accepter VPC of the VPC peering connection that you want to create.
+     * - To create an intra-region VPC peering connection, enter a region ID that is the same as that of the requester VPC.
+     * - To create an inter-region VPC peering connection, enter a region ID that is different from that of the requester VPC.
      */
     public readonly acceptingRegionId!: pulumi.Output<string>;
     /**
-     * The VPC ID of the receiving end of the VPC peer connection.
+     * The ID of the accepter VPC.
      */
     public readonly acceptingVpcId!: pulumi.Output<string>;
     /**
-     * The bandwidth of the VPC peering connection to be modified. Unit: Mbps. The value range is an integer greater than 0.
+     * The bandwidth of the VPC peering connection. Unit: Mbit/s. The value must be an integer greater than 0. Before you specify this parameter, make sure that you create an inter-region VPC peering connection.
      */
     public readonly bandwidth!: pulumi.Output<number>;
     /**
@@ -103,37 +105,49 @@ export class PeerConnection extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * The description of the VPC peer connection to be created.
+     * The description of the VPC peering connection.
      *
-     * It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https.
+     * The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Whether to PreCheck only this request. Value:
+     * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
-     * Whether to forcibly delete the VPC peering connection. Value:
+     * Specifies whether to forcefully delete the VPC peering connection. Valid values:
      */
     public readonly forceDelete!: pulumi.Output<boolean | undefined>;
     /**
-     * The name of the resource.
+     * LinkType. Valid values: `Platinum`, `Gold`, `Silver`.
+     */
+    public readonly linkType!: pulumi.Output<string>;
+    /**
+     * The name of the VPC peering connection.
+     *
+     * The name must be 2 to 128 characters in length, and can contain digits, underscores (\_), and hyphens (-). It must start with a letter.
      */
     public readonly peerConnectionName!: pulumi.Output<string>;
     /**
-     * The ID of resource group.
+     * The region ID of the resource to which you want to create and add tags.
+     */
+    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    /**
+     * The ID of the new resource group.
+     *
+     * > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
-     * The status of the resource.
+     * The status of the resource
      */
     public readonly status!: pulumi.Output<string>;
     /**
-     * The tags of the resource.
+     * The tags of PrefixList.
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * You must create a VPC ID on the initiator of a VPC peer connection.
+     * The ID of the requester VPC or accepter VPC of the VPC peering connection that you want to query.
      */
     public readonly vpcId!: pulumi.Output<string>;
 
@@ -158,7 +172,9 @@ export class PeerConnection extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["dryRun"] = state ? state.dryRun : undefined;
             resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
+            resourceInputs["linkType"] = state ? state.linkType : undefined;
             resourceInputs["peerConnectionName"] = state ? state.peerConnectionName : undefined;
+            resourceInputs["regionId"] = state ? state.regionId : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -181,12 +197,14 @@ export class PeerConnection extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["dryRun"] = args ? args.dryRun : undefined;
             resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
+            resourceInputs["linkType"] = args ? args.linkType : undefined;
             resourceInputs["peerConnectionName"] = args ? args.peerConnectionName : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["regionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PeerConnection.__pulumiType, name, resourceInputs, opts);
@@ -198,25 +216,25 @@ export class PeerConnection extends pulumi.CustomResource {
  */
 export interface PeerConnectionState {
     /**
-     * The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
-     * - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
-     * - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
+     * The ID of the Alibaba Cloud account to which the accepter VPC belongs.
+     * - To create a VPC peering connection within your Alibaba Cloud account, enter the ID of your Alibaba Cloud account.
+     * - To create a VPC peering connection between your Alibaba Cloud account and another Alibaba Cloud account, enter the ID of the peer Alibaba Cloud account.
      *
-     * > **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
+     * > **NOTE:**   If the accepter is a RAM user, set `AcceptingAliUid` to the ID of the Alibaba Cloud account that created the RAM user.
      */
     acceptingAliUid?: pulumi.Input<number>;
     /**
-     * The region ID of the recipient of the VPC peering connection to be created.
-     * - When creating a VPC peer-to-peer connection in the same region, enter the same region ID as the region ID of the initiator.
-     * - When creating a cross-region VPC peer-to-peer connection, enter a region ID that is different from the region ID of the initiator.
+     * The region ID of the accepter VPC of the VPC peering connection that you want to create.
+     * - To create an intra-region VPC peering connection, enter a region ID that is the same as that of the requester VPC.
+     * - To create an inter-region VPC peering connection, enter a region ID that is different from that of the requester VPC.
      */
     acceptingRegionId?: pulumi.Input<string>;
     /**
-     * The VPC ID of the receiving end of the VPC peer connection.
+     * The ID of the accepter VPC.
      */
     acceptingVpcId?: pulumi.Input<string>;
     /**
-     * The bandwidth of the VPC peering connection to be modified. Unit: Mbps. The value range is an integer greater than 0.
+     * The bandwidth of the VPC peering connection. Unit: Mbit/s. The value must be an integer greater than 0. Before you specify this parameter, make sure that you create an inter-region VPC peering connection.
      */
     bandwidth?: pulumi.Input<number>;
     /**
@@ -224,37 +242,49 @@ export interface PeerConnectionState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * The description of the VPC peer connection to be created.
+     * The description of the VPC peering connection.
      *
-     * It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https.
+     * The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
      */
     description?: pulumi.Input<string>;
     /**
-     * Whether to PreCheck only this request. Value:
+     * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * Whether to forcibly delete the VPC peering connection. Value:
+     * Specifies whether to forcefully delete the VPC peering connection. Valid values:
      */
     forceDelete?: pulumi.Input<boolean>;
     /**
-     * The name of the resource.
+     * LinkType. Valid values: `Platinum`, `Gold`, `Silver`.
+     */
+    linkType?: pulumi.Input<string>;
+    /**
+     * The name of the VPC peering connection.
+     *
+     * The name must be 2 to 128 characters in length, and can contain digits, underscores (\_), and hyphens (-). It must start with a letter.
      */
     peerConnectionName?: pulumi.Input<string>;
     /**
-     * The ID of resource group.
+     * The region ID of the resource to which you want to create and add tags.
+     */
+    regionId?: pulumi.Input<string>;
+    /**
+     * The ID of the new resource group.
+     *
+     * > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource
      */
     status?: pulumi.Input<string>;
     /**
-     * The tags of the resource.
+     * The tags of PrefixList.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * You must create a VPC ID on the initiator of a VPC peer connection.
+     * The ID of the requester VPC or accepter VPC of the VPC peering connection that you want to query.
      */
     vpcId?: pulumi.Input<string>;
 }
@@ -264,59 +294,67 @@ export interface PeerConnectionState {
  */
 export interface PeerConnectionArgs {
     /**
-     * The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
-     * - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
-     * - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
+     * The ID of the Alibaba Cloud account to which the accepter VPC belongs.
+     * - To create a VPC peering connection within your Alibaba Cloud account, enter the ID of your Alibaba Cloud account.
+     * - To create a VPC peering connection between your Alibaba Cloud account and another Alibaba Cloud account, enter the ID of the peer Alibaba Cloud account.
      *
-     * > **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
+     * > **NOTE:**   If the accepter is a RAM user, set `AcceptingAliUid` to the ID of the Alibaba Cloud account that created the RAM user.
      */
     acceptingAliUid?: pulumi.Input<number>;
     /**
-     * The region ID of the recipient of the VPC peering connection to be created.
-     * - When creating a VPC peer-to-peer connection in the same region, enter the same region ID as the region ID of the initiator.
-     * - When creating a cross-region VPC peer-to-peer connection, enter a region ID that is different from the region ID of the initiator.
+     * The region ID of the accepter VPC of the VPC peering connection that you want to create.
+     * - To create an intra-region VPC peering connection, enter a region ID that is the same as that of the requester VPC.
+     * - To create an inter-region VPC peering connection, enter a region ID that is different from that of the requester VPC.
      */
     acceptingRegionId: pulumi.Input<string>;
     /**
-     * The VPC ID of the receiving end of the VPC peer connection.
+     * The ID of the accepter VPC.
      */
     acceptingVpcId: pulumi.Input<string>;
     /**
-     * The bandwidth of the VPC peering connection to be modified. Unit: Mbps. The value range is an integer greater than 0.
+     * The bandwidth of the VPC peering connection. Unit: Mbit/s. The value must be an integer greater than 0. Before you specify this parameter, make sure that you create an inter-region VPC peering connection.
      */
     bandwidth?: pulumi.Input<number>;
     /**
-     * The description of the VPC peer connection to be created.
+     * The description of the VPC peering connection.
      *
-     * It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https.
+     * The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
      */
     description?: pulumi.Input<string>;
     /**
-     * Whether to PreCheck only this request. Value:
+     * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * Whether to forcibly delete the VPC peering connection. Value:
+     * Specifies whether to forcefully delete the VPC peering connection. Valid values:
      */
     forceDelete?: pulumi.Input<boolean>;
     /**
-     * The name of the resource.
+     * LinkType. Valid values: `Platinum`, `Gold`, `Silver`.
+     */
+    linkType?: pulumi.Input<string>;
+    /**
+     * The name of the VPC peering connection.
+     *
+     * The name must be 2 to 128 characters in length, and can contain digits, underscores (\_), and hyphens (-). It must start with a letter.
      */
     peerConnectionName?: pulumi.Input<string>;
     /**
-     * The ID of resource group.
+     * The ID of the new resource group.
+     *
+     * > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource
      */
     status?: pulumi.Input<string>;
     /**
-     * The tags of the resource.
+     * The tags of PrefixList.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * You must create a VPC ID on the initiator of a VPC peer connection.
+     * The ID of the requester VPC or accepter VPC of the VPC peering connection that you want to query.
      */
     vpcId: pulumi.Input<string>;
 }

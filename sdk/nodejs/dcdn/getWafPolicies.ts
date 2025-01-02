@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Dcdn Waf Policies of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.184.0+.
+ * > **NOTE:** Available since v1.184.0.
  *
  * ## Example Usage
  *
@@ -70,14 +70,20 @@ export interface GetWafPoliciesResult {
     readonly nameRegex?: string;
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Dcdn Waf Policies. Each element contains the following attributes:
+     */
     readonly policies: outputs.dcdn.GetWafPoliciesPolicy[];
     readonly queryArgs?: string;
+    /**
+     * The status of the resource.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Dcdn Waf Policies of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.184.0+.
+ * > **NOTE:** Available since v1.184.0.
  *
  * ## Example Usage
  *

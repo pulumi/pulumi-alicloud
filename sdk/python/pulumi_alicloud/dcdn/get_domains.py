@@ -197,7 +197,7 @@ def get_domains(change_end_time: Optional[str] = None,
     """
     Provides a collection of DCDN Domains to the specified filters.
 
-    > **NOTE:** Available in 1.94.0+.
+    > **NOTE:** Available since 1.94.0.
 
     ## Example Usage
 
@@ -266,7 +266,7 @@ def get_domains_output(change_end_time: Optional[pulumi.Input[Optional[str]]] = 
     """
     Provides a collection of DCDN Domains to the specified filters.
 
-    > **NOTE:** Available in 1.94.0+.
+    > **NOTE:** Available since 1.94.0.
 
     ## Example Usage
 

@@ -171,11 +171,40 @@ def get_policies(enable_details: Optional[bool] = None,
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
+    import pulumi_random as random
 
-    policies_ds = alicloud.ram.get_policies(output_file="policies.txt",
-        user_name="user1",
-        group_name="group1",
-        type="System")
+    default = random.index.Integer("default",
+        min=10000,
+        max=99999)
+    group = alicloud.ram.Group("group",
+        name=f"groupName-{default['result']}",
+        comments="this is a group comments.")
+    policy = alicloud.ram.Policy("policy",
+        policy_name=f"tf-example-{default['result']}",
+        policy_document=\"\"\"    {
+          "Statement": [
+            {
+              "Action": [
+                "oss:ListObjects",
+                "oss:GetObject"
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                "acs:oss:*:*:mybucket",
+                "acs:oss:*:*:mybucket/*"
+              ]
+            }
+          ],
+            "Version": "1"
+        }
+    \"\"\",
+        description="this is a policy test")
+    attach = alicloud.ram.GroupPolicyAttachment("attach",
+        policy_name=policy.policy_name,
+        policy_type=policy.type,
+        group_name=group.name)
+    policies_ds = alicloud.ram.get_policies_output(group_name=attach.group_name,
+        type="Custom")
     pulumi.export("firstPolicyName", policies_ds.policies[0].name)
     ```
 
@@ -232,11 +261,40 @@ def get_policies_output(enable_details: Optional[pulumi.Input[Optional[bool]]] =
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
+    import pulumi_random as random
 
-    policies_ds = alicloud.ram.get_policies(output_file="policies.txt",
-        user_name="user1",
-        group_name="group1",
-        type="System")
+    default = random.index.Integer("default",
+        min=10000,
+        max=99999)
+    group = alicloud.ram.Group("group",
+        name=f"groupName-{default['result']}",
+        comments="this is a group comments.")
+    policy = alicloud.ram.Policy("policy",
+        policy_name=f"tf-example-{default['result']}",
+        policy_document=\"\"\"    {
+          "Statement": [
+            {
+              "Action": [
+                "oss:ListObjects",
+                "oss:GetObject"
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                "acs:oss:*:*:mybucket",
+                "acs:oss:*:*:mybucket/*"
+              ]
+            }
+          ],
+            "Version": "1"
+        }
+    \"\"\",
+        description="this is a policy test")
+    attach = alicloud.ram.GroupPolicyAttachment("attach",
+        policy_name=policy.policy_name,
+        policy_type=policy.type,
+        group_name=group.name)
+    policies_ds = alicloud.ram.get_policies_output(group_name=attach.group_name,
+        type="Custom")
     pulumi.export("firstPolicyName", policies_ds.policies[0].name)
     ```
 

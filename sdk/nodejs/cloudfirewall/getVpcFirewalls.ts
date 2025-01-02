@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://help.aliyun.com/document_detail/342932.html)
  *
- * > **NOTE:** Available in 1.194.0+
+ * > **NOTE:** Available since v1.194.0.
  *
  * ## Example Usage
  *
@@ -140,7 +140,7 @@ export interface GetVpcFirewallsResult {
 /**
  * This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://help.aliyun.com/document_detail/342932.html)
  *
- * > **NOTE:** Available in 1.194.0+
+ * > **NOTE:** Available since v1.194.0.
  *
  * ## Example Usage
  *

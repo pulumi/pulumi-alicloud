@@ -3,10 +3,12 @@
 
 package com.pulumi.alicloud.cr.inputs;
 
+import com.pulumi.alicloud.cr.inputs.RegistryEnterpriseInstanceInstanceEndpointArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -71,14 +73,14 @@ public final class RegistryEnterpriseInstanceState extends com.pulumi.resources.
     }
 
     /**
-     * Whether to use the default OSS Bucket
+     * Whether to use the default OSS Bucket. Value:
      * 
      */
     @Import(name="defaultOssBucket")
     private @Nullable Output<String> defaultOssBucket;
 
     /**
-     * @return Whether to use the default OSS Bucket
+     * @return Whether to use the default OSS Bucket. Value:
      * 
      */
     public Optional<Output<String>> defaultOssBucket() {
@@ -101,18 +103,37 @@ public final class RegistryEnterpriseInstanceState extends com.pulumi.resources.
     }
 
     /**
-     * Security scan engine
+     * The security scan engine used by the Enterprise Edition of Container Image Service. Value:
+     * - `ACR`: Uses the Trivy scan engine provided by default.
+     * - `SAS`: uses the enhanced cloud security scan engine.
      * 
      */
     @Import(name="imageScanner")
     private @Nullable Output<String> imageScanner;
 
     /**
-     * @return Security scan engine
+     * @return The security scan engine used by the Enterprise Edition of Container Image Service. Value:
+     * - `ACR`: Uses the Trivy scan engine provided by default.
+     * - `SAS`: uses the enhanced cloud security scan engine.
      * 
      */
     public Optional<Output<String>> imageScanner() {
         return Optional.ofNullable(this.imageScanner);
+    }
+
+    /**
+     * (Available since v1.240.0) Instance Network Access Endpoint List
+     * 
+     */
+    @Import(name="instanceEndpoints")
+    private @Nullable Output<List<RegistryEnterpriseInstanceInstanceEndpointArgs>> instanceEndpoints;
+
+    /**
+     * @return (Available since v1.240.0) Instance Network Access Endpoint List
+     * 
+     */
+    public Optional<Output<List<RegistryEnterpriseInstanceInstanceEndpointArgs>>> instanceEndpoints() {
+        return Optional.ofNullable(this.instanceEndpoints);
     }
 
     /**
@@ -132,12 +153,9 @@ public final class RegistryEnterpriseInstanceState extends com.pulumi.resources.
 
     /**
      * The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
-     * 
-     * Basic: Basic instance
-     * 
-     * Standard: Standard instance
-     * 
-     * Advanced: Advanced Edition Instance
+     * - `Basic`: Basic instance
+     * - `Standard`: Standard instance
+     * - `Advanced`: Advanced Edition Instance
      * 
      */
     @Import(name="instanceType")
@@ -145,12 +163,9 @@ public final class RegistryEnterpriseInstanceState extends com.pulumi.resources.
 
     /**
      * @return The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
-     * 
-     * Basic: Basic instance
-     * 
-     * Standard: Standard instance
-     * 
-     * Advanced: Advanced Edition Instance
+     * - `Basic`: Basic instance
+     * - `Standard`: Standard instance
+     * - `Advanced`: Advanced Edition Instance
      * 
      */
     public Optional<Output<String>> instanceType() {
@@ -188,14 +203,14 @@ public final class RegistryEnterpriseInstanceState extends com.pulumi.resources.
     }
 
     /**
-     * Permanent access credentials of the instance
+     * Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return Permanent access credentials of the instance
+     * @return Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
      * 
      */
     public Optional<Output<String>> password() {
@@ -338,6 +353,7 @@ public final class RegistryEnterpriseInstanceState extends com.pulumi.resources.
         this.defaultOssBucket = $.defaultOssBucket;
         this.endTime = $.endTime;
         this.imageScanner = $.imageScanner;
+        this.instanceEndpoints = $.instanceEndpoints;
         this.instanceName = $.instanceName;
         this.instanceType = $.instanceType;
         this.kmsEncryptedPassword = $.kmsEncryptedPassword;
@@ -442,7 +458,7 @@ public final class RegistryEnterpriseInstanceState extends com.pulumi.resources.
         }
 
         /**
-         * @param defaultOssBucket Whether to use the default OSS Bucket
+         * @param defaultOssBucket Whether to use the default OSS Bucket. Value:
          * 
          * @return builder
          * 
@@ -453,7 +469,7 @@ public final class RegistryEnterpriseInstanceState extends com.pulumi.resources.
         }
 
         /**
-         * @param defaultOssBucket Whether to use the default OSS Bucket
+         * @param defaultOssBucket Whether to use the default OSS Bucket. Value:
          * 
          * @return builder
          * 
@@ -484,7 +500,9 @@ public final class RegistryEnterpriseInstanceState extends com.pulumi.resources.
         }
 
         /**
-         * @param imageScanner Security scan engine
+         * @param imageScanner The security scan engine used by the Enterprise Edition of Container Image Service. Value:
+         * - `ACR`: Uses the Trivy scan engine provided by default.
+         * - `SAS`: uses the enhanced cloud security scan engine.
          * 
          * @return builder
          * 
@@ -495,13 +513,46 @@ public final class RegistryEnterpriseInstanceState extends com.pulumi.resources.
         }
 
         /**
-         * @param imageScanner Security scan engine
+         * @param imageScanner The security scan engine used by the Enterprise Edition of Container Image Service. Value:
+         * - `ACR`: Uses the Trivy scan engine provided by default.
+         * - `SAS`: uses the enhanced cloud security scan engine.
          * 
          * @return builder
          * 
          */
         public Builder imageScanner(String imageScanner) {
             return imageScanner(Output.of(imageScanner));
+        }
+
+        /**
+         * @param instanceEndpoints (Available since v1.240.0) Instance Network Access Endpoint List
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceEndpoints(@Nullable Output<List<RegistryEnterpriseInstanceInstanceEndpointArgs>> instanceEndpoints) {
+            $.instanceEndpoints = instanceEndpoints;
+            return this;
+        }
+
+        /**
+         * @param instanceEndpoints (Available since v1.240.0) Instance Network Access Endpoint List
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceEndpoints(List<RegistryEnterpriseInstanceInstanceEndpointArgs> instanceEndpoints) {
+            return instanceEndpoints(Output.of(instanceEndpoints));
+        }
+
+        /**
+         * @param instanceEndpoints (Available since v1.240.0) Instance Network Access Endpoint List
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceEndpoints(RegistryEnterpriseInstanceInstanceEndpointArgs... instanceEndpoints) {
+            return instanceEndpoints(List.of(instanceEndpoints));
         }
 
         /**
@@ -527,12 +578,9 @@ public final class RegistryEnterpriseInstanceState extends com.pulumi.resources.
 
         /**
          * @param instanceType The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
-         * 
-         * Basic: Basic instance
-         * 
-         * Standard: Standard instance
-         * 
-         * Advanced: Advanced Edition Instance
+         * - `Basic`: Basic instance
+         * - `Standard`: Standard instance
+         * - `Advanced`: Advanced Edition Instance
          * 
          * @return builder
          * 
@@ -544,12 +592,9 @@ public final class RegistryEnterpriseInstanceState extends com.pulumi.resources.
 
         /**
          * @param instanceType The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
-         * 
-         * Basic: Basic instance
-         * 
-         * Standard: Standard instance
-         * 
-         * Advanced: Advanced Edition Instance
+         * - `Basic`: Basic instance
+         * - `Standard`: Standard instance
+         * - `Advanced`: Advanced Edition Instance
          * 
          * @return builder
          * 
@@ -601,7 +646,7 @@ public final class RegistryEnterpriseInstanceState extends com.pulumi.resources.
         }
 
         /**
-         * @param password Permanent access credentials of the instance
+         * @param password Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
          * 
          * @return builder
          * 
@@ -612,7 +657,7 @@ public final class RegistryEnterpriseInstanceState extends com.pulumi.resources.
         }
 
         /**
-         * @param password Permanent access credentials of the instance
+         * @param password Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
          * 
          * @return builder
          * 

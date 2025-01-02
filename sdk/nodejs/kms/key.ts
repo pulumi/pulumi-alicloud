@@ -83,6 +83,14 @@ export class Key extends pulumi.CustomResource {
      */
     public /*out*/ readonly deleteDate!: pulumi.Output<string>;
     /**
+     * Specifies whether to enable deletion protection. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
+     */
+    public readonly deletionProtection!: pulumi.Output<string>;
+    /**
+     * The description of deletion protection. **NOTE:** `deletionProtectionDescription` takes effect only if `deletionProtection` is set to `Enabled`.
+     */
+    public readonly deletionProtectionDescription!: pulumi.Output<string | undefined>;
+    /**
      * Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
      *
      * @deprecated Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
@@ -141,8 +149,7 @@ export class Key extends pulumi.CustomResource {
      */
     public readonly origin!: pulumi.Output<string>;
     /**
-     * The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`.
-     * **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
+     * The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
      */
     public readonly pendingWindowInDays!: pulumi.Output<number | undefined>;
     /**
@@ -158,8 +165,7 @@ export class Key extends pulumi.CustomResource {
      */
     public readonly protectionLevel!: pulumi.Output<string | undefined>;
     /**
-     * The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval.
-     * **NOTE**: If `automaticRotation` is set to `Enabled`, `rotationInterval` is required.
+     * The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automaticRotation` is set to `Enabled`, `rotationInterval` is required.
      */
     public readonly rotationInterval!: pulumi.Output<string | undefined>;
     /**
@@ -189,6 +195,8 @@ export class Key extends pulumi.CustomResource {
             resourceInputs["creationDate"] = state ? state.creationDate : undefined;
             resourceInputs["creator"] = state ? state.creator : undefined;
             resourceInputs["deleteDate"] = state ? state.deleteDate : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
+            resourceInputs["deletionProtectionDescription"] = state ? state.deletionProtectionDescription : undefined;
             resourceInputs["deletionWindowInDays"] = state ? state.deletionWindowInDays : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["dkmsInstanceId"] = state ? state.dkmsInstanceId : undefined;
@@ -210,6 +218,8 @@ export class Key extends pulumi.CustomResource {
         } else {
             const args = argsOrState as KeyArgs | undefined;
             resourceInputs["automaticRotation"] = args ? args.automaticRotation : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
+            resourceInputs["deletionProtectionDescription"] = args ? args.deletionProtectionDescription : undefined;
             resourceInputs["deletionWindowInDays"] = args ? args.deletionWindowInDays : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["dkmsInstanceId"] = args ? args.dkmsInstanceId : undefined;
@@ -262,6 +272,14 @@ export interface KeyState {
      * The time at which the CMK is scheduled for deletion.
      */
     deleteDate?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable deletion protection. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
+     */
+    deletionProtection?: pulumi.Input<string>;
+    /**
+     * The description of deletion protection. **NOTE:** `deletionProtectionDescription` takes effect only if `deletionProtection` is set to `Enabled`.
+     */
+    deletionProtectionDescription?: pulumi.Input<string>;
     /**
      * Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
      *
@@ -321,8 +339,7 @@ export interface KeyState {
      */
     origin?: pulumi.Input<string>;
     /**
-     * The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`.
-     * **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
+     * The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
      */
     pendingWindowInDays?: pulumi.Input<number>;
     /**
@@ -338,8 +355,7 @@ export interface KeyState {
      */
     protectionLevel?: pulumi.Input<string>;
     /**
-     * The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval.
-     * **NOTE**: If `automaticRotation` is set to `Enabled`, `rotationInterval` is required.
+     * The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automaticRotation` is set to `Enabled`, `rotationInterval` is required.
      */
     rotationInterval?: pulumi.Input<string>;
     /**
@@ -360,6 +376,14 @@ export interface KeyArgs {
      * Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
      */
     automaticRotation?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable deletion protection. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
+     */
+    deletionProtection?: pulumi.Input<string>;
+    /**
+     * The description of deletion protection. **NOTE:** `deletionProtectionDescription` takes effect only if `deletionProtection` is set to `Enabled`.
+     */
+    deletionProtectionDescription?: pulumi.Input<string>;
     /**
      * Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
      *
@@ -407,8 +431,7 @@ export interface KeyArgs {
      */
     origin?: pulumi.Input<string>;
     /**
-     * The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`.
-     * **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
+     * The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
      */
     pendingWindowInDays?: pulumi.Input<number>;
     /**
@@ -420,8 +443,7 @@ export interface KeyArgs {
      */
     protectionLevel?: pulumi.Input<string>;
     /**
-     * The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval.
-     * **NOTE**: If `automaticRotation` is set to `Enabled`, `rotationInterval` is required.
+     * The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automaticRotation` is set to `Enabled`, `rotationInterval` is required.
      */
     rotationInterval?: pulumi.Input<string>;
     /**

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ga Additional Certificates of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.150.0+.
+ * > **NOTE:** Available since v1.150.0.
  *
  * ## Example Usage
  *
@@ -66,20 +66,29 @@ export interface GetAdditionalCertificatesArgs {
  * A collection of values returned by getAdditionalCertificates.
  */
 export interface GetAdditionalCertificatesResult {
+    /**
+     * The ID of the GA instance.
+     */
     readonly acceleratorId: string;
+    /**
+     * A list of Ga Additional Certificates. Each element contains the following attributes:
+     */
     readonly certificates: outputs.ga.GetAdditionalCertificatesCertificate[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * The ID of the listener. Only HTTPS listeners support this parameter.
+     */
     readonly listenerId: string;
     readonly outputFile?: string;
 }
 /**
  * This data source provides the Ga Additional Certificates of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.150.0+.
+ * > **NOTE:** Available since v1.150.0.
  *
  * ## Example Usage
  *

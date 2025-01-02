@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cloud Firewall Vpc Firewall Control Policies of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.194.0+.
+ * > **NOTE:** Available since v1.194.0.
  *
  * ## Example Usage
  *
@@ -113,9 +113,21 @@ export interface GetVpcFirewallControlPoliciesArgs {
  * A collection of values returned by getVpcFirewallControlPolicies.
  */
 export interface GetVpcFirewallControlPoliciesResult {
+    /**
+     * Access control over VPC firewalls are set in the access traffic via Alibaba cloud firewall way (ACT).
+     */
     readonly aclAction?: string;
+    /**
+     * Access control over VPC firewalls strategy unique identifier.
+     */
     readonly aclUuid?: string;
+    /**
+     * Access control over VPC firewalls description of the strategy information.
+     */
     readonly description?: string;
+    /**
+     * Access control over VPC firewalls strategy the destination address in.
+     */
     readonly destination?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -123,20 +135,38 @@ export interface GetVpcFirewallControlPoliciesResult {
     readonly id: string;
     readonly ids: string[];
     readonly lang?: string;
+    /**
+     * The UID of the member account of the current Alibaba cloud account.
+     */
     readonly memberUid?: string;
     readonly outputFile?: string;
     readonly pageNumber?: number;
     readonly pageSize?: number;
+    /**
+     * A list of Cloud Firewall Vpc Firewall Control Policies. Each element contains the following attributes:
+     */
     readonly policies: outputs.cloudfirewall.GetVpcFirewallControlPoliciesPolicy[];
+    /**
+     * Access control over VPC firewalls strategy access traffic of the protocol type.
+     */
     readonly proto?: string;
+    /**
+     * The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
+     */
     readonly release?: boolean;
+    /**
+     * Access control over VPC firewalls strategy in the source address.
+     */
     readonly source?: string;
+    /**
+     * The ID of the VPC firewall instance.
+     */
     readonly vpcFirewallId: string;
 }
 /**
  * This data source provides the Cloud Firewall Vpc Firewall Control Policies of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.194.0+.
+ * > **NOTE:** Available since v1.194.0.
  *
  * ## Example Usage
  *

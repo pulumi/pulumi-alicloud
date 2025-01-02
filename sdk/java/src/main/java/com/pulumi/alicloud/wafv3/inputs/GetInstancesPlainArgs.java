@@ -5,6 +5,7 @@ package com.pulumi.alicloud.wafv3.inputs;
 
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -13,6 +14,21 @@ import javax.annotation.Nullable;
 public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetInstancesPlainArgs Empty = new GetInstancesPlainArgs();
+
+    /**
+     * A list of WAF v3 instance IDs.
+     * 
+     */
+    @Import(name="ids")
+    private @Nullable List<String> ids;
+
+    /**
+     * @return A list of WAF v3 instance IDs.
+     * 
+     */
+    public Optional<List<String>> ids() {
+        return Optional.ofNullable(this.ids);
+    }
 
     /**
      * File name where to save data source results (after running `pulumi preview`).
@@ -32,6 +48,7 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
     private GetInstancesPlainArgs() {}
 
     private GetInstancesPlainArgs(GetInstancesPlainArgs $) {
+        this.ids = $.ids;
         this.outputFile = $.outputFile;
     }
 
@@ -51,6 +68,27 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
 
         public Builder(GetInstancesPlainArgs defaults) {
             $ = new GetInstancesPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param ids A list of WAF v3 instance IDs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ids(@Nullable List<String> ids) {
+            $.ids = ids;
+            return this;
+        }
+
+        /**
+         * @param ids A list of WAF v3 instance IDs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ids(String... ids) {
+            return ids(List.of(ids));
         }
 
         /**

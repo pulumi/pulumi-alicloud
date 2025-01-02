@@ -59,11 +59,17 @@ class GetAclsResult:
     @property
     @pulumi.getter(name="aclName")
     def acl_name(self) -> Optional[str]:
+        """
+        The name of the acl.
+        """
         return pulumi.get(self, "acl_name")
 
     @property
     @pulumi.getter
     def acls(self) -> Sequence['outputs.GetAclsAclResult']:
+        """
+        A list of Ga Acls. Each element contains the following attributes:
+        """
         return pulumi.get(self, "acls")
 
     @property
@@ -92,6 +98,9 @@ class GetAclsResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Acl names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -102,6 +111,9 @@ class GetAclsResult:
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        The status of the resource.
+        """
         return pulumi.get(self, "status")
 
 
@@ -132,7 +144,7 @@ def get_acls(acl_name: Optional[str] = None,
     """
     This data source provides the Ga Acls of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.150.0+.
+    > **NOTE:** Available since v1.150.0.
 
     ## Example Usage
 
@@ -186,7 +198,7 @@ def get_acls_output(acl_name: Optional[pulumi.Input[Optional[str]]] = None,
     """
     This data source provides the Ga Acls of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.150.0+.
+    > **NOTE:** Available since v1.150.0.
 
     ## Example Usage
 

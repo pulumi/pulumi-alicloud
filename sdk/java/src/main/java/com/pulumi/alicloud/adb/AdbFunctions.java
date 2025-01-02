@@ -373,7 +373,7 @@ public final class AdbFunctions {
     /**
      * This data source provides the Adb DBCluster Lake Versions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.190.0+.
+     * &gt; **NOTE:** Available since v1.190.0.
      * 
      * ## Example Usage
      * 
@@ -388,6 +388,12 @@ public final class AdbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.adb.AdbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.adb.DBClusterLakeVersion;
+     * import com.pulumi.alicloud.adb.DBClusterLakeVersionArgs;
      * import com.pulumi.alicloud.adb.inputs.GetDBClusterLakeVersionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -402,11 +408,33 @@ public final class AdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AdbFunctions.getDBClusterLakeVersions(GetDBClusterLakeVersionsArgs.builder()
-     *             .ids("example_id")
+     *         final var default = AdbFunctions.getZones();
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
      *             .build());
      * 
-     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult.versions()[0].id()));
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .zoneId(default_.ids()[0])
+     *             .build());
+     * 
+     *         var defaultDBClusterLakeVersion = new DBClusterLakeVersion("defaultDBClusterLakeVersion", DBClusterLakeVersionArgs.builder()
+     *             .dbClusterVersion("5.0")
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .zoneId(default_.ids()[0])
+     *             .computeResource("16ACU")
+     *             .storageResource("0ACU")
+     *             .paymentType("PayAsYouGo")
+     *             .enableDefaultResourceGroup(false)
+     *             .build());
+     * 
+     *         final var ids = AdbFunctions.getDBClusterLakeVersions(GetDBClusterLakeVersionsArgs.builder()
+     *             .ids(defaultDBClusterLakeVersion.id())
+     *             .build());
+     * 
+     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult).applyValue(ids -> ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult.versions()[0].id())));
      *     }
      * }
      * }
@@ -420,7 +448,7 @@ public final class AdbFunctions {
     /**
      * This data source provides the Adb DBCluster Lake Versions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.190.0+.
+     * &gt; **NOTE:** Available since v1.190.0.
      * 
      * ## Example Usage
      * 
@@ -435,6 +463,12 @@ public final class AdbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.adb.AdbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.adb.DBClusterLakeVersion;
+     * import com.pulumi.alicloud.adb.DBClusterLakeVersionArgs;
      * import com.pulumi.alicloud.adb.inputs.GetDBClusterLakeVersionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -449,11 +483,33 @@ public final class AdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AdbFunctions.getDBClusterLakeVersions(GetDBClusterLakeVersionsArgs.builder()
-     *             .ids("example_id")
+     *         final var default = AdbFunctions.getZones();
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
      *             .build());
      * 
-     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult.versions()[0].id()));
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .zoneId(default_.ids()[0])
+     *             .build());
+     * 
+     *         var defaultDBClusterLakeVersion = new DBClusterLakeVersion("defaultDBClusterLakeVersion", DBClusterLakeVersionArgs.builder()
+     *             .dbClusterVersion("5.0")
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .zoneId(default_.ids()[0])
+     *             .computeResource("16ACU")
+     *             .storageResource("0ACU")
+     *             .paymentType("PayAsYouGo")
+     *             .enableDefaultResourceGroup(false)
+     *             .build());
+     * 
+     *         final var ids = AdbFunctions.getDBClusterLakeVersions(GetDBClusterLakeVersionsArgs.builder()
+     *             .ids(defaultDBClusterLakeVersion.id())
+     *             .build());
+     * 
+     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult).applyValue(ids -> ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult.versions()[0].id())));
      *     }
      * }
      * }
@@ -467,7 +523,7 @@ public final class AdbFunctions {
     /**
      * This data source provides the Adb DBCluster Lake Versions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.190.0+.
+     * &gt; **NOTE:** Available since v1.190.0.
      * 
      * ## Example Usage
      * 
@@ -482,6 +538,12 @@ public final class AdbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.adb.AdbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.adb.DBClusterLakeVersion;
+     * import com.pulumi.alicloud.adb.DBClusterLakeVersionArgs;
      * import com.pulumi.alicloud.adb.inputs.GetDBClusterLakeVersionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -496,11 +558,33 @@ public final class AdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AdbFunctions.getDBClusterLakeVersions(GetDBClusterLakeVersionsArgs.builder()
-     *             .ids("example_id")
+     *         final var default = AdbFunctions.getZones();
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
      *             .build());
      * 
-     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult.versions()[0].id()));
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .zoneId(default_.ids()[0])
+     *             .build());
+     * 
+     *         var defaultDBClusterLakeVersion = new DBClusterLakeVersion("defaultDBClusterLakeVersion", DBClusterLakeVersionArgs.builder()
+     *             .dbClusterVersion("5.0")
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .zoneId(default_.ids()[0])
+     *             .computeResource("16ACU")
+     *             .storageResource("0ACU")
+     *             .paymentType("PayAsYouGo")
+     *             .enableDefaultResourceGroup(false)
+     *             .build());
+     * 
+     *         final var ids = AdbFunctions.getDBClusterLakeVersions(GetDBClusterLakeVersionsArgs.builder()
+     *             .ids(defaultDBClusterLakeVersion.id())
+     *             .build());
+     * 
+     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult).applyValue(ids -> ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult.versions()[0].id())));
      *     }
      * }
      * }
@@ -514,7 +598,7 @@ public final class AdbFunctions {
     /**
      * This data source provides the Adb DBCluster Lake Versions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.190.0+.
+     * &gt; **NOTE:** Available since v1.190.0.
      * 
      * ## Example Usage
      * 
@@ -529,6 +613,12 @@ public final class AdbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.adb.AdbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.adb.DBClusterLakeVersion;
+     * import com.pulumi.alicloud.adb.DBClusterLakeVersionArgs;
      * import com.pulumi.alicloud.adb.inputs.GetDBClusterLakeVersionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -543,11 +633,33 @@ public final class AdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AdbFunctions.getDBClusterLakeVersions(GetDBClusterLakeVersionsArgs.builder()
-     *             .ids("example_id")
+     *         final var default = AdbFunctions.getZones();
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
      *             .build());
      * 
-     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult.versions()[0].id()));
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .zoneId(default_.ids()[0])
+     *             .build());
+     * 
+     *         var defaultDBClusterLakeVersion = new DBClusterLakeVersion("defaultDBClusterLakeVersion", DBClusterLakeVersionArgs.builder()
+     *             .dbClusterVersion("5.0")
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .zoneId(default_.ids()[0])
+     *             .computeResource("16ACU")
+     *             .storageResource("0ACU")
+     *             .paymentType("PayAsYouGo")
+     *             .enableDefaultResourceGroup(false)
+     *             .build());
+     * 
+     *         final var ids = AdbFunctions.getDBClusterLakeVersions(GetDBClusterLakeVersionsArgs.builder()
+     *             .ids(defaultDBClusterLakeVersion.id())
+     *             .build());
+     * 
+     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult).applyValue(ids -> ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult.versions()[0].id())));
      *     }
      * }
      * }
@@ -561,7 +673,7 @@ public final class AdbFunctions {
     /**
      * This data source provides the Adb DBCluster Lake Versions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.190.0+.
+     * &gt; **NOTE:** Available since v1.190.0.
      * 
      * ## Example Usage
      * 
@@ -576,6 +688,12 @@ public final class AdbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.adb.AdbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.adb.DBClusterLakeVersion;
+     * import com.pulumi.alicloud.adb.DBClusterLakeVersionArgs;
      * import com.pulumi.alicloud.adb.inputs.GetDBClusterLakeVersionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -590,11 +708,33 @@ public final class AdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AdbFunctions.getDBClusterLakeVersions(GetDBClusterLakeVersionsArgs.builder()
-     *             .ids("example_id")
+     *         final var default = AdbFunctions.getZones();
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
      *             .build());
      * 
-     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult.versions()[0].id()));
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .zoneId(default_.ids()[0])
+     *             .build());
+     * 
+     *         var defaultDBClusterLakeVersion = new DBClusterLakeVersion("defaultDBClusterLakeVersion", DBClusterLakeVersionArgs.builder()
+     *             .dbClusterVersion("5.0")
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .zoneId(default_.ids()[0])
+     *             .computeResource("16ACU")
+     *             .storageResource("0ACU")
+     *             .paymentType("PayAsYouGo")
+     *             .enableDefaultResourceGroup(false)
+     *             .build());
+     * 
+     *         final var ids = AdbFunctions.getDBClusterLakeVersions(GetDBClusterLakeVersionsArgs.builder()
+     *             .ids(defaultDBClusterLakeVersion.id())
+     *             .build());
+     * 
+     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult).applyValue(ids -> ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult.versions()[0].id())));
      *     }
      * }
      * }
@@ -608,7 +748,7 @@ public final class AdbFunctions {
     /**
      * This data source provides the Adb DBCluster Lake Versions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.190.0+.
+     * &gt; **NOTE:** Available since v1.190.0.
      * 
      * ## Example Usage
      * 
@@ -623,6 +763,12 @@ public final class AdbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.adb.AdbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.adb.DBClusterLakeVersion;
+     * import com.pulumi.alicloud.adb.DBClusterLakeVersionArgs;
      * import com.pulumi.alicloud.adb.inputs.GetDBClusterLakeVersionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -637,11 +783,33 @@ public final class AdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AdbFunctions.getDBClusterLakeVersions(GetDBClusterLakeVersionsArgs.builder()
-     *             .ids("example_id")
+     *         final var default = AdbFunctions.getZones();
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
      *             .build());
      * 
-     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult.versions()[0].id()));
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .zoneId(default_.ids()[0])
+     *             .build());
+     * 
+     *         var defaultDBClusterLakeVersion = new DBClusterLakeVersion("defaultDBClusterLakeVersion", DBClusterLakeVersionArgs.builder()
+     *             .dbClusterVersion("5.0")
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .zoneId(default_.ids()[0])
+     *             .computeResource("16ACU")
+     *             .storageResource("0ACU")
+     *             .paymentType("PayAsYouGo")
+     *             .enableDefaultResourceGroup(false)
+     *             .build());
+     * 
+     *         final var ids = AdbFunctions.getDBClusterLakeVersions(GetDBClusterLakeVersionsArgs.builder()
+     *             .ids(defaultDBClusterLakeVersion.id())
+     *             .build());
+     * 
+     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult).applyValue(ids -> ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult.versions()[0].id())));
      *     }
      * }
      * }
@@ -655,7 +823,7 @@ public final class AdbFunctions {
     /**
      * This data source provides the Adb DBCluster Lake Versions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.190.0+.
+     * &gt; **NOTE:** Available since v1.190.0.
      * 
      * ## Example Usage
      * 
@@ -670,6 +838,12 @@ public final class AdbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.adb.AdbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.adb.DBClusterLakeVersion;
+     * import com.pulumi.alicloud.adb.DBClusterLakeVersionArgs;
      * import com.pulumi.alicloud.adb.inputs.GetDBClusterLakeVersionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -684,11 +858,33 @@ public final class AdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AdbFunctions.getDBClusterLakeVersions(GetDBClusterLakeVersionsArgs.builder()
-     *             .ids("example_id")
+     *         final var default = AdbFunctions.getZones();
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
      *             .build());
      * 
-     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult.versions()[0].id()));
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .zoneId(default_.ids()[0])
+     *             .build());
+     * 
+     *         var defaultDBClusterLakeVersion = new DBClusterLakeVersion("defaultDBClusterLakeVersion", DBClusterLakeVersionArgs.builder()
+     *             .dbClusterVersion("5.0")
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .zoneId(default_.ids()[0])
+     *             .computeResource("16ACU")
+     *             .storageResource("0ACU")
+     *             .paymentType("PayAsYouGo")
+     *             .enableDefaultResourceGroup(false)
+     *             .build());
+     * 
+     *         final var ids = AdbFunctions.getDBClusterLakeVersions(GetDBClusterLakeVersionsArgs.builder()
+     *             .ids(defaultDBClusterLakeVersion.id())
+     *             .build());
+     * 
+     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult).applyValue(ids -> ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult.versions()[0].id())));
      *     }
      * }
      * }

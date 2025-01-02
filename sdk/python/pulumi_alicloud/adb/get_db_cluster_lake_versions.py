@@ -92,16 +92,25 @@ class GetDBClusterLakeVersionsResult:
     @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[str]:
+        """
+        The ID of the resource group.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        The status of the resource.
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def versions(self) -> Sequence['outputs.GetDBClusterLakeVersionsVersionResult']:
+        """
+        A list of Adb Db Clusters. Each element contains the following attributes:
+        """
         return pulumi.get(self, "versions")
 
 
@@ -133,7 +142,7 @@ def get_db_cluster_lake_versions(enable_details: Optional[bool] = None,
     """
     This data source provides the Adb DBCluster Lake Versions of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.190.0+.
+    > **NOTE:** Available since v1.190.0.
 
     ## Example Usage
 
@@ -143,7 +152,20 @@ def get_db_cluster_lake_versions(enable_details: Optional[bool] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    ids = alicloud.adb.get_db_cluster_lake_versions(ids=["example_id"])
+    default = alicloud.adb.get_zones()
+    default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+    default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+        zone_id=default.ids[0])
+    default_db_cluster_lake_version = alicloud.adb.DBClusterLakeVersion("default",
+        db_cluster_version="5.0",
+        vpc_id=default_get_networks.ids[0],
+        vswitch_id=default_get_switches.ids[0],
+        zone_id=default.ids[0],
+        compute_resource="16ACU",
+        storage_resource="0ACU",
+        payment_type="PayAsYouGo",
+        enable_default_resource_group=False)
+    ids = alicloud.adb.get_db_cluster_lake_versions_output(ids=[default_db_cluster_lake_version.id])
     pulumi.export("adbDbClusterLakeVersionId1", ids.versions[0].id)
     ```
 
@@ -186,7 +208,7 @@ def get_db_cluster_lake_versions_output(enable_details: Optional[pulumi.Input[Op
     """
     This data source provides the Adb DBCluster Lake Versions of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.190.0+.
+    > **NOTE:** Available since v1.190.0.
 
     ## Example Usage
 
@@ -196,7 +218,20 @@ def get_db_cluster_lake_versions_output(enable_details: Optional[pulumi.Input[Op
     import pulumi
     import pulumi_alicloud as alicloud
 
-    ids = alicloud.adb.get_db_cluster_lake_versions(ids=["example_id"])
+    default = alicloud.adb.get_zones()
+    default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+    default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+        zone_id=default.ids[0])
+    default_db_cluster_lake_version = alicloud.adb.DBClusterLakeVersion("default",
+        db_cluster_version="5.0",
+        vpc_id=default_get_networks.ids[0],
+        vswitch_id=default_get_switches.ids[0],
+        zone_id=default.ids[0],
+        compute_resource="16ACU",
+        storage_resource="0ACU",
+        payment_type="PayAsYouGo",
+        enable_default_resource_group=False)
+    ids = alicloud.adb.get_db_cluster_lake_versions_output(ids=[default_db_cluster_lake_version.id])
     pulumi.export("adbDbClusterLakeVersionId1", ids.versions[0].id)
     ```
 

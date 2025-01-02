@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Global Accelerator (GA) Basic Endpoints of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.194.0+.
+// > **NOTE:** Available since v1.194.0.
 //
 // ## Example Usage
 //

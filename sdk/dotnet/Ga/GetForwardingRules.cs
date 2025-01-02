@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ga
         /// <summary>
         /// This data source provides the Global Accelerator (GA) Forwarding Rules of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.120.0+.
+        /// &gt; **NOTE:** Available since v1.120.0.
         /// 
         /// ## Example Usage
         /// 
@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.Ga
         /// <summary>
         /// This data source provides the Global Accelerator (GA) Forwarding Rules of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.120.0+.
+        /// &gt; **NOTE:** Available since v1.120.0.
         /// 
         /// ## Example Usage
         /// 
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Ga
         /// <summary>
         /// This data source provides the Global Accelerator (GA) Forwarding Rules of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.120.0+.
+        /// &gt; **NOTE:** Available since v1.120.0.
         /// 
         /// ## Example Usage
         /// 
@@ -217,12 +217,18 @@ namespace Pulumi.AliCloud.Ga
     public sealed class GetForwardingRulesResult
     {
         public readonly string AcceleratorId;
+        /// <summary>
+        /// A list of Ga Forwarding Rules. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetForwardingRulesForwardingRuleResult> ForwardingRules;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The ID of the listener.
+        /// </summary>
         public readonly string ListenerId;
         public readonly string? OutputFile;
         public readonly string? Status;

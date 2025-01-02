@@ -57,7 +57,7 @@ public final class GetPeerConnectionsConnection {
      */
     private String peerConnectionName;
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `Accepting`, `Activated`, `Creating`, `Deleted`, `Deleting`, `Expired`, `Rejected`, `Updating`.
      * 
      */
     private String status;
@@ -132,7 +132,7 @@ public final class GetPeerConnectionsConnection {
         return this.peerConnectionName;
     }
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `Accepting`, `Activated`, `Creating`, `Deleted`, `Deleting`, `Expired`, `Rejected`, `Updating`.
      * 
      */
     public String status() {

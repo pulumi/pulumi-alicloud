@@ -55,6 +55,9 @@ class GetVpcEndpointServiceResourcesResult:
     @property
     @pulumi.getter
     def ids(self) -> Sequence[str]:
+        """
+        A list of Vpc Endpoint Service Resource IDs.
+        """
         return pulumi.get(self, "ids")
 
     @property
@@ -65,6 +68,9 @@ class GetVpcEndpointServiceResourcesResult:
     @property
     @pulumi.getter
     def resources(self) -> Sequence['outputs.GetVpcEndpointServiceResourcesResourceResult']:
+        """
+        A list of Privatelink Vpc Endpoint Service Resources. Each element contains the following attributes:
+        """
         return pulumi.get(self, "resources")
 
     @property
@@ -92,7 +98,7 @@ def get_vpc_endpoint_service_resources(output_file: Optional[str] = None,
     """
     This data source provides the Privatelink Vpc Endpoint Service Resources of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.110.0+.
+    > **NOTE:** Available since v1.110.0.
 
     ## Example Usage
 
@@ -128,7 +134,7 @@ def get_vpc_endpoint_service_resources_output(output_file: Optional[pulumi.Input
     """
     This data source provides the Privatelink Vpc Endpoint Service Resources of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.110.0+.
+    > **NOTE:** Available since v1.110.0.
 
     ## Example Usage
 

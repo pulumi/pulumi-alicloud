@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * > **NOTE:** Available in v1.156.0+.
+ * > **NOTE:** Available since v1.156.0.
  *
  * ## Example Usage
  *
@@ -65,7 +65,7 @@ export interface GetMscSubContactVerificationMessageResult {
     readonly type: number;
 }
 /**
- * > **NOTE:** Available in v1.156.0+.
+ * > **NOTE:** Available since v1.156.0.
  *
  * ## Example Usage
  *

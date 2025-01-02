@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Message Center Contacts of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.132.0+.
+// > **NOTE:** Available since v1.132.0.
 //
 // ## Example Usage
 //
@@ -70,11 +70,13 @@ type GetMscSubContactsArgs struct {
 
 // A collection of values returned by getMscSubContacts.
 type GetMscSubContactsResult struct {
+	// A list of Msc Sub Contacts. Each element contains the following attributes:
 	Contacts []GetMscSubContactsContact `pulumi:"contacts"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Contact names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 }
@@ -117,6 +119,7 @@ func (o GetMscSubContactsResultOutput) ToGetMscSubContactsResultOutputWithContex
 	return o
 }
 
+// A list of Msc Sub Contacts. Each element contains the following attributes:
 func (o GetMscSubContactsResultOutput) Contacts() GetMscSubContactsContactArrayOutput {
 	return o.ApplyT(func(v GetMscSubContactsResult) []GetMscSubContactsContact { return v.Contacts }).(GetMscSubContactsContactArrayOutput)
 }
@@ -134,6 +137,7 @@ func (o GetMscSubContactsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMscSubContactsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Contact names.
 func (o GetMscSubContactsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetMscSubContactsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

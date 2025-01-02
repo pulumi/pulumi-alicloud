@@ -17,9 +17,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Vpc Peer Connection Accepter resource.
+ * Provides a Vpc Peer Peer Connection Accepter resource.
  * 
- * For information about Vpc Peer Connection Accepter and how to use it, see [What is Peer Connection Accepter](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpcpeer-2022-01-01-acceptvpcpeerconnection).
+ * Vpc peer connection receiver.
+ * 
+ * For information about Vpc Peer Peer Connection Accepter and how to use it, see [What is Peer Connection Accepter](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpcpeer-2022-01-01-acceptvpcpeerconnection).
  * 
  * &gt; **NOTE:** Available since v1.196.0.
  * 
@@ -92,7 +94,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Vpc Peer Connection Accepter can be imported using the id, e.g.
+ * Vpc Peer Peer Connection Accepter can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:vpc/peerConnectionAccepter:PeerConnectionAccepter example &lt;id&gt;
@@ -232,6 +234,20 @@ public class PeerConnectionAccepter extends com.pulumi.resources.CustomResource 
         return this.instanceId;
     }
     /**
+     * Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+     * 
+     */
+    @Export(name="linkType", refs={String.class}, tree="[0]")
+    private Output<String> linkType;
+
+    /**
+     * @return Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+     * 
+     */
+    public Output<String> linkType() {
+        return this.linkType;
+    }
+    /**
      * The new name of the VPC peering connection.
      * 
      * The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
@@ -248,6 +264,20 @@ public class PeerConnectionAccepter extends com.pulumi.resources.CustomResource 
      */
     public Output<String> peerConnectionAccepterName() {
         return this.peerConnectionAccepterName;
+    }
+    /**
+     * The ID of the region where you want to query VPC peering connections.
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return The ID of the region where you want to query VPC peering connections.
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
     }
     /**
      * The ID of the new resource group.

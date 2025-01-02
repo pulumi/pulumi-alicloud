@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Privatelink Vpc Endpoint Zones of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.111.0+.
+ * > **NOTE:** Available since v1.111.0.
  *
  * ## Example Usage
  *
@@ -61,15 +61,24 @@ export interface GetVpcEndpointZonesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of Vpc Endpoint Zone IDs.
+     */
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * The Status of Vpc Endpoint Zone..
+     */
     readonly status?: string;
+    /**
+     * A list of Privatelink Vpc Endpoint Zones. Each element contains the following attributes:
+     */
     readonly zones: outputs.privatelink.GetVpcEndpointZonesZone[];
 }
 /**
  * This data source provides the Privatelink Vpc Endpoint Zones of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.111.0+.
+ * > **NOTE:** Available since v1.111.0.
  *
  * ## Example Usage
  *

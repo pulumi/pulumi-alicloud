@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetScalingConfigurationsConfigurationDataDiskResult> DataDisks;
         /// <summary>
-        /// (Optional,Available in 1.143.0+) Hostname of an ECS instance.
+        /// (Optional,Available since v1.143.0) Hostname of an ECS instance.
         /// </summary>
         public readonly string HostName;
         /// <summary>
@@ -38,9 +38,13 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly string ImageId;
         /// <summary>
-        /// (Optional,Available in 1.143.0+) InstanceName of an ECS instance.
+        /// (Optional,Available since v1.143.0) InstanceName of an ECS instance.
         /// </summary>
         public readonly string InstanceName;
+        /// <summary>
+        /// (Optional, Available since v1.240.0) intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetScalingConfigurationsConfigurationInstancePatternInfoResult> InstancePatternInfos;
         /// <summary>
         /// Resource type of an ECS instance.
         /// </summary>
@@ -74,11 +78,11 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly string SecurityGroupId;
         /// <summary>
-        /// (Optional, Available in 1.151.0+) The maximum price hourly for instance types.
+        /// (Optional, Available since v1.151.0) The maximum price hourly for instance types.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetScalingConfigurationsConfigurationSpotPriceLimitResult> SpotPriceLimits;
         /// <summary>
-        /// (Optional, Available in 1.151.0+) The spot strategy for a Pay-As-You-Go instance.
+        /// (Optional, Available since v1.151.0) The spot strategy for a Pay-As-You-Go instance.
         /// </summary>
         public readonly string SpotStrategy;
         /// <summary>
@@ -109,6 +113,8 @@ namespace Pulumi.AliCloud.Ess.Outputs
             string imageId,
 
             string instanceName,
+
+            ImmutableArray<Outputs.GetScalingConfigurationsConfigurationInstancePatternInfoResult> instancePatternInfos,
 
             string instanceType,
 
@@ -143,6 +149,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
             Id = id;
             ImageId = imageId;
             InstanceName = instanceName;
+            InstancePatternInfos = instancePatternInfos;
             InstanceType = instanceType;
             InternetChargeType = internetChargeType;
             InternetMaxBandwidthIn = internetMaxBandwidthIn;

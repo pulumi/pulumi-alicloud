@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Sddp.Outputs
         /// </summary>
         public readonly int LogStoreDay;
         /// <summary>
-        /// The ID of the data asset.
+        /// The parent asset ID of the data asset.
         /// </summary>
         public readonly string ParentId;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Sddp.Outputs
         /// </summary>
         public readonly int Port;
         /// <summary>
-        /// The type of the service to which the data asset belongs.
+        /// The type of the service to which the data asset belongs. Valid values: `MaxCompute`, `OSS`, `RDS`.
         /// </summary>
         public readonly string ResourceType;
         /// <summary>

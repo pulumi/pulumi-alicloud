@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * This data source provides the Msc Sub Webhooks of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.141.0+.
+ * > **NOTE:** Available since v1.141.0.
  *
  * ## Example Usage
  *
@@ -67,14 +67,20 @@ export interface GetMscSubWebhooksResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Webhook names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Msc Sub Webhooks. Each element contains the following attributes:
+     */
     readonly webhooks: outputs.GetMscSubWebhooksWebhook[];
 }
 /**
  * This data source provides the Msc Sub Webhooks of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.141.0+.
+ * > **NOTE:** Available since v1.141.0.
  *
  * ## Example Usage
  *

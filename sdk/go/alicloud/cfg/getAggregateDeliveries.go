@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Config Aggregate Deliveries of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.172.0+.
+// > **NOTE:** Available since v1.172.0.
 //
 // ## Example Usage
 //
@@ -62,8 +62,9 @@ type GetAggregateDeliveriesArgs struct {
 	// The ID of the Aggregator.
 	AggregatorId string `pulumi:"aggregatorId"`
 	// A list of Aggregate Delivery IDs.
-	Ids       []string `pulumi:"ids"`
-	NameRegex *string  `pulumi:"nameRegex"`
+	Ids []string `pulumi:"ids"`
+	// A regex string to filter results by Aggregate Delivery name.
+	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
@@ -72,15 +73,19 @@ type GetAggregateDeliveriesArgs struct {
 
 // A collection of values returned by getAggregateDeliveries.
 type GetAggregateDeliveriesResult struct {
-	AggregatorId string                           `pulumi:"aggregatorId"`
-	Deliveries   []GetAggregateDeliveriesDelivery `pulumi:"deliveries"`
+	// The ID of the Aggregator.
+	AggregatorId string `pulumi:"aggregatorId"`
+	// A list of Config Aggregate Deliveries. Each element contains the following attributes:
+	Deliveries []GetAggregateDeliveriesDelivery `pulumi:"deliveries"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Aggregate Delivery names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	Status     *int     `pulumi:"status"`
+	// The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
+	Status *int `pulumi:"status"`
 }
 
 func GetAggregateDeliveriesOutput(ctx *pulumi.Context, args GetAggregateDeliveriesOutputArgs, opts ...pulumi.InvokeOption) GetAggregateDeliveriesResultOutput {
@@ -97,8 +102,9 @@ type GetAggregateDeliveriesOutputArgs struct {
 	// The ID of the Aggregator.
 	AggregatorId pulumi.StringInput `pulumi:"aggregatorId"`
 	// A list of Aggregate Delivery IDs.
-	Ids       pulumi.StringArrayInput `pulumi:"ids"`
-	NameRegex pulumi.StringPtrInput   `pulumi:"nameRegex"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Aggregate Delivery name.
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
@@ -124,10 +130,12 @@ func (o GetAggregateDeliveriesResultOutput) ToGetAggregateDeliveriesResultOutput
 	return o
 }
 
+// The ID of the Aggregator.
 func (o GetAggregateDeliveriesResultOutput) AggregatorId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAggregateDeliveriesResult) string { return v.AggregatorId }).(pulumi.StringOutput)
 }
 
+// A list of Config Aggregate Deliveries. Each element contains the following attributes:
 func (o GetAggregateDeliveriesResultOutput) Deliveries() GetAggregateDeliveriesDeliveryArrayOutput {
 	return o.ApplyT(func(v GetAggregateDeliveriesResult) []GetAggregateDeliveriesDelivery { return v.Deliveries }).(GetAggregateDeliveriesDeliveryArrayOutput)
 }
@@ -145,6 +153,7 @@ func (o GetAggregateDeliveriesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAggregateDeliveriesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Aggregate Delivery names.
 func (o GetAggregateDeliveriesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAggregateDeliveriesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -153,6 +162,7 @@ func (o GetAggregateDeliveriesResultOutput) OutputFile() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetAggregateDeliveriesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
 func (o GetAggregateDeliveriesResultOutput) Status() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetAggregateDeliveriesResult) *int { return v.Status }).(pulumi.IntPtrOutput)
 }

@@ -26,7 +26,7 @@ public final class GetVpcEndpointZonesZone {
      */
     private String id;
     /**
-     * @return The Status of Vpc Endpoint Zone..
+     * @return The Status of Vpc Endpoint Zone. Valid Values: `Connected`, `Connecting`, `Creating`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting` and `Wait`.
      * 
      */
     private String status;
@@ -69,7 +69,7 @@ public final class GetVpcEndpointZonesZone {
         return this.id;
     }
     /**
-     * @return The Status of Vpc Endpoint Zone..
+     * @return The Status of Vpc Endpoint Zone. Valid Values: `Connected`, `Connecting`, `Creating`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting` and `Wait`.
      * 
      */
     public String status() {

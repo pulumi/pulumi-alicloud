@@ -6449,7 +6449,7 @@ type GetPeerConnectionsConnection struct {
 	PeerConnectionId string `pulumi:"peerConnectionId"`
 	// The name of the resource.
 	PeerConnectionName string `pulumi:"peerConnectionName"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `Accepting`, `Activated`, `Creating`, `Deleted`, `Deleting`, `Expired`, `Rejected`, `Updating`.
 	Status string `pulumi:"status"`
 	// The ID of the requester VPC.
 	VpcId string `pulumi:"vpcId"`
@@ -6485,7 +6485,7 @@ type GetPeerConnectionsConnectionArgs struct {
 	PeerConnectionId pulumi.StringInput `pulumi:"peerConnectionId"`
 	// The name of the resource.
 	PeerConnectionName pulumi.StringInput `pulumi:"peerConnectionName"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `Accepting`, `Activated`, `Creating`, `Deleted`, `Deleting`, `Expired`, `Rejected`, `Updating`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The ID of the requester VPC.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
@@ -6587,7 +6587,7 @@ func (o GetPeerConnectionsConnectionOutput) PeerConnectionName() pulumi.StringOu
 	return o.ApplyT(func(v GetPeerConnectionsConnection) string { return v.PeerConnectionName }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The status of the resource. Valid values: `Accepting`, `Activated`, `Creating`, `Deleted`, `Deleting`, `Expired`, `Rejected`, `Updating`.
 func (o GetPeerConnectionsConnectionOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPeerConnectionsConnection) string { return v.Status }).(pulumi.StringOutput)
 }

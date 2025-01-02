@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Sddp Instances of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.136.0+.
+// > **NOTE:** Available since v1.136.0.
 //
 // ## Example Usage
 //
@@ -60,7 +60,8 @@ type GetInstancesArgs struct {
 // A collection of values returned by getInstances.
 type GetInstancesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                 `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// A list of Sddp Instances. Each element contains the following attributes:
 	Instances  []GetInstancesInstance `pulumi:"instances"`
 	OutputFile *string                `pulumi:"outputFile"`
 }
@@ -104,6 +105,7 @@ func (o GetInstancesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of Sddp Instances. Each element contains the following attributes:
 func (o GetInstancesResultOutput) Instances() GetInstancesInstanceArrayOutput {
 	return o.ApplyT(func(v GetInstancesResult) []GetInstancesInstance { return v.Instances }).(GetInstancesInstanceArrayOutput)
 }

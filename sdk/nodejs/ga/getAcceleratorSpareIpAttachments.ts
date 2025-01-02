@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ga Accelerator Spare Ip Attachments of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.167.0+.
+ * > **NOTE:** Available since v1.167.0.
  *
  * ## Example Usage
  *
@@ -65,7 +65,13 @@ export interface GetAcceleratorSpareIpAttachmentsArgs {
  * A collection of values returned by getAcceleratorSpareIpAttachments.
  */
 export interface GetAcceleratorSpareIpAttachmentsResult {
+    /**
+     * The ID of the global acceleration instance.
+     */
     readonly acceleratorId: string;
+    /**
+     * A list of Ga Accelerator Spare Ip Attachments. Each element contains the following attributes:
+     */
     readonly attachments: outputs.ga.GetAcceleratorSpareIpAttachmentsAttachment[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -73,12 +79,15 @@ export interface GetAcceleratorSpareIpAttachmentsResult {
     readonly id: string;
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * The status of the standby CNAME IP address. Valid values: `active`, `inuse`.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Ga Accelerator Spare Ip Attachments of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.167.0+.
+ * > **NOTE:** Available since v1.167.0.
  *
  * ## Example Usage
  *

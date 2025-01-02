@@ -293,14 +293,14 @@ public class V3Trigger extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="sourceArn", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> sourceArn;
+    private Output<String> sourceArn;
 
     /**
      * @return Trigger Event source ARN
      * 
      */
-    public Output<Optional<String>> sourceArn() {
-        return Codegen.optional(this.sourceArn);
+    public Output<String> sourceArn() {
+        return this.sourceArn;
     }
     /**
      * The state of the trigger

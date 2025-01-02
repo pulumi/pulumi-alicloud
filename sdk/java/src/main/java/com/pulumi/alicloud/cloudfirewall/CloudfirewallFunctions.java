@@ -693,7 +693,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://help.aliyun.com/document_detail/261237.html)
      * 
-     * &gt; **NOTE:** Available in 1.194.0+
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -738,7 +738,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://help.aliyun.com/document_detail/261237.html)
      * 
-     * &gt; **NOTE:** Available in 1.194.0+
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -783,7 +783,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://help.aliyun.com/document_detail/261237.html)
      * 
-     * &gt; **NOTE:** Available in 1.194.0+
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -828,7 +828,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://help.aliyun.com/document_detail/261237.html)
      * 
-     * &gt; **NOTE:** Available in 1.194.0+
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -873,7 +873,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://help.aliyun.com/document_detail/261237.html)
      * 
-     * &gt; **NOTE:** Available in 1.194.0+
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -918,7 +918,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://help.aliyun.com/document_detail/261237.html)
      * 
-     * &gt; **NOTE:** Available in 1.194.0+
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -963,7 +963,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://help.aliyun.com/document_detail/261237.html)
      * 
-     * &gt; **NOTE:** Available in 1.194.0+
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -1008,7 +1008,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides the Cloud Firewall Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.139.0+.
+     * &gt; **NOTE:** Available since v1.139.0.
      * 
      * ## Example Usage
      * 
@@ -1053,7 +1053,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides the Cloud Firewall Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.139.0+.
+     * &gt; **NOTE:** Available since v1.139.0.
      * 
      * ## Example Usage
      * 
@@ -1098,7 +1098,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides the Cloud Firewall Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.139.0+.
+     * &gt; **NOTE:** Available since v1.139.0.
      * 
      * ## Example Usage
      * 
@@ -1143,7 +1143,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides the Cloud Firewall Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.139.0+.
+     * &gt; **NOTE:** Available since v1.139.0.
      * 
      * ## Example Usage
      * 
@@ -1188,7 +1188,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides the Cloud Firewall Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.139.0+.
+     * &gt; **NOTE:** Available since v1.139.0.
      * 
      * ## Example Usage
      * 
@@ -1233,7 +1233,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides the Cloud Firewall Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.139.0+.
+     * &gt; **NOTE:** Available since v1.139.0.
      * 
      * ## Example Usage
      * 
@@ -1278,7 +1278,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides the Cloud Firewall Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.139.0+.
+     * &gt; **NOTE:** Available since v1.139.0.
      * 
      * ## Example Usage
      * 
@@ -1323,7 +1323,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides Cloud Firewall Vpc Firewall Cen available to the user.[What is Vpc Firewall Cen](https://www.alibabacloud.com/help/en/cloud-firewall/latest/describevpcfirewallcenlist)
      * 
-     * &gt; **NOTE:** Available in 1.194.0+
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -1372,7 +1372,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides Cloud Firewall Vpc Firewall Cen available to the user.[What is Vpc Firewall Cen](https://www.alibabacloud.com/help/en/cloud-firewall/latest/describevpcfirewallcenlist)
      * 
-     * &gt; **NOTE:** Available in 1.194.0+
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -1421,7 +1421,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides Cloud Firewall Vpc Firewall Cen available to the user.[What is Vpc Firewall Cen](https://www.alibabacloud.com/help/en/cloud-firewall/latest/describevpcfirewallcenlist)
      * 
-     * &gt; **NOTE:** Available in 1.194.0+
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -1470,7 +1470,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides Cloud Firewall Vpc Firewall Cen available to the user.[What is Vpc Firewall Cen](https://www.alibabacloud.com/help/en/cloud-firewall/latest/describevpcfirewallcenlist)
      * 
-     * &gt; **NOTE:** Available in 1.194.0+
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -1519,7 +1519,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides Cloud Firewall Vpc Firewall Cen available to the user.[What is Vpc Firewall Cen](https://www.alibabacloud.com/help/en/cloud-firewall/latest/describevpcfirewallcenlist)
      * 
-     * &gt; **NOTE:** Available in 1.194.0+
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -1568,7 +1568,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides Cloud Firewall Vpc Firewall Cen available to the user.[What is Vpc Firewall Cen](https://www.alibabacloud.com/help/en/cloud-firewall/latest/describevpcfirewallcenlist)
      * 
-     * &gt; **NOTE:** Available in 1.194.0+
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -1617,7 +1617,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides Cloud Firewall Vpc Firewall Cen available to the user.[What is Vpc Firewall Cen](https://www.alibabacloud.com/help/en/cloud-firewall/latest/describevpcfirewallcenlist)
      * 
-     * &gt; **NOTE:** Available in 1.194.0+
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -1666,7 +1666,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides the Cloud Firewall Vpc Firewall Control Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.194.0+.
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -1716,7 +1716,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides the Cloud Firewall Vpc Firewall Control Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.194.0+.
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -1766,7 +1766,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides the Cloud Firewall Vpc Firewall Control Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.194.0+.
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -1816,7 +1816,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides the Cloud Firewall Vpc Firewall Control Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.194.0+.
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -1866,7 +1866,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides the Cloud Firewall Vpc Firewall Control Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.194.0+.
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -1916,7 +1916,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://help.aliyun.com/document_detail/342932.html)
      * 
-     * &gt; **NOTE:** Available in 1.194.0+
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -1964,7 +1964,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://help.aliyun.com/document_detail/342932.html)
      * 
-     * &gt; **NOTE:** Available in 1.194.0+
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -2012,7 +2012,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://help.aliyun.com/document_detail/342932.html)
      * 
-     * &gt; **NOTE:** Available in 1.194.0+
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -2060,7 +2060,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://help.aliyun.com/document_detail/342932.html)
      * 
-     * &gt; **NOTE:** Available in 1.194.0+
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -2108,7 +2108,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://help.aliyun.com/document_detail/342932.html)
      * 
-     * &gt; **NOTE:** Available in 1.194.0+
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -2156,7 +2156,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://help.aliyun.com/document_detail/342932.html)
      * 
-     * &gt; **NOTE:** Available in 1.194.0+
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -2204,7 +2204,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://help.aliyun.com/document_detail/342932.html)
      * 
-     * &gt; **NOTE:** Available in 1.194.0+
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 

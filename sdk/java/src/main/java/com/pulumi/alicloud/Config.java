@@ -34,6 +34,9 @@ public final class Config {
     public Optional<String> accountId() {
         return Codegen.stringProp("accountId").config(config).get();
     }
+    public Optional<String> accountType() {
+        return Codegen.stringProp("accountType").config(config).get();
+    }
     public Optional<AssumeRole> assumeRole() {
         return Codegen.objectProp("assumeRole", AssumeRole.class).config(config).get();
     }

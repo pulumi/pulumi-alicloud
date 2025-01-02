@@ -54,7 +54,7 @@ public final class GetListenersListener {
      */
     private String protocol;
     /**
-     * @return The status of the listener.
+     * @return The status of the listener. Valid values: `active`, `configuring`, `creating`.
      * 
      */
     private String status;
@@ -117,7 +117,7 @@ public final class GetListenersListener {
         return this.protocol;
     }
     /**
-     * @return The status of the listener.
+     * @return The status of the listener. Valid values: `active`, `configuring`, `creating`.
      * 
      */
     public String status() {

@@ -15,6 +15,10 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'AccessPointPublicAccessBlockConfigurationArgs',
+    'AccessPointPublicAccessBlockConfigurationArgsDict',
+    'AccessPointVpcConfigurationArgs',
+    'AccessPointVpcConfigurationArgsDict',
     'BucketAccessMonitorArgs',
     'BucketAccessMonitorArgsDict',
     'BucketCnameCertificateArgs',
@@ -102,6 +106,70 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class AccessPointPublicAccessBlockConfigurationArgsDict(TypedDict):
+        block_public_access: NotRequired[pulumi.Input[bool]]
+        """
+        Block public access enabled for access point
+        """
+elif False:
+    AccessPointPublicAccessBlockConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPointPublicAccessBlockConfigurationArgs:
+    def __init__(__self__, *,
+                 block_public_access: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] block_public_access: Block public access enabled for access point
+        """
+        if block_public_access is not None:
+            pulumi.set(__self__, "block_public_access", block_public_access)
+
+    @property
+    @pulumi.getter(name="blockPublicAccess")
+    def block_public_access(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Block public access enabled for access point
+        """
+        return pulumi.get(self, "block_public_access")
+
+    @block_public_access.setter
+    def block_public_access(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "block_public_access", value)
+
+
+if not MYPY:
+    class AccessPointVpcConfigurationArgsDict(TypedDict):
+        vpc_id: NotRequired[pulumi.Input[str]]
+        """
+        The vpc ID is required only when the value of NetworkOrigin is VPC.
+        """
+elif False:
+    AccessPointVpcConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPointVpcConfigurationArgs:
+    def __init__(__self__, *,
+                 vpc_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] vpc_id: The vpc ID is required only when the value of NetworkOrigin is VPC.
+        """
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The vpc ID is required only when the value of NetworkOrigin is VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
+
 
 if not MYPY:
     class BucketAccessMonitorArgsDict(TypedDict):

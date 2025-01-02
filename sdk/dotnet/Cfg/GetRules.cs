@@ -14,9 +14,7 @@ namespace Pulumi.AliCloud.Cfg
         /// <summary>
         /// This data source provides the Config Rules of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:**  Available in 1.99.0+.
-        /// 
-        /// &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+        /// &gt; **NOTE:** Available since v1.99.0.
         /// 
         /// ## Example Usage
         /// 
@@ -50,9 +48,7 @@ namespace Pulumi.AliCloud.Cfg
         /// <summary>
         /// This data source provides the Config Rules of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:**  Available in 1.99.0+.
-        /// 
-        /// &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+        /// &gt; **NOTE:** Available since v1.99.0.
         /// 
         /// ## Example Usage
         /// 
@@ -86,9 +82,7 @@ namespace Pulumi.AliCloud.Cfg
         /// <summary>
         /// This data source provides the Config Rules of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:**  Available in 1.99.0+.
-        /// 
-        /// &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+        /// &gt; **NOTE:** Available since v1.99.0.
         /// 
         /// ## Example Usage
         /// 
@@ -281,7 +275,7 @@ namespace Pulumi.AliCloud.Cfg
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRulesRuleResult> Rules;
         /// <summary>
-        /// (Available in 1.124.1+) The status of config rule.
+        /// (Available since v1.124.1) The status of config rule.
         /// </summary>
         public readonly string? Status;
 

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Config Aggregate Compliance Packs of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.124.0+.
+ * > **NOTE:** Available since v1.124.0.
  *
  * ## Example Usage
  *
@@ -98,7 +98,7 @@ export interface GetAggregateCompliancePacksResult {
 /**
  * This data source provides the Config Aggregate Compliance Packs of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.124.0+.
+ * > **NOTE:** Available since v1.124.0.
  *
  * ## Example Usage
  *

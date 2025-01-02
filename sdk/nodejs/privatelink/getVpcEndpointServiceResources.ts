@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Privatelink Vpc Endpoint Service Resources of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.110.0+.
+ * > **NOTE:** Available since v1.110.0.
  *
  * ## Example Usage
  *
@@ -55,15 +55,21 @@ export interface GetVpcEndpointServiceResourcesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of Vpc Endpoint Service Resource IDs.
+     */
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Privatelink Vpc Endpoint Service Resources. Each element contains the following attributes:
+     */
     readonly resources: outputs.privatelink.GetVpcEndpointServiceResourcesResource[];
     readonly serviceId: string;
 }
 /**
  * This data source provides the Privatelink Vpc Endpoint Service Resources of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.110.0+.
+ * > **NOTE:** Available since v1.110.0.
  *
  * ## Example Usage
  *

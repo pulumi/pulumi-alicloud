@@ -120,7 +120,7 @@ type GetCertificatesCertificate struct {
 	CertificateName string `pulumi:"certificateName"`
 	// Certificate bound to the domain name.
 	CommonName string `pulumi:"commonName"`
-	// The domain that you want to add to WAF.
+	// WAF domain name.
 	Domain string `pulumi:"domain"`
 	// The ID of the Certificate.
 	Id string `pulumi:"id"`
@@ -148,7 +148,7 @@ type GetCertificatesCertificateArgs struct {
 	CertificateName pulumi.StringInput `pulumi:"certificateName"`
 	// Certificate bound to the domain name.
 	CommonName pulumi.StringInput `pulumi:"commonName"`
-	// The domain that you want to add to WAF.
+	// WAF domain name.
 	Domain pulumi.StringInput `pulumi:"domain"`
 	// The ID of the Certificate.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -224,7 +224,7 @@ func (o GetCertificatesCertificateOutput) CommonName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.CommonName }).(pulumi.StringOutput)
 }
 
-// The domain that you want to add to WAF.
+// WAF domain name.
 func (o GetCertificatesCertificateOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.Domain }).(pulumi.StringOutput)
 }

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Privatelink Vpc Endpoint Connections of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.110.0+.
+ * > **NOTE:** Available since v1.110.0.
  *
  * ## Example Usage
  *
@@ -67,22 +67,34 @@ export interface GetVpcEndpointConnectionsArgs {
  * A collection of values returned by getVpcEndpointConnections.
  */
 export interface GetVpcEndpointConnectionsResult {
+    /**
+     * A list of Privatelink Vpc Endpoint Connections. Each element contains the following attributes:
+     */
     readonly connections: outputs.privatelink.GetVpcEndpointConnectionsConnection[];
+    /**
+     * The ID of the Vpc Endpoint.
+     */
     readonly endpointId?: string;
     readonly endpointOwnerId?: number;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of Vpc Endpoint Connection IDs.
+     */
     readonly ids: string[];
     readonly outputFile?: string;
     readonly serviceId: string;
+    /**
+     * The status of Vpc Endpoint Connection.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Privatelink Vpc Endpoint Connections of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.110.0+.
+ * > **NOTE:** Available since v1.110.0.
  *
  * ## Example Usage
  *

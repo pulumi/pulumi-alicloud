@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ess.outputs;
 
 import com.pulumi.alicloud.ess.outputs.GetScalingConfigurationsConfigurationDataDisk;
+import com.pulumi.alicloud.ess.outputs.GetScalingConfigurationsConfigurationInstancePatternInfo;
 import com.pulumi.alicloud.ess.outputs.GetScalingConfigurationsConfigurationSpotPriceLimit;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -30,7 +31,7 @@ public final class GetScalingConfigurationsConfiguration {
      */
     private List<GetScalingConfigurationsConfigurationDataDisk> dataDisks;
     /**
-     * @return (Optional,Available in 1.143.0+) Hostname of an ECS instance.
+     * @return (Optional,Available since v1.143.0) Hostname of an ECS instance.
      * 
      */
     private String hostName;
@@ -45,10 +46,15 @@ public final class GetScalingConfigurationsConfiguration {
      */
     private String imageId;
     /**
-     * @return (Optional,Available in 1.143.0+) InstanceName of an ECS instance.
+     * @return (Optional,Available since v1.143.0) InstanceName of an ECS instance.
      * 
      */
     private String instanceName;
+    /**
+     * @return (Optional, Available since v1.240.0) intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.
+     * 
+     */
+    private List<GetScalingConfigurationsConfigurationInstancePatternInfo> instancePatternInfos;
     /**
      * @return Resource type of an ECS instance.
      * 
@@ -90,12 +96,12 @@ public final class GetScalingConfigurationsConfiguration {
      */
     private String securityGroupId;
     /**
-     * @return (Optional, Available in 1.151.0+) The maximum price hourly for instance types.
+     * @return (Optional, Available since v1.151.0) The maximum price hourly for instance types.
      * 
      */
     private List<GetScalingConfigurationsConfigurationSpotPriceLimit> spotPriceLimits;
     /**
-     * @return (Optional, Available in 1.151.0+) The spot strategy for a Pay-As-You-Go instance.
+     * @return (Optional, Available since v1.151.0) The spot strategy for a Pay-As-You-Go instance.
      * 
      */
     private String spotStrategy;
@@ -138,7 +144,7 @@ public final class GetScalingConfigurationsConfiguration {
         return this.dataDisks;
     }
     /**
-     * @return (Optional,Available in 1.143.0+) Hostname of an ECS instance.
+     * @return (Optional,Available since v1.143.0) Hostname of an ECS instance.
      * 
      */
     public String hostName() {
@@ -159,11 +165,18 @@ public final class GetScalingConfigurationsConfiguration {
         return this.imageId;
     }
     /**
-     * @return (Optional,Available in 1.143.0+) InstanceName of an ECS instance.
+     * @return (Optional,Available since v1.143.0) InstanceName of an ECS instance.
      * 
      */
     public String instanceName() {
         return this.instanceName;
+    }
+    /**
+     * @return (Optional, Available since v1.240.0) intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.
+     * 
+     */
+    public List<GetScalingConfigurationsConfigurationInstancePatternInfo> instancePatternInfos() {
+        return this.instancePatternInfos;
     }
     /**
      * @return Resource type of an ECS instance.
@@ -222,14 +235,14 @@ public final class GetScalingConfigurationsConfiguration {
         return this.securityGroupId;
     }
     /**
-     * @return (Optional, Available in 1.151.0+) The maximum price hourly for instance types.
+     * @return (Optional, Available since v1.151.0) The maximum price hourly for instance types.
      * 
      */
     public List<GetScalingConfigurationsConfigurationSpotPriceLimit> spotPriceLimits() {
         return this.spotPriceLimits;
     }
     /**
-     * @return (Optional, Available in 1.151.0+) The spot strategy for a Pay-As-You-Go instance.
+     * @return (Optional, Available since v1.151.0) The spot strategy for a Pay-As-You-Go instance.
      * 
      */
     public String spotStrategy() {
@@ -273,6 +286,7 @@ public final class GetScalingConfigurationsConfiguration {
         private String id;
         private String imageId;
         private String instanceName;
+        private List<GetScalingConfigurationsConfigurationInstancePatternInfo> instancePatternInfos;
         private String instanceType;
         private String internetChargeType;
         private Integer internetMaxBandwidthIn;
@@ -296,6 +310,7 @@ public final class GetScalingConfigurationsConfiguration {
     	      this.id = defaults.id;
     	      this.imageId = defaults.imageId;
     	      this.instanceName = defaults.instanceName;
+    	      this.instancePatternInfos = defaults.instancePatternInfos;
     	      this.instanceType = defaults.instanceType;
     	      this.internetChargeType = defaults.internetChargeType;
     	      this.internetMaxBandwidthIn = defaults.internetMaxBandwidthIn;
@@ -369,6 +384,17 @@ public final class GetScalingConfigurationsConfiguration {
             }
             this.instanceName = instanceName;
             return this;
+        }
+        @CustomType.Setter
+        public Builder instancePatternInfos(List<GetScalingConfigurationsConfigurationInstancePatternInfo> instancePatternInfos) {
+            if (instancePatternInfos == null) {
+              throw new MissingRequiredPropertyException("GetScalingConfigurationsConfiguration", "instancePatternInfos");
+            }
+            this.instancePatternInfos = instancePatternInfos;
+            return this;
+        }
+        public Builder instancePatternInfos(GetScalingConfigurationsConfigurationInstancePatternInfo... instancePatternInfos) {
+            return instancePatternInfos(List.of(instancePatternInfos));
         }
         @CustomType.Setter
         public Builder instanceType(String instanceType) {
@@ -486,6 +512,7 @@ public final class GetScalingConfigurationsConfiguration {
             _resultValue.id = id;
             _resultValue.imageId = imageId;
             _resultValue.instanceName = instanceName;
+            _resultValue.instancePatternInfos = instancePatternInfos;
             _resultValue.instanceType = instanceType;
             _resultValue.internetChargeType = internetChargeType;
             _resultValue.internetMaxBandwidthIn = internetMaxBandwidthIn;

@@ -68,6 +68,9 @@ class GetVpcEndpointsResult:
     @property
     @pulumi.getter(name="connectionStatus")
     def connection_status(self) -> Optional[str]:
+        """
+        The status of Connection.
+        """
         return pulumi.get(self, "connection_status")
 
     @property
@@ -78,6 +81,9 @@ class GetVpcEndpointsResult:
     @property
     @pulumi.getter
     def endpoints(self) -> Sequence['outputs.GetVpcEndpointsEndpointResult']:
+        """
+        A list of Privatelink Vpc Endpoints. Each element contains the following attributes:
+        """
         return pulumi.get(self, "endpoints")
 
     @property
@@ -101,6 +107,9 @@ class GetVpcEndpointsResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Vpc Endpoint names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -111,21 +120,33 @@ class GetVpcEndpointsResult:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[str]:
+        """
+        The name of the terminal node service associated with the terminal node.
+        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        The status of Vpc Endpoint.
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="vpcEndpointName")
     def vpc_endpoint_name(self) -> Optional[str]:
+        """
+        The name of Vpc Endpoint.
+        """
         return pulumi.get(self, "vpc_endpoint_name")
 
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[str]:
+        """
+        The private network to which the terminal node belongs.
+        """
         return pulumi.get(self, "vpc_id")
 
 
@@ -162,7 +183,7 @@ def get_vpc_endpoints(connection_status: Optional[str] = None,
     """
     This data source provides the Privatelink Vpc Endpoints of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.109.0+.
+    > **NOTE:** Available since v1.109.0.
 
     ## Example Usage
 
@@ -227,7 +248,7 @@ def get_vpc_endpoints_output(connection_status: Optional[pulumi.Input[Optional[s
     """
     This data source provides the Privatelink Vpc Endpoints of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.109.0+.
+    > **NOTE:** Available since v1.109.0.
 
     ## Example Usage
 

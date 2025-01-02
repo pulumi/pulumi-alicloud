@@ -17,7 +17,13 @@ namespace Pulumi.AliCloud.KVStore.Outputs
         /// The type of the architecture. Valid values: `cluster`, `standard` and `SplitRW`.
         /// </summary>
         public readonly string ArchitectureType;
+        /// <summary>
+        /// Indicates whether auto-renewal is enabled for the instance.
+        /// </summary>
         public readonly bool AutoRenew;
+        /// <summary>
+        /// The duration for which the instance is automatically renewed. Unit: months.
+        /// </summary>
         public readonly int AutoRenewPeriod;
         /// <summary>
         /// It has been deprecated from provider version 1.101.0 and `zone_id` instead.
@@ -28,7 +34,7 @@ namespace Pulumi.AliCloud.KVStore.Outputs
         /// </summary>
         public readonly int Bandwidth;
         /// <summary>
-        /// Capacity of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. Unit: MB.
+        /// Capacity of the applied Tair (Redis OSS-Compatible) And Memcached (KVStore) Classic Instance. Unit: MB.
         /// </summary>
         public readonly int Capacity;
         /// <summary>
@@ -91,6 +97,9 @@ namespace Pulumi.AliCloud.KVStore.Outputs
         /// Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
         /// </summary>
         public readonly string InstanceClass;
+        /// <summary>
+        /// Indicates whether the release protection feature is enabled for the instance.
+        /// </summary>
         public readonly bool InstanceReleaseProtection;
         /// <summary>
         /// The engine type of the KVStore DBInstance. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
@@ -100,7 +109,13 @@ namespace Pulumi.AliCloud.KVStore.Outputs
         /// Indicates whether the instance is managed by Relational Database Service (RDS).
         /// </summary>
         public readonly bool IsRds;
+        /// <summary>
+        /// The end time of the maintenance window. The time is in the HH:mmZ format. The time is displayed in UTC.
+        /// </summary>
         public readonly string MaintainEndTime;
+        /// <summary>
+        /// The start time of the maintenance window. The time is in the HH:mmZ format. The time is displayed in UTC.
+        /// </summary>
         public readonly string MaintainStartTime;
         /// <summary>
         /// Instance connection quantity limit. Unit: count.
@@ -155,13 +170,28 @@ namespace Pulumi.AliCloud.KVStore.Outputs
         /// </summary>
         public readonly string SearchKey;
         /// <summary>
-        /// (Optional, Available since v1.128.0) The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+        /// The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
         /// </summary>
         public readonly string SecondaryZoneId;
+        /// <summary>
+        /// The ID of the security group associated with the instance.
+        /// </summary>
         public readonly string SecurityGroupId;
+        /// <summary>
+        /// By default, this parameter is left empty. The attribute of the whitelist. The console does not display the whitelist whose value of this parameter is hidden
+        /// </summary>
         public readonly string SecurityIpGroupAttribute;
+        /// <summary>
+        /// The name of the IP address whitelist.
+        /// </summary>
         public readonly string SecurityIpGroupName;
+        /// <summary>
+        /// The IP addresses in the whitelist.
+        /// </summary>
         public readonly ImmutableArray<string> SecurityIps;
+        /// <summary>
+        /// Indicates whether SSL encryption is enabled.
+        /// </summary>
         public readonly string SslEnable;
         /// <summary>
         /// The status of the KVStore DBInstance. Valid values: `Changing`, `CleaningUpExpiredData`, `Creating`, `Flushing`, `HASwitching`, `Inactive`, `MajorVersionUpgrading`, `Migrating`, `NetworkModifying`, `Normal`, `Rebooting`, `SSLModifying`, `Transforming`, `ZoneMigrating`.
@@ -175,6 +205,9 @@ namespace Pulumi.AliCloud.KVStore.Outputs
         /// The username of the instance.
         /// </summary>
         public readonly string UserName;
+        /// <summary>
+        /// Indicates whether password authentication is enabled. Valid values: Open, Close.
+        /// </summary>
         public readonly string VpcAuthMode;
         /// <summary>
         /// Connection port of the instance.

@@ -42,21 +42,11 @@ public final class GetForwardingRulesForwardingRule {
     private Integer priority;
     /**
      * @return The IP protocol used by the GA instance.
-     * `order` - Forwarding priority.
-     * `rule_action_type` - Forward action type.
-     * `forward_group_config` - Forwarding configuration.
-     * `server_group_tuples` - Terminal node group configuration.
-     * `endpoint_group_id` - Terminal node group ID.
      * 
      */
     private List<GetForwardingRulesForwardingRuleRuleAction> ruleActions;
     /**
      * @return Forward action.
-     * `rule_condition_type` - Forwarding condition type.
-     * `path_config` - Path configuration information.
-     * `values` - The length of the path is 1-128 characters.
-     * `host_config` - Domain name configuration information.
-     * `values` - The domain name is 3-128 characters long.
      * 
      */
     private List<GetForwardingRulesForwardingRuleRuleCondition> ruleConditions;
@@ -102,11 +92,6 @@ public final class GetForwardingRulesForwardingRule {
     }
     /**
      * @return The IP protocol used by the GA instance.
-     * `order` - Forwarding priority.
-     * `rule_action_type` - Forward action type.
-     * `forward_group_config` - Forwarding configuration.
-     * `server_group_tuples` - Terminal node group configuration.
-     * `endpoint_group_id` - Terminal node group ID.
      * 
      */
     public List<GetForwardingRulesForwardingRuleRuleAction> ruleActions() {
@@ -114,11 +99,6 @@ public final class GetForwardingRulesForwardingRule {
     }
     /**
      * @return Forward action.
-     * `rule_condition_type` - Forwarding condition type.
-     * `path_config` - Path configuration information.
-     * `values` - The length of the path is 1-128 characters.
-     * `host_config` - Domain name configuration information.
-     * `values` - The domain name is 3-128 characters long.
      * 
      */
     public List<GetForwardingRulesForwardingRuleRuleCondition> ruleConditions() {

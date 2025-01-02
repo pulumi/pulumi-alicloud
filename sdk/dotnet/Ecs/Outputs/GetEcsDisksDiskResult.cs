@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     public sealed class GetEcsDisksDiskResult
     {
         /// <summary>
-        /// Disk attachment time.
+        /// A mount of time.
         /// </summary>
         public readonly string AttachedTime;
         /// <summary>
@@ -22,11 +22,11 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string AutoSnapshotPolicyId;
         /// <summary>
-        /// Availability zone of the disk.
+        /// Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
         /// </summary>
         public readonly string AvailabilityZone;
         /// <summary>
-        /// Disk category.
+        /// Disk category. Valid values: `cloud`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `ephemeral_ssd`, `cloud_auto`, `cloud_essd_entry`.
         /// </summary>
         public readonly string Category;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string DetachedTime;
         /// <summary>
-        /// Cloud disk or the device name of the mounted instance on the site.
+        /// The mount point of the disk.
         /// </summary>
         public readonly string Device;
         /// <summary>
@@ -62,21 +62,28 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string DiskName;
         /// <summary>
-        /// The disk type.
+        /// The disk type. Valid values: `system`, `data`, `all`.
         /// </summary>
         public readonly string DiskType;
         /// <summary>
-        /// Whether the disk implements an automatic snapshot policy.
+        /// Indicates whether the automatic snapshot is deleted when the disk is released.
         /// </summary>
         public readonly bool EnableAutoSnapshot;
         /// <summary>
-        /// Whether the disk implements an automatic snapshot policy.
+        /// Whether the cloud disk has an automatic snapshot policy
         /// </summary>
         public readonly bool EnableAutomatedSnapshotPolicy;
         /// <summary>
-        /// Indicate whether the disk is encrypted or not.
+        /// Indicate whether the disk is encrypted or not. Valid values: `on` and `off`.
         /// </summary>
         public readonly string Encrypted;
+        /// <summary>
+        /// The time when the subscription disk expires.
+        /// </summary>
+        public readonly string ExpirationTime;
+        /// <summary>
+        /// The time when the subscription disk expires.
+        /// </summary>
         public readonly string ExpiredTime;
         /// <summary>
         /// ID of the disk.
@@ -87,11 +94,20 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string ImageId;
         /// <summary>
-        /// ID of the related instance. It is `null` unless the `status` is `In_use`.
+        /// Filter the results by the specified ECS instance ID.
         /// </summary>
         public readonly string InstanceId;
+        /// <summary>
+        /// The maximum number of read and write operations per second.
+        /// </summary>
         public readonly int Iops;
+        /// <summary>
+        /// The maximum number of read operations per second.
+        /// </summary>
         public readonly int IopsRead;
+        /// <summary>
+        /// The maximum number of write operations per second.
+        /// </summary>
         public readonly int IopsWrite;
         /// <summary>
         /// The kms key id.
@@ -109,9 +125,12 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// Disk name.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The reasons why the disk was locked. See `operation_locks` below for details.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEcsDisksDiskOperationLockResult> OperationLocks;
         /// <summary>
-        /// Payment method for disk.
+        /// Payment method for disk. Valid Values: `PayAsYouGo`, `Subscription`.
         /// </summary>
         public readonly string PaymentType;
         /// <summary>
@@ -119,7 +138,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string PerformanceLevel;
         /// <summary>
-        /// Whether the disk is unmountable.
+        /// Whether the cloud disk or local disk supports uninstallation.
         /// </summary>
         public readonly bool Portable;
         /// <summary>
@@ -131,7 +150,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string RegionId;
         /// <summary>
-        /// The Id of resource group.
+        /// The Id of resource group which the disk belongs.
         /// </summary>
         public readonly string ResourceGroupId;
         /// <summary>
@@ -139,23 +158,23 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly int Size;
         /// <summary>
-        /// Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+        /// The source snapshot id.
         /// </summary>
         public readonly string SnapshotId;
         /// <summary>
-        /// Current status.
+        /// The status of disk. Valid Values: `Attaching`, `Available`, `Creating`, `Detaching`, `In_use`, `Migrating`, `ReIniting`, `Transferring`.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// A map of tags assigned to the disk.
+        /// A map of tags assigned to the disks.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
-        /// Disk type.
+        /// Field `type` has been deprecated from provider version 1.122.0. New field `disk_type` instead.
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// The zone id.
+        /// ID of the free zone to which the disk belongs.
         /// </summary>
         public readonly string ZoneId;
 
@@ -192,6 +211,8 @@ namespace Pulumi.AliCloud.Ecs.Outputs
             bool enableAutomatedSnapshotPolicy,
 
             string encrypted,
+
+            string expirationTime,
 
             string expiredTime,
 
@@ -257,6 +278,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
             EnableAutoSnapshot = enableAutoSnapshot;
             EnableAutomatedSnapshotPolicy = enableAutomatedSnapshotPolicy;
             Encrypted = encrypted;
+            ExpirationTime = expirationTime;
             ExpiredTime = expiredTime;
             Id = id;
             ImageId = imageId;

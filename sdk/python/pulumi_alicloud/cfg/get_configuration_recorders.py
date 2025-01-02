@@ -76,9 +76,7 @@ def get_configuration_recorders(output_file: Optional[str] = None,
     """
     This data source provides the Config Configuration Recorders of the current Alibaba Cloud user.
 
-    > **NOTE:**  Available in 1.99.0+.
-
-    > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+    > **NOTE:** Available since v1.99.0.
 
     ## Example Usage
 
@@ -107,9 +105,7 @@ def get_configuration_recorders_output(output_file: Optional[pulumi.Input[Option
     """
     This data source provides the Config Configuration Recorders of the current Alibaba Cloud user.
 
-    > **NOTE:**  Available in 1.99.0+.
-
-    > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+    > **NOTE:** Available since v1.99.0.
 
     ## Example Usage
 

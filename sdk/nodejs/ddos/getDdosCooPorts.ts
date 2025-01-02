@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ddoscoo Ports of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.123.0+.
+ * > **NOTE:** Available since v1.123.0.
  *
  * ## Example Usage
  *
@@ -54,7 +54,7 @@ export interface GetDdosCooPortsArgs {
      */
     ids?: string[];
     /**
-     * The Ddoscoo instance ID.
+     * The DdosCoo instance ID.
      */
     instanceId: string;
     /**
@@ -67,21 +67,33 @@ export interface GetDdosCooPortsArgs {
  * A collection of values returned by getDdosCooPorts.
  */
 export interface GetDdosCooPortsResult {
+    /**
+     * The forwarding port.
+     */
     readonly frontendPort?: string;
+    /**
+     * The forwarding protocol.
+     */
     readonly frontendProtocol?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * The Ddoscoo instance ID.
+     */
     readonly instanceId: string;
     readonly outputFile?: string;
+    /**
+     * A list of DdosCoo Ports. Each element contains the following attributes:
+     */
     readonly ports: outputs.ddos.GetDdosCooPortsPort[];
 }
 /**
  * This data source provides the Ddoscoo Ports of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.123.0+.
+ * > **NOTE:** Available since v1.123.0.
  *
  * ## Example Usage
  *
@@ -126,7 +138,7 @@ export interface GetDdosCooPortsOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The Ddoscoo instance ID.
+     * The DdosCoo instance ID.
      */
     instanceId: pulumi.Input<string>;
     /**

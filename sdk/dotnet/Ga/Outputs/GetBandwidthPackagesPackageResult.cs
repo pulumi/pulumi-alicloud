@@ -54,11 +54,11 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// </summary>
         public readonly string PaymentType;
         /// <summary>
-        /// The status of the bandwidth plan.
+        /// The status of the bandwidth plan. Valid values: `active`, `binded`, `binding`, `finacialLocked`, `init`, `unbinding`, `updating`.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The type of the bandwidth packet. China station only supports return to basic.
+        /// The type of the bandwidth plan. Valid values: `Basic`, `CrossDomain`.
         /// </summary>
         public readonly string Type;
 

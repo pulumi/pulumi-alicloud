@@ -101,6 +101,9 @@ class GetInstancesResult:
     @property
     @pulumi.getter(name="architectureType")
     def architecture_type(self) -> Optional[str]:
+        """
+        The architecture type of the instance.
+        """
         return pulumi.get(self, "architecture_type")
 
     @property
@@ -151,8 +154,7 @@ class GetInstancesResult:
     @pulumi.getter(name="instanceClass")
     def instance_class(self) -> Optional[str]:
         """
-        (Optional) Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
-        For more information, see [Instance type table](https://www.alibabacloud.com/help/en/redis/product-overview/overview-4).
+        Type of the applied Tair (Redis OSS-Compatible) And Memcached (KVStore) Classic Instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/en/redis/product-overview/overview-4).
         """
         return pulumi.get(self, "instance_class")
 
@@ -160,7 +162,7 @@ class GetInstancesResult:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[str]:
         """
-        (Optional) Database type. Valid Values: `Memcache`, `Redis`. If no value is specified, all types are returned.
+        Database type. Valid Values: `Memcache`, `Redis`. If no value is specified, all types are returned.
         """
         return pulumi.get(self, "instance_type")
 
@@ -209,11 +211,17 @@ class GetInstancesResult:
     @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[str]:
+        """
+        The ID of the resource group to which the instance belongs.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter(name="searchKey")
     def search_key(self) -> Optional[str]:
+        """
+        The keyword used for fuzzy search. The keyword can be based on an instance name or an instance ID.
+        """
         return pulumi.get(self, "search_key")
 
     @property
@@ -227,6 +235,9 @@ class GetInstancesResult:
     @property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
         return pulumi.get(self, "tags")
 
     @property

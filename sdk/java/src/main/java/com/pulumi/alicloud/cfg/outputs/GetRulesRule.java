@@ -15,10 +15,14 @@ import java.util.Objects;
 @CustomType
 public final class GetRulesRule {
     /**
-     * @return The ID of the Alicloud account.
+     * @return The ID of the Alibaba Cloud account.
      * 
      */
     private String accountId;
+    /**
+     * @return The compliance package ID.
+     * 
+     */
     private String compliancePackId;
     /**
      * @return The information about the compliance evaluations based on the rule.
@@ -41,7 +45,7 @@ public final class GetRulesRule {
      */
     private String configRuleState;
     /**
-     * @return (Available in 1.124.1+) A list of trigger types of config rule.
+     * @return (Available since v1.124.1) A list of trigger types of config rule.
      * 
      */
     private String configRuleTriggerTypes;
@@ -56,7 +60,7 @@ public final class GetRulesRule {
      */
     private String eventSource;
     /**
-     * @return (Available in 1.124.1+) The scope of exclude of resource ids.
+     * @return (Available since v1.124.1) The scope of exclude of resource ids.
      * 
      */
     private String excludeResourceIdsScope;
@@ -71,7 +75,7 @@ public final class GetRulesRule {
      */
     private Map<String,String> inputParameters;
     /**
-     * @return (Available in 1.124.1+) The frequency of maximum execution.
+     * @return (Available since v1.124.1) The frequency of maximum execution.
      * 
      */
     private String maximumExecutionFrequency;
@@ -81,17 +85,17 @@ public final class GetRulesRule {
      */
     private String modifiedTimestamp;
     /**
-     * @return (Available in 1.124.1+) The scope of region ids.
+     * @return (Available since v1.124.1) The scope of region ids.
      * 
      */
     private String regionIdsScope;
     /**
-     * @return (Available in 1.124.1+) The scope of resource group ids.
+     * @return (Available since v1.124.1) The scope of resource group ids.
      * 
      */
     private String resourceGroupIdsScope;
     /**
-     * @return (Available in 1.124.1+) The scope of resource types.
+     * @return (Available since v1.124.1) The scope of resource types.
      * 
      */
     private List<String> resourceTypesScopes;
@@ -136,24 +140,28 @@ public final class GetRulesRule {
      */
     private String status;
     /**
-     * @return (Available in 1.124.1+) The scope of tag key.
+     * @return (Available since v1.124.1) The scope of tag key.
      * 
      */
     private String tagKeyScope;
     /**
-     * @return (Available in 1.124.1+) The scope of tag value.
+     * @return (Available since v1.124.1) The scope of tag value.
      * 
      */
     private String tagValueScope;
 
     private GetRulesRule() {}
     /**
-     * @return The ID of the Alicloud account.
+     * @return The ID of the Alibaba Cloud account.
      * 
      */
     public String accountId() {
         return this.accountId;
     }
+    /**
+     * @return The compliance package ID.
+     * 
+     */
     public String compliancePackId() {
         return this.compliancePackId;
     }
@@ -186,7 +194,7 @@ public final class GetRulesRule {
         return this.configRuleState;
     }
     /**
-     * @return (Available in 1.124.1+) A list of trigger types of config rule.
+     * @return (Available since v1.124.1) A list of trigger types of config rule.
      * 
      */
     public String configRuleTriggerTypes() {
@@ -207,7 +215,7 @@ public final class GetRulesRule {
         return this.eventSource;
     }
     /**
-     * @return (Available in 1.124.1+) The scope of exclude of resource ids.
+     * @return (Available since v1.124.1) The scope of exclude of resource ids.
      * 
      */
     public String excludeResourceIdsScope() {
@@ -228,7 +236,7 @@ public final class GetRulesRule {
         return this.inputParameters;
     }
     /**
-     * @return (Available in 1.124.1+) The frequency of maximum execution.
+     * @return (Available since v1.124.1) The frequency of maximum execution.
      * 
      */
     public String maximumExecutionFrequency() {
@@ -242,21 +250,21 @@ public final class GetRulesRule {
         return this.modifiedTimestamp;
     }
     /**
-     * @return (Available in 1.124.1+) The scope of region ids.
+     * @return (Available since v1.124.1) The scope of region ids.
      * 
      */
     public String regionIdsScope() {
         return this.regionIdsScope;
     }
     /**
-     * @return (Available in 1.124.1+) The scope of resource group ids.
+     * @return (Available since v1.124.1) The scope of resource group ids.
      * 
      */
     public String resourceGroupIdsScope() {
         return this.resourceGroupIdsScope;
     }
     /**
-     * @return (Available in 1.124.1+) The scope of resource types.
+     * @return (Available since v1.124.1) The scope of resource types.
      * 
      */
     public List<String> resourceTypesScopes() {
@@ -319,14 +327,14 @@ public final class GetRulesRule {
         return this.status;
     }
     /**
-     * @return (Available in 1.124.1+) The scope of tag key.
+     * @return (Available since v1.124.1) The scope of tag key.
      * 
      */
     public String tagKeyScope() {
         return this.tagKeyScope;
     }
     /**
-     * @return (Available in 1.124.1+) The scope of tag value.
+     * @return (Available since v1.124.1) The scope of tag value.
      * 
      */
     public String tagValueScope() {

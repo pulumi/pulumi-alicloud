@@ -21,7 +21,8 @@ class NotificationArgs:
     def __init__(__self__, *,
                  notification_arn: pulumi.Input[str],
                  notification_types: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 scaling_group_id: pulumi.Input[str]):
+                 scaling_group_id: pulumi.Input[str],
+                 time_zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Notification resource.
         :param pulumi.Input[str] notification_arn: The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.
@@ -30,10 +31,13 @@ class NotificationArgs:
                * resource-relative-id: the notification method. Valid values : `cloudmonitor`, MNS queue: `queue/{queuename}`, Replace the queuename with the specific MNS queue name, MNS topic: `topic/{topicname}`, Replace the topicname with the specific MNS topic name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_types: The notification types of Auto Scaling events and resource changes. Supported notification types: 'AUTOSCALING:SCALE_OUT_SUCCESS', 'AUTOSCALING:SCALE_IN_SUCCESS', 'AUTOSCALING:SCALE_OUT_ERROR', 'AUTOSCALING:SCALE_IN_ERROR', 'AUTOSCALING:SCALE_REJECT', 'AUTOSCALING:SCALE_OUT_START', 'AUTOSCALING:SCALE_IN_START', 'AUTOSCALING:SCHEDULE_TASK_EXPIRING'.
         :param pulumi.Input[str] scaling_group_id: The ID of the Auto Scaling group.
+        :param pulumi.Input[str] time_zone: The time zone of the notification. Specify the value in UTC. For example, a value of UTC+8 specifies that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 specifies that the time is 7 hours behind Coordinated Universal Time.
         """
         pulumi.set(__self__, "notification_arn", notification_arn)
         pulumi.set(__self__, "notification_types", notification_types)
         pulumi.set(__self__, "scaling_group_id", scaling_group_id)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
 
     @property
     @pulumi.getter(name="notificationArn")
@@ -74,13 +78,26 @@ class NotificationArgs:
     def scaling_group_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "scaling_group_id", value)
 
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time zone of the notification. Specify the value in UTC. For example, a value of UTC+8 specifies that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 specifies that the time is 7 hours behind Coordinated Universal Time.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "time_zone", value)
+
 
 @pulumi.input_type
 class _NotificationState:
     def __init__(__self__, *,
                  notification_arn: Optional[pulumi.Input[str]] = None,
                  notification_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 scaling_group_id: Optional[pulumi.Input[str]] = None):
+                 scaling_group_id: Optional[pulumi.Input[str]] = None,
+                 time_zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Notification resources.
         :param pulumi.Input[str] notification_arn: The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.
@@ -89,6 +106,7 @@ class _NotificationState:
                * resource-relative-id: the notification method. Valid values : `cloudmonitor`, MNS queue: `queue/{queuename}`, Replace the queuename with the specific MNS queue name, MNS topic: `topic/{topicname}`, Replace the topicname with the specific MNS topic name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_types: The notification types of Auto Scaling events and resource changes. Supported notification types: 'AUTOSCALING:SCALE_OUT_SUCCESS', 'AUTOSCALING:SCALE_IN_SUCCESS', 'AUTOSCALING:SCALE_OUT_ERROR', 'AUTOSCALING:SCALE_IN_ERROR', 'AUTOSCALING:SCALE_REJECT', 'AUTOSCALING:SCALE_OUT_START', 'AUTOSCALING:SCALE_IN_START', 'AUTOSCALING:SCHEDULE_TASK_EXPIRING'.
         :param pulumi.Input[str] scaling_group_id: The ID of the Auto Scaling group.
+        :param pulumi.Input[str] time_zone: The time zone of the notification. Specify the value in UTC. For example, a value of UTC+8 specifies that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 specifies that the time is 7 hours behind Coordinated Universal Time.
         """
         if notification_arn is not None:
             pulumi.set(__self__, "notification_arn", notification_arn)
@@ -96,6 +114,8 @@ class _NotificationState:
             pulumi.set(__self__, "notification_types", notification_types)
         if scaling_group_id is not None:
             pulumi.set(__self__, "scaling_group_id", scaling_group_id)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
 
     @property
     @pulumi.getter(name="notificationArn")
@@ -136,6 +156,18 @@ class _NotificationState:
     def scaling_group_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "scaling_group_id", value)
 
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time zone of the notification. Specify the value in UTC. For example, a value of UTC+8 specifies that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 specifies that the time is 7 hours behind Coordinated Universal Time.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "time_zone", value)
+
 
 class Notification(pulumi.CustomResource):
     @overload
@@ -145,6 +177,7 @@ class Notification(pulumi.CustomResource):
                  notification_arn: Optional[pulumi.Input[str]] = None,
                  notification_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  scaling_group_id: Optional[pulumi.Input[str]] = None,
+                 time_zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Provides a ESS notification resource. More about Ess notification, see [Autoscaling Notification](https://www.alibabacloud.com/help/doc-detail/71114.htm).
@@ -213,6 +246,7 @@ class Notification(pulumi.CustomResource):
                * resource-relative-id: the notification method. Valid values : `cloudmonitor`, MNS queue: `queue/{queuename}`, Replace the queuename with the specific MNS queue name, MNS topic: `topic/{topicname}`, Replace the topicname with the specific MNS topic name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_types: The notification types of Auto Scaling events and resource changes. Supported notification types: 'AUTOSCALING:SCALE_OUT_SUCCESS', 'AUTOSCALING:SCALE_IN_SUCCESS', 'AUTOSCALING:SCALE_OUT_ERROR', 'AUTOSCALING:SCALE_IN_ERROR', 'AUTOSCALING:SCALE_REJECT', 'AUTOSCALING:SCALE_OUT_START', 'AUTOSCALING:SCALE_IN_START', 'AUTOSCALING:SCHEDULE_TASK_EXPIRING'.
         :param pulumi.Input[str] scaling_group_id: The ID of the Auto Scaling group.
+        :param pulumi.Input[str] time_zone: The time zone of the notification. Specify the value in UTC. For example, a value of UTC+8 specifies that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 specifies that the time is 7 hours behind Coordinated Universal Time.
         """
         ...
     @overload
@@ -297,6 +331,7 @@ class Notification(pulumi.CustomResource):
                  notification_arn: Optional[pulumi.Input[str]] = None,
                  notification_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  scaling_group_id: Optional[pulumi.Input[str]] = None,
+                 time_zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -315,6 +350,7 @@ class Notification(pulumi.CustomResource):
             if scaling_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'scaling_group_id'")
             __props__.__dict__["scaling_group_id"] = scaling_group_id
+            __props__.__dict__["time_zone"] = time_zone
         super(Notification, __self__).__init__(
             'alicloud:ess/notification:Notification',
             resource_name,
@@ -327,7 +363,8 @@ class Notification(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             notification_arn: Optional[pulumi.Input[str]] = None,
             notification_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            scaling_group_id: Optional[pulumi.Input[str]] = None) -> 'Notification':
+            scaling_group_id: Optional[pulumi.Input[str]] = None,
+            time_zone: Optional[pulumi.Input[str]] = None) -> 'Notification':
         """
         Get an existing Notification resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -341,6 +378,7 @@ class Notification(pulumi.CustomResource):
                * resource-relative-id: the notification method. Valid values : `cloudmonitor`, MNS queue: `queue/{queuename}`, Replace the queuename with the specific MNS queue name, MNS topic: `topic/{topicname}`, Replace the topicname with the specific MNS topic name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_types: The notification types of Auto Scaling events and resource changes. Supported notification types: 'AUTOSCALING:SCALE_OUT_SUCCESS', 'AUTOSCALING:SCALE_IN_SUCCESS', 'AUTOSCALING:SCALE_OUT_ERROR', 'AUTOSCALING:SCALE_IN_ERROR', 'AUTOSCALING:SCALE_REJECT', 'AUTOSCALING:SCALE_OUT_START', 'AUTOSCALING:SCALE_IN_START', 'AUTOSCALING:SCHEDULE_TASK_EXPIRING'.
         :param pulumi.Input[str] scaling_group_id: The ID of the Auto Scaling group.
+        :param pulumi.Input[str] time_zone: The time zone of the notification. Specify the value in UTC. For example, a value of UTC+8 specifies that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 specifies that the time is 7 hours behind Coordinated Universal Time.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -349,6 +387,7 @@ class Notification(pulumi.CustomResource):
         __props__.__dict__["notification_arn"] = notification_arn
         __props__.__dict__["notification_types"] = notification_types
         __props__.__dict__["scaling_group_id"] = scaling_group_id
+        __props__.__dict__["time_zone"] = time_zone
         return Notification(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -377,4 +416,12 @@ class Notification(pulumi.CustomResource):
         The ID of the Auto Scaling group.
         """
         return pulumi.get(self, "scaling_group_id")
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> pulumi.Output[Optional[str]]:
+        """
+        The time zone of the notification. Specify the value in UTC. For example, a value of UTC+8 specifies that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 specifies that the time is 7 hours behind Coordinated Universal Time.
+        """
+        return pulumi.get(self, "time_zone")
 

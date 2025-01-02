@@ -50,6 +50,9 @@ class GetMscSubContactsResult:
     @property
     @pulumi.getter
     def contacts(self) -> Sequence['outputs.GetMscSubContactsContactResult']:
+        """
+        A list of Msc Sub Contacts. Each element contains the following attributes:
+        """
         return pulumi.get(self, "contacts")
 
     @property
@@ -73,6 +76,9 @@ class GetMscSubContactsResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Contact names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -102,7 +108,7 @@ def get_msc_sub_contacts(ids: Optional[Sequence[str]] = None,
     """
     This data source provides the Message Center Contacts of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.132.0+.
+    > **NOTE:** Available since v1.132.0.
 
     ## Example Usage
 
@@ -144,7 +150,7 @@ def get_msc_sub_contacts_output(ids: Optional[pulumi.Input[Optional[Sequence[str
     """
     This data source provides the Message Center Contacts of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.132.0+.
+    > **NOTE:** Available since v1.132.0.
 
     ## Example Usage
 

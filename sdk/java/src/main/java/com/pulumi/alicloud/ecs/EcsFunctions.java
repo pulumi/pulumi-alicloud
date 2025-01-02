@@ -2924,7 +2924,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Disks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.122.0+.
+     * &gt; **NOTE:** Available since v1.122.0.
      * 
      * ## Example Usage
      * 
@@ -2938,6 +2938,10 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.ecs.EcsDisk;
+     * import com.pulumi.alicloud.ecs.EcsDiskArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsDisksArgs;
      * import java.util.List;
@@ -2953,12 +2957,24 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = EcsFunctions.getEcsDisks(GetEcsDisksArgs.builder()
-     *             .ids("d-artgdsvdvxxxx")
-     *             .nameRegex("tf-test")
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         ctx.export("firstEcsDiskId", example.applyValue(getEcsDisksResult -> getEcsDisksResult.disks()[0].id()));
+     *         var defaultEcsDisk = new EcsDisk("defaultEcsDisk", EcsDiskArgs.builder()
+     *             .zoneId(default_.zones()[0].id())
+     *             .diskName("terraform-example")
+     *             .description("terraform-example")
+     *             .category("cloud_efficiency")
+     *             .size("30")
+     *             .tags(Map.of("Name", "terraform-example"))
+     *             .build());
+     * 
+     *         final var ids = EcsFunctions.getEcsDisks(GetEcsDisksArgs.builder()
+     *             .ids(defaultEcsDisk.id())
+     *             .build());
+     * 
+     *         ctx.export("ecsDiskId0", ids.applyValue(getEcsDisksResult -> getEcsDisksResult).applyValue(ids -> ids.applyValue(getEcsDisksResult -> getEcsDisksResult.disks()[0].id())));
      *     }
      * }
      * }
@@ -2972,7 +2988,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Disks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.122.0+.
+     * &gt; **NOTE:** Available since v1.122.0.
      * 
      * ## Example Usage
      * 
@@ -2986,6 +3002,10 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.ecs.EcsDisk;
+     * import com.pulumi.alicloud.ecs.EcsDiskArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsDisksArgs;
      * import java.util.List;
@@ -3001,12 +3021,24 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = EcsFunctions.getEcsDisks(GetEcsDisksArgs.builder()
-     *             .ids("d-artgdsvdvxxxx")
-     *             .nameRegex("tf-test")
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         ctx.export("firstEcsDiskId", example.applyValue(getEcsDisksResult -> getEcsDisksResult.disks()[0].id()));
+     *         var defaultEcsDisk = new EcsDisk("defaultEcsDisk", EcsDiskArgs.builder()
+     *             .zoneId(default_.zones()[0].id())
+     *             .diskName("terraform-example")
+     *             .description("terraform-example")
+     *             .category("cloud_efficiency")
+     *             .size("30")
+     *             .tags(Map.of("Name", "terraform-example"))
+     *             .build());
+     * 
+     *         final var ids = EcsFunctions.getEcsDisks(GetEcsDisksArgs.builder()
+     *             .ids(defaultEcsDisk.id())
+     *             .build());
+     * 
+     *         ctx.export("ecsDiskId0", ids.applyValue(getEcsDisksResult -> getEcsDisksResult).applyValue(ids -> ids.applyValue(getEcsDisksResult -> getEcsDisksResult.disks()[0].id())));
      *     }
      * }
      * }
@@ -3020,7 +3052,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Disks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.122.0+.
+     * &gt; **NOTE:** Available since v1.122.0.
      * 
      * ## Example Usage
      * 
@@ -3034,6 +3066,10 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.ecs.EcsDisk;
+     * import com.pulumi.alicloud.ecs.EcsDiskArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsDisksArgs;
      * import java.util.List;
@@ -3049,12 +3085,24 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = EcsFunctions.getEcsDisks(GetEcsDisksArgs.builder()
-     *             .ids("d-artgdsvdvxxxx")
-     *             .nameRegex("tf-test")
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         ctx.export("firstEcsDiskId", example.applyValue(getEcsDisksResult -> getEcsDisksResult.disks()[0].id()));
+     *         var defaultEcsDisk = new EcsDisk("defaultEcsDisk", EcsDiskArgs.builder()
+     *             .zoneId(default_.zones()[0].id())
+     *             .diskName("terraform-example")
+     *             .description("terraform-example")
+     *             .category("cloud_efficiency")
+     *             .size("30")
+     *             .tags(Map.of("Name", "terraform-example"))
+     *             .build());
+     * 
+     *         final var ids = EcsFunctions.getEcsDisks(GetEcsDisksArgs.builder()
+     *             .ids(defaultEcsDisk.id())
+     *             .build());
+     * 
+     *         ctx.export("ecsDiskId0", ids.applyValue(getEcsDisksResult -> getEcsDisksResult).applyValue(ids -> ids.applyValue(getEcsDisksResult -> getEcsDisksResult.disks()[0].id())));
      *     }
      * }
      * }
@@ -3068,7 +3116,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Disks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.122.0+.
+     * &gt; **NOTE:** Available since v1.122.0.
      * 
      * ## Example Usage
      * 
@@ -3082,6 +3130,10 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.ecs.EcsDisk;
+     * import com.pulumi.alicloud.ecs.EcsDiskArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsDisksArgs;
      * import java.util.List;
@@ -3097,12 +3149,24 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = EcsFunctions.getEcsDisks(GetEcsDisksArgs.builder()
-     *             .ids("d-artgdsvdvxxxx")
-     *             .nameRegex("tf-test")
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         ctx.export("firstEcsDiskId", example.applyValue(getEcsDisksResult -> getEcsDisksResult.disks()[0].id()));
+     *         var defaultEcsDisk = new EcsDisk("defaultEcsDisk", EcsDiskArgs.builder()
+     *             .zoneId(default_.zones()[0].id())
+     *             .diskName("terraform-example")
+     *             .description("terraform-example")
+     *             .category("cloud_efficiency")
+     *             .size("30")
+     *             .tags(Map.of("Name", "terraform-example"))
+     *             .build());
+     * 
+     *         final var ids = EcsFunctions.getEcsDisks(GetEcsDisksArgs.builder()
+     *             .ids(defaultEcsDisk.id())
+     *             .build());
+     * 
+     *         ctx.export("ecsDiskId0", ids.applyValue(getEcsDisksResult -> getEcsDisksResult).applyValue(ids -> ids.applyValue(getEcsDisksResult -> getEcsDisksResult.disks()[0].id())));
      *     }
      * }
      * }
@@ -3116,7 +3180,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Disks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.122.0+.
+     * &gt; **NOTE:** Available since v1.122.0.
      * 
      * ## Example Usage
      * 
@@ -3130,6 +3194,10 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.ecs.EcsDisk;
+     * import com.pulumi.alicloud.ecs.EcsDiskArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsDisksArgs;
      * import java.util.List;
@@ -3145,12 +3213,24 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = EcsFunctions.getEcsDisks(GetEcsDisksArgs.builder()
-     *             .ids("d-artgdsvdvxxxx")
-     *             .nameRegex("tf-test")
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         ctx.export("firstEcsDiskId", example.applyValue(getEcsDisksResult -> getEcsDisksResult.disks()[0].id()));
+     *         var defaultEcsDisk = new EcsDisk("defaultEcsDisk", EcsDiskArgs.builder()
+     *             .zoneId(default_.zones()[0].id())
+     *             .diskName("terraform-example")
+     *             .description("terraform-example")
+     *             .category("cloud_efficiency")
+     *             .size("30")
+     *             .tags(Map.of("Name", "terraform-example"))
+     *             .build());
+     * 
+     *         final var ids = EcsFunctions.getEcsDisks(GetEcsDisksArgs.builder()
+     *             .ids(defaultEcsDisk.id())
+     *             .build());
+     * 
+     *         ctx.export("ecsDiskId0", ids.applyValue(getEcsDisksResult -> getEcsDisksResult).applyValue(ids -> ids.applyValue(getEcsDisksResult -> getEcsDisksResult.disks()[0].id())));
      *     }
      * }
      * }
@@ -3164,7 +3244,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Disks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.122.0+.
+     * &gt; **NOTE:** Available since v1.122.0.
      * 
      * ## Example Usage
      * 
@@ -3178,6 +3258,10 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.ecs.EcsDisk;
+     * import com.pulumi.alicloud.ecs.EcsDiskArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsDisksArgs;
      * import java.util.List;
@@ -3193,12 +3277,24 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = EcsFunctions.getEcsDisks(GetEcsDisksArgs.builder()
-     *             .ids("d-artgdsvdvxxxx")
-     *             .nameRegex("tf-test")
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         ctx.export("firstEcsDiskId", example.applyValue(getEcsDisksResult -> getEcsDisksResult.disks()[0].id()));
+     *         var defaultEcsDisk = new EcsDisk("defaultEcsDisk", EcsDiskArgs.builder()
+     *             .zoneId(default_.zones()[0].id())
+     *             .diskName("terraform-example")
+     *             .description("terraform-example")
+     *             .category("cloud_efficiency")
+     *             .size("30")
+     *             .tags(Map.of("Name", "terraform-example"))
+     *             .build());
+     * 
+     *         final var ids = EcsFunctions.getEcsDisks(GetEcsDisksArgs.builder()
+     *             .ids(defaultEcsDisk.id())
+     *             .build());
+     * 
+     *         ctx.export("ecsDiskId0", ids.applyValue(getEcsDisksResult -> getEcsDisksResult).applyValue(ids -> ids.applyValue(getEcsDisksResult -> getEcsDisksResult.disks()[0].id())));
      *     }
      * }
      * }
@@ -3212,7 +3308,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Disks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.122.0+.
+     * &gt; **NOTE:** Available since v1.122.0.
      * 
      * ## Example Usage
      * 
@@ -3226,6 +3322,10 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.ecs.EcsDisk;
+     * import com.pulumi.alicloud.ecs.EcsDiskArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsDisksArgs;
      * import java.util.List;
@@ -3241,12 +3341,24 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = EcsFunctions.getEcsDisks(GetEcsDisksArgs.builder()
-     *             .ids("d-artgdsvdvxxxx")
-     *             .nameRegex("tf-test")
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         ctx.export("firstEcsDiskId", example.applyValue(getEcsDisksResult -> getEcsDisksResult.disks()[0].id()));
+     *         var defaultEcsDisk = new EcsDisk("defaultEcsDisk", EcsDiskArgs.builder()
+     *             .zoneId(default_.zones()[0].id())
+     *             .diskName("terraform-example")
+     *             .description("terraform-example")
+     *             .category("cloud_efficiency")
+     *             .size("30")
+     *             .tags(Map.of("Name", "terraform-example"))
+     *             .build());
+     * 
+     *         final var ids = EcsFunctions.getEcsDisks(GetEcsDisksArgs.builder()
+     *             .ids(defaultEcsDisk.id())
+     *             .build());
+     * 
+     *         ctx.export("ecsDiskId0", ids.applyValue(getEcsDisksResult -> getEcsDisksResult).applyValue(ids -> ids.applyValue(getEcsDisksResult -> getEcsDisksResult.disks()[0].id())));
      *     }
      * }
      * }

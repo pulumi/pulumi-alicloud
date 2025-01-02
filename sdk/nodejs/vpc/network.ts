@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a VPC Vpc resource.
+ * Provides a VPC VPC resource.
  *
  * A VPC instance creates a VPC. You can fully control your own VPC, such as selecting IP address ranges, configuring routing tables, and gateways. You can use Alibaba cloud resources such as cloud servers, apsaradb for RDS, and load balancer in your own VPC.
  *
@@ -43,7 +43,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * VPC Vpc can be imported using the id, e.g.
+ * VPC VPC can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:vpc/network:Network example <id>
@@ -92,9 +92,15 @@ export class Network extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * The new description of the VPC. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+     * The new description of the VPC.
+     *
+     * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
+     */
+    public readonly dnsHostnameStatus!: pulumi.Output<string>;
     /**
      * Specifies whether to perform a dry run. Valid values:
      */
@@ -103,6 +109,12 @@ export class Network extends pulumi.CustomResource {
      * Specifies whether to enable IPv6. Valid values:
      */
     public readonly enableIpv6!: pulumi.Output<boolean | undefined>;
+    /**
+     * Allocate VPC from The IPAM address pool by entering a mask.
+     *
+     * > **NOTE:**  when you specify the IPAM address pool to create a VPC, enter at least one of the CidrBlock or Ipv4CidrMask parameters.
+     */
+    public readonly ipv4CidrMask!: pulumi.Output<number | undefined>;
     /**
      * The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
      */
@@ -138,6 +150,10 @@ export class Network extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * (Available since v1.240.0) The region ID of the VPC to which the route table belongs.
+     */
+    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    /**
      * The ID of the resource group to which you want to move the resource.
      *
      * > **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
@@ -148,7 +164,7 @@ export class Network extends pulumi.CustomResource {
      */
     public /*out*/ readonly routeTableId!: pulumi.Output<string>;
     /**
-     * The region ID of the VPC to which the route table belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/36063.html) operation to query the most recent region list.
+     * The router ID of the VPC.
      */
     public /*out*/ readonly routerId!: pulumi.Output<string>;
     /**
@@ -164,15 +180,25 @@ export class Network extends pulumi.CustomResource {
      */
     public readonly secondaryCidrBlocks!: pulumi.Output<string[]>;
     /**
-     * The status of the VPC.   `Pending`: The VPC is being configured. `Available`: The VPC is available.
+     * Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+     *
+     * > **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+     */
+    public readonly secondaryCidrMask!: pulumi.Output<number | undefined>;
+    /**
+     * The status of the VPC.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The description of the route table. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+     * The description of the route table.
+     *
+     * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      */
     public readonly systemRouteTableDescription!: pulumi.Output<string | undefined>;
     /**
-     * The name of the route table. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+     * The name of the route table.
+     *
+     * The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
      */
     public readonly systemRouteTableName!: pulumi.Output<string | undefined>;
     /**
@@ -184,7 +210,9 @@ export class Network extends pulumi.CustomResource {
      */
     public readonly userCidrs!: pulumi.Output<string[]>;
     /**
-     * The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`. 
+     * The new name of the VPC.
+     *
+     * The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
@@ -207,19 +235,23 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["classicLinkEnabled"] = state ? state.classicLinkEnabled : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["dnsHostnameStatus"] = state ? state.dnsHostnameStatus : undefined;
             resourceInputs["dryRun"] = state ? state.dryRun : undefined;
             resourceInputs["enableIpv6"] = state ? state.enableIpv6 : undefined;
+            resourceInputs["ipv4CidrMask"] = state ? state.ipv4CidrMask : undefined;
             resourceInputs["ipv4IpamPoolId"] = state ? state.ipv4IpamPoolId : undefined;
             resourceInputs["ipv6CidrBlock"] = state ? state.ipv6CidrBlock : undefined;
             resourceInputs["ipv6CidrBlocks"] = state ? state.ipv6CidrBlocks : undefined;
             resourceInputs["ipv6Isp"] = state ? state.ipv6Isp : undefined;
             resourceInputs["isDefault"] = state ? state.isDefault : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["regionId"] = state ? state.regionId : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["routeTableId"] = state ? state.routeTableId : undefined;
             resourceInputs["routerId"] = state ? state.routerId : undefined;
             resourceInputs["routerTableId"] = state ? state.routerTableId : undefined;
             resourceInputs["secondaryCidrBlocks"] = state ? state.secondaryCidrBlocks : undefined;
+            resourceInputs["secondaryCidrMask"] = state ? state.secondaryCidrMask : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["systemRouteTableDescription"] = state ? state.systemRouteTableDescription : undefined;
             resourceInputs["systemRouteTableName"] = state ? state.systemRouteTableName : undefined;
@@ -231,8 +263,10 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["cidrBlock"] = args ? args.cidrBlock : undefined;
             resourceInputs["classicLinkEnabled"] = args ? args.classicLinkEnabled : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["dnsHostnameStatus"] = args ? args.dnsHostnameStatus : undefined;
             resourceInputs["dryRun"] = args ? args.dryRun : undefined;
             resourceInputs["enableIpv6"] = args ? args.enableIpv6 : undefined;
+            resourceInputs["ipv4CidrMask"] = args ? args.ipv4CidrMask : undefined;
             resourceInputs["ipv4IpamPoolId"] = args ? args.ipv4IpamPoolId : undefined;
             resourceInputs["ipv6CidrBlock"] = args ? args.ipv6CidrBlock : undefined;
             resourceInputs["ipv6Isp"] = args ? args.ipv6Isp : undefined;
@@ -240,6 +274,7 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["secondaryCidrBlocks"] = args ? args.secondaryCidrBlocks : undefined;
+            resourceInputs["secondaryCidrMask"] = args ? args.secondaryCidrMask : undefined;
             resourceInputs["systemRouteTableDescription"] = args ? args.systemRouteTableDescription : undefined;
             resourceInputs["systemRouteTableName"] = args ? args.systemRouteTableName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -247,6 +282,7 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["vpcName"] = args ? args.vpcName : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["ipv6CidrBlocks"] = undefined /*out*/;
+            resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["routeTableId"] = undefined /*out*/;
             resourceInputs["routerId"] = undefined /*out*/;
             resourceInputs["routerTableId"] = undefined /*out*/;
@@ -276,9 +312,15 @@ export interface NetworkState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * The new description of the VPC. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+     * The new description of the VPC.
+     *
+     * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
+     */
+    dnsHostnameStatus?: pulumi.Input<string>;
     /**
      * Specifies whether to perform a dry run. Valid values:
      */
@@ -287,6 +329,12 @@ export interface NetworkState {
      * Specifies whether to enable IPv6. Valid values:
      */
     enableIpv6?: pulumi.Input<boolean>;
+    /**
+     * Allocate VPC from The IPAM address pool by entering a mask.
+     *
+     * > **NOTE:**  when you specify the IPAM address pool to create a VPC, enter at least one of the CidrBlock or Ipv4CidrMask parameters.
+     */
+    ipv4CidrMask?: pulumi.Input<number>;
     /**
      * The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
      */
@@ -322,6 +370,10 @@ export interface NetworkState {
      */
     name?: pulumi.Input<string>;
     /**
+     * (Available since v1.240.0) The region ID of the VPC to which the route table belongs.
+     */
+    regionId?: pulumi.Input<string>;
+    /**
      * The ID of the resource group to which you want to move the resource.
      *
      * > **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
@@ -332,7 +384,7 @@ export interface NetworkState {
      */
     routeTableId?: pulumi.Input<string>;
     /**
-     * The region ID of the VPC to which the route table belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/36063.html) operation to query the most recent region list.
+     * The router ID of the VPC.
      */
     routerId?: pulumi.Input<string>;
     /**
@@ -348,15 +400,25 @@ export interface NetworkState {
      */
     secondaryCidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The status of the VPC.   `Pending`: The VPC is being configured. `Available`: The VPC is available.
+     * Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+     *
+     * > **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+     */
+    secondaryCidrMask?: pulumi.Input<number>;
+    /**
+     * The status of the VPC.
      */
     status?: pulumi.Input<string>;
     /**
-     * The description of the route table. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+     * The description of the route table.
+     *
+     * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      */
     systemRouteTableDescription?: pulumi.Input<string>;
     /**
-     * The name of the route table. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+     * The name of the route table.
+     *
+     * The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
      */
     systemRouteTableName?: pulumi.Input<string>;
     /**
@@ -368,7 +430,9 @@ export interface NetworkState {
      */
     userCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`. 
+     * The new name of the VPC.
+     *
+     * The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
@@ -390,9 +454,15 @@ export interface NetworkArgs {
      */
     classicLinkEnabled?: pulumi.Input<boolean>;
     /**
-     * The new description of the VPC. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+     * The new description of the VPC.
+     *
+     * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
+     */
+    dnsHostnameStatus?: pulumi.Input<string>;
     /**
      * Specifies whether to perform a dry run. Valid values:
      */
@@ -401,6 +471,12 @@ export interface NetworkArgs {
      * Specifies whether to enable IPv6. Valid values:
      */
     enableIpv6?: pulumi.Input<boolean>;
+    /**
+     * Allocate VPC from The IPAM address pool by entering a mask.
+     *
+     * > **NOTE:**  when you specify the IPAM address pool to create a VPC, enter at least one of the CidrBlock or Ipv4CidrMask parameters.
+     */
+    ipv4CidrMask?: pulumi.Input<number>;
     /**
      * The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
      */
@@ -444,11 +520,21 @@ export interface NetworkArgs {
      */
     secondaryCidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The description of the route table. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+     * Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+     *
+     * > **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+     */
+    secondaryCidrMask?: pulumi.Input<number>;
+    /**
+     * The description of the route table.
+     *
+     * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      */
     systemRouteTableDescription?: pulumi.Input<string>;
     /**
-     * The name of the route table. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+     * The name of the route table.
+     *
+     * The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
      */
     systemRouteTableName?: pulumi.Input<string>;
     /**
@@ -460,7 +546,9 @@ export interface NetworkArgs {
      */
     userCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`. 
+     * The new name of the VPC.
+     *
+     * The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */

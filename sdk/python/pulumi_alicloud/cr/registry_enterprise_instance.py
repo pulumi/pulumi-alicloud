@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['RegistryEnterpriseInstanceArgs', 'RegistryEnterpriseInstance']
 
@@ -36,20 +38,19 @@ class RegistryEnterpriseInstanceArgs:
         The set of arguments for constructing a RegistryEnterpriseInstance resource.
         :param pulumi.Input[str] instance_name: InstanceName
         :param pulumi.Input[str] instance_type: The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
-               
-               Basic: Basic instance
-               
-               Standard: Standard instance
-               
-               Advanced: Advanced Edition Instance
+               - `Basic`: Basic instance
+               - `Standard`: Standard instance
+               - `Advanced`: Advanced Edition Instance
         :param pulumi.Input[str] payment_type: Payment type, value:
                - Subscription: Prepaid.
         :param pulumi.Input[str] custom_oss_bucket: Custom OSS Bucket name
-        :param pulumi.Input[str] default_oss_bucket: Whether to use the default OSS Bucket
-        :param pulumi.Input[str] image_scanner: Security scan engine
+        :param pulumi.Input[str] default_oss_bucket: Whether to use the default OSS Bucket. Value:
+        :param pulumi.Input[str] image_scanner: The security scan engine used by the Enterprise Edition of Container Image Service. Value:
+               - `ACR`: Uses the Trivy scan engine provided by default.
+               - `SAS`: uses the enhanced cloud security scan engine.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-        :param pulumi.Input[str] password: Permanent access credentials of the instance
+        :param pulumi.Input[str] password: Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
         :param pulumi.Input[int] period: Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
                
                > **NOTE:**  must be set when creating a prepaid instance.
@@ -106,12 +107,9 @@ class RegistryEnterpriseInstanceArgs:
     def instance_type(self) -> pulumi.Input[str]:
         """
         The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
-
-        Basic: Basic instance
-
-        Standard: Standard instance
-
-        Advanced: Advanced Edition Instance
+        - `Basic`: Basic instance
+        - `Standard`: Standard instance
+        - `Advanced`: Advanced Edition Instance
         """
         return pulumi.get(self, "instance_type")
 
@@ -148,7 +146,7 @@ class RegistryEnterpriseInstanceArgs:
     @pulumi.getter(name="defaultOssBucket")
     def default_oss_bucket(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether to use the default OSS Bucket
+        Whether to use the default OSS Bucket. Value:
         """
         return pulumi.get(self, "default_oss_bucket")
 
@@ -160,7 +158,9 @@ class RegistryEnterpriseInstanceArgs:
     @pulumi.getter(name="imageScanner")
     def image_scanner(self) -> Optional[pulumi.Input[str]]:
         """
-        Security scan engine
+        The security scan engine used by the Enterprise Edition of Container Image Service. Value:
+        - `ACR`: Uses the Trivy scan engine provided by default.
+        - `SAS`: uses the enhanced cloud security scan engine.
         """
         return pulumi.get(self, "image_scanner")
 
@@ -196,7 +196,7 @@ class RegistryEnterpriseInstanceArgs:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        Permanent access credentials of the instance
+        Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
         """
         return pulumi.get(self, "password")
 
@@ -272,6 +272,7 @@ class _RegistryEnterpriseInstanceState:
                  default_oss_bucket: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
                  image_scanner: Optional[pulumi.Input[str]] = None,
+                 instance_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['RegistryEnterpriseInstanceInstanceEndpointArgs']]]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
@@ -289,20 +290,20 @@ class _RegistryEnterpriseInstanceState:
         :param pulumi.Input[str] create_time: The creation time of the resource
         :param pulumi.Input[str] created_time: . Field 'created_time' has been deprecated from provider version 1.235.0. New field 'create_time' instead.
         :param pulumi.Input[str] custom_oss_bucket: Custom OSS Bucket name
-        :param pulumi.Input[str] default_oss_bucket: Whether to use the default OSS Bucket
+        :param pulumi.Input[str] default_oss_bucket: Whether to use the default OSS Bucket. Value:
         :param pulumi.Input[str] end_time: Expiration Time
-        :param pulumi.Input[str] image_scanner: Security scan engine
+        :param pulumi.Input[str] image_scanner: The security scan engine used by the Enterprise Edition of Container Image Service. Value:
+               - `ACR`: Uses the Trivy scan engine provided by default.
+               - `SAS`: uses the enhanced cloud security scan engine.
+        :param pulumi.Input[Sequence[pulumi.Input['RegistryEnterpriseInstanceInstanceEndpointArgs']]] instance_endpoints: (Available since v1.240.0) Instance Network Access Endpoint List
         :param pulumi.Input[str] instance_name: InstanceName
         :param pulumi.Input[str] instance_type: The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
-               
-               Basic: Basic instance
-               
-               Standard: Standard instance
-               
-               Advanced: Advanced Edition Instance
+               - `Basic`: Basic instance
+               - `Standard`: Standard instance
+               - `Advanced`: Advanced Edition Instance
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-        :param pulumi.Input[str] password: Permanent access credentials of the instance
+        :param pulumi.Input[str] password: Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
         :param pulumi.Input[str] payment_type: Payment type, value:
                - Subscription: Prepaid.
         :param pulumi.Input[int] period: Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
@@ -337,6 +338,8 @@ class _RegistryEnterpriseInstanceState:
             pulumi.set(__self__, "end_time", end_time)
         if image_scanner is not None:
             pulumi.set(__self__, "image_scanner", image_scanner)
+        if instance_endpoints is not None:
+            pulumi.set(__self__, "instance_endpoints", instance_endpoints)
         if instance_name is not None:
             pulumi.set(__self__, "instance_name", instance_name)
         if instance_type is not None:
@@ -403,7 +406,7 @@ class _RegistryEnterpriseInstanceState:
     @pulumi.getter(name="defaultOssBucket")
     def default_oss_bucket(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether to use the default OSS Bucket
+        Whether to use the default OSS Bucket. Value:
         """
         return pulumi.get(self, "default_oss_bucket")
 
@@ -427,13 +430,27 @@ class _RegistryEnterpriseInstanceState:
     @pulumi.getter(name="imageScanner")
     def image_scanner(self) -> Optional[pulumi.Input[str]]:
         """
-        Security scan engine
+        The security scan engine used by the Enterprise Edition of Container Image Service. Value:
+        - `ACR`: Uses the Trivy scan engine provided by default.
+        - `SAS`: uses the enhanced cloud security scan engine.
         """
         return pulumi.get(self, "image_scanner")
 
     @image_scanner.setter
     def image_scanner(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "image_scanner", value)
+
+    @property
+    @pulumi.getter(name="instanceEndpoints")
+    def instance_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegistryEnterpriseInstanceInstanceEndpointArgs']]]]:
+        """
+        (Available since v1.240.0) Instance Network Access Endpoint List
+        """
+        return pulumi.get(self, "instance_endpoints")
+
+    @instance_endpoints.setter
+    def instance_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegistryEnterpriseInstanceInstanceEndpointArgs']]]]):
+        pulumi.set(self, "instance_endpoints", value)
 
     @property
     @pulumi.getter(name="instanceName")
@@ -452,12 +469,9 @@ class _RegistryEnterpriseInstanceState:
     def instance_type(self) -> Optional[pulumi.Input[str]]:
         """
         The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
-
-        Basic: Basic instance
-
-        Standard: Standard instance
-
-        Advanced: Advanced Edition Instance
+        - `Basic`: Basic instance
+        - `Standard`: Standard instance
+        - `Advanced`: Advanced Edition Instance
         """
         return pulumi.get(self, "instance_type")
 
@@ -493,7 +507,7 @@ class _RegistryEnterpriseInstanceState:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        Permanent access credentials of the instance
+        Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
         """
         return pulumi.get(self, "password")
 
@@ -659,19 +673,18 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] custom_oss_bucket: Custom OSS Bucket name
-        :param pulumi.Input[str] default_oss_bucket: Whether to use the default OSS Bucket
-        :param pulumi.Input[str] image_scanner: Security scan engine
+        :param pulumi.Input[str] default_oss_bucket: Whether to use the default OSS Bucket. Value:
+        :param pulumi.Input[str] image_scanner: The security scan engine used by the Enterprise Edition of Container Image Service. Value:
+               - `ACR`: Uses the Trivy scan engine provided by default.
+               - `SAS`: uses the enhanced cloud security scan engine.
         :param pulumi.Input[str] instance_name: InstanceName
         :param pulumi.Input[str] instance_type: The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
-               
-               Basic: Basic instance
-               
-               Standard: Standard instance
-               
-               Advanced: Advanced Edition Instance
+               - `Basic`: Basic instance
+               - `Standard`: Standard instance
+               - `Advanced`: Advanced Edition Instance
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-        :param pulumi.Input[str] password: Permanent access credentials of the instance
+        :param pulumi.Input[str] password: Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
         :param pulumi.Input[str] payment_type: Payment type, value:
                - Subscription: Prepaid.
         :param pulumi.Input[int] period: Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
@@ -794,6 +807,7 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["created_time"] = None
             __props__.__dict__["end_time"] = None
+            __props__.__dict__["instance_endpoints"] = None
             __props__.__dict__["region_id"] = None
             __props__.__dict__["status"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
@@ -814,6 +828,7 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
             default_oss_bucket: Optional[pulumi.Input[str]] = None,
             end_time: Optional[pulumi.Input[str]] = None,
             image_scanner: Optional[pulumi.Input[str]] = None,
+            instance_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegistryEnterpriseInstanceInstanceEndpointArgs', 'RegistryEnterpriseInstanceInstanceEndpointArgsDict']]]]] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
@@ -836,20 +851,20 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: The creation time of the resource
         :param pulumi.Input[str] created_time: . Field 'created_time' has been deprecated from provider version 1.235.0. New field 'create_time' instead.
         :param pulumi.Input[str] custom_oss_bucket: Custom OSS Bucket name
-        :param pulumi.Input[str] default_oss_bucket: Whether to use the default OSS Bucket
+        :param pulumi.Input[str] default_oss_bucket: Whether to use the default OSS Bucket. Value:
         :param pulumi.Input[str] end_time: Expiration Time
-        :param pulumi.Input[str] image_scanner: Security scan engine
+        :param pulumi.Input[str] image_scanner: The security scan engine used by the Enterprise Edition of Container Image Service. Value:
+               - `ACR`: Uses the Trivy scan engine provided by default.
+               - `SAS`: uses the enhanced cloud security scan engine.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegistryEnterpriseInstanceInstanceEndpointArgs', 'RegistryEnterpriseInstanceInstanceEndpointArgsDict']]]] instance_endpoints: (Available since v1.240.0) Instance Network Access Endpoint List
         :param pulumi.Input[str] instance_name: InstanceName
         :param pulumi.Input[str] instance_type: The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
-               
-               Basic: Basic instance
-               
-               Standard: Standard instance
-               
-               Advanced: Advanced Edition Instance
+               - `Basic`: Basic instance
+               - `Standard`: Standard instance
+               - `Advanced`: Advanced Edition Instance
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-        :param pulumi.Input[str] password: Permanent access credentials of the instance
+        :param pulumi.Input[str] password: Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
         :param pulumi.Input[str] payment_type: Payment type, value:
                - Subscription: Prepaid.
         :param pulumi.Input[int] period: Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
@@ -879,6 +894,7 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         __props__.__dict__["default_oss_bucket"] = default_oss_bucket
         __props__.__dict__["end_time"] = end_time
         __props__.__dict__["image_scanner"] = image_scanner
+        __props__.__dict__["instance_endpoints"] = instance_endpoints
         __props__.__dict__["instance_name"] = instance_name
         __props__.__dict__["instance_type"] = instance_type
         __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
@@ -922,7 +938,7 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
     @pulumi.getter(name="defaultOssBucket")
     def default_oss_bucket(self) -> pulumi.Output[Optional[str]]:
         """
-        Whether to use the default OSS Bucket
+        Whether to use the default OSS Bucket. Value:
         """
         return pulumi.get(self, "default_oss_bucket")
 
@@ -938,9 +954,19 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
     @pulumi.getter(name="imageScanner")
     def image_scanner(self) -> pulumi.Output[Optional[str]]:
         """
-        Security scan engine
+        The security scan engine used by the Enterprise Edition of Container Image Service. Value:
+        - `ACR`: Uses the Trivy scan engine provided by default.
+        - `SAS`: uses the enhanced cloud security scan engine.
         """
         return pulumi.get(self, "image_scanner")
+
+    @property
+    @pulumi.getter(name="instanceEndpoints")
+    def instance_endpoints(self) -> pulumi.Output[Sequence['outputs.RegistryEnterpriseInstanceInstanceEndpoint']]:
+        """
+        (Available since v1.240.0) Instance Network Access Endpoint List
+        """
+        return pulumi.get(self, "instance_endpoints")
 
     @property
     @pulumi.getter(name="instanceName")
@@ -955,12 +981,9 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
     def instance_type(self) -> pulumi.Output[str]:
         """
         The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
-
-        Basic: Basic instance
-
-        Standard: Standard instance
-
-        Advanced: Advanced Edition Instance
+        - `Basic`: Basic instance
+        - `Standard`: Standard instance
+        - `Advanced`: Advanced Edition Instance
         """
         return pulumi.get(self, "instance_type")
 
@@ -984,7 +1007,7 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[Optional[str]]:
         """
-        Permanent access credentials of the instance
+        Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
         """
         return pulumi.get(self, "password")
 

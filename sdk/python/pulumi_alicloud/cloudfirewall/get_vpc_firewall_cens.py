@@ -197,7 +197,7 @@ def get_vpc_firewall_cens(cen_id: Optional[str] = None,
     """
     This data source provides Cloud Firewall Vpc Firewall Cen available to the user.[What is Vpc Firewall Cen](https://www.alibabacloud.com/help/en/cloud-firewall/latest/describevpcfirewallcenlist)
 
-    > **NOTE:** Available in 1.194.0+
+    > **NOTE:** Available since v1.194.0.
 
     ## Example Usage
 
@@ -268,7 +268,7 @@ def get_vpc_firewall_cens_output(cen_id: Optional[pulumi.Input[Optional[str]]] =
     """
     This data source provides Cloud Firewall Vpc Firewall Cen available to the user.[What is Vpc Firewall Cen](https://www.alibabacloud.com/help/en/cloud-firewall/latest/describevpcfirewallcenlist)
 
-    > **NOTE:** Available in 1.194.0+
+    > **NOTE:** Available since v1.194.0.
 
     ## Example Usage
 

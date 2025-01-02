@@ -109,14 +109,14 @@ public final class GetAggregateConfigRulesPlainArgs extends com.pulumi.resources
     }
 
     /**
-     * Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
+     * The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
      * 
      */
     @Import(name="riskLevel")
     private @Nullable Integer riskLevel;
 
     /**
-     * @return Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
+     * @return The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
      * 
      */
     public Optional<Integer> riskLevel() {
@@ -246,7 +246,7 @@ public final class GetAggregateConfigRulesPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param riskLevel Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
+         * @param riskLevel The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
          * 
          * @return builder
          * 

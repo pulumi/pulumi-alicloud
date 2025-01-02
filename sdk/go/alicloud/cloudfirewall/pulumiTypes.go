@@ -2543,8 +2543,9 @@ func (o GetControlPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetControl
 
 type GetInstanceMembersMember struct {
 	// When the cloud firewall member account was added.> use second-level timestamp format.
-	CreateTime int    `pulumi:"createTime"`
-	Id         string `pulumi:"id"`
+	CreateTime int `pulumi:"createTime"`
+	// The instance id.
+	Id string `pulumi:"id"`
 	// Remarks of cloud firewall member accounts.
 	MemberDesc string `pulumi:"memberDesc"`
 	// The name of the cloud firewall member account.
@@ -2570,8 +2571,9 @@ type GetInstanceMembersMemberInput interface {
 
 type GetInstanceMembersMemberArgs struct {
 	// When the cloud firewall member account was added.> use second-level timestamp format.
-	CreateTime pulumi.IntInput    `pulumi:"createTime"`
-	Id         pulumi.StringInput `pulumi:"id"`
+	CreateTime pulumi.IntInput `pulumi:"createTime"`
+	// The instance id.
+	Id pulumi.StringInput `pulumi:"id"`
 	// Remarks of cloud firewall member accounts.
 	MemberDesc pulumi.StringInput `pulumi:"memberDesc"`
 	// The name of the cloud firewall member account.
@@ -2640,6 +2642,7 @@ func (o GetInstanceMembersMemberOutput) CreateTime() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceMembersMember) int { return v.CreateTime }).(pulumi.IntOutput)
 }
 
+// The instance id.
 func (o GetInstanceMembersMemberOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceMembersMember) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -3552,7 +3555,7 @@ func (o GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput) 
 }
 
 type GetVpcFirewallControlPoliciesPolicy struct {
-	// Access control over VPC firewalls are set in the access traffic via Alibaba cloud firewall way (ACT).
+	// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
 	AclAction string `pulumi:"aclAction"`
 	// Access control over VPC firewalls strategy unique identifier.
 	AclUuid string `pulumi:"aclUuid"`
@@ -3589,6 +3592,8 @@ type GetVpcFirewallControlPoliciesPolicy struct {
 	// Access control over VPC firewalls strategy access traffic of the protocol type.
 	Proto string `pulumi:"proto"`
 	// The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
+	// - **true**: Enable access control policies
+	// - **false**: does not enable access control policies.
 	Release bool `pulumi:"release"`
 	// Access control over VPC firewalls strategy in the source address.
 	Source string `pulumi:"source"`
@@ -3598,7 +3603,9 @@ type GetVpcFirewallControlPoliciesPolicy struct {
 	SourceGroupType string `pulumi:"sourceGroupType"`
 	// Access control over VPC firewalls policy source address type.
 	SourceType string `pulumi:"sourceType"`
-	// The ID of the VPC firewall instance.
+	// The ID of the VPC firewall instance. Value:
+	// - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
+	// - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
 	VpcFirewallId string `pulumi:"vpcFirewallId"`
 }
 
@@ -3614,7 +3621,7 @@ type GetVpcFirewallControlPoliciesPolicyInput interface {
 }
 
 type GetVpcFirewallControlPoliciesPolicyArgs struct {
-	// Access control over VPC firewalls are set in the access traffic via Alibaba cloud firewall way (ACT).
+	// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
 	AclAction pulumi.StringInput `pulumi:"aclAction"`
 	// Access control over VPC firewalls strategy unique identifier.
 	AclUuid pulumi.StringInput `pulumi:"aclUuid"`
@@ -3651,6 +3658,8 @@ type GetVpcFirewallControlPoliciesPolicyArgs struct {
 	// Access control over VPC firewalls strategy access traffic of the protocol type.
 	Proto pulumi.StringInput `pulumi:"proto"`
 	// The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
+	// - **true**: Enable access control policies
+	// - **false**: does not enable access control policies.
 	Release pulumi.BoolInput `pulumi:"release"`
 	// Access control over VPC firewalls strategy in the source address.
 	Source pulumi.StringInput `pulumi:"source"`
@@ -3660,7 +3669,9 @@ type GetVpcFirewallControlPoliciesPolicyArgs struct {
 	SourceGroupType pulumi.StringInput `pulumi:"sourceGroupType"`
 	// Access control over VPC firewalls policy source address type.
 	SourceType pulumi.StringInput `pulumi:"sourceType"`
-	// The ID of the VPC firewall instance.
+	// The ID of the VPC firewall instance. Value:
+	// - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
+	// - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
 	VpcFirewallId pulumi.StringInput `pulumi:"vpcFirewallId"`
 }
 
@@ -3715,7 +3726,7 @@ func (o GetVpcFirewallControlPoliciesPolicyOutput) ToGetVpcFirewallControlPolici
 	return o
 }
 
-// Access control over VPC firewalls are set in the access traffic via Alibaba cloud firewall way (ACT).
+// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
 func (o GetVpcFirewallControlPoliciesPolicyOutput) AclAction() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcFirewallControlPoliciesPolicy) string { return v.AclAction }).(pulumi.StringOutput)
 }
@@ -3806,6 +3817,8 @@ func (o GetVpcFirewallControlPoliciesPolicyOutput) Proto() pulumi.StringOutput {
 }
 
 // The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
+// - **true**: Enable access control policies
+// - **false**: does not enable access control policies.
 func (o GetVpcFirewallControlPoliciesPolicyOutput) Release() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetVpcFirewallControlPoliciesPolicy) bool { return v.Release }).(pulumi.BoolOutput)
 }
@@ -3830,7 +3843,9 @@ func (o GetVpcFirewallControlPoliciesPolicyOutput) SourceType() pulumi.StringOut
 	return o.ApplyT(func(v GetVpcFirewallControlPoliciesPolicy) string { return v.SourceType }).(pulumi.StringOutput)
 }
 
-// The ID of the VPC firewall instance.
+// The ID of the VPC firewall instance. Value:
+// - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
+// - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
 func (o GetVpcFirewallControlPoliciesPolicyOutput) VpcFirewallId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcFirewallControlPoliciesPolicy) string { return v.VpcFirewallId }).(pulumi.StringOutput)
 }

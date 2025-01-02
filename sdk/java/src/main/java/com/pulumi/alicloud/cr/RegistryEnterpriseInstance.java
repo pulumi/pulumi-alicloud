@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cr;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.cr.RegistryEnterpriseInstanceArgs;
 import com.pulumi.alicloud.cr.inputs.RegistryEnterpriseInstanceState;
+import com.pulumi.alicloud.cr.outputs.RegistryEnterpriseInstanceInstanceEndpoint;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -133,14 +134,14 @@ public class RegistryEnterpriseInstance extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.customOssBucket);
     }
     /**
-     * Whether to use the default OSS Bucket
+     * Whether to use the default OSS Bucket. Value:
      * 
      */
     @Export(name="defaultOssBucket", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> defaultOssBucket;
 
     /**
-     * @return Whether to use the default OSS Bucket
+     * @return Whether to use the default OSS Bucket. Value:
      * 
      */
     public Output<Optional<String>> defaultOssBucket() {
@@ -161,18 +162,36 @@ public class RegistryEnterpriseInstance extends com.pulumi.resources.CustomResou
         return this.endTime;
     }
     /**
-     * Security scan engine
+     * The security scan engine used by the Enterprise Edition of Container Image Service. Value:
+     * - `ACR`: Uses the Trivy scan engine provided by default.
+     * - `SAS`: uses the enhanced cloud security scan engine.
      * 
      */
     @Export(name="imageScanner", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> imageScanner;
 
     /**
-     * @return Security scan engine
+     * @return The security scan engine used by the Enterprise Edition of Container Image Service. Value:
+     * - `ACR`: Uses the Trivy scan engine provided by default.
+     * - `SAS`: uses the enhanced cloud security scan engine.
      * 
      */
     public Output<Optional<String>> imageScanner() {
         return Codegen.optional(this.imageScanner);
+    }
+    /**
+     * (Available since v1.240.0) Instance Network Access Endpoint List
+     * 
+     */
+    @Export(name="instanceEndpoints", refs={List.class,RegistryEnterpriseInstanceInstanceEndpoint.class}, tree="[0,1]")
+    private Output<List<RegistryEnterpriseInstanceInstanceEndpoint>> instanceEndpoints;
+
+    /**
+     * @return (Available since v1.240.0) Instance Network Access Endpoint List
+     * 
+     */
+    public Output<List<RegistryEnterpriseInstanceInstanceEndpoint>> instanceEndpoints() {
+        return this.instanceEndpoints;
     }
     /**
      * InstanceName
@@ -190,12 +209,9 @@ public class RegistryEnterpriseInstance extends com.pulumi.resources.CustomResou
     }
     /**
      * The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
-     * 
-     * Basic: Basic instance
-     * 
-     * Standard: Standard instance
-     * 
-     * Advanced: Advanced Edition Instance
+     * - `Basic`: Basic instance
+     * - `Standard`: Standard instance
+     * - `Advanced`: Advanced Edition Instance
      * 
      */
     @Export(name="instanceType", refs={String.class}, tree="[0]")
@@ -203,12 +219,9 @@ public class RegistryEnterpriseInstance extends com.pulumi.resources.CustomResou
 
     /**
      * @return The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
-     * 
-     * Basic: Basic instance
-     * 
-     * Standard: Standard instance
-     * 
-     * Advanced: Advanced Edition Instance
+     * - `Basic`: Basic instance
+     * - `Standard`: Standard instance
+     * - `Advanced`: Advanced Edition Instance
      * 
      */
     public Output<String> instanceType() {
@@ -243,14 +256,14 @@ public class RegistryEnterpriseInstance extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.kmsEncryptionContext);
     }
     /**
-     * Permanent access credentials of the instance
+     * Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
-     * @return Permanent access credentials of the instance
+     * @return Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
      * 
      */
     public Output<Optional<String>> password() {

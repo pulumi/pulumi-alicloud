@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// <summary>
     /// Provides a Resource Manager Control Policy Attachment resource.
     /// 
-    /// For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/latest/api-resourcedirectorymaster-2022-04-19-attachcontrolpolicy).
+    /// For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/resource-directory/developer-reference/api-resourcemanager-2020-03-31-attachcontrolpolicy).
     /// 
     /// &gt; **NOTE:** Available since v1.120.0.
     /// 
@@ -30,14 +30,14 @@ namespace Pulumi.AliCloud.ResourceManager
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
     ///     });
     /// 
-    ///     var example = new AliCloud.ResourceManager.ControlPolicy("example", new()
+    ///     var defaultControlPolicy = new AliCloud.ResourceManager.ControlPolicy("default", new()
     ///     {
     ///         ControlPolicyName = name,
     ///         Description = name,
@@ -60,15 +60,15 @@ namespace Pulumi.AliCloud.ResourceManager
     /// ",
     ///     });
     /// 
-    ///     var exampleFolder = new AliCloud.ResourceManager.Folder("example", new()
+    ///     var defaultFolder = new AliCloud.ResourceManager.Folder("default", new()
     ///     {
     ///         FolderName = $"{name}-{@default.Result}",
     ///     });
     /// 
-    ///     var exampleControlPolicyAttachment = new AliCloud.ResourceManager.ControlPolicyAttachment("example", new()
+    ///     var defaultControlPolicyAttachment = new AliCloud.ResourceManager.ControlPolicyAttachment("default", new()
     ///     {
-    ///         PolicyId = example.Id,
-    ///         TargetId = exampleFolder.Id,
+    ///         PolicyId = defaultControlPolicy.Id,
+    ///         TargetId = defaultFolder.Id,
     ///     });
     /// 
     /// });
@@ -86,13 +86,13 @@ namespace Pulumi.AliCloud.ResourceManager
     public partial class ControlPolicyAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of control policy.
+        /// The ID of the access control policy.
         /// </summary>
         [Output("policyId")]
         public Output<string> PolicyId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of target.
+        /// The ID of the object to which you want to attach the access control policy.
         /// </summary>
         [Output("targetId")]
         public Output<string> TargetId { get; private set; } = null!;
@@ -144,13 +144,13 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class ControlPolicyAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of control policy.
+        /// The ID of the access control policy.
         /// </summary>
         [Input("policyId", required: true)]
         public Input<string> PolicyId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of target.
+        /// The ID of the object to which you want to attach the access control policy.
         /// </summary>
         [Input("targetId", required: true)]
         public Input<string> TargetId { get; set; } = null!;
@@ -164,13 +164,13 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class ControlPolicyAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of control policy.
+        /// The ID of the access control policy.
         /// </summary>
         [Input("policyId")]
         public Input<string>? PolicyId { get; set; }
 
         /// <summary>
-        /// The ID of target.
+        /// The ID of the object to which you want to attach the access control policy.
         /// </summary>
         [Input("targetId")]
         public Input<string>? TargetId { get; set; }

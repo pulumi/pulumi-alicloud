@@ -170,11 +170,11 @@ type GetDataLimitsLimit struct {
 	LocalName string `pulumi:"localName"`
 	// The retention period of raw logs after you enable the log auditing feature.
 	LogStoreDay int `pulumi:"logStoreDay"`
-	// The ID of the data asset.
+	// The parent asset ID of the data asset.
 	ParentId string `pulumi:"parentId"`
 	// The port that is used to connect to the database.
 	Port int `pulumi:"port"`
-	// The type of the service to which the data asset belongs.
+	// The type of the service to which the data asset belongs. Valid values: `MaxCompute`, `OSS`, `RDS`.
 	ResourceType string `pulumi:"resourceType"`
 	// The name of the user who owns the data asset.
 	UserName string `pulumi:"userName"`
@@ -206,11 +206,11 @@ type GetDataLimitsLimitArgs struct {
 	LocalName pulumi.StringInput `pulumi:"localName"`
 	// The retention period of raw logs after you enable the log auditing feature.
 	LogStoreDay pulumi.IntInput `pulumi:"logStoreDay"`
-	// The ID of the data asset.
+	// The parent asset ID of the data asset.
 	ParentId pulumi.StringInput `pulumi:"parentId"`
 	// The port that is used to connect to the database.
 	Port pulumi.IntInput `pulumi:"port"`
-	// The type of the service to which the data asset belongs.
+	// The type of the service to which the data asset belongs. Valid values: `MaxCompute`, `OSS`, `RDS`.
 	ResourceType pulumi.StringInput `pulumi:"resourceType"`
 	// The name of the user who owns the data asset.
 	UserName pulumi.StringInput `pulumi:"userName"`
@@ -302,7 +302,7 @@ func (o GetDataLimitsLimitOutput) LogStoreDay() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDataLimitsLimit) int { return v.LogStoreDay }).(pulumi.IntOutput)
 }
 
-// The ID of the data asset.
+// The parent asset ID of the data asset.
 func (o GetDataLimitsLimitOutput) ParentId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataLimitsLimit) string { return v.ParentId }).(pulumi.StringOutput)
 }
@@ -312,7 +312,7 @@ func (o GetDataLimitsLimitOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDataLimitsLimit) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// The type of the service to which the data asset belongs.
+// The type of the service to which the data asset belongs. Valid values: `MaxCompute`, `OSS`, `RDS`.
 func (o GetDataLimitsLimitOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataLimitsLimit) string { return v.ResourceType }).(pulumi.StringOutput)
 }
@@ -518,7 +518,7 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 }
 
 type GetRulesRule struct {
-	// Sensitive Data Identification Rules for the Type of.
+	// Sensitive Data Identification Rules for the Type of. Valid values:
 	Category int `pulumi:"category"`
 	// Sensitive Data Identification Rules Belongs Type Name.
 	CategoryName string `pulumi:"categoryName"`
@@ -528,7 +528,7 @@ type GetRulesRule struct {
 	ContentCategory string `pulumi:"contentCategory"`
 	// Sensitive Data Identification Rules the Creation Time of the Number of Milliseconds.
 	CreateTime string `pulumi:"createTime"`
-	// Sensitive Data Identification Rules of Type. 0: the Built-in 1: The User-Defined.
+	// Sensitive Data Identification Rules of Type. Valid values:
 	CustomType int `pulumi:"customType"`
 	// Sensitive Data Identification a Description of the Rule Information.
 	Description string `pulumi:"description"`
@@ -546,9 +546,9 @@ type GetRulesRule struct {
 	Name string `pulumi:"name"`
 	// Product Code.
 	ProductCode string `pulumi:"productCode"`
-	// Product ID.
+	// Product ID. Valid values:
 	ProductId string `pulumi:"productId"`
-	// Sensitive Data Identification Rules of Risk Level ID. Valid values:1:S1, Weak Risk Level. 2:S2, Medium Risk Level. 3:S3 High Risk Level. 4:S4, the Highest Risk Level.
+	// Sensitive Data Identification Rules of Risk Level ID. Valid values:
 	RiskLevelId string `pulumi:"riskLevelId"`
 	// Sensitive Data Identification Rules the Risk Level of. S1: Weak Risk Level S2: Moderate Risk Level S3: High Risk Level S4: the Highest Risk Level.
 	RiskLevelName string `pulumi:"riskLevelName"`
@@ -562,7 +562,7 @@ type GetRulesRule struct {
 	Target string `pulumi:"target"`
 	// The User ID.
 	UserId string `pulumi:"userId"`
-	// The Level of Risk.
+	// The Level of Risk. Valid values:
 	WarnLevel int `pulumi:"warnLevel"`
 }
 
@@ -578,7 +578,7 @@ type GetRulesRuleInput interface {
 }
 
 type GetRulesRuleArgs struct {
-	// Sensitive Data Identification Rules for the Type of.
+	// Sensitive Data Identification Rules for the Type of. Valid values:
 	Category pulumi.IntInput `pulumi:"category"`
 	// Sensitive Data Identification Rules Belongs Type Name.
 	CategoryName pulumi.StringInput `pulumi:"categoryName"`
@@ -588,7 +588,7 @@ type GetRulesRuleArgs struct {
 	ContentCategory pulumi.StringInput `pulumi:"contentCategory"`
 	// Sensitive Data Identification Rules the Creation Time of the Number of Milliseconds.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// Sensitive Data Identification Rules of Type. 0: the Built-in 1: The User-Defined.
+	// Sensitive Data Identification Rules of Type. Valid values:
 	CustomType pulumi.IntInput `pulumi:"customType"`
 	// Sensitive Data Identification a Description of the Rule Information.
 	Description pulumi.StringInput `pulumi:"description"`
@@ -606,9 +606,9 @@ type GetRulesRuleArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// Product Code.
 	ProductCode pulumi.StringInput `pulumi:"productCode"`
-	// Product ID.
+	// Product ID. Valid values:
 	ProductId pulumi.StringInput `pulumi:"productId"`
-	// Sensitive Data Identification Rules of Risk Level ID. Valid values:1:S1, Weak Risk Level. 2:S2, Medium Risk Level. 3:S3 High Risk Level. 4:S4, the Highest Risk Level.
+	// Sensitive Data Identification Rules of Risk Level ID. Valid values:
 	RiskLevelId pulumi.StringInput `pulumi:"riskLevelId"`
 	// Sensitive Data Identification Rules the Risk Level of. S1: Weak Risk Level S2: Moderate Risk Level S3: High Risk Level S4: the Highest Risk Level.
 	RiskLevelName pulumi.StringInput `pulumi:"riskLevelName"`
@@ -622,7 +622,7 @@ type GetRulesRuleArgs struct {
 	Target pulumi.StringInput `pulumi:"target"`
 	// The User ID.
 	UserId pulumi.StringInput `pulumi:"userId"`
-	// The Level of Risk.
+	// The Level of Risk. Valid values:
 	WarnLevel pulumi.IntInput `pulumi:"warnLevel"`
 }
 
@@ -677,7 +677,7 @@ func (o GetRulesRuleOutput) ToGetRulesRuleOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Sensitive Data Identification Rules for the Type of.
+// Sensitive Data Identification Rules for the Type of. Valid values:
 func (o GetRulesRuleOutput) Category() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRulesRule) int { return v.Category }).(pulumi.IntOutput)
 }
@@ -702,7 +702,7 @@ func (o GetRulesRuleOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRule) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Sensitive Data Identification Rules of Type. 0: the Built-in 1: The User-Defined.
+// Sensitive Data Identification Rules of Type. Valid values:
 func (o GetRulesRuleOutput) CustomType() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRulesRule) int { return v.CustomType }).(pulumi.IntOutput)
 }
@@ -747,12 +747,12 @@ func (o GetRulesRuleOutput) ProductCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRule) string { return v.ProductCode }).(pulumi.StringOutput)
 }
 
-// Product ID.
+// Product ID. Valid values:
 func (o GetRulesRuleOutput) ProductId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRule) string { return v.ProductId }).(pulumi.StringOutput)
 }
 
-// Sensitive Data Identification Rules of Risk Level ID. Valid values:1:S1, Weak Risk Level. 2:S2, Medium Risk Level. 3:S3 High Risk Level. 4:S4, the Highest Risk Level.
+// Sensitive Data Identification Rules of Risk Level ID. Valid values:
 func (o GetRulesRuleOutput) RiskLevelId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRule) string { return v.RiskLevelId }).(pulumi.StringOutput)
 }
@@ -787,7 +787,7 @@ func (o GetRulesRuleOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRule) string { return v.UserId }).(pulumi.StringOutput)
 }
 
-// The Level of Risk.
+// The Level of Risk. Valid values:
 func (o GetRulesRuleOutput) WarnLevel() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRulesRule) int { return v.WarnLevel }).(pulumi.IntOutput)
 }

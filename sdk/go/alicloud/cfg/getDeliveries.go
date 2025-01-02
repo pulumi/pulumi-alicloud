@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Config Deliveries of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.171.0+.
+// > **NOTE:** Available since v1.171.0.
 //
 // ## Example Usage
 //
@@ -69,14 +69,17 @@ type GetDeliveriesArgs struct {
 
 // A collection of values returned by getDeliveries.
 type GetDeliveriesResult struct {
+	// A list of Config Deliveries. Each element contains the following attributes:
 	Deliveries []GetDeliveriesDelivery `pulumi:"deliveries"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Config Delivery names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	Status     *int     `pulumi:"status"`
+	// The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
+	Status *int `pulumi:"status"`
 }
 
 func GetDeliveriesOutput(ctx *pulumi.Context, args GetDeliveriesOutputArgs, opts ...pulumi.InvokeOption) GetDeliveriesResultOutput {
@@ -119,6 +122,7 @@ func (o GetDeliveriesResultOutput) ToGetDeliveriesResultOutputWithContext(ctx co
 	return o
 }
 
+// A list of Config Deliveries. Each element contains the following attributes:
 func (o GetDeliveriesResultOutput) Deliveries() GetDeliveriesDeliveryArrayOutput {
 	return o.ApplyT(func(v GetDeliveriesResult) []GetDeliveriesDelivery { return v.Deliveries }).(GetDeliveriesDeliveryArrayOutput)
 }
@@ -136,6 +140,7 @@ func (o GetDeliveriesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDeliveriesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Config Delivery names.
 func (o GetDeliveriesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDeliveriesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -144,6 +149,7 @@ func (o GetDeliveriesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDeliveriesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
 func (o GetDeliveriesResultOutput) Status() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetDeliveriesResult) *int { return v.Status }).(pulumi.IntPtrOutput)
 }

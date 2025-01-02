@@ -82,6 +82,9 @@ class GetBandwidthPackagesResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Bandwidth Package names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -92,16 +95,25 @@ class GetBandwidthPackagesResult:
     @property
     @pulumi.getter
     def packages(self) -> Sequence['outputs.GetBandwidthPackagesPackageResult']:
+        """
+        A list of Ga Bandwidth Packages. Each element contains the following attributes:
+        """
         return pulumi.get(self, "packages")
 
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        The status of the bandwidth plan.
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def type(self) -> Optional[str]:
+        """
+        The type of the bandwidth packet. China station only supports return to basic.
+        """
         return pulumi.get(self, "type")
 
 
@@ -132,7 +144,7 @@ def get_bandwidth_packages(enable_details: Optional[bool] = None,
     """
     This data source provides the Global Accelerator (GA) Bandwidth Packages of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.112.0+.
+    > **NOTE:** Available since v1.112.0.
 
     ## Example Usage
 
@@ -185,7 +197,7 @@ def get_bandwidth_packages_output(enable_details: Optional[pulumi.Input[Optional
     """
     This data source provides the Global Accelerator (GA) Bandwidth Packages of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.112.0+.
+    > **NOTE:** Available since v1.112.0.
 
     ## Example Usage
 

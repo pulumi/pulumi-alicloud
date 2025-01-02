@@ -652,7 +652,8 @@ class GetAggregateConfigRulesRuleResult(dict):
         :param str modified_timestamp: The timestamp when the rule was last modified.
         :param str region_ids_scope: The scope of resource region ids.
         :param str resource_group_ids_scope: The scope of resource group ids.
-        :param int risk_level: Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
+        :param Sequence[str] resource_types_scopes: The types of resources evaluated by the rule.
+        :param int risk_level: The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
         :param str source_identifier: The identifier of the managed rule or the arn of the custom function.
         :param str source_owner: The source owner of the Config Rule.
         :param str status: The state of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
@@ -823,13 +824,16 @@ class GetAggregateConfigRulesRuleResult(dict):
     @property
     @pulumi.getter(name="resourceTypesScopes")
     def resource_types_scopes(self) -> Sequence[str]:
+        """
+        The types of resources evaluated by the rule.
+        """
         return pulumi.get(self, "resource_types_scopes")
 
     @property
     @pulumi.getter(name="riskLevel")
     def risk_level(self) -> int:
         """
-        Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
+        The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
         """
         return pulumi.get(self, "risk_level")
 
@@ -1767,22 +1771,23 @@ class GetRulesRuleResult(dict):
                  tag_key_scope: str,
                  tag_value_scope: str):
         """
-        :param str account_id: The ID of the Alicloud account.
+        :param str account_id: The ID of the Alibaba Cloud account.
+        :param str compliance_pack_id: The compliance package ID.
         :param Sequence['GetRulesRuleComplianceArgs'] compliances: The information about the compliance evaluations based on the rule.
         :param str config_rule_arn: The ARN of the Config Rule.
         :param str config_rule_id: The ID of the Config Rule.
         :param str config_rule_state: Field `config_rule_state` has been deprecated from provider version 1.124.1. New field `status` instead.
-        :param str config_rule_trigger_types: (Available in 1.124.1+) A list of trigger types of config rule.
+        :param str config_rule_trigger_types: (Available since v1.124.1) A list of trigger types of config rule.
         :param str description: The description of the Config Rule.
         :param str event_source: Event source of the Config Rule.
-        :param str exclude_resource_ids_scope: (Available in 1.124.1+) The scope of exclude of resource ids.
+        :param str exclude_resource_ids_scope: (Available since v1.124.1) The scope of exclude of resource ids.
         :param str id: The ID of the Config Rule.
         :param Mapping[str, str] input_parameters: The input parameters of the Config Rule.
-        :param str maximum_execution_frequency: (Available in 1.124.1+) The frequency of maximum execution.
+        :param str maximum_execution_frequency: (Available since v1.124.1) The frequency of maximum execution.
         :param str modified_timestamp: the timestamp of the Config Rule modified.
-        :param str region_ids_scope: (Available in 1.124.1+) The scope of region ids.
-        :param str resource_group_ids_scope: (Available in 1.124.1+) The scope of resource group ids.
-        :param Sequence[str] resource_types_scopes: (Available in 1.124.1+) The scope of resource types.
+        :param str region_ids_scope: (Available since v1.124.1) The scope of region ids.
+        :param str resource_group_ids_scope: (Available since v1.124.1) The scope of resource group ids.
+        :param Sequence[str] resource_types_scopes: (Available since v1.124.1) The scope of resource types.
         :param int risk_level: The risk level of Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
         :param str rule_name: The name of config rule.
         :param Sequence[str] scope_compliance_resource_types: The types of the resources to be evaluated against the rule.
@@ -1791,8 +1796,8 @@ class GetRulesRuleResult(dict):
         :param str source_maximum_execution_frequency: Rule execution cycle.
         :param str source_owner: The source owner of the Config Rule.
         :param str status: The status of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
-        :param str tag_key_scope: (Available in 1.124.1+) The scope of tag key.
-        :param str tag_value_scope: (Available in 1.124.1+) The scope of tag value.
+        :param str tag_key_scope: (Available since v1.124.1) The scope of tag key.
+        :param str tag_value_scope: (Available since v1.124.1) The scope of tag value.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "compliance_pack_id", compliance_pack_id)
@@ -1826,13 +1831,16 @@ class GetRulesRuleResult(dict):
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
         """
-        The ID of the Alicloud account.
+        The ID of the Alibaba Cloud account.
         """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="compliancePackId")
     def compliance_pack_id(self) -> str:
+        """
+        The compliance package ID.
+        """
         return pulumi.get(self, "compliance_pack_id")
 
     @property
@@ -1871,7 +1879,7 @@ class GetRulesRuleResult(dict):
     @pulumi.getter(name="configRuleTriggerTypes")
     def config_rule_trigger_types(self) -> str:
         """
-        (Available in 1.124.1+) A list of trigger types of config rule.
+        (Available since v1.124.1) A list of trigger types of config rule.
         """
         return pulumi.get(self, "config_rule_trigger_types")
 
@@ -1895,7 +1903,7 @@ class GetRulesRuleResult(dict):
     @pulumi.getter(name="excludeResourceIdsScope")
     def exclude_resource_ids_scope(self) -> str:
         """
-        (Available in 1.124.1+) The scope of exclude of resource ids.
+        (Available since v1.124.1) The scope of exclude of resource ids.
         """
         return pulumi.get(self, "exclude_resource_ids_scope")
 
@@ -1919,7 +1927,7 @@ class GetRulesRuleResult(dict):
     @pulumi.getter(name="maximumExecutionFrequency")
     def maximum_execution_frequency(self) -> str:
         """
-        (Available in 1.124.1+) The frequency of maximum execution.
+        (Available since v1.124.1) The frequency of maximum execution.
         """
         return pulumi.get(self, "maximum_execution_frequency")
 
@@ -1935,7 +1943,7 @@ class GetRulesRuleResult(dict):
     @pulumi.getter(name="regionIdsScope")
     def region_ids_scope(self) -> str:
         """
-        (Available in 1.124.1+) The scope of region ids.
+        (Available since v1.124.1) The scope of region ids.
         """
         return pulumi.get(self, "region_ids_scope")
 
@@ -1943,7 +1951,7 @@ class GetRulesRuleResult(dict):
     @pulumi.getter(name="resourceGroupIdsScope")
     def resource_group_ids_scope(self) -> str:
         """
-        (Available in 1.124.1+) The scope of resource group ids.
+        (Available since v1.124.1) The scope of resource group ids.
         """
         return pulumi.get(self, "resource_group_ids_scope")
 
@@ -1951,7 +1959,7 @@ class GetRulesRuleResult(dict):
     @pulumi.getter(name="resourceTypesScopes")
     def resource_types_scopes(self) -> Sequence[str]:
         """
-        (Available in 1.124.1+) The scope of resource types.
+        (Available since v1.124.1) The scope of resource types.
         """
         return pulumi.get(self, "resource_types_scopes")
 
@@ -2023,7 +2031,7 @@ class GetRulesRuleResult(dict):
     @pulumi.getter(name="tagKeyScope")
     def tag_key_scope(self) -> str:
         """
-        (Available in 1.124.1+) The scope of tag key.
+        (Available since v1.124.1) The scope of tag key.
         """
         return pulumi.get(self, "tag_key_scope")
 
@@ -2031,7 +2039,7 @@ class GetRulesRuleResult(dict):
     @pulumi.getter(name="tagValueScope")
     def tag_value_scope(self) -> str:
         """
-        (Available in 1.124.1+) The scope of tag value.
+        (Available since v1.124.1) The scope of tag value.
         """
         return pulumi.get(self, "tag_value_scope")
 

@@ -135,6 +135,12 @@ namespace Pulumi.AliCloud.Ess
         [Output("scalingGroupId")]
         public Output<string> ScalingGroupId { get; private set; } = null!;
 
+        /// <summary>
+        /// The time zone of the notification. Specify the value in UTC. For example, a value of UTC+8 specifies that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 specifies that the time is 7 hours behind Coordinated Universal Time.
+        /// </summary>
+        [Output("timeZone")]
+        public Output<string?> TimeZone { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Notification resource with the given unique name, arguments, and options.
@@ -208,6 +214,12 @@ namespace Pulumi.AliCloud.Ess
         [Input("scalingGroupId", required: true)]
         public Input<string> ScalingGroupId { get; set; } = null!;
 
+        /// <summary>
+        /// The time zone of the notification. Specify the value in UTC. For example, a value of UTC+8 specifies that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 specifies that the time is 7 hours behind Coordinated Universal Time.
+        /// </summary>
+        [Input("timeZone")]
+        public Input<string>? TimeZone { get; set; }
+
         public NotificationArgs()
         {
         }
@@ -242,6 +254,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("scalingGroupId")]
         public Input<string>? ScalingGroupId { get; set; }
+
+        /// <summary>
+        /// The time zone of the notification. Specify the value in UTC. For example, a value of UTC+8 specifies that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 specifies that the time is 7 hours behind Coordinated Universal Time.
+        /// </summary>
+        [Input("timeZone")]
+        public Input<string>? TimeZone { get; set; }
 
         public NotificationState()
         {

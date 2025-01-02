@@ -1041,7 +1041,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="fwVpcNumber")
-    def fw_vpc_number(self) -> pulumi.Output[Optional[int]]:
+    def fw_vpc_number(self) -> pulumi.Output[int]:
         """
         The number of protected VPCs. It will be ignored when `spec = "premium_version"`. Valid values between 2 and 500.
         """

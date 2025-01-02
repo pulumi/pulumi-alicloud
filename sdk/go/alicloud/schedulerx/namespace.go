@@ -12,40 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Schedulerx Namespace resource.
-//
-// For information about Schedulerx Namespace and how to use it, see [What is Namespace](https://help.aliyun.com/document_detail/206088.html).
-//
-// > **NOTE:** Available in v1.173.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/schedulerx"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := schedulerx.NewNamespace(ctx, "example", &schedulerx.NamespaceArgs{
-//				NamespaceName: pulumi.String("example_value"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Schedulerx Namespace can be imported using the id, e.g.
@@ -56,10 +22,12 @@ import (
 type Namespace struct {
 	pulumi.CustomResourceState
 
-	// The description of the resource.
+	// Namespace description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The name of the resource.
+	// Namespace name.
 	NamespaceName pulumi.StringOutput `pulumi:"namespaceName"`
+	// Namespace uid.
+	NamespaceUid pulumi.StringOutput `pulumi:"namespaceUid"`
 }
 
 // NewNamespace registers a new resource with the given unique name, arguments, and options.
@@ -95,17 +63,21 @@ func GetNamespace(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Namespace resources.
 type namespaceState struct {
-	// The description of the resource.
+	// Namespace description.
 	Description *string `pulumi:"description"`
-	// The name of the resource.
+	// Namespace name.
 	NamespaceName *string `pulumi:"namespaceName"`
+	// Namespace uid.
+	NamespaceUid *string `pulumi:"namespaceUid"`
 }
 
 type NamespaceState struct {
-	// The description of the resource.
+	// Namespace description.
 	Description pulumi.StringPtrInput
-	// The name of the resource.
+	// Namespace name.
 	NamespaceName pulumi.StringPtrInput
+	// Namespace uid.
+	NamespaceUid pulumi.StringPtrInput
 }
 
 func (NamespaceState) ElementType() reflect.Type {
@@ -113,18 +85,22 @@ func (NamespaceState) ElementType() reflect.Type {
 }
 
 type namespaceArgs struct {
-	// The description of the resource.
+	// Namespace description.
 	Description *string `pulumi:"description"`
-	// The name of the resource.
+	// Namespace name.
 	NamespaceName string `pulumi:"namespaceName"`
+	// Namespace uid.
+	NamespaceUid *string `pulumi:"namespaceUid"`
 }
 
 // The set of arguments for constructing a Namespace resource.
 type NamespaceArgs struct {
-	// The description of the resource.
+	// Namespace description.
 	Description pulumi.StringPtrInput
-	// The name of the resource.
+	// Namespace name.
 	NamespaceName pulumi.StringInput
+	// Namespace uid.
+	NamespaceUid pulumi.StringPtrInput
 }
 
 func (NamespaceArgs) ElementType() reflect.Type {
@@ -214,14 +190,19 @@ func (o NamespaceOutput) ToNamespaceOutputWithContext(ctx context.Context) Names
 	return o
 }
 
-// The description of the resource.
+// Namespace description.
 func (o NamespaceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource.
+// Namespace name.
 func (o NamespaceOutput) NamespaceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.NamespaceName }).(pulumi.StringOutput)
+}
+
+// Namespace uid.
+func (o NamespaceOutput) NamespaceUid() pulumi.StringOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.NamespaceUid }).(pulumi.StringOutput)
 }
 
 type NamespaceArrayOutput struct{ *pulumi.OutputState }

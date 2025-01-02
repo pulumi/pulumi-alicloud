@@ -60,7 +60,7 @@ public final class GetDdosCooDomainResourcesResource {
      */
     private String id;
     /**
-     * @return A list ID of instance that you want to associate.
+     * @return A ID list of Ddoscoo instance.
      * 
      */
     private List<String> instanceIds;
@@ -170,7 +170,7 @@ public final class GetDdosCooDomainResourcesResource {
         return this.id;
     }
     /**
-     * @return A list ID of instance that you want to associate.
+     * @return A ID list of Ddoscoo instance.
      * 
      */
     public List<String> instanceIds() {

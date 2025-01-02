@@ -9,9 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Config Configuration Recorders of the current Alibaba Cloud user.
  *
- * > **NOTE:**  Available in 1.99.0+.
- *
- * > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+ * > **NOTE:** Available since v1.99.0.
  *
  * ## Example Usage
  *
@@ -58,9 +56,7 @@ export interface GetConfigurationRecordersResult {
 /**
  * This data source provides the Config Configuration Recorders of the current Alibaba Cloud user.
  *
- * > **NOTE:**  Available in 1.99.0+.
- *
- * > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+ * > **NOTE:** Available since v1.99.0.
  *
  * ## Example Usage
  *

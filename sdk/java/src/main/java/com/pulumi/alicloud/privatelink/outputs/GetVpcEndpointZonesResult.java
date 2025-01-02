@@ -20,9 +20,21 @@ public final class GetVpcEndpointZonesResult {
      * 
      */
     private String id;
+    /**
+     * @return A list of Vpc Endpoint Zone IDs.
+     * 
+     */
     private List<String> ids;
     private @Nullable String outputFile;
+    /**
+     * @return The Status of Vpc Endpoint Zone..
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return A list of Privatelink Vpc Endpoint Zones. Each element contains the following attributes:
+     * 
+     */
     private List<GetVpcEndpointZonesZone> zones;
 
     private GetVpcEndpointZonesResult() {}
@@ -36,15 +48,27 @@ public final class GetVpcEndpointZonesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of Vpc Endpoint Zone IDs.
+     * 
+     */
     public List<String> ids() {
         return this.ids;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The Status of Vpc Endpoint Zone..
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return A list of Privatelink Vpc Endpoint Zones. Each element contains the following attributes:
+     * 
+     */
     public List<GetVpcEndpointZonesZone> zones() {
         return this.zones;
     }

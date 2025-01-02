@@ -79,6 +79,7 @@ import * as alb from "./alb";
 import * as aligreen from "./aligreen";
 import * as alikafka from "./alikafka";
 import * as amqp from "./amqp";
+import * as apig from "./apig";
 import * as apigateway from "./apigateway";
 import * as arms from "./arms";
 import * as bastionhost from "./bastionhost";
@@ -217,6 +218,7 @@ export {
     aligreen,
     alikafka,
     amqp,
+    apig,
     apigateway,
     arms,
     bastionhost,

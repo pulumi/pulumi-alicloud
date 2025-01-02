@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.adb.outputs;
 
+import com.pulumi.alicloud.adb.outputs.GetClustersClusterAvailableKernelVersion;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
@@ -14,6 +15,7 @@ import java.util.Objects;
 @CustomType
 public final class GetClustersCluster {
     private Integer autoRenewPeriod;
+    private List<GetClustersClusterAvailableKernelVersion> availableKernelVersions;
     /**
      * @return Billing method. Value options: `PostPaid` for Pay-As-You-Go and `PrePaid` for subscription.
      * 
@@ -73,6 +75,7 @@ public final class GetClustersCluster {
      * 
      */
     private String id;
+    private String kernelVersion;
     /**
      * @return The LockMode of the ADB cluster.
      * 
@@ -126,6 +129,9 @@ public final class GetClustersCluster {
     private GetClustersCluster() {}
     public Integer autoRenewPeriod() {
         return this.autoRenewPeriod;
+    }
+    public List<GetClustersClusterAvailableKernelVersion> availableKernelVersions() {
+        return this.availableKernelVersions;
     }
     /**
      * @return Billing method. Value options: `PostPaid` for Pay-As-You-Go and `PrePaid` for subscription.
@@ -232,6 +238,9 @@ public final class GetClustersCluster {
     public String id() {
         return this.id;
     }
+    public String kernelVersion() {
+        return this.kernelVersion;
+    }
     /**
      * @return The LockMode of the ADB cluster.
      * 
@@ -330,6 +339,7 @@ public final class GetClustersCluster {
     @CustomType.Builder
     public static final class Builder {
         private Integer autoRenewPeriod;
+        private List<GetClustersClusterAvailableKernelVersion> availableKernelVersions;
         private String chargeType;
         private String commodityCode;
         private String computeResource;
@@ -353,6 +363,7 @@ public final class GetClustersCluster {
         private String expireTime;
         private String expired;
         private String id;
+        private String kernelVersion;
         private String lockMode;
         private String lockReason;
         private String maintainTime;
@@ -376,6 +387,7 @@ public final class GetClustersCluster {
         public Builder(GetClustersCluster defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoRenewPeriod = defaults.autoRenewPeriod;
+    	      this.availableKernelVersions = defaults.availableKernelVersions;
     	      this.chargeType = defaults.chargeType;
     	      this.commodityCode = defaults.commodityCode;
     	      this.computeResource = defaults.computeResource;
@@ -399,6 +411,7 @@ public final class GetClustersCluster {
     	      this.expireTime = defaults.expireTime;
     	      this.expired = defaults.expired;
     	      this.id = defaults.id;
+    	      this.kernelVersion = defaults.kernelVersion;
     	      this.lockMode = defaults.lockMode;
     	      this.lockReason = defaults.lockReason;
     	      this.maintainTime = defaults.maintainTime;
@@ -427,6 +440,17 @@ public final class GetClustersCluster {
             }
             this.autoRenewPeriod = autoRenewPeriod;
             return this;
+        }
+        @CustomType.Setter
+        public Builder availableKernelVersions(List<GetClustersClusterAvailableKernelVersion> availableKernelVersions) {
+            if (availableKernelVersions == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "availableKernelVersions");
+            }
+            this.availableKernelVersions = availableKernelVersions;
+            return this;
+        }
+        public Builder availableKernelVersions(GetClustersClusterAvailableKernelVersion... availableKernelVersions) {
+            return availableKernelVersions(List.of(availableKernelVersions));
         }
         @CustomType.Setter
         public Builder chargeType(String chargeType) {
@@ -613,6 +637,14 @@ public final class GetClustersCluster {
             return this;
         }
         @CustomType.Setter
+        public Builder kernelVersion(String kernelVersion) {
+            if (kernelVersion == null) {
+              throw new MissingRequiredPropertyException("GetClustersCluster", "kernelVersion");
+            }
+            this.kernelVersion = kernelVersion;
+            return this;
+        }
+        @CustomType.Setter
         public Builder lockMode(String lockMode) {
             if (lockMode == null) {
               throw new MissingRequiredPropertyException("GetClustersCluster", "lockMode");
@@ -770,6 +802,7 @@ public final class GetClustersCluster {
         public GetClustersCluster build() {
             final var _resultValue = new GetClustersCluster();
             _resultValue.autoRenewPeriod = autoRenewPeriod;
+            _resultValue.availableKernelVersions = availableKernelVersions;
             _resultValue.chargeType = chargeType;
             _resultValue.commodityCode = commodityCode;
             _resultValue.computeResource = computeResource;
@@ -793,6 +826,7 @@ public final class GetClustersCluster {
             _resultValue.expireTime = expireTime;
             _resultValue.expired = expired;
             _resultValue.id = id;
+            _resultValue.kernelVersion = kernelVersion;
             _resultValue.lockMode = lockMode;
             _resultValue.lockReason = lockReason;
             _resultValue.maintainTime = maintainTime;

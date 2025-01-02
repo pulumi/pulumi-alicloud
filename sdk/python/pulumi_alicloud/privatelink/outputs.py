@@ -34,7 +34,7 @@ class GetVpcEndpointConnectionsConnectionResult(dict):
         :param int bandwidth: The Bandwidth.
         :param str endpoint_id: The ID of the Vpc Endpoint.
         :param str id: The ID of the Vpc Endpoint Connection.
-        :param str status: The status of Vpc Endpoint Connection.
+        :param str status: The status of Vpc Endpoint Connection. Valid Values: `Connected`, `Connecting`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting`, `Pending` and `ServiceDeleted`.
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "endpoint_id", endpoint_id)
@@ -69,7 +69,7 @@ class GetVpcEndpointConnectionsConnectionResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of Vpc Endpoint Connection.
+        The status of Vpc Endpoint Connection. Valid Values: `Connected`, `Connecting`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting`, `Pending` and `ServiceDeleted`.
         """
         return pulumi.get(self, "status")
 
@@ -274,7 +274,7 @@ class GetVpcEndpointZonesZoneResult(dict):
         :param str eni_id: Terminal node network card.
         :param str eni_ip: IP address of the terminal node network card.
         :param str id: The ID of the Vpc Endpoint Zone.
-        :param str status: The Status of Vpc Endpoint Zone..
+        :param str status: The Status of Vpc Endpoint Zone. Valid Values: `Connected`, `Connecting`, `Creating`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting` and `Wait`.
         :param str vswitch_id: The vSwitch id.
         :param str zone_domain: The Zone Domain.
         :param str zone_id: The Zone Id.
@@ -315,7 +315,7 @@ class GetVpcEndpointZonesZoneResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The Status of Vpc Endpoint Zone..
+        The Status of Vpc Endpoint Zone. Valid Values: `Connected`, `Connecting`, `Creating`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting` and `Wait`.
         """
         return pulumi.get(self, "status")
 
@@ -373,7 +373,7 @@ class GetVpcEndpointsEndpointResult(dict):
         :param str service_name: The name of the terminal node service associated with the terminal node.
         :param str status: The status of Vpc Endpoint.
         :param str vpc_endpoint_name: The name of Vpc Endpoint.
-        :param str vpc_id: The private network to which the terminal node belongs.
+        :param str vpc_id: The private network to which the terminal node belongs..
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "connection_status", connection_status)
@@ -489,7 +489,7 @@ class GetVpcEndpointsEndpointResult(dict):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> str:
         """
-        The private network to which the terminal node belongs.
+        The private network to which the terminal node belongs..
         """
         return pulumi.get(self, "vpc_id")
 

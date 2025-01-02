@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Ess
         /// <summary>
         /// This data source provides available scaling configuration resources. 
         /// 
+        /// &gt; **NOTE:** Available since v1.240.0
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -21,23 +23,112 @@ namespace Pulumi.AliCloud.Ess
         /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
+        /// using Random = Pulumi.Random;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var defaultInteger = new Random.Index.Integer("default", new()
+        ///     {
+        ///         Min = 10000,
+        ///         Max = 99999,
+        ///     });
+        /// 
+        ///     var myName = $"{name}-{defaultInteger.Result}";
+        /// 
+        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableDiskCategory = "cloud_efficiency",
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var defaultGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+        ///     {
+        ///         AvailabilityZone = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         CpuCoreCount = 2,
+        ///         MemorySize = 4,
+        ///     });
+        /// 
+        ///     var defaultGetImages = AliCloud.Ecs.GetImages.Invoke(new()
+        ///     {
+        ///         NameRegex = "^ubuntu_18.*64",
+        ///         MostRecent = true,
+        ///         Owners = "system",
+        ///     });
+        /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+        ///     {
+        ///         VpcName = myName,
+        ///         CidrBlock = "172.16.0.0/16",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+        ///     {
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = "172.16.0.0/24",
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///         VswitchName = myName,
+        ///     });
+        /// 
+        ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
+        ///     {
+        ///         SecurityGroupName = myName,
+        ///         VpcId = defaultNetwork.Id,
+        ///     });
+        /// 
+        ///     var defaultSecurityGroupRule = new AliCloud.Ecs.SecurityGroupRule("default", new()
+        ///     {
+        ///         Type = "ingress",
+        ///         IpProtocol = "tcp",
+        ///         NicType = "intranet",
+        ///         Policy = "accept",
+        ///         PortRange = "22/22",
+        ///         Priority = 1,
+        ///         SecurityGroupId = defaultSecurityGroup.Id,
+        ///         CidrIp = "172.16.0.0/24",
+        ///     });
+        /// 
+        ///     var defaultScalingGroup = new AliCloud.Ess.ScalingGroup("default", new()
+        ///     {
+        ///         MinSize = 1,
+        ///         MaxSize = 1,
+        ///         ScalingGroupName = myName,
+        ///         RemovalPolicies = new[]
+        ///         {
+        ///             "OldestInstance",
+        ///             "NewestInstance",
+        ///         },
+        ///         VswitchIds = new[]
+        ///         {
+        ///             defaultSwitch.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     var defaultScalingConfiguration = new AliCloud.Ess.ScalingConfiguration("default", new()
+        ///     {
+        ///         ScalingGroupId = defaultScalingGroup.Id,
+        ///         ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+        ///         InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+        ///         SecurityGroupId = defaultSecurityGroup.Id,
+        ///         ForceDelete = true,
+        ///         Active = true,
+        ///         ScalingConfigurationName = "scaling_configuration_name",
+        ///     });
+        /// 
         ///     var scalingconfigurationsDs = AliCloud.Ess.GetScalingConfigurations.Invoke(new()
         ///     {
-        ///         ScalingGroupId = "scaling_group_id",
+        ///         ScalingGroupId = defaultScalingGroup.Id,
         ///         Ids = new[]
         ///         {
-        ///             "scaling_configuration_id1",
-        ///             "scaling_configuration_id2",
+        ///             defaultScalingConfiguration.Id,
         ///         },
         ///         NameRegex = "scaling_configuration_name",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstScalingRule"] = scalingconfigurationsDs.Apply(getScalingConfigurationsResult =&gt; getScalingConfigurationsResult.Configurations[0]?.Id),
+        ///         ["firstScalingConfiguration"] = scalingconfigurationsDs.Apply(getScalingConfigurationsResult =&gt; getScalingConfigurationsResult.Configurations[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -48,6 +139,8 @@ namespace Pulumi.AliCloud.Ess
         /// <summary>
         /// This data source provides available scaling configuration resources. 
         /// 
+        /// &gt; **NOTE:** Available since v1.240.0
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -55,23 +148,112 @@ namespace Pulumi.AliCloud.Ess
         /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
+        /// using Random = Pulumi.Random;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var defaultInteger = new Random.Index.Integer("default", new()
+        ///     {
+        ///         Min = 10000,
+        ///         Max = 99999,
+        ///     });
+        /// 
+        ///     var myName = $"{name}-{defaultInteger.Result}";
+        /// 
+        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableDiskCategory = "cloud_efficiency",
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var defaultGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+        ///     {
+        ///         AvailabilityZone = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         CpuCoreCount = 2,
+        ///         MemorySize = 4,
+        ///     });
+        /// 
+        ///     var defaultGetImages = AliCloud.Ecs.GetImages.Invoke(new()
+        ///     {
+        ///         NameRegex = "^ubuntu_18.*64",
+        ///         MostRecent = true,
+        ///         Owners = "system",
+        ///     });
+        /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+        ///     {
+        ///         VpcName = myName,
+        ///         CidrBlock = "172.16.0.0/16",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+        ///     {
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = "172.16.0.0/24",
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///         VswitchName = myName,
+        ///     });
+        /// 
+        ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
+        ///     {
+        ///         SecurityGroupName = myName,
+        ///         VpcId = defaultNetwork.Id,
+        ///     });
+        /// 
+        ///     var defaultSecurityGroupRule = new AliCloud.Ecs.SecurityGroupRule("default", new()
+        ///     {
+        ///         Type = "ingress",
+        ///         IpProtocol = "tcp",
+        ///         NicType = "intranet",
+        ///         Policy = "accept",
+        ///         PortRange = "22/22",
+        ///         Priority = 1,
+        ///         SecurityGroupId = defaultSecurityGroup.Id,
+        ///         CidrIp = "172.16.0.0/24",
+        ///     });
+        /// 
+        ///     var defaultScalingGroup = new AliCloud.Ess.ScalingGroup("default", new()
+        ///     {
+        ///         MinSize = 1,
+        ///         MaxSize = 1,
+        ///         ScalingGroupName = myName,
+        ///         RemovalPolicies = new[]
+        ///         {
+        ///             "OldestInstance",
+        ///             "NewestInstance",
+        ///         },
+        ///         VswitchIds = new[]
+        ///         {
+        ///             defaultSwitch.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     var defaultScalingConfiguration = new AliCloud.Ess.ScalingConfiguration("default", new()
+        ///     {
+        ///         ScalingGroupId = defaultScalingGroup.Id,
+        ///         ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+        ///         InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+        ///         SecurityGroupId = defaultSecurityGroup.Id,
+        ///         ForceDelete = true,
+        ///         Active = true,
+        ///         ScalingConfigurationName = "scaling_configuration_name",
+        ///     });
+        /// 
         ///     var scalingconfigurationsDs = AliCloud.Ess.GetScalingConfigurations.Invoke(new()
         ///     {
-        ///         ScalingGroupId = "scaling_group_id",
+        ///         ScalingGroupId = defaultScalingGroup.Id,
         ///         Ids = new[]
         ///         {
-        ///             "scaling_configuration_id1",
-        ///             "scaling_configuration_id2",
+        ///             defaultScalingConfiguration.Id,
         ///         },
         ///         NameRegex = "scaling_configuration_name",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstScalingRule"] = scalingconfigurationsDs.Apply(getScalingConfigurationsResult =&gt; getScalingConfigurationsResult.Configurations[0]?.Id),
+        ///         ["firstScalingConfiguration"] = scalingconfigurationsDs.Apply(getScalingConfigurationsResult =&gt; getScalingConfigurationsResult.Configurations[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -82,6 +264,8 @@ namespace Pulumi.AliCloud.Ess
         /// <summary>
         /// This data source provides available scaling configuration resources. 
         /// 
+        /// &gt; **NOTE:** Available since v1.240.0
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -89,23 +273,112 @@ namespace Pulumi.AliCloud.Ess
         /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
+        /// using Random = Pulumi.Random;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var defaultInteger = new Random.Index.Integer("default", new()
+        ///     {
+        ///         Min = 10000,
+        ///         Max = 99999,
+        ///     });
+        /// 
+        ///     var myName = $"{name}-{defaultInteger.Result}";
+        /// 
+        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableDiskCategory = "cloud_efficiency",
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var defaultGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+        ///     {
+        ///         AvailabilityZone = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         CpuCoreCount = 2,
+        ///         MemorySize = 4,
+        ///     });
+        /// 
+        ///     var defaultGetImages = AliCloud.Ecs.GetImages.Invoke(new()
+        ///     {
+        ///         NameRegex = "^ubuntu_18.*64",
+        ///         MostRecent = true,
+        ///         Owners = "system",
+        ///     });
+        /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+        ///     {
+        ///         VpcName = myName,
+        ///         CidrBlock = "172.16.0.0/16",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+        ///     {
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = "172.16.0.0/24",
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///         VswitchName = myName,
+        ///     });
+        /// 
+        ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
+        ///     {
+        ///         SecurityGroupName = myName,
+        ///         VpcId = defaultNetwork.Id,
+        ///     });
+        /// 
+        ///     var defaultSecurityGroupRule = new AliCloud.Ecs.SecurityGroupRule("default", new()
+        ///     {
+        ///         Type = "ingress",
+        ///         IpProtocol = "tcp",
+        ///         NicType = "intranet",
+        ///         Policy = "accept",
+        ///         PortRange = "22/22",
+        ///         Priority = 1,
+        ///         SecurityGroupId = defaultSecurityGroup.Id,
+        ///         CidrIp = "172.16.0.0/24",
+        ///     });
+        /// 
+        ///     var defaultScalingGroup = new AliCloud.Ess.ScalingGroup("default", new()
+        ///     {
+        ///         MinSize = 1,
+        ///         MaxSize = 1,
+        ///         ScalingGroupName = myName,
+        ///         RemovalPolicies = new[]
+        ///         {
+        ///             "OldestInstance",
+        ///             "NewestInstance",
+        ///         },
+        ///         VswitchIds = new[]
+        ///         {
+        ///             defaultSwitch.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     var defaultScalingConfiguration = new AliCloud.Ess.ScalingConfiguration("default", new()
+        ///     {
+        ///         ScalingGroupId = defaultScalingGroup.Id,
+        ///         ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+        ///         InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+        ///         SecurityGroupId = defaultSecurityGroup.Id,
+        ///         ForceDelete = true,
+        ///         Active = true,
+        ///         ScalingConfigurationName = "scaling_configuration_name",
+        ///     });
+        /// 
         ///     var scalingconfigurationsDs = AliCloud.Ess.GetScalingConfigurations.Invoke(new()
         ///     {
-        ///         ScalingGroupId = "scaling_group_id",
+        ///         ScalingGroupId = defaultScalingGroup.Id,
         ///         Ids = new[]
         ///         {
-        ///             "scaling_configuration_id1",
-        ///             "scaling_configuration_id2",
+        ///             defaultScalingConfiguration.Id,
         ///         },
         ///         NameRegex = "scaling_configuration_name",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstScalingRule"] = scalingconfigurationsDs.Apply(getScalingConfigurationsResult =&gt; getScalingConfigurationsResult.Configurations[0]?.Id),
+        ///         ["firstScalingConfiguration"] = scalingconfigurationsDs.Apply(getScalingConfigurationsResult =&gt; getScalingConfigurationsResult.Configurations[0]?.Id),
         ///     };
         /// });
         /// ```

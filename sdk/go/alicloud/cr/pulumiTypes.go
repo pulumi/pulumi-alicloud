@@ -763,6 +763,229 @@ func (o ChainChainConfigRouterToArrayOutput) Index(i pulumi.IntInput) ChainChain
 	}).(ChainChainConfigRouterToOutput)
 }
 
+type RegistryEnterpriseInstanceInstanceEndpoint struct {
+	// Domain List
+	Domains []RegistryEnterpriseInstanceInstanceEndpointDomain `pulumi:"domains"`
+	// enable
+	Enable *bool `pulumi:"enable"`
+	// Network Access Endpoint Type
+	EndpointType *string `pulumi:"endpointType"`
+}
+
+// RegistryEnterpriseInstanceInstanceEndpointInput is an input type that accepts RegistryEnterpriseInstanceInstanceEndpointArgs and RegistryEnterpriseInstanceInstanceEndpointOutput values.
+// You can construct a concrete instance of `RegistryEnterpriseInstanceInstanceEndpointInput` via:
+//
+//	RegistryEnterpriseInstanceInstanceEndpointArgs{...}
+type RegistryEnterpriseInstanceInstanceEndpointInput interface {
+	pulumi.Input
+
+	ToRegistryEnterpriseInstanceInstanceEndpointOutput() RegistryEnterpriseInstanceInstanceEndpointOutput
+	ToRegistryEnterpriseInstanceInstanceEndpointOutputWithContext(context.Context) RegistryEnterpriseInstanceInstanceEndpointOutput
+}
+
+type RegistryEnterpriseInstanceInstanceEndpointArgs struct {
+	// Domain List
+	Domains RegistryEnterpriseInstanceInstanceEndpointDomainArrayInput `pulumi:"domains"`
+	// enable
+	Enable pulumi.BoolPtrInput `pulumi:"enable"`
+	// Network Access Endpoint Type
+	EndpointType pulumi.StringPtrInput `pulumi:"endpointType"`
+}
+
+func (RegistryEnterpriseInstanceInstanceEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEnterpriseInstanceInstanceEndpoint)(nil)).Elem()
+}
+
+func (i RegistryEnterpriseInstanceInstanceEndpointArgs) ToRegistryEnterpriseInstanceInstanceEndpointOutput() RegistryEnterpriseInstanceInstanceEndpointOutput {
+	return i.ToRegistryEnterpriseInstanceInstanceEndpointOutputWithContext(context.Background())
+}
+
+func (i RegistryEnterpriseInstanceInstanceEndpointArgs) ToRegistryEnterpriseInstanceInstanceEndpointOutputWithContext(ctx context.Context) RegistryEnterpriseInstanceInstanceEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEnterpriseInstanceInstanceEndpointOutput)
+}
+
+// RegistryEnterpriseInstanceInstanceEndpointArrayInput is an input type that accepts RegistryEnterpriseInstanceInstanceEndpointArray and RegistryEnterpriseInstanceInstanceEndpointArrayOutput values.
+// You can construct a concrete instance of `RegistryEnterpriseInstanceInstanceEndpointArrayInput` via:
+//
+//	RegistryEnterpriseInstanceInstanceEndpointArray{ RegistryEnterpriseInstanceInstanceEndpointArgs{...} }
+type RegistryEnterpriseInstanceInstanceEndpointArrayInput interface {
+	pulumi.Input
+
+	ToRegistryEnterpriseInstanceInstanceEndpointArrayOutput() RegistryEnterpriseInstanceInstanceEndpointArrayOutput
+	ToRegistryEnterpriseInstanceInstanceEndpointArrayOutputWithContext(context.Context) RegistryEnterpriseInstanceInstanceEndpointArrayOutput
+}
+
+type RegistryEnterpriseInstanceInstanceEndpointArray []RegistryEnterpriseInstanceInstanceEndpointInput
+
+func (RegistryEnterpriseInstanceInstanceEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegistryEnterpriseInstanceInstanceEndpoint)(nil)).Elem()
+}
+
+func (i RegistryEnterpriseInstanceInstanceEndpointArray) ToRegistryEnterpriseInstanceInstanceEndpointArrayOutput() RegistryEnterpriseInstanceInstanceEndpointArrayOutput {
+	return i.ToRegistryEnterpriseInstanceInstanceEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i RegistryEnterpriseInstanceInstanceEndpointArray) ToRegistryEnterpriseInstanceInstanceEndpointArrayOutputWithContext(ctx context.Context) RegistryEnterpriseInstanceInstanceEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEnterpriseInstanceInstanceEndpointArrayOutput)
+}
+
+type RegistryEnterpriseInstanceInstanceEndpointOutput struct{ *pulumi.OutputState }
+
+func (RegistryEnterpriseInstanceInstanceEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEnterpriseInstanceInstanceEndpoint)(nil)).Elem()
+}
+
+func (o RegistryEnterpriseInstanceInstanceEndpointOutput) ToRegistryEnterpriseInstanceInstanceEndpointOutput() RegistryEnterpriseInstanceInstanceEndpointOutput {
+	return o
+}
+
+func (o RegistryEnterpriseInstanceInstanceEndpointOutput) ToRegistryEnterpriseInstanceInstanceEndpointOutputWithContext(ctx context.Context) RegistryEnterpriseInstanceInstanceEndpointOutput {
+	return o
+}
+
+// Domain List
+func (o RegistryEnterpriseInstanceInstanceEndpointOutput) Domains() RegistryEnterpriseInstanceInstanceEndpointDomainArrayOutput {
+	return o.ApplyT(func(v RegistryEnterpriseInstanceInstanceEndpoint) []RegistryEnterpriseInstanceInstanceEndpointDomain {
+		return v.Domains
+	}).(RegistryEnterpriseInstanceInstanceEndpointDomainArrayOutput)
+}
+
+// enable
+func (o RegistryEnterpriseInstanceInstanceEndpointOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RegistryEnterpriseInstanceInstanceEndpoint) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
+}
+
+// Network Access Endpoint Type
+func (o RegistryEnterpriseInstanceInstanceEndpointOutput) EndpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegistryEnterpriseInstanceInstanceEndpoint) *string { return v.EndpointType }).(pulumi.StringPtrOutput)
+}
+
+type RegistryEnterpriseInstanceInstanceEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (RegistryEnterpriseInstanceInstanceEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegistryEnterpriseInstanceInstanceEndpoint)(nil)).Elem()
+}
+
+func (o RegistryEnterpriseInstanceInstanceEndpointArrayOutput) ToRegistryEnterpriseInstanceInstanceEndpointArrayOutput() RegistryEnterpriseInstanceInstanceEndpointArrayOutput {
+	return o
+}
+
+func (o RegistryEnterpriseInstanceInstanceEndpointArrayOutput) ToRegistryEnterpriseInstanceInstanceEndpointArrayOutputWithContext(ctx context.Context) RegistryEnterpriseInstanceInstanceEndpointArrayOutput {
+	return o
+}
+
+func (o RegistryEnterpriseInstanceInstanceEndpointArrayOutput) Index(i pulumi.IntInput) RegistryEnterpriseInstanceInstanceEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegistryEnterpriseInstanceInstanceEndpoint {
+		return vs[0].([]RegistryEnterpriseInstanceInstanceEndpoint)[vs[1].(int)]
+	}).(RegistryEnterpriseInstanceInstanceEndpointOutput)
+}
+
+type RegistryEnterpriseInstanceInstanceEndpointDomain struct {
+	// Domain
+	Domain *string `pulumi:"domain"`
+	// Domain Type
+	Type *string `pulumi:"type"`
+}
+
+// RegistryEnterpriseInstanceInstanceEndpointDomainInput is an input type that accepts RegistryEnterpriseInstanceInstanceEndpointDomainArgs and RegistryEnterpriseInstanceInstanceEndpointDomainOutput values.
+// You can construct a concrete instance of `RegistryEnterpriseInstanceInstanceEndpointDomainInput` via:
+//
+//	RegistryEnterpriseInstanceInstanceEndpointDomainArgs{...}
+type RegistryEnterpriseInstanceInstanceEndpointDomainInput interface {
+	pulumi.Input
+
+	ToRegistryEnterpriseInstanceInstanceEndpointDomainOutput() RegistryEnterpriseInstanceInstanceEndpointDomainOutput
+	ToRegistryEnterpriseInstanceInstanceEndpointDomainOutputWithContext(context.Context) RegistryEnterpriseInstanceInstanceEndpointDomainOutput
+}
+
+type RegistryEnterpriseInstanceInstanceEndpointDomainArgs struct {
+	// Domain
+	Domain pulumi.StringPtrInput `pulumi:"domain"`
+	// Domain Type
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (RegistryEnterpriseInstanceInstanceEndpointDomainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEnterpriseInstanceInstanceEndpointDomain)(nil)).Elem()
+}
+
+func (i RegistryEnterpriseInstanceInstanceEndpointDomainArgs) ToRegistryEnterpriseInstanceInstanceEndpointDomainOutput() RegistryEnterpriseInstanceInstanceEndpointDomainOutput {
+	return i.ToRegistryEnterpriseInstanceInstanceEndpointDomainOutputWithContext(context.Background())
+}
+
+func (i RegistryEnterpriseInstanceInstanceEndpointDomainArgs) ToRegistryEnterpriseInstanceInstanceEndpointDomainOutputWithContext(ctx context.Context) RegistryEnterpriseInstanceInstanceEndpointDomainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEnterpriseInstanceInstanceEndpointDomainOutput)
+}
+
+// RegistryEnterpriseInstanceInstanceEndpointDomainArrayInput is an input type that accepts RegistryEnterpriseInstanceInstanceEndpointDomainArray and RegistryEnterpriseInstanceInstanceEndpointDomainArrayOutput values.
+// You can construct a concrete instance of `RegistryEnterpriseInstanceInstanceEndpointDomainArrayInput` via:
+//
+//	RegistryEnterpriseInstanceInstanceEndpointDomainArray{ RegistryEnterpriseInstanceInstanceEndpointDomainArgs{...} }
+type RegistryEnterpriseInstanceInstanceEndpointDomainArrayInput interface {
+	pulumi.Input
+
+	ToRegistryEnterpriseInstanceInstanceEndpointDomainArrayOutput() RegistryEnterpriseInstanceInstanceEndpointDomainArrayOutput
+	ToRegistryEnterpriseInstanceInstanceEndpointDomainArrayOutputWithContext(context.Context) RegistryEnterpriseInstanceInstanceEndpointDomainArrayOutput
+}
+
+type RegistryEnterpriseInstanceInstanceEndpointDomainArray []RegistryEnterpriseInstanceInstanceEndpointDomainInput
+
+func (RegistryEnterpriseInstanceInstanceEndpointDomainArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegistryEnterpriseInstanceInstanceEndpointDomain)(nil)).Elem()
+}
+
+func (i RegistryEnterpriseInstanceInstanceEndpointDomainArray) ToRegistryEnterpriseInstanceInstanceEndpointDomainArrayOutput() RegistryEnterpriseInstanceInstanceEndpointDomainArrayOutput {
+	return i.ToRegistryEnterpriseInstanceInstanceEndpointDomainArrayOutputWithContext(context.Background())
+}
+
+func (i RegistryEnterpriseInstanceInstanceEndpointDomainArray) ToRegistryEnterpriseInstanceInstanceEndpointDomainArrayOutputWithContext(ctx context.Context) RegistryEnterpriseInstanceInstanceEndpointDomainArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEnterpriseInstanceInstanceEndpointDomainArrayOutput)
+}
+
+type RegistryEnterpriseInstanceInstanceEndpointDomainOutput struct{ *pulumi.OutputState }
+
+func (RegistryEnterpriseInstanceInstanceEndpointDomainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryEnterpriseInstanceInstanceEndpointDomain)(nil)).Elem()
+}
+
+func (o RegistryEnterpriseInstanceInstanceEndpointDomainOutput) ToRegistryEnterpriseInstanceInstanceEndpointDomainOutput() RegistryEnterpriseInstanceInstanceEndpointDomainOutput {
+	return o
+}
+
+func (o RegistryEnterpriseInstanceInstanceEndpointDomainOutput) ToRegistryEnterpriseInstanceInstanceEndpointDomainOutputWithContext(ctx context.Context) RegistryEnterpriseInstanceInstanceEndpointDomainOutput {
+	return o
+}
+
+// Domain
+func (o RegistryEnterpriseInstanceInstanceEndpointDomainOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegistryEnterpriseInstanceInstanceEndpointDomain) *string { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+// Domain Type
+func (o RegistryEnterpriseInstanceInstanceEndpointDomainOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegistryEnterpriseInstanceInstanceEndpointDomain) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type RegistryEnterpriseInstanceInstanceEndpointDomainArrayOutput struct{ *pulumi.OutputState }
+
+func (RegistryEnterpriseInstanceInstanceEndpointDomainArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegistryEnterpriseInstanceInstanceEndpointDomain)(nil)).Elem()
+}
+
+func (o RegistryEnterpriseInstanceInstanceEndpointDomainArrayOutput) ToRegistryEnterpriseInstanceInstanceEndpointDomainArrayOutput() RegistryEnterpriseInstanceInstanceEndpointDomainArrayOutput {
+	return o
+}
+
+func (o RegistryEnterpriseInstanceInstanceEndpointDomainArrayOutput) ToRegistryEnterpriseInstanceInstanceEndpointDomainArrayOutputWithContext(ctx context.Context) RegistryEnterpriseInstanceInstanceEndpointDomainArrayOutput {
+	return o
+}
+
+func (o RegistryEnterpriseInstanceInstanceEndpointDomainArrayOutput) Index(i pulumi.IntInput) RegistryEnterpriseInstanceInstanceEndpointDomainOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegistryEnterpriseInstanceInstanceEndpointDomain {
+		return vs[0].([]RegistryEnterpriseInstanceInstanceEndpointDomain)[vs[1].(int)]
+	}).(RegistryEnterpriseInstanceInstanceEndpointDomainOutput)
+}
+
 type RepoDomainList struct {
 	// Domain of internal endpoint, only in some regions.
 	Internal *string `pulumi:"internal"`
@@ -2954,6 +3177,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ChainChainConfigRouterFromArrayInput)(nil)).Elem(), ChainChainConfigRouterFromArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ChainChainConfigRouterToInput)(nil)).Elem(), ChainChainConfigRouterToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ChainChainConfigRouterToArrayInput)(nil)).Elem(), ChainChainConfigRouterToArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegistryEnterpriseInstanceInstanceEndpointInput)(nil)).Elem(), RegistryEnterpriseInstanceInstanceEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegistryEnterpriseInstanceInstanceEndpointArrayInput)(nil)).Elem(), RegistryEnterpriseInstanceInstanceEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegistryEnterpriseInstanceInstanceEndpointDomainInput)(nil)).Elem(), RegistryEnterpriseInstanceInstanceEndpointDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegistryEnterpriseInstanceInstanceEndpointDomainArrayInput)(nil)).Elem(), RegistryEnterpriseInstanceInstanceEndpointDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepoDomainListInput)(nil)).Elem(), RepoDomainListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepoDomainListPtrInput)(nil)).Elem(), RepoDomainListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetChainsChainInput)(nil)).Elem(), GetChainsChainArgs{})
@@ -3001,6 +3228,10 @@ func init() {
 	pulumi.RegisterOutputType(ChainChainConfigRouterFromArrayOutput{})
 	pulumi.RegisterOutputType(ChainChainConfigRouterToOutput{})
 	pulumi.RegisterOutputType(ChainChainConfigRouterToArrayOutput{})
+	pulumi.RegisterOutputType(RegistryEnterpriseInstanceInstanceEndpointOutput{})
+	pulumi.RegisterOutputType(RegistryEnterpriseInstanceInstanceEndpointArrayOutput{})
+	pulumi.RegisterOutputType(RegistryEnterpriseInstanceInstanceEndpointDomainOutput{})
+	pulumi.RegisterOutputType(RegistryEnterpriseInstanceInstanceEndpointDomainArrayOutput{})
 	pulumi.RegisterOutputType(RepoDomainListOutput{})
 	pulumi.RegisterOutputType(RepoDomainListPtrOutput{})
 	pulumi.RegisterOutputType(GetChainsChainOutput{})

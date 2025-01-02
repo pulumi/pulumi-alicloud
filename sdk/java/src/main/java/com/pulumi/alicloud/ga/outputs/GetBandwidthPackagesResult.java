@@ -23,10 +23,26 @@ public final class GetBandwidthPackagesResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Bandwidth Package names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Ga Bandwidth Packages. Each element contains the following attributes:
+     * 
+     */
     private List<GetBandwidthPackagesPackage> packages;
+    /**
+     * @return The status of the bandwidth plan.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return The type of the bandwidth packet. China station only supports return to basic.
+     * 
+     */
     private @Nullable String type;
 
     private GetBandwidthPackagesResult() {}
@@ -46,18 +62,34 @@ public final class GetBandwidthPackagesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Bandwidth Package names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Ga Bandwidth Packages. Each element contains the following attributes:
+     * 
+     */
     public List<GetBandwidthPackagesPackage> packages() {
         return this.packages;
     }
+    /**
+     * @return The status of the bandwidth plan.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return The type of the bandwidth packet. China station only supports return to basic.
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

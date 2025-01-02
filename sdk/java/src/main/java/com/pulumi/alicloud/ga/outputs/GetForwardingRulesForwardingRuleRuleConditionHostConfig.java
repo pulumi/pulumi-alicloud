@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetForwardingRulesForwardingRuleRuleConditionHostConfig {
+    /**
+     * @return The domain name is 3-128 characters long.
+     * 
+     */
     private List<String> values;
 
     private GetForwardingRulesForwardingRuleRuleConditionHostConfig() {}
+    /**
+     * @return The domain name is 3-128 characters long.
+     * 
+     */
     public List<String> values() {
         return this.values;
     }

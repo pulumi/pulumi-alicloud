@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ecs Disks of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.122.0+.
+ * > **NOTE:** Available since v1.122.0.
  *
  * ## Example Usage
  *
@@ -19,11 +19,23 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = alicloud.ecs.getEcsDisks({
- *     ids: ["d-artgdsvdvxxxx"],
- *     nameRegex: "tf-test",
+ * const default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
  * });
- * export const firstEcsDiskId = example.then(example => example.disks?.[0]?.id);
+ * const defaultEcsDisk = new alicloud.ecs.EcsDisk("default", {
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ *     diskName: "terraform-example",
+ *     description: "terraform-example",
+ *     category: "cloud_efficiency",
+ *     size: 30,
+ *     tags: {
+ *         Name: "terraform-example",
+ *     },
+ * });
+ * const ids = alicloud.ecs.getEcsDisksOutput({
+ *     ids: [defaultEcsDisk.id],
+ * });
+ * export const ecsDiskId0 = ids.apply(ids => ids.disks?.[0]?.id);
  * ```
  */
 export function getEcsDisks(args?: GetEcsDisksArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsDisksResult> {
@@ -97,7 +109,7 @@ export interface GetEcsDisksArgs {
      */
     diskName?: string;
     /**
-     * The disk type.
+     * The disk type. Valid values: `system`, `data`, `all`.
      */
     diskType?: string;
     /**
@@ -117,7 +129,7 @@ export interface GetEcsDisksArgs {
      */
     enableShared?: boolean;
     /**
-     * Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
+     * Indicate whether the disk is encrypted or not. Valid values: `on` and `off`.
      */
     encrypted?: string;
     /**
@@ -136,6 +148,9 @@ export interface GetEcsDisksArgs {
      * A regex string to filter results by Disk name.
      */
     nameRegex?: string;
+    /**
+     * The reasons why the disk was locked. See `operationLocks` below for details.
+     */
     operationLocks?: inputs.ecs.GetEcsDisksOperationLock[];
     /**
      * File name where to save data source results (after running `pulumi preview`).
@@ -160,7 +175,7 @@ export interface GetEcsDisksArgs {
      */
     snapshotId?: string;
     /**
-     * The status of disk.
+     * The status of disk. Valid Values: `Attaching`, `Available`, `Creating`, `Detaching`, `In_use`, `Migrating`, `ReIniting`, `Transferring`.
      */
     status?: string;
     /**
@@ -184,52 +199,119 @@ export interface GetEcsDisksArgs {
  */
 export interface GetEcsDisksResult {
     readonly additionalAttributes?: string[];
+    /**
+     * Query cloud disks based on the automatic snapshot policy ID.
+     */
     readonly autoSnapshotPolicyId?: string;
     /**
+     * Availability zone of the disk.
+     *
      * @deprecated Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
      */
     readonly availabilityZone?: string;
+    /**
+     * Disk category.
+     */
     readonly category?: string;
+    /**
+     * Indicates whether the automatic snapshot is deleted when the disk is released.
+     */
     readonly deleteAutoSnapshot?: boolean;
+    /**
+     * Indicates whether the disk is released together with the instance.
+     */
     readonly deleteWithInstance?: boolean;
+    /**
+     * The disk name.
+     */
     readonly diskName?: string;
+    /**
+     * The type of the disk.
+     */
     readonly diskType?: string;
+    /**
+     * A list of Ecs Disks. Each element contains the following attributes:
+     */
     readonly disks: outputs.ecs.GetEcsDisksDisk[];
     readonly dryRun?: boolean;
+    /**
+     * Whether the disk implements an automatic snapshot policy.
+     */
     readonly enableAutoSnapshot?: boolean;
+    /**
+     * Whether the disk implements an automatic snapshot policy.
+     */
     readonly enableAutomatedSnapshotPolicy?: boolean;
     readonly enableShared?: boolean;
+    /**
+     * Indicate whether the disk is encrypted or not.
+     */
     readonly encrypted?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * The instance ID of the disk mount.
+     */
     readonly instanceId?: string;
+    /**
+     * The ID of the KMS key that is used for the cloud disk.
+     */
     readonly kmsKeyId?: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Disk names.
+     */
     readonly names: string[];
+    /**
+     * The reasons why the disk was locked.
+     */
     readonly operationLocks?: outputs.ecs.GetEcsDisksOperationLock[];
     readonly outputFile?: string;
     readonly pageNumber?: number;
     readonly pageSize?: number;
+    /**
+     * Payment method for disk.
+     */
     readonly paymentType?: string;
+    /**
+     * Whether the disk is unmountable.
+     */
     readonly portable?: boolean;
+    /**
+     * The Id of resource group.
+     */
     readonly resourceGroupId?: string;
+    /**
+     * Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+     */
     readonly snapshotId?: string;
+    /**
+     * Current status.
+     */
     readonly status?: string;
+    /**
+     * A map of tags assigned to the disk.
+     */
     readonly tags?: {[key: string]: string};
     readonly totalCount: number;
     /**
+     * The type of the disk.
+     *
      * @deprecated Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.
      */
     readonly type?: string;
+    /**
+     * The zone id.
+     */
     readonly zoneId?: string;
 }
 /**
  * This data source provides the Ecs Disks of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.122.0+.
+ * > **NOTE:** Available since v1.122.0.
  *
  * ## Example Usage
  *
@@ -239,11 +321,23 @@ export interface GetEcsDisksResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = alicloud.ecs.getEcsDisks({
- *     ids: ["d-artgdsvdvxxxx"],
- *     nameRegex: "tf-test",
+ * const default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
  * });
- * export const firstEcsDiskId = example.then(example => example.disks?.[0]?.id);
+ * const defaultEcsDisk = new alicloud.ecs.EcsDisk("default", {
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ *     diskName: "terraform-example",
+ *     description: "terraform-example",
+ *     category: "cloud_efficiency",
+ *     size: 30,
+ *     tags: {
+ *         Name: "terraform-example",
+ *     },
+ * });
+ * const ids = alicloud.ecs.getEcsDisksOutput({
+ *     ids: [defaultEcsDisk.id],
+ * });
+ * export const ecsDiskId0 = ids.apply(ids => ids.disks?.[0]?.id);
  * ```
  */
 export function getEcsDisksOutput(args?: GetEcsDisksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEcsDisksResult> {
@@ -317,7 +411,7 @@ export interface GetEcsDisksOutputArgs {
      */
     diskName?: pulumi.Input<string>;
     /**
-     * The disk type.
+     * The disk type. Valid values: `system`, `data`, `all`.
      */
     diskType?: pulumi.Input<string>;
     /**
@@ -337,7 +431,7 @@ export interface GetEcsDisksOutputArgs {
      */
     enableShared?: pulumi.Input<boolean>;
     /**
-     * Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
+     * Indicate whether the disk is encrypted or not. Valid values: `on` and `off`.
      */
     encrypted?: pulumi.Input<string>;
     /**
@@ -356,6 +450,9 @@ export interface GetEcsDisksOutputArgs {
      * A regex string to filter results by Disk name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * The reasons why the disk was locked. See `operationLocks` below for details.
+     */
     operationLocks?: pulumi.Input<pulumi.Input<inputs.ecs.GetEcsDisksOperationLockArgs>[]>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
@@ -380,7 +477,7 @@ export interface GetEcsDisksOutputArgs {
      */
     snapshotId?: pulumi.Input<string>;
     /**
-     * The status of disk.
+     * The status of disk. Valid Values: `Attaching`, `Available`, `Creating`, `Detaching`, `In_use`, `Migrating`, `ReIniting`, `Transferring`.
      */
     status?: pulumi.Input<string>;
     /**

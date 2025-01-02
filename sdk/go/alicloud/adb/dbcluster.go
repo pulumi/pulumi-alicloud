@@ -57,6 +57,8 @@ type DBCluster struct {
 	ElasticIoResourceSize pulumi.StringOutput `pulumi:"elasticIoResourceSize"`
 	// Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
 	EnableSsl pulumi.BoolPtrOutput `pulumi:"enableSsl"`
+	// The minor version to which you want to update.
+	KernelVersion pulumi.StringOutput `pulumi:"kernelVersion"`
 	// The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
 	KmsId pulumi.StringPtrOutput `pulumi:"kmsId"`
 	// The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
@@ -84,6 +86,8 @@ type DBCluster struct {
 	SecurityIps pulumi.StringArrayOutput `pulumi:"securityIps"`
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// The time when to perform the update. Valid values:
+	SwitchMode pulumi.IntPtrOutput `pulumi:"switchMode"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -169,6 +173,8 @@ type dbclusterState struct {
 	ElasticIoResourceSize *string `pulumi:"elasticIoResourceSize"`
 	// Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
 	EnableSsl *bool `pulumi:"enableSsl"`
+	// The minor version to which you want to update.
+	KernelVersion *string `pulumi:"kernelVersion"`
 	// The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
 	KmsId *string `pulumi:"kmsId"`
 	// The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
@@ -196,6 +202,8 @@ type dbclusterState struct {
 	SecurityIps []string `pulumi:"securityIps"`
 	// The status of the resource.
 	Status *string `pulumi:"status"`
+	// The time when to perform the update. Valid values:
+	SwitchMode *int `pulumi:"switchMode"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -246,6 +254,8 @@ type DBClusterState struct {
 	ElasticIoResourceSize pulumi.StringPtrInput
 	// Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
 	EnableSsl pulumi.BoolPtrInput
+	// The minor version to which you want to update.
+	KernelVersion pulumi.StringPtrInput
 	// The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
 	KmsId pulumi.StringPtrInput
 	// The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
@@ -273,6 +283,8 @@ type DBClusterState struct {
 	SecurityIps pulumi.StringArrayInput
 	// The status of the resource.
 	Status pulumi.StringPtrInput
+	// The time when to perform the update. Valid values:
+	SwitchMode pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -325,6 +337,8 @@ type dbclusterArgs struct {
 	ElasticIoResourceSize *string `pulumi:"elasticIoResourceSize"`
 	// Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
 	EnableSsl *bool `pulumi:"enableSsl"`
+	// The minor version to which you want to update.
+	KernelVersion *string `pulumi:"kernelVersion"`
 	// The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
 	KmsId *string `pulumi:"kmsId"`
 	// The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
@@ -348,6 +362,8 @@ type dbclusterArgs struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIps []string `pulumi:"securityIps"`
+	// The time when to perform the update. Valid values:
+	SwitchMode *int `pulumi:"switchMode"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -397,6 +413,8 @@ type DBClusterArgs struct {
 	ElasticIoResourceSize pulumi.StringPtrInput
 	// Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
 	EnableSsl pulumi.BoolPtrInput
+	// The minor version to which you want to update.
+	KernelVersion pulumi.StringPtrInput
 	// The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
 	KmsId pulumi.StringPtrInput
 	// The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
@@ -420,6 +438,8 @@ type DBClusterArgs struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIps pulumi.StringArrayInput
+	// The time when to perform the update. Valid values:
+	SwitchMode pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -601,6 +621,11 @@ func (o DBClusterOutput) EnableSsl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DBCluster) pulumi.BoolPtrOutput { return v.EnableSsl }).(pulumi.BoolPtrOutput)
 }
 
+// The minor version to which you want to update.
+func (o DBClusterOutput) KernelVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DBCluster) pulumi.StringOutput { return v.KernelVersion }).(pulumi.StringOutput)
+}
+
 // The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
 func (o DBClusterOutput) KmsId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DBCluster) pulumi.StringPtrOutput { return v.KmsId }).(pulumi.StringPtrOutput)
@@ -662,6 +687,11 @@ func (o DBClusterOutput) SecurityIps() pulumi.StringArrayOutput {
 // The status of the resource.
 func (o DBClusterOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *DBCluster) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The time when to perform the update. Valid values:
+func (o DBClusterOutput) SwitchMode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DBCluster) pulumi.IntPtrOutput { return v.SwitchMode }).(pulumi.IntPtrOutput)
 }
 
 // A mapping of tags to assign to the resource.

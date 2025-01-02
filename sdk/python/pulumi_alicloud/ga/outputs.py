@@ -1055,7 +1055,7 @@ class GetAclsAclResult(dict):
         :param str acl_name: The name of the acl.
         :param str address_ip_version: The address ip version.
         :param str id: The ID of the Acl. Its value is same as `acl_id`.
-        :param str status: The status of the resource.
+        :param str status: The status of the resource. Valid values: `active`, `configuring`, `deleting`, `init`.
         """
         pulumi.set(__self__, "acl_entries", acl_entries)
         pulumi.set(__self__, "acl_id", acl_id)
@@ -1108,7 +1108,7 @@ class GetAclsAclResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the resource.
+        The status of the resource. Valid values: `active`, `configuring`, `deleting`, `init`.
         """
         return pulumi.get(self, "status")
 
@@ -1230,8 +1230,8 @@ class GetBandwidthPackagesPackageResult(dict):
         :param str expired_time: Bandwidth package expiration time.
         :param str id: The ID of the Bandwidth Package.
         :param str payment_type: The payment type of the bandwidth.
-        :param str status: The status of the bandwidth plan.
-        :param str type: The type of the bandwidth packet. China station only supports return to basic.
+        :param str status: The status of the bandwidth plan. Valid values: `active`, `binded`, `binding`, `finacialLocked`, `init`, `unbinding`, `updating`.
+        :param str type: The type of the bandwidth plan. Valid values: `Basic`, `CrossDomain`.
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "bandwidth_package_id", bandwidth_package_id)
@@ -1330,7 +1330,7 @@ class GetBandwidthPackagesPackageResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the bandwidth plan.
+        The status of the bandwidth plan. Valid values: `active`, `binded`, `binding`, `finacialLocked`, `init`, `unbinding`, `updating`.
         """
         return pulumi.get(self, "status")
 
@@ -1338,7 +1338,7 @@ class GetBandwidthPackagesPackageResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The type of the bandwidth packet. China station only supports return to basic.
+        The type of the bandwidth plan. Valid values: `Basic`, `CrossDomain`.
         """
         return pulumi.get(self, "type")
 
@@ -2884,17 +2884,7 @@ class GetForwardingRulesForwardingRuleResult(dict):
         :param str listener_id: The ID of the listener.
         :param int priority: Forwarding policy priority.
         :param Sequence['GetForwardingRulesForwardingRuleRuleActionArgs'] rule_actions: The IP protocol used by the GA instance.
-               `order` - Forwarding priority.
-               `rule_action_type` - Forward action type.
-               `forward_group_config` - Forwarding configuration.
-               `server_group_tuples` - Terminal node group configuration.
-               `endpoint_group_id` - Terminal node group ID.
         :param Sequence['GetForwardingRulesForwardingRuleRuleConditionArgs'] rule_conditions: Forward action.
-               `rule_condition_type` - Forwarding condition type.
-               `path_config` - Path configuration information.
-               `values` - The length of the path is 1-128 characters.
-               `host_config` - Domain name configuration information.
-               `values` - The domain name is 3-128 characters long.
         """
         pulumi.set(__self__, "forwarding_rule_id", forwarding_rule_id)
         pulumi.set(__self__, "forwarding_rule_name", forwarding_rule_name)
@@ -2955,11 +2945,6 @@ class GetForwardingRulesForwardingRuleResult(dict):
     def rule_actions(self) -> Sequence['outputs.GetForwardingRulesForwardingRuleRuleActionResult']:
         """
         The IP protocol used by the GA instance.
-        `order` - Forwarding priority.
-        `rule_action_type` - Forward action type.
-        `forward_group_config` - Forwarding configuration.
-        `server_group_tuples` - Terminal node group configuration.
-        `endpoint_group_id` - Terminal node group ID.
         """
         return pulumi.get(self, "rule_actions")
 
@@ -2968,11 +2953,6 @@ class GetForwardingRulesForwardingRuleResult(dict):
     def rule_conditions(self) -> Sequence['outputs.GetForwardingRulesForwardingRuleRuleConditionResult']:
         """
         Forward action.
-        `rule_condition_type` - Forwarding condition type.
-        `path_config` - Path configuration information.
-        `values` - The length of the path is 1-128 characters.
-        `host_config` - Domain name configuration information.
-        `values` - The domain name is 3-128 characters long.
         """
         return pulumi.get(self, "rule_conditions")
 
@@ -2983,6 +2963,11 @@ class GetForwardingRulesForwardingRuleRuleActionResult(dict):
                  forward_group_configs: Sequence['outputs.GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigResult'],
                  order: int,
                  rule_action_type: str):
+        """
+        :param Sequence['GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArgs'] forward_group_configs: Forwarding configuration.
+        :param int order: Forwarding priority.
+        :param str rule_action_type: Forward action type.
+        """
         pulumi.set(__self__, "forward_group_configs", forward_group_configs)
         pulumi.set(__self__, "order", order)
         pulumi.set(__self__, "rule_action_type", rule_action_type)
@@ -2990,16 +2975,25 @@ class GetForwardingRulesForwardingRuleRuleActionResult(dict):
     @property
     @pulumi.getter(name="forwardGroupConfigs")
     def forward_group_configs(self) -> Sequence['outputs.GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigResult']:
+        """
+        Forwarding configuration.
+        """
         return pulumi.get(self, "forward_group_configs")
 
     @property
     @pulumi.getter
     def order(self) -> int:
+        """
+        Forwarding priority.
+        """
         return pulumi.get(self, "order")
 
     @property
     @pulumi.getter(name="ruleActionType")
     def rule_action_type(self) -> str:
+        """
+        Forward action type.
+        """
         return pulumi.get(self, "rule_action_type")
 
 
@@ -3007,11 +3001,17 @@ class GetForwardingRulesForwardingRuleRuleActionResult(dict):
 class GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigResult(dict):
     def __init__(__self__, *,
                  server_group_tuples: Sequence['outputs.GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleResult']):
+        """
+        :param Sequence['GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs'] server_group_tuples: Terminal node group configuration.
+        """
         pulumi.set(__self__, "server_group_tuples", server_group_tuples)
 
     @property
     @pulumi.getter(name="serverGroupTuples")
     def server_group_tuples(self) -> Sequence['outputs.GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleResult']:
+        """
+        Terminal node group configuration.
+        """
         return pulumi.get(self, "server_group_tuples")
 
 
@@ -3019,11 +3019,17 @@ class GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigResult(dict):
 class GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleResult(dict):
     def __init__(__self__, *,
                  endpoint_group_id: str):
+        """
+        :param str endpoint_group_id: Terminal node group ID.
+        """
         pulumi.set(__self__, "endpoint_group_id", endpoint_group_id)
 
     @property
     @pulumi.getter(name="endpointGroupId")
     def endpoint_group_id(self) -> str:
+        """
+        Terminal node group ID.
+        """
         return pulumi.get(self, "endpoint_group_id")
 
 
@@ -3033,6 +3039,11 @@ class GetForwardingRulesForwardingRuleRuleConditionResult(dict):
                  host_configs: Sequence['outputs.GetForwardingRulesForwardingRuleRuleConditionHostConfigResult'],
                  path_configs: Sequence['outputs.GetForwardingRulesForwardingRuleRuleConditionPathConfigResult'],
                  rule_condition_type: str):
+        """
+        :param Sequence['GetForwardingRulesForwardingRuleRuleConditionHostConfigArgs'] host_configs: Domain name configuration information.
+        :param Sequence['GetForwardingRulesForwardingRuleRuleConditionPathConfigArgs'] path_configs: Path configuration information.
+        :param str rule_condition_type: Forwarding condition type.
+        """
         pulumi.set(__self__, "host_configs", host_configs)
         pulumi.set(__self__, "path_configs", path_configs)
         pulumi.set(__self__, "rule_condition_type", rule_condition_type)
@@ -3040,16 +3051,25 @@ class GetForwardingRulesForwardingRuleRuleConditionResult(dict):
     @property
     @pulumi.getter(name="hostConfigs")
     def host_configs(self) -> Sequence['outputs.GetForwardingRulesForwardingRuleRuleConditionHostConfigResult']:
+        """
+        Domain name configuration information.
+        """
         return pulumi.get(self, "host_configs")
 
     @property
     @pulumi.getter(name="pathConfigs")
     def path_configs(self) -> Sequence['outputs.GetForwardingRulesForwardingRuleRuleConditionPathConfigResult']:
+        """
+        Path configuration information.
+        """
         return pulumi.get(self, "path_configs")
 
     @property
     @pulumi.getter(name="ruleConditionType")
     def rule_condition_type(self) -> str:
+        """
+        Forwarding condition type.
+        """
         return pulumi.get(self, "rule_condition_type")
 
 
@@ -3057,11 +3077,17 @@ class GetForwardingRulesForwardingRuleRuleConditionResult(dict):
 class GetForwardingRulesForwardingRuleRuleConditionHostConfigResult(dict):
     def __init__(__self__, *,
                  values: Sequence[str]):
+        """
+        :param Sequence[str] values: The domain name is 3-128 characters long.
+        """
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def values(self) -> Sequence[str]:
+        """
+        The domain name is 3-128 characters long.
+        """
         return pulumi.get(self, "values")
 
 
@@ -3069,11 +3095,17 @@ class GetForwardingRulesForwardingRuleRuleConditionHostConfigResult(dict):
 class GetForwardingRulesForwardingRuleRuleConditionPathConfigResult(dict):
     def __init__(__self__, *,
                  values: Sequence[str]):
+        """
+        :param Sequence[str] values: The domain name is 3-128 characters long.
+        """
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def values(self) -> Sequence[str]:
+        """
+        The domain name is 3-128 characters long.
+        """
         return pulumi.get(self, "values")
 
 
@@ -3094,7 +3126,7 @@ class GetIpSetsSetResult(dict):
         :param Sequence[str] ip_address_lists: The list of accelerated IP addresses in the acceleration region.
         :param str ip_set_id: Accelerated area ID.
         :param str ip_version: The IP protocol used by the GA instance.
-        :param str status: The status of the acceleration region.
+        :param str status: The status of the acceleration region. Valid values: `active`, `deleting`, `init`, `updating`.
         """
         pulumi.set(__self__, "accelerate_region_id", accelerate_region_id)
         pulumi.set(__self__, "bandwidth", bandwidth)
@@ -3156,7 +3188,7 @@ class GetIpSetsSetResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the acceleration region.
+        The status of the acceleration region. Valid values: `active`, `deleting`, `init`, `updating`.
         """
         return pulumi.get(self, "status")
 
@@ -3182,7 +3214,7 @@ class GetListenersListenerResult(dict):
         :param str name: The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
         :param Sequence['GetListenersListenerPortRangeArgs'] port_ranges: The portRanges of the listener.
         :param str protocol: Type of network transport protocol monitored.
-        :param str status: The status of the listener.
+        :param str status: The status of the listener. Valid values: `active`, `configuring`, `creating`.
         """
         pulumi.set(__self__, "certificates", certificates)
         pulumi.set(__self__, "client_affinity", client_affinity)
@@ -3262,7 +3294,7 @@ class GetListenersListenerResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the listener.
+        The status of the listener. Valid values: `active`, `configuring`, `creating`.
         """
         return pulumi.get(self, "status")
 
@@ -3273,7 +3305,7 @@ class GetListenersListenerCertificateResult(dict):
                  id: str,
                  type: str):
         """
-        :param str id: The id of the certificate.
+        :param str id: The ID of the Listener.
         :param str type: The type of the certificate.
         """
         pulumi.set(__self__, "id", id)
@@ -3283,7 +3315,7 @@ class GetListenersListenerCertificateResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        The id of the certificate.
+        The ID of the Listener.
         """
         return pulumi.get(self, "id")
 

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ga
         /// <summary>
         /// This data source provides the Ga Acls of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.150.0+.
+        /// &gt; **NOTE:** Available since v1.150.0.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Ga
         /// <summary>
         /// This data source provides the Ga Acls of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.150.0+.
+        /// &gt; **NOTE:** Available since v1.150.0.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Ga
         /// <summary>
         /// This data source provides the Ga Acls of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.150.0+.
+        /// &gt; **NOTE:** Available since v1.150.0.
         /// 
         /// ## Example Usage
         /// 
@@ -222,7 +222,13 @@ namespace Pulumi.AliCloud.Ga
     [OutputType]
     public sealed class GetAclsResult
     {
+        /// <summary>
+        /// The name of the acl.
+        /// </summary>
         public readonly string? AclName;
+        /// <summary>
+        /// A list of Ga Acls. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAclsAclResult> Acls;
         public readonly bool? EnableDetails;
         /// <summary>
@@ -231,8 +237,14 @@ namespace Pulumi.AliCloud.Ga
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Acl names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

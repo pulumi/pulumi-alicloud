@@ -56,11 +56,17 @@ class GetVpcEndpointConnectionsResult:
     @property
     @pulumi.getter
     def connections(self) -> Sequence['outputs.GetVpcEndpointConnectionsConnectionResult']:
+        """
+        A list of Privatelink Vpc Endpoint Connections. Each element contains the following attributes:
+        """
         return pulumi.get(self, "connections")
 
     @property
     @pulumi.getter(name="endpointId")
     def endpoint_id(self) -> Optional[str]:
+        """
+        The ID of the Vpc Endpoint.
+        """
         return pulumi.get(self, "endpoint_id")
 
     @property
@@ -79,6 +85,9 @@ class GetVpcEndpointConnectionsResult:
     @property
     @pulumi.getter
     def ids(self) -> Sequence[str]:
+        """
+        A list of Vpc Endpoint Connection IDs.
+        """
         return pulumi.get(self, "ids")
 
     @property
@@ -94,6 +103,9 @@ class GetVpcEndpointConnectionsResult:
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        The status of Vpc Endpoint Connection.
+        """
         return pulumi.get(self, "status")
 
 
@@ -122,7 +134,7 @@ def get_vpc_endpoint_connections(endpoint_id: Optional[str] = None,
     """
     This data source provides the Privatelink Vpc Endpoint Connections of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.110.0+.
+    > **NOTE:** Available since v1.110.0.
 
     ## Example Usage
 
@@ -171,7 +183,7 @@ def get_vpc_endpoint_connections_output(endpoint_id: Optional[pulumi.Input[Optio
     """
     This data source provides the Privatelink Vpc Endpoint Connections of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.110.0+.
+    > **NOTE:** Available since v1.110.0.
 
     ## Example Usage
 

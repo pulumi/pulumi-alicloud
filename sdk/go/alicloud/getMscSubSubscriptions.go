@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Message Center Subscriptions of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.135.0+.
+// > **NOTE:** Available since v1.135.0.
 //
 // ## Example Usage
 //
@@ -60,8 +60,9 @@ type GetMscSubSubscriptionsArgs struct {
 // A collection of values returned by getMscSubSubscriptions.
 type GetMscSubSubscriptionsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id            string                               `pulumi:"id"`
-	OutputFile    *string                              `pulumi:"outputFile"`
+	Id         string  `pulumi:"id"`
+	OutputFile *string `pulumi:"outputFile"`
+	// A list of Msc Sub Subscriptions. Each element contains the following attributes:
 	Subscriptions []GetMscSubSubscriptionsSubscription `pulumi:"subscriptions"`
 }
 
@@ -108,6 +109,7 @@ func (o GetMscSubSubscriptionsResultOutput) OutputFile() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetMscSubSubscriptionsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Msc Sub Subscriptions. Each element contains the following attributes:
 func (o GetMscSubSubscriptionsResultOutput) Subscriptions() GetMscSubSubscriptionsSubscriptionArrayOutput {
 	return o.ApplyT(func(v GetMscSubSubscriptionsResult) []GetMscSubSubscriptionsSubscription { return v.Subscriptions }).(GetMscSubSubscriptionsSubscriptionArrayOutput)
 }

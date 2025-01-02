@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Privatelink Vpc Endpoint Connections of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.110.0+.
+// > **NOTE:** Available since v1.110.0.
 //
 // ## Example Usage
 //
@@ -70,15 +70,19 @@ type GetVpcEndpointConnectionsArgs struct {
 
 // A collection of values returned by getVpcEndpointConnections.
 type GetVpcEndpointConnectionsResult struct {
-	Connections     []GetVpcEndpointConnectionsConnection `pulumi:"connections"`
-	EndpointId      *string                               `pulumi:"endpointId"`
-	EndpointOwnerId *int                                  `pulumi:"endpointOwnerId"`
+	// A list of Privatelink Vpc Endpoint Connections. Each element contains the following attributes:
+	Connections []GetVpcEndpointConnectionsConnection `pulumi:"connections"`
+	// The ID of the Vpc Endpoint.
+	EndpointId      *string `pulumi:"endpointId"`
+	EndpointOwnerId *int    `pulumi:"endpointOwnerId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// A list of Vpc Endpoint Connection IDs.
 	Ids        []string `pulumi:"ids"`
 	OutputFile *string  `pulumi:"outputFile"`
 	ServiceId  string   `pulumi:"serviceId"`
-	Status     *string  `pulumi:"status"`
+	// The status of Vpc Endpoint Connection.
+	Status *string `pulumi:"status"`
 }
 
 func GetVpcEndpointConnectionsOutput(ctx *pulumi.Context, args GetVpcEndpointConnectionsOutputArgs, opts ...pulumi.InvokeOption) GetVpcEndpointConnectionsResultOutput {
@@ -123,10 +127,12 @@ func (o GetVpcEndpointConnectionsResultOutput) ToGetVpcEndpointConnectionsResult
 	return o
 }
 
+// A list of Privatelink Vpc Endpoint Connections. Each element contains the following attributes:
 func (o GetVpcEndpointConnectionsResultOutput) Connections() GetVpcEndpointConnectionsConnectionArrayOutput {
 	return o.ApplyT(func(v GetVpcEndpointConnectionsResult) []GetVpcEndpointConnectionsConnection { return v.Connections }).(GetVpcEndpointConnectionsConnectionArrayOutput)
 }
 
+// The ID of the Vpc Endpoint.
 func (o GetVpcEndpointConnectionsResultOutput) EndpointId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpcEndpointConnectionsResult) *string { return v.EndpointId }).(pulumi.StringPtrOutput)
 }
@@ -140,6 +146,7 @@ func (o GetVpcEndpointConnectionsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcEndpointConnectionsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of Vpc Endpoint Connection IDs.
 func (o GetVpcEndpointConnectionsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetVpcEndpointConnectionsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
@@ -152,6 +159,7 @@ func (o GetVpcEndpointConnectionsResultOutput) ServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcEndpointConnectionsResult) string { return v.ServiceId }).(pulumi.StringOutput)
 }
 
+// The status of Vpc Endpoint Connection.
 func (o GetVpcEndpointConnectionsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpcEndpointConnectionsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

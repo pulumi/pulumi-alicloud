@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// This data source provides the Cloud Firewall Vpc Firewall Control Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.194.0+.
+        /// &gt; **NOTE:** Available since v1.194.0.
         /// 
         /// ## Example Usage
         /// 
@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// This data source provides the Cloud Firewall Vpc Firewall Control Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.194.0+.
+        /// &gt; **NOTE:** Available since v1.194.0.
         /// 
         /// ## Example Usage
         /// 
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// This data source provides the Cloud Firewall Vpc Firewall Control Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.194.0+.
+        /// &gt; **NOTE:** Available since v1.194.0.
         /// 
         /// ## Example Usage
         /// 
@@ -320,9 +320,21 @@ namespace Pulumi.AliCloud.CloudFirewall
     [OutputType]
     public sealed class GetVpcFirewallControlPoliciesResult
     {
+        /// <summary>
+        /// Access control over VPC firewalls are set in the access traffic via Alibaba cloud firewall way (ACT).
+        /// </summary>
         public readonly string? AclAction;
+        /// <summary>
+        /// Access control over VPC firewalls strategy unique identifier.
+        /// </summary>
         public readonly string? AclUuid;
+        /// <summary>
+        /// Access control over VPC firewalls description of the strategy information.
+        /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// Access control over VPC firewalls strategy the destination address in.
+        /// </summary>
         public readonly string? Destination;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -330,14 +342,32 @@ namespace Pulumi.AliCloud.CloudFirewall
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? Lang;
+        /// <summary>
+        /// The UID of the member account of the current Alibaba cloud account.
+        /// </summary>
         public readonly string? MemberUid;
         public readonly string? OutputFile;
         public readonly int? PageNumber;
         public readonly int? PageSize;
+        /// <summary>
+        /// A list of Cloud Firewall Vpc Firewall Control Policies. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetVpcFirewallControlPoliciesPolicyResult> Policies;
+        /// <summary>
+        /// Access control over VPC firewalls strategy access traffic of the protocol type.
+        /// </summary>
         public readonly string? Proto;
+        /// <summary>
+        /// The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
+        /// </summary>
         public readonly bool? Release;
+        /// <summary>
+        /// Access control over VPC firewalls strategy in the source address.
+        /// </summary>
         public readonly string? Source;
+        /// <summary>
+        /// The ID of the VPC firewall instance.
+        /// </summary>
         public readonly string VpcFirewallId;
 
         [OutputConstructor]

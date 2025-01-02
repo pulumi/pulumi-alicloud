@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:oss/accessPoint:AccessPoint":
+		r = &AccessPoint{}
 	case "alicloud:oss/accountPublicAccessBlock:AccountPublicAccessBlock":
 		r = &AccountPublicAccessBlock{}
 	case "alicloud:oss/bucket:Bucket":
@@ -65,6 +67,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BucketVersioning{}
 	case "alicloud:oss/bucketWebsite:BucketWebsite":
 		r = &BucketWebsite{}
+	case "alicloud:oss/bucketWorm:BucketWorm":
+		r = &BucketWorm{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -78,6 +82,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"oss/accessPoint",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"oss/accountPublicAccessBlock",
@@ -186,6 +195,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"oss/bucketWebsite",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"oss/bucketWorm",
 		&module{version},
 	)
 }

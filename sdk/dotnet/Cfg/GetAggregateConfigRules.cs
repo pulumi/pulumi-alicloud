@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cfg
         /// <summary>
         /// This data source provides the Config Aggregate Config Rules of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.124.0+.
+        /// &gt; **NOTE:** Available since v1.124.0.
         /// 
         /// ## Example Usage
         /// 
@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.Cfg
         /// <summary>
         /// This data source provides the Config Aggregate Config Rules of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.124.0+.
+        /// &gt; **NOTE:** Available since v1.124.0.
         /// 
         /// ## Example Usage
         /// 
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Cfg
         /// <summary>
         /// This data source provides the Config Aggregate Config Rules of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.124.0+.
+        /// &gt; **NOTE:** Available since v1.124.0.
         /// 
         /// ## Example Usage
         /// 
@@ -169,7 +169,7 @@ namespace Pulumi.AliCloud.Cfg
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
+        /// The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
         /// </summary>
         [Input("riskLevel")]
         public int? RiskLevel { get; set; }
@@ -231,7 +231,7 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
+        /// The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
         /// </summary>
         [Input("riskLevel")]
         public Input<int>? RiskLevel { get; set; }

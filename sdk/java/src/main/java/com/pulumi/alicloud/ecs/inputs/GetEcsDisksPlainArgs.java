@@ -133,14 +133,14 @@ public final class GetEcsDisksPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The disk type.
+     * The disk type. Valid values: `system`, `data`, `all`.
      * 
      */
     @Import(name="diskType")
     private @Nullable String diskType;
 
     /**
-     * @return The disk type.
+     * @return The disk type. Valid values: `system`, `data`, `all`.
      * 
      */
     public Optional<String> diskType() {
@@ -208,14 +208,14 @@ public final class GetEcsDisksPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
+     * Indicate whether the disk is encrypted or not. Valid values: `on` and `off`.
      * 
      */
     @Import(name="encrypted")
     private @Nullable String encrypted;
 
     /**
-     * @return Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
+     * @return Indicate whether the disk is encrypted or not. Valid values: `on` and `off`.
      * 
      */
     public Optional<String> encrypted() {
@@ -282,9 +282,17 @@ public final class GetEcsDisksPlainArgs extends com.pulumi.resources.InvokeArgs 
         return Optional.ofNullable(this.nameRegex);
     }
 
+    /**
+     * The reasons why the disk was locked. See `operation_locks` below for details.
+     * 
+     */
     @Import(name="operationLocks")
     private @Nullable List<GetEcsDisksOperationLock> operationLocks;
 
+    /**
+     * @return The reasons why the disk was locked. See `operation_locks` below for details.
+     * 
+     */
     public Optional<List<GetEcsDisksOperationLock>> operationLocks() {
         return Optional.ofNullable(this.operationLocks);
     }
@@ -379,14 +387,14 @@ public final class GetEcsDisksPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The status of disk.
+     * The status of disk. Valid Values: `Attaching`, `Available`, `Creating`, `Detaching`, `In_use`, `Migrating`, `ReIniting`, `Transferring`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of disk.
+     * @return The status of disk. Valid Values: `Attaching`, `Available`, `Creating`, `Detaching`, `In_use`, `Migrating`, `ReIniting`, `Transferring`.
      * 
      */
     public Optional<String> status() {
@@ -590,7 +598,7 @@ public final class GetEcsDisksPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param diskType The disk type.
+         * @param diskType The disk type. Valid values: `system`, `data`, `all`.
          * 
          * @return builder
          * 
@@ -645,7 +653,7 @@ public final class GetEcsDisksPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param encrypted Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
+         * @param encrypted Indicate whether the disk is encrypted or not. Valid values: `on` and `off`.
          * 
          * @return builder
          * 
@@ -709,11 +717,23 @@ public final class GetEcsDisksPlainArgs extends com.pulumi.resources.InvokeArgs 
             return this;
         }
 
+        /**
+         * @param operationLocks The reasons why the disk was locked. See `operation_locks` below for details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder operationLocks(@Nullable List<GetEcsDisksOperationLock> operationLocks) {
             $.operationLocks = operationLocks;
             return this;
         }
 
+        /**
+         * @param operationLocks The reasons why the disk was locked. See `operation_locks` below for details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder operationLocks(GetEcsDisksOperationLock... operationLocks) {
             return operationLocks(List.of(operationLocks));
         }
@@ -784,7 +804,7 @@ public final class GetEcsDisksPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param status The status of disk.
+         * @param status The status of disk. Valid Values: `Attaching`, `Available`, `Creating`, `Detaching`, `In_use`, `Migrating`, `ReIniting`, `Transferring`.
          * 
          * @return builder
          * 

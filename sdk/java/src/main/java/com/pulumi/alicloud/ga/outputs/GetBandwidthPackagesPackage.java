@@ -62,12 +62,12 @@ public final class GetBandwidthPackagesPackage {
      */
     private String paymentType;
     /**
-     * @return The status of the bandwidth plan.
+     * @return The status of the bandwidth plan. Valid values: `active`, `binded`, `binding`, `finacialLocked`, `init`, `unbinding`, `updating`.
      * 
      */
     private String status;
     /**
-     * @return The type of the bandwidth packet. China station only supports return to basic.
+     * @return The type of the bandwidth plan. Valid values: `Basic`, `CrossDomain`.
      * 
      */
     private String type;
@@ -144,14 +144,14 @@ public final class GetBandwidthPackagesPackage {
         return this.paymentType;
     }
     /**
-     * @return The status of the bandwidth plan.
+     * @return The status of the bandwidth plan. Valid values: `active`, `binded`, `binding`, `finacialLocked`, `init`, `unbinding`, `updating`.
      * 
      */
     public String status() {
         return this.status;
     }
     /**
-     * @return The type of the bandwidth packet. China station only supports return to basic.
+     * @return The type of the bandwidth plan. Valid values: `Basic`, `CrossDomain`.
      * 
      */
     public String type() {

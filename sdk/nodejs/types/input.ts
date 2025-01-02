@@ -63,6 +63,7 @@ export interface ProviderEndpoint {
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom AnalyticDB endpoints.
      */
     adb?: pulumi.Input<string>;
+    aiworkspace?: pulumi.Input<string>;
     /**
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alb endpoints.
      */
@@ -79,6 +80,14 @@ export interface ProviderEndpoint {
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ALIKAFKA endpoints.
      */
     alikafka?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom onsproxy endpoints.
+     */
+    amqp?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ddosbasic endpoints.
+     */
+    antiddosPublic?: pulumi.Input<string>;
     /**
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
      */
@@ -136,6 +145,10 @@ export interface ProviderEndpoint {
      */
     cds?: pulumi.Input<string>;
     /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom beebot endpoints.
+     */
+    chatbot?: pulumi.Input<string>;
+    /**
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom clickhouse endpoints.
      */
     clickhouse?: pulumi.Input<string>;
@@ -190,11 +203,19 @@ export interface ProviderEndpoint {
     /**
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dataworkspublic endpoints.
      */
+    dataworksPublic?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dataworkspublic endpoints.
+     */
     dataworkspublic?: pulumi.Input<string>;
     /**
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dbfs endpoints.
      */
     dbfs?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbs endpoints.
+     */
+    dbs?: pulumi.Input<string>;
     /**
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dcdn endpoints.
      */
@@ -215,10 +236,15 @@ export interface ProviderEndpoint {
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MongoDB endpoints.
      */
     dds?: pulumi.Input<string>;
+    devopsRdc?: pulumi.Input<string>;
     /**
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom devopsrdc endpoints.
      */
     devopsrdc?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidfs endpoints.
+     */
+    dfs?: pulumi.Input<string>;
     /**
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dg endpoints.
      */
@@ -249,6 +275,10 @@ export interface ProviderEndpoint {
     dts?: pulumi.Input<string>;
     dysms?: pulumi.Input<string>;
     /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dysmsapi endpoints.
+     */
+    dysmsapi?: pulumi.Input<string>;
+    /**
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eais endpoints.
      */
     eais?: pulumi.Input<string>;
@@ -256,6 +286,10 @@ export interface ProviderEndpoint {
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ebs endpoints.
      */
     ebs?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gwsecd endpoints.
+     */
+    ecd?: pulumi.Input<string>;
     /**
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eci endpoints.
      */
@@ -272,6 +306,10 @@ export interface ProviderEndpoint {
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edasschedulerx endpoints.
      */
     edasschedulerx?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edsuser endpoints.
+     */
+    edsUser?: pulumi.Input<string>;
     /**
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edsuser endpoints.
      */
@@ -304,6 +342,7 @@ export interface ProviderEndpoint {
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ens endpoints.
      */
     ens?: pulumi.Input<string>;
+    esa?: pulumi.Input<string>;
     /**
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Autoscaling endpoints.
      */
@@ -316,6 +355,10 @@ export interface ProviderEndpoint {
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Function Computing endpoints.
      */
     fc?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Function Computing endpoints.
+     */
+    fcOpen?: pulumi.Input<string>;
     /**
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom fnf endpoints.
      */
@@ -331,11 +374,16 @@ export interface ProviderEndpoint {
     /**
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gds endpoints.
      */
+    gdb?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gds endpoints.
+     */
     gds?: pulumi.Input<string>;
     /**
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom GPDB endpoints.
      */
     gpdb?: pulumi.Input<string>;
+    gwlb?: pulumi.Input<string>;
     /**
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gwsecd endpoints.
      */
@@ -401,6 +449,10 @@ export interface ProviderEndpoint {
      */
     mns?: pulumi.Input<string>;
     /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MNS endpoints.
+     */
+    mnsOpen?: pulumi.Input<string>;
+    /**
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mscopensubscription endpoints.
      */
     mscopensubscription?: pulumi.Input<string>;
@@ -420,6 +472,10 @@ export interface ProviderEndpoint {
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oceanbase endpoints.
      */
     oceanbase?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oceanbase endpoints.
+     */
+    oceanbasepro?: pulumi.Input<string>;
     /**
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ONS endpoints.
      */
@@ -449,6 +505,10 @@ export interface ProviderEndpoint {
      */
     polardb?: pulumi.Input<string>;
     /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DRDS endpoints.
+     */
+    polardbx?: pulumi.Input<string>;
+    /**
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom privatelink endpoints.
      */
     privatelink?: pulumi.Input<string>;
@@ -460,6 +520,10 @@ export interface ProviderEndpoint {
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quickbi endpoints.
      */
     quickbi?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quickbi endpoints.
+     */
+    quickbiPublic?: pulumi.Input<string>;
     /**
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quotas endpoints.
      */
@@ -484,14 +548,20 @@ export interface ProviderEndpoint {
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcemanager endpoints.
      */
     resourcemanager?: pulumi.Input<string>;
+    resourcesharing?: pulumi.Input<string>;
     /**
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcesharing endpoints.
      */
     ressharing?: pulumi.Input<string>;
+    rocketmq?: pulumi.Input<string>;
     /**
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ros endpoints.
      */
     ros?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
+     */
+    sae?: pulumi.Input<string>;
     /**
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sas endpoints.
      */
@@ -500,6 +570,10 @@ export interface ProviderEndpoint {
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom scdn endpoints.
      */
     scdn?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edasschedulerx endpoints.
+     */
+    schedulerx2?: pulumi.Input<string>;
     /**
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sddp endpoints.
      */
@@ -512,6 +586,10 @@ export interface ProviderEndpoint {
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
      */
     serverless?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom srvcatalog endpoints.
+     */
+    servicecatalog?: pulumi.Input<string>;
     /**
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom servicemesh endpoints.
      */
@@ -541,6 +619,10 @@ export interface ProviderEndpoint {
      */
     swas?: pulumi.Input<string>;
     /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom swas endpoints.
+     */
+    swasOpen?: pulumi.Input<string>;
+    /**
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom tag endpoints.
      */
     tag?: pulumi.Input<string>;
@@ -552,6 +634,7 @@ export interface ProviderEndpoint {
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom VPC and VPN endpoints.
      */
     vpc?: pulumi.Input<string>;
+    vpcipam?: pulumi.Input<string>;
     /**
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vpcpeer endpoints.
      */
@@ -1333,6 +1416,58 @@ export namespace alb {
 }
 
 export namespace amqp {
+}
+
+export namespace apig {
+    export interface GatewayLogConfig {
+        /**
+         * Sls See `sls` below.
+         */
+        sls?: pulumi.Input<inputs.apig.GatewayLogConfigSls>;
+    }
+
+    export interface GatewayLogConfigSls {
+        /**
+         * Enable Log Service
+         */
+        enable?: pulumi.Input<boolean>;
+    }
+
+    export interface GatewayNetworkAccessConfig {
+        /**
+         * Network Access Type
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface GatewayVpc {
+        /**
+         * The name of the VPC gateway.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The VPC network ID.
+         */
+        vpcId: pulumi.Input<string>;
+    }
+
+    export interface GatewayVswitch {
+        /**
+         * The name of the VPC gateway.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The ID of the virtual switch.
+         */
+        vswitchId?: pulumi.Input<string>;
+    }
+
+    export interface GatewayZoneConfig {
+        /**
+         * Availability Zone Options
+         */
+        selectOption: pulumi.Input<string>;
+    }
 }
 
 export namespace apigateway {
@@ -3880,6 +4015,32 @@ export namespace cr {
          * The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
          */
         nodeName?: pulumi.Input<string>;
+    }
+
+    export interface RegistryEnterpriseInstanceInstanceEndpoint {
+        /**
+         * Domain List
+         */
+        domains?: pulumi.Input<pulumi.Input<inputs.cr.RegistryEnterpriseInstanceInstanceEndpointDomain>[]>;
+        /**
+         * enable
+         */
+        enable?: pulumi.Input<boolean>;
+        /**
+         * Network Access Endpoint Type
+         */
+        endpointType?: pulumi.Input<string>;
+    }
+
+    export interface RegistryEnterpriseInstanceInstanceEndpointDomain {
+        /**
+         * Domain
+         */
+        domain?: pulumi.Input<string>;
+        /**
+         * Domain Type
+         */
+        type?: pulumi.Input<string>;
     }
 
     export interface RepoDomainList {
@@ -7038,10 +7199,16 @@ export namespace ecs {
     }
 
     export interface GetEcsDisksOperationLock {
+        /**
+         * The reason why the disk was locked.
+         */
         lockReason?: string;
     }
 
     export interface GetEcsDisksOperationLockArgs {
+        /**
+         * The reason why the disk was locked.
+         */
         lockReason?: pulumi.Input<string>;
     }
 
@@ -8441,6 +8608,99 @@ export namespace ens {
         type?: pulumi.Input<string>;
         /**
          * Weight of the backend server  Example value: 100.
+         */
+        weight?: pulumi.Input<number>;
+    }
+}
+
+export namespace esa {
+    export interface RecordAuthConf {
+        /**
+         * The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
+         */
+        accessKey?: pulumi.Input<string>;
+        /**
+         * The authentication type of the origin server. Different origins support different authentication types. The type of origin refers to the SourceType parameter in this operation. If the type of origin is OSS or S3, you must specify the authentication type of the origin. Valid values:
+         */
+        authType?: pulumi.Input<string>;
+        /**
+         * The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
+         */
+        region?: pulumi.Input<string>;
+        /**
+         * The secret access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
+         */
+        secretKey?: pulumi.Input<string>;
+        /**
+         * The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
+         */
+        version?: pulumi.Input<string>;
+    }
+
+    export interface RecordData {
+        /**
+         * The encryption algorithm used for the record, specified within the range from 0 to 255. This parameter is required when you add CERT or SSHFP records.
+         */
+        algorithm?: pulumi.Input<number>;
+        /**
+         * The public key of the certificate. This parameter is required when you add CERT, SMIMEA, or TLSA records.
+         */
+        certificate?: pulumi.Input<string>;
+        /**
+         * The public key fingerprint of the record. This parameter is required when you add a SSHFP record.
+         */
+        fingerprint?: pulumi.Input<string>;
+        /**
+         * The flag bit of the record. The Flag for a CAA record indicates its priority and how it is processed, specified within the range of 0 to 255. This parameter is required when you add a CAA record.
+         */
+        flag?: pulumi.Input<number>;
+        /**
+         * The public key identification for the record, specified within the range of 0 to 65,535. This parameter is required when you add a CAA record.
+         */
+        keyTag?: pulumi.Input<number>;
+        /**
+         * The algorithm policy used to match or validate the certificate, specified within the range 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
+         */
+        matchingType?: pulumi.Input<number>;
+        /**
+         * The port of the record, specified within the range of 0 to 65,535. This parameter is required when you add an SRV record.
+         */
+        port?: pulumi.Input<number>;
+        /**
+         * The priority of the record, specified within the range of 0 to 65,535. A smaller value indicates a higher priority. This parameter is required when you add MX, SRV, and URI records.
+         */
+        priority?: pulumi.Input<number>;
+        /**
+         * The type of certificate or public key, specified within the range of 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
+         */
+        selector?: pulumi.Input<number>;
+        /**
+         * The label of the record. The Tag of a CAA record indicate its specific type and usage. This parameter is required when you add a CAA record.
+         */
+        tag?: pulumi.Input<string>;
+        /**
+         * The certificate type of the record (in CERT records), or the public key type (in SSHFP records). This parameter is required when you add CERT or SSHFP records.
+         */
+        type?: pulumi.Input<number>;
+        /**
+         * The usage identifier of the record, specified within the range of 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
+         */
+        usage?: pulumi.Input<number>;
+        /**
+         * The record value or part of the record content. This parameter is required when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings based on different types of records:
+         *
+         * - **A/AAAA**: the IP address(es). Separate multiple IPs with commas (,). You must have at least one IPv4 address.
+         * - `CNAME`: the target domain name.
+         * - `NS`: the name servers for the domain name.
+         * - `MX`: a valid domain name of the target mail server.
+         * - `TXT`: a valid text string.
+         * - `CAA`: a valid domain name of the certificate authority.
+         * - `SRV`: a valid domain name of the target host.
+         * - `URI`: a valid URI string.
+         */
+        value?: pulumi.Input<string>;
+        /**
+         * The weight of the record, specified within the range of 0 to 65,535. This parameter is required when you add SRV or URI records.
          */
         weight?: pulumi.Input<number>;
     }
@@ -12190,6 +12450,20 @@ export namespace opensearch {
 }
 
 export namespace oss {
+    export interface AccessPointPublicAccessBlockConfiguration {
+        /**
+         * Block public access enabled for access point
+         */
+        blockPublicAccess?: pulumi.Input<boolean>;
+    }
+
+    export interface AccessPointVpcConfiguration {
+        /**
+         * The vpc ID is required only when the value of NetworkOrigin is VPC.
+         */
+        vpcId?: pulumi.Input<string>;
+    }
+
     export interface BucketAccessMonitor {
         /**
          * The access monitor state of a bucket. If you want to manage objects based on the last access time of the objects, specifies the status to `Enabled`. Valid values: `Enabled` and `Disabled`.
@@ -14856,6 +15130,112 @@ export namespace scdn {
 }
 
 export namespace schedulerx {
+    export interface JobJobMonitorInfo {
+        /**
+         * Contact information. See `contactInfo` below.
+         */
+        contactInfos?: pulumi.Input<pulumi.Input<inputs.schedulerx.JobJobMonitorInfoContactInfo>[]>;
+        /**
+         * Alarm switch and threshold configuration. See `monitorConfig` below.
+         */
+        monitorConfig?: pulumi.Input<inputs.schedulerx.JobJobMonitorInfoMonitorConfig>;
+    }
+
+    export interface JobJobMonitorInfoContactInfo {
+        /**
+         * DingTalk swarm robot webhook address
+         */
+        ding?: pulumi.Input<string>;
+        /**
+         * User Email Address
+         */
+        userMail?: pulumi.Input<string>;
+        /**
+         * The user name
+         */
+        userName?: pulumi.Input<string>;
+        /**
+         * The user's mobile phone number
+         */
+        userPhone?: pulumi.Input<string>;
+    }
+
+    export interface JobJobMonitorInfoMonitorConfig {
+        /**
+         * Enable failure alarm
+         */
+        failEnable?: pulumi.Input<boolean>;
+        /**
+         * Whether no available Machine alarm is on
+         */
+        missWorkerEnable?: pulumi.Input<boolean>;
+        /**
+         * Alarm sending form
+         * - sms: sms alarm
+         * - phone: phone alarm
+         * - mail: mail alarm
+         * - webhook:webhook alarm
+         */
+        sendChannel?: pulumi.Input<string>;
+        /**
+         * Timeout threshold, unit s, default 7200.
+         */
+        timeout?: pulumi.Input<number>;
+        /**
+         * Time-out alarm switch. The values are as follows:
+         */
+        timeoutEnable?: pulumi.Input<boolean>;
+        /**
+         * The trigger switch is terminated by timeout and is turned off by default.
+         */
+        timeoutKillEnable?: pulumi.Input<boolean>;
+    }
+
+    export interface JobMapTaskXattrs {
+        /**
+         * The number of threads to execute a single trigger. The default value is 5.
+         */
+        consumerSize?: pulumi.Input<number>;
+        /**
+         * The number of subtask distribution threads. The default value is 5.
+         */
+        dispatcherSize?: pulumi.Input<number>;
+        /**
+         * The number of sub-tasks pulled by a parallel task at a time. The default value is 100.
+         */
+        pageSize?: pulumi.Input<number>;
+        /**
+         * The upper limit of the sub-task queue cache. The default value is 10000.
+         */
+        queueSize?: pulumi.Input<number>;
+        /**
+         * Subtask failure retry interval.
+         */
+        taskAttemptInterval?: pulumi.Input<number>;
+        /**
+         * The number of failed sub-task retries.
+         */
+        taskMaxAttempt?: pulumi.Input<number>;
+    }
+
+    export interface JobTimeConfig {
+        /**
+         * The cron type can optionally fill in a custom calendar.
+         */
+        calendar?: pulumi.Input<string>;
+        /**
+         * Cron type can choose time offset, unit s.
+         */
+        dataOffset?: pulumi.Input<number>;
+        /**
+         * Time expressions. Currently, the following types of time expressions are supported:
+         */
+        timeExpression?: pulumi.Input<string>;
+        /**
+         * Time configuration type. Currently, the following time types are supported:
+         */
+        timeType: pulumi.Input<number>;
+    }
 }
 
 export namespace sddp {

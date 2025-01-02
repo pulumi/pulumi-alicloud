@@ -1343,9 +1343,10 @@ type GetAggregateConfigRulesRule struct {
 	// The scope of resource region ids.
 	RegionIdsScope string `pulumi:"regionIdsScope"`
 	// The scope of resource group ids.
-	ResourceGroupIdsScope string   `pulumi:"resourceGroupIdsScope"`
-	ResourceTypesScopes   []string `pulumi:"resourceTypesScopes"`
-	// Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
+	ResourceGroupIdsScope string `pulumi:"resourceGroupIdsScope"`
+	// The types of resources evaluated by the rule.
+	ResourceTypesScopes []string `pulumi:"resourceTypesScopes"`
+	// The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
 	RiskLevel int `pulumi:"riskLevel"`
 	// The identifier of the managed rule or the arn of the custom function.
 	SourceIdentifier string `pulumi:"sourceIdentifier"`
@@ -1404,9 +1405,10 @@ type GetAggregateConfigRulesRuleArgs struct {
 	// The scope of resource region ids.
 	RegionIdsScope pulumi.StringInput `pulumi:"regionIdsScope"`
 	// The scope of resource group ids.
-	ResourceGroupIdsScope pulumi.StringInput      `pulumi:"resourceGroupIdsScope"`
-	ResourceTypesScopes   pulumi.StringArrayInput `pulumi:"resourceTypesScopes"`
-	// Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
+	ResourceGroupIdsScope pulumi.StringInput `pulumi:"resourceGroupIdsScope"`
+	// The types of resources evaluated by the rule.
+	ResourceTypesScopes pulumi.StringArrayInput `pulumi:"resourceTypesScopes"`
+	// The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
 	RiskLevel pulumi.IntInput `pulumi:"riskLevel"`
 	// The identifier of the managed rule or the arn of the custom function.
 	SourceIdentifier pulumi.StringInput `pulumi:"sourceIdentifier"`
@@ -1556,11 +1558,12 @@ func (o GetAggregateConfigRulesRuleOutput) ResourceGroupIdsScope() pulumi.String
 	return o.ApplyT(func(v GetAggregateConfigRulesRule) string { return v.ResourceGroupIdsScope }).(pulumi.StringOutput)
 }
 
+// The types of resources evaluated by the rule.
 func (o GetAggregateConfigRulesRuleOutput) ResourceTypesScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAggregateConfigRulesRule) []string { return v.ResourceTypesScopes }).(pulumi.StringArrayOutput)
 }
 
-// Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
+// The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
 func (o GetAggregateConfigRulesRuleOutput) RiskLevel() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAggregateConfigRulesRule) int { return v.RiskLevel }).(pulumi.IntOutput)
 }
@@ -3143,8 +3146,9 @@ func (o GetDeliveryChannelsChannelArrayOutput) Index(i pulumi.IntInput) GetDeliv
 }
 
 type GetRulesRule struct {
-	// The ID of the Alicloud account.
-	AccountId        string `pulumi:"accountId"`
+	// The ID of the Alibaba Cloud account.
+	AccountId string `pulumi:"accountId"`
+	// The compliance package ID.
 	CompliancePackId string `pulumi:"compliancePackId"`
 	// The information about the compliance evaluations based on the rule.
 	Compliances []GetRulesRuleCompliance `pulumi:"compliances"`
@@ -3154,27 +3158,27 @@ type GetRulesRule struct {
 	ConfigRuleId string `pulumi:"configRuleId"`
 	// Field `configRuleState` has been deprecated from provider version 1.124.1. New field `status` instead.
 	ConfigRuleState string `pulumi:"configRuleState"`
-	// (Available in 1.124.1+) A list of trigger types of config rule.
+	// (Available since v1.124.1) A list of trigger types of config rule.
 	ConfigRuleTriggerTypes string `pulumi:"configRuleTriggerTypes"`
 	// The description of the Config Rule.
 	Description string `pulumi:"description"`
 	// Event source of the Config Rule.
 	EventSource string `pulumi:"eventSource"`
-	// (Available in 1.124.1+) The scope of exclude of resource ids.
+	// (Available since v1.124.1) The scope of exclude of resource ids.
 	ExcludeResourceIdsScope string `pulumi:"excludeResourceIdsScope"`
 	// The ID of the Config Rule.
 	Id string `pulumi:"id"`
 	// The input parameters of the Config Rule.
 	InputParameters map[string]string `pulumi:"inputParameters"`
-	// (Available in 1.124.1+) The frequency of maximum execution.
+	// (Available since v1.124.1) The frequency of maximum execution.
 	MaximumExecutionFrequency string `pulumi:"maximumExecutionFrequency"`
 	// the timestamp of the Config Rule modified.
 	ModifiedTimestamp string `pulumi:"modifiedTimestamp"`
-	// (Available in 1.124.1+) The scope of region ids.
+	// (Available since v1.124.1) The scope of region ids.
 	RegionIdsScope string `pulumi:"regionIdsScope"`
-	// (Available in 1.124.1+) The scope of resource group ids.
+	// (Available since v1.124.1) The scope of resource group ids.
 	ResourceGroupIdsScope string `pulumi:"resourceGroupIdsScope"`
-	// (Available in 1.124.1+) The scope of resource types.
+	// (Available since v1.124.1) The scope of resource types.
 	ResourceTypesScopes []string `pulumi:"resourceTypesScopes"`
 	// The risk level of Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
 	RiskLevel int `pulumi:"riskLevel"`
@@ -3192,9 +3196,9 @@ type GetRulesRule struct {
 	SourceOwner string `pulumi:"sourceOwner"`
 	// The status of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
 	Status string `pulumi:"status"`
-	// (Available in 1.124.1+) The scope of tag key.
+	// (Available since v1.124.1) The scope of tag key.
 	TagKeyScope string `pulumi:"tagKeyScope"`
-	// (Available in 1.124.1+) The scope of tag value.
+	// (Available since v1.124.1) The scope of tag value.
 	TagValueScope string `pulumi:"tagValueScope"`
 }
 
@@ -3210,8 +3214,9 @@ type GetRulesRuleInput interface {
 }
 
 type GetRulesRuleArgs struct {
-	// The ID of the Alicloud account.
-	AccountId        pulumi.StringInput `pulumi:"accountId"`
+	// The ID of the Alibaba Cloud account.
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// The compliance package ID.
 	CompliancePackId pulumi.StringInput `pulumi:"compliancePackId"`
 	// The information about the compliance evaluations based on the rule.
 	Compliances GetRulesRuleComplianceArrayInput `pulumi:"compliances"`
@@ -3221,27 +3226,27 @@ type GetRulesRuleArgs struct {
 	ConfigRuleId pulumi.StringInput `pulumi:"configRuleId"`
 	// Field `configRuleState` has been deprecated from provider version 1.124.1. New field `status` instead.
 	ConfigRuleState pulumi.StringInput `pulumi:"configRuleState"`
-	// (Available in 1.124.1+) A list of trigger types of config rule.
+	// (Available since v1.124.1) A list of trigger types of config rule.
 	ConfigRuleTriggerTypes pulumi.StringInput `pulumi:"configRuleTriggerTypes"`
 	// The description of the Config Rule.
 	Description pulumi.StringInput `pulumi:"description"`
 	// Event source of the Config Rule.
 	EventSource pulumi.StringInput `pulumi:"eventSource"`
-	// (Available in 1.124.1+) The scope of exclude of resource ids.
+	// (Available since v1.124.1) The scope of exclude of resource ids.
 	ExcludeResourceIdsScope pulumi.StringInput `pulumi:"excludeResourceIdsScope"`
 	// The ID of the Config Rule.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The input parameters of the Config Rule.
 	InputParameters pulumi.StringMapInput `pulumi:"inputParameters"`
-	// (Available in 1.124.1+) The frequency of maximum execution.
+	// (Available since v1.124.1) The frequency of maximum execution.
 	MaximumExecutionFrequency pulumi.StringInput `pulumi:"maximumExecutionFrequency"`
 	// the timestamp of the Config Rule modified.
 	ModifiedTimestamp pulumi.StringInput `pulumi:"modifiedTimestamp"`
-	// (Available in 1.124.1+) The scope of region ids.
+	// (Available since v1.124.1) The scope of region ids.
 	RegionIdsScope pulumi.StringInput `pulumi:"regionIdsScope"`
-	// (Available in 1.124.1+) The scope of resource group ids.
+	// (Available since v1.124.1) The scope of resource group ids.
 	ResourceGroupIdsScope pulumi.StringInput `pulumi:"resourceGroupIdsScope"`
-	// (Available in 1.124.1+) The scope of resource types.
+	// (Available since v1.124.1) The scope of resource types.
 	ResourceTypesScopes pulumi.StringArrayInput `pulumi:"resourceTypesScopes"`
 	// The risk level of Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
 	RiskLevel pulumi.IntInput `pulumi:"riskLevel"`
@@ -3259,9 +3264,9 @@ type GetRulesRuleArgs struct {
 	SourceOwner pulumi.StringInput `pulumi:"sourceOwner"`
 	// The status of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
 	Status pulumi.StringInput `pulumi:"status"`
-	// (Available in 1.124.1+) The scope of tag key.
+	// (Available since v1.124.1) The scope of tag key.
 	TagKeyScope pulumi.StringInput `pulumi:"tagKeyScope"`
-	// (Available in 1.124.1+) The scope of tag value.
+	// (Available since v1.124.1) The scope of tag value.
 	TagValueScope pulumi.StringInput `pulumi:"tagValueScope"`
 }
 
@@ -3316,11 +3321,12 @@ func (o GetRulesRuleOutput) ToGetRulesRuleOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The ID of the Alicloud account.
+// The ID of the Alibaba Cloud account.
 func (o GetRulesRuleOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRule) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// The compliance package ID.
 func (o GetRulesRuleOutput) CompliancePackId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRule) string { return v.CompliancePackId }).(pulumi.StringOutput)
 }
@@ -3345,7 +3351,7 @@ func (o GetRulesRuleOutput) ConfigRuleState() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRule) string { return v.ConfigRuleState }).(pulumi.StringOutput)
 }
 
-// (Available in 1.124.1+) A list of trigger types of config rule.
+// (Available since v1.124.1) A list of trigger types of config rule.
 func (o GetRulesRuleOutput) ConfigRuleTriggerTypes() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRule) string { return v.ConfigRuleTriggerTypes }).(pulumi.StringOutput)
 }
@@ -3360,7 +3366,7 @@ func (o GetRulesRuleOutput) EventSource() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRule) string { return v.EventSource }).(pulumi.StringOutput)
 }
 
-// (Available in 1.124.1+) The scope of exclude of resource ids.
+// (Available since v1.124.1) The scope of exclude of resource ids.
 func (o GetRulesRuleOutput) ExcludeResourceIdsScope() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRule) string { return v.ExcludeResourceIdsScope }).(pulumi.StringOutput)
 }
@@ -3375,7 +3381,7 @@ func (o GetRulesRuleOutput) InputParameters() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetRulesRule) map[string]string { return v.InputParameters }).(pulumi.StringMapOutput)
 }
 
-// (Available in 1.124.1+) The frequency of maximum execution.
+// (Available since v1.124.1) The frequency of maximum execution.
 func (o GetRulesRuleOutput) MaximumExecutionFrequency() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRule) string { return v.MaximumExecutionFrequency }).(pulumi.StringOutput)
 }
@@ -3385,17 +3391,17 @@ func (o GetRulesRuleOutput) ModifiedTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRule) string { return v.ModifiedTimestamp }).(pulumi.StringOutput)
 }
 
-// (Available in 1.124.1+) The scope of region ids.
+// (Available since v1.124.1) The scope of region ids.
 func (o GetRulesRuleOutput) RegionIdsScope() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRule) string { return v.RegionIdsScope }).(pulumi.StringOutput)
 }
 
-// (Available in 1.124.1+) The scope of resource group ids.
+// (Available since v1.124.1) The scope of resource group ids.
 func (o GetRulesRuleOutput) ResourceGroupIdsScope() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRule) string { return v.ResourceGroupIdsScope }).(pulumi.StringOutput)
 }
 
-// (Available in 1.124.1+) The scope of resource types.
+// (Available since v1.124.1) The scope of resource types.
 func (o GetRulesRuleOutput) ResourceTypesScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRulesRule) []string { return v.ResourceTypesScopes }).(pulumi.StringArrayOutput)
 }
@@ -3440,12 +3446,12 @@ func (o GetRulesRuleOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRule) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// (Available in 1.124.1+) The scope of tag key.
+// (Available since v1.124.1) The scope of tag key.
 func (o GetRulesRuleOutput) TagKeyScope() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRule) string { return v.TagKeyScope }).(pulumi.StringOutput)
 }
 
-// (Available in 1.124.1+) The scope of tag value.
+// (Available since v1.124.1) The scope of tag value.
 func (o GetRulesRuleOutput) TagValueScope() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRule) string { return v.TagValueScope }).(pulumi.StringOutput)
 }

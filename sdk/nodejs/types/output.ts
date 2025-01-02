@@ -663,6 +663,7 @@ export namespace actiontrail {
 export namespace adb {
     export interface GetClustersCluster {
         autoRenewPeriod: number;
+        availableKernelVersions: outputs.adb.GetClustersClusterAvailableKernelVersion[];
         /**
          * Billing method. Value options: `PostPaid` for Pay-As-You-Go and `PrePaid` for subscription.
          */
@@ -713,6 +714,7 @@ export namespace adb {
          * The ID of the ADB cluster.
          */
         id: string;
+        kernelVersion: string;
         /**
          * The LockMode of the ADB cluster.
          */
@@ -755,6 +757,12 @@ export namespace adb {
          * The ZoneId of the ADB cluster.
          */
         zoneId: string;
+    }
+
+    export interface GetClustersClusterAvailableKernelVersion {
+        expireDate: string;
+        kernelVersion: string;
+        releaseDate: string;
     }
 
     export interface GetDBClusterLakeVersionsVersion {
@@ -823,7 +831,7 @@ export namespace adb {
          */
         resourceGroupId: string;
         /**
-         * The status of the resource.
+         * The status of the resource. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`.
          */
         status: string;
         /**
@@ -849,6 +857,10 @@ export namespace adb {
          * Auto-renewal period of an cluster, in the unit of the month.
          */
         autoRenewPeriod: number;
+        /**
+         * The minor versions to which you can update the current minor version of the cluster.
+         */
+        availableKernelVersions: outputs.adb.GetDBClustersClusterAvailableKernelVersion[];
         /**
          * The payment type of the resource.
          */
@@ -942,6 +954,10 @@ export namespace adb {
          */
         id: string;
         /**
+         * The minor version. Example: 3.1.9.
+         */
+        kernelVersion: string;
+        /**
          * The lock mode of the cluster.
          */
         lockMode: string;
@@ -1017,6 +1033,21 @@ export namespace adb {
          * The zone ID  of the resource.
          */
         zoneId: string;
+    }
+
+    export interface GetDBClustersClusterAvailableKernelVersion {
+        /**
+         * The maintenance expiration time of the version
+         */
+        expireDate: string;
+        /**
+         * The minor version. Example: 3.1.9.
+         */
+        kernelVersion: string;
+        /**
+         * The time when the minor version was released.
+         */
+        releaseDate: string;
     }
 
     export interface GetResourceGroupsGroup {
@@ -3088,6 +3119,59 @@ export namespace amqp {
          * VirtualHostName.
          */
         virtualHostName: string;
+    }
+
+}
+
+export namespace apig {
+    export interface GatewayLogConfig {
+        /**
+         * Sls See `sls` below.
+         */
+        sls?: outputs.apig.GatewayLogConfigSls;
+    }
+
+    export interface GatewayLogConfigSls {
+        /**
+         * Enable Log Service
+         */
+        enable?: boolean;
+    }
+
+    export interface GatewayNetworkAccessConfig {
+        /**
+         * Network Access Type
+         */
+        type?: string;
+    }
+
+    export interface GatewayVpc {
+        /**
+         * The name of the VPC gateway.
+         */
+        name: string;
+        /**
+         * The VPC network ID.
+         */
+        vpcId: string;
+    }
+
+    export interface GatewayVswitch {
+        /**
+         * The name of the VPC gateway.
+         */
+        name: string;
+        /**
+         * The ID of the virtual switch.
+         */
+        vswitchId?: string;
+    }
+
+    export interface GatewayZoneConfig {
+        /**
+         * Availability Zone Options
+         */
+        selectOption: string;
     }
 
 }
@@ -7806,9 +7890,12 @@ export namespace cfg {
          * The scope of resource group ids.
          */
         resourceGroupIdsScope: string;
+        /**
+         * The types of resources evaluated by the rule.
+         */
         resourceTypesScopes: string[];
         /**
-         * Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
+         * The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
          */
         riskLevel: number;
         /**
@@ -8153,9 +8240,12 @@ export namespace cfg {
 
     export interface GetRulesRule {
         /**
-         * The ID of the Alicloud account.
+         * The ID of the Alibaba Cloud account.
          */
         accountId: string;
+        /**
+         * The compliance package ID.
+         */
         compliancePackId: string;
         /**
          * The information about the compliance evaluations based on the rule.
@@ -8174,7 +8264,7 @@ export namespace cfg {
          */
         configRuleState: string;
         /**
-         * (Available in 1.124.1+) A list of trigger types of config rule.
+         * (Available since v1.124.1) A list of trigger types of config rule.
          */
         configRuleTriggerTypes: string;
         /**
@@ -8186,7 +8276,7 @@ export namespace cfg {
          */
         eventSource: string;
         /**
-         * (Available in 1.124.1+) The scope of exclude of resource ids.
+         * (Available since v1.124.1) The scope of exclude of resource ids.
          */
         excludeResourceIdsScope: string;
         /**
@@ -8198,7 +8288,7 @@ export namespace cfg {
          */
         inputParameters: {[key: string]: string};
         /**
-         * (Available in 1.124.1+) The frequency of maximum execution.
+         * (Available since v1.124.1) The frequency of maximum execution.
          */
         maximumExecutionFrequency: string;
         /**
@@ -8206,15 +8296,15 @@ export namespace cfg {
          */
         modifiedTimestamp: string;
         /**
-         * (Available in 1.124.1+) The scope of region ids.
+         * (Available since v1.124.1) The scope of region ids.
          */
         regionIdsScope: string;
         /**
-         * (Available in 1.124.1+) The scope of resource group ids.
+         * (Available since v1.124.1) The scope of resource group ids.
          */
         resourceGroupIdsScope: string;
         /**
-         * (Available in 1.124.1+) The scope of resource types.
+         * (Available since v1.124.1) The scope of resource types.
          */
         resourceTypesScopes: string[];
         /**
@@ -8250,11 +8340,11 @@ export namespace cfg {
          */
         status: string;
         /**
-         * (Available in 1.124.1+) The scope of tag key.
+         * (Available since v1.124.1) The scope of tag key.
          */
         tagKeyScope: string;
         /**
-         * (Available in 1.124.1+) The scope of tag value.
+         * (Available since v1.124.1) The scope of tag value.
          */
         tagValueScope: string;
     }
@@ -9014,6 +9104,9 @@ export namespace cloudfirewall {
          * When the cloud firewall member account was added.> use second-level timestamp format.
          */
         createTime: number;
+        /**
+         * The instance id.
+         */
         id: string;
         /**
          * Remarks of cloud firewall member accounts.
@@ -9192,7 +9285,7 @@ export namespace cloudfirewall {
 
     export interface GetVpcFirewallControlPoliciesPolicy {
         /**
-         * Access control over VPC firewalls are set in the access traffic via Alibaba cloud firewall way (ACT).
+         * The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
          */
         aclAction: string;
         /**
@@ -9265,6 +9358,8 @@ export namespace cloudfirewall {
         proto: string;
         /**
          * The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
+         * - **true**: Enable access control policies
+         * - **false**: does not enable access control policies.
          */
         release: boolean;
         /**
@@ -9284,7 +9379,9 @@ export namespace cloudfirewall {
          */
         sourceType: string;
         /**
-         * The ID of the VPC firewall instance.
+         * The ID of the VPC firewall instance. Value:
+         * - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
+         * - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
          */
         vpcFirewallId: string;
     }
@@ -12370,6 +12467,7 @@ export namespace config {
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom AnalyticDB endpoints.
          */
         adb?: string;
+        aiworkspace?: string;
         /**
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alb endpoints.
          */
@@ -12386,6 +12484,14 @@ export namespace config {
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ALIKAFKA endpoints.
          */
         alikafka?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom onsproxy endpoints.
+         */
+        amqp?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ddosbasic endpoints.
+         */
+        antiddosPublic?: string;
         /**
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
          */
@@ -12443,6 +12549,10 @@ export namespace config {
          */
         cds?: string;
         /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom beebot endpoints.
+         */
+        chatbot?: string;
+        /**
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom clickhouse endpoints.
          */
         clickhouse?: string;
@@ -12497,11 +12607,19 @@ export namespace config {
         /**
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dataworkspublic endpoints.
          */
+        dataworksPublic?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dataworkspublic endpoints.
+         */
         dataworkspublic?: string;
         /**
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dbfs endpoints.
          */
         dbfs?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbs endpoints.
+         */
+        dbs?: string;
         /**
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dcdn endpoints.
          */
@@ -12522,10 +12640,15 @@ export namespace config {
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MongoDB endpoints.
          */
         dds?: string;
+        devopsRdc?: string;
         /**
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom devopsrdc endpoints.
          */
         devopsrdc?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidfs endpoints.
+         */
+        dfs?: string;
         /**
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dg endpoints.
          */
@@ -12556,6 +12679,10 @@ export namespace config {
         dts?: string;
         dysms?: string;
         /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dysmsapi endpoints.
+         */
+        dysmsapi?: string;
+        /**
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eais endpoints.
          */
         eais?: string;
@@ -12563,6 +12690,10 @@ export namespace config {
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ebs endpoints.
          */
         ebs?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gwsecd endpoints.
+         */
+        ecd?: string;
         /**
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eci endpoints.
          */
@@ -12579,6 +12710,10 @@ export namespace config {
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edasschedulerx endpoints.
          */
         edasschedulerx?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edsuser endpoints.
+         */
+        edsUser?: string;
         /**
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edsuser endpoints.
          */
@@ -12611,6 +12746,7 @@ export namespace config {
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ens endpoints.
          */
         ens?: string;
+        esa?: string;
         /**
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Autoscaling endpoints.
          */
@@ -12623,6 +12759,10 @@ export namespace config {
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Function Computing endpoints.
          */
         fc?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Function Computing endpoints.
+         */
+        fcOpen?: string;
         /**
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom fnf endpoints.
          */
@@ -12638,11 +12778,16 @@ export namespace config {
         /**
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gds endpoints.
          */
+        gdb?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gds endpoints.
+         */
         gds?: string;
         /**
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom GPDB endpoints.
          */
         gpdb?: string;
+        gwlb?: string;
         /**
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gwsecd endpoints.
          */
@@ -12708,6 +12853,10 @@ export namespace config {
          */
         mns?: string;
         /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MNS endpoints.
+         */
+        mnsOpen?: string;
+        /**
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mscopensubscription endpoints.
          */
         mscopensubscription?: string;
@@ -12727,6 +12876,10 @@ export namespace config {
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oceanbase endpoints.
          */
         oceanbase?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oceanbase endpoints.
+         */
+        oceanbasepro?: string;
         /**
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ONS endpoints.
          */
@@ -12756,6 +12909,10 @@ export namespace config {
          */
         polardb?: string;
         /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DRDS endpoints.
+         */
+        polardbx?: string;
+        /**
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom privatelink endpoints.
          */
         privatelink?: string;
@@ -12767,6 +12924,10 @@ export namespace config {
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quickbi endpoints.
          */
         quickbi?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quickbi endpoints.
+         */
+        quickbiPublic?: string;
         /**
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quotas endpoints.
          */
@@ -12791,14 +12952,20 @@ export namespace config {
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcemanager endpoints.
          */
         resourcemanager?: string;
+        resourcesharing?: string;
         /**
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcesharing endpoints.
          */
         ressharing?: string;
+        rocketmq?: string;
         /**
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ros endpoints.
          */
         ros?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
+         */
+        sae?: string;
         /**
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sas endpoints.
          */
@@ -12807,6 +12974,10 @@ export namespace config {
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom scdn endpoints.
          */
         scdn?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edasschedulerx endpoints.
+         */
+        schedulerx2?: string;
         /**
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sddp endpoints.
          */
@@ -12819,6 +12990,10 @@ export namespace config {
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
          */
         serverless?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom srvcatalog endpoints.
+         */
+        servicecatalog?: string;
         /**
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom servicemesh endpoints.
          */
@@ -12848,6 +13023,10 @@ export namespace config {
          */
         swas?: string;
         /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom swas endpoints.
+         */
+        swasOpen?: string;
+        /**
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom tag endpoints.
          */
         tag?: string;
@@ -12859,6 +13038,7 @@ export namespace config {
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom VPC and VPN endpoints.
          */
         vpc?: string;
+        vpcipam?: string;
         /**
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vpcpeer endpoints.
          */
@@ -13292,6 +13472,32 @@ export namespace cr {
          * The ID of the vSwitch.
          */
         vswitchId: string;
+    }
+
+    export interface RegistryEnterpriseInstanceInstanceEndpoint {
+        /**
+         * Domain List
+         */
+        domains: outputs.cr.RegistryEnterpriseInstanceInstanceEndpointDomain[];
+        /**
+         * enable
+         */
+        enable: boolean;
+        /**
+         * Network Access Endpoint Type
+         */
+        endpointType: string;
+    }
+
+    export interface RegistryEnterpriseInstanceInstanceEndpointDomain {
+        /**
+         * Domain
+         */
+        domain: string;
+        /**
+         * Domain Type
+         */
+        type: string;
     }
 
     export interface RepoDomainList {
@@ -16273,7 +16479,7 @@ export namespace dcdn {
          */
         description: string;
         /**
-         * The accelerated domain names.
+         * The name of the Domain.
          */
         domainName: string;
         /**
@@ -16301,7 +16507,7 @@ export namespace dcdn {
          */
         sslPub: string;
         /**
-         * The status of the accelerated domain name.
+         * The status of the accelerated domain name. Valid values: `checkFailed`, `checking`, `configureFailed`, `configuring`, `offline`, `online`.
          */
         status: string;
     }
@@ -16393,7 +16599,7 @@ export namespace dcdn {
          */
         ruleCount: string;
         /**
-         * The status of the resource.
+         * The status of the resource. Valid values: `on`, `off`.
          */
         status: string;
     }
@@ -16969,7 +17175,7 @@ export namespace ddos {
          */
         id: string;
         /**
-         * A list ID of instance that you want to associate.
+         * A ID list of Ddoscoo instance.
          */
         instanceIds: string[];
         /**
@@ -17102,7 +17308,7 @@ export namespace ddos {
          */
         id: string;
         /**
-         * The Ddoscoo instance ID.
+         * The DdosCoo instance ID.
          */
         instanceId: string;
         /**
@@ -21651,6 +21857,10 @@ export namespace ecs {
          * Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
          */
         encrypted: string;
+        /**
+         * Disk expiration time.
+         */
+        expirationTime: string;
         expiredTime: string;
         /**
          * ID of the disk.
@@ -21863,7 +22073,7 @@ export namespace ecs {
 
     export interface GetEcsDisksDisk {
         /**
-         * Disk attachment time.
+         * A mount of time.
          */
         attachedTime: string;
         /**
@@ -21871,11 +22081,11 @@ export namespace ecs {
          */
         autoSnapshotPolicyId: string;
         /**
-         * Availability zone of the disk.
+         * Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
          */
         availabilityZone: string;
         /**
-         * Disk category.
+         * Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`, `cloudEssdEntry`.
          */
         category: string;
         /**
@@ -21899,7 +22109,7 @@ export namespace ecs {
          */
         detachedTime: string;
         /**
-         * Cloud disk or the device name of the mounted instance on the site.
+         * The mount point of the disk.
          */
         device: string;
         /**
@@ -21911,21 +22121,28 @@ export namespace ecs {
          */
         diskName: string;
         /**
-         * The disk type.
+         * The disk type. Valid values: `system`, `data`, `all`.
          */
         diskType: string;
         /**
-         * Whether the disk implements an automatic snapshot policy.
+         * Indicates whether the automatic snapshot is deleted when the disk is released.
          */
         enableAutoSnapshot: boolean;
         /**
-         * Whether the disk implements an automatic snapshot policy.
+         * Whether the cloud disk has an automatic snapshot policy
          */
         enableAutomatedSnapshotPolicy: boolean;
         /**
-         * Indicate whether the disk is encrypted or not.
+         * Indicate whether the disk is encrypted or not. Valid values: `on` and `off`.
          */
         encrypted: string;
+        /**
+         * The time when the subscription disk expires.
+         */
+        expirationTime: string;
+        /**
+         * The time when the subscription disk expires.
+         */
         expiredTime: string;
         /**
          * ID of the disk.
@@ -21936,11 +22153,20 @@ export namespace ecs {
          */
         imageId: string;
         /**
-         * ID of the related instance. It is `null` unless the `status` is `In_use`.
+         * Filter the results by the specified ECS instance ID.
          */
         instanceId: string;
+        /**
+         * The maximum number of read and write operations per second.
+         */
         iops: number;
+        /**
+         * The maximum number of read operations per second.
+         */
         iopsRead: number;
+        /**
+         * The maximum number of write operations per second.
+         */
         iopsWrite: number;
         /**
          * The kms key id.
@@ -21958,9 +22184,12 @@ export namespace ecs {
          * Disk name.
          */
         name: string;
+        /**
+         * The reasons why the disk was locked. See `operationLocks` below for details.
+         */
         operationLocks: outputs.ecs.GetEcsDisksDiskOperationLock[];
         /**
-         * Payment method for disk.
+         * Payment method for disk. Valid Values: `PayAsYouGo`, `Subscription`.
          */
         paymentType: string;
         /**
@@ -21968,7 +22197,7 @@ export namespace ecs {
          */
         performanceLevel: string;
         /**
-         * Whether the disk is unmountable.
+         * Whether the cloud disk or local disk supports uninstallation.
          */
         portable: boolean;
         /**
@@ -21980,7 +22209,7 @@ export namespace ecs {
          */
         regionId: string;
         /**
-         * The Id of resource group.
+         * The Id of resource group which the disk belongs.
          */
         resourceGroupId: string;
         /**
@@ -21988,23 +22217,23 @@ export namespace ecs {
          */
         size: number;
         /**
-         * Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+         * The source snapshot id.
          */
         snapshotId: string;
         /**
-         * Current status.
+         * The status of disk. Valid Values: `Attaching`, `Available`, `Creating`, `Detaching`, `In_use`, `Migrating`, `ReIniting`, `Transferring`.
          */
         status: string;
         /**
-         * A map of tags assigned to the disk.
+         * A map of tags assigned to the disks.
          */
         tags: {[key: string]: string};
         /**
-         * Disk type.
+         * Field `type` has been deprecated from provider version 1.122.0. New field `diskType` instead.
          */
         type: string;
         /**
-         * The zone id.
+         * ID of the free zone to which the disk belongs.
          */
         zoneId: string;
     }
@@ -22019,16 +22248,22 @@ export namespace ecs {
          */
         device: string;
         /**
-         * The instance ID of the disk mount.
+         * Filter the results by the specified ECS instance ID.
          */
         instanceId: string;
     }
 
     export interface GetEcsDisksDiskOperationLock {
+        /**
+         * The reason why the disk was locked.
+         */
         lockReason: string;
     }
 
     export interface GetEcsDisksOperationLock {
+        /**
+         * The reason why the disk was locked.
+         */
         lockReason?: string;
     }
 
@@ -27904,6 +28139,100 @@ export namespace ens {
 
 }
 
+export namespace esa {
+    export interface RecordAuthConf {
+        /**
+         * The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
+         */
+        accessKey?: string;
+        /**
+         * The authentication type of the origin server. Different origins support different authentication types. The type of origin refers to the SourceType parameter in this operation. If the type of origin is OSS or S3, you must specify the authentication type of the origin. Valid values:
+         */
+        authType?: string;
+        /**
+         * The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
+         */
+        region?: string;
+        /**
+         * The secret access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
+         */
+        secretKey?: string;
+        /**
+         * The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
+         */
+        version?: string;
+    }
+
+    export interface RecordData {
+        /**
+         * The encryption algorithm used for the record, specified within the range from 0 to 255. This parameter is required when you add CERT or SSHFP records.
+         */
+        algorithm?: number;
+        /**
+         * The public key of the certificate. This parameter is required when you add CERT, SMIMEA, or TLSA records.
+         */
+        certificate?: string;
+        /**
+         * The public key fingerprint of the record. This parameter is required when you add a SSHFP record.
+         */
+        fingerprint?: string;
+        /**
+         * The flag bit of the record. The Flag for a CAA record indicates its priority and how it is processed, specified within the range of 0 to 255. This parameter is required when you add a CAA record.
+         */
+        flag?: number;
+        /**
+         * The public key identification for the record, specified within the range of 0 to 65,535. This parameter is required when you add a CAA record.
+         */
+        keyTag?: number;
+        /**
+         * The algorithm policy used to match or validate the certificate, specified within the range 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
+         */
+        matchingType?: number;
+        /**
+         * The port of the record, specified within the range of 0 to 65,535. This parameter is required when you add an SRV record.
+         */
+        port?: number;
+        /**
+         * The priority of the record, specified within the range of 0 to 65,535. A smaller value indicates a higher priority. This parameter is required when you add MX, SRV, and URI records.
+         */
+        priority?: number;
+        /**
+         * The type of certificate or public key, specified within the range of 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
+         */
+        selector?: number;
+        /**
+         * The label of the record. The Tag of a CAA record indicate its specific type and usage. This parameter is required when you add a CAA record.
+         */
+        tag?: string;
+        /**
+         * The certificate type of the record (in CERT records), or the public key type (in SSHFP records). This parameter is required when you add CERT or SSHFP records.
+         */
+        type?: number;
+        /**
+         * The usage identifier of the record, specified within the range of 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
+         */
+        usage?: number;
+        /**
+         * The record value or part of the record content. This parameter is required when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings based on different types of records:
+         *
+         * - **A/AAAA**: the IP address(es). Separate multiple IPs with commas (,). You must have at least one IPv4 address.
+         * - `CNAME`: the target domain name.
+         * - `NS`: the name servers for the domain name.
+         * - `MX`: a valid domain name of the target mail server.
+         * - `TXT`: a valid text string.
+         * - `CAA`: a valid domain name of the certificate authority.
+         * - `SRV`: a valid domain name of the target host.
+         * - `URI`: a valid URI string.
+         */
+        value?: string;
+        /**
+         * The weight of the record, specified within the range of 0 to 65,535. This parameter is required when you add SRV or URI records.
+         */
+        weight?: number;
+    }
+
+}
+
 export namespace ess {
     export interface AlarmExpression {
         /**
@@ -28491,7 +28820,7 @@ export namespace ess {
          */
         dataDisks: outputs.ess.GetScalingConfigurationsConfigurationDataDisk[];
         /**
-         * (Optional,Available in 1.143.0+) Hostname of an ECS instance.
+         * (Optional,Available since v1.143.0) Hostname of an ECS instance.
          */
         hostName: string;
         /**
@@ -28503,9 +28832,13 @@ export namespace ess {
          */
         imageId: string;
         /**
-         * (Optional,Available in 1.143.0+) InstanceName of an ECS instance.
+         * (Optional,Available since v1.143.0) InstanceName of an ECS instance.
          */
         instanceName: string;
+        /**
+         * (Optional, Available since v1.240.0) intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.
+         */
+        instancePatternInfos: outputs.ess.GetScalingConfigurationsConfigurationInstancePatternInfo[];
         /**
          * Resource type of an ECS instance.
          */
@@ -28539,11 +28872,11 @@ export namespace ess {
          */
         securityGroupId: string;
         /**
-         * (Optional, Available in 1.151.0+) The maximum price hourly for instance types.
+         * (Optional, Available since v1.151.0) The maximum price hourly for instance types.
          */
         spotPriceLimits: outputs.ess.GetScalingConfigurationsConfigurationSpotPriceLimit[];
         /**
-         * (Optional, Available in 1.151.0+) The spot strategy for a Pay-As-You-Go instance.
+         * (Optional, Available since v1.151.0) The spot strategy for a Pay-As-You-Go instance.
          */
         spotStrategy: string;
         /**
@@ -28585,6 +28918,37 @@ export namespace ess {
          * Size of data disk.
          */
         snapshotId: string;
+    }
+
+    export interface GetScalingConfigurationsConfigurationInstancePatternInfo {
+        /**
+         * Architecture N of instance type N. Valid values: X86, Heterogeneous, BareMetal, Arm, SuperComputeCluster.
+         */
+        architectures: string[];
+        /**
+         * Specifies whether to include burstable instance types.  Valid values: Exclude, Include, Required.
+         */
+        burstablePerformance: string;
+        /**
+         * The number of vCPUs that are specified for an instance type in instancePatternInfo.
+         */
+        cores: number;
+        /**
+         * Instance type N that you want to exclude. You can use wildcard characters, such as an asterisk (*), to exclude an instance type or an instance family.
+         */
+        excludedInstanceTypes: string[];
+        /**
+         * The instance family level in instancePatternInfo.
+         */
+        instanceFamilyLevel: string;
+        /**
+         * The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
+         */
+        maxPrice: number;
+        /**
+         * The memory size that is specified for an instance type in instancePatternInfo.
+         */
+        memory: number;
     }
 
     export interface GetScalingConfigurationsConfigurationSpotPriceLimit {
@@ -31512,7 +31876,7 @@ export namespace ga {
          */
         id: string;
         /**
-         * The status of the resource.
+         * The status of the resource. Valid values: `active`, `configuring`, `deleting`, `init`.
          */
         status: string;
     }
@@ -31593,11 +31957,11 @@ export namespace ga {
          */
         paymentType: string;
         /**
-         * The status of the bandwidth plan.
+         * The status of the bandwidth plan. Valid values: `active`, `binded`, `binding`, `finacialLocked`, `init`, `unbinding`, `updating`.
          */
         status: string;
         /**
-         * The type of the bandwidth packet. China station only supports return to basic.
+         * The type of the bandwidth plan. Valid values: `Basic`, `CrossDomain`.
          */
         type: string;
     }
@@ -32188,49 +32552,69 @@ export namespace ga {
         priority: number;
         /**
          * The IP protocol used by the GA instance.
-         * `order` - Forwarding priority.
-         * `ruleActionType` - Forward action type.
-         * `forwardGroupConfig` - Forwarding configuration.
-         * `serverGroupTuples` - Terminal node group configuration.
-         * `endpointGroupId` - Terminal node group ID.
          */
         ruleActions: outputs.ga.GetForwardingRulesForwardingRuleRuleAction[];
         /**
          * Forward action.
-         * `ruleConditionType` - Forwarding condition type.
-         * `pathConfig` - Path configuration information.
-         * `values` - The length of the path is 1-128 characters.
-         * `hostConfig` - Domain name configuration information.
-         * `values` - The domain name is 3-128 characters long.
          */
         ruleConditions: outputs.ga.GetForwardingRulesForwardingRuleRuleCondition[];
     }
 
     export interface GetForwardingRulesForwardingRuleRuleAction {
+        /**
+         * Forwarding configuration.
+         */
         forwardGroupConfigs: outputs.ga.GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig[];
+        /**
+         * Forwarding priority.
+         */
         order: number;
+        /**
+         * Forward action type.
+         */
         ruleActionType: string;
     }
 
     export interface GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig {
+        /**
+         * Terminal node group configuration.
+         */
         serverGroupTuples: outputs.ga.GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple[];
     }
 
     export interface GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple {
+        /**
+         * Terminal node group ID.
+         */
         endpointGroupId: string;
     }
 
     export interface GetForwardingRulesForwardingRuleRuleCondition {
+        /**
+         * Domain name configuration information.
+         */
         hostConfigs: outputs.ga.GetForwardingRulesForwardingRuleRuleConditionHostConfig[];
+        /**
+         * Path configuration information.
+         */
         pathConfigs: outputs.ga.GetForwardingRulesForwardingRuleRuleConditionPathConfig[];
+        /**
+         * Forwarding condition type.
+         */
         ruleConditionType: string;
     }
 
     export interface GetForwardingRulesForwardingRuleRuleConditionHostConfig {
+        /**
+         * The domain name is 3-128 characters long.
+         */
         values: string[];
     }
 
     export interface GetForwardingRulesForwardingRuleRuleConditionPathConfig {
+        /**
+         * The domain name is 3-128 characters long.
+         */
         values: string[];
     }
 
@@ -32260,7 +32644,7 @@ export namespace ga {
          */
         ipVersion: string;
         /**
-         * The status of the acceleration region.
+         * The status of the acceleration region. Valid values: `active`, `deleting`, `init`, `updating`.
          */
         status: string;
     }
@@ -32299,14 +32683,14 @@ export namespace ga {
          */
         protocol: string;
         /**
-         * The status of the listener.
+         * The status of the listener. Valid values: `active`, `configuring`, `creating`.
          */
         status: string;
     }
 
     export interface GetListenersListenerCertificate {
         /**
-         * The id of the certificate.
+         * The ID of the Listener.
          */
         id: string;
         /**
@@ -35386,7 +35770,13 @@ export namespace kvstore {
          * The type of the architecture. Valid values: `cluster`, `standard` and `SplitRW`.
          */
         architectureType: string;
+        /**
+         * Indicates whether auto-renewal is enabled for the instance.
+         */
         autoRenew: boolean;
+        /**
+         * The duration for which the instance is automatically renewed. Unit: months.
+         */
         autoRenewPeriod: number;
         /**
          * It has been deprecated from provider version 1.101.0 and `zoneId` instead.
@@ -35397,7 +35787,7 @@ export namespace kvstore {
          */
         bandwidth: number;
         /**
-         * Capacity of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. Unit: MB.
+         * Capacity of the applied Tair (Redis OSS-Compatible) And Memcached (KVStore) Classic Instance. Unit: MB.
          */
         capacity: number;
         /**
@@ -35460,6 +35850,9 @@ export namespace kvstore {
          * Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
          */
         instanceClass: string;
+        /**
+         * Indicates whether the release protection feature is enabled for the instance.
+         */
         instanceReleaseProtection: boolean;
         /**
          * The engine type of the KVStore DBInstance. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
@@ -35469,7 +35862,13 @@ export namespace kvstore {
          * Indicates whether the instance is managed by Relational Database Service (RDS).
          */
         isRds: boolean;
+        /**
+         * The end time of the maintenance window. The time is in the HH:mmZ format. The time is displayed in UTC.
+         */
         maintainEndTime: string;
+        /**
+         * The start time of the maintenance window. The time is in the HH:mmZ format. The time is displayed in UTC.
+         */
         maintainStartTime: string;
         /**
          * Instance connection quantity limit. Unit: count.
@@ -35524,13 +35923,28 @@ export namespace kvstore {
          */
         searchKey: string;
         /**
-         * (Optional, Available since v1.128.0) The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+         * The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
          */
         secondaryZoneId: string;
+        /**
+         * The ID of the security group associated with the instance.
+         */
         securityGroupId: string;
+        /**
+         * By default, this parameter is left empty. The attribute of the whitelist. The console does not display the whitelist whose value of this parameter is hidden
+         */
         securityIpGroupAttribute: string;
+        /**
+         * The name of the IP address whitelist.
+         */
         securityIpGroupName: string;
+        /**
+         * The IP addresses in the whitelist.
+         */
         securityIps: string[];
+        /**
+         * Indicates whether SSL encryption is enabled.
+         */
         sslEnable: string;
         /**
          * The status of the KVStore DBInstance. Valid values: `Changing`, `CleaningUpExpiredData`, `Creating`, `Flushing`, `HASwitching`, `Inactive`, `MajorVersionUpgrading`, `Migrating`, `NetworkModifying`, `Normal`, `Rebooting`, `SSLModifying`, `Transforming`, `ZoneMigrating`.
@@ -35544,6 +35958,9 @@ export namespace kvstore {
          * The username of the instance.
          */
         userName: string;
+        /**
+         * Indicates whether password authentication is enabled. Valid values: Open, Close.
+         */
         vpcAuthMode: string;
         /**
          * Connection port of the instance.
@@ -39557,6 +39974,20 @@ export namespace opensearch {
 }
 
 export namespace oss {
+    export interface AccessPointPublicAccessBlockConfiguration {
+        /**
+         * Block public access enabled for access point
+         */
+        blockPublicAccess: boolean;
+    }
+
+    export interface AccessPointVpcConfiguration {
+        /**
+         * The vpc ID is required only when the value of NetworkOrigin is VPC.
+         */
+        vpcId?: string;
+    }
+
     export interface BucketAccessMonitor {
         /**
          * The access monitor state of a bucket. If you want to manage objects based on the last access time of the objects, specifies the status to `Enabled`. Valid values: `Enabled` and `Disabled`.
@@ -41593,7 +42024,7 @@ export namespace privatelink {
          */
         id: string;
         /**
-         * The status of Vpc Endpoint Connection.
+         * The status of Vpc Endpoint Connection. Valid Values: `Connected`, `Connecting`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting`, `Pending` and `ServiceDeleted`.
          */
         status: string;
     }
@@ -41681,7 +42112,7 @@ export namespace privatelink {
          */
         id: string;
         /**
-         * The Status of Vpc Endpoint Zone..
+         * The Status of Vpc Endpoint Zone. Valid Values: `Connected`, `Connecting`, `Creating`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting` and `Wait`.
          */
         status: string;
         /**
@@ -41748,7 +42179,7 @@ export namespace privatelink {
          */
         vpcEndpointName: string;
         /**
-         * The private network to which the terminal node belongs.
+         * The private network to which the terminal node belongs..
          */
         vpcId: string;
     }
@@ -46746,6 +47177,113 @@ export namespace schedulerx {
         namespaceName: string;
     }
 
+    export interface JobJobMonitorInfo {
+        /**
+         * Contact information. See `contactInfo` below.
+         */
+        contactInfos?: outputs.schedulerx.JobJobMonitorInfoContactInfo[];
+        /**
+         * Alarm switch and threshold configuration. See `monitorConfig` below.
+         */
+        monitorConfig: outputs.schedulerx.JobJobMonitorInfoMonitorConfig;
+    }
+
+    export interface JobJobMonitorInfoContactInfo {
+        /**
+         * DingTalk swarm robot webhook address
+         */
+        ding?: string;
+        /**
+         * User Email Address
+         */
+        userMail?: string;
+        /**
+         * The user name
+         */
+        userName?: string;
+        /**
+         * The user's mobile phone number
+         */
+        userPhone?: string;
+    }
+
+    export interface JobJobMonitorInfoMonitorConfig {
+        /**
+         * Enable failure alarm
+         */
+        failEnable: boolean;
+        /**
+         * Whether no available Machine alarm is on
+         */
+        missWorkerEnable: boolean;
+        /**
+         * Alarm sending form
+         * - sms: sms alarm
+         * - phone: phone alarm
+         * - mail: mail alarm
+         * - webhook:webhook alarm
+         */
+        sendChannel: string;
+        /**
+         * Timeout threshold, unit s, default 7200.
+         */
+        timeout: number;
+        /**
+         * Time-out alarm switch. The values are as follows:
+         */
+        timeoutEnable: boolean;
+        /**
+         * The trigger switch is terminated by timeout and is turned off by default.
+         */
+        timeoutKillEnable: boolean;
+    }
+
+    export interface JobMapTaskXattrs {
+        /**
+         * The number of threads to execute a single trigger. The default value is 5.
+         */
+        consumerSize?: number;
+        /**
+         * The number of subtask distribution threads. The default value is 5.
+         */
+        dispatcherSize?: number;
+        /**
+         * The number of sub-tasks pulled by a parallel task at a time. The default value is 100.
+         */
+        pageSize?: number;
+        /**
+         * The upper limit of the sub-task queue cache. The default value is 10000.
+         */
+        queueSize?: number;
+        /**
+         * Subtask failure retry interval.
+         */
+        taskAttemptInterval?: number;
+        /**
+         * The number of failed sub-task retries.
+         */
+        taskMaxAttempt?: number;
+    }
+
+    export interface JobTimeConfig {
+        /**
+         * The cron type can optionally fill in a custom calendar.
+         */
+        calendar?: string;
+        /**
+         * Cron type can choose time offset, unit s.
+         */
+        dataOffset?: number;
+        /**
+         * Time expressions. Currently, the following types of time expressions are supported:
+         */
+        timeExpression: string;
+        /**
+         * Time configuration type. Currently, the following time types are supported:
+         */
+        timeType: number;
+    }
+
 }
 
 export namespace sddp {
@@ -46806,7 +47344,7 @@ export namespace sddp {
          */
         logStoreDay: number;
         /**
-         * The ID of the data asset.
+         * The parent asset ID of the data asset.
          */
         parentId: string;
         /**
@@ -46814,7 +47352,7 @@ export namespace sddp {
          */
         port: number;
         /**
-         * The type of the service to which the data asset belongs.
+         * The type of the service to which the data asset belongs. Valid values: `MaxCompute`, `OSS`, `RDS`.
          */
         resourceType: string;
         /**
@@ -46865,7 +47403,7 @@ export namespace sddp {
 
     export interface GetRulesRule {
         /**
-         * Sensitive Data Identification Rules for the Type of.
+         * Sensitive Data Identification Rules for the Type of. Valid values:
          */
         category: number;
         /**
@@ -46885,7 +47423,7 @@ export namespace sddp {
          */
         createTime: string;
         /**
-         * Sensitive Data Identification Rules of Type. 0: the Built-in 1: The User-Defined.
+         * Sensitive Data Identification Rules of Type. Valid values:
          */
         customType: number;
         /**
@@ -46921,11 +47459,11 @@ export namespace sddp {
          */
         productCode: string;
         /**
-         * Product ID.
+         * Product ID. Valid values:
          */
         productId: string;
         /**
-         * Sensitive Data Identification Rules of Risk Level ID. Valid values:1:S1, Weak Risk Level. 2:S2, Medium Risk Level. 3:S3 High Risk Level. 4:S4, the Highest Risk Level.
+         * Sensitive Data Identification Rules of Risk Level ID. Valid values:
          */
         riskLevelId: string;
         /**
@@ -46953,7 +47491,7 @@ export namespace sddp {
          */
         userId: string;
         /**
-         * The Level of Risk.
+         * The Level of Risk. Valid values:
          */
         warnLevel: number;
     }
@@ -52360,7 +52898,7 @@ export namespace vpc {
          */
         peerConnectionName: string;
         /**
-         * The status of the resource.
+         * The status of the resource. Valid values: `Accepting`, `Activated`, `Creating`, `Deleted`, `Deleting`, `Expired`, `Rejected`, `Updating`.
          */
         status: string;
         /**
@@ -54319,7 +54857,7 @@ export namespace waf {
          */
         commonName: string;
         /**
-         * The domain that you want to add to WAF.
+         * WAF domain name.
          */
         domain: string;
         /**
@@ -54409,7 +54947,6 @@ export namespace waf {
         version: number;
         /**
          * The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
-         * ```
          */
         writeTime: number;
     }

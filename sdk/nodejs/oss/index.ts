@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AccessPointArgs, AccessPointState } from "./accessPoint";
+export type AccessPoint = import("./accessPoint").AccessPoint;
+export const AccessPoint: typeof import("./accessPoint").AccessPoint = null as any;
+utilities.lazyLoad(exports, ["AccessPoint"], () => require("./accessPoint"));
+
 export { AccountPublicAccessBlockArgs, AccountPublicAccessBlockState } from "./accountPublicAccessBlock";
 export type AccountPublicAccessBlock = import("./accountPublicAccessBlock").AccountPublicAccessBlock;
 export const AccountPublicAccessBlock: typeof import("./accountPublicAccessBlock").AccountPublicAccessBlock = null as any;
@@ -115,6 +120,11 @@ export type BucketWebsite = import("./bucketWebsite").BucketWebsite;
 export const BucketWebsite: typeof import("./bucketWebsite").BucketWebsite = null as any;
 utilities.lazyLoad(exports, ["BucketWebsite"], () => require("./bucketWebsite"));
 
+export { BucketWormArgs, BucketWormState } from "./bucketWorm";
+export type BucketWorm = import("./bucketWorm").BucketWorm;
+export const BucketWorm: typeof import("./bucketWorm").BucketWorm = null as any;
+utilities.lazyLoad(exports, ["BucketWorm"], () => require("./bucketWorm"));
+
 export { GetBucketObjectsArgs, GetBucketObjectsResult, GetBucketObjectsOutputArgs } from "./getBucketObjects";
 export const getBucketObjects: typeof import("./getBucketObjects").getBucketObjects = null as any;
 export const getBucketObjectsOutput: typeof import("./getBucketObjects").getBucketObjectsOutput = null as any;
@@ -150,6 +160,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:oss/accessPoint:AccessPoint":
+                return new AccessPoint(name, <any>undefined, { urn })
             case "alicloud:oss/accountPublicAccessBlock:AccountPublicAccessBlock":
                 return new AccountPublicAccessBlock(name, <any>undefined, { urn })
             case "alicloud:oss/bucket:Bucket":
@@ -194,11 +206,14 @@ const _module = {
                 return new BucketVersioning(name, <any>undefined, { urn })
             case "alicloud:oss/bucketWebsite:BucketWebsite":
                 return new BucketWebsite(name, <any>undefined, { urn })
+            case "alicloud:oss/bucketWorm:BucketWorm":
+                return new BucketWorm(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "oss/accessPoint", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/accountPublicAccessBlock", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucket", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketAccessMonitor", _module)
@@ -221,3 +236,4 @@ pulumi.runtime.registerResourceModule("alicloud", "oss/bucketTransferAcceleratio
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketUserDefinedLogFields", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketVersioning", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketWebsite", _module)
+pulumi.runtime.registerResourceModule("alicloud", "oss/bucketWorm", _module)

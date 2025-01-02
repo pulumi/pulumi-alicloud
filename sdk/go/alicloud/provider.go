@@ -24,6 +24,7 @@ type Provider struct {
 	// The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
 	// Alibaba Cloud console.
 	AccountId           pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountType         pulumi.StringPtrOutput `pulumi:"accountType"`
 	ConfigurationSource pulumi.StringPtrOutput `pulumi:"configurationSource"`
 	// The URI of sidecar credentials service.
 	CredentialsUri pulumi.StringPtrOutput `pulumi:"credentialsUri"`
@@ -95,6 +96,7 @@ type providerArgs struct {
 	// The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
 	// Alibaba Cloud console.
 	AccountId          *string                     `pulumi:"accountId"`
+	AccountType        *string                     `pulumi:"accountType"`
 	AssumeRole         *ProviderAssumeRole         `pulumi:"assumeRole"`
 	AssumeRoleWithOidc *ProviderAssumeRoleWithOidc `pulumi:"assumeRoleWithOidc"`
 	// The maximum timeout of the client connection server.
@@ -149,6 +151,7 @@ type ProviderArgs struct {
 	// The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
 	// Alibaba Cloud console.
 	AccountId          pulumi.StringPtrInput
+	AccountType        pulumi.StringPtrInput
 	AssumeRole         ProviderAssumeRolePtrInput
 	AssumeRoleWithOidc ProviderAssumeRoleWithOidcPtrInput
 	// The maximum timeout of the client connection server.
@@ -242,6 +245,10 @@ func (o ProviderOutput) AccessKey() pulumi.StringPtrOutput {
 // Alibaba Cloud console.
 func (o ProviderOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) AccountType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AccountType }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) ConfigurationSource() pulumi.StringPtrOutput {

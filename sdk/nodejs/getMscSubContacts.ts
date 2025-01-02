@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * This data source provides the Message Center Contacts of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.132.0+.
+ * > **NOTE:** Available since v1.132.0.
  *
  * ## Example Usage
  *
@@ -59,6 +59,9 @@ export interface GetMscSubContactsArgs {
  * A collection of values returned by getMscSubContacts.
  */
 export interface GetMscSubContactsResult {
+    /**
+     * A list of Msc Sub Contacts. Each element contains the following attributes:
+     */
     readonly contacts: outputs.GetMscSubContactsContact[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -66,13 +69,16 @@ export interface GetMscSubContactsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Contact names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
 }
 /**
  * This data source provides the Message Center Contacts of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.132.0+.
+ * > **NOTE:** Available since v1.132.0.
  *
  * ## Example Usage
  *

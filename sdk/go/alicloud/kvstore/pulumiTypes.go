@@ -684,13 +684,15 @@ func (o GetInstanceEnginesInstanceEngineArrayOutput) Index(i pulumi.IntInput) Ge
 type GetInstancesInstance struct {
 	// The type of the architecture. Valid values: `cluster`, `standard` and `SplitRW`.
 	ArchitectureType string `pulumi:"architectureType"`
-	AutoRenew        bool   `pulumi:"autoRenew"`
-	AutoRenewPeriod  int    `pulumi:"autoRenewPeriod"`
+	// Indicates whether auto-renewal is enabled for the instance.
+	AutoRenew bool `pulumi:"autoRenew"`
+	// The duration for which the instance is automatically renewed. Unit: months.
+	AutoRenewPeriod int `pulumi:"autoRenewPeriod"`
 	// It has been deprecated from provider version 1.101.0 and `zoneId` instead.
 	AvailabilityZone string `pulumi:"availabilityZone"`
 	// Instance bandwidth limit. Unit: Mbit/s.
 	Bandwidth int `pulumi:"bandwidth"`
-	// Capacity of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. Unit: MB.
+	// Capacity of the applied Tair (Redis OSS-Compatible) And Memcached (KVStore) Classic Instance. Unit: MB.
 	Capacity int `pulumi:"capacity"`
 	// It has been deprecated from provider version 1.101.0 and `paymentType` instead.
 	ChargeType string `pulumi:"chargeType"`
@@ -721,13 +723,16 @@ type GetInstancesInstance struct {
 	// The ID of the instance.
 	Id string `pulumi:"id"`
 	// Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
-	InstanceClass             string `pulumi:"instanceClass"`
-	InstanceReleaseProtection bool   `pulumi:"instanceReleaseProtection"`
+	InstanceClass string `pulumi:"instanceClass"`
+	// Indicates whether the release protection feature is enabled for the instance.
+	InstanceReleaseProtection bool `pulumi:"instanceReleaseProtection"`
 	// The engine type of the KVStore DBInstance. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
 	InstanceType string `pulumi:"instanceType"`
 	// Indicates whether the instance is managed by Relational Database Service (RDS).
-	IsRds             bool   `pulumi:"isRds"`
-	MaintainEndTime   string `pulumi:"maintainEndTime"`
+	IsRds bool `pulumi:"isRds"`
+	// The end time of the maintenance window. The time is in the HH:mmZ format. The time is displayed in UTC.
+	MaintainEndTime string `pulumi:"maintainEndTime"`
+	// The start time of the maintenance window. The time is in the HH:mmZ format. The time is displayed in UTC.
 	MaintainStartTime string `pulumi:"maintainStartTime"`
 	// Instance connection quantity limit. Unit: count.
 	MaxConnections int `pulumi:"maxConnections"`
@@ -755,19 +760,25 @@ type GetInstancesInstance struct {
 	ResourceGroupId string `pulumi:"resourceGroupId"`
 	// The name of the instance.
 	SearchKey string `pulumi:"searchKey"`
-	// (Optional, Available since v1.128.0) The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
-	SecondaryZoneId          string   `pulumi:"secondaryZoneId"`
-	SecurityGroupId          string   `pulumi:"securityGroupId"`
-	SecurityIpGroupAttribute string   `pulumi:"securityIpGroupAttribute"`
-	SecurityIpGroupName      string   `pulumi:"securityIpGroupName"`
-	SecurityIps              []string `pulumi:"securityIps"`
-	SslEnable                string   `pulumi:"sslEnable"`
+	// The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+	SecondaryZoneId string `pulumi:"secondaryZoneId"`
+	// The ID of the security group associated with the instance.
+	SecurityGroupId string `pulumi:"securityGroupId"`
+	// By default, this parameter is left empty. The attribute of the whitelist. The console does not display the whitelist whose value of this parameter is hidden
+	SecurityIpGroupAttribute string `pulumi:"securityIpGroupAttribute"`
+	// The name of the IP address whitelist.
+	SecurityIpGroupName string `pulumi:"securityIpGroupName"`
+	// The IP addresses in the whitelist.
+	SecurityIps []string `pulumi:"securityIps"`
+	// Indicates whether SSL encryption is enabled.
+	SslEnable string `pulumi:"sslEnable"`
 	// The status of the KVStore DBInstance. Valid values: `Changing`, `CleaningUpExpiredData`, `Creating`, `Flushing`, `HASwitching`, `Inactive`, `MajorVersionUpgrading`, `Migrating`, `NetworkModifying`, `Normal`, `Rebooting`, `SSLModifying`, `Transforming`, `ZoneMigrating`.
 	Status string `pulumi:"status"`
 	// Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
 	Tags map[string]string `pulumi:"tags"`
 	// The username of the instance.
-	UserName    string `pulumi:"userName"`
+	UserName string `pulumi:"userName"`
+	// Indicates whether password authentication is enabled. Valid values: Open, Close.
 	VpcAuthMode string `pulumi:"vpcAuthMode"`
 	// Connection port of the instance.
 	VpcCloudInstanceId string `pulumi:"vpcCloudInstanceId"`
@@ -793,13 +804,15 @@ type GetInstancesInstanceInput interface {
 type GetInstancesInstanceArgs struct {
 	// The type of the architecture. Valid values: `cluster`, `standard` and `SplitRW`.
 	ArchitectureType pulumi.StringInput `pulumi:"architectureType"`
-	AutoRenew        pulumi.BoolInput   `pulumi:"autoRenew"`
-	AutoRenewPeriod  pulumi.IntInput    `pulumi:"autoRenewPeriod"`
+	// Indicates whether auto-renewal is enabled for the instance.
+	AutoRenew pulumi.BoolInput `pulumi:"autoRenew"`
+	// The duration for which the instance is automatically renewed. Unit: months.
+	AutoRenewPeriod pulumi.IntInput `pulumi:"autoRenewPeriod"`
 	// It has been deprecated from provider version 1.101.0 and `zoneId` instead.
 	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
 	// Instance bandwidth limit. Unit: Mbit/s.
 	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
-	// Capacity of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. Unit: MB.
+	// Capacity of the applied Tair (Redis OSS-Compatible) And Memcached (KVStore) Classic Instance. Unit: MB.
 	Capacity pulumi.IntInput `pulumi:"capacity"`
 	// It has been deprecated from provider version 1.101.0 and `paymentType` instead.
 	ChargeType pulumi.StringInput `pulumi:"chargeType"`
@@ -830,13 +843,16 @@ type GetInstancesInstanceArgs struct {
 	// The ID of the instance.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
-	InstanceClass             pulumi.StringInput `pulumi:"instanceClass"`
-	InstanceReleaseProtection pulumi.BoolInput   `pulumi:"instanceReleaseProtection"`
+	InstanceClass pulumi.StringInput `pulumi:"instanceClass"`
+	// Indicates whether the release protection feature is enabled for the instance.
+	InstanceReleaseProtection pulumi.BoolInput `pulumi:"instanceReleaseProtection"`
 	// The engine type of the KVStore DBInstance. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
 	InstanceType pulumi.StringInput `pulumi:"instanceType"`
 	// Indicates whether the instance is managed by Relational Database Service (RDS).
-	IsRds             pulumi.BoolInput   `pulumi:"isRds"`
-	MaintainEndTime   pulumi.StringInput `pulumi:"maintainEndTime"`
+	IsRds pulumi.BoolInput `pulumi:"isRds"`
+	// The end time of the maintenance window. The time is in the HH:mmZ format. The time is displayed in UTC.
+	MaintainEndTime pulumi.StringInput `pulumi:"maintainEndTime"`
+	// The start time of the maintenance window. The time is in the HH:mmZ format. The time is displayed in UTC.
 	MaintainStartTime pulumi.StringInput `pulumi:"maintainStartTime"`
 	// Instance connection quantity limit. Unit: count.
 	MaxConnections pulumi.IntInput `pulumi:"maxConnections"`
@@ -864,19 +880,25 @@ type GetInstancesInstanceArgs struct {
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 	// The name of the instance.
 	SearchKey pulumi.StringInput `pulumi:"searchKey"`
-	// (Optional, Available since v1.128.0) The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
-	SecondaryZoneId          pulumi.StringInput      `pulumi:"secondaryZoneId"`
-	SecurityGroupId          pulumi.StringInput      `pulumi:"securityGroupId"`
-	SecurityIpGroupAttribute pulumi.StringInput      `pulumi:"securityIpGroupAttribute"`
-	SecurityIpGroupName      pulumi.StringInput      `pulumi:"securityIpGroupName"`
-	SecurityIps              pulumi.StringArrayInput `pulumi:"securityIps"`
-	SslEnable                pulumi.StringInput      `pulumi:"sslEnable"`
+	// The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+	SecondaryZoneId pulumi.StringInput `pulumi:"secondaryZoneId"`
+	// The ID of the security group associated with the instance.
+	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
+	// By default, this parameter is left empty. The attribute of the whitelist. The console does not display the whitelist whose value of this parameter is hidden
+	SecurityIpGroupAttribute pulumi.StringInput `pulumi:"securityIpGroupAttribute"`
+	// The name of the IP address whitelist.
+	SecurityIpGroupName pulumi.StringInput `pulumi:"securityIpGroupName"`
+	// The IP addresses in the whitelist.
+	SecurityIps pulumi.StringArrayInput `pulumi:"securityIps"`
+	// Indicates whether SSL encryption is enabled.
+	SslEnable pulumi.StringInput `pulumi:"sslEnable"`
 	// The status of the KVStore DBInstance. Valid values: `Changing`, `CleaningUpExpiredData`, `Creating`, `Flushing`, `HASwitching`, `Inactive`, `MajorVersionUpgrading`, `Migrating`, `NetworkModifying`, `Normal`, `Rebooting`, `SSLModifying`, `Transforming`, `ZoneMigrating`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The username of the instance.
-	UserName    pulumi.StringInput `pulumi:"userName"`
+	UserName pulumi.StringInput `pulumi:"userName"`
+	// Indicates whether password authentication is enabled. Valid values: Open, Close.
 	VpcAuthMode pulumi.StringInput `pulumi:"vpcAuthMode"`
 	// Connection port of the instance.
 	VpcCloudInstanceId pulumi.StringInput `pulumi:"vpcCloudInstanceId"`
@@ -944,10 +966,12 @@ func (o GetInstancesInstanceOutput) ArchitectureType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.ArchitectureType }).(pulumi.StringOutput)
 }
 
+// Indicates whether auto-renewal is enabled for the instance.
 func (o GetInstancesInstanceOutput) AutoRenew() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstancesInstance) bool { return v.AutoRenew }).(pulumi.BoolOutput)
 }
 
+// The duration for which the instance is automatically renewed. Unit: months.
 func (o GetInstancesInstanceOutput) AutoRenewPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstance) int { return v.AutoRenewPeriod }).(pulumi.IntOutput)
 }
@@ -962,7 +986,7 @@ func (o GetInstancesInstanceOutput) Bandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstance) int { return v.Bandwidth }).(pulumi.IntOutput)
 }
 
-// Capacity of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. Unit: MB.
+// Capacity of the applied Tair (Redis OSS-Compatible) And Memcached (KVStore) Classic Instance. Unit: MB.
 func (o GetInstancesInstanceOutput) Capacity() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstance) int { return v.Capacity }).(pulumi.IntOutput)
 }
@@ -1042,6 +1066,7 @@ func (o GetInstancesInstanceOutput) InstanceClass() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceClass }).(pulumi.StringOutput)
 }
 
+// Indicates whether the release protection feature is enabled for the instance.
 func (o GetInstancesInstanceOutput) InstanceReleaseProtection() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstancesInstance) bool { return v.InstanceReleaseProtection }).(pulumi.BoolOutput)
 }
@@ -1056,10 +1081,12 @@ func (o GetInstancesInstanceOutput) IsRds() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstancesInstance) bool { return v.IsRds }).(pulumi.BoolOutput)
 }
 
+// The end time of the maintenance window. The time is in the HH:mmZ format. The time is displayed in UTC.
 func (o GetInstancesInstanceOutput) MaintainEndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.MaintainEndTime }).(pulumi.StringOutput)
 }
 
+// The start time of the maintenance window. The time is in the HH:mmZ format. The time is displayed in UTC.
 func (o GetInstancesInstanceOutput) MaintainStartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.MaintainStartTime }).(pulumi.StringOutput)
 }
@@ -1129,27 +1156,32 @@ func (o GetInstancesInstanceOutput) SearchKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.SearchKey }).(pulumi.StringOutput)
 }
 
-// (Optional, Available since v1.128.0) The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+// The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
 func (o GetInstancesInstanceOutput) SecondaryZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.SecondaryZoneId }).(pulumi.StringOutput)
 }
 
+// The ID of the security group associated with the instance.
 func (o GetInstancesInstanceOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
+// By default, this parameter is left empty. The attribute of the whitelist. The console does not display the whitelist whose value of this parameter is hidden
 func (o GetInstancesInstanceOutput) SecurityIpGroupAttribute() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.SecurityIpGroupAttribute }).(pulumi.StringOutput)
 }
 
+// The name of the IP address whitelist.
 func (o GetInstancesInstanceOutput) SecurityIpGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.SecurityIpGroupName }).(pulumi.StringOutput)
 }
 
+// The IP addresses in the whitelist.
 func (o GetInstancesInstanceOutput) SecurityIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstancesInstance) []string { return v.SecurityIps }).(pulumi.StringArrayOutput)
 }
 
+// Indicates whether SSL encryption is enabled.
 func (o GetInstancesInstanceOutput) SslEnable() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.SslEnable }).(pulumi.StringOutput)
 }
@@ -1169,6 +1201,7 @@ func (o GetInstancesInstanceOutput) UserName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.UserName }).(pulumi.StringOutput)
 }
 
+// Indicates whether password authentication is enabled. Valid values: Open, Close.
 func (o GetInstancesInstanceOutput) VpcAuthMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.VpcAuthMode }).(pulumi.StringOutput)
 }

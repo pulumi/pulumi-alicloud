@@ -17,14 +17,14 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
     public static final RegistryEnterpriseSyncRuleArgs Empty = new RegistryEnterpriseSyncRuleArgs();
 
     /**
-     * The ID of the Container Registry Enterprise Edition source instance.
+     * The ID of the Container Registry source instance.
      * 
      */
     @Import(name="instanceId", required=true)
     private Output<String> instanceId;
 
     /**
-     * @return The ID of the Container Registry Enterprise Edition source instance.
+     * @return The ID of the Container Registry source instance.
      * 
      */
     public Output<String> instanceId() {
@@ -32,16 +32,24 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The name of the sync rule.
+     * Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
+     * 
+     * @deprecated
+     * Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
      * 
      */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the sync rule.
+     * @return Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
+     * 
+     * @deprecated
+     * Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
      * 
      */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -74,6 +82,61 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
      */
     public Optional<Output<String>> repoName() {
         return Optional.ofNullable(this.repoName);
+    }
+
+    /**
+     * The name of the sync rule.
+     * 
+     */
+    @Import(name="syncRuleName")
+    private @Nullable Output<String> syncRuleName;
+
+    /**
+     * @return The name of the sync rule.
+     * 
+     */
+    public Optional<Output<String>> syncRuleName() {
+        return Optional.ofNullable(this.syncRuleName);
+    }
+
+    /**
+     * The synchronization scope. Valid values:
+     * - `REPO`: Encrypts or decrypts data.
+     * - `NAMESPACE`: Generates or verifies a digital signature.
+     * &gt; **NOTE:** From version 1.240.0, `sync_scope` can be set.
+     * 
+     */
+    @Import(name="syncScope")
+    private @Nullable Output<String> syncScope;
+
+    /**
+     * @return The synchronization scope. Valid values:
+     * - `REPO`: Encrypts or decrypts data.
+     * - `NAMESPACE`: Generates or verifies a digital signature.
+     * &gt; **NOTE:** From version 1.240.0, `sync_scope` can be set.
+     * 
+     */
+    public Optional<Output<String>> syncScope() {
+        return Optional.ofNullable(this.syncScope);
+    }
+
+    /**
+     * The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
+     * - `INITIATIVE`: Manually triggers the synchronization rule.
+     * - `PASSIVE`: Automatically triggers the synchronization rule.
+     * 
+     */
+    @Import(name="syncTrigger")
+    private @Nullable Output<String> syncTrigger;
+
+    /**
+     * @return The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
+     * - `INITIATIVE`: Manually triggers the synchronization rule.
+     * - `PASSIVE`: Automatically triggers the synchronization rule.
+     * 
+     */
+    public Optional<Output<String>> syncTrigger() {
+        return Optional.ofNullable(this.syncTrigger);
     }
 
     /**
@@ -151,6 +214,21 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
         return Optional.ofNullable(this.targetRepoName);
     }
 
+    /**
+     * The UID of the account to which the target instance belongs.
+     * 
+     */
+    @Import(name="targetUserId")
+    private @Nullable Output<String> targetUserId;
+
+    /**
+     * @return The UID of the account to which the target instance belongs.
+     * 
+     */
+    public Optional<Output<String>> targetUserId() {
+        return Optional.ofNullable(this.targetUserId);
+    }
+
     private RegistryEnterpriseSyncRuleArgs() {}
 
     private RegistryEnterpriseSyncRuleArgs(RegistryEnterpriseSyncRuleArgs $) {
@@ -158,11 +236,15 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
         this.name = $.name;
         this.namespaceName = $.namespaceName;
         this.repoName = $.repoName;
+        this.syncRuleName = $.syncRuleName;
+        this.syncScope = $.syncScope;
+        this.syncTrigger = $.syncTrigger;
         this.tagFilter = $.tagFilter;
         this.targetInstanceId = $.targetInstanceId;
         this.targetNamespaceName = $.targetNamespaceName;
         this.targetRegionId = $.targetRegionId;
         this.targetRepoName = $.targetRepoName;
+        this.targetUserId = $.targetUserId;
     }
 
     public static Builder builder() {
@@ -184,7 +266,7 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param instanceId The ID of the Container Registry Enterprise Edition source instance.
+         * @param instanceId The ID of the Container Registry source instance.
          * 
          * @return builder
          * 
@@ -195,7 +277,7 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param instanceId The ID of the Container Registry Enterprise Edition source instance.
+         * @param instanceId The ID of the Container Registry source instance.
          * 
          * @return builder
          * 
@@ -205,22 +287,30 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param name The name of the sync rule.
+         * @param name Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
+         * 
          */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name The name of the sync rule.
+         * @param name Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
+         * 
          */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -265,6 +355,79 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
          */
         public Builder repoName(String repoName) {
             return repoName(Output.of(repoName));
+        }
+
+        /**
+         * @param syncRuleName The name of the sync rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder syncRuleName(@Nullable Output<String> syncRuleName) {
+            $.syncRuleName = syncRuleName;
+            return this;
+        }
+
+        /**
+         * @param syncRuleName The name of the sync rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder syncRuleName(String syncRuleName) {
+            return syncRuleName(Output.of(syncRuleName));
+        }
+
+        /**
+         * @param syncScope The synchronization scope. Valid values:
+         * - `REPO`: Encrypts or decrypts data.
+         * - `NAMESPACE`: Generates or verifies a digital signature.
+         * &gt; **NOTE:** From version 1.240.0, `sync_scope` can be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder syncScope(@Nullable Output<String> syncScope) {
+            $.syncScope = syncScope;
+            return this;
+        }
+
+        /**
+         * @param syncScope The synchronization scope. Valid values:
+         * - `REPO`: Encrypts or decrypts data.
+         * - `NAMESPACE`: Generates or verifies a digital signature.
+         * &gt; **NOTE:** From version 1.240.0, `sync_scope` can be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder syncScope(String syncScope) {
+            return syncScope(Output.of(syncScope));
+        }
+
+        /**
+         * @param syncTrigger The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
+         * - `INITIATIVE`: Manually triggers the synchronization rule.
+         * - `PASSIVE`: Automatically triggers the synchronization rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder syncTrigger(@Nullable Output<String> syncTrigger) {
+            $.syncTrigger = syncTrigger;
+            return this;
+        }
+
+        /**
+         * @param syncTrigger The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
+         * - `INITIATIVE`: Manually triggers the synchronization rule.
+         * - `PASSIVE`: Automatically triggers the synchronization rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder syncTrigger(String syncTrigger) {
+            return syncTrigger(Output.of(syncTrigger));
         }
 
         /**
@@ -370,6 +533,27 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
          */
         public Builder targetRepoName(String targetRepoName) {
             return targetRepoName(Output.of(targetRepoName));
+        }
+
+        /**
+         * @param targetUserId The UID of the account to which the target instance belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetUserId(@Nullable Output<String> targetUserId) {
+            $.targetUserId = targetUserId;
+            return this;
+        }
+
+        /**
+         * @param targetUserId The UID of the account to which the target instance belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetUserId(String targetUserId) {
+            return targetUserId(Output.of(targetUserId));
         }
 
         public RegistryEnterpriseSyncRuleArgs build() {

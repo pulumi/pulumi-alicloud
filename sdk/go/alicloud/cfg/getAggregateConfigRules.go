@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Config Aggregate Config Rules of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.124.0+.
+// > **NOTE:** Available since v1.124.0.
 //
 // ## Example Usage
 //
@@ -71,7 +71,7 @@ type GetAggregateConfigRulesArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
+	// The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
 	RiskLevel *int `pulumi:"riskLevel"`
 	// The state of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
 	Status *string `pulumi:"status"`
@@ -122,7 +122,7 @@ type GetAggregateConfigRulesOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
+	// The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
 	RiskLevel pulumi.IntPtrInput `pulumi:"riskLevel"`
 	// The state of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
 	Status pulumi.StringPtrInput `pulumi:"status"`

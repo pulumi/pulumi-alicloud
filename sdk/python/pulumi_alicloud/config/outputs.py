@@ -170,10 +170,13 @@ class Endpoints(dict):
                  acr: Optional[str] = None,
                  actiontrail: Optional[str] = None,
                  adb: Optional[str] = None,
+                 aiworkspace: Optional[str] = None,
                  alb: Optional[str] = None,
                  alidfs: Optional[str] = None,
                  alidns: Optional[str] = None,
                  alikafka: Optional[str] = None,
+                 amqp: Optional[str] = None,
+                 antiddos_public: Optional[str] = None,
                  apigateway: Optional[str] = None,
                  arms: Optional[str] = None,
                  bastionhost: Optional[str] = None,
@@ -188,6 +191,7 @@ class Endpoints(dict):
                  cddc: Optional[str] = None,
                  cdn: Optional[str] = None,
                  cds: Optional[str] = None,
+                 chatbot: Optional[str] = None,
                  clickhouse: Optional[str] = None,
                  cloudauth: Optional[str] = None,
                  cloudfirewall: Optional[str] = None,
@@ -201,14 +205,18 @@ class Endpoints(dict):
                  cs: Optional[str] = None,
                  das: Optional[str] = None,
                  datahub: Optional[str] = None,
+                 dataworks_public: Optional[str] = None,
                  dataworkspublic: Optional[str] = None,
                  dbfs: Optional[str] = None,
+                 dbs: Optional[str] = None,
                  dcdn: Optional[str] = None,
                  ddosbasic: Optional[str] = None,
                  ddosbgp: Optional[str] = None,
                  ddoscoo: Optional[str] = None,
                  dds: Optional[str] = None,
+                 devops_rdc: Optional[str] = None,
                  devopsrdc: Optional[str] = None,
+                 dfs: Optional[str] = None,
                  dg: Optional[str] = None,
                  dm: Optional[str] = None,
                  dms_enterprise: Optional[str] = None,
@@ -217,12 +225,15 @@ class Endpoints(dict):
                  drds: Optional[str] = None,
                  dts: Optional[str] = None,
                  dysms: Optional[str] = None,
+                 dysmsapi: Optional[str] = None,
                  eais: Optional[str] = None,
                  ebs: Optional[str] = None,
+                 ecd: Optional[str] = None,
                  eci: Optional[str] = None,
                  ecs: Optional[str] = None,
                  edas: Optional[str] = None,
                  edasschedulerx: Optional[str] = None,
+                 eds_user: Optional[str] = None,
                  edsuser: Optional[str] = None,
                  eflo: Optional[str] = None,
                  ehpc: Optional[str] = None,
@@ -231,14 +242,18 @@ class Endpoints(dict):
                  elasticsearch: Optional[str] = None,
                  emr: Optional[str] = None,
                  ens: Optional[str] = None,
+                 esa: Optional[str] = None,
                  ess: Optional[str] = None,
                  eventbridge: Optional[str] = None,
                  fc: Optional[str] = None,
+                 fc_open: Optional[str] = None,
                  fnf: Optional[str] = None,
                  ga: Optional[str] = None,
                  gaplus: Optional[str] = None,
+                 gdb: Optional[str] = None,
                  gds: Optional[str] = None,
                  gpdb: Optional[str] = None,
+                 gwlb: Optional[str] = None,
                  gwsecd: Optional[str] = None,
                  hbr: Optional[str] = None,
                  hcs_sgw: Optional[str] = None,
@@ -255,11 +270,13 @@ class Endpoints(dict):
                  maxcompute: Optional[str] = None,
                  mhub: Optional[str] = None,
                  mns: Optional[str] = None,
+                 mns_open: Optional[str] = None,
                  mscopensubscription: Optional[str] = None,
                  mse: Optional[str] = None,
                  nas: Optional[str] = None,
                  nlb: Optional[str] = None,
                  oceanbase: Optional[str] = None,
+                 oceanbasepro: Optional[str] = None,
                  ons: Optional[str] = None,
                  onsproxy: Optional[str] = None,
                  oos: Optional[str] = None,
@@ -267,22 +284,29 @@ class Endpoints(dict):
                  oss: Optional[str] = None,
                  ots: Optional[str] = None,
                  polardb: Optional[str] = None,
+                 polardbx: Optional[str] = None,
                  privatelink: Optional[str] = None,
                  pvtz: Optional[str] = None,
                  quickbi: Optional[str] = None,
+                 quickbi_public: Optional[str] = None,
                  quotas: Optional[str] = None,
                  r_kvstore: Optional[str] = None,
                  ram: Optional[str] = None,
                  rds: Optional[str] = None,
                  redisa: Optional[str] = None,
                  resourcemanager: Optional[str] = None,
+                 resourcesharing: Optional[str] = None,
                  ressharing: Optional[str] = None,
+                 rocketmq: Optional[str] = None,
                  ros: Optional[str] = None,
+                 sae: Optional[str] = None,
                  sas: Optional[str] = None,
                  scdn: Optional[str] = None,
+                 schedulerx2: Optional[str] = None,
                  sddp: Optional[str] = None,
                  selectdb: Optional[str] = None,
                  serverless: Optional[str] = None,
+                 servicecatalog: Optional[str] = None,
                  servicemesh: Optional[str] = None,
                  sgw: Optional[str] = None,
                  slb: Optional[str] = None,
@@ -290,9 +314,11 @@ class Endpoints(dict):
                  srvcatalog: Optional[str] = None,
                  sts: Optional[str] = None,
                  swas: Optional[str] = None,
+                 swas_open: Optional[str] = None,
                  tag: Optional[str] = None,
                  vod: Optional[str] = None,
                  vpc: Optional[str] = None,
+                 vpcipam: Optional[str] = None,
                  vpcpeer: Optional[str] = None,
                  vs: Optional[str] = None,
                  waf: Optional[str] = None,
@@ -305,6 +331,8 @@ class Endpoints(dict):
         :param str alidfs: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidfs endpoints.
         :param str alidns: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidns endpoints.
         :param str alikafka: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ALIKAFKA endpoints.
+        :param str amqp: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom onsproxy endpoints.
+        :param str antiddos_public: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ddosbasic endpoints.
         :param str apigateway: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
         :param str arms: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom arms endpoints.
         :param str bastionhost: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom bastionhost endpoints.
@@ -319,6 +347,7 @@ class Endpoints(dict):
         :param str cddc: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cddc endpoints.
         :param str cdn: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom CDN endpoints.
         :param str cds: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cds endpoints.
+        :param str chatbot: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom beebot endpoints.
         :param str clickhouse: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom clickhouse endpoints.
         :param str cloudauth: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudauth endpoints.
         :param str cloudfirewall: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudfirewall endpoints.
@@ -332,14 +361,17 @@ class Endpoints(dict):
         :param str cs: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Container Service endpoints.
         :param str das: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom das endpoints.
         :param str datahub: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Datahub endpoints.
+        :param str dataworks_public: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dataworkspublic endpoints.
         :param str dataworkspublic: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dataworkspublic endpoints.
         :param str dbfs: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dbfs endpoints.
+        :param str dbs: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbs endpoints.
         :param str dcdn: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dcdn endpoints.
         :param str ddosbasic: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ddosbasic endpoints.
         :param str ddosbgp: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DDOSBGP endpoints.
         :param str ddoscoo: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DDOSCOO endpoints.
         :param str dds: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MongoDB endpoints.
         :param str devopsrdc: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom devopsrdc endpoints.
+        :param str dfs: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidfs endpoints.
         :param str dg: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dg endpoints.
         :param str dm: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dm endpoints.
         :param str dms_enterprise: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dms_enterprise endpoints.
@@ -347,12 +379,15 @@ class Endpoints(dict):
         :param str dns: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DNS endpoints.
         :param str drds: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DRDS endpoints.
         :param str dts: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dts endpoints.
+        :param str dysmsapi: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dysmsapi endpoints.
         :param str eais: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eais endpoints.
         :param str ebs: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ebs endpoints.
+        :param str ecd: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gwsecd endpoints.
         :param str eci: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eci endpoints.
         :param str ecs: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ECS endpoints.
         :param str edas: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edas endpoints.
         :param str edasschedulerx: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edasschedulerx endpoints.
+        :param str eds_user: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edsuser endpoints.
         :param str edsuser: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edsuser endpoints.
         :param str eflo: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eflo endpoints.
         :param str ehpc: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehpc endpoints.
@@ -364,9 +399,11 @@ class Endpoints(dict):
         :param str ess: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Autoscaling endpoints.
         :param str eventbridge: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eventbridge_share endpoints.
         :param str fc: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Function Computing endpoints.
+        :param str fc_open: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Function Computing endpoints.
         :param str fnf: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom fnf endpoints.
         :param str ga: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ga endpoints.
         :param str gaplus: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gaplus endpoints.
+        :param str gdb: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gds endpoints.
         :param str gds: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gds endpoints.
         :param str gpdb: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom GPDB endpoints.
         :param str gwsecd: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gwsecd endpoints.
@@ -385,11 +422,13 @@ class Endpoints(dict):
         :param str maxcompute: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MaxCompute endpoints.
         :param str mhub: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mhub endpoints.
         :param str mns: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MNS endpoints.
+        :param str mns_open: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MNS endpoints.
         :param str mscopensubscription: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mscopensubscription endpoints.
         :param str mse: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mse endpoints.
         :param str nas: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom NAS endpoints.
         :param str nlb: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom nlb endpoints.
         :param str oceanbase: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oceanbase endpoints.
+        :param str oceanbasepro: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oceanbase endpoints.
         :param str ons: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ONS endpoints.
         :param str onsproxy: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom onsproxy endpoints.
         :param str oos: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oos endpoints.
@@ -397,9 +436,11 @@ class Endpoints(dict):
         :param str oss: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom OSS endpoints.
         :param str ots: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Table Store endpoints.
         :param str polardb: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom PolarDB endpoints.
+        :param str polardbx: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DRDS endpoints.
         :param str privatelink: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom privatelink endpoints.
         :param str pvtz: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Private Zone endpoints.
         :param str quickbi: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quickbi endpoints.
+        :param str quickbi_public: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quickbi endpoints.
         :param str quotas: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quotas endpoints.
         :param str r_kvstore: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom r_kvstore endpoints.
         :param str ram: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom RAM endpoints.
@@ -408,11 +449,14 @@ class Endpoints(dict):
         :param str resourcemanager: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcemanager endpoints.
         :param str ressharing: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcesharing endpoints.
         :param str ros: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ros endpoints.
+        :param str sae: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
         :param str sas: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sas endpoints.
         :param str scdn: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom scdn endpoints.
+        :param str schedulerx2: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edasschedulerx endpoints.
         :param str sddp: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sddp endpoints.
         :param str selectdb: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom selectdb endpoints.
         :param str serverless: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
+        :param str servicecatalog: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom srvcatalog endpoints.
         :param str servicemesh: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom servicemesh endpoints.
         :param str sgw: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sgw endpoints.
         :param str slb: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom SLB endpoints.
@@ -420,6 +464,7 @@ class Endpoints(dict):
         :param str srvcatalog: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom srvcatalog endpoints.
         :param str sts: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom STS endpoints.
         :param str swas: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom swas endpoints.
+        :param str swas_open: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom swas endpoints.
         :param str tag: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom tag endpoints.
         :param str vod: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vod endpoints.
         :param str vpc: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom VPC and VPN endpoints.
@@ -434,6 +479,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "actiontrail", actiontrail)
         if adb is not None:
             pulumi.set(__self__, "adb", adb)
+        if aiworkspace is not None:
+            pulumi.set(__self__, "aiworkspace", aiworkspace)
         if alb is not None:
             pulumi.set(__self__, "alb", alb)
         if alidfs is not None:
@@ -442,6 +489,10 @@ class Endpoints(dict):
             pulumi.set(__self__, "alidns", alidns)
         if alikafka is not None:
             pulumi.set(__self__, "alikafka", alikafka)
+        if amqp is not None:
+            pulumi.set(__self__, "amqp", amqp)
+        if antiddos_public is not None:
+            pulumi.set(__self__, "antiddos_public", antiddos_public)
         if apigateway is not None:
             pulumi.set(__self__, "apigateway", apigateway)
         if arms is not None:
@@ -470,6 +521,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "cdn", cdn)
         if cds is not None:
             pulumi.set(__self__, "cds", cds)
+        if chatbot is not None:
+            pulumi.set(__self__, "chatbot", chatbot)
         if clickhouse is not None:
             pulumi.set(__self__, "clickhouse", clickhouse)
         if cloudauth is not None:
@@ -496,10 +549,14 @@ class Endpoints(dict):
             pulumi.set(__self__, "das", das)
         if datahub is not None:
             pulumi.set(__self__, "datahub", datahub)
+        if dataworks_public is not None:
+            pulumi.set(__self__, "dataworks_public", dataworks_public)
         if dataworkspublic is not None:
             pulumi.set(__self__, "dataworkspublic", dataworkspublic)
         if dbfs is not None:
             pulumi.set(__self__, "dbfs", dbfs)
+        if dbs is not None:
+            pulumi.set(__self__, "dbs", dbs)
         if dcdn is not None:
             pulumi.set(__self__, "dcdn", dcdn)
         if ddosbasic is not None:
@@ -510,8 +567,12 @@ class Endpoints(dict):
             pulumi.set(__self__, "ddoscoo", ddoscoo)
         if dds is not None:
             pulumi.set(__self__, "dds", dds)
+        if devops_rdc is not None:
+            pulumi.set(__self__, "devops_rdc", devops_rdc)
         if devopsrdc is not None:
             pulumi.set(__self__, "devopsrdc", devopsrdc)
+        if dfs is not None:
+            pulumi.set(__self__, "dfs", dfs)
         if dg is not None:
             pulumi.set(__self__, "dg", dg)
         if dm is not None:
@@ -528,10 +589,14 @@ class Endpoints(dict):
             pulumi.set(__self__, "dts", dts)
         if dysms is not None:
             pulumi.set(__self__, "dysms", dysms)
+        if dysmsapi is not None:
+            pulumi.set(__self__, "dysmsapi", dysmsapi)
         if eais is not None:
             pulumi.set(__self__, "eais", eais)
         if ebs is not None:
             pulumi.set(__self__, "ebs", ebs)
+        if ecd is not None:
+            pulumi.set(__self__, "ecd", ecd)
         if eci is not None:
             pulumi.set(__self__, "eci", eci)
         if ecs is not None:
@@ -540,6 +605,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "edas", edas)
         if edasschedulerx is not None:
             pulumi.set(__self__, "edasschedulerx", edasschedulerx)
+        if eds_user is not None:
+            pulumi.set(__self__, "eds_user", eds_user)
         if edsuser is not None:
             pulumi.set(__self__, "edsuser", edsuser)
         if eflo is not None:
@@ -556,22 +623,30 @@ class Endpoints(dict):
             pulumi.set(__self__, "emr", emr)
         if ens is not None:
             pulumi.set(__self__, "ens", ens)
+        if esa is not None:
+            pulumi.set(__self__, "esa", esa)
         if ess is not None:
             pulumi.set(__self__, "ess", ess)
         if eventbridge is not None:
             pulumi.set(__self__, "eventbridge", eventbridge)
         if fc is not None:
             pulumi.set(__self__, "fc", fc)
+        if fc_open is not None:
+            pulumi.set(__self__, "fc_open", fc_open)
         if fnf is not None:
             pulumi.set(__self__, "fnf", fnf)
         if ga is not None:
             pulumi.set(__self__, "ga", ga)
         if gaplus is not None:
             pulumi.set(__self__, "gaplus", gaplus)
+        if gdb is not None:
+            pulumi.set(__self__, "gdb", gdb)
         if gds is not None:
             pulumi.set(__self__, "gds", gds)
         if gpdb is not None:
             pulumi.set(__self__, "gpdb", gpdb)
+        if gwlb is not None:
+            pulumi.set(__self__, "gwlb", gwlb)
         if gwsecd is not None:
             pulumi.set(__self__, "gwsecd", gwsecd)
         if hbr is not None:
@@ -604,6 +679,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "mhub", mhub)
         if mns is not None:
             pulumi.set(__self__, "mns", mns)
+        if mns_open is not None:
+            pulumi.set(__self__, "mns_open", mns_open)
         if mscopensubscription is not None:
             pulumi.set(__self__, "mscopensubscription", mscopensubscription)
         if mse is not None:
@@ -614,6 +691,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "nlb", nlb)
         if oceanbase is not None:
             pulumi.set(__self__, "oceanbase", oceanbase)
+        if oceanbasepro is not None:
+            pulumi.set(__self__, "oceanbasepro", oceanbasepro)
         if ons is not None:
             pulumi.set(__self__, "ons", ons)
         if onsproxy is not None:
@@ -628,12 +707,16 @@ class Endpoints(dict):
             pulumi.set(__self__, "ots", ots)
         if polardb is not None:
             pulumi.set(__self__, "polardb", polardb)
+        if polardbx is not None:
+            pulumi.set(__self__, "polardbx", polardbx)
         if privatelink is not None:
             pulumi.set(__self__, "privatelink", privatelink)
         if pvtz is not None:
             pulumi.set(__self__, "pvtz", pvtz)
         if quickbi is not None:
             pulumi.set(__self__, "quickbi", quickbi)
+        if quickbi_public is not None:
+            pulumi.set(__self__, "quickbi_public", quickbi_public)
         if quotas is not None:
             pulumi.set(__self__, "quotas", quotas)
         if r_kvstore is not None:
@@ -646,20 +729,30 @@ class Endpoints(dict):
             pulumi.set(__self__, "redisa", redisa)
         if resourcemanager is not None:
             pulumi.set(__self__, "resourcemanager", resourcemanager)
+        if resourcesharing is not None:
+            pulumi.set(__self__, "resourcesharing", resourcesharing)
         if ressharing is not None:
             pulumi.set(__self__, "ressharing", ressharing)
+        if rocketmq is not None:
+            pulumi.set(__self__, "rocketmq", rocketmq)
         if ros is not None:
             pulumi.set(__self__, "ros", ros)
+        if sae is not None:
+            pulumi.set(__self__, "sae", sae)
         if sas is not None:
             pulumi.set(__self__, "sas", sas)
         if scdn is not None:
             pulumi.set(__self__, "scdn", scdn)
+        if schedulerx2 is not None:
+            pulumi.set(__self__, "schedulerx2", schedulerx2)
         if sddp is not None:
             pulumi.set(__self__, "sddp", sddp)
         if selectdb is not None:
             pulumi.set(__self__, "selectdb", selectdb)
         if serverless is not None:
             pulumi.set(__self__, "serverless", serverless)
+        if servicecatalog is not None:
+            pulumi.set(__self__, "servicecatalog", servicecatalog)
         if servicemesh is not None:
             pulumi.set(__self__, "servicemesh", servicemesh)
         if sgw is not None:
@@ -674,12 +767,16 @@ class Endpoints(dict):
             pulumi.set(__self__, "sts", sts)
         if swas is not None:
             pulumi.set(__self__, "swas", swas)
+        if swas_open is not None:
+            pulumi.set(__self__, "swas_open", swas_open)
         if tag is not None:
             pulumi.set(__self__, "tag", tag)
         if vod is not None:
             pulumi.set(__self__, "vod", vod)
         if vpc is not None:
             pulumi.set(__self__, "vpc", vpc)
+        if vpcipam is not None:
+            pulumi.set(__self__, "vpcipam", vpcipam)
         if vpcpeer is not None:
             pulumi.set(__self__, "vpcpeer", vpcpeer)
         if vs is not None:
@@ -715,6 +812,11 @@ class Endpoints(dict):
 
     @property
     @pulumi.getter
+    def aiworkspace(self) -> Optional[str]:
+        return pulumi.get(self, "aiworkspace")
+
+    @property
+    @pulumi.getter
     def alb(self) -> Optional[str]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alb endpoints.
@@ -744,6 +846,22 @@ class Endpoints(dict):
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ALIKAFKA endpoints.
         """
         return pulumi.get(self, "alikafka")
+
+    @property
+    @pulumi.getter
+    def amqp(self) -> Optional[str]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom onsproxy endpoints.
+        """
+        return pulumi.get(self, "amqp")
+
+    @property
+    @pulumi.getter(name="antiddosPublic")
+    def antiddos_public(self) -> Optional[str]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ddosbasic endpoints.
+        """
+        return pulumi.get(self, "antiddos_public")
 
     @property
     @pulumi.getter
@@ -859,6 +977,14 @@ class Endpoints(dict):
 
     @property
     @pulumi.getter
+    def chatbot(self) -> Optional[str]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom beebot endpoints.
+        """
+        return pulumi.get(self, "chatbot")
+
+    @property
+    @pulumi.getter
     def clickhouse(self) -> Optional[str]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom clickhouse endpoints.
@@ -962,6 +1088,14 @@ class Endpoints(dict):
         return pulumi.get(self, "datahub")
 
     @property
+    @pulumi.getter(name="dataworksPublic")
+    def dataworks_public(self) -> Optional[str]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dataworkspublic endpoints.
+        """
+        return pulumi.get(self, "dataworks_public")
+
+    @property
     @pulumi.getter
     def dataworkspublic(self) -> Optional[str]:
         """
@@ -976,6 +1110,14 @@ class Endpoints(dict):
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dbfs endpoints.
         """
         return pulumi.get(self, "dbfs")
+
+    @property
+    @pulumi.getter
+    def dbs(self) -> Optional[str]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbs endpoints.
+        """
+        return pulumi.get(self, "dbs")
 
     @property
     @pulumi.getter
@@ -1018,12 +1160,25 @@ class Endpoints(dict):
         return pulumi.get(self, "dds")
 
     @property
+    @pulumi.getter(name="devopsRdc")
+    def devops_rdc(self) -> Optional[str]:
+        return pulumi.get(self, "devops_rdc")
+
+    @property
     @pulumi.getter
     def devopsrdc(self) -> Optional[str]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom devopsrdc endpoints.
         """
         return pulumi.get(self, "devopsrdc")
+
+    @property
+    @pulumi.getter
+    def dfs(self) -> Optional[str]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidfs endpoints.
+        """
+        return pulumi.get(self, "dfs")
 
     @property
     @pulumi.getter
@@ -1088,6 +1243,14 @@ class Endpoints(dict):
 
     @property
     @pulumi.getter
+    def dysmsapi(self) -> Optional[str]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dysmsapi endpoints.
+        """
+        return pulumi.get(self, "dysmsapi")
+
+    @property
+    @pulumi.getter
     def eais(self) -> Optional[str]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eais endpoints.
@@ -1101,6 +1264,14 @@ class Endpoints(dict):
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ebs endpoints.
         """
         return pulumi.get(self, "ebs")
+
+    @property
+    @pulumi.getter
+    def ecd(self) -> Optional[str]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gwsecd endpoints.
+        """
+        return pulumi.get(self, "ecd")
 
     @property
     @pulumi.getter
@@ -1133,6 +1304,14 @@ class Endpoints(dict):
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edasschedulerx endpoints.
         """
         return pulumi.get(self, "edasschedulerx")
+
+    @property
+    @pulumi.getter(name="edsUser")
+    def eds_user(self) -> Optional[str]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edsuser endpoints.
+        """
+        return pulumi.get(self, "eds_user")
 
     @property
     @pulumi.getter
@@ -1200,6 +1379,11 @@ class Endpoints(dict):
 
     @property
     @pulumi.getter
+    def esa(self) -> Optional[str]:
+        return pulumi.get(self, "esa")
+
+    @property
+    @pulumi.getter
     def ess(self) -> Optional[str]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Autoscaling endpoints.
@@ -1221,6 +1405,14 @@ class Endpoints(dict):
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Function Computing endpoints.
         """
         return pulumi.get(self, "fc")
+
+    @property
+    @pulumi.getter(name="fcOpen")
+    def fc_open(self) -> Optional[str]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Function Computing endpoints.
+        """
+        return pulumi.get(self, "fc_open")
 
     @property
     @pulumi.getter
@@ -1248,6 +1440,14 @@ class Endpoints(dict):
 
     @property
     @pulumi.getter
+    def gdb(self) -> Optional[str]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gds endpoints.
+        """
+        return pulumi.get(self, "gdb")
+
+    @property
+    @pulumi.getter
     def gds(self) -> Optional[str]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gds endpoints.
@@ -1261,6 +1461,11 @@ class Endpoints(dict):
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom GPDB endpoints.
         """
         return pulumi.get(self, "gpdb")
+
+    @property
+    @pulumi.getter
+    def gwlb(self) -> Optional[str]:
+        return pulumi.get(self, "gwlb")
 
     @property
     @pulumi.getter
@@ -1391,6 +1596,14 @@ class Endpoints(dict):
         return pulumi.get(self, "mns")
 
     @property
+    @pulumi.getter(name="mnsOpen")
+    def mns_open(self) -> Optional[str]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MNS endpoints.
+        """
+        return pulumi.get(self, "mns_open")
+
+    @property
     @pulumi.getter
     def mscopensubscription(self) -> Optional[str]:
         """
@@ -1429,6 +1642,14 @@ class Endpoints(dict):
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oceanbase endpoints.
         """
         return pulumi.get(self, "oceanbase")
+
+    @property
+    @pulumi.getter
+    def oceanbasepro(self) -> Optional[str]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oceanbase endpoints.
+        """
+        return pulumi.get(self, "oceanbasepro")
 
     @property
     @pulumi.getter
@@ -1488,6 +1709,14 @@ class Endpoints(dict):
 
     @property
     @pulumi.getter
+    def polardbx(self) -> Optional[str]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DRDS endpoints.
+        """
+        return pulumi.get(self, "polardbx")
+
+    @property
+    @pulumi.getter
     def privatelink(self) -> Optional[str]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom privatelink endpoints.
@@ -1509,6 +1738,14 @@ class Endpoints(dict):
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quickbi endpoints.
         """
         return pulumi.get(self, "quickbi")
+
+    @property
+    @pulumi.getter(name="quickbiPublic")
+    def quickbi_public(self) -> Optional[str]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quickbi endpoints.
+        """
+        return pulumi.get(self, "quickbi_public")
 
     @property
     @pulumi.getter
@@ -1560,6 +1797,11 @@ class Endpoints(dict):
 
     @property
     @pulumi.getter
+    def resourcesharing(self) -> Optional[str]:
+        return pulumi.get(self, "resourcesharing")
+
+    @property
+    @pulumi.getter
     def ressharing(self) -> Optional[str]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcesharing endpoints.
@@ -1568,11 +1810,24 @@ class Endpoints(dict):
 
     @property
     @pulumi.getter
+    def rocketmq(self) -> Optional[str]:
+        return pulumi.get(self, "rocketmq")
+
+    @property
+    @pulumi.getter
     def ros(self) -> Optional[str]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ros endpoints.
         """
         return pulumi.get(self, "ros")
+
+    @property
+    @pulumi.getter
+    def sae(self) -> Optional[str]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
+        """
+        return pulumi.get(self, "sae")
 
     @property
     @pulumi.getter
@@ -1589,6 +1844,14 @@ class Endpoints(dict):
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom scdn endpoints.
         """
         return pulumi.get(self, "scdn")
+
+    @property
+    @pulumi.getter
+    def schedulerx2(self) -> Optional[str]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edasschedulerx endpoints.
+        """
+        return pulumi.get(self, "schedulerx2")
 
     @property
     @pulumi.getter
@@ -1613,6 +1876,14 @@ class Endpoints(dict):
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
         """
         return pulumi.get(self, "serverless")
+
+    @property
+    @pulumi.getter
+    def servicecatalog(self) -> Optional[str]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom srvcatalog endpoints.
+        """
+        return pulumi.get(self, "servicecatalog")
 
     @property
     @pulumi.getter
@@ -1671,6 +1942,14 @@ class Endpoints(dict):
         return pulumi.get(self, "swas")
 
     @property
+    @pulumi.getter(name="swasOpen")
+    def swas_open(self) -> Optional[str]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom swas endpoints.
+        """
+        return pulumi.get(self, "swas_open")
+
+    @property
     @pulumi.getter
     def tag(self) -> Optional[str]:
         """
@@ -1693,6 +1972,11 @@ class Endpoints(dict):
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom VPC and VPN endpoints.
         """
         return pulumi.get(self, "vpc")
+
+    @property
+    @pulumi.getter
+    def vpcipam(self) -> Optional[str]:
+        return pulumi.get(self, "vpcipam")
 
     @property
     @pulumi.getter

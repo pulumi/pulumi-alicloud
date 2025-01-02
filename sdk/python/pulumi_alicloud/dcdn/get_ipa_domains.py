@@ -56,11 +56,17 @@ class GetIpaDomainsResult:
     @property
     @pulumi.getter(name="domainName")
     def domain_name(self) -> Optional[str]:
+        """
+        The accelerated domain names.
+        """
         return pulumi.get(self, "domain_name")
 
     @property
     @pulumi.getter
     def domains(self) -> Sequence['outputs.GetIpaDomainsDomainResult']:
+        """
+        A list of Dcdn Ipa Domains. Each element contains the following attributes:
+        """
         return pulumi.get(self, "domains")
 
     @property
@@ -84,6 +90,9 @@ class GetIpaDomainsResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Dcdn Ipa Domain names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -94,6 +103,9 @@ class GetIpaDomainsResult:
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        The status of the accelerated domain name.
+        """
         return pulumi.get(self, "status")
 
 
@@ -122,7 +134,7 @@ def get_ipa_domains(domain_name: Optional[str] = None,
     """
     This data source provides the Dcdn Ipa Domains of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.158.0+.
+    > **NOTE:** Available since v1.158.0.
 
     ## Example Usage
 
@@ -176,7 +188,7 @@ def get_ipa_domains_output(domain_name: Optional[pulumi.Input[Optional[str]]] = 
     """
     This data source provides the Dcdn Ipa Domains of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.158.0+.
+    > **NOTE:** Available since v1.158.0.
 
     ## Example Usage
 

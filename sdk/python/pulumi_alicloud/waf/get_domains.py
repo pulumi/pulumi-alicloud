@@ -146,7 +146,7 @@ def get_domains(enable_details: Optional[bool] = None,
 
     For information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).
 
-    > **NOTE:** Available in 1.86.0+ .
+    > **NOTE:** Available since v1.86.0.
 
     ## Example Usage
 
@@ -154,7 +154,8 @@ def get_domains(enable_details: Optional[bool] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.waf.get_domains(instance_id="waf-cf-xxxxx")
+    default = alicloud.waf.get_instances()
+    default_get_domains = alicloud.waf.get_domains(instance_id=default.ids[0])
     ```
 
 
@@ -197,7 +198,7 @@ def get_domains_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = 
 
     For information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).
 
-    > **NOTE:** Available in 1.86.0+ .
+    > **NOTE:** Available since v1.86.0.
 
     ## Example Usage
 
@@ -205,7 +206,8 @@ def get_domains_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = 
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.waf.get_domains(instance_id="waf-cf-xxxxx")
+    default = alicloud.waf.get_instances()
+    default_get_domains = alicloud.waf.get_domains(instance_id=default.ids[0])
     ```
 
 

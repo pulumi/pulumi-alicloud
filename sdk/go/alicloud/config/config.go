@@ -22,6 +22,9 @@ func GetAccessKey(ctx *pulumi.Context) string {
 func GetAccountId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "alicloud:accountId")
 }
+func GetAccountType(ctx *pulumi.Context) string {
+	return config.Get(ctx, "alicloud:accountType")
+}
 func GetAssumeRole(ctx *pulumi.Context) string {
 	return config.Get(ctx, "alicloud:assumeRole")
 }

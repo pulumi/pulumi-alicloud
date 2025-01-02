@@ -81,9 +81,12 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         /// The scope of resource group ids.
         /// </summary>
         public readonly string ResourceGroupIdsScope;
+        /// <summary>
+        /// The types of resources evaluated by the rule.
+        /// </summary>
         public readonly ImmutableArray<string> ResourceTypesScopes;
         /// <summary>
-        /// Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
+        /// The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
         /// </summary>
         public readonly int RiskLevel;
         /// <summary>

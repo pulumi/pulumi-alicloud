@@ -91,7 +91,7 @@ public final class GetDBClusterLakeVersionsVersion {
      */
     private String resourceGroupId;
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`.
      * 
      */
     private String status;
@@ -230,7 +230,7 @@ public final class GetDBClusterLakeVersionsVersion {
         return this.resourceGroupId;
     }
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`.
      * 
      */
     public String status() {

@@ -33,7 +33,7 @@ public final class GetIpaDomainsDomain {
      */
     private String description;
     /**
-     * @return The accelerated domain names.
+     * @return The name of the Domain.
      * 
      */
     private String domainName;
@@ -68,7 +68,7 @@ public final class GetIpaDomainsDomain {
      */
     private String sslPub;
     /**
-     * @return The status of the accelerated domain name.
+     * @return The status of the accelerated domain name. Valid values: `check_failed`, `checking`, `configure_failed`, `configuring`, `offline`, `online`.
      * 
      */
     private String status;
@@ -103,7 +103,7 @@ public final class GetIpaDomainsDomain {
         return this.description;
     }
     /**
-     * @return The accelerated domain names.
+     * @return The name of the Domain.
      * 
      */
     public String domainName() {
@@ -152,7 +152,7 @@ public final class GetIpaDomainsDomain {
         return this.sslPub;
     }
     /**
-     * @return The status of the accelerated domain name.
+     * @return The status of the accelerated domain name. Valid values: `check_failed`, `checking`, `configure_failed`, `configuring`, `offline`, `online`.
      * 
      */
     public String status() {

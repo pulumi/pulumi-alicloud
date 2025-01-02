@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Global Accelerator (GA) Listeners of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.111.0+.
+ * > **NOTE:** Available since v1.111.0.
  *
  * ## Example Usage
  *
@@ -74,16 +74,25 @@ export interface GetListenersResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * A list of Ga Listeners. Each element contains the following attributes:
+     */
     readonly listeners: outputs.ga.GetListenersListener[];
     readonly nameRegex?: string;
+    /**
+     * A list of Listener names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The status of the listener.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Global Accelerator (GA) Listeners of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.111.0+.
+ * > **NOTE:** Available since v1.111.0.
  *
  * ## Example Usage
  *

@@ -21,8 +21,16 @@ public final class GetMscSubWebhooksResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Webhook names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Msc Sub Webhooks. Each element contains the following attributes:
+     * 
+     */
     private List<GetMscSubWebhooksWebhook> webhooks;
 
     private GetMscSubWebhooksResult() {}
@@ -39,12 +47,20 @@ public final class GetMscSubWebhooksResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Webhook names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Msc Sub Webhooks. Each element contains the following attributes:
+     * 
+     */
     public List<GetMscSubWebhooksWebhook> webhooks() {
         return this.webhooks;
     }

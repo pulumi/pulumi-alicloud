@@ -27,7 +27,7 @@ public final class GetVpcEndpointConnectionsConnection {
      */
     private String id;
     /**
-     * @return The status of Vpc Endpoint Connection.
+     * @return The status of Vpc Endpoint Connection. Valid Values: `Connected`, `Connecting`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting`, `Pending` and `ServiceDeleted`.
      * 
      */
     private String status;
@@ -55,7 +55,7 @@ public final class GetVpcEndpointConnectionsConnection {
         return this.id;
     }
     /**
-     * @return The status of Vpc Endpoint Connection.
+     * @return The status of Vpc Endpoint Connection. Valid Values: `Connected`, `Connecting`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting`, `Pending` and `ServiceDeleted`.
      * 
      */
     public String status() {

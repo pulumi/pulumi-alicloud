@@ -74,6 +74,9 @@ class GetListenersResult:
     @property
     @pulumi.getter
     def listeners(self) -> Sequence['outputs.GetListenersListenerResult']:
+        """
+        A list of Ga Listeners. Each element contains the following attributes:
+        """
         return pulumi.get(self, "listeners")
 
     @property
@@ -84,6 +87,9 @@ class GetListenersResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Listener names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -94,6 +100,9 @@ class GetListenersResult:
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        The status of the listener.
+        """
         return pulumi.get(self, "status")
 
 
@@ -122,7 +131,7 @@ def get_listeners(accelerator_id: Optional[str] = None,
     """
     This data source provides the Global Accelerator (GA) Listeners of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.111.0+.
+    > **NOTE:** Available since v1.111.0.
 
     ## Example Usage
 
@@ -172,7 +181,7 @@ def get_listeners_output(accelerator_id: Optional[pulumi.Input[str]] = None,
     """
     This data source provides the Global Accelerator (GA) Listeners of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.111.0+.
+    > **NOTE:** Available since v1.111.0.
 
     ## Example Usage
 

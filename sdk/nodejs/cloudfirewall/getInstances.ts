@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cloud Firewall Instances of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.139.0+.
+ * > **NOTE:** Available since v1.139.0.
  *
  * ## Example Usage
  *
@@ -28,6 +28,7 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cloudfirewall/getInstances:getInstances", {
         "outputFile": args.outputFile,
+        "paymentType": args.paymentType,
     }, opts);
 }
 
@@ -39,6 +40,10 @@ export interface GetInstancesArgs {
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: string;
+    /**
+     * The payment type of the cloud firewall instance. Valid values: `PayAsYouGo`,`Subscription`.
+     */
+    paymentType?: string;
 }
 
 /**
@@ -51,11 +56,12 @@ export interface GetInstancesResult {
     readonly id: string;
     readonly instances: outputs.cloudfirewall.GetInstancesInstance[];
     readonly outputFile?: string;
+    readonly paymentType?: string;
 }
 /**
  * This data source provides the Cloud Firewall Instances of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.139.0+.
+ * > **NOTE:** Available since v1.139.0.
  *
  * ## Example Usage
  *
@@ -74,6 +80,7 @@ export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cloudfirewall/getInstances:getInstances", {
         "outputFile": args.outputFile,
+        "paymentType": args.paymentType,
     }, opts);
 }
 
@@ -85,4 +92,8 @@ export interface GetInstancesOutputArgs {
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: pulumi.Input<string>;
+    /**
+     * The payment type of the cloud firewall instance. Valid values: `PayAsYouGo`,`Subscription`.
+     */
+    paymentType?: pulumi.Input<string>;
 }

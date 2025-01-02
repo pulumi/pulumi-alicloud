@@ -56,11 +56,17 @@ class GetAggregateDeliveriesResult:
     @property
     @pulumi.getter(name="aggregatorId")
     def aggregator_id(self) -> str:
+        """
+        The ID of the Aggregator.
+        """
         return pulumi.get(self, "aggregator_id")
 
     @property
     @pulumi.getter
     def deliveries(self) -> Sequence['outputs.GetAggregateDeliveriesDeliveryResult']:
+        """
+        A list of Config Aggregate Deliveries. Each element contains the following attributes:
+        """
         return pulumi.get(self, "deliveries")
 
     @property
@@ -84,6 +90,9 @@ class GetAggregateDeliveriesResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Aggregate Delivery names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -94,6 +103,9 @@ class GetAggregateDeliveriesResult:
     @property
     @pulumi.getter
     def status(self) -> Optional[int]:
+        """
+        The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
+        """
         return pulumi.get(self, "status")
 
 
@@ -122,7 +134,7 @@ def get_aggregate_deliveries(aggregator_id: Optional[str] = None,
     """
     This data source provides the Config Aggregate Deliveries of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.172.0+.
+    > **NOTE:** Available since v1.172.0.
 
     ## Example Usage
 
@@ -143,6 +155,7 @@ def get_aggregate_deliveries(aggregator_id: Optional[str] = None,
 
     :param str aggregator_id: The ID of the Aggregator.
     :param Sequence[str] ids: A list of Aggregate Delivery IDs.
+    :param str name_regex: A regex string to filter results by Aggregate Delivery name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param int status: The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
     """
@@ -173,7 +186,7 @@ def get_aggregate_deliveries_output(aggregator_id: Optional[pulumi.Input[str]] =
     """
     This data source provides the Config Aggregate Deliveries of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.172.0+.
+    > **NOTE:** Available since v1.172.0.
 
     ## Example Usage
 
@@ -194,6 +207,7 @@ def get_aggregate_deliveries_output(aggregator_id: Optional[pulumi.Input[str]] =
 
     :param str aggregator_id: The ID of the Aggregator.
     :param Sequence[str] ids: A list of Aggregate Delivery IDs.
+    :param str name_regex: A regex string to filter results by Aggregate Delivery name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param int status: The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
     """

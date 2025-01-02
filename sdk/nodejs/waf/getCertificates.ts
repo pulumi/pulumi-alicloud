@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Waf Certificates of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.135.0+.
+ * > **NOTE:** Available since v1.135.0.
  *
  * ## Example Usage
  *
@@ -68,22 +68,34 @@ export interface GetCertificatesArgs {
  * A collection of values returned by getCertificates.
  */
 export interface GetCertificatesResult {
+    /**
+     * A list of Waf Certificates. Each element contains the following attributes:
+     */
     readonly certificates: outputs.waf.GetCertificatesCertificate[];
+    /**
+     * The domain that you want to add to WAF.
+     */
     readonly domain?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * WAF instance ID.
+     */
     readonly instanceId: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Certificate names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
 }
 /**
  * This data source provides the Waf Certificates of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.135.0+.
+ * > **NOTE:** Available since v1.135.0.
  *
  * ## Example Usage
  *

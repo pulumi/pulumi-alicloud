@@ -58,6 +58,9 @@ class GetVpcEndpointServiceUsersResult:
     @property
     @pulumi.getter
     def ids(self) -> Sequence[str]:
+        """
+        A list of Vpc Endpoint Service User IDs.
+        """
         return pulumi.get(self, "ids")
 
     @property
@@ -73,11 +76,17 @@ class GetVpcEndpointServiceUsersResult:
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[str]:
+        """
+        The Id of Ram User.
+        """
         return pulumi.get(self, "user_id")
 
     @property
     @pulumi.getter
     def users(self) -> Sequence['outputs.GetVpcEndpointServiceUsersUserResult']:
+        """
+        A list of Privatelink Vpc Endpoint Service Users. Each element contains the following attributes:
+        """
         return pulumi.get(self, "users")
 
 
@@ -102,7 +111,7 @@ def get_vpc_endpoint_service_users(output_file: Optional[str] = None,
     """
     This data source provides the Privatelink Vpc Endpoint Service Users of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.110.0+.
+    > **NOTE:** Available since v1.110.0.
 
     ## Example Usage
 
@@ -142,7 +151,7 @@ def get_vpc_endpoint_service_users_output(output_file: Optional[pulumi.Input[Opt
     """
     This data source provides the Privatelink Vpc Endpoint Service Users of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.110.0+.
+    > **NOTE:** Available since v1.110.0.
 
     ## Example Usage
 

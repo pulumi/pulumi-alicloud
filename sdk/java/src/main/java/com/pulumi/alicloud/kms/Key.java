@@ -145,6 +145,34 @@ public class Key extends com.pulumi.resources.CustomResource {
         return this.deleteDate;
     }
     /**
+     * Specifies whether to enable deletion protection. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
+     * 
+     */
+    @Export(name="deletionProtection", refs={String.class}, tree="[0]")
+    private Output<String> deletionProtection;
+
+    /**
+     * @return Specifies whether to enable deletion protection. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
+     * 
+     */
+    public Output<String> deletionProtection() {
+        return this.deletionProtection;
+    }
+    /**
+     * The description of deletion protection. **NOTE:** `deletion_protection_description` takes effect only if `deletion_protection` is set to `Enabled`.
+     * 
+     */
+    @Export(name="deletionProtectionDescription", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> deletionProtectionDescription;
+
+    /**
+     * @return The description of deletion protection. **NOTE:** `deletion_protection_description` takes effect only if `deletion_protection` is set to `Enabled`.
+     * 
+     */
+    public Output<Optional<String>> deletionProtectionDescription() {
+        return Codegen.optional(this.deletionProtectionDescription);
+    }
+    /**
      * Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
      * 
      * @deprecated
@@ -327,16 +355,14 @@ public class Key extends com.pulumi.resources.CustomResource {
         return this.origin;
     }
     /**
-     * The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`.
-     * **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
+     * The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
      * 
      */
     @Export(name="pendingWindowInDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> pendingWindowInDays;
 
     /**
-     * @return The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`.
-     * **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
+     * @return The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
      * 
      */
     public Output<Optional<Integer>> pendingWindowInDays() {
@@ -385,16 +411,14 @@ public class Key extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.protectionLevel);
     }
     /**
-     * The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval.
-     * **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
+     * The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
      * 
      */
     @Export(name="rotationInterval", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> rotationInterval;
 
     /**
-     * @return The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval.
-     * **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
+     * @return The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
      * 
      */
     public Output<Optional<String>> rotationInterval() {

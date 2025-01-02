@@ -15,49 +15,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Schedulerx Namespace resource.
- * 
- * For information about Schedulerx Namespace and how to use it, see [What is Namespace](https://help.aliyun.com/document_detail/206088.html).
- * 
- * &gt; **NOTE:** Available in v1.173.0+.
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.schedulerx.Namespace;
- * import com.pulumi.alicloud.schedulerx.NamespaceArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new Namespace("example", NamespaceArgs.builder()
- *             .namespaceName("example_value")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * Schedulerx Namespace can be imported using the id, e.g.
@@ -70,32 +27,46 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:schedulerx/namespace:Namespace")
 public class Namespace extends com.pulumi.resources.CustomResource {
     /**
-     * The description of the resource.
+     * Namespace description.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the resource.
+     * @return Namespace description.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The name of the resource.
+     * Namespace name.
      * 
      */
     @Export(name="namespaceName", refs={String.class}, tree="[0]")
     private Output<String> namespaceName;
 
     /**
-     * @return The name of the resource.
+     * @return Namespace name.
      * 
      */
     public Output<String> namespaceName() {
         return this.namespaceName;
+    }
+    /**
+     * Namespace uid.
+     * 
+     */
+    @Export(name="namespaceUid", refs={String.class}, tree="[0]")
+    private Output<String> namespaceUid;
+
+    /**
+     * @return Namespace uid.
+     * 
+     */
+    public Output<String> namespaceUid() {
+        return this.namespaceUid;
     }
 
     /**

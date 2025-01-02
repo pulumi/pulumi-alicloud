@@ -48,14 +48,14 @@ public final class ScheduledTaskState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
+     * The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 1800, Available since v1.240.0. Default value: 600
      * 
      */
     @Import(name="launchExpirationTime")
     private @Nullable Output<Integer> launchExpirationTime;
 
     /**
-     * @return The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
+     * @return The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 1800, Available since v1.240.0. Default value: 600
      * 
      */
     public Optional<Output<Integer>> launchExpirationTime() {
@@ -315,7 +315,7 @@ public final class ScheduledTaskState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param launchExpirationTime The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
+         * @param launchExpirationTime The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 1800, Available since v1.240.0. Default value: 600
          * 
          * @return builder
          * 
@@ -326,7 +326,7 @@ public final class ScheduledTaskState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param launchExpirationTime The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
+         * @param launchExpirationTime The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 1800, Available since v1.240.0. Default value: 600
          * 
          * @return builder
          * 

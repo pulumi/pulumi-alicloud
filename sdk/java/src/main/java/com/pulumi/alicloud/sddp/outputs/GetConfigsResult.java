@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetConfigsResult {
+    /**
+     * @return A list of Sddp Configs. Each element contains the following attributes:
+     * 
+     */
     private List<GetConfigsConfig> configs;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -25,6 +29,10 @@ public final class GetConfigsResult {
     private @Nullable String outputFile;
 
     private GetConfigsResult() {}
+    /**
+     * @return A list of Sddp Configs. Each element contains the following attributes:
+     * 
+     */
     public List<GetConfigsConfig> configs() {
         return this.configs;
     }

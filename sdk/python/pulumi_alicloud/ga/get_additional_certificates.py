@@ -50,11 +50,17 @@ class GetAdditionalCertificatesResult:
     @property
     @pulumi.getter(name="acceleratorId")
     def accelerator_id(self) -> str:
+        """
+        The ID of the GA instance.
+        """
         return pulumi.get(self, "accelerator_id")
 
     @property
     @pulumi.getter
     def certificates(self) -> Sequence['outputs.GetAdditionalCertificatesCertificateResult']:
+        """
+        A list of Ga Additional Certificates. Each element contains the following attributes:
+        """
         return pulumi.get(self, "certificates")
 
     @property
@@ -73,6 +79,9 @@ class GetAdditionalCertificatesResult:
     @property
     @pulumi.getter(name="listenerId")
     def listener_id(self) -> str:
+        """
+        The ID of the listener. Only HTTPS listeners support this parameter.
+        """
         return pulumi.get(self, "listener_id")
 
     @property
@@ -103,7 +112,7 @@ def get_additional_certificates(accelerator_id: Optional[str] = None,
     """
     This data source provides the Ga Additional Certificates of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.150.0+.
+    > **NOTE:** Available since v1.150.0.
 
     ## Example Usage
 
@@ -151,7 +160,7 @@ def get_additional_certificates_output(accelerator_id: Optional[pulumi.Input[str
     """
     This data source provides the Ga Additional Certificates of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.150.0+.
+    > **NOTE:** Available since v1.150.0.
 
     ## Example Usage
 

@@ -107,6 +107,10 @@ export class DBCluster extends pulumi.CustomResource {
      */
     public readonly enableSsl!: pulumi.Output<boolean | undefined>;
     /**
+     * The minor version to which you want to update.
+     */
+    public readonly kernelVersion!: pulumi.Output<string>;
+    /**
      * The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
      */
     public readonly kmsId!: pulumi.Output<string | undefined>;
@@ -158,6 +162,10 @@ export class DBCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
+     * The time when to perform the update. Valid values:
+     */
+    public readonly switchMode!: pulumi.Output<number | undefined>;
+    /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -206,6 +214,7 @@ export class DBCluster extends pulumi.CustomResource {
             resourceInputs["elasticIoResource"] = state ? state.elasticIoResource : undefined;
             resourceInputs["elasticIoResourceSize"] = state ? state.elasticIoResourceSize : undefined;
             resourceInputs["enableSsl"] = state ? state.enableSsl : undefined;
+            resourceInputs["kernelVersion"] = state ? state.kernelVersion : undefined;
             resourceInputs["kmsId"] = state ? state.kmsId : undefined;
             resourceInputs["maintainTime"] = state ? state.maintainTime : undefined;
             resourceInputs["mode"] = state ? state.mode : undefined;
@@ -218,6 +227,7 @@ export class DBCluster extends pulumi.CustomResource {
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["securityIps"] = state ? state.securityIps : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["switchMode"] = state ? state.switchMode : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["vpcId"] = state ? state.vpcId : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
@@ -244,6 +254,7 @@ export class DBCluster extends pulumi.CustomResource {
             resourceInputs["elasticIoResource"] = args ? args.elasticIoResource : undefined;
             resourceInputs["elasticIoResourceSize"] = args ? args.elasticIoResourceSize : undefined;
             resourceInputs["enableSsl"] = args ? args.enableSsl : undefined;
+            resourceInputs["kernelVersion"] = args ? args.kernelVersion : undefined;
             resourceInputs["kmsId"] = args ? args.kmsId : undefined;
             resourceInputs["maintainTime"] = args ? args.maintainTime : undefined;
             resourceInputs["mode"] = args ? args.mode : undefined;
@@ -254,6 +265,7 @@ export class DBCluster extends pulumi.CustomResource {
             resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["securityIps"] = args ? args.securityIps : undefined;
+            resourceInputs["switchMode"] = args ? args.switchMode : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
@@ -337,6 +349,10 @@ export interface DBClusterState {
      */
     enableSsl?: pulumi.Input<boolean>;
     /**
+     * The minor version to which you want to update.
+     */
+    kernelVersion?: pulumi.Input<string>;
+    /**
      * The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
      */
     kmsId?: pulumi.Input<string>;
@@ -387,6 +403,10 @@ export interface DBClusterState {
      * The status of the resource.
      */
     status?: pulumi.Input<string>;
+    /**
+     * The time when to perform the update. Valid values:
+     */
+    switchMode?: pulumi.Input<number>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -475,6 +495,10 @@ export interface DBClusterArgs {
      */
     enableSsl?: pulumi.Input<boolean>;
     /**
+     * The minor version to which you want to update.
+     */
+    kernelVersion?: pulumi.Input<string>;
+    /**
      * The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
      */
     kmsId?: pulumi.Input<string>;
@@ -517,6 +541,10 @@ export interface DBClusterArgs {
      * List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
     securityIps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The time when to perform the update. Valid values:
+     */
+    switchMode?: pulumi.Input<number>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Wafv3
         /// <summary>
         /// This data source provides Wafv3 Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/web-application-firewall/latest/what-is-waf)
         /// 
-        /// &gt; **NOTE:** Available in 1.200.0+
+        /// &gt; **NOTE:** Available since v1.200.0.
         /// 
         /// ## Example Usage
         /// 
@@ -41,7 +41,7 @@ namespace Pulumi.AliCloud.Wafv3
         /// <summary>
         /// This data source provides Wafv3 Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/web-application-firewall/latest/what-is-waf)
         /// 
-        /// &gt; **NOTE:** Available in 1.200.0+
+        /// &gt; **NOTE:** Available since v1.200.0.
         /// 
         /// ## Example Usage
         /// 
@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.Wafv3
         /// <summary>
         /// This data source provides Wafv3 Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/web-application-firewall/latest/what-is-waf)
         /// 
-        /// &gt; **NOTE:** Available in 1.200.0+
+        /// &gt; **NOTE:** Available since v1.200.0.
         /// 
         /// ## Example Usage
         /// 
@@ -96,6 +96,18 @@ namespace Pulumi.AliCloud.Wafv3
 
     public sealed class GetInstancesArgs : global::Pulumi.InvokeArgs
     {
+        [Input("ids")]
+        private List<string>? _ids;
+
+        /// <summary>
+        /// A list of WAF v3 instance IDs.
+        /// </summary>
+        public List<string> Ids
+        {
+            get => _ids ?? (_ids = new List<string>());
+            set => _ids = value;
+        }
+
         /// <summary>
         /// File name where to save data source results (after running `pulumi preview`).
         /// </summary>
@@ -110,6 +122,18 @@ namespace Pulumi.AliCloud.Wafv3
 
     public sealed class GetInstancesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of WAF v3 instance IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
         /// <summary>
         /// File name where to save data source results (after running `pulumi preview`).
         /// </summary>

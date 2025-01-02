@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Sddp Data Limits of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.159.0+.
+// > **NOTE:** Available since v1.159.0.
 //
 // ## Example Usage
 //
@@ -66,12 +66,15 @@ type GetDataLimitsArgs struct {
 // A collection of values returned by getDataLimits.
 type GetDataLimitsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id           string               `pulumi:"id"`
-	Ids          []string             `pulumi:"ids"`
-	Limits       []GetDataLimitsLimit `pulumi:"limits"`
-	OutputFile   *string              `pulumi:"outputFile"`
-	ParentId     *string              `pulumi:"parentId"`
-	ResourceType *string              `pulumi:"resourceType"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// A list of Sddp Data Limits. Each element contains the following attributes:
+	Limits     []GetDataLimitsLimit `pulumi:"limits"`
+	OutputFile *string              `pulumi:"outputFile"`
+	// The ID of the data asset.
+	ParentId *string `pulumi:"parentId"`
+	// The type of the service to which the data asset belongs.
+	ResourceType *string `pulumi:"resourceType"`
 }
 
 func GetDataLimitsOutput(ctx *pulumi.Context, args GetDataLimitsOutputArgs, opts ...pulumi.InvokeOption) GetDataLimitsResultOutput {
@@ -123,6 +126,7 @@ func (o GetDataLimitsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDataLimitsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// A list of Sddp Data Limits. Each element contains the following attributes:
 func (o GetDataLimitsResultOutput) Limits() GetDataLimitsLimitArrayOutput {
 	return o.ApplyT(func(v GetDataLimitsResult) []GetDataLimitsLimit { return v.Limits }).(GetDataLimitsLimitArrayOutput)
 }
@@ -131,10 +135,12 @@ func (o GetDataLimitsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDataLimitsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the data asset.
 func (o GetDataLimitsResultOutput) ParentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDataLimitsResult) *string { return v.ParentId }).(pulumi.StringPtrOutput)
 }
 
+// The type of the service to which the data asset belongs.
 func (o GetDataLimitsResultOutput) ResourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDataLimitsResult) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
 }

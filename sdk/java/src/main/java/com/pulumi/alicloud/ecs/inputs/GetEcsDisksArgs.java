@@ -134,14 +134,14 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The disk type.
+     * The disk type. Valid values: `system`, `data`, `all`.
      * 
      */
     @Import(name="diskType")
     private @Nullable Output<String> diskType;
 
     /**
-     * @return The disk type.
+     * @return The disk type. Valid values: `system`, `data`, `all`.
      * 
      */
     public Optional<Output<String>> diskType() {
@@ -209,14 +209,14 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
+     * Indicate whether the disk is encrypted or not. Valid values: `on` and `off`.
      * 
      */
     @Import(name="encrypted")
     private @Nullable Output<String> encrypted;
 
     /**
-     * @return Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
+     * @return Indicate whether the disk is encrypted or not. Valid values: `on` and `off`.
      * 
      */
     public Optional<Output<String>> encrypted() {
@@ -283,9 +283,17 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.nameRegex);
     }
 
+    /**
+     * The reasons why the disk was locked. See `operation_locks` below for details.
+     * 
+     */
     @Import(name="operationLocks")
     private @Nullable Output<List<GetEcsDisksOperationLockArgs>> operationLocks;
 
+    /**
+     * @return The reasons why the disk was locked. See `operation_locks` below for details.
+     * 
+     */
     public Optional<Output<List<GetEcsDisksOperationLockArgs>>> operationLocks() {
         return Optional.ofNullable(this.operationLocks);
     }
@@ -380,14 +388,14 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The status of disk.
+     * The status of disk. Valid Values: `Attaching`, `Available`, `Creating`, `Detaching`, `In_use`, `Migrating`, `ReIniting`, `Transferring`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of disk.
+     * @return The status of disk. Valid Values: `Attaching`, `Available`, `Creating`, `Detaching`, `In_use`, `Migrating`, `ReIniting`, `Transferring`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -665,7 +673,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param diskType The disk type.
+         * @param diskType The disk type. Valid values: `system`, `data`, `all`.
          * 
          * @return builder
          * 
@@ -676,7 +684,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param diskType The disk type.
+         * @param diskType The disk type. Valid values: `system`, `data`, `all`.
          * 
          * @return builder
          * 
@@ -770,7 +778,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param encrypted Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
+         * @param encrypted Indicate whether the disk is encrypted or not. Valid values: `on` and `off`.
          * 
          * @return builder
          * 
@@ -781,7 +789,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param encrypted Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
+         * @param encrypted Indicate whether the disk is encrypted or not. Valid values: `on` and `off`.
          * 
          * @return builder
          * 
@@ -884,15 +892,33 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
             return nameRegex(Output.of(nameRegex));
         }
 
+        /**
+         * @param operationLocks The reasons why the disk was locked. See `operation_locks` below for details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder operationLocks(@Nullable Output<List<GetEcsDisksOperationLockArgs>> operationLocks) {
             $.operationLocks = operationLocks;
             return this;
         }
 
+        /**
+         * @param operationLocks The reasons why the disk was locked. See `operation_locks` below for details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder operationLocks(List<GetEcsDisksOperationLockArgs> operationLocks) {
             return operationLocks(Output.of(operationLocks));
         }
 
+        /**
+         * @param operationLocks The reasons why the disk was locked. See `operation_locks` below for details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder operationLocks(GetEcsDisksOperationLockArgs... operationLocks) {
             return operationLocks(List.of(operationLocks));
         }
@@ -1021,7 +1047,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of disk.
+         * @param status The status of disk. Valid Values: `Attaching`, `Available`, `Creating`, `Detaching`, `In_use`, `Migrating`, `ReIniting`, `Transferring`.
          * 
          * @return builder
          * 
@@ -1032,7 +1058,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of disk.
+         * @param status The status of disk. Valid Values: `Attaching`, `Available`, `Creating`, `Detaching`, `In_use`, `Migrating`, `ReIniting`, `Transferring`.
          * 
          * @return builder
          * 

@@ -123,6 +123,7 @@ type Cluster struct {
 	ElasticIoResource     pulumi.IntOutput       `pulumi:"elasticIoResource"`
 	ElasticIoResourceSize pulumi.StringOutput    `pulumi:"elasticIoResourceSize"`
 	EnableSsl             pulumi.BoolPtrOutput   `pulumi:"enableSsl"`
+	KernelVersion         pulumi.StringOutput    `pulumi:"kernelVersion"`
 	KmsId                 pulumi.StringPtrOutput `pulumi:"kmsId"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime pulumi.StringOutput    `pulumi:"maintainTime"`
@@ -144,6 +145,7 @@ type Cluster struct {
 	// List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIps pulumi.StringArrayOutput `pulumi:"securityIps"`
 	Status      pulumi.StringOutput      `pulumi:"status"`
+	SwitchMode  pulumi.IntPtrOutput      `pulumi:"switchMode"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -217,6 +219,7 @@ type clusterState struct {
 	ElasticIoResource     *int    `pulumi:"elasticIoResource"`
 	ElasticIoResourceSize *string `pulumi:"elasticIoResourceSize"`
 	EnableSsl             *bool   `pulumi:"enableSsl"`
+	KernelVersion         *string `pulumi:"kernelVersion"`
 	KmsId                 *string `pulumi:"kmsId"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime *string `pulumi:"maintainTime"`
@@ -238,6 +241,7 @@ type clusterState struct {
 	// List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIps []string `pulumi:"securityIps"`
 	Status      *string  `pulumi:"status"`
+	SwitchMode  *int     `pulumi:"switchMode"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -276,6 +280,7 @@ type ClusterState struct {
 	ElasticIoResource     pulumi.IntPtrInput
 	ElasticIoResourceSize pulumi.StringPtrInput
 	EnableSsl             pulumi.BoolPtrInput
+	KernelVersion         pulumi.StringPtrInput
 	KmsId                 pulumi.StringPtrInput
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime pulumi.StringPtrInput
@@ -297,6 +302,7 @@ type ClusterState struct {
 	// List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIps pulumi.StringArrayInput
 	Status      pulumi.StringPtrInput
+	SwitchMode  pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -337,6 +343,7 @@ type clusterArgs struct {
 	ElasticIoResource     *int    `pulumi:"elasticIoResource"`
 	ElasticIoResourceSize *string `pulumi:"elasticIoResourceSize"`
 	EnableSsl             *bool   `pulumi:"enableSsl"`
+	KernelVersion         *string `pulumi:"kernelVersion"`
 	KmsId                 *string `pulumi:"kmsId"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime *string `pulumi:"maintainTime"`
@@ -355,6 +362,7 @@ type clusterArgs struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIps []string `pulumi:"securityIps"`
+	SwitchMode  *int     `pulumi:"switchMode"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -392,6 +400,7 @@ type ClusterArgs struct {
 	ElasticIoResource     pulumi.IntPtrInput
 	ElasticIoResourceSize pulumi.StringPtrInput
 	EnableSsl             pulumi.BoolPtrInput
+	KernelVersion         pulumi.StringPtrInput
 	KmsId                 pulumi.StringPtrInput
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime pulumi.StringPtrInput
@@ -410,6 +419,7 @@ type ClusterArgs struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIps pulumi.StringArrayInput
+	SwitchMode  pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -579,6 +589,10 @@ func (o ClusterOutput) EnableSsl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.EnableSsl }).(pulumi.BoolPtrOutput)
 }
 
+func (o ClusterOutput) KernelVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.KernelVersion }).(pulumi.StringOutput)
+}
+
 func (o ClusterOutput) KmsId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.KmsId }).(pulumi.StringPtrOutput)
 }
@@ -634,6 +648,10 @@ func (o ClusterOutput) SecurityIps() pulumi.StringArrayOutput {
 
 func (o ClusterOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o ClusterOutput) SwitchMode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.SwitchMode }).(pulumi.IntPtrOutput)
 }
 
 // A mapping of tags to assign to the resource.

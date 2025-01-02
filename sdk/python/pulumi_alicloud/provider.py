@@ -22,6 +22,7 @@ class ProviderArgs:
     def __init__(__self__, *,
                  access_key: Optional[pulumi.Input[str]] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
+                 account_type: Optional[pulumi.Input[str]] = None,
                  assume_role: Optional[pulumi.Input['ProviderAssumeRoleArgs']] = None,
                  assume_role_with_oidc: Optional[pulumi.Input['ProviderAssumeRoleWithOidcArgs']] = None,
                  client_connect_timeout: Optional[pulumi.Input[int]] = None,
@@ -73,6 +74,8 @@ class ProviderArgs:
             pulumi.set(__self__, "access_key", access_key)
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if account_type is not None:
+            pulumi.set(__self__, "account_type", account_type)
         if assume_role is not None:
             pulumi.set(__self__, "assume_role", assume_role)
         if assume_role_with_oidc is not None:
@@ -165,6 +168,15 @@ class ProviderArgs:
     @account_id.setter
     def account_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter(name="accountType")
+    def account_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "account_type")
+
+    @account_type.setter
+    def account_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_type", value)
 
     @property
     @pulumi.getter(name="assumeRole")
@@ -436,6 +448,7 @@ class Provider(pulumi.ProviderResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_key: Optional[pulumi.Input[str]] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
+                 account_type: Optional[pulumi.Input[str]] = None,
                  assume_role: Optional[pulumi.Input[Union['ProviderAssumeRoleArgs', 'ProviderAssumeRoleArgsDict']]] = None,
                  assume_role_with_oidc: Optional[pulumi.Input[Union['ProviderAssumeRoleWithOidcArgs', 'ProviderAssumeRoleWithOidcArgsDict']]] = None,
                  client_connect_timeout: Optional[pulumi.Input[int]] = None,
@@ -519,6 +532,7 @@ class Provider(pulumi.ProviderResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_key: Optional[pulumi.Input[str]] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
+                 account_type: Optional[pulumi.Input[str]] = None,
                  assume_role: Optional[pulumi.Input[Union['ProviderAssumeRoleArgs', 'ProviderAssumeRoleArgsDict']]] = None,
                  assume_role_with_oidc: Optional[pulumi.Input[Union['ProviderAssumeRoleWithOidcArgs', 'ProviderAssumeRoleWithOidcArgsDict']]] = None,
                  client_connect_timeout: Optional[pulumi.Input[int]] = None,
@@ -554,6 +568,7 @@ class Provider(pulumi.ProviderResource):
 
             __props__.__dict__["access_key"] = access_key
             __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["account_type"] = account_type
             __props__.__dict__["assume_role"] = pulumi.Output.from_input(assume_role).apply(pulumi.runtime.to_json) if assume_role is not None else None
             __props__.__dict__["assume_role_with_oidc"] = pulumi.Output.from_input(assume_role_with_oidc).apply(pulumi.runtime.to_json) if assume_role_with_oidc is not None else None
             __props__.__dict__["client_connect_timeout"] = pulumi.Output.from_input(client_connect_timeout).apply(pulumi.runtime.to_json) if client_connect_timeout is not None else None
@@ -607,6 +622,11 @@ class Provider(pulumi.ProviderResource):
         Alibaba Cloud console.
         """
         return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="accountType")
+    def account_type(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "account_type")
 
     @property
     @pulumi.getter(name="configurationSource")

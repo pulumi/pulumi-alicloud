@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetForwardingRulesResult {
     private String acceleratorId;
+    /**
+     * @return A list of Ga Forwarding Rules. Each element contains the following attributes:
+     * 
+     */
     private List<GetForwardingRulesForwardingRule> forwardingRules;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,6 +26,10 @@ public final class GetForwardingRulesResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return The ID of the listener.
+     * 
+     */
     private String listenerId;
     private @Nullable String outputFile;
     private @Nullable String status;
@@ -30,6 +38,10 @@ public final class GetForwardingRulesResult {
     public String acceleratorId() {
         return this.acceleratorId;
     }
+    /**
+     * @return A list of Ga Forwarding Rules. Each element contains the following attributes:
+     * 
+     */
     public List<GetForwardingRulesForwardingRule> forwardingRules() {
         return this.forwardingRules;
     }
@@ -43,6 +55,10 @@ public final class GetForwardingRulesResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The ID of the listener.
+     * 
+     */
     public String listenerId() {
         return this.listenerId;
     }

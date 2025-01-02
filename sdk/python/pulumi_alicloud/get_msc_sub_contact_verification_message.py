@@ -83,7 +83,7 @@ def get_msc_sub_contact_verification_message(contact_id: Optional[str] = None,
                                              type: Optional[int] = None,
                                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMscSubContactVerificationMessageResult:
     """
-    > **NOTE:** Available in v1.156.0+.
+    > **NOTE:** Available since v1.156.0.
 
     ## Example Usage
 
@@ -121,7 +121,7 @@ def get_msc_sub_contact_verification_message_output(contact_id: Optional[pulumi.
                                                     type: Optional[pulumi.Input[int]] = None,
                                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMscSubContactVerificationMessageResult]:
     """
-    > **NOTE:** Available in v1.156.0+.
+    > **NOTE:** Available since v1.156.0.
 
     ## Example Usage
 

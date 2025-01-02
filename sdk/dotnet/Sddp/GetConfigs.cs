@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Sddp
         /// <summary>
         /// This data source provides the Sddp Configs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.133.0+.
+        /// &gt; **NOTE:** Available since v1.133.0.
         /// 
         /// ## Example Usage
         /// 
@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.Sddp
         /// <summary>
         /// This data source provides the Sddp Configs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.133.0+.
+        /// &gt; **NOTE:** Available since v1.133.0.
         /// 
         /// ## Example Usage
         /// 
@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.Sddp
         /// <summary>
         /// This data source provides the Sddp Configs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.133.0+.
+        /// &gt; **NOTE:** Available since v1.133.0.
         /// 
         /// ## Example Usage
         /// 
@@ -201,6 +201,9 @@ namespace Pulumi.AliCloud.Sddp
     [OutputType]
     public sealed class GetConfigsResult
     {
+        /// <summary>
+        /// A list of Sddp Configs. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetConfigsConfigResult> Configs;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

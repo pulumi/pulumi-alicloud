@@ -129,8 +129,6 @@ def get_delivery_channels(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:**  Available in 1.99.0+.
 
-    > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
-
     ## Example Usage
 
     ```python
@@ -176,8 +174,6 @@ def get_delivery_channels_output(ids: Optional[pulumi.Input[Optional[Sequence[st
     This data source provides the Config Delivery Channels of the current Alibaba Cloud user.
 
     > **NOTE:**  Available in 1.99.0+.
-
-    > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
 
     ## Example Usage
 

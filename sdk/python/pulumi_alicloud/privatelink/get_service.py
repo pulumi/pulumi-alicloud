@@ -77,7 +77,7 @@ def get_service(enable: Optional[str] = None,
 
     For information about Privatelink and how to use it, see [What is Privatelink](https://www.alibabacloud.com/help/en/product/120462.htm).
 
-    > **NOTE:** Available in v1.113.0+
+    > **NOTE:** Available since v1.113.0.
 
     ## Example Usage
 
@@ -109,7 +109,7 @@ def get_service_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
 
     For information about Privatelink and how to use it, see [What is Privatelink](https://www.alibabacloud.com/help/en/product/120462.htm).
 
-    > **NOTE:** Available in v1.113.0+
+    > **NOTE:** Available since v1.113.0.
 
     ## Example Usage
 

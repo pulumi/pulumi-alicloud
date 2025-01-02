@@ -14,7 +14,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAcceleratorSpareIpAttachmentsResult {
+    /**
+     * @return The ID of the global acceleration instance.
+     * 
+     */
     private String acceleratorId;
+    /**
+     * @return A list of Ga Accelerator Spare Ip Attachments. Each element contains the following attributes:
+     * 
+     */
     private List<GetAcceleratorSpareIpAttachmentsAttachment> attachments;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -23,12 +31,24 @@ public final class GetAcceleratorSpareIpAttachmentsResult {
     private String id;
     private List<String> ids;
     private @Nullable String outputFile;
+    /**
+     * @return The status of the standby CNAME IP address. Valid values: `active`, `inuse`.
+     * 
+     */
     private @Nullable String status;
 
     private GetAcceleratorSpareIpAttachmentsResult() {}
+    /**
+     * @return The ID of the global acceleration instance.
+     * 
+     */
     public String acceleratorId() {
         return this.acceleratorId;
     }
+    /**
+     * @return A list of Ga Accelerator Spare Ip Attachments. Each element contains the following attributes:
+     * 
+     */
     public List<GetAcceleratorSpareIpAttachmentsAttachment> attachments() {
         return this.attachments;
     }
@@ -45,6 +65,10 @@ public final class GetAcceleratorSpareIpAttachmentsResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of the standby CNAME IP address. Valid values: `active`, `inuse`.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

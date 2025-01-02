@@ -31,7 +31,7 @@ type ScheduledTask struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The expected number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group. **NOTE:** You must specify the `DesiredCapacity` parameter when you create the scaling group.
 	DesiredCapacity pulumi.IntPtrOutput `pulumi:"desiredCapacity"`
-	// The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
+	// The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 1800, Available since v1.240.0. Default value: 600
 	LaunchExpirationTime pulumi.IntPtrOutput `pulumi:"launchExpirationTime"`
 	// The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format.
 	// The time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.
@@ -101,7 +101,7 @@ type scheduledTaskState struct {
 	Description *string `pulumi:"description"`
 	// The expected number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group. **NOTE:** You must specify the `DesiredCapacity` parameter when you create the scaling group.
 	DesiredCapacity *int `pulumi:"desiredCapacity"`
-	// The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
+	// The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 1800, Available since v1.240.0. Default value: 600
 	LaunchExpirationTime *int `pulumi:"launchExpirationTime"`
 	// The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format.
 	// The time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.
@@ -142,7 +142,7 @@ type ScheduledTaskState struct {
 	Description pulumi.StringPtrInput
 	// The expected number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group. **NOTE:** You must specify the `DesiredCapacity` parameter when you create the scaling group.
 	DesiredCapacity pulumi.IntPtrInput
-	// The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
+	// The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 1800, Available since v1.240.0. Default value: 600
 	LaunchExpirationTime pulumi.IntPtrInput
 	// The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format.
 	// The time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.
@@ -187,7 +187,7 @@ type scheduledTaskArgs struct {
 	Description *string `pulumi:"description"`
 	// The expected number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group. **NOTE:** You must specify the `DesiredCapacity` parameter when you create the scaling group.
 	DesiredCapacity *int `pulumi:"desiredCapacity"`
-	// The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
+	// The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 1800, Available since v1.240.0. Default value: 600
 	LaunchExpirationTime *int `pulumi:"launchExpirationTime"`
 	// The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format.
 	// The time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.
@@ -229,7 +229,7 @@ type ScheduledTaskArgs struct {
 	Description pulumi.StringPtrInput
 	// The expected number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group. **NOTE:** You must specify the `DesiredCapacity` parameter when you create the scaling group.
 	DesiredCapacity pulumi.IntPtrInput
-	// The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
+	// The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 1800, Available since v1.240.0. Default value: 600
 	LaunchExpirationTime pulumi.IntPtrInput
 	// The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format.
 	// The time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.
@@ -362,7 +362,7 @@ func (o ScheduledTaskOutput) DesiredCapacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ScheduledTask) pulumi.IntPtrOutput { return v.DesiredCapacity }).(pulumi.IntPtrOutput)
 }
 
-// The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
+// The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 1800, Available since v1.240.0. Default value: 600
 func (o ScheduledTaskOutput) LaunchExpirationTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ScheduledTask) pulumi.IntPtrOutput { return v.LaunchExpirationTime }).(pulumi.IntPtrOutput)
 }

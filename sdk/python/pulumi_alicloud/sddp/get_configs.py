@@ -47,6 +47,9 @@ class GetConfigsResult:
     @property
     @pulumi.getter
     def configs(self) -> Sequence['outputs.GetConfigsConfigResult']:
+        """
+        A list of Sddp Configs. Each element contains the following attributes:
+        """
         return pulumi.get(self, "configs")
 
     @property
@@ -93,7 +96,7 @@ def get_configs(ids: Optional[Sequence[str]] = None,
     """
     This data source provides the Sddp Configs of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.133.0+.
+    > **NOTE:** Available since v1.133.0.
 
     ## Example Usage
 
@@ -135,7 +138,7 @@ def get_configs_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
     """
     This data source provides the Sddp Configs of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.133.0+.
+    > **NOTE:** Available since v1.133.0.
 
     ## Example Usage
 

@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetWafDomainsResult {
+    /**
+     * @return A list of Dcdn Waf Domains. Each element contains the following attributes:
+     * 
+     */
     private List<GetWafDomainsDomain> domains;
     private @Nullable Boolean enableDetails;
     /**
@@ -27,6 +31,10 @@ public final class GetWafDomainsResult {
     private @Nullable String queryArgs;
 
     private GetWafDomainsResult() {}
+    /**
+     * @return A list of Dcdn Waf Domains. Each element contains the following attributes:
+     * 
+     */
     public List<GetWafDomainsDomain> domains() {
         return this.domains;
     }

@@ -99,9 +99,13 @@ public final class GetAggregateConfigRulesRule {
      * 
      */
     private String resourceGroupIdsScope;
+    /**
+     * @return The types of resources evaluated by the rule.
+     * 
+     */
     private List<String> resourceTypesScopes;
     /**
-     * @return Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
+     * @return The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
      * 
      */
     private Integer riskLevel;
@@ -251,11 +255,15 @@ public final class GetAggregateConfigRulesRule {
     public String resourceGroupIdsScope() {
         return this.resourceGroupIdsScope;
     }
+    /**
+     * @return The types of resources evaluated by the rule.
+     * 
+     */
     public List<String> resourceTypesScopes() {
         return this.resourceTypesScopes;
     }
     /**
-     * @return Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
+     * @return The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
      * 
      */
     public Integer riskLevel() {

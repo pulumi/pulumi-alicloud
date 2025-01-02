@@ -14,7 +14,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAdditionalCertificatesResult {
+    /**
+     * @return The ID of the GA instance.
+     * 
+     */
     private String acceleratorId;
+    /**
+     * @return A list of Ga Additional Certificates. Each element contains the following attributes:
+     * 
+     */
     private List<GetAdditionalCertificatesCertificate> certificates;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,13 +30,25 @@ public final class GetAdditionalCertificatesResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return The ID of the listener. Only HTTPS listeners support this parameter.
+     * 
+     */
     private String listenerId;
     private @Nullable String outputFile;
 
     private GetAdditionalCertificatesResult() {}
+    /**
+     * @return The ID of the GA instance.
+     * 
+     */
     public String acceleratorId() {
         return this.acceleratorId;
     }
+    /**
+     * @return A list of Ga Additional Certificates. Each element contains the following attributes:
+     * 
+     */
     public List<GetAdditionalCertificatesCertificate> certificates() {
         return this.certificates;
     }
@@ -42,6 +62,10 @@ public final class GetAdditionalCertificatesResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The ID of the listener. Only HTTPS listeners support this parameter.
+     * 
+     */
     public String listenerId() {
         return this.listenerId;
     }

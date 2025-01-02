@@ -27,7 +27,7 @@ public final class SddpFunctions {
     /**
      * This data source provides the Sddp Configs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.133.0+.
+     * &gt; **NOTE:** Available since v1.133.0.
      * 
      * ## Example Usage
      * 
@@ -82,7 +82,7 @@ public final class SddpFunctions {
     /**
      * This data source provides the Sddp Configs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.133.0+.
+     * &gt; **NOTE:** Available since v1.133.0.
      * 
      * ## Example Usage
      * 
@@ -137,7 +137,7 @@ public final class SddpFunctions {
     /**
      * This data source provides the Sddp Configs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.133.0+.
+     * &gt; **NOTE:** Available since v1.133.0.
      * 
      * ## Example Usage
      * 
@@ -192,7 +192,7 @@ public final class SddpFunctions {
     /**
      * This data source provides the Sddp Configs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.133.0+.
+     * &gt; **NOTE:** Available since v1.133.0.
      * 
      * ## Example Usage
      * 
@@ -247,7 +247,7 @@ public final class SddpFunctions {
     /**
      * This data source provides the Sddp Configs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.133.0+.
+     * &gt; **NOTE:** Available since v1.133.0.
      * 
      * ## Example Usage
      * 
@@ -302,7 +302,7 @@ public final class SddpFunctions {
     /**
      * This data source provides the Sddp Configs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.133.0+.
+     * &gt; **NOTE:** Available since v1.133.0.
      * 
      * ## Example Usage
      * 
@@ -357,7 +357,7 @@ public final class SddpFunctions {
     /**
      * This data source provides the Sddp Configs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.133.0+.
+     * &gt; **NOTE:** Available since v1.133.0.
      * 
      * ## Example Usage
      * 
@@ -412,7 +412,7 @@ public final class SddpFunctions {
     /**
      * This data source provides the Sddp Data Limits of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.159.0+.
+     * &gt; **NOTE:** Available since v1.159.0.
      * 
      * ## Example Usage
      * 
@@ -457,7 +457,7 @@ public final class SddpFunctions {
     /**
      * This data source provides the Sddp Data Limits of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.159.0+.
+     * &gt; **NOTE:** Available since v1.159.0.
      * 
      * ## Example Usage
      * 
@@ -502,7 +502,7 @@ public final class SddpFunctions {
     /**
      * This data source provides the Sddp Data Limits of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.159.0+.
+     * &gt; **NOTE:** Available since v1.159.0.
      * 
      * ## Example Usage
      * 
@@ -547,7 +547,7 @@ public final class SddpFunctions {
     /**
      * This data source provides the Sddp Data Limits of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.159.0+.
+     * &gt; **NOTE:** Available since v1.159.0.
      * 
      * ## Example Usage
      * 
@@ -592,7 +592,7 @@ public final class SddpFunctions {
     /**
      * This data source provides the Sddp Data Limits of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.159.0+.
+     * &gt; **NOTE:** Available since v1.159.0.
      * 
      * ## Example Usage
      * 
@@ -637,7 +637,7 @@ public final class SddpFunctions {
     /**
      * This data source provides the Sddp Data Limits of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.159.0+.
+     * &gt; **NOTE:** Available since v1.159.0.
      * 
      * ## Example Usage
      * 
@@ -682,7 +682,7 @@ public final class SddpFunctions {
     /**
      * This data source provides the Sddp Data Limits of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.159.0+.
+     * &gt; **NOTE:** Available since v1.159.0.
      * 
      * ## Example Usage
      * 
@@ -727,7 +727,7 @@ public final class SddpFunctions {
     /**
      * This data source provides the Sddp Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0.
      * 
      * ## Example Usage
      * 
@@ -772,7 +772,7 @@ public final class SddpFunctions {
     /**
      * This data source provides the Sddp Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0.
      * 
      * ## Example Usage
      * 
@@ -817,7 +817,7 @@ public final class SddpFunctions {
     /**
      * This data source provides the Sddp Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0.
      * 
      * ## Example Usage
      * 
@@ -862,7 +862,7 @@ public final class SddpFunctions {
     /**
      * This data source provides the Sddp Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0.
      * 
      * ## Example Usage
      * 
@@ -907,7 +907,7 @@ public final class SddpFunctions {
     /**
      * This data source provides the Sddp Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0.
      * 
      * ## Example Usage
      * 
@@ -952,7 +952,7 @@ public final class SddpFunctions {
     /**
      * This data source provides the Sddp Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0.
      * 
      * ## Example Usage
      * 
@@ -997,7 +997,7 @@ public final class SddpFunctions {
     /**
      * This data source provides the Sddp Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0.
      * 
      * ## Example Usage
      * 
@@ -1042,7 +1042,7 @@ public final class SddpFunctions {
     /**
      * This data source provides the Sddp Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -1099,7 +1099,7 @@ public final class SddpFunctions {
     /**
      * This data source provides the Sddp Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -1156,7 +1156,7 @@ public final class SddpFunctions {
     /**
      * This data source provides the Sddp Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -1213,7 +1213,7 @@ public final class SddpFunctions {
     /**
      * This data source provides the Sddp Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -1270,7 +1270,7 @@ public final class SddpFunctions {
     /**
      * This data source provides the Sddp Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -1327,7 +1327,7 @@ public final class SddpFunctions {
     /**
      * This data source provides the Sddp Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -1384,7 +1384,7 @@ public final class SddpFunctions {
     /**
      * This data source provides the Sddp Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 

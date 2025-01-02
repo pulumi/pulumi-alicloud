@@ -48,9 +48,17 @@ public final class GetAggregateDeliveriesArgs extends com.pulumi.resources.Invok
         return Optional.ofNullable(this.ids);
     }
 
+    /**
+     * A regex string to filter results by Aggregate Delivery name.
+     * 
+     */
     @Import(name="nameRegex")
     private @Nullable Output<String> nameRegex;
 
+    /**
+     * @return A regex string to filter results by Aggregate Delivery name.
+     * 
+     */
     public Optional<Output<String>> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
@@ -165,11 +173,23 @@ public final class GetAggregateDeliveriesArgs extends com.pulumi.resources.Invok
             return ids(List.of(ids));
         }
 
+        /**
+         * @param nameRegex A regex string to filter results by Aggregate Delivery name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameRegex(@Nullable Output<String> nameRegex) {
             $.nameRegex = nameRegex;
             return this;
         }
 
+        /**
+         * @param nameRegex A regex string to filter results by Aggregate Delivery name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameRegex(String nameRegex) {
             return nameRegex(Output.of(nameRegex));
         }

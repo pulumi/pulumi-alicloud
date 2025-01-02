@@ -21,7 +21,7 @@ public final class GetEcsDisksDiskMountInstance {
      */
     private String device;
     /**
-     * @return The instance ID of the disk mount.
+     * @return Filter the results by the specified ECS instance ID.
      * 
      */
     private String instanceId;
@@ -42,7 +42,7 @@ public final class GetEcsDisksDiskMountInstance {
         return this.device;
     }
     /**
-     * @return The instance ID of the disk mount.
+     * @return Filter the results by the specified ECS instance ID.
      * 
      */
     public String instanceId() {

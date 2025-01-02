@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Dcdn Waf Domains of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.185.0+.
+ * > **NOTE:** Available since v1.185.0.
  *
  * ## Example Usage
  *
@@ -60,6 +60,9 @@ export interface GetWafDomainsArgs {
  * A collection of values returned by getWafDomains.
  */
 export interface GetWafDomainsResult {
+    /**
+     * A list of Dcdn Waf Domains. Each element contains the following attributes:
+     */
     readonly domains: outputs.dcdn.GetWafDomainsDomain[];
     readonly enableDetails?: boolean;
     /**
@@ -73,7 +76,7 @@ export interface GetWafDomainsResult {
 /**
  * This data source provides the Dcdn Waf Domains of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.185.0+.
+ * > **NOTE:** Available since v1.185.0.
  *
  * ## Example Usage
  *

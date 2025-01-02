@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cfg
         /// <summary>
         /// This data source provides the Config Aggregate Deliveries of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.172.0+.
+        /// &gt; **NOTE:** Available since v1.172.0.
         /// 
         /// ## Example Usage
         /// 
@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.Cfg
         /// <summary>
         /// This data source provides the Config Aggregate Deliveries of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.172.0+.
+        /// &gt; **NOTE:** Available since v1.172.0.
         /// 
         /// ## Example Usage
         /// 
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Cfg
         /// <summary>
         /// This data source provides the Config Aggregate Deliveries of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.172.0+.
+        /// &gt; **NOTE:** Available since v1.172.0.
         /// 
         /// ## Example Usage
         /// 
@@ -144,6 +144,9 @@ namespace Pulumi.AliCloud.Cfg
             set => _ids = value;
         }
 
+        /// <summary>
+        /// A regex string to filter results by Aggregate Delivery name.
+        /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
@@ -185,6 +188,9 @@ namespace Pulumi.AliCloud.Cfg
             set => _ids = value;
         }
 
+        /// <summary>
+        /// A regex string to filter results by Aggregate Delivery name.
+        /// </summary>
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
 
@@ -210,7 +216,13 @@ namespace Pulumi.AliCloud.Cfg
     [OutputType]
     public sealed class GetAggregateDeliveriesResult
     {
+        /// <summary>
+        /// The ID of the Aggregator.
+        /// </summary>
         public readonly string AggregatorId;
+        /// <summary>
+        /// A list of Config Aggregate Deliveries. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAggregateDeliveriesDeliveryResult> Deliveries;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -218,8 +230,14 @@ namespace Pulumi.AliCloud.Cfg
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Aggregate Delivery names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
+        /// </summary>
         public readonly int? Status;
 
         [OutputConstructor]

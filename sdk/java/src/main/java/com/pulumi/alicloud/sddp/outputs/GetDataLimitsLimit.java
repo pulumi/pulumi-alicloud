@@ -47,7 +47,7 @@ public final class GetDataLimitsLimit {
      */
     private Integer logStoreDay;
     /**
-     * @return The ID of the data asset.
+     * @return The parent asset ID of the data asset.
      * 
      */
     private String parentId;
@@ -57,7 +57,7 @@ public final class GetDataLimitsLimit {
      */
     private Integer port;
     /**
-     * @return The type of the service to which the data asset belongs.
+     * @return The type of the service to which the data asset belongs. Valid values: `MaxCompute`, `OSS`, `RDS`.
      * 
      */
     private String resourceType;
@@ -118,7 +118,7 @@ public final class GetDataLimitsLimit {
         return this.logStoreDay;
     }
     /**
-     * @return The ID of the data asset.
+     * @return The parent asset ID of the data asset.
      * 
      */
     public String parentId() {
@@ -132,7 +132,7 @@ public final class GetDataLimitsLimit {
         return this.port;
     }
     /**
-     * @return The type of the service to which the data asset belongs.
+     * @return The type of the service to which the data asset belongs. Valid values: `MaxCompute`, `OSS`, `RDS`.
      * 
      */
     public String resourceType() {

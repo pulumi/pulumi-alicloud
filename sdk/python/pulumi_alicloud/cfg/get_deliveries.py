@@ -53,6 +53,9 @@ class GetDeliveriesResult:
     @property
     @pulumi.getter
     def deliveries(self) -> Sequence['outputs.GetDeliveriesDeliveryResult']:
+        """
+        A list of Config Deliveries. Each element contains the following attributes:
+        """
         return pulumi.get(self, "deliveries")
 
     @property
@@ -76,6 +79,9 @@ class GetDeliveriesResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Config Delivery names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -86,6 +92,9 @@ class GetDeliveriesResult:
     @property
     @pulumi.getter
     def status(self) -> Optional[int]:
+        """
+        The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
+        """
         return pulumi.get(self, "status")
 
 
@@ -112,7 +121,7 @@ def get_deliveries(ids: Optional[Sequence[str]] = None,
     """
     This data source provides the Config Deliveries of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.171.0+.
+    > **NOTE:** Available since v1.171.0.
 
     ## Example Usage
 
@@ -156,7 +165,7 @@ def get_deliveries_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] =
     """
     This data source provides the Config Deliveries of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.171.0+.
+    > **NOTE:** Available since v1.171.0.
 
     ## Example Usage
 

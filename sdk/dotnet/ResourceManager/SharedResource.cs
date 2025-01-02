@@ -94,6 +94,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// - The following types are added after v1.192.0: `PrefixList` and `Image`.
         /// - The following types are added after v1.194.1: `PublicIpAddressPool`.
         /// - The following types are added after v1.208.0: `KMSInstance`.
+        /// - The following types are added after v1.240.0: `Snapshot`.
         /// </summary>
         [Output("resourceType")]
         public Output<string> ResourceType { get; private set; } = null!;
@@ -169,6 +170,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// - The following types are added after v1.192.0: `PrefixList` and `Image`.
         /// - The following types are added after v1.194.1: `PublicIpAddressPool`.
         /// - The following types are added after v1.208.0: `KMSInstance`.
+        /// - The following types are added after v1.240.0: `Snapshot`.
         /// </summary>
         [Input("resourceType", required: true)]
         public Input<string> ResourceType { get; set; } = null!;
@@ -200,6 +202,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// - The following types are added after v1.192.0: `PrefixList` and `Image`.
         /// - The following types are added after v1.194.1: `PublicIpAddressPool`.
         /// - The following types are added after v1.208.0: `KMSInstance`.
+        /// - The following types are added after v1.240.0: `Snapshot`.
         /// </summary>
         [Input("resourceType")]
         public Input<string>? ResourceType { get; set; }

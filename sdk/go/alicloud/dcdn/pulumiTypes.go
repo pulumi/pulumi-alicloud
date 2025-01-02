@@ -8559,7 +8559,7 @@ type GetIpaDomainsDomain struct {
 	CreateTime string `pulumi:"createTime"`
 	// The description.
 	Description string `pulumi:"description"`
-	// The accelerated domain names.
+	// The name of the Domain.
 	DomainName string `pulumi:"domainName"`
 	// The ID of the Ipa Domain.
 	Id string `pulumi:"id"`
@@ -8573,7 +8573,7 @@ type GetIpaDomainsDomain struct {
 	SslProtocol string `pulumi:"sslProtocol"`
 	// Indicates the public key of the certificate if the HTTPS protocol is enabled.
 	SslPub string `pulumi:"sslPub"`
-	// The status of the accelerated domain name.
+	// The status of the accelerated domain name. Valid values: `checkFailed`, `checking`, `configureFailed`, `configuring`, `offline`, `online`.
 	Status string `pulumi:"status"`
 }
 
@@ -8597,7 +8597,7 @@ type GetIpaDomainsDomainArgs struct {
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The description.
 	Description pulumi.StringInput `pulumi:"description"`
-	// The accelerated domain names.
+	// The name of the Domain.
 	DomainName pulumi.StringInput `pulumi:"domainName"`
 	// The ID of the Ipa Domain.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -8611,7 +8611,7 @@ type GetIpaDomainsDomainArgs struct {
 	SslProtocol pulumi.StringInput `pulumi:"sslProtocol"`
 	// Indicates the public key of the certificate if the HTTPS protocol is enabled.
 	SslPub pulumi.StringInput `pulumi:"sslPub"`
-	// The status of the accelerated domain name.
+	// The status of the accelerated domain name. Valid values: `checkFailed`, `checking`, `configureFailed`, `configuring`, `offline`, `online`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -8686,7 +8686,7 @@ func (o GetIpaDomainsDomainOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIpaDomainsDomain) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The accelerated domain names.
+// The name of the Domain.
 func (o GetIpaDomainsDomainOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIpaDomainsDomain) string { return v.DomainName }).(pulumi.StringOutput)
 }
@@ -8721,7 +8721,7 @@ func (o GetIpaDomainsDomainOutput) SslPub() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIpaDomainsDomain) string { return v.SslPub }).(pulumi.StringOutput)
 }
 
-// The status of the accelerated domain name.
+// The status of the accelerated domain name. Valid values: `checkFailed`, `checking`, `configureFailed`, `configuring`, `offline`, `online`.
 func (o GetIpaDomainsDomainOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIpaDomainsDomain) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -9126,7 +9126,7 @@ type GetWafPoliciesPolicy struct {
 	PolicyType string `pulumi:"policyType"`
 	// The number of protection rules in this protection policy.
 	RuleCount string `pulumi:"ruleCount"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `on`, `off`.
 	Status string `pulumi:"status"`
 }
 
@@ -9158,7 +9158,7 @@ type GetWafPoliciesPolicyArgs struct {
 	PolicyType pulumi.StringInput `pulumi:"policyType"`
 	// The number of protection rules in this protection policy.
 	RuleCount pulumi.StringInput `pulumi:"ruleCount"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `on`, `off`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -9253,7 +9253,7 @@ func (o GetWafPoliciesPolicyOutput) RuleCount() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWafPoliciesPolicy) string { return v.RuleCount }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The status of the resource. Valid values: `on`, `off`.
 func (o GetWafPoliciesPolicyOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWafPoliciesPolicy) string { return v.Status }).(pulumi.StringOutput)
 }

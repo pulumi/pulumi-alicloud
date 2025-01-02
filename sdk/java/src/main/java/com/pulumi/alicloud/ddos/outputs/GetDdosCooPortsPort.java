@@ -32,7 +32,7 @@ public final class GetDdosCooPortsPort {
      */
     private String id;
     /**
-     * @return The Ddoscoo instance ID.
+     * @return The DdosCoo instance ID.
      * 
      */
     private String instanceId;
@@ -72,7 +72,7 @@ public final class GetDdosCooPortsPort {
         return this.id;
     }
     /**
-     * @return The Ddoscoo instance ID.
+     * @return The DdosCoo instance ID.
      * 
      */
     public String instanceId() {

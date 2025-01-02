@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Dcdn Ipa Domains of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.158.0+.
+ * > **NOTE:** Available since v1.158.0.
  *
  * ## Example Usage
  *
@@ -75,7 +75,13 @@ export interface GetIpaDomainsArgs {
  * A collection of values returned by getIpaDomains.
  */
 export interface GetIpaDomainsResult {
+    /**
+     * The accelerated domain names.
+     */
     readonly domainName?: string;
+    /**
+     * A list of Dcdn Ipa Domains. Each element contains the following attributes:
+     */
     readonly domains: outputs.dcdn.GetIpaDomainsDomain[];
     readonly enableDetails?: boolean;
     /**
@@ -83,14 +89,20 @@ export interface GetIpaDomainsResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * A list of Dcdn Ipa Domain names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The status of the accelerated domain name.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Dcdn Ipa Domains of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.158.0+.
+ * > **NOTE:** Available since v1.158.0.
  *
  * ## Example Usage
  *

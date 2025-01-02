@@ -34,14 +34,14 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Whether to use the default OSS Bucket
+     * Whether to use the default OSS Bucket. Value:
      * 
      */
     @Import(name="defaultOssBucket")
     private @Nullable Output<String> defaultOssBucket;
 
     /**
-     * @return Whether to use the default OSS Bucket
+     * @return Whether to use the default OSS Bucket. Value:
      * 
      */
     public Optional<Output<String>> defaultOssBucket() {
@@ -49,14 +49,18 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Security scan engine
+     * The security scan engine used by the Enterprise Edition of Container Image Service. Value:
+     * - `ACR`: Uses the Trivy scan engine provided by default.
+     * - `SAS`: uses the enhanced cloud security scan engine.
      * 
      */
     @Import(name="imageScanner")
     private @Nullable Output<String> imageScanner;
 
     /**
-     * @return Security scan engine
+     * @return The security scan engine used by the Enterprise Edition of Container Image Service. Value:
+     * - `ACR`: Uses the Trivy scan engine provided by default.
+     * - `SAS`: uses the enhanced cloud security scan engine.
      * 
      */
     public Optional<Output<String>> imageScanner() {
@@ -80,12 +84,9 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
 
     /**
      * The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
-     * 
-     * Basic: Basic instance
-     * 
-     * Standard: Standard instance
-     * 
-     * Advanced: Advanced Edition Instance
+     * - `Basic`: Basic instance
+     * - `Standard`: Standard instance
+     * - `Advanced`: Advanced Edition Instance
      * 
      */
     @Import(name="instanceType", required=true)
@@ -93,12 +94,9 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
 
     /**
      * @return The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
-     * 
-     * Basic: Basic instance
-     * 
-     * Standard: Standard instance
-     * 
-     * Advanced: Advanced Edition Instance
+     * - `Basic`: Basic instance
+     * - `Standard`: Standard instance
+     * - `Advanced`: Advanced Edition Instance
      * 
      */
     public Output<String> instanceType() {
@@ -136,14 +134,14 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Permanent access credentials of the instance
+     * Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return Permanent access credentials of the instance
+     * @return Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
      * 
      */
     public Optional<Output<String>> password() {
@@ -305,7 +303,7 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param defaultOssBucket Whether to use the default OSS Bucket
+         * @param defaultOssBucket Whether to use the default OSS Bucket. Value:
          * 
          * @return builder
          * 
@@ -316,7 +314,7 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param defaultOssBucket Whether to use the default OSS Bucket
+         * @param defaultOssBucket Whether to use the default OSS Bucket. Value:
          * 
          * @return builder
          * 
@@ -326,7 +324,9 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param imageScanner Security scan engine
+         * @param imageScanner The security scan engine used by the Enterprise Edition of Container Image Service. Value:
+         * - `ACR`: Uses the Trivy scan engine provided by default.
+         * - `SAS`: uses the enhanced cloud security scan engine.
          * 
          * @return builder
          * 
@@ -337,7 +337,9 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param imageScanner Security scan engine
+         * @param imageScanner The security scan engine used by the Enterprise Edition of Container Image Service. Value:
+         * - `ACR`: Uses the Trivy scan engine provided by default.
+         * - `SAS`: uses the enhanced cloud security scan engine.
          * 
          * @return builder
          * 
@@ -369,12 +371,9 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
 
         /**
          * @param instanceType The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
-         * 
-         * Basic: Basic instance
-         * 
-         * Standard: Standard instance
-         * 
-         * Advanced: Advanced Edition Instance
+         * - `Basic`: Basic instance
+         * - `Standard`: Standard instance
+         * - `Advanced`: Advanced Edition Instance
          * 
          * @return builder
          * 
@@ -386,12 +385,9 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
 
         /**
          * @param instanceType The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
-         * 
-         * Basic: Basic instance
-         * 
-         * Standard: Standard instance
-         * 
-         * Advanced: Advanced Edition Instance
+         * - `Basic`: Basic instance
+         * - `Standard`: Standard instance
+         * - `Advanced`: Advanced Edition Instance
          * 
          * @return builder
          * 
@@ -443,7 +439,7 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param password Permanent access credentials of the instance
+         * @param password Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
          * 
          * @return builder
          * 
@@ -454,7 +450,7 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param password Permanent access credentials of the instance
+         * @param password Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
          * 
          * @return builder
          * 

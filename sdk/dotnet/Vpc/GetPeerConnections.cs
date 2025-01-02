@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides the Vpc Peer Connections of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.186.0+.
+        /// &gt; **NOTE:** Available since v1.186.0.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides the Vpc Peer Connections of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.186.0+.
+        /// &gt; **NOTE:** Available since v1.186.0.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides the Vpc Peer Connections of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.186.0+.
+        /// &gt; **NOTE:** Available since v1.186.0.
         /// 
         /// ## Example Usage
         /// 
@@ -222,6 +222,9 @@ namespace Pulumi.AliCloud.Vpc
     [OutputType]
     public sealed class GetPeerConnectionsResult
     {
+        /// <summary>
+        /// A list of Vpc Peer Connections. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetPeerConnectionsConnectionResult> Connections;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -229,10 +232,22 @@ namespace Pulumi.AliCloud.Vpc
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of PeerConnection names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The name of the resource.
+        /// </summary>
         public readonly string? PeerConnectionName;
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// The ID of the requester VPC.
+        /// </summary>
         public readonly string? VpcId;
 
         [OutputConstructor]

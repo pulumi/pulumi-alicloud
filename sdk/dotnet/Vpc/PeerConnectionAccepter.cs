@@ -10,9 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
-    /// Provides a Vpc Peer Connection Accepter resource.
+    /// Provides a Vpc Peer Peer Connection Accepter resource.
     /// 
-    /// For information about Vpc Peer Connection Accepter and how to use it, see [What is Peer Connection Accepter](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpcpeer-2022-01-01-acceptvpcpeerconnection).
+    /// Vpc peer connection receiver.
+    /// 
+    /// For information about Vpc Peer Peer Connection Accepter and how to use it, see [What is Peer Connection Accepter](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpcpeer-2022-01-01-acceptvpcpeerconnection).
     /// 
     /// &gt; **NOTE:** Available since v1.196.0.
     /// 
@@ -66,7 +68,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// ## Import
     /// 
-    /// Vpc Peer Connection Accepter can be imported using the id, e.g.
+    /// Vpc Peer Peer Connection Accepter can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:vpc/peerConnectionAccepter:PeerConnectionAccepter example &lt;id&gt;
@@ -132,12 +134,24 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
+        /// Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+        /// </summary>
+        [Output("linkType")]
+        public Output<string> LinkType { get; private set; } = null!;
+
+        /// <summary>
         /// The new name of the VPC peering connection.
         /// 
         /// The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         /// </summary>
         [Output("peerConnectionAccepterName")]
         public Output<string> PeerConnectionAccepterName { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the region where you want to query VPC peering connections.
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the new resource group.
@@ -238,6 +252,12 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
+        /// Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+        /// </summary>
+        [Input("linkType")]
+        public Input<string>? LinkType { get; set; }
+
+        /// <summary>
         /// The new name of the VPC peering connection.
         /// 
         /// The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
@@ -318,12 +338,24 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
+        /// Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+        /// </summary>
+        [Input("linkType")]
+        public Input<string>? LinkType { get; set; }
+
+        /// <summary>
         /// The new name of the VPC peering connection.
         /// 
         /// The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("peerConnectionAccepterName")]
         public Input<string>? PeerConnectionAccepterName { get; set; }
+
+        /// <summary>
+        /// The ID of the region where you want to query VPC peering connections.
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
 
         /// <summary>
         /// The ID of the new resource group.

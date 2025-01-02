@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Dcdn
         /// <summary>
         /// Provides a collection of DCDN Domains to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in 1.94.0+.
+        /// &gt; **NOTE:** Available since 1.94.0.
         /// 
         /// ## Example Usage
         /// 
-        ///  ```csharp
+        /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
@@ -47,11 +47,11 @@ namespace Pulumi.AliCloud.Dcdn
         /// <summary>
         /// Provides a collection of DCDN Domains to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in 1.94.0+.
+        /// &gt; **NOTE:** Available since 1.94.0.
         /// 
         /// ## Example Usage
         /// 
-        ///  ```csharp
+        /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
@@ -80,11 +80,11 @@ namespace Pulumi.AliCloud.Dcdn
         /// <summary>
         /// Provides a collection of DCDN Domains to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in 1.94.0+.
+        /// &gt; **NOTE:** Available since 1.94.0.
         /// 
         /// ## Example Usage
         /// 
-        ///  ```csharp
+        /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;

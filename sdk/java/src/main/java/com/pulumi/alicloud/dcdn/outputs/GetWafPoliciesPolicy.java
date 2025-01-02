@@ -52,7 +52,7 @@ public final class GetWafPoliciesPolicy {
      */
     private String ruleCount;
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `on`, `off`.
      * 
      */
     private String status;
@@ -115,7 +115,7 @@ public final class GetWafPoliciesPolicy {
         return this.ruleCount;
     }
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `on`, `off`.
      * 
      */
     public String status() {

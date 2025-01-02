@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Msc Sub Webhooks of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.141.0+.
+// > **NOTE:** Available since v1.141.0.
 //
 // ## Example Usage
 //
@@ -75,12 +75,14 @@ type GetMscSubWebhooksArgs struct {
 // A collection of values returned by getMscSubWebhooks.
 type GetMscSubWebhooksResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                     `pulumi:"id"`
-	Ids        []string                   `pulumi:"ids"`
-	NameRegex  *string                    `pulumi:"nameRegex"`
-	Names      []string                   `pulumi:"names"`
-	OutputFile *string                    `pulumi:"outputFile"`
-	Webhooks   []GetMscSubWebhooksWebhook `pulumi:"webhooks"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Webhook names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Msc Sub Webhooks. Each element contains the following attributes:
+	Webhooks []GetMscSubWebhooksWebhook `pulumi:"webhooks"`
 }
 
 func GetMscSubWebhooksOutput(ctx *pulumi.Context, args GetMscSubWebhooksOutputArgs, opts ...pulumi.InvokeOption) GetMscSubWebhooksResultOutput {
@@ -134,6 +136,7 @@ func (o GetMscSubWebhooksResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMscSubWebhooksResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Webhook names.
 func (o GetMscSubWebhooksResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetMscSubWebhooksResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -142,6 +145,7 @@ func (o GetMscSubWebhooksResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMscSubWebhooksResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Msc Sub Webhooks. Each element contains the following attributes:
 func (o GetMscSubWebhooksResultOutput) Webhooks() GetMscSubWebhooksWebhookArrayOutput {
 	return o.ApplyT(func(v GetMscSubWebhooksResult) []GetMscSubWebhooksWebhook { return v.Webhooks }).(GetMscSubWebhooksWebhookArrayOutput)
 }

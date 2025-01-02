@@ -148,7 +148,7 @@ def get_custom_routing_port_mappings(accelerator_id: Optional[str] = None,
     """
     This data source provides the Global Accelerator (GA) Custom Routing Port Mappings of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in 1.197.0+
+    > **NOTE:** Available since v1.197.0.
 
     ## Example Usage
 
@@ -201,7 +201,7 @@ def get_custom_routing_port_mappings_output(accelerator_id: Optional[pulumi.Inpu
     """
     This data source provides the Global Accelerator (GA) Custom Routing Port Mappings of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in 1.197.0+
+    > **NOTE:** Available since v1.197.0.
 
     ## Example Usage
 

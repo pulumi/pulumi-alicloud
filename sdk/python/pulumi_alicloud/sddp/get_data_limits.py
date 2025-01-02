@@ -63,6 +63,9 @@ class GetDataLimitsResult:
     @property
     @pulumi.getter
     def limits(self) -> Sequence['outputs.GetDataLimitsLimitResult']:
+        """
+        A list of Sddp Data Limits. Each element contains the following attributes:
+        """
         return pulumi.get(self, "limits")
 
     @property
@@ -73,11 +76,17 @@ class GetDataLimitsResult:
     @property
     @pulumi.getter(name="parentId")
     def parent_id(self) -> Optional[str]:
+        """
+        The ID of the data asset.
+        """
         return pulumi.get(self, "parent_id")
 
     @property
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> Optional[str]:
+        """
+        The type of the service to which the data asset belongs.
+        """
         return pulumi.get(self, "resource_type")
 
 
@@ -103,7 +112,7 @@ def get_data_limits(ids: Optional[Sequence[str]] = None,
     """
     This data source provides the Sddp Data Limits of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.159.0+.
+    > **NOTE:** Available since v1.159.0.
 
     ## Example Usage
 
@@ -146,7 +155,7 @@ def get_data_limits_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] 
     """
     This data source provides the Sddp Data Limits of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.159.0+.
+    > **NOTE:** Available since v1.159.0.
 
     ## Example Usage
 

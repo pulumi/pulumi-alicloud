@@ -26,8 +26,20 @@ public final class GetDBClusterLakeVersionsResult {
     private @Nullable String outputFile;
     private @Nullable Integer pageNumber;
     private @Nullable Integer pageSize;
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
     private @Nullable String resourceGroupId;
+    /**
+     * @return The status of the resource.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return A list of Adb Db Clusters. Each element contains the following attributes:
+     * 
+     */
     private List<GetDBClusterLakeVersionsVersion> versions;
 
     private GetDBClusterLakeVersionsResult() {}
@@ -53,12 +65,24 @@ public final class GetDBClusterLakeVersionsResult {
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
+    /**
+     * @return The status of the resource.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return A list of Adb Db Clusters. Each element contains the following attributes:
+     * 
+     */
     public List<GetDBClusterLakeVersionsVersion> versions() {
         return this.versions;
     }

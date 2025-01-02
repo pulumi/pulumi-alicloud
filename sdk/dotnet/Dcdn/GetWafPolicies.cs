@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Dcdn
         /// <summary>
         /// This data source provides the Dcdn Waf Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.184.0+.
+        /// &gt; **NOTE:** Available since v1.184.0.
         /// 
         /// ## Example Usage
         /// 
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Dcdn
         /// <summary>
         /// This data source provides the Dcdn Waf Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.184.0+.
+        /// &gt; **NOTE:** Available since v1.184.0.
         /// 
         /// ## Example Usage
         /// 
@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.Dcdn
         /// <summary>
         /// This data source provides the Dcdn Waf Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.184.0+.
+        /// &gt; **NOTE:** Available since v1.184.0.
         /// 
         /// ## Example Usage
         /// 
@@ -194,8 +194,14 @@ namespace Pulumi.AliCloud.Dcdn
         public readonly string? NameRegex;
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Dcdn Waf Policies. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetWafPoliciesPolicyResult> Policies;
         public readonly string? QueryArgs;
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

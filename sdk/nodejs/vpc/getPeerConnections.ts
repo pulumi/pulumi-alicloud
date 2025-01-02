@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Vpc Peer Connections of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.186.0+.
+ * > **NOTE:** Available since v1.186.0.
  *
  * ## Example Usage
  *
@@ -74,6 +74,9 @@ export interface GetPeerConnectionsArgs {
  * A collection of values returned by getPeerConnections.
  */
 export interface GetPeerConnectionsResult {
+    /**
+     * A list of Vpc Peer Connections. Each element contains the following attributes:
+     */
     readonly connections: outputs.vpc.GetPeerConnectionsConnection[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -81,16 +84,28 @@ export interface GetPeerConnectionsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of PeerConnection names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The name of the resource.
+     */
     readonly peerConnectionName?: string;
+    /**
+     * The status of the resource.
+     */
     readonly status?: string;
+    /**
+     * The ID of the requester VPC.
+     */
     readonly vpcId?: string;
 }
 /**
  * This data source provides the Vpc Peer Connections of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.186.0+.
+ * > **NOTE:** Available since v1.186.0.
  *
  * ## Example Usage
  *

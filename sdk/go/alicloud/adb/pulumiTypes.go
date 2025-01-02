@@ -306,7 +306,8 @@ func (o LakeAccountAccountPrivilegePrivilegeObjectPtrOutput) Table() pulumi.Stri
 }
 
 type GetClustersCluster struct {
-	AutoRenewPeriod int `pulumi:"autoRenewPeriod"`
+	AutoRenewPeriod         int                                        `pulumi:"autoRenewPeriod"`
+	AvailableKernelVersions []GetClustersClusterAvailableKernelVersion `pulumi:"availableKernelVersions"`
 	// Billing method. Value options: `PostPaid` for Pay-As-You-Go and `PrePaid` for subscription.
 	ChargeType       string `pulumi:"chargeType"`
 	CommodityCode    string `pulumi:"commodityCode"`
@@ -338,7 +339,8 @@ type GetClustersCluster struct {
 	// The expired of the ADB cluster.
 	Expired string `pulumi:"expired"`
 	// The ID of the ADB cluster.
-	Id string `pulumi:"id"`
+	Id            string `pulumi:"id"`
+	KernelVersion string `pulumi:"kernelVersion"`
 	// The LockMode of the ADB cluster.
 	LockMode     string `pulumi:"lockMode"`
 	LockReason   string `pulumi:"lockReason"`
@@ -381,7 +383,8 @@ type GetClustersClusterInput interface {
 }
 
 type GetClustersClusterArgs struct {
-	AutoRenewPeriod pulumi.IntInput `pulumi:"autoRenewPeriod"`
+	AutoRenewPeriod         pulumi.IntInput                                    `pulumi:"autoRenewPeriod"`
+	AvailableKernelVersions GetClustersClusterAvailableKernelVersionArrayInput `pulumi:"availableKernelVersions"`
 	// Billing method. Value options: `PostPaid` for Pay-As-You-Go and `PrePaid` for subscription.
 	ChargeType       pulumi.StringInput `pulumi:"chargeType"`
 	CommodityCode    pulumi.StringInput `pulumi:"commodityCode"`
@@ -413,7 +416,8 @@ type GetClustersClusterArgs struct {
 	// The expired of the ADB cluster.
 	Expired pulumi.StringInput `pulumi:"expired"`
 	// The ID of the ADB cluster.
-	Id pulumi.StringInput `pulumi:"id"`
+	Id            pulumi.StringInput `pulumi:"id"`
+	KernelVersion pulumi.StringInput `pulumi:"kernelVersion"`
 	// The LockMode of the ADB cluster.
 	LockMode     pulumi.StringInput `pulumi:"lockMode"`
 	LockReason   pulumi.StringInput `pulumi:"lockReason"`
@@ -497,6 +501,12 @@ func (o GetClustersClusterOutput) ToGetClustersClusterOutputWithContext(ctx cont
 
 func (o GetClustersClusterOutput) AutoRenewPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v GetClustersCluster) int { return v.AutoRenewPeriod }).(pulumi.IntOutput)
+}
+
+func (o GetClustersClusterOutput) AvailableKernelVersions() GetClustersClusterAvailableKernelVersionArrayOutput {
+	return o.ApplyT(func(v GetClustersCluster) []GetClustersClusterAvailableKernelVersion {
+		return v.AvailableKernelVersions
+	}).(GetClustersClusterAvailableKernelVersionArrayOutput)
 }
 
 // Billing method. Value options: `PostPaid` for Pay-As-You-Go and `PrePaid` for subscription.
@@ -598,6 +608,10 @@ func (o GetClustersClusterOutput) Expired() pulumi.StringOutput {
 // The ID of the ADB cluster.
 func (o GetClustersClusterOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetClustersClusterOutput) KernelVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.KernelVersion }).(pulumi.StringOutput)
 }
 
 // The LockMode of the ADB cluster.
@@ -705,6 +719,112 @@ func (o GetClustersClusterArrayOutput) Index(i pulumi.IntInput) GetClustersClust
 	}).(GetClustersClusterOutput)
 }
 
+type GetClustersClusterAvailableKernelVersion struct {
+	ExpireDate    string `pulumi:"expireDate"`
+	KernelVersion string `pulumi:"kernelVersion"`
+	ReleaseDate   string `pulumi:"releaseDate"`
+}
+
+// GetClustersClusterAvailableKernelVersionInput is an input type that accepts GetClustersClusterAvailableKernelVersionArgs and GetClustersClusterAvailableKernelVersionOutput values.
+// You can construct a concrete instance of `GetClustersClusterAvailableKernelVersionInput` via:
+//
+//	GetClustersClusterAvailableKernelVersionArgs{...}
+type GetClustersClusterAvailableKernelVersionInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterAvailableKernelVersionOutput() GetClustersClusterAvailableKernelVersionOutput
+	ToGetClustersClusterAvailableKernelVersionOutputWithContext(context.Context) GetClustersClusterAvailableKernelVersionOutput
+}
+
+type GetClustersClusterAvailableKernelVersionArgs struct {
+	ExpireDate    pulumi.StringInput `pulumi:"expireDate"`
+	KernelVersion pulumi.StringInput `pulumi:"kernelVersion"`
+	ReleaseDate   pulumi.StringInput `pulumi:"releaseDate"`
+}
+
+func (GetClustersClusterAvailableKernelVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersClusterAvailableKernelVersion)(nil)).Elem()
+}
+
+func (i GetClustersClusterAvailableKernelVersionArgs) ToGetClustersClusterAvailableKernelVersionOutput() GetClustersClusterAvailableKernelVersionOutput {
+	return i.ToGetClustersClusterAvailableKernelVersionOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterAvailableKernelVersionArgs) ToGetClustersClusterAvailableKernelVersionOutputWithContext(ctx context.Context) GetClustersClusterAvailableKernelVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterAvailableKernelVersionOutput)
+}
+
+// GetClustersClusterAvailableKernelVersionArrayInput is an input type that accepts GetClustersClusterAvailableKernelVersionArray and GetClustersClusterAvailableKernelVersionArrayOutput values.
+// You can construct a concrete instance of `GetClustersClusterAvailableKernelVersionArrayInput` via:
+//
+//	GetClustersClusterAvailableKernelVersionArray{ GetClustersClusterAvailableKernelVersionArgs{...} }
+type GetClustersClusterAvailableKernelVersionArrayInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterAvailableKernelVersionArrayOutput() GetClustersClusterAvailableKernelVersionArrayOutput
+	ToGetClustersClusterAvailableKernelVersionArrayOutputWithContext(context.Context) GetClustersClusterAvailableKernelVersionArrayOutput
+}
+
+type GetClustersClusterAvailableKernelVersionArray []GetClustersClusterAvailableKernelVersionInput
+
+func (GetClustersClusterAvailableKernelVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClustersClusterAvailableKernelVersion)(nil)).Elem()
+}
+
+func (i GetClustersClusterAvailableKernelVersionArray) ToGetClustersClusterAvailableKernelVersionArrayOutput() GetClustersClusterAvailableKernelVersionArrayOutput {
+	return i.ToGetClustersClusterAvailableKernelVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterAvailableKernelVersionArray) ToGetClustersClusterAvailableKernelVersionArrayOutputWithContext(ctx context.Context) GetClustersClusterAvailableKernelVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterAvailableKernelVersionArrayOutput)
+}
+
+type GetClustersClusterAvailableKernelVersionOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterAvailableKernelVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersClusterAvailableKernelVersion)(nil)).Elem()
+}
+
+func (o GetClustersClusterAvailableKernelVersionOutput) ToGetClustersClusterAvailableKernelVersionOutput() GetClustersClusterAvailableKernelVersionOutput {
+	return o
+}
+
+func (o GetClustersClusterAvailableKernelVersionOutput) ToGetClustersClusterAvailableKernelVersionOutputWithContext(ctx context.Context) GetClustersClusterAvailableKernelVersionOutput {
+	return o
+}
+
+func (o GetClustersClusterAvailableKernelVersionOutput) ExpireDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterAvailableKernelVersion) string { return v.ExpireDate }).(pulumi.StringOutput)
+}
+
+func (o GetClustersClusterAvailableKernelVersionOutput) KernelVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterAvailableKernelVersion) string { return v.KernelVersion }).(pulumi.StringOutput)
+}
+
+func (o GetClustersClusterAvailableKernelVersionOutput) ReleaseDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterAvailableKernelVersion) string { return v.ReleaseDate }).(pulumi.StringOutput)
+}
+
+type GetClustersClusterAvailableKernelVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterAvailableKernelVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClustersClusterAvailableKernelVersion)(nil)).Elem()
+}
+
+func (o GetClustersClusterAvailableKernelVersionArrayOutput) ToGetClustersClusterAvailableKernelVersionArrayOutput() GetClustersClusterAvailableKernelVersionArrayOutput {
+	return o
+}
+
+func (o GetClustersClusterAvailableKernelVersionArrayOutput) ToGetClustersClusterAvailableKernelVersionArrayOutputWithContext(ctx context.Context) GetClustersClusterAvailableKernelVersionArrayOutput {
+	return o
+}
+
+func (o GetClustersClusterAvailableKernelVersionArrayOutput) Index(i pulumi.IntInput) GetClustersClusterAvailableKernelVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClustersClusterAvailableKernelVersion {
+		return vs[0].([]GetClustersClusterAvailableKernelVersion)[vs[1].(int)]
+	}).(GetClustersClusterAvailableKernelVersionOutput)
+}
+
 type GetDBClusterLakeVersionsVersion struct {
 	// The name of the service.
 	CommodityCode string `pulumi:"commodityCode"`
@@ -738,7 +858,7 @@ type GetDBClusterLakeVersionsVersion struct {
 	Port string `pulumi:"port"`
 	// The ID of the resource group.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`.
 	Status string `pulumi:"status"`
 	// The specifications of storage resources in elastic mode. The resources are used for data read and write operations.
 	StorageResource string `pulumi:"storageResource"`
@@ -794,7 +914,7 @@ type GetDBClusterLakeVersionsVersionArgs struct {
 	Port pulumi.StringInput `pulumi:"port"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The specifications of storage resources in elastic mode. The resources are used for data read and write operations.
 	StorageResource pulumi.StringInput `pulumi:"storageResource"`
@@ -937,7 +1057,7 @@ func (o GetDBClusterLakeVersionsVersionOutput) ResourceGroupId() pulumi.StringOu
 	return o.ApplyT(func(v GetDBClusterLakeVersionsVersion) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The status of the resource. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`.
 func (o GetDBClusterLakeVersionsVersionOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDBClusterLakeVersionsVersion) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -985,6 +1105,8 @@ func (o GetDBClusterLakeVersionsVersionArrayOutput) Index(i pulumi.IntInput) Get
 type GetDBClustersCluster struct {
 	// Auto-renewal period of an cluster, in the unit of the month.
 	AutoRenewPeriod int `pulumi:"autoRenewPeriod"`
+	// The minor versions to which you can update the current minor version of the cluster.
+	AvailableKernelVersions []GetDBClustersClusterAvailableKernelVersion `pulumi:"availableKernelVersions"`
 	// The payment type of the resource.
 	ChargeType string `pulumi:"chargeType"`
 	// The name of the service.
@@ -1031,6 +1153,8 @@ type GetDBClustersCluster struct {
 	Expired string `pulumi:"expired"`
 	// The ID of the DBCluster.
 	Id string `pulumi:"id"`
+	// The minor version. Example: 3.1.9.
+	KernelVersion string `pulumi:"kernelVersion"`
 	// The lock mode of the cluster.
 	LockMode string `pulumi:"lockMode"`
 	// The reason why the cluster is locked.
@@ -1085,6 +1209,8 @@ type GetDBClustersClusterInput interface {
 type GetDBClustersClusterArgs struct {
 	// Auto-renewal period of an cluster, in the unit of the month.
 	AutoRenewPeriod pulumi.IntInput `pulumi:"autoRenewPeriod"`
+	// The minor versions to which you can update the current minor version of the cluster.
+	AvailableKernelVersions GetDBClustersClusterAvailableKernelVersionArrayInput `pulumi:"availableKernelVersions"`
 	// The payment type of the resource.
 	ChargeType pulumi.StringInput `pulumi:"chargeType"`
 	// The name of the service.
@@ -1131,6 +1257,8 @@ type GetDBClustersClusterArgs struct {
 	Expired pulumi.StringInput `pulumi:"expired"`
 	// The ID of the DBCluster.
 	Id pulumi.StringInput `pulumi:"id"`
+	// The minor version. Example: 3.1.9.
+	KernelVersion pulumi.StringInput `pulumi:"kernelVersion"`
 	// The lock mode of the cluster.
 	LockMode pulumi.StringInput `pulumi:"lockMode"`
 	// The reason why the cluster is locked.
@@ -1225,6 +1353,13 @@ func (o GetDBClustersClusterOutput) ToGetDBClustersClusterOutputWithContext(ctx 
 // Auto-renewal period of an cluster, in the unit of the month.
 func (o GetDBClustersClusterOutput) AutoRenewPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDBClustersCluster) int { return v.AutoRenewPeriod }).(pulumi.IntOutput)
+}
+
+// The minor versions to which you can update the current minor version of the cluster.
+func (o GetDBClustersClusterOutput) AvailableKernelVersions() GetDBClustersClusterAvailableKernelVersionArrayOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) []GetDBClustersClusterAvailableKernelVersion {
+		return v.AvailableKernelVersions
+	}).(GetDBClustersClusterAvailableKernelVersionArrayOutput)
 }
 
 // The payment type of the resource.
@@ -1342,6 +1477,11 @@ func (o GetDBClustersClusterOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDBClustersCluster) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The minor version. Example: 3.1.9.
+func (o GetDBClustersClusterOutput) KernelVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.KernelVersion }).(pulumi.StringOutput)
+}
+
 // The lock mode of the cluster.
 func (o GetDBClustersClusterOutput) LockMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDBClustersCluster) string { return v.LockMode }).(pulumi.StringOutput)
@@ -1455,6 +1595,121 @@ func (o GetDBClustersClusterArrayOutput) Index(i pulumi.IntInput) GetDBClustersC
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDBClustersCluster {
 		return vs[0].([]GetDBClustersCluster)[vs[1].(int)]
 	}).(GetDBClustersClusterOutput)
+}
+
+type GetDBClustersClusterAvailableKernelVersion struct {
+	// The maintenance expiration time of the version
+	ExpireDate string `pulumi:"expireDate"`
+	// The minor version. Example: 3.1.9.
+	KernelVersion string `pulumi:"kernelVersion"`
+	// The time when the minor version was released.
+	ReleaseDate string `pulumi:"releaseDate"`
+}
+
+// GetDBClustersClusterAvailableKernelVersionInput is an input type that accepts GetDBClustersClusterAvailableKernelVersionArgs and GetDBClustersClusterAvailableKernelVersionOutput values.
+// You can construct a concrete instance of `GetDBClustersClusterAvailableKernelVersionInput` via:
+//
+//	GetDBClustersClusterAvailableKernelVersionArgs{...}
+type GetDBClustersClusterAvailableKernelVersionInput interface {
+	pulumi.Input
+
+	ToGetDBClustersClusterAvailableKernelVersionOutput() GetDBClustersClusterAvailableKernelVersionOutput
+	ToGetDBClustersClusterAvailableKernelVersionOutputWithContext(context.Context) GetDBClustersClusterAvailableKernelVersionOutput
+}
+
+type GetDBClustersClusterAvailableKernelVersionArgs struct {
+	// The maintenance expiration time of the version
+	ExpireDate pulumi.StringInput `pulumi:"expireDate"`
+	// The minor version. Example: 3.1.9.
+	KernelVersion pulumi.StringInput `pulumi:"kernelVersion"`
+	// The time when the minor version was released.
+	ReleaseDate pulumi.StringInput `pulumi:"releaseDate"`
+}
+
+func (GetDBClustersClusterAvailableKernelVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDBClustersClusterAvailableKernelVersion)(nil)).Elem()
+}
+
+func (i GetDBClustersClusterAvailableKernelVersionArgs) ToGetDBClustersClusterAvailableKernelVersionOutput() GetDBClustersClusterAvailableKernelVersionOutput {
+	return i.ToGetDBClustersClusterAvailableKernelVersionOutputWithContext(context.Background())
+}
+
+func (i GetDBClustersClusterAvailableKernelVersionArgs) ToGetDBClustersClusterAvailableKernelVersionOutputWithContext(ctx context.Context) GetDBClustersClusterAvailableKernelVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDBClustersClusterAvailableKernelVersionOutput)
+}
+
+// GetDBClustersClusterAvailableKernelVersionArrayInput is an input type that accepts GetDBClustersClusterAvailableKernelVersionArray and GetDBClustersClusterAvailableKernelVersionArrayOutput values.
+// You can construct a concrete instance of `GetDBClustersClusterAvailableKernelVersionArrayInput` via:
+//
+//	GetDBClustersClusterAvailableKernelVersionArray{ GetDBClustersClusterAvailableKernelVersionArgs{...} }
+type GetDBClustersClusterAvailableKernelVersionArrayInput interface {
+	pulumi.Input
+
+	ToGetDBClustersClusterAvailableKernelVersionArrayOutput() GetDBClustersClusterAvailableKernelVersionArrayOutput
+	ToGetDBClustersClusterAvailableKernelVersionArrayOutputWithContext(context.Context) GetDBClustersClusterAvailableKernelVersionArrayOutput
+}
+
+type GetDBClustersClusterAvailableKernelVersionArray []GetDBClustersClusterAvailableKernelVersionInput
+
+func (GetDBClustersClusterAvailableKernelVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDBClustersClusterAvailableKernelVersion)(nil)).Elem()
+}
+
+func (i GetDBClustersClusterAvailableKernelVersionArray) ToGetDBClustersClusterAvailableKernelVersionArrayOutput() GetDBClustersClusterAvailableKernelVersionArrayOutput {
+	return i.ToGetDBClustersClusterAvailableKernelVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GetDBClustersClusterAvailableKernelVersionArray) ToGetDBClustersClusterAvailableKernelVersionArrayOutputWithContext(ctx context.Context) GetDBClustersClusterAvailableKernelVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDBClustersClusterAvailableKernelVersionArrayOutput)
+}
+
+type GetDBClustersClusterAvailableKernelVersionOutput struct{ *pulumi.OutputState }
+
+func (GetDBClustersClusterAvailableKernelVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDBClustersClusterAvailableKernelVersion)(nil)).Elem()
+}
+
+func (o GetDBClustersClusterAvailableKernelVersionOutput) ToGetDBClustersClusterAvailableKernelVersionOutput() GetDBClustersClusterAvailableKernelVersionOutput {
+	return o
+}
+
+func (o GetDBClustersClusterAvailableKernelVersionOutput) ToGetDBClustersClusterAvailableKernelVersionOutputWithContext(ctx context.Context) GetDBClustersClusterAvailableKernelVersionOutput {
+	return o
+}
+
+// The maintenance expiration time of the version
+func (o GetDBClustersClusterAvailableKernelVersionOutput) ExpireDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersClusterAvailableKernelVersion) string { return v.ExpireDate }).(pulumi.StringOutput)
+}
+
+// The minor version. Example: 3.1.9.
+func (o GetDBClustersClusterAvailableKernelVersionOutput) KernelVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersClusterAvailableKernelVersion) string { return v.KernelVersion }).(pulumi.StringOutput)
+}
+
+// The time when the minor version was released.
+func (o GetDBClustersClusterAvailableKernelVersionOutput) ReleaseDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersClusterAvailableKernelVersion) string { return v.ReleaseDate }).(pulumi.StringOutput)
+}
+
+type GetDBClustersClusterAvailableKernelVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDBClustersClusterAvailableKernelVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDBClustersClusterAvailableKernelVersion)(nil)).Elem()
+}
+
+func (o GetDBClustersClusterAvailableKernelVersionArrayOutput) ToGetDBClustersClusterAvailableKernelVersionArrayOutput() GetDBClustersClusterAvailableKernelVersionArrayOutput {
+	return o
+}
+
+func (o GetDBClustersClusterAvailableKernelVersionArrayOutput) ToGetDBClustersClusterAvailableKernelVersionArrayOutputWithContext(ctx context.Context) GetDBClustersClusterAvailableKernelVersionArrayOutput {
+	return o
+}
+
+func (o GetDBClustersClusterAvailableKernelVersionArrayOutput) Index(i pulumi.IntInput) GetDBClustersClusterAvailableKernelVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDBClustersClusterAvailableKernelVersion {
+		return vs[0].([]GetDBClustersClusterAvailableKernelVersion)[vs[1].(int)]
+	}).(GetDBClustersClusterAvailableKernelVersionOutput)
 }
 
 type GetResourceGroupsGroup struct {
@@ -1730,10 +1985,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LakeAccountAccountPrivilegePrivilegeObjectPtrInput)(nil)).Elem(), LakeAccountAccountPrivilegePrivilegeObjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterInput)(nil)).Elem(), GetClustersClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterArrayInput)(nil)).Elem(), GetClustersClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterAvailableKernelVersionInput)(nil)).Elem(), GetClustersClusterAvailableKernelVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterAvailableKernelVersionArrayInput)(nil)).Elem(), GetClustersClusterAvailableKernelVersionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDBClusterLakeVersionsVersionInput)(nil)).Elem(), GetDBClusterLakeVersionsVersionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDBClusterLakeVersionsVersionArrayInput)(nil)).Elem(), GetDBClusterLakeVersionsVersionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDBClustersClusterInput)(nil)).Elem(), GetDBClustersClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDBClustersClusterArrayInput)(nil)).Elem(), GetDBClustersClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDBClustersClusterAvailableKernelVersionInput)(nil)).Elem(), GetDBClustersClusterAvailableKernelVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDBClustersClusterAvailableKernelVersionArrayInput)(nil)).Elem(), GetDBClustersClusterAvailableKernelVersionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceGroupsGroupInput)(nil)).Elem(), GetResourceGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceGroupsGroupArrayInput)(nil)).Elem(), GetResourceGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
@@ -1744,10 +2003,14 @@ func init() {
 	pulumi.RegisterOutputType(LakeAccountAccountPrivilegePrivilegeObjectPtrOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterArrayOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterAvailableKernelVersionOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterAvailableKernelVersionArrayOutput{})
 	pulumi.RegisterOutputType(GetDBClusterLakeVersionsVersionOutput{})
 	pulumi.RegisterOutputType(GetDBClusterLakeVersionsVersionArrayOutput{})
 	pulumi.RegisterOutputType(GetDBClustersClusterOutput{})
 	pulumi.RegisterOutputType(GetDBClustersClusterArrayOutput{})
+	pulumi.RegisterOutputType(GetDBClustersClusterAvailableKernelVersionOutput{})
+	pulumi.RegisterOutputType(GetDBClustersClusterAvailableKernelVersionArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetResourceGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneOutput{})

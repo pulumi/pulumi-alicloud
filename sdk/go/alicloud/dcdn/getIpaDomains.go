@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Dcdn Ipa Domains of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.158.0+.
+// > **NOTE:** Available since v1.158.0.
 //
 // ## Example Usage
 //
@@ -80,15 +80,19 @@ type GetIpaDomainsArgs struct {
 
 // A collection of values returned by getIpaDomains.
 type GetIpaDomainsResult struct {
-	DomainName    *string               `pulumi:"domainName"`
+	// The accelerated domain names.
+	DomainName *string `pulumi:"domainName"`
+	// A list of Dcdn Ipa Domains. Each element contains the following attributes:
 	Domains       []GetIpaDomainsDomain `pulumi:"domains"`
 	EnableDetails *bool                 `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// A list of Dcdn Ipa Domain names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	Status     *string  `pulumi:"status"`
+	// The status of the accelerated domain name.
+	Status *string `pulumi:"status"`
 }
 
 func GetIpaDomainsOutput(ctx *pulumi.Context, args GetIpaDomainsOutputArgs, opts ...pulumi.InvokeOption) GetIpaDomainsResultOutput {
@@ -133,10 +137,12 @@ func (o GetIpaDomainsResultOutput) ToGetIpaDomainsResultOutputWithContext(ctx co
 	return o
 }
 
+// The accelerated domain names.
 func (o GetIpaDomainsResultOutput) DomainName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetIpaDomainsResult) *string { return v.DomainName }).(pulumi.StringPtrOutput)
 }
 
+// A list of Dcdn Ipa Domains. Each element contains the following attributes:
 func (o GetIpaDomainsResultOutput) Domains() GetIpaDomainsDomainArrayOutput {
 	return o.ApplyT(func(v GetIpaDomainsResult) []GetIpaDomainsDomain { return v.Domains }).(GetIpaDomainsDomainArrayOutput)
 }
@@ -154,6 +160,7 @@ func (o GetIpaDomainsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetIpaDomainsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// A list of Dcdn Ipa Domain names.
 func (o GetIpaDomainsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetIpaDomainsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -162,6 +169,7 @@ func (o GetIpaDomainsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetIpaDomainsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of the accelerated domain name.
 func (o GetIpaDomainsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetIpaDomainsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

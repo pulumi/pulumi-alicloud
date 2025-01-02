@@ -145,7 +145,7 @@ def get_domains(accelerator_id: Optional[str] = None,
     """
     This data source provides Ga Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain)
 
-    > **NOTE:** Available in 1.197.0+
+    > **NOTE:** Available since v1.197.0.
 
     ## Example Usage
 
@@ -205,7 +205,7 @@ def get_domains_output(accelerator_id: Optional[pulumi.Input[Optional[str]]] = N
     """
     This data source provides Ga Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain)
 
-    > **NOTE:** Available in 1.197.0+
+    > **NOTE:** Available since v1.197.0.
 
     ## Example Usage
 

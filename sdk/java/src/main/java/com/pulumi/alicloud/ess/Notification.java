@@ -12,6 +12,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -175,6 +176,20 @@ public class Notification extends com.pulumi.resources.CustomResource {
      */
     public Output<String> scalingGroupId() {
         return this.scalingGroupId;
+    }
+    /**
+     * The time zone of the notification. Specify the value in UTC. For example, a value of UTC+8 specifies that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 specifies that the time is 7 hours behind Coordinated Universal Time.
+     * 
+     */
+    @Export(name="timeZone", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> timeZone;
+
+    /**
+     * @return The time zone of the notification. Specify the value in UTC. For example, a value of UTC+8 specifies that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 specifies that the time is 7 hours behind Coordinated Universal Time.
+     * 
+     */
+    public Output<Optional<String>> timeZone() {
+        return Codegen.optional(this.timeZone);
     }
 
     /**

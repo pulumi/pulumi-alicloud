@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.PrivateLink
         /// <summary>
         /// This data source provides the Privatelink Vpc Endpoints of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.109.0+.
+        /// &gt; **NOTE:** Available since v1.109.0.
         /// 
         /// ## Example Usage
         /// 
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.PrivateLink
         /// <summary>
         /// This data source provides the Privatelink Vpc Endpoints of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.109.0+.
+        /// &gt; **NOTE:** Available since v1.109.0.
         /// 
         /// ## Example Usage
         /// 
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.PrivateLink
         /// <summary>
         /// This data source provides the Privatelink Vpc Endpoints of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.109.0+.
+        /// &gt; **NOTE:** Available since v1.109.0.
         /// 
         /// ## Example Usage
         /// 
@@ -261,8 +261,14 @@ namespace Pulumi.AliCloud.PrivateLink
     [OutputType]
     public sealed class GetVpcEndpointsResult
     {
+        /// <summary>
+        /// The status of Connection.
+        /// </summary>
         public readonly string? ConnectionStatus;
         public readonly bool? EnableDetails;
+        /// <summary>
+        /// A list of Privatelink Vpc Endpoints. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetVpcEndpointsEndpointResult> Endpoints;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -270,11 +276,26 @@ namespace Pulumi.AliCloud.PrivateLink
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Vpc Endpoint names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The name of the terminal node service associated with the terminal node.
+        /// </summary>
         public readonly string? ServiceName;
+        /// <summary>
+        /// The status of Vpc Endpoint.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// The name of Vpc Endpoint.
+        /// </summary>
         public readonly string? VpcEndpointName;
+        /// <summary>
+        /// The private network to which the terminal node belongs.
+        /// </summary>
         public readonly string? VpcId;
 
         [OutputConstructor]

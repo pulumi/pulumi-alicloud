@@ -20,9 +20,17 @@ public final class GetDdosCooDomainResourcesResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return A list ID of instance that you want to associate.
+     * 
+     */
     private @Nullable List<String> instanceIds;
     private @Nullable String outputFile;
     private @Nullable String queryDomainPattern;
+    /**
+     * @return A list of Ddoscoo Domain Resources. Each element contains the following attributes:
+     * 
+     */
     private List<GetDdosCooDomainResourcesResource> resources;
 
     private GetDdosCooDomainResourcesResult() {}
@@ -36,6 +44,10 @@ public final class GetDdosCooDomainResourcesResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return A list ID of instance that you want to associate.
+     * 
+     */
     public List<String> instanceIds() {
         return this.instanceIds == null ? List.of() : this.instanceIds;
     }
@@ -45,6 +57,10 @@ public final class GetDdosCooDomainResourcesResult {
     public Optional<String> queryDomainPattern() {
         return Optional.ofNullable(this.queryDomainPattern);
     }
+    /**
+     * @return A list of Ddoscoo Domain Resources. Each element contains the following attributes:
+     * 
+     */
     public List<GetDdosCooDomainResourcesResource> resources() {
         return this.resources;
     }

@@ -27,6 +27,8 @@ The account ID for some service API operations. You can retrieve this from the '
 Alibaba Cloud console.
 """
 
+accountType: Optional[str]
+
 assumeRole: Optional[str]
 
 assumeRoleWithOidc: Optional[str]

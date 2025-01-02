@@ -24,6 +24,7 @@ class PeerConnectionAccepterArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
+                 link_type: Optional[pulumi.Input[str]] = None,
                  peer_connection_accepter_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None):
         """
@@ -35,6 +36,7 @@ class PeerConnectionAccepterArgs:
                The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         :param pulumi.Input[bool] force_delete: Specifies whether to forcefully delete the VPC peering connection. Valid values:
+        :param pulumi.Input[str] link_type: Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
         :param pulumi.Input[str] peer_connection_accepter_name: The new name of the VPC peering connection.
                
                The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
@@ -51,6 +53,8 @@ class PeerConnectionAccepterArgs:
             pulumi.set(__self__, "dry_run", dry_run)
         if force_delete is not None:
             pulumi.set(__self__, "force_delete", force_delete)
+        if link_type is not None:
+            pulumi.set(__self__, "link_type", link_type)
         if peer_connection_accepter_name is not None:
             pulumi.set(__self__, "peer_connection_accepter_name", peer_connection_accepter_name)
         if resource_group_id is not None:
@@ -119,6 +123,18 @@ class PeerConnectionAccepterArgs:
         pulumi.set(self, "force_delete", value)
 
     @property
+    @pulumi.getter(name="linkType")
+    def link_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+        """
+        return pulumi.get(self, "link_type")
+
+    @link_type.setter
+    def link_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "link_type", value)
+
+    @property
     @pulumi.getter(name="peerConnectionAccepterName")
     def peer_connection_accepter_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -159,7 +175,9 @@ class _PeerConnectionAccepterState:
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
+                 link_type: Optional[pulumi.Input[str]] = None,
                  peer_connection_accepter_name: Optional[pulumi.Input[str]] = None,
+                 region_id: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None):
@@ -176,9 +194,11 @@ class _PeerConnectionAccepterState:
         :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         :param pulumi.Input[bool] force_delete: Specifies whether to forcefully delete the VPC peering connection. Valid values:
         :param pulumi.Input[str] instance_id: The ID of the VPC peering connection whose name or description you want to modify.
+        :param pulumi.Input[str] link_type: Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
         :param pulumi.Input[str] peer_connection_accepter_name: The new name of the VPC peering connection.
                
                The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] region_id: The ID of the region where you want to query VPC peering connections.
         :param pulumi.Input[str] resource_group_id: The ID of the new resource group.
                
                > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
@@ -203,8 +223,12 @@ class _PeerConnectionAccepterState:
             pulumi.set(__self__, "force_delete", force_delete)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
+        if link_type is not None:
+            pulumi.set(__self__, "link_type", link_type)
         if peer_connection_accepter_name is not None:
             pulumi.set(__self__, "peer_connection_accepter_name", peer_connection_accepter_name)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if status is not None:
@@ -323,6 +347,18 @@ class _PeerConnectionAccepterState:
         pulumi.set(self, "instance_id", value)
 
     @property
+    @pulumi.getter(name="linkType")
+    def link_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+        """
+        return pulumi.get(self, "link_type")
+
+    @link_type.setter
+    def link_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "link_type", value)
+
+    @property
     @pulumi.getter(name="peerConnectionAccepterName")
     def peer_connection_accepter_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -335,6 +371,18 @@ class _PeerConnectionAccepterState:
     @peer_connection_accepter_name.setter
     def peer_connection_accepter_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "peer_connection_accepter_name", value)
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the region where you want to query VPC peering connections.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region_id", value)
 
     @property
     @pulumi.getter(name="resourceGroupId")
@@ -385,13 +433,16 @@ class PeerConnectionAccepter(pulumi.CustomResource):
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
+                 link_type: Optional[pulumi.Input[str]] = None,
                  peer_connection_accepter_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Vpc Peer Connection Accepter resource.
+        Provides a Vpc Peer Peer Connection Accepter resource.
 
-        For information about Vpc Peer Connection Accepter and how to use it, see [What is Peer Connection Accepter](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpcpeer-2022-01-01-acceptvpcpeerconnection).
+        Vpc peer connection receiver.
+
+        For information about Vpc Peer Peer Connection Accepter and how to use it, see [What is Peer Connection Accepter](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpcpeer-2022-01-01-acceptvpcpeerconnection).
 
         > **NOTE:** Available since v1.196.0.
 
@@ -432,7 +483,7 @@ class PeerConnectionAccepter(pulumi.CustomResource):
 
         ## Import
 
-        Vpc Peer Connection Accepter can be imported using the id, e.g.
+        Vpc Peer Peer Connection Accepter can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/peerConnectionAccepter:PeerConnectionAccepter example <id>
@@ -447,6 +498,7 @@ class PeerConnectionAccepter(pulumi.CustomResource):
         :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         :param pulumi.Input[bool] force_delete: Specifies whether to forcefully delete the VPC peering connection. Valid values:
         :param pulumi.Input[str] instance_id: The ID of the VPC peering connection whose name or description you want to modify.
+        :param pulumi.Input[str] link_type: Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
         :param pulumi.Input[str] peer_connection_accepter_name: The new name of the VPC peering connection.
                
                The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
@@ -461,9 +513,11 @@ class PeerConnectionAccepter(pulumi.CustomResource):
                  args: PeerConnectionAccepterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Vpc Peer Connection Accepter resource.
+        Provides a Vpc Peer Peer Connection Accepter resource.
 
-        For information about Vpc Peer Connection Accepter and how to use it, see [What is Peer Connection Accepter](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpcpeer-2022-01-01-acceptvpcpeerconnection).
+        Vpc peer connection receiver.
+
+        For information about Vpc Peer Peer Connection Accepter and how to use it, see [What is Peer Connection Accepter](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpcpeer-2022-01-01-acceptvpcpeerconnection).
 
         > **NOTE:** Available since v1.196.0.
 
@@ -504,7 +558,7 @@ class PeerConnectionAccepter(pulumi.CustomResource):
 
         ## Import
 
-        Vpc Peer Connection Accepter can be imported using the id, e.g.
+        Vpc Peer Peer Connection Accepter can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/peerConnectionAccepter:PeerConnectionAccepter example <id>
@@ -530,6 +584,7 @@ class PeerConnectionAccepter(pulumi.CustomResource):
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
+                 link_type: Optional[pulumi.Input[str]] = None,
                  peer_connection_accepter_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -548,12 +603,14 @@ class PeerConnectionAccepter(pulumi.CustomResource):
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
+            __props__.__dict__["link_type"] = link_type
             __props__.__dict__["peer_connection_accepter_name"] = peer_connection_accepter_name
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["accepting_owner_uid"] = None
             __props__.__dict__["accepting_region_id"] = None
             __props__.__dict__["accepting_vpc_id"] = None
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["region_id"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["vpc_id"] = None
         super(PeerConnectionAccepter, __self__).__init__(
@@ -575,7 +632,9 @@ class PeerConnectionAccepter(pulumi.CustomResource):
             dry_run: Optional[pulumi.Input[bool]] = None,
             force_delete: Optional[pulumi.Input[bool]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
+            link_type: Optional[pulumi.Input[str]] = None,
             peer_connection_accepter_name: Optional[pulumi.Input[str]] = None,
+            region_id: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None) -> 'PeerConnectionAccepter':
@@ -597,9 +656,11 @@ class PeerConnectionAccepter(pulumi.CustomResource):
         :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         :param pulumi.Input[bool] force_delete: Specifies whether to forcefully delete the VPC peering connection. Valid values:
         :param pulumi.Input[str] instance_id: The ID of the VPC peering connection whose name or description you want to modify.
+        :param pulumi.Input[str] link_type: Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
         :param pulumi.Input[str] peer_connection_accepter_name: The new name of the VPC peering connection.
                
                The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] region_id: The ID of the region where you want to query VPC peering connections.
         :param pulumi.Input[str] resource_group_id: The ID of the new resource group.
                
                > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
@@ -619,7 +680,9 @@ class PeerConnectionAccepter(pulumi.CustomResource):
         __props__.__dict__["dry_run"] = dry_run
         __props__.__dict__["force_delete"] = force_delete
         __props__.__dict__["instance_id"] = instance_id
+        __props__.__dict__["link_type"] = link_type
         __props__.__dict__["peer_connection_accepter_name"] = peer_connection_accepter_name
+        __props__.__dict__["region_id"] = region_id
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["status"] = status
         __props__.__dict__["vpc_id"] = vpc_id
@@ -700,6 +763,14 @@ class PeerConnectionAccepter(pulumi.CustomResource):
         return pulumi.get(self, "instance_id")
 
     @property
+    @pulumi.getter(name="linkType")
+    def link_type(self) -> pulumi.Output[str]:
+        """
+        Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+        """
+        return pulumi.get(self, "link_type")
+
+    @property
     @pulumi.getter(name="peerConnectionAccepterName")
     def peer_connection_accepter_name(self) -> pulumi.Output[str]:
         """
@@ -708,6 +779,14 @@ class PeerConnectionAccepter(pulumi.CustomResource):
         The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "peer_connection_accepter_name")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the region where you want to query VPC peering connections.
+        """
+        return pulumi.get(self, "region_id")
 
     @property
     @pulumi.getter(name="resourceGroupId")

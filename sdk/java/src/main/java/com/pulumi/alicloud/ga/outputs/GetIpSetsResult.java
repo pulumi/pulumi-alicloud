@@ -22,7 +22,15 @@ public final class GetIpSetsResult {
     private String id;
     private List<String> ids;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Ga Ip Sets. Each element contains the following attributes:
+     * 
+     */
     private List<GetIpSetsSet> sets;
+    /**
+     * @return The status of the acceleration region.
+     * 
+     */
     private @Nullable String status;
 
     private GetIpSetsResult() {}
@@ -42,9 +50,17 @@ public final class GetIpSetsResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Ga Ip Sets. Each element contains the following attributes:
+     * 
+     */
     public List<GetIpSetsSet> sets() {
         return this.sets;
     }
+    /**
+     * @return The status of the acceleration region.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

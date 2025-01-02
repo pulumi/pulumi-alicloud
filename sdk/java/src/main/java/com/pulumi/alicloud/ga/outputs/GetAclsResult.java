@@ -15,7 +15,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAclsResult {
+    /**
+     * @return The name of the acl.
+     * 
+     */
     private @Nullable String aclName;
+    /**
+     * @return A list of Ga Acls. Each element contains the following attributes:
+     * 
+     */
     private List<GetAclsAcl> acls;
     private @Nullable Boolean enableDetails;
     /**
@@ -25,14 +33,30 @@ public final class GetAclsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Acl names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The status of the resource.
+     * 
+     */
     private @Nullable String status;
 
     private GetAclsResult() {}
+    /**
+     * @return The name of the acl.
+     * 
+     */
     public Optional<String> aclName() {
         return Optional.ofNullable(this.aclName);
     }
+    /**
+     * @return A list of Ga Acls. Each element contains the following attributes:
+     * 
+     */
     public List<GetAclsAcl> acls() {
         return this.acls;
     }
@@ -52,12 +76,20 @@ public final class GetAclsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Acl names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of the resource.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

@@ -171,7 +171,7 @@ export class V3Trigger extends pulumi.CustomResource {
     /**
      * Trigger Event source ARN
      */
-    public readonly sourceArn!: pulumi.Output<string | undefined>;
+    public readonly sourceArn!: pulumi.Output<string>;
     /**
      * The state of the trigger
      */

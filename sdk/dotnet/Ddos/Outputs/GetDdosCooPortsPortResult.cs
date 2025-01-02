@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Ddos.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The Ddoscoo instance ID.
+        /// The DdosCoo instance ID.
         /// </summary>
         public readonly string InstanceId;
         /// <summary>

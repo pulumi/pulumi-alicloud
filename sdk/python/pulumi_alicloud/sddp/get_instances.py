@@ -49,6 +49,9 @@ class GetInstancesResult:
     @property
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetInstancesInstanceResult']:
+        """
+        A list of Sddp Instances. Each element contains the following attributes:
+        """
         return pulumi.get(self, "instances")
 
     @property
@@ -73,7 +76,7 @@ def get_instances(output_file: Optional[str] = None,
     """
     This data source provides the Sddp Instances of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.136.0+.
+    > **NOTE:** Available since v1.136.0.
 
     ## Example Usage
 
@@ -104,7 +107,7 @@ def get_instances_output(output_file: Optional[pulumi.Input[Optional[str]]] = No
     """
     This data source provides the Sddp Instances of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.136.0+.
+    > **NOTE:** Available since v1.136.0.
 
     ## Example Usage
 

@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Waf Certificates of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.135.0+.
+// > **NOTE:** Available since v1.135.0.
 //
 // ## Example Usage
 //
@@ -73,13 +73,17 @@ type GetCertificatesArgs struct {
 
 // A collection of values returned by getCertificates.
 type GetCertificatesResult struct {
+	// A list of Waf Certificates. Each element contains the following attributes:
 	Certificates []GetCertificatesCertificate `pulumi:"certificates"`
-	Domain       *string                      `pulumi:"domain"`
+	// The domain that you want to add to WAF.
+	Domain *string `pulumi:"domain"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	InstanceId string   `pulumi:"instanceId"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// WAF instance ID.
+	InstanceId string  `pulumi:"instanceId"`
+	NameRegex  *string `pulumi:"nameRegex"`
+	// A list of Certificate names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 }
@@ -126,10 +130,12 @@ func (o GetCertificatesResultOutput) ToGetCertificatesResultOutputWithContext(ct
 	return o
 }
 
+// A list of Waf Certificates. Each element contains the following attributes:
 func (o GetCertificatesResultOutput) Certificates() GetCertificatesCertificateArrayOutput {
 	return o.ApplyT(func(v GetCertificatesResult) []GetCertificatesCertificate { return v.Certificates }).(GetCertificatesCertificateArrayOutput)
 }
 
+// The domain that you want to add to WAF.
 func (o GetCertificatesResultOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCertificatesResult) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
@@ -143,6 +149,7 @@ func (o GetCertificatesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetCertificatesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// WAF instance ID.
 func (o GetCertificatesResultOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCertificatesResult) string { return v.InstanceId }).(pulumi.StringOutput)
 }
@@ -151,6 +158,7 @@ func (o GetCertificatesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCertificatesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Certificate names.
 func (o GetCertificatesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetCertificatesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

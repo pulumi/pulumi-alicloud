@@ -19,8 +19,16 @@ public final class GetVpcEndpointServiceResourcesResult {
      * 
      */
     private String id;
+    /**
+     * @return A list of Vpc Endpoint Service Resource IDs.
+     * 
+     */
     private List<String> ids;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Privatelink Vpc Endpoint Service Resources. Each element contains the following attributes:
+     * 
+     */
     private List<GetVpcEndpointServiceResourcesResource> resources;
     private String serviceId;
 
@@ -32,12 +40,20 @@ public final class GetVpcEndpointServiceResourcesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of Vpc Endpoint Service Resource IDs.
+     * 
+     */
     public List<String> ids() {
         return this.ids;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Privatelink Vpc Endpoint Service Resources. Each element contains the following attributes:
+     * 
+     */
     public List<GetVpcEndpointServiceResourcesResource> resources() {
         return this.resources;
     }

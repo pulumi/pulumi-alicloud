@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string Device;
         /// <summary>
-        /// The instance ID of the disk mount.
+        /// Filter the results by the specified ECS instance ID.
         /// </summary>
         public readonly string InstanceId;
 

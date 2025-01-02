@@ -80,16 +80,25 @@ class GetRulesResult:
     @property
     @pulumi.getter
     def category(self) -> Optional[int]:
+        """
+        Sensitive Data Identification Rules for the Type of.
+        """
         return pulumi.get(self, "category")
 
     @property
     @pulumi.getter(name="contentCategory")
     def content_category(self) -> Optional[str]:
+        """
+        The Content Classification.
+        """
         return pulumi.get(self, "content_category")
 
     @property
     @pulumi.getter(name="customType")
     def custom_type(self) -> Optional[int]:
+        """
+        Sensitive Data Identification Rules of Type. 0: the Built-in 1: The User-Defined.
+        """
         return pulumi.get(self, "custom_type")
 
     @property
@@ -123,6 +132,9 @@ class GetRulesResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Rule names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -133,11 +145,17 @@ class GetRulesResult:
     @property
     @pulumi.getter(name="productId")
     def product_id(self) -> Optional[str]:
+        """
+        Product ID.
+        """
         return pulumi.get(self, "product_id")
 
     @property
     @pulumi.getter(name="riskLevelId")
     def risk_level_id(self) -> Optional[str]:
+        """
+        Sensitive Data Identification Rules of Risk Level ID. Valid values:1:S1, Weak Risk Level. 2:S2, Medium Risk Level. 3:S3 High Risk Level. 4:S4, the Highest Risk Level.
+        """
         return pulumi.get(self, "risk_level_id")
 
     @property
@@ -148,16 +166,25 @@ class GetRulesResult:
     @property
     @pulumi.getter
     def rules(self) -> Sequence['outputs.GetRulesRuleResult']:
+        """
+        A list of Sddp Rules. Each element contains the following attributes:
+        """
         return pulumi.get(self, "rules")
 
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        Sensitive Data Identification Rules Detection State of.
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="warnLevel")
     def warn_level(self) -> Optional[int]:
+        """
+        The Level of Risk.
+        """
         return pulumi.get(self, "warn_level")
 
 
@@ -202,7 +229,7 @@ def get_rules(category: Optional[int] = None,
     """
     This data source provides the Sddp Rules of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.132.0+.
+    > **NOTE:** Available since v1.132.0.
 
     ## Example Usage
 
@@ -287,7 +314,7 @@ def get_rules_output(category: Optional[pulumi.Input[Optional[int]]] = None,
     """
     This data source provides the Sddp Rules of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.132.0+.
+    > **NOTE:** Available since v1.132.0.
 
     ## Example Usage
 

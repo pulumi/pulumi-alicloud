@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **NOTE:** Available in v1.156.0+.
+// > **NOTE:** Available since v1.156.0.
 //
 // ## Example Usage
 //

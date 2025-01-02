@@ -267,6 +267,12 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> enableSsl() {
         return Codegen.optional(this.enableSsl);
     }
+    @Export(name="kernelVersion", refs={String.class}, tree="[0]")
+    private Output<String> kernelVersion;
+
+    public Output<String> kernelVersion() {
+        return this.kernelVersion;
+    }
     @Export(name="kmsId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsId;
 
@@ -398,6 +404,12 @@ public class Cluster extends com.pulumi.resources.CustomResource {
 
     public Output<String> status() {
         return this.status;
+    }
+    @Export(name="switchMode", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> switchMode;
+
+    public Output<Optional<Integer>> switchMode() {
+        return Codegen.optional(this.switchMode);
     }
     /**
      * A mapping of tags to assign to the resource.

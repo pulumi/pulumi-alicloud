@@ -50,11 +50,17 @@ class GetAcceleratorSpareIpAttachmentsResult:
     @property
     @pulumi.getter(name="acceleratorId")
     def accelerator_id(self) -> str:
+        """
+        The ID of the global acceleration instance.
+        """
         return pulumi.get(self, "accelerator_id")
 
     @property
     @pulumi.getter
     def attachments(self) -> Sequence['outputs.GetAcceleratorSpareIpAttachmentsAttachmentResult']:
+        """
+        A list of Ga Accelerator Spare Ip Attachments. Each element contains the following attributes:
+        """
         return pulumi.get(self, "attachments")
 
     @property
@@ -78,6 +84,9 @@ class GetAcceleratorSpareIpAttachmentsResult:
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        The status of the standby CNAME IP address. Valid values: `active`, `inuse`.
+        """
         return pulumi.get(self, "status")
 
 
@@ -103,7 +112,7 @@ def get_accelerator_spare_ip_attachments(accelerator_id: Optional[str] = None,
     """
     This data source provides the Ga Accelerator Spare Ip Attachments of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.167.0+.
+    > **NOTE:** Available since v1.167.0.
 
     ## Example Usage
 
@@ -150,7 +159,7 @@ def get_accelerator_spare_ip_attachments_output(accelerator_id: Optional[pulumi.
     """
     This data source provides the Ga Accelerator Spare Ip Attachments of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.167.0+.
+    > **NOTE:** Available since v1.167.0.
 
     ## Example Usage
 

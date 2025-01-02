@@ -4489,14 +4489,16 @@ type GetScalingConfigurationsConfiguration struct {
 	CreditSpecification string `pulumi:"creditSpecification"`
 	// Data disks of the scaling configuration.
 	DataDisks []GetScalingConfigurationsConfigurationDataDisk `pulumi:"dataDisks"`
-	// (Optional,Available in 1.143.0+) Hostname of an ECS instance.
+	// (Optional,Available since v1.143.0) Hostname of an ECS instance.
 	HostName string `pulumi:"hostName"`
 	// ID of the scaling rule.
 	Id string `pulumi:"id"`
 	// Image ID of the scaling configuration.
 	ImageId string `pulumi:"imageId"`
-	// (Optional,Available in 1.143.0+) InstanceName of an ECS instance.
+	// (Optional,Available since v1.143.0) InstanceName of an ECS instance.
 	InstanceName string `pulumi:"instanceName"`
+	// (Optional, Available since v1.240.0) intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.
+	InstancePatternInfos []GetScalingConfigurationsConfigurationInstancePatternInfo `pulumi:"instancePatternInfos"`
 	// Resource type of an ECS instance.
 	InstanceType string `pulumi:"instanceType"`
 	// Internet charge type of the scaling configuration.
@@ -4513,9 +4515,9 @@ type GetScalingConfigurationsConfiguration struct {
 	ScalingGroupId string `pulumi:"scalingGroupId"`
 	// Security group ID of the scaling configuration.
 	SecurityGroupId string `pulumi:"securityGroupId"`
-	// (Optional, Available in 1.151.0+) The maximum price hourly for instance types.
+	// (Optional, Available since v1.151.0) The maximum price hourly for instance types.
 	SpotPriceLimits []GetScalingConfigurationsConfigurationSpotPriceLimit `pulumi:"spotPriceLimits"`
-	// (Optional, Available in 1.151.0+) The spot strategy for a Pay-As-You-Go instance.
+	// (Optional, Available since v1.151.0) The spot strategy for a Pay-As-You-Go instance.
 	SpotStrategy string `pulumi:"spotStrategy"`
 	// System disk category of the scaling configuration.
 	SystemDiskCategory string `pulumi:"systemDiskCategory"`
@@ -4543,14 +4545,16 @@ type GetScalingConfigurationsConfigurationArgs struct {
 	CreditSpecification pulumi.StringInput `pulumi:"creditSpecification"`
 	// Data disks of the scaling configuration.
 	DataDisks GetScalingConfigurationsConfigurationDataDiskArrayInput `pulumi:"dataDisks"`
-	// (Optional,Available in 1.143.0+) Hostname of an ECS instance.
+	// (Optional,Available since v1.143.0) Hostname of an ECS instance.
 	HostName pulumi.StringInput `pulumi:"hostName"`
 	// ID of the scaling rule.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Image ID of the scaling configuration.
 	ImageId pulumi.StringInput `pulumi:"imageId"`
-	// (Optional,Available in 1.143.0+) InstanceName of an ECS instance.
+	// (Optional,Available since v1.143.0) InstanceName of an ECS instance.
 	InstanceName pulumi.StringInput `pulumi:"instanceName"`
+	// (Optional, Available since v1.240.0) intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.
+	InstancePatternInfos GetScalingConfigurationsConfigurationInstancePatternInfoArrayInput `pulumi:"instancePatternInfos"`
 	// Resource type of an ECS instance.
 	InstanceType pulumi.StringInput `pulumi:"instanceType"`
 	// Internet charge type of the scaling configuration.
@@ -4567,9 +4571,9 @@ type GetScalingConfigurationsConfigurationArgs struct {
 	ScalingGroupId pulumi.StringInput `pulumi:"scalingGroupId"`
 	// Security group ID of the scaling configuration.
 	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
-	// (Optional, Available in 1.151.0+) The maximum price hourly for instance types.
+	// (Optional, Available since v1.151.0) The maximum price hourly for instance types.
 	SpotPriceLimits GetScalingConfigurationsConfigurationSpotPriceLimitArrayInput `pulumi:"spotPriceLimits"`
-	// (Optional, Available in 1.151.0+) The spot strategy for a Pay-As-You-Go instance.
+	// (Optional, Available since v1.151.0) The spot strategy for a Pay-As-You-Go instance.
 	SpotStrategy pulumi.StringInput `pulumi:"spotStrategy"`
 	// System disk category of the scaling configuration.
 	SystemDiskCategory pulumi.StringInput `pulumi:"systemDiskCategory"`
@@ -4647,7 +4651,7 @@ func (o GetScalingConfigurationsConfigurationOutput) DataDisks() GetScalingConfi
 	}).(GetScalingConfigurationsConfigurationDataDiskArrayOutput)
 }
 
-// (Optional,Available in 1.143.0+) Hostname of an ECS instance.
+// (Optional,Available since v1.143.0) Hostname of an ECS instance.
 func (o GetScalingConfigurationsConfigurationOutput) HostName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetScalingConfigurationsConfiguration) string { return v.HostName }).(pulumi.StringOutput)
 }
@@ -4662,9 +4666,16 @@ func (o GetScalingConfigurationsConfigurationOutput) ImageId() pulumi.StringOutp
 	return o.ApplyT(func(v GetScalingConfigurationsConfiguration) string { return v.ImageId }).(pulumi.StringOutput)
 }
 
-// (Optional,Available in 1.143.0+) InstanceName of an ECS instance.
+// (Optional,Available since v1.143.0) InstanceName of an ECS instance.
 func (o GetScalingConfigurationsConfigurationOutput) InstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetScalingConfigurationsConfiguration) string { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+// (Optional, Available since v1.240.0) intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.
+func (o GetScalingConfigurationsConfigurationOutput) InstancePatternInfos() GetScalingConfigurationsConfigurationInstancePatternInfoArrayOutput {
+	return o.ApplyT(func(v GetScalingConfigurationsConfiguration) []GetScalingConfigurationsConfigurationInstancePatternInfo {
+		return v.InstancePatternInfos
+	}).(GetScalingConfigurationsConfigurationInstancePatternInfoArrayOutput)
 }
 
 // Resource type of an ECS instance.
@@ -4707,14 +4718,14 @@ func (o GetScalingConfigurationsConfigurationOutput) SecurityGroupId() pulumi.St
 	return o.ApplyT(func(v GetScalingConfigurationsConfiguration) string { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
-// (Optional, Available in 1.151.0+) The maximum price hourly for instance types.
+// (Optional, Available since v1.151.0) The maximum price hourly for instance types.
 func (o GetScalingConfigurationsConfigurationOutput) SpotPriceLimits() GetScalingConfigurationsConfigurationSpotPriceLimitArrayOutput {
 	return o.ApplyT(func(v GetScalingConfigurationsConfiguration) []GetScalingConfigurationsConfigurationSpotPriceLimit {
 		return v.SpotPriceLimits
 	}).(GetScalingConfigurationsConfigurationSpotPriceLimitArrayOutput)
 }
 
-// (Optional, Available in 1.151.0+) The spot strategy for a Pay-As-You-Go instance.
+// (Optional, Available since v1.151.0) The spot strategy for a Pay-As-You-Go instance.
 func (o GetScalingConfigurationsConfigurationOutput) SpotStrategy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetScalingConfigurationsConfiguration) string { return v.SpotStrategy }).(pulumi.StringOutput)
 }
@@ -4894,6 +4905,159 @@ func (o GetScalingConfigurationsConfigurationDataDiskArrayOutput) Index(i pulumi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetScalingConfigurationsConfigurationDataDisk {
 		return vs[0].([]GetScalingConfigurationsConfigurationDataDisk)[vs[1].(int)]
 	}).(GetScalingConfigurationsConfigurationDataDiskOutput)
+}
+
+type GetScalingConfigurationsConfigurationInstancePatternInfo struct {
+	// Architecture N of instance type N. Valid values: X86, Heterogeneous, BareMetal, Arm, SuperComputeCluster.
+	Architectures []string `pulumi:"architectures"`
+	// Specifies whether to include burstable instance types.  Valid values: Exclude, Include, Required.
+	BurstablePerformance string `pulumi:"burstablePerformance"`
+	// The number of vCPUs that are specified for an instance type in instancePatternInfo.
+	Cores int `pulumi:"cores"`
+	// Instance type N that you want to exclude. You can use wildcard characters, such as an asterisk (*), to exclude an instance type or an instance family.
+	ExcludedInstanceTypes []string `pulumi:"excludedInstanceTypes"`
+	// The instance family level in instancePatternInfo.
+	InstanceFamilyLevel string `pulumi:"instanceFamilyLevel"`
+	// The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
+	MaxPrice float64 `pulumi:"maxPrice"`
+	// The memory size that is specified for an instance type in instancePatternInfo.
+	Memory float64 `pulumi:"memory"`
+}
+
+// GetScalingConfigurationsConfigurationInstancePatternInfoInput is an input type that accepts GetScalingConfigurationsConfigurationInstancePatternInfoArgs and GetScalingConfigurationsConfigurationInstancePatternInfoOutput values.
+// You can construct a concrete instance of `GetScalingConfigurationsConfigurationInstancePatternInfoInput` via:
+//
+//	GetScalingConfigurationsConfigurationInstancePatternInfoArgs{...}
+type GetScalingConfigurationsConfigurationInstancePatternInfoInput interface {
+	pulumi.Input
+
+	ToGetScalingConfigurationsConfigurationInstancePatternInfoOutput() GetScalingConfigurationsConfigurationInstancePatternInfoOutput
+	ToGetScalingConfigurationsConfigurationInstancePatternInfoOutputWithContext(context.Context) GetScalingConfigurationsConfigurationInstancePatternInfoOutput
+}
+
+type GetScalingConfigurationsConfigurationInstancePatternInfoArgs struct {
+	// Architecture N of instance type N. Valid values: X86, Heterogeneous, BareMetal, Arm, SuperComputeCluster.
+	Architectures pulumi.StringArrayInput `pulumi:"architectures"`
+	// Specifies whether to include burstable instance types.  Valid values: Exclude, Include, Required.
+	BurstablePerformance pulumi.StringInput `pulumi:"burstablePerformance"`
+	// The number of vCPUs that are specified for an instance type in instancePatternInfo.
+	Cores pulumi.IntInput `pulumi:"cores"`
+	// Instance type N that you want to exclude. You can use wildcard characters, such as an asterisk (*), to exclude an instance type or an instance family.
+	ExcludedInstanceTypes pulumi.StringArrayInput `pulumi:"excludedInstanceTypes"`
+	// The instance family level in instancePatternInfo.
+	InstanceFamilyLevel pulumi.StringInput `pulumi:"instanceFamilyLevel"`
+	// The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
+	MaxPrice pulumi.Float64Input `pulumi:"maxPrice"`
+	// The memory size that is specified for an instance type in instancePatternInfo.
+	Memory pulumi.Float64Input `pulumi:"memory"`
+}
+
+func (GetScalingConfigurationsConfigurationInstancePatternInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScalingConfigurationsConfigurationInstancePatternInfo)(nil)).Elem()
+}
+
+func (i GetScalingConfigurationsConfigurationInstancePatternInfoArgs) ToGetScalingConfigurationsConfigurationInstancePatternInfoOutput() GetScalingConfigurationsConfigurationInstancePatternInfoOutput {
+	return i.ToGetScalingConfigurationsConfigurationInstancePatternInfoOutputWithContext(context.Background())
+}
+
+func (i GetScalingConfigurationsConfigurationInstancePatternInfoArgs) ToGetScalingConfigurationsConfigurationInstancePatternInfoOutputWithContext(ctx context.Context) GetScalingConfigurationsConfigurationInstancePatternInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetScalingConfigurationsConfigurationInstancePatternInfoOutput)
+}
+
+// GetScalingConfigurationsConfigurationInstancePatternInfoArrayInput is an input type that accepts GetScalingConfigurationsConfigurationInstancePatternInfoArray and GetScalingConfigurationsConfigurationInstancePatternInfoArrayOutput values.
+// You can construct a concrete instance of `GetScalingConfigurationsConfigurationInstancePatternInfoArrayInput` via:
+//
+//	GetScalingConfigurationsConfigurationInstancePatternInfoArray{ GetScalingConfigurationsConfigurationInstancePatternInfoArgs{...} }
+type GetScalingConfigurationsConfigurationInstancePatternInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetScalingConfigurationsConfigurationInstancePatternInfoArrayOutput() GetScalingConfigurationsConfigurationInstancePatternInfoArrayOutput
+	ToGetScalingConfigurationsConfigurationInstancePatternInfoArrayOutputWithContext(context.Context) GetScalingConfigurationsConfigurationInstancePatternInfoArrayOutput
+}
+
+type GetScalingConfigurationsConfigurationInstancePatternInfoArray []GetScalingConfigurationsConfigurationInstancePatternInfoInput
+
+func (GetScalingConfigurationsConfigurationInstancePatternInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetScalingConfigurationsConfigurationInstancePatternInfo)(nil)).Elem()
+}
+
+func (i GetScalingConfigurationsConfigurationInstancePatternInfoArray) ToGetScalingConfigurationsConfigurationInstancePatternInfoArrayOutput() GetScalingConfigurationsConfigurationInstancePatternInfoArrayOutput {
+	return i.ToGetScalingConfigurationsConfigurationInstancePatternInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetScalingConfigurationsConfigurationInstancePatternInfoArray) ToGetScalingConfigurationsConfigurationInstancePatternInfoArrayOutputWithContext(ctx context.Context) GetScalingConfigurationsConfigurationInstancePatternInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetScalingConfigurationsConfigurationInstancePatternInfoArrayOutput)
+}
+
+type GetScalingConfigurationsConfigurationInstancePatternInfoOutput struct{ *pulumi.OutputState }
+
+func (GetScalingConfigurationsConfigurationInstancePatternInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScalingConfigurationsConfigurationInstancePatternInfo)(nil)).Elem()
+}
+
+func (o GetScalingConfigurationsConfigurationInstancePatternInfoOutput) ToGetScalingConfigurationsConfigurationInstancePatternInfoOutput() GetScalingConfigurationsConfigurationInstancePatternInfoOutput {
+	return o
+}
+
+func (o GetScalingConfigurationsConfigurationInstancePatternInfoOutput) ToGetScalingConfigurationsConfigurationInstancePatternInfoOutputWithContext(ctx context.Context) GetScalingConfigurationsConfigurationInstancePatternInfoOutput {
+	return o
+}
+
+// Architecture N of instance type N. Valid values: X86, Heterogeneous, BareMetal, Arm, SuperComputeCluster.
+func (o GetScalingConfigurationsConfigurationInstancePatternInfoOutput) Architectures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetScalingConfigurationsConfigurationInstancePatternInfo) []string { return v.Architectures }).(pulumi.StringArrayOutput)
+}
+
+// Specifies whether to include burstable instance types.  Valid values: Exclude, Include, Required.
+func (o GetScalingConfigurationsConfigurationInstancePatternInfoOutput) BurstablePerformance() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingConfigurationsConfigurationInstancePatternInfo) string { return v.BurstablePerformance }).(pulumi.StringOutput)
+}
+
+// The number of vCPUs that are specified for an instance type in instancePatternInfo.
+func (o GetScalingConfigurationsConfigurationInstancePatternInfoOutput) Cores() pulumi.IntOutput {
+	return o.ApplyT(func(v GetScalingConfigurationsConfigurationInstancePatternInfo) int { return v.Cores }).(pulumi.IntOutput)
+}
+
+// Instance type N that you want to exclude. You can use wildcard characters, such as an asterisk (*), to exclude an instance type or an instance family.
+func (o GetScalingConfigurationsConfigurationInstancePatternInfoOutput) ExcludedInstanceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetScalingConfigurationsConfigurationInstancePatternInfo) []string {
+		return v.ExcludedInstanceTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// The instance family level in instancePatternInfo.
+func (o GetScalingConfigurationsConfigurationInstancePatternInfoOutput) InstanceFamilyLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingConfigurationsConfigurationInstancePatternInfo) string { return v.InstanceFamilyLevel }).(pulumi.StringOutput)
+}
+
+// The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
+func (o GetScalingConfigurationsConfigurationInstancePatternInfoOutput) MaxPrice() pulumi.Float64Output {
+	return o.ApplyT(func(v GetScalingConfigurationsConfigurationInstancePatternInfo) float64 { return v.MaxPrice }).(pulumi.Float64Output)
+}
+
+// The memory size that is specified for an instance type in instancePatternInfo.
+func (o GetScalingConfigurationsConfigurationInstancePatternInfoOutput) Memory() pulumi.Float64Output {
+	return o.ApplyT(func(v GetScalingConfigurationsConfigurationInstancePatternInfo) float64 { return v.Memory }).(pulumi.Float64Output)
+}
+
+type GetScalingConfigurationsConfigurationInstancePatternInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetScalingConfigurationsConfigurationInstancePatternInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetScalingConfigurationsConfigurationInstancePatternInfo)(nil)).Elem()
+}
+
+func (o GetScalingConfigurationsConfigurationInstancePatternInfoArrayOutput) ToGetScalingConfigurationsConfigurationInstancePatternInfoArrayOutput() GetScalingConfigurationsConfigurationInstancePatternInfoArrayOutput {
+	return o
+}
+
+func (o GetScalingConfigurationsConfigurationInstancePatternInfoArrayOutput) ToGetScalingConfigurationsConfigurationInstancePatternInfoArrayOutputWithContext(ctx context.Context) GetScalingConfigurationsConfigurationInstancePatternInfoArrayOutput {
+	return o
+}
+
+func (o GetScalingConfigurationsConfigurationInstancePatternInfoArrayOutput) Index(i pulumi.IntInput) GetScalingConfigurationsConfigurationInstancePatternInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetScalingConfigurationsConfigurationInstancePatternInfo {
+		return vs[0].([]GetScalingConfigurationsConfigurationInstancePatternInfo)[vs[1].(int)]
+	}).(GetScalingConfigurationsConfigurationInstancePatternInfoOutput)
 }
 
 type GetScalingConfigurationsConfigurationSpotPriceLimit struct {
@@ -5756,6 +5920,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetScalingConfigurationsConfigurationArrayInput)(nil)).Elem(), GetScalingConfigurationsConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetScalingConfigurationsConfigurationDataDiskInput)(nil)).Elem(), GetScalingConfigurationsConfigurationDataDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetScalingConfigurationsConfigurationDataDiskArrayInput)(nil)).Elem(), GetScalingConfigurationsConfigurationDataDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetScalingConfigurationsConfigurationInstancePatternInfoInput)(nil)).Elem(), GetScalingConfigurationsConfigurationInstancePatternInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetScalingConfigurationsConfigurationInstancePatternInfoArrayInput)(nil)).Elem(), GetScalingConfigurationsConfigurationInstancePatternInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetScalingConfigurationsConfigurationSpotPriceLimitInput)(nil)).Elem(), GetScalingConfigurationsConfigurationSpotPriceLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetScalingConfigurationsConfigurationSpotPriceLimitArrayInput)(nil)).Elem(), GetScalingConfigurationsConfigurationSpotPriceLimitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetScalingGroupsGroupInput)(nil)).Elem(), GetScalingGroupsGroupArgs{})
@@ -5830,6 +5996,8 @@ func init() {
 	pulumi.RegisterOutputType(GetScalingConfigurationsConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetScalingConfigurationsConfigurationDataDiskOutput{})
 	pulumi.RegisterOutputType(GetScalingConfigurationsConfigurationDataDiskArrayOutput{})
+	pulumi.RegisterOutputType(GetScalingConfigurationsConfigurationInstancePatternInfoOutput{})
+	pulumi.RegisterOutputType(GetScalingConfigurationsConfigurationInstancePatternInfoArrayOutput{})
 	pulumi.RegisterOutputType(GetScalingConfigurationsConfigurationSpotPriceLimitOutput{})
 	pulumi.RegisterOutputType(GetScalingConfigurationsConfigurationSpotPriceLimitArrayOutput{})
 	pulumi.RegisterOutputType(GetScalingGroupsGroupOutput{})

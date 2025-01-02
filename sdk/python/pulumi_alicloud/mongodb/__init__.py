@@ -15,6 +15,7 @@ from .get_sharding_network_private_addresses import *
 from .get_sharding_network_public_addresses import *
 from .get_zones import *
 from .instance import *
+from .private_srv_network_address import *
 from .serverless_instance import *
 from .sharding_instance import *
 from .sharding_network_private_address import *

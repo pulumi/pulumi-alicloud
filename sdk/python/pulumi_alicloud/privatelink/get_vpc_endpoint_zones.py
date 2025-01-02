@@ -63,6 +63,9 @@ class GetVpcEndpointZonesResult:
     @property
     @pulumi.getter
     def ids(self) -> Sequence[str]:
+        """
+        A list of Vpc Endpoint Zone IDs.
+        """
         return pulumi.get(self, "ids")
 
     @property
@@ -73,11 +76,17 @@ class GetVpcEndpointZonesResult:
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        The Status of Vpc Endpoint Zone..
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def zones(self) -> Sequence['outputs.GetVpcEndpointZonesZoneResult']:
+        """
+        A list of Privatelink Vpc Endpoint Zones. Each element contains the following attributes:
+        """
         return pulumi.get(self, "zones")
 
 
@@ -102,7 +111,7 @@ def get_vpc_endpoint_zones(endpoint_id: Optional[str] = None,
     """
     This data source provides the Privatelink Vpc Endpoint Zones of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.111.0+.
+    > **NOTE:** Available since v1.111.0.
 
     ## Example Usage
 
@@ -142,7 +151,7 @@ def get_vpc_endpoint_zones_output(endpoint_id: Optional[pulumi.Input[str]] = Non
     """
     This data source provides the Privatelink Vpc Endpoint Zones of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.111.0+.
+    > **NOTE:** Available since v1.111.0.
 
     ## Example Usage
 

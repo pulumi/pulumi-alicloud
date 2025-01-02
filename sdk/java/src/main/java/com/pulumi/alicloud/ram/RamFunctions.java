@@ -716,6 +716,14 @@ public final class RamFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.ram.Group;
+     * import com.pulumi.alicloud.ram.GroupArgs;
+     * import com.pulumi.alicloud.ram.Policy;
+     * import com.pulumi.alicloud.ram.PolicyArgs;
+     * import com.pulumi.alicloud.ram.GroupPolicyAttachment;
+     * import com.pulumi.alicloud.ram.GroupPolicyAttachmentArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
      * import java.util.List;
@@ -731,14 +739,51 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .outputFile("policies.txt")
-     *             .userName("user1")
-     *             .groupName("group1")
-     *             .type("System")
+     *         var default_ = new Integer("default", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
      *             .build());
      * 
-     *         ctx.export("firstPolicyName", policiesDs.applyValue(getPoliciesResult -> getPoliciesResult.policies()[0].name()));
+     *         var group = new Group("group", GroupArgs.builder()
+     *             .name(String.format("groupName-%s", default_.result()))
+     *             .comments("this is a group comments.")
+     *             .build());
+     * 
+     *         var policy = new Policy("policy", PolicyArgs.builder()
+     *             .policyName(String.format("tf-example-%s", default_.result()))
+     *             .policyDocument("""
+     *     {
+     *       "Statement": [
+     *         {
+     *           "Action": [
+     *             "oss:ListObjects",
+     *             "oss:GetObject"
+     *           ],
+     *           "Effect": "Allow",
+     *           "Resource": [
+     *             "acs:oss:*:*:mybucket",
+     *             "acs:oss:*:*:mybucket/*"
+     *           ]
+     *         }
+     *       ],
+     *         "Version": "1"
+     *     }
+     *             """)
+     *             .description("this is a policy test")
+     *             .build());
+     * 
+     *         var attach = new GroupPolicyAttachment("attach", GroupPolicyAttachmentArgs.builder()
+     *             .policyName(policy.policyName())
+     *             .policyType(policy.type())
+     *             .groupName(group.name())
+     *             .build());
+     * 
+     *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .groupName(attach.groupName())
+     *             .type("Custom")
+     *             .build());
+     * 
+     *         ctx.export("firstPolicyName", policiesDs.applyValue(getPoliciesResult -> getPoliciesResult).applyValue(policiesDs -> policiesDs.applyValue(getPoliciesResult -> getPoliciesResult.policies()[0].name())));
      *     }
      * }
      * }
@@ -764,6 +809,14 @@ public final class RamFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.ram.Group;
+     * import com.pulumi.alicloud.ram.GroupArgs;
+     * import com.pulumi.alicloud.ram.Policy;
+     * import com.pulumi.alicloud.ram.PolicyArgs;
+     * import com.pulumi.alicloud.ram.GroupPolicyAttachment;
+     * import com.pulumi.alicloud.ram.GroupPolicyAttachmentArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
      * import java.util.List;
@@ -779,14 +832,51 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .outputFile("policies.txt")
-     *             .userName("user1")
-     *             .groupName("group1")
-     *             .type("System")
+     *         var default_ = new Integer("default", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
      *             .build());
      * 
-     *         ctx.export("firstPolicyName", policiesDs.applyValue(getPoliciesResult -> getPoliciesResult.policies()[0].name()));
+     *         var group = new Group("group", GroupArgs.builder()
+     *             .name(String.format("groupName-%s", default_.result()))
+     *             .comments("this is a group comments.")
+     *             .build());
+     * 
+     *         var policy = new Policy("policy", PolicyArgs.builder()
+     *             .policyName(String.format("tf-example-%s", default_.result()))
+     *             .policyDocument("""
+     *     {
+     *       "Statement": [
+     *         {
+     *           "Action": [
+     *             "oss:ListObjects",
+     *             "oss:GetObject"
+     *           ],
+     *           "Effect": "Allow",
+     *           "Resource": [
+     *             "acs:oss:*:*:mybucket",
+     *             "acs:oss:*:*:mybucket/*"
+     *           ]
+     *         }
+     *       ],
+     *         "Version": "1"
+     *     }
+     *             """)
+     *             .description("this is a policy test")
+     *             .build());
+     * 
+     *         var attach = new GroupPolicyAttachment("attach", GroupPolicyAttachmentArgs.builder()
+     *             .policyName(policy.policyName())
+     *             .policyType(policy.type())
+     *             .groupName(group.name())
+     *             .build());
+     * 
+     *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .groupName(attach.groupName())
+     *             .type("Custom")
+     *             .build());
+     * 
+     *         ctx.export("firstPolicyName", policiesDs.applyValue(getPoliciesResult -> getPoliciesResult).applyValue(policiesDs -> policiesDs.applyValue(getPoliciesResult -> getPoliciesResult.policies()[0].name())));
      *     }
      * }
      * }
@@ -812,6 +902,14 @@ public final class RamFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.ram.Group;
+     * import com.pulumi.alicloud.ram.GroupArgs;
+     * import com.pulumi.alicloud.ram.Policy;
+     * import com.pulumi.alicloud.ram.PolicyArgs;
+     * import com.pulumi.alicloud.ram.GroupPolicyAttachment;
+     * import com.pulumi.alicloud.ram.GroupPolicyAttachmentArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
      * import java.util.List;
@@ -827,14 +925,51 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .outputFile("policies.txt")
-     *             .userName("user1")
-     *             .groupName("group1")
-     *             .type("System")
+     *         var default_ = new Integer("default", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
      *             .build());
      * 
-     *         ctx.export("firstPolicyName", policiesDs.applyValue(getPoliciesResult -> getPoliciesResult.policies()[0].name()));
+     *         var group = new Group("group", GroupArgs.builder()
+     *             .name(String.format("groupName-%s", default_.result()))
+     *             .comments("this is a group comments.")
+     *             .build());
+     * 
+     *         var policy = new Policy("policy", PolicyArgs.builder()
+     *             .policyName(String.format("tf-example-%s", default_.result()))
+     *             .policyDocument("""
+     *     {
+     *       "Statement": [
+     *         {
+     *           "Action": [
+     *             "oss:ListObjects",
+     *             "oss:GetObject"
+     *           ],
+     *           "Effect": "Allow",
+     *           "Resource": [
+     *             "acs:oss:*:*:mybucket",
+     *             "acs:oss:*:*:mybucket/*"
+     *           ]
+     *         }
+     *       ],
+     *         "Version": "1"
+     *     }
+     *             """)
+     *             .description("this is a policy test")
+     *             .build());
+     * 
+     *         var attach = new GroupPolicyAttachment("attach", GroupPolicyAttachmentArgs.builder()
+     *             .policyName(policy.policyName())
+     *             .policyType(policy.type())
+     *             .groupName(group.name())
+     *             .build());
+     * 
+     *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .groupName(attach.groupName())
+     *             .type("Custom")
+     *             .build());
+     * 
+     *         ctx.export("firstPolicyName", policiesDs.applyValue(getPoliciesResult -> getPoliciesResult).applyValue(policiesDs -> policiesDs.applyValue(getPoliciesResult -> getPoliciesResult.policies()[0].name())));
      *     }
      * }
      * }
@@ -860,6 +995,14 @@ public final class RamFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.ram.Group;
+     * import com.pulumi.alicloud.ram.GroupArgs;
+     * import com.pulumi.alicloud.ram.Policy;
+     * import com.pulumi.alicloud.ram.PolicyArgs;
+     * import com.pulumi.alicloud.ram.GroupPolicyAttachment;
+     * import com.pulumi.alicloud.ram.GroupPolicyAttachmentArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
      * import java.util.List;
@@ -875,14 +1018,51 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .outputFile("policies.txt")
-     *             .userName("user1")
-     *             .groupName("group1")
-     *             .type("System")
+     *         var default_ = new Integer("default", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
      *             .build());
      * 
-     *         ctx.export("firstPolicyName", policiesDs.applyValue(getPoliciesResult -> getPoliciesResult.policies()[0].name()));
+     *         var group = new Group("group", GroupArgs.builder()
+     *             .name(String.format("groupName-%s", default_.result()))
+     *             .comments("this is a group comments.")
+     *             .build());
+     * 
+     *         var policy = new Policy("policy", PolicyArgs.builder()
+     *             .policyName(String.format("tf-example-%s", default_.result()))
+     *             .policyDocument("""
+     *     {
+     *       "Statement": [
+     *         {
+     *           "Action": [
+     *             "oss:ListObjects",
+     *             "oss:GetObject"
+     *           ],
+     *           "Effect": "Allow",
+     *           "Resource": [
+     *             "acs:oss:*:*:mybucket",
+     *             "acs:oss:*:*:mybucket/*"
+     *           ]
+     *         }
+     *       ],
+     *         "Version": "1"
+     *     }
+     *             """)
+     *             .description("this is a policy test")
+     *             .build());
+     * 
+     *         var attach = new GroupPolicyAttachment("attach", GroupPolicyAttachmentArgs.builder()
+     *             .policyName(policy.policyName())
+     *             .policyType(policy.type())
+     *             .groupName(group.name())
+     *             .build());
+     * 
+     *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .groupName(attach.groupName())
+     *             .type("Custom")
+     *             .build());
+     * 
+     *         ctx.export("firstPolicyName", policiesDs.applyValue(getPoliciesResult -> getPoliciesResult).applyValue(policiesDs -> policiesDs.applyValue(getPoliciesResult -> getPoliciesResult.policies()[0].name())));
      *     }
      * }
      * }
@@ -908,6 +1088,14 @@ public final class RamFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.ram.Group;
+     * import com.pulumi.alicloud.ram.GroupArgs;
+     * import com.pulumi.alicloud.ram.Policy;
+     * import com.pulumi.alicloud.ram.PolicyArgs;
+     * import com.pulumi.alicloud.ram.GroupPolicyAttachment;
+     * import com.pulumi.alicloud.ram.GroupPolicyAttachmentArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
      * import java.util.List;
@@ -923,14 +1111,51 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .outputFile("policies.txt")
-     *             .userName("user1")
-     *             .groupName("group1")
-     *             .type("System")
+     *         var default_ = new Integer("default", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
      *             .build());
      * 
-     *         ctx.export("firstPolicyName", policiesDs.applyValue(getPoliciesResult -> getPoliciesResult.policies()[0].name()));
+     *         var group = new Group("group", GroupArgs.builder()
+     *             .name(String.format("groupName-%s", default_.result()))
+     *             .comments("this is a group comments.")
+     *             .build());
+     * 
+     *         var policy = new Policy("policy", PolicyArgs.builder()
+     *             .policyName(String.format("tf-example-%s", default_.result()))
+     *             .policyDocument("""
+     *     {
+     *       "Statement": [
+     *         {
+     *           "Action": [
+     *             "oss:ListObjects",
+     *             "oss:GetObject"
+     *           ],
+     *           "Effect": "Allow",
+     *           "Resource": [
+     *             "acs:oss:*:*:mybucket",
+     *             "acs:oss:*:*:mybucket/*"
+     *           ]
+     *         }
+     *       ],
+     *         "Version": "1"
+     *     }
+     *             """)
+     *             .description("this is a policy test")
+     *             .build());
+     * 
+     *         var attach = new GroupPolicyAttachment("attach", GroupPolicyAttachmentArgs.builder()
+     *             .policyName(policy.policyName())
+     *             .policyType(policy.type())
+     *             .groupName(group.name())
+     *             .build());
+     * 
+     *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .groupName(attach.groupName())
+     *             .type("Custom")
+     *             .build());
+     * 
+     *         ctx.export("firstPolicyName", policiesDs.applyValue(getPoliciesResult -> getPoliciesResult).applyValue(policiesDs -> policiesDs.applyValue(getPoliciesResult -> getPoliciesResult.policies()[0].name())));
      *     }
      * }
      * }
@@ -956,6 +1181,14 @@ public final class RamFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.ram.Group;
+     * import com.pulumi.alicloud.ram.GroupArgs;
+     * import com.pulumi.alicloud.ram.Policy;
+     * import com.pulumi.alicloud.ram.PolicyArgs;
+     * import com.pulumi.alicloud.ram.GroupPolicyAttachment;
+     * import com.pulumi.alicloud.ram.GroupPolicyAttachmentArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
      * import java.util.List;
@@ -971,14 +1204,51 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .outputFile("policies.txt")
-     *             .userName("user1")
-     *             .groupName("group1")
-     *             .type("System")
+     *         var default_ = new Integer("default", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
      *             .build());
      * 
-     *         ctx.export("firstPolicyName", policiesDs.applyValue(getPoliciesResult -> getPoliciesResult.policies()[0].name()));
+     *         var group = new Group("group", GroupArgs.builder()
+     *             .name(String.format("groupName-%s", default_.result()))
+     *             .comments("this is a group comments.")
+     *             .build());
+     * 
+     *         var policy = new Policy("policy", PolicyArgs.builder()
+     *             .policyName(String.format("tf-example-%s", default_.result()))
+     *             .policyDocument("""
+     *     {
+     *       "Statement": [
+     *         {
+     *           "Action": [
+     *             "oss:ListObjects",
+     *             "oss:GetObject"
+     *           ],
+     *           "Effect": "Allow",
+     *           "Resource": [
+     *             "acs:oss:*:*:mybucket",
+     *             "acs:oss:*:*:mybucket/*"
+     *           ]
+     *         }
+     *       ],
+     *         "Version": "1"
+     *     }
+     *             """)
+     *             .description("this is a policy test")
+     *             .build());
+     * 
+     *         var attach = new GroupPolicyAttachment("attach", GroupPolicyAttachmentArgs.builder()
+     *             .policyName(policy.policyName())
+     *             .policyType(policy.type())
+     *             .groupName(group.name())
+     *             .build());
+     * 
+     *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .groupName(attach.groupName())
+     *             .type("Custom")
+     *             .build());
+     * 
+     *         ctx.export("firstPolicyName", policiesDs.applyValue(getPoliciesResult -> getPoliciesResult).applyValue(policiesDs -> policiesDs.applyValue(getPoliciesResult -> getPoliciesResult.policies()[0].name())));
      *     }
      * }
      * }
@@ -1004,6 +1274,14 @@ public final class RamFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.ram.Group;
+     * import com.pulumi.alicloud.ram.GroupArgs;
+     * import com.pulumi.alicloud.ram.Policy;
+     * import com.pulumi.alicloud.ram.PolicyArgs;
+     * import com.pulumi.alicloud.ram.GroupPolicyAttachment;
+     * import com.pulumi.alicloud.ram.GroupPolicyAttachmentArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
      * import java.util.List;
@@ -1019,14 +1297,51 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .outputFile("policies.txt")
-     *             .userName("user1")
-     *             .groupName("group1")
-     *             .type("System")
+     *         var default_ = new Integer("default", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
      *             .build());
      * 
-     *         ctx.export("firstPolicyName", policiesDs.applyValue(getPoliciesResult -> getPoliciesResult.policies()[0].name()));
+     *         var group = new Group("group", GroupArgs.builder()
+     *             .name(String.format("groupName-%s", default_.result()))
+     *             .comments("this is a group comments.")
+     *             .build());
+     * 
+     *         var policy = new Policy("policy", PolicyArgs.builder()
+     *             .policyName(String.format("tf-example-%s", default_.result()))
+     *             .policyDocument("""
+     *     {
+     *       "Statement": [
+     *         {
+     *           "Action": [
+     *             "oss:ListObjects",
+     *             "oss:GetObject"
+     *           ],
+     *           "Effect": "Allow",
+     *           "Resource": [
+     *             "acs:oss:*:*:mybucket",
+     *             "acs:oss:*:*:mybucket/*"
+     *           ]
+     *         }
+     *       ],
+     *         "Version": "1"
+     *     }
+     *             """)
+     *             .description("this is a policy test")
+     *             .build());
+     * 
+     *         var attach = new GroupPolicyAttachment("attach", GroupPolicyAttachmentArgs.builder()
+     *             .policyName(policy.policyName())
+     *             .policyType(policy.type())
+     *             .groupName(group.name())
+     *             .build());
+     * 
+     *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .groupName(attach.groupName())
+     *             .type("Custom")
+     *             .build());
+     * 
+     *         ctx.export("firstPolicyName", policiesDs.applyValue(getPoliciesResult -> getPoliciesResult).applyValue(policiesDs -> policiesDs.applyValue(getPoliciesResult -> getPoliciesResult.policies()[0].name())));
      *     }
      * }
      * }

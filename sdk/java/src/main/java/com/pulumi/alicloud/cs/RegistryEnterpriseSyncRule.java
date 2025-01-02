@@ -15,13 +15,13 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Container Registry Enterprise Edition Sync Rule resource.
+ * Provides a Container Registry Sync Rule resource.
  * 
- * For information about Container Registry Enterprise Edition Sync Rule and how to use it, see [What is Sync Rule](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createreposyncrule)
+ * For information about Container Registry Sync Rule and how to use it, see [What is Sync Rule](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createreposyncrule)
  * 
  * &gt; **NOTE:** Available since v1.90.0.
  * 
- * &gt; **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
+ * &gt; **NOTE:** You need to set your registry password in Container Registry console before use this resource.
  * 
  * ## Example Usage
  * 
@@ -122,7 +122,7 @@ import javax.annotation.Nullable;
  *         var defaultRegistryEnterpriseSyncRule = new RegistryEnterpriseSyncRule("defaultRegistryEnterpriseSyncRule", RegistryEnterpriseSyncRuleArgs.builder()
  *             .instanceId(source.id())
  *             .namespaceName(sourceRegistryEnterpriseNamespace.name())
- *             .name(String.format("%s-%s", name,defaultInteger.result()))
+ *             .syncRuleName(String.format("%s-%s", name,defaultInteger.result()))
  *             .targetInstanceId(target.id())
  *             .targetNamespaceName(targetRegistryEnterpriseNamespace.name())
  *             .targetRegionId(default_.regions()[0].id())
@@ -139,38 +139,56 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Container Registry Enterprise Edition Sync Rule can be imported using the id, e.g.
+ * Container Registry Sync Rule can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule example &lt;instance_id&gt;:&lt;namespace_name&gt;:&lt;rule_id&gt;
+ * $ pulumi import alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule example &lt;instance_id&gt;:&lt;namespace_name&gt;:&lt;repo_sync_rule_id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule")
 public class RegistryEnterpriseSyncRule extends com.pulumi.resources.CustomResource {
     /**
-     * The ID of the Container Registry Enterprise Edition source instance.
+     * (Available since v1.240.0) The time when the synchronization rule was created.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return (Available since v1.240.0) The time when the synchronization rule was created.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * The ID of the Container Registry source instance.
      * 
      */
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
-     * @return The ID of the Container Registry Enterprise Edition source instance.
+     * @return The ID of the Container Registry source instance.
      * 
      */
     public Output<String> instanceId() {
         return this.instanceId;
     }
     /**
-     * The name of the sync rule.
+     * Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
+     * 
+     * @deprecated
+     * Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
      * 
      */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the sync rule.
+     * @return Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
      * 
      */
     public Output<String> name() {
@@ -191,6 +209,20 @@ public class RegistryEnterpriseSyncRule extends com.pulumi.resources.CustomResou
         return this.namespaceName;
     }
     /**
+     * (Available since v1.240.0) The region ID of the source instance.
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return (Available since v1.240.0) The region ID of the source instance.
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
+    }
+    /**
      * The image repository name of the source instance.
      * 
      */
@@ -205,14 +237,32 @@ public class RegistryEnterpriseSyncRule extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.repoName);
     }
     /**
-     * The ID of the sync rule.
+     * (Available since v1.240.0) The ID of the synchronization rule.
      * 
      */
+    @Export(name="repoSyncRuleId", refs={String.class}, tree="[0]")
+    private Output<String> repoSyncRuleId;
+
+    /**
+     * @return (Available since v1.240.0) The ID of the synchronization rule.
+     * 
+     */
+    public Output<String> repoSyncRuleId() {
+        return this.repoSyncRuleId;
+    }
+    /**
+     * (Deprecated since v1.240.0) Field `rule_id` has been deprecated from provider version 1.240.0. New field `repo_sync_rule_id` instead.
+     * 
+     * @deprecated
+     * Field `rule_id` has been deprecated from provider version 1.240.0. New field `repo_sync_rule_id` instead.
+     * 
+     */
+    @Deprecated /* Field `rule_id` has been deprecated from provider version 1.240.0. New field `repo_sync_rule_id` instead. */
     @Export(name="ruleId", refs={String.class}, tree="[0]")
     private Output<String> ruleId;
 
     /**
-     * @return The ID of the sync rule.
+     * @return (Deprecated since v1.240.0) Field `rule_id` has been deprecated from provider version 1.240.0. New field `repo_sync_rule_id` instead.
      * 
      */
     public Output<String> ruleId() {
@@ -233,18 +283,56 @@ public class RegistryEnterpriseSyncRule extends com.pulumi.resources.CustomResou
         return this.syncDirection;
     }
     /**
-     * The synchronization scope.
+     * The name of the sync rule.
+     * 
+     */
+    @Export(name="syncRuleName", refs={String.class}, tree="[0]")
+    private Output<String> syncRuleName;
+
+    /**
+     * @return The name of the sync rule.
+     * 
+     */
+    public Output<String> syncRuleName() {
+        return this.syncRuleName;
+    }
+    /**
+     * The synchronization scope. Valid values:
+     * - `REPO`: Encrypts or decrypts data.
+     * - `NAMESPACE`: Generates or verifies a digital signature.
+     * &gt; **NOTE:** From version 1.240.0, `sync_scope` can be set.
      * 
      */
     @Export(name="syncScope", refs={String.class}, tree="[0]")
     private Output<String> syncScope;
 
     /**
-     * @return The synchronization scope.
+     * @return The synchronization scope. Valid values:
+     * - `REPO`: Encrypts or decrypts data.
+     * - `NAMESPACE`: Generates or verifies a digital signature.
+     * &gt; **NOTE:** From version 1.240.0, `sync_scope` can be set.
      * 
      */
     public Output<String> syncScope() {
         return this.syncScope;
+    }
+    /**
+     * The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
+     * - `INITIATIVE`: Manually triggers the synchronization rule.
+     * - `PASSIVE`: Automatically triggers the synchronization rule.
+     * 
+     */
+    @Export(name="syncTrigger", refs={String.class}, tree="[0]")
+    private Output<String> syncTrigger;
+
+    /**
+     * @return The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
+     * - `INITIATIVE`: Manually triggers the synchronization rule.
+     * - `PASSIVE`: Automatically triggers the synchronization rule.
+     * 
+     */
+    public Output<String> syncTrigger() {
+        return this.syncTrigger;
     }
     /**
      * The regular expression used to filter image tags.
@@ -315,6 +403,20 @@ public class RegistryEnterpriseSyncRule extends com.pulumi.resources.CustomResou
      */
     public Output<Optional<String>> targetRepoName() {
         return Codegen.optional(this.targetRepoName);
+    }
+    /**
+     * The UID of the account to which the target instance belongs.
+     * 
+     */
+    @Export(name="targetUserId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> targetUserId;
+
+    /**
+     * @return The UID of the account to which the target instance belongs.
+     * 
+     */
+    public Output<Optional<String>> targetUserId() {
+        return Codegen.optional(this.targetUserId);
     }
 
     /**

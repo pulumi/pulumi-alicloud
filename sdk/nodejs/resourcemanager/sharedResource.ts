@@ -93,6 +93,7 @@ export class SharedResource extends pulumi.CustomResource {
      * - The following types are added after v1.192.0: `PrefixList` and `Image`.
      * - The following types are added after v1.194.1: `PublicIpAddressPool`.
      * - The following types are added after v1.208.0: `KMSInstance`.
+     * - The following types are added after v1.240.0: `Snapshot`.
      */
     public readonly resourceType!: pulumi.Output<string>;
     /**
@@ -157,6 +158,7 @@ export interface SharedResourceState {
      * - The following types are added after v1.192.0: `PrefixList` and `Image`.
      * - The following types are added after v1.194.1: `PublicIpAddressPool`.
      * - The following types are added after v1.208.0: `KMSInstance`.
+     * - The following types are added after v1.240.0: `Snapshot`.
      */
     resourceType?: pulumi.Input<string>;
     /**
@@ -184,6 +186,7 @@ export interface SharedResourceArgs {
      * - The following types are added after v1.192.0: `PrefixList` and `Image`.
      * - The following types are added after v1.194.1: `PublicIpAddressPool`.
      * - The following types are added after v1.208.0: `KMSInstance`.
+     * - The following types are added after v1.240.0: `Snapshot`.
      */
     resourceType: pulumi.Input<string>;
 }

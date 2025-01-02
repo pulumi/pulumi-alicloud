@@ -127,6 +127,7 @@ export class Cluster extends pulumi.CustomResource {
     public readonly elasticIoResource!: pulumi.Output<number>;
     public readonly elasticIoResourceSize!: pulumi.Output<string>;
     public readonly enableSsl!: pulumi.Output<boolean | undefined>;
+    public readonly kernelVersion!: pulumi.Output<string>;
     public readonly kmsId!: pulumi.Output<string | undefined>;
     /**
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
@@ -162,6 +163,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly securityIps!: pulumi.Output<string[]>;
     public /*out*/ readonly status!: pulumi.Output<string>;
+    public readonly switchMode!: pulumi.Output<number | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -208,6 +210,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["elasticIoResource"] = state ? state.elasticIoResource : undefined;
             resourceInputs["elasticIoResourceSize"] = state ? state.elasticIoResourceSize : undefined;
             resourceInputs["enableSsl"] = state ? state.enableSsl : undefined;
+            resourceInputs["kernelVersion"] = state ? state.kernelVersion : undefined;
             resourceInputs["kmsId"] = state ? state.kmsId : undefined;
             resourceInputs["maintainTime"] = state ? state.maintainTime : undefined;
             resourceInputs["mode"] = state ? state.mode : undefined;
@@ -220,6 +223,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["securityIps"] = state ? state.securityIps : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["switchMode"] = state ? state.switchMode : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["vpcId"] = state ? state.vpcId : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
@@ -246,6 +250,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["elasticIoResource"] = args ? args.elasticIoResource : undefined;
             resourceInputs["elasticIoResourceSize"] = args ? args.elasticIoResourceSize : undefined;
             resourceInputs["enableSsl"] = args ? args.enableSsl : undefined;
+            resourceInputs["kernelVersion"] = args ? args.kernelVersion : undefined;
             resourceInputs["kmsId"] = args ? args.kmsId : undefined;
             resourceInputs["maintainTime"] = args ? args.maintainTime : undefined;
             resourceInputs["mode"] = args ? args.mode : undefined;
@@ -256,6 +261,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["securityIps"] = args ? args.securityIps : undefined;
+            resourceInputs["switchMode"] = args ? args.switchMode : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
@@ -315,6 +321,7 @@ export interface ClusterState {
     elasticIoResource?: pulumi.Input<number>;
     elasticIoResourceSize?: pulumi.Input<string>;
     enableSsl?: pulumi.Input<boolean>;
+    kernelVersion?: pulumi.Input<string>;
     kmsId?: pulumi.Input<string>;
     /**
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
@@ -350,6 +357,7 @@ export interface ClusterState {
      */
     securityIps?: pulumi.Input<pulumi.Input<string>[]>;
     status?: pulumi.Input<string>;
+    switchMode?: pulumi.Input<number>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -411,6 +419,7 @@ export interface ClusterArgs {
     elasticIoResource?: pulumi.Input<number>;
     elasticIoResourceSize?: pulumi.Input<string>;
     enableSsl?: pulumi.Input<boolean>;
+    kernelVersion?: pulumi.Input<string>;
     kmsId?: pulumi.Input<string>;
     /**
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
@@ -441,6 +450,7 @@ export interface ClusterArgs {
      * List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
     securityIps?: pulumi.Input<pulumi.Input<string>[]>;
+    switchMode?: pulumi.Input<number>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.

@@ -56,7 +56,7 @@ export class ScheduledTask extends pulumi.CustomResource {
      */
     public readonly desiredCapacity!: pulumi.Output<number | undefined>;
     /**
-     * The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
+     * The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 1800, Available since v1.240.0. Default value: 600
      */
     public readonly launchExpirationTime!: pulumi.Output<number | undefined>;
     /**
@@ -172,7 +172,7 @@ export interface ScheduledTaskState {
      */
     desiredCapacity?: pulumi.Input<number>;
     /**
-     * The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
+     * The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 1800, Available since v1.240.0. Default value: 600
      */
     launchExpirationTime?: pulumi.Input<number>;
     /**
@@ -242,7 +242,7 @@ export interface ScheduledTaskArgs {
      */
     desiredCapacity?: pulumi.Input<number>;
     /**
-     * The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
+     * The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 1800, Available since v1.240.0. Default value: 600
      */
     launchExpirationTime?: pulumi.Input<number>;
     /**

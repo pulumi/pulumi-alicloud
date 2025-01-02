@@ -9,9 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Config Rules of the current Alibaba Cloud user.
  *
- * > **NOTE:**  Available in 1.99.0+.
- *
- * > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+ * > **NOTE:** Available since v1.99.0.
  *
  * ## Example Usage
  *
@@ -119,16 +117,14 @@ export interface GetRulesResult {
      */
     readonly rules: outputs.cfg.GetRulesRule[];
     /**
-     * (Available in 1.124.1+) The status of config rule.
+     * (Available since v1.124.1) The status of config rule.
      */
     readonly status?: string;
 }
 /**
  * This data source provides the Config Rules of the current Alibaba Cloud user.
  *
- * > **NOTE:**  Available in 1.99.0+.
- *
- * > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+ * > **NOTE:** Available since v1.99.0.
  *
  * ## Example Usage
  *

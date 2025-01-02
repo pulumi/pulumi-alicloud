@@ -138,7 +138,7 @@ class GetRulesResult:
     @pulumi.getter
     def status(self) -> Optional[str]:
         """
-        (Available in 1.124.1+) The status of config rule.
+        (Available since v1.124.1) The status of config rule.
         """
         return pulumi.get(self, "status")
 
@@ -174,9 +174,7 @@ def get_rules(config_rule_state: Optional[str] = None,
     """
     This data source provides the Config Rules of the current Alibaba Cloud user.
 
-    > **NOTE:**  Available in 1.99.0+.
-
-    > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+    > **NOTE:** Available since v1.99.0.
 
     ## Example Usage
 
@@ -235,9 +233,7 @@ def get_rules_output(config_rule_state: Optional[pulumi.Input[Optional[str]]] = 
     """
     This data source provides the Config Rules of the current Alibaba Cloud user.
 
-    > **NOTE:**  Available in 1.99.0+.
-
-    > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+    > **NOTE:** Available since v1.99.0.
 
     ## Example Usage
 

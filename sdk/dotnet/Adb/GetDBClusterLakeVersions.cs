@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Adb
         /// <summary>
         /// This data source provides the Adb DBCluster Lake Versions of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.190.0+.
+        /// &gt; **NOTE:** Available since v1.190.0.
         /// 
         /// ## Example Usage
         /// 
@@ -28,11 +28,36 @@ namespace Pulumi.AliCloud.Adb
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var @default = AliCloud.Adb.GetZones.Invoke();
+        /// 
+        ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+        ///     {
+        ///         NameRegex = "^default-NODELETING$",
+        ///     });
+        /// 
+        ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+        ///     {
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+        ///     });
+        /// 
+        ///     var defaultDBClusterLakeVersion = new AliCloud.Adb.DBClusterLakeVersion("default", new()
+        ///     {
+        ///         DbClusterVersion = "5.0",
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Ids[0])),
+        ///         ComputeResource = "16ACU",
+        ///         StorageResource = "0ACU",
+        ///         PaymentType = "PayAsYouGo",
+        ///         EnableDefaultResourceGroup = false,
+        ///     });
+        /// 
         ///     var ids = AliCloud.Adb.GetDBClusterLakeVersions.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             "example_id",
+        ///             defaultDBClusterLakeVersion.Id,
         ///         },
         ///     });
         /// 
@@ -49,7 +74,7 @@ namespace Pulumi.AliCloud.Adb
         /// <summary>
         /// This data source provides the Adb DBCluster Lake Versions of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.190.0+.
+        /// &gt; **NOTE:** Available since v1.190.0.
         /// 
         /// ## Example Usage
         /// 
@@ -63,11 +88,36 @@ namespace Pulumi.AliCloud.Adb
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var @default = AliCloud.Adb.GetZones.Invoke();
+        /// 
+        ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+        ///     {
+        ///         NameRegex = "^default-NODELETING$",
+        ///     });
+        /// 
+        ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+        ///     {
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+        ///     });
+        /// 
+        ///     var defaultDBClusterLakeVersion = new AliCloud.Adb.DBClusterLakeVersion("default", new()
+        ///     {
+        ///         DbClusterVersion = "5.0",
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Ids[0])),
+        ///         ComputeResource = "16ACU",
+        ///         StorageResource = "0ACU",
+        ///         PaymentType = "PayAsYouGo",
+        ///         EnableDefaultResourceGroup = false,
+        ///     });
+        /// 
         ///     var ids = AliCloud.Adb.GetDBClusterLakeVersions.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             "example_id",
+        ///             defaultDBClusterLakeVersion.Id,
         ///         },
         ///     });
         /// 
@@ -84,7 +134,7 @@ namespace Pulumi.AliCloud.Adb
         /// <summary>
         /// This data source provides the Adb DBCluster Lake Versions of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.190.0+.
+        /// &gt; **NOTE:** Available since v1.190.0.
         /// 
         /// ## Example Usage
         /// 
@@ -98,11 +148,36 @@ namespace Pulumi.AliCloud.Adb
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var @default = AliCloud.Adb.GetZones.Invoke();
+        /// 
+        ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+        ///     {
+        ///         NameRegex = "^default-NODELETING$",
+        ///     });
+        /// 
+        ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+        ///     {
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+        ///     });
+        /// 
+        ///     var defaultDBClusterLakeVersion = new AliCloud.Adb.DBClusterLakeVersion("default", new()
+        ///     {
+        ///         DbClusterVersion = "5.0",
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Ids[0])),
+        ///         ComputeResource = "16ACU",
+        ///         StorageResource = "0ACU",
+        ///         PaymentType = "PayAsYouGo",
+        ///         EnableDefaultResourceGroup = false,
+        ///     });
+        /// 
         ///     var ids = AliCloud.Adb.GetDBClusterLakeVersions.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             "example_id",
+        ///             defaultDBClusterLakeVersion.Id,
         ///         },
         ///     });
         /// 
@@ -231,8 +306,17 @@ namespace Pulumi.AliCloud.Adb
         public readonly string? OutputFile;
         public readonly int? PageNumber;
         public readonly int? PageSize;
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
         public readonly string? ResourceGroupId;
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// A list of Adb Db Clusters. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetDBClusterLakeVersionsVersionResult> Versions;
 
         [OutputConstructor]

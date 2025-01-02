@@ -21,6 +21,7 @@ public final class GetInstancesResult {
     private String id;
     private List<GetInstancesInstance> instances;
     private @Nullable String outputFile;
+    private @Nullable String paymentType;
 
     private GetInstancesResult() {}
     /**
@@ -36,6 +37,9 @@ public final class GetInstancesResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    public Optional<String> paymentType() {
+        return Optional.ofNullable(this.paymentType);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -49,12 +53,14 @@ public final class GetInstancesResult {
         private String id;
         private List<GetInstancesInstance> instances;
         private @Nullable String outputFile;
+        private @Nullable String paymentType;
         public Builder() {}
         public Builder(GetInstancesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.instances = defaults.instances;
     	      this.outputFile = defaults.outputFile;
+    	      this.paymentType = defaults.paymentType;
         }
 
         @CustomType.Setter
@@ -82,11 +88,18 @@ public final class GetInstancesResult {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
+        public Builder paymentType(@Nullable String paymentType) {
+
+            this.paymentType = paymentType;
+            return this;
+        }
         public GetInstancesResult build() {
             final var _resultValue = new GetInstancesResult();
             _resultValue.id = id;
             _resultValue.instances = instances;
             _resultValue.outputFile = outputFile;
+            _resultValue.paymentType = paymentType;
             return _resultValue;
         }
     }

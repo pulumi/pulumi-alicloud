@@ -19,24 +19,66 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetEcsDisksResult {
     private @Nullable List<String> additionalAttributes;
+    /**
+     * @return Query cloud disks based on the automatic snapshot policy ID.
+     * 
+     */
     private @Nullable String autoSnapshotPolicyId;
     /**
+     * @return Availability zone of the disk.
+     * 
      * @deprecated
      * Field &#39;availability_zone&#39; has been deprecated from provider version 1.122.0. New field &#39;zone_id&#39; instead
      * 
      */
     @Deprecated /* Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead */
     private @Nullable String availabilityZone;
+    /**
+     * @return Disk category.
+     * 
+     */
     private @Nullable String category;
+    /**
+     * @return Indicates whether the automatic snapshot is deleted when the disk is released.
+     * 
+     */
     private @Nullable Boolean deleteAutoSnapshot;
+    /**
+     * @return Indicates whether the disk is released together with the instance.
+     * 
+     */
     private @Nullable Boolean deleteWithInstance;
+    /**
+     * @return The disk name.
+     * 
+     */
     private @Nullable String diskName;
+    /**
+     * @return The type of the disk.
+     * 
+     */
     private @Nullable String diskType;
+    /**
+     * @return A list of Ecs Disks. Each element contains the following attributes:
+     * 
+     */
     private List<GetEcsDisksDisk> disks;
     private @Nullable Boolean dryRun;
+    /**
+     * @return Whether the disk implements an automatic snapshot policy.
+     * 
+     */
     private @Nullable Boolean enableAutoSnapshot;
+    /**
+     * @return Whether the disk implements an automatic snapshot policy.
+     * 
+     */
     private @Nullable Boolean enableAutomatedSnapshotPolicy;
     private @Nullable Boolean enableShared;
+    /**
+     * @return Indicate whether the disk is encrypted or not.
+     * 
+     */
     private @Nullable String encrypted;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -44,38 +86,90 @@ public final class GetEcsDisksResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return The instance ID of the disk mount.
+     * 
+     */
     private @Nullable String instanceId;
+    /**
+     * @return The ID of the KMS key that is used for the cloud disk.
+     * 
+     */
     private @Nullable String kmsKeyId;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Disk names.
+     * 
+     */
     private List<String> names;
+    /**
+     * @return The reasons why the disk was locked.
+     * 
+     */
     private @Nullable List<GetEcsDisksOperationLock> operationLocks;
     private @Nullable String outputFile;
     private @Nullable Integer pageNumber;
     private @Nullable Integer pageSize;
+    /**
+     * @return Payment method for disk.
+     * 
+     */
     private @Nullable String paymentType;
+    /**
+     * @return Whether the disk is unmountable.
+     * 
+     */
     private @Nullable Boolean portable;
+    /**
+     * @return The Id of resource group.
+     * 
+     */
     private @Nullable String resourceGroupId;
+    /**
+     * @return Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+     * 
+     */
     private @Nullable String snapshotId;
+    /**
+     * @return Current status.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return A map of tags assigned to the disk.
+     * 
+     */
     private @Nullable Map<String,String> tags;
     private Integer totalCount;
     /**
+     * @return The type of the disk.
+     * 
      * @deprecated
      * Field &#39;type&#39; has been deprecated from provider version 1.122.0. New field &#39;disk_type&#39; instead.
      * 
      */
     @Deprecated /* Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead. */
     private @Nullable String type;
+    /**
+     * @return The zone id.
+     * 
+     */
     private @Nullable String zoneId;
 
     private GetEcsDisksResult() {}
     public List<String> additionalAttributes() {
         return this.additionalAttributes == null ? List.of() : this.additionalAttributes;
     }
+    /**
+     * @return Query cloud disks based on the automatic snapshot policy ID.
+     * 
+     */
     public Optional<String> autoSnapshotPolicyId() {
         return Optional.ofNullable(this.autoSnapshotPolicyId);
     }
     /**
+     * @return Availability zone of the disk.
+     * 
      * @deprecated
      * Field &#39;availability_zone&#39; has been deprecated from provider version 1.122.0. New field &#39;zone_id&#39; instead
      * 
@@ -84,36 +178,72 @@ public final class GetEcsDisksResult {
     public Optional<String> availabilityZone() {
         return Optional.ofNullable(this.availabilityZone);
     }
+    /**
+     * @return Disk category.
+     * 
+     */
     public Optional<String> category() {
         return Optional.ofNullable(this.category);
     }
+    /**
+     * @return Indicates whether the automatic snapshot is deleted when the disk is released.
+     * 
+     */
     public Optional<Boolean> deleteAutoSnapshot() {
         return Optional.ofNullable(this.deleteAutoSnapshot);
     }
+    /**
+     * @return Indicates whether the disk is released together with the instance.
+     * 
+     */
     public Optional<Boolean> deleteWithInstance() {
         return Optional.ofNullable(this.deleteWithInstance);
     }
+    /**
+     * @return The disk name.
+     * 
+     */
     public Optional<String> diskName() {
         return Optional.ofNullable(this.diskName);
     }
+    /**
+     * @return The type of the disk.
+     * 
+     */
     public Optional<String> diskType() {
         return Optional.ofNullable(this.diskType);
     }
+    /**
+     * @return A list of Ecs Disks. Each element contains the following attributes:
+     * 
+     */
     public List<GetEcsDisksDisk> disks() {
         return this.disks;
     }
     public Optional<Boolean> dryRun() {
         return Optional.ofNullable(this.dryRun);
     }
+    /**
+     * @return Whether the disk implements an automatic snapshot policy.
+     * 
+     */
     public Optional<Boolean> enableAutoSnapshot() {
         return Optional.ofNullable(this.enableAutoSnapshot);
     }
+    /**
+     * @return Whether the disk implements an automatic snapshot policy.
+     * 
+     */
     public Optional<Boolean> enableAutomatedSnapshotPolicy() {
         return Optional.ofNullable(this.enableAutomatedSnapshotPolicy);
     }
     public Optional<Boolean> enableShared() {
         return Optional.ofNullable(this.enableShared);
     }
+    /**
+     * @return Indicate whether the disk is encrypted or not.
+     * 
+     */
     public Optional<String> encrypted() {
         return Optional.ofNullable(this.encrypted);
     }
@@ -127,18 +257,34 @@ public final class GetEcsDisksResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The instance ID of the disk mount.
+     * 
+     */
     public Optional<String> instanceId() {
         return Optional.ofNullable(this.instanceId);
     }
+    /**
+     * @return The ID of the KMS key that is used for the cloud disk.
+     * 
+     */
     public Optional<String> kmsKeyId() {
         return Optional.ofNullable(this.kmsKeyId);
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Disk names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
+    /**
+     * @return The reasons why the disk was locked.
+     * 
+     */
     public List<GetEcsDisksOperationLock> operationLocks() {
         return this.operationLocks == null ? List.of() : this.operationLocks;
     }
@@ -151,21 +297,45 @@ public final class GetEcsDisksResult {
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
+    /**
+     * @return Payment method for disk.
+     * 
+     */
     public Optional<String> paymentType() {
         return Optional.ofNullable(this.paymentType);
     }
+    /**
+     * @return Whether the disk is unmountable.
+     * 
+     */
     public Optional<Boolean> portable() {
         return Optional.ofNullable(this.portable);
     }
+    /**
+     * @return The Id of resource group.
+     * 
+     */
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
+    /**
+     * @return Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+     * 
+     */
     public Optional<String> snapshotId() {
         return Optional.ofNullable(this.snapshotId);
     }
+    /**
+     * @return Current status.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return A map of tags assigned to the disk.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
@@ -173,6 +343,8 @@ public final class GetEcsDisksResult {
         return this.totalCount;
     }
     /**
+     * @return The type of the disk.
+     * 
      * @deprecated
      * Field &#39;type&#39; has been deprecated from provider version 1.122.0. New field &#39;disk_type&#39; instead.
      * 
@@ -181,6 +353,10 @@ public final class GetEcsDisksResult {
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
+    /**
+     * @return The zone id.
+     * 
+     */
     public Optional<String> zoneId() {
         return Optional.ofNullable(this.zoneId);
     }

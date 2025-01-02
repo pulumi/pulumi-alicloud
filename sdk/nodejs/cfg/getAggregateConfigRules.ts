@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Config Aggregate Config Rules of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.124.0+.
+ * > **NOTE:** Available since v1.124.0.
  *
  * ## Example Usage
  *
@@ -70,7 +70,7 @@ export interface GetAggregateConfigRulesArgs {
      */
     outputFile?: string;
     /**
-     * Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
+     * The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
      */
     riskLevel?: number;
     /**
@@ -119,7 +119,7 @@ export interface GetAggregateConfigRulesResult {
 /**
  * This data source provides the Config Aggregate Config Rules of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.124.0+.
+ * > **NOTE:** Available since v1.124.0.
  *
  * ## Example Usage
  *
@@ -180,7 +180,7 @@ export interface GetAggregateConfigRulesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
+     * The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
      */
     riskLevel?: pulumi.Input<number>;
     /**

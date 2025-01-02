@@ -251,6 +251,20 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enableSsl);
     }
     /**
+     * The minor version to which you want to update.
+     * 
+     */
+    @Export(name="kernelVersion", refs={String.class}, tree="[0]")
+    private Output<String> kernelVersion;
+
+    /**
+     * @return The minor version to which you want to update.
+     * 
+     */
+    public Output<String> kernelVersion() {
+        return this.kernelVersion;
+    }
+    /**
      * The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
      * 
      */
@@ -423,6 +437,20 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * The time when to perform the update. Valid values:
+     * 
+     */
+    @Export(name="switchMode", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> switchMode;
+
+    /**
+     * @return The time when to perform the update. Valid values:
+     * 
+     */
+    public Output<Optional<Integer>> switchMode() {
+        return Codegen.optional(this.switchMode);
     }
     /**
      * A mapping of tags to assign to the resource.

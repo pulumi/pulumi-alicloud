@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS
 {
     /// <summary>
-    /// Provides a Container Registry Enterprise Edition Sync Rule resource.
+    /// Provides a Container Registry Sync Rule resource.
     /// 
-    /// For information about Container Registry Enterprise Edition Sync Rule and how to use it, see [What is Sync Rule](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createreposyncrule)
+    /// For information about Container Registry Sync Rule and how to use it, see [What is Sync Rule](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createreposyncrule)
     /// 
     /// &gt; **NOTE:** Available since v1.90.0.
     /// 
-    /// &gt; **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
+    /// &gt; **NOTE:** You need to set your registry password in Container Registry console before use this resource.
     /// 
     /// ## Example Usage
     /// 
@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.CS
     ///     {
     ///         InstanceId = source.Id,
     ///         NamespaceName = sourceRegistryEnterpriseNamespace.Name,
-    ///         Name = $"{name}-{defaultInteger.Result}",
+    ///         SyncRuleName = $"{name}-{defaultInteger.Result}",
     ///         TargetInstanceId = target.Id,
     ///         TargetNamespaceName = targetRegistryEnterpriseNamespace.Name,
     ///         TargetRegionId = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)),
@@ -116,23 +116,29 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// ## Import
     /// 
-    /// Container Registry Enterprise Edition Sync Rule can be imported using the id, e.g.
+    /// Container Registry Sync Rule can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule example &lt;instance_id&gt;:&lt;namespace_name&gt;:&lt;rule_id&gt;
+    /// $ pulumi import alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule example &lt;instance_id&gt;:&lt;namespace_name&gt;:&lt;repo_sync_rule_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule")]
     public partial class RegistryEnterpriseSyncRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the Container Registry Enterprise Edition source instance.
+        /// (Available since v1.240.0) The time when the synchronization rule was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the Container Registry source instance.
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the sync rule.
+        /// Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -144,13 +150,25 @@ namespace Pulumi.AliCloud.CS
         public Output<string> NamespaceName { get; private set; } = null!;
 
         /// <summary>
+        /// (Available since v1.240.0) The region ID of the source instance.
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
+
+        /// <summary>
         /// The image repository name of the source instance.
         /// </summary>
         [Output("repoName")]
         public Output<string?> RepoName { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the sync rule.
+        /// (Available since v1.240.0) The ID of the synchronization rule.
+        /// </summary>
+        [Output("repoSyncRuleId")]
+        public Output<string> RepoSyncRuleId { get; private set; } = null!;
+
+        /// <summary>
+        /// (Deprecated since v1.240.0) Field `rule_id` has been deprecated from provider version 1.240.0. New field `repo_sync_rule_id` instead.
         /// </summary>
         [Output("ruleId")]
         public Output<string> RuleId { get; private set; } = null!;
@@ -162,10 +180,27 @@ namespace Pulumi.AliCloud.CS
         public Output<string> SyncDirection { get; private set; } = null!;
 
         /// <summary>
-        /// The synchronization scope.
+        /// The name of the sync rule.
+        /// </summary>
+        [Output("syncRuleName")]
+        public Output<string> SyncRuleName { get; private set; } = null!;
+
+        /// <summary>
+        /// The synchronization scope. Valid values:
+        /// - `REPO`: Encrypts or decrypts data.
+        /// - `NAMESPACE`: Generates or verifies a digital signature.
+        /// &gt; **NOTE:** From version 1.240.0, `sync_scope` can be set.
         /// </summary>
         [Output("syncScope")]
         public Output<string> SyncScope { get; private set; } = null!;
+
+        /// <summary>
+        /// The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
+        /// - `INITIATIVE`: Manually triggers the synchronization rule.
+        /// - `PASSIVE`: Automatically triggers the synchronization rule.
+        /// </summary>
+        [Output("syncTrigger")]
+        public Output<string> SyncTrigger { get; private set; } = null!;
 
         /// <summary>
         /// The regular expression used to filter image tags.
@@ -196,6 +231,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Output("targetRepoName")]
         public Output<string?> TargetRepoName { get; private set; } = null!;
+
+        /// <summary>
+        /// The UID of the account to which the target instance belongs.
+        /// </summary>
+        [Output("targetUserId")]
+        public Output<string?> TargetUserId { get; private set; } = null!;
 
 
         /// <summary>
@@ -244,13 +285,13 @@ namespace Pulumi.AliCloud.CS
     public sealed class RegistryEnterpriseSyncRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the Container Registry Enterprise Edition source instance.
+        /// The ID of the Container Registry source instance.
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// The name of the sync rule.
+        /// Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -266,6 +307,29 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("repoName")]
         public Input<string>? RepoName { get; set; }
+
+        /// <summary>
+        /// The name of the sync rule.
+        /// </summary>
+        [Input("syncRuleName")]
+        public Input<string>? SyncRuleName { get; set; }
+
+        /// <summary>
+        /// The synchronization scope. Valid values:
+        /// - `REPO`: Encrypts or decrypts data.
+        /// - `NAMESPACE`: Generates or verifies a digital signature.
+        /// &gt; **NOTE:** From version 1.240.0, `sync_scope` can be set.
+        /// </summary>
+        [Input("syncScope")]
+        public Input<string>? SyncScope { get; set; }
+
+        /// <summary>
+        /// The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
+        /// - `INITIATIVE`: Manually triggers the synchronization rule.
+        /// - `PASSIVE`: Automatically triggers the synchronization rule.
+        /// </summary>
+        [Input("syncTrigger")]
+        public Input<string>? SyncTrigger { get; set; }
 
         /// <summary>
         /// The regular expression used to filter image tags.
@@ -297,6 +361,12 @@ namespace Pulumi.AliCloud.CS
         [Input("targetRepoName")]
         public Input<string>? TargetRepoName { get; set; }
 
+        /// <summary>
+        /// The UID of the account to which the target instance belongs.
+        /// </summary>
+        [Input("targetUserId")]
+        public Input<string>? TargetUserId { get; set; }
+
         public RegistryEnterpriseSyncRuleArgs()
         {
         }
@@ -306,13 +376,19 @@ namespace Pulumi.AliCloud.CS
     public sealed class RegistryEnterpriseSyncRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the Container Registry Enterprise Edition source instance.
+        /// (Available since v1.240.0) The time when the synchronization rule was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The ID of the Container Registry source instance.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// The name of the sync rule.
+        /// Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -324,13 +400,25 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? NamespaceName { get; set; }
 
         /// <summary>
+        /// (Available since v1.240.0) The region ID of the source instance.
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
+
+        /// <summary>
         /// The image repository name of the source instance.
         /// </summary>
         [Input("repoName")]
         public Input<string>? RepoName { get; set; }
 
         /// <summary>
-        /// The ID of the sync rule.
+        /// (Available since v1.240.0) The ID of the synchronization rule.
+        /// </summary>
+        [Input("repoSyncRuleId")]
+        public Input<string>? RepoSyncRuleId { get; set; }
+
+        /// <summary>
+        /// (Deprecated since v1.240.0) Field `rule_id` has been deprecated from provider version 1.240.0. New field `repo_sync_rule_id` instead.
         /// </summary>
         [Input("ruleId")]
         public Input<string>? RuleId { get; set; }
@@ -342,10 +430,27 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? SyncDirection { get; set; }
 
         /// <summary>
-        /// The synchronization scope.
+        /// The name of the sync rule.
+        /// </summary>
+        [Input("syncRuleName")]
+        public Input<string>? SyncRuleName { get; set; }
+
+        /// <summary>
+        /// The synchronization scope. Valid values:
+        /// - `REPO`: Encrypts or decrypts data.
+        /// - `NAMESPACE`: Generates or verifies a digital signature.
+        /// &gt; **NOTE:** From version 1.240.0, `sync_scope` can be set.
         /// </summary>
         [Input("syncScope")]
         public Input<string>? SyncScope { get; set; }
+
+        /// <summary>
+        /// The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
+        /// - `INITIATIVE`: Manually triggers the synchronization rule.
+        /// - `PASSIVE`: Automatically triggers the synchronization rule.
+        /// </summary>
+        [Input("syncTrigger")]
+        public Input<string>? SyncTrigger { get; set; }
 
         /// <summary>
         /// The regular expression used to filter image tags.
@@ -376,6 +481,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("targetRepoName")]
         public Input<string>? TargetRepoName { get; set; }
+
+        /// <summary>
+        /// The UID of the account to which the target instance belongs.
+        /// </summary>
+        [Input("targetUserId")]
+        public Input<string>? TargetUserId { get; set; }
 
         public RegistryEnterpriseSyncRuleState()
         {

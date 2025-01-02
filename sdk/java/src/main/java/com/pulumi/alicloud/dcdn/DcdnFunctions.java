@@ -36,11 +36,11 @@ public final class DcdnFunctions {
     /**
      * Provides a collection of DCDN Domains to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.94.0+.
+     * &gt; **NOTE:** Available since 1.94.0.
      * 
      * ## Example Usage
      * 
-     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -81,11 +81,11 @@ public final class DcdnFunctions {
     /**
      * Provides a collection of DCDN Domains to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.94.0+.
+     * &gt; **NOTE:** Available since 1.94.0.
      * 
      * ## Example Usage
      * 
-     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -126,11 +126,11 @@ public final class DcdnFunctions {
     /**
      * Provides a collection of DCDN Domains to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.94.0+.
+     * &gt; **NOTE:** Available since 1.94.0.
      * 
      * ## Example Usage
      * 
-     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -171,11 +171,11 @@ public final class DcdnFunctions {
     /**
      * Provides a collection of DCDN Domains to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.94.0+.
+     * &gt; **NOTE:** Available since 1.94.0.
      * 
      * ## Example Usage
      * 
-     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -216,11 +216,11 @@ public final class DcdnFunctions {
     /**
      * Provides a collection of DCDN Domains to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.94.0+.
+     * &gt; **NOTE:** Available since 1.94.0.
      * 
      * ## Example Usage
      * 
-     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -261,11 +261,11 @@ public final class DcdnFunctions {
     /**
      * Provides a collection of DCDN Domains to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.94.0+.
+     * &gt; **NOTE:** Available since 1.94.0.
      * 
      * ## Example Usage
      * 
-     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -306,11 +306,11 @@ public final class DcdnFunctions {
     /**
      * Provides a collection of DCDN Domains to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.94.0+.
+     * &gt; **NOTE:** Available since 1.94.0.
      * 
      * ## Example Usage
      * 
-     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -351,7 +351,7 @@ public final class DcdnFunctions {
     /**
      * This data source provides the Dcdn Ipa Domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.158.0+.
+     * &gt; **NOTE:** Available since v1.158.0.
      * 
      * ## Example Usage
      * 
@@ -406,7 +406,7 @@ public final class DcdnFunctions {
     /**
      * This data source provides the Dcdn Ipa Domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.158.0+.
+     * &gt; **NOTE:** Available since v1.158.0.
      * 
      * ## Example Usage
      * 
@@ -461,7 +461,7 @@ public final class DcdnFunctions {
     /**
      * This data source provides the Dcdn Ipa Domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.158.0+.
+     * &gt; **NOTE:** Available since v1.158.0.
      * 
      * ## Example Usage
      * 
@@ -516,7 +516,7 @@ public final class DcdnFunctions {
     /**
      * This data source provides the Dcdn Ipa Domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.158.0+.
+     * &gt; **NOTE:** Available since v1.158.0.
      * 
      * ## Example Usage
      * 
@@ -571,7 +571,7 @@ public final class DcdnFunctions {
     /**
      * This data source provides the Dcdn Ipa Domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.158.0+.
+     * &gt; **NOTE:** Available since v1.158.0.
      * 
      * ## Example Usage
      * 
@@ -626,7 +626,7 @@ public final class DcdnFunctions {
     /**
      * This data source provides the Dcdn Ipa Domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.158.0+.
+     * &gt; **NOTE:** Available since v1.158.0.
      * 
      * ## Example Usage
      * 
@@ -681,7 +681,7 @@ public final class DcdnFunctions {
     /**
      * This data source provides the Dcdn Ipa Domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.158.0+.
+     * &gt; **NOTE:** Available since v1.158.0.
      * 
      * ## Example Usage
      * 
@@ -1366,7 +1366,7 @@ public final class DcdnFunctions {
     /**
      * This data source provides the Dcdn Waf Domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.185.0+.
+     * &gt; **NOTE:** Available since v1.185.0.
      * 
      * ## Example Usage
      * 
@@ -1411,7 +1411,7 @@ public final class DcdnFunctions {
     /**
      * This data source provides the Dcdn Waf Domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.185.0+.
+     * &gt; **NOTE:** Available since v1.185.0.
      * 
      * ## Example Usage
      * 
@@ -1456,7 +1456,7 @@ public final class DcdnFunctions {
     /**
      * This data source provides the Dcdn Waf Domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.185.0+.
+     * &gt; **NOTE:** Available since v1.185.0.
      * 
      * ## Example Usage
      * 
@@ -1501,7 +1501,7 @@ public final class DcdnFunctions {
     /**
      * This data source provides the Dcdn Waf Domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.185.0+.
+     * &gt; **NOTE:** Available since v1.185.0.
      * 
      * ## Example Usage
      * 
@@ -1546,7 +1546,7 @@ public final class DcdnFunctions {
     /**
      * This data source provides the Dcdn Waf Domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.185.0+.
+     * &gt; **NOTE:** Available since v1.185.0.
      * 
      * ## Example Usage
      * 
@@ -1591,7 +1591,7 @@ public final class DcdnFunctions {
     /**
      * This data source provides the Dcdn Waf Domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.185.0+.
+     * &gt; **NOTE:** Available since v1.185.0.
      * 
      * ## Example Usage
      * 
@@ -1636,7 +1636,7 @@ public final class DcdnFunctions {
     /**
      * This data source provides the Dcdn Waf Domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.185.0+.
+     * &gt; **NOTE:** Available since v1.185.0.
      * 
      * ## Example Usage
      * 
@@ -1681,7 +1681,7 @@ public final class DcdnFunctions {
     /**
      * This data source provides the Dcdn Waf Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.184.0+.
+     * &gt; **NOTE:** Available since v1.184.0.
      * 
      * ## Example Usage
      * 
@@ -1726,7 +1726,7 @@ public final class DcdnFunctions {
     /**
      * This data source provides the Dcdn Waf Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.184.0+.
+     * &gt; **NOTE:** Available since v1.184.0.
      * 
      * ## Example Usage
      * 
@@ -1771,7 +1771,7 @@ public final class DcdnFunctions {
     /**
      * This data source provides the Dcdn Waf Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.184.0+.
+     * &gt; **NOTE:** Available since v1.184.0.
      * 
      * ## Example Usage
      * 
@@ -1816,7 +1816,7 @@ public final class DcdnFunctions {
     /**
      * This data source provides the Dcdn Waf Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.184.0+.
+     * &gt; **NOTE:** Available since v1.184.0.
      * 
      * ## Example Usage
      * 
@@ -1861,7 +1861,7 @@ public final class DcdnFunctions {
     /**
      * This data source provides the Dcdn Waf Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.184.0+.
+     * &gt; **NOTE:** Available since v1.184.0.
      * 
      * ## Example Usage
      * 
@@ -1906,7 +1906,7 @@ public final class DcdnFunctions {
     /**
      * This data source provides the Dcdn Waf Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.184.0+.
+     * &gt; **NOTE:** Available since v1.184.0.
      * 
      * ## Example Usage
      * 
@@ -1951,7 +1951,7 @@ public final class DcdnFunctions {
     /**
      * This data source provides the Dcdn Waf Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.184.0+.
+     * &gt; **NOTE:** Available since v1.184.0.
      * 
      * ## Example Usage
      * 

@@ -22,23 +22,71 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			policiesDs, err := ram.GetPolicies(ctx, &ram.GetPoliciesArgs{
-//				OutputFile: pulumi.StringRef("policies.txt"),
-//				UserName:   pulumi.StringRef("user1"),
-//				GroupName:  pulumi.StringRef("group1"),
-//				Type:       pulumi.StringRef("System"),
-//			}, nil)
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstPolicyName", policiesDs.Policies[0].Name)
+//			group, err := ram.NewGroup(ctx, "group", &ram.GroupArgs{
+//				Name:     pulumi.Sprintf("groupName-%v", _default.Result),
+//				Comments: pulumi.String("this is a group comments."),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			policy, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
+//				PolicyName: pulumi.Sprintf("tf-example-%v", _default.Result),
+//				PolicyDocument: pulumi.String(`    {
+//	      "Statement": [
+//	        {
+//	          "Action": [
+//	            "oss:ListObjects",
+//	            "oss:GetObject"
+//	          ],
+//	          "Effect": "Allow",
+//	          "Resource": [
+//	            "acs:oss:*:*:mybucket",
+//	            "acs:oss:*:*:mybucket/*"
+//	          ]
+//	        }
+//	      ],
+//	        "Version": "1"
+//	    }
+//
+// `),
+//
+//				Description: pulumi.String("this is a policy test"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			attach, err := ram.NewGroupPolicyAttachment(ctx, "attach", &ram.GroupPolicyAttachmentArgs{
+//				PolicyName: policy.PolicyName,
+//				PolicyType: policy.Type,
+//				GroupName:  group.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			policiesDs := ram.GetPoliciesOutput(ctx, ram.GetPoliciesOutputArgs{
+//				GroupName: attach.GroupName,
+//				Type:      pulumi.String("Custom"),
+//			}, nil)
+//			ctx.Export("firstPolicyName", policiesDs.ApplyT(func(policiesDs ram.GetPoliciesResult) (*string, error) {
+//				return &policiesDs.Policies[0].Name, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}

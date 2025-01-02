@@ -138,7 +138,7 @@ def get_basic_accelerate_ip_endpoint_relations(accelerate_ip_id: Optional[str] =
     """
     This data source provides the Global Accelerator (GA) Basic Accelerate Ip Endpoint Relations of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.194.0+.
+    > **NOTE:** Available since v1.194.0.
 
     ## Example Usage
 
@@ -190,7 +190,7 @@ def get_basic_accelerate_ip_endpoint_relations_output(accelerate_ip_id: Optional
     """
     This data source provides the Global Accelerator (GA) Basic Accelerate Ip Endpoint Relations of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.194.0+.
+    > **NOTE:** Available since v1.194.0.
 
     ## Example Usage
 

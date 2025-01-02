@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Sddp Configs of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.133.0+.
+// > **NOTE:** Available since v1.133.0.
 //
 // ## Example Usage
 //
@@ -71,6 +71,7 @@ type GetConfigsArgs struct {
 
 // A collection of values returned by getConfigs.
 type GetConfigsResult struct {
+	// A list of Sddp Configs. Each element contains the following attributes:
 	Configs []GetConfigsConfig `pulumi:"configs"`
 	// The provider-assigned unique ID for this managed resource.
 	Id         string   `pulumi:"id"`
@@ -116,6 +117,7 @@ func (o GetConfigsResultOutput) ToGetConfigsResultOutputWithContext(ctx context.
 	return o
 }
 
+// A list of Sddp Configs. Each element contains the following attributes:
 func (o GetConfigsResultOutput) Configs() GetConfigsConfigArrayOutput {
 	return o.ApplyT(func(v GetConfigsResult) []GetConfigsConfig { return v.Configs }).(GetConfigsConfigArrayOutput)
 }

@@ -51,6 +51,7 @@ public final class SharedResourceArgs extends com.pulumi.resources.ResourceArgs 
      * - The following types are added after v1.192.0: `PrefixList` and `Image`.
      * - The following types are added after v1.194.1: `PublicIpAddressPool`.
      * - The following types are added after v1.208.0: `KMSInstance`.
+     * - The following types are added after v1.240.0: `Snapshot`.
      * 
      */
     @Import(name="resourceType", required=true)
@@ -63,6 +64,7 @@ public final class SharedResourceArgs extends com.pulumi.resources.ResourceArgs 
      * - The following types are added after v1.192.0: `PrefixList` and `Image`.
      * - The following types are added after v1.194.1: `PublicIpAddressPool`.
      * - The following types are added after v1.208.0: `KMSInstance`.
+     * - The following types are added after v1.240.0: `Snapshot`.
      * 
      */
     public Output<String> resourceType() {
@@ -144,6 +146,7 @@ public final class SharedResourceArgs extends com.pulumi.resources.ResourceArgs 
          * - The following types are added after v1.192.0: `PrefixList` and `Image`.
          * - The following types are added after v1.194.1: `PublicIpAddressPool`.
          * - The following types are added after v1.208.0: `KMSInstance`.
+         * - The following types are added after v1.240.0: `Snapshot`.
          * 
          * @return builder
          * 
@@ -160,6 +163,7 @@ public final class SharedResourceArgs extends com.pulumi.resources.ResourceArgs 
          * - The following types are added after v1.192.0: `PrefixList` and `Image`.
          * - The following types are added after v1.194.1: `PublicIpAddressPool`.
          * - The following types are added after v1.208.0: `KMSInstance`.
+         * - The following types are added after v1.240.0: `Snapshot`.
          * 
          * @return builder
          * 

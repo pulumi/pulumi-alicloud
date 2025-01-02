@@ -140,6 +140,9 @@ export interface GetInstancesArgs {
  * A collection of values returned by getInstances.
  */
 export interface GetInstancesResult {
+    /**
+     * The architecture type of the instance.
+     */
     readonly architectureType?: string;
     readonly editionType?: string;
     readonly enableDetails?: boolean;
@@ -158,12 +161,11 @@ export interface GetInstancesResult {
      */
     readonly ids: string[];
     /**
-     * (Optional) Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
-     * For more information, see [Instance type table](https://www.alibabacloud.com/help/en/redis/product-overview/overview-4).
+     * Type of the applied Tair (Redis OSS-Compatible) And Memcached (KVStore) Classic Instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/en/redis/product-overview/overview-4).
      */
     readonly instanceClass?: string;
     /**
-     * (Optional) Database type. Valid Values: `Memcache`, `Redis`. If no value is specified, all types are returned.
+     * Database type. Valid Values: `Memcache`, `Redis`. If no value is specified, all types are returned.
      */
     readonly instanceType?: string;
     /**
@@ -184,12 +186,21 @@ export interface GetInstancesResult {
      * Billing method. Valid Values: `PostPaid` for  Pay-As-You-Go and `PrePaid` for subscription.
      */
     readonly paymentType?: string;
+    /**
+     * The ID of the resource group to which the instance belongs.
+     */
     readonly resourceGroupId?: string;
+    /**
+     * The keyword used for fuzzy search. The keyword can be based on an instance name or an instance ID.
+     */
     readonly searchKey?: string;
     /**
      * Status of the instance.
      */
     readonly status?: string;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     readonly tags?: {[key: string]: string};
     /**
      * VPC ID the instance belongs to.

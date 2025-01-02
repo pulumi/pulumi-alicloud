@@ -200,6 +200,13 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.enableSsl);
     }
 
+    @Import(name="kernelVersion")
+    private @Nullable Output<String> kernelVersion;
+
+    public Optional<Output<String>> kernelVersion() {
+        return Optional.ofNullable(this.kernelVersion);
+    }
+
     @Import(name="kmsId")
     private @Nullable Output<String> kmsId;
 
@@ -348,6 +355,13 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.status);
     }
 
+    @Import(name="switchMode")
+    private @Nullable Output<Integer> switchMode;
+
+    public Optional<Output<Integer>> switchMode() {
+        return Optional.ofNullable(this.switchMode);
+    }
+
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It cannot be a null string.
@@ -426,6 +440,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.elasticIoResource = $.elasticIoResource;
         this.elasticIoResourceSize = $.elasticIoResourceSize;
         this.enableSsl = $.enableSsl;
+        this.kernelVersion = $.kernelVersion;
         this.kmsId = $.kmsId;
         this.maintainTime = $.maintainTime;
         this.mode = $.mode;
@@ -438,6 +453,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.resourceGroupId = $.resourceGroupId;
         this.securityIps = $.securityIps;
         this.status = $.status;
+        this.switchMode = $.switchMode;
         this.tags = $.tags;
         this.vpcId = $.vpcId;
         this.vswitchId = $.vswitchId;
@@ -709,6 +725,15 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
             return enableSsl(Output.of(enableSsl));
         }
 
+        public Builder kernelVersion(@Nullable Output<String> kernelVersion) {
+            $.kernelVersion = kernelVersion;
+            return this;
+        }
+
+        public Builder kernelVersion(String kernelVersion) {
+            return kernelVersion(Output.of(kernelVersion));
+        }
+
         public Builder kmsId(@Nullable Output<String> kmsId) {
             $.kmsId = kmsId;
             return this;
@@ -917,6 +942,15 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        public Builder switchMode(@Nullable Output<Integer> switchMode) {
+            $.switchMode = switchMode;
+            return this;
+        }
+
+        public Builder switchMode(Integer switchMode) {
+            return switchMode(Output.of(switchMode));
         }
 
         /**

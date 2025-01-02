@@ -18,6 +18,10 @@ namespace Pulumi.AliCloud.Adb.Outputs
         /// </summary>
         public readonly int AutoRenewPeriod;
         /// <summary>
+        /// The minor versions to which you can update the current minor version of the cluster.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetDBClustersClusterAvailableKernelVersionResult> AvailableKernelVersions;
+        /// <summary>
         /// The payment type of the resource.
         /// </summary>
         public readonly string ChargeType;
@@ -110,6 +114,10 @@ namespace Pulumi.AliCloud.Adb.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// The minor version. Example: 3.1.9.
+        /// </summary>
+        public readonly string KernelVersion;
+        /// <summary>
         /// The lock mode of the cluster.
         /// </summary>
         public readonly string LockMode;
@@ -190,6 +198,8 @@ namespace Pulumi.AliCloud.Adb.Outputs
         private GetDBClustersClusterResult(
             int autoRenewPeriod,
 
+            ImmutableArray<Outputs.GetDBClustersClusterAvailableKernelVersionResult> availableKernelVersions,
+
             string chargeType,
 
             string commodityCode,
@@ -236,6 +246,8 @@ namespace Pulumi.AliCloud.Adb.Outputs
 
             string id,
 
+            string kernelVersion,
+
             string lockMode,
 
             string lockReason,
@@ -275,6 +287,7 @@ namespace Pulumi.AliCloud.Adb.Outputs
             string zoneId)
         {
             AutoRenewPeriod = autoRenewPeriod;
+            AvailableKernelVersions = availableKernelVersions;
             ChargeType = chargeType;
             CommodityCode = commodityCode;
             ComputeResource = computeResource;
@@ -298,6 +311,7 @@ namespace Pulumi.AliCloud.Adb.Outputs
             ExpireTime = expireTime;
             Expired = expired;
             Id = id;
+            KernelVersion = kernelVersion;
             LockMode = lockMode;
             LockReason = lockReason;
             MaintainTime = maintainTime;

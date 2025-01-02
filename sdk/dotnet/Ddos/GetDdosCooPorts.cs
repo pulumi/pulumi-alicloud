@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ddos
         /// <summary>
         /// This data source provides the Ddoscoo Ports of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.123.0+.
+        /// &gt; **NOTE:** Available since v1.123.0.
         /// 
         /// ## Example Usage
         /// 
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Ddos
         /// <summary>
         /// This data source provides the Ddoscoo Ports of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.123.0+.
+        /// &gt; **NOTE:** Available since v1.123.0.
         /// 
         /// ## Example Usage
         /// 
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Ddos
         /// <summary>
         /// This data source provides the Ddoscoo Ports of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.123.0+.
+        /// &gt; **NOTE:** Available since v1.123.0.
         /// 
         /// ## Example Usage
         /// 
@@ -148,7 +148,7 @@ namespace Pulumi.AliCloud.Ddos
         }
 
         /// <summary>
-        /// The Ddoscoo instance ID.
+        /// The DdosCoo instance ID.
         /// </summary>
         [Input("instanceId", required: true)]
         public string InstanceId { get; set; } = null!;
@@ -192,7 +192,7 @@ namespace Pulumi.AliCloud.Ddos
         }
 
         /// <summary>
-        /// The Ddoscoo instance ID.
+        /// The DdosCoo instance ID.
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
@@ -213,15 +213,27 @@ namespace Pulumi.AliCloud.Ddos
     [OutputType]
     public sealed class GetDdosCooPortsResult
     {
+        /// <summary>
+        /// The forwarding port.
+        /// </summary>
         public readonly string? FrontendPort;
+        /// <summary>
+        /// The forwarding protocol.
+        /// </summary>
         public readonly string? FrontendProtocol;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The Ddoscoo instance ID.
+        /// </summary>
         public readonly string InstanceId;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of DdosCoo Ports. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetDdosCooPortsPortResult> Ports;
 
         [OutputConstructor]

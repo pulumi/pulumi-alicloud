@@ -14,7 +14,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCertificatesResult {
+    /**
+     * @return A list of Waf Certificates. Each element contains the following attributes:
+     * 
+     */
     private List<GetCertificatesCertificate> certificates;
+    /**
+     * @return The domain that you want to add to WAF.
+     * 
+     */
     private @Nullable String domain;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,15 +30,31 @@ public final class GetCertificatesResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return WAF instance ID.
+     * 
+     */
     private String instanceId;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Certificate names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
 
     private GetCertificatesResult() {}
+    /**
+     * @return A list of Waf Certificates. Each element contains the following attributes:
+     * 
+     */
     public List<GetCertificatesCertificate> certificates() {
         return this.certificates;
     }
+    /**
+     * @return The domain that you want to add to WAF.
+     * 
+     */
     public Optional<String> domain() {
         return Optional.ofNullable(this.domain);
     }
@@ -44,12 +68,20 @@ public final class GetCertificatesResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return WAF instance ID.
+     * 
+     */
     public String instanceId() {
         return this.instanceId;
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Certificate names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }

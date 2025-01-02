@@ -104,6 +104,7 @@ type SharedResource struct {
 	// - The following types are added after v1.192.0: `PrefixList` and `Image`.
 	// - The following types are added after v1.194.1: `PublicIpAddressPool`.
 	// - The following types are added after v1.208.0: `KMSInstance`.
+	// - The following types are added after v1.240.0: `Snapshot`.
 	ResourceType pulumi.StringOutput `pulumi:"resourceType"`
 	// The status of the Shared Resource.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -158,6 +159,7 @@ type sharedResourceState struct {
 	// - The following types are added after v1.192.0: `PrefixList` and `Image`.
 	// - The following types are added after v1.194.1: `PublicIpAddressPool`.
 	// - The following types are added after v1.208.0: `KMSInstance`.
+	// - The following types are added after v1.240.0: `Snapshot`.
 	ResourceType *string `pulumi:"resourceType"`
 	// The status of the Shared Resource.
 	Status *string `pulumi:"status"`
@@ -174,6 +176,7 @@ type SharedResourceState struct {
 	// - The following types are added after v1.192.0: `PrefixList` and `Image`.
 	// - The following types are added after v1.194.1: `PublicIpAddressPool`.
 	// - The following types are added after v1.208.0: `KMSInstance`.
+	// - The following types are added after v1.240.0: `Snapshot`.
 	ResourceType pulumi.StringPtrInput
 	// The status of the Shared Resource.
 	Status pulumi.StringPtrInput
@@ -194,6 +197,7 @@ type sharedResourceArgs struct {
 	// - The following types are added after v1.192.0: `PrefixList` and `Image`.
 	// - The following types are added after v1.194.1: `PublicIpAddressPool`.
 	// - The following types are added after v1.208.0: `KMSInstance`.
+	// - The following types are added after v1.240.0: `Snapshot`.
 	ResourceType string `pulumi:"resourceType"`
 }
 
@@ -209,6 +213,7 @@ type SharedResourceArgs struct {
 	// - The following types are added after v1.192.0: `PrefixList` and `Image`.
 	// - The following types are added after v1.194.1: `PublicIpAddressPool`.
 	// - The following types are added after v1.208.0: `KMSInstance`.
+	// - The following types are added after v1.240.0: `Snapshot`.
 	ResourceType pulumi.StringInput
 }
 
@@ -315,6 +320,7 @@ func (o SharedResourceOutput) ResourceShareId() pulumi.StringOutput {
 // - The following types are added after v1.192.0: `PrefixList` and `Image`.
 // - The following types are added after v1.194.1: `PublicIpAddressPool`.
 // - The following types are added after v1.208.0: `KMSInstance`.
+// - The following types are added after v1.240.0: `Snapshot`.
 func (o SharedResourceOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *SharedResource) pulumi.StringOutput { return v.ResourceType }).(pulumi.StringOutput)
 }

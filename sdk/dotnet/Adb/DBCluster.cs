@@ -115,6 +115,12 @@ namespace Pulumi.AliCloud.Adb
         public Output<bool?> EnableSsl { get; private set; } = null!;
 
         /// <summary>
+        /// The minor version to which you want to update.
+        /// </summary>
+        [Output("kernelVersion")]
+        public Output<string> KernelVersion { get; private set; } = null!;
+
+        /// <summary>
         /// The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
         /// </summary>
         [Output("kmsId")]
@@ -186,6 +192,12 @@ namespace Pulumi.AliCloud.Adb
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The time when to perform the update. Valid values:
+        /// </summary>
+        [Output("switchMode")]
+        public Output<int?> SwitchMode { get; private set; } = null!;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
@@ -349,6 +361,12 @@ namespace Pulumi.AliCloud.Adb
         public Input<bool>? EnableSsl { get; set; }
 
         /// <summary>
+        /// The minor version to which you want to update.
+        /// </summary>
+        [Input("kernelVersion")]
+        public Input<string>? KernelVersion { get; set; }
+
+        /// <summary>
         /// The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
         /// </summary>
         [Input("kmsId")]
@@ -414,6 +432,12 @@ namespace Pulumi.AliCloud.Adb
             get => _securityIps ?? (_securityIps = new InputList<string>());
             set => _securityIps = value;
         }
+
+        /// <summary>
+        /// The time when to perform the update. Valid values:
+        /// </summary>
+        [Input("switchMode")]
+        public Input<int>? SwitchMode { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
@@ -551,6 +575,12 @@ namespace Pulumi.AliCloud.Adb
         public Input<bool>? EnableSsl { get; set; }
 
         /// <summary>
+        /// The minor version to which you want to update.
+        /// </summary>
+        [Input("kernelVersion")]
+        public Input<string>? KernelVersion { get; set; }
+
+        /// <summary>
         /// The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
         /// </summary>
         [Input("kmsId")]
@@ -628,6 +658,12 @@ namespace Pulumi.AliCloud.Adb
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The time when to perform the update. Valid values:
+        /// </summary>
+        [Input("switchMode")]
+        public Input<int>? SwitchMode { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;

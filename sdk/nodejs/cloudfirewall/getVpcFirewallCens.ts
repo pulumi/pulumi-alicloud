@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides Cloud Firewall Vpc Firewall Cen available to the user.[What is Vpc Firewall Cen](https://www.alibabacloud.com/help/en/cloud-firewall/latest/describevpcfirewallcenlist)
  *
- * > **NOTE:** Available in 1.194.0+
+ * > **NOTE:** Available since v1.194.0.
  *
  * ## Example Usage
  *
@@ -137,7 +137,7 @@ export interface GetVpcFirewallCensResult {
 /**
  * This data source provides Cloud Firewall Vpc Firewall Cen available to the user.[What is Vpc Firewall Cen](https://www.alibabacloud.com/help/en/cloud-firewall/latest/describevpcfirewallcenlist)
  *
- * > **NOTE:** Available in 1.194.0+
+ * > **NOTE:** Available since v1.194.0.
  *
  * ## Example Usage
  *

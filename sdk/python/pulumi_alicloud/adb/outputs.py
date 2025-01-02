@@ -19,8 +19,10 @@ __all__ = [
     'LakeAccountAccountPrivilege',
     'LakeAccountAccountPrivilegePrivilegeObject',
     'GetClustersClusterResult',
+    'GetClustersClusterAvailableKernelVersionResult',
     'GetDBClusterLakeVersionsVersionResult',
     'GetDBClustersClusterResult',
+    'GetDBClustersClusterAvailableKernelVersionResult',
     'GetResourceGroupsGroupResult',
     'GetZonesZoneResult',
 ]
@@ -134,6 +136,7 @@ class LakeAccountAccountPrivilegePrivilegeObject(dict):
 class GetClustersClusterResult(dict):
     def __init__(__self__, *,
                  auto_renew_period: int,
+                 available_kernel_versions: Sequence['outputs.GetClustersClusterAvailableKernelVersionResult'],
                  charge_type: str,
                  commodity_code: str,
                  compute_resource: str,
@@ -157,6 +160,7 @@ class GetClustersClusterResult(dict):
                  expire_time: str,
                  expired: str,
                  id: str,
+                 kernel_version: str,
                  lock_mode: str,
                  lock_reason: str,
                  maintain_time: str,
@@ -197,6 +201,7 @@ class GetClustersClusterResult(dict):
         :param str zone_id: The ZoneId of the ADB cluster.
         """
         pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+        pulumi.set(__self__, "available_kernel_versions", available_kernel_versions)
         pulumi.set(__self__, "charge_type", charge_type)
         pulumi.set(__self__, "commodity_code", commodity_code)
         pulumi.set(__self__, "compute_resource", compute_resource)
@@ -220,6 +225,7 @@ class GetClustersClusterResult(dict):
         pulumi.set(__self__, "expire_time", expire_time)
         pulumi.set(__self__, "expired", expired)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "kernel_version", kernel_version)
         pulumi.set(__self__, "lock_mode", lock_mode)
         pulumi.set(__self__, "lock_reason", lock_reason)
         pulumi.set(__self__, "maintain_time", maintain_time)
@@ -244,6 +250,11 @@ class GetClustersClusterResult(dict):
     @pulumi.getter(name="autoRenewPeriod")
     def auto_renew_period(self) -> int:
         return pulumi.get(self, "auto_renew_period")
+
+    @property
+    @pulumi.getter(name="availableKernelVersions")
+    def available_kernel_versions(self) -> Sequence['outputs.GetClustersClusterAvailableKernelVersionResult']:
+        return pulumi.get(self, "available_kernel_versions")
 
     @property
     @pulumi.getter(name="chargeType")
@@ -388,6 +399,11 @@ class GetClustersClusterResult(dict):
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter(name="kernelVersion")
+    def kernel_version(self) -> str:
+        return pulumi.get(self, "kernel_version")
+
+    @property
     @pulumi.getter(name="lockMode")
     def lock_mode(self) -> str:
         """
@@ -507,6 +523,32 @@ class GetClustersClusterResult(dict):
 
 
 @pulumi.output_type
+class GetClustersClusterAvailableKernelVersionResult(dict):
+    def __init__(__self__, *,
+                 expire_date: str,
+                 kernel_version: str,
+                 release_date: str):
+        pulumi.set(__self__, "expire_date", expire_date)
+        pulumi.set(__self__, "kernel_version", kernel_version)
+        pulumi.set(__self__, "release_date", release_date)
+
+    @property
+    @pulumi.getter(name="expireDate")
+    def expire_date(self) -> str:
+        return pulumi.get(self, "expire_date")
+
+    @property
+    @pulumi.getter(name="kernelVersion")
+    def kernel_version(self) -> str:
+        return pulumi.get(self, "kernel_version")
+
+    @property
+    @pulumi.getter(name="releaseDate")
+    def release_date(self) -> str:
+        return pulumi.get(self, "release_date")
+
+
+@pulumi.output_type
 class GetDBClusterLakeVersionsVersionResult(dict):
     def __init__(__self__, *,
                  commodity_code: str,
@@ -547,7 +589,7 @@ class GetDBClusterLakeVersionsVersionResult(dict):
         :param str payment_type: The payment type of the resource.
         :param str port: The port that is used to access the cluster.
         :param str resource_group_id: The ID of the resource group.
-        :param str status: The status of the resource.
+        :param str status: The status of the resource. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`.
         :param str storage_resource: The specifications of storage resources in elastic mode. The resources are used for data read and write operations.
         :param str vpc_id: The vpc id.
         :param str vswitch_id: The vswitch id.
@@ -707,7 +749,7 @@ class GetDBClusterLakeVersionsVersionResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the resource.
+        The status of the resource. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`.
         """
         return pulumi.get(self, "status")
 
@@ -748,6 +790,7 @@ class GetDBClusterLakeVersionsVersionResult(dict):
 class GetDBClustersClusterResult(dict):
     def __init__(__self__, *,
                  auto_renew_period: int,
+                 available_kernel_versions: Sequence['outputs.GetDBClustersClusterAvailableKernelVersionResult'],
                  charge_type: str,
                  commodity_code: str,
                  compute_resource: str,
@@ -771,6 +814,7 @@ class GetDBClustersClusterResult(dict):
                  expire_time: str,
                  expired: str,
                  id: str,
+                 kernel_version: str,
                  lock_mode: str,
                  lock_reason: str,
                  maintain_time: str,
@@ -792,6 +836,7 @@ class GetDBClustersClusterResult(dict):
                  zone_id: str):
         """
         :param int auto_renew_period: Auto-renewal period of an cluster, in the unit of the month.
+        :param Sequence['GetDBClustersClusterAvailableKernelVersionArgs'] available_kernel_versions: The minor versions to which you can update the current minor version of the cluster.
         :param str charge_type: The payment type of the resource.
         :param str commodity_code: The name of the service.
         :param str compute_resource: The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources.
@@ -815,6 +860,7 @@ class GetDBClustersClusterResult(dict):
         :param str expire_time: The time when the cluster expires.
         :param str expired: Indicates whether the cluster has expired.
         :param str id: The ID of the DBCluster.
+        :param str kernel_version: The minor version. Example: 3.1.9.
         :param str lock_mode: The lock mode of the cluster.
         :param str lock_reason: The reason why the cluster is locked.
         :param str maintain_time: The maintenance window of the cluster.
@@ -836,6 +882,7 @@ class GetDBClustersClusterResult(dict):
         :param str zone_id: The zone ID  of the resource.
         """
         pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+        pulumi.set(__self__, "available_kernel_versions", available_kernel_versions)
         pulumi.set(__self__, "charge_type", charge_type)
         pulumi.set(__self__, "commodity_code", commodity_code)
         pulumi.set(__self__, "compute_resource", compute_resource)
@@ -859,6 +906,7 @@ class GetDBClustersClusterResult(dict):
         pulumi.set(__self__, "expire_time", expire_time)
         pulumi.set(__self__, "expired", expired)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "kernel_version", kernel_version)
         pulumi.set(__self__, "lock_mode", lock_mode)
         pulumi.set(__self__, "lock_reason", lock_reason)
         pulumi.set(__self__, "maintain_time", maintain_time)
@@ -886,6 +934,14 @@ class GetDBClustersClusterResult(dict):
         Auto-renewal period of an cluster, in the unit of the month.
         """
         return pulumi.get(self, "auto_renew_period")
+
+    @property
+    @pulumi.getter(name="availableKernelVersions")
+    def available_kernel_versions(self) -> Sequence['outputs.GetDBClustersClusterAvailableKernelVersionResult']:
+        """
+        The minor versions to which you can update the current minor version of the cluster.
+        """
+        return pulumi.get(self, "available_kernel_versions")
 
     @property
     @pulumi.getter(name="chargeType")
@@ -1072,6 +1128,14 @@ class GetDBClustersClusterResult(dict):
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter(name="kernelVersion")
+    def kernel_version(self) -> str:
+        """
+        The minor version. Example: 3.1.9.
+        """
+        return pulumi.get(self, "kernel_version")
+
+    @property
     @pulumi.getter(name="lockMode")
     def lock_mode(self) -> str:
         """
@@ -1222,6 +1286,46 @@ class GetDBClustersClusterResult(dict):
         The zone ID  of the resource.
         """
         return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
+class GetDBClustersClusterAvailableKernelVersionResult(dict):
+    def __init__(__self__, *,
+                 expire_date: str,
+                 kernel_version: str,
+                 release_date: str):
+        """
+        :param str expire_date: The maintenance expiration time of the version
+        :param str kernel_version: The minor version. Example: 3.1.9.
+        :param str release_date: The time when the minor version was released.
+        """
+        pulumi.set(__self__, "expire_date", expire_date)
+        pulumi.set(__self__, "kernel_version", kernel_version)
+        pulumi.set(__self__, "release_date", release_date)
+
+    @property
+    @pulumi.getter(name="expireDate")
+    def expire_date(self) -> str:
+        """
+        The maintenance expiration time of the version
+        """
+        return pulumi.get(self, "expire_date")
+
+    @property
+    @pulumi.getter(name="kernelVersion")
+    def kernel_version(self) -> str:
+        """
+        The minor version. Example: 3.1.9.
+        """
+        return pulumi.get(self, "kernel_version")
+
+    @property
+    @pulumi.getter(name="releaseDate")
+    def release_date(self) -> str:
+        """
+        The time when the minor version was released.
+        """
+        return pulumi.get(self, "release_date")
 
 
 @pulumi.output_type

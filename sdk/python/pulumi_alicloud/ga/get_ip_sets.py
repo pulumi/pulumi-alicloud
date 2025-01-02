@@ -73,11 +73,17 @@ class GetIpSetsResult:
     @property
     @pulumi.getter
     def sets(self) -> Sequence['outputs.GetIpSetsSetResult']:
+        """
+        A list of Ga Ip Sets. Each element contains the following attributes:
+        """
         return pulumi.get(self, "sets")
 
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        The status of the acceleration region.
+        """
         return pulumi.get(self, "status")
 
 
@@ -103,7 +109,7 @@ def get_ip_sets(accelerator_id: Optional[str] = None,
     """
     This data source provides the Global Accelerator (GA) Ip Sets of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.113.0+.
+    > **NOTE:** Available since v1.113.0.
 
     ## Example Usage
 
@@ -147,7 +153,7 @@ def get_ip_sets_output(accelerator_id: Optional[pulumi.Input[str]] = None,
     """
     This data source provides the Global Accelerator (GA) Ip Sets of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.113.0+.
+    > **NOTE:** Available since v1.113.0.
 
     ## Example Usage
 

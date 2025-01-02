@@ -137,42 +137,66 @@ class GetEcsDisksResult:
     @property
     @pulumi.getter(name="autoSnapshotPolicyId")
     def auto_snapshot_policy_id(self) -> Optional[str]:
+        """
+        Query cloud disks based on the automatic snapshot policy ID.
+        """
         return pulumi.get(self, "auto_snapshot_policy_id")
 
     @property
     @pulumi.getter(name="availabilityZone")
     @_utilities.deprecated("""Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""")
     def availability_zone(self) -> Optional[str]:
+        """
+        Availability zone of the disk.
+        """
         return pulumi.get(self, "availability_zone")
 
     @property
     @pulumi.getter
     def category(self) -> Optional[str]:
+        """
+        Disk category.
+        """
         return pulumi.get(self, "category")
 
     @property
     @pulumi.getter(name="deleteAutoSnapshot")
     def delete_auto_snapshot(self) -> Optional[bool]:
+        """
+        Indicates whether the automatic snapshot is deleted when the disk is released.
+        """
         return pulumi.get(self, "delete_auto_snapshot")
 
     @property
     @pulumi.getter(name="deleteWithInstance")
     def delete_with_instance(self) -> Optional[bool]:
+        """
+        Indicates whether the disk is released together with the instance.
+        """
         return pulumi.get(self, "delete_with_instance")
 
     @property
     @pulumi.getter(name="diskName")
     def disk_name(self) -> Optional[str]:
+        """
+        The disk name.
+        """
         return pulumi.get(self, "disk_name")
 
     @property
     @pulumi.getter(name="diskType")
     def disk_type(self) -> Optional[str]:
+        """
+        The type of the disk.
+        """
         return pulumi.get(self, "disk_type")
 
     @property
     @pulumi.getter
     def disks(self) -> Sequence['outputs.GetEcsDisksDiskResult']:
+        """
+        A list of Ecs Disks. Each element contains the following attributes:
+        """
         return pulumi.get(self, "disks")
 
     @property
@@ -183,11 +207,17 @@ class GetEcsDisksResult:
     @property
     @pulumi.getter(name="enableAutoSnapshot")
     def enable_auto_snapshot(self) -> Optional[bool]:
+        """
+        Whether the disk implements an automatic snapshot policy.
+        """
         return pulumi.get(self, "enable_auto_snapshot")
 
     @property
     @pulumi.getter(name="enableAutomatedSnapshotPolicy")
     def enable_automated_snapshot_policy(self) -> Optional[bool]:
+        """
+        Whether the disk implements an automatic snapshot policy.
+        """
         return pulumi.get(self, "enable_automated_snapshot_policy")
 
     @property
@@ -198,6 +228,9 @@ class GetEcsDisksResult:
     @property
     @pulumi.getter
     def encrypted(self) -> Optional[str]:
+        """
+        Indicate whether the disk is encrypted or not.
+        """
         return pulumi.get(self, "encrypted")
 
     @property
@@ -216,11 +249,17 @@ class GetEcsDisksResult:
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[str]:
+        """
+        The instance ID of the disk mount.
+        """
         return pulumi.get(self, "instance_id")
 
     @property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[str]:
+        """
+        The ID of the KMS key that is used for the cloud disk.
+        """
         return pulumi.get(self, "kms_key_id")
 
     @property
@@ -231,11 +270,17 @@ class GetEcsDisksResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Disk names.
+        """
         return pulumi.get(self, "names")
 
     @property
     @pulumi.getter(name="operationLocks")
     def operation_locks(self) -> Optional[Sequence['outputs.GetEcsDisksOperationLockResult']]:
+        """
+        The reasons why the disk was locked.
+        """
         return pulumi.get(self, "operation_locks")
 
     @property
@@ -256,31 +301,49 @@ class GetEcsDisksResult:
     @property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[str]:
+        """
+        Payment method for disk.
+        """
         return pulumi.get(self, "payment_type")
 
     @property
     @pulumi.getter
     def portable(self) -> Optional[bool]:
+        """
+        Whether the disk is unmountable.
+        """
         return pulumi.get(self, "portable")
 
     @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[str]:
+        """
+        The Id of resource group.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[str]:
+        """
+        Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+        """
         return pulumi.get(self, "snapshot_id")
 
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        Current status.
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        A map of tags assigned to the disk.
+        """
         return pulumi.get(self, "tags")
 
     @property
@@ -292,11 +355,17 @@ class GetEcsDisksResult:
     @pulumi.getter
     @_utilities.deprecated("""Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.""")
     def type(self) -> Optional[str]:
+        """
+        The type of the disk.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[str]:
+        """
+        The zone id.
+        """
         return pulumi.get(self, "zone_id")
 
 
@@ -374,7 +443,7 @@ def get_ecs_disks(additional_attributes: Optional[Sequence[str]] = None,
     """
     This data source provides the Ecs Disks of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.122.0+.
+    > **NOTE:** Available since v1.122.0.
 
     ## Example Usage
 
@@ -384,9 +453,18 @@ def get_ecs_disks(additional_attributes: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    example = alicloud.ecs.get_ecs_disks(ids=["d-artgdsvdvxxxx"],
-        name_regex="tf-test")
-    pulumi.export("firstEcsDiskId", example.disks[0].id)
+    default = alicloud.get_zones(available_resource_creation="VSwitch")
+    default_ecs_disk = alicloud.ecs.EcsDisk("default",
+        zone_id=default.zones[0].id,
+        disk_name="terraform-example",
+        description="terraform-example",
+        category="cloud_efficiency",
+        size=30,
+        tags={
+            "Name": "terraform-example",
+        })
+    ids = alicloud.ecs.get_ecs_disks_output(ids=[default_ecs_disk.id])
+    pulumi.export("ecsDiskId0", ids.disks[0].id)
     ```
 
 
@@ -397,22 +475,23 @@ def get_ecs_disks(additional_attributes: Optional[Sequence[str]] = None,
     :param bool delete_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released.
     :param bool delete_with_instance: Indicates whether the disk is released together with the instance.
     :param str disk_name: The disk name.
-    :param str disk_type: The disk type.
+    :param str disk_type: The disk type. Valid values: `system`, `data`, `all`.
     :param bool dry_run: Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
     :param bool enable_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released.
     :param bool enable_automated_snapshot_policy: Whether the cloud disk has an automatic snapshot policy
     :param bool enable_shared: Whether it is shared block storage.
-    :param str encrypted: Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
+    :param str encrypted: Indicate whether the disk is encrypted or not. Valid values: `on` and `off`.
     :param Sequence[str] ids: A list of Disk IDs.
     :param str instance_id: Filter the results by the specified ECS instance ID.
     :param str kms_key_id: The kms key id.
     :param str name_regex: A regex string to filter results by Disk name.
+    :param Sequence[Union['GetEcsDisksOperationLockArgs', 'GetEcsDisksOperationLockArgsDict']] operation_locks: The reasons why the disk was locked. See `operation_locks` below for details.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str payment_type: Payment method for disk. Valid Values: `PayAsYouGo`, `Subscription`.
     :param bool portable: Whether the cloud disk or local disk supports uninstallation.
     :param str resource_group_id: The Id of resource group which the disk belongs.
     :param str snapshot_id: The source snapshot id.
-    :param str status: The status of disk.
+    :param str status: The status of disk. Valid Values: `Attaching`, `Available`, `Creating`, `Detaching`, `In_use`, `Migrating`, `ReIniting`, `Transferring`.
     :param Mapping[str, str] tags: A map of tags assigned to the disks.
     :param str type: Field `type` has been deprecated from provider version 1.122.0. New field `disk_type` instead.
     :param str zone_id: ID of the free zone to which the disk belongs.
@@ -517,7 +596,7 @@ def get_ecs_disks_output(additional_attributes: Optional[pulumi.Input[Optional[S
     """
     This data source provides the Ecs Disks of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.122.0+.
+    > **NOTE:** Available since v1.122.0.
 
     ## Example Usage
 
@@ -527,9 +606,18 @@ def get_ecs_disks_output(additional_attributes: Optional[pulumi.Input[Optional[S
     import pulumi
     import pulumi_alicloud as alicloud
 
-    example = alicloud.ecs.get_ecs_disks(ids=["d-artgdsvdvxxxx"],
-        name_regex="tf-test")
-    pulumi.export("firstEcsDiskId", example.disks[0].id)
+    default = alicloud.get_zones(available_resource_creation="VSwitch")
+    default_ecs_disk = alicloud.ecs.EcsDisk("default",
+        zone_id=default.zones[0].id,
+        disk_name="terraform-example",
+        description="terraform-example",
+        category="cloud_efficiency",
+        size=30,
+        tags={
+            "Name": "terraform-example",
+        })
+    ids = alicloud.ecs.get_ecs_disks_output(ids=[default_ecs_disk.id])
+    pulumi.export("ecsDiskId0", ids.disks[0].id)
     ```
 
 
@@ -540,22 +628,23 @@ def get_ecs_disks_output(additional_attributes: Optional[pulumi.Input[Optional[S
     :param bool delete_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released.
     :param bool delete_with_instance: Indicates whether the disk is released together with the instance.
     :param str disk_name: The disk name.
-    :param str disk_type: The disk type.
+    :param str disk_type: The disk type. Valid values: `system`, `data`, `all`.
     :param bool dry_run: Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
     :param bool enable_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released.
     :param bool enable_automated_snapshot_policy: Whether the cloud disk has an automatic snapshot policy
     :param bool enable_shared: Whether it is shared block storage.
-    :param str encrypted: Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
+    :param str encrypted: Indicate whether the disk is encrypted or not. Valid values: `on` and `off`.
     :param Sequence[str] ids: A list of Disk IDs.
     :param str instance_id: Filter the results by the specified ECS instance ID.
     :param str kms_key_id: The kms key id.
     :param str name_regex: A regex string to filter results by Disk name.
+    :param Sequence[Union['GetEcsDisksOperationLockArgs', 'GetEcsDisksOperationLockArgsDict']] operation_locks: The reasons why the disk was locked. See `operation_locks` below for details.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str payment_type: Payment method for disk. Valid Values: `PayAsYouGo`, `Subscription`.
     :param bool portable: Whether the cloud disk or local disk supports uninstallation.
     :param str resource_group_id: The Id of resource group which the disk belongs.
     :param str snapshot_id: The source snapshot id.
-    :param str status: The status of disk.
+    :param str status: The status of disk. Valid Values: `Attaching`, `Available`, `Creating`, `Detaching`, `In_use`, `Migrating`, `ReIniting`, `Transferring`.
     :param Mapping[str, str] tags: A map of tags assigned to the disks.
     :param str type: Field `type` has been deprecated from provider version 1.122.0. New field `disk_type` instead.
     :param str zone_id: ID of the free zone to which the disk belongs.

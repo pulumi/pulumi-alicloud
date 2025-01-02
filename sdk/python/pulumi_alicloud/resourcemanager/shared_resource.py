@@ -32,6 +32,7 @@ class SharedResourceArgs:
                - The following types are added after v1.192.0: `PrefixList` and `Image`.
                - The following types are added after v1.194.1: `PublicIpAddressPool`.
                - The following types are added after v1.208.0: `KMSInstance`.
+               - The following types are added after v1.240.0: `Snapshot`.
         """
         pulumi.set(__self__, "resource_id", resource_id)
         pulumi.set(__self__, "resource_share_id", resource_share_id)
@@ -71,6 +72,7 @@ class SharedResourceArgs:
         - The following types are added after v1.192.0: `PrefixList` and `Image`.
         - The following types are added after v1.194.1: `PublicIpAddressPool`.
         - The following types are added after v1.208.0: `KMSInstance`.
+        - The following types are added after v1.240.0: `Snapshot`.
         """
         return pulumi.get(self, "resource_type")
 
@@ -96,6 +98,7 @@ class _SharedResourceState:
                - The following types are added after v1.192.0: `PrefixList` and `Image`.
                - The following types are added after v1.194.1: `PublicIpAddressPool`.
                - The following types are added after v1.208.0: `KMSInstance`.
+               - The following types are added after v1.240.0: `Snapshot`.
         :param pulumi.Input[str] status: The status of the Shared Resource.
         """
         if resource_id is not None:
@@ -141,6 +144,7 @@ class _SharedResourceState:
         - The following types are added after v1.192.0: `PrefixList` and `Image`.
         - The following types are added after v1.194.1: `PublicIpAddressPool`.
         - The following types are added after v1.208.0: `KMSInstance`.
+        - The following types are added after v1.240.0: `Snapshot`.
         """
         return pulumi.get(self, "resource_type")
 
@@ -223,6 +227,7 @@ class SharedResource(pulumi.CustomResource):
                - The following types are added after v1.192.0: `PrefixList` and `Image`.
                - The following types are added after v1.194.1: `PublicIpAddressPool`.
                - The following types are added after v1.208.0: `KMSInstance`.
+               - The following types are added after v1.240.0: `Snapshot`.
         """
         ...
     @overload
@@ -339,6 +344,7 @@ class SharedResource(pulumi.CustomResource):
                - The following types are added after v1.192.0: `PrefixList` and `Image`.
                - The following types are added after v1.194.1: `PublicIpAddressPool`.
                - The following types are added after v1.208.0: `KMSInstance`.
+               - The following types are added after v1.240.0: `Snapshot`.
         :param pulumi.Input[str] status: The status of the Shared Resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -377,6 +383,7 @@ class SharedResource(pulumi.CustomResource):
         - The following types are added after v1.192.0: `PrefixList` and `Image`.
         - The following types are added after v1.194.1: `PublicIpAddressPool`.
         - The following types are added after v1.208.0: `KMSInstance`.
+        - The following types are added after v1.240.0: `Snapshot`.
         """
         return pulumi.get(self, "resource_type")
 

@@ -16,9 +16,25 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetVpcFirewallControlPoliciesResult {
+    /**
+     * @return Access control over VPC firewalls are set in the access traffic via Alibaba cloud firewall way (ACT).
+     * 
+     */
     private @Nullable String aclAction;
+    /**
+     * @return Access control over VPC firewalls strategy unique identifier.
+     * 
+     */
     private @Nullable String aclUuid;
+    /**
+     * @return Access control over VPC firewalls description of the strategy information.
+     * 
+     */
     private @Nullable String description;
+    /**
+     * @return Access control over VPC firewalls strategy the destination address in.
+     * 
+     */
     private @Nullable String destination;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -27,26 +43,66 @@ public final class GetVpcFirewallControlPoliciesResult {
     private String id;
     private List<String> ids;
     private @Nullable String lang;
+    /**
+     * @return The UID of the member account of the current Alibaba cloud account.
+     * 
+     */
     private @Nullable String memberUid;
     private @Nullable String outputFile;
     private @Nullable Integer pageNumber;
     private @Nullable Integer pageSize;
+    /**
+     * @return A list of Cloud Firewall Vpc Firewall Control Policies. Each element contains the following attributes:
+     * 
+     */
     private List<GetVpcFirewallControlPoliciesPolicy> policies;
+    /**
+     * @return Access control over VPC firewalls strategy access traffic of the protocol type.
+     * 
+     */
     private @Nullable String proto;
+    /**
+     * @return The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
+     * 
+     */
     private @Nullable Boolean release;
+    /**
+     * @return Access control over VPC firewalls strategy in the source address.
+     * 
+     */
     private @Nullable String source;
+    /**
+     * @return The ID of the VPC firewall instance.
+     * 
+     */
     private String vpcFirewallId;
 
     private GetVpcFirewallControlPoliciesResult() {}
+    /**
+     * @return Access control over VPC firewalls are set in the access traffic via Alibaba cloud firewall way (ACT).
+     * 
+     */
     public Optional<String> aclAction() {
         return Optional.ofNullable(this.aclAction);
     }
+    /**
+     * @return Access control over VPC firewalls strategy unique identifier.
+     * 
+     */
     public Optional<String> aclUuid() {
         return Optional.ofNullable(this.aclUuid);
     }
+    /**
+     * @return Access control over VPC firewalls description of the strategy information.
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return Access control over VPC firewalls strategy the destination address in.
+     * 
+     */
     public Optional<String> destination() {
         return Optional.ofNullable(this.destination);
     }
@@ -63,6 +119,10 @@ public final class GetVpcFirewallControlPoliciesResult {
     public Optional<String> lang() {
         return Optional.ofNullable(this.lang);
     }
+    /**
+     * @return The UID of the member account of the current Alibaba cloud account.
+     * 
+     */
     public Optional<String> memberUid() {
         return Optional.ofNullable(this.memberUid);
     }
@@ -75,18 +135,38 @@ public final class GetVpcFirewallControlPoliciesResult {
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
+    /**
+     * @return A list of Cloud Firewall Vpc Firewall Control Policies. Each element contains the following attributes:
+     * 
+     */
     public List<GetVpcFirewallControlPoliciesPolicy> policies() {
         return this.policies;
     }
+    /**
+     * @return Access control over VPC firewalls strategy access traffic of the protocol type.
+     * 
+     */
     public Optional<String> proto() {
         return Optional.ofNullable(this.proto);
     }
+    /**
+     * @return The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
+     * 
+     */
     public Optional<Boolean> release() {
         return Optional.ofNullable(this.release);
     }
+    /**
+     * @return Access control over VPC firewalls strategy in the source address.
+     * 
+     */
     public Optional<String> source() {
         return Optional.ofNullable(this.source);
     }
+    /**
+     * @return The ID of the VPC firewall instance.
+     * 
+     */
     public String vpcFirewallId() {
         return this.vpcFirewallId;
     }

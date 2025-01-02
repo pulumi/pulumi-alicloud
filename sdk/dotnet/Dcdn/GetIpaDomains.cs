@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Dcdn
         /// <summary>
         /// This data source provides the Dcdn Ipa Domains of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.158.0+.
+        /// &gt; **NOTE:** Available since v1.158.0.
         /// 
         /// ## Example Usage
         /// 
@@ -57,7 +57,7 @@ namespace Pulumi.AliCloud.Dcdn
         /// <summary>
         /// This data source provides the Dcdn Ipa Domains of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.158.0+.
+        /// &gt; **NOTE:** Available since v1.158.0.
         /// 
         /// ## Example Usage
         /// 
@@ -100,7 +100,7 @@ namespace Pulumi.AliCloud.Dcdn
         /// <summary>
         /// This data source provides the Dcdn Ipa Domains of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.158.0+.
+        /// &gt; **NOTE:** Available since v1.158.0.
         /// 
         /// ## Example Usage
         /// 
@@ -234,7 +234,13 @@ namespace Pulumi.AliCloud.Dcdn
     [OutputType]
     public sealed class GetIpaDomainsResult
     {
+        /// <summary>
+        /// The accelerated domain names.
+        /// </summary>
         public readonly string? DomainName;
+        /// <summary>
+        /// A list of Dcdn Ipa Domains. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetIpaDomainsDomainResult> Domains;
         public readonly bool? EnableDetails;
         /// <summary>
@@ -242,8 +248,14 @@ namespace Pulumi.AliCloud.Dcdn
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// A list of Dcdn Ipa Domain names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of the accelerated domain name.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

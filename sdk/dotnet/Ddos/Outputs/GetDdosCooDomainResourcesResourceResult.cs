@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Ddos.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list ID of instance that you want to associate.
+        /// A ID list of Ddoscoo instance.
         /// </summary>
         public readonly ImmutableArray<string> InstanceIds;
         /// <summary>

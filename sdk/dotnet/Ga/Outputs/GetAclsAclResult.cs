@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `active`, `configuring`, `deleting`, `init`.
         /// </summary>
         public readonly string Status;
 

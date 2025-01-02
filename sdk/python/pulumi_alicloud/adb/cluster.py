@@ -34,6 +34,7 @@ class ClusterArgs:
                  elastic_io_resource: Optional[pulumi.Input[int]] = None,
                  elastic_io_resource_size: Optional[pulumi.Input[str]] = None,
                  enable_ssl: Optional[pulumi.Input[bool]] = None,
+                 kernel_version: Optional[pulumi.Input[str]] = None,
                  kms_id: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
@@ -43,6 +44,7 @@ class ClusterArgs:
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 switch_mode: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -101,6 +103,8 @@ class ClusterArgs:
             pulumi.set(__self__, "elastic_io_resource_size", elastic_io_resource_size)
         if enable_ssl is not None:
             pulumi.set(__self__, "enable_ssl", enable_ssl)
+        if kernel_version is not None:
+            pulumi.set(__self__, "kernel_version", kernel_version)
         if kms_id is not None:
             pulumi.set(__self__, "kms_id", kms_id)
         if maintain_time is not None:
@@ -122,6 +126,8 @@ class ClusterArgs:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if security_ips is not None:
             pulumi.set(__self__, "security_ips", security_ips)
+        if switch_mode is not None:
+            pulumi.set(__self__, "switch_mode", switch_mode)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if vpc_id is not None:
@@ -289,6 +295,15 @@ class ClusterArgs:
         pulumi.set(self, "enable_ssl", value)
 
     @property
+    @pulumi.getter(name="kernelVersion")
+    def kernel_version(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "kernel_version")
+
+    @kernel_version.setter
+    def kernel_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kernel_version", value)
+
+    @property
     @pulumi.getter(name="kmsId")
     def kms_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "kms_id")
@@ -389,6 +404,15 @@ class ClusterArgs:
         pulumi.set(self, "security_ips", value)
 
     @property
+    @pulumi.getter(name="switchMode")
+    def switch_mode(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "switch_mode")
+
+    @switch_mode.setter
+    def switch_mode(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "switch_mode", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -456,6 +480,7 @@ class _ClusterState:
                  elastic_io_resource: Optional[pulumi.Input[int]] = None,
                  elastic_io_resource_size: Optional[pulumi.Input[str]] = None,
                  enable_ssl: Optional[pulumi.Input[bool]] = None,
+                 kernel_version: Optional[pulumi.Input[str]] = None,
                  kms_id: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
@@ -468,6 +493,7 @@ class _ClusterState:
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 switch_mode: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -530,6 +556,8 @@ class _ClusterState:
             pulumi.set(__self__, "elastic_io_resource_size", elastic_io_resource_size)
         if enable_ssl is not None:
             pulumi.set(__self__, "enable_ssl", enable_ssl)
+        if kernel_version is not None:
+            pulumi.set(__self__, "kernel_version", kernel_version)
         if kms_id is not None:
             pulumi.set(__self__, "kms_id", kms_id)
         if maintain_time is not None:
@@ -557,6 +585,8 @@ class _ClusterState:
             pulumi.set(__self__, "security_ips", security_ips)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if switch_mode is not None:
+            pulumi.set(__self__, "switch_mode", switch_mode)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if vpc_id is not None:
@@ -727,6 +757,15 @@ class _ClusterState:
         pulumi.set(self, "enable_ssl", value)
 
     @property
+    @pulumi.getter(name="kernelVersion")
+    def kernel_version(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "kernel_version")
+
+    @kernel_version.setter
+    def kernel_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kernel_version", value)
+
+    @property
     @pulumi.getter(name="kmsId")
     def kms_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "kms_id")
@@ -857,6 +896,15 @@ class _ClusterState:
         pulumi.set(self, "status", value)
 
     @property
+    @pulumi.getter(name="switchMode")
+    def switch_mode(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "switch_mode")
+
+    @switch_mode.setter
+    def switch_mode(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "switch_mode", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -925,6 +973,7 @@ class Cluster(pulumi.CustomResource):
                  elastic_io_resource: Optional[pulumi.Input[int]] = None,
                  elastic_io_resource_size: Optional[pulumi.Input[str]] = None,
                  enable_ssl: Optional[pulumi.Input[bool]] = None,
+                 kernel_version: Optional[pulumi.Input[str]] = None,
                  kms_id: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
@@ -935,6 +984,7 @@ class Cluster(pulumi.CustomResource):
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 switch_mode: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -1102,6 +1152,7 @@ class Cluster(pulumi.CustomResource):
                  elastic_io_resource: Optional[pulumi.Input[int]] = None,
                  elastic_io_resource_size: Optional[pulumi.Input[str]] = None,
                  enable_ssl: Optional[pulumi.Input[bool]] = None,
+                 kernel_version: Optional[pulumi.Input[str]] = None,
                  kms_id: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
@@ -1112,6 +1163,7 @@ class Cluster(pulumi.CustomResource):
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 switch_mode: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -1141,6 +1193,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["elastic_io_resource"] = elastic_io_resource
             __props__.__dict__["elastic_io_resource_size"] = elastic_io_resource_size
             __props__.__dict__["enable_ssl"] = enable_ssl
+            __props__.__dict__["kernel_version"] = kernel_version
             __props__.__dict__["kms_id"] = kms_id
             __props__.__dict__["maintain_time"] = maintain_time
             if mode is None and not opts.urn:
@@ -1153,6 +1206,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["renewal_status"] = renewal_status
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["security_ips"] = security_ips
+            __props__.__dict__["switch_mode"] = switch_mode
             __props__.__dict__["tags"] = tags
             __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["vswitch_id"] = vswitch_id
@@ -1185,6 +1239,7 @@ class Cluster(pulumi.CustomResource):
             elastic_io_resource: Optional[pulumi.Input[int]] = None,
             elastic_io_resource_size: Optional[pulumi.Input[str]] = None,
             enable_ssl: Optional[pulumi.Input[bool]] = None,
+            kernel_version: Optional[pulumi.Input[str]] = None,
             kms_id: Optional[pulumi.Input[str]] = None,
             maintain_time: Optional[pulumi.Input[str]] = None,
             mode: Optional[pulumi.Input[str]] = None,
@@ -1197,6 +1252,7 @@ class Cluster(pulumi.CustomResource):
             resource_group_id: Optional[pulumi.Input[str]] = None,
             security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            switch_mode: Optional[pulumi.Input[int]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -1250,6 +1306,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["elastic_io_resource"] = elastic_io_resource
         __props__.__dict__["elastic_io_resource_size"] = elastic_io_resource_size
         __props__.__dict__["enable_ssl"] = enable_ssl
+        __props__.__dict__["kernel_version"] = kernel_version
         __props__.__dict__["kms_id"] = kms_id
         __props__.__dict__["maintain_time"] = maintain_time
         __props__.__dict__["mode"] = mode
@@ -1262,6 +1319,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["security_ips"] = security_ips
         __props__.__dict__["status"] = status
+        __props__.__dict__["switch_mode"] = switch_mode
         __props__.__dict__["tags"] = tags
         __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
@@ -1369,6 +1427,11 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "enable_ssl")
 
     @property
+    @pulumi.getter(name="kernelVersion")
+    def kernel_version(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "kernel_version")
+
+    @property
     @pulumi.getter(name="kmsId")
     def kms_id(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "kms_id")
@@ -1449,6 +1512,11 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="switchMode")
+    def switch_mode(self) -> pulumi.Output[Optional[int]]:
+        return pulumi.get(self, "switch_mode")
 
     @property
     @pulumi.getter

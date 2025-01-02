@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ga Additional Certificates of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.150.0+.
+// > **NOTE:** Available since v1.150.0.
 //
 // ## Example Usage
 //
@@ -72,13 +72,16 @@ type GetAdditionalCertificatesArgs struct {
 
 // A collection of values returned by getAdditionalCertificates.
 type GetAdditionalCertificatesResult struct {
-	AcceleratorId string                                 `pulumi:"acceleratorId"`
-	Certificates  []GetAdditionalCertificatesCertificate `pulumi:"certificates"`
+	// The ID of the GA instance.
+	AcceleratorId string `pulumi:"acceleratorId"`
+	// A list of Ga Additional Certificates. Each element contains the following attributes:
+	Certificates []GetAdditionalCertificatesCertificate `pulumi:"certificates"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	ListenerId string   `pulumi:"listenerId"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// The ID of the listener. Only HTTPS listeners support this parameter.
+	ListenerId string  `pulumi:"listenerId"`
+	OutputFile *string `pulumi:"outputFile"`
 }
 
 func GetAdditionalCertificatesOutput(ctx *pulumi.Context, args GetAdditionalCertificatesOutputArgs, opts ...pulumi.InvokeOption) GetAdditionalCertificatesResultOutput {
@@ -121,10 +124,12 @@ func (o GetAdditionalCertificatesResultOutput) ToGetAdditionalCertificatesResult
 	return o
 }
 
+// The ID of the GA instance.
 func (o GetAdditionalCertificatesResultOutput) AcceleratorId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAdditionalCertificatesResult) string { return v.AcceleratorId }).(pulumi.StringOutput)
 }
 
+// A list of Ga Additional Certificates. Each element contains the following attributes:
 func (o GetAdditionalCertificatesResultOutput) Certificates() GetAdditionalCertificatesCertificateArrayOutput {
 	return o.ApplyT(func(v GetAdditionalCertificatesResult) []GetAdditionalCertificatesCertificate { return v.Certificates }).(GetAdditionalCertificatesCertificateArrayOutput)
 }
@@ -138,6 +143,7 @@ func (o GetAdditionalCertificatesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAdditionalCertificatesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The ID of the listener. Only HTTPS listeners support this parameter.
 func (o GetAdditionalCertificatesResultOutput) ListenerId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAdditionalCertificatesResult) string { return v.ListenerId }).(pulumi.StringOutput)
 }
