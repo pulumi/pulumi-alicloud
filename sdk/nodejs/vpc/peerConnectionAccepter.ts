@@ -5,9 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Vpc Peer Connection Accepter resource.
+ * Provides a Vpc Peer Peer Connection Accepter resource.
  *
- * For information about Vpc Peer Connection Accepter and how to use it, see [What is Peer Connection Accepter](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpcpeer-2022-01-01-acceptvpcpeerconnection).
+ * Vpc peer connection receiver.
+ *
+ * For information about Vpc Peer Peer Connection Accepter and how to use it, see [What is Peer Connection Accepter](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpcpeer-2022-01-01-acceptvpcpeerconnection).
  *
  * > **NOTE:** Available since v1.196.0.
  *
@@ -45,7 +47,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Vpc Peer Connection Accepter can be imported using the id, e.g.
+ * Vpc Peer Peer Connection Accepter can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:vpc/peerConnectionAccepter:PeerConnectionAccepter example <id>
@@ -118,11 +120,19 @@ export class PeerConnectionAccepter extends pulumi.CustomResource {
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
+     * Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+     */
+    public readonly linkType!: pulumi.Output<string>;
+    /**
      * The new name of the VPC peering connection.
      *
      * The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
      */
     public readonly peerConnectionAccepterName!: pulumi.Output<string>;
+    /**
+     * The ID of the region where you want to query VPC peering connections.
+     */
+    public /*out*/ readonly regionId!: pulumi.Output<string>;
     /**
      * The ID of the new resource group.
      *
@@ -160,7 +170,9 @@ export class PeerConnectionAccepter extends pulumi.CustomResource {
             resourceInputs["dryRun"] = state ? state.dryRun : undefined;
             resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
             resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["linkType"] = state ? state.linkType : undefined;
             resourceInputs["peerConnectionAccepterName"] = state ? state.peerConnectionAccepterName : undefined;
+            resourceInputs["regionId"] = state ? state.regionId : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["vpcId"] = state ? state.vpcId : undefined;
@@ -174,12 +186,14 @@ export class PeerConnectionAccepter extends pulumi.CustomResource {
             resourceInputs["dryRun"] = args ? args.dryRun : undefined;
             resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["linkType"] = args ? args.linkType : undefined;
             resourceInputs["peerConnectionAccepterName"] = args ? args.peerConnectionAccepterName : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["acceptingOwnerUid"] = undefined /*out*/;
             resourceInputs["acceptingRegionId"] = undefined /*out*/;
             resourceInputs["acceptingVpcId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["vpcId"] = undefined /*out*/;
         }
@@ -231,11 +245,19 @@ export interface PeerConnectionAccepterState {
      */
     instanceId?: pulumi.Input<string>;
     /**
+     * Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+     */
+    linkType?: pulumi.Input<string>;
+    /**
      * The new name of the VPC peering connection.
      *
      * The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
      */
     peerConnectionAccepterName?: pulumi.Input<string>;
+    /**
+     * The ID of the region where you want to query VPC peering connections.
+     */
+    regionId?: pulumi.Input<string>;
     /**
      * The ID of the new resource group.
      *
@@ -278,6 +300,10 @@ export interface PeerConnectionAccepterArgs {
      * The ID of the VPC peering connection whose name or description you want to modify.
      */
     instanceId: pulumi.Input<string>;
+    /**
+     * Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+     */
+    linkType?: pulumi.Input<string>;
     /**
      * The new name of the VPC peering connection.
      *

@@ -54,6 +54,9 @@ class GetMscSubSubscriptionsResult:
     @property
     @pulumi.getter
     def subscriptions(self) -> Sequence['outputs.GetMscSubSubscriptionsSubscriptionResult']:
+        """
+        A list of Msc Sub Subscriptions. Each element contains the following attributes:
+        """
         return pulumi.get(self, "subscriptions")
 
 
@@ -73,7 +76,7 @@ def get_msc_sub_subscriptions(output_file: Optional[str] = None,
     """
     This data source provides the Message Center Subscriptions of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.135.0+.
+    > **NOTE:** Available since v1.135.0.
 
     ## Example Usage
 
@@ -104,7 +107,7 @@ def get_msc_sub_subscriptions_output(output_file: Optional[pulumi.Input[Optional
     """
     This data source provides the Message Center Subscriptions of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.135.0+.
+    > **NOTE:** Available since v1.135.0.
 
     ## Example Usage
 

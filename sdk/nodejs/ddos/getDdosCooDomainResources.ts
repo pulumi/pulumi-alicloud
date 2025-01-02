@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ddoscoo Domain Resources of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.123.0+.
+ * > **NOTE:** Available since v1.123.0.
  *
  * ## Example Usage
  *
@@ -67,15 +67,21 @@ export interface GetDdosCooDomainResourcesResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * A list ID of instance that you want to associate.
+     */
     readonly instanceIds?: string[];
     readonly outputFile?: string;
     readonly queryDomainPattern?: string;
+    /**
+     * A list of Ddoscoo Domain Resources. Each element contains the following attributes:
+     */
     readonly resources: outputs.ddos.GetDdosCooDomainResourcesResource[];
 }
 /**
  * This data source provides the Ddoscoo Domain Resources of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.123.0+.
+ * > **NOTE:** Available since v1.123.0.
  *
  * ## Example Usage
  *

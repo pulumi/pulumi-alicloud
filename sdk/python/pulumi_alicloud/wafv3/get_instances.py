@@ -83,12 +83,13 @@ class AwaitableGetInstancesResult(GetInstancesResult):
             output_file=self.output_file)
 
 
-def get_instances(output_file: Optional[str] = None,
+def get_instances(ids: Optional[Sequence[str]] = None,
+                  output_file: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
     """
     This data source provides Wafv3 Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/web-application-firewall/latest/what-is-waf)
 
-    > **NOTE:** Available in 1.200.0+
+    > **NOTE:** Available since v1.200.0.
 
     ## Example Usage
 
@@ -101,9 +102,11 @@ def get_instances(output_file: Optional[str] = None,
     ```
 
 
+    :param Sequence[str] ids: A list of WAF v3 instance IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
+    __args__['ids'] = ids
     __args__['outputFile'] = output_file
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('alicloud:wafv3/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult).value
@@ -113,12 +116,13 @@ def get_instances(output_file: Optional[str] = None,
         ids=pulumi.get(__ret__, 'ids'),
         instances=pulumi.get(__ret__, 'instances'),
         output_file=pulumi.get(__ret__, 'output_file'))
-def get_instances_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
+def get_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstancesResult]:
     """
     This data source provides Wafv3 Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/web-application-firewall/latest/what-is-waf)
 
-    > **NOTE:** Available in 1.200.0+
+    > **NOTE:** Available since v1.200.0.
 
     ## Example Usage
 
@@ -131,9 +135,11 @@ def get_instances_output(output_file: Optional[pulumi.Input[Optional[str]]] = No
     ```
 
 
+    :param Sequence[str] ids: A list of WAF v3 instance IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
+    __args__['ids'] = ids
     __args__['outputFile'] = output_file
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:wafv3/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult)

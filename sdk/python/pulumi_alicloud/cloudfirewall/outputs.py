@@ -1438,6 +1438,7 @@ class GetInstanceMembersMemberResult(dict):
                  status: str):
         """
         :param int create_time: When the cloud firewall member account was added.> use second-level timestamp format.
+        :param str id: The instance id.
         :param str member_desc: Remarks of cloud firewall member accounts.
         :param str member_display_name: The name of the cloud firewall member account.
         :param str member_uid: The UID of the cloud firewall member account.
@@ -1463,6 +1464,9 @@ class GetInstanceMembersMemberResult(dict):
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        The instance id.
+        """
         return pulumi.get(self, "id")
 
     @property
@@ -1975,7 +1979,7 @@ class GetVpcFirewallControlPoliciesPolicyResult(dict):
                  source_type: str,
                  vpc_firewall_id: str):
         """
-        :param str acl_action: Access control over VPC firewalls are set in the access traffic via Alibaba cloud firewall way (ACT).
+        :param str acl_action: The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
         :param str acl_uuid: Access control over VPC firewalls strategy unique identifier.
         :param str application_id: Policy specifies the application ID.
         :param str application_name: Access control over VPC firewalls policies support the application types.
@@ -1994,11 +1998,15 @@ class GetVpcFirewallControlPoliciesPolicyResult(dict):
         :param int order: Access control over VPC firewalls policies will go into effect of priority. The priority value starts from 1, the smaller the priority number, the higher the priority. -1 represents the lowest priority.
         :param str proto: Access control over VPC firewalls strategy access traffic of the protocol type.
         :param bool release: The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
+               - **true**: Enable access control policies
+               - **false**: does not enable access control policies.
         :param str source: Access control over VPC firewalls strategy in the source address.
         :param Sequence[str] source_group_cidrs: SOURCE address of the address list.
         :param str source_group_type: The source address type in the access control policy. Unique value: **ip**. The IP address book contains one or more IP address segments.
         :param str source_type: Access control over VPC firewalls policy source address type.
-        :param str vpc_firewall_id: The ID of the VPC firewall instance.
+        :param str vpc_firewall_id: The ID of the VPC firewall instance. Value:
+               - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
+               - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
         """
         pulumi.set(__self__, "acl_action", acl_action)
         pulumi.set(__self__, "acl_uuid", acl_uuid)
@@ -2029,7 +2037,7 @@ class GetVpcFirewallControlPoliciesPolicyResult(dict):
     @pulumi.getter(name="aclAction")
     def acl_action(self) -> str:
         """
-        Access control over VPC firewalls are set in the access traffic via Alibaba cloud firewall way (ACT).
+        The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
         """
         return pulumi.get(self, "acl_action")
 
@@ -2174,6 +2182,8 @@ class GetVpcFirewallControlPoliciesPolicyResult(dict):
     def release(self) -> bool:
         """
         The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
+        - **true**: Enable access control policies
+        - **false**: does not enable access control policies.
         """
         return pulumi.get(self, "release")
 
@@ -2213,7 +2223,9 @@ class GetVpcFirewallControlPoliciesPolicyResult(dict):
     @pulumi.getter(name="vpcFirewallId")
     def vpc_firewall_id(self) -> str:
         """
-        The ID of the VPC firewall instance.
+        The ID of the VPC firewall instance. Value:
+        - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
+        - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
         """
         return pulumi.get(self, "vpc_firewall_id")
 

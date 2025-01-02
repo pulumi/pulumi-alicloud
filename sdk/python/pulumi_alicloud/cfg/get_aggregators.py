@@ -131,7 +131,7 @@ def get_aggregators(enable_details: Optional[bool] = None,
     """
     This data source provides the Config Aggregators of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.124.0+.
+    > **NOTE:** Available since v1.124.0.
 
     ## Example Usage
 
@@ -180,7 +180,7 @@ def get_aggregators_output(enable_details: Optional[pulumi.Input[Optional[bool]]
     """
     This data source provides the Config Aggregators of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.124.0+.
+    > **NOTE:** Available since v1.124.0.
 
     ## Example Usage
 

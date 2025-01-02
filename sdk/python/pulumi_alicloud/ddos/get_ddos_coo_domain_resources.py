@@ -63,6 +63,9 @@ class GetDdosCooDomainResourcesResult:
     @property
     @pulumi.getter(name="instanceIds")
     def instance_ids(self) -> Optional[Sequence[str]]:
+        """
+        A list ID of instance that you want to associate.
+        """
         return pulumi.get(self, "instance_ids")
 
     @property
@@ -78,6 +81,9 @@ class GetDdosCooDomainResourcesResult:
     @property
     @pulumi.getter
     def resources(self) -> Sequence['outputs.GetDdosCooDomainResourcesResourceResult']:
+        """
+        A list of Ddoscoo Domain Resources. Each element contains the following attributes:
+        """
         return pulumi.get(self, "resources")
 
 
@@ -103,7 +109,7 @@ def get_ddos_coo_domain_resources(ids: Optional[Sequence[str]] = None,
     """
     This data source provides the Ddoscoo Domain Resources of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.123.0+.
+    > **NOTE:** Available since v1.123.0.
 
     ## Example Usage
 
@@ -146,7 +152,7 @@ def get_ddos_coo_domain_resources_output(ids: Optional[pulumi.Input[Optional[Seq
     """
     This data source provides the Ddoscoo Domain Resources of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.123.0+.
+    > **NOTE:** Available since v1.123.0.
 
     ## Example Usage
 

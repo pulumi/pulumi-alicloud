@@ -73,7 +73,7 @@ public final class GetVpcEndpointsEndpoint {
      */
     private String vpcEndpointName;
     /**
-     * @return The private network to which the terminal node belongs.
+     * @return The private network to which the terminal node belongs..
      * 
      */
     private String vpcId;
@@ -164,7 +164,7 @@ public final class GetVpcEndpointsEndpoint {
         return this.vpcEndpointName;
     }
     /**
-     * @return The private network to which the terminal node belongs.
+     * @return The private network to which the terminal node belongs..
      * 
      */
     public String vpcId() {

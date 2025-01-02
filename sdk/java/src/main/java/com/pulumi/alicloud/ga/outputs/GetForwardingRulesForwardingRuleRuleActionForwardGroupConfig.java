@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig {
+    /**
+     * @return Terminal node group configuration.
+     * 
+     */
     private List<GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple> serverGroupTuples;
 
     private GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig() {}
+    /**
+     * @return Terminal node group configuration.
+     * 
+     */
     public List<GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple> serverGroupTuples() {
         return this.serverGroupTuples;
     }

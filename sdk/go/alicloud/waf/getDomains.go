@@ -15,7 +15,7 @@ import (
 //
 // For information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).
 //
-// > **NOTE:** Available in 1.86.0+ .
+// > **NOTE:** Available since v1.86.0.
 //
 // ## Example Usage
 //
@@ -31,8 +31,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := waf.GetDomains(ctx, &waf.GetDomainsArgs{
-//				InstanceId: "waf-cf-xxxxx",
+//			_default, err := waf.GetInstances(ctx, &waf.GetInstancesArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = waf.GetDomains(ctx, &waf.GetDomainsArgs{
+//				InstanceId: _default.Ids[0],
 //			}, nil)
 //			if err != nil {
 //				return err

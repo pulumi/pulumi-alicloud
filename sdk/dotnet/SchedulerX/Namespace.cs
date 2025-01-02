@@ -10,32 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.SchedulerX
 {
     /// <summary>
-    /// Provides a Schedulerx Namespace resource.
-    /// 
-    /// For information about Schedulerx Namespace and how to use it, see [What is Namespace](https://help.aliyun.com/document_detail/206088.html).
-    /// 
-    /// &gt; **NOTE:** Available in v1.173.0+.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.SchedulerX.Namespace("example", new()
-    ///     {
-    ///         NamespaceName = "example_value",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Schedulerx Namespace can be imported using the id, e.g.
@@ -48,16 +22,22 @@ namespace Pulumi.AliCloud.SchedulerX
     public partial class Namespace : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The description of the resource.
+        /// Namespace description.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the resource.
+        /// Namespace name.
         /// </summary>
         [Output("namespaceName")]
         public Output<string> NamespaceName { get; private set; } = null!;
+
+        /// <summary>
+        /// Namespace uid.
+        /// </summary>
+        [Output("namespaceUid")]
+        public Output<string> NamespaceUid { get; private set; } = null!;
 
 
         /// <summary>
@@ -106,16 +86,22 @@ namespace Pulumi.AliCloud.SchedulerX
     public sealed class NamespaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the resource.
+        /// Namespace description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the resource.
+        /// Namespace name.
         /// </summary>
         [Input("namespaceName", required: true)]
         public Input<string> NamespaceName { get; set; } = null!;
+
+        /// <summary>
+        /// Namespace uid.
+        /// </summary>
+        [Input("namespaceUid")]
+        public Input<string>? NamespaceUid { get; set; }
 
         public NamespaceArgs()
         {
@@ -126,16 +112,22 @@ namespace Pulumi.AliCloud.SchedulerX
     public sealed class NamespaceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the resource.
+        /// Namespace description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the resource.
+        /// Namespace name.
         /// </summary>
         [Input("namespaceName")]
         public Input<string>? NamespaceName { get; set; }
+
+        /// <summary>
+        /// Namespace uid.
+        /// </summary>
+        [Input("namespaceUid")]
+        public Input<string>? NamespaceUid { get; set; }
 
         public NamespaceState()
         {

@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Dcdn.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The accelerated domain names.
+        /// The name of the Domain.
         /// </summary>
         public readonly string DomainName;
         /// <summary>
@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.Dcdn.Outputs
         /// </summary>
         public readonly string SslPub;
         /// <summary>
-        /// The status of the accelerated domain name.
+        /// The status of the accelerated domain name. Valid values: `check_failed`, `checking`, `configure_failed`, `configuring`, `offline`, `online`.
         /// </summary>
         public readonly string Status;
 

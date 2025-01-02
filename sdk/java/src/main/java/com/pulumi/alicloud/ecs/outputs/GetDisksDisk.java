@@ -60,6 +60,11 @@ public final class GetDisksDisk {
      * 
      */
     private String encrypted;
+    /**
+     * @return Disk expiration time.
+     * 
+     */
+    private String expirationTime;
     private String expiredTime;
     /**
      * @return ID of the disk.
@@ -241,6 +246,13 @@ public final class GetDisksDisk {
     public String encrypted() {
         return this.encrypted;
     }
+    /**
+     * @return Disk expiration time.
+     * 
+     */
+    public String expirationTime() {
+        return this.expirationTime;
+    }
     public String expiredTime() {
         return this.expiredTime;
     }
@@ -418,6 +430,7 @@ public final class GetDisksDisk {
         private Boolean enableAutoSnapshot;
         private Boolean enableAutomatedSnapshotPolicy;
         private String encrypted;
+        private String expirationTime;
         private String expiredTime;
         private String id;
         private String imageId;
@@ -461,6 +474,7 @@ public final class GetDisksDisk {
     	      this.enableAutoSnapshot = defaults.enableAutoSnapshot;
     	      this.enableAutomatedSnapshotPolicy = defaults.enableAutomatedSnapshotPolicy;
     	      this.encrypted = defaults.encrypted;
+    	      this.expirationTime = defaults.expirationTime;
     	      this.expiredTime = defaults.expiredTime;
     	      this.id = defaults.id;
     	      this.imageId = defaults.imageId;
@@ -613,6 +627,14 @@ public final class GetDisksDisk {
               throw new MissingRequiredPropertyException("GetDisksDisk", "encrypted");
             }
             this.encrypted = encrypted;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder expirationTime(String expirationTime) {
+            if (expirationTime == null) {
+              throw new MissingRequiredPropertyException("GetDisksDisk", "expirationTime");
+            }
+            this.expirationTime = expirationTime;
             return this;
         }
         @CustomType.Setter
@@ -831,6 +853,7 @@ public final class GetDisksDisk {
             _resultValue.enableAutoSnapshot = enableAutoSnapshot;
             _resultValue.enableAutomatedSnapshotPolicy = enableAutomatedSnapshotPolicy;
             _resultValue.encrypted = encrypted;
+            _resultValue.expirationTime = expirationTime;
             _resultValue.expiredTime = expiredTime;
             _resultValue.id = id;
             _resultValue.imageId = imageId;

@@ -19,7 +19,15 @@ public final class GetInstancesInstance {
      * 
      */
     private String architectureType;
+    /**
+     * @return Indicates whether auto-renewal is enabled for the instance.
+     * 
+     */
     private Boolean autoRenew;
+    /**
+     * @return The duration for which the instance is automatically renewed. Unit: months.
+     * 
+     */
     private Integer autoRenewPeriod;
     /**
      * @return It has been deprecated from provider version 1.101.0 and `zone_id` instead.
@@ -32,7 +40,7 @@ public final class GetInstancesInstance {
      */
     private Integer bandwidth;
     /**
-     * @return Capacity of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. Unit: MB.
+     * @return Capacity of the applied Tair (Redis OSS-Compatible) And Memcached (KVStore) Classic Instance. Unit: MB.
      * 
      */
     private Integer capacity;
@@ -111,6 +119,10 @@ public final class GetInstancesInstance {
      * 
      */
     private String instanceClass;
+    /**
+     * @return Indicates whether the release protection feature is enabled for the instance.
+     * 
+     */
     private Boolean instanceReleaseProtection;
     /**
      * @return The engine type of the KVStore DBInstance. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
@@ -122,7 +134,15 @@ public final class GetInstancesInstance {
      * 
      */
     private Boolean isRds;
+    /**
+     * @return The end time of the maintenance window. The time is in the HH:mmZ format. The time is displayed in UTC.
+     * 
+     */
     private String maintainEndTime;
+    /**
+     * @return The start time of the maintenance window. The time is in the HH:mmZ format. The time is displayed in UTC.
+     * 
+     */
     private String maintainStartTime;
     /**
      * @return Instance connection quantity limit. Unit: count.
@@ -190,14 +210,34 @@ public final class GetInstancesInstance {
      */
     private String searchKey;
     /**
-     * @return (Optional, Available since v1.128.0) The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+     * @return The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
      * 
      */
     private String secondaryZoneId;
+    /**
+     * @return The ID of the security group associated with the instance.
+     * 
+     */
     private String securityGroupId;
+    /**
+     * @return By default, this parameter is left empty. The attribute of the whitelist. The console does not display the whitelist whose value of this parameter is hidden
+     * 
+     */
     private String securityIpGroupAttribute;
+    /**
+     * @return The name of the IP address whitelist.
+     * 
+     */
     private String securityIpGroupName;
+    /**
+     * @return The IP addresses in the whitelist.
+     * 
+     */
     private List<String> securityIps;
+    /**
+     * @return Indicates whether SSL encryption is enabled.
+     * 
+     */
     private String sslEnable;
     /**
      * @return The status of the KVStore DBInstance. Valid values: `Changing`, `CleaningUpExpiredData`, `Creating`, `Flushing`, `HASwitching`, `Inactive`, `MajorVersionUpgrading`, `Migrating`, `NetworkModifying`, `Normal`, `Rebooting`, `SSLModifying`, `Transforming`, `ZoneMigrating`.
@@ -214,6 +254,10 @@ public final class GetInstancesInstance {
      * 
      */
     private String userName;
+    /**
+     * @return Indicates whether password authentication is enabled. Valid values: Open, Close.
+     * 
+     */
     private String vpcAuthMode;
     /**
      * @return Connection port of the instance.
@@ -244,9 +288,17 @@ public final class GetInstancesInstance {
     public String architectureType() {
         return this.architectureType;
     }
+    /**
+     * @return Indicates whether auto-renewal is enabled for the instance.
+     * 
+     */
     public Boolean autoRenew() {
         return this.autoRenew;
     }
+    /**
+     * @return The duration for which the instance is automatically renewed. Unit: months.
+     * 
+     */
     public Integer autoRenewPeriod() {
         return this.autoRenewPeriod;
     }
@@ -265,7 +317,7 @@ public final class GetInstancesInstance {
         return this.bandwidth;
     }
     /**
-     * @return Capacity of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. Unit: MB.
+     * @return Capacity of the applied Tair (Redis OSS-Compatible) And Memcached (KVStore) Classic Instance. Unit: MB.
      * 
      */
     public Integer capacity() {
@@ -376,6 +428,10 @@ public final class GetInstancesInstance {
     public String instanceClass() {
         return this.instanceClass;
     }
+    /**
+     * @return Indicates whether the release protection feature is enabled for the instance.
+     * 
+     */
     public Boolean instanceReleaseProtection() {
         return this.instanceReleaseProtection;
     }
@@ -393,9 +449,17 @@ public final class GetInstancesInstance {
     public Boolean isRds() {
         return this.isRds;
     }
+    /**
+     * @return The end time of the maintenance window. The time is in the HH:mmZ format. The time is displayed in UTC.
+     * 
+     */
     public String maintainEndTime() {
         return this.maintainEndTime;
     }
+    /**
+     * @return The start time of the maintenance window. The time is in the HH:mmZ format. The time is displayed in UTC.
+     * 
+     */
     public String maintainStartTime() {
         return this.maintainStartTime;
     }
@@ -491,24 +555,44 @@ public final class GetInstancesInstance {
         return this.searchKey;
     }
     /**
-     * @return (Optional, Available since v1.128.0) The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+     * @return The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
      * 
      */
     public String secondaryZoneId() {
         return this.secondaryZoneId;
     }
+    /**
+     * @return The ID of the security group associated with the instance.
+     * 
+     */
     public String securityGroupId() {
         return this.securityGroupId;
     }
+    /**
+     * @return By default, this parameter is left empty. The attribute of the whitelist. The console does not display the whitelist whose value of this parameter is hidden
+     * 
+     */
     public String securityIpGroupAttribute() {
         return this.securityIpGroupAttribute;
     }
+    /**
+     * @return The name of the IP address whitelist.
+     * 
+     */
     public String securityIpGroupName() {
         return this.securityIpGroupName;
     }
+    /**
+     * @return The IP addresses in the whitelist.
+     * 
+     */
     public List<String> securityIps() {
         return this.securityIps;
     }
+    /**
+     * @return Indicates whether SSL encryption is enabled.
+     * 
+     */
     public String sslEnable() {
         return this.sslEnable;
     }
@@ -533,6 +617,10 @@ public final class GetInstancesInstance {
     public String userName() {
         return this.userName;
     }
+    /**
+     * @return Indicates whether password authentication is enabled. Valid values: Open, Close.
+     * 
+     */
     public String vpcAuthMode() {
         return this.vpcAuthMode;
     }

@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetListenersListenerCertificate {
     /**
-     * @return The id of the certificate.
+     * @return The ID of the Listener.
      * 
      */
     private String id;
@@ -23,7 +23,7 @@ public final class GetListenersListenerCertificate {
 
     private GetListenersListenerCertificate() {}
     /**
-     * @return The id of the certificate.
+     * @return The ID of the Listener.
      * 
      */
     public String id() {

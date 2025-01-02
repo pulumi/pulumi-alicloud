@@ -6,6 +6,7 @@ package com.pulumi.alicloud.vpc;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -53,18 +54,37 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The new description of the VPC. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+     * The new description of the VPC.
+     * 
+     * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The new description of the VPC. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+     * @return The new description of the VPC.
+     * 
+     * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      * 
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
+     * 
+     */
+    @Import(name="dnsHostnameStatus")
+    private @Nullable Output<String> dnsHostnameStatus;
+
+    /**
+     * @return The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
+     * 
+     */
+    public Optional<Output<String>> dnsHostnameStatus() {
+        return Optional.ofNullable(this.dnsHostnameStatus);
     }
 
     /**
@@ -95,6 +115,25 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> enableIpv6() {
         return Optional.ofNullable(this.enableIpv6);
+    }
+
+    /**
+     * Allocate VPC from The IPAM address pool by entering a mask.
+     * 
+     * &gt; **NOTE:**  when you specify the IPAM address pool to create a VPC, enter at least one of the CidrBlock or Ipv4CidrMask parameters.
+     * 
+     */
+    @Import(name="ipv4CidrMask")
+    private @Nullable Output<Integer> ipv4CidrMask;
+
+    /**
+     * @return Allocate VPC from The IPAM address pool by entering a mask.
+     * 
+     * &gt; **NOTE:**  when you specify the IPAM address pool to create a VPC, enter at least one of the CidrBlock or Ipv4CidrMask parameters.
+     * 
+     */
+    public Optional<Output<Integer>> ipv4CidrMask() {
+        return Optional.ofNullable(this.ipv4CidrMask);
     }
 
     /**
@@ -239,14 +278,37 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The description of the route table. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+     * Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+     * 
+     * &gt; **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+     * 
+     */
+    @Import(name="secondaryCidrMask")
+    private @Nullable Output<Integer> secondaryCidrMask;
+
+    /**
+     * @return Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+     * 
+     * &gt; **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+     * 
+     */
+    public Optional<Output<Integer>> secondaryCidrMask() {
+        return Optional.ofNullable(this.secondaryCidrMask);
+    }
+
+    /**
+     * The description of the route table.
+     * 
+     * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      * 
      */
     @Import(name="systemRouteTableDescription")
     private @Nullable Output<String> systemRouteTableDescription;
 
     /**
-     * @return The description of the route table. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+     * @return The description of the route table.
+     * 
+     * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      * 
      */
     public Optional<Output<String>> systemRouteTableDescription() {
@@ -254,14 +316,18 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the route table. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+     * The name of the route table.
+     * 
+     * The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
      * 
      */
     @Import(name="systemRouteTableName")
     private @Nullable Output<String> systemRouteTableName;
 
     /**
-     * @return The name of the route table. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+     * @return The name of the route table.
+     * 
+     * The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
      * 
      */
     public Optional<Output<String>> systemRouteTableName() {
@@ -299,7 +365,9 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+     * The new name of the VPC.
+     * 
+     * The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
      * 
      * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
@@ -308,7 +376,9 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> vpcName;
 
     /**
-     * @return The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+     * @return The new name of the VPC.
+     * 
+     * The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
      * 
      * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
@@ -323,8 +393,10 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         this.cidrBlock = $.cidrBlock;
         this.classicLinkEnabled = $.classicLinkEnabled;
         this.description = $.description;
+        this.dnsHostnameStatus = $.dnsHostnameStatus;
         this.dryRun = $.dryRun;
         this.enableIpv6 = $.enableIpv6;
+        this.ipv4CidrMask = $.ipv4CidrMask;
         this.ipv4IpamPoolId = $.ipv4IpamPoolId;
         this.ipv6CidrBlock = $.ipv6CidrBlock;
         this.ipv6Isp = $.ipv6Isp;
@@ -332,6 +404,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.resourceGroupId = $.resourceGroupId;
         this.secondaryCidrBlocks = $.secondaryCidrBlocks;
+        this.secondaryCidrMask = $.secondaryCidrMask;
         this.systemRouteTableDescription = $.systemRouteTableDescription;
         this.systemRouteTableName = $.systemRouteTableName;
         this.tags = $.tags;
@@ -404,7 +477,9 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The new description of the VPC. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+         * @param description The new description of the VPC.
+         * 
+         * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -415,13 +490,36 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The new description of the VPC. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+         * @param description The new description of the VPC.
+         * 
+         * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param dnsHostnameStatus The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsHostnameStatus(@Nullable Output<String> dnsHostnameStatus) {
+            $.dnsHostnameStatus = dnsHostnameStatus;
+            return this;
+        }
+
+        /**
+         * @param dnsHostnameStatus The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsHostnameStatus(String dnsHostnameStatus) {
+            return dnsHostnameStatus(Output.of(dnsHostnameStatus));
         }
 
         /**
@@ -464,6 +562,31 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder enableIpv6(Boolean enableIpv6) {
             return enableIpv6(Output.of(enableIpv6));
+        }
+
+        /**
+         * @param ipv4CidrMask Allocate VPC from The IPAM address pool by entering a mask.
+         * 
+         * &gt; **NOTE:**  when you specify the IPAM address pool to create a VPC, enter at least one of the CidrBlock or Ipv4CidrMask parameters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv4CidrMask(@Nullable Output<Integer> ipv4CidrMask) {
+            $.ipv4CidrMask = ipv4CidrMask;
+            return this;
+        }
+
+        /**
+         * @param ipv4CidrMask Allocate VPC from The IPAM address pool by entering a mask.
+         * 
+         * &gt; **NOTE:**  when you specify the IPAM address pool to create a VPC, enter at least one of the CidrBlock or Ipv4CidrMask parameters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv4CidrMask(Integer ipv4CidrMask) {
+            return ipv4CidrMask(Output.of(ipv4CidrMask));
         }
 
         /**
@@ -664,7 +787,34 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemRouteTableDescription The description of the route table. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+         * @param secondaryCidrMask Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+         * 
+         * &gt; **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryCidrMask(@Nullable Output<Integer> secondaryCidrMask) {
+            $.secondaryCidrMask = secondaryCidrMask;
+            return this;
+        }
+
+        /**
+         * @param secondaryCidrMask Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+         * 
+         * &gt; **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryCidrMask(Integer secondaryCidrMask) {
+            return secondaryCidrMask(Output.of(secondaryCidrMask));
+        }
+
+        /**
+         * @param systemRouteTableDescription The description of the route table.
+         * 
+         * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -675,7 +825,9 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemRouteTableDescription The description of the route table. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+         * @param systemRouteTableDescription The description of the route table.
+         * 
+         * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -685,7 +837,9 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemRouteTableName The name of the route table. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+         * @param systemRouteTableName The name of the route table.
+         * 
+         * The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -696,7 +850,9 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemRouteTableName The name of the route table. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+         * @param systemRouteTableName The name of the route table.
+         * 
+         * The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -758,7 +914,9 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcName The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+         * @param vpcName The new name of the VPC.
+         * 
+         * The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
          * 
          * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
@@ -771,7 +929,9 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcName The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+         * @param vpcName The new name of the VPC.
+         * 
+         * The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
          * 
          * The following arguments will be discarded. Please use new fields as soon as possible:
          * 

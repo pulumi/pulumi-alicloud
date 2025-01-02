@@ -13,8 +13,17 @@ namespace Pulumi.AliCloud.Ga.Outputs
     [OutputType]
     public sealed class GetForwardingRulesForwardingRuleRuleConditionResult
     {
+        /// <summary>
+        /// Domain name configuration information.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetForwardingRulesForwardingRuleRuleConditionHostConfigResult> HostConfigs;
+        /// <summary>
+        /// Path configuration information.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetForwardingRulesForwardingRuleRuleConditionPathConfigResult> PathConfigs;
+        /// <summary>
+        /// Forwarding condition type.
+        /// </summary>
         public readonly string RuleConditionType;
 
         [OutputConstructor]

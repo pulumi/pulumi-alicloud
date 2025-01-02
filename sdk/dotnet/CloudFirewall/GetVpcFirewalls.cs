@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://help.aliyun.com/document_detail/342932.html)
         /// 
-        /// &gt; **NOTE:** Available in 1.194.0+
+        /// &gt; **NOTE:** Available since v1.194.0.
         /// 
         /// ## Example Usage
         /// 
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://help.aliyun.com/document_detail/342932.html)
         /// 
-        /// &gt; **NOTE:** Available in 1.194.0+
+        /// &gt; **NOTE:** Available since v1.194.0.
         /// 
         /// ## Example Usage
         /// 
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://help.aliyun.com/document_detail/342932.html)
         /// 
-        /// &gt; **NOTE:** Available in 1.194.0+
+        /// &gt; **NOTE:** Available since v1.194.0.
         /// 
         /// ## Example Usage
         /// 

@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Dcdn Waf Domains of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.185.0+.
+// > **NOTE:** Available since v1.185.0.
 //
 // ## Example Usage
 //
@@ -65,6 +65,7 @@ type GetWafDomainsArgs struct {
 
 // A collection of values returned by getWafDomains.
 type GetWafDomainsResult struct {
+	// A list of Dcdn Waf Domains. Each element contains the following attributes:
 	Domains       []GetWafDomainsDomain `pulumi:"domains"`
 	EnableDetails *bool                 `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
@@ -114,6 +115,7 @@ func (o GetWafDomainsResultOutput) ToGetWafDomainsResultOutputWithContext(ctx co
 	return o
 }
 
+// A list of Dcdn Waf Domains. Each element contains the following attributes:
 func (o GetWafDomainsResultOutput) Domains() GetWafDomainsDomainArrayOutput {
 	return o.ApplyT(func(v GetWafDomainsResult) []GetWafDomainsDomain { return v.Domains }).(GetWafDomainsDomainArrayOutput)
 }

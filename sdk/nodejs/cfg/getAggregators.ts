@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Config Aggregators of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.124.0+.
+ * > **NOTE:** Available since v1.124.0.
  *
  * ## Example Usage
  *
@@ -92,7 +92,7 @@ export interface GetAggregatorsResult {
 /**
  * This data source provides the Config Aggregators of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.124.0+.
+ * > **NOTE:** Available since v1.124.0.
  *
  * ## Example Usage
  *

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Sddp Data Limits of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.159.0+.
+ * > **NOTE:** Available since v1.159.0.
  *
  * ## Example Usage
  *
@@ -65,15 +65,24 @@ export interface GetDataLimitsResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * A list of Sddp Data Limits. Each element contains the following attributes:
+     */
     readonly limits: outputs.sddp.GetDataLimitsLimit[];
     readonly outputFile?: string;
+    /**
+     * The ID of the data asset.
+     */
     readonly parentId?: string;
+    /**
+     * The type of the service to which the data asset belongs.
+     */
     readonly resourceType?: string;
 }
 /**
  * This data source provides the Sddp Data Limits of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.159.0+.
+ * > **NOTE:** Available since v1.159.0.
  *
  * ## Example Usage
  *

@@ -50,6 +50,9 @@ class GetWafDomainsResult:
     @property
     @pulumi.getter
     def domains(self) -> Sequence['outputs.GetWafDomainsDomainResult']:
+        """
+        A list of Dcdn Waf Domains. Each element contains the following attributes:
+        """
         return pulumi.get(self, "domains")
 
     @property
@@ -103,7 +106,7 @@ def get_waf_domains(enable_details: Optional[bool] = None,
     """
     This data source provides the Dcdn Waf Domains of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.185.0+.
+    > **NOTE:** Available since v1.185.0.
 
     ## Example Usage
 
@@ -146,7 +149,7 @@ def get_waf_domains_output(enable_details: Optional[pulumi.Input[Optional[bool]]
     """
     This data source provides the Dcdn Waf Domains of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.185.0+.
+    > **NOTE:** Available since v1.185.0.
 
     ## Example Usage
 

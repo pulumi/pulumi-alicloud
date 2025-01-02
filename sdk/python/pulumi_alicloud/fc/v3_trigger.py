@@ -822,7 +822,7 @@ class V3Trigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceArn")
-    def source_arn(self) -> pulumi.Output[Optional[str]]:
+    def source_arn(self) -> pulumi.Output[str]:
         """
         Trigger Event source ARN
         """

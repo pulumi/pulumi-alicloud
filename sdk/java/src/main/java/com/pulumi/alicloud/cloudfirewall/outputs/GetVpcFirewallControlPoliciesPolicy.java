@@ -14,7 +14,7 @@ import java.util.Objects;
 @CustomType
 public final class GetVpcFirewallControlPoliciesPolicy {
     /**
-     * @return Access control over VPC firewalls are set in the access traffic via Alibaba cloud firewall way (ACT).
+     * @return The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
      * 
      */
     private String aclAction;
@@ -105,6 +105,8 @@ public final class GetVpcFirewallControlPoliciesPolicy {
     private String proto;
     /**
      * @return The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
+     * - **true**: Enable access control policies
+     * - **false**: does not enable access control policies.
      * 
      */
     private Boolean release;
@@ -129,14 +131,16 @@ public final class GetVpcFirewallControlPoliciesPolicy {
      */
     private String sourceType;
     /**
-     * @return The ID of the VPC firewall instance.
+     * @return The ID of the VPC firewall instance. Value:
+     * - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
+     * - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
      * 
      */
     private String vpcFirewallId;
 
     private GetVpcFirewallControlPoliciesPolicy() {}
     /**
-     * @return Access control over VPC firewalls are set in the access traffic via Alibaba cloud firewall way (ACT).
+     * @return The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
      * 
      */
     public String aclAction() {
@@ -263,6 +267,8 @@ public final class GetVpcFirewallControlPoliciesPolicy {
     }
     /**
      * @return The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
+     * - **true**: Enable access control policies
+     * - **false**: does not enable access control policies.
      * 
      */
     public Boolean release() {
@@ -297,7 +303,9 @@ public final class GetVpcFirewallControlPoliciesPolicy {
         return this.sourceType;
     }
     /**
-     * @return The ID of the VPC firewall instance.
+     * @return The ID of the VPC firewall instance. Value:
+     * - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
+     * - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
      * 
      */
     public String vpcFirewallId() {

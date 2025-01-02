@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string PeerConnectionName;
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `Accepting`, `Activated`, `Creating`, `Deleted`, `Deleting`, `Expired`, `Rejected`, `Updating`.
         /// </summary>
         public readonly string Status;
         /// <summary>

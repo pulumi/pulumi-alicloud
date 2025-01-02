@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Dcdn.Outputs
         /// </summary>
         public readonly string RuleCount;
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `on`, `off`.
         /// </summary>
         public readonly string Status;
 

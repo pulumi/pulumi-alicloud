@@ -2275,7 +2275,7 @@ type GetAclsAcl struct {
 	AddressIpVersion string `pulumi:"addressIpVersion"`
 	// The ID of the Acl. Its value is same as `aclId`.
 	Id string `pulumi:"id"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `active`, `configuring`, `deleting`, `init`.
 	Status string `pulumi:"status"`
 }
 
@@ -2301,7 +2301,7 @@ type GetAclsAclArgs struct {
 	AddressIpVersion pulumi.StringInput `pulumi:"addressIpVersion"`
 	// The ID of the Acl. Its value is same as `aclId`.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `active`, `configuring`, `deleting`, `init`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -2381,7 +2381,7 @@ func (o GetAclsAclOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAclsAcl) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The status of the resource. Valid values: `active`, `configuring`, `deleting`, `init`.
 func (o GetAclsAclOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAclsAcl) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -2666,9 +2666,9 @@ type GetBandwidthPackagesPackage struct {
 	Id string `pulumi:"id"`
 	// The payment type of the bandwidth.
 	PaymentType string `pulumi:"paymentType"`
-	// The status of the bandwidth plan.
+	// The status of the bandwidth plan. Valid values: `active`, `binded`, `binding`, `finacialLocked`, `init`, `unbinding`, `updating`.
 	Status string `pulumi:"status"`
-	// The type of the bandwidth packet. China station only supports return to basic.
+	// The type of the bandwidth plan. Valid values: `Basic`, `CrossDomain`.
 	Type string `pulumi:"type"`
 }
 
@@ -2704,9 +2704,9 @@ type GetBandwidthPackagesPackageArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The payment type of the bandwidth.
 	PaymentType pulumi.StringInput `pulumi:"paymentType"`
-	// The status of the bandwidth plan.
+	// The status of the bandwidth plan. Valid values: `active`, `binded`, `binding`, `finacialLocked`, `init`, `unbinding`, `updating`.
 	Status pulumi.StringInput `pulumi:"status"`
-	// The type of the bandwidth packet. China station only supports return to basic.
+	// The type of the bandwidth plan. Valid values: `Basic`, `CrossDomain`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -2811,12 +2811,12 @@ func (o GetBandwidthPackagesPackageOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.PaymentType }).(pulumi.StringOutput)
 }
 
-// The status of the bandwidth plan.
+// The status of the bandwidth plan. Valid values: `active`, `binded`, `binding`, `finacialLocked`, `init`, `unbinding`, `updating`.
 func (o GetBandwidthPackagesPackageOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The type of the bandwidth packet. China station only supports return to basic.
+// The type of the bandwidth plan. Valid values: `Basic`, `CrossDomain`.
 func (o GetBandwidthPackagesPackageOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -5631,18 +5631,8 @@ type GetForwardingRulesForwardingRule struct {
 	// Forwarding policy priority.
 	Priority int `pulumi:"priority"`
 	// The IP protocol used by the GA instance.
-	// `order` - Forwarding priority.
-	// `ruleActionType` - Forward action type.
-	// `forwardGroupConfig` - Forwarding configuration.
-	// `serverGroupTuples` - Terminal node group configuration.
-	// `endpointGroupId` - Terminal node group ID.
 	RuleActions []GetForwardingRulesForwardingRuleRuleAction `pulumi:"ruleActions"`
 	// Forward action.
-	// `ruleConditionType` - Forwarding condition type.
-	// `pathConfig` - Path configuration information.
-	// `values` - The length of the path is 1-128 characters.
-	// `hostConfig` - Domain name configuration information.
-	// `values` - The domain name is 3-128 characters long.
 	RuleConditions []GetForwardingRulesForwardingRuleRuleCondition `pulumi:"ruleConditions"`
 }
 
@@ -5670,18 +5660,8 @@ type GetForwardingRulesForwardingRuleArgs struct {
 	// Forwarding policy priority.
 	Priority pulumi.IntInput `pulumi:"priority"`
 	// The IP protocol used by the GA instance.
-	// `order` - Forwarding priority.
-	// `ruleActionType` - Forward action type.
-	// `forwardGroupConfig` - Forwarding configuration.
-	// `serverGroupTuples` - Terminal node group configuration.
-	// `endpointGroupId` - Terminal node group ID.
 	RuleActions GetForwardingRulesForwardingRuleRuleActionArrayInput `pulumi:"ruleActions"`
 	// Forward action.
-	// `ruleConditionType` - Forwarding condition type.
-	// `pathConfig` - Path configuration information.
-	// `values` - The length of the path is 1-128 characters.
-	// `hostConfig` - Domain name configuration information.
-	// `values` - The domain name is 3-128 characters long.
 	RuleConditions GetForwardingRulesForwardingRuleRuleConditionArrayInput `pulumi:"ruleConditions"`
 }
 
@@ -5766,11 +5746,6 @@ func (o GetForwardingRulesForwardingRuleOutput) Priority() pulumi.IntOutput {
 }
 
 // The IP protocol used by the GA instance.
-// `order` - Forwarding priority.
-// `ruleActionType` - Forward action type.
-// `forwardGroupConfig` - Forwarding configuration.
-// `serverGroupTuples` - Terminal node group configuration.
-// `endpointGroupId` - Terminal node group ID.
 func (o GetForwardingRulesForwardingRuleOutput) RuleActions() GetForwardingRulesForwardingRuleRuleActionArrayOutput {
 	return o.ApplyT(func(v GetForwardingRulesForwardingRule) []GetForwardingRulesForwardingRuleRuleAction {
 		return v.RuleActions
@@ -5778,11 +5753,6 @@ func (o GetForwardingRulesForwardingRuleOutput) RuleActions() GetForwardingRules
 }
 
 // Forward action.
-// `ruleConditionType` - Forwarding condition type.
-// `pathConfig` - Path configuration information.
-// `values` - The length of the path is 1-128 characters.
-// `hostConfig` - Domain name configuration information.
-// `values` - The domain name is 3-128 characters long.
 func (o GetForwardingRulesForwardingRuleOutput) RuleConditions() GetForwardingRulesForwardingRuleRuleConditionArrayOutput {
 	return o.ApplyT(func(v GetForwardingRulesForwardingRule) []GetForwardingRulesForwardingRuleRuleCondition {
 		return v.RuleConditions
@@ -5810,9 +5780,12 @@ func (o GetForwardingRulesForwardingRuleArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetForwardingRulesForwardingRuleRuleAction struct {
+	// Forwarding configuration.
 	ForwardGroupConfigs []GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig `pulumi:"forwardGroupConfigs"`
-	Order               int                                                            `pulumi:"order"`
-	RuleActionType      string                                                         `pulumi:"ruleActionType"`
+	// Forwarding priority.
+	Order int `pulumi:"order"`
+	// Forward action type.
+	RuleActionType string `pulumi:"ruleActionType"`
 }
 
 // GetForwardingRulesForwardingRuleRuleActionInput is an input type that accepts GetForwardingRulesForwardingRuleRuleActionArgs and GetForwardingRulesForwardingRuleRuleActionOutput values.
@@ -5827,9 +5800,12 @@ type GetForwardingRulesForwardingRuleRuleActionInput interface {
 }
 
 type GetForwardingRulesForwardingRuleRuleActionArgs struct {
+	// Forwarding configuration.
 	ForwardGroupConfigs GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArrayInput `pulumi:"forwardGroupConfigs"`
-	Order               pulumi.IntInput                                                        `pulumi:"order"`
-	RuleActionType      pulumi.StringInput                                                     `pulumi:"ruleActionType"`
+	// Forwarding priority.
+	Order pulumi.IntInput `pulumi:"order"`
+	// Forward action type.
+	RuleActionType pulumi.StringInput `pulumi:"ruleActionType"`
 }
 
 func (GetForwardingRulesForwardingRuleRuleActionArgs) ElementType() reflect.Type {
@@ -5883,16 +5859,19 @@ func (o GetForwardingRulesForwardingRuleRuleActionOutput) ToGetForwardingRulesFo
 	return o
 }
 
+// Forwarding configuration.
 func (o GetForwardingRulesForwardingRuleRuleActionOutput) ForwardGroupConfigs() GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArrayOutput {
 	return o.ApplyT(func(v GetForwardingRulesForwardingRuleRuleAction) []GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig {
 		return v.ForwardGroupConfigs
 	}).(GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArrayOutput)
 }
 
+// Forwarding priority.
 func (o GetForwardingRulesForwardingRuleRuleActionOutput) Order() pulumi.IntOutput {
 	return o.ApplyT(func(v GetForwardingRulesForwardingRuleRuleAction) int { return v.Order }).(pulumi.IntOutput)
 }
 
+// Forward action type.
 func (o GetForwardingRulesForwardingRuleRuleActionOutput) RuleActionType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetForwardingRulesForwardingRuleRuleAction) string { return v.RuleActionType }).(pulumi.StringOutput)
 }
@@ -5918,6 +5897,7 @@ func (o GetForwardingRulesForwardingRuleRuleActionArrayOutput) Index(i pulumi.In
 }
 
 type GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig struct {
+	// Terminal node group configuration.
 	ServerGroupTuples []GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple `pulumi:"serverGroupTuples"`
 }
 
@@ -5933,6 +5913,7 @@ type GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigInput interface
 }
 
 type GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArgs struct {
+	// Terminal node group configuration.
 	ServerGroupTuples GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayInput `pulumi:"serverGroupTuples"`
 }
 
@@ -5987,6 +5968,7 @@ func (o GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigOutput) ToGe
 	return o
 }
 
+// Terminal node group configuration.
 func (o GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigOutput) ServerGroupTuples() GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput {
 	return o.ApplyT(func(v GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig) []GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple {
 		return v.ServerGroupTuples
@@ -6014,6 +5996,7 @@ func (o GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArrayOutput)
 }
 
 type GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple struct {
+	// Terminal node group ID.
 	EndpointGroupId string `pulumi:"endpointGroupId"`
 }
 
@@ -6029,6 +6012,7 @@ type GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupl
 }
 
 type GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs struct {
+	// Terminal node group ID.
 	EndpointGroupId pulumi.StringInput `pulumi:"endpointGroupId"`
 }
 
@@ -6083,6 +6067,7 @@ func (o GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupT
 	return o
 }
 
+// Terminal node group ID.
 func (o GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput) EndpointGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple) string {
 		return v.EndpointGroupId
@@ -6110,9 +6095,12 @@ func (o GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupT
 }
 
 type GetForwardingRulesForwardingRuleRuleCondition struct {
-	HostConfigs       []GetForwardingRulesForwardingRuleRuleConditionHostConfig `pulumi:"hostConfigs"`
-	PathConfigs       []GetForwardingRulesForwardingRuleRuleConditionPathConfig `pulumi:"pathConfigs"`
-	RuleConditionType string                                                    `pulumi:"ruleConditionType"`
+	// Domain name configuration information.
+	HostConfigs []GetForwardingRulesForwardingRuleRuleConditionHostConfig `pulumi:"hostConfigs"`
+	// Path configuration information.
+	PathConfigs []GetForwardingRulesForwardingRuleRuleConditionPathConfig `pulumi:"pathConfigs"`
+	// Forwarding condition type.
+	RuleConditionType string `pulumi:"ruleConditionType"`
 }
 
 // GetForwardingRulesForwardingRuleRuleConditionInput is an input type that accepts GetForwardingRulesForwardingRuleRuleConditionArgs and GetForwardingRulesForwardingRuleRuleConditionOutput values.
@@ -6127,9 +6115,12 @@ type GetForwardingRulesForwardingRuleRuleConditionInput interface {
 }
 
 type GetForwardingRulesForwardingRuleRuleConditionArgs struct {
-	HostConfigs       GetForwardingRulesForwardingRuleRuleConditionHostConfigArrayInput `pulumi:"hostConfigs"`
-	PathConfigs       GetForwardingRulesForwardingRuleRuleConditionPathConfigArrayInput `pulumi:"pathConfigs"`
-	RuleConditionType pulumi.StringInput                                                `pulumi:"ruleConditionType"`
+	// Domain name configuration information.
+	HostConfigs GetForwardingRulesForwardingRuleRuleConditionHostConfigArrayInput `pulumi:"hostConfigs"`
+	// Path configuration information.
+	PathConfigs GetForwardingRulesForwardingRuleRuleConditionPathConfigArrayInput `pulumi:"pathConfigs"`
+	// Forwarding condition type.
+	RuleConditionType pulumi.StringInput `pulumi:"ruleConditionType"`
 }
 
 func (GetForwardingRulesForwardingRuleRuleConditionArgs) ElementType() reflect.Type {
@@ -6183,18 +6174,21 @@ func (o GetForwardingRulesForwardingRuleRuleConditionOutput) ToGetForwardingRule
 	return o
 }
 
+// Domain name configuration information.
 func (o GetForwardingRulesForwardingRuleRuleConditionOutput) HostConfigs() GetForwardingRulesForwardingRuleRuleConditionHostConfigArrayOutput {
 	return o.ApplyT(func(v GetForwardingRulesForwardingRuleRuleCondition) []GetForwardingRulesForwardingRuleRuleConditionHostConfig {
 		return v.HostConfigs
 	}).(GetForwardingRulesForwardingRuleRuleConditionHostConfigArrayOutput)
 }
 
+// Path configuration information.
 func (o GetForwardingRulesForwardingRuleRuleConditionOutput) PathConfigs() GetForwardingRulesForwardingRuleRuleConditionPathConfigArrayOutput {
 	return o.ApplyT(func(v GetForwardingRulesForwardingRuleRuleCondition) []GetForwardingRulesForwardingRuleRuleConditionPathConfig {
 		return v.PathConfigs
 	}).(GetForwardingRulesForwardingRuleRuleConditionPathConfigArrayOutput)
 }
 
+// Forwarding condition type.
 func (o GetForwardingRulesForwardingRuleRuleConditionOutput) RuleConditionType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetForwardingRulesForwardingRuleRuleCondition) string { return v.RuleConditionType }).(pulumi.StringOutput)
 }
@@ -6220,6 +6214,7 @@ func (o GetForwardingRulesForwardingRuleRuleConditionArrayOutput) Index(i pulumi
 }
 
 type GetForwardingRulesForwardingRuleRuleConditionHostConfig struct {
+	// The domain name is 3-128 characters long.
 	Values []string `pulumi:"values"`
 }
 
@@ -6235,6 +6230,7 @@ type GetForwardingRulesForwardingRuleRuleConditionHostConfigInput interface {
 }
 
 type GetForwardingRulesForwardingRuleRuleConditionHostConfigArgs struct {
+	// The domain name is 3-128 characters long.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -6289,6 +6285,7 @@ func (o GetForwardingRulesForwardingRuleRuleConditionHostConfigOutput) ToGetForw
 	return o
 }
 
+// The domain name is 3-128 characters long.
 func (o GetForwardingRulesForwardingRuleRuleConditionHostConfigOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetForwardingRulesForwardingRuleRuleConditionHostConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -6314,6 +6311,7 @@ func (o GetForwardingRulesForwardingRuleRuleConditionHostConfigArrayOutput) Inde
 }
 
 type GetForwardingRulesForwardingRuleRuleConditionPathConfig struct {
+	// The domain name is 3-128 characters long.
 	Values []string `pulumi:"values"`
 }
 
@@ -6329,6 +6327,7 @@ type GetForwardingRulesForwardingRuleRuleConditionPathConfigInput interface {
 }
 
 type GetForwardingRulesForwardingRuleRuleConditionPathConfigArgs struct {
+	// The domain name is 3-128 characters long.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -6383,6 +6382,7 @@ func (o GetForwardingRulesForwardingRuleRuleConditionPathConfigOutput) ToGetForw
 	return o
 }
 
+// The domain name is 3-128 characters long.
 func (o GetForwardingRulesForwardingRuleRuleConditionPathConfigOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetForwardingRulesForwardingRuleRuleConditionPathConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -6420,7 +6420,7 @@ type GetIpSetsSet struct {
 	IpSetId string `pulumi:"ipSetId"`
 	// The IP protocol used by the GA instance.
 	IpVersion string `pulumi:"ipVersion"`
-	// The status of the acceleration region.
+	// The status of the acceleration region. Valid values: `active`, `deleting`, `init`, `updating`.
 	Status string `pulumi:"status"`
 }
 
@@ -6448,7 +6448,7 @@ type GetIpSetsSetArgs struct {
 	IpSetId pulumi.StringInput `pulumi:"ipSetId"`
 	// The IP protocol used by the GA instance.
 	IpVersion pulumi.StringInput `pulumi:"ipVersion"`
-	// The status of the acceleration region.
+	// The status of the acceleration region. Valid values: `active`, `deleting`, `init`, `updating`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -6533,7 +6533,7 @@ func (o GetIpSetsSetOutput) IpVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIpSetsSet) string { return v.IpVersion }).(pulumi.StringOutput)
 }
 
-// The status of the acceleration region.
+// The status of the acceleration region. Valid values: `active`, `deleting`, `init`, `updating`.
 func (o GetIpSetsSetOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIpSetsSet) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -6575,7 +6575,7 @@ type GetListenersListener struct {
 	PortRanges []GetListenersListenerPortRange `pulumi:"portRanges"`
 	// Type of network transport protocol monitored.
 	Protocol string `pulumi:"protocol"`
-	// The status of the listener.
+	// The status of the listener. Valid values: `active`, `configuring`, `creating`.
 	Status string `pulumi:"status"`
 }
 
@@ -6607,7 +6607,7 @@ type GetListenersListenerArgs struct {
 	PortRanges GetListenersListenerPortRangeArrayInput `pulumi:"portRanges"`
 	// Type of network transport protocol monitored.
 	Protocol pulumi.StringInput `pulumi:"protocol"`
-	// The status of the listener.
+	// The status of the listener. Valid values: `active`, `configuring`, `creating`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -6702,7 +6702,7 @@ func (o GetListenersListenerOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListener) string { return v.Protocol }).(pulumi.StringOutput)
 }
 
-// The status of the listener.
+// The status of the listener. Valid values: `active`, `configuring`, `creating`.
 func (o GetListenersListenerOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListener) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -6728,7 +6728,7 @@ func (o GetListenersListenerArrayOutput) Index(i pulumi.IntInput) GetListenersLi
 }
 
 type GetListenersListenerCertificate struct {
-	// The id of the certificate.
+	// The ID of the Listener.
 	Id string `pulumi:"id"`
 	// The type of the certificate.
 	Type string `pulumi:"type"`
@@ -6746,7 +6746,7 @@ type GetListenersListenerCertificateInput interface {
 }
 
 type GetListenersListenerCertificateArgs struct {
-	// The id of the certificate.
+	// The ID of the Listener.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The type of the certificate.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -6803,7 +6803,7 @@ func (o GetListenersListenerCertificateOutput) ToGetListenersListenerCertificate
 	return o
 }
 
-// The id of the certificate.
+// The ID of the Listener.
 func (o GetListenersListenerCertificateOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListenerCertificate) string { return v.Id }).(pulumi.StringOutput)
 }

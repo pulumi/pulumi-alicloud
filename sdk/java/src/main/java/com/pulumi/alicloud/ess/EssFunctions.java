@@ -646,6 +646,8 @@ public final class EssFunctions {
     /**
      * This data source provides available scaling configuration resources.
      * 
+     * &gt; **NOTE:** Available since v1.240.0
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -656,6 +658,25 @@ public final class EssFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroupRule;
+     * import com.pulumi.alicloud.ecs.SecurityGroupRuleArgs;
+     * import com.pulumi.alicloud.ess.ScalingGroup;
+     * import com.pulumi.alicloud.ess.ScalingGroupArgs;
+     * import com.pulumi.alicloud.ess.ScalingConfiguration;
+     * import com.pulumi.alicloud.ess.ScalingConfigurationArgs;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetScalingConfigurationsArgs;
      * import java.util.List;
@@ -671,15 +692,87 @@ public final class EssFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     * 
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableDiskCategory("cloud_efficiency")
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(default_.zones()[0].id())
+     *             .cpuCoreCount(2)
+     *             .memorySize(4)
+     *             .build());
+     * 
+     *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex("^ubuntu_18.*64")
+     *             .mostRecent(true)
+     *             .owners("system")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(myName)
+     *             .cidrBlock("172.16.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("172.16.0.0/24")
+     *             .zoneId(default_.zones()[0].id())
+     *             .vswitchName(myName)
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .securityGroupName(myName)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultSecurityGroupRule = new SecurityGroupRule("defaultSecurityGroupRule", SecurityGroupRuleArgs.builder()
+     *             .type("ingress")
+     *             .ipProtocol("tcp")
+     *             .nicType("intranet")
+     *             .policy("accept")
+     *             .portRange("22/22")
+     *             .priority(1)
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .cidrIp("172.16.0.0/24")
+     *             .build());
+     * 
+     *         var defaultScalingGroup = new ScalingGroup("defaultScalingGroup", ScalingGroupArgs.builder()
+     *             .minSize(1)
+     *             .maxSize(1)
+     *             .scalingGroupName(myName)
+     *             .removalPolicies(            
+     *                 "OldestInstance",
+     *                 "NewestInstance")
+     *             .vswitchIds(defaultSwitch.id())
+     *             .build());
+     * 
+     *         var defaultScalingConfiguration = new ScalingConfiguration("defaultScalingConfiguration", ScalingConfigurationArgs.builder()
+     *             .scalingGroupId(defaultScalingGroup.id())
+     *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .forceDelete(true)
+     *             .active(true)
+     *             .scalingConfigurationName("scaling_configuration_name")
+     *             .build());
+     * 
      *         final var scalingconfigurationsDs = EssFunctions.getScalingConfigurations(GetScalingConfigurationsArgs.builder()
-     *             .scalingGroupId("scaling_group_id")
-     *             .ids(            
-     *                 "scaling_configuration_id1",
-     *                 "scaling_configuration_id2")
+     *             .scalingGroupId(defaultScalingGroup.id())
+     *             .ids(defaultScalingConfiguration.id())
      *             .nameRegex("scaling_configuration_name")
      *             .build());
      * 
-     *         ctx.export("firstScalingRule", scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult.configurations()[0].id()));
+     *         ctx.export("firstScalingConfiguration", scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult).applyValue(scalingconfigurationsDs -> scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult.configurations()[0].id())));
      *     }
      * }
      * }
@@ -693,6 +786,8 @@ public final class EssFunctions {
     /**
      * This data source provides available scaling configuration resources.
      * 
+     * &gt; **NOTE:** Available since v1.240.0
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -703,6 +798,25 @@ public final class EssFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroupRule;
+     * import com.pulumi.alicloud.ecs.SecurityGroupRuleArgs;
+     * import com.pulumi.alicloud.ess.ScalingGroup;
+     * import com.pulumi.alicloud.ess.ScalingGroupArgs;
+     * import com.pulumi.alicloud.ess.ScalingConfiguration;
+     * import com.pulumi.alicloud.ess.ScalingConfigurationArgs;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetScalingConfigurationsArgs;
      * import java.util.List;
@@ -718,15 +832,87 @@ public final class EssFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     * 
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableDiskCategory("cloud_efficiency")
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(default_.zones()[0].id())
+     *             .cpuCoreCount(2)
+     *             .memorySize(4)
+     *             .build());
+     * 
+     *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex("^ubuntu_18.*64")
+     *             .mostRecent(true)
+     *             .owners("system")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(myName)
+     *             .cidrBlock("172.16.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("172.16.0.0/24")
+     *             .zoneId(default_.zones()[0].id())
+     *             .vswitchName(myName)
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .securityGroupName(myName)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultSecurityGroupRule = new SecurityGroupRule("defaultSecurityGroupRule", SecurityGroupRuleArgs.builder()
+     *             .type("ingress")
+     *             .ipProtocol("tcp")
+     *             .nicType("intranet")
+     *             .policy("accept")
+     *             .portRange("22/22")
+     *             .priority(1)
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .cidrIp("172.16.0.0/24")
+     *             .build());
+     * 
+     *         var defaultScalingGroup = new ScalingGroup("defaultScalingGroup", ScalingGroupArgs.builder()
+     *             .minSize(1)
+     *             .maxSize(1)
+     *             .scalingGroupName(myName)
+     *             .removalPolicies(            
+     *                 "OldestInstance",
+     *                 "NewestInstance")
+     *             .vswitchIds(defaultSwitch.id())
+     *             .build());
+     * 
+     *         var defaultScalingConfiguration = new ScalingConfiguration("defaultScalingConfiguration", ScalingConfigurationArgs.builder()
+     *             .scalingGroupId(defaultScalingGroup.id())
+     *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .forceDelete(true)
+     *             .active(true)
+     *             .scalingConfigurationName("scaling_configuration_name")
+     *             .build());
+     * 
      *         final var scalingconfigurationsDs = EssFunctions.getScalingConfigurations(GetScalingConfigurationsArgs.builder()
-     *             .scalingGroupId("scaling_group_id")
-     *             .ids(            
-     *                 "scaling_configuration_id1",
-     *                 "scaling_configuration_id2")
+     *             .scalingGroupId(defaultScalingGroup.id())
+     *             .ids(defaultScalingConfiguration.id())
      *             .nameRegex("scaling_configuration_name")
      *             .build());
      * 
-     *         ctx.export("firstScalingRule", scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult.configurations()[0].id()));
+     *         ctx.export("firstScalingConfiguration", scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult).applyValue(scalingconfigurationsDs -> scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult.configurations()[0].id())));
      *     }
      * }
      * }
@@ -740,6 +926,8 @@ public final class EssFunctions {
     /**
      * This data source provides available scaling configuration resources.
      * 
+     * &gt; **NOTE:** Available since v1.240.0
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -750,6 +938,25 @@ public final class EssFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroupRule;
+     * import com.pulumi.alicloud.ecs.SecurityGroupRuleArgs;
+     * import com.pulumi.alicloud.ess.ScalingGroup;
+     * import com.pulumi.alicloud.ess.ScalingGroupArgs;
+     * import com.pulumi.alicloud.ess.ScalingConfiguration;
+     * import com.pulumi.alicloud.ess.ScalingConfigurationArgs;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetScalingConfigurationsArgs;
      * import java.util.List;
@@ -765,15 +972,87 @@ public final class EssFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     * 
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableDiskCategory("cloud_efficiency")
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(default_.zones()[0].id())
+     *             .cpuCoreCount(2)
+     *             .memorySize(4)
+     *             .build());
+     * 
+     *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex("^ubuntu_18.*64")
+     *             .mostRecent(true)
+     *             .owners("system")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(myName)
+     *             .cidrBlock("172.16.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("172.16.0.0/24")
+     *             .zoneId(default_.zones()[0].id())
+     *             .vswitchName(myName)
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .securityGroupName(myName)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultSecurityGroupRule = new SecurityGroupRule("defaultSecurityGroupRule", SecurityGroupRuleArgs.builder()
+     *             .type("ingress")
+     *             .ipProtocol("tcp")
+     *             .nicType("intranet")
+     *             .policy("accept")
+     *             .portRange("22/22")
+     *             .priority(1)
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .cidrIp("172.16.0.0/24")
+     *             .build());
+     * 
+     *         var defaultScalingGroup = new ScalingGroup("defaultScalingGroup", ScalingGroupArgs.builder()
+     *             .minSize(1)
+     *             .maxSize(1)
+     *             .scalingGroupName(myName)
+     *             .removalPolicies(            
+     *                 "OldestInstance",
+     *                 "NewestInstance")
+     *             .vswitchIds(defaultSwitch.id())
+     *             .build());
+     * 
+     *         var defaultScalingConfiguration = new ScalingConfiguration("defaultScalingConfiguration", ScalingConfigurationArgs.builder()
+     *             .scalingGroupId(defaultScalingGroup.id())
+     *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .forceDelete(true)
+     *             .active(true)
+     *             .scalingConfigurationName("scaling_configuration_name")
+     *             .build());
+     * 
      *         final var scalingconfigurationsDs = EssFunctions.getScalingConfigurations(GetScalingConfigurationsArgs.builder()
-     *             .scalingGroupId("scaling_group_id")
-     *             .ids(            
-     *                 "scaling_configuration_id1",
-     *                 "scaling_configuration_id2")
+     *             .scalingGroupId(defaultScalingGroup.id())
+     *             .ids(defaultScalingConfiguration.id())
      *             .nameRegex("scaling_configuration_name")
      *             .build());
      * 
-     *         ctx.export("firstScalingRule", scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult.configurations()[0].id()));
+     *         ctx.export("firstScalingConfiguration", scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult).applyValue(scalingconfigurationsDs -> scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult.configurations()[0].id())));
      *     }
      * }
      * }
@@ -787,6 +1066,8 @@ public final class EssFunctions {
     /**
      * This data source provides available scaling configuration resources.
      * 
+     * &gt; **NOTE:** Available since v1.240.0
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -797,6 +1078,25 @@ public final class EssFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroupRule;
+     * import com.pulumi.alicloud.ecs.SecurityGroupRuleArgs;
+     * import com.pulumi.alicloud.ess.ScalingGroup;
+     * import com.pulumi.alicloud.ess.ScalingGroupArgs;
+     * import com.pulumi.alicloud.ess.ScalingConfiguration;
+     * import com.pulumi.alicloud.ess.ScalingConfigurationArgs;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetScalingConfigurationsArgs;
      * import java.util.List;
@@ -812,15 +1112,87 @@ public final class EssFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     * 
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableDiskCategory("cloud_efficiency")
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(default_.zones()[0].id())
+     *             .cpuCoreCount(2)
+     *             .memorySize(4)
+     *             .build());
+     * 
+     *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex("^ubuntu_18.*64")
+     *             .mostRecent(true)
+     *             .owners("system")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(myName)
+     *             .cidrBlock("172.16.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("172.16.0.0/24")
+     *             .zoneId(default_.zones()[0].id())
+     *             .vswitchName(myName)
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .securityGroupName(myName)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultSecurityGroupRule = new SecurityGroupRule("defaultSecurityGroupRule", SecurityGroupRuleArgs.builder()
+     *             .type("ingress")
+     *             .ipProtocol("tcp")
+     *             .nicType("intranet")
+     *             .policy("accept")
+     *             .portRange("22/22")
+     *             .priority(1)
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .cidrIp("172.16.0.0/24")
+     *             .build());
+     * 
+     *         var defaultScalingGroup = new ScalingGroup("defaultScalingGroup", ScalingGroupArgs.builder()
+     *             .minSize(1)
+     *             .maxSize(1)
+     *             .scalingGroupName(myName)
+     *             .removalPolicies(            
+     *                 "OldestInstance",
+     *                 "NewestInstance")
+     *             .vswitchIds(defaultSwitch.id())
+     *             .build());
+     * 
+     *         var defaultScalingConfiguration = new ScalingConfiguration("defaultScalingConfiguration", ScalingConfigurationArgs.builder()
+     *             .scalingGroupId(defaultScalingGroup.id())
+     *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .forceDelete(true)
+     *             .active(true)
+     *             .scalingConfigurationName("scaling_configuration_name")
+     *             .build());
+     * 
      *         final var scalingconfigurationsDs = EssFunctions.getScalingConfigurations(GetScalingConfigurationsArgs.builder()
-     *             .scalingGroupId("scaling_group_id")
-     *             .ids(            
-     *                 "scaling_configuration_id1",
-     *                 "scaling_configuration_id2")
+     *             .scalingGroupId(defaultScalingGroup.id())
+     *             .ids(defaultScalingConfiguration.id())
      *             .nameRegex("scaling_configuration_name")
      *             .build());
      * 
-     *         ctx.export("firstScalingRule", scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult.configurations()[0].id()));
+     *         ctx.export("firstScalingConfiguration", scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult).applyValue(scalingconfigurationsDs -> scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult.configurations()[0].id())));
      *     }
      * }
      * }
@@ -834,6 +1206,8 @@ public final class EssFunctions {
     /**
      * This data source provides available scaling configuration resources.
      * 
+     * &gt; **NOTE:** Available since v1.240.0
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -844,6 +1218,25 @@ public final class EssFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroupRule;
+     * import com.pulumi.alicloud.ecs.SecurityGroupRuleArgs;
+     * import com.pulumi.alicloud.ess.ScalingGroup;
+     * import com.pulumi.alicloud.ess.ScalingGroupArgs;
+     * import com.pulumi.alicloud.ess.ScalingConfiguration;
+     * import com.pulumi.alicloud.ess.ScalingConfigurationArgs;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetScalingConfigurationsArgs;
      * import java.util.List;
@@ -859,15 +1252,87 @@ public final class EssFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     * 
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableDiskCategory("cloud_efficiency")
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(default_.zones()[0].id())
+     *             .cpuCoreCount(2)
+     *             .memorySize(4)
+     *             .build());
+     * 
+     *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex("^ubuntu_18.*64")
+     *             .mostRecent(true)
+     *             .owners("system")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(myName)
+     *             .cidrBlock("172.16.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("172.16.0.0/24")
+     *             .zoneId(default_.zones()[0].id())
+     *             .vswitchName(myName)
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .securityGroupName(myName)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultSecurityGroupRule = new SecurityGroupRule("defaultSecurityGroupRule", SecurityGroupRuleArgs.builder()
+     *             .type("ingress")
+     *             .ipProtocol("tcp")
+     *             .nicType("intranet")
+     *             .policy("accept")
+     *             .portRange("22/22")
+     *             .priority(1)
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .cidrIp("172.16.0.0/24")
+     *             .build());
+     * 
+     *         var defaultScalingGroup = new ScalingGroup("defaultScalingGroup", ScalingGroupArgs.builder()
+     *             .minSize(1)
+     *             .maxSize(1)
+     *             .scalingGroupName(myName)
+     *             .removalPolicies(            
+     *                 "OldestInstance",
+     *                 "NewestInstance")
+     *             .vswitchIds(defaultSwitch.id())
+     *             .build());
+     * 
+     *         var defaultScalingConfiguration = new ScalingConfiguration("defaultScalingConfiguration", ScalingConfigurationArgs.builder()
+     *             .scalingGroupId(defaultScalingGroup.id())
+     *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .forceDelete(true)
+     *             .active(true)
+     *             .scalingConfigurationName("scaling_configuration_name")
+     *             .build());
+     * 
      *         final var scalingconfigurationsDs = EssFunctions.getScalingConfigurations(GetScalingConfigurationsArgs.builder()
-     *             .scalingGroupId("scaling_group_id")
-     *             .ids(            
-     *                 "scaling_configuration_id1",
-     *                 "scaling_configuration_id2")
+     *             .scalingGroupId(defaultScalingGroup.id())
+     *             .ids(defaultScalingConfiguration.id())
      *             .nameRegex("scaling_configuration_name")
      *             .build());
      * 
-     *         ctx.export("firstScalingRule", scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult.configurations()[0].id()));
+     *         ctx.export("firstScalingConfiguration", scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult).applyValue(scalingconfigurationsDs -> scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult.configurations()[0].id())));
      *     }
      * }
      * }
@@ -881,6 +1346,8 @@ public final class EssFunctions {
     /**
      * This data source provides available scaling configuration resources.
      * 
+     * &gt; **NOTE:** Available since v1.240.0
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -891,6 +1358,25 @@ public final class EssFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroupRule;
+     * import com.pulumi.alicloud.ecs.SecurityGroupRuleArgs;
+     * import com.pulumi.alicloud.ess.ScalingGroup;
+     * import com.pulumi.alicloud.ess.ScalingGroupArgs;
+     * import com.pulumi.alicloud.ess.ScalingConfiguration;
+     * import com.pulumi.alicloud.ess.ScalingConfigurationArgs;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetScalingConfigurationsArgs;
      * import java.util.List;
@@ -906,15 +1392,87 @@ public final class EssFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     * 
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableDiskCategory("cloud_efficiency")
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(default_.zones()[0].id())
+     *             .cpuCoreCount(2)
+     *             .memorySize(4)
+     *             .build());
+     * 
+     *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex("^ubuntu_18.*64")
+     *             .mostRecent(true)
+     *             .owners("system")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(myName)
+     *             .cidrBlock("172.16.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("172.16.0.0/24")
+     *             .zoneId(default_.zones()[0].id())
+     *             .vswitchName(myName)
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .securityGroupName(myName)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultSecurityGroupRule = new SecurityGroupRule("defaultSecurityGroupRule", SecurityGroupRuleArgs.builder()
+     *             .type("ingress")
+     *             .ipProtocol("tcp")
+     *             .nicType("intranet")
+     *             .policy("accept")
+     *             .portRange("22/22")
+     *             .priority(1)
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .cidrIp("172.16.0.0/24")
+     *             .build());
+     * 
+     *         var defaultScalingGroup = new ScalingGroup("defaultScalingGroup", ScalingGroupArgs.builder()
+     *             .minSize(1)
+     *             .maxSize(1)
+     *             .scalingGroupName(myName)
+     *             .removalPolicies(            
+     *                 "OldestInstance",
+     *                 "NewestInstance")
+     *             .vswitchIds(defaultSwitch.id())
+     *             .build());
+     * 
+     *         var defaultScalingConfiguration = new ScalingConfiguration("defaultScalingConfiguration", ScalingConfigurationArgs.builder()
+     *             .scalingGroupId(defaultScalingGroup.id())
+     *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .forceDelete(true)
+     *             .active(true)
+     *             .scalingConfigurationName("scaling_configuration_name")
+     *             .build());
+     * 
      *         final var scalingconfigurationsDs = EssFunctions.getScalingConfigurations(GetScalingConfigurationsArgs.builder()
-     *             .scalingGroupId("scaling_group_id")
-     *             .ids(            
-     *                 "scaling_configuration_id1",
-     *                 "scaling_configuration_id2")
+     *             .scalingGroupId(defaultScalingGroup.id())
+     *             .ids(defaultScalingConfiguration.id())
      *             .nameRegex("scaling_configuration_name")
      *             .build());
      * 
-     *         ctx.export("firstScalingRule", scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult.configurations()[0].id()));
+     *         ctx.export("firstScalingConfiguration", scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult).applyValue(scalingconfigurationsDs -> scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult.configurations()[0].id())));
      *     }
      * }
      * }
@@ -928,6 +1486,8 @@ public final class EssFunctions {
     /**
      * This data source provides available scaling configuration resources.
      * 
+     * &gt; **NOTE:** Available since v1.240.0
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -938,6 +1498,25 @@ public final class EssFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroupRule;
+     * import com.pulumi.alicloud.ecs.SecurityGroupRuleArgs;
+     * import com.pulumi.alicloud.ess.ScalingGroup;
+     * import com.pulumi.alicloud.ess.ScalingGroupArgs;
+     * import com.pulumi.alicloud.ess.ScalingConfiguration;
+     * import com.pulumi.alicloud.ess.ScalingConfigurationArgs;
      * import com.pulumi.alicloud.ess.EssFunctions;
      * import com.pulumi.alicloud.ess.inputs.GetScalingConfigurationsArgs;
      * import java.util.List;
@@ -953,15 +1532,87 @@ public final class EssFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     * 
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableDiskCategory("cloud_efficiency")
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(default_.zones()[0].id())
+     *             .cpuCoreCount(2)
+     *             .memorySize(4)
+     *             .build());
+     * 
+     *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex("^ubuntu_18.*64")
+     *             .mostRecent(true)
+     *             .owners("system")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(myName)
+     *             .cidrBlock("172.16.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("172.16.0.0/24")
+     *             .zoneId(default_.zones()[0].id())
+     *             .vswitchName(myName)
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .securityGroupName(myName)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultSecurityGroupRule = new SecurityGroupRule("defaultSecurityGroupRule", SecurityGroupRuleArgs.builder()
+     *             .type("ingress")
+     *             .ipProtocol("tcp")
+     *             .nicType("intranet")
+     *             .policy("accept")
+     *             .portRange("22/22")
+     *             .priority(1)
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .cidrIp("172.16.0.0/24")
+     *             .build());
+     * 
+     *         var defaultScalingGroup = new ScalingGroup("defaultScalingGroup", ScalingGroupArgs.builder()
+     *             .minSize(1)
+     *             .maxSize(1)
+     *             .scalingGroupName(myName)
+     *             .removalPolicies(            
+     *                 "OldestInstance",
+     *                 "NewestInstance")
+     *             .vswitchIds(defaultSwitch.id())
+     *             .build());
+     * 
+     *         var defaultScalingConfiguration = new ScalingConfiguration("defaultScalingConfiguration", ScalingConfigurationArgs.builder()
+     *             .scalingGroupId(defaultScalingGroup.id())
+     *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .forceDelete(true)
+     *             .active(true)
+     *             .scalingConfigurationName("scaling_configuration_name")
+     *             .build());
+     * 
      *         final var scalingconfigurationsDs = EssFunctions.getScalingConfigurations(GetScalingConfigurationsArgs.builder()
-     *             .scalingGroupId("scaling_group_id")
-     *             .ids(            
-     *                 "scaling_configuration_id1",
-     *                 "scaling_configuration_id2")
+     *             .scalingGroupId(defaultScalingGroup.id())
+     *             .ids(defaultScalingConfiguration.id())
      *             .nameRegex("scaling_configuration_name")
      *             .build());
      * 
-     *         ctx.export("firstScalingRule", scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult.configurations()[0].id()));
+     *         ctx.export("firstScalingConfiguration", scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult).applyValue(scalingconfigurationsDs -> scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult.configurations()[0].id())));
      *     }
      * }
      * }

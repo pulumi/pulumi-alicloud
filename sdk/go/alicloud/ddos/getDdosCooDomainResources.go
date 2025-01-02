@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ddoscoo Domain Resources of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.123.0+.
+// > **NOTE:** Available since v1.123.0.
 //
 // ## Example Usage
 //
@@ -70,12 +70,14 @@ type GetDdosCooDomainResourcesArgs struct {
 // A collection of values returned by getDdosCooDomainResources.
 type GetDdosCooDomainResourcesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id                 string                              `pulumi:"id"`
-	Ids                []string                            `pulumi:"ids"`
-	InstanceIds        []string                            `pulumi:"instanceIds"`
-	OutputFile         *string                             `pulumi:"outputFile"`
-	QueryDomainPattern *string                             `pulumi:"queryDomainPattern"`
-	Resources          []GetDdosCooDomainResourcesResource `pulumi:"resources"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// A list ID of instance that you want to associate.
+	InstanceIds        []string `pulumi:"instanceIds"`
+	OutputFile         *string  `pulumi:"outputFile"`
+	QueryDomainPattern *string  `pulumi:"queryDomainPattern"`
+	// A list of Ddoscoo Domain Resources. Each element contains the following attributes:
+	Resources []GetDdosCooDomainResourcesResource `pulumi:"resources"`
 }
 
 func GetDdosCooDomainResourcesOutput(ctx *pulumi.Context, args GetDdosCooDomainResourcesOutputArgs, opts ...pulumi.InvokeOption) GetDdosCooDomainResourcesResultOutput {
@@ -127,6 +129,7 @@ func (o GetDdosCooDomainResourcesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDdosCooDomainResourcesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// A list ID of instance that you want to associate.
 func (o GetDdosCooDomainResourcesResultOutput) InstanceIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDdosCooDomainResourcesResult) []string { return v.InstanceIds }).(pulumi.StringArrayOutput)
 }
@@ -139,6 +142,7 @@ func (o GetDdosCooDomainResourcesResultOutput) QueryDomainPattern() pulumi.Strin
 	return o.ApplyT(func(v GetDdosCooDomainResourcesResult) *string { return v.QueryDomainPattern }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ddoscoo Domain Resources. Each element contains the following attributes:
 func (o GetDdosCooDomainResourcesResultOutput) Resources() GetDdosCooDomainResourcesResourceArrayOutput {
 	return o.ApplyT(func(v GetDdosCooDomainResourcesResult) []GetDdosCooDomainResourcesResource { return v.Resources }).(GetDdosCooDomainResourcesResourceArrayOutput)
 }

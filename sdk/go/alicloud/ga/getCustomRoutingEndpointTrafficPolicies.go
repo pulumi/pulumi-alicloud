@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Global Accelerator (GA) Custom Routing Endpoint Traffic Policies of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in 1.197.0+
+// > **NOTE:** Available since v1.197.0.
 //
 // ## Example Usage
 //

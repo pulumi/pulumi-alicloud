@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Dcdn
         /// <summary>
         /// This data source provides the Dcdn Waf Domains of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.185.0+.
+        /// &gt; **NOTE:** Available since v1.185.0.
         /// 
         /// ## Example Usage
         /// 
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Dcdn
         /// <summary>
         /// This data source provides the Dcdn Waf Domains of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.185.0+.
+        /// &gt; **NOTE:** Available since v1.185.0.
         /// 
         /// ## Example Usage
         /// 
@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.Dcdn
         /// <summary>
         /// This data source provides the Dcdn Waf Domains of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.185.0+.
+        /// &gt; **NOTE:** Available since v1.185.0.
         /// 
         /// ## Example Usage
         /// 
@@ -180,6 +180,9 @@ namespace Pulumi.AliCloud.Dcdn
     [OutputType]
     public sealed class GetWafDomainsResult
     {
+        /// <summary>
+        /// A list of Dcdn Waf Domains. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetWafDomainsDomainResult> Domains;
         public readonly bool? EnableDetails;
         /// <summary>

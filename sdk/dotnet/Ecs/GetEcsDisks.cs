@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Disks of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.122.0+.
+        /// &gt; **NOTE:** Available since v1.122.0.
         /// 
         /// ## Example Usage
         /// 
@@ -28,18 +28,35 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AliCloud.Ecs.GetEcsDisks.Invoke(new()
+        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var defaultEcsDisk = new AliCloud.Ecs.EcsDisk("default", new()
+        ///     {
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///         DiskName = "terraform-example",
+        ///         Description = "terraform-example",
+        ///         Category = "cloud_efficiency",
+        ///         Size = 30,
+        ///         Tags = 
+        ///         {
+        ///             { "Name", "terraform-example" },
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Ecs.GetEcsDisks.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             "d-artgdsvdvxxxx",
+        ///             defaultEcsDisk.Id,
         ///         },
-        ///         NameRegex = "tf-test",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstEcsDiskId"] = example.Apply(getEcsDisksResult =&gt; getEcsDisksResult.Disks[0]?.Id),
+        ///         ["ecsDiskId0"] = ids.Apply(getEcsDisksResult =&gt; getEcsDisksResult.Disks[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -50,7 +67,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Disks of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.122.0+.
+        /// &gt; **NOTE:** Available since v1.122.0.
         /// 
         /// ## Example Usage
         /// 
@@ -64,18 +81,35 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AliCloud.Ecs.GetEcsDisks.Invoke(new()
+        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var defaultEcsDisk = new AliCloud.Ecs.EcsDisk("default", new()
+        ///     {
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///         DiskName = "terraform-example",
+        ///         Description = "terraform-example",
+        ///         Category = "cloud_efficiency",
+        ///         Size = 30,
+        ///         Tags = 
+        ///         {
+        ///             { "Name", "terraform-example" },
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Ecs.GetEcsDisks.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             "d-artgdsvdvxxxx",
+        ///             defaultEcsDisk.Id,
         ///         },
-        ///         NameRegex = "tf-test",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstEcsDiskId"] = example.Apply(getEcsDisksResult =&gt; getEcsDisksResult.Disks[0]?.Id),
+        ///         ["ecsDiskId0"] = ids.Apply(getEcsDisksResult =&gt; getEcsDisksResult.Disks[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -86,7 +120,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Disks of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.122.0+.
+        /// &gt; **NOTE:** Available since v1.122.0.
         /// 
         /// ## Example Usage
         /// 
@@ -100,18 +134,35 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AliCloud.Ecs.GetEcsDisks.Invoke(new()
+        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var defaultEcsDisk = new AliCloud.Ecs.EcsDisk("default", new()
+        ///     {
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///         DiskName = "terraform-example",
+        ///         Description = "terraform-example",
+        ///         Category = "cloud_efficiency",
+        ///         Size = 30,
+        ///         Tags = 
+        ///         {
+        ///             { "Name", "terraform-example" },
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Ecs.GetEcsDisks.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             "d-artgdsvdvxxxx",
+        ///             defaultEcsDisk.Id,
         ///         },
-        ///         NameRegex = "tf-test",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstEcsDiskId"] = example.Apply(getEcsDisksResult =&gt; getEcsDisksResult.Disks[0]?.Id),
+        ///         ["ecsDiskId0"] = ids.Apply(getEcsDisksResult =&gt; getEcsDisksResult.Disks[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -172,7 +223,7 @@ namespace Pulumi.AliCloud.Ecs
         public string? DiskName { get; set; }
 
         /// <summary>
-        /// The disk type.
+        /// The disk type. Valid values: `system`, `data`, `all`.
         /// </summary>
         [Input("diskType")]
         public string? DiskType { get; set; }
@@ -202,7 +253,7 @@ namespace Pulumi.AliCloud.Ecs
         public bool? EnableShared { get; set; }
 
         /// <summary>
-        /// Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
+        /// Indicate whether the disk is encrypted or not. Valid values: `on` and `off`.
         /// </summary>
         [Input("encrypted")]
         public string? Encrypted { get; set; }
@@ -239,6 +290,10 @@ namespace Pulumi.AliCloud.Ecs
 
         [Input("operationLocks")]
         private List<Inputs.GetEcsDisksOperationLockArgs>? _operationLocks;
+
+        /// <summary>
+        /// The reasons why the disk was locked. See `operation_locks` below for details.
+        /// </summary>
         public List<Inputs.GetEcsDisksOperationLockArgs> OperationLocks
         {
             get => _operationLocks ?? (_operationLocks = new List<Inputs.GetEcsDisksOperationLockArgs>());
@@ -282,7 +337,7 @@ namespace Pulumi.AliCloud.Ecs
         public string? SnapshotId { get; set; }
 
         /// <summary>
-        /// The status of disk.
+        /// The status of disk. Valid Values: `Attaching`, `Available`, `Creating`, `Detaching`, `In_use`, `Migrating`, `ReIniting`, `Transferring`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -368,7 +423,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? DiskName { get; set; }
 
         /// <summary>
-        /// The disk type.
+        /// The disk type. Valid values: `system`, `data`, `all`.
         /// </summary>
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
@@ -398,7 +453,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? EnableShared { get; set; }
 
         /// <summary>
-        /// Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
+        /// Indicate whether the disk is encrypted or not. Valid values: `on` and `off`.
         /// </summary>
         [Input("encrypted")]
         public Input<string>? Encrypted { get; set; }
@@ -435,6 +490,10 @@ namespace Pulumi.AliCloud.Ecs
 
         [Input("operationLocks")]
         private InputList<Inputs.GetEcsDisksOperationLockInputArgs>? _operationLocks;
+
+        /// <summary>
+        /// The reasons why the disk was locked. See `operation_locks` below for details.
+        /// </summary>
         public InputList<Inputs.GetEcsDisksOperationLockInputArgs> OperationLocks
         {
             get => _operationLocks ?? (_operationLocks = new InputList<Inputs.GetEcsDisksOperationLockInputArgs>());
@@ -478,7 +537,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SnapshotId { get; set; }
 
         /// <summary>
-        /// The status of disk.
+        /// The status of disk. Valid Values: `Attaching`, `Available`, `Creating`, `Detaching`, `In_use`, `Migrating`, `ReIniting`, `Transferring`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -518,40 +577,109 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class GetEcsDisksResult
     {
         public readonly ImmutableArray<string> AdditionalAttributes;
+        /// <summary>
+        /// Query cloud disks based on the automatic snapshot policy ID.
+        /// </summary>
         public readonly string? AutoSnapshotPolicyId;
+        /// <summary>
+        /// Availability zone of the disk.
+        /// </summary>
         public readonly string? AvailabilityZone;
+        /// <summary>
+        /// Disk category.
+        /// </summary>
         public readonly string? Category;
+        /// <summary>
+        /// Indicates whether the automatic snapshot is deleted when the disk is released.
+        /// </summary>
         public readonly bool? DeleteAutoSnapshot;
+        /// <summary>
+        /// Indicates whether the disk is released together with the instance.
+        /// </summary>
         public readonly bool? DeleteWithInstance;
+        /// <summary>
+        /// The disk name.
+        /// </summary>
         public readonly string? DiskName;
+        /// <summary>
+        /// The type of the disk.
+        /// </summary>
         public readonly string? DiskType;
+        /// <summary>
+        /// A list of Ecs Disks. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEcsDisksDiskResult> Disks;
         public readonly bool? DryRun;
+        /// <summary>
+        /// Whether the disk implements an automatic snapshot policy.
+        /// </summary>
         public readonly bool? EnableAutoSnapshot;
+        /// <summary>
+        /// Whether the disk implements an automatic snapshot policy.
+        /// </summary>
         public readonly bool? EnableAutomatedSnapshotPolicy;
         public readonly bool? EnableShared;
+        /// <summary>
+        /// Indicate whether the disk is encrypted or not.
+        /// </summary>
         public readonly string? Encrypted;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The instance ID of the disk mount.
+        /// </summary>
         public readonly string? InstanceId;
+        /// <summary>
+        /// The ID of the KMS key that is used for the cloud disk.
+        /// </summary>
         public readonly string? KmsKeyId;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Disk names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
+        /// <summary>
+        /// The reasons why the disk was locked.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEcsDisksOperationLockResult> OperationLocks;
         public readonly string? OutputFile;
         public readonly int? PageNumber;
         public readonly int? PageSize;
+        /// <summary>
+        /// Payment method for disk.
+        /// </summary>
         public readonly string? PaymentType;
+        /// <summary>
+        /// Whether the disk is unmountable.
+        /// </summary>
         public readonly bool? Portable;
+        /// <summary>
+        /// The Id of resource group.
+        /// </summary>
         public readonly string? ResourceGroupId;
+        /// <summary>
+        /// Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+        /// </summary>
         public readonly string? SnapshotId;
+        /// <summary>
+        /// Current status.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// A map of tags assigned to the disk.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
         public readonly int TotalCount;
+        /// <summary>
+        /// The type of the disk.
+        /// </summary>
         public readonly string? Type;
+        /// <summary>
+        /// The zone id.
+        /// </summary>
         public readonly string? ZoneId;
 
         [OutputConstructor]

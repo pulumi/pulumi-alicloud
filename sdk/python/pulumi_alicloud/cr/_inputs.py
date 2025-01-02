@@ -29,6 +29,10 @@ __all__ = [
     'ChainChainConfigRouterFromArgsDict',
     'ChainChainConfigRouterToArgs',
     'ChainChainConfigRouterToArgsDict',
+    'RegistryEnterpriseInstanceInstanceEndpointArgs',
+    'RegistryEnterpriseInstanceInstanceEndpointArgsDict',
+    'RegistryEnterpriseInstanceInstanceEndpointDomainArgs',
+    'RegistryEnterpriseInstanceInstanceEndpointDomainArgsDict',
     'RepoDomainListArgs',
     'RepoDomainListArgsDict',
 ]
@@ -403,6 +407,130 @@ class ChainChainConfigRouterToArgs:
     @node_name.setter
     def node_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "node_name", value)
+
+
+if not MYPY:
+    class RegistryEnterpriseInstanceInstanceEndpointArgsDict(TypedDict):
+        domains: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegistryEnterpriseInstanceInstanceEndpointDomainArgsDict']]]]
+        """
+        Domain List
+        """
+        enable: NotRequired[pulumi.Input[bool]]
+        """
+        enable
+        """
+        endpoint_type: NotRequired[pulumi.Input[str]]
+        """
+        Network Access Endpoint Type
+        """
+elif False:
+    RegistryEnterpriseInstanceInstanceEndpointArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegistryEnterpriseInstanceInstanceEndpointArgs:
+    def __init__(__self__, *,
+                 domains: Optional[pulumi.Input[Sequence[pulumi.Input['RegistryEnterpriseInstanceInstanceEndpointDomainArgs']]]] = None,
+                 enable: Optional[pulumi.Input[bool]] = None,
+                 endpoint_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RegistryEnterpriseInstanceInstanceEndpointDomainArgs']]] domains: Domain List
+        :param pulumi.Input[bool] enable: enable
+        :param pulumi.Input[str] endpoint_type: Network Access Endpoint Type
+        """
+        if domains is not None:
+            pulumi.set(__self__, "domains", domains)
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
+        if endpoint_type is not None:
+            pulumi.set(__self__, "endpoint_type", endpoint_type)
+
+    @property
+    @pulumi.getter
+    def domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegistryEnterpriseInstanceInstanceEndpointDomainArgs']]]]:
+        """
+        Domain List
+        """
+        return pulumi.get(self, "domains")
+
+    @domains.setter
+    def domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegistryEnterpriseInstanceInstanceEndpointDomainArgs']]]]):
+        pulumi.set(self, "domains", value)
+
+    @property
+    @pulumi.getter
+    def enable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        enable
+        """
+        return pulumi.get(self, "enable")
+
+    @enable.setter
+    def enable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable", value)
+
+    @property
+    @pulumi.getter(name="endpointType")
+    def endpoint_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Network Access Endpoint Type
+        """
+        return pulumi.get(self, "endpoint_type")
+
+    @endpoint_type.setter
+    def endpoint_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint_type", value)
+
+
+if not MYPY:
+    class RegistryEnterpriseInstanceInstanceEndpointDomainArgsDict(TypedDict):
+        domain: NotRequired[pulumi.Input[str]]
+        """
+        Domain
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Domain Type
+        """
+elif False:
+    RegistryEnterpriseInstanceInstanceEndpointDomainArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegistryEnterpriseInstanceInstanceEndpointDomainArgs:
+    def __init__(__self__, *,
+                 domain: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] domain: Domain
+        :param pulumi.Input[str] type: Domain Type
+        """
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        Domain
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Domain Type
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 if not MYPY:

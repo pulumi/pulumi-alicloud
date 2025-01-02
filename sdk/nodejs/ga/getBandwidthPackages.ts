@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Global Accelerator (GA) Bandwidth Packages of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.112.0+.
+ * > **NOTE:** Available since v1.112.0.
  *
  * ## Example Usage
  *
@@ -80,16 +80,28 @@ export interface GetBandwidthPackagesResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Bandwidth Package names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Ga Bandwidth Packages. Each element contains the following attributes:
+     */
     readonly packages: outputs.ga.GetBandwidthPackagesPackage[];
+    /**
+     * The status of the bandwidth plan.
+     */
     readonly status?: string;
+    /**
+     * The type of the bandwidth packet. China station only supports return to basic.
+     */
     readonly type?: string;
 }
 /**
  * This data source provides the Global Accelerator (GA) Bandwidth Packages of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.112.0+.
+ * > **NOTE:** Available since v1.112.0.
  *
  * ## Example Usage
  *

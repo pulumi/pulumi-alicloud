@@ -2072,7 +2072,7 @@ type GetDdosCooDomainResourcesResource struct {
 	HttpsExt string `pulumi:"httpsExt"`
 	// The ID of the Domain Resource.
 	Id string `pulumi:"id"`
-	// A list ID of instance that you want to associate.
+	// A ID list of Ddoscoo instance.
 	InstanceIds []string `pulumi:"instanceIds"`
 	// The type of backload algorithm.
 	PolicyMode string `pulumi:"policyMode"`
@@ -2122,7 +2122,7 @@ type GetDdosCooDomainResourcesResourceArgs struct {
 	HttpsExt pulumi.StringInput `pulumi:"httpsExt"`
 	// The ID of the Domain Resource.
 	Id pulumi.StringInput `pulumi:"id"`
-	// A list ID of instance that you want to associate.
+	// A ID list of Ddoscoo instance.
 	InstanceIds pulumi.StringArrayInput `pulumi:"instanceIds"`
 	// The type of backload algorithm.
 	PolicyMode pulumi.StringInput `pulumi:"policyMode"`
@@ -2238,7 +2238,7 @@ func (o GetDdosCooDomainResourcesResourceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDdosCooDomainResourcesResource) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A list ID of instance that you want to associate.
+// A ID list of Ddoscoo instance.
 func (o GetDdosCooDomainResourcesResourceOutput) InstanceIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDdosCooDomainResourcesResource) []string { return v.InstanceIds }).(pulumi.StringArrayOutput)
 }
@@ -2652,7 +2652,7 @@ type GetDdosCooPortsPort struct {
 	FrontendProtocol string `pulumi:"frontendProtocol"`
 	// The ID of the Port.
 	Id string `pulumi:"id"`
-	// The Ddoscoo instance ID.
+	// The DdosCoo instance ID.
 	InstanceId string `pulumi:"instanceId"`
 	// List of source IP addresses.
 	RealServers []string `pulumi:"realServers"`
@@ -2678,7 +2678,7 @@ type GetDdosCooPortsPortArgs struct {
 	FrontendProtocol pulumi.StringInput `pulumi:"frontendProtocol"`
 	// The ID of the Port.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The Ddoscoo instance ID.
+	// The DdosCoo instance ID.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// List of source IP addresses.
 	RealServers pulumi.StringArrayInput `pulumi:"realServers"`
@@ -2755,7 +2755,7 @@ func (o GetDdosCooPortsPortOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDdosCooPortsPort) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The Ddoscoo instance ID.
+// The DdosCoo instance ID.
 func (o GetDdosCooPortsPortOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDdosCooPortsPort) string { return v.InstanceId }).(pulumi.StringOutput)
 }

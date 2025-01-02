@@ -118,7 +118,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// The number of protected VPCs. It will be ignored when `spec = "premium_version"`. Valid values between 2 and 500.
         /// </summary>
         [Output("fwVpcNumber")]
-        public Output<int?> FwVpcNumber { get; private set; } = null!;
+        public Output<int> FwVpcNumber { get; private set; } = null!;
 
         /// <summary>
         /// The number of assets.

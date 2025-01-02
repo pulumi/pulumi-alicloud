@@ -23,8 +23,8 @@ class ControlPolicyAttachmentArgs:
                  target_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a ControlPolicyAttachment resource.
-        :param pulumi.Input[str] policy_id: The ID of control policy.
-        :param pulumi.Input[str] target_id: The ID of target.
+        :param pulumi.Input[str] policy_id: The ID of the access control policy.
+        :param pulumi.Input[str] target_id: The ID of the object to which you want to attach the access control policy.
         """
         pulumi.set(__self__, "policy_id", policy_id)
         pulumi.set(__self__, "target_id", target_id)
@@ -33,7 +33,7 @@ class ControlPolicyAttachmentArgs:
     @pulumi.getter(name="policyId")
     def policy_id(self) -> pulumi.Input[str]:
         """
-        The ID of control policy.
+        The ID of the access control policy.
         """
         return pulumi.get(self, "policy_id")
 
@@ -45,7 +45,7 @@ class ControlPolicyAttachmentArgs:
     @pulumi.getter(name="targetId")
     def target_id(self) -> pulumi.Input[str]:
         """
-        The ID of target.
+        The ID of the object to which you want to attach the access control policy.
         """
         return pulumi.get(self, "target_id")
 
@@ -61,8 +61,8 @@ class _ControlPolicyAttachmentState:
                  target_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ControlPolicyAttachment resources.
-        :param pulumi.Input[str] policy_id: The ID of control policy.
-        :param pulumi.Input[str] target_id: The ID of target.
+        :param pulumi.Input[str] policy_id: The ID of the access control policy.
+        :param pulumi.Input[str] target_id: The ID of the object to which you want to attach the access control policy.
         """
         if policy_id is not None:
             pulumi.set(__self__, "policy_id", policy_id)
@@ -73,7 +73,7 @@ class _ControlPolicyAttachmentState:
     @pulumi.getter(name="policyId")
     def policy_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of control policy.
+        The ID of the access control policy.
         """
         return pulumi.get(self, "policy_id")
 
@@ -85,7 +85,7 @@ class _ControlPolicyAttachmentState:
     @pulumi.getter(name="targetId")
     def target_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of target.
+        The ID of the object to which you want to attach the access control policy.
         """
         return pulumi.get(self, "target_id")
 
@@ -105,7 +105,7 @@ class ControlPolicyAttachment(pulumi.CustomResource):
         """
         Provides a Resource Manager Control Policy Attachment resource.
 
-        For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/latest/api-resourcedirectorymaster-2022-04-19-attachcontrolpolicy).
+        For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/resource-directory/developer-reference/api-resourcemanager-2020-03-31-attachcontrolpolicy).
 
         > **NOTE:** Available since v1.120.0.
 
@@ -121,11 +121,11 @@ class ControlPolicyAttachment(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
         default = random.index.Integer("default",
             min=10000,
             max=99999)
-        example = alicloud.resourcemanager.ControlPolicy("example",
+        default_control_policy = alicloud.resourcemanager.ControlPolicy("default",
             control_policy_name=name,
             description=name,
             effect_scope="RAM",
@@ -145,10 +145,10 @@ class ControlPolicyAttachment(pulumi.CustomResource):
             ]
           }
         \"\"\")
-        example_folder = alicloud.resourcemanager.Folder("example", folder_name=f"{name}-{default['result']}")
-        example_control_policy_attachment = alicloud.resourcemanager.ControlPolicyAttachment("example",
-            policy_id=example.id,
-            target_id=example_folder.id)
+        default_folder = alicloud.resourcemanager.Folder("default", folder_name=f"{name}-{default['result']}")
+        default_control_policy_attachment = alicloud.resourcemanager.ControlPolicyAttachment("default",
+            policy_id=default_control_policy.id,
+            target_id=default_folder.id)
         ```
 
         ## Import
@@ -161,8 +161,8 @@ class ControlPolicyAttachment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] policy_id: The ID of control policy.
-        :param pulumi.Input[str] target_id: The ID of target.
+        :param pulumi.Input[str] policy_id: The ID of the access control policy.
+        :param pulumi.Input[str] target_id: The ID of the object to which you want to attach the access control policy.
         """
         ...
     @overload
@@ -173,7 +173,7 @@ class ControlPolicyAttachment(pulumi.CustomResource):
         """
         Provides a Resource Manager Control Policy Attachment resource.
 
-        For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/latest/api-resourcedirectorymaster-2022-04-19-attachcontrolpolicy).
+        For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/resource-directory/developer-reference/api-resourcemanager-2020-03-31-attachcontrolpolicy).
 
         > **NOTE:** Available since v1.120.0.
 
@@ -189,11 +189,11 @@ class ControlPolicyAttachment(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
         default = random.index.Integer("default",
             min=10000,
             max=99999)
-        example = alicloud.resourcemanager.ControlPolicy("example",
+        default_control_policy = alicloud.resourcemanager.ControlPolicy("default",
             control_policy_name=name,
             description=name,
             effect_scope="RAM",
@@ -213,10 +213,10 @@ class ControlPolicyAttachment(pulumi.CustomResource):
             ]
           }
         \"\"\")
-        example_folder = alicloud.resourcemanager.Folder("example", folder_name=f"{name}-{default['result']}")
-        example_control_policy_attachment = alicloud.resourcemanager.ControlPolicyAttachment("example",
-            policy_id=example.id,
-            target_id=example_folder.id)
+        default_folder = alicloud.resourcemanager.Folder("default", folder_name=f"{name}-{default['result']}")
+        default_control_policy_attachment = alicloud.resourcemanager.ControlPolicyAttachment("default",
+            policy_id=default_control_policy.id,
+            target_id=default_folder.id)
         ```
 
         ## Import
@@ -278,8 +278,8 @@ class ControlPolicyAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] policy_id: The ID of control policy.
-        :param pulumi.Input[str] target_id: The ID of target.
+        :param pulumi.Input[str] policy_id: The ID of the access control policy.
+        :param pulumi.Input[str] target_id: The ID of the object to which you want to attach the access control policy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -293,7 +293,7 @@ class ControlPolicyAttachment(pulumi.CustomResource):
     @pulumi.getter(name="policyId")
     def policy_id(self) -> pulumi.Output[str]:
         """
-        The ID of control policy.
+        The ID of the access control policy.
         """
         return pulumi.get(self, "policy_id")
 
@@ -301,7 +301,7 @@ class ControlPolicyAttachment(pulumi.CustomResource):
     @pulumi.getter(name="targetId")
     def target_id(self) -> pulumi.Output[str]:
         """
-        The ID of target.
+        The ID of the object to which you want to attach the access control policy.
         """
         return pulumi.get(self, "target_id")
 

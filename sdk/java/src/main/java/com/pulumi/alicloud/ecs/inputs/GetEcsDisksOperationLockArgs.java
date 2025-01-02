@@ -15,9 +15,17 @@ public final class GetEcsDisksOperationLockArgs extends com.pulumi.resources.Res
 
     public static final GetEcsDisksOperationLockArgs Empty = new GetEcsDisksOperationLockArgs();
 
+    /**
+     * The reason why the disk was locked.
+     * 
+     */
     @Import(name="lockReason")
     private @Nullable Output<String> lockReason;
 
+    /**
+     * @return The reason why the disk was locked.
+     * 
+     */
     public Optional<Output<String>> lockReason() {
         return Optional.ofNullable(this.lockReason);
     }
@@ -46,11 +54,23 @@ public final class GetEcsDisksOperationLockArgs extends com.pulumi.resources.Res
             $ = new GetEcsDisksOperationLockArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param lockReason The reason why the disk was locked.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lockReason(@Nullable Output<String> lockReason) {
             $.lockReason = lockReason;
             return this;
         }
 
+        /**
+         * @param lockReason The reason why the disk was locked.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lockReason(String lockReason) {
             return lockReason(Output.of(lockReason));
         }

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Sddp
         /// <summary>
         /// This data source provides the Sddp Data Limits of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.159.0+.
+        /// &gt; **NOTE:** Available since v1.159.0.
         /// 
         /// ## Example Usage
         /// 
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Sddp
         /// <summary>
         /// This data source provides the Sddp Data Limits of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.159.0+.
+        /// &gt; **NOTE:** Available since v1.159.0.
         /// 
         /// ## Example Usage
         /// 
@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.Sddp
         /// <summary>
         /// This data source provides the Sddp Data Limits of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.159.0+.
+        /// &gt; **NOTE:** Available since v1.159.0.
         /// 
         /// ## Example Usage
         /// 
@@ -185,9 +185,18 @@ namespace Pulumi.AliCloud.Sddp
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// A list of Sddp Data Limits. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetDataLimitsLimitResult> Limits;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The ID of the data asset.
+        /// </summary>
         public readonly string? ParentId;
+        /// <summary>
+        /// The type of the service to which the data asset belongs.
+        /// </summary>
         public readonly string? ResourceType;
 
         [OutputConstructor]

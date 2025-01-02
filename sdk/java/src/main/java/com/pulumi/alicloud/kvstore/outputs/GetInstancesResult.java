@@ -16,6 +16,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstancesResult {
+    /**
+     * @return The architecture type of the instance.
+     * 
+     */
     private @Nullable String architectureType;
     private @Nullable String editionType;
     private @Nullable Boolean enableDetails;
@@ -37,13 +41,12 @@ public final class GetInstancesResult {
      */
     private List<String> ids;
     /**
-     * @return (Optional) Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
-     * For more information, see [Instance type table](https://www.alibabacloud.com/help/en/redis/product-overview/overview-4).
+     * @return Type of the applied Tair (Redis OSS-Compatible) And Memcached (KVStore) Classic Instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/en/redis/product-overview/overview-4).
      * 
      */
     private @Nullable String instanceClass;
     /**
-     * @return (Optional) Database type. Valid Values: `Memcache`, `Redis`. If no value is specified, all types are returned.
+     * @return Database type. Valid Values: `Memcache`, `Redis`. If no value is specified, all types are returned.
      * 
      */
     private @Nullable String instanceType;
@@ -69,13 +72,25 @@ public final class GetInstancesResult {
      * 
      */
     private @Nullable String paymentType;
+    /**
+     * @return The ID of the resource group to which the instance belongs.
+     * 
+     */
     private @Nullable String resourceGroupId;
+    /**
+     * @return The keyword used for fuzzy search. The keyword can be based on an instance name or an instance ID.
+     * 
+     */
     private @Nullable String searchKey;
     /**
      * @return Status of the instance.
      * 
      */
     private @Nullable String status;
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
     private @Nullable Map<String,String> tags;
     /**
      * @return VPC ID the instance belongs to.
@@ -94,6 +109,10 @@ public final class GetInstancesResult {
     private @Nullable String zoneId;
 
     private GetInstancesResult() {}
+    /**
+     * @return The architecture type of the instance.
+     * 
+     */
     public Optional<String> architectureType() {
         return Optional.ofNullable(this.architectureType);
     }
@@ -131,15 +150,14 @@ public final class GetInstancesResult {
         return this.ids;
     }
     /**
-     * @return (Optional) Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
-     * For more information, see [Instance type table](https://www.alibabacloud.com/help/en/redis/product-overview/overview-4).
+     * @return Type of the applied Tair (Redis OSS-Compatible) And Memcached (KVStore) Classic Instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/en/redis/product-overview/overview-4).
      * 
      */
     public Optional<String> instanceClass() {
         return Optional.ofNullable(this.instanceClass);
     }
     /**
-     * @return (Optional) Database type. Valid Values: `Memcache`, `Redis`. If no value is specified, all types are returned.
+     * @return Database type. Valid Values: `Memcache`, `Redis`. If no value is specified, all types are returned.
      * 
      */
     public Optional<String> instanceType() {
@@ -179,9 +197,17 @@ public final class GetInstancesResult {
     public Optional<String> paymentType() {
         return Optional.ofNullable(this.paymentType);
     }
+    /**
+     * @return The ID of the resource group to which the instance belongs.
+     * 
+     */
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
+    /**
+     * @return The keyword used for fuzzy search. The keyword can be based on an instance name or an instance ID.
+     * 
+     */
     public Optional<String> searchKey() {
         return Optional.ofNullable(this.searchKey);
     }
@@ -192,6 +218,10 @@ public final class GetInstancesResult {
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }

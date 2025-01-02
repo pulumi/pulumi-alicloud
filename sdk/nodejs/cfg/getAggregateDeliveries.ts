@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Config Aggregate Deliveries of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.172.0+.
+ * > **NOTE:** Available since v1.172.0.
  *
  * ## Example Usage
  *
@@ -52,6 +52,9 @@ export interface GetAggregateDeliveriesArgs {
      * A list of Aggregate Delivery IDs.
      */
     ids?: string[];
+    /**
+     * A regex string to filter results by Aggregate Delivery name.
+     */
     nameRegex?: string;
     /**
      * File name where to save data source results (after running `pulumi preview`).
@@ -67,7 +70,13 @@ export interface GetAggregateDeliveriesArgs {
  * A collection of values returned by getAggregateDeliveries.
  */
 export interface GetAggregateDeliveriesResult {
+    /**
+     * The ID of the Aggregator.
+     */
     readonly aggregatorId: string;
+    /**
+     * A list of Config Aggregate Deliveries. Each element contains the following attributes:
+     */
     readonly deliveries: outputs.cfg.GetAggregateDeliveriesDelivery[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -75,14 +84,20 @@ export interface GetAggregateDeliveriesResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Aggregate Delivery names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
+     */
     readonly status?: number;
 }
 /**
  * This data source provides the Config Aggregate Deliveries of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.172.0+.
+ * > **NOTE:** Available since v1.172.0.
  *
  * ## Example Usage
  *
@@ -125,6 +140,9 @@ export interface GetAggregateDeliveriesOutputArgs {
      * A list of Aggregate Delivery IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Aggregate Delivery name.
+     */
     nameRegex?: pulumi.Input<string>;
     /**
      * File name where to save data source results (after running `pulumi preview`).

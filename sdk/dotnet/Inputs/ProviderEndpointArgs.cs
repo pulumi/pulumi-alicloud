@@ -30,6 +30,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("adb")]
         public Input<string>? Adb { get; set; }
 
+        [Input("aiworkspace")]
+        public Input<string>? Aiworkspace { get; set; }
+
         /// <summary>
         /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alb endpoints.
         /// </summary>
@@ -53,6 +56,18 @@ namespace Pulumi.AliCloud.Inputs
         /// </summary>
         [Input("alikafka")]
         public Input<string>? Alikafka { get; set; }
+
+        /// <summary>
+        /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom onsproxy endpoints.
+        /// </summary>
+        [Input("amqp")]
+        public Input<string>? Amqp { get; set; }
+
+        /// <summary>
+        /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ddosbasic endpoints.
+        /// </summary>
+        [Input("antiddosPublic")]
+        public Input<string>? AntiddosPublic { get; set; }
 
         /// <summary>
         /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
@@ -139,6 +154,12 @@ namespace Pulumi.AliCloud.Inputs
         public Input<string>? Cds { get; set; }
 
         /// <summary>
+        /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom beebot endpoints.
+        /// </summary>
+        [Input("chatbot")]
+        public Input<string>? Chatbot { get; set; }
+
+        /// <summary>
         /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom clickhouse endpoints.
         /// </summary>
         [Input("clickhouse")]
@@ -219,6 +240,12 @@ namespace Pulumi.AliCloud.Inputs
         /// <summary>
         /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dataworkspublic endpoints.
         /// </summary>
+        [Input("dataworksPublic")]
+        public Input<string>? DataworksPublic { get; set; }
+
+        /// <summary>
+        /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dataworkspublic endpoints.
+        /// </summary>
         [Input("dataworkspublic")]
         public Input<string>? Dataworkspublic { get; set; }
 
@@ -227,6 +254,12 @@ namespace Pulumi.AliCloud.Inputs
         /// </summary>
         [Input("dbfs")]
         public Input<string>? Dbfs { get; set; }
+
+        /// <summary>
+        /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbs endpoints.
+        /// </summary>
+        [Input("dbs")]
+        public Input<string>? Dbs { get; set; }
 
         /// <summary>
         /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dcdn endpoints.
@@ -258,11 +291,20 @@ namespace Pulumi.AliCloud.Inputs
         [Input("dds")]
         public Input<string>? Dds { get; set; }
 
+        [Input("devopsRdc")]
+        public Input<string>? DevopsRdc { get; set; }
+
         /// <summary>
         /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom devopsrdc endpoints.
         /// </summary>
         [Input("devopsrdc")]
         public Input<string>? Devopsrdc { get; set; }
+
+        /// <summary>
+        /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidfs endpoints.
+        /// </summary>
+        [Input("dfs")]
+        public Input<string>? Dfs { get; set; }
 
         /// <summary>
         /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dg endpoints.
@@ -310,6 +352,12 @@ namespace Pulumi.AliCloud.Inputs
         public Input<string>? Dysms { get; set; }
 
         /// <summary>
+        /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dysmsapi endpoints.
+        /// </summary>
+        [Input("dysmsapi")]
+        public Input<string>? Dysmsapi { get; set; }
+
+        /// <summary>
         /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eais endpoints.
         /// </summary>
         [Input("eais")]
@@ -320,6 +368,12 @@ namespace Pulumi.AliCloud.Inputs
         /// </summary>
         [Input("ebs")]
         public Input<string>? Ebs { get; set; }
+
+        /// <summary>
+        /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gwsecd endpoints.
+        /// </summary>
+        [Input("ecd")]
+        public Input<string>? Ecd { get; set; }
 
         /// <summary>
         /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eci endpoints.
@@ -344,6 +398,12 @@ namespace Pulumi.AliCloud.Inputs
         /// </summary>
         [Input("edasschedulerx")]
         public Input<string>? Edasschedulerx { get; set; }
+
+        /// <summary>
+        /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edsuser endpoints.
+        /// </summary>
+        [Input("edsUser")]
+        public Input<string>? EdsUser { get; set; }
 
         /// <summary>
         /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edsuser endpoints.
@@ -393,6 +453,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("ens")]
         public Input<string>? Ens { get; set; }
 
+        [Input("esa")]
+        public Input<string>? Esa { get; set; }
+
         /// <summary>
         /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Autoscaling endpoints.
         /// </summary>
@@ -410,6 +473,12 @@ namespace Pulumi.AliCloud.Inputs
         /// </summary>
         [Input("fc")]
         public Input<string>? Fc { get; set; }
+
+        /// <summary>
+        /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Function Computing endpoints.
+        /// </summary>
+        [Input("fcOpen")]
+        public Input<string>? FcOpen { get; set; }
 
         /// <summary>
         /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom fnf endpoints.
@@ -432,6 +501,12 @@ namespace Pulumi.AliCloud.Inputs
         /// <summary>
         /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gds endpoints.
         /// </summary>
+        [Input("gdb")]
+        public Input<string>? Gdb { get; set; }
+
+        /// <summary>
+        /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gds endpoints.
+        /// </summary>
         [Input("gds")]
         public Input<string>? Gds { get; set; }
 
@@ -440,6 +515,9 @@ namespace Pulumi.AliCloud.Inputs
         /// </summary>
         [Input("gpdb")]
         public Input<string>? Gpdb { get; set; }
+
+        [Input("gwlb")]
+        public Input<string>? Gwlb { get; set; }
 
         /// <summary>
         /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gwsecd endpoints.
@@ -538,6 +616,12 @@ namespace Pulumi.AliCloud.Inputs
         public Input<string>? Mns { get; set; }
 
         /// <summary>
+        /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MNS endpoints.
+        /// </summary>
+        [Input("mnsOpen")]
+        public Input<string>? MnsOpen { get; set; }
+
+        /// <summary>
         /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mscopensubscription endpoints.
         /// </summary>
         [Input("mscopensubscription")]
@@ -566,6 +650,12 @@ namespace Pulumi.AliCloud.Inputs
         /// </summary>
         [Input("oceanbase")]
         public Input<string>? Oceanbase { get; set; }
+
+        /// <summary>
+        /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oceanbase endpoints.
+        /// </summary>
+        [Input("oceanbasepro")]
+        public Input<string>? Oceanbasepro { get; set; }
 
         /// <summary>
         /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ONS endpoints.
@@ -610,6 +700,12 @@ namespace Pulumi.AliCloud.Inputs
         public Input<string>? Polardb { get; set; }
 
         /// <summary>
+        /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DRDS endpoints.
+        /// </summary>
+        [Input("polardbx")]
+        public Input<string>? Polardbx { get; set; }
+
+        /// <summary>
         /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom privatelink endpoints.
         /// </summary>
         [Input("privatelink")]
@@ -626,6 +722,12 @@ namespace Pulumi.AliCloud.Inputs
         /// </summary>
         [Input("quickbi")]
         public Input<string>? Quickbi { get; set; }
+
+        /// <summary>
+        /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quickbi endpoints.
+        /// </summary>
+        [Input("quickbiPublic")]
+        public Input<string>? QuickbiPublic { get; set; }
 
         /// <summary>
         /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quotas endpoints.
@@ -663,17 +765,29 @@ namespace Pulumi.AliCloud.Inputs
         [Input("resourcemanager")]
         public Input<string>? Resourcemanager { get; set; }
 
+        [Input("resourcesharing")]
+        public Input<string>? Resourcesharing { get; set; }
+
         /// <summary>
         /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcesharing endpoints.
         /// </summary>
         [Input("ressharing")]
         public Input<string>? Ressharing { get; set; }
 
+        [Input("rocketmq")]
+        public Input<string>? Rocketmq { get; set; }
+
         /// <summary>
         /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ros endpoints.
         /// </summary>
         [Input("ros")]
         public Input<string>? Ros { get; set; }
+
+        /// <summary>
+        /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
+        /// </summary>
+        [Input("sae")]
+        public Input<string>? Sae { get; set; }
 
         /// <summary>
         /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sas endpoints.
@@ -686,6 +800,12 @@ namespace Pulumi.AliCloud.Inputs
         /// </summary>
         [Input("scdn")]
         public Input<string>? Scdn { get; set; }
+
+        /// <summary>
+        /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edasschedulerx endpoints.
+        /// </summary>
+        [Input("schedulerx2")]
+        public Input<string>? Schedulerx2 { get; set; }
 
         /// <summary>
         /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sddp endpoints.
@@ -704,6 +824,12 @@ namespace Pulumi.AliCloud.Inputs
         /// </summary>
         [Input("serverless")]
         public Input<string>? Serverless { get; set; }
+
+        /// <summary>
+        /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom srvcatalog endpoints.
+        /// </summary>
+        [Input("servicecatalog")]
+        public Input<string>? Servicecatalog { get; set; }
 
         /// <summary>
         /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom servicemesh endpoints.
@@ -748,6 +874,12 @@ namespace Pulumi.AliCloud.Inputs
         public Input<string>? Swas { get; set; }
 
         /// <summary>
+        /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom swas endpoints.
+        /// </summary>
+        [Input("swasOpen")]
+        public Input<string>? SwasOpen { get; set; }
+
+        /// <summary>
         /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom tag endpoints.
         /// </summary>
         [Input("tag")]
@@ -764,6 +896,9 @@ namespace Pulumi.AliCloud.Inputs
         /// </summary>
         [Input("vpc")]
         public Input<string>? Vpc { get; set; }
+
+        [Input("vpcipam")]
+        public Input<string>? Vpcipam { get; set; }
 
         /// <summary>
         /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vpcpeer endpoints.

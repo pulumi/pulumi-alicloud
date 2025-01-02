@@ -107,7 +107,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The number of protected VPCs. It will be ignored when `spec = "premiumVersion"`. Valid values between 2 and 500.
      */
-    public readonly fwVpcNumber!: pulumi.Output<number | undefined>;
+    public readonly fwVpcNumber!: pulumi.Output<number>;
     /**
      * The number of assets.
      */

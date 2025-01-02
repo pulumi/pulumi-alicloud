@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Cloud Firewall Vpc Firewall Control Policies of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.194.0+.
+// > **NOTE:** Available since v1.194.0.
 //
 // ## Example Usage
 //
@@ -93,23 +93,33 @@ type GetVpcFirewallControlPoliciesArgs struct {
 
 // A collection of values returned by getVpcFirewallControlPolicies.
 type GetVpcFirewallControlPoliciesResult struct {
-	AclAction   *string `pulumi:"aclAction"`
-	AclUuid     *string `pulumi:"aclUuid"`
+	// Access control over VPC firewalls are set in the access traffic via Alibaba cloud firewall way (ACT).
+	AclAction *string `pulumi:"aclAction"`
+	// Access control over VPC firewalls strategy unique identifier.
+	AclUuid *string `pulumi:"aclUuid"`
+	// Access control over VPC firewalls description of the strategy information.
 	Description *string `pulumi:"description"`
+	// Access control over VPC firewalls strategy the destination address in.
 	Destination *string `pulumi:"destination"`
 	// The provider-assigned unique ID for this managed resource.
-	Id            string                                `pulumi:"id"`
-	Ids           []string                              `pulumi:"ids"`
-	Lang          *string                               `pulumi:"lang"`
-	MemberUid     *string                               `pulumi:"memberUid"`
-	OutputFile    *string                               `pulumi:"outputFile"`
-	PageNumber    *int                                  `pulumi:"pageNumber"`
-	PageSize      *int                                  `pulumi:"pageSize"`
-	Policies      []GetVpcFirewallControlPoliciesPolicy `pulumi:"policies"`
-	Proto         *string                               `pulumi:"proto"`
-	Release       *bool                                 `pulumi:"release"`
-	Source        *string                               `pulumi:"source"`
-	VpcFirewallId string                                `pulumi:"vpcFirewallId"`
+	Id   string   `pulumi:"id"`
+	Ids  []string `pulumi:"ids"`
+	Lang *string  `pulumi:"lang"`
+	// The UID of the member account of the current Alibaba cloud account.
+	MemberUid  *string `pulumi:"memberUid"`
+	OutputFile *string `pulumi:"outputFile"`
+	PageNumber *int    `pulumi:"pageNumber"`
+	PageSize   *int    `pulumi:"pageSize"`
+	// A list of Cloud Firewall Vpc Firewall Control Policies. Each element contains the following attributes:
+	Policies []GetVpcFirewallControlPoliciesPolicy `pulumi:"policies"`
+	// Access control over VPC firewalls strategy access traffic of the protocol type.
+	Proto *string `pulumi:"proto"`
+	// The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
+	Release *bool `pulumi:"release"`
+	// Access control over VPC firewalls strategy in the source address.
+	Source *string `pulumi:"source"`
+	// The ID of the VPC firewall instance.
+	VpcFirewallId string `pulumi:"vpcFirewallId"`
 }
 
 func GetVpcFirewallControlPoliciesOutput(ctx *pulumi.Context, args GetVpcFirewallControlPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetVpcFirewallControlPoliciesResultOutput {
@@ -174,18 +184,22 @@ func (o GetVpcFirewallControlPoliciesResultOutput) ToGetVpcFirewallControlPolici
 	return o
 }
 
+// Access control over VPC firewalls are set in the access traffic via Alibaba cloud firewall way (ACT).
 func (o GetVpcFirewallControlPoliciesResultOutput) AclAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpcFirewallControlPoliciesResult) *string { return v.AclAction }).(pulumi.StringPtrOutput)
 }
 
+// Access control over VPC firewalls strategy unique identifier.
 func (o GetVpcFirewallControlPoliciesResultOutput) AclUuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpcFirewallControlPoliciesResult) *string { return v.AclUuid }).(pulumi.StringPtrOutput)
 }
 
+// Access control over VPC firewalls description of the strategy information.
 func (o GetVpcFirewallControlPoliciesResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpcFirewallControlPoliciesResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Access control over VPC firewalls strategy the destination address in.
 func (o GetVpcFirewallControlPoliciesResultOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpcFirewallControlPoliciesResult) *string { return v.Destination }).(pulumi.StringPtrOutput)
 }
@@ -203,6 +217,7 @@ func (o GetVpcFirewallControlPoliciesResultOutput) Lang() pulumi.StringPtrOutput
 	return o.ApplyT(func(v GetVpcFirewallControlPoliciesResult) *string { return v.Lang }).(pulumi.StringPtrOutput)
 }
 
+// The UID of the member account of the current Alibaba cloud account.
 func (o GetVpcFirewallControlPoliciesResultOutput) MemberUid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpcFirewallControlPoliciesResult) *string { return v.MemberUid }).(pulumi.StringPtrOutput)
 }
@@ -219,22 +234,27 @@ func (o GetVpcFirewallControlPoliciesResultOutput) PageSize() pulumi.IntPtrOutpu
 	return o.ApplyT(func(v GetVpcFirewallControlPoliciesResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
+// A list of Cloud Firewall Vpc Firewall Control Policies. Each element contains the following attributes:
 func (o GetVpcFirewallControlPoliciesResultOutput) Policies() GetVpcFirewallControlPoliciesPolicyArrayOutput {
 	return o.ApplyT(func(v GetVpcFirewallControlPoliciesResult) []GetVpcFirewallControlPoliciesPolicy { return v.Policies }).(GetVpcFirewallControlPoliciesPolicyArrayOutput)
 }
 
+// Access control over VPC firewalls strategy access traffic of the protocol type.
 func (o GetVpcFirewallControlPoliciesResultOutput) Proto() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpcFirewallControlPoliciesResult) *string { return v.Proto }).(pulumi.StringPtrOutput)
 }
 
+// The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
 func (o GetVpcFirewallControlPoliciesResultOutput) Release() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetVpcFirewallControlPoliciesResult) *bool { return v.Release }).(pulumi.BoolPtrOutput)
 }
 
+// Access control over VPC firewalls strategy in the source address.
 func (o GetVpcFirewallControlPoliciesResultOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpcFirewallControlPoliciesResult) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the VPC firewall instance.
 func (o GetVpcFirewallControlPoliciesResultOutput) VpcFirewallId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcFirewallControlPoliciesResult) string { return v.VpcFirewallId }).(pulumi.StringOutput)
 }

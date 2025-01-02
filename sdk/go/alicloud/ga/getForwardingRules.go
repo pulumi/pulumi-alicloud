@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Global Accelerator (GA) Forwarding Rules of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.120.0+.
+// > **NOTE:** Available since v1.120.0.
 //
 // ## Example Usage
 //
@@ -73,14 +73,16 @@ type GetForwardingRulesArgs struct {
 
 // A collection of values returned by getForwardingRules.
 type GetForwardingRulesResult struct {
-	AcceleratorId   string                             `pulumi:"acceleratorId"`
+	AcceleratorId string `pulumi:"acceleratorId"`
+	// A list of Ga Forwarding Rules. Each element contains the following attributes:
 	ForwardingRules []GetForwardingRulesForwardingRule `pulumi:"forwardingRules"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	ListenerId string   `pulumi:"listenerId"`
-	OutputFile *string  `pulumi:"outputFile"`
-	Status     *string  `pulumi:"status"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// The ID of the listener.
+	ListenerId string  `pulumi:"listenerId"`
+	OutputFile *string `pulumi:"outputFile"`
+	Status     *string `pulumi:"status"`
 }
 
 func GetForwardingRulesOutput(ctx *pulumi.Context, args GetForwardingRulesOutputArgs, opts ...pulumi.InvokeOption) GetForwardingRulesResultOutput {
@@ -129,6 +131,7 @@ func (o GetForwardingRulesResultOutput) AcceleratorId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetForwardingRulesResult) string { return v.AcceleratorId }).(pulumi.StringOutput)
 }
 
+// A list of Ga Forwarding Rules. Each element contains the following attributes:
 func (o GetForwardingRulesResultOutput) ForwardingRules() GetForwardingRulesForwardingRuleArrayOutput {
 	return o.ApplyT(func(v GetForwardingRulesResult) []GetForwardingRulesForwardingRule { return v.ForwardingRules }).(GetForwardingRulesForwardingRuleArrayOutput)
 }
@@ -142,6 +145,7 @@ func (o GetForwardingRulesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetForwardingRulesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The ID of the listener.
 func (o GetForwardingRulesResultOutput) ListenerId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetForwardingRulesResult) string { return v.ListenerId }).(pulumi.StringOutput)
 }

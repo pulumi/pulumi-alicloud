@@ -142,6 +142,8 @@ type Notification struct {
 	NotificationTypes pulumi.StringArrayOutput `pulumi:"notificationTypes"`
 	// The ID of the Auto Scaling group.
 	ScalingGroupId pulumi.StringOutput `pulumi:"scalingGroupId"`
+	// The time zone of the notification. Specify the value in UTC. For example, a value of UTC+8 specifies that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 specifies that the time is 7 hours behind Coordinated Universal Time.
+	TimeZone pulumi.StringPtrOutput `pulumi:"timeZone"`
 }
 
 // NewNotification registers a new resource with the given unique name, arguments, and options.
@@ -192,6 +194,8 @@ type notificationState struct {
 	NotificationTypes []string `pulumi:"notificationTypes"`
 	// The ID of the Auto Scaling group.
 	ScalingGroupId *string `pulumi:"scalingGroupId"`
+	// The time zone of the notification. Specify the value in UTC. For example, a value of UTC+8 specifies that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 specifies that the time is 7 hours behind Coordinated Universal Time.
+	TimeZone *string `pulumi:"timeZone"`
 }
 
 type NotificationState struct {
@@ -204,6 +208,8 @@ type NotificationState struct {
 	NotificationTypes pulumi.StringArrayInput
 	// The ID of the Auto Scaling group.
 	ScalingGroupId pulumi.StringPtrInput
+	// The time zone of the notification. Specify the value in UTC. For example, a value of UTC+8 specifies that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 specifies that the time is 7 hours behind Coordinated Universal Time.
+	TimeZone pulumi.StringPtrInput
 }
 
 func (NotificationState) ElementType() reflect.Type {
@@ -220,6 +226,8 @@ type notificationArgs struct {
 	NotificationTypes []string `pulumi:"notificationTypes"`
 	// The ID of the Auto Scaling group.
 	ScalingGroupId string `pulumi:"scalingGroupId"`
+	// The time zone of the notification. Specify the value in UTC. For example, a value of UTC+8 specifies that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 specifies that the time is 7 hours behind Coordinated Universal Time.
+	TimeZone *string `pulumi:"timeZone"`
 }
 
 // The set of arguments for constructing a Notification resource.
@@ -233,6 +241,8 @@ type NotificationArgs struct {
 	NotificationTypes pulumi.StringArrayInput
 	// The ID of the Auto Scaling group.
 	ScalingGroupId pulumi.StringInput
+	// The time zone of the notification. Specify the value in UTC. For example, a value of UTC+8 specifies that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 specifies that the time is 7 hours behind Coordinated Universal Time.
+	TimeZone pulumi.StringPtrInput
 }
 
 func (NotificationArgs) ElementType() reflect.Type {
@@ -338,6 +348,11 @@ func (o NotificationOutput) NotificationTypes() pulumi.StringArrayOutput {
 // The ID of the Auto Scaling group.
 func (o NotificationOutput) ScalingGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Notification) pulumi.StringOutput { return v.ScalingGroupId }).(pulumi.StringOutput)
+}
+
+// The time zone of the notification. Specify the value in UTC. For example, a value of UTC+8 specifies that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 specifies that the time is 7 hours behind Coordinated Universal Time.
+func (o NotificationOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Notification) pulumi.StringPtrOutput { return v.TimeZone }).(pulumi.StringPtrOutput)
 }
 
 type NotificationArrayOutput struct{ *pulumi.OutputState }

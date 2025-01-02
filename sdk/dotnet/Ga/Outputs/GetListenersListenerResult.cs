@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// </summary>
         public readonly string Protocol;
         /// <summary>
-        /// The status of the listener.
+        /// The status of the listener. Valid values: `active`, `configuring`, `creating`.
         /// </summary>
         public readonly string Status;
 

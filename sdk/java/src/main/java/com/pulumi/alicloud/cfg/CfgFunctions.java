@@ -42,7 +42,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Aggregate Compliance Packs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.124.0+.
+     * &gt; **NOTE:** Available since v1.124.0.
      * 
      * ## Example Usage
      * 
@@ -91,7 +91,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Aggregate Compliance Packs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.124.0+.
+     * &gt; **NOTE:** Available since v1.124.0.
      * 
      * ## Example Usage
      * 
@@ -140,7 +140,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Aggregate Compliance Packs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.124.0+.
+     * &gt; **NOTE:** Available since v1.124.0.
      * 
      * ## Example Usage
      * 
@@ -189,7 +189,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Aggregate Compliance Packs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.124.0+.
+     * &gt; **NOTE:** Available since v1.124.0.
      * 
      * ## Example Usage
      * 
@@ -238,7 +238,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Aggregate Compliance Packs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.124.0+.
+     * &gt; **NOTE:** Available since v1.124.0.
      * 
      * ## Example Usage
      * 
@@ -287,7 +287,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Aggregate Config Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.124.0+.
+     * &gt; **NOTE:** Available since v1.124.0.
      * 
      * ## Example Usage
      * 
@@ -336,7 +336,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Aggregate Config Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.124.0+.
+     * &gt; **NOTE:** Available since v1.124.0.
      * 
      * ## Example Usage
      * 
@@ -385,7 +385,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Aggregate Config Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.124.0+.
+     * &gt; **NOTE:** Available since v1.124.0.
      * 
      * ## Example Usage
      * 
@@ -434,7 +434,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Aggregate Config Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.124.0+.
+     * &gt; **NOTE:** Available since v1.124.0.
      * 
      * ## Example Usage
      * 
@@ -483,7 +483,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Aggregate Config Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.124.0+.
+     * &gt; **NOTE:** Available since v1.124.0.
      * 
      * ## Example Usage
      * 
@@ -532,7 +532,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Aggregate Deliveries of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.172.0+.
+     * &gt; **NOTE:** Available since v1.172.0.
      * 
      * ## Example Usage
      * 
@@ -582,7 +582,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Aggregate Deliveries of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.172.0+.
+     * &gt; **NOTE:** Available since v1.172.0.
      * 
      * ## Example Usage
      * 
@@ -632,7 +632,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Aggregate Deliveries of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.172.0+.
+     * &gt; **NOTE:** Available since v1.172.0.
      * 
      * ## Example Usage
      * 
@@ -682,7 +682,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Aggregate Deliveries of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.172.0+.
+     * &gt; **NOTE:** Available since v1.172.0.
      * 
      * ## Example Usage
      * 
@@ -732,7 +732,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Aggregate Deliveries of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.172.0+.
+     * &gt; **NOTE:** Available since v1.172.0.
      * 
      * ## Example Usage
      * 
@@ -782,7 +782,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Aggregators of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.124.0+.
+     * &gt; **NOTE:** Available since v1.124.0.
      * 
      * ## Example Usage
      * 
@@ -830,7 +830,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Aggregators of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.124.0+.
+     * &gt; **NOTE:** Available since v1.124.0.
      * 
      * ## Example Usage
      * 
@@ -878,7 +878,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Aggregators of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.124.0+.
+     * &gt; **NOTE:** Available since v1.124.0.
      * 
      * ## Example Usage
      * 
@@ -926,7 +926,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Aggregators of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.124.0+.
+     * &gt; **NOTE:** Available since v1.124.0.
      * 
      * ## Example Usage
      * 
@@ -974,7 +974,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Aggregators of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.124.0+.
+     * &gt; **NOTE:** Available since v1.124.0.
      * 
      * ## Example Usage
      * 
@@ -1022,7 +1022,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Aggregators of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.124.0+.
+     * &gt; **NOTE:** Available since v1.124.0.
      * 
      * ## Example Usage
      * 
@@ -1070,7 +1070,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Aggregators of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.124.0+.
+     * &gt; **NOTE:** Available since v1.124.0.
      * 
      * ## Example Usage
      * 
@@ -1118,7 +1118,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Compliance Packs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.124.0+.
+     * &gt; **NOTE:** Available since v1.124.0.
      * 
      * ## Example Usage
      * 
@@ -1166,7 +1166,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Compliance Packs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.124.0+.
+     * &gt; **NOTE:** Available since v1.124.0.
      * 
      * ## Example Usage
      * 
@@ -1214,7 +1214,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Compliance Packs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.124.0+.
+     * &gt; **NOTE:** Available since v1.124.0.
      * 
      * ## Example Usage
      * 
@@ -1262,7 +1262,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Compliance Packs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.124.0+.
+     * &gt; **NOTE:** Available since v1.124.0.
      * 
      * ## Example Usage
      * 
@@ -1310,7 +1310,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Compliance Packs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.124.0+.
+     * &gt; **NOTE:** Available since v1.124.0.
      * 
      * ## Example Usage
      * 
@@ -1358,7 +1358,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Compliance Packs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.124.0+.
+     * &gt; **NOTE:** Available since v1.124.0.
      * 
      * ## Example Usage
      * 
@@ -1406,7 +1406,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Compliance Packs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.124.0+.
+     * &gt; **NOTE:** Available since v1.124.0.
      * 
      * ## Example Usage
      * 
@@ -1454,9 +1454,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Configuration Recorders of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.99.0+.
-     * 
-     * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+     * &gt; **NOTE:** Available since v1.99.0.
      * 
      * ## Example Usage
      * 
@@ -1499,9 +1497,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Configuration Recorders of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.99.0+.
-     * 
-     * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+     * &gt; **NOTE:** Available since v1.99.0.
      * 
      * ## Example Usage
      * 
@@ -1544,9 +1540,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Configuration Recorders of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.99.0+.
-     * 
-     * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+     * &gt; **NOTE:** Available since v1.99.0.
      * 
      * ## Example Usage
      * 
@@ -1589,9 +1583,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Configuration Recorders of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.99.0+.
-     * 
-     * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+     * &gt; **NOTE:** Available since v1.99.0.
      * 
      * ## Example Usage
      * 
@@ -1634,9 +1626,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Configuration Recorders of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.99.0+.
-     * 
-     * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+     * &gt; **NOTE:** Available since v1.99.0.
      * 
      * ## Example Usage
      * 
@@ -1679,9 +1669,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Configuration Recorders of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.99.0+.
-     * 
-     * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+     * &gt; **NOTE:** Available since v1.99.0.
      * 
      * ## Example Usage
      * 
@@ -1724,9 +1712,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Configuration Recorders of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.99.0+.
-     * 
-     * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+     * &gt; **NOTE:** Available since v1.99.0.
      * 
      * ## Example Usage
      * 
@@ -1769,7 +1755,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Deliveries of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.171.0+.
+     * &gt; **NOTE:** Available since v1.171.0.
      * 
      * ## Example Usage
      * 
@@ -1816,7 +1802,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Deliveries of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.171.0+.
+     * &gt; **NOTE:** Available since v1.171.0.
      * 
      * ## Example Usage
      * 
@@ -1863,7 +1849,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Deliveries of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.171.0+.
+     * &gt; **NOTE:** Available since v1.171.0.
      * 
      * ## Example Usage
      * 
@@ -1910,7 +1896,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Deliveries of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.171.0+.
+     * &gt; **NOTE:** Available since v1.171.0.
      * 
      * ## Example Usage
      * 
@@ -1957,7 +1943,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Deliveries of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.171.0+.
+     * &gt; **NOTE:** Available since v1.171.0.
      * 
      * ## Example Usage
      * 
@@ -2004,7 +1990,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Deliveries of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.171.0+.
+     * &gt; **NOTE:** Available since v1.171.0.
      * 
      * ## Example Usage
      * 
@@ -2051,7 +2037,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Deliveries of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.171.0+.
+     * &gt; **NOTE:** Available since v1.171.0.
      * 
      * ## Example Usage
      * 
@@ -2103,8 +2089,6 @@ public final class CfgFunctions {
      * 
      * &gt; **NOTE:**  Available in 1.99.0+.
      * 
-     * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
-     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -2153,8 +2137,6 @@ public final class CfgFunctions {
      * This data source provides the Config Delivery Channels of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:**  Available in 1.99.0+.
-     * 
-     * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
      * 
      * ## Example Usage
      * 
@@ -2205,8 +2187,6 @@ public final class CfgFunctions {
      * 
      * &gt; **NOTE:**  Available in 1.99.0+.
      * 
-     * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
-     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -2255,8 +2235,6 @@ public final class CfgFunctions {
      * This data source provides the Config Delivery Channels of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:**  Available in 1.99.0+.
-     * 
-     * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
      * 
      * ## Example Usage
      * 
@@ -2307,8 +2285,6 @@ public final class CfgFunctions {
      * 
      * &gt; **NOTE:**  Available in 1.99.0+.
      * 
-     * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
-     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -2357,8 +2333,6 @@ public final class CfgFunctions {
      * This data source provides the Config Delivery Channels of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:**  Available in 1.99.0+.
-     * 
-     * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
      * 
      * ## Example Usage
      * 
@@ -2409,8 +2383,6 @@ public final class CfgFunctions {
      * 
      * &gt; **NOTE:**  Available in 1.99.0+.
      * 
-     * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
-     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -2455,9 +2427,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.99.0+.
-     * 
-     * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+     * &gt; **NOTE:** Available since v1.99.0.
      * 
      * ## Example Usage
      * 
@@ -2503,9 +2473,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.99.0+.
-     * 
-     * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+     * &gt; **NOTE:** Available since v1.99.0.
      * 
      * ## Example Usage
      * 
@@ -2551,9 +2519,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.99.0+.
-     * 
-     * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+     * &gt; **NOTE:** Available since v1.99.0.
      * 
      * ## Example Usage
      * 
@@ -2599,9 +2565,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.99.0+.
-     * 
-     * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+     * &gt; **NOTE:** Available since v1.99.0.
      * 
      * ## Example Usage
      * 
@@ -2647,9 +2611,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.99.0+.
-     * 
-     * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+     * &gt; **NOTE:** Available since v1.99.0.
      * 
      * ## Example Usage
      * 
@@ -2695,9 +2657,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.99.0+.
-     * 
-     * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+     * &gt; **NOTE:** Available since v1.99.0.
      * 
      * ## Example Usage
      * 
@@ -2743,9 +2703,7 @@ public final class CfgFunctions {
     /**
      * This data source provides the Config Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.99.0+.
-     * 
-     * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+     * &gt; **NOTE:** Available since v1.99.0.
      * 
      * ## Example Usage
      * 

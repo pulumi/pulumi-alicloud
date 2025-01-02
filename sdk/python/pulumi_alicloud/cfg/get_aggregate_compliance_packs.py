@@ -141,7 +141,7 @@ def get_aggregate_compliance_packs(aggregator_id: Optional[str] = None,
     """
     This data source provides the Config Aggregate Compliance Packs of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.124.0+.
+    > **NOTE:** Available since v1.124.0.
 
     ## Example Usage
 
@@ -195,7 +195,7 @@ def get_aggregate_compliance_packs_output(aggregator_id: Optional[pulumi.Input[s
     """
     This data source provides the Config Aggregate Compliance Packs of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.124.0+.
+    > **NOTE:** Available since v1.124.0.
 
     ## Example Usage
 

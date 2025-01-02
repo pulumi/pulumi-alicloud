@@ -43,7 +43,7 @@ public final class GetIpSetsSet {
      */
     private String ipVersion;
     /**
-     * @return The status of the acceleration region.
+     * @return The status of the acceleration region. Valid values: `active`, `deleting`, `init`, `updating`.
      * 
      */
     private String status;
@@ -92,7 +92,7 @@ public final class GetIpSetsSet {
         return this.ipVersion;
     }
     /**
-     * @return The status of the acceleration region.
+     * @return The status of the acceleration region. Valid values: `active`, `deleting`, `init`, `updating`.
      * 
      */
     public String status() {

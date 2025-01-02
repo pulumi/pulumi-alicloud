@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.PrivateLink
         /// <summary>
         /// This data source provides the Privatelink Vpc Endpoint Service Users of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.110.0+.
+        /// &gt; **NOTE:** Available since v1.110.0.
         /// 
         /// ## Example Usage
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.PrivateLink
         /// <summary>
         /// This data source provides the Privatelink Vpc Endpoint Service Users of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.110.0+.
+        /// &gt; **NOTE:** Available since v1.110.0.
         /// 
         /// ## Example Usage
         /// 
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.PrivateLink
         /// <summary>
         /// This data source provides the Privatelink Vpc Endpoint Service Users of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.110.0+.
+        /// &gt; **NOTE:** Available since v1.110.0.
         /// 
         /// ## Example Usage
         /// 
@@ -169,10 +169,19 @@ namespace Pulumi.AliCloud.PrivateLink
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of Vpc Endpoint Service User IDs.
+        /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
         public readonly string ServiceId;
+        /// <summary>
+        /// The Id of Ram User.
+        /// </summary>
         public readonly string? UserId;
+        /// <summary>
+        /// A list of Privatelink Vpc Endpoint Service Users. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetVpcEndpointServiceUsersUserResult> Users;
 
         [OutputConstructor]

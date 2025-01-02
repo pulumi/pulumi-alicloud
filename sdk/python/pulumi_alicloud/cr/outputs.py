@@ -23,6 +23,8 @@ __all__ = [
     'ChainChainConfigRouter',
     'ChainChainConfigRouterFrom',
     'ChainChainConfigRouterTo',
+    'RegistryEnterpriseInstanceInstanceEndpoint',
+    'RegistryEnterpriseInstanceInstanceEndpointDomain',
     'RepoDomainList',
     'GetChainsChainResult',
     'GetChainsChainChainConfigResult',
@@ -350,6 +352,97 @@ class ChainChainConfigRouterTo(dict):
         The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
         """
         return pulumi.get(self, "node_name")
+
+
+@pulumi.output_type
+class RegistryEnterpriseInstanceInstanceEndpoint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endpointType":
+            suggest = "endpoint_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegistryEnterpriseInstanceInstanceEndpoint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegistryEnterpriseInstanceInstanceEndpoint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegistryEnterpriseInstanceInstanceEndpoint.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 domains: Optional[Sequence['outputs.RegistryEnterpriseInstanceInstanceEndpointDomain']] = None,
+                 enable: Optional[bool] = None,
+                 endpoint_type: Optional[str] = None):
+        """
+        :param Sequence['RegistryEnterpriseInstanceInstanceEndpointDomainArgs'] domains: Domain List
+        :param bool enable: enable
+        :param str endpoint_type: Network Access Endpoint Type
+        """
+        if domains is not None:
+            pulumi.set(__self__, "domains", domains)
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
+        if endpoint_type is not None:
+            pulumi.set(__self__, "endpoint_type", endpoint_type)
+
+    @property
+    @pulumi.getter
+    def domains(self) -> Optional[Sequence['outputs.RegistryEnterpriseInstanceInstanceEndpointDomain']]:
+        """
+        Domain List
+        """
+        return pulumi.get(self, "domains")
+
+    @property
+    @pulumi.getter
+    def enable(self) -> Optional[bool]:
+        """
+        enable
+        """
+        return pulumi.get(self, "enable")
+
+    @property
+    @pulumi.getter(name="endpointType")
+    def endpoint_type(self) -> Optional[str]:
+        """
+        Network Access Endpoint Type
+        """
+        return pulumi.get(self, "endpoint_type")
+
+
+@pulumi.output_type
+class RegistryEnterpriseInstanceInstanceEndpointDomain(dict):
+    def __init__(__self__, *,
+                 domain: Optional[str] = None,
+                 type: Optional[str] = None):
+        """
+        :param str domain: Domain
+        :param str type: Domain Type
+        """
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[str]:
+        """
+        Domain
+        """
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Domain Type
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

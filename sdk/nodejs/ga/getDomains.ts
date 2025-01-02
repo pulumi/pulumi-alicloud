@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides Ga Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain)
  *
- * > **NOTE:** Available in 1.197.0+
+ * > **NOTE:** Available since v1.197.0.
  *
  * ## Example Usage
  *
@@ -114,7 +114,7 @@ export interface GetDomainsResult {
 /**
  * This data source provides Ga Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain)
  *
- * > **NOTE:** Available in 1.197.0+
+ * > **NOTE:** Available since v1.197.0.
  *
  * ## Example Usage
  *

@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Global Accelerator (GA) Bandwidth Packages of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.112.0+.
+// > **NOTE:** Available since v1.112.0.
 //
 // ## Example Usage
 //
@@ -76,14 +76,18 @@ type GetBandwidthPackagesArgs struct {
 type GetBandwidthPackagesResult struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                        `pulumi:"id"`
-	Ids        []string                      `pulumi:"ids"`
-	NameRegex  *string                       `pulumi:"nameRegex"`
-	Names      []string                      `pulumi:"names"`
-	OutputFile *string                       `pulumi:"outputFile"`
-	Packages   []GetBandwidthPackagesPackage `pulumi:"packages"`
-	Status     *string                       `pulumi:"status"`
-	Type       *string                       `pulumi:"type"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Bandwidth Package names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Ga Bandwidth Packages. Each element contains the following attributes:
+	Packages []GetBandwidthPackagesPackage `pulumi:"packages"`
+	// The status of the bandwidth plan.
+	Status *string `pulumi:"status"`
+	// The type of the bandwidth packet. China station only supports return to basic.
+	Type *string `pulumi:"type"`
 }
 
 func GetBandwidthPackagesOutput(ctx *pulumi.Context, args GetBandwidthPackagesOutputArgs, opts ...pulumi.InvokeOption) GetBandwidthPackagesResultOutput {
@@ -147,6 +151,7 @@ func (o GetBandwidthPackagesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBandwidthPackagesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Bandwidth Package names.
 func (o GetBandwidthPackagesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetBandwidthPackagesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -155,14 +160,17 @@ func (o GetBandwidthPackagesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBandwidthPackagesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ga Bandwidth Packages. Each element contains the following attributes:
 func (o GetBandwidthPackagesResultOutput) Packages() GetBandwidthPackagesPackageArrayOutput {
 	return o.ApplyT(func(v GetBandwidthPackagesResult) []GetBandwidthPackagesPackage { return v.Packages }).(GetBandwidthPackagesPackageArrayOutput)
 }
 
+// The status of the bandwidth plan.
 func (o GetBandwidthPackagesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBandwidthPackagesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// The type of the bandwidth packet. China station only supports return to basic.
 func (o GetBandwidthPackagesResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBandwidthPackagesResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

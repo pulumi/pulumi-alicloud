@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ga
         /// <summary>
         /// This data source provides the Ga Additional Certificates of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.150.0+.
+        /// &gt; **NOTE:** Available since v1.150.0.
         /// 
         /// ## Example Usage
         /// 
@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Ga
         /// <summary>
         /// This data source provides the Ga Additional Certificates of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.150.0+.
+        /// &gt; **NOTE:** Available since v1.150.0.
         /// 
         /// ## Example Usage
         /// 
@@ -90,7 +90,7 @@ namespace Pulumi.AliCloud.Ga
         /// <summary>
         /// This data source provides the Ga Additional Certificates of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.150.0+.
+        /// &gt; **NOTE:** Available since v1.150.0.
         /// 
         /// ## Example Usage
         /// 
@@ -207,13 +207,22 @@ namespace Pulumi.AliCloud.Ga
     [OutputType]
     public sealed class GetAdditionalCertificatesResult
     {
+        /// <summary>
+        /// The ID of the GA instance.
+        /// </summary>
         public readonly string AcceleratorId;
+        /// <summary>
+        /// A list of Ga Additional Certificates. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAdditionalCertificatesCertificateResult> Certificates;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The ID of the listener. Only HTTPS listeners support this parameter.
+        /// </summary>
         public readonly string ListenerId;
         public readonly string? OutputFile;
 

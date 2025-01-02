@@ -14,7 +14,7 @@ import (
 
 // Provides a Resource Manager Control Policy Attachment resource.
 //
-// For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/latest/api-resourcedirectorymaster-2022-04-19-attachcontrolpolicy).
+// For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/resource-directory/developer-reference/api-resourcemanager-2020-03-31-attachcontrolpolicy).
 //
 // > **NOTE:** Available since v1.120.0.
 //
@@ -39,7 +39,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-example"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -50,7 +50,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			example, err := resourcemanager.NewControlPolicy(ctx, "example", &resourcemanager.ControlPolicyArgs{
+//			defaultControlPolicy, err := resourcemanager.NewControlPolicy(ctx, "default", &resourcemanager.ControlPolicyArgs{
 //				ControlPolicyName: pulumi.String(name),
 //				Description:       pulumi.String(name),
 //				EffectScope:       pulumi.String("RAM"),
@@ -76,15 +76,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleFolder, err := resourcemanager.NewFolder(ctx, "example", &resourcemanager.FolderArgs{
+//			defaultFolder, err := resourcemanager.NewFolder(ctx, "default", &resourcemanager.FolderArgs{
 //				FolderName: pulumi.Sprintf("%v-%v", name, _default.Result),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = resourcemanager.NewControlPolicyAttachment(ctx, "example", &resourcemanager.ControlPolicyAttachmentArgs{
-//				PolicyId: example.ID(),
-//				TargetId: exampleFolder.ID(),
+//			_, err = resourcemanager.NewControlPolicyAttachment(ctx, "default", &resourcemanager.ControlPolicyAttachmentArgs{
+//				PolicyId: defaultControlPolicy.ID(),
+//				TargetId: defaultFolder.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -105,9 +105,9 @@ import (
 type ControlPolicyAttachment struct {
 	pulumi.CustomResourceState
 
-	// The ID of control policy.
+	// The ID of the access control policy.
 	PolicyId pulumi.StringOutput `pulumi:"policyId"`
-	// The ID of target.
+	// The ID of the object to which you want to attach the access control policy.
 	TargetId pulumi.StringOutput `pulumi:"targetId"`
 }
 
@@ -147,16 +147,16 @@ func GetControlPolicyAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ControlPolicyAttachment resources.
 type controlPolicyAttachmentState struct {
-	// The ID of control policy.
+	// The ID of the access control policy.
 	PolicyId *string `pulumi:"policyId"`
-	// The ID of target.
+	// The ID of the object to which you want to attach the access control policy.
 	TargetId *string `pulumi:"targetId"`
 }
 
 type ControlPolicyAttachmentState struct {
-	// The ID of control policy.
+	// The ID of the access control policy.
 	PolicyId pulumi.StringPtrInput
-	// The ID of target.
+	// The ID of the object to which you want to attach the access control policy.
 	TargetId pulumi.StringPtrInput
 }
 
@@ -165,17 +165,17 @@ func (ControlPolicyAttachmentState) ElementType() reflect.Type {
 }
 
 type controlPolicyAttachmentArgs struct {
-	// The ID of control policy.
+	// The ID of the access control policy.
 	PolicyId string `pulumi:"policyId"`
-	// The ID of target.
+	// The ID of the object to which you want to attach the access control policy.
 	TargetId string `pulumi:"targetId"`
 }
 
 // The set of arguments for constructing a ControlPolicyAttachment resource.
 type ControlPolicyAttachmentArgs struct {
-	// The ID of control policy.
+	// The ID of the access control policy.
 	PolicyId pulumi.StringInput
-	// The ID of target.
+	// The ID of the object to which you want to attach the access control policy.
 	TargetId pulumi.StringInput
 }
 
@@ -266,12 +266,12 @@ func (o ControlPolicyAttachmentOutput) ToControlPolicyAttachmentOutputWithContex
 	return o
 }
 
-// The ID of control policy.
+// The ID of the access control policy.
 func (o ControlPolicyAttachmentOutput) PolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ControlPolicyAttachment) pulumi.StringOutput { return v.PolicyId }).(pulumi.StringOutput)
 }
 
-// The ID of target.
+// The ID of the object to which you want to attach the access control policy.
 func (o ControlPolicyAttachmentOutput) TargetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ControlPolicyAttachment) pulumi.StringOutput { return v.TargetId }).(pulumi.StringOutput)
 }

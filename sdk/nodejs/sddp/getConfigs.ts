@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Sddp Configs of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.133.0+.
+ * > **NOTE:** Available since v1.133.0.
  *
  * ## Example Usage
  *
@@ -59,6 +59,9 @@ export interface GetConfigsArgs {
  * A collection of values returned by getConfigs.
  */
 export interface GetConfigsResult {
+    /**
+     * A list of Sddp Configs. Each element contains the following attributes:
+     */
     readonly configs: outputs.sddp.GetConfigsConfig[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -71,7 +74,7 @@ export interface GetConfigsResult {
 /**
  * This data source provides the Sddp Configs of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.133.0+.
+ * > **NOTE:** Available since v1.133.0.
  *
  * ## Example Usage
  *

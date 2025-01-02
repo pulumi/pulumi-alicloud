@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Waf
         /// <summary>
         /// This data source provides the Waf Certificates of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// &gt; **NOTE:** Available since v1.135.0.
         /// 
         /// ## Example Usage
         /// 
@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.Waf
         /// <summary>
         /// This data source provides the Waf Certificates of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// &gt; **NOTE:** Available since v1.135.0.
         /// 
         /// ## Example Usage
         /// 
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Waf
         /// <summary>
         /// This data source provides the Waf Certificates of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// &gt; **NOTE:** Available since v1.135.0.
         /// 
         /// ## Example Usage
         /// 
@@ -216,15 +216,27 @@ namespace Pulumi.AliCloud.Waf
     [OutputType]
     public sealed class GetCertificatesResult
     {
+        /// <summary>
+        /// A list of Waf Certificates. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetCertificatesCertificateResult> Certificates;
+        /// <summary>
+        /// The domain that you want to add to WAF.
+        /// </summary>
         public readonly string? Domain;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// WAF instance ID.
+        /// </summary>
         public readonly string InstanceId;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Certificate names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
 

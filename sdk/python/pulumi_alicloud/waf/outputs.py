@@ -59,7 +59,7 @@ class GetCertificatesCertificateResult(dict):
         :param str certificate_id: Certificate recording ID.
         :param str certificate_name: Your certificate name.
         :param str common_name: Certificate bound to the domain name.
-        :param str domain: The domain that you want to add to WAF.
+        :param str domain: WAF domain name.
         :param str id: The ID of the Certificate.
         :param str instance_id: WAF instance ID.
         """
@@ -100,7 +100,7 @@ class GetCertificatesCertificateResult(dict):
     @pulumi.getter
     def domain(self) -> str:
         """
-        The domain that you want to add to WAF.
+        WAF domain name.
         """
         return pulumi.get(self, "domain")
 
@@ -173,7 +173,6 @@ class GetDomainsDomainResult(dict):
         :param Sequence[str] source_ips: List of the IP address or domain of the origin server to which the specified domain points.
         :param int version: The system data identifier that is used to control optimistic locking.
         :param int write_time: The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
-               ```
         """
         pulumi.set(__self__, "cluster_type", cluster_type)
         pulumi.set(__self__, "cname", cname)
@@ -344,7 +343,6 @@ class GetDomainsDomainResult(dict):
     def write_time(self) -> int:
         """
         The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
-        ```
         """
         return pulumi.get(self, "write_time")
 

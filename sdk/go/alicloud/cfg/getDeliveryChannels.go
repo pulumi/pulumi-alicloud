@@ -18,8 +18,6 @@ import (
 //
 // > **NOTE:**  Available in 1.99.0+.
 //
-// > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
-//
 // ## Example Usage
 //
 // ```go

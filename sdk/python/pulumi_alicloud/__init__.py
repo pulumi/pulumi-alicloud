@@ -37,6 +37,8 @@ if typing.TYPE_CHECKING:
     alikafka = __alikafka
     import pulumi_alicloud.amqp as __amqp
     amqp = __amqp
+    import pulumi_alicloud.apig as __apig
+    apig = __apig
     import pulumi_alicloud.apigateway as __apigateway
     apigateway = __apigateway
     import pulumi_alicloud.arms as __arms
@@ -301,6 +303,7 @@ else:
     aligreen = _utilities.lazy_import('pulumi_alicloud.aligreen')
     alikafka = _utilities.lazy_import('pulumi_alicloud.alikafka')
     amqp = _utilities.lazy_import('pulumi_alicloud.amqp')
+    apig = _utilities.lazy_import('pulumi_alicloud.apig')
     apigateway = _utilities.lazy_import('pulumi_alicloud.apigateway')
     arms = _utilities.lazy_import('pulumi_alicloud.arms')
     bastionhost = _utilities.lazy_import('pulumi_alicloud.bastionhost')
@@ -783,6 +786,30 @@ _utilities.register(
   "fqn": "pulumi_alicloud.amqp",
   "classes": {
    "alicloud:amqp/virtualHost:VirtualHost": "VirtualHost"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "apig/environment",
+  "fqn": "pulumi_alicloud.apig",
+  "classes": {
+   "alicloud:apig/environment:Environment": "Environment"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "apig/gateway",
+  "fqn": "pulumi_alicloud.apig",
+  "classes": {
+   "alicloud:apig/gateway:Gateway": "Gateway"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "apig/httpApi",
+  "fqn": "pulumi_alicloud.apig",
+  "classes": {
+   "alicloud:apig/httpApi:HttpApi": "HttpApi"
   }
  },
  {
@@ -3827,6 +3854,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "esa/record",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/record:Record": "Record"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "esa/site",
   "fqn": "pulumi_alicloud.esa",
   "classes": {
@@ -5219,6 +5254,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "mongodb/privateSrvNetworkAddress",
+  "fqn": "pulumi_alicloud.mongodb",
+  "classes": {
+   "alicloud:mongodb/privateSrvNetworkAddress:PrivateSrvNetworkAddress": "PrivateSrvNetworkAddress"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "mongodb/serverlessInstance",
   "fqn": "pulumi_alicloud.mongodb",
   "classes": {
@@ -5547,6 +5590,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "oss/accessPoint",
+  "fqn": "pulumi_alicloud.oss",
+  "classes": {
+   "alicloud:oss/accessPoint:AccessPoint": "AccessPoint"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "oss/accountPublicAccessBlock",
   "fqn": "pulumi_alicloud.oss",
   "classes": {
@@ -5719,6 +5770,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.oss",
   "classes": {
    "alicloud:oss/bucketWebsite:BucketWebsite": "BucketWebsite"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "oss/bucketWorm",
+  "fqn": "pulumi_alicloud.oss",
+  "classes": {
+   "alicloud:oss/bucketWorm:BucketWorm": "BucketWorm"
   }
  },
  {
@@ -6783,6 +6842,22 @@ _utilities.register(
   "fqn": "pulumi_alicloud.scdn",
   "classes": {
    "alicloud:scdn/domainConfig:DomainConfig": "DomainConfig"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "schedulerx/appGroup",
+  "fqn": "pulumi_alicloud.schedulerx",
+  "classes": {
+   "alicloud:schedulerx/appGroup:AppGroup": "AppGroup"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "schedulerx/job",
+  "fqn": "pulumi_alicloud.schedulerx",
+  "classes": {
+   "alicloud:schedulerx/job:Job": "Job"
   }
  },
  {

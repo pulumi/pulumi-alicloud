@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Adb DBCluster Lake Versions of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.190.0+.
+ * > **NOTE:** Available since v1.190.0.
  *
  * ## Example Usage
  *
@@ -19,10 +19,28 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const ids = alicloud.adb.getDBClusterLakeVersions({
- *     ids: ["example_id"],
+ * const default = alicloud.adb.getZones({});
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "^default-NODELETING$",
  * });
- * export const adbDbClusterLakeVersionId1 = ids.then(ids => ids.versions?.[0]?.id);
+ * const defaultGetSwitches = Promise.all([defaultGetNetworks, _default]).then(([defaultGetNetworks, _default]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ *     zoneId: _default.ids?.[0],
+ * }));
+ * const defaultDBClusterLakeVersion = new alicloud.adb.DBClusterLakeVersion("default", {
+ *     dbClusterVersion: "5.0",
+ *     vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
+ *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
+ *     zoneId: _default.then(_default => _default.ids?.[0]),
+ *     computeResource: "16ACU",
+ *     storageResource: "0ACU",
+ *     paymentType: "PayAsYouGo",
+ *     enableDefaultResourceGroup: false,
+ * });
+ * const ids = alicloud.adb.getDBClusterLakeVersionsOutput({
+ *     ids: [defaultDBClusterLakeVersion.id],
+ * });
+ * export const adbDbClusterLakeVersionId1 = ids.apply(ids => ids.versions?.[0]?.id);
  * ```
  */
 export function getDBClusterLakeVersions(args?: GetDBClusterLakeVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetDBClusterLakeVersionsResult> {
@@ -80,14 +98,23 @@ export interface GetDBClusterLakeVersionsResult {
     readonly outputFile?: string;
     readonly pageNumber?: number;
     readonly pageSize?: number;
+    /**
+     * The ID of the resource group.
+     */
     readonly resourceGroupId?: string;
+    /**
+     * The status of the resource.
+     */
     readonly status?: string;
+    /**
+     * A list of Adb Db Clusters. Each element contains the following attributes:
+     */
     readonly versions: outputs.adb.GetDBClusterLakeVersionsVersion[];
 }
 /**
  * This data source provides the Adb DBCluster Lake Versions of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.190.0+.
+ * > **NOTE:** Available since v1.190.0.
  *
  * ## Example Usage
  *
@@ -97,10 +124,28 @@ export interface GetDBClusterLakeVersionsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const ids = alicloud.adb.getDBClusterLakeVersions({
- *     ids: ["example_id"],
+ * const default = alicloud.adb.getZones({});
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "^default-NODELETING$",
  * });
- * export const adbDbClusterLakeVersionId1 = ids.then(ids => ids.versions?.[0]?.id);
+ * const defaultGetSwitches = Promise.all([defaultGetNetworks, _default]).then(([defaultGetNetworks, _default]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ *     zoneId: _default.ids?.[0],
+ * }));
+ * const defaultDBClusterLakeVersion = new alicloud.adb.DBClusterLakeVersion("default", {
+ *     dbClusterVersion: "5.0",
+ *     vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
+ *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
+ *     zoneId: _default.then(_default => _default.ids?.[0]),
+ *     computeResource: "16ACU",
+ *     storageResource: "0ACU",
+ *     paymentType: "PayAsYouGo",
+ *     enableDefaultResourceGroup: false,
+ * });
+ * const ids = alicloud.adb.getDBClusterLakeVersionsOutput({
+ *     ids: [defaultDBClusterLakeVersion.id],
+ * });
+ * export const adbDbClusterLakeVersionId1 = ids.apply(ids => ids.versions?.[0]?.id);
  * ```
  */
 export function getDBClusterLakeVersionsOutput(args?: GetDBClusterLakeVersionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDBClusterLakeVersionsResult> {

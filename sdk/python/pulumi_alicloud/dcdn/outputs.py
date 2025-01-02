@@ -3597,14 +3597,14 @@ class GetIpaDomainsDomainResult(dict):
         :param str cname: The CNAME assigned to the domain name.
         :param str create_time: The time when the accelerated domain name was created.
         :param str description: The description.
-        :param str domain_name: The accelerated domain names.
+        :param str domain_name: The name of the Domain.
         :param str id: The ID of the Ipa Domain.
         :param str resource_group_id: The ID of the resource group.
         :param str scope: The accelerated region.
         :param Sequence['GetIpaDomainsDomainSourceArgs'] sources: The information about the origin server.
         :param str ssl_protocol: Indicates whether the Security Socket Layer (SSL) certificate is enabled.
         :param str ssl_pub: Indicates the public key of the certificate if the HTTPS protocol is enabled.
-        :param str status: The status of the accelerated domain name.
+        :param str status: The status of the accelerated domain name. Valid values: `check_failed`, `checking`, `configure_failed`, `configuring`, `offline`, `online`.
         """
         pulumi.set(__self__, "cert_name", cert_name)
         pulumi.set(__self__, "cname", cname)
@@ -3655,7 +3655,7 @@ class GetIpaDomainsDomainResult(dict):
     @pulumi.getter(name="domainName")
     def domain_name(self) -> str:
         """
-        The accelerated domain names.
+        The name of the Domain.
         """
         return pulumi.get(self, "domain_name")
 
@@ -3711,7 +3711,7 @@ class GetIpaDomainsDomainResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the accelerated domain name.
+        The status of the accelerated domain name. Valid values: `check_failed`, `checking`, `configure_failed`, `configuring`, `offline`, `online`.
         """
         return pulumi.get(self, "status")
 
@@ -3879,7 +3879,7 @@ class GetWafPoliciesPolicyResult(dict):
         :param str policy_name: The name of the protection policy.
         :param str policy_type: The type of the protection policy.
         :param str rule_count: The number of protection rules in this protection policy.
-        :param str status: The status of the resource.
+        :param str status: The status of the resource. Valid values: `on`, `off`.
         """
         pulumi.set(__self__, "dcdn_waf_policy_id", dcdn_waf_policy_id)
         pulumi.set(__self__, "defense_scene", defense_scene)
@@ -3959,7 +3959,7 @@ class GetWafPoliciesPolicyResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the resource.
+        The status of the resource. Valid values: `on`, `off`.
         """
         return pulumi.get(self, "status")
 

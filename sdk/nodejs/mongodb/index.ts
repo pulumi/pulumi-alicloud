@@ -55,6 +55,11 @@ export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
 utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
 
+export { PrivateSrvNetworkAddressArgs, PrivateSrvNetworkAddressState } from "./privateSrvNetworkAddress";
+export type PrivateSrvNetworkAddress = import("./privateSrvNetworkAddress").PrivateSrvNetworkAddress;
+export const PrivateSrvNetworkAddress: typeof import("./privateSrvNetworkAddress").PrivateSrvNetworkAddress = null as any;
+utilities.lazyLoad(exports, ["PrivateSrvNetworkAddress"], () => require("./privateSrvNetworkAddress"));
+
 export { ServerlessInstanceArgs, ServerlessInstanceState } from "./serverlessInstance";
 export type ServerlessInstance = import("./serverlessInstance").ServerlessInstance;
 export const ServerlessInstance: typeof import("./serverlessInstance").ServerlessInstance = null as any;
@@ -86,6 +91,8 @@ const _module = {
                 return new AuditPolicy(name, <any>undefined, { urn })
             case "alicloud:mongodb/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
+            case "alicloud:mongodb/privateSrvNetworkAddress:PrivateSrvNetworkAddress":
+                return new PrivateSrvNetworkAddress(name, <any>undefined, { urn })
             case "alicloud:mongodb/serverlessInstance:ServerlessInstance":
                 return new ServerlessInstance(name, <any>undefined, { urn })
             case "alicloud:mongodb/shardingInstance:ShardingInstance":
@@ -102,6 +109,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/account", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/auditPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/instance", _module)
+pulumi.runtime.registerResourceModule("alicloud", "mongodb/privateSrvNetworkAddress", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/serverlessInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/shardingInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/shardingNetworkPrivateAddress", _module)

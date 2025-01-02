@@ -387,6 +387,9 @@ namespace Pulumi.AliCloud.KVStore
     [OutputType]
     public sealed class GetInstancesResult
     {
+        /// <summary>
+        /// The architecture type of the instance.
+        /// </summary>
         public readonly string? ArchitectureType;
         public readonly string? EditionType;
         public readonly bool? EnableDetails;
@@ -405,12 +408,11 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         /// <summary>
-        /// (Optional) Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
-        /// For more information, see [Instance type table](https://www.alibabacloud.com/help/en/redis/product-overview/overview-4).
+        /// Type of the applied Tair (Redis OSS-Compatible) And Memcached (KVStore) Classic Instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/en/redis/product-overview/overview-4).
         /// </summary>
         public readonly string? InstanceClass;
         /// <summary>
-        /// (Optional) Database type. Valid Values: `Memcache`, `Redis`. If no value is specified, all types are returned.
+        /// Database type. Valid Values: `Memcache`, `Redis`. If no value is specified, all types are returned.
         /// </summary>
         public readonly string? InstanceType;
         /// <summary>
@@ -431,12 +433,21 @@ namespace Pulumi.AliCloud.KVStore
         /// Billing method. Valid Values: `PostPaid` for  Pay-As-You-Go and `PrePaid` for subscription.
         /// </summary>
         public readonly string? PaymentType;
+        /// <summary>
+        /// The ID of the resource group to which the instance belongs.
+        /// </summary>
         public readonly string? ResourceGroupId;
+        /// <summary>
+        /// The keyword used for fuzzy search. The keyword can be based on an instance name or an instance ID.
+        /// </summary>
         public readonly string? SearchKey;
         /// <summary>
         /// Status of the instance.
         /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
         /// VPC ID the instance belongs to.

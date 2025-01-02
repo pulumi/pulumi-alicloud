@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Sddp
         /// <summary>
         /// This data source provides the Sddp Rules of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// &gt; **NOTE:** Available since v1.132.0.
         /// 
         /// ## Example Usage
         /// 
@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.Sddp
         /// <summary>
         /// This data source provides the Sddp Rules of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// &gt; **NOTE:** Available since v1.132.0.
         /// 
         /// ## Example Usage
         /// 
@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.Sddp
         /// <summary>
         /// This data source provides the Sddp Rules of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// &gt; **NOTE:** Available since v1.132.0.
         /// 
         /// ## Example Usage
         /// 
@@ -327,8 +327,17 @@ namespace Pulumi.AliCloud.Sddp
     [OutputType]
     public sealed class GetRulesResult
     {
+        /// <summary>
+        /// Sensitive Data Identification Rules for the Type of.
+        /// </summary>
         public readonly int? Category;
+        /// <summary>
+        /// The Content Classification.
+        /// </summary>
         public readonly string? ContentCategory;
+        /// <summary>
+        /// Sensitive Data Identification Rules of Type. 0: the Built-in 1: The User-Defined.
+        /// </summary>
         public readonly int? CustomType;
         public readonly bool? EnableDetails;
         /// <summary>
@@ -338,13 +347,31 @@ namespace Pulumi.AliCloud.Sddp
         public readonly ImmutableArray<string> Ids;
         public readonly string? Name;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Rule names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// Product ID.
+        /// </summary>
         public readonly string? ProductId;
+        /// <summary>
+        /// Sensitive Data Identification Rules of Risk Level ID. Valid values:1:S1, Weak Risk Level. 2:S2, Medium Risk Level. 3:S3 High Risk Level. 4:S4, the Highest Risk Level.
+        /// </summary>
         public readonly string? RiskLevelId;
         public readonly int? RuleType;
+        /// <summary>
+        /// A list of Sddp Rules. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRulesRuleResult> Rules;
+        /// <summary>
+        /// Sensitive Data Identification Rules Detection State of.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// The Level of Risk.
+        /// </summary>
         public readonly int? WarnLevel;
 
         [OutputConstructor]

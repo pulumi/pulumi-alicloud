@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ga
         /// <summary>
         /// This data source provides the Global Accelerator (GA) Ip Sets of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.113.0+.
+        /// &gt; **NOTE:** Available since v1.113.0.
         /// 
         /// ## Example Usage
         /// 
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Ga
         /// <summary>
         /// This data source provides the Global Accelerator (GA) Ip Sets of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.113.0+.
+        /// &gt; **NOTE:** Available since v1.113.0.
         /// 
         /// ## Example Usage
         /// 
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Ga
         /// <summary>
         /// This data source provides the Global Accelerator (GA) Ip Sets of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.113.0+.
+        /// &gt; **NOTE:** Available since v1.113.0.
         /// 
         /// ## Example Usage
         /// 
@@ -208,7 +208,13 @@ namespace Pulumi.AliCloud.Ga
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Ga Ip Sets. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetIpSetsSetResult> Sets;
+        /// <summary>
+        /// The status of the acceleration region.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

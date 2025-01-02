@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Global Accelerator (GA) Ip Sets of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.113.0+.
+ * > **NOTE:** Available since v1.113.0.
  *
  * ## Example Usage
  *
@@ -69,13 +69,19 @@ export interface GetIpSetsResult {
     readonly id: string;
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Ga Ip Sets. Each element contains the following attributes:
+     */
     readonly sets: outputs.ga.GetIpSetsSet[];
+    /**
+     * The status of the acceleration region.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Global Accelerator (GA) Ip Sets of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.113.0+.
+ * > **NOTE:** Available since v1.113.0.
  *
  * ## Example Usage
  *

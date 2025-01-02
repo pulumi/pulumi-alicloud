@@ -84,6 +84,9 @@ class GetWafPoliciesResult:
     @property
     @pulumi.getter
     def policies(self) -> Sequence['outputs.GetWafPoliciesPolicyResult']:
+        """
+        A list of Dcdn Waf Policies. Each element contains the following attributes:
+        """
         return pulumi.get(self, "policies")
 
     @property
@@ -94,6 +97,9 @@ class GetWafPoliciesResult:
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        The status of the resource.
+        """
         return pulumi.get(self, "status")
 
 
@@ -122,7 +128,7 @@ def get_waf_policies(ids: Optional[Sequence[str]] = None,
     """
     This data source provides the Dcdn Waf Policies of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.184.0+.
+    > **NOTE:** Available since v1.184.0.
 
     ## Example Usage
 
@@ -169,7 +175,7 @@ def get_waf_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     """
     This data source provides the Dcdn Waf Policies of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.184.0+.
+    > **NOTE:** Available since v1.184.0.
 
     ## Example Usage
 

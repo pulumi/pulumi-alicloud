@@ -199,7 +199,7 @@ def get_vpc_firewalls(ids: Optional[Sequence[str]] = None,
     """
     This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://help.aliyun.com/document_detail/342932.html)
 
-    > **NOTE:** Available in 1.194.0+
+    > **NOTE:** Available since v1.194.0.
 
     ## Example Usage
 
@@ -268,7 +268,7 @@ def get_vpc_firewalls_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     """
     This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://help.aliyun.com/document_detail/342932.html)
 
-    > **NOTE:** Available in 1.194.0+
+    > **NOTE:** Available since v1.194.0.
 
     ## Example Usage
 

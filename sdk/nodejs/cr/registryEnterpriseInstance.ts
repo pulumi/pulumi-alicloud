@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -87,7 +89,7 @@ export class RegistryEnterpriseInstance extends pulumi.CustomResource {
      */
     public readonly customOssBucket!: pulumi.Output<string | undefined>;
     /**
-     * Whether to use the default OSS Bucket
+     * Whether to use the default OSS Bucket. Value:
      */
     public readonly defaultOssBucket!: pulumi.Output<string | undefined>;
     /**
@@ -95,21 +97,24 @@ export class RegistryEnterpriseInstance extends pulumi.CustomResource {
      */
     public /*out*/ readonly endTime!: pulumi.Output<string>;
     /**
-     * Security scan engine
+     * The security scan engine used by the Enterprise Edition of Container Image Service. Value:
+     * - `ACR`: Uses the Trivy scan engine provided by default.
+     * - `SAS`: uses the enhanced cloud security scan engine.
      */
     public readonly imageScanner!: pulumi.Output<string | undefined>;
+    /**
+     * (Available since v1.240.0) Instance Network Access Endpoint List
+     */
+    public /*out*/ readonly instanceEndpoints!: pulumi.Output<outputs.cr.RegistryEnterpriseInstanceInstanceEndpoint[]>;
     /**
      * InstanceName
      */
     public readonly instanceName!: pulumi.Output<string>;
     /**
      * The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
-     *
-     * Basic: Basic instance
-     *
-     * Standard: Standard instance
-     *
-     * Advanced: Advanced Edition Instance
+     * - `Basic`: Basic instance
+     * - `Standard`: Standard instance
+     * - `Advanced`: Advanced Edition Instance
      */
     public readonly instanceType!: pulumi.Output<string>;
     /**
@@ -121,7 +126,7 @@ export class RegistryEnterpriseInstance extends pulumi.CustomResource {
      */
     public readonly kmsEncryptionContext!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Permanent access credentials of the instance
+     * Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
@@ -183,6 +188,7 @@ export class RegistryEnterpriseInstance extends pulumi.CustomResource {
             resourceInputs["defaultOssBucket"] = state ? state.defaultOssBucket : undefined;
             resourceInputs["endTime"] = state ? state.endTime : undefined;
             resourceInputs["imageScanner"] = state ? state.imageScanner : undefined;
+            resourceInputs["instanceEndpoints"] = state ? state.instanceEndpoints : undefined;
             resourceInputs["instanceName"] = state ? state.instanceName : undefined;
             resourceInputs["instanceType"] = state ? state.instanceType : undefined;
             resourceInputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
@@ -222,6 +228,7 @@ export class RegistryEnterpriseInstance extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["createdTime"] = undefined /*out*/;
             resourceInputs["endTime"] = undefined /*out*/;
+            resourceInputs["instanceEndpoints"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -251,7 +258,7 @@ export interface RegistryEnterpriseInstanceState {
      */
     customOssBucket?: pulumi.Input<string>;
     /**
-     * Whether to use the default OSS Bucket
+     * Whether to use the default OSS Bucket. Value:
      */
     defaultOssBucket?: pulumi.Input<string>;
     /**
@@ -259,21 +266,24 @@ export interface RegistryEnterpriseInstanceState {
      */
     endTime?: pulumi.Input<string>;
     /**
-     * Security scan engine
+     * The security scan engine used by the Enterprise Edition of Container Image Service. Value:
+     * - `ACR`: Uses the Trivy scan engine provided by default.
+     * - `SAS`: uses the enhanced cloud security scan engine.
      */
     imageScanner?: pulumi.Input<string>;
+    /**
+     * (Available since v1.240.0) Instance Network Access Endpoint List
+     */
+    instanceEndpoints?: pulumi.Input<pulumi.Input<inputs.cr.RegistryEnterpriseInstanceInstanceEndpoint>[]>;
     /**
      * InstanceName
      */
     instanceName?: pulumi.Input<string>;
     /**
      * The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
-     *
-     * Basic: Basic instance
-     *
-     * Standard: Standard instance
-     *
-     * Advanced: Advanced Edition Instance
+     * - `Basic`: Basic instance
+     * - `Standard`: Standard instance
+     * - `Advanced`: Advanced Edition Instance
      */
     instanceType?: pulumi.Input<string>;
     /**
@@ -285,7 +295,7 @@ export interface RegistryEnterpriseInstanceState {
      */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Permanent access credentials of the instance
+     * Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
      */
     password?: pulumi.Input<string>;
     /**
@@ -338,11 +348,13 @@ export interface RegistryEnterpriseInstanceArgs {
      */
     customOssBucket?: pulumi.Input<string>;
     /**
-     * Whether to use the default OSS Bucket
+     * Whether to use the default OSS Bucket. Value:
      */
     defaultOssBucket?: pulumi.Input<string>;
     /**
-     * Security scan engine
+     * The security scan engine used by the Enterprise Edition of Container Image Service. Value:
+     * - `ACR`: Uses the Trivy scan engine provided by default.
+     * - `SAS`: uses the enhanced cloud security scan engine.
      */
     imageScanner?: pulumi.Input<string>;
     /**
@@ -351,12 +363,9 @@ export interface RegistryEnterpriseInstanceArgs {
     instanceName: pulumi.Input<string>;
     /**
      * The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
-     *
-     * Basic: Basic instance
-     *
-     * Standard: Standard instance
-     *
-     * Advanced: Advanced Edition Instance
+     * - `Basic`: Basic instance
+     * - `Standard`: Standard instance
+     * - `Advanced`: Advanced Edition Instance
      */
     instanceType: pulumi.Input<string>;
     /**
@@ -368,7 +377,7 @@ export interface RegistryEnterpriseInstanceArgs {
      */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Permanent access credentials of the instance
+     * Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
      */
     password?: pulumi.Input<string>;
     /**

@@ -200,7 +200,7 @@ namespace Pulumi.AliCloud.FC
         /// Trigger Event source ARN
         /// </summary>
         [Output("sourceArn")]
-        public Output<string?> SourceArn { get; private set; } = null!;
+        public Output<string> SourceArn { get; private set; } = null!;
 
         /// <summary>
         /// The state of the trigger

@@ -216,14 +216,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="fwVpcNumber", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> fwVpcNumber;
+    private Output<Integer> fwVpcNumber;
 
     /**
      * @return The number of protected VPCs. It will be ignored when `spec = &#34;premium_version&#34;`. Valid values between 2 and 500.
      * 
      */
-    public Output<Optional<Integer>> fwVpcNumber() {
-        return Codegen.optional(this.fwVpcNumber);
+    public Output<Integer> fwVpcNumber() {
+        return this.fwVpcNumber;
     }
     /**
      * The number of assets.

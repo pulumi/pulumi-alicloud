@@ -58,6 +58,9 @@ class GetForwardingRulesResult:
     @property
     @pulumi.getter(name="forwardingRules")
     def forwarding_rules(self) -> Sequence['outputs.GetForwardingRulesForwardingRuleResult']:
+        """
+        A list of Ga Forwarding Rules. Each element contains the following attributes:
+        """
         return pulumi.get(self, "forwarding_rules")
 
     @property
@@ -76,6 +79,9 @@ class GetForwardingRulesResult:
     @property
     @pulumi.getter(name="listenerId")
     def listener_id(self) -> str:
+        """
+        The ID of the listener.
+        """
         return pulumi.get(self, "listener_id")
 
     @property
@@ -113,7 +119,7 @@ def get_forwarding_rules(accelerator_id: Optional[str] = None,
     """
     This data source provides the Global Accelerator (GA) Forwarding Rules of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.120.0+.
+    > **NOTE:** Available since v1.120.0.
 
     ## Example Usage
 
@@ -162,7 +168,7 @@ def get_forwarding_rules_output(accelerator_id: Optional[pulumi.Input[str]] = No
     """
     This data source provides the Global Accelerator (GA) Forwarding Rules of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.120.0+.
+    > **NOTE:** Available since v1.120.0.
 
     ## Example Usage
 

@@ -151,7 +151,7 @@ def get_basic_accelerators(accelerator_id: Optional[str] = None,
     """
     This data source provides the Global Accelerator (GA) Basic Accelerators of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.194.0+.
+    > **NOTE:** Available since v1.194.0.
 
     ## Example Usage
 
@@ -207,7 +207,7 @@ def get_basic_accelerators_output(accelerator_id: Optional[pulumi.Input[Optional
     """
     This data source provides the Global Accelerator (GA) Basic Accelerators of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.194.0+.
+    > **NOTE:** Available since v1.194.0.
 
     ## Example Usage
 

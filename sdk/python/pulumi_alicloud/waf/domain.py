@@ -642,7 +642,7 @@ class Domain(pulumi.CustomResource):
 
         For information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).
 
-        > **NOTE:** Available in 1.82.0+ .
+        > **NOTE:** Available since v1.82.0.
 
         ## Example Usage
 
@@ -712,7 +712,7 @@ class Domain(pulumi.CustomResource):
 
         For information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).
 
-        > **NOTE:** Available in 1.82.0+ .
+        > **NOTE:** Available since v1.82.0.
 
         ## Example Usage
 

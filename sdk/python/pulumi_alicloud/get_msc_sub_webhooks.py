@@ -68,6 +68,9 @@ class GetMscSubWebhooksResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Webhook names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -78,6 +81,9 @@ class GetMscSubWebhooksResult:
     @property
     @pulumi.getter
     def webhooks(self) -> Sequence['outputs.GetMscSubWebhooksWebhookResult']:
+        """
+        A list of Msc Sub Webhooks. Each element contains the following attributes:
+        """
         return pulumi.get(self, "webhooks")
 
 
@@ -102,7 +108,7 @@ def get_msc_sub_webhooks(ids: Optional[Sequence[str]] = None,
     """
     This data source provides the Msc Sub Webhooks of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.141.0+.
+    > **NOTE:** Available since v1.141.0.
 
     ## Example Usage
 
@@ -144,7 +150,7 @@ def get_msc_sub_webhooks_output(ids: Optional[pulumi.Input[Optional[Sequence[str
     """
     This data source provides the Msc Sub Webhooks of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.141.0+.
+    > **NOTE:** Available since v1.141.0.
 
     ## Example Usage
 

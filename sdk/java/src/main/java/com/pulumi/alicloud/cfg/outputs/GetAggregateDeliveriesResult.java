@@ -15,7 +15,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAggregateDeliveriesResult {
+    /**
+     * @return The ID of the Aggregator.
+     * 
+     */
     private String aggregatorId;
+    /**
+     * @return A list of Config Aggregate Deliveries. Each element contains the following attributes:
+     * 
+     */
     private List<GetAggregateDeliveriesDelivery> deliveries;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -24,14 +32,30 @@ public final class GetAggregateDeliveriesResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Aggregate Delivery names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
+     * 
+     */
     private @Nullable Integer status;
 
     private GetAggregateDeliveriesResult() {}
+    /**
+     * @return The ID of the Aggregator.
+     * 
+     */
     public String aggregatorId() {
         return this.aggregatorId;
     }
+    /**
+     * @return A list of Config Aggregate Deliveries. Each element contains the following attributes:
+     * 
+     */
     public List<GetAggregateDeliveriesDelivery> deliveries() {
         return this.deliveries;
     }
@@ -48,12 +72,20 @@ public final class GetAggregateDeliveriesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Aggregate Delivery names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
+     * 
+     */
     public Optional<Integer> status() {
         return Optional.ofNullable(this.status);
     }

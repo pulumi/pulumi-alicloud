@@ -21,6 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:schedulerx/appGroup:AppGroup":
+		r = &AppGroup{}
+	case "alicloud:schedulerx/job:Job":
+		r = &Job{}
 	case "alicloud:schedulerx/namespace:Namespace":
 		r = &Namespace{}
 	default:
@@ -36,6 +40,16 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"schedulerx/appGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"schedulerx/job",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"schedulerx/namespace",

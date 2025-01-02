@@ -1249,7 +1249,7 @@ class GetDdosCooDomainResourcesResourceResult(dict):
         :param bool http2_enable: Whether Http2.0 is enabled.
         :param str https_ext: The advanced HTTPS settings.
         :param str id: The ID of the Domain Resource.
-        :param Sequence[str] instance_ids: A list ID of instance that you want to associate.
+        :param Sequence[str] instance_ids: A ID list of Ddoscoo instance.
         :param str policy_mode: The type of backload algorithm.
         :param bool proxy_enabled: Whether the website service forwarding rules have been turned on.
         :param Sequence['GetDdosCooDomainResourcesResourceProxyTypeArgs'] proxy_types: Protocol type and port number information.
@@ -1354,7 +1354,7 @@ class GetDdosCooDomainResourcesResourceResult(dict):
     @pulumi.getter(name="instanceIds")
     def instance_ids(self) -> Sequence[str]:
         """
-        A list ID of instance that you want to associate.
+        A ID list of Ddoscoo instance.
         """
         return pulumi.get(self, "instance_ids")
 
@@ -1649,7 +1649,7 @@ class GetDdosCooPortsPortResult(dict):
         :param str frontend_port: The forwarding port.
         :param str frontend_protocol: The forwarding protocol. Valid values `tcp` and `udp`.
         :param str id: The ID of the Port.
-        :param str instance_id: The Ddoscoo instance ID.
+        :param str instance_id: The DdosCoo instance ID.
         :param Sequence[str] real_servers: List of source IP addresses.
         """
         pulumi.set(__self__, "backend_port", backend_port)
@@ -1695,7 +1695,7 @@ class GetDdosCooPortsPortResult(dict):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> str:
         """
-        The Ddoscoo instance ID.
+        The DdosCoo instance ID.
         """
         return pulumi.get(self, "instance_id")
 

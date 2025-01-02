@@ -97,6 +97,7 @@ type GetInstancesArgs struct {
 
 // A collection of values returned by getInstances.
 type GetInstancesResult struct {
+	// The architecture type of the instance.
 	ArchitectureType *string `pulumi:"architectureType"`
 	EditionType      *string `pulumi:"editionType"`
 	EnableDetails    *bool   `pulumi:"enableDetails"`
@@ -108,10 +109,9 @@ type GetInstancesResult struct {
 	Id string `pulumi:"id"`
 	// A list of KVStore Instance IDs.
 	Ids []string `pulumi:"ids"`
-	// (Optional) Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
-	// For more information, see [Instance type table](https://www.alibabacloud.com/help/en/redis/product-overview/overview-4).
+	// Type of the applied Tair (Redis OSS-Compatible) And Memcached (KVStore) Classic Instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/en/redis/product-overview/overview-4).
 	InstanceClass *string `pulumi:"instanceClass"`
-	// (Optional) Database type. Valid Values: `Memcache`, `Redis`. If no value is specified, all types are returned.
+	// Database type. Valid Values: `Memcache`, `Redis`. If no value is specified, all types are returned.
 	InstanceType *string `pulumi:"instanceType"`
 	// A list of KVStore Instances. Its every element contains the following attributes:
 	Instances []GetInstancesInstance `pulumi:"instances"`
@@ -122,12 +122,15 @@ type GetInstancesResult struct {
 	NetworkType *string `pulumi:"networkType"`
 	OutputFile  *string `pulumi:"outputFile"`
 	// Billing method. Valid Values: `PostPaid` for  Pay-As-You-Go and `PrePaid` for subscription.
-	PaymentType     *string `pulumi:"paymentType"`
+	PaymentType *string `pulumi:"paymentType"`
+	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	SearchKey       *string `pulumi:"searchKey"`
+	// The keyword used for fuzzy search. The keyword can be based on an instance name or an instance ID.
+	SearchKey *string `pulumi:"searchKey"`
 	// Status of the instance.
-	Status *string           `pulumi:"status"`
-	Tags   map[string]string `pulumi:"tags"`
+	Status *string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
 	// VPC ID the instance belongs to.
 	VpcId *string `pulumi:"vpcId"`
 	// VSwitch ID the instance belongs to.
@@ -208,6 +211,7 @@ func (o GetInstancesResultOutput) ToGetInstancesResultOutputWithContext(ctx cont
 	return o
 }
 
+// The architecture type of the instance.
 func (o GetInstancesResultOutput) ArchitectureType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.ArchitectureType }).(pulumi.StringPtrOutput)
 }
@@ -243,13 +247,12 @@ func (o GetInstancesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstancesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
-// (Optional) Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
-// For more information, see [Instance type table](https://www.alibabacloud.com/help/en/redis/product-overview/overview-4).
+// Type of the applied Tair (Redis OSS-Compatible) And Memcached (KVStore) Classic Instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/en/redis/product-overview/overview-4).
 func (o GetInstancesResultOutput) InstanceClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.InstanceClass }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Database type. Valid Values: `Memcache`, `Redis`. If no value is specified, all types are returned.
+// Database type. Valid Values: `Memcache`, `Redis`. If no value is specified, all types are returned.
 func (o GetInstancesResultOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
 }
@@ -282,10 +285,12 @@ func (o GetInstancesResultOutput) PaymentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.PaymentType }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the resource group to which the instance belongs.
 func (o GetInstancesResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
+// The keyword used for fuzzy search. The keyword can be based on an instance name or an instance ID.
 func (o GetInstancesResultOutput) SearchKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.SearchKey }).(pulumi.StringPtrOutput)
 }
@@ -295,6 +300,7 @@ func (o GetInstancesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// A mapping of tags to assign to the resource.
 func (o GetInstancesResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetInstancesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

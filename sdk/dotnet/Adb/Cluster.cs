@@ -147,6 +147,9 @@ namespace Pulumi.AliCloud.Adb
         [Output("enableSsl")]
         public Output<bool?> EnableSsl { get; private set; } = null!;
 
+        [Output("kernelVersion")]
+        public Output<string> KernelVersion { get; private set; } = null!;
+
         [Output("kmsId")]
         public Output<string?> KmsId { get; private set; } = null!;
 
@@ -203,6 +206,9 @@ namespace Pulumi.AliCloud.Adb
 
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        [Output("switchMode")]
+        public Output<int?> SwitchMode { get; private set; } = null!;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
@@ -338,6 +344,9 @@ namespace Pulumi.AliCloud.Adb
         [Input("enableSsl")]
         public Input<bool>? EnableSsl { get; set; }
 
+        [Input("kernelVersion")]
+        public Input<string>? KernelVersion { get; set; }
+
         [Input("kmsId")]
         public Input<string>? KmsId { get; set; }
 
@@ -391,6 +400,9 @@ namespace Pulumi.AliCloud.Adb
             get => _securityIps ?? (_securityIps = new InputList<string>());
             set => _securityIps = value;
         }
+
+        [Input("switchMode")]
+        public Input<int>? SwitchMode { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
@@ -500,6 +512,9 @@ namespace Pulumi.AliCloud.Adb
         [Input("enableSsl")]
         public Input<bool>? EnableSsl { get; set; }
 
+        [Input("kernelVersion")]
+        public Input<string>? KernelVersion { get; set; }
+
         [Input("kmsId")]
         public Input<string>? KmsId { get; set; }
 
@@ -562,6 +577,9 @@ namespace Pulumi.AliCloud.Adb
 
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("switchMode")]
+        public Input<int>? SwitchMode { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;

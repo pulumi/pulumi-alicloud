@@ -384,9 +384,11 @@ class GetInstancesInstanceResult(dict):
                  zone_id: str):
         """
         :param str architecture_type: The type of the architecture. Valid values: `cluster`, `standard` and `SplitRW`.
+        :param bool auto_renew: Indicates whether auto-renewal is enabled for the instance.
+        :param int auto_renew_period: The duration for which the instance is automatically renewed. Unit: months.
         :param str availability_zone: It has been deprecated from provider version 1.101.0 and `zone_id` instead.
         :param int bandwidth: Instance bandwidth limit. Unit: Mbit/s.
-        :param int capacity: Capacity of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. Unit: MB.
+        :param int capacity: Capacity of the applied Tair (Redis OSS-Compatible) And Memcached (KVStore) Classic Instance. Unit: MB.
         :param str charge_type: It has been deprecated from provider version 1.101.0 and `payment_type` instead.
         :param Mapping[str, str] config: The parameter configuration of the instance.
         :param str connection_domain: Instance connection domain (only Intranet access supported).
@@ -402,8 +404,11 @@ class GetInstancesInstanceResult(dict):
         :param bool has_renew_change_order: Indicates whether there was an order of renewal with configuration change that had not taken effect.
         :param str id: The ID of the instance.
         :param str instance_class: Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
+        :param bool instance_release_protection: Indicates whether the release protection feature is enabled for the instance.
         :param str instance_type: The engine type of the KVStore DBInstance. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
         :param bool is_rds: Indicates whether the instance is managed by Relational Database Service (RDS).
+        :param str maintain_end_time: The end time of the maintenance window. The time is in the HH:mmZ format. The time is displayed in UTC.
+        :param str maintain_start_time: The start time of the maintenance window. The time is in the HH:mmZ format. The time is displayed in UTC.
         :param int max_connections: Instance connection quantity limit. Unit: count.
         :param str name: It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
         :param str network_type: The type of the network. Valid values: `CLASSIC`, `VPC`.
@@ -417,10 +422,16 @@ class GetInstancesInstanceResult(dict):
         :param str replacate_id: The logical ID of the replica instance.
         :param str resource_group_id: The ID of the resource group.
         :param str search_key: The name of the instance.
-        :param str secondary_zone_id: (Optional, Available since v1.128.0) The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+        :param str secondary_zone_id: The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+        :param str security_group_id: The ID of the security group associated with the instance.
+        :param str security_ip_group_attribute: By default, this parameter is left empty. The attribute of the whitelist. The console does not display the whitelist whose value of this parameter is hidden
+        :param str security_ip_group_name: The name of the IP address whitelist.
+        :param Sequence[str] security_ips: The IP addresses in the whitelist.
+        :param str ssl_enable: Indicates whether SSL encryption is enabled.
         :param str status: The status of the KVStore DBInstance. Valid values: `Changing`, `CleaningUpExpiredData`, `Creating`, `Flushing`, `HASwitching`, `Inactive`, `MajorVersionUpgrading`, `Migrating`, `NetworkModifying`, `Normal`, `Rebooting`, `SSLModifying`, `Transforming`, `ZoneMigrating`.
         :param Mapping[str, str] tags: Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
         :param str user_name: The username of the instance.
+        :param str vpc_auth_mode: Indicates whether password authentication is enabled. Valid values: Open, Close.
         :param str vpc_cloud_instance_id: Connection port of the instance.
         :param str vpc_id: Used to retrieve instances belong to specified VPC.
         :param str vswitch_id: Used to retrieve instances belong to specified `vswitch` resources.
@@ -491,11 +502,17 @@ class GetInstancesInstanceResult(dict):
     @property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> bool:
+        """
+        Indicates whether auto-renewal is enabled for the instance.
+        """
         return pulumi.get(self, "auto_renew")
 
     @property
     @pulumi.getter(name="autoRenewPeriod")
     def auto_renew_period(self) -> int:
+        """
+        The duration for which the instance is automatically renewed. Unit: months.
+        """
         return pulumi.get(self, "auto_renew_period")
 
     @property
@@ -518,7 +535,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter
     def capacity(self) -> int:
         """
-        Capacity of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. Unit: MB.
+        Capacity of the applied Tair (Redis OSS-Compatible) And Memcached (KVStore) Classic Instance. Unit: MB.
         """
         return pulumi.get(self, "capacity")
 
@@ -645,6 +662,9 @@ class GetInstancesInstanceResult(dict):
     @property
     @pulumi.getter(name="instanceReleaseProtection")
     def instance_release_protection(self) -> bool:
+        """
+        Indicates whether the release protection feature is enabled for the instance.
+        """
         return pulumi.get(self, "instance_release_protection")
 
     @property
@@ -666,11 +686,17 @@ class GetInstancesInstanceResult(dict):
     @property
     @pulumi.getter(name="maintainEndTime")
     def maintain_end_time(self) -> str:
+        """
+        The end time of the maintenance window. The time is in the HH:mmZ format. The time is displayed in UTC.
+        """
         return pulumi.get(self, "maintain_end_time")
 
     @property
     @pulumi.getter(name="maintainStartTime")
     def maintain_start_time(self) -> str:
+        """
+        The start time of the maintenance window. The time is in the HH:mmZ format. The time is displayed in UTC.
+        """
         return pulumi.get(self, "maintain_start_time")
 
     @property
@@ -781,33 +807,48 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="secondaryZoneId")
     def secondary_zone_id(self) -> str:
         """
-        (Optional, Available since v1.128.0) The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+        The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
         """
         return pulumi.get(self, "secondary_zone_id")
 
     @property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> str:
+        """
+        The ID of the security group associated with the instance.
+        """
         return pulumi.get(self, "security_group_id")
 
     @property
     @pulumi.getter(name="securityIpGroupAttribute")
     def security_ip_group_attribute(self) -> str:
+        """
+        By default, this parameter is left empty. The attribute of the whitelist. The console does not display the whitelist whose value of this parameter is hidden
+        """
         return pulumi.get(self, "security_ip_group_attribute")
 
     @property
     @pulumi.getter(name="securityIpGroupName")
     def security_ip_group_name(self) -> str:
+        """
+        The name of the IP address whitelist.
+        """
         return pulumi.get(self, "security_ip_group_name")
 
     @property
     @pulumi.getter(name="securityIps")
     def security_ips(self) -> Sequence[str]:
+        """
+        The IP addresses in the whitelist.
+        """
         return pulumi.get(self, "security_ips")
 
     @property
     @pulumi.getter(name="sslEnable")
     def ssl_enable(self) -> str:
+        """
+        Indicates whether SSL encryption is enabled.
+        """
         return pulumi.get(self, "ssl_enable")
 
     @property
@@ -837,6 +878,9 @@ class GetInstancesInstanceResult(dict):
     @property
     @pulumi.getter(name="vpcAuthMode")
     def vpc_auth_mode(self) -> str:
+        """
+        Indicates whether password authentication is enabled. Valid values: Open, Close.
+        """
         return pulumi.get(self, "vpc_auth_mode")
 
     @property

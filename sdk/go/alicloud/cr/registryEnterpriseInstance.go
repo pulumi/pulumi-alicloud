@@ -85,27 +85,28 @@ type RegistryEnterpriseInstance struct {
 	CreatedTime pulumi.StringOutput `pulumi:"createdTime"`
 	// Custom OSS Bucket name
 	CustomOssBucket pulumi.StringPtrOutput `pulumi:"customOssBucket"`
-	// Whether to use the default OSS Bucket
+	// Whether to use the default OSS Bucket. Value:
 	DefaultOssBucket pulumi.StringPtrOutput `pulumi:"defaultOssBucket"`
 	// Expiration Time
 	EndTime pulumi.StringOutput `pulumi:"endTime"`
-	// Security scan engine
+	// The security scan engine used by the Enterprise Edition of Container Image Service. Value:
+	// - `ACR`: Uses the Trivy scan engine provided by default.
+	// - `SAS`: uses the enhanced cloud security scan engine.
 	ImageScanner pulumi.StringPtrOutput `pulumi:"imageScanner"`
+	// (Available since v1.240.0) Instance Network Access Endpoint List
+	InstanceEndpoints RegistryEnterpriseInstanceInstanceEndpointArrayOutput `pulumi:"instanceEndpoints"`
 	// InstanceName
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
 	// The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
-	//
-	// Basic: Basic instance
-	//
-	// Standard: Standard instance
-	//
-	// Advanced: Advanced Edition Instance
+	// - `Basic`: Basic instance
+	// - `Standard`: Standard instance
+	// - `Advanced`: Advanced Edition Instance
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapOutput `pulumi:"kmsEncryptionContext"`
-	// Permanent access credentials of the instance
+	// Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// Payment type, value:
 	// - Subscription: Prepaid.
@@ -188,27 +189,28 @@ type registryEnterpriseInstanceState struct {
 	CreatedTime *string `pulumi:"createdTime"`
 	// Custom OSS Bucket name
 	CustomOssBucket *string `pulumi:"customOssBucket"`
-	// Whether to use the default OSS Bucket
+	// Whether to use the default OSS Bucket. Value:
 	DefaultOssBucket *string `pulumi:"defaultOssBucket"`
 	// Expiration Time
 	EndTime *string `pulumi:"endTime"`
-	// Security scan engine
+	// The security scan engine used by the Enterprise Edition of Container Image Service. Value:
+	// - `ACR`: Uses the Trivy scan engine provided by default.
+	// - `SAS`: uses the enhanced cloud security scan engine.
 	ImageScanner *string `pulumi:"imageScanner"`
+	// (Available since v1.240.0) Instance Network Access Endpoint List
+	InstanceEndpoints []RegistryEnterpriseInstanceInstanceEndpoint `pulumi:"instanceEndpoints"`
 	// InstanceName
 	InstanceName *string `pulumi:"instanceName"`
 	// The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
-	//
-	// Basic: Basic instance
-	//
-	// Standard: Standard instance
-	//
-	// Advanced: Advanced Edition Instance
+	// - `Basic`: Basic instance
+	// - `Standard`: Standard instance
+	// - `Advanced`: Advanced Edition Instance
 	InstanceType *string `pulumi:"instanceType"`
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
-	// Permanent access credentials of the instance
+	// Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
 	Password *string `pulumi:"password"`
 	// Payment type, value:
 	// - Subscription: Prepaid.
@@ -246,27 +248,28 @@ type RegistryEnterpriseInstanceState struct {
 	CreatedTime pulumi.StringPtrInput
 	// Custom OSS Bucket name
 	CustomOssBucket pulumi.StringPtrInput
-	// Whether to use the default OSS Bucket
+	// Whether to use the default OSS Bucket. Value:
 	DefaultOssBucket pulumi.StringPtrInput
 	// Expiration Time
 	EndTime pulumi.StringPtrInput
-	// Security scan engine
+	// The security scan engine used by the Enterprise Edition of Container Image Service. Value:
+	// - `ACR`: Uses the Trivy scan engine provided by default.
+	// - `SAS`: uses the enhanced cloud security scan engine.
 	ImageScanner pulumi.StringPtrInput
+	// (Available since v1.240.0) Instance Network Access Endpoint List
+	InstanceEndpoints RegistryEnterpriseInstanceInstanceEndpointArrayInput
 	// InstanceName
 	InstanceName pulumi.StringPtrInput
 	// The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
-	//
-	// Basic: Basic instance
-	//
-	// Standard: Standard instance
-	//
-	// Advanced: Advanced Edition Instance
+	// - `Basic`: Basic instance
+	// - `Standard`: Standard instance
+	// - `Advanced`: Advanced Edition Instance
 	InstanceType pulumi.StringPtrInput
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapInput
-	// Permanent access credentials of the instance
+	// Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
 	Password pulumi.StringPtrInput
 	// Payment type, value:
 	// - Subscription: Prepaid.
@@ -302,25 +305,24 @@ func (RegistryEnterpriseInstanceState) ElementType() reflect.Type {
 type registryEnterpriseInstanceArgs struct {
 	// Custom OSS Bucket name
 	CustomOssBucket *string `pulumi:"customOssBucket"`
-	// Whether to use the default OSS Bucket
+	// Whether to use the default OSS Bucket. Value:
 	DefaultOssBucket *string `pulumi:"defaultOssBucket"`
-	// Security scan engine
+	// The security scan engine used by the Enterprise Edition of Container Image Service. Value:
+	// - `ACR`: Uses the Trivy scan engine provided by default.
+	// - `SAS`: uses the enhanced cloud security scan engine.
 	ImageScanner *string `pulumi:"imageScanner"`
 	// InstanceName
 	InstanceName string `pulumi:"instanceName"`
 	// The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
-	//
-	// Basic: Basic instance
-	//
-	// Standard: Standard instance
-	//
-	// Advanced: Advanced Edition Instance
+	// - `Basic`: Basic instance
+	// - `Standard`: Standard instance
+	// - `Advanced`: Advanced Edition Instance
 	InstanceType string `pulumi:"instanceType"`
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
-	// Permanent access credentials of the instance
+	// Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
 	Password *string `pulumi:"password"`
 	// Payment type, value:
 	// - Subscription: Prepaid.
@@ -349,25 +351,24 @@ type registryEnterpriseInstanceArgs struct {
 type RegistryEnterpriseInstanceArgs struct {
 	// Custom OSS Bucket name
 	CustomOssBucket pulumi.StringPtrInput
-	// Whether to use the default OSS Bucket
+	// Whether to use the default OSS Bucket. Value:
 	DefaultOssBucket pulumi.StringPtrInput
-	// Security scan engine
+	// The security scan engine used by the Enterprise Edition of Container Image Service. Value:
+	// - `ACR`: Uses the Trivy scan engine provided by default.
+	// - `SAS`: uses the enhanced cloud security scan engine.
 	ImageScanner pulumi.StringPtrInput
 	// InstanceName
 	InstanceName pulumi.StringInput
 	// The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
-	//
-	// Basic: Basic instance
-	//
-	// Standard: Standard instance
-	//
-	// Advanced: Advanced Edition Instance
+	// - `Basic`: Basic instance
+	// - `Standard`: Standard instance
+	// - `Advanced`: Advanced Edition Instance
 	InstanceType pulumi.StringInput
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapInput
-	// Permanent access credentials of the instance
+	// Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
 	Password pulumi.StringPtrInput
 	// Payment type, value:
 	// - Subscription: Prepaid.
@@ -496,7 +497,7 @@ func (o RegistryEnterpriseInstanceOutput) CustomOssBucket() pulumi.StringPtrOutp
 	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringPtrOutput { return v.CustomOssBucket }).(pulumi.StringPtrOutput)
 }
 
-// Whether to use the default OSS Bucket
+// Whether to use the default OSS Bucket. Value:
 func (o RegistryEnterpriseInstanceOutput) DefaultOssBucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringPtrOutput { return v.DefaultOssBucket }).(pulumi.StringPtrOutput)
 }
@@ -506,9 +507,18 @@ func (o RegistryEnterpriseInstanceOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
 }
 
-// Security scan engine
+// The security scan engine used by the Enterprise Edition of Container Image Service. Value:
+// - `ACR`: Uses the Trivy scan engine provided by default.
+// - `SAS`: uses the enhanced cloud security scan engine.
 func (o RegistryEnterpriseInstanceOutput) ImageScanner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringPtrOutput { return v.ImageScanner }).(pulumi.StringPtrOutput)
+}
+
+// (Available since v1.240.0) Instance Network Access Endpoint List
+func (o RegistryEnterpriseInstanceOutput) InstanceEndpoints() RegistryEnterpriseInstanceInstanceEndpointArrayOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseInstance) RegistryEnterpriseInstanceInstanceEndpointArrayOutput {
+		return v.InstanceEndpoints
+	}).(RegistryEnterpriseInstanceInstanceEndpointArrayOutput)
 }
 
 // InstanceName
@@ -517,12 +527,9 @@ func (o RegistryEnterpriseInstanceOutput) InstanceName() pulumi.StringOutput {
 }
 
 // The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
-//
-// Basic: Basic instance
-//
-// Standard: Standard instance
-//
-// Advanced: Advanced Edition Instance
+// - `Basic`: Basic instance
+// - `Standard`: Standard instance
+// - `Advanced`: Advanced Edition Instance
 func (o RegistryEnterpriseInstanceOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
 }
@@ -537,7 +544,7 @@ func (o RegistryEnterpriseInstanceOutput) KmsEncryptionContext() pulumi.StringMa
 	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringMapOutput { return v.KmsEncryptionContext }).(pulumi.StringMapOutput)
 }
 
-// Permanent access credentials of the instance
+// Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
 func (o RegistryEnterpriseInstanceOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }

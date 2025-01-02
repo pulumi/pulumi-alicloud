@@ -87,7 +87,6 @@ namespace Pulumi.AliCloud.Waf.Outputs
         public readonly int Version;
         /// <summary>
         /// The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
-        /// ```
         /// </summary>
         public readonly int WriteTime;
 

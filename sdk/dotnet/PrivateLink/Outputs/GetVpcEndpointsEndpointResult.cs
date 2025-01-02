@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.PrivateLink.Outputs
         /// </summary>
         public readonly string VpcEndpointName;
         /// <summary>
-        /// The private network to which the terminal node belongs.
+        /// The private network to which the terminal node belongs..
         /// </summary>
         public readonly string VpcId;
 

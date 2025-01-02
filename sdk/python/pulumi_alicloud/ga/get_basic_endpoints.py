@@ -170,7 +170,7 @@ def get_basic_endpoints(endpoint_group_id: Optional[str] = None,
     """
     This data source provides the Global Accelerator (GA) Basic Endpoints of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.194.0+.
+    > **NOTE:** Available since v1.194.0.
 
     ## Example Usage
 
@@ -234,7 +234,7 @@ def get_basic_endpoints_output(endpoint_group_id: Optional[pulumi.Input[str]] = 
     """
     This data source provides the Global Accelerator (GA) Basic Endpoints of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.194.0+.
+    > **NOTE:** Available since v1.194.0.
 
     ## Example Usage
 

@@ -310,7 +310,7 @@ class Order(pulumi.CustomResource):
 
         order = alicloud.marketplace.Order("order",
             product_code="cmapi033136",
-            pay_type="prepay",
+            pay_type="PrePaid",
             quantity=1,
             duration=1,
             pricing_cycle="Month",
@@ -354,7 +354,7 @@ class Order(pulumi.CustomResource):
 
         order = alicloud.marketplace.Order("order",
             product_code="cmapi033136",
-            pay_type="prepay",
+            pay_type="PrePaid",
             quantity=1,
             duration=1,
             pricing_cycle="Month",

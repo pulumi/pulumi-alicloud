@@ -38,6 +38,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('accountId')
 
     @property
+    def account_type(self) -> Optional[str]:
+        return __config__.get('accountType')
+
+    @property
     def assume_role(self) -> Optional[str]:
         return __config__.get('assumeRole')
 

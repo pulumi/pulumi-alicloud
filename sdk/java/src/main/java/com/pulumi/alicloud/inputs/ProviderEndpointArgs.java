@@ -60,6 +60,13 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.adb);
     }
 
+    @Import(name="aiworkspace")
+    private @Nullable Output<String> aiworkspace;
+
+    public Optional<Output<String>> aiworkspace() {
+        return Optional.ofNullable(this.aiworkspace);
+    }
+
     /**
      * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom alb endpoints.
      * 
@@ -118,6 +125,36 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> alikafka() {
         return Optional.ofNullable(this.alikafka);
+    }
+
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom onsproxy endpoints.
+     * 
+     */
+    @Import(name="amqp")
+    private @Nullable Output<String> amqp;
+
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom onsproxy endpoints.
+     * 
+     */
+    public Optional<Output<String>> amqp() {
+        return Optional.ofNullable(this.amqp);
+    }
+
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ddosbasic endpoints.
+     * 
+     */
+    @Import(name="antiddosPublic")
+    private @Nullable Output<String> antiddosPublic;
+
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ddosbasic endpoints.
+     * 
+     */
+    public Optional<Output<String>> antiddosPublic() {
+        return Optional.ofNullable(this.antiddosPublic);
     }
 
     /**
@@ -331,6 +368,21 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom beebot endpoints.
+     * 
+     */
+    @Import(name="chatbot")
+    private @Nullable Output<String> chatbot;
+
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom beebot endpoints.
+     * 
+     */
+    public Optional<Output<String>> chatbot() {
+        return Optional.ofNullable(this.chatbot);
+    }
+
+    /**
      * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom clickhouse endpoints.
      * 
      */
@@ -529,6 +581,21 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
      * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dataworkspublic endpoints.
      * 
      */
+    @Import(name="dataworksPublic")
+    private @Nullable Output<String> dataworksPublic;
+
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dataworkspublic endpoints.
+     * 
+     */
+    public Optional<Output<String>> dataworksPublic() {
+        return Optional.ofNullable(this.dataworksPublic);
+    }
+
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dataworkspublic endpoints.
+     * 
+     */
     @Import(name="dataworkspublic")
     private @Nullable Output<String> dataworkspublic;
 
@@ -553,6 +620,21 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> dbfs() {
         return Optional.ofNullable(this.dbfs);
+    }
+
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom cbs endpoints.
+     * 
+     */
+    @Import(name="dbs")
+    private @Nullable Output<String> dbs;
+
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom cbs endpoints.
+     * 
+     */
+    public Optional<Output<String>> dbs() {
+        return Optional.ofNullable(this.dbs);
     }
 
     /**
@@ -630,6 +712,13 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.dds);
     }
 
+    @Import(name="devopsRdc")
+    private @Nullable Output<String> devopsRdc;
+
+    public Optional<Output<String>> devopsRdc() {
+        return Optional.ofNullable(this.devopsRdc);
+    }
+
     /**
      * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom devopsrdc endpoints.
      * 
@@ -643,6 +732,21 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> devopsrdc() {
         return Optional.ofNullable(this.devopsrdc);
+    }
+
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom alidfs endpoints.
+     * 
+     */
+    @Import(name="dfs")
+    private @Nullable Output<String> dfs;
+
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom alidfs endpoints.
+     * 
+     */
+    public Optional<Output<String>> dfs() {
+        return Optional.ofNullable(this.dfs);
     }
 
     /**
@@ -758,6 +862,21 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dysmsapi endpoints.
+     * 
+     */
+    @Import(name="dysmsapi")
+    private @Nullable Output<String> dysmsapi;
+
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dysmsapi endpoints.
+     * 
+     */
+    public Optional<Output<String>> dysmsapi() {
+        return Optional.ofNullable(this.dysmsapi);
+    }
+
+    /**
      * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom eais endpoints.
      * 
      */
@@ -785,6 +904,21 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> ebs() {
         return Optional.ofNullable(this.ebs);
+    }
+
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom gwsecd endpoints.
+     * 
+     */
+    @Import(name="ecd")
+    private @Nullable Output<String> ecd;
+
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom gwsecd endpoints.
+     * 
+     */
+    public Optional<Output<String>> ecd() {
+        return Optional.ofNullable(this.ecd);
     }
 
     /**
@@ -845,6 +979,21 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> edasschedulerx() {
         return Optional.ofNullable(this.edasschedulerx);
+    }
+
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom edsuser endpoints.
+     * 
+     */
+    @Import(name="edsUser")
+    private @Nullable Output<String> edsUser;
+
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom edsuser endpoints.
+     * 
+     */
+    public Optional<Output<String>> edsUser() {
+        return Optional.ofNullable(this.edsUser);
     }
 
     /**
@@ -967,6 +1116,13 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.ens);
     }
 
+    @Import(name="esa")
+    private @Nullable Output<String> esa;
+
+    public Optional<Output<String>> esa() {
+        return Optional.ofNullable(this.esa);
+    }
+
     /**
      * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Autoscaling endpoints.
      * 
@@ -1010,6 +1166,21 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> fc() {
         return Optional.ofNullable(this.fc);
+    }
+
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Function Computing endpoints.
+     * 
+     */
+    @Import(name="fcOpen")
+    private @Nullable Output<String> fcOpen;
+
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Function Computing endpoints.
+     * 
+     */
+    public Optional<Output<String>> fcOpen() {
+        return Optional.ofNullable(this.fcOpen);
     }
 
     /**
@@ -1061,6 +1232,21 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
      * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom gds endpoints.
      * 
      */
+    @Import(name="gdb")
+    private @Nullable Output<String> gdb;
+
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom gds endpoints.
+     * 
+     */
+    public Optional<Output<String>> gdb() {
+        return Optional.ofNullable(this.gdb);
+    }
+
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom gds endpoints.
+     * 
+     */
     @Import(name="gds")
     private @Nullable Output<String> gds;
 
@@ -1085,6 +1271,13 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> gpdb() {
         return Optional.ofNullable(this.gpdb);
+    }
+
+    @Import(name="gwlb")
+    private @Nullable Output<String> gwlb;
+
+    public Optional<Output<String>> gwlb() {
+        return Optional.ofNullable(this.gwlb);
     }
 
     /**
@@ -1328,6 +1521,21 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom MNS endpoints.
+     * 
+     */
+    @Import(name="mnsOpen")
+    private @Nullable Output<String> mnsOpen;
+
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom MNS endpoints.
+     * 
+     */
+    public Optional<Output<String>> mnsOpen() {
+        return Optional.ofNullable(this.mnsOpen);
+    }
+
+    /**
      * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom mscopensubscription endpoints.
      * 
      */
@@ -1400,6 +1608,21 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> oceanbase() {
         return Optional.ofNullable(this.oceanbase);
+    }
+
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom oceanbase endpoints.
+     * 
+     */
+    @Import(name="oceanbasepro")
+    private @Nullable Output<String> oceanbasepro;
+
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom oceanbase endpoints.
+     * 
+     */
+    public Optional<Output<String>> oceanbasepro() {
+        return Optional.ofNullable(this.oceanbasepro);
     }
 
     /**
@@ -1508,6 +1731,21 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom DRDS endpoints.
+     * 
+     */
+    @Import(name="polardbx")
+    private @Nullable Output<String> polardbx;
+
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom DRDS endpoints.
+     * 
+     */
+    public Optional<Output<String>> polardbx() {
+        return Optional.ofNullable(this.polardbx);
+    }
+
+    /**
      * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom privatelink endpoints.
      * 
      */
@@ -1550,6 +1788,21 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> quickbi() {
         return Optional.ofNullable(this.quickbi);
+    }
+
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom quickbi endpoints.
+     * 
+     */
+    @Import(name="quickbiPublic")
+    private @Nullable Output<String> quickbiPublic;
+
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom quickbi endpoints.
+     * 
+     */
+    public Optional<Output<String>> quickbiPublic() {
+        return Optional.ofNullable(this.quickbiPublic);
     }
 
     /**
@@ -1642,6 +1895,13 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.resourcemanager);
     }
 
+    @Import(name="resourcesharing")
+    private @Nullable Output<String> resourcesharing;
+
+    public Optional<Output<String>> resourcesharing() {
+        return Optional.ofNullable(this.resourcesharing);
+    }
+
     /**
      * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom resourcesharing endpoints.
      * 
@@ -1657,6 +1917,13 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.ressharing);
     }
 
+    @Import(name="rocketmq")
+    private @Nullable Output<String> rocketmq;
+
+    public Optional<Output<String>> rocketmq() {
+        return Optional.ofNullable(this.rocketmq);
+    }
+
     /**
      * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ros endpoints.
      * 
@@ -1670,6 +1937,21 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> ros() {
         return Optional.ofNullable(this.ros);
+    }
+
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom serverless endpoints.
+     * 
+     */
+    @Import(name="sae")
+    private @Nullable Output<String> sae;
+
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom serverless endpoints.
+     * 
+     */
+    public Optional<Output<String>> sae() {
+        return Optional.ofNullable(this.sae);
     }
 
     /**
@@ -1700,6 +1982,21 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> scdn() {
         return Optional.ofNullable(this.scdn);
+    }
+
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom edasschedulerx endpoints.
+     * 
+     */
+    @Import(name="schedulerx2")
+    private @Nullable Output<String> schedulerx2;
+
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom edasschedulerx endpoints.
+     * 
+     */
+    public Optional<Output<String>> schedulerx2() {
+        return Optional.ofNullable(this.schedulerx2);
     }
 
     /**
@@ -1745,6 +2042,21 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> serverless() {
         return Optional.ofNullable(this.serverless);
+    }
+
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom srvcatalog endpoints.
+     * 
+     */
+    @Import(name="servicecatalog")
+    private @Nullable Output<String> servicecatalog;
+
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom srvcatalog endpoints.
+     * 
+     */
+    public Optional<Output<String>> servicecatalog() {
+        return Optional.ofNullable(this.servicecatalog);
     }
 
     /**
@@ -1853,6 +2165,21 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom swas endpoints.
+     * 
+     */
+    @Import(name="swasOpen")
+    private @Nullable Output<String> swasOpen;
+
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom swas endpoints.
+     * 
+     */
+    public Optional<Output<String>> swasOpen() {
+        return Optional.ofNullable(this.swasOpen);
+    }
+
+    /**
      * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom tag endpoints.
      * 
      */
@@ -1895,6 +2222,13 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> vpc() {
         return Optional.ofNullable(this.vpc);
+    }
+
+    @Import(name="vpcipam")
+    private @Nullable Output<String> vpcipam;
+
+    public Optional<Output<String>> vpcipam() {
+        return Optional.ofNullable(this.vpcipam);
     }
 
     /**
@@ -1963,10 +2297,13 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         this.acr = $.acr;
         this.actiontrail = $.actiontrail;
         this.adb = $.adb;
+        this.aiworkspace = $.aiworkspace;
         this.alb = $.alb;
         this.alidfs = $.alidfs;
         this.alidns = $.alidns;
         this.alikafka = $.alikafka;
+        this.amqp = $.amqp;
+        this.antiddosPublic = $.antiddosPublic;
         this.apigateway = $.apigateway;
         this.arms = $.arms;
         this.bastionhost = $.bastionhost;
@@ -1981,6 +2318,7 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         this.cddc = $.cddc;
         this.cdn = $.cdn;
         this.cds = $.cds;
+        this.chatbot = $.chatbot;
         this.clickhouse = $.clickhouse;
         this.cloudauth = $.cloudauth;
         this.cloudfirewall = $.cloudfirewall;
@@ -1994,14 +2332,18 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         this.cs = $.cs;
         this.das = $.das;
         this.datahub = $.datahub;
+        this.dataworksPublic = $.dataworksPublic;
         this.dataworkspublic = $.dataworkspublic;
         this.dbfs = $.dbfs;
+        this.dbs = $.dbs;
         this.dcdn = $.dcdn;
         this.ddosbasic = $.ddosbasic;
         this.ddosbgp = $.ddosbgp;
         this.ddoscoo = $.ddoscoo;
         this.dds = $.dds;
+        this.devopsRdc = $.devopsRdc;
         this.devopsrdc = $.devopsrdc;
+        this.dfs = $.dfs;
         this.dg = $.dg;
         this.dm = $.dm;
         this.dmsEnterprise = $.dmsEnterprise;
@@ -2010,12 +2352,15 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         this.drds = $.drds;
         this.dts = $.dts;
         this.dysms = $.dysms;
+        this.dysmsapi = $.dysmsapi;
         this.eais = $.eais;
         this.ebs = $.ebs;
+        this.ecd = $.ecd;
         this.eci = $.eci;
         this.ecs = $.ecs;
         this.edas = $.edas;
         this.edasschedulerx = $.edasschedulerx;
+        this.edsUser = $.edsUser;
         this.edsuser = $.edsuser;
         this.eflo = $.eflo;
         this.ehpc = $.ehpc;
@@ -2024,14 +2369,18 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         this.elasticsearch = $.elasticsearch;
         this.emr = $.emr;
         this.ens = $.ens;
+        this.esa = $.esa;
         this.ess = $.ess;
         this.eventbridge = $.eventbridge;
         this.fc = $.fc;
+        this.fcOpen = $.fcOpen;
         this.fnf = $.fnf;
         this.ga = $.ga;
         this.gaplus = $.gaplus;
+        this.gdb = $.gdb;
         this.gds = $.gds;
         this.gpdb = $.gpdb;
+        this.gwlb = $.gwlb;
         this.gwsecd = $.gwsecd;
         this.hbr = $.hbr;
         this.hcsSgw = $.hcsSgw;
@@ -2048,11 +2397,13 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         this.maxcompute = $.maxcompute;
         this.mhub = $.mhub;
         this.mns = $.mns;
+        this.mnsOpen = $.mnsOpen;
         this.mscopensubscription = $.mscopensubscription;
         this.mse = $.mse;
         this.nas = $.nas;
         this.nlb = $.nlb;
         this.oceanbase = $.oceanbase;
+        this.oceanbasepro = $.oceanbasepro;
         this.ons = $.ons;
         this.onsproxy = $.onsproxy;
         this.oos = $.oos;
@@ -2060,22 +2411,29 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         this.oss = $.oss;
         this.ots = $.ots;
         this.polardb = $.polardb;
+        this.polardbx = $.polardbx;
         this.privatelink = $.privatelink;
         this.pvtz = $.pvtz;
         this.quickbi = $.quickbi;
+        this.quickbiPublic = $.quickbiPublic;
         this.quotas = $.quotas;
         this.rKvstore = $.rKvstore;
         this.ram = $.ram;
         this.rds = $.rds;
         this.redisa = $.redisa;
         this.resourcemanager = $.resourcemanager;
+        this.resourcesharing = $.resourcesharing;
         this.ressharing = $.ressharing;
+        this.rocketmq = $.rocketmq;
         this.ros = $.ros;
+        this.sae = $.sae;
         this.sas = $.sas;
         this.scdn = $.scdn;
+        this.schedulerx2 = $.schedulerx2;
         this.sddp = $.sddp;
         this.selectdb = $.selectdb;
         this.serverless = $.serverless;
+        this.servicecatalog = $.servicecatalog;
         this.servicemesh = $.servicemesh;
         this.sgw = $.sgw;
         this.slb = $.slb;
@@ -2083,9 +2441,11 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         this.srvcatalog = $.srvcatalog;
         this.sts = $.sts;
         this.swas = $.swas;
+        this.swasOpen = $.swasOpen;
         this.tag = $.tag;
         this.vod = $.vod;
         this.vpc = $.vpc;
+        this.vpcipam = $.vpcipam;
         this.vpcpeer = $.vpcpeer;
         this.vs = $.vs;
         this.waf = $.waf;
@@ -2173,6 +2533,15 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
             return adb(Output.of(adb));
         }
 
+        public Builder aiworkspace(@Nullable Output<String> aiworkspace) {
+            $.aiworkspace = aiworkspace;
+            return this;
+        }
+
+        public Builder aiworkspace(String aiworkspace) {
+            return aiworkspace(Output.of(aiworkspace));
+        }
+
         /**
          * @param alb Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom alb endpoints.
          * 
@@ -2255,6 +2624,48 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder alikafka(String alikafka) {
             return alikafka(Output.of(alikafka));
+        }
+
+        /**
+         * @param amqp Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom onsproxy endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder amqp(@Nullable Output<String> amqp) {
+            $.amqp = amqp;
+            return this;
+        }
+
+        /**
+         * @param amqp Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom onsproxy endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder amqp(String amqp) {
+            return amqp(Output.of(amqp));
+        }
+
+        /**
+         * @param antiddosPublic Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ddosbasic endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder antiddosPublic(@Nullable Output<String> antiddosPublic) {
+            $.antiddosPublic = antiddosPublic;
+            return this;
+        }
+
+        /**
+         * @param antiddosPublic Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ddosbasic endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder antiddosPublic(String antiddosPublic) {
+            return antiddosPublic(Output.of(antiddosPublic));
         }
 
         /**
@@ -2552,6 +2963,27 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param chatbot Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom beebot endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder chatbot(@Nullable Output<String> chatbot) {
+            $.chatbot = chatbot;
+            return this;
+        }
+
+        /**
+         * @param chatbot Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom beebot endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder chatbot(String chatbot) {
+            return chatbot(Output.of(chatbot));
+        }
+
+        /**
          * @param clickhouse Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom clickhouse endpoints.
          * 
          * @return builder
@@ -2825,6 +3257,27 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param dataworksPublic Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dataworkspublic endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataworksPublic(@Nullable Output<String> dataworksPublic) {
+            $.dataworksPublic = dataworksPublic;
+            return this;
+        }
+
+        /**
+         * @param dataworksPublic Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dataworkspublic endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataworksPublic(String dataworksPublic) {
+            return dataworksPublic(Output.of(dataworksPublic));
+        }
+
+        /**
          * @param dataworkspublic Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dataworkspublic endpoints.
          * 
          * @return builder
@@ -2864,6 +3317,27 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder dbfs(String dbfs) {
             return dbfs(Output.of(dbfs));
+        }
+
+        /**
+         * @param dbs Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom cbs endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dbs(@Nullable Output<String> dbs) {
+            $.dbs = dbs;
+            return this;
+        }
+
+        /**
+         * @param dbs Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom cbs endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dbs(String dbs) {
+            return dbs(Output.of(dbs));
         }
 
         /**
@@ -2971,6 +3445,15 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
             return dds(Output.of(dds));
         }
 
+        public Builder devopsRdc(@Nullable Output<String> devopsRdc) {
+            $.devopsRdc = devopsRdc;
+            return this;
+        }
+
+        public Builder devopsRdc(String devopsRdc) {
+            return devopsRdc(Output.of(devopsRdc));
+        }
+
         /**
          * @param devopsrdc Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom devopsrdc endpoints.
          * 
@@ -2990,6 +3473,27 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder devopsrdc(String devopsrdc) {
             return devopsrdc(Output.of(devopsrdc));
+        }
+
+        /**
+         * @param dfs Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom alidfs endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dfs(@Nullable Output<String> dfs) {
+            $.dfs = dfs;
+            return this;
+        }
+
+        /**
+         * @param dfs Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom alidfs endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dfs(String dfs) {
+            return dfs(Output.of(dfs));
         }
 
         /**
@@ -3149,6 +3653,27 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param dysmsapi Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dysmsapi endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dysmsapi(@Nullable Output<String> dysmsapi) {
+            $.dysmsapi = dysmsapi;
+            return this;
+        }
+
+        /**
+         * @param dysmsapi Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dysmsapi endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dysmsapi(String dysmsapi) {
+            return dysmsapi(Output.of(dysmsapi));
+        }
+
+        /**
          * @param eais Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom eais endpoints.
          * 
          * @return builder
@@ -3188,6 +3713,27 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder ebs(String ebs) {
             return ebs(Output.of(ebs));
+        }
+
+        /**
+         * @param ecd Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom gwsecd endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ecd(@Nullable Output<String> ecd) {
+            $.ecd = ecd;
+            return this;
+        }
+
+        /**
+         * @param ecd Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom gwsecd endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ecd(String ecd) {
+            return ecd(Output.of(ecd));
         }
 
         /**
@@ -3272,6 +3818,27 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder edasschedulerx(String edasschedulerx) {
             return edasschedulerx(Output.of(edasschedulerx));
+        }
+
+        /**
+         * @param edsUser Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom edsuser endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder edsUser(@Nullable Output<String> edsUser) {
+            $.edsUser = edsUser;
+            return this;
+        }
+
+        /**
+         * @param edsUser Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom edsuser endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder edsUser(String edsUser) {
+            return edsUser(Output.of(edsUser));
         }
 
         /**
@@ -3442,6 +4009,15 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
             return ens(Output.of(ens));
         }
 
+        public Builder esa(@Nullable Output<String> esa) {
+            $.esa = esa;
+            return this;
+        }
+
+        public Builder esa(String esa) {
+            return esa(Output.of(esa));
+        }
+
         /**
          * @param ess Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Autoscaling endpoints.
          * 
@@ -3503,6 +4079,27 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder fc(String fc) {
             return fc(Output.of(fc));
+        }
+
+        /**
+         * @param fcOpen Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Function Computing endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fcOpen(@Nullable Output<String> fcOpen) {
+            $.fcOpen = fcOpen;
+            return this;
+        }
+
+        /**
+         * @param fcOpen Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Function Computing endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fcOpen(String fcOpen) {
+            return fcOpen(Output.of(fcOpen));
         }
 
         /**
@@ -3569,6 +4166,27 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param gdb Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom gds endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gdb(@Nullable Output<String> gdb) {
+            $.gdb = gdb;
+            return this;
+        }
+
+        /**
+         * @param gdb Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom gds endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gdb(String gdb) {
+            return gdb(Output.of(gdb));
+        }
+
+        /**
          * @param gds Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom gds endpoints.
          * 
          * @return builder
@@ -3608,6 +4226,15 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder gpdb(String gpdb) {
             return gpdb(Output.of(gpdb));
+        }
+
+        public Builder gwlb(@Nullable Output<String> gwlb) {
+            $.gwlb = gwlb;
+            return this;
+        }
+
+        public Builder gwlb(String gwlb) {
+            return gwlb(Output.of(gwlb));
         }
 
         /**
@@ -3947,6 +4574,27 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param mnsOpen Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom MNS endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mnsOpen(@Nullable Output<String> mnsOpen) {
+            $.mnsOpen = mnsOpen;
+            return this;
+        }
+
+        /**
+         * @param mnsOpen Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom MNS endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mnsOpen(String mnsOpen) {
+            return mnsOpen(Output.of(mnsOpen));
+        }
+
+        /**
          * @param mscopensubscription Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom mscopensubscription endpoints.
          * 
          * @return builder
@@ -4049,6 +4697,27 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder oceanbase(String oceanbase) {
             return oceanbase(Output.of(oceanbase));
+        }
+
+        /**
+         * @param oceanbasepro Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom oceanbase endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oceanbasepro(@Nullable Output<String> oceanbasepro) {
+            $.oceanbasepro = oceanbasepro;
+            return this;
+        }
+
+        /**
+         * @param oceanbasepro Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom oceanbase endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oceanbasepro(String oceanbasepro) {
+            return oceanbasepro(Output.of(oceanbasepro));
         }
 
         /**
@@ -4199,6 +4868,27 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param polardbx Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom DRDS endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder polardbx(@Nullable Output<String> polardbx) {
+            $.polardbx = polardbx;
+            return this;
+        }
+
+        /**
+         * @param polardbx Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom DRDS endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder polardbx(String polardbx) {
+            return polardbx(Output.of(polardbx));
+        }
+
+        /**
          * @param privatelink Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom privatelink endpoints.
          * 
          * @return builder
@@ -4259,6 +4949,27 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder quickbi(String quickbi) {
             return quickbi(Output.of(quickbi));
+        }
+
+        /**
+         * @param quickbiPublic Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom quickbi endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder quickbiPublic(@Nullable Output<String> quickbiPublic) {
+            $.quickbiPublic = quickbiPublic;
+            return this;
+        }
+
+        /**
+         * @param quickbiPublic Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom quickbi endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder quickbiPublic(String quickbiPublic) {
+            return quickbiPublic(Output.of(quickbiPublic));
         }
 
         /**
@@ -4387,6 +5098,15 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
             return resourcemanager(Output.of(resourcemanager));
         }
 
+        public Builder resourcesharing(@Nullable Output<String> resourcesharing) {
+            $.resourcesharing = resourcesharing;
+            return this;
+        }
+
+        public Builder resourcesharing(String resourcesharing) {
+            return resourcesharing(Output.of(resourcesharing));
+        }
+
         /**
          * @param ressharing Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom resourcesharing endpoints.
          * 
@@ -4408,6 +5128,15 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
             return ressharing(Output.of(ressharing));
         }
 
+        public Builder rocketmq(@Nullable Output<String> rocketmq) {
+            $.rocketmq = rocketmq;
+            return this;
+        }
+
+        public Builder rocketmq(String rocketmq) {
+            return rocketmq(Output.of(rocketmq));
+        }
+
         /**
          * @param ros Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ros endpoints.
          * 
@@ -4427,6 +5156,27 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder ros(String ros) {
             return ros(Output.of(ros));
+        }
+
+        /**
+         * @param sae Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom serverless endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sae(@Nullable Output<String> sae) {
+            $.sae = sae;
+            return this;
+        }
+
+        /**
+         * @param sae Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom serverless endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sae(String sae) {
+            return sae(Output.of(sae));
         }
 
         /**
@@ -4469,6 +5219,27 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder scdn(String scdn) {
             return scdn(Output.of(scdn));
+        }
+
+        /**
+         * @param schedulerx2 Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom edasschedulerx endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schedulerx2(@Nullable Output<String> schedulerx2) {
+            $.schedulerx2 = schedulerx2;
+            return this;
+        }
+
+        /**
+         * @param schedulerx2 Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom edasschedulerx endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schedulerx2(String schedulerx2) {
+            return schedulerx2(Output.of(schedulerx2));
         }
 
         /**
@@ -4532,6 +5303,27 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder serverless(String serverless) {
             return serverless(Output.of(serverless));
+        }
+
+        /**
+         * @param servicecatalog Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom srvcatalog endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder servicecatalog(@Nullable Output<String> servicecatalog) {
+            $.servicecatalog = servicecatalog;
+            return this;
+        }
+
+        /**
+         * @param servicecatalog Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom srvcatalog endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder servicecatalog(String servicecatalog) {
+            return servicecatalog(Output.of(servicecatalog));
         }
 
         /**
@@ -4682,6 +5474,27 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param swasOpen Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom swas endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder swasOpen(@Nullable Output<String> swasOpen) {
+            $.swasOpen = swasOpen;
+            return this;
+        }
+
+        /**
+         * @param swasOpen Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom swas endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder swasOpen(String swasOpen) {
+            return swasOpen(Output.of(swasOpen));
+        }
+
+        /**
          * @param tag Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom tag endpoints.
          * 
          * @return builder
@@ -4742,6 +5555,15 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder vpc(String vpc) {
             return vpc(Output.of(vpc));
+        }
+
+        public Builder vpcipam(@Nullable Output<String> vpcipam) {
+            $.vpcipam = vpcipam;
+            return this;
+        }
+
+        public Builder vpcipam(String vpcipam) {
+            return vpcipam(Output.of(vpcipam));
         }
 
         /**

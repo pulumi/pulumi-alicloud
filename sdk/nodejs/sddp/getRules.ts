@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Sddp Rules of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.132.0+.
+ * > **NOTE:** Available since v1.132.0.
  *
  * ## Example Usage
  *
@@ -111,8 +111,17 @@ export interface GetRulesArgs {
  * A collection of values returned by getRules.
  */
 export interface GetRulesResult {
+    /**
+     * Sensitive Data Identification Rules for the Type of.
+     */
     readonly category?: number;
+    /**
+     * The Content Classification.
+     */
     readonly contentCategory?: string;
+    /**
+     * Sensitive Data Identification Rules of Type. 0: the Built-in 1: The User-Defined.
+     */
     readonly customType?: number;
     readonly enableDetails?: boolean;
     /**
@@ -122,19 +131,37 @@ export interface GetRulesResult {
     readonly ids: string[];
     readonly name?: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Rule names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * Product ID.
+     */
     readonly productId?: string;
+    /**
+     * Sensitive Data Identification Rules of Risk Level ID. Valid values:1:S1, Weak Risk Level. 2:S2, Medium Risk Level. 3:S3 High Risk Level. 4:S4, the Highest Risk Level.
+     */
     readonly riskLevelId?: string;
     readonly ruleType?: number;
+    /**
+     * A list of Sddp Rules. Each element contains the following attributes:
+     */
     readonly rules: outputs.sddp.GetRulesRule[];
+    /**
+     * Sensitive Data Identification Rules Detection State of.
+     */
     readonly status?: string;
+    /**
+     * The Level of Risk.
+     */
     readonly warnLevel?: number;
 }
 /**
  * This data source provides the Sddp Rules of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.132.0+.
+ * > **NOTE:** Available since v1.132.0.
  *
  * ## Example Usage
  *

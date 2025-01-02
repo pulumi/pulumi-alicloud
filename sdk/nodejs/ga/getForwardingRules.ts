@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Global Accelerator (GA) Forwarding Rules of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.120.0+.
+ * > **NOTE:** Available since v1.120.0.
  *
  * ## Example Usage
  *
@@ -69,12 +69,18 @@ export interface GetForwardingRulesArgs {
  */
 export interface GetForwardingRulesResult {
     readonly acceleratorId: string;
+    /**
+     * A list of Ga Forwarding Rules. Each element contains the following attributes:
+     */
     readonly forwardingRules: outputs.ga.GetForwardingRulesForwardingRule[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * The ID of the listener.
+     */
     readonly listenerId: string;
     readonly outputFile?: string;
     readonly status?: string;
@@ -82,7 +88,7 @@ export interface GetForwardingRulesResult {
 /**
  * This data source provides the Global Accelerator (GA) Forwarding Rules of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.120.0+.
+ * > **NOTE:** Available since v1.120.0.
  *
  * ## Example Usage
  *

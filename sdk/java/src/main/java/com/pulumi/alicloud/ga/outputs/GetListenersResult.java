@@ -21,10 +21,22 @@ public final class GetListenersResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return A list of Ga Listeners. Each element contains the following attributes:
+     * 
+     */
     private List<GetListenersListener> listeners;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Listener names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The status of the listener.
+     * 
+     */
     private @Nullable String status;
 
     private GetListenersResult() {}
@@ -41,18 +53,30 @@ public final class GetListenersResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return A list of Ga Listeners. Each element contains the following attributes:
+     * 
+     */
     public List<GetListenersListener> listeners() {
         return this.listeners;
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Listener names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of the listener.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

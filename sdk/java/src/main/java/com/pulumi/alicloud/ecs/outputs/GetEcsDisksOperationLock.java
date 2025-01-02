@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEcsDisksOperationLock {
+    /**
+     * @return The reason why the disk was locked.
+     * 
+     */
     private @Nullable String lockReason;
 
     private GetEcsDisksOperationLock() {}
+    /**
+     * @return The reason why the disk was locked.
+     * 
+     */
     public Optional<String> lockReason() {
         return Optional.ofNullable(this.lockReason);
     }

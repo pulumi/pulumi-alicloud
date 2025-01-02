@@ -50,6 +50,10 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
         /// </summary>
         public readonly string Encrypted;
+        /// <summary>
+        /// Disk expiration time.
+        /// </summary>
+        public readonly string ExpirationTime;
         public readonly string ExpiredTime;
         /// <summary>
         /// ID of the disk.
@@ -161,6 +165,8 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string encrypted,
 
+            string expirationTime,
+
             string expiredTime,
 
             string id,
@@ -225,6 +231,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
             EnableAutoSnapshot = enableAutoSnapshot;
             EnableAutomatedSnapshotPolicy = enableAutomatedSnapshotPolicy;
             Encrypted = encrypted;
+            ExpirationTime = expirationTime;
             ExpiredTime = expiredTime;
             Id = id;
             ImageId = imageId;

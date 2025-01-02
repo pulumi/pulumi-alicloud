@@ -49,6 +49,7 @@ __all__ = [
     'GetNotificationsNotificationResult',
     'GetScalingConfigurationsConfigurationResult',
     'GetScalingConfigurationsConfigurationDataDiskResult',
+    'GetScalingConfigurationsConfigurationInstancePatternInfoResult',
     'GetScalingConfigurationsConfigurationSpotPriceLimitResult',
     'GetScalingGroupsGroupResult',
     'GetScalingRulesRuleResult',
@@ -2927,6 +2928,7 @@ class GetScalingConfigurationsConfigurationResult(dict):
                  id: str,
                  image_id: str,
                  instance_name: str,
+                 instance_pattern_infos: Sequence['outputs.GetScalingConfigurationsConfigurationInstancePatternInfoResult'],
                  instance_type: str,
                  internet_charge_type: str,
                  internet_max_bandwidth_in: int,
@@ -2944,10 +2946,11 @@ class GetScalingConfigurationsConfigurationResult(dict):
         :param str creation_time: Creation time of the scaling configuration.
         :param str credit_specification: Performance mode of the t5 burstable instance.
         :param Sequence['GetScalingConfigurationsConfigurationDataDiskArgs'] data_disks: Data disks of the scaling configuration.
-        :param str host_name: (Optional,Available in 1.143.0+) Hostname of an ECS instance.
+        :param str host_name: (Optional,Available since v1.143.0) Hostname of an ECS instance.
         :param str id: ID of the scaling rule.
         :param str image_id: Image ID of the scaling configuration.
-        :param str instance_name: (Optional,Available in 1.143.0+) InstanceName of an ECS instance.
+        :param str instance_name: (Optional,Available since v1.143.0) InstanceName of an ECS instance.
+        :param Sequence['GetScalingConfigurationsConfigurationInstancePatternInfoArgs'] instance_pattern_infos: (Optional, Available since v1.240.0) intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.
         :param str instance_type: Resource type of an ECS instance.
         :param str internet_charge_type: Internet charge type of the scaling configuration.
         :param int internet_max_bandwidth_in: Internet max bandwidth in of the scaling configuration.
@@ -2956,8 +2959,8 @@ class GetScalingConfigurationsConfigurationResult(dict):
         :param str name: Name of the scaling configuration.
         :param str scaling_group_id: Scaling group id the scaling configurations belong to.
         :param str security_group_id: Security group ID of the scaling configuration.
-        :param Sequence['GetScalingConfigurationsConfigurationSpotPriceLimitArgs'] spot_price_limits: (Optional, Available in 1.151.0+) The maximum price hourly for instance types.
-        :param str spot_strategy: (Optional, Available in 1.151.0+) The spot strategy for a Pay-As-You-Go instance.
+        :param Sequence['GetScalingConfigurationsConfigurationSpotPriceLimitArgs'] spot_price_limits: (Optional, Available since v1.151.0) The maximum price hourly for instance types.
+        :param str spot_strategy: (Optional, Available since v1.151.0) The spot strategy for a Pay-As-You-Go instance.
         :param str system_disk_category: System disk category of the scaling configuration.
         :param str system_disk_performance_level: The performance level of the ESSD used as the system disk.
         :param int system_disk_size: System disk size of the scaling configuration.
@@ -2969,6 +2972,7 @@ class GetScalingConfigurationsConfigurationResult(dict):
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "image_id", image_id)
         pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "instance_pattern_infos", instance_pattern_infos)
         pulumi.set(__self__, "instance_type", instance_type)
         pulumi.set(__self__, "internet_charge_type", internet_charge_type)
         pulumi.set(__self__, "internet_max_bandwidth_in", internet_max_bandwidth_in)
@@ -3011,7 +3015,7 @@ class GetScalingConfigurationsConfigurationResult(dict):
     @pulumi.getter(name="hostName")
     def host_name(self) -> str:
         """
-        (Optional,Available in 1.143.0+) Hostname of an ECS instance.
+        (Optional,Available since v1.143.0) Hostname of an ECS instance.
         """
         return pulumi.get(self, "host_name")
 
@@ -3035,9 +3039,17 @@ class GetScalingConfigurationsConfigurationResult(dict):
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> str:
         """
-        (Optional,Available in 1.143.0+) InstanceName of an ECS instance.
+        (Optional,Available since v1.143.0) InstanceName of an ECS instance.
         """
         return pulumi.get(self, "instance_name")
+
+    @property
+    @pulumi.getter(name="instancePatternInfos")
+    def instance_pattern_infos(self) -> Sequence['outputs.GetScalingConfigurationsConfigurationInstancePatternInfoResult']:
+        """
+        (Optional, Available since v1.240.0) intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.
+        """
+        return pulumi.get(self, "instance_pattern_infos")
 
     @property
     @pulumi.getter(name="instanceType")
@@ -3107,7 +3119,7 @@ class GetScalingConfigurationsConfigurationResult(dict):
     @pulumi.getter(name="spotPriceLimits")
     def spot_price_limits(self) -> Sequence['outputs.GetScalingConfigurationsConfigurationSpotPriceLimitResult']:
         """
-        (Optional, Available in 1.151.0+) The maximum price hourly for instance types.
+        (Optional, Available since v1.151.0) The maximum price hourly for instance types.
         """
         return pulumi.get(self, "spot_price_limits")
 
@@ -3115,7 +3127,7 @@ class GetScalingConfigurationsConfigurationResult(dict):
     @pulumi.getter(name="spotStrategy")
     def spot_strategy(self) -> str:
         """
-        (Optional, Available in 1.151.0+) The spot strategy for a Pay-As-You-Go instance.
+        (Optional, Available since v1.151.0) The spot strategy for a Pay-As-You-Go instance.
         """
         return pulumi.get(self, "spot_strategy")
 
@@ -3215,6 +3227,90 @@ class GetScalingConfigurationsConfigurationDataDiskResult(dict):
         Size of data disk.
         """
         return pulumi.get(self, "snapshot_id")
+
+
+@pulumi.output_type
+class GetScalingConfigurationsConfigurationInstancePatternInfoResult(dict):
+    def __init__(__self__, *,
+                 architectures: Sequence[str],
+                 burstable_performance: str,
+                 cores: int,
+                 excluded_instance_types: Sequence[str],
+                 instance_family_level: str,
+                 max_price: float,
+                 memory: float):
+        """
+        :param Sequence[str] architectures: Architecture N of instance type N. Valid values: X86, Heterogeneous, BareMetal, Arm, SuperComputeCluster.
+        :param str burstable_performance: Specifies whether to include burstable instance types.  Valid values: Exclude, Include, Required.
+        :param int cores: The number of vCPUs that are specified for an instance type in instancePatternInfo.
+        :param Sequence[str] excluded_instance_types: Instance type N that you want to exclude. You can use wildcard characters, such as an asterisk (*), to exclude an instance type or an instance family.
+        :param str instance_family_level: The instance family level in instancePatternInfo.
+        :param float max_price: The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
+        :param float memory: The memory size that is specified for an instance type in instancePatternInfo.
+        """
+        pulumi.set(__self__, "architectures", architectures)
+        pulumi.set(__self__, "burstable_performance", burstable_performance)
+        pulumi.set(__self__, "cores", cores)
+        pulumi.set(__self__, "excluded_instance_types", excluded_instance_types)
+        pulumi.set(__self__, "instance_family_level", instance_family_level)
+        pulumi.set(__self__, "max_price", max_price)
+        pulumi.set(__self__, "memory", memory)
+
+    @property
+    @pulumi.getter
+    def architectures(self) -> Sequence[str]:
+        """
+        Architecture N of instance type N. Valid values: X86, Heterogeneous, BareMetal, Arm, SuperComputeCluster.
+        """
+        return pulumi.get(self, "architectures")
+
+    @property
+    @pulumi.getter(name="burstablePerformance")
+    def burstable_performance(self) -> str:
+        """
+        Specifies whether to include burstable instance types.  Valid values: Exclude, Include, Required.
+        """
+        return pulumi.get(self, "burstable_performance")
+
+    @property
+    @pulumi.getter
+    def cores(self) -> int:
+        """
+        The number of vCPUs that are specified for an instance type in instancePatternInfo.
+        """
+        return pulumi.get(self, "cores")
+
+    @property
+    @pulumi.getter(name="excludedInstanceTypes")
+    def excluded_instance_types(self) -> Sequence[str]:
+        """
+        Instance type N that you want to exclude. You can use wildcard characters, such as an asterisk (*), to exclude an instance type or an instance family.
+        """
+        return pulumi.get(self, "excluded_instance_types")
+
+    @property
+    @pulumi.getter(name="instanceFamilyLevel")
+    def instance_family_level(self) -> str:
+        """
+        The instance family level in instancePatternInfo.
+        """
+        return pulumi.get(self, "instance_family_level")
+
+    @property
+    @pulumi.getter(name="maxPrice")
+    def max_price(self) -> float:
+        """
+        The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
+        """
+        return pulumi.get(self, "max_price")
+
+    @property
+    @pulumi.getter
+    def memory(self) -> float:
+        """
+        The memory size that is specified for an instance type in instancePatternInfo.
+        """
+        return pulumi.get(self, "memory")
 
 
 @pulumi.output_type

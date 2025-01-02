@@ -67,6 +67,10 @@ type Key struct {
 	Creator pulumi.StringOutput `pulumi:"creator"`
 	// The time at which the CMK is scheduled for deletion.
 	DeleteDate pulumi.StringOutput `pulumi:"deleteDate"`
+	// Specifies whether to enable deletion protection. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
+	DeletionProtection pulumi.StringOutput `pulumi:"deletionProtection"`
+	// The description of deletion protection. **NOTE:** `deletionProtectionDescription` takes effect only if `deletionProtection` is set to `Enabled`.
+	DeletionProtectionDescription pulumi.StringPtrOutput `pulumi:"deletionProtectionDescription"`
 	// Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
 	//
 	// Deprecated: Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
@@ -103,8 +107,7 @@ type Key struct {
 	NextRotationDate pulumi.StringOutput `pulumi:"nextRotationDate"`
 	// The key material origin. Default value: `Aliyun_KMS`. Valid values: `Aliyun_KMS`, `EXTERNAL`.
 	Origin pulumi.StringOutput `pulumi:"origin"`
-	// The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`.
-	// **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
+	// The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
 	PendingWindowInDays pulumi.IntPtrOutput `pulumi:"pendingWindowInDays"`
 	// The content of the key policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setkeypolicy).
 	Policy pulumi.StringOutput `pulumi:"policy"`
@@ -112,8 +115,7 @@ type Key struct {
 	PrimaryKeyVersion pulumi.StringOutput `pulumi:"primaryKeyVersion"`
 	// The protection level of the key. Default value: `SOFTWARE`. Valid values: `SOFTWARE`, `HSM`.
 	ProtectionLevel pulumi.StringPtrOutput `pulumi:"protectionLevel"`
-	// The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval.
-	// **NOTE**: If `automaticRotation` is set to `Enabled`, `rotationInterval` is required.
+	// The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automaticRotation` is set to `Enabled`, `rotationInterval` is required.
 	RotationInterval pulumi.StringPtrOutput `pulumi:"rotationInterval"`
 	// The status of key. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -161,6 +163,10 @@ type keyState struct {
 	Creator *string `pulumi:"creator"`
 	// The time at which the CMK is scheduled for deletion.
 	DeleteDate *string `pulumi:"deleteDate"`
+	// Specifies whether to enable deletion protection. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
+	DeletionProtection *string `pulumi:"deletionProtection"`
+	// The description of deletion protection. **NOTE:** `deletionProtectionDescription` takes effect only if `deletionProtection` is set to `Enabled`.
+	DeletionProtectionDescription *string `pulumi:"deletionProtectionDescription"`
 	// Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
 	//
 	// Deprecated: Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
@@ -197,8 +203,7 @@ type keyState struct {
 	NextRotationDate *string `pulumi:"nextRotationDate"`
 	// The key material origin. Default value: `Aliyun_KMS`. Valid values: `Aliyun_KMS`, `EXTERNAL`.
 	Origin *string `pulumi:"origin"`
-	// The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`.
-	// **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
+	// The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
 	PendingWindowInDays *int `pulumi:"pendingWindowInDays"`
 	// The content of the key policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setkeypolicy).
 	Policy *string `pulumi:"policy"`
@@ -206,8 +211,7 @@ type keyState struct {
 	PrimaryKeyVersion *string `pulumi:"primaryKeyVersion"`
 	// The protection level of the key. Default value: `SOFTWARE`. Valid values: `SOFTWARE`, `HSM`.
 	ProtectionLevel *string `pulumi:"protectionLevel"`
-	// The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval.
-	// **NOTE**: If `automaticRotation` is set to `Enabled`, `rotationInterval` is required.
+	// The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automaticRotation` is set to `Enabled`, `rotationInterval` is required.
 	RotationInterval *string `pulumi:"rotationInterval"`
 	// The status of key. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
 	Status *string `pulumi:"status"`
@@ -226,6 +230,10 @@ type KeyState struct {
 	Creator pulumi.StringPtrInput
 	// The time at which the CMK is scheduled for deletion.
 	DeleteDate pulumi.StringPtrInput
+	// Specifies whether to enable deletion protection. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
+	DeletionProtection pulumi.StringPtrInput
+	// The description of deletion protection. **NOTE:** `deletionProtectionDescription` takes effect only if `deletionProtection` is set to `Enabled`.
+	DeletionProtectionDescription pulumi.StringPtrInput
 	// Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
 	//
 	// Deprecated: Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
@@ -262,8 +270,7 @@ type KeyState struct {
 	NextRotationDate pulumi.StringPtrInput
 	// The key material origin. Default value: `Aliyun_KMS`. Valid values: `Aliyun_KMS`, `EXTERNAL`.
 	Origin pulumi.StringPtrInput
-	// The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`.
-	// **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
+	// The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
 	PendingWindowInDays pulumi.IntPtrInput
 	// The content of the key policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setkeypolicy).
 	Policy pulumi.StringPtrInput
@@ -271,8 +278,7 @@ type KeyState struct {
 	PrimaryKeyVersion pulumi.StringPtrInput
 	// The protection level of the key. Default value: `SOFTWARE`. Valid values: `SOFTWARE`, `HSM`.
 	ProtectionLevel pulumi.StringPtrInput
-	// The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval.
-	// **NOTE**: If `automaticRotation` is set to `Enabled`, `rotationInterval` is required.
+	// The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automaticRotation` is set to `Enabled`, `rotationInterval` is required.
 	RotationInterval pulumi.StringPtrInput
 	// The status of key. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
 	Status pulumi.StringPtrInput
@@ -287,6 +293,10 @@ func (KeyState) ElementType() reflect.Type {
 type keyArgs struct {
 	// Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
 	AutomaticRotation *string `pulumi:"automaticRotation"`
+	// Specifies whether to enable deletion protection. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
+	DeletionProtection *string `pulumi:"deletionProtection"`
+	// The description of deletion protection. **NOTE:** `deletionProtectionDescription` takes effect only if `deletionProtection` is set to `Enabled`.
+	DeletionProtectionDescription *string `pulumi:"deletionProtectionDescription"`
 	// Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
 	//
 	// Deprecated: Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
@@ -317,15 +327,13 @@ type keyArgs struct {
 	KeyUsage *string `pulumi:"keyUsage"`
 	// The key material origin. Default value: `Aliyun_KMS`. Valid values: `Aliyun_KMS`, `EXTERNAL`.
 	Origin *string `pulumi:"origin"`
-	// The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`.
-	// **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
+	// The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
 	PendingWindowInDays *int `pulumi:"pendingWindowInDays"`
 	// The content of the key policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setkeypolicy).
 	Policy *string `pulumi:"policy"`
 	// The protection level of the key. Default value: `SOFTWARE`. Valid values: `SOFTWARE`, `HSM`.
 	ProtectionLevel *string `pulumi:"protectionLevel"`
-	// The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval.
-	// **NOTE**: If `automaticRotation` is set to `Enabled`, `rotationInterval` is required.
+	// The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automaticRotation` is set to `Enabled`, `rotationInterval` is required.
 	RotationInterval *string `pulumi:"rotationInterval"`
 	// The status of key. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
 	Status *string `pulumi:"status"`
@@ -337,6 +345,10 @@ type keyArgs struct {
 type KeyArgs struct {
 	// Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
 	AutomaticRotation pulumi.StringPtrInput
+	// Specifies whether to enable deletion protection. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
+	DeletionProtection pulumi.StringPtrInput
+	// The description of deletion protection. **NOTE:** `deletionProtectionDescription` takes effect only if `deletionProtection` is set to `Enabled`.
+	DeletionProtectionDescription pulumi.StringPtrInput
 	// Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
 	//
 	// Deprecated: Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
@@ -367,15 +379,13 @@ type KeyArgs struct {
 	KeyUsage pulumi.StringPtrInput
 	// The key material origin. Default value: `Aliyun_KMS`. Valid values: `Aliyun_KMS`, `EXTERNAL`.
 	Origin pulumi.StringPtrInput
-	// The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`.
-	// **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
+	// The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
 	PendingWindowInDays pulumi.IntPtrInput
 	// The content of the key policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setkeypolicy).
 	Policy pulumi.StringPtrInput
 	// The protection level of the key. Default value: `SOFTWARE`. Valid values: `SOFTWARE`, `HSM`.
 	ProtectionLevel pulumi.StringPtrInput
-	// The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval.
-	// **NOTE**: If `automaticRotation` is set to `Enabled`, `rotationInterval` is required.
+	// The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automaticRotation` is set to `Enabled`, `rotationInterval` is required.
 	RotationInterval pulumi.StringPtrInput
 	// The status of key. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
 	Status pulumi.StringPtrInput
@@ -495,6 +505,16 @@ func (o KeyOutput) DeleteDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.DeleteDate }).(pulumi.StringOutput)
 }
 
+// Specifies whether to enable deletion protection. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
+func (o KeyOutput) DeletionProtection() pulumi.StringOutput {
+	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.DeletionProtection }).(pulumi.StringOutput)
+}
+
+// The description of deletion protection. **NOTE:** `deletionProtectionDescription` takes effect only if `deletionProtection` is set to `Enabled`.
+func (o KeyOutput) DeletionProtectionDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Key) pulumi.StringPtrOutput { return v.DeletionProtectionDescription }).(pulumi.StringPtrOutput)
+}
+
 // Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
 //
 // Deprecated: Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
@@ -564,8 +584,7 @@ func (o KeyOutput) Origin() pulumi.StringOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.Origin }).(pulumi.StringOutput)
 }
 
-// The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`.
-// **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
+// The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
 func (o KeyOutput) PendingWindowInDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Key) pulumi.IntPtrOutput { return v.PendingWindowInDays }).(pulumi.IntPtrOutput)
 }
@@ -585,8 +604,7 @@ func (o KeyOutput) ProtectionLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringPtrOutput { return v.ProtectionLevel }).(pulumi.StringPtrOutput)
 }
 
-// The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval.
-// **NOTE**: If `automaticRotation` is set to `Enabled`, `rotationInterval` is required.
+// The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automaticRotation` is set to `Enabled`, `rotationInterval` is required.
 func (o KeyOutput) RotationInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringPtrOutput { return v.RotationInterval }).(pulumi.StringPtrOutput)
 }

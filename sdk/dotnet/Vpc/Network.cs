@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
-    /// Provides a VPC Vpc resource.
+    /// Provides a VPC VPC resource.
     /// 
     /// A VPC instance creates a VPC. You can fully control your own VPC, such as selecting IP address ranges, configuring routing tables, and gateways. You can use Alibaba cloud resources such as cloud servers, apsaradb for RDS, and load balancer in your own VPC.
     /// 
@@ -53,7 +53,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// ## Import
     /// 
-    /// VPC Vpc can be imported using the id, e.g.
+    /// VPC VPC can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:vpc/network:Network example &lt;id&gt;
@@ -83,10 +83,18 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The new description of the VPC. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+        /// The new description of the VPC.
+        /// 
+        /// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
+        /// </summary>
+        [Output("dnsHostnameStatus")]
+        public Output<string> DnsHostnameStatus { get; private set; } = null!;
 
         /// <summary>
         /// Specifies whether to perform a dry run. Valid values:
@@ -99,6 +107,14 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Output("enableIpv6")]
         public Output<bool?> EnableIpv6 { get; private set; } = null!;
+
+        /// <summary>
+        /// Allocate VPC from The IPAM address pool by entering a mask.
+        /// 
+        /// &gt; **NOTE:**  when you specify the IPAM address pool to create a VPC, enter at least one of the CidrBlock or Ipv4CidrMask parameters.
+        /// </summary>
+        [Output("ipv4CidrMask")]
+        public Output<int?> Ipv4CidrMask { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
@@ -145,6 +161,12 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// (Available since v1.240.0) The region ID of the VPC to which the route table belongs.
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the resource group to which you want to move the resource.
         /// 
         /// &gt; **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
@@ -159,7 +181,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> RouteTableId { get; private set; } = null!;
 
         /// <summary>
-        /// The region ID of the VPC to which the route table belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/36063.html) operation to query the most recent region list.
+        /// The router ID of the VPC.
         /// </summary>
         [Output("routerId")]
         public Output<string> RouterId { get; private set; } = null!;
@@ -177,19 +199,31 @@ namespace Pulumi.AliCloud.Vpc
         public Output<ImmutableArray<string>> SecondaryCidrBlocks { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the VPC.   `Pending`: The VPC is being configured. `Available`: The VPC is available.
+        /// Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+        /// 
+        /// &gt; **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+        /// </summary>
+        [Output("secondaryCidrMask")]
+        public Output<int?> SecondaryCidrMask { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of the VPC.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the route table. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+        /// The description of the route table.
+        /// 
+        /// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         /// </summary>
         [Output("systemRouteTableDescription")]
         public Output<string?> SystemRouteTableDescription { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the route table. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        /// The name of the route table.
+        /// 
+        /// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Output("systemRouteTableName")]
         public Output<string?> SystemRouteTableName { get; private set; } = null!;
@@ -207,7 +241,9 @@ namespace Pulumi.AliCloud.Vpc
         public Output<ImmutableArray<string>> UserCidrs { get; private set; } = null!;
 
         /// <summary>
-        /// The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`. 
+        /// The new name of the VPC.
+        /// 
+        /// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
@@ -275,10 +311,18 @@ namespace Pulumi.AliCloud.Vpc
         public Input<bool>? ClassicLinkEnabled { get; set; }
 
         /// <summary>
-        /// The new description of the VPC. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+        /// The new description of the VPC.
+        /// 
+        /// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
+        /// </summary>
+        [Input("dnsHostnameStatus")]
+        public Input<string>? DnsHostnameStatus { get; set; }
 
         /// <summary>
         /// Specifies whether to perform a dry run. Valid values:
@@ -291,6 +335,14 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("enableIpv6")]
         public Input<bool>? EnableIpv6 { get; set; }
+
+        /// <summary>
+        /// Allocate VPC from The IPAM address pool by entering a mask.
+        /// 
+        /// &gt; **NOTE:**  when you specify the IPAM address pool to create a VPC, enter at least one of the CidrBlock or Ipv4CidrMask parameters.
+        /// </summary>
+        [Input("ipv4CidrMask")]
+        public Input<int>? Ipv4CidrMask { get; set; }
 
         /// <summary>
         /// The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
@@ -352,13 +404,25 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// The description of the route table. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+        /// Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+        /// 
+        /// &gt; **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+        /// </summary>
+        [Input("secondaryCidrMask")]
+        public Input<int>? SecondaryCidrMask { get; set; }
+
+        /// <summary>
+        /// The description of the route table.
+        /// 
+        /// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("systemRouteTableDescription")]
         public Input<string>? SystemRouteTableDescription { get; set; }
 
         /// <summary>
-        /// The name of the route table. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        /// The name of the route table.
+        /// 
+        /// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("systemRouteTableName")]
         public Input<string>? SystemRouteTableName { get; set; }
@@ -388,7 +452,9 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`. 
+        /// The new name of the VPC.
+        /// 
+        /// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
@@ -424,10 +490,18 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The new description of the VPC. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+        /// The new description of the VPC.
+        /// 
+        /// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
+        /// </summary>
+        [Input("dnsHostnameStatus")]
+        public Input<string>? DnsHostnameStatus { get; set; }
 
         /// <summary>
         /// Specifies whether to perform a dry run. Valid values:
@@ -440,6 +514,14 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("enableIpv6")]
         public Input<bool>? EnableIpv6 { get; set; }
+
+        /// <summary>
+        /// Allocate VPC from The IPAM address pool by entering a mask.
+        /// 
+        /// &gt; **NOTE:**  when you specify the IPAM address pool to create a VPC, enter at least one of the CidrBlock or Ipv4CidrMask parameters.
+        /// </summary>
+        [Input("ipv4CidrMask")]
+        public Input<int>? Ipv4CidrMask { get; set; }
 
         /// <summary>
         /// The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
@@ -492,6 +574,12 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// (Available since v1.240.0) The region ID of the VPC to which the route table belongs.
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
+
+        /// <summary>
         /// The ID of the resource group to which you want to move the resource.
         /// 
         /// &gt; **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
@@ -506,7 +594,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? RouteTableId { get; set; }
 
         /// <summary>
-        /// The region ID of the VPC to which the route table belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/36063.html) operation to query the most recent region list.
+        /// The router ID of the VPC.
         /// </summary>
         [Input("routerId")]
         public Input<string>? RouterId { get; set; }
@@ -531,19 +619,31 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// The status of the VPC.   `Pending`: The VPC is being configured. `Available`: The VPC is available.
+        /// Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+        /// 
+        /// &gt; **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+        /// </summary>
+        [Input("secondaryCidrMask")]
+        public Input<int>? SecondaryCidrMask { get; set; }
+
+        /// <summary>
+        /// The status of the VPC.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The description of the route table. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+        /// The description of the route table.
+        /// 
+        /// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("systemRouteTableDescription")]
         public Input<string>? SystemRouteTableDescription { get; set; }
 
         /// <summary>
-        /// The name of the route table. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        /// The name of the route table.
+        /// 
+        /// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("systemRouteTableName")]
         public Input<string>? SystemRouteTableName { get; set; }
@@ -573,7 +673,9 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`. 
+        /// The new name of the VPC.
+        /// 
+        /// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>

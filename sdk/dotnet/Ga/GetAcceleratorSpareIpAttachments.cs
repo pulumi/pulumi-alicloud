@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ga
         /// <summary>
         /// This data source provides the Ga Accelerator Spare Ip Attachments of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.167.0+.
+        /// &gt; **NOTE:** Available since v1.167.0.
         /// 
         /// ## Example Usage
         /// 
@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.Ga
         /// <summary>
         /// This data source provides the Ga Accelerator Spare Ip Attachments of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.167.0+.
+        /// &gt; **NOTE:** Available since v1.167.0.
         /// 
         /// ## Example Usage
         /// 
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Ga
         /// <summary>
         /// This data source provides the Ga Accelerator Spare Ip Attachments of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.167.0+.
+        /// &gt; **NOTE:** Available since v1.167.0.
         /// 
         /// ## Example Usage
         /// 
@@ -204,7 +204,13 @@ namespace Pulumi.AliCloud.Ga
     [OutputType]
     public sealed class GetAcceleratorSpareIpAttachmentsResult
     {
+        /// <summary>
+        /// The ID of the global acceleration instance.
+        /// </summary>
         public readonly string AcceleratorId;
+        /// <summary>
+        /// A list of Ga Accelerator Spare Ip Attachments. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAcceleratorSpareIpAttachmentsAttachmentResult> Attachments;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -212,6 +218,9 @@ namespace Pulumi.AliCloud.Ga
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of the standby CNAME IP address. Valid values: `active`, `inuse`.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

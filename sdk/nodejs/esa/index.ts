@@ -10,6 +10,11 @@ export type RatePlanInstance = import("./ratePlanInstance").RatePlanInstance;
 export const RatePlanInstance: typeof import("./ratePlanInstance").RatePlanInstance = null as any;
 utilities.lazyLoad(exports, ["RatePlanInstance"], () => require("./ratePlanInstance"));
 
+export { RecordArgs, RecordState } from "./record";
+export type Record = import("./record").Record;
+export const Record: typeof import("./record").Record = null as any;
+utilities.lazyLoad(exports, ["Record"], () => require("./record"));
+
 export { SiteArgs, SiteState } from "./site";
 export type Site = import("./site").Site;
 export const Site: typeof import("./site").Site = null as any;
@@ -22,6 +27,8 @@ const _module = {
         switch (type) {
             case "alicloud:esa/ratePlanInstance:RatePlanInstance":
                 return new RatePlanInstance(name, <any>undefined, { urn })
+            case "alicloud:esa/record:Record":
+                return new Record(name, <any>undefined, { urn })
             case "alicloud:esa/site:Site":
                 return new Site(name, <any>undefined, { urn })
             default:
@@ -30,4 +37,5 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "esa/ratePlanInstance", _module)
+pulumi.runtime.registerResourceModule("alicloud", "esa/record", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/site", _module)

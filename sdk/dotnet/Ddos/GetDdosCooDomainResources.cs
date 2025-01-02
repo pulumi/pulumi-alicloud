@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ddos
         /// <summary>
         /// This data source provides the Ddoscoo Domain Resources of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.123.0+.
+        /// &gt; **NOTE:** Available since v1.123.0.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Ddos
         /// <summary>
         /// This data source provides the Ddoscoo Domain Resources of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.123.0+.
+        /// &gt; **NOTE:** Available since v1.123.0.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Ddos
         /// <summary>
         /// This data source provides the Ddoscoo Domain Resources of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.123.0+.
+        /// &gt; **NOTE:** Available since v1.123.0.
         /// 
         /// ## Example Usage
         /// 
@@ -215,9 +215,15 @@ namespace Pulumi.AliCloud.Ddos
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// A list ID of instance that you want to associate.
+        /// </summary>
         public readonly ImmutableArray<string> InstanceIds;
         public readonly string? OutputFile;
         public readonly string? QueryDomainPattern;
+        /// <summary>
+        /// A list of Ddoscoo Domain Resources. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetDdosCooDomainResourcesResourceResult> Resources;
 
         [OutputConstructor]

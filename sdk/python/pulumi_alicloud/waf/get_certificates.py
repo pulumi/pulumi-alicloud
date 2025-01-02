@@ -56,11 +56,17 @@ class GetCertificatesResult:
     @property
     @pulumi.getter
     def certificates(self) -> Sequence['outputs.GetCertificatesCertificateResult']:
+        """
+        A list of Waf Certificates. Each element contains the following attributes:
+        """
         return pulumi.get(self, "certificates")
 
     @property
     @pulumi.getter
     def domain(self) -> Optional[str]:
+        """
+        The domain that you want to add to WAF.
+        """
         return pulumi.get(self, "domain")
 
     @property
@@ -79,6 +85,9 @@ class GetCertificatesResult:
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> str:
+        """
+        WAF instance ID.
+        """
         return pulumi.get(self, "instance_id")
 
     @property
@@ -89,6 +98,9 @@ class GetCertificatesResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Certificate names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -122,7 +134,7 @@ def get_certificates(domain: Optional[str] = None,
     """
     This data source provides the Waf Certificates of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.135.0+.
+    > **NOTE:** Available since v1.135.0.
 
     ## Example Usage
 
@@ -172,7 +184,7 @@ def get_certificates_output(domain: Optional[pulumi.Input[Optional[str]]] = None
     """
     This data source provides the Waf Certificates of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.135.0+.
+    > **NOTE:** Available since v1.135.0.
 
     ## Example Usage
 

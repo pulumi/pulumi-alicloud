@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ga Acls of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.150.0+.
+ * > **NOTE:** Available since v1.150.0.
  *
  * ## Example Usage
  *
@@ -74,7 +74,13 @@ export interface GetAclsArgs {
  * A collection of values returned by getAcls.
  */
 export interface GetAclsResult {
+    /**
+     * The name of the acl.
+     */
     readonly aclName?: string;
+    /**
+     * A list of Ga Acls. Each element contains the following attributes:
+     */
     readonly acls: outputs.ga.GetAclsAcl[];
     readonly enableDetails?: boolean;
     /**
@@ -83,14 +89,20 @@ export interface GetAclsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Acl names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The status of the resource.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Ga Acls of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.150.0+.
+ * > **NOTE:** Available since v1.150.0.
  *
  * ## Example Usage
  *

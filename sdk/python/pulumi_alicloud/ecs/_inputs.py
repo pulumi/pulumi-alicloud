@@ -2711,6 +2711,9 @@ class GetDisksOperationLockArgs:
 if not MYPY:
     class GetEcsDisksOperationLockArgsDict(TypedDict):
         lock_reason: NotRequired[str]
+        """
+        The reason why the disk was locked.
+        """
 elif False:
     GetEcsDisksOperationLockArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -2718,12 +2721,18 @@ elif False:
 class GetEcsDisksOperationLockArgs:
     def __init__(__self__, *,
                  lock_reason: Optional[str] = None):
+        """
+        :param str lock_reason: The reason why the disk was locked.
+        """
         if lock_reason is not None:
             pulumi.set(__self__, "lock_reason", lock_reason)
 
     @property
     @pulumi.getter(name="lockReason")
     def lock_reason(self) -> Optional[str]:
+        """
+        The reason why the disk was locked.
+        """
         return pulumi.get(self, "lock_reason")
 
     @lock_reason.setter

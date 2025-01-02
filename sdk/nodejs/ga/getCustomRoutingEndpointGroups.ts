@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in 1.197.0+
+ * > **NOTE:** Available since v1.197.0.
  *
  * ## Example Usage
  *
@@ -123,7 +123,7 @@ export interface GetCustomRoutingEndpointGroupsResult {
 /**
  * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in 1.197.0+
+ * > **NOTE:** Available since v1.197.0.
  *
  * ## Example Usage
  *

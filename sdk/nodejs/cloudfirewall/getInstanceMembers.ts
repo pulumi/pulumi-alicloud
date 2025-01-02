@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://help.aliyun.com/document_detail/261237.html)
  *
- * > **NOTE:** Available in 1.194.0+
+ * > **NOTE:** Available since v1.194.0.
  *
  * ## Example Usage
  *
@@ -76,7 +76,7 @@ export interface GetInstanceMembersResult {
 /**
  * This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://help.aliyun.com/document_detail/261237.html)
  *
- * > **NOTE:** Available in 1.194.0+
+ * > **NOTE:** Available since v1.194.0.
  *
  * ## Example Usage
  *

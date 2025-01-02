@@ -20,9 +20,21 @@ public final class GetDataLimitsResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return A list of Sddp Data Limits. Each element contains the following attributes:
+     * 
+     */
     private List<GetDataLimitsLimit> limits;
     private @Nullable String outputFile;
+    /**
+     * @return The ID of the data asset.
+     * 
+     */
     private @Nullable String parentId;
+    /**
+     * @return The type of the service to which the data asset belongs.
+     * 
+     */
     private @Nullable String resourceType;
 
     private GetDataLimitsResult() {}
@@ -36,15 +48,27 @@ public final class GetDataLimitsResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return A list of Sddp Data Limits. Each element contains the following attributes:
+     * 
+     */
     public List<GetDataLimitsLimit> limits() {
         return this.limits;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The ID of the data asset.
+     * 
+     */
     public Optional<String> parentId() {
         return Optional.ofNullable(this.parentId);
     }
+    /**
+     * @return The type of the service to which the data asset belongs.
+     * 
+     */
     public Optional<String> resourceType() {
         return Optional.ofNullable(this.resourceType);
     }

@@ -15,7 +15,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetIpaDomainsResult {
+    /**
+     * @return The accelerated domain names.
+     * 
+     */
     private @Nullable String domainName;
+    /**
+     * @return A list of Dcdn Ipa Domains. Each element contains the following attributes:
+     * 
+     */
     private List<GetIpaDomainsDomain> domains;
     private @Nullable Boolean enableDetails;
     /**
@@ -24,14 +32,30 @@ public final class GetIpaDomainsResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return A list of Dcdn Ipa Domain names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The status of the accelerated domain name.
+     * 
+     */
     private @Nullable String status;
 
     private GetIpaDomainsResult() {}
+    /**
+     * @return The accelerated domain names.
+     * 
+     */
     public Optional<String> domainName() {
         return Optional.ofNullable(this.domainName);
     }
+    /**
+     * @return A list of Dcdn Ipa Domains. Each element contains the following attributes:
+     * 
+     */
     public List<GetIpaDomainsDomain> domains() {
         return this.domains;
     }
@@ -48,12 +72,20 @@ public final class GetIpaDomainsResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return A list of Dcdn Ipa Domain names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of the accelerated domain name.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

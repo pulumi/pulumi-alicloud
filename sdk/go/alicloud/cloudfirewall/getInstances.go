@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Cloud Firewall Instances of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.139.0+.
+// > **NOTE:** Available since v1.139.0.
 //
 // ## Example Usage
 //
@@ -55,14 +55,17 @@ func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.In
 type GetInstancesArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
+	// The payment type of the cloud firewall instance. Valid values: `PayAsYouGo`,`Subscription`.
+	PaymentType *string `pulumi:"paymentType"`
 }
 
 // A collection of values returned by getInstances.
 type GetInstancesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                 `pulumi:"id"`
-	Instances  []GetInstancesInstance `pulumi:"instances"`
-	OutputFile *string                `pulumi:"outputFile"`
+	Id          string                 `pulumi:"id"`
+	Instances   []GetInstancesInstance `pulumi:"instances"`
+	OutputFile  *string                `pulumi:"outputFile"`
+	PaymentType *string                `pulumi:"paymentType"`
 }
 
 func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts ...pulumi.InvokeOption) GetInstancesResultOutput {
@@ -78,6 +81,8 @@ func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts .
 type GetInstancesOutputArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The payment type of the cloud firewall instance. Valid values: `PayAsYouGo`,`Subscription`.
+	PaymentType pulumi.StringPtrInput `pulumi:"paymentType"`
 }
 
 func (GetInstancesOutputArgs) ElementType() reflect.Type {
@@ -110,6 +115,10 @@ func (o GetInstancesResultOutput) Instances() GetInstancesInstanceArrayOutput {
 
 func (o GetInstancesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstancesResultOutput) PaymentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancesResult) *string { return v.PaymentType }).(pulumi.StringPtrOutput)
 }
 
 func init() {

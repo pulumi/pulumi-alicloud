@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class NotificationArgs extends com.pulumi.resources.ResourceArgs {
@@ -66,12 +68,28 @@ public final class NotificationArgs extends com.pulumi.resources.ResourceArgs {
         return this.scalingGroupId;
     }
 
+    /**
+     * The time zone of the notification. Specify the value in UTC. For example, a value of UTC+8 specifies that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 specifies that the time is 7 hours behind Coordinated Universal Time.
+     * 
+     */
+    @Import(name="timeZone")
+    private @Nullable Output<String> timeZone;
+
+    /**
+     * @return The time zone of the notification. Specify the value in UTC. For example, a value of UTC+8 specifies that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 specifies that the time is 7 hours behind Coordinated Universal Time.
+     * 
+     */
+    public Optional<Output<String>> timeZone() {
+        return Optional.ofNullable(this.timeZone);
+    }
+
     private NotificationArgs() {}
 
     private NotificationArgs(NotificationArgs $) {
         this.notificationArn = $.notificationArn;
         this.notificationTypes = $.notificationTypes;
         this.scalingGroupId = $.scalingGroupId;
+        this.timeZone = $.timeZone;
     }
 
     public static Builder builder() {
@@ -169,6 +187,27 @@ public final class NotificationArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder scalingGroupId(String scalingGroupId) {
             return scalingGroupId(Output.of(scalingGroupId));
+        }
+
+        /**
+         * @param timeZone The time zone of the notification. Specify the value in UTC. For example, a value of UTC+8 specifies that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 specifies that the time is 7 hours behind Coordinated Universal Time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timeZone(@Nullable Output<String> timeZone) {
+            $.timeZone = timeZone;
+            return this;
+        }
+
+        /**
+         * @param timeZone The time zone of the notification. Specify the value in UTC. For example, a value of UTC+8 specifies that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 specifies that the time is 7 hours behind Coordinated Universal Time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timeZone(String timeZone) {
+            return timeZone(Output.of(timeZone));
         }
 
         public NotificationArgs build() {

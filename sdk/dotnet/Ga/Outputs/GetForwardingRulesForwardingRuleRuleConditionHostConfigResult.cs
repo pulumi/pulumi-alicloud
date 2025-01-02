@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.Ga.Outputs
     [OutputType]
     public sealed class GetForwardingRulesForwardingRuleRuleConditionHostConfigResult
     {
+        /// <summary>
+        /// The domain name is 3-128 characters long.
+        /// </summary>
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]

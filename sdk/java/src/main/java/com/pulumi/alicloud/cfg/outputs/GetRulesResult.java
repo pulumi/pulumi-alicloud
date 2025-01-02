@@ -59,7 +59,7 @@ public final class GetRulesResult {
      */
     private List<GetRulesRule> rules;
     /**
-     * @return (Available in 1.124.1+) The status of config rule.
+     * @return (Available since v1.124.1) The status of config rule.
      * 
      */
     private @Nullable String status;
@@ -128,7 +128,7 @@ public final class GetRulesResult {
         return this.rules;
     }
     /**
-     * @return (Available in 1.124.1+) The status of config rule.
+     * @return (Available since v1.124.1) The status of config rule.
      * 
      */
     public Optional<String> status() {

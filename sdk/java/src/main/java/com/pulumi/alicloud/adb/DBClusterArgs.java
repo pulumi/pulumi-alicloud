@@ -245,6 +245,21 @@ public final class DBClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The minor version to which you want to update.
+     * 
+     */
+    @Import(name="kernelVersion")
+    private @Nullable Output<String> kernelVersion;
+
+    /**
+     * @return The minor version to which you want to update.
+     * 
+     */
+    public Optional<Output<String>> kernelVersion() {
+        return Optional.ofNullable(this.kernelVersion);
+    }
+
+    /**
      * The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
      * 
      */
@@ -405,6 +420,21 @@ public final class DBClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The time when to perform the update. Valid values:
+     * 
+     */
+    @Import(name="switchMode")
+    private @Nullable Output<Integer> switchMode;
+
+    /**
+     * @return The time when to perform the update. Valid values:
+     * 
+     */
+    public Optional<Output<Integer>> switchMode() {
+        return Optional.ofNullable(this.switchMode);
+    }
+
+    /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
@@ -489,6 +519,7 @@ public final class DBClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.elasticIoResource = $.elasticIoResource;
         this.elasticIoResourceSize = $.elasticIoResourceSize;
         this.enableSsl = $.enableSsl;
+        this.kernelVersion = $.kernelVersion;
         this.kmsId = $.kmsId;
         this.maintainTime = $.maintainTime;
         this.mode = $.mode;
@@ -499,6 +530,7 @@ public final class DBClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.renewalStatus = $.renewalStatus;
         this.resourceGroupId = $.resourceGroupId;
         this.securityIps = $.securityIps;
+        this.switchMode = $.switchMode;
         this.tags = $.tags;
         this.vpcId = $.vpcId;
         this.vswitchId = $.vswitchId;
@@ -832,6 +864,27 @@ public final class DBClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param kernelVersion The minor version to which you want to update.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kernelVersion(@Nullable Output<String> kernelVersion) {
+            $.kernelVersion = kernelVersion;
+            return this;
+        }
+
+        /**
+         * @param kernelVersion The minor version to which you want to update.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kernelVersion(String kernelVersion) {
+            return kernelVersion(Output.of(kernelVersion));
+        }
+
+        /**
          * @param kmsId The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
          * 
          * @return builder
@@ -1059,6 +1112,27 @@ public final class DBClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder securityIps(String... securityIps) {
             return securityIps(List.of(securityIps));
+        }
+
+        /**
+         * @param switchMode The time when to perform the update. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder switchMode(@Nullable Output<Integer> switchMode) {
+            $.switchMode = switchMode;
+            return this;
+        }
+
+        /**
+         * @param switchMode The time when to perform the update. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder switchMode(Integer switchMode) {
+            return switchMode(Output.of(switchMode));
         }
 
         /**

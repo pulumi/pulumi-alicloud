@@ -113,6 +113,10 @@ export class Notification extends pulumi.CustomResource {
      * The ID of the Auto Scaling group.
      */
     public readonly scalingGroupId!: pulumi.Output<string>;
+    /**
+     * The time zone of the notification. Specify the value in UTC. For example, a value of UTC+8 specifies that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 specifies that the time is 7 hours behind Coordinated Universal Time.
+     */
+    public readonly timeZone!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Notification resource with the given unique name, arguments, and options.
@@ -130,6 +134,7 @@ export class Notification extends pulumi.CustomResource {
             resourceInputs["notificationArn"] = state ? state.notificationArn : undefined;
             resourceInputs["notificationTypes"] = state ? state.notificationTypes : undefined;
             resourceInputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
+            resourceInputs["timeZone"] = state ? state.timeZone : undefined;
         } else {
             const args = argsOrState as NotificationArgs | undefined;
             if ((!args || args.notificationArn === undefined) && !opts.urn) {
@@ -144,6 +149,7 @@ export class Notification extends pulumi.CustomResource {
             resourceInputs["notificationArn"] = args ? args.notificationArn : undefined;
             resourceInputs["notificationTypes"] = args ? args.notificationTypes : undefined;
             resourceInputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
+            resourceInputs["timeZone"] = args ? args.timeZone : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Notification.__pulumiType, name, resourceInputs, opts);
@@ -169,6 +175,10 @@ export interface NotificationState {
      * The ID of the Auto Scaling group.
      */
     scalingGroupId?: pulumi.Input<string>;
+    /**
+     * The time zone of the notification. Specify the value in UTC. For example, a value of UTC+8 specifies that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 specifies that the time is 7 hours behind Coordinated Universal Time.
+     */
+    timeZone?: pulumi.Input<string>;
 }
 
 /**
@@ -190,4 +200,8 @@ export interface NotificationArgs {
      * The ID of the Auto Scaling group.
      */
     scalingGroupId: pulumi.Input<string>;
+    /**
+     * The time zone of the notification. Specify the value in UTC. For example, a value of UTC+8 specifies that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 specifies that the time is 7 hours behind Coordinated Universal Time.
+     */
+    timeZone?: pulumi.Input<string>;
 }

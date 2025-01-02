@@ -26,6 +26,7 @@ public final class Endpoints {
      * 
      */
     private @Nullable String adb;
+    private @Nullable String aiworkspace;
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom alb endpoints.
      * 
@@ -46,6 +47,16 @@ public final class Endpoints {
      * 
      */
     private @Nullable String alikafka;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom onsproxy endpoints.
+     * 
+     */
+    private @Nullable String amqp;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ddosbasic endpoints.
+     * 
+     */
+    private @Nullable String antiddosPublic;
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Api Gateway endpoints.
      * 
@@ -117,6 +128,11 @@ public final class Endpoints {
      */
     private @Nullable String cds;
     /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom beebot endpoints.
+     * 
+     */
+    private @Nullable String chatbot;
+    /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom clickhouse endpoints.
      * 
      */
@@ -185,12 +201,22 @@ public final class Endpoints {
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dataworkspublic endpoints.
      * 
      */
+    private @Nullable String dataworksPublic;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dataworkspublic endpoints.
+     * 
+     */
     private @Nullable String dataworkspublic;
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dbfs endpoints.
      * 
      */
     private @Nullable String dbfs;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom cbs endpoints.
+     * 
+     */
+    private @Nullable String dbs;
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dcdn endpoints.
      * 
@@ -216,11 +242,17 @@ public final class Endpoints {
      * 
      */
     private @Nullable String dds;
+    private @Nullable String devopsRdc;
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom devopsrdc endpoints.
      * 
      */
     private @Nullable String devopsrdc;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom alidfs endpoints.
+     * 
+     */
+    private @Nullable String dfs;
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dg endpoints.
      * 
@@ -258,6 +290,11 @@ public final class Endpoints {
     private @Nullable String dts;
     private @Nullable String dysms;
     /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dysmsapi endpoints.
+     * 
+     */
+    private @Nullable String dysmsapi;
+    /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom eais endpoints.
      * 
      */
@@ -267,6 +304,11 @@ public final class Endpoints {
      * 
      */
     private @Nullable String ebs;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom gwsecd endpoints.
+     * 
+     */
+    private @Nullable String ecd;
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom eci endpoints.
      * 
@@ -287,6 +329,11 @@ public final class Endpoints {
      * 
      */
     private @Nullable String edasschedulerx;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom edsuser endpoints.
+     * 
+     */
+    private @Nullable String edsUser;
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom edsuser endpoints.
      * 
@@ -327,6 +374,7 @@ public final class Endpoints {
      * 
      */
     private @Nullable String ens;
+    private @Nullable String esa;
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Autoscaling endpoints.
      * 
@@ -342,6 +390,11 @@ public final class Endpoints {
      * 
      */
     private @Nullable String fc;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Function Computing endpoints.
+     * 
+     */
+    private @Nullable String fcOpen;
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom fnf endpoints.
      * 
@@ -361,12 +414,18 @@ public final class Endpoints {
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom gds endpoints.
      * 
      */
+    private @Nullable String gdb;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom gds endpoints.
+     * 
+     */
     private @Nullable String gds;
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom GPDB endpoints.
      * 
      */
     private @Nullable String gpdb;
+    private @Nullable String gwlb;
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom gwsecd endpoints.
      * 
@@ -448,6 +507,11 @@ public final class Endpoints {
      */
     private @Nullable String mns;
     /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom MNS endpoints.
+     * 
+     */
+    private @Nullable String mnsOpen;
+    /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom mscopensubscription endpoints.
      * 
      */
@@ -472,6 +536,11 @@ public final class Endpoints {
      * 
      */
     private @Nullable String oceanbase;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom oceanbase endpoints.
+     * 
+     */
+    private @Nullable String oceanbasepro;
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ONS endpoints.
      * 
@@ -508,6 +577,11 @@ public final class Endpoints {
      */
     private @Nullable String polardb;
     /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom DRDS endpoints.
+     * 
+     */
+    private @Nullable String polardbx;
+    /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom privatelink endpoints.
      * 
      */
@@ -522,6 +596,11 @@ public final class Endpoints {
      * 
      */
     private @Nullable String quickbi;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom quickbi endpoints.
+     * 
+     */
+    private @Nullable String quickbiPublic;
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom quotas endpoints.
      * 
@@ -552,16 +631,23 @@ public final class Endpoints {
      * 
      */
     private @Nullable String resourcemanager;
+    private @Nullable String resourcesharing;
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom resourcesharing endpoints.
      * 
      */
     private @Nullable String ressharing;
+    private @Nullable String rocketmq;
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ros endpoints.
      * 
      */
     private @Nullable String ros;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom serverless endpoints.
+     * 
+     */
+    private @Nullable String sae;
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom sas endpoints.
      * 
@@ -572,6 +658,11 @@ public final class Endpoints {
      * 
      */
     private @Nullable String scdn;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom edasschedulerx endpoints.
+     * 
+     */
+    private @Nullable String schedulerx2;
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom sddp endpoints.
      * 
@@ -587,6 +678,11 @@ public final class Endpoints {
      * 
      */
     private @Nullable String serverless;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom srvcatalog endpoints.
+     * 
+     */
+    private @Nullable String servicecatalog;
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom servicemesh endpoints.
      * 
@@ -623,6 +719,11 @@ public final class Endpoints {
      */
     private @Nullable String swas;
     /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom swas endpoints.
+     * 
+     */
+    private @Nullable String swasOpen;
+    /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom tag endpoints.
      * 
      */
@@ -637,6 +738,7 @@ public final class Endpoints {
      * 
      */
     private @Nullable String vpc;
+    private @Nullable String vpcipam;
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom vpcpeer endpoints.
      * 
@@ -680,6 +782,9 @@ public final class Endpoints {
     public Optional<String> adb() {
         return Optional.ofNullable(this.adb);
     }
+    public Optional<String> aiworkspace() {
+        return Optional.ofNullable(this.aiworkspace);
+    }
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom alb endpoints.
      * 
@@ -707,6 +812,20 @@ public final class Endpoints {
      */
     public Optional<String> alikafka() {
         return Optional.ofNullable(this.alikafka);
+    }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom onsproxy endpoints.
+     * 
+     */
+    public Optional<String> amqp() {
+        return Optional.ofNullable(this.amqp);
+    }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ddosbasic endpoints.
+     * 
+     */
+    public Optional<String> antiddosPublic() {
+        return Optional.ofNullable(this.antiddosPublic);
     }
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Api Gateway endpoints.
@@ -807,6 +926,13 @@ public final class Endpoints {
         return Optional.ofNullable(this.cds);
     }
     /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom beebot endpoints.
+     * 
+     */
+    public Optional<String> chatbot() {
+        return Optional.ofNullable(this.chatbot);
+    }
+    /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom clickhouse endpoints.
      * 
      */
@@ -901,6 +1027,13 @@ public final class Endpoints {
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dataworkspublic endpoints.
      * 
      */
+    public Optional<String> dataworksPublic() {
+        return Optional.ofNullable(this.dataworksPublic);
+    }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dataworkspublic endpoints.
+     * 
+     */
     public Optional<String> dataworkspublic() {
         return Optional.ofNullable(this.dataworkspublic);
     }
@@ -910,6 +1043,13 @@ public final class Endpoints {
      */
     public Optional<String> dbfs() {
         return Optional.ofNullable(this.dbfs);
+    }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom cbs endpoints.
+     * 
+     */
+    public Optional<String> dbs() {
+        return Optional.ofNullable(this.dbs);
     }
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dcdn endpoints.
@@ -946,12 +1086,22 @@ public final class Endpoints {
     public Optional<String> dds() {
         return Optional.ofNullable(this.dds);
     }
+    public Optional<String> devopsRdc() {
+        return Optional.ofNullable(this.devopsRdc);
+    }
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom devopsrdc endpoints.
      * 
      */
     public Optional<String> devopsrdc() {
         return Optional.ofNullable(this.devopsrdc);
+    }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom alidfs endpoints.
+     * 
+     */
+    public Optional<String> dfs() {
+        return Optional.ofNullable(this.dfs);
     }
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dg endpoints.
@@ -1006,6 +1156,13 @@ public final class Endpoints {
         return Optional.ofNullable(this.dysms);
     }
     /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom dysmsapi endpoints.
+     * 
+     */
+    public Optional<String> dysmsapi() {
+        return Optional.ofNullable(this.dysmsapi);
+    }
+    /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom eais endpoints.
      * 
      */
@@ -1018,6 +1175,13 @@ public final class Endpoints {
      */
     public Optional<String> ebs() {
         return Optional.ofNullable(this.ebs);
+    }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom gwsecd endpoints.
+     * 
+     */
+    public Optional<String> ecd() {
+        return Optional.ofNullable(this.ecd);
     }
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom eci endpoints.
@@ -1046,6 +1210,13 @@ public final class Endpoints {
      */
     public Optional<String> edasschedulerx() {
         return Optional.ofNullable(this.edasschedulerx);
+    }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom edsuser endpoints.
+     * 
+     */
+    public Optional<String> edsUser() {
+        return Optional.ofNullable(this.edsUser);
     }
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom edsuser endpoints.
@@ -1103,6 +1274,9 @@ public final class Endpoints {
     public Optional<String> ens() {
         return Optional.ofNullable(this.ens);
     }
+    public Optional<String> esa() {
+        return Optional.ofNullable(this.esa);
+    }
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Autoscaling endpoints.
      * 
@@ -1123,6 +1297,13 @@ public final class Endpoints {
      */
     public Optional<String> fc() {
         return Optional.ofNullable(this.fc);
+    }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Function Computing endpoints.
+     * 
+     */
+    public Optional<String> fcOpen() {
+        return Optional.ofNullable(this.fcOpen);
     }
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom fnf endpoints.
@@ -1149,6 +1330,13 @@ public final class Endpoints {
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom gds endpoints.
      * 
      */
+    public Optional<String> gdb() {
+        return Optional.ofNullable(this.gdb);
+    }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom gds endpoints.
+     * 
+     */
     public Optional<String> gds() {
         return Optional.ofNullable(this.gds);
     }
@@ -1158,6 +1346,9 @@ public final class Endpoints {
      */
     public Optional<String> gpdb() {
         return Optional.ofNullable(this.gpdb);
+    }
+    public Optional<String> gwlb() {
+        return Optional.ofNullable(this.gwlb);
     }
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom gwsecd endpoints.
@@ -1272,6 +1463,13 @@ public final class Endpoints {
         return Optional.ofNullable(this.mns);
     }
     /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom MNS endpoints.
+     * 
+     */
+    public Optional<String> mnsOpen() {
+        return Optional.ofNullable(this.mnsOpen);
+    }
+    /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom mscopensubscription endpoints.
      * 
      */
@@ -1305,6 +1503,13 @@ public final class Endpoints {
      */
     public Optional<String> oceanbase() {
         return Optional.ofNullable(this.oceanbase);
+    }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom oceanbase endpoints.
+     * 
+     */
+    public Optional<String> oceanbasepro() {
+        return Optional.ofNullable(this.oceanbasepro);
     }
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ONS endpoints.
@@ -1356,6 +1561,13 @@ public final class Endpoints {
         return Optional.ofNullable(this.polardb);
     }
     /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom DRDS endpoints.
+     * 
+     */
+    public Optional<String> polardbx() {
+        return Optional.ofNullable(this.polardbx);
+    }
+    /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom privatelink endpoints.
      * 
      */
@@ -1375,6 +1587,13 @@ public final class Endpoints {
      */
     public Optional<String> quickbi() {
         return Optional.ofNullable(this.quickbi);
+    }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom quickbi endpoints.
+     * 
+     */
+    public Optional<String> quickbiPublic() {
+        return Optional.ofNullable(this.quickbiPublic);
     }
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom quotas endpoints.
@@ -1418,6 +1637,9 @@ public final class Endpoints {
     public Optional<String> resourcemanager() {
         return Optional.ofNullable(this.resourcemanager);
     }
+    public Optional<String> resourcesharing() {
+        return Optional.ofNullable(this.resourcesharing);
+    }
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom resourcesharing endpoints.
      * 
@@ -1425,12 +1647,22 @@ public final class Endpoints {
     public Optional<String> ressharing() {
         return Optional.ofNullable(this.ressharing);
     }
+    public Optional<String> rocketmq() {
+        return Optional.ofNullable(this.rocketmq);
+    }
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ros endpoints.
      * 
      */
     public Optional<String> ros() {
         return Optional.ofNullable(this.ros);
+    }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom serverless endpoints.
+     * 
+     */
+    public Optional<String> sae() {
+        return Optional.ofNullable(this.sae);
     }
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom sas endpoints.
@@ -1445,6 +1677,13 @@ public final class Endpoints {
      */
     public Optional<String> scdn() {
         return Optional.ofNullable(this.scdn);
+    }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom edasschedulerx endpoints.
+     * 
+     */
+    public Optional<String> schedulerx2() {
+        return Optional.ofNullable(this.schedulerx2);
     }
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom sddp endpoints.
@@ -1466,6 +1705,13 @@ public final class Endpoints {
      */
     public Optional<String> serverless() {
         return Optional.ofNullable(this.serverless);
+    }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom srvcatalog endpoints.
+     * 
+     */
+    public Optional<String> servicecatalog() {
+        return Optional.ofNullable(this.servicecatalog);
     }
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom servicemesh endpoints.
@@ -1517,6 +1763,13 @@ public final class Endpoints {
         return Optional.ofNullable(this.swas);
     }
     /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom swas endpoints.
+     * 
+     */
+    public Optional<String> swasOpen() {
+        return Optional.ofNullable(this.swasOpen);
+    }
+    /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom tag endpoints.
      * 
      */
@@ -1536,6 +1789,9 @@ public final class Endpoints {
      */
     public Optional<String> vpc() {
         return Optional.ofNullable(this.vpc);
+    }
+    public Optional<String> vpcipam() {
+        return Optional.ofNullable(this.vpcipam);
     }
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom vpcpeer endpoints.
@@ -1578,10 +1834,13 @@ public final class Endpoints {
         private @Nullable String acr;
         private @Nullable String actiontrail;
         private @Nullable String adb;
+        private @Nullable String aiworkspace;
         private @Nullable String alb;
         private @Nullable String alidfs;
         private @Nullable String alidns;
         private @Nullable String alikafka;
+        private @Nullable String amqp;
+        private @Nullable String antiddosPublic;
         private @Nullable String apigateway;
         private @Nullable String arms;
         private @Nullable String bastionhost;
@@ -1596,6 +1855,7 @@ public final class Endpoints {
         private @Nullable String cddc;
         private @Nullable String cdn;
         private @Nullable String cds;
+        private @Nullable String chatbot;
         private @Nullable String clickhouse;
         private @Nullable String cloudauth;
         private @Nullable String cloudfirewall;
@@ -1609,14 +1869,18 @@ public final class Endpoints {
         private @Nullable String cs;
         private @Nullable String das;
         private @Nullable String datahub;
+        private @Nullable String dataworksPublic;
         private @Nullable String dataworkspublic;
         private @Nullable String dbfs;
+        private @Nullable String dbs;
         private @Nullable String dcdn;
         private @Nullable String ddosbasic;
         private @Nullable String ddosbgp;
         private @Nullable String ddoscoo;
         private @Nullable String dds;
+        private @Nullable String devopsRdc;
         private @Nullable String devopsrdc;
+        private @Nullable String dfs;
         private @Nullable String dg;
         private @Nullable String dm;
         private @Nullable String dmsEnterprise;
@@ -1625,12 +1889,15 @@ public final class Endpoints {
         private @Nullable String drds;
         private @Nullable String dts;
         private @Nullable String dysms;
+        private @Nullable String dysmsapi;
         private @Nullable String eais;
         private @Nullable String ebs;
+        private @Nullable String ecd;
         private @Nullable String eci;
         private @Nullable String ecs;
         private @Nullable String edas;
         private @Nullable String edasschedulerx;
+        private @Nullable String edsUser;
         private @Nullable String edsuser;
         private @Nullable String eflo;
         private @Nullable String ehpc;
@@ -1639,14 +1906,18 @@ public final class Endpoints {
         private @Nullable String elasticsearch;
         private @Nullable String emr;
         private @Nullable String ens;
+        private @Nullable String esa;
         private @Nullable String ess;
         private @Nullable String eventbridge;
         private @Nullable String fc;
+        private @Nullable String fcOpen;
         private @Nullable String fnf;
         private @Nullable String ga;
         private @Nullable String gaplus;
+        private @Nullable String gdb;
         private @Nullable String gds;
         private @Nullable String gpdb;
+        private @Nullable String gwlb;
         private @Nullable String gwsecd;
         private @Nullable String hbr;
         private @Nullable String hcsSgw;
@@ -1663,11 +1934,13 @@ public final class Endpoints {
         private @Nullable String maxcompute;
         private @Nullable String mhub;
         private @Nullable String mns;
+        private @Nullable String mnsOpen;
         private @Nullable String mscopensubscription;
         private @Nullable String mse;
         private @Nullable String nas;
         private @Nullable String nlb;
         private @Nullable String oceanbase;
+        private @Nullable String oceanbasepro;
         private @Nullable String ons;
         private @Nullable String onsproxy;
         private @Nullable String oos;
@@ -1675,22 +1948,29 @@ public final class Endpoints {
         private @Nullable String oss;
         private @Nullable String ots;
         private @Nullable String polardb;
+        private @Nullable String polardbx;
         private @Nullable String privatelink;
         private @Nullable String pvtz;
         private @Nullable String quickbi;
+        private @Nullable String quickbiPublic;
         private @Nullable String quotas;
         private @Nullable String rKvstore;
         private @Nullable String ram;
         private @Nullable String rds;
         private @Nullable String redisa;
         private @Nullable String resourcemanager;
+        private @Nullable String resourcesharing;
         private @Nullable String ressharing;
+        private @Nullable String rocketmq;
         private @Nullable String ros;
+        private @Nullable String sae;
         private @Nullable String sas;
         private @Nullable String scdn;
+        private @Nullable String schedulerx2;
         private @Nullable String sddp;
         private @Nullable String selectdb;
         private @Nullable String serverless;
+        private @Nullable String servicecatalog;
         private @Nullable String servicemesh;
         private @Nullable String sgw;
         private @Nullable String slb;
@@ -1698,9 +1978,11 @@ public final class Endpoints {
         private @Nullable String srvcatalog;
         private @Nullable String sts;
         private @Nullable String swas;
+        private @Nullable String swasOpen;
         private @Nullable String tag;
         private @Nullable String vod;
         private @Nullable String vpc;
+        private @Nullable String vpcipam;
         private @Nullable String vpcpeer;
         private @Nullable String vs;
         private @Nullable String waf;
@@ -1711,10 +1993,13 @@ public final class Endpoints {
     	      this.acr = defaults.acr;
     	      this.actiontrail = defaults.actiontrail;
     	      this.adb = defaults.adb;
+    	      this.aiworkspace = defaults.aiworkspace;
     	      this.alb = defaults.alb;
     	      this.alidfs = defaults.alidfs;
     	      this.alidns = defaults.alidns;
     	      this.alikafka = defaults.alikafka;
+    	      this.amqp = defaults.amqp;
+    	      this.antiddosPublic = defaults.antiddosPublic;
     	      this.apigateway = defaults.apigateway;
     	      this.arms = defaults.arms;
     	      this.bastionhost = defaults.bastionhost;
@@ -1729,6 +2014,7 @@ public final class Endpoints {
     	      this.cddc = defaults.cddc;
     	      this.cdn = defaults.cdn;
     	      this.cds = defaults.cds;
+    	      this.chatbot = defaults.chatbot;
     	      this.clickhouse = defaults.clickhouse;
     	      this.cloudauth = defaults.cloudauth;
     	      this.cloudfirewall = defaults.cloudfirewall;
@@ -1742,14 +2028,18 @@ public final class Endpoints {
     	      this.cs = defaults.cs;
     	      this.das = defaults.das;
     	      this.datahub = defaults.datahub;
+    	      this.dataworksPublic = defaults.dataworksPublic;
     	      this.dataworkspublic = defaults.dataworkspublic;
     	      this.dbfs = defaults.dbfs;
+    	      this.dbs = defaults.dbs;
     	      this.dcdn = defaults.dcdn;
     	      this.ddosbasic = defaults.ddosbasic;
     	      this.ddosbgp = defaults.ddosbgp;
     	      this.ddoscoo = defaults.ddoscoo;
     	      this.dds = defaults.dds;
+    	      this.devopsRdc = defaults.devopsRdc;
     	      this.devopsrdc = defaults.devopsrdc;
+    	      this.dfs = defaults.dfs;
     	      this.dg = defaults.dg;
     	      this.dm = defaults.dm;
     	      this.dmsEnterprise = defaults.dmsEnterprise;
@@ -1758,12 +2048,15 @@ public final class Endpoints {
     	      this.drds = defaults.drds;
     	      this.dts = defaults.dts;
     	      this.dysms = defaults.dysms;
+    	      this.dysmsapi = defaults.dysmsapi;
     	      this.eais = defaults.eais;
     	      this.ebs = defaults.ebs;
+    	      this.ecd = defaults.ecd;
     	      this.eci = defaults.eci;
     	      this.ecs = defaults.ecs;
     	      this.edas = defaults.edas;
     	      this.edasschedulerx = defaults.edasschedulerx;
+    	      this.edsUser = defaults.edsUser;
     	      this.edsuser = defaults.edsuser;
     	      this.eflo = defaults.eflo;
     	      this.ehpc = defaults.ehpc;
@@ -1772,14 +2065,18 @@ public final class Endpoints {
     	      this.elasticsearch = defaults.elasticsearch;
     	      this.emr = defaults.emr;
     	      this.ens = defaults.ens;
+    	      this.esa = defaults.esa;
     	      this.ess = defaults.ess;
     	      this.eventbridge = defaults.eventbridge;
     	      this.fc = defaults.fc;
+    	      this.fcOpen = defaults.fcOpen;
     	      this.fnf = defaults.fnf;
     	      this.ga = defaults.ga;
     	      this.gaplus = defaults.gaplus;
+    	      this.gdb = defaults.gdb;
     	      this.gds = defaults.gds;
     	      this.gpdb = defaults.gpdb;
+    	      this.gwlb = defaults.gwlb;
     	      this.gwsecd = defaults.gwsecd;
     	      this.hbr = defaults.hbr;
     	      this.hcsSgw = defaults.hcsSgw;
@@ -1796,11 +2093,13 @@ public final class Endpoints {
     	      this.maxcompute = defaults.maxcompute;
     	      this.mhub = defaults.mhub;
     	      this.mns = defaults.mns;
+    	      this.mnsOpen = defaults.mnsOpen;
     	      this.mscopensubscription = defaults.mscopensubscription;
     	      this.mse = defaults.mse;
     	      this.nas = defaults.nas;
     	      this.nlb = defaults.nlb;
     	      this.oceanbase = defaults.oceanbase;
+    	      this.oceanbasepro = defaults.oceanbasepro;
     	      this.ons = defaults.ons;
     	      this.onsproxy = defaults.onsproxy;
     	      this.oos = defaults.oos;
@@ -1808,22 +2107,29 @@ public final class Endpoints {
     	      this.oss = defaults.oss;
     	      this.ots = defaults.ots;
     	      this.polardb = defaults.polardb;
+    	      this.polardbx = defaults.polardbx;
     	      this.privatelink = defaults.privatelink;
     	      this.pvtz = defaults.pvtz;
     	      this.quickbi = defaults.quickbi;
+    	      this.quickbiPublic = defaults.quickbiPublic;
     	      this.quotas = defaults.quotas;
     	      this.rKvstore = defaults.rKvstore;
     	      this.ram = defaults.ram;
     	      this.rds = defaults.rds;
     	      this.redisa = defaults.redisa;
     	      this.resourcemanager = defaults.resourcemanager;
+    	      this.resourcesharing = defaults.resourcesharing;
     	      this.ressharing = defaults.ressharing;
+    	      this.rocketmq = defaults.rocketmq;
     	      this.ros = defaults.ros;
+    	      this.sae = defaults.sae;
     	      this.sas = defaults.sas;
     	      this.scdn = defaults.scdn;
+    	      this.schedulerx2 = defaults.schedulerx2;
     	      this.sddp = defaults.sddp;
     	      this.selectdb = defaults.selectdb;
     	      this.serverless = defaults.serverless;
+    	      this.servicecatalog = defaults.servicecatalog;
     	      this.servicemesh = defaults.servicemesh;
     	      this.sgw = defaults.sgw;
     	      this.slb = defaults.slb;
@@ -1831,9 +2137,11 @@ public final class Endpoints {
     	      this.srvcatalog = defaults.srvcatalog;
     	      this.sts = defaults.sts;
     	      this.swas = defaults.swas;
+    	      this.swasOpen = defaults.swasOpen;
     	      this.tag = defaults.tag;
     	      this.vod = defaults.vod;
     	      this.vpc = defaults.vpc;
+    	      this.vpcipam = defaults.vpcipam;
     	      this.vpcpeer = defaults.vpcpeer;
     	      this.vs = defaults.vs;
     	      this.waf = defaults.waf;
@@ -1859,6 +2167,12 @@ public final class Endpoints {
             return this;
         }
         @CustomType.Setter
+        public Builder aiworkspace(@Nullable String aiworkspace) {
+
+            this.aiworkspace = aiworkspace;
+            return this;
+        }
+        @CustomType.Setter
         public Builder alb(@Nullable String alb) {
 
             this.alb = alb;
@@ -1880,6 +2194,18 @@ public final class Endpoints {
         public Builder alikafka(@Nullable String alikafka) {
 
             this.alikafka = alikafka;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder amqp(@Nullable String amqp) {
+
+            this.amqp = amqp;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder antiddosPublic(@Nullable String antiddosPublic) {
+
+            this.antiddosPublic = antiddosPublic;
             return this;
         }
         @CustomType.Setter
@@ -1967,6 +2293,12 @@ public final class Endpoints {
             return this;
         }
         @CustomType.Setter
+        public Builder chatbot(@Nullable String chatbot) {
+
+            this.chatbot = chatbot;
+            return this;
+        }
+        @CustomType.Setter
         public Builder clickhouse(@Nullable String clickhouse) {
 
             this.clickhouse = clickhouse;
@@ -2045,6 +2377,12 @@ public final class Endpoints {
             return this;
         }
         @CustomType.Setter
+        public Builder dataworksPublic(@Nullable String dataworksPublic) {
+
+            this.dataworksPublic = dataworksPublic;
+            return this;
+        }
+        @CustomType.Setter
         public Builder dataworkspublic(@Nullable String dataworkspublic) {
 
             this.dataworkspublic = dataworkspublic;
@@ -2054,6 +2392,12 @@ public final class Endpoints {
         public Builder dbfs(@Nullable String dbfs) {
 
             this.dbfs = dbfs;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dbs(@Nullable String dbs) {
+
+            this.dbs = dbs;
             return this;
         }
         @CustomType.Setter
@@ -2087,9 +2431,21 @@ public final class Endpoints {
             return this;
         }
         @CustomType.Setter
+        public Builder devopsRdc(@Nullable String devopsRdc) {
+
+            this.devopsRdc = devopsRdc;
+            return this;
+        }
+        @CustomType.Setter
         public Builder devopsrdc(@Nullable String devopsrdc) {
 
             this.devopsrdc = devopsrdc;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dfs(@Nullable String dfs) {
+
+            this.dfs = dfs;
             return this;
         }
         @CustomType.Setter
@@ -2141,6 +2497,12 @@ public final class Endpoints {
             return this;
         }
         @CustomType.Setter
+        public Builder dysmsapi(@Nullable String dysmsapi) {
+
+            this.dysmsapi = dysmsapi;
+            return this;
+        }
+        @CustomType.Setter
         public Builder eais(@Nullable String eais) {
 
             this.eais = eais;
@@ -2150,6 +2512,12 @@ public final class Endpoints {
         public Builder ebs(@Nullable String ebs) {
 
             this.ebs = ebs;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ecd(@Nullable String ecd) {
+
+            this.ecd = ecd;
             return this;
         }
         @CustomType.Setter
@@ -2174,6 +2542,12 @@ public final class Endpoints {
         public Builder edasschedulerx(@Nullable String edasschedulerx) {
 
             this.edasschedulerx = edasschedulerx;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder edsUser(@Nullable String edsUser) {
+
+            this.edsUser = edsUser;
             return this;
         }
         @CustomType.Setter
@@ -2225,6 +2599,12 @@ public final class Endpoints {
             return this;
         }
         @CustomType.Setter
+        public Builder esa(@Nullable String esa) {
+
+            this.esa = esa;
+            return this;
+        }
+        @CustomType.Setter
         public Builder ess(@Nullable String ess) {
 
             this.ess = ess;
@@ -2240,6 +2620,12 @@ public final class Endpoints {
         public Builder fc(@Nullable String fc) {
 
             this.fc = fc;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder fcOpen(@Nullable String fcOpen) {
+
+            this.fcOpen = fcOpen;
             return this;
         }
         @CustomType.Setter
@@ -2261,6 +2647,12 @@ public final class Endpoints {
             return this;
         }
         @CustomType.Setter
+        public Builder gdb(@Nullable String gdb) {
+
+            this.gdb = gdb;
+            return this;
+        }
+        @CustomType.Setter
         public Builder gds(@Nullable String gds) {
 
             this.gds = gds;
@@ -2270,6 +2662,12 @@ public final class Endpoints {
         public Builder gpdb(@Nullable String gpdb) {
 
             this.gpdb = gpdb;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gwlb(@Nullable String gwlb) {
+
+            this.gwlb = gwlb;
             return this;
         }
         @CustomType.Setter
@@ -2369,6 +2767,12 @@ public final class Endpoints {
             return this;
         }
         @CustomType.Setter
+        public Builder mnsOpen(@Nullable String mnsOpen) {
+
+            this.mnsOpen = mnsOpen;
+            return this;
+        }
+        @CustomType.Setter
         public Builder mscopensubscription(@Nullable String mscopensubscription) {
 
             this.mscopensubscription = mscopensubscription;
@@ -2396,6 +2800,12 @@ public final class Endpoints {
         public Builder oceanbase(@Nullable String oceanbase) {
 
             this.oceanbase = oceanbase;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder oceanbasepro(@Nullable String oceanbasepro) {
+
+            this.oceanbasepro = oceanbasepro;
             return this;
         }
         @CustomType.Setter
@@ -2441,6 +2851,12 @@ public final class Endpoints {
             return this;
         }
         @CustomType.Setter
+        public Builder polardbx(@Nullable String polardbx) {
+
+            this.polardbx = polardbx;
+            return this;
+        }
+        @CustomType.Setter
         public Builder privatelink(@Nullable String privatelink) {
 
             this.privatelink = privatelink;
@@ -2456,6 +2872,12 @@ public final class Endpoints {
         public Builder quickbi(@Nullable String quickbi) {
 
             this.quickbi = quickbi;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder quickbiPublic(@Nullable String quickbiPublic) {
+
+            this.quickbiPublic = quickbiPublic;
             return this;
         }
         @CustomType.Setter
@@ -2495,15 +2917,33 @@ public final class Endpoints {
             return this;
         }
         @CustomType.Setter
+        public Builder resourcesharing(@Nullable String resourcesharing) {
+
+            this.resourcesharing = resourcesharing;
+            return this;
+        }
+        @CustomType.Setter
         public Builder ressharing(@Nullable String ressharing) {
 
             this.ressharing = ressharing;
             return this;
         }
         @CustomType.Setter
+        public Builder rocketmq(@Nullable String rocketmq) {
+
+            this.rocketmq = rocketmq;
+            return this;
+        }
+        @CustomType.Setter
         public Builder ros(@Nullable String ros) {
 
             this.ros = ros;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sae(@Nullable String sae) {
+
+            this.sae = sae;
             return this;
         }
         @CustomType.Setter
@@ -2516,6 +2956,12 @@ public final class Endpoints {
         public Builder scdn(@Nullable String scdn) {
 
             this.scdn = scdn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder schedulerx2(@Nullable String schedulerx2) {
+
+            this.schedulerx2 = schedulerx2;
             return this;
         }
         @CustomType.Setter
@@ -2534,6 +2980,12 @@ public final class Endpoints {
         public Builder serverless(@Nullable String serverless) {
 
             this.serverless = serverless;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder servicecatalog(@Nullable String servicecatalog) {
+
+            this.servicecatalog = servicecatalog;
             return this;
         }
         @CustomType.Setter
@@ -2579,6 +3031,12 @@ public final class Endpoints {
             return this;
         }
         @CustomType.Setter
+        public Builder swasOpen(@Nullable String swasOpen) {
+
+            this.swasOpen = swasOpen;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tag(@Nullable String tag) {
 
             this.tag = tag;
@@ -2594,6 +3052,12 @@ public final class Endpoints {
         public Builder vpc(@Nullable String vpc) {
 
             this.vpc = vpc;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder vpcipam(@Nullable String vpcipam) {
+
+            this.vpcipam = vpcipam;
             return this;
         }
         @CustomType.Setter
@@ -2625,10 +3089,13 @@ public final class Endpoints {
             _resultValue.acr = acr;
             _resultValue.actiontrail = actiontrail;
             _resultValue.adb = adb;
+            _resultValue.aiworkspace = aiworkspace;
             _resultValue.alb = alb;
             _resultValue.alidfs = alidfs;
             _resultValue.alidns = alidns;
             _resultValue.alikafka = alikafka;
+            _resultValue.amqp = amqp;
+            _resultValue.antiddosPublic = antiddosPublic;
             _resultValue.apigateway = apigateway;
             _resultValue.arms = arms;
             _resultValue.bastionhost = bastionhost;
@@ -2643,6 +3110,7 @@ public final class Endpoints {
             _resultValue.cddc = cddc;
             _resultValue.cdn = cdn;
             _resultValue.cds = cds;
+            _resultValue.chatbot = chatbot;
             _resultValue.clickhouse = clickhouse;
             _resultValue.cloudauth = cloudauth;
             _resultValue.cloudfirewall = cloudfirewall;
@@ -2656,14 +3124,18 @@ public final class Endpoints {
             _resultValue.cs = cs;
             _resultValue.das = das;
             _resultValue.datahub = datahub;
+            _resultValue.dataworksPublic = dataworksPublic;
             _resultValue.dataworkspublic = dataworkspublic;
             _resultValue.dbfs = dbfs;
+            _resultValue.dbs = dbs;
             _resultValue.dcdn = dcdn;
             _resultValue.ddosbasic = ddosbasic;
             _resultValue.ddosbgp = ddosbgp;
             _resultValue.ddoscoo = ddoscoo;
             _resultValue.dds = dds;
+            _resultValue.devopsRdc = devopsRdc;
             _resultValue.devopsrdc = devopsrdc;
+            _resultValue.dfs = dfs;
             _resultValue.dg = dg;
             _resultValue.dm = dm;
             _resultValue.dmsEnterprise = dmsEnterprise;
@@ -2672,12 +3144,15 @@ public final class Endpoints {
             _resultValue.drds = drds;
             _resultValue.dts = dts;
             _resultValue.dysms = dysms;
+            _resultValue.dysmsapi = dysmsapi;
             _resultValue.eais = eais;
             _resultValue.ebs = ebs;
+            _resultValue.ecd = ecd;
             _resultValue.eci = eci;
             _resultValue.ecs = ecs;
             _resultValue.edas = edas;
             _resultValue.edasschedulerx = edasschedulerx;
+            _resultValue.edsUser = edsUser;
             _resultValue.edsuser = edsuser;
             _resultValue.eflo = eflo;
             _resultValue.ehpc = ehpc;
@@ -2686,14 +3161,18 @@ public final class Endpoints {
             _resultValue.elasticsearch = elasticsearch;
             _resultValue.emr = emr;
             _resultValue.ens = ens;
+            _resultValue.esa = esa;
             _resultValue.ess = ess;
             _resultValue.eventbridge = eventbridge;
             _resultValue.fc = fc;
+            _resultValue.fcOpen = fcOpen;
             _resultValue.fnf = fnf;
             _resultValue.ga = ga;
             _resultValue.gaplus = gaplus;
+            _resultValue.gdb = gdb;
             _resultValue.gds = gds;
             _resultValue.gpdb = gpdb;
+            _resultValue.gwlb = gwlb;
             _resultValue.gwsecd = gwsecd;
             _resultValue.hbr = hbr;
             _resultValue.hcsSgw = hcsSgw;
@@ -2710,11 +3189,13 @@ public final class Endpoints {
             _resultValue.maxcompute = maxcompute;
             _resultValue.mhub = mhub;
             _resultValue.mns = mns;
+            _resultValue.mnsOpen = mnsOpen;
             _resultValue.mscopensubscription = mscopensubscription;
             _resultValue.mse = mse;
             _resultValue.nas = nas;
             _resultValue.nlb = nlb;
             _resultValue.oceanbase = oceanbase;
+            _resultValue.oceanbasepro = oceanbasepro;
             _resultValue.ons = ons;
             _resultValue.onsproxy = onsproxy;
             _resultValue.oos = oos;
@@ -2722,22 +3203,29 @@ public final class Endpoints {
             _resultValue.oss = oss;
             _resultValue.ots = ots;
             _resultValue.polardb = polardb;
+            _resultValue.polardbx = polardbx;
             _resultValue.privatelink = privatelink;
             _resultValue.pvtz = pvtz;
             _resultValue.quickbi = quickbi;
+            _resultValue.quickbiPublic = quickbiPublic;
             _resultValue.quotas = quotas;
             _resultValue.rKvstore = rKvstore;
             _resultValue.ram = ram;
             _resultValue.rds = rds;
             _resultValue.redisa = redisa;
             _resultValue.resourcemanager = resourcemanager;
+            _resultValue.resourcesharing = resourcesharing;
             _resultValue.ressharing = ressharing;
+            _resultValue.rocketmq = rocketmq;
             _resultValue.ros = ros;
+            _resultValue.sae = sae;
             _resultValue.sas = sas;
             _resultValue.scdn = scdn;
+            _resultValue.schedulerx2 = schedulerx2;
             _resultValue.sddp = sddp;
             _resultValue.selectdb = selectdb;
             _resultValue.serverless = serverless;
+            _resultValue.servicecatalog = servicecatalog;
             _resultValue.servicemesh = servicemesh;
             _resultValue.sgw = sgw;
             _resultValue.slb = slb;
@@ -2745,9 +3233,11 @@ public final class Endpoints {
             _resultValue.srvcatalog = srvcatalog;
             _resultValue.sts = sts;
             _resultValue.swas = swas;
+            _resultValue.swasOpen = swasOpen;
             _resultValue.tag = tag;
             _resultValue.vod = vod;
             _resultValue.vpc = vpc;
+            _resultValue.vpcipam = vpcipam;
             _resultValue.vpcpeer = vpcpeer;
             _resultValue.vs = vs;
             _resultValue.waf = waf;

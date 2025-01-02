@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ga
         /// <summary>
         /// This data source provides the Global Accelerator (GA) Basic Accelerators of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.194.0+.
+        /// &gt; **NOTE:** Available since v1.194.0.
         /// 
         /// ## Example Usage
         /// 
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Ga
         /// <summary>
         /// This data source provides the Global Accelerator (GA) Basic Accelerators of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.194.0+.
+        /// &gt; **NOTE:** Available since v1.194.0.
         /// 
         /// ## Example Usage
         /// 
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Ga
         /// <summary>
         /// This data source provides the Global Accelerator (GA) Basic Accelerators of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.194.0+.
+        /// &gt; **NOTE:** Available since v1.194.0.
         /// 
         /// ## Example Usage
         /// 

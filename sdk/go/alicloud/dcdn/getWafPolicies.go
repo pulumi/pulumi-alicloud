@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Dcdn Waf Policies of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.184.0+.
+// > **NOTE:** Available since v1.184.0.
 //
 // ## Example Usage
 //
@@ -67,14 +67,16 @@ type GetWafPoliciesArgs struct {
 // A collection of values returned by getWafPolicies.
 type GetWafPoliciesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                 `pulumi:"id"`
-	Ids        []string               `pulumi:"ids"`
-	NameRegex  *string                `pulumi:"nameRegex"`
-	Names      []string               `pulumi:"names"`
-	OutputFile *string                `pulumi:"outputFile"`
-	Policies   []GetWafPoliciesPolicy `pulumi:"policies"`
-	QueryArgs  *string                `pulumi:"queryArgs"`
-	Status     *string                `pulumi:"status"`
+	Id         string   `pulumi:"id"`
+	Ids        []string `pulumi:"ids"`
+	NameRegex  *string  `pulumi:"nameRegex"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Dcdn Waf Policies. Each element contains the following attributes:
+	Policies  []GetWafPoliciesPolicy `pulumi:"policies"`
+	QueryArgs *string                `pulumi:"queryArgs"`
+	// The status of the resource.
+	Status *string `pulumi:"status"`
 }
 
 func GetWafPoliciesOutput(ctx *pulumi.Context, args GetWafPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetWafPoliciesResultOutput {
@@ -139,6 +141,7 @@ func (o GetWafPoliciesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafPoliciesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Dcdn Waf Policies. Each element contains the following attributes:
 func (o GetWafPoliciesResultOutput) Policies() GetWafPoliciesPolicyArrayOutput {
 	return o.ApplyT(func(v GetWafPoliciesResult) []GetWafPoliciesPolicy { return v.Policies }).(GetWafPoliciesPolicyArrayOutput)
 }
@@ -147,6 +150,7 @@ func (o GetWafPoliciesResultOutput) QueryArgs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafPoliciesResult) *string { return v.QueryArgs }).(pulumi.StringPtrOutput)
 }
 
+// The status of the resource.
 func (o GetWafPoliciesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafPoliciesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

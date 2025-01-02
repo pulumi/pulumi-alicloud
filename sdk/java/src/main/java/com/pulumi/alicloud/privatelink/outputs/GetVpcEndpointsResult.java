@@ -15,8 +15,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetVpcEndpointsResult {
+    /**
+     * @return The status of Connection.
+     * 
+     */
     private @Nullable String connectionStatus;
     private @Nullable Boolean enableDetails;
+    /**
+     * @return A list of Privatelink Vpc Endpoints. Each element contains the following attributes:
+     * 
+     */
     private List<GetVpcEndpointsEndpoint> endpoints;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -25,20 +33,48 @@ public final class GetVpcEndpointsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Vpc Endpoint names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The name of the terminal node service associated with the terminal node.
+     * 
+     */
     private @Nullable String serviceName;
+    /**
+     * @return The status of Vpc Endpoint.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return The name of Vpc Endpoint.
+     * 
+     */
     private @Nullable String vpcEndpointName;
+    /**
+     * @return The private network to which the terminal node belongs.
+     * 
+     */
     private @Nullable String vpcId;
 
     private GetVpcEndpointsResult() {}
+    /**
+     * @return The status of Connection.
+     * 
+     */
     public Optional<String> connectionStatus() {
         return Optional.ofNullable(this.connectionStatus);
     }
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
+    /**
+     * @return A list of Privatelink Vpc Endpoints. Each element contains the following attributes:
+     * 
+     */
     public List<GetVpcEndpointsEndpoint> endpoints() {
         return this.endpoints;
     }
@@ -55,21 +91,41 @@ public final class GetVpcEndpointsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Vpc Endpoint names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The name of the terminal node service associated with the terminal node.
+     * 
+     */
     public Optional<String> serviceName() {
         return Optional.ofNullable(this.serviceName);
     }
+    /**
+     * @return The status of Vpc Endpoint.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return The name of Vpc Endpoint.
+     * 
+     */
     public Optional<String> vpcEndpointName() {
         return Optional.ofNullable(this.vpcEndpointName);
     }
+    /**
+     * @return The private network to which the terminal node belongs.
+     * 
+     */
     public Optional<String> vpcId() {
         return Optional.ofNullable(this.vpcId);
     }

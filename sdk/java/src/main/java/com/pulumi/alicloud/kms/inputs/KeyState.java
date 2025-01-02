@@ -94,6 +94,36 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies whether to enable deletion protection. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
+     * 
+     */
+    @Import(name="deletionProtection")
+    private @Nullable Output<String> deletionProtection;
+
+    /**
+     * @return Specifies whether to enable deletion protection. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
+     * 
+     */
+    public Optional<Output<String>> deletionProtection() {
+        return Optional.ofNullable(this.deletionProtection);
+    }
+
+    /**
+     * The description of deletion protection. **NOTE:** `deletion_protection_description` takes effect only if `deletion_protection` is set to `Enabled`.
+     * 
+     */
+    @Import(name="deletionProtectionDescription")
+    private @Nullable Output<String> deletionProtectionDescription;
+
+    /**
+     * @return The description of deletion protection. **NOTE:** `deletion_protection_description` takes effect only if `deletion_protection` is set to `Enabled`.
+     * 
+     */
+    public Optional<Output<String>> deletionProtectionDescription() {
+        return Optional.ofNullable(this.deletionProtectionDescription);
+    }
+
+    /**
      * Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
      * 
      * @deprecated
@@ -299,16 +329,14 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`.
-     * **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
+     * The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
      * 
      */
     @Import(name="pendingWindowInDays")
     private @Nullable Output<Integer> pendingWindowInDays;
 
     /**
-     * @return The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`.
-     * **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
+     * @return The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
      * 
      */
     public Optional<Output<Integer>> pendingWindowInDays() {
@@ -361,16 +389,14 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval.
-     * **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
+     * The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
      * 
      */
     @Import(name="rotationInterval")
     private @Nullable Output<String> rotationInterval;
 
     /**
-     * @return The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval.
-     * **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
+     * @return The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
      * 
      */
     public Optional<Output<String>> rotationInterval() {
@@ -415,6 +441,8 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         this.creationDate = $.creationDate;
         this.creator = $.creator;
         this.deleteDate = $.deleteDate;
+        this.deletionProtection = $.deletionProtection;
+        this.deletionProtectionDescription = $.deletionProtectionDescription;
         this.deletionWindowInDays = $.deletionWindowInDays;
         this.description = $.description;
         this.dkmsInstanceId = $.dkmsInstanceId;
@@ -556,6 +584,48 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder deleteDate(String deleteDate) {
             return deleteDate(Output.of(deleteDate));
+        }
+
+        /**
+         * @param deletionProtection Specifies whether to enable deletion protection. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtection(@Nullable Output<String> deletionProtection) {
+            $.deletionProtection = deletionProtection;
+            return this;
+        }
+
+        /**
+         * @param deletionProtection Specifies whether to enable deletion protection. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtection(String deletionProtection) {
+            return deletionProtection(Output.of(deletionProtection));
+        }
+
+        /**
+         * @param deletionProtectionDescription The description of deletion protection. **NOTE:** `deletion_protection_description` takes effect only if `deletion_protection` is set to `Enabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtectionDescription(@Nullable Output<String> deletionProtectionDescription) {
+            $.deletionProtectionDescription = deletionProtectionDescription;
+            return this;
+        }
+
+        /**
+         * @param deletionProtectionDescription The description of deletion protection. **NOTE:** `deletion_protection_description` takes effect only if `deletion_protection` is set to `Enabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtectionDescription(String deletionProtectionDescription) {
+            return deletionProtectionDescription(Output.of(deletionProtectionDescription));
         }
 
         /**
@@ -830,8 +900,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pendingWindowInDays The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`.
-         * **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
+         * @param pendingWindowInDays The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
          * 
          * @return builder
          * 
@@ -842,8 +911,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pendingWindowInDays The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`.
-         * **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
+         * @param pendingWindowInDays The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
          * 
          * @return builder
          * 
@@ -916,8 +984,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rotationInterval The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval.
-         * **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
+         * @param rotationInterval The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
          * 
          * @return builder
          * 
@@ -928,8 +995,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rotationInterval The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval.
-         * **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
+         * @param rotationInterval The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
          * 
          * @return builder
          * 

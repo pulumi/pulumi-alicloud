@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMscSubContactsResult {
+    /**
+     * @return A list of Msc Sub Contacts. Each element contains the following attributes:
+     * 
+     */
     private List<GetMscSubContactsContact> contacts;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,10 +26,18 @@ public final class GetMscSubContactsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Contact names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
 
     private GetMscSubContactsResult() {}
+    /**
+     * @return A list of Msc Sub Contacts. Each element contains the following attributes:
+     * 
+     */
     public List<GetMscSubContactsContact> contacts() {
         return this.contacts;
     }
@@ -42,6 +54,10 @@ public final class GetMscSubContactsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Contact names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }

@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.PrivateLink.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The status of Vpc Endpoint Connection.
+        /// The status of Vpc Endpoint Connection. Valid Values: `Connected`, `Connecting`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting`, `Pending` and `ServiceDeleted`.
         /// </summary>
         public readonly string Status;
 

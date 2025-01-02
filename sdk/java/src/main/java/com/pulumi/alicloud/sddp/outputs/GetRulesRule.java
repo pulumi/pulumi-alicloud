@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetRulesRule {
     /**
-     * @return Sensitive Data Identification Rules for the Type of.
+     * @return Sensitive Data Identification Rules for the Type of. Valid values:
      * 
      */
     private Integer category;
@@ -37,7 +37,7 @@ public final class GetRulesRule {
      */
     private String createTime;
     /**
-     * @return Sensitive Data Identification Rules of Type. 0: the Built-in 1: The User-Defined.
+     * @return Sensitive Data Identification Rules of Type. Valid values:
      * 
      */
     private Integer customType;
@@ -82,12 +82,12 @@ public final class GetRulesRule {
      */
     private String productCode;
     /**
-     * @return Product ID.
+     * @return Product ID. Valid values:
      * 
      */
     private String productId;
     /**
-     * @return Sensitive Data Identification Rules of Risk Level ID. Valid values:1:S1, Weak Risk Level. 2:S2, Medium Risk Level. 3:S3 High Risk Level. 4:S4, the Highest Risk Level.
+     * @return Sensitive Data Identification Rules of Risk Level ID. Valid values:
      * 
      */
     private String riskLevelId;
@@ -122,14 +122,14 @@ public final class GetRulesRule {
      */
     private String userId;
     /**
-     * @return The Level of Risk.
+     * @return The Level of Risk. Valid values:
      * 
      */
     private Integer warnLevel;
 
     private GetRulesRule() {}
     /**
-     * @return Sensitive Data Identification Rules for the Type of.
+     * @return Sensitive Data Identification Rules for the Type of. Valid values:
      * 
      */
     public Integer category() {
@@ -164,7 +164,7 @@ public final class GetRulesRule {
         return this.createTime;
     }
     /**
-     * @return Sensitive Data Identification Rules of Type. 0: the Built-in 1: The User-Defined.
+     * @return Sensitive Data Identification Rules of Type. Valid values:
      * 
      */
     public Integer customType() {
@@ -227,14 +227,14 @@ public final class GetRulesRule {
         return this.productCode;
     }
     /**
-     * @return Product ID.
+     * @return Product ID. Valid values:
      * 
      */
     public String productId() {
         return this.productId;
     }
     /**
-     * @return Sensitive Data Identification Rules of Risk Level ID. Valid values:1:S1, Weak Risk Level. 2:S2, Medium Risk Level. 3:S3 High Risk Level. 4:S4, the Highest Risk Level.
+     * @return Sensitive Data Identification Rules of Risk Level ID. Valid values:
      * 
      */
     public String riskLevelId() {
@@ -283,7 +283,7 @@ public final class GetRulesRule {
         return this.userId;
     }
     /**
-     * @return The Level of Risk.
+     * @return The Level of Risk. Valid values:
      * 
      */
     public Integer warnLevel() {

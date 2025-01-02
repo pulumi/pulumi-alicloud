@@ -4201,7 +4201,7 @@ class GetPeerConnectionsConnectionResult(dict):
         :param str id: The ID of the PeerConnection.
         :param str peer_connection_id: The first ID of the resource.
         :param str peer_connection_name: The name of the resource.
-        :param str status: The status of the resource.
+        :param str status: The status of the resource. Valid values: `Accepting`, `Activated`, `Creating`, `Deleted`, `Deleting`, `Expired`, `Rejected`, `Updating`.
         :param str vpc_id: The ID of the requester VPC.
         """
         pulumi.set(__self__, "accepting_ali_uid", accepting_ali_uid)
@@ -4292,7 +4292,7 @@ class GetPeerConnectionsConnectionResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the resource.
+        The status of the resource. Valid values: `Accepting`, `Activated`, `Creating`, `Deleted`, `Deleting`, `Expired`, `Rejected`, `Updating`.
         """
         return pulumi.get(self, "status")
 

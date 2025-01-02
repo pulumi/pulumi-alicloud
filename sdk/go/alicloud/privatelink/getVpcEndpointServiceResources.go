@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Privatelink Vpc Endpoint Service Resources of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.110.0+.
+// > **NOTE:** Available since v1.110.0.
 //
 // ## Example Usage
 //
@@ -64,11 +64,13 @@ type GetVpcEndpointServiceResourcesArgs struct {
 // A collection of values returned by getVpcEndpointServiceResources.
 type GetVpcEndpointServiceResourcesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                                   `pulumi:"id"`
-	Ids        []string                                 `pulumi:"ids"`
-	OutputFile *string                                  `pulumi:"outputFile"`
-	Resources  []GetVpcEndpointServiceResourcesResource `pulumi:"resources"`
-	ServiceId  string                                   `pulumi:"serviceId"`
+	Id string `pulumi:"id"`
+	// A list of Vpc Endpoint Service Resource IDs.
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Privatelink Vpc Endpoint Service Resources. Each element contains the following attributes:
+	Resources []GetVpcEndpointServiceResourcesResource `pulumi:"resources"`
+	ServiceId string                                   `pulumi:"serviceId"`
 }
 
 func GetVpcEndpointServiceResourcesOutput(ctx *pulumi.Context, args GetVpcEndpointServiceResourcesOutputArgs, opts ...pulumi.InvokeOption) GetVpcEndpointServiceResourcesResultOutput {
@@ -112,6 +114,7 @@ func (o GetVpcEndpointServiceResourcesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcEndpointServiceResourcesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of Vpc Endpoint Service Resource IDs.
 func (o GetVpcEndpointServiceResourcesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetVpcEndpointServiceResourcesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
@@ -120,6 +123,7 @@ func (o GetVpcEndpointServiceResourcesResultOutput) OutputFile() pulumi.StringPt
 	return o.ApplyT(func(v GetVpcEndpointServiceResourcesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Privatelink Vpc Endpoint Service Resources. Each element contains the following attributes:
 func (o GetVpcEndpointServiceResourcesResultOutput) Resources() GetVpcEndpointServiceResourcesResourceArrayOutput {
 	return o.ApplyT(func(v GetVpcEndpointServiceResourcesResult) []GetVpcEndpointServiceResourcesResource {
 		return v.Resources

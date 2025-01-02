@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Waf
         /// 
         /// For information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).
         /// 
-        /// &gt; **NOTE:** Available in 1.86.0+ .
+        /// &gt; **NOTE:** Available since v1.86.0.
         /// 
         /// ## Example Usage
         /// 
@@ -28,9 +28,11 @@ namespace Pulumi.AliCloud.Waf
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = AliCloud.Waf.GetDomains.Invoke(new()
+        ///     var @default = AliCloud.Waf.GetInstances.Invoke();
+        /// 
+        ///     var defaultGetDomains = AliCloud.Waf.GetDomains.Invoke(new()
         ///     {
-        ///         InstanceId = "waf-cf-xxxxx",
+        ///         InstanceId = @default.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0]),
         ///     });
         /// 
         /// });
@@ -44,7 +46,7 @@ namespace Pulumi.AliCloud.Waf
         /// 
         /// For information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).
         /// 
-        /// &gt; **NOTE:** Available in 1.86.0+ .
+        /// &gt; **NOTE:** Available since v1.86.0.
         /// 
         /// ## Example Usage
         /// 
@@ -56,9 +58,11 @@ namespace Pulumi.AliCloud.Waf
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = AliCloud.Waf.GetDomains.Invoke(new()
+        ///     var @default = AliCloud.Waf.GetInstances.Invoke();
+        /// 
+        ///     var defaultGetDomains = AliCloud.Waf.GetDomains.Invoke(new()
         ///     {
-        ///         InstanceId = "waf-cf-xxxxx",
+        ///         InstanceId = @default.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0]),
         ///     });
         /// 
         /// });
@@ -72,7 +76,7 @@ namespace Pulumi.AliCloud.Waf
         /// 
         /// For information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).
         /// 
-        /// &gt; **NOTE:** Available in 1.86.0+ .
+        /// &gt; **NOTE:** Available since v1.86.0.
         /// 
         /// ## Example Usage
         /// 
@@ -84,9 +88,11 @@ namespace Pulumi.AliCloud.Waf
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = AliCloud.Waf.GetDomains.Invoke(new()
+        ///     var @default = AliCloud.Waf.GetInstances.Invoke();
+        /// 
+        ///     var defaultGetDomains = AliCloud.Waf.GetDomains.Invoke(new()
         ///     {
-        ///         InstanceId = "waf-cf-xxxxx",
+        ///         InstanceId = @default.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0]),
         ///     });
         /// 
         /// });

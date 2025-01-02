@@ -13,17 +13,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetForwardingRulesForwardingRuleRuleAction {
+    /**
+     * @return Forwarding configuration.
+     * 
+     */
     private List<GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig> forwardGroupConfigs;
+    /**
+     * @return Forwarding priority.
+     * 
+     */
     private Integer order;
+    /**
+     * @return Forward action type.
+     * 
+     */
     private String ruleActionType;
 
     private GetForwardingRulesForwardingRuleRuleAction() {}
+    /**
+     * @return Forwarding configuration.
+     * 
+     */
     public List<GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig> forwardGroupConfigs() {
         return this.forwardGroupConfigs;
     }
+    /**
+     * @return Forwarding priority.
+     * 
+     */
     public Integer order() {
         return this.order;
     }
+    /**
+     * @return Forward action type.
+     * 
+     */
     public String ruleActionType() {
         return this.ruleActionType;
     }

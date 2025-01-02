@@ -17,7 +17,7 @@ import java.util.Objects;
 @CustomType
 public final class GetEcsDisksDisk {
     /**
-     * @return Disk attachment time.
+     * @return A mount of time.
      * 
      */
     private String attachedTime;
@@ -27,12 +27,12 @@ public final class GetEcsDisksDisk {
      */
     private String autoSnapshotPolicyId;
     /**
-     * @return Availability zone of the disk.
+     * @return Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
      * 
      */
     private String availabilityZone;
     /**
-     * @return Disk category.
+     * @return Disk category. Valid values: `cloud`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `ephemeral_ssd`, `cloud_auto`, `cloud_essd_entry`.
      * 
      */
     private String category;
@@ -62,7 +62,7 @@ public final class GetEcsDisksDisk {
      */
     private String detachedTime;
     /**
-     * @return Cloud disk or the device name of the mounted instance on the site.
+     * @return The mount point of the disk.
      * 
      */
     private String device;
@@ -77,25 +77,34 @@ public final class GetEcsDisksDisk {
      */
     private String diskName;
     /**
-     * @return The disk type.
+     * @return The disk type. Valid values: `system`, `data`, `all`.
      * 
      */
     private String diskType;
     /**
-     * @return Whether the disk implements an automatic snapshot policy.
+     * @return Indicates whether the automatic snapshot is deleted when the disk is released.
      * 
      */
     private Boolean enableAutoSnapshot;
     /**
-     * @return Whether the disk implements an automatic snapshot policy.
+     * @return Whether the cloud disk has an automatic snapshot policy
      * 
      */
     private Boolean enableAutomatedSnapshotPolicy;
     /**
-     * @return Indicate whether the disk is encrypted or not.
+     * @return Indicate whether the disk is encrypted or not. Valid values: `on` and `off`.
      * 
      */
     private String encrypted;
+    /**
+     * @return The time when the subscription disk expires.
+     * 
+     */
+    private String expirationTime;
+    /**
+     * @return The time when the subscription disk expires.
+     * 
+     */
     private String expiredTime;
     /**
      * @return ID of the disk.
@@ -108,12 +117,24 @@ public final class GetEcsDisksDisk {
      */
     private String imageId;
     /**
-     * @return ID of the related instance. It is `null` unless the `status` is `In_use`.
+     * @return Filter the results by the specified ECS instance ID.
      * 
      */
     private String instanceId;
+    /**
+     * @return The maximum number of read and write operations per second.
+     * 
+     */
     private Integer iops;
+    /**
+     * @return The maximum number of read operations per second.
+     * 
+     */
     private Integer iopsRead;
+    /**
+     * @return The maximum number of write operations per second.
+     * 
+     */
     private Integer iopsWrite;
     /**
      * @return The kms key id.
@@ -135,9 +156,13 @@ public final class GetEcsDisksDisk {
      * 
      */
     private String name;
+    /**
+     * @return The reasons why the disk was locked. See `operation_locks` below for details.
+     * 
+     */
     private List<GetEcsDisksDiskOperationLock> operationLocks;
     /**
-     * @return Payment method for disk.
+     * @return Payment method for disk. Valid Values: `PayAsYouGo`, `Subscription`.
      * 
      */
     private String paymentType;
@@ -147,7 +172,7 @@ public final class GetEcsDisksDisk {
      */
     private String performanceLevel;
     /**
-     * @return Whether the disk is unmountable.
+     * @return Whether the cloud disk or local disk supports uninstallation.
      * 
      */
     private Boolean portable;
@@ -162,7 +187,7 @@ public final class GetEcsDisksDisk {
      */
     private String regionId;
     /**
-     * @return The Id of resource group.
+     * @return The Id of resource group which the disk belongs.
      * 
      */
     private String resourceGroupId;
@@ -172,34 +197,34 @@ public final class GetEcsDisksDisk {
      */
     private Integer size;
     /**
-     * @return Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+     * @return The source snapshot id.
      * 
      */
     private String snapshotId;
     /**
-     * @return Current status.
+     * @return The status of disk. Valid Values: `Attaching`, `Available`, `Creating`, `Detaching`, `In_use`, `Migrating`, `ReIniting`, `Transferring`.
      * 
      */
     private String status;
     /**
-     * @return A map of tags assigned to the disk.
+     * @return A map of tags assigned to the disks.
      * 
      */
     private Map<String,String> tags;
     /**
-     * @return Disk type.
+     * @return Field `type` has been deprecated from provider version 1.122.0. New field `disk_type` instead.
      * 
      */
     private String type;
     /**
-     * @return The zone id.
+     * @return ID of the free zone to which the disk belongs.
      * 
      */
     private String zoneId;
 
     private GetEcsDisksDisk() {}
     /**
-     * @return Disk attachment time.
+     * @return A mount of time.
      * 
      */
     public String attachedTime() {
@@ -213,14 +238,14 @@ public final class GetEcsDisksDisk {
         return this.autoSnapshotPolicyId;
     }
     /**
-     * @return Availability zone of the disk.
+     * @return Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
      * 
      */
     public String availabilityZone() {
         return this.availabilityZone;
     }
     /**
-     * @return Disk category.
+     * @return Disk category. Valid values: `cloud`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `ephemeral_ssd`, `cloud_auto`, `cloud_essd_entry`.
      * 
      */
     public String category() {
@@ -262,7 +287,7 @@ public final class GetEcsDisksDisk {
         return this.detachedTime;
     }
     /**
-     * @return Cloud disk or the device name of the mounted instance on the site.
+     * @return The mount point of the disk.
      * 
      */
     public String device() {
@@ -283,33 +308,44 @@ public final class GetEcsDisksDisk {
         return this.diskName;
     }
     /**
-     * @return The disk type.
+     * @return The disk type. Valid values: `system`, `data`, `all`.
      * 
      */
     public String diskType() {
         return this.diskType;
     }
     /**
-     * @return Whether the disk implements an automatic snapshot policy.
+     * @return Indicates whether the automatic snapshot is deleted when the disk is released.
      * 
      */
     public Boolean enableAutoSnapshot() {
         return this.enableAutoSnapshot;
     }
     /**
-     * @return Whether the disk implements an automatic snapshot policy.
+     * @return Whether the cloud disk has an automatic snapshot policy
      * 
      */
     public Boolean enableAutomatedSnapshotPolicy() {
         return this.enableAutomatedSnapshotPolicy;
     }
     /**
-     * @return Indicate whether the disk is encrypted or not.
+     * @return Indicate whether the disk is encrypted or not. Valid values: `on` and `off`.
      * 
      */
     public String encrypted() {
         return this.encrypted;
     }
+    /**
+     * @return The time when the subscription disk expires.
+     * 
+     */
+    public String expirationTime() {
+        return this.expirationTime;
+    }
+    /**
+     * @return The time when the subscription disk expires.
+     * 
+     */
     public String expiredTime() {
         return this.expiredTime;
     }
@@ -328,18 +364,30 @@ public final class GetEcsDisksDisk {
         return this.imageId;
     }
     /**
-     * @return ID of the related instance. It is `null` unless the `status` is `In_use`.
+     * @return Filter the results by the specified ECS instance ID.
      * 
      */
     public String instanceId() {
         return this.instanceId;
     }
+    /**
+     * @return The maximum number of read and write operations per second.
+     * 
+     */
     public Integer iops() {
         return this.iops;
     }
+    /**
+     * @return The maximum number of read operations per second.
+     * 
+     */
     public Integer iopsRead() {
         return this.iopsRead;
     }
+    /**
+     * @return The maximum number of write operations per second.
+     * 
+     */
     public Integer iopsWrite() {
         return this.iopsWrite;
     }
@@ -371,11 +419,15 @@ public final class GetEcsDisksDisk {
     public String name() {
         return this.name;
     }
+    /**
+     * @return The reasons why the disk was locked. See `operation_locks` below for details.
+     * 
+     */
     public List<GetEcsDisksDiskOperationLock> operationLocks() {
         return this.operationLocks;
     }
     /**
-     * @return Payment method for disk.
+     * @return Payment method for disk. Valid Values: `PayAsYouGo`, `Subscription`.
      * 
      */
     public String paymentType() {
@@ -389,7 +441,7 @@ public final class GetEcsDisksDisk {
         return this.performanceLevel;
     }
     /**
-     * @return Whether the disk is unmountable.
+     * @return Whether the cloud disk or local disk supports uninstallation.
      * 
      */
     public Boolean portable() {
@@ -410,7 +462,7 @@ public final class GetEcsDisksDisk {
         return this.regionId;
     }
     /**
-     * @return The Id of resource group.
+     * @return The Id of resource group which the disk belongs.
      * 
      */
     public String resourceGroupId() {
@@ -424,35 +476,35 @@ public final class GetEcsDisksDisk {
         return this.size;
     }
     /**
-     * @return Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+     * @return The source snapshot id.
      * 
      */
     public String snapshotId() {
         return this.snapshotId;
     }
     /**
-     * @return Current status.
+     * @return The status of disk. Valid Values: `Attaching`, `Available`, `Creating`, `Detaching`, `In_use`, `Migrating`, `ReIniting`, `Transferring`.
      * 
      */
     public String status() {
         return this.status;
     }
     /**
-     * @return A map of tags assigned to the disk.
+     * @return A map of tags assigned to the disks.
      * 
      */
     public Map<String,String> tags() {
         return this.tags;
     }
     /**
-     * @return Disk type.
+     * @return Field `type` has been deprecated from provider version 1.122.0. New field `disk_type` instead.
      * 
      */
     public String type() {
         return this.type;
     }
     /**
-     * @return The zone id.
+     * @return ID of the free zone to which the disk belongs.
      * 
      */
     public String zoneId() {
@@ -484,6 +536,7 @@ public final class GetEcsDisksDisk {
         private Boolean enableAutoSnapshot;
         private Boolean enableAutomatedSnapshotPolicy;
         private String encrypted;
+        private String expirationTime;
         private String expiredTime;
         private String id;
         private String imageId;
@@ -527,6 +580,7 @@ public final class GetEcsDisksDisk {
     	      this.enableAutoSnapshot = defaults.enableAutoSnapshot;
     	      this.enableAutomatedSnapshotPolicy = defaults.enableAutomatedSnapshotPolicy;
     	      this.encrypted = defaults.encrypted;
+    	      this.expirationTime = defaults.expirationTime;
     	      this.expiredTime = defaults.expiredTime;
     	      this.id = defaults.id;
     	      this.imageId = defaults.imageId;
@@ -679,6 +733,14 @@ public final class GetEcsDisksDisk {
               throw new MissingRequiredPropertyException("GetEcsDisksDisk", "encrypted");
             }
             this.encrypted = encrypted;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder expirationTime(String expirationTime) {
+            if (expirationTime == null) {
+              throw new MissingRequiredPropertyException("GetEcsDisksDisk", "expirationTime");
+            }
+            this.expirationTime = expirationTime;
             return this;
         }
         @CustomType.Setter
@@ -897,6 +959,7 @@ public final class GetEcsDisksDisk {
             _resultValue.enableAutoSnapshot = enableAutoSnapshot;
             _resultValue.enableAutomatedSnapshotPolicy = enableAutomatedSnapshotPolicy;
             _resultValue.encrypted = encrypted;
+            _resultValue.expirationTime = expirationTime;
             _resultValue.expiredTime = expiredTime;
             _resultValue.id = id;
             _resultValue.imageId = imageId;

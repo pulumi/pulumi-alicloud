@@ -13,17 +13,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetForwardingRulesForwardingRuleRuleCondition {
+    /**
+     * @return Domain name configuration information.
+     * 
+     */
     private List<GetForwardingRulesForwardingRuleRuleConditionHostConfig> hostConfigs;
+    /**
+     * @return Path configuration information.
+     * 
+     */
     private List<GetForwardingRulesForwardingRuleRuleConditionPathConfig> pathConfigs;
+    /**
+     * @return Forwarding condition type.
+     * 
+     */
     private String ruleConditionType;
 
     private GetForwardingRulesForwardingRuleRuleCondition() {}
+    /**
+     * @return Domain name configuration information.
+     * 
+     */
     public List<GetForwardingRulesForwardingRuleRuleConditionHostConfig> hostConfigs() {
         return this.hostConfigs;
     }
+    /**
+     * @return Path configuration information.
+     * 
+     */
     public List<GetForwardingRulesForwardingRuleRuleConditionPathConfig> pathConfigs() {
         return this.pathConfigs;
     }
+    /**
+     * @return Forwarding condition type.
+     * 
+     */
     public String ruleConditionType() {
         return this.ruleConditionType;
     }

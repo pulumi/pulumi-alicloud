@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud
     public static class GetMscSubContactVerificationMessage
     {
         /// <summary>
-        /// &gt; **NOTE:** Available in v1.156.0+.
+        /// &gt; **NOTE:** Available since v1.156.0.
         /// 
         /// ## Example Usage
         /// 
@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMscSubContactVerificationMessageResult>("alicloud:index/getMscSubContactVerificationMessage:getMscSubContactVerificationMessage", args ?? new GetMscSubContactVerificationMessageArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **NOTE:** Available in v1.156.0+.
+        /// &gt; **NOTE:** Available since v1.156.0.
         /// 
         /// ## Example Usage
         /// 
@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud
             => global::Pulumi.Deployment.Instance.Invoke<GetMscSubContactVerificationMessageResult>("alicloud:index/getMscSubContactVerificationMessage:getMscSubContactVerificationMessage", args ?? new GetMscSubContactVerificationMessageInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **NOTE:** Available in v1.156.0+.
+        /// &gt; **NOTE:** Available since v1.156.0.
         /// 
         /// ## Example Usage
         /// 

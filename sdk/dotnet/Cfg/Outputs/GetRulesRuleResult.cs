@@ -14,9 +14,12 @@ namespace Pulumi.AliCloud.Cfg.Outputs
     public sealed class GetRulesRuleResult
     {
         /// <summary>
-        /// The ID of the Alicloud account.
+        /// The ID of the Alibaba Cloud account.
         /// </summary>
         public readonly string AccountId;
+        /// <summary>
+        /// The compliance package ID.
+        /// </summary>
         public readonly string CompliancePackId;
         /// <summary>
         /// The information about the compliance evaluations based on the rule.
@@ -35,7 +38,7 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         /// </summary>
         public readonly string ConfigRuleState;
         /// <summary>
-        /// (Available in 1.124.1+) A list of trigger types of config rule.
+        /// (Available since v1.124.1) A list of trigger types of config rule.
         /// </summary>
         public readonly string ConfigRuleTriggerTypes;
         /// <summary>
@@ -47,7 +50,7 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         /// </summary>
         public readonly string EventSource;
         /// <summary>
-        /// (Available in 1.124.1+) The scope of exclude of resource ids.
+        /// (Available since v1.124.1) The scope of exclude of resource ids.
         /// </summary>
         public readonly string ExcludeResourceIdsScope;
         /// <summary>
@@ -59,7 +62,7 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> InputParameters;
         /// <summary>
-        /// (Available in 1.124.1+) The frequency of maximum execution.
+        /// (Available since v1.124.1) The frequency of maximum execution.
         /// </summary>
         public readonly string MaximumExecutionFrequency;
         /// <summary>
@@ -67,15 +70,15 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         /// </summary>
         public readonly string ModifiedTimestamp;
         /// <summary>
-        /// (Available in 1.124.1+) The scope of region ids.
+        /// (Available since v1.124.1) The scope of region ids.
         /// </summary>
         public readonly string RegionIdsScope;
         /// <summary>
-        /// (Available in 1.124.1+) The scope of resource group ids.
+        /// (Available since v1.124.1) The scope of resource group ids.
         /// </summary>
         public readonly string ResourceGroupIdsScope;
         /// <summary>
-        /// (Available in 1.124.1+) The scope of resource types.
+        /// (Available since v1.124.1) The scope of resource types.
         /// </summary>
         public readonly ImmutableArray<string> ResourceTypesScopes;
         /// <summary>
@@ -111,11 +114,11 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// (Available in 1.124.1+) The scope of tag key.
+        /// (Available since v1.124.1) The scope of tag key.
         /// </summary>
         public readonly string TagKeyScope;
         /// <summary>
-        /// (Available in 1.124.1+) The scope of tag value.
+        /// (Available since v1.124.1) The scope of tag value.
         /// </summary>
         public readonly string TagValueScope;
 

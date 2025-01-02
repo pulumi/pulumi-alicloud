@@ -20,6 +20,8 @@ __all__ = ['KeyArgs', 'Key']
 class KeyArgs:
     def __init__(__self__, *,
                  automatic_rotation: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[str]] = None,
+                 deletion_protection_description: Optional[pulumi.Input[str]] = None,
                  deletion_window_in_days: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dkms_instance_id: Optional[pulumi.Input[str]] = None,
@@ -37,6 +39,8 @@ class KeyArgs:
         """
         The set of arguments for constructing a Key resource.
         :param pulumi.Input[str] automatic_rotation: Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
+        :param pulumi.Input[str] deletion_protection: Specifies whether to enable deletion protection. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
+        :param pulumi.Input[str] deletion_protection_description: The description of deletion protection. **NOTE:** `deletion_protection_description` takes effect only if `deletion_protection` is set to `Enabled`.
         :param pulumi.Input[int] deletion_window_in_days: Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
         :param pulumi.Input[str] description: The description of the key.
         :param pulumi.Input[str] dkms_instance_id: The ID of the KMS instance.
@@ -53,17 +57,19 @@ class KeyArgs:
                - `ENCRYPT/DECRYPT`: Encrypts or decrypts data.
                - `SIGN/VERIFY`: Generates or verifies a digital signature.
         :param pulumi.Input[str] origin: The key material origin. Default value: `Aliyun_KMS`. Valid values: `Aliyun_KMS`, `EXTERNAL`.
-        :param pulumi.Input[int] pending_window_in_days: The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`.
-               **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
+        :param pulumi.Input[int] pending_window_in_days: The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
         :param pulumi.Input[str] policy: The content of the key policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setkeypolicy).
         :param pulumi.Input[str] protection_level: The protection level of the key. Default value: `SOFTWARE`. Valid values: `SOFTWARE`, `HSM`.
-        :param pulumi.Input[str] rotation_interval: The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval.
-               **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
+        :param pulumi.Input[str] rotation_interval: The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
         :param pulumi.Input[str] status: The status of key. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         if automatic_rotation is not None:
             pulumi.set(__self__, "automatic_rotation", automatic_rotation)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if deletion_protection_description is not None:
+            pulumi.set(__self__, "deletion_protection_description", deletion_protection_description)
         if deletion_window_in_days is not None:
             warnings.warn("""Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.""", DeprecationWarning)
             pulumi.log.warn("""deletion_window_in_days is deprecated: Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.""")
@@ -113,6 +119,30 @@ class KeyArgs:
     @automatic_rotation.setter
     def automatic_rotation(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "automatic_rotation", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to enable deletion protection. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_protection", value)
+
+    @property
+    @pulumi.getter(name="deletionProtectionDescription")
+    def deletion_protection_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of deletion protection. **NOTE:** `deletion_protection_description` takes effect only if `deletion_protection` is set to `Enabled`.
+        """
+        return pulumi.get(self, "deletion_protection_description")
+
+    @deletion_protection_description.setter
+    def deletion_protection_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_protection_description", value)
 
     @property
     @pulumi.getter(name="deletionWindowInDays")
@@ -225,8 +255,7 @@ class KeyArgs:
     @pulumi.getter(name="pendingWindowInDays")
     def pending_window_in_days(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`.
-        **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
+        The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
         """
         return pulumi.get(self, "pending_window_in_days")
 
@@ -262,8 +291,7 @@ class KeyArgs:
     @pulumi.getter(name="rotationInterval")
     def rotation_interval(self) -> Optional[pulumi.Input[str]]:
         """
-        The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval.
-        **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
+        The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
         """
         return pulumi.get(self, "rotation_interval")
 
@@ -304,6 +332,8 @@ class _KeyState:
                  creation_date: Optional[pulumi.Input[str]] = None,
                  creator: Optional[pulumi.Input[str]] = None,
                  delete_date: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[str]] = None,
+                 deletion_protection_description: Optional[pulumi.Input[str]] = None,
                  deletion_window_in_days: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dkms_instance_id: Optional[pulumi.Input[str]] = None,
@@ -329,6 +359,8 @@ class _KeyState:
         :param pulumi.Input[str] creation_date: The time when the CMK was created.
         :param pulumi.Input[str] creator: The creator of the CMK.
         :param pulumi.Input[str] delete_date: The time at which the CMK is scheduled for deletion.
+        :param pulumi.Input[str] deletion_protection: Specifies whether to enable deletion protection. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
+        :param pulumi.Input[str] deletion_protection_description: The description of deletion protection. **NOTE:** `deletion_protection_description` takes effect only if `deletion_protection` is set to `Enabled`.
         :param pulumi.Input[int] deletion_window_in_days: Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
         :param pulumi.Input[str] description: The description of the key.
         :param pulumi.Input[str] dkms_instance_id: The ID of the KMS instance.
@@ -348,13 +380,11 @@ class _KeyState:
         :param pulumi.Input[str] material_expire_time: The time when the key material expires.
         :param pulumi.Input[str] next_rotation_date: The time when the next rotation will be performed.
         :param pulumi.Input[str] origin: The key material origin. Default value: `Aliyun_KMS`. Valid values: `Aliyun_KMS`, `EXTERNAL`.
-        :param pulumi.Input[int] pending_window_in_days: The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`.
-               **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
+        :param pulumi.Input[int] pending_window_in_days: The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
         :param pulumi.Input[str] policy: The content of the key policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setkeypolicy).
         :param pulumi.Input[str] primary_key_version: The ID of the current primary key version of the symmetric CMK.
         :param pulumi.Input[str] protection_level: The protection level of the key. Default value: `SOFTWARE`. Valid values: `SOFTWARE`, `HSM`.
-        :param pulumi.Input[str] rotation_interval: The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval.
-               **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
+        :param pulumi.Input[str] rotation_interval: The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
         :param pulumi.Input[str] status: The status of key. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
@@ -368,6 +398,10 @@ class _KeyState:
             pulumi.set(__self__, "creator", creator)
         if delete_date is not None:
             pulumi.set(__self__, "delete_date", delete_date)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if deletion_protection_description is not None:
+            pulumi.set(__self__, "deletion_protection_description", deletion_protection_description)
         if deletion_window_in_days is not None:
             warnings.warn("""Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.""", DeprecationWarning)
             pulumi.log.warn("""deletion_window_in_days is deprecated: Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.""")
@@ -473,6 +507,30 @@ class _KeyState:
     @delete_date.setter
     def delete_date(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "delete_date", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to enable deletion protection. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_protection", value)
+
+    @property
+    @pulumi.getter(name="deletionProtectionDescription")
+    def deletion_protection_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of deletion protection. **NOTE:** `deletion_protection_description` takes effect only if `deletion_protection` is set to `Enabled`.
+        """
+        return pulumi.get(self, "deletion_protection_description")
+
+    @deletion_protection_description.setter
+    def deletion_protection_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_protection_description", value)
 
     @property
     @pulumi.getter(name="deletionWindowInDays")
@@ -621,8 +679,7 @@ class _KeyState:
     @pulumi.getter(name="pendingWindowInDays")
     def pending_window_in_days(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`.
-        **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
+        The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
         """
         return pulumi.get(self, "pending_window_in_days")
 
@@ -670,8 +727,7 @@ class _KeyState:
     @pulumi.getter(name="rotationInterval")
     def rotation_interval(self) -> Optional[pulumi.Input[str]]:
         """
-        The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval.
-        **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
+        The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
         """
         return pulumi.get(self, "rotation_interval")
 
@@ -710,6 +766,8 @@ class Key(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  automatic_rotation: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[str]] = None,
+                 deletion_protection_description: Optional[pulumi.Input[str]] = None,
                  deletion_window_in_days: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dkms_instance_id: Optional[pulumi.Input[str]] = None,
@@ -757,6 +815,8 @@ class Key(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] automatic_rotation: Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
+        :param pulumi.Input[str] deletion_protection: Specifies whether to enable deletion protection. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
+        :param pulumi.Input[str] deletion_protection_description: The description of deletion protection. **NOTE:** `deletion_protection_description` takes effect only if `deletion_protection` is set to `Enabled`.
         :param pulumi.Input[int] deletion_window_in_days: Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
         :param pulumi.Input[str] description: The description of the key.
         :param pulumi.Input[str] dkms_instance_id: The ID of the KMS instance.
@@ -773,12 +833,10 @@ class Key(pulumi.CustomResource):
                - `ENCRYPT/DECRYPT`: Encrypts or decrypts data.
                - `SIGN/VERIFY`: Generates or verifies a digital signature.
         :param pulumi.Input[str] origin: The key material origin. Default value: `Aliyun_KMS`. Valid values: `Aliyun_KMS`, `EXTERNAL`.
-        :param pulumi.Input[int] pending_window_in_days: The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`.
-               **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
+        :param pulumi.Input[int] pending_window_in_days: The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
         :param pulumi.Input[str] policy: The content of the key policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setkeypolicy).
         :param pulumi.Input[str] protection_level: The protection level of the key. Default value: `SOFTWARE`. Valid values: `SOFTWARE`, `HSM`.
-        :param pulumi.Input[str] rotation_interval: The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval.
-               **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
+        :param pulumi.Input[str] rotation_interval: The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
         :param pulumi.Input[str] status: The status of key. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
@@ -833,6 +891,8 @@ class Key(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  automatic_rotation: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[str]] = None,
+                 deletion_protection_description: Optional[pulumi.Input[str]] = None,
                  deletion_window_in_days: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dkms_instance_id: Optional[pulumi.Input[str]] = None,
@@ -857,6 +917,8 @@ class Key(pulumi.CustomResource):
             __props__ = KeyArgs.__new__(KeyArgs)
 
             __props__.__dict__["automatic_rotation"] = automatic_rotation
+            __props__.__dict__["deletion_protection"] = deletion_protection
+            __props__.__dict__["deletion_protection_description"] = deletion_protection_description
             __props__.__dict__["deletion_window_in_days"] = deletion_window_in_days
             __props__.__dict__["description"] = description
             __props__.__dict__["dkms_instance_id"] = dkms_instance_id
@@ -894,6 +956,8 @@ class Key(pulumi.CustomResource):
             creation_date: Optional[pulumi.Input[str]] = None,
             creator: Optional[pulumi.Input[str]] = None,
             delete_date: Optional[pulumi.Input[str]] = None,
+            deletion_protection: Optional[pulumi.Input[str]] = None,
+            deletion_protection_description: Optional[pulumi.Input[str]] = None,
             deletion_window_in_days: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
             dkms_instance_id: Optional[pulumi.Input[str]] = None,
@@ -924,6 +988,8 @@ class Key(pulumi.CustomResource):
         :param pulumi.Input[str] creation_date: The time when the CMK was created.
         :param pulumi.Input[str] creator: The creator of the CMK.
         :param pulumi.Input[str] delete_date: The time at which the CMK is scheduled for deletion.
+        :param pulumi.Input[str] deletion_protection: Specifies whether to enable deletion protection. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
+        :param pulumi.Input[str] deletion_protection_description: The description of deletion protection. **NOTE:** `deletion_protection_description` takes effect only if `deletion_protection` is set to `Enabled`.
         :param pulumi.Input[int] deletion_window_in_days: Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
         :param pulumi.Input[str] description: The description of the key.
         :param pulumi.Input[str] dkms_instance_id: The ID of the KMS instance.
@@ -943,13 +1009,11 @@ class Key(pulumi.CustomResource):
         :param pulumi.Input[str] material_expire_time: The time when the key material expires.
         :param pulumi.Input[str] next_rotation_date: The time when the next rotation will be performed.
         :param pulumi.Input[str] origin: The key material origin. Default value: `Aliyun_KMS`. Valid values: `Aliyun_KMS`, `EXTERNAL`.
-        :param pulumi.Input[int] pending_window_in_days: The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`.
-               **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
+        :param pulumi.Input[int] pending_window_in_days: The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
         :param pulumi.Input[str] policy: The content of the key policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setkeypolicy).
         :param pulumi.Input[str] primary_key_version: The ID of the current primary key version of the symmetric CMK.
         :param pulumi.Input[str] protection_level: The protection level of the key. Default value: `SOFTWARE`. Valid values: `SOFTWARE`, `HSM`.
-        :param pulumi.Input[str] rotation_interval: The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval.
-               **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
+        :param pulumi.Input[str] rotation_interval: The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
         :param pulumi.Input[str] status: The status of key. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
@@ -962,6 +1026,8 @@ class Key(pulumi.CustomResource):
         __props__.__dict__["creation_date"] = creation_date
         __props__.__dict__["creator"] = creator
         __props__.__dict__["delete_date"] = delete_date
+        __props__.__dict__["deletion_protection"] = deletion_protection
+        __props__.__dict__["deletion_protection_description"] = deletion_protection_description
         __props__.__dict__["deletion_window_in_days"] = deletion_window_in_days
         __props__.__dict__["description"] = description
         __props__.__dict__["dkms_instance_id"] = dkms_instance_id
@@ -1021,6 +1087,22 @@ class Key(pulumi.CustomResource):
         The time at which the CMK is scheduled for deletion.
         """
         return pulumi.get(self, "delete_date")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[str]:
+        """
+        Specifies whether to enable deletion protection. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @property
+    @pulumi.getter(name="deletionProtectionDescription")
+    def deletion_protection_description(self) -> pulumi.Output[Optional[str]]:
+        """
+        The description of deletion protection. **NOTE:** `deletion_protection_description` takes effect only if `deletion_protection` is set to `Enabled`.
+        """
+        return pulumi.get(self, "deletion_protection_description")
 
     @property
     @pulumi.getter(name="deletionWindowInDays")
@@ -1125,8 +1207,7 @@ class Key(pulumi.CustomResource):
     @pulumi.getter(name="pendingWindowInDays")
     def pending_window_in_days(self) -> pulumi.Output[Optional[int]]:
         """
-        The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`.
-        **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
+        The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
         """
         return pulumi.get(self, "pending_window_in_days")
 
@@ -1158,8 +1239,7 @@ class Key(pulumi.CustomResource):
     @pulumi.getter(name="rotationInterval")
     def rotation_interval(self) -> pulumi.Output[Optional[str]]:
         """
-        The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval.
-        **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
+        The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
         """
         return pulumi.get(self, "rotation_interval")
 

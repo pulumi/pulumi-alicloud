@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ga
         /// <summary>
         /// This data source provides Ga Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain)
         /// 
-        /// &gt; **NOTE:** Available in 1.197.0+
+        /// &gt; **NOTE:** Available since v1.197.0.
         /// 
         /// ## Example Usage
         /// 
@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.Ga
         /// <summary>
         /// This data source provides Ga Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain)
         /// 
-        /// &gt; **NOTE:** Available in 1.197.0+
+        /// &gt; **NOTE:** Available since v1.197.0.
         /// 
         /// ## Example Usage
         /// 
@@ -114,7 +114,7 @@ namespace Pulumi.AliCloud.Ga
         /// <summary>
         /// This data source provides Ga Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain)
         /// 
-        /// &gt; **NOTE:** Available in 1.197.0+
+        /// &gt; **NOTE:** Available since v1.197.0.
         /// 
         /// ## Example Usage
         /// 

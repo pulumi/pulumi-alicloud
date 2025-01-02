@@ -180,6 +180,7 @@ var mappedMods = map[string]string{
 	"alikafa":               aliKafaMod,
 	"amqp":                  amqpMod,
 	"api_gateway":           apiGatewayMod,
+	"apig":                  "Apig",
 	"arms":                  armsMod,
 	"audit":                 "Audit",
 	"bastionhost":           bastionHostMod,

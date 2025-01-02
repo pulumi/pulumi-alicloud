@@ -38,7 +38,7 @@ public final class GetAclsAcl {
      */
     private String id;
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `active`, `configuring`, `deleting`, `init`.
      * 
      */
     private String status;
@@ -80,7 +80,7 @@ public final class GetAclsAcl {
         return this.id;
     }
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `active`, `configuring`, `deleting`, `init`.
      * 
      */
     public String status() {

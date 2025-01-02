@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Adb DBCluster Lake Versions of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.190.0+.
+// > **NOTE:** Available since v1.190.0.
 //
 // ## Example Usage
 //
@@ -25,21 +25,51 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/adb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := adb.GetDBClusterLakeVersions(ctx, &adb.GetDBClusterLakeVersionsArgs{
-//				Ids: []string{
-//					"example_id",
-//				},
+//			_default, err := adb.GetZones(ctx, &adb.GetZonesArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("adbDbClusterLakeVersionId1", ids.Versions[0].Id)
+//			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultGetNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(_default.Ids[0]),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultDBClusterLakeVersion, err := adb.NewDBClusterLakeVersion(ctx, "default", &adb.DBClusterLakeVersionArgs{
+//				DbClusterVersion:           pulumi.String("5.0"),
+//				VpcId:                      pulumi.String(defaultGetNetworks.Ids[0]),
+//				VswitchId:                  pulumi.String(defaultGetSwitches.Ids[0]),
+//				ZoneId:                     pulumi.String(_default.Ids[0]),
+//				ComputeResource:            pulumi.String("16ACU"),
+//				StorageResource:            pulumi.String("0ACU"),
+//				PaymentType:                pulumi.String("PayAsYouGo"),
+//				EnableDefaultResourceGroup: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ids := adb.GetDBClusterLakeVersionsOutput(ctx, adb.GetDBClusterLakeVersionsOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultDBClusterLakeVersion.ID(),
+//				},
+//			}, nil)
+//			ctx.Export("adbDbClusterLakeVersionId1", ids.ApplyT(func(ids adb.GetDBClusterLakeVersionsResult) (*string, error) {
+//				return &ids.Versions[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}
@@ -75,14 +105,17 @@ type GetDBClusterLakeVersionsArgs struct {
 type GetDBClusterLakeVersionsResult struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string                            `pulumi:"id"`
-	Ids             []string                          `pulumi:"ids"`
-	OutputFile      *string                           `pulumi:"outputFile"`
-	PageNumber      *int                              `pulumi:"pageNumber"`
-	PageSize        *int                              `pulumi:"pageSize"`
-	ResourceGroupId *string                           `pulumi:"resourceGroupId"`
-	Status          *string                           `pulumi:"status"`
-	Versions        []GetDBClusterLakeVersionsVersion `pulumi:"versions"`
+	Id         string   `pulumi:"id"`
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
+	PageNumber *int     `pulumi:"pageNumber"`
+	PageSize   *int     `pulumi:"pageSize"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The status of the resource.
+	Status *string `pulumi:"status"`
+	// A list of Adb Db Clusters. Each element contains the following attributes:
+	Versions []GetDBClusterLakeVersionsVersion `pulumi:"versions"`
 }
 
 func GetDBClusterLakeVersionsOutput(ctx *pulumi.Context, args GetDBClusterLakeVersionsOutputArgs, opts ...pulumi.InvokeOption) GetDBClusterLakeVersionsResultOutput {
@@ -154,14 +187,17 @@ func (o GetDBClusterLakeVersionsResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetDBClusterLakeVersionsResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
+// The ID of the resource group.
 func (o GetDBClusterLakeVersionsResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDBClusterLakeVersionsResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
+// The status of the resource.
 func (o GetDBClusterLakeVersionsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDBClusterLakeVersionsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// A list of Adb Db Clusters. Each element contains the following attributes:
 func (o GetDBClusterLakeVersionsResultOutput) Versions() GetDBClusterLakeVersionsVersionArrayOutput {
 	return o.ApplyT(func(v GetDBClusterLakeVersionsResult) []GetDBClusterLakeVersionsVersion { return v.Versions }).(GetDBClusterLakeVersionsVersionArrayOutput)
 }

@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Config Aggregators of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.124.0+.
+// > **NOTE:** Available since v1.124.0.
 //
 // ## Example Usage
 //

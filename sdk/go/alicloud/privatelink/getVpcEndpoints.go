@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Privatelink Vpc Endpoints of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.109.0+.
+// > **NOTE:** Available since v1.109.0.
 //
 // ## Example Usage
 //
@@ -80,19 +80,26 @@ type GetVpcEndpointsArgs struct {
 
 // A collection of values returned by getVpcEndpoints.
 type GetVpcEndpointsResult struct {
-	ConnectionStatus *string                   `pulumi:"connectionStatus"`
-	EnableDetails    *bool                     `pulumi:"enableDetails"`
-	Endpoints        []GetVpcEndpointsEndpoint `pulumi:"endpoints"`
+	// The status of Connection.
+	ConnectionStatus *string `pulumi:"connectionStatus"`
+	EnableDetails    *bool   `pulumi:"enableDetails"`
+	// A list of Privatelink Vpc Endpoints. Each element contains the following attributes:
+	Endpoints []GetVpcEndpointsEndpoint `pulumi:"endpoints"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string   `pulumi:"id"`
-	Ids             []string `pulumi:"ids"`
-	NameRegex       *string  `pulumi:"nameRegex"`
-	Names           []string `pulumi:"names"`
-	OutputFile      *string  `pulumi:"outputFile"`
-	ServiceName     *string  `pulumi:"serviceName"`
-	Status          *string  `pulumi:"status"`
-	VpcEndpointName *string  `pulumi:"vpcEndpointName"`
-	VpcId           *string  `pulumi:"vpcId"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Vpc Endpoint names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The name of the terminal node service associated with the terminal node.
+	ServiceName *string `pulumi:"serviceName"`
+	// The status of Vpc Endpoint.
+	Status *string `pulumi:"status"`
+	// The name of Vpc Endpoint.
+	VpcEndpointName *string `pulumi:"vpcEndpointName"`
+	// The private network to which the terminal node belongs.
+	VpcId *string `pulumi:"vpcId"`
 }
 
 func GetVpcEndpointsOutput(ctx *pulumi.Context, args GetVpcEndpointsOutputArgs, opts ...pulumi.InvokeOption) GetVpcEndpointsResultOutput {
@@ -145,6 +152,7 @@ func (o GetVpcEndpointsResultOutput) ToGetVpcEndpointsResultOutputWithContext(ct
 	return o
 }
 
+// The status of Connection.
 func (o GetVpcEndpointsResultOutput) ConnectionStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpcEndpointsResult) *string { return v.ConnectionStatus }).(pulumi.StringPtrOutput)
 }
@@ -153,6 +161,7 @@ func (o GetVpcEndpointsResultOutput) EnableDetails() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetVpcEndpointsResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
 }
 
+// A list of Privatelink Vpc Endpoints. Each element contains the following attributes:
 func (o GetVpcEndpointsResultOutput) Endpoints() GetVpcEndpointsEndpointArrayOutput {
 	return o.ApplyT(func(v GetVpcEndpointsResult) []GetVpcEndpointsEndpoint { return v.Endpoints }).(GetVpcEndpointsEndpointArrayOutput)
 }
@@ -170,6 +179,7 @@ func (o GetVpcEndpointsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpcEndpointsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Vpc Endpoint names.
 func (o GetVpcEndpointsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetVpcEndpointsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -178,18 +188,22 @@ func (o GetVpcEndpointsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpcEndpointsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The name of the terminal node service associated with the terminal node.
 func (o GetVpcEndpointsResultOutput) ServiceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpcEndpointsResult) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
 }
 
+// The status of Vpc Endpoint.
 func (o GetVpcEndpointsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpcEndpointsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// The name of Vpc Endpoint.
 func (o GetVpcEndpointsResultOutput) VpcEndpointName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpcEndpointsResult) *string { return v.VpcEndpointName }).(pulumi.StringPtrOutput)
 }
 
+// The private network to which the terminal node belongs.
 func (o GetVpcEndpointsResultOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpcEndpointsResult) *string { return v.VpcId }).(pulumi.StringPtrOutput)
 }

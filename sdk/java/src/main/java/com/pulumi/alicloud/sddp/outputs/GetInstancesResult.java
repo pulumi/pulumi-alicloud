@@ -19,6 +19,10 @@ public final class GetInstancesResult {
      * 
      */
     private String id;
+    /**
+     * @return A list of Sddp Instances. Each element contains the following attributes:
+     * 
+     */
     private List<GetInstancesInstance> instances;
     private @Nullable String outputFile;
 
@@ -30,6 +34,10 @@ public final class GetInstancesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of Sddp Instances. Each element contains the following attributes:
+     * 
+     */
     public List<GetInstancesInstance> instances() {
         return this.instances;
     }

@@ -16,6 +16,10 @@ public final class GetInstanceMembersMember {
      * 
      */
     private Integer createTime;
+    /**
+     * @return The instance id.
+     * 
+     */
     private String id;
     /**
      * @return Remarks of cloud firewall member accounts.
@@ -51,6 +55,10 @@ public final class GetInstanceMembersMember {
     public Integer createTime() {
         return this.createTime;
     }
+    /**
+     * @return The instance id.
+     * 
+     */
     public String id() {
         return this.id;
     }

@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:esa/ratePlanInstance:RatePlanInstance":
 		r = &RatePlanInstance{}
+	case "alicloud:esa/record:Record":
+		r = &Record{}
 	case "alicloud:esa/site:Site":
 		r = &Site{}
 	default:
@@ -41,6 +43,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"esa/ratePlanInstance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/record",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

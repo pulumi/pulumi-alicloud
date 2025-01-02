@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Vpc Peer Connections of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.186.0+.
+// > **NOTE:** Available since v1.186.0.
 //
 // ## Example Usage
 //
@@ -76,16 +76,21 @@ type GetPeerConnectionsArgs struct {
 
 // A collection of values returned by getPeerConnections.
 type GetPeerConnectionsResult struct {
+	// A list of Vpc Peer Connections. Each element contains the following attributes:
 	Connections []GetPeerConnectionsConnection `pulumi:"connections"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                 string   `pulumi:"id"`
-	Ids                []string `pulumi:"ids"`
-	NameRegex          *string  `pulumi:"nameRegex"`
-	Names              []string `pulumi:"names"`
-	OutputFile         *string  `pulumi:"outputFile"`
-	PeerConnectionName *string  `pulumi:"peerConnectionName"`
-	Status             *string  `pulumi:"status"`
-	VpcId              *string  `pulumi:"vpcId"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of PeerConnection names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The name of the resource.
+	PeerConnectionName *string `pulumi:"peerConnectionName"`
+	// The status of the resource.
+	Status *string `pulumi:"status"`
+	// The ID of the requester VPC.
+	VpcId *string `pulumi:"vpcId"`
 }
 
 func GetPeerConnectionsOutput(ctx *pulumi.Context, args GetPeerConnectionsOutputArgs, opts ...pulumi.InvokeOption) GetPeerConnectionsResultOutput {
@@ -132,6 +137,7 @@ func (o GetPeerConnectionsResultOutput) ToGetPeerConnectionsResultOutputWithCont
 	return o
 }
 
+// A list of Vpc Peer Connections. Each element contains the following attributes:
 func (o GetPeerConnectionsResultOutput) Connections() GetPeerConnectionsConnectionArrayOutput {
 	return o.ApplyT(func(v GetPeerConnectionsResult) []GetPeerConnectionsConnection { return v.Connections }).(GetPeerConnectionsConnectionArrayOutput)
 }
@@ -149,6 +155,7 @@ func (o GetPeerConnectionsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPeerConnectionsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of PeerConnection names.
 func (o GetPeerConnectionsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPeerConnectionsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -157,14 +164,17 @@ func (o GetPeerConnectionsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPeerConnectionsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The name of the resource.
 func (o GetPeerConnectionsResultOutput) PeerConnectionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPeerConnectionsResult) *string { return v.PeerConnectionName }).(pulumi.StringPtrOutput)
 }
 
+// The status of the resource.
 func (o GetPeerConnectionsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPeerConnectionsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the requester VPC.
 func (o GetPeerConnectionsResultOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPeerConnectionsResult) *string { return v.VpcId }).(pulumi.StringPtrOutput)
 }

@@ -33,6 +33,14 @@ Object.defineProperty(exports, "accountId", {
     enumerable: true,
 });
 
+export declare const accountType: string | undefined;
+Object.defineProperty(exports, "accountType", {
+    get() {
+        return __config.get("accountType");
+    },
+    enumerable: true,
+});
+
 export declare const assumeRole: outputs.config.AssumeRole | undefined;
 Object.defineProperty(exports, "assumeRole", {
     get() {

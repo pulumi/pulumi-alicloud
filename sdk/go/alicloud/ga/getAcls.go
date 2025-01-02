@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ga Acls of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.150.0+.
+// > **NOTE:** Available since v1.150.0.
 //
 // ## Example Usage
 //
@@ -76,16 +76,20 @@ type GetAclsArgs struct {
 
 // A collection of values returned by getAcls.
 type GetAclsResult struct {
-	AclName       *string      `pulumi:"aclName"`
+	// The name of the acl.
+	AclName *string `pulumi:"aclName"`
+	// A list of Ga Acls. Each element contains the following attributes:
 	Acls          []GetAclsAcl `pulumi:"acls"`
 	EnableDetails *bool        `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Acl names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	Status     *string  `pulumi:"status"`
+	// The status of the resource.
+	Status *string `pulumi:"status"`
 }
 
 func GetAclsOutput(ctx *pulumi.Context, args GetAclsOutputArgs, opts ...pulumi.InvokeOption) GetAclsResultOutput {
@@ -132,10 +136,12 @@ func (o GetAclsResultOutput) ToGetAclsResultOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The name of the acl.
 func (o GetAclsResultOutput) AclName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAclsResult) *string { return v.AclName }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ga Acls. Each element contains the following attributes:
 func (o GetAclsResultOutput) Acls() GetAclsAclArrayOutput {
 	return o.ApplyT(func(v GetAclsResult) []GetAclsAcl { return v.Acls }).(GetAclsAclArrayOutput)
 }
@@ -157,6 +163,7 @@ func (o GetAclsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAclsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Acl names.
 func (o GetAclsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAclsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -165,6 +172,7 @@ func (o GetAclsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAclsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of the resource.
 func (o GetAclsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAclsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

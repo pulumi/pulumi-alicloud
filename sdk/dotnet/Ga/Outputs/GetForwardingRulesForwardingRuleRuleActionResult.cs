@@ -13,8 +13,17 @@ namespace Pulumi.AliCloud.Ga.Outputs
     [OutputType]
     public sealed class GetForwardingRulesForwardingRuleRuleActionResult
     {
+        /// <summary>
+        /// Forwarding configuration.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigResult> ForwardGroupConfigs;
+        /// <summary>
+        /// Forwarding priority.
+        /// </summary>
         public readonly int Order;
+        /// <summary>
+        /// Forward action type.
+        /// </summary>
         public readonly string RuleActionType;
 
         [OutputConstructor]

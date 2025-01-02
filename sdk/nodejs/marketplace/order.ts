@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * const order = new alicloud.marketplace.Order("order", {
  *     productCode: "cmapi033136",
- *     payType: "prepay",
+ *     payType: "PrePaid",
  *     quantity: 1,
  *     duration: 1,
  *     pricingCycle: "Month",

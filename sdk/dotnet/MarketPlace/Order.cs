@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.MarketPlace
     ///     var order = new AliCloud.MarketPlace.Order("order", new()
     ///     {
     ///         ProductCode = "cmapi033136",
-    ///         PayType = "prepay",
+    ///         PayType = "PrePaid",
     ///         Quantity = 1,
     ///         Duration = 1,
     ///         PricingCycle = "Month",

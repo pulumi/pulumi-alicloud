@@ -12,6 +12,9 @@ namespace Pulumi.AliCloud.Ecs.Inputs
 
     public sealed class GetEcsDisksOperationLockInputArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The reason why the disk was locked.
+        /// </summary>
         [Input("lockReason")]
         public Input<string>? LockReason { get; set; }
 

@@ -29,10 +29,26 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.outputFile);
     }
 
+    /**
+     * The payment type of the cloud firewall instance. Valid values: `PayAsYouGo`,`Subscription`.
+     * 
+     */
+    @Import(name="paymentType")
+    private @Nullable String paymentType;
+
+    /**
+     * @return The payment type of the cloud firewall instance. Valid values: `PayAsYouGo`,`Subscription`.
+     * 
+     */
+    public Optional<String> paymentType() {
+        return Optional.ofNullable(this.paymentType);
+    }
+
     private GetInstancesPlainArgs() {}
 
     private GetInstancesPlainArgs(GetInstancesPlainArgs $) {
         this.outputFile = $.outputFile;
+        this.paymentType = $.paymentType;
     }
 
     public static Builder builder() {
@@ -61,6 +77,17 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
          */
         public Builder outputFile(@Nullable String outputFile) {
             $.outputFile = outputFile;
+            return this;
+        }
+
+        /**
+         * @param paymentType The payment type of the cloud firewall instance. Valid values: `PayAsYouGo`,`Subscription`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paymentType(@Nullable String paymentType) {
+            $.paymentType = paymentType;
             return this;
         }
 

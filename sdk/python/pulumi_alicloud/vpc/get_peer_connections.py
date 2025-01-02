@@ -59,6 +59,9 @@ class GetPeerConnectionsResult:
     @property
     @pulumi.getter
     def connections(self) -> Sequence['outputs.GetPeerConnectionsConnectionResult']:
+        """
+        A list of Vpc Peer Connections. Each element contains the following attributes:
+        """
         return pulumi.get(self, "connections")
 
     @property
@@ -82,6 +85,9 @@ class GetPeerConnectionsResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of PeerConnection names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -92,16 +98,25 @@ class GetPeerConnectionsResult:
     @property
     @pulumi.getter(name="peerConnectionName")
     def peer_connection_name(self) -> Optional[str]:
+        """
+        The name of the resource.
+        """
         return pulumi.get(self, "peer_connection_name")
 
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        The status of the resource.
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[str]:
+        """
+        The ID of the requester VPC.
+        """
         return pulumi.get(self, "vpc_id")
 
 
@@ -132,7 +147,7 @@ def get_peer_connections(ids: Optional[Sequence[str]] = None,
     """
     This data source provides the Vpc Peer Connections of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.186.0+.
+    > **NOTE:** Available since v1.186.0.
 
     ## Example Usage
 
@@ -186,7 +201,7 @@ def get_peer_connections_output(ids: Optional[pulumi.Input[Optional[Sequence[str
     """
     This data source provides the Vpc Peer Connections of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.186.0+.
+    > **NOTE:** Available since v1.186.0.
 
     ## Example Usage
 

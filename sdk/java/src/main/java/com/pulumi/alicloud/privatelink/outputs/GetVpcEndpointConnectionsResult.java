@@ -15,7 +15,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetVpcEndpointConnectionsResult {
+    /**
+     * @return A list of Privatelink Vpc Endpoint Connections. Each element contains the following attributes:
+     * 
+     */
     private List<GetVpcEndpointConnectionsConnection> connections;
+    /**
+     * @return The ID of the Vpc Endpoint.
+     * 
+     */
     private @Nullable String endpointId;
     private @Nullable Integer endpointOwnerId;
     /**
@@ -23,15 +31,31 @@ public final class GetVpcEndpointConnectionsResult {
      * 
      */
     private String id;
+    /**
+     * @return A list of Vpc Endpoint Connection IDs.
+     * 
+     */
     private List<String> ids;
     private @Nullable String outputFile;
     private String serviceId;
+    /**
+     * @return The status of Vpc Endpoint Connection.
+     * 
+     */
     private @Nullable String status;
 
     private GetVpcEndpointConnectionsResult() {}
+    /**
+     * @return A list of Privatelink Vpc Endpoint Connections. Each element contains the following attributes:
+     * 
+     */
     public List<GetVpcEndpointConnectionsConnection> connections() {
         return this.connections;
     }
+    /**
+     * @return The ID of the Vpc Endpoint.
+     * 
+     */
     public Optional<String> endpointId() {
         return Optional.ofNullable(this.endpointId);
     }
@@ -45,6 +69,10 @@ public final class GetVpcEndpointConnectionsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of Vpc Endpoint Connection IDs.
+     * 
+     */
     public List<String> ids() {
         return this.ids;
     }
@@ -54,6 +82,10 @@ public final class GetVpcEndpointConnectionsResult {
     public String serviceId() {
         return this.serviceId;
     }
+    /**
+     * @return The status of Vpc Endpoint Connection.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

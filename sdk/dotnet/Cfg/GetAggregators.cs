@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cfg
         /// <summary>
         /// This data source provides the Config Aggregators of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.124.0+.
+        /// &gt; **NOTE:** Available since v1.124.0.
         /// 
         /// ## Example Usage
         /// 
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Cfg
         /// <summary>
         /// This data source provides the Config Aggregators of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.124.0+.
+        /// &gt; **NOTE:** Available since v1.124.0.
         /// 
         /// ## Example Usage
         /// 
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Cfg
         /// <summary>
         /// This data source provides the Config Aggregators of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.124.0+.
+        /// &gt; **NOTE:** Available since v1.124.0.
         /// 
         /// ## Example Usage
         /// 

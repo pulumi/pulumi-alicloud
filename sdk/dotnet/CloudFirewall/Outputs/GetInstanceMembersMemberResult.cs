@@ -17,6 +17,9 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
         /// When the cloud firewall member account was added.&gt; use second-level timestamp format.
         /// </summary>
         public readonly int CreateTime;
+        /// <summary>
+        /// The instance id.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// Remarks of cloud firewall member accounts.

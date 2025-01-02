@@ -32,6 +32,9 @@ namespace Pulumi.AliCloud
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
 
+        [Output("accountType")]
+        public Output<string?> AccountType { get; private set; } = null!;
+
         [Output("configurationSource")]
         public Output<string?> ConfigurationSource { get; private set; } = null!;
 
@@ -150,6 +153,9 @@ namespace Pulumi.AliCloud
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
+
+        [Input("accountType")]
+        public Input<string>? AccountType { get; set; }
 
         [Input("assumeRole", json: true)]
         public Input<Inputs.ProviderAssumeRoleArgs>? AssumeRole { get; set; }

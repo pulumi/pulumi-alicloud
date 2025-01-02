@@ -34,6 +34,7 @@ class DBClusterArgs:
                  elastic_io_resource: Optional[pulumi.Input[int]] = None,
                  elastic_io_resource_size: Optional[pulumi.Input[str]] = None,
                  enable_ssl: Optional[pulumi.Input[bool]] = None,
+                 kernel_version: Optional[pulumi.Input[str]] = None,
                  kms_id: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
@@ -43,6 +44,7 @@ class DBClusterArgs:
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 switch_mode: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -67,6 +69,7 @@ class DBClusterArgs:
                - `12Core96GB`: If you set `elastic_io_resource_size` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
                - `16Core128GB`: (Available since v1.237.0)If you set `elastic_io_resource_size` to `16Core128GB`, the specifications of an EIU are 48 cores and 384 GB memory.
         :param pulumi.Input[bool] enable_ssl: Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[str] kernel_version: The minor version to which you want to update.
         :param pulumi.Input[str] kms_id: The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
         :param pulumi.Input[str] maintain_time: The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
         :param pulumi.Input[str] modify_type: The modify type.
@@ -77,6 +80,7 @@ class DBClusterArgs:
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        :param pulumi.Input[int] switch_mode: The time when to perform the update. Valid values:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -117,6 +121,8 @@ class DBClusterArgs:
             pulumi.set(__self__, "elastic_io_resource_size", elastic_io_resource_size)
         if enable_ssl is not None:
             pulumi.set(__self__, "enable_ssl", enable_ssl)
+        if kernel_version is not None:
+            pulumi.set(__self__, "kernel_version", kernel_version)
         if kms_id is not None:
             pulumi.set(__self__, "kms_id", kms_id)
         if maintain_time is not None:
@@ -138,6 +144,8 @@ class DBClusterArgs:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if security_ips is not None:
             pulumi.set(__self__, "security_ips", security_ips)
+        if switch_mode is not None:
+            pulumi.set(__self__, "switch_mode", switch_mode)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if vpc_id is not None:
@@ -332,6 +340,18 @@ class DBClusterArgs:
         pulumi.set(self, "enable_ssl", value)
 
     @property
+    @pulumi.getter(name="kernelVersion")
+    def kernel_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The minor version to which you want to update.
+        """
+        return pulumi.get(self, "kernel_version")
+
+    @kernel_version.setter
+    def kernel_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kernel_version", value)
+
+    @property
     @pulumi.getter(name="kmsId")
     def kms_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -442,6 +462,18 @@ class DBClusterArgs:
         pulumi.set(self, "security_ips", value)
 
     @property
+    @pulumi.getter(name="switchMode")
+    def switch_mode(self) -> Optional[pulumi.Input[int]]:
+        """
+        The time when to perform the update. Valid values:
+        """
+        return pulumi.get(self, "switch_mode")
+
+    @switch_mode.setter
+    def switch_mode(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "switch_mode", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -512,6 +544,7 @@ class _DBClusterState:
                  elastic_io_resource: Optional[pulumi.Input[int]] = None,
                  elastic_io_resource_size: Optional[pulumi.Input[str]] = None,
                  enable_ssl: Optional[pulumi.Input[bool]] = None,
+                 kernel_version: Optional[pulumi.Input[str]] = None,
                  kms_id: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
@@ -524,6 +557,7 @@ class _DBClusterState:
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 switch_mode: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -548,6 +582,7 @@ class _DBClusterState:
                - `12Core96GB`: If you set `elastic_io_resource_size` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
                - `16Core128GB`: (Available since v1.237.0)If you set `elastic_io_resource_size` to `16Core128GB`, the specifications of an EIU are 48 cores and 384 GB memory.
         :param pulumi.Input[bool] enable_ssl: Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[str] kernel_version: The minor version to which you want to update.
         :param pulumi.Input[str] kms_id: The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
         :param pulumi.Input[str] maintain_time: The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
         :param pulumi.Input[str] mode: The mode of the cluster. Valid values: `reserver`, `flexible`.
@@ -561,6 +596,7 @@ class _DBClusterState:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[int] switch_mode: The time when to perform the update. Valid values:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -603,6 +639,8 @@ class _DBClusterState:
             pulumi.set(__self__, "elastic_io_resource_size", elastic_io_resource_size)
         if enable_ssl is not None:
             pulumi.set(__self__, "enable_ssl", enable_ssl)
+        if kernel_version is not None:
+            pulumi.set(__self__, "kernel_version", kernel_version)
         if kms_id is not None:
             pulumi.set(__self__, "kms_id", kms_id)
         if maintain_time is not None:
@@ -630,6 +668,8 @@ class _DBClusterState:
             pulumi.set(__self__, "security_ips", security_ips)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if switch_mode is not None:
+            pulumi.set(__self__, "switch_mode", switch_mode)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if vpc_id is not None:
@@ -824,6 +864,18 @@ class _DBClusterState:
         pulumi.set(self, "enable_ssl", value)
 
     @property
+    @pulumi.getter(name="kernelVersion")
+    def kernel_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The minor version to which you want to update.
+        """
+        return pulumi.get(self, "kernel_version")
+
+    @kernel_version.setter
+    def kernel_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kernel_version", value)
+
+    @property
     @pulumi.getter(name="kmsId")
     def kms_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -970,6 +1022,18 @@ class _DBClusterState:
         pulumi.set(self, "status", value)
 
     @property
+    @pulumi.getter(name="switchMode")
+    def switch_mode(self) -> Optional[pulumi.Input[int]]:
+        """
+        The time when to perform the update. Valid values:
+        """
+        return pulumi.get(self, "switch_mode")
+
+    @switch_mode.setter
+    def switch_mode(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "switch_mode", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -1041,6 +1105,7 @@ class DBCluster(pulumi.CustomResource):
                  elastic_io_resource: Optional[pulumi.Input[int]] = None,
                  elastic_io_resource_size: Optional[pulumi.Input[str]] = None,
                  enable_ssl: Optional[pulumi.Input[bool]] = None,
+                 kernel_version: Optional[pulumi.Input[str]] = None,
                  kms_id: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
@@ -1051,6 +1116,7 @@ class DBCluster(pulumi.CustomResource):
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 switch_mode: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -1084,6 +1150,7 @@ class DBCluster(pulumi.CustomResource):
                - `12Core96GB`: If you set `elastic_io_resource_size` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
                - `16Core128GB`: (Available since v1.237.0)If you set `elastic_io_resource_size` to `16Core128GB`, the specifications of an EIU are 48 cores and 384 GB memory.
         :param pulumi.Input[bool] enable_ssl: Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[str] kernel_version: The minor version to which you want to update.
         :param pulumi.Input[str] kms_id: The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
         :param pulumi.Input[str] maintain_time: The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
         :param pulumi.Input[str] mode: The mode of the cluster. Valid values: `reserver`, `flexible`.
@@ -1095,6 +1162,7 @@ class DBCluster(pulumi.CustomResource):
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        :param pulumi.Input[int] switch_mode: The time when to perform the update. Valid values:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -1148,6 +1216,7 @@ class DBCluster(pulumi.CustomResource):
                  elastic_io_resource: Optional[pulumi.Input[int]] = None,
                  elastic_io_resource_size: Optional[pulumi.Input[str]] = None,
                  enable_ssl: Optional[pulumi.Input[bool]] = None,
+                 kernel_version: Optional[pulumi.Input[str]] = None,
                  kms_id: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
@@ -1158,6 +1227,7 @@ class DBCluster(pulumi.CustomResource):
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 switch_mode: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -1187,6 +1257,7 @@ class DBCluster(pulumi.CustomResource):
             __props__.__dict__["elastic_io_resource"] = elastic_io_resource
             __props__.__dict__["elastic_io_resource_size"] = elastic_io_resource_size
             __props__.__dict__["enable_ssl"] = enable_ssl
+            __props__.__dict__["kernel_version"] = kernel_version
             __props__.__dict__["kms_id"] = kms_id
             __props__.__dict__["maintain_time"] = maintain_time
             if mode is None and not opts.urn:
@@ -1199,6 +1270,7 @@ class DBCluster(pulumi.CustomResource):
             __props__.__dict__["renewal_status"] = renewal_status
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["security_ips"] = security_ips
+            __props__.__dict__["switch_mode"] = switch_mode
             __props__.__dict__["tags"] = tags
             __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["vswitch_id"] = vswitch_id
@@ -1231,6 +1303,7 @@ class DBCluster(pulumi.CustomResource):
             elastic_io_resource: Optional[pulumi.Input[int]] = None,
             elastic_io_resource_size: Optional[pulumi.Input[str]] = None,
             enable_ssl: Optional[pulumi.Input[bool]] = None,
+            kernel_version: Optional[pulumi.Input[str]] = None,
             kms_id: Optional[pulumi.Input[str]] = None,
             maintain_time: Optional[pulumi.Input[str]] = None,
             mode: Optional[pulumi.Input[str]] = None,
@@ -1243,6 +1316,7 @@ class DBCluster(pulumi.CustomResource):
             resource_group_id: Optional[pulumi.Input[str]] = None,
             security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            switch_mode: Optional[pulumi.Input[int]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -1272,6 +1346,7 @@ class DBCluster(pulumi.CustomResource):
                - `12Core96GB`: If you set `elastic_io_resource_size` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
                - `16Core128GB`: (Available since v1.237.0)If you set `elastic_io_resource_size` to `16Core128GB`, the specifications of an EIU are 48 cores and 384 GB memory.
         :param pulumi.Input[bool] enable_ssl: Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[str] kernel_version: The minor version to which you want to update.
         :param pulumi.Input[str] kms_id: The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
         :param pulumi.Input[str] maintain_time: The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
         :param pulumi.Input[str] mode: The mode of the cluster. Valid values: `reserver`, `flexible`.
@@ -1285,6 +1360,7 @@ class DBCluster(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[int] switch_mode: The time when to perform the update. Valid values:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -1313,6 +1389,7 @@ class DBCluster(pulumi.CustomResource):
         __props__.__dict__["elastic_io_resource"] = elastic_io_resource
         __props__.__dict__["elastic_io_resource_size"] = elastic_io_resource_size
         __props__.__dict__["enable_ssl"] = enable_ssl
+        __props__.__dict__["kernel_version"] = kernel_version
         __props__.__dict__["kms_id"] = kms_id
         __props__.__dict__["maintain_time"] = maintain_time
         __props__.__dict__["mode"] = mode
@@ -1325,6 +1402,7 @@ class DBCluster(pulumi.CustomResource):
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["security_ips"] = security_ips
         __props__.__dict__["status"] = status
+        __props__.__dict__["switch_mode"] = switch_mode
         __props__.__dict__["tags"] = tags
         __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
@@ -1456,6 +1534,14 @@ class DBCluster(pulumi.CustomResource):
         return pulumi.get(self, "enable_ssl")
 
     @property
+    @pulumi.getter(name="kernelVersion")
+    def kernel_version(self) -> pulumi.Output[str]:
+        """
+        The minor version to which you want to update.
+        """
+        return pulumi.get(self, "kernel_version")
+
+    @property
     @pulumi.getter(name="kmsId")
     def kms_id(self) -> pulumi.Output[Optional[str]]:
         """
@@ -1552,6 +1638,14 @@ class DBCluster(pulumi.CustomResource):
         The status of the resource.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="switchMode")
+    def switch_mode(self) -> pulumi.Output[Optional[int]]:
+        """
+        The time when to perform the update. Valid values:
+        """
+        return pulumi.get(self, "switch_mode")
 
     @property
     @pulumi.getter

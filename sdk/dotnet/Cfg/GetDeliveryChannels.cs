@@ -19,8 +19,6 @@ namespace Pulumi.AliCloud.Cfg
         /// 
         /// &gt; **NOTE:**  Available in 1.99.0+.
         /// 
-        /// &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,8 +56,6 @@ namespace Pulumi.AliCloud.Cfg
         /// 
         /// &gt; **NOTE:**  Available in 1.99.0+.
         /// 
-        /// &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -96,8 +92,6 @@ namespace Pulumi.AliCloud.Cfg
         /// This data source provides the Config Delivery Channels of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:**  Available in 1.99.0+.
-        /// 
-        /// &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
         /// 
         /// ## Example Usage
         /// 

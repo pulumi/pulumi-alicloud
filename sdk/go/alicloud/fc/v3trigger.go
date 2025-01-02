@@ -215,7 +215,7 @@ type V3Trigger struct {
 	// The version or alias of the function
 	Qualifier pulumi.StringOutput `pulumi:"qualifier"`
 	// Trigger Event source ARN
-	SourceArn pulumi.StringPtrOutput `pulumi:"sourceArn"`
+	SourceArn pulumi.StringOutput `pulumi:"sourceArn"`
 	// The state of the trigger
 	Status pulumi.StringOutput `pulumi:"status"`
 	// (Available since v1.234.0) Resource identity of the function
@@ -496,8 +496,8 @@ func (o V3TriggerOutput) Qualifier() pulumi.StringOutput {
 }
 
 // Trigger Event source ARN
-func (o V3TriggerOutput) SourceArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *V3Trigger) pulumi.StringPtrOutput { return v.SourceArn }).(pulumi.StringPtrOutput)
+func (o V3TriggerOutput) SourceArn() pulumi.StringOutput {
+	return o.ApplyT(func(v *V3Trigger) pulumi.StringOutput { return v.SourceArn }).(pulumi.StringOutput)
 }
 
 // The state of the trigger

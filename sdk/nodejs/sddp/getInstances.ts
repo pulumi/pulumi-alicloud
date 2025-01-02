@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Sddp Instances of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.136.0+.
+ * > **NOTE:** Available since v1.136.0.
  *
  * ## Example Usage
  *
@@ -49,13 +49,16 @@ export interface GetInstancesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of Sddp Instances. Each element contains the following attributes:
+     */
     readonly instances: outputs.sddp.GetInstancesInstance[];
     readonly outputFile?: string;
 }
 /**
  * This data source provides the Sddp Instances of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.136.0+.
+ * > **NOTE:** Available since v1.136.0.
  *
  * ## Example Usage
  *

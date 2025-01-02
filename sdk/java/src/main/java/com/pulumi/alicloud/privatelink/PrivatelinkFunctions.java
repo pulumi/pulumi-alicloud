@@ -38,7 +38,7 @@ public final class PrivatelinkFunctions {
      * 
      * For information about Privatelink and how to use it, see [What is Privatelink](https://www.alibabacloud.com/help/en/product/120462.htm).
      * 
-     * &gt; **NOTE:** Available in v1.113.0+
+     * &gt; **NOTE:** Available since v1.113.0.
      * 
      * ## Example Usage
      * 
@@ -84,7 +84,7 @@ public final class PrivatelinkFunctions {
      * 
      * For information about Privatelink and how to use it, see [What is Privatelink](https://www.alibabacloud.com/help/en/product/120462.htm).
      * 
-     * &gt; **NOTE:** Available in v1.113.0+
+     * &gt; **NOTE:** Available since v1.113.0.
      * 
      * ## Example Usage
      * 
@@ -130,7 +130,7 @@ public final class PrivatelinkFunctions {
      * 
      * For information about Privatelink and how to use it, see [What is Privatelink](https://www.alibabacloud.com/help/en/product/120462.htm).
      * 
-     * &gt; **NOTE:** Available in v1.113.0+
+     * &gt; **NOTE:** Available since v1.113.0.
      * 
      * ## Example Usage
      * 
@@ -176,7 +176,7 @@ public final class PrivatelinkFunctions {
      * 
      * For information about Privatelink and how to use it, see [What is Privatelink](https://www.alibabacloud.com/help/en/product/120462.htm).
      * 
-     * &gt; **NOTE:** Available in v1.113.0+
+     * &gt; **NOTE:** Available since v1.113.0.
      * 
      * ## Example Usage
      * 
@@ -222,7 +222,7 @@ public final class PrivatelinkFunctions {
      * 
      * For information about Privatelink and how to use it, see [What is Privatelink](https://www.alibabacloud.com/help/en/product/120462.htm).
      * 
-     * &gt; **NOTE:** Available in v1.113.0+
+     * &gt; **NOTE:** Available since v1.113.0.
      * 
      * ## Example Usage
      * 
@@ -268,7 +268,7 @@ public final class PrivatelinkFunctions {
      * 
      * For information about Privatelink and how to use it, see [What is Privatelink](https://www.alibabacloud.com/help/en/product/120462.htm).
      * 
-     * &gt; **NOTE:** Available in v1.113.0+
+     * &gt; **NOTE:** Available since v1.113.0.
      * 
      * ## Example Usage
      * 
@@ -314,7 +314,7 @@ public final class PrivatelinkFunctions {
      * 
      * For information about Privatelink and how to use it, see [What is Privatelink](https://www.alibabacloud.com/help/en/product/120462.htm).
      * 
-     * &gt; **NOTE:** Available in v1.113.0+
+     * &gt; **NOTE:** Available since v1.113.0.
      * 
      * ## Example Usage
      * 
@@ -358,7 +358,7 @@ public final class PrivatelinkFunctions {
     /**
      * This data source provides the Privatelink Vpc Endpoint Connections of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.110.0+.
+     * &gt; **NOTE:** Available since v1.110.0.
      * 
      * ## Example Usage
      * 
@@ -406,7 +406,7 @@ public final class PrivatelinkFunctions {
     /**
      * This data source provides the Privatelink Vpc Endpoint Connections of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.110.0+.
+     * &gt; **NOTE:** Available since v1.110.0.
      * 
      * ## Example Usage
      * 
@@ -454,7 +454,7 @@ public final class PrivatelinkFunctions {
     /**
      * This data source provides the Privatelink Vpc Endpoint Connections of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.110.0+.
+     * &gt; **NOTE:** Available since v1.110.0.
      * 
      * ## Example Usage
      * 
@@ -502,7 +502,7 @@ public final class PrivatelinkFunctions {
     /**
      * This data source provides the Privatelink Vpc Endpoint Connections of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.110.0+.
+     * &gt; **NOTE:** Available since v1.110.0.
      * 
      * ## Example Usage
      * 
@@ -550,7 +550,7 @@ public final class PrivatelinkFunctions {
     /**
      * This data source provides the Privatelink Vpc Endpoint Connections of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.110.0+.
+     * &gt; **NOTE:** Available since v1.110.0.
      * 
      * ## Example Usage
      * 
@@ -598,7 +598,7 @@ public final class PrivatelinkFunctions {
     /**
      * This data source provides the Privatelink Vpc Endpoint Service Resources of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.110.0+.
+     * &gt; **NOTE:** Available since v1.110.0.
      * 
      * ## Example Usage
      * 
@@ -645,7 +645,7 @@ public final class PrivatelinkFunctions {
     /**
      * This data source provides the Privatelink Vpc Endpoint Service Resources of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.110.0+.
+     * &gt; **NOTE:** Available since v1.110.0.
      * 
      * ## Example Usage
      * 
@@ -692,7 +692,7 @@ public final class PrivatelinkFunctions {
     /**
      * This data source provides the Privatelink Vpc Endpoint Service Resources of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.110.0+.
+     * &gt; **NOTE:** Available since v1.110.0.
      * 
      * ## Example Usage
      * 
@@ -739,7 +739,7 @@ public final class PrivatelinkFunctions {
     /**
      * This data source provides the Privatelink Vpc Endpoint Service Resources of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.110.0+.
+     * &gt; **NOTE:** Available since v1.110.0.
      * 
      * ## Example Usage
      * 
@@ -786,7 +786,7 @@ public final class PrivatelinkFunctions {
     /**
      * This data source provides the Privatelink Vpc Endpoint Service Resources of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.110.0+.
+     * &gt; **NOTE:** Available since v1.110.0.
      * 
      * ## Example Usage
      * 
@@ -833,7 +833,7 @@ public final class PrivatelinkFunctions {
     /**
      * This data source provides the Privatelink Vpc Endpoint Service Users of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.110.0+.
+     * &gt; **NOTE:** Available since v1.110.0.
      * 
      * ## Example Usage
      * 
@@ -880,7 +880,7 @@ public final class PrivatelinkFunctions {
     /**
      * This data source provides the Privatelink Vpc Endpoint Service Users of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.110.0+.
+     * &gt; **NOTE:** Available since v1.110.0.
      * 
      * ## Example Usage
      * 
@@ -927,7 +927,7 @@ public final class PrivatelinkFunctions {
     /**
      * This data source provides the Privatelink Vpc Endpoint Service Users of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.110.0+.
+     * &gt; **NOTE:** Available since v1.110.0.
      * 
      * ## Example Usage
      * 
@@ -974,7 +974,7 @@ public final class PrivatelinkFunctions {
     /**
      * This data source provides the Privatelink Vpc Endpoint Service Users of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.110.0+.
+     * &gt; **NOTE:** Available since v1.110.0.
      * 
      * ## Example Usage
      * 
@@ -1021,7 +1021,7 @@ public final class PrivatelinkFunctions {
     /**
      * This data source provides the Privatelink Vpc Endpoint Service Users of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.110.0+.
+     * &gt; **NOTE:** Available since v1.110.0.
      * 
      * ## Example Usage
      * 
@@ -1453,7 +1453,7 @@ public final class PrivatelinkFunctions {
     /**
      * This data source provides the Privatelink Vpc Endpoint Zones of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      * ## Example Usage
      * 
@@ -1500,7 +1500,7 @@ public final class PrivatelinkFunctions {
     /**
      * This data source provides the Privatelink Vpc Endpoint Zones of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      * ## Example Usage
      * 
@@ -1547,7 +1547,7 @@ public final class PrivatelinkFunctions {
     /**
      * This data source provides the Privatelink Vpc Endpoint Zones of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      * ## Example Usage
      * 
@@ -1594,7 +1594,7 @@ public final class PrivatelinkFunctions {
     /**
      * This data source provides the Privatelink Vpc Endpoint Zones of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      * ## Example Usage
      * 
@@ -1641,7 +1641,7 @@ public final class PrivatelinkFunctions {
     /**
      * This data source provides the Privatelink Vpc Endpoint Zones of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      * ## Example Usage
      * 
@@ -1688,7 +1688,7 @@ public final class PrivatelinkFunctions {
     /**
      * This data source provides the Privatelink Vpc Endpoints of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.109.0+.
+     * &gt; **NOTE:** Available since v1.109.0.
      * 
      * ## Example Usage
      * 
@@ -1736,7 +1736,7 @@ public final class PrivatelinkFunctions {
     /**
      * This data source provides the Privatelink Vpc Endpoints of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.109.0+.
+     * &gt; **NOTE:** Available since v1.109.0.
      * 
      * ## Example Usage
      * 
@@ -1784,7 +1784,7 @@ public final class PrivatelinkFunctions {
     /**
      * This data source provides the Privatelink Vpc Endpoints of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.109.0+.
+     * &gt; **NOTE:** Available since v1.109.0.
      * 
      * ## Example Usage
      * 
@@ -1832,7 +1832,7 @@ public final class PrivatelinkFunctions {
     /**
      * This data source provides the Privatelink Vpc Endpoints of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.109.0+.
+     * &gt; **NOTE:** Available since v1.109.0.
      * 
      * ## Example Usage
      * 
@@ -1880,7 +1880,7 @@ public final class PrivatelinkFunctions {
     /**
      * This data source provides the Privatelink Vpc Endpoints of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.109.0+.
+     * &gt; **NOTE:** Available since v1.109.0.
      * 
      * ## Example Usage
      * 
@@ -1928,7 +1928,7 @@ public final class PrivatelinkFunctions {
     /**
      * This data source provides the Privatelink Vpc Endpoints of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.109.0+.
+     * &gt; **NOTE:** Available since v1.109.0.
      * 
      * ## Example Usage
      * 
@@ -1976,7 +1976,7 @@ public final class PrivatelinkFunctions {
     /**
      * This data source provides the Privatelink Vpc Endpoints of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.109.0+.
+     * &gt; **NOTE:** Available since v1.109.0.
      * 
      * ## Example Usage
      * 

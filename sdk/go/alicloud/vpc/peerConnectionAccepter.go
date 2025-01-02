@@ -12,9 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Vpc Peer Connection Accepter resource.
+// Provides a Vpc Peer Peer Connection Accepter resource.
 //
-// For information about Vpc Peer Connection Accepter and how to use it, see [What is Peer Connection Accepter](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpcpeer-2022-01-01-acceptvpcpeerconnection).
+// Vpc peer connection receiver.
+//
+// For information about Vpc Peer Peer Connection Accepter and how to use it, see [What is Peer Connection Accepter](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpcpeer-2022-01-01-acceptvpcpeerconnection).
 //
 // > **NOTE:** Available since v1.196.0.
 //
@@ -92,7 +94,7 @@ import (
 //
 // ## Import
 //
-// Vpc Peer Connection Accepter can be imported using the id, e.g.
+// Vpc Peer Peer Connection Accepter can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:vpc/peerConnectionAccepter:PeerConnectionAccepter example <id>
@@ -120,10 +122,14 @@ type PeerConnectionAccepter struct {
 	ForceDelete pulumi.BoolPtrOutput `pulumi:"forceDelete"`
 	// The ID of the VPC peering connection whose name or description you want to modify.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
+	// Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+	LinkType pulumi.StringOutput `pulumi:"linkType"`
 	// The new name of the VPC peering connection.
 	//
 	// The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
 	PeerConnectionAccepterName pulumi.StringOutput `pulumi:"peerConnectionAccepterName"`
+	// The ID of the region where you want to query VPC peering connections.
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
 	// The ID of the new resource group.
 	//
 	// > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
@@ -187,10 +193,14 @@ type peerConnectionAccepterState struct {
 	ForceDelete *bool `pulumi:"forceDelete"`
 	// The ID of the VPC peering connection whose name or description you want to modify.
 	InstanceId *string `pulumi:"instanceId"`
+	// Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+	LinkType *string `pulumi:"linkType"`
 	// The new name of the VPC peering connection.
 	//
 	// The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
 	PeerConnectionAccepterName *string `pulumi:"peerConnectionAccepterName"`
+	// The ID of the region where you want to query VPC peering connections.
+	RegionId *string `pulumi:"regionId"`
 	// The ID of the new resource group.
 	//
 	// > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
@@ -222,10 +232,14 @@ type PeerConnectionAccepterState struct {
 	ForceDelete pulumi.BoolPtrInput
 	// The ID of the VPC peering connection whose name or description you want to modify.
 	InstanceId pulumi.StringPtrInput
+	// Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+	LinkType pulumi.StringPtrInput
 	// The new name of the VPC peering connection.
 	//
 	// The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
 	PeerConnectionAccepterName pulumi.StringPtrInput
+	// The ID of the region where you want to query VPC peering connections.
+	RegionId pulumi.StringPtrInput
 	// The ID of the new resource group.
 	//
 	// > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
@@ -253,6 +267,8 @@ type peerConnectionAccepterArgs struct {
 	ForceDelete *bool `pulumi:"forceDelete"`
 	// The ID of the VPC peering connection whose name or description you want to modify.
 	InstanceId string `pulumi:"instanceId"`
+	// Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+	LinkType *string `pulumi:"linkType"`
 	// The new name of the VPC peering connection.
 	//
 	// The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
@@ -277,6 +293,8 @@ type PeerConnectionAccepterArgs struct {
 	ForceDelete pulumi.BoolPtrInput
 	// The ID of the VPC peering connection whose name or description you want to modify.
 	InstanceId pulumi.StringInput
+	// Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+	LinkType pulumi.StringPtrInput
 	// The new name of the VPC peering connection.
 	//
 	// The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
@@ -421,11 +439,21 @@ func (o PeerConnectionAccepterOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PeerConnectionAccepter) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
+// Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+func (o PeerConnectionAccepterOutput) LinkType() pulumi.StringOutput {
+	return o.ApplyT(func(v *PeerConnectionAccepter) pulumi.StringOutput { return v.LinkType }).(pulumi.StringOutput)
+}
+
 // The new name of the VPC peering connection.
 //
 // The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
 func (o PeerConnectionAccepterOutput) PeerConnectionAccepterName() pulumi.StringOutput {
 	return o.ApplyT(func(v *PeerConnectionAccepter) pulumi.StringOutput { return v.PeerConnectionAccepterName }).(pulumi.StringOutput)
+}
+
+// The ID of the region where you want to query VPC peering connections.
+func (o PeerConnectionAccepterOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PeerConnectionAccepter) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
 }
 
 // The ID of the new resource group.

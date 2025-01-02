@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEcsDisksDiskOperationLock {
+    /**
+     * @return The reason why the disk was locked.
+     * 
+     */
     private String lockReason;
 
     private GetEcsDisksDiskOperationLock() {}
+    /**
+     * @return The reason why the disk was locked.
+     * 
+     */
     public String lockReason() {
         return this.lockReason;
     }

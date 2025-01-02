@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Global Accelerator (GA) Ip Sets of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.113.0+.
+// > **NOTE:** Available since v1.113.0.
 //
 // ## Example Usage
 //
@@ -72,11 +72,13 @@ type GetIpSetsArgs struct {
 type GetIpSetsResult struct {
 	AcceleratorId string `pulumi:"acceleratorId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string         `pulumi:"id"`
-	Ids        []string       `pulumi:"ids"`
-	OutputFile *string        `pulumi:"outputFile"`
-	Sets       []GetIpSetsSet `pulumi:"sets"`
-	Status     *string        `pulumi:"status"`
+	Id         string   `pulumi:"id"`
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Ga Ip Sets. Each element contains the following attributes:
+	Sets []GetIpSetsSet `pulumi:"sets"`
+	// The status of the acceleration region.
+	Status *string `pulumi:"status"`
 }
 
 func GetIpSetsOutput(ctx *pulumi.Context, args GetIpSetsOutputArgs, opts ...pulumi.InvokeOption) GetIpSetsResultOutput {
@@ -136,10 +138,12 @@ func (o GetIpSetsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetIpSetsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ga Ip Sets. Each element contains the following attributes:
 func (o GetIpSetsResultOutput) Sets() GetIpSetsSetArrayOutput {
 	return o.ApplyT(func(v GetIpSetsResult) []GetIpSetsSet { return v.Sets }).(GetIpSetsSetArrayOutput)
 }
 
+// The status of the acceleration region.
 func (o GetIpSetsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetIpSetsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

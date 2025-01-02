@@ -13,7 +13,7 @@ import (
 
 // Provides a collection of DCDN Domains to the specified filters.
 //
-// > **NOTE:** Available in 1.94.0+.
+// > **NOTE:** Available since 1.94.0.
 //
 // ## Example Usage
 //
@@ -28,18 +28,18 @@ import (
 // )
 //
 //	func main() {
-//	   pulumi.Run(func(ctx *pulumi.Context) error {
-//	       example, err := dcdn.GetDomains(ctx, &dcdn.GetDomainsArgs{
-//	           Ids: []string{
-//	               "example.com",
-//	           },
-//	       }, nil)
-//	       if err != nil {
-//	           return err
-//	       }
-//	       ctx.Export("domainId", example.Domains[0].Id)
-//	       return nil
-//	   })
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := dcdn.GetDomains(ctx, &dcdn.GetDomainsArgs{
+//				Ids: []string{
+//					"example.com",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("domainId", example.Domains[0].Id)
+//			return nil
+//		})
 //	}
 //
 // ```

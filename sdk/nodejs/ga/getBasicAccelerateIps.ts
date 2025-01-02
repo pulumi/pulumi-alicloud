@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Global Accelerator (GA) Basic Accelerate IPs of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.194.0+.
+ * > **NOTE:** Available since v1.194.0.
  *
  * ## Example Usage
  *
@@ -102,7 +102,7 @@ export interface GetBasicAccelerateIpsResult {
 /**
  * This data source provides the Global Accelerator (GA) Basic Accelerate IPs of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.194.0+.
+ * > **NOTE:** Available since v1.194.0.
  *
  * ## Example Usage
  *

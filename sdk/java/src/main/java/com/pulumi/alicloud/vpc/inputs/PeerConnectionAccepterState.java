@@ -157,6 +157,21 @@ public final class PeerConnectionAccepterState extends com.pulumi.resources.Reso
     }
 
     /**
+     * Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+     * 
+     */
+    @Import(name="linkType")
+    private @Nullable Output<String> linkType;
+
+    /**
+     * @return Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+     * 
+     */
+    public Optional<Output<String>> linkType() {
+        return Optional.ofNullable(this.linkType);
+    }
+
+    /**
      * The new name of the VPC peering connection.
      * 
      * The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
@@ -173,6 +188,21 @@ public final class PeerConnectionAccepterState extends com.pulumi.resources.Reso
      */
     public Optional<Output<String>> peerConnectionAccepterName() {
         return Optional.ofNullable(this.peerConnectionAccepterName);
+    }
+
+    /**
+     * The ID of the region where you want to query VPC peering connections.
+     * 
+     */
+    @Import(name="regionId")
+    private @Nullable Output<String> regionId;
+
+    /**
+     * @return The ID of the region where you want to query VPC peering connections.
+     * 
+     */
+    public Optional<Output<String>> regionId() {
+        return Optional.ofNullable(this.regionId);
     }
 
     /**
@@ -236,7 +266,9 @@ public final class PeerConnectionAccepterState extends com.pulumi.resources.Reso
         this.dryRun = $.dryRun;
         this.forceDelete = $.forceDelete;
         this.instanceId = $.instanceId;
+        this.linkType = $.linkType;
         this.peerConnectionAccepterName = $.peerConnectionAccepterName;
+        this.regionId = $.regionId;
         this.resourceGroupId = $.resourceGroupId;
         this.status = $.status;
         this.vpcId = $.vpcId;
@@ -454,6 +486,27 @@ public final class PeerConnectionAccepterState extends com.pulumi.resources.Reso
         }
 
         /**
+         * @param linkType Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder linkType(@Nullable Output<String> linkType) {
+            $.linkType = linkType;
+            return this;
+        }
+
+        /**
+         * @param linkType Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder linkType(String linkType) {
+            return linkType(Output.of(linkType));
+        }
+
+        /**
          * @param peerConnectionAccepterName The new name of the VPC peering connection.
          * 
          * The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
@@ -476,6 +529,27 @@ public final class PeerConnectionAccepterState extends com.pulumi.resources.Reso
          */
         public Builder peerConnectionAccepterName(String peerConnectionAccepterName) {
             return peerConnectionAccepterName(Output.of(peerConnectionAccepterName));
+        }
+
+        /**
+         * @param regionId The ID of the region where you want to query VPC peering connections.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(@Nullable Output<String> regionId) {
+            $.regionId = regionId;
+            return this;
+        }
+
+        /**
+         * @param regionId The ID of the region where you want to query VPC peering connections.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(String regionId) {
+            return regionId(Output.of(regionId));
         }
 
         /**

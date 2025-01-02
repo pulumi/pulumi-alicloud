@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Sddp.Outputs
     public sealed class GetRulesRuleResult
     {
         /// <summary>
-        /// Sensitive Data Identification Rules for the Type of.
+        /// Sensitive Data Identification Rules for the Type of. Valid values:
         /// </summary>
         public readonly int Category;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Sddp.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// Sensitive Data Identification Rules of Type. 0: the Built-in 1: The User-Defined.
+        /// Sensitive Data Identification Rules of Type. Valid values:
         /// </summary>
         public readonly int CustomType;
         /// <summary>
@@ -70,11 +70,11 @@ namespace Pulumi.AliCloud.Sddp.Outputs
         /// </summary>
         public readonly string ProductCode;
         /// <summary>
-        /// Product ID.
+        /// Product ID. Valid values:
         /// </summary>
         public readonly string ProductId;
         /// <summary>
-        /// Sensitive Data Identification Rules of Risk Level ID. Valid values:1:S1, Weak Risk Level. 2:S2, Medium Risk Level. 3:S3 High Risk Level. 4:S4, the Highest Risk Level.
+        /// Sensitive Data Identification Rules of Risk Level ID. Valid values:
         /// </summary>
         public readonly string RiskLevelId;
         /// <summary>
@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.Sddp.Outputs
         /// </summary>
         public readonly string UserId;
         /// <summary>
-        /// The Level of Risk.
+        /// The Level of Risk. Valid values:
         /// </summary>
         public readonly int WarnLevel;
 

@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Adb.Outputs
         /// </summary>
         public readonly string ResourceGroupId;
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`.
         /// </summary>
         public readonly string Status;
         /// <summary>

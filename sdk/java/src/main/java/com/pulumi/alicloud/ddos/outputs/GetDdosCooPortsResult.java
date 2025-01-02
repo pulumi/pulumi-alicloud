@@ -14,7 +14,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDdosCooPortsResult {
+    /**
+     * @return The forwarding port.
+     * 
+     */
     private @Nullable String frontendPort;
+    /**
+     * @return The forwarding protocol.
+     * 
+     */
     private @Nullable String frontendProtocol;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,14 +30,30 @@ public final class GetDdosCooPortsResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return The Ddoscoo instance ID.
+     * 
+     */
     private String instanceId;
     private @Nullable String outputFile;
+    /**
+     * @return A list of DdosCoo Ports. Each element contains the following attributes:
+     * 
+     */
     private List<GetDdosCooPortsPort> ports;
 
     private GetDdosCooPortsResult() {}
+    /**
+     * @return The forwarding port.
+     * 
+     */
     public Optional<String> frontendPort() {
         return Optional.ofNullable(this.frontendPort);
     }
+    /**
+     * @return The forwarding protocol.
+     * 
+     */
     public Optional<String> frontendProtocol() {
         return Optional.ofNullable(this.frontendProtocol);
     }
@@ -43,12 +67,20 @@ public final class GetDdosCooPortsResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The Ddoscoo instance ID.
+     * 
+     */
     public String instanceId() {
         return this.instanceId;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of DdosCoo Ports. Each element contains the following attributes:
+     * 
+     */
     public List<GetDdosCooPortsPort> ports() {
         return this.ports;
     }

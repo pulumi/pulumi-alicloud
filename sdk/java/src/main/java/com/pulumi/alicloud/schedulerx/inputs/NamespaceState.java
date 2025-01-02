@@ -16,14 +16,14 @@ public final class NamespaceState extends com.pulumi.resources.ResourceArgs {
     public static final NamespaceState Empty = new NamespaceState();
 
     /**
-     * The description of the resource.
+     * Namespace description.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the resource.
+     * @return Namespace description.
      * 
      */
     public Optional<Output<String>> description() {
@@ -31,18 +31,33 @@ public final class NamespaceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the resource.
+     * Namespace name.
      * 
      */
     @Import(name="namespaceName")
     private @Nullable Output<String> namespaceName;
 
     /**
-     * @return The name of the resource.
+     * @return Namespace name.
      * 
      */
     public Optional<Output<String>> namespaceName() {
         return Optional.ofNullable(this.namespaceName);
+    }
+
+    /**
+     * Namespace uid.
+     * 
+     */
+    @Import(name="namespaceUid")
+    private @Nullable Output<String> namespaceUid;
+
+    /**
+     * @return Namespace uid.
+     * 
+     */
+    public Optional<Output<String>> namespaceUid() {
+        return Optional.ofNullable(this.namespaceUid);
     }
 
     private NamespaceState() {}
@@ -50,6 +65,7 @@ public final class NamespaceState extends com.pulumi.resources.ResourceArgs {
     private NamespaceState(NamespaceState $) {
         this.description = $.description;
         this.namespaceName = $.namespaceName;
+        this.namespaceUid = $.namespaceUid;
     }
 
     public static Builder builder() {
@@ -71,7 +87,7 @@ public final class NamespaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the resource.
+         * @param description Namespace description.
          * 
          * @return builder
          * 
@@ -82,7 +98,7 @@ public final class NamespaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the resource.
+         * @param description Namespace description.
          * 
          * @return builder
          * 
@@ -92,7 +108,7 @@ public final class NamespaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param namespaceName The name of the resource.
+         * @param namespaceName Namespace name.
          * 
          * @return builder
          * 
@@ -103,13 +119,34 @@ public final class NamespaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param namespaceName The name of the resource.
+         * @param namespaceName Namespace name.
          * 
          * @return builder
          * 
          */
         public Builder namespaceName(String namespaceName) {
             return namespaceName(Output.of(namespaceName));
+        }
+
+        /**
+         * @param namespaceUid Namespace uid.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder namespaceUid(@Nullable Output<String> namespaceUid) {
+            $.namespaceUid = namespaceUid;
+            return this;
+        }
+
+        /**
+         * @param namespaceUid Namespace uid.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder namespaceUid(String namespaceUid) {
+            return namespaceUid(Output.of(namespaceUid));
         }
 
         public NamespaceState build() {

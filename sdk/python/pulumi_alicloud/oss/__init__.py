@@ -5,6 +5,7 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .access_point import *
 from .account_public_access_block import *
 from .bucket import *
 from .bucket_access_monitor import *
@@ -27,6 +28,7 @@ from .bucket_transfer_acceleration import *
 from .bucket_user_defined_log_fields import *
 from .bucket_versioning import *
 from .bucket_website import *
+from .bucket_worm import *
 from .get_bucket_objects import *
 from .get_buckets import *
 from .get_instance_attachments import *

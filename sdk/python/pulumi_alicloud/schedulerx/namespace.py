@@ -20,21 +20,25 @@ __all__ = ['NamespaceArgs', 'Namespace']
 class NamespaceArgs:
     def __init__(__self__, *,
                  namespace_name: pulumi.Input[str],
-                 description: Optional[pulumi.Input[str]] = None):
+                 description: Optional[pulumi.Input[str]] = None,
+                 namespace_uid: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Namespace resource.
-        :param pulumi.Input[str] namespace_name: The name of the resource.
-        :param pulumi.Input[str] description: The description of the resource.
+        :param pulumi.Input[str] namespace_name: Namespace name.
+        :param pulumi.Input[str] description: Namespace description.
+        :param pulumi.Input[str] namespace_uid: Namespace uid.
         """
         pulumi.set(__self__, "namespace_name", namespace_name)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if namespace_uid is not None:
+            pulumi.set(__self__, "namespace_uid", namespace_uid)
 
     @property
     @pulumi.getter(name="namespaceName")
     def namespace_name(self) -> pulumi.Input[str]:
         """
-        The name of the resource.
+        Namespace name.
         """
         return pulumi.get(self, "namespace_name")
 
@@ -46,7 +50,7 @@ class NamespaceArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the resource.
+        Namespace description.
         """
         return pulumi.get(self, "description")
 
@@ -54,27 +58,43 @@ class NamespaceArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+    @property
+    @pulumi.getter(name="namespaceUid")
+    def namespace_uid(self) -> Optional[pulumi.Input[str]]:
+        """
+        Namespace uid.
+        """
+        return pulumi.get(self, "namespace_uid")
+
+    @namespace_uid.setter
+    def namespace_uid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace_uid", value)
+
 
 @pulumi.input_type
 class _NamespaceState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
-                 namespace_name: Optional[pulumi.Input[str]] = None):
+                 namespace_name: Optional[pulumi.Input[str]] = None,
+                 namespace_uid: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Namespace resources.
-        :param pulumi.Input[str] description: The description of the resource.
-        :param pulumi.Input[str] namespace_name: The name of the resource.
+        :param pulumi.Input[str] description: Namespace description.
+        :param pulumi.Input[str] namespace_name: Namespace name.
+        :param pulumi.Input[str] namespace_uid: Namespace uid.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
         if namespace_name is not None:
             pulumi.set(__self__, "namespace_name", namespace_name)
+        if namespace_uid is not None:
+            pulumi.set(__self__, "namespace_uid", namespace_uid)
 
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the resource.
+        Namespace description.
         """
         return pulumi.get(self, "description")
 
@@ -86,13 +106,25 @@ class _NamespaceState:
     @pulumi.getter(name="namespaceName")
     def namespace_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the resource.
+        Namespace name.
         """
         return pulumi.get(self, "namespace_name")
 
     @namespace_name.setter
     def namespace_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "namespace_name", value)
+
+    @property
+    @pulumi.getter(name="namespaceUid")
+    def namespace_uid(self) -> Optional[pulumi.Input[str]]:
+        """
+        Namespace uid.
+        """
+        return pulumi.get(self, "namespace_uid")
+
+    @namespace_uid.setter
+    def namespace_uid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace_uid", value)
 
 
 class Namespace(pulumi.CustomResource):
@@ -102,25 +134,9 @@ class Namespace(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  namespace_name: Optional[pulumi.Input[str]] = None,
+                 namespace_uid: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Schedulerx Namespace resource.
-
-        For information about Schedulerx Namespace and how to use it, see [What is Namespace](https://help.aliyun.com/document_detail/206088.html).
-
-        > **NOTE:** Available in v1.173.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.schedulerx.Namespace("example", namespace_name="example_value")
-        ```
-
         ## Import
 
         Schedulerx Namespace can be imported using the id, e.g.
@@ -131,8 +147,9 @@ class Namespace(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description of the resource.
-        :param pulumi.Input[str] namespace_name: The name of the resource.
+        :param pulumi.Input[str] description: Namespace description.
+        :param pulumi.Input[str] namespace_name: Namespace name.
+        :param pulumi.Input[str] namespace_uid: Namespace uid.
         """
         ...
     @overload
@@ -141,23 +158,6 @@ class Namespace(pulumi.CustomResource):
                  args: NamespaceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Schedulerx Namespace resource.
-
-        For information about Schedulerx Namespace and how to use it, see [What is Namespace](https://help.aliyun.com/document_detail/206088.html).
-
-        > **NOTE:** Available in v1.173.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.schedulerx.Namespace("example", namespace_name="example_value")
-        ```
-
         ## Import
 
         Schedulerx Namespace can be imported using the id, e.g.
@@ -183,6 +183,7 @@ class Namespace(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  namespace_name: Optional[pulumi.Input[str]] = None,
+                 namespace_uid: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -196,6 +197,7 @@ class Namespace(pulumi.CustomResource):
             if namespace_name is None and not opts.urn:
                 raise TypeError("Missing required property 'namespace_name'")
             __props__.__dict__["namespace_name"] = namespace_name
+            __props__.__dict__["namespace_uid"] = namespace_uid
         super(Namespace, __self__).__init__(
             'alicloud:schedulerx/namespace:Namespace',
             resource_name,
@@ -207,7 +209,8 @@ class Namespace(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
-            namespace_name: Optional[pulumi.Input[str]] = None) -> 'Namespace':
+            namespace_name: Optional[pulumi.Input[str]] = None,
+            namespace_uid: Optional[pulumi.Input[str]] = None) -> 'Namespace':
         """
         Get an existing Namespace resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -215,8 +218,9 @@ class Namespace(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description of the resource.
-        :param pulumi.Input[str] namespace_name: The name of the resource.
+        :param pulumi.Input[str] description: Namespace description.
+        :param pulumi.Input[str] namespace_name: Namespace name.
+        :param pulumi.Input[str] namespace_uid: Namespace uid.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -224,13 +228,14 @@ class Namespace(pulumi.CustomResource):
 
         __props__.__dict__["description"] = description
         __props__.__dict__["namespace_name"] = namespace_name
+        __props__.__dict__["namespace_uid"] = namespace_uid
         return Namespace(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description of the resource.
+        Namespace description.
         """
         return pulumi.get(self, "description")
 
@@ -238,7 +243,15 @@ class Namespace(pulumi.CustomResource):
     @pulumi.getter(name="namespaceName")
     def namespace_name(self) -> pulumi.Output[str]:
         """
-        The name of the resource.
+        Namespace name.
         """
         return pulumi.get(self, "namespace_name")
+
+    @property
+    @pulumi.getter(name="namespaceUid")
+    def namespace_uid(self) -> pulumi.Output[str]:
+        """
+        Namespace uid.
+        """
+        return pulumi.get(self, "namespace_uid")
 

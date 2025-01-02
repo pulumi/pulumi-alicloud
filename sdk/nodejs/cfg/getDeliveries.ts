@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Config Deliveries of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.171.0+.
+ * > **NOTE:** Available since v1.171.0.
  *
  * ## Example Usage
  *
@@ -62,6 +62,9 @@ export interface GetDeliveriesArgs {
  * A collection of values returned by getDeliveries.
  */
 export interface GetDeliveriesResult {
+    /**
+     * A list of Config Deliveries. Each element contains the following attributes:
+     */
     readonly deliveries: outputs.cfg.GetDeliveriesDelivery[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -69,14 +72,20 @@ export interface GetDeliveriesResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Config Delivery names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
+     */
     readonly status?: number;
 }
 /**
  * This data source provides the Config Deliveries of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.171.0+.
+ * > **NOTE:** Available since v1.171.0.
  *
  * ## Example Usage
  *

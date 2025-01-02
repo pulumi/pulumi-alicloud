@@ -12,13 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Container Registry Enterprise Edition Sync Rule resource.
+// Provides a Container Registry Sync Rule resource.
 //
-// For information about Container Registry Enterprise Edition Sync Rule and how to use it, see [What is Sync Rule](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createreposyncrule)
+// For information about Container Registry Sync Rule and how to use it, see [What is Sync Rule](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createreposyncrule)
 //
 // > **NOTE:** Available since v1.90.0.
 //
-// > **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
+// > **NOTE:** You need to set your registry password in Container Registry console before use this resource.
 //
 // ## Example Usage
 //
@@ -123,7 +123,7 @@ import (
 //			_, err = cs.NewRegistryEnterpriseSyncRule(ctx, "default", &cs.RegistryEnterpriseSyncRuleArgs{
 //				InstanceId:          source.ID(),
 //				NamespaceName:       sourceRegistryEnterpriseNamespace.Name,
-//				Name:                pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
+//				SyncRuleName:        pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //				TargetInstanceId:    target.ID(),
 //				TargetNamespaceName: targetRegistryEnterpriseNamespace.Name,
 //				TargetRegionId:      pulumi.String(_default.Regions[0].Id),
@@ -142,28 +142,47 @@ import (
 //
 // ## Import
 //
-// Container Registry Enterprise Edition Sync Rule can be imported using the id, e.g.
+// Container Registry Sync Rule can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule example <instance_id>:<namespace_name>:<rule_id>
+// $ pulumi import alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule example <instance_id>:<namespace_name>:<repo_sync_rule_id>
 // ```
 type RegistryEnterpriseSyncRule struct {
 	pulumi.CustomResourceState
 
-	// The ID of the Container Registry Enterprise Edition source instance.
+	// (Available since v1.240.0) The time when the synchronization rule was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The ID of the Container Registry source instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// The name of the sync rule.
+	// Field `name` has been deprecated from provider version 1.240.0. New field `syncRuleName` instead.
+	//
+	// Deprecated: Field `name` has been deprecated from provider version 1.240.0. New field `syncRuleName` instead.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The namespace name of the source instance.
 	NamespaceName pulumi.StringOutput `pulumi:"namespaceName"`
+	// (Available since v1.240.0) The region ID of the source instance.
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
 	// The image repository name of the source instance.
 	RepoName pulumi.StringPtrOutput `pulumi:"repoName"`
-	// The ID of the sync rule.
+	// (Available since v1.240.0) The ID of the synchronization rule.
+	RepoSyncRuleId pulumi.StringOutput `pulumi:"repoSyncRuleId"`
+	// (Deprecated since v1.240.0) Field `ruleId` has been deprecated from provider version 1.240.0. New field `repoSyncRuleId` instead.
+	//
+	// Deprecated: Field `ruleId` has been deprecated from provider version 1.240.0. New field `repoSyncRuleId` instead.
 	RuleId pulumi.StringOutput `pulumi:"ruleId"`
 	// The synchronization direction.
 	SyncDirection pulumi.StringOutput `pulumi:"syncDirection"`
-	// The synchronization scope.
+	// The name of the sync rule.
+	SyncRuleName pulumi.StringOutput `pulumi:"syncRuleName"`
+	// The synchronization scope. Valid values:
+	// - `REPO`: Encrypts or decrypts data.
+	// - `NAMESPACE`: Generates or verifies a digital signature.
+	// > **NOTE:** From version 1.240.0, `syncScope` can be set.
 	SyncScope pulumi.StringOutput `pulumi:"syncScope"`
+	// The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
+	// - `INITIATIVE`: Manually triggers the synchronization rule.
+	// - `PASSIVE`: Automatically triggers the synchronization rule.
+	SyncTrigger pulumi.StringOutput `pulumi:"syncTrigger"`
 	// The regular expression used to filter image tags.
 	TagFilter pulumi.StringOutput `pulumi:"tagFilter"`
 	// The ID of the destination instance.
@@ -174,6 +193,8 @@ type RegistryEnterpriseSyncRule struct {
 	TargetRegionId pulumi.StringOutput `pulumi:"targetRegionId"`
 	// The image repository name of the destination instance.
 	TargetRepoName pulumi.StringPtrOutput `pulumi:"targetRepoName"`
+	// The UID of the account to which the target instance belongs.
+	TargetUserId pulumi.StringPtrOutput `pulumi:"targetUserId"`
 }
 
 // NewRegistryEnterpriseSyncRule registers a new resource with the given unique name, arguments, and options.
@@ -224,20 +245,39 @@ func GetRegistryEnterpriseSyncRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RegistryEnterpriseSyncRule resources.
 type registryEnterpriseSyncRuleState struct {
-	// The ID of the Container Registry Enterprise Edition source instance.
+	// (Available since v1.240.0) The time when the synchronization rule was created.
+	CreateTime *string `pulumi:"createTime"`
+	// The ID of the Container Registry source instance.
 	InstanceId *string `pulumi:"instanceId"`
-	// The name of the sync rule.
+	// Field `name` has been deprecated from provider version 1.240.0. New field `syncRuleName` instead.
+	//
+	// Deprecated: Field `name` has been deprecated from provider version 1.240.0. New field `syncRuleName` instead.
 	Name *string `pulumi:"name"`
 	// The namespace name of the source instance.
 	NamespaceName *string `pulumi:"namespaceName"`
+	// (Available since v1.240.0) The region ID of the source instance.
+	RegionId *string `pulumi:"regionId"`
 	// The image repository name of the source instance.
 	RepoName *string `pulumi:"repoName"`
-	// The ID of the sync rule.
+	// (Available since v1.240.0) The ID of the synchronization rule.
+	RepoSyncRuleId *string `pulumi:"repoSyncRuleId"`
+	// (Deprecated since v1.240.0) Field `ruleId` has been deprecated from provider version 1.240.0. New field `repoSyncRuleId` instead.
+	//
+	// Deprecated: Field `ruleId` has been deprecated from provider version 1.240.0. New field `repoSyncRuleId` instead.
 	RuleId *string `pulumi:"ruleId"`
 	// The synchronization direction.
 	SyncDirection *string `pulumi:"syncDirection"`
-	// The synchronization scope.
+	// The name of the sync rule.
+	SyncRuleName *string `pulumi:"syncRuleName"`
+	// The synchronization scope. Valid values:
+	// - `REPO`: Encrypts or decrypts data.
+	// - `NAMESPACE`: Generates or verifies a digital signature.
+	// > **NOTE:** From version 1.240.0, `syncScope` can be set.
 	SyncScope *string `pulumi:"syncScope"`
+	// The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
+	// - `INITIATIVE`: Manually triggers the synchronization rule.
+	// - `PASSIVE`: Automatically triggers the synchronization rule.
+	SyncTrigger *string `pulumi:"syncTrigger"`
 	// The regular expression used to filter image tags.
 	TagFilter *string `pulumi:"tagFilter"`
 	// The ID of the destination instance.
@@ -248,23 +288,44 @@ type registryEnterpriseSyncRuleState struct {
 	TargetRegionId *string `pulumi:"targetRegionId"`
 	// The image repository name of the destination instance.
 	TargetRepoName *string `pulumi:"targetRepoName"`
+	// The UID of the account to which the target instance belongs.
+	TargetUserId *string `pulumi:"targetUserId"`
 }
 
 type RegistryEnterpriseSyncRuleState struct {
-	// The ID of the Container Registry Enterprise Edition source instance.
+	// (Available since v1.240.0) The time when the synchronization rule was created.
+	CreateTime pulumi.StringPtrInput
+	// The ID of the Container Registry source instance.
 	InstanceId pulumi.StringPtrInput
-	// The name of the sync rule.
+	// Field `name` has been deprecated from provider version 1.240.0. New field `syncRuleName` instead.
+	//
+	// Deprecated: Field `name` has been deprecated from provider version 1.240.0. New field `syncRuleName` instead.
 	Name pulumi.StringPtrInput
 	// The namespace name of the source instance.
 	NamespaceName pulumi.StringPtrInput
+	// (Available since v1.240.0) The region ID of the source instance.
+	RegionId pulumi.StringPtrInput
 	// The image repository name of the source instance.
 	RepoName pulumi.StringPtrInput
-	// The ID of the sync rule.
+	// (Available since v1.240.0) The ID of the synchronization rule.
+	RepoSyncRuleId pulumi.StringPtrInput
+	// (Deprecated since v1.240.0) Field `ruleId` has been deprecated from provider version 1.240.0. New field `repoSyncRuleId` instead.
+	//
+	// Deprecated: Field `ruleId` has been deprecated from provider version 1.240.0. New field `repoSyncRuleId` instead.
 	RuleId pulumi.StringPtrInput
 	// The synchronization direction.
 	SyncDirection pulumi.StringPtrInput
-	// The synchronization scope.
+	// The name of the sync rule.
+	SyncRuleName pulumi.StringPtrInput
+	// The synchronization scope. Valid values:
+	// - `REPO`: Encrypts or decrypts data.
+	// - `NAMESPACE`: Generates or verifies a digital signature.
+	// > **NOTE:** From version 1.240.0, `syncScope` can be set.
 	SyncScope pulumi.StringPtrInput
+	// The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
+	// - `INITIATIVE`: Manually triggers the synchronization rule.
+	// - `PASSIVE`: Automatically triggers the synchronization rule.
+	SyncTrigger pulumi.StringPtrInput
 	// The regular expression used to filter image tags.
 	TagFilter pulumi.StringPtrInput
 	// The ID of the destination instance.
@@ -275,6 +336,8 @@ type RegistryEnterpriseSyncRuleState struct {
 	TargetRegionId pulumi.StringPtrInput
 	// The image repository name of the destination instance.
 	TargetRepoName pulumi.StringPtrInput
+	// The UID of the account to which the target instance belongs.
+	TargetUserId pulumi.StringPtrInput
 }
 
 func (RegistryEnterpriseSyncRuleState) ElementType() reflect.Type {
@@ -282,14 +345,27 @@ func (RegistryEnterpriseSyncRuleState) ElementType() reflect.Type {
 }
 
 type registryEnterpriseSyncRuleArgs struct {
-	// The ID of the Container Registry Enterprise Edition source instance.
+	// The ID of the Container Registry source instance.
 	InstanceId string `pulumi:"instanceId"`
-	// The name of the sync rule.
+	// Field `name` has been deprecated from provider version 1.240.0. New field `syncRuleName` instead.
+	//
+	// Deprecated: Field `name` has been deprecated from provider version 1.240.0. New field `syncRuleName` instead.
 	Name *string `pulumi:"name"`
 	// The namespace name of the source instance.
 	NamespaceName string `pulumi:"namespaceName"`
 	// The image repository name of the source instance.
 	RepoName *string `pulumi:"repoName"`
+	// The name of the sync rule.
+	SyncRuleName *string `pulumi:"syncRuleName"`
+	// The synchronization scope. Valid values:
+	// - `REPO`: Encrypts or decrypts data.
+	// - `NAMESPACE`: Generates or verifies a digital signature.
+	// > **NOTE:** From version 1.240.0, `syncScope` can be set.
+	SyncScope *string `pulumi:"syncScope"`
+	// The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
+	// - `INITIATIVE`: Manually triggers the synchronization rule.
+	// - `PASSIVE`: Automatically triggers the synchronization rule.
+	SyncTrigger *string `pulumi:"syncTrigger"`
 	// The regular expression used to filter image tags.
 	TagFilter string `pulumi:"tagFilter"`
 	// The ID of the destination instance.
@@ -300,18 +376,33 @@ type registryEnterpriseSyncRuleArgs struct {
 	TargetRegionId string `pulumi:"targetRegionId"`
 	// The image repository name of the destination instance.
 	TargetRepoName *string `pulumi:"targetRepoName"`
+	// The UID of the account to which the target instance belongs.
+	TargetUserId *string `pulumi:"targetUserId"`
 }
 
 // The set of arguments for constructing a RegistryEnterpriseSyncRule resource.
 type RegistryEnterpriseSyncRuleArgs struct {
-	// The ID of the Container Registry Enterprise Edition source instance.
+	// The ID of the Container Registry source instance.
 	InstanceId pulumi.StringInput
-	// The name of the sync rule.
+	// Field `name` has been deprecated from provider version 1.240.0. New field `syncRuleName` instead.
+	//
+	// Deprecated: Field `name` has been deprecated from provider version 1.240.0. New field `syncRuleName` instead.
 	Name pulumi.StringPtrInput
 	// The namespace name of the source instance.
 	NamespaceName pulumi.StringInput
 	// The image repository name of the source instance.
 	RepoName pulumi.StringPtrInput
+	// The name of the sync rule.
+	SyncRuleName pulumi.StringPtrInput
+	// The synchronization scope. Valid values:
+	// - `REPO`: Encrypts or decrypts data.
+	// - `NAMESPACE`: Generates or verifies a digital signature.
+	// > **NOTE:** From version 1.240.0, `syncScope` can be set.
+	SyncScope pulumi.StringPtrInput
+	// The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
+	// - `INITIATIVE`: Manually triggers the synchronization rule.
+	// - `PASSIVE`: Automatically triggers the synchronization rule.
+	SyncTrigger pulumi.StringPtrInput
 	// The regular expression used to filter image tags.
 	TagFilter pulumi.StringInput
 	// The ID of the destination instance.
@@ -322,6 +413,8 @@ type RegistryEnterpriseSyncRuleArgs struct {
 	TargetRegionId pulumi.StringInput
 	// The image repository name of the destination instance.
 	TargetRepoName pulumi.StringPtrInput
+	// The UID of the account to which the target instance belongs.
+	TargetUserId pulumi.StringPtrInput
 }
 
 func (RegistryEnterpriseSyncRuleArgs) ElementType() reflect.Type {
@@ -411,12 +504,19 @@ func (o RegistryEnterpriseSyncRuleOutput) ToRegistryEnterpriseSyncRuleOutputWith
 	return o
 }
 
-// The ID of the Container Registry Enterprise Edition source instance.
+// (Available since v1.240.0) The time when the synchronization rule was created.
+func (o RegistryEnterpriseSyncRuleOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseSyncRule) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The ID of the Container Registry source instance.
 func (o RegistryEnterpriseSyncRuleOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseSyncRule) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// The name of the sync rule.
+// Field `name` has been deprecated from provider version 1.240.0. New field `syncRuleName` instead.
+//
+// Deprecated: Field `name` has been deprecated from provider version 1.240.0. New field `syncRuleName` instead.
 func (o RegistryEnterpriseSyncRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseSyncRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -426,12 +526,24 @@ func (o RegistryEnterpriseSyncRuleOutput) NamespaceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseSyncRule) pulumi.StringOutput { return v.NamespaceName }).(pulumi.StringOutput)
 }
 
+// (Available since v1.240.0) The region ID of the source instance.
+func (o RegistryEnterpriseSyncRuleOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseSyncRule) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
+}
+
 // The image repository name of the source instance.
 func (o RegistryEnterpriseSyncRuleOutput) RepoName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseSyncRule) pulumi.StringPtrOutput { return v.RepoName }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the sync rule.
+// (Available since v1.240.0) The ID of the synchronization rule.
+func (o RegistryEnterpriseSyncRuleOutput) RepoSyncRuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseSyncRule) pulumi.StringOutput { return v.RepoSyncRuleId }).(pulumi.StringOutput)
+}
+
+// (Deprecated since v1.240.0) Field `ruleId` has been deprecated from provider version 1.240.0. New field `repoSyncRuleId` instead.
+//
+// Deprecated: Field `ruleId` has been deprecated from provider version 1.240.0. New field `repoSyncRuleId` instead.
 func (o RegistryEnterpriseSyncRuleOutput) RuleId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseSyncRule) pulumi.StringOutput { return v.RuleId }).(pulumi.StringOutput)
 }
@@ -441,9 +553,24 @@ func (o RegistryEnterpriseSyncRuleOutput) SyncDirection() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseSyncRule) pulumi.StringOutput { return v.SyncDirection }).(pulumi.StringOutput)
 }
 
-// The synchronization scope.
+// The name of the sync rule.
+func (o RegistryEnterpriseSyncRuleOutput) SyncRuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseSyncRule) pulumi.StringOutput { return v.SyncRuleName }).(pulumi.StringOutput)
+}
+
+// The synchronization scope. Valid values:
+// - `REPO`: Encrypts or decrypts data.
+// - `NAMESPACE`: Generates or verifies a digital signature.
+// > **NOTE:** From version 1.240.0, `syncScope` can be set.
 func (o RegistryEnterpriseSyncRuleOutput) SyncScope() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseSyncRule) pulumi.StringOutput { return v.SyncScope }).(pulumi.StringOutput)
+}
+
+// The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
+// - `INITIATIVE`: Manually triggers the synchronization rule.
+// - `PASSIVE`: Automatically triggers the synchronization rule.
+func (o RegistryEnterpriseSyncRuleOutput) SyncTrigger() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseSyncRule) pulumi.StringOutput { return v.SyncTrigger }).(pulumi.StringOutput)
 }
 
 // The regular expression used to filter image tags.
@@ -469,6 +596,11 @@ func (o RegistryEnterpriseSyncRuleOutput) TargetRegionId() pulumi.StringOutput {
 // The image repository name of the destination instance.
 func (o RegistryEnterpriseSyncRuleOutput) TargetRepoName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseSyncRule) pulumi.StringPtrOutput { return v.TargetRepoName }).(pulumi.StringPtrOutput)
+}
+
+// The UID of the account to which the target instance belongs.
+func (o RegistryEnterpriseSyncRuleOutput) TargetUserId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseSyncRule) pulumi.StringPtrOutput { return v.TargetUserId }).(pulumi.StringPtrOutput)
 }
 
 type RegistryEnterpriseSyncRuleArrayOutput struct{ *pulumi.OutputState }

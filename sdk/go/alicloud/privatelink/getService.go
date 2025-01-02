@@ -15,7 +15,7 @@ import (
 //
 // For information about Privatelink and how to use it, see [What is Privatelink](https://www.alibabacloud.com/help/en/product/120462.htm).
 //
-// > **NOTE:** Available in v1.113.0+
+// > **NOTE:** Available since v1.113.0.
 //
 // ## Example Usage
 //

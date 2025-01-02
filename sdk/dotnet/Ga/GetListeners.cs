@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ga
         /// <summary>
         /// This data source provides the Global Accelerator (GA) Listeners of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.111.0+.
+        /// &gt; **NOTE:** Available since v1.111.0.
         /// 
         /// ## Example Usage
         /// 
@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.Ga
         /// <summary>
         /// This data source provides the Global Accelerator (GA) Listeners of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.111.0+.
+        /// &gt; **NOTE:** Available since v1.111.0.
         /// 
         /// ## Example Usage
         /// 
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Ga
         /// <summary>
         /// This data source provides the Global Accelerator (GA) Listeners of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.111.0+.
+        /// &gt; **NOTE:** Available since v1.111.0.
         /// 
         /// ## Example Usage
         /// 
@@ -222,10 +222,19 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// A list of Ga Listeners. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetListenersListenerResult> Listeners;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Listener names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of the listener.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

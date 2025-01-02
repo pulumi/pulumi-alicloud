@@ -75,7 +75,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Ga Accelerator Spare Ip Attachments of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.167.0+.
+     * &gt; **NOTE:** Available since v1.167.0.
      * 
      * ## Example Usage
      * 
@@ -125,7 +125,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Ga Accelerator Spare Ip Attachments of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.167.0+.
+     * &gt; **NOTE:** Available since v1.167.0.
      * 
      * ## Example Usage
      * 
@@ -175,7 +175,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Ga Accelerator Spare Ip Attachments of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.167.0+.
+     * &gt; **NOTE:** Available since v1.167.0.
      * 
      * ## Example Usage
      * 
@@ -225,7 +225,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Ga Accelerator Spare Ip Attachments of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.167.0+.
+     * &gt; **NOTE:** Available since v1.167.0.
      * 
      * ## Example Usage
      * 
@@ -275,7 +275,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Ga Accelerator Spare Ip Attachments of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.167.0+.
+     * &gt; **NOTE:** Available since v1.167.0.
      * 
      * ## Example Usage
      * 
@@ -654,7 +654,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Ga Acls of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.150.0+.
+     * &gt; **NOTE:** Available since v1.150.0.
      * 
      * ## Example Usage
      * 
@@ -704,7 +704,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Ga Acls of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.150.0+.
+     * &gt; **NOTE:** Available since v1.150.0.
      * 
      * ## Example Usage
      * 
@@ -754,7 +754,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Ga Acls of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.150.0+.
+     * &gt; **NOTE:** Available since v1.150.0.
      * 
      * ## Example Usage
      * 
@@ -804,7 +804,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Ga Acls of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.150.0+.
+     * &gt; **NOTE:** Available since v1.150.0.
      * 
      * ## Example Usage
      * 
@@ -854,7 +854,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Ga Acls of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.150.0+.
+     * &gt; **NOTE:** Available since v1.150.0.
      * 
      * ## Example Usage
      * 
@@ -904,7 +904,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Ga Acls of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.150.0+.
+     * &gt; **NOTE:** Available since v1.150.0.
      * 
      * ## Example Usage
      * 
@@ -954,7 +954,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Ga Acls of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.150.0+.
+     * &gt; **NOTE:** Available since v1.150.0.
      * 
      * ## Example Usage
      * 
@@ -1004,7 +1004,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Ga Additional Certificates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.150.0+.
+     * &gt; **NOTE:** Available since v1.150.0.
      * 
      * ## Example Usage
      * 
@@ -1055,7 +1055,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Ga Additional Certificates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.150.0+.
+     * &gt; **NOTE:** Available since v1.150.0.
      * 
      * ## Example Usage
      * 
@@ -1106,7 +1106,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Ga Additional Certificates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.150.0+.
+     * &gt; **NOTE:** Available since v1.150.0.
      * 
      * ## Example Usage
      * 
@@ -1157,7 +1157,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Ga Additional Certificates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.150.0+.
+     * &gt; **NOTE:** Available since v1.150.0.
      * 
      * ## Example Usage
      * 
@@ -1208,7 +1208,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Ga Additional Certificates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.150.0+.
+     * &gt; **NOTE:** Available since v1.150.0.
      * 
      * ## Example Usage
      * 
@@ -1259,7 +1259,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Bandwidth Packages of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.112.0+.
+     * &gt; **NOTE:** Available since v1.112.0.
      * 
      * ## Example Usage
      * 
@@ -1307,7 +1307,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Bandwidth Packages of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.112.0+.
+     * &gt; **NOTE:** Available since v1.112.0.
      * 
      * ## Example Usage
      * 
@@ -1355,7 +1355,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Bandwidth Packages of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.112.0+.
+     * &gt; **NOTE:** Available since v1.112.0.
      * 
      * ## Example Usage
      * 
@@ -1403,7 +1403,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Bandwidth Packages of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.112.0+.
+     * &gt; **NOTE:** Available since v1.112.0.
      * 
      * ## Example Usage
      * 
@@ -1451,7 +1451,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Bandwidth Packages of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.112.0+.
+     * &gt; **NOTE:** Available since v1.112.0.
      * 
      * ## Example Usage
      * 
@@ -1499,7 +1499,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Bandwidth Packages of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.112.0+.
+     * &gt; **NOTE:** Available since v1.112.0.
      * 
      * ## Example Usage
      * 
@@ -1547,7 +1547,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Bandwidth Packages of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.112.0+.
+     * &gt; **NOTE:** Available since v1.112.0.
      * 
      * ## Example Usage
      * 
@@ -1595,7 +1595,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Basic Accelerate Ip Endpoint Relations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.194.0+.
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -1643,7 +1643,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Basic Accelerate Ip Endpoint Relations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.194.0+.
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -1691,7 +1691,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Basic Accelerate Ip Endpoint Relations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.194.0+.
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -1739,7 +1739,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Basic Accelerate Ip Endpoint Relations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.194.0+.
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -1787,7 +1787,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Basic Accelerate Ip Endpoint Relations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.194.0+.
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -1835,7 +1835,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Basic Accelerate IPs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.194.0+.
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -1883,7 +1883,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Basic Accelerate IPs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.194.0+.
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -1931,7 +1931,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Basic Accelerate IPs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.194.0+.
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -1979,7 +1979,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Basic Accelerate IPs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.194.0+.
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -2027,7 +2027,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Basic Accelerate IPs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.194.0+.
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -2075,7 +2075,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Basic Accelerators of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.194.0+.
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -2127,7 +2127,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Basic Accelerators of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.194.0+.
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -2179,7 +2179,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Basic Accelerators of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.194.0+.
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -2231,7 +2231,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Basic Accelerators of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.194.0+.
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -2283,7 +2283,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Basic Accelerators of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.194.0+.
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -2335,7 +2335,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Basic Accelerators of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.194.0+.
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -2387,7 +2387,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Basic Accelerators of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.194.0+.
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -2439,7 +2439,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Basic Endpoints of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.194.0+.
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -2493,7 +2493,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Basic Endpoints of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.194.0+.
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -2547,7 +2547,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Basic Endpoints of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.194.0+.
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -2601,7 +2601,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Basic Endpoints of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.194.0+.
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -2655,7 +2655,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Basic Endpoints of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.194.0+.
+     * &gt; **NOTE:** Available since v1.194.0.
      * 
      * ## Example Usage
      * 
@@ -2709,7 +2709,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Group Destinations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * 
@@ -2757,7 +2757,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Group Destinations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * 
@@ -2805,7 +2805,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Group Destinations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * 
@@ -2853,7 +2853,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Group Destinations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * 
@@ -2901,7 +2901,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Group Destinations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * 
@@ -2949,7 +2949,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * 
@@ -3003,7 +3003,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * 
@@ -3057,7 +3057,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * 
@@ -3111,7 +3111,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * 
@@ -3165,7 +3165,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * 
@@ -3219,7 +3219,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Traffic Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * 
@@ -3267,7 +3267,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Traffic Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * 
@@ -3315,7 +3315,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Traffic Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * 
@@ -3363,7 +3363,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Traffic Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * 
@@ -3411,7 +3411,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Traffic Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * 
@@ -3459,7 +3459,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Custom Routing Endpoints of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * 
@@ -3507,7 +3507,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Custom Routing Endpoints of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * 
@@ -3555,7 +3555,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Custom Routing Endpoints of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * 
@@ -3603,7 +3603,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Custom Routing Endpoints of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * 
@@ -3651,7 +3651,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Custom Routing Endpoints of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * 
@@ -3699,7 +3699,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Custom Routing Port Mappings of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * 
@@ -3746,7 +3746,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Custom Routing Port Mappings of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * 
@@ -3793,7 +3793,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Custom Routing Port Mappings of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * 
@@ -3840,7 +3840,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Custom Routing Port Mappings of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * 
@@ -3887,7 +3887,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Custom Routing Port Mappings of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * 
@@ -3934,7 +3934,7 @@ public final class GaFunctions {
     /**
      * This data source provides Ga Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain)
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * 
@@ -3999,7 +3999,7 @@ public final class GaFunctions {
     /**
      * This data source provides Ga Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain)
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * 
@@ -4064,7 +4064,7 @@ public final class GaFunctions {
     /**
      * This data source provides Ga Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain)
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * 
@@ -4129,7 +4129,7 @@ public final class GaFunctions {
     /**
      * This data source provides Ga Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain)
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * 
@@ -4194,7 +4194,7 @@ public final class GaFunctions {
     /**
      * This data source provides Ga Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain)
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * 
@@ -4259,7 +4259,7 @@ public final class GaFunctions {
     /**
      * This data source provides Ga Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain)
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * 
@@ -4324,7 +4324,7 @@ public final class GaFunctions {
     /**
      * This data source provides Ga Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain)
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * 
@@ -5254,7 +5254,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Forwarding Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.120.0+.
+     * &gt; **NOTE:** Available since v1.120.0.
      * 
      * ## Example Usage
      * 
@@ -5303,7 +5303,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Forwarding Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.120.0+.
+     * &gt; **NOTE:** Available since v1.120.0.
      * 
      * ## Example Usage
      * 
@@ -5352,7 +5352,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Forwarding Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.120.0+.
+     * &gt; **NOTE:** Available since v1.120.0.
      * 
      * ## Example Usage
      * 
@@ -5401,7 +5401,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Forwarding Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.120.0+.
+     * &gt; **NOTE:** Available since v1.120.0.
      * 
      * ## Example Usage
      * 
@@ -5450,7 +5450,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Forwarding Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.120.0+.
+     * &gt; **NOTE:** Available since v1.120.0.
      * 
      * ## Example Usage
      * 
@@ -5499,7 +5499,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Ip Sets of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.113.0+.
+     * &gt; **NOTE:** Available since v1.113.0.
      * 
      * ## Example Usage
      * 
@@ -5547,7 +5547,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Ip Sets of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.113.0+.
+     * &gt; **NOTE:** Available since v1.113.0.
      * 
      * ## Example Usage
      * 
@@ -5595,7 +5595,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Ip Sets of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.113.0+.
+     * &gt; **NOTE:** Available since v1.113.0.
      * 
      * ## Example Usage
      * 
@@ -5643,7 +5643,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Ip Sets of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.113.0+.
+     * &gt; **NOTE:** Available since v1.113.0.
      * 
      * ## Example Usage
      * 
@@ -5691,7 +5691,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Ip Sets of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.113.0+.
+     * &gt; **NOTE:** Available since v1.113.0.
      * 
      * ## Example Usage
      * 
@@ -5739,7 +5739,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Listeners of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      * ## Example Usage
      * 
@@ -5788,7 +5788,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Listeners of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      * ## Example Usage
      * 
@@ -5837,7 +5837,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Listeners of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      * ## Example Usage
      * 
@@ -5886,7 +5886,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Listeners of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      * ## Example Usage
      * 
@@ -5935,7 +5935,7 @@ public final class GaFunctions {
     /**
      * This data source provides the Global Accelerator (GA) Listeners of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      * ## Example Usage
      * 

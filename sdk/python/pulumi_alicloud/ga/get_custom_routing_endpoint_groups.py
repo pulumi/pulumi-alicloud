@@ -180,7 +180,7 @@ def get_custom_routing_endpoint_groups(accelerator_id: Optional[str] = None,
     """
     This data source provides the Global Accelerator (GA) Custom Routing Endpoint Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in 1.197.0+
+    > **NOTE:** Available since v1.197.0.
 
     ## Example Usage
 
@@ -246,7 +246,7 @@ def get_custom_routing_endpoint_groups_output(accelerator_id: Optional[pulumi.In
     """
     This data source provides the Global Accelerator (GA) Custom Routing Endpoint Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in 1.197.0+
+    > **NOTE:** Available since v1.197.0.
 
     ## Example Usage
 

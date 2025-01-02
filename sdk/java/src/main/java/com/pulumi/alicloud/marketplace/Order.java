@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var order = new Order("order", OrderArgs.builder()
  *             .productCode("cmapi033136")
- *             .payType("prepay")
+ *             .payType("PrePaid")
  *             .quantity(1)
  *             .duration(1)
  *             .pricingCycle("Month")

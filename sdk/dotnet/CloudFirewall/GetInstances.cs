@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// This data source provides the Cloud Firewall Instances of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.139.0+.
+        /// &gt; **NOTE:** Available since v1.139.0.
         /// 
         /// ## Example Usage
         /// 
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// This data source provides the Cloud Firewall Instances of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.139.0+.
+        /// &gt; **NOTE:** Available since v1.139.0.
         /// 
         /// ## Example Usage
         /// 
@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// This data source provides the Cloud Firewall Instances of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.139.0+.
+        /// &gt; **NOTE:** Available since v1.139.0.
         /// 
         /// ## Example Usage
         /// 
@@ -108,6 +108,12 @@ namespace Pulumi.AliCloud.CloudFirewall
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        /// <summary>
+        /// The payment type of the cloud firewall instance. Valid values: `PayAsYouGo`,`Subscription`.
+        /// </summary>
+        [Input("paymentType")]
+        public string? PaymentType { get; set; }
+
         public GetInstancesArgs()
         {
         }
@@ -121,6 +127,12 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The payment type of the cloud firewall instance. Valid values: `PayAsYouGo`,`Subscription`.
+        /// </summary>
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
 
         public GetInstancesInvokeArgs()
         {
@@ -138,6 +150,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetInstancesInstanceResult> Instances;
         public readonly string? OutputFile;
+        public readonly string? PaymentType;
 
         [OutputConstructor]
         private GetInstancesResult(
@@ -145,11 +158,14 @@ namespace Pulumi.AliCloud.CloudFirewall
 
             ImmutableArray<Outputs.GetInstancesInstanceResult> instances,
 
-            string? outputFile)
+            string? outputFile,
+
+            string? paymentType)
         {
             Id = id;
             Instances = instances;
             OutputFile = outputFile;
+            PaymentType = paymentType;
         }
     }
 }

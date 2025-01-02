@@ -131,7 +131,7 @@ def get_compliance_packs(enable_details: Optional[bool] = None,
     """
     This data source provides the Config Compliance Packs of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.124.0+.
+    > **NOTE:** Available since v1.124.0.
 
     ## Example Usage
 
@@ -180,7 +180,7 @@ def get_compliance_packs_output(enable_details: Optional[pulumi.Input[Optional[b
     """
     This data source provides the Config Compliance Packs of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.124.0+.
+    > **NOTE:** Available since v1.124.0.
 
     ## Example Usage
 

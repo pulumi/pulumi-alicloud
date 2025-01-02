@@ -20,7 +20,7 @@ type GetVpcEndpointConnectionsConnection struct {
 	EndpointId string `pulumi:"endpointId"`
 	// The ID of the Vpc Endpoint Connection.
 	Id string `pulumi:"id"`
-	// The status of Vpc Endpoint Connection.
+	// The status of Vpc Endpoint Connection. Valid Values: `Connected`, `Connecting`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting`, `Pending` and `ServiceDeleted`.
 	Status string `pulumi:"status"`
 }
 
@@ -42,7 +42,7 @@ type GetVpcEndpointConnectionsConnectionArgs struct {
 	EndpointId pulumi.StringInput `pulumi:"endpointId"`
 	// The ID of the Vpc Endpoint Connection.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The status of Vpc Endpoint Connection.
+	// The status of Vpc Endpoint Connection. Valid Values: `Connected`, `Connecting`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting`, `Pending` and `ServiceDeleted`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -112,7 +112,7 @@ func (o GetVpcEndpointConnectionsConnectionOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcEndpointConnectionsConnection) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The status of Vpc Endpoint Connection.
+// The status of Vpc Endpoint Connection. Valid Values: `Connected`, `Connecting`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting`, `Pending` and `ServiceDeleted`.
 func (o GetVpcEndpointConnectionsConnectionOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcEndpointConnectionsConnection) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -543,7 +543,7 @@ type GetVpcEndpointZonesZone struct {
 	EniIp string `pulumi:"eniIp"`
 	// The ID of the Vpc Endpoint Zone.
 	Id string `pulumi:"id"`
-	// The Status of Vpc Endpoint Zone..
+	// The Status of Vpc Endpoint Zone. Valid Values: `Connected`, `Connecting`, `Creating`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting` and `Wait`.
 	Status string `pulumi:"status"`
 	// The vSwitch id.
 	VswitchId string `pulumi:"vswitchId"`
@@ -571,7 +571,7 @@ type GetVpcEndpointZonesZoneArgs struct {
 	EniIp pulumi.StringInput `pulumi:"eniIp"`
 	// The ID of the Vpc Endpoint Zone.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The Status of Vpc Endpoint Zone..
+	// The Status of Vpc Endpoint Zone. Valid Values: `Connected`, `Connecting`, `Creating`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting` and `Wait`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The vSwitch id.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
@@ -647,7 +647,7 @@ func (o GetVpcEndpointZonesZoneOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcEndpointZonesZone) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The Status of Vpc Endpoint Zone..
+// The Status of Vpc Endpoint Zone. Valid Values: `Connected`, `Connecting`, `Creating`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting` and `Wait`.
 func (o GetVpcEndpointZonesZoneOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcEndpointZonesZone) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -712,7 +712,7 @@ type GetVpcEndpointsEndpoint struct {
 	Status string `pulumi:"status"`
 	// The name of Vpc Endpoint.
 	VpcEndpointName string `pulumi:"vpcEndpointName"`
-	// The private network to which the terminal node belongs.
+	// The private network to which the terminal node belongs..
 	VpcId string `pulumi:"vpcId"`
 }
 
@@ -752,7 +752,7 @@ type GetVpcEndpointsEndpointArgs struct {
 	Status pulumi.StringInput `pulumi:"status"`
 	// The name of Vpc Endpoint.
 	VpcEndpointName pulumi.StringInput `pulumi:"vpcEndpointName"`
-	// The private network to which the terminal node belongs.
+	// The private network to which the terminal node belongs..
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 }
 
@@ -867,7 +867,7 @@ func (o GetVpcEndpointsEndpointOutput) VpcEndpointName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcEndpointsEndpoint) string { return v.VpcEndpointName }).(pulumi.StringOutput)
 }
 
-// The private network to which the terminal node belongs.
+// The private network to which the terminal node belongs..
 func (o GetVpcEndpointsEndpointOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcEndpointsEndpoint) string { return v.VpcId }).(pulumi.StringOutput)
 }

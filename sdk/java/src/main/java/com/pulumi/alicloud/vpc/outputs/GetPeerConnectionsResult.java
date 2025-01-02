@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPeerConnectionsResult {
+    /**
+     * @return A list of Vpc Peer Connections. Each element contains the following attributes:
+     * 
+     */
     private List<GetPeerConnectionsConnection> connections;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,13 +26,33 @@ public final class GetPeerConnectionsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of PeerConnection names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The name of the resource.
+     * 
+     */
     private @Nullable String peerConnectionName;
+    /**
+     * @return The status of the resource.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return The ID of the requester VPC.
+     * 
+     */
     private @Nullable String vpcId;
 
     private GetPeerConnectionsResult() {}
+    /**
+     * @return A list of Vpc Peer Connections. Each element contains the following attributes:
+     * 
+     */
     public List<GetPeerConnectionsConnection> connections() {
         return this.connections;
     }
@@ -45,18 +69,34 @@ public final class GetPeerConnectionsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of PeerConnection names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The name of the resource.
+     * 
+     */
     public Optional<String> peerConnectionName() {
         return Optional.ofNullable(this.peerConnectionName);
     }
+    /**
+     * @return The status of the resource.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return The ID of the requester VPC.
+     * 
+     */
     public Optional<String> vpcId() {
         return Optional.ofNullable(this.vpcId);
     }

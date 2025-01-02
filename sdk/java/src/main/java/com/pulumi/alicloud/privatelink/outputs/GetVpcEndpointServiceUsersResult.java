@@ -19,10 +19,22 @@ public final class GetVpcEndpointServiceUsersResult {
      * 
      */
     private String id;
+    /**
+     * @return A list of Vpc Endpoint Service User IDs.
+     * 
+     */
     private List<String> ids;
     private @Nullable String outputFile;
     private String serviceId;
+    /**
+     * @return The Id of Ram User.
+     * 
+     */
     private @Nullable String userId;
+    /**
+     * @return A list of Privatelink Vpc Endpoint Service Users. Each element contains the following attributes:
+     * 
+     */
     private List<GetVpcEndpointServiceUsersUser> users;
 
     private GetVpcEndpointServiceUsersResult() {}
@@ -33,6 +45,10 @@ public final class GetVpcEndpointServiceUsersResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of Vpc Endpoint Service User IDs.
+     * 
+     */
     public List<String> ids() {
         return this.ids;
     }
@@ -42,9 +58,17 @@ public final class GetVpcEndpointServiceUsersResult {
     public String serviceId() {
         return this.serviceId;
     }
+    /**
+     * @return The Id of Ram User.
+     * 
+     */
     public Optional<String> userId() {
         return Optional.ofNullable(this.userId);
     }
+    /**
+     * @return A list of Privatelink Vpc Endpoint Service Users. Each element contains the following attributes:
+     * 
+     */
     public List<GetVpcEndpointServiceUsersUser> users() {
         return this.users;
     }

@@ -14,6 +14,7 @@ namespace Pulumi.AliCloud.Adb.Outputs
     public sealed class GetClustersClusterResult
     {
         public readonly int AutoRenewPeriod;
+        public readonly ImmutableArray<Outputs.GetClustersClusterAvailableKernelVersionResult> AvailableKernelVersions;
         /// <summary>
         /// Billing method. Value options: `PostPaid` for Pay-As-You-Go and `PrePaid` for subscription.
         /// </summary>
@@ -64,6 +65,7 @@ namespace Pulumi.AliCloud.Adb.Outputs
         /// The ID of the ADB cluster.
         /// </summary>
         public readonly string Id;
+        public readonly string KernelVersion;
         /// <summary>
         /// The LockMode of the ADB cluster.
         /// </summary>
@@ -111,6 +113,8 @@ namespace Pulumi.AliCloud.Adb.Outputs
         private GetClustersClusterResult(
             int autoRenewPeriod,
 
+            ImmutableArray<Outputs.GetClustersClusterAvailableKernelVersionResult> availableKernelVersions,
+
             string chargeType,
 
             string commodityCode,
@@ -157,6 +161,8 @@ namespace Pulumi.AliCloud.Adb.Outputs
 
             string id,
 
+            string kernelVersion,
+
             string lockMode,
 
             string lockReason,
@@ -196,6 +202,7 @@ namespace Pulumi.AliCloud.Adb.Outputs
             string zoneId)
         {
             AutoRenewPeriod = autoRenewPeriod;
+            AvailableKernelVersions = availableKernelVersions;
             ChargeType = chargeType;
             CommodityCode = commodityCode;
             ComputeResource = computeResource;
@@ -219,6 +226,7 @@ namespace Pulumi.AliCloud.Adb.Outputs
             ExpireTime = expireTime;
             Expired = expired;
             Id = id;
+            KernelVersion = kernelVersion;
             LockMode = lockMode;
             LockReason = lockReason;
             MaintainTime = maintainTime;

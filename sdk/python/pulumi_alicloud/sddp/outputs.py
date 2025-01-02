@@ -116,9 +116,9 @@ class GetDataLimitsLimitResult(dict):
         :param str id: The ID of the Data Limit.
         :param str local_name: The name of the service to which the data asset belongs.
         :param int log_store_day: The retention period of raw logs after you enable the log auditing feature.
-        :param str parent_id: The ID of the data asset.
+        :param str parent_id: The parent asset ID of the data asset.
         :param int port: The port that is used to connect to the database.
-        :param str resource_type: The type of the service to which the data asset belongs.
+        :param str resource_type: The type of the service to which the data asset belongs. Valid values: `MaxCompute`, `OSS`, `RDS`.
         :param str user_name: The name of the user who owns the data asset.
         """
         pulumi.set(__self__, "audit_status", audit_status)
@@ -193,7 +193,7 @@ class GetDataLimitsLimitResult(dict):
     @pulumi.getter(name="parentId")
     def parent_id(self) -> str:
         """
-        The ID of the data asset.
+        The parent asset ID of the data asset.
         """
         return pulumi.get(self, "parent_id")
 
@@ -209,7 +209,7 @@ class GetDataLimitsLimitResult(dict):
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> str:
         """
-        The type of the service to which the data asset belongs.
+        The type of the service to which the data asset belongs. Valid values: `MaxCompute`, `OSS`, `RDS`.
         """
         return pulumi.get(self, "resource_type")
 
@@ -362,12 +362,12 @@ class GetRulesRuleResult(dict):
                  user_id: str,
                  warn_level: int):
         """
-        :param int category: Sensitive Data Identification Rules for the Type of.
+        :param int category: Sensitive Data Identification Rules for the Type of. Valid values:
         :param str category_name: Sensitive Data Identification Rules Belongs Type Name.
         :param str content: Sensitive Data Identification Rules the Content.
         :param str content_category: The Content Classification.
         :param str create_time: Sensitive Data Identification Rules the Creation Time of the Number of Milliseconds.
-        :param int custom_type: Sensitive Data Identification Rules of Type. 0: the Built-in 1: The User-Defined.
+        :param int custom_type: Sensitive Data Identification Rules of Type. Valid values:
         :param str description: Sensitive Data Identification a Description of the Rule Information.
         :param str display_name: Sensitive Data Identification Rules, Founder of Account Display Name.
         :param str gmt_modified: Sensitive Data Identification Rules to the Modified Time of the Number of Milliseconds.
@@ -376,15 +376,15 @@ class GetRulesRuleResult(dict):
         :param str major_key: The Primary Key.
         :param str name: The name of rule.
         :param str product_code: Product Code.
-        :param str product_id: Product ID.
-        :param str risk_level_id: Sensitive Data Identification Rules of Risk Level ID. Valid values:1:S1, Weak Risk Level. 2:S2, Medium Risk Level. 3:S3 High Risk Level. 4:S4, the Highest Risk Level.
+        :param str product_id: Product ID. Valid values:
+        :param str risk_level_id: Sensitive Data Identification Rules of Risk Level ID. Valid values:
         :param str risk_level_name: Sensitive Data Identification Rules the Risk Level of. S1: Weak Risk Level S2: Moderate Risk Level S3: High Risk Level S4: the Highest Risk Level.
         :param str rule_id: The first ID of the resource.
         :param str stat_express: Triggered the Alarm Conditions.
         :param int status: Sensitive Data Identification Rules Detection State of.
         :param str target: The Target.
         :param str user_id: The User ID.
-        :param int warn_level: The Level of Risk.
+        :param int warn_level: The Level of Risk. Valid values:
         """
         pulumi.set(__self__, "category", category)
         pulumi.set(__self__, "category_name", category_name)
@@ -414,7 +414,7 @@ class GetRulesRuleResult(dict):
     @pulumi.getter
     def category(self) -> int:
         """
-        Sensitive Data Identification Rules for the Type of.
+        Sensitive Data Identification Rules for the Type of. Valid values:
         """
         return pulumi.get(self, "category")
 
@@ -454,7 +454,7 @@ class GetRulesRuleResult(dict):
     @pulumi.getter(name="customType")
     def custom_type(self) -> int:
         """
-        Sensitive Data Identification Rules of Type. 0: the Built-in 1: The User-Defined.
+        Sensitive Data Identification Rules of Type. Valid values:
         """
         return pulumi.get(self, "custom_type")
 
@@ -526,7 +526,7 @@ class GetRulesRuleResult(dict):
     @pulumi.getter(name="productId")
     def product_id(self) -> str:
         """
-        Product ID.
+        Product ID. Valid values:
         """
         return pulumi.get(self, "product_id")
 
@@ -534,7 +534,7 @@ class GetRulesRuleResult(dict):
     @pulumi.getter(name="riskLevelId")
     def risk_level_id(self) -> str:
         """
-        Sensitive Data Identification Rules of Risk Level ID. Valid values:1:S1, Weak Risk Level. 2:S2, Medium Risk Level. 3:S3 High Risk Level. 4:S4, the Highest Risk Level.
+        Sensitive Data Identification Rules of Risk Level ID. Valid values:
         """
         return pulumi.get(self, "risk_level_id")
 
@@ -590,7 +590,7 @@ class GetRulesRuleResult(dict):
     @pulumi.getter(name="warnLevel")
     def warn_level(self) -> int:
         """
-        The Level of Risk.
+        The Level of Risk. Valid values:
         """
         return pulumi.get(self, "warn_level")
 

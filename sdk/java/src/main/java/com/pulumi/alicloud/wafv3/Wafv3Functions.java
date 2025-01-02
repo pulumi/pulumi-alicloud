@@ -306,7 +306,7 @@ public final class Wafv3Functions {
     /**
      * This data source provides Wafv3 Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/web-application-firewall/latest/what-is-waf)
      * 
-     * &gt; **NOTE:** Available in 1.200.0+
+     * &gt; **NOTE:** Available since v1.200.0.
      * 
      * ## Example Usage
      * 
@@ -349,7 +349,7 @@ public final class Wafv3Functions {
     /**
      * This data source provides Wafv3 Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/web-application-firewall/latest/what-is-waf)
      * 
-     * &gt; **NOTE:** Available in 1.200.0+
+     * &gt; **NOTE:** Available since v1.200.0.
      * 
      * ## Example Usage
      * 
@@ -392,7 +392,7 @@ public final class Wafv3Functions {
     /**
      * This data source provides Wafv3 Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/web-application-firewall/latest/what-is-waf)
      * 
-     * &gt; **NOTE:** Available in 1.200.0+
+     * &gt; **NOTE:** Available since v1.200.0.
      * 
      * ## Example Usage
      * 
@@ -435,7 +435,7 @@ public final class Wafv3Functions {
     /**
      * This data source provides Wafv3 Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/web-application-firewall/latest/what-is-waf)
      * 
-     * &gt; **NOTE:** Available in 1.200.0+
+     * &gt; **NOTE:** Available since v1.200.0.
      * 
      * ## Example Usage
      * 
@@ -478,7 +478,7 @@ public final class Wafv3Functions {
     /**
      * This data source provides Wafv3 Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/web-application-firewall/latest/what-is-waf)
      * 
-     * &gt; **NOTE:** Available in 1.200.0+
+     * &gt; **NOTE:** Available since v1.200.0.
      * 
      * ## Example Usage
      * 
@@ -521,7 +521,7 @@ public final class Wafv3Functions {
     /**
      * This data source provides Wafv3 Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/web-application-firewall/latest/what-is-waf)
      * 
-     * &gt; **NOTE:** Available in 1.200.0+
+     * &gt; **NOTE:** Available since v1.200.0.
      * 
      * ## Example Usage
      * 
@@ -564,7 +564,7 @@ public final class Wafv3Functions {
     /**
      * This data source provides Wafv3 Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/web-application-firewall/latest/what-is-waf)
      * 
-     * &gt; **NOTE:** Available in 1.200.0+
+     * &gt; **NOTE:** Available since v1.200.0.
      * 
      * ## Example Usage
      * 

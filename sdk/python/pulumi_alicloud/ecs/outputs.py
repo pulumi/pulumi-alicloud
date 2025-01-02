@@ -3178,6 +3178,7 @@ class GetDisksDiskResult(dict):
                  enable_auto_snapshot: bool,
                  enable_automated_snapshot_policy: bool,
                  encrypted: str,
+                 expiration_time: str,
                  expired_time: str,
                  id: str,
                  image_id: str,
@@ -3210,6 +3211,7 @@ class GetDisksDiskResult(dict):
         :param str description: Disk description.
         :param str detached_time: Disk detachment time.
         :param str encrypted: Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
+        :param str expiration_time: Disk expiration time.
         :param str id: ID of the disk.
         :param str image_id: ID of the image from which the disk is created. It is null unless the disk is created using an image.
         :param str instance_id: Filter the results by the specified ECS instance ID.
@@ -3247,6 +3249,7 @@ class GetDisksDiskResult(dict):
         pulumi.set(__self__, "enable_auto_snapshot", enable_auto_snapshot)
         pulumi.set(__self__, "enable_automated_snapshot_policy", enable_automated_snapshot_policy)
         pulumi.set(__self__, "encrypted", encrypted)
+        pulumi.set(__self__, "expiration_time", expiration_time)
         pulumi.set(__self__, "expired_time", expired_time)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "image_id", image_id)
@@ -3372,6 +3375,14 @@ class GetDisksDiskResult(dict):
         Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
         """
         return pulumi.get(self, "encrypted")
+
+    @property
+    @pulumi.getter(name="expirationTime")
+    def expiration_time(self) -> str:
+        """
+        Disk expiration time.
+        """
+        return pulumi.get(self, "expiration_time")
 
     @property
     @pulumi.getter(name="expiredTime")
@@ -3941,6 +3952,7 @@ class GetEcsDisksDiskResult(dict):
                  enable_auto_snapshot: bool,
                  enable_automated_snapshot_policy: bool,
                  encrypted: str,
+                 expiration_time: str,
                  expired_time: str,
                  id: str,
                  image_id: str,
@@ -3966,41 +3978,47 @@ class GetEcsDisksDiskResult(dict):
                  type: str,
                  zone_id: str):
         """
-        :param str attached_time: Disk attachment time.
+        :param str attached_time: A mount of time.
         :param str auto_snapshot_policy_id: Query cloud disks based on the automatic snapshot policy ID.
-        :param str availability_zone: Availability zone of the disk.
-        :param str category: Disk category.
+        :param str availability_zone: Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
+        :param str category: Disk category. Valid values: `cloud`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `ephemeral_ssd`, `cloud_auto`, `cloud_essd_entry`.
         :param str creation_time: Disk creation time.
         :param bool delete_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released.
         :param bool delete_with_instance: Indicates whether the disk is released together with the instance.
         :param str description: Disk description.
         :param str detached_time: Disk detachment time.
-        :param str device: Cloud disk or the device name of the mounted instance on the site.
+        :param str device: The mount point of the disk.
         :param str disk_id: ID of the disk.
         :param str disk_name: The disk name.
-        :param str disk_type: The disk type.
-        :param bool enable_auto_snapshot: Whether the disk implements an automatic snapshot policy.
-        :param bool enable_automated_snapshot_policy: Whether the disk implements an automatic snapshot policy.
-        :param str encrypted: Indicate whether the disk is encrypted or not.
+        :param str disk_type: The disk type. Valid values: `system`, `data`, `all`.
+        :param bool enable_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released.
+        :param bool enable_automated_snapshot_policy: Whether the cloud disk has an automatic snapshot policy
+        :param str encrypted: Indicate whether the disk is encrypted or not. Valid values: `on` and `off`.
+        :param str expiration_time: The time when the subscription disk expires.
+        :param str expired_time: The time when the subscription disk expires.
         :param str id: ID of the disk.
         :param str image_id: ID of the image from which the disk is created. It is null unless the disk is created using an image.
-        :param str instance_id: ID of the related instance. It is `null` unless the `status` is `In_use`.
+        :param str instance_id: Filter the results by the specified ECS instance ID.
+        :param int iops: The maximum number of read and write operations per second.
+        :param int iops_read: The maximum number of read operations per second.
+        :param int iops_write: The maximum number of write operations per second.
         :param str kms_key_id: The kms key id.
         :param int mount_instance_num: Number of instances mounted on shared storage.
         :param Sequence['GetEcsDisksDiskMountInstanceArgs'] mount_instances: Disk mount instances.
         :param str name: Disk name.
-        :param str payment_type: Payment method for disk.
+        :param Sequence['GetEcsDisksDiskOperationLockArgs'] operation_locks: The reasons why the disk was locked. See `operation_locks` below for details.
+        :param str payment_type: Payment method for disk. Valid Values: `PayAsYouGo`, `Subscription`.
         :param str performance_level: Performance levels of ESSD cloud disk.
-        :param bool portable: Whether the disk is unmountable.
+        :param bool portable: Whether the cloud disk or local disk supports uninstallation.
         :param str product_code: The product logo of the cloud market.
         :param str region_id: Region ID the disk belongs to.
-        :param str resource_group_id: The Id of resource group.
+        :param str resource_group_id: The Id of resource group which the disk belongs.
         :param int size: Disk size in GiB.
-        :param str snapshot_id: Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
-        :param str status: Current status.
-        :param Mapping[str, str] tags: A map of tags assigned to the disk.
-        :param str type: Disk type.
-        :param str zone_id: The zone id.
+        :param str snapshot_id: The source snapshot id.
+        :param str status: The status of disk. Valid Values: `Attaching`, `Available`, `Creating`, `Detaching`, `In_use`, `Migrating`, `ReIniting`, `Transferring`.
+        :param Mapping[str, str] tags: A map of tags assigned to the disks.
+        :param str type: Field `type` has been deprecated from provider version 1.122.0. New field `disk_type` instead.
+        :param str zone_id: ID of the free zone to which the disk belongs.
         """
         pulumi.set(__self__, "attached_time", attached_time)
         pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
@@ -4018,6 +4036,7 @@ class GetEcsDisksDiskResult(dict):
         pulumi.set(__self__, "enable_auto_snapshot", enable_auto_snapshot)
         pulumi.set(__self__, "enable_automated_snapshot_policy", enable_automated_snapshot_policy)
         pulumi.set(__self__, "encrypted", encrypted)
+        pulumi.set(__self__, "expiration_time", expiration_time)
         pulumi.set(__self__, "expired_time", expired_time)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "image_id", image_id)
@@ -4047,7 +4066,7 @@ class GetEcsDisksDiskResult(dict):
     @pulumi.getter(name="attachedTime")
     def attached_time(self) -> str:
         """
-        Disk attachment time.
+        A mount of time.
         """
         return pulumi.get(self, "attached_time")
 
@@ -4063,7 +4082,7 @@ class GetEcsDisksDiskResult(dict):
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> str:
         """
-        Availability zone of the disk.
+        Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
         """
         return pulumi.get(self, "availability_zone")
 
@@ -4071,7 +4090,7 @@ class GetEcsDisksDiskResult(dict):
     @pulumi.getter
     def category(self) -> str:
         """
-        Disk category.
+        Disk category. Valid values: `cloud`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `ephemeral_ssd`, `cloud_auto`, `cloud_essd_entry`.
         """
         return pulumi.get(self, "category")
 
@@ -4119,7 +4138,7 @@ class GetEcsDisksDiskResult(dict):
     @pulumi.getter
     def device(self) -> str:
         """
-        Cloud disk or the device name of the mounted instance on the site.
+        The mount point of the disk.
         """
         return pulumi.get(self, "device")
 
@@ -4143,7 +4162,7 @@ class GetEcsDisksDiskResult(dict):
     @pulumi.getter(name="diskType")
     def disk_type(self) -> str:
         """
-        The disk type.
+        The disk type. Valid values: `system`, `data`, `all`.
         """
         return pulumi.get(self, "disk_type")
 
@@ -4151,7 +4170,7 @@ class GetEcsDisksDiskResult(dict):
     @pulumi.getter(name="enableAutoSnapshot")
     def enable_auto_snapshot(self) -> bool:
         """
-        Whether the disk implements an automatic snapshot policy.
+        Indicates whether the automatic snapshot is deleted when the disk is released.
         """
         return pulumi.get(self, "enable_auto_snapshot")
 
@@ -4159,7 +4178,7 @@ class GetEcsDisksDiskResult(dict):
     @pulumi.getter(name="enableAutomatedSnapshotPolicy")
     def enable_automated_snapshot_policy(self) -> bool:
         """
-        Whether the disk implements an automatic snapshot policy.
+        Whether the cloud disk has an automatic snapshot policy
         """
         return pulumi.get(self, "enable_automated_snapshot_policy")
 
@@ -4167,13 +4186,24 @@ class GetEcsDisksDiskResult(dict):
     @pulumi.getter
     def encrypted(self) -> str:
         """
-        Indicate whether the disk is encrypted or not.
+        Indicate whether the disk is encrypted or not. Valid values: `on` and `off`.
         """
         return pulumi.get(self, "encrypted")
 
     @property
+    @pulumi.getter(name="expirationTime")
+    def expiration_time(self) -> str:
+        """
+        The time when the subscription disk expires.
+        """
+        return pulumi.get(self, "expiration_time")
+
+    @property
     @pulumi.getter(name="expiredTime")
     def expired_time(self) -> str:
+        """
+        The time when the subscription disk expires.
+        """
         return pulumi.get(self, "expired_time")
 
     @property
@@ -4196,23 +4226,32 @@ class GetEcsDisksDiskResult(dict):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> str:
         """
-        ID of the related instance. It is `null` unless the `status` is `In_use`.
+        Filter the results by the specified ECS instance ID.
         """
         return pulumi.get(self, "instance_id")
 
     @property
     @pulumi.getter
     def iops(self) -> int:
+        """
+        The maximum number of read and write operations per second.
+        """
         return pulumi.get(self, "iops")
 
     @property
     @pulumi.getter(name="iopsRead")
     def iops_read(self) -> int:
+        """
+        The maximum number of read operations per second.
+        """
         return pulumi.get(self, "iops_read")
 
     @property
     @pulumi.getter(name="iopsWrite")
     def iops_write(self) -> int:
+        """
+        The maximum number of write operations per second.
+        """
         return pulumi.get(self, "iops_write")
 
     @property
@@ -4250,13 +4289,16 @@ class GetEcsDisksDiskResult(dict):
     @property
     @pulumi.getter(name="operationLocks")
     def operation_locks(self) -> Sequence['outputs.GetEcsDisksDiskOperationLockResult']:
+        """
+        The reasons why the disk was locked. See `operation_locks` below for details.
+        """
         return pulumi.get(self, "operation_locks")
 
     @property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> str:
         """
-        Payment method for disk.
+        Payment method for disk. Valid Values: `PayAsYouGo`, `Subscription`.
         """
         return pulumi.get(self, "payment_type")
 
@@ -4272,7 +4314,7 @@ class GetEcsDisksDiskResult(dict):
     @pulumi.getter
     def portable(self) -> bool:
         """
-        Whether the disk is unmountable.
+        Whether the cloud disk or local disk supports uninstallation.
         """
         return pulumi.get(self, "portable")
 
@@ -4296,7 +4338,7 @@ class GetEcsDisksDiskResult(dict):
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> str:
         """
-        The Id of resource group.
+        The Id of resource group which the disk belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -4312,7 +4354,7 @@ class GetEcsDisksDiskResult(dict):
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> str:
         """
-        Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+        The source snapshot id.
         """
         return pulumi.get(self, "snapshot_id")
 
@@ -4320,7 +4362,7 @@ class GetEcsDisksDiskResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        Current status.
+        The status of disk. Valid Values: `Attaching`, `Available`, `Creating`, `Detaching`, `In_use`, `Migrating`, `ReIniting`, `Transferring`.
         """
         return pulumi.get(self, "status")
 
@@ -4328,7 +4370,7 @@ class GetEcsDisksDiskResult(dict):
     @pulumi.getter
     def tags(self) -> Mapping[str, str]:
         """
-        A map of tags assigned to the disk.
+        A map of tags assigned to the disks.
         """
         return pulumi.get(self, "tags")
 
@@ -4336,7 +4378,7 @@ class GetEcsDisksDiskResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Disk type.
+        Field `type` has been deprecated from provider version 1.122.0. New field `disk_type` instead.
         """
         return pulumi.get(self, "type")
 
@@ -4344,7 +4386,7 @@ class GetEcsDisksDiskResult(dict):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> str:
         """
-        The zone id.
+        ID of the free zone to which the disk belongs.
         """
         return pulumi.get(self, "zone_id")
 
@@ -4358,7 +4400,7 @@ class GetEcsDisksDiskMountInstanceResult(dict):
         """
         :param str attached_time: A mount of time.
         :param str device: The mount point of the disk.
-        :param str instance_id: The instance ID of the disk mount.
+        :param str instance_id: Filter the results by the specified ECS instance ID.
         """
         pulumi.set(__self__, "attached_time", attached_time)
         pulumi.set(__self__, "device", device)
@@ -4384,7 +4426,7 @@ class GetEcsDisksDiskMountInstanceResult(dict):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> str:
         """
-        The instance ID of the disk mount.
+        Filter the results by the specified ECS instance ID.
         """
         return pulumi.get(self, "instance_id")
 
@@ -4393,11 +4435,17 @@ class GetEcsDisksDiskMountInstanceResult(dict):
 class GetEcsDisksDiskOperationLockResult(dict):
     def __init__(__self__, *,
                  lock_reason: str):
+        """
+        :param str lock_reason: The reason why the disk was locked.
+        """
         pulumi.set(__self__, "lock_reason", lock_reason)
 
     @property
     @pulumi.getter(name="lockReason")
     def lock_reason(self) -> str:
+        """
+        The reason why the disk was locked.
+        """
         return pulumi.get(self, "lock_reason")
 
 
@@ -4405,12 +4453,18 @@ class GetEcsDisksDiskOperationLockResult(dict):
 class GetEcsDisksOperationLockResult(dict):
     def __init__(__self__, *,
                  lock_reason: Optional[str] = None):
+        """
+        :param str lock_reason: The reason why the disk was locked.
+        """
         if lock_reason is not None:
             pulumi.set(__self__, "lock_reason", lock_reason)
 
     @property
     @pulumi.getter(name="lockReason")
     def lock_reason(self) -> Optional[str]:
+        """
+        The reason why the disk was locked.
+        """
         return pulumi.get(self, "lock_reason")
 
 

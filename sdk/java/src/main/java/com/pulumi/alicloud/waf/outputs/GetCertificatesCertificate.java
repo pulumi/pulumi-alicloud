@@ -28,7 +28,7 @@ public final class GetCertificatesCertificate {
      */
     private String commonName;
     /**
-     * @return The domain that you want to add to WAF.
+     * @return WAF domain name.
      * 
      */
     private String domain;
@@ -68,7 +68,7 @@ public final class GetCertificatesCertificate {
         return this.commonName;
     }
     /**
-     * @return The domain that you want to add to WAF.
+     * @return WAF domain name.
      * 
      */
     public String domain() {

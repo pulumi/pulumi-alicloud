@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.CR
         public Output<string?> CustomOssBucket { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to use the default OSS Bucket
+        /// Whether to use the default OSS Bucket. Value:
         /// </summary>
         [Output("defaultOssBucket")]
         public Output<string?> DefaultOssBucket { get; private set; } = null!;
@@ -92,10 +92,18 @@ namespace Pulumi.AliCloud.CR
         public Output<string> EndTime { get; private set; } = null!;
 
         /// <summary>
-        /// Security scan engine
+        /// The security scan engine used by the Enterprise Edition of Container Image Service. Value:
+        /// - `ACR`: Uses the Trivy scan engine provided by default.
+        /// - `SAS`: uses the enhanced cloud security scan engine.
         /// </summary>
         [Output("imageScanner")]
         public Output<string?> ImageScanner { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.240.0) Instance Network Access Endpoint List
+        /// </summary>
+        [Output("instanceEndpoints")]
+        public Output<ImmutableArray<Outputs.RegistryEnterpriseInstanceInstanceEndpoint>> InstanceEndpoints { get; private set; } = null!;
 
         /// <summary>
         /// InstanceName
@@ -105,12 +113,9 @@ namespace Pulumi.AliCloud.CR
 
         /// <summary>
         /// The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
-        /// 
-        /// Basic: Basic instance
-        /// 
-        /// Standard: Standard instance
-        /// 
-        /// Advanced: Advanced Edition Instance
+        /// - `Basic`: Basic instance
+        /// - `Standard`: Standard instance
+        /// - `Advanced`: Advanced Edition Instance
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
@@ -128,7 +133,7 @@ namespace Pulumi.AliCloud.CR
         public Output<ImmutableDictionary<string, string>?> KmsEncryptionContext { get; private set; } = null!;
 
         /// <summary>
-        /// Permanent access credentials of the instance
+        /// Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
@@ -243,13 +248,15 @@ namespace Pulumi.AliCloud.CR
         public Input<string>? CustomOssBucket { get; set; }
 
         /// <summary>
-        /// Whether to use the default OSS Bucket
+        /// Whether to use the default OSS Bucket. Value:
         /// </summary>
         [Input("defaultOssBucket")]
         public Input<string>? DefaultOssBucket { get; set; }
 
         /// <summary>
-        /// Security scan engine
+        /// The security scan engine used by the Enterprise Edition of Container Image Service. Value:
+        /// - `ACR`: Uses the Trivy scan engine provided by default.
+        /// - `SAS`: uses the enhanced cloud security scan engine.
         /// </summary>
         [Input("imageScanner")]
         public Input<string>? ImageScanner { get; set; }
@@ -262,12 +269,9 @@ namespace Pulumi.AliCloud.CR
 
         /// <summary>
         /// The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
-        /// 
-        /// Basic: Basic instance
-        /// 
-        /// Standard: Standard instance
-        /// 
-        /// Advanced: Advanced Edition Instance
+        /// - `Basic`: Basic instance
+        /// - `Standard`: Standard instance
+        /// - `Advanced`: Advanced Edition Instance
         /// </summary>
         [Input("instanceType", required: true)]
         public Input<string> InstanceType { get; set; } = null!;
@@ -294,7 +298,7 @@ namespace Pulumi.AliCloud.CR
         private Input<string>? _password;
 
         /// <summary>
-        /// Permanent access credentials of the instance
+        /// Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
         /// </summary>
         public Input<string>? Password
         {
@@ -374,7 +378,7 @@ namespace Pulumi.AliCloud.CR
         public Input<string>? CustomOssBucket { get; set; }
 
         /// <summary>
-        /// Whether to use the default OSS Bucket
+        /// Whether to use the default OSS Bucket. Value:
         /// </summary>
         [Input("defaultOssBucket")]
         public Input<string>? DefaultOssBucket { get; set; }
@@ -386,10 +390,24 @@ namespace Pulumi.AliCloud.CR
         public Input<string>? EndTime { get; set; }
 
         /// <summary>
-        /// Security scan engine
+        /// The security scan engine used by the Enterprise Edition of Container Image Service. Value:
+        /// - `ACR`: Uses the Trivy scan engine provided by default.
+        /// - `SAS`: uses the enhanced cloud security scan engine.
         /// </summary>
         [Input("imageScanner")]
         public Input<string>? ImageScanner { get; set; }
+
+        [Input("instanceEndpoints")]
+        private InputList<Inputs.RegistryEnterpriseInstanceInstanceEndpointGetArgs>? _instanceEndpoints;
+
+        /// <summary>
+        /// (Available since v1.240.0) Instance Network Access Endpoint List
+        /// </summary>
+        public InputList<Inputs.RegistryEnterpriseInstanceInstanceEndpointGetArgs> InstanceEndpoints
+        {
+            get => _instanceEndpoints ?? (_instanceEndpoints = new InputList<Inputs.RegistryEnterpriseInstanceInstanceEndpointGetArgs>());
+            set => _instanceEndpoints = value;
+        }
 
         /// <summary>
         /// InstanceName
@@ -399,12 +417,9 @@ namespace Pulumi.AliCloud.CR
 
         /// <summary>
         /// The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
-        /// 
-        /// Basic: Basic instance
-        /// 
-        /// Standard: Standard instance
-        /// 
-        /// Advanced: Advanced Edition Instance
+        /// - `Basic`: Basic instance
+        /// - `Standard`: Standard instance
+        /// - `Advanced`: Advanced Edition Instance
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -431,7 +446,7 @@ namespace Pulumi.AliCloud.CR
         private Input<string>? _password;
 
         /// <summary>
-        /// Permanent access credentials of the instance
+        /// Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
         /// </summary>
         public Input<string>? Password
         {

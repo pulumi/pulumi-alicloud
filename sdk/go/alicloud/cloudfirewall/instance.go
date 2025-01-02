@@ -104,7 +104,7 @@ type Instance struct {
 	// The end time.
 	EndTime pulumi.StringOutput `pulumi:"endTime"`
 	// The number of protected VPCs. It will be ignored when `spec = "premiumVersion"`. Valid values between 2 and 500.
-	FwVpcNumber pulumi.IntPtrOutput `pulumi:"fwVpcNumber"`
+	FwVpcNumber pulumi.IntOutput `pulumi:"fwVpcNumber"`
 	// The number of assets.
 	InstanceCount pulumi.IntPtrOutput `pulumi:"instanceCount"`
 	// The number of public IPs that can be protected. Valid values: 20 to 4000.
@@ -498,8 +498,8 @@ func (o InstanceOutput) EndTime() pulumi.StringOutput {
 }
 
 // The number of protected VPCs. It will be ignored when `spec = "premiumVersion"`. Valid values between 2 and 500.
-func (o InstanceOutput) FwVpcNumber() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.FwVpcNumber }).(pulumi.IntPtrOutput)
+func (o InstanceOutput) FwVpcNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.FwVpcNumber }).(pulumi.IntOutput)
 }
 
 // The number of assets.

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a collection of DCDN Domains to the specified filters.
  *
- * > **NOTE:** Available in 1.94.0+.
+ * > **NOTE:** Available since 1.94.0.
  *
  * ## Example Usage
  *
@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = alicloud.dcdn.getDomains({
- *    ids: ["example.com"],
+ *     ids: ["example.com"],
  * });
  * export const domainId = example.then(example => example.domains?.[0]?.id);
  * ```
@@ -128,7 +128,7 @@ export interface GetDomainsResult {
 /**
  * Provides a collection of DCDN Domains to the specified filters.
  *
- * > **NOTE:** Available in 1.94.0+.
+ * > **NOTE:** Available since 1.94.0.
  *
  * ## Example Usage
  *
@@ -137,7 +137,7 @@ export interface GetDomainsResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = alicloud.dcdn.getDomains({
- *    ids: ["example.com"],
+ *     ids: ["example.com"],
  * });
  * export const domainId = example.then(example => example.domains?.[0]?.id);
  * ```

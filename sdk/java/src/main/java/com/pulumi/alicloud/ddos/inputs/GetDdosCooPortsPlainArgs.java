@@ -62,14 +62,14 @@ public final class GetDdosCooPortsPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The Ddoscoo instance ID.
+     * The DdosCoo instance ID.
      * 
      */
     @Import(name="instanceId", required=true)
     private String instanceId;
 
     /**
-     * @return The Ddoscoo instance ID.
+     * @return The DdosCoo instance ID.
      * 
      */
     public String instanceId() {
@@ -163,7 +163,7 @@ public final class GetDdosCooPortsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param instanceId The Ddoscoo instance ID.
+         * @param instanceId The DdosCoo instance ID.
          * 
          * @return builder
          * 

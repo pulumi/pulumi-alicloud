@@ -27,18 +27,31 @@ class RegistryEnterpriseSyncRuleArgs:
                  target_region_id: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
                  repo_name: Optional[pulumi.Input[str]] = None,
-                 target_repo_name: Optional[pulumi.Input[str]] = None):
+                 sync_rule_name: Optional[pulumi.Input[str]] = None,
+                 sync_scope: Optional[pulumi.Input[str]] = None,
+                 sync_trigger: Optional[pulumi.Input[str]] = None,
+                 target_repo_name: Optional[pulumi.Input[str]] = None,
+                 target_user_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RegistryEnterpriseSyncRule resource.
-        :param pulumi.Input[str] instance_id: The ID of the Container Registry Enterprise Edition source instance.
+        :param pulumi.Input[str] instance_id: The ID of the Container Registry source instance.
         :param pulumi.Input[str] namespace_name: The namespace name of the source instance.
         :param pulumi.Input[str] tag_filter: The regular expression used to filter image tags.
         :param pulumi.Input[str] target_instance_id: The ID of the destination instance.
         :param pulumi.Input[str] target_namespace_name: The namespace name of the destination instance.
         :param pulumi.Input[str] target_region_id: The region ID of the destination instance.
-        :param pulumi.Input[str] name: The name of the sync rule.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
         :param pulumi.Input[str] repo_name: The image repository name of the source instance.
+        :param pulumi.Input[str] sync_rule_name: The name of the sync rule.
+        :param pulumi.Input[str] sync_scope: The synchronization scope. Valid values:
+               - `REPO`: Encrypts or decrypts data.
+               - `NAMESPACE`: Generates or verifies a digital signature.
+               > **NOTE:** From version 1.240.0, `sync_scope` can be set.
+        :param pulumi.Input[str] sync_trigger: The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
+               - `INITIATIVE`: Manually triggers the synchronization rule.
+               - `PASSIVE`: Automatically triggers the synchronization rule.
         :param pulumi.Input[str] target_repo_name: The image repository name of the destination instance.
+        :param pulumi.Input[str] target_user_id: The UID of the account to which the target instance belongs.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "namespace_name", namespace_name)
@@ -47,17 +60,28 @@ class RegistryEnterpriseSyncRuleArgs:
         pulumi.set(__self__, "target_namespace_name", target_namespace_name)
         pulumi.set(__self__, "target_region_id", target_region_id)
         if name is not None:
+            warnings.warn("""Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.""")
+        if name is not None:
             pulumi.set(__self__, "name", name)
         if repo_name is not None:
             pulumi.set(__self__, "repo_name", repo_name)
+        if sync_rule_name is not None:
+            pulumi.set(__self__, "sync_rule_name", sync_rule_name)
+        if sync_scope is not None:
+            pulumi.set(__self__, "sync_scope", sync_scope)
+        if sync_trigger is not None:
+            pulumi.set(__self__, "sync_trigger", sync_trigger)
         if target_repo_name is not None:
             pulumi.set(__self__, "target_repo_name", target_repo_name)
+        if target_user_id is not None:
+            pulumi.set(__self__, "target_user_id", target_user_id)
 
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[str]:
         """
-        The ID of the Container Registry Enterprise Edition source instance.
+        The ID of the Container Registry source instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -127,9 +151,10 @@ class RegistryEnterpriseSyncRuleArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the sync rule.
+        Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -150,6 +175,47 @@ class RegistryEnterpriseSyncRuleArgs:
         pulumi.set(self, "repo_name", value)
 
     @property
+    @pulumi.getter(name="syncRuleName")
+    def sync_rule_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the sync rule.
+        """
+        return pulumi.get(self, "sync_rule_name")
+
+    @sync_rule_name.setter
+    def sync_rule_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sync_rule_name", value)
+
+    @property
+    @pulumi.getter(name="syncScope")
+    def sync_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        The synchronization scope. Valid values:
+        - `REPO`: Encrypts or decrypts data.
+        - `NAMESPACE`: Generates or verifies a digital signature.
+        > **NOTE:** From version 1.240.0, `sync_scope` can be set.
+        """
+        return pulumi.get(self, "sync_scope")
+
+    @sync_scope.setter
+    def sync_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sync_scope", value)
+
+    @property
+    @pulumi.getter(name="syncTrigger")
+    def sync_trigger(self) -> Optional[pulumi.Input[str]]:
+        """
+        The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
+        - `INITIATIVE`: Manually triggers the synchronization rule.
+        - `PASSIVE`: Automatically triggers the synchronization rule.
+        """
+        return pulumi.get(self, "sync_trigger")
+
+    @sync_trigger.setter
+    def sync_trigger(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sync_trigger", value)
+
+    @property
     @pulumi.getter(name="targetRepoName")
     def target_repo_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -161,51 +227,96 @@ class RegistryEnterpriseSyncRuleArgs:
     def target_repo_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "target_repo_name", value)
 
+    @property
+    @pulumi.getter(name="targetUserId")
+    def target_user_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The UID of the account to which the target instance belongs.
+        """
+        return pulumi.get(self, "target_user_id")
+
+    @target_user_id.setter
+    def target_user_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_user_id", value)
+
 
 @pulumi.input_type
 class _RegistryEnterpriseSyncRuleState:
     def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace_name: Optional[pulumi.Input[str]] = None,
+                 region_id: Optional[pulumi.Input[str]] = None,
                  repo_name: Optional[pulumi.Input[str]] = None,
+                 repo_sync_rule_id: Optional[pulumi.Input[str]] = None,
                  rule_id: Optional[pulumi.Input[str]] = None,
                  sync_direction: Optional[pulumi.Input[str]] = None,
+                 sync_rule_name: Optional[pulumi.Input[str]] = None,
                  sync_scope: Optional[pulumi.Input[str]] = None,
+                 sync_trigger: Optional[pulumi.Input[str]] = None,
                  tag_filter: Optional[pulumi.Input[str]] = None,
                  target_instance_id: Optional[pulumi.Input[str]] = None,
                  target_namespace_name: Optional[pulumi.Input[str]] = None,
                  target_region_id: Optional[pulumi.Input[str]] = None,
-                 target_repo_name: Optional[pulumi.Input[str]] = None):
+                 target_repo_name: Optional[pulumi.Input[str]] = None,
+                 target_user_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RegistryEnterpriseSyncRule resources.
-        :param pulumi.Input[str] instance_id: The ID of the Container Registry Enterprise Edition source instance.
-        :param pulumi.Input[str] name: The name of the sync rule.
+        :param pulumi.Input[str] create_time: (Available since v1.240.0) The time when the synchronization rule was created.
+        :param pulumi.Input[str] instance_id: The ID of the Container Registry source instance.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
         :param pulumi.Input[str] namespace_name: The namespace name of the source instance.
+        :param pulumi.Input[str] region_id: (Available since v1.240.0) The region ID of the source instance.
         :param pulumi.Input[str] repo_name: The image repository name of the source instance.
-        :param pulumi.Input[str] rule_id: The ID of the sync rule.
+        :param pulumi.Input[str] repo_sync_rule_id: (Available since v1.240.0) The ID of the synchronization rule.
+        :param pulumi.Input[str] rule_id: (Deprecated since v1.240.0) Field `rule_id` has been deprecated from provider version 1.240.0. New field `repo_sync_rule_id` instead.
         :param pulumi.Input[str] sync_direction: The synchronization direction.
-        :param pulumi.Input[str] sync_scope: The synchronization scope.
+        :param pulumi.Input[str] sync_rule_name: The name of the sync rule.
+        :param pulumi.Input[str] sync_scope: The synchronization scope. Valid values:
+               - `REPO`: Encrypts or decrypts data.
+               - `NAMESPACE`: Generates or verifies a digital signature.
+               > **NOTE:** From version 1.240.0, `sync_scope` can be set.
+        :param pulumi.Input[str] sync_trigger: The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
+               - `INITIATIVE`: Manually triggers the synchronization rule.
+               - `PASSIVE`: Automatically triggers the synchronization rule.
         :param pulumi.Input[str] tag_filter: The regular expression used to filter image tags.
         :param pulumi.Input[str] target_instance_id: The ID of the destination instance.
         :param pulumi.Input[str] target_namespace_name: The namespace name of the destination instance.
         :param pulumi.Input[str] target_region_id: The region ID of the destination instance.
         :param pulumi.Input[str] target_repo_name: The image repository name of the destination instance.
+        :param pulumi.Input[str] target_user_id: The UID of the account to which the target instance belongs.
         """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
+        if name is not None:
+            warnings.warn("""Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
         if namespace_name is not None:
             pulumi.set(__self__, "namespace_name", namespace_name)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
         if repo_name is not None:
             pulumi.set(__self__, "repo_name", repo_name)
+        if repo_sync_rule_id is not None:
+            pulumi.set(__self__, "repo_sync_rule_id", repo_sync_rule_id)
+        if rule_id is not None:
+            warnings.warn("""Field `rule_id` has been deprecated from provider version 1.240.0. New field `repo_sync_rule_id` instead.""", DeprecationWarning)
+            pulumi.log.warn("""rule_id is deprecated: Field `rule_id` has been deprecated from provider version 1.240.0. New field `repo_sync_rule_id` instead.""")
         if rule_id is not None:
             pulumi.set(__self__, "rule_id", rule_id)
         if sync_direction is not None:
             pulumi.set(__self__, "sync_direction", sync_direction)
+        if sync_rule_name is not None:
+            pulumi.set(__self__, "sync_rule_name", sync_rule_name)
         if sync_scope is not None:
             pulumi.set(__self__, "sync_scope", sync_scope)
+        if sync_trigger is not None:
+            pulumi.set(__self__, "sync_trigger", sync_trigger)
         if tag_filter is not None:
             pulumi.set(__self__, "tag_filter", tag_filter)
         if target_instance_id is not None:
@@ -216,12 +327,26 @@ class _RegistryEnterpriseSyncRuleState:
             pulumi.set(__self__, "target_region_id", target_region_id)
         if target_repo_name is not None:
             pulumi.set(__self__, "target_repo_name", target_repo_name)
+        if target_user_id is not None:
+            pulumi.set(__self__, "target_user_id", target_user_id)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.240.0) The time when the synchronization rule was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
 
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the Container Registry Enterprise Edition source instance.
+        The ID of the Container Registry source instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -231,9 +356,10 @@ class _RegistryEnterpriseSyncRuleState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the sync rule.
+        Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -254,6 +380,18 @@ class _RegistryEnterpriseSyncRuleState:
         pulumi.set(self, "namespace_name", value)
 
     @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.240.0) The region ID of the source instance.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region_id", value)
+
+    @property
     @pulumi.getter(name="repoName")
     def repo_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -266,10 +404,23 @@ class _RegistryEnterpriseSyncRuleState:
         pulumi.set(self, "repo_name", value)
 
     @property
+    @pulumi.getter(name="repoSyncRuleId")
+    def repo_sync_rule_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.240.0) The ID of the synchronization rule.
+        """
+        return pulumi.get(self, "repo_sync_rule_id")
+
+    @repo_sync_rule_id.setter
+    def repo_sync_rule_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repo_sync_rule_id", value)
+
+    @property
     @pulumi.getter(name="ruleId")
+    @_utilities.deprecated("""Field `rule_id` has been deprecated from provider version 1.240.0. New field `repo_sync_rule_id` instead.""")
     def rule_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the sync rule.
+        (Deprecated since v1.240.0) Field `rule_id` has been deprecated from provider version 1.240.0. New field `repo_sync_rule_id` instead.
         """
         return pulumi.get(self, "rule_id")
 
@@ -290,16 +441,45 @@ class _RegistryEnterpriseSyncRuleState:
         pulumi.set(self, "sync_direction", value)
 
     @property
+    @pulumi.getter(name="syncRuleName")
+    def sync_rule_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the sync rule.
+        """
+        return pulumi.get(self, "sync_rule_name")
+
+    @sync_rule_name.setter
+    def sync_rule_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sync_rule_name", value)
+
+    @property
     @pulumi.getter(name="syncScope")
     def sync_scope(self) -> Optional[pulumi.Input[str]]:
         """
-        The synchronization scope.
+        The synchronization scope. Valid values:
+        - `REPO`: Encrypts or decrypts data.
+        - `NAMESPACE`: Generates or verifies a digital signature.
+        > **NOTE:** From version 1.240.0, `sync_scope` can be set.
         """
         return pulumi.get(self, "sync_scope")
 
     @sync_scope.setter
     def sync_scope(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sync_scope", value)
+
+    @property
+    @pulumi.getter(name="syncTrigger")
+    def sync_trigger(self) -> Optional[pulumi.Input[str]]:
+        """
+        The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
+        - `INITIATIVE`: Manually triggers the synchronization rule.
+        - `PASSIVE`: Automatically triggers the synchronization rule.
+        """
+        return pulumi.get(self, "sync_trigger")
+
+    @sync_trigger.setter
+    def sync_trigger(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sync_trigger", value)
 
     @property
     @pulumi.getter(name="tagFilter")
@@ -361,6 +541,18 @@ class _RegistryEnterpriseSyncRuleState:
     def target_repo_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "target_repo_name", value)
 
+    @property
+    @pulumi.getter(name="targetUserId")
+    def target_user_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The UID of the account to which the target instance belongs.
+        """
+        return pulumi.get(self, "target_user_id")
+
+    @target_user_id.setter
+    def target_user_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_user_id", value)
+
 
 class RegistryEnterpriseSyncRule(pulumi.CustomResource):
     @overload
@@ -371,20 +563,24 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  namespace_name: Optional[pulumi.Input[str]] = None,
                  repo_name: Optional[pulumi.Input[str]] = None,
+                 sync_rule_name: Optional[pulumi.Input[str]] = None,
+                 sync_scope: Optional[pulumi.Input[str]] = None,
+                 sync_trigger: Optional[pulumi.Input[str]] = None,
                  tag_filter: Optional[pulumi.Input[str]] = None,
                  target_instance_id: Optional[pulumi.Input[str]] = None,
                  target_namespace_name: Optional[pulumi.Input[str]] = None,
                  target_region_id: Optional[pulumi.Input[str]] = None,
                  target_repo_name: Optional[pulumi.Input[str]] = None,
+                 target_user_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Container Registry Enterprise Edition Sync Rule resource.
+        Provides a Container Registry Sync Rule resource.
 
-        For information about Container Registry Enterprise Edition Sync Rule and how to use it, see [What is Sync Rule](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createreposyncrule)
+        For information about Container Registry Sync Rule and how to use it, see [What is Sync Rule](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createreposyncrule)
 
         > **NOTE:** Available since v1.90.0.
 
-        > **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
+        > **NOTE:** You need to set your registry password in Container Registry console before use this resource.
 
         ## Example Usage
 
@@ -442,7 +638,7 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
         default_registry_enterprise_sync_rule = alicloud.cs.RegistryEnterpriseSyncRule("default",
             instance_id=source.id,
             namespace_name=source_registry_enterprise_namespace.name,
-            name=f"{name}-{default_integer['result']}",
+            sync_rule_name=f"{name}-{default_integer['result']}",
             target_instance_id=target.id,
             target_namespace_name=target_registry_enterprise_namespace.name,
             target_region_id=default.regions[0].id,
@@ -453,23 +649,32 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
 
         ## Import
 
-        Container Registry Enterprise Edition Sync Rule can be imported using the id, e.g.
+        Container Registry Sync Rule can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule example <instance_id>:<namespace_name>:<rule_id>
+        $ pulumi import alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule example <instance_id>:<namespace_name>:<repo_sync_rule_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] instance_id: The ID of the Container Registry Enterprise Edition source instance.
-        :param pulumi.Input[str] name: The name of the sync rule.
+        :param pulumi.Input[str] instance_id: The ID of the Container Registry source instance.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
         :param pulumi.Input[str] namespace_name: The namespace name of the source instance.
         :param pulumi.Input[str] repo_name: The image repository name of the source instance.
+        :param pulumi.Input[str] sync_rule_name: The name of the sync rule.
+        :param pulumi.Input[str] sync_scope: The synchronization scope. Valid values:
+               - `REPO`: Encrypts or decrypts data.
+               - `NAMESPACE`: Generates or verifies a digital signature.
+               > **NOTE:** From version 1.240.0, `sync_scope` can be set.
+        :param pulumi.Input[str] sync_trigger: The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
+               - `INITIATIVE`: Manually triggers the synchronization rule.
+               - `PASSIVE`: Automatically triggers the synchronization rule.
         :param pulumi.Input[str] tag_filter: The regular expression used to filter image tags.
         :param pulumi.Input[str] target_instance_id: The ID of the destination instance.
         :param pulumi.Input[str] target_namespace_name: The namespace name of the destination instance.
         :param pulumi.Input[str] target_region_id: The region ID of the destination instance.
         :param pulumi.Input[str] target_repo_name: The image repository name of the destination instance.
+        :param pulumi.Input[str] target_user_id: The UID of the account to which the target instance belongs.
         """
         ...
     @overload
@@ -478,13 +683,13 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
                  args: RegistryEnterpriseSyncRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Container Registry Enterprise Edition Sync Rule resource.
+        Provides a Container Registry Sync Rule resource.
 
-        For information about Container Registry Enterprise Edition Sync Rule and how to use it, see [What is Sync Rule](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createreposyncrule)
+        For information about Container Registry Sync Rule and how to use it, see [What is Sync Rule](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createreposyncrule)
 
         > **NOTE:** Available since v1.90.0.
 
-        > **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
+        > **NOTE:** You need to set your registry password in Container Registry console before use this resource.
 
         ## Example Usage
 
@@ -542,7 +747,7 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
         default_registry_enterprise_sync_rule = alicloud.cs.RegistryEnterpriseSyncRule("default",
             instance_id=source.id,
             namespace_name=source_registry_enterprise_namespace.name,
-            name=f"{name}-{default_integer['result']}",
+            sync_rule_name=f"{name}-{default_integer['result']}",
             target_instance_id=target.id,
             target_namespace_name=target_registry_enterprise_namespace.name,
             target_region_id=default.regions[0].id,
@@ -553,10 +758,10 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
 
         ## Import
 
-        Container Registry Enterprise Edition Sync Rule can be imported using the id, e.g.
+        Container Registry Sync Rule can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule example <instance_id>:<namespace_name>:<rule_id>
+        $ pulumi import alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule example <instance_id>:<namespace_name>:<repo_sync_rule_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -578,11 +783,15 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  namespace_name: Optional[pulumi.Input[str]] = None,
                  repo_name: Optional[pulumi.Input[str]] = None,
+                 sync_rule_name: Optional[pulumi.Input[str]] = None,
+                 sync_scope: Optional[pulumi.Input[str]] = None,
+                 sync_trigger: Optional[pulumi.Input[str]] = None,
                  tag_filter: Optional[pulumi.Input[str]] = None,
                  target_instance_id: Optional[pulumi.Input[str]] = None,
                  target_namespace_name: Optional[pulumi.Input[str]] = None,
                  target_region_id: Optional[pulumi.Input[str]] = None,
                  target_repo_name: Optional[pulumi.Input[str]] = None,
+                 target_user_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -600,6 +809,9 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
                 raise TypeError("Missing required property 'namespace_name'")
             __props__.__dict__["namespace_name"] = namespace_name
             __props__.__dict__["repo_name"] = repo_name
+            __props__.__dict__["sync_rule_name"] = sync_rule_name
+            __props__.__dict__["sync_scope"] = sync_scope
+            __props__.__dict__["sync_trigger"] = sync_trigger
             if tag_filter is None and not opts.urn:
                 raise TypeError("Missing required property 'tag_filter'")
             __props__.__dict__["tag_filter"] = tag_filter
@@ -613,9 +825,12 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
                 raise TypeError("Missing required property 'target_region_id'")
             __props__.__dict__["target_region_id"] = target_region_id
             __props__.__dict__["target_repo_name"] = target_repo_name
+            __props__.__dict__["target_user_id"] = target_user_id
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["region_id"] = None
+            __props__.__dict__["repo_sync_rule_id"] = None
             __props__.__dict__["rule_id"] = None
             __props__.__dict__["sync_direction"] = None
-            __props__.__dict__["sync_scope"] = None
         super(RegistryEnterpriseSyncRule, __self__).__init__(
             'alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule',
             resource_name,
@@ -626,18 +841,24 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             namespace_name: Optional[pulumi.Input[str]] = None,
+            region_id: Optional[pulumi.Input[str]] = None,
             repo_name: Optional[pulumi.Input[str]] = None,
+            repo_sync_rule_id: Optional[pulumi.Input[str]] = None,
             rule_id: Optional[pulumi.Input[str]] = None,
             sync_direction: Optional[pulumi.Input[str]] = None,
+            sync_rule_name: Optional[pulumi.Input[str]] = None,
             sync_scope: Optional[pulumi.Input[str]] = None,
+            sync_trigger: Optional[pulumi.Input[str]] = None,
             tag_filter: Optional[pulumi.Input[str]] = None,
             target_instance_id: Optional[pulumi.Input[str]] = None,
             target_namespace_name: Optional[pulumi.Input[str]] = None,
             target_region_id: Optional[pulumi.Input[str]] = None,
-            target_repo_name: Optional[pulumi.Input[str]] = None) -> 'RegistryEnterpriseSyncRule':
+            target_repo_name: Optional[pulumi.Input[str]] = None,
+            target_user_id: Optional[pulumi.Input[str]] = None) -> 'RegistryEnterpriseSyncRule':
         """
         Get an existing RegistryEnterpriseSyncRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -645,50 +866,76 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] instance_id: The ID of the Container Registry Enterprise Edition source instance.
-        :param pulumi.Input[str] name: The name of the sync rule.
+        :param pulumi.Input[str] create_time: (Available since v1.240.0) The time when the synchronization rule was created.
+        :param pulumi.Input[str] instance_id: The ID of the Container Registry source instance.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
         :param pulumi.Input[str] namespace_name: The namespace name of the source instance.
+        :param pulumi.Input[str] region_id: (Available since v1.240.0) The region ID of the source instance.
         :param pulumi.Input[str] repo_name: The image repository name of the source instance.
-        :param pulumi.Input[str] rule_id: The ID of the sync rule.
+        :param pulumi.Input[str] repo_sync_rule_id: (Available since v1.240.0) The ID of the synchronization rule.
+        :param pulumi.Input[str] rule_id: (Deprecated since v1.240.0) Field `rule_id` has been deprecated from provider version 1.240.0. New field `repo_sync_rule_id` instead.
         :param pulumi.Input[str] sync_direction: The synchronization direction.
-        :param pulumi.Input[str] sync_scope: The synchronization scope.
+        :param pulumi.Input[str] sync_rule_name: The name of the sync rule.
+        :param pulumi.Input[str] sync_scope: The synchronization scope. Valid values:
+               - `REPO`: Encrypts or decrypts data.
+               - `NAMESPACE`: Generates or verifies a digital signature.
+               > **NOTE:** From version 1.240.0, `sync_scope` can be set.
+        :param pulumi.Input[str] sync_trigger: The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
+               - `INITIATIVE`: Manually triggers the synchronization rule.
+               - `PASSIVE`: Automatically triggers the synchronization rule.
         :param pulumi.Input[str] tag_filter: The regular expression used to filter image tags.
         :param pulumi.Input[str] target_instance_id: The ID of the destination instance.
         :param pulumi.Input[str] target_namespace_name: The namespace name of the destination instance.
         :param pulumi.Input[str] target_region_id: The region ID of the destination instance.
         :param pulumi.Input[str] target_repo_name: The image repository name of the destination instance.
+        :param pulumi.Input[str] target_user_id: The UID of the account to which the target instance belongs.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _RegistryEnterpriseSyncRuleState.__new__(_RegistryEnterpriseSyncRuleState)
 
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["name"] = name
         __props__.__dict__["namespace_name"] = namespace_name
+        __props__.__dict__["region_id"] = region_id
         __props__.__dict__["repo_name"] = repo_name
+        __props__.__dict__["repo_sync_rule_id"] = repo_sync_rule_id
         __props__.__dict__["rule_id"] = rule_id
         __props__.__dict__["sync_direction"] = sync_direction
+        __props__.__dict__["sync_rule_name"] = sync_rule_name
         __props__.__dict__["sync_scope"] = sync_scope
+        __props__.__dict__["sync_trigger"] = sync_trigger
         __props__.__dict__["tag_filter"] = tag_filter
         __props__.__dict__["target_instance_id"] = target_instance_id
         __props__.__dict__["target_namespace_name"] = target_namespace_name
         __props__.__dict__["target_region_id"] = target_region_id
         __props__.__dict__["target_repo_name"] = target_repo_name
+        __props__.__dict__["target_user_id"] = target_user_id
         return RegistryEnterpriseSyncRule(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.240.0) The time when the synchronization rule was created.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[str]:
         """
-        The ID of the Container Registry Enterprise Edition source instance.
+        The ID of the Container Registry source instance.
         """
         return pulumi.get(self, "instance_id")
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.""")
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the sync rule.
+        Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -701,6 +948,14 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
         return pulumi.get(self, "namespace_name")
 
     @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.240.0) The region ID of the source instance.
+        """
+        return pulumi.get(self, "region_id")
+
+    @property
     @pulumi.getter(name="repoName")
     def repo_name(self) -> pulumi.Output[Optional[str]]:
         """
@@ -709,10 +964,19 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
         return pulumi.get(self, "repo_name")
 
     @property
+    @pulumi.getter(name="repoSyncRuleId")
+    def repo_sync_rule_id(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.240.0) The ID of the synchronization rule.
+        """
+        return pulumi.get(self, "repo_sync_rule_id")
+
+    @property
     @pulumi.getter(name="ruleId")
+    @_utilities.deprecated("""Field `rule_id` has been deprecated from provider version 1.240.0. New field `repo_sync_rule_id` instead.""")
     def rule_id(self) -> pulumi.Output[str]:
         """
-        The ID of the sync rule.
+        (Deprecated since v1.240.0) Field `rule_id` has been deprecated from provider version 1.240.0. New field `repo_sync_rule_id` instead.
         """
         return pulumi.get(self, "rule_id")
 
@@ -725,12 +989,33 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
         return pulumi.get(self, "sync_direction")
 
     @property
+    @pulumi.getter(name="syncRuleName")
+    def sync_rule_name(self) -> pulumi.Output[str]:
+        """
+        The name of the sync rule.
+        """
+        return pulumi.get(self, "sync_rule_name")
+
+    @property
     @pulumi.getter(name="syncScope")
     def sync_scope(self) -> pulumi.Output[str]:
         """
-        The synchronization scope.
+        The synchronization scope. Valid values:
+        - `REPO`: Encrypts or decrypts data.
+        - `NAMESPACE`: Generates or verifies a digital signature.
+        > **NOTE:** From version 1.240.0, `sync_scope` can be set.
         """
         return pulumi.get(self, "sync_scope")
+
+    @property
+    @pulumi.getter(name="syncTrigger")
+    def sync_trigger(self) -> pulumi.Output[str]:
+        """
+        The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
+        - `INITIATIVE`: Manually triggers the synchronization rule.
+        - `PASSIVE`: Automatically triggers the synchronization rule.
+        """
+        return pulumi.get(self, "sync_trigger")
 
     @property
     @pulumi.getter(name="tagFilter")
@@ -771,4 +1056,12 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
         The image repository name of the destination instance.
         """
         return pulumi.get(self, "target_repo_name")
+
+    @property
+    @pulumi.getter(name="targetUserId")
+    def target_user_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The UID of the account to which the target instance belongs.
+        """
+        return pulumi.get(self, "target_user_id")
 

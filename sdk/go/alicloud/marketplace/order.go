@@ -30,7 +30,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := marketplace.NewOrder(ctx, "order", &marketplace.OrderArgs{
 //				ProductCode:    pulumi.String("cmapi033136"),
-//				PayType:        pulumi.String("prepay"),
+//				PayType:        pulumi.String("PrePaid"),
 //				Quantity:       pulumi.Int(1),
 //				Duration:       pulumi.Int(1),
 //				PricingCycle:   pulumi.String("Month"),

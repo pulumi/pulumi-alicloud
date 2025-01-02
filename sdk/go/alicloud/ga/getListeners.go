@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Global Accelerator (GA) Listeners of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.111.0+.
+// > **NOTE:** Available since v1.111.0.
 //
 // ## Example Usage
 //
@@ -75,13 +75,16 @@ type GetListenersArgs struct {
 type GetListenersResult struct {
 	AcceleratorId string `pulumi:"acceleratorId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                 `pulumi:"id"`
-	Ids        []string               `pulumi:"ids"`
-	Listeners  []GetListenersListener `pulumi:"listeners"`
-	NameRegex  *string                `pulumi:"nameRegex"`
-	Names      []string               `pulumi:"names"`
-	OutputFile *string                `pulumi:"outputFile"`
-	Status     *string                `pulumi:"status"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// A list of Ga Listeners. Each element contains the following attributes:
+	Listeners []GetListenersListener `pulumi:"listeners"`
+	NameRegex *string                `pulumi:"nameRegex"`
+	// A list of Listener names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The status of the listener.
+	Status *string `pulumi:"status"`
 }
 
 func GetListenersOutput(ctx *pulumi.Context, args GetListenersOutputArgs, opts ...pulumi.InvokeOption) GetListenersResultOutput {
@@ -139,6 +142,7 @@ func (o GetListenersResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetListenersResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// A list of Ga Listeners. Each element contains the following attributes:
 func (o GetListenersResultOutput) Listeners() GetListenersListenerArrayOutput {
 	return o.ApplyT(func(v GetListenersResult) []GetListenersListener { return v.Listeners }).(GetListenersListenerArrayOutput)
 }
@@ -147,6 +151,7 @@ func (o GetListenersResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetListenersResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Listener names.
 func (o GetListenersResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetListenersResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -155,6 +160,7 @@ func (o GetListenersResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetListenersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of the listener.
 func (o GetListenersResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetListenersResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

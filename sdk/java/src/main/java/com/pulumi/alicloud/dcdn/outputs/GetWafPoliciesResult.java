@@ -23,8 +23,16 @@ public final class GetWafPoliciesResult {
     private @Nullable String nameRegex;
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Dcdn Waf Policies. Each element contains the following attributes:
+     * 
+     */
     private List<GetWafPoliciesPolicy> policies;
     private @Nullable String queryArgs;
+    /**
+     * @return The status of the resource.
+     * 
+     */
     private @Nullable String status;
 
     private GetWafPoliciesResult() {}
@@ -47,12 +55,20 @@ public final class GetWafPoliciesResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Dcdn Waf Policies. Each element contains the following attributes:
+     * 
+     */
     public List<GetWafPoliciesPolicy> policies() {
         return this.policies;
     }
     public Optional<String> queryArgs() {
         return Optional.ofNullable(this.queryArgs);
     }
+    /**
+     * @return The status of the resource.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

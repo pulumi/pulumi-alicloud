@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ddoscoo Ports of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.123.0+.
+// > **NOTE:** Available since v1.123.0.
 //
 // ## Example Usage
 //
@@ -64,7 +64,7 @@ type GetDdosCooPortsArgs struct {
 	FrontendProtocol *string `pulumi:"frontendProtocol"`
 	// A list of Port IDs.
 	Ids []string `pulumi:"ids"`
-	// The Ddoscoo instance ID.
+	// The DdosCoo instance ID.
 	InstanceId string `pulumi:"instanceId"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
@@ -72,14 +72,18 @@ type GetDdosCooPortsArgs struct {
 
 // A collection of values returned by getDdosCooPorts.
 type GetDdosCooPortsResult struct {
-	FrontendPort     *string `pulumi:"frontendPort"`
+	// The forwarding port.
+	FrontendPort *string `pulumi:"frontendPort"`
+	// The forwarding protocol.
 	FrontendProtocol *string `pulumi:"frontendProtocol"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                `pulumi:"id"`
-	Ids        []string              `pulumi:"ids"`
-	InstanceId string                `pulumi:"instanceId"`
-	OutputFile *string               `pulumi:"outputFile"`
-	Ports      []GetDdosCooPortsPort `pulumi:"ports"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// The Ddoscoo instance ID.
+	InstanceId string  `pulumi:"instanceId"`
+	OutputFile *string `pulumi:"outputFile"`
+	// A list of DdosCoo Ports. Each element contains the following attributes:
+	Ports []GetDdosCooPortsPort `pulumi:"ports"`
 }
 
 func GetDdosCooPortsOutput(ctx *pulumi.Context, args GetDdosCooPortsOutputArgs, opts ...pulumi.InvokeOption) GetDdosCooPortsResultOutput {
@@ -99,7 +103,7 @@ type GetDdosCooPortsOutputArgs struct {
 	FrontendProtocol pulumi.StringPtrInput `pulumi:"frontendProtocol"`
 	// A list of Port IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// The Ddoscoo instance ID.
+	// The DdosCoo instance ID.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
@@ -124,10 +128,12 @@ func (o GetDdosCooPortsResultOutput) ToGetDdosCooPortsResultOutputWithContext(ct
 	return o
 }
 
+// The forwarding port.
 func (o GetDdosCooPortsResultOutput) FrontendPort() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDdosCooPortsResult) *string { return v.FrontendPort }).(pulumi.StringPtrOutput)
 }
 
+// The forwarding protocol.
 func (o GetDdosCooPortsResultOutput) FrontendProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDdosCooPortsResult) *string { return v.FrontendProtocol }).(pulumi.StringPtrOutput)
 }
@@ -141,6 +147,7 @@ func (o GetDdosCooPortsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDdosCooPortsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The Ddoscoo instance ID.
 func (o GetDdosCooPortsResultOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDdosCooPortsResult) string { return v.InstanceId }).(pulumi.StringOutput)
 }
@@ -149,6 +156,7 @@ func (o GetDdosCooPortsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDdosCooPortsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of DdosCoo Ports. Each element contains the following attributes:
 func (o GetDdosCooPortsResultOutput) Ports() GetDdosCooPortsPortArrayOutput {
 	return o.ApplyT(func(v GetDdosCooPortsResult) []GetDdosCooPortsPort { return v.Ports }).(GetDdosCooPortsPortArrayOutput)
 }

@@ -13,6 +13,960 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type JobJobMonitorInfo struct {
+	// Contact information. See `contactInfo` below.
+	ContactInfos []JobJobMonitorInfoContactInfo `pulumi:"contactInfos"`
+	// Alarm switch and threshold configuration. See `monitorConfig` below.
+	MonitorConfig *JobJobMonitorInfoMonitorConfig `pulumi:"monitorConfig"`
+}
+
+// JobJobMonitorInfoInput is an input type that accepts JobJobMonitorInfoArgs and JobJobMonitorInfoOutput values.
+// You can construct a concrete instance of `JobJobMonitorInfoInput` via:
+//
+//	JobJobMonitorInfoArgs{...}
+type JobJobMonitorInfoInput interface {
+	pulumi.Input
+
+	ToJobJobMonitorInfoOutput() JobJobMonitorInfoOutput
+	ToJobJobMonitorInfoOutputWithContext(context.Context) JobJobMonitorInfoOutput
+}
+
+type JobJobMonitorInfoArgs struct {
+	// Contact information. See `contactInfo` below.
+	ContactInfos JobJobMonitorInfoContactInfoArrayInput `pulumi:"contactInfos"`
+	// Alarm switch and threshold configuration. See `monitorConfig` below.
+	MonitorConfig JobJobMonitorInfoMonitorConfigPtrInput `pulumi:"monitorConfig"`
+}
+
+func (JobJobMonitorInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobJobMonitorInfo)(nil)).Elem()
+}
+
+func (i JobJobMonitorInfoArgs) ToJobJobMonitorInfoOutput() JobJobMonitorInfoOutput {
+	return i.ToJobJobMonitorInfoOutputWithContext(context.Background())
+}
+
+func (i JobJobMonitorInfoArgs) ToJobJobMonitorInfoOutputWithContext(ctx context.Context) JobJobMonitorInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobJobMonitorInfoOutput)
+}
+
+func (i JobJobMonitorInfoArgs) ToJobJobMonitorInfoPtrOutput() JobJobMonitorInfoPtrOutput {
+	return i.ToJobJobMonitorInfoPtrOutputWithContext(context.Background())
+}
+
+func (i JobJobMonitorInfoArgs) ToJobJobMonitorInfoPtrOutputWithContext(ctx context.Context) JobJobMonitorInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobJobMonitorInfoOutput).ToJobJobMonitorInfoPtrOutputWithContext(ctx)
+}
+
+// JobJobMonitorInfoPtrInput is an input type that accepts JobJobMonitorInfoArgs, JobJobMonitorInfoPtr and JobJobMonitorInfoPtrOutput values.
+// You can construct a concrete instance of `JobJobMonitorInfoPtrInput` via:
+//
+//	        JobJobMonitorInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobJobMonitorInfoPtrInput interface {
+	pulumi.Input
+
+	ToJobJobMonitorInfoPtrOutput() JobJobMonitorInfoPtrOutput
+	ToJobJobMonitorInfoPtrOutputWithContext(context.Context) JobJobMonitorInfoPtrOutput
+}
+
+type jobJobMonitorInfoPtrType JobJobMonitorInfoArgs
+
+func JobJobMonitorInfoPtr(v *JobJobMonitorInfoArgs) JobJobMonitorInfoPtrInput {
+	return (*jobJobMonitorInfoPtrType)(v)
+}
+
+func (*jobJobMonitorInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobJobMonitorInfo)(nil)).Elem()
+}
+
+func (i *jobJobMonitorInfoPtrType) ToJobJobMonitorInfoPtrOutput() JobJobMonitorInfoPtrOutput {
+	return i.ToJobJobMonitorInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *jobJobMonitorInfoPtrType) ToJobJobMonitorInfoPtrOutputWithContext(ctx context.Context) JobJobMonitorInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobJobMonitorInfoPtrOutput)
+}
+
+type JobJobMonitorInfoOutput struct{ *pulumi.OutputState }
+
+func (JobJobMonitorInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobJobMonitorInfo)(nil)).Elem()
+}
+
+func (o JobJobMonitorInfoOutput) ToJobJobMonitorInfoOutput() JobJobMonitorInfoOutput {
+	return o
+}
+
+func (o JobJobMonitorInfoOutput) ToJobJobMonitorInfoOutputWithContext(ctx context.Context) JobJobMonitorInfoOutput {
+	return o
+}
+
+func (o JobJobMonitorInfoOutput) ToJobJobMonitorInfoPtrOutput() JobJobMonitorInfoPtrOutput {
+	return o.ToJobJobMonitorInfoPtrOutputWithContext(context.Background())
+}
+
+func (o JobJobMonitorInfoOutput) ToJobJobMonitorInfoPtrOutputWithContext(ctx context.Context) JobJobMonitorInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobJobMonitorInfo) *JobJobMonitorInfo {
+		return &v
+	}).(JobJobMonitorInfoPtrOutput)
+}
+
+// Contact information. See `contactInfo` below.
+func (o JobJobMonitorInfoOutput) ContactInfos() JobJobMonitorInfoContactInfoArrayOutput {
+	return o.ApplyT(func(v JobJobMonitorInfo) []JobJobMonitorInfoContactInfo { return v.ContactInfos }).(JobJobMonitorInfoContactInfoArrayOutput)
+}
+
+// Alarm switch and threshold configuration. See `monitorConfig` below.
+func (o JobJobMonitorInfoOutput) MonitorConfig() JobJobMonitorInfoMonitorConfigPtrOutput {
+	return o.ApplyT(func(v JobJobMonitorInfo) *JobJobMonitorInfoMonitorConfig { return v.MonitorConfig }).(JobJobMonitorInfoMonitorConfigPtrOutput)
+}
+
+type JobJobMonitorInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (JobJobMonitorInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobJobMonitorInfo)(nil)).Elem()
+}
+
+func (o JobJobMonitorInfoPtrOutput) ToJobJobMonitorInfoPtrOutput() JobJobMonitorInfoPtrOutput {
+	return o
+}
+
+func (o JobJobMonitorInfoPtrOutput) ToJobJobMonitorInfoPtrOutputWithContext(ctx context.Context) JobJobMonitorInfoPtrOutput {
+	return o
+}
+
+func (o JobJobMonitorInfoPtrOutput) Elem() JobJobMonitorInfoOutput {
+	return o.ApplyT(func(v *JobJobMonitorInfo) JobJobMonitorInfo {
+		if v != nil {
+			return *v
+		}
+		var ret JobJobMonitorInfo
+		return ret
+	}).(JobJobMonitorInfoOutput)
+}
+
+// Contact information. See `contactInfo` below.
+func (o JobJobMonitorInfoPtrOutput) ContactInfos() JobJobMonitorInfoContactInfoArrayOutput {
+	return o.ApplyT(func(v *JobJobMonitorInfo) []JobJobMonitorInfoContactInfo {
+		if v == nil {
+			return nil
+		}
+		return v.ContactInfos
+	}).(JobJobMonitorInfoContactInfoArrayOutput)
+}
+
+// Alarm switch and threshold configuration. See `monitorConfig` below.
+func (o JobJobMonitorInfoPtrOutput) MonitorConfig() JobJobMonitorInfoMonitorConfigPtrOutput {
+	return o.ApplyT(func(v *JobJobMonitorInfo) *JobJobMonitorInfoMonitorConfig {
+		if v == nil {
+			return nil
+		}
+		return v.MonitorConfig
+	}).(JobJobMonitorInfoMonitorConfigPtrOutput)
+}
+
+type JobJobMonitorInfoContactInfo struct {
+	// DingTalk swarm robot webhook address
+	Ding *string `pulumi:"ding"`
+	// User Email Address
+	UserMail *string `pulumi:"userMail"`
+	// The user name
+	UserName *string `pulumi:"userName"`
+	// The user's mobile phone number
+	UserPhone *string `pulumi:"userPhone"`
+}
+
+// JobJobMonitorInfoContactInfoInput is an input type that accepts JobJobMonitorInfoContactInfoArgs and JobJobMonitorInfoContactInfoOutput values.
+// You can construct a concrete instance of `JobJobMonitorInfoContactInfoInput` via:
+//
+//	JobJobMonitorInfoContactInfoArgs{...}
+type JobJobMonitorInfoContactInfoInput interface {
+	pulumi.Input
+
+	ToJobJobMonitorInfoContactInfoOutput() JobJobMonitorInfoContactInfoOutput
+	ToJobJobMonitorInfoContactInfoOutputWithContext(context.Context) JobJobMonitorInfoContactInfoOutput
+}
+
+type JobJobMonitorInfoContactInfoArgs struct {
+	// DingTalk swarm robot webhook address
+	Ding pulumi.StringPtrInput `pulumi:"ding"`
+	// User Email Address
+	UserMail pulumi.StringPtrInput `pulumi:"userMail"`
+	// The user name
+	UserName pulumi.StringPtrInput `pulumi:"userName"`
+	// The user's mobile phone number
+	UserPhone pulumi.StringPtrInput `pulumi:"userPhone"`
+}
+
+func (JobJobMonitorInfoContactInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobJobMonitorInfoContactInfo)(nil)).Elem()
+}
+
+func (i JobJobMonitorInfoContactInfoArgs) ToJobJobMonitorInfoContactInfoOutput() JobJobMonitorInfoContactInfoOutput {
+	return i.ToJobJobMonitorInfoContactInfoOutputWithContext(context.Background())
+}
+
+func (i JobJobMonitorInfoContactInfoArgs) ToJobJobMonitorInfoContactInfoOutputWithContext(ctx context.Context) JobJobMonitorInfoContactInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobJobMonitorInfoContactInfoOutput)
+}
+
+// JobJobMonitorInfoContactInfoArrayInput is an input type that accepts JobJobMonitorInfoContactInfoArray and JobJobMonitorInfoContactInfoArrayOutput values.
+// You can construct a concrete instance of `JobJobMonitorInfoContactInfoArrayInput` via:
+//
+//	JobJobMonitorInfoContactInfoArray{ JobJobMonitorInfoContactInfoArgs{...} }
+type JobJobMonitorInfoContactInfoArrayInput interface {
+	pulumi.Input
+
+	ToJobJobMonitorInfoContactInfoArrayOutput() JobJobMonitorInfoContactInfoArrayOutput
+	ToJobJobMonitorInfoContactInfoArrayOutputWithContext(context.Context) JobJobMonitorInfoContactInfoArrayOutput
+}
+
+type JobJobMonitorInfoContactInfoArray []JobJobMonitorInfoContactInfoInput
+
+func (JobJobMonitorInfoContactInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobJobMonitorInfoContactInfo)(nil)).Elem()
+}
+
+func (i JobJobMonitorInfoContactInfoArray) ToJobJobMonitorInfoContactInfoArrayOutput() JobJobMonitorInfoContactInfoArrayOutput {
+	return i.ToJobJobMonitorInfoContactInfoArrayOutputWithContext(context.Background())
+}
+
+func (i JobJobMonitorInfoContactInfoArray) ToJobJobMonitorInfoContactInfoArrayOutputWithContext(ctx context.Context) JobJobMonitorInfoContactInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobJobMonitorInfoContactInfoArrayOutput)
+}
+
+type JobJobMonitorInfoContactInfoOutput struct{ *pulumi.OutputState }
+
+func (JobJobMonitorInfoContactInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobJobMonitorInfoContactInfo)(nil)).Elem()
+}
+
+func (o JobJobMonitorInfoContactInfoOutput) ToJobJobMonitorInfoContactInfoOutput() JobJobMonitorInfoContactInfoOutput {
+	return o
+}
+
+func (o JobJobMonitorInfoContactInfoOutput) ToJobJobMonitorInfoContactInfoOutputWithContext(ctx context.Context) JobJobMonitorInfoContactInfoOutput {
+	return o
+}
+
+// DingTalk swarm robot webhook address
+func (o JobJobMonitorInfoContactInfoOutput) Ding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobJobMonitorInfoContactInfo) *string { return v.Ding }).(pulumi.StringPtrOutput)
+}
+
+// User Email Address
+func (o JobJobMonitorInfoContactInfoOutput) UserMail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobJobMonitorInfoContactInfo) *string { return v.UserMail }).(pulumi.StringPtrOutput)
+}
+
+// The user name
+func (o JobJobMonitorInfoContactInfoOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobJobMonitorInfoContactInfo) *string { return v.UserName }).(pulumi.StringPtrOutput)
+}
+
+// The user's mobile phone number
+func (o JobJobMonitorInfoContactInfoOutput) UserPhone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobJobMonitorInfoContactInfo) *string { return v.UserPhone }).(pulumi.StringPtrOutput)
+}
+
+type JobJobMonitorInfoContactInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (JobJobMonitorInfoContactInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobJobMonitorInfoContactInfo)(nil)).Elem()
+}
+
+func (o JobJobMonitorInfoContactInfoArrayOutput) ToJobJobMonitorInfoContactInfoArrayOutput() JobJobMonitorInfoContactInfoArrayOutput {
+	return o
+}
+
+func (o JobJobMonitorInfoContactInfoArrayOutput) ToJobJobMonitorInfoContactInfoArrayOutputWithContext(ctx context.Context) JobJobMonitorInfoContactInfoArrayOutput {
+	return o
+}
+
+func (o JobJobMonitorInfoContactInfoArrayOutput) Index(i pulumi.IntInput) JobJobMonitorInfoContactInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobJobMonitorInfoContactInfo {
+		return vs[0].([]JobJobMonitorInfoContactInfo)[vs[1].(int)]
+	}).(JobJobMonitorInfoContactInfoOutput)
+}
+
+type JobJobMonitorInfoMonitorConfig struct {
+	// Enable failure alarm
+	FailEnable *bool `pulumi:"failEnable"`
+	// Whether no available Machine alarm is on
+	MissWorkerEnable *bool `pulumi:"missWorkerEnable"`
+	// Alarm sending form
+	// - sms: sms alarm
+	// - phone: phone alarm
+	// - mail: mail alarm
+	// - webhook:webhook alarm
+	SendChannel *string `pulumi:"sendChannel"`
+	// Timeout threshold, unit s, default 7200.
+	Timeout *int `pulumi:"timeout"`
+	// Time-out alarm switch. The values are as follows:
+	TimeoutEnable *bool `pulumi:"timeoutEnable"`
+	// The trigger switch is terminated by timeout and is turned off by default.
+	TimeoutKillEnable *bool `pulumi:"timeoutKillEnable"`
+}
+
+// JobJobMonitorInfoMonitorConfigInput is an input type that accepts JobJobMonitorInfoMonitorConfigArgs and JobJobMonitorInfoMonitorConfigOutput values.
+// You can construct a concrete instance of `JobJobMonitorInfoMonitorConfigInput` via:
+//
+//	JobJobMonitorInfoMonitorConfigArgs{...}
+type JobJobMonitorInfoMonitorConfigInput interface {
+	pulumi.Input
+
+	ToJobJobMonitorInfoMonitorConfigOutput() JobJobMonitorInfoMonitorConfigOutput
+	ToJobJobMonitorInfoMonitorConfigOutputWithContext(context.Context) JobJobMonitorInfoMonitorConfigOutput
+}
+
+type JobJobMonitorInfoMonitorConfigArgs struct {
+	// Enable failure alarm
+	FailEnable pulumi.BoolPtrInput `pulumi:"failEnable"`
+	// Whether no available Machine alarm is on
+	MissWorkerEnable pulumi.BoolPtrInput `pulumi:"missWorkerEnable"`
+	// Alarm sending form
+	// - sms: sms alarm
+	// - phone: phone alarm
+	// - mail: mail alarm
+	// - webhook:webhook alarm
+	SendChannel pulumi.StringPtrInput `pulumi:"sendChannel"`
+	// Timeout threshold, unit s, default 7200.
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
+	// Time-out alarm switch. The values are as follows:
+	TimeoutEnable pulumi.BoolPtrInput `pulumi:"timeoutEnable"`
+	// The trigger switch is terminated by timeout and is turned off by default.
+	TimeoutKillEnable pulumi.BoolPtrInput `pulumi:"timeoutKillEnable"`
+}
+
+func (JobJobMonitorInfoMonitorConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobJobMonitorInfoMonitorConfig)(nil)).Elem()
+}
+
+func (i JobJobMonitorInfoMonitorConfigArgs) ToJobJobMonitorInfoMonitorConfigOutput() JobJobMonitorInfoMonitorConfigOutput {
+	return i.ToJobJobMonitorInfoMonitorConfigOutputWithContext(context.Background())
+}
+
+func (i JobJobMonitorInfoMonitorConfigArgs) ToJobJobMonitorInfoMonitorConfigOutputWithContext(ctx context.Context) JobJobMonitorInfoMonitorConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobJobMonitorInfoMonitorConfigOutput)
+}
+
+func (i JobJobMonitorInfoMonitorConfigArgs) ToJobJobMonitorInfoMonitorConfigPtrOutput() JobJobMonitorInfoMonitorConfigPtrOutput {
+	return i.ToJobJobMonitorInfoMonitorConfigPtrOutputWithContext(context.Background())
+}
+
+func (i JobJobMonitorInfoMonitorConfigArgs) ToJobJobMonitorInfoMonitorConfigPtrOutputWithContext(ctx context.Context) JobJobMonitorInfoMonitorConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobJobMonitorInfoMonitorConfigOutput).ToJobJobMonitorInfoMonitorConfigPtrOutputWithContext(ctx)
+}
+
+// JobJobMonitorInfoMonitorConfigPtrInput is an input type that accepts JobJobMonitorInfoMonitorConfigArgs, JobJobMonitorInfoMonitorConfigPtr and JobJobMonitorInfoMonitorConfigPtrOutput values.
+// You can construct a concrete instance of `JobJobMonitorInfoMonitorConfigPtrInput` via:
+//
+//	        JobJobMonitorInfoMonitorConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobJobMonitorInfoMonitorConfigPtrInput interface {
+	pulumi.Input
+
+	ToJobJobMonitorInfoMonitorConfigPtrOutput() JobJobMonitorInfoMonitorConfigPtrOutput
+	ToJobJobMonitorInfoMonitorConfigPtrOutputWithContext(context.Context) JobJobMonitorInfoMonitorConfigPtrOutput
+}
+
+type jobJobMonitorInfoMonitorConfigPtrType JobJobMonitorInfoMonitorConfigArgs
+
+func JobJobMonitorInfoMonitorConfigPtr(v *JobJobMonitorInfoMonitorConfigArgs) JobJobMonitorInfoMonitorConfigPtrInput {
+	return (*jobJobMonitorInfoMonitorConfigPtrType)(v)
+}
+
+func (*jobJobMonitorInfoMonitorConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobJobMonitorInfoMonitorConfig)(nil)).Elem()
+}
+
+func (i *jobJobMonitorInfoMonitorConfigPtrType) ToJobJobMonitorInfoMonitorConfigPtrOutput() JobJobMonitorInfoMonitorConfigPtrOutput {
+	return i.ToJobJobMonitorInfoMonitorConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *jobJobMonitorInfoMonitorConfigPtrType) ToJobJobMonitorInfoMonitorConfigPtrOutputWithContext(ctx context.Context) JobJobMonitorInfoMonitorConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobJobMonitorInfoMonitorConfigPtrOutput)
+}
+
+type JobJobMonitorInfoMonitorConfigOutput struct{ *pulumi.OutputState }
+
+func (JobJobMonitorInfoMonitorConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobJobMonitorInfoMonitorConfig)(nil)).Elem()
+}
+
+func (o JobJobMonitorInfoMonitorConfigOutput) ToJobJobMonitorInfoMonitorConfigOutput() JobJobMonitorInfoMonitorConfigOutput {
+	return o
+}
+
+func (o JobJobMonitorInfoMonitorConfigOutput) ToJobJobMonitorInfoMonitorConfigOutputWithContext(ctx context.Context) JobJobMonitorInfoMonitorConfigOutput {
+	return o
+}
+
+func (o JobJobMonitorInfoMonitorConfigOutput) ToJobJobMonitorInfoMonitorConfigPtrOutput() JobJobMonitorInfoMonitorConfigPtrOutput {
+	return o.ToJobJobMonitorInfoMonitorConfigPtrOutputWithContext(context.Background())
+}
+
+func (o JobJobMonitorInfoMonitorConfigOutput) ToJobJobMonitorInfoMonitorConfigPtrOutputWithContext(ctx context.Context) JobJobMonitorInfoMonitorConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobJobMonitorInfoMonitorConfig) *JobJobMonitorInfoMonitorConfig {
+		return &v
+	}).(JobJobMonitorInfoMonitorConfigPtrOutput)
+}
+
+// Enable failure alarm
+func (o JobJobMonitorInfoMonitorConfigOutput) FailEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobJobMonitorInfoMonitorConfig) *bool { return v.FailEnable }).(pulumi.BoolPtrOutput)
+}
+
+// Whether no available Machine alarm is on
+func (o JobJobMonitorInfoMonitorConfigOutput) MissWorkerEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobJobMonitorInfoMonitorConfig) *bool { return v.MissWorkerEnable }).(pulumi.BoolPtrOutput)
+}
+
+// Alarm sending form
+// - sms: sms alarm
+// - phone: phone alarm
+// - mail: mail alarm
+// - webhook:webhook alarm
+func (o JobJobMonitorInfoMonitorConfigOutput) SendChannel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobJobMonitorInfoMonitorConfig) *string { return v.SendChannel }).(pulumi.StringPtrOutput)
+}
+
+// Timeout threshold, unit s, default 7200.
+func (o JobJobMonitorInfoMonitorConfigOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobJobMonitorInfoMonitorConfig) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
+// Time-out alarm switch. The values are as follows:
+func (o JobJobMonitorInfoMonitorConfigOutput) TimeoutEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobJobMonitorInfoMonitorConfig) *bool { return v.TimeoutEnable }).(pulumi.BoolPtrOutput)
+}
+
+// The trigger switch is terminated by timeout and is turned off by default.
+func (o JobJobMonitorInfoMonitorConfigOutput) TimeoutKillEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobJobMonitorInfoMonitorConfig) *bool { return v.TimeoutKillEnable }).(pulumi.BoolPtrOutput)
+}
+
+type JobJobMonitorInfoMonitorConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (JobJobMonitorInfoMonitorConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobJobMonitorInfoMonitorConfig)(nil)).Elem()
+}
+
+func (o JobJobMonitorInfoMonitorConfigPtrOutput) ToJobJobMonitorInfoMonitorConfigPtrOutput() JobJobMonitorInfoMonitorConfigPtrOutput {
+	return o
+}
+
+func (o JobJobMonitorInfoMonitorConfigPtrOutput) ToJobJobMonitorInfoMonitorConfigPtrOutputWithContext(ctx context.Context) JobJobMonitorInfoMonitorConfigPtrOutput {
+	return o
+}
+
+func (o JobJobMonitorInfoMonitorConfigPtrOutput) Elem() JobJobMonitorInfoMonitorConfigOutput {
+	return o.ApplyT(func(v *JobJobMonitorInfoMonitorConfig) JobJobMonitorInfoMonitorConfig {
+		if v != nil {
+			return *v
+		}
+		var ret JobJobMonitorInfoMonitorConfig
+		return ret
+	}).(JobJobMonitorInfoMonitorConfigOutput)
+}
+
+// Enable failure alarm
+func (o JobJobMonitorInfoMonitorConfigPtrOutput) FailEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobJobMonitorInfoMonitorConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FailEnable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether no available Machine alarm is on
+func (o JobJobMonitorInfoMonitorConfigPtrOutput) MissWorkerEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobJobMonitorInfoMonitorConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MissWorkerEnable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Alarm sending form
+// - sms: sms alarm
+// - phone: phone alarm
+// - mail: mail alarm
+// - webhook:webhook alarm
+func (o JobJobMonitorInfoMonitorConfigPtrOutput) SendChannel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobJobMonitorInfoMonitorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SendChannel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Timeout threshold, unit s, default 7200.
+func (o JobJobMonitorInfoMonitorConfigPtrOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobJobMonitorInfoMonitorConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// Time-out alarm switch. The values are as follows:
+func (o JobJobMonitorInfoMonitorConfigPtrOutput) TimeoutEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobJobMonitorInfoMonitorConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutEnable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The trigger switch is terminated by timeout and is turned off by default.
+func (o JobJobMonitorInfoMonitorConfigPtrOutput) TimeoutKillEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobJobMonitorInfoMonitorConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutKillEnable
+	}).(pulumi.BoolPtrOutput)
+}
+
+type JobMapTaskXattrs struct {
+	// The number of threads to execute a single trigger. The default value is 5.
+	ConsumerSize *int `pulumi:"consumerSize"`
+	// The number of subtask distribution threads. The default value is 5.
+	DispatcherSize *int `pulumi:"dispatcherSize"`
+	// The number of sub-tasks pulled by a parallel task at a time. The default value is 100.
+	PageSize *int `pulumi:"pageSize"`
+	// The upper limit of the sub-task queue cache. The default value is 10000.
+	QueueSize *int `pulumi:"queueSize"`
+	// Subtask failure retry interval.
+	TaskAttemptInterval *int `pulumi:"taskAttemptInterval"`
+	// The number of failed sub-task retries.
+	TaskMaxAttempt *int `pulumi:"taskMaxAttempt"`
+}
+
+// JobMapTaskXattrsInput is an input type that accepts JobMapTaskXattrsArgs and JobMapTaskXattrsOutput values.
+// You can construct a concrete instance of `JobMapTaskXattrsInput` via:
+//
+//	JobMapTaskXattrsArgs{...}
+type JobMapTaskXattrsInput interface {
+	pulumi.Input
+
+	ToJobMapTaskXattrsOutput() JobMapTaskXattrsOutput
+	ToJobMapTaskXattrsOutputWithContext(context.Context) JobMapTaskXattrsOutput
+}
+
+type JobMapTaskXattrsArgs struct {
+	// The number of threads to execute a single trigger. The default value is 5.
+	ConsumerSize pulumi.IntPtrInput `pulumi:"consumerSize"`
+	// The number of subtask distribution threads. The default value is 5.
+	DispatcherSize pulumi.IntPtrInput `pulumi:"dispatcherSize"`
+	// The number of sub-tasks pulled by a parallel task at a time. The default value is 100.
+	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
+	// The upper limit of the sub-task queue cache. The default value is 10000.
+	QueueSize pulumi.IntPtrInput `pulumi:"queueSize"`
+	// Subtask failure retry interval.
+	TaskAttemptInterval pulumi.IntPtrInput `pulumi:"taskAttemptInterval"`
+	// The number of failed sub-task retries.
+	TaskMaxAttempt pulumi.IntPtrInput `pulumi:"taskMaxAttempt"`
+}
+
+func (JobMapTaskXattrsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobMapTaskXattrs)(nil)).Elem()
+}
+
+func (i JobMapTaskXattrsArgs) ToJobMapTaskXattrsOutput() JobMapTaskXattrsOutput {
+	return i.ToJobMapTaskXattrsOutputWithContext(context.Background())
+}
+
+func (i JobMapTaskXattrsArgs) ToJobMapTaskXattrsOutputWithContext(ctx context.Context) JobMapTaskXattrsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobMapTaskXattrsOutput)
+}
+
+func (i JobMapTaskXattrsArgs) ToJobMapTaskXattrsPtrOutput() JobMapTaskXattrsPtrOutput {
+	return i.ToJobMapTaskXattrsPtrOutputWithContext(context.Background())
+}
+
+func (i JobMapTaskXattrsArgs) ToJobMapTaskXattrsPtrOutputWithContext(ctx context.Context) JobMapTaskXattrsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobMapTaskXattrsOutput).ToJobMapTaskXattrsPtrOutputWithContext(ctx)
+}
+
+// JobMapTaskXattrsPtrInput is an input type that accepts JobMapTaskXattrsArgs, JobMapTaskXattrsPtr and JobMapTaskXattrsPtrOutput values.
+// You can construct a concrete instance of `JobMapTaskXattrsPtrInput` via:
+//
+//	        JobMapTaskXattrsArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobMapTaskXattrsPtrInput interface {
+	pulumi.Input
+
+	ToJobMapTaskXattrsPtrOutput() JobMapTaskXattrsPtrOutput
+	ToJobMapTaskXattrsPtrOutputWithContext(context.Context) JobMapTaskXattrsPtrOutput
+}
+
+type jobMapTaskXattrsPtrType JobMapTaskXattrsArgs
+
+func JobMapTaskXattrsPtr(v *JobMapTaskXattrsArgs) JobMapTaskXattrsPtrInput {
+	return (*jobMapTaskXattrsPtrType)(v)
+}
+
+func (*jobMapTaskXattrsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobMapTaskXattrs)(nil)).Elem()
+}
+
+func (i *jobMapTaskXattrsPtrType) ToJobMapTaskXattrsPtrOutput() JobMapTaskXattrsPtrOutput {
+	return i.ToJobMapTaskXattrsPtrOutputWithContext(context.Background())
+}
+
+func (i *jobMapTaskXattrsPtrType) ToJobMapTaskXattrsPtrOutputWithContext(ctx context.Context) JobMapTaskXattrsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobMapTaskXattrsPtrOutput)
+}
+
+type JobMapTaskXattrsOutput struct{ *pulumi.OutputState }
+
+func (JobMapTaskXattrsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobMapTaskXattrs)(nil)).Elem()
+}
+
+func (o JobMapTaskXattrsOutput) ToJobMapTaskXattrsOutput() JobMapTaskXattrsOutput {
+	return o
+}
+
+func (o JobMapTaskXattrsOutput) ToJobMapTaskXattrsOutputWithContext(ctx context.Context) JobMapTaskXattrsOutput {
+	return o
+}
+
+func (o JobMapTaskXattrsOutput) ToJobMapTaskXattrsPtrOutput() JobMapTaskXattrsPtrOutput {
+	return o.ToJobMapTaskXattrsPtrOutputWithContext(context.Background())
+}
+
+func (o JobMapTaskXattrsOutput) ToJobMapTaskXattrsPtrOutputWithContext(ctx context.Context) JobMapTaskXattrsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobMapTaskXattrs) *JobMapTaskXattrs {
+		return &v
+	}).(JobMapTaskXattrsPtrOutput)
+}
+
+// The number of threads to execute a single trigger. The default value is 5.
+func (o JobMapTaskXattrsOutput) ConsumerSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobMapTaskXattrs) *int { return v.ConsumerSize }).(pulumi.IntPtrOutput)
+}
+
+// The number of subtask distribution threads. The default value is 5.
+func (o JobMapTaskXattrsOutput) DispatcherSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobMapTaskXattrs) *int { return v.DispatcherSize }).(pulumi.IntPtrOutput)
+}
+
+// The number of sub-tasks pulled by a parallel task at a time. The default value is 100.
+func (o JobMapTaskXattrsOutput) PageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobMapTaskXattrs) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
+// The upper limit of the sub-task queue cache. The default value is 10000.
+func (o JobMapTaskXattrsOutput) QueueSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobMapTaskXattrs) *int { return v.QueueSize }).(pulumi.IntPtrOutput)
+}
+
+// Subtask failure retry interval.
+func (o JobMapTaskXattrsOutput) TaskAttemptInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobMapTaskXattrs) *int { return v.TaskAttemptInterval }).(pulumi.IntPtrOutput)
+}
+
+// The number of failed sub-task retries.
+func (o JobMapTaskXattrsOutput) TaskMaxAttempt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobMapTaskXattrs) *int { return v.TaskMaxAttempt }).(pulumi.IntPtrOutput)
+}
+
+type JobMapTaskXattrsPtrOutput struct{ *pulumi.OutputState }
+
+func (JobMapTaskXattrsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobMapTaskXattrs)(nil)).Elem()
+}
+
+func (o JobMapTaskXattrsPtrOutput) ToJobMapTaskXattrsPtrOutput() JobMapTaskXattrsPtrOutput {
+	return o
+}
+
+func (o JobMapTaskXattrsPtrOutput) ToJobMapTaskXattrsPtrOutputWithContext(ctx context.Context) JobMapTaskXattrsPtrOutput {
+	return o
+}
+
+func (o JobMapTaskXattrsPtrOutput) Elem() JobMapTaskXattrsOutput {
+	return o.ApplyT(func(v *JobMapTaskXattrs) JobMapTaskXattrs {
+		if v != nil {
+			return *v
+		}
+		var ret JobMapTaskXattrs
+		return ret
+	}).(JobMapTaskXattrsOutput)
+}
+
+// The number of threads to execute a single trigger. The default value is 5.
+func (o JobMapTaskXattrsPtrOutput) ConsumerSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobMapTaskXattrs) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of subtask distribution threads. The default value is 5.
+func (o JobMapTaskXattrsPtrOutput) DispatcherSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobMapTaskXattrs) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DispatcherSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of sub-tasks pulled by a parallel task at a time. The default value is 100.
+func (o JobMapTaskXattrsPtrOutput) PageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobMapTaskXattrs) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PageSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// The upper limit of the sub-task queue cache. The default value is 10000.
+func (o JobMapTaskXattrsPtrOutput) QueueSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobMapTaskXattrs) *int {
+		if v == nil {
+			return nil
+		}
+		return v.QueueSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Subtask failure retry interval.
+func (o JobMapTaskXattrsPtrOutput) TaskAttemptInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobMapTaskXattrs) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TaskAttemptInterval
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of failed sub-task retries.
+func (o JobMapTaskXattrsPtrOutput) TaskMaxAttempt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobMapTaskXattrs) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TaskMaxAttempt
+	}).(pulumi.IntPtrOutput)
+}
+
+type JobTimeConfig struct {
+	// The cron type can optionally fill in a custom calendar.
+	Calendar *string `pulumi:"calendar"`
+	// Cron type can choose time offset, unit s.
+	DataOffset *int `pulumi:"dataOffset"`
+	// Time expressions. Currently, the following types of time expressions are supported:
+	TimeExpression *string `pulumi:"timeExpression"`
+	// Time configuration type. Currently, the following time types are supported:
+	TimeType int `pulumi:"timeType"`
+}
+
+// JobTimeConfigInput is an input type that accepts JobTimeConfigArgs and JobTimeConfigOutput values.
+// You can construct a concrete instance of `JobTimeConfigInput` via:
+//
+//	JobTimeConfigArgs{...}
+type JobTimeConfigInput interface {
+	pulumi.Input
+
+	ToJobTimeConfigOutput() JobTimeConfigOutput
+	ToJobTimeConfigOutputWithContext(context.Context) JobTimeConfigOutput
+}
+
+type JobTimeConfigArgs struct {
+	// The cron type can optionally fill in a custom calendar.
+	Calendar pulumi.StringPtrInput `pulumi:"calendar"`
+	// Cron type can choose time offset, unit s.
+	DataOffset pulumi.IntPtrInput `pulumi:"dataOffset"`
+	// Time expressions. Currently, the following types of time expressions are supported:
+	TimeExpression pulumi.StringPtrInput `pulumi:"timeExpression"`
+	// Time configuration type. Currently, the following time types are supported:
+	TimeType pulumi.IntInput `pulumi:"timeType"`
+}
+
+func (JobTimeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTimeConfig)(nil)).Elem()
+}
+
+func (i JobTimeConfigArgs) ToJobTimeConfigOutput() JobTimeConfigOutput {
+	return i.ToJobTimeConfigOutputWithContext(context.Background())
+}
+
+func (i JobTimeConfigArgs) ToJobTimeConfigOutputWithContext(ctx context.Context) JobTimeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTimeConfigOutput)
+}
+
+func (i JobTimeConfigArgs) ToJobTimeConfigPtrOutput() JobTimeConfigPtrOutput {
+	return i.ToJobTimeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i JobTimeConfigArgs) ToJobTimeConfigPtrOutputWithContext(ctx context.Context) JobTimeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTimeConfigOutput).ToJobTimeConfigPtrOutputWithContext(ctx)
+}
+
+// JobTimeConfigPtrInput is an input type that accepts JobTimeConfigArgs, JobTimeConfigPtr and JobTimeConfigPtrOutput values.
+// You can construct a concrete instance of `JobTimeConfigPtrInput` via:
+//
+//	        JobTimeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTimeConfigPtrInput interface {
+	pulumi.Input
+
+	ToJobTimeConfigPtrOutput() JobTimeConfigPtrOutput
+	ToJobTimeConfigPtrOutputWithContext(context.Context) JobTimeConfigPtrOutput
+}
+
+type jobTimeConfigPtrType JobTimeConfigArgs
+
+func JobTimeConfigPtr(v *JobTimeConfigArgs) JobTimeConfigPtrInput {
+	return (*jobTimeConfigPtrType)(v)
+}
+
+func (*jobTimeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTimeConfig)(nil)).Elem()
+}
+
+func (i *jobTimeConfigPtrType) ToJobTimeConfigPtrOutput() JobTimeConfigPtrOutput {
+	return i.ToJobTimeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTimeConfigPtrType) ToJobTimeConfigPtrOutputWithContext(ctx context.Context) JobTimeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTimeConfigPtrOutput)
+}
+
+type JobTimeConfigOutput struct{ *pulumi.OutputState }
+
+func (JobTimeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTimeConfig)(nil)).Elem()
+}
+
+func (o JobTimeConfigOutput) ToJobTimeConfigOutput() JobTimeConfigOutput {
+	return o
+}
+
+func (o JobTimeConfigOutput) ToJobTimeConfigOutputWithContext(ctx context.Context) JobTimeConfigOutput {
+	return o
+}
+
+func (o JobTimeConfigOutput) ToJobTimeConfigPtrOutput() JobTimeConfigPtrOutput {
+	return o.ToJobTimeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o JobTimeConfigOutput) ToJobTimeConfigPtrOutputWithContext(ctx context.Context) JobTimeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTimeConfig) *JobTimeConfig {
+		return &v
+	}).(JobTimeConfigPtrOutput)
+}
+
+// The cron type can optionally fill in a custom calendar.
+func (o JobTimeConfigOutput) Calendar() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTimeConfig) *string { return v.Calendar }).(pulumi.StringPtrOutput)
+}
+
+// Cron type can choose time offset, unit s.
+func (o JobTimeConfigOutput) DataOffset() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobTimeConfig) *int { return v.DataOffset }).(pulumi.IntPtrOutput)
+}
+
+// Time expressions. Currently, the following types of time expressions are supported:
+func (o JobTimeConfigOutput) TimeExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTimeConfig) *string { return v.TimeExpression }).(pulumi.StringPtrOutput)
+}
+
+// Time configuration type. Currently, the following time types are supported:
+func (o JobTimeConfigOutput) TimeType() pulumi.IntOutput {
+	return o.ApplyT(func(v JobTimeConfig) int { return v.TimeType }).(pulumi.IntOutput)
+}
+
+type JobTimeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTimeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTimeConfig)(nil)).Elem()
+}
+
+func (o JobTimeConfigPtrOutput) ToJobTimeConfigPtrOutput() JobTimeConfigPtrOutput {
+	return o
+}
+
+func (o JobTimeConfigPtrOutput) ToJobTimeConfigPtrOutputWithContext(ctx context.Context) JobTimeConfigPtrOutput {
+	return o
+}
+
+func (o JobTimeConfigPtrOutput) Elem() JobTimeConfigOutput {
+	return o.ApplyT(func(v *JobTimeConfig) JobTimeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret JobTimeConfig
+		return ret
+	}).(JobTimeConfigOutput)
+}
+
+// The cron type can optionally fill in a custom calendar.
+func (o JobTimeConfigPtrOutput) Calendar() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTimeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Calendar
+	}).(pulumi.StringPtrOutput)
+}
+
+// Cron type can choose time offset, unit s.
+func (o JobTimeConfigPtrOutput) DataOffset() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobTimeConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DataOffset
+	}).(pulumi.IntPtrOutput)
+}
+
+// Time expressions. Currently, the following types of time expressions are supported:
+func (o JobTimeConfigPtrOutput) TimeExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTimeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeExpression
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time configuration type. Currently, the following time types are supported:
+func (o JobTimeConfigPtrOutput) TimeType() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobTimeConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.TimeType
+	}).(pulumi.IntPtrOutput)
+}
+
 type GetNamespacesNamespace struct {
 	// The description of the resource.
 	Description string `pulumi:"description"`
@@ -138,8 +1092,28 @@ func (o GetNamespacesNamespaceArrayOutput) Index(i pulumi.IntInput) GetNamespace
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*JobJobMonitorInfoInput)(nil)).Elem(), JobJobMonitorInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobJobMonitorInfoPtrInput)(nil)).Elem(), JobJobMonitorInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobJobMonitorInfoContactInfoInput)(nil)).Elem(), JobJobMonitorInfoContactInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobJobMonitorInfoContactInfoArrayInput)(nil)).Elem(), JobJobMonitorInfoContactInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobJobMonitorInfoMonitorConfigInput)(nil)).Elem(), JobJobMonitorInfoMonitorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobJobMonitorInfoMonitorConfigPtrInput)(nil)).Elem(), JobJobMonitorInfoMonitorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobMapTaskXattrsInput)(nil)).Elem(), JobMapTaskXattrsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobMapTaskXattrsPtrInput)(nil)).Elem(), JobMapTaskXattrsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTimeConfigInput)(nil)).Elem(), JobTimeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTimeConfigPtrInput)(nil)).Elem(), JobTimeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespacesNamespaceInput)(nil)).Elem(), GetNamespacesNamespaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespacesNamespaceArrayInput)(nil)).Elem(), GetNamespacesNamespaceArray{})
+	pulumi.RegisterOutputType(JobJobMonitorInfoOutput{})
+	pulumi.RegisterOutputType(JobJobMonitorInfoPtrOutput{})
+	pulumi.RegisterOutputType(JobJobMonitorInfoContactInfoOutput{})
+	pulumi.RegisterOutputType(JobJobMonitorInfoContactInfoArrayOutput{})
+	pulumi.RegisterOutputType(JobJobMonitorInfoMonitorConfigOutput{})
+	pulumi.RegisterOutputType(JobJobMonitorInfoMonitorConfigPtrOutput{})
+	pulumi.RegisterOutputType(JobMapTaskXattrsOutput{})
+	pulumi.RegisterOutputType(JobMapTaskXattrsPtrOutput{})
+	pulumi.RegisterOutputType(JobTimeConfigOutput{})
+	pulumi.RegisterOutputType(JobTimeConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetNamespacesNamespaceOutput{})
 	pulumi.RegisterOutputType(GetNamespacesNamespaceArrayOutput{})
 }

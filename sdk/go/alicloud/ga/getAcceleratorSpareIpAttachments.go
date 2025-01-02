@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ga Accelerator Spare Ip Attachments of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.167.0+.
+// > **NOTE:** Available since v1.167.0.
 //
 // ## Example Usage
 //
@@ -71,13 +71,16 @@ type GetAcceleratorSpareIpAttachmentsArgs struct {
 
 // A collection of values returned by getAcceleratorSpareIpAttachments.
 type GetAcceleratorSpareIpAttachmentsResult struct {
-	AcceleratorId string                                       `pulumi:"acceleratorId"`
-	Attachments   []GetAcceleratorSpareIpAttachmentsAttachment `pulumi:"attachments"`
+	// The ID of the global acceleration instance.
+	AcceleratorId string `pulumi:"acceleratorId"`
+	// A list of Ga Accelerator Spare Ip Attachments. Each element contains the following attributes:
+	Attachments []GetAcceleratorSpareIpAttachmentsAttachment `pulumi:"attachments"`
 	// The provider-assigned unique ID for this managed resource.
 	Id         string   `pulumi:"id"`
 	Ids        []string `pulumi:"ids"`
 	OutputFile *string  `pulumi:"outputFile"`
-	Status     *string  `pulumi:"status"`
+	// The status of the standby CNAME IP address. Valid values: `active`, `inuse`.
+	Status *string `pulumi:"status"`
 }
 
 func GetAcceleratorSpareIpAttachmentsOutput(ctx *pulumi.Context, args GetAcceleratorSpareIpAttachmentsOutputArgs, opts ...pulumi.InvokeOption) GetAcceleratorSpareIpAttachmentsResultOutput {
@@ -120,10 +123,12 @@ func (o GetAcceleratorSpareIpAttachmentsResultOutput) ToGetAcceleratorSpareIpAtt
 	return o
 }
 
+// The ID of the global acceleration instance.
 func (o GetAcceleratorSpareIpAttachmentsResultOutput) AcceleratorId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAcceleratorSpareIpAttachmentsResult) string { return v.AcceleratorId }).(pulumi.StringOutput)
 }
 
+// A list of Ga Accelerator Spare Ip Attachments. Each element contains the following attributes:
 func (o GetAcceleratorSpareIpAttachmentsResultOutput) Attachments() GetAcceleratorSpareIpAttachmentsAttachmentArrayOutput {
 	return o.ApplyT(func(v GetAcceleratorSpareIpAttachmentsResult) []GetAcceleratorSpareIpAttachmentsAttachment {
 		return v.Attachments
@@ -143,6 +148,7 @@ func (o GetAcceleratorSpareIpAttachmentsResultOutput) OutputFile() pulumi.String
 	return o.ApplyT(func(v GetAcceleratorSpareIpAttachmentsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of the standby CNAME IP address. Valid values: `active`, `inuse`.
 func (o GetAcceleratorSpareIpAttachmentsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAcceleratorSpareIpAttachmentsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

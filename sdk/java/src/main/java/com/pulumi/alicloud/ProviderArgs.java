@@ -57,6 +57,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.accountId);
     }
 
+    @Import(name="accountType")
+    private @Nullable Output<String> accountType;
+
+    public Optional<Output<String>> accountType() {
+        return Optional.ofNullable(this.accountType);
+    }
+
     @Import(name="assumeRole", json=true)
     private @Nullable Output<ProviderAssumeRoleArgs> assumeRole;
 
@@ -388,6 +395,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     private ProviderArgs(ProviderArgs $) {
         this.accessKey = $.accessKey;
         this.accountId = $.accountId;
+        this.accountType = $.accountType;
         this.assumeRole = $.assumeRole;
         this.assumeRoleWithOidc = $.assumeRoleWithOidc;
         this.clientConnectTimeout = $.clientConnectTimeout;
@@ -476,6 +484,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        public Builder accountType(@Nullable Output<String> accountType) {
+            $.accountType = accountType;
+            return this;
+        }
+
+        public Builder accountType(String accountType) {
+            return accountType(Output.of(accountType));
         }
 
         public Builder assumeRole(@Nullable Output<ProviderAssumeRoleArgs> assumeRole) {

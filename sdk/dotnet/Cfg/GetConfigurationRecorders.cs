@@ -14,9 +14,7 @@ namespace Pulumi.AliCloud.Cfg
         /// <summary>
         /// This data source provides the Config Configuration Recorders of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:**  Available in 1.99.0+.
-        /// 
-        /// &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+        /// &gt; **NOTE:** Available since v1.99.0.
         /// 
         /// ## Example Usage
         /// 
@@ -43,9 +41,7 @@ namespace Pulumi.AliCloud.Cfg
         /// <summary>
         /// This data source provides the Config Configuration Recorders of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:**  Available in 1.99.0+.
-        /// 
-        /// &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+        /// &gt; **NOTE:** Available since v1.99.0.
         /// 
         /// ## Example Usage
         /// 
@@ -72,9 +68,7 @@ namespace Pulumi.AliCloud.Cfg
         /// <summary>
         /// This data source provides the Config Configuration Recorders of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:**  Available in 1.99.0+.
-        /// 
-        /// &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+        /// &gt; **NOTE:** Available since v1.99.0.
         /// 
         /// ## Example Usage
         /// 

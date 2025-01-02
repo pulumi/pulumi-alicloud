@@ -37,6 +37,7 @@ export class Provider extends pulumi.ProviderResource {
      * Alibaba Cloud console.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
+    public readonly accountType!: pulumi.Output<string | undefined>;
     public readonly configurationSource!: pulumi.Output<string | undefined>;
     /**
      * The URI of sidecar credentials service.
@@ -108,6 +109,7 @@ export class Provider extends pulumi.ProviderResource {
         {
             resourceInputs["accessKey"] = args ? args.accessKey : undefined;
             resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["accountType"] = args ? args.accountType : undefined;
             resourceInputs["assumeRole"] = pulumi.output(args ? args.assumeRole : undefined).apply(JSON.stringify);
             resourceInputs["assumeRoleWithOidc"] = pulumi.output(args ? args.assumeRoleWithOidc : undefined).apply(JSON.stringify);
             resourceInputs["clientConnectTimeout"] = pulumi.output(args ? args.clientConnectTimeout : undefined).apply(JSON.stringify);
@@ -152,6 +154,7 @@ export interface ProviderArgs {
      * Alibaba Cloud console.
      */
     accountId?: pulumi.Input<string>;
+    accountType?: pulumi.Input<string>;
     assumeRole?: pulumi.Input<inputs.ProviderAssumeRole>;
     assumeRoleWithOidc?: pulumi.Input<inputs.ProviderAssumeRoleWithOidc>;
     /**

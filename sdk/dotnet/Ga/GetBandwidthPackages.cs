@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ga
         /// <summary>
         /// This data source provides the Global Accelerator (GA) Bandwidth Packages of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.112.0+.
+        /// &gt; **NOTE:** Available since v1.112.0.
         /// 
         /// ## Example Usage
         /// 
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Ga
         /// <summary>
         /// This data source provides the Global Accelerator (GA) Bandwidth Packages of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.112.0+.
+        /// &gt; **NOTE:** Available since v1.112.0.
         /// 
         /// ## Example Usage
         /// 
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Ga
         /// <summary>
         /// This data source provides the Global Accelerator (GA) Bandwidth Packages of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.112.0+.
+        /// &gt; **NOTE:** Available since v1.112.0.
         /// 
         /// ## Example Usage
         /// 
@@ -232,10 +232,22 @@ namespace Pulumi.AliCloud.Ga
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Bandwidth Package names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Ga Bandwidth Packages. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetBandwidthPackagesPackageResult> Packages;
+        /// <summary>
+        /// The status of the bandwidth plan.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// The type of the bandwidth packet. China station only supports return to basic.
+        /// </summary>
         public readonly string? Type;
 
         [OutputConstructor]

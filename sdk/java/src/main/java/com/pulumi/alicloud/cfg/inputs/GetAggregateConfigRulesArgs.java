@@ -110,14 +110,14 @@ public final class GetAggregateConfigRulesArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
+     * The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
      * 
      */
     @Import(name="riskLevel")
     private @Nullable Output<Integer> riskLevel;
 
     /**
-     * @return Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
+     * @return The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
      * 
      */
     public Optional<Output<Integer>> riskLevel() {
@@ -307,7 +307,7 @@ public final class GetAggregateConfigRulesArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param riskLevel Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
+         * @param riskLevel The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
          * 
          * @return builder
          * 
@@ -318,7 +318,7 @@ public final class GetAggregateConfigRulesArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param riskLevel Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
+         * @param riskLevel The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
          * 
          * @return builder
          * 

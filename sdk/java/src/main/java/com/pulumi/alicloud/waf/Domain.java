@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * For information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).
  * 
- * &gt; **NOTE:** Available in 1.82.0+ .
+ * &gt; **NOTE:** Available since v1.82.0.
  * 
  * ## Example Usage
  * 
