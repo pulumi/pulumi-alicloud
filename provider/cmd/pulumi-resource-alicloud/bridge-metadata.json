@@ -653,6 +653,44 @@
             "alicloud_api_gateway_vpc_access": {
                 "current": "alicloud:apigateway/vpcAccess:VpcAccess"
             },
+            "alicloud_apig_environment": {
+                "current": "alicloud:apig/environment:Environment"
+            },
+            "alicloud_apig_gateway": {
+                "current": "alicloud:apig/gateway:Gateway",
+                "fields": {
+                    "log_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "sls": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "network_access_config": {
+                        "maxItemsOne": true
+                    },
+                    "vpc": {
+                        "maxItemsOne": true
+                    },
+                    "vswitch": {
+                        "maxItemsOne": true
+                    },
+                    "zone_config": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "alicloud_apig_http_api": {
+                "current": "alicloud:apig/httpApi:HttpApi",
+                "fields": {
+                    "protocols": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "alicloud_arms_addon_release": {
                 "current": "alicloud:arms/addonRelease:AddonRelease"
             },
@@ -1902,7 +1940,19 @@
                 "current": "alicloud:cr/chartRepository:ChartRepository"
             },
             "alicloud_cr_ee_instance": {
-                "current": "alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance"
+                "current": "alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance",
+                "fields": {
+                    "instance_endpoints": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "domains": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "alicloud_cr_ee_namespace": {
                 "current": "alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace"
@@ -4053,6 +4103,17 @@
             "alicloud_esa_rate_plan_instance": {
                 "current": "alicloud:esa/ratePlanInstance:RatePlanInstance"
             },
+            "alicloud_esa_record": {
+                "current": "alicloud:esa/record:Record",
+                "fields": {
+                    "auth_conf": {
+                        "maxItemsOne": true
+                    },
+                    "data": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "alicloud_esa_site": {
                 "current": "alicloud:esa/site:Site"
             },
@@ -5833,6 +5894,9 @@
                     }
                 }
             },
+            "alicloud_mongodb_private_srv_network_address": {
+                "current": "alicloud:mongodb/privateSrvNetworkAddress:PrivateSrvNetworkAddress"
+            },
             "alicloud_mongodb_serverless_instance": {
                 "current": "alicloud:mongodb/serverlessInstance:ServerlessInstance",
                 "fields": {
@@ -6196,6 +6260,17 @@
                     }
                 }
             },
+            "alicloud_oss_access_point": {
+                "current": "alicloud:oss/accessPoint:AccessPoint",
+                "fields": {
+                    "public_access_block_configuration": {
+                        "maxItemsOne": true
+                    },
+                    "vpc_configuration": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "alicloud_oss_account_public_access_block": {
                 "current": "alicloud:oss/accountPublicAccessBlock:AccountPublicAccessBlock"
             },
@@ -6518,6 +6593,9 @@
                         }
                     }
                 }
+            },
+            "alicloud_oss_bucket_worm": {
+                "current": "alicloud:oss/bucketWorm:BucketWorm"
             },
             "alicloud_ots_instance": {
                 "current": "alicloud:ots/instance:Instance",
@@ -7558,6 +7636,33 @@
                     }
                 }
             },
+            "alicloud_schedulerx_app_group": {
+                "current": "alicloud:schedulerx/appGroup:AppGroup"
+            },
+            "alicloud_schedulerx_job": {
+                "current": "alicloud:schedulerx/job:Job",
+                "fields": {
+                    "job_monitor_info": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "contact_info": {
+                                    "maxItemsOne": false
+                                },
+                                "monitor_config": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "map_task_xattrs": {
+                        "maxItemsOne": true
+                    },
+                    "time_config": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "alicloud_schedulerx_namespace": {
                 "current": "alicloud:schedulerx/namespace:Namespace"
             },
@@ -8577,6 +8682,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "available_kernel_versions": {
+                                    "maxItemsOne": false
+                                },
                                 "security_ips": {
                                     "maxItemsOne": false
                                 }
@@ -8609,6 +8717,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "available_kernel_versions": {
+                                    "maxItemsOne": false
+                                },
                                 "security_ips": {
                                     "maxItemsOne": false
                                 }
@@ -14565,6 +14676,19 @@
                             "fields": {
                                 "data_disks": {
                                     "maxItemsOne": false
+                                },
+                                "instance_pattern_info": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "architectures": {
+                                                "maxItemsOne": false
+                                            },
+                                            "excluded_instance_types": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "spot_price_limit": {
                                     "maxItemsOne": false
