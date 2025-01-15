@@ -12,6 +12,133 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a resource to create a VPC NAT Gateway.
+//
+// > **NOTE:** Resource bandwidth packages will not be supported since 00:00 on November 4, 2017, and public IP can be replaced be elastic IPs.
+// If a Nat Gateway has already bought some bandwidth packages, it can not bind elastic IP and you have to submit the [work order](https://selfservice.console.aliyun.com/ticket/createIndex) to solve.
+// If you want to add public IP, you can use resource 'alicloud_eip_association' to bind several elastic IPs for one Nat Gateway.
+//
+// > **NOTE:** From version 1.7.1, this resource has deprecated bandwidth packages.
+// But, in order to manage stock bandwidth packages, version 1.13.0 re-support configuring 'bandwidth_packages'.
+//
+// > **NOTE:** Available since v1.37.0.
+//
+// ## Example Usage
+//
+// # Basic usage
+//
+// - create enhanced nat gateway
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := vpc.GetEnhancedNatAvailableZones(ctx, &vpc.GetEnhancedNatAvailableZonesArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.0.0.0/8"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				ZoneId:      pulumi.String(_default.Zones[0].ZoneId),
+//				CidrBlock:   pulumi.String("10.10.0.0/20"),
+//				VpcId:       defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewNatGateway(ctx, "default", &vpc.NatGatewayArgs{
+//				VpcId:          defaultNetwork.ID(),
+//				NatGatewayName: pulumi.String(name),
+//				PaymentType:    pulumi.String("PayAsYouGo"),
+//				VswitchId:      defaultSwitch.ID(),
+//				NatType:        pulumi.String("Enhanced"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// - transform nat from Normal to Enhanced
+// > **NOTE:** You must set `natType` to `Enhanced` and set `vswitchId`.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := vpc.GetEnhancedNatAvailableZones(ctx, &vpc.GetEnhancedNatAvailableZonesArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.0.0.0/8"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				ZoneId:      pulumi.String(_default.Zones[0].ZoneId),
+//				CidrBlock:   pulumi.String("10.10.0.0/20"),
+//				VpcId:       defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewNatGateway(ctx, "default", &vpc.NatGatewayArgs{
+//				VpcId:          defaultNetwork.ID(),
+//				NatGatewayName: pulumi.String(name),
+//				VswitchId:      defaultSwitch.ID(),
+//				NatType:        pulumi.String("Enhanced"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Nat gateway can be imported using the id, e.g.
@@ -58,7 +185,7 @@ type NatGateway struct {
 	NatType pulumi.StringOutput `pulumi:"natType"`
 	// Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
 	NetworkType pulumi.StringOutput `pulumi:"networkType"`
-	// The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+	// The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
@@ -148,7 +275,7 @@ type natGatewayState struct {
 	NatType *string `pulumi:"natType"`
 	// Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
 	NetworkType *string `pulumi:"networkType"`
-	// The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+	// The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
 	// The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
@@ -206,7 +333,7 @@ type NatGatewayState struct {
 	NatType pulumi.StringPtrInput
 	// Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
 	NetworkType pulumi.StringPtrInput
-	// The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+	// The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
 	// The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
@@ -266,7 +393,7 @@ type natGatewayArgs struct {
 	NatType *string `pulumi:"natType"`
 	// Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
 	NetworkType *string `pulumi:"networkType"`
-	// The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+	// The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
 	// The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
@@ -319,7 +446,7 @@ type NatGatewayArgs struct {
 	NatType pulumi.StringPtrInput
 	// Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
 	NetworkType pulumi.StringPtrInput
-	// The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+	// The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
 	// The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
@@ -501,7 +628,7 @@ func (o NatGatewayOutput) NetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v *NatGateway) pulumi.StringOutput { return v.NetworkType }).(pulumi.StringOutput)
 }
 
-// The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+// The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
 func (o NatGatewayOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *NatGateway) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }

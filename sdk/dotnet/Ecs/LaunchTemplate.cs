@@ -122,6 +122,9 @@ namespace Pulumi.AliCloud.Ecs
         [Output("dataDisks")]
         public Output<ImmutableArray<Outputs.LaunchTemplateDataDisk>> DataDisks { get; private set; } = null!;
 
+        [Output("defaultVersionNumber")]
+        public Output<int> DefaultVersionNumber { get; private set; } = null!;
+
         [Output("deploymentSetId")]
         public Output<string?> DeploymentSetId { get; private set; } = null!;
 
@@ -213,6 +216,9 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("keyPairName")]
         public Output<string?> KeyPairName { get; private set; } = null!;
+
+        [Output("latestVersionNumber")]
+        public Output<int> LatestVersionNumber { get; private set; } = null!;
 
         [Output("launchTemplateName")]
         public Output<string> LaunchTemplateName { get; private set; } = null!;
@@ -335,6 +341,9 @@ namespace Pulumi.AliCloud.Ecs
         [Output("templateTags")]
         public Output<ImmutableDictionary<string, string>?> TemplateTags { get; private set; } = null!;
 
+        [Output("updateDefaultVersionNumber")]
+        public Output<bool?> UpdateDefaultVersionNumber { get; private set; } = null!;
+
         [Output("userData")]
         public Output<string> UserData { get; private set; } = null!;
 
@@ -431,6 +440,9 @@ namespace Pulumi.AliCloud.Ecs
             get => _dataDisks ?? (_dataDisks = new InputList<Inputs.LaunchTemplateDataDiskArgs>());
             set => _dataDisks = value;
         }
+
+        [Input("defaultVersionNumber")]
+        public Input<int>? DefaultVersionNumber { get; set; }
 
         [Input("deploymentSetId")]
         public Input<string>? DeploymentSetId { get; set; }
@@ -661,6 +673,9 @@ namespace Pulumi.AliCloud.Ecs
             set => _templateTags = value;
         }
 
+        [Input("updateDefaultVersionNumber")]
+        public Input<bool>? UpdateDefaultVersionNumber { get; set; }
+
         [Input("userData")]
         public Input<string>? UserData { get; set; }
 
@@ -719,6 +734,9 @@ namespace Pulumi.AliCloud.Ecs
             get => _dataDisks ?? (_dataDisks = new InputList<Inputs.LaunchTemplateDataDiskGetArgs>());
             set => _dataDisks = value;
         }
+
+        [Input("defaultVersionNumber")]
+        public Input<int>? DefaultVersionNumber { get; set; }
 
         [Input("deploymentSetId")]
         public Input<string>? DeploymentSetId { get; set; }
@@ -811,6 +829,9 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("keyPairName")]
         public Input<string>? KeyPairName { get; set; }
+
+        [Input("latestVersionNumber")]
+        public Input<int>? LatestVersionNumber { get; set; }
 
         [Input("launchTemplateName")]
         public Input<string>? LaunchTemplateName { get; set; }
@@ -948,6 +969,9 @@ namespace Pulumi.AliCloud.Ecs
             get => _templateTags ?? (_templateTags = new InputMap<string>());
             set => _templateTags = value;
         }
+
+        [Input("updateDefaultVersionNumber")]
+        public Input<bool>? UpdateDefaultVersionNumber { get; set; }
 
         [Input("userData")]
         public Input<string>? UserData { get; set; }

@@ -18,14 +18,14 @@ public final class ConnectionHealthCheckConfigArgs extends com.pulumi.resources.
     public static final ConnectionHealthCheckConfigArgs Empty = new ConnectionHealthCheckConfigArgs();
 
     /**
-     * Destination IP.
+     * the destination IP address configured for health checks.
      * 
      */
     @Import(name="dip")
     private @Nullable Output<String> dip;
 
     /**
-     * @return Destination IP.
+     * @return the destination IP address configured for health checks.
      * 
      */
     public Optional<Output<String>> dip() {
@@ -33,14 +33,14 @@ public final class ConnectionHealthCheckConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Specifies whether to enable healthcheck.
+     * specifies whether to enable health checks. Valid values: true and false. Default value: false.
      * 
      */
     @Import(name="enable")
     private @Nullable Output<Boolean> enable;
 
     /**
-     * @return Specifies whether to enable healthcheck.
+     * @return specifies whether to enable health checks. Valid values: true and false. Default value: false.
      * 
      */
     public Optional<Output<Boolean>> enable() {
@@ -48,14 +48,14 @@ public final class ConnectionHealthCheckConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Retry interval.
+     * the time interval of health check retries. Unit: seconds. Default value: 3.
      * 
      */
     @Import(name="interval")
     private @Nullable Output<Integer> interval;
 
     /**
-     * @return Retry interval.
+     * @return the time interval of health check retries. Unit: seconds. Default value: 3.
      * 
      */
     public Optional<Output<Integer>> interval() {
@@ -63,14 +63,14 @@ public final class ConnectionHealthCheckConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * retry times.
+     * the maximum number of health check retries. Default value: 3.
      * 
      */
     @Import(name="retry")
     private @Nullable Output<Integer> retry;
 
     /**
-     * @return retry times.
+     * @return the maximum number of health check retries. Default value: 3.
      * 
      */
     public Optional<Output<Integer>> retry() {
@@ -78,14 +78,14 @@ public final class ConnectionHealthCheckConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Source IP.
+     * the source IP address that is used for health checks.
      * 
      */
     @Import(name="sip")
     private @Nullable Output<String> sip;
 
     /**
-     * @return Source IP.
+     * @return the source IP address that is used for health checks.
      * 
      */
     public Optional<Output<String>> sip() {
@@ -121,7 +121,7 @@ public final class ConnectionHealthCheckConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param dip Destination IP.
+         * @param dip the destination IP address configured for health checks.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class ConnectionHealthCheckConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param dip Destination IP.
+         * @param dip the destination IP address configured for health checks.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class ConnectionHealthCheckConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param enable Specifies whether to enable healthcheck.
+         * @param enable specifies whether to enable health checks. Valid values: true and false. Default value: false.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class ConnectionHealthCheckConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param enable Specifies whether to enable healthcheck.
+         * @param enable specifies whether to enable health checks. Valid values: true and false. Default value: false.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class ConnectionHealthCheckConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param interval Retry interval.
+         * @param interval the time interval of health check retries. Unit: seconds. Default value: 3.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class ConnectionHealthCheckConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param interval Retry interval.
+         * @param interval the time interval of health check retries. Unit: seconds. Default value: 3.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class ConnectionHealthCheckConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param retry retry times.
+         * @param retry the maximum number of health check retries. Default value: 3.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class ConnectionHealthCheckConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param retry retry times.
+         * @param retry the maximum number of health check retries. Default value: 3.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class ConnectionHealthCheckConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sip Source IP.
+         * @param sip the source IP address that is used for health checks.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class ConnectionHealthCheckConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sip Source IP.
+         * @param sip the source IP address that is used for health checks.
          * 
          * @return builder
          * 

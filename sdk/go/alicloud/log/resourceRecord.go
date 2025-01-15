@@ -67,9 +67,23 @@ import (
 //			}
 //			_, err = log.NewResourceRecord(ctx, "example", &log.ResourceRecordArgs{
 //				ResourceName: example.ID(),
-//				RecordId:     pulumi.String("user_tf_resource_1"),
-//				Tag:          pulumi.String("resource tag"),
-//				Value:        pulumi.String("    {\n      \"col1\": \"this is col1 value\",\n      \"col2\": \"col2   value\"\n    }\n"),
+//				RecordId:     pulumi.String("tf_user_example"),
+//				Tag:          pulumi.String("tf example"),
+//				Value: pulumi.String(`{
+//	  "user_name": "tf example",
+//	  "sms_enabled": true,
+//	  "phone": "18888888889",
+//	  "voice_enabled": false,
+//	  "email": [
+//	    "test@qq.com"
+//	  ],
+//	  "enabled": true,
+//	  "user_id": "tf_user",
+//	  "country_code": "86"
+//	}
+//
+// `),
+//
 //			})
 //			if err != nil {
 //				return err
@@ -92,11 +106,11 @@ type ResourceRecord struct {
 
 	// The record's id, should be unique.
 	RecordId pulumi.StringOutput `pulumi:"recordId"`
-	// The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group.
+	// The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
 	ResourceName pulumi.StringOutput `pulumi:"resourceName"`
 	// The record's tag, can be used for search.
 	Tag pulumi.StringOutput `pulumi:"tag"`
-	// The json value of record.
+	// The json value of record. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
 	Value pulumi.StringOutput `pulumi:"value"`
 }
 
@@ -144,22 +158,22 @@ func GetResourceRecord(ctx *pulumi.Context,
 type resourceRecordState struct {
 	// The record's id, should be unique.
 	RecordId *string `pulumi:"recordId"`
-	// The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group.
+	// The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
 	ResourceName *string `pulumi:"resourceName"`
 	// The record's tag, can be used for search.
 	Tag *string `pulumi:"tag"`
-	// The json value of record.
+	// The json value of record. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
 	Value *string `pulumi:"value"`
 }
 
 type ResourceRecordState struct {
 	// The record's id, should be unique.
 	RecordId pulumi.StringPtrInput
-	// The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group.
+	// The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
 	ResourceName pulumi.StringPtrInput
 	// The record's tag, can be used for search.
 	Tag pulumi.StringPtrInput
-	// The json value of record.
+	// The json value of record. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
 	Value pulumi.StringPtrInput
 }
 
@@ -170,11 +184,11 @@ func (ResourceRecordState) ElementType() reflect.Type {
 type resourceRecordArgs struct {
 	// The record's id, should be unique.
 	RecordId string `pulumi:"recordId"`
-	// The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group.
+	// The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
 	ResourceName string `pulumi:"resourceName"`
 	// The record's tag, can be used for search.
 	Tag string `pulumi:"tag"`
-	// The json value of record.
+	// The json value of record. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
 	Value string `pulumi:"value"`
 }
 
@@ -182,11 +196,11 @@ type resourceRecordArgs struct {
 type ResourceRecordArgs struct {
 	// The record's id, should be unique.
 	RecordId pulumi.StringInput
-	// The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group.
+	// The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
 	ResourceName pulumi.StringInput
 	// The record's tag, can be used for search.
 	Tag pulumi.StringInput
-	// The json value of record.
+	// The json value of record. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
 	Value pulumi.StringInput
 }
 
@@ -282,7 +296,7 @@ func (o ResourceRecordOutput) RecordId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceRecord) pulumi.StringOutput { return v.RecordId }).(pulumi.StringOutput)
 }
 
-// The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group.
+// The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
 func (o ResourceRecordOutput) ResourceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceRecord) pulumi.StringOutput { return v.ResourceName }).(pulumi.StringOutput)
 }
@@ -292,7 +306,7 @@ func (o ResourceRecordOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceRecord) pulumi.StringOutput { return v.Tag }).(pulumi.StringOutput)
 }
 
-// The json value of record.
+// The json value of record. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
 func (o ResourceRecordOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceRecord) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }

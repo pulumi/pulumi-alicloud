@@ -14,6 +14,10 @@ namespace Pulumi.AliCloud.BastionHost.Outputs
     public sealed class GetInstancesInstanceResult
     {
         /// <summary>
+        /// The bandwidth of Cloud Bastionhost instance.
+        /// </summary>
+        public readonly string Bandwidth;
+        /// <summary>
         /// The instance's remark.
         /// </summary>
         public readonly string Description;
@@ -25,6 +29,9 @@ namespace Pulumi.AliCloud.BastionHost.Outputs
         /// The instance's status.
         /// </summary>
         public readonly string InstanceStatus;
+        /// <summary>
+        /// The instance's license code.
+        /// </summary>
         public readonly string LicenseCode;
         /// <summary>
         /// The instance's private domain name.
@@ -43,27 +50,13 @@ namespace Pulumi.AliCloud.BastionHost.Outputs
         /// </summary>
         public readonly ImmutableArray<string> SecurityGroupIds;
         /// <summary>
-        /// A map of tags assigned to the bastionhost instance. It must be in the format:
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var instance = AliCloud.BastionHost.GetInstances.Invoke(new()
-        ///     {
-        ///         Tags = 
-        ///         {
-        ///             { "tagKey1", "tagValue1" },
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
+        /// The storage of Cloud Bastionhost instance in TB.
         /// </summary>
-        public readonly ImmutableDictionary<string, string>? Tags;
+        public readonly string Storage;
+        /// <summary>
+        /// A map of tags assigned to the bastionhost instance.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The instance's vSwitch ID.
         /// </summary>
@@ -71,6 +64,8 @@ namespace Pulumi.AliCloud.BastionHost.Outputs
 
         [OutputConstructor]
         private GetInstancesInstanceResult(
+            string bandwidth,
+
             string description,
 
             string id,
@@ -87,10 +82,13 @@ namespace Pulumi.AliCloud.BastionHost.Outputs
 
             ImmutableArray<string> securityGroupIds,
 
-            ImmutableDictionary<string, string>? tags,
+            string storage,
+
+            ImmutableDictionary<string, string> tags,
 
             string userVswitchId)
         {
+            Bandwidth = bandwidth;
             Description = description;
             Id = id;
             InstanceStatus = instanceStatus;
@@ -99,6 +97,7 @@ namespace Pulumi.AliCloud.BastionHost.Outputs
             PublicDomain = publicDomain;
             PublicNetworkAccess = publicNetworkAccess;
             SecurityGroupIds = securityGroupIds;
+            Storage = storage;
             Tags = tags;
             UserVswitchId = userVswitchId;
         }

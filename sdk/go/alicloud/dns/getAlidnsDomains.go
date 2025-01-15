@@ -13,7 +13,7 @@ import (
 
 // This data source provides a list of Alidns Domains in an Alibaba Cloud account according to the specified filters.
 //
-// > **NOTE:**  Available in 1.95.0+.
+// > **NOTE:** Available since v1.95.0.
 //
 // ## Example Usage
 //
@@ -58,7 +58,8 @@ type GetAlidnsDomainsArgs struct {
 	AliDomain *bool `pulumi:"aliDomain"`
 	// A regex string to filter results by the domain name.
 	DomainNameRegex *string `pulumi:"domainNameRegex"`
-	EnableDetails   *bool   `pulumi:"enableDetails"`
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails *bool `pulumi:"enableDetails"`
 	// Domain group ID, if not filled, the default is all groups.
 	GroupId *string `pulumi:"groupId"`
 	// A regex string to filter results by the group name.
@@ -108,10 +109,11 @@ type GetAlidnsDomainsResult struct {
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 	// The Id of resource group which the dns belongs.
-	ResourceGroupId *string           `pulumi:"resourceGroupId"`
-	SearchMode      *string           `pulumi:"searchMode"`
-	Starmark        *bool             `pulumi:"starmark"`
-	Tags            map[string]string `pulumi:"tags"`
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	SearchMode      *string `pulumi:"searchMode"`
+	Starmark        *bool   `pulumi:"starmark"`
+	// Tags of the domain.
+	Tags map[string]string `pulumi:"tags"`
 	// Cloud resolution version ID.
 	VersionCode *string `pulumi:"versionCode"`
 }
@@ -131,7 +133,8 @@ type GetAlidnsDomainsOutputArgs struct {
 	AliDomain pulumi.BoolPtrInput `pulumi:"aliDomain"`
 	// A regex string to filter results by the domain name.
 	DomainNameRegex pulumi.StringPtrInput `pulumi:"domainNameRegex"`
-	EnableDetails   pulumi.BoolPtrInput   `pulumi:"enableDetails"`
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// Domain group ID, if not filled, the default is all groups.
 	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
 	// A regex string to filter results by the group name.
@@ -249,6 +252,7 @@ func (o GetAlidnsDomainsResultOutput) Starmark() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetAlidnsDomainsResult) *bool { return v.Starmark }).(pulumi.BoolPtrOutput)
 }
 
+// Tags of the domain.
 func (o GetAlidnsDomainsResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetAlidnsDomainsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

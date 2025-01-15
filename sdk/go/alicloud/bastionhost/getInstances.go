@@ -15,7 +15,7 @@ import (
 //
 // This data source provides a list of cloud Bastionhost instances in an Alibaba Cloud account according to the specified filters.
 //
-// > **NOTE:** Available in 1.63.0+ .
+// > **NOTE:** Available since v1.63.0.
 //
 // ## Example Usage
 //
@@ -30,13 +30,13 @@ import (
 // )
 // func main() {
 // pulumi.Run(func(ctx *pulumi.Context) error {
-// _, err := bastionhost.GetInstances(ctx, &bastionhost.GetInstancesArgs{
+// instance, err := bastionhost.GetInstances(ctx, &bastionhost.GetInstancesArgs{
 // DescriptionRegex: pulumi.StringRef("^bastionhost"),
 // }, nil);
 // if err != nil {
 // return err
 // }
-// ctx.Export("instance", pulumi.Array(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:5,14-56)))
+// ctx.Export("instance", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:5,11-25)))
 // return nil
 // })
 // }
@@ -59,29 +59,7 @@ type GetInstancesArgs struct {
 	Ids []string `pulumi:"ids"`
 	// File name to persist data source output.
 	OutputFile *string `pulumi:"outputFile"`
-	// A map of tags assigned to the bastionhost instance. It must be in the format:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := bastionhost.GetInstances(ctx, &bastionhost.GetInstancesArgs{
-	// 			Tags: map[string]interface{}{
-	// 				"tagKey1": "tagValue1",
-	// 			},
-	// 		}, nil)
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		return nil
-	// 	})
-	// }
-	// ```
+	// A map of tags assigned to the bastionhost instance.
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -116,29 +94,7 @@ type GetInstancesOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// File name to persist data source output.
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// A map of tags assigned to the bastionhost instance. It must be in the format:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := bastionhost.GetInstances(ctx, &bastionhost.GetInstancesArgs{
-	// 			Tags: map[string]interface{}{
-	// 				"tagKey1": "tagValue1",
-	// 			},
-	// 		}, nil)
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		return nil
-	// 	})
-	// }
-	// ```
+	// A map of tags assigned to the bastionhost instance.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 

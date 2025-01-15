@@ -306,7 +306,7 @@ class CustomDomain(pulumi.CustomResource):
             oss_bucket=default_bucket.id,
             oss_key=default_bucket_object.key,
             memory_size=512,
-            runtime="python2.7",
+            runtime="python3.9",
             handler="hello.handler")
         default_custom_domain = alicloud.fc.CustomDomain("default",
             domain_name="terraform.functioncompute.com",
@@ -423,7 +423,7 @@ class CustomDomain(pulumi.CustomResource):
             oss_bucket=default_bucket.id,
             oss_key=default_bucket_object.key,
             memory_size=512,
-            runtime="python2.7",
+            runtime="python3.9",
             handler="hello.handler")
         default_custom_domain = alicloud.fc.CustomDomain("default",
             domain_name="terraform.functioncompute.com",

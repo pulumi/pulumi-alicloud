@@ -43,54 +43,62 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var example = new Resource("example", ResourceArgs.builder()
  *             .type("userdefine")
  *             .name("user.tf.resource")
  *             .description("user tf resource desc")
- *             .extInfo("{}")
+ *             .extInfo("}{}{@code ")
  *             .schema("""
- *     {
+ *     }{{@code
  *       "schema": [
- *         {
+ *         }{{@code
  *           "column": "col1",
  *           "desc": "col1   desc",
- *           "ext_info": {
- *           },
+ *           "ext_info": }{{@code
+ *           }}{@code ,
  *           "required": true,
  *           "type": "string"
- *         },
- *         {
+ *         }}{@code ,
+ *         }{{@code
  *           "column": "col2",
  *           "desc": "col2   desc",
  *           "ext_info": "optional",
  *           "required": true,
  *           "type": "string"
- *         }
+ *         }}{@code
  *       ]
- *     }
+ *     }}{@code
  *             """)
  *             .build());
  * 
  *         var exampleResourceRecord = new ResourceRecord("exampleResourceRecord", ResourceRecordArgs.builder()
  *             .resourceName(example.id())
- *             .recordId("user_tf_resource_1")
- *             .tag("resource tag")
+ *             .recordId("tf_user_example")
+ *             .tag("tf example")
  *             .value("""
- *     {
- *       "col1": "this is col1 value",
- *       "col2": "col2   value"
- *     }
+ * }{{@code
+ *   "user_name": "tf example",
+ *   "sms_enabled": true,
+ *   "phone": "18888888889",
+ *   "voice_enabled": false,
+ *   "email": [
+ *     "test}{@literal @}{@code qq.com"
+ *   ],
+ *   "enabled": true,
+ *   "user_id": "tf_user",
+ *   "country_code": "86"
+ * }}{@code
  *             """)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -121,14 +129,14 @@ public class ResourceRecord extends com.pulumi.resources.CustomResource {
         return this.recordId;
     }
     /**
-     * The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group.
+     * The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
      * 
      */
     @Export(name="resourceName", refs={String.class}, tree="[0]")
     private Output<String> resourceName;
 
     /**
-     * @return The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group.
+     * @return The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
      * 
      */
     public Output<String> resourceName() {
@@ -149,14 +157,14 @@ public class ResourceRecord extends com.pulumi.resources.CustomResource {
         return this.tag;
     }
     /**
-     * The json value of record.
+     * The json value of record. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
      * 
      */
     @Export(name="value", refs={String.class}, tree="[0]")
     private Output<String> value;
 
     /**
-     * @return The json value of record.
+     * @return The json value of record. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
      * 
      */
     public Output<String> value() {

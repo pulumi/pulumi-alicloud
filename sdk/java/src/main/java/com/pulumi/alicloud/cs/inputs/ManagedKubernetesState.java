@@ -311,24 +311,24 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+     * The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
      * 
      * @deprecated
-     * Field &#39;load_balancer_spec&#39; has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
+     * Field &#39;load_balancer_spec&#39; has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU
      * 
      */
-    @Deprecated /* Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore. */
+    @Deprecated /* Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU */
     @Import(name="loadBalancerSpec")
     private @Nullable Output<String> loadBalancerSpec;
 
     /**
-     * @return The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+     * @return The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
      * 
      * @deprecated
-     * Field &#39;load_balancer_spec&#39; has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
+     * Field &#39;load_balancer_spec&#39; has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU
      * 
      */
-    @Deprecated /* Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore. */
+    @Deprecated /* Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU */
     public Optional<Output<String>> loadBalancerSpec() {
         return Optional.ofNullable(this.loadBalancerSpec);
     }
@@ -446,14 +446,14 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+     * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
      * 
      */
     @Import(name="podVswitchIds")
     private @Nullable Output<List<String>> podVswitchIds;
 
     /**
-     * @return [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+     * @return [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
      * 
      */
     public Optional<Output<List<String>>> podVswitchIds() {
@@ -703,6 +703,31 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The vSwitches of the control plane.
+     * &gt; **NOTE:** Please take of note before updating the `vswitch_ids`:
+     * * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
+     * * The control plane restarts during the change process. Exercise caution when you perform this operation.
+     * * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
+     * * If the new vSwitches of the control plane are configured with an ACL, ensure that the ACL allows communication between the new vSwitches and CIDR blocks such as those of the cluster nodes and the container network.
+     * 
+     */
+    @Import(name="vswitchIds")
+    private @Nullable Output<List<String>> vswitchIds;
+
+    /**
+     * @return The vSwitches of the control plane.
+     * &gt; **NOTE:** Please take of note before updating the `vswitch_ids`:
+     * * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
+     * * The control plane restarts during the change process. Exercise caution when you perform this operation.
+     * * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
+     * * If the new vSwitches of the control plane are configured with an ACL, ensure that the ACL allows communication between the new vSwitches and CIDR blocks such as those of the cluster nodes and the container network.
+     * 
+     */
+    public Optional<Output<List<String>>> vswitchIds() {
+        return Optional.ofNullable(this.vswitchIds);
+    }
+
+    /**
      * The RamRole Name attached to worker node.
      * 
      */
@@ -718,16 +743,24 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The vswitches used by control plane.  See `worker_vswitch_ids` below.
+     * The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vswtiches, which supports modifying control plane vswtiches.
+     * 
+     * @deprecated
+     * Field &#39;worker_vswitch_ids&#39; has been deprecated from provider version 1.241.0. Please use &#39;vswitch_ids&#39; to managed control plane vswtiches
      * 
      */
+    @Deprecated /* Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches */
     @Import(name="workerVswitchIds")
     private @Nullable Output<List<String>> workerVswitchIds;
 
     /**
-     * @return The vswitches used by control plane.  See `worker_vswitch_ids` below.
+     * @return The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vswtiches, which supports modifying control plane vswtiches.
+     * 
+     * @deprecated
+     * Field &#39;worker_vswitch_ids&#39; has been deprecated from provider version 1.241.0. Please use &#39;vswitch_ids&#39; to managed control plane vswtiches
      * 
      */
+    @Deprecated /* Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches */
     public Optional<Output<List<String>>> workerVswitchIds() {
         return Optional.ofNullable(this.workerVswitchIds);
     }
@@ -779,6 +812,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         this.userCa = $.userCa;
         this.version = $.version;
         this.vpcId = $.vpcId;
+        this.vswitchIds = $.vswitchIds;
         this.workerRamRoleName = $.workerRamRoleName;
         this.workerVswitchIds = $.workerVswitchIds;
     }
@@ -1236,30 +1270,30 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param loadBalancerSpec The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+         * @param loadBalancerSpec The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;load_balancer_spec&#39; has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
+         * Field &#39;load_balancer_spec&#39; has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU
          * 
          */
-        @Deprecated /* Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore. */
+        @Deprecated /* Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU */
         public Builder loadBalancerSpec(@Nullable Output<String> loadBalancerSpec) {
             $.loadBalancerSpec = loadBalancerSpec;
             return this;
         }
 
         /**
-         * @param loadBalancerSpec The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+         * @param loadBalancerSpec The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;load_balancer_spec&#39; has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
+         * Field &#39;load_balancer_spec&#39; has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU
          * 
          */
-        @Deprecated /* Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore. */
+        @Deprecated /* Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU */
         public Builder loadBalancerSpec(String loadBalancerSpec) {
             return loadBalancerSpec(Output.of(loadBalancerSpec));
         }
@@ -1421,7 +1455,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param podVswitchIds [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+         * @param podVswitchIds [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
          * 
          * @return builder
          * 
@@ -1432,7 +1466,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param podVswitchIds [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+         * @param podVswitchIds [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
          * 
          * @return builder
          * 
@@ -1442,7 +1476,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param podVswitchIds [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+         * @param podVswitchIds [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
          * 
          * @return builder
          * 
@@ -1790,6 +1824,52 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param vswitchIds The vSwitches of the control plane.
+         * &gt; **NOTE:** Please take of note before updating the `vswitch_ids`:
+         * * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
+         * * The control plane restarts during the change process. Exercise caution when you perform this operation.
+         * * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
+         * * If the new vSwitches of the control plane are configured with an ACL, ensure that the ACL allows communication between the new vSwitches and CIDR blocks such as those of the cluster nodes and the container network.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vswitchIds(@Nullable Output<List<String>> vswitchIds) {
+            $.vswitchIds = vswitchIds;
+            return this;
+        }
+
+        /**
+         * @param vswitchIds The vSwitches of the control plane.
+         * &gt; **NOTE:** Please take of note before updating the `vswitch_ids`:
+         * * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
+         * * The control plane restarts during the change process. Exercise caution when you perform this operation.
+         * * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
+         * * If the new vSwitches of the control plane are configured with an ACL, ensure that the ACL allows communication between the new vSwitches and CIDR blocks such as those of the cluster nodes and the container network.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vswitchIds(List<String> vswitchIds) {
+            return vswitchIds(Output.of(vswitchIds));
+        }
+
+        /**
+         * @param vswitchIds The vSwitches of the control plane.
+         * &gt; **NOTE:** Please take of note before updating the `vswitch_ids`:
+         * * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
+         * * The control plane restarts during the change process. Exercise caution when you perform this operation.
+         * * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
+         * * If the new vSwitches of the control plane are configured with an ACL, ensure that the ACL allows communication between the new vSwitches and CIDR blocks such as those of the cluster nodes and the container network.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vswitchIds(String... vswitchIds) {
+            return vswitchIds(List.of(vswitchIds));
+        }
+
+        /**
          * @param workerRamRoleName The RamRole Name attached to worker node.
          * 
          * @return builder
@@ -1811,32 +1891,44 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param workerVswitchIds The vswitches used by control plane.  See `worker_vswitch_ids` below.
+         * @param workerVswitchIds The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vswtiches, which supports modifying control plane vswtiches.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;worker_vswitch_ids&#39; has been deprecated from provider version 1.241.0. Please use &#39;vswitch_ids&#39; to managed control plane vswtiches
+         * 
          */
+        @Deprecated /* Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches */
         public Builder workerVswitchIds(@Nullable Output<List<String>> workerVswitchIds) {
             $.workerVswitchIds = workerVswitchIds;
             return this;
         }
 
         /**
-         * @param workerVswitchIds The vswitches used by control plane.  See `worker_vswitch_ids` below.
+         * @param workerVswitchIds The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vswtiches, which supports modifying control plane vswtiches.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;worker_vswitch_ids&#39; has been deprecated from provider version 1.241.0. Please use &#39;vswitch_ids&#39; to managed control plane vswtiches
+         * 
          */
+        @Deprecated /* Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches */
         public Builder workerVswitchIds(List<String> workerVswitchIds) {
             return workerVswitchIds(Output.of(workerVswitchIds));
         }
 
         /**
-         * @param workerVswitchIds The vswitches used by control plane.  See `worker_vswitch_ids` below.
+         * @param workerVswitchIds The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vswtiches, which supports modifying control plane vswtiches.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;worker_vswitch_ids&#39; has been deprecated from provider version 1.241.0. Please use &#39;vswitch_ids&#39; to managed control plane vswtiches
+         * 
          */
+        @Deprecated /* Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches */
         public Builder workerVswitchIds(String... workerVswitchIds) {
             return workerVswitchIds(List.of(workerVswitchIds));
         }

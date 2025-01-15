@@ -222,8 +222,8 @@ type Bucket struct {
 	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `oss.BucketAcl` instead.
 	//
 	// Deprecated: Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.
-	Acl    pulumi.StringOutput    `pulumi:"acl"`
-	Bucket pulumi.StringPtrOutput `pulumi:"bucket"`
+	Acl    pulumi.StringOutput `pulumi:"acl"`
+	Bucket pulumi.StringOutput `pulumi:"bucket"`
 	// A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `corsRule` below.
 	CorsRules BucketCorsRuleArrayOutput `pulumi:"corsRules"`
 	// The creation date of the bucket.
@@ -599,8 +599,8 @@ func (o BucketOutput) Acl() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.Acl }).(pulumi.StringOutput)
 }
 
-func (o BucketOutput) Bucket() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Bucket) pulumi.StringPtrOutput { return v.Bucket }).(pulumi.StringPtrOutput)
+func (o BucketOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
 }
 
 // A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `corsRule` below.

@@ -41,12 +41,12 @@ import (
 //				name = param
 //			}
 //			_, err := message.NewServiceQueue(ctx, "default", &message.ServiceQueueArgs{
+//				QueueName:              pulumi.String(name),
 //				DelaySeconds:           pulumi.Int(2),
 //				PollingWaitSeconds:     pulumi.Int(2),
 //				MessageRetentionPeriod: pulumi.Int(566),
-//				MaximumMessageSize:     pulumi.Int(1123),
+//				MaximumMessageSize:     pulumi.Int(1126),
 //				VisibilityTimeout:      pulumi.Int(30),
-//				QueueName:              pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -67,21 +67,23 @@ import (
 type ServiceQueue struct {
 	pulumi.CustomResourceState
 
-	// Represents the time when the Queue was created.
+	// (Available since v1.223.2) The time when the queue was created.
 	CreateTime pulumi.IntOutput `pulumi:"createTime"`
-	// This means that messages sent to the queue can only be consumed after the delay time set by this parameter, in seconds.
+	// The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
 	DelaySeconds pulumi.IntOutput `pulumi:"delaySeconds"`
-	// Represents whether the log management function is enabled.
+	// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
 	LoggingEnabled pulumi.BoolPtrOutput `pulumi:"loggingEnabled"`
-	// Represents the maximum length of the message body sent to the Queue, in Byte.
+	// The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
 	MaximumMessageSize pulumi.IntOutput `pulumi:"maximumMessageSize"`
-	// Represents the longest life time of the message in the Queue.
+	// The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
 	MessageRetentionPeriod pulumi.IntOutput `pulumi:"messageRetentionPeriod"`
-	// The longest waiting time for a Queue request when the number of messages is empty, in seconds.
+	// The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: `0` to `30`. Unit: seconds. Default value: `0`.
 	PollingWaitSeconds pulumi.IntOutput `pulumi:"pollingWaitSeconds"`
-	// Representative resources.
+	// The name of the queue.
 	QueueName pulumi.StringOutput `pulumi:"queueName"`
-	// Represents the duration after the message is removed from the Queue and changed from the Active state to the Inactive state.
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
 	VisibilityTimeout pulumi.IntOutput `pulumi:"visibilityTimeout"`
 }
 
@@ -118,40 +120,44 @@ func GetServiceQueue(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServiceQueue resources.
 type serviceQueueState struct {
-	// Represents the time when the Queue was created.
+	// (Available since v1.223.2) The time when the queue was created.
 	CreateTime *int `pulumi:"createTime"`
-	// This means that messages sent to the queue can only be consumed after the delay time set by this parameter, in seconds.
+	// The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
 	DelaySeconds *int `pulumi:"delaySeconds"`
-	// Represents whether the log management function is enabled.
+	// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
 	LoggingEnabled *bool `pulumi:"loggingEnabled"`
-	// Represents the maximum length of the message body sent to the Queue, in Byte.
+	// The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
 	MaximumMessageSize *int `pulumi:"maximumMessageSize"`
-	// Represents the longest life time of the message in the Queue.
+	// The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
 	MessageRetentionPeriod *int `pulumi:"messageRetentionPeriod"`
-	// The longest waiting time for a Queue request when the number of messages is empty, in seconds.
+	// The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: `0` to `30`. Unit: seconds. Default value: `0`.
 	PollingWaitSeconds *int `pulumi:"pollingWaitSeconds"`
-	// Representative resources.
+	// The name of the queue.
 	QueueName *string `pulumi:"queueName"`
-	// Represents the duration after the message is removed from the Queue and changed from the Active state to the Inactive state.
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
 	VisibilityTimeout *int `pulumi:"visibilityTimeout"`
 }
 
 type ServiceQueueState struct {
-	// Represents the time when the Queue was created.
+	// (Available since v1.223.2) The time when the queue was created.
 	CreateTime pulumi.IntPtrInput
-	// This means that messages sent to the queue can only be consumed after the delay time set by this parameter, in seconds.
+	// The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
 	DelaySeconds pulumi.IntPtrInput
-	// Represents whether the log management function is enabled.
+	// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
 	LoggingEnabled pulumi.BoolPtrInput
-	// Represents the maximum length of the message body sent to the Queue, in Byte.
+	// The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
 	MaximumMessageSize pulumi.IntPtrInput
-	// Represents the longest life time of the message in the Queue.
+	// The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
 	MessageRetentionPeriod pulumi.IntPtrInput
-	// The longest waiting time for a Queue request when the number of messages is empty, in seconds.
+	// The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: `0` to `30`. Unit: seconds. Default value: `0`.
 	PollingWaitSeconds pulumi.IntPtrInput
-	// Representative resources.
+	// The name of the queue.
 	QueueName pulumi.StringPtrInput
-	// Represents the duration after the message is removed from the Queue and changed from the Active state to the Inactive state.
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput
+	// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
 	VisibilityTimeout pulumi.IntPtrInput
 }
 
@@ -160,37 +166,41 @@ func (ServiceQueueState) ElementType() reflect.Type {
 }
 
 type serviceQueueArgs struct {
-	// This means that messages sent to the queue can only be consumed after the delay time set by this parameter, in seconds.
+	// The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
 	DelaySeconds *int `pulumi:"delaySeconds"`
-	// Represents whether the log management function is enabled.
+	// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
 	LoggingEnabled *bool `pulumi:"loggingEnabled"`
-	// Represents the maximum length of the message body sent to the Queue, in Byte.
+	// The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
 	MaximumMessageSize *int `pulumi:"maximumMessageSize"`
-	// Represents the longest life time of the message in the Queue.
+	// The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
 	MessageRetentionPeriod *int `pulumi:"messageRetentionPeriod"`
-	// The longest waiting time for a Queue request when the number of messages is empty, in seconds.
+	// The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: `0` to `30`. Unit: seconds. Default value: `0`.
 	PollingWaitSeconds *int `pulumi:"pollingWaitSeconds"`
-	// Representative resources.
+	// The name of the queue.
 	QueueName string `pulumi:"queueName"`
-	// Represents the duration after the message is removed from the Queue and changed from the Active state to the Inactive state.
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
 	VisibilityTimeout *int `pulumi:"visibilityTimeout"`
 }
 
 // The set of arguments for constructing a ServiceQueue resource.
 type ServiceQueueArgs struct {
-	// This means that messages sent to the queue can only be consumed after the delay time set by this parameter, in seconds.
+	// The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
 	DelaySeconds pulumi.IntPtrInput
-	// Represents whether the log management function is enabled.
+	// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
 	LoggingEnabled pulumi.BoolPtrInput
-	// Represents the maximum length of the message body sent to the Queue, in Byte.
+	// The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
 	MaximumMessageSize pulumi.IntPtrInput
-	// Represents the longest life time of the message in the Queue.
+	// The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
 	MessageRetentionPeriod pulumi.IntPtrInput
-	// The longest waiting time for a Queue request when the number of messages is empty, in seconds.
+	// The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: `0` to `30`. Unit: seconds. Default value: `0`.
 	PollingWaitSeconds pulumi.IntPtrInput
-	// Representative resources.
+	// The name of the queue.
 	QueueName pulumi.StringInput
-	// Represents the duration after the message is removed from the Queue and changed from the Active state to the Inactive state.
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput
+	// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
 	VisibilityTimeout pulumi.IntPtrInput
 }
 
@@ -281,42 +291,47 @@ func (o ServiceQueueOutput) ToServiceQueueOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Represents the time when the Queue was created.
+// (Available since v1.223.2) The time when the queue was created.
 func (o ServiceQueueOutput) CreateTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *ServiceQueue) pulumi.IntOutput { return v.CreateTime }).(pulumi.IntOutput)
 }
 
-// This means that messages sent to the queue can only be consumed after the delay time set by this parameter, in seconds.
+// The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
 func (o ServiceQueueOutput) DelaySeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v *ServiceQueue) pulumi.IntOutput { return v.DelaySeconds }).(pulumi.IntOutput)
 }
 
-// Represents whether the log management function is enabled.
+// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
 func (o ServiceQueueOutput) LoggingEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceQueue) pulumi.BoolPtrOutput { return v.LoggingEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Represents the maximum length of the message body sent to the Queue, in Byte.
+// The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
 func (o ServiceQueueOutput) MaximumMessageSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *ServiceQueue) pulumi.IntOutput { return v.MaximumMessageSize }).(pulumi.IntOutput)
 }
 
-// Represents the longest life time of the message in the Queue.
+// The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
 func (o ServiceQueueOutput) MessageRetentionPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v *ServiceQueue) pulumi.IntOutput { return v.MessageRetentionPeriod }).(pulumi.IntOutput)
 }
 
-// The longest waiting time for a Queue request when the number of messages is empty, in seconds.
+// The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: `0` to `30`. Unit: seconds. Default value: `0`.
 func (o ServiceQueueOutput) PollingWaitSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v *ServiceQueue) pulumi.IntOutput { return v.PollingWaitSeconds }).(pulumi.IntOutput)
 }
 
-// Representative resources.
+// The name of the queue.
 func (o ServiceQueueOutput) QueueName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceQueue) pulumi.StringOutput { return v.QueueName }).(pulumi.StringOutput)
 }
 
-// Represents the duration after the message is removed from the Queue and changed from the Active state to the Inactive state.
+// A mapping of tags to assign to the resource.
+func (o ServiceQueueOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServiceQueue) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
 func (o ServiceQueueOutput) VisibilityTimeout() pulumi.IntOutput {
 	return o.ApplyT(func(v *ServiceQueue) pulumi.IntOutput { return v.VisibilityTimeout }).(pulumi.IntOutput)
 }

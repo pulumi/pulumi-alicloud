@@ -169,10 +169,10 @@ namespace Pulumi.AliCloud.CS
         public Output<bool> IsEnterpriseSecurityGroup { get; private set; } = null!;
 
         /// <summary>
-        /// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+        /// The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
         /// </summary>
         [Output("loadBalancerSpec")]
-        public Output<string?> LoadBalancerSpec { get; private set; } = null!;
+        public Output<string> LoadBalancerSpec { get; private set; } = null!;
 
         /// <summary>
         /// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
@@ -220,7 +220,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> PodCidr { get; private set; } = null!;
 
         /// <summary>
-        /// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+        /// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
         /// </summary>
         [Output("podVswitchIds")]
         public Output<ImmutableArray<string>> PodVswitchIds { get; private set; } = null!;
@@ -324,13 +324,24 @@ namespace Pulumi.AliCloud.CS
         public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
+        /// The vSwitches of the control plane.
+        /// &gt; **NOTE:** Please take of note before updating the `vswitch_ids`:
+        /// * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
+        /// * The control plane restarts during the change process. Exercise caution when you perform this operation.
+        /// * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
+        /// * If the new vSwitches of the control plane are configured with an ACL, ensure that the ACL allows communication between the new vSwitches and CIDR blocks such as those of the cluster nodes and the container network.
+        /// </summary>
+        [Output("vswitchIds")]
+        public Output<ImmutableArray<string>> VswitchIds { get; private set; } = null!;
+
+        /// <summary>
         /// The RamRole Name attached to worker node.
         /// </summary>
         [Output("workerRamRoleName")]
         public Output<string> WorkerRamRoleName { get; private set; } = null!;
 
         /// <summary>
-        /// The vswitches used by control plane.  See `worker_vswitch_ids` below.
+        /// The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vswtiches, which supports modifying control plane vswtiches.
         /// </summary>
         [Output("workerVswitchIds")]
         public Output<ImmutableArray<string>> WorkerVswitchIds { get; private set; } = null!;
@@ -343,7 +354,7 @@ namespace Pulumi.AliCloud.CS
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public ManagedKubernetes(string name, ManagedKubernetesArgs args, CustomResourceOptions? options = null)
+        public ManagedKubernetes(string name, ManagedKubernetesArgs? args = null, CustomResourceOptions? options = null)
             : base("alicloud:cs/managedKubernetes:ManagedKubernetes", name, args ?? new ManagedKubernetesArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -509,7 +520,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? IsEnterpriseSecurityGroup { get; set; }
 
         /// <summary>
-        /// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+        /// The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
         /// </summary>
         [Input("loadBalancerSpec")]
         public Input<string>? LoadBalancerSpec { get; set; }
@@ -557,7 +568,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _podVswitchIds;
 
         /// <summary>
-        /// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+        /// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
         /// </summary>
         public InputList<string> PodVswitchIds
         {
@@ -644,12 +655,30 @@ namespace Pulumi.AliCloud.CS
         [Input("version")]
         public Input<string>? Version { get; set; }
 
-        [Input("workerVswitchIds", required: true)]
+        [Input("vswitchIds")]
+        private InputList<string>? _vswitchIds;
+
+        /// <summary>
+        /// The vSwitches of the control plane.
+        /// &gt; **NOTE:** Please take of note before updating the `vswitch_ids`:
+        /// * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
+        /// * The control plane restarts during the change process. Exercise caution when you perform this operation.
+        /// * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
+        /// * If the new vSwitches of the control plane are configured with an ACL, ensure that the ACL allows communication between the new vSwitches and CIDR blocks such as those of the cluster nodes and the container network.
+        /// </summary>
+        public InputList<string> VswitchIds
+        {
+            get => _vswitchIds ?? (_vswitchIds = new InputList<string>());
+            set => _vswitchIds = value;
+        }
+
+        [Input("workerVswitchIds")]
         private InputList<string>? _workerVswitchIds;
 
         /// <summary>
-        /// The vswitches used by control plane.  See `worker_vswitch_ids` below.
+        /// The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vswtiches, which supports modifying control plane vswtiches.
         /// </summary>
+        [Obsolete(@"Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches")]
         public InputList<string> WorkerVswitchIds
         {
             get => _workerVswitchIds ?? (_workerVswitchIds = new InputList<string>());
@@ -804,7 +833,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? IsEnterpriseSecurityGroup { get; set; }
 
         /// <summary>
-        /// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+        /// The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
         /// </summary>
         [Input("loadBalancerSpec")]
         public Input<string>? LoadBalancerSpec { get; set; }
@@ -858,7 +887,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _podVswitchIds;
 
         /// <summary>
-        /// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+        /// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
         /// </summary>
         public InputList<string> PodVswitchIds
         {
@@ -975,6 +1004,23 @@ namespace Pulumi.AliCloud.CS
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 
+        [Input("vswitchIds")]
+        private InputList<string>? _vswitchIds;
+
+        /// <summary>
+        /// The vSwitches of the control plane.
+        /// &gt; **NOTE:** Please take of note before updating the `vswitch_ids`:
+        /// * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
+        /// * The control plane restarts during the change process. Exercise caution when you perform this operation.
+        /// * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
+        /// * If the new vSwitches of the control plane are configured with an ACL, ensure that the ACL allows communication between the new vSwitches and CIDR blocks such as those of the cluster nodes and the container network.
+        /// </summary>
+        public InputList<string> VswitchIds
+        {
+            get => _vswitchIds ?? (_vswitchIds = new InputList<string>());
+            set => _vswitchIds = value;
+        }
+
         /// <summary>
         /// The RamRole Name attached to worker node.
         /// </summary>
@@ -985,8 +1031,9 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _workerVswitchIds;
 
         /// <summary>
-        /// The vswitches used by control plane.  See `worker_vswitch_ids` below.
+        /// The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vswtiches, which supports modifying control plane vswtiches.
         /// </summary>
+        [Obsolete(@"Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches")]
         public InputList<string> WorkerVswitchIds
         {
             get => _workerVswitchIds ?? (_workerVswitchIds = new InputList<string>());

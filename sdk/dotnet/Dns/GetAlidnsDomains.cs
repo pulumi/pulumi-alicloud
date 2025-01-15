@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Dns
         /// <summary>
         /// This data source provides a list of Alidns Domains in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:**  Available in 1.95.0+.
+        /// &gt; **NOTE:** Available since v1.95.0.
         /// 
         /// ## Example Usage
         /// 
@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.Dns
         /// <summary>
         /// This data source provides a list of Alidns Domains in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:**  Available in 1.95.0+.
+        /// &gt; **NOTE:** Available since v1.95.0.
         /// 
         /// ## Example Usage
         /// 
@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.Dns
         /// <summary>
         /// This data source provides a list of Alidns Domains in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:**  Available in 1.95.0+.
+        /// &gt; **NOTE:** Available since v1.95.0.
         /// 
         /// ## Example Usage
         /// 
@@ -120,6 +120,9 @@ namespace Pulumi.AliCloud.Dns
         [Input("domainNameRegex")]
         public string? DomainNameRegex { get; set; }
 
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
 
@@ -227,6 +230,9 @@ namespace Pulumi.AliCloud.Dns
         [Input("domainNameRegex")]
         public Input<string>? DomainNameRegex { get; set; }
 
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
 
@@ -364,6 +370,9 @@ namespace Pulumi.AliCloud.Dns
         public readonly string? ResourceGroupId;
         public readonly string? SearchMode;
         public readonly bool? Starmark;
+        /// <summary>
+        /// Tags of the domain.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
         /// Cloud resolution version ID.

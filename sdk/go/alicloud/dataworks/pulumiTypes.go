@@ -13,6 +13,2942 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type DiAlarmRuleNotificationSettings struct {
+	// Alarm suppression interval, in minutes
+	InhibitionInterval *int `pulumi:"inhibitionInterval"`
+	// Alarm notification Channel See `notificationChannels` below.
+	NotificationChannels []DiAlarmRuleNotificationSettingsNotificationChannel `pulumi:"notificationChannels"`
+	// List of alert notification recipients See `notificationReceivers` below.
+	NotificationReceivers []DiAlarmRuleNotificationSettingsNotificationReceiver `pulumi:"notificationReceivers"`
+}
+
+// DiAlarmRuleNotificationSettingsInput is an input type that accepts DiAlarmRuleNotificationSettingsArgs and DiAlarmRuleNotificationSettingsOutput values.
+// You can construct a concrete instance of `DiAlarmRuleNotificationSettingsInput` via:
+//
+//	DiAlarmRuleNotificationSettingsArgs{...}
+type DiAlarmRuleNotificationSettingsInput interface {
+	pulumi.Input
+
+	ToDiAlarmRuleNotificationSettingsOutput() DiAlarmRuleNotificationSettingsOutput
+	ToDiAlarmRuleNotificationSettingsOutputWithContext(context.Context) DiAlarmRuleNotificationSettingsOutput
+}
+
+type DiAlarmRuleNotificationSettingsArgs struct {
+	// Alarm suppression interval, in minutes
+	InhibitionInterval pulumi.IntPtrInput `pulumi:"inhibitionInterval"`
+	// Alarm notification Channel See `notificationChannels` below.
+	NotificationChannels DiAlarmRuleNotificationSettingsNotificationChannelArrayInput `pulumi:"notificationChannels"`
+	// List of alert notification recipients See `notificationReceivers` below.
+	NotificationReceivers DiAlarmRuleNotificationSettingsNotificationReceiverArrayInput `pulumi:"notificationReceivers"`
+}
+
+func (DiAlarmRuleNotificationSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiAlarmRuleNotificationSettings)(nil)).Elem()
+}
+
+func (i DiAlarmRuleNotificationSettingsArgs) ToDiAlarmRuleNotificationSettingsOutput() DiAlarmRuleNotificationSettingsOutput {
+	return i.ToDiAlarmRuleNotificationSettingsOutputWithContext(context.Background())
+}
+
+func (i DiAlarmRuleNotificationSettingsArgs) ToDiAlarmRuleNotificationSettingsOutputWithContext(ctx context.Context) DiAlarmRuleNotificationSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiAlarmRuleNotificationSettingsOutput)
+}
+
+func (i DiAlarmRuleNotificationSettingsArgs) ToDiAlarmRuleNotificationSettingsPtrOutput() DiAlarmRuleNotificationSettingsPtrOutput {
+	return i.ToDiAlarmRuleNotificationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i DiAlarmRuleNotificationSettingsArgs) ToDiAlarmRuleNotificationSettingsPtrOutputWithContext(ctx context.Context) DiAlarmRuleNotificationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiAlarmRuleNotificationSettingsOutput).ToDiAlarmRuleNotificationSettingsPtrOutputWithContext(ctx)
+}
+
+// DiAlarmRuleNotificationSettingsPtrInput is an input type that accepts DiAlarmRuleNotificationSettingsArgs, DiAlarmRuleNotificationSettingsPtr and DiAlarmRuleNotificationSettingsPtrOutput values.
+// You can construct a concrete instance of `DiAlarmRuleNotificationSettingsPtrInput` via:
+//
+//	        DiAlarmRuleNotificationSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DiAlarmRuleNotificationSettingsPtrInput interface {
+	pulumi.Input
+
+	ToDiAlarmRuleNotificationSettingsPtrOutput() DiAlarmRuleNotificationSettingsPtrOutput
+	ToDiAlarmRuleNotificationSettingsPtrOutputWithContext(context.Context) DiAlarmRuleNotificationSettingsPtrOutput
+}
+
+type diAlarmRuleNotificationSettingsPtrType DiAlarmRuleNotificationSettingsArgs
+
+func DiAlarmRuleNotificationSettingsPtr(v *DiAlarmRuleNotificationSettingsArgs) DiAlarmRuleNotificationSettingsPtrInput {
+	return (*diAlarmRuleNotificationSettingsPtrType)(v)
+}
+
+func (*diAlarmRuleNotificationSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiAlarmRuleNotificationSettings)(nil)).Elem()
+}
+
+func (i *diAlarmRuleNotificationSettingsPtrType) ToDiAlarmRuleNotificationSettingsPtrOutput() DiAlarmRuleNotificationSettingsPtrOutput {
+	return i.ToDiAlarmRuleNotificationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *diAlarmRuleNotificationSettingsPtrType) ToDiAlarmRuleNotificationSettingsPtrOutputWithContext(ctx context.Context) DiAlarmRuleNotificationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiAlarmRuleNotificationSettingsPtrOutput)
+}
+
+type DiAlarmRuleNotificationSettingsOutput struct{ *pulumi.OutputState }
+
+func (DiAlarmRuleNotificationSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiAlarmRuleNotificationSettings)(nil)).Elem()
+}
+
+func (o DiAlarmRuleNotificationSettingsOutput) ToDiAlarmRuleNotificationSettingsOutput() DiAlarmRuleNotificationSettingsOutput {
+	return o
+}
+
+func (o DiAlarmRuleNotificationSettingsOutput) ToDiAlarmRuleNotificationSettingsOutputWithContext(ctx context.Context) DiAlarmRuleNotificationSettingsOutput {
+	return o
+}
+
+func (o DiAlarmRuleNotificationSettingsOutput) ToDiAlarmRuleNotificationSettingsPtrOutput() DiAlarmRuleNotificationSettingsPtrOutput {
+	return o.ToDiAlarmRuleNotificationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o DiAlarmRuleNotificationSettingsOutput) ToDiAlarmRuleNotificationSettingsPtrOutputWithContext(ctx context.Context) DiAlarmRuleNotificationSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiAlarmRuleNotificationSettings) *DiAlarmRuleNotificationSettings {
+		return &v
+	}).(DiAlarmRuleNotificationSettingsPtrOutput)
+}
+
+// Alarm suppression interval, in minutes
+func (o DiAlarmRuleNotificationSettingsOutput) InhibitionInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DiAlarmRuleNotificationSettings) *int { return v.InhibitionInterval }).(pulumi.IntPtrOutput)
+}
+
+// Alarm notification Channel See `notificationChannels` below.
+func (o DiAlarmRuleNotificationSettingsOutput) NotificationChannels() DiAlarmRuleNotificationSettingsNotificationChannelArrayOutput {
+	return o.ApplyT(func(v DiAlarmRuleNotificationSettings) []DiAlarmRuleNotificationSettingsNotificationChannel {
+		return v.NotificationChannels
+	}).(DiAlarmRuleNotificationSettingsNotificationChannelArrayOutput)
+}
+
+// List of alert notification recipients See `notificationReceivers` below.
+func (o DiAlarmRuleNotificationSettingsOutput) NotificationReceivers() DiAlarmRuleNotificationSettingsNotificationReceiverArrayOutput {
+	return o.ApplyT(func(v DiAlarmRuleNotificationSettings) []DiAlarmRuleNotificationSettingsNotificationReceiver {
+		return v.NotificationReceivers
+	}).(DiAlarmRuleNotificationSettingsNotificationReceiverArrayOutput)
+}
+
+type DiAlarmRuleNotificationSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (DiAlarmRuleNotificationSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiAlarmRuleNotificationSettings)(nil)).Elem()
+}
+
+func (o DiAlarmRuleNotificationSettingsPtrOutput) ToDiAlarmRuleNotificationSettingsPtrOutput() DiAlarmRuleNotificationSettingsPtrOutput {
+	return o
+}
+
+func (o DiAlarmRuleNotificationSettingsPtrOutput) ToDiAlarmRuleNotificationSettingsPtrOutputWithContext(ctx context.Context) DiAlarmRuleNotificationSettingsPtrOutput {
+	return o
+}
+
+func (o DiAlarmRuleNotificationSettingsPtrOutput) Elem() DiAlarmRuleNotificationSettingsOutput {
+	return o.ApplyT(func(v *DiAlarmRuleNotificationSettings) DiAlarmRuleNotificationSettings {
+		if v != nil {
+			return *v
+		}
+		var ret DiAlarmRuleNotificationSettings
+		return ret
+	}).(DiAlarmRuleNotificationSettingsOutput)
+}
+
+// Alarm suppression interval, in minutes
+func (o DiAlarmRuleNotificationSettingsPtrOutput) InhibitionInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DiAlarmRuleNotificationSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InhibitionInterval
+	}).(pulumi.IntPtrOutput)
+}
+
+// Alarm notification Channel See `notificationChannels` below.
+func (o DiAlarmRuleNotificationSettingsPtrOutput) NotificationChannels() DiAlarmRuleNotificationSettingsNotificationChannelArrayOutput {
+	return o.ApplyT(func(v *DiAlarmRuleNotificationSettings) []DiAlarmRuleNotificationSettingsNotificationChannel {
+		if v == nil {
+			return nil
+		}
+		return v.NotificationChannels
+	}).(DiAlarmRuleNotificationSettingsNotificationChannelArrayOutput)
+}
+
+// List of alert notification recipients See `notificationReceivers` below.
+func (o DiAlarmRuleNotificationSettingsPtrOutput) NotificationReceivers() DiAlarmRuleNotificationSettingsNotificationReceiverArrayOutput {
+	return o.ApplyT(func(v *DiAlarmRuleNotificationSettings) []DiAlarmRuleNotificationSettingsNotificationReceiver {
+		if v == nil {
+			return nil
+		}
+		return v.NotificationReceivers
+	}).(DiAlarmRuleNotificationSettingsNotificationReceiverArrayOutput)
+}
+
+type DiAlarmRuleNotificationSettingsNotificationChannel struct {
+	// Channel, optional enumeration value:
+	//
+	// Mail (Mail)
+	//
+	// Phone (Phone)
+	//
+	// Sms (Sms)
+	//
+	// Ding (DingTalk)
+	Channels []string `pulumi:"channels"`
+	Severity *string  `pulumi:"severity"`
+}
+
+// DiAlarmRuleNotificationSettingsNotificationChannelInput is an input type that accepts DiAlarmRuleNotificationSettingsNotificationChannelArgs and DiAlarmRuleNotificationSettingsNotificationChannelOutput values.
+// You can construct a concrete instance of `DiAlarmRuleNotificationSettingsNotificationChannelInput` via:
+//
+//	DiAlarmRuleNotificationSettingsNotificationChannelArgs{...}
+type DiAlarmRuleNotificationSettingsNotificationChannelInput interface {
+	pulumi.Input
+
+	ToDiAlarmRuleNotificationSettingsNotificationChannelOutput() DiAlarmRuleNotificationSettingsNotificationChannelOutput
+	ToDiAlarmRuleNotificationSettingsNotificationChannelOutputWithContext(context.Context) DiAlarmRuleNotificationSettingsNotificationChannelOutput
+}
+
+type DiAlarmRuleNotificationSettingsNotificationChannelArgs struct {
+	// Channel, optional enumeration value:
+	//
+	// Mail (Mail)
+	//
+	// Phone (Phone)
+	//
+	// Sms (Sms)
+	//
+	// Ding (DingTalk)
+	Channels pulumi.StringArrayInput `pulumi:"channels"`
+	Severity pulumi.StringPtrInput   `pulumi:"severity"`
+}
+
+func (DiAlarmRuleNotificationSettingsNotificationChannelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiAlarmRuleNotificationSettingsNotificationChannel)(nil)).Elem()
+}
+
+func (i DiAlarmRuleNotificationSettingsNotificationChannelArgs) ToDiAlarmRuleNotificationSettingsNotificationChannelOutput() DiAlarmRuleNotificationSettingsNotificationChannelOutput {
+	return i.ToDiAlarmRuleNotificationSettingsNotificationChannelOutputWithContext(context.Background())
+}
+
+func (i DiAlarmRuleNotificationSettingsNotificationChannelArgs) ToDiAlarmRuleNotificationSettingsNotificationChannelOutputWithContext(ctx context.Context) DiAlarmRuleNotificationSettingsNotificationChannelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiAlarmRuleNotificationSettingsNotificationChannelOutput)
+}
+
+// DiAlarmRuleNotificationSettingsNotificationChannelArrayInput is an input type that accepts DiAlarmRuleNotificationSettingsNotificationChannelArray and DiAlarmRuleNotificationSettingsNotificationChannelArrayOutput values.
+// You can construct a concrete instance of `DiAlarmRuleNotificationSettingsNotificationChannelArrayInput` via:
+//
+//	DiAlarmRuleNotificationSettingsNotificationChannelArray{ DiAlarmRuleNotificationSettingsNotificationChannelArgs{...} }
+type DiAlarmRuleNotificationSettingsNotificationChannelArrayInput interface {
+	pulumi.Input
+
+	ToDiAlarmRuleNotificationSettingsNotificationChannelArrayOutput() DiAlarmRuleNotificationSettingsNotificationChannelArrayOutput
+	ToDiAlarmRuleNotificationSettingsNotificationChannelArrayOutputWithContext(context.Context) DiAlarmRuleNotificationSettingsNotificationChannelArrayOutput
+}
+
+type DiAlarmRuleNotificationSettingsNotificationChannelArray []DiAlarmRuleNotificationSettingsNotificationChannelInput
+
+func (DiAlarmRuleNotificationSettingsNotificationChannelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiAlarmRuleNotificationSettingsNotificationChannel)(nil)).Elem()
+}
+
+func (i DiAlarmRuleNotificationSettingsNotificationChannelArray) ToDiAlarmRuleNotificationSettingsNotificationChannelArrayOutput() DiAlarmRuleNotificationSettingsNotificationChannelArrayOutput {
+	return i.ToDiAlarmRuleNotificationSettingsNotificationChannelArrayOutputWithContext(context.Background())
+}
+
+func (i DiAlarmRuleNotificationSettingsNotificationChannelArray) ToDiAlarmRuleNotificationSettingsNotificationChannelArrayOutputWithContext(ctx context.Context) DiAlarmRuleNotificationSettingsNotificationChannelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiAlarmRuleNotificationSettingsNotificationChannelArrayOutput)
+}
+
+type DiAlarmRuleNotificationSettingsNotificationChannelOutput struct{ *pulumi.OutputState }
+
+func (DiAlarmRuleNotificationSettingsNotificationChannelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiAlarmRuleNotificationSettingsNotificationChannel)(nil)).Elem()
+}
+
+func (o DiAlarmRuleNotificationSettingsNotificationChannelOutput) ToDiAlarmRuleNotificationSettingsNotificationChannelOutput() DiAlarmRuleNotificationSettingsNotificationChannelOutput {
+	return o
+}
+
+func (o DiAlarmRuleNotificationSettingsNotificationChannelOutput) ToDiAlarmRuleNotificationSettingsNotificationChannelOutputWithContext(ctx context.Context) DiAlarmRuleNotificationSettingsNotificationChannelOutput {
+	return o
+}
+
+// Channel, optional enumeration value:
+//
+// Mail (Mail)
+//
+// Phone (Phone)
+//
+// Sms (Sms)
+//
+// Ding (DingTalk)
+func (o DiAlarmRuleNotificationSettingsNotificationChannelOutput) Channels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DiAlarmRuleNotificationSettingsNotificationChannel) []string { return v.Channels }).(pulumi.StringArrayOutput)
+}
+
+func (o DiAlarmRuleNotificationSettingsNotificationChannelOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiAlarmRuleNotificationSettingsNotificationChannel) *string { return v.Severity }).(pulumi.StringPtrOutput)
+}
+
+type DiAlarmRuleNotificationSettingsNotificationChannelArrayOutput struct{ *pulumi.OutputState }
+
+func (DiAlarmRuleNotificationSettingsNotificationChannelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiAlarmRuleNotificationSettingsNotificationChannel)(nil)).Elem()
+}
+
+func (o DiAlarmRuleNotificationSettingsNotificationChannelArrayOutput) ToDiAlarmRuleNotificationSettingsNotificationChannelArrayOutput() DiAlarmRuleNotificationSettingsNotificationChannelArrayOutput {
+	return o
+}
+
+func (o DiAlarmRuleNotificationSettingsNotificationChannelArrayOutput) ToDiAlarmRuleNotificationSettingsNotificationChannelArrayOutputWithContext(ctx context.Context) DiAlarmRuleNotificationSettingsNotificationChannelArrayOutput {
+	return o
+}
+
+func (o DiAlarmRuleNotificationSettingsNotificationChannelArrayOutput) Index(i pulumi.IntInput) DiAlarmRuleNotificationSettingsNotificationChannelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiAlarmRuleNotificationSettingsNotificationChannel {
+		return vs[0].([]DiAlarmRuleNotificationSettingsNotificationChannel)[vs[1].(int)]
+	}).(DiAlarmRuleNotificationSettingsNotificationChannelOutput)
+}
+
+type DiAlarmRuleNotificationSettingsNotificationReceiver struct {
+	// The type of the receiver. Valid values: AliyunUid/DingToken/FeishuToken/WebHookUrl.
+	ReceiverType *string `pulumi:"receiverType"`
+	// Receiver Value List
+	ReceiverValues []string `pulumi:"receiverValues"`
+}
+
+// DiAlarmRuleNotificationSettingsNotificationReceiverInput is an input type that accepts DiAlarmRuleNotificationSettingsNotificationReceiverArgs and DiAlarmRuleNotificationSettingsNotificationReceiverOutput values.
+// You can construct a concrete instance of `DiAlarmRuleNotificationSettingsNotificationReceiverInput` via:
+//
+//	DiAlarmRuleNotificationSettingsNotificationReceiverArgs{...}
+type DiAlarmRuleNotificationSettingsNotificationReceiverInput interface {
+	pulumi.Input
+
+	ToDiAlarmRuleNotificationSettingsNotificationReceiverOutput() DiAlarmRuleNotificationSettingsNotificationReceiverOutput
+	ToDiAlarmRuleNotificationSettingsNotificationReceiverOutputWithContext(context.Context) DiAlarmRuleNotificationSettingsNotificationReceiverOutput
+}
+
+type DiAlarmRuleNotificationSettingsNotificationReceiverArgs struct {
+	// The type of the receiver. Valid values: AliyunUid/DingToken/FeishuToken/WebHookUrl.
+	ReceiverType pulumi.StringPtrInput `pulumi:"receiverType"`
+	// Receiver Value List
+	ReceiverValues pulumi.StringArrayInput `pulumi:"receiverValues"`
+}
+
+func (DiAlarmRuleNotificationSettingsNotificationReceiverArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiAlarmRuleNotificationSettingsNotificationReceiver)(nil)).Elem()
+}
+
+func (i DiAlarmRuleNotificationSettingsNotificationReceiverArgs) ToDiAlarmRuleNotificationSettingsNotificationReceiverOutput() DiAlarmRuleNotificationSettingsNotificationReceiverOutput {
+	return i.ToDiAlarmRuleNotificationSettingsNotificationReceiverOutputWithContext(context.Background())
+}
+
+func (i DiAlarmRuleNotificationSettingsNotificationReceiverArgs) ToDiAlarmRuleNotificationSettingsNotificationReceiverOutputWithContext(ctx context.Context) DiAlarmRuleNotificationSettingsNotificationReceiverOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiAlarmRuleNotificationSettingsNotificationReceiverOutput)
+}
+
+// DiAlarmRuleNotificationSettingsNotificationReceiverArrayInput is an input type that accepts DiAlarmRuleNotificationSettingsNotificationReceiverArray and DiAlarmRuleNotificationSettingsNotificationReceiverArrayOutput values.
+// You can construct a concrete instance of `DiAlarmRuleNotificationSettingsNotificationReceiverArrayInput` via:
+//
+//	DiAlarmRuleNotificationSettingsNotificationReceiverArray{ DiAlarmRuleNotificationSettingsNotificationReceiverArgs{...} }
+type DiAlarmRuleNotificationSettingsNotificationReceiverArrayInput interface {
+	pulumi.Input
+
+	ToDiAlarmRuleNotificationSettingsNotificationReceiverArrayOutput() DiAlarmRuleNotificationSettingsNotificationReceiverArrayOutput
+	ToDiAlarmRuleNotificationSettingsNotificationReceiverArrayOutputWithContext(context.Context) DiAlarmRuleNotificationSettingsNotificationReceiverArrayOutput
+}
+
+type DiAlarmRuleNotificationSettingsNotificationReceiverArray []DiAlarmRuleNotificationSettingsNotificationReceiverInput
+
+func (DiAlarmRuleNotificationSettingsNotificationReceiverArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiAlarmRuleNotificationSettingsNotificationReceiver)(nil)).Elem()
+}
+
+func (i DiAlarmRuleNotificationSettingsNotificationReceiverArray) ToDiAlarmRuleNotificationSettingsNotificationReceiverArrayOutput() DiAlarmRuleNotificationSettingsNotificationReceiverArrayOutput {
+	return i.ToDiAlarmRuleNotificationSettingsNotificationReceiverArrayOutputWithContext(context.Background())
+}
+
+func (i DiAlarmRuleNotificationSettingsNotificationReceiverArray) ToDiAlarmRuleNotificationSettingsNotificationReceiverArrayOutputWithContext(ctx context.Context) DiAlarmRuleNotificationSettingsNotificationReceiverArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiAlarmRuleNotificationSettingsNotificationReceiverArrayOutput)
+}
+
+type DiAlarmRuleNotificationSettingsNotificationReceiverOutput struct{ *pulumi.OutputState }
+
+func (DiAlarmRuleNotificationSettingsNotificationReceiverOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiAlarmRuleNotificationSettingsNotificationReceiver)(nil)).Elem()
+}
+
+func (o DiAlarmRuleNotificationSettingsNotificationReceiverOutput) ToDiAlarmRuleNotificationSettingsNotificationReceiverOutput() DiAlarmRuleNotificationSettingsNotificationReceiverOutput {
+	return o
+}
+
+func (o DiAlarmRuleNotificationSettingsNotificationReceiverOutput) ToDiAlarmRuleNotificationSettingsNotificationReceiverOutputWithContext(ctx context.Context) DiAlarmRuleNotificationSettingsNotificationReceiverOutput {
+	return o
+}
+
+// The type of the receiver. Valid values: AliyunUid/DingToken/FeishuToken/WebHookUrl.
+func (o DiAlarmRuleNotificationSettingsNotificationReceiverOutput) ReceiverType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiAlarmRuleNotificationSettingsNotificationReceiver) *string { return v.ReceiverType }).(pulumi.StringPtrOutput)
+}
+
+// Receiver Value List
+func (o DiAlarmRuleNotificationSettingsNotificationReceiverOutput) ReceiverValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DiAlarmRuleNotificationSettingsNotificationReceiver) []string { return v.ReceiverValues }).(pulumi.StringArrayOutput)
+}
+
+type DiAlarmRuleNotificationSettingsNotificationReceiverArrayOutput struct{ *pulumi.OutputState }
+
+func (DiAlarmRuleNotificationSettingsNotificationReceiverArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiAlarmRuleNotificationSettingsNotificationReceiver)(nil)).Elem()
+}
+
+func (o DiAlarmRuleNotificationSettingsNotificationReceiverArrayOutput) ToDiAlarmRuleNotificationSettingsNotificationReceiverArrayOutput() DiAlarmRuleNotificationSettingsNotificationReceiverArrayOutput {
+	return o
+}
+
+func (o DiAlarmRuleNotificationSettingsNotificationReceiverArrayOutput) ToDiAlarmRuleNotificationSettingsNotificationReceiverArrayOutputWithContext(ctx context.Context) DiAlarmRuleNotificationSettingsNotificationReceiverArrayOutput {
+	return o
+}
+
+func (o DiAlarmRuleNotificationSettingsNotificationReceiverArrayOutput) Index(i pulumi.IntInput) DiAlarmRuleNotificationSettingsNotificationReceiverOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiAlarmRuleNotificationSettingsNotificationReceiver {
+		return vs[0].([]DiAlarmRuleNotificationSettingsNotificationReceiver)[vs[1].(int)]
+	}).(DiAlarmRuleNotificationSettingsNotificationReceiverOutput)
+}
+
+type DiAlarmRuleTriggerCondition struct {
+	// It takes effect only when the DDL notification is issued. The list of effective DDLs is required.
+	DdlReportTags []string `pulumi:"ddlReportTags"`
+	// Alarm calculation time interval, unit minute
+	Duration *int `pulumi:"duration"`
+	// Severity, optional enumeration value:
+	//
+	// Warning
+	//
+	// Critical
+	Severity *string `pulumi:"severity"`
+	// Alarm threshold.
+	//
+	// Task status alarm: no need to fill in the threshold.
+	//
+	// failover alarm: The threshold is the number of failover alarms.
+	//
+	// Task Delay Alarm: The threshold is the delay duration, in seconds.
+	Threshold *int `pulumi:"threshold"`
+}
+
+// DiAlarmRuleTriggerConditionInput is an input type that accepts DiAlarmRuleTriggerConditionArgs and DiAlarmRuleTriggerConditionOutput values.
+// You can construct a concrete instance of `DiAlarmRuleTriggerConditionInput` via:
+//
+//	DiAlarmRuleTriggerConditionArgs{...}
+type DiAlarmRuleTriggerConditionInput interface {
+	pulumi.Input
+
+	ToDiAlarmRuleTriggerConditionOutput() DiAlarmRuleTriggerConditionOutput
+	ToDiAlarmRuleTriggerConditionOutputWithContext(context.Context) DiAlarmRuleTriggerConditionOutput
+}
+
+type DiAlarmRuleTriggerConditionArgs struct {
+	// It takes effect only when the DDL notification is issued. The list of effective DDLs is required.
+	DdlReportTags pulumi.StringArrayInput `pulumi:"ddlReportTags"`
+	// Alarm calculation time interval, unit minute
+	Duration pulumi.IntPtrInput `pulumi:"duration"`
+	// Severity, optional enumeration value:
+	//
+	// Warning
+	//
+	// Critical
+	Severity pulumi.StringPtrInput `pulumi:"severity"`
+	// Alarm threshold.
+	//
+	// Task status alarm: no need to fill in the threshold.
+	//
+	// failover alarm: The threshold is the number of failover alarms.
+	//
+	// Task Delay Alarm: The threshold is the delay duration, in seconds.
+	Threshold pulumi.IntPtrInput `pulumi:"threshold"`
+}
+
+func (DiAlarmRuleTriggerConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiAlarmRuleTriggerCondition)(nil)).Elem()
+}
+
+func (i DiAlarmRuleTriggerConditionArgs) ToDiAlarmRuleTriggerConditionOutput() DiAlarmRuleTriggerConditionOutput {
+	return i.ToDiAlarmRuleTriggerConditionOutputWithContext(context.Background())
+}
+
+func (i DiAlarmRuleTriggerConditionArgs) ToDiAlarmRuleTriggerConditionOutputWithContext(ctx context.Context) DiAlarmRuleTriggerConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiAlarmRuleTriggerConditionOutput)
+}
+
+// DiAlarmRuleTriggerConditionArrayInput is an input type that accepts DiAlarmRuleTriggerConditionArray and DiAlarmRuleTriggerConditionArrayOutput values.
+// You can construct a concrete instance of `DiAlarmRuleTriggerConditionArrayInput` via:
+//
+//	DiAlarmRuleTriggerConditionArray{ DiAlarmRuleTriggerConditionArgs{...} }
+type DiAlarmRuleTriggerConditionArrayInput interface {
+	pulumi.Input
+
+	ToDiAlarmRuleTriggerConditionArrayOutput() DiAlarmRuleTriggerConditionArrayOutput
+	ToDiAlarmRuleTriggerConditionArrayOutputWithContext(context.Context) DiAlarmRuleTriggerConditionArrayOutput
+}
+
+type DiAlarmRuleTriggerConditionArray []DiAlarmRuleTriggerConditionInput
+
+func (DiAlarmRuleTriggerConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiAlarmRuleTriggerCondition)(nil)).Elem()
+}
+
+func (i DiAlarmRuleTriggerConditionArray) ToDiAlarmRuleTriggerConditionArrayOutput() DiAlarmRuleTriggerConditionArrayOutput {
+	return i.ToDiAlarmRuleTriggerConditionArrayOutputWithContext(context.Background())
+}
+
+func (i DiAlarmRuleTriggerConditionArray) ToDiAlarmRuleTriggerConditionArrayOutputWithContext(ctx context.Context) DiAlarmRuleTriggerConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiAlarmRuleTriggerConditionArrayOutput)
+}
+
+type DiAlarmRuleTriggerConditionOutput struct{ *pulumi.OutputState }
+
+func (DiAlarmRuleTriggerConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiAlarmRuleTriggerCondition)(nil)).Elem()
+}
+
+func (o DiAlarmRuleTriggerConditionOutput) ToDiAlarmRuleTriggerConditionOutput() DiAlarmRuleTriggerConditionOutput {
+	return o
+}
+
+func (o DiAlarmRuleTriggerConditionOutput) ToDiAlarmRuleTriggerConditionOutputWithContext(ctx context.Context) DiAlarmRuleTriggerConditionOutput {
+	return o
+}
+
+// It takes effect only when the DDL notification is issued. The list of effective DDLs is required.
+func (o DiAlarmRuleTriggerConditionOutput) DdlReportTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DiAlarmRuleTriggerCondition) []string { return v.DdlReportTags }).(pulumi.StringArrayOutput)
+}
+
+// Alarm calculation time interval, unit minute
+func (o DiAlarmRuleTriggerConditionOutput) Duration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DiAlarmRuleTriggerCondition) *int { return v.Duration }).(pulumi.IntPtrOutput)
+}
+
+// Severity, optional enumeration value:
+//
+// # Warning
+//
+// Critical
+func (o DiAlarmRuleTriggerConditionOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiAlarmRuleTriggerCondition) *string { return v.Severity }).(pulumi.StringPtrOutput)
+}
+
+// Alarm threshold.
+//
+// Task status alarm: no need to fill in the threshold.
+//
+// failover alarm: The threshold is the number of failover alarms.
+//
+// Task Delay Alarm: The threshold is the delay duration, in seconds.
+func (o DiAlarmRuleTriggerConditionOutput) Threshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DiAlarmRuleTriggerCondition) *int { return v.Threshold }).(pulumi.IntPtrOutput)
+}
+
+type DiAlarmRuleTriggerConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (DiAlarmRuleTriggerConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiAlarmRuleTriggerCondition)(nil)).Elem()
+}
+
+func (o DiAlarmRuleTriggerConditionArrayOutput) ToDiAlarmRuleTriggerConditionArrayOutput() DiAlarmRuleTriggerConditionArrayOutput {
+	return o
+}
+
+func (o DiAlarmRuleTriggerConditionArrayOutput) ToDiAlarmRuleTriggerConditionArrayOutputWithContext(ctx context.Context) DiAlarmRuleTriggerConditionArrayOutput {
+	return o
+}
+
+func (o DiAlarmRuleTriggerConditionArrayOutput) Index(i pulumi.IntInput) DiAlarmRuleTriggerConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiAlarmRuleTriggerCondition {
+		return vs[0].([]DiAlarmRuleTriggerCondition)[vs[1].(int)]
+	}).(DiAlarmRuleTriggerConditionOutput)
+}
+
+type DiJobDestinationDataSourceSetting struct {
+	// Destination data source name
+	DataSourceName *string `pulumi:"dataSourceName"`
+}
+
+// DiJobDestinationDataSourceSettingInput is an input type that accepts DiJobDestinationDataSourceSettingArgs and DiJobDestinationDataSourceSettingOutput values.
+// You can construct a concrete instance of `DiJobDestinationDataSourceSettingInput` via:
+//
+//	DiJobDestinationDataSourceSettingArgs{...}
+type DiJobDestinationDataSourceSettingInput interface {
+	pulumi.Input
+
+	ToDiJobDestinationDataSourceSettingOutput() DiJobDestinationDataSourceSettingOutput
+	ToDiJobDestinationDataSourceSettingOutputWithContext(context.Context) DiJobDestinationDataSourceSettingOutput
+}
+
+type DiJobDestinationDataSourceSettingArgs struct {
+	// Destination data source name
+	DataSourceName pulumi.StringPtrInput `pulumi:"dataSourceName"`
+}
+
+func (DiJobDestinationDataSourceSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiJobDestinationDataSourceSetting)(nil)).Elem()
+}
+
+func (i DiJobDestinationDataSourceSettingArgs) ToDiJobDestinationDataSourceSettingOutput() DiJobDestinationDataSourceSettingOutput {
+	return i.ToDiJobDestinationDataSourceSettingOutputWithContext(context.Background())
+}
+
+func (i DiJobDestinationDataSourceSettingArgs) ToDiJobDestinationDataSourceSettingOutputWithContext(ctx context.Context) DiJobDestinationDataSourceSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobDestinationDataSourceSettingOutput)
+}
+
+// DiJobDestinationDataSourceSettingArrayInput is an input type that accepts DiJobDestinationDataSourceSettingArray and DiJobDestinationDataSourceSettingArrayOutput values.
+// You can construct a concrete instance of `DiJobDestinationDataSourceSettingArrayInput` via:
+//
+//	DiJobDestinationDataSourceSettingArray{ DiJobDestinationDataSourceSettingArgs{...} }
+type DiJobDestinationDataSourceSettingArrayInput interface {
+	pulumi.Input
+
+	ToDiJobDestinationDataSourceSettingArrayOutput() DiJobDestinationDataSourceSettingArrayOutput
+	ToDiJobDestinationDataSourceSettingArrayOutputWithContext(context.Context) DiJobDestinationDataSourceSettingArrayOutput
+}
+
+type DiJobDestinationDataSourceSettingArray []DiJobDestinationDataSourceSettingInput
+
+func (DiJobDestinationDataSourceSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiJobDestinationDataSourceSetting)(nil)).Elem()
+}
+
+func (i DiJobDestinationDataSourceSettingArray) ToDiJobDestinationDataSourceSettingArrayOutput() DiJobDestinationDataSourceSettingArrayOutput {
+	return i.ToDiJobDestinationDataSourceSettingArrayOutputWithContext(context.Background())
+}
+
+func (i DiJobDestinationDataSourceSettingArray) ToDiJobDestinationDataSourceSettingArrayOutputWithContext(ctx context.Context) DiJobDestinationDataSourceSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobDestinationDataSourceSettingArrayOutput)
+}
+
+type DiJobDestinationDataSourceSettingOutput struct{ *pulumi.OutputState }
+
+func (DiJobDestinationDataSourceSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiJobDestinationDataSourceSetting)(nil)).Elem()
+}
+
+func (o DiJobDestinationDataSourceSettingOutput) ToDiJobDestinationDataSourceSettingOutput() DiJobDestinationDataSourceSettingOutput {
+	return o
+}
+
+func (o DiJobDestinationDataSourceSettingOutput) ToDiJobDestinationDataSourceSettingOutputWithContext(ctx context.Context) DiJobDestinationDataSourceSettingOutput {
+	return o
+}
+
+// Destination data source name
+func (o DiJobDestinationDataSourceSettingOutput) DataSourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiJobDestinationDataSourceSetting) *string { return v.DataSourceName }).(pulumi.StringPtrOutput)
+}
+
+type DiJobDestinationDataSourceSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (DiJobDestinationDataSourceSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiJobDestinationDataSourceSetting)(nil)).Elem()
+}
+
+func (o DiJobDestinationDataSourceSettingArrayOutput) ToDiJobDestinationDataSourceSettingArrayOutput() DiJobDestinationDataSourceSettingArrayOutput {
+	return o
+}
+
+func (o DiJobDestinationDataSourceSettingArrayOutput) ToDiJobDestinationDataSourceSettingArrayOutputWithContext(ctx context.Context) DiJobDestinationDataSourceSettingArrayOutput {
+	return o
+}
+
+func (o DiJobDestinationDataSourceSettingArrayOutput) Index(i pulumi.IntInput) DiJobDestinationDataSourceSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiJobDestinationDataSourceSetting {
+		return vs[0].([]DiJobDestinationDataSourceSetting)[vs[1].(int)]
+	}).(DiJobDestinationDataSourceSettingOutput)
+}
+
+type DiJobJobSettings struct {
+	// Channel-related task settings, in the form of a Json String.
+	//
+	// For example,
+	// {"structInfo":"MANAGED","storageType":"TEXTFILE","writeMode":"APPEND","partitionColumns":[{"columnName":"pt","columnType":"STRING","comment":""}],"fieldDelimiter":""}
+	ChannelSettings *string `pulumi:"channelSettings"`
+	// Column type mapping of the synchronization task See `columnDataTypeSettings` below.
+	ColumnDataTypeSettings []DiJobJobSettingsColumnDataTypeSetting `pulumi:"columnDataTypeSettings"`
+	// Periodic scheduling settings See `cycleScheduleSettings` below.
+	CycleScheduleSettings *DiJobJobSettingsCycleScheduleSettings `pulumi:"cycleScheduleSettings"`
+	// List of DDL processing settings for synchronization tasks See `ddlHandlingSettings` below.
+	DdlHandlingSettings []DiJobJobSettingsDdlHandlingSetting `pulumi:"ddlHandlingSettings"`
+	// Run-time setting parameter list See `runtimeSettings` below.
+	RuntimeSettings []DiJobJobSettingsRuntimeSetting `pulumi:"runtimeSettings"`
+}
+
+// DiJobJobSettingsInput is an input type that accepts DiJobJobSettingsArgs and DiJobJobSettingsOutput values.
+// You can construct a concrete instance of `DiJobJobSettingsInput` via:
+//
+//	DiJobJobSettingsArgs{...}
+type DiJobJobSettingsInput interface {
+	pulumi.Input
+
+	ToDiJobJobSettingsOutput() DiJobJobSettingsOutput
+	ToDiJobJobSettingsOutputWithContext(context.Context) DiJobJobSettingsOutput
+}
+
+type DiJobJobSettingsArgs struct {
+	// Channel-related task settings, in the form of a Json String.
+	//
+	// For example,
+	// {"structInfo":"MANAGED","storageType":"TEXTFILE","writeMode":"APPEND","partitionColumns":[{"columnName":"pt","columnType":"STRING","comment":""}],"fieldDelimiter":""}
+	ChannelSettings pulumi.StringPtrInput `pulumi:"channelSettings"`
+	// Column type mapping of the synchronization task See `columnDataTypeSettings` below.
+	ColumnDataTypeSettings DiJobJobSettingsColumnDataTypeSettingArrayInput `pulumi:"columnDataTypeSettings"`
+	// Periodic scheduling settings See `cycleScheduleSettings` below.
+	CycleScheduleSettings DiJobJobSettingsCycleScheduleSettingsPtrInput `pulumi:"cycleScheduleSettings"`
+	// List of DDL processing settings for synchronization tasks See `ddlHandlingSettings` below.
+	DdlHandlingSettings DiJobJobSettingsDdlHandlingSettingArrayInput `pulumi:"ddlHandlingSettings"`
+	// Run-time setting parameter list See `runtimeSettings` below.
+	RuntimeSettings DiJobJobSettingsRuntimeSettingArrayInput `pulumi:"runtimeSettings"`
+}
+
+func (DiJobJobSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiJobJobSettings)(nil)).Elem()
+}
+
+func (i DiJobJobSettingsArgs) ToDiJobJobSettingsOutput() DiJobJobSettingsOutput {
+	return i.ToDiJobJobSettingsOutputWithContext(context.Background())
+}
+
+func (i DiJobJobSettingsArgs) ToDiJobJobSettingsOutputWithContext(ctx context.Context) DiJobJobSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobJobSettingsOutput)
+}
+
+func (i DiJobJobSettingsArgs) ToDiJobJobSettingsPtrOutput() DiJobJobSettingsPtrOutput {
+	return i.ToDiJobJobSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i DiJobJobSettingsArgs) ToDiJobJobSettingsPtrOutputWithContext(ctx context.Context) DiJobJobSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobJobSettingsOutput).ToDiJobJobSettingsPtrOutputWithContext(ctx)
+}
+
+// DiJobJobSettingsPtrInput is an input type that accepts DiJobJobSettingsArgs, DiJobJobSettingsPtr and DiJobJobSettingsPtrOutput values.
+// You can construct a concrete instance of `DiJobJobSettingsPtrInput` via:
+//
+//	        DiJobJobSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DiJobJobSettingsPtrInput interface {
+	pulumi.Input
+
+	ToDiJobJobSettingsPtrOutput() DiJobJobSettingsPtrOutput
+	ToDiJobJobSettingsPtrOutputWithContext(context.Context) DiJobJobSettingsPtrOutput
+}
+
+type diJobJobSettingsPtrType DiJobJobSettingsArgs
+
+func DiJobJobSettingsPtr(v *DiJobJobSettingsArgs) DiJobJobSettingsPtrInput {
+	return (*diJobJobSettingsPtrType)(v)
+}
+
+func (*diJobJobSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiJobJobSettings)(nil)).Elem()
+}
+
+func (i *diJobJobSettingsPtrType) ToDiJobJobSettingsPtrOutput() DiJobJobSettingsPtrOutput {
+	return i.ToDiJobJobSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *diJobJobSettingsPtrType) ToDiJobJobSettingsPtrOutputWithContext(ctx context.Context) DiJobJobSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobJobSettingsPtrOutput)
+}
+
+type DiJobJobSettingsOutput struct{ *pulumi.OutputState }
+
+func (DiJobJobSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiJobJobSettings)(nil)).Elem()
+}
+
+func (o DiJobJobSettingsOutput) ToDiJobJobSettingsOutput() DiJobJobSettingsOutput {
+	return o
+}
+
+func (o DiJobJobSettingsOutput) ToDiJobJobSettingsOutputWithContext(ctx context.Context) DiJobJobSettingsOutput {
+	return o
+}
+
+func (o DiJobJobSettingsOutput) ToDiJobJobSettingsPtrOutput() DiJobJobSettingsPtrOutput {
+	return o.ToDiJobJobSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o DiJobJobSettingsOutput) ToDiJobJobSettingsPtrOutputWithContext(ctx context.Context) DiJobJobSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiJobJobSettings) *DiJobJobSettings {
+		return &v
+	}).(DiJobJobSettingsPtrOutput)
+}
+
+// Channel-related task settings, in the form of a Json String.
+//
+// For example,
+// {"structInfo":"MANAGED","storageType":"TEXTFILE","writeMode":"APPEND","partitionColumns":[{"columnName":"pt","columnType":"STRING","comment":""}],"fieldDelimiter":""}
+func (o DiJobJobSettingsOutput) ChannelSettings() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiJobJobSettings) *string { return v.ChannelSettings }).(pulumi.StringPtrOutput)
+}
+
+// Column type mapping of the synchronization task See `columnDataTypeSettings` below.
+func (o DiJobJobSettingsOutput) ColumnDataTypeSettings() DiJobJobSettingsColumnDataTypeSettingArrayOutput {
+	return o.ApplyT(func(v DiJobJobSettings) []DiJobJobSettingsColumnDataTypeSetting { return v.ColumnDataTypeSettings }).(DiJobJobSettingsColumnDataTypeSettingArrayOutput)
+}
+
+// Periodic scheduling settings See `cycleScheduleSettings` below.
+func (o DiJobJobSettingsOutput) CycleScheduleSettings() DiJobJobSettingsCycleScheduleSettingsPtrOutput {
+	return o.ApplyT(func(v DiJobJobSettings) *DiJobJobSettingsCycleScheduleSettings { return v.CycleScheduleSettings }).(DiJobJobSettingsCycleScheduleSettingsPtrOutput)
+}
+
+// List of DDL processing settings for synchronization tasks See `ddlHandlingSettings` below.
+func (o DiJobJobSettingsOutput) DdlHandlingSettings() DiJobJobSettingsDdlHandlingSettingArrayOutput {
+	return o.ApplyT(func(v DiJobJobSettings) []DiJobJobSettingsDdlHandlingSetting { return v.DdlHandlingSettings }).(DiJobJobSettingsDdlHandlingSettingArrayOutput)
+}
+
+// Run-time setting parameter list See `runtimeSettings` below.
+func (o DiJobJobSettingsOutput) RuntimeSettings() DiJobJobSettingsRuntimeSettingArrayOutput {
+	return o.ApplyT(func(v DiJobJobSettings) []DiJobJobSettingsRuntimeSetting { return v.RuntimeSettings }).(DiJobJobSettingsRuntimeSettingArrayOutput)
+}
+
+type DiJobJobSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (DiJobJobSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiJobJobSettings)(nil)).Elem()
+}
+
+func (o DiJobJobSettingsPtrOutput) ToDiJobJobSettingsPtrOutput() DiJobJobSettingsPtrOutput {
+	return o
+}
+
+func (o DiJobJobSettingsPtrOutput) ToDiJobJobSettingsPtrOutputWithContext(ctx context.Context) DiJobJobSettingsPtrOutput {
+	return o
+}
+
+func (o DiJobJobSettingsPtrOutput) Elem() DiJobJobSettingsOutput {
+	return o.ApplyT(func(v *DiJobJobSettings) DiJobJobSettings {
+		if v != nil {
+			return *v
+		}
+		var ret DiJobJobSettings
+		return ret
+	}).(DiJobJobSettingsOutput)
+}
+
+// Channel-related task settings, in the form of a Json String.
+//
+// For example,
+// {"structInfo":"MANAGED","storageType":"TEXTFILE","writeMode":"APPEND","partitionColumns":[{"columnName":"pt","columnType":"STRING","comment":""}],"fieldDelimiter":""}
+func (o DiJobJobSettingsPtrOutput) ChannelSettings() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiJobJobSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ChannelSettings
+	}).(pulumi.StringPtrOutput)
+}
+
+// Column type mapping of the synchronization task See `columnDataTypeSettings` below.
+func (o DiJobJobSettingsPtrOutput) ColumnDataTypeSettings() DiJobJobSettingsColumnDataTypeSettingArrayOutput {
+	return o.ApplyT(func(v *DiJobJobSettings) []DiJobJobSettingsColumnDataTypeSetting {
+		if v == nil {
+			return nil
+		}
+		return v.ColumnDataTypeSettings
+	}).(DiJobJobSettingsColumnDataTypeSettingArrayOutput)
+}
+
+// Periodic scheduling settings See `cycleScheduleSettings` below.
+func (o DiJobJobSettingsPtrOutput) CycleScheduleSettings() DiJobJobSettingsCycleScheduleSettingsPtrOutput {
+	return o.ApplyT(func(v *DiJobJobSettings) *DiJobJobSettingsCycleScheduleSettings {
+		if v == nil {
+			return nil
+		}
+		return v.CycleScheduleSettings
+	}).(DiJobJobSettingsCycleScheduleSettingsPtrOutput)
+}
+
+// List of DDL processing settings for synchronization tasks See `ddlHandlingSettings` below.
+func (o DiJobJobSettingsPtrOutput) DdlHandlingSettings() DiJobJobSettingsDdlHandlingSettingArrayOutput {
+	return o.ApplyT(func(v *DiJobJobSettings) []DiJobJobSettingsDdlHandlingSetting {
+		if v == nil {
+			return nil
+		}
+		return v.DdlHandlingSettings
+	}).(DiJobJobSettingsDdlHandlingSettingArrayOutput)
+}
+
+// Run-time setting parameter list See `runtimeSettings` below.
+func (o DiJobJobSettingsPtrOutput) RuntimeSettings() DiJobJobSettingsRuntimeSettingArrayOutput {
+	return o.ApplyT(func(v *DiJobJobSettings) []DiJobJobSettingsRuntimeSetting {
+		if v == nil {
+			return nil
+		}
+		return v.RuntimeSettings
+	}).(DiJobJobSettingsRuntimeSettingArrayOutput)
+}
+
+type DiJobJobSettingsColumnDataTypeSetting struct {
+	// The destination type of the mapping relationship
+	DestinationDataType *string `pulumi:"destinationDataType"`
+	// The source type of the mapping type
+	SourceDataType *string `pulumi:"sourceDataType"`
+}
+
+// DiJobJobSettingsColumnDataTypeSettingInput is an input type that accepts DiJobJobSettingsColumnDataTypeSettingArgs and DiJobJobSettingsColumnDataTypeSettingOutput values.
+// You can construct a concrete instance of `DiJobJobSettingsColumnDataTypeSettingInput` via:
+//
+//	DiJobJobSettingsColumnDataTypeSettingArgs{...}
+type DiJobJobSettingsColumnDataTypeSettingInput interface {
+	pulumi.Input
+
+	ToDiJobJobSettingsColumnDataTypeSettingOutput() DiJobJobSettingsColumnDataTypeSettingOutput
+	ToDiJobJobSettingsColumnDataTypeSettingOutputWithContext(context.Context) DiJobJobSettingsColumnDataTypeSettingOutput
+}
+
+type DiJobJobSettingsColumnDataTypeSettingArgs struct {
+	// The destination type of the mapping relationship
+	DestinationDataType pulumi.StringPtrInput `pulumi:"destinationDataType"`
+	// The source type of the mapping type
+	SourceDataType pulumi.StringPtrInput `pulumi:"sourceDataType"`
+}
+
+func (DiJobJobSettingsColumnDataTypeSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiJobJobSettingsColumnDataTypeSetting)(nil)).Elem()
+}
+
+func (i DiJobJobSettingsColumnDataTypeSettingArgs) ToDiJobJobSettingsColumnDataTypeSettingOutput() DiJobJobSettingsColumnDataTypeSettingOutput {
+	return i.ToDiJobJobSettingsColumnDataTypeSettingOutputWithContext(context.Background())
+}
+
+func (i DiJobJobSettingsColumnDataTypeSettingArgs) ToDiJobJobSettingsColumnDataTypeSettingOutputWithContext(ctx context.Context) DiJobJobSettingsColumnDataTypeSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobJobSettingsColumnDataTypeSettingOutput)
+}
+
+// DiJobJobSettingsColumnDataTypeSettingArrayInput is an input type that accepts DiJobJobSettingsColumnDataTypeSettingArray and DiJobJobSettingsColumnDataTypeSettingArrayOutput values.
+// You can construct a concrete instance of `DiJobJobSettingsColumnDataTypeSettingArrayInput` via:
+//
+//	DiJobJobSettingsColumnDataTypeSettingArray{ DiJobJobSettingsColumnDataTypeSettingArgs{...} }
+type DiJobJobSettingsColumnDataTypeSettingArrayInput interface {
+	pulumi.Input
+
+	ToDiJobJobSettingsColumnDataTypeSettingArrayOutput() DiJobJobSettingsColumnDataTypeSettingArrayOutput
+	ToDiJobJobSettingsColumnDataTypeSettingArrayOutputWithContext(context.Context) DiJobJobSettingsColumnDataTypeSettingArrayOutput
+}
+
+type DiJobJobSettingsColumnDataTypeSettingArray []DiJobJobSettingsColumnDataTypeSettingInput
+
+func (DiJobJobSettingsColumnDataTypeSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiJobJobSettingsColumnDataTypeSetting)(nil)).Elem()
+}
+
+func (i DiJobJobSettingsColumnDataTypeSettingArray) ToDiJobJobSettingsColumnDataTypeSettingArrayOutput() DiJobJobSettingsColumnDataTypeSettingArrayOutput {
+	return i.ToDiJobJobSettingsColumnDataTypeSettingArrayOutputWithContext(context.Background())
+}
+
+func (i DiJobJobSettingsColumnDataTypeSettingArray) ToDiJobJobSettingsColumnDataTypeSettingArrayOutputWithContext(ctx context.Context) DiJobJobSettingsColumnDataTypeSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobJobSettingsColumnDataTypeSettingArrayOutput)
+}
+
+type DiJobJobSettingsColumnDataTypeSettingOutput struct{ *pulumi.OutputState }
+
+func (DiJobJobSettingsColumnDataTypeSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiJobJobSettingsColumnDataTypeSetting)(nil)).Elem()
+}
+
+func (o DiJobJobSettingsColumnDataTypeSettingOutput) ToDiJobJobSettingsColumnDataTypeSettingOutput() DiJobJobSettingsColumnDataTypeSettingOutput {
+	return o
+}
+
+func (o DiJobJobSettingsColumnDataTypeSettingOutput) ToDiJobJobSettingsColumnDataTypeSettingOutputWithContext(ctx context.Context) DiJobJobSettingsColumnDataTypeSettingOutput {
+	return o
+}
+
+// The destination type of the mapping relationship
+func (o DiJobJobSettingsColumnDataTypeSettingOutput) DestinationDataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiJobJobSettingsColumnDataTypeSetting) *string { return v.DestinationDataType }).(pulumi.StringPtrOutput)
+}
+
+// The source type of the mapping type
+func (o DiJobJobSettingsColumnDataTypeSettingOutput) SourceDataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiJobJobSettingsColumnDataTypeSetting) *string { return v.SourceDataType }).(pulumi.StringPtrOutput)
+}
+
+type DiJobJobSettingsColumnDataTypeSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (DiJobJobSettingsColumnDataTypeSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiJobJobSettingsColumnDataTypeSetting)(nil)).Elem()
+}
+
+func (o DiJobJobSettingsColumnDataTypeSettingArrayOutput) ToDiJobJobSettingsColumnDataTypeSettingArrayOutput() DiJobJobSettingsColumnDataTypeSettingArrayOutput {
+	return o
+}
+
+func (o DiJobJobSettingsColumnDataTypeSettingArrayOutput) ToDiJobJobSettingsColumnDataTypeSettingArrayOutputWithContext(ctx context.Context) DiJobJobSettingsColumnDataTypeSettingArrayOutput {
+	return o
+}
+
+func (o DiJobJobSettingsColumnDataTypeSettingArrayOutput) Index(i pulumi.IntInput) DiJobJobSettingsColumnDataTypeSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiJobJobSettingsColumnDataTypeSetting {
+		return vs[0].([]DiJobJobSettingsColumnDataTypeSetting)[vs[1].(int)]
+	}).(DiJobJobSettingsColumnDataTypeSettingOutput)
+}
+
+type DiJobJobSettingsCycleScheduleSettings struct {
+	// The type of synchronization that requires periodic scheduling. Value range:
+	//
+	// Full: Full
+	//
+	// OfflineIncremental: offline increment
+	CycleMigrationType *string `pulumi:"cycleMigrationType"`
+	// Scheduling Parameters
+	ScheduleParameters *string `pulumi:"scheduleParameters"`
+}
+
+// DiJobJobSettingsCycleScheduleSettingsInput is an input type that accepts DiJobJobSettingsCycleScheduleSettingsArgs and DiJobJobSettingsCycleScheduleSettingsOutput values.
+// You can construct a concrete instance of `DiJobJobSettingsCycleScheduleSettingsInput` via:
+//
+//	DiJobJobSettingsCycleScheduleSettingsArgs{...}
+type DiJobJobSettingsCycleScheduleSettingsInput interface {
+	pulumi.Input
+
+	ToDiJobJobSettingsCycleScheduleSettingsOutput() DiJobJobSettingsCycleScheduleSettingsOutput
+	ToDiJobJobSettingsCycleScheduleSettingsOutputWithContext(context.Context) DiJobJobSettingsCycleScheduleSettingsOutput
+}
+
+type DiJobJobSettingsCycleScheduleSettingsArgs struct {
+	// The type of synchronization that requires periodic scheduling. Value range:
+	//
+	// Full: Full
+	//
+	// OfflineIncremental: offline increment
+	CycleMigrationType pulumi.StringPtrInput `pulumi:"cycleMigrationType"`
+	// Scheduling Parameters
+	ScheduleParameters pulumi.StringPtrInput `pulumi:"scheduleParameters"`
+}
+
+func (DiJobJobSettingsCycleScheduleSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiJobJobSettingsCycleScheduleSettings)(nil)).Elem()
+}
+
+func (i DiJobJobSettingsCycleScheduleSettingsArgs) ToDiJobJobSettingsCycleScheduleSettingsOutput() DiJobJobSettingsCycleScheduleSettingsOutput {
+	return i.ToDiJobJobSettingsCycleScheduleSettingsOutputWithContext(context.Background())
+}
+
+func (i DiJobJobSettingsCycleScheduleSettingsArgs) ToDiJobJobSettingsCycleScheduleSettingsOutputWithContext(ctx context.Context) DiJobJobSettingsCycleScheduleSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobJobSettingsCycleScheduleSettingsOutput)
+}
+
+func (i DiJobJobSettingsCycleScheduleSettingsArgs) ToDiJobJobSettingsCycleScheduleSettingsPtrOutput() DiJobJobSettingsCycleScheduleSettingsPtrOutput {
+	return i.ToDiJobJobSettingsCycleScheduleSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i DiJobJobSettingsCycleScheduleSettingsArgs) ToDiJobJobSettingsCycleScheduleSettingsPtrOutputWithContext(ctx context.Context) DiJobJobSettingsCycleScheduleSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobJobSettingsCycleScheduleSettingsOutput).ToDiJobJobSettingsCycleScheduleSettingsPtrOutputWithContext(ctx)
+}
+
+// DiJobJobSettingsCycleScheduleSettingsPtrInput is an input type that accepts DiJobJobSettingsCycleScheduleSettingsArgs, DiJobJobSettingsCycleScheduleSettingsPtr and DiJobJobSettingsCycleScheduleSettingsPtrOutput values.
+// You can construct a concrete instance of `DiJobJobSettingsCycleScheduleSettingsPtrInput` via:
+//
+//	        DiJobJobSettingsCycleScheduleSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DiJobJobSettingsCycleScheduleSettingsPtrInput interface {
+	pulumi.Input
+
+	ToDiJobJobSettingsCycleScheduleSettingsPtrOutput() DiJobJobSettingsCycleScheduleSettingsPtrOutput
+	ToDiJobJobSettingsCycleScheduleSettingsPtrOutputWithContext(context.Context) DiJobJobSettingsCycleScheduleSettingsPtrOutput
+}
+
+type diJobJobSettingsCycleScheduleSettingsPtrType DiJobJobSettingsCycleScheduleSettingsArgs
+
+func DiJobJobSettingsCycleScheduleSettingsPtr(v *DiJobJobSettingsCycleScheduleSettingsArgs) DiJobJobSettingsCycleScheduleSettingsPtrInput {
+	return (*diJobJobSettingsCycleScheduleSettingsPtrType)(v)
+}
+
+func (*diJobJobSettingsCycleScheduleSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiJobJobSettingsCycleScheduleSettings)(nil)).Elem()
+}
+
+func (i *diJobJobSettingsCycleScheduleSettingsPtrType) ToDiJobJobSettingsCycleScheduleSettingsPtrOutput() DiJobJobSettingsCycleScheduleSettingsPtrOutput {
+	return i.ToDiJobJobSettingsCycleScheduleSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *diJobJobSettingsCycleScheduleSettingsPtrType) ToDiJobJobSettingsCycleScheduleSettingsPtrOutputWithContext(ctx context.Context) DiJobJobSettingsCycleScheduleSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobJobSettingsCycleScheduleSettingsPtrOutput)
+}
+
+type DiJobJobSettingsCycleScheduleSettingsOutput struct{ *pulumi.OutputState }
+
+func (DiJobJobSettingsCycleScheduleSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiJobJobSettingsCycleScheduleSettings)(nil)).Elem()
+}
+
+func (o DiJobJobSettingsCycleScheduleSettingsOutput) ToDiJobJobSettingsCycleScheduleSettingsOutput() DiJobJobSettingsCycleScheduleSettingsOutput {
+	return o
+}
+
+func (o DiJobJobSettingsCycleScheduleSettingsOutput) ToDiJobJobSettingsCycleScheduleSettingsOutputWithContext(ctx context.Context) DiJobJobSettingsCycleScheduleSettingsOutput {
+	return o
+}
+
+func (o DiJobJobSettingsCycleScheduleSettingsOutput) ToDiJobJobSettingsCycleScheduleSettingsPtrOutput() DiJobJobSettingsCycleScheduleSettingsPtrOutput {
+	return o.ToDiJobJobSettingsCycleScheduleSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o DiJobJobSettingsCycleScheduleSettingsOutput) ToDiJobJobSettingsCycleScheduleSettingsPtrOutputWithContext(ctx context.Context) DiJobJobSettingsCycleScheduleSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiJobJobSettingsCycleScheduleSettings) *DiJobJobSettingsCycleScheduleSettings {
+		return &v
+	}).(DiJobJobSettingsCycleScheduleSettingsPtrOutput)
+}
+
+// The type of synchronization that requires periodic scheduling. Value range:
+//
+// Full: Full
+//
+// OfflineIncremental: offline increment
+func (o DiJobJobSettingsCycleScheduleSettingsOutput) CycleMigrationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiJobJobSettingsCycleScheduleSettings) *string { return v.CycleMigrationType }).(pulumi.StringPtrOutput)
+}
+
+// Scheduling Parameters
+func (o DiJobJobSettingsCycleScheduleSettingsOutput) ScheduleParameters() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiJobJobSettingsCycleScheduleSettings) *string { return v.ScheduleParameters }).(pulumi.StringPtrOutput)
+}
+
+type DiJobJobSettingsCycleScheduleSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (DiJobJobSettingsCycleScheduleSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiJobJobSettingsCycleScheduleSettings)(nil)).Elem()
+}
+
+func (o DiJobJobSettingsCycleScheduleSettingsPtrOutput) ToDiJobJobSettingsCycleScheduleSettingsPtrOutput() DiJobJobSettingsCycleScheduleSettingsPtrOutput {
+	return o
+}
+
+func (o DiJobJobSettingsCycleScheduleSettingsPtrOutput) ToDiJobJobSettingsCycleScheduleSettingsPtrOutputWithContext(ctx context.Context) DiJobJobSettingsCycleScheduleSettingsPtrOutput {
+	return o
+}
+
+func (o DiJobJobSettingsCycleScheduleSettingsPtrOutput) Elem() DiJobJobSettingsCycleScheduleSettingsOutput {
+	return o.ApplyT(func(v *DiJobJobSettingsCycleScheduleSettings) DiJobJobSettingsCycleScheduleSettings {
+		if v != nil {
+			return *v
+		}
+		var ret DiJobJobSettingsCycleScheduleSettings
+		return ret
+	}).(DiJobJobSettingsCycleScheduleSettingsOutput)
+}
+
+// The type of synchronization that requires periodic scheduling. Value range:
+//
+// Full: Full
+//
+// OfflineIncremental: offline increment
+func (o DiJobJobSettingsCycleScheduleSettingsPtrOutput) CycleMigrationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiJobJobSettingsCycleScheduleSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CycleMigrationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Scheduling Parameters
+func (o DiJobJobSettingsCycleScheduleSettingsPtrOutput) ScheduleParameters() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiJobJobSettingsCycleScheduleSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ScheduleParameters
+	}).(pulumi.StringPtrOutput)
+}
+
+type DiJobJobSettingsDdlHandlingSetting struct {
+	Action *string `pulumi:"action"`
+	// DDL type, optional enumeration value:
+	//
+	// RenameColumn (rename column)
+	//
+	// ModifyColumn (rename column)
+	//
+	// CreateTable (Rename Column)
+	//
+	// TruncateTable (empty table)
+	//
+	// DropTable (delete table)
+	Type *string `pulumi:"type"`
+}
+
+// DiJobJobSettingsDdlHandlingSettingInput is an input type that accepts DiJobJobSettingsDdlHandlingSettingArgs and DiJobJobSettingsDdlHandlingSettingOutput values.
+// You can construct a concrete instance of `DiJobJobSettingsDdlHandlingSettingInput` via:
+//
+//	DiJobJobSettingsDdlHandlingSettingArgs{...}
+type DiJobJobSettingsDdlHandlingSettingInput interface {
+	pulumi.Input
+
+	ToDiJobJobSettingsDdlHandlingSettingOutput() DiJobJobSettingsDdlHandlingSettingOutput
+	ToDiJobJobSettingsDdlHandlingSettingOutputWithContext(context.Context) DiJobJobSettingsDdlHandlingSettingOutput
+}
+
+type DiJobJobSettingsDdlHandlingSettingArgs struct {
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// DDL type, optional enumeration value:
+	//
+	// RenameColumn (rename column)
+	//
+	// ModifyColumn (rename column)
+	//
+	// CreateTable (Rename Column)
+	//
+	// TruncateTable (empty table)
+	//
+	// DropTable (delete table)
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (DiJobJobSettingsDdlHandlingSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiJobJobSettingsDdlHandlingSetting)(nil)).Elem()
+}
+
+func (i DiJobJobSettingsDdlHandlingSettingArgs) ToDiJobJobSettingsDdlHandlingSettingOutput() DiJobJobSettingsDdlHandlingSettingOutput {
+	return i.ToDiJobJobSettingsDdlHandlingSettingOutputWithContext(context.Background())
+}
+
+func (i DiJobJobSettingsDdlHandlingSettingArgs) ToDiJobJobSettingsDdlHandlingSettingOutputWithContext(ctx context.Context) DiJobJobSettingsDdlHandlingSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobJobSettingsDdlHandlingSettingOutput)
+}
+
+// DiJobJobSettingsDdlHandlingSettingArrayInput is an input type that accepts DiJobJobSettingsDdlHandlingSettingArray and DiJobJobSettingsDdlHandlingSettingArrayOutput values.
+// You can construct a concrete instance of `DiJobJobSettingsDdlHandlingSettingArrayInput` via:
+//
+//	DiJobJobSettingsDdlHandlingSettingArray{ DiJobJobSettingsDdlHandlingSettingArgs{...} }
+type DiJobJobSettingsDdlHandlingSettingArrayInput interface {
+	pulumi.Input
+
+	ToDiJobJobSettingsDdlHandlingSettingArrayOutput() DiJobJobSettingsDdlHandlingSettingArrayOutput
+	ToDiJobJobSettingsDdlHandlingSettingArrayOutputWithContext(context.Context) DiJobJobSettingsDdlHandlingSettingArrayOutput
+}
+
+type DiJobJobSettingsDdlHandlingSettingArray []DiJobJobSettingsDdlHandlingSettingInput
+
+func (DiJobJobSettingsDdlHandlingSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiJobJobSettingsDdlHandlingSetting)(nil)).Elem()
+}
+
+func (i DiJobJobSettingsDdlHandlingSettingArray) ToDiJobJobSettingsDdlHandlingSettingArrayOutput() DiJobJobSettingsDdlHandlingSettingArrayOutput {
+	return i.ToDiJobJobSettingsDdlHandlingSettingArrayOutputWithContext(context.Background())
+}
+
+func (i DiJobJobSettingsDdlHandlingSettingArray) ToDiJobJobSettingsDdlHandlingSettingArrayOutputWithContext(ctx context.Context) DiJobJobSettingsDdlHandlingSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobJobSettingsDdlHandlingSettingArrayOutput)
+}
+
+type DiJobJobSettingsDdlHandlingSettingOutput struct{ *pulumi.OutputState }
+
+func (DiJobJobSettingsDdlHandlingSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiJobJobSettingsDdlHandlingSetting)(nil)).Elem()
+}
+
+func (o DiJobJobSettingsDdlHandlingSettingOutput) ToDiJobJobSettingsDdlHandlingSettingOutput() DiJobJobSettingsDdlHandlingSettingOutput {
+	return o
+}
+
+func (o DiJobJobSettingsDdlHandlingSettingOutput) ToDiJobJobSettingsDdlHandlingSettingOutputWithContext(ctx context.Context) DiJobJobSettingsDdlHandlingSettingOutput {
+	return o
+}
+
+func (o DiJobJobSettingsDdlHandlingSettingOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiJobJobSettingsDdlHandlingSetting) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// DDL type, optional enumeration value:
+//
+// RenameColumn (rename column)
+//
+// ModifyColumn (rename column)
+//
+// CreateTable (Rename Column)
+//
+// TruncateTable (empty table)
+//
+// DropTable (delete table)
+func (o DiJobJobSettingsDdlHandlingSettingOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiJobJobSettingsDdlHandlingSetting) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type DiJobJobSettingsDdlHandlingSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (DiJobJobSettingsDdlHandlingSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiJobJobSettingsDdlHandlingSetting)(nil)).Elem()
+}
+
+func (o DiJobJobSettingsDdlHandlingSettingArrayOutput) ToDiJobJobSettingsDdlHandlingSettingArrayOutput() DiJobJobSettingsDdlHandlingSettingArrayOutput {
+	return o
+}
+
+func (o DiJobJobSettingsDdlHandlingSettingArrayOutput) ToDiJobJobSettingsDdlHandlingSettingArrayOutputWithContext(ctx context.Context) DiJobJobSettingsDdlHandlingSettingArrayOutput {
+	return o
+}
+
+func (o DiJobJobSettingsDdlHandlingSettingArrayOutput) Index(i pulumi.IntInput) DiJobJobSettingsDdlHandlingSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiJobJobSettingsDdlHandlingSetting {
+		return vs[0].([]DiJobJobSettingsDdlHandlingSetting)[vs[1].(int)]
+	}).(DiJobJobSettingsDdlHandlingSettingOutput)
+}
+
+type DiJobJobSettingsRuntimeSetting struct {
+	// Set name, optional ENUM value:
+	//
+	// runtime.offline.speed.limit.mb (valid when runtime.offline.speed.limit.enable = true)
+	//
+	// runtime.offline.speed.limit.enable
+	//
+	// dst.offline.connection.max (the maximum number of write connections for offline batch tasks)
+	//
+	// runtime.offline.concurrent (offline batch synchronization task concurrency)
+	//
+	// dst.realtime.connection.max (maximum number of write connections for real-time tasks)
+	//
+	// runtime.enable.auto.create.schema (whether to automatically create a schema on the target side)
+	//
+	// src.offline.datasource.max.connection (maximum number of source connections for offline batch tasks)
+	//
+	// runtime.realtime.concurrent (real-time task concurrency)
+	Name *string `pulumi:"name"`
+	// Runtime setting value
+	Value *string `pulumi:"value"`
+}
+
+// DiJobJobSettingsRuntimeSettingInput is an input type that accepts DiJobJobSettingsRuntimeSettingArgs and DiJobJobSettingsRuntimeSettingOutput values.
+// You can construct a concrete instance of `DiJobJobSettingsRuntimeSettingInput` via:
+//
+//	DiJobJobSettingsRuntimeSettingArgs{...}
+type DiJobJobSettingsRuntimeSettingInput interface {
+	pulumi.Input
+
+	ToDiJobJobSettingsRuntimeSettingOutput() DiJobJobSettingsRuntimeSettingOutput
+	ToDiJobJobSettingsRuntimeSettingOutputWithContext(context.Context) DiJobJobSettingsRuntimeSettingOutput
+}
+
+type DiJobJobSettingsRuntimeSettingArgs struct {
+	// Set name, optional ENUM value:
+	//
+	// runtime.offline.speed.limit.mb (valid when runtime.offline.speed.limit.enable = true)
+	//
+	// runtime.offline.speed.limit.enable
+	//
+	// dst.offline.connection.max (the maximum number of write connections for offline batch tasks)
+	//
+	// runtime.offline.concurrent (offline batch synchronization task concurrency)
+	//
+	// dst.realtime.connection.max (maximum number of write connections for real-time tasks)
+	//
+	// runtime.enable.auto.create.schema (whether to automatically create a schema on the target side)
+	//
+	// src.offline.datasource.max.connection (maximum number of source connections for offline batch tasks)
+	//
+	// runtime.realtime.concurrent (real-time task concurrency)
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Runtime setting value
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (DiJobJobSettingsRuntimeSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiJobJobSettingsRuntimeSetting)(nil)).Elem()
+}
+
+func (i DiJobJobSettingsRuntimeSettingArgs) ToDiJobJobSettingsRuntimeSettingOutput() DiJobJobSettingsRuntimeSettingOutput {
+	return i.ToDiJobJobSettingsRuntimeSettingOutputWithContext(context.Background())
+}
+
+func (i DiJobJobSettingsRuntimeSettingArgs) ToDiJobJobSettingsRuntimeSettingOutputWithContext(ctx context.Context) DiJobJobSettingsRuntimeSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobJobSettingsRuntimeSettingOutput)
+}
+
+// DiJobJobSettingsRuntimeSettingArrayInput is an input type that accepts DiJobJobSettingsRuntimeSettingArray and DiJobJobSettingsRuntimeSettingArrayOutput values.
+// You can construct a concrete instance of `DiJobJobSettingsRuntimeSettingArrayInput` via:
+//
+//	DiJobJobSettingsRuntimeSettingArray{ DiJobJobSettingsRuntimeSettingArgs{...} }
+type DiJobJobSettingsRuntimeSettingArrayInput interface {
+	pulumi.Input
+
+	ToDiJobJobSettingsRuntimeSettingArrayOutput() DiJobJobSettingsRuntimeSettingArrayOutput
+	ToDiJobJobSettingsRuntimeSettingArrayOutputWithContext(context.Context) DiJobJobSettingsRuntimeSettingArrayOutput
+}
+
+type DiJobJobSettingsRuntimeSettingArray []DiJobJobSettingsRuntimeSettingInput
+
+func (DiJobJobSettingsRuntimeSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiJobJobSettingsRuntimeSetting)(nil)).Elem()
+}
+
+func (i DiJobJobSettingsRuntimeSettingArray) ToDiJobJobSettingsRuntimeSettingArrayOutput() DiJobJobSettingsRuntimeSettingArrayOutput {
+	return i.ToDiJobJobSettingsRuntimeSettingArrayOutputWithContext(context.Background())
+}
+
+func (i DiJobJobSettingsRuntimeSettingArray) ToDiJobJobSettingsRuntimeSettingArrayOutputWithContext(ctx context.Context) DiJobJobSettingsRuntimeSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobJobSettingsRuntimeSettingArrayOutput)
+}
+
+type DiJobJobSettingsRuntimeSettingOutput struct{ *pulumi.OutputState }
+
+func (DiJobJobSettingsRuntimeSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiJobJobSettingsRuntimeSetting)(nil)).Elem()
+}
+
+func (o DiJobJobSettingsRuntimeSettingOutput) ToDiJobJobSettingsRuntimeSettingOutput() DiJobJobSettingsRuntimeSettingOutput {
+	return o
+}
+
+func (o DiJobJobSettingsRuntimeSettingOutput) ToDiJobJobSettingsRuntimeSettingOutputWithContext(ctx context.Context) DiJobJobSettingsRuntimeSettingOutput {
+	return o
+}
+
+// Set name, optional ENUM value:
+//
+// runtime.offline.speed.limit.mb (valid when runtime.offline.speed.limit.enable = true)
+//
+// runtime.offline.speed.limit.enable
+//
+// dst.offline.connection.max (the maximum number of write connections for offline batch tasks)
+//
+// runtime.offline.concurrent (offline batch synchronization task concurrency)
+//
+// dst.realtime.connection.max (maximum number of write connections for real-time tasks)
+//
+// runtime.enable.auto.create.schema (whether to automatically create a schema on the target side)
+//
+// src.offline.datasource.max.connection (maximum number of source connections for offline batch tasks)
+//
+// runtime.realtime.concurrent (real-time task concurrency)
+func (o DiJobJobSettingsRuntimeSettingOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiJobJobSettingsRuntimeSetting) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Runtime setting value
+func (o DiJobJobSettingsRuntimeSettingOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiJobJobSettingsRuntimeSetting) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type DiJobJobSettingsRuntimeSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (DiJobJobSettingsRuntimeSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiJobJobSettingsRuntimeSetting)(nil)).Elem()
+}
+
+func (o DiJobJobSettingsRuntimeSettingArrayOutput) ToDiJobJobSettingsRuntimeSettingArrayOutput() DiJobJobSettingsRuntimeSettingArrayOutput {
+	return o
+}
+
+func (o DiJobJobSettingsRuntimeSettingArrayOutput) ToDiJobJobSettingsRuntimeSettingArrayOutputWithContext(ctx context.Context) DiJobJobSettingsRuntimeSettingArrayOutput {
+	return o
+}
+
+func (o DiJobJobSettingsRuntimeSettingArrayOutput) Index(i pulumi.IntInput) DiJobJobSettingsRuntimeSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiJobJobSettingsRuntimeSetting {
+		return vs[0].([]DiJobJobSettingsRuntimeSetting)[vs[1].(int)]
+	}).(DiJobJobSettingsRuntimeSettingOutput)
+}
+
+type DiJobResourceSettings struct {
+	// Offline Resource Group configuration See `offlineResourceSettings` below.
+	OfflineResourceSettings *DiJobResourceSettingsOfflineResourceSettings `pulumi:"offlineResourceSettings"`
+	// Real-time Resource Group See `realtimeResourceSettings` below.
+	RealtimeResourceSettings *DiJobResourceSettingsRealtimeResourceSettings `pulumi:"realtimeResourceSettings"`
+	// Scheduling Resource Groups See `scheduleResourceSettings` below.
+	ScheduleResourceSettings *DiJobResourceSettingsScheduleResourceSettings `pulumi:"scheduleResourceSettings"`
+}
+
+// DiJobResourceSettingsInput is an input type that accepts DiJobResourceSettingsArgs and DiJobResourceSettingsOutput values.
+// You can construct a concrete instance of `DiJobResourceSettingsInput` via:
+//
+//	DiJobResourceSettingsArgs{...}
+type DiJobResourceSettingsInput interface {
+	pulumi.Input
+
+	ToDiJobResourceSettingsOutput() DiJobResourceSettingsOutput
+	ToDiJobResourceSettingsOutputWithContext(context.Context) DiJobResourceSettingsOutput
+}
+
+type DiJobResourceSettingsArgs struct {
+	// Offline Resource Group configuration See `offlineResourceSettings` below.
+	OfflineResourceSettings DiJobResourceSettingsOfflineResourceSettingsPtrInput `pulumi:"offlineResourceSettings"`
+	// Real-time Resource Group See `realtimeResourceSettings` below.
+	RealtimeResourceSettings DiJobResourceSettingsRealtimeResourceSettingsPtrInput `pulumi:"realtimeResourceSettings"`
+	// Scheduling Resource Groups See `scheduleResourceSettings` below.
+	ScheduleResourceSettings DiJobResourceSettingsScheduleResourceSettingsPtrInput `pulumi:"scheduleResourceSettings"`
+}
+
+func (DiJobResourceSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiJobResourceSettings)(nil)).Elem()
+}
+
+func (i DiJobResourceSettingsArgs) ToDiJobResourceSettingsOutput() DiJobResourceSettingsOutput {
+	return i.ToDiJobResourceSettingsOutputWithContext(context.Background())
+}
+
+func (i DiJobResourceSettingsArgs) ToDiJobResourceSettingsOutputWithContext(ctx context.Context) DiJobResourceSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobResourceSettingsOutput)
+}
+
+func (i DiJobResourceSettingsArgs) ToDiJobResourceSettingsPtrOutput() DiJobResourceSettingsPtrOutput {
+	return i.ToDiJobResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i DiJobResourceSettingsArgs) ToDiJobResourceSettingsPtrOutputWithContext(ctx context.Context) DiJobResourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobResourceSettingsOutput).ToDiJobResourceSettingsPtrOutputWithContext(ctx)
+}
+
+// DiJobResourceSettingsPtrInput is an input type that accepts DiJobResourceSettingsArgs, DiJobResourceSettingsPtr and DiJobResourceSettingsPtrOutput values.
+// You can construct a concrete instance of `DiJobResourceSettingsPtrInput` via:
+//
+//	        DiJobResourceSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DiJobResourceSettingsPtrInput interface {
+	pulumi.Input
+
+	ToDiJobResourceSettingsPtrOutput() DiJobResourceSettingsPtrOutput
+	ToDiJobResourceSettingsPtrOutputWithContext(context.Context) DiJobResourceSettingsPtrOutput
+}
+
+type diJobResourceSettingsPtrType DiJobResourceSettingsArgs
+
+func DiJobResourceSettingsPtr(v *DiJobResourceSettingsArgs) DiJobResourceSettingsPtrInput {
+	return (*diJobResourceSettingsPtrType)(v)
+}
+
+func (*diJobResourceSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiJobResourceSettings)(nil)).Elem()
+}
+
+func (i *diJobResourceSettingsPtrType) ToDiJobResourceSettingsPtrOutput() DiJobResourceSettingsPtrOutput {
+	return i.ToDiJobResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *diJobResourceSettingsPtrType) ToDiJobResourceSettingsPtrOutputWithContext(ctx context.Context) DiJobResourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobResourceSettingsPtrOutput)
+}
+
+type DiJobResourceSettingsOutput struct{ *pulumi.OutputState }
+
+func (DiJobResourceSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiJobResourceSettings)(nil)).Elem()
+}
+
+func (o DiJobResourceSettingsOutput) ToDiJobResourceSettingsOutput() DiJobResourceSettingsOutput {
+	return o
+}
+
+func (o DiJobResourceSettingsOutput) ToDiJobResourceSettingsOutputWithContext(ctx context.Context) DiJobResourceSettingsOutput {
+	return o
+}
+
+func (o DiJobResourceSettingsOutput) ToDiJobResourceSettingsPtrOutput() DiJobResourceSettingsPtrOutput {
+	return o.ToDiJobResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o DiJobResourceSettingsOutput) ToDiJobResourceSettingsPtrOutputWithContext(ctx context.Context) DiJobResourceSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiJobResourceSettings) *DiJobResourceSettings {
+		return &v
+	}).(DiJobResourceSettingsPtrOutput)
+}
+
+// Offline Resource Group configuration See `offlineResourceSettings` below.
+func (o DiJobResourceSettingsOutput) OfflineResourceSettings() DiJobResourceSettingsOfflineResourceSettingsPtrOutput {
+	return o.ApplyT(func(v DiJobResourceSettings) *DiJobResourceSettingsOfflineResourceSettings {
+		return v.OfflineResourceSettings
+	}).(DiJobResourceSettingsOfflineResourceSettingsPtrOutput)
+}
+
+// Real-time Resource Group See `realtimeResourceSettings` below.
+func (o DiJobResourceSettingsOutput) RealtimeResourceSettings() DiJobResourceSettingsRealtimeResourceSettingsPtrOutput {
+	return o.ApplyT(func(v DiJobResourceSettings) *DiJobResourceSettingsRealtimeResourceSettings {
+		return v.RealtimeResourceSettings
+	}).(DiJobResourceSettingsRealtimeResourceSettingsPtrOutput)
+}
+
+// Scheduling Resource Groups See `scheduleResourceSettings` below.
+func (o DiJobResourceSettingsOutput) ScheduleResourceSettings() DiJobResourceSettingsScheduleResourceSettingsPtrOutput {
+	return o.ApplyT(func(v DiJobResourceSettings) *DiJobResourceSettingsScheduleResourceSettings {
+		return v.ScheduleResourceSettings
+	}).(DiJobResourceSettingsScheduleResourceSettingsPtrOutput)
+}
+
+type DiJobResourceSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (DiJobResourceSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiJobResourceSettings)(nil)).Elem()
+}
+
+func (o DiJobResourceSettingsPtrOutput) ToDiJobResourceSettingsPtrOutput() DiJobResourceSettingsPtrOutput {
+	return o
+}
+
+func (o DiJobResourceSettingsPtrOutput) ToDiJobResourceSettingsPtrOutputWithContext(ctx context.Context) DiJobResourceSettingsPtrOutput {
+	return o
+}
+
+func (o DiJobResourceSettingsPtrOutput) Elem() DiJobResourceSettingsOutput {
+	return o.ApplyT(func(v *DiJobResourceSettings) DiJobResourceSettings {
+		if v != nil {
+			return *v
+		}
+		var ret DiJobResourceSettings
+		return ret
+	}).(DiJobResourceSettingsOutput)
+}
+
+// Offline Resource Group configuration See `offlineResourceSettings` below.
+func (o DiJobResourceSettingsPtrOutput) OfflineResourceSettings() DiJobResourceSettingsOfflineResourceSettingsPtrOutput {
+	return o.ApplyT(func(v *DiJobResourceSettings) *DiJobResourceSettingsOfflineResourceSettings {
+		if v == nil {
+			return nil
+		}
+		return v.OfflineResourceSettings
+	}).(DiJobResourceSettingsOfflineResourceSettingsPtrOutput)
+}
+
+// Real-time Resource Group See `realtimeResourceSettings` below.
+func (o DiJobResourceSettingsPtrOutput) RealtimeResourceSettings() DiJobResourceSettingsRealtimeResourceSettingsPtrOutput {
+	return o.ApplyT(func(v *DiJobResourceSettings) *DiJobResourceSettingsRealtimeResourceSettings {
+		if v == nil {
+			return nil
+		}
+		return v.RealtimeResourceSettings
+	}).(DiJobResourceSettingsRealtimeResourceSettingsPtrOutput)
+}
+
+// Scheduling Resource Groups See `scheduleResourceSettings` below.
+func (o DiJobResourceSettingsPtrOutput) ScheduleResourceSettings() DiJobResourceSettingsScheduleResourceSettingsPtrOutput {
+	return o.ApplyT(func(v *DiJobResourceSettings) *DiJobResourceSettingsScheduleResourceSettings {
+		if v == nil {
+			return nil
+		}
+		return v.ScheduleResourceSettings
+	}).(DiJobResourceSettingsScheduleResourceSettingsPtrOutput)
+}
+
+type DiJobResourceSettingsOfflineResourceSettings struct {
+	// Scheduling resource group cu
+	RequestedCu *float64 `pulumi:"requestedCu"`
+	// Scheduling resource group name
+	ResourceGroupIdentifier *string `pulumi:"resourceGroupIdentifier"`
+}
+
+// DiJobResourceSettingsOfflineResourceSettingsInput is an input type that accepts DiJobResourceSettingsOfflineResourceSettingsArgs and DiJobResourceSettingsOfflineResourceSettingsOutput values.
+// You can construct a concrete instance of `DiJobResourceSettingsOfflineResourceSettingsInput` via:
+//
+//	DiJobResourceSettingsOfflineResourceSettingsArgs{...}
+type DiJobResourceSettingsOfflineResourceSettingsInput interface {
+	pulumi.Input
+
+	ToDiJobResourceSettingsOfflineResourceSettingsOutput() DiJobResourceSettingsOfflineResourceSettingsOutput
+	ToDiJobResourceSettingsOfflineResourceSettingsOutputWithContext(context.Context) DiJobResourceSettingsOfflineResourceSettingsOutput
+}
+
+type DiJobResourceSettingsOfflineResourceSettingsArgs struct {
+	// Scheduling resource group cu
+	RequestedCu pulumi.Float64PtrInput `pulumi:"requestedCu"`
+	// Scheduling resource group name
+	ResourceGroupIdentifier pulumi.StringPtrInput `pulumi:"resourceGroupIdentifier"`
+}
+
+func (DiJobResourceSettingsOfflineResourceSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiJobResourceSettingsOfflineResourceSettings)(nil)).Elem()
+}
+
+func (i DiJobResourceSettingsOfflineResourceSettingsArgs) ToDiJobResourceSettingsOfflineResourceSettingsOutput() DiJobResourceSettingsOfflineResourceSettingsOutput {
+	return i.ToDiJobResourceSettingsOfflineResourceSettingsOutputWithContext(context.Background())
+}
+
+func (i DiJobResourceSettingsOfflineResourceSettingsArgs) ToDiJobResourceSettingsOfflineResourceSettingsOutputWithContext(ctx context.Context) DiJobResourceSettingsOfflineResourceSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobResourceSettingsOfflineResourceSettingsOutput)
+}
+
+func (i DiJobResourceSettingsOfflineResourceSettingsArgs) ToDiJobResourceSettingsOfflineResourceSettingsPtrOutput() DiJobResourceSettingsOfflineResourceSettingsPtrOutput {
+	return i.ToDiJobResourceSettingsOfflineResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i DiJobResourceSettingsOfflineResourceSettingsArgs) ToDiJobResourceSettingsOfflineResourceSettingsPtrOutputWithContext(ctx context.Context) DiJobResourceSettingsOfflineResourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobResourceSettingsOfflineResourceSettingsOutput).ToDiJobResourceSettingsOfflineResourceSettingsPtrOutputWithContext(ctx)
+}
+
+// DiJobResourceSettingsOfflineResourceSettingsPtrInput is an input type that accepts DiJobResourceSettingsOfflineResourceSettingsArgs, DiJobResourceSettingsOfflineResourceSettingsPtr and DiJobResourceSettingsOfflineResourceSettingsPtrOutput values.
+// You can construct a concrete instance of `DiJobResourceSettingsOfflineResourceSettingsPtrInput` via:
+//
+//	        DiJobResourceSettingsOfflineResourceSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DiJobResourceSettingsOfflineResourceSettingsPtrInput interface {
+	pulumi.Input
+
+	ToDiJobResourceSettingsOfflineResourceSettingsPtrOutput() DiJobResourceSettingsOfflineResourceSettingsPtrOutput
+	ToDiJobResourceSettingsOfflineResourceSettingsPtrOutputWithContext(context.Context) DiJobResourceSettingsOfflineResourceSettingsPtrOutput
+}
+
+type diJobResourceSettingsOfflineResourceSettingsPtrType DiJobResourceSettingsOfflineResourceSettingsArgs
+
+func DiJobResourceSettingsOfflineResourceSettingsPtr(v *DiJobResourceSettingsOfflineResourceSettingsArgs) DiJobResourceSettingsOfflineResourceSettingsPtrInput {
+	return (*diJobResourceSettingsOfflineResourceSettingsPtrType)(v)
+}
+
+func (*diJobResourceSettingsOfflineResourceSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiJobResourceSettingsOfflineResourceSettings)(nil)).Elem()
+}
+
+func (i *diJobResourceSettingsOfflineResourceSettingsPtrType) ToDiJobResourceSettingsOfflineResourceSettingsPtrOutput() DiJobResourceSettingsOfflineResourceSettingsPtrOutput {
+	return i.ToDiJobResourceSettingsOfflineResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *diJobResourceSettingsOfflineResourceSettingsPtrType) ToDiJobResourceSettingsOfflineResourceSettingsPtrOutputWithContext(ctx context.Context) DiJobResourceSettingsOfflineResourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobResourceSettingsOfflineResourceSettingsPtrOutput)
+}
+
+type DiJobResourceSettingsOfflineResourceSettingsOutput struct{ *pulumi.OutputState }
+
+func (DiJobResourceSettingsOfflineResourceSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiJobResourceSettingsOfflineResourceSettings)(nil)).Elem()
+}
+
+func (o DiJobResourceSettingsOfflineResourceSettingsOutput) ToDiJobResourceSettingsOfflineResourceSettingsOutput() DiJobResourceSettingsOfflineResourceSettingsOutput {
+	return o
+}
+
+func (o DiJobResourceSettingsOfflineResourceSettingsOutput) ToDiJobResourceSettingsOfflineResourceSettingsOutputWithContext(ctx context.Context) DiJobResourceSettingsOfflineResourceSettingsOutput {
+	return o
+}
+
+func (o DiJobResourceSettingsOfflineResourceSettingsOutput) ToDiJobResourceSettingsOfflineResourceSettingsPtrOutput() DiJobResourceSettingsOfflineResourceSettingsPtrOutput {
+	return o.ToDiJobResourceSettingsOfflineResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o DiJobResourceSettingsOfflineResourceSettingsOutput) ToDiJobResourceSettingsOfflineResourceSettingsPtrOutputWithContext(ctx context.Context) DiJobResourceSettingsOfflineResourceSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiJobResourceSettingsOfflineResourceSettings) *DiJobResourceSettingsOfflineResourceSettings {
+		return &v
+	}).(DiJobResourceSettingsOfflineResourceSettingsPtrOutput)
+}
+
+// Scheduling resource group cu
+func (o DiJobResourceSettingsOfflineResourceSettingsOutput) RequestedCu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DiJobResourceSettingsOfflineResourceSettings) *float64 { return v.RequestedCu }).(pulumi.Float64PtrOutput)
+}
+
+// Scheduling resource group name
+func (o DiJobResourceSettingsOfflineResourceSettingsOutput) ResourceGroupIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiJobResourceSettingsOfflineResourceSettings) *string { return v.ResourceGroupIdentifier }).(pulumi.StringPtrOutput)
+}
+
+type DiJobResourceSettingsOfflineResourceSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (DiJobResourceSettingsOfflineResourceSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiJobResourceSettingsOfflineResourceSettings)(nil)).Elem()
+}
+
+func (o DiJobResourceSettingsOfflineResourceSettingsPtrOutput) ToDiJobResourceSettingsOfflineResourceSettingsPtrOutput() DiJobResourceSettingsOfflineResourceSettingsPtrOutput {
+	return o
+}
+
+func (o DiJobResourceSettingsOfflineResourceSettingsPtrOutput) ToDiJobResourceSettingsOfflineResourceSettingsPtrOutputWithContext(ctx context.Context) DiJobResourceSettingsOfflineResourceSettingsPtrOutput {
+	return o
+}
+
+func (o DiJobResourceSettingsOfflineResourceSettingsPtrOutput) Elem() DiJobResourceSettingsOfflineResourceSettingsOutput {
+	return o.ApplyT(func(v *DiJobResourceSettingsOfflineResourceSettings) DiJobResourceSettingsOfflineResourceSettings {
+		if v != nil {
+			return *v
+		}
+		var ret DiJobResourceSettingsOfflineResourceSettings
+		return ret
+	}).(DiJobResourceSettingsOfflineResourceSettingsOutput)
+}
+
+// Scheduling resource group cu
+func (o DiJobResourceSettingsOfflineResourceSettingsPtrOutput) RequestedCu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DiJobResourceSettingsOfflineResourceSettings) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.RequestedCu
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Scheduling resource group name
+func (o DiJobResourceSettingsOfflineResourceSettingsPtrOutput) ResourceGroupIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiJobResourceSettingsOfflineResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceGroupIdentifier
+	}).(pulumi.StringPtrOutput)
+}
+
+type DiJobResourceSettingsRealtimeResourceSettings struct {
+	// Scheduling resource group cu
+	RequestedCu *float64 `pulumi:"requestedCu"`
+	// Scheduling resource group name
+	ResourceGroupIdentifier *string `pulumi:"resourceGroupIdentifier"`
+}
+
+// DiJobResourceSettingsRealtimeResourceSettingsInput is an input type that accepts DiJobResourceSettingsRealtimeResourceSettingsArgs and DiJobResourceSettingsRealtimeResourceSettingsOutput values.
+// You can construct a concrete instance of `DiJobResourceSettingsRealtimeResourceSettingsInput` via:
+//
+//	DiJobResourceSettingsRealtimeResourceSettingsArgs{...}
+type DiJobResourceSettingsRealtimeResourceSettingsInput interface {
+	pulumi.Input
+
+	ToDiJobResourceSettingsRealtimeResourceSettingsOutput() DiJobResourceSettingsRealtimeResourceSettingsOutput
+	ToDiJobResourceSettingsRealtimeResourceSettingsOutputWithContext(context.Context) DiJobResourceSettingsRealtimeResourceSettingsOutput
+}
+
+type DiJobResourceSettingsRealtimeResourceSettingsArgs struct {
+	// Scheduling resource group cu
+	RequestedCu pulumi.Float64PtrInput `pulumi:"requestedCu"`
+	// Scheduling resource group name
+	ResourceGroupIdentifier pulumi.StringPtrInput `pulumi:"resourceGroupIdentifier"`
+}
+
+func (DiJobResourceSettingsRealtimeResourceSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiJobResourceSettingsRealtimeResourceSettings)(nil)).Elem()
+}
+
+func (i DiJobResourceSettingsRealtimeResourceSettingsArgs) ToDiJobResourceSettingsRealtimeResourceSettingsOutput() DiJobResourceSettingsRealtimeResourceSettingsOutput {
+	return i.ToDiJobResourceSettingsRealtimeResourceSettingsOutputWithContext(context.Background())
+}
+
+func (i DiJobResourceSettingsRealtimeResourceSettingsArgs) ToDiJobResourceSettingsRealtimeResourceSettingsOutputWithContext(ctx context.Context) DiJobResourceSettingsRealtimeResourceSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobResourceSettingsRealtimeResourceSettingsOutput)
+}
+
+func (i DiJobResourceSettingsRealtimeResourceSettingsArgs) ToDiJobResourceSettingsRealtimeResourceSettingsPtrOutput() DiJobResourceSettingsRealtimeResourceSettingsPtrOutput {
+	return i.ToDiJobResourceSettingsRealtimeResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i DiJobResourceSettingsRealtimeResourceSettingsArgs) ToDiJobResourceSettingsRealtimeResourceSettingsPtrOutputWithContext(ctx context.Context) DiJobResourceSettingsRealtimeResourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobResourceSettingsRealtimeResourceSettingsOutput).ToDiJobResourceSettingsRealtimeResourceSettingsPtrOutputWithContext(ctx)
+}
+
+// DiJobResourceSettingsRealtimeResourceSettingsPtrInput is an input type that accepts DiJobResourceSettingsRealtimeResourceSettingsArgs, DiJobResourceSettingsRealtimeResourceSettingsPtr and DiJobResourceSettingsRealtimeResourceSettingsPtrOutput values.
+// You can construct a concrete instance of `DiJobResourceSettingsRealtimeResourceSettingsPtrInput` via:
+//
+//	        DiJobResourceSettingsRealtimeResourceSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DiJobResourceSettingsRealtimeResourceSettingsPtrInput interface {
+	pulumi.Input
+
+	ToDiJobResourceSettingsRealtimeResourceSettingsPtrOutput() DiJobResourceSettingsRealtimeResourceSettingsPtrOutput
+	ToDiJobResourceSettingsRealtimeResourceSettingsPtrOutputWithContext(context.Context) DiJobResourceSettingsRealtimeResourceSettingsPtrOutput
+}
+
+type diJobResourceSettingsRealtimeResourceSettingsPtrType DiJobResourceSettingsRealtimeResourceSettingsArgs
+
+func DiJobResourceSettingsRealtimeResourceSettingsPtr(v *DiJobResourceSettingsRealtimeResourceSettingsArgs) DiJobResourceSettingsRealtimeResourceSettingsPtrInput {
+	return (*diJobResourceSettingsRealtimeResourceSettingsPtrType)(v)
+}
+
+func (*diJobResourceSettingsRealtimeResourceSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiJobResourceSettingsRealtimeResourceSettings)(nil)).Elem()
+}
+
+func (i *diJobResourceSettingsRealtimeResourceSettingsPtrType) ToDiJobResourceSettingsRealtimeResourceSettingsPtrOutput() DiJobResourceSettingsRealtimeResourceSettingsPtrOutput {
+	return i.ToDiJobResourceSettingsRealtimeResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *diJobResourceSettingsRealtimeResourceSettingsPtrType) ToDiJobResourceSettingsRealtimeResourceSettingsPtrOutputWithContext(ctx context.Context) DiJobResourceSettingsRealtimeResourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobResourceSettingsRealtimeResourceSettingsPtrOutput)
+}
+
+type DiJobResourceSettingsRealtimeResourceSettingsOutput struct{ *pulumi.OutputState }
+
+func (DiJobResourceSettingsRealtimeResourceSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiJobResourceSettingsRealtimeResourceSettings)(nil)).Elem()
+}
+
+func (o DiJobResourceSettingsRealtimeResourceSettingsOutput) ToDiJobResourceSettingsRealtimeResourceSettingsOutput() DiJobResourceSettingsRealtimeResourceSettingsOutput {
+	return o
+}
+
+func (o DiJobResourceSettingsRealtimeResourceSettingsOutput) ToDiJobResourceSettingsRealtimeResourceSettingsOutputWithContext(ctx context.Context) DiJobResourceSettingsRealtimeResourceSettingsOutput {
+	return o
+}
+
+func (o DiJobResourceSettingsRealtimeResourceSettingsOutput) ToDiJobResourceSettingsRealtimeResourceSettingsPtrOutput() DiJobResourceSettingsRealtimeResourceSettingsPtrOutput {
+	return o.ToDiJobResourceSettingsRealtimeResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o DiJobResourceSettingsRealtimeResourceSettingsOutput) ToDiJobResourceSettingsRealtimeResourceSettingsPtrOutputWithContext(ctx context.Context) DiJobResourceSettingsRealtimeResourceSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiJobResourceSettingsRealtimeResourceSettings) *DiJobResourceSettingsRealtimeResourceSettings {
+		return &v
+	}).(DiJobResourceSettingsRealtimeResourceSettingsPtrOutput)
+}
+
+// Scheduling resource group cu
+func (o DiJobResourceSettingsRealtimeResourceSettingsOutput) RequestedCu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DiJobResourceSettingsRealtimeResourceSettings) *float64 { return v.RequestedCu }).(pulumi.Float64PtrOutput)
+}
+
+// Scheduling resource group name
+func (o DiJobResourceSettingsRealtimeResourceSettingsOutput) ResourceGroupIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiJobResourceSettingsRealtimeResourceSettings) *string { return v.ResourceGroupIdentifier }).(pulumi.StringPtrOutput)
+}
+
+type DiJobResourceSettingsRealtimeResourceSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (DiJobResourceSettingsRealtimeResourceSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiJobResourceSettingsRealtimeResourceSettings)(nil)).Elem()
+}
+
+func (o DiJobResourceSettingsRealtimeResourceSettingsPtrOutput) ToDiJobResourceSettingsRealtimeResourceSettingsPtrOutput() DiJobResourceSettingsRealtimeResourceSettingsPtrOutput {
+	return o
+}
+
+func (o DiJobResourceSettingsRealtimeResourceSettingsPtrOutput) ToDiJobResourceSettingsRealtimeResourceSettingsPtrOutputWithContext(ctx context.Context) DiJobResourceSettingsRealtimeResourceSettingsPtrOutput {
+	return o
+}
+
+func (o DiJobResourceSettingsRealtimeResourceSettingsPtrOutput) Elem() DiJobResourceSettingsRealtimeResourceSettingsOutput {
+	return o.ApplyT(func(v *DiJobResourceSettingsRealtimeResourceSettings) DiJobResourceSettingsRealtimeResourceSettings {
+		if v != nil {
+			return *v
+		}
+		var ret DiJobResourceSettingsRealtimeResourceSettings
+		return ret
+	}).(DiJobResourceSettingsRealtimeResourceSettingsOutput)
+}
+
+// Scheduling resource group cu
+func (o DiJobResourceSettingsRealtimeResourceSettingsPtrOutput) RequestedCu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DiJobResourceSettingsRealtimeResourceSettings) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.RequestedCu
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Scheduling resource group name
+func (o DiJobResourceSettingsRealtimeResourceSettingsPtrOutput) ResourceGroupIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiJobResourceSettingsRealtimeResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceGroupIdentifier
+	}).(pulumi.StringPtrOutput)
+}
+
+type DiJobResourceSettingsScheduleResourceSettings struct {
+	// Scheduling resource group cu
+	RequestedCu *float64 `pulumi:"requestedCu"`
+	// Scheduling resource group name
+	ResourceGroupIdentifier *string `pulumi:"resourceGroupIdentifier"`
+}
+
+// DiJobResourceSettingsScheduleResourceSettingsInput is an input type that accepts DiJobResourceSettingsScheduleResourceSettingsArgs and DiJobResourceSettingsScheduleResourceSettingsOutput values.
+// You can construct a concrete instance of `DiJobResourceSettingsScheduleResourceSettingsInput` via:
+//
+//	DiJobResourceSettingsScheduleResourceSettingsArgs{...}
+type DiJobResourceSettingsScheduleResourceSettingsInput interface {
+	pulumi.Input
+
+	ToDiJobResourceSettingsScheduleResourceSettingsOutput() DiJobResourceSettingsScheduleResourceSettingsOutput
+	ToDiJobResourceSettingsScheduleResourceSettingsOutputWithContext(context.Context) DiJobResourceSettingsScheduleResourceSettingsOutput
+}
+
+type DiJobResourceSettingsScheduleResourceSettingsArgs struct {
+	// Scheduling resource group cu
+	RequestedCu pulumi.Float64PtrInput `pulumi:"requestedCu"`
+	// Scheduling resource group name
+	ResourceGroupIdentifier pulumi.StringPtrInput `pulumi:"resourceGroupIdentifier"`
+}
+
+func (DiJobResourceSettingsScheduleResourceSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiJobResourceSettingsScheduleResourceSettings)(nil)).Elem()
+}
+
+func (i DiJobResourceSettingsScheduleResourceSettingsArgs) ToDiJobResourceSettingsScheduleResourceSettingsOutput() DiJobResourceSettingsScheduleResourceSettingsOutput {
+	return i.ToDiJobResourceSettingsScheduleResourceSettingsOutputWithContext(context.Background())
+}
+
+func (i DiJobResourceSettingsScheduleResourceSettingsArgs) ToDiJobResourceSettingsScheduleResourceSettingsOutputWithContext(ctx context.Context) DiJobResourceSettingsScheduleResourceSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobResourceSettingsScheduleResourceSettingsOutput)
+}
+
+func (i DiJobResourceSettingsScheduleResourceSettingsArgs) ToDiJobResourceSettingsScheduleResourceSettingsPtrOutput() DiJobResourceSettingsScheduleResourceSettingsPtrOutput {
+	return i.ToDiJobResourceSettingsScheduleResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i DiJobResourceSettingsScheduleResourceSettingsArgs) ToDiJobResourceSettingsScheduleResourceSettingsPtrOutputWithContext(ctx context.Context) DiJobResourceSettingsScheduleResourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobResourceSettingsScheduleResourceSettingsOutput).ToDiJobResourceSettingsScheduleResourceSettingsPtrOutputWithContext(ctx)
+}
+
+// DiJobResourceSettingsScheduleResourceSettingsPtrInput is an input type that accepts DiJobResourceSettingsScheduleResourceSettingsArgs, DiJobResourceSettingsScheduleResourceSettingsPtr and DiJobResourceSettingsScheduleResourceSettingsPtrOutput values.
+// You can construct a concrete instance of `DiJobResourceSettingsScheduleResourceSettingsPtrInput` via:
+//
+//	        DiJobResourceSettingsScheduleResourceSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DiJobResourceSettingsScheduleResourceSettingsPtrInput interface {
+	pulumi.Input
+
+	ToDiJobResourceSettingsScheduleResourceSettingsPtrOutput() DiJobResourceSettingsScheduleResourceSettingsPtrOutput
+	ToDiJobResourceSettingsScheduleResourceSettingsPtrOutputWithContext(context.Context) DiJobResourceSettingsScheduleResourceSettingsPtrOutput
+}
+
+type diJobResourceSettingsScheduleResourceSettingsPtrType DiJobResourceSettingsScheduleResourceSettingsArgs
+
+func DiJobResourceSettingsScheduleResourceSettingsPtr(v *DiJobResourceSettingsScheduleResourceSettingsArgs) DiJobResourceSettingsScheduleResourceSettingsPtrInput {
+	return (*diJobResourceSettingsScheduleResourceSettingsPtrType)(v)
+}
+
+func (*diJobResourceSettingsScheduleResourceSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiJobResourceSettingsScheduleResourceSettings)(nil)).Elem()
+}
+
+func (i *diJobResourceSettingsScheduleResourceSettingsPtrType) ToDiJobResourceSettingsScheduleResourceSettingsPtrOutput() DiJobResourceSettingsScheduleResourceSettingsPtrOutput {
+	return i.ToDiJobResourceSettingsScheduleResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *diJobResourceSettingsScheduleResourceSettingsPtrType) ToDiJobResourceSettingsScheduleResourceSettingsPtrOutputWithContext(ctx context.Context) DiJobResourceSettingsScheduleResourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobResourceSettingsScheduleResourceSettingsPtrOutput)
+}
+
+type DiJobResourceSettingsScheduleResourceSettingsOutput struct{ *pulumi.OutputState }
+
+func (DiJobResourceSettingsScheduleResourceSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiJobResourceSettingsScheduleResourceSettings)(nil)).Elem()
+}
+
+func (o DiJobResourceSettingsScheduleResourceSettingsOutput) ToDiJobResourceSettingsScheduleResourceSettingsOutput() DiJobResourceSettingsScheduleResourceSettingsOutput {
+	return o
+}
+
+func (o DiJobResourceSettingsScheduleResourceSettingsOutput) ToDiJobResourceSettingsScheduleResourceSettingsOutputWithContext(ctx context.Context) DiJobResourceSettingsScheduleResourceSettingsOutput {
+	return o
+}
+
+func (o DiJobResourceSettingsScheduleResourceSettingsOutput) ToDiJobResourceSettingsScheduleResourceSettingsPtrOutput() DiJobResourceSettingsScheduleResourceSettingsPtrOutput {
+	return o.ToDiJobResourceSettingsScheduleResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o DiJobResourceSettingsScheduleResourceSettingsOutput) ToDiJobResourceSettingsScheduleResourceSettingsPtrOutputWithContext(ctx context.Context) DiJobResourceSettingsScheduleResourceSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiJobResourceSettingsScheduleResourceSettings) *DiJobResourceSettingsScheduleResourceSettings {
+		return &v
+	}).(DiJobResourceSettingsScheduleResourceSettingsPtrOutput)
+}
+
+// Scheduling resource group cu
+func (o DiJobResourceSettingsScheduleResourceSettingsOutput) RequestedCu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DiJobResourceSettingsScheduleResourceSettings) *float64 { return v.RequestedCu }).(pulumi.Float64PtrOutput)
+}
+
+// Scheduling resource group name
+func (o DiJobResourceSettingsScheduleResourceSettingsOutput) ResourceGroupIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiJobResourceSettingsScheduleResourceSettings) *string { return v.ResourceGroupIdentifier }).(pulumi.StringPtrOutput)
+}
+
+type DiJobResourceSettingsScheduleResourceSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (DiJobResourceSettingsScheduleResourceSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiJobResourceSettingsScheduleResourceSettings)(nil)).Elem()
+}
+
+func (o DiJobResourceSettingsScheduleResourceSettingsPtrOutput) ToDiJobResourceSettingsScheduleResourceSettingsPtrOutput() DiJobResourceSettingsScheduleResourceSettingsPtrOutput {
+	return o
+}
+
+func (o DiJobResourceSettingsScheduleResourceSettingsPtrOutput) ToDiJobResourceSettingsScheduleResourceSettingsPtrOutputWithContext(ctx context.Context) DiJobResourceSettingsScheduleResourceSettingsPtrOutput {
+	return o
+}
+
+func (o DiJobResourceSettingsScheduleResourceSettingsPtrOutput) Elem() DiJobResourceSettingsScheduleResourceSettingsOutput {
+	return o.ApplyT(func(v *DiJobResourceSettingsScheduleResourceSettings) DiJobResourceSettingsScheduleResourceSettings {
+		if v != nil {
+			return *v
+		}
+		var ret DiJobResourceSettingsScheduleResourceSettings
+		return ret
+	}).(DiJobResourceSettingsScheduleResourceSettingsOutput)
+}
+
+// Scheduling resource group cu
+func (o DiJobResourceSettingsScheduleResourceSettingsPtrOutput) RequestedCu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DiJobResourceSettingsScheduleResourceSettings) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.RequestedCu
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Scheduling resource group name
+func (o DiJobResourceSettingsScheduleResourceSettingsPtrOutput) ResourceGroupIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiJobResourceSettingsScheduleResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceGroupIdentifier
+	}).(pulumi.StringPtrOutput)
+}
+
+type DiJobSourceDataSourceSetting struct {
+	// Data source name of a single source
+	DataSourceName *string `pulumi:"dataSourceName"`
+	// Single Source Data Source Properties See `dataSourceProperties` below.
+	DataSourceProperties *DiJobSourceDataSourceSettingDataSourceProperties `pulumi:"dataSourceProperties"`
+}
+
+// DiJobSourceDataSourceSettingInput is an input type that accepts DiJobSourceDataSourceSettingArgs and DiJobSourceDataSourceSettingOutput values.
+// You can construct a concrete instance of `DiJobSourceDataSourceSettingInput` via:
+//
+//	DiJobSourceDataSourceSettingArgs{...}
+type DiJobSourceDataSourceSettingInput interface {
+	pulumi.Input
+
+	ToDiJobSourceDataSourceSettingOutput() DiJobSourceDataSourceSettingOutput
+	ToDiJobSourceDataSourceSettingOutputWithContext(context.Context) DiJobSourceDataSourceSettingOutput
+}
+
+type DiJobSourceDataSourceSettingArgs struct {
+	// Data source name of a single source
+	DataSourceName pulumi.StringPtrInput `pulumi:"dataSourceName"`
+	// Single Source Data Source Properties See `dataSourceProperties` below.
+	DataSourceProperties DiJobSourceDataSourceSettingDataSourcePropertiesPtrInput `pulumi:"dataSourceProperties"`
+}
+
+func (DiJobSourceDataSourceSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiJobSourceDataSourceSetting)(nil)).Elem()
+}
+
+func (i DiJobSourceDataSourceSettingArgs) ToDiJobSourceDataSourceSettingOutput() DiJobSourceDataSourceSettingOutput {
+	return i.ToDiJobSourceDataSourceSettingOutputWithContext(context.Background())
+}
+
+func (i DiJobSourceDataSourceSettingArgs) ToDiJobSourceDataSourceSettingOutputWithContext(ctx context.Context) DiJobSourceDataSourceSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobSourceDataSourceSettingOutput)
+}
+
+// DiJobSourceDataSourceSettingArrayInput is an input type that accepts DiJobSourceDataSourceSettingArray and DiJobSourceDataSourceSettingArrayOutput values.
+// You can construct a concrete instance of `DiJobSourceDataSourceSettingArrayInput` via:
+//
+//	DiJobSourceDataSourceSettingArray{ DiJobSourceDataSourceSettingArgs{...} }
+type DiJobSourceDataSourceSettingArrayInput interface {
+	pulumi.Input
+
+	ToDiJobSourceDataSourceSettingArrayOutput() DiJobSourceDataSourceSettingArrayOutput
+	ToDiJobSourceDataSourceSettingArrayOutputWithContext(context.Context) DiJobSourceDataSourceSettingArrayOutput
+}
+
+type DiJobSourceDataSourceSettingArray []DiJobSourceDataSourceSettingInput
+
+func (DiJobSourceDataSourceSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiJobSourceDataSourceSetting)(nil)).Elem()
+}
+
+func (i DiJobSourceDataSourceSettingArray) ToDiJobSourceDataSourceSettingArrayOutput() DiJobSourceDataSourceSettingArrayOutput {
+	return i.ToDiJobSourceDataSourceSettingArrayOutputWithContext(context.Background())
+}
+
+func (i DiJobSourceDataSourceSettingArray) ToDiJobSourceDataSourceSettingArrayOutputWithContext(ctx context.Context) DiJobSourceDataSourceSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobSourceDataSourceSettingArrayOutput)
+}
+
+type DiJobSourceDataSourceSettingOutput struct{ *pulumi.OutputState }
+
+func (DiJobSourceDataSourceSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiJobSourceDataSourceSetting)(nil)).Elem()
+}
+
+func (o DiJobSourceDataSourceSettingOutput) ToDiJobSourceDataSourceSettingOutput() DiJobSourceDataSourceSettingOutput {
+	return o
+}
+
+func (o DiJobSourceDataSourceSettingOutput) ToDiJobSourceDataSourceSettingOutputWithContext(ctx context.Context) DiJobSourceDataSourceSettingOutput {
+	return o
+}
+
+// Data source name of a single source
+func (o DiJobSourceDataSourceSettingOutput) DataSourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiJobSourceDataSourceSetting) *string { return v.DataSourceName }).(pulumi.StringPtrOutput)
+}
+
+// Single Source Data Source Properties See `dataSourceProperties` below.
+func (o DiJobSourceDataSourceSettingOutput) DataSourceProperties() DiJobSourceDataSourceSettingDataSourcePropertiesPtrOutput {
+	return o.ApplyT(func(v DiJobSourceDataSourceSetting) *DiJobSourceDataSourceSettingDataSourceProperties {
+		return v.DataSourceProperties
+	}).(DiJobSourceDataSourceSettingDataSourcePropertiesPtrOutput)
+}
+
+type DiJobSourceDataSourceSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (DiJobSourceDataSourceSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiJobSourceDataSourceSetting)(nil)).Elem()
+}
+
+func (o DiJobSourceDataSourceSettingArrayOutput) ToDiJobSourceDataSourceSettingArrayOutput() DiJobSourceDataSourceSettingArrayOutput {
+	return o
+}
+
+func (o DiJobSourceDataSourceSettingArrayOutput) ToDiJobSourceDataSourceSettingArrayOutputWithContext(ctx context.Context) DiJobSourceDataSourceSettingArrayOutput {
+	return o
+}
+
+func (o DiJobSourceDataSourceSettingArrayOutput) Index(i pulumi.IntInput) DiJobSourceDataSourceSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiJobSourceDataSourceSetting {
+		return vs[0].([]DiJobSourceDataSourceSetting)[vs[1].(int)]
+	}).(DiJobSourceDataSourceSettingOutput)
+}
+
+type DiJobSourceDataSourceSettingDataSourceProperties struct {
+	// Data Source Encoding
+	Encoding *string `pulumi:"encoding"`
+	// Data Source Time Zone
+	Timezone *string `pulumi:"timezone"`
+}
+
+// DiJobSourceDataSourceSettingDataSourcePropertiesInput is an input type that accepts DiJobSourceDataSourceSettingDataSourcePropertiesArgs and DiJobSourceDataSourceSettingDataSourcePropertiesOutput values.
+// You can construct a concrete instance of `DiJobSourceDataSourceSettingDataSourcePropertiesInput` via:
+//
+//	DiJobSourceDataSourceSettingDataSourcePropertiesArgs{...}
+type DiJobSourceDataSourceSettingDataSourcePropertiesInput interface {
+	pulumi.Input
+
+	ToDiJobSourceDataSourceSettingDataSourcePropertiesOutput() DiJobSourceDataSourceSettingDataSourcePropertiesOutput
+	ToDiJobSourceDataSourceSettingDataSourcePropertiesOutputWithContext(context.Context) DiJobSourceDataSourceSettingDataSourcePropertiesOutput
+}
+
+type DiJobSourceDataSourceSettingDataSourcePropertiesArgs struct {
+	// Data Source Encoding
+	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
+	// Data Source Time Zone
+	Timezone pulumi.StringPtrInput `pulumi:"timezone"`
+}
+
+func (DiJobSourceDataSourceSettingDataSourcePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiJobSourceDataSourceSettingDataSourceProperties)(nil)).Elem()
+}
+
+func (i DiJobSourceDataSourceSettingDataSourcePropertiesArgs) ToDiJobSourceDataSourceSettingDataSourcePropertiesOutput() DiJobSourceDataSourceSettingDataSourcePropertiesOutput {
+	return i.ToDiJobSourceDataSourceSettingDataSourcePropertiesOutputWithContext(context.Background())
+}
+
+func (i DiJobSourceDataSourceSettingDataSourcePropertiesArgs) ToDiJobSourceDataSourceSettingDataSourcePropertiesOutputWithContext(ctx context.Context) DiJobSourceDataSourceSettingDataSourcePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobSourceDataSourceSettingDataSourcePropertiesOutput)
+}
+
+func (i DiJobSourceDataSourceSettingDataSourcePropertiesArgs) ToDiJobSourceDataSourceSettingDataSourcePropertiesPtrOutput() DiJobSourceDataSourceSettingDataSourcePropertiesPtrOutput {
+	return i.ToDiJobSourceDataSourceSettingDataSourcePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i DiJobSourceDataSourceSettingDataSourcePropertiesArgs) ToDiJobSourceDataSourceSettingDataSourcePropertiesPtrOutputWithContext(ctx context.Context) DiJobSourceDataSourceSettingDataSourcePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobSourceDataSourceSettingDataSourcePropertiesOutput).ToDiJobSourceDataSourceSettingDataSourcePropertiesPtrOutputWithContext(ctx)
+}
+
+// DiJobSourceDataSourceSettingDataSourcePropertiesPtrInput is an input type that accepts DiJobSourceDataSourceSettingDataSourcePropertiesArgs, DiJobSourceDataSourceSettingDataSourcePropertiesPtr and DiJobSourceDataSourceSettingDataSourcePropertiesPtrOutput values.
+// You can construct a concrete instance of `DiJobSourceDataSourceSettingDataSourcePropertiesPtrInput` via:
+//
+//	        DiJobSourceDataSourceSettingDataSourcePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type DiJobSourceDataSourceSettingDataSourcePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToDiJobSourceDataSourceSettingDataSourcePropertiesPtrOutput() DiJobSourceDataSourceSettingDataSourcePropertiesPtrOutput
+	ToDiJobSourceDataSourceSettingDataSourcePropertiesPtrOutputWithContext(context.Context) DiJobSourceDataSourceSettingDataSourcePropertiesPtrOutput
+}
+
+type diJobSourceDataSourceSettingDataSourcePropertiesPtrType DiJobSourceDataSourceSettingDataSourcePropertiesArgs
+
+func DiJobSourceDataSourceSettingDataSourcePropertiesPtr(v *DiJobSourceDataSourceSettingDataSourcePropertiesArgs) DiJobSourceDataSourceSettingDataSourcePropertiesPtrInput {
+	return (*diJobSourceDataSourceSettingDataSourcePropertiesPtrType)(v)
+}
+
+func (*diJobSourceDataSourceSettingDataSourcePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiJobSourceDataSourceSettingDataSourceProperties)(nil)).Elem()
+}
+
+func (i *diJobSourceDataSourceSettingDataSourcePropertiesPtrType) ToDiJobSourceDataSourceSettingDataSourcePropertiesPtrOutput() DiJobSourceDataSourceSettingDataSourcePropertiesPtrOutput {
+	return i.ToDiJobSourceDataSourceSettingDataSourcePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *diJobSourceDataSourceSettingDataSourcePropertiesPtrType) ToDiJobSourceDataSourceSettingDataSourcePropertiesPtrOutputWithContext(ctx context.Context) DiJobSourceDataSourceSettingDataSourcePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobSourceDataSourceSettingDataSourcePropertiesPtrOutput)
+}
+
+type DiJobSourceDataSourceSettingDataSourcePropertiesOutput struct{ *pulumi.OutputState }
+
+func (DiJobSourceDataSourceSettingDataSourcePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiJobSourceDataSourceSettingDataSourceProperties)(nil)).Elem()
+}
+
+func (o DiJobSourceDataSourceSettingDataSourcePropertiesOutput) ToDiJobSourceDataSourceSettingDataSourcePropertiesOutput() DiJobSourceDataSourceSettingDataSourcePropertiesOutput {
+	return o
+}
+
+func (o DiJobSourceDataSourceSettingDataSourcePropertiesOutput) ToDiJobSourceDataSourceSettingDataSourcePropertiesOutputWithContext(ctx context.Context) DiJobSourceDataSourceSettingDataSourcePropertiesOutput {
+	return o
+}
+
+func (o DiJobSourceDataSourceSettingDataSourcePropertiesOutput) ToDiJobSourceDataSourceSettingDataSourcePropertiesPtrOutput() DiJobSourceDataSourceSettingDataSourcePropertiesPtrOutput {
+	return o.ToDiJobSourceDataSourceSettingDataSourcePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o DiJobSourceDataSourceSettingDataSourcePropertiesOutput) ToDiJobSourceDataSourceSettingDataSourcePropertiesPtrOutputWithContext(ctx context.Context) DiJobSourceDataSourceSettingDataSourcePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiJobSourceDataSourceSettingDataSourceProperties) *DiJobSourceDataSourceSettingDataSourceProperties {
+		return &v
+	}).(DiJobSourceDataSourceSettingDataSourcePropertiesPtrOutput)
+}
+
+// Data Source Encoding
+func (o DiJobSourceDataSourceSettingDataSourcePropertiesOutput) Encoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiJobSourceDataSourceSettingDataSourceProperties) *string { return v.Encoding }).(pulumi.StringPtrOutput)
+}
+
+// Data Source Time Zone
+func (o DiJobSourceDataSourceSettingDataSourcePropertiesOutput) Timezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiJobSourceDataSourceSettingDataSourceProperties) *string { return v.Timezone }).(pulumi.StringPtrOutput)
+}
+
+type DiJobSourceDataSourceSettingDataSourcePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (DiJobSourceDataSourceSettingDataSourcePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiJobSourceDataSourceSettingDataSourceProperties)(nil)).Elem()
+}
+
+func (o DiJobSourceDataSourceSettingDataSourcePropertiesPtrOutput) ToDiJobSourceDataSourceSettingDataSourcePropertiesPtrOutput() DiJobSourceDataSourceSettingDataSourcePropertiesPtrOutput {
+	return o
+}
+
+func (o DiJobSourceDataSourceSettingDataSourcePropertiesPtrOutput) ToDiJobSourceDataSourceSettingDataSourcePropertiesPtrOutputWithContext(ctx context.Context) DiJobSourceDataSourceSettingDataSourcePropertiesPtrOutput {
+	return o
+}
+
+func (o DiJobSourceDataSourceSettingDataSourcePropertiesPtrOutput) Elem() DiJobSourceDataSourceSettingDataSourcePropertiesOutput {
+	return o.ApplyT(func(v *DiJobSourceDataSourceSettingDataSourceProperties) DiJobSourceDataSourceSettingDataSourceProperties {
+		if v != nil {
+			return *v
+		}
+		var ret DiJobSourceDataSourceSettingDataSourceProperties
+		return ret
+	}).(DiJobSourceDataSourceSettingDataSourcePropertiesOutput)
+}
+
+// Data Source Encoding
+func (o DiJobSourceDataSourceSettingDataSourcePropertiesPtrOutput) Encoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiJobSourceDataSourceSettingDataSourceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Encoding
+	}).(pulumi.StringPtrOutput)
+}
+
+// Data Source Time Zone
+func (o DiJobSourceDataSourceSettingDataSourcePropertiesPtrOutput) Timezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiJobSourceDataSourceSettingDataSourceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Timezone
+	}).(pulumi.StringPtrOutput)
+}
+
+type DiJobTableMapping struct {
+	// Each rule can select different types of source objects to be synchronized, such as source database and source data table. See `sourceObjectSelectionRules` below.
+	SourceObjectSelectionRules []DiJobTableMappingSourceObjectSelectionRule `pulumi:"sourceObjectSelectionRules"`
+	// A list of conversion rule definitions for a synchronization object. Each element in the list defines a conversion rule. See `transformationRules` below.
+	TransformationRules []DiJobTableMappingTransformationRule `pulumi:"transformationRules"`
+}
+
+// DiJobTableMappingInput is an input type that accepts DiJobTableMappingArgs and DiJobTableMappingOutput values.
+// You can construct a concrete instance of `DiJobTableMappingInput` via:
+//
+//	DiJobTableMappingArgs{...}
+type DiJobTableMappingInput interface {
+	pulumi.Input
+
+	ToDiJobTableMappingOutput() DiJobTableMappingOutput
+	ToDiJobTableMappingOutputWithContext(context.Context) DiJobTableMappingOutput
+}
+
+type DiJobTableMappingArgs struct {
+	// Each rule can select different types of source objects to be synchronized, such as source database and source data table. See `sourceObjectSelectionRules` below.
+	SourceObjectSelectionRules DiJobTableMappingSourceObjectSelectionRuleArrayInput `pulumi:"sourceObjectSelectionRules"`
+	// A list of conversion rule definitions for a synchronization object. Each element in the list defines a conversion rule. See `transformationRules` below.
+	TransformationRules DiJobTableMappingTransformationRuleArrayInput `pulumi:"transformationRules"`
+}
+
+func (DiJobTableMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiJobTableMapping)(nil)).Elem()
+}
+
+func (i DiJobTableMappingArgs) ToDiJobTableMappingOutput() DiJobTableMappingOutput {
+	return i.ToDiJobTableMappingOutputWithContext(context.Background())
+}
+
+func (i DiJobTableMappingArgs) ToDiJobTableMappingOutputWithContext(ctx context.Context) DiJobTableMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobTableMappingOutput)
+}
+
+// DiJobTableMappingArrayInput is an input type that accepts DiJobTableMappingArray and DiJobTableMappingArrayOutput values.
+// You can construct a concrete instance of `DiJobTableMappingArrayInput` via:
+//
+//	DiJobTableMappingArray{ DiJobTableMappingArgs{...} }
+type DiJobTableMappingArrayInput interface {
+	pulumi.Input
+
+	ToDiJobTableMappingArrayOutput() DiJobTableMappingArrayOutput
+	ToDiJobTableMappingArrayOutputWithContext(context.Context) DiJobTableMappingArrayOutput
+}
+
+type DiJobTableMappingArray []DiJobTableMappingInput
+
+func (DiJobTableMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiJobTableMapping)(nil)).Elem()
+}
+
+func (i DiJobTableMappingArray) ToDiJobTableMappingArrayOutput() DiJobTableMappingArrayOutput {
+	return i.ToDiJobTableMappingArrayOutputWithContext(context.Background())
+}
+
+func (i DiJobTableMappingArray) ToDiJobTableMappingArrayOutputWithContext(ctx context.Context) DiJobTableMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobTableMappingArrayOutput)
+}
+
+type DiJobTableMappingOutput struct{ *pulumi.OutputState }
+
+func (DiJobTableMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiJobTableMapping)(nil)).Elem()
+}
+
+func (o DiJobTableMappingOutput) ToDiJobTableMappingOutput() DiJobTableMappingOutput {
+	return o
+}
+
+func (o DiJobTableMappingOutput) ToDiJobTableMappingOutputWithContext(ctx context.Context) DiJobTableMappingOutput {
+	return o
+}
+
+// Each rule can select different types of source objects to be synchronized, such as source database and source data table. See `sourceObjectSelectionRules` below.
+func (o DiJobTableMappingOutput) SourceObjectSelectionRules() DiJobTableMappingSourceObjectSelectionRuleArrayOutput {
+	return o.ApplyT(func(v DiJobTableMapping) []DiJobTableMappingSourceObjectSelectionRule {
+		return v.SourceObjectSelectionRules
+	}).(DiJobTableMappingSourceObjectSelectionRuleArrayOutput)
+}
+
+// A list of conversion rule definitions for a synchronization object. Each element in the list defines a conversion rule. See `transformationRules` below.
+func (o DiJobTableMappingOutput) TransformationRules() DiJobTableMappingTransformationRuleArrayOutput {
+	return o.ApplyT(func(v DiJobTableMapping) []DiJobTableMappingTransformationRule { return v.TransformationRules }).(DiJobTableMappingTransformationRuleArrayOutput)
+}
+
+type DiJobTableMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (DiJobTableMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiJobTableMapping)(nil)).Elem()
+}
+
+func (o DiJobTableMappingArrayOutput) ToDiJobTableMappingArrayOutput() DiJobTableMappingArrayOutput {
+	return o
+}
+
+func (o DiJobTableMappingArrayOutput) ToDiJobTableMappingArrayOutputWithContext(ctx context.Context) DiJobTableMappingArrayOutput {
+	return o
+}
+
+func (o DiJobTableMappingArrayOutput) Index(i pulumi.IntInput) DiJobTableMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiJobTableMapping {
+		return vs[0].([]DiJobTableMapping)[vs[1].(int)]
+	}).(DiJobTableMappingOutput)
+}
+
+type DiJobTableMappingSourceObjectSelectionRule struct {
+	Action *string `pulumi:"action"`
+	// Expression, such as mysql_table_1
+	Expression *string `pulumi:"expression"`
+	// Expression type, value range: Exact/Regex
+	ExpressionType *string `pulumi:"expressionType"`
+	// Object type, optional enumeration value:
+	//
+	// Table (Table)
+	//
+	// Database
+	ObjectType *string `pulumi:"objectType"`
+}
+
+// DiJobTableMappingSourceObjectSelectionRuleInput is an input type that accepts DiJobTableMappingSourceObjectSelectionRuleArgs and DiJobTableMappingSourceObjectSelectionRuleOutput values.
+// You can construct a concrete instance of `DiJobTableMappingSourceObjectSelectionRuleInput` via:
+//
+//	DiJobTableMappingSourceObjectSelectionRuleArgs{...}
+type DiJobTableMappingSourceObjectSelectionRuleInput interface {
+	pulumi.Input
+
+	ToDiJobTableMappingSourceObjectSelectionRuleOutput() DiJobTableMappingSourceObjectSelectionRuleOutput
+	ToDiJobTableMappingSourceObjectSelectionRuleOutputWithContext(context.Context) DiJobTableMappingSourceObjectSelectionRuleOutput
+}
+
+type DiJobTableMappingSourceObjectSelectionRuleArgs struct {
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// Expression, such as mysql_table_1
+	Expression pulumi.StringPtrInput `pulumi:"expression"`
+	// Expression type, value range: Exact/Regex
+	ExpressionType pulumi.StringPtrInput `pulumi:"expressionType"`
+	// Object type, optional enumeration value:
+	//
+	// Table (Table)
+	//
+	// Database
+	ObjectType pulumi.StringPtrInput `pulumi:"objectType"`
+}
+
+func (DiJobTableMappingSourceObjectSelectionRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiJobTableMappingSourceObjectSelectionRule)(nil)).Elem()
+}
+
+func (i DiJobTableMappingSourceObjectSelectionRuleArgs) ToDiJobTableMappingSourceObjectSelectionRuleOutput() DiJobTableMappingSourceObjectSelectionRuleOutput {
+	return i.ToDiJobTableMappingSourceObjectSelectionRuleOutputWithContext(context.Background())
+}
+
+func (i DiJobTableMappingSourceObjectSelectionRuleArgs) ToDiJobTableMappingSourceObjectSelectionRuleOutputWithContext(ctx context.Context) DiJobTableMappingSourceObjectSelectionRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobTableMappingSourceObjectSelectionRuleOutput)
+}
+
+// DiJobTableMappingSourceObjectSelectionRuleArrayInput is an input type that accepts DiJobTableMappingSourceObjectSelectionRuleArray and DiJobTableMappingSourceObjectSelectionRuleArrayOutput values.
+// You can construct a concrete instance of `DiJobTableMappingSourceObjectSelectionRuleArrayInput` via:
+//
+//	DiJobTableMappingSourceObjectSelectionRuleArray{ DiJobTableMappingSourceObjectSelectionRuleArgs{...} }
+type DiJobTableMappingSourceObjectSelectionRuleArrayInput interface {
+	pulumi.Input
+
+	ToDiJobTableMappingSourceObjectSelectionRuleArrayOutput() DiJobTableMappingSourceObjectSelectionRuleArrayOutput
+	ToDiJobTableMappingSourceObjectSelectionRuleArrayOutputWithContext(context.Context) DiJobTableMappingSourceObjectSelectionRuleArrayOutput
+}
+
+type DiJobTableMappingSourceObjectSelectionRuleArray []DiJobTableMappingSourceObjectSelectionRuleInput
+
+func (DiJobTableMappingSourceObjectSelectionRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiJobTableMappingSourceObjectSelectionRule)(nil)).Elem()
+}
+
+func (i DiJobTableMappingSourceObjectSelectionRuleArray) ToDiJobTableMappingSourceObjectSelectionRuleArrayOutput() DiJobTableMappingSourceObjectSelectionRuleArrayOutput {
+	return i.ToDiJobTableMappingSourceObjectSelectionRuleArrayOutputWithContext(context.Background())
+}
+
+func (i DiJobTableMappingSourceObjectSelectionRuleArray) ToDiJobTableMappingSourceObjectSelectionRuleArrayOutputWithContext(ctx context.Context) DiJobTableMappingSourceObjectSelectionRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobTableMappingSourceObjectSelectionRuleArrayOutput)
+}
+
+type DiJobTableMappingSourceObjectSelectionRuleOutput struct{ *pulumi.OutputState }
+
+func (DiJobTableMappingSourceObjectSelectionRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiJobTableMappingSourceObjectSelectionRule)(nil)).Elem()
+}
+
+func (o DiJobTableMappingSourceObjectSelectionRuleOutput) ToDiJobTableMappingSourceObjectSelectionRuleOutput() DiJobTableMappingSourceObjectSelectionRuleOutput {
+	return o
+}
+
+func (o DiJobTableMappingSourceObjectSelectionRuleOutput) ToDiJobTableMappingSourceObjectSelectionRuleOutputWithContext(ctx context.Context) DiJobTableMappingSourceObjectSelectionRuleOutput {
+	return o
+}
+
+func (o DiJobTableMappingSourceObjectSelectionRuleOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiJobTableMappingSourceObjectSelectionRule) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// Expression, such as mysql_table_1
+func (o DiJobTableMappingSourceObjectSelectionRuleOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiJobTableMappingSourceObjectSelectionRule) *string { return v.Expression }).(pulumi.StringPtrOutput)
+}
+
+// Expression type, value range: Exact/Regex
+func (o DiJobTableMappingSourceObjectSelectionRuleOutput) ExpressionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiJobTableMappingSourceObjectSelectionRule) *string { return v.ExpressionType }).(pulumi.StringPtrOutput)
+}
+
+// Object type, optional enumeration value:
+//
+// Table (Table)
+//
+// Database
+func (o DiJobTableMappingSourceObjectSelectionRuleOutput) ObjectType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiJobTableMappingSourceObjectSelectionRule) *string { return v.ObjectType }).(pulumi.StringPtrOutput)
+}
+
+type DiJobTableMappingSourceObjectSelectionRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (DiJobTableMappingSourceObjectSelectionRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiJobTableMappingSourceObjectSelectionRule)(nil)).Elem()
+}
+
+func (o DiJobTableMappingSourceObjectSelectionRuleArrayOutput) ToDiJobTableMappingSourceObjectSelectionRuleArrayOutput() DiJobTableMappingSourceObjectSelectionRuleArrayOutput {
+	return o
+}
+
+func (o DiJobTableMappingSourceObjectSelectionRuleArrayOutput) ToDiJobTableMappingSourceObjectSelectionRuleArrayOutputWithContext(ctx context.Context) DiJobTableMappingSourceObjectSelectionRuleArrayOutput {
+	return o
+}
+
+func (o DiJobTableMappingSourceObjectSelectionRuleArrayOutput) Index(i pulumi.IntInput) DiJobTableMappingSourceObjectSelectionRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiJobTableMappingSourceObjectSelectionRule {
+		return vs[0].([]DiJobTableMappingSourceObjectSelectionRule)[vs[1].(int)]
+	}).(DiJobTableMappingSourceObjectSelectionRuleOutput)
+}
+
+type DiJobTableMappingTransformationRule struct {
+	// Action type, optional enumeration value:
+	//
+	// DefinePrimaryKey (defines the primary key)
+	//
+	// Rename
+	//
+	// AddColumn (increase column)
+	//
+	// HandleDml(DML handling)
+	//
+	// DefineIncrementalCondition
+	RuleActionType *string `pulumi:"ruleActionType"`
+	// Rule Name
+	RuleName *string `pulumi:"ruleName"`
+	// Target type of action, optional enumeration value:
+	//
+	// Table (Table)
+	//
+	// Schema(schema)
+	RuleTargetType *string `pulumi:"ruleTargetType"`
+}
+
+// DiJobTableMappingTransformationRuleInput is an input type that accepts DiJobTableMappingTransformationRuleArgs and DiJobTableMappingTransformationRuleOutput values.
+// You can construct a concrete instance of `DiJobTableMappingTransformationRuleInput` via:
+//
+//	DiJobTableMappingTransformationRuleArgs{...}
+type DiJobTableMappingTransformationRuleInput interface {
+	pulumi.Input
+
+	ToDiJobTableMappingTransformationRuleOutput() DiJobTableMappingTransformationRuleOutput
+	ToDiJobTableMappingTransformationRuleOutputWithContext(context.Context) DiJobTableMappingTransformationRuleOutput
+}
+
+type DiJobTableMappingTransformationRuleArgs struct {
+	// Action type, optional enumeration value:
+	//
+	// DefinePrimaryKey (defines the primary key)
+	//
+	// Rename
+	//
+	// AddColumn (increase column)
+	//
+	// HandleDml(DML handling)
+	//
+	// DefineIncrementalCondition
+	RuleActionType pulumi.StringPtrInput `pulumi:"ruleActionType"`
+	// Rule Name
+	RuleName pulumi.StringPtrInput `pulumi:"ruleName"`
+	// Target type of action, optional enumeration value:
+	//
+	// Table (Table)
+	//
+	// Schema(schema)
+	RuleTargetType pulumi.StringPtrInput `pulumi:"ruleTargetType"`
+}
+
+func (DiJobTableMappingTransformationRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiJobTableMappingTransformationRule)(nil)).Elem()
+}
+
+func (i DiJobTableMappingTransformationRuleArgs) ToDiJobTableMappingTransformationRuleOutput() DiJobTableMappingTransformationRuleOutput {
+	return i.ToDiJobTableMappingTransformationRuleOutputWithContext(context.Background())
+}
+
+func (i DiJobTableMappingTransformationRuleArgs) ToDiJobTableMappingTransformationRuleOutputWithContext(ctx context.Context) DiJobTableMappingTransformationRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobTableMappingTransformationRuleOutput)
+}
+
+// DiJobTableMappingTransformationRuleArrayInput is an input type that accepts DiJobTableMappingTransformationRuleArray and DiJobTableMappingTransformationRuleArrayOutput values.
+// You can construct a concrete instance of `DiJobTableMappingTransformationRuleArrayInput` via:
+//
+//	DiJobTableMappingTransformationRuleArray{ DiJobTableMappingTransformationRuleArgs{...} }
+type DiJobTableMappingTransformationRuleArrayInput interface {
+	pulumi.Input
+
+	ToDiJobTableMappingTransformationRuleArrayOutput() DiJobTableMappingTransformationRuleArrayOutput
+	ToDiJobTableMappingTransformationRuleArrayOutputWithContext(context.Context) DiJobTableMappingTransformationRuleArrayOutput
+}
+
+type DiJobTableMappingTransformationRuleArray []DiJobTableMappingTransformationRuleInput
+
+func (DiJobTableMappingTransformationRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiJobTableMappingTransformationRule)(nil)).Elem()
+}
+
+func (i DiJobTableMappingTransformationRuleArray) ToDiJobTableMappingTransformationRuleArrayOutput() DiJobTableMappingTransformationRuleArrayOutput {
+	return i.ToDiJobTableMappingTransformationRuleArrayOutputWithContext(context.Background())
+}
+
+func (i DiJobTableMappingTransformationRuleArray) ToDiJobTableMappingTransformationRuleArrayOutputWithContext(ctx context.Context) DiJobTableMappingTransformationRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobTableMappingTransformationRuleArrayOutput)
+}
+
+type DiJobTableMappingTransformationRuleOutput struct{ *pulumi.OutputState }
+
+func (DiJobTableMappingTransformationRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiJobTableMappingTransformationRule)(nil)).Elem()
+}
+
+func (o DiJobTableMappingTransformationRuleOutput) ToDiJobTableMappingTransformationRuleOutput() DiJobTableMappingTransformationRuleOutput {
+	return o
+}
+
+func (o DiJobTableMappingTransformationRuleOutput) ToDiJobTableMappingTransformationRuleOutputWithContext(ctx context.Context) DiJobTableMappingTransformationRuleOutput {
+	return o
+}
+
+// Action type, optional enumeration value:
+//
+// DefinePrimaryKey (defines the primary key)
+//
+// # Rename
+//
+// AddColumn (increase column)
+//
+// HandleDml(DML handling)
+//
+// DefineIncrementalCondition
+func (o DiJobTableMappingTransformationRuleOutput) RuleActionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiJobTableMappingTransformationRule) *string { return v.RuleActionType }).(pulumi.StringPtrOutput)
+}
+
+// Rule Name
+func (o DiJobTableMappingTransformationRuleOutput) RuleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiJobTableMappingTransformationRule) *string { return v.RuleName }).(pulumi.StringPtrOutput)
+}
+
+// Target type of action, optional enumeration value:
+//
+// Table (Table)
+//
+// Schema(schema)
+func (o DiJobTableMappingTransformationRuleOutput) RuleTargetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiJobTableMappingTransformationRule) *string { return v.RuleTargetType }).(pulumi.StringPtrOutput)
+}
+
+type DiJobTableMappingTransformationRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (DiJobTableMappingTransformationRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiJobTableMappingTransformationRule)(nil)).Elem()
+}
+
+func (o DiJobTableMappingTransformationRuleArrayOutput) ToDiJobTableMappingTransformationRuleArrayOutput() DiJobTableMappingTransformationRuleArrayOutput {
+	return o
+}
+
+func (o DiJobTableMappingTransformationRuleArrayOutput) ToDiJobTableMappingTransformationRuleArrayOutputWithContext(ctx context.Context) DiJobTableMappingTransformationRuleArrayOutput {
+	return o
+}
+
+func (o DiJobTableMappingTransformationRuleArrayOutput) Index(i pulumi.IntInput) DiJobTableMappingTransformationRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiJobTableMappingTransformationRule {
+		return vs[0].([]DiJobTableMappingTransformationRule)[vs[1].(int)]
+	}).(DiJobTableMappingTransformationRuleOutput)
+}
+
+type DiJobTransformationRule struct {
+	// Action type, optional enumeration value:
+	//
+	// DefinePrimaryKey (defines the primary key)
+	//
+	// Rename
+	//
+	// AddColumn (increase column)
+	//
+	// HandleDml(DML handling)
+	//
+	// DefineIncrementalCondition
+	RuleActionType *string `pulumi:"ruleActionType"`
+	// Regular expression, in json string format.
+	//
+	// Example renaming rule (Rename): {"expression":"${srcDatasourceName}_${srcDatabaseName}_0922","variables":[{"variableName":"srcDatabaseName","variableRules":[{"from":"fromdb","to":"todb"}]}]}
+	RuleExpression *string `pulumi:"ruleExpression"`
+	// Rule Name
+	RuleName *string `pulumi:"ruleName"`
+	// Target type of action, optional enumeration value:
+	//
+	// Table (Table)
+	//
+	// Schema(schema)
+	RuleTargetType *string `pulumi:"ruleTargetType"`
+}
+
+// DiJobTransformationRuleInput is an input type that accepts DiJobTransformationRuleArgs and DiJobTransformationRuleOutput values.
+// You can construct a concrete instance of `DiJobTransformationRuleInput` via:
+//
+//	DiJobTransformationRuleArgs{...}
+type DiJobTransformationRuleInput interface {
+	pulumi.Input
+
+	ToDiJobTransformationRuleOutput() DiJobTransformationRuleOutput
+	ToDiJobTransformationRuleOutputWithContext(context.Context) DiJobTransformationRuleOutput
+}
+
+type DiJobTransformationRuleArgs struct {
+	// Action type, optional enumeration value:
+	//
+	// DefinePrimaryKey (defines the primary key)
+	//
+	// Rename
+	//
+	// AddColumn (increase column)
+	//
+	// HandleDml(DML handling)
+	//
+	// DefineIncrementalCondition
+	RuleActionType pulumi.StringPtrInput `pulumi:"ruleActionType"`
+	// Regular expression, in json string format.
+	//
+	// Example renaming rule (Rename): {"expression":"${srcDatasourceName}_${srcDatabaseName}_0922","variables":[{"variableName":"srcDatabaseName","variableRules":[{"from":"fromdb","to":"todb"}]}]}
+	RuleExpression pulumi.StringPtrInput `pulumi:"ruleExpression"`
+	// Rule Name
+	RuleName pulumi.StringPtrInput `pulumi:"ruleName"`
+	// Target type of action, optional enumeration value:
+	//
+	// Table (Table)
+	//
+	// Schema(schema)
+	RuleTargetType pulumi.StringPtrInput `pulumi:"ruleTargetType"`
+}
+
+func (DiJobTransformationRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiJobTransformationRule)(nil)).Elem()
+}
+
+func (i DiJobTransformationRuleArgs) ToDiJobTransformationRuleOutput() DiJobTransformationRuleOutput {
+	return i.ToDiJobTransformationRuleOutputWithContext(context.Background())
+}
+
+func (i DiJobTransformationRuleArgs) ToDiJobTransformationRuleOutputWithContext(ctx context.Context) DiJobTransformationRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobTransformationRuleOutput)
+}
+
+// DiJobTransformationRuleArrayInput is an input type that accepts DiJobTransformationRuleArray and DiJobTransformationRuleArrayOutput values.
+// You can construct a concrete instance of `DiJobTransformationRuleArrayInput` via:
+//
+//	DiJobTransformationRuleArray{ DiJobTransformationRuleArgs{...} }
+type DiJobTransformationRuleArrayInput interface {
+	pulumi.Input
+
+	ToDiJobTransformationRuleArrayOutput() DiJobTransformationRuleArrayOutput
+	ToDiJobTransformationRuleArrayOutputWithContext(context.Context) DiJobTransformationRuleArrayOutput
+}
+
+type DiJobTransformationRuleArray []DiJobTransformationRuleInput
+
+func (DiJobTransformationRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiJobTransformationRule)(nil)).Elem()
+}
+
+func (i DiJobTransformationRuleArray) ToDiJobTransformationRuleArrayOutput() DiJobTransformationRuleArrayOutput {
+	return i.ToDiJobTransformationRuleArrayOutputWithContext(context.Background())
+}
+
+func (i DiJobTransformationRuleArray) ToDiJobTransformationRuleArrayOutputWithContext(ctx context.Context) DiJobTransformationRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiJobTransformationRuleArrayOutput)
+}
+
+type DiJobTransformationRuleOutput struct{ *pulumi.OutputState }
+
+func (DiJobTransformationRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiJobTransformationRule)(nil)).Elem()
+}
+
+func (o DiJobTransformationRuleOutput) ToDiJobTransformationRuleOutput() DiJobTransformationRuleOutput {
+	return o
+}
+
+func (o DiJobTransformationRuleOutput) ToDiJobTransformationRuleOutputWithContext(ctx context.Context) DiJobTransformationRuleOutput {
+	return o
+}
+
+// Action type, optional enumeration value:
+//
+// DefinePrimaryKey (defines the primary key)
+//
+// # Rename
+//
+// AddColumn (increase column)
+//
+// HandleDml(DML handling)
+//
+// DefineIncrementalCondition
+func (o DiJobTransformationRuleOutput) RuleActionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiJobTransformationRule) *string { return v.RuleActionType }).(pulumi.StringPtrOutput)
+}
+
+// Regular expression, in json string format.
+//
+// Example renaming rule (Rename): {"expression":"${srcDatasourceName}_${srcDatabaseName}_0922","variables":[{"variableName":"srcDatabaseName","variableRules":[{"from":"fromdb","to":"todb"}]}]}
+func (o DiJobTransformationRuleOutput) RuleExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiJobTransformationRule) *string { return v.RuleExpression }).(pulumi.StringPtrOutput)
+}
+
+// Rule Name
+func (o DiJobTransformationRuleOutput) RuleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiJobTransformationRule) *string { return v.RuleName }).(pulumi.StringPtrOutput)
+}
+
+// Target type of action, optional enumeration value:
+//
+// Table (Table)
+//
+// Schema(schema)
+func (o DiJobTransformationRuleOutput) RuleTargetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiJobTransformationRule) *string { return v.RuleTargetType }).(pulumi.StringPtrOutput)
+}
+
+type DiJobTransformationRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (DiJobTransformationRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiJobTransformationRule)(nil)).Elem()
+}
+
+func (o DiJobTransformationRuleArrayOutput) ToDiJobTransformationRuleArrayOutput() DiJobTransformationRuleArrayOutput {
+	return o
+}
+
+func (o DiJobTransformationRuleArrayOutput) ToDiJobTransformationRuleArrayOutputWithContext(ctx context.Context) DiJobTransformationRuleArrayOutput {
+	return o
+}
+
+func (o DiJobTransformationRuleArrayOutput) Index(i pulumi.IntInput) DiJobTransformationRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiJobTransformationRule {
+		return vs[0].([]DiJobTransformationRule)[vs[1].(int)]
+	}).(DiJobTransformationRuleOutput)
+}
+
 type ProjectMemberRole struct {
 	// Project Role Code.
 	Code *string `pulumi:"code"`
@@ -250,10 +3186,90 @@ func (o GetFoldersFolderArrayOutput) Index(i pulumi.IntInput) GetFoldersFolderOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DiAlarmRuleNotificationSettingsInput)(nil)).Elem(), DiAlarmRuleNotificationSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiAlarmRuleNotificationSettingsPtrInput)(nil)).Elem(), DiAlarmRuleNotificationSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiAlarmRuleNotificationSettingsNotificationChannelInput)(nil)).Elem(), DiAlarmRuleNotificationSettingsNotificationChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiAlarmRuleNotificationSettingsNotificationChannelArrayInput)(nil)).Elem(), DiAlarmRuleNotificationSettingsNotificationChannelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiAlarmRuleNotificationSettingsNotificationReceiverInput)(nil)).Elem(), DiAlarmRuleNotificationSettingsNotificationReceiverArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiAlarmRuleNotificationSettingsNotificationReceiverArrayInput)(nil)).Elem(), DiAlarmRuleNotificationSettingsNotificationReceiverArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiAlarmRuleTriggerConditionInput)(nil)).Elem(), DiAlarmRuleTriggerConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiAlarmRuleTriggerConditionArrayInput)(nil)).Elem(), DiAlarmRuleTriggerConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiJobDestinationDataSourceSettingInput)(nil)).Elem(), DiJobDestinationDataSourceSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiJobDestinationDataSourceSettingArrayInput)(nil)).Elem(), DiJobDestinationDataSourceSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiJobJobSettingsInput)(nil)).Elem(), DiJobJobSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiJobJobSettingsPtrInput)(nil)).Elem(), DiJobJobSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiJobJobSettingsColumnDataTypeSettingInput)(nil)).Elem(), DiJobJobSettingsColumnDataTypeSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiJobJobSettingsColumnDataTypeSettingArrayInput)(nil)).Elem(), DiJobJobSettingsColumnDataTypeSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiJobJobSettingsCycleScheduleSettingsInput)(nil)).Elem(), DiJobJobSettingsCycleScheduleSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiJobJobSettingsCycleScheduleSettingsPtrInput)(nil)).Elem(), DiJobJobSettingsCycleScheduleSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiJobJobSettingsDdlHandlingSettingInput)(nil)).Elem(), DiJobJobSettingsDdlHandlingSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiJobJobSettingsDdlHandlingSettingArrayInput)(nil)).Elem(), DiJobJobSettingsDdlHandlingSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiJobJobSettingsRuntimeSettingInput)(nil)).Elem(), DiJobJobSettingsRuntimeSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiJobJobSettingsRuntimeSettingArrayInput)(nil)).Elem(), DiJobJobSettingsRuntimeSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiJobResourceSettingsInput)(nil)).Elem(), DiJobResourceSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiJobResourceSettingsPtrInput)(nil)).Elem(), DiJobResourceSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiJobResourceSettingsOfflineResourceSettingsInput)(nil)).Elem(), DiJobResourceSettingsOfflineResourceSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiJobResourceSettingsOfflineResourceSettingsPtrInput)(nil)).Elem(), DiJobResourceSettingsOfflineResourceSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiJobResourceSettingsRealtimeResourceSettingsInput)(nil)).Elem(), DiJobResourceSettingsRealtimeResourceSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiJobResourceSettingsRealtimeResourceSettingsPtrInput)(nil)).Elem(), DiJobResourceSettingsRealtimeResourceSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiJobResourceSettingsScheduleResourceSettingsInput)(nil)).Elem(), DiJobResourceSettingsScheduleResourceSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiJobResourceSettingsScheduleResourceSettingsPtrInput)(nil)).Elem(), DiJobResourceSettingsScheduleResourceSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiJobSourceDataSourceSettingInput)(nil)).Elem(), DiJobSourceDataSourceSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiJobSourceDataSourceSettingArrayInput)(nil)).Elem(), DiJobSourceDataSourceSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiJobSourceDataSourceSettingDataSourcePropertiesInput)(nil)).Elem(), DiJobSourceDataSourceSettingDataSourcePropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiJobSourceDataSourceSettingDataSourcePropertiesPtrInput)(nil)).Elem(), DiJobSourceDataSourceSettingDataSourcePropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiJobTableMappingInput)(nil)).Elem(), DiJobTableMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiJobTableMappingArrayInput)(nil)).Elem(), DiJobTableMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiJobTableMappingSourceObjectSelectionRuleInput)(nil)).Elem(), DiJobTableMappingSourceObjectSelectionRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiJobTableMappingSourceObjectSelectionRuleArrayInput)(nil)).Elem(), DiJobTableMappingSourceObjectSelectionRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiJobTableMappingTransformationRuleInput)(nil)).Elem(), DiJobTableMappingTransformationRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiJobTableMappingTransformationRuleArrayInput)(nil)).Elem(), DiJobTableMappingTransformationRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiJobTransformationRuleInput)(nil)).Elem(), DiJobTransformationRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiJobTransformationRuleArrayInput)(nil)).Elem(), DiJobTransformationRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectMemberRoleInput)(nil)).Elem(), ProjectMemberRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectMemberRoleArrayInput)(nil)).Elem(), ProjectMemberRoleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFoldersFolderInput)(nil)).Elem(), GetFoldersFolderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFoldersFolderArrayInput)(nil)).Elem(), GetFoldersFolderArray{})
+	pulumi.RegisterOutputType(DiAlarmRuleNotificationSettingsOutput{})
+	pulumi.RegisterOutputType(DiAlarmRuleNotificationSettingsPtrOutput{})
+	pulumi.RegisterOutputType(DiAlarmRuleNotificationSettingsNotificationChannelOutput{})
+	pulumi.RegisterOutputType(DiAlarmRuleNotificationSettingsNotificationChannelArrayOutput{})
+	pulumi.RegisterOutputType(DiAlarmRuleNotificationSettingsNotificationReceiverOutput{})
+	pulumi.RegisterOutputType(DiAlarmRuleNotificationSettingsNotificationReceiverArrayOutput{})
+	pulumi.RegisterOutputType(DiAlarmRuleTriggerConditionOutput{})
+	pulumi.RegisterOutputType(DiAlarmRuleTriggerConditionArrayOutput{})
+	pulumi.RegisterOutputType(DiJobDestinationDataSourceSettingOutput{})
+	pulumi.RegisterOutputType(DiJobDestinationDataSourceSettingArrayOutput{})
+	pulumi.RegisterOutputType(DiJobJobSettingsOutput{})
+	pulumi.RegisterOutputType(DiJobJobSettingsPtrOutput{})
+	pulumi.RegisterOutputType(DiJobJobSettingsColumnDataTypeSettingOutput{})
+	pulumi.RegisterOutputType(DiJobJobSettingsColumnDataTypeSettingArrayOutput{})
+	pulumi.RegisterOutputType(DiJobJobSettingsCycleScheduleSettingsOutput{})
+	pulumi.RegisterOutputType(DiJobJobSettingsCycleScheduleSettingsPtrOutput{})
+	pulumi.RegisterOutputType(DiJobJobSettingsDdlHandlingSettingOutput{})
+	pulumi.RegisterOutputType(DiJobJobSettingsDdlHandlingSettingArrayOutput{})
+	pulumi.RegisterOutputType(DiJobJobSettingsRuntimeSettingOutput{})
+	pulumi.RegisterOutputType(DiJobJobSettingsRuntimeSettingArrayOutput{})
+	pulumi.RegisterOutputType(DiJobResourceSettingsOutput{})
+	pulumi.RegisterOutputType(DiJobResourceSettingsPtrOutput{})
+	pulumi.RegisterOutputType(DiJobResourceSettingsOfflineResourceSettingsOutput{})
+	pulumi.RegisterOutputType(DiJobResourceSettingsOfflineResourceSettingsPtrOutput{})
+	pulumi.RegisterOutputType(DiJobResourceSettingsRealtimeResourceSettingsOutput{})
+	pulumi.RegisterOutputType(DiJobResourceSettingsRealtimeResourceSettingsPtrOutput{})
+	pulumi.RegisterOutputType(DiJobResourceSettingsScheduleResourceSettingsOutput{})
+	pulumi.RegisterOutputType(DiJobResourceSettingsScheduleResourceSettingsPtrOutput{})
+	pulumi.RegisterOutputType(DiJobSourceDataSourceSettingOutput{})
+	pulumi.RegisterOutputType(DiJobSourceDataSourceSettingArrayOutput{})
+	pulumi.RegisterOutputType(DiJobSourceDataSourceSettingDataSourcePropertiesOutput{})
+	pulumi.RegisterOutputType(DiJobSourceDataSourceSettingDataSourcePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(DiJobTableMappingOutput{})
+	pulumi.RegisterOutputType(DiJobTableMappingArrayOutput{})
+	pulumi.RegisterOutputType(DiJobTableMappingSourceObjectSelectionRuleOutput{})
+	pulumi.RegisterOutputType(DiJobTableMappingSourceObjectSelectionRuleArrayOutput{})
+	pulumi.RegisterOutputType(DiJobTableMappingTransformationRuleOutput{})
+	pulumi.RegisterOutputType(DiJobTableMappingTransformationRuleArrayOutput{})
+	pulumi.RegisterOutputType(DiJobTransformationRuleOutput{})
+	pulumi.RegisterOutputType(DiJobTransformationRuleArrayOutput{})
 	pulumi.RegisterOutputType(ProjectMemberRoleOutput{})
 	pulumi.RegisterOutputType(ProjectMemberRoleArrayOutput{})
 	pulumi.RegisterOutputType(GetFoldersFolderOutput{})

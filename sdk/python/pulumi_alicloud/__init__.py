@@ -71,6 +71,8 @@ if typing.TYPE_CHECKING:
     cloudauth = __cloudauth
     import pulumi_alicloud.cloudconnect as __cloudconnect
     cloudconnect = __cloudconnect
+    import pulumi_alicloud.cloudcontrol as __cloudcontrol
+    cloudcontrol = __cloudcontrol
     import pulumi_alicloud.cloudfirewall as __cloudfirewall
     cloudfirewall = __cloudfirewall
     import pulumi_alicloud.cloudmonitor as __cloudmonitor
@@ -320,6 +322,7 @@ else:
     clickhouse = _utilities.lazy_import('pulumi_alicloud.clickhouse')
     cloudauth = _utilities.lazy_import('pulumi_alicloud.cloudauth')
     cloudconnect = _utilities.lazy_import('pulumi_alicloud.cloudconnect')
+    cloudcontrol = _utilities.lazy_import('pulumi_alicloud.cloudcontrol')
     cloudfirewall = _utilities.lazy_import('pulumi_alicloud.cloudfirewall')
     cloudmonitor = _utilities.lazy_import('pulumi_alicloud.cloudmonitor')
     cloudsso = _utilities.lazy_import('pulumi_alicloud.cloudsso')
@@ -602,6 +605,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.alb",
   "classes": {
    "alicloud:alb/loadBalancer:LoadBalancer": "LoadBalancer"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "alb/loadBalancerAccessLogConfigAttachment",
+  "fqn": "pulumi_alicloud.alb",
+  "classes": {
+   "alicloud:alb/loadBalancerAccessLogConfigAttachment:LoadBalancerAccessLogConfigAttachment": "LoadBalancerAccessLogConfigAttachment"
   }
  },
  {
@@ -1742,6 +1753,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "cloudcontrol/resource",
+  "fqn": "pulumi_alicloud.cloudcontrol",
+  "classes": {
+   "alicloud:cloudcontrol/resource:Resource": "Resource"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "cloudfirewall/addressBook",
   "fqn": "pulumi_alicloud.cloudfirewall",
   "classes": {
@@ -2414,10 +2433,42 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "dataworks/diAlarmRule",
+  "fqn": "pulumi_alicloud.dataworks",
+  "classes": {
+   "alicloud:dataworks/diAlarmRule:DiAlarmRule": "DiAlarmRule"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "dataworks/diJob",
+  "fqn": "pulumi_alicloud.dataworks",
+  "classes": {
+   "alicloud:dataworks/diJob:DiJob": "DiJob"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "dataworks/dwResourceGroup",
+  "fqn": "pulumi_alicloud.dataworks",
+  "classes": {
+   "alicloud:dataworks/dwResourceGroup:DwResourceGroup": "DwResourceGroup"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "dataworks/folder",
   "fqn": "pulumi_alicloud.dataworks",
   "classes": {
    "alicloud:dataworks/folder:Folder": "Folder"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "dataworks/network",
+  "fqn": "pulumi_alicloud.dataworks",
+  "classes": {
+   "alicloud:dataworks/network:Network": "Network"
   }
  },
  {
@@ -4706,6 +4757,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.hbase",
   "classes": {
    "alicloud:hbase/instance:Instance": "Instance"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "hbr/crossAccount",
+  "fqn": "pulumi_alicloud.hbr",
+  "classes": {
+   "alicloud:hbr/crossAccount:CrossAccount": "CrossAccount"
   }
  },
  {

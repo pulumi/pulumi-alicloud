@@ -712,11 +712,11 @@ export namespace adb {
 export namespace alb {
     export interface AScriptExtAttribute {
         /**
-         * The key of the extended attribute.
+         * Key to extend attribute
          */
         attributeKey?: pulumi.Input<string>;
         /**
-         * The value of the extended attribute.
+         * The value of the extended attribute
          */
         attributeValue?: pulumi.Input<string>;
     }
@@ -2408,7 +2408,7 @@ export namespace bastionhost {
         /**
          * The password of the account that is used for the AD server.
          */
-        password: pulumi.Input<string>;
+        password?: pulumi.Input<string>;
         /**
          * The port that is used to access the AD server.
          */
@@ -2459,7 +2459,7 @@ export namespace bastionhost {
         /**
          * The password of the account that is used for the LDAP server.
          */
-        password: pulumi.Input<string>;
+        password?: pulumi.Input<string>;
         /**
          * The port that is used to access the LDAP server.
          */
@@ -2857,6 +2857,9 @@ export namespace cloudauth {
 }
 
 export namespace cloudconnect {
+}
+
+export namespace cloudcontrol {
 }
 
 export namespace cloudfirewall {
@@ -3330,13 +3333,15 @@ export namespace cms {
 
     export interface AlarmTarget {
         /**
-         * ARN uniquely identifies the resource that the alert targets.
-         * > **NOTE:** The targets attribute is used to specify where notifications or actions should be directed when an alarm condition is met. This attribute corresponds to what is referred to as the "Push Channel" in the Alibaba Cloud console.
-         * > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
+         * The Alibaba Cloud Resource Name (ARN) of the resource. Simple Message Queue (formerly MNS) (SMQ), Auto Scaling, Simple Log Service, and Function Compute are supported:
+         * - SMQ: `acs:mns:{regionId}:{userId}:/{Resource type}/{Resource name}/message`. {regionId}: the region ID of the SMQ queue or topic. {userId}: the ID of the Alibaba Cloud account that owns the resource. {Resource type}: the type of the resource for which alerts are triggered. Valid values:queues, topics. {Resource name}: the resource name. If the resource type is queues, the resource name is the queue name. If the resource type is topics, the resource name is the topic name.
+         * - Auto Scaling: `acs:ess:{regionId}:{userId}:scalingGroupId/{Scaling group ID}:scalingRuleId/{Scaling rule ID}`
+         * - Simple Log Service: `acs:log:{regionId}:{userId}:project/{Project name}/logstore/{Logstore name}`
+         * - Function Compute: `acs:fc:{regionId}:{userId}:services/{Service name}/functions/{Function name}`
          */
         arn?: pulumi.Input<string>;
         /**
-         * Specifies additional parameters for the alert callback in JSON format. This can include configuration settings specific to the alert action.
+         * The parameters of the alert callback. The parameters are in the JSON format.
          */
         jsonParams?: pulumi.Input<string>;
         /**
@@ -3344,7 +3349,7 @@ export namespace cms {
          */
         level?: pulumi.Input<string>;
         /**
-         * The ID of the resource for which alerts are triggered. This is typically used to specify individual resources that should respond to the alert.
+         * The ID of the resource for which alerts are triggered. For more information about how to obtain the ID of the resource for which alerts are triggered, see [DescribeMetricRuleTargets](https://www.alibabacloud.com/help/en/cms/developer-reference/api-describemetricruletargets) .
          */
         targetId?: pulumi.Input<string>;
     }
@@ -5082,6 +5087,346 @@ export namespace databasegateway {
 }
 
 export namespace dataworks {
+    export interface DiAlarmRuleNotificationSettings {
+        /**
+         * Alarm suppression interval, in minutes
+         */
+        inhibitionInterval?: pulumi.Input<number>;
+        /**
+         * Alarm notification Channel See `notificationChannels` below.
+         */
+        notificationChannels?: pulumi.Input<pulumi.Input<inputs.dataworks.DiAlarmRuleNotificationSettingsNotificationChannel>[]>;
+        /**
+         * List of alert notification recipients See `notificationReceivers` below.
+         */
+        notificationReceivers?: pulumi.Input<pulumi.Input<inputs.dataworks.DiAlarmRuleNotificationSettingsNotificationReceiver>[]>;
+    }
+
+    export interface DiAlarmRuleNotificationSettingsNotificationChannel {
+        /**
+         * Channel, optional enumeration value:
+         *
+         * Mail (Mail)
+         *
+         * Phone (Phone)
+         *
+         * Sms (Sms)
+         *
+         * Ding (DingTalk)
+         */
+        channels?: pulumi.Input<pulumi.Input<string>[]>;
+        severity?: pulumi.Input<string>;
+    }
+
+    export interface DiAlarmRuleNotificationSettingsNotificationReceiver {
+        /**
+         * The type of the receiver. Valid values: AliyunUid/DingToken/FeishuToken/WebHookUrl.
+         */
+        receiverType?: pulumi.Input<string>;
+        /**
+         * Receiver Value List
+         */
+        receiverValues?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface DiAlarmRuleTriggerCondition {
+        /**
+         * It takes effect only when the DDL notification is issued. The list of effective DDLs is required.
+         */
+        ddlReportTags?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Alarm calculation time interval, unit minute
+         */
+        duration?: pulumi.Input<number>;
+        /**
+         * Severity, optional enumeration value:
+         *
+         * Warning
+         *
+         * Critical
+         */
+        severity?: pulumi.Input<string>;
+        /**
+         * Alarm threshold.
+         *
+         * Task status alarm: no need to fill in the threshold.
+         *
+         * failover alarm: The threshold is the number of failover alarms.
+         *
+         * Task Delay Alarm: The threshold is the delay duration, in seconds.
+         */
+        threshold?: pulumi.Input<number>;
+    }
+
+    export interface DiJobDestinationDataSourceSetting {
+        /**
+         * Destination data source name
+         */
+        dataSourceName?: pulumi.Input<string>;
+    }
+
+    export interface DiJobJobSettings {
+        /**
+         * Channel-related task settings, in the form of a Json String.
+         *
+         * For example,
+         * {"structInfo":"MANAGED","storageType":"TEXTFILE","writeMode":"APPEND","partitionColumns":[{"columnName":"pt","columnType":"STRING","comment":""}],"fieldDelimiter":""}
+         */
+        channelSettings?: pulumi.Input<string>;
+        /**
+         * Column type mapping of the synchronization task See `columnDataTypeSettings` below.
+         */
+        columnDataTypeSettings?: pulumi.Input<pulumi.Input<inputs.dataworks.DiJobJobSettingsColumnDataTypeSetting>[]>;
+        /**
+         * Periodic scheduling settings See `cycleScheduleSettings` below.
+         */
+        cycleScheduleSettings?: pulumi.Input<inputs.dataworks.DiJobJobSettingsCycleScheduleSettings>;
+        /**
+         * List of DDL processing settings for synchronization tasks See `ddlHandlingSettings` below.
+         */
+        ddlHandlingSettings?: pulumi.Input<pulumi.Input<inputs.dataworks.DiJobJobSettingsDdlHandlingSetting>[]>;
+        /**
+         * Run-time setting parameter list See `runtimeSettings` below.
+         */
+        runtimeSettings?: pulumi.Input<pulumi.Input<inputs.dataworks.DiJobJobSettingsRuntimeSetting>[]>;
+    }
+
+    export interface DiJobJobSettingsColumnDataTypeSetting {
+        /**
+         * The destination type of the mapping relationship
+         */
+        destinationDataType?: pulumi.Input<string>;
+        /**
+         * The source type of the mapping type
+         */
+        sourceDataType?: pulumi.Input<string>;
+    }
+
+    export interface DiJobJobSettingsCycleScheduleSettings {
+        /**
+         * The type of synchronization that requires periodic scheduling. Value range:
+         *
+         * Full: Full
+         *
+         * OfflineIncremental: offline increment
+         */
+        cycleMigrationType?: pulumi.Input<string>;
+        /**
+         * Scheduling Parameters
+         */
+        scheduleParameters?: pulumi.Input<string>;
+    }
+
+    export interface DiJobJobSettingsDdlHandlingSetting {
+        action?: pulumi.Input<string>;
+        /**
+         * DDL type, optional enumeration value:
+         *
+         * RenameColumn (rename column)
+         *
+         * ModifyColumn (rename column)
+         *
+         * CreateTable (Rename Column)
+         *
+         * TruncateTable (empty table)
+         *
+         * DropTable (delete table)
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface DiJobJobSettingsRuntimeSetting {
+        /**
+         * Set name, optional ENUM value:
+         *
+         * runtime.offline.speed.limit.mb (valid when runtime.offline.speed.limit.enable = true)
+         *
+         * runtime.offline.speed.limit.enable
+         *
+         * dst.offline.connection.max (the maximum number of write connections for offline batch tasks)
+         *
+         * runtime.offline.concurrent (offline batch synchronization task concurrency)
+         *
+         * dst.realtime.connection.max (maximum number of write connections for real-time tasks)
+         *
+         * runtime.enable.auto.create.schema (whether to automatically create a schema on the target side)
+         *
+         * src.offline.datasource.max.connection (maximum number of source connections for offline batch tasks)
+         *
+         * runtime.realtime.concurrent (real-time task concurrency)
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Runtime setting value
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface DiJobResourceSettings {
+        /**
+         * Offline Resource Group configuration See `offlineResourceSettings` below.
+         */
+        offlineResourceSettings?: pulumi.Input<inputs.dataworks.DiJobResourceSettingsOfflineResourceSettings>;
+        /**
+         * Real-time Resource Group See `realtimeResourceSettings` below.
+         */
+        realtimeResourceSettings?: pulumi.Input<inputs.dataworks.DiJobResourceSettingsRealtimeResourceSettings>;
+        /**
+         * Scheduling Resource Groups See `scheduleResourceSettings` below.
+         */
+        scheduleResourceSettings?: pulumi.Input<inputs.dataworks.DiJobResourceSettingsScheduleResourceSettings>;
+    }
+
+    export interface DiJobResourceSettingsOfflineResourceSettings {
+        /**
+         * Scheduling resource group cu
+         */
+        requestedCu?: pulumi.Input<number>;
+        /**
+         * Scheduling resource group name
+         */
+        resourceGroupIdentifier?: pulumi.Input<string>;
+    }
+
+    export interface DiJobResourceSettingsRealtimeResourceSettings {
+        /**
+         * Scheduling resource group cu
+         */
+        requestedCu?: pulumi.Input<number>;
+        /**
+         * Scheduling resource group name
+         */
+        resourceGroupIdentifier?: pulumi.Input<string>;
+    }
+
+    export interface DiJobResourceSettingsScheduleResourceSettings {
+        /**
+         * Scheduling resource group cu
+         */
+        requestedCu?: pulumi.Input<number>;
+        /**
+         * Scheduling resource group name
+         */
+        resourceGroupIdentifier?: pulumi.Input<string>;
+    }
+
+    export interface DiJobSourceDataSourceSetting {
+        /**
+         * Data source name of a single source
+         */
+        dataSourceName?: pulumi.Input<string>;
+        /**
+         * Single Source Data Source Properties See `dataSourceProperties` below.
+         */
+        dataSourceProperties?: pulumi.Input<inputs.dataworks.DiJobSourceDataSourceSettingDataSourceProperties>;
+    }
+
+    export interface DiJobSourceDataSourceSettingDataSourceProperties {
+        /**
+         * Data Source Encoding
+         */
+        encoding?: pulumi.Input<string>;
+        /**
+         * Data Source Time Zone
+         */
+        timezone?: pulumi.Input<string>;
+    }
+
+    export interface DiJobTableMapping {
+        /**
+         * Each rule can select different types of source objects to be synchronized, such as source database and source data table. See `sourceObjectSelectionRules` below.
+         */
+        sourceObjectSelectionRules?: pulumi.Input<pulumi.Input<inputs.dataworks.DiJobTableMappingSourceObjectSelectionRule>[]>;
+        /**
+         * A list of conversion rule definitions for a synchronization object. Each element in the list defines a conversion rule. See `transformationRules` below.
+         */
+        transformationRules?: pulumi.Input<pulumi.Input<inputs.dataworks.DiJobTableMappingTransformationRule>[]>;
+    }
+
+    export interface DiJobTableMappingSourceObjectSelectionRule {
+        action?: pulumi.Input<string>;
+        /**
+         * Expression, such as mysql_table_1
+         */
+        expression?: pulumi.Input<string>;
+        /**
+         * Expression type, value range: Exact/Regex
+         */
+        expressionType?: pulumi.Input<string>;
+        /**
+         * Object type, optional enumeration value:
+         *
+         * Table (Table)
+         *
+         * Database
+         */
+        objectType?: pulumi.Input<string>;
+    }
+
+    export interface DiJobTableMappingTransformationRule {
+        /**
+         * Action type, optional enumeration value:
+         *
+         * DefinePrimaryKey (defines the primary key)
+         *
+         * Rename
+         *
+         * AddColumn (increase column)
+         *
+         * HandleDml(DML handling)
+         *
+         * DefineIncrementalCondition
+         */
+        ruleActionType?: pulumi.Input<string>;
+        /**
+         * Rule Name
+         */
+        ruleName?: pulumi.Input<string>;
+        /**
+         * Target type of action, optional enumeration value:
+         *
+         * Table (Table)
+         *
+         * Schema(schema)
+         */
+        ruleTargetType?: pulumi.Input<string>;
+    }
+
+    export interface DiJobTransformationRule {
+        /**
+         * Action type, optional enumeration value:
+         *
+         * DefinePrimaryKey (defines the primary key)
+         *
+         * Rename
+         *
+         * AddColumn (increase column)
+         *
+         * HandleDml(DML handling)
+         *
+         * DefineIncrementalCondition
+         */
+        ruleActionType?: pulumi.Input<string>;
+        /**
+         * Regular expression, in json string format.
+         *
+         * Example renaming rule (Rename): {"expression":"${srcDatasourceName}_${srcDatabaseName}_0922","variables":[{"variableName":"srcDatabaseName","variableRules":[{"from":"fromdb","to":"todb"}]}]}
+         */
+        ruleExpression?: pulumi.Input<string>;
+        /**
+         * Rule Name
+         */
+        ruleName?: pulumi.Input<string>;
+        /**
+         * Target type of action, optional enumeration value:
+         *
+         * Table (Table)
+         *
+         * Schema(schema)
+         */
+        ruleTargetType?: pulumi.Input<string>;
+    }
+
     export interface ProjectMemberRole {
         /**
          * Project Role Code.
@@ -16805,15 +17150,18 @@ export namespace vpc {
 export namespace vpn {
     export interface ConnectionBgpConfig {
         /**
-         * Bgp enable.
+         * specifies whether to enable BGP. Valid values: true and false (default).
          */
         enable?: pulumi.Input<boolean>;
         /**
-         * Local asn.
+         * the autonomous system number (ASN) on the Alibaba Cloud side. 
+         * Valid values: 1 to 4294967295. Default value: 45104. You can enter a value in two segments separated by a period (.).
+         * Each segment is 16 bits in length. Enter the number in each segment in decimal format.
+         * For example, if you enter 123.456, the ASN is 8061384. The ASN is calculated by using the following formula: 123 × 65536 + 456 = 8061384.
          */
         localAsn?: pulumi.Input<string>;
         /**
-         * Local bgp IP.
+         * the BGP address on the Alibaba Cloud side. It must be an IP address that falls within the CIDR block of the IPsec tunnel.
          */
         localBgpIp?: pulumi.Input<string>;
         /**
@@ -16821,88 +17169,91 @@ export namespace vpn {
          */
         status?: pulumi.Input<string>;
         /**
-         * IPSec tunnel Cidr.
+         * The CIDR block of the IPsec tunnel. The CIDR block must belong to 169.254.0.0/16 and the subnet mask is 30 bits in length.
          */
         tunnelCidr?: pulumi.Input<string>;
     }
 
     export interface ConnectionHealthCheckConfig {
         /**
-         * Destination IP.
+         * the destination IP address configured for health checks.
          */
         dip?: pulumi.Input<string>;
         /**
-         * Specifies whether to enable healthcheck.
+         * specifies whether to enable health checks. Valid values: true and false. Default value: false.
          */
         enable?: pulumi.Input<boolean>;
         /**
-         * Retry interval.
+         * the time interval of health check retries. Unit: seconds. Default value: 3.
          */
         interval?: pulumi.Input<number>;
         /**
-         * retry times.
+         * the maximum number of health check retries. Default value: 3.
          */
         retry?: pulumi.Input<number>;
         /**
-         * Source IP.
+         * the source IP address that is used for health checks.
          */
         sip?: pulumi.Input<string>;
     }
 
     export interface ConnectionIkeConfig {
         /**
-         * IKE auth Algorithm.
+         * the authentication algorithm that is used in Phase 1 negotiations. Valid values: md5, sha1, sha2
          */
         ikeAuthAlg?: pulumi.Input<string>;
         /**
-         * IKE encript algorithm.
+         * the encryption algorithm that is used in Phase 1 negotiations. Valid values: aes, aes192, aes256, des, and 3des. Default value: aes.
          */
         ikeEncAlg?: pulumi.Input<string>;
         /**
-         * IKE lifetime.
+         * the SA lifetime as a result of Phase 1 negotiations. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
          */
         ikeLifetime?: pulumi.Input<number>;
         /**
-         * The local ID, which supports the FQDN and IP formats, and defaults to the IP address of the selected VPN gateway.
+         * the identifier of the VPN gateway. It can contain at most 100 characters. The default value is the IP address of the VPN gateway.
          */
         ikeLocalId?: pulumi.Input<string>;
         /**
-         * IKE mode, supports main and aggressive mode. The main mode is highly secure. If NAT traversal is enabled, we recommend that you use the aggressive mode.
+         * the negotiation mode of IKE. Valid values: main and aggressive. Default value: main.
+         * - main: This mode offers higher security during negotiations.
+         * - aggressive: This mode supports faster negotiations and a higher success rate.
          */
         ikeMode?: pulumi.Input<string>;
         /**
-         * DH group.
+         * the Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Valid values: group1, group2, group5, and group14. Default value: group2.
          */
         ikePfs?: pulumi.Input<string>;
         /**
-         * The peer ID. The FQDN and IP address formats are supported. The default value is the IP address of the selected customer gateway.
+         * the identifier of the customer gateway. It can contain at most 100 characters. The default value is the IP address of the customer gateway.
          */
         ikeRemoteId?: pulumi.Input<string>;
         /**
-         * IKE version.
+         * the version of the Internet Key Exchange (IKE) protocol. Valid values: ikev1 and ikev2. Default value: ikev1.
+         * Compared with IKEv1, IKEv2 simplifies the security association (SA) negotiation process and provides better support for scenarios with multiple CIDR blocks.
          */
         ikeVersion?: pulumi.Input<string>;
         /**
-         * Preshared secret key.
+         * the pre-shared key that is used for identity authentication between the VPN gateway and the on-premises data center. The key must be 1 to 100 characters in length and can contain digits, letters, and the following special characters: ~!\`@#$%^&*()_-+={}[]|;:',.<>/? If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key. You can call the DescribeVpnConnection operation to query the pre-shared key that is automatically generated by the system.
          */
         psk?: pulumi.Input<string>;
     }
 
     export interface ConnectionIpsecConfig {
         /**
-         * IPsec authentication algorithm. sha1 and md5 are supported.
+         * the authentication algorithm that is used in Phase 2 negotiations. Valid values: md5, sha1, sha256, sha384, and sha512. Default value: md5.
          */
         ipsecAuthAlg?: pulumi.Input<string>;
         /**
-         * IPsec Encript algorithm.
+         * the encryption algorithm that is used in Phase 2 negotiations. Valid values: aes, aes192, aes256, des, and 3des. Default value: aes.
          */
         ipsecEncAlg?: pulumi.Input<string>;
         /**
-         * IPsec lifetime.
+         * the SA lifetime that is determined by Phase 2 negotiations. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
          */
         ipsecLifetime?: pulumi.Input<number>;
         /**
-         * DH Group.
+         * the DH key exchange algorithm that is used in Phase 2 negotiations. Valid values: disabled, group1, group2, group5, and group14. Default value: group2.
          */
         ipsecPfs?: pulumi.Input<string>;
     }
@@ -16984,12 +17335,14 @@ export namespace vpn {
         ikePfs?: pulumi.Input<string>;
         ikeVersion?: pulumi.Input<string>;
         /**
-         * The local Id.
+         * The identifier of the tunnel on the Alibaba Cloud side, which is used in Phase 1 negotiations. It can contain at most 100 characters. The default value is the IP address of the tunnel.
+         * LocalId supports fully qualified domain names (FQDNs). If you use an FQDN, we recommend that you set the negotiation mode to aggressive.
          */
         localId?: pulumi.Input<string>;
         psk?: pulumi.Input<string>;
         /**
-         * Remote ID.
+         * The identifier of the tunnel peer, which is used in Phase 1 negotiations. It can contain at most 100 characters. The default value is the IP address of the customer gateway that is associated with the tunnel.
+         * RemoteId supports FQDNs. If you use an FQDN, we recommend that you set the negotiation mode to aggressive.
          */
         remoteId?: pulumi.Input<string>;
     }
@@ -17338,7 +17691,7 @@ export namespace yundun {
         isSsl: pulumi.Input<boolean>;
         mobileMapping?: pulumi.Input<string>;
         nameMapping?: pulumi.Input<string>;
-        password: pulumi.Input<string>;
+        password?: pulumi.Input<string>;
         port: pulumi.Input<number>;
         server: pulumi.Input<string>;
         standbyServer?: pulumi.Input<string>;
@@ -17353,7 +17706,7 @@ export namespace yundun {
         loginNameMapping?: pulumi.Input<string>;
         mobileMapping?: pulumi.Input<string>;
         nameMapping?: pulumi.Input<string>;
-        password: pulumi.Input<string>;
+        password?: pulumi.Input<string>;
         port: pulumi.Input<number>;
         server: pulumi.Input<string>;
         standbyServer?: pulumi.Input<string>;

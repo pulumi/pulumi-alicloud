@@ -199,7 +199,7 @@ type Alarm struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The information about the resource for which alerts are triggered. See `targets` below.
+	// Adds or modifies the push channels of an alert rule. See `targets` below.
 	Targets AlarmTargetArrayOutput `pulumi:"targets"`
 	// The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
 	Webhook pulumi.StringPtrOutput `pulumi:"webhook"`
@@ -289,7 +289,7 @@ type alarmState struct {
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
-	// The information about the resource for which alerts are triggered. See `targets` below.
+	// Adds or modifies the push channels of an alert rule. See `targets` below.
 	Targets []AlarmTarget `pulumi:"targets"`
 	// The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
 	Webhook *string `pulumi:"webhook"`
@@ -341,7 +341,7 @@ type AlarmState struct {
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
-	// The information about the resource for which alerts are triggered. See `targets` below.
+	// Adds or modifies the push channels of an alert rule. See `targets` below.
 	Targets AlarmTargetArrayInput
 	// The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
 	Webhook pulumi.StringPtrInput
@@ -395,7 +395,7 @@ type alarmArgs struct {
 	StartTime *int `pulumi:"startTime"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
-	// The information about the resource for which alerts are triggered. See `targets` below.
+	// Adds or modifies the push channels of an alert rule. See `targets` below.
 	Targets []AlarmTarget `pulumi:"targets"`
 	// The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
 	Webhook *string `pulumi:"webhook"`
@@ -446,7 +446,7 @@ type AlarmArgs struct {
 	StartTime pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
-	// The information about the resource for which alerts are triggered. See `targets` below.
+	// Adds or modifies the push channels of an alert rule. See `targets` below.
 	Targets AlarmTargetArrayInput
 	// The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
 	Webhook pulumi.StringPtrInput
@@ -641,7 +641,7 @@ func (o AlarmOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The information about the resource for which alerts are triggered. See `targets` below.
+// Adds or modifies the push channels of an alert rule. See `targets` below.
 func (o AlarmOutput) Targets() AlarmTargetArrayOutput {
 	return o.ApplyT(func(v *Alarm) AlarmTargetArrayOutput { return v.Targets }).(AlarmTargetArrayOutput)
 }

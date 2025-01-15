@@ -26,9 +26,9 @@ class ResourceRecordArgs:
         """
         The set of arguments for constructing a ResourceRecord resource.
         :param pulumi.Input[str] record_id: The record's id, should be unique.
-        :param pulumi.Input[str] resource_name: The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group.
+        :param pulumi.Input[str] resource_name: The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
         :param pulumi.Input[str] tag: The record's tag, can be used for search.
-        :param pulumi.Input[str] value: The json value of record.
+        :param pulumi.Input[str] value: The json value of record. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
         """
         pulumi.set(__self__, "record_id", record_id)
         pulumi.set(__self__, "resource_name", resource_name)
@@ -51,7 +51,7 @@ class ResourceRecordArgs:
     @pulumi.getter(name="resourceName")
     def resource_name(self) -> pulumi.Input[str]:
         """
-        The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group.
+        The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
         """
         return pulumi.get(self, "resource_name")
 
@@ -75,7 +75,7 @@ class ResourceRecordArgs:
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
         """
-        The json value of record.
+        The json value of record. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
         """
         return pulumi.get(self, "value")
 
@@ -94,9 +94,9 @@ class _ResourceRecordState:
         """
         Input properties used for looking up and filtering ResourceRecord resources.
         :param pulumi.Input[str] record_id: The record's id, should be unique.
-        :param pulumi.Input[str] resource_name: The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group.
+        :param pulumi.Input[str] resource_name: The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
         :param pulumi.Input[str] tag: The record's tag, can be used for search.
-        :param pulumi.Input[str] value: The json value of record.
+        :param pulumi.Input[str] value: The json value of record. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
         """
         if record_id is not None:
             pulumi.set(__self__, "record_id", record_id)
@@ -123,7 +123,7 @@ class _ResourceRecordState:
     @pulumi.getter(name="resourceName")
     def resource_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group.
+        The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
         """
         return pulumi.get(self, "resource_name")
 
@@ -147,7 +147,7 @@ class _ResourceRecordState:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        The json value of record.
+        The json value of record. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
         """
         return pulumi.get(self, "value")
 
@@ -208,12 +208,20 @@ class ResourceRecord(pulumi.CustomResource):
         \"\"\")
         example_resource_record = alicloud.log.ResourceRecord("example",
             resource_name_=example.id,
-            record_id="user_tf_resource_1",
-            tag="resource tag",
-            value=\"\"\"    {
-              "col1": "this is col1 value",
-              "col2": "col2   value"
-            }
+            record_id="tf_user_example",
+            tag="tf example",
+            value=\"\"\"{
+          "user_name": "tf example",
+          "sms_enabled": true,
+          "phone": "18888888889",
+          "voice_enabled": false,
+          "email": [
+            "test@qq.com"
+          ],
+          "enabled": true,
+          "user_id": "tf_user",
+          "country_code": "86"
+        }
         \"\"\")
         ```
 
@@ -228,9 +236,9 @@ class ResourceRecord(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] record_id: The record's id, should be unique.
-        :param pulumi.Input[str] resource_name_: The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group.
+        :param pulumi.Input[str] resource_name_: The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
         :param pulumi.Input[str] tag: The record's tag, can be used for search.
-        :param pulumi.Input[str] value: The json value of record.
+        :param pulumi.Input[str] value: The json value of record. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
         """
         ...
     @overload
@@ -280,12 +288,20 @@ class ResourceRecord(pulumi.CustomResource):
         \"\"\")
         example_resource_record = alicloud.log.ResourceRecord("example",
             resource_name_=example.id,
-            record_id="user_tf_resource_1",
-            tag="resource tag",
-            value=\"\"\"    {
-              "col1": "this is col1 value",
-              "col2": "col2   value"
-            }
+            record_id="tf_user_example",
+            tag="tf example",
+            value=\"\"\"{
+          "user_name": "tf example",
+          "sms_enabled": true,
+          "phone": "18888888889",
+          "voice_enabled": false,
+          "email": [
+            "test@qq.com"
+          ],
+          "enabled": true,
+          "user_id": "tf_user",
+          "country_code": "86"
+        }
         \"\"\")
         ```
 
@@ -359,9 +375,9 @@ class ResourceRecord(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] record_id: The record's id, should be unique.
-        :param pulumi.Input[str] resource_name_: The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group.
+        :param pulumi.Input[str] resource_name_: The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
         :param pulumi.Input[str] tag: The record's tag, can be used for search.
-        :param pulumi.Input[str] value: The json value of record.
+        :param pulumi.Input[str] value: The json value of record. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -385,7 +401,7 @@ class ResourceRecord(pulumi.CustomResource):
     @pulumi.getter(name="resourceName")
     def resource_name(self) -> pulumi.Output[str]:
         """
-        The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group.
+        The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
         """
         return pulumi.get(self, "resource_name")
 
@@ -401,7 +417,7 @@ class ResourceRecord(pulumi.CustomResource):
     @pulumi.getter
     def value(self) -> pulumi.Output[str]:
         """
-        The json value of record.
+        The json value of record. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
         """
         return pulumi.get(self, "value")
 

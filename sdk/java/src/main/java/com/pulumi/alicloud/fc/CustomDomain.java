@@ -148,7 +148,7 @@ import javax.annotation.Nullable;
  *             .ossBucket(defaultBucket.id())
  *             .ossKey(defaultBucketObject.key())
  *             .memorySize("512")
- *             .runtime("python2.7")
+ *             .runtime("python3.9")
  *             .handler("hello.handler")
  *             .build());
  * 

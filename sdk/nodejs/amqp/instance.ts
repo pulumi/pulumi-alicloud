@@ -54,7 +54,12 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly instanceName!: pulumi.Output<string>;
     /**
-     * Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
+     * Instance type. Valid values: 
+     * - professional: professional Edition
+     * - enterprise: enterprise Edition
+     * - vip: Platinum Edition.
+     * - serverless: Serverless Edition.
+     * > **NOTE:** There should not set the `instanceType` parameter when creating a serverless instance. Only need to set `paymentType = "PayAsYouGo"` and `serverlessChargeType = "onDemand"`.
      */
     public readonly instanceType!: pulumi.Output<string>;
     /**
@@ -76,15 +81,17 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly modifyType!: pulumi.Output<string | undefined>;
     /**
-     * The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
+     * The Payment type. Valid value: 
+     * - Subscription: Pre-paid.
+     * - PayAsYouGo: Post-paid, and for serverless Edition.
      */
     public readonly paymentType!: pulumi.Output<string>;
     /**
-     * Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
+     * Prepayment cycle, unit: periodCycle. This parameter is valid when PaymentType is set to Subscription.
      */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
-     * Prepaid cycle units. Value: Month. Year: Year.
+     * Prepaid cycle units. Value: Month, Year.
      */
     public readonly periodCycle!: pulumi.Output<string | undefined>;
     /**
@@ -211,7 +218,12 @@ export interface InstanceState {
      */
     instanceName?: pulumi.Input<string>;
     /**
-     * Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
+     * Instance type. Valid values: 
+     * - professional: professional Edition
+     * - enterprise: enterprise Edition
+     * - vip: Platinum Edition.
+     * - serverless: Serverless Edition.
+     * > **NOTE:** There should not set the `instanceType` parameter when creating a serverless instance. Only need to set `paymentType = "PayAsYouGo"` and `serverlessChargeType = "onDemand"`.
      */
     instanceType?: pulumi.Input<string>;
     /**
@@ -233,15 +245,17 @@ export interface InstanceState {
      */
     modifyType?: pulumi.Input<string>;
     /**
-     * The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
+     * The Payment type. Valid value: 
+     * - Subscription: Pre-paid.
+     * - PayAsYouGo: Post-paid, and for serverless Edition.
      */
     paymentType?: pulumi.Input<string>;
     /**
-     * Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
+     * Prepayment cycle, unit: periodCycle. This parameter is valid when PaymentType is set to Subscription.
      */
     period?: pulumi.Input<number>;
     /**
-     * Prepaid cycle units. Value: Month. Year: Year.
+     * Prepaid cycle units. Value: Month, Year.
      */
     periodCycle?: pulumi.Input<string>;
     /**
@@ -299,7 +313,12 @@ export interface InstanceArgs {
      */
     instanceName?: pulumi.Input<string>;
     /**
-     * Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
+     * Instance type. Valid values: 
+     * - professional: professional Edition
+     * - enterprise: enterprise Edition
+     * - vip: Platinum Edition.
+     * - serverless: Serverless Edition.
+     * > **NOTE:** There should not set the `instanceType` parameter when creating a serverless instance. Only need to set `paymentType = "PayAsYouGo"` and `serverlessChargeType = "onDemand"`.
      */
     instanceType?: pulumi.Input<string>;
     /**
@@ -321,15 +340,17 @@ export interface InstanceArgs {
      */
     modifyType?: pulumi.Input<string>;
     /**
-     * The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
+     * The Payment type. Valid value: 
+     * - Subscription: Pre-paid.
+     * - PayAsYouGo: Post-paid, and for serverless Edition.
      */
     paymentType: pulumi.Input<string>;
     /**
-     * Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
+     * Prepayment cycle, unit: periodCycle. This parameter is valid when PaymentType is set to Subscription.
      */
     period?: pulumi.Input<number>;
     /**
-     * Prepaid cycle units. Value: Month. Year: Year.
+     * Prepaid cycle units. Value: Month, Year.
      */
     periodCycle?: pulumi.Input<string>;
     /**

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
  *
- * > **NOTE:** Available in v1.103.0+
+ * > **NOTE:** Available since v1.103.0.
  *
  * ## Example Usage
  *
@@ -40,6 +40,9 @@ export function getEdgeKubernetesClusters(args?: GetEdgeKubernetesClustersArgs, 
  * A collection of arguments for invoking getEdgeKubernetesClusters.
  */
 export interface GetEdgeKubernetesClustersArgs {
+    /**
+     * Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `masterDiskCategory`, `slbInternetEnabled`, `connections`. See full list in attributes.
+     */
     enableDetails?: boolean;
     /**
      * Cluster IDs to filter.
@@ -82,7 +85,7 @@ export interface GetEdgeKubernetesClustersResult {
 /**
  * This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
  *
- * > **NOTE:** Available in v1.103.0+
+ * > **NOTE:** Available since v1.103.0.
  *
  * ## Example Usage
  *
@@ -113,6 +116,9 @@ export function getEdgeKubernetesClustersOutput(args?: GetEdgeKubernetesClusters
  * A collection of arguments for invoking getEdgeKubernetesClusters.
  */
 export interface GetEdgeKubernetesClustersOutputArgs {
+    /**
+     * Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `masterDiskCategory`, `slbInternetEnabled`, `connections`. See full list in attributes.
+     */
     enableDetails?: pulumi.Input<boolean>;
     /**
      * Cluster IDs to filter.

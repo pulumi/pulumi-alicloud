@@ -64,6 +64,10 @@ public final class GetAlidnsDomainsResult {
     private @Nullable String resourceGroupId;
     private @Nullable String searchMode;
     private @Nullable Boolean starmark;
+    /**
+     * @return Tags of the domain.
+     * 
+     */
     private @Nullable Map<String,String> tags;
     /**
      * @return Cloud resolution version ID.
@@ -152,6 +156,10 @@ public final class GetAlidnsDomainsResult {
     public Optional<Boolean> starmark() {
         return Optional.ofNullable(this.starmark);
     }
+    /**
+     * @return Tags of the domain.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }

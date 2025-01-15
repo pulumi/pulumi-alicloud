@@ -115,8 +115,9 @@ type LaunchTemplate struct {
 	AutoRenew       pulumi.BoolOutput      `pulumi:"autoRenew"`
 	AutoRenewPeriod pulumi.IntOutput       `pulumi:"autoRenewPeriod"`
 	// The list of data disks created with instance.
-	DataDisks       LaunchTemplateDataDiskArrayOutput `pulumi:"dataDisks"`
-	DeploymentSetId pulumi.StringPtrOutput            `pulumi:"deploymentSetId"`
+	DataDisks            LaunchTemplateDataDiskArrayOutput `pulumi:"dataDisks"`
+	DefaultVersionNumber pulumi.IntOutput                  `pulumi:"defaultVersionNumber"`
+	DeploymentSetId      pulumi.StringPtrOutput            `pulumi:"deploymentSetId"`
 	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
 	Description      pulumi.StringPtrOutput `pulumi:"description"`
 	EnableVmOsConfig pulumi.BoolPtrOutput   `pulumi:"enableVmOsConfig"`
@@ -151,8 +152,9 @@ type LaunchTemplate struct {
 	// The name of the key pair.
 	// - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
 	// - The password logon method for Linux instances is set to forbidden upon initialization.
-	KeyPairName        pulumi.StringPtrOutput `pulumi:"keyPairName"`
-	LaunchTemplateName pulumi.StringOutput    `pulumi:"launchTemplateName"`
+	KeyPairName         pulumi.StringPtrOutput `pulumi:"keyPairName"`
+	LatestVersionNumber pulumi.IntOutput       `pulumi:"latestVersionNumber"`
+	LaunchTemplateName  pulumi.StringOutput    `pulumi:"launchTemplateName"`
 	// Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
@@ -206,10 +208,11 @@ type LaunchTemplate struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags                    pulumi.StringMapOutput `pulumi:"tags"`
-	TemplateResourceGroupId pulumi.StringPtrOutput `pulumi:"templateResourceGroupId"`
-	TemplateTags            pulumi.StringMapOutput `pulumi:"templateTags"`
-	UserData                pulumi.StringOutput    `pulumi:"userData"`
+	Tags                       pulumi.StringMapOutput `pulumi:"tags"`
+	TemplateResourceGroupId    pulumi.StringPtrOutput `pulumi:"templateResourceGroupId"`
+	TemplateTags               pulumi.StringMapOutput `pulumi:"templateTags"`
+	UpdateDefaultVersionNumber pulumi.BoolPtrOutput   `pulumi:"updateDefaultVersionNumber"`
+	UserData                   pulumi.StringOutput    `pulumi:"userData"`
 	// User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
 	//
 	// Deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
@@ -257,8 +260,9 @@ type launchTemplateState struct {
 	AutoRenew       *bool   `pulumi:"autoRenew"`
 	AutoRenewPeriod *int    `pulumi:"autoRenewPeriod"`
 	// The list of data disks created with instance.
-	DataDisks       []LaunchTemplateDataDisk `pulumi:"dataDisks"`
-	DeploymentSetId *string                  `pulumi:"deploymentSetId"`
+	DataDisks            []LaunchTemplateDataDisk `pulumi:"dataDisks"`
+	DefaultVersionNumber *int                     `pulumi:"defaultVersionNumber"`
+	DeploymentSetId      *string                  `pulumi:"deploymentSetId"`
 	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
 	Description      *string `pulumi:"description"`
 	EnableVmOsConfig *bool   `pulumi:"enableVmOsConfig"`
@@ -293,8 +297,9 @@ type launchTemplateState struct {
 	// The name of the key pair.
 	// - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
 	// - The password logon method for Linux instances is set to forbidden upon initialization.
-	KeyPairName        *string `pulumi:"keyPairName"`
-	LaunchTemplateName *string `pulumi:"launchTemplateName"`
+	KeyPairName         *string `pulumi:"keyPairName"`
+	LatestVersionNumber *int    `pulumi:"latestVersionNumber"`
+	LaunchTemplateName  *string `pulumi:"launchTemplateName"`
 	// Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
@@ -348,10 +353,11 @@ type launchTemplateState struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags                    map[string]string `pulumi:"tags"`
-	TemplateResourceGroupId *string           `pulumi:"templateResourceGroupId"`
-	TemplateTags            map[string]string `pulumi:"templateTags"`
-	UserData                *string           `pulumi:"userData"`
+	Tags                       map[string]string `pulumi:"tags"`
+	TemplateResourceGroupId    *string           `pulumi:"templateResourceGroupId"`
+	TemplateTags               map[string]string `pulumi:"templateTags"`
+	UpdateDefaultVersionNumber *bool             `pulumi:"updateDefaultVersionNumber"`
+	UserData                   *string           `pulumi:"userData"`
 	// User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
 	//
 	// Deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
@@ -370,8 +376,9 @@ type LaunchTemplateState struct {
 	AutoRenew       pulumi.BoolPtrInput
 	AutoRenewPeriod pulumi.IntPtrInput
 	// The list of data disks created with instance.
-	DataDisks       LaunchTemplateDataDiskArrayInput
-	DeploymentSetId pulumi.StringPtrInput
+	DataDisks            LaunchTemplateDataDiskArrayInput
+	DefaultVersionNumber pulumi.IntPtrInput
+	DeploymentSetId      pulumi.StringPtrInput
 	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
 	Description      pulumi.StringPtrInput
 	EnableVmOsConfig pulumi.BoolPtrInput
@@ -406,8 +413,9 @@ type LaunchTemplateState struct {
 	// The name of the key pair.
 	// - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
 	// - The password logon method for Linux instances is set to forbidden upon initialization.
-	KeyPairName        pulumi.StringPtrInput
-	LaunchTemplateName pulumi.StringPtrInput
+	KeyPairName         pulumi.StringPtrInput
+	LatestVersionNumber pulumi.IntPtrInput
+	LaunchTemplateName  pulumi.StringPtrInput
 	// Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
@@ -461,10 +469,11 @@ type LaunchTemplateState struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags                    pulumi.StringMapInput
-	TemplateResourceGroupId pulumi.StringPtrInput
-	TemplateTags            pulumi.StringMapInput
-	UserData                pulumi.StringPtrInput
+	Tags                       pulumi.StringMapInput
+	TemplateResourceGroupId    pulumi.StringPtrInput
+	TemplateTags               pulumi.StringMapInput
+	UpdateDefaultVersionNumber pulumi.BoolPtrInput
+	UserData                   pulumi.StringPtrInput
 	// User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
 	//
 	// Deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
@@ -487,8 +496,9 @@ type launchTemplateArgs struct {
 	AutoRenew       *bool   `pulumi:"autoRenew"`
 	AutoRenewPeriod *int    `pulumi:"autoRenewPeriod"`
 	// The list of data disks created with instance.
-	DataDisks       []LaunchTemplateDataDisk `pulumi:"dataDisks"`
-	DeploymentSetId *string                  `pulumi:"deploymentSetId"`
+	DataDisks            []LaunchTemplateDataDisk `pulumi:"dataDisks"`
+	DefaultVersionNumber *int                     `pulumi:"defaultVersionNumber"`
+	DeploymentSetId      *string                  `pulumi:"deploymentSetId"`
 	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
 	Description      *string `pulumi:"description"`
 	EnableVmOsConfig *bool   `pulumi:"enableVmOsConfig"`
@@ -578,10 +588,11 @@ type launchTemplateArgs struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags                    map[string]string `pulumi:"tags"`
-	TemplateResourceGroupId *string           `pulumi:"templateResourceGroupId"`
-	TemplateTags            map[string]string `pulumi:"templateTags"`
-	UserData                *string           `pulumi:"userData"`
+	Tags                       map[string]string `pulumi:"tags"`
+	TemplateResourceGroupId    *string           `pulumi:"templateResourceGroupId"`
+	TemplateTags               map[string]string `pulumi:"templateTags"`
+	UpdateDefaultVersionNumber *bool             `pulumi:"updateDefaultVersionNumber"`
+	UserData                   *string           `pulumi:"userData"`
 	// User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
 	//
 	// Deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
@@ -601,8 +612,9 @@ type LaunchTemplateArgs struct {
 	AutoRenew       pulumi.BoolPtrInput
 	AutoRenewPeriod pulumi.IntPtrInput
 	// The list of data disks created with instance.
-	DataDisks       LaunchTemplateDataDiskArrayInput
-	DeploymentSetId pulumi.StringPtrInput
+	DataDisks            LaunchTemplateDataDiskArrayInput
+	DefaultVersionNumber pulumi.IntPtrInput
+	DeploymentSetId      pulumi.StringPtrInput
 	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
 	Description      pulumi.StringPtrInput
 	EnableVmOsConfig pulumi.BoolPtrInput
@@ -692,10 +704,11 @@ type LaunchTemplateArgs struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags                    pulumi.StringMapInput
-	TemplateResourceGroupId pulumi.StringPtrInput
-	TemplateTags            pulumi.StringMapInput
-	UserData                pulumi.StringPtrInput
+	Tags                       pulumi.StringMapInput
+	TemplateResourceGroupId    pulumi.StringPtrInput
+	TemplateTags               pulumi.StringMapInput
+	UpdateDefaultVersionNumber pulumi.BoolPtrInput
+	UserData                   pulumi.StringPtrInput
 	// User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
 	//
 	// Deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
@@ -813,6 +826,10 @@ func (o LaunchTemplateOutput) DataDisks() LaunchTemplateDataDiskArrayOutput {
 	return o.ApplyT(func(v *LaunchTemplate) LaunchTemplateDataDiskArrayOutput { return v.DataDisks }).(LaunchTemplateDataDiskArrayOutput)
 }
 
+func (o LaunchTemplateOutput) DefaultVersionNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.IntOutput { return v.DefaultVersionNumber }).(pulumi.IntOutput)
+}
+
 func (o LaunchTemplateOutput) DeploymentSetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.DeploymentSetId }).(pulumi.StringPtrOutput)
 }
@@ -898,6 +915,10 @@ func (o LaunchTemplateOutput) IoOptimized() pulumi.StringPtrOutput {
 // - The password logon method for Linux instances is set to forbidden upon initialization.
 func (o LaunchTemplateOutput) KeyPairName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.KeyPairName }).(pulumi.StringPtrOutput)
+}
+
+func (o LaunchTemplateOutput) LatestVersionNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.IntOutput { return v.LatestVersionNumber }).(pulumi.IntOutput)
 }
 
 func (o LaunchTemplateOutput) LaunchTemplateName() pulumi.StringOutput {
@@ -1027,6 +1048,10 @@ func (o LaunchTemplateOutput) TemplateResourceGroupId() pulumi.StringPtrOutput {
 
 func (o LaunchTemplateOutput) TemplateTags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringMapOutput { return v.TemplateTags }).(pulumi.StringMapOutput)
+}
+
+func (o LaunchTemplateOutput) UpdateDefaultVersionNumber() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.BoolPtrOutput { return v.UpdateDefaultVersionNumber }).(pulumi.BoolPtrOutput)
 }
 
 func (o LaunchTemplateOutput) UserData() pulumi.StringOutput {

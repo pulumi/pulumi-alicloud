@@ -61,7 +61,7 @@ class NatGatewayArgs:
         :param pulumi.Input[str] nat_gateway_name: Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
         :param pulumi.Input[str] nat_type: The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`.
         :param pulumi.Input[str] network_type: Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
-        :param pulumi.Input[str] payment_type: The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+        :param pulumi.Input[str] payment_type: The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[bool] private_link_enabled: Specifies whether to enable PrivateLink. Default value: `false`. Valid values:
@@ -293,7 +293,7 @@ class NatGatewayArgs:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+        The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
         """
         return pulumi.get(self, "payment_type")
 
@@ -409,7 +409,7 @@ class _NatGatewayState:
         :param pulumi.Input[str] nat_gateway_name: Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
         :param pulumi.Input[str] nat_type: The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`.
         :param pulumi.Input[str] network_type: Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
-        :param pulumi.Input[str] payment_type: The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+        :param pulumi.Input[str] payment_type: The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[bool] private_link_enabled: Specifies whether to enable PrivateLink. Default value: `false`. Valid values:
@@ -651,7 +651,7 @@ class _NatGatewayState:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+        The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
         """
         return pulumi.get(self, "payment_type")
 
@@ -784,6 +784,75 @@ class NatGateway(pulumi.CustomResource):
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Provides a resource to create a VPC NAT Gateway.
+
+        > **NOTE:** Resource bandwidth packages will not be supported since 00:00 on November 4, 2017, and public IP can be replaced be elastic IPs.
+        If a Nat Gateway has already bought some bandwidth packages, it can not bind elastic IP and you have to submit the [work order](https://selfservice.console.aliyun.com/ticket/createIndex) to solve.
+        If you want to add public IP, you can use resource 'alicloud_eip_association' to bind several elastic IPs for one Nat Gateway.
+
+        > **NOTE:** From version 1.7.1, this resource has deprecated bandwidth packages.
+        But, in order to manage stock bandwidth packages, version 1.13.0 re-support configuring 'bandwidth_packages'.
+
+        > **NOTE:** Available since v1.37.0.
+
+        ## Example Usage
+
+        Basic usage
+
+        - create enhanced nat gateway
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.vpc.get_enhanced_nat_available_zones()
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.0.0.0/8")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            zone_id=default.zones[0].zone_id,
+            cidr_block="10.10.0.0/20",
+            vpc_id=default_network.id)
+        default_nat_gateway = alicloud.vpc.NatGateway("default",
+            vpc_id=default_network.id,
+            nat_gateway_name=name,
+            payment_type="PayAsYouGo",
+            vswitch_id=default_switch.id,
+            nat_type="Enhanced")
+        ```
+
+        - transform nat from Normal to Enhanced
+        > **NOTE:** You must set `nat_type` to `Enhanced` and set `vswitch_id`.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.vpc.get_enhanced_nat_available_zones()
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.0.0.0/8")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            zone_id=default.zones[0].zone_id,
+            cidr_block="10.10.0.0/20",
+            vpc_id=default_network.id)
+        default_nat_gateway = alicloud.vpc.NatGateway("default",
+            vpc_id=default_network.id,
+            nat_gateway_name=name,
+            vswitch_id=default_switch.id,
+            nat_type="Enhanced")
+        ```
+
         ## Import
 
         Nat gateway can be imported using the id, e.g.
@@ -811,7 +880,7 @@ class NatGateway(pulumi.CustomResource):
         :param pulumi.Input[str] nat_gateway_name: Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
         :param pulumi.Input[str] nat_type: The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`.
         :param pulumi.Input[str] network_type: Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
-        :param pulumi.Input[str] payment_type: The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+        :param pulumi.Input[str] payment_type: The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[bool] private_link_enabled: Specifies whether to enable PrivateLink. Default value: `false`. Valid values:
@@ -827,6 +896,75 @@ class NatGateway(pulumi.CustomResource):
                  args: NatGatewayArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a resource to create a VPC NAT Gateway.
+
+        > **NOTE:** Resource bandwidth packages will not be supported since 00:00 on November 4, 2017, and public IP can be replaced be elastic IPs.
+        If a Nat Gateway has already bought some bandwidth packages, it can not bind elastic IP and you have to submit the [work order](https://selfservice.console.aliyun.com/ticket/createIndex) to solve.
+        If you want to add public IP, you can use resource 'alicloud_eip_association' to bind several elastic IPs for one Nat Gateway.
+
+        > **NOTE:** From version 1.7.1, this resource has deprecated bandwidth packages.
+        But, in order to manage stock bandwidth packages, version 1.13.0 re-support configuring 'bandwidth_packages'.
+
+        > **NOTE:** Available since v1.37.0.
+
+        ## Example Usage
+
+        Basic usage
+
+        - create enhanced nat gateway
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.vpc.get_enhanced_nat_available_zones()
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.0.0.0/8")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            zone_id=default.zones[0].zone_id,
+            cidr_block="10.10.0.0/20",
+            vpc_id=default_network.id)
+        default_nat_gateway = alicloud.vpc.NatGateway("default",
+            vpc_id=default_network.id,
+            nat_gateway_name=name,
+            payment_type="PayAsYouGo",
+            vswitch_id=default_switch.id,
+            nat_type="Enhanced")
+        ```
+
+        - transform nat from Normal to Enhanced
+        > **NOTE:** You must set `nat_type` to `Enhanced` and set `vswitch_id`.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.vpc.get_enhanced_nat_available_zones()
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.0.0.0/8")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            zone_id=default.zones[0].zone_id,
+            cidr_block="10.10.0.0/20",
+            vpc_id=default_network.id)
+        default_nat_gateway = alicloud.vpc.NatGateway("default",
+            vpc_id=default_network.id,
+            nat_gateway_name=name,
+            vswitch_id=default_switch.id,
+            nat_type="Enhanced")
+        ```
+
         ## Import
 
         Nat gateway can be imported using the id, e.g.
@@ -962,7 +1100,7 @@ class NatGateway(pulumi.CustomResource):
         :param pulumi.Input[str] nat_gateway_name: Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
         :param pulumi.Input[str] nat_type: The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`.
         :param pulumi.Input[str] network_type: Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
-        :param pulumi.Input[str] payment_type: The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+        :param pulumi.Input[str] payment_type: The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[bool] private_link_enabled: Specifies whether to enable PrivateLink. Default value: `false`. Valid values:
@@ -1124,7 +1262,7 @@ class NatGateway(pulumi.CustomResource):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[str]:
         """
-        The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+        The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
         """
         return pulumi.get(self, "payment_type")
 

@@ -60,8 +60,8 @@ class EcsNetworkInterfaceArgs:
         :param pulumi.Input[int] queue_number: The queue number of the ENI.
         :param pulumi.Input[str] resource_group_id: The resource group id.
         :param pulumi.Input[int] secondary_private_ip_address_count: The number of private IP addresses that can be automatically created by ECS.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "vswitch_id", vswitch_id)
@@ -345,7 +345,7 @@ class EcsNetworkInterfaceArgs:
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added.
+        The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
         """
         return pulumi.get(self, "security_group_ids")
 
@@ -358,7 +358,7 @@ class EcsNetworkInterfaceArgs:
     @_utilities.deprecated("""Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead""")
     def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead
+        Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
         """
         return pulumi.get(self, "security_groups")
 
@@ -425,8 +425,8 @@ class _EcsNetworkInterfaceState:
         :param pulumi.Input[int] queue_number: The queue number of the ENI.
         :param pulumi.Input[str] resource_group_id: The resource group id.
         :param pulumi.Input[int] secondary_private_ip_address_count: The number of private IP addresses that can be automatically created by ECS.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
         :param pulumi.Input[str] status: The status of the ENI.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: The ID of the VSwitch in the specified VPC. The private IP addresses assigned to the ENI must be available IP addresses within the CIDR block of the VSwitch.
@@ -717,7 +717,7 @@ class _EcsNetworkInterfaceState:
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added.
+        The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
         """
         return pulumi.get(self, "security_group_ids")
 
@@ -730,7 +730,7 @@ class _EcsNetworkInterfaceState:
     @_utilities.deprecated("""Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead""")
     def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead
+        Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
         """
         return pulumi.get(self, "security_groups")
 
@@ -876,8 +876,8 @@ class EcsNetworkInterface(pulumi.CustomResource):
         :param pulumi.Input[int] queue_number: The queue number of the ENI.
         :param pulumi.Input[str] resource_group_id: The resource group id.
         :param pulumi.Input[int] secondary_private_ip_address_count: The number of private IP addresses that can be automatically created by ECS.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: The ID of the VSwitch in the specified VPC. The private IP addresses assigned to the ENI must be available IP addresses within the CIDR block of the VSwitch.
         """
@@ -1070,8 +1070,8 @@ class EcsNetworkInterface(pulumi.CustomResource):
         :param pulumi.Input[int] queue_number: The queue number of the ENI.
         :param pulumi.Input[str] resource_group_id: The resource group id.
         :param pulumi.Input[int] secondary_private_ip_address_count: The number of private IP addresses that can be automatically created by ECS.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
         :param pulumi.Input[str] status: The status of the ENI.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: The ID of the VSwitch in the specified VPC. The private IP addresses assigned to the ENI must be available IP addresses within the CIDR block of the VSwitch.
@@ -1257,7 +1257,7 @@ class EcsNetworkInterface(pulumi.CustomResource):
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Output[Sequence[str]]:
         """
-        The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added.
+        The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
         """
         return pulumi.get(self, "security_group_ids")
 
@@ -1266,7 +1266,7 @@ class EcsNetworkInterface(pulumi.CustomResource):
     @_utilities.deprecated("""Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead""")
     def security_groups(self) -> pulumi.Output[Sequence[str]]:
         """
-        Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead
+        Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
         """
         return pulumi.get(self, "security_groups")
 

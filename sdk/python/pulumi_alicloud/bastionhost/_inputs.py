@@ -41,10 +41,6 @@ if not MYPY:
         """
         Specifies whether to support SSL.
         """
-        password: pulumi.Input[str]
-        """
-        The password of the account that is used for the AD server.
-        """
         port: pulumi.Input[int]
         """
         The port that is used to access the AD server.
@@ -69,6 +65,10 @@ if not MYPY:
         """
         The field that is used to indicate the name of a user on the AD server.
         """
+        password: NotRequired[pulumi.Input[str]]
+        """
+        The password of the account that is used for the AD server.
+        """
         standby_server: NotRequired[pulumi.Input[str]]
         """
         The address of the secondary AD server.
@@ -83,33 +83,32 @@ class InstanceAdAuthServerArgs:
                  base_dn: pulumi.Input[str],
                  domain: pulumi.Input[str],
                  is_ssl: pulumi.Input[bool],
-                 password: pulumi.Input[str],
                  port: pulumi.Input[int],
                  server: pulumi.Input[str],
                  email_mapping: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  mobile_mapping: Optional[pulumi.Input[str]] = None,
                  name_mapping: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
                  standby_server: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] account: The username of the account that is used for the AD server.
         :param pulumi.Input[str] base_dn: The Base distinguished name (DN).
         :param pulumi.Input[str] domain: The domain on the AD server.
         :param pulumi.Input[bool] is_ssl: Specifies whether to support SSL.
-        :param pulumi.Input[str] password: The password of the account that is used for the AD server.
         :param pulumi.Input[int] port: The port that is used to access the AD server.
         :param pulumi.Input[str] server: The address of the AD server.
         :param pulumi.Input[str] email_mapping: The field that is used to indicate the email address of a user on the AD server.
         :param pulumi.Input[str] filter: The condition that is used to filter users.
         :param pulumi.Input[str] mobile_mapping: The field that is used to indicate the mobile phone number of a user on the AD server.
         :param pulumi.Input[str] name_mapping: The field that is used to indicate the name of a user on the AD server.
+        :param pulumi.Input[str] password: The password of the account that is used for the AD server.
         :param pulumi.Input[str] standby_server: The address of the secondary AD server.
         """
         pulumi.set(__self__, "account", account)
         pulumi.set(__self__, "base_dn", base_dn)
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "is_ssl", is_ssl)
-        pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "server", server)
         if email_mapping is not None:
@@ -120,6 +119,8 @@ class InstanceAdAuthServerArgs:
             pulumi.set(__self__, "mobile_mapping", mobile_mapping)
         if name_mapping is not None:
             pulumi.set(__self__, "name_mapping", name_mapping)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
         if standby_server is not None:
             pulumi.set(__self__, "standby_server", standby_server)
 
@@ -170,18 +171,6 @@ class InstanceAdAuthServerArgs:
     @is_ssl.setter
     def is_ssl(self, value: pulumi.Input[bool]):
         pulumi.set(self, "is_ssl", value)
-
-    @property
-    @pulumi.getter
-    def password(self) -> pulumi.Input[str]:
-        """
-        The password of the account that is used for the AD server.
-        """
-        return pulumi.get(self, "password")
-
-    @password.setter
-    def password(self, value: pulumi.Input[str]):
-        pulumi.set(self, "password", value)
 
     @property
     @pulumi.getter
@@ -256,6 +245,18 @@ class InstanceAdAuthServerArgs:
         pulumi.set(self, "name_mapping", value)
 
     @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password of the account that is used for the AD server.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
     @pulumi.getter(name="standbyServer")
     def standby_server(self) -> Optional[pulumi.Input[str]]:
         """
@@ -277,10 +278,6 @@ if not MYPY:
         base_dn: pulumi.Input[str]
         """
         The Base distinguished name (DN).
-        """
-        password: pulumi.Input[str]
-        """
-        The password of the account that is used for the LDAP server.
         """
         port: pulumi.Input[int]
         """
@@ -314,6 +311,10 @@ if not MYPY:
         """
         The field that is used to indicate the name of a user on the LDAP server.
         """
+        password: NotRequired[pulumi.Input[str]]
+        """
+        The password of the account that is used for the LDAP server.
+        """
         standby_server: NotRequired[pulumi.Input[str]]
         """
         The address of the secondary LDAP server.
@@ -326,7 +327,6 @@ class InstanceLdapAuthServerArgs:
     def __init__(__self__, *,
                  account: pulumi.Input[str],
                  base_dn: pulumi.Input[str],
-                 password: pulumi.Input[str],
                  port: pulumi.Input[int],
                  server: pulumi.Input[str],
                  email_mapping: Optional[pulumi.Input[str]] = None,
@@ -335,11 +335,11 @@ class InstanceLdapAuthServerArgs:
                  login_name_mapping: Optional[pulumi.Input[str]] = None,
                  mobile_mapping: Optional[pulumi.Input[str]] = None,
                  name_mapping: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
                  standby_server: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] account: The username of the account that is used for the LDAP server.
         :param pulumi.Input[str] base_dn: The Base distinguished name (DN).
-        :param pulumi.Input[str] password: The password of the account that is used for the LDAP server.
         :param pulumi.Input[int] port: The port that is used to access the LDAP server.
         :param pulumi.Input[str] server: The address of the LDAP server.
         :param pulumi.Input[str] email_mapping: The field that is used to indicate the email address of a user on the LDAP server.
@@ -348,11 +348,11 @@ class InstanceLdapAuthServerArgs:
         :param pulumi.Input[str] login_name_mapping: The field that is used to indicate the logon name of a user on the LDAP server.
         :param pulumi.Input[str] mobile_mapping: The field that is used to indicate the mobile phone number of a user on the LDAP server.
         :param pulumi.Input[str] name_mapping: The field that is used to indicate the name of a user on the LDAP server.
+        :param pulumi.Input[str] password: The password of the account that is used for the LDAP server.
         :param pulumi.Input[str] standby_server: The address of the secondary LDAP server.
         """
         pulumi.set(__self__, "account", account)
         pulumi.set(__self__, "base_dn", base_dn)
-        pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "server", server)
         if email_mapping is not None:
@@ -367,6 +367,8 @@ class InstanceLdapAuthServerArgs:
             pulumi.set(__self__, "mobile_mapping", mobile_mapping)
         if name_mapping is not None:
             pulumi.set(__self__, "name_mapping", name_mapping)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
         if standby_server is not None:
             pulumi.set(__self__, "standby_server", standby_server)
 
@@ -393,18 +395,6 @@ class InstanceLdapAuthServerArgs:
     @base_dn.setter
     def base_dn(self, value: pulumi.Input[str]):
         pulumi.set(self, "base_dn", value)
-
-    @property
-    @pulumi.getter
-    def password(self) -> pulumi.Input[str]:
-        """
-        The password of the account that is used for the LDAP server.
-        """
-        return pulumi.get(self, "password")
-
-    @password.setter
-    def password(self, value: pulumi.Input[str]):
-        pulumi.set(self, "password", value)
 
     @property
     @pulumi.getter
@@ -501,6 +491,18 @@ class InstanceLdapAuthServerArgs:
     @name_mapping.setter
     def name_mapping(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name_mapping", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password of the account that is used for the LDAP server.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
 
     @property
     @pulumi.getter(name="standbyServer")

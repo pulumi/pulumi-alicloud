@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Message Notification Service Topic resource.
+// Provides a Message Service Topic resource.
 //
-// For information about Message Notification Service Topic and how to use it, see [What is Topic](https://www.alibabacloud.com/help/en/message-service/latest/createtopic).
+// For information about Message Service Topic and how to use it, see [What is Topic](https://www.alibabacloud.com/help/en/message-service/latest/createtopic).
 //
 // > **NOTE:** Available since v1.188.0.
 //
@@ -36,14 +36,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-example"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
 //			_, err := message.NewServiceTopic(ctx, "default", &message.ServiceTopicArgs{
 //				TopicName:      pulumi.String(name),
-//				MaxMessageSize: pulumi.Int(12357),
-//				LoggingEnabled: pulumi.Bool(true),
+//				MaxMessageSize: pulumi.Int(16888),
+//				EnableLogging:  pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -56,19 +56,29 @@ import (
 //
 // ## Import
 //
-// Message Notification Service Topic can be imported using the id or topic_name, e.g.
+// Message Service Topic can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:message/serviceTopic:ServiceTopic example <topic_name>
+// $ pulumi import alicloud:message/serviceTopic:ServiceTopic example <id>
 // ```
 type ServiceTopic struct {
 	pulumi.CustomResourceState
 
-	// Specifies whether to enable the log management feature. Default value: false. Valid values:
-	LoggingEnabled pulumi.BoolPtrOutput `pulumi:"loggingEnabled"`
-	// The maximum size of a message body that can be sent to the topic. Unit: bytes. Valid values: 1024-65536. Default value: 65536.
+	// (Available since v1.241.0) The time when the topic was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
+	EnableLogging pulumi.BoolOutput `pulumi:"enableLogging"`
+	// . Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
+	//
+	// Deprecated: Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
+	LoggingEnabled pulumi.BoolOutput `pulumi:"loggingEnabled"`
+	// The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
 	MaxMessageSize pulumi.IntOutput `pulumi:"maxMessageSize"`
-	// Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// The name of the topic.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	TopicName pulumi.StringOutput `pulumi:"topicName"`
 }
 
@@ -105,20 +115,40 @@ func GetServiceTopic(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServiceTopic resources.
 type serviceTopicState struct {
-	// Specifies whether to enable the log management feature. Default value: false. Valid values:
+	// (Available since v1.241.0) The time when the topic was created.
+	CreateTime *string `pulumi:"createTime"`
+	// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
+	EnableLogging *bool `pulumi:"enableLogging"`
+	// . Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
+	//
+	// Deprecated: Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
 	LoggingEnabled *bool `pulumi:"loggingEnabled"`
-	// The maximum size of a message body that can be sent to the topic. Unit: bytes. Valid values: 1024-65536. Default value: 65536.
+	// The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
 	MaxMessageSize *int `pulumi:"maxMessageSize"`
-	// Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The name of the topic.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	TopicName *string `pulumi:"topicName"`
 }
 
 type ServiceTopicState struct {
-	// Specifies whether to enable the log management feature. Default value: false. Valid values:
+	// (Available since v1.241.0) The time when the topic was created.
+	CreateTime pulumi.StringPtrInput
+	// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
+	EnableLogging pulumi.BoolPtrInput
+	// . Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
+	//
+	// Deprecated: Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
 	LoggingEnabled pulumi.BoolPtrInput
-	// The maximum size of a message body that can be sent to the topic. Unit: bytes. Valid values: 1024-65536. Default value: 65536.
+	// The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
 	MaxMessageSize pulumi.IntPtrInput
-	// Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput
+	// The name of the topic.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	TopicName pulumi.StringPtrInput
 }
 
@@ -127,21 +157,37 @@ func (ServiceTopicState) ElementType() reflect.Type {
 }
 
 type serviceTopicArgs struct {
-	// Specifies whether to enable the log management feature. Default value: false. Valid values:
+	// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
+	EnableLogging *bool `pulumi:"enableLogging"`
+	// . Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
+	//
+	// Deprecated: Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
 	LoggingEnabled *bool `pulumi:"loggingEnabled"`
-	// The maximum size of a message body that can be sent to the topic. Unit: bytes. Valid values: 1024-65536. Default value: 65536.
+	// The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
 	MaxMessageSize *int `pulumi:"maxMessageSize"`
-	// Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The name of the topic.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	TopicName string `pulumi:"topicName"`
 }
 
 // The set of arguments for constructing a ServiceTopic resource.
 type ServiceTopicArgs struct {
-	// Specifies whether to enable the log management feature. Default value: false. Valid values:
+	// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
+	EnableLogging pulumi.BoolPtrInput
+	// . Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
+	//
+	// Deprecated: Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
 	LoggingEnabled pulumi.BoolPtrInput
-	// The maximum size of a message body that can be sent to the topic. Unit: bytes. Valid values: 1024-65536. Default value: 65536.
+	// The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
 	MaxMessageSize pulumi.IntPtrInput
-	// Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput
+	// The name of the topic.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	TopicName pulumi.StringInput
 }
 
@@ -232,17 +278,36 @@ func (o ServiceTopicOutput) ToServiceTopicOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Specifies whether to enable the log management feature. Default value: false. Valid values:
-func (o ServiceTopicOutput) LoggingEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ServiceTopic) pulumi.BoolPtrOutput { return v.LoggingEnabled }).(pulumi.BoolPtrOutput)
+// (Available since v1.241.0) The time when the topic was created.
+func (o ServiceTopicOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceTopic) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The maximum size of a message body that can be sent to the topic. Unit: bytes. Valid values: 1024-65536. Default value: 65536.
+// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
+func (o ServiceTopicOutput) EnableLogging() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ServiceTopic) pulumi.BoolOutput { return v.EnableLogging }).(pulumi.BoolOutput)
+}
+
+// . Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
+//
+// Deprecated: Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
+func (o ServiceTopicOutput) LoggingEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ServiceTopic) pulumi.BoolOutput { return v.LoggingEnabled }).(pulumi.BoolOutput)
+}
+
+// The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
 func (o ServiceTopicOutput) MaxMessageSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *ServiceTopic) pulumi.IntOutput { return v.MaxMessageSize }).(pulumi.IntOutput)
 }
 
-// Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
+// A mapping of tags to assign to the resource.
+func (o ServiceTopicOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServiceTopic) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The name of the topic.
+//
+// The following arguments will be discarded. Please use new fields as soon as possible:
 func (o ServiceTopicOutput) TopicName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceTopic) pulumi.StringOutput { return v.TopicName }).(pulumi.StringOutput)
 }

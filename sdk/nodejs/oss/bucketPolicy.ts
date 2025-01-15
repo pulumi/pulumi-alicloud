@@ -44,8 +44,6 @@ import * as utilities from "../utilities";
  *         }],
  *     }),
  *     bucket: createBucket.bucket,
- * }, {
- *     dependsOn: [createBucket],
  * });
  * ```
  *

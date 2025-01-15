@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.BastionHost.Outputs
         /// <summary>
         /// The password of the account that is used for the LDAP server.
         /// </summary>
-        public readonly string Password;
+        public readonly string? Password;
         /// <summary>
         /// The port that is used to access the LDAP server.
         /// </summary>
@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.BastionHost.Outputs
 
             string? nameMapping,
 
-            string password,
+            string? password,
 
             int port,
 

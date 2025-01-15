@@ -155,11 +155,11 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     public readonly isEnterpriseSecurityGroup!: pulumi.Output<boolean>;
     /**
-     * The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+     * The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
      *
-     * @deprecated Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
+     * @deprecated Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU
      */
-    public readonly loadBalancerSpec!: pulumi.Output<string | undefined>;
+    public readonly loadBalancerSpec!: pulumi.Output<string>;
     /**
      * The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenanceWindow` below.
      */
@@ -190,7 +190,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     public readonly podCidr!: pulumi.Output<string | undefined>;
     /**
-     * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` but must be in same availability zones. Only works for **Create** Operation.
+     * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `vswitchIds` but must be in same availability zones. Only works for **Create** Operation.
      */
     public readonly podVswitchIds!: pulumi.Output<string[] | undefined>;
     /**
@@ -260,13 +260,24 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     public /*out*/ readonly vpcId!: pulumi.Output<string>;
     /**
+     * The vSwitches of the control plane.
+     * > **NOTE:** Please take of note before updating the `vswitchIds`:
+     * * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
+     * * The control plane restarts during the change process. Exercise caution when you perform this operation.
+     * * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
+     * * If the new vSwitches of the control plane are configured with an ACL, ensure that the ACL allows communication between the new vSwitches and CIDR blocks such as those of the cluster nodes and the container network.
+     */
+    public readonly vswitchIds!: pulumi.Output<string[]>;
+    /**
      * The RamRole Name attached to worker node.
      */
     public /*out*/ readonly workerRamRoleName!: pulumi.Output<string>;
     /**
-     * The vswitches used by control plane.  See `workerVswitchIds` below.
+     * The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitchIds` to managed control plane vswtiches, which supports modifying control plane vswtiches.
+     *
+     * @deprecated Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches
      */
-    public readonly workerVswitchIds!: pulumi.Output<string[]>;
+    public readonly workerVswitchIds!: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a ManagedKubernetes resource with the given unique name, arguments, and options.
@@ -275,7 +286,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ManagedKubernetesArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: ManagedKubernetesArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ManagedKubernetesArgs | ManagedKubernetesState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -325,13 +336,11 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             resourceInputs["userCa"] = state ? state.userCa : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
             resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["vswitchIds"] = state ? state.vswitchIds : undefined;
             resourceInputs["workerRamRoleName"] = state ? state.workerRamRoleName : undefined;
             resourceInputs["workerVswitchIds"] = state ? state.workerVswitchIds : undefined;
         } else {
             const args = argsOrState as ManagedKubernetesArgs | undefined;
-            if ((!args || args.workerVswitchIds === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'workerVswitchIds'");
-            }
             resourceInputs["addons"] = args ? args.addons : undefined;
             resourceInputs["apiAudiences"] = args ? args.apiAudiences : undefined;
             resourceInputs["clientCert"] = args ? args.clientCert : undefined;
@@ -368,6 +377,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             resourceInputs["timezone"] = args ? args.timezone : undefined;
             resourceInputs["userCa"] = args ? args.userCa : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["vswitchIds"] = args ? args.vswitchIds : undefined;
             resourceInputs["workerVswitchIds"] = args ? args.workerVswitchIds : undefined;
             resourceInputs["certificateAuthority"] = undefined /*out*/;
             resourceInputs["connections"] = undefined /*out*/;
@@ -468,9 +478,9 @@ export interface ManagedKubernetesState {
      */
     isEnterpriseSecurityGroup?: pulumi.Input<boolean>;
     /**
-     * The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+     * The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
      *
-     * @deprecated Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
+     * @deprecated Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU
      */
     loadBalancerSpec?: pulumi.Input<string>;
     /**
@@ -503,7 +513,7 @@ export interface ManagedKubernetesState {
      */
     podCidr?: pulumi.Input<string>;
     /**
-     * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` but must be in same availability zones. Only works for **Create** Operation.
+     * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `vswitchIds` but must be in same availability zones. Only works for **Create** Operation.
      */
     podVswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -573,11 +583,22 @@ export interface ManagedKubernetesState {
      */
     vpcId?: pulumi.Input<string>;
     /**
+     * The vSwitches of the control plane.
+     * > **NOTE:** Please take of note before updating the `vswitchIds`:
+     * * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
+     * * The control plane restarts during the change process. Exercise caution when you perform this operation.
+     * * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
+     * * If the new vSwitches of the control plane are configured with an ACL, ensure that the ACL allows communication between the new vSwitches and CIDR blocks such as those of the cluster nodes and the container network.
+     */
+    vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The RamRole Name attached to worker node.
      */
     workerRamRoleName?: pulumi.Input<string>;
     /**
-     * The vswitches used by control plane.  See `workerVswitchIds` below.
+     * The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitchIds` to managed control plane vswtiches, which supports modifying control plane vswtiches.
+     *
+     * @deprecated Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches
      */
     workerVswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -658,9 +679,9 @@ export interface ManagedKubernetesArgs {
      */
     isEnterpriseSecurityGroup?: pulumi.Input<boolean>;
     /**
-     * The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+     * The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
      *
-     * @deprecated Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
+     * @deprecated Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU
      */
     loadBalancerSpec?: pulumi.Input<string>;
     /**
@@ -689,7 +710,7 @@ export interface ManagedKubernetesArgs {
      */
     podCidr?: pulumi.Input<string>;
     /**
-     * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` but must be in same availability zones. Only works for **Create** Operation.
+     * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `vswitchIds` but must be in same availability zones. Only works for **Create** Operation.
      */
     podVswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -739,7 +760,18 @@ export interface ManagedKubernetesArgs {
      */
     version?: pulumi.Input<string>;
     /**
-     * The vswitches used by control plane.  See `workerVswitchIds` below.
+     * The vSwitches of the control plane.
+     * > **NOTE:** Please take of note before updating the `vswitchIds`:
+     * * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
+     * * The control plane restarts during the change process. Exercise caution when you perform this operation.
+     * * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
+     * * If the new vSwitches of the control plane are configured with an ACL, ensure that the ACL allows communication between the new vSwitches and CIDR blocks such as those of the cluster nodes and the container network.
      */
-    workerVswitchIds: pulumi.Input<pulumi.Input<string>[]>;
+    vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitchIds` to managed control plane vswtiches, which supports modifying control plane vswtiches.
+     *
+     * @deprecated Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches
+     */
+    workerVswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
 }

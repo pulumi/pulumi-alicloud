@@ -76,6 +76,8 @@ import (
 type OidcProvider struct {
 	pulumi.CustomResourceState
 
+	// The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+	Arn pulumi.StringOutput `pulumi:"arn"`
 	// Client ID.
 	ClientIds pulumi.StringArrayOutput `pulumi:"clientIds"`
 	// Creation Time (UTC time).
@@ -128,6 +130,8 @@ func GetOidcProvider(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OidcProvider resources.
 type oidcProviderState struct {
+	// The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+	Arn *string `pulumi:"arn"`
 	// Client ID.
 	ClientIds []string `pulumi:"clientIds"`
 	// Creation Time (UTC time).
@@ -145,6 +149,8 @@ type oidcProviderState struct {
 }
 
 type OidcProviderState struct {
+	// The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+	Arn pulumi.StringPtrInput
 	// Client ID.
 	ClientIds pulumi.StringArrayInput
 	// Creation Time (UTC time).
@@ -281,6 +287,11 @@ func (o OidcProviderOutput) ToOidcProviderOutput() OidcProviderOutput {
 
 func (o OidcProviderOutput) ToOidcProviderOutputWithContext(ctx context.Context) OidcProviderOutput {
 	return o
+}
+
+// The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+func (o OidcProviderOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v *OidcProvider) pulumi.StringOutput { return v.Arn }).(pulumi.StringOutput)
 }
 
 // Client ID.

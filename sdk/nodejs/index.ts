@@ -96,6 +96,7 @@ import * as chatbot from "./chatbot";
 import * as clickhouse from "./clickhouse";
 import * as cloudauth from "./cloudauth";
 import * as cloudconnect from "./cloudconnect";
+import * as cloudcontrol from "./cloudcontrol";
 import * as cloudfirewall from "./cloudfirewall";
 import * as cloudmonitor from "./cloudmonitor";
 import * as cloudsso from "./cloudsso";
@@ -235,6 +236,7 @@ export {
     clickhouse,
     cloudauth,
     cloudconnect,
+    cloudcontrol,
     cloudfirewall,
     cloudmonitor,
     cloudsso,

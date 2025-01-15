@@ -38,6 +38,11 @@ __all__ = [
     'GetEnhancedNatAvailableZonesZoneResult',
     'GetForwardEntriesEntryResult',
     'GetHavipsHavipResult',
+    'GetIpamIpamPoolAllocationsAllocationResult',
+    'GetIpamIpamPoolCidrsCidrResult',
+    'GetIpamIpamPoolsPoolResult',
+    'GetIpamIpamScopesScopeResult',
+    'GetIpamIpamsIpamResult',
     'GetIpsecServersServerResult',
     'GetIpsecServersServerIkeConfigResult',
     'GetIpsecServersServerIpsecConfigResult',
@@ -2211,6 +2216,745 @@ class GetHavipsHavipResult(dict):
 
 
 @pulumi.output_type
+class GetIpamIpamPoolAllocationsAllocationResult(dict):
+    def __init__(__self__, *,
+                 cidr: str,
+                 create_time: str,
+                 id: str,
+                 ipam_pool_allocation_description: str,
+                 ipam_pool_allocation_id: str,
+                 ipam_pool_allocation_name: str,
+                 ipam_pool_id: str,
+                 region_id: str,
+                 resource_id: str,
+                 resource_owner_id: int,
+                 resource_region_id: str,
+                 resource_type: str,
+                 source_cidr: str,
+                 status: str,
+                 total_count: int):
+        """
+        :param str cidr: The allocated address segment.
+        :param str create_time: Instance creation time.
+        :param str id: The ID of the resource supplied above.
+        :param str ipam_pool_allocation_description: The description of the ipam pool alloctaion.It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
+        :param str ipam_pool_allocation_id: The instance ID of the ipam pool allocation.
+        :param str ipam_pool_allocation_name: The name of the ipam pool allocation.It must be 1 to 128 characters in length and cannot start with 'http:// 'or 'https.
+        :param str ipam_pool_id: The ID of the IPAM Pool.
+        :param str region_id: When the IPAM Pool to which CIDR is allocated has the region attribute, this attribute is the IPAM Pool region.When the IPAM Pool to which CIDR is allocated does not have the region attribute, this attribute is the IPAM region.
+        :param str resource_id: The ID of the resource.
+        :param int resource_owner_id: The ID of the Alibaba Cloud account (primary account) to which the resource belongs.
+        :param str resource_region_id: The region of the resource.
+        :param str resource_type: The type of resource. Value:-**VPC**: indicates that the resource type is VPC.-**IpamPool**: indicates that the resource type is a child address pool.-**Custom**: indicates that the resource type is a Custom reserved CIDR block.
+        :param str source_cidr: The source address segment.
+        :param str status: The status of the instance. Value:-**Created**: indicates that the creation is complete.
+        :param int total_count: Total number of records.
+        """
+        pulumi.set(__self__, "cidr", cidr)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ipam_pool_allocation_description", ipam_pool_allocation_description)
+        pulumi.set(__self__, "ipam_pool_allocation_id", ipam_pool_allocation_id)
+        pulumi.set(__self__, "ipam_pool_allocation_name", ipam_pool_allocation_name)
+        pulumi.set(__self__, "ipam_pool_id", ipam_pool_id)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "resource_id", resource_id)
+        pulumi.set(__self__, "resource_owner_id", resource_owner_id)
+        pulumi.set(__self__, "resource_region_id", resource_region_id)
+        pulumi.set(__self__, "resource_type", resource_type)
+        pulumi.set(__self__, "source_cidr", source_cidr)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "total_count", total_count)
+
+    @property
+    @pulumi.getter
+    def cidr(self) -> str:
+        """
+        The allocated address segment.
+        """
+        return pulumi.get(self, "cidr")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        Instance creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ipamPoolAllocationDescription")
+    def ipam_pool_allocation_description(self) -> str:
+        """
+        The description of the ipam pool alloctaion.It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
+        """
+        return pulumi.get(self, "ipam_pool_allocation_description")
+
+    @property
+    @pulumi.getter(name="ipamPoolAllocationId")
+    def ipam_pool_allocation_id(self) -> str:
+        """
+        The instance ID of the ipam pool allocation.
+        """
+        return pulumi.get(self, "ipam_pool_allocation_id")
+
+    @property
+    @pulumi.getter(name="ipamPoolAllocationName")
+    def ipam_pool_allocation_name(self) -> str:
+        """
+        The name of the ipam pool allocation.It must be 1 to 128 characters in length and cannot start with 'http:// 'or 'https.
+        """
+        return pulumi.get(self, "ipam_pool_allocation_name")
+
+    @property
+    @pulumi.getter(name="ipamPoolId")
+    def ipam_pool_id(self) -> str:
+        """
+        The ID of the IPAM Pool.
+        """
+        return pulumi.get(self, "ipam_pool_id")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> str:
+        """
+        When the IPAM Pool to which CIDR is allocated has the region attribute, this attribute is the IPAM Pool region.When the IPAM Pool to which CIDR is allocated does not have the region attribute, this attribute is the IPAM region.
+        """
+        return pulumi.get(self, "region_id")
+
+    @property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> str:
+        """
+        The ID of the resource.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @property
+    @pulumi.getter(name="resourceOwnerId")
+    def resource_owner_id(self) -> int:
+        """
+        The ID of the Alibaba Cloud account (primary account) to which the resource belongs.
+        """
+        return pulumi.get(self, "resource_owner_id")
+
+    @property
+    @pulumi.getter(name="resourceRegionId")
+    def resource_region_id(self) -> str:
+        """
+        The region of the resource.
+        """
+        return pulumi.get(self, "resource_region_id")
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> str:
+        """
+        The type of resource. Value:-**VPC**: indicates that the resource type is VPC.-**IpamPool**: indicates that the resource type is a child address pool.-**Custom**: indicates that the resource type is a Custom reserved CIDR block.
+        """
+        return pulumi.get(self, "resource_type")
+
+    @property
+    @pulumi.getter(name="sourceCidr")
+    def source_cidr(self) -> str:
+        """
+        The source address segment.
+        """
+        return pulumi.get(self, "source_cidr")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the instance. Value:-**Created**: indicates that the creation is complete.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="totalCount")
+    def total_count(self) -> int:
+        """
+        Total number of records.
+        """
+        return pulumi.get(self, "total_count")
+
+
+@pulumi.output_type
+class GetIpamIpamPoolCidrsCidrResult(dict):
+    def __init__(__self__, *,
+                 cidr: str,
+                 id: str,
+                 ipam_pool_id: str,
+                 status: str):
+        """
+        :param str cidr: The CIDR address segment to be preset.> currently, only IPv4 address segments are supported.
+        :param str id: The ID of the resource supplied above.
+        :param str ipam_pool_id: The ID of the IPAM pool instance.
+        :param str status: The status of the resource
+        """
+        pulumi.set(__self__, "cidr", cidr)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ipam_pool_id", ipam_pool_id)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def cidr(self) -> str:
+        """
+        The CIDR address segment to be preset.> currently, only IPv4 address segments are supported.
+        """
+        return pulumi.get(self, "cidr")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ipamPoolId")
+    def ipam_pool_id(self) -> str:
+        """
+        The ID of the IPAM pool instance.
+        """
+        return pulumi.get(self, "ipam_pool_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetIpamIpamPoolsPoolResult(dict):
+    def __init__(__self__, *,
+                 allocation_default_cidr_mask: int,
+                 allocation_max_cidr_mask: int,
+                 allocation_min_cidr_mask: int,
+                 auto_import: bool,
+                 create_time: str,
+                 has_sub_pool: bool,
+                 id: str,
+                 ip_version: str,
+                 ipam_id: str,
+                 ipam_pool_description: str,
+                 ipam_pool_id: str,
+                 ipam_pool_name: str,
+                 ipam_scope_id: str,
+                 pool_depth: int,
+                 pool_region_id: str,
+                 region_id: str,
+                 resource_group_id: str,
+                 source_ipam_pool_id: str,
+                 status: str,
+                 tags: Mapping[str, str]):
+        """
+        :param int allocation_default_cidr_mask: The default network mask assigned by the IPAM address pool.IPv4 network mask value range: **0 to 32** bits.
+        :param int allocation_max_cidr_mask: The maximum network mask assigned by the IPAM address pool.IPv4 network mask value range: **0 to 32** bits.
+        :param int allocation_min_cidr_mask: The minimum Network mask assigned by the IPAM address pool.IPv4 network mask value range: **0 to 32** bits.
+        :param bool auto_import: Whether the automatic import function is enabled for the address pool.
+        :param str create_time: The creation time of the resource.
+        :param bool has_sub_pool: Whether it is a child address pool. Value:-**true**: Yes.-**false**: No.
+        :param str id: The ID of the resource supplied above.
+        :param str ip_version: The IP protocol version. Currently, only **IPv4** is supported * *.
+        :param str ipam_id: Ipam id.
+        :param str ipam_pool_description: The description of the IPAM address pool.It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
+        :param str ipam_pool_id: The first ID of the resource.
+        :param str ipam_pool_name: The name of the resource.
+        :param str ipam_scope_id: Ipam scope id.
+        :param int pool_depth: The depth of the IPAM address pool. Value range: **0 to 10 * *.
+        :param str pool_region_id: The effective region of the IPAM address pool.
+        :param str region_id: The region ID of the resource.
+        :param str resource_group_id: The ID of the resource group.
+        :param str source_ipam_pool_id: The instance ID of the source IPAM address pool.> If this parameter is not entered, the created address pool is the parent address pool.
+        :param str status: The status of the resource.
+        :param Mapping[str, str] tags: The tag of the resource.
+        """
+        pulumi.set(__self__, "allocation_default_cidr_mask", allocation_default_cidr_mask)
+        pulumi.set(__self__, "allocation_max_cidr_mask", allocation_max_cidr_mask)
+        pulumi.set(__self__, "allocation_min_cidr_mask", allocation_min_cidr_mask)
+        pulumi.set(__self__, "auto_import", auto_import)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "has_sub_pool", has_sub_pool)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip_version", ip_version)
+        pulumi.set(__self__, "ipam_id", ipam_id)
+        pulumi.set(__self__, "ipam_pool_description", ipam_pool_description)
+        pulumi.set(__self__, "ipam_pool_id", ipam_pool_id)
+        pulumi.set(__self__, "ipam_pool_name", ipam_pool_name)
+        pulumi.set(__self__, "ipam_scope_id", ipam_scope_id)
+        pulumi.set(__self__, "pool_depth", pool_depth)
+        pulumi.set(__self__, "pool_region_id", pool_region_id)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "source_ipam_pool_id", source_ipam_pool_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="allocationDefaultCidrMask")
+    def allocation_default_cidr_mask(self) -> int:
+        """
+        The default network mask assigned by the IPAM address pool.IPv4 network mask value range: **0 to 32** bits.
+        """
+        return pulumi.get(self, "allocation_default_cidr_mask")
+
+    @property
+    @pulumi.getter(name="allocationMaxCidrMask")
+    def allocation_max_cidr_mask(self) -> int:
+        """
+        The maximum network mask assigned by the IPAM address pool.IPv4 network mask value range: **0 to 32** bits.
+        """
+        return pulumi.get(self, "allocation_max_cidr_mask")
+
+    @property
+    @pulumi.getter(name="allocationMinCidrMask")
+    def allocation_min_cidr_mask(self) -> int:
+        """
+        The minimum Network mask assigned by the IPAM address pool.IPv4 network mask value range: **0 to 32** bits.
+        """
+        return pulumi.get(self, "allocation_min_cidr_mask")
+
+    @property
+    @pulumi.getter(name="autoImport")
+    def auto_import(self) -> bool:
+        """
+        Whether the automatic import function is enabled for the address pool.
+        """
+        return pulumi.get(self, "auto_import")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="hasSubPool")
+    def has_sub_pool(self) -> bool:
+        """
+        Whether it is a child address pool. Value:-**true**: Yes.-**false**: No.
+        """
+        return pulumi.get(self, "has_sub_pool")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> str:
+        """
+        The IP protocol version. Currently, only **IPv4** is supported * *.
+        """
+        return pulumi.get(self, "ip_version")
+
+    @property
+    @pulumi.getter(name="ipamId")
+    def ipam_id(self) -> str:
+        """
+        Ipam id.
+        """
+        return pulumi.get(self, "ipam_id")
+
+    @property
+    @pulumi.getter(name="ipamPoolDescription")
+    def ipam_pool_description(self) -> str:
+        """
+        The description of the IPAM address pool.It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
+        """
+        return pulumi.get(self, "ipam_pool_description")
+
+    @property
+    @pulumi.getter(name="ipamPoolId")
+    def ipam_pool_id(self) -> str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "ipam_pool_id")
+
+    @property
+    @pulumi.getter(name="ipamPoolName")
+    def ipam_pool_name(self) -> str:
+        """
+        The name of the resource.
+        """
+        return pulumi.get(self, "ipam_pool_name")
+
+    @property
+    @pulumi.getter(name="ipamScopeId")
+    def ipam_scope_id(self) -> str:
+        """
+        Ipam scope id.
+        """
+        return pulumi.get(self, "ipam_scope_id")
+
+    @property
+    @pulumi.getter(name="poolDepth")
+    def pool_depth(self) -> int:
+        """
+        The depth of the IPAM address pool. Value range: **0 to 10 * *.
+        """
+        return pulumi.get(self, "pool_depth")
+
+    @property
+    @pulumi.getter(name="poolRegionId")
+    def pool_region_id(self) -> str:
+        """
+        The effective region of the IPAM address pool.
+        """
+        return pulumi.get(self, "pool_region_id")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> str:
+        """
+        The region ID of the resource.
+        """
+        return pulumi.get(self, "region_id")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="sourceIpamPoolId")
+    def source_ipam_pool_id(self) -> str:
+        """
+        The instance ID of the source IPAM address pool.> If this parameter is not entered, the created address pool is the parent address pool.
+        """
+        return pulumi.get(self, "source_ipam_pool_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, str]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class GetIpamIpamScopesScopeResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 id: str,
+                 ipam_id: str,
+                 ipam_scope_description: str,
+                 ipam_scope_id: str,
+                 ipam_scope_name: str,
+                 ipam_scope_type: str,
+                 region_id: str,
+                 resource_group_id: str,
+                 status: str,
+                 tags: Mapping[str, str]):
+        """
+        :param str create_time: The creation time of the resource.
+        :param str id: The ID of the resource supplied above.
+        :param str ipam_id: The id of the Ipam instance.
+        :param str ipam_scope_description: The description of the IPAM's scope of action.It must be 2 to 256 characters in length and must start with a lowercase letter, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
+        :param str ipam_scope_id: The first ID of the resource.
+        :param str ipam_scope_name: The name of the resource.
+        :param str ipam_scope_type: IPAM scope of action type:**private**.> Currently, only the role scope of the private network is supported.
+        :param str region_id: The region ID of the resource.
+        :param str resource_group_id: The ID of the resource group.
+        :param str status: The status of the resource.
+        :param Mapping[str, str] tags: The tag of the resource.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ipam_id", ipam_id)
+        pulumi.set(__self__, "ipam_scope_description", ipam_scope_description)
+        pulumi.set(__self__, "ipam_scope_id", ipam_scope_id)
+        pulumi.set(__self__, "ipam_scope_name", ipam_scope_name)
+        pulumi.set(__self__, "ipam_scope_type", ipam_scope_type)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ipamId")
+    def ipam_id(self) -> str:
+        """
+        The id of the Ipam instance.
+        """
+        return pulumi.get(self, "ipam_id")
+
+    @property
+    @pulumi.getter(name="ipamScopeDescription")
+    def ipam_scope_description(self) -> str:
+        """
+        The description of the IPAM's scope of action.It must be 2 to 256 characters in length and must start with a lowercase letter, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
+        """
+        return pulumi.get(self, "ipam_scope_description")
+
+    @property
+    @pulumi.getter(name="ipamScopeId")
+    def ipam_scope_id(self) -> str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "ipam_scope_id")
+
+    @property
+    @pulumi.getter(name="ipamScopeName")
+    def ipam_scope_name(self) -> str:
+        """
+        The name of the resource.
+        """
+        return pulumi.get(self, "ipam_scope_name")
+
+    @property
+    @pulumi.getter(name="ipamScopeType")
+    def ipam_scope_type(self) -> str:
+        """
+        IPAM scope of action type:**private**.> Currently, only the role scope of the private network is supported.
+        """
+        return pulumi.get(self, "ipam_scope_type")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> str:
+        """
+        The region ID of the resource.
+        """
+        return pulumi.get(self, "region_id")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, str]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class GetIpamIpamsIpamResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 default_resource_discovery_association_id: str,
+                 default_resource_discovery_id: str,
+                 id: str,
+                 ipam_description: str,
+                 ipam_id: str,
+                 ipam_name: str,
+                 private_default_scope_id: str,
+                 public_default_scope_id: str,
+                 region_id: str,
+                 resource_discovery_association_count: int,
+                 resource_group_id: str,
+                 status: str,
+                 tags: Mapping[str, str]):
+        """
+        :param str create_time: The creation time of the resource.
+        :param str default_resource_discovery_association_id: After an IPAM is created, the association between the resource discovery created by the system by default and the IPAM.
+        :param str default_resource_discovery_id: After IPAM is created, the system creates resource discovery by default.
+        :param str id: The ID of the resource supplied above.
+        :param str ipam_description: The description of IPAM.It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with 'http: // 'or 'https. If the description is not filled in, it is blank. The default value is blank.
+        :param str ipam_id: The first ID of the resource.
+        :param str ipam_name: The name of the resource.
+        :param str private_default_scope_id: After an IPAM is created, the scope of the private network IPAM created by the system by default.
+        :param str public_default_scope_id: After an IPAM is created, the public network IPAM is created by default.
+        :param str region_id: The region ID of the resource.
+        :param int resource_discovery_association_count: The number of resource discovery objects associated with IPAM.
+        :param str resource_group_id: The ID of the resource group.
+        :param str status: The status of the resource.
+        :param Mapping[str, str] tags: The tag of the resource.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "default_resource_discovery_association_id", default_resource_discovery_association_id)
+        pulumi.set(__self__, "default_resource_discovery_id", default_resource_discovery_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ipam_description", ipam_description)
+        pulumi.set(__self__, "ipam_id", ipam_id)
+        pulumi.set(__self__, "ipam_name", ipam_name)
+        pulumi.set(__self__, "private_default_scope_id", private_default_scope_id)
+        pulumi.set(__self__, "public_default_scope_id", public_default_scope_id)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "resource_discovery_association_count", resource_discovery_association_count)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="defaultResourceDiscoveryAssociationId")
+    def default_resource_discovery_association_id(self) -> str:
+        """
+        After an IPAM is created, the association between the resource discovery created by the system by default and the IPAM.
+        """
+        return pulumi.get(self, "default_resource_discovery_association_id")
+
+    @property
+    @pulumi.getter(name="defaultResourceDiscoveryId")
+    def default_resource_discovery_id(self) -> str:
+        """
+        After IPAM is created, the system creates resource discovery by default.
+        """
+        return pulumi.get(self, "default_resource_discovery_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ipamDescription")
+    def ipam_description(self) -> str:
+        """
+        The description of IPAM.It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with 'http: // 'or 'https. If the description is not filled in, it is blank. The default value is blank.
+        """
+        return pulumi.get(self, "ipam_description")
+
+    @property
+    @pulumi.getter(name="ipamId")
+    def ipam_id(self) -> str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "ipam_id")
+
+    @property
+    @pulumi.getter(name="ipamName")
+    def ipam_name(self) -> str:
+        """
+        The name of the resource.
+        """
+        return pulumi.get(self, "ipam_name")
+
+    @property
+    @pulumi.getter(name="privateDefaultScopeId")
+    def private_default_scope_id(self) -> str:
+        """
+        After an IPAM is created, the scope of the private network IPAM created by the system by default.
+        """
+        return pulumi.get(self, "private_default_scope_id")
+
+    @property
+    @pulumi.getter(name="publicDefaultScopeId")
+    def public_default_scope_id(self) -> str:
+        """
+        After an IPAM is created, the public network IPAM is created by default.
+        """
+        return pulumi.get(self, "public_default_scope_id")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> str:
+        """
+        The region ID of the resource.
+        """
+        return pulumi.get(self, "region_id")
+
+    @property
+    @pulumi.getter(name="resourceDiscoveryAssociationCount")
+    def resource_discovery_association_count(self) -> int:
+        """
+        The number of resource discovery objects associated with IPAM.
+        """
+        return pulumi.get(self, "resource_discovery_association_count")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, str]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
 class GetIpsecServersServerResult(dict):
     def __init__(__self__, *,
                  client_ip_pool: str,
@@ -3883,6 +4627,9 @@ class GetNetworksVpcResult(dict):
                  cidr_block: str,
                  creation_time: str,
                  description: str,
+                 dhcp_options_set_id: str,
+                 dhcp_options_set_status: str,
+                 dns_hostname_status: str,
                  id: str,
                  ipv6_cidr_block: str,
                  is_default: bool,
@@ -3902,6 +4649,9 @@ class GetNetworksVpcResult(dict):
         :param str cidr_block: Filter results by a specific CIDR block. For example: "172.16.0.0/12".
         :param str creation_time: Time of creation.
         :param str description: Description of the VPC
+        :param str dhcp_options_set_id: The ID of dhcp options set.
+        :param str dhcp_options_set_status: The status of the DHCP options set. Valid values: `Available`, `InUse`, `Deleted`, `Pending`.
+        :param str dns_hostname_status: Indicates whether the Domain Name System (DNS) feature is enabled.
         :param str id: ID of the VPC.
         :param str ipv6_cidr_block: The IPv6 CIDR block of the VPC.
         :param bool is_default: Indicate whether the VPC is the default one in the specified region.
@@ -3921,6 +4671,9 @@ class GetNetworksVpcResult(dict):
         pulumi.set(__self__, "cidr_block", cidr_block)
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "dhcp_options_set_id", dhcp_options_set_id)
+        pulumi.set(__self__, "dhcp_options_set_status", dhcp_options_set_status)
+        pulumi.set(__self__, "dns_hostname_status", dns_hostname_status)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "ipv6_cidr_block", ipv6_cidr_block)
         pulumi.set(__self__, "is_default", is_default)
@@ -3960,6 +4713,30 @@ class GetNetworksVpcResult(dict):
         Description of the VPC
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="dhcpOptionsSetId")
+    def dhcp_options_set_id(self) -> str:
+        """
+        The ID of dhcp options set.
+        """
+        return pulumi.get(self, "dhcp_options_set_id")
+
+    @property
+    @pulumi.getter(name="dhcpOptionsSetStatus")
+    def dhcp_options_set_status(self) -> str:
+        """
+        The status of the DHCP options set. Valid values: `Available`, `InUse`, `Deleted`, `Pending`.
+        """
+        return pulumi.get(self, "dhcp_options_set_status")
+
+    @property
+    @pulumi.getter(name="dnsHostnameStatus")
+    def dns_hostname_status(self) -> str:
+        """
+        Indicates whether the Domain Name System (DNS) feature is enabled.
+        """
+        return pulumi.get(self, "dns_hostname_status")
 
     @property
     @pulumi.getter

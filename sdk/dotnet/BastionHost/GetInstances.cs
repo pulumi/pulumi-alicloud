@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.BastionHost
         /// 
         /// This data source provides a list of cloud Bastionhost instances in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in 1.63.0+ .
+        /// &gt; **NOTE:** Available since v1.63.0.
         /// 
         /// ## Example Usage
         /// 
@@ -35,7 +35,10 @@ namespace Pulumi.AliCloud.BastionHost
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["instance"] = instanceAlicloudBastionhostInstances.Select(__item =&gt; __item.Id).ToList(),
+        ///         ["instance"] = new[]
+        ///         {
+        ///             instance,
+        ///         }.Select(__item =&gt; __item.Id).ToList(),
         ///     };
         /// });
         /// ```
@@ -48,7 +51,7 @@ namespace Pulumi.AliCloud.BastionHost
         /// 
         /// This data source provides a list of cloud Bastionhost instances in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in 1.63.0+ .
+        /// &gt; **NOTE:** Available since v1.63.0.
         /// 
         /// ## Example Usage
         /// 
@@ -67,7 +70,10 @@ namespace Pulumi.AliCloud.BastionHost
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["instance"] = instanceAlicloudBastionhostInstances.Select(__item =&gt; __item.Id).ToList(),
+        ///         ["instance"] = new[]
+        ///         {
+        ///             instance,
+        ///         }.Select(__item =&gt; __item.Id).ToList(),
         ///     };
         /// });
         /// ```
@@ -80,7 +86,7 @@ namespace Pulumi.AliCloud.BastionHost
         /// 
         /// This data source provides a list of cloud Bastionhost instances in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in 1.63.0+ .
+        /// &gt; **NOTE:** Available since v1.63.0.
         /// 
         /// ## Example Usage
         /// 
@@ -99,7 +105,10 @@ namespace Pulumi.AliCloud.BastionHost
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["instance"] = instanceAlicloudBastionhostInstances.Select(__item =&gt; __item.Id).ToList(),
+        ///         ["instance"] = new[]
+        ///         {
+        ///             instance,
+        ///         }.Select(__item =&gt; __item.Id).ToList(),
         ///     };
         /// });
         /// ```
@@ -139,25 +148,7 @@ namespace Pulumi.AliCloud.BastionHost
         private Dictionary<string, string>? _tags;
 
         /// <summary>
-        /// A map of tags assigned to the bastionhost instance. It must be in the format:
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var instance = AliCloud.BastionHost.GetInstances.Invoke(new()
-        ///     {
-        ///         Tags = 
-        ///         {
-        ///             { "tagKey1", "tagValue1" },
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
+        /// A map of tags assigned to the bastionhost instance.
         /// </summary>
         public Dictionary<string, string> Tags
         {
@@ -201,25 +192,7 @@ namespace Pulumi.AliCloud.BastionHost
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A map of tags assigned to the bastionhost instance. It must be in the format:
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var instance = AliCloud.BastionHost.GetInstances.Invoke(new()
-        ///     {
-        ///         Tags = 
-        ///         {
-        ///             { "tagKey1", "tagValue1" },
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
+        /// A map of tags assigned to the bastionhost instance.
         /// </summary>
         public InputMap<string> Tags
         {

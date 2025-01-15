@@ -32,12 +32,12 @@ namespace Pulumi.AliCloud.Message
     ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = new AliCloud.Message.ServiceQueue("default", new()
     ///     {
+    ///         QueueName = name,
     ///         DelaySeconds = 2,
     ///         PollingWaitSeconds = 2,
     ///         MessageRetentionPeriod = 566,
-    ///         MaximumMessageSize = 1123,
+    ///         MaximumMessageSize = 1126,
     ///         VisibilityTimeout = 30,
-    ///         QueueName = name,
     ///     });
     /// 
     /// });
@@ -55,49 +55,55 @@ namespace Pulumi.AliCloud.Message
     public partial class ServiceQueue : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Represents the time when the Queue was created.
+        /// (Available since v1.223.2) The time when the queue was created.
         /// </summary>
         [Output("createTime")]
         public Output<int> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// This means that messages sent to the queue can only be consumed after the delay time set by this parameter, in seconds.
+        /// The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
         /// </summary>
         [Output("delaySeconds")]
         public Output<int> DelaySeconds { get; private set; } = null!;
 
         /// <summary>
-        /// Represents whether the log management function is enabled.
+        /// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
         /// </summary>
         [Output("loggingEnabled")]
         public Output<bool?> LoggingEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Represents the maximum length of the message body sent to the Queue, in Byte.
+        /// The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
         /// </summary>
         [Output("maximumMessageSize")]
         public Output<int> MaximumMessageSize { get; private set; } = null!;
 
         /// <summary>
-        /// Represents the longest life time of the message in the Queue.
+        /// The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
         /// </summary>
         [Output("messageRetentionPeriod")]
         public Output<int> MessageRetentionPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// The longest waiting time for a Queue request when the number of messages is empty, in seconds.
+        /// The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: `0` to `30`. Unit: seconds. Default value: `0`.
         /// </summary>
         [Output("pollingWaitSeconds")]
         public Output<int> PollingWaitSeconds { get; private set; } = null!;
 
         /// <summary>
-        /// Representative resources.
+        /// The name of the queue.
         /// </summary>
         [Output("queueName")]
         public Output<string> QueueName { get; private set; } = null!;
 
         /// <summary>
-        /// Represents the duration after the message is removed from the Queue and changed from the Active state to the Inactive state.
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
         /// </summary>
         [Output("visibilityTimeout")]
         public Output<int> VisibilityTimeout { get; private set; } = null!;
@@ -149,43 +155,55 @@ namespace Pulumi.AliCloud.Message
     public sealed class ServiceQueueArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This means that messages sent to the queue can only be consumed after the delay time set by this parameter, in seconds.
+        /// The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
         /// </summary>
         [Input("delaySeconds")]
         public Input<int>? DelaySeconds { get; set; }
 
         /// <summary>
-        /// Represents whether the log management function is enabled.
+        /// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
         /// </summary>
         [Input("loggingEnabled")]
         public Input<bool>? LoggingEnabled { get; set; }
 
         /// <summary>
-        /// Represents the maximum length of the message body sent to the Queue, in Byte.
+        /// The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
         /// </summary>
         [Input("maximumMessageSize")]
         public Input<int>? MaximumMessageSize { get; set; }
 
         /// <summary>
-        /// Represents the longest life time of the message in the Queue.
+        /// The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
         /// </summary>
         [Input("messageRetentionPeriod")]
         public Input<int>? MessageRetentionPeriod { get; set; }
 
         /// <summary>
-        /// The longest waiting time for a Queue request when the number of messages is empty, in seconds.
+        /// The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: `0` to `30`. Unit: seconds. Default value: `0`.
         /// </summary>
         [Input("pollingWaitSeconds")]
         public Input<int>? PollingWaitSeconds { get; set; }
 
         /// <summary>
-        /// Representative resources.
+        /// The name of the queue.
         /// </summary>
         [Input("queueName", required: true)]
         public Input<string> QueueName { get; set; } = null!;
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
         /// <summary>
-        /// Represents the duration after the message is removed from the Queue and changed from the Active state to the Inactive state.
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
         /// </summary>
         [Input("visibilityTimeout")]
         public Input<int>? VisibilityTimeout { get; set; }
@@ -199,49 +217,61 @@ namespace Pulumi.AliCloud.Message
     public sealed class ServiceQueueState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Represents the time when the Queue was created.
+        /// (Available since v1.223.2) The time when the queue was created.
         /// </summary>
         [Input("createTime")]
         public Input<int>? CreateTime { get; set; }
 
         /// <summary>
-        /// This means that messages sent to the queue can only be consumed after the delay time set by this parameter, in seconds.
+        /// The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
         /// </summary>
         [Input("delaySeconds")]
         public Input<int>? DelaySeconds { get; set; }
 
         /// <summary>
-        /// Represents whether the log management function is enabled.
+        /// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
         /// </summary>
         [Input("loggingEnabled")]
         public Input<bool>? LoggingEnabled { get; set; }
 
         /// <summary>
-        /// Represents the maximum length of the message body sent to the Queue, in Byte.
+        /// The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
         /// </summary>
         [Input("maximumMessageSize")]
         public Input<int>? MaximumMessageSize { get; set; }
 
         /// <summary>
-        /// Represents the longest life time of the message in the Queue.
+        /// The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
         /// </summary>
         [Input("messageRetentionPeriod")]
         public Input<int>? MessageRetentionPeriod { get; set; }
 
         /// <summary>
-        /// The longest waiting time for a Queue request when the number of messages is empty, in seconds.
+        /// The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: `0` to `30`. Unit: seconds. Default value: `0`.
         /// </summary>
         [Input("pollingWaitSeconds")]
         public Input<int>? PollingWaitSeconds { get; set; }
 
         /// <summary>
-        /// Representative resources.
+        /// The name of the queue.
         /// </summary>
         [Input("queueName")]
         public Input<string>? QueueName { get; set; }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
         /// <summary>
-        /// Represents the duration after the message is removed from the Queue and changed from the Active state to the Inactive state.
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
         /// </summary>
         [Input("visibilityTimeout")]
         public Input<int>? VisibilityTimeout { get; set; }

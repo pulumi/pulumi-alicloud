@@ -7416,8 +7416,9 @@ type GetBucketsBucket struct {
 	// Bucket name.
 	Name string `pulumi:"name"`
 	// Bucket owner.
-	Owner  string  `pulumi:"owner"`
-	Policy *string `pulumi:"policy"`
+	Owner string `pulumi:"owner"`
+	// The policies configured for a specified bucket.
+	Policy string `pulumi:"policy"`
 	// Redundancy type. Possible values: `LRS`, and `ZRS`.
 	RedundancyType string `pulumi:"redundancyType"`
 	// A list of one element containing referer configuration. It contains the following attributes:
@@ -7465,8 +7466,9 @@ type GetBucketsBucketArgs struct {
 	// Bucket name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Bucket owner.
-	Owner  pulumi.StringInput    `pulumi:"owner"`
-	Policy pulumi.StringPtrInput `pulumi:"policy"`
+	Owner pulumi.StringInput `pulumi:"owner"`
+	// The policies configured for a specified bucket.
+	Policy pulumi.StringInput `pulumi:"policy"`
 	// Redundancy type. Possible values: `LRS`, and `ZRS`.
 	RedundancyType pulumi.StringInput `pulumi:"redundancyType"`
 	// A list of one element containing referer configuration. It contains the following attributes:
@@ -7584,8 +7586,9 @@ func (o GetBucketsBucketOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketsBucket) string { return v.Owner }).(pulumi.StringOutput)
 }
 
-func (o GetBucketsBucketOutput) Policy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetBucketsBucket) *string { return v.Policy }).(pulumi.StringPtrOutput)
+// The policies configured for a specified bucket.
+func (o GetBucketsBucketOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketsBucket) string { return v.Policy }).(pulumi.StringOutput)
 }
 
 // Redundancy type. Possible values: `LRS`, and `ZRS`.
@@ -7902,9 +7905,9 @@ func (o GetBucketsBucketLifecycleRuleArrayOutput) Index(i pulumi.IntInput) GetBu
 
 type GetBucketsBucketLifecycleRuleExpiration struct {
 	// Date after which the rule to take effect. The format is like 2017-03-09.
-	Date *string `pulumi:"date"`
+	Date string `pulumi:"date"`
 	// Indicate the number of days after the last object update until the rules take effect.
-	Days *int `pulumi:"days"`
+	Days int `pulumi:"days"`
 }
 
 // GetBucketsBucketLifecycleRuleExpirationInput is an input type that accepts GetBucketsBucketLifecycleRuleExpirationArgs and GetBucketsBucketLifecycleRuleExpirationOutput values.
@@ -7920,9 +7923,9 @@ type GetBucketsBucketLifecycleRuleExpirationInput interface {
 
 type GetBucketsBucketLifecycleRuleExpirationArgs struct {
 	// Date after which the rule to take effect. The format is like 2017-03-09.
-	Date pulumi.StringPtrInput `pulumi:"date"`
+	Date pulumi.StringInput `pulumi:"date"`
 	// Indicate the number of days after the last object update until the rules take effect.
-	Days pulumi.IntPtrInput `pulumi:"days"`
+	Days pulumi.IntInput `pulumi:"days"`
 }
 
 func (GetBucketsBucketLifecycleRuleExpirationArgs) ElementType() reflect.Type {
@@ -7952,13 +7955,13 @@ func (o GetBucketsBucketLifecycleRuleExpirationOutput) ToGetBucketsBucketLifecyc
 }
 
 // Date after which the rule to take effect. The format is like 2017-03-09.
-func (o GetBucketsBucketLifecycleRuleExpirationOutput) Date() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetBucketsBucketLifecycleRuleExpiration) *string { return v.Date }).(pulumi.StringPtrOutput)
+func (o GetBucketsBucketLifecycleRuleExpirationOutput) Date() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketsBucketLifecycleRuleExpiration) string { return v.Date }).(pulumi.StringOutput)
 }
 
 // Indicate the number of days after the last object update until the rules take effect.
-func (o GetBucketsBucketLifecycleRuleExpirationOutput) Days() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetBucketsBucketLifecycleRuleExpiration) *int { return v.Days }).(pulumi.IntPtrOutput)
+func (o GetBucketsBucketLifecycleRuleExpirationOutput) Days() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBucketsBucketLifecycleRuleExpiration) int { return v.Days }).(pulumi.IntOutput)
 }
 
 type GetBucketsBucketLogging struct {

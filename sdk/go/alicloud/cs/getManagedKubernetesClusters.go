@@ -58,6 +58,7 @@ func GetManagedKubernetesClusters(ctx *pulumi.Context, args *GetManagedKubernete
 
 // A collection of arguments for invoking getManagedKubernetesClusters.
 type GetManagedKubernetesClustersArgs struct {
+	// Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `masterDiskCategory`, `slbInternetEnabled`, `connections`. See full list in attributes.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// Cluster IDs to filter.
 	Ids []string `pulumi:"ids"`
@@ -96,6 +97,7 @@ func GetManagedKubernetesClustersOutput(ctx *pulumi.Context, args GetManagedKube
 
 // A collection of arguments for invoking getManagedKubernetesClusters.
 type GetManagedKubernetesClustersOutputArgs struct {
+	// Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `masterDiskCategory`, `slbInternetEnabled`, `connections`. See full list in attributes.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// Cluster IDs to filter.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`

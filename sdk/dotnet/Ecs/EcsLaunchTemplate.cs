@@ -177,6 +177,12 @@ namespace Pulumi.AliCloud.Ecs
         public Output<ImmutableArray<Outputs.EcsLaunchTemplateDataDisk>> DataDisks { get; private set; } = null!;
 
         /// <summary>
+        /// The version number of the default launch template version. Default to 1. It is conflict with `update_default_version_number`.
+        /// </summary>
+        [Output("defaultVersionNumber")]
+        public Output<int> DefaultVersionNumber { get; private set; } = null!;
+
+        /// <summary>
         /// The Deployment Set Id.
         /// </summary>
         [Output("deploymentSetId")]
@@ -283,6 +289,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("keyPairName")]
         public Output<string?> KeyPairName { get; private set; } = null!;
+
+        /// <summary>
+        /// The latest version number of the launch template.
+        /// </summary>
+        [Output("latestVersionNumber")]
+        public Output<int> LatestVersionNumber { get; private set; } = null!;
 
         /// <summary>
         /// The name of Launch Template.
@@ -433,6 +445,12 @@ namespace Pulumi.AliCloud.Ecs
         public Output<ImmutableDictionary<string, string>?> TemplateTags { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to update the default version of the launch template to the latest version automatically. It is conflict with `default_version_number`.
+        /// </summary>
+        [Output("updateDefaultVersionNumber")]
+        public Output<bool?> UpdateDefaultVersionNumber { get; private set; } = null!;
+
+        /// <summary>
         /// The User Data.
         /// </summary>
         [Output("userData")]
@@ -543,6 +561,12 @@ namespace Pulumi.AliCloud.Ecs
             get => _dataDisks ?? (_dataDisks = new InputList<Inputs.EcsLaunchTemplateDataDiskArgs>());
             set => _dataDisks = value;
         }
+
+        /// <summary>
+        /// The version number of the default launch template version. Default to 1. It is conflict with `update_default_version_number`.
+        /// </summary>
+        [Input("defaultVersionNumber")]
+        public Input<int>? DefaultVersionNumber { get; set; }
 
         /// <summary>
         /// The Deployment Set Id.
@@ -819,6 +843,12 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
+        /// Whether to update the default version of the launch template to the latest version automatically. It is conflict with `default_version_number`.
+        /// </summary>
+        [Input("updateDefaultVersionNumber")]
+        public Input<bool>? UpdateDefaultVersionNumber { get; set; }
+
+        /// <summary>
         /// The User Data.
         /// </summary>
         [Input("userData")]
@@ -891,6 +921,12 @@ namespace Pulumi.AliCloud.Ecs
             get => _dataDisks ?? (_dataDisks = new InputList<Inputs.EcsLaunchTemplateDataDiskGetArgs>());
             set => _dataDisks = value;
         }
+
+        /// <summary>
+        /// The version number of the default launch template version. Default to 1. It is conflict with `update_default_version_number`.
+        /// </summary>
+        [Input("defaultVersionNumber")]
+        public Input<int>? DefaultVersionNumber { get; set; }
 
         /// <summary>
         /// The Deployment Set Id.
@@ -999,6 +1035,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("keyPairName")]
         public Input<string>? KeyPairName { get; set; }
+
+        /// <summary>
+        /// The latest version number of the launch template.
+        /// </summary>
+        [Input("latestVersionNumber")]
+        public Input<int>? LatestVersionNumber { get; set; }
 
         /// <summary>
         /// The name of Launch Template.
@@ -1165,6 +1207,12 @@ namespace Pulumi.AliCloud.Ecs
             get => _templateTags ?? (_templateTags = new InputMap<string>());
             set => _templateTags = value;
         }
+
+        /// <summary>
+        /// Whether to update the default version of the launch template to the latest version automatically. It is conflict with `default_version_number`.
+        /// </summary>
+        [Input("updateDefaultVersionNumber")]
+        public Input<bool>? UpdateDefaultVersionNumber { get; set; }
 
         /// <summary>
         /// The User Data.

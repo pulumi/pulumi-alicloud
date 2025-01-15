@@ -22,12 +22,12 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
  * const _default = new alicloud.message.ServiceQueue("default", {
+ *     queueName: name,
  *     delaySeconds: 2,
  *     pollingWaitSeconds: 2,
  *     messageRetentionPeriod: 566,
- *     maximumMessageSize: 1123,
+ *     maximumMessageSize: 1126,
  *     visibilityTimeout: 30,
- *     queueName: name,
  * });
  * ```
  *
@@ -68,35 +68,39 @@ export class ServiceQueue extends pulumi.CustomResource {
     }
 
     /**
-     * Represents the time when the Queue was created.
+     * (Available since v1.223.2) The time when the queue was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<number>;
     /**
-     * This means that messages sent to the queue can only be consumed after the delay time set by this parameter, in seconds.
+     * The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
      */
     public readonly delaySeconds!: pulumi.Output<number>;
     /**
-     * Represents whether the log management function is enabled.
+     * Specifies whether to enable the logging feature. Default value: `false`. Valid values:
      */
     public readonly loggingEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Represents the maximum length of the message body sent to the Queue, in Byte.
+     * The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
      */
     public readonly maximumMessageSize!: pulumi.Output<number>;
     /**
-     * Represents the longest life time of the message in the Queue.
+     * The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
      */
     public readonly messageRetentionPeriod!: pulumi.Output<number>;
     /**
-     * The longest waiting time for a Queue request when the number of messages is empty, in seconds.
+     * The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: `0` to `30`. Unit: seconds. Default value: `0`.
      */
     public readonly pollingWaitSeconds!: pulumi.Output<number>;
     /**
-     * Representative resources.
+     * The name of the queue.
      */
     public readonly queueName!: pulumi.Output<string>;
     /**
-     * Represents the duration after the message is removed from the Queue and changed from the Active state to the Inactive state.
+     * A mapping of tags to assign to the resource.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
      */
     public readonly visibilityTimeout!: pulumi.Output<number>;
 
@@ -120,6 +124,7 @@ export class ServiceQueue extends pulumi.CustomResource {
             resourceInputs["messageRetentionPeriod"] = state ? state.messageRetentionPeriod : undefined;
             resourceInputs["pollingWaitSeconds"] = state ? state.pollingWaitSeconds : undefined;
             resourceInputs["queueName"] = state ? state.queueName : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["visibilityTimeout"] = state ? state.visibilityTimeout : undefined;
         } else {
             const args = argsOrState as ServiceQueueArgs | undefined;
@@ -132,6 +137,7 @@ export class ServiceQueue extends pulumi.CustomResource {
             resourceInputs["messageRetentionPeriod"] = args ? args.messageRetentionPeriod : undefined;
             resourceInputs["pollingWaitSeconds"] = args ? args.pollingWaitSeconds : undefined;
             resourceInputs["queueName"] = args ? args.queueName : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["visibilityTimeout"] = args ? args.visibilityTimeout : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
         }
@@ -145,35 +151,39 @@ export class ServiceQueue extends pulumi.CustomResource {
  */
 export interface ServiceQueueState {
     /**
-     * Represents the time when the Queue was created.
+     * (Available since v1.223.2) The time when the queue was created.
      */
     createTime?: pulumi.Input<number>;
     /**
-     * This means that messages sent to the queue can only be consumed after the delay time set by this parameter, in seconds.
+     * The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
      */
     delaySeconds?: pulumi.Input<number>;
     /**
-     * Represents whether the log management function is enabled.
+     * Specifies whether to enable the logging feature. Default value: `false`. Valid values:
      */
     loggingEnabled?: pulumi.Input<boolean>;
     /**
-     * Represents the maximum length of the message body sent to the Queue, in Byte.
+     * The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
      */
     maximumMessageSize?: pulumi.Input<number>;
     /**
-     * Represents the longest life time of the message in the Queue.
+     * The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
      */
     messageRetentionPeriod?: pulumi.Input<number>;
     /**
-     * The longest waiting time for a Queue request when the number of messages is empty, in seconds.
+     * The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: `0` to `30`. Unit: seconds. Default value: `0`.
      */
     pollingWaitSeconds?: pulumi.Input<number>;
     /**
-     * Representative resources.
+     * The name of the queue.
      */
     queueName?: pulumi.Input<string>;
     /**
-     * Represents the duration after the message is removed from the Queue and changed from the Active state to the Inactive state.
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
      */
     visibilityTimeout?: pulumi.Input<number>;
 }
@@ -183,31 +193,35 @@ export interface ServiceQueueState {
  */
 export interface ServiceQueueArgs {
     /**
-     * This means that messages sent to the queue can only be consumed after the delay time set by this parameter, in seconds.
+     * The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
      */
     delaySeconds?: pulumi.Input<number>;
     /**
-     * Represents whether the log management function is enabled.
+     * Specifies whether to enable the logging feature. Default value: `false`. Valid values:
      */
     loggingEnabled?: pulumi.Input<boolean>;
     /**
-     * Represents the maximum length of the message body sent to the Queue, in Byte.
+     * The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
      */
     maximumMessageSize?: pulumi.Input<number>;
     /**
-     * Represents the longest life time of the message in the Queue.
+     * The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
      */
     messageRetentionPeriod?: pulumi.Input<number>;
     /**
-     * The longest waiting time for a Queue request when the number of messages is empty, in seconds.
+     * The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: `0` to `30`. Unit: seconds. Default value: `0`.
      */
     pollingWaitSeconds?: pulumi.Input<number>;
     /**
-     * Representative resources.
+     * The name of the queue.
      */
     queueName: pulumi.Input<string>;
     /**
-     * Represents the duration after the message is removed from the Queue and changed from the Active state to the Inactive state.
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
      */
     visibilityTimeout?: pulumi.Input<number>;
 }

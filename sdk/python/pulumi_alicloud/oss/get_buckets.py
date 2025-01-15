@@ -98,13 +98,20 @@ def get_buckets(name_regex: Optional[str] = None,
     """
     This data source provides the OSS buckets of the current Alibaba Cloud user.
 
+    > **NOTE:** Available since v1.17.0.
+
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
+    import pulumi_random as random
 
-    oss_buckets_ds = alicloud.oss.get_buckets(name_regex="sample_oss_bucket")
+    default = random.index.Integer("default",
+        max=99999,
+        min=10000)
+    bucket = alicloud.oss.Bucket("bucket", bucket=f"oss-tf-example-{default['result']}")
+    oss_buckets_ds = alicloud.oss.get_buckets_output(name_regex=bucket.bucket)
     pulumi.export("firstOssBucketName", oss_buckets_ds.buckets[0].name)
     ```
 
@@ -130,13 +137,20 @@ def get_buckets_output(name_regex: Optional[pulumi.Input[Optional[str]]] = None,
     """
     This data source provides the OSS buckets of the current Alibaba Cloud user.
 
+    > **NOTE:** Available since v1.17.0.
+
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
+    import pulumi_random as random
 
-    oss_buckets_ds = alicloud.oss.get_buckets(name_regex="sample_oss_bucket")
+    default = random.index.Integer("default",
+        max=99999,
+        min=10000)
+    bucket = alicloud.oss.Bucket("bucket", bucket=f"oss-tf-example-{default['result']}")
+    oss_buckets_ds = alicloud.oss.get_buckets_output(name_regex=bucket.bucket)
     pulumi.export("firstOssBucketName", oss_buckets_ds.buckets[0].name)
     ```
 

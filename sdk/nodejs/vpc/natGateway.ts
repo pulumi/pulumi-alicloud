@@ -7,6 +7,77 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a resource to create a VPC NAT Gateway.
+ *
+ * > **NOTE:** Resource bandwidth packages will not be supported since 00:00 on November 4, 2017, and public IP can be replaced be elastic IPs.
+ * If a Nat Gateway has already bought some bandwidth packages, it can not bind elastic IP and you have to submit the [work order](https://selfservice.console.aliyun.com/ticket/createIndex) to solve.
+ * If you want to add public IP, you can use resource 'alicloud_eip_association' to bind several elastic IPs for one Nat Gateway.
+ *
+ * > **NOTE:** From version 1.7.1, this resource has deprecated bandwidth packages.
+ * But, in order to manage stock bandwidth packages, version 1.13.0 re-support configuring 'bandwidth_packages'.
+ *
+ * > **NOTE:** Available since v1.37.0.
+ *
+ * ## Example Usage
+ *
+ * Basic usage
+ *
+ * - create enhanced nat gateway
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const default = alicloud.vpc.getEnhancedNatAvailableZones({});
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "10.0.0.0/8",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: name,
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.zoneId),
+ *     cidrBlock: "10.10.0.0/20",
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultNatGateway = new alicloud.vpc.NatGateway("default", {
+ *     vpcId: defaultNetwork.id,
+ *     natGatewayName: name,
+ *     paymentType: "PayAsYouGo",
+ *     vswitchId: defaultSwitch.id,
+ *     natType: "Enhanced",
+ * });
+ * ```
+ *
+ * - transform nat from Normal to Enhanced
+ * > **NOTE:** You must set `natType` to `Enhanced` and set `vswitchId`.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const default = alicloud.vpc.getEnhancedNatAvailableZones({});
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "10.0.0.0/8",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: name,
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.zoneId),
+ *     cidrBlock: "10.10.0.0/20",
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultNatGateway = new alicloud.vpc.NatGateway("default", {
+ *     vpcId: defaultNetwork.id,
+ *     natGatewayName: name,
+ *     vswitchId: defaultSwitch.id,
+ *     natType: "Enhanced",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Nat gateway can be imported using the id, e.g.
@@ -108,7 +179,7 @@ export class NatGateway extends pulumi.CustomResource {
      */
     public readonly networkType!: pulumi.Output<string>;
     /**
-     * The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+     * The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
      */
     public readonly paymentType!: pulumi.Output<string>;
     /**
@@ -284,7 +355,7 @@ export interface NatGatewayState {
      */
     networkType?: pulumi.Input<string>;
     /**
-     * The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+     * The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
      */
     paymentType?: pulumi.Input<string>;
     /**
@@ -387,7 +458,7 @@ export interface NatGatewayArgs {
      */
     networkType?: pulumi.Input<string>;
     /**
-     * The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+     * The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
      */
     paymentType?: pulumi.Input<string>;
     /**

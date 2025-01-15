@@ -70,6 +70,10 @@ public final class GetAlidnsDomainsDomain {
      * 
      */
     private String instanceId;
+    /**
+     * @return The type of the DNS request line.
+     * 
+     */
     private String lineType;
     /**
      * @return Minimum TTL.
@@ -121,6 +125,10 @@ public final class GetAlidnsDomainsDomain {
      * 
      */
     private String versionCode;
+    /**
+     * @return Cloud analysis version name of the domain.
+     * 
+     */
     private String versionName;
 
     private GetAlidnsDomainsDomain() {}
@@ -201,6 +209,10 @@ public final class GetAlidnsDomainsDomain {
     public String instanceId() {
         return this.instanceId;
     }
+    /**
+     * @return The type of the DNS request line.
+     * 
+     */
     public String lineType() {
         return this.lineType;
     }
@@ -274,6 +286,10 @@ public final class GetAlidnsDomainsDomain {
     public String versionCode() {
         return this.versionCode;
     }
+    /**
+     * @return Cloud analysis version name of the domain.
+     * 
+     */
     public String versionName() {
         return this.versionName;
     }

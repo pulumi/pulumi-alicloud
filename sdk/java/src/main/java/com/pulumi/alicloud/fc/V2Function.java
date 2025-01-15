@@ -98,6 +98,12 @@ public class V2Function extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,String>>> environmentVariables() {
         return Codegen.optional(this.environmentVariables);
     }
+    @Export(name="functionArn", refs={String.class}, tree="[0]")
+    private Output<String> functionArn;
+
+    public Output<String> functionArn() {
+        return this.functionArn;
+    }
     @Export(name="functionName", refs={String.class}, tree="[0]")
     private Output<String> functionName;
 

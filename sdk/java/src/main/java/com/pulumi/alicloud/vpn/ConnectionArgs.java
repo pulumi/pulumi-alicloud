@@ -298,16 +298,12 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The ID of the VPN gateway.
      * 
-     * The following arguments will be discarded. Please use new fields as soon as possible:
-     * 
      */
     @Import(name="vpnGatewayId", required=true)
     private Output<String> vpnGatewayId;
 
     /**
      * @return The ID of the VPN gateway.
-     * 
-     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Output<String> vpnGatewayId() {
@@ -761,8 +757,6 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param vpnGatewayId The ID of the VPN gateway.
          * 
-         * The following arguments will be discarded. Please use new fields as soon as possible:
-         * 
          * @return builder
          * 
          */
@@ -773,8 +767,6 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param vpnGatewayId The ID of the VPN gateway.
-         * 
-         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 

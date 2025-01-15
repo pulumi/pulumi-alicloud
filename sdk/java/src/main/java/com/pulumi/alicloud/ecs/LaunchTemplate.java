@@ -172,6 +172,12 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<LaunchTemplateDataDisk>>> dataDisks() {
         return Codegen.optional(this.dataDisks);
     }
+    @Export(name="defaultVersionNumber", refs={Integer.class}, tree="[0]")
+    private Output<Integer> defaultVersionNumber;
+
+    public Output<Integer> defaultVersionNumber() {
+        return this.defaultVersionNumber;
+    }
     @Export(name="deploymentSetId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deploymentSetId;
 
@@ -377,6 +383,12 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> keyPairName() {
         return Codegen.optional(this.keyPairName);
+    }
+    @Export(name="latestVersionNumber", refs={Integer.class}, tree="[0]")
+    private Output<Integer> latestVersionNumber;
+
+    public Output<Integer> latestVersionNumber() {
+        return this.latestVersionNumber;
     }
     @Export(name="launchTemplateName", refs={String.class}, tree="[0]")
     private Output<String> launchTemplateName;
@@ -665,6 +677,12 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<Map<String,String>>> templateTags() {
         return Codegen.optional(this.templateTags);
+    }
+    @Export(name="updateDefaultVersionNumber", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> updateDefaultVersionNumber;
+
+    public Output<Optional<Boolean>> updateDefaultVersionNumber() {
+        return Codegen.optional(this.updateDefaultVersionNumber);
     }
     @Export(name="userData", refs={String.class}, tree="[0]")
     private Output<String> userData;

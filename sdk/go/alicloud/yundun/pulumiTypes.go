@@ -22,7 +22,7 @@ type BastionHostInstanceAdAuthServer struct {
 	IsSsl         bool    `pulumi:"isSsl"`
 	MobileMapping *string `pulumi:"mobileMapping"`
 	NameMapping   *string `pulumi:"nameMapping"`
-	Password      string  `pulumi:"password"`
+	Password      *string `pulumi:"password"`
 	Port          int     `pulumi:"port"`
 	Server        string  `pulumi:"server"`
 	StandbyServer *string `pulumi:"standbyServer"`
@@ -48,7 +48,7 @@ type BastionHostInstanceAdAuthServerArgs struct {
 	IsSsl         pulumi.BoolInput      `pulumi:"isSsl"`
 	MobileMapping pulumi.StringPtrInput `pulumi:"mobileMapping"`
 	NameMapping   pulumi.StringPtrInput `pulumi:"nameMapping"`
-	Password      pulumi.StringInput    `pulumi:"password"`
+	Password      pulumi.StringPtrInput `pulumi:"password"`
 	Port          pulumi.IntInput       `pulumi:"port"`
 	Server        pulumi.StringInput    `pulumi:"server"`
 	StandbyServer pulumi.StringPtrInput `pulumi:"standbyServer"`
@@ -137,8 +137,8 @@ func (o BastionHostInstanceAdAuthServerOutput) NameMapping() pulumi.StringPtrOut
 	return o.ApplyT(func(v BastionHostInstanceAdAuthServer) *string { return v.NameMapping }).(pulumi.StringPtrOutput)
 }
 
-func (o BastionHostInstanceAdAuthServerOutput) Password() pulumi.StringOutput {
-	return o.ApplyT(func(v BastionHostInstanceAdAuthServer) string { return v.Password }).(pulumi.StringOutput)
+func (o BastionHostInstanceAdAuthServerOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BastionHostInstanceAdAuthServer) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
 func (o BastionHostInstanceAdAuthServerOutput) Port() pulumi.IntOutput {
@@ -182,7 +182,7 @@ type BastionHostInstanceLdapAuthServer struct {
 	LoginNameMapping *string `pulumi:"loginNameMapping"`
 	MobileMapping    *string `pulumi:"mobileMapping"`
 	NameMapping      *string `pulumi:"nameMapping"`
-	Password         string  `pulumi:"password"`
+	Password         *string `pulumi:"password"`
 	Port             int     `pulumi:"port"`
 	Server           string  `pulumi:"server"`
 	StandbyServer    *string `pulumi:"standbyServer"`
@@ -208,7 +208,7 @@ type BastionHostInstanceLdapAuthServerArgs struct {
 	LoginNameMapping pulumi.StringPtrInput `pulumi:"loginNameMapping"`
 	MobileMapping    pulumi.StringPtrInput `pulumi:"mobileMapping"`
 	NameMapping      pulumi.StringPtrInput `pulumi:"nameMapping"`
-	Password         pulumi.StringInput    `pulumi:"password"`
+	Password         pulumi.StringPtrInput `pulumi:"password"`
 	Port             pulumi.IntInput       `pulumi:"port"`
 	Server           pulumi.StringInput    `pulumi:"server"`
 	StandbyServer    pulumi.StringPtrInput `pulumi:"standbyServer"`
@@ -297,8 +297,8 @@ func (o BastionHostInstanceLdapAuthServerOutput) NameMapping() pulumi.StringPtrO
 	return o.ApplyT(func(v BastionHostInstanceLdapAuthServer) *string { return v.NameMapping }).(pulumi.StringPtrOutput)
 }
 
-func (o BastionHostInstanceLdapAuthServerOutput) Password() pulumi.StringOutput {
-	return o.ApplyT(func(v BastionHostInstanceLdapAuthServer) string { return v.Password }).(pulumi.StringOutput)
+func (o BastionHostInstanceLdapAuthServerOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BastionHostInstanceLdapAuthServer) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
 func (o BastionHostInstanceLdapAuthServerOutput) Port() pulumi.IntOutput {
@@ -334,6 +334,7 @@ func (o BastionHostInstanceLdapAuthServerArrayOutput) Index(i pulumi.IntInput) B
 }
 
 type GetBastionHostInstancesInstance struct {
+	Bandwidth           string            `pulumi:"bandwidth"`
 	Description         string            `pulumi:"description"`
 	Id                  string            `pulumi:"id"`
 	InstanceStatus      string            `pulumi:"instanceStatus"`
@@ -342,6 +343,7 @@ type GetBastionHostInstancesInstance struct {
 	PublicDomain        string            `pulumi:"publicDomain"`
 	PublicNetworkAccess bool              `pulumi:"publicNetworkAccess"`
 	SecurityGroupIds    []string          `pulumi:"securityGroupIds"`
+	Storage             string            `pulumi:"storage"`
 	Tags                map[string]string `pulumi:"tags"`
 	UserVswitchId       string            `pulumi:"userVswitchId"`
 }
@@ -358,6 +360,7 @@ type GetBastionHostInstancesInstanceInput interface {
 }
 
 type GetBastionHostInstancesInstanceArgs struct {
+	Bandwidth           pulumi.StringInput      `pulumi:"bandwidth"`
 	Description         pulumi.StringInput      `pulumi:"description"`
 	Id                  pulumi.StringInput      `pulumi:"id"`
 	InstanceStatus      pulumi.StringInput      `pulumi:"instanceStatus"`
@@ -366,6 +369,7 @@ type GetBastionHostInstancesInstanceArgs struct {
 	PublicDomain        pulumi.StringInput      `pulumi:"publicDomain"`
 	PublicNetworkAccess pulumi.BoolInput        `pulumi:"publicNetworkAccess"`
 	SecurityGroupIds    pulumi.StringArrayInput `pulumi:"securityGroupIds"`
+	Storage             pulumi.StringInput      `pulumi:"storage"`
 	Tags                pulumi.StringMapInput   `pulumi:"tags"`
 	UserVswitchId       pulumi.StringInput      `pulumi:"userVswitchId"`
 }
@@ -421,6 +425,10 @@ func (o GetBastionHostInstancesInstanceOutput) ToGetBastionHostInstancesInstance
 	return o
 }
 
+func (o GetBastionHostInstancesInstanceOutput) Bandwidth() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBastionHostInstancesInstance) string { return v.Bandwidth }).(pulumi.StringOutput)
+}
+
 func (o GetBastionHostInstancesInstanceOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBastionHostInstancesInstance) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -451,6 +459,10 @@ func (o GetBastionHostInstancesInstanceOutput) PublicNetworkAccess() pulumi.Bool
 
 func (o GetBastionHostInstancesInstanceOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetBastionHostInstancesInstance) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+func (o GetBastionHostInstancesInstanceOutput) Storage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBastionHostInstancesInstance) string { return v.Storage }).(pulumi.StringOutput)
 }
 
 func (o GetBastionHostInstancesInstanceOutput) Tags() pulumi.StringMapOutput {

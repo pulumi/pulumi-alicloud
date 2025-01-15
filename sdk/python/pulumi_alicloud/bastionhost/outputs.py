@@ -62,33 +62,32 @@ class InstanceAdAuthServer(dict):
                  base_dn: str,
                  domain: str,
                  is_ssl: bool,
-                 password: str,
                  port: int,
                  server: str,
                  email_mapping: Optional[str] = None,
                  filter: Optional[str] = None,
                  mobile_mapping: Optional[str] = None,
                  name_mapping: Optional[str] = None,
+                 password: Optional[str] = None,
                  standby_server: Optional[str] = None):
         """
         :param str account: The username of the account that is used for the AD server.
         :param str base_dn: The Base distinguished name (DN).
         :param str domain: The domain on the AD server.
         :param bool is_ssl: Specifies whether to support SSL.
-        :param str password: The password of the account that is used for the AD server.
         :param int port: The port that is used to access the AD server.
         :param str server: The address of the AD server.
         :param str email_mapping: The field that is used to indicate the email address of a user on the AD server.
         :param str filter: The condition that is used to filter users.
         :param str mobile_mapping: The field that is used to indicate the mobile phone number of a user on the AD server.
         :param str name_mapping: The field that is used to indicate the name of a user on the AD server.
+        :param str password: The password of the account that is used for the AD server.
         :param str standby_server: The address of the secondary AD server.
         """
         pulumi.set(__self__, "account", account)
         pulumi.set(__self__, "base_dn", base_dn)
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "is_ssl", is_ssl)
-        pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "server", server)
         if email_mapping is not None:
@@ -99,6 +98,8 @@ class InstanceAdAuthServer(dict):
             pulumi.set(__self__, "mobile_mapping", mobile_mapping)
         if name_mapping is not None:
             pulumi.set(__self__, "name_mapping", name_mapping)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
         if standby_server is not None:
             pulumi.set(__self__, "standby_server", standby_server)
 
@@ -133,14 +134,6 @@ class InstanceAdAuthServer(dict):
         Specifies whether to support SSL.
         """
         return pulumi.get(self, "is_ssl")
-
-    @property
-    @pulumi.getter
-    def password(self) -> str:
-        """
-        The password of the account that is used for the AD server.
-        """
-        return pulumi.get(self, "password")
 
     @property
     @pulumi.getter
@@ -191,6 +184,14 @@ class InstanceAdAuthServer(dict):
         return pulumi.get(self, "name_mapping")
 
     @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        The password of the account that is used for the AD server.
+        """
+        return pulumi.get(self, "password")
+
+    @property
     @pulumi.getter(name="standbyServer")
     def standby_server(self) -> Optional[str]:
         """
@@ -233,7 +234,6 @@ class InstanceLdapAuthServer(dict):
     def __init__(__self__, *,
                  account: str,
                  base_dn: str,
-                 password: str,
                  port: int,
                  server: str,
                  email_mapping: Optional[str] = None,
@@ -242,11 +242,11 @@ class InstanceLdapAuthServer(dict):
                  login_name_mapping: Optional[str] = None,
                  mobile_mapping: Optional[str] = None,
                  name_mapping: Optional[str] = None,
+                 password: Optional[str] = None,
                  standby_server: Optional[str] = None):
         """
         :param str account: The username of the account that is used for the LDAP server.
         :param str base_dn: The Base distinguished name (DN).
-        :param str password: The password of the account that is used for the LDAP server.
         :param int port: The port that is used to access the LDAP server.
         :param str server: The address of the LDAP server.
         :param str email_mapping: The field that is used to indicate the email address of a user on the LDAP server.
@@ -255,11 +255,11 @@ class InstanceLdapAuthServer(dict):
         :param str login_name_mapping: The field that is used to indicate the logon name of a user on the LDAP server.
         :param str mobile_mapping: The field that is used to indicate the mobile phone number of a user on the LDAP server.
         :param str name_mapping: The field that is used to indicate the name of a user on the LDAP server.
+        :param str password: The password of the account that is used for the LDAP server.
         :param str standby_server: The address of the secondary LDAP server.
         """
         pulumi.set(__self__, "account", account)
         pulumi.set(__self__, "base_dn", base_dn)
-        pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "server", server)
         if email_mapping is not None:
@@ -274,6 +274,8 @@ class InstanceLdapAuthServer(dict):
             pulumi.set(__self__, "mobile_mapping", mobile_mapping)
         if name_mapping is not None:
             pulumi.set(__self__, "name_mapping", name_mapping)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
         if standby_server is not None:
             pulumi.set(__self__, "standby_server", standby_server)
 
@@ -292,14 +294,6 @@ class InstanceLdapAuthServer(dict):
         The Base distinguished name (DN).
         """
         return pulumi.get(self, "base_dn")
-
-    @property
-    @pulumi.getter
-    def password(self) -> str:
-        """
-        The password of the account that is used for the LDAP server.
-        """
-        return pulumi.get(self, "password")
 
     @property
     @pulumi.getter
@@ -364,6 +358,14 @@ class InstanceLdapAuthServer(dict):
         The field that is used to indicate the name of a user on the LDAP server.
         """
         return pulumi.get(self, "name_mapping")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        The password of the account that is used for the LDAP server.
+        """
+        return pulumi.get(self, "password")
 
     @property
     @pulumi.getter(name="standbyServer")
@@ -775,6 +777,7 @@ class GetHostsHostProtocolResult(dict):
 @pulumi.output_type
 class GetInstancesInstanceResult(dict):
     def __init__(__self__, *,
+                 bandwidth: str,
                  description: str,
                  id: str,
                  instance_status: str,
@@ -783,27 +786,24 @@ class GetInstancesInstanceResult(dict):
                  public_domain: str,
                  public_network_access: bool,
                  security_group_ids: Sequence[str],
-                 user_vswitch_id: str,
-                 tags: Optional[Mapping[str, str]] = None):
+                 storage: str,
+                 tags: Mapping[str, str],
+                 user_vswitch_id: str):
         """
+        :param str bandwidth: The bandwidth of Cloud Bastionhost instance.
         :param str description: The instance's remark.
         :param str id: The instance's id.
         :param str instance_status: The instance's status.
+        :param str license_code: The instance's license code.
         :param str private_domain: The instance's private domain name.
         :param str public_domain: The instance's public domain name.
         :param bool public_network_access: The instance's public network access configuration.
         :param Sequence[str] security_group_ids: The instance's security group configuration.
+        :param str storage: The storage of Cloud Bastionhost instance in TB.
+        :param Mapping[str, str] tags: A map of tags assigned to the bastionhost instance.
         :param str user_vswitch_id: The instance's vSwitch ID.
-        :param Mapping[str, str] tags: A map of tags assigned to the bastionhost instance. It must be in the format:
-               ```python
-               import pulumi
-               import pulumi_alicloud as alicloud
-               
-               instance = alicloud.bastionhost.get_instances(tags={
-                   "tagKey1": "tagValue1",
-               })
-               ```
         """
+        pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "instance_status", instance_status)
@@ -812,9 +812,17 @@ class GetInstancesInstanceResult(dict):
         pulumi.set(__self__, "public_domain", public_domain)
         pulumi.set(__self__, "public_network_access", public_network_access)
         pulumi.set(__self__, "security_group_ids", security_group_ids)
+        pulumi.set(__self__, "storage", storage)
+        pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "user_vswitch_id", user_vswitch_id)
-        if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> str:
+        """
+        The bandwidth of Cloud Bastionhost instance.
+        """
+        return pulumi.get(self, "bandwidth")
 
     @property
     @pulumi.getter
@@ -843,6 +851,9 @@ class GetInstancesInstanceResult(dict):
     @property
     @pulumi.getter(name="licenseCode")
     def license_code(self) -> str:
+        """
+        The instance's license code.
+        """
         return pulumi.get(self, "license_code")
 
     @property
@@ -878,28 +889,28 @@ class GetInstancesInstanceResult(dict):
         return pulumi.get(self, "security_group_ids")
 
     @property
+    @pulumi.getter
+    def storage(self) -> str:
+        """
+        The storage of Cloud Bastionhost instance in TB.
+        """
+        return pulumi.get(self, "storage")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, str]:
+        """
+        A map of tags assigned to the bastionhost instance.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
     @pulumi.getter(name="userVswitchId")
     def user_vswitch_id(self) -> str:
         """
         The instance's vSwitch ID.
         """
         return pulumi.get(self, "user_vswitch_id")
-
-    @property
-    @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, str]]:
-        """
-        A map of tags assigned to the bastionhost instance. It must be in the format:
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        instance = alicloud.bastionhost.get_instances(tags={
-            "tagKey1": "tagValue1",
-        })
-        ```
-        """
-        return pulumi.get(self, "tags")
 
 
 @pulumi.output_type

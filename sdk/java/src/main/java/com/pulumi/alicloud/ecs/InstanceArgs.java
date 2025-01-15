@@ -511,14 +511,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+     * A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6_addresses` can be modified.
      * 
      */
     @Import(name="ipv6Addresses")
     private @Nullable Output<List<String>> ipv6Addresses;
 
     /**
-     * @return A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+     * @return A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6_addresses` can be modified.
      * 
      */
     public Optional<Output<List<String>>> ipv6Addresses() {
@@ -2046,7 +2046,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv6Addresses A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+         * @param ipv6Addresses A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6_addresses` can be modified.
          * 
          * @return builder
          * 
@@ -2057,7 +2057,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv6Addresses A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+         * @param ipv6Addresses A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6_addresses` can be modified.
          * 
          * @return builder
          * 
@@ -2067,7 +2067,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv6Addresses A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+         * @param ipv6Addresses A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6_addresses` can be modified.
          * 
          * @return builder
          * 

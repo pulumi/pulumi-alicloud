@@ -336,22 +336,22 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return this.isEnterpriseSecurityGroup;
     }
     /**
-     * The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+     * The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
      * 
      * @deprecated
-     * Field &#39;load_balancer_spec&#39; has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
+     * Field &#39;load_balancer_spec&#39; has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU
      * 
      */
-    @Deprecated /* Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore. */
+    @Deprecated /* Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU */
     @Export(name="loadBalancerSpec", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> loadBalancerSpec;
+    private Output<String> loadBalancerSpec;
 
     /**
-     * @return The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+     * @return The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
      * 
      */
-    public Output<Optional<String>> loadBalancerSpec() {
-        return Codegen.optional(this.loadBalancerSpec);
+    public Output<String> loadBalancerSpec() {
+        return this.loadBalancerSpec;
     }
     /**
      * The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
@@ -458,14 +458,14 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.podCidr);
     }
     /**
-     * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+     * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
      * 
      */
     @Export(name="podVswitchIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> podVswitchIds;
 
     /**
-     * @return [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+     * @return [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
      * 
      */
     public Output<Optional<List<String>>> podVswitchIds() {
@@ -698,6 +698,30 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return this.vpcId;
     }
     /**
+     * The vSwitches of the control plane.
+     * &gt; **NOTE:** Please take of note before updating the `vswitch_ids`:
+     * * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
+     * * The control plane restarts during the change process. Exercise caution when you perform this operation.
+     * * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
+     * * If the new vSwitches of the control plane are configured with an ACL, ensure that the ACL allows communication between the new vSwitches and CIDR blocks such as those of the cluster nodes and the container network.
+     * 
+     */
+    @Export(name="vswitchIds", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> vswitchIds;
+
+    /**
+     * @return The vSwitches of the control plane.
+     * &gt; **NOTE:** Please take of note before updating the `vswitch_ids`:
+     * * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
+     * * The control plane restarts during the change process. Exercise caution when you perform this operation.
+     * * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
+     * * If the new vSwitches of the control plane are configured with an ACL, ensure that the ACL allows communication between the new vSwitches and CIDR blocks such as those of the cluster nodes and the container network.
+     * 
+     */
+    public Output<List<String>> vswitchIds() {
+        return this.vswitchIds;
+    }
+    /**
      * The RamRole Name attached to worker node.
      * 
      */
@@ -712,18 +736,22 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return this.workerRamRoleName;
     }
     /**
-     * The vswitches used by control plane.  See `worker_vswitch_ids` below.
+     * The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vswtiches, which supports modifying control plane vswtiches.
+     * 
+     * @deprecated
+     * Field &#39;worker_vswitch_ids&#39; has been deprecated from provider version 1.241.0. Please use &#39;vswitch_ids&#39; to managed control plane vswtiches
      * 
      */
+    @Deprecated /* Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches */
     @Export(name="workerVswitchIds", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> workerVswitchIds;
+    private Output</* @Nullable */ List<String>> workerVswitchIds;
 
     /**
-     * @return The vswitches used by control plane.  See `worker_vswitch_ids` below.
+     * @return The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vswtiches, which supports modifying control plane vswtiches.
      * 
      */
-    public Output<List<String>> workerVswitchIds() {
-        return this.workerVswitchIds;
+    public Output<Optional<List<String>>> workerVswitchIds() {
+        return Codegen.optional(this.workerVswitchIds);
     }
 
     /**
@@ -738,7 +766,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ManagedKubernetes(java.lang.String name, ManagedKubernetesArgs args) {
+    public ManagedKubernetes(java.lang.String name, @Nullable ManagedKubernetesArgs args) {
         this(name, args, null);
     }
     /**
@@ -747,7 +775,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ManagedKubernetes(java.lang.String name, ManagedKubernetesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public ManagedKubernetes(java.lang.String name, @Nullable ManagedKubernetesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("alicloud:cs/managedKubernetes:ManagedKubernetes", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -755,7 +783,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         super("alicloud:cs/managedKubernetes:ManagedKubernetes", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static ManagedKubernetesArgs makeArgs(ManagedKubernetesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static ManagedKubernetesArgs makeArgs(@Nullable ManagedKubernetesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

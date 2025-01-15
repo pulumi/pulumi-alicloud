@@ -1168,7 +1168,7 @@ public final class BastionhostFunctions {
      * 
      * This data source provides a list of cloud Bastionhost instances in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.63.0+ .
+     * &gt; **NOTE:** Available since v1.63.0.
      * 
      * ## Example Usage
      * 
@@ -1199,7 +1199,7 @@ public final class BastionhostFunctions {
      *             .descriptionRegex("^bastionhost")
      *             .build());
      * 
-     *         ctx.export("instance", instanceAlicloudBastionhostInstances.stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("instance", instance.applyValue(getInstancesResult -> getInstancesResult).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -1215,7 +1215,7 @@ public final class BastionhostFunctions {
      * 
      * This data source provides a list of cloud Bastionhost instances in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.63.0+ .
+     * &gt; **NOTE:** Available since v1.63.0.
      * 
      * ## Example Usage
      * 
@@ -1246,7 +1246,7 @@ public final class BastionhostFunctions {
      *             .descriptionRegex("^bastionhost")
      *             .build());
      * 
-     *         ctx.export("instance", instanceAlicloudBastionhostInstances.stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("instance", instance.applyValue(getInstancesResult -> getInstancesResult).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -1262,7 +1262,7 @@ public final class BastionhostFunctions {
      * 
      * This data source provides a list of cloud Bastionhost instances in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.63.0+ .
+     * &gt; **NOTE:** Available since v1.63.0.
      * 
      * ## Example Usage
      * 
@@ -1293,7 +1293,7 @@ public final class BastionhostFunctions {
      *             .descriptionRegex("^bastionhost")
      *             .build());
      * 
-     *         ctx.export("instance", instanceAlicloudBastionhostInstances.stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("instance", instance.applyValue(getInstancesResult -> getInstancesResult).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -1309,7 +1309,7 @@ public final class BastionhostFunctions {
      * 
      * This data source provides a list of cloud Bastionhost instances in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.63.0+ .
+     * &gt; **NOTE:** Available since v1.63.0.
      * 
      * ## Example Usage
      * 
@@ -1340,7 +1340,7 @@ public final class BastionhostFunctions {
      *             .descriptionRegex("^bastionhost")
      *             .build());
      * 
-     *         ctx.export("instance", instanceAlicloudBastionhostInstances.stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("instance", instance.applyValue(getInstancesResult -> getInstancesResult).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -1356,7 +1356,7 @@ public final class BastionhostFunctions {
      * 
      * This data source provides a list of cloud Bastionhost instances in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.63.0+ .
+     * &gt; **NOTE:** Available since v1.63.0.
      * 
      * ## Example Usage
      * 
@@ -1387,7 +1387,7 @@ public final class BastionhostFunctions {
      *             .descriptionRegex("^bastionhost")
      *             .build());
      * 
-     *         ctx.export("instance", instanceAlicloudBastionhostInstances.stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("instance", instance.applyValue(getInstancesResult -> getInstancesResult).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -1403,7 +1403,7 @@ public final class BastionhostFunctions {
      * 
      * This data source provides a list of cloud Bastionhost instances in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.63.0+ .
+     * &gt; **NOTE:** Available since v1.63.0.
      * 
      * ## Example Usage
      * 
@@ -1434,7 +1434,7 @@ public final class BastionhostFunctions {
      *             .descriptionRegex("^bastionhost")
      *             .build());
      * 
-     *         ctx.export("instance", instanceAlicloudBastionhostInstances.stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("instance", instance.applyValue(getInstancesResult -> getInstancesResult).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -1450,7 +1450,7 @@ public final class BastionhostFunctions {
      * 
      * This data source provides a list of cloud Bastionhost instances in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.63.0+ .
+     * &gt; **NOTE:** Available since v1.63.0.
      * 
      * ## Example Usage
      * 
@@ -1481,7 +1481,7 @@ public final class BastionhostFunctions {
      *             .descriptionRegex("^bastionhost")
      *             .build());
      * 
-     *         ctx.export("instance", instanceAlicloudBastionhostInstances.stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("instance", instance.applyValue(getInstancesResult -> getInstancesResult).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }

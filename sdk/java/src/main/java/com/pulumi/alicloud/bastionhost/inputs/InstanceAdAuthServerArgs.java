@@ -142,15 +142,15 @@ public final class InstanceAdAuthServerArgs extends com.pulumi.resources.Resourc
      * The password of the account that is used for the AD server.
      * 
      */
-    @Import(name="password", required=true)
-    private Output<String> password;
+    @Import(name="password")
+    private @Nullable Output<String> password;
 
     /**
      * @return The password of the account that is used for the AD server.
      * 
      */
-    public Output<String> password() {
-        return this.password;
+    public Optional<Output<String>> password() {
+        return Optional.ofNullable(this.password);
     }
 
     /**
@@ -407,7 +407,7 @@ public final class InstanceAdAuthServerArgs extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder password(Output<String> password) {
+        public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
@@ -497,9 +497,6 @@ public final class InstanceAdAuthServerArgs extends com.pulumi.resources.Resourc
             }
             if ($.isSsl == null) {
                 throw new MissingRequiredPropertyException("InstanceAdAuthServerArgs", "isSsl");
-            }
-            if ($.password == null) {
-                throw new MissingRequiredPropertyException("InstanceAdAuthServerArgs", "password");
             }
             if ($.port == null) {
                 throw new MissingRequiredPropertyException("InstanceAdAuthServerArgs", "port");

@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Message Notification Service Topic resource.
+ * Provides a Message Service Topic resource.
  *
- * For information about Message Notification Service Topic and how to use it, see [What is Topic](https://www.alibabacloud.com/help/en/message-service/latest/createtopic).
+ * For information about Message Service Topic and how to use it, see [What is Topic](https://www.alibabacloud.com/help/en/message-service/latest/createtopic).
  *
  * > **NOTE:** Available since v1.188.0.
  *
@@ -20,20 +20,20 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
+ * const name = config.get("name") || "terraform-example";
  * const _default = new alicloud.message.ServiceTopic("default", {
  *     topicName: name,
- *     maxMessageSize: 12357,
- *     loggingEnabled: true,
+ *     maxMessageSize: 16888,
+ *     enableLogging: true,
  * });
  * ```
  *
  * ## Import
  *
- * Message Notification Service Topic can be imported using the id or topic_name, e.g.
+ * Message Service Topic can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:message/serviceTopic:ServiceTopic example <topic_name>
+ * $ pulumi import alicloud:message/serviceTopic:ServiceTopic example <id>
  * ```
  */
 export class ServiceTopic extends pulumi.CustomResource {
@@ -65,15 +65,31 @@ export class ServiceTopic extends pulumi.CustomResource {
     }
 
     /**
-     * Specifies whether to enable the log management feature. Default value: false. Valid values:
+     * (Available since v1.241.0) The time when the topic was created.
      */
-    public readonly loggingEnabled!: pulumi.Output<boolean | undefined>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * The maximum size of a message body that can be sent to the topic. Unit: bytes. Valid values: 1024-65536. Default value: 65536.
+     * Specifies whether to enable the logging feature. Default value: `false`. Valid values:
+     */
+    public readonly enableLogging!: pulumi.Output<boolean>;
+    /**
+     * . Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
+     *
+     * @deprecated Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
+     */
+    public readonly loggingEnabled!: pulumi.Output<boolean>;
+    /**
+     * The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
      */
     public readonly maxMessageSize!: pulumi.Output<number>;
     /**
-     * Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
+     * A mapping of tags to assign to the resource.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * The name of the topic.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     public readonly topicName!: pulumi.Output<string>;
 
@@ -90,17 +106,23 @@ export class ServiceTopic extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceTopicState | undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["enableLogging"] = state ? state.enableLogging : undefined;
             resourceInputs["loggingEnabled"] = state ? state.loggingEnabled : undefined;
             resourceInputs["maxMessageSize"] = state ? state.maxMessageSize : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["topicName"] = state ? state.topicName : undefined;
         } else {
             const args = argsOrState as ServiceTopicArgs | undefined;
             if ((!args || args.topicName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'topicName'");
             }
+            resourceInputs["enableLogging"] = args ? args.enableLogging : undefined;
             resourceInputs["loggingEnabled"] = args ? args.loggingEnabled : undefined;
             resourceInputs["maxMessageSize"] = args ? args.maxMessageSize : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["topicName"] = args ? args.topicName : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServiceTopic.__pulumiType, name, resourceInputs, opts);
@@ -112,15 +134,31 @@ export class ServiceTopic extends pulumi.CustomResource {
  */
 export interface ServiceTopicState {
     /**
-     * Specifies whether to enable the log management feature. Default value: false. Valid values:
+     * (Available since v1.241.0) The time when the topic was created.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable the logging feature. Default value: `false`. Valid values:
+     */
+    enableLogging?: pulumi.Input<boolean>;
+    /**
+     * . Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
+     *
+     * @deprecated Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
      */
     loggingEnabled?: pulumi.Input<boolean>;
     /**
-     * The maximum size of a message body that can be sent to the topic. Unit: bytes. Valid values: 1024-65536. Default value: 65536.
+     * The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
      */
     maxMessageSize?: pulumi.Input<number>;
     /**
-     * Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The name of the topic.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     topicName?: pulumi.Input<string>;
 }
@@ -130,15 +168,27 @@ export interface ServiceTopicState {
  */
 export interface ServiceTopicArgs {
     /**
-     * Specifies whether to enable the log management feature. Default value: false. Valid values:
+     * Specifies whether to enable the logging feature. Default value: `false`. Valid values:
+     */
+    enableLogging?: pulumi.Input<boolean>;
+    /**
+     * . Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
+     *
+     * @deprecated Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
      */
     loggingEnabled?: pulumi.Input<boolean>;
     /**
-     * The maximum size of a message body that can be sent to the topic. Unit: bytes. Valid values: 1024-65536. Default value: 65536.
+     * The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
      */
     maxMessageSize?: pulumi.Input<number>;
     /**
-     * Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The name of the topic.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     topicName: pulumi.Input<string>;
 }

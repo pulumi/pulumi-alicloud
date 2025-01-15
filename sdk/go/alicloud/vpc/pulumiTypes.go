@@ -3422,6 +3422,1022 @@ func (o GetHavipsHavipArrayOutput) Index(i pulumi.IntInput) GetHavipsHavipOutput
 	}).(GetHavipsHavipOutput)
 }
 
+type GetIpamIpamPoolAllocationsAllocation struct {
+	// The allocated address segment.
+	Cidr string `pulumi:"cidr"`
+	// Instance creation time.
+	CreateTime string `pulumi:"createTime"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// The description of the ipam pool alloctaion.It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
+	IpamPoolAllocationDescription string `pulumi:"ipamPoolAllocationDescription"`
+	// The instance ID of the ipam pool allocation.
+	IpamPoolAllocationId string `pulumi:"ipamPoolAllocationId"`
+	// The name of the ipam pool allocation.It must be 1 to 128 characters in length and cannot start with 'http:// 'or 'https.
+	IpamPoolAllocationName string `pulumi:"ipamPoolAllocationName"`
+	// The ID of the IPAM Pool.
+	IpamPoolId string `pulumi:"ipamPoolId"`
+	// When the IPAM Pool to which CIDR is allocated has the region attribute, this attribute is the IPAM Pool region.When the IPAM Pool to which CIDR is allocated does not have the region attribute, this attribute is the IPAM region.
+	RegionId string `pulumi:"regionId"`
+	// The ID of the resource.
+	ResourceId string `pulumi:"resourceId"`
+	// The ID of the Alibaba Cloud account (primary account) to which the resource belongs.
+	ResourceOwnerId int `pulumi:"resourceOwnerId"`
+	// The region of the resource.
+	ResourceRegionId string `pulumi:"resourceRegionId"`
+	// The type of resource. Value:-**VPC**: indicates that the resource type is VPC.-**IpamPool**: indicates that the resource type is a child address pool.-**Custom**: indicates that the resource type is a Custom reserved CIDR block.
+	ResourceType string `pulumi:"resourceType"`
+	// The source address segment.
+	SourceCidr string `pulumi:"sourceCidr"`
+	// The status of the instance. Value:-**Created**: indicates that the creation is complete.
+	Status string `pulumi:"status"`
+	// Total number of records.
+	TotalCount int `pulumi:"totalCount"`
+}
+
+// GetIpamIpamPoolAllocationsAllocationInput is an input type that accepts GetIpamIpamPoolAllocationsAllocationArgs and GetIpamIpamPoolAllocationsAllocationOutput values.
+// You can construct a concrete instance of `GetIpamIpamPoolAllocationsAllocationInput` via:
+//
+//	GetIpamIpamPoolAllocationsAllocationArgs{...}
+type GetIpamIpamPoolAllocationsAllocationInput interface {
+	pulumi.Input
+
+	ToGetIpamIpamPoolAllocationsAllocationOutput() GetIpamIpamPoolAllocationsAllocationOutput
+	ToGetIpamIpamPoolAllocationsAllocationOutputWithContext(context.Context) GetIpamIpamPoolAllocationsAllocationOutput
+}
+
+type GetIpamIpamPoolAllocationsAllocationArgs struct {
+	// The allocated address segment.
+	Cidr pulumi.StringInput `pulumi:"cidr"`
+	// Instance creation time.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The description of the ipam pool alloctaion.It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
+	IpamPoolAllocationDescription pulumi.StringInput `pulumi:"ipamPoolAllocationDescription"`
+	// The instance ID of the ipam pool allocation.
+	IpamPoolAllocationId pulumi.StringInput `pulumi:"ipamPoolAllocationId"`
+	// The name of the ipam pool allocation.It must be 1 to 128 characters in length and cannot start with 'http:// 'or 'https.
+	IpamPoolAllocationName pulumi.StringInput `pulumi:"ipamPoolAllocationName"`
+	// The ID of the IPAM Pool.
+	IpamPoolId pulumi.StringInput `pulumi:"ipamPoolId"`
+	// When the IPAM Pool to which CIDR is allocated has the region attribute, this attribute is the IPAM Pool region.When the IPAM Pool to which CIDR is allocated does not have the region attribute, this attribute is the IPAM region.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	// The ID of the resource.
+	ResourceId pulumi.StringInput `pulumi:"resourceId"`
+	// The ID of the Alibaba Cloud account (primary account) to which the resource belongs.
+	ResourceOwnerId pulumi.IntInput `pulumi:"resourceOwnerId"`
+	// The region of the resource.
+	ResourceRegionId pulumi.StringInput `pulumi:"resourceRegionId"`
+	// The type of resource. Value:-**VPC**: indicates that the resource type is VPC.-**IpamPool**: indicates that the resource type is a child address pool.-**Custom**: indicates that the resource type is a Custom reserved CIDR block.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	// The source address segment.
+	SourceCidr pulumi.StringInput `pulumi:"sourceCidr"`
+	// The status of the instance. Value:-**Created**: indicates that the creation is complete.
+	Status pulumi.StringInput `pulumi:"status"`
+	// Total number of records.
+	TotalCount pulumi.IntInput `pulumi:"totalCount"`
+}
+
+func (GetIpamIpamPoolAllocationsAllocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpamIpamPoolAllocationsAllocation)(nil)).Elem()
+}
+
+func (i GetIpamIpamPoolAllocationsAllocationArgs) ToGetIpamIpamPoolAllocationsAllocationOutput() GetIpamIpamPoolAllocationsAllocationOutput {
+	return i.ToGetIpamIpamPoolAllocationsAllocationOutputWithContext(context.Background())
+}
+
+func (i GetIpamIpamPoolAllocationsAllocationArgs) ToGetIpamIpamPoolAllocationsAllocationOutputWithContext(ctx context.Context) GetIpamIpamPoolAllocationsAllocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpamIpamPoolAllocationsAllocationOutput)
+}
+
+// GetIpamIpamPoolAllocationsAllocationArrayInput is an input type that accepts GetIpamIpamPoolAllocationsAllocationArray and GetIpamIpamPoolAllocationsAllocationArrayOutput values.
+// You can construct a concrete instance of `GetIpamIpamPoolAllocationsAllocationArrayInput` via:
+//
+//	GetIpamIpamPoolAllocationsAllocationArray{ GetIpamIpamPoolAllocationsAllocationArgs{...} }
+type GetIpamIpamPoolAllocationsAllocationArrayInput interface {
+	pulumi.Input
+
+	ToGetIpamIpamPoolAllocationsAllocationArrayOutput() GetIpamIpamPoolAllocationsAllocationArrayOutput
+	ToGetIpamIpamPoolAllocationsAllocationArrayOutputWithContext(context.Context) GetIpamIpamPoolAllocationsAllocationArrayOutput
+}
+
+type GetIpamIpamPoolAllocationsAllocationArray []GetIpamIpamPoolAllocationsAllocationInput
+
+func (GetIpamIpamPoolAllocationsAllocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpamIpamPoolAllocationsAllocation)(nil)).Elem()
+}
+
+func (i GetIpamIpamPoolAllocationsAllocationArray) ToGetIpamIpamPoolAllocationsAllocationArrayOutput() GetIpamIpamPoolAllocationsAllocationArrayOutput {
+	return i.ToGetIpamIpamPoolAllocationsAllocationArrayOutputWithContext(context.Background())
+}
+
+func (i GetIpamIpamPoolAllocationsAllocationArray) ToGetIpamIpamPoolAllocationsAllocationArrayOutputWithContext(ctx context.Context) GetIpamIpamPoolAllocationsAllocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpamIpamPoolAllocationsAllocationArrayOutput)
+}
+
+type GetIpamIpamPoolAllocationsAllocationOutput struct{ *pulumi.OutputState }
+
+func (GetIpamIpamPoolAllocationsAllocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpamIpamPoolAllocationsAllocation)(nil)).Elem()
+}
+
+func (o GetIpamIpamPoolAllocationsAllocationOutput) ToGetIpamIpamPoolAllocationsAllocationOutput() GetIpamIpamPoolAllocationsAllocationOutput {
+	return o
+}
+
+func (o GetIpamIpamPoolAllocationsAllocationOutput) ToGetIpamIpamPoolAllocationsAllocationOutputWithContext(ctx context.Context) GetIpamIpamPoolAllocationsAllocationOutput {
+	return o
+}
+
+// The allocated address segment.
+func (o GetIpamIpamPoolAllocationsAllocationOutput) Cidr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolAllocationsAllocation) string { return v.Cidr }).(pulumi.StringOutput)
+}
+
+// Instance creation time.
+func (o GetIpamIpamPoolAllocationsAllocationOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolAllocationsAllocation) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetIpamIpamPoolAllocationsAllocationOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolAllocationsAllocation) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The description of the ipam pool alloctaion.It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
+func (o GetIpamIpamPoolAllocationsAllocationOutput) IpamPoolAllocationDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolAllocationsAllocation) string { return v.IpamPoolAllocationDescription }).(pulumi.StringOutput)
+}
+
+// The instance ID of the ipam pool allocation.
+func (o GetIpamIpamPoolAllocationsAllocationOutput) IpamPoolAllocationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolAllocationsAllocation) string { return v.IpamPoolAllocationId }).(pulumi.StringOutput)
+}
+
+// The name of the ipam pool allocation.It must be 1 to 128 characters in length and cannot start with 'http:// 'or 'https.
+func (o GetIpamIpamPoolAllocationsAllocationOutput) IpamPoolAllocationName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolAllocationsAllocation) string { return v.IpamPoolAllocationName }).(pulumi.StringOutput)
+}
+
+// The ID of the IPAM Pool.
+func (o GetIpamIpamPoolAllocationsAllocationOutput) IpamPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolAllocationsAllocation) string { return v.IpamPoolId }).(pulumi.StringOutput)
+}
+
+// When the IPAM Pool to which CIDR is allocated has the region attribute, this attribute is the IPAM Pool region.When the IPAM Pool to which CIDR is allocated does not have the region attribute, this attribute is the IPAM region.
+func (o GetIpamIpamPoolAllocationsAllocationOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolAllocationsAllocation) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The ID of the resource.
+func (o GetIpamIpamPoolAllocationsAllocationOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolAllocationsAllocation) string { return v.ResourceId }).(pulumi.StringOutput)
+}
+
+// The ID of the Alibaba Cloud account (primary account) to which the resource belongs.
+func (o GetIpamIpamPoolAllocationsAllocationOutput) ResourceOwnerId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolAllocationsAllocation) int { return v.ResourceOwnerId }).(pulumi.IntOutput)
+}
+
+// The region of the resource.
+func (o GetIpamIpamPoolAllocationsAllocationOutput) ResourceRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolAllocationsAllocation) string { return v.ResourceRegionId }).(pulumi.StringOutput)
+}
+
+// The type of resource. Value:-**VPC**: indicates that the resource type is VPC.-**IpamPool**: indicates that the resource type is a child address pool.-**Custom**: indicates that the resource type is a Custom reserved CIDR block.
+func (o GetIpamIpamPoolAllocationsAllocationOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolAllocationsAllocation) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// The source address segment.
+func (o GetIpamIpamPoolAllocationsAllocationOutput) SourceCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolAllocationsAllocation) string { return v.SourceCidr }).(pulumi.StringOutput)
+}
+
+// The status of the instance. Value:-**Created**: indicates that the creation is complete.
+func (o GetIpamIpamPoolAllocationsAllocationOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolAllocationsAllocation) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Total number of records.
+func (o GetIpamIpamPoolAllocationsAllocationOutput) TotalCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolAllocationsAllocation) int { return v.TotalCount }).(pulumi.IntOutput)
+}
+
+type GetIpamIpamPoolAllocationsAllocationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIpamIpamPoolAllocationsAllocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpamIpamPoolAllocationsAllocation)(nil)).Elem()
+}
+
+func (o GetIpamIpamPoolAllocationsAllocationArrayOutput) ToGetIpamIpamPoolAllocationsAllocationArrayOutput() GetIpamIpamPoolAllocationsAllocationArrayOutput {
+	return o
+}
+
+func (o GetIpamIpamPoolAllocationsAllocationArrayOutput) ToGetIpamIpamPoolAllocationsAllocationArrayOutputWithContext(ctx context.Context) GetIpamIpamPoolAllocationsAllocationArrayOutput {
+	return o
+}
+
+func (o GetIpamIpamPoolAllocationsAllocationArrayOutput) Index(i pulumi.IntInput) GetIpamIpamPoolAllocationsAllocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIpamIpamPoolAllocationsAllocation {
+		return vs[0].([]GetIpamIpamPoolAllocationsAllocation)[vs[1].(int)]
+	}).(GetIpamIpamPoolAllocationsAllocationOutput)
+}
+
+type GetIpamIpamPoolCidrsCidr struct {
+	// The CIDR address segment to be preset.> currently, only IPv4 address segments are supported.
+	Cidr string `pulumi:"cidr"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// The ID of the IPAM pool instance.
+	IpamPoolId string `pulumi:"ipamPoolId"`
+	// The status of the resource
+	Status string `pulumi:"status"`
+}
+
+// GetIpamIpamPoolCidrsCidrInput is an input type that accepts GetIpamIpamPoolCidrsCidrArgs and GetIpamIpamPoolCidrsCidrOutput values.
+// You can construct a concrete instance of `GetIpamIpamPoolCidrsCidrInput` via:
+//
+//	GetIpamIpamPoolCidrsCidrArgs{...}
+type GetIpamIpamPoolCidrsCidrInput interface {
+	pulumi.Input
+
+	ToGetIpamIpamPoolCidrsCidrOutput() GetIpamIpamPoolCidrsCidrOutput
+	ToGetIpamIpamPoolCidrsCidrOutputWithContext(context.Context) GetIpamIpamPoolCidrsCidrOutput
+}
+
+type GetIpamIpamPoolCidrsCidrArgs struct {
+	// The CIDR address segment to be preset.> currently, only IPv4 address segments are supported.
+	Cidr pulumi.StringInput `pulumi:"cidr"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the IPAM pool instance.
+	IpamPoolId pulumi.StringInput `pulumi:"ipamPoolId"`
+	// The status of the resource
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetIpamIpamPoolCidrsCidrArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpamIpamPoolCidrsCidr)(nil)).Elem()
+}
+
+func (i GetIpamIpamPoolCidrsCidrArgs) ToGetIpamIpamPoolCidrsCidrOutput() GetIpamIpamPoolCidrsCidrOutput {
+	return i.ToGetIpamIpamPoolCidrsCidrOutputWithContext(context.Background())
+}
+
+func (i GetIpamIpamPoolCidrsCidrArgs) ToGetIpamIpamPoolCidrsCidrOutputWithContext(ctx context.Context) GetIpamIpamPoolCidrsCidrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpamIpamPoolCidrsCidrOutput)
+}
+
+// GetIpamIpamPoolCidrsCidrArrayInput is an input type that accepts GetIpamIpamPoolCidrsCidrArray and GetIpamIpamPoolCidrsCidrArrayOutput values.
+// You can construct a concrete instance of `GetIpamIpamPoolCidrsCidrArrayInput` via:
+//
+//	GetIpamIpamPoolCidrsCidrArray{ GetIpamIpamPoolCidrsCidrArgs{...} }
+type GetIpamIpamPoolCidrsCidrArrayInput interface {
+	pulumi.Input
+
+	ToGetIpamIpamPoolCidrsCidrArrayOutput() GetIpamIpamPoolCidrsCidrArrayOutput
+	ToGetIpamIpamPoolCidrsCidrArrayOutputWithContext(context.Context) GetIpamIpamPoolCidrsCidrArrayOutput
+}
+
+type GetIpamIpamPoolCidrsCidrArray []GetIpamIpamPoolCidrsCidrInput
+
+func (GetIpamIpamPoolCidrsCidrArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpamIpamPoolCidrsCidr)(nil)).Elem()
+}
+
+func (i GetIpamIpamPoolCidrsCidrArray) ToGetIpamIpamPoolCidrsCidrArrayOutput() GetIpamIpamPoolCidrsCidrArrayOutput {
+	return i.ToGetIpamIpamPoolCidrsCidrArrayOutputWithContext(context.Background())
+}
+
+func (i GetIpamIpamPoolCidrsCidrArray) ToGetIpamIpamPoolCidrsCidrArrayOutputWithContext(ctx context.Context) GetIpamIpamPoolCidrsCidrArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpamIpamPoolCidrsCidrArrayOutput)
+}
+
+type GetIpamIpamPoolCidrsCidrOutput struct{ *pulumi.OutputState }
+
+func (GetIpamIpamPoolCidrsCidrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpamIpamPoolCidrsCidr)(nil)).Elem()
+}
+
+func (o GetIpamIpamPoolCidrsCidrOutput) ToGetIpamIpamPoolCidrsCidrOutput() GetIpamIpamPoolCidrsCidrOutput {
+	return o
+}
+
+func (o GetIpamIpamPoolCidrsCidrOutput) ToGetIpamIpamPoolCidrsCidrOutputWithContext(ctx context.Context) GetIpamIpamPoolCidrsCidrOutput {
+	return o
+}
+
+// The CIDR address segment to be preset.> currently, only IPv4 address segments are supported.
+func (o GetIpamIpamPoolCidrsCidrOutput) Cidr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolCidrsCidr) string { return v.Cidr }).(pulumi.StringOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetIpamIpamPoolCidrsCidrOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolCidrsCidr) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the IPAM pool instance.
+func (o GetIpamIpamPoolCidrsCidrOutput) IpamPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolCidrsCidr) string { return v.IpamPoolId }).(pulumi.StringOutput)
+}
+
+// The status of the resource
+func (o GetIpamIpamPoolCidrsCidrOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolCidrsCidr) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetIpamIpamPoolCidrsCidrArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIpamIpamPoolCidrsCidrArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpamIpamPoolCidrsCidr)(nil)).Elem()
+}
+
+func (o GetIpamIpamPoolCidrsCidrArrayOutput) ToGetIpamIpamPoolCidrsCidrArrayOutput() GetIpamIpamPoolCidrsCidrArrayOutput {
+	return o
+}
+
+func (o GetIpamIpamPoolCidrsCidrArrayOutput) ToGetIpamIpamPoolCidrsCidrArrayOutputWithContext(ctx context.Context) GetIpamIpamPoolCidrsCidrArrayOutput {
+	return o
+}
+
+func (o GetIpamIpamPoolCidrsCidrArrayOutput) Index(i pulumi.IntInput) GetIpamIpamPoolCidrsCidrOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIpamIpamPoolCidrsCidr {
+		return vs[0].([]GetIpamIpamPoolCidrsCidr)[vs[1].(int)]
+	}).(GetIpamIpamPoolCidrsCidrOutput)
+}
+
+type GetIpamIpamPoolsPool struct {
+	// The default network mask assigned by the IPAM address pool.IPv4 network mask value range: **0 to 32** bits.
+	AllocationDefaultCidrMask int `pulumi:"allocationDefaultCidrMask"`
+	// The maximum network mask assigned by the IPAM address pool.IPv4 network mask value range: **0 to 32** bits.
+	AllocationMaxCidrMask int `pulumi:"allocationMaxCidrMask"`
+	// The minimum Network mask assigned by the IPAM address pool.IPv4 network mask value range: **0 to 32** bits.
+	AllocationMinCidrMask int `pulumi:"allocationMinCidrMask"`
+	// Whether the automatic import function is enabled for the address pool.
+	AutoImport bool `pulumi:"autoImport"`
+	// The creation time of the resource.
+	CreateTime string `pulumi:"createTime"`
+	// Whether it is a child address pool. Value:-**true**: Yes.-**false**: No.
+	HasSubPool bool `pulumi:"hasSubPool"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// The IP protocol version. Currently, only **IPv4** is supported * *.
+	IpVersion string `pulumi:"ipVersion"`
+	// Ipam id.
+	IpamId string `pulumi:"ipamId"`
+	// The description of the IPAM address pool.It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
+	IpamPoolDescription string `pulumi:"ipamPoolDescription"`
+	// The first ID of the resource.
+	IpamPoolId string `pulumi:"ipamPoolId"`
+	// The name of the resource.
+	IpamPoolName string `pulumi:"ipamPoolName"`
+	// Ipam scope id.
+	IpamScopeId string `pulumi:"ipamScopeId"`
+	// The depth of the IPAM address pool. Value range: **0 to 10 * *.
+	PoolDepth int `pulumi:"poolDepth"`
+	// The effective region of the IPAM address pool.
+	PoolRegionId string `pulumi:"poolRegionId"`
+	// The region ID of the resource.
+	RegionId string `pulumi:"regionId"`
+	// The ID of the resource group.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// The instance ID of the source IPAM address pool.> If this parameter is not entered, the created address pool is the parent address pool.
+	SourceIpamPoolId string `pulumi:"sourceIpamPoolId"`
+	// The status of the resource.
+	Status string `pulumi:"status"`
+	// The tag of the resource.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetIpamIpamPoolsPoolInput is an input type that accepts GetIpamIpamPoolsPoolArgs and GetIpamIpamPoolsPoolOutput values.
+// You can construct a concrete instance of `GetIpamIpamPoolsPoolInput` via:
+//
+//	GetIpamIpamPoolsPoolArgs{...}
+type GetIpamIpamPoolsPoolInput interface {
+	pulumi.Input
+
+	ToGetIpamIpamPoolsPoolOutput() GetIpamIpamPoolsPoolOutput
+	ToGetIpamIpamPoolsPoolOutputWithContext(context.Context) GetIpamIpamPoolsPoolOutput
+}
+
+type GetIpamIpamPoolsPoolArgs struct {
+	// The default network mask assigned by the IPAM address pool.IPv4 network mask value range: **0 to 32** bits.
+	AllocationDefaultCidrMask pulumi.IntInput `pulumi:"allocationDefaultCidrMask"`
+	// The maximum network mask assigned by the IPAM address pool.IPv4 network mask value range: **0 to 32** bits.
+	AllocationMaxCidrMask pulumi.IntInput `pulumi:"allocationMaxCidrMask"`
+	// The minimum Network mask assigned by the IPAM address pool.IPv4 network mask value range: **0 to 32** bits.
+	AllocationMinCidrMask pulumi.IntInput `pulumi:"allocationMinCidrMask"`
+	// Whether the automatic import function is enabled for the address pool.
+	AutoImport pulumi.BoolInput `pulumi:"autoImport"`
+	// The creation time of the resource.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Whether it is a child address pool. Value:-**true**: Yes.-**false**: No.
+	HasSubPool pulumi.BoolInput `pulumi:"hasSubPool"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The IP protocol version. Currently, only **IPv4** is supported * *.
+	IpVersion pulumi.StringInput `pulumi:"ipVersion"`
+	// Ipam id.
+	IpamId pulumi.StringInput `pulumi:"ipamId"`
+	// The description of the IPAM address pool.It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
+	IpamPoolDescription pulumi.StringInput `pulumi:"ipamPoolDescription"`
+	// The first ID of the resource.
+	IpamPoolId pulumi.StringInput `pulumi:"ipamPoolId"`
+	// The name of the resource.
+	IpamPoolName pulumi.StringInput `pulumi:"ipamPoolName"`
+	// Ipam scope id.
+	IpamScopeId pulumi.StringInput `pulumi:"ipamScopeId"`
+	// The depth of the IPAM address pool. Value range: **0 to 10 * *.
+	PoolDepth pulumi.IntInput `pulumi:"poolDepth"`
+	// The effective region of the IPAM address pool.
+	PoolRegionId pulumi.StringInput `pulumi:"poolRegionId"`
+	// The region ID of the resource.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// The instance ID of the source IPAM address pool.> If this parameter is not entered, the created address pool is the parent address pool.
+	SourceIpamPoolId pulumi.StringInput `pulumi:"sourceIpamPoolId"`
+	// The status of the resource.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The tag of the resource.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetIpamIpamPoolsPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpamIpamPoolsPool)(nil)).Elem()
+}
+
+func (i GetIpamIpamPoolsPoolArgs) ToGetIpamIpamPoolsPoolOutput() GetIpamIpamPoolsPoolOutput {
+	return i.ToGetIpamIpamPoolsPoolOutputWithContext(context.Background())
+}
+
+func (i GetIpamIpamPoolsPoolArgs) ToGetIpamIpamPoolsPoolOutputWithContext(ctx context.Context) GetIpamIpamPoolsPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpamIpamPoolsPoolOutput)
+}
+
+// GetIpamIpamPoolsPoolArrayInput is an input type that accepts GetIpamIpamPoolsPoolArray and GetIpamIpamPoolsPoolArrayOutput values.
+// You can construct a concrete instance of `GetIpamIpamPoolsPoolArrayInput` via:
+//
+//	GetIpamIpamPoolsPoolArray{ GetIpamIpamPoolsPoolArgs{...} }
+type GetIpamIpamPoolsPoolArrayInput interface {
+	pulumi.Input
+
+	ToGetIpamIpamPoolsPoolArrayOutput() GetIpamIpamPoolsPoolArrayOutput
+	ToGetIpamIpamPoolsPoolArrayOutputWithContext(context.Context) GetIpamIpamPoolsPoolArrayOutput
+}
+
+type GetIpamIpamPoolsPoolArray []GetIpamIpamPoolsPoolInput
+
+func (GetIpamIpamPoolsPoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpamIpamPoolsPool)(nil)).Elem()
+}
+
+func (i GetIpamIpamPoolsPoolArray) ToGetIpamIpamPoolsPoolArrayOutput() GetIpamIpamPoolsPoolArrayOutput {
+	return i.ToGetIpamIpamPoolsPoolArrayOutputWithContext(context.Background())
+}
+
+func (i GetIpamIpamPoolsPoolArray) ToGetIpamIpamPoolsPoolArrayOutputWithContext(ctx context.Context) GetIpamIpamPoolsPoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpamIpamPoolsPoolArrayOutput)
+}
+
+type GetIpamIpamPoolsPoolOutput struct{ *pulumi.OutputState }
+
+func (GetIpamIpamPoolsPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpamIpamPoolsPool)(nil)).Elem()
+}
+
+func (o GetIpamIpamPoolsPoolOutput) ToGetIpamIpamPoolsPoolOutput() GetIpamIpamPoolsPoolOutput {
+	return o
+}
+
+func (o GetIpamIpamPoolsPoolOutput) ToGetIpamIpamPoolsPoolOutputWithContext(ctx context.Context) GetIpamIpamPoolsPoolOutput {
+	return o
+}
+
+// The default network mask assigned by the IPAM address pool.IPv4 network mask value range: **0 to 32** bits.
+func (o GetIpamIpamPoolsPoolOutput) AllocationDefaultCidrMask() pulumi.IntOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolsPool) int { return v.AllocationDefaultCidrMask }).(pulumi.IntOutput)
+}
+
+// The maximum network mask assigned by the IPAM address pool.IPv4 network mask value range: **0 to 32** bits.
+func (o GetIpamIpamPoolsPoolOutput) AllocationMaxCidrMask() pulumi.IntOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolsPool) int { return v.AllocationMaxCidrMask }).(pulumi.IntOutput)
+}
+
+// The minimum Network mask assigned by the IPAM address pool.IPv4 network mask value range: **0 to 32** bits.
+func (o GetIpamIpamPoolsPoolOutput) AllocationMinCidrMask() pulumi.IntOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolsPool) int { return v.AllocationMinCidrMask }).(pulumi.IntOutput)
+}
+
+// Whether the automatic import function is enabled for the address pool.
+func (o GetIpamIpamPoolsPoolOutput) AutoImport() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolsPool) bool { return v.AutoImport }).(pulumi.BoolOutput)
+}
+
+// The creation time of the resource.
+func (o GetIpamIpamPoolsPoolOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolsPool) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether it is a child address pool. Value:-**true**: Yes.-**false**: No.
+func (o GetIpamIpamPoolsPoolOutput) HasSubPool() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolsPool) bool { return v.HasSubPool }).(pulumi.BoolOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetIpamIpamPoolsPoolOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolsPool) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The IP protocol version. Currently, only **IPv4** is supported * *.
+func (o GetIpamIpamPoolsPoolOutput) IpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolsPool) string { return v.IpVersion }).(pulumi.StringOutput)
+}
+
+// Ipam id.
+func (o GetIpamIpamPoolsPoolOutput) IpamId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolsPool) string { return v.IpamId }).(pulumi.StringOutput)
+}
+
+// The description of the IPAM address pool.It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
+func (o GetIpamIpamPoolsPoolOutput) IpamPoolDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolsPool) string { return v.IpamPoolDescription }).(pulumi.StringOutput)
+}
+
+// The first ID of the resource.
+func (o GetIpamIpamPoolsPoolOutput) IpamPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolsPool) string { return v.IpamPoolId }).(pulumi.StringOutput)
+}
+
+// The name of the resource.
+func (o GetIpamIpamPoolsPoolOutput) IpamPoolName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolsPool) string { return v.IpamPoolName }).(pulumi.StringOutput)
+}
+
+// Ipam scope id.
+func (o GetIpamIpamPoolsPoolOutput) IpamScopeId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolsPool) string { return v.IpamScopeId }).(pulumi.StringOutput)
+}
+
+// The depth of the IPAM address pool. Value range: **0 to 10 * *.
+func (o GetIpamIpamPoolsPoolOutput) PoolDepth() pulumi.IntOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolsPool) int { return v.PoolDepth }).(pulumi.IntOutput)
+}
+
+// The effective region of the IPAM address pool.
+func (o GetIpamIpamPoolsPoolOutput) PoolRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolsPool) string { return v.PoolRegionId }).(pulumi.StringOutput)
+}
+
+// The region ID of the resource.
+func (o GetIpamIpamPoolsPoolOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolsPool) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group.
+func (o GetIpamIpamPoolsPoolOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolsPool) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The instance ID of the source IPAM address pool.> If this parameter is not entered, the created address pool is the parent address pool.
+func (o GetIpamIpamPoolsPoolOutput) SourceIpamPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolsPool) string { return v.SourceIpamPoolId }).(pulumi.StringOutput)
+}
+
+// The status of the resource.
+func (o GetIpamIpamPoolsPoolOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolsPool) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The tag of the resource.
+func (o GetIpamIpamPoolsPoolOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetIpamIpamPoolsPool) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetIpamIpamPoolsPoolArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIpamIpamPoolsPoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpamIpamPoolsPool)(nil)).Elem()
+}
+
+func (o GetIpamIpamPoolsPoolArrayOutput) ToGetIpamIpamPoolsPoolArrayOutput() GetIpamIpamPoolsPoolArrayOutput {
+	return o
+}
+
+func (o GetIpamIpamPoolsPoolArrayOutput) ToGetIpamIpamPoolsPoolArrayOutputWithContext(ctx context.Context) GetIpamIpamPoolsPoolArrayOutput {
+	return o
+}
+
+func (o GetIpamIpamPoolsPoolArrayOutput) Index(i pulumi.IntInput) GetIpamIpamPoolsPoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIpamIpamPoolsPool {
+		return vs[0].([]GetIpamIpamPoolsPool)[vs[1].(int)]
+	}).(GetIpamIpamPoolsPoolOutput)
+}
+
+type GetIpamIpamScopesScope struct {
+	// The creation time of the resource.
+	CreateTime string `pulumi:"createTime"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// The id of the Ipam instance.
+	IpamId string `pulumi:"ipamId"`
+	// The description of the IPAM's scope of action.It must be 2 to 256 characters in length and must start with a lowercase letter, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
+	IpamScopeDescription string `pulumi:"ipamScopeDescription"`
+	// The first ID of the resource.
+	IpamScopeId string `pulumi:"ipamScopeId"`
+	// The name of the resource.
+	IpamScopeName string `pulumi:"ipamScopeName"`
+	// IPAM scope of action type:**private**.> Currently, only the role scope of the private network is supported.
+	IpamScopeType string `pulumi:"ipamScopeType"`
+	// The region ID of the resource.
+	RegionId string `pulumi:"regionId"`
+	// The ID of the resource group.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// The status of the resource.
+	Status string `pulumi:"status"`
+	// The tag of the resource.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetIpamIpamScopesScopeInput is an input type that accepts GetIpamIpamScopesScopeArgs and GetIpamIpamScopesScopeOutput values.
+// You can construct a concrete instance of `GetIpamIpamScopesScopeInput` via:
+//
+//	GetIpamIpamScopesScopeArgs{...}
+type GetIpamIpamScopesScopeInput interface {
+	pulumi.Input
+
+	ToGetIpamIpamScopesScopeOutput() GetIpamIpamScopesScopeOutput
+	ToGetIpamIpamScopesScopeOutputWithContext(context.Context) GetIpamIpamScopesScopeOutput
+}
+
+type GetIpamIpamScopesScopeArgs struct {
+	// The creation time of the resource.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The id of the Ipam instance.
+	IpamId pulumi.StringInput `pulumi:"ipamId"`
+	// The description of the IPAM's scope of action.It must be 2 to 256 characters in length and must start with a lowercase letter, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
+	IpamScopeDescription pulumi.StringInput `pulumi:"ipamScopeDescription"`
+	// The first ID of the resource.
+	IpamScopeId pulumi.StringInput `pulumi:"ipamScopeId"`
+	// The name of the resource.
+	IpamScopeName pulumi.StringInput `pulumi:"ipamScopeName"`
+	// IPAM scope of action type:**private**.> Currently, only the role scope of the private network is supported.
+	IpamScopeType pulumi.StringInput `pulumi:"ipamScopeType"`
+	// The region ID of the resource.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// The status of the resource.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The tag of the resource.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetIpamIpamScopesScopeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpamIpamScopesScope)(nil)).Elem()
+}
+
+func (i GetIpamIpamScopesScopeArgs) ToGetIpamIpamScopesScopeOutput() GetIpamIpamScopesScopeOutput {
+	return i.ToGetIpamIpamScopesScopeOutputWithContext(context.Background())
+}
+
+func (i GetIpamIpamScopesScopeArgs) ToGetIpamIpamScopesScopeOutputWithContext(ctx context.Context) GetIpamIpamScopesScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpamIpamScopesScopeOutput)
+}
+
+// GetIpamIpamScopesScopeArrayInput is an input type that accepts GetIpamIpamScopesScopeArray and GetIpamIpamScopesScopeArrayOutput values.
+// You can construct a concrete instance of `GetIpamIpamScopesScopeArrayInput` via:
+//
+//	GetIpamIpamScopesScopeArray{ GetIpamIpamScopesScopeArgs{...} }
+type GetIpamIpamScopesScopeArrayInput interface {
+	pulumi.Input
+
+	ToGetIpamIpamScopesScopeArrayOutput() GetIpamIpamScopesScopeArrayOutput
+	ToGetIpamIpamScopesScopeArrayOutputWithContext(context.Context) GetIpamIpamScopesScopeArrayOutput
+}
+
+type GetIpamIpamScopesScopeArray []GetIpamIpamScopesScopeInput
+
+func (GetIpamIpamScopesScopeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpamIpamScopesScope)(nil)).Elem()
+}
+
+func (i GetIpamIpamScopesScopeArray) ToGetIpamIpamScopesScopeArrayOutput() GetIpamIpamScopesScopeArrayOutput {
+	return i.ToGetIpamIpamScopesScopeArrayOutputWithContext(context.Background())
+}
+
+func (i GetIpamIpamScopesScopeArray) ToGetIpamIpamScopesScopeArrayOutputWithContext(ctx context.Context) GetIpamIpamScopesScopeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpamIpamScopesScopeArrayOutput)
+}
+
+type GetIpamIpamScopesScopeOutput struct{ *pulumi.OutputState }
+
+func (GetIpamIpamScopesScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpamIpamScopesScope)(nil)).Elem()
+}
+
+func (o GetIpamIpamScopesScopeOutput) ToGetIpamIpamScopesScopeOutput() GetIpamIpamScopesScopeOutput {
+	return o
+}
+
+func (o GetIpamIpamScopesScopeOutput) ToGetIpamIpamScopesScopeOutputWithContext(ctx context.Context) GetIpamIpamScopesScopeOutput {
+	return o
+}
+
+// The creation time of the resource.
+func (o GetIpamIpamScopesScopeOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamScopesScope) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetIpamIpamScopesScopeOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamScopesScope) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The id of the Ipam instance.
+func (o GetIpamIpamScopesScopeOutput) IpamId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamScopesScope) string { return v.IpamId }).(pulumi.StringOutput)
+}
+
+// The description of the IPAM's scope of action.It must be 2 to 256 characters in length and must start with a lowercase letter, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
+func (o GetIpamIpamScopesScopeOutput) IpamScopeDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamScopesScope) string { return v.IpamScopeDescription }).(pulumi.StringOutput)
+}
+
+// The first ID of the resource.
+func (o GetIpamIpamScopesScopeOutput) IpamScopeId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamScopesScope) string { return v.IpamScopeId }).(pulumi.StringOutput)
+}
+
+// The name of the resource.
+func (o GetIpamIpamScopesScopeOutput) IpamScopeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamScopesScope) string { return v.IpamScopeName }).(pulumi.StringOutput)
+}
+
+// IPAM scope of action type:**private**.> Currently, only the role scope of the private network is supported.
+func (o GetIpamIpamScopesScopeOutput) IpamScopeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamScopesScope) string { return v.IpamScopeType }).(pulumi.StringOutput)
+}
+
+// The region ID of the resource.
+func (o GetIpamIpamScopesScopeOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamScopesScope) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group.
+func (o GetIpamIpamScopesScopeOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamScopesScope) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The status of the resource.
+func (o GetIpamIpamScopesScopeOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamScopesScope) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The tag of the resource.
+func (o GetIpamIpamScopesScopeOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetIpamIpamScopesScope) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetIpamIpamScopesScopeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIpamIpamScopesScopeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpamIpamScopesScope)(nil)).Elem()
+}
+
+func (o GetIpamIpamScopesScopeArrayOutput) ToGetIpamIpamScopesScopeArrayOutput() GetIpamIpamScopesScopeArrayOutput {
+	return o
+}
+
+func (o GetIpamIpamScopesScopeArrayOutput) ToGetIpamIpamScopesScopeArrayOutputWithContext(ctx context.Context) GetIpamIpamScopesScopeArrayOutput {
+	return o
+}
+
+func (o GetIpamIpamScopesScopeArrayOutput) Index(i pulumi.IntInput) GetIpamIpamScopesScopeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIpamIpamScopesScope {
+		return vs[0].([]GetIpamIpamScopesScope)[vs[1].(int)]
+	}).(GetIpamIpamScopesScopeOutput)
+}
+
+type GetIpamIpamsIpam struct {
+	// The creation time of the resource.
+	CreateTime string `pulumi:"createTime"`
+	// After an IPAM is created, the association between the resource discovery created by the system by default and the IPAM.
+	DefaultResourceDiscoveryAssociationId string `pulumi:"defaultResourceDiscoveryAssociationId"`
+	// After IPAM is created, the system creates resource discovery by default.
+	DefaultResourceDiscoveryId string `pulumi:"defaultResourceDiscoveryId"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// The description of IPAM.It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with 'http: // 'or 'https. If the description is not filled in, it is blank. The default value is blank.
+	IpamDescription string `pulumi:"ipamDescription"`
+	// The first ID of the resource.
+	IpamId string `pulumi:"ipamId"`
+	// The name of the resource.
+	IpamName string `pulumi:"ipamName"`
+	// After an IPAM is created, the scope of the private network IPAM created by the system by default.
+	PrivateDefaultScopeId string `pulumi:"privateDefaultScopeId"`
+	// After an IPAM is created, the public network IPAM is created by default.
+	PublicDefaultScopeId string `pulumi:"publicDefaultScopeId"`
+	// The region ID of the resource.
+	RegionId string `pulumi:"regionId"`
+	// The number of resource discovery objects associated with IPAM.
+	ResourceDiscoveryAssociationCount int `pulumi:"resourceDiscoveryAssociationCount"`
+	// The ID of the resource group.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// The status of the resource.
+	Status string `pulumi:"status"`
+	// The tag of the resource.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetIpamIpamsIpamInput is an input type that accepts GetIpamIpamsIpamArgs and GetIpamIpamsIpamOutput values.
+// You can construct a concrete instance of `GetIpamIpamsIpamInput` via:
+//
+//	GetIpamIpamsIpamArgs{...}
+type GetIpamIpamsIpamInput interface {
+	pulumi.Input
+
+	ToGetIpamIpamsIpamOutput() GetIpamIpamsIpamOutput
+	ToGetIpamIpamsIpamOutputWithContext(context.Context) GetIpamIpamsIpamOutput
+}
+
+type GetIpamIpamsIpamArgs struct {
+	// The creation time of the resource.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// After an IPAM is created, the association between the resource discovery created by the system by default and the IPAM.
+	DefaultResourceDiscoveryAssociationId pulumi.StringInput `pulumi:"defaultResourceDiscoveryAssociationId"`
+	// After IPAM is created, the system creates resource discovery by default.
+	DefaultResourceDiscoveryId pulumi.StringInput `pulumi:"defaultResourceDiscoveryId"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The description of IPAM.It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with 'http: // 'or 'https. If the description is not filled in, it is blank. The default value is blank.
+	IpamDescription pulumi.StringInput `pulumi:"ipamDescription"`
+	// The first ID of the resource.
+	IpamId pulumi.StringInput `pulumi:"ipamId"`
+	// The name of the resource.
+	IpamName pulumi.StringInput `pulumi:"ipamName"`
+	// After an IPAM is created, the scope of the private network IPAM created by the system by default.
+	PrivateDefaultScopeId pulumi.StringInput `pulumi:"privateDefaultScopeId"`
+	// After an IPAM is created, the public network IPAM is created by default.
+	PublicDefaultScopeId pulumi.StringInput `pulumi:"publicDefaultScopeId"`
+	// The region ID of the resource.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	// The number of resource discovery objects associated with IPAM.
+	ResourceDiscoveryAssociationCount pulumi.IntInput `pulumi:"resourceDiscoveryAssociationCount"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// The status of the resource.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The tag of the resource.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetIpamIpamsIpamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpamIpamsIpam)(nil)).Elem()
+}
+
+func (i GetIpamIpamsIpamArgs) ToGetIpamIpamsIpamOutput() GetIpamIpamsIpamOutput {
+	return i.ToGetIpamIpamsIpamOutputWithContext(context.Background())
+}
+
+func (i GetIpamIpamsIpamArgs) ToGetIpamIpamsIpamOutputWithContext(ctx context.Context) GetIpamIpamsIpamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpamIpamsIpamOutput)
+}
+
+// GetIpamIpamsIpamArrayInput is an input type that accepts GetIpamIpamsIpamArray and GetIpamIpamsIpamArrayOutput values.
+// You can construct a concrete instance of `GetIpamIpamsIpamArrayInput` via:
+//
+//	GetIpamIpamsIpamArray{ GetIpamIpamsIpamArgs{...} }
+type GetIpamIpamsIpamArrayInput interface {
+	pulumi.Input
+
+	ToGetIpamIpamsIpamArrayOutput() GetIpamIpamsIpamArrayOutput
+	ToGetIpamIpamsIpamArrayOutputWithContext(context.Context) GetIpamIpamsIpamArrayOutput
+}
+
+type GetIpamIpamsIpamArray []GetIpamIpamsIpamInput
+
+func (GetIpamIpamsIpamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpamIpamsIpam)(nil)).Elem()
+}
+
+func (i GetIpamIpamsIpamArray) ToGetIpamIpamsIpamArrayOutput() GetIpamIpamsIpamArrayOutput {
+	return i.ToGetIpamIpamsIpamArrayOutputWithContext(context.Background())
+}
+
+func (i GetIpamIpamsIpamArray) ToGetIpamIpamsIpamArrayOutputWithContext(ctx context.Context) GetIpamIpamsIpamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpamIpamsIpamArrayOutput)
+}
+
+type GetIpamIpamsIpamOutput struct{ *pulumi.OutputState }
+
+func (GetIpamIpamsIpamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpamIpamsIpam)(nil)).Elem()
+}
+
+func (o GetIpamIpamsIpamOutput) ToGetIpamIpamsIpamOutput() GetIpamIpamsIpamOutput {
+	return o
+}
+
+func (o GetIpamIpamsIpamOutput) ToGetIpamIpamsIpamOutputWithContext(ctx context.Context) GetIpamIpamsIpamOutput {
+	return o
+}
+
+// The creation time of the resource.
+func (o GetIpamIpamsIpamOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamsIpam) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// After an IPAM is created, the association between the resource discovery created by the system by default and the IPAM.
+func (o GetIpamIpamsIpamOutput) DefaultResourceDiscoveryAssociationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamsIpam) string { return v.DefaultResourceDiscoveryAssociationId }).(pulumi.StringOutput)
+}
+
+// After IPAM is created, the system creates resource discovery by default.
+func (o GetIpamIpamsIpamOutput) DefaultResourceDiscoveryId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamsIpam) string { return v.DefaultResourceDiscoveryId }).(pulumi.StringOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetIpamIpamsIpamOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamsIpam) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The description of IPAM.It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with 'http: // 'or 'https. If the description is not filled in, it is blank. The default value is blank.
+func (o GetIpamIpamsIpamOutput) IpamDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamsIpam) string { return v.IpamDescription }).(pulumi.StringOutput)
+}
+
+// The first ID of the resource.
+func (o GetIpamIpamsIpamOutput) IpamId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamsIpam) string { return v.IpamId }).(pulumi.StringOutput)
+}
+
+// The name of the resource.
+func (o GetIpamIpamsIpamOutput) IpamName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamsIpam) string { return v.IpamName }).(pulumi.StringOutput)
+}
+
+// After an IPAM is created, the scope of the private network IPAM created by the system by default.
+func (o GetIpamIpamsIpamOutput) PrivateDefaultScopeId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamsIpam) string { return v.PrivateDefaultScopeId }).(pulumi.StringOutput)
+}
+
+// After an IPAM is created, the public network IPAM is created by default.
+func (o GetIpamIpamsIpamOutput) PublicDefaultScopeId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamsIpam) string { return v.PublicDefaultScopeId }).(pulumi.StringOutput)
+}
+
+// The region ID of the resource.
+func (o GetIpamIpamsIpamOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamsIpam) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The number of resource discovery objects associated with IPAM.
+func (o GetIpamIpamsIpamOutput) ResourceDiscoveryAssociationCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetIpamIpamsIpam) int { return v.ResourceDiscoveryAssociationCount }).(pulumi.IntOutput)
+}
+
+// The ID of the resource group.
+func (o GetIpamIpamsIpamOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamsIpam) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The status of the resource.
+func (o GetIpamIpamsIpamOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpamIpamsIpam) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The tag of the resource.
+func (o GetIpamIpamsIpamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetIpamIpamsIpam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetIpamIpamsIpamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIpamIpamsIpamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpamIpamsIpam)(nil)).Elem()
+}
+
+func (o GetIpamIpamsIpamArrayOutput) ToGetIpamIpamsIpamArrayOutput() GetIpamIpamsIpamArrayOutput {
+	return o
+}
+
+func (o GetIpamIpamsIpamArrayOutput) ToGetIpamIpamsIpamArrayOutputWithContext(ctx context.Context) GetIpamIpamsIpamArrayOutput {
+	return o
+}
+
+func (o GetIpamIpamsIpamArrayOutput) Index(i pulumi.IntInput) GetIpamIpamsIpamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIpamIpamsIpam {
+		return vs[0].([]GetIpamIpamsIpam)[vs[1].(int)]
+	}).(GetIpamIpamsIpamOutput)
+}
+
 type GetIpsecServersServer struct {
 	// The CIDR block of the client, which is assigned an access address to the virtual NIC of the client.
 	ClientIpPool string `pulumi:"clientIpPool"`
@@ -6027,6 +7043,12 @@ type GetNetworksVpc struct {
 	CreationTime string `pulumi:"creationTime"`
 	// Description of the VPC
 	Description string `pulumi:"description"`
+	// The ID of dhcp options set.
+	DhcpOptionsSetId string `pulumi:"dhcpOptionsSetId"`
+	// The status of the DHCP options set. Valid values: `Available`, `InUse`, `Deleted`, `Pending`.
+	DhcpOptionsSetStatus string `pulumi:"dhcpOptionsSetStatus"`
+	// Indicates whether the Domain Name System (DNS) feature is enabled.
+	DnsHostnameStatus string `pulumi:"dnsHostnameStatus"`
 	// ID of the VPC.
 	Id string `pulumi:"id"`
 	// The IPv6 CIDR block of the VPC.
@@ -6077,6 +7099,12 @@ type GetNetworksVpcArgs struct {
 	CreationTime pulumi.StringInput `pulumi:"creationTime"`
 	// Description of the VPC
 	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of dhcp options set.
+	DhcpOptionsSetId pulumi.StringInput `pulumi:"dhcpOptionsSetId"`
+	// The status of the DHCP options set. Valid values: `Available`, `InUse`, `Deleted`, `Pending`.
+	DhcpOptionsSetStatus pulumi.StringInput `pulumi:"dhcpOptionsSetStatus"`
+	// Indicates whether the Domain Name System (DNS) feature is enabled.
+	DnsHostnameStatus pulumi.StringInput `pulumi:"dnsHostnameStatus"`
 	// ID of the VPC.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The IPv6 CIDR block of the VPC.
@@ -6173,6 +7201,21 @@ func (o GetNetworksVpcOutput) CreationTime() pulumi.StringOutput {
 // Description of the VPC
 func (o GetNetworksVpcOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworksVpc) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of dhcp options set.
+func (o GetNetworksVpcOutput) DhcpOptionsSetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksVpc) string { return v.DhcpOptionsSetId }).(pulumi.StringOutput)
+}
+
+// The status of the DHCP options set. Valid values: `Available`, `InUse`, `Deleted`, `Pending`.
+func (o GetNetworksVpcOutput) DhcpOptionsSetStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksVpc) string { return v.DhcpOptionsSetStatus }).(pulumi.StringOutput)
+}
+
+// Indicates whether the Domain Name System (DNS) feature is enabled.
+func (o GetNetworksVpcOutput) DnsHostnameStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksVpc) string { return v.DnsHostnameStatus }).(pulumi.StringOutput)
 }
 
 // ID of the VPC.
@@ -9513,6 +10556,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetForwardEntriesEntryArrayInput)(nil)).Elem(), GetForwardEntriesEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHavipsHavipInput)(nil)).Elem(), GetHavipsHavipArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHavipsHavipArrayInput)(nil)).Elem(), GetHavipsHavipArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpamIpamPoolAllocationsAllocationInput)(nil)).Elem(), GetIpamIpamPoolAllocationsAllocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpamIpamPoolAllocationsAllocationArrayInput)(nil)).Elem(), GetIpamIpamPoolAllocationsAllocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpamIpamPoolCidrsCidrInput)(nil)).Elem(), GetIpamIpamPoolCidrsCidrArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpamIpamPoolCidrsCidrArrayInput)(nil)).Elem(), GetIpamIpamPoolCidrsCidrArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpamIpamPoolsPoolInput)(nil)).Elem(), GetIpamIpamPoolsPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpamIpamPoolsPoolArrayInput)(nil)).Elem(), GetIpamIpamPoolsPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpamIpamScopesScopeInput)(nil)).Elem(), GetIpamIpamScopesScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpamIpamScopesScopeArrayInput)(nil)).Elem(), GetIpamIpamScopesScopeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpamIpamsIpamInput)(nil)).Elem(), GetIpamIpamsIpamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpamIpamsIpamArrayInput)(nil)).Elem(), GetIpamIpamsIpamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIpsecServersServerInput)(nil)).Elem(), GetIpsecServersServerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIpsecServersServerArrayInput)(nil)).Elem(), GetIpsecServersServerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIpsecServersServerIkeConfigInput)(nil)).Elem(), GetIpsecServersServerIkeConfigArgs{})
@@ -9625,6 +10678,16 @@ func init() {
 	pulumi.RegisterOutputType(GetForwardEntriesEntryArrayOutput{})
 	pulumi.RegisterOutputType(GetHavipsHavipOutput{})
 	pulumi.RegisterOutputType(GetHavipsHavipArrayOutput{})
+	pulumi.RegisterOutputType(GetIpamIpamPoolAllocationsAllocationOutput{})
+	pulumi.RegisterOutputType(GetIpamIpamPoolAllocationsAllocationArrayOutput{})
+	pulumi.RegisterOutputType(GetIpamIpamPoolCidrsCidrOutput{})
+	pulumi.RegisterOutputType(GetIpamIpamPoolCidrsCidrArrayOutput{})
+	pulumi.RegisterOutputType(GetIpamIpamPoolsPoolOutput{})
+	pulumi.RegisterOutputType(GetIpamIpamPoolsPoolArrayOutput{})
+	pulumi.RegisterOutputType(GetIpamIpamScopesScopeOutput{})
+	pulumi.RegisterOutputType(GetIpamIpamScopesScopeArrayOutput{})
+	pulumi.RegisterOutputType(GetIpamIpamsIpamOutput{})
+	pulumi.RegisterOutputType(GetIpamIpamsIpamArrayOutput{})
 	pulumi.RegisterOutputType(GetIpsecServersServerOutput{})
 	pulumi.RegisterOutputType(GetIpsecServersServerArrayOutput{})
 	pulumi.RegisterOutputType(GetIpsecServersServerIkeConfigOutput{})

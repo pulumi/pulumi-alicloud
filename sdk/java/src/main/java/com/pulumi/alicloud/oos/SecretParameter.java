@@ -17,9 +17,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a OOS Secret Parameter resource.
+ * Provides a Operation Orchestration Service (OOS) Secret Parameter resource.
  * 
- * For information about OOS Secret Parameter and how to use it, see [What is Secret Parameter](https://www.alibabacloud.com/help/en/doc-detail/183418.html).
+ * For information about Operation Orchestration Service (OOS) Secret Parameter and how to use it, see [What is Secret Parameter](https://www.alibabacloud.com/help/en/doc-detail/183418.html).
  * 
  * &gt; **NOTE:** Available since v1.147.0+.
  * 
@@ -83,10 +83,10 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * OOS Secret Parameter can be imported using the id, e.g.
+ * Operation Orchestration Service (OOS) Secret Parameter can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:oos/secretParameter:SecretParameter example &lt;secret_parameter_name&gt;
+ * $ pulumi import alicloud:oos/secretParameter:SecretParameter example &lt;id&gt;
  * ```
  * 
  */
@@ -115,6 +115,20 @@ public class SecretParameter extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.constraints);
     }
     /**
+     * Parameter creation time
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return Parameter creation time
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
      * The description of the encryption parameter. The description must be `1` to `200` characters in length.
      * 
      */
@@ -127,6 +141,20 @@ public class SecretParameter extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * The ID of the KMS instance.
+     * 
+     */
+    @Export(name="dkmsInstanceId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> dkmsInstanceId;
+
+    /**
+     * @return The ID of the KMS instance.
+     * 
+     */
+    public Output<Optional<String>> dkmsInstanceId() {
+        return Codegen.optional(this.dkmsInstanceId);
     }
     /**
      * The Customer Master Key (CMK) of Key Management Service (KMS) that is used to encrypt the parameter.
@@ -175,14 +203,14 @@ public class SecretParameter extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
-    private Output</* @Nullable */ Map<String,String>> tags;
+    private Output<Map<String,String>> tags;
 
     /**
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    public Output<Optional<Map<String,String>>> tags() {
-        return Codegen.optional(this.tags);
+    public Output<Map<String,String>> tags() {
+        return this.tags;
     }
     /**
      * The data type of the encryption parameter. Valid values: `Secret`.

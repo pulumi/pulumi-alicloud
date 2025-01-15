@@ -14,9 +14,9 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type AScriptExtAttribute struct {
-	// The key of the extended attribute.
+	// Key to extend attribute
 	AttributeKey *string `pulumi:"attributeKey"`
-	// The value of the extended attribute.
+	// The value of the extended attribute
 	AttributeValue *string `pulumi:"attributeValue"`
 }
 
@@ -32,9 +32,9 @@ type AScriptExtAttributeInput interface {
 }
 
 type AScriptExtAttributeArgs struct {
-	// The key of the extended attribute.
+	// Key to extend attribute
 	AttributeKey pulumi.StringPtrInput `pulumi:"attributeKey"`
-	// The value of the extended attribute.
+	// The value of the extended attribute
 	AttributeValue pulumi.StringPtrInput `pulumi:"attributeValue"`
 }
 
@@ -89,12 +89,12 @@ func (o AScriptExtAttributeOutput) ToAScriptExtAttributeOutputWithContext(ctx co
 	return o
 }
 
-// The key of the extended attribute.
+// Key to extend attribute
 func (o AScriptExtAttributeOutput) AttributeKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AScriptExtAttribute) *string { return v.AttributeKey }).(pulumi.StringPtrOutput)
 }
 
-// The value of the extended attribute.
+// The value of the extended attribute
 func (o AScriptExtAttributeOutput) AttributeValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AScriptExtAttribute) *string { return v.AttributeValue }).(pulumi.StringPtrOutput)
 }

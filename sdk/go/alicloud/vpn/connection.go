@@ -47,34 +47,36 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
-//				CidrBlock: pulumi.StringRef("172.16.0.0/16"),
-//			}, nil)
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//				VpcName:   pulumi.String(name),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			default0, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId:  pulumi.StringRef(defaultGetNetworks.Ids[0]),
-//				ZoneId: pulumi.StringRef(_default.Ids[0]),
-//			}, nil)
+//			default0, err := vpc.NewSwitch(ctx, "default0", &vpc.SwitchArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/24"),
+//				VpcId:     defaultNetwork.ID(),
+//				ZoneId:    pulumi.String(_default.Ids[0]),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			default1, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId:  pulumi.StringRef(defaultGetNetworks.Ids[0]),
-//				ZoneId: pulumi.StringRef(_default.Ids[1]),
-//			}, nil)
+//			default1, err := vpc.NewSwitch(ctx, "default1", &vpc.SwitchArgs{
+//				CidrBlock: pulumi.String("172.16.1.0/24"),
+//				VpcId:     defaultNetwork.ID(),
+//				ZoneId:    pulumi.String(_default.Ids[1]),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = vpn.NewGateway(ctx, "HA-VPN", &vpn.GatewayArgs{
 //				VpnType:                   pulumi.String("Normal"),
-//				DisasterRecoveryVswitchId: pulumi.String(default1.Ids[0]),
+//				DisasterRecoveryVswitchId: default1.ID(),
 //				VpnGatewayName:            pulumi.String(name),
-//				VswitchId:                 pulumi.String(default0.Ids[0]),
+//				VswitchId:                 default0.ID(),
 //				AutoPay:                   pulumi.Bool(true),
-//				VpcId:                     pulumi.String(defaultGetNetworks.Ids[0]),
+//				VpcId:                     defaultNetwork.ID(),
 //				NetworkType:               pulumi.String("public"),
 //				PaymentType:               pulumi.String("Subscription"),
 //				EnableIpsec:               pulumi.Bool(true),
@@ -237,8 +239,6 @@ type Connection struct {
 	// The name of the IPsec-VPN connection.
 	VpnConnectionName pulumi.StringOutput `pulumi:"vpnConnectionName"`
 	// The ID of the VPN gateway.
-	//
-	// The following arguments will be discarded. Please use new fields as soon as possible:
 	VpnGatewayId pulumi.StringOutput `pulumi:"vpnGatewayId"`
 }
 
@@ -328,8 +328,6 @@ type connectionState struct {
 	// The name of the IPsec-VPN connection.
 	VpnConnectionName *string `pulumi:"vpnConnectionName"`
 	// The ID of the VPN gateway.
-	//
-	// The following arguments will be discarded. Please use new fields as soon as possible:
 	VpnGatewayId *string `pulumi:"vpnGatewayId"`
 }
 
@@ -381,8 +379,6 @@ type ConnectionState struct {
 	// The name of the IPsec-VPN connection.
 	VpnConnectionName pulumi.StringPtrInput
 	// The ID of the VPN gateway.
-	//
-	// The following arguments will be discarded. Please use new fields as soon as possible:
 	VpnGatewayId pulumi.StringPtrInput
 }
 
@@ -432,8 +428,6 @@ type connectionArgs struct {
 	// The name of the IPsec-VPN connection.
 	VpnConnectionName *string `pulumi:"vpnConnectionName"`
 	// The ID of the VPN gateway.
-	//
-	// The following arguments will be discarded. Please use new fields as soon as possible:
 	VpnGatewayId string `pulumi:"vpnGatewayId"`
 }
 
@@ -480,8 +474,6 @@ type ConnectionArgs struct {
 	// The name of the IPsec-VPN connection.
 	VpnConnectionName pulumi.StringPtrInput
 	// The ID of the VPN gateway.
-	//
-	// The following arguments will be discarded. Please use new fields as soon as possible:
 	VpnGatewayId pulumi.StringInput
 }
 
@@ -681,8 +673,6 @@ func (o ConnectionOutput) VpnConnectionName() pulumi.StringOutput {
 }
 
 // The ID of the VPN gateway.
-//
-// The following arguments will be discarded. Please use new fields as soon as possible:
 func (o ConnectionOutput) VpnGatewayId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.VpnGatewayId }).(pulumi.StringOutput)
 }

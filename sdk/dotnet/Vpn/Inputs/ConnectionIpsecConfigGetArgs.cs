@@ -13,25 +13,25 @@ namespace Pulumi.AliCloud.Vpn.Inputs
     public sealed class ConnectionIpsecConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// IPsec authentication algorithm. sha1 and md5 are supported.
+        /// the authentication algorithm that is used in Phase 2 negotiations. Valid values: md5, sha1, sha256, sha384, and sha512. Default value: md5.
         /// </summary>
         [Input("ipsecAuthAlg")]
         public Input<string>? IpsecAuthAlg { get; set; }
 
         /// <summary>
-        /// IPsec Encript algorithm.
+        /// the encryption algorithm that is used in Phase 2 negotiations. Valid values: aes, aes192, aes256, des, and 3des. Default value: aes.
         /// </summary>
         [Input("ipsecEncAlg")]
         public Input<string>? IpsecEncAlg { get; set; }
 
         /// <summary>
-        /// IPsec lifetime.
+        /// the SA lifetime that is determined by Phase 2 negotiations. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
         /// </summary>
         [Input("ipsecLifetime")]
         public Input<int>? IpsecLifetime { get; set; }
 
         /// <summary>
-        /// DH Group.
+        /// the DH key exchange algorithm that is used in Phase 2 negotiations. Valid values: disabled, group1, group2, group5, and group14. Default value: group2.
         /// </summary>
         [Input("ipsecPfs")]
         public Input<string>? IpsecPfs { get; set; }

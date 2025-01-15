@@ -1130,13 +1130,13 @@ export namespace adb {
 export namespace alb {
     export interface AScriptExtAttribute {
         /**
-         * The key of the extended attribute.
+         * Key to extend attribute
          */
-        attributeKey: string;
+        attributeKey?: string;
         /**
-         * The value of the extended attribute.
+         * The value of the extended attribute
          */
-        attributeValue: string;
+        attributeValue?: string;
     }
 
     export interface AclAclEntry {
@@ -5041,6 +5041,10 @@ export namespace bastionhost {
 
     export interface GetInstancesInstance {
         /**
+         * The bandwidth of Cloud Bastionhost instance.
+         */
+        bandwidth: string;
+        /**
          * The instance's remark.
          */
         description: string;
@@ -5052,6 +5056,9 @@ export namespace bastionhost {
          * The instance's status.
          */
         instanceStatus: string;
+        /**
+         * The instance's license code.
+         */
         licenseCode: string;
         /**
          * The instance's private domain name.
@@ -5070,19 +5077,13 @@ export namespace bastionhost {
          */
         securityGroupIds: string[];
         /**
-         * A map of tags assigned to the bastionhost instance. It must be in the format:
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * import * as alicloud from "@pulumi/alicloud";
-         *
-         * const instance = alicloud.bastionhost.getInstances({
-         *     tags: {
-         *         tagKey1: "tagValue1",
-         *     },
-         * });
-         * ```
+         * The storage of Cloud Bastionhost instance in TB.
          */
-        tags?: {[key: string]: string};
+        storage: string;
+        /**
+         * A map of tags assigned to the bastionhost instance.
+         */
+        tags: {[key: string]: string};
         /**
          * The instance's vSwitch ID.
          */
@@ -5199,7 +5200,7 @@ export namespace bastionhost {
         /**
          * The password of the account that is used for the AD server.
          */
-        password: string;
+        password?: string;
         /**
          * The port that is used to access the AD server.
          */
@@ -5250,7 +5251,7 @@ export namespace bastionhost {
         /**
          * The password of the account that is used for the LDAP server.
          */
-        password: string;
+        password?: string;
         /**
          * The port that is used to access the LDAP server.
          */
@@ -8723,6 +8724,253 @@ export namespace cloudconnect {
 
 }
 
+export namespace cloudcontrol {
+    export interface GetPricesPrice {
+        /**
+         * Currency. Value range: CNY: RMB. USD: USD. JPY: Japanese yen.
+         */
+        currency: string;
+        /**
+         * Discount
+         */
+        discountPrice: number;
+        /**
+         * Pricing Module Price Details
+         */
+        moduleDetails: outputs.cloudcontrol.GetPricesPriceModuleDetail[];
+        /**
+         * Original Price
+         */
+        originalPrice: number;
+        /**
+         * Offer Details
+         */
+        promotionDetails: outputs.cloudcontrol.GetPricesPricePromotionDetail[];
+        /**
+         * Preferential price
+         */
+        tradePrice: number;
+    }
+
+    export interface GetPricesPriceModuleDetail {
+        /**
+         * Preferential price.
+         */
+        costAfterDiscount: number;
+        /**
+         * Discount.
+         */
+        invoiceDiscount: number;
+        /**
+         * Valuation Module Identification.
+         */
+        moduleCode: string;
+        /**
+         * Pricing Module Name.
+         */
+        moduleName: string;
+        /**
+         * Original Price.
+         */
+        originalCost: number;
+        /**
+         * Price Type.
+         */
+        priceType: string;
+    }
+
+    export interface GetPricesPricePromotionDetail {
+        /**
+         * Offer Description.
+         */
+        promotionDesc: string;
+        /**
+         * Offer logo.
+         */
+        promotionId: number;
+        /**
+         * Offer Name.
+         */
+        promotionName: string;
+    }
+
+    export interface GetProductsProduct {
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * The first ID of the resource
+         */
+        productCode: string;
+        /**
+         * The name of the resource
+         */
+        productName: string;
+    }
+
+    export interface GetResourceTypesType {
+        /**
+         * Create an operation private parameter collection. The attributes are not returned in the resource query operation, but the parameters are required in the creation operation.
+         */
+        createOnlyProperties: string[];
+        /**
+         * Delete operation private parameter collection. The attribute is not returned in the resource query operation, but the parameter is required in the delete operation.
+         */
+        deleteOnlyProperties: string[];
+        /**
+         * A collection of attributes that can be used as the filter parameter during the list operation.
+         */
+        filterProperties: string[];
+        /**
+         * Query operation private parameter collection. The attribute is not returned in the resource query operation, but the input parameter is required in the query operation.
+         */
+        getOnlyProperties: string[];
+        /**
+         * The collection of properties returned by the query.
+         */
+        getResponseProperties: string[];
+        /**
+         * Supported resource operation information (including RAM permissions).
+         */
+        handlers: outputs.cloudcontrol.GetResourceTypesTypeHandlers;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * Basic information about the resource type.
+         */
+        infos: outputs.cloudcontrol.GetResourceTypesTypeInfo[];
+        /**
+         * Enumerate the operation private parameter collection. The attributes are not returned in the resource query operation, but the parameters that need to be passed in the enumeration operation.
+         */
+        listOnlyProperties: string[];
+        /**
+         * Enumerates the returned property collection.
+         */
+        listResponseProperties: string[];
+        /**
+         * Resource ID
+         */
+        primaryIdentifier: string;
+        /**
+         * Product Code.
+         */
+        product: string;
+        /**
+         * Resource attribute definition, where key is the attribute name and value is the attribute details.
+         */
+        properties: string;
+        /**
+         * A collection of public attributes, which are the basic attributes of the resource. Non-Operation private parameters.
+         */
+        publicProperties: string[];
+        /**
+         * A set of read-only parameters. It is returned only in the list or get Operation. It is not used as an input parameter during creation and change.
+         */
+        readOnlyProperties: string[];
+        /**
+         * Resource creation required parameter collection.
+         */
+        requireds: string[];
+        /**
+         * The resource type.
+         */
+        resourceType: string;
+        /**
+         * A collection of sensitive attributes, such as passwords.
+         */
+        sensitiveInfoProperties: string[];
+        /**
+         * Update operation private parameter collection. The attributes are not returned in the resource query operation, but the parameters are required in the update operation.
+         */
+        updateOnlyProperties: string[];
+        /**
+         * A collection of properties that can be modified.
+         */
+        updateTypeProperties: string[];
+    }
+
+    export interface GetResourceTypesTypeHandlers {
+        /**
+         * Create operation association information.
+         */
+        creates: outputs.cloudcontrol.GetResourceTypesTypeHandlersCreate[];
+        /**
+         * Delete operation association information.
+         */
+        deletes: outputs.cloudcontrol.GetResourceTypesTypeHandlersDelete[];
+        /**
+         * Query operation association information.
+         */
+        gets: outputs.cloudcontrol.GetResourceTypesTypeHandlersGet[];
+        /**
+         * List operation association information.
+         */
+        lists: outputs.cloudcontrol.GetResourceTypesTypeHandlersList[];
+        /**
+         * Update operation association information.
+         */
+        updates: outputs.cloudcontrol.GetResourceTypesTypeHandlersUpdate[];
+    }
+
+    export interface GetResourceTypesTypeHandlersCreate {
+        /**
+         * The collection of required RAM permission information.
+         */
+        permissions: string[];
+    }
+
+    export interface GetResourceTypesTypeHandlersDelete {
+        /**
+         * The collection of required RAM permission information.
+         */
+        permissions: string[];
+    }
+
+    export interface GetResourceTypesTypeHandlersGet {
+        /**
+         * The collection of required RAM permission information.
+         */
+        permissions: string[];
+    }
+
+    export interface GetResourceTypesTypeHandlersList {
+        /**
+         * The collection of required RAM permission information.
+         */
+        permissions: string[];
+    }
+
+    export interface GetResourceTypesTypeHandlersUpdate {
+        /**
+         * The collection of required RAM permission information.
+         */
+        permissions: string[];
+    }
+
+    export interface GetResourceTypesTypeInfo {
+        /**
+         * Payment formpaid (paid)(free).
+         */
+        chargeType: string;
+        /**
+         * Delivery Levelcenter (centralized deployment level)region (regional deployment level)zone (Availability zone deployment level).
+         */
+        deliveryScope: string;
+        /**
+         * Resource type description.
+         */
+        description: string;
+        /**
+         * The resource type name.
+         */
+        title: string;
+    }
+
+}
+
 export namespace cloudfirewall {
     export interface AddressBookEcsTag {
         /**
@@ -10731,13 +10979,15 @@ export namespace cms {
 
     export interface AlarmTarget {
         /**
-         * ARN uniquely identifies the resource that the alert targets.
-         * > **NOTE:** The targets attribute is used to specify where notifications or actions should be directed when an alarm condition is met. This attribute corresponds to what is referred to as the "Push Channel" in the Alibaba Cloud console.
-         * > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
+         * The Alibaba Cloud Resource Name (ARN) of the resource. Simple Message Queue (formerly MNS) (SMQ), Auto Scaling, Simple Log Service, and Function Compute are supported:
+         * - SMQ: `acs:mns:{regionId}:{userId}:/{Resource type}/{Resource name}/message`. {regionId}: the region ID of the SMQ queue or topic. {userId}: the ID of the Alibaba Cloud account that owns the resource. {Resource type}: the type of the resource for which alerts are triggered. Valid values:queues, topics. {Resource name}: the resource name. If the resource type is queues, the resource name is the queue name. If the resource type is topics, the resource name is the topic name.
+         * - Auto Scaling: `acs:ess:{regionId}:{userId}:scalingGroupId/{Scaling group ID}:scalingRuleId/{Scaling rule ID}`
+         * - Simple Log Service: `acs:log:{regionId}:{userId}:project/{Project name}/logstore/{Logstore name}`
+         * - Function Compute: `acs:fc:{regionId}:{userId}:services/{Service name}/functions/{Function name}`
          */
         arn?: string;
         /**
-         * Specifies additional parameters for the alert callback in JSON format. This can include configuration settings specific to the alert action.
+         * The parameters of the alert callback. The parameters are in the JSON format.
          */
         jsonParams?: string;
         /**
@@ -10745,7 +10995,7 @@ export namespace cms {
          */
         level?: string;
         /**
-         * The ID of the resource for which alerts are triggered. This is typically used to specify individual resources that should respond to the alert.
+         * The ID of the resource for which alerts are triggered. For more information about how to obtain the ID of the resource for which alerts are triggered, see [DescribeMetricRuleTargets](https://www.alibabacloud.com/help/en/cms/developer-reference/api-describemetricruletargets) .
          */
         targetId?: string;
     }
@@ -15495,6 +15745,346 @@ export namespace databasegateway {
 }
 
 export namespace dataworks {
+    export interface DiAlarmRuleNotificationSettings {
+        /**
+         * Alarm suppression interval, in minutes
+         */
+        inhibitionInterval?: number;
+        /**
+         * Alarm notification Channel See `notificationChannels` below.
+         */
+        notificationChannels?: outputs.dataworks.DiAlarmRuleNotificationSettingsNotificationChannel[];
+        /**
+         * List of alert notification recipients See `notificationReceivers` below.
+         */
+        notificationReceivers?: outputs.dataworks.DiAlarmRuleNotificationSettingsNotificationReceiver[];
+    }
+
+    export interface DiAlarmRuleNotificationSettingsNotificationChannel {
+        /**
+         * Channel, optional enumeration value:
+         *
+         * Mail (Mail)
+         *
+         * Phone (Phone)
+         *
+         * Sms (Sms)
+         *
+         * Ding (DingTalk)
+         */
+        channels?: string[];
+        severity?: string;
+    }
+
+    export interface DiAlarmRuleNotificationSettingsNotificationReceiver {
+        /**
+         * The type of the receiver. Valid values: AliyunUid/DingToken/FeishuToken/WebHookUrl.
+         */
+        receiverType?: string;
+        /**
+         * Receiver Value List
+         */
+        receiverValues?: string[];
+    }
+
+    export interface DiAlarmRuleTriggerCondition {
+        /**
+         * It takes effect only when the DDL notification is issued. The list of effective DDLs is required.
+         */
+        ddlReportTags?: string[];
+        /**
+         * Alarm calculation time interval, unit minute
+         */
+        duration?: number;
+        /**
+         * Severity, optional enumeration value:
+         *
+         * Warning
+         *
+         * Critical
+         */
+        severity?: string;
+        /**
+         * Alarm threshold.
+         *
+         * Task status alarm: no need to fill in the threshold.
+         *
+         * failover alarm: The threshold is the number of failover alarms.
+         *
+         * Task Delay Alarm: The threshold is the delay duration, in seconds.
+         */
+        threshold?: number;
+    }
+
+    export interface DiJobDestinationDataSourceSetting {
+        /**
+         * Destination data source name
+         */
+        dataSourceName?: string;
+    }
+
+    export interface DiJobJobSettings {
+        /**
+         * Channel-related task settings, in the form of a Json String.
+         *
+         * For example,
+         * {"structInfo":"MANAGED","storageType":"TEXTFILE","writeMode":"APPEND","partitionColumns":[{"columnName":"pt","columnType":"STRING","comment":""}],"fieldDelimiter":""}
+         */
+        channelSettings?: string;
+        /**
+         * Column type mapping of the synchronization task See `columnDataTypeSettings` below.
+         */
+        columnDataTypeSettings?: outputs.dataworks.DiJobJobSettingsColumnDataTypeSetting[];
+        /**
+         * Periodic scheduling settings See `cycleScheduleSettings` below.
+         */
+        cycleScheduleSettings?: outputs.dataworks.DiJobJobSettingsCycleScheduleSettings;
+        /**
+         * List of DDL processing settings for synchronization tasks See `ddlHandlingSettings` below.
+         */
+        ddlHandlingSettings?: outputs.dataworks.DiJobJobSettingsDdlHandlingSetting[];
+        /**
+         * Run-time setting parameter list See `runtimeSettings` below.
+         */
+        runtimeSettings?: outputs.dataworks.DiJobJobSettingsRuntimeSetting[];
+    }
+
+    export interface DiJobJobSettingsColumnDataTypeSetting {
+        /**
+         * The destination type of the mapping relationship
+         */
+        destinationDataType?: string;
+        /**
+         * The source type of the mapping type
+         */
+        sourceDataType?: string;
+    }
+
+    export interface DiJobJobSettingsCycleScheduleSettings {
+        /**
+         * The type of synchronization that requires periodic scheduling. Value range:
+         *
+         * Full: Full
+         *
+         * OfflineIncremental: offline increment
+         */
+        cycleMigrationType?: string;
+        /**
+         * Scheduling Parameters
+         */
+        scheduleParameters?: string;
+    }
+
+    export interface DiJobJobSettingsDdlHandlingSetting {
+        action?: string;
+        /**
+         * DDL type, optional enumeration value:
+         *
+         * RenameColumn (rename column)
+         *
+         * ModifyColumn (rename column)
+         *
+         * CreateTable (Rename Column)
+         *
+         * TruncateTable (empty table)
+         *
+         * DropTable (delete table)
+         */
+        type?: string;
+    }
+
+    export interface DiJobJobSettingsRuntimeSetting {
+        /**
+         * Set name, optional ENUM value:
+         *
+         * runtime.offline.speed.limit.mb (valid when runtime.offline.speed.limit.enable = true)
+         *
+         * runtime.offline.speed.limit.enable
+         *
+         * dst.offline.connection.max (the maximum number of write connections for offline batch tasks)
+         *
+         * runtime.offline.concurrent (offline batch synchronization task concurrency)
+         *
+         * dst.realtime.connection.max (maximum number of write connections for real-time tasks)
+         *
+         * runtime.enable.auto.create.schema (whether to automatically create a schema on the target side)
+         *
+         * src.offline.datasource.max.connection (maximum number of source connections for offline batch tasks)
+         *
+         * runtime.realtime.concurrent (real-time task concurrency)
+         */
+        name?: string;
+        /**
+         * Runtime setting value
+         */
+        value?: string;
+    }
+
+    export interface DiJobResourceSettings {
+        /**
+         * Offline Resource Group configuration See `offlineResourceSettings` below.
+         */
+        offlineResourceSettings?: outputs.dataworks.DiJobResourceSettingsOfflineResourceSettings;
+        /**
+         * Real-time Resource Group See `realtimeResourceSettings` below.
+         */
+        realtimeResourceSettings?: outputs.dataworks.DiJobResourceSettingsRealtimeResourceSettings;
+        /**
+         * Scheduling Resource Groups See `scheduleResourceSettings` below.
+         */
+        scheduleResourceSettings?: outputs.dataworks.DiJobResourceSettingsScheduleResourceSettings;
+    }
+
+    export interface DiJobResourceSettingsOfflineResourceSettings {
+        /**
+         * Scheduling resource group cu
+         */
+        requestedCu?: number;
+        /**
+         * Scheduling resource group name
+         */
+        resourceGroupIdentifier?: string;
+    }
+
+    export interface DiJobResourceSettingsRealtimeResourceSettings {
+        /**
+         * Scheduling resource group cu
+         */
+        requestedCu?: number;
+        /**
+         * Scheduling resource group name
+         */
+        resourceGroupIdentifier?: string;
+    }
+
+    export interface DiJobResourceSettingsScheduleResourceSettings {
+        /**
+         * Scheduling resource group cu
+         */
+        requestedCu?: number;
+        /**
+         * Scheduling resource group name
+         */
+        resourceGroupIdentifier?: string;
+    }
+
+    export interface DiJobSourceDataSourceSetting {
+        /**
+         * Data source name of a single source
+         */
+        dataSourceName?: string;
+        /**
+         * Single Source Data Source Properties See `dataSourceProperties` below.
+         */
+        dataSourceProperties?: outputs.dataworks.DiJobSourceDataSourceSettingDataSourceProperties;
+    }
+
+    export interface DiJobSourceDataSourceSettingDataSourceProperties {
+        /**
+         * Data Source Encoding
+         */
+        encoding?: string;
+        /**
+         * Data Source Time Zone
+         */
+        timezone?: string;
+    }
+
+    export interface DiJobTableMapping {
+        /**
+         * Each rule can select different types of source objects to be synchronized, such as source database and source data table. See `sourceObjectSelectionRules` below.
+         */
+        sourceObjectSelectionRules?: outputs.dataworks.DiJobTableMappingSourceObjectSelectionRule[];
+        /**
+         * A list of conversion rule definitions for a synchronization object. Each element in the list defines a conversion rule. See `transformationRules` below.
+         */
+        transformationRules?: outputs.dataworks.DiJobTableMappingTransformationRule[];
+    }
+
+    export interface DiJobTableMappingSourceObjectSelectionRule {
+        action?: string;
+        /**
+         * Expression, such as mysql_table_1
+         */
+        expression?: string;
+        /**
+         * Expression type, value range: Exact/Regex
+         */
+        expressionType?: string;
+        /**
+         * Object type, optional enumeration value:
+         *
+         * Table (Table)
+         *
+         * Database
+         */
+        objectType?: string;
+    }
+
+    export interface DiJobTableMappingTransformationRule {
+        /**
+         * Action type, optional enumeration value:
+         *
+         * DefinePrimaryKey (defines the primary key)
+         *
+         * Rename
+         *
+         * AddColumn (increase column)
+         *
+         * HandleDml(DML handling)
+         *
+         * DefineIncrementalCondition
+         */
+        ruleActionType?: string;
+        /**
+         * Rule Name
+         */
+        ruleName?: string;
+        /**
+         * Target type of action, optional enumeration value:
+         *
+         * Table (Table)
+         *
+         * Schema(schema)
+         */
+        ruleTargetType?: string;
+    }
+
+    export interface DiJobTransformationRule {
+        /**
+         * Action type, optional enumeration value:
+         *
+         * DefinePrimaryKey (defines the primary key)
+         *
+         * Rename
+         *
+         * AddColumn (increase column)
+         *
+         * HandleDml(DML handling)
+         *
+         * DefineIncrementalCondition
+         */
+        ruleActionType?: string;
+        /**
+         * Regular expression, in json string format.
+         *
+         * Example renaming rule (Rename): {"expression":"${srcDatasourceName}_${srcDatabaseName}_0922","variables":[{"variableName":"srcDatabaseName","variableRules":[{"from":"fromdb","to":"todb"}]}]}
+         */
+        ruleExpression?: string;
+        /**
+         * Rule Name
+         */
+        ruleName?: string;
+        /**
+         * Target type of action, optional enumeration value:
+         *
+         * Table (Table)
+         *
+         * Schema(schema)
+         */
+        ruleTargetType?: string;
+    }
+
     export interface GetFoldersFolder {
         folderId: string;
         /**
@@ -18595,6 +19185,9 @@ export namespace dns {
          * Cloud analysis product ID.
          */
         instanceId: string;
+        /**
+         * The type of the DNS request line.
+         */
         lineType: string;
         /**
          * Minimum TTL.
@@ -18636,6 +19229,9 @@ export namespace dns {
          * Cloud analysis version code.
          */
         versionCode: string;
+        /**
+         * Cloud analysis version name of the domain.
+         */
         versionName: string;
     }
 
@@ -40808,7 +41404,10 @@ export namespace oss {
          * Bucket owner.
          */
         owner: string;
-        policy?: string;
+        /**
+         * The policies configured for a specified bucket.
+         */
+        policy: string;
         /**
          * Redundancy type. Possible values: `LRS`, and `ZRS`.
          */
@@ -40885,11 +41484,11 @@ export namespace oss {
         /**
          * Date after which the rule to take effect. The format is like 2017-03-09.
          */
-        date?: string;
+        date: string;
         /**
          * Indicate the number of days after the last object update until the rules take effect.
          */
-        days?: number;
+        days: number;
     }
 
     export interface GetBucketsBucketLogging {
@@ -52137,6 +52736,277 @@ export namespace vpc {
         vswitchId: string;
     }
 
+    export interface GetIpamIpamPoolAllocationsAllocation {
+        /**
+         * The allocated address segment.
+         */
+        cidr: string;
+        /**
+         * Instance creation time.
+         */
+        createTime: string;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * The description of the ipam pool alloctaion.It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
+         */
+        ipamPoolAllocationDescription: string;
+        /**
+         * The instance ID of the ipam pool allocation.
+         */
+        ipamPoolAllocationId: string;
+        /**
+         * The name of the ipam pool allocation.It must be 1 to 128 characters in length and cannot start with 'http:// 'or 'https.
+         */
+        ipamPoolAllocationName: string;
+        /**
+         * The ID of the IPAM Pool.
+         */
+        ipamPoolId: string;
+        /**
+         * When the IPAM Pool to which CIDR is allocated has the region attribute, this attribute is the IPAM Pool region.When the IPAM Pool to which CIDR is allocated does not have the region attribute, this attribute is the IPAM region.
+         */
+        regionId: string;
+        /**
+         * The ID of the resource.
+         */
+        resourceId: string;
+        /**
+         * The ID of the Alibaba Cloud account (primary account) to which the resource belongs.
+         */
+        resourceOwnerId: number;
+        /**
+         * The region of the resource.
+         */
+        resourceRegionId: string;
+        /**
+         * The type of resource. Value:-**VPC**: indicates that the resource type is VPC.-**IpamPool**: indicates that the resource type is a child address pool.-**Custom**: indicates that the resource type is a Custom reserved CIDR block.
+         */
+        resourceType: string;
+        /**
+         * The source address segment.
+         */
+        sourceCidr: string;
+        /**
+         * The status of the instance. Value:-**Created**: indicates that the creation is complete.
+         */
+        status: string;
+        /**
+         * Total number of records.
+         */
+        totalCount: number;
+    }
+
+    export interface GetIpamIpamPoolCidrsCidr {
+        /**
+         * The CIDR address segment to be preset.> currently, only IPv4 address segments are supported.
+         */
+        cidr: string;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * The ID of the IPAM pool instance.
+         */
+        ipamPoolId: string;
+        /**
+         * The status of the resource
+         */
+        status: string;
+    }
+
+    export interface GetIpamIpamPoolsPool {
+        /**
+         * The default network mask assigned by the IPAM address pool.IPv4 network mask value range: **0 to 32** bits.
+         */
+        allocationDefaultCidrMask: number;
+        /**
+         * The maximum network mask assigned by the IPAM address pool.IPv4 network mask value range: **0 to 32** bits.
+         */
+        allocationMaxCidrMask: number;
+        /**
+         * The minimum Network mask assigned by the IPAM address pool.IPv4 network mask value range: **0 to 32** bits.
+         */
+        allocationMinCidrMask: number;
+        /**
+         * Whether the automatic import function is enabled for the address pool.
+         */
+        autoImport: boolean;
+        /**
+         * The creation time of the resource.
+         */
+        createTime: string;
+        /**
+         * Whether it is a child address pool. Value:-**true**: Yes.-**false**: No.
+         */
+        hasSubPool: boolean;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * The IP protocol version. Currently, only **IPv4** is supported * *.
+         */
+        ipVersion: string;
+        /**
+         * Ipam id.
+         */
+        ipamId: string;
+        /**
+         * The description of the IPAM address pool.It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
+         */
+        ipamPoolDescription: string;
+        /**
+         * The first ID of the resource.
+         */
+        ipamPoolId: string;
+        /**
+         * The name of the resource.
+         */
+        ipamPoolName: string;
+        /**
+         * Ipam scope id.
+         */
+        ipamScopeId: string;
+        /**
+         * The depth of the IPAM address pool. Value range: **0 to 10 * *.
+         */
+        poolDepth: number;
+        /**
+         * The effective region of the IPAM address pool.
+         */
+        poolRegionId: string;
+        /**
+         * The region ID of the resource.
+         */
+        regionId: string;
+        /**
+         * The ID of the resource group.
+         */
+        resourceGroupId: string;
+        /**
+         * The instance ID of the source IPAM address pool.> If this parameter is not entered, the created address pool is the parent address pool.
+         */
+        sourceIpamPoolId: string;
+        /**
+         * The status of the resource.
+         */
+        status: string;
+        /**
+         * The tag of the resource.
+         */
+        tags: {[key: string]: string};
+    }
+
+    export interface GetIpamIpamScopesScope {
+        /**
+         * The creation time of the resource.
+         */
+        createTime: string;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * The id of the Ipam instance.
+         */
+        ipamId: string;
+        /**
+         * The description of the IPAM's scope of action.It must be 2 to 256 characters in length and must start with a lowercase letter, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
+         */
+        ipamScopeDescription: string;
+        /**
+         * The first ID of the resource.
+         */
+        ipamScopeId: string;
+        /**
+         * The name of the resource.
+         */
+        ipamScopeName: string;
+        /**
+         * IPAM scope of action type:**private**.> Currently, only the role scope of the private network is supported.
+         */
+        ipamScopeType: string;
+        /**
+         * The region ID of the resource.
+         */
+        regionId: string;
+        /**
+         * The ID of the resource group.
+         */
+        resourceGroupId: string;
+        /**
+         * The status of the resource.
+         */
+        status: string;
+        /**
+         * The tag of the resource.
+         */
+        tags: {[key: string]: string};
+    }
+
+    export interface GetIpamIpamsIpam {
+        /**
+         * The creation time of the resource.
+         */
+        createTime: string;
+        /**
+         * After an IPAM is created, the association between the resource discovery created by the system by default and the IPAM.
+         */
+        defaultResourceDiscoveryAssociationId: string;
+        /**
+         * After IPAM is created, the system creates resource discovery by default.
+         */
+        defaultResourceDiscoveryId: string;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * The description of IPAM.It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with 'http: // 'or 'https. If the description is not filled in, it is blank. The default value is blank.
+         */
+        ipamDescription: string;
+        /**
+         * The first ID of the resource.
+         */
+        ipamId: string;
+        /**
+         * The name of the resource.
+         */
+        ipamName: string;
+        /**
+         * After an IPAM is created, the scope of the private network IPAM created by the system by default.
+         */
+        privateDefaultScopeId: string;
+        /**
+         * After an IPAM is created, the public network IPAM is created by default.
+         */
+        publicDefaultScopeId: string;
+        /**
+         * The region ID of the resource.
+         */
+        regionId: string;
+        /**
+         * The number of resource discovery objects associated with IPAM.
+         */
+        resourceDiscoveryAssociationCount: number;
+        /**
+         * The ID of the resource group.
+         */
+        resourceGroupId: string;
+        /**
+         * The status of the resource.
+         */
+        status: string;
+        /**
+         * The tag of the resource.
+         */
+        tags: {[key: string]: string};
+    }
+
     export interface GetIpsecServersServer {
         /**
          * The CIDR block of the client, which is assigned an access address to the virtual NIC of the client.
@@ -52763,6 +53633,18 @@ export namespace vpc {
          * Description of the VPC
          */
         description: string;
+        /**
+         * The ID of dhcp options set.
+         */
+        dhcpOptionsSetId: string;
+        /**
+         * The status of the DHCP options set. Valid values: `Available`, `InUse`, `Deleted`, `Pending`.
+         */
+        dhcpOptionsSetStatus: string;
+        /**
+         * Indicates whether the Domain Name System (DNS) feature is enabled.
+         */
+        dnsHostnameStatus: string;
         /**
          * ID of the VPC.
          */
@@ -53835,15 +54717,18 @@ export namespace vpc {
 export namespace vpn {
     export interface ConnectionBgpConfig {
         /**
-         * Bgp enable.
+         * specifies whether to enable BGP. Valid values: true and false (default).
          */
         enable: boolean;
         /**
-         * Local asn.
+         * the autonomous system number (ASN) on the Alibaba Cloud side. 
+         * Valid values: 1 to 4294967295. Default value: 45104. You can enter a value in two segments separated by a period (.).
+         * Each segment is 16 bits in length. Enter the number in each segment in decimal format.
+         * For example, if you enter 123.456, the ASN is 8061384. The ASN is calculated by using the following formula: 123 × 65536 + 456 = 8061384.
          */
         localAsn: string;
         /**
-         * Local bgp IP.
+         * the BGP address on the Alibaba Cloud side. It must be an IP address that falls within the CIDR block of the IPsec tunnel.
          */
         localBgpIp: string;
         /**
@@ -53851,88 +54736,91 @@ export namespace vpn {
          */
         status: string;
         /**
-         * IPSec tunnel Cidr.
+         * The CIDR block of the IPsec tunnel. The CIDR block must belong to 169.254.0.0/16 and the subnet mask is 30 bits in length.
          */
         tunnelCidr: string;
     }
 
     export interface ConnectionHealthCheckConfig {
         /**
-         * Destination IP.
+         * the destination IP address configured for health checks.
          */
         dip: string;
         /**
-         * Specifies whether to enable healthcheck.
+         * specifies whether to enable health checks. Valid values: true and false. Default value: false.
          */
         enable: boolean;
         /**
-         * Retry interval.
+         * the time interval of health check retries. Unit: seconds. Default value: 3.
          */
         interval: number;
         /**
-         * retry times.
+         * the maximum number of health check retries. Default value: 3.
          */
         retry: number;
         /**
-         * Source IP.
+         * the source IP address that is used for health checks.
          */
         sip: string;
     }
 
     export interface ConnectionIkeConfig {
         /**
-         * IKE auth Algorithm.
+         * the authentication algorithm that is used in Phase 1 negotiations. Valid values: md5, sha1, sha2
          */
         ikeAuthAlg: string;
         /**
-         * IKE encript algorithm.
+         * the encryption algorithm that is used in Phase 1 negotiations. Valid values: aes, aes192, aes256, des, and 3des. Default value: aes.
          */
         ikeEncAlg: string;
         /**
-         * IKE lifetime.
+         * the SA lifetime as a result of Phase 1 negotiations. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
          */
         ikeLifetime: number;
         /**
-         * The local ID, which supports the FQDN and IP formats, and defaults to the IP address of the selected VPN gateway.
+         * the identifier of the VPN gateway. It can contain at most 100 characters. The default value is the IP address of the VPN gateway.
          */
         ikeLocalId: string;
         /**
-         * IKE mode, supports main and aggressive mode. The main mode is highly secure. If NAT traversal is enabled, we recommend that you use the aggressive mode.
+         * the negotiation mode of IKE. Valid values: main and aggressive. Default value: main.
+         * - main: This mode offers higher security during negotiations.
+         * - aggressive: This mode supports faster negotiations and a higher success rate.
          */
         ikeMode: string;
         /**
-         * DH group.
+         * the Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Valid values: group1, group2, group5, and group14. Default value: group2.
          */
         ikePfs: string;
         /**
-         * The peer ID. The FQDN and IP address formats are supported. The default value is the IP address of the selected customer gateway.
+         * the identifier of the customer gateway. It can contain at most 100 characters. The default value is the IP address of the customer gateway.
          */
         ikeRemoteId: string;
         /**
-         * IKE version.
+         * the version of the Internet Key Exchange (IKE) protocol. Valid values: ikev1 and ikev2. Default value: ikev1.
+         * Compared with IKEv1, IKEv2 simplifies the security association (SA) negotiation process and provides better support for scenarios with multiple CIDR blocks.
          */
         ikeVersion: string;
         /**
-         * Preshared secret key.
+         * the pre-shared key that is used for identity authentication between the VPN gateway and the on-premises data center. The key must be 1 to 100 characters in length and can contain digits, letters, and the following special characters: ~!\`@#$%^&*()_-+={}[]|;:',.<>/? If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key. You can call the DescribeVpnConnection operation to query the pre-shared key that is automatically generated by the system.
          */
         psk: string;
     }
 
     export interface ConnectionIpsecConfig {
         /**
-         * IPsec authentication algorithm. sha1 and md5 are supported.
+         * the authentication algorithm that is used in Phase 2 negotiations. Valid values: md5, sha1, sha256, sha384, and sha512. Default value: md5.
          */
         ipsecAuthAlg: string;
         /**
-         * IPsec Encript algorithm.
+         * the encryption algorithm that is used in Phase 2 negotiations. Valid values: aes, aes192, aes256, des, and 3des. Default value: aes.
          */
         ipsecEncAlg: string;
         /**
-         * IPsec lifetime.
+         * the SA lifetime that is determined by Phase 2 negotiations. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
          */
         ipsecLifetime: number;
         /**
-         * DH Group.
+         * the DH key exchange algorithm that is used in Phase 2 negotiations. Valid values: disabled, group1, group2, group5, and group14. Default value: group2.
          */
         ipsecPfs: string;
     }
@@ -54014,12 +54902,14 @@ export namespace vpn {
         ikePfs?: string;
         ikeVersion?: string;
         /**
-         * The local Id.
+         * The identifier of the tunnel on the Alibaba Cloud side, which is used in Phase 1 negotiations. It can contain at most 100 characters. The default value is the IP address of the tunnel.
+         * LocalId supports fully qualified domain names (FQDNs). If you use an FQDN, we recommend that you set the negotiation mode to aggressive.
          */
         localId?: string;
         psk?: string;
         /**
-         * Remote ID.
+         * The identifier of the tunnel peer, which is used in Phase 1 negotiations. It can contain at most 100 characters. The default value is the IP address of the customer gateway that is associated with the tunnel.
+         * RemoteId supports FQDNs. If you use an FQDN, we recommend that you set the negotiation mode to aggressive.
          */
         remoteId?: string;
     }
@@ -55337,7 +56227,7 @@ export namespace yundun {
         isSsl: boolean;
         mobileMapping?: string;
         nameMapping?: string;
-        password: string;
+        password?: string;
         port: number;
         server: string;
         standbyServer?: string;
@@ -55352,13 +56242,14 @@ export namespace yundun {
         loginNameMapping?: string;
         mobileMapping?: string;
         nameMapping?: string;
-        password: string;
+        password?: string;
         port: number;
         server: string;
         standbyServer?: string;
     }
 
     export interface GetBastionHostInstancesInstance {
+        bandwidth: string;
         description: string;
         id: string;
         instanceStatus: string;
@@ -55367,7 +56258,8 @@ export namespace yundun {
         publicDomain: string;
         publicNetworkAccess: boolean;
         securityGroupIds: string[];
-        tags?: {[key: string]: string};
+        storage: string;
+        tags: {[key: string]: string};
         userVswitchId: string;
     }
 

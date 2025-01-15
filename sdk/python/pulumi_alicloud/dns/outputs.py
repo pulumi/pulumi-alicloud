@@ -1181,6 +1181,7 @@ class GetAlidnsDomainsDomainResult(dict):
         :param bool in_black_hole: Whether it is in black hole.
         :param bool in_clean: Whether it is cleaning.
         :param str instance_id: Cloud analysis product ID.
+        :param str line_type: The type of the DNS request line.
         :param int min_ttl: Minimum TTL.
         :param str puny_code: Punycode of the Chinese domain.
         :param str record_line_tree_json: Tree-like analytical line list.
@@ -1191,6 +1192,7 @@ class GetAlidnsDomainsDomainResult(dict):
         :param bool slave_dns: Whether to allow auxiliary dns.
         :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
         :param str version_code: Cloud analysis version code.
+        :param str version_name: Cloud analysis version name of the domain.
         """
         pulumi.set(__self__, "ali_domain", ali_domain)
         pulumi.set(__self__, "available_ttls", available_ttls)
@@ -1307,6 +1309,9 @@ class GetAlidnsDomainsDomainResult(dict):
     @property
     @pulumi.getter(name="lineType")
     def line_type(self) -> str:
+        """
+        The type of the DNS request line.
+        """
         return pulumi.get(self, "line_type")
 
     @property
@@ -1392,6 +1397,9 @@ class GetAlidnsDomainsDomainResult(dict):
     @property
     @pulumi.getter(name="versionName")
     def version_name(self) -> str:
+        """
+        Cloud analysis version name of the domain.
+        """
         return pulumi.get(self, "version_name")
 
 

@@ -113,11 +113,11 @@ if not MYPY:
     class AScriptExtAttributeArgsDict(TypedDict):
         attribute_key: NotRequired[pulumi.Input[str]]
         """
-        The key of the extended attribute.
+        Key to extend attribute
         """
         attribute_value: NotRequired[pulumi.Input[str]]
         """
-        The value of the extended attribute.
+        The value of the extended attribute
         """
 elif False:
     AScriptExtAttributeArgsDict: TypeAlias = Mapping[str, Any]
@@ -128,8 +128,8 @@ class AScriptExtAttributeArgs:
                  attribute_key: Optional[pulumi.Input[str]] = None,
                  attribute_value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] attribute_key: The key of the extended attribute.
-        :param pulumi.Input[str] attribute_value: The value of the extended attribute.
+        :param pulumi.Input[str] attribute_key: Key to extend attribute
+        :param pulumi.Input[str] attribute_value: The value of the extended attribute
         """
         if attribute_key is not None:
             pulumi.set(__self__, "attribute_key", attribute_key)
@@ -140,7 +140,7 @@ class AScriptExtAttributeArgs:
     @pulumi.getter(name="attributeKey")
     def attribute_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The key of the extended attribute.
+        Key to extend attribute
         """
         return pulumi.get(self, "attribute_key")
 
@@ -152,7 +152,7 @@ class AScriptExtAttributeArgs:
     @pulumi.getter(name="attributeValue")
     def attribute_value(self) -> Optional[pulumi.Input[str]]:
         """
-        The value of the extended attribute.
+        The value of the extended attribute
         """
         return pulumi.get(self, "attribute_value")
 

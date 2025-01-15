@@ -39,7 +39,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.oss.BucketPolicy;
  * import com.pulumi.alicloud.oss.BucketPolicyArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -80,9 +79,7 @@ import javax.annotation.Nullable;
  *                     )))
  *                 )))
  *             .bucket(createBucket.bucket())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(createBucket)
- *                 .build());
+ *             .build());
  * 
  *     }}{@code
  * }}{@code

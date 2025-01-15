@@ -349,7 +349,18 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly securityGroupId!: pulumi.Output<string>;
     /**
-     * SLS  configuration.
+     * Configuration for log collection to SLS. Valid parameter descriptions are as follows:
+     * * `projectName`: Configures the project name on SLS.
+     * * `logDir`: Path to the logs.
+     * * `logType`: Type of logs. stdout indicates container standard output logs, and only one can be set; if not set, it means collecting file logs.
+     * * `logstoreName`: Configures the log store name on SLS.
+     * * `logtailName`: Configures the log tail name on SLS; if not specified, it means creating a new log tail.
+     *
+     * If you no longer need to use the SLS collection feature, you should set the value of this field to an empty string. There are two examples:
+     * - Using SAE automatically created SLS resources: [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}].
+     * - Using custom SLS resources: [{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}].
+     *
+     * **NOTE:** Projects that are automatically created with applications will be deleted along with the application deletion. Therefore, when selecting existing projects, you cannot choose projects automatically created by SAE.
      */
     public readonly slsConfigs!: pulumi.Output<string | undefined>;
     /**
@@ -825,7 +836,18 @@ export interface ApplicationState {
      */
     securityGroupId?: pulumi.Input<string>;
     /**
-     * SLS  configuration.
+     * Configuration for log collection to SLS. Valid parameter descriptions are as follows:
+     * * `projectName`: Configures the project name on SLS.
+     * * `logDir`: Path to the logs.
+     * * `logType`: Type of logs. stdout indicates container standard output logs, and only one can be set; if not set, it means collecting file logs.
+     * * `logstoreName`: Configures the log store name on SLS.
+     * * `logtailName`: Configures the log tail name on SLS; if not specified, it means creating a new log tail.
+     *
+     * If you no longer need to use the SLS collection feature, you should set the value of this field to an empty string. There are two examples:
+     * - Using SAE automatically created SLS resources: [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}].
+     * - Using custom SLS resources: [{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}].
+     *
+     * **NOTE:** Projects that are automatically created with applications will be deleted along with the application deletion. Therefore, when selecting existing projects, you cannot choose projects automatically created by SAE.
      */
     slsConfigs?: pulumi.Input<string>;
     /**
@@ -1132,7 +1154,18 @@ export interface ApplicationArgs {
      */
     securityGroupId?: pulumi.Input<string>;
     /**
-     * SLS  configuration.
+     * Configuration for log collection to SLS. Valid parameter descriptions are as follows:
+     * * `projectName`: Configures the project name on SLS.
+     * * `logDir`: Path to the logs.
+     * * `logType`: Type of logs. stdout indicates container standard output logs, and only one can be set; if not set, it means collecting file logs.
+     * * `logstoreName`: Configures the log store name on SLS.
+     * * `logtailName`: Configures the log tail name on SLS; if not specified, it means creating a new log tail.
+     *
+     * If you no longer need to use the SLS collection feature, you should set the value of this field to an empty string. There are two examples:
+     * - Using SAE automatically created SLS resources: [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}].
+     * - Using custom SLS resources: [{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}].
+     *
+     * **NOTE:** Projects that are automatically created with applications will be deleted along with the application deletion. Therefore, when selecting existing projects, you cannot choose projects automatically created by SAE.
      */
     slsConfigs?: pulumi.Input<string>;
     /**

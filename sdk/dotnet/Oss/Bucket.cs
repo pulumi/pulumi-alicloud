@@ -186,7 +186,7 @@ namespace Pulumi.AliCloud.Oss
         public Output<string> Acl { get; private set; } = null!;
 
         [Output("bucket")]
-        public Output<string?> BucketName { get; private set; } = null!;
+        public Output<string> BucketName { get; private set; } = null!;
 
         /// <summary>
         /// A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `cors_rule` below.

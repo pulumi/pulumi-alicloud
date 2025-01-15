@@ -67,6 +67,13 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.dataDisks);
     }
 
+    @Import(name="defaultVersionNumber")
+    private @Nullable Output<Integer> defaultVersionNumber;
+
+    public Optional<Output<Integer>> defaultVersionNumber() {
+        return Optional.ofNullable(this.defaultVersionNumber);
+    }
+
     @Import(name="deploymentSetId")
     private @Nullable Output<String> deploymentSetId;
 
@@ -288,6 +295,13 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<String>> keyPairName() {
         return Optional.ofNullable(this.keyPairName);
+    }
+
+    @Import(name="latestVersionNumber")
+    private @Nullable Output<Integer> latestVersionNumber;
+
+    public Optional<Output<Integer>> latestVersionNumber() {
+        return Optional.ofNullable(this.latestVersionNumber);
     }
 
     @Import(name="launchTemplateName")
@@ -622,6 +636,13 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.templateTags);
     }
 
+    @Import(name="updateDefaultVersionNumber")
+    private @Nullable Output<Boolean> updateDefaultVersionNumber;
+
+    public Optional<Output<Boolean>> updateDefaultVersionNumber() {
+        return Optional.ofNullable(this.updateDefaultVersionNumber);
+    }
+
     @Import(name="userData")
     private @Nullable Output<String> userData;
 
@@ -703,6 +724,7 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
         this.autoRenew = $.autoRenew;
         this.autoRenewPeriod = $.autoRenewPeriod;
         this.dataDisks = $.dataDisks;
+        this.defaultVersionNumber = $.defaultVersionNumber;
         this.deploymentSetId = $.deploymentSetId;
         this.description = $.description;
         this.enableVmOsConfig = $.enableVmOsConfig;
@@ -720,6 +742,7 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
         this.internetMaxBandwidthOut = $.internetMaxBandwidthOut;
         this.ioOptimized = $.ioOptimized;
         this.keyPairName = $.keyPairName;
+        this.latestVersionNumber = $.latestVersionNumber;
         this.launchTemplateName = $.launchTemplateName;
         this.name = $.name;
         this.networkInterfaces = $.networkInterfaces;
@@ -744,6 +767,7 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
         this.tags = $.tags;
         this.templateResourceGroupId = $.templateResourceGroupId;
         this.templateTags = $.templateTags;
+        this.updateDefaultVersionNumber = $.updateDefaultVersionNumber;
         this.userData = $.userData;
         this.userdata = $.userdata;
         this.versionDescription = $.versionDescription;
@@ -838,6 +862,15 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
          */
         public Builder dataDisks(LaunchTemplateDataDiskArgs... dataDisks) {
             return dataDisks(List.of(dataDisks));
+        }
+
+        public Builder defaultVersionNumber(@Nullable Output<Integer> defaultVersionNumber) {
+            $.defaultVersionNumber = defaultVersionNumber;
+            return this;
+        }
+
+        public Builder defaultVersionNumber(Integer defaultVersionNumber) {
+            return defaultVersionNumber(Output.of(defaultVersionNumber));
         }
 
         public Builder deploymentSetId(@Nullable Output<String> deploymentSetId) {
@@ -1139,6 +1172,15 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
          */
         public Builder keyPairName(String keyPairName) {
             return keyPairName(Output.of(keyPairName));
+        }
+
+        public Builder latestVersionNumber(@Nullable Output<Integer> latestVersionNumber) {
+            $.latestVersionNumber = latestVersionNumber;
+            return this;
+        }
+
+        public Builder latestVersionNumber(Integer latestVersionNumber) {
+            return latestVersionNumber(Output.of(latestVersionNumber));
         }
 
         public Builder launchTemplateName(@Nullable Output<String> launchTemplateName) {
@@ -1575,6 +1617,15 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
 
         public Builder templateTags(Map<String,String> templateTags) {
             return templateTags(Output.of(templateTags));
+        }
+
+        public Builder updateDefaultVersionNumber(@Nullable Output<Boolean> updateDefaultVersionNumber) {
+            $.updateDefaultVersionNumber = updateDefaultVersionNumber;
+            return this;
+        }
+
+        public Builder updateDefaultVersionNumber(Boolean updateDefaultVersionNumber) {
+            return updateDefaultVersionNumber(Output.of(updateDefaultVersionNumber));
         }
 
         public Builder userData(@Nullable Output<String> userData) {

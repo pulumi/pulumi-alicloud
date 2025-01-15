@@ -24,7 +24,10 @@ class InstanceArgs:
                  disk_type: pulumi.Input[int],
                  vswitch_id: pulumi.Input[str],
                  config: Optional[pulumi.Input[str]] = None,
+                 default_topic_partition_num: Optional[pulumi.Input[int]] = None,
                  eip_max: Optional[pulumi.Input[int]] = None,
+                 enable_auto_group: Optional[pulumi.Input[bool]] = None,
+                 enable_auto_topic: Optional[pulumi.Input[str]] = None,
                  io_max: Optional[pulumi.Input[int]] = None,
                  io_max_spec: Optional[pulumi.Input[str]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
@@ -39,6 +42,7 @@ class InstanceArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  topic_quota: Optional[pulumi.Input[int]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
+                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
@@ -50,7 +54,10 @@ class InstanceArgs:
         :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
         :param pulumi.Input[str] config: The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
                * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
+        :param pulumi.Input[int] default_topic_partition_num: The number of partitions in a topic that is automatically created.
         :param pulumi.Input[int] eip_max: The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
+        :param pulumi.Input[bool] enable_auto_group: Specify whether to enable the flexible group creation feature. Default value: `false`. Valid values:
+        :param pulumi.Input[str] enable_auto_topic: Specify whether to enable the automatic topic creation feature. Default value: `disable`. Valid values:
         :param pulumi.Input[int] io_max: The max value of io of the instance. When modify this value, it only support adjust to a greater value.
         :param pulumi.Input[str] io_max_spec: The traffic specification of the instance. We recommend that you configure this parameter.
                - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
@@ -62,16 +69,6 @@ class InstanceArgs:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
         :param pulumi.Input[str] security_group: The ID of security group for this instance. If the security group is empty, system will create a default one.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] selected_zones: The zones among which you want to deploy the instance.
-               
-               > **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
-               
-               | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-               |------|-------------|:----:|:-----:|
-               |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-               |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-               |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-               |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-               |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
         :param pulumi.Input[str] service_version: The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
@@ -80,6 +77,7 @@ class InstanceArgs:
                Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: <`topic_quota`> = 1000 + <`partition_num`>.
                Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
         :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: The IDs of the vSwitches with which the instance is associated.
         :param pulumi.Input[str] zone_id: The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
         """
         pulumi.set(__self__, "deploy_type", deploy_type)
@@ -88,8 +86,14 @@ class InstanceArgs:
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         if config is not None:
             pulumi.set(__self__, "config", config)
+        if default_topic_partition_num is not None:
+            pulumi.set(__self__, "default_topic_partition_num", default_topic_partition_num)
         if eip_max is not None:
             pulumi.set(__self__, "eip_max", eip_max)
+        if enable_auto_group is not None:
+            pulumi.set(__self__, "enable_auto_group", enable_auto_group)
+        if enable_auto_topic is not None:
+            pulumi.set(__self__, "enable_auto_topic", enable_auto_topic)
         if io_max is not None:
             pulumi.set(__self__, "io_max", io_max)
         if io_max_spec is not None:
@@ -121,6 +125,8 @@ class InstanceArgs:
             pulumi.set(__self__, "topic_quota", topic_quota)
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
+        if vswitch_ids is not None:
+            pulumi.set(__self__, "vswitch_ids", vswitch_ids)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -188,6 +194,18 @@ class InstanceArgs:
         pulumi.set(self, "config", value)
 
     @property
+    @pulumi.getter(name="defaultTopicPartitionNum")
+    def default_topic_partition_num(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of partitions in a topic that is automatically created.
+        """
+        return pulumi.get(self, "default_topic_partition_num")
+
+    @default_topic_partition_num.setter
+    def default_topic_partition_num(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "default_topic_partition_num", value)
+
+    @property
     @pulumi.getter(name="eipMax")
     def eip_max(self) -> Optional[pulumi.Input[int]]:
         """
@@ -198,6 +216,30 @@ class InstanceArgs:
     @eip_max.setter
     def eip_max(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "eip_max", value)
+
+    @property
+    @pulumi.getter(name="enableAutoGroup")
+    def enable_auto_group(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specify whether to enable the flexible group creation feature. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "enable_auto_group")
+
+    @enable_auto_group.setter
+    def enable_auto_group(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_auto_group", value)
+
+    @property
+    @pulumi.getter(name="enableAutoTopic")
+    def enable_auto_topic(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specify whether to enable the automatic topic creation feature. Default value: `disable`. Valid values:
+        """
+        return pulumi.get(self, "enable_auto_topic")
+
+    @enable_auto_topic.setter
+    def enable_auto_topic(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enable_auto_topic", value)
 
     @property
     @pulumi.getter(name="ioMax")
@@ -302,16 +344,6 @@ class InstanceArgs:
     def selected_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The zones among which you want to deploy the instance.
-
-        > **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
-
-        | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-        |------|-------------|:----:|:-----:|
-        |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-        |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-        |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-        |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-        |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
         """
         return pulumi.get(self, "selected_zones")
 
@@ -384,6 +416,18 @@ class InstanceArgs:
         pulumi.set(self, "vpc_id", value)
 
     @property
+    @pulumi.getter(name="vswitchIds")
+    def vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The IDs of the vSwitches with which the instance is associated.
+        """
+        return pulumi.get(self, "vswitch_ids")
+
+    @vswitch_ids.setter
+    def vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "vswitch_ids", value)
+
+    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -400,11 +444,14 @@ class InstanceArgs:
 class _InstanceState:
     def __init__(__self__, *,
                  config: Optional[pulumi.Input[str]] = None,
+                 default_topic_partition_num: Optional[pulumi.Input[int]] = None,
                  deploy_type: Optional[pulumi.Input[int]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[int]] = None,
                  domain_endpoint: Optional[pulumi.Input[str]] = None,
                  eip_max: Optional[pulumi.Input[int]] = None,
+                 enable_auto_group: Optional[pulumi.Input[bool]] = None,
+                 enable_auto_topic: Optional[pulumi.Input[str]] = None,
                  end_point: Optional[pulumi.Input[str]] = None,
                  group_left: Optional[pulumi.Input[int]] = None,
                  group_used: Optional[pulumi.Input[int]] = None,
@@ -433,11 +480,13 @@ class _InstanceState:
                  topic_used: Optional[pulumi.Input[int]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
+                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[str] config: The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
                * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
+        :param pulumi.Input[int] default_topic_partition_num: The number of partitions in a topic that is automatically created.
         :param pulumi.Input[int] deploy_type: The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
                - 4: eip/vpc instance
                - 5: vpc instance.
@@ -445,6 +494,8 @@ class _InstanceState:
         :param pulumi.Input[int] disk_type: The disk type of the instance. 0: efficient cloud disk , 1: SSD.
         :param pulumi.Input[str] domain_endpoint: (Available since v1.234.0) The default endpoint of the instance in domain name mode.
         :param pulumi.Input[int] eip_max: The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
+        :param pulumi.Input[bool] enable_auto_group: Specify whether to enable the flexible group creation feature. Default value: `false`. Valid values:
+        :param pulumi.Input[str] enable_auto_topic: Specify whether to enable the automatic topic creation feature. Default value: `disable`. Valid values:
         :param pulumi.Input[str] end_point: The EndPoint to access the kafka instance.
         :param pulumi.Input[int] group_left: (Available since v1.214.1) The number of available groups.
         :param pulumi.Input[int] group_used: (Available since v1.214.1) The number of used groups.
@@ -463,16 +514,6 @@ class _InstanceState:
         :param pulumi.Input[str] sasl_domain_endpoint: (Available since v1.234.0) The Simple Authentication and Security Layer (SASL) endpoint of the instance in domain name mode.
         :param pulumi.Input[str] security_group: The ID of security group for this instance. If the security group is empty, system will create a default one.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] selected_zones: The zones among which you want to deploy the instance.
-               
-               > **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
-               
-               | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-               |------|-------------|:----:|:-----:|
-               |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-               |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-               |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-               |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-               |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
         :param pulumi.Input[str] service_version: The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         :param pulumi.Input[str] ssl_domain_endpoint: (Available since v1.234.0) The SSL endpoint of the instance in domain name mode.
@@ -488,10 +529,13 @@ class _InstanceState:
         :param pulumi.Input[int] topic_used: (Available since v1.214.1) The number of used topics.
         :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
         :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: The IDs of the vSwitches with which the instance is associated.
         :param pulumi.Input[str] zone_id: The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
+        if default_topic_partition_num is not None:
+            pulumi.set(__self__, "default_topic_partition_num", default_topic_partition_num)
         if deploy_type is not None:
             pulumi.set(__self__, "deploy_type", deploy_type)
         if disk_size is not None:
@@ -502,6 +546,10 @@ class _InstanceState:
             pulumi.set(__self__, "domain_endpoint", domain_endpoint)
         if eip_max is not None:
             pulumi.set(__self__, "eip_max", eip_max)
+        if enable_auto_group is not None:
+            pulumi.set(__self__, "enable_auto_group", enable_auto_group)
+        if enable_auto_topic is not None:
+            pulumi.set(__self__, "enable_auto_topic", enable_auto_topic)
         if end_point is not None:
             pulumi.set(__self__, "end_point", end_point)
         if group_left is not None:
@@ -561,6 +609,8 @@ class _InstanceState:
             pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if vswitch_ids is not None:
+            pulumi.set(__self__, "vswitch_ids", vswitch_ids)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -576,6 +626,18 @@ class _InstanceState:
     @config.setter
     def config(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "config", value)
+
+    @property
+    @pulumi.getter(name="defaultTopicPartitionNum")
+    def default_topic_partition_num(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of partitions in a topic that is automatically created.
+        """
+        return pulumi.get(self, "default_topic_partition_num")
+
+    @default_topic_partition_num.setter
+    def default_topic_partition_num(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "default_topic_partition_num", value)
 
     @property
     @pulumi.getter(name="deployType")
@@ -638,6 +700,30 @@ class _InstanceState:
     @eip_max.setter
     def eip_max(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "eip_max", value)
+
+    @property
+    @pulumi.getter(name="enableAutoGroup")
+    def enable_auto_group(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specify whether to enable the flexible group creation feature. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "enable_auto_group")
+
+    @enable_auto_group.setter
+    def enable_auto_group(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_auto_group", value)
+
+    @property
+    @pulumi.getter(name="enableAutoTopic")
+    def enable_auto_topic(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specify whether to enable the automatic topic creation feature. Default value: `disable`. Valid values:
+        """
+        return pulumi.get(self, "enable_auto_topic")
+
+    @enable_auto_topic.setter
+    def enable_auto_topic(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enable_auto_topic", value)
 
     @property
     @pulumi.getter(name="endPoint")
@@ -826,16 +912,6 @@ class _InstanceState:
     def selected_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The zones among which you want to deploy the instance.
-
-        > **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
-
-        | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-        |------|-------------|:----:|:-----:|
-        |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-        |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-        |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-        |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-        |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
         """
         return pulumi.get(self, "selected_zones")
 
@@ -992,6 +1068,18 @@ class _InstanceState:
         pulumi.set(self, "vswitch_id", value)
 
     @property
+    @pulumi.getter(name="vswitchIds")
+    def vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The IDs of the vSwitches with which the instance is associated.
+        """
+        return pulumi.get(self, "vswitch_ids")
+
+    @vswitch_ids.setter
+    def vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "vswitch_ids", value)
+
+    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1010,10 +1098,13 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[str]] = None,
+                 default_topic_partition_num: Optional[pulumi.Input[int]] = None,
                  deploy_type: Optional[pulumi.Input[int]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[int]] = None,
                  eip_max: Optional[pulumi.Input[int]] = None,
+                 enable_auto_group: Optional[pulumi.Input[bool]] = None,
+                 enable_auto_topic: Optional[pulumi.Input[str]] = None,
                  io_max: Optional[pulumi.Input[int]] = None,
                  io_max_spec: Optional[pulumi.Input[str]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
@@ -1029,6 +1120,7 @@ class Instance(pulumi.CustomResource):
                  topic_quota: Optional[pulumi.Input[int]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
+                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -1044,12 +1136,15 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] config: The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
                * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
+        :param pulumi.Input[int] default_topic_partition_num: The number of partitions in a topic that is automatically created.
         :param pulumi.Input[int] deploy_type: The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
                - 4: eip/vpc instance
                - 5: vpc instance.
         :param pulumi.Input[int] disk_size: The disk size of the instance. When modify this value, it only supports adjust to a greater value.
         :param pulumi.Input[int] disk_type: The disk type of the instance. 0: efficient cloud disk , 1: SSD.
         :param pulumi.Input[int] eip_max: The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
+        :param pulumi.Input[bool] enable_auto_group: Specify whether to enable the flexible group creation feature. Default value: `false`. Valid values:
+        :param pulumi.Input[str] enable_auto_topic: Specify whether to enable the automatic topic creation feature. Default value: `disable`. Valid values:
         :param pulumi.Input[int] io_max: The max value of io of the instance. When modify this value, it only support adjust to a greater value.
         :param pulumi.Input[str] io_max_spec: The traffic specification of the instance. We recommend that you configure this parameter.
                - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
@@ -1061,16 +1156,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
         :param pulumi.Input[str] security_group: The ID of security group for this instance. If the security group is empty, system will create a default one.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] selected_zones: The zones among which you want to deploy the instance.
-               
-               > **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
-               
-               | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-               |------|-------------|:----:|:-----:|
-               |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-               |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-               |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-               |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-               |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
         :param pulumi.Input[str] service_version: The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
@@ -1080,6 +1165,7 @@ class Instance(pulumi.CustomResource):
                Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
         :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
         :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: The IDs of the vSwitches with which the instance is associated.
         :param pulumi.Input[str] zone_id: The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
         """
         ...
@@ -1113,10 +1199,13 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[str]] = None,
+                 default_topic_partition_num: Optional[pulumi.Input[int]] = None,
                  deploy_type: Optional[pulumi.Input[int]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[int]] = None,
                  eip_max: Optional[pulumi.Input[int]] = None,
+                 enable_auto_group: Optional[pulumi.Input[bool]] = None,
+                 enable_auto_topic: Optional[pulumi.Input[str]] = None,
                  io_max: Optional[pulumi.Input[int]] = None,
                  io_max_spec: Optional[pulumi.Input[str]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
@@ -1132,6 +1221,7 @@ class Instance(pulumi.CustomResource):
                  topic_quota: Optional[pulumi.Input[int]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
+                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1143,6 +1233,7 @@ class Instance(pulumi.CustomResource):
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
             __props__.__dict__["config"] = config
+            __props__.__dict__["default_topic_partition_num"] = default_topic_partition_num
             if deploy_type is None and not opts.urn:
                 raise TypeError("Missing required property 'deploy_type'")
             __props__.__dict__["deploy_type"] = deploy_type
@@ -1153,6 +1244,8 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'disk_type'")
             __props__.__dict__["disk_type"] = disk_type
             __props__.__dict__["eip_max"] = eip_max
+            __props__.__dict__["enable_auto_group"] = enable_auto_group
+            __props__.__dict__["enable_auto_topic"] = enable_auto_topic
             __props__.__dict__["io_max"] = io_max
             __props__.__dict__["io_max_spec"] = io_max_spec
             __props__.__dict__["kms_key_id"] = kms_key_id
@@ -1170,6 +1263,7 @@ class Instance(pulumi.CustomResource):
             if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__.__dict__["vswitch_id"] = vswitch_id
+            __props__.__dict__["vswitch_ids"] = vswitch_ids
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["domain_endpoint"] = None
             __props__.__dict__["end_point"] = None
@@ -1196,11 +1290,14 @@ class Instance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             config: Optional[pulumi.Input[str]] = None,
+            default_topic_partition_num: Optional[pulumi.Input[int]] = None,
             deploy_type: Optional[pulumi.Input[int]] = None,
             disk_size: Optional[pulumi.Input[int]] = None,
             disk_type: Optional[pulumi.Input[int]] = None,
             domain_endpoint: Optional[pulumi.Input[str]] = None,
             eip_max: Optional[pulumi.Input[int]] = None,
+            enable_auto_group: Optional[pulumi.Input[bool]] = None,
+            enable_auto_topic: Optional[pulumi.Input[str]] = None,
             end_point: Optional[pulumi.Input[str]] = None,
             group_left: Optional[pulumi.Input[int]] = None,
             group_used: Optional[pulumi.Input[int]] = None,
@@ -1229,6 +1326,7 @@ class Instance(pulumi.CustomResource):
             topic_used: Optional[pulumi.Input[int]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
+            vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
@@ -1239,6 +1337,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] config: The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
                * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
+        :param pulumi.Input[int] default_topic_partition_num: The number of partitions in a topic that is automatically created.
         :param pulumi.Input[int] deploy_type: The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
                - 4: eip/vpc instance
                - 5: vpc instance.
@@ -1246,6 +1345,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] disk_type: The disk type of the instance. 0: efficient cloud disk , 1: SSD.
         :param pulumi.Input[str] domain_endpoint: (Available since v1.234.0) The default endpoint of the instance in domain name mode.
         :param pulumi.Input[int] eip_max: The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
+        :param pulumi.Input[bool] enable_auto_group: Specify whether to enable the flexible group creation feature. Default value: `false`. Valid values:
+        :param pulumi.Input[str] enable_auto_topic: Specify whether to enable the automatic topic creation feature. Default value: `disable`. Valid values:
         :param pulumi.Input[str] end_point: The EndPoint to access the kafka instance.
         :param pulumi.Input[int] group_left: (Available since v1.214.1) The number of available groups.
         :param pulumi.Input[int] group_used: (Available since v1.214.1) The number of used groups.
@@ -1264,16 +1365,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] sasl_domain_endpoint: (Available since v1.234.0) The Simple Authentication and Security Layer (SASL) endpoint of the instance in domain name mode.
         :param pulumi.Input[str] security_group: The ID of security group for this instance. If the security group is empty, system will create a default one.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] selected_zones: The zones among which you want to deploy the instance.
-               
-               > **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
-               
-               | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-               |------|-------------|:----:|:-----:|
-               |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-               |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-               |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-               |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-               |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
         :param pulumi.Input[str] service_version: The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         :param pulumi.Input[str] ssl_domain_endpoint: (Available since v1.234.0) The SSL endpoint of the instance in domain name mode.
@@ -1289,6 +1380,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] topic_used: (Available since v1.214.1) The number of used topics.
         :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
         :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: The IDs of the vSwitches with which the instance is associated.
         :param pulumi.Input[str] zone_id: The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1296,11 +1388,14 @@ class Instance(pulumi.CustomResource):
         __props__ = _InstanceState.__new__(_InstanceState)
 
         __props__.__dict__["config"] = config
+        __props__.__dict__["default_topic_partition_num"] = default_topic_partition_num
         __props__.__dict__["deploy_type"] = deploy_type
         __props__.__dict__["disk_size"] = disk_size
         __props__.__dict__["disk_type"] = disk_type
         __props__.__dict__["domain_endpoint"] = domain_endpoint
         __props__.__dict__["eip_max"] = eip_max
+        __props__.__dict__["enable_auto_group"] = enable_auto_group
+        __props__.__dict__["enable_auto_topic"] = enable_auto_topic
         __props__.__dict__["end_point"] = end_point
         __props__.__dict__["group_left"] = group_left
         __props__.__dict__["group_used"] = group_used
@@ -1329,6 +1424,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["topic_used"] = topic_used
         __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
+        __props__.__dict__["vswitch_ids"] = vswitch_ids
         __props__.__dict__["zone_id"] = zone_id
         return Instance(resource_name, opts=opts, __props__=__props__)
 
@@ -1340,6 +1436,14 @@ class Instance(pulumi.CustomResource):
         * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter(name="defaultTopicPartitionNum")
+    def default_topic_partition_num(self) -> pulumi.Output[int]:
+        """
+        The number of partitions in a topic that is automatically created.
+        """
+        return pulumi.get(self, "default_topic_partition_num")
 
     @property
     @pulumi.getter(name="deployType")
@@ -1382,6 +1486,22 @@ class Instance(pulumi.CustomResource):
         The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
         """
         return pulumi.get(self, "eip_max")
+
+    @property
+    @pulumi.getter(name="enableAutoGroup")
+    def enable_auto_group(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Specify whether to enable the flexible group creation feature. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "enable_auto_group")
+
+    @property
+    @pulumi.getter(name="enableAutoTopic")
+    def enable_auto_topic(self) -> pulumi.Output[str]:
+        """
+        Specify whether to enable the automatic topic creation feature. Default value: `disable`. Valid values:
+        """
+        return pulumi.get(self, "enable_auto_topic")
 
     @property
     @pulumi.getter(name="endPoint")
@@ -1510,16 +1630,6 @@ class Instance(pulumi.CustomResource):
     def selected_zones(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The zones among which you want to deploy the instance.
-
-        > **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
-
-        | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-        |------|-------------|:----:|:-----:|
-        |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-        |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-        |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-        |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-        |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
         """
         return pulumi.get(self, "selected_zones")
 
@@ -1622,6 +1732,14 @@ class Instance(pulumi.CustomResource):
         The ID of attaching vswitch to instance.
         """
         return pulumi.get(self, "vswitch_id")
+
+    @property
+    @pulumi.getter(name="vswitchIds")
+    def vswitch_ids(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The IDs of the vSwitches with which the instance is associated.
+        """
+        return pulumi.get(self, "vswitch_ids")
 
     @property
     @pulumi.getter(name="zoneId")

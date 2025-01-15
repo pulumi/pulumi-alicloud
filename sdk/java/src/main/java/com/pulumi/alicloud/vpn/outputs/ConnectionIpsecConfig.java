@@ -13,50 +13,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionIpsecConfig {
     /**
-     * @return IPsec authentication algorithm. sha1 and md5 are supported.
+     * @return the authentication algorithm that is used in Phase 2 negotiations. Valid values: md5, sha1, sha256, sha384, and sha512. Default value: md5.
      * 
      */
     private @Nullable String ipsecAuthAlg;
     /**
-     * @return IPsec Encript algorithm.
+     * @return the encryption algorithm that is used in Phase 2 negotiations. Valid values: aes, aes192, aes256, des, and 3des. Default value: aes.
      * 
      */
     private @Nullable String ipsecEncAlg;
     /**
-     * @return IPsec lifetime.
+     * @return the SA lifetime that is determined by Phase 2 negotiations. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
      * 
      */
     private @Nullable Integer ipsecLifetime;
     /**
-     * @return DH Group.
+     * @return the DH key exchange algorithm that is used in Phase 2 negotiations. Valid values: disabled, group1, group2, group5, and group14. Default value: group2.
      * 
      */
     private @Nullable String ipsecPfs;
 
     private ConnectionIpsecConfig() {}
     /**
-     * @return IPsec authentication algorithm. sha1 and md5 are supported.
+     * @return the authentication algorithm that is used in Phase 2 negotiations. Valid values: md5, sha1, sha256, sha384, and sha512. Default value: md5.
      * 
      */
     public Optional<String> ipsecAuthAlg() {
         return Optional.ofNullable(this.ipsecAuthAlg);
     }
     /**
-     * @return IPsec Encript algorithm.
+     * @return the encryption algorithm that is used in Phase 2 negotiations. Valid values: aes, aes192, aes256, des, and 3des. Default value: aes.
      * 
      */
     public Optional<String> ipsecEncAlg() {
         return Optional.ofNullable(this.ipsecEncAlg);
     }
     /**
-     * @return IPsec lifetime.
+     * @return the SA lifetime that is determined by Phase 2 negotiations. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
      * 
      */
     public Optional<Integer> ipsecLifetime() {
         return Optional.ofNullable(this.ipsecLifetime);
     }
     /**
-     * @return DH Group.
+     * @return the DH key exchange algorithm that is used in Phase 2 negotiations. Valid values: disabled, group1, group2, group5, and group14. Default value: group2.
      * 
      */
     public Optional<String> ipsecPfs() {

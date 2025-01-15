@@ -132,7 +132,7 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     public readonly enableSsh!: pulumi.Output<boolean | undefined>;
     /**
-     * Custom Image support. Must based on CentOS7 or AliyunLinux2.
+     * Custom Image support. Must be based on AliyunLinux or AliyunLinux3.
      */
     public readonly imageId!: pulumi.Output<string>;
     /**
@@ -244,7 +244,7 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
-     * The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
+     * The architecture of the nodes that run pods, its valid value `AliyunLinux`, `AliyunLinux3`. Default to `AliyunLinux3`.
      */
     public readonly platform!: pulumi.Output<string>;
     /**
@@ -536,7 +536,7 @@ export interface KubernetesState {
      */
     enableSsh?: pulumi.Input<boolean>;
     /**
-     * Custom Image support. Must based on CentOS7 or AliyunLinux2.
+     * Custom Image support. Must be based on AliyunLinux or AliyunLinux3.
      */
     imageId?: pulumi.Input<string>;
     /**
@@ -648,7 +648,7 @@ export interface KubernetesState {
      */
     password?: pulumi.Input<string>;
     /**
-     * The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
+     * The architecture of the nodes that run pods, its valid value `AliyunLinux`, `AliyunLinux3`. Default to `AliyunLinux3`.
      */
     platform?: pulumi.Input<string>;
     /**
@@ -784,7 +784,7 @@ export interface KubernetesArgs {
      */
     enableSsh?: pulumi.Input<boolean>;
     /**
-     * Custom Image support. Must based on CentOS7 or AliyunLinux2.
+     * Custom Image support. Must be based on AliyunLinux or AliyunLinux3.
      */
     imageId?: pulumi.Input<string>;
     /**
@@ -888,7 +888,7 @@ export interface KubernetesArgs {
      */
     password?: pulumi.Input<string>;
     /**
-     * The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
+     * The architecture of the nodes that run pods, its valid value `AliyunLinux`, `AliyunLinux3`. Default to `AliyunLinux3`.
      */
     platform?: pulumi.Input<string>;
     /**

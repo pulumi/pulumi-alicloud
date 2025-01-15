@@ -652,14 +652,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.ipv6AddressCount;
     }
     /**
-     * A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+     * A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6_addresses` can be modified.
      * 
      */
     @Export(name="ipv6Addresses", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> ipv6Addresses;
 
     /**
-     * @return A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+     * @return A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6_addresses` can be modified.
      * 
      */
     public Output<List<String>> ipv6Addresses() {

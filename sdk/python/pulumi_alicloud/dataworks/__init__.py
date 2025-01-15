@@ -7,9 +7,13 @@ import typing
 # Export this package's modules as members:
 from .data_source import *
 from .data_source_shared_rule import *
+from .di_alarm_rule import *
+from .di_job import *
+from .dw_resource_group import *
 from .folder import *
 from .get_folders import *
 from .get_service import *
+from .network import *
 from .project import *
 from .project_member import *
 from ._inputs import *

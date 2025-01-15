@@ -63,78 +63,14 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * A map of tags assigned to the bastionhost instance. It must be in the format:
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
-     * import com.pulumi.alicloud.bastionhost.inputs.GetInstancesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var instance = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
-     *             .tags(Map.of("tagKey1", "tagValue1"))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
+     * A map of tags assigned to the bastionhost instance.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return A map of tags assigned to the bastionhost instance. It must be in the format:
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
-     * import com.pulumi.alicloud.bastionhost.inputs.GetInstancesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var instance = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
-     *             .tags(Map.of("tagKey1", "tagValue1"))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
+     * @return A map of tags assigned to the bastionhost instance.
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -242,39 +178,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param tags A map of tags assigned to the bastionhost instance. It must be in the format:
-         * &lt;!--Start PulumiCodeChooser --&gt;
-         * <pre>
-         * {@code
-         * package generated_program;
-         * 
-         * import com.pulumi.Context;
-         * import com.pulumi.Pulumi;
-         * import com.pulumi.core.Output;
-         * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
-         * import com.pulumi.alicloud.bastionhost.inputs.GetInstancesArgs;
-         * import java.util.List;
-         * import java.util.ArrayList;
-         * import java.util.Map;
-         * import java.io.File;
-         * import java.nio.file.Files;
-         * import java.nio.file.Paths;
-         * 
-         * public class App {
-         *     public static void main(String[] args) {
-         *         Pulumi.run(App::stack);
-         *     }
-         * 
-         *     public static void stack(Context ctx) {
-         *         final var instance = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
-         *             .tags(Map.of("tagKey1", "tagValue1"))
-         *             .build());
-         * 
-         *     }
-         * }
-         * }
-         * </pre>
-         * &lt;!--End PulumiCodeChooser --&gt;
+         * @param tags A map of tags assigned to the bastionhost instance.
          * 
          * @return builder
          * 
@@ -285,39 +189,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param tags A map of tags assigned to the bastionhost instance. It must be in the format:
-         * &lt;!--Start PulumiCodeChooser --&gt;
-         * <pre>
-         * {@code
-         * package generated_program;
-         * 
-         * import com.pulumi.Context;
-         * import com.pulumi.Pulumi;
-         * import com.pulumi.core.Output;
-         * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
-         * import com.pulumi.alicloud.bastionhost.inputs.GetInstancesArgs;
-         * import java.util.List;
-         * import java.util.ArrayList;
-         * import java.util.Map;
-         * import java.io.File;
-         * import java.nio.file.Files;
-         * import java.nio.file.Paths;
-         * 
-         * public class App {
-         *     public static void main(String[] args) {
-         *         Pulumi.run(App::stack);
-         *     }
-         * 
-         *     public static void stack(Context ctx) {
-         *         final var instance = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
-         *             .tags(Map.of("tagKey1", "tagValue1"))
-         *             .build());
-         * 
-         *     }
-         * }
-         * }
-         * </pre>
-         * &lt;!--End PulumiCodeChooser --&gt;
+         * @param tags A map of tags assigned to the bastionhost instance.
          * 
          * @return builder
          * 

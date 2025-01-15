@@ -44,8 +44,6 @@ class ConnectionArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] local_subnets: The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_subnets: The CIDR block of the local data center. This parameter is used for phase-two negotiation.
         :param pulumi.Input[str] vpn_gateway_id: The ID of the VPN gateway.
-               
-               The following arguments will be discarded. Please use new fields as soon as possible:
         :param pulumi.Input[bool] auto_config_route: Whether to configure routing automatically. Value:
                - **true**: Automatically configure routes.
                - **false**: does not automatically configure routes.
@@ -132,8 +130,6 @@ class ConnectionArgs:
     def vpn_gateway_id(self) -> pulumi.Input[str]:
         """
         The ID of the VPN gateway.
-
-        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "vpn_gateway_id")
 
@@ -378,8 +374,6 @@ class _ConnectionState:
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionTunnelOptionsSpecificationArgs']]] tunnel_options_specifications: The tunnel options of IPsec. See `tunnel_options_specification` below.
         :param pulumi.Input[str] vpn_connection_name: The name of the IPsec-VPN connection.
         :param pulumi.Input[str] vpn_gateway_id: The ID of the VPN gateway.
-               
-               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         if auto_config_route is not None:
             pulumi.set(__self__, "auto_config_route", auto_config_route)
@@ -677,8 +671,6 @@ class _ConnectionState:
     def vpn_gateway_id(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the VPN gateway.
-
-        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "vpn_gateway_id")
 
@@ -730,19 +722,24 @@ class Connection(pulumi.CustomResource):
         if spec is None:
             spec = "5"
         default = alicloud.vpn.get_gateway_zones(spec="5M")
-        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$",
-            cidr_block="172.16.0.0/16")
-        default0 = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+        default_network = alicloud.vpc.Network("default",
+            cidr_block="172.16.0.0/16",
+            vpc_name=name)
+        default0 = alicloud.vpc.Switch("default0",
+            cidr_block="172.16.0.0/24",
+            vpc_id=default_network.id,
             zone_id=default.ids[0])
-        default1 = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+        default1 = alicloud.vpc.Switch("default1",
+            cidr_block="172.16.1.0/24",
+            vpc_id=default_network.id,
             zone_id=default.ids[1])
         h_a__vpn = alicloud.vpn.Gateway("HA-VPN",
             vpn_type="Normal",
-            disaster_recovery_vswitch_id=default1.ids[0],
+            disaster_recovery_vswitch_id=default1.id,
             vpn_gateway_name=name,
-            vswitch_id=default0.ids[0],
+            vswitch_id=default0.id,
             auto_pay=True,
-            vpc_id=default_get_networks.ids[0],
+            vpc_id=default_network.id,
             network_type="public",
             payment_type="Subscription",
             enable_ipsec=True,
@@ -858,8 +855,6 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionTunnelOptionsSpecificationArgs', 'ConnectionTunnelOptionsSpecificationArgsDict']]]] tunnel_options_specifications: The tunnel options of IPsec. See `tunnel_options_specification` below.
         :param pulumi.Input[str] vpn_connection_name: The name of the IPsec-VPN connection.
         :param pulumi.Input[str] vpn_gateway_id: The ID of the VPN gateway.
-               
-               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         ...
     @overload
@@ -886,19 +881,24 @@ class Connection(pulumi.CustomResource):
         if spec is None:
             spec = "5"
         default = alicloud.vpn.get_gateway_zones(spec="5M")
-        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$",
-            cidr_block="172.16.0.0/16")
-        default0 = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+        default_network = alicloud.vpc.Network("default",
+            cidr_block="172.16.0.0/16",
+            vpc_name=name)
+        default0 = alicloud.vpc.Switch("default0",
+            cidr_block="172.16.0.0/24",
+            vpc_id=default_network.id,
             zone_id=default.ids[0])
-        default1 = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+        default1 = alicloud.vpc.Switch("default1",
+            cidr_block="172.16.1.0/24",
+            vpc_id=default_network.id,
             zone_id=default.ids[1])
         h_a__vpn = alicloud.vpn.Gateway("HA-VPN",
             vpn_type="Normal",
-            disaster_recovery_vswitch_id=default1.ids[0],
+            disaster_recovery_vswitch_id=default1.id,
             vpn_gateway_name=name,
-            vswitch_id=default0.ids[0],
+            vswitch_id=default0.id,
             auto_pay=True,
-            vpc_id=default_get_networks.ids[0],
+            vpc_id=default_network.id,
             network_type="public",
             payment_type="Subscription",
             enable_ipsec=True,
@@ -1122,8 +1122,6 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionTunnelOptionsSpecificationArgs', 'ConnectionTunnelOptionsSpecificationArgsDict']]]] tunnel_options_specifications: The tunnel options of IPsec. See `tunnel_options_specification` below.
         :param pulumi.Input[str] vpn_connection_name: The name of the IPsec-VPN connection.
         :param pulumi.Input[str] vpn_gateway_id: The ID of the VPN gateway.
-               
-               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1322,8 +1320,6 @@ class Connection(pulumi.CustomResource):
     def vpn_gateway_id(self) -> pulumi.Output[str]:
         """
         The ID of the VPN gateway.
-
-        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "vpn_gateway_id")
 

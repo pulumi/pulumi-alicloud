@@ -22,6 +22,10 @@ public final class GetNetworksResult {
      * 
      */
     private @Nullable String cidrBlock;
+    /**
+     * @return The ID of the DHCP options set.
+     * 
+     */
     private @Nullable String dhcpOptionsSetId;
     private @Nullable Boolean dryRun;
     private @Nullable Boolean enableDetails;
@@ -82,6 +86,10 @@ public final class GetNetworksResult {
     public Optional<String> cidrBlock() {
         return Optional.ofNullable(this.cidrBlock);
     }
+    /**
+     * @return The ID of the DHCP options set.
+     * 
+     */
     public Optional<String> dhcpOptionsSetId() {
         return Optional.ofNullable(this.dhcpOptionsSetId);
     }

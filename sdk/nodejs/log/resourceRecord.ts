@@ -47,12 +47,20 @@ import * as utilities from "../utilities";
  * });
  * const exampleResourceRecord = new alicloud.log.ResourceRecord("example", {
  *     resourceName: example.id,
- *     recordId: "user_tf_resource_1",
- *     tag: "resource tag",
- *     value: `    {
- *       "col1": "this is col1 value",
- *       "col2": "col2   value"
- *     }
+ *     recordId: "tf_user_example",
+ *     tag: "tf example",
+ *     value: `{
+ *   "user_name": "tf example",
+ *   "sms_enabled": true,
+ *   "phone": "18888888889",
+ *   "voice_enabled": false,
+ *   "email": [
+ *     "test@qq.com"
+ *   ],
+ *   "enabled": true,
+ *   "user_id": "tf_user",
+ *   "country_code": "86"
+ * }
  * `,
  * });
  * ```
@@ -98,7 +106,7 @@ export class ResourceRecord extends pulumi.CustomResource {
      */
     public readonly recordId!: pulumi.Output<string>;
     /**
-     * The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group.
+     * The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
      */
     public readonly resourceName!: pulumi.Output<string>;
     /**
@@ -106,7 +114,7 @@ export class ResourceRecord extends pulumi.CustomResource {
      */
     public readonly tag!: pulumi.Output<string>;
     /**
-     * The json value of record.
+     * The json value of record. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
      */
     public readonly value!: pulumi.Output<string>;
 
@@ -160,7 +168,7 @@ export interface ResourceRecordState {
      */
     recordId?: pulumi.Input<string>;
     /**
-     * The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group.
+     * The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
      */
     resourceName?: pulumi.Input<string>;
     /**
@@ -168,7 +176,7 @@ export interface ResourceRecordState {
      */
     tag?: pulumi.Input<string>;
     /**
-     * The json value of record.
+     * The json value of record. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
      */
     value?: pulumi.Input<string>;
 }
@@ -182,7 +190,7 @@ export interface ResourceRecordArgs {
      */
     recordId: pulumi.Input<string>;
     /**
-     * The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group.
+     * The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
      */
     resourceName: pulumi.Input<string>;
     /**
@@ -190,7 +198,7 @@ export interface ResourceRecordArgs {
      */
     tag: pulumi.Input<string>;
     /**
-     * The json value of record.
+     * The json value of record. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
      */
     value: pulumi.Input<string>;
 }

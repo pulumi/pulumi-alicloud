@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Message
 {
     /// <summary>
-    /// Provides a Message Notification Service Topic resource.
+    /// Provides a Message Service Topic resource.
     /// 
-    /// For information about Message Notification Service Topic and how to use it, see [What is Topic](https://www.alibabacloud.com/help/en/message-service/latest/createtopic).
+    /// For information about Message Service Topic and how to use it, see [What is Topic](https://www.alibabacloud.com/help/en/message-service/latest/createtopic).
     /// 
     /// &gt; **NOTE:** Available since v1.188.0.
     /// 
@@ -29,12 +29,12 @@ namespace Pulumi.AliCloud.Message
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = new AliCloud.Message.ServiceTopic("default", new()
     ///     {
     ///         TopicName = name,
-    ///         MaxMessageSize = 12357,
-    ///         LoggingEnabled = true,
+    ///         MaxMessageSize = 16888,
+    ///         EnableLogging = true,
     ///     });
     /// 
     /// });
@@ -42,29 +42,49 @@ namespace Pulumi.AliCloud.Message
     /// 
     /// ## Import
     /// 
-    /// Message Notification Service Topic can be imported using the id or topic_name, e.g.
+    /// Message Service Topic can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:message/serviceTopic:ServiceTopic example &lt;topic_name&gt;
+    /// $ pulumi import alicloud:message/serviceTopic:ServiceTopic example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:message/serviceTopic:ServiceTopic")]
     public partial class ServiceTopic : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Specifies whether to enable the log management feature. Default value: false. Valid values:
+        /// (Available since v1.241.0) The time when the topic was created.
         /// </summary>
-        [Output("loggingEnabled")]
-        public Output<bool?> LoggingEnabled { get; private set; } = null!;
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum size of a message body that can be sent to the topic. Unit: bytes. Valid values: 1024-65536. Default value: 65536.
+        /// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
+        /// </summary>
+        [Output("enableLogging")]
+        public Output<bool> EnableLogging { get; private set; } = null!;
+
+        /// <summary>
+        /// . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
+        /// </summary>
+        [Output("loggingEnabled")]
+        public Output<bool> LoggingEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
         /// </summary>
         [Output("maxMessageSize")]
         public Output<int> MaxMessageSize { get; private set; } = null!;
 
         /// <summary>
-        /// Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the topic.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Output("topicName")]
         public Output<string> TopicName { get; private set; } = null!;
@@ -116,19 +136,39 @@ namespace Pulumi.AliCloud.Message
     public sealed class ServiceTopicArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to enable the log management feature. Default value: false. Valid values:
+        /// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
+        /// </summary>
+        [Input("enableLogging")]
+        public Input<bool>? EnableLogging { get; set; }
+
+        /// <summary>
+        /// . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
         /// </summary>
         [Input("loggingEnabled")]
         public Input<bool>? LoggingEnabled { get; set; }
 
         /// <summary>
-        /// The maximum size of a message body that can be sent to the topic. Unit: bytes. Valid values: 1024-65536. Default value: 65536.
+        /// The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
         /// </summary>
         [Input("maxMessageSize")]
         public Input<int>? MaxMessageSize { get; set; }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
         /// <summary>
-        /// Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The name of the topic.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Input("topicName", required: true)]
         public Input<string> TopicName { get; set; } = null!;
@@ -142,19 +182,45 @@ namespace Pulumi.AliCloud.Message
     public sealed class ServiceTopicState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to enable the log management feature. Default value: false. Valid values:
+        /// (Available since v1.241.0) The time when the topic was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
+        /// </summary>
+        [Input("enableLogging")]
+        public Input<bool>? EnableLogging { get; set; }
+
+        /// <summary>
+        /// . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
         /// </summary>
         [Input("loggingEnabled")]
         public Input<bool>? LoggingEnabled { get; set; }
 
         /// <summary>
-        /// The maximum size of a message body that can be sent to the topic. Unit: bytes. Valid values: 1024-65536. Default value: 65536.
+        /// The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
         /// </summary>
         [Input("maxMessageSize")]
         public Input<int>? MaxMessageSize { get; set; }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
         /// <summary>
-        /// Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The name of the topic.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Input("topicName")]
         public Input<string>? TopicName { get; set; }

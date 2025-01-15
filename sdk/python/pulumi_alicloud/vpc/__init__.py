@@ -26,6 +26,11 @@ from .get_enhanced_nat_available_zones import *
 from .get_flow_log_service import *
 from .get_forward_entries import *
 from .get_havips import *
+from .get_ipam_ipam_pool_allocations import *
+from .get_ipam_ipam_pool_cidrs import *
+from .get_ipam_ipam_pools import *
+from .get_ipam_ipam_scopes import *
+from .get_ipam_ipams import *
 from .get_ipsec_servers import *
 from .get_ipv4_gateways import *
 from .get_ipv6_addresses import *

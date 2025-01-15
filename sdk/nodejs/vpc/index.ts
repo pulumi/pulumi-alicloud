@@ -110,6 +110,31 @@ export const getHavips: typeof import("./getHavips").getHavips = null as any;
 export const getHavipsOutput: typeof import("./getHavips").getHavipsOutput = null as any;
 utilities.lazyLoad(exports, ["getHavips","getHavipsOutput"], () => require("./getHavips"));
 
+export { GetIpamIpamPoolAllocationsArgs, GetIpamIpamPoolAllocationsResult, GetIpamIpamPoolAllocationsOutputArgs } from "./getIpamIpamPoolAllocations";
+export const getIpamIpamPoolAllocations: typeof import("./getIpamIpamPoolAllocations").getIpamIpamPoolAllocations = null as any;
+export const getIpamIpamPoolAllocationsOutput: typeof import("./getIpamIpamPoolAllocations").getIpamIpamPoolAllocationsOutput = null as any;
+utilities.lazyLoad(exports, ["getIpamIpamPoolAllocations","getIpamIpamPoolAllocationsOutput"], () => require("./getIpamIpamPoolAllocations"));
+
+export { GetIpamIpamPoolCidrsArgs, GetIpamIpamPoolCidrsResult, GetIpamIpamPoolCidrsOutputArgs } from "./getIpamIpamPoolCidrs";
+export const getIpamIpamPoolCidrs: typeof import("./getIpamIpamPoolCidrs").getIpamIpamPoolCidrs = null as any;
+export const getIpamIpamPoolCidrsOutput: typeof import("./getIpamIpamPoolCidrs").getIpamIpamPoolCidrsOutput = null as any;
+utilities.lazyLoad(exports, ["getIpamIpamPoolCidrs","getIpamIpamPoolCidrsOutput"], () => require("./getIpamIpamPoolCidrs"));
+
+export { GetIpamIpamPoolsArgs, GetIpamIpamPoolsResult, GetIpamIpamPoolsOutputArgs } from "./getIpamIpamPools";
+export const getIpamIpamPools: typeof import("./getIpamIpamPools").getIpamIpamPools = null as any;
+export const getIpamIpamPoolsOutput: typeof import("./getIpamIpamPools").getIpamIpamPoolsOutput = null as any;
+utilities.lazyLoad(exports, ["getIpamIpamPools","getIpamIpamPoolsOutput"], () => require("./getIpamIpamPools"));
+
+export { GetIpamIpamScopesArgs, GetIpamIpamScopesResult, GetIpamIpamScopesOutputArgs } from "./getIpamIpamScopes";
+export const getIpamIpamScopes: typeof import("./getIpamIpamScopes").getIpamIpamScopes = null as any;
+export const getIpamIpamScopesOutput: typeof import("./getIpamIpamScopes").getIpamIpamScopesOutput = null as any;
+utilities.lazyLoad(exports, ["getIpamIpamScopes","getIpamIpamScopesOutput"], () => require("./getIpamIpamScopes"));
+
+export { GetIpamIpamsArgs, GetIpamIpamsResult, GetIpamIpamsOutputArgs } from "./getIpamIpams";
+export const getIpamIpams: typeof import("./getIpamIpams").getIpamIpams = null as any;
+export const getIpamIpamsOutput: typeof import("./getIpamIpams").getIpamIpamsOutput = null as any;
+utilities.lazyLoad(exports, ["getIpamIpams","getIpamIpamsOutput"], () => require("./getIpamIpams"));
+
 export { GetIpsecServersArgs, GetIpsecServersResult, GetIpsecServersOutputArgs } from "./getIpsecServers";
 export const getIpsecServers: typeof import("./getIpsecServers").getIpsecServers = null as any;
 export const getIpsecServersOutput: typeof import("./getIpsecServers").getIpsecServersOutput = null as any;

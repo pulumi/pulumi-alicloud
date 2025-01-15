@@ -10,15 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Alb
 {
     /// <summary>
-    /// Provides a Alb Ascript resource.
+    /// Provides a Application Load Balancer (ALB) A Script resource.
     /// 
-    /// For information about Alb Ascript and how to use it, see [What is AScript](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createascripts).
+    /// For information about Application Load Balancer (ALB) A Script and how to use it, see [What is A Script](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createascripts).
     /// 
     /// &gt; **NOTE:** Available since v1.195.0.
     /// 
     /// ## Import
     /// 
-    /// Alb AScript can be imported using the id, e.g.
+    /// Application Load Balancer (ALB) A Script can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:alb/aScript:AScript example &lt;id&gt;
@@ -28,25 +28,31 @@ namespace Pulumi.AliCloud.Alb
     public partial class AScript : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of AScript.
+        /// AScript name.
         /// </summary>
         [Output("ascriptName")]
         public Output<string> AscriptName { get; private set; } = null!;
 
         /// <summary>
-        /// Whether scripts are enabled.
+        /// Whether to PreCheck only this request
+        /// </summary>
+        [Output("dryRun")]
+        public Output<bool?> DryRun { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether AScript is enabled.
         /// </summary>
         [Output("enabled")]
-        public Output<bool> Enabled { get; private set; } = null!;
+        public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Whether extension parameters are enabled.
+        /// Whether extension parameters are enabled. When ExtAttributeEnabled is true, ExtAttributes must be set.
         /// </summary>
         [Output("extAttributeEnabled")]
-        public Output<bool> ExtAttributeEnabled { get; private set; } = null!;
+        public Output<bool?> ExtAttributeEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Extended attribute list. See `ext_attributes` below for details.
+        /// Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `ext_attributes` below.
         /// </summary>
         [Output("extAttributes")]
         public Output<ImmutableArray<Outputs.AScriptExtAttribute>> ExtAttributes { get; private set; } = null!;
@@ -58,25 +64,19 @@ namespace Pulumi.AliCloud.Alb
         public Output<string> ListenerId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of load balancer instance.
-        /// </summary>
-        [Output("loadBalancerId")]
-        public Output<string> LoadBalancerId { get; private set; } = null!;
-
-        /// <summary>
-        /// Execution location of AScript.
+        /// Script execution location.
         /// </summary>
         [Output("position")]
         public Output<string> Position { get; private set; } = null!;
 
         /// <summary>
-        /// The content of AScript.
+        /// AScript script content.
         /// </summary>
         [Output("scriptContent")]
         public Output<string> ScriptContent { get; private set; } = null!;
 
         /// <summary>
-        /// The status of AScript.
+        /// Script status
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -128,19 +128,25 @@ namespace Pulumi.AliCloud.Alb
     public sealed class AScriptArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of AScript.
+        /// AScript name.
         /// </summary>
         [Input("ascriptName", required: true)]
         public Input<string> AscriptName { get; set; } = null!;
 
         /// <summary>
-        /// Whether scripts are enabled.
+        /// Whether to PreCheck only this request
         /// </summary>
-        [Input("enabled", required: true)]
-        public Input<bool> Enabled { get; set; } = null!;
+        [Input("dryRun")]
+        public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// Whether extension parameters are enabled.
+        /// Whether AScript is enabled.
+        /// </summary>
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// Whether extension parameters are enabled. When ExtAttributeEnabled is true, ExtAttributes must be set.
         /// </summary>
         [Input("extAttributeEnabled")]
         public Input<bool>? ExtAttributeEnabled { get; set; }
@@ -149,7 +155,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.AScriptExtAttributeArgs>? _extAttributes;
 
         /// <summary>
-        /// Extended attribute list. See `ext_attributes` below for details.
+        /// Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `ext_attributes` below.
         /// </summary>
         public InputList<Inputs.AScriptExtAttributeArgs> ExtAttributes
         {
@@ -164,13 +170,13 @@ namespace Pulumi.AliCloud.Alb
         public Input<string> ListenerId { get; set; } = null!;
 
         /// <summary>
-        /// Execution location of AScript.
+        /// Script execution location.
         /// </summary>
         [Input("position", required: true)]
         public Input<string> Position { get; set; } = null!;
 
         /// <summary>
-        /// The content of AScript.
+        /// AScript script content.
         /// </summary>
         [Input("scriptContent", required: true)]
         public Input<string> ScriptContent { get; set; } = null!;
@@ -184,19 +190,25 @@ namespace Pulumi.AliCloud.Alb
     public sealed class AScriptState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of AScript.
+        /// AScript name.
         /// </summary>
         [Input("ascriptName")]
         public Input<string>? AscriptName { get; set; }
 
         /// <summary>
-        /// Whether scripts are enabled.
+        /// Whether to PreCheck only this request
+        /// </summary>
+        [Input("dryRun")]
+        public Input<bool>? DryRun { get; set; }
+
+        /// <summary>
+        /// Whether AScript is enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Whether extension parameters are enabled.
+        /// Whether extension parameters are enabled. When ExtAttributeEnabled is true, ExtAttributes must be set.
         /// </summary>
         [Input("extAttributeEnabled")]
         public Input<bool>? ExtAttributeEnabled { get; set; }
@@ -205,7 +217,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.AScriptExtAttributeGetArgs>? _extAttributes;
 
         /// <summary>
-        /// Extended attribute list. See `ext_attributes` below for details.
+        /// Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `ext_attributes` below.
         /// </summary>
         public InputList<Inputs.AScriptExtAttributeGetArgs> ExtAttributes
         {
@@ -220,25 +232,19 @@ namespace Pulumi.AliCloud.Alb
         public Input<string>? ListenerId { get; set; }
 
         /// <summary>
-        /// The ID of load balancer instance.
-        /// </summary>
-        [Input("loadBalancerId")]
-        public Input<string>? LoadBalancerId { get; set; }
-
-        /// <summary>
-        /// Execution location of AScript.
+        /// Script execution location.
         /// </summary>
         [Input("position")]
         public Input<string>? Position { get; set; }
 
         /// <summary>
-        /// The content of AScript.
+        /// AScript script content.
         /// </summary>
         [Input("scriptContent")]
         public Input<string>? ScriptContent { get; set; }
 
         /// <summary>
-        /// The status of AScript.
+        /// Script status
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

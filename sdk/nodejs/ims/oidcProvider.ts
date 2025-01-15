@@ -72,6 +72,10 @@ export class OidcProvider extends pulumi.CustomResource {
     }
 
     /**
+     * The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+     */
+    public /*out*/ readonly arn!: pulumi.Output<string>;
+    /**
      * Client ID.
      */
     public readonly clientIds!: pulumi.Output<string[] | undefined>;
@@ -113,6 +117,7 @@ export class OidcProvider extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OidcProviderState | undefined;
+            resourceInputs["arn"] = state ? state.arn : undefined;
             resourceInputs["clientIds"] = state ? state.clientIds : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -134,6 +139,7 @@ export class OidcProvider extends pulumi.CustomResource {
             resourceInputs["issuanceLimitTime"] = args ? args.issuanceLimitTime : undefined;
             resourceInputs["issuerUrl"] = args ? args.issuerUrl : undefined;
             resourceInputs["oidcProviderName"] = args ? args.oidcProviderName : undefined;
+            resourceInputs["arn"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -145,6 +151,10 @@ export class OidcProvider extends pulumi.CustomResource {
  * Input properties used for looking up and filtering OidcProvider resources.
  */
 export interface OidcProviderState {
+    /**
+     * The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+     */
+    arn?: pulumi.Input<string>;
     /**
      * Client ID.
      */

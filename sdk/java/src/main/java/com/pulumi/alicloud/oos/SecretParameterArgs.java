@@ -56,6 +56,21 @@ public final class SecretParameterArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * The ID of the KMS instance.
+     * 
+     */
+    @Import(name="dkmsInstanceId")
+    private @Nullable Output<String> dkmsInstanceId;
+
+    /**
+     * @return The ID of the KMS instance.
+     * 
+     */
+    public Optional<Output<String>> dkmsInstanceId() {
+        return Optional.ofNullable(this.dkmsInstanceId);
+    }
+
+    /**
      * The Customer Master Key (CMK) of Key Management Service (KMS) that is used to encrypt the parameter.
      * 
      */
@@ -150,6 +165,7 @@ public final class SecretParameterArgs extends com.pulumi.resources.ResourceArgs
     private SecretParameterArgs(SecretParameterArgs $) {
         this.constraints = $.constraints;
         this.description = $.description;
+        this.dkmsInstanceId = $.dkmsInstanceId;
         this.keyId = $.keyId;
         this.resourceGroupId = $.resourceGroupId;
         this.secretParameterName = $.secretParameterName;
@@ -224,6 +240,27 @@ public final class SecretParameterArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param dkmsInstanceId The ID of the KMS instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dkmsInstanceId(@Nullable Output<String> dkmsInstanceId) {
+            $.dkmsInstanceId = dkmsInstanceId;
+            return this;
+        }
+
+        /**
+         * @param dkmsInstanceId The ID of the KMS instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dkmsInstanceId(String dkmsInstanceId) {
+            return dkmsInstanceId(Output.of(dkmsInstanceId));
         }
 
         /**

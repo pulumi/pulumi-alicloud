@@ -112,14 +112,29 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Function Compute service ID.
+     * The Function Compute service function arn. It formats as `acs:fc:&lt;region&gt;:&lt;uid&gt;:services/&lt;serviceName&gt;.LATEST/functions/&lt;functionName&gt;`.
+     * 
+     */
+    @Import(name="functionArn")
+    private @Nullable Output<String> functionArn;
+
+    /**
+     * @return The Function Compute service function arn. It formats as `acs:fc:&lt;region&gt;:&lt;uid&gt;:services/&lt;serviceName&gt;.LATEST/functions/&lt;functionName&gt;`.
+     * 
+     */
+    public Optional<Output<String>> functionArn() {
+        return Optional.ofNullable(this.functionArn);
+    }
+
+    /**
+     * The Function Compute service function ID.
      * 
      */
     @Import(name="functionId")
     private @Nullable Output<String> functionId;
 
     /**
-     * @return The Function Compute service ID.
+     * @return The Function Compute service function ID.
      * 
      */
     public Optional<Output<String>> functionId() {
@@ -360,6 +375,7 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.environmentVariables = $.environmentVariables;
         this.filename = $.filename;
+        this.functionArn = $.functionArn;
         this.functionId = $.functionId;
         this.handler = $.handler;
         this.initializationTimeout = $.initializationTimeout;
@@ -525,7 +541,28 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param functionId The Function Compute service ID.
+         * @param functionArn The Function Compute service function arn. It formats as `acs:fc:&lt;region&gt;:&lt;uid&gt;:services/&lt;serviceName&gt;.LATEST/functions/&lt;functionName&gt;`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionArn(@Nullable Output<String> functionArn) {
+            $.functionArn = functionArn;
+            return this;
+        }
+
+        /**
+         * @param functionArn The Function Compute service function arn. It formats as `acs:fc:&lt;region&gt;:&lt;uid&gt;:services/&lt;serviceName&gt;.LATEST/functions/&lt;functionName&gt;`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionArn(String functionArn) {
+            return functionArn(Output.of(functionArn));
+        }
+
+        /**
+         * @param functionId The Function Compute service function ID.
          * 
          * @return builder
          * 
@@ -536,7 +573,7 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param functionId The Function Compute service ID.
+         * @param functionId The Function Compute service function ID.
          * 
          * @return builder
          * 

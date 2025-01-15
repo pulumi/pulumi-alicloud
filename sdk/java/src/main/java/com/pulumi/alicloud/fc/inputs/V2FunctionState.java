@@ -109,6 +109,13 @@ public final class V2FunctionState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.environmentVariables);
     }
 
+    @Import(name="functionArn")
+    private @Nullable Output<String> functionArn;
+
+    public Optional<Output<String>> functionArn() {
+        return Optional.ofNullable(this.functionArn);
+    }
+
     @Import(name="functionName")
     private @Nullable Output<String> functionName;
 
@@ -215,6 +222,7 @@ public final class V2FunctionState extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.diskSize = $.diskSize;
         this.environmentVariables = $.environmentVariables;
+        this.functionArn = $.functionArn;
         this.functionName = $.functionName;
         this.gpuMemorySize = $.gpuMemorySize;
         this.handler = $.handler;
@@ -354,6 +362,15 @@ public final class V2FunctionState extends com.pulumi.resources.ResourceArgs {
 
         public Builder environmentVariables(Map<String,String> environmentVariables) {
             return environmentVariables(Output.of(environmentVariables));
+        }
+
+        public Builder functionArn(@Nullable Output<String> functionArn) {
+            $.functionArn = functionArn;
+            return this;
+        }
+
+        public Builder functionArn(String functionArn) {
+            return functionArn(Output.of(functionArn));
         }
 
         public Builder functionName(@Nullable Output<String> functionName) {

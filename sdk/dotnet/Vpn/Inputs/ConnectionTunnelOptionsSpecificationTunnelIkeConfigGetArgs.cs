@@ -31,7 +31,8 @@ namespace Pulumi.AliCloud.Vpn.Inputs
         public Input<string>? IkeVersion { get; set; }
 
         /// <summary>
-        /// The local Id.
+        /// The identifier of the tunnel on the Alibaba Cloud side, which is used in Phase 1 negotiations. It can contain at most 100 characters. The default value is the IP address of the tunnel.
+        /// LocalId supports fully qualified domain names (FQDNs). If you use an FQDN, we recommend that you set the negotiation mode to aggressive.
         /// </summary>
         [Input("localId")]
         public Input<string>? LocalId { get; set; }
@@ -40,7 +41,8 @@ namespace Pulumi.AliCloud.Vpn.Inputs
         public Input<string>? Psk { get; set; }
 
         /// <summary>
-        /// Remote ID.
+        /// The identifier of the tunnel peer, which is used in Phase 1 negotiations. It can contain at most 100 characters. The default value is the IP address of the customer gateway that is associated with the tunnel.
+        /// RemoteId supports FQDNs. If you use an FQDN, we recommend that you set the negotiation mode to aggressive.
         /// </summary>
         [Input("remoteId")]
         public Input<string>? RemoteId { get; set; }

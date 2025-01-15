@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Oss
         /// <summary>
         /// This data source provides the OSS buckets of the current Alibaba Cloud user.
         /// 
+        /// &gt; **NOTE:** Available since v1.17.0.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -21,12 +23,24 @@ namespace Pulumi.AliCloud.Oss
         /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
+        /// using Random = Pulumi.Random;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var @default = new Random.Index.Integer("default", new()
+        ///     {
+        ///         Max = 99999,
+        ///         Min = 10000,
+        ///     });
+        /// 
+        ///     var bucket = new AliCloud.Oss.Bucket("bucket", new()
+        ///     {
+        ///         BucketName = $"oss-tf-example-{@default.Result}",
+        ///     });
+        /// 
         ///     var ossBucketsDs = AliCloud.Oss.GetBuckets.Invoke(new()
         ///     {
-        ///         NameRegex = "sample_oss_bucket",
+        ///         NameRegex = bucket.BucketName,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -42,6 +56,8 @@ namespace Pulumi.AliCloud.Oss
         /// <summary>
         /// This data source provides the OSS buckets of the current Alibaba Cloud user.
         /// 
+        /// &gt; **NOTE:** Available since v1.17.0.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -49,12 +65,24 @@ namespace Pulumi.AliCloud.Oss
         /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
+        /// using Random = Pulumi.Random;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var @default = new Random.Index.Integer("default", new()
+        ///     {
+        ///         Max = 99999,
+        ///         Min = 10000,
+        ///     });
+        /// 
+        ///     var bucket = new AliCloud.Oss.Bucket("bucket", new()
+        ///     {
+        ///         BucketName = $"oss-tf-example-{@default.Result}",
+        ///     });
+        /// 
         ///     var ossBucketsDs = AliCloud.Oss.GetBuckets.Invoke(new()
         ///     {
-        ///         NameRegex = "sample_oss_bucket",
+        ///         NameRegex = bucket.BucketName,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -70,6 +98,8 @@ namespace Pulumi.AliCloud.Oss
         /// <summary>
         /// This data source provides the OSS buckets of the current Alibaba Cloud user.
         /// 
+        /// &gt; **NOTE:** Available since v1.17.0.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -77,12 +107,24 @@ namespace Pulumi.AliCloud.Oss
         /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
+        /// using Random = Pulumi.Random;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var @default = new Random.Index.Integer("default", new()
+        ///     {
+        ///         Max = 99999,
+        ///         Min = 10000,
+        ///     });
+        /// 
+        ///     var bucket = new AliCloud.Oss.Bucket("bucket", new()
+        ///     {
+        ///         BucketName = $"oss-tf-example-{@default.Result}",
+        ///     });
+        /// 
         ///     var ossBucketsDs = AliCloud.Oss.GetBuckets.Invoke(new()
         ///     {
-        ///         NameRegex = "sample_oss_bucket",
+        ///         NameRegex = bucket.BucketName,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;

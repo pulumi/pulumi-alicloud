@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// For information about ECS Session Manager Status and how to use it, see [What is Session Manager Status](https://www.alibabacloud.com/help/zh/doc-detail/337915.html).
     /// 
-    /// &gt; **NOTE:** Available in v1.148.0+.
+    /// &gt; **NOTE:** Available since v1.148.0.
     /// 
     /// ## Example Usage
     /// 
@@ -42,20 +42,20 @@ namespace Pulumi.AliCloud.Ecs
     /// ECS Session Manager Status can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus example &lt;session_manager_status_name&gt;
+    /// $ pulumi import alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus")]
     public partial class EcsSessionManagerStatus : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of the resource. Valid values: `sessionManagerStatus`.
+        /// The name of the Session Manager Status. Valid values: `sessionManagerStatus`.
         /// </summary>
         [Output("sessionManagerStatusName")]
         public Output<string> SessionManagerStatusName { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource. Valid values: `Disabled`, `Enabled`.
+        /// The status of the Session Manager Status. Valid values: `Enabled`, `Disabled`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -107,13 +107,13 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class EcsSessionManagerStatusArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the resource. Valid values: `sessionManagerStatus`.
+        /// The name of the Session Manager Status. Valid values: `sessionManagerStatus`.
         /// </summary>
         [Input("sessionManagerStatusName", required: true)]
         public Input<string> SessionManagerStatusName { get; set; } = null!;
 
         /// <summary>
-        /// The status of the resource. Valid values: `Disabled`, `Enabled`.
+        /// The status of the Session Manager Status. Valid values: `Enabled`, `Disabled`.
         /// </summary>
         [Input("status", required: true)]
         public Input<string> Status { get; set; } = null!;
@@ -127,13 +127,13 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class EcsSessionManagerStatusState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the resource. Valid values: `sessionManagerStatus`.
+        /// The name of the Session Manager Status. Valid values: `sessionManagerStatus`.
         /// </summary>
         [Input("sessionManagerStatusName")]
         public Input<string>? SessionManagerStatusName { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `Disabled`, `Enabled`.
+        /// The status of the Session Manager Status. Valid values: `Enabled`, `Disabled`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

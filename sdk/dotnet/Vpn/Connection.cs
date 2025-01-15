@@ -32,32 +32,34 @@ namespace Pulumi.AliCloud.Vpn
     ///         Spec = "5M",
     ///     });
     /// 
-    ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
-    ///         NameRegex = "^default-NODELETING$",
     ///         CidrBlock = "172.16.0.0/16",
+    ///         VpcName = name,
     ///     });
     /// 
-    ///     var default0 = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     var default0 = new AliCloud.Vpc.Switch("default0", new()
     ///     {
-    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         ZoneId = @default.Apply(getGatewayZonesResult =&gt; getGatewayZonesResult.Ids[0]),
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getGatewayZonesResult =&gt; getGatewayZonesResult.Ids[0])),
     ///     });
     /// 
-    ///     var default1 = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     var default1 = new AliCloud.Vpc.Switch("default1", new()
     ///     {
-    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         ZoneId = @default.Apply(getGatewayZonesResult =&gt; getGatewayZonesResult.Ids[1]),
+    ///         CidrBlock = "172.16.1.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getGatewayZonesResult =&gt; getGatewayZonesResult.Ids[1])),
     ///     });
     /// 
     ///     var HA_VPN = new AliCloud.Vpn.Gateway("HA-VPN", new()
     ///     {
     ///         VpnType = "Normal",
-    ///         DisasterRecoveryVswitchId = default1.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         DisasterRecoveryVswitchId = default1.Id,
     ///         VpnGatewayName = name,
-    ///         VswitchId = default0.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         VswitchId = default0.Id,
     ///         AutoPay = true,
-    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VpcId = defaultNetwork.Id,
     ///         NetworkType = "public",
     ///         PaymentType = "Subscription",
     ///         EnableIpsec = true,
@@ -304,8 +306,6 @@ namespace Pulumi.AliCloud.Vpn
 
         /// <summary>
         /// The ID of the VPN gateway.
-        /// 
-        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Output("vpnGatewayId")]
         public Output<string> VpnGatewayId { get; private set; } = null!;
@@ -488,8 +488,6 @@ namespace Pulumi.AliCloud.Vpn
 
         /// <summary>
         /// The ID of the VPN gateway.
-        /// 
-        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Input("vpnGatewayId", required: true)]
         public Input<string> VpnGatewayId { get; set; } = null!;
@@ -652,8 +650,6 @@ namespace Pulumi.AliCloud.Vpn
 
         /// <summary>
         /// The ID of the VPN gateway.
-        /// 
-        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Input("vpnGatewayId")]
         public Input<string>? VpnGatewayId { get; set; }

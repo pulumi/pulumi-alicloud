@@ -47,6 +47,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly config!: pulumi.Output<string>;
     /**
+     * The number of partitions in a topic that is automatically created.
+     */
+    public readonly defaultTopicPartitionNum!: pulumi.Output<number>;
+    /**
      * The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
      * - 4: eip/vpc instance
      * - 5: vpc instance.
@@ -68,6 +72,14 @@ export class Instance extends pulumi.CustomResource {
      * The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
      */
     public readonly eipMax!: pulumi.Output<number>;
+    /**
+     * Specify whether to enable the flexible group creation feature. Default value: `false`. Valid values:
+     */
+    public readonly enableAutoGroup!: pulumi.Output<boolean | undefined>;
+    /**
+     * Specify whether to enable the automatic topic creation feature. Default value: `disable`. Valid values:
+     */
+    public readonly enableAutoTopic!: pulumi.Output<string>;
     /**
      * The EndPoint to access the kafka instance.
      */
@@ -132,16 +144,6 @@ export class Instance extends pulumi.CustomResource {
     public readonly securityGroup!: pulumi.Output<string>;
     /**
      * The zones among which you want to deploy the instance.
-     *
-     * > **NOTE:** Arguments io_max, disk_size, topic_quota, eipMax should follow the following constraints.
-     *
-     * | ioMax | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-     * |------|-------------|:----:|:-----:|
-     * |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-     * |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-     * |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-     * |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-     * |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
      */
     public readonly selectedZones!: pulumi.Output<string[] | undefined>;
     /**
@@ -198,6 +200,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly vswitchId!: pulumi.Output<string>;
     /**
+     * The IDs of the vSwitches with which the instance is associated.
+     */
+    public readonly vswitchIds!: pulumi.Output<string[]>;
+    /**
      * The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
      */
     public readonly zoneId!: pulumi.Output<string>;
@@ -216,11 +222,14 @@ export class Instance extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
             resourceInputs["config"] = state ? state.config : undefined;
+            resourceInputs["defaultTopicPartitionNum"] = state ? state.defaultTopicPartitionNum : undefined;
             resourceInputs["deployType"] = state ? state.deployType : undefined;
             resourceInputs["diskSize"] = state ? state.diskSize : undefined;
             resourceInputs["diskType"] = state ? state.diskType : undefined;
             resourceInputs["domainEndpoint"] = state ? state.domainEndpoint : undefined;
             resourceInputs["eipMax"] = state ? state.eipMax : undefined;
+            resourceInputs["enableAutoGroup"] = state ? state.enableAutoGroup : undefined;
+            resourceInputs["enableAutoTopic"] = state ? state.enableAutoTopic : undefined;
             resourceInputs["endPoint"] = state ? state.endPoint : undefined;
             resourceInputs["groupLeft"] = state ? state.groupLeft : undefined;
             resourceInputs["groupUsed"] = state ? state.groupUsed : undefined;
@@ -249,6 +258,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["topicUsed"] = state ? state.topicUsed : undefined;
             resourceInputs["vpcId"] = state ? state.vpcId : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["vswitchIds"] = state ? state.vswitchIds : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
@@ -265,10 +275,13 @@ export class Instance extends pulumi.CustomResource {
                 throw new Error("Missing required property 'vswitchId'");
             }
             resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["defaultTopicPartitionNum"] = args ? args.defaultTopicPartitionNum : undefined;
             resourceInputs["deployType"] = args ? args.deployType : undefined;
             resourceInputs["diskSize"] = args ? args.diskSize : undefined;
             resourceInputs["diskType"] = args ? args.diskType : undefined;
             resourceInputs["eipMax"] = args ? args.eipMax : undefined;
+            resourceInputs["enableAutoGroup"] = args ? args.enableAutoGroup : undefined;
+            resourceInputs["enableAutoTopic"] = args ? args.enableAutoTopic : undefined;
             resourceInputs["ioMax"] = args ? args.ioMax : undefined;
             resourceInputs["ioMaxSpec"] = args ? args.ioMaxSpec : undefined;
             resourceInputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
@@ -284,6 +297,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["topicQuota"] = args ? args.topicQuota : undefined;
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["vswitchIds"] = args ? args.vswitchIds : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["domainEndpoint"] = undefined /*out*/;
             resourceInputs["endPoint"] = undefined /*out*/;
@@ -315,6 +329,10 @@ export interface InstanceState {
      */
     config?: pulumi.Input<string>;
     /**
+     * The number of partitions in a topic that is automatically created.
+     */
+    defaultTopicPartitionNum?: pulumi.Input<number>;
+    /**
      * The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
      * - 4: eip/vpc instance
      * - 5: vpc instance.
@@ -336,6 +354,14 @@ export interface InstanceState {
      * The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
      */
     eipMax?: pulumi.Input<number>;
+    /**
+     * Specify whether to enable the flexible group creation feature. Default value: `false`. Valid values:
+     */
+    enableAutoGroup?: pulumi.Input<boolean>;
+    /**
+     * Specify whether to enable the automatic topic creation feature. Default value: `disable`. Valid values:
+     */
+    enableAutoTopic?: pulumi.Input<string>;
     /**
      * The EndPoint to access the kafka instance.
      */
@@ -400,16 +426,6 @@ export interface InstanceState {
     securityGroup?: pulumi.Input<string>;
     /**
      * The zones among which you want to deploy the instance.
-     *
-     * > **NOTE:** Arguments io_max, disk_size, topic_quota, eipMax should follow the following constraints.
-     *
-     * | ioMax | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-     * |------|-------------|:----:|:-----:|
-     * |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-     * |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-     * |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-     * |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-     * |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
      */
     selectedZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -466,6 +482,10 @@ export interface InstanceState {
      */
     vswitchId?: pulumi.Input<string>;
     /**
+     * The IDs of the vSwitches with which the instance is associated.
+     */
+    vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
      */
     zoneId?: pulumi.Input<string>;
@@ -480,6 +500,10 @@ export interface InstanceArgs {
      * * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
      */
     config?: pulumi.Input<string>;
+    /**
+     * The number of partitions in a topic that is automatically created.
+     */
+    defaultTopicPartitionNum?: pulumi.Input<number>;
     /**
      * The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
      * - 4: eip/vpc instance
@@ -498,6 +522,14 @@ export interface InstanceArgs {
      * The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
      */
     eipMax?: pulumi.Input<number>;
+    /**
+     * Specify whether to enable the flexible group creation feature. Default value: `false`. Valid values:
+     */
+    enableAutoGroup?: pulumi.Input<boolean>;
+    /**
+     * Specify whether to enable the automatic topic creation feature. Default value: `disable`. Valid values:
+     */
+    enableAutoTopic?: pulumi.Input<string>;
     /**
      * The max value of io of the instance. When modify this value, it only support adjust to a greater value.
      */
@@ -534,16 +566,6 @@ export interface InstanceArgs {
     securityGroup?: pulumi.Input<string>;
     /**
      * The zones among which you want to deploy the instance.
-     *
-     * > **NOTE:** Arguments io_max, disk_size, topic_quota, eipMax should follow the following constraints.
-     *
-     * | ioMax | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-     * |------|-------------|:----:|:-----:|
-     * |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-     * |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-     * |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-     * |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-     * |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
      */
     selectedZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -575,6 +597,10 @@ export interface InstanceArgs {
      * The ID of attaching vswitch to instance.
      */
     vswitchId: pulumi.Input<string>;
+    /**
+     * The IDs of the vSwitches with which the instance is associated.
+     */
+    vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
      */

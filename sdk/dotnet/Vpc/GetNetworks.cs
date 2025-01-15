@@ -331,6 +331,9 @@ namespace Pulumi.AliCloud.Vpc
         /// CIDR block of the VPC.
         /// </summary>
         public readonly string? CidrBlock;
+        /// <summary>
+        /// The ID of the DHCP options set.
+        /// </summary>
         public readonly string? DhcpOptionsSetId;
         public readonly bool? DryRun;
         public readonly bool? EnableDetails;

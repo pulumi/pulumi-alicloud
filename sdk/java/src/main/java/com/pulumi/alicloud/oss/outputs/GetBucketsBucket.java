@@ -16,8 +16,6 @@ import java.lang.String;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetBucketsBucket {
@@ -71,7 +69,11 @@ public final class GetBucketsBucket {
      * 
      */
     private String owner;
-    private @Nullable String policy;
+    /**
+     * @return The policies configured for a specified bucket.
+     * 
+     */
+    private String policy;
     /**
      * @return Redundancy type. Possible values: `LRS`, and `ZRS`.
      * 
@@ -179,8 +181,12 @@ public final class GetBucketsBucket {
     public String owner() {
         return this.owner;
     }
-    public Optional<String> policy() {
-        return Optional.ofNullable(this.policy);
+    /**
+     * @return The policies configured for a specified bucket.
+     * 
+     */
+    public String policy() {
+        return this.policy;
     }
     /**
      * @return Redundancy type. Possible values: `LRS`, and `ZRS`.
@@ -251,7 +257,7 @@ public final class GetBucketsBucket {
         private GetBucketsBucketLogging logging;
         private String name;
         private String owner;
-        private @Nullable String policy;
+        private String policy;
         private String redundancyType;
         private GetBucketsBucketRefererConfig refererConfig;
         private GetBucketsBucketServerSideEncryptionRule serverSideEncryptionRule;
@@ -369,8 +375,10 @@ public final class GetBucketsBucket {
             return this;
         }
         @CustomType.Setter
-        public Builder policy(@Nullable String policy) {
-
+        public Builder policy(String policy) {
+            if (policy == null) {
+              throw new MissingRequiredPropertyException("GetBucketsBucket", "policy");
+            }
             this.policy = policy;
             return this;
         }

@@ -82,6 +82,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ims/oidcProvider:OidcProvider")
 public class OidcProvider extends com.pulumi.resources.CustomResource {
     /**
+     * The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+     * 
+     */
+    @Export(name="arn", refs={String.class}, tree="[0]")
+    private Output<String> arn;
+
+    /**
+     * @return The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+     * 
+     */
+    public Output<String> arn() {
+        return this.arn;
+    }
+    /**
      * Client ID.
      * 
      */

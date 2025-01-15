@@ -44,6 +44,9 @@ export function getManagedKubernetesClusters(args?: GetManagedKubernetesClusters
  * A collection of arguments for invoking getManagedKubernetesClusters.
  */
 export interface GetManagedKubernetesClustersArgs {
+    /**
+     * Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `masterDiskCategory`, `slbInternetEnabled`, `connections`. See full list in attributes.
+     */
     enableDetails?: boolean;
     /**
      * Cluster IDs to filter.
@@ -126,6 +129,9 @@ export function getManagedKubernetesClustersOutput(args?: GetManagedKubernetesCl
  * A collection of arguments for invoking getManagedKubernetesClusters.
  */
 export interface GetManagedKubernetesClustersOutputArgs {
+    /**
+     * Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `masterDiskCategory`, `slbInternetEnabled`, `connections`. See full list in attributes.
+     */
     enableDetails?: pulumi.Input<boolean>;
     /**
      * Cluster IDs to filter.

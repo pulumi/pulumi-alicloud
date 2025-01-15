@@ -28,7 +28,12 @@ type Instance struct {
 	CreateTime pulumi.IntOutput `pulumi:"createTime"`
 	// The instance name.
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
-	// Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
+	// Instance type. Valid values:
+	// - professional: professional Edition
+	// - enterprise: enterprise Edition
+	// - vip: Platinum Edition.
+	// - serverless: Serverless Edition.
+	// > **NOTE:** There should not set the `instanceType` parameter when creating a serverless instance. Only need to set `paymentType = "PayAsYouGo"` and `serverlessChargeType = "onDemand"`.
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
 	// The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
 	MaxConnections pulumi.IntOutput `pulumi:"maxConnections"`
@@ -40,11 +45,13 @@ type Instance struct {
 	// - Upgrade: Upgrade
 	// - Downgrade: Downgrading.
 	ModifyType pulumi.StringPtrOutput `pulumi:"modifyType"`
-	// The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
+	// The Payment type. Valid value:
+	// - Subscription: Pre-paid.
+	// - PayAsYouGo: Post-paid, and for serverless Edition.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
-	// Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
+	// Prepayment cycle, unit: periodCycle. This parameter is valid when PaymentType is set to Subscription.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
-	// Prepaid cycle units. Value: Month. Year: Year.
+	// Prepaid cycle units. Value: Month, Year.
 	PeriodCycle pulumi.StringPtrOutput `pulumi:"periodCycle"`
 	// Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
 	QueueCapacity pulumi.StringOutput `pulumi:"queueCapacity"`
@@ -107,7 +114,12 @@ type instanceState struct {
 	CreateTime *int `pulumi:"createTime"`
 	// The instance name.
 	InstanceName *string `pulumi:"instanceName"`
-	// Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
+	// Instance type. Valid values:
+	// - professional: professional Edition
+	// - enterprise: enterprise Edition
+	// - vip: Platinum Edition.
+	// - serverless: Serverless Edition.
+	// > **NOTE:** There should not set the `instanceType` parameter when creating a serverless instance. Only need to set `paymentType = "PayAsYouGo"` and `serverlessChargeType = "onDemand"`.
 	InstanceType *string `pulumi:"instanceType"`
 	// The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
 	MaxConnections *int `pulumi:"maxConnections"`
@@ -119,11 +131,13 @@ type instanceState struct {
 	// - Upgrade: Upgrade
 	// - Downgrade: Downgrading.
 	ModifyType *string `pulumi:"modifyType"`
-	// The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
+	// The Payment type. Valid value:
+	// - Subscription: Pre-paid.
+	// - PayAsYouGo: Post-paid, and for serverless Edition.
 	PaymentType *string `pulumi:"paymentType"`
-	// Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
+	// Prepayment cycle, unit: periodCycle. This parameter is valid when PaymentType is set to Subscription.
 	Period *int `pulumi:"period"`
-	// Prepaid cycle units. Value: Month. Year: Year.
+	// Prepaid cycle units. Value: Month, Year.
 	PeriodCycle *string `pulumi:"periodCycle"`
 	// Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
 	QueueCapacity *string `pulumi:"queueCapacity"`
@@ -154,7 +168,12 @@ type InstanceState struct {
 	CreateTime pulumi.IntPtrInput
 	// The instance name.
 	InstanceName pulumi.StringPtrInput
-	// Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
+	// Instance type. Valid values:
+	// - professional: professional Edition
+	// - enterprise: enterprise Edition
+	// - vip: Platinum Edition.
+	// - serverless: Serverless Edition.
+	// > **NOTE:** There should not set the `instanceType` parameter when creating a serverless instance. Only need to set `paymentType = "PayAsYouGo"` and `serverlessChargeType = "onDemand"`.
 	InstanceType pulumi.StringPtrInput
 	// The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
 	MaxConnections pulumi.IntPtrInput
@@ -166,11 +185,13 @@ type InstanceState struct {
 	// - Upgrade: Upgrade
 	// - Downgrade: Downgrading.
 	ModifyType pulumi.StringPtrInput
-	// The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
+	// The Payment type. Valid value:
+	// - Subscription: Pre-paid.
+	// - PayAsYouGo: Post-paid, and for serverless Edition.
 	PaymentType pulumi.StringPtrInput
-	// Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
+	// Prepayment cycle, unit: periodCycle. This parameter is valid when PaymentType is set to Subscription.
 	Period pulumi.IntPtrInput
-	// Prepaid cycle units. Value: Month. Year: Year.
+	// Prepaid cycle units. Value: Month, Year.
 	PeriodCycle pulumi.StringPtrInput
 	// Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
 	QueueCapacity pulumi.StringPtrInput
@@ -203,7 +224,12 @@ type instanceArgs struct {
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// The instance name.
 	InstanceName *string `pulumi:"instanceName"`
-	// Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
+	// Instance type. Valid values:
+	// - professional: professional Edition
+	// - enterprise: enterprise Edition
+	// - vip: Platinum Edition.
+	// - serverless: Serverless Edition.
+	// > **NOTE:** There should not set the `instanceType` parameter when creating a serverless instance. Only need to set `paymentType = "PayAsYouGo"` and `serverlessChargeType = "onDemand"`.
 	InstanceType *string `pulumi:"instanceType"`
 	// The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
 	MaxConnections *int `pulumi:"maxConnections"`
@@ -215,11 +241,13 @@ type instanceArgs struct {
 	// - Upgrade: Upgrade
 	// - Downgrade: Downgrading.
 	ModifyType *string `pulumi:"modifyType"`
-	// The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
+	// The Payment type. Valid value:
+	// - Subscription: Pre-paid.
+	// - PayAsYouGo: Post-paid, and for serverless Edition.
 	PaymentType string `pulumi:"paymentType"`
-	// Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
+	// Prepayment cycle, unit: periodCycle. This parameter is valid when PaymentType is set to Subscription.
 	Period *int `pulumi:"period"`
-	// Prepaid cycle units. Value: Month. Year: Year.
+	// Prepaid cycle units. Value: Month, Year.
 	PeriodCycle *string `pulumi:"periodCycle"`
 	// Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
 	QueueCapacity *string `pulumi:"queueCapacity"`
@@ -247,7 +275,12 @@ type InstanceArgs struct {
 	AutoRenew pulumi.BoolPtrInput
 	// The instance name.
 	InstanceName pulumi.StringPtrInput
-	// Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
+	// Instance type. Valid values:
+	// - professional: professional Edition
+	// - enterprise: enterprise Edition
+	// - vip: Platinum Edition.
+	// - serverless: Serverless Edition.
+	// > **NOTE:** There should not set the `instanceType` parameter when creating a serverless instance. Only need to set `paymentType = "PayAsYouGo"` and `serverlessChargeType = "onDemand"`.
 	InstanceType pulumi.StringPtrInput
 	// The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
 	MaxConnections pulumi.IntPtrInput
@@ -259,11 +292,13 @@ type InstanceArgs struct {
 	// - Upgrade: Upgrade
 	// - Downgrade: Downgrading.
 	ModifyType pulumi.StringPtrInput
-	// The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
+	// The Payment type. Valid value:
+	// - Subscription: Pre-paid.
+	// - PayAsYouGo: Post-paid, and for serverless Edition.
 	PaymentType pulumi.StringInput
-	// Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
+	// Prepayment cycle, unit: periodCycle. This parameter is valid when PaymentType is set to Subscription.
 	Period pulumi.IntPtrInput
-	// Prepaid cycle units. Value: Month. Year: Year.
+	// Prepaid cycle units. Value: Month, Year.
 	PeriodCycle pulumi.StringPtrInput
 	// Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
 	QueueCapacity pulumi.StringPtrInput
@@ -387,7 +422,12 @@ func (o InstanceOutput) InstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceName }).(pulumi.StringOutput)
 }
 
-// Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
+// Instance type. Valid values:
+// - professional: professional Edition
+// - enterprise: enterprise Edition
+// - vip: Platinum Edition.
+// - serverless: Serverless Edition.
+// > **NOTE:** There should not set the `instanceType` parameter when creating a serverless instance. Only need to set `paymentType = "PayAsYouGo"` and `serverlessChargeType = "onDemand"`.
 func (o InstanceOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
 }
@@ -414,17 +454,19 @@ func (o InstanceOutput) ModifyType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ModifyType }).(pulumi.StringPtrOutput)
 }
 
-// The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
+// The Payment type. Valid value:
+// - Subscription: Pre-paid.
+// - PayAsYouGo: Post-paid, and for serverless Edition.
 func (o InstanceOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
 
-// Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
+// Prepayment cycle, unit: periodCycle. This parameter is valid when PaymentType is set to Subscription.
 func (o InstanceOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
 
-// Prepaid cycle units. Value: Month. Year: Year.
+// Prepaid cycle units. Value: Month, Year.
 func (o InstanceOutput) PeriodCycle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.PeriodCycle }).(pulumi.StringPtrOutput)
 }

@@ -140,8 +140,8 @@ class AScriptExtAttribute(dict):
                  attribute_key: Optional[str] = None,
                  attribute_value: Optional[str] = None):
         """
-        :param str attribute_key: The key of the extended attribute.
-        :param str attribute_value: The value of the extended attribute.
+        :param str attribute_key: Key to extend attribute
+        :param str attribute_value: The value of the extended attribute
         """
         if attribute_key is not None:
             pulumi.set(__self__, "attribute_key", attribute_key)
@@ -152,7 +152,7 @@ class AScriptExtAttribute(dict):
     @pulumi.getter(name="attributeKey")
     def attribute_key(self) -> Optional[str]:
         """
-        The key of the extended attribute.
+        Key to extend attribute
         """
         return pulumi.get(self, "attribute_key")
 
@@ -160,7 +160,7 @@ class AScriptExtAttribute(dict):
     @pulumi.getter(name="attributeValue")
     def attribute_value(self) -> Optional[str]:
         """
-        The value of the extended attribute.
+        The value of the extended attribute
         """
         return pulumi.get(self, "attribute_value")
 

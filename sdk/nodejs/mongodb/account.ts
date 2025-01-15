@@ -5,61 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a MongoDB Account resource.
- *
- * For information about MongoDB Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/doc-detail/62154.html).
- *
- * > **NOTE:** Available since v1.148.0.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
- * const default = alicloud.mongodb.getZones({});
- * const index = _default.then(_default => _default.zones).length.then(length => length - 1);
- * const zoneId = _default.then(_default => _default.zones[index].id);
- * const defaultNetwork = new alicloud.vpc.Network("default", {
- *     vpcName: name,
- *     cidrBlock: "172.17.3.0/24",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("default", {
- *     vswitchName: name,
- *     cidrBlock: "172.17.3.0/24",
- *     vpcId: defaultNetwork.id,
- *     zoneId: zoneId,
- * });
- * const defaultInstance = new alicloud.mongodb.Instance("default", {
- *     engineVersion: "4.2",
- *     dbInstanceClass: "dds.mongo.mid",
- *     dbInstanceStorage: 10,
- *     vswitchId: defaultSwitch.id,
- *     securityIpLists: [
- *         "10.168.1.12",
- *         "100.69.7.112",
- *     ],
- *     name: name,
- *     tags: {
- *         Created: "TF",
- *         For: "example",
- *     },
- * });
- * const defaultAccount = new alicloud.mongodb.Account("default", {
- *     accountName: "root",
- *     accountPassword: "Example_123",
- *     instanceId: defaultInstance.id,
- *     accountDescription: name,
- * });
- * ```
- *
  * ## Import
  *
- * MongoDB Account can be imported using the id, e.g.
+ * Mongo D B Account can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:mongodb/account:Account example <instance_id>:<account_name>
@@ -94,27 +42,35 @@ export class Account extends pulumi.CustomResource {
     }
 
     /**
-     * The description of the account.
-     * * The description must start with a letter, and cannot start with `http://` or `https://`.
-     * * It must be `2` to `256` characters in length, and can contain letters, digits, underscores (_), and hyphens (-).
+     * Account comment information.
+     *
+     * > **NOTE:**  Call the ModifyAccountDescription interface to set the account description information before this parameter is returned.
      */
     public readonly accountDescription!: pulumi.Output<string | undefined>;
     /**
-     * The name of the account. Valid values: `root`.
+     * The new password.
+     *
+     * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ & * ( ) _ + - =`
+     * - The password must be 8 to 32 characters in length.
      */
     public readonly accountName!: pulumi.Output<string>;
     /**
-     * The Password of the Account.
-     * * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
-     * * The password must be `8` to `32` characters in length.
+     * The password of the database account. The password must be 8 to 32 characters in length. It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! # $ % ^ & \* ( ) \_ + - =
      */
     public readonly accountPassword!: pulumi.Output<string>;
     /**
-     * The ID of the instance.
+     * The role type of the instance. Value description
+     *
+     * - When the instance type is sharded cluster, charactertype is required. The values are db and cs.
+     * - When the instance type is a replica set, charactertype can be null or pass in normal.
+     */
+    public readonly characterType!: pulumi.Output<string>;
+    /**
+     * The account whose password needs to be reset. Set the value to `root`.
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
-     * The status of the account. Valid values: `Unavailable`, `Available`.
+     * Account Status
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -134,6 +90,7 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["accountDescription"] = state ? state.accountDescription : undefined;
             resourceInputs["accountName"] = state ? state.accountName : undefined;
             resourceInputs["accountPassword"] = state ? state.accountPassword : undefined;
+            resourceInputs["characterType"] = state ? state.characterType : undefined;
             resourceInputs["instanceId"] = state ? state.instanceId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
         } else {
@@ -150,6 +107,7 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["accountDescription"] = args ? args.accountDescription : undefined;
             resourceInputs["accountName"] = args ? args.accountName : undefined;
             resourceInputs["accountPassword"] = args?.accountPassword ? pulumi.secret(args.accountPassword) : undefined;
+            resourceInputs["characterType"] = args ? args.characterType : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -165,27 +123,35 @@ export class Account extends pulumi.CustomResource {
  */
 export interface AccountState {
     /**
-     * The description of the account.
-     * * The description must start with a letter, and cannot start with `http://` or `https://`.
-     * * It must be `2` to `256` characters in length, and can contain letters, digits, underscores (_), and hyphens (-).
+     * Account comment information.
+     *
+     * > **NOTE:**  Call the ModifyAccountDescription interface to set the account description information before this parameter is returned.
      */
     accountDescription?: pulumi.Input<string>;
     /**
-     * The name of the account. Valid values: `root`.
+     * The new password.
+     *
+     * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ & * ( ) _ + - =`
+     * - The password must be 8 to 32 characters in length.
      */
     accountName?: pulumi.Input<string>;
     /**
-     * The Password of the Account.
-     * * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
-     * * The password must be `8` to `32` characters in length.
+     * The password of the database account. The password must be 8 to 32 characters in length. It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! # $ % ^ & \* ( ) \_ + - =
      */
     accountPassword?: pulumi.Input<string>;
     /**
-     * The ID of the instance.
+     * The role type of the instance. Value description
+     *
+     * - When the instance type is sharded cluster, charactertype is required. The values are db and cs.
+     * - When the instance type is a replica set, charactertype can be null or pass in normal.
+     */
+    characterType?: pulumi.Input<string>;
+    /**
+     * The account whose password needs to be reset. Set the value to `root`.
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * The status of the account. Valid values: `Unavailable`, `Available`.
+     * Account Status
      */
     status?: pulumi.Input<string>;
 }
@@ -195,23 +161,31 @@ export interface AccountState {
  */
 export interface AccountArgs {
     /**
-     * The description of the account.
-     * * The description must start with a letter, and cannot start with `http://` or `https://`.
-     * * It must be `2` to `256` characters in length, and can contain letters, digits, underscores (_), and hyphens (-).
+     * Account comment information.
+     *
+     * > **NOTE:**  Call the ModifyAccountDescription interface to set the account description information before this parameter is returned.
      */
     accountDescription?: pulumi.Input<string>;
     /**
-     * The name of the account. Valid values: `root`.
+     * The new password.
+     *
+     * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ & * ( ) _ + - =`
+     * - The password must be 8 to 32 characters in length.
      */
     accountName: pulumi.Input<string>;
     /**
-     * The Password of the Account.
-     * * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
-     * * The password must be `8` to `32` characters in length.
+     * The password of the database account. The password must be 8 to 32 characters in length. It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! # $ % ^ & \* ( ) \_ + - =
      */
     accountPassword: pulumi.Input<string>;
     /**
-     * The ID of the instance.
+     * The role type of the instance. Value description
+     *
+     * - When the instance type is sharded cluster, charactertype is required. The values are db and cs.
+     * - When the instance type is a replica set, charactertype can be null or pass in normal.
+     */
+    characterType?: pulumi.Input<string>;
+    /**
+     * The account whose password needs to be reset. Set the value to `root`.
      */
     instanceId: pulumi.Input<string>;
 }

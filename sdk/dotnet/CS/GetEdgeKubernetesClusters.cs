@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
         /// 
-        /// &gt; **NOTE:** Available in v1.103.0+
+        /// &gt; **NOTE:** Available since v1.103.0.
         /// 
         /// ## Example Usage
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
         /// 
-        /// &gt; **NOTE:** Available in v1.103.0+
+        /// &gt; **NOTE:** Available since v1.103.0.
         /// 
         /// ## Example Usage
         /// 
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
         /// 
-        /// &gt; **NOTE:** Available in v1.103.0+
+        /// &gt; **NOTE:** Available since v1.103.0.
         /// 
         /// ## Example Usage
         /// 
@@ -111,6 +111,9 @@ namespace Pulumi.AliCloud.CS
 
     public sealed class GetEdgeKubernetesClustersArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `master_disk_category`, `slb_internet_enabled`, `connections`. See full list in attributes.
+        /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
 
@@ -146,6 +149,9 @@ namespace Pulumi.AliCloud.CS
 
     public sealed class GetEdgeKubernetesClustersInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `master_disk_category`, `slb_internet_enabled`, `connections`. See full list in attributes.
+        /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
 

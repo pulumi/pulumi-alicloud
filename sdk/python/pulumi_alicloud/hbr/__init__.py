@@ -5,6 +5,7 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .cross_account import *
 from .ecs_backup_client import *
 from .ecs_backup_plan import *
 from .get_backup_jobs import *

@@ -22,6 +22,16 @@ import com.pulumi.alicloud.vpc.inputs.GetForwardEntriesArgs;
 import com.pulumi.alicloud.vpc.inputs.GetForwardEntriesPlainArgs;
 import com.pulumi.alicloud.vpc.inputs.GetHavipsArgs;
 import com.pulumi.alicloud.vpc.inputs.GetHavipsPlainArgs;
+import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolAllocationsArgs;
+import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolAllocationsPlainArgs;
+import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolCidrsArgs;
+import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolCidrsPlainArgs;
+import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolsArgs;
+import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolsPlainArgs;
+import com.pulumi.alicloud.vpc.inputs.GetIpamIpamScopesArgs;
+import com.pulumi.alicloud.vpc.inputs.GetIpamIpamScopesPlainArgs;
+import com.pulumi.alicloud.vpc.inputs.GetIpamIpamsArgs;
+import com.pulumi.alicloud.vpc.inputs.GetIpamIpamsPlainArgs;
 import com.pulumi.alicloud.vpc.inputs.GetIpsecServersArgs;
 import com.pulumi.alicloud.vpc.inputs.GetIpsecServersPlainArgs;
 import com.pulumi.alicloud.vpc.inputs.GetIpv4GatewaysArgs;
@@ -89,6 +99,11 @@ import com.pulumi.alicloud.vpc.outputs.GetEnhancedNatAvailableZonesResult;
 import com.pulumi.alicloud.vpc.outputs.GetFlowLogServiceResult;
 import com.pulumi.alicloud.vpc.outputs.GetForwardEntriesResult;
 import com.pulumi.alicloud.vpc.outputs.GetHavipsResult;
+import com.pulumi.alicloud.vpc.outputs.GetIpamIpamPoolAllocationsResult;
+import com.pulumi.alicloud.vpc.outputs.GetIpamIpamPoolCidrsResult;
+import com.pulumi.alicloud.vpc.outputs.GetIpamIpamPoolsResult;
+import com.pulumi.alicloud.vpc.outputs.GetIpamIpamScopesResult;
+import com.pulumi.alicloud.vpc.outputs.GetIpamIpamsResult;
 import com.pulumi.alicloud.vpc.outputs.GetIpsecServersResult;
 import com.pulumi.alicloud.vpc.outputs.GetIpv4GatewaysResult;
 import com.pulumi.alicloud.vpc.outputs.GetIpv6AddressesResult;
@@ -3449,6 +3464,2165 @@ public final class VpcFunctions {
      */
     public static CompletableFuture<GetHavipsResult> getHavipsPlain(GetHavipsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:vpc/getHavips:getHavips", TypeShape.of(GetHavipsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Vpc Ipam Ipam Pool Allocation available to the user.[What is Ipam Pool Allocation](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.241.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpam;
+     * import com.pulumi.alicloud.vpc.IpamIpamArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPool;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolCidr;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolCidrArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolAllocation;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolAllocationArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolAllocationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
+     *             .operatingRegionLists("cn-hangzhou")
+     *             .build());
+     * 
+     *         var defaultIpamPool = new IpamIpamPool("defaultIpamPool", IpamIpamPoolArgs.builder()
+     *             .ipamScopeId(defaultIpam.privateDefaultScopeId())
+     *             .poolRegionId("cn-hangzhou")
+     *             .build());
+     * 
+     *         var defaultIpamPoolCidr = new IpamIpamPoolCidr("defaultIpamPoolCidr", IpamIpamPoolCidrArgs.builder()
+     *             .cidr("10.0.0.0/8")
+     *             .ipamPoolId(defaultIpamPool.id())
+     *             .build());
+     * 
+     *         var defaultIpamIpamPoolAllocation = new IpamIpamPoolAllocation("defaultIpamIpamPoolAllocation", IpamIpamPoolAllocationArgs.builder()
+     *             .ipamPoolAllocationDescription("init alloc desc")
+     *             .ipamPoolAllocationName(name)
+     *             .cidr("10.0.0.0/20")
+     *             .ipamPoolId(defaultIpamPoolCidr.ipamPoolId())
+     *             .build());
+     * 
+     *         final var defaultGetIpamIpamPoolAllocations = VpcFunctions.getIpamIpamPoolAllocations(GetIpamIpamPoolAllocationsArgs.builder()
+     *             .ids(defaultIpamIpamPoolAllocation.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcIpamIpamPoolAllocationExampleId", defaultGetIpamIpamPoolAllocations.applyValue(getIpamIpamPoolAllocationsResult -> getIpamIpamPoolAllocationsResult).applyValue(defaultGetIpamIpamPoolAllocations -> defaultGetIpamIpamPoolAllocations.applyValue(getIpamIpamPoolAllocationsResult -> getIpamIpamPoolAllocationsResult.allocations()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetIpamIpamPoolAllocationsResult> getIpamIpamPoolAllocations(GetIpamIpamPoolAllocationsArgs args) {
+        return getIpamIpamPoolAllocations(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Vpc Ipam Ipam Pool Allocation available to the user.[What is Ipam Pool Allocation](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.241.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpam;
+     * import com.pulumi.alicloud.vpc.IpamIpamArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPool;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolCidr;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolCidrArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolAllocation;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolAllocationArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolAllocationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
+     *             .operatingRegionLists("cn-hangzhou")
+     *             .build());
+     * 
+     *         var defaultIpamPool = new IpamIpamPool("defaultIpamPool", IpamIpamPoolArgs.builder()
+     *             .ipamScopeId(defaultIpam.privateDefaultScopeId())
+     *             .poolRegionId("cn-hangzhou")
+     *             .build());
+     * 
+     *         var defaultIpamPoolCidr = new IpamIpamPoolCidr("defaultIpamPoolCidr", IpamIpamPoolCidrArgs.builder()
+     *             .cidr("10.0.0.0/8")
+     *             .ipamPoolId(defaultIpamPool.id())
+     *             .build());
+     * 
+     *         var defaultIpamIpamPoolAllocation = new IpamIpamPoolAllocation("defaultIpamIpamPoolAllocation", IpamIpamPoolAllocationArgs.builder()
+     *             .ipamPoolAllocationDescription("init alloc desc")
+     *             .ipamPoolAllocationName(name)
+     *             .cidr("10.0.0.0/20")
+     *             .ipamPoolId(defaultIpamPoolCidr.ipamPoolId())
+     *             .build());
+     * 
+     *         final var defaultGetIpamIpamPoolAllocations = VpcFunctions.getIpamIpamPoolAllocations(GetIpamIpamPoolAllocationsArgs.builder()
+     *             .ids(defaultIpamIpamPoolAllocation.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcIpamIpamPoolAllocationExampleId", defaultGetIpamIpamPoolAllocations.applyValue(getIpamIpamPoolAllocationsResult -> getIpamIpamPoolAllocationsResult).applyValue(defaultGetIpamIpamPoolAllocations -> defaultGetIpamIpamPoolAllocations.applyValue(getIpamIpamPoolAllocationsResult -> getIpamIpamPoolAllocationsResult.allocations()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetIpamIpamPoolAllocationsResult> getIpamIpamPoolAllocationsPlain(GetIpamIpamPoolAllocationsPlainArgs args) {
+        return getIpamIpamPoolAllocationsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Vpc Ipam Ipam Pool Allocation available to the user.[What is Ipam Pool Allocation](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.241.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpam;
+     * import com.pulumi.alicloud.vpc.IpamIpamArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPool;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolCidr;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolCidrArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolAllocation;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolAllocationArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolAllocationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
+     *             .operatingRegionLists("cn-hangzhou")
+     *             .build());
+     * 
+     *         var defaultIpamPool = new IpamIpamPool("defaultIpamPool", IpamIpamPoolArgs.builder()
+     *             .ipamScopeId(defaultIpam.privateDefaultScopeId())
+     *             .poolRegionId("cn-hangzhou")
+     *             .build());
+     * 
+     *         var defaultIpamPoolCidr = new IpamIpamPoolCidr("defaultIpamPoolCidr", IpamIpamPoolCidrArgs.builder()
+     *             .cidr("10.0.0.0/8")
+     *             .ipamPoolId(defaultIpamPool.id())
+     *             .build());
+     * 
+     *         var defaultIpamIpamPoolAllocation = new IpamIpamPoolAllocation("defaultIpamIpamPoolAllocation", IpamIpamPoolAllocationArgs.builder()
+     *             .ipamPoolAllocationDescription("init alloc desc")
+     *             .ipamPoolAllocationName(name)
+     *             .cidr("10.0.0.0/20")
+     *             .ipamPoolId(defaultIpamPoolCidr.ipamPoolId())
+     *             .build());
+     * 
+     *         final var defaultGetIpamIpamPoolAllocations = VpcFunctions.getIpamIpamPoolAllocations(GetIpamIpamPoolAllocationsArgs.builder()
+     *             .ids(defaultIpamIpamPoolAllocation.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcIpamIpamPoolAllocationExampleId", defaultGetIpamIpamPoolAllocations.applyValue(getIpamIpamPoolAllocationsResult -> getIpamIpamPoolAllocationsResult).applyValue(defaultGetIpamIpamPoolAllocations -> defaultGetIpamIpamPoolAllocations.applyValue(getIpamIpamPoolAllocationsResult -> getIpamIpamPoolAllocationsResult.allocations()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetIpamIpamPoolAllocationsResult> getIpamIpamPoolAllocations(GetIpamIpamPoolAllocationsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:vpc/getIpamIpamPoolAllocations:getIpamIpamPoolAllocations", TypeShape.of(GetIpamIpamPoolAllocationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Vpc Ipam Ipam Pool Allocation available to the user.[What is Ipam Pool Allocation](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.241.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpam;
+     * import com.pulumi.alicloud.vpc.IpamIpamArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPool;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolCidr;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolCidrArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolAllocation;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolAllocationArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolAllocationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
+     *             .operatingRegionLists("cn-hangzhou")
+     *             .build());
+     * 
+     *         var defaultIpamPool = new IpamIpamPool("defaultIpamPool", IpamIpamPoolArgs.builder()
+     *             .ipamScopeId(defaultIpam.privateDefaultScopeId())
+     *             .poolRegionId("cn-hangzhou")
+     *             .build());
+     * 
+     *         var defaultIpamPoolCidr = new IpamIpamPoolCidr("defaultIpamPoolCidr", IpamIpamPoolCidrArgs.builder()
+     *             .cidr("10.0.0.0/8")
+     *             .ipamPoolId(defaultIpamPool.id())
+     *             .build());
+     * 
+     *         var defaultIpamIpamPoolAllocation = new IpamIpamPoolAllocation("defaultIpamIpamPoolAllocation", IpamIpamPoolAllocationArgs.builder()
+     *             .ipamPoolAllocationDescription("init alloc desc")
+     *             .ipamPoolAllocationName(name)
+     *             .cidr("10.0.0.0/20")
+     *             .ipamPoolId(defaultIpamPoolCidr.ipamPoolId())
+     *             .build());
+     * 
+     *         final var defaultGetIpamIpamPoolAllocations = VpcFunctions.getIpamIpamPoolAllocations(GetIpamIpamPoolAllocationsArgs.builder()
+     *             .ids(defaultIpamIpamPoolAllocation.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcIpamIpamPoolAllocationExampleId", defaultGetIpamIpamPoolAllocations.applyValue(getIpamIpamPoolAllocationsResult -> getIpamIpamPoolAllocationsResult).applyValue(defaultGetIpamIpamPoolAllocations -> defaultGetIpamIpamPoolAllocations.applyValue(getIpamIpamPoolAllocationsResult -> getIpamIpamPoolAllocationsResult.allocations()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetIpamIpamPoolAllocationsResult> getIpamIpamPoolAllocations(GetIpamIpamPoolAllocationsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:vpc/getIpamIpamPoolAllocations:getIpamIpamPoolAllocations", TypeShape.of(GetIpamIpamPoolAllocationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Vpc Ipam Ipam Pool Allocation available to the user.[What is Ipam Pool Allocation](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.241.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpam;
+     * import com.pulumi.alicloud.vpc.IpamIpamArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPool;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolCidr;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolCidrArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolAllocation;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolAllocationArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolAllocationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
+     *             .operatingRegionLists("cn-hangzhou")
+     *             .build());
+     * 
+     *         var defaultIpamPool = new IpamIpamPool("defaultIpamPool", IpamIpamPoolArgs.builder()
+     *             .ipamScopeId(defaultIpam.privateDefaultScopeId())
+     *             .poolRegionId("cn-hangzhou")
+     *             .build());
+     * 
+     *         var defaultIpamPoolCidr = new IpamIpamPoolCidr("defaultIpamPoolCidr", IpamIpamPoolCidrArgs.builder()
+     *             .cidr("10.0.0.0/8")
+     *             .ipamPoolId(defaultIpamPool.id())
+     *             .build());
+     * 
+     *         var defaultIpamIpamPoolAllocation = new IpamIpamPoolAllocation("defaultIpamIpamPoolAllocation", IpamIpamPoolAllocationArgs.builder()
+     *             .ipamPoolAllocationDescription("init alloc desc")
+     *             .ipamPoolAllocationName(name)
+     *             .cidr("10.0.0.0/20")
+     *             .ipamPoolId(defaultIpamPoolCidr.ipamPoolId())
+     *             .build());
+     * 
+     *         final var defaultGetIpamIpamPoolAllocations = VpcFunctions.getIpamIpamPoolAllocations(GetIpamIpamPoolAllocationsArgs.builder()
+     *             .ids(defaultIpamIpamPoolAllocation.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcIpamIpamPoolAllocationExampleId", defaultGetIpamIpamPoolAllocations.applyValue(getIpamIpamPoolAllocationsResult -> getIpamIpamPoolAllocationsResult).applyValue(defaultGetIpamIpamPoolAllocations -> defaultGetIpamIpamPoolAllocations.applyValue(getIpamIpamPoolAllocationsResult -> getIpamIpamPoolAllocationsResult.allocations()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetIpamIpamPoolAllocationsResult> getIpamIpamPoolAllocationsPlain(GetIpamIpamPoolAllocationsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:vpc/getIpamIpamPoolAllocations:getIpamIpamPoolAllocations", TypeShape.of(GetIpamIpamPoolAllocationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Vpc Ipam Ipam Pool Cidr available to the user.[What is Ipam Pool Cidr](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.241.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.IpamIpam;
+     * import com.pulumi.alicloud.vpc.IpamIpamArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPool;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolCidr;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolCidrArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolCidrsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
+     *             .operatingRegionLists("cn-hangzhou")
+     *             .build());
+     * 
+     *         var defaultIpamPool = new IpamIpamPool("defaultIpamPool", IpamIpamPoolArgs.builder()
+     *             .ipamScopeId(defaultIpam.privateDefaultScopeId())
+     *             .poolRegionId(defaultIpam.regionId())
+     *             .ipVersion("IPv4")
+     *             .build());
+     * 
+     *         var defaultIpamIpamPoolCidr = new IpamIpamPoolCidr("defaultIpamIpamPoolCidr", IpamIpamPoolCidrArgs.builder()
+     *             .cidr("10.0.0.0/8")
+     *             .ipamPoolId(defaultIpamPool.id())
+     *             .build());
+     * 
+     *         final var default = VpcFunctions.getIpamIpamPoolCidrs(GetIpamIpamPoolCidrsArgs.builder()
+     *             .cidr("10.0.0.0/8")
+     *             .ipamPoolId(defaultIpamIpamPoolCidr.ipamPoolId())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcIpamIpamPoolCidrExampleId", default_.applyValue(default_ -> default_.cidrs()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetIpamIpamPoolCidrsResult> getIpamIpamPoolCidrs(GetIpamIpamPoolCidrsArgs args) {
+        return getIpamIpamPoolCidrs(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Vpc Ipam Ipam Pool Cidr available to the user.[What is Ipam Pool Cidr](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.241.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.IpamIpam;
+     * import com.pulumi.alicloud.vpc.IpamIpamArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPool;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolCidr;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolCidrArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolCidrsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
+     *             .operatingRegionLists("cn-hangzhou")
+     *             .build());
+     * 
+     *         var defaultIpamPool = new IpamIpamPool("defaultIpamPool", IpamIpamPoolArgs.builder()
+     *             .ipamScopeId(defaultIpam.privateDefaultScopeId())
+     *             .poolRegionId(defaultIpam.regionId())
+     *             .ipVersion("IPv4")
+     *             .build());
+     * 
+     *         var defaultIpamIpamPoolCidr = new IpamIpamPoolCidr("defaultIpamIpamPoolCidr", IpamIpamPoolCidrArgs.builder()
+     *             .cidr("10.0.0.0/8")
+     *             .ipamPoolId(defaultIpamPool.id())
+     *             .build());
+     * 
+     *         final var default = VpcFunctions.getIpamIpamPoolCidrs(GetIpamIpamPoolCidrsArgs.builder()
+     *             .cidr("10.0.0.0/8")
+     *             .ipamPoolId(defaultIpamIpamPoolCidr.ipamPoolId())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcIpamIpamPoolCidrExampleId", default_.applyValue(default_ -> default_.cidrs()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetIpamIpamPoolCidrsResult> getIpamIpamPoolCidrsPlain(GetIpamIpamPoolCidrsPlainArgs args) {
+        return getIpamIpamPoolCidrsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Vpc Ipam Ipam Pool Cidr available to the user.[What is Ipam Pool Cidr](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.241.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.IpamIpam;
+     * import com.pulumi.alicloud.vpc.IpamIpamArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPool;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolCidr;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolCidrArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolCidrsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
+     *             .operatingRegionLists("cn-hangzhou")
+     *             .build());
+     * 
+     *         var defaultIpamPool = new IpamIpamPool("defaultIpamPool", IpamIpamPoolArgs.builder()
+     *             .ipamScopeId(defaultIpam.privateDefaultScopeId())
+     *             .poolRegionId(defaultIpam.regionId())
+     *             .ipVersion("IPv4")
+     *             .build());
+     * 
+     *         var defaultIpamIpamPoolCidr = new IpamIpamPoolCidr("defaultIpamIpamPoolCidr", IpamIpamPoolCidrArgs.builder()
+     *             .cidr("10.0.0.0/8")
+     *             .ipamPoolId(defaultIpamPool.id())
+     *             .build());
+     * 
+     *         final var default = VpcFunctions.getIpamIpamPoolCidrs(GetIpamIpamPoolCidrsArgs.builder()
+     *             .cidr("10.0.0.0/8")
+     *             .ipamPoolId(defaultIpamIpamPoolCidr.ipamPoolId())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcIpamIpamPoolCidrExampleId", default_.applyValue(default_ -> default_.cidrs()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetIpamIpamPoolCidrsResult> getIpamIpamPoolCidrs(GetIpamIpamPoolCidrsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:vpc/getIpamIpamPoolCidrs:getIpamIpamPoolCidrs", TypeShape.of(GetIpamIpamPoolCidrsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Vpc Ipam Ipam Pool Cidr available to the user.[What is Ipam Pool Cidr](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.241.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.IpamIpam;
+     * import com.pulumi.alicloud.vpc.IpamIpamArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPool;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolCidr;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolCidrArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolCidrsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
+     *             .operatingRegionLists("cn-hangzhou")
+     *             .build());
+     * 
+     *         var defaultIpamPool = new IpamIpamPool("defaultIpamPool", IpamIpamPoolArgs.builder()
+     *             .ipamScopeId(defaultIpam.privateDefaultScopeId())
+     *             .poolRegionId(defaultIpam.regionId())
+     *             .ipVersion("IPv4")
+     *             .build());
+     * 
+     *         var defaultIpamIpamPoolCidr = new IpamIpamPoolCidr("defaultIpamIpamPoolCidr", IpamIpamPoolCidrArgs.builder()
+     *             .cidr("10.0.0.0/8")
+     *             .ipamPoolId(defaultIpamPool.id())
+     *             .build());
+     * 
+     *         final var default = VpcFunctions.getIpamIpamPoolCidrs(GetIpamIpamPoolCidrsArgs.builder()
+     *             .cidr("10.0.0.0/8")
+     *             .ipamPoolId(defaultIpamIpamPoolCidr.ipamPoolId())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcIpamIpamPoolCidrExampleId", default_.applyValue(default_ -> default_.cidrs()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetIpamIpamPoolCidrsResult> getIpamIpamPoolCidrs(GetIpamIpamPoolCidrsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:vpc/getIpamIpamPoolCidrs:getIpamIpamPoolCidrs", TypeShape.of(GetIpamIpamPoolCidrsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Vpc Ipam Ipam Pool Cidr available to the user.[What is Ipam Pool Cidr](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.241.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.IpamIpam;
+     * import com.pulumi.alicloud.vpc.IpamIpamArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPool;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolCidr;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolCidrArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolCidrsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
+     *             .operatingRegionLists("cn-hangzhou")
+     *             .build());
+     * 
+     *         var defaultIpamPool = new IpamIpamPool("defaultIpamPool", IpamIpamPoolArgs.builder()
+     *             .ipamScopeId(defaultIpam.privateDefaultScopeId())
+     *             .poolRegionId(defaultIpam.regionId())
+     *             .ipVersion("IPv4")
+     *             .build());
+     * 
+     *         var defaultIpamIpamPoolCidr = new IpamIpamPoolCidr("defaultIpamIpamPoolCidr", IpamIpamPoolCidrArgs.builder()
+     *             .cidr("10.0.0.0/8")
+     *             .ipamPoolId(defaultIpamPool.id())
+     *             .build());
+     * 
+     *         final var default = VpcFunctions.getIpamIpamPoolCidrs(GetIpamIpamPoolCidrsArgs.builder()
+     *             .cidr("10.0.0.0/8")
+     *             .ipamPoolId(defaultIpamIpamPoolCidr.ipamPoolId())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcIpamIpamPoolCidrExampleId", default_.applyValue(default_ -> default_.cidrs()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetIpamIpamPoolCidrsResult> getIpamIpamPoolCidrsPlain(GetIpamIpamPoolCidrsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:vpc/getIpamIpamPoolCidrs:getIpamIpamPoolCidrs", TypeShape.of(GetIpamIpamPoolCidrsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Vpc Ipam Ipam Pool available to the user.[What is Ipam Pool](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.241.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpam;
+     * import com.pulumi.alicloud.vpc.IpamIpamArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPool;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
+     *             .operatingRegionLists("cn-hangzhou")
+     *             .build());
+     * 
+     *         var parentIpamPool = new IpamIpamPool("parentIpamPool", IpamIpamPoolArgs.builder()
+     *             .ipamScopeId(defaultIpam.privateDefaultScopeId())
+     *             .poolRegionId("cn-hangzhou")
+     *             .build());
+     * 
+     *         var defaultIpamIpamPool = new IpamIpamPool("defaultIpamIpamPool", IpamIpamPoolArgs.builder()
+     *             .ipamScopeId(defaultIpam.privateDefaultScopeId())
+     *             .poolRegionId(parentIpamPool.poolRegionId())
+     *             .ipamPoolName(name)
+     *             .sourceIpamPoolId(parentIpamPool.id())
+     *             .ipVersion("IPv4")
+     *             .ipamPoolDescription(name)
+     *             .build());
+     * 
+     *         final var defaultGetIpamIpamPools = VpcFunctions.getIpamIpamPools(GetIpamIpamPoolsArgs.builder()
+     *             .nameRegex(defaultIpamIpamPool.name())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcIpamIpamPoolExampleId", defaultGetIpamIpamPools.applyValue(getIpamIpamPoolsResult -> getIpamIpamPoolsResult.pools()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetIpamIpamPoolsResult> getIpamIpamPools() {
+        return getIpamIpamPools(GetIpamIpamPoolsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Vpc Ipam Ipam Pool available to the user.[What is Ipam Pool](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.241.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpam;
+     * import com.pulumi.alicloud.vpc.IpamIpamArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPool;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
+     *             .operatingRegionLists("cn-hangzhou")
+     *             .build());
+     * 
+     *         var parentIpamPool = new IpamIpamPool("parentIpamPool", IpamIpamPoolArgs.builder()
+     *             .ipamScopeId(defaultIpam.privateDefaultScopeId())
+     *             .poolRegionId("cn-hangzhou")
+     *             .build());
+     * 
+     *         var defaultIpamIpamPool = new IpamIpamPool("defaultIpamIpamPool", IpamIpamPoolArgs.builder()
+     *             .ipamScopeId(defaultIpam.privateDefaultScopeId())
+     *             .poolRegionId(parentIpamPool.poolRegionId())
+     *             .ipamPoolName(name)
+     *             .sourceIpamPoolId(parentIpamPool.id())
+     *             .ipVersion("IPv4")
+     *             .ipamPoolDescription(name)
+     *             .build());
+     * 
+     *         final var defaultGetIpamIpamPools = VpcFunctions.getIpamIpamPools(GetIpamIpamPoolsArgs.builder()
+     *             .nameRegex(defaultIpamIpamPool.name())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcIpamIpamPoolExampleId", defaultGetIpamIpamPools.applyValue(getIpamIpamPoolsResult -> getIpamIpamPoolsResult.pools()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetIpamIpamPoolsResult> getIpamIpamPoolsPlain() {
+        return getIpamIpamPoolsPlain(GetIpamIpamPoolsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Vpc Ipam Ipam Pool available to the user.[What is Ipam Pool](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.241.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpam;
+     * import com.pulumi.alicloud.vpc.IpamIpamArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPool;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
+     *             .operatingRegionLists("cn-hangzhou")
+     *             .build());
+     * 
+     *         var parentIpamPool = new IpamIpamPool("parentIpamPool", IpamIpamPoolArgs.builder()
+     *             .ipamScopeId(defaultIpam.privateDefaultScopeId())
+     *             .poolRegionId("cn-hangzhou")
+     *             .build());
+     * 
+     *         var defaultIpamIpamPool = new IpamIpamPool("defaultIpamIpamPool", IpamIpamPoolArgs.builder()
+     *             .ipamScopeId(defaultIpam.privateDefaultScopeId())
+     *             .poolRegionId(parentIpamPool.poolRegionId())
+     *             .ipamPoolName(name)
+     *             .sourceIpamPoolId(parentIpamPool.id())
+     *             .ipVersion("IPv4")
+     *             .ipamPoolDescription(name)
+     *             .build());
+     * 
+     *         final var defaultGetIpamIpamPools = VpcFunctions.getIpamIpamPools(GetIpamIpamPoolsArgs.builder()
+     *             .nameRegex(defaultIpamIpamPool.name())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcIpamIpamPoolExampleId", defaultGetIpamIpamPools.applyValue(getIpamIpamPoolsResult -> getIpamIpamPoolsResult.pools()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetIpamIpamPoolsResult> getIpamIpamPools(GetIpamIpamPoolsArgs args) {
+        return getIpamIpamPools(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Vpc Ipam Ipam Pool available to the user.[What is Ipam Pool](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.241.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpam;
+     * import com.pulumi.alicloud.vpc.IpamIpamArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPool;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
+     *             .operatingRegionLists("cn-hangzhou")
+     *             .build());
+     * 
+     *         var parentIpamPool = new IpamIpamPool("parentIpamPool", IpamIpamPoolArgs.builder()
+     *             .ipamScopeId(defaultIpam.privateDefaultScopeId())
+     *             .poolRegionId("cn-hangzhou")
+     *             .build());
+     * 
+     *         var defaultIpamIpamPool = new IpamIpamPool("defaultIpamIpamPool", IpamIpamPoolArgs.builder()
+     *             .ipamScopeId(defaultIpam.privateDefaultScopeId())
+     *             .poolRegionId(parentIpamPool.poolRegionId())
+     *             .ipamPoolName(name)
+     *             .sourceIpamPoolId(parentIpamPool.id())
+     *             .ipVersion("IPv4")
+     *             .ipamPoolDescription(name)
+     *             .build());
+     * 
+     *         final var defaultGetIpamIpamPools = VpcFunctions.getIpamIpamPools(GetIpamIpamPoolsArgs.builder()
+     *             .nameRegex(defaultIpamIpamPool.name())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcIpamIpamPoolExampleId", defaultGetIpamIpamPools.applyValue(getIpamIpamPoolsResult -> getIpamIpamPoolsResult.pools()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetIpamIpamPoolsResult> getIpamIpamPoolsPlain(GetIpamIpamPoolsPlainArgs args) {
+        return getIpamIpamPoolsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Vpc Ipam Ipam Pool available to the user.[What is Ipam Pool](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.241.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpam;
+     * import com.pulumi.alicloud.vpc.IpamIpamArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPool;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
+     *             .operatingRegionLists("cn-hangzhou")
+     *             .build());
+     * 
+     *         var parentIpamPool = new IpamIpamPool("parentIpamPool", IpamIpamPoolArgs.builder()
+     *             .ipamScopeId(defaultIpam.privateDefaultScopeId())
+     *             .poolRegionId("cn-hangzhou")
+     *             .build());
+     * 
+     *         var defaultIpamIpamPool = new IpamIpamPool("defaultIpamIpamPool", IpamIpamPoolArgs.builder()
+     *             .ipamScopeId(defaultIpam.privateDefaultScopeId())
+     *             .poolRegionId(parentIpamPool.poolRegionId())
+     *             .ipamPoolName(name)
+     *             .sourceIpamPoolId(parentIpamPool.id())
+     *             .ipVersion("IPv4")
+     *             .ipamPoolDescription(name)
+     *             .build());
+     * 
+     *         final var defaultGetIpamIpamPools = VpcFunctions.getIpamIpamPools(GetIpamIpamPoolsArgs.builder()
+     *             .nameRegex(defaultIpamIpamPool.name())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcIpamIpamPoolExampleId", defaultGetIpamIpamPools.applyValue(getIpamIpamPoolsResult -> getIpamIpamPoolsResult.pools()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetIpamIpamPoolsResult> getIpamIpamPools(GetIpamIpamPoolsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:vpc/getIpamIpamPools:getIpamIpamPools", TypeShape.of(GetIpamIpamPoolsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Vpc Ipam Ipam Pool available to the user.[What is Ipam Pool](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.241.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpam;
+     * import com.pulumi.alicloud.vpc.IpamIpamArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPool;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
+     *             .operatingRegionLists("cn-hangzhou")
+     *             .build());
+     * 
+     *         var parentIpamPool = new IpamIpamPool("parentIpamPool", IpamIpamPoolArgs.builder()
+     *             .ipamScopeId(defaultIpam.privateDefaultScopeId())
+     *             .poolRegionId("cn-hangzhou")
+     *             .build());
+     * 
+     *         var defaultIpamIpamPool = new IpamIpamPool("defaultIpamIpamPool", IpamIpamPoolArgs.builder()
+     *             .ipamScopeId(defaultIpam.privateDefaultScopeId())
+     *             .poolRegionId(parentIpamPool.poolRegionId())
+     *             .ipamPoolName(name)
+     *             .sourceIpamPoolId(parentIpamPool.id())
+     *             .ipVersion("IPv4")
+     *             .ipamPoolDescription(name)
+     *             .build());
+     * 
+     *         final var defaultGetIpamIpamPools = VpcFunctions.getIpamIpamPools(GetIpamIpamPoolsArgs.builder()
+     *             .nameRegex(defaultIpamIpamPool.name())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcIpamIpamPoolExampleId", defaultGetIpamIpamPools.applyValue(getIpamIpamPoolsResult -> getIpamIpamPoolsResult.pools()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetIpamIpamPoolsResult> getIpamIpamPools(GetIpamIpamPoolsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:vpc/getIpamIpamPools:getIpamIpamPools", TypeShape.of(GetIpamIpamPoolsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Vpc Ipam Ipam Pool available to the user.[What is Ipam Pool](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.241.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpam;
+     * import com.pulumi.alicloud.vpc.IpamIpamArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPool;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
+     *             .operatingRegionLists("cn-hangzhou")
+     *             .build());
+     * 
+     *         var parentIpamPool = new IpamIpamPool("parentIpamPool", IpamIpamPoolArgs.builder()
+     *             .ipamScopeId(defaultIpam.privateDefaultScopeId())
+     *             .poolRegionId("cn-hangzhou")
+     *             .build());
+     * 
+     *         var defaultIpamIpamPool = new IpamIpamPool("defaultIpamIpamPool", IpamIpamPoolArgs.builder()
+     *             .ipamScopeId(defaultIpam.privateDefaultScopeId())
+     *             .poolRegionId(parentIpamPool.poolRegionId())
+     *             .ipamPoolName(name)
+     *             .sourceIpamPoolId(parentIpamPool.id())
+     *             .ipVersion("IPv4")
+     *             .ipamPoolDescription(name)
+     *             .build());
+     * 
+     *         final var defaultGetIpamIpamPools = VpcFunctions.getIpamIpamPools(GetIpamIpamPoolsArgs.builder()
+     *             .nameRegex(defaultIpamIpamPool.name())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcIpamIpamPoolExampleId", defaultGetIpamIpamPools.applyValue(getIpamIpamPoolsResult -> getIpamIpamPoolsResult.pools()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetIpamIpamPoolsResult> getIpamIpamPoolsPlain(GetIpamIpamPoolsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:vpc/getIpamIpamPools:getIpamIpamPools", TypeShape.of(GetIpamIpamPoolsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Vpc Ipam Ipam Scope available to the user.[What is Ipam Scope](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.241.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpam;
+     * import com.pulumi.alicloud.vpc.IpamIpamArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamScope;
+     * import com.pulumi.alicloud.vpc.IpamIpamScopeArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamScopesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
+     *             .operatingRegionLists("cn-hangzhou")
+     *             .ipamName(name)
+     *             .build());
+     * 
+     *         var defaultIpamIpamScope = new IpamIpamScope("defaultIpamIpamScope", IpamIpamScopeArgs.builder()
+     *             .ipamScopeName(name)
+     *             .ipamId(defaultIpam.id())
+     *             .ipamScopeDescription("This is a ipam scope.")
+     *             .ipamScopeType("private")
+     *             .tags(Map.of("k1", "v1"))
+     *             .build());
+     * 
+     *         final var defaultGetIpamIpamScopes = VpcFunctions.getIpamIpamScopes(GetIpamIpamScopesArgs.builder()
+     *             .ipamScopeName(defaultIpamIpamScope.ipamScopeName())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(getIpamIpamScopesResult -> getIpamIpamScopesResult).applyValue(defaultGetIpamIpamScopes -> defaultGetIpamIpamScopes.applyValue(getIpamIpamScopesResult -> getIpamIpamScopesResult.scopes()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetIpamIpamScopesResult> getIpamIpamScopes() {
+        return getIpamIpamScopes(GetIpamIpamScopesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Vpc Ipam Ipam Scope available to the user.[What is Ipam Scope](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.241.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpam;
+     * import com.pulumi.alicloud.vpc.IpamIpamArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamScope;
+     * import com.pulumi.alicloud.vpc.IpamIpamScopeArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamScopesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
+     *             .operatingRegionLists("cn-hangzhou")
+     *             .ipamName(name)
+     *             .build());
+     * 
+     *         var defaultIpamIpamScope = new IpamIpamScope("defaultIpamIpamScope", IpamIpamScopeArgs.builder()
+     *             .ipamScopeName(name)
+     *             .ipamId(defaultIpam.id())
+     *             .ipamScopeDescription("This is a ipam scope.")
+     *             .ipamScopeType("private")
+     *             .tags(Map.of("k1", "v1"))
+     *             .build());
+     * 
+     *         final var defaultGetIpamIpamScopes = VpcFunctions.getIpamIpamScopes(GetIpamIpamScopesArgs.builder()
+     *             .ipamScopeName(defaultIpamIpamScope.ipamScopeName())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(getIpamIpamScopesResult -> getIpamIpamScopesResult).applyValue(defaultGetIpamIpamScopes -> defaultGetIpamIpamScopes.applyValue(getIpamIpamScopesResult -> getIpamIpamScopesResult.scopes()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetIpamIpamScopesResult> getIpamIpamScopesPlain() {
+        return getIpamIpamScopesPlain(GetIpamIpamScopesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Vpc Ipam Ipam Scope available to the user.[What is Ipam Scope](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.241.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpam;
+     * import com.pulumi.alicloud.vpc.IpamIpamArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamScope;
+     * import com.pulumi.alicloud.vpc.IpamIpamScopeArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamScopesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
+     *             .operatingRegionLists("cn-hangzhou")
+     *             .ipamName(name)
+     *             .build());
+     * 
+     *         var defaultIpamIpamScope = new IpamIpamScope("defaultIpamIpamScope", IpamIpamScopeArgs.builder()
+     *             .ipamScopeName(name)
+     *             .ipamId(defaultIpam.id())
+     *             .ipamScopeDescription("This is a ipam scope.")
+     *             .ipamScopeType("private")
+     *             .tags(Map.of("k1", "v1"))
+     *             .build());
+     * 
+     *         final var defaultGetIpamIpamScopes = VpcFunctions.getIpamIpamScopes(GetIpamIpamScopesArgs.builder()
+     *             .ipamScopeName(defaultIpamIpamScope.ipamScopeName())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(getIpamIpamScopesResult -> getIpamIpamScopesResult).applyValue(defaultGetIpamIpamScopes -> defaultGetIpamIpamScopes.applyValue(getIpamIpamScopesResult -> getIpamIpamScopesResult.scopes()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetIpamIpamScopesResult> getIpamIpamScopes(GetIpamIpamScopesArgs args) {
+        return getIpamIpamScopes(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Vpc Ipam Ipam Scope available to the user.[What is Ipam Scope](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.241.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpam;
+     * import com.pulumi.alicloud.vpc.IpamIpamArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamScope;
+     * import com.pulumi.alicloud.vpc.IpamIpamScopeArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamScopesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
+     *             .operatingRegionLists("cn-hangzhou")
+     *             .ipamName(name)
+     *             .build());
+     * 
+     *         var defaultIpamIpamScope = new IpamIpamScope("defaultIpamIpamScope", IpamIpamScopeArgs.builder()
+     *             .ipamScopeName(name)
+     *             .ipamId(defaultIpam.id())
+     *             .ipamScopeDescription("This is a ipam scope.")
+     *             .ipamScopeType("private")
+     *             .tags(Map.of("k1", "v1"))
+     *             .build());
+     * 
+     *         final var defaultGetIpamIpamScopes = VpcFunctions.getIpamIpamScopes(GetIpamIpamScopesArgs.builder()
+     *             .ipamScopeName(defaultIpamIpamScope.ipamScopeName())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(getIpamIpamScopesResult -> getIpamIpamScopesResult).applyValue(defaultGetIpamIpamScopes -> defaultGetIpamIpamScopes.applyValue(getIpamIpamScopesResult -> getIpamIpamScopesResult.scopes()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetIpamIpamScopesResult> getIpamIpamScopesPlain(GetIpamIpamScopesPlainArgs args) {
+        return getIpamIpamScopesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Vpc Ipam Ipam Scope available to the user.[What is Ipam Scope](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.241.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpam;
+     * import com.pulumi.alicloud.vpc.IpamIpamArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamScope;
+     * import com.pulumi.alicloud.vpc.IpamIpamScopeArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamScopesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
+     *             .operatingRegionLists("cn-hangzhou")
+     *             .ipamName(name)
+     *             .build());
+     * 
+     *         var defaultIpamIpamScope = new IpamIpamScope("defaultIpamIpamScope", IpamIpamScopeArgs.builder()
+     *             .ipamScopeName(name)
+     *             .ipamId(defaultIpam.id())
+     *             .ipamScopeDescription("This is a ipam scope.")
+     *             .ipamScopeType("private")
+     *             .tags(Map.of("k1", "v1"))
+     *             .build());
+     * 
+     *         final var defaultGetIpamIpamScopes = VpcFunctions.getIpamIpamScopes(GetIpamIpamScopesArgs.builder()
+     *             .ipamScopeName(defaultIpamIpamScope.ipamScopeName())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(getIpamIpamScopesResult -> getIpamIpamScopesResult).applyValue(defaultGetIpamIpamScopes -> defaultGetIpamIpamScopes.applyValue(getIpamIpamScopesResult -> getIpamIpamScopesResult.scopes()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetIpamIpamScopesResult> getIpamIpamScopes(GetIpamIpamScopesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:vpc/getIpamIpamScopes:getIpamIpamScopes", TypeShape.of(GetIpamIpamScopesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Vpc Ipam Ipam Scope available to the user.[What is Ipam Scope](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.241.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpam;
+     * import com.pulumi.alicloud.vpc.IpamIpamArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamScope;
+     * import com.pulumi.alicloud.vpc.IpamIpamScopeArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamScopesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
+     *             .operatingRegionLists("cn-hangzhou")
+     *             .ipamName(name)
+     *             .build());
+     * 
+     *         var defaultIpamIpamScope = new IpamIpamScope("defaultIpamIpamScope", IpamIpamScopeArgs.builder()
+     *             .ipamScopeName(name)
+     *             .ipamId(defaultIpam.id())
+     *             .ipamScopeDescription("This is a ipam scope.")
+     *             .ipamScopeType("private")
+     *             .tags(Map.of("k1", "v1"))
+     *             .build());
+     * 
+     *         final var defaultGetIpamIpamScopes = VpcFunctions.getIpamIpamScopes(GetIpamIpamScopesArgs.builder()
+     *             .ipamScopeName(defaultIpamIpamScope.ipamScopeName())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(getIpamIpamScopesResult -> getIpamIpamScopesResult).applyValue(defaultGetIpamIpamScopes -> defaultGetIpamIpamScopes.applyValue(getIpamIpamScopesResult -> getIpamIpamScopesResult.scopes()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetIpamIpamScopesResult> getIpamIpamScopes(GetIpamIpamScopesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:vpc/getIpamIpamScopes:getIpamIpamScopes", TypeShape.of(GetIpamIpamScopesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Vpc Ipam Ipam Scope available to the user.[What is Ipam Scope](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.241.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpam;
+     * import com.pulumi.alicloud.vpc.IpamIpamArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamScope;
+     * import com.pulumi.alicloud.vpc.IpamIpamScopeArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamScopesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
+     *             .operatingRegionLists("cn-hangzhou")
+     *             .ipamName(name)
+     *             .build());
+     * 
+     *         var defaultIpamIpamScope = new IpamIpamScope("defaultIpamIpamScope", IpamIpamScopeArgs.builder()
+     *             .ipamScopeName(name)
+     *             .ipamId(defaultIpam.id())
+     *             .ipamScopeDescription("This is a ipam scope.")
+     *             .ipamScopeType("private")
+     *             .tags(Map.of("k1", "v1"))
+     *             .build());
+     * 
+     *         final var defaultGetIpamIpamScopes = VpcFunctions.getIpamIpamScopes(GetIpamIpamScopesArgs.builder()
+     *             .ipamScopeName(defaultIpamIpamScope.ipamScopeName())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(getIpamIpamScopesResult -> getIpamIpamScopesResult).applyValue(defaultGetIpamIpamScopes -> defaultGetIpamIpamScopes.applyValue(getIpamIpamScopesResult -> getIpamIpamScopesResult.scopes()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetIpamIpamScopesResult> getIpamIpamScopesPlain(GetIpamIpamScopesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:vpc/getIpamIpamScopes:getIpamIpamScopes", TypeShape.of(GetIpamIpamScopesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Vpc Ipam Ipam available to the user.[What is Ipam](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.241.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpam;
+     * import com.pulumi.alicloud.vpc.IpamIpamArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultIpamIpam = new IpamIpam("defaultIpamIpam", IpamIpamArgs.builder()
+     *             .ipamDescription("This is my first Ipam.")
+     *             .ipamName(name)
+     *             .operatingRegionLists("cn-hangzhou")
+     *             .build());
+     * 
+     *         final var defaultGetIpamIpams = VpcFunctions.getIpamIpams(GetIpamIpamsArgs.builder()
+     *             .ids(defaultIpamIpam.id())
+     *             .nameRegex(defaultIpamIpam.ipamName())
+     *             .ipamName(name)
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(getIpamIpamsResult -> getIpamIpamsResult).applyValue(defaultGetIpamIpams -> defaultGetIpamIpams.applyValue(getIpamIpamsResult -> getIpamIpamsResult.ipams()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetIpamIpamsResult> getIpamIpams() {
+        return getIpamIpams(GetIpamIpamsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Vpc Ipam Ipam available to the user.[What is Ipam](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.241.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpam;
+     * import com.pulumi.alicloud.vpc.IpamIpamArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultIpamIpam = new IpamIpam("defaultIpamIpam", IpamIpamArgs.builder()
+     *             .ipamDescription("This is my first Ipam.")
+     *             .ipamName(name)
+     *             .operatingRegionLists("cn-hangzhou")
+     *             .build());
+     * 
+     *         final var defaultGetIpamIpams = VpcFunctions.getIpamIpams(GetIpamIpamsArgs.builder()
+     *             .ids(defaultIpamIpam.id())
+     *             .nameRegex(defaultIpamIpam.ipamName())
+     *             .ipamName(name)
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(getIpamIpamsResult -> getIpamIpamsResult).applyValue(defaultGetIpamIpams -> defaultGetIpamIpams.applyValue(getIpamIpamsResult -> getIpamIpamsResult.ipams()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetIpamIpamsResult> getIpamIpamsPlain() {
+        return getIpamIpamsPlain(GetIpamIpamsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Vpc Ipam Ipam available to the user.[What is Ipam](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.241.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpam;
+     * import com.pulumi.alicloud.vpc.IpamIpamArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultIpamIpam = new IpamIpam("defaultIpamIpam", IpamIpamArgs.builder()
+     *             .ipamDescription("This is my first Ipam.")
+     *             .ipamName(name)
+     *             .operatingRegionLists("cn-hangzhou")
+     *             .build());
+     * 
+     *         final var defaultGetIpamIpams = VpcFunctions.getIpamIpams(GetIpamIpamsArgs.builder()
+     *             .ids(defaultIpamIpam.id())
+     *             .nameRegex(defaultIpamIpam.ipamName())
+     *             .ipamName(name)
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(getIpamIpamsResult -> getIpamIpamsResult).applyValue(defaultGetIpamIpams -> defaultGetIpamIpams.applyValue(getIpamIpamsResult -> getIpamIpamsResult.ipams()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetIpamIpamsResult> getIpamIpams(GetIpamIpamsArgs args) {
+        return getIpamIpams(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Vpc Ipam Ipam available to the user.[What is Ipam](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.241.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpam;
+     * import com.pulumi.alicloud.vpc.IpamIpamArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultIpamIpam = new IpamIpam("defaultIpamIpam", IpamIpamArgs.builder()
+     *             .ipamDescription("This is my first Ipam.")
+     *             .ipamName(name)
+     *             .operatingRegionLists("cn-hangzhou")
+     *             .build());
+     * 
+     *         final var defaultGetIpamIpams = VpcFunctions.getIpamIpams(GetIpamIpamsArgs.builder()
+     *             .ids(defaultIpamIpam.id())
+     *             .nameRegex(defaultIpamIpam.ipamName())
+     *             .ipamName(name)
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(getIpamIpamsResult -> getIpamIpamsResult).applyValue(defaultGetIpamIpams -> defaultGetIpamIpams.applyValue(getIpamIpamsResult -> getIpamIpamsResult.ipams()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetIpamIpamsResult> getIpamIpamsPlain(GetIpamIpamsPlainArgs args) {
+        return getIpamIpamsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Vpc Ipam Ipam available to the user.[What is Ipam](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.241.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpam;
+     * import com.pulumi.alicloud.vpc.IpamIpamArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultIpamIpam = new IpamIpam("defaultIpamIpam", IpamIpamArgs.builder()
+     *             .ipamDescription("This is my first Ipam.")
+     *             .ipamName(name)
+     *             .operatingRegionLists("cn-hangzhou")
+     *             .build());
+     * 
+     *         final var defaultGetIpamIpams = VpcFunctions.getIpamIpams(GetIpamIpamsArgs.builder()
+     *             .ids(defaultIpamIpam.id())
+     *             .nameRegex(defaultIpamIpam.ipamName())
+     *             .ipamName(name)
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(getIpamIpamsResult -> getIpamIpamsResult).applyValue(defaultGetIpamIpams -> defaultGetIpamIpams.applyValue(getIpamIpamsResult -> getIpamIpamsResult.ipams()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetIpamIpamsResult> getIpamIpams(GetIpamIpamsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:vpc/getIpamIpams:getIpamIpams", TypeShape.of(GetIpamIpamsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Vpc Ipam Ipam available to the user.[What is Ipam](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.241.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpam;
+     * import com.pulumi.alicloud.vpc.IpamIpamArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultIpamIpam = new IpamIpam("defaultIpamIpam", IpamIpamArgs.builder()
+     *             .ipamDescription("This is my first Ipam.")
+     *             .ipamName(name)
+     *             .operatingRegionLists("cn-hangzhou")
+     *             .build());
+     * 
+     *         final var defaultGetIpamIpams = VpcFunctions.getIpamIpams(GetIpamIpamsArgs.builder()
+     *             .ids(defaultIpamIpam.id())
+     *             .nameRegex(defaultIpamIpam.ipamName())
+     *             .ipamName(name)
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(getIpamIpamsResult -> getIpamIpamsResult).applyValue(defaultGetIpamIpams -> defaultGetIpamIpams.applyValue(getIpamIpamsResult -> getIpamIpamsResult.ipams()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetIpamIpamsResult> getIpamIpams(GetIpamIpamsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:vpc/getIpamIpams:getIpamIpams", TypeShape.of(GetIpamIpamsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Vpc Ipam Ipam available to the user.[What is Ipam](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.241.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpam;
+     * import com.pulumi.alicloud.vpc.IpamIpamArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     * 
+     *         var defaultIpamIpam = new IpamIpam("defaultIpamIpam", IpamIpamArgs.builder()
+     *             .ipamDescription("This is my first Ipam.")
+     *             .ipamName(name)
+     *             .operatingRegionLists("cn-hangzhou")
+     *             .build());
+     * 
+     *         final var defaultGetIpamIpams = VpcFunctions.getIpamIpams(GetIpamIpamsArgs.builder()
+     *             .ids(defaultIpamIpam.id())
+     *             .nameRegex(defaultIpamIpam.ipamName())
+     *             .ipamName(name)
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(getIpamIpamsResult -> getIpamIpamsResult).applyValue(defaultGetIpamIpams -> defaultGetIpamIpams.applyValue(getIpamIpamsResult -> getIpamIpamsResult.ipams()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetIpamIpamsResult> getIpamIpamsPlain(GetIpamIpamsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:vpc/getIpamIpams:getIpamIpams", TypeShape.of(GetIpamIpamsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the Vpn Ipsec Servers of the current Alibaba Cloud user.

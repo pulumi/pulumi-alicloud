@@ -40,6 +40,21 @@ public final class SecretParameterState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Parameter creation time
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return Parameter creation time
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
      * The description of the encryption parameter. The description must be `1` to `200` characters in length.
      * 
      */
@@ -52,6 +67,21 @@ public final class SecretParameterState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * The ID of the KMS instance.
+     * 
+     */
+    @Import(name="dkmsInstanceId")
+    private @Nullable Output<String> dkmsInstanceId;
+
+    /**
+     * @return The ID of the KMS instance.
+     * 
+     */
+    public Optional<Output<String>> dkmsInstanceId() {
+        return Optional.ofNullable(this.dkmsInstanceId);
     }
 
     /**
@@ -148,7 +178,9 @@ public final class SecretParameterState extends com.pulumi.resources.ResourceArg
 
     private SecretParameterState(SecretParameterState $) {
         this.constraints = $.constraints;
+        this.createTime = $.createTime;
         this.description = $.description;
+        this.dkmsInstanceId = $.dkmsInstanceId;
         this.keyId = $.keyId;
         this.resourceGroupId = $.resourceGroupId;
         this.secretParameterName = $.secretParameterName;
@@ -205,6 +237,27 @@ public final class SecretParameterState extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param createTime Parameter creation time
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime Parameter creation time
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
          * @param description The description of the encryption parameter. The description must be `1` to `200` characters in length.
          * 
          * @return builder
@@ -223,6 +276,27 @@ public final class SecretParameterState extends com.pulumi.resources.ResourceArg
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param dkmsInstanceId The ID of the KMS instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dkmsInstanceId(@Nullable Output<String> dkmsInstanceId) {
+            $.dkmsInstanceId = dkmsInstanceId;
+            return this;
+        }
+
+        /**
+         * @param dkmsInstanceId The ID of the KMS instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dkmsInstanceId(String dkmsInstanceId) {
+            return dkmsInstanceId(Output.of(dkmsInstanceId));
         }
 
         /**

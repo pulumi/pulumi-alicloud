@@ -3024,14 +3024,14 @@ class GetBucketsBucketResult(dict):
                  logging: 'outputs.GetBucketsBucketLoggingResult',
                  name: str,
                  owner: str,
+                 policy: str,
                  redundancy_type: str,
                  referer_config: 'outputs.GetBucketsBucketRefererConfigResult',
                  server_side_encryption_rule: 'outputs.GetBucketsBucketServerSideEncryptionRuleResult',
                  storage_class: str,
                  tags: Mapping[str, str],
                  versioning: 'outputs.GetBucketsBucketVersioningResult',
-                 website: 'outputs.GetBucketsBucketWebsiteResult',
-                 policy: Optional[str] = None):
+                 website: 'outputs.GetBucketsBucketWebsiteResult'):
         """
         :param str acl: Bucket access control list. Possible values: `private`, `public-read` and `public-read-write`.
         :param Sequence['GetBucketsBucketCorsRuleArgs'] cors_rules: A list of CORS rule configurations. Each element contains the following attributes:
@@ -3043,6 +3043,7 @@ class GetBucketsBucketResult(dict):
         :param 'GetBucketsBucketLoggingArgs' logging: A list of one element containing configuration parameters used for storing access log information. It contains the following attributes:
         :param str name: Bucket name.
         :param str owner: Bucket owner.
+        :param str policy: The policies configured for a specified bucket.
         :param str redundancy_type: Redundancy type. Possible values: `LRS`, and `ZRS`.
         :param 'GetBucketsBucketRefererConfigArgs' referer_config: A list of one element containing referer configuration. It contains the following attributes:
         :param 'GetBucketsBucketServerSideEncryptionRuleArgs' server_side_encryption_rule: A configuration of default encryption for a bucket. It contains the following attributes:
@@ -3061,6 +3062,7 @@ class GetBucketsBucketResult(dict):
         pulumi.set(__self__, "logging", logging)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "owner", owner)
+        pulumi.set(__self__, "policy", policy)
         pulumi.set(__self__, "redundancy_type", redundancy_type)
         pulumi.set(__self__, "referer_config", referer_config)
         pulumi.set(__self__, "server_side_encryption_rule", server_side_encryption_rule)
@@ -3068,8 +3070,6 @@ class GetBucketsBucketResult(dict):
         pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "versioning", versioning)
         pulumi.set(__self__, "website", website)
-        if policy is not None:
-            pulumi.set(__self__, "policy", policy)
 
     @property
     @pulumi.getter
@@ -3152,6 +3152,14 @@ class GetBucketsBucketResult(dict):
         return pulumi.get(self, "owner")
 
     @property
+    @pulumi.getter
+    def policy(self) -> str:
+        """
+        The policies configured for a specified bucket.
+        """
+        return pulumi.get(self, "policy")
+
+    @property
     @pulumi.getter(name="redundancyType")
     def redundancy_type(self) -> str:
         """
@@ -3206,11 +3214,6 @@ class GetBucketsBucketResult(dict):
         A list of one element containing configuration parameters used when the bucket is used as a website. It contains the following attributes:
         """
         return pulumi.get(self, "website")
-
-    @property
-    @pulumi.getter
-    def policy(self) -> Optional[str]:
-        return pulumi.get(self, "policy")
 
 
 @pulumi.output_type
@@ -3329,20 +3332,18 @@ class GetBucketsBucketLifecycleRuleResult(dict):
 @pulumi.output_type
 class GetBucketsBucketLifecycleRuleExpirationResult(dict):
     def __init__(__self__, *,
-                 date: Optional[str] = None,
-                 days: Optional[int] = None):
+                 date: str,
+                 days: int):
         """
         :param str date: Date after which the rule to take effect. The format is like 2017-03-09.
         :param int days: Indicate the number of days after the last object update until the rules take effect.
         """
-        if date is not None:
-            pulumi.set(__self__, "date", date)
-        if days is not None:
-            pulumi.set(__self__, "days", days)
+        pulumi.set(__self__, "date", date)
+        pulumi.set(__self__, "days", days)
 
     @property
     @pulumi.getter
-    def date(self) -> Optional[str]:
+    def date(self) -> str:
         """
         Date after which the rule to take effect. The format is like 2017-03-09.
         """
@@ -3350,7 +3351,7 @@ class GetBucketsBucketLifecycleRuleExpirationResult(dict):
 
     @property
     @pulumi.getter
-    def days(self) -> Optional[int]:
+    def days(self) -> int:
         """
         Indicate the number of days after the last object update until the rules take effect.
         """

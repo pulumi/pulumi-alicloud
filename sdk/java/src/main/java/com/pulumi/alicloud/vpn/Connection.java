@@ -40,9 +40,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.vpn.VpnFunctions;
  * import com.pulumi.alicloud.vpn.inputs.GetGatewayZonesArgs;
- * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
- * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.vpn.Gateway;
  * import com.pulumi.alicloud.vpn.GatewayArgs;
  * import com.pulumi.alicloud.vpn.CustomerGateway;
@@ -73,28 +74,30 @@ import javax.annotation.Nullable;
  *             .spec("5M")
  *             .build());
  * 
- *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex("^default-NODELETING$")
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .cidrBlock("172.16.0.0/16")
+ *             .vpcName(name)
  *             .build());
  * 
- *         final var default0 = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+ *         var default0 = new Switch("default0", SwitchArgs.builder()
+ *             .cidrBlock("172.16.0.0/24")
+ *             .vpcId(defaultNetwork.id())
  *             .zoneId(default_.ids()[0])
  *             .build());
  * 
- *         final var default1 = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+ *         var default1 = new Switch("default1", SwitchArgs.builder()
+ *             .cidrBlock("172.16.1.0/24")
+ *             .vpcId(defaultNetwork.id())
  *             .zoneId(default_.ids()[1])
  *             .build());
  * 
  *         var hA_VPN = new Gateway("HA-VPN", GatewayArgs.builder()
  *             .vpnType("Normal")
- *             .disasterRecoveryVswitchId(default1.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+ *             .disasterRecoveryVswitchId(default1.id())
  *             .vpnGatewayName(name)
- *             .vswitchId(default0.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+ *             .vswitchId(default0.id())
  *             .autoPay(true)
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+ *             .vpcId(defaultNetwork.id())
  *             .networkType("public")
  *             .paymentType("Subscription")
  *             .enableIpsec(true)
@@ -494,16 +497,12 @@ public class Connection extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the VPN gateway.
      * 
-     * The following arguments will be discarded. Please use new fields as soon as possible:
-     * 
      */
     @Export(name="vpnGatewayId", refs={String.class}, tree="[0]")
     private Output<String> vpnGatewayId;
 
     /**
      * @return The ID of the VPN gateway.
-     * 
-     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Output<String> vpnGatewayId() {

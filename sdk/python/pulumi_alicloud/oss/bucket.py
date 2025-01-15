@@ -1161,7 +1161,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def bucket(self) -> pulumi.Output[Optional[str]]:
+    def bucket(self) -> pulumi.Output[str]:
         return pulumi.get(self, "bucket")
 
     @property

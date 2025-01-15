@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
  * 
  * For information about ECS Session Manager Status and how to use it, see [What is Session Manager Status](https://www.alibabacloud.com/help/zh/doc-detail/337915.html).
  * 
- * &gt; **NOTE:** Available in v1.148.0+.
+ * &gt; **NOTE:** Available since v1.148.0.
  * 
  * ## Example Usage
  * 
@@ -63,35 +63,35 @@ import javax.annotation.Nullable;
  * ECS Session Manager Status can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus example &lt;session_manager_status_name&gt;
+ * $ pulumi import alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus")
 public class EcsSessionManagerStatus extends com.pulumi.resources.CustomResource {
     /**
-     * The name of the resource. Valid values: `sessionManagerStatus`.
+     * The name of the Session Manager Status. Valid values: `sessionManagerStatus`.
      * 
      */
     @Export(name="sessionManagerStatusName", refs={String.class}, tree="[0]")
     private Output<String> sessionManagerStatusName;
 
     /**
-     * @return The name of the resource. Valid values: `sessionManagerStatus`.
+     * @return The name of the Session Manager Status. Valid values: `sessionManagerStatus`.
      * 
      */
     public Output<String> sessionManagerStatusName() {
         return this.sessionManagerStatusName;
     }
     /**
-     * The status of the resource. Valid values: `Disabled`, `Enabled`.
+     * The status of the Session Manager Status. Valid values: `Enabled`, `Disabled`.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource. Valid values: `Disabled`, `Enabled`.
+     * @return The status of the Session Manager Status. Valid values: `Enabled`, `Disabled`.
      * 
      */
     public Output<String> status() {

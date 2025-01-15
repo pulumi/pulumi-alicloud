@@ -918,7 +918,7 @@ public final class DnsFunctions {
     /**
      * This data source provides a list of Alidns Domains in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:**  Available in 1.95.0+.
+     * &gt; **NOTE:** Available since v1.95.0.
      * 
      * ## Example Usage
      * 
@@ -964,7 +964,7 @@ public final class DnsFunctions {
     /**
      * This data source provides a list of Alidns Domains in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:**  Available in 1.95.0+.
+     * &gt; **NOTE:** Available since v1.95.0.
      * 
      * ## Example Usage
      * 
@@ -1010,7 +1010,7 @@ public final class DnsFunctions {
     /**
      * This data source provides a list of Alidns Domains in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:**  Available in 1.95.0+.
+     * &gt; **NOTE:** Available since v1.95.0.
      * 
      * ## Example Usage
      * 
@@ -1056,7 +1056,7 @@ public final class DnsFunctions {
     /**
      * This data source provides a list of Alidns Domains in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:**  Available in 1.95.0+.
+     * &gt; **NOTE:** Available since v1.95.0.
      * 
      * ## Example Usage
      * 
@@ -1102,7 +1102,7 @@ public final class DnsFunctions {
     /**
      * This data source provides a list of Alidns Domains in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:**  Available in 1.95.0+.
+     * &gt; **NOTE:** Available since v1.95.0.
      * 
      * ## Example Usage
      * 
@@ -1148,7 +1148,7 @@ public final class DnsFunctions {
     /**
      * This data source provides a list of Alidns Domains in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:**  Available in 1.95.0+.
+     * &gt; **NOTE:** Available since v1.95.0.
      * 
      * ## Example Usage
      * 
@@ -1194,7 +1194,7 @@ public final class DnsFunctions {
     /**
      * This data source provides a list of Alidns Domains in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:**  Available in 1.95.0+.
+     * &gt; **NOTE:** Available since v1.95.0.
      * 
      * ## Example Usage
      * 

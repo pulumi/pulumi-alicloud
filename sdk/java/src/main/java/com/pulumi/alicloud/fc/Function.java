@@ -261,14 +261,28 @@ public class Function extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.filename);
     }
     /**
-     * The Function Compute service ID.
+     * The Function Compute service function arn. It formats as `acs:fc:&lt;region&gt;:&lt;uid&gt;:services/&lt;serviceName&gt;.LATEST/functions/&lt;functionName&gt;`.
+     * 
+     */
+    @Export(name="functionArn", refs={String.class}, tree="[0]")
+    private Output<String> functionArn;
+
+    /**
+     * @return The Function Compute service function arn. It formats as `acs:fc:&lt;region&gt;:&lt;uid&gt;:services/&lt;serviceName&gt;.LATEST/functions/&lt;functionName&gt;`.
+     * 
+     */
+    public Output<String> functionArn() {
+        return this.functionArn;
+    }
+    /**
+     * The Function Compute service function ID.
      * 
      */
     @Export(name="functionId", refs={String.class}, tree="[0]")
     private Output<String> functionId;
 
     /**
-     * @return The Function Compute service ID.
+     * @return The Function Compute service function ID.
      * 
      */
     public Output<String> functionId() {

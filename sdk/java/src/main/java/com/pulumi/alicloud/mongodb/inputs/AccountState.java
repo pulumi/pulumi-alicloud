@@ -16,18 +16,18 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     public static final AccountState Empty = new AccountState();
 
     /**
-     * The description of the account.
-     * * The description must start with a letter, and cannot start with `http://` or `https://`.
-     * * It must be `2` to `256` characters in length, and can contain letters, digits, underscores (_), and hyphens (-).
+     * Account comment information.
+     * 
+     * &gt; **NOTE:**  Call the ModifyAccountDescription interface to set the account description information before this parameter is returned.
      * 
      */
     @Import(name="accountDescription")
     private @Nullable Output<String> accountDescription;
 
     /**
-     * @return The description of the account.
-     * * The description must start with a letter, and cannot start with `http://` or `https://`.
-     * * It must be `2` to `256` characters in length, and can contain letters, digits, underscores (_), and hyphens (-).
+     * @return Account comment information.
+     * 
+     * &gt; **NOTE:**  Call the ModifyAccountDescription interface to set the account description information before this parameter is returned.
      * 
      */
     public Optional<Output<String>> accountDescription() {
@@ -35,14 +35,20 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the account. Valid values: `root`.
+     * The new password.
+     * 
+     * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ &amp; * ( ) _ + - =`
+     * - The password must be 8 to 32 characters in length.
      * 
      */
     @Import(name="accountName")
     private @Nullable Output<String> accountName;
 
     /**
-     * @return The name of the account. Valid values: `root`.
+     * @return The new password.
+     * 
+     * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ &amp; * ( ) _ + - =`
+     * - The password must be 8 to 32 characters in length.
      * 
      */
     public Optional<Output<String>> accountName() {
@@ -50,18 +56,14 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Password of the Account.
-     * * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
-     * * The password must be `8` to `32` characters in length.
+     * The password of the database account. The password must be 8 to 32 characters in length. It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! # $ % ^ &amp; \* ( ) \_ + - =
      * 
      */
     @Import(name="accountPassword")
     private @Nullable Output<String> accountPassword;
 
     /**
-     * @return The Password of the Account.
-     * * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
-     * * The password must be `8` to `32` characters in length.
+     * @return The password of the database account. The password must be 8 to 32 characters in length. It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! # $ % ^ &amp; \* ( ) \_ + - =
      * 
      */
     public Optional<Output<String>> accountPassword() {
@@ -69,14 +71,35 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the instance.
+     * The role type of the instance. Value description
+     * 
+     * - When the instance type is sharded cluster, charactertype is required. The values are db and cs.
+     * - When the instance type is a replica set, charactertype can be null or pass in normal.
+     * 
+     */
+    @Import(name="characterType")
+    private @Nullable Output<String> characterType;
+
+    /**
+     * @return The role type of the instance. Value description
+     * 
+     * - When the instance type is sharded cluster, charactertype is required. The values are db and cs.
+     * - When the instance type is a replica set, charactertype can be null or pass in normal.
+     * 
+     */
+    public Optional<Output<String>> characterType() {
+        return Optional.ofNullable(this.characterType);
+    }
+
+    /**
+     * The account whose password needs to be reset. Set the value to `root`.
      * 
      */
     @Import(name="instanceId")
     private @Nullable Output<String> instanceId;
 
     /**
-     * @return The ID of the instance.
+     * @return The account whose password needs to be reset. Set the value to `root`.
      * 
      */
     public Optional<Output<String>> instanceId() {
@@ -84,14 +107,14 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the account. Valid values: `Unavailable`, `Available`.
+     * Account Status
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the account. Valid values: `Unavailable`, `Available`.
+     * @return Account Status
      * 
      */
     public Optional<Output<String>> status() {
@@ -104,6 +127,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         this.accountDescription = $.accountDescription;
         this.accountName = $.accountName;
         this.accountPassword = $.accountPassword;
+        this.characterType = $.characterType;
         this.instanceId = $.instanceId;
         this.status = $.status;
     }
@@ -127,9 +151,9 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountDescription The description of the account.
-         * * The description must start with a letter, and cannot start with `http://` or `https://`.
-         * * It must be `2` to `256` characters in length, and can contain letters, digits, underscores (_), and hyphens (-).
+         * @param accountDescription Account comment information.
+         * 
+         * &gt; **NOTE:**  Call the ModifyAccountDescription interface to set the account description information before this parameter is returned.
          * 
          * @return builder
          * 
@@ -140,9 +164,9 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountDescription The description of the account.
-         * * The description must start with a letter, and cannot start with `http://` or `https://`.
-         * * It must be `2` to `256` characters in length, and can contain letters, digits, underscores (_), and hyphens (-).
+         * @param accountDescription Account comment information.
+         * 
+         * &gt; **NOTE:**  Call the ModifyAccountDescription interface to set the account description information before this parameter is returned.
          * 
          * @return builder
          * 
@@ -152,7 +176,10 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountName The name of the account. Valid values: `root`.
+         * @param accountName The new password.
+         * 
+         * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ &amp; * ( ) _ + - =`
+         * - The password must be 8 to 32 characters in length.
          * 
          * @return builder
          * 
@@ -163,7 +190,10 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountName The name of the account. Valid values: `root`.
+         * @param accountName The new password.
+         * 
+         * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ &amp; * ( ) _ + - =`
+         * - The password must be 8 to 32 characters in length.
          * 
          * @return builder
          * 
@@ -173,9 +203,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountPassword The Password of the Account.
-         * * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
-         * * The password must be `8` to `32` characters in length.
+         * @param accountPassword The password of the database account. The password must be 8 to 32 characters in length. It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! # $ % ^ &amp; \* ( ) \_ + - =
          * 
          * @return builder
          * 
@@ -186,9 +214,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountPassword The Password of the Account.
-         * * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
-         * * The password must be `8` to `32` characters in length.
+         * @param accountPassword The password of the database account. The password must be 8 to 32 characters in length. It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! # $ % ^ &amp; \* ( ) \_ + - =
          * 
          * @return builder
          * 
@@ -198,7 +224,34 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceId The ID of the instance.
+         * @param characterType The role type of the instance. Value description
+         * 
+         * - When the instance type is sharded cluster, charactertype is required. The values are db and cs.
+         * - When the instance type is a replica set, charactertype can be null or pass in normal.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder characterType(@Nullable Output<String> characterType) {
+            $.characterType = characterType;
+            return this;
+        }
+
+        /**
+         * @param characterType The role type of the instance. Value description
+         * 
+         * - When the instance type is sharded cluster, charactertype is required. The values are db and cs.
+         * - When the instance type is a replica set, charactertype can be null or pass in normal.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder characterType(String characterType) {
+            return characterType(Output.of(characterType));
+        }
+
+        /**
+         * @param instanceId The account whose password needs to be reset. Set the value to `root`.
          * 
          * @return builder
          * 
@@ -209,7 +262,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceId The ID of the instance.
+         * @param instanceId The account whose password needs to be reset. Set the value to `root`.
          * 
          * @return builder
          * 
@@ -219,7 +272,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the account. Valid values: `Unavailable`, `Available`.
+         * @param status Account Status
          * 
          * @return builder
          * 
@@ -230,7 +283,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the account. Valid values: `Unavailable`, `Available`.
+         * @param status Account Status
          * 
          * @return builder
          * 

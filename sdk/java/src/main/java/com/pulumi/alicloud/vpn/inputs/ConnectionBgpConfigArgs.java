@@ -17,14 +17,14 @@ public final class ConnectionBgpConfigArgs extends com.pulumi.resources.Resource
     public static final ConnectionBgpConfigArgs Empty = new ConnectionBgpConfigArgs();
 
     /**
-     * Bgp enable.
+     * specifies whether to enable BGP. Valid values: true and false (default).
      * 
      */
     @Import(name="enable")
     private @Nullable Output<Boolean> enable;
 
     /**
-     * @return Bgp enable.
+     * @return specifies whether to enable BGP. Valid values: true and false (default).
      * 
      */
     public Optional<Output<Boolean>> enable() {
@@ -32,14 +32,20 @@ public final class ConnectionBgpConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Local asn.
+     * the autonomous system number (ASN) on the Alibaba Cloud side.
+     * Valid values: 1 to 4294967295. Default value: 45104. You can enter a value in two segments separated by a period (.).
+     * Each segment is 16 bits in length. Enter the number in each segment in decimal format.
+     * For example, if you enter 123.456, the ASN is 8061384. The ASN is calculated by using the following formula: 123 × 65536 + 456 = 8061384.
      * 
      */
     @Import(name="localAsn")
     private @Nullable Output<String> localAsn;
 
     /**
-     * @return Local asn.
+     * @return the autonomous system number (ASN) on the Alibaba Cloud side.
+     * Valid values: 1 to 4294967295. Default value: 45104. You can enter a value in two segments separated by a period (.).
+     * Each segment is 16 bits in length. Enter the number in each segment in decimal format.
+     * For example, if you enter 123.456, the ASN is 8061384. The ASN is calculated by using the following formula: 123 × 65536 + 456 = 8061384.
      * 
      */
     public Optional<Output<String>> localAsn() {
@@ -47,14 +53,14 @@ public final class ConnectionBgpConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Local bgp IP.
+     * the BGP address on the Alibaba Cloud side. It must be an IP address that falls within the CIDR block of the IPsec tunnel.
      * 
      */
     @Import(name="localBgpIp")
     private @Nullable Output<String> localBgpIp;
 
     /**
-     * @return Local bgp IP.
+     * @return the BGP address on the Alibaba Cloud side. It must be an IP address that falls within the CIDR block of the IPsec tunnel.
      * 
      */
     public Optional<Output<String>> localBgpIp() {
@@ -77,14 +83,14 @@ public final class ConnectionBgpConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * IPSec tunnel Cidr.
+     * The CIDR block of the IPsec tunnel. The CIDR block must belong to 169.254.0.0/16 and the subnet mask is 30 bits in length.
      * 
      */
     @Import(name="tunnelCidr")
     private @Nullable Output<String> tunnelCidr;
 
     /**
-     * @return IPSec tunnel Cidr.
+     * @return The CIDR block of the IPsec tunnel. The CIDR block must belong to 169.254.0.0/16 and the subnet mask is 30 bits in length.
      * 
      */
     public Optional<Output<String>> tunnelCidr() {
@@ -120,7 +126,7 @@ public final class ConnectionBgpConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param enable Bgp enable.
+         * @param enable specifies whether to enable BGP. Valid values: true and false (default).
          * 
          * @return builder
          * 
@@ -131,7 +137,7 @@ public final class ConnectionBgpConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param enable Bgp enable.
+         * @param enable specifies whether to enable BGP. Valid values: true and false (default).
          * 
          * @return builder
          * 
@@ -141,7 +147,10 @@ public final class ConnectionBgpConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param localAsn Local asn.
+         * @param localAsn the autonomous system number (ASN) on the Alibaba Cloud side.
+         * Valid values: 1 to 4294967295. Default value: 45104. You can enter a value in two segments separated by a period (.).
+         * Each segment is 16 bits in length. Enter the number in each segment in decimal format.
+         * For example, if you enter 123.456, the ASN is 8061384. The ASN is calculated by using the following formula: 123 × 65536 + 456 = 8061384.
          * 
          * @return builder
          * 
@@ -152,7 +161,10 @@ public final class ConnectionBgpConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param localAsn Local asn.
+         * @param localAsn the autonomous system number (ASN) on the Alibaba Cloud side.
+         * Valid values: 1 to 4294967295. Default value: 45104. You can enter a value in two segments separated by a period (.).
+         * Each segment is 16 bits in length. Enter the number in each segment in decimal format.
+         * For example, if you enter 123.456, the ASN is 8061384. The ASN is calculated by using the following formula: 123 × 65536 + 456 = 8061384.
          * 
          * @return builder
          * 
@@ -162,7 +174,7 @@ public final class ConnectionBgpConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param localBgpIp Local bgp IP.
+         * @param localBgpIp the BGP address on the Alibaba Cloud side. It must be an IP address that falls within the CIDR block of the IPsec tunnel.
          * 
          * @return builder
          * 
@@ -173,7 +185,7 @@ public final class ConnectionBgpConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param localBgpIp Local bgp IP.
+         * @param localBgpIp the BGP address on the Alibaba Cloud side. It must be an IP address that falls within the CIDR block of the IPsec tunnel.
          * 
          * @return builder
          * 
@@ -204,7 +216,7 @@ public final class ConnectionBgpConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param tunnelCidr IPSec tunnel Cidr.
+         * @param tunnelCidr The CIDR block of the IPsec tunnel. The CIDR block must belong to 169.254.0.0/16 and the subnet mask is 30 bits in length.
          * 
          * @return builder
          * 
@@ -215,7 +227,7 @@ public final class ConnectionBgpConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param tunnelCidr IPSec tunnel Cidr.
+         * @param tunnelCidr The CIDR block of the IPsec tunnel. The CIDR block must belong to 169.254.0.0/16 and the subnet mask is 30 bits in length.
          * 
          * @return builder
          * 

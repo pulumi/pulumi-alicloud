@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Alb.Outputs
     public sealed class AScriptExtAttribute
     {
         /// <summary>
-        /// The key of the extended attribute.
+        /// Key to extend attribute
         /// </summary>
         public readonly string? AttributeKey;
         /// <summary>
-        /// The value of the extended attribute.
+        /// The value of the extended attribute
         /// </summary>
         public readonly string? AttributeValue;
 

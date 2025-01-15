@@ -142,8 +142,7 @@ class BucketPolicy(pulumi.CustomResource):
                     "Resource": ["acs:oss:*:1234567890:*/*"],
                 }],
             }),
-            bucket=create_bucket.bucket,
-            opts = pulumi.ResourceOptions(depends_on=[create_bucket]))
+            bucket=create_bucket.bucket)
         ```
 
         ## Import
@@ -205,8 +204,7 @@ class BucketPolicy(pulumi.CustomResource):
                     "Resource": ["acs:oss:*:1234567890:*/*"],
                 }],
             }),
-            bucket=create_bucket.bucket,
-            opts = pulumi.ResourceOptions(depends_on=[create_bucket]))
+            bucket=create_bucket.bucket)
         ```
 
         ## Import

@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a OOS Secret Parameter resource.
+// Provides a Operation Orchestration Service (OOS) Secret Parameter resource.
 //
-// For information about OOS Secret Parameter and how to use it, see [What is Secret Parameter](https://www.alibabacloud.com/help/en/doc-detail/183418.html).
+// For information about Operation Orchestration Service (OOS) Secret Parameter and how to use it, see [What is Secret Parameter](https://www.alibabacloud.com/help/en/doc-detail/183418.html).
 //
 // > **NOTE:** Available since v1.147.0+.
 //
@@ -71,10 +71,10 @@ import (
 //
 // ## Import
 //
-// OOS Secret Parameter can be imported using the id, e.g.
+// Operation Orchestration Service (OOS) Secret Parameter can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:oos/secretParameter:SecretParameter example <secret_parameter_name>
+// $ pulumi import alicloud:oos/secretParameter:SecretParameter example <id>
 // ```
 type SecretParameter struct {
 	pulumi.CustomResourceState
@@ -85,8 +85,12 @@ type SecretParameter struct {
 	// * `MinLength`: The minimum length of the encryption parameter.
 	// * `MaxLength`: The maximum length of the encryption parameter.
 	Constraints pulumi.StringPtrOutput `pulumi:"constraints"`
+	// Parameter creation time
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The description of the encryption parameter. The description must be `1` to `200` characters in length.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The ID of the KMS instance.
+	DkmsInstanceId pulumi.StringPtrOutput `pulumi:"dkmsInstanceId"`
 	// The Customer Master Key (CMK) of Key Management Service (KMS) that is used to encrypt the parameter.
 	KeyId pulumi.StringPtrOutput `pulumi:"keyId"`
 	// The ID of the Resource Group.
@@ -150,8 +154,12 @@ type secretParameterState struct {
 	// * `MinLength`: The minimum length of the encryption parameter.
 	// * `MaxLength`: The maximum length of the encryption parameter.
 	Constraints *string `pulumi:"constraints"`
+	// Parameter creation time
+	CreateTime *string `pulumi:"createTime"`
 	// The description of the encryption parameter. The description must be `1` to `200` characters in length.
 	Description *string `pulumi:"description"`
+	// The ID of the KMS instance.
+	DkmsInstanceId *string `pulumi:"dkmsInstanceId"`
 	// The Customer Master Key (CMK) of Key Management Service (KMS) that is used to encrypt the parameter.
 	KeyId *string `pulumi:"keyId"`
 	// The ID of the Resource Group.
@@ -173,8 +181,12 @@ type SecretParameterState struct {
 	// * `MinLength`: The minimum length of the encryption parameter.
 	// * `MaxLength`: The maximum length of the encryption parameter.
 	Constraints pulumi.StringPtrInput
+	// Parameter creation time
+	CreateTime pulumi.StringPtrInput
 	// The description of the encryption parameter. The description must be `1` to `200` characters in length.
 	Description pulumi.StringPtrInput
+	// The ID of the KMS instance.
+	DkmsInstanceId pulumi.StringPtrInput
 	// The Customer Master Key (CMK) of Key Management Service (KMS) that is used to encrypt the parameter.
 	KeyId pulumi.StringPtrInput
 	// The ID of the Resource Group.
@@ -202,6 +214,8 @@ type secretParameterArgs struct {
 	Constraints *string `pulumi:"constraints"`
 	// The description of the encryption parameter. The description must be `1` to `200` characters in length.
 	Description *string `pulumi:"description"`
+	// The ID of the KMS instance.
+	DkmsInstanceId *string `pulumi:"dkmsInstanceId"`
 	// The Customer Master Key (CMK) of Key Management Service (KMS) that is used to encrypt the parameter.
 	KeyId *string `pulumi:"keyId"`
 	// The ID of the Resource Group.
@@ -226,6 +240,8 @@ type SecretParameterArgs struct {
 	Constraints pulumi.StringPtrInput
 	// The description of the encryption parameter. The description must be `1` to `200` characters in length.
 	Description pulumi.StringPtrInput
+	// The ID of the KMS instance.
+	DkmsInstanceId pulumi.StringPtrInput
 	// The Customer Master Key (CMK) of Key Management Service (KMS) that is used to encrypt the parameter.
 	KeyId pulumi.StringPtrInput
 	// The ID of the Resource Group.
@@ -336,9 +352,19 @@ func (o SecretParameterOutput) Constraints() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretParameter) pulumi.StringPtrOutput { return v.Constraints }).(pulumi.StringPtrOutput)
 }
 
+// Parameter creation time
+func (o SecretParameterOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecretParameter) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
 // The description of the encryption parameter. The description must be `1` to `200` characters in length.
 func (o SecretParameterOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretParameter) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the KMS instance.
+func (o SecretParameterOutput) DkmsInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretParameter) pulumi.StringPtrOutput { return v.DkmsInstanceId }).(pulumi.StringPtrOutput)
 }
 
 // The Customer Master Key (CMK) of Key Management Service (KMS) that is used to encrypt the parameter.

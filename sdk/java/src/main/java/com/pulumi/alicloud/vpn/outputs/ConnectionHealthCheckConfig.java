@@ -14,62 +14,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionHealthCheckConfig {
     /**
-     * @return Destination IP.
+     * @return the destination IP address configured for health checks.
      * 
      */
     private @Nullable String dip;
     /**
-     * @return Specifies whether to enable healthcheck.
+     * @return specifies whether to enable health checks. Valid values: true and false. Default value: false.
      * 
      */
     private @Nullable Boolean enable;
     /**
-     * @return Retry interval.
+     * @return the time interval of health check retries. Unit: seconds. Default value: 3.
      * 
      */
     private @Nullable Integer interval;
     /**
-     * @return retry times.
+     * @return the maximum number of health check retries. Default value: 3.
      * 
      */
     private @Nullable Integer retry;
     /**
-     * @return Source IP.
+     * @return the source IP address that is used for health checks.
      * 
      */
     private @Nullable String sip;
 
     private ConnectionHealthCheckConfig() {}
     /**
-     * @return Destination IP.
+     * @return the destination IP address configured for health checks.
      * 
      */
     public Optional<String> dip() {
         return Optional.ofNullable(this.dip);
     }
     /**
-     * @return Specifies whether to enable healthcheck.
+     * @return specifies whether to enable health checks. Valid values: true and false. Default value: false.
      * 
      */
     public Optional<Boolean> enable() {
         return Optional.ofNullable(this.enable);
     }
     /**
-     * @return Retry interval.
+     * @return the time interval of health check retries. Unit: seconds. Default value: 3.
      * 
      */
     public Optional<Integer> interval() {
         return Optional.ofNullable(this.interval);
     }
     /**
-     * @return retry times.
+     * @return the maximum number of health check retries. Default value: 3.
      * 
      */
     public Optional<Integer> retry() {
         return Optional.ofNullable(this.retry);
     }
     /**
-     * @return Source IP.
+     * @return the source IP address that is used for health checks.
      * 
      */
     public Optional<String> sip() {

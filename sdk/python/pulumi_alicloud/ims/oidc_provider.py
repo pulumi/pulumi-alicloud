@@ -121,6 +121,7 @@ class OidcProviderArgs:
 @pulumi.input_type
 class _OidcProviderState:
     def __init__(__self__, *,
+                 arn: Optional[pulumi.Input[str]] = None,
                  client_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -130,6 +131,7 @@ class _OidcProviderState:
                  oidc_provider_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering OidcProvider resources.
+        :param pulumi.Input[str] arn: The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] client_ids: Client ID.
         :param pulumi.Input[str] create_time: Creation Time (UTC time).
         :param pulumi.Input[str] description: Description of OIDC identity provider.
@@ -138,6 +140,8 @@ class _OidcProviderState:
         :param pulumi.Input[str] issuer_url: The issuer URL of the OIDC identity provider.
         :param pulumi.Input[str] oidc_provider_name: The name of the OIDC identity provider.
         """
+        if arn is not None:
+            pulumi.set(__self__, "arn", arn)
         if client_ids is not None:
             pulumi.set(__self__, "client_ids", client_ids)
         if create_time is not None:
@@ -152,6 +156,18 @@ class _OidcProviderState:
             pulumi.set(__self__, "issuer_url", issuer_url)
         if oidc_provider_name is not None:
             pulumi.set(__self__, "oidc_provider_name", oidc_provider_name)
+
+    @property
+    @pulumi.getter
+    def arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+        """
+        return pulumi.get(self, "arn")
+
+    @arn.setter
+    def arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "arn", value)
 
     @property
     @pulumi.getter(name="clientIds")
@@ -389,6 +405,7 @@ class OidcProvider(pulumi.CustomResource):
             if oidc_provider_name is None and not opts.urn:
                 raise TypeError("Missing required property 'oidc_provider_name'")
             __props__.__dict__["oidc_provider_name"] = oidc_provider_name
+            __props__.__dict__["arn"] = None
             __props__.__dict__["create_time"] = None
         super(OidcProvider, __self__).__init__(
             'alicloud:ims/oidcProvider:OidcProvider',
@@ -400,6 +417,7 @@ class OidcProvider(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            arn: Optional[pulumi.Input[str]] = None,
             client_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -414,6 +432,7 @@ class OidcProvider(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] arn: The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] client_ids: Client ID.
         :param pulumi.Input[str] create_time: Creation Time (UTC time).
         :param pulumi.Input[str] description: Description of OIDC identity provider.
@@ -426,6 +445,7 @@ class OidcProvider(pulumi.CustomResource):
 
         __props__ = _OidcProviderState.__new__(_OidcProviderState)
 
+        __props__.__dict__["arn"] = arn
         __props__.__dict__["client_ids"] = client_ids
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
@@ -434,6 +454,14 @@ class OidcProvider(pulumi.CustomResource):
         __props__.__dict__["issuer_url"] = issuer_url
         __props__.__dict__["oidc_provider_name"] = oidc_provider_name
         return OidcProvider(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def arn(self) -> pulumi.Output[str]:
+        """
+        The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+        """
+        return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="clientIds")

@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// For more information about how to use it, see [Attach a network in a different account](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-attachcenchildinstance).
     /// 
+    /// &gt; **NOTE:** Deprecated since v1.241.0. The resource have been deprecated and new resource type alicloud.cen.TransitRouterGrantAttachment is recommended.
+    /// 
     /// &gt; **NOTE:** Available since v1.37.0.
     /// 
     /// ## Example Usage

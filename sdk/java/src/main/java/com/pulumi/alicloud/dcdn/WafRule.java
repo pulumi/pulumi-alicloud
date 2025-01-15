@@ -119,14 +119,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:dcdn/wafRule:WafRule")
 public class WafRule extends com.pulumi.resources.CustomResource {
     /**
-     * Specifies the action of the rule. Valid values: `block`, `monitor`, `js`.
+     * Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
      * 
      */
     @Export(name="action", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> action;
 
     /**
-     * @return Specifies the action of the rule. Valid values: `block`, `monitor`, `js`.
+     * @return Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
      * 
      */
     public Output<Optional<String>> action() {
@@ -343,14 +343,14 @@ public class WafRule extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * The id of the waf rule group. The default value is &#34;1012&#34;. Multiple rules are separated by commas.
+     * The id of the waf rule group. The default value is &#34;1012&#34;. Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `waf_group`.
      * 
      */
     @Export(name="wafGroupIds", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> wafGroupIds;
 
     /**
-     * @return The id of the waf rule group. The default value is &#34;1012&#34;. Multiple rules are separated by commas.
+     * @return The id of the waf rule group. The default value is &#34;1012&#34;. Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `waf_group`.
      * 
      */
     public Output<Optional<String>> wafGroupIds() {

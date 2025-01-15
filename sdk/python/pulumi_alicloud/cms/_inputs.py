@@ -680,13 +680,15 @@ if not MYPY:
     class AlarmTargetArgsDict(TypedDict):
         arn: NotRequired[pulumi.Input[str]]
         """
-        ARN uniquely identifies the resource that the alert targets.
-        > **NOTE:** The targets attribute is used to specify where notifications or actions should be directed when an alarm condition is met. This attribute corresponds to what is referred to as the "Push Channel" in the Alibaba Cloud console.
-        > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
+        The Alibaba Cloud Resource Name (ARN) of the resource. Simple Message Queue (formerly MNS) (SMQ), Auto Scaling, Simple Log Service, and Function Compute are supported:
+        - SMQ: `acs:mns:{regionId}:{userId}:/{Resource type}/{Resource name}/message`. {regionId}: the region ID of the SMQ queue or topic. {userId}: the ID of the Alibaba Cloud account that owns the resource. {Resource type}: the type of the resource for which alerts are triggered. Valid values:queues, topics. {Resource name}: the resource name. If the resource type is queues, the resource name is the queue name. If the resource type is topics, the resource name is the topic name.
+        - Auto Scaling: `acs:ess:{regionId}:{userId}:scalingGroupId/{Scaling group ID}:scalingRuleId/{Scaling rule ID}`
+        - Simple Log Service: `acs:log:{regionId}:{userId}:project/{Project name}/logstore/{Logstore name}`
+        - Function Compute: `acs:fc:{regionId}:{userId}:services/{Service name}/functions/{Function name}`
         """
         json_params: NotRequired[pulumi.Input[str]]
         """
-        Specifies additional parameters for the alert callback in JSON format. This can include configuration settings specific to the alert action.
+        The parameters of the alert callback. The parameters are in the JSON format.
         """
         level: NotRequired[pulumi.Input[str]]
         """
@@ -694,7 +696,7 @@ if not MYPY:
         """
         target_id: NotRequired[pulumi.Input[str]]
         """
-        The ID of the resource for which alerts are triggered. This is typically used to specify individual resources that should respond to the alert.
+        The ID of the resource for which alerts are triggered. For more information about how to obtain the ID of the resource for which alerts are triggered, see [DescribeMetricRuleTargets](https://www.alibabacloud.com/help/en/cms/developer-reference/api-describemetricruletargets) .
         """
 elif False:
     AlarmTargetArgsDict: TypeAlias = Mapping[str, Any]
@@ -707,12 +709,14 @@ class AlarmTargetArgs:
                  level: Optional[pulumi.Input[str]] = None,
                  target_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] arn: ARN uniquely identifies the resource that the alert targets.
-               > **NOTE:** The targets attribute is used to specify where notifications or actions should be directed when an alarm condition is met. This attribute corresponds to what is referred to as the "Push Channel" in the Alibaba Cloud console.
-               > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
-        :param pulumi.Input[str] json_params: Specifies additional parameters for the alert callback in JSON format. This can include configuration settings specific to the alert action.
+        :param pulumi.Input[str] arn: The Alibaba Cloud Resource Name (ARN) of the resource. Simple Message Queue (formerly MNS) (SMQ), Auto Scaling, Simple Log Service, and Function Compute are supported:
+               - SMQ: `acs:mns:{regionId}:{userId}:/{Resource type}/{Resource name}/message`. {regionId}: the region ID of the SMQ queue or topic. {userId}: the ID of the Alibaba Cloud account that owns the resource. {Resource type}: the type of the resource for which alerts are triggered. Valid values:queues, topics. {Resource name}: the resource name. If the resource type is queues, the resource name is the queue name. If the resource type is topics, the resource name is the topic name.
+               - Auto Scaling: `acs:ess:{regionId}:{userId}:scalingGroupId/{Scaling group ID}:scalingRuleId/{Scaling rule ID}`
+               - Simple Log Service: `acs:log:{regionId}:{userId}:project/{Project name}/logstore/{Logstore name}`
+               - Function Compute: `acs:fc:{regionId}:{userId}:services/{Service name}/functions/{Function name}`
+        :param pulumi.Input[str] json_params: The parameters of the alert callback. The parameters are in the JSON format.
         :param pulumi.Input[str] level: The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
-        :param pulumi.Input[str] target_id: The ID of the resource for which alerts are triggered. This is typically used to specify individual resources that should respond to the alert.
+        :param pulumi.Input[str] target_id: The ID of the resource for which alerts are triggered. For more information about how to obtain the ID of the resource for which alerts are triggered, see [DescribeMetricRuleTargets](https://www.alibabacloud.com/help/en/cms/developer-reference/api-describemetricruletargets) .
         """
         if arn is not None:
             pulumi.set(__self__, "arn", arn)
@@ -727,9 +731,11 @@ class AlarmTargetArgs:
     @pulumi.getter
     def arn(self) -> Optional[pulumi.Input[str]]:
         """
-        ARN uniquely identifies the resource that the alert targets.
-        > **NOTE:** The targets attribute is used to specify where notifications or actions should be directed when an alarm condition is met. This attribute corresponds to what is referred to as the "Push Channel" in the Alibaba Cloud console.
-        > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
+        The Alibaba Cloud Resource Name (ARN) of the resource. Simple Message Queue (formerly MNS) (SMQ), Auto Scaling, Simple Log Service, and Function Compute are supported:
+        - SMQ: `acs:mns:{regionId}:{userId}:/{Resource type}/{Resource name}/message`. {regionId}: the region ID of the SMQ queue or topic. {userId}: the ID of the Alibaba Cloud account that owns the resource. {Resource type}: the type of the resource for which alerts are triggered. Valid values:queues, topics. {Resource name}: the resource name. If the resource type is queues, the resource name is the queue name. If the resource type is topics, the resource name is the topic name.
+        - Auto Scaling: `acs:ess:{regionId}:{userId}:scalingGroupId/{Scaling group ID}:scalingRuleId/{Scaling rule ID}`
+        - Simple Log Service: `acs:log:{regionId}:{userId}:project/{Project name}/logstore/{Logstore name}`
+        - Function Compute: `acs:fc:{regionId}:{userId}:services/{Service name}/functions/{Function name}`
         """
         return pulumi.get(self, "arn")
 
@@ -741,7 +747,7 @@ class AlarmTargetArgs:
     @pulumi.getter(name="jsonParams")
     def json_params(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies additional parameters for the alert callback in JSON format. This can include configuration settings specific to the alert action.
+        The parameters of the alert callback. The parameters are in the JSON format.
         """
         return pulumi.get(self, "json_params")
 
@@ -765,7 +771,7 @@ class AlarmTargetArgs:
     @pulumi.getter(name="targetId")
     def target_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the resource for which alerts are triggered. This is typically used to specify individual resources that should respond to the alert.
+        The ID of the resource for which alerts are triggered. For more information about how to obtain the ID of the resource for which alerts are triggered, see [DescribeMetricRuleTargets](https://www.alibabacloud.com/help/en/cms/developer-reference/api-describemetricruletargets) .
         """
         return pulumi.get(self, "target_id")
 

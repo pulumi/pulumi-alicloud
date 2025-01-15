@@ -48,6 +48,9 @@ namespace Pulumi.AliCloud.FC
         [Output("environmentVariables")]
         public Output<ImmutableDictionary<string, string>?> EnvironmentVariables { get; private set; } = null!;
 
+        [Output("functionArn")]
+        public Output<string> FunctionArn { get; private set; } = null!;
+
         [Output("functionName")]
         public Output<string> FunctionName { get; private set; } = null!;
 
@@ -263,6 +266,9 @@ namespace Pulumi.AliCloud.FC
             get => _environmentVariables ?? (_environmentVariables = new InputMap<string>());
             set => _environmentVariables = value;
         }
+
+        [Input("functionArn")]
+        public Input<string>? FunctionArn { get; set; }
 
         [Input("functionName")]
         public Input<string>? FunctionName { get; set; }

@@ -129,7 +129,7 @@ import (
 //				OssBucket:   defaultBucket.ID(),
 //				OssKey:      defaultBucketObject.Key,
 //				MemorySize:  pulumi.Int(512),
-//				Runtime:     pulumi.String("python2.7"),
+//				Runtime:     pulumi.String("python3.9"),
 //				Handler:     pulumi.String("hello.handler"),
 //			})
 //			if err != nil {

@@ -62,7 +62,7 @@ class AlarmArgs:
         :param pulumi.Input[int] silence_time: Notification silence period in the alarm state, in seconds. Default value: `86400`. Valid value range: [300, 86400].
         :param pulumi.Input[int] start_time: Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['AlarmTargetArgs']]] targets: The information about the resource for which alerts are triggered. See `targets` below.
+        :param pulumi.Input[Sequence[pulumi.Input['AlarmTargetArgs']]] targets: Adds or modifies the push channels of an alert rule. See `targets` below.
         :param pulumi.Input[str] webhook: The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
         """
         pulumi.set(__self__, "contact_groups", contact_groups)
@@ -336,7 +336,7 @@ class AlarmArgs:
     @pulumi.getter
     def targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlarmTargetArgs']]]]:
         """
-        The information about the resource for which alerts are triggered. See `targets` below.
+        Adds or modifies the push channels of an alert rule. See `targets` below.
         """
         return pulumi.get(self, "targets")
 
@@ -403,7 +403,7 @@ class _AlarmState:
         :param pulumi.Input[int] start_time: Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         :param pulumi.Input[str] status: The status of the Alarm.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['AlarmTargetArgs']]] targets: The information about the resource for which alerts are triggered. See `targets` below.
+        :param pulumi.Input[Sequence[pulumi.Input['AlarmTargetArgs']]] targets: Adds or modifies the push channels of an alert rule. See `targets` below.
         :param pulumi.Input[str] webhook: The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
         """
         if composite_expression is not None:
@@ -694,7 +694,7 @@ class _AlarmState:
     @pulumi.getter
     def targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlarmTargetArgs']]]]:
         """
-        The information about the resource for which alerts are triggered. See `targets` below.
+        Adds or modifies the push channels of an alert rule. See `targets` below.
         """
         return pulumi.get(self, "targets")
 
@@ -836,7 +836,7 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[int] silence_time: Notification silence period in the alarm state, in seconds. Default value: `86400`. Valid value range: [300, 86400].
         :param pulumi.Input[int] start_time: Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmTargetArgs', 'AlarmTargetArgsDict']]]] targets: The information about the resource for which alerts are triggered. See `targets` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmTargetArgs', 'AlarmTargetArgsDict']]]] targets: Adds or modifies the push channels of an alert rule. See `targets` below.
         :param pulumi.Input[str] webhook: The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
         """
         ...
@@ -1048,7 +1048,7 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[int] start_time: Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         :param pulumi.Input[str] status: The status of the Alarm.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmTargetArgs', 'AlarmTargetArgsDict']]]] targets: The information about the resource for which alerts are triggered. See `targets` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmTargetArgs', 'AlarmTargetArgsDict']]]] targets: Adds or modifies the push channels of an alert rule. See `targets` below.
         :param pulumi.Input[str] webhook: The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1238,7 +1238,7 @@ class Alarm(pulumi.CustomResource):
     @pulumi.getter
     def targets(self) -> pulumi.Output[Sequence['outputs.AlarmTarget']]:
         """
-        The information about the resource for which alerts are triggered. See `targets` below.
+        Adds or modifies the push channels of an alert rule. See `targets` below.
         """
         return pulumi.get(self, "targets")
 

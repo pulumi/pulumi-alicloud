@@ -291,10 +291,10 @@ public class Bucket extends com.pulumi.resources.CustomResource {
         return this.acl;
     }
     @Export(name="bucket", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> bucket;
+    private Output<String> bucket;
 
-    public Output<Optional<String>> bucket() {
-        return Codegen.optional(this.bucket);
+    public Output<String> bucket() {
+        return this.bucket;
     }
     /**
      * A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `cors_rule` below.

@@ -21,19 +21,23 @@ class SnatEntryArgs:
     def __init__(__self__, *,
                  snat_ip: pulumi.Input[str],
                  snat_table_id: pulumi.Input[str],
+                 eip_affinity: Optional[pulumi.Input[int]] = None,
                  snat_entry_name: Optional[pulumi.Input[str]] = None,
                  source_cidr: Optional[pulumi.Input[str]] = None,
                  source_vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SnatEntry resource.
-        :param pulumi.Input[str] snat_ip: The SNAT ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidth_packages`.
-        :param pulumi.Input[str] snat_table_id: The value can get from `vpc.NatGateway` Attributes "snat_table_ids".
-        :param pulumi.Input[str] snat_entry_name: The name of snat entry.
-        :param pulumi.Input[str] source_cidr: The private network segment of Ecs. This parameter and the `source_vswitch_id` parameter are mutually exclusive and cannot appear at the same time.
-        :param pulumi.Input[str] source_vswitch_id: The vswitch ID.
+        :param pulumi.Input[str] snat_ip: The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snat_ip` can be modified.
+        :param pulumi.Input[str] snat_table_id: The ID of the SNAT table.
+        :param pulumi.Input[int] eip_affinity: Specifies whether to enable EIP affinity. Default value: `0`. Valid values:
+        :param pulumi.Input[str] snat_entry_name: The name of the SNAT entry. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] source_cidr: The source CIDR block specified in the SNAT entry.
+        :param pulumi.Input[str] source_vswitch_id: The ID of the vSwitch.
         """
         pulumi.set(__self__, "snat_ip", snat_ip)
         pulumi.set(__self__, "snat_table_id", snat_table_id)
+        if eip_affinity is not None:
+            pulumi.set(__self__, "eip_affinity", eip_affinity)
         if snat_entry_name is not None:
             pulumi.set(__self__, "snat_entry_name", snat_entry_name)
         if source_cidr is not None:
@@ -45,7 +49,7 @@ class SnatEntryArgs:
     @pulumi.getter(name="snatIp")
     def snat_ip(self) -> pulumi.Input[str]:
         """
-        The SNAT ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidth_packages`.
+        The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snat_ip` can be modified.
         """
         return pulumi.get(self, "snat_ip")
 
@@ -57,7 +61,7 @@ class SnatEntryArgs:
     @pulumi.getter(name="snatTableId")
     def snat_table_id(self) -> pulumi.Input[str]:
         """
-        The value can get from `vpc.NatGateway` Attributes "snat_table_ids".
+        The ID of the SNAT table.
         """
         return pulumi.get(self, "snat_table_id")
 
@@ -66,10 +70,22 @@ class SnatEntryArgs:
         pulumi.set(self, "snat_table_id", value)
 
     @property
+    @pulumi.getter(name="eipAffinity")
+    def eip_affinity(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies whether to enable EIP affinity. Default value: `0`. Valid values:
+        """
+        return pulumi.get(self, "eip_affinity")
+
+    @eip_affinity.setter
+    def eip_affinity(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "eip_affinity", value)
+
+    @property
     @pulumi.getter(name="snatEntryName")
     def snat_entry_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of snat entry.
+        The name of the SNAT entry. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "snat_entry_name")
 
@@ -81,7 +97,7 @@ class SnatEntryArgs:
     @pulumi.getter(name="sourceCidr")
     def source_cidr(self) -> Optional[pulumi.Input[str]]:
         """
-        The private network segment of Ecs. This parameter and the `source_vswitch_id` parameter are mutually exclusive and cannot appear at the same time.
+        The source CIDR block specified in the SNAT entry.
         """
         return pulumi.get(self, "source_cidr")
 
@@ -93,7 +109,7 @@ class SnatEntryArgs:
     @pulumi.getter(name="sourceVswitchId")
     def source_vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The vswitch ID.
+        The ID of the vSwitch.
         """
         return pulumi.get(self, "source_vswitch_id")
 
@@ -105,6 +121,7 @@ class SnatEntryArgs:
 @pulumi.input_type
 class _SnatEntryState:
     def __init__(__self__, *,
+                 eip_affinity: Optional[pulumi.Input[int]] = None,
                  snat_entry_id: Optional[pulumi.Input[str]] = None,
                  snat_entry_name: Optional[pulumi.Input[str]] = None,
                  snat_ip: Optional[pulumi.Input[str]] = None,
@@ -114,14 +131,17 @@ class _SnatEntryState:
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SnatEntry resources.
+        :param pulumi.Input[int] eip_affinity: Specifies whether to enable EIP affinity. Default value: `0`. Valid values:
         :param pulumi.Input[str] snat_entry_id: The id of the snat entry on the server.
-        :param pulumi.Input[str] snat_entry_name: The name of snat entry.
-        :param pulumi.Input[str] snat_ip: The SNAT ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidth_packages`.
-        :param pulumi.Input[str] snat_table_id: The value can get from `vpc.NatGateway` Attributes "snat_table_ids".
-        :param pulumi.Input[str] source_cidr: The private network segment of Ecs. This parameter and the `source_vswitch_id` parameter are mutually exclusive and cannot appear at the same time.
-        :param pulumi.Input[str] source_vswitch_id: The vswitch ID.
-        :param pulumi.Input[str] status: (Available since v1.119.1) The status of snat entry.
+        :param pulumi.Input[str] snat_entry_name: The name of the SNAT entry. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] snat_ip: The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snat_ip` can be modified.
+        :param pulumi.Input[str] snat_table_id: The ID of the SNAT table.
+        :param pulumi.Input[str] source_cidr: The source CIDR block specified in the SNAT entry.
+        :param pulumi.Input[str] source_vswitch_id: The ID of the vSwitch.
+        :param pulumi.Input[str] status: (Available since v1.119.1) The ID of the SNAT entry.
         """
+        if eip_affinity is not None:
+            pulumi.set(__self__, "eip_affinity", eip_affinity)
         if snat_entry_id is not None:
             pulumi.set(__self__, "snat_entry_id", snat_entry_id)
         if snat_entry_name is not None:
@@ -136,6 +156,18 @@ class _SnatEntryState:
             pulumi.set(__self__, "source_vswitch_id", source_vswitch_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="eipAffinity")
+    def eip_affinity(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies whether to enable EIP affinity. Default value: `0`. Valid values:
+        """
+        return pulumi.get(self, "eip_affinity")
+
+    @eip_affinity.setter
+    def eip_affinity(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "eip_affinity", value)
 
     @property
     @pulumi.getter(name="snatEntryId")
@@ -153,7 +185,7 @@ class _SnatEntryState:
     @pulumi.getter(name="snatEntryName")
     def snat_entry_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of snat entry.
+        The name of the SNAT entry. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "snat_entry_name")
 
@@ -165,7 +197,7 @@ class _SnatEntryState:
     @pulumi.getter(name="snatIp")
     def snat_ip(self) -> Optional[pulumi.Input[str]]:
         """
-        The SNAT ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidth_packages`.
+        The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snat_ip` can be modified.
         """
         return pulumi.get(self, "snat_ip")
 
@@ -177,7 +209,7 @@ class _SnatEntryState:
     @pulumi.getter(name="snatTableId")
     def snat_table_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The value can get from `vpc.NatGateway` Attributes "snat_table_ids".
+        The ID of the SNAT table.
         """
         return pulumi.get(self, "snat_table_id")
 
@@ -189,7 +221,7 @@ class _SnatEntryState:
     @pulumi.getter(name="sourceCidr")
     def source_cidr(self) -> Optional[pulumi.Input[str]]:
         """
-        The private network segment of Ecs. This parameter and the `source_vswitch_id` parameter are mutually exclusive and cannot appear at the same time.
+        The source CIDR block specified in the SNAT entry.
         """
         return pulumi.get(self, "source_cidr")
 
@@ -201,7 +233,7 @@ class _SnatEntryState:
     @pulumi.getter(name="sourceVswitchId")
     def source_vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The vswitch ID.
+        The ID of the vSwitch.
         """
         return pulumi.get(self, "source_vswitch_id")
 
@@ -213,7 +245,7 @@ class _SnatEntryState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        (Available since v1.119.1) The status of snat entry.
+        (Available since v1.119.1) The ID of the SNAT entry.
         """
         return pulumi.get(self, "status")
 
@@ -227,6 +259,7 @@ class SnatEntry(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 eip_affinity: Optional[pulumi.Input[int]] = None,
                  snat_entry_name: Optional[pulumi.Input[str]] = None,
                  snat_ip: Optional[pulumi.Input[str]] = None,
                  snat_table_id: Optional[pulumi.Input[str]] = None,
@@ -234,7 +267,9 @@ class SnatEntry(pulumi.CustomResource):
                  source_vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a snat resource.
+        Provides a NAT Gateway Snat Entry resource.
+
+        For information about NAT Gateway Snat Entry and how to use it, see [What is Snat Entry](https://www.alibabacloud.com/help/en/nat-gateway/developer-reference/api-vpc-2016-04-28-createsnatentry-natgws).
 
         > **NOTE:** Available since v1.119.0.
 
@@ -249,7 +284,7 @@ class SnatEntry(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf_example"
+            name = "terraform-example"
         default = alicloud.get_zones(available_resource_creation="VSwitch")
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
@@ -277,19 +312,24 @@ class SnatEntry(pulumi.CustomResource):
 
         ## Import
 
-        Snat Entry can be imported using the id, e.g.
+        NAT Gateway Snat Entry can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:vpc/snatEntry:SnatEntry foo stb-1aece3:snat-232ce2
+        $ pulumi import alicloud:vpc/snatEntry:SnatEntry example <snat_table_id>:<snat_entry_id>
+        ```
+
+        ```sh
+        $ pulumi import alicloud:vpc/snatEntry:SnatEntry example <snat_entry_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] snat_entry_name: The name of snat entry.
-        :param pulumi.Input[str] snat_ip: The SNAT ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidth_packages`.
-        :param pulumi.Input[str] snat_table_id: The value can get from `vpc.NatGateway` Attributes "snat_table_ids".
-        :param pulumi.Input[str] source_cidr: The private network segment of Ecs. This parameter and the `source_vswitch_id` parameter are mutually exclusive and cannot appear at the same time.
-        :param pulumi.Input[str] source_vswitch_id: The vswitch ID.
+        :param pulumi.Input[int] eip_affinity: Specifies whether to enable EIP affinity. Default value: `0`. Valid values:
+        :param pulumi.Input[str] snat_entry_name: The name of the SNAT entry. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] snat_ip: The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snat_ip` can be modified.
+        :param pulumi.Input[str] snat_table_id: The ID of the SNAT table.
+        :param pulumi.Input[str] source_cidr: The source CIDR block specified in the SNAT entry.
+        :param pulumi.Input[str] source_vswitch_id: The ID of the vSwitch.
         """
         ...
     @overload
@@ -298,7 +338,9 @@ class SnatEntry(pulumi.CustomResource):
                  args: SnatEntryArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a snat resource.
+        Provides a NAT Gateway Snat Entry resource.
+
+        For information about NAT Gateway Snat Entry and how to use it, see [What is Snat Entry](https://www.alibabacloud.com/help/en/nat-gateway/developer-reference/api-vpc-2016-04-28-createsnatentry-natgws).
 
         > **NOTE:** Available since v1.119.0.
 
@@ -313,7 +355,7 @@ class SnatEntry(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf_example"
+            name = "terraform-example"
         default = alicloud.get_zones(available_resource_creation="VSwitch")
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
@@ -341,10 +383,14 @@ class SnatEntry(pulumi.CustomResource):
 
         ## Import
 
-        Snat Entry can be imported using the id, e.g.
+        NAT Gateway Snat Entry can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:vpc/snatEntry:SnatEntry foo stb-1aece3:snat-232ce2
+        $ pulumi import alicloud:vpc/snatEntry:SnatEntry example <snat_table_id>:<snat_entry_id>
+        ```
+
+        ```sh
+        $ pulumi import alicloud:vpc/snatEntry:SnatEntry example <snat_entry_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -362,6 +408,7 @@ class SnatEntry(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 eip_affinity: Optional[pulumi.Input[int]] = None,
                  snat_entry_name: Optional[pulumi.Input[str]] = None,
                  snat_ip: Optional[pulumi.Input[str]] = None,
                  snat_table_id: Optional[pulumi.Input[str]] = None,
@@ -376,6 +423,7 @@ class SnatEntry(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SnatEntryArgs.__new__(SnatEntryArgs)
 
+            __props__.__dict__["eip_affinity"] = eip_affinity
             __props__.__dict__["snat_entry_name"] = snat_entry_name
             if snat_ip is None and not opts.urn:
                 raise TypeError("Missing required property 'snat_ip'")
@@ -397,6 +445,7 @@ class SnatEntry(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            eip_affinity: Optional[pulumi.Input[int]] = None,
             snat_entry_id: Optional[pulumi.Input[str]] = None,
             snat_entry_name: Optional[pulumi.Input[str]] = None,
             snat_ip: Optional[pulumi.Input[str]] = None,
@@ -411,18 +460,20 @@ class SnatEntry(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] eip_affinity: Specifies whether to enable EIP affinity. Default value: `0`. Valid values:
         :param pulumi.Input[str] snat_entry_id: The id of the snat entry on the server.
-        :param pulumi.Input[str] snat_entry_name: The name of snat entry.
-        :param pulumi.Input[str] snat_ip: The SNAT ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidth_packages`.
-        :param pulumi.Input[str] snat_table_id: The value can get from `vpc.NatGateway` Attributes "snat_table_ids".
-        :param pulumi.Input[str] source_cidr: The private network segment of Ecs. This parameter and the `source_vswitch_id` parameter are mutually exclusive and cannot appear at the same time.
-        :param pulumi.Input[str] source_vswitch_id: The vswitch ID.
-        :param pulumi.Input[str] status: (Available since v1.119.1) The status of snat entry.
+        :param pulumi.Input[str] snat_entry_name: The name of the SNAT entry. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] snat_ip: The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snat_ip` can be modified.
+        :param pulumi.Input[str] snat_table_id: The ID of the SNAT table.
+        :param pulumi.Input[str] source_cidr: The source CIDR block specified in the SNAT entry.
+        :param pulumi.Input[str] source_vswitch_id: The ID of the vSwitch.
+        :param pulumi.Input[str] status: (Available since v1.119.1) The ID of the SNAT entry.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _SnatEntryState.__new__(_SnatEntryState)
 
+        __props__.__dict__["eip_affinity"] = eip_affinity
         __props__.__dict__["snat_entry_id"] = snat_entry_id
         __props__.__dict__["snat_entry_name"] = snat_entry_name
         __props__.__dict__["snat_ip"] = snat_ip
@@ -431,6 +482,14 @@ class SnatEntry(pulumi.CustomResource):
         __props__.__dict__["source_vswitch_id"] = source_vswitch_id
         __props__.__dict__["status"] = status
         return SnatEntry(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="eipAffinity")
+    def eip_affinity(self) -> pulumi.Output[Optional[int]]:
+        """
+        Specifies whether to enable EIP affinity. Default value: `0`. Valid values:
+        """
+        return pulumi.get(self, "eip_affinity")
 
     @property
     @pulumi.getter(name="snatEntryId")
@@ -444,7 +503,7 @@ class SnatEntry(pulumi.CustomResource):
     @pulumi.getter(name="snatEntryName")
     def snat_entry_name(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of snat entry.
+        The name of the SNAT entry. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "snat_entry_name")
 
@@ -452,7 +511,7 @@ class SnatEntry(pulumi.CustomResource):
     @pulumi.getter(name="snatIp")
     def snat_ip(self) -> pulumi.Output[str]:
         """
-        The SNAT ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidth_packages`.
+        The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snat_ip` can be modified.
         """
         return pulumi.get(self, "snat_ip")
 
@@ -460,7 +519,7 @@ class SnatEntry(pulumi.CustomResource):
     @pulumi.getter(name="snatTableId")
     def snat_table_id(self) -> pulumi.Output[str]:
         """
-        The value can get from `vpc.NatGateway` Attributes "snat_table_ids".
+        The ID of the SNAT table.
         """
         return pulumi.get(self, "snat_table_id")
 
@@ -468,7 +527,7 @@ class SnatEntry(pulumi.CustomResource):
     @pulumi.getter(name="sourceCidr")
     def source_cidr(self) -> pulumi.Output[str]:
         """
-        The private network segment of Ecs. This parameter and the `source_vswitch_id` parameter are mutually exclusive and cannot appear at the same time.
+        The source CIDR block specified in the SNAT entry.
         """
         return pulumi.get(self, "source_cidr")
 
@@ -476,7 +535,7 @@ class SnatEntry(pulumi.CustomResource):
     @pulumi.getter(name="sourceVswitchId")
     def source_vswitch_id(self) -> pulumi.Output[str]:
         """
-        The vswitch ID.
+        The ID of the vSwitch.
         """
         return pulumi.get(self, "source_vswitch_id")
 
@@ -484,7 +543,7 @@ class SnatEntry(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        (Available since v1.119.1) The status of snat entry.
+        (Available since v1.119.1) The ID of the SNAT entry.
         """
         return pulumi.get(self, "status")
 

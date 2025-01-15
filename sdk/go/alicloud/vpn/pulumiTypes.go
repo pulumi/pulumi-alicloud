@@ -14,15 +14,18 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type ConnectionBgpConfig struct {
-	// Bgp enable.
+	// specifies whether to enable BGP. Valid values: true and false (default).
 	Enable *bool `pulumi:"enable"`
-	// Local asn.
+	// the autonomous system number (ASN) on the Alibaba Cloud side.
+	// Valid values: 1 to 4294967295. Default value: 45104. You can enter a value in two segments separated by a period (.).
+	// Each segment is 16 bits in length. Enter the number in each segment in decimal format.
+	// For example, if you enter 123.456, the ASN is 8061384. The ASN is calculated by using the following formula: 123 × 65536 + 456 = 8061384.
 	LocalAsn *string `pulumi:"localAsn"`
-	// Local bgp IP.
+	// the BGP address on the Alibaba Cloud side. It must be an IP address that falls within the CIDR block of the IPsec tunnel.
 	LocalBgpIp *string `pulumi:"localBgpIp"`
 	// The negotiation status of Tunnel.
 	Status *string `pulumi:"status"`
-	// IPSec tunnel Cidr.
+	// The CIDR block of the IPsec tunnel. The CIDR block must belong to 169.254.0.0/16 and the subnet mask is 30 bits in length.
 	TunnelCidr *string `pulumi:"tunnelCidr"`
 }
 
@@ -38,15 +41,18 @@ type ConnectionBgpConfigInput interface {
 }
 
 type ConnectionBgpConfigArgs struct {
-	// Bgp enable.
+	// specifies whether to enable BGP. Valid values: true and false (default).
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
-	// Local asn.
+	// the autonomous system number (ASN) on the Alibaba Cloud side.
+	// Valid values: 1 to 4294967295. Default value: 45104. You can enter a value in two segments separated by a period (.).
+	// Each segment is 16 bits in length. Enter the number in each segment in decimal format.
+	// For example, if you enter 123.456, the ASN is 8061384. The ASN is calculated by using the following formula: 123 × 65536 + 456 = 8061384.
 	LocalAsn pulumi.StringPtrInput `pulumi:"localAsn"`
-	// Local bgp IP.
+	// the BGP address on the Alibaba Cloud side. It must be an IP address that falls within the CIDR block of the IPsec tunnel.
 	LocalBgpIp pulumi.StringPtrInput `pulumi:"localBgpIp"`
 	// The negotiation status of Tunnel.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// IPSec tunnel Cidr.
+	// The CIDR block of the IPsec tunnel. The CIDR block must belong to 169.254.0.0/16 and the subnet mask is 30 bits in length.
 	TunnelCidr pulumi.StringPtrInput `pulumi:"tunnelCidr"`
 }
 
@@ -127,17 +133,20 @@ func (o ConnectionBgpConfigOutput) ToConnectionBgpConfigPtrOutputWithContext(ctx
 	}).(ConnectionBgpConfigPtrOutput)
 }
 
-// Bgp enable.
+// specifies whether to enable BGP. Valid values: true and false (default).
 func (o ConnectionBgpConfigOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionBgpConfig) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
 
-// Local asn.
+// the autonomous system number (ASN) on the Alibaba Cloud side.
+// Valid values: 1 to 4294967295. Default value: 45104. You can enter a value in two segments separated by a period (.).
+// Each segment is 16 bits in length. Enter the number in each segment in decimal format.
+// For example, if you enter 123.456, the ASN is 8061384. The ASN is calculated by using the following formula: 123 × 65536 + 456 = 8061384.
 func (o ConnectionBgpConfigOutput) LocalAsn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionBgpConfig) *string { return v.LocalAsn }).(pulumi.StringPtrOutput)
 }
 
-// Local bgp IP.
+// the BGP address on the Alibaba Cloud side. It must be an IP address that falls within the CIDR block of the IPsec tunnel.
 func (o ConnectionBgpConfigOutput) LocalBgpIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionBgpConfig) *string { return v.LocalBgpIp }).(pulumi.StringPtrOutput)
 }
@@ -147,7 +156,7 @@ func (o ConnectionBgpConfigOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionBgpConfig) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// IPSec tunnel Cidr.
+// The CIDR block of the IPsec tunnel. The CIDR block must belong to 169.254.0.0/16 and the subnet mask is 30 bits in length.
 func (o ConnectionBgpConfigOutput) TunnelCidr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionBgpConfig) *string { return v.TunnelCidr }).(pulumi.StringPtrOutput)
 }
@@ -176,7 +185,7 @@ func (o ConnectionBgpConfigPtrOutput) Elem() ConnectionBgpConfigOutput {
 	}).(ConnectionBgpConfigOutput)
 }
 
-// Bgp enable.
+// specifies whether to enable BGP. Valid values: true and false (default).
 func (o ConnectionBgpConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectionBgpConfig) *bool {
 		if v == nil {
@@ -186,7 +195,10 @@ func (o ConnectionBgpConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Local asn.
+// the autonomous system number (ASN) on the Alibaba Cloud side.
+// Valid values: 1 to 4294967295. Default value: 45104. You can enter a value in two segments separated by a period (.).
+// Each segment is 16 bits in length. Enter the number in each segment in decimal format.
+// For example, if you enter 123.456, the ASN is 8061384. The ASN is calculated by using the following formula: 123 × 65536 + 456 = 8061384.
 func (o ConnectionBgpConfigPtrOutput) LocalAsn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionBgpConfig) *string {
 		if v == nil {
@@ -196,7 +208,7 @@ func (o ConnectionBgpConfigPtrOutput) LocalAsn() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Local bgp IP.
+// the BGP address on the Alibaba Cloud side. It must be an IP address that falls within the CIDR block of the IPsec tunnel.
 func (o ConnectionBgpConfigPtrOutput) LocalBgpIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionBgpConfig) *string {
 		if v == nil {
@@ -216,7 +228,7 @@ func (o ConnectionBgpConfigPtrOutput) Status() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// IPSec tunnel Cidr.
+// The CIDR block of the IPsec tunnel. The CIDR block must belong to 169.254.0.0/16 and the subnet mask is 30 bits in length.
 func (o ConnectionBgpConfigPtrOutput) TunnelCidr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionBgpConfig) *string {
 		if v == nil {
@@ -227,15 +239,15 @@ func (o ConnectionBgpConfigPtrOutput) TunnelCidr() pulumi.StringPtrOutput {
 }
 
 type ConnectionHealthCheckConfig struct {
-	// Destination IP.
+	// the destination IP address configured for health checks.
 	Dip *string `pulumi:"dip"`
-	// Specifies whether to enable healthcheck.
+	// specifies whether to enable health checks. Valid values: true and false. Default value: false.
 	Enable *bool `pulumi:"enable"`
-	// Retry interval.
+	// the time interval of health check retries. Unit: seconds. Default value: 3.
 	Interval *int `pulumi:"interval"`
-	// retry times.
+	// the maximum number of health check retries. Default value: 3.
 	Retry *int `pulumi:"retry"`
-	// Source IP.
+	// the source IP address that is used for health checks.
 	Sip *string `pulumi:"sip"`
 }
 
@@ -251,15 +263,15 @@ type ConnectionHealthCheckConfigInput interface {
 }
 
 type ConnectionHealthCheckConfigArgs struct {
-	// Destination IP.
+	// the destination IP address configured for health checks.
 	Dip pulumi.StringPtrInput `pulumi:"dip"`
-	// Specifies whether to enable healthcheck.
+	// specifies whether to enable health checks. Valid values: true and false. Default value: false.
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
-	// Retry interval.
+	// the time interval of health check retries. Unit: seconds. Default value: 3.
 	Interval pulumi.IntPtrInput `pulumi:"interval"`
-	// retry times.
+	// the maximum number of health check retries. Default value: 3.
 	Retry pulumi.IntPtrInput `pulumi:"retry"`
-	// Source IP.
+	// the source IP address that is used for health checks.
 	Sip pulumi.StringPtrInput `pulumi:"sip"`
 }
 
@@ -340,27 +352,27 @@ func (o ConnectionHealthCheckConfigOutput) ToConnectionHealthCheckConfigPtrOutpu
 	}).(ConnectionHealthCheckConfigPtrOutput)
 }
 
-// Destination IP.
+// the destination IP address configured for health checks.
 func (o ConnectionHealthCheckConfigOutput) Dip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionHealthCheckConfig) *string { return v.Dip }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether to enable healthcheck.
+// specifies whether to enable health checks. Valid values: true and false. Default value: false.
 func (o ConnectionHealthCheckConfigOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionHealthCheckConfig) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
 
-// Retry interval.
+// the time interval of health check retries. Unit: seconds. Default value: 3.
 func (o ConnectionHealthCheckConfigOutput) Interval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConnectionHealthCheckConfig) *int { return v.Interval }).(pulumi.IntPtrOutput)
 }
 
-// retry times.
+// the maximum number of health check retries. Default value: 3.
 func (o ConnectionHealthCheckConfigOutput) Retry() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConnectionHealthCheckConfig) *int { return v.Retry }).(pulumi.IntPtrOutput)
 }
 
-// Source IP.
+// the source IP address that is used for health checks.
 func (o ConnectionHealthCheckConfigOutput) Sip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionHealthCheckConfig) *string { return v.Sip }).(pulumi.StringPtrOutput)
 }
@@ -389,7 +401,7 @@ func (o ConnectionHealthCheckConfigPtrOutput) Elem() ConnectionHealthCheckConfig
 	}).(ConnectionHealthCheckConfigOutput)
 }
 
-// Destination IP.
+// the destination IP address configured for health checks.
 func (o ConnectionHealthCheckConfigPtrOutput) Dip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionHealthCheckConfig) *string {
 		if v == nil {
@@ -399,7 +411,7 @@ func (o ConnectionHealthCheckConfigPtrOutput) Dip() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether to enable healthcheck.
+// specifies whether to enable health checks. Valid values: true and false. Default value: false.
 func (o ConnectionHealthCheckConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectionHealthCheckConfig) *bool {
 		if v == nil {
@@ -409,7 +421,7 @@ func (o ConnectionHealthCheckConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Retry interval.
+// the time interval of health check retries. Unit: seconds. Default value: 3.
 func (o ConnectionHealthCheckConfigPtrOutput) Interval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ConnectionHealthCheckConfig) *int {
 		if v == nil {
@@ -419,7 +431,7 @@ func (o ConnectionHealthCheckConfigPtrOutput) Interval() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// retry times.
+// the maximum number of health check retries. Default value: 3.
 func (o ConnectionHealthCheckConfigPtrOutput) Retry() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ConnectionHealthCheckConfig) *int {
 		if v == nil {
@@ -429,7 +441,7 @@ func (o ConnectionHealthCheckConfigPtrOutput) Retry() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Source IP.
+// the source IP address that is used for health checks.
 func (o ConnectionHealthCheckConfigPtrOutput) Sip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionHealthCheckConfig) *string {
 		if v == nil {
@@ -440,23 +452,26 @@ func (o ConnectionHealthCheckConfigPtrOutput) Sip() pulumi.StringPtrOutput {
 }
 
 type ConnectionIkeConfig struct {
-	// IKE auth Algorithm.
+	// the authentication algorithm that is used in Phase 1 negotiations. Valid values: md5, sha1, sha2
 	IkeAuthAlg *string `pulumi:"ikeAuthAlg"`
-	// IKE encript algorithm.
+	// the encryption algorithm that is used in Phase 1 negotiations. Valid values: aes, aes192, aes256, des, and 3des. Default value: aes.
 	IkeEncAlg *string `pulumi:"ikeEncAlg"`
-	// IKE lifetime.
+	// the SA lifetime as a result of Phase 1 negotiations. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
 	IkeLifetime *int `pulumi:"ikeLifetime"`
-	// The local ID, which supports the FQDN and IP formats, and defaults to the IP address of the selected VPN gateway.
+	// the identifier of the VPN gateway. It can contain at most 100 characters. The default value is the IP address of the VPN gateway.
 	IkeLocalId *string `pulumi:"ikeLocalId"`
-	// IKE mode, supports main and aggressive mode. The main mode is highly secure. If NAT traversal is enabled, we recommend that you use the aggressive mode.
+	// the negotiation mode of IKE. Valid values: main and aggressive. Default value: main.
+	// - main: This mode offers higher security during negotiations.
+	// - aggressive: This mode supports faster negotiations and a higher success rate.
 	IkeMode *string `pulumi:"ikeMode"`
-	// DH group.
+	// the Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Valid values: group1, group2, group5, and group14. Default value: group2.
 	IkePfs *string `pulumi:"ikePfs"`
-	// The peer ID. The FQDN and IP address formats are supported. The default value is the IP address of the selected customer gateway.
+	// the identifier of the customer gateway. It can contain at most 100 characters. The default value is the IP address of the customer gateway.
 	IkeRemoteId *string `pulumi:"ikeRemoteId"`
-	// IKE version.
+	// the version of the Internet Key Exchange (IKE) protocol. Valid values: ikev1 and ikev2. Default value: ikev1.
+	// Compared with IKEv1, IKEv2 simplifies the security association (SA) negotiation process and provides better support for scenarios with multiple CIDR blocks.
 	IkeVersion *string `pulumi:"ikeVersion"`
-	// Preshared secret key.
+	// the pre-shared key that is used for identity authentication between the VPN gateway and the on-premises data center. The key must be 1 to 100 characters in length and can contain digits, letters, and the following special characters: ~!\`@#$%^&*()_-+={}[]|;:',.<>/? If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key. You can call the DescribeVpnConnection operation to query the pre-shared key that is automatically generated by the system.
 	Psk *string `pulumi:"psk"`
 }
 
@@ -472,23 +487,26 @@ type ConnectionIkeConfigInput interface {
 }
 
 type ConnectionIkeConfigArgs struct {
-	// IKE auth Algorithm.
+	// the authentication algorithm that is used in Phase 1 negotiations. Valid values: md5, sha1, sha2
 	IkeAuthAlg pulumi.StringPtrInput `pulumi:"ikeAuthAlg"`
-	// IKE encript algorithm.
+	// the encryption algorithm that is used in Phase 1 negotiations. Valid values: aes, aes192, aes256, des, and 3des. Default value: aes.
 	IkeEncAlg pulumi.StringPtrInput `pulumi:"ikeEncAlg"`
-	// IKE lifetime.
+	// the SA lifetime as a result of Phase 1 negotiations. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
 	IkeLifetime pulumi.IntPtrInput `pulumi:"ikeLifetime"`
-	// The local ID, which supports the FQDN and IP formats, and defaults to the IP address of the selected VPN gateway.
+	// the identifier of the VPN gateway. It can contain at most 100 characters. The default value is the IP address of the VPN gateway.
 	IkeLocalId pulumi.StringPtrInput `pulumi:"ikeLocalId"`
-	// IKE mode, supports main and aggressive mode. The main mode is highly secure. If NAT traversal is enabled, we recommend that you use the aggressive mode.
+	// the negotiation mode of IKE. Valid values: main and aggressive. Default value: main.
+	// - main: This mode offers higher security during negotiations.
+	// - aggressive: This mode supports faster negotiations and a higher success rate.
 	IkeMode pulumi.StringPtrInput `pulumi:"ikeMode"`
-	// DH group.
+	// the Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Valid values: group1, group2, group5, and group14. Default value: group2.
 	IkePfs pulumi.StringPtrInput `pulumi:"ikePfs"`
-	// The peer ID. The FQDN and IP address formats are supported. The default value is the IP address of the selected customer gateway.
+	// the identifier of the customer gateway. It can contain at most 100 characters. The default value is the IP address of the customer gateway.
 	IkeRemoteId pulumi.StringPtrInput `pulumi:"ikeRemoteId"`
-	// IKE version.
+	// the version of the Internet Key Exchange (IKE) protocol. Valid values: ikev1 and ikev2. Default value: ikev1.
+	// Compared with IKEv1, IKEv2 simplifies the security association (SA) negotiation process and provides better support for scenarios with multiple CIDR blocks.
 	IkeVersion pulumi.StringPtrInput `pulumi:"ikeVersion"`
-	// Preshared secret key.
+	// the pre-shared key that is used for identity authentication between the VPN gateway and the on-premises data center. The key must be 1 to 100 characters in length and can contain digits, letters, and the following special characters: ~!\`@#$%^&*()_-+={}[]|;:',.<>/? If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key. You can call the DescribeVpnConnection operation to query the pre-shared key that is automatically generated by the system.
 	Psk pulumi.StringPtrInput `pulumi:"psk"`
 }
 
@@ -569,47 +587,50 @@ func (o ConnectionIkeConfigOutput) ToConnectionIkeConfigPtrOutputWithContext(ctx
 	}).(ConnectionIkeConfigPtrOutput)
 }
 
-// IKE auth Algorithm.
+// the authentication algorithm that is used in Phase 1 negotiations. Valid values: md5, sha1, sha2
 func (o ConnectionIkeConfigOutput) IkeAuthAlg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionIkeConfig) *string { return v.IkeAuthAlg }).(pulumi.StringPtrOutput)
 }
 
-// IKE encript algorithm.
+// the encryption algorithm that is used in Phase 1 negotiations. Valid values: aes, aes192, aes256, des, and 3des. Default value: aes.
 func (o ConnectionIkeConfigOutput) IkeEncAlg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionIkeConfig) *string { return v.IkeEncAlg }).(pulumi.StringPtrOutput)
 }
 
-// IKE lifetime.
+// the SA lifetime as a result of Phase 1 negotiations. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
 func (o ConnectionIkeConfigOutput) IkeLifetime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConnectionIkeConfig) *int { return v.IkeLifetime }).(pulumi.IntPtrOutput)
 }
 
-// The local ID, which supports the FQDN and IP formats, and defaults to the IP address of the selected VPN gateway.
+// the identifier of the VPN gateway. It can contain at most 100 characters. The default value is the IP address of the VPN gateway.
 func (o ConnectionIkeConfigOutput) IkeLocalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionIkeConfig) *string { return v.IkeLocalId }).(pulumi.StringPtrOutput)
 }
 
-// IKE mode, supports main and aggressive mode. The main mode is highly secure. If NAT traversal is enabled, we recommend that you use the aggressive mode.
+// the negotiation mode of IKE. Valid values: main and aggressive. Default value: main.
+// - main: This mode offers higher security during negotiations.
+// - aggressive: This mode supports faster negotiations and a higher success rate.
 func (o ConnectionIkeConfigOutput) IkeMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionIkeConfig) *string { return v.IkeMode }).(pulumi.StringPtrOutput)
 }
 
-// DH group.
+// the Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Valid values: group1, group2, group5, and group14. Default value: group2.
 func (o ConnectionIkeConfigOutput) IkePfs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionIkeConfig) *string { return v.IkePfs }).(pulumi.StringPtrOutput)
 }
 
-// The peer ID. The FQDN and IP address formats are supported. The default value is the IP address of the selected customer gateway.
+// the identifier of the customer gateway. It can contain at most 100 characters. The default value is the IP address of the customer gateway.
 func (o ConnectionIkeConfigOutput) IkeRemoteId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionIkeConfig) *string { return v.IkeRemoteId }).(pulumi.StringPtrOutput)
 }
 
-// IKE version.
+// the version of the Internet Key Exchange (IKE) protocol. Valid values: ikev1 and ikev2. Default value: ikev1.
+// Compared with IKEv1, IKEv2 simplifies the security association (SA) negotiation process and provides better support for scenarios with multiple CIDR blocks.
 func (o ConnectionIkeConfigOutput) IkeVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionIkeConfig) *string { return v.IkeVersion }).(pulumi.StringPtrOutput)
 }
 
-// Preshared secret key.
+// the pre-shared key that is used for identity authentication between the VPN gateway and the on-premises data center. The key must be 1 to 100 characters in length and can contain digits, letters, and the following special characters: ~!\`@#$%^&*()_-+={}[]|;:',.<>/? If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key. You can call the DescribeVpnConnection operation to query the pre-shared key that is automatically generated by the system.
 func (o ConnectionIkeConfigOutput) Psk() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionIkeConfig) *string { return v.Psk }).(pulumi.StringPtrOutput)
 }
@@ -638,7 +659,7 @@ func (o ConnectionIkeConfigPtrOutput) Elem() ConnectionIkeConfigOutput {
 	}).(ConnectionIkeConfigOutput)
 }
 
-// IKE auth Algorithm.
+// the authentication algorithm that is used in Phase 1 negotiations. Valid values: md5, sha1, sha2
 func (o ConnectionIkeConfigPtrOutput) IkeAuthAlg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionIkeConfig) *string {
 		if v == nil {
@@ -648,7 +669,7 @@ func (o ConnectionIkeConfigPtrOutput) IkeAuthAlg() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// IKE encript algorithm.
+// the encryption algorithm that is used in Phase 1 negotiations. Valid values: aes, aes192, aes256, des, and 3des. Default value: aes.
 func (o ConnectionIkeConfigPtrOutput) IkeEncAlg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionIkeConfig) *string {
 		if v == nil {
@@ -658,7 +679,7 @@ func (o ConnectionIkeConfigPtrOutput) IkeEncAlg() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// IKE lifetime.
+// the SA lifetime as a result of Phase 1 negotiations. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
 func (o ConnectionIkeConfigPtrOutput) IkeLifetime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ConnectionIkeConfig) *int {
 		if v == nil {
@@ -668,7 +689,7 @@ func (o ConnectionIkeConfigPtrOutput) IkeLifetime() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The local ID, which supports the FQDN and IP formats, and defaults to the IP address of the selected VPN gateway.
+// the identifier of the VPN gateway. It can contain at most 100 characters. The default value is the IP address of the VPN gateway.
 func (o ConnectionIkeConfigPtrOutput) IkeLocalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionIkeConfig) *string {
 		if v == nil {
@@ -678,7 +699,9 @@ func (o ConnectionIkeConfigPtrOutput) IkeLocalId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// IKE mode, supports main and aggressive mode. The main mode is highly secure. If NAT traversal is enabled, we recommend that you use the aggressive mode.
+// the negotiation mode of IKE. Valid values: main and aggressive. Default value: main.
+// - main: This mode offers higher security during negotiations.
+// - aggressive: This mode supports faster negotiations and a higher success rate.
 func (o ConnectionIkeConfigPtrOutput) IkeMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionIkeConfig) *string {
 		if v == nil {
@@ -688,7 +711,7 @@ func (o ConnectionIkeConfigPtrOutput) IkeMode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// DH group.
+// the Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Valid values: group1, group2, group5, and group14. Default value: group2.
 func (o ConnectionIkeConfigPtrOutput) IkePfs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionIkeConfig) *string {
 		if v == nil {
@@ -698,7 +721,7 @@ func (o ConnectionIkeConfigPtrOutput) IkePfs() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The peer ID. The FQDN and IP address formats are supported. The default value is the IP address of the selected customer gateway.
+// the identifier of the customer gateway. It can contain at most 100 characters. The default value is the IP address of the customer gateway.
 func (o ConnectionIkeConfigPtrOutput) IkeRemoteId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionIkeConfig) *string {
 		if v == nil {
@@ -708,7 +731,8 @@ func (o ConnectionIkeConfigPtrOutput) IkeRemoteId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// IKE version.
+// the version of the Internet Key Exchange (IKE) protocol. Valid values: ikev1 and ikev2. Default value: ikev1.
+// Compared with IKEv1, IKEv2 simplifies the security association (SA) negotiation process and provides better support for scenarios with multiple CIDR blocks.
 func (o ConnectionIkeConfigPtrOutput) IkeVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionIkeConfig) *string {
 		if v == nil {
@@ -718,7 +742,7 @@ func (o ConnectionIkeConfigPtrOutput) IkeVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Preshared secret key.
+// the pre-shared key that is used for identity authentication between the VPN gateway and the on-premises data center. The key must be 1 to 100 characters in length and can contain digits, letters, and the following special characters: ~!\`@#$%^&*()_-+={}[]|;:',.<>/? If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key. You can call the DescribeVpnConnection operation to query the pre-shared key that is automatically generated by the system.
 func (o ConnectionIkeConfigPtrOutput) Psk() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionIkeConfig) *string {
 		if v == nil {
@@ -729,13 +753,13 @@ func (o ConnectionIkeConfigPtrOutput) Psk() pulumi.StringPtrOutput {
 }
 
 type ConnectionIpsecConfig struct {
-	// IPsec authentication algorithm. sha1 and md5 are supported.
+	// the authentication algorithm that is used in Phase 2 negotiations. Valid values: md5, sha1, sha256, sha384, and sha512. Default value: md5.
 	IpsecAuthAlg *string `pulumi:"ipsecAuthAlg"`
-	// IPsec Encript algorithm.
+	// the encryption algorithm that is used in Phase 2 negotiations. Valid values: aes, aes192, aes256, des, and 3des. Default value: aes.
 	IpsecEncAlg *string `pulumi:"ipsecEncAlg"`
-	// IPsec lifetime.
+	// the SA lifetime that is determined by Phase 2 negotiations. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
 	IpsecLifetime *int `pulumi:"ipsecLifetime"`
-	// DH Group.
+	// the DH key exchange algorithm that is used in Phase 2 negotiations. Valid values: disabled, group1, group2, group5, and group14. Default value: group2.
 	IpsecPfs *string `pulumi:"ipsecPfs"`
 }
 
@@ -751,13 +775,13 @@ type ConnectionIpsecConfigInput interface {
 }
 
 type ConnectionIpsecConfigArgs struct {
-	// IPsec authentication algorithm. sha1 and md5 are supported.
+	// the authentication algorithm that is used in Phase 2 negotiations. Valid values: md5, sha1, sha256, sha384, and sha512. Default value: md5.
 	IpsecAuthAlg pulumi.StringPtrInput `pulumi:"ipsecAuthAlg"`
-	// IPsec Encript algorithm.
+	// the encryption algorithm that is used in Phase 2 negotiations. Valid values: aes, aes192, aes256, des, and 3des. Default value: aes.
 	IpsecEncAlg pulumi.StringPtrInput `pulumi:"ipsecEncAlg"`
-	// IPsec lifetime.
+	// the SA lifetime that is determined by Phase 2 negotiations. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
 	IpsecLifetime pulumi.IntPtrInput `pulumi:"ipsecLifetime"`
-	// DH Group.
+	// the DH key exchange algorithm that is used in Phase 2 negotiations. Valid values: disabled, group1, group2, group5, and group14. Default value: group2.
 	IpsecPfs pulumi.StringPtrInput `pulumi:"ipsecPfs"`
 }
 
@@ -838,22 +862,22 @@ func (o ConnectionIpsecConfigOutput) ToConnectionIpsecConfigPtrOutputWithContext
 	}).(ConnectionIpsecConfigPtrOutput)
 }
 
-// IPsec authentication algorithm. sha1 and md5 are supported.
+// the authentication algorithm that is used in Phase 2 negotiations. Valid values: md5, sha1, sha256, sha384, and sha512. Default value: md5.
 func (o ConnectionIpsecConfigOutput) IpsecAuthAlg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionIpsecConfig) *string { return v.IpsecAuthAlg }).(pulumi.StringPtrOutput)
 }
 
-// IPsec Encript algorithm.
+// the encryption algorithm that is used in Phase 2 negotiations. Valid values: aes, aes192, aes256, des, and 3des. Default value: aes.
 func (o ConnectionIpsecConfigOutput) IpsecEncAlg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionIpsecConfig) *string { return v.IpsecEncAlg }).(pulumi.StringPtrOutput)
 }
 
-// IPsec lifetime.
+// the SA lifetime that is determined by Phase 2 negotiations. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
 func (o ConnectionIpsecConfigOutput) IpsecLifetime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConnectionIpsecConfig) *int { return v.IpsecLifetime }).(pulumi.IntPtrOutput)
 }
 
-// DH Group.
+// the DH key exchange algorithm that is used in Phase 2 negotiations. Valid values: disabled, group1, group2, group5, and group14. Default value: group2.
 func (o ConnectionIpsecConfigOutput) IpsecPfs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionIpsecConfig) *string { return v.IpsecPfs }).(pulumi.StringPtrOutput)
 }
@@ -882,7 +906,7 @@ func (o ConnectionIpsecConfigPtrOutput) Elem() ConnectionIpsecConfigOutput {
 	}).(ConnectionIpsecConfigOutput)
 }
 
-// IPsec authentication algorithm. sha1 and md5 are supported.
+// the authentication algorithm that is used in Phase 2 negotiations. Valid values: md5, sha1, sha256, sha384, and sha512. Default value: md5.
 func (o ConnectionIpsecConfigPtrOutput) IpsecAuthAlg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionIpsecConfig) *string {
 		if v == nil {
@@ -892,7 +916,7 @@ func (o ConnectionIpsecConfigPtrOutput) IpsecAuthAlg() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// IPsec Encript algorithm.
+// the encryption algorithm that is used in Phase 2 negotiations. Valid values: aes, aes192, aes256, des, and 3des. Default value: aes.
 func (o ConnectionIpsecConfigPtrOutput) IpsecEncAlg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionIpsecConfig) *string {
 		if v == nil {
@@ -902,7 +926,7 @@ func (o ConnectionIpsecConfigPtrOutput) IpsecEncAlg() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// IPsec lifetime.
+// the SA lifetime that is determined by Phase 2 negotiations. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
 func (o ConnectionIpsecConfigPtrOutput) IpsecLifetime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ConnectionIpsecConfig) *int {
 		if v == nil {
@@ -912,7 +936,7 @@ func (o ConnectionIpsecConfigPtrOutput) IpsecLifetime() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// DH Group.
+// the DH key exchange algorithm that is used in Phase 2 negotiations. Valid values: disabled, group1, group2, group5, and group14. Default value: group2.
 func (o ConnectionIpsecConfigPtrOutput) IpsecPfs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionIpsecConfig) *string {
 		if v == nil {
@@ -1351,10 +1375,12 @@ type ConnectionTunnelOptionsSpecificationTunnelIkeConfig struct {
 	IkeMode     *string `pulumi:"ikeMode"`
 	IkePfs      *string `pulumi:"ikePfs"`
 	IkeVersion  *string `pulumi:"ikeVersion"`
-	// The local Id.
+	// The identifier of the tunnel on the Alibaba Cloud side, which is used in Phase 1 negotiations. It can contain at most 100 characters. The default value is the IP address of the tunnel.
+	// LocalId supports fully qualified domain names (FQDNs). If you use an FQDN, we recommend that you set the negotiation mode to aggressive.
 	LocalId *string `pulumi:"localId"`
 	Psk     *string `pulumi:"psk"`
-	// Remote ID.
+	// The identifier of the tunnel peer, which is used in Phase 1 negotiations. It can contain at most 100 characters. The default value is the IP address of the customer gateway that is associated with the tunnel.
+	// RemoteId supports FQDNs. If you use an FQDN, we recommend that you set the negotiation mode to aggressive.
 	RemoteId *string `pulumi:"remoteId"`
 }
 
@@ -1376,10 +1402,12 @@ type ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs struct {
 	IkeMode     pulumi.StringPtrInput `pulumi:"ikeMode"`
 	IkePfs      pulumi.StringPtrInput `pulumi:"ikePfs"`
 	IkeVersion  pulumi.StringPtrInput `pulumi:"ikeVersion"`
-	// The local Id.
+	// The identifier of the tunnel on the Alibaba Cloud side, which is used in Phase 1 negotiations. It can contain at most 100 characters. The default value is the IP address of the tunnel.
+	// LocalId supports fully qualified domain names (FQDNs). If you use an FQDN, we recommend that you set the negotiation mode to aggressive.
 	LocalId pulumi.StringPtrInput `pulumi:"localId"`
 	Psk     pulumi.StringPtrInput `pulumi:"psk"`
-	// Remote ID.
+	// The identifier of the tunnel peer, which is used in Phase 1 negotiations. It can contain at most 100 characters. The default value is the IP address of the customer gateway that is associated with the tunnel.
+	// RemoteId supports FQDNs. If you use an FQDN, we recommend that you set the negotiation mode to aggressive.
 	RemoteId pulumi.StringPtrInput `pulumi:"remoteId"`
 }
 
@@ -1484,7 +1512,8 @@ func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigOutput) IkeVersion() 
 	return o.ApplyT(func(v ConnectionTunnelOptionsSpecificationTunnelIkeConfig) *string { return v.IkeVersion }).(pulumi.StringPtrOutput)
 }
 
-// The local Id.
+// The identifier of the tunnel on the Alibaba Cloud side, which is used in Phase 1 negotiations. It can contain at most 100 characters. The default value is the IP address of the tunnel.
+// LocalId supports fully qualified domain names (FQDNs). If you use an FQDN, we recommend that you set the negotiation mode to aggressive.
 func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigOutput) LocalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionTunnelOptionsSpecificationTunnelIkeConfig) *string { return v.LocalId }).(pulumi.StringPtrOutput)
 }
@@ -1493,7 +1522,8 @@ func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigOutput) Psk() pulumi.
 	return o.ApplyT(func(v ConnectionTunnelOptionsSpecificationTunnelIkeConfig) *string { return v.Psk }).(pulumi.StringPtrOutput)
 }
 
-// Remote ID.
+// The identifier of the tunnel peer, which is used in Phase 1 negotiations. It can contain at most 100 characters. The default value is the IP address of the customer gateway that is associated with the tunnel.
+// RemoteId supports FQDNs. If you use an FQDN, we recommend that you set the negotiation mode to aggressive.
 func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigOutput) RemoteId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionTunnelOptionsSpecificationTunnelIkeConfig) *string { return v.RemoteId }).(pulumi.StringPtrOutput)
 }
@@ -1576,7 +1606,8 @@ func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) IkeVersion
 	}).(pulumi.StringPtrOutput)
 }
 
-// The local Id.
+// The identifier of the tunnel on the Alibaba Cloud side, which is used in Phase 1 negotiations. It can contain at most 100 characters. The default value is the IP address of the tunnel.
+// LocalId supports fully qualified domain names (FQDNs). If you use an FQDN, we recommend that you set the negotiation mode to aggressive.
 func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) LocalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionTunnelOptionsSpecificationTunnelIkeConfig) *string {
 		if v == nil {
@@ -1595,7 +1626,8 @@ func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) Psk() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Remote ID.
+// The identifier of the tunnel peer, which is used in Phase 1 negotiations. It can contain at most 100 characters. The default value is the IP address of the customer gateway that is associated with the tunnel.
+// RemoteId supports FQDNs. If you use an FQDN, we recommend that you set the negotiation mode to aggressive.
 func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) RemoteId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionTunnelOptionsSpecificationTunnelIkeConfig) *string {
 		if v == nil {

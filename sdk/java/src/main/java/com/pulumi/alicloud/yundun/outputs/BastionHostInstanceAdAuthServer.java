@@ -22,7 +22,7 @@ public final class BastionHostInstanceAdAuthServer {
     private Boolean isSsl;
     private @Nullable String mobileMapping;
     private @Nullable String nameMapping;
-    private String password;
+    private @Nullable String password;
     private Integer port;
     private String server;
     private @Nullable String standbyServer;
@@ -52,8 +52,8 @@ public final class BastionHostInstanceAdAuthServer {
     public Optional<String> nameMapping() {
         return Optional.ofNullable(this.nameMapping);
     }
-    public String password() {
-        return this.password;
+    public Optional<String> password() {
+        return Optional.ofNullable(this.password);
     }
     public Integer port() {
         return this.port;
@@ -82,7 +82,7 @@ public final class BastionHostInstanceAdAuthServer {
         private Boolean isSsl;
         private @Nullable String mobileMapping;
         private @Nullable String nameMapping;
-        private String password;
+        private @Nullable String password;
         private Integer port;
         private String server;
         private @Nullable String standbyServer;
@@ -160,10 +160,8 @@ public final class BastionHostInstanceAdAuthServer {
             return this;
         }
         @CustomType.Setter
-        public Builder password(String password) {
-            if (password == null) {
-              throw new MissingRequiredPropertyException("BastionHostInstanceAdAuthServer", "password");
-            }
+        public Builder password(@Nullable String password) {
+
             this.password = password;
             return this;
         }

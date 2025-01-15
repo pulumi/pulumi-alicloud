@@ -29,6 +29,21 @@ public final class GetNetworksVpc {
      */
     private String description;
     /**
+     * @return The ID of dhcp options set.
+     * 
+     */
+    private String dhcpOptionsSetId;
+    /**
+     * @return The status of the DHCP options set. Valid values: `Available`, `InUse`, `Deleted`, `Pending`.
+     * 
+     */
+    private String dhcpOptionsSetStatus;
+    /**
+     * @return Indicates whether the Domain Name System (DNS) feature is enabled.
+     * 
+     */
+    private String dnsHostnameStatus;
+    /**
      * @return ID of the VPC.
      * 
      */
@@ -125,6 +140,27 @@ public final class GetNetworksVpc {
      */
     public String description() {
         return this.description;
+    }
+    /**
+     * @return The ID of dhcp options set.
+     * 
+     */
+    public String dhcpOptionsSetId() {
+        return this.dhcpOptionsSetId;
+    }
+    /**
+     * @return The status of the DHCP options set. Valid values: `Available`, `InUse`, `Deleted`, `Pending`.
+     * 
+     */
+    public String dhcpOptionsSetStatus() {
+        return this.dhcpOptionsSetStatus;
+    }
+    /**
+     * @return Indicates whether the Domain Name System (DNS) feature is enabled.
+     * 
+     */
+    public String dnsHostnameStatus() {
+        return this.dnsHostnameStatus;
     }
     /**
      * @return ID of the VPC.
@@ -244,6 +280,9 @@ public final class GetNetworksVpc {
         private String cidrBlock;
         private String creationTime;
         private String description;
+        private String dhcpOptionsSetId;
+        private String dhcpOptionsSetStatus;
+        private String dnsHostnameStatus;
         private String id;
         private String ipv6CidrBlock;
         private Boolean isDefault;
@@ -265,6 +304,9 @@ public final class GetNetworksVpc {
     	      this.cidrBlock = defaults.cidrBlock;
     	      this.creationTime = defaults.creationTime;
     	      this.description = defaults.description;
+    	      this.dhcpOptionsSetId = defaults.dhcpOptionsSetId;
+    	      this.dhcpOptionsSetStatus = defaults.dhcpOptionsSetStatus;
+    	      this.dnsHostnameStatus = defaults.dnsHostnameStatus;
     	      this.id = defaults.id;
     	      this.ipv6CidrBlock = defaults.ipv6CidrBlock;
     	      this.isDefault = defaults.isDefault;
@@ -304,6 +346,30 @@ public final class GetNetworksVpc {
               throw new MissingRequiredPropertyException("GetNetworksVpc", "description");
             }
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dhcpOptionsSetId(String dhcpOptionsSetId) {
+            if (dhcpOptionsSetId == null) {
+              throw new MissingRequiredPropertyException("GetNetworksVpc", "dhcpOptionsSetId");
+            }
+            this.dhcpOptionsSetId = dhcpOptionsSetId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dhcpOptionsSetStatus(String dhcpOptionsSetStatus) {
+            if (dhcpOptionsSetStatus == null) {
+              throw new MissingRequiredPropertyException("GetNetworksVpc", "dhcpOptionsSetStatus");
+            }
+            this.dhcpOptionsSetStatus = dhcpOptionsSetStatus;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dnsHostnameStatus(String dnsHostnameStatus) {
+            if (dnsHostnameStatus == null) {
+              throw new MissingRequiredPropertyException("GetNetworksVpc", "dnsHostnameStatus");
+            }
+            this.dnsHostnameStatus = dnsHostnameStatus;
             return this;
         }
         @CustomType.Setter
@@ -440,6 +506,9 @@ public final class GetNetworksVpc {
             _resultValue.cidrBlock = cidrBlock;
             _resultValue.creationTime = creationTime;
             _resultValue.description = description;
+            _resultValue.dhcpOptionsSetId = dhcpOptionsSetId;
+            _resultValue.dhcpOptionsSetStatus = dhcpOptionsSetStatus;
+            _resultValue.dnsHostnameStatus = dnsHostnameStatus;
             _resultValue.id = id;
             _resultValue.ipv6CidrBlock = ipv6CidrBlock;
             _resultValue.isDefault = isDefault;

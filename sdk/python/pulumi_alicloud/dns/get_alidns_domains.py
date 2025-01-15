@@ -190,6 +190,9 @@ class GetAlidnsDomainsResult:
     @property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Tags of the domain.
+        """
         return pulumi.get(self, "tags")
 
     @property
@@ -246,7 +249,7 @@ def get_alidns_domains(ali_domain: Optional[bool] = None,
     """
     This data source provides a list of Alidns Domains in an Alibaba Cloud account according to the specified filters.
 
-    > **NOTE:**  Available in 1.95.0+.
+    > **NOTE:** Available since v1.95.0.
 
     ## Example Usage
 
@@ -262,6 +265,7 @@ def get_alidns_domains(ali_domain: Optional[bool] = None,
 
     :param bool ali_domain: Specifies whether the domain is from Alibaba Cloud or not.
     :param str domain_name_regex: A regex string to filter results by the domain name.
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param str group_id: Domain group ID, if not filled, the default is all groups.
     :param str group_name_regex: A regex string to filter results by the group name.
     :param Sequence[str] ids: A list of domain IDs.
@@ -332,7 +336,7 @@ def get_alidns_domains_output(ali_domain: Optional[pulumi.Input[Optional[bool]]]
     """
     This data source provides a list of Alidns Domains in an Alibaba Cloud account according to the specified filters.
 
-    > **NOTE:**  Available in 1.95.0+.
+    > **NOTE:** Available since v1.95.0.
 
     ## Example Usage
 
@@ -348,6 +352,7 @@ def get_alidns_domains_output(ali_domain: Optional[pulumi.Input[Optional[bool]]]
 
     :param bool ali_domain: Specifies whether the domain is from Alibaba Cloud or not.
     :param str domain_name_regex: A regex string to filter results by the domain name.
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param str group_id: Domain group ID, if not filled, the default is all groups.
     :param str group_name_regex: A regex string to filter results by the group name.
     :param Sequence[str] ids: A list of domain IDs.

@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Oos
 {
     /// <summary>
-    /// Provides a OOS Secret Parameter resource.
+    /// Provides a Operation Orchestration Service (OOS) Secret Parameter resource.
     /// 
-    /// For information about OOS Secret Parameter and how to use it, see [What is Secret Parameter](https://www.alibabacloud.com/help/en/doc-detail/183418.html).
+    /// For information about Operation Orchestration Service (OOS) Secret Parameter and how to use it, see [What is Secret Parameter](https://www.alibabacloud.com/help/en/doc-detail/183418.html).
     /// 
     /// &gt; **NOTE:** Available since v1.147.0+.
     /// 
@@ -57,10 +57,10 @@ namespace Pulumi.AliCloud.Oos
     /// 
     /// ## Import
     /// 
-    /// OOS Secret Parameter can be imported using the id, e.g.
+    /// Operation Orchestration Service (OOS) Secret Parameter can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:oos/secretParameter:SecretParameter example &lt;secret_parameter_name&gt;
+    /// $ pulumi import alicloud:oos/secretParameter:SecretParameter example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:oos/secretParameter:SecretParameter")]
@@ -77,10 +77,22 @@ namespace Pulumi.AliCloud.Oos
         public Output<string?> Constraints { get; private set; } = null!;
 
         /// <summary>
+        /// Parameter creation time
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
         /// The description of the encryption parameter. The description must be `1` to `200` characters in length.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the KMS instance.
+        /// </summary>
+        [Output("dkmsInstanceId")]
+        public Output<string?> DkmsInstanceId { get; private set; } = null!;
 
         /// <summary>
         /// The Customer Master Key (CMK) of Key Management Service (KMS) that is used to encrypt the parameter.
@@ -104,7 +116,7 @@ namespace Pulumi.AliCloud.Oos
         /// A mapping of tags to assign to the resource.
         /// </summary>
         [Output("tags")]
-        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The data type of the encryption parameter. Valid values: `Secret`.
@@ -185,6 +197,12 @@ namespace Pulumi.AliCloud.Oos
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// The ID of the KMS instance.
+        /// </summary>
+        [Input("dkmsInstanceId")]
+        public Input<string>? DkmsInstanceId { get; set; }
+
+        /// <summary>
         /// The Customer Master Key (CMK) of Key Management Service (KMS) that is used to encrypt the parameter.
         /// </summary>
         [Input("keyId")]
@@ -255,10 +273,22 @@ namespace Pulumi.AliCloud.Oos
         public Input<string>? Constraints { get; set; }
 
         /// <summary>
+        /// Parameter creation time
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
         /// The description of the encryption parameter. The description must be `1` to `200` characters in length.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The ID of the KMS instance.
+        /// </summary>
+        [Input("dkmsInstanceId")]
+        public Input<string>? DkmsInstanceId { get; set; }
 
         /// <summary>
         /// The Customer Master Key (CMK) of Key Management Service (KMS) that is used to encrypt the parameter.

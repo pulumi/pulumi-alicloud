@@ -347,7 +347,7 @@ public final class CsFunctions {
     /**
      * This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.103.0+
+     * &gt; **NOTE:** Available since v1.103.0.
      * 
      * ## Example Usage
      * 
@@ -394,7 +394,7 @@ public final class CsFunctions {
     /**
      * This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.103.0+
+     * &gt; **NOTE:** Available since v1.103.0.
      * 
      * ## Example Usage
      * 
@@ -441,7 +441,7 @@ public final class CsFunctions {
     /**
      * This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.103.0+
+     * &gt; **NOTE:** Available since v1.103.0.
      * 
      * ## Example Usage
      * 
@@ -488,7 +488,7 @@ public final class CsFunctions {
     /**
      * This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.103.0+
+     * &gt; **NOTE:** Available since v1.103.0.
      * 
      * ## Example Usage
      * 
@@ -535,7 +535,7 @@ public final class CsFunctions {
     /**
      * This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.103.0+
+     * &gt; **NOTE:** Available since v1.103.0.
      * 
      * ## Example Usage
      * 
@@ -582,7 +582,7 @@ public final class CsFunctions {
     /**
      * This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.103.0+
+     * &gt; **NOTE:** Available since v1.103.0.
      * 
      * ## Example Usage
      * 
@@ -629,7 +629,7 @@ public final class CsFunctions {
     /**
      * This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.103.0+
+     * &gt; **NOTE:** Available since v1.103.0.
      * 
      * ## Example Usage
      * 
