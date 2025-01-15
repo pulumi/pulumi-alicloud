@@ -63,14 +63,24 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
+     * Instance type. Valid values:
+     * - professional: professional Edition
+     * - enterprise: enterprise Edition
+     * - vip: Platinum Edition.
+     * - serverless: Serverless Edition.
+     * &gt; **NOTE:** There should not set the `instance_type` parameter when creating a serverless instance. Only need to set `payment_type = &#34;PayAsYouGo&#34;` and `serverless_charge_type = &#34;onDemand&#34;`.
      * 
      */
     @Import(name="instanceType")
     private @Nullable Output<String> instanceType;
 
     /**
-     * @return Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
+     * @return Instance type. Valid values:
+     * - professional: professional Edition
+     * - enterprise: enterprise Edition
+     * - vip: Platinum Edition.
+     * - serverless: Serverless Edition.
+     * &gt; **NOTE:** There should not set the `instance_type` parameter when creating a serverless instance. Only need to set `payment_type = &#34;PayAsYouGo&#34;` and `serverless_charge_type = &#34;onDemand&#34;`.
      * 
      */
     public Optional<Output<String>> instanceType() {
@@ -142,14 +152,18 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
+     * The Payment type. Valid value:
+     * - Subscription: Pre-paid.
+     * - PayAsYouGo: Post-paid, and for serverless Edition.
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
+     * @return The Payment type. Valid value:
+     * - Subscription: Pre-paid.
+     * - PayAsYouGo: Post-paid, and for serverless Edition.
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -157,14 +171,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
+     * Prepayment cycle, unit: periodCycle. This parameter is valid when PaymentType is set to Subscription.
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
+     * @return Prepayment cycle, unit: periodCycle. This parameter is valid when PaymentType is set to Subscription.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -172,14 +186,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Prepaid cycle units. Value: Month. Year: Year.
+     * Prepaid cycle units. Value: Month, Year.
      * 
      */
     @Import(name="periodCycle")
     private @Nullable Output<String> periodCycle;
 
     /**
-     * @return Prepaid cycle units. Value: Month. Year: Year.
+     * @return Prepaid cycle units. Value: Month, Year.
      * 
      */
     public Optional<Output<String>> periodCycle() {
@@ -444,7 +458,12 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceType Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
+         * @param instanceType Instance type. Valid values:
+         * - professional: professional Edition
+         * - enterprise: enterprise Edition
+         * - vip: Platinum Edition.
+         * - serverless: Serverless Edition.
+         * &gt; **NOTE:** There should not set the `instance_type` parameter when creating a serverless instance. Only need to set `payment_type = &#34;PayAsYouGo&#34;` and `serverless_charge_type = &#34;onDemand&#34;`.
          * 
          * @return builder
          * 
@@ -455,7 +474,12 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceType Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
+         * @param instanceType Instance type. Valid values:
+         * - professional: professional Edition
+         * - enterprise: enterprise Edition
+         * - vip: Platinum Edition.
+         * - serverless: Serverless Edition.
+         * &gt; **NOTE:** There should not set the `instance_type` parameter when creating a serverless instance. Only need to set `payment_type = &#34;PayAsYouGo&#34;` and `serverless_charge_type = &#34;onDemand&#34;`.
          * 
          * @return builder
          * 
@@ -553,7 +577,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
+         * @param paymentType The Payment type. Valid value:
+         * - Subscription: Pre-paid.
+         * - PayAsYouGo: Post-paid, and for serverless Edition.
          * 
          * @return builder
          * 
@@ -564,7 +590,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
+         * @param paymentType The Payment type. Valid value:
+         * - Subscription: Pre-paid.
+         * - PayAsYouGo: Post-paid, and for serverless Edition.
          * 
          * @return builder
          * 
@@ -574,7 +602,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
+         * @param period Prepayment cycle, unit: periodCycle. This parameter is valid when PaymentType is set to Subscription.
          * 
          * @return builder
          * 
@@ -585,7 +613,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
+         * @param period Prepayment cycle, unit: periodCycle. This parameter is valid when PaymentType is set to Subscription.
          * 
          * @return builder
          * 
@@ -595,7 +623,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param periodCycle Prepaid cycle units. Value: Month. Year: Year.
+         * @param periodCycle Prepaid cycle units. Value: Month, Year.
          * 
          * @return builder
          * 
@@ -606,7 +634,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param periodCycle Prepaid cycle units. Value: Month. Year: Year.
+         * @param periodCycle Prepaid cycle units. Value: Month, Year.
          * 
          * @return builder
          * 

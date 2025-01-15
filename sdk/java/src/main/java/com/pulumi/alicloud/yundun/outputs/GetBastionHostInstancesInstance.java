@@ -10,10 +10,10 @@ import java.lang.String;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetBastionHostInstancesInstance {
+    private String bandwidth;
     private String description;
     private String id;
     private String instanceStatus;
@@ -22,10 +22,14 @@ public final class GetBastionHostInstancesInstance {
     private String publicDomain;
     private Boolean publicNetworkAccess;
     private List<String> securityGroupIds;
-    private @Nullable Map<String,String> tags;
+    private String storage;
+    private Map<String,String> tags;
     private String userVswitchId;
 
     private GetBastionHostInstancesInstance() {}
+    public String bandwidth() {
+        return this.bandwidth;
+    }
     public String description() {
         return this.description;
     }
@@ -50,8 +54,11 @@ public final class GetBastionHostInstancesInstance {
     public List<String> securityGroupIds() {
         return this.securityGroupIds;
     }
+    public String storage() {
+        return this.storage;
+    }
     public Map<String,String> tags() {
-        return this.tags == null ? Map.of() : this.tags;
+        return this.tags;
     }
     public String userVswitchId() {
         return this.userVswitchId;
@@ -66,6 +73,7 @@ public final class GetBastionHostInstancesInstance {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String bandwidth;
         private String description;
         private String id;
         private String instanceStatus;
@@ -74,11 +82,13 @@ public final class GetBastionHostInstancesInstance {
         private String publicDomain;
         private Boolean publicNetworkAccess;
         private List<String> securityGroupIds;
-        private @Nullable Map<String,String> tags;
+        private String storage;
+        private Map<String,String> tags;
         private String userVswitchId;
         public Builder() {}
         public Builder(GetBastionHostInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.bandwidth = defaults.bandwidth;
     	      this.description = defaults.description;
     	      this.id = defaults.id;
     	      this.instanceStatus = defaults.instanceStatus;
@@ -87,10 +97,19 @@ public final class GetBastionHostInstancesInstance {
     	      this.publicDomain = defaults.publicDomain;
     	      this.publicNetworkAccess = defaults.publicNetworkAccess;
     	      this.securityGroupIds = defaults.securityGroupIds;
+    	      this.storage = defaults.storage;
     	      this.tags = defaults.tags;
     	      this.userVswitchId = defaults.userVswitchId;
         }
 
+        @CustomType.Setter
+        public Builder bandwidth(String bandwidth) {
+            if (bandwidth == null) {
+              throw new MissingRequiredPropertyException("GetBastionHostInstancesInstance", "bandwidth");
+            }
+            this.bandwidth = bandwidth;
+            return this;
+        }
         @CustomType.Setter
         public Builder description(String description) {
             if (description == null) {
@@ -159,8 +178,18 @@ public final class GetBastionHostInstancesInstance {
             return securityGroupIds(List.of(securityGroupIds));
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,String> tags) {
-
+        public Builder storage(String storage) {
+            if (storage == null) {
+              throw new MissingRequiredPropertyException("GetBastionHostInstancesInstance", "storage");
+            }
+            this.storage = storage;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder tags(Map<String,String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetBastionHostInstancesInstance", "tags");
+            }
             this.tags = tags;
             return this;
         }
@@ -174,6 +203,7 @@ public final class GetBastionHostInstancesInstance {
         }
         public GetBastionHostInstancesInstance build() {
             final var _resultValue = new GetBastionHostInstancesInstance();
+            _resultValue.bandwidth = bandwidth;
             _resultValue.description = description;
             _resultValue.id = id;
             _resultValue.instanceStatus = instanceStatus;
@@ -182,6 +212,7 @@ public final class GetBastionHostInstancesInstance {
             _resultValue.publicDomain = publicDomain;
             _resultValue.publicNetworkAccess = publicNetworkAccess;
             _resultValue.securityGroupIds = securityGroupIds;
+            _resultValue.storage = storage;
             _resultValue.tags = tags;
             _resultValue.userVswitchId = userVswitchId;
             return _resultValue;

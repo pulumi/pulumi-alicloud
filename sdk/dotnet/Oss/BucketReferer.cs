@@ -58,12 +58,6 @@ namespace Pulumi.AliCloud.Oss
     ///             "*.aliyun.com",
     ///             "*.example.com",
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             createBucket,
-    ///         },
     ///     });
     /// 
     /// });

@@ -107,7 +107,7 @@ import (
 type WafRule struct {
 	pulumi.CustomResourceState
 
-	// Specifies the action of the rule. Valid values: `block`, `monitor`, `js`.
+	// Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
 	Action pulumi.StringPtrOutput `pulumi:"action"`
 	// Specifies whether to enable rate limiting. Valid values: `on` and `off`. **NOTE:** This parameter is required when policy is of type `customAcl`.
 	CcStatus pulumi.StringOutput `pulumi:"ccStatus"`
@@ -139,7 +139,7 @@ type WafRule struct {
 	Scenes pulumi.StringArrayOutput `pulumi:"scenes"`
 	// The status of the waf rule. Valid values: `on` and `off`. Default value: on.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas.
+	// The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `wafGroup`.
 	WafGroupIds pulumi.StringPtrOutput `pulumi:"wafGroupIds"`
 }
 
@@ -179,7 +179,7 @@ func GetWafRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WafRule resources.
 type wafRuleState struct {
-	// Specifies the action of the rule. Valid values: `block`, `monitor`, `js`.
+	// Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
 	Action *string `pulumi:"action"`
 	// Specifies whether to enable rate limiting. Valid values: `on` and `off`. **NOTE:** This parameter is required when policy is of type `customAcl`.
 	CcStatus *string `pulumi:"ccStatus"`
@@ -211,12 +211,12 @@ type wafRuleState struct {
 	Scenes []string `pulumi:"scenes"`
 	// The status of the waf rule. Valid values: `on` and `off`. Default value: on.
 	Status *string `pulumi:"status"`
-	// The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas.
+	// The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `wafGroup`.
 	WafGroupIds *string `pulumi:"wafGroupIds"`
 }
 
 type WafRuleState struct {
-	// Specifies the action of the rule. Valid values: `block`, `monitor`, `js`.
+	// Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
 	Action pulumi.StringPtrInput
 	// Specifies whether to enable rate limiting. Valid values: `on` and `off`. **NOTE:** This parameter is required when policy is of type `customAcl`.
 	CcStatus pulumi.StringPtrInput
@@ -248,7 +248,7 @@ type WafRuleState struct {
 	Scenes pulumi.StringArrayInput
 	// The status of the waf rule. Valid values: `on` and `off`. Default value: on.
 	Status pulumi.StringPtrInput
-	// The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas.
+	// The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `wafGroup`.
 	WafGroupIds pulumi.StringPtrInput
 }
 
@@ -257,7 +257,7 @@ func (WafRuleState) ElementType() reflect.Type {
 }
 
 type wafRuleArgs struct {
-	// Specifies the action of the rule. Valid values: `block`, `monitor`, `js`.
+	// Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
 	Action *string `pulumi:"action"`
 	// Specifies whether to enable rate limiting. Valid values: `on` and `off`. **NOTE:** This parameter is required when policy is of type `customAcl`.
 	CcStatus *string `pulumi:"ccStatus"`
@@ -285,13 +285,13 @@ type wafRuleArgs struct {
 	Scenes []string `pulumi:"scenes"`
 	// The status of the waf rule. Valid values: `on` and `off`. Default value: on.
 	Status *string `pulumi:"status"`
-	// The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas.
+	// The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `wafGroup`.
 	WafGroupIds *string `pulumi:"wafGroupIds"`
 }
 
 // The set of arguments for constructing a WafRule resource.
 type WafRuleArgs struct {
-	// Specifies the action of the rule. Valid values: `block`, `monitor`, `js`.
+	// Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
 	Action pulumi.StringPtrInput
 	// Specifies whether to enable rate limiting. Valid values: `on` and `off`. **NOTE:** This parameter is required when policy is of type `customAcl`.
 	CcStatus pulumi.StringPtrInput
@@ -319,7 +319,7 @@ type WafRuleArgs struct {
 	Scenes pulumi.StringArrayInput
 	// The status of the waf rule. Valid values: `on` and `off`. Default value: on.
 	Status pulumi.StringPtrInput
-	// The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas.
+	// The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `wafGroup`.
 	WafGroupIds pulumi.StringPtrInput
 }
 
@@ -410,7 +410,7 @@ func (o WafRuleOutput) ToWafRuleOutputWithContext(ctx context.Context) WafRuleOu
 	return o
 }
 
-// Specifies the action of the rule. Valid values: `block`, `monitor`, `js`.
+// Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
 func (o WafRuleOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WafRule) pulumi.StringPtrOutput { return v.Action }).(pulumi.StringPtrOutput)
 }
@@ -490,7 +490,7 @@ func (o WafRuleOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *WafRule) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas.
+// The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `wafGroup`.
 func (o WafRuleOutput) WafGroupIds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WafRule) pulumi.StringPtrOutput { return v.WafGroupIds }).(pulumi.StringPtrOutput)
 }

@@ -14,18 +14,19 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Alb Ascript resource.
+ * Provides a Application Load Balancer (ALB) A Script resource.
  * 
- * For information about Alb Ascript and how to use it, see [What is AScript](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createascripts).
+ * For information about Application Load Balancer (ALB) A Script and how to use it, see [What is A Script](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createascripts).
  * 
  * &gt; **NOTE:** Available since v1.195.0.
  * 
  * ## Import
  * 
- * Alb AScript can be imported using the id, e.g.
+ * Application Load Balancer (ALB) A Script can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:alb/aScript:AScript example &lt;id&gt;
@@ -35,60 +36,74 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:alb/aScript:AScript")
 public class AScript extends com.pulumi.resources.CustomResource {
     /**
-     * The name of AScript.
+     * AScript name.
      * 
      */
     @Export(name="ascriptName", refs={String.class}, tree="[0]")
     private Output<String> ascriptName;
 
     /**
-     * @return The name of AScript.
+     * @return AScript name.
      * 
      */
     public Output<String> ascriptName() {
         return this.ascriptName;
     }
     /**
-     * Whether scripts are enabled.
+     * Whether to PreCheck only this request
+     * 
+     */
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> dryRun;
+
+    /**
+     * @return Whether to PreCheck only this request
+     * 
+     */
+    public Output<Optional<Boolean>> dryRun() {
+        return Codegen.optional(this.dryRun);
+    }
+    /**
+     * Whether AScript is enabled.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> enabled;
+    private Output</* @Nullable */ Boolean> enabled;
 
     /**
-     * @return Whether scripts are enabled.
+     * @return Whether AScript is enabled.
      * 
      */
-    public Output<Boolean> enabled() {
-        return this.enabled;
+    public Output<Optional<Boolean>> enabled() {
+        return Codegen.optional(this.enabled);
     }
     /**
-     * Whether extension parameters are enabled.
+     * Whether extension parameters are enabled. When ExtAttributeEnabled is true, ExtAttributes must be set.
      * 
      */
     @Export(name="extAttributeEnabled", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> extAttributeEnabled;
+    private Output</* @Nullable */ Boolean> extAttributeEnabled;
 
     /**
-     * @return Whether extension parameters are enabled.
+     * @return Whether extension parameters are enabled. When ExtAttributeEnabled is true, ExtAttributes must be set.
      * 
      */
-    public Output<Boolean> extAttributeEnabled() {
-        return this.extAttributeEnabled;
+    public Output<Optional<Boolean>> extAttributeEnabled() {
+        return Codegen.optional(this.extAttributeEnabled);
     }
     /**
-     * Extended attribute list. See `ext_attributes` below for details.
+     * Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `ext_attributes` below.
      * 
      */
     @Export(name="extAttributes", refs={List.class,AScriptExtAttribute.class}, tree="[0,1]")
-    private Output<List<AScriptExtAttribute>> extAttributes;
+    private Output</* @Nullable */ List<AScriptExtAttribute>> extAttributes;
 
     /**
-     * @return Extended attribute list. See `ext_attributes` below for details.
+     * @return Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `ext_attributes` below.
      * 
      */
-    public Output<List<AScriptExtAttribute>> extAttributes() {
-        return this.extAttributes;
+    public Output<Optional<List<AScriptExtAttribute>>> extAttributes() {
+        return Codegen.optional(this.extAttributes);
     }
     /**
      * Listener ID of script attribution
@@ -105,56 +120,42 @@ public class AScript extends com.pulumi.resources.CustomResource {
         return this.listenerId;
     }
     /**
-     * The ID of load balancer instance.
-     * 
-     */
-    @Export(name="loadBalancerId", refs={String.class}, tree="[0]")
-    private Output<String> loadBalancerId;
-
-    /**
-     * @return The ID of load balancer instance.
-     * 
-     */
-    public Output<String> loadBalancerId() {
-        return this.loadBalancerId;
-    }
-    /**
-     * Execution location of AScript.
+     * Script execution location.
      * 
      */
     @Export(name="position", refs={String.class}, tree="[0]")
     private Output<String> position;
 
     /**
-     * @return Execution location of AScript.
+     * @return Script execution location.
      * 
      */
     public Output<String> position() {
         return this.position;
     }
     /**
-     * The content of AScript.
+     * AScript script content.
      * 
      */
     @Export(name="scriptContent", refs={String.class}, tree="[0]")
     private Output<String> scriptContent;
 
     /**
-     * @return The content of AScript.
+     * @return AScript script content.
      * 
      */
     public Output<String> scriptContent() {
         return this.scriptContent;
     }
     /**
-     * The status of AScript.
+     * Script status
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of AScript.
+     * @return Script status
      * 
      */
     public Output<String> status() {

@@ -100,6 +100,9 @@ class GetNetworksResult:
     @property
     @pulumi.getter(name="dhcpOptionsSetId")
     def dhcp_options_set_id(self) -> Optional[str]:
+        """
+        The ID of the DHCP options set.
+        """
         return pulumi.get(self, "dhcp_options_set_id")
 
     @property

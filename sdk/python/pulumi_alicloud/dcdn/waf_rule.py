@@ -40,7 +40,7 @@ class WafRuleArgs:
         The set of arguments for constructing a WafRule resource.
         :param pulumi.Input[str] policy_id: The protection policy ID.
         :param pulumi.Input[str] rule_name: The name of the protection rule. The name can be up to 64 characters in length and can contain letters, digits, and underscores (_). **NOTE:** This parameter cannot be modified when policy is of type `region_block`.
-        :param pulumi.Input[str] action: Specifies the action of the rule. Valid values: `block`, `monitor`, `js`.
+        :param pulumi.Input[str] action: Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
         :param pulumi.Input[str] cc_status: Specifies whether to enable rate limiting. Valid values: `on` and `off`. **NOTE:** This parameter is required when policy is of type `custom_acl`.
         :param pulumi.Input[str] cn_region_list: The blocked regions in the Chinese mainland, separated by commas (,).
         :param pulumi.Input[Sequence[pulumi.Input['WafRuleConditionArgs']]] conditions: Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
@@ -52,7 +52,7 @@ class WafRuleArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_addrs: Filter by IP address.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scenes: The types of the protection policies.
         :param pulumi.Input[str] status: The status of the waf rule. Valid values: `on` and `off`. Default value: on.
-        :param pulumi.Input[str] waf_group_ids: The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas.
+        :param pulumi.Input[str] waf_group_ids: The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `waf_group`.
         """
         pulumi.set(__self__, "policy_id", policy_id)
         pulumi.set(__self__, "rule_name", rule_name)
@@ -111,7 +111,7 @@ class WafRuleArgs:
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the action of the rule. Valid values: `block`, `monitor`, `js`.
+        Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
         """
         return pulumi.get(self, "action")
 
@@ -255,7 +255,7 @@ class WafRuleArgs:
     @pulumi.getter(name="wafGroupIds")
     def waf_group_ids(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas.
+        The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `waf_group`.
         """
         return pulumi.get(self, "waf_group_ids")
 
@@ -286,7 +286,7 @@ class _WafRuleState:
                  waf_group_ids: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering WafRule resources.
-        :param pulumi.Input[str] action: Specifies the action of the rule. Valid values: `block`, `monitor`, `js`.
+        :param pulumi.Input[str] action: Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
         :param pulumi.Input[str] cc_status: Specifies whether to enable rate limiting. Valid values: `on` and `off`. **NOTE:** This parameter is required when policy is of type `custom_acl`.
         :param pulumi.Input[str] cn_region_list: The blocked regions in the Chinese mainland, separated by commas (,).
         :param pulumi.Input[Sequence[pulumi.Input['WafRuleConditionArgs']]] conditions: Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
@@ -302,7 +302,7 @@ class _WafRuleState:
         :param pulumi.Input[str] rule_name: The name of the protection rule. The name can be up to 64 characters in length and can contain letters, digits, and underscores (_). **NOTE:** This parameter cannot be modified when policy is of type `region_block`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scenes: The types of the protection policies.
         :param pulumi.Input[str] status: The status of the waf rule. Valid values: `on` and `off`. Default value: on.
-        :param pulumi.Input[str] waf_group_ids: The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas.
+        :param pulumi.Input[str] waf_group_ids: The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `waf_group`.
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -343,7 +343,7 @@ class _WafRuleState:
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the action of the rule. Valid values: `block`, `monitor`, `js`.
+        Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
         """
         return pulumi.get(self, "action")
 
@@ -535,7 +535,7 @@ class _WafRuleState:
     @pulumi.getter(name="wafGroupIds")
     def waf_group_ids(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas.
+        The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `waf_group`.
         """
         return pulumi.get(self, "waf_group_ids")
 
@@ -633,7 +633,7 @@ class WafRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] action: Specifies the action of the rule. Valid values: `block`, `monitor`, `js`.
+        :param pulumi.Input[str] action: Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
         :param pulumi.Input[str] cc_status: Specifies whether to enable rate limiting. Valid values: `on` and `off`. **NOTE:** This parameter is required when policy is of type `custom_acl`.
         :param pulumi.Input[str] cn_region_list: The blocked regions in the Chinese mainland, separated by commas (,).
         :param pulumi.Input[Sequence[pulumi.Input[Union['WafRuleConditionArgs', 'WafRuleConditionArgsDict']]]] conditions: Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
@@ -647,7 +647,7 @@ class WafRule(pulumi.CustomResource):
         :param pulumi.Input[str] rule_name: The name of the protection rule. The name can be up to 64 characters in length and can contain letters, digits, and underscores (_). **NOTE:** This parameter cannot be modified when policy is of type `region_block`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scenes: The types of the protection policies.
         :param pulumi.Input[str] status: The status of the waf rule. Valid values: `on` and `off`. Default value: on.
-        :param pulumi.Input[str] waf_group_ids: The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas.
+        :param pulumi.Input[str] waf_group_ids: The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `waf_group`.
         """
         ...
     @overload
@@ -815,7 +815,7 @@ class WafRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] action: Specifies the action of the rule. Valid values: `block`, `monitor`, `js`.
+        :param pulumi.Input[str] action: Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
         :param pulumi.Input[str] cc_status: Specifies whether to enable rate limiting. Valid values: `on` and `off`. **NOTE:** This parameter is required when policy is of type `custom_acl`.
         :param pulumi.Input[str] cn_region_list: The blocked regions in the Chinese mainland, separated by commas (,).
         :param pulumi.Input[Sequence[pulumi.Input[Union['WafRuleConditionArgs', 'WafRuleConditionArgsDict']]]] conditions: Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
@@ -831,7 +831,7 @@ class WafRule(pulumi.CustomResource):
         :param pulumi.Input[str] rule_name: The name of the protection rule. The name can be up to 64 characters in length and can contain letters, digits, and underscores (_). **NOTE:** This parameter cannot be modified when policy is of type `region_block`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scenes: The types of the protection policies.
         :param pulumi.Input[str] status: The status of the waf rule. Valid values: `on` and `off`. Default value: on.
-        :param pulumi.Input[str] waf_group_ids: The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas.
+        :param pulumi.Input[str] waf_group_ids: The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `waf_group`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -860,7 +860,7 @@ class WafRule(pulumi.CustomResource):
     @pulumi.getter
     def action(self) -> pulumi.Output[Optional[str]]:
         """
-        Specifies the action of the rule. Valid values: `block`, `monitor`, `js`.
+        Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
         """
         return pulumi.get(self, "action")
 
@@ -988,7 +988,7 @@ class WafRule(pulumi.CustomResource):
     @pulumi.getter(name="wafGroupIds")
     def waf_group_ids(self) -> pulumi.Output[Optional[str]]:
         """
-        The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas.
+        The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `waf_group`.
         """
         return pulumi.get(self, "waf_group_ids")
 

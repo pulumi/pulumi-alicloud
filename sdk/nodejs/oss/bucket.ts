@@ -153,7 +153,7 @@ export class Bucket extends pulumi.CustomResource {
      * @deprecated Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.
      */
     public readonly acl!: pulumi.Output<string>;
-    public readonly bucket!: pulumi.Output<string | undefined>;
+    public readonly bucket!: pulumi.Output<string>;
     /**
      * A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `corsRule` below.
      */

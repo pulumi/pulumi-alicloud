@@ -86,7 +86,7 @@ type Kubernetes struct {
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// Enable login to the node through SSH. Default to `false`.
 	EnableSsh pulumi.BoolPtrOutput `pulumi:"enableSsh"`
-	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
+	// Custom Image support. Must be based on AliyunLinux or AliyunLinux3.
 	ImageId pulumi.StringOutput `pulumi:"imageId"`
 	// Install cloud monitor agent on ECS. Default to `true`.
 	InstallCloudMonitor pulumi.BoolPtrOutput `pulumi:"installCloudMonitor"`
@@ -144,7 +144,7 @@ type Kubernetes struct {
 	OsType pulumi.StringPtrOutput `pulumi:"osType"`
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
-	// The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
+	// The architecture of the nodes that run pods, its valid value `AliyunLinux`, `AliyunLinux3`. Default to `AliyunLinux3`.
 	Platform pulumi.StringOutput `pulumi:"platform"`
 	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr pulumi.StringPtrOutput `pulumi:"podCidr"`
@@ -263,7 +263,7 @@ type kubernetesState struct {
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Enable login to the node through SSH. Default to `false`.
 	EnableSsh *bool `pulumi:"enableSsh"`
-	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
+	// Custom Image support. Must be based on AliyunLinux or AliyunLinux3.
 	ImageId *string `pulumi:"imageId"`
 	// Install cloud monitor agent on ECS. Default to `true`.
 	InstallCloudMonitor *bool `pulumi:"installCloudMonitor"`
@@ -321,7 +321,7 @@ type kubernetesState struct {
 	OsType *string `pulumi:"osType"`
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password *string `pulumi:"password"`
-	// The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
+	// The architecture of the nodes that run pods, its valid value `AliyunLinux`, `AliyunLinux3`. Default to `AliyunLinux3`.
 	Platform *string `pulumi:"platform"`
 	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr *string `pulumi:"podCidr"`
@@ -398,7 +398,7 @@ type KubernetesState struct {
 	DeletionProtection pulumi.BoolPtrInput
 	// Enable login to the node through SSH. Default to `false`.
 	EnableSsh pulumi.BoolPtrInput
-	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
+	// Custom Image support. Must be based on AliyunLinux or AliyunLinux3.
 	ImageId pulumi.StringPtrInput
 	// Install cloud monitor agent on ECS. Default to `true`.
 	InstallCloudMonitor pulumi.BoolPtrInput
@@ -456,7 +456,7 @@ type KubernetesState struct {
 	OsType pulumi.StringPtrInput
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrInput
-	// The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
+	// The architecture of the nodes that run pods, its valid value `AliyunLinux`, `AliyunLinux3`. Default to `AliyunLinux3`.
 	Platform pulumi.StringPtrInput
 	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr pulumi.StringPtrInput
@@ -533,7 +533,7 @@ type kubernetesArgs struct {
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Enable login to the node through SSH. Default to `false`.
 	EnableSsh *bool `pulumi:"enableSsh"`
-	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
+	// Custom Image support. Must be based on AliyunLinux or AliyunLinux3.
 	ImageId *string `pulumi:"imageId"`
 	// Install cloud monitor agent on ECS. Default to `true`.
 	InstallCloudMonitor *bool `pulumi:"installCloudMonitor"`
@@ -587,7 +587,7 @@ type kubernetesArgs struct {
 	OsType *string `pulumi:"osType"`
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password *string `pulumi:"password"`
-	// The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
+	// The architecture of the nodes that run pods, its valid value `AliyunLinux`, `AliyunLinux3`. Default to `AliyunLinux3`.
 	Platform *string `pulumi:"platform"`
 	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr *string `pulumi:"podCidr"`
@@ -651,7 +651,7 @@ type KubernetesArgs struct {
 	DeletionProtection pulumi.BoolPtrInput
 	// Enable login to the node through SSH. Default to `false`.
 	EnableSsh pulumi.BoolPtrInput
-	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
+	// Custom Image support. Must be based on AliyunLinux or AliyunLinux3.
 	ImageId pulumi.StringPtrInput
 	// Install cloud monitor agent on ECS. Default to `true`.
 	InstallCloudMonitor pulumi.BoolPtrInput
@@ -705,7 +705,7 @@ type KubernetesArgs struct {
 	OsType pulumi.StringPtrInput
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrInput
-	// The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
+	// The architecture of the nodes that run pods, its valid value `AliyunLinux`, `AliyunLinux3`. Default to `AliyunLinux3`.
 	Platform pulumi.StringPtrInput
 	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr pulumi.StringPtrInput
@@ -894,7 +894,7 @@ func (o KubernetesOutput) EnableSsh() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Kubernetes) pulumi.BoolPtrOutput { return v.EnableSsh }).(pulumi.BoolPtrOutput)
 }
 
-// Custom Image support. Must based on CentOS7 or AliyunLinux2.
+// Custom Image support. Must be based on AliyunLinux or AliyunLinux3.
 func (o KubernetesOutput) ImageId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Kubernetes) pulumi.StringOutput { return v.ImageId }).(pulumi.StringOutput)
 }
@@ -1033,7 +1033,7 @@ func (o KubernetesOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Kubernetes) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
+// The architecture of the nodes that run pods, its valid value `AliyunLinux`, `AliyunLinux3`. Default to `AliyunLinux3`.
 func (o KubernetesOutput) Platform() pulumi.StringOutput {
 	return o.ApplyT(func(v *Kubernetes) pulumi.StringOutput { return v.Platform }).(pulumi.StringOutput)
 }

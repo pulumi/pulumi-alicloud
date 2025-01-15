@@ -16,17 +16,17 @@ namespace Pulumi.AliCloud.Oss.Outputs
         /// <summary>
         /// Date after which the rule to take effect. The format is like 2017-03-09.
         /// </summary>
-        public readonly string? Date;
+        public readonly string Date;
         /// <summary>
         /// Indicate the number of days after the last object update until the rules take effect.
         /// </summary>
-        public readonly int? Days;
+        public readonly int Days;
 
         [OutputConstructor]
         private GetBucketsBucketLifecycleRuleExpirationResult(
-            string? date,
+            string date,
 
-            int? days)
+            int days)
         {
             Date = date;
             Days = days;

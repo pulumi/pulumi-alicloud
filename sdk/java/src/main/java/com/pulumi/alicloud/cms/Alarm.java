@@ -442,14 +442,14 @@ public class Alarm extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * The information about the resource for which alerts are triggered. See `targets` below.
+     * Adds or modifies the push channels of an alert rule. See `targets` below.
      * 
      */
     @Export(name="targets", refs={List.class,AlarmTarget.class}, tree="[0,1]")
     private Output<List<AlarmTarget>> targets;
 
     /**
-     * @return The information about the resource for which alerts are triggered. See `targets` below.
+     * @return Adds or modifies the push channels of an alert rule. See `targets` below.
      * 
      */
     public Output<List<AlarmTarget>> targets() {

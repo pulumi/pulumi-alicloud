@@ -1980,7 +1980,8 @@ type GetAlidnsDomainsDomain struct {
 	InClean bool `pulumi:"inClean"`
 	// Cloud analysis product ID.
 	InstanceId string `pulumi:"instanceId"`
-	LineType   string `pulumi:"lineType"`
+	// The type of the DNS request line.
+	LineType string `pulumi:"lineType"`
 	// Minimum TTL.
 	MinTtl int `pulumi:"minTtl"`
 	// Punycode of the Chinese domain.
@@ -2001,6 +2002,7 @@ type GetAlidnsDomainsDomain struct {
 	Tags map[string]string `pulumi:"tags"`
 	// Cloud analysis version code.
 	VersionCode string `pulumi:"versionCode"`
+	// Cloud analysis version name of the domain.
 	VersionName string `pulumi:"versionName"`
 }
 
@@ -2038,7 +2040,8 @@ type GetAlidnsDomainsDomainArgs struct {
 	InClean pulumi.BoolInput `pulumi:"inClean"`
 	// Cloud analysis product ID.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	LineType   pulumi.StringInput `pulumi:"lineType"`
+	// The type of the DNS request line.
+	LineType pulumi.StringInput `pulumi:"lineType"`
 	// Minimum TTL.
 	MinTtl pulumi.IntInput `pulumi:"minTtl"`
 	// Punycode of the Chinese domain.
@@ -2059,6 +2062,7 @@ type GetAlidnsDomainsDomainArgs struct {
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// Cloud analysis version code.
 	VersionCode pulumi.StringInput `pulumi:"versionCode"`
+	// Cloud analysis version name of the domain.
 	VersionName pulumi.StringInput `pulumi:"versionName"`
 }
 
@@ -2168,6 +2172,7 @@ func (o GetAlidnsDomainsDomainOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAlidnsDomainsDomain) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
+// The type of the DNS request line.
 func (o GetAlidnsDomainsDomainOutput) LineType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAlidnsDomainsDomain) string { return v.LineType }).(pulumi.StringOutput)
 }
@@ -2222,6 +2227,7 @@ func (o GetAlidnsDomainsDomainOutput) VersionCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAlidnsDomainsDomain) string { return v.VersionCode }).(pulumi.StringOutput)
 }
 
+// Cloud analysis version name of the domain.
 func (o GetAlidnsDomainsDomainOutput) VersionName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAlidnsDomainsDomain) string { return v.VersionName }).(pulumi.StringOutput)
 }

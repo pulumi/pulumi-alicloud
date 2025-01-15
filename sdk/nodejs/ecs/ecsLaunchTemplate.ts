@@ -163,6 +163,10 @@ export class EcsLaunchTemplate extends pulumi.CustomResource {
      */
     public readonly dataDisks!: pulumi.Output<outputs.ecs.EcsLaunchTemplateDataDisk[] | undefined>;
     /**
+     * The version number of the default launch template version. Default to 1. It is conflict with `updateDefaultVersionNumber`.
+     */
+    public readonly defaultVersionNumber!: pulumi.Output<number>;
+    /**
      * The Deployment Set Id.
      */
     public readonly deploymentSetId!: pulumi.Output<string | undefined>;
@@ -236,6 +240,10 @@ export class EcsLaunchTemplate extends pulumi.CustomResource {
      * - The password logon method for Linux instances is set to forbidden upon initialization.
      */
     public readonly keyPairName!: pulumi.Output<string | undefined>;
+    /**
+     * The latest version number of the launch template.
+     */
+    public /*out*/ readonly latestVersionNumber!: pulumi.Output<number>;
     /**
      * The name of Launch Template.
      */
@@ -347,6 +355,10 @@ export class EcsLaunchTemplate extends pulumi.CustomResource {
      */
     public readonly templateTags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * Whether to update the default version of the launch template to the latest version automatically. It is conflict with `defaultVersionNumber`.
+     */
+    public readonly updateDefaultVersionNumber!: pulumi.Output<boolean | undefined>;
+    /**
      * The User Data.
      */
     public readonly userData!: pulumi.Output<string>;
@@ -390,6 +402,7 @@ export class EcsLaunchTemplate extends pulumi.CustomResource {
             resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
             resourceInputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
             resourceInputs["dataDisks"] = state ? state.dataDisks : undefined;
+            resourceInputs["defaultVersionNumber"] = state ? state.defaultVersionNumber : undefined;
             resourceInputs["deploymentSetId"] = state ? state.deploymentSetId : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["enableVmOsConfig"] = state ? state.enableVmOsConfig : undefined;
@@ -407,6 +420,7 @@ export class EcsLaunchTemplate extends pulumi.CustomResource {
             resourceInputs["internetMaxBandwidthOut"] = state ? state.internetMaxBandwidthOut : undefined;
             resourceInputs["ioOptimized"] = state ? state.ioOptimized : undefined;
             resourceInputs["keyPairName"] = state ? state.keyPairName : undefined;
+            resourceInputs["latestVersionNumber"] = state ? state.latestVersionNumber : undefined;
             resourceInputs["launchTemplateName"] = state ? state.launchTemplateName : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
@@ -431,6 +445,7 @@ export class EcsLaunchTemplate extends pulumi.CustomResource {
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["templateResourceGroupId"] = state ? state.templateResourceGroupId : undefined;
             resourceInputs["templateTags"] = state ? state.templateTags : undefined;
+            resourceInputs["updateDefaultVersionNumber"] = state ? state.updateDefaultVersionNumber : undefined;
             resourceInputs["userData"] = state ? state.userData : undefined;
             resourceInputs["userdata"] = state ? state.userdata : undefined;
             resourceInputs["versionDescription"] = state ? state.versionDescription : undefined;
@@ -443,6 +458,7 @@ export class EcsLaunchTemplate extends pulumi.CustomResource {
             resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
             resourceInputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
             resourceInputs["dataDisks"] = args ? args.dataDisks : undefined;
+            resourceInputs["defaultVersionNumber"] = args ? args.defaultVersionNumber : undefined;
             resourceInputs["deploymentSetId"] = args ? args.deploymentSetId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["enableVmOsConfig"] = args ? args.enableVmOsConfig : undefined;
@@ -484,12 +500,14 @@ export class EcsLaunchTemplate extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["templateResourceGroupId"] = args ? args.templateResourceGroupId : undefined;
             resourceInputs["templateTags"] = args ? args.templateTags : undefined;
+            resourceInputs["updateDefaultVersionNumber"] = args ? args.updateDefaultVersionNumber : undefined;
             resourceInputs["userData"] = args ? args.userData : undefined;
             resourceInputs["userdata"] = args ? args.userdata : undefined;
             resourceInputs["versionDescription"] = args ? args.versionDescription : undefined;
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["latestVersionNumber"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EcsLaunchTemplate.__pulumiType, name, resourceInputs, opts);
@@ -516,6 +534,10 @@ export interface EcsLaunchTemplateState {
      * The list of data disks created with instance. See `dataDisks` below.
      */
     dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.EcsLaunchTemplateDataDisk>[]>;
+    /**
+     * The version number of the default launch template version. Default to 1. It is conflict with `updateDefaultVersionNumber`.
+     */
+    defaultVersionNumber?: pulumi.Input<number>;
     /**
      * The Deployment Set Id.
      */
@@ -590,6 +612,10 @@ export interface EcsLaunchTemplateState {
      * - The password logon method for Linux instances is set to forbidden upon initialization.
      */
     keyPairName?: pulumi.Input<string>;
+    /**
+     * The latest version number of the launch template.
+     */
+    latestVersionNumber?: pulumi.Input<number>;
     /**
      * The name of Launch Template.
      */
@@ -700,6 +726,10 @@ export interface EcsLaunchTemplateState {
      * A mapping of tags to assign to the launch template.
      */
     templateTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Whether to update the default version of the launch template to the latest version automatically. It is conflict with `defaultVersionNumber`.
+     */
+    updateDefaultVersionNumber?: pulumi.Input<boolean>;
     /**
      * The User Data.
      */
@@ -749,6 +779,10 @@ export interface EcsLaunchTemplateArgs {
      */
     dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.EcsLaunchTemplateDataDisk>[]>;
     /**
+     * The version number of the default launch template version. Default to 1. It is conflict with `updateDefaultVersionNumber`.
+     */
+    defaultVersionNumber?: pulumi.Input<number>;
+    /**
      * The Deployment Set Id.
      */
     deploymentSetId?: pulumi.Input<string>;
@@ -932,6 +966,10 @@ export interface EcsLaunchTemplateArgs {
      * A mapping of tags to assign to the launch template.
      */
     templateTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Whether to update the default version of the launch template to the latest version automatically. It is conflict with `defaultVersionNumber`.
+     */
+    updateDefaultVersionNumber?: pulumi.Input<boolean>;
     /**
      * The User Data.
      */

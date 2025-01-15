@@ -9,16 +9,24 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the OSS buckets of the current Alibaba Cloud user.
  *
+ * > **NOTE:** Available since v1.17.0.
+ *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const ossBucketsDs = alicloud.oss.getBuckets({
- *     nameRegex: "sample_oss_bucket",
+ * const _default = new random.index.Integer("default", {
+ *     max: 99999,
+ *     min: 10000,
  * });
- * export const firstOssBucketName = ossBucketsDs.then(ossBucketsDs => ossBucketsDs.buckets?.[0]?.name);
+ * const bucket = new alicloud.oss.Bucket("bucket", {bucket: `oss-tf-example-${_default.result}`});
+ * const ossBucketsDs = alicloud.oss.getBucketsOutput({
+ *     nameRegex: bucket.bucket,
+ * });
+ * export const firstOssBucketName = ossBucketsDs.apply(ossBucketsDs => ossBucketsDs.buckets?.[0]?.name);
  * ```
  */
 export function getBuckets(args?: GetBucketsArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketsResult> {
@@ -66,16 +74,24 @@ export interface GetBucketsResult {
 /**
  * This data source provides the OSS buckets of the current Alibaba Cloud user.
  *
+ * > **NOTE:** Available since v1.17.0.
+ *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const ossBucketsDs = alicloud.oss.getBuckets({
- *     nameRegex: "sample_oss_bucket",
+ * const _default = new random.index.Integer("default", {
+ *     max: 99999,
+ *     min: 10000,
  * });
- * export const firstOssBucketName = ossBucketsDs.then(ossBucketsDs => ossBucketsDs.buckets?.[0]?.name);
+ * const bucket = new alicloud.oss.Bucket("bucket", {bucket: `oss-tf-example-${_default.result}`});
+ * const ossBucketsDs = alicloud.oss.getBucketsOutput({
+ *     nameRegex: bucket.bucket,
+ * });
+ * export const firstOssBucketName = ossBucketsDs.apply(ossBucketsDs => ossBucketsDs.buckets?.[0]?.name);
  * ```
  */
 export function getBucketsOutput(args?: GetBucketsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBucketsResult> {

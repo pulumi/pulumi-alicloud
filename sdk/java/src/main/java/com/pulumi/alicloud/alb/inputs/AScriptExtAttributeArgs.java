@@ -16,14 +16,14 @@ public final class AScriptExtAttributeArgs extends com.pulumi.resources.Resource
     public static final AScriptExtAttributeArgs Empty = new AScriptExtAttributeArgs();
 
     /**
-     * The key of the extended attribute.
+     * Key to extend attribute
      * 
      */
     @Import(name="attributeKey")
     private @Nullable Output<String> attributeKey;
 
     /**
-     * @return The key of the extended attribute.
+     * @return Key to extend attribute
      * 
      */
     public Optional<Output<String>> attributeKey() {
@@ -31,14 +31,14 @@ public final class AScriptExtAttributeArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The value of the extended attribute.
+     * The value of the extended attribute
      * 
      */
     @Import(name="attributeValue")
     private @Nullable Output<String> attributeValue;
 
     /**
-     * @return The value of the extended attribute.
+     * @return The value of the extended attribute
      * 
      */
     public Optional<Output<String>> attributeValue() {
@@ -71,7 +71,7 @@ public final class AScriptExtAttributeArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param attributeKey The key of the extended attribute.
+         * @param attributeKey Key to extend attribute
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class AScriptExtAttributeArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param attributeKey The key of the extended attribute.
+         * @param attributeKey Key to extend attribute
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class AScriptExtAttributeArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param attributeValue The value of the extended attribute.
+         * @param attributeValue The value of the extended attribute
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class AScriptExtAttributeArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param attributeValue The value of the extended attribute.
+         * @param attributeValue The value of the extended attribute
          * 
          * @return builder
          * 

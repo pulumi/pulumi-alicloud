@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about ECS Session Manager Status and how to use it, see [What is Session Manager Status](https://www.alibabacloud.com/help/zh/doc-detail/337915.html).
  *
- * > **NOTE:** Available in v1.148.0+.
+ * > **NOTE:** Available since v1.148.0.
  *
  * ## Example Usage
  *
@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  * ECS Session Manager Status can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus example <session_manager_status_name>
+ * $ pulumi import alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus example <id>
  * ```
  */
 export class EcsSessionManagerStatus extends pulumi.CustomResource {
@@ -62,11 +62,11 @@ export class EcsSessionManagerStatus extends pulumi.CustomResource {
     }
 
     /**
-     * The name of the resource. Valid values: `sessionManagerStatus`.
+     * The name of the Session Manager Status. Valid values: `sessionManagerStatus`.
      */
     public readonly sessionManagerStatusName!: pulumi.Output<string>;
     /**
-     * The status of the resource. Valid values: `Disabled`, `Enabled`.
+     * The status of the Session Manager Status. Valid values: `Enabled`, `Disabled`.
      */
     public readonly status!: pulumi.Output<string>;
 
@@ -106,11 +106,11 @@ export class EcsSessionManagerStatus extends pulumi.CustomResource {
  */
 export interface EcsSessionManagerStatusState {
     /**
-     * The name of the resource. Valid values: `sessionManagerStatus`.
+     * The name of the Session Manager Status. Valid values: `sessionManagerStatus`.
      */
     sessionManagerStatusName?: pulumi.Input<string>;
     /**
-     * The status of the resource. Valid values: `Disabled`, `Enabled`.
+     * The status of the Session Manager Status. Valid values: `Enabled`, `Disabled`.
      */
     status?: pulumi.Input<string>;
 }
@@ -120,11 +120,11 @@ export interface EcsSessionManagerStatusState {
  */
 export interface EcsSessionManagerStatusArgs {
     /**
-     * The name of the resource. Valid values: `sessionManagerStatus`.
+     * The name of the Session Manager Status. Valid values: `sessionManagerStatus`.
      */
     sessionManagerStatusName: pulumi.Input<string>;
     /**
-     * The status of the resource. Valid values: `Disabled`, `Enabled`.
+     * The status of the Session Manager Status. Valid values: `Enabled`, `Disabled`.
      */
     status: pulumi.Input<string>;
 }

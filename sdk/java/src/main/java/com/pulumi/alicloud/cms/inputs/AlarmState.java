@@ -337,14 +337,14 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The information about the resource for which alerts are triggered. See `targets` below.
+     * Adds or modifies the push channels of an alert rule. See `targets` below.
      * 
      */
     @Import(name="targets")
     private @Nullable Output<List<AlarmTargetArgs>> targets;
 
     /**
-     * @return The information about the resource for which alerts are triggered. See `targets` below.
+     * @return Adds or modifies the push channels of an alert rule. See `targets` below.
      * 
      */
     public Optional<Output<List<AlarmTargetArgs>>> targets() {
@@ -856,7 +856,7 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targets The information about the resource for which alerts are triggered. See `targets` below.
+         * @param targets Adds or modifies the push channels of an alert rule. See `targets` below.
          * 
          * @return builder
          * 
@@ -867,7 +867,7 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targets The information about the resource for which alerts are triggered. See `targets` below.
+         * @param targets Adds or modifies the push channels of an alert rule. See `targets` below.
          * 
          * @return builder
          * 
@@ -877,7 +877,7 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targets The information about the resource for which alerts are triggered. See `targets` below.
+         * @param targets Adds or modifies the push channels of an alert rule. See `targets` below.
          * 
          * @return builder
          * 

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Sls
     /// 
     /// Orchestration policies for cloud product log collection.
     /// 
-    /// For information about SLS Collection Policy and how to use it, see [What is Collection Policy](https://www.alibabacloud.com/help/en/).
+    /// For information about SLS Collection Policy and how to use it, see [What is Collection Policy](https://www.alibabacloud.com/help/zh/sls/developer-reference/api-sls-2020-12-30-upsertcollectionpolicy).
     /// 
     /// &gt; **NOTE:** Available since v1.232.0.
     /// 

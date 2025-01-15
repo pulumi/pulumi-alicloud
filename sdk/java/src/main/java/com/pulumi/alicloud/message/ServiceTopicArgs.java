@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,29 +20,52 @@ public final class ServiceTopicArgs extends com.pulumi.resources.ResourceArgs {
     public static final ServiceTopicArgs Empty = new ServiceTopicArgs();
 
     /**
-     * Specifies whether to enable the log management feature. Default value: false. Valid values:
+     * Specifies whether to enable the logging feature. Default value: `false`. Valid values:
      * 
      */
+    @Import(name="enableLogging")
+    private @Nullable Output<Boolean> enableLogging;
+
+    /**
+     * @return Specifies whether to enable the logging feature. Default value: `false`. Valid values:
+     * 
+     */
+    public Optional<Output<Boolean>> enableLogging() {
+        return Optional.ofNullable(this.enableLogging);
+    }
+
+    /**
+     * . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
+     * 
+     * @deprecated
+     * Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
+     * 
+     */
+    @Deprecated /* Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead. */
     @Import(name="loggingEnabled")
     private @Nullable Output<Boolean> loggingEnabled;
 
     /**
-     * @return Specifies whether to enable the log management feature. Default value: false. Valid values:
+     * @return . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
+     * 
+     * @deprecated
+     * Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
      * 
      */
+    @Deprecated /* Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead. */
     public Optional<Output<Boolean>> loggingEnabled() {
         return Optional.ofNullable(this.loggingEnabled);
     }
 
     /**
-     * The maximum size of a message body that can be sent to the topic. Unit: bytes. Valid values: 1024-65536. Default value: 65536.
+     * The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
      * 
      */
     @Import(name="maxMessageSize")
     private @Nullable Output<Integer> maxMessageSize;
 
     /**
-     * @return The maximum size of a message body that can be sent to the topic. Unit: bytes. Valid values: 1024-65536. Default value: 65536.
+     * @return The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
      * 
      */
     public Optional<Output<Integer>> maxMessageSize() {
@@ -49,14 +73,33 @@ public final class ServiceTopicArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * The name of the topic.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     @Import(name="topicName", required=true)
     private Output<String> topicName;
 
     /**
-     * @return Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
+     * @return The name of the topic.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Output<String> topicName() {
@@ -66,8 +109,10 @@ public final class ServiceTopicArgs extends com.pulumi.resources.ResourceArgs {
     private ServiceTopicArgs() {}
 
     private ServiceTopicArgs(ServiceTopicArgs $) {
+        this.enableLogging = $.enableLogging;
         this.loggingEnabled = $.loggingEnabled;
         this.maxMessageSize = $.maxMessageSize;
+        this.tags = $.tags;
         this.topicName = $.topicName;
     }
 
@@ -90,28 +135,57 @@ public final class ServiceTopicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loggingEnabled Specifies whether to enable the log management feature. Default value: false. Valid values:
+         * @param enableLogging Specifies whether to enable the logging feature. Default value: `false`. Valid values:
          * 
          * @return builder
          * 
          */
+        public Builder enableLogging(@Nullable Output<Boolean> enableLogging) {
+            $.enableLogging = enableLogging;
+            return this;
+        }
+
+        /**
+         * @param enableLogging Specifies whether to enable the logging feature. Default value: `false`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableLogging(Boolean enableLogging) {
+            return enableLogging(Output.of(enableLogging));
+        }
+
+        /**
+         * @param loggingEnabled . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
+         * 
+         */
+        @Deprecated /* Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead. */
         public Builder loggingEnabled(@Nullable Output<Boolean> loggingEnabled) {
             $.loggingEnabled = loggingEnabled;
             return this;
         }
 
         /**
-         * @param loggingEnabled Specifies whether to enable the log management feature. Default value: false. Valid values:
+         * @param loggingEnabled . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
+         * 
          */
+        @Deprecated /* Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead. */
         public Builder loggingEnabled(Boolean loggingEnabled) {
             return loggingEnabled(Output.of(loggingEnabled));
         }
 
         /**
-         * @param maxMessageSize The maximum size of a message body that can be sent to the topic. Unit: bytes. Valid values: 1024-65536. Default value: 65536.
+         * @param maxMessageSize The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
          * 
          * @return builder
          * 
@@ -122,7 +196,7 @@ public final class ServiceTopicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxMessageSize The maximum size of a message body that can be sent to the topic. Unit: bytes. Valid values: 1024-65536. Default value: 65536.
+         * @param maxMessageSize The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
          * 
          * @return builder
          * 
@@ -132,7 +206,30 @@ public final class ServiceTopicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param topicName Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param topicName The name of the topic.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 
@@ -143,7 +240,9 @@ public final class ServiceTopicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param topicName Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
+         * @param topicName The name of the topic.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 

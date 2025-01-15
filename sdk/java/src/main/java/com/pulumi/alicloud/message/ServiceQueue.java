@@ -13,6 +13,7 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -53,12 +54,12 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         var default_ = new ServiceQueue("default", ServiceQueueArgs.builder()
+ *             .queueName(name)
  *             .delaySeconds("2")
  *             .pollingWaitSeconds("2")
  *             .messageRetentionPeriod("566")
- *             .maximumMessageSize("1123")
+ *             .maximumMessageSize("1126")
  *             .visibilityTimeout("30")
- *             .queueName(name)
  *             .build());
  * 
  *     }
@@ -79,112 +80,126 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:message/serviceQueue:ServiceQueue")
 public class ServiceQueue extends com.pulumi.resources.CustomResource {
     /**
-     * Represents the time when the Queue was created.
+     * (Available since v1.223.2) The time when the queue was created.
      * 
      */
     @Export(name="createTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> createTime;
 
     /**
-     * @return Represents the time when the Queue was created.
+     * @return (Available since v1.223.2) The time when the queue was created.
      * 
      */
     public Output<Integer> createTime() {
         return this.createTime;
     }
     /**
-     * This means that messages sent to the queue can only be consumed after the delay time set by this parameter, in seconds.
+     * The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
      * 
      */
     @Export(name="delaySeconds", refs={Integer.class}, tree="[0]")
     private Output<Integer> delaySeconds;
 
     /**
-     * @return This means that messages sent to the queue can only be consumed after the delay time set by this parameter, in seconds.
+     * @return The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
      * 
      */
     public Output<Integer> delaySeconds() {
         return this.delaySeconds;
     }
     /**
-     * Represents whether the log management function is enabled.
+     * Specifies whether to enable the logging feature. Default value: `false`. Valid values:
      * 
      */
     @Export(name="loggingEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> loggingEnabled;
 
     /**
-     * @return Represents whether the log management function is enabled.
+     * @return Specifies whether to enable the logging feature. Default value: `false`. Valid values:
      * 
      */
     public Output<Optional<Boolean>> loggingEnabled() {
         return Codegen.optional(this.loggingEnabled);
     }
     /**
-     * Represents the maximum length of the message body sent to the Queue, in Byte.
+     * The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
      * 
      */
     @Export(name="maximumMessageSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> maximumMessageSize;
 
     /**
-     * @return Represents the maximum length of the message body sent to the Queue, in Byte.
+     * @return The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
      * 
      */
     public Output<Integer> maximumMessageSize() {
         return this.maximumMessageSize;
     }
     /**
-     * Represents the longest life time of the message in the Queue.
+     * The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
      * 
      */
     @Export(name="messageRetentionPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> messageRetentionPeriod;
 
     /**
-     * @return Represents the longest life time of the message in the Queue.
+     * @return The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
      * 
      */
     public Output<Integer> messageRetentionPeriod() {
         return this.messageRetentionPeriod;
     }
     /**
-     * The longest waiting time for a Queue request when the number of messages is empty, in seconds.
+     * The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: `0` to `30`. Unit: seconds. Default value: `0`.
      * 
      */
     @Export(name="pollingWaitSeconds", refs={Integer.class}, tree="[0]")
     private Output<Integer> pollingWaitSeconds;
 
     /**
-     * @return The longest waiting time for a Queue request when the number of messages is empty, in seconds.
+     * @return The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: `0` to `30`. Unit: seconds. Default value: `0`.
      * 
      */
     public Output<Integer> pollingWaitSeconds() {
         return this.pollingWaitSeconds;
     }
     /**
-     * Representative resources.
+     * The name of the queue.
      * 
      */
     @Export(name="queueName", refs={String.class}, tree="[0]")
     private Output<String> queueName;
 
     /**
-     * @return Representative resources.
+     * @return The name of the queue.
      * 
      */
     public Output<String> queueName() {
         return this.queueName;
     }
     /**
-     * Represents the duration after the message is removed from the Queue and changed from the Active state to the Inactive state.
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
+    }
+    /**
+     * The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
      * 
      */
     @Export(name="visibilityTimeout", refs={Integer.class}, tree="[0]")
     private Output<Integer> visibilityTimeout;
 
     /**
-     * @return Represents the duration after the message is removed from the Queue and changed from the Active state to the Inactive state.
+     * @return The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
      * 
      */
     public Output<Integer> visibilityTimeout() {

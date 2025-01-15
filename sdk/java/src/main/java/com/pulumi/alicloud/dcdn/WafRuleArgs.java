@@ -20,14 +20,14 @@ public final class WafRuleArgs extends com.pulumi.resources.ResourceArgs {
     public static final WafRuleArgs Empty = new WafRuleArgs();
 
     /**
-     * Specifies the action of the rule. Valid values: `block`, `monitor`, `js`.
+     * Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
      * 
      */
     @Import(name="action")
     private @Nullable Output<String> action;
 
     /**
-     * @return Specifies the action of the rule. Valid values: `block`, `monitor`, `js`.
+     * @return Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
      * 
      */
     public Optional<Output<String>> action() {
@@ -230,14 +230,14 @@ public final class WafRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The id of the waf rule group. The default value is &#34;1012&#34;. Multiple rules are separated by commas.
+     * The id of the waf rule group. The default value is &#34;1012&#34;. Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `waf_group`.
      * 
      */
     @Import(name="wafGroupIds")
     private @Nullable Output<String> wafGroupIds;
 
     /**
-     * @return The id of the waf rule group. The default value is &#34;1012&#34;. Multiple rules are separated by commas.
+     * @return The id of the waf rule group. The default value is &#34;1012&#34;. Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `waf_group`.
      * 
      */
     public Optional<Output<String>> wafGroupIds() {
@@ -283,7 +283,7 @@ public final class WafRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param action Specifies the action of the rule. Valid values: `block`, `monitor`, `js`.
+         * @param action Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class WafRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param action Specifies the action of the rule. Valid values: `block`, `monitor`, `js`.
+         * @param action Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
          * 
          * @return builder
          * 
@@ -627,7 +627,7 @@ public final class WafRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param wafGroupIds The id of the waf rule group. The default value is &#34;1012&#34;. Multiple rules are separated by commas.
+         * @param wafGroupIds The id of the waf rule group. The default value is &#34;1012&#34;. Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `waf_group`.
          * 
          * @return builder
          * 
@@ -638,7 +638,7 @@ public final class WafRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param wafGroupIds The id of the waf rule group. The default value is &#34;1012&#34;. Multiple rules are separated by commas.
+         * @param wafGroupIds The id of the waf rule group. The default value is &#34;1012&#34;. Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `waf_group`.
          * 
          * @return builder
          * 

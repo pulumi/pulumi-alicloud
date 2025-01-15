@@ -40,18 +40,25 @@ class InstanceArgs:
                  tracing_storage_time: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[str] payment_type: The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
+        :param pulumi.Input[str] payment_type: The Payment type. Valid value: 
+               - Subscription: Pre-paid.
+               - PayAsYouGo: Post-paid, and for serverless Edition.
         :param pulumi.Input[bool] auto_renew: Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
         :param pulumi.Input[str] instance_name: The instance name.
-        :param pulumi.Input[str] instance_type: Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
+        :param pulumi.Input[str] instance_type: Instance type. Valid values: 
+               - professional: professional Edition
+               - enterprise: enterprise Edition
+               - vip: Platinum Edition.
+               - serverless: Serverless Edition.
+               > **NOTE:** There should not set the `instance_type` parameter when creating a serverless instance. Only need to set `payment_type = "PayAsYouGo"` and `serverless_charge_type = "onDemand"`.
         :param pulumi.Input[int] max_connections: The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
         :param pulumi.Input[str] max_eip_tps: Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
         :param pulumi.Input[str] max_tps: Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
         :param pulumi.Input[str] modify_type: This parameter must be provided while you change the instance specification. Type of instance lifting and lowering:
                - Upgrade: Upgrade
                - Downgrade: Downgrading.
-        :param pulumi.Input[int] period: Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
-        :param pulumi.Input[str] period_cycle: Prepaid cycle units. Value: Month. Year: Year.
+        :param pulumi.Input[int] period: Prepayment cycle, unit: periodCycle. This parameter is valid when PaymentType is set to Subscription.
+        :param pulumi.Input[str] period_cycle: Prepaid cycle units. Value: Month, Year.
         :param pulumi.Input[str] queue_capacity: Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
         :param pulumi.Input[int] renewal_duration: The number of automatic renewal cycles.
         :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
@@ -104,7 +111,9 @@ class InstanceArgs:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Input[str]:
         """
-        The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
+        The Payment type. Valid value: 
+        - Subscription: Pre-paid.
+        - PayAsYouGo: Post-paid, and for serverless Edition.
         """
         return pulumi.get(self, "payment_type")
 
@@ -140,7 +149,12 @@ class InstanceArgs:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
+        Instance type. Valid values: 
+        - professional: professional Edition
+        - enterprise: enterprise Edition
+        - vip: Platinum Edition.
+        - serverless: Serverless Edition.
+        > **NOTE:** There should not set the `instance_type` parameter when creating a serverless instance. Only need to set `payment_type = "PayAsYouGo"` and `serverless_charge_type = "onDemand"`.
         """
         return pulumi.get(self, "instance_type")
 
@@ -202,7 +216,7 @@ class InstanceArgs:
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
         """
-        Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
+        Prepayment cycle, unit: periodCycle. This parameter is valid when PaymentType is set to Subscription.
         """
         return pulumi.get(self, "period")
 
@@ -214,7 +228,7 @@ class InstanceArgs:
     @pulumi.getter(name="periodCycle")
     def period_cycle(self) -> Optional[pulumi.Input[str]]:
         """
-        Prepaid cycle units. Value: Month. Year: Year.
+        Prepaid cycle units. Value: Month, Year.
         """
         return pulumi.get(self, "period_cycle")
 
@@ -360,16 +374,23 @@ class _InstanceState:
         :param pulumi.Input[bool] auto_renew: Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
         :param pulumi.Input[int] create_time: OrderCreateTime.
         :param pulumi.Input[str] instance_name: The instance name.
-        :param pulumi.Input[str] instance_type: Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
+        :param pulumi.Input[str] instance_type: Instance type. Valid values: 
+               - professional: professional Edition
+               - enterprise: enterprise Edition
+               - vip: Platinum Edition.
+               - serverless: Serverless Edition.
+               > **NOTE:** There should not set the `instance_type` parameter when creating a serverless instance. Only need to set `payment_type = "PayAsYouGo"` and `serverless_charge_type = "onDemand"`.
         :param pulumi.Input[int] max_connections: The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
         :param pulumi.Input[str] max_eip_tps: Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
         :param pulumi.Input[str] max_tps: Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
         :param pulumi.Input[str] modify_type: This parameter must be provided while you change the instance specification. Type of instance lifting and lowering:
                - Upgrade: Upgrade
                - Downgrade: Downgrading.
-        :param pulumi.Input[str] payment_type: The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
-        :param pulumi.Input[int] period: Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
-        :param pulumi.Input[str] period_cycle: Prepaid cycle units. Value: Month. Year: Year.
+        :param pulumi.Input[str] payment_type: The Payment type. Valid value: 
+               - Subscription: Pre-paid.
+               - PayAsYouGo: Post-paid, and for serverless Edition.
+        :param pulumi.Input[int] period: Prepayment cycle, unit: periodCycle. This parameter is valid when PaymentType is set to Subscription.
+        :param pulumi.Input[str] period_cycle: Prepaid cycle units. Value: Month, Year.
         :param pulumi.Input[str] queue_capacity: Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
         :param pulumi.Input[int] renewal_duration: The number of automatic renewal cycles.
         :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
@@ -464,7 +485,12 @@ class _InstanceState:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
+        Instance type. Valid values: 
+        - professional: professional Edition
+        - enterprise: enterprise Edition
+        - vip: Platinum Edition.
+        - serverless: Serverless Edition.
+        > **NOTE:** There should not set the `instance_type` parameter when creating a serverless instance. Only need to set `payment_type = "PayAsYouGo"` and `serverless_charge_type = "onDemand"`.
         """
         return pulumi.get(self, "instance_type")
 
@@ -526,7 +552,9 @@ class _InstanceState:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
+        The Payment type. Valid value: 
+        - Subscription: Pre-paid.
+        - PayAsYouGo: Post-paid, and for serverless Edition.
         """
         return pulumi.get(self, "payment_type")
 
@@ -538,7 +566,7 @@ class _InstanceState:
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
         """
-        Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
+        Prepayment cycle, unit: periodCycle. This parameter is valid when PaymentType is set to Subscription.
         """
         return pulumi.get(self, "period")
 
@@ -550,7 +578,7 @@ class _InstanceState:
     @pulumi.getter(name="periodCycle")
     def period_cycle(self) -> Optional[pulumi.Input[str]]:
         """
-        Prepaid cycle units. Value: Month. Year: Year.
+        Prepaid cycle units. Value: Month, Year.
         """
         return pulumi.get(self, "period_cycle")
 
@@ -717,16 +745,23 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_renew: Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
         :param pulumi.Input[str] instance_name: The instance name.
-        :param pulumi.Input[str] instance_type: Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
+        :param pulumi.Input[str] instance_type: Instance type. Valid values: 
+               - professional: professional Edition
+               - enterprise: enterprise Edition
+               - vip: Platinum Edition.
+               - serverless: Serverless Edition.
+               > **NOTE:** There should not set the `instance_type` parameter when creating a serverless instance. Only need to set `payment_type = "PayAsYouGo"` and `serverless_charge_type = "onDemand"`.
         :param pulumi.Input[int] max_connections: The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
         :param pulumi.Input[str] max_eip_tps: Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
         :param pulumi.Input[str] max_tps: Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
         :param pulumi.Input[str] modify_type: This parameter must be provided while you change the instance specification. Type of instance lifting and lowering:
                - Upgrade: Upgrade
                - Downgrade: Downgrading.
-        :param pulumi.Input[str] payment_type: The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
-        :param pulumi.Input[int] period: Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
-        :param pulumi.Input[str] period_cycle: Prepaid cycle units. Value: Month. Year: Year.
+        :param pulumi.Input[str] payment_type: The Payment type. Valid value: 
+               - Subscription: Pre-paid.
+               - PayAsYouGo: Post-paid, and for serverless Edition.
+        :param pulumi.Input[int] period: Prepayment cycle, unit: periodCycle. This parameter is valid when PaymentType is set to Subscription.
+        :param pulumi.Input[str] period_cycle: Prepaid cycle units. Value: Month, Year.
         :param pulumi.Input[str] queue_capacity: Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
         :param pulumi.Input[int] renewal_duration: The number of automatic renewal cycles.
         :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
@@ -859,16 +894,23 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] auto_renew: Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
         :param pulumi.Input[int] create_time: OrderCreateTime.
         :param pulumi.Input[str] instance_name: The instance name.
-        :param pulumi.Input[str] instance_type: Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
+        :param pulumi.Input[str] instance_type: Instance type. Valid values: 
+               - professional: professional Edition
+               - enterprise: enterprise Edition
+               - vip: Platinum Edition.
+               - serverless: Serverless Edition.
+               > **NOTE:** There should not set the `instance_type` parameter when creating a serverless instance. Only need to set `payment_type = "PayAsYouGo"` and `serverless_charge_type = "onDemand"`.
         :param pulumi.Input[int] max_connections: The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
         :param pulumi.Input[str] max_eip_tps: Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
         :param pulumi.Input[str] max_tps: Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
         :param pulumi.Input[str] modify_type: This parameter must be provided while you change the instance specification. Type of instance lifting and lowering:
                - Upgrade: Upgrade
                - Downgrade: Downgrading.
-        :param pulumi.Input[str] payment_type: The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
-        :param pulumi.Input[int] period: Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
-        :param pulumi.Input[str] period_cycle: Prepaid cycle units. Value: Month. Year: Year.
+        :param pulumi.Input[str] payment_type: The Payment type. Valid value: 
+               - Subscription: Pre-paid.
+               - PayAsYouGo: Post-paid, and for serverless Edition.
+        :param pulumi.Input[int] period: Prepayment cycle, unit: periodCycle. This parameter is valid when PaymentType is set to Subscription.
+        :param pulumi.Input[str] period_cycle: Prepaid cycle units. Value: Month, Year.
         :param pulumi.Input[str] queue_capacity: Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
         :param pulumi.Input[int] renewal_duration: The number of automatic renewal cycles.
         :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
@@ -935,7 +977,12 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Output[str]:
         """
-        Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
+        Instance type. Valid values: 
+        - professional: professional Edition
+        - enterprise: enterprise Edition
+        - vip: Platinum Edition.
+        - serverless: Serverless Edition.
+        > **NOTE:** There should not set the `instance_type` parameter when creating a serverless instance. Only need to set `payment_type = "PayAsYouGo"` and `serverless_charge_type = "onDemand"`.
         """
         return pulumi.get(self, "instance_type")
 
@@ -977,7 +1024,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[str]:
         """
-        The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
+        The Payment type. Valid value: 
+        - Subscription: Pre-paid.
+        - PayAsYouGo: Post-paid, and for serverless Edition.
         """
         return pulumi.get(self, "payment_type")
 
@@ -985,7 +1034,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[int]]:
         """
-        Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
+        Prepayment cycle, unit: periodCycle. This parameter is valid when PaymentType is set to Subscription.
         """
         return pulumi.get(self, "period")
 
@@ -993,7 +1042,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="periodCycle")
     def period_cycle(self) -> pulumi.Output[Optional[str]]:
         """
-        Prepaid cycle units. Value: Month. Year: Year.
+        Prepaid cycle units. Value: Month, Year.
         """
         return pulumi.get(self, "period_cycle")
 

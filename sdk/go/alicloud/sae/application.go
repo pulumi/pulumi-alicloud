@@ -265,7 +265,18 @@ type Application struct {
 	Replicas pulumi.IntOutput `pulumi:"replicas"`
 	// Security group ID.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
-	// SLS  configuration.
+	// Configuration for log collection to SLS. Valid parameter descriptions are as follows:
+	// * `projectName`: Configures the project name on SLS.
+	// * `logDir`: Path to the logs.
+	// * `logType`: Type of logs. stdout indicates container standard output logs, and only one can be set; if not set, it means collecting file logs.
+	// * `logstoreName`: Configures the log store name on SLS.
+	// * `logtailName`: Configures the log tail name on SLS; if not specified, it means creating a new log tail.
+	//
+	// If you no longer need to use the SLS collection feature, you should set the value of this field to an empty string. There are two examples:
+	// - Using SAE automatically created SLS resources: [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}].
+	// - Using custom SLS resources: [{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}].
+	//
+	// **NOTE:** Projects that are automatically created with applications will be deleted along with the application deletion. Therefore, when selecting existing projects, you cannot choose projects automatically created by SAE.
 	SlsConfigs pulumi.StringPtrOutput `pulumi:"slsConfigs"`
 	// The status of the resource. Valid values: `RUNNING`, `STOPPED`, `UNKNOWN`.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -480,7 +491,18 @@ type applicationState struct {
 	Replicas *int `pulumi:"replicas"`
 	// Security group ID.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
-	// SLS  configuration.
+	// Configuration for log collection to SLS. Valid parameter descriptions are as follows:
+	// * `projectName`: Configures the project name on SLS.
+	// * `logDir`: Path to the logs.
+	// * `logType`: Type of logs. stdout indicates container standard output logs, and only one can be set; if not set, it means collecting file logs.
+	// * `logstoreName`: Configures the log store name on SLS.
+	// * `logtailName`: Configures the log tail name on SLS; if not specified, it means creating a new log tail.
+	//
+	// If you no longer need to use the SLS collection feature, you should set the value of this field to an empty string. There are two examples:
+	// - Using SAE automatically created SLS resources: [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}].
+	// - Using custom SLS resources: [{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}].
+	//
+	// **NOTE:** Projects that are automatically created with applications will be deleted along with the application deletion. Therefore, when selecting existing projects, you cannot choose projects automatically created by SAE.
 	SlsConfigs *string `pulumi:"slsConfigs"`
 	// The status of the resource. Valid values: `RUNNING`, `STOPPED`, `UNKNOWN`.
 	Status *string `pulumi:"status"`
@@ -646,7 +668,18 @@ type ApplicationState struct {
 	Replicas pulumi.IntPtrInput
 	// Security group ID.
 	SecurityGroupId pulumi.StringPtrInput
-	// SLS  configuration.
+	// Configuration for log collection to SLS. Valid parameter descriptions are as follows:
+	// * `projectName`: Configures the project name on SLS.
+	// * `logDir`: Path to the logs.
+	// * `logType`: Type of logs. stdout indicates container standard output logs, and only one can be set; if not set, it means collecting file logs.
+	// * `logstoreName`: Configures the log store name on SLS.
+	// * `logtailName`: Configures the log tail name on SLS; if not specified, it means creating a new log tail.
+	//
+	// If you no longer need to use the SLS collection feature, you should set the value of this field to an empty string. There are two examples:
+	// - Using SAE automatically created SLS resources: [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}].
+	// - Using custom SLS resources: [{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}].
+	//
+	// **NOTE:** Projects that are automatically created with applications will be deleted along with the application deletion. Therefore, when selecting existing projects, you cannot choose projects automatically created by SAE.
 	SlsConfigs pulumi.StringPtrInput
 	// The status of the resource. Valid values: `RUNNING`, `STOPPED`, `UNKNOWN`.
 	Status pulumi.StringPtrInput
@@ -816,7 +849,18 @@ type applicationArgs struct {
 	Replicas int `pulumi:"replicas"`
 	// Security group ID.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
-	// SLS  configuration.
+	// Configuration for log collection to SLS. Valid parameter descriptions are as follows:
+	// * `projectName`: Configures the project name on SLS.
+	// * `logDir`: Path to the logs.
+	// * `logType`: Type of logs. stdout indicates container standard output logs, and only one can be set; if not set, it means collecting file logs.
+	// * `logstoreName`: Configures the log store name on SLS.
+	// * `logtailName`: Configures the log tail name on SLS; if not specified, it means creating a new log tail.
+	//
+	// If you no longer need to use the SLS collection feature, you should set the value of this field to an empty string. There are two examples:
+	// - Using SAE automatically created SLS resources: [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}].
+	// - Using custom SLS resources: [{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}].
+	//
+	// **NOTE:** Projects that are automatically created with applications will be deleted along with the application deletion. Therefore, when selecting existing projects, you cannot choose projects automatically created by SAE.
 	SlsConfigs *string `pulumi:"slsConfigs"`
 	// The status of the resource. Valid values: `RUNNING`, `STOPPED`, `UNKNOWN`.
 	Status *string `pulumi:"status"`
@@ -983,7 +1027,18 @@ type ApplicationArgs struct {
 	Replicas pulumi.IntInput
 	// Security group ID.
 	SecurityGroupId pulumi.StringPtrInput
-	// SLS  configuration.
+	// Configuration for log collection to SLS. Valid parameter descriptions are as follows:
+	// * `projectName`: Configures the project name on SLS.
+	// * `logDir`: Path to the logs.
+	// * `logType`: Type of logs. stdout indicates container standard output logs, and only one can be set; if not set, it means collecting file logs.
+	// * `logstoreName`: Configures the log store name on SLS.
+	// * `logtailName`: Configures the log tail name on SLS; if not specified, it means creating a new log tail.
+	//
+	// If you no longer need to use the SLS collection feature, you should set the value of this field to an empty string. There are two examples:
+	// - Using SAE automatically created SLS resources: [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}].
+	// - Using custom SLS resources: [{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}].
+	//
+	// **NOTE:** Projects that are automatically created with applications will be deleted along with the application deletion. Therefore, when selecting existing projects, you cannot choose projects automatically created by SAE.
 	SlsConfigs pulumi.StringPtrInput
 	// The status of the resource. Valid values: `RUNNING`, `STOPPED`, `UNKNOWN`.
 	Status pulumi.StringPtrInput
@@ -1403,7 +1458,18 @@ func (o ApplicationOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
-// SLS  configuration.
+// Configuration for log collection to SLS. Valid parameter descriptions are as follows:
+// * `projectName`: Configures the project name on SLS.
+// * `logDir`: Path to the logs.
+// * `logType`: Type of logs. stdout indicates container standard output logs, and only one can be set; if not set, it means collecting file logs.
+// * `logstoreName`: Configures the log store name on SLS.
+// * `logtailName`: Configures the log tail name on SLS; if not specified, it means creating a new log tail.
+//
+// If you no longer need to use the SLS collection feature, you should set the value of this field to an empty string. There are two examples:
+// - Using SAE automatically created SLS resources: [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}].
+// - Using custom SLS resources: [{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}].
+//
+// **NOTE:** Projects that are automatically created with applications will be deleted along with the application deletion. Therefore, when selecting existing projects, you cannot choose projects automatically created by SAE.
 func (o ApplicationOutput) SlsConfigs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringPtrOutput { return v.SlsConfigs }).(pulumi.StringPtrOutput)
 }

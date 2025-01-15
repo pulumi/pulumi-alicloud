@@ -17,14 +17,14 @@ public final class ConnectionIkeConfigArgs extends com.pulumi.resources.Resource
     public static final ConnectionIkeConfigArgs Empty = new ConnectionIkeConfigArgs();
 
     /**
-     * IKE auth Algorithm.
+     * the authentication algorithm that is used in Phase 1 negotiations. Valid values: md5, sha1, sha2
      * 
      */
     @Import(name="ikeAuthAlg")
     private @Nullable Output<String> ikeAuthAlg;
 
     /**
-     * @return IKE auth Algorithm.
+     * @return the authentication algorithm that is used in Phase 1 negotiations. Valid values: md5, sha1, sha2
      * 
      */
     public Optional<Output<String>> ikeAuthAlg() {
@@ -32,14 +32,14 @@ public final class ConnectionIkeConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * IKE encript algorithm.
+     * the encryption algorithm that is used in Phase 1 negotiations. Valid values: aes, aes192, aes256, des, and 3des. Default value: aes.
      * 
      */
     @Import(name="ikeEncAlg")
     private @Nullable Output<String> ikeEncAlg;
 
     /**
-     * @return IKE encript algorithm.
+     * @return the encryption algorithm that is used in Phase 1 negotiations. Valid values: aes, aes192, aes256, des, and 3des. Default value: aes.
      * 
      */
     public Optional<Output<String>> ikeEncAlg() {
@@ -47,14 +47,14 @@ public final class ConnectionIkeConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * IKE lifetime.
+     * the SA lifetime as a result of Phase 1 negotiations. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
      * 
      */
     @Import(name="ikeLifetime")
     private @Nullable Output<Integer> ikeLifetime;
 
     /**
-     * @return IKE lifetime.
+     * @return the SA lifetime as a result of Phase 1 negotiations. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
      * 
      */
     public Optional<Output<Integer>> ikeLifetime() {
@@ -62,14 +62,14 @@ public final class ConnectionIkeConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The local ID, which supports the FQDN and IP formats, and defaults to the IP address of the selected VPN gateway.
+     * the identifier of the VPN gateway. It can contain at most 100 characters. The default value is the IP address of the VPN gateway.
      * 
      */
     @Import(name="ikeLocalId")
     private @Nullable Output<String> ikeLocalId;
 
     /**
-     * @return The local ID, which supports the FQDN and IP formats, and defaults to the IP address of the selected VPN gateway.
+     * @return the identifier of the VPN gateway. It can contain at most 100 characters. The default value is the IP address of the VPN gateway.
      * 
      */
     public Optional<Output<String>> ikeLocalId() {
@@ -77,14 +77,18 @@ public final class ConnectionIkeConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * IKE mode, supports main and aggressive mode. The main mode is highly secure. If NAT traversal is enabled, we recommend that you use the aggressive mode.
+     * the negotiation mode of IKE. Valid values: main and aggressive. Default value: main.
+     * - main: This mode offers higher security during negotiations.
+     * - aggressive: This mode supports faster negotiations and a higher success rate.
      * 
      */
     @Import(name="ikeMode")
     private @Nullable Output<String> ikeMode;
 
     /**
-     * @return IKE mode, supports main and aggressive mode. The main mode is highly secure. If NAT traversal is enabled, we recommend that you use the aggressive mode.
+     * @return the negotiation mode of IKE. Valid values: main and aggressive. Default value: main.
+     * - main: This mode offers higher security during negotiations.
+     * - aggressive: This mode supports faster negotiations and a higher success rate.
      * 
      */
     public Optional<Output<String>> ikeMode() {
@@ -92,14 +96,14 @@ public final class ConnectionIkeConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * DH group.
+     * the Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Valid values: group1, group2, group5, and group14. Default value: group2.
      * 
      */
     @Import(name="ikePfs")
     private @Nullable Output<String> ikePfs;
 
     /**
-     * @return DH group.
+     * @return the Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Valid values: group1, group2, group5, and group14. Default value: group2.
      * 
      */
     public Optional<Output<String>> ikePfs() {
@@ -107,14 +111,14 @@ public final class ConnectionIkeConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The peer ID. The FQDN and IP address formats are supported. The default value is the IP address of the selected customer gateway.
+     * the identifier of the customer gateway. It can contain at most 100 characters. The default value is the IP address of the customer gateway.
      * 
      */
     @Import(name="ikeRemoteId")
     private @Nullable Output<String> ikeRemoteId;
 
     /**
-     * @return The peer ID. The FQDN and IP address formats are supported. The default value is the IP address of the selected customer gateway.
+     * @return the identifier of the customer gateway. It can contain at most 100 characters. The default value is the IP address of the customer gateway.
      * 
      */
     public Optional<Output<String>> ikeRemoteId() {
@@ -122,14 +126,16 @@ public final class ConnectionIkeConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * IKE version.
+     * the version of the Internet Key Exchange (IKE) protocol. Valid values: ikev1 and ikev2. Default value: ikev1.
+     * Compared with IKEv1, IKEv2 simplifies the security association (SA) negotiation process and provides better support for scenarios with multiple CIDR blocks.
      * 
      */
     @Import(name="ikeVersion")
     private @Nullable Output<String> ikeVersion;
 
     /**
-     * @return IKE version.
+     * @return the version of the Internet Key Exchange (IKE) protocol. Valid values: ikev1 and ikev2. Default value: ikev1.
+     * Compared with IKEv1, IKEv2 simplifies the security association (SA) negotiation process and provides better support for scenarios with multiple CIDR blocks.
      * 
      */
     public Optional<Output<String>> ikeVersion() {
@@ -137,14 +143,14 @@ public final class ConnectionIkeConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Preshared secret key.
+     * the pre-shared key that is used for identity authentication between the VPN gateway and the on-premises data center. The key must be 1 to 100 characters in length and can contain digits, letters, and the following special characters: ~!\`{@literal @}#$%^&amp;*()_-+={}[]|;:&#39;,.&lt;&gt;/? If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key. You can call the DescribeVpnConnection operation to query the pre-shared key that is automatically generated by the system.
      * 
      */
     @Import(name="psk")
     private @Nullable Output<String> psk;
 
     /**
-     * @return Preshared secret key.
+     * @return the pre-shared key that is used for identity authentication between the VPN gateway and the on-premises data center. The key must be 1 to 100 characters in length and can contain digits, letters, and the following special characters: ~!\`{@literal @}#$%^&amp;*()_-+={}[]|;:&#39;,.&lt;&gt;/? If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key. You can call the DescribeVpnConnection operation to query the pre-shared key that is automatically generated by the system.
      * 
      */
     public Optional<Output<String>> psk() {
@@ -184,7 +190,7 @@ public final class ConnectionIkeConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ikeAuthAlg IKE auth Algorithm.
+         * @param ikeAuthAlg the authentication algorithm that is used in Phase 1 negotiations. Valid values: md5, sha1, sha2
          * 
          * @return builder
          * 
@@ -195,7 +201,7 @@ public final class ConnectionIkeConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ikeAuthAlg IKE auth Algorithm.
+         * @param ikeAuthAlg the authentication algorithm that is used in Phase 1 negotiations. Valid values: md5, sha1, sha2
          * 
          * @return builder
          * 
@@ -205,7 +211,7 @@ public final class ConnectionIkeConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ikeEncAlg IKE encript algorithm.
+         * @param ikeEncAlg the encryption algorithm that is used in Phase 1 negotiations. Valid values: aes, aes192, aes256, des, and 3des. Default value: aes.
          * 
          * @return builder
          * 
@@ -216,7 +222,7 @@ public final class ConnectionIkeConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ikeEncAlg IKE encript algorithm.
+         * @param ikeEncAlg the encryption algorithm that is used in Phase 1 negotiations. Valid values: aes, aes192, aes256, des, and 3des. Default value: aes.
          * 
          * @return builder
          * 
@@ -226,7 +232,7 @@ public final class ConnectionIkeConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ikeLifetime IKE lifetime.
+         * @param ikeLifetime the SA lifetime as a result of Phase 1 negotiations. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
          * 
          * @return builder
          * 
@@ -237,7 +243,7 @@ public final class ConnectionIkeConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ikeLifetime IKE lifetime.
+         * @param ikeLifetime the SA lifetime as a result of Phase 1 negotiations. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
          * 
          * @return builder
          * 
@@ -247,7 +253,7 @@ public final class ConnectionIkeConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ikeLocalId The local ID, which supports the FQDN and IP formats, and defaults to the IP address of the selected VPN gateway.
+         * @param ikeLocalId the identifier of the VPN gateway. It can contain at most 100 characters. The default value is the IP address of the VPN gateway.
          * 
          * @return builder
          * 
@@ -258,7 +264,7 @@ public final class ConnectionIkeConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ikeLocalId The local ID, which supports the FQDN and IP formats, and defaults to the IP address of the selected VPN gateway.
+         * @param ikeLocalId the identifier of the VPN gateway. It can contain at most 100 characters. The default value is the IP address of the VPN gateway.
          * 
          * @return builder
          * 
@@ -268,7 +274,9 @@ public final class ConnectionIkeConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ikeMode IKE mode, supports main and aggressive mode. The main mode is highly secure. If NAT traversal is enabled, we recommend that you use the aggressive mode.
+         * @param ikeMode the negotiation mode of IKE. Valid values: main and aggressive. Default value: main.
+         * - main: This mode offers higher security during negotiations.
+         * - aggressive: This mode supports faster negotiations and a higher success rate.
          * 
          * @return builder
          * 
@@ -279,7 +287,9 @@ public final class ConnectionIkeConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ikeMode IKE mode, supports main and aggressive mode. The main mode is highly secure. If NAT traversal is enabled, we recommend that you use the aggressive mode.
+         * @param ikeMode the negotiation mode of IKE. Valid values: main and aggressive. Default value: main.
+         * - main: This mode offers higher security during negotiations.
+         * - aggressive: This mode supports faster negotiations and a higher success rate.
          * 
          * @return builder
          * 
@@ -289,7 +299,7 @@ public final class ConnectionIkeConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ikePfs DH group.
+         * @param ikePfs the Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Valid values: group1, group2, group5, and group14. Default value: group2.
          * 
          * @return builder
          * 
@@ -300,7 +310,7 @@ public final class ConnectionIkeConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ikePfs DH group.
+         * @param ikePfs the Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Valid values: group1, group2, group5, and group14. Default value: group2.
          * 
          * @return builder
          * 
@@ -310,7 +320,7 @@ public final class ConnectionIkeConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ikeRemoteId The peer ID. The FQDN and IP address formats are supported. The default value is the IP address of the selected customer gateway.
+         * @param ikeRemoteId the identifier of the customer gateway. It can contain at most 100 characters. The default value is the IP address of the customer gateway.
          * 
          * @return builder
          * 
@@ -321,7 +331,7 @@ public final class ConnectionIkeConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ikeRemoteId The peer ID. The FQDN and IP address formats are supported. The default value is the IP address of the selected customer gateway.
+         * @param ikeRemoteId the identifier of the customer gateway. It can contain at most 100 characters. The default value is the IP address of the customer gateway.
          * 
          * @return builder
          * 
@@ -331,7 +341,8 @@ public final class ConnectionIkeConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ikeVersion IKE version.
+         * @param ikeVersion the version of the Internet Key Exchange (IKE) protocol. Valid values: ikev1 and ikev2. Default value: ikev1.
+         * Compared with IKEv1, IKEv2 simplifies the security association (SA) negotiation process and provides better support for scenarios with multiple CIDR blocks.
          * 
          * @return builder
          * 
@@ -342,7 +353,8 @@ public final class ConnectionIkeConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ikeVersion IKE version.
+         * @param ikeVersion the version of the Internet Key Exchange (IKE) protocol. Valid values: ikev1 and ikev2. Default value: ikev1.
+         * Compared with IKEv1, IKEv2 simplifies the security association (SA) negotiation process and provides better support for scenarios with multiple CIDR blocks.
          * 
          * @return builder
          * 
@@ -352,7 +364,7 @@ public final class ConnectionIkeConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param psk Preshared secret key.
+         * @param psk the pre-shared key that is used for identity authentication between the VPN gateway and the on-premises data center. The key must be 1 to 100 characters in length and can contain digits, letters, and the following special characters: ~!\`{@literal @}#$%^&amp;*()_-+={}[]|;:&#39;,.&lt;&gt;/? If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key. You can call the DescribeVpnConnection operation to query the pre-shared key that is automatically generated by the system.
          * 
          * @return builder
          * 
@@ -363,7 +375,7 @@ public final class ConnectionIkeConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param psk Preshared secret key.
+         * @param psk the pre-shared key that is used for identity authentication between the VPN gateway and the on-premises data center. The key must be 1 to 100 characters in length and can contain digits, letters, and the following special characters: ~!\`{@literal @}#$%^&amp;*()_-+={}[]|;:&#39;,.&lt;&gt;/? If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key. You can call the DescribeVpnConnection operation to query the pre-shared key that is automatically generated by the system.
          * 
          * @return builder
          * 

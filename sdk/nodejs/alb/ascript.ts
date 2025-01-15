@@ -7,15 +7,15 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Alb Ascript resource.
+ * Provides a Application Load Balancer (ALB) A Script resource.
  *
- * For information about Alb Ascript and how to use it, see [What is AScript](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createascripts).
+ * For information about Application Load Balancer (ALB) A Script and how to use it, see [What is A Script](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createascripts).
  *
  * > **NOTE:** Available since v1.195.0.
  *
  * ## Import
  *
- * Alb AScript can be imported using the id, e.g.
+ * Application Load Balancer (ALB) A Script can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:alb/aScript:AScript example <id>
@@ -50,39 +50,39 @@ export class AScript extends pulumi.CustomResource {
     }
 
     /**
-     * The name of AScript.
+     * AScript name.
      */
     public readonly ascriptName!: pulumi.Output<string>;
     /**
-     * Whether scripts are enabled.
+     * Whether to PreCheck only this request
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
-     * Whether extension parameters are enabled.
+     * Whether AScript is enabled.
      */
-    public readonly extAttributeEnabled!: pulumi.Output<boolean>;
+    public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Extended attribute list. See `extAttributes` below for details.
+     * Whether extension parameters are enabled. When ExtAttributeEnabled is true, ExtAttributes must be set.
      */
-    public readonly extAttributes!: pulumi.Output<outputs.alb.AScriptExtAttribute[]>;
+    public readonly extAttributeEnabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `extAttributes` below.
+     */
+    public readonly extAttributes!: pulumi.Output<outputs.alb.AScriptExtAttribute[] | undefined>;
     /**
      * Listener ID of script attribution
      */
     public readonly listenerId!: pulumi.Output<string>;
     /**
-     * The ID of load balancer instance.
-     */
-    public /*out*/ readonly loadBalancerId!: pulumi.Output<string>;
-    /**
-     * Execution location of AScript.
+     * Script execution location.
      */
     public readonly position!: pulumi.Output<string>;
     /**
-     * The content of AScript.
+     * AScript script content.
      */
     public readonly scriptContent!: pulumi.Output<string>;
     /**
-     * The status of AScript.
+     * Script status
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -100,11 +100,11 @@ export class AScript extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AScriptState | undefined;
             resourceInputs["ascriptName"] = state ? state.ascriptName : undefined;
+            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["extAttributeEnabled"] = state ? state.extAttributeEnabled : undefined;
             resourceInputs["extAttributes"] = state ? state.extAttributes : undefined;
             resourceInputs["listenerId"] = state ? state.listenerId : undefined;
-            resourceInputs["loadBalancerId"] = state ? state.loadBalancerId : undefined;
             resourceInputs["position"] = state ? state.position : undefined;
             resourceInputs["scriptContent"] = state ? state.scriptContent : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
@@ -112,9 +112,6 @@ export class AScript extends pulumi.CustomResource {
             const args = argsOrState as AScriptArgs | undefined;
             if ((!args || args.ascriptName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ascriptName'");
-            }
-            if ((!args || args.enabled === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'enabled'");
             }
             if ((!args || args.listenerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'listenerId'");
@@ -126,13 +123,13 @@ export class AScript extends pulumi.CustomResource {
                 throw new Error("Missing required property 'scriptContent'");
             }
             resourceInputs["ascriptName"] = args ? args.ascriptName : undefined;
+            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["extAttributeEnabled"] = args ? args.extAttributeEnabled : undefined;
             resourceInputs["extAttributes"] = args ? args.extAttributes : undefined;
             resourceInputs["listenerId"] = args ? args.listenerId : undefined;
             resourceInputs["position"] = args ? args.position : undefined;
             resourceInputs["scriptContent"] = args ? args.scriptContent : undefined;
-            resourceInputs["loadBalancerId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -145,19 +142,23 @@ export class AScript extends pulumi.CustomResource {
  */
 export interface AScriptState {
     /**
-     * The name of AScript.
+     * AScript name.
      */
     ascriptName?: pulumi.Input<string>;
     /**
-     * Whether scripts are enabled.
+     * Whether to PreCheck only this request
+     */
+    dryRun?: pulumi.Input<boolean>;
+    /**
+     * Whether AScript is enabled.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Whether extension parameters are enabled.
+     * Whether extension parameters are enabled. When ExtAttributeEnabled is true, ExtAttributes must be set.
      */
     extAttributeEnabled?: pulumi.Input<boolean>;
     /**
-     * Extended attribute list. See `extAttributes` below for details.
+     * Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `extAttributes` below.
      */
     extAttributes?: pulumi.Input<pulumi.Input<inputs.alb.AScriptExtAttribute>[]>;
     /**
@@ -165,19 +166,15 @@ export interface AScriptState {
      */
     listenerId?: pulumi.Input<string>;
     /**
-     * The ID of load balancer instance.
-     */
-    loadBalancerId?: pulumi.Input<string>;
-    /**
-     * Execution location of AScript.
+     * Script execution location.
      */
     position?: pulumi.Input<string>;
     /**
-     * The content of AScript.
+     * AScript script content.
      */
     scriptContent?: pulumi.Input<string>;
     /**
-     * The status of AScript.
+     * Script status
      */
     status?: pulumi.Input<string>;
 }
@@ -187,19 +184,23 @@ export interface AScriptState {
  */
 export interface AScriptArgs {
     /**
-     * The name of AScript.
+     * AScript name.
      */
     ascriptName: pulumi.Input<string>;
     /**
-     * Whether scripts are enabled.
+     * Whether to PreCheck only this request
      */
-    enabled: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
-     * Whether extension parameters are enabled.
+     * Whether AScript is enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Whether extension parameters are enabled. When ExtAttributeEnabled is true, ExtAttributes must be set.
      */
     extAttributeEnabled?: pulumi.Input<boolean>;
     /**
-     * Extended attribute list. See `extAttributes` below for details.
+     * Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `extAttributes` below.
      */
     extAttributes?: pulumi.Input<pulumi.Input<inputs.alb.AScriptExtAttribute>[]>;
     /**
@@ -207,11 +208,11 @@ export interface AScriptArgs {
      */
     listenerId: pulumi.Input<string>;
     /**
-     * Execution location of AScript.
+     * Script execution location.
      */
     position: pulumi.Input<string>;
     /**
-     * The content of AScript.
+     * AScript script content.
      */
     scriptContent: pulumi.Input<string>;
 }

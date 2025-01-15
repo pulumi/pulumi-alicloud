@@ -203,13 +203,13 @@ namespace Pulumi.AliCloud.Ecs
         public Output<int> SecondaryPrivateIpAddressCount { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added.
+        /// The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
         /// </summary>
         [Output("securityGroupIds")]
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
         /// <summary>
-        /// Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead
+        /// Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
         /// </summary>
         [Output("securityGroups")]
         public Output<ImmutableArray<string>> SecurityGroups { get; private set; } = null!;
@@ -409,7 +409,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _securityGroupIds;
 
         /// <summary>
-        /// The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added.
+        /// The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
         /// </summary>
         public InputList<string> SecurityGroupIds
         {
@@ -421,7 +421,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _securityGroups;
 
         /// <summary>
-        /// Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead
+        /// Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
         /// </summary>
         [Obsolete(@"Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead")]
         public InputList<string> SecurityGroups
@@ -593,7 +593,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _securityGroupIds;
 
         /// <summary>
-        /// The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added.
+        /// The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
         /// </summary>
         public InputList<string> SecurityGroupIds
         {
@@ -605,7 +605,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _securityGroups;
 
         /// <summary>
-        /// Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead
+        /// Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
         /// </summary>
         [Obsolete(@"Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead")]
         public InputList<string> SecurityGroups

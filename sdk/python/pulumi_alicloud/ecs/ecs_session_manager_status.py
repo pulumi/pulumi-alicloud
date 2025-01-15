@@ -23,8 +23,8 @@ class EcsSessionManagerStatusArgs:
                  status: pulumi.Input[str]):
         """
         The set of arguments for constructing a EcsSessionManagerStatus resource.
-        :param pulumi.Input[str] session_manager_status_name: The name of the resource. Valid values: `sessionManagerStatus`.
-        :param pulumi.Input[str] status: The status of the resource. Valid values: `Disabled`, `Enabled`.
+        :param pulumi.Input[str] session_manager_status_name: The name of the Session Manager Status. Valid values: `sessionManagerStatus`.
+        :param pulumi.Input[str] status: The status of the Session Manager Status. Valid values: `Enabled`, `Disabled`.
         """
         pulumi.set(__self__, "session_manager_status_name", session_manager_status_name)
         pulumi.set(__self__, "status", status)
@@ -33,7 +33,7 @@ class EcsSessionManagerStatusArgs:
     @pulumi.getter(name="sessionManagerStatusName")
     def session_manager_status_name(self) -> pulumi.Input[str]:
         """
-        The name of the resource. Valid values: `sessionManagerStatus`.
+        The name of the Session Manager Status. Valid values: `sessionManagerStatus`.
         """
         return pulumi.get(self, "session_manager_status_name")
 
@@ -45,7 +45,7 @@ class EcsSessionManagerStatusArgs:
     @pulumi.getter
     def status(self) -> pulumi.Input[str]:
         """
-        The status of the resource. Valid values: `Disabled`, `Enabled`.
+        The status of the Session Manager Status. Valid values: `Enabled`, `Disabled`.
         """
         return pulumi.get(self, "status")
 
@@ -61,8 +61,8 @@ class _EcsSessionManagerStatusState:
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering EcsSessionManagerStatus resources.
-        :param pulumi.Input[str] session_manager_status_name: The name of the resource. Valid values: `sessionManagerStatus`.
-        :param pulumi.Input[str] status: The status of the resource. Valid values: `Disabled`, `Enabled`.
+        :param pulumi.Input[str] session_manager_status_name: The name of the Session Manager Status. Valid values: `sessionManagerStatus`.
+        :param pulumi.Input[str] status: The status of the Session Manager Status. Valid values: `Enabled`, `Disabled`.
         """
         if session_manager_status_name is not None:
             pulumi.set(__self__, "session_manager_status_name", session_manager_status_name)
@@ -73,7 +73,7 @@ class _EcsSessionManagerStatusState:
     @pulumi.getter(name="sessionManagerStatusName")
     def session_manager_status_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the resource. Valid values: `sessionManagerStatus`.
+        The name of the Session Manager Status. Valid values: `sessionManagerStatus`.
         """
         return pulumi.get(self, "session_manager_status_name")
 
@@ -85,7 +85,7 @@ class _EcsSessionManagerStatusState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the resource. Valid values: `Disabled`, `Enabled`.
+        The status of the Session Manager Status. Valid values: `Enabled`, `Disabled`.
         """
         return pulumi.get(self, "status")
 
@@ -107,7 +107,7 @@ class EcsSessionManagerStatus(pulumi.CustomResource):
 
         For information about ECS Session Manager Status and how to use it, see [What is Session Manager Status](https://www.alibabacloud.com/help/zh/doc-detail/337915.html).
 
-        > **NOTE:** Available in v1.148.0+.
+        > **NOTE:** Available since v1.148.0.
 
         ## Example Usage
 
@@ -127,13 +127,13 @@ class EcsSessionManagerStatus(pulumi.CustomResource):
         ECS Session Manager Status can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus example <session_manager_status_name>
+        $ pulumi import alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus example <id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] session_manager_status_name: The name of the resource. Valid values: `sessionManagerStatus`.
-        :param pulumi.Input[str] status: The status of the resource. Valid values: `Disabled`, `Enabled`.
+        :param pulumi.Input[str] session_manager_status_name: The name of the Session Manager Status. Valid values: `sessionManagerStatus`.
+        :param pulumi.Input[str] status: The status of the Session Manager Status. Valid values: `Enabled`, `Disabled`.
         """
         ...
     @overload
@@ -146,7 +146,7 @@ class EcsSessionManagerStatus(pulumi.CustomResource):
 
         For information about ECS Session Manager Status and how to use it, see [What is Session Manager Status](https://www.alibabacloud.com/help/zh/doc-detail/337915.html).
 
-        > **NOTE:** Available in v1.148.0+.
+        > **NOTE:** Available since v1.148.0.
 
         ## Example Usage
 
@@ -166,7 +166,7 @@ class EcsSessionManagerStatus(pulumi.CustomResource):
         ECS Session Manager Status can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus example <session_manager_status_name>
+        $ pulumi import alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -220,8 +220,8 @@ class EcsSessionManagerStatus(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] session_manager_status_name: The name of the resource. Valid values: `sessionManagerStatus`.
-        :param pulumi.Input[str] status: The status of the resource. Valid values: `Disabled`, `Enabled`.
+        :param pulumi.Input[str] session_manager_status_name: The name of the Session Manager Status. Valid values: `sessionManagerStatus`.
+        :param pulumi.Input[str] status: The status of the Session Manager Status. Valid values: `Enabled`, `Disabled`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -235,7 +235,7 @@ class EcsSessionManagerStatus(pulumi.CustomResource):
     @pulumi.getter(name="sessionManagerStatusName")
     def session_manager_status_name(self) -> pulumi.Output[str]:
         """
-        The name of the resource. Valid values: `sessionManagerStatus`.
+        The name of the Session Manager Status. Valid values: `sessionManagerStatus`.
         """
         return pulumi.get(self, "session_manager_status_name")
 
@@ -243,7 +243,7 @@ class EcsSessionManagerStatus(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the resource. Valid values: `Disabled`, `Enabled`.
+        The status of the Session Manager Status. Valid values: `Enabled`, `Disabled`.
         """
         return pulumi.get(self, "status")
 

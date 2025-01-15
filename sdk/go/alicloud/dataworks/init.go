@@ -25,8 +25,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DataSource{}
 	case "alicloud:dataworks/dataSourceSharedRule:DataSourceSharedRule":
 		r = &DataSourceSharedRule{}
+	case "alicloud:dataworks/diAlarmRule:DiAlarmRule":
+		r = &DiAlarmRule{}
+	case "alicloud:dataworks/diJob:DiJob":
+		r = &DiJob{}
+	case "alicloud:dataworks/dwResourceGroup:DwResourceGroup":
+		r = &DwResourceGroup{}
 	case "alicloud:dataworks/folder:Folder":
 		r = &Folder{}
+	case "alicloud:dataworks/network:Network":
+		r = &Network{}
 	case "alicloud:dataworks/project:Project":
 		r = &Project{}
 	case "alicloud:dataworks/projectMember:ProjectMember":
@@ -56,7 +64,27 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"dataworks/diAlarmRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"dataworks/diJob",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"dataworks/dwResourceGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"dataworks/folder",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"dataworks/network",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

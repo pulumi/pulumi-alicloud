@@ -240,14 +240,14 @@ public final class NatGatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+     * The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+     * @return The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -687,7 +687,7 @@ public final class NatGatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+         * @param paymentType The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
          * 
          * @return builder
          * 
@@ -698,7 +698,7 @@ public final class NatGatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+         * @param paymentType The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
          * 
          * @return builder
          * 

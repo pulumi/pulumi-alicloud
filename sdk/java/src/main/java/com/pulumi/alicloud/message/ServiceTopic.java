@@ -13,13 +13,14 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Message Notification Service Topic resource.
+ * Provides a Message Service Topic resource.
  * 
- * For information about Message Notification Service Topic and how to use it, see [What is Topic](https://www.alibabacloud.com/help/en/message-service/latest/createtopic).
+ * For information about Message Service Topic and how to use it, see [What is Topic](https://www.alibabacloud.com/help/en/message-service/latest/createtopic).
  * 
  * &gt; **NOTE:** Available since v1.188.0.
  * 
@@ -51,11 +52,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf-example");
+ *         final var name = config.get("name").orElse("terraform-example");
  *         var default_ = new ServiceTopic("default", ServiceTopicArgs.builder()
  *             .topicName(name)
- *             .maxMessageSize(12357)
- *             .loggingEnabled(true)
+ *             .maxMessageSize(16888)
+ *             .enableLogging(true)
  *             .build());
  * 
  *     }
@@ -66,52 +67,102 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Message Notification Service Topic can be imported using the id or topic_name, e.g.
+ * Message Service Topic can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:message/serviceTopic:ServiceTopic example &lt;topic_name&gt;
+ * $ pulumi import alicloud:message/serviceTopic:ServiceTopic example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:message/serviceTopic:ServiceTopic")
 public class ServiceTopic extends com.pulumi.resources.CustomResource {
     /**
-     * Specifies whether to enable the log management feature. Default value: false. Valid values:
+     * (Available since v1.241.0) The time when the topic was created.
      * 
      */
-    @Export(name="loggingEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> loggingEnabled;
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
 
     /**
-     * @return Specifies whether to enable the log management feature. Default value: false. Valid values:
+     * @return (Available since v1.241.0) The time when the topic was created.
      * 
      */
-    public Output<Optional<Boolean>> loggingEnabled() {
-        return Codegen.optional(this.loggingEnabled);
+    public Output<String> createTime() {
+        return this.createTime;
     }
     /**
-     * The maximum size of a message body that can be sent to the topic. Unit: bytes. Valid values: 1024-65536. Default value: 65536.
+     * Specifies whether to enable the logging feature. Default value: `false`. Valid values:
+     * 
+     */
+    @Export(name="enableLogging", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> enableLogging;
+
+    /**
+     * @return Specifies whether to enable the logging feature. Default value: `false`. Valid values:
+     * 
+     */
+    public Output<Boolean> enableLogging() {
+        return this.enableLogging;
+    }
+    /**
+     * . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
+     * 
+     * @deprecated
+     * Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
+     * 
+     */
+    @Deprecated /* Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead. */
+    @Export(name="loggingEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> loggingEnabled;
+
+    /**
+     * @return . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
+     * 
+     */
+    public Output<Boolean> loggingEnabled() {
+        return this.loggingEnabled;
+    }
+    /**
+     * The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
      * 
      */
     @Export(name="maxMessageSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxMessageSize;
 
     /**
-     * @return The maximum size of a message body that can be sent to the topic. Unit: bytes. Valid values: 1024-65536. Default value: 65536.
+     * @return The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
      * 
      */
     public Output<Integer> maxMessageSize() {
         return this.maxMessageSize;
     }
     /**
-     * Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
+    }
+    /**
+     * The name of the topic.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     @Export(name="topicName", refs={String.class}, tree="[0]")
     private Output<String> topicName;
 
     /**
-     * @return Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
+     * @return The name of the topic.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Output<String> topicName() {

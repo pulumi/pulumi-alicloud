@@ -10,79 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.MongoDB
 {
     /// <summary>
-    /// Provides a MongoDB Account resource.
-    /// 
-    /// For information about MongoDB Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/doc-detail/62154.html).
-    /// 
-    /// &gt; **NOTE:** Available since v1.148.0.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var @default = AliCloud.MongoDB.GetZones.Invoke();
-    /// 
-    ///     var index = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)).Length.Apply(length =&gt; length - 1);
-    /// 
-    ///     var zoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)[index].Id);
-    /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
-    ///     {
-    ///         VpcName = name,
-    ///         CidrBlock = "172.17.3.0/24",
-    ///     });
-    /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
-    ///     {
-    ///         VswitchName = name,
-    ///         CidrBlock = "172.17.3.0/24",
-    ///         VpcId = defaultNetwork.Id,
-    ///         ZoneId = zoneId,
-    ///     });
-    /// 
-    ///     var defaultInstance = new AliCloud.MongoDB.Instance("default", new()
-    ///     {
-    ///         EngineVersion = "4.2",
-    ///         DbInstanceClass = "dds.mongo.mid",
-    ///         DbInstanceStorage = 10,
-    ///         VswitchId = defaultSwitch.Id,
-    ///         SecurityIpLists = new[]
-    ///         {
-    ///             "10.168.1.12",
-    ///             "100.69.7.112",
-    ///         },
-    ///         Name = name,
-    ///         Tags = 
-    ///         {
-    ///             { "Created", "TF" },
-    ///             { "For", "example" },
-    ///         },
-    ///     });
-    /// 
-    ///     var defaultAccount = new AliCloud.MongoDB.Account("default", new()
-    ///     {
-    ///         AccountName = "root",
-    ///         AccountPassword = "Example_123",
-    ///         InstanceId = defaultInstance.Id,
-    ///         AccountDescription = name,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
-    /// MongoDB Account can be imported using the id, e.g.
+    /// Mongo D B Account can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:mongodb/account:Account example &lt;instance_id&gt;:&lt;account_name&gt;
@@ -92,35 +22,45 @@ namespace Pulumi.AliCloud.MongoDB
     public partial class Account : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The description of the account.
-        /// * The description must start with a letter, and cannot start with `http://` or `https://`.
-        /// * It must be `2` to `256` characters in length, and can contain letters, digits, underscores (_), and hyphens (-).
+        /// Account comment information.
+        /// 
+        /// &gt; **NOTE:**  Call the ModifyAccountDescription interface to set the account description information before this parameter is returned.
         /// </summary>
         [Output("accountDescription")]
         public Output<string?> AccountDescription { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the account. Valid values: `root`.
+        /// The new password.
+        /// 
+        /// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ &amp; * ( ) _ + - =`
+        /// - The password must be 8 to 32 characters in length.
         /// </summary>
         [Output("accountName")]
         public Output<string> AccountName { get; private set; } = null!;
 
         /// <summary>
-        /// The Password of the Account.
-        /// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
-        /// * The password must be `8` to `32` characters in length.
+        /// The password of the database account. The password must be 8 to 32 characters in length. It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! # $ % ^ &amp; \* ( ) \_ + - =
         /// </summary>
         [Output("accountPassword")]
         public Output<string> AccountPassword { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the instance.
+        /// The role type of the instance. Value description
+        /// 
+        /// - When the instance type is sharded cluster, charactertype is required. The values are db and cs.
+        /// - When the instance type is a replica set, charactertype can be null or pass in normal.
+        /// </summary>
+        [Output("characterType")]
+        public Output<string> CharacterType { get; private set; } = null!;
+
+        /// <summary>
+        /// The account whose password needs to be reset. Set the value to `root`.
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the account. Valid values: `Unavailable`, `Available`.
+        /// Account Status
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -176,15 +116,18 @@ namespace Pulumi.AliCloud.MongoDB
     public sealed class AccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the account.
-        /// * The description must start with a letter, and cannot start with `http://` or `https://`.
-        /// * It must be `2` to `256` characters in length, and can contain letters, digits, underscores (_), and hyphens (-).
+        /// Account comment information.
+        /// 
+        /// &gt; **NOTE:**  Call the ModifyAccountDescription interface to set the account description information before this parameter is returned.
         /// </summary>
         [Input("accountDescription")]
         public Input<string>? AccountDescription { get; set; }
 
         /// <summary>
-        /// The name of the account. Valid values: `root`.
+        /// The new password.
+        /// 
+        /// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ &amp; * ( ) _ + - =`
+        /// - The password must be 8 to 32 characters in length.
         /// </summary>
         [Input("accountName", required: true)]
         public Input<string> AccountName { get; set; } = null!;
@@ -193,9 +136,7 @@ namespace Pulumi.AliCloud.MongoDB
         private Input<string>? _accountPassword;
 
         /// <summary>
-        /// The Password of the Account.
-        /// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
-        /// * The password must be `8` to `32` characters in length.
+        /// The password of the database account. The password must be 8 to 32 characters in length. It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! # $ % ^ &amp; \* ( ) \_ + - =
         /// </summary>
         public Input<string>? AccountPassword
         {
@@ -208,7 +149,16 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// The ID of the instance.
+        /// The role type of the instance. Value description
+        /// 
+        /// - When the instance type is sharded cluster, charactertype is required. The values are db and cs.
+        /// - When the instance type is a replica set, charactertype can be null or pass in normal.
+        /// </summary>
+        [Input("characterType")]
+        public Input<string>? CharacterType { get; set; }
+
+        /// <summary>
+        /// The account whose password needs to be reset. Set the value to `root`.
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
@@ -222,15 +172,18 @@ namespace Pulumi.AliCloud.MongoDB
     public sealed class AccountState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the account.
-        /// * The description must start with a letter, and cannot start with `http://` or `https://`.
-        /// * It must be `2` to `256` characters in length, and can contain letters, digits, underscores (_), and hyphens (-).
+        /// Account comment information.
+        /// 
+        /// &gt; **NOTE:**  Call the ModifyAccountDescription interface to set the account description information before this parameter is returned.
         /// </summary>
         [Input("accountDescription")]
         public Input<string>? AccountDescription { get; set; }
 
         /// <summary>
-        /// The name of the account. Valid values: `root`.
+        /// The new password.
+        /// 
+        /// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ &amp; * ( ) _ + - =`
+        /// - The password must be 8 to 32 characters in length.
         /// </summary>
         [Input("accountName")]
         public Input<string>? AccountName { get; set; }
@@ -239,9 +192,7 @@ namespace Pulumi.AliCloud.MongoDB
         private Input<string>? _accountPassword;
 
         /// <summary>
-        /// The Password of the Account.
-        /// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
-        /// * The password must be `8` to `32` characters in length.
+        /// The password of the database account. The password must be 8 to 32 characters in length. It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! # $ % ^ &amp; \* ( ) \_ + - =
         /// </summary>
         public Input<string>? AccountPassword
         {
@@ -254,13 +205,22 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// The ID of the instance.
+        /// The role type of the instance. Value description
+        /// 
+        /// - When the instance type is sharded cluster, charactertype is required. The values are db and cs.
+        /// - When the instance type is a replica set, charactertype can be null or pass in normal.
+        /// </summary>
+        [Input("characterType")]
+        public Input<string>? CharacterType { get; set; }
+
+        /// <summary>
+        /// The account whose password needs to be reset. Set the value to `root`.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// The status of the account. Valid values: `Unavailable`, `Available`.
+        /// Account Status
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

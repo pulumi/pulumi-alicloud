@@ -31,7 +31,7 @@ type InstanceAdAuthServer struct {
 	// The field that is used to indicate the name of a user on the AD server.
 	NameMapping *string `pulumi:"nameMapping"`
 	// The password of the account that is used for the AD server.
-	Password string `pulumi:"password"`
+	Password *string `pulumi:"password"`
 	// The port that is used to access the AD server.
 	Port int `pulumi:"port"`
 	// The address of the AD server.
@@ -69,7 +69,7 @@ type InstanceAdAuthServerArgs struct {
 	// The field that is used to indicate the name of a user on the AD server.
 	NameMapping pulumi.StringPtrInput `pulumi:"nameMapping"`
 	// The password of the account that is used for the AD server.
-	Password pulumi.StringInput `pulumi:"password"`
+	Password pulumi.StringPtrInput `pulumi:"password"`
 	// The port that is used to access the AD server.
 	Port pulumi.IntInput `pulumi:"port"`
 	// The address of the AD server.
@@ -170,8 +170,8 @@ func (o InstanceAdAuthServerOutput) NameMapping() pulumi.StringPtrOutput {
 }
 
 // The password of the account that is used for the AD server.
-func (o InstanceAdAuthServerOutput) Password() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceAdAuthServer) string { return v.Password }).(pulumi.StringOutput)
+func (o InstanceAdAuthServerOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceAdAuthServer) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
 // The port that is used to access the AD server.
@@ -227,7 +227,7 @@ type InstanceLdapAuthServer struct {
 	// The field that is used to indicate the name of a user on the LDAP server.
 	NameMapping *string `pulumi:"nameMapping"`
 	// The password of the account that is used for the LDAP server.
-	Password string `pulumi:"password"`
+	Password *string `pulumi:"password"`
 	// The port that is used to access the LDAP server.
 	Port int `pulumi:"port"`
 	// The address of the LDAP server.
@@ -265,7 +265,7 @@ type InstanceLdapAuthServerArgs struct {
 	// The field that is used to indicate the name of a user on the LDAP server.
 	NameMapping pulumi.StringPtrInput `pulumi:"nameMapping"`
 	// The password of the account that is used for the LDAP server.
-	Password pulumi.StringInput `pulumi:"password"`
+	Password pulumi.StringPtrInput `pulumi:"password"`
 	// The port that is used to access the LDAP server.
 	Port pulumi.IntInput `pulumi:"port"`
 	// The address of the LDAP server.
@@ -366,8 +366,8 @@ func (o InstanceLdapAuthServerOutput) NameMapping() pulumi.StringPtrOutput {
 }
 
 // The password of the account that is used for the LDAP server.
-func (o InstanceLdapAuthServerOutput) Password() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceLdapAuthServer) string { return v.Password }).(pulumi.StringOutput)
+func (o InstanceLdapAuthServerOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceLdapAuthServer) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
 // The port that is used to access the LDAP server.
@@ -1143,13 +1143,16 @@ func (o GetHostsHostProtocolArrayOutput) Index(i pulumi.IntInput) GetHostsHostPr
 }
 
 type GetInstancesInstance struct {
+	// The bandwidth of Cloud Bastionhost instance.
+	Bandwidth string `pulumi:"bandwidth"`
 	// The instance's remark.
 	Description string `pulumi:"description"`
 	// The instance's id.
 	Id string `pulumi:"id"`
 	// The instance's status.
 	InstanceStatus string `pulumi:"instanceStatus"`
-	LicenseCode    string `pulumi:"licenseCode"`
+	// The instance's license code.
+	LicenseCode string `pulumi:"licenseCode"`
 	// The instance's private domain name.
 	PrivateDomain string `pulumi:"privateDomain"`
 	// The instance's public domain name.
@@ -1158,29 +1161,9 @@ type GetInstancesInstance struct {
 	PublicNetworkAccess bool `pulumi:"publicNetworkAccess"`
 	// The instance's security group configuration.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// A map of tags assigned to the bastionhost instance. It must be in the format:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := bastionhost.GetInstances(ctx, &bastionhost.GetInstancesArgs{
-	// 			Tags: map[string]interface{}{
-	// 				"tagKey1": "tagValue1",
-	// 			},
-	// 		}, nil)
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		return nil
-	// 	})
-	// }
-	// ```
+	// The storage of Cloud Bastionhost instance in TB.
+	Storage string `pulumi:"storage"`
+	// A map of tags assigned to the bastionhost instance.
 	Tags map[string]string `pulumi:"tags"`
 	// The instance's vSwitch ID.
 	UserVswitchId string `pulumi:"userVswitchId"`
@@ -1198,13 +1181,16 @@ type GetInstancesInstanceInput interface {
 }
 
 type GetInstancesInstanceArgs struct {
+	// The bandwidth of Cloud Bastionhost instance.
+	Bandwidth pulumi.StringInput `pulumi:"bandwidth"`
 	// The instance's remark.
 	Description pulumi.StringInput `pulumi:"description"`
 	// The instance's id.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The instance's status.
 	InstanceStatus pulumi.StringInput `pulumi:"instanceStatus"`
-	LicenseCode    pulumi.StringInput `pulumi:"licenseCode"`
+	// The instance's license code.
+	LicenseCode pulumi.StringInput `pulumi:"licenseCode"`
 	// The instance's private domain name.
 	PrivateDomain pulumi.StringInput `pulumi:"privateDomain"`
 	// The instance's public domain name.
@@ -1213,29 +1199,9 @@ type GetInstancesInstanceArgs struct {
 	PublicNetworkAccess pulumi.BoolInput `pulumi:"publicNetworkAccess"`
 	// The instance's security group configuration.
 	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
-	// A map of tags assigned to the bastionhost instance. It must be in the format:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := bastionhost.GetInstances(ctx, &bastionhost.GetInstancesArgs{
-	// 			Tags: map[string]interface{}{
-	// 				"tagKey1": "tagValue1",
-	// 			},
-	// 		}, nil)
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		return nil
-	// 	})
-	// }
-	// ```
+	// The storage of Cloud Bastionhost instance in TB.
+	Storage pulumi.StringInput `pulumi:"storage"`
+	// A map of tags assigned to the bastionhost instance.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The instance's vSwitch ID.
 	UserVswitchId pulumi.StringInput `pulumi:"userVswitchId"`
@@ -1292,6 +1258,11 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx 
 	return o
 }
 
+// The bandwidth of Cloud Bastionhost instance.
+func (o GetInstancesInstanceOutput) Bandwidth() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Bandwidth }).(pulumi.StringOutput)
+}
+
 // The instance's remark.
 func (o GetInstancesInstanceOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Description }).(pulumi.StringOutput)
@@ -1307,6 +1278,7 @@ func (o GetInstancesInstanceOutput) InstanceStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceStatus }).(pulumi.StringOutput)
 }
 
+// The instance's license code.
 func (o GetInstancesInstanceOutput) LicenseCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.LicenseCode }).(pulumi.StringOutput)
 }
@@ -1331,32 +1303,12 @@ func (o GetInstancesInstanceOutput) SecurityGroupIds() pulumi.StringArrayOutput 
 	return o.ApplyT(func(v GetInstancesInstance) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
-// A map of tags assigned to the bastionhost instance. It must be in the format:
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := bastionhost.GetInstances(ctx, &bastionhost.GetInstancesArgs{
-//				Tags: map[string]interface{}{
-//					"tagKey1": "tagValue1",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
+// The storage of Cloud Bastionhost instance in TB.
+func (o GetInstancesInstanceOutput) Storage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Storage }).(pulumi.StringOutput)
+}
+
+// A map of tags assigned to the bastionhost instance.
 func (o GetInstancesInstanceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetInstancesInstance) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

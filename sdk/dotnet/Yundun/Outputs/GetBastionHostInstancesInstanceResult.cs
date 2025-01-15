@@ -13,6 +13,7 @@ namespace Pulumi.AliCloud.Yundun.Outputs
     [OutputType]
     public sealed class GetBastionHostInstancesInstanceResult
     {
+        public readonly string Bandwidth;
         public readonly string Description;
         public readonly string Id;
         public readonly string InstanceStatus;
@@ -21,11 +22,14 @@ namespace Pulumi.AliCloud.Yundun.Outputs
         public readonly string PublicDomain;
         public readonly bool PublicNetworkAccess;
         public readonly ImmutableArray<string> SecurityGroupIds;
-        public readonly ImmutableDictionary<string, string>? Tags;
+        public readonly string Storage;
+        public readonly ImmutableDictionary<string, string> Tags;
         public readonly string UserVswitchId;
 
         [OutputConstructor]
         private GetBastionHostInstancesInstanceResult(
+            string bandwidth,
+
             string description,
 
             string id,
@@ -42,10 +46,13 @@ namespace Pulumi.AliCloud.Yundun.Outputs
 
             ImmutableArray<string> securityGroupIds,
 
-            ImmutableDictionary<string, string>? tags,
+            string storage,
+
+            ImmutableDictionary<string, string> tags,
 
             string userVswitchId)
         {
+            Bandwidth = bandwidth;
             Description = description;
             Id = id;
             InstanceStatus = instanceStatus;
@@ -54,6 +61,7 @@ namespace Pulumi.AliCloud.Yundun.Outputs
             PublicDomain = publicDomain;
             PublicNetworkAccess = publicNetworkAccess;
             SecurityGroupIds = securityGroupIds;
+            Storage = storage;
             Tags = tags;
             UserVswitchId = userVswitchId;
         }

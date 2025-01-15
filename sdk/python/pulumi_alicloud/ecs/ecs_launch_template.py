@@ -25,6 +25,7 @@ class EcsLaunchTemplateArgs:
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['EcsLaunchTemplateDataDiskArgs']]]] = None,
+                 default_version_number: Optional[pulumi.Input[int]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_vm_os_config: Optional[pulumi.Input[bool]] = None,
@@ -66,6 +67,7 @@ class EcsLaunchTemplateArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  template_resource_group_id: Optional[pulumi.Input[str]] = None,
                  template_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 update_default_version_number: Optional[pulumi.Input[bool]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  userdata: Optional[pulumi.Input[str]] = None,
                  version_description: Optional[pulumi.Input[str]] = None,
@@ -78,6 +80,7 @@ class EcsLaunchTemplateArgs:
         :param pulumi.Input[bool] auto_renew: Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internet_charge_type` is set to `PrePaid`.
         :param pulumi.Input[int] auto_renew_period: The auto-renewal period of the instance. Valid values when `period_unit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
         :param pulumi.Input[Sequence[pulumi.Input['EcsLaunchTemplateDataDiskArgs']]] data_disks: The list of data disks created with instance. See `data_disks` below.
+        :param pulumi.Input[int] default_version_number: The version number of the default launch template version. Default to 1. It is conflict with `update_default_version_number`.
         :param pulumi.Input[str] deployment_set_id: The Deployment Set Id.
         :param pulumi.Input[str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         :param pulumi.Input[bool] enable_vm_os_config: Whether to enable the instance operating system configuration.
@@ -129,6 +132,7 @@ class EcsLaunchTemplateArgs:
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] template_resource_group_id: The template resource group id.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] template_tags: A mapping of tags to assign to the launch template.
+        :param pulumi.Input[bool] update_default_version_number: Whether to update the default version of the launch template to the latest version automatically. It is conflict with `default_version_number`.
         :param pulumi.Input[str] user_data: The User Data.
         :param pulumi.Input[str] userdata: It has been deprecated from version 1.120.0, and use field `user_data` instead.
         :param pulumi.Input[str] version_description: The description of the launch template version. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
@@ -144,6 +148,8 @@ class EcsLaunchTemplateArgs:
             pulumi.set(__self__, "auto_renew_period", auto_renew_period)
         if data_disks is not None:
             pulumi.set(__self__, "data_disks", data_disks)
+        if default_version_number is not None:
+            pulumi.set(__self__, "default_version_number", default_version_number)
         if deployment_set_id is not None:
             pulumi.set(__self__, "deployment_set_id", deployment_set_id)
         if description is not None:
@@ -241,6 +247,8 @@ class EcsLaunchTemplateArgs:
             pulumi.set(__self__, "template_resource_group_id", template_resource_group_id)
         if template_tags is not None:
             pulumi.set(__self__, "template_tags", template_tags)
+        if update_default_version_number is not None:
+            pulumi.set(__self__, "update_default_version_number", update_default_version_number)
         if user_data is not None:
             pulumi.set(__self__, "user_data", user_data)
         if userdata is not None:
@@ -304,6 +312,18 @@ class EcsLaunchTemplateArgs:
     @data_disks.setter
     def data_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EcsLaunchTemplateDataDiskArgs']]]]):
         pulumi.set(self, "data_disks", value)
+
+    @property
+    @pulumi.getter(name="defaultVersionNumber")
+    def default_version_number(self) -> Optional[pulumi.Input[int]]:
+        """
+        The version number of the default launch template version. Default to 1. It is conflict with `update_default_version_number`.
+        """
+        return pulumi.get(self, "default_version_number")
+
+    @default_version_number.setter
+    def default_version_number(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "default_version_number", value)
 
     @property
     @pulumi.getter(name="deploymentSetId")
@@ -811,6 +831,18 @@ class EcsLaunchTemplateArgs:
     @template_tags.setter
     def template_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "template_tags", value)
+
+    @property
+    @pulumi.getter(name="updateDefaultVersionNumber")
+    def update_default_version_number(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to update the default version of the launch template to the latest version automatically. It is conflict with `default_version_number`.
+        """
+        return pulumi.get(self, "update_default_version_number")
+
+    @update_default_version_number.setter
+    def update_default_version_number(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "update_default_version_number", value)
 
     @property
     @pulumi.getter(name="userData")
@@ -893,6 +925,7 @@ class _EcsLaunchTemplateState:
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['EcsLaunchTemplateDataDiskArgs']]]] = None,
+                 default_version_number: Optional[pulumi.Input[int]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_vm_os_config: Optional[pulumi.Input[bool]] = None,
@@ -910,6 +943,7 @@ class _EcsLaunchTemplateState:
                  internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
                  io_optimized: Optional[pulumi.Input[str]] = None,
                  key_pair_name: Optional[pulumi.Input[str]] = None,
+                 latest_version_number: Optional[pulumi.Input[int]] = None,
                  launch_template_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input['EcsLaunchTemplateNetworkInterfacesArgs']] = None,
@@ -934,6 +968,7 @@ class _EcsLaunchTemplateState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  template_resource_group_id: Optional[pulumi.Input[str]] = None,
                  template_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 update_default_version_number: Optional[pulumi.Input[bool]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  userdata: Optional[pulumi.Input[str]] = None,
                  version_description: Optional[pulumi.Input[str]] = None,
@@ -946,6 +981,7 @@ class _EcsLaunchTemplateState:
         :param pulumi.Input[bool] auto_renew: Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internet_charge_type` is set to `PrePaid`.
         :param pulumi.Input[int] auto_renew_period: The auto-renewal period of the instance. Valid values when `period_unit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
         :param pulumi.Input[Sequence[pulumi.Input['EcsLaunchTemplateDataDiskArgs']]] data_disks: The list of data disks created with instance. See `data_disks` below.
+        :param pulumi.Input[int] default_version_number: The version number of the default launch template version. Default to 1. It is conflict with `update_default_version_number`.
         :param pulumi.Input[str] deployment_set_id: The Deployment Set Id.
         :param pulumi.Input[str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         :param pulumi.Input[bool] enable_vm_os_config: Whether to enable the instance operating system configuration.
@@ -969,6 +1005,7 @@ class _EcsLaunchTemplateState:
         :param pulumi.Input[str] key_pair_name: The name of the key pair.
                - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
                - The password logon method for Linux instances is set to forbidden upon initialization.
+        :param pulumi.Input[int] latest_version_number: The latest version number of the launch template.
         :param pulumi.Input[str] launch_template_name: The name of Launch Template.
         :param pulumi.Input[str] name: It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
         :param pulumi.Input['EcsLaunchTemplateNetworkInterfacesArgs'] network_interfaces: The list of network interfaces created with instance. See `network_interfaces` below.
@@ -997,6 +1034,7 @@ class _EcsLaunchTemplateState:
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] template_resource_group_id: The template resource group id.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] template_tags: A mapping of tags to assign to the launch template.
+        :param pulumi.Input[bool] update_default_version_number: Whether to update the default version of the launch template to the latest version automatically. It is conflict with `default_version_number`.
         :param pulumi.Input[str] user_data: The User Data.
         :param pulumi.Input[str] userdata: It has been deprecated from version 1.120.0, and use field `user_data` instead.
         :param pulumi.Input[str] version_description: The description of the launch template version. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
@@ -1012,6 +1050,8 @@ class _EcsLaunchTemplateState:
             pulumi.set(__self__, "auto_renew_period", auto_renew_period)
         if data_disks is not None:
             pulumi.set(__self__, "data_disks", data_disks)
+        if default_version_number is not None:
+            pulumi.set(__self__, "default_version_number", default_version_number)
         if deployment_set_id is not None:
             pulumi.set(__self__, "deployment_set_id", deployment_set_id)
         if description is not None:
@@ -1046,6 +1086,8 @@ class _EcsLaunchTemplateState:
             pulumi.set(__self__, "io_optimized", io_optimized)
         if key_pair_name is not None:
             pulumi.set(__self__, "key_pair_name", key_pair_name)
+        if latest_version_number is not None:
+            pulumi.set(__self__, "latest_version_number", latest_version_number)
         if launch_template_name is not None:
             pulumi.set(__self__, "launch_template_name", launch_template_name)
         if name is not None:
@@ -1109,6 +1151,8 @@ class _EcsLaunchTemplateState:
             pulumi.set(__self__, "template_resource_group_id", template_resource_group_id)
         if template_tags is not None:
             pulumi.set(__self__, "template_tags", template_tags)
+        if update_default_version_number is not None:
+            pulumi.set(__self__, "update_default_version_number", update_default_version_number)
         if user_data is not None:
             pulumi.set(__self__, "user_data", user_data)
         if userdata is not None:
@@ -1172,6 +1216,18 @@ class _EcsLaunchTemplateState:
     @data_disks.setter
     def data_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EcsLaunchTemplateDataDiskArgs']]]]):
         pulumi.set(self, "data_disks", value)
+
+    @property
+    @pulumi.getter(name="defaultVersionNumber")
+    def default_version_number(self) -> Optional[pulumi.Input[int]]:
+        """
+        The version number of the default launch template version. Default to 1. It is conflict with `update_default_version_number`.
+        """
+        return pulumi.get(self, "default_version_number")
+
+    @default_version_number.setter
+    def default_version_number(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "default_version_number", value)
 
     @property
     @pulumi.getter(name="deploymentSetId")
@@ -1382,6 +1438,18 @@ class _EcsLaunchTemplateState:
     @key_pair_name.setter
     def key_pair_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "key_pair_name", value)
+
+    @property
+    @pulumi.getter(name="latestVersionNumber")
+    def latest_version_number(self) -> Optional[pulumi.Input[int]]:
+        """
+        The latest version number of the launch template.
+        """
+        return pulumi.get(self, "latest_version_number")
+
+    @latest_version_number.setter
+    def latest_version_number(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "latest_version_number", value)
 
     @property
     @pulumi.getter(name="launchTemplateName")
@@ -1679,6 +1747,18 @@ class _EcsLaunchTemplateState:
     @template_tags.setter
     def template_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "template_tags", value)
+
+    @property
+    @pulumi.getter(name="updateDefaultVersionNumber")
+    def update_default_version_number(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to update the default version of the launch template to the latest version automatically. It is conflict with `default_version_number`.
+        """
+        return pulumi.get(self, "update_default_version_number")
+
+    @update_default_version_number.setter
+    def update_default_version_number(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "update_default_version_number", value)
 
     @property
     @pulumi.getter(name="userData")
@@ -1763,6 +1843,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcsLaunchTemplateDataDiskArgs', 'EcsLaunchTemplateDataDiskArgsDict']]]]] = None,
+                 default_version_number: Optional[pulumi.Input[int]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_vm_os_config: Optional[pulumi.Input[bool]] = None,
@@ -1804,6 +1885,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  template_resource_group_id: Optional[pulumi.Input[str]] = None,
                  template_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 update_default_version_number: Optional[pulumi.Input[bool]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  userdata: Optional[pulumi.Input[str]] = None,
                  version_description: Optional[pulumi.Input[str]] = None,
@@ -1919,6 +2001,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[bool] auto_renew: Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internet_charge_type` is set to `PrePaid`.
         :param pulumi.Input[int] auto_renew_period: The auto-renewal period of the instance. Valid values when `period_unit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EcsLaunchTemplateDataDiskArgs', 'EcsLaunchTemplateDataDiskArgsDict']]]] data_disks: The list of data disks created with instance. See `data_disks` below.
+        :param pulumi.Input[int] default_version_number: The version number of the default launch template version. Default to 1. It is conflict with `update_default_version_number`.
         :param pulumi.Input[str] deployment_set_id: The Deployment Set Id.
         :param pulumi.Input[str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         :param pulumi.Input[bool] enable_vm_os_config: Whether to enable the instance operating system configuration.
@@ -1970,6 +2053,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] template_resource_group_id: The template resource group id.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] template_tags: A mapping of tags to assign to the launch template.
+        :param pulumi.Input[bool] update_default_version_number: Whether to update the default version of the launch template to the latest version automatically. It is conflict with `default_version_number`.
         :param pulumi.Input[str] user_data: The User Data.
         :param pulumi.Input[str] userdata: It has been deprecated from version 1.120.0, and use field `user_data` instead.
         :param pulumi.Input[str] version_description: The description of the launch template version. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
@@ -2104,6 +2188,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcsLaunchTemplateDataDiskArgs', 'EcsLaunchTemplateDataDiskArgsDict']]]]] = None,
+                 default_version_number: Optional[pulumi.Input[int]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_vm_os_config: Optional[pulumi.Input[bool]] = None,
@@ -2145,6 +2230,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  template_resource_group_id: Optional[pulumi.Input[str]] = None,
                  template_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 update_default_version_number: Optional[pulumi.Input[bool]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  userdata: Optional[pulumi.Input[str]] = None,
                  version_description: Optional[pulumi.Input[str]] = None,
@@ -2164,6 +2250,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
             __props__.__dict__["auto_renew"] = auto_renew
             __props__.__dict__["auto_renew_period"] = auto_renew_period
             __props__.__dict__["data_disks"] = data_disks
+            __props__.__dict__["default_version_number"] = default_version_number
             __props__.__dict__["deployment_set_id"] = deployment_set_id
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_vm_os_config"] = enable_vm_os_config
@@ -2205,12 +2292,14 @@ class EcsLaunchTemplate(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["template_resource_group_id"] = template_resource_group_id
             __props__.__dict__["template_tags"] = template_tags
+            __props__.__dict__["update_default_version_number"] = update_default_version_number
             __props__.__dict__["user_data"] = user_data
             __props__.__dict__["userdata"] = userdata
             __props__.__dict__["version_description"] = version_description
             __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["latest_version_number"] = None
         super(EcsLaunchTemplate, __self__).__init__(
             'alicloud:ecs/ecsLaunchTemplate:EcsLaunchTemplate',
             resource_name,
@@ -2225,6 +2314,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
             auto_renew: Optional[pulumi.Input[bool]] = None,
             auto_renew_period: Optional[pulumi.Input[int]] = None,
             data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcsLaunchTemplateDataDiskArgs', 'EcsLaunchTemplateDataDiskArgsDict']]]]] = None,
+            default_version_number: Optional[pulumi.Input[int]] = None,
             deployment_set_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             enable_vm_os_config: Optional[pulumi.Input[bool]] = None,
@@ -2242,6 +2332,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
             internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
             io_optimized: Optional[pulumi.Input[str]] = None,
             key_pair_name: Optional[pulumi.Input[str]] = None,
+            latest_version_number: Optional[pulumi.Input[int]] = None,
             launch_template_name: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_interfaces: Optional[pulumi.Input[Union['EcsLaunchTemplateNetworkInterfacesArgs', 'EcsLaunchTemplateNetworkInterfacesArgsDict']]] = None,
@@ -2266,6 +2357,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             template_resource_group_id: Optional[pulumi.Input[str]] = None,
             template_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            update_default_version_number: Optional[pulumi.Input[bool]] = None,
             user_data: Optional[pulumi.Input[str]] = None,
             userdata: Optional[pulumi.Input[str]] = None,
             version_description: Optional[pulumi.Input[str]] = None,
@@ -2283,6 +2375,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[bool] auto_renew: Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internet_charge_type` is set to `PrePaid`.
         :param pulumi.Input[int] auto_renew_period: The auto-renewal period of the instance. Valid values when `period_unit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EcsLaunchTemplateDataDiskArgs', 'EcsLaunchTemplateDataDiskArgsDict']]]] data_disks: The list of data disks created with instance. See `data_disks` below.
+        :param pulumi.Input[int] default_version_number: The version number of the default launch template version. Default to 1. It is conflict with `update_default_version_number`.
         :param pulumi.Input[str] deployment_set_id: The Deployment Set Id.
         :param pulumi.Input[str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         :param pulumi.Input[bool] enable_vm_os_config: Whether to enable the instance operating system configuration.
@@ -2306,6 +2399,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] key_pair_name: The name of the key pair.
                - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
                - The password logon method for Linux instances is set to forbidden upon initialization.
+        :param pulumi.Input[int] latest_version_number: The latest version number of the launch template.
         :param pulumi.Input[str] launch_template_name: The name of Launch Template.
         :param pulumi.Input[str] name: It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
         :param pulumi.Input[Union['EcsLaunchTemplateNetworkInterfacesArgs', 'EcsLaunchTemplateNetworkInterfacesArgsDict']] network_interfaces: The list of network interfaces created with instance. See `network_interfaces` below.
@@ -2334,6 +2428,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] template_resource_group_id: The template resource group id.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] template_tags: A mapping of tags to assign to the launch template.
+        :param pulumi.Input[bool] update_default_version_number: Whether to update the default version of the launch template to the latest version automatically. It is conflict with `default_version_number`.
         :param pulumi.Input[str] user_data: The User Data.
         :param pulumi.Input[str] userdata: It has been deprecated from version 1.120.0, and use field `user_data` instead.
         :param pulumi.Input[str] version_description: The description of the launch template version. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
@@ -2349,6 +2444,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         __props__.__dict__["auto_renew"] = auto_renew
         __props__.__dict__["auto_renew_period"] = auto_renew_period
         __props__.__dict__["data_disks"] = data_disks
+        __props__.__dict__["default_version_number"] = default_version_number
         __props__.__dict__["deployment_set_id"] = deployment_set_id
         __props__.__dict__["description"] = description
         __props__.__dict__["enable_vm_os_config"] = enable_vm_os_config
@@ -2366,6 +2462,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         __props__.__dict__["internet_max_bandwidth_out"] = internet_max_bandwidth_out
         __props__.__dict__["io_optimized"] = io_optimized
         __props__.__dict__["key_pair_name"] = key_pair_name
+        __props__.__dict__["latest_version_number"] = latest_version_number
         __props__.__dict__["launch_template_name"] = launch_template_name
         __props__.__dict__["name"] = name
         __props__.__dict__["network_interfaces"] = network_interfaces
@@ -2390,6 +2487,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["template_resource_group_id"] = template_resource_group_id
         __props__.__dict__["template_tags"] = template_tags
+        __props__.__dict__["update_default_version_number"] = update_default_version_number
         __props__.__dict__["user_data"] = user_data
         __props__.__dict__["userdata"] = userdata
         __props__.__dict__["version_description"] = version_description
@@ -2429,6 +2527,14 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         The list of data disks created with instance. See `data_disks` below.
         """
         return pulumi.get(self, "data_disks")
+
+    @property
+    @pulumi.getter(name="defaultVersionNumber")
+    def default_version_number(self) -> pulumi.Output[int]:
+        """
+        The version number of the default launch template version. Default to 1. It is conflict with `update_default_version_number`.
+        """
+        return pulumi.get(self, "default_version_number")
 
     @property
     @pulumi.getter(name="deploymentSetId")
@@ -2571,6 +2677,14 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         - The password logon method for Linux instances is set to forbidden upon initialization.
         """
         return pulumi.get(self, "key_pair_name")
+
+    @property
+    @pulumi.getter(name="latestVersionNumber")
+    def latest_version_number(self) -> pulumi.Output[int]:
+        """
+        The latest version number of the launch template.
+        """
+        return pulumi.get(self, "latest_version_number")
 
     @property
     @pulumi.getter(name="launchTemplateName")
@@ -2772,6 +2886,14 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         A mapping of tags to assign to the launch template.
         """
         return pulumi.get(self, "template_tags")
+
+    @property
+    @pulumi.getter(name="updateDefaultVersionNumber")
+    def update_default_version_number(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to update the default version of the launch template to the latest version automatically. It is conflict with `default_version_number`.
+        """
+        return pulumi.get(self, "update_default_version_number")
 
     @property
     @pulumi.getter(name="userData")

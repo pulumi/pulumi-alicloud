@@ -84,6 +84,21 @@ public final class EcsLaunchTemplateState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The version number of the default launch template version. Default to 1. It is conflict with `update_default_version_number`.
+     * 
+     */
+    @Import(name="defaultVersionNumber")
+    private @Nullable Output<Integer> defaultVersionNumber;
+
+    /**
+     * @return The version number of the default launch template version. Default to 1. It is conflict with `update_default_version_number`.
+     * 
+     */
+    public Optional<Output<Integer>> defaultVersionNumber() {
+        return Optional.ofNullable(this.defaultVersionNumber);
+    }
+
+    /**
      * The Deployment Set Id.
      * 
      */
@@ -348,6 +363,21 @@ public final class EcsLaunchTemplateState extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<String>> keyPairName() {
         return Optional.ofNullable(this.keyPairName);
+    }
+
+    /**
+     * The latest version number of the launch template.
+     * 
+     */
+    @Import(name="latestVersionNumber")
+    private @Nullable Output<Integer> latestVersionNumber;
+
+    /**
+     * @return The latest version number of the launch template.
+     * 
+     */
+    public Optional<Output<Integer>> latestVersionNumber() {
+        return Optional.ofNullable(this.latestVersionNumber);
     }
 
     /**
@@ -759,6 +789,21 @@ public final class EcsLaunchTemplateState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Whether to update the default version of the launch template to the latest version automatically. It is conflict with `default_version_number`.
+     * 
+     */
+    @Import(name="updateDefaultVersionNumber")
+    private @Nullable Output<Boolean> updateDefaultVersionNumber;
+
+    /**
+     * @return Whether to update the default version of the launch template to the latest version automatically. It is conflict with `default_version_number`.
+     * 
+     */
+    public Optional<Output<Boolean>> updateDefaultVersionNumber() {
+        return Optional.ofNullable(this.updateDefaultVersionNumber);
+    }
+
+    /**
      * The User Data.
      * 
      */
@@ -863,6 +908,7 @@ public final class EcsLaunchTemplateState extends com.pulumi.resources.ResourceA
         this.autoRenew = $.autoRenew;
         this.autoRenewPeriod = $.autoRenewPeriod;
         this.dataDisks = $.dataDisks;
+        this.defaultVersionNumber = $.defaultVersionNumber;
         this.deploymentSetId = $.deploymentSetId;
         this.description = $.description;
         this.enableVmOsConfig = $.enableVmOsConfig;
@@ -880,6 +926,7 @@ public final class EcsLaunchTemplateState extends com.pulumi.resources.ResourceA
         this.internetMaxBandwidthOut = $.internetMaxBandwidthOut;
         this.ioOptimized = $.ioOptimized;
         this.keyPairName = $.keyPairName;
+        this.latestVersionNumber = $.latestVersionNumber;
         this.launchTemplateName = $.launchTemplateName;
         this.name = $.name;
         this.networkInterfaces = $.networkInterfaces;
@@ -904,6 +951,7 @@ public final class EcsLaunchTemplateState extends com.pulumi.resources.ResourceA
         this.tags = $.tags;
         this.templateResourceGroupId = $.templateResourceGroupId;
         this.templateTags = $.templateTags;
+        this.updateDefaultVersionNumber = $.updateDefaultVersionNumber;
         this.userData = $.userData;
         this.userdata = $.userdata;
         this.versionDescription = $.versionDescription;
@@ -1022,6 +1070,27 @@ public final class EcsLaunchTemplateState extends com.pulumi.resources.ResourceA
          */
         public Builder dataDisks(EcsLaunchTemplateDataDiskArgs... dataDisks) {
             return dataDisks(List.of(dataDisks));
+        }
+
+        /**
+         * @param defaultVersionNumber The version number of the default launch template version. Default to 1. It is conflict with `update_default_version_number`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultVersionNumber(@Nullable Output<Integer> defaultVersionNumber) {
+            $.defaultVersionNumber = defaultVersionNumber;
+            return this;
+        }
+
+        /**
+         * @param defaultVersionNumber The version number of the default launch template version. Default to 1. It is conflict with `update_default_version_number`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultVersionNumber(Integer defaultVersionNumber) {
+            return defaultVersionNumber(Output.of(defaultVersionNumber));
         }
 
         /**
@@ -1391,6 +1460,27 @@ public final class EcsLaunchTemplateState extends com.pulumi.resources.ResourceA
          */
         public Builder keyPairName(String keyPairName) {
             return keyPairName(Output.of(keyPairName));
+        }
+
+        /**
+         * @param latestVersionNumber The latest version number of the launch template.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder latestVersionNumber(@Nullable Output<Integer> latestVersionNumber) {
+            $.latestVersionNumber = latestVersionNumber;
+            return this;
+        }
+
+        /**
+         * @param latestVersionNumber The latest version number of the launch template.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder latestVersionNumber(Integer latestVersionNumber) {
+            return latestVersionNumber(Output.of(latestVersionNumber));
         }
 
         /**
@@ -1953,6 +2043,27 @@ public final class EcsLaunchTemplateState extends com.pulumi.resources.ResourceA
          */
         public Builder templateTags(Map<String,String> templateTags) {
             return templateTags(Output.of(templateTags));
+        }
+
+        /**
+         * @param updateDefaultVersionNumber Whether to update the default version of the launch template to the latest version automatically. It is conflict with `default_version_number`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateDefaultVersionNumber(@Nullable Output<Boolean> updateDefaultVersionNumber) {
+            $.updateDefaultVersionNumber = updateDefaultVersionNumber;
+            return this;
+        }
+
+        /**
+         * @param updateDefaultVersionNumber Whether to update the default version of the launch template to the latest version automatically. It is conflict with `default_version_number`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateDefaultVersionNumber(Boolean updateDefaultVersionNumber) {
+            return updateDefaultVersionNumber(Output.of(updateDefaultVersionNumber));
         }
 
         /**

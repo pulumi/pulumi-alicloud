@@ -169,6 +169,8 @@ type EcsLaunchTemplate struct {
 	AutoRenewPeriod pulumi.IntOutput `pulumi:"autoRenewPeriod"`
 	// The list of data disks created with instance. See `dataDisks` below.
 	DataDisks EcsLaunchTemplateDataDiskArrayOutput `pulumi:"dataDisks"`
+	// The version number of the default launch template version. Default to 1. It is conflict with `updateDefaultVersionNumber`.
+	DefaultVersionNumber pulumi.IntOutput `pulumi:"defaultVersionNumber"`
 	// The Deployment Set Id.
 	DeploymentSetId pulumi.StringPtrOutput `pulumi:"deploymentSetId"`
 	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
@@ -209,6 +211,8 @@ type EcsLaunchTemplate struct {
 	// - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
 	// - The password logon method for Linux instances is set to forbidden upon initialization.
 	KeyPairName pulumi.StringPtrOutput `pulumi:"keyPairName"`
+	// The latest version number of the launch template.
+	LatestVersionNumber pulumi.IntOutput `pulumi:"latestVersionNumber"`
 	// The name of Launch Template.
 	LaunchTemplateName pulumi.StringOutput `pulumi:"launchTemplateName"`
 	// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
@@ -271,6 +275,8 @@ type EcsLaunchTemplate struct {
 	TemplateResourceGroupId pulumi.StringPtrOutput `pulumi:"templateResourceGroupId"`
 	// A mapping of tags to assign to the launch template.
 	TemplateTags pulumi.StringMapOutput `pulumi:"templateTags"`
+	// Whether to update the default version of the launch template to the latest version automatically. It is conflict with `defaultVersionNumber`.
+	UpdateDefaultVersionNumber pulumi.BoolPtrOutput `pulumi:"updateDefaultVersionNumber"`
 	// The User Data.
 	UserData pulumi.StringOutput `pulumi:"userData"`
 	// It has been deprecated from version 1.120.0, and use field `userData` instead.
@@ -325,6 +331,8 @@ type ecsLaunchTemplateState struct {
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
 	// The list of data disks created with instance. See `dataDisks` below.
 	DataDisks []EcsLaunchTemplateDataDisk `pulumi:"dataDisks"`
+	// The version number of the default launch template version. Default to 1. It is conflict with `updateDefaultVersionNumber`.
+	DefaultVersionNumber *int `pulumi:"defaultVersionNumber"`
 	// The Deployment Set Id.
 	DeploymentSetId *string `pulumi:"deploymentSetId"`
 	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
@@ -365,6 +373,8 @@ type ecsLaunchTemplateState struct {
 	// - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
 	// - The password logon method for Linux instances is set to forbidden upon initialization.
 	KeyPairName *string `pulumi:"keyPairName"`
+	// The latest version number of the launch template.
+	LatestVersionNumber *int `pulumi:"latestVersionNumber"`
 	// The name of Launch Template.
 	LaunchTemplateName *string `pulumi:"launchTemplateName"`
 	// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
@@ -427,6 +437,8 @@ type ecsLaunchTemplateState struct {
 	TemplateResourceGroupId *string `pulumi:"templateResourceGroupId"`
 	// A mapping of tags to assign to the launch template.
 	TemplateTags map[string]string `pulumi:"templateTags"`
+	// Whether to update the default version of the launch template to the latest version automatically. It is conflict with `defaultVersionNumber`.
+	UpdateDefaultVersionNumber *bool `pulumi:"updateDefaultVersionNumber"`
 	// The User Data.
 	UserData *string `pulumi:"userData"`
 	// It has been deprecated from version 1.120.0, and use field `userData` instead.
@@ -452,6 +464,8 @@ type EcsLaunchTemplateState struct {
 	AutoRenewPeriod pulumi.IntPtrInput
 	// The list of data disks created with instance. See `dataDisks` below.
 	DataDisks EcsLaunchTemplateDataDiskArrayInput
+	// The version number of the default launch template version. Default to 1. It is conflict with `updateDefaultVersionNumber`.
+	DefaultVersionNumber pulumi.IntPtrInput
 	// The Deployment Set Id.
 	DeploymentSetId pulumi.StringPtrInput
 	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
@@ -492,6 +506,8 @@ type EcsLaunchTemplateState struct {
 	// - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
 	// - The password logon method for Linux instances is set to forbidden upon initialization.
 	KeyPairName pulumi.StringPtrInput
+	// The latest version number of the launch template.
+	LatestVersionNumber pulumi.IntPtrInput
 	// The name of Launch Template.
 	LaunchTemplateName pulumi.StringPtrInput
 	// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
@@ -554,6 +570,8 @@ type EcsLaunchTemplateState struct {
 	TemplateResourceGroupId pulumi.StringPtrInput
 	// A mapping of tags to assign to the launch template.
 	TemplateTags pulumi.StringMapInput
+	// Whether to update the default version of the launch template to the latest version automatically. It is conflict with `defaultVersionNumber`.
+	UpdateDefaultVersionNumber pulumi.BoolPtrInput
 	// The User Data.
 	UserData pulumi.StringPtrInput
 	// It has been deprecated from version 1.120.0, and use field `userData` instead.
@@ -583,6 +601,8 @@ type ecsLaunchTemplateArgs struct {
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
 	// The list of data disks created with instance. See `dataDisks` below.
 	DataDisks []EcsLaunchTemplateDataDisk `pulumi:"dataDisks"`
+	// The version number of the default launch template version. Default to 1. It is conflict with `updateDefaultVersionNumber`.
+	DefaultVersionNumber *int `pulumi:"defaultVersionNumber"`
 	// The Deployment Set Id.
 	DeploymentSetId *string `pulumi:"deploymentSetId"`
 	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
@@ -685,6 +705,8 @@ type ecsLaunchTemplateArgs struct {
 	TemplateResourceGroupId *string `pulumi:"templateResourceGroupId"`
 	// A mapping of tags to assign to the launch template.
 	TemplateTags map[string]string `pulumi:"templateTags"`
+	// Whether to update the default version of the launch template to the latest version automatically. It is conflict with `defaultVersionNumber`.
+	UpdateDefaultVersionNumber *bool `pulumi:"updateDefaultVersionNumber"`
 	// The User Data.
 	UserData *string `pulumi:"userData"`
 	// It has been deprecated from version 1.120.0, and use field `userData` instead.
@@ -711,6 +733,8 @@ type EcsLaunchTemplateArgs struct {
 	AutoRenewPeriod pulumi.IntPtrInput
 	// The list of data disks created with instance. See `dataDisks` below.
 	DataDisks EcsLaunchTemplateDataDiskArrayInput
+	// The version number of the default launch template version. Default to 1. It is conflict with `updateDefaultVersionNumber`.
+	DefaultVersionNumber pulumi.IntPtrInput
 	// The Deployment Set Id.
 	DeploymentSetId pulumi.StringPtrInput
 	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
@@ -813,6 +837,8 @@ type EcsLaunchTemplateArgs struct {
 	TemplateResourceGroupId pulumi.StringPtrInput
 	// A mapping of tags to assign to the launch template.
 	TemplateTags pulumi.StringMapInput
+	// Whether to update the default version of the launch template to the latest version automatically. It is conflict with `defaultVersionNumber`.
+	UpdateDefaultVersionNumber pulumi.BoolPtrInput
 	// The User Data.
 	UserData pulumi.StringPtrInput
 	// It has been deprecated from version 1.120.0, and use field `userData` instead.
@@ -936,6 +962,11 @@ func (o EcsLaunchTemplateOutput) DataDisks() EcsLaunchTemplateDataDiskArrayOutpu
 	return o.ApplyT(func(v *EcsLaunchTemplate) EcsLaunchTemplateDataDiskArrayOutput { return v.DataDisks }).(EcsLaunchTemplateDataDiskArrayOutput)
 }
 
+// The version number of the default launch template version. Default to 1. It is conflict with `updateDefaultVersionNumber`.
+func (o EcsLaunchTemplateOutput) DefaultVersionNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.IntOutput { return v.DefaultVersionNumber }).(pulumi.IntOutput)
+}
+
 // The Deployment Set Id.
 func (o EcsLaunchTemplateOutput) DeploymentSetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.DeploymentSetId }).(pulumi.StringPtrOutput)
@@ -1025,6 +1056,11 @@ func (o EcsLaunchTemplateOutput) IoOptimized() pulumi.StringPtrOutput {
 // - The password logon method for Linux instances is set to forbidden upon initialization.
 func (o EcsLaunchTemplateOutput) KeyPairName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.KeyPairName }).(pulumi.StringPtrOutput)
+}
+
+// The latest version number of the launch template.
+func (o EcsLaunchTemplateOutput) LatestVersionNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.IntOutput { return v.LatestVersionNumber }).(pulumi.IntOutput)
 }
 
 // The name of Launch Template.
@@ -1159,6 +1195,11 @@ func (o EcsLaunchTemplateOutput) TemplateResourceGroupId() pulumi.StringPtrOutpu
 // A mapping of tags to assign to the launch template.
 func (o EcsLaunchTemplateOutput) TemplateTags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringMapOutput { return v.TemplateTags }).(pulumi.StringMapOutput)
+}
+
+// Whether to update the default version of the launch template to the latest version automatically. It is conflict with `defaultVersionNumber`.
+func (o EcsLaunchTemplateOutput) UpdateDefaultVersionNumber() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.BoolPtrOutput { return v.UpdateDefaultVersionNumber }).(pulumi.BoolPtrOutput)
 }
 
 // The User Data.

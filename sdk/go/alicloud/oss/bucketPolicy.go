@@ -83,9 +83,7 @@ import (
 //			_, err = oss.NewBucketPolicy(ctx, "default", &oss.BucketPolicyArgs{
 //				Policy: pulumi.String(json0),
 //				Bucket: createBucket.Bucket,
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				createBucket,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}

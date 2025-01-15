@@ -20,25 +20,40 @@ __all__ = ['ServiceTopicArgs', 'ServiceTopic']
 class ServiceTopicArgs:
     def __init__(__self__, *,
                  topic_name: pulumi.Input[str],
+                 enable_logging: Optional[pulumi.Input[bool]] = None,
                  logging_enabled: Optional[pulumi.Input[bool]] = None,
-                 max_message_size: Optional[pulumi.Input[int]] = None):
+                 max_message_size: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a ServiceTopic resource.
-        :param pulumi.Input[str] topic_name: Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
-        :param pulumi.Input[bool] logging_enabled: Specifies whether to enable the log management feature. Default value: false. Valid values:
-        :param pulumi.Input[int] max_message_size: The maximum size of a message body that can be sent to the topic. Unit: bytes. Valid values: 1024-65536. Default value: 65536.
+        :param pulumi.Input[str] topic_name: The name of the topic.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
+        :param pulumi.Input[bool] enable_logging: Specifies whether to enable the logging feature. Default value: `false`. Valid values:
+        :param pulumi.Input[bool] logging_enabled: . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
+        :param pulumi.Input[int] max_message_size: The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "topic_name", topic_name)
+        if enable_logging is not None:
+            pulumi.set(__self__, "enable_logging", enable_logging)
+        if logging_enabled is not None:
+            warnings.warn("""Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.""", DeprecationWarning)
+            pulumi.log.warn("""logging_enabled is deprecated: Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.""")
         if logging_enabled is not None:
             pulumi.set(__self__, "logging_enabled", logging_enabled)
         if max_message_size is not None:
             pulumi.set(__self__, "max_message_size", max_message_size)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="topicName")
     def topic_name(self) -> pulumi.Input[str]:
         """
-        Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
+        The name of the topic.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "topic_name")
 
@@ -47,10 +62,23 @@ class ServiceTopicArgs:
         pulumi.set(self, "topic_name", value)
 
     @property
+    @pulumi.getter(name="enableLogging")
+    def enable_logging(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable the logging feature. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "enable_logging")
+
+    @enable_logging.setter
+    def enable_logging(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_logging", value)
+
+    @property
     @pulumi.getter(name="loggingEnabled")
+    @_utilities.deprecated("""Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.""")
     def logging_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to enable the log management feature. Default value: false. Valid values:
+        . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
         """
         return pulumi.get(self, "logging_enabled")
 
@@ -62,39 +90,93 @@ class ServiceTopicArgs:
     @pulumi.getter(name="maxMessageSize")
     def max_message_size(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum size of a message body that can be sent to the topic. Unit: bytes. Valid values: 1024-65536. Default value: 65536.
+        The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
         """
         return pulumi.get(self, "max_message_size")
 
     @max_message_size.setter
     def max_message_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_message_size", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _ServiceTopicState:
     def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 enable_logging: Optional[pulumi.Input[bool]] = None,
                  logging_enabled: Optional[pulumi.Input[bool]] = None,
                  max_message_size: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  topic_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServiceTopic resources.
-        :param pulumi.Input[bool] logging_enabled: Specifies whether to enable the log management feature. Default value: false. Valid values:
-        :param pulumi.Input[int] max_message_size: The maximum size of a message body that can be sent to the topic. Unit: bytes. Valid values: 1024-65536. Default value: 65536.
-        :param pulumi.Input[str] topic_name: Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
+        :param pulumi.Input[str] create_time: (Available since v1.241.0) The time when the topic was created.
+        :param pulumi.Input[bool] enable_logging: Specifies whether to enable the logging feature. Default value: `false`. Valid values:
+        :param pulumi.Input[bool] logging_enabled: . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
+        :param pulumi.Input[int] max_message_size: The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[str] topic_name: The name of the topic.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if enable_logging is not None:
+            pulumi.set(__self__, "enable_logging", enable_logging)
+        if logging_enabled is not None:
+            warnings.warn("""Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.""", DeprecationWarning)
+            pulumi.log.warn("""logging_enabled is deprecated: Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.""")
         if logging_enabled is not None:
             pulumi.set(__self__, "logging_enabled", logging_enabled)
         if max_message_size is not None:
             pulumi.set(__self__, "max_message_size", max_message_size)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if topic_name is not None:
             pulumi.set(__self__, "topic_name", topic_name)
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.241.0) The time when the topic was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="enableLogging")
+    def enable_logging(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable the logging feature. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "enable_logging")
+
+    @enable_logging.setter
+    def enable_logging(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_logging", value)
+
+    @property
     @pulumi.getter(name="loggingEnabled")
+    @_utilities.deprecated("""Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.""")
     def logging_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to enable the log management feature. Default value: false. Valid values:
+        . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
         """
         return pulumi.get(self, "logging_enabled")
 
@@ -106,7 +188,7 @@ class _ServiceTopicState:
     @pulumi.getter(name="maxMessageSize")
     def max_message_size(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum size of a message body that can be sent to the topic. Unit: bytes. Valid values: 1024-65536. Default value: 65536.
+        The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
         """
         return pulumi.get(self, "max_message_size")
 
@@ -115,10 +197,24 @@ class _ServiceTopicState:
         pulumi.set(self, "max_message_size", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="topicName")
     def topic_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
+        The name of the topic.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "topic_name")
 
@@ -132,14 +228,16 @@ class ServiceTopic(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 enable_logging: Optional[pulumi.Input[bool]] = None,
                  logging_enabled: Optional[pulumi.Input[bool]] = None,
                  max_message_size: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  topic_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Message Notification Service Topic resource.
+        Provides a Message Service Topic resource.
 
-        For information about Message Notification Service Topic and how to use it, see [What is Topic](https://www.alibabacloud.com/help/en/message-service/latest/createtopic).
+        For information about Message Service Topic and how to use it, see [What is Topic](https://www.alibabacloud.com/help/en/message-service/latest/createtopic).
 
         > **NOTE:** Available since v1.188.0.
 
@@ -154,26 +252,30 @@ class ServiceTopic(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
         default = alicloud.message.ServiceTopic("default",
             topic_name=name,
-            max_message_size=12357,
-            logging_enabled=True)
+            max_message_size=16888,
+            enable_logging=True)
         ```
 
         ## Import
 
-        Message Notification Service Topic can be imported using the id or topic_name, e.g.
+        Message Service Topic can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:message/serviceTopic:ServiceTopic example <topic_name>
+        $ pulumi import alicloud:message/serviceTopic:ServiceTopic example <id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] logging_enabled: Specifies whether to enable the log management feature. Default value: false. Valid values:
-        :param pulumi.Input[int] max_message_size: The maximum size of a message body that can be sent to the topic. Unit: bytes. Valid values: 1024-65536. Default value: 65536.
-        :param pulumi.Input[str] topic_name: Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
+        :param pulumi.Input[bool] enable_logging: Specifies whether to enable the logging feature. Default value: `false`. Valid values:
+        :param pulumi.Input[bool] logging_enabled: . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
+        :param pulumi.Input[int] max_message_size: The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[str] topic_name: The name of the topic.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         ...
     @overload
@@ -182,9 +284,9 @@ class ServiceTopic(pulumi.CustomResource):
                  args: ServiceTopicArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Message Notification Service Topic resource.
+        Provides a Message Service Topic resource.
 
-        For information about Message Notification Service Topic and how to use it, see [What is Topic](https://www.alibabacloud.com/help/en/message-service/latest/createtopic).
+        For information about Message Service Topic and how to use it, see [What is Topic](https://www.alibabacloud.com/help/en/message-service/latest/createtopic).
 
         > **NOTE:** Available since v1.188.0.
 
@@ -199,19 +301,19 @@ class ServiceTopic(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
         default = alicloud.message.ServiceTopic("default",
             topic_name=name,
-            max_message_size=12357,
-            logging_enabled=True)
+            max_message_size=16888,
+            enable_logging=True)
         ```
 
         ## Import
 
-        Message Notification Service Topic can be imported using the id or topic_name, e.g.
+        Message Service Topic can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:message/serviceTopic:ServiceTopic example <topic_name>
+        $ pulumi import alicloud:message/serviceTopic:ServiceTopic example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -229,8 +331,10 @@ class ServiceTopic(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 enable_logging: Optional[pulumi.Input[bool]] = None,
                  logging_enabled: Optional[pulumi.Input[bool]] = None,
                  max_message_size: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  topic_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -241,11 +345,14 @@ class ServiceTopic(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ServiceTopicArgs.__new__(ServiceTopicArgs)
 
+            __props__.__dict__["enable_logging"] = enable_logging
             __props__.__dict__["logging_enabled"] = logging_enabled
             __props__.__dict__["max_message_size"] = max_message_size
+            __props__.__dict__["tags"] = tags
             if topic_name is None and not opts.urn:
                 raise TypeError("Missing required property 'topic_name'")
             __props__.__dict__["topic_name"] = topic_name
+            __props__.__dict__["create_time"] = None
         super(ServiceTopic, __self__).__init__(
             'alicloud:message/serviceTopic:ServiceTopic',
             resource_name,
@@ -256,8 +363,11 @@ class ServiceTopic(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
+            enable_logging: Optional[pulumi.Input[bool]] = None,
             logging_enabled: Optional[pulumi.Input[bool]] = None,
             max_message_size: Optional[pulumi.Input[int]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             topic_name: Optional[pulumi.Input[str]] = None) -> 'ServiceTopic':
         """
         Get an existing ServiceTopic resource's state with the given name, id, and optional extra
@@ -266,24 +376,49 @@ class ServiceTopic(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] logging_enabled: Specifies whether to enable the log management feature. Default value: false. Valid values:
-        :param pulumi.Input[int] max_message_size: The maximum size of a message body that can be sent to the topic. Unit: bytes. Valid values: 1024-65536. Default value: 65536.
-        :param pulumi.Input[str] topic_name: Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
+        :param pulumi.Input[str] create_time: (Available since v1.241.0) The time when the topic was created.
+        :param pulumi.Input[bool] enable_logging: Specifies whether to enable the logging feature. Default value: `false`. Valid values:
+        :param pulumi.Input[bool] logging_enabled: . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
+        :param pulumi.Input[int] max_message_size: The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[str] topic_name: The name of the topic.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ServiceTopicState.__new__(_ServiceTopicState)
 
+        __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["enable_logging"] = enable_logging
         __props__.__dict__["logging_enabled"] = logging_enabled
         __props__.__dict__["max_message_size"] = max_message_size
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["topic_name"] = topic_name
         return ServiceTopic(resource_name, opts=opts, __props__=__props__)
 
     @property
-    @pulumi.getter(name="loggingEnabled")
-    def logging_enabled(self) -> pulumi.Output[Optional[bool]]:
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
         """
-        Specifies whether to enable the log management feature. Default value: false. Valid values:
+        (Available since v1.241.0) The time when the topic was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="enableLogging")
+    def enable_logging(self) -> pulumi.Output[bool]:
+        """
+        Specifies whether to enable the logging feature. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "enable_logging")
+
+    @property
+    @pulumi.getter(name="loggingEnabled")
+    @_utilities.deprecated("""Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.""")
+    def logging_enabled(self) -> pulumi.Output[bool]:
+        """
+        . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
         """
         return pulumi.get(self, "logging_enabled")
 
@@ -291,15 +426,25 @@ class ServiceTopic(pulumi.CustomResource):
     @pulumi.getter(name="maxMessageSize")
     def max_message_size(self) -> pulumi.Output[int]:
         """
-        The maximum size of a message body that can be sent to the topic. Unit: bytes. Valid values: 1024-65536. Default value: 65536.
+        The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
         """
         return pulumi.get(self, "max_message_size")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="topicName")
     def topic_name(self) -> pulumi.Output[str]:
         """
-        Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
+        The name of the topic.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "topic_name")
 

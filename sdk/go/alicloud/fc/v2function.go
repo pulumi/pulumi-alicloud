@@ -27,6 +27,7 @@ type V2Function struct {
 	Description             pulumi.StringPtrOutput                     `pulumi:"description"`
 	DiskSize                pulumi.IntPtrOutput                        `pulumi:"diskSize"`
 	EnvironmentVariables    pulumi.StringMapOutput                     `pulumi:"environmentVariables"`
+	FunctionArn             pulumi.StringOutput                        `pulumi:"functionArn"`
 	FunctionName            pulumi.StringOutput                        `pulumi:"functionName"`
 	GpuMemorySize           pulumi.IntPtrOutput                        `pulumi:"gpuMemorySize"`
 	Handler                 pulumi.StringOutput                        `pulumi:"handler"`
@@ -96,6 +97,7 @@ type v2functionState struct {
 	Description             *string                            `pulumi:"description"`
 	DiskSize                *int                               `pulumi:"diskSize"`
 	EnvironmentVariables    map[string]string                  `pulumi:"environmentVariables"`
+	FunctionArn             *string                            `pulumi:"functionArn"`
 	FunctionName            *string                            `pulumi:"functionName"`
 	GpuMemorySize           *int                               `pulumi:"gpuMemorySize"`
 	Handler                 *string                            `pulumi:"handler"`
@@ -124,6 +126,7 @@ type V2FunctionState struct {
 	Description             pulumi.StringPtrInput
 	DiskSize                pulumi.IntPtrInput
 	EnvironmentVariables    pulumi.StringMapInput
+	FunctionArn             pulumi.StringPtrInput
 	FunctionName            pulumi.StringPtrInput
 	GpuMemorySize           pulumi.IntPtrInput
 	Handler                 pulumi.StringPtrInput
@@ -331,6 +334,10 @@ func (o V2FunctionOutput) DiskSize() pulumi.IntPtrOutput {
 
 func (o V2FunctionOutput) EnvironmentVariables() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *V2Function) pulumi.StringMapOutput { return v.EnvironmentVariables }).(pulumi.StringMapOutput)
+}
+
+func (o V2FunctionOutput) FunctionArn() pulumi.StringOutput {
+	return o.ApplyT(func(v *V2Function) pulumi.StringOutput { return v.FunctionArn }).(pulumi.StringOutput)
 }
 
 func (o V2FunctionOutput) FunctionName() pulumi.StringOutput {

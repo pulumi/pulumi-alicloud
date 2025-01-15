@@ -18,6 +18,21 @@ public final class OidcProviderState extends com.pulumi.resources.ResourceArgs {
     public static final OidcProviderState Empty = new OidcProviderState();
 
     /**
+     * The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+     * 
+     */
+    @Import(name="arn")
+    private @Nullable Output<String> arn;
+
+    /**
+     * @return The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+     * 
+     */
+    public Optional<Output<String>> arn() {
+        return Optional.ofNullable(this.arn);
+    }
+
+    /**
      * Client ID.
      * 
      */
@@ -125,6 +140,7 @@ public final class OidcProviderState extends com.pulumi.resources.ResourceArgs {
     private OidcProviderState() {}
 
     private OidcProviderState(OidcProviderState $) {
+        this.arn = $.arn;
         this.clientIds = $.clientIds;
         this.createTime = $.createTime;
         this.description = $.description;
@@ -150,6 +166,27 @@ public final class OidcProviderState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(OidcProviderState defaults) {
             $ = new OidcProviderState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param arn The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder arn(@Nullable Output<String> arn) {
+            $.arn = arn;
+            return this;
+        }
+
+        /**
+         * @param arn The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder arn(String arn) {
+            return arn(Output.of(arn));
         }
 
         /**

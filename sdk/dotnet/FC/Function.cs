@@ -180,7 +180,13 @@ namespace Pulumi.AliCloud.FC
         public Output<string?> Filename { get; private set; } = null!;
 
         /// <summary>
-        /// The Function Compute service ID.
+        /// The Function Compute service function arn. It formats as `acs:fc:&lt;region&gt;:&lt;uid&gt;:services/&lt;serviceName&gt;.LATEST/functions/&lt;functionName&gt;`.
+        /// </summary>
+        [Output("functionArn")]
+        public Output<string> FunctionArn { get; private set; } = null!;
+
+        /// <summary>
+        /// The Function Compute service function ID.
         /// </summary>
         [Output("functionId")]
         public Output<string> FunctionId { get; private set; } = null!;
@@ -506,7 +512,13 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? Filename { get; set; }
 
         /// <summary>
-        /// The Function Compute service ID.
+        /// The Function Compute service function arn. It formats as `acs:fc:&lt;region&gt;:&lt;uid&gt;:services/&lt;serviceName&gt;.LATEST/functions/&lt;functionName&gt;`.
+        /// </summary>
+        [Input("functionArn")]
+        public Input<string>? FunctionArn { get; set; }
+
+        /// <summary>
+        /// The Function Compute service function ID.
         /// </summary>
         [Input("functionId")]
         public Input<string>? FunctionId { get; set; }

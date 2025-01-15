@@ -201,7 +201,7 @@ export class Alarm extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The information about the resource for which alerts are triggered. See `targets` below.
+     * Adds or modifies the push channels of an alert rule. See `targets` below.
      */
     public readonly targets!: pulumi.Output<outputs.cms.AlarmTarget[]>;
     /**
@@ -369,7 +369,7 @@ export interface AlarmState {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The information about the resource for which alerts are triggered. See `targets` below.
+     * Adds or modifies the push channels of an alert rule. See `targets` below.
      */
     targets?: pulumi.Input<pulumi.Input<inputs.cms.AlarmTarget>[]>;
     /**
@@ -462,7 +462,7 @@ export interface AlarmArgs {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The information about the resource for which alerts are triggered. See `targets` below.
+     * Adds or modifies the push channels of an alert rule. See `targets` below.
      */
     targets?: pulumi.Input<pulumi.Input<inputs.cms.AlarmTarget>[]>;
     /**

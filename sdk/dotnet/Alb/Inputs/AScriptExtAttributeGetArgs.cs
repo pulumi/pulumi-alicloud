@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.Alb.Inputs
     public sealed class AScriptExtAttributeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The key of the extended attribute.
+        /// Key to extend attribute
         /// </summary>
         [Input("attributeKey")]
         public Input<string>? AttributeKey { get; set; }
 
         /// <summary>
-        /// The value of the extended attribute.
+        /// The value of the extended attribute
         /// </summary>
         [Input("attributeValue")]
         public Input<string>? AttributeValue { get; set; }

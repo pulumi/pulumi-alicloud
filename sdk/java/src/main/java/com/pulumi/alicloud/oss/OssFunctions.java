@@ -253,6 +253,8 @@ public final class OssFunctions {
     /**
      * This data source provides the OSS buckets of the current Alibaba Cloud user.
      * 
+     * &gt; **NOTE:** Available since v1.17.0.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -263,6 +265,10 @@ public final class OssFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.oss.Bucket;
+     * import com.pulumi.alicloud.oss.BucketArgs;
      * import com.pulumi.alicloud.oss.OssFunctions;
      * import com.pulumi.alicloud.oss.inputs.GetBucketsArgs;
      * import java.util.List;
@@ -278,11 +284,20 @@ public final class OssFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ossBucketsDs = OssFunctions.getBuckets(GetBucketsArgs.builder()
-     *             .nameRegex("sample_oss_bucket")
+     *         var default_ = new Integer("default", IntegerArgs.builder()
+     *             .max(99999)
+     *             .min(10000)
      *             .build());
      * 
-     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult.buckets()[0].name()));
+     *         var bucket = new Bucket("bucket", BucketArgs.builder()
+     *             .bucket(String.format("oss-tf-example-%s", default_.result()))
+     *             .build());
+     * 
+     *         final var ossBucketsDs = OssFunctions.getBuckets(GetBucketsArgs.builder()
+     *             .nameRegex(bucket.bucket())
+     *             .build());
+     * 
+     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult).applyValue(ossBucketsDs -> ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult.buckets()[0].name())));
      *     }
      * }
      * }
@@ -296,6 +311,8 @@ public final class OssFunctions {
     /**
      * This data source provides the OSS buckets of the current Alibaba Cloud user.
      * 
+     * &gt; **NOTE:** Available since v1.17.0.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -306,6 +323,10 @@ public final class OssFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.oss.Bucket;
+     * import com.pulumi.alicloud.oss.BucketArgs;
      * import com.pulumi.alicloud.oss.OssFunctions;
      * import com.pulumi.alicloud.oss.inputs.GetBucketsArgs;
      * import java.util.List;
@@ -321,11 +342,20 @@ public final class OssFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ossBucketsDs = OssFunctions.getBuckets(GetBucketsArgs.builder()
-     *             .nameRegex("sample_oss_bucket")
+     *         var default_ = new Integer("default", IntegerArgs.builder()
+     *             .max(99999)
+     *             .min(10000)
      *             .build());
      * 
-     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult.buckets()[0].name()));
+     *         var bucket = new Bucket("bucket", BucketArgs.builder()
+     *             .bucket(String.format("oss-tf-example-%s", default_.result()))
+     *             .build());
+     * 
+     *         final var ossBucketsDs = OssFunctions.getBuckets(GetBucketsArgs.builder()
+     *             .nameRegex(bucket.bucket())
+     *             .build());
+     * 
+     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult).applyValue(ossBucketsDs -> ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult.buckets()[0].name())));
      *     }
      * }
      * }
@@ -339,6 +369,8 @@ public final class OssFunctions {
     /**
      * This data source provides the OSS buckets of the current Alibaba Cloud user.
      * 
+     * &gt; **NOTE:** Available since v1.17.0.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -349,6 +381,10 @@ public final class OssFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.oss.Bucket;
+     * import com.pulumi.alicloud.oss.BucketArgs;
      * import com.pulumi.alicloud.oss.OssFunctions;
      * import com.pulumi.alicloud.oss.inputs.GetBucketsArgs;
      * import java.util.List;
@@ -364,11 +400,20 @@ public final class OssFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ossBucketsDs = OssFunctions.getBuckets(GetBucketsArgs.builder()
-     *             .nameRegex("sample_oss_bucket")
+     *         var default_ = new Integer("default", IntegerArgs.builder()
+     *             .max(99999)
+     *             .min(10000)
      *             .build());
      * 
-     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult.buckets()[0].name()));
+     *         var bucket = new Bucket("bucket", BucketArgs.builder()
+     *             .bucket(String.format("oss-tf-example-%s", default_.result()))
+     *             .build());
+     * 
+     *         final var ossBucketsDs = OssFunctions.getBuckets(GetBucketsArgs.builder()
+     *             .nameRegex(bucket.bucket())
+     *             .build());
+     * 
+     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult).applyValue(ossBucketsDs -> ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult.buckets()[0].name())));
      *     }
      * }
      * }
@@ -382,6 +427,8 @@ public final class OssFunctions {
     /**
      * This data source provides the OSS buckets of the current Alibaba Cloud user.
      * 
+     * &gt; **NOTE:** Available since v1.17.0.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -392,6 +439,10 @@ public final class OssFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.oss.Bucket;
+     * import com.pulumi.alicloud.oss.BucketArgs;
      * import com.pulumi.alicloud.oss.OssFunctions;
      * import com.pulumi.alicloud.oss.inputs.GetBucketsArgs;
      * import java.util.List;
@@ -407,11 +458,20 @@ public final class OssFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ossBucketsDs = OssFunctions.getBuckets(GetBucketsArgs.builder()
-     *             .nameRegex("sample_oss_bucket")
+     *         var default_ = new Integer("default", IntegerArgs.builder()
+     *             .max(99999)
+     *             .min(10000)
      *             .build());
      * 
-     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult.buckets()[0].name()));
+     *         var bucket = new Bucket("bucket", BucketArgs.builder()
+     *             .bucket(String.format("oss-tf-example-%s", default_.result()))
+     *             .build());
+     * 
+     *         final var ossBucketsDs = OssFunctions.getBuckets(GetBucketsArgs.builder()
+     *             .nameRegex(bucket.bucket())
+     *             .build());
+     * 
+     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult).applyValue(ossBucketsDs -> ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult.buckets()[0].name())));
      *     }
      * }
      * }
@@ -425,6 +485,8 @@ public final class OssFunctions {
     /**
      * This data source provides the OSS buckets of the current Alibaba Cloud user.
      * 
+     * &gt; **NOTE:** Available since v1.17.0.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -435,6 +497,10 @@ public final class OssFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.oss.Bucket;
+     * import com.pulumi.alicloud.oss.BucketArgs;
      * import com.pulumi.alicloud.oss.OssFunctions;
      * import com.pulumi.alicloud.oss.inputs.GetBucketsArgs;
      * import java.util.List;
@@ -450,11 +516,20 @@ public final class OssFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ossBucketsDs = OssFunctions.getBuckets(GetBucketsArgs.builder()
-     *             .nameRegex("sample_oss_bucket")
+     *         var default_ = new Integer("default", IntegerArgs.builder()
+     *             .max(99999)
+     *             .min(10000)
      *             .build());
      * 
-     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult.buckets()[0].name()));
+     *         var bucket = new Bucket("bucket", BucketArgs.builder()
+     *             .bucket(String.format("oss-tf-example-%s", default_.result()))
+     *             .build());
+     * 
+     *         final var ossBucketsDs = OssFunctions.getBuckets(GetBucketsArgs.builder()
+     *             .nameRegex(bucket.bucket())
+     *             .build());
+     * 
+     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult).applyValue(ossBucketsDs -> ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult.buckets()[0].name())));
      *     }
      * }
      * }
@@ -468,6 +543,8 @@ public final class OssFunctions {
     /**
      * This data source provides the OSS buckets of the current Alibaba Cloud user.
      * 
+     * &gt; **NOTE:** Available since v1.17.0.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -478,6 +555,10 @@ public final class OssFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.oss.Bucket;
+     * import com.pulumi.alicloud.oss.BucketArgs;
      * import com.pulumi.alicloud.oss.OssFunctions;
      * import com.pulumi.alicloud.oss.inputs.GetBucketsArgs;
      * import java.util.List;
@@ -493,11 +574,20 @@ public final class OssFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ossBucketsDs = OssFunctions.getBuckets(GetBucketsArgs.builder()
-     *             .nameRegex("sample_oss_bucket")
+     *         var default_ = new Integer("default", IntegerArgs.builder()
+     *             .max(99999)
+     *             .min(10000)
      *             .build());
      * 
-     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult.buckets()[0].name()));
+     *         var bucket = new Bucket("bucket", BucketArgs.builder()
+     *             .bucket(String.format("oss-tf-example-%s", default_.result()))
+     *             .build());
+     * 
+     *         final var ossBucketsDs = OssFunctions.getBuckets(GetBucketsArgs.builder()
+     *             .nameRegex(bucket.bucket())
+     *             .build());
+     * 
+     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult).applyValue(ossBucketsDs -> ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult.buckets()[0].name())));
      *     }
      * }
      * }
@@ -511,6 +601,8 @@ public final class OssFunctions {
     /**
      * This data source provides the OSS buckets of the current Alibaba Cloud user.
      * 
+     * &gt; **NOTE:** Available since v1.17.0.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -521,6 +613,10 @@ public final class OssFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.oss.Bucket;
+     * import com.pulumi.alicloud.oss.BucketArgs;
      * import com.pulumi.alicloud.oss.OssFunctions;
      * import com.pulumi.alicloud.oss.inputs.GetBucketsArgs;
      * import java.util.List;
@@ -536,11 +632,20 @@ public final class OssFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ossBucketsDs = OssFunctions.getBuckets(GetBucketsArgs.builder()
-     *             .nameRegex("sample_oss_bucket")
+     *         var default_ = new Integer("default", IntegerArgs.builder()
+     *             .max(99999)
+     *             .min(10000)
      *             .build());
      * 
-     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult.buckets()[0].name()));
+     *         var bucket = new Bucket("bucket", BucketArgs.builder()
+     *             .bucket(String.format("oss-tf-example-%s", default_.result()))
+     *             .build());
+     * 
+     *         final var ossBucketsDs = OssFunctions.getBuckets(GetBucketsArgs.builder()
+     *             .nameRegex(bucket.bucket())
+     *             .build());
+     * 
+     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult).applyValue(ossBucketsDs -> ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult.buckets()[0].name())));
      *     }
      * }
      * }

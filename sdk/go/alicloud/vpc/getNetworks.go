@@ -88,7 +88,8 @@ type GetNetworksArgs struct {
 // A collection of values returned by getNetworks.
 type GetNetworksResult struct {
 	// CIDR block of the VPC.
-	CidrBlock        *string `pulumi:"cidrBlock"`
+	CidrBlock *string `pulumi:"cidrBlock"`
+	// The ID of the DHCP options set.
 	DhcpOptionsSetId *string `pulumi:"dhcpOptionsSetId"`
 	DryRun           *bool   `pulumi:"dryRun"`
 	EnableDetails    *bool   `pulumi:"enableDetails"`
@@ -185,6 +186,7 @@ func (o GetNetworksResultOutput) CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNetworksResult) *string { return v.CidrBlock }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the DHCP options set.
 func (o GetNetworksResultOutput) DhcpOptionsSetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNetworksResult) *string { return v.DhcpOptionsSetId }).(pulumi.StringPtrOutput)
 }

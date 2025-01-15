@@ -237,6 +237,20 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dataDisks);
     }
     /**
+     * The version number of the default launch template version. Default to 1. It is conflict with `update_default_version_number`.
+     * 
+     */
+    @Export(name="defaultVersionNumber", refs={Integer.class}, tree="[0]")
+    private Output<Integer> defaultVersionNumber;
+
+    /**
+     * @return The version number of the default launch template version. Default to 1. It is conflict with `update_default_version_number`.
+     * 
+     */
+    public Output<Integer> defaultVersionNumber() {
+        return this.defaultVersionNumber;
+    }
+    /**
      * The Deployment Set Id.
      * 
      */
@@ -485,6 +499,20 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> keyPairName() {
         return Codegen.optional(this.keyPairName);
+    }
+    /**
+     * The latest version number of the launch template.
+     * 
+     */
+    @Export(name="latestVersionNumber", refs={Integer.class}, tree="[0]")
+    private Output<Integer> latestVersionNumber;
+
+    /**
+     * @return The latest version number of the launch template.
+     * 
+     */
+    public Output<Integer> latestVersionNumber() {
+        return this.latestVersionNumber;
     }
     /**
      * The name of Launch Template.
@@ -849,6 +877,20 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,String>>> templateTags() {
         return Codegen.optional(this.templateTags);
+    }
+    /**
+     * Whether to update the default version of the launch template to the latest version automatically. It is conflict with `default_version_number`.
+     * 
+     */
+    @Export(name="updateDefaultVersionNumber", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> updateDefaultVersionNumber;
+
+    /**
+     * @return Whether to update the default version of the launch template to the latest version automatically. It is conflict with `default_version_number`.
+     * 
+     */
+    public Output<Optional<Boolean>> updateDefaultVersionNumber() {
+        return Codegen.optional(this.updateDefaultVersionNumber);
     }
     /**
      * The User Data.

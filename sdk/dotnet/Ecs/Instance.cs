@@ -334,7 +334,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<int> Ipv6AddressCount { get; private set; } = null!;
 
         /// <summary>
-        /// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+        /// A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6_addresses` can be modified.
         /// </summary>
         [Output("ipv6Addresses")]
         public Output<ImmutableArray<string>> Ipv6Addresses { get; private set; } = null!;
@@ -951,7 +951,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _ipv6Addresses;
 
         /// <summary>
-        /// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+        /// A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6_addresses` can be modified.
         /// </summary>
         public InputList<string> Ipv6Addresses
         {
@@ -1545,7 +1545,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _ipv6Addresses;
 
         /// <summary>
-        /// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+        /// A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6_addresses` can be modified.
         /// </summary>
         public InputList<string> Ipv6Addresses
         {

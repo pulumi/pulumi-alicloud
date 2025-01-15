@@ -13,11 +13,1258 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
 
 __all__ = [
+    'DiAlarmRuleNotificationSettings',
+    'DiAlarmRuleNotificationSettingsNotificationChannel',
+    'DiAlarmRuleNotificationSettingsNotificationReceiver',
+    'DiAlarmRuleTriggerCondition',
+    'DiJobDestinationDataSourceSetting',
+    'DiJobJobSettings',
+    'DiJobJobSettingsColumnDataTypeSetting',
+    'DiJobJobSettingsCycleScheduleSettings',
+    'DiJobJobSettingsDdlHandlingSetting',
+    'DiJobJobSettingsRuntimeSetting',
+    'DiJobResourceSettings',
+    'DiJobResourceSettingsOfflineResourceSettings',
+    'DiJobResourceSettingsRealtimeResourceSettings',
+    'DiJobResourceSettingsScheduleResourceSettings',
+    'DiJobSourceDataSourceSetting',
+    'DiJobSourceDataSourceSettingDataSourceProperties',
+    'DiJobTableMapping',
+    'DiJobTableMappingSourceObjectSelectionRule',
+    'DiJobTableMappingTransformationRule',
+    'DiJobTransformationRule',
     'ProjectMemberRole',
     'GetFoldersFolderResult',
 ]
+
+@pulumi.output_type
+class DiAlarmRuleNotificationSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "inhibitionInterval":
+            suggest = "inhibition_interval"
+        elif key == "notificationChannels":
+            suggest = "notification_channels"
+        elif key == "notificationReceivers":
+            suggest = "notification_receivers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DiAlarmRuleNotificationSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DiAlarmRuleNotificationSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DiAlarmRuleNotificationSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 inhibition_interval: Optional[int] = None,
+                 notification_channels: Optional[Sequence['outputs.DiAlarmRuleNotificationSettingsNotificationChannel']] = None,
+                 notification_receivers: Optional[Sequence['outputs.DiAlarmRuleNotificationSettingsNotificationReceiver']] = None):
+        """
+        :param int inhibition_interval: Alarm suppression interval, in minutes
+        :param Sequence['DiAlarmRuleNotificationSettingsNotificationChannelArgs'] notification_channels: Alarm notification Channel See `notification_channels` below.
+        :param Sequence['DiAlarmRuleNotificationSettingsNotificationReceiverArgs'] notification_receivers: List of alert notification recipients See `notification_receivers` below.
+        """
+        if inhibition_interval is not None:
+            pulumi.set(__self__, "inhibition_interval", inhibition_interval)
+        if notification_channels is not None:
+            pulumi.set(__self__, "notification_channels", notification_channels)
+        if notification_receivers is not None:
+            pulumi.set(__self__, "notification_receivers", notification_receivers)
+
+    @property
+    @pulumi.getter(name="inhibitionInterval")
+    def inhibition_interval(self) -> Optional[int]:
+        """
+        Alarm suppression interval, in minutes
+        """
+        return pulumi.get(self, "inhibition_interval")
+
+    @property
+    @pulumi.getter(name="notificationChannels")
+    def notification_channels(self) -> Optional[Sequence['outputs.DiAlarmRuleNotificationSettingsNotificationChannel']]:
+        """
+        Alarm notification Channel See `notification_channels` below.
+        """
+        return pulumi.get(self, "notification_channels")
+
+    @property
+    @pulumi.getter(name="notificationReceivers")
+    def notification_receivers(self) -> Optional[Sequence['outputs.DiAlarmRuleNotificationSettingsNotificationReceiver']]:
+        """
+        List of alert notification recipients See `notification_receivers` below.
+        """
+        return pulumi.get(self, "notification_receivers")
+
+
+@pulumi.output_type
+class DiAlarmRuleNotificationSettingsNotificationChannel(dict):
+    def __init__(__self__, *,
+                 channels: Optional[Sequence[str]] = None,
+                 severity: Optional[str] = None):
+        """
+        :param Sequence[str] channels: Channel, optional enumeration value:
+               
+               Mail (Mail)
+               
+               Phone (Phone)
+               
+               Sms (Sms)
+               
+               Ding (DingTalk)
+        """
+        if channels is not None:
+            pulumi.set(__self__, "channels", channels)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
+
+    @property
+    @pulumi.getter
+    def channels(self) -> Optional[Sequence[str]]:
+        """
+        Channel, optional enumeration value:
+
+        Mail (Mail)
+
+        Phone (Phone)
+
+        Sms (Sms)
+
+        Ding (DingTalk)
+        """
+        return pulumi.get(self, "channels")
+
+    @property
+    @pulumi.getter
+    def severity(self) -> Optional[str]:
+        return pulumi.get(self, "severity")
+
+
+@pulumi.output_type
+class DiAlarmRuleNotificationSettingsNotificationReceiver(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "receiverType":
+            suggest = "receiver_type"
+        elif key == "receiverValues":
+            suggest = "receiver_values"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DiAlarmRuleNotificationSettingsNotificationReceiver. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DiAlarmRuleNotificationSettingsNotificationReceiver.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DiAlarmRuleNotificationSettingsNotificationReceiver.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 receiver_type: Optional[str] = None,
+                 receiver_values: Optional[Sequence[str]] = None):
+        """
+        :param str receiver_type: The type of the receiver. Valid values: AliyunUid/DingToken/FeishuToken/WebHookUrl.
+        :param Sequence[str] receiver_values: Receiver Value List
+        """
+        if receiver_type is not None:
+            pulumi.set(__self__, "receiver_type", receiver_type)
+        if receiver_values is not None:
+            pulumi.set(__self__, "receiver_values", receiver_values)
+
+    @property
+    @pulumi.getter(name="receiverType")
+    def receiver_type(self) -> Optional[str]:
+        """
+        The type of the receiver. Valid values: AliyunUid/DingToken/FeishuToken/WebHookUrl.
+        """
+        return pulumi.get(self, "receiver_type")
+
+    @property
+    @pulumi.getter(name="receiverValues")
+    def receiver_values(self) -> Optional[Sequence[str]]:
+        """
+        Receiver Value List
+        """
+        return pulumi.get(self, "receiver_values")
+
+
+@pulumi.output_type
+class DiAlarmRuleTriggerCondition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ddlReportTags":
+            suggest = "ddl_report_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DiAlarmRuleTriggerCondition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DiAlarmRuleTriggerCondition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DiAlarmRuleTriggerCondition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ddl_report_tags: Optional[Sequence[str]] = None,
+                 duration: Optional[int] = None,
+                 severity: Optional[str] = None,
+                 threshold: Optional[int] = None):
+        """
+        :param Sequence[str] ddl_report_tags: It takes effect only when the DDL notification is issued. The list of effective DDLs is required.
+        :param int duration: Alarm calculation time interval, unit minute
+        :param str severity: Severity, optional enumeration value:
+               
+               Warning
+               
+               Critical
+        :param int threshold: Alarm threshold.
+               
+               Task status alarm: no need to fill in the threshold.
+               
+               failover alarm: The threshold is the number of failover alarms.
+               
+               Task Delay Alarm: The threshold is the delay duration, in seconds.
+        """
+        if ddl_report_tags is not None:
+            pulumi.set(__self__, "ddl_report_tags", ddl_report_tags)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+
+    @property
+    @pulumi.getter(name="ddlReportTags")
+    def ddl_report_tags(self) -> Optional[Sequence[str]]:
+        """
+        It takes effect only when the DDL notification is issued. The list of effective DDLs is required.
+        """
+        return pulumi.get(self, "ddl_report_tags")
+
+    @property
+    @pulumi.getter
+    def duration(self) -> Optional[int]:
+        """
+        Alarm calculation time interval, unit minute
+        """
+        return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter
+    def severity(self) -> Optional[str]:
+        """
+        Severity, optional enumeration value:
+
+        Warning
+
+        Critical
+        """
+        return pulumi.get(self, "severity")
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional[int]:
+        """
+        Alarm threshold.
+
+        Task status alarm: no need to fill in the threshold.
+
+        failover alarm: The threshold is the number of failover alarms.
+
+        Task Delay Alarm: The threshold is the delay duration, in seconds.
+        """
+        return pulumi.get(self, "threshold")
+
+
+@pulumi.output_type
+class DiJobDestinationDataSourceSetting(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataSourceName":
+            suggest = "data_source_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DiJobDestinationDataSourceSetting. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DiJobDestinationDataSourceSetting.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DiJobDestinationDataSourceSetting.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data_source_name: Optional[str] = None):
+        """
+        :param str data_source_name: Destination data source name
+        """
+        if data_source_name is not None:
+            pulumi.set(__self__, "data_source_name", data_source_name)
+
+    @property
+    @pulumi.getter(name="dataSourceName")
+    def data_source_name(self) -> Optional[str]:
+        """
+        Destination data source name
+        """
+        return pulumi.get(self, "data_source_name")
+
+
+@pulumi.output_type
+class DiJobJobSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "channelSettings":
+            suggest = "channel_settings"
+        elif key == "columnDataTypeSettings":
+            suggest = "column_data_type_settings"
+        elif key == "cycleScheduleSettings":
+            suggest = "cycle_schedule_settings"
+        elif key == "ddlHandlingSettings":
+            suggest = "ddl_handling_settings"
+        elif key == "runtimeSettings":
+            suggest = "runtime_settings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DiJobJobSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DiJobJobSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DiJobJobSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 channel_settings: Optional[str] = None,
+                 column_data_type_settings: Optional[Sequence['outputs.DiJobJobSettingsColumnDataTypeSetting']] = None,
+                 cycle_schedule_settings: Optional['outputs.DiJobJobSettingsCycleScheduleSettings'] = None,
+                 ddl_handling_settings: Optional[Sequence['outputs.DiJobJobSettingsDdlHandlingSetting']] = None,
+                 runtime_settings: Optional[Sequence['outputs.DiJobJobSettingsRuntimeSetting']] = None):
+        """
+        :param str channel_settings: Channel-related task settings, in the form of a Json String.
+               
+               For example,
+               {"structInfo":"MANAGED","storageType":"TEXTFILE","writeMode":"APPEND","partitionColumns":[{"columnName":"pt","columnType":"STRING","comment":""}],"fieldDelimiter":""}
+        :param Sequence['DiJobJobSettingsColumnDataTypeSettingArgs'] column_data_type_settings: Column type mapping of the synchronization task See `column_data_type_settings` below.
+        :param 'DiJobJobSettingsCycleScheduleSettingsArgs' cycle_schedule_settings: Periodic scheduling settings See `cycle_schedule_settings` below.
+        :param Sequence['DiJobJobSettingsDdlHandlingSettingArgs'] ddl_handling_settings: List of DDL processing settings for synchronization tasks See `ddl_handling_settings` below.
+        :param Sequence['DiJobJobSettingsRuntimeSettingArgs'] runtime_settings: Run-time setting parameter list See `runtime_settings` below.
+        """
+        if channel_settings is not None:
+            pulumi.set(__self__, "channel_settings", channel_settings)
+        if column_data_type_settings is not None:
+            pulumi.set(__self__, "column_data_type_settings", column_data_type_settings)
+        if cycle_schedule_settings is not None:
+            pulumi.set(__self__, "cycle_schedule_settings", cycle_schedule_settings)
+        if ddl_handling_settings is not None:
+            pulumi.set(__self__, "ddl_handling_settings", ddl_handling_settings)
+        if runtime_settings is not None:
+            pulumi.set(__self__, "runtime_settings", runtime_settings)
+
+    @property
+    @pulumi.getter(name="channelSettings")
+    def channel_settings(self) -> Optional[str]:
+        """
+        Channel-related task settings, in the form of a Json String.
+
+        For example,
+        {"structInfo":"MANAGED","storageType":"TEXTFILE","writeMode":"APPEND","partitionColumns":[{"columnName":"pt","columnType":"STRING","comment":""}],"fieldDelimiter":""}
+        """
+        return pulumi.get(self, "channel_settings")
+
+    @property
+    @pulumi.getter(name="columnDataTypeSettings")
+    def column_data_type_settings(self) -> Optional[Sequence['outputs.DiJobJobSettingsColumnDataTypeSetting']]:
+        """
+        Column type mapping of the synchronization task See `column_data_type_settings` below.
+        """
+        return pulumi.get(self, "column_data_type_settings")
+
+    @property
+    @pulumi.getter(name="cycleScheduleSettings")
+    def cycle_schedule_settings(self) -> Optional['outputs.DiJobJobSettingsCycleScheduleSettings']:
+        """
+        Periodic scheduling settings See `cycle_schedule_settings` below.
+        """
+        return pulumi.get(self, "cycle_schedule_settings")
+
+    @property
+    @pulumi.getter(name="ddlHandlingSettings")
+    def ddl_handling_settings(self) -> Optional[Sequence['outputs.DiJobJobSettingsDdlHandlingSetting']]:
+        """
+        List of DDL processing settings for synchronization tasks See `ddl_handling_settings` below.
+        """
+        return pulumi.get(self, "ddl_handling_settings")
+
+    @property
+    @pulumi.getter(name="runtimeSettings")
+    def runtime_settings(self) -> Optional[Sequence['outputs.DiJobJobSettingsRuntimeSetting']]:
+        """
+        Run-time setting parameter list See `runtime_settings` below.
+        """
+        return pulumi.get(self, "runtime_settings")
+
+
+@pulumi.output_type
+class DiJobJobSettingsColumnDataTypeSetting(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "destinationDataType":
+            suggest = "destination_data_type"
+        elif key == "sourceDataType":
+            suggest = "source_data_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DiJobJobSettingsColumnDataTypeSetting. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DiJobJobSettingsColumnDataTypeSetting.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DiJobJobSettingsColumnDataTypeSetting.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 destination_data_type: Optional[str] = None,
+                 source_data_type: Optional[str] = None):
+        """
+        :param str destination_data_type: The destination type of the mapping relationship
+        :param str source_data_type: The source type of the mapping type
+        """
+        if destination_data_type is not None:
+            pulumi.set(__self__, "destination_data_type", destination_data_type)
+        if source_data_type is not None:
+            pulumi.set(__self__, "source_data_type", source_data_type)
+
+    @property
+    @pulumi.getter(name="destinationDataType")
+    def destination_data_type(self) -> Optional[str]:
+        """
+        The destination type of the mapping relationship
+        """
+        return pulumi.get(self, "destination_data_type")
+
+    @property
+    @pulumi.getter(name="sourceDataType")
+    def source_data_type(self) -> Optional[str]:
+        """
+        The source type of the mapping type
+        """
+        return pulumi.get(self, "source_data_type")
+
+
+@pulumi.output_type
+class DiJobJobSettingsCycleScheduleSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cycleMigrationType":
+            suggest = "cycle_migration_type"
+        elif key == "scheduleParameters":
+            suggest = "schedule_parameters"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DiJobJobSettingsCycleScheduleSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DiJobJobSettingsCycleScheduleSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DiJobJobSettingsCycleScheduleSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cycle_migration_type: Optional[str] = None,
+                 schedule_parameters: Optional[str] = None):
+        """
+        :param str cycle_migration_type: The type of synchronization that requires periodic scheduling. Value range:
+               
+               Full: Full
+               
+               OfflineIncremental: offline increment
+        :param str schedule_parameters: Scheduling Parameters
+        """
+        if cycle_migration_type is not None:
+            pulumi.set(__self__, "cycle_migration_type", cycle_migration_type)
+        if schedule_parameters is not None:
+            pulumi.set(__self__, "schedule_parameters", schedule_parameters)
+
+    @property
+    @pulumi.getter(name="cycleMigrationType")
+    def cycle_migration_type(self) -> Optional[str]:
+        """
+        The type of synchronization that requires periodic scheduling. Value range:
+
+        Full: Full
+
+        OfflineIncremental: offline increment
+        """
+        return pulumi.get(self, "cycle_migration_type")
+
+    @property
+    @pulumi.getter(name="scheduleParameters")
+    def schedule_parameters(self) -> Optional[str]:
+        """
+        Scheduling Parameters
+        """
+        return pulumi.get(self, "schedule_parameters")
+
+
+@pulumi.output_type
+class DiJobJobSettingsDdlHandlingSetting(dict):
+    def __init__(__self__, *,
+                 action: Optional[str] = None,
+                 type: Optional[str] = None):
+        """
+        :param str type: DDL type, optional enumeration value:
+               
+               RenameColumn (rename column)
+               
+               ModifyColumn (rename column)
+               
+               CreateTable (Rename Column)
+               
+               TruncateTable (empty table)
+               
+               DropTable (delete table)
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[str]:
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        DDL type, optional enumeration value:
+
+        RenameColumn (rename column)
+
+        ModifyColumn (rename column)
+
+        CreateTable (Rename Column)
+
+        TruncateTable (empty table)
+
+        DropTable (delete table)
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class DiJobJobSettingsRuntimeSetting(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str name: Set name, optional ENUM value:
+               
+               runtime.offline.speed.limit.mb (valid when runtime.offline.speed.limit.enable = true)
+               
+               runtime.offline.speed.limit.enable
+               
+               dst.offline.connection.max (the maximum number of write connections for offline batch tasks)
+               
+               runtime.offline.concurrent (offline batch synchronization task concurrency)
+               
+               dst.realtime.connection.max (maximum number of write connections for real-time tasks)
+               
+               runtime.enable.auto.create.schema (whether to automatically create a schema on the target side)
+               
+               src.offline.datasource.max.connection (maximum number of source connections for offline batch tasks)
+               
+               runtime.realtime.concurrent (real-time task concurrency)
+        :param str value: Runtime setting value
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Set name, optional ENUM value:
+
+        runtime.offline.speed.limit.mb (valid when runtime.offline.speed.limit.enable = true)
+
+        runtime.offline.speed.limit.enable
+
+        dst.offline.connection.max (the maximum number of write connections for offline batch tasks)
+
+        runtime.offline.concurrent (offline batch synchronization task concurrency)
+
+        dst.realtime.connection.max (maximum number of write connections for real-time tasks)
+
+        runtime.enable.auto.create.schema (whether to automatically create a schema on the target side)
+
+        src.offline.datasource.max.connection (maximum number of source connections for offline batch tasks)
+
+        runtime.realtime.concurrent (real-time task concurrency)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        Runtime setting value
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class DiJobResourceSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "offlineResourceSettings":
+            suggest = "offline_resource_settings"
+        elif key == "realtimeResourceSettings":
+            suggest = "realtime_resource_settings"
+        elif key == "scheduleResourceSettings":
+            suggest = "schedule_resource_settings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DiJobResourceSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DiJobResourceSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DiJobResourceSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 offline_resource_settings: Optional['outputs.DiJobResourceSettingsOfflineResourceSettings'] = None,
+                 realtime_resource_settings: Optional['outputs.DiJobResourceSettingsRealtimeResourceSettings'] = None,
+                 schedule_resource_settings: Optional['outputs.DiJobResourceSettingsScheduleResourceSettings'] = None):
+        """
+        :param 'DiJobResourceSettingsOfflineResourceSettingsArgs' offline_resource_settings: Offline Resource Group configuration See `offline_resource_settings` below.
+        :param 'DiJobResourceSettingsRealtimeResourceSettingsArgs' realtime_resource_settings: Real-time Resource Group See `realtime_resource_settings` below.
+        :param 'DiJobResourceSettingsScheduleResourceSettingsArgs' schedule_resource_settings: Scheduling Resource Groups See `schedule_resource_settings` below.
+        """
+        if offline_resource_settings is not None:
+            pulumi.set(__self__, "offline_resource_settings", offline_resource_settings)
+        if realtime_resource_settings is not None:
+            pulumi.set(__self__, "realtime_resource_settings", realtime_resource_settings)
+        if schedule_resource_settings is not None:
+            pulumi.set(__self__, "schedule_resource_settings", schedule_resource_settings)
+
+    @property
+    @pulumi.getter(name="offlineResourceSettings")
+    def offline_resource_settings(self) -> Optional['outputs.DiJobResourceSettingsOfflineResourceSettings']:
+        """
+        Offline Resource Group configuration See `offline_resource_settings` below.
+        """
+        return pulumi.get(self, "offline_resource_settings")
+
+    @property
+    @pulumi.getter(name="realtimeResourceSettings")
+    def realtime_resource_settings(self) -> Optional['outputs.DiJobResourceSettingsRealtimeResourceSettings']:
+        """
+        Real-time Resource Group See `realtime_resource_settings` below.
+        """
+        return pulumi.get(self, "realtime_resource_settings")
+
+    @property
+    @pulumi.getter(name="scheduleResourceSettings")
+    def schedule_resource_settings(self) -> Optional['outputs.DiJobResourceSettingsScheduleResourceSettings']:
+        """
+        Scheduling Resource Groups See `schedule_resource_settings` below.
+        """
+        return pulumi.get(self, "schedule_resource_settings")
+
+
+@pulumi.output_type
+class DiJobResourceSettingsOfflineResourceSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "requestedCu":
+            suggest = "requested_cu"
+        elif key == "resourceGroupIdentifier":
+            suggest = "resource_group_identifier"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DiJobResourceSettingsOfflineResourceSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DiJobResourceSettingsOfflineResourceSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DiJobResourceSettingsOfflineResourceSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 requested_cu: Optional[float] = None,
+                 resource_group_identifier: Optional[str] = None):
+        """
+        :param float requested_cu: Scheduling resource group cu
+        :param str resource_group_identifier: Scheduling resource group name
+        """
+        if requested_cu is not None:
+            pulumi.set(__self__, "requested_cu", requested_cu)
+        if resource_group_identifier is not None:
+            pulumi.set(__self__, "resource_group_identifier", resource_group_identifier)
+
+    @property
+    @pulumi.getter(name="requestedCu")
+    def requested_cu(self) -> Optional[float]:
+        """
+        Scheduling resource group cu
+        """
+        return pulumi.get(self, "requested_cu")
+
+    @property
+    @pulumi.getter(name="resourceGroupIdentifier")
+    def resource_group_identifier(self) -> Optional[str]:
+        """
+        Scheduling resource group name
+        """
+        return pulumi.get(self, "resource_group_identifier")
+
+
+@pulumi.output_type
+class DiJobResourceSettingsRealtimeResourceSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "requestedCu":
+            suggest = "requested_cu"
+        elif key == "resourceGroupIdentifier":
+            suggest = "resource_group_identifier"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DiJobResourceSettingsRealtimeResourceSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DiJobResourceSettingsRealtimeResourceSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DiJobResourceSettingsRealtimeResourceSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 requested_cu: Optional[float] = None,
+                 resource_group_identifier: Optional[str] = None):
+        """
+        :param float requested_cu: Scheduling resource group cu
+        :param str resource_group_identifier: Scheduling resource group name
+        """
+        if requested_cu is not None:
+            pulumi.set(__self__, "requested_cu", requested_cu)
+        if resource_group_identifier is not None:
+            pulumi.set(__self__, "resource_group_identifier", resource_group_identifier)
+
+    @property
+    @pulumi.getter(name="requestedCu")
+    def requested_cu(self) -> Optional[float]:
+        """
+        Scheduling resource group cu
+        """
+        return pulumi.get(self, "requested_cu")
+
+    @property
+    @pulumi.getter(name="resourceGroupIdentifier")
+    def resource_group_identifier(self) -> Optional[str]:
+        """
+        Scheduling resource group name
+        """
+        return pulumi.get(self, "resource_group_identifier")
+
+
+@pulumi.output_type
+class DiJobResourceSettingsScheduleResourceSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "requestedCu":
+            suggest = "requested_cu"
+        elif key == "resourceGroupIdentifier":
+            suggest = "resource_group_identifier"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DiJobResourceSettingsScheduleResourceSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DiJobResourceSettingsScheduleResourceSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DiJobResourceSettingsScheduleResourceSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 requested_cu: Optional[float] = None,
+                 resource_group_identifier: Optional[str] = None):
+        """
+        :param float requested_cu: Scheduling resource group cu
+        :param str resource_group_identifier: Scheduling resource group name
+        """
+        if requested_cu is not None:
+            pulumi.set(__self__, "requested_cu", requested_cu)
+        if resource_group_identifier is not None:
+            pulumi.set(__self__, "resource_group_identifier", resource_group_identifier)
+
+    @property
+    @pulumi.getter(name="requestedCu")
+    def requested_cu(self) -> Optional[float]:
+        """
+        Scheduling resource group cu
+        """
+        return pulumi.get(self, "requested_cu")
+
+    @property
+    @pulumi.getter(name="resourceGroupIdentifier")
+    def resource_group_identifier(self) -> Optional[str]:
+        """
+        Scheduling resource group name
+        """
+        return pulumi.get(self, "resource_group_identifier")
+
+
+@pulumi.output_type
+class DiJobSourceDataSourceSetting(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataSourceName":
+            suggest = "data_source_name"
+        elif key == "dataSourceProperties":
+            suggest = "data_source_properties"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DiJobSourceDataSourceSetting. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DiJobSourceDataSourceSetting.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DiJobSourceDataSourceSetting.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data_source_name: Optional[str] = None,
+                 data_source_properties: Optional['outputs.DiJobSourceDataSourceSettingDataSourceProperties'] = None):
+        """
+        :param str data_source_name: Data source name of a single source
+        :param 'DiJobSourceDataSourceSettingDataSourcePropertiesArgs' data_source_properties: Single Source Data Source Properties See `data_source_properties` below.
+        """
+        if data_source_name is not None:
+            pulumi.set(__self__, "data_source_name", data_source_name)
+        if data_source_properties is not None:
+            pulumi.set(__self__, "data_source_properties", data_source_properties)
+
+    @property
+    @pulumi.getter(name="dataSourceName")
+    def data_source_name(self) -> Optional[str]:
+        """
+        Data source name of a single source
+        """
+        return pulumi.get(self, "data_source_name")
+
+    @property
+    @pulumi.getter(name="dataSourceProperties")
+    def data_source_properties(self) -> Optional['outputs.DiJobSourceDataSourceSettingDataSourceProperties']:
+        """
+        Single Source Data Source Properties See `data_source_properties` below.
+        """
+        return pulumi.get(self, "data_source_properties")
+
+
+@pulumi.output_type
+class DiJobSourceDataSourceSettingDataSourceProperties(dict):
+    def __init__(__self__, *,
+                 encoding: Optional[str] = None,
+                 timezone: Optional[str] = None):
+        """
+        :param str encoding: Data Source Encoding
+        :param str timezone: Data Source Time Zone
+        """
+        if encoding is not None:
+            pulumi.set(__self__, "encoding", encoding)
+        if timezone is not None:
+            pulumi.set(__self__, "timezone", timezone)
+
+    @property
+    @pulumi.getter
+    def encoding(self) -> Optional[str]:
+        """
+        Data Source Encoding
+        """
+        return pulumi.get(self, "encoding")
+
+    @property
+    @pulumi.getter
+    def timezone(self) -> Optional[str]:
+        """
+        Data Source Time Zone
+        """
+        return pulumi.get(self, "timezone")
+
+
+@pulumi.output_type
+class DiJobTableMapping(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceObjectSelectionRules":
+            suggest = "source_object_selection_rules"
+        elif key == "transformationRules":
+            suggest = "transformation_rules"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DiJobTableMapping. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DiJobTableMapping.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DiJobTableMapping.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 source_object_selection_rules: Optional[Sequence['outputs.DiJobTableMappingSourceObjectSelectionRule']] = None,
+                 transformation_rules: Optional[Sequence['outputs.DiJobTableMappingTransformationRule']] = None):
+        """
+        :param Sequence['DiJobTableMappingSourceObjectSelectionRuleArgs'] source_object_selection_rules: Each rule can select different types of source objects to be synchronized, such as source database and source data table. See `source_object_selection_rules` below.
+        :param Sequence['DiJobTableMappingTransformationRuleArgs'] transformation_rules: A list of conversion rule definitions for a synchronization object. Each element in the list defines a conversion rule. See `transformation_rules` below.
+        """
+        if source_object_selection_rules is not None:
+            pulumi.set(__self__, "source_object_selection_rules", source_object_selection_rules)
+        if transformation_rules is not None:
+            pulumi.set(__self__, "transformation_rules", transformation_rules)
+
+    @property
+    @pulumi.getter(name="sourceObjectSelectionRules")
+    def source_object_selection_rules(self) -> Optional[Sequence['outputs.DiJobTableMappingSourceObjectSelectionRule']]:
+        """
+        Each rule can select different types of source objects to be synchronized, such as source database and source data table. See `source_object_selection_rules` below.
+        """
+        return pulumi.get(self, "source_object_selection_rules")
+
+    @property
+    @pulumi.getter(name="transformationRules")
+    def transformation_rules(self) -> Optional[Sequence['outputs.DiJobTableMappingTransformationRule']]:
+        """
+        A list of conversion rule definitions for a synchronization object. Each element in the list defines a conversion rule. See `transformation_rules` below.
+        """
+        return pulumi.get(self, "transformation_rules")
+
+
+@pulumi.output_type
+class DiJobTableMappingSourceObjectSelectionRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expressionType":
+            suggest = "expression_type"
+        elif key == "objectType":
+            suggest = "object_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DiJobTableMappingSourceObjectSelectionRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DiJobTableMappingSourceObjectSelectionRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DiJobTableMappingSourceObjectSelectionRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action: Optional[str] = None,
+                 expression: Optional[str] = None,
+                 expression_type: Optional[str] = None,
+                 object_type: Optional[str] = None):
+        """
+        :param str expression: Expression, such as mysql_table_1
+        :param str expression_type: Expression type, value range: Exact/Regex
+        :param str object_type: Object type, optional enumeration value:
+               
+               Table (Table)
+               
+               Database
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+        if expression_type is not None:
+            pulumi.set(__self__, "expression_type", expression_type)
+        if object_type is not None:
+            pulumi.set(__self__, "object_type", object_type)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[str]:
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def expression(self) -> Optional[str]:
+        """
+        Expression, such as mysql_table_1
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter(name="expressionType")
+    def expression_type(self) -> Optional[str]:
+        """
+        Expression type, value range: Exact/Regex
+        """
+        return pulumi.get(self, "expression_type")
+
+    @property
+    @pulumi.getter(name="objectType")
+    def object_type(self) -> Optional[str]:
+        """
+        Object type, optional enumeration value:
+
+        Table (Table)
+
+        Database
+        """
+        return pulumi.get(self, "object_type")
+
+
+@pulumi.output_type
+class DiJobTableMappingTransformationRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ruleActionType":
+            suggest = "rule_action_type"
+        elif key == "ruleName":
+            suggest = "rule_name"
+        elif key == "ruleTargetType":
+            suggest = "rule_target_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DiJobTableMappingTransformationRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DiJobTableMappingTransformationRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DiJobTableMappingTransformationRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 rule_action_type: Optional[str] = None,
+                 rule_name: Optional[str] = None,
+                 rule_target_type: Optional[str] = None):
+        """
+        :param str rule_action_type: Action type, optional enumeration value:
+               
+               DefinePrimaryKey (defines the primary key)
+               
+               Rename
+               
+               AddColumn (increase column)
+               
+               HandleDml(DML handling)
+               
+               DefineIncrementalCondition
+        :param str rule_name: Rule Name
+        :param str rule_target_type: Target type of action, optional enumeration value:
+               
+               Table (Table)
+               
+               Schema(schema)
+        """
+        if rule_action_type is not None:
+            pulumi.set(__self__, "rule_action_type", rule_action_type)
+        if rule_name is not None:
+            pulumi.set(__self__, "rule_name", rule_name)
+        if rule_target_type is not None:
+            pulumi.set(__self__, "rule_target_type", rule_target_type)
+
+    @property
+    @pulumi.getter(name="ruleActionType")
+    def rule_action_type(self) -> Optional[str]:
+        """
+        Action type, optional enumeration value:
+
+        DefinePrimaryKey (defines the primary key)
+
+        Rename
+
+        AddColumn (increase column)
+
+        HandleDml(DML handling)
+
+        DefineIncrementalCondition
+        """
+        return pulumi.get(self, "rule_action_type")
+
+    @property
+    @pulumi.getter(name="ruleName")
+    def rule_name(self) -> Optional[str]:
+        """
+        Rule Name
+        """
+        return pulumi.get(self, "rule_name")
+
+    @property
+    @pulumi.getter(name="ruleTargetType")
+    def rule_target_type(self) -> Optional[str]:
+        """
+        Target type of action, optional enumeration value:
+
+        Table (Table)
+
+        Schema(schema)
+        """
+        return pulumi.get(self, "rule_target_type")
+
+
+@pulumi.output_type
+class DiJobTransformationRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ruleActionType":
+            suggest = "rule_action_type"
+        elif key == "ruleExpression":
+            suggest = "rule_expression"
+        elif key == "ruleName":
+            suggest = "rule_name"
+        elif key == "ruleTargetType":
+            suggest = "rule_target_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DiJobTransformationRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DiJobTransformationRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DiJobTransformationRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 rule_action_type: Optional[str] = None,
+                 rule_expression: Optional[str] = None,
+                 rule_name: Optional[str] = None,
+                 rule_target_type: Optional[str] = None):
+        """
+        :param str rule_action_type: Action type, optional enumeration value:
+               
+               DefinePrimaryKey (defines the primary key)
+               
+               Rename
+               
+               AddColumn (increase column)
+               
+               HandleDml(DML handling)
+               
+               DefineIncrementalCondition
+        :param str rule_expression: Regular expression, in json string format.
+               
+               Example renaming rule (Rename): {"expression":"${srcDatasourceName}_${srcDatabaseName}_0922","variables":[{"variableName":"srcDatabaseName","variableRules":[{"from":"fromdb","to":"todb"}]}]}
+        :param str rule_name: Rule Name
+        :param str rule_target_type: Target type of action, optional enumeration value:
+               
+               Table (Table)
+               
+               Schema(schema)
+        """
+        if rule_action_type is not None:
+            pulumi.set(__self__, "rule_action_type", rule_action_type)
+        if rule_expression is not None:
+            pulumi.set(__self__, "rule_expression", rule_expression)
+        if rule_name is not None:
+            pulumi.set(__self__, "rule_name", rule_name)
+        if rule_target_type is not None:
+            pulumi.set(__self__, "rule_target_type", rule_target_type)
+
+    @property
+    @pulumi.getter(name="ruleActionType")
+    def rule_action_type(self) -> Optional[str]:
+        """
+        Action type, optional enumeration value:
+
+        DefinePrimaryKey (defines the primary key)
+
+        Rename
+
+        AddColumn (increase column)
+
+        HandleDml(DML handling)
+
+        DefineIncrementalCondition
+        """
+        return pulumi.get(self, "rule_action_type")
+
+    @property
+    @pulumi.getter(name="ruleExpression")
+    def rule_expression(self) -> Optional[str]:
+        """
+        Regular expression, in json string format.
+
+        Example renaming rule (Rename): {"expression":"${srcDatasourceName}_${srcDatabaseName}_0922","variables":[{"variableName":"srcDatabaseName","variableRules":[{"from":"fromdb","to":"todb"}]}]}
+        """
+        return pulumi.get(self, "rule_expression")
+
+    @property
+    @pulumi.getter(name="ruleName")
+    def rule_name(self) -> Optional[str]:
+        """
+        Rule Name
+        """
+        return pulumi.get(self, "rule_name")
+
+    @property
+    @pulumi.getter(name="ruleTargetType")
+    def rule_target_type(self) -> Optional[str]:
+        """
+        Target type of action, optional enumeration value:
+
+        Table (Table)
+
+        Schema(schema)
+        """
+        return pulumi.get(self, "rule_target_type")
+
 
 @pulumi.output_type
 class ProjectMemberRole(dict):

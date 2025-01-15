@@ -96,7 +96,7 @@ import (
 //				RemediationTemplateId: pulumi.String("ACS-OSS-PutBucketAcl"),
 //				RemediationSourceType: pulumi.String("ALIYUN"),
 //				InvokeType:            pulumi.String("MANUAL_EXECUTION"),
-//				Params: defaultBucket.Bucket.ApplyT(func(bucket *string) (string, error) {
+//				Params: defaultBucket.Bucket.ApplyT(func(bucket string) (string, error) {
 //					return fmt.Sprintf("{\"bucketName\": \"%v\", \"regionId\": \"%v\", \"permissionName\": \"private\"}", bucket, _default.Regions[0].Id), nil
 //				}).(pulumi.StringOutput),
 //				RemediationType: pulumi.String("OOS"),

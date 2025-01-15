@@ -10,6 +10,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -44,6 +45,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> config() {
         return this.config;
+    }
+    /**
+     * The number of partitions in a topic that is automatically created.
+     * 
+     */
+    @Export(name="defaultTopicPartitionNum", refs={Integer.class}, tree="[0]")
+    private Output<Integer> defaultTopicPartitionNum;
+
+    /**
+     * @return The number of partitions in a topic that is automatically created.
+     * 
+     */
+    public Output<Integer> defaultTopicPartitionNum() {
+        return this.defaultTopicPartitionNum;
     }
     /**
      * The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
@@ -118,6 +133,34 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> eipMax() {
         return this.eipMax;
+    }
+    /**
+     * Specify whether to enable the flexible group creation feature. Default value: `false`. Valid values:
+     * 
+     */
+    @Export(name="enableAutoGroup", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> enableAutoGroup;
+
+    /**
+     * @return Specify whether to enable the flexible group creation feature. Default value: `false`. Valid values:
+     * 
+     */
+    public Output<Optional<Boolean>> enableAutoGroup() {
+        return Codegen.optional(this.enableAutoGroup);
+    }
+    /**
+     * Specify whether to enable the automatic topic creation feature. Default value: `disable`. Valid values:
+     * 
+     */
+    @Export(name="enableAutoTopic", refs={String.class}, tree="[0]")
+    private Output<String> enableAutoTopic;
+
+    /**
+     * @return Specify whether to enable the automatic topic creation feature. Default value: `disable`. Valid values:
+     * 
+     */
+    public Output<String> enableAutoTopic() {
+        return this.enableAutoTopic;
     }
     /**
      * The EndPoint to access the kafka instance.
@@ -336,32 +379,12 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The zones among which you want to deploy the instance.
      * 
-     * &gt; **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
-     * 
-     * | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-     * |------|-------------|:----:|:-----:|
-     * |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-     * |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-     * |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-     * |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-     * |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
-     * 
      */
     @Export(name="selectedZones", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> selectedZones;
 
     /**
      * @return The zones among which you want to deploy the instance.
-     * 
-     * &gt; **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
-     * 
-     * | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-     * |------|-------------|:----:|:-----:|
-     * |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-     * |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-     * |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-     * |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-     * |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
      * 
      */
     public Output<Optional<List<String>>> selectedZones() {
@@ -544,6 +567,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> vswitchId() {
         return this.vswitchId;
+    }
+    /**
+     * The IDs of the vSwitches with which the instance is associated.
+     * 
+     */
+    @Export(name="vswitchIds", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> vswitchIds;
+
+    /**
+     * @return The IDs of the vSwitches with which the instance is associated.
+     * 
+     */
+    public Output<List<String>> vswitchIds() {
+        return this.vswitchIds;
     }
     /**
      * The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.

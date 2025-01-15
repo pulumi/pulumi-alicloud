@@ -272,7 +272,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly ipv6AddressCount!: pulumi.Output<number>;
     /**
-     * A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+     * A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6Addresses` can be modified.
      */
     public readonly ipv6Addresses!: pulumi.Output<string[]>;
     /**
@@ -886,7 +886,7 @@ export interface InstanceState {
      */
     ipv6AddressCount?: pulumi.Input<number>;
     /**
-     * A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+     * A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6Addresses` can be modified.
      */
     ipv6Addresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1286,7 +1286,7 @@ export interface InstanceArgs {
      */
     ipv6AddressCount?: pulumi.Input<number>;
     /**
-     * A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+     * A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6Addresses` can be modified.
      */
     ipv6Addresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**

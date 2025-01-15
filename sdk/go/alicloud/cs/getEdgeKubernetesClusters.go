@@ -13,7 +13,7 @@ import (
 
 // This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
 //
-// > **NOTE:** Available in v1.103.0+
+// > **NOTE:** Available since v1.103.0.
 //
 // ## Example Usage
 //
@@ -55,6 +55,7 @@ func GetEdgeKubernetesClusters(ctx *pulumi.Context, args *GetEdgeKubernetesClust
 
 // A collection of arguments for invoking getEdgeKubernetesClusters.
 type GetEdgeKubernetesClustersArgs struct {
+	// Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `masterDiskCategory`, `slbInternetEnabled`, `connections`. See full list in attributes.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// Cluster IDs to filter.
 	Ids []string `pulumi:"ids"`
@@ -90,6 +91,7 @@ func GetEdgeKubernetesClustersOutput(ctx *pulumi.Context, args GetEdgeKubernetes
 
 // A collection of arguments for invoking getEdgeKubernetesClusters.
 type GetEdgeKubernetesClustersOutputArgs struct {
+	// Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `masterDiskCategory`, `slbInternetEnabled`, `connections`. See full list in attributes.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// Cluster IDs to filter.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`

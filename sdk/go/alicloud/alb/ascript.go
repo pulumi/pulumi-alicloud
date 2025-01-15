@@ -12,15 +12,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Alb Ascript resource.
+// Provides a Application Load Balancer (ALB) A Script resource.
 //
-// For information about Alb Ascript and how to use it, see [What is AScript](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createascripts).
+// For information about Application Load Balancer (ALB) A Script and how to use it, see [What is A Script](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createascripts).
 //
 // > **NOTE:** Available since v1.195.0.
 //
 // ## Import
 //
-// Alb AScript can be imported using the id, e.g.
+// Application Load Balancer (ALB) A Script can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:alb/aScript:AScript example <id>
@@ -28,23 +28,23 @@ import (
 type AScript struct {
 	pulumi.CustomResourceState
 
-	// The name of AScript.
+	// AScript name.
 	AscriptName pulumi.StringOutput `pulumi:"ascriptName"`
-	// Whether scripts are enabled.
-	Enabled pulumi.BoolOutput `pulumi:"enabled"`
-	// Whether extension parameters are enabled.
-	ExtAttributeEnabled pulumi.BoolOutput `pulumi:"extAttributeEnabled"`
-	// Extended attribute list. See `extAttributes` below for details.
+	// Whether to PreCheck only this request
+	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
+	// Whether AScript is enabled.
+	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
+	// Whether extension parameters are enabled. When ExtAttributeEnabled is true, ExtAttributes must be set.
+	ExtAttributeEnabled pulumi.BoolPtrOutput `pulumi:"extAttributeEnabled"`
+	// Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `extAttributes` below.
 	ExtAttributes AScriptExtAttributeArrayOutput `pulumi:"extAttributes"`
 	// Listener ID of script attribution
 	ListenerId pulumi.StringOutput `pulumi:"listenerId"`
-	// The ID of load balancer instance.
-	LoadBalancerId pulumi.StringOutput `pulumi:"loadBalancerId"`
-	// Execution location of AScript.
+	// Script execution location.
 	Position pulumi.StringOutput `pulumi:"position"`
-	// The content of AScript.
+	// AScript script content.
 	ScriptContent pulumi.StringOutput `pulumi:"scriptContent"`
-	// The status of AScript.
+	// Script status
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -57,9 +57,6 @@ func NewAScript(ctx *pulumi.Context,
 
 	if args.AscriptName == nil {
 		return nil, errors.New("invalid value for required argument 'AscriptName'")
-	}
-	if args.Enabled == nil {
-		return nil, errors.New("invalid value for required argument 'Enabled'")
 	}
 	if args.ListenerId == nil {
 		return nil, errors.New("invalid value for required argument 'ListenerId'")
@@ -93,44 +90,44 @@ func GetAScript(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AScript resources.
 type ascriptState struct {
-	// The name of AScript.
+	// AScript name.
 	AscriptName *string `pulumi:"ascriptName"`
-	// Whether scripts are enabled.
+	// Whether to PreCheck only this request
+	DryRun *bool `pulumi:"dryRun"`
+	// Whether AScript is enabled.
 	Enabled *bool `pulumi:"enabled"`
-	// Whether extension parameters are enabled.
+	// Whether extension parameters are enabled. When ExtAttributeEnabled is true, ExtAttributes must be set.
 	ExtAttributeEnabled *bool `pulumi:"extAttributeEnabled"`
-	// Extended attribute list. See `extAttributes` below for details.
+	// Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `extAttributes` below.
 	ExtAttributes []AScriptExtAttribute `pulumi:"extAttributes"`
 	// Listener ID of script attribution
 	ListenerId *string `pulumi:"listenerId"`
-	// The ID of load balancer instance.
-	LoadBalancerId *string `pulumi:"loadBalancerId"`
-	// Execution location of AScript.
+	// Script execution location.
 	Position *string `pulumi:"position"`
-	// The content of AScript.
+	// AScript script content.
 	ScriptContent *string `pulumi:"scriptContent"`
-	// The status of AScript.
+	// Script status
 	Status *string `pulumi:"status"`
 }
 
 type AScriptState struct {
-	// The name of AScript.
+	// AScript name.
 	AscriptName pulumi.StringPtrInput
-	// Whether scripts are enabled.
+	// Whether to PreCheck only this request
+	DryRun pulumi.BoolPtrInput
+	// Whether AScript is enabled.
 	Enabled pulumi.BoolPtrInput
-	// Whether extension parameters are enabled.
+	// Whether extension parameters are enabled. When ExtAttributeEnabled is true, ExtAttributes must be set.
 	ExtAttributeEnabled pulumi.BoolPtrInput
-	// Extended attribute list. See `extAttributes` below for details.
+	// Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `extAttributes` below.
 	ExtAttributes AScriptExtAttributeArrayInput
 	// Listener ID of script attribution
 	ListenerId pulumi.StringPtrInput
-	// The ID of load balancer instance.
-	LoadBalancerId pulumi.StringPtrInput
-	// Execution location of AScript.
+	// Script execution location.
 	Position pulumi.StringPtrInput
-	// The content of AScript.
+	// AScript script content.
 	ScriptContent pulumi.StringPtrInput
-	// The status of AScript.
+	// Script status
 	Status pulumi.StringPtrInput
 }
 
@@ -139,37 +136,41 @@ func (AScriptState) ElementType() reflect.Type {
 }
 
 type ascriptArgs struct {
-	// The name of AScript.
+	// AScript name.
 	AscriptName string `pulumi:"ascriptName"`
-	// Whether scripts are enabled.
-	Enabled bool `pulumi:"enabled"`
-	// Whether extension parameters are enabled.
+	// Whether to PreCheck only this request
+	DryRun *bool `pulumi:"dryRun"`
+	// Whether AScript is enabled.
+	Enabled *bool `pulumi:"enabled"`
+	// Whether extension parameters are enabled. When ExtAttributeEnabled is true, ExtAttributes must be set.
 	ExtAttributeEnabled *bool `pulumi:"extAttributeEnabled"`
-	// Extended attribute list. See `extAttributes` below for details.
+	// Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `extAttributes` below.
 	ExtAttributes []AScriptExtAttribute `pulumi:"extAttributes"`
 	// Listener ID of script attribution
 	ListenerId string `pulumi:"listenerId"`
-	// Execution location of AScript.
+	// Script execution location.
 	Position string `pulumi:"position"`
-	// The content of AScript.
+	// AScript script content.
 	ScriptContent string `pulumi:"scriptContent"`
 }
 
 // The set of arguments for constructing a AScript resource.
 type AScriptArgs struct {
-	// The name of AScript.
+	// AScript name.
 	AscriptName pulumi.StringInput
-	// Whether scripts are enabled.
-	Enabled pulumi.BoolInput
-	// Whether extension parameters are enabled.
+	// Whether to PreCheck only this request
+	DryRun pulumi.BoolPtrInput
+	// Whether AScript is enabled.
+	Enabled pulumi.BoolPtrInput
+	// Whether extension parameters are enabled. When ExtAttributeEnabled is true, ExtAttributes must be set.
 	ExtAttributeEnabled pulumi.BoolPtrInput
-	// Extended attribute list. See `extAttributes` below for details.
+	// Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `extAttributes` below.
 	ExtAttributes AScriptExtAttributeArrayInput
 	// Listener ID of script attribution
 	ListenerId pulumi.StringInput
-	// Execution location of AScript.
+	// Script execution location.
 	Position pulumi.StringInput
-	// The content of AScript.
+	// AScript script content.
 	ScriptContent pulumi.StringInput
 }
 
@@ -260,22 +261,27 @@ func (o AScriptOutput) ToAScriptOutputWithContext(ctx context.Context) AScriptOu
 	return o
 }
 
-// The name of AScript.
+// AScript name.
 func (o AScriptOutput) AscriptName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AScript) pulumi.StringOutput { return v.AscriptName }).(pulumi.StringOutput)
 }
 
-// Whether scripts are enabled.
-func (o AScriptOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v *AScript) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+// Whether to PreCheck only this request
+func (o AScriptOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AScript) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
-// Whether extension parameters are enabled.
-func (o AScriptOutput) ExtAttributeEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v *AScript) pulumi.BoolOutput { return v.ExtAttributeEnabled }).(pulumi.BoolOutput)
+// Whether AScript is enabled.
+func (o AScriptOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AScript) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Extended attribute list. See `extAttributes` below for details.
+// Whether extension parameters are enabled. When ExtAttributeEnabled is true, ExtAttributes must be set.
+func (o AScriptOutput) ExtAttributeEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AScript) pulumi.BoolPtrOutput { return v.ExtAttributeEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `extAttributes` below.
 func (o AScriptOutput) ExtAttributes() AScriptExtAttributeArrayOutput {
 	return o.ApplyT(func(v *AScript) AScriptExtAttributeArrayOutput { return v.ExtAttributes }).(AScriptExtAttributeArrayOutput)
 }
@@ -285,22 +291,17 @@ func (o AScriptOutput) ListenerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AScript) pulumi.StringOutput { return v.ListenerId }).(pulumi.StringOutput)
 }
 
-// The ID of load balancer instance.
-func (o AScriptOutput) LoadBalancerId() pulumi.StringOutput {
-	return o.ApplyT(func(v *AScript) pulumi.StringOutput { return v.LoadBalancerId }).(pulumi.StringOutput)
-}
-
-// Execution location of AScript.
+// Script execution location.
 func (o AScriptOutput) Position() pulumi.StringOutput {
 	return o.ApplyT(func(v *AScript) pulumi.StringOutput { return v.Position }).(pulumi.StringOutput)
 }
 
-// The content of AScript.
+// AScript script content.
 func (o AScriptOutput) ScriptContent() pulumi.StringOutput {
 	return o.ApplyT(func(v *AScript) pulumi.StringOutput { return v.ScriptContent }).(pulumi.StringOutput)
 }
 
-// The status of AScript.
+// Script status
 func (o AScriptOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *AScript) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

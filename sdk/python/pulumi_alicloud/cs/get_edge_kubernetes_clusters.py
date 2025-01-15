@@ -121,7 +121,7 @@ def get_edge_kubernetes_clusters(enable_details: Optional[bool] = None,
     """
     This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
 
-    > **NOTE:** Available in v1.103.0+
+    > **NOTE:** Available since v1.103.0.
 
     ## Example Usage
 
@@ -136,6 +136,7 @@ def get_edge_kubernetes_clusters(enable_details: Optional[bool] = None,
     ```
 
 
+    :param bool enable_details: Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `master_disk_category`, `slb_internet_enabled`, `connections`. See full list in attributes.
     :param Sequence[str] ids: Cluster IDs to filter.
     :param str name_regex: A regex string to filter results by cluster name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -164,7 +165,7 @@ def get_edge_kubernetes_clusters_output(enable_details: Optional[pulumi.Input[Op
     """
     This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
 
-    > **NOTE:** Available in v1.103.0+
+    > **NOTE:** Available since v1.103.0.
 
     ## Example Usage
 
@@ -179,6 +180,7 @@ def get_edge_kubernetes_clusters_output(enable_details: Optional[pulumi.Input[Op
     ```
 
 
+    :param bool enable_details: Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `master_disk_category`, `slb_internet_enabled`, `connections`. See full list in attributes.
     :param Sequence[str] ids: Cluster IDs to filter.
     :param str name_regex: A regex string to filter results by cluster name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).

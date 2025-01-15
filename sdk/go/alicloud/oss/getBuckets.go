@@ -13,6 +13,8 @@ import (
 
 // This data source provides the OSS buckets of the current Alibaba Cloud user.
 //
+// > **NOTE:** Available since v1.17.0.
+//
 // ## Example Usage
 //
 // ```go
@@ -20,20 +22,35 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ossBucketsDs, err := oss.GetBuckets(ctx, &oss.GetBucketsArgs{
-//				NameRegex: pulumi.StringRef("sample_oss_bucket"),
-//			}, nil)
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Max: 99999,
+//				Min: 10000,
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstOssBucketName", ossBucketsDs.Buckets[0].Name)
+//			bucket, err := oss.NewBucket(ctx, "bucket", &oss.BucketArgs{
+//				Bucket: pulumi.Sprintf("oss-tf-example-%v", _default.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ossBucketsDs := oss.GetBucketsOutput(ctx, oss.GetBucketsOutputArgs{
+//				NameRegex: bucket.Bucket,
+//			}, nil)
+//			ctx.Export("firstOssBucketName", ossBucketsDs.ApplyT(func(ossBucketsDs oss.GetBucketsResult) (*string, error) {
+//				return &ossBucketsDs.Buckets[0].Name, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}

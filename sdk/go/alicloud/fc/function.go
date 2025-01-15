@@ -174,7 +174,9 @@ type Function struct {
 	EnvironmentVariables pulumi.StringMapOutput `pulumi:"environmentVariables"`
 	// The path to the function's deployment package within the local filesystem. It is conflict with the `oss_`-prefixed options.
 	Filename pulumi.StringPtrOutput `pulumi:"filename"`
-	// The Function Compute service ID.
+	// The Function Compute service function arn. It formats as `acs:fc:<region>:<uid>:services/<serviceName>.LATEST/functions/<functionName>`.
+	FunctionArn pulumi.StringOutput `pulumi:"functionArn"`
+	// The Function Compute service function ID.
 	FunctionId pulumi.StringOutput `pulumi:"functionId"`
 	// The function [entry point](https://www.alibabacloud.com/help/doc-detail/157704.htm) in your code.
 	Handler pulumi.StringOutput `pulumi:"handler"`
@@ -260,7 +262,9 @@ type functionState struct {
 	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
 	// The path to the function's deployment package within the local filesystem. It is conflict with the `oss_`-prefixed options.
 	Filename *string `pulumi:"filename"`
-	// The Function Compute service ID.
+	// The Function Compute service function arn. It formats as `acs:fc:<region>:<uid>:services/<serviceName>.LATEST/functions/<functionName>`.
+	FunctionArn *string `pulumi:"functionArn"`
+	// The Function Compute service function ID.
 	FunctionId *string `pulumi:"functionId"`
 	// The function [entry point](https://www.alibabacloud.com/help/doc-detail/157704.htm) in your code.
 	Handler *string `pulumi:"handler"`
@@ -308,7 +312,9 @@ type FunctionState struct {
 	EnvironmentVariables pulumi.StringMapInput
 	// The path to the function's deployment package within the local filesystem. It is conflict with the `oss_`-prefixed options.
 	Filename pulumi.StringPtrInput
-	// The Function Compute service ID.
+	// The Function Compute service function arn. It formats as `acs:fc:<region>:<uid>:services/<serviceName>.LATEST/functions/<functionName>`.
+	FunctionArn pulumi.StringPtrInput
+	// The Function Compute service function ID.
 	FunctionId pulumi.StringPtrInput
 	// The function [entry point](https://www.alibabacloud.com/help/doc-detail/157704.htm) in your code.
 	Handler pulumi.StringPtrInput
@@ -553,7 +559,12 @@ func (o FunctionOutput) Filename() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.Filename }).(pulumi.StringPtrOutput)
 }
 
-// The Function Compute service ID.
+// The Function Compute service function arn. It formats as `acs:fc:<region>:<uid>:services/<serviceName>.LATEST/functions/<functionName>`.
+func (o FunctionOutput) FunctionArn() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.FunctionArn }).(pulumi.StringOutput)
+}
+
+// The Function Compute service function ID.
 func (o FunctionOutput) FunctionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.FunctionId }).(pulumi.StringOutput)
 }

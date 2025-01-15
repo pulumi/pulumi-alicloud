@@ -21,7 +21,6 @@ __all__ = ['ManagedKubernetesArgs', 'ManagedKubernetes']
 @pulumi.input_type
 class ManagedKubernetesArgs:
     def __init__(__self__, *,
-                 worker_vswitch_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
                  addons: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesAddonArgs']]]] = None,
                  api_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  client_cert: Optional[pulumi.Input[str]] = None,
@@ -57,10 +56,11 @@ class ManagedKubernetesArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  user_ca: Optional[pulumi.Input[str]] = None,
-                 version: Optional[pulumi.Input[str]] = None):
+                 version: Optional[pulumi.Input[str]] = None,
+                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 worker_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a ManagedKubernetes resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_vswitch_ids: The vswitches used by control plane.  See `worker_vswitch_ids` below.
         :param pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesAddonArgs']]] addons: The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
                
                *Network params*
@@ -84,14 +84,14 @@ class ManagedKubernetesArgs:
         :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         :param pulumi.Input[str] encryption_provider_key: The disk encryption key.
         :param pulumi.Input[bool] is_enterprise_security_group: Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
-        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
         :param pulumi.Input['ManagedKubernetesMaintenanceWindowArgs'] maintenance_window: The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Only works for **Create** Operation.
         :param pulumi.Input[int] node_cidr_mask: The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
         :param pulumi.Input['ManagedKubernetesOperationPolicyArgs'] operation_policy: The cluster automatic operation policy. See `operation_policy` below.
         :param pulumi.Input[str] pod_cidr: [Flannel Specific] The CIDR block for the pod network when using Flannel.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
         :param pulumi.Input[str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
@@ -107,8 +107,14 @@ class ManagedKubernetesArgs:
         :param pulumi.Input[str] timezone: When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
         :param pulumi.Input[str] user_ca: The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: The vSwitches of the control plane.
+               > **NOTE:** Please take of note before updating the `vswitch_ids`:
+               * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
+               * The control plane restarts during the change process. Exercise caution when you perform this operation.
+               * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
+               * If the new vSwitches of the control plane are configured with an ACL, ensure that the ACL allows communication between the new vSwitches and CIDR blocks such as those of the cluster nodes and the container network.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_vswitch_ids: The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vswtiches, which supports modifying control plane vswtiches.
         """
-        pulumi.set(__self__, "worker_vswitch_ids", worker_vswitch_ids)
         if addons is not None:
             pulumi.set(__self__, "addons", addons)
         if api_audiences is not None:
@@ -142,8 +148,8 @@ class ManagedKubernetesArgs:
         if is_enterprise_security_group is not None:
             pulumi.set(__self__, "is_enterprise_security_group", is_enterprise_security_group)
         if load_balancer_spec is not None:
-            warnings.warn("""Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.""", DeprecationWarning)
-            pulumi.log.warn("""load_balancer_spec is deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.""")
+            warnings.warn("""Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU""", DeprecationWarning)
+            pulumi.log.warn("""load_balancer_spec is deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU""")
         if load_balancer_spec is not None:
             pulumi.set(__self__, "load_balancer_spec", load_balancer_spec)
         if maintenance_window is not None:
@@ -184,18 +190,13 @@ class ManagedKubernetesArgs:
             pulumi.set(__self__, "user_ca", user_ca)
         if version is not None:
             pulumi.set(__self__, "version", version)
-
-    @property
-    @pulumi.getter(name="workerVswitchIds")
-    def worker_vswitch_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        The vswitches used by control plane.  See `worker_vswitch_ids` below.
-        """
-        return pulumi.get(self, "worker_vswitch_ids")
-
-    @worker_vswitch_ids.setter
-    def worker_vswitch_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        pulumi.set(self, "worker_vswitch_ids", value)
+        if vswitch_ids is not None:
+            pulumi.set(__self__, "vswitch_ids", vswitch_ids)
+        if worker_vswitch_ids is not None:
+            warnings.warn("""Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches""", DeprecationWarning)
+            pulumi.log.warn("""worker_vswitch_ids is deprecated: Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches""")
+        if worker_vswitch_ids is not None:
+            pulumi.set(__self__, "worker_vswitch_ids", worker_vswitch_ids)
 
     @property
     @pulumi.getter
@@ -398,10 +399,10 @@ class ManagedKubernetesArgs:
 
     @property
     @pulumi.getter(name="loadBalancerSpec")
-    @_utilities.deprecated("""Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.""")
+    @_utilities.deprecated("""Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU""")
     def load_balancer_spec(self) -> Optional[pulumi.Input[str]]:
         """
-        The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+        The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
         """
         return pulumi.get(self, "load_balancer_spec")
 
@@ -494,7 +495,7 @@ class ManagedKubernetesArgs:
     @pulumi.getter(name="podVswitchIds")
     def pod_vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+        [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
         """
         return pulumi.get(self, "pod_vswitch_ids")
 
@@ -636,6 +637,36 @@ class ManagedKubernetesArgs:
     def version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "version", value)
 
+    @property
+    @pulumi.getter(name="vswitchIds")
+    def vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The vSwitches of the control plane.
+        > **NOTE:** Please take of note before updating the `vswitch_ids`:
+        * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
+        * The control plane restarts during the change process. Exercise caution when you perform this operation.
+        * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
+        * If the new vSwitches of the control plane are configured with an ACL, ensure that the ACL allows communication between the new vSwitches and CIDR blocks such as those of the cluster nodes and the container network.
+        """
+        return pulumi.get(self, "vswitch_ids")
+
+    @vswitch_ids.setter
+    def vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "vswitch_ids", value)
+
+    @property
+    @pulumi.getter(name="workerVswitchIds")
+    @_utilities.deprecated("""Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches""")
+    def worker_vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vswtiches, which supports modifying control plane vswtiches.
+        """
+        return pulumi.get(self, "worker_vswitch_ids")
+
+    @worker_vswitch_ids.setter
+    def worker_vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "worker_vswitch_ids", value)
+
 
 @pulumi.input_type
 class _ManagedKubernetesState:
@@ -684,6 +715,7 @@ class _ManagedKubernetesState:
                  user_ca: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
+                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  worker_ram_role_name: Optional[pulumi.Input[str]] = None,
                  worker_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -713,7 +745,7 @@ class _ManagedKubernetesState:
         :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         :param pulumi.Input[str] encryption_provider_key: The disk encryption key.
         :param pulumi.Input[bool] is_enterprise_security_group: Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
-        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
         :param pulumi.Input['ManagedKubernetesMaintenanceWindowArgs'] maintenance_window: The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
         :param pulumi.Input[str] nat_gateway_id: The ID of nat gateway used to launch kubernetes cluster.
@@ -721,7 +753,7 @@ class _ManagedKubernetesState:
         :param pulumi.Input[int] node_cidr_mask: The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
         :param pulumi.Input['ManagedKubernetesOperationPolicyArgs'] operation_policy: The cluster automatic operation policy. See `operation_policy` below.
         :param pulumi.Input[str] pod_cidr: [Flannel Specific] The CIDR block for the pod network when using Flannel.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
         :param pulumi.Input[str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input['ManagedKubernetesRrsaMetadataArgs'] rrsa_metadata: (Optional, Available since v1.185.0) Nested attribute containing RRSA related data for your cluster.
@@ -742,8 +774,14 @@ class _ManagedKubernetesState:
         :param pulumi.Input[str] user_ca: The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
         :param pulumi.Input[str] vpc_id: The ID of VPC where the current cluster is located.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: The vSwitches of the control plane.
+               > **NOTE:** Please take of note before updating the `vswitch_ids`:
+               * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
+               * The control plane restarts during the change process. Exercise caution when you perform this operation.
+               * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
+               * If the new vSwitches of the control plane are configured with an ACL, ensure that the ACL allows communication between the new vSwitches and CIDR blocks such as those of the cluster nodes and the container network.
         :param pulumi.Input[str] worker_ram_role_name: The RamRole Name attached to worker node.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_vswitch_ids: The vswitches used by control plane.  See `worker_vswitch_ids` below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_vswitch_ids: The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vswtiches, which supports modifying control plane vswtiches.
         """
         if addons is not None:
             pulumi.set(__self__, "addons", addons)
@@ -782,8 +820,8 @@ class _ManagedKubernetesState:
         if is_enterprise_security_group is not None:
             pulumi.set(__self__, "is_enterprise_security_group", is_enterprise_security_group)
         if load_balancer_spec is not None:
-            warnings.warn("""Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.""", DeprecationWarning)
-            pulumi.log.warn("""load_balancer_spec is deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.""")
+            warnings.warn("""Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU""", DeprecationWarning)
+            pulumi.log.warn("""load_balancer_spec is deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU""")
         if load_balancer_spec is not None:
             pulumi.set(__self__, "load_balancer_spec", load_balancer_spec)
         if maintenance_window is not None:
@@ -836,8 +874,13 @@ class _ManagedKubernetesState:
             pulumi.set(__self__, "version", version)
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
+        if vswitch_ids is not None:
+            pulumi.set(__self__, "vswitch_ids", vswitch_ids)
         if worker_ram_role_name is not None:
             pulumi.set(__self__, "worker_ram_role_name", worker_ram_role_name)
+        if worker_vswitch_ids is not None:
+            warnings.warn("""Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches""", DeprecationWarning)
+            pulumi.log.warn("""worker_vswitch_ids is deprecated: Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches""")
         if worker_vswitch_ids is not None:
             pulumi.set(__self__, "worker_vswitch_ids", worker_vswitch_ids)
 
@@ -1066,10 +1109,10 @@ class _ManagedKubernetesState:
 
     @property
     @pulumi.getter(name="loadBalancerSpec")
-    @_utilities.deprecated("""Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.""")
+    @_utilities.deprecated("""Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU""")
     def load_balancer_spec(self) -> Optional[pulumi.Input[str]]:
         """
-        The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+        The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
         """
         return pulumi.get(self, "load_balancer_spec")
 
@@ -1174,7 +1217,7 @@ class _ManagedKubernetesState:
     @pulumi.getter(name="podVswitchIds")
     def pod_vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+        [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
         """
         return pulumi.get(self, "pod_vswitch_ids")
 
@@ -1377,6 +1420,23 @@ class _ManagedKubernetesState:
         pulumi.set(self, "vpc_id", value)
 
     @property
+    @pulumi.getter(name="vswitchIds")
+    def vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The vSwitches of the control plane.
+        > **NOTE:** Please take of note before updating the `vswitch_ids`:
+        * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
+        * The control plane restarts during the change process. Exercise caution when you perform this operation.
+        * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
+        * If the new vSwitches of the control plane are configured with an ACL, ensure that the ACL allows communication between the new vSwitches and CIDR blocks such as those of the cluster nodes and the container network.
+        """
+        return pulumi.get(self, "vswitch_ids")
+
+    @vswitch_ids.setter
+    def vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "vswitch_ids", value)
+
+    @property
     @pulumi.getter(name="workerRamRoleName")
     def worker_ram_role_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1390,9 +1450,10 @@ class _ManagedKubernetesState:
 
     @property
     @pulumi.getter(name="workerVswitchIds")
+    @_utilities.deprecated("""Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches""")
     def worker_vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The vswitches used by control plane.  See `worker_vswitch_ids` below.
+        The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vswtiches, which supports modifying control plane vswtiches.
         """
         return pulumi.get(self, "worker_vswitch_ids")
 
@@ -1442,6 +1503,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                  timezone: Optional[pulumi.Input[str]] = None,
                  user_ca: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
+                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  worker_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -1510,14 +1572,14 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         :param pulumi.Input[str] encryption_provider_key: The disk encryption key.
         :param pulumi.Input[bool] is_enterprise_security_group: Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
-        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
         :param pulumi.Input[Union['ManagedKubernetesMaintenanceWindowArgs', 'ManagedKubernetesMaintenanceWindowArgsDict']] maintenance_window: The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Only works for **Create** Operation.
         :param pulumi.Input[int] node_cidr_mask: The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
         :param pulumi.Input[Union['ManagedKubernetesOperationPolicyArgs', 'ManagedKubernetesOperationPolicyArgsDict']] operation_policy: The cluster automatic operation policy. See `operation_policy` below.
         :param pulumi.Input[str] pod_cidr: [Flannel Specific] The CIDR block for the pod network when using Flannel.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
         :param pulumi.Input[str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
@@ -1533,13 +1595,19 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] timezone: When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
         :param pulumi.Input[str] user_ca: The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_vswitch_ids: The vswitches used by control plane.  See `worker_vswitch_ids` below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: The vSwitches of the control plane.
+               > **NOTE:** Please take of note before updating the `vswitch_ids`:
+               * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
+               * The control plane restarts during the change process. Exercise caution when you perform this operation.
+               * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
+               * If the new vSwitches of the control plane are configured with an ACL, ensure that the ACL allows communication between the new vSwitches and CIDR blocks such as those of the cluster nodes and the container network.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_vswitch_ids: The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vswtiches, which supports modifying control plane vswtiches.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ManagedKubernetesArgs,
+                 args: Optional[ManagedKubernetesArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource will help you to manage a ManagedKubernetes Cluster in Alibaba Cloud Kubernetes Service.
@@ -1633,6 +1701,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                  timezone: Optional[pulumi.Input[str]] = None,
                  user_ca: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
+                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  worker_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1679,8 +1748,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             __props__.__dict__["timezone"] = timezone
             __props__.__dict__["user_ca"] = user_ca
             __props__.__dict__["version"] = version
-            if worker_vswitch_ids is None and not opts.urn:
-                raise TypeError("Missing required property 'worker_vswitch_ids'")
+            __props__.__dict__["vswitch_ids"] = vswitch_ids
             __props__.__dict__["worker_vswitch_ids"] = worker_vswitch_ids
             __props__.__dict__["certificate_authority"] = None
             __props__.__dict__["connections"] = None
@@ -1745,6 +1813,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             user_ca: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[str]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
+            vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             worker_ram_role_name: Optional[pulumi.Input[str]] = None,
             worker_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'ManagedKubernetes':
         """
@@ -1779,7 +1848,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         :param pulumi.Input[str] encryption_provider_key: The disk encryption key.
         :param pulumi.Input[bool] is_enterprise_security_group: Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
-        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
         :param pulumi.Input[Union['ManagedKubernetesMaintenanceWindowArgs', 'ManagedKubernetesMaintenanceWindowArgsDict']] maintenance_window: The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
         :param pulumi.Input[str] nat_gateway_id: The ID of nat gateway used to launch kubernetes cluster.
@@ -1787,7 +1856,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[int] node_cidr_mask: The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
         :param pulumi.Input[Union['ManagedKubernetesOperationPolicyArgs', 'ManagedKubernetesOperationPolicyArgsDict']] operation_policy: The cluster automatic operation policy. See `operation_policy` below.
         :param pulumi.Input[str] pod_cidr: [Flannel Specific] The CIDR block for the pod network when using Flannel.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
         :param pulumi.Input[str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[Union['ManagedKubernetesRrsaMetadataArgs', 'ManagedKubernetesRrsaMetadataArgsDict']] rrsa_metadata: (Optional, Available since v1.185.0) Nested attribute containing RRSA related data for your cluster.
@@ -1808,8 +1877,14 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] user_ca: The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
         :param pulumi.Input[str] vpc_id: The ID of VPC where the current cluster is located.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: The vSwitches of the control plane.
+               > **NOTE:** Please take of note before updating the `vswitch_ids`:
+               * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
+               * The control plane restarts during the change process. Exercise caution when you perform this operation.
+               * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
+               * If the new vSwitches of the control plane are configured with an ACL, ensure that the ACL allows communication between the new vSwitches and CIDR blocks such as those of the cluster nodes and the container network.
         :param pulumi.Input[str] worker_ram_role_name: The RamRole Name attached to worker node.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_vswitch_ids: The vswitches used by control plane.  See `worker_vswitch_ids` below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_vswitch_ids: The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vswtiches, which supports modifying control plane vswtiches.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1859,6 +1934,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         __props__.__dict__["user_ca"] = user_ca
         __props__.__dict__["version"] = version
         __props__.__dict__["vpc_id"] = vpc_id
+        __props__.__dict__["vswitch_ids"] = vswitch_ids
         __props__.__dict__["worker_ram_role_name"] = worker_ram_role_name
         __props__.__dict__["worker_vswitch_ids"] = worker_vswitch_ids
         return ManagedKubernetes(resource_name, opts=opts, __props__=__props__)
@@ -2016,10 +2092,10 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="loadBalancerSpec")
-    @_utilities.deprecated("""Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.""")
-    def load_balancer_spec(self) -> pulumi.Output[Optional[str]]:
+    @_utilities.deprecated("""Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU""")
+    def load_balancer_spec(self) -> pulumi.Output[str]:
         """
-        The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+        The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
         """
         return pulumi.get(self, "load_balancer_spec")
 
@@ -2088,7 +2164,7 @@ class ManagedKubernetes(pulumi.CustomResource):
     @pulumi.getter(name="podVswitchIds")
     def pod_vswitch_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
+        [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
         """
         return pulumi.get(self, "pod_vswitch_ids")
 
@@ -2223,6 +2299,19 @@ class ManagedKubernetes(pulumi.CustomResource):
         return pulumi.get(self, "vpc_id")
 
     @property
+    @pulumi.getter(name="vswitchIds")
+    def vswitch_ids(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The vSwitches of the control plane.
+        > **NOTE:** Please take of note before updating the `vswitch_ids`:
+        * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
+        * The control plane restarts during the change process. Exercise caution when you perform this operation.
+        * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
+        * If the new vSwitches of the control plane are configured with an ACL, ensure that the ACL allows communication between the new vSwitches and CIDR blocks such as those of the cluster nodes and the container network.
+        """
+        return pulumi.get(self, "vswitch_ids")
+
+    @property
     @pulumi.getter(name="workerRamRoleName")
     def worker_ram_role_name(self) -> pulumi.Output[str]:
         """
@@ -2232,9 +2321,10 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="workerVswitchIds")
-    def worker_vswitch_ids(self) -> pulumi.Output[Sequence[str]]:
+    @_utilities.deprecated("""Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches""")
+    def worker_vswitch_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The vswitches used by control plane.  See `worker_vswitch_ids` below.
+        The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vswtiches, which supports modifying control plane vswtiches.
         """
         return pulumi.get(self, "worker_vswitch_ids")
 

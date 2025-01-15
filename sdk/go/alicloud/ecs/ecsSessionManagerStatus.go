@@ -16,7 +16,7 @@ import (
 //
 // For information about ECS Session Manager Status and how to use it, see [What is Session Manager Status](https://www.alibabacloud.com/help/zh/doc-detail/337915.html).
 //
-// > **NOTE:** Available in v1.148.0+.
+// > **NOTE:** Available since v1.148.0.
 //
 // ## Example Usage
 //
@@ -52,14 +52,14 @@ import (
 // ECS Session Manager Status can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus example <session_manager_status_name>
+// $ pulumi import alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus example <id>
 // ```
 type EcsSessionManagerStatus struct {
 	pulumi.CustomResourceState
 
-	// The name of the resource. Valid values: `sessionManagerStatus`.
+	// The name of the Session Manager Status. Valid values: `sessionManagerStatus`.
 	SessionManagerStatusName pulumi.StringOutput `pulumi:"sessionManagerStatusName"`
-	// The status of the resource. Valid values: `Disabled`, `Enabled`.
+	// The status of the Session Manager Status. Valid values: `Enabled`, `Disabled`.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -99,16 +99,16 @@ func GetEcsSessionManagerStatus(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EcsSessionManagerStatus resources.
 type ecsSessionManagerStatusState struct {
-	// The name of the resource. Valid values: `sessionManagerStatus`.
+	// The name of the Session Manager Status. Valid values: `sessionManagerStatus`.
 	SessionManagerStatusName *string `pulumi:"sessionManagerStatusName"`
-	// The status of the resource. Valid values: `Disabled`, `Enabled`.
+	// The status of the Session Manager Status. Valid values: `Enabled`, `Disabled`.
 	Status *string `pulumi:"status"`
 }
 
 type EcsSessionManagerStatusState struct {
-	// The name of the resource. Valid values: `sessionManagerStatus`.
+	// The name of the Session Manager Status. Valid values: `sessionManagerStatus`.
 	SessionManagerStatusName pulumi.StringPtrInput
-	// The status of the resource. Valid values: `Disabled`, `Enabled`.
+	// The status of the Session Manager Status. Valid values: `Enabled`, `Disabled`.
 	Status pulumi.StringPtrInput
 }
 
@@ -117,17 +117,17 @@ func (EcsSessionManagerStatusState) ElementType() reflect.Type {
 }
 
 type ecsSessionManagerStatusArgs struct {
-	// The name of the resource. Valid values: `sessionManagerStatus`.
+	// The name of the Session Manager Status. Valid values: `sessionManagerStatus`.
 	SessionManagerStatusName string `pulumi:"sessionManagerStatusName"`
-	// The status of the resource. Valid values: `Disabled`, `Enabled`.
+	// The status of the Session Manager Status. Valid values: `Enabled`, `Disabled`.
 	Status string `pulumi:"status"`
 }
 
 // The set of arguments for constructing a EcsSessionManagerStatus resource.
 type EcsSessionManagerStatusArgs struct {
-	// The name of the resource. Valid values: `sessionManagerStatus`.
+	// The name of the Session Manager Status. Valid values: `sessionManagerStatus`.
 	SessionManagerStatusName pulumi.StringInput
-	// The status of the resource. Valid values: `Disabled`, `Enabled`.
+	// The status of the Session Manager Status. Valid values: `Enabled`, `Disabled`.
 	Status pulumi.StringInput
 }
 
@@ -218,12 +218,12 @@ func (o EcsSessionManagerStatusOutput) ToEcsSessionManagerStatusOutputWithContex
 	return o
 }
 
-// The name of the resource. Valid values: `sessionManagerStatus`.
+// The name of the Session Manager Status. Valid values: `sessionManagerStatus`.
 func (o EcsSessionManagerStatusOutput) SessionManagerStatusName() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsSessionManagerStatus) pulumi.StringOutput { return v.SessionManagerStatusName }).(pulumi.StringOutput)
 }
 
-// The status of the resource. Valid values: `Disabled`, `Enabled`.
+// The status of the Session Manager Status. Valid values: `Enabled`, `Disabled`.
 func (o EcsSessionManagerStatusOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsSessionManagerStatus) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

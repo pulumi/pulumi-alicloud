@@ -214,14 +214,14 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Custom Image support. Must based on CentOS7 or AliyunLinux2.
+     * Custom Image support. Must be based on AliyunLinux or AliyunLinux3.
      * 
      */
     @Import(name="imageId")
     private @Nullable Output<String> imageId;
 
     /**
-     * @return Custom Image support. Must based on CentOS7 or AliyunLinux2.
+     * @return Custom Image support. Must be based on AliyunLinux or AliyunLinux3.
      * 
      */
     public Optional<Output<String>> imageId() {
@@ -635,14 +635,14 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
+     * The architecture of the nodes that run pods, its valid value `AliyunLinux`, `AliyunLinux3`. Default to `AliyunLinux3`.
      * 
      */
     @Import(name="platform")
     private @Nullable Output<String> platform;
 
     /**
-     * @return The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
+     * @return The architecture of the nodes that run pods, its valid value `AliyunLinux`, `AliyunLinux3`. Default to `AliyunLinux3`.
      * 
      */
     public Optional<Output<String>> platform() {
@@ -1327,7 +1327,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageId Custom Image support. Must based on CentOS7 or AliyunLinux2.
+         * @param imageId Custom Image support. Must be based on AliyunLinux or AliyunLinux3.
          * 
          * @return builder
          * 
@@ -1338,7 +1338,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageId Custom Image support. Must based on CentOS7 or AliyunLinux2.
+         * @param imageId Custom Image support. Must be based on AliyunLinux or AliyunLinux3.
          * 
          * @return builder
          * 
@@ -1940,7 +1940,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param platform The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
+         * @param platform The architecture of the nodes that run pods, its valid value `AliyunLinux`, `AliyunLinux3`. Default to `AliyunLinux3`.
          * 
          * @return builder
          * 
@@ -1951,7 +1951,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param platform The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
+         * @param platform The architecture of the nodes that run pods, its valid value `AliyunLinux`, `AliyunLinux3`. Default to `AliyunLinux3`.
          * 
          * @return builder
          * 

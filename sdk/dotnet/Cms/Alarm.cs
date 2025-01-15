@@ -243,7 +243,7 @@ namespace Pulumi.AliCloud.Cms
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The information about the resource for which alerts are triggered. See `targets` below.
+        /// Adds or modifies the push channels of an alert rule. See `targets` below.
         /// </summary>
         [Output("targets")]
         public Output<ImmutableArray<Outputs.AlarmTarget>> Targets { get; private set; } = null!;
@@ -438,7 +438,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.AlarmTargetArgs>? _targets;
 
         /// <summary>
-        /// The information about the resource for which alerts are triggered. See `targets` below.
+        /// Adds or modifies the push channels of an alert rule. See `targets` below.
         /// </summary>
         public InputList<Inputs.AlarmTargetArgs> Targets
         {
@@ -604,7 +604,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.AlarmTargetGetArgs>? _targets;
 
         /// <summary>
-        /// The information about the resource for which alerts are triggered. See `targets` below.
+        /// Adds or modifies the push channels of an alert rule. See `targets` below.
         /// </summary>
         public InputList<Inputs.AlarmTargetGetArgs> Targets
         {

@@ -234,7 +234,7 @@ type Instance struct {
 	InternetMaxBandwidthOut pulumi.IntOutput `pulumi:"internetMaxBandwidthOut"`
 	// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
 	Ipv6AddressCount pulumi.IntOutput `pulumi:"ipv6AddressCount"`
-	// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+	// A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6Addresses` can be modified.
 	Ipv6Addresses pulumi.StringArrayOutput `pulumi:"ipv6Addresses"`
 	// Whether to use outdated instance type. Default to false.
 	IsOutdated pulumi.BoolPtrOutput `pulumi:"isOutdated"`
@@ -509,7 +509,7 @@ type instanceState struct {
 	InternetMaxBandwidthOut *int `pulumi:"internetMaxBandwidthOut"`
 	// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
 	Ipv6AddressCount *int `pulumi:"ipv6AddressCount"`
-	// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+	// A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6Addresses` can be modified.
 	Ipv6Addresses []string `pulumi:"ipv6Addresses"`
 	// Whether to use outdated instance type. Default to false.
 	IsOutdated *bool `pulumi:"isOutdated"`
@@ -748,7 +748,7 @@ type InstanceState struct {
 	InternetMaxBandwidthOut pulumi.IntPtrInput
 	// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
 	Ipv6AddressCount pulumi.IntPtrInput
-	// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+	// A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6Addresses` can be modified.
 	Ipv6Addresses pulumi.StringArrayInput
 	// Whether to use outdated instance type. Default to false.
 	IsOutdated pulumi.BoolPtrInput
@@ -983,7 +983,7 @@ type instanceArgs struct {
 	InternetMaxBandwidthOut *int `pulumi:"internetMaxBandwidthOut"`
 	// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
 	Ipv6AddressCount *int `pulumi:"ipv6AddressCount"`
-	// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+	// A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6Addresses` can be modified.
 	Ipv6Addresses []string `pulumi:"ipv6Addresses"`
 	// Whether to use outdated instance type. Default to false.
 	IsOutdated *bool `pulumi:"isOutdated"`
@@ -1199,7 +1199,7 @@ type InstanceArgs struct {
 	InternetMaxBandwidthOut pulumi.IntPtrInput
 	// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
 	Ipv6AddressCount pulumi.IntPtrInput
-	// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+	// A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6Addresses` can be modified.
 	Ipv6Addresses pulumi.StringArrayInput
 	// Whether to use outdated instance type. Default to false.
 	IsOutdated pulumi.BoolPtrInput
@@ -1604,7 +1604,7 @@ func (o InstanceOutput) Ipv6AddressCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.Ipv6AddressCount }).(pulumi.IntOutput)
 }
 
-// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+// A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6Addresses` can be modified.
 func (o InstanceOutput) Ipv6Addresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.Ipv6Addresses }).(pulumi.StringArrayOutput)
 }

@@ -21,7 +21,7 @@ namespace Pulumi.AliCloud.Yundun.Outputs
         public readonly string? LoginNameMapping;
         public readonly string? MobileMapping;
         public readonly string? NameMapping;
-        public readonly string Password;
+        public readonly string? Password;
         public readonly int Port;
         public readonly string Server;
         public readonly string? StandbyServer;
@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.Yundun.Outputs
 
             string? nameMapping,
 
-            string password,
+            string? password,
 
             int port,
 

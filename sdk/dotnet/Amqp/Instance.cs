@@ -40,7 +40,12 @@ namespace Pulumi.AliCloud.Amqp
         public Output<string> InstanceName { get; private set; } = null!;
 
         /// <summary>
-        /// Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
+        /// Instance type. Valid values: 
+        /// - professional: professional Edition
+        /// - enterprise: enterprise Edition
+        /// - vip: Platinum Edition.
+        /// - serverless: Serverless Edition.
+        /// &gt; **NOTE:** There should not set the `instance_type` parameter when creating a serverless instance. Only need to set `payment_type = "PayAsYouGo"` and `serverless_charge_type = "onDemand"`.
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
@@ -72,19 +77,21 @@ namespace Pulumi.AliCloud.Amqp
         public Output<string?> ModifyType { get; private set; } = null!;
 
         /// <summary>
-        /// The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
+        /// The Payment type. Valid value: 
+        /// - Subscription: Pre-paid.
+        /// - PayAsYouGo: Post-paid, and for serverless Edition.
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
+        /// Prepayment cycle, unit: periodCycle. This parameter is valid when PaymentType is set to Subscription.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// Prepaid cycle units. Value: Month. Year: Year.
+        /// Prepaid cycle units. Value: Month, Year.
         /// </summary>
         [Output("periodCycle")]
         public Output<string?> PeriodCycle { get; private set; } = null!;
@@ -208,7 +215,12 @@ namespace Pulumi.AliCloud.Amqp
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
+        /// Instance type. Valid values: 
+        /// - professional: professional Edition
+        /// - enterprise: enterprise Edition
+        /// - vip: Platinum Edition.
+        /// - serverless: Serverless Edition.
+        /// &gt; **NOTE:** There should not set the `instance_type` parameter when creating a serverless instance. Only need to set `payment_type = "PayAsYouGo"` and `serverless_charge_type = "onDemand"`.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -240,19 +252,21 @@ namespace Pulumi.AliCloud.Amqp
         public Input<string>? ModifyType { get; set; }
 
         /// <summary>
-        /// The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
+        /// The Payment type. Valid value: 
+        /// - Subscription: Pre-paid.
+        /// - PayAsYouGo: Post-paid, and for serverless Edition.
         /// </summary>
         [Input("paymentType", required: true)]
         public Input<string> PaymentType { get; set; } = null!;
 
         /// <summary>
-        /// Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
+        /// Prepayment cycle, unit: periodCycle. This parameter is valid when PaymentType is set to Subscription.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// Prepaid cycle units. Value: Month. Year: Year.
+        /// Prepaid cycle units. Value: Month, Year.
         /// </summary>
         [Input("periodCycle")]
         public Input<string>? PeriodCycle { get; set; }
@@ -338,7 +352,12 @@ namespace Pulumi.AliCloud.Amqp
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
+        /// Instance type. Valid values: 
+        /// - professional: professional Edition
+        /// - enterprise: enterprise Edition
+        /// - vip: Platinum Edition.
+        /// - serverless: Serverless Edition.
+        /// &gt; **NOTE:** There should not set the `instance_type` parameter when creating a serverless instance. Only need to set `payment_type = "PayAsYouGo"` and `serverless_charge_type = "onDemand"`.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -370,19 +389,21 @@ namespace Pulumi.AliCloud.Amqp
         public Input<string>? ModifyType { get; set; }
 
         /// <summary>
-        /// The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
+        /// The Payment type. Valid value: 
+        /// - Subscription: Pre-paid.
+        /// - PayAsYouGo: Post-paid, and for serverless Edition.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
+        /// Prepayment cycle, unit: periodCycle. This parameter is valid when PaymentType is set to Subscription.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// Prepaid cycle units. Value: Month. Year: Year.
+        /// Prepaid cycle units. Value: Month, Year.
         /// </summary>
         [Input("periodCycle")]
         public Input<string>? PeriodCycle { get; set; }

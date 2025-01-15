@@ -120,7 +120,7 @@ def get_instances(description_regex: Optional[str] = None,
 
     This data source provides a list of cloud Bastionhost instances in an Alibaba Cloud account according to the specified filters.
 
-    > **NOTE:** Available in 1.63.0+ .
+    > **NOTE:** Available since v1.63.0.
 
     ## Example Usage
 
@@ -129,22 +129,14 @@ def get_instances(description_regex: Optional[str] = None,
     import pulumi_alicloud as alicloud
 
     instance = alicloud.bastionhost.get_instances(description_regex="^bastionhost")
-    pulumi.export("instance", [__item["id"] for __item in instance_alicloud_bastionhost_instances])
+    pulumi.export("instance", [__item.id for __item in [instance]])
     ```
 
 
     :param str description_regex: A regex string to filter results by the instance description.
     :param Sequence[str] ids: Matched instance IDs to filter data source result.
     :param str output_file: File name to persist data source output.
-    :param Mapping[str, str] tags: A map of tags assigned to the bastionhost instance. It must be in the format:
-           ```python
-           import pulumi
-           import pulumi_alicloud as alicloud
-           
-           instance = alicloud.bastionhost.get_instances(tags={
-               "tagKey1": "tagValue1",
-           })
-           ```
+    :param Mapping[str, str] tags: A map of tags assigned to the bastionhost instance.
     """
     __args__ = dict()
     __args__['descriptionRegex'] = description_regex
@@ -172,7 +164,7 @@ def get_instances_output(description_regex: Optional[pulumi.Input[Optional[str]]
 
     This data source provides a list of cloud Bastionhost instances in an Alibaba Cloud account according to the specified filters.
 
-    > **NOTE:** Available in 1.63.0+ .
+    > **NOTE:** Available since v1.63.0.
 
     ## Example Usage
 
@@ -181,22 +173,14 @@ def get_instances_output(description_regex: Optional[pulumi.Input[Optional[str]]
     import pulumi_alicloud as alicloud
 
     instance = alicloud.bastionhost.get_instances(description_regex="^bastionhost")
-    pulumi.export("instance", [__item["id"] for __item in instance_alicloud_bastionhost_instances])
+    pulumi.export("instance", [__item.id for __item in [instance]])
     ```
 
 
     :param str description_regex: A regex string to filter results by the instance description.
     :param Sequence[str] ids: Matched instance IDs to filter data source result.
     :param str output_file: File name to persist data source output.
-    :param Mapping[str, str] tags: A map of tags assigned to the bastionhost instance. It must be in the format:
-           ```python
-           import pulumi
-           import pulumi_alicloud as alicloud
-           
-           instance = alicloud.bastionhost.get_instances(tags={
-               "tagKey1": "tagValue1",
-           })
-           ```
+    :param Mapping[str, str] tags: A map of tags assigned to the bastionhost instance.
     """
     __args__ = dict()
     __args__['descriptionRegex'] = description_regex

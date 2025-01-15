@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AScriptExtAttribute {
     /**
-     * @return The key of the extended attribute.
+     * @return Key to extend attribute
      * 
      */
     private @Nullable String attributeKey;
     /**
-     * @return The value of the extended attribute.
+     * @return The value of the extended attribute
      * 
      */
     private @Nullable String attributeValue;
 
     private AScriptExtAttribute() {}
     /**
-     * @return The key of the extended attribute.
+     * @return Key to extend attribute
      * 
      */
     public Optional<String> attributeKey() {
         return Optional.ofNullable(this.attributeKey);
     }
     /**
-     * @return The value of the extended attribute.
+     * @return The value of the extended attribute
      * 
      */
     public Optional<String> attributeValue() {

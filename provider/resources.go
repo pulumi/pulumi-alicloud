@@ -63,6 +63,7 @@ const (
 	clickHouseMod          = "ClickHouse"
 	cloudAuthMod           = "CloudAuth"
 	cloudConnectMod        = "CloudConnect"
+	cloudControlMod        = "CloudControl"
 	cloudFirewallMod       = "CloudFirewall"
 	cloudMonitorMod        = "CloudMonitor"
 	cloudSsoMod            = "CloudSso"
@@ -196,6 +197,7 @@ var mappedMods = map[string]string{
 	"chatbot":               "Chatbot",
 	"clickhouse":            clickHouseMod,
 	"cloud_connect":         cloudConnectMod,
+	"cloud_control":         cloudControlMod,
 	"cloud_firewall":        cloudFirewallMod,
 	"cloud_monitor":         cloudMonitorMod,
 	"cloud_sso":             cloudSsoMod,

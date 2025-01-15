@@ -120,6 +120,9 @@ namespace Pulumi.AliCloud.CS
 
     public sealed class GetManagedKubernetesClustersArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `master_disk_category`, `slb_internet_enabled`, `connections`. See full list in attributes.
+        /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
 
@@ -161,6 +164,9 @@ namespace Pulumi.AliCloud.CS
 
     public sealed class GetManagedKubernetesClustersInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `master_disk_category`, `slb_internet_enabled`, `connections`. See full list in attributes.
+        /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
 

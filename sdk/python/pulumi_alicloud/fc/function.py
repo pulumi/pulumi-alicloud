@@ -354,6 +354,7 @@ class _FunctionState:
                  description: Optional[pulumi.Input[str]] = None,
                  environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  filename: Optional[pulumi.Input[str]] = None,
+                 function_arn: Optional[pulumi.Input[str]] = None,
                  function_id: Optional[pulumi.Input[str]] = None,
                  handler: Optional[pulumi.Input[str]] = None,
                  initialization_timeout: Optional[pulumi.Input[int]] = None,
@@ -379,7 +380,8 @@ class _FunctionState:
         :param pulumi.Input[str] description: The Function Compute function description.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: A map that defines environment variables for the function.
         :param pulumi.Input[str] filename: The path to the function's deployment package within the local filesystem. It is conflict with the `oss_`-prefixed options.
-        :param pulumi.Input[str] function_id: The Function Compute service ID.
+        :param pulumi.Input[str] function_arn: The Function Compute service function arn. It formats as `acs:fc:<region>:<uid>:services/<serviceName>.LATEST/functions/<functionName>`.
+        :param pulumi.Input[str] function_id: The Function Compute service function ID.
         :param pulumi.Input[str] handler: The function [entry point](https://www.alibabacloud.com/help/doc-detail/157704.htm) in your code.
         :param pulumi.Input[int] initialization_timeout: The maximum length of time, in seconds, that the function's initialization should be run for.
         :param pulumi.Input[str] initializer: The entry point of the function's [initialization](https://www.alibabacloud.com/help/doc-detail/157704.htm).
@@ -408,6 +410,8 @@ class _FunctionState:
             pulumi.set(__self__, "environment_variables", environment_variables)
         if filename is not None:
             pulumi.set(__self__, "filename", filename)
+        if function_arn is not None:
+            pulumi.set(__self__, "function_arn", function_arn)
         if function_id is not None:
             pulumi.set(__self__, "function_id", function_id)
         if handler is not None:
@@ -515,10 +519,22 @@ class _FunctionState:
         pulumi.set(self, "filename", value)
 
     @property
+    @pulumi.getter(name="functionArn")
+    def function_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Function Compute service function arn. It formats as `acs:fc:<region>:<uid>:services/<serviceName>.LATEST/functions/<functionName>`.
+        """
+        return pulumi.get(self, "function_arn")
+
+    @function_arn.setter
+    def function_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "function_arn", value)
+
+    @property
     @pulumi.getter(name="functionId")
     def function_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Function Compute service ID.
+        The Function Compute service function ID.
         """
         return pulumi.get(self, "function_id")
 
@@ -1021,6 +1037,7 @@ class Function(pulumi.CustomResource):
                 raise TypeError("Missing required property 'service'")
             __props__.__dict__["service"] = service
             __props__.__dict__["timeout"] = timeout
+            __props__.__dict__["function_arn"] = None
             __props__.__dict__["function_id"] = None
             __props__.__dict__["last_modified"] = None
         super(Function, __self__).__init__(
@@ -1039,6 +1056,7 @@ class Function(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             filename: Optional[pulumi.Input[str]] = None,
+            function_arn: Optional[pulumi.Input[str]] = None,
             function_id: Optional[pulumi.Input[str]] = None,
             handler: Optional[pulumi.Input[str]] = None,
             initialization_timeout: Optional[pulumi.Input[int]] = None,
@@ -1069,7 +1087,8 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] description: The Function Compute function description.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: A map that defines environment variables for the function.
         :param pulumi.Input[str] filename: The path to the function's deployment package within the local filesystem. It is conflict with the `oss_`-prefixed options.
-        :param pulumi.Input[str] function_id: The Function Compute service ID.
+        :param pulumi.Input[str] function_arn: The Function Compute service function arn. It formats as `acs:fc:<region>:<uid>:services/<serviceName>.LATEST/functions/<functionName>`.
+        :param pulumi.Input[str] function_id: The Function Compute service function ID.
         :param pulumi.Input[str] handler: The function [entry point](https://www.alibabacloud.com/help/doc-detail/157704.htm) in your code.
         :param pulumi.Input[int] initialization_timeout: The maximum length of time, in seconds, that the function's initialization should be run for.
         :param pulumi.Input[str] initializer: The entry point of the function's [initialization](https://www.alibabacloud.com/help/doc-detail/157704.htm).
@@ -1096,6 +1115,7 @@ class Function(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["environment_variables"] = environment_variables
         __props__.__dict__["filename"] = filename
+        __props__.__dict__["function_arn"] = function_arn
         __props__.__dict__["function_id"] = function_id
         __props__.__dict__["handler"] = handler
         __props__.__dict__["initialization_timeout"] = initialization_timeout
@@ -1164,10 +1184,18 @@ class Function(pulumi.CustomResource):
         return pulumi.get(self, "filename")
 
     @property
+    @pulumi.getter(name="functionArn")
+    def function_arn(self) -> pulumi.Output[str]:
+        """
+        The Function Compute service function arn. It formats as `acs:fc:<region>:<uid>:services/<serviceName>.LATEST/functions/<functionName>`.
+        """
+        return pulumi.get(self, "function_arn")
+
+    @property
     @pulumi.getter(name="functionId")
     def function_id(self) -> pulumi.Output[str]:
         """
-        The Function Compute service ID.
+        The Function Compute service function ID.
         """
         return pulumi.get(self, "function_id")
 

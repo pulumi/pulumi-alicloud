@@ -29,6 +29,12 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<string> Config { get; private set; } = null!;
 
         /// <summary>
+        /// The number of partitions in a topic that is automatically created.
+        /// </summary>
+        [Output("defaultTopicPartitionNum")]
+        public Output<int> DefaultTopicPartitionNum { get; private set; } = null!;
+
+        /// <summary>
         /// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
         /// - 4: eip/vpc instance
         /// - 5: vpc instance.
@@ -59,6 +65,18 @@ namespace Pulumi.AliCloud.AliKafka
         /// </summary>
         [Output("eipMax")]
         public Output<int> EipMax { get; private set; } = null!;
+
+        /// <summary>
+        /// Specify whether to enable the flexible group creation feature. Default value: `false`. Valid values:
+        /// </summary>
+        [Output("enableAutoGroup")]
+        public Output<bool?> EnableAutoGroup { get; private set; } = null!;
+
+        /// <summary>
+        /// Specify whether to enable the automatic topic creation feature. Default value: `disable`. Valid values:
+        /// </summary>
+        [Output("enableAutoTopic")]
+        public Output<string> EnableAutoTopic { get; private set; } = null!;
 
         /// <summary>
         /// The EndPoint to access the kafka instance.
@@ -154,16 +172,6 @@ namespace Pulumi.AliCloud.AliKafka
 
         /// <summary>
         /// The zones among which you want to deploy the instance.
-        /// 
-        /// &gt; **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
-        /// 
-        /// | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-        /// |------|-------------|:----:|:-----:|
-        /// |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-        /// |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-        /// |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-        /// |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-        /// |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
         /// </summary>
         [Output("selectedZones")]
         public Output<ImmutableArray<string>> SelectedZones { get; private set; } = null!;
@@ -244,6 +252,12 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<string> VswitchId { get; private set; } = null!;
 
         /// <summary>
+        /// The IDs of the vSwitches with which the instance is associated.
+        /// </summary>
+        [Output("vswitchIds")]
+        public Output<ImmutableArray<string>> VswitchIds { get; private set; } = null!;
+
+        /// <summary>
         /// The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
         /// </summary>
         [Output("zoneId")]
@@ -303,6 +317,12 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string>? Config { get; set; }
 
         /// <summary>
+        /// The number of partitions in a topic that is automatically created.
+        /// </summary>
+        [Input("defaultTopicPartitionNum")]
+        public Input<int>? DefaultTopicPartitionNum { get; set; }
+
+        /// <summary>
         /// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
         /// - 4: eip/vpc instance
         /// - 5: vpc instance.
@@ -327,6 +347,18 @@ namespace Pulumi.AliCloud.AliKafka
         /// </summary>
         [Input("eipMax")]
         public Input<int>? EipMax { get; set; }
+
+        /// <summary>
+        /// Specify whether to enable the flexible group creation feature. Default value: `false`. Valid values:
+        /// </summary>
+        [Input("enableAutoGroup")]
+        public Input<bool>? EnableAutoGroup { get; set; }
+
+        /// <summary>
+        /// Specify whether to enable the automatic topic creation feature. Default value: `disable`. Valid values:
+        /// </summary>
+        [Input("enableAutoTopic")]
+        public Input<string>? EnableAutoTopic { get; set; }
 
         /// <summary>
         /// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
@@ -383,16 +415,6 @@ namespace Pulumi.AliCloud.AliKafka
 
         /// <summary>
         /// The zones among which you want to deploy the instance.
-        /// 
-        /// &gt; **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
-        /// 
-        /// | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-        /// |------|-------------|:----:|:-----:|
-        /// |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-        /// |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-        /// |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-        /// |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-        /// |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
         /// </summary>
         public InputList<string> SelectedZones
         {
@@ -445,6 +467,18 @@ namespace Pulumi.AliCloud.AliKafka
         [Input("vswitchId", required: true)]
         public Input<string> VswitchId { get; set; } = null!;
 
+        [Input("vswitchIds")]
+        private InputList<string>? _vswitchIds;
+
+        /// <summary>
+        /// The IDs of the vSwitches with which the instance is associated.
+        /// </summary>
+        public InputList<string> VswitchIds
+        {
+            get => _vswitchIds ?? (_vswitchIds = new InputList<string>());
+            set => _vswitchIds = value;
+        }
+
         /// <summary>
         /// The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
         /// </summary>
@@ -465,6 +499,12 @@ namespace Pulumi.AliCloud.AliKafka
         /// </summary>
         [Input("config")]
         public Input<string>? Config { get; set; }
+
+        /// <summary>
+        /// The number of partitions in a topic that is automatically created.
+        /// </summary>
+        [Input("defaultTopicPartitionNum")]
+        public Input<int>? DefaultTopicPartitionNum { get; set; }
 
         /// <summary>
         /// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
@@ -497,6 +537,18 @@ namespace Pulumi.AliCloud.AliKafka
         /// </summary>
         [Input("eipMax")]
         public Input<int>? EipMax { get; set; }
+
+        /// <summary>
+        /// Specify whether to enable the flexible group creation feature. Default value: `false`. Valid values:
+        /// </summary>
+        [Input("enableAutoGroup")]
+        public Input<bool>? EnableAutoGroup { get; set; }
+
+        /// <summary>
+        /// Specify whether to enable the automatic topic creation feature. Default value: `disable`. Valid values:
+        /// </summary>
+        [Input("enableAutoTopic")]
+        public Input<string>? EnableAutoTopic { get; set; }
 
         /// <summary>
         /// The EndPoint to access the kafka instance.
@@ -595,16 +647,6 @@ namespace Pulumi.AliCloud.AliKafka
 
         /// <summary>
         /// The zones among which you want to deploy the instance.
-        /// 
-        /// &gt; **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
-        /// 
-        /// | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-        /// |------|-------------|:----:|:-----:|
-        /// |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-        /// |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-        /// |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-        /// |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-        /// |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
         /// </summary>
         public InputList<string> SelectedZones
         {
@@ -692,6 +734,18 @@ namespace Pulumi.AliCloud.AliKafka
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
+
+        [Input("vswitchIds")]
+        private InputList<string>? _vswitchIds;
+
+        /// <summary>
+        /// The IDs of the vSwitches with which the instance is associated.
+        /// </summary>
+        public InputList<string> VswitchIds
+        {
+            get => _vswitchIds ?? (_vswitchIds = new InputList<string>());
+            set => _vswitchIds = value;
+        }
 
         /// <summary>
         /// The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.

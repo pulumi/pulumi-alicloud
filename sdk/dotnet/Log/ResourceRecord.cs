@@ -59,12 +59,20 @@ namespace Pulumi.AliCloud.Log
     ///     var exampleResourceRecord = new AliCloud.Log.ResourceRecord("example", new()
     ///     {
     ///         ResourceName = example.Id,
-    ///         RecordId = "user_tf_resource_1",
-    ///         Tag = "resource tag",
-    ///         Value = @"    {
-    ///       ""col1"": ""this is col1 value"",
-    ///       ""col2"": ""col2   value""
-    ///     }
+    ///         RecordId = "tf_user_example",
+    ///         Tag = "tf example",
+    ///         Value = @"{
+    ///   ""user_name"": ""tf example"",
+    ///   ""sms_enabled"": true,
+    ///   ""phone"": ""18888888889"",
+    ///   ""voice_enabled"": false,
+    ///   ""email"": [
+    ///     ""test@qq.com""
+    ///   ],
+    ///   ""enabled"": true,
+    ///   ""user_id"": ""tf_user"",
+    ///   ""country_code"": ""86""
+    /// }
     /// ",
     ///     });
     /// 
@@ -89,7 +97,7 @@ namespace Pulumi.AliCloud.Log
         public Output<string> RecordId { get; private set; } = null!;
 
         /// <summary>
-        /// The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group.
+        /// The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
         /// </summary>
         [Output("resourceName")]
         public Output<string> ResourceName { get; private set; } = null!;
@@ -101,7 +109,7 @@ namespace Pulumi.AliCloud.Log
         public Output<string> Tag { get; private set; } = null!;
 
         /// <summary>
-        /// The json value of record.
+        /// The json value of record. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
         /// </summary>
         [Output("value")]
         public Output<string> Value { get; private set; } = null!;
@@ -159,7 +167,7 @@ namespace Pulumi.AliCloud.Log
         public Input<string> RecordId { get; set; } = null!;
 
         /// <summary>
-        /// The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group.
+        /// The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
         /// </summary>
         [Input("resourceName", required: true)]
         public Input<string> ResourceName { get; set; } = null!;
@@ -171,7 +179,7 @@ namespace Pulumi.AliCloud.Log
         public Input<string> Tag { get; set; } = null!;
 
         /// <summary>
-        /// The json value of record.
+        /// The json value of record. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
@@ -191,7 +199,7 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? RecordId { get; set; }
 
         /// <summary>
-        /// The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group.
+        /// The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
         /// </summary>
         [Input("resourceName")]
         public Input<string>? ResourceName { get; set; }
@@ -203,7 +211,7 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? Tag { get; set; }
 
         /// <summary>
-        /// The json value of record.
+        /// The json value of record. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

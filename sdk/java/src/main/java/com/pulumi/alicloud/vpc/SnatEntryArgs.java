@@ -6,6 +6,7 @@ package com.pulumi.alicloud.vpc;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,14 +18,29 @@ public final class SnatEntryArgs extends com.pulumi.resources.ResourceArgs {
     public static final SnatEntryArgs Empty = new SnatEntryArgs();
 
     /**
-     * The name of snat entry.
+     * Specifies whether to enable EIP affinity. Default value: `0`. Valid values:
+     * 
+     */
+    @Import(name="eipAffinity")
+    private @Nullable Output<Integer> eipAffinity;
+
+    /**
+     * @return Specifies whether to enable EIP affinity. Default value: `0`. Valid values:
+     * 
+     */
+    public Optional<Output<Integer>> eipAffinity() {
+        return Optional.ofNullable(this.eipAffinity);
+    }
+
+    /**
+     * The name of the SNAT entry. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
      * 
      */
     @Import(name="snatEntryName")
     private @Nullable Output<String> snatEntryName;
 
     /**
-     * @return The name of snat entry.
+     * @return The name of the SNAT entry. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
      * 
      */
     public Optional<Output<String>> snatEntryName() {
@@ -32,14 +48,14 @@ public final class SnatEntryArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The SNAT ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidth_packages`.
+     * The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snat_ip` can be modified.
      * 
      */
     @Import(name="snatIp", required=true)
     private Output<String> snatIp;
 
     /**
-     * @return The SNAT ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidth_packages`.
+     * @return The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snat_ip` can be modified.
      * 
      */
     public Output<String> snatIp() {
@@ -47,14 +63,14 @@ public final class SnatEntryArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The value can get from `alicloud.vpc.NatGateway` Attributes &#34;snat_table_ids&#34;.
+     * The ID of the SNAT table.
      * 
      */
     @Import(name="snatTableId", required=true)
     private Output<String> snatTableId;
 
     /**
-     * @return The value can get from `alicloud.vpc.NatGateway` Attributes &#34;snat_table_ids&#34;.
+     * @return The ID of the SNAT table.
      * 
      */
     public Output<String> snatTableId() {
@@ -62,14 +78,14 @@ public final class SnatEntryArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The private network segment of Ecs. This parameter and the `source_vswitch_id` parameter are mutually exclusive and cannot appear at the same time.
+     * The source CIDR block specified in the SNAT entry.
      * 
      */
     @Import(name="sourceCidr")
     private @Nullable Output<String> sourceCidr;
 
     /**
-     * @return The private network segment of Ecs. This parameter and the `source_vswitch_id` parameter are mutually exclusive and cannot appear at the same time.
+     * @return The source CIDR block specified in the SNAT entry.
      * 
      */
     public Optional<Output<String>> sourceCidr() {
@@ -77,14 +93,14 @@ public final class SnatEntryArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The vswitch ID.
+     * The ID of the vSwitch.
      * 
      */
     @Import(name="sourceVswitchId")
     private @Nullable Output<String> sourceVswitchId;
 
     /**
-     * @return The vswitch ID.
+     * @return The ID of the vSwitch.
      * 
      */
     public Optional<Output<String>> sourceVswitchId() {
@@ -94,6 +110,7 @@ public final class SnatEntryArgs extends com.pulumi.resources.ResourceArgs {
     private SnatEntryArgs() {}
 
     private SnatEntryArgs(SnatEntryArgs $) {
+        this.eipAffinity = $.eipAffinity;
         this.snatEntryName = $.snatEntryName;
         this.snatIp = $.snatIp;
         this.snatTableId = $.snatTableId;
@@ -120,7 +137,28 @@ public final class SnatEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snatEntryName The name of snat entry.
+         * @param eipAffinity Specifies whether to enable EIP affinity. Default value: `0`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder eipAffinity(@Nullable Output<Integer> eipAffinity) {
+            $.eipAffinity = eipAffinity;
+            return this;
+        }
+
+        /**
+         * @param eipAffinity Specifies whether to enable EIP affinity. Default value: `0`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder eipAffinity(Integer eipAffinity) {
+            return eipAffinity(Output.of(eipAffinity));
+        }
+
+        /**
+         * @param snatEntryName The name of the SNAT entry. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -131,7 +169,7 @@ public final class SnatEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snatEntryName The name of snat entry.
+         * @param snatEntryName The name of the SNAT entry. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -141,7 +179,7 @@ public final class SnatEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snatIp The SNAT ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidth_packages`.
+         * @param snatIp The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snat_ip` can be modified.
          * 
          * @return builder
          * 
@@ -152,7 +190,7 @@ public final class SnatEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snatIp The SNAT ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidth_packages`.
+         * @param snatIp The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snat_ip` can be modified.
          * 
          * @return builder
          * 
@@ -162,7 +200,7 @@ public final class SnatEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snatTableId The value can get from `alicloud.vpc.NatGateway` Attributes &#34;snat_table_ids&#34;.
+         * @param snatTableId The ID of the SNAT table.
          * 
          * @return builder
          * 
@@ -173,7 +211,7 @@ public final class SnatEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snatTableId The value can get from `alicloud.vpc.NatGateway` Attributes &#34;snat_table_ids&#34;.
+         * @param snatTableId The ID of the SNAT table.
          * 
          * @return builder
          * 
@@ -183,7 +221,7 @@ public final class SnatEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceCidr The private network segment of Ecs. This parameter and the `source_vswitch_id` parameter are mutually exclusive and cannot appear at the same time.
+         * @param sourceCidr The source CIDR block specified in the SNAT entry.
          * 
          * @return builder
          * 
@@ -194,7 +232,7 @@ public final class SnatEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceCidr The private network segment of Ecs. This parameter and the `source_vswitch_id` parameter are mutually exclusive and cannot appear at the same time.
+         * @param sourceCidr The source CIDR block specified in the SNAT entry.
          * 
          * @return builder
          * 
@@ -204,7 +242,7 @@ public final class SnatEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceVswitchId The vswitch ID.
+         * @param sourceVswitchId The ID of the vSwitch.
          * 
          * @return builder
          * 
@@ -215,7 +253,7 @@ public final class SnatEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceVswitchId The vswitch ID.
+         * @param sourceVswitchId The ID of the vSwitch.
          * 
          * @return builder
          * 

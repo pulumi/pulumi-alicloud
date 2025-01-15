@@ -249,14 +249,14 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enableSsh);
     }
     /**
-     * Custom Image support. Must based on CentOS7 or AliyunLinux2.
+     * Custom Image support. Must be based on AliyunLinux or AliyunLinux3.
      * 
      */
     @Export(name="imageId", refs={String.class}, tree="[0]")
     private Output<String> imageId;
 
     /**
-     * @return Custom Image support. Must based on CentOS7 or AliyunLinux2.
+     * @return Custom Image support. Must be based on AliyunLinux or AliyunLinux3.
      * 
      */
     public Output<String> imageId() {
@@ -633,14 +633,14 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.password);
     }
     /**
-     * The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
+     * The architecture of the nodes that run pods, its valid value `AliyunLinux`, `AliyunLinux3`. Default to `AliyunLinux3`.
      * 
      */
     @Export(name="platform", refs={String.class}, tree="[0]")
     private Output<String> platform;
 
     /**
-     * @return The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
+     * @return The architecture of the nodes that run pods, its valid value `AliyunLinux`, `AliyunLinux3`. Default to `AliyunLinux3`.
      * 
      */
     public Output<String> platform() {

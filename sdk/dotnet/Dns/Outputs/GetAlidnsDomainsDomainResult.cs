@@ -57,6 +57,9 @@ namespace Pulumi.AliCloud.Dns.Outputs
         /// Cloud analysis product ID.
         /// </summary>
         public readonly string InstanceId;
+        /// <summary>
+        /// The type of the DNS request line.
+        /// </summary>
         public readonly string LineType;
         /// <summary>
         /// Minimum TTL.
@@ -98,6 +101,9 @@ namespace Pulumi.AliCloud.Dns.Outputs
         /// Cloud analysis version code.
         /// </summary>
         public readonly string VersionCode;
+        /// <summary>
+        /// Cloud analysis version name of the domain.
+        /// </summary>
         public readonly string VersionName;
 
         [OutputConstructor]

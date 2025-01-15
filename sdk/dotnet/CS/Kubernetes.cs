@@ -134,7 +134,7 @@ namespace Pulumi.AliCloud.CS
         public Output<bool?> EnableSsh { get; private set; } = null!;
 
         /// <summary>
-        /// Custom Image support. Must based on CentOS7 or AliyunLinux2.
+        /// Custom Image support. Must be based on AliyunLinux or AliyunLinux3.
         /// </summary>
         [Output("imageId")]
         public Output<string> ImageId { get; private set; } = null!;
@@ -295,7 +295,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
+        /// The architecture of the nodes that run pods, its valid value `AliyunLinux`, `AliyunLinux3`. Default to `AliyunLinux3`.
         /// </summary>
         [Output("platform")]
         public Output<string> Platform { get; private set; } = null!;
@@ -555,7 +555,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? EnableSsh { get; set; }
 
         /// <summary>
-        /// Custom Image support. Must based on CentOS7 or AliyunLinux2.
+        /// Custom Image support. Must be based on AliyunLinux or AliyunLinux3.
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
@@ -732,7 +732,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
+        /// The architecture of the nodes that run pods, its valid value `AliyunLinux`, `AliyunLinux3`. Default to `AliyunLinux3`.
         /// </summary>
         [Input("platform")]
         public Input<string>? Platform { get; set; }
@@ -955,7 +955,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? EnableSsh { get; set; }
 
         /// <summary>
-        /// Custom Image support. Must based on CentOS7 or AliyunLinux2.
+        /// Custom Image support. Must be based on AliyunLinux or AliyunLinux3.
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
@@ -1150,7 +1150,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
+        /// The architecture of the nodes that run pods, its valid value `AliyunLinux`, `AliyunLinux3`. Default to `AliyunLinux3`.
         /// </summary>
         [Input("platform")]
         public Input<string>? Platform { get; set; }

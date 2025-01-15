@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
-    /// Provides a snat resource.
+    /// Provides a NAT Gateway Snat Entry resource.
+    /// 
+    /// For information about NAT Gateway Snat Entry and how to use it, see [What is Snat Entry](https://www.alibabacloud.com/help/en/nat-gateway/developer-reference/api-vpc-2016-04-28-createsnatentry-natgws).
     /// 
     /// &gt; **NOTE:** Available since v1.119.0.
     /// 
@@ -27,7 +29,7 @@ namespace Pulumi.AliCloud.Vpc
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
@@ -79,15 +81,25 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// ## Import
     /// 
-    /// Snat Entry can be imported using the id, e.g.
+    /// NAT Gateway Snat Entry can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:vpc/snatEntry:SnatEntry foo stb-1aece3:snat-232ce2
+    /// $ pulumi import alicloud:vpc/snatEntry:SnatEntry example &lt;snat_table_id&gt;:&lt;snat_entry_id&gt;
+    /// ```
+    /// 
+    /// ```sh
+    /// $ pulumi import alicloud:vpc/snatEntry:SnatEntry example &lt;snat_entry_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/snatEntry:SnatEntry")]
     public partial class SnatEntry : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Specifies whether to enable EIP affinity. Default value: `0`. Valid values:
+        /// </summary>
+        [Output("eipAffinity")]
+        public Output<int?> EipAffinity { get; private set; } = null!;
+
         /// <summary>
         /// The id of the snat entry on the server.
         /// </summary>
@@ -95,37 +107,37 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> SnatEntryId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of snat entry.
+        /// The name of the SNAT entry. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
         /// </summary>
         [Output("snatEntryName")]
         public Output<string?> SnatEntryName { get; private set; } = null!;
 
         /// <summary>
-        /// The SNAT ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidth_packages`.
+        /// The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snat_ip` can be modified.
         /// </summary>
         [Output("snatIp")]
         public Output<string> SnatIp { get; private set; } = null!;
 
         /// <summary>
-        /// The value can get from `alicloud.vpc.NatGateway` Attributes "snat_table_ids".
+        /// The ID of the SNAT table.
         /// </summary>
         [Output("snatTableId")]
         public Output<string> SnatTableId { get; private set; } = null!;
 
         /// <summary>
-        /// The private network segment of Ecs. This parameter and the `source_vswitch_id` parameter are mutually exclusive and cannot appear at the same time.
+        /// The source CIDR block specified in the SNAT entry.
         /// </summary>
         [Output("sourceCidr")]
         public Output<string> SourceCidr { get; private set; } = null!;
 
         /// <summary>
-        /// The vswitch ID.
+        /// The ID of the vSwitch.
         /// </summary>
         [Output("sourceVswitchId")]
         public Output<string> SourceVswitchId { get; private set; } = null!;
 
         /// <summary>
-        /// (Available since v1.119.1) The status of snat entry.
+        /// (Available since v1.119.1) The ID of the SNAT entry.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -177,31 +189,37 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class SnatEntryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of snat entry.
+        /// Specifies whether to enable EIP affinity. Default value: `0`. Valid values:
+        /// </summary>
+        [Input("eipAffinity")]
+        public Input<int>? EipAffinity { get; set; }
+
+        /// <summary>
+        /// The name of the SNAT entry. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
         /// </summary>
         [Input("snatEntryName")]
         public Input<string>? SnatEntryName { get; set; }
 
         /// <summary>
-        /// The SNAT ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidth_packages`.
+        /// The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snat_ip` can be modified.
         /// </summary>
         [Input("snatIp", required: true)]
         public Input<string> SnatIp { get; set; } = null!;
 
         /// <summary>
-        /// The value can get from `alicloud.vpc.NatGateway` Attributes "snat_table_ids".
+        /// The ID of the SNAT table.
         /// </summary>
         [Input("snatTableId", required: true)]
         public Input<string> SnatTableId { get; set; } = null!;
 
         /// <summary>
-        /// The private network segment of Ecs. This parameter and the `source_vswitch_id` parameter are mutually exclusive and cannot appear at the same time.
+        /// The source CIDR block specified in the SNAT entry.
         /// </summary>
         [Input("sourceCidr")]
         public Input<string>? SourceCidr { get; set; }
 
         /// <summary>
-        /// The vswitch ID.
+        /// The ID of the vSwitch.
         /// </summary>
         [Input("sourceVswitchId")]
         public Input<string>? SourceVswitchId { get; set; }
@@ -215,43 +233,49 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class SnatEntryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specifies whether to enable EIP affinity. Default value: `0`. Valid values:
+        /// </summary>
+        [Input("eipAffinity")]
+        public Input<int>? EipAffinity { get; set; }
+
+        /// <summary>
         /// The id of the snat entry on the server.
         /// </summary>
         [Input("snatEntryId")]
         public Input<string>? SnatEntryId { get; set; }
 
         /// <summary>
-        /// The name of snat entry.
+        /// The name of the SNAT entry. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
         /// </summary>
         [Input("snatEntryName")]
         public Input<string>? SnatEntryName { get; set; }
 
         /// <summary>
-        /// The SNAT ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidth_packages`.
+        /// The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snat_ip` can be modified.
         /// </summary>
         [Input("snatIp")]
         public Input<string>? SnatIp { get; set; }
 
         /// <summary>
-        /// The value can get from `alicloud.vpc.NatGateway` Attributes "snat_table_ids".
+        /// The ID of the SNAT table.
         /// </summary>
         [Input("snatTableId")]
         public Input<string>? SnatTableId { get; set; }
 
         /// <summary>
-        /// The private network segment of Ecs. This parameter and the `source_vswitch_id` parameter are mutually exclusive and cannot appear at the same time.
+        /// The source CIDR block specified in the SNAT entry.
         /// </summary>
         [Input("sourceCidr")]
         public Input<string>? SourceCidr { get; set; }
 
         /// <summary>
-        /// The vswitch ID.
+        /// The ID of the vSwitch.
         /// </summary>
         [Input("sourceVswitchId")]
         public Input<string>? SourceVswitchId { get; set; }
 
         /// <summary>
-        /// (Available since v1.119.1) The status of snat entry.
+        /// (Available since v1.119.1) The ID of the SNAT entry.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

@@ -53,7 +53,10 @@ namespace Pulumi.AliCloud.Oss.Outputs
         /// Bucket owner.
         /// </summary>
         public readonly string Owner;
-        public readonly string? Policy;
+        /// <summary>
+        /// The policies configured for a specified bucket.
+        /// </summary>
+        public readonly string Policy;
         /// <summary>
         /// Redundancy type. Possible values: `LRS`, and `ZRS`.
         /// </summary>
@@ -105,7 +108,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
 
             string owner,
 
-            string? policy,
+            string policy,
 
             string redundancyType,
 

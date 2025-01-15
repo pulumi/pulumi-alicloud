@@ -944,14 +944,36 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * SLS  configuration.
+     * Configuration for log collection to SLS. Valid parameter descriptions are as follows:
+     * * `projectName`: Configures the project name on SLS.
+     * * `logDir`: Path to the logs.
+     * * `logType`: Type of logs. stdout indicates container standard output logs, and only one can be set; if not set, it means collecting file logs.
+     * * `logstoreName`: Configures the log store name on SLS.
+     * * `logtailName`: Configures the log tail name on SLS; if not specified, it means creating a new log tail.
+     * 
+     * If you no longer need to use the SLS collection feature, you should set the value of this field to an empty string. There are two examples:
+     * - Using SAE automatically created SLS resources: [{&#34;logDir&#34;:&#34;&#34;,&#34;logType&#34;:&#34;stdout&#34;},{&#34;logDir&#34;:&#34;/tmp/a.log&#34;}].
+     * - Using custom SLS resources: [{&#34;projectName&#34;:&#34;test-sls&#34;,&#34;logType&#34;:&#34;stdout&#34;,&#34;logDir&#34;:&#34;&#34;,&#34;logstoreName&#34;:&#34;sae&#34;,&#34;logtailName&#34;:&#34;&#34;},{&#34;projectName&#34;:&#34;test&#34;,&#34;logDir&#34;:&#34;/tmp/a.log&#34;,&#34;logstoreName&#34;:&#34;sae&#34;,&#34;logtailName&#34;:&#34;&#34;}].
+     * 
+     * **NOTE:** Projects that are automatically created with applications will be deleted along with the application deletion. Therefore, when selecting existing projects, you cannot choose projects automatically created by SAE.
      * 
      */
     @Import(name="slsConfigs")
     private @Nullable Output<String> slsConfigs;
 
     /**
-     * @return SLS  configuration.
+     * @return Configuration for log collection to SLS. Valid parameter descriptions are as follows:
+     * * `projectName`: Configures the project name on SLS.
+     * * `logDir`: Path to the logs.
+     * * `logType`: Type of logs. stdout indicates container standard output logs, and only one can be set; if not set, it means collecting file logs.
+     * * `logstoreName`: Configures the log store name on SLS.
+     * * `logtailName`: Configures the log tail name on SLS; if not specified, it means creating a new log tail.
+     * 
+     * If you no longer need to use the SLS collection feature, you should set the value of this field to an empty string. There are two examples:
+     * - Using SAE automatically created SLS resources: [{&#34;logDir&#34;:&#34;&#34;,&#34;logType&#34;:&#34;stdout&#34;},{&#34;logDir&#34;:&#34;/tmp/a.log&#34;}].
+     * - Using custom SLS resources: [{&#34;projectName&#34;:&#34;test-sls&#34;,&#34;logType&#34;:&#34;stdout&#34;,&#34;logDir&#34;:&#34;&#34;,&#34;logstoreName&#34;:&#34;sae&#34;,&#34;logtailName&#34;:&#34;&#34;},{&#34;projectName&#34;:&#34;test&#34;,&#34;logDir&#34;:&#34;/tmp/a.log&#34;,&#34;logstoreName&#34;:&#34;sae&#34;,&#34;logtailName&#34;:&#34;&#34;}].
+     * 
+     * **NOTE:** Projects that are automatically created with applications will be deleted along with the application deletion. Therefore, when selecting existing projects, you cannot choose projects automatically created by SAE.
      * 
      */
     public Optional<Output<String>> slsConfigs() {
@@ -2547,7 +2569,18 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param slsConfigs SLS  configuration.
+         * @param slsConfigs Configuration for log collection to SLS. Valid parameter descriptions are as follows:
+         * * `projectName`: Configures the project name on SLS.
+         * * `logDir`: Path to the logs.
+         * * `logType`: Type of logs. stdout indicates container standard output logs, and only one can be set; if not set, it means collecting file logs.
+         * * `logstoreName`: Configures the log store name on SLS.
+         * * `logtailName`: Configures the log tail name on SLS; if not specified, it means creating a new log tail.
+         * 
+         * If you no longer need to use the SLS collection feature, you should set the value of this field to an empty string. There are two examples:
+         * - Using SAE automatically created SLS resources: [{&#34;logDir&#34;:&#34;&#34;,&#34;logType&#34;:&#34;stdout&#34;},{&#34;logDir&#34;:&#34;/tmp/a.log&#34;}].
+         * - Using custom SLS resources: [{&#34;projectName&#34;:&#34;test-sls&#34;,&#34;logType&#34;:&#34;stdout&#34;,&#34;logDir&#34;:&#34;&#34;,&#34;logstoreName&#34;:&#34;sae&#34;,&#34;logtailName&#34;:&#34;&#34;},{&#34;projectName&#34;:&#34;test&#34;,&#34;logDir&#34;:&#34;/tmp/a.log&#34;,&#34;logstoreName&#34;:&#34;sae&#34;,&#34;logtailName&#34;:&#34;&#34;}].
+         * 
+         * **NOTE:** Projects that are automatically created with applications will be deleted along with the application deletion. Therefore, when selecting existing projects, you cannot choose projects automatically created by SAE.
          * 
          * @return builder
          * 
@@ -2558,7 +2591,18 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param slsConfigs SLS  configuration.
+         * @param slsConfigs Configuration for log collection to SLS. Valid parameter descriptions are as follows:
+         * * `projectName`: Configures the project name on SLS.
+         * * `logDir`: Path to the logs.
+         * * `logType`: Type of logs. stdout indicates container standard output logs, and only one can be set; if not set, it means collecting file logs.
+         * * `logstoreName`: Configures the log store name on SLS.
+         * * `logtailName`: Configures the log tail name on SLS; if not specified, it means creating a new log tail.
+         * 
+         * If you no longer need to use the SLS collection feature, you should set the value of this field to an empty string. There are two examples:
+         * - Using SAE automatically created SLS resources: [{&#34;logDir&#34;:&#34;&#34;,&#34;logType&#34;:&#34;stdout&#34;},{&#34;logDir&#34;:&#34;/tmp/a.log&#34;}].
+         * - Using custom SLS resources: [{&#34;projectName&#34;:&#34;test-sls&#34;,&#34;logType&#34;:&#34;stdout&#34;,&#34;logDir&#34;:&#34;&#34;,&#34;logstoreName&#34;:&#34;sae&#34;,&#34;logtailName&#34;:&#34;&#34;},{&#34;projectName&#34;:&#34;test&#34;,&#34;logDir&#34;:&#34;/tmp/a.log&#34;,&#34;logstoreName&#34;:&#34;sae&#34;,&#34;logtailName&#34;:&#34;&#34;}].
+         * 
+         * **NOTE:** Projects that are automatically created with applications will be deleted along with the application deletion. Therefore, when selecting existing projects, you cannot choose projects automatically created by SAE.
          * 
          * @return builder
          * 

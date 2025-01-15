@@ -26,6 +26,18 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// The ID of dhcp options set.
+        /// </summary>
+        public readonly string DhcpOptionsSetId;
+        /// <summary>
+        /// The status of the DHCP options set. Valid values: `Available`, `InUse`, `Deleted`, `Pending`.
+        /// </summary>
+        public readonly string DhcpOptionsSetStatus;
+        /// <summary>
+        /// Indicates whether the Domain Name System (DNS) feature is enabled.
+        /// </summary>
+        public readonly string DnsHostnameStatus;
+        /// <summary>
         /// ID of the VPC.
         /// </summary>
         public readonly string Id;
@@ -94,6 +106,12 @@ namespace Pulumi.AliCloud.Vpc.Outputs
 
             string description,
 
+            string dhcpOptionsSetId,
+
+            string dhcpOptionsSetStatus,
+
+            string dnsHostnameStatus,
+
             string id,
 
             string ipv6CidrBlock,
@@ -127,6 +145,9 @@ namespace Pulumi.AliCloud.Vpc.Outputs
             CidrBlock = cidrBlock;
             CreationTime = creationTime;
             Description = description;
+            DhcpOptionsSetId = dhcpOptionsSetId;
+            DhcpOptionsSetStatus = dhcpOptionsSetStatus;
+            DnsHostnameStatus = dnsHostnameStatus;
             Id = id;
             Ipv6CidrBlock = ipv6CidrBlock;
             IsDefault = isDefault;

@@ -194,6 +194,9 @@
                     }
                 }
             },
+            "alicloud_alb_load_balancer_access_log_config_attachment": {
+                "current": "alicloud:alb/loadBalancerAccessLogConfigAttachment:LoadBalancerAccessLogConfigAttachment"
+            },
             "alicloud_alb_load_balancer_common_bandwidth_package_attachment": {
                 "current": "alicloud:alb/loadBalancerCommonBandwidthPackageAttachment:LoadBalancerCommonBandwidthPackageAttachment"
             },
@@ -538,6 +541,9 @@
                 "current": "alicloud:alikafka/instance:Instance",
                 "fields": {
                     "selected_zones": {
+                        "maxItemsOne": false
+                    },
+                    "vswitch_ids": {
                         "maxItemsOne": false
                     }
                 }
@@ -1308,6 +1314,9 @@
             },
             "alicloud_cloud_connect_network_grant": {
                 "current": "alicloud:cloudconnect/networkGrant:NetworkGrant"
+            },
+            "alicloud_cloud_control_resource": {
+                "current": "alicloud:cloudcontrol/resource:Resource"
             },
             "alicloud_cloud_firewall_address_book": {
                 "current": "alicloud:cloudfirewall/addressBook:AddressBook",
@@ -2288,8 +2297,125 @@
             "alicloud_data_works_data_source_shared_rule": {
                 "current": "alicloud:dataworks/dataSourceSharedRule:DataSourceSharedRule"
             },
+            "alicloud_data_works_di_alarm_rule": {
+                "current": "alicloud:dataworks/diAlarmRule:DiAlarmRule",
+                "fields": {
+                    "notification_settings": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "notification_channels": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "channels": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "notification_receivers": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "receiver_values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "trigger_conditions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ddl_report_tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "alicloud_data_works_di_job": {
+                "current": "alicloud:dataworks/diJob:DiJob",
+                "fields": {
+                    "destination_data_source_settings": {
+                        "maxItemsOne": false
+                    },
+                    "job_settings": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "column_data_type_settings": {
+                                    "maxItemsOne": false
+                                },
+                                "cycle_schedule_settings": {
+                                    "maxItemsOne": true
+                                },
+                                "ddl_handling_settings": {
+                                    "maxItemsOne": false
+                                },
+                                "runtime_settings": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "resource_settings": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "offline_resource_settings": {
+                                    "maxItemsOne": true
+                                },
+                                "realtime_resource_settings": {
+                                    "maxItemsOne": true
+                                },
+                                "schedule_resource_settings": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "source_data_source_settings": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "data_source_properties": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "table_mappings": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "source_object_selection_rules": {
+                                    "maxItemsOne": false
+                                },
+                                "transformation_rules": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "transformation_rules": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_data_works_dw_resource_group": {
+                "current": "alicloud:dataworks/dwResourceGroup:DwResourceGroup"
+            },
             "alicloud_data_works_folder": {
                 "current": "alicloud:dataworks/folder:Folder"
+            },
+            "alicloud_data_works_network": {
+                "current": "alicloud:dataworks/network:Network"
             },
             "alicloud_data_works_project": {
                 "current": "alicloud:dataworks/project:Project"
@@ -5300,6 +5426,9 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "alicloud_hbr_cross_account": {
+                "current": "alicloud:hbr/crossAccount:CrossAccount"
             },
             "alicloud_hbr_ecs_backup_client": {
                 "current": "alicloud:hbr/ecsBackupClient:EcsBackupClient"
@@ -10810,6 +10939,152 @@
                     },
                     "networks": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_cloud_control_prices": {
+                "current": "alicloud:cloudcontrol/getPrices:getPrices",
+                "fields": {
+                    "prices": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "module_details": {
+                                    "maxItemsOne": false
+                                },
+                                "promotion_details": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "alicloud_cloud_control_products": {
+                "current": "alicloud:cloudcontrol/getProducts:getProducts",
+                "fields": {
+                    "ids": {
+                        "maxItemsOne": false
+                    },
+                    "names": {
+                        "maxItemsOne": false
+                    },
+                    "products": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_cloud_control_resource_types": {
+                "current": "alicloud:cloudcontrol/getResourceTypes:getResourceTypes",
+                "fields": {
+                    "ids": {
+                        "maxItemsOne": false
+                    },
+                    "types": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "create_only_properties": {
+                                    "maxItemsOne": false
+                                },
+                                "delete_only_properties": {
+                                    "maxItemsOne": false
+                                },
+                                "filter_properties": {
+                                    "maxItemsOne": false
+                                },
+                                "get_only_properties": {
+                                    "maxItemsOne": false
+                                },
+                                "get_response_properties": {
+                                    "maxItemsOne": false
+                                },
+                                "handlers": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "create": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "permissions": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "delete": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "permissions": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "get": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "permissions": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "list": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "permissions": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "update": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "permissions": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "info": {
+                                    "maxItemsOne": false
+                                },
+                                "list_only_properties": {
+                                    "maxItemsOne": false
+                                },
+                                "list_response_properties": {
+                                    "maxItemsOne": false
+                                },
+                                "public_properties": {
+                                    "maxItemsOne": false
+                                },
+                                "read_only_properties": {
+                                    "maxItemsOne": false
+                                },
+                                "required": {
+                                    "maxItemsOne": false
+                                },
+                                "sensitive_info_properties": {
+                                    "maxItemsOne": false
+                                },
+                                "update_only_properties": {
+                                    "maxItemsOne": false
+                                },
+                                "update_type_properties": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -20122,6 +20397,70 @@
                         "maxItemsOne": false
                     },
                     "logs": {
+                        "maxItemsOne": false
+                    },
+                    "names": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_vpc_ipam_ipam_pool_allocations": {
+                "current": "alicloud:vpc/getIpamIpamPoolAllocations:getIpamIpamPoolAllocations",
+                "fields": {
+                    "allocations": {
+                        "maxItemsOne": false
+                    },
+                    "ids": {
+                        "maxItemsOne": false
+                    },
+                    "names": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_vpc_ipam_ipam_pool_cidrs": {
+                "current": "alicloud:vpc/getIpamIpamPoolCidrs:getIpamIpamPoolCidrs",
+                "fields": {
+                    "cidrs": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_vpc_ipam_ipam_pools": {
+                "current": "alicloud:vpc/getIpamIpamPools:getIpamIpamPools",
+                "fields": {
+                    "ids": {
+                        "maxItemsOne": false
+                    },
+                    "names": {
+                        "maxItemsOne": false
+                    },
+                    "pools": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_vpc_ipam_ipam_scopes": {
+                "current": "alicloud:vpc/getIpamIpamScopes:getIpamIpamScopes",
+                "fields": {
+                    "ids": {
+                        "maxItemsOne": false
+                    },
+                    "names": {
+                        "maxItemsOne": false
+                    },
+                    "scopes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_vpc_ipam_ipams": {
+                "current": "alicloud:vpc/getIpamIpams:getIpamIpams",
+                "fields": {
+                    "ids": {
+                        "maxItemsOne": false
+                    },
+                    "ipams": {
                         "maxItemsOne": false
                     },
                     "names": {

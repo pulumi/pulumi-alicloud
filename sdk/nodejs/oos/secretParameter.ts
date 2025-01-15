@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a OOS Secret Parameter resource.
+ * Provides a Operation Orchestration Service (OOS) Secret Parameter resource.
  *
- * For information about OOS Secret Parameter and how to use it, see [What is Secret Parameter](https://www.alibabacloud.com/help/en/doc-detail/183418.html).
+ * For information about Operation Orchestration Service (OOS) Secret Parameter and how to use it, see [What is Secret Parameter](https://www.alibabacloud.com/help/en/doc-detail/183418.html).
  *
  * > **NOTE:** Available since v1.147.0+.
  *
@@ -41,10 +41,10 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * OOS Secret Parameter can be imported using the id, e.g.
+ * Operation Orchestration Service (OOS) Secret Parameter can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:oos/secretParameter:SecretParameter example <secret_parameter_name>
+ * $ pulumi import alicloud:oos/secretParameter:SecretParameter example <id>
  * ```
  */
 export class SecretParameter extends pulumi.CustomResource {
@@ -84,9 +84,17 @@ export class SecretParameter extends pulumi.CustomResource {
      */
     public readonly constraints!: pulumi.Output<string | undefined>;
     /**
+     * Parameter creation time
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
      * The description of the encryption parameter. The description must be `1` to `200` characters in length.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * The ID of the KMS instance.
+     */
+    public readonly dkmsInstanceId!: pulumi.Output<string | undefined>;
     /**
      * The Customer Master Key (CMK) of Key Management Service (KMS) that is used to encrypt the parameter.
      */
@@ -102,7 +110,7 @@ export class SecretParameter extends pulumi.CustomResource {
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string}>;
     /**
      * The data type of the encryption parameter. Valid values: `Secret`.
      */
@@ -126,7 +134,9 @@ export class SecretParameter extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as SecretParameterState | undefined;
             resourceInputs["constraints"] = state ? state.constraints : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["dkmsInstanceId"] = state ? state.dkmsInstanceId : undefined;
             resourceInputs["keyId"] = state ? state.keyId : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["secretParameterName"] = state ? state.secretParameterName : undefined;
@@ -143,12 +153,14 @@ export class SecretParameter extends pulumi.CustomResource {
             }
             resourceInputs["constraints"] = args ? args.constraints : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["dkmsInstanceId"] = args ? args.dkmsInstanceId : undefined;
             resourceInputs["keyId"] = args ? args.keyId : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["secretParameterName"] = args ? args.secretParameterName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["value"] = args?.value ? pulumi.secret(args.value) : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["value"] };
@@ -170,9 +182,17 @@ export interface SecretParameterState {
      */
     constraints?: pulumi.Input<string>;
     /**
+     * Parameter creation time
+     */
+    createTime?: pulumi.Input<string>;
+    /**
      * The description of the encryption parameter. The description must be `1` to `200` characters in length.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The ID of the KMS instance.
+     */
+    dkmsInstanceId?: pulumi.Input<string>;
     /**
      * The Customer Master Key (CMK) of Key Management Service (KMS) that is used to encrypt the parameter.
      */
@@ -215,6 +235,10 @@ export interface SecretParameterArgs {
      * The description of the encryption parameter. The description must be `1` to `200` characters in length.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The ID of the KMS instance.
+     */
+    dkmsInstanceId?: pulumi.Input<string>;
     /**
      * The Customer Master Key (CMK) of Key Management Service (KMS) that is used to encrypt the parameter.
      */

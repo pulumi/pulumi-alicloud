@@ -325,6 +325,7 @@ class _V2FunctionState:
                  description: Optional[pulumi.Input[str]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
                  environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 function_arn: Optional[pulumi.Input[str]] = None,
                  function_name: Optional[pulumi.Input[str]] = None,
                  gpu_memory_size: Optional[pulumi.Input[int]] = None,
                  handler: Optional[pulumi.Input[str]] = None,
@@ -365,6 +366,8 @@ class _V2FunctionState:
             pulumi.set(__self__, "disk_size", disk_size)
         if environment_variables is not None:
             pulumi.set(__self__, "environment_variables", environment_variables)
+        if function_arn is not None:
+            pulumi.set(__self__, "function_arn", function_arn)
         if function_name is not None:
             pulumi.set(__self__, "function_name", function_name)
         if gpu_memory_size is not None:
@@ -499,6 +502,15 @@ class _V2FunctionState:
     @environment_variables.setter
     def environment_variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "environment_variables", value)
+
+    @property
+    @pulumi.getter(name="functionArn")
+    def function_arn(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "function_arn")
+
+    @function_arn.setter
+    def function_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "function_arn", value)
 
     @property
     @pulumi.getter(name="functionName")
@@ -742,6 +754,7 @@ class V2Function(pulumi.CustomResource):
             __props__.__dict__["service_name"] = service_name
             __props__.__dict__["timeout"] = timeout
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["function_arn"] = None
         super(V2Function, __self__).__init__(
             'alicloud:fc/v2Function:V2Function',
             resource_name,
@@ -764,6 +777,7 @@ class V2Function(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             disk_size: Optional[pulumi.Input[int]] = None,
             environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            function_arn: Optional[pulumi.Input[str]] = None,
             function_name: Optional[pulumi.Input[str]] = None,
             gpu_memory_size: Optional[pulumi.Input[int]] = None,
             handler: Optional[pulumi.Input[str]] = None,
@@ -801,6 +815,7 @@ class V2Function(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["disk_size"] = disk_size
         __props__.__dict__["environment_variables"] = environment_variables
+        __props__.__dict__["function_arn"] = function_arn
         __props__.__dict__["function_name"] = function_name
         __props__.__dict__["gpu_memory_size"] = gpu_memory_size
         __props__.__dict__["handler"] = handler
@@ -875,6 +890,11 @@ class V2Function(pulumi.CustomResource):
     @pulumi.getter(name="environmentVariables")
     def environment_variables(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         return pulumi.get(self, "environment_variables")
+
+    @property
+    @pulumi.getter(name="functionArn")
+    def function_arn(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "function_arn")
 
     @property
     @pulumi.getter(name="functionName")

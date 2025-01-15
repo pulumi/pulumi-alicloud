@@ -25,16 +25,18 @@ class ServiceQueueArgs:
                  maximum_message_size: Optional[pulumi.Input[int]] = None,
                  message_retention_period: Optional[pulumi.Input[int]] = None,
                  polling_wait_seconds: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  visibility_timeout: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a ServiceQueue resource.
-        :param pulumi.Input[str] queue_name: Representative resources.
-        :param pulumi.Input[int] delay_seconds: This means that messages sent to the queue can only be consumed after the delay time set by this parameter, in seconds.
-        :param pulumi.Input[bool] logging_enabled: Represents whether the log management function is enabled.
-        :param pulumi.Input[int] maximum_message_size: Represents the maximum length of the message body sent to the Queue, in Byte.
-        :param pulumi.Input[int] message_retention_period: Represents the longest life time of the message in the Queue.
-        :param pulumi.Input[int] polling_wait_seconds: The longest waiting time for a Queue request when the number of messages is empty, in seconds.
-        :param pulumi.Input[int] visibility_timeout: Represents the duration after the message is removed from the Queue and changed from the Active state to the Inactive state.
+        :param pulumi.Input[str] queue_name: The name of the queue.
+        :param pulumi.Input[int] delay_seconds: The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
+        :param pulumi.Input[bool] logging_enabled: Specifies whether to enable the logging feature. Default value: `false`. Valid values:
+        :param pulumi.Input[int] maximum_message_size: The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
+        :param pulumi.Input[int] message_retention_period: The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
+        :param pulumi.Input[int] polling_wait_seconds: The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: `0` to `30`. Unit: seconds. Default value: `0`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[int] visibility_timeout: The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
         """
         pulumi.set(__self__, "queue_name", queue_name)
         if delay_seconds is not None:
@@ -47,6 +49,8 @@ class ServiceQueueArgs:
             pulumi.set(__self__, "message_retention_period", message_retention_period)
         if polling_wait_seconds is not None:
             pulumi.set(__self__, "polling_wait_seconds", polling_wait_seconds)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if visibility_timeout is not None:
             pulumi.set(__self__, "visibility_timeout", visibility_timeout)
 
@@ -54,7 +58,7 @@ class ServiceQueueArgs:
     @pulumi.getter(name="queueName")
     def queue_name(self) -> pulumi.Input[str]:
         """
-        Representative resources.
+        The name of the queue.
         """
         return pulumi.get(self, "queue_name")
 
@@ -66,7 +70,7 @@ class ServiceQueueArgs:
     @pulumi.getter(name="delaySeconds")
     def delay_seconds(self) -> Optional[pulumi.Input[int]]:
         """
-        This means that messages sent to the queue can only be consumed after the delay time set by this parameter, in seconds.
+        The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
         """
         return pulumi.get(self, "delay_seconds")
 
@@ -78,7 +82,7 @@ class ServiceQueueArgs:
     @pulumi.getter(name="loggingEnabled")
     def logging_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Represents whether the log management function is enabled.
+        Specifies whether to enable the logging feature. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "logging_enabled")
 
@@ -90,7 +94,7 @@ class ServiceQueueArgs:
     @pulumi.getter(name="maximumMessageSize")
     def maximum_message_size(self) -> Optional[pulumi.Input[int]]:
         """
-        Represents the maximum length of the message body sent to the Queue, in Byte.
+        The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
         """
         return pulumi.get(self, "maximum_message_size")
 
@@ -102,7 +106,7 @@ class ServiceQueueArgs:
     @pulumi.getter(name="messageRetentionPeriod")
     def message_retention_period(self) -> Optional[pulumi.Input[int]]:
         """
-        Represents the longest life time of the message in the Queue.
+        The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
         """
         return pulumi.get(self, "message_retention_period")
 
@@ -114,7 +118,7 @@ class ServiceQueueArgs:
     @pulumi.getter(name="pollingWaitSeconds")
     def polling_wait_seconds(self) -> Optional[pulumi.Input[int]]:
         """
-        The longest waiting time for a Queue request when the number of messages is empty, in seconds.
+        The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: `0` to `30`. Unit: seconds. Default value: `0`.
         """
         return pulumi.get(self, "polling_wait_seconds")
 
@@ -123,10 +127,22 @@ class ServiceQueueArgs:
         pulumi.set(self, "polling_wait_seconds", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="visibilityTimeout")
     def visibility_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        Represents the duration after the message is removed from the Queue and changed from the Active state to the Inactive state.
+        The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
         """
         return pulumi.get(self, "visibility_timeout")
 
@@ -145,17 +161,19 @@ class _ServiceQueueState:
                  message_retention_period: Optional[pulumi.Input[int]] = None,
                  polling_wait_seconds: Optional[pulumi.Input[int]] = None,
                  queue_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  visibility_timeout: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering ServiceQueue resources.
-        :param pulumi.Input[int] create_time: Represents the time when the Queue was created.
-        :param pulumi.Input[int] delay_seconds: This means that messages sent to the queue can only be consumed after the delay time set by this parameter, in seconds.
-        :param pulumi.Input[bool] logging_enabled: Represents whether the log management function is enabled.
-        :param pulumi.Input[int] maximum_message_size: Represents the maximum length of the message body sent to the Queue, in Byte.
-        :param pulumi.Input[int] message_retention_period: Represents the longest life time of the message in the Queue.
-        :param pulumi.Input[int] polling_wait_seconds: The longest waiting time for a Queue request when the number of messages is empty, in seconds.
-        :param pulumi.Input[str] queue_name: Representative resources.
-        :param pulumi.Input[int] visibility_timeout: Represents the duration after the message is removed from the Queue and changed from the Active state to the Inactive state.
+        :param pulumi.Input[int] create_time: (Available since v1.223.2) The time when the queue was created.
+        :param pulumi.Input[int] delay_seconds: The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
+        :param pulumi.Input[bool] logging_enabled: Specifies whether to enable the logging feature. Default value: `false`. Valid values:
+        :param pulumi.Input[int] maximum_message_size: The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
+        :param pulumi.Input[int] message_retention_period: The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
+        :param pulumi.Input[int] polling_wait_seconds: The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: `0` to `30`. Unit: seconds. Default value: `0`.
+        :param pulumi.Input[str] queue_name: The name of the queue.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[int] visibility_timeout: The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -171,6 +189,8 @@ class _ServiceQueueState:
             pulumi.set(__self__, "polling_wait_seconds", polling_wait_seconds)
         if queue_name is not None:
             pulumi.set(__self__, "queue_name", queue_name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if visibility_timeout is not None:
             pulumi.set(__self__, "visibility_timeout", visibility_timeout)
 
@@ -178,7 +198,7 @@ class _ServiceQueueState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[int]]:
         """
-        Represents the time when the Queue was created.
+        (Available since v1.223.2) The time when the queue was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -190,7 +210,7 @@ class _ServiceQueueState:
     @pulumi.getter(name="delaySeconds")
     def delay_seconds(self) -> Optional[pulumi.Input[int]]:
         """
-        This means that messages sent to the queue can only be consumed after the delay time set by this parameter, in seconds.
+        The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
         """
         return pulumi.get(self, "delay_seconds")
 
@@ -202,7 +222,7 @@ class _ServiceQueueState:
     @pulumi.getter(name="loggingEnabled")
     def logging_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Represents whether the log management function is enabled.
+        Specifies whether to enable the logging feature. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "logging_enabled")
 
@@ -214,7 +234,7 @@ class _ServiceQueueState:
     @pulumi.getter(name="maximumMessageSize")
     def maximum_message_size(self) -> Optional[pulumi.Input[int]]:
         """
-        Represents the maximum length of the message body sent to the Queue, in Byte.
+        The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
         """
         return pulumi.get(self, "maximum_message_size")
 
@@ -226,7 +246,7 @@ class _ServiceQueueState:
     @pulumi.getter(name="messageRetentionPeriod")
     def message_retention_period(self) -> Optional[pulumi.Input[int]]:
         """
-        Represents the longest life time of the message in the Queue.
+        The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
         """
         return pulumi.get(self, "message_retention_period")
 
@@ -238,7 +258,7 @@ class _ServiceQueueState:
     @pulumi.getter(name="pollingWaitSeconds")
     def polling_wait_seconds(self) -> Optional[pulumi.Input[int]]:
         """
-        The longest waiting time for a Queue request when the number of messages is empty, in seconds.
+        The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: `0` to `30`. Unit: seconds. Default value: `0`.
         """
         return pulumi.get(self, "polling_wait_seconds")
 
@@ -250,7 +270,7 @@ class _ServiceQueueState:
     @pulumi.getter(name="queueName")
     def queue_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Representative resources.
+        The name of the queue.
         """
         return pulumi.get(self, "queue_name")
 
@@ -259,10 +279,22 @@ class _ServiceQueueState:
         pulumi.set(self, "queue_name", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="visibilityTimeout")
     def visibility_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        Represents the duration after the message is removed from the Queue and changed from the Active state to the Inactive state.
+        The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
         """
         return pulumi.get(self, "visibility_timeout")
 
@@ -282,6 +314,7 @@ class ServiceQueue(pulumi.CustomResource):
                  message_retention_period: Optional[pulumi.Input[int]] = None,
                  polling_wait_seconds: Optional[pulumi.Input[int]] = None,
                  queue_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  visibility_timeout: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -304,12 +337,12 @@ class ServiceQueue(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default = alicloud.message.ServiceQueue("default",
+            queue_name=name,
             delay_seconds=2,
             polling_wait_seconds=2,
             message_retention_period=566,
-            maximum_message_size=1123,
-            visibility_timeout=30,
-            queue_name=name)
+            maximum_message_size=1126,
+            visibility_timeout=30)
         ```
 
         ## Import
@@ -322,13 +355,14 @@ class ServiceQueue(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] delay_seconds: This means that messages sent to the queue can only be consumed after the delay time set by this parameter, in seconds.
-        :param pulumi.Input[bool] logging_enabled: Represents whether the log management function is enabled.
-        :param pulumi.Input[int] maximum_message_size: Represents the maximum length of the message body sent to the Queue, in Byte.
-        :param pulumi.Input[int] message_retention_period: Represents the longest life time of the message in the Queue.
-        :param pulumi.Input[int] polling_wait_seconds: The longest waiting time for a Queue request when the number of messages is empty, in seconds.
-        :param pulumi.Input[str] queue_name: Representative resources.
-        :param pulumi.Input[int] visibility_timeout: Represents the duration after the message is removed from the Queue and changed from the Active state to the Inactive state.
+        :param pulumi.Input[int] delay_seconds: The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
+        :param pulumi.Input[bool] logging_enabled: Specifies whether to enable the logging feature. Default value: `false`. Valid values:
+        :param pulumi.Input[int] maximum_message_size: The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
+        :param pulumi.Input[int] message_retention_period: The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
+        :param pulumi.Input[int] polling_wait_seconds: The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: `0` to `30`. Unit: seconds. Default value: `0`.
+        :param pulumi.Input[str] queue_name: The name of the queue.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[int] visibility_timeout: The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
         """
         ...
     @overload
@@ -356,12 +390,12 @@ class ServiceQueue(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default = alicloud.message.ServiceQueue("default",
+            queue_name=name,
             delay_seconds=2,
             polling_wait_seconds=2,
             message_retention_period=566,
-            maximum_message_size=1123,
-            visibility_timeout=30,
-            queue_name=name)
+            maximum_message_size=1126,
+            visibility_timeout=30)
         ```
 
         ## Import
@@ -393,6 +427,7 @@ class ServiceQueue(pulumi.CustomResource):
                  message_retention_period: Optional[pulumi.Input[int]] = None,
                  polling_wait_seconds: Optional[pulumi.Input[int]] = None,
                  queue_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  visibility_timeout: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -411,6 +446,7 @@ class ServiceQueue(pulumi.CustomResource):
             if queue_name is None and not opts.urn:
                 raise TypeError("Missing required property 'queue_name'")
             __props__.__dict__["queue_name"] = queue_name
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["visibility_timeout"] = visibility_timeout
             __props__.__dict__["create_time"] = None
         super(ServiceQueue, __self__).__init__(
@@ -430,6 +466,7 @@ class ServiceQueue(pulumi.CustomResource):
             message_retention_period: Optional[pulumi.Input[int]] = None,
             polling_wait_seconds: Optional[pulumi.Input[int]] = None,
             queue_name: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             visibility_timeout: Optional[pulumi.Input[int]] = None) -> 'ServiceQueue':
         """
         Get an existing ServiceQueue resource's state with the given name, id, and optional extra
@@ -438,14 +475,15 @@ class ServiceQueue(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] create_time: Represents the time when the Queue was created.
-        :param pulumi.Input[int] delay_seconds: This means that messages sent to the queue can only be consumed after the delay time set by this parameter, in seconds.
-        :param pulumi.Input[bool] logging_enabled: Represents whether the log management function is enabled.
-        :param pulumi.Input[int] maximum_message_size: Represents the maximum length of the message body sent to the Queue, in Byte.
-        :param pulumi.Input[int] message_retention_period: Represents the longest life time of the message in the Queue.
-        :param pulumi.Input[int] polling_wait_seconds: The longest waiting time for a Queue request when the number of messages is empty, in seconds.
-        :param pulumi.Input[str] queue_name: Representative resources.
-        :param pulumi.Input[int] visibility_timeout: Represents the duration after the message is removed from the Queue and changed from the Active state to the Inactive state.
+        :param pulumi.Input[int] create_time: (Available since v1.223.2) The time when the queue was created.
+        :param pulumi.Input[int] delay_seconds: The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
+        :param pulumi.Input[bool] logging_enabled: Specifies whether to enable the logging feature. Default value: `false`. Valid values:
+        :param pulumi.Input[int] maximum_message_size: The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
+        :param pulumi.Input[int] message_retention_period: The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
+        :param pulumi.Input[int] polling_wait_seconds: The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: `0` to `30`. Unit: seconds. Default value: `0`.
+        :param pulumi.Input[str] queue_name: The name of the queue.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[int] visibility_timeout: The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -458,6 +496,7 @@ class ServiceQueue(pulumi.CustomResource):
         __props__.__dict__["message_retention_period"] = message_retention_period
         __props__.__dict__["polling_wait_seconds"] = polling_wait_seconds
         __props__.__dict__["queue_name"] = queue_name
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["visibility_timeout"] = visibility_timeout
         return ServiceQueue(resource_name, opts=opts, __props__=__props__)
 
@@ -465,7 +504,7 @@ class ServiceQueue(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[int]:
         """
-        Represents the time when the Queue was created.
+        (Available since v1.223.2) The time when the queue was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -473,7 +512,7 @@ class ServiceQueue(pulumi.CustomResource):
     @pulumi.getter(name="delaySeconds")
     def delay_seconds(self) -> pulumi.Output[int]:
         """
-        This means that messages sent to the queue can only be consumed after the delay time set by this parameter, in seconds.
+        The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
         """
         return pulumi.get(self, "delay_seconds")
 
@@ -481,7 +520,7 @@ class ServiceQueue(pulumi.CustomResource):
     @pulumi.getter(name="loggingEnabled")
     def logging_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Represents whether the log management function is enabled.
+        Specifies whether to enable the logging feature. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "logging_enabled")
 
@@ -489,7 +528,7 @@ class ServiceQueue(pulumi.CustomResource):
     @pulumi.getter(name="maximumMessageSize")
     def maximum_message_size(self) -> pulumi.Output[int]:
         """
-        Represents the maximum length of the message body sent to the Queue, in Byte.
+        The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
         """
         return pulumi.get(self, "maximum_message_size")
 
@@ -497,7 +536,7 @@ class ServiceQueue(pulumi.CustomResource):
     @pulumi.getter(name="messageRetentionPeriod")
     def message_retention_period(self) -> pulumi.Output[int]:
         """
-        Represents the longest life time of the message in the Queue.
+        The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
         """
         return pulumi.get(self, "message_retention_period")
 
@@ -505,7 +544,7 @@ class ServiceQueue(pulumi.CustomResource):
     @pulumi.getter(name="pollingWaitSeconds")
     def polling_wait_seconds(self) -> pulumi.Output[int]:
         """
-        The longest waiting time for a Queue request when the number of messages is empty, in seconds.
+        The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: `0` to `30`. Unit: seconds. Default value: `0`.
         """
         return pulumi.get(self, "polling_wait_seconds")
 
@@ -513,15 +552,23 @@ class ServiceQueue(pulumi.CustomResource):
     @pulumi.getter(name="queueName")
     def queue_name(self) -> pulumi.Output[str]:
         """
-        Representative resources.
+        The name of the queue.
         """
         return pulumi.get(self, "queue_name")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="visibilityTimeout")
     def visibility_timeout(self) -> pulumi.Output[int]:
         """
-        Represents the duration after the message is removed from the Queue and changed from the Active state to the Inactive state.
+        The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
         """
         return pulumi.get(self, "visibility_timeout")
 

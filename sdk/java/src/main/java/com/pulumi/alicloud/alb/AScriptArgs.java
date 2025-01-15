@@ -20,14 +20,14 @@ public final class AScriptArgs extends com.pulumi.resources.ResourceArgs {
     public static final AScriptArgs Empty = new AScriptArgs();
 
     /**
-     * The name of AScript.
+     * AScript name.
      * 
      */
     @Import(name="ascriptName", required=true)
     private Output<String> ascriptName;
 
     /**
-     * @return The name of AScript.
+     * @return AScript name.
      * 
      */
     public Output<String> ascriptName() {
@@ -35,29 +35,44 @@ public final class AScriptArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether scripts are enabled.
+     * Whether to PreCheck only this request
      * 
      */
-    @Import(name="enabled", required=true)
-    private Output<Boolean> enabled;
+    @Import(name="dryRun")
+    private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return Whether scripts are enabled.
+     * @return Whether to PreCheck only this request
      * 
      */
-    public Output<Boolean> enabled() {
-        return this.enabled;
+    public Optional<Output<Boolean>> dryRun() {
+        return Optional.ofNullable(this.dryRun);
     }
 
     /**
-     * Whether extension parameters are enabled.
+     * Whether AScript is enabled.
+     * 
+     */
+    @Import(name="enabled")
+    private @Nullable Output<Boolean> enabled;
+
+    /**
+     * @return Whether AScript is enabled.
+     * 
+     */
+    public Optional<Output<Boolean>> enabled() {
+        return Optional.ofNullable(this.enabled);
+    }
+
+    /**
+     * Whether extension parameters are enabled. When ExtAttributeEnabled is true, ExtAttributes must be set.
      * 
      */
     @Import(name="extAttributeEnabled")
     private @Nullable Output<Boolean> extAttributeEnabled;
 
     /**
-     * @return Whether extension parameters are enabled.
+     * @return Whether extension parameters are enabled. When ExtAttributeEnabled is true, ExtAttributes must be set.
      * 
      */
     public Optional<Output<Boolean>> extAttributeEnabled() {
@@ -65,14 +80,14 @@ public final class AScriptArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Extended attribute list. See `ext_attributes` below for details.
+     * Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `ext_attributes` below.
      * 
      */
     @Import(name="extAttributes")
     private @Nullable Output<List<AScriptExtAttributeArgs>> extAttributes;
 
     /**
-     * @return Extended attribute list. See `ext_attributes` below for details.
+     * @return Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `ext_attributes` below.
      * 
      */
     public Optional<Output<List<AScriptExtAttributeArgs>>> extAttributes() {
@@ -95,14 +110,14 @@ public final class AScriptArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Execution location of AScript.
+     * Script execution location.
      * 
      */
     @Import(name="position", required=true)
     private Output<String> position;
 
     /**
-     * @return Execution location of AScript.
+     * @return Script execution location.
      * 
      */
     public Output<String> position() {
@@ -110,14 +125,14 @@ public final class AScriptArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The content of AScript.
+     * AScript script content.
      * 
      */
     @Import(name="scriptContent", required=true)
     private Output<String> scriptContent;
 
     /**
-     * @return The content of AScript.
+     * @return AScript script content.
      * 
      */
     public Output<String> scriptContent() {
@@ -128,6 +143,7 @@ public final class AScriptArgs extends com.pulumi.resources.ResourceArgs {
 
     private AScriptArgs(AScriptArgs $) {
         this.ascriptName = $.ascriptName;
+        this.dryRun = $.dryRun;
         this.enabled = $.enabled;
         this.extAttributeEnabled = $.extAttributeEnabled;
         this.extAttributes = $.extAttributes;
@@ -155,7 +171,7 @@ public final class AScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ascriptName The name of AScript.
+         * @param ascriptName AScript name.
          * 
          * @return builder
          * 
@@ -166,7 +182,7 @@ public final class AScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ascriptName The name of AScript.
+         * @param ascriptName AScript name.
          * 
          * @return builder
          * 
@@ -176,18 +192,39 @@ public final class AScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Whether scripts are enabled.
+         * @param dryRun Whether to PreCheck only this request
          * 
          * @return builder
          * 
          */
-        public Builder enabled(Output<Boolean> enabled) {
+        public Builder dryRun(@Nullable Output<Boolean> dryRun) {
+            $.dryRun = dryRun;
+            return this;
+        }
+
+        /**
+         * @param dryRun Whether to PreCheck only this request
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dryRun(Boolean dryRun) {
+            return dryRun(Output.of(dryRun));
+        }
+
+        /**
+         * @param enabled Whether AScript is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
         /**
-         * @param enabled Whether scripts are enabled.
+         * @param enabled Whether AScript is enabled.
          * 
          * @return builder
          * 
@@ -197,7 +234,7 @@ public final class AScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param extAttributeEnabled Whether extension parameters are enabled.
+         * @param extAttributeEnabled Whether extension parameters are enabled. When ExtAttributeEnabled is true, ExtAttributes must be set.
          * 
          * @return builder
          * 
@@ -208,7 +245,7 @@ public final class AScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param extAttributeEnabled Whether extension parameters are enabled.
+         * @param extAttributeEnabled Whether extension parameters are enabled. When ExtAttributeEnabled is true, ExtAttributes must be set.
          * 
          * @return builder
          * 
@@ -218,7 +255,7 @@ public final class AScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param extAttributes Extended attribute list. See `ext_attributes` below for details.
+         * @param extAttributes Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `ext_attributes` below.
          * 
          * @return builder
          * 
@@ -229,7 +266,7 @@ public final class AScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param extAttributes Extended attribute list. See `ext_attributes` below for details.
+         * @param extAttributes Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `ext_attributes` below.
          * 
          * @return builder
          * 
@@ -239,7 +276,7 @@ public final class AScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param extAttributes Extended attribute list. See `ext_attributes` below for details.
+         * @param extAttributes Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `ext_attributes` below.
          * 
          * @return builder
          * 
@@ -270,7 +307,7 @@ public final class AScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param position Execution location of AScript.
+         * @param position Script execution location.
          * 
          * @return builder
          * 
@@ -281,7 +318,7 @@ public final class AScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param position Execution location of AScript.
+         * @param position Script execution location.
          * 
          * @return builder
          * 
@@ -291,7 +328,7 @@ public final class AScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scriptContent The content of AScript.
+         * @param scriptContent AScript script content.
          * 
          * @return builder
          * 
@@ -302,7 +339,7 @@ public final class AScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scriptContent The content of AScript.
+         * @param scriptContent AScript script content.
          * 
          * @return builder
          * 
@@ -314,9 +351,6 @@ public final class AScriptArgs extends com.pulumi.resources.ResourceArgs {
         public AScriptArgs build() {
             if ($.ascriptName == null) {
                 throw new MissingRequiredPropertyException("AScriptArgs", "ascriptName");
-            }
-            if ($.enabled == null) {
-                throw new MissingRequiredPropertyException("AScriptArgs", "enabled");
             }
             if ($.listenerId == null) {
                 throw new MissingRequiredPropertyException("AScriptArgs", "listenerId");

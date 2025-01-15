@@ -121,6 +121,7 @@ export class LaunchTemplate extends pulumi.CustomResource {
      * The list of data disks created with instance.
      */
     public readonly dataDisks!: pulumi.Output<outputs.ecs.LaunchTemplateDataDisk[] | undefined>;
+    public readonly defaultVersionNumber!: pulumi.Output<number>;
     public readonly deploymentSetId!: pulumi.Output<string | undefined>;
     /**
      * Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
@@ -179,6 +180,7 @@ export class LaunchTemplate extends pulumi.CustomResource {
      * - The password logon method for Linux instances is set to forbidden upon initialization.
      */
     public readonly keyPairName!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly latestVersionNumber!: pulumi.Output<number>;
     public readonly launchTemplateName!: pulumi.Output<string>;
     /**
      * Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
@@ -262,6 +264,7 @@ export class LaunchTemplate extends pulumi.CustomResource {
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly templateResourceGroupId!: pulumi.Output<string | undefined>;
     public readonly templateTags!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly updateDefaultVersionNumber!: pulumi.Output<boolean | undefined>;
     public readonly userData!: pulumi.Output<string>;
     /**
      * User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
@@ -297,6 +300,7 @@ export class LaunchTemplate extends pulumi.CustomResource {
             resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
             resourceInputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
             resourceInputs["dataDisks"] = state ? state.dataDisks : undefined;
+            resourceInputs["defaultVersionNumber"] = state ? state.defaultVersionNumber : undefined;
             resourceInputs["deploymentSetId"] = state ? state.deploymentSetId : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["enableVmOsConfig"] = state ? state.enableVmOsConfig : undefined;
@@ -314,6 +318,7 @@ export class LaunchTemplate extends pulumi.CustomResource {
             resourceInputs["internetMaxBandwidthOut"] = state ? state.internetMaxBandwidthOut : undefined;
             resourceInputs["ioOptimized"] = state ? state.ioOptimized : undefined;
             resourceInputs["keyPairName"] = state ? state.keyPairName : undefined;
+            resourceInputs["latestVersionNumber"] = state ? state.latestVersionNumber : undefined;
             resourceInputs["launchTemplateName"] = state ? state.launchTemplateName : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
@@ -338,6 +343,7 @@ export class LaunchTemplate extends pulumi.CustomResource {
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["templateResourceGroupId"] = state ? state.templateResourceGroupId : undefined;
             resourceInputs["templateTags"] = state ? state.templateTags : undefined;
+            resourceInputs["updateDefaultVersionNumber"] = state ? state.updateDefaultVersionNumber : undefined;
             resourceInputs["userData"] = state ? state.userData : undefined;
             resourceInputs["userdata"] = state ? state.userdata : undefined;
             resourceInputs["versionDescription"] = state ? state.versionDescription : undefined;
@@ -350,6 +356,7 @@ export class LaunchTemplate extends pulumi.CustomResource {
             resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
             resourceInputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
             resourceInputs["dataDisks"] = args ? args.dataDisks : undefined;
+            resourceInputs["defaultVersionNumber"] = args ? args.defaultVersionNumber : undefined;
             resourceInputs["deploymentSetId"] = args ? args.deploymentSetId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["enableVmOsConfig"] = args ? args.enableVmOsConfig : undefined;
@@ -391,12 +398,14 @@ export class LaunchTemplate extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["templateResourceGroupId"] = args ? args.templateResourceGroupId : undefined;
             resourceInputs["templateTags"] = args ? args.templateTags : undefined;
+            resourceInputs["updateDefaultVersionNumber"] = args ? args.updateDefaultVersionNumber : undefined;
             resourceInputs["userData"] = args ? args.userData : undefined;
             resourceInputs["userdata"] = args ? args.userdata : undefined;
             resourceInputs["versionDescription"] = args ? args.versionDescription : undefined;
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["latestVersionNumber"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(LaunchTemplate.__pulumiType, name, resourceInputs, opts);
@@ -417,6 +426,7 @@ export interface LaunchTemplateState {
      * The list of data disks created with instance.
      */
     dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.LaunchTemplateDataDisk>[]>;
+    defaultVersionNumber?: pulumi.Input<number>;
     deploymentSetId?: pulumi.Input<string>;
     /**
      * Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
@@ -475,6 +485,7 @@ export interface LaunchTemplateState {
      * - The password logon method for Linux instances is set to forbidden upon initialization.
      */
     keyPairName?: pulumi.Input<string>;
+    latestVersionNumber?: pulumi.Input<number>;
     launchTemplateName?: pulumi.Input<string>;
     /**
      * Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
@@ -558,6 +569,7 @@ export interface LaunchTemplateState {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     templateResourceGroupId?: pulumi.Input<string>;
     templateTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    updateDefaultVersionNumber?: pulumi.Input<boolean>;
     userData?: pulumi.Input<string>;
     /**
      * User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
@@ -591,6 +603,7 @@ export interface LaunchTemplateArgs {
      * The list of data disks created with instance.
      */
     dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.LaunchTemplateDataDisk>[]>;
+    defaultVersionNumber?: pulumi.Input<number>;
     deploymentSetId?: pulumi.Input<string>;
     /**
      * Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
@@ -732,6 +745,7 @@ export interface LaunchTemplateArgs {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     templateResourceGroupId?: pulumi.Input<string>;
     templateTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    updateDefaultVersionNumber?: pulumi.Input<boolean>;
     userData?: pulumi.Input<string>;
     /**
      * User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.

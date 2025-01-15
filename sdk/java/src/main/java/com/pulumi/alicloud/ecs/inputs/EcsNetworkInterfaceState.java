@@ -321,14 +321,14 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added.
+     * The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
      * 
      */
     @Import(name="securityGroupIds")
     private @Nullable Output<List<String>> securityGroupIds;
 
     /**
-     * @return The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added.
+     * @return The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
      * 
      */
     public Optional<Output<List<String>>> securityGroupIds() {
@@ -336,7 +336,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead
+     * Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
      * 
      * @deprecated
      * Field &#39;security_groups&#39; has been deprecated from provider version 1.123.1. New field &#39;security_group_ids&#39; instead
@@ -347,7 +347,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
     private @Nullable Output<List<String>> securityGroups;
 
     /**
-     * @return Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead
+     * @return Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
      * 
      * @deprecated
      * Field &#39;security_groups&#39; has been deprecated from provider version 1.123.1. New field &#39;security_group_ids&#39; instead
@@ -904,7 +904,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param securityGroupIds The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added.
+         * @param securityGroupIds The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
          * 
          * @return builder
          * 
@@ -915,7 +915,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param securityGroupIds The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added.
+         * @param securityGroupIds The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
          * 
          * @return builder
          * 
@@ -925,7 +925,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param securityGroupIds The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added.
+         * @param securityGroupIds The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
          * 
          * @return builder
          * 
@@ -935,7 +935,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param securityGroups Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead
+         * @param securityGroups Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
          * 
          * @return builder
          * 
@@ -950,7 +950,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param securityGroups Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead
+         * @param securityGroups Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
          * 
          * @return builder
          * 
@@ -964,7 +964,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param securityGroups Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead
+         * @param securityGroups Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
          * 
          * @return builder
          * 

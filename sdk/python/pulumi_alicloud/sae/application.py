@@ -152,7 +152,18 @@ class ApplicationArgs:
                **NOTE:** Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.
         :param pulumi.Input['ApplicationReadinessV2Args'] readiness_v2: The readiness check settings of the container. If a container fails this health check multiple times, the container is stopped and then restarted. See `readiness_v2` below.
         :param pulumi.Input[str] security_group_id: Security group ID.
-        :param pulumi.Input[str] sls_configs: SLS  configuration.
+        :param pulumi.Input[str] sls_configs: Configuration for log collection to SLS. Valid parameter descriptions are as follows:
+               * `projectName`: Configures the project name on SLS.
+               * `logDir`: Path to the logs.
+               * `logType`: Type of logs. stdout indicates container standard output logs, and only one can be set; if not set, it means collecting file logs.
+               * `logstoreName`: Configures the log store name on SLS.
+               * `logtailName`: Configures the log tail name on SLS; if not specified, it means creating a new log tail.
+               
+               If you no longer need to use the SLS collection feature, you should set the value of this field to an empty string. There are two examples:
+               - Using SAE automatically created SLS resources: [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}].
+               - Using custom SLS resources: [{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}].
+               
+               **NOTE:** Projects that are automatically created with applications will be deleted along with the application deletion. Therefore, when selecting existing projects, you cannot choose projects automatically created by SAE.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `RUNNING`, `STOPPED`, `UNKNOWN`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] termination_grace_period_seconds: Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60. Valid values: [1,60].
@@ -1021,7 +1032,18 @@ class ApplicationArgs:
     @pulumi.getter(name="slsConfigs")
     def sls_configs(self) -> Optional[pulumi.Input[str]]:
         """
-        SLS  configuration.
+        Configuration for log collection to SLS. Valid parameter descriptions are as follows:
+        * `projectName`: Configures the project name on SLS.
+        * `logDir`: Path to the logs.
+        * `logType`: Type of logs. stdout indicates container standard output logs, and only one can be set; if not set, it means collecting file logs.
+        * `logstoreName`: Configures the log store name on SLS.
+        * `logtailName`: Configures the log tail name on SLS; if not specified, it means creating a new log tail.
+
+        If you no longer need to use the SLS collection feature, you should set the value of this field to an empty string. There are two examples:
+        - Using SAE automatically created SLS resources: [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}].
+        - Using custom SLS resources: [{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}].
+
+        **NOTE:** Projects that are automatically created with applications will be deleted along with the application deletion. Therefore, when selecting existing projects, you cannot choose projects automatically created by SAE.
         """
         return pulumi.get(self, "sls_configs")
 
@@ -1311,7 +1333,18 @@ class _ApplicationState:
         :param pulumi.Input['ApplicationReadinessV2Args'] readiness_v2: The readiness check settings of the container. If a container fails this health check multiple times, the container is stopped and then restarted. See `readiness_v2` below.
         :param pulumi.Input[int] replicas: Initial number of instances.
         :param pulumi.Input[str] security_group_id: Security group ID.
-        :param pulumi.Input[str] sls_configs: SLS  configuration.
+        :param pulumi.Input[str] sls_configs: Configuration for log collection to SLS. Valid parameter descriptions are as follows:
+               * `projectName`: Configures the project name on SLS.
+               * `logDir`: Path to the logs.
+               * `logType`: Type of logs. stdout indicates container standard output logs, and only one can be set; if not set, it means collecting file logs.
+               * `logstoreName`: Configures the log store name on SLS.
+               * `logtailName`: Configures the log tail name on SLS; if not specified, it means creating a new log tail.
+               
+               If you no longer need to use the SLS collection feature, you should set the value of this field to an empty string. There are two examples:
+               - Using SAE automatically created SLS resources: [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}].
+               - Using custom SLS resources: [{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}].
+               
+               **NOTE:** Projects that are automatically created with applications will be deleted along with the application deletion. Therefore, when selecting existing projects, you cannot choose projects automatically created by SAE.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `RUNNING`, `STOPPED`, `UNKNOWN`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] termination_grace_period_seconds: Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60. Valid values: [1,60].
@@ -2183,7 +2216,18 @@ class _ApplicationState:
     @pulumi.getter(name="slsConfigs")
     def sls_configs(self) -> Optional[pulumi.Input[str]]:
         """
-        SLS  configuration.
+        Configuration for log collection to SLS. Valid parameter descriptions are as follows:
+        * `projectName`: Configures the project name on SLS.
+        * `logDir`: Path to the logs.
+        * `logType`: Type of logs. stdout indicates container standard output logs, and only one can be set; if not set, it means collecting file logs.
+        * `logstoreName`: Configures the log store name on SLS.
+        * `logtailName`: Configures the log tail name on SLS; if not specified, it means creating a new log tail.
+
+        If you no longer need to use the SLS collection feature, you should set the value of this field to an empty string. There are two examples:
+        - Using SAE automatically created SLS resources: [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}].
+        - Using custom SLS resources: [{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}].
+
+        **NOTE:** Projects that are automatically created with applications will be deleted along with the application deletion. Therefore, when selecting existing projects, you cannot choose projects automatically created by SAE.
         """
         return pulumi.get(self, "sls_configs")
 
@@ -2541,7 +2585,18 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[Union['ApplicationReadinessV2Args', 'ApplicationReadinessV2ArgsDict']] readiness_v2: The readiness check settings of the container. If a container fails this health check multiple times, the container is stopped and then restarted. See `readiness_v2` below.
         :param pulumi.Input[int] replicas: Initial number of instances.
         :param pulumi.Input[str] security_group_id: Security group ID.
-        :param pulumi.Input[str] sls_configs: SLS  configuration.
+        :param pulumi.Input[str] sls_configs: Configuration for log collection to SLS. Valid parameter descriptions are as follows:
+               * `projectName`: Configures the project name on SLS.
+               * `logDir`: Path to the logs.
+               * `logType`: Type of logs. stdout indicates container standard output logs, and only one can be set; if not set, it means collecting file logs.
+               * `logstoreName`: Configures the log store name on SLS.
+               * `logtailName`: Configures the log tail name on SLS; if not specified, it means creating a new log tail.
+               
+               If you no longer need to use the SLS collection feature, you should set the value of this field to an empty string. There are two examples:
+               - Using SAE automatically created SLS resources: [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}].
+               - Using custom SLS resources: [{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}].
+               
+               **NOTE:** Projects that are automatically created with applications will be deleted along with the application deletion. Therefore, when selecting existing projects, you cannot choose projects automatically created by SAE.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `RUNNING`, `STOPPED`, `UNKNOWN`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] termination_grace_period_seconds: Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60. Valid values: [1,60].
@@ -2943,7 +2998,18 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[Union['ApplicationReadinessV2Args', 'ApplicationReadinessV2ArgsDict']] readiness_v2: The readiness check settings of the container. If a container fails this health check multiple times, the container is stopped and then restarted. See `readiness_v2` below.
         :param pulumi.Input[int] replicas: Initial number of instances.
         :param pulumi.Input[str] security_group_id: Security group ID.
-        :param pulumi.Input[str] sls_configs: SLS  configuration.
+        :param pulumi.Input[str] sls_configs: Configuration for log collection to SLS. Valid parameter descriptions are as follows:
+               * `projectName`: Configures the project name on SLS.
+               * `logDir`: Path to the logs.
+               * `logType`: Type of logs. stdout indicates container standard output logs, and only one can be set; if not set, it means collecting file logs.
+               * `logstoreName`: Configures the log store name on SLS.
+               * `logtailName`: Configures the log tail name on SLS; if not specified, it means creating a new log tail.
+               
+               If you no longer need to use the SLS collection feature, you should set the value of this field to an empty string. There are two examples:
+               - Using SAE automatically created SLS resources: [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}].
+               - Using custom SLS resources: [{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}].
+               
+               **NOTE:** Projects that are automatically created with applications will be deleted along with the application deletion. Therefore, when selecting existing projects, you cannot choose projects automatically created by SAE.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `RUNNING`, `STOPPED`, `UNKNOWN`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] termination_grace_period_seconds: Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60. Valid values: [1,60].
@@ -3497,7 +3563,18 @@ class Application(pulumi.CustomResource):
     @pulumi.getter(name="slsConfigs")
     def sls_configs(self) -> pulumi.Output[Optional[str]]:
         """
-        SLS  configuration.
+        Configuration for log collection to SLS. Valid parameter descriptions are as follows:
+        * `projectName`: Configures the project name on SLS.
+        * `logDir`: Path to the logs.
+        * `logType`: Type of logs. stdout indicates container standard output logs, and only one can be set; if not set, it means collecting file logs.
+        * `logstoreName`: Configures the log store name on SLS.
+        * `logtailName`: Configures the log tail name on SLS; if not specified, it means creating a new log tail.
+
+        If you no longer need to use the SLS collection feature, you should set the value of this field to an empty string. There are two examples:
+        - Using SAE automatically created SLS resources: [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}].
+        - Using custom SLS resources: [{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}].
+
+        **NOTE:** Projects that are automatically created with applications will be deleted along with the application deletion. Therefore, when selecting existing projects, you cannot choose projects automatically created by SAE.
         """
         return pulumi.get(self, "sls_configs")
 

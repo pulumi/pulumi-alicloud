@@ -46,6 +46,7 @@ export class V2Function extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly diskSize!: pulumi.Output<number | undefined>;
     public readonly environmentVariables!: pulumi.Output<{[key: string]: string} | undefined>;
+    public /*out*/ readonly functionArn!: pulumi.Output<string>;
     public readonly functionName!: pulumi.Output<string>;
     public readonly gpuMemorySize!: pulumi.Output<number | undefined>;
     public readonly handler!: pulumi.Output<string>;
@@ -85,6 +86,7 @@ export class V2Function extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["diskSize"] = state ? state.diskSize : undefined;
             resourceInputs["environmentVariables"] = state ? state.environmentVariables : undefined;
+            resourceInputs["functionArn"] = state ? state.functionArn : undefined;
             resourceInputs["functionName"] = state ? state.functionName : undefined;
             resourceInputs["gpuMemorySize"] = state ? state.gpuMemorySize : undefined;
             resourceInputs["handler"] = state ? state.handler : undefined;
@@ -137,6 +139,7 @@ export class V2Function extends pulumi.CustomResource {
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
             resourceInputs["timeout"] = args ? args.timeout : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["functionArn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(V2Function.__pulumiType, name, resourceInputs, opts);
@@ -156,6 +159,7 @@ export interface V2FunctionState {
     description?: pulumi.Input<string>;
     diskSize?: pulumi.Input<number>;
     environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    functionArn?: pulumi.Input<string>;
     functionName?: pulumi.Input<string>;
     gpuMemorySize?: pulumi.Input<number>;
     handler?: pulumi.Input<string>;

@@ -55,19 +55,18 @@ class BastionHostInstanceAdAuthServer(dict):
                  base_dn: str,
                  domain: str,
                  is_ssl: bool,
-                 password: str,
                  port: int,
                  server: str,
                  email_mapping: Optional[str] = None,
                  filter: Optional[str] = None,
                  mobile_mapping: Optional[str] = None,
                  name_mapping: Optional[str] = None,
+                 password: Optional[str] = None,
                  standby_server: Optional[str] = None):
         pulumi.set(__self__, "account", account)
         pulumi.set(__self__, "base_dn", base_dn)
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "is_ssl", is_ssl)
-        pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "server", server)
         if email_mapping is not None:
@@ -78,6 +77,8 @@ class BastionHostInstanceAdAuthServer(dict):
             pulumi.set(__self__, "mobile_mapping", mobile_mapping)
         if name_mapping is not None:
             pulumi.set(__self__, "name_mapping", name_mapping)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
         if standby_server is not None:
             pulumi.set(__self__, "standby_server", standby_server)
 
@@ -100,11 +101,6 @@ class BastionHostInstanceAdAuthServer(dict):
     @pulumi.getter(name="isSsl")
     def is_ssl(self) -> bool:
         return pulumi.get(self, "is_ssl")
-
-    @property
-    @pulumi.getter
-    def password(self) -> str:
-        return pulumi.get(self, "password")
 
     @property
     @pulumi.getter
@@ -135,6 +131,11 @@ class BastionHostInstanceAdAuthServer(dict):
     @pulumi.getter(name="nameMapping")
     def name_mapping(self) -> Optional[str]:
         return pulumi.get(self, "name_mapping")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        return pulumi.get(self, "password")
 
     @property
     @pulumi.getter(name="standbyServer")
@@ -176,7 +177,6 @@ class BastionHostInstanceLdapAuthServer(dict):
     def __init__(__self__, *,
                  account: str,
                  base_dn: str,
-                 password: str,
                  port: int,
                  server: str,
                  email_mapping: Optional[str] = None,
@@ -185,10 +185,10 @@ class BastionHostInstanceLdapAuthServer(dict):
                  login_name_mapping: Optional[str] = None,
                  mobile_mapping: Optional[str] = None,
                  name_mapping: Optional[str] = None,
+                 password: Optional[str] = None,
                  standby_server: Optional[str] = None):
         pulumi.set(__self__, "account", account)
         pulumi.set(__self__, "base_dn", base_dn)
-        pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "server", server)
         if email_mapping is not None:
@@ -203,6 +203,8 @@ class BastionHostInstanceLdapAuthServer(dict):
             pulumi.set(__self__, "mobile_mapping", mobile_mapping)
         if name_mapping is not None:
             pulumi.set(__self__, "name_mapping", name_mapping)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
         if standby_server is not None:
             pulumi.set(__self__, "standby_server", standby_server)
 
@@ -215,11 +217,6 @@ class BastionHostInstanceLdapAuthServer(dict):
     @pulumi.getter(name="baseDn")
     def base_dn(self) -> str:
         return pulumi.get(self, "base_dn")
-
-    @property
-    @pulumi.getter
-    def password(self) -> str:
-        return pulumi.get(self, "password")
 
     @property
     @pulumi.getter
@@ -262,6 +259,11 @@ class BastionHostInstanceLdapAuthServer(dict):
         return pulumi.get(self, "name_mapping")
 
     @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        return pulumi.get(self, "password")
+
+    @property
     @pulumi.getter(name="standbyServer")
     def standby_server(self) -> Optional[str]:
         return pulumi.get(self, "standby_server")
@@ -270,6 +272,7 @@ class BastionHostInstanceLdapAuthServer(dict):
 @pulumi.output_type
 class GetBastionHostInstancesInstanceResult(dict):
     def __init__(__self__, *,
+                 bandwidth: str,
                  description: str,
                  id: str,
                  instance_status: str,
@@ -278,8 +281,10 @@ class GetBastionHostInstancesInstanceResult(dict):
                  public_domain: str,
                  public_network_access: bool,
                  security_group_ids: Sequence[str],
-                 user_vswitch_id: str,
-                 tags: Optional[Mapping[str, str]] = None):
+                 storage: str,
+                 tags: Mapping[str, str],
+                 user_vswitch_id: str):
+        pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "instance_status", instance_status)
@@ -288,9 +293,14 @@ class GetBastionHostInstancesInstanceResult(dict):
         pulumi.set(__self__, "public_domain", public_domain)
         pulumi.set(__self__, "public_network_access", public_network_access)
         pulumi.set(__self__, "security_group_ids", security_group_ids)
+        pulumi.set(__self__, "storage", storage)
+        pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "user_vswitch_id", user_vswitch_id)
-        if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> str:
+        return pulumi.get(self, "bandwidth")
 
     @property
     @pulumi.getter
@@ -333,14 +343,19 @@ class GetBastionHostInstancesInstanceResult(dict):
         return pulumi.get(self, "security_group_ids")
 
     @property
-    @pulumi.getter(name="userVswitchId")
-    def user_vswitch_id(self) -> str:
-        return pulumi.get(self, "user_vswitch_id")
+    @pulumi.getter
+    def storage(self) -> str:
+        return pulumi.get(self, "storage")
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, str]]:
+    def tags(self) -> Mapping[str, str]:
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="userVswitchId")
+    def user_vswitch_id(self) -> str:
+        return pulumi.get(self, "user_vswitch_id")
 
 
 @pulumi.output_type

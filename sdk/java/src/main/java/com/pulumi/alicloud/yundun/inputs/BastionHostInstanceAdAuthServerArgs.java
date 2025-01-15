@@ -74,11 +74,11 @@ public final class BastionHostInstanceAdAuthServerArgs extends com.pulumi.resour
         return Optional.ofNullable(this.nameMapping);
     }
 
-    @Import(name="password", required=true)
-    private Output<String> password;
+    @Import(name="password")
+    private @Nullable Output<String> password;
 
-    public Output<String> password() {
-        return this.password;
+    public Optional<Output<String>> password() {
+        return Optional.ofNullable(this.password);
     }
 
     @Import(name="port", required=true)
@@ -209,7 +209,7 @@ public final class BastionHostInstanceAdAuthServerArgs extends com.pulumi.resour
             return nameMapping(Output.of(nameMapping));
         }
 
-        public Builder password(Output<String> password) {
+        public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
@@ -257,9 +257,6 @@ public final class BastionHostInstanceAdAuthServerArgs extends com.pulumi.resour
             }
             if ($.isSsl == null) {
                 throw new MissingRequiredPropertyException("BastionHostInstanceAdAuthServerArgs", "isSsl");
-            }
-            if ($.password == null) {
-                throw new MissingRequiredPropertyException("BastionHostInstanceAdAuthServerArgs", "password");
             }
             if ($.port == null) {
                 throw new MissingRequiredPropertyException("BastionHostInstanceAdAuthServerArgs", "port");

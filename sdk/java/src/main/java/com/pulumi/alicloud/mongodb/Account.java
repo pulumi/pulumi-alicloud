@@ -16,98 +16,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a MongoDB Account resource.
- * 
- * For information about MongoDB Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/doc-detail/62154.html).
- * 
- * &gt; **NOTE:** Available since v1.148.0.
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.mongodb.MongodbFunctions;
- * import com.pulumi.alicloud.mongodb.inputs.GetZonesArgs;
- * import com.pulumi.alicloud.vpc.Network;
- * import com.pulumi.alicloud.vpc.NetworkArgs;
- * import com.pulumi.alicloud.vpc.Switch;
- * import com.pulumi.alicloud.vpc.SwitchArgs;
- * import com.pulumi.alicloud.mongodb.Instance;
- * import com.pulumi.alicloud.mongodb.InstanceArgs;
- * import com.pulumi.alicloud.mongodb.Account;
- * import com.pulumi.alicloud.mongodb.AccountArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("terraform-example");
- *         final var default = MongodbFunctions.getZones();
- * 
- *         final var index = default_.zones().length() - 1;
- * 
- *         final var zoneId = default_.zones()[index].id();
- * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
- *             .vpcName(name)
- *             .cidrBlock("172.17.3.0/24")
- *             .build());
- * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
- *             .vswitchName(name)
- *             .cidrBlock("172.17.3.0/24")
- *             .vpcId(defaultNetwork.id())
- *             .zoneId(zoneId)
- *             .build());
- * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
- *             .engineVersion("4.2")
- *             .dbInstanceClass("dds.mongo.mid")
- *             .dbInstanceStorage(10)
- *             .vswitchId(defaultSwitch.id())
- *             .securityIpLists(            
- *                 "10.168.1.12",
- *                 "100.69.7.112")
- *             .name(name)
- *             .tags(Map.ofEntries(
- *                 Map.entry("Created", "TF"),
- *                 Map.entry("For", "example")
- *             ))
- *             .build());
- * 
- *         var defaultAccount = new Account("defaultAccount", AccountArgs.builder()
- *             .accountName("root")
- *             .accountPassword("Example_123")
- *             .instanceId(defaultInstance.id())
- *             .accountDescription(name)
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
- * MongoDB Account can be imported using the id, e.g.
+ * Mongo D B Account can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:mongodb/account:Account example &lt;instance_id&gt;:&lt;account_name&gt;
@@ -117,78 +28,100 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:mongodb/account:Account")
 public class Account extends com.pulumi.resources.CustomResource {
     /**
-     * The description of the account.
-     * * The description must start with a letter, and cannot start with `http://` or `https://`.
-     * * It must be `2` to `256` characters in length, and can contain letters, digits, underscores (_), and hyphens (-).
+     * Account comment information.
+     * 
+     * &gt; **NOTE:**  Call the ModifyAccountDescription interface to set the account description information before this parameter is returned.
      * 
      */
     @Export(name="accountDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountDescription;
 
     /**
-     * @return The description of the account.
-     * * The description must start with a letter, and cannot start with `http://` or `https://`.
-     * * It must be `2` to `256` characters in length, and can contain letters, digits, underscores (_), and hyphens (-).
+     * @return Account comment information.
+     * 
+     * &gt; **NOTE:**  Call the ModifyAccountDescription interface to set the account description information before this parameter is returned.
      * 
      */
     public Output<Optional<String>> accountDescription() {
         return Codegen.optional(this.accountDescription);
     }
     /**
-     * The name of the account. Valid values: `root`.
+     * The new password.
+     * 
+     * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ &amp; * ( ) _ + - =`
+     * - The password must be 8 to 32 characters in length.
      * 
      */
     @Export(name="accountName", refs={String.class}, tree="[0]")
     private Output<String> accountName;
 
     /**
-     * @return The name of the account. Valid values: `root`.
+     * @return The new password.
+     * 
+     * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ &amp; * ( ) _ + - =`
+     * - The password must be 8 to 32 characters in length.
      * 
      */
     public Output<String> accountName() {
         return this.accountName;
     }
     /**
-     * The Password of the Account.
-     * * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
-     * * The password must be `8` to `32` characters in length.
+     * The password of the database account. The password must be 8 to 32 characters in length. It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! # $ % ^ &amp; \* ( ) \_ + - =
      * 
      */
     @Export(name="accountPassword", refs={String.class}, tree="[0]")
     private Output<String> accountPassword;
 
     /**
-     * @return The Password of the Account.
-     * * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
-     * * The password must be `8` to `32` characters in length.
+     * @return The password of the database account. The password must be 8 to 32 characters in length. It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! # $ % ^ &amp; \* ( ) \_ + - =
      * 
      */
     public Output<String> accountPassword() {
         return this.accountPassword;
     }
     /**
-     * The ID of the instance.
+     * The role type of the instance. Value description
+     * 
+     * - When the instance type is sharded cluster, charactertype is required. The values are db and cs.
+     * - When the instance type is a replica set, charactertype can be null or pass in normal.
+     * 
+     */
+    @Export(name="characterType", refs={String.class}, tree="[0]")
+    private Output<String> characterType;
+
+    /**
+     * @return The role type of the instance. Value description
+     * 
+     * - When the instance type is sharded cluster, charactertype is required. The values are db and cs.
+     * - When the instance type is a replica set, charactertype can be null or pass in normal.
+     * 
+     */
+    public Output<String> characterType() {
+        return this.characterType;
+    }
+    /**
+     * The account whose password needs to be reset. Set the value to `root`.
      * 
      */
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
-     * @return The ID of the instance.
+     * @return The account whose password needs to be reset. Set the value to `root`.
      * 
      */
     public Output<String> instanceId() {
         return this.instanceId;
     }
     /**
-     * The status of the account. Valid values: `Unavailable`, `Available`.
+     * Account Status
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the account. Valid values: `Unavailable`, `Available`.
+     * @return Account Status
      * 
      */
     public Output<String> status() {

@@ -19,6 +19,143 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a resource to create a VPC NAT Gateway.
+ * 
+ * &gt; **NOTE:** Resource bandwidth packages will not be supported since 00:00 on November 4, 2017, and public IP can be replaced be elastic IPs.
+ * If a Nat Gateway has already bought some bandwidth packages, it can not bind elastic IP and you have to submit the [work order](https://selfservice.console.aliyun.com/ticket/createIndex) to solve.
+ * If you want to add public IP, you can use resource &#39;alicloud_eip_association&#39; to bind several elastic IPs for one Nat Gateway.
+ * 
+ * &gt; **NOTE:** From version 1.7.1, this resource has deprecated bandwidth packages.
+ * But, in order to manage stock bandwidth packages, version 1.13.0 re-support configuring &#39;bandwidth_packages&#39;.
+ * 
+ * &gt; **NOTE:** Available since v1.37.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic usage
+ * 
+ * - create enhanced nat gateway
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.vpc.NatGateway;
+ * import com.pulumi.alicloud.vpc.NatGatewayArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf_example");
+ *         final var default = VpcFunctions.getEnhancedNatAvailableZones();
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName(name)
+ *             .cidrBlock("10.0.0.0/8")
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+ *             .vswitchName(name)
+ *             .zoneId(default_.zones()[0].zoneId())
+ *             .cidrBlock("10.10.0.0/20")
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var defaultNatGateway = new NatGateway("defaultNatGateway", NatGatewayArgs.builder()
+ *             .vpcId(defaultNetwork.id())
+ *             .natGatewayName(name)
+ *             .paymentType("PayAsYouGo")
+ *             .vswitchId(defaultSwitch.id())
+ *             .natType("Enhanced")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * - transform nat from Normal to Enhanced
+ * &gt; **NOTE:** You must set `nat_type` to `Enhanced` and set `vswitch_id`.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.vpc.NatGateway;
+ * import com.pulumi.alicloud.vpc.NatGatewayArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf-example");
+ *         final var default = VpcFunctions.getEnhancedNatAvailableZones();
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName(name)
+ *             .cidrBlock("10.0.0.0/8")
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+ *             .vswitchName(name)
+ *             .zoneId(default_.zones()[0].zoneId())
+ *             .cidrBlock("10.10.0.0/20")
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var defaultNatGateway = new NatGateway("defaultNatGateway", NatGatewayArgs.builder()
+ *             .vpcId(defaultNetwork.id())
+ *             .natGatewayName(name)
+ *             .vswitchId(defaultSwitch.id())
+ *             .natType("Enhanced")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Nat gateway can be imported using the id, e.g.
@@ -243,14 +380,14 @@ public class NatGateway extends com.pulumi.resources.CustomResource {
         return this.networkType;
     }
     /**
-     * The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+     * The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
-     * @return The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+     * @return The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
      * 
      */
     public Output<String> paymentType() {

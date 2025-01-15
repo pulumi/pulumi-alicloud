@@ -4,11 +4,10 @@
 package com.pulumi.alicloud.oss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetBucketsBucketLifecycleRuleExpiration {
@@ -16,27 +15,27 @@ public final class GetBucketsBucketLifecycleRuleExpiration {
      * @return Date after which the rule to take effect. The format is like 2017-03-09.
      * 
      */
-    private @Nullable String date;
+    private String date;
     /**
      * @return Indicate the number of days after the last object update until the rules take effect.
      * 
      */
-    private @Nullable Integer days;
+    private Integer days;
 
     private GetBucketsBucketLifecycleRuleExpiration() {}
     /**
      * @return Date after which the rule to take effect. The format is like 2017-03-09.
      * 
      */
-    public Optional<String> date() {
-        return Optional.ofNullable(this.date);
+    public String date() {
+        return this.date;
     }
     /**
      * @return Indicate the number of days after the last object update until the rules take effect.
      * 
      */
-    public Optional<Integer> days() {
-        return Optional.ofNullable(this.days);
+    public Integer days() {
+        return this.days;
     }
 
     public static Builder builder() {
@@ -48,8 +47,8 @@ public final class GetBucketsBucketLifecycleRuleExpiration {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String date;
-        private @Nullable Integer days;
+        private String date;
+        private Integer days;
         public Builder() {}
         public Builder(GetBucketsBucketLifecycleRuleExpiration defaults) {
     	      Objects.requireNonNull(defaults);
@@ -58,14 +57,18 @@ public final class GetBucketsBucketLifecycleRuleExpiration {
         }
 
         @CustomType.Setter
-        public Builder date(@Nullable String date) {
-
+        public Builder date(String date) {
+            if (date == null) {
+              throw new MissingRequiredPropertyException("GetBucketsBucketLifecycleRuleExpiration", "date");
+            }
             this.date = date;
             return this;
         }
         @CustomType.Setter
-        public Builder days(@Nullable Integer days) {
-
+        public Builder days(Integer days) {
+            if (days == null) {
+              throw new MissingRequiredPropertyException("GetBucketsBucketLifecycleRuleExpiration", "days");
+            }
             this.days = days;
             return this;
         }

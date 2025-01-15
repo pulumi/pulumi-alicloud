@@ -10,12 +10,15 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a snat resource.
+ * Provides a NAT Gateway Snat Entry resource.
+ * 
+ * For information about NAT Gateway Snat Entry and how to use it, see [What is Snat Entry](https://www.alibabacloud.com/help/en/nat-gateway/developer-reference/api-vpc-2016-04-28-createsnatentry-natgws).
  * 
  * &gt; **NOTE:** Available since v1.119.0.
  * 
@@ -59,7 +62,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf_example");
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation("VSwitch")
  *             .build());
@@ -107,15 +110,33 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Snat Entry can be imported using the id, e.g.
+ * NAT Gateway Snat Entry can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:vpc/snatEntry:SnatEntry foo stb-1aece3:snat-232ce2
+ * $ pulumi import alicloud:vpc/snatEntry:SnatEntry example &lt;snat_table_id&gt;:&lt;snat_entry_id&gt;
+ * ```
+ * 
+ * ```sh
+ * $ pulumi import alicloud:vpc/snatEntry:SnatEntry example &lt;snat_entry_id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:vpc/snatEntry:SnatEntry")
 public class SnatEntry extends com.pulumi.resources.CustomResource {
+    /**
+     * Specifies whether to enable EIP affinity. Default value: `0`. Valid values:
+     * 
+     */
+    @Export(name="eipAffinity", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> eipAffinity;
+
+    /**
+     * @return Specifies whether to enable EIP affinity. Default value: `0`. Valid values:
+     * 
+     */
+    public Output<Optional<Integer>> eipAffinity() {
+        return Codegen.optional(this.eipAffinity);
+    }
     /**
      * The id of the snat entry on the server.
      * 
@@ -131,84 +152,84 @@ public class SnatEntry extends com.pulumi.resources.CustomResource {
         return this.snatEntryId;
     }
     /**
-     * The name of snat entry.
+     * The name of the SNAT entry. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
      * 
      */
     @Export(name="snatEntryName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> snatEntryName;
 
     /**
-     * @return The name of snat entry.
+     * @return The name of the SNAT entry. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
      * 
      */
     public Output<Optional<String>> snatEntryName() {
         return Codegen.optional(this.snatEntryName);
     }
     /**
-     * The SNAT ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidth_packages`.
+     * The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snat_ip` can be modified.
      * 
      */
     @Export(name="snatIp", refs={String.class}, tree="[0]")
     private Output<String> snatIp;
 
     /**
-     * @return The SNAT ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidth_packages`.
+     * @return The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snat_ip` can be modified.
      * 
      */
     public Output<String> snatIp() {
         return this.snatIp;
     }
     /**
-     * The value can get from `alicloud.vpc.NatGateway` Attributes &#34;snat_table_ids&#34;.
+     * The ID of the SNAT table.
      * 
      */
     @Export(name="snatTableId", refs={String.class}, tree="[0]")
     private Output<String> snatTableId;
 
     /**
-     * @return The value can get from `alicloud.vpc.NatGateway` Attributes &#34;snat_table_ids&#34;.
+     * @return The ID of the SNAT table.
      * 
      */
     public Output<String> snatTableId() {
         return this.snatTableId;
     }
     /**
-     * The private network segment of Ecs. This parameter and the `source_vswitch_id` parameter are mutually exclusive and cannot appear at the same time.
+     * The source CIDR block specified in the SNAT entry.
      * 
      */
     @Export(name="sourceCidr", refs={String.class}, tree="[0]")
     private Output<String> sourceCidr;
 
     /**
-     * @return The private network segment of Ecs. This parameter and the `source_vswitch_id` parameter are mutually exclusive and cannot appear at the same time.
+     * @return The source CIDR block specified in the SNAT entry.
      * 
      */
     public Output<String> sourceCidr() {
         return this.sourceCidr;
     }
     /**
-     * The vswitch ID.
+     * The ID of the vSwitch.
      * 
      */
     @Export(name="sourceVswitchId", refs={String.class}, tree="[0]")
     private Output<String> sourceVswitchId;
 
     /**
-     * @return The vswitch ID.
+     * @return The ID of the vSwitch.
      * 
      */
     public Output<String> sourceVswitchId() {
         return this.sourceVswitchId;
     }
     /**
-     * (Available since v1.119.1) The status of snat entry.
+     * (Available since v1.119.1) The ID of the SNAT entry.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return (Available since v1.119.1) The status of snat entry.
+     * @return (Available since v1.119.1) The ID of the SNAT entry.
      * 
      */
     public Output<String> status() {

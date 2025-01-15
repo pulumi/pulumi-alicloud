@@ -80,11 +80,14 @@ class ConnectionBgpConfig(dict):
                  status: Optional[str] = None,
                  tunnel_cidr: Optional[str] = None):
         """
-        :param bool enable: Bgp enable.
-        :param str local_asn: Local asn.
-        :param str local_bgp_ip: Local bgp IP.
+        :param bool enable: specifies whether to enable BGP. Valid values: true and false (default).
+        :param str local_asn: the autonomous system number (ASN) on the Alibaba Cloud side. 
+               Valid values: 1 to 4294967295. Default value: 45104. You can enter a value in two segments separated by a period (.).
+               Each segment is 16 bits in length. Enter the number in each segment in decimal format.
+               For example, if you enter 123.456, the ASN is 8061384. The ASN is calculated by using the following formula: 123 × 65536 + 456 = 8061384.
+        :param str local_bgp_ip: the BGP address on the Alibaba Cloud side. It must be an IP address that falls within the CIDR block of the IPsec tunnel.
         :param str status: The negotiation status of Tunnel.
-        :param str tunnel_cidr: IPSec tunnel Cidr.
+        :param str tunnel_cidr: The CIDR block of the IPsec tunnel. The CIDR block must belong to 169.254.0.0/16 and the subnet mask is 30 bits in length.
         """
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
@@ -101,7 +104,7 @@ class ConnectionBgpConfig(dict):
     @pulumi.getter
     def enable(self) -> Optional[bool]:
         """
-        Bgp enable.
+        specifies whether to enable BGP. Valid values: true and false (default).
         """
         return pulumi.get(self, "enable")
 
@@ -109,7 +112,10 @@ class ConnectionBgpConfig(dict):
     @pulumi.getter(name="localAsn")
     def local_asn(self) -> Optional[str]:
         """
-        Local asn.
+        the autonomous system number (ASN) on the Alibaba Cloud side. 
+        Valid values: 1 to 4294967295. Default value: 45104. You can enter a value in two segments separated by a period (.).
+        Each segment is 16 bits in length. Enter the number in each segment in decimal format.
+        For example, if you enter 123.456, the ASN is 8061384. The ASN is calculated by using the following formula: 123 × 65536 + 456 = 8061384.
         """
         return pulumi.get(self, "local_asn")
 
@@ -117,7 +123,7 @@ class ConnectionBgpConfig(dict):
     @pulumi.getter(name="localBgpIp")
     def local_bgp_ip(self) -> Optional[str]:
         """
-        Local bgp IP.
+        the BGP address on the Alibaba Cloud side. It must be an IP address that falls within the CIDR block of the IPsec tunnel.
         """
         return pulumi.get(self, "local_bgp_ip")
 
@@ -133,7 +139,7 @@ class ConnectionBgpConfig(dict):
     @pulumi.getter(name="tunnelCidr")
     def tunnel_cidr(self) -> Optional[str]:
         """
-        IPSec tunnel Cidr.
+        The CIDR block of the IPsec tunnel. The CIDR block must belong to 169.254.0.0/16 and the subnet mask is 30 bits in length.
         """
         return pulumi.get(self, "tunnel_cidr")
 
@@ -147,11 +153,11 @@ class ConnectionHealthCheckConfig(dict):
                  retry: Optional[int] = None,
                  sip: Optional[str] = None):
         """
-        :param str dip: Destination IP.
-        :param bool enable: Specifies whether to enable healthcheck.
-        :param int interval: Retry interval.
-        :param int retry: retry times.
-        :param str sip: Source IP.
+        :param str dip: the destination IP address configured for health checks.
+        :param bool enable: specifies whether to enable health checks. Valid values: true and false. Default value: false.
+        :param int interval: the time interval of health check retries. Unit: seconds. Default value: 3.
+        :param int retry: the maximum number of health check retries. Default value: 3.
+        :param str sip: the source IP address that is used for health checks.
         """
         if dip is not None:
             pulumi.set(__self__, "dip", dip)
@@ -168,7 +174,7 @@ class ConnectionHealthCheckConfig(dict):
     @pulumi.getter
     def dip(self) -> Optional[str]:
         """
-        Destination IP.
+        the destination IP address configured for health checks.
         """
         return pulumi.get(self, "dip")
 
@@ -176,7 +182,7 @@ class ConnectionHealthCheckConfig(dict):
     @pulumi.getter
     def enable(self) -> Optional[bool]:
         """
-        Specifies whether to enable healthcheck.
+        specifies whether to enable health checks. Valid values: true and false. Default value: false.
         """
         return pulumi.get(self, "enable")
 
@@ -184,7 +190,7 @@ class ConnectionHealthCheckConfig(dict):
     @pulumi.getter
     def interval(self) -> Optional[int]:
         """
-        Retry interval.
+        the time interval of health check retries. Unit: seconds. Default value: 3.
         """
         return pulumi.get(self, "interval")
 
@@ -192,7 +198,7 @@ class ConnectionHealthCheckConfig(dict):
     @pulumi.getter
     def retry(self) -> Optional[int]:
         """
-        retry times.
+        the maximum number of health check retries. Default value: 3.
         """
         return pulumi.get(self, "retry")
 
@@ -200,7 +206,7 @@ class ConnectionHealthCheckConfig(dict):
     @pulumi.getter
     def sip(self) -> Optional[str]:
         """
-        Source IP.
+        the source IP address that is used for health checks.
         """
         return pulumi.get(self, "sip")
 
@@ -249,15 +255,18 @@ class ConnectionIkeConfig(dict):
                  ike_version: Optional[str] = None,
                  psk: Optional[str] = None):
         """
-        :param str ike_auth_alg: IKE auth Algorithm.
-        :param str ike_enc_alg: IKE encript algorithm.
-        :param int ike_lifetime: IKE lifetime.
-        :param str ike_local_id: The local ID, which supports the FQDN and IP formats, and defaults to the IP address of the selected VPN gateway.
-        :param str ike_mode: IKE mode, supports main and aggressive mode. The main mode is highly secure. If NAT traversal is enabled, we recommend that you use the aggressive mode.
-        :param str ike_pfs: DH group.
-        :param str ike_remote_id: The peer ID. The FQDN and IP address formats are supported. The default value is the IP address of the selected customer gateway.
-        :param str ike_version: IKE version.
-        :param str psk: Preshared secret key.
+        :param str ike_auth_alg: the authentication algorithm that is used in Phase 1 negotiations. Valid values: md5, sha1, sha2
+        :param str ike_enc_alg: the encryption algorithm that is used in Phase 1 negotiations. Valid values: aes, aes192, aes256, des, and 3des. Default value: aes.
+        :param int ike_lifetime: the SA lifetime as a result of Phase 1 negotiations. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
+        :param str ike_local_id: the identifier of the VPN gateway. It can contain at most 100 characters. The default value is the IP address of the VPN gateway.
+        :param str ike_mode: the negotiation mode of IKE. Valid values: main and aggressive. Default value: main.
+               - main: This mode offers higher security during negotiations.
+               - aggressive: This mode supports faster negotiations and a higher success rate.
+        :param str ike_pfs: the Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Valid values: group1, group2, group5, and group14. Default value: group2.
+        :param str ike_remote_id: the identifier of the customer gateway. It can contain at most 100 characters. The default value is the IP address of the customer gateway.
+        :param str ike_version: the version of the Internet Key Exchange (IKE) protocol. Valid values: ikev1 and ikev2. Default value: ikev1.
+               Compared with IKEv1, IKEv2 simplifies the security association (SA) negotiation process and provides better support for scenarios with multiple CIDR blocks.
+        :param str psk: the pre-shared key that is used for identity authentication between the VPN gateway and the on-premises data center. The key must be 1 to 100 characters in length and can contain digits, letters, and the following special characters: ~!\\`@#$%^&*()_-+={}[]|;:',.<>/? If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key. You can call the DescribeVpnConnection operation to query the pre-shared key that is automatically generated by the system.
         """
         if ike_auth_alg is not None:
             pulumi.set(__self__, "ike_auth_alg", ike_auth_alg)
@@ -282,7 +291,7 @@ class ConnectionIkeConfig(dict):
     @pulumi.getter(name="ikeAuthAlg")
     def ike_auth_alg(self) -> Optional[str]:
         """
-        IKE auth Algorithm.
+        the authentication algorithm that is used in Phase 1 negotiations. Valid values: md5, sha1, sha2
         """
         return pulumi.get(self, "ike_auth_alg")
 
@@ -290,7 +299,7 @@ class ConnectionIkeConfig(dict):
     @pulumi.getter(name="ikeEncAlg")
     def ike_enc_alg(self) -> Optional[str]:
         """
-        IKE encript algorithm.
+        the encryption algorithm that is used in Phase 1 negotiations. Valid values: aes, aes192, aes256, des, and 3des. Default value: aes.
         """
         return pulumi.get(self, "ike_enc_alg")
 
@@ -298,7 +307,7 @@ class ConnectionIkeConfig(dict):
     @pulumi.getter(name="ikeLifetime")
     def ike_lifetime(self) -> Optional[int]:
         """
-        IKE lifetime.
+        the SA lifetime as a result of Phase 1 negotiations. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
         """
         return pulumi.get(self, "ike_lifetime")
 
@@ -306,7 +315,7 @@ class ConnectionIkeConfig(dict):
     @pulumi.getter(name="ikeLocalId")
     def ike_local_id(self) -> Optional[str]:
         """
-        The local ID, which supports the FQDN and IP formats, and defaults to the IP address of the selected VPN gateway.
+        the identifier of the VPN gateway. It can contain at most 100 characters. The default value is the IP address of the VPN gateway.
         """
         return pulumi.get(self, "ike_local_id")
 
@@ -314,7 +323,9 @@ class ConnectionIkeConfig(dict):
     @pulumi.getter(name="ikeMode")
     def ike_mode(self) -> Optional[str]:
         """
-        IKE mode, supports main and aggressive mode. The main mode is highly secure. If NAT traversal is enabled, we recommend that you use the aggressive mode.
+        the negotiation mode of IKE. Valid values: main and aggressive. Default value: main.
+        - main: This mode offers higher security during negotiations.
+        - aggressive: This mode supports faster negotiations and a higher success rate.
         """
         return pulumi.get(self, "ike_mode")
 
@@ -322,7 +333,7 @@ class ConnectionIkeConfig(dict):
     @pulumi.getter(name="ikePfs")
     def ike_pfs(self) -> Optional[str]:
         """
-        DH group.
+        the Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Valid values: group1, group2, group5, and group14. Default value: group2.
         """
         return pulumi.get(self, "ike_pfs")
 
@@ -330,7 +341,7 @@ class ConnectionIkeConfig(dict):
     @pulumi.getter(name="ikeRemoteId")
     def ike_remote_id(self) -> Optional[str]:
         """
-        The peer ID. The FQDN and IP address formats are supported. The default value is the IP address of the selected customer gateway.
+        the identifier of the customer gateway. It can contain at most 100 characters. The default value is the IP address of the customer gateway.
         """
         return pulumi.get(self, "ike_remote_id")
 
@@ -338,7 +349,8 @@ class ConnectionIkeConfig(dict):
     @pulumi.getter(name="ikeVersion")
     def ike_version(self) -> Optional[str]:
         """
-        IKE version.
+        the version of the Internet Key Exchange (IKE) protocol. Valid values: ikev1 and ikev2. Default value: ikev1.
+        Compared with IKEv1, IKEv2 simplifies the security association (SA) negotiation process and provides better support for scenarios with multiple CIDR blocks.
         """
         return pulumi.get(self, "ike_version")
 
@@ -346,7 +358,7 @@ class ConnectionIkeConfig(dict):
     @pulumi.getter
     def psk(self) -> Optional[str]:
         """
-        Preshared secret key.
+        the pre-shared key that is used for identity authentication between the VPN gateway and the on-premises data center. The key must be 1 to 100 characters in length and can contain digits, letters, and the following special characters: ~!\\`@#$%^&*()_-+={}[]|;:',.<>/? If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key. You can call the DescribeVpnConnection operation to query the pre-shared key that is automatically generated by the system.
         """
         return pulumi.get(self, "psk")
 
@@ -382,10 +394,10 @@ class ConnectionIpsecConfig(dict):
                  ipsec_lifetime: Optional[int] = None,
                  ipsec_pfs: Optional[str] = None):
         """
-        :param str ipsec_auth_alg: IPsec authentication algorithm. sha1 and md5 are supported.
-        :param str ipsec_enc_alg: IPsec Encript algorithm.
-        :param int ipsec_lifetime: IPsec lifetime.
-        :param str ipsec_pfs: DH Group.
+        :param str ipsec_auth_alg: the authentication algorithm that is used in Phase 2 negotiations. Valid values: md5, sha1, sha256, sha384, and sha512. Default value: md5.
+        :param str ipsec_enc_alg: the encryption algorithm that is used in Phase 2 negotiations. Valid values: aes, aes192, aes256, des, and 3des. Default value: aes.
+        :param int ipsec_lifetime: the SA lifetime that is determined by Phase 2 negotiations. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
+        :param str ipsec_pfs: the DH key exchange algorithm that is used in Phase 2 negotiations. Valid values: disabled, group1, group2, group5, and group14. Default value: group2.
         """
         if ipsec_auth_alg is not None:
             pulumi.set(__self__, "ipsec_auth_alg", ipsec_auth_alg)
@@ -400,7 +412,7 @@ class ConnectionIpsecConfig(dict):
     @pulumi.getter(name="ipsecAuthAlg")
     def ipsec_auth_alg(self) -> Optional[str]:
         """
-        IPsec authentication algorithm. sha1 and md5 are supported.
+        the authentication algorithm that is used in Phase 2 negotiations. Valid values: md5, sha1, sha256, sha384, and sha512. Default value: md5.
         """
         return pulumi.get(self, "ipsec_auth_alg")
 
@@ -408,7 +420,7 @@ class ConnectionIpsecConfig(dict):
     @pulumi.getter(name="ipsecEncAlg")
     def ipsec_enc_alg(self) -> Optional[str]:
         """
-        IPsec Encript algorithm.
+        the encryption algorithm that is used in Phase 2 negotiations. Valid values: aes, aes192, aes256, des, and 3des. Default value: aes.
         """
         return pulumi.get(self, "ipsec_enc_alg")
 
@@ -416,7 +428,7 @@ class ConnectionIpsecConfig(dict):
     @pulumi.getter(name="ipsecLifetime")
     def ipsec_lifetime(self) -> Optional[int]:
         """
-        IPsec lifetime.
+        the SA lifetime that is determined by Phase 2 negotiations. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
         """
         return pulumi.get(self, "ipsec_lifetime")
 
@@ -424,7 +436,7 @@ class ConnectionIpsecConfig(dict):
     @pulumi.getter(name="ipsecPfs")
     def ipsec_pfs(self) -> Optional[str]:
         """
-        DH Group.
+        the DH key exchange algorithm that is used in Phase 2 negotiations. Valid values: disabled, group1, group2, group5, and group14. Default value: group2.
         """
         return pulumi.get(self, "ipsec_pfs")
 
@@ -751,8 +763,10 @@ class ConnectionTunnelOptionsSpecificationTunnelIkeConfig(dict):
                  psk: Optional[str] = None,
                  remote_id: Optional[str] = None):
         """
-        :param str local_id: The local Id.
-        :param str remote_id: Remote ID.
+        :param str local_id: The identifier of the tunnel on the Alibaba Cloud side, which is used in Phase 1 negotiations. It can contain at most 100 characters. The default value is the IP address of the tunnel.
+               LocalId supports fully qualified domain names (FQDNs). If you use an FQDN, we recommend that you set the negotiation mode to aggressive.
+        :param str remote_id: The identifier of the tunnel peer, which is used in Phase 1 negotiations. It can contain at most 100 characters. The default value is the IP address of the customer gateway that is associated with the tunnel.
+               RemoteId supports FQDNs. If you use an FQDN, we recommend that you set the negotiation mode to aggressive.
         """
         if ike_auth_alg is not None:
             pulumi.set(__self__, "ike_auth_alg", ike_auth_alg)
@@ -807,7 +821,8 @@ class ConnectionTunnelOptionsSpecificationTunnelIkeConfig(dict):
     @pulumi.getter(name="localId")
     def local_id(self) -> Optional[str]:
         """
-        The local Id.
+        The identifier of the tunnel on the Alibaba Cloud side, which is used in Phase 1 negotiations. It can contain at most 100 characters. The default value is the IP address of the tunnel.
+        LocalId supports fully qualified domain names (FQDNs). If you use an FQDN, we recommend that you set the negotiation mode to aggressive.
         """
         return pulumi.get(self, "local_id")
 
@@ -820,7 +835,8 @@ class ConnectionTunnelOptionsSpecificationTunnelIkeConfig(dict):
     @pulumi.getter(name="remoteId")
     def remote_id(self) -> Optional[str]:
         """
-        Remote ID.
+        The identifier of the tunnel peer, which is used in Phase 1 negotiations. It can contain at most 100 characters. The default value is the IP address of the customer gateway that is associated with the tunnel.
+        RemoteId supports FQDNs. If you use an FQDN, we recommend that you set the negotiation mode to aggressive.
         """
         return pulumi.get(self, "remote_id")
 

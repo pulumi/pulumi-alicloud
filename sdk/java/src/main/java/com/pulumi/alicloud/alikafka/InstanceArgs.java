@@ -6,6 +6,7 @@ package com.pulumi.alicloud.alikafka;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -34,6 +35,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> config() {
         return Optional.ofNullable(this.config);
+    }
+
+    /**
+     * The number of partitions in a topic that is automatically created.
+     * 
+     */
+    @Import(name="defaultTopicPartitionNum")
+    private @Nullable Output<Integer> defaultTopicPartitionNum;
+
+    /**
+     * @return The number of partitions in a topic that is automatically created.
+     * 
+     */
+    public Optional<Output<Integer>> defaultTopicPartitionNum() {
+        return Optional.ofNullable(this.defaultTopicPartitionNum);
     }
 
     /**
@@ -98,6 +114,36 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> eipMax() {
         return Optional.ofNullable(this.eipMax);
+    }
+
+    /**
+     * Specify whether to enable the flexible group creation feature. Default value: `false`. Valid values:
+     * 
+     */
+    @Import(name="enableAutoGroup")
+    private @Nullable Output<Boolean> enableAutoGroup;
+
+    /**
+     * @return Specify whether to enable the flexible group creation feature. Default value: `false`. Valid values:
+     * 
+     */
+    public Optional<Output<Boolean>> enableAutoGroup() {
+        return Optional.ofNullable(this.enableAutoGroup);
+    }
+
+    /**
+     * Specify whether to enable the automatic topic creation feature. Default value: `disable`. Valid values:
+     * 
+     */
+    @Import(name="enableAutoTopic")
+    private @Nullable Output<String> enableAutoTopic;
+
+    /**
+     * @return Specify whether to enable the automatic topic creation feature. Default value: `disable`. Valid values:
+     * 
+     */
+    public Optional<Output<String>> enableAutoTopic() {
+        return Optional.ofNullable(this.enableAutoTopic);
     }
 
     /**
@@ -227,32 +273,12 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The zones among which you want to deploy the instance.
      * 
-     * &gt; **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
-     * 
-     * | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-     * |------|-------------|:----:|:-----:|
-     * |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-     * |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-     * |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-     * |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-     * |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
-     * 
      */
     @Import(name="selectedZones")
     private @Nullable Output<List<String>> selectedZones;
 
     /**
      * @return The zones among which you want to deploy the instance.
-     * 
-     * &gt; **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
-     * 
-     * | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-     * |------|-------------|:----:|:-----:|
-     * |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-     * |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-     * |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-     * |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-     * |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
      * 
      */
     public Optional<Output<List<String>>> selectedZones() {
@@ -364,6 +390,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The IDs of the vSwitches with which the instance is associated.
+     * 
+     */
+    @Import(name="vswitchIds")
+    private @Nullable Output<List<String>> vswitchIds;
+
+    /**
+     * @return The IDs of the vSwitches with which the instance is associated.
+     * 
+     */
+    public Optional<Output<List<String>>> vswitchIds() {
+        return Optional.ofNullable(this.vswitchIds);
+    }
+
+    /**
      * The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
      * 
      */
@@ -382,10 +423,13 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     private InstanceArgs(InstanceArgs $) {
         this.config = $.config;
+        this.defaultTopicPartitionNum = $.defaultTopicPartitionNum;
         this.deployType = $.deployType;
         this.diskSize = $.diskSize;
         this.diskType = $.diskType;
         this.eipMax = $.eipMax;
+        this.enableAutoGroup = $.enableAutoGroup;
+        this.enableAutoTopic = $.enableAutoTopic;
         this.ioMax = $.ioMax;
         this.ioMaxSpec = $.ioMaxSpec;
         this.kmsKeyId = $.kmsKeyId;
@@ -401,6 +445,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.topicQuota = $.topicQuota;
         this.vpcId = $.vpcId;
         this.vswitchId = $.vswitchId;
+        this.vswitchIds = $.vswitchIds;
         this.zoneId = $.zoneId;
     }
 
@@ -443,6 +488,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder config(String config) {
             return config(Output.of(config));
+        }
+
+        /**
+         * @param defaultTopicPartitionNum The number of partitions in a topic that is automatically created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultTopicPartitionNum(@Nullable Output<Integer> defaultTopicPartitionNum) {
+            $.defaultTopicPartitionNum = defaultTopicPartitionNum;
+            return this;
+        }
+
+        /**
+         * @param defaultTopicPartitionNum The number of partitions in a topic that is automatically created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultTopicPartitionNum(Integer defaultTopicPartitionNum) {
+            return defaultTopicPartitionNum(Output.of(defaultTopicPartitionNum));
         }
 
         /**
@@ -531,6 +597,48 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder eipMax(Integer eipMax) {
             return eipMax(Output.of(eipMax));
+        }
+
+        /**
+         * @param enableAutoGroup Specify whether to enable the flexible group creation feature. Default value: `false`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableAutoGroup(@Nullable Output<Boolean> enableAutoGroup) {
+            $.enableAutoGroup = enableAutoGroup;
+            return this;
+        }
+
+        /**
+         * @param enableAutoGroup Specify whether to enable the flexible group creation feature. Default value: `false`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableAutoGroup(Boolean enableAutoGroup) {
+            return enableAutoGroup(Output.of(enableAutoGroup));
+        }
+
+        /**
+         * @param enableAutoTopic Specify whether to enable the automatic topic creation feature. Default value: `disable`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableAutoTopic(@Nullable Output<String> enableAutoTopic) {
+            $.enableAutoTopic = enableAutoTopic;
+            return this;
+        }
+
+        /**
+         * @param enableAutoTopic Specify whether to enable the automatic topic creation feature. Default value: `disable`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableAutoTopic(String enableAutoTopic) {
+            return enableAutoTopic(Output.of(enableAutoTopic));
         }
 
         /**
@@ -708,16 +816,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param selectedZones The zones among which you want to deploy the instance.
          * 
-         * &gt; **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
-         * 
-         * | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-         * |------|-------------|:----:|:-----:|
-         * |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-         * |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-         * |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-         * |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-         * |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
-         * 
          * @return builder
          * 
          */
@@ -729,16 +827,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param selectedZones The zones among which you want to deploy the instance.
          * 
-         * &gt; **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
-         * 
-         * | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-         * |------|-------------|:----:|:-----:|
-         * |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-         * |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-         * |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-         * |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-         * |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
-         * 
          * @return builder
          * 
          */
@@ -748,16 +836,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param selectedZones The zones among which you want to deploy the instance.
-         * 
-         * &gt; **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
-         * 
-         * | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-         * |------|-------------|:----:|:-----:|
-         * |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-         * |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-         * |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-         * |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-         * |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
          * 
          * @return builder
          * 
@@ -904,6 +982,37 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder vswitchId(String vswitchId) {
             return vswitchId(Output.of(vswitchId));
+        }
+
+        /**
+         * @param vswitchIds The IDs of the vSwitches with which the instance is associated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vswitchIds(@Nullable Output<List<String>> vswitchIds) {
+            $.vswitchIds = vswitchIds;
+            return this;
+        }
+
+        /**
+         * @param vswitchIds The IDs of the vSwitches with which the instance is associated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vswitchIds(List<String> vswitchIds) {
+            return vswitchIds(Output.of(vswitchIds));
+        }
+
+        /**
+         * @param vswitchIds The IDs of the vSwitches with which the instance is associated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vswitchIds(String... vswitchIds) {
+            return vswitchIds(List.of(vswitchIds));
         }
 
         /**

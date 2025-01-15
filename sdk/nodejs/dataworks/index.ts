@@ -15,6 +15,21 @@ export type DataSourceSharedRule = import("./dataSourceSharedRule").DataSourceSh
 export const DataSourceSharedRule: typeof import("./dataSourceSharedRule").DataSourceSharedRule = null as any;
 utilities.lazyLoad(exports, ["DataSourceSharedRule"], () => require("./dataSourceSharedRule"));
 
+export { DiAlarmRuleArgs, DiAlarmRuleState } from "./diAlarmRule";
+export type DiAlarmRule = import("./diAlarmRule").DiAlarmRule;
+export const DiAlarmRule: typeof import("./diAlarmRule").DiAlarmRule = null as any;
+utilities.lazyLoad(exports, ["DiAlarmRule"], () => require("./diAlarmRule"));
+
+export { DiJobArgs, DiJobState } from "./diJob";
+export type DiJob = import("./diJob").DiJob;
+export const DiJob: typeof import("./diJob").DiJob = null as any;
+utilities.lazyLoad(exports, ["DiJob"], () => require("./diJob"));
+
+export { DwResourceGroupArgs, DwResourceGroupState } from "./dwResourceGroup";
+export type DwResourceGroup = import("./dwResourceGroup").DwResourceGroup;
+export const DwResourceGroup: typeof import("./dwResourceGroup").DwResourceGroup = null as any;
+utilities.lazyLoad(exports, ["DwResourceGroup"], () => require("./dwResourceGroup"));
+
 export { FolderArgs, FolderState } from "./folder";
 export type Folder = import("./folder").Folder;
 export const Folder: typeof import("./folder").Folder = null as any;
@@ -29,6 +44,11 @@ export { GetServiceArgs, GetServiceResult, GetServiceOutputArgs } from "./getSer
 export const getService: typeof import("./getService").getService = null as any;
 export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
 utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
+
+export { NetworkArgs, NetworkState } from "./network";
+export type Network = import("./network").Network;
+export const Network: typeof import("./network").Network = null as any;
+utilities.lazyLoad(exports, ["Network"], () => require("./network"));
 
 export { ProjectArgs, ProjectState } from "./project";
 export type Project = import("./project").Project;
@@ -49,8 +69,16 @@ const _module = {
                 return new DataSource(name, <any>undefined, { urn })
             case "alicloud:dataworks/dataSourceSharedRule:DataSourceSharedRule":
                 return new DataSourceSharedRule(name, <any>undefined, { urn })
+            case "alicloud:dataworks/diAlarmRule:DiAlarmRule":
+                return new DiAlarmRule(name, <any>undefined, { urn })
+            case "alicloud:dataworks/diJob:DiJob":
+                return new DiJob(name, <any>undefined, { urn })
+            case "alicloud:dataworks/dwResourceGroup:DwResourceGroup":
+                return new DwResourceGroup(name, <any>undefined, { urn })
             case "alicloud:dataworks/folder:Folder":
                 return new Folder(name, <any>undefined, { urn })
+            case "alicloud:dataworks/network:Network":
+                return new Network(name, <any>undefined, { urn })
             case "alicloud:dataworks/project:Project":
                 return new Project(name, <any>undefined, { urn })
             case "alicloud:dataworks/projectMember:ProjectMember":
@@ -62,6 +90,10 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("alicloud", "dataworks/dataSource", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dataworks/dataSourceSharedRule", _module)
+pulumi.runtime.registerResourceModule("alicloud", "dataworks/diAlarmRule", _module)
+pulumi.runtime.registerResourceModule("alicloud", "dataworks/diJob", _module)
+pulumi.runtime.registerResourceModule("alicloud", "dataworks/dwResourceGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dataworks/folder", _module)
+pulumi.runtime.registerResourceModule("alicloud", "dataworks/network", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dataworks/project", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dataworks/projectMember", _module)

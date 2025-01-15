@@ -71,14 +71,24 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.instanceName;
     }
     /**
-     * Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
+     * Instance type. Valid values:
+     * - professional: professional Edition
+     * - enterprise: enterprise Edition
+     * - vip: Platinum Edition.
+     * - serverless: Serverless Edition.
+     * &gt; **NOTE:** There should not set the `instance_type` parameter when creating a serverless instance. Only need to set `payment_type = &#34;PayAsYouGo&#34;` and `serverless_charge_type = &#34;onDemand&#34;`.
      * 
      */
     @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     /**
-     * @return Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
+     * @return Instance type. Valid values:
+     * - professional: professional Edition
+     * - enterprise: enterprise Edition
+     * - vip: Platinum Edition.
+     * - serverless: Serverless Edition.
+     * &gt; **NOTE:** There should not set the `instance_type` parameter when creating a serverless instance. Only need to set `payment_type = &#34;PayAsYouGo&#34;` and `serverless_charge_type = &#34;onDemand&#34;`.
      * 
      */
     public Output<String> instanceType() {
@@ -145,42 +155,46 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.modifyType);
     }
     /**
-     * The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
+     * The Payment type. Valid value:
+     * - Subscription: Pre-paid.
+     * - PayAsYouGo: Post-paid, and for serverless Edition.
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
-     * @return The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
+     * @return The Payment type. Valid value:
+     * - Subscription: Pre-paid.
+     * - PayAsYouGo: Post-paid, and for serverless Edition.
      * 
      */
     public Output<String> paymentType() {
         return this.paymentType;
     }
     /**
-     * Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
+     * Prepayment cycle, unit: periodCycle. This parameter is valid when PaymentType is set to Subscription.
      * 
      */
     @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
-     * @return Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
+     * @return Prepayment cycle, unit: periodCycle. This parameter is valid when PaymentType is set to Subscription.
      * 
      */
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }
     /**
-     * Prepaid cycle units. Value: Month. Year: Year.
+     * Prepaid cycle units. Value: Month, Year.
      * 
      */
     @Export(name="periodCycle", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> periodCycle;
 
     /**
-     * @return Prepaid cycle units. Value: Month. Year: Year.
+     * @return Prepaid cycle units. Value: Month, Year.
      * 
      */
     public Output<Optional<String>> periodCycle() {

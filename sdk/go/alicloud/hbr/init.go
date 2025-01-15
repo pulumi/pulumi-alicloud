@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:hbr/crossAccount:CrossAccount":
+		r = &CrossAccount{}
 	case "alicloud:hbr/ecsBackupClient:EcsBackupClient":
 		r = &EcsBackupClient{}
 	case "alicloud:hbr/ecsBackupPlan:EcsBackupPlan":
@@ -62,6 +64,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"hbr/crossAccount",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"hbr/ecsBackupClient",

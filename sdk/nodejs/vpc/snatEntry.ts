@@ -5,7 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a snat resource.
+ * Provides a NAT Gateway Snat Entry resource.
+ *
+ * For information about NAT Gateway Snat Entry and how to use it, see [What is Snat Entry](https://www.alibabacloud.com/help/en/nat-gateway/developer-reference/api-vpc-2016-04-28-createsnatentry-natgws).
  *
  * > **NOTE:** Available since v1.119.0.
  *
@@ -18,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf_example";
+ * const name = config.get("name") || "terraform-example";
  * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
@@ -53,10 +55,14 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Snat Entry can be imported using the id, e.g.
+ * NAT Gateway Snat Entry can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:vpc/snatEntry:SnatEntry foo stb-1aece3:snat-232ce2
+ * $ pulumi import alicloud:vpc/snatEntry:SnatEntry example <snat_table_id>:<snat_entry_id>
+ * ```
+ *
+ * ```sh
+ * $ pulumi import alicloud:vpc/snatEntry:SnatEntry example <snat_entry_id>
  * ```
  */
 export class SnatEntry extends pulumi.CustomResource {
@@ -88,31 +94,35 @@ export class SnatEntry extends pulumi.CustomResource {
     }
 
     /**
+     * Specifies whether to enable EIP affinity. Default value: `0`. Valid values:
+     */
+    public readonly eipAffinity!: pulumi.Output<number | undefined>;
+    /**
      * The id of the snat entry on the server.
      */
     public /*out*/ readonly snatEntryId!: pulumi.Output<string>;
     /**
-     * The name of snat entry.
+     * The name of the SNAT entry. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
      */
     public readonly snatEntryName!: pulumi.Output<string | undefined>;
     /**
-     * The SNAT ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidthPackages`.
+     * The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snatIp` can be modified.
      */
     public readonly snatIp!: pulumi.Output<string>;
     /**
-     * The value can get from `alicloud.vpc.NatGateway` Attributes "snatTableIds".
+     * The ID of the SNAT table.
      */
     public readonly snatTableId!: pulumi.Output<string>;
     /**
-     * The private network segment of Ecs. This parameter and the `sourceVswitchId` parameter are mutually exclusive and cannot appear at the same time.
+     * The source CIDR block specified in the SNAT entry.
      */
     public readonly sourceCidr!: pulumi.Output<string>;
     /**
-     * The vswitch ID.
+     * The ID of the vSwitch.
      */
     public readonly sourceVswitchId!: pulumi.Output<string>;
     /**
-     * (Available since v1.119.1) The status of snat entry.
+     * (Available since v1.119.1) The ID of the SNAT entry.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -129,6 +139,7 @@ export class SnatEntry extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SnatEntryState | undefined;
+            resourceInputs["eipAffinity"] = state ? state.eipAffinity : undefined;
             resourceInputs["snatEntryId"] = state ? state.snatEntryId : undefined;
             resourceInputs["snatEntryName"] = state ? state.snatEntryName : undefined;
             resourceInputs["snatIp"] = state ? state.snatIp : undefined;
@@ -144,6 +155,7 @@ export class SnatEntry extends pulumi.CustomResource {
             if ((!args || args.snatTableId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'snatTableId'");
             }
+            resourceInputs["eipAffinity"] = args ? args.eipAffinity : undefined;
             resourceInputs["snatEntryName"] = args ? args.snatEntryName : undefined;
             resourceInputs["snatIp"] = args ? args.snatIp : undefined;
             resourceInputs["snatTableId"] = args ? args.snatTableId : undefined;
@@ -162,31 +174,35 @@ export class SnatEntry extends pulumi.CustomResource {
  */
 export interface SnatEntryState {
     /**
+     * Specifies whether to enable EIP affinity. Default value: `0`. Valid values:
+     */
+    eipAffinity?: pulumi.Input<number>;
+    /**
      * The id of the snat entry on the server.
      */
     snatEntryId?: pulumi.Input<string>;
     /**
-     * The name of snat entry.
+     * The name of the SNAT entry. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
      */
     snatEntryName?: pulumi.Input<string>;
     /**
-     * The SNAT ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidthPackages`.
+     * The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snatIp` can be modified.
      */
     snatIp?: pulumi.Input<string>;
     /**
-     * The value can get from `alicloud.vpc.NatGateway` Attributes "snatTableIds".
+     * The ID of the SNAT table.
      */
     snatTableId?: pulumi.Input<string>;
     /**
-     * The private network segment of Ecs. This parameter and the `sourceVswitchId` parameter are mutually exclusive and cannot appear at the same time.
+     * The source CIDR block specified in the SNAT entry.
      */
     sourceCidr?: pulumi.Input<string>;
     /**
-     * The vswitch ID.
+     * The ID of the vSwitch.
      */
     sourceVswitchId?: pulumi.Input<string>;
     /**
-     * (Available since v1.119.1) The status of snat entry.
+     * (Available since v1.119.1) The ID of the SNAT entry.
      */
     status?: pulumi.Input<string>;
 }
@@ -196,23 +212,27 @@ export interface SnatEntryState {
  */
 export interface SnatEntryArgs {
     /**
-     * The name of snat entry.
+     * Specifies whether to enable EIP affinity. Default value: `0`. Valid values:
+     */
+    eipAffinity?: pulumi.Input<number>;
+    /**
+     * The name of the SNAT entry. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
      */
     snatEntryName?: pulumi.Input<string>;
     /**
-     * The SNAT ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidthPackages`.
+     * The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snatIp` can be modified.
      */
     snatIp: pulumi.Input<string>;
     /**
-     * The value can get from `alicloud.vpc.NatGateway` Attributes "snatTableIds".
+     * The ID of the SNAT table.
      */
     snatTableId: pulumi.Input<string>;
     /**
-     * The private network segment of Ecs. This parameter and the `sourceVswitchId` parameter are mutually exclusive and cannot appear at the same time.
+     * The source CIDR block specified in the SNAT entry.
      */
     sourceCidr?: pulumi.Input<string>;
     /**
-     * The vswitch ID.
+     * The ID of the vSwitch.
      */
     sourceVswitchId?: pulumi.Input<string>;
 }

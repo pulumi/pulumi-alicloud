@@ -118,6 +118,9 @@ export interface GetNetworksResult {
      * CIDR block of the VPC.
      */
     readonly cidrBlock?: string;
+    /**
+     * The ID of the DHCP options set.
+     */
     readonly dhcpOptionsSetId?: string;
     readonly dryRun?: boolean;
     readonly enableDetails?: boolean;

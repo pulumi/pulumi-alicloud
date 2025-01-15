@@ -19,14 +19,14 @@ public final class AScriptState extends com.pulumi.resources.ResourceArgs {
     public static final AScriptState Empty = new AScriptState();
 
     /**
-     * The name of AScript.
+     * AScript name.
      * 
      */
     @Import(name="ascriptName")
     private @Nullable Output<String> ascriptName;
 
     /**
-     * @return The name of AScript.
+     * @return AScript name.
      * 
      */
     public Optional<Output<String>> ascriptName() {
@@ -34,14 +34,29 @@ public final class AScriptState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether scripts are enabled.
+     * Whether to PreCheck only this request
+     * 
+     */
+    @Import(name="dryRun")
+    private @Nullable Output<Boolean> dryRun;
+
+    /**
+     * @return Whether to PreCheck only this request
+     * 
+     */
+    public Optional<Output<Boolean>> dryRun() {
+        return Optional.ofNullable(this.dryRun);
+    }
+
+    /**
+     * Whether AScript is enabled.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether scripts are enabled.
+     * @return Whether AScript is enabled.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -49,14 +64,14 @@ public final class AScriptState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether extension parameters are enabled.
+     * Whether extension parameters are enabled. When ExtAttributeEnabled is true, ExtAttributes must be set.
      * 
      */
     @Import(name="extAttributeEnabled")
     private @Nullable Output<Boolean> extAttributeEnabled;
 
     /**
-     * @return Whether extension parameters are enabled.
+     * @return Whether extension parameters are enabled. When ExtAttributeEnabled is true, ExtAttributes must be set.
      * 
      */
     public Optional<Output<Boolean>> extAttributeEnabled() {
@@ -64,14 +79,14 @@ public final class AScriptState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Extended attribute list. See `ext_attributes` below for details.
+     * Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `ext_attributes` below.
      * 
      */
     @Import(name="extAttributes")
     private @Nullable Output<List<AScriptExtAttributeArgs>> extAttributes;
 
     /**
-     * @return Extended attribute list. See `ext_attributes` below for details.
+     * @return Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `ext_attributes` below.
      * 
      */
     public Optional<Output<List<AScriptExtAttributeArgs>>> extAttributes() {
@@ -94,29 +109,14 @@ public final class AScriptState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of load balancer instance.
-     * 
-     */
-    @Import(name="loadBalancerId")
-    private @Nullable Output<String> loadBalancerId;
-
-    /**
-     * @return The ID of load balancer instance.
-     * 
-     */
-    public Optional<Output<String>> loadBalancerId() {
-        return Optional.ofNullable(this.loadBalancerId);
-    }
-
-    /**
-     * Execution location of AScript.
+     * Script execution location.
      * 
      */
     @Import(name="position")
     private @Nullable Output<String> position;
 
     /**
-     * @return Execution location of AScript.
+     * @return Script execution location.
      * 
      */
     public Optional<Output<String>> position() {
@@ -124,14 +124,14 @@ public final class AScriptState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The content of AScript.
+     * AScript script content.
      * 
      */
     @Import(name="scriptContent")
     private @Nullable Output<String> scriptContent;
 
     /**
-     * @return The content of AScript.
+     * @return AScript script content.
      * 
      */
     public Optional<Output<String>> scriptContent() {
@@ -139,14 +139,14 @@ public final class AScriptState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of AScript.
+     * Script status
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of AScript.
+     * @return Script status
      * 
      */
     public Optional<Output<String>> status() {
@@ -157,11 +157,11 @@ public final class AScriptState extends com.pulumi.resources.ResourceArgs {
 
     private AScriptState(AScriptState $) {
         this.ascriptName = $.ascriptName;
+        this.dryRun = $.dryRun;
         this.enabled = $.enabled;
         this.extAttributeEnabled = $.extAttributeEnabled;
         this.extAttributes = $.extAttributes;
         this.listenerId = $.listenerId;
-        this.loadBalancerId = $.loadBalancerId;
         this.position = $.position;
         this.scriptContent = $.scriptContent;
         this.status = $.status;
@@ -186,7 +186,7 @@ public final class AScriptState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ascriptName The name of AScript.
+         * @param ascriptName AScript name.
          * 
          * @return builder
          * 
@@ -197,7 +197,7 @@ public final class AScriptState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ascriptName The name of AScript.
+         * @param ascriptName AScript name.
          * 
          * @return builder
          * 
@@ -207,7 +207,28 @@ public final class AScriptState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Whether scripts are enabled.
+         * @param dryRun Whether to PreCheck only this request
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dryRun(@Nullable Output<Boolean> dryRun) {
+            $.dryRun = dryRun;
+            return this;
+        }
+
+        /**
+         * @param dryRun Whether to PreCheck only this request
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dryRun(Boolean dryRun) {
+            return dryRun(Output.of(dryRun));
+        }
+
+        /**
+         * @param enabled Whether AScript is enabled.
          * 
          * @return builder
          * 
@@ -218,7 +239,7 @@ public final class AScriptState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Whether scripts are enabled.
+         * @param enabled Whether AScript is enabled.
          * 
          * @return builder
          * 
@@ -228,7 +249,7 @@ public final class AScriptState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param extAttributeEnabled Whether extension parameters are enabled.
+         * @param extAttributeEnabled Whether extension parameters are enabled. When ExtAttributeEnabled is true, ExtAttributes must be set.
          * 
          * @return builder
          * 
@@ -239,7 +260,7 @@ public final class AScriptState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param extAttributeEnabled Whether extension parameters are enabled.
+         * @param extAttributeEnabled Whether extension parameters are enabled. When ExtAttributeEnabled is true, ExtAttributes must be set.
          * 
          * @return builder
          * 
@@ -249,7 +270,7 @@ public final class AScriptState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param extAttributes Extended attribute list. See `ext_attributes` below for details.
+         * @param extAttributes Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `ext_attributes` below.
          * 
          * @return builder
          * 
@@ -260,7 +281,7 @@ public final class AScriptState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param extAttributes Extended attribute list. See `ext_attributes` below for details.
+         * @param extAttributes Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `ext_attributes` below.
          * 
          * @return builder
          * 
@@ -270,7 +291,7 @@ public final class AScriptState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param extAttributes Extended attribute list. See `ext_attributes` below for details.
+         * @param extAttributes Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `ext_attributes` below.
          * 
          * @return builder
          * 
@@ -301,28 +322,7 @@ public final class AScriptState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancerId The ID of load balancer instance.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder loadBalancerId(@Nullable Output<String> loadBalancerId) {
-            $.loadBalancerId = loadBalancerId;
-            return this;
-        }
-
-        /**
-         * @param loadBalancerId The ID of load balancer instance.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder loadBalancerId(String loadBalancerId) {
-            return loadBalancerId(Output.of(loadBalancerId));
-        }
-
-        /**
-         * @param position Execution location of AScript.
+         * @param position Script execution location.
          * 
          * @return builder
          * 
@@ -333,7 +333,7 @@ public final class AScriptState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param position Execution location of AScript.
+         * @param position Script execution location.
          * 
          * @return builder
          * 
@@ -343,7 +343,7 @@ public final class AScriptState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scriptContent The content of AScript.
+         * @param scriptContent AScript script content.
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class AScriptState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scriptContent The content of AScript.
+         * @param scriptContent AScript script content.
          * 
          * @return builder
          * 
@@ -364,7 +364,7 @@ public final class AScriptState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of AScript.
+         * @param status Script status
          * 
          * @return builder
          * 
@@ -375,7 +375,7 @@ public final class AScriptState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of AScript.
+         * @param status Script status
          * 
          * @return builder
          * 

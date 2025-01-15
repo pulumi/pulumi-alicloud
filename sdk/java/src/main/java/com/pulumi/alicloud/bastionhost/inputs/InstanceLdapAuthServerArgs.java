@@ -142,15 +142,15 @@ public final class InstanceLdapAuthServerArgs extends com.pulumi.resources.Resou
      * The password of the account that is used for the LDAP server.
      * 
      */
-    @Import(name="password", required=true)
-    private Output<String> password;
+    @Import(name="password")
+    private @Nullable Output<String> password;
 
     /**
      * @return The password of the account that is used for the LDAP server.
      * 
      */
-    public Output<String> password() {
-        return this.password;
+    public Optional<Output<String>> password() {
+        return Optional.ofNullable(this.password);
     }
 
     /**
@@ -407,7 +407,7 @@ public final class InstanceLdapAuthServerArgs extends com.pulumi.resources.Resou
          * @return builder
          * 
          */
-        public Builder password(Output<String> password) {
+        public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
@@ -491,9 +491,6 @@ public final class InstanceLdapAuthServerArgs extends com.pulumi.resources.Resou
             }
             if ($.baseDn == null) {
                 throw new MissingRequiredPropertyException("InstanceLdapAuthServerArgs", "baseDn");
-            }
-            if ($.password == null) {
-                throw new MissingRequiredPropertyException("InstanceLdapAuthServerArgs", "password");
             }
             if ($.port == null) {
                 throw new MissingRequiredPropertyException("InstanceLdapAuthServerArgs", "port");

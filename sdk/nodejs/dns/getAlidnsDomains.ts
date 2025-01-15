@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides a list of Alidns Domains in an Alibaba Cloud account according to the specified filters.
  *
- * > **NOTE:**  Available in 1.95.0+.
+ * > **NOTE:** Available since v1.95.0.
  *
  * ## Example Usage
  *
@@ -58,6 +58,9 @@ export interface GetAlidnsDomainsArgs {
      * A regex string to filter results by the domain name.
      */
     domainNameRegex?: string;
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
     enableDetails?: boolean;
     /**
      * Domain group ID, if not filled, the default is all groups.
@@ -153,6 +156,9 @@ export interface GetAlidnsDomainsResult {
     readonly resourceGroupId?: string;
     readonly searchMode?: string;
     readonly starmark?: boolean;
+    /**
+     * Tags of the domain.
+     */
     readonly tags?: {[key: string]: string};
     /**
      * Cloud resolution version ID.
@@ -162,7 +168,7 @@ export interface GetAlidnsDomainsResult {
 /**
  * This data source provides a list of Alidns Domains in an Alibaba Cloud account according to the specified filters.
  *
- * > **NOTE:**  Available in 1.95.0+.
+ * > **NOTE:** Available since v1.95.0.
  *
  * ## Example Usage
  *
@@ -211,6 +217,9 @@ export interface GetAlidnsDomainsOutputArgs {
      * A regex string to filter results by the domain name.
      */
     domainNameRegex?: pulumi.Input<string>;
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
     enableDetails?: pulumi.Input<boolean>;
     /**
      * Domain group ID, if not filled, the default is all groups.

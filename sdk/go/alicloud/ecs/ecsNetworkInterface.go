@@ -157,9 +157,9 @@ type EcsNetworkInterface struct {
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
 	// The number of private IP addresses that can be automatically created by ECS.
 	SecondaryPrivateIpAddressCount pulumi.IntOutput `pulumi:"secondaryPrivateIpAddressCount"`
-	// The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added.
+	// The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `securityGroupIds` or `securityGroups` must be set with valid security group IDs.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
-	// Field `securityGroups` has been deprecated from provider version 1.123.1. New field `securityGroupIds` instead
+	// Field `securityGroups` has been deprecated from provider version 1.123.1. New field `securityGroupIds` instead. **NOTE:** Either `securityGroupIds` or `securityGroups` must be set with valid security group IDs.
 	//
 	// Deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
 	SecurityGroups pulumi.StringArrayOutput `pulumi:"securityGroups"`
@@ -248,9 +248,9 @@ type ecsNetworkInterfaceState struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The number of private IP addresses that can be automatically created by ECS.
 	SecondaryPrivateIpAddressCount *int `pulumi:"secondaryPrivateIpAddressCount"`
-	// The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added.
+	// The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `securityGroupIds` or `securityGroups` must be set with valid security group IDs.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// Field `securityGroups` has been deprecated from provider version 1.123.1. New field `securityGroupIds` instead
+	// Field `securityGroups` has been deprecated from provider version 1.123.1. New field `securityGroupIds` instead. **NOTE:** Either `securityGroupIds` or `securityGroups` must be set with valid security group IDs.
 	//
 	// Deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
 	SecurityGroups []string `pulumi:"securityGroups"`
@@ -307,9 +307,9 @@ type EcsNetworkInterfaceState struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// The number of private IP addresses that can be automatically created by ECS.
 	SecondaryPrivateIpAddressCount pulumi.IntPtrInput
-	// The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added.
+	// The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `securityGroupIds` or `securityGroups` must be set with valid security group IDs.
 	SecurityGroupIds pulumi.StringArrayInput
-	// Field `securityGroups` has been deprecated from provider version 1.123.1. New field `securityGroupIds` instead
+	// Field `securityGroups` has been deprecated from provider version 1.123.1. New field `securityGroupIds` instead. **NOTE:** Either `securityGroupIds` or `securityGroups` must be set with valid security group IDs.
 	//
 	// Deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
 	SecurityGroups pulumi.StringArrayInput
@@ -368,9 +368,9 @@ type ecsNetworkInterfaceArgs struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The number of private IP addresses that can be automatically created by ECS.
 	SecondaryPrivateIpAddressCount *int `pulumi:"secondaryPrivateIpAddressCount"`
-	// The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added.
+	// The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `securityGroupIds` or `securityGroups` must be set with valid security group IDs.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// Field `securityGroups` has been deprecated from provider version 1.123.1. New field `securityGroupIds` instead
+	// Field `securityGroups` has been deprecated from provider version 1.123.1. New field `securityGroupIds` instead. **NOTE:** Either `securityGroupIds` or `securityGroups` must be set with valid security group IDs.
 	//
 	// Deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
 	SecurityGroups []string `pulumi:"securityGroups"`
@@ -424,9 +424,9 @@ type EcsNetworkInterfaceArgs struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// The number of private IP addresses that can be automatically created by ECS.
 	SecondaryPrivateIpAddressCount pulumi.IntPtrInput
-	// The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added.
+	// The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `securityGroupIds` or `securityGroups` must be set with valid security group IDs.
 	SecurityGroupIds pulumi.StringArrayInput
-	// Field `securityGroups` has been deprecated from provider version 1.123.1. New field `securityGroupIds` instead
+	// Field `securityGroups` has been deprecated from provider version 1.123.1. New field `securityGroupIds` instead. **NOTE:** Either `securityGroupIds` or `securityGroups` must be set with valid security group IDs.
 	//
 	// Deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
 	SecurityGroups pulumi.StringArrayInput
@@ -621,12 +621,12 @@ func (o EcsNetworkInterfaceOutput) SecondaryPrivateIpAddressCount() pulumi.IntOu
 	return o.ApplyT(func(v *EcsNetworkInterface) pulumi.IntOutput { return v.SecondaryPrivateIpAddressCount }).(pulumi.IntOutput)
 }
 
-// The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added.
+// The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `securityGroupIds` or `securityGroups` must be set with valid security group IDs.
 func (o EcsNetworkInterfaceOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EcsNetworkInterface) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
-// Field `securityGroups` has been deprecated from provider version 1.123.1. New field `securityGroupIds` instead
+// Field `securityGroups` has been deprecated from provider version 1.123.1. New field `securityGroupIds` instead. **NOTE:** Either `securityGroupIds` or `securityGroups` must be set with valid security group IDs.
 //
 // Deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
 func (o EcsNetworkInterfaceOutput) SecurityGroups() pulumi.StringArrayOutput {

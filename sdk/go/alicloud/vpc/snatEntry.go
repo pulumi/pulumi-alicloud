@@ -12,7 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a snat resource.
+// Provides a NAT Gateway Snat Entry resource.
+//
+// For information about NAT Gateway Snat Entry and how to use it, see [What is Snat Entry](https://www.alibabacloud.com/help/en/nat-gateway/developer-reference/api-vpc-2016-04-28-createsnatentry-natgws).
 //
 // > **NOTE:** Available since v1.119.0.
 //
@@ -36,7 +38,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf_example"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -101,27 +103,33 @@ import (
 //
 // ## Import
 //
-// Snat Entry can be imported using the id, e.g.
+// NAT Gateway Snat Entry can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:vpc/snatEntry:SnatEntry foo stb-1aece3:snat-232ce2
+// $ pulumi import alicloud:vpc/snatEntry:SnatEntry example <snat_table_id>:<snat_entry_id>
+// ```
+//
+// ```sh
+// $ pulumi import alicloud:vpc/snatEntry:SnatEntry example <snat_entry_id>
 // ```
 type SnatEntry struct {
 	pulumi.CustomResourceState
 
+	// Specifies whether to enable EIP affinity. Default value: `0`. Valid values:
+	EipAffinity pulumi.IntPtrOutput `pulumi:"eipAffinity"`
 	// The id of the snat entry on the server.
 	SnatEntryId pulumi.StringOutput `pulumi:"snatEntryId"`
-	// The name of snat entry.
+	// The name of the SNAT entry. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
 	SnatEntryName pulumi.StringPtrOutput `pulumi:"snatEntryName"`
-	// The SNAT ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidthPackages`.
+	// The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snatIp` can be modified.
 	SnatIp pulumi.StringOutput `pulumi:"snatIp"`
-	// The value can get from `vpc.NatGateway` Attributes "snatTableIds".
+	// The ID of the SNAT table.
 	SnatTableId pulumi.StringOutput `pulumi:"snatTableId"`
-	// The private network segment of Ecs. This parameter and the `sourceVswitchId` parameter are mutually exclusive and cannot appear at the same time.
+	// The source CIDR block specified in the SNAT entry.
 	SourceCidr pulumi.StringOutput `pulumi:"sourceCidr"`
-	// The vswitch ID.
+	// The ID of the vSwitch.
 	SourceVswitchId pulumi.StringOutput `pulumi:"sourceVswitchId"`
-	// (Available since v1.119.1) The status of snat entry.
+	// (Available since v1.119.1) The ID of the SNAT entry.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -161,36 +169,40 @@ func GetSnatEntry(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SnatEntry resources.
 type snatEntryState struct {
+	// Specifies whether to enable EIP affinity. Default value: `0`. Valid values:
+	EipAffinity *int `pulumi:"eipAffinity"`
 	// The id of the snat entry on the server.
 	SnatEntryId *string `pulumi:"snatEntryId"`
-	// The name of snat entry.
+	// The name of the SNAT entry. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
 	SnatEntryName *string `pulumi:"snatEntryName"`
-	// The SNAT ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidthPackages`.
+	// The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snatIp` can be modified.
 	SnatIp *string `pulumi:"snatIp"`
-	// The value can get from `vpc.NatGateway` Attributes "snatTableIds".
+	// The ID of the SNAT table.
 	SnatTableId *string `pulumi:"snatTableId"`
-	// The private network segment of Ecs. This parameter and the `sourceVswitchId` parameter are mutually exclusive and cannot appear at the same time.
+	// The source CIDR block specified in the SNAT entry.
 	SourceCidr *string `pulumi:"sourceCidr"`
-	// The vswitch ID.
+	// The ID of the vSwitch.
 	SourceVswitchId *string `pulumi:"sourceVswitchId"`
-	// (Available since v1.119.1) The status of snat entry.
+	// (Available since v1.119.1) The ID of the SNAT entry.
 	Status *string `pulumi:"status"`
 }
 
 type SnatEntryState struct {
+	// Specifies whether to enable EIP affinity. Default value: `0`. Valid values:
+	EipAffinity pulumi.IntPtrInput
 	// The id of the snat entry on the server.
 	SnatEntryId pulumi.StringPtrInput
-	// The name of snat entry.
+	// The name of the SNAT entry. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
 	SnatEntryName pulumi.StringPtrInput
-	// The SNAT ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidthPackages`.
+	// The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snatIp` can be modified.
 	SnatIp pulumi.StringPtrInput
-	// The value can get from `vpc.NatGateway` Attributes "snatTableIds".
+	// The ID of the SNAT table.
 	SnatTableId pulumi.StringPtrInput
-	// The private network segment of Ecs. This parameter and the `sourceVswitchId` parameter are mutually exclusive and cannot appear at the same time.
+	// The source CIDR block specified in the SNAT entry.
 	SourceCidr pulumi.StringPtrInput
-	// The vswitch ID.
+	// The ID of the vSwitch.
 	SourceVswitchId pulumi.StringPtrInput
-	// (Available since v1.119.1) The status of snat entry.
+	// (Available since v1.119.1) The ID of the SNAT entry.
 	Status pulumi.StringPtrInput
 }
 
@@ -199,29 +211,33 @@ func (SnatEntryState) ElementType() reflect.Type {
 }
 
 type snatEntryArgs struct {
-	// The name of snat entry.
+	// Specifies whether to enable EIP affinity. Default value: `0`. Valid values:
+	EipAffinity *int `pulumi:"eipAffinity"`
+	// The name of the SNAT entry. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
 	SnatEntryName *string `pulumi:"snatEntryName"`
-	// The SNAT ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidthPackages`.
+	// The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snatIp` can be modified.
 	SnatIp string `pulumi:"snatIp"`
-	// The value can get from `vpc.NatGateway` Attributes "snatTableIds".
+	// The ID of the SNAT table.
 	SnatTableId string `pulumi:"snatTableId"`
-	// The private network segment of Ecs. This parameter and the `sourceVswitchId` parameter are mutually exclusive and cannot appear at the same time.
+	// The source CIDR block specified in the SNAT entry.
 	SourceCidr *string `pulumi:"sourceCidr"`
-	// The vswitch ID.
+	// The ID of the vSwitch.
 	SourceVswitchId *string `pulumi:"sourceVswitchId"`
 }
 
 // The set of arguments for constructing a SnatEntry resource.
 type SnatEntryArgs struct {
-	// The name of snat entry.
+	// Specifies whether to enable EIP affinity. Default value: `0`. Valid values:
+	EipAffinity pulumi.IntPtrInput
+	// The name of the SNAT entry. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
 	SnatEntryName pulumi.StringPtrInput
-	// The SNAT ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidthPackages`.
+	// The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snatIp` can be modified.
 	SnatIp pulumi.StringInput
-	// The value can get from `vpc.NatGateway` Attributes "snatTableIds".
+	// The ID of the SNAT table.
 	SnatTableId pulumi.StringInput
-	// The private network segment of Ecs. This parameter and the `sourceVswitchId` parameter are mutually exclusive and cannot appear at the same time.
+	// The source CIDR block specified in the SNAT entry.
 	SourceCidr pulumi.StringPtrInput
-	// The vswitch ID.
+	// The ID of the vSwitch.
 	SourceVswitchId pulumi.StringPtrInput
 }
 
@@ -312,37 +328,42 @@ func (o SnatEntryOutput) ToSnatEntryOutputWithContext(ctx context.Context) SnatE
 	return o
 }
 
+// Specifies whether to enable EIP affinity. Default value: `0`. Valid values:
+func (o SnatEntryOutput) EipAffinity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SnatEntry) pulumi.IntPtrOutput { return v.EipAffinity }).(pulumi.IntPtrOutput)
+}
+
 // The id of the snat entry on the server.
 func (o SnatEntryOutput) SnatEntryId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SnatEntry) pulumi.StringOutput { return v.SnatEntryId }).(pulumi.StringOutput)
 }
 
-// The name of snat entry.
+// The name of the SNAT entry. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
 func (o SnatEntryOutput) SnatEntryName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SnatEntry) pulumi.StringPtrOutput { return v.SnatEntryName }).(pulumi.StringPtrOutput)
 }
 
-// The SNAT ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidthPackages`.
+// The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snatIp` can be modified.
 func (o SnatEntryOutput) SnatIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *SnatEntry) pulumi.StringOutput { return v.SnatIp }).(pulumi.StringOutput)
 }
 
-// The value can get from `vpc.NatGateway` Attributes "snatTableIds".
+// The ID of the SNAT table.
 func (o SnatEntryOutput) SnatTableId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SnatEntry) pulumi.StringOutput { return v.SnatTableId }).(pulumi.StringOutput)
 }
 
-// The private network segment of Ecs. This parameter and the `sourceVswitchId` parameter are mutually exclusive and cannot appear at the same time.
+// The source CIDR block specified in the SNAT entry.
 func (o SnatEntryOutput) SourceCidr() pulumi.StringOutput {
 	return o.ApplyT(func(v *SnatEntry) pulumi.StringOutput { return v.SourceCidr }).(pulumi.StringOutput)
 }
 
-// The vswitch ID.
+// The ID of the vSwitch.
 func (o SnatEntryOutput) SourceVswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SnatEntry) pulumi.StringOutput { return v.SourceVswitchId }).(pulumi.StringOutput)
 }
 
-// (Available since v1.119.1) The status of snat entry.
+// (Available since v1.119.1) The ID of the SNAT entry.
 func (o SnatEntryOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *SnatEntry) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

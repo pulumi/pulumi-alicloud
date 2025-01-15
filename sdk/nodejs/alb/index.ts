@@ -95,6 +95,11 @@ export type LoadBalancer = import("./loadBalancer").LoadBalancer;
 export const LoadBalancer: typeof import("./loadBalancer").LoadBalancer = null as any;
 utilities.lazyLoad(exports, ["LoadBalancer"], () => require("./loadBalancer"));
 
+export { LoadBalancerAccessLogConfigAttachmentArgs, LoadBalancerAccessLogConfigAttachmentState } from "./loadBalancerAccessLogConfigAttachment";
+export type LoadBalancerAccessLogConfigAttachment = import("./loadBalancerAccessLogConfigAttachment").LoadBalancerAccessLogConfigAttachment;
+export const LoadBalancerAccessLogConfigAttachment: typeof import("./loadBalancerAccessLogConfigAttachment").LoadBalancerAccessLogConfigAttachment = null as any;
+utilities.lazyLoad(exports, ["LoadBalancerAccessLogConfigAttachment"], () => require("./loadBalancerAccessLogConfigAttachment"));
+
 export { LoadBalancerCommonBandwidthPackageAttachmentArgs, LoadBalancerCommonBandwidthPackageAttachmentState } from "./loadBalancerCommonBandwidthPackageAttachment";
 export type LoadBalancerCommonBandwidthPackageAttachment = import("./loadBalancerCommonBandwidthPackageAttachment").LoadBalancerCommonBandwidthPackageAttachment;
 export const LoadBalancerCommonBandwidthPackageAttachment: typeof import("./loadBalancerCommonBandwidthPackageAttachment").LoadBalancerCommonBandwidthPackageAttachment = null as any;
@@ -141,6 +146,8 @@ const _module = {
                 return new ListenerAdditionalCertificateAttachment(name, <any>undefined, { urn })
             case "alicloud:alb/loadBalancer:LoadBalancer":
                 return new LoadBalancer(name, <any>undefined, { urn })
+            case "alicloud:alb/loadBalancerAccessLogConfigAttachment:LoadBalancerAccessLogConfigAttachment":
+                return new LoadBalancerAccessLogConfigAttachment(name, <any>undefined, { urn })
             case "alicloud:alb/loadBalancerCommonBandwidthPackageAttachment:LoadBalancerCommonBandwidthPackageAttachment":
                 return new LoadBalancerCommonBandwidthPackageAttachment(name, <any>undefined, { urn })
             case "alicloud:alb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment":
@@ -164,6 +171,7 @@ pulumi.runtime.registerResourceModule("alicloud", "alb/listener", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alb/listenerAclAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alb/listenerAdditionalCertificateAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alb/loadBalancer", _module)
+pulumi.runtime.registerResourceModule("alicloud", "alb/loadBalancerAccessLogConfigAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alb/loadBalancerCommonBandwidthPackageAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alb/loadBalancerSecurityGroupAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alb/rule", _module)

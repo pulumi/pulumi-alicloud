@@ -15,14 +15,14 @@ public final class EcsSessionManagerStatusArgs extends com.pulumi.resources.Reso
     public static final EcsSessionManagerStatusArgs Empty = new EcsSessionManagerStatusArgs();
 
     /**
-     * The name of the resource. Valid values: `sessionManagerStatus`.
+     * The name of the Session Manager Status. Valid values: `sessionManagerStatus`.
      * 
      */
     @Import(name="sessionManagerStatusName", required=true)
     private Output<String> sessionManagerStatusName;
 
     /**
-     * @return The name of the resource. Valid values: `sessionManagerStatus`.
+     * @return The name of the Session Manager Status. Valid values: `sessionManagerStatus`.
      * 
      */
     public Output<String> sessionManagerStatusName() {
@@ -30,14 +30,14 @@ public final class EcsSessionManagerStatusArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The status of the resource. Valid values: `Disabled`, `Enabled`.
+     * The status of the Session Manager Status. Valid values: `Enabled`, `Disabled`.
      * 
      */
     @Import(name="status", required=true)
     private Output<String> status;
 
     /**
-     * @return The status of the resource. Valid values: `Disabled`, `Enabled`.
+     * @return The status of the Session Manager Status. Valid values: `Enabled`, `Disabled`.
      * 
      */
     public Output<String> status() {
@@ -70,7 +70,7 @@ public final class EcsSessionManagerStatusArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param sessionManagerStatusName The name of the resource. Valid values: `sessionManagerStatus`.
+         * @param sessionManagerStatusName The name of the Session Manager Status. Valid values: `sessionManagerStatus`.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class EcsSessionManagerStatusArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param sessionManagerStatusName The name of the resource. Valid values: `sessionManagerStatus`.
+         * @param sessionManagerStatusName The name of the Session Manager Status. Valid values: `sessionManagerStatus`.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class EcsSessionManagerStatusArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param status The status of the resource. Valid values: `Disabled`, `Enabled`.
+         * @param status The status of the Session Manager Status. Valid values: `Enabled`, `Disabled`.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class EcsSessionManagerStatusArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param status The status of the resource. Valid values: `Disabled`, `Enabled`.
+         * @param status The status of the Session Manager Status. Valid values: `Enabled`, `Disabled`.
          * 
          * @return builder
          * 

@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.BastionHost.Inputs
         [Input("nameMapping")]
         public Input<string>? NameMapping { get; set; }
 
-        [Input("password", required: true)]
+        [Input("password")]
         private Input<string>? _password;
 
         /// <summary>

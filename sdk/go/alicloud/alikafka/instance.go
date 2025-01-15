@@ -25,6 +25,8 @@ type Instance struct {
 	// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
 	// * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
 	Config pulumi.StringOutput `pulumi:"config"`
+	// The number of partitions in a topic that is automatically created.
+	DefaultTopicPartitionNum pulumi.IntOutput `pulumi:"defaultTopicPartitionNum"`
 	// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
 	// - 4: eip/vpc instance
 	// - 5: vpc instance.
@@ -37,6 +39,10 @@ type Instance struct {
 	DomainEndpoint pulumi.StringOutput `pulumi:"domainEndpoint"`
 	// The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
 	EipMax pulumi.IntOutput `pulumi:"eipMax"`
+	// Specify whether to enable the flexible group creation feature. Default value: `false`. Valid values:
+	EnableAutoGroup pulumi.BoolPtrOutput `pulumi:"enableAutoGroup"`
+	// Specify whether to enable the automatic topic creation feature. Default value: `disable`. Valid values:
+	EnableAutoTopic pulumi.StringOutput `pulumi:"enableAutoTopic"`
 	// The EndPoint to access the kafka instance.
 	EndPoint pulumi.StringOutput `pulumi:"endPoint"`
 	// (Available since v1.214.1) The number of available groups.
@@ -70,16 +76,6 @@ type Instance struct {
 	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup pulumi.StringOutput `pulumi:"securityGroup"`
 	// The zones among which you want to deploy the instance.
-	//
-	// > **NOTE:** Arguments io_max, disk_size, topic_quota, eipMax should follow the following constraints.
-	//
-	// | ioMax | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-	// |------|-------------|:----:|:-----:|
-	// |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-	// |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-	// |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-	// |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-	// |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
 	SelectedZones pulumi.StringArrayOutput `pulumi:"selectedZones"`
 	// The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
 	ServiceVersion pulumi.StringOutput `pulumi:"serviceVersion"`
@@ -110,6 +106,8 @@ type Instance struct {
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The ID of attaching vswitch to instance.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
+	// The IDs of the vSwitches with which the instance is associated.
+	VswitchIds pulumi.StringArrayOutput `pulumi:"vswitchIds"`
 	// The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -159,6 +157,8 @@ type instanceState struct {
 	// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
 	// * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
 	Config *string `pulumi:"config"`
+	// The number of partitions in a topic that is automatically created.
+	DefaultTopicPartitionNum *int `pulumi:"defaultTopicPartitionNum"`
 	// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
 	// - 4: eip/vpc instance
 	// - 5: vpc instance.
@@ -171,6 +171,10 @@ type instanceState struct {
 	DomainEndpoint *string `pulumi:"domainEndpoint"`
 	// The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
 	EipMax *int `pulumi:"eipMax"`
+	// Specify whether to enable the flexible group creation feature. Default value: `false`. Valid values:
+	EnableAutoGroup *bool `pulumi:"enableAutoGroup"`
+	// Specify whether to enable the automatic topic creation feature. Default value: `disable`. Valid values:
+	EnableAutoTopic *string `pulumi:"enableAutoTopic"`
 	// The EndPoint to access the kafka instance.
 	EndPoint *string `pulumi:"endPoint"`
 	// (Available since v1.214.1) The number of available groups.
@@ -204,16 +208,6 @@ type instanceState struct {
 	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup *string `pulumi:"securityGroup"`
 	// The zones among which you want to deploy the instance.
-	//
-	// > **NOTE:** Arguments io_max, disk_size, topic_quota, eipMax should follow the following constraints.
-	//
-	// | ioMax | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-	// |------|-------------|:----:|:-----:|
-	// |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-	// |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-	// |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-	// |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-	// |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
 	SelectedZones []string `pulumi:"selectedZones"`
 	// The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
 	ServiceVersion *string `pulumi:"serviceVersion"`
@@ -244,6 +238,8 @@ type instanceState struct {
 	VpcId *string `pulumi:"vpcId"`
 	// The ID of attaching vswitch to instance.
 	VswitchId *string `pulumi:"vswitchId"`
+	// The IDs of the vSwitches with which the instance is associated.
+	VswitchIds []string `pulumi:"vswitchIds"`
 	// The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -252,6 +248,8 @@ type InstanceState struct {
 	// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
 	// * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
 	Config pulumi.StringPtrInput
+	// The number of partitions in a topic that is automatically created.
+	DefaultTopicPartitionNum pulumi.IntPtrInput
 	// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
 	// - 4: eip/vpc instance
 	// - 5: vpc instance.
@@ -264,6 +262,10 @@ type InstanceState struct {
 	DomainEndpoint pulumi.StringPtrInput
 	// The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
 	EipMax pulumi.IntPtrInput
+	// Specify whether to enable the flexible group creation feature. Default value: `false`. Valid values:
+	EnableAutoGroup pulumi.BoolPtrInput
+	// Specify whether to enable the automatic topic creation feature. Default value: `disable`. Valid values:
+	EnableAutoTopic pulumi.StringPtrInput
 	// The EndPoint to access the kafka instance.
 	EndPoint pulumi.StringPtrInput
 	// (Available since v1.214.1) The number of available groups.
@@ -297,16 +299,6 @@ type InstanceState struct {
 	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup pulumi.StringPtrInput
 	// The zones among which you want to deploy the instance.
-	//
-	// > **NOTE:** Arguments io_max, disk_size, topic_quota, eipMax should follow the following constraints.
-	//
-	// | ioMax | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-	// |------|-------------|:----:|:-----:|
-	// |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-	// |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-	// |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-	// |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-	// |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
 	SelectedZones pulumi.StringArrayInput
 	// The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
 	ServiceVersion pulumi.StringPtrInput
@@ -337,6 +329,8 @@ type InstanceState struct {
 	VpcId pulumi.StringPtrInput
 	// The ID of attaching vswitch to instance.
 	VswitchId pulumi.StringPtrInput
+	// The IDs of the vSwitches with which the instance is associated.
+	VswitchIds pulumi.StringArrayInput
 	// The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
 	ZoneId pulumi.StringPtrInput
 }
@@ -349,6 +343,8 @@ type instanceArgs struct {
 	// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
 	// * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
 	Config *string `pulumi:"config"`
+	// The number of partitions in a topic that is automatically created.
+	DefaultTopicPartitionNum *int `pulumi:"defaultTopicPartitionNum"`
 	// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
 	// - 4: eip/vpc instance
 	// - 5: vpc instance.
@@ -359,6 +355,10 @@ type instanceArgs struct {
 	DiskType int `pulumi:"diskType"`
 	// The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
 	EipMax *int `pulumi:"eipMax"`
+	// Specify whether to enable the flexible group creation feature. Default value: `false`. Valid values:
+	EnableAutoGroup *bool `pulumi:"enableAutoGroup"`
+	// Specify whether to enable the automatic topic creation feature. Default value: `disable`. Valid values:
+	EnableAutoTopic *string `pulumi:"enableAutoTopic"`
 	// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
 	IoMax *int `pulumi:"ioMax"`
 	// The traffic specification of the instance. We recommend that you configure this parameter.
@@ -378,16 +378,6 @@ type instanceArgs struct {
 	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup *string `pulumi:"securityGroup"`
 	// The zones among which you want to deploy the instance.
-	//
-	// > **NOTE:** Arguments io_max, disk_size, topic_quota, eipMax should follow the following constraints.
-	//
-	// | ioMax | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-	// |------|-------------|:----:|:-----:|
-	// |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-	// |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-	// |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-	// |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-	// |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
 	SelectedZones []string `pulumi:"selectedZones"`
 	// The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
 	ServiceVersion *string `pulumi:"serviceVersion"`
@@ -406,6 +396,8 @@ type instanceArgs struct {
 	VpcId *string `pulumi:"vpcId"`
 	// The ID of attaching vswitch to instance.
 	VswitchId string `pulumi:"vswitchId"`
+	// The IDs of the vSwitches with which the instance is associated.
+	VswitchIds []string `pulumi:"vswitchIds"`
 	// The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -415,6 +407,8 @@ type InstanceArgs struct {
 	// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
 	// * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
 	Config pulumi.StringPtrInput
+	// The number of partitions in a topic that is automatically created.
+	DefaultTopicPartitionNum pulumi.IntPtrInput
 	// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
 	// - 4: eip/vpc instance
 	// - 5: vpc instance.
@@ -425,6 +419,10 @@ type InstanceArgs struct {
 	DiskType pulumi.IntInput
 	// The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
 	EipMax pulumi.IntPtrInput
+	// Specify whether to enable the flexible group creation feature. Default value: `false`. Valid values:
+	EnableAutoGroup pulumi.BoolPtrInput
+	// Specify whether to enable the automatic topic creation feature. Default value: `disable`. Valid values:
+	EnableAutoTopic pulumi.StringPtrInput
 	// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
 	IoMax pulumi.IntPtrInput
 	// The traffic specification of the instance. We recommend that you configure this parameter.
@@ -444,16 +442,6 @@ type InstanceArgs struct {
 	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup pulumi.StringPtrInput
 	// The zones among which you want to deploy the instance.
-	//
-	// > **NOTE:** Arguments io_max, disk_size, topic_quota, eipMax should follow the following constraints.
-	//
-	// | ioMax | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-	// |------|-------------|:----:|:-----:|
-	// |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-	// |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-	// |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-	// |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-	// |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
 	SelectedZones pulumi.StringArrayInput
 	// The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
 	ServiceVersion pulumi.StringPtrInput
@@ -472,6 +460,8 @@ type InstanceArgs struct {
 	VpcId pulumi.StringPtrInput
 	// The ID of attaching vswitch to instance.
 	VswitchId pulumi.StringInput
+	// The IDs of the vSwitches with which the instance is associated.
+	VswitchIds pulumi.StringArrayInput
 	// The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
 	ZoneId pulumi.StringPtrInput
 }
@@ -569,6 +559,11 @@ func (o InstanceOutput) Config() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Config }).(pulumi.StringOutput)
 }
 
+// The number of partitions in a topic that is automatically created.
+func (o InstanceOutput) DefaultTopicPartitionNum() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.DefaultTopicPartitionNum }).(pulumi.IntOutput)
+}
+
 // The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
 // - 4: eip/vpc instance
 // - 5: vpc instance.
@@ -594,6 +589,16 @@ func (o InstanceOutput) DomainEndpoint() pulumi.StringOutput {
 // The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
 func (o InstanceOutput) EipMax() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.EipMax }).(pulumi.IntOutput)
+}
+
+// Specify whether to enable the flexible group creation feature. Default value: `false`. Valid values:
+func (o InstanceOutput) EnableAutoGroup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.EnableAutoGroup }).(pulumi.BoolPtrOutput)
+}
+
+// Specify whether to enable the automatic topic creation feature. Default value: `disable`. Valid values:
+func (o InstanceOutput) EnableAutoTopic() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.EnableAutoTopic }).(pulumi.StringOutput)
 }
 
 // The EndPoint to access the kafka instance.
@@ -674,16 +679,6 @@ func (o InstanceOutput) SecurityGroup() pulumi.StringOutput {
 }
 
 // The zones among which you want to deploy the instance.
-//
-// > **NOTE:** Arguments io_max, disk_size, topic_quota, eipMax should follow the following constraints.
-//
-// | ioMax | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-// |------|-------------|:----:|:-----:|
-// |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-// |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-// |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-// |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-// |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
 func (o InstanceOutput) SelectedZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SelectedZones }).(pulumi.StringArrayOutput)
 }
@@ -751,6 +746,11 @@ func (o InstanceOutput) VpcId() pulumi.StringOutput {
 // The ID of attaching vswitch to instance.
 func (o InstanceOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The IDs of the vSwitches with which the instance is associated.
+func (o InstanceOutput) VswitchIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.VswitchIds }).(pulumi.StringArrayOutput)
 }
 
 // The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.

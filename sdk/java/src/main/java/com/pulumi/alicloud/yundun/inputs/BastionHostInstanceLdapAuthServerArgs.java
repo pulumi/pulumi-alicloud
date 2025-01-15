@@ -74,11 +74,11 @@ public final class BastionHostInstanceLdapAuthServerArgs extends com.pulumi.reso
         return Optional.ofNullable(this.nameMapping);
     }
 
-    @Import(name="password", required=true)
-    private Output<String> password;
+    @Import(name="password")
+    private @Nullable Output<String> password;
 
-    public Output<String> password() {
-        return this.password;
+    public Optional<Output<String>> password() {
+        return Optional.ofNullable(this.password);
     }
 
     @Import(name="port", required=true)
@@ -209,7 +209,7 @@ public final class BastionHostInstanceLdapAuthServerArgs extends com.pulumi.reso
             return nameMapping(Output.of(nameMapping));
         }
 
-        public Builder password(Output<String> password) {
+        public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
@@ -251,9 +251,6 @@ public final class BastionHostInstanceLdapAuthServerArgs extends com.pulumi.reso
             }
             if ($.baseDn == null) {
                 throw new MissingRequiredPropertyException("BastionHostInstanceLdapAuthServerArgs", "baseDn");
-            }
-            if ($.password == null) {
-                throw new MissingRequiredPropertyException("BastionHostInstanceLdapAuthServerArgs", "password");
             }
             if ($.port == null) {
                 throw new MissingRequiredPropertyException("BastionHostInstanceLdapAuthServerArgs", "port");

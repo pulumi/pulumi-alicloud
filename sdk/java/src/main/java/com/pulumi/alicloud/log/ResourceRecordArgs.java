@@ -30,14 +30,14 @@ public final class ResourceRecordArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group.
+     * The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
      * 
      */
     @Import(name="resourceName", required=true)
     private Output<String> resourceName;
 
     /**
-     * @return The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group.
+     * @return The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
      * 
      */
     public Output<String> resourceName() {
@@ -60,14 +60,14 @@ public final class ResourceRecordArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The json value of record.
+     * The json value of record. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
      * 
      */
     @Import(name="value", required=true)
     private Output<String> value;
 
     /**
-     * @return The json value of record.
+     * @return The json value of record. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
      * 
      */
     public Output<String> value() {
@@ -123,7 +123,7 @@ public final class ResourceRecordArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resourceName The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group.
+         * @param resourceName The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
          * 
          * @return builder
          * 
@@ -134,7 +134,7 @@ public final class ResourceRecordArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resourceName The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group.
+         * @param resourceName The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class ResourceRecordArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param value The json value of record.
+         * @param value The json value of record. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
          * 
          * @return builder
          * 
@@ -176,7 +176,7 @@ public final class ResourceRecordArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param value The json value of record.
+         * @param value The json value of record. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
          * 
          * @return builder
          * 

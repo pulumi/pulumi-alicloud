@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -97,10 +96,10 @@ type ManagedKubernetes struct {
 	EncryptionProviderKey pulumi.StringPtrOutput `pulumi:"encryptionProviderKey"`
 	// Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
 	IsEnterpriseSecurityGroup pulumi.BoolOutput `pulumi:"isEnterpriseSecurityGroup"`
-	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+	// The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
 	//
-	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
-	LoadBalancerSpec pulumi.StringPtrOutput `pulumi:"loadBalancerSpec"`
+	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU
+	LoadBalancerSpec pulumi.StringOutput `pulumi:"loadBalancerSpec"`
 	// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenanceWindow` below.
 	MaintenanceWindow ManagedKubernetesMaintenanceWindowOutput `pulumi:"maintenanceWindow"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
@@ -116,7 +115,7 @@ type ManagedKubernetes struct {
 	OperationPolicy ManagedKubernetesOperationPolicyOutput `pulumi:"operationPolicy"`
 	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr pulumi.StringPtrOutput `pulumi:"podCidr"`
-	// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` but must be in same availability zones. Only works for **Create** Operation.
+	// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `vswitchIds` but must be in same availability zones. Only works for **Create** Operation.
 	PodVswitchIds pulumi.StringArrayOutput `pulumi:"podVswitchIds"`
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
 	ProxyMode pulumi.StringPtrOutput `pulumi:"proxyMode"`
@@ -154,9 +153,18 @@ type ManagedKubernetes struct {
 	Version pulumi.StringOutput `pulumi:"version"`
 	// The ID of VPC where the current cluster is located.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
+	// The vSwitches of the control plane.
+	// > **NOTE:** Please take of note before updating the `vswitchIds`:
+	// * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
+	// * The control plane restarts during the change process. Exercise caution when you perform this operation.
+	// * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
+	// * If the new vSwitches of the control plane are configured with an ACL, ensure that the ACL allows communication between the new vSwitches and CIDR blocks such as those of the cluster nodes and the container network.
+	VswitchIds pulumi.StringArrayOutput `pulumi:"vswitchIds"`
 	// The RamRole Name attached to worker node.
 	WorkerRamRoleName pulumi.StringOutput `pulumi:"workerRamRoleName"`
-	// The vswitches used by control plane.  See `workerVswitchIds` below.
+	// The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitchIds` to managed control plane vswtiches, which supports modifying control plane vswtiches.
+	//
+	// Deprecated: Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches
 	WorkerVswitchIds pulumi.StringArrayOutput `pulumi:"workerVswitchIds"`
 }
 
@@ -164,12 +172,9 @@ type ManagedKubernetes struct {
 func NewManagedKubernetes(ctx *pulumi.Context,
 	name string, args *ManagedKubernetesArgs, opts ...pulumi.ResourceOption) (*ManagedKubernetes, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ManagedKubernetesArgs{}
 	}
 
-	if args.WorkerVswitchIds == nil {
-		return nil, errors.New("invalid value for required argument 'WorkerVswitchIds'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ManagedKubernetes
 	err := ctx.RegisterResource("alicloud:cs/managedKubernetes:ManagedKubernetes", name, args, &resource, opts...)
@@ -236,9 +241,9 @@ type managedKubernetesState struct {
 	EncryptionProviderKey *string `pulumi:"encryptionProviderKey"`
 	// Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
 	IsEnterpriseSecurityGroup *bool `pulumi:"isEnterpriseSecurityGroup"`
-	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+	// The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
 	//
-	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
+	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU
 	LoadBalancerSpec *string `pulumi:"loadBalancerSpec"`
 	// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenanceWindow` below.
 	MaintenanceWindow *ManagedKubernetesMaintenanceWindow `pulumi:"maintenanceWindow"`
@@ -255,7 +260,7 @@ type managedKubernetesState struct {
 	OperationPolicy *ManagedKubernetesOperationPolicy `pulumi:"operationPolicy"`
 	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr *string `pulumi:"podCidr"`
-	// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` but must be in same availability zones. Only works for **Create** Operation.
+	// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `vswitchIds` but must be in same availability zones. Only works for **Create** Operation.
 	PodVswitchIds []string `pulumi:"podVswitchIds"`
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
 	ProxyMode *string `pulumi:"proxyMode"`
@@ -293,9 +298,18 @@ type managedKubernetesState struct {
 	Version *string `pulumi:"version"`
 	// The ID of VPC where the current cluster is located.
 	VpcId *string `pulumi:"vpcId"`
+	// The vSwitches of the control plane.
+	// > **NOTE:** Please take of note before updating the `vswitchIds`:
+	// * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
+	// * The control plane restarts during the change process. Exercise caution when you perform this operation.
+	// * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
+	// * If the new vSwitches of the control plane are configured with an ACL, ensure that the ACL allows communication between the new vSwitches and CIDR blocks such as those of the cluster nodes and the container network.
+	VswitchIds []string `pulumi:"vswitchIds"`
 	// The RamRole Name attached to worker node.
 	WorkerRamRoleName *string `pulumi:"workerRamRoleName"`
-	// The vswitches used by control plane.  See `workerVswitchIds` below.
+	// The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitchIds` to managed control plane vswtiches, which supports modifying control plane vswtiches.
+	//
+	// Deprecated: Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches
 	WorkerVswitchIds []string `pulumi:"workerVswitchIds"`
 }
 
@@ -343,9 +357,9 @@ type ManagedKubernetesState struct {
 	EncryptionProviderKey pulumi.StringPtrInput
 	// Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
 	IsEnterpriseSecurityGroup pulumi.BoolPtrInput
-	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+	// The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
 	//
-	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
+	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU
 	LoadBalancerSpec pulumi.StringPtrInput
 	// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenanceWindow` below.
 	MaintenanceWindow ManagedKubernetesMaintenanceWindowPtrInput
@@ -362,7 +376,7 @@ type ManagedKubernetesState struct {
 	OperationPolicy ManagedKubernetesOperationPolicyPtrInput
 	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr pulumi.StringPtrInput
-	// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` but must be in same availability zones. Only works for **Create** Operation.
+	// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `vswitchIds` but must be in same availability zones. Only works for **Create** Operation.
 	PodVswitchIds pulumi.StringArrayInput
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
 	ProxyMode pulumi.StringPtrInput
@@ -400,9 +414,18 @@ type ManagedKubernetesState struct {
 	Version pulumi.StringPtrInput
 	// The ID of VPC where the current cluster is located.
 	VpcId pulumi.StringPtrInput
+	// The vSwitches of the control plane.
+	// > **NOTE:** Please take of note before updating the `vswitchIds`:
+	// * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
+	// * The control plane restarts during the change process. Exercise caution when you perform this operation.
+	// * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
+	// * If the new vSwitches of the control plane are configured with an ACL, ensure that the ACL allows communication between the new vSwitches and CIDR blocks such as those of the cluster nodes and the container network.
+	VswitchIds pulumi.StringArrayInput
 	// The RamRole Name attached to worker node.
 	WorkerRamRoleName pulumi.StringPtrInput
-	// The vswitches used by control plane.  See `workerVswitchIds` below.
+	// The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitchIds` to managed control plane vswtiches, which supports modifying control plane vswtiches.
+	//
+	// Deprecated: Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches
 	WorkerVswitchIds pulumi.StringArrayInput
 }
 
@@ -450,9 +473,9 @@ type managedKubernetesArgs struct {
 	EncryptionProviderKey *string `pulumi:"encryptionProviderKey"`
 	// Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
 	IsEnterpriseSecurityGroup *bool `pulumi:"isEnterpriseSecurityGroup"`
-	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+	// The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
 	//
-	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
+	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU
 	LoadBalancerSpec *string `pulumi:"loadBalancerSpec"`
 	// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenanceWindow` below.
 	MaintenanceWindow *ManagedKubernetesMaintenanceWindow `pulumi:"maintenanceWindow"`
@@ -467,7 +490,7 @@ type managedKubernetesArgs struct {
 	OperationPolicy *ManagedKubernetesOperationPolicy `pulumi:"operationPolicy"`
 	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr *string `pulumi:"podCidr"`
-	// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` but must be in same availability zones. Only works for **Create** Operation.
+	// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `vswitchIds` but must be in same availability zones. Only works for **Create** Operation.
 	PodVswitchIds []string `pulumi:"podVswitchIds"`
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
 	ProxyMode *string `pulumi:"proxyMode"`
@@ -495,7 +518,16 @@ type managedKubernetesArgs struct {
 	UserCa *string `pulumi:"userCa"`
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see clusterAutoUpgrade for more information.
 	Version *string `pulumi:"version"`
-	// The vswitches used by control plane.  See `workerVswitchIds` below.
+	// The vSwitches of the control plane.
+	// > **NOTE:** Please take of note before updating the `vswitchIds`:
+	// * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
+	// * The control plane restarts during the change process. Exercise caution when you perform this operation.
+	// * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
+	// * If the new vSwitches of the control plane are configured with an ACL, ensure that the ACL allows communication between the new vSwitches and CIDR blocks such as those of the cluster nodes and the container network.
+	VswitchIds []string `pulumi:"vswitchIds"`
+	// The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitchIds` to managed control plane vswtiches, which supports modifying control plane vswtiches.
+	//
+	// Deprecated: Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches
 	WorkerVswitchIds []string `pulumi:"workerVswitchIds"`
 }
 
@@ -540,9 +572,9 @@ type ManagedKubernetesArgs struct {
 	EncryptionProviderKey pulumi.StringPtrInput
 	// Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
 	IsEnterpriseSecurityGroup pulumi.BoolPtrInput
-	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+	// The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
 	//
-	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
+	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU
 	LoadBalancerSpec pulumi.StringPtrInput
 	// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenanceWindow` below.
 	MaintenanceWindow ManagedKubernetesMaintenanceWindowPtrInput
@@ -557,7 +589,7 @@ type ManagedKubernetesArgs struct {
 	OperationPolicy ManagedKubernetesOperationPolicyPtrInput
 	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr pulumi.StringPtrInput
-	// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` but must be in same availability zones. Only works for **Create** Operation.
+	// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `vswitchIds` but must be in same availability zones. Only works for **Create** Operation.
 	PodVswitchIds pulumi.StringArrayInput
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
 	ProxyMode pulumi.StringPtrInput
@@ -585,7 +617,16 @@ type ManagedKubernetesArgs struct {
 	UserCa pulumi.StringPtrInput
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see clusterAutoUpgrade for more information.
 	Version pulumi.StringPtrInput
-	// The vswitches used by control plane.  See `workerVswitchIds` below.
+	// The vSwitches of the control plane.
+	// > **NOTE:** Please take of note before updating the `vswitchIds`:
+	// * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
+	// * The control plane restarts during the change process. Exercise caution when you perform this operation.
+	// * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
+	// * If the new vSwitches of the control plane are configured with an ACL, ensure that the ACL allows communication between the new vSwitches and CIDR blocks such as those of the cluster nodes and the container network.
+	VswitchIds pulumi.StringArrayInput
+	// The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitchIds` to managed control plane vswtiches, which supports modifying control plane vswtiches.
+	//
+	// Deprecated: Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches
 	WorkerVswitchIds pulumi.StringArrayInput
 }
 
@@ -773,11 +814,11 @@ func (o ManagedKubernetesOutput) IsEnterpriseSecurityGroup() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) pulumi.BoolOutput { return v.IsEnterpriseSecurityGroup }).(pulumi.BoolOutput)
 }
 
-// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+// The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
 //
-// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
-func (o ManagedKubernetesOutput) LoadBalancerSpec() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedKubernetes) pulumi.StringPtrOutput { return v.LoadBalancerSpec }).(pulumi.StringPtrOutput)
+// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU
+func (o ManagedKubernetesOutput) LoadBalancerSpec() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedKubernetes) pulumi.StringOutput { return v.LoadBalancerSpec }).(pulumi.StringOutput)
 }
 
 // The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenanceWindow` below.
@@ -819,7 +860,7 @@ func (o ManagedKubernetesOutput) PodCidr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) pulumi.StringPtrOutput { return v.PodCidr }).(pulumi.StringPtrOutput)
 }
 
-// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` but must be in same availability zones. Only works for **Create** Operation.
+// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `vswitchIds` but must be in same availability zones. Only works for **Create** Operation.
 func (o ManagedKubernetesOutput) PodVswitchIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) pulumi.StringArrayOutput { return v.PodVswitchIds }).(pulumi.StringArrayOutput)
 }
@@ -908,12 +949,24 @@ func (o ManagedKubernetesOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }
 
+// The vSwitches of the control plane.
+// > **NOTE:** Please take of note before updating the `vswitchIds`:
+// * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
+// * The control plane restarts during the change process. Exercise caution when you perform this operation.
+// * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
+// * If the new vSwitches of the control plane are configured with an ACL, ensure that the ACL allows communication between the new vSwitches and CIDR blocks such as those of the cluster nodes and the container network.
+func (o ManagedKubernetesOutput) VswitchIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ManagedKubernetes) pulumi.StringArrayOutput { return v.VswitchIds }).(pulumi.StringArrayOutput)
+}
+
 // The RamRole Name attached to worker node.
 func (o ManagedKubernetesOutput) WorkerRamRoleName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) pulumi.StringOutput { return v.WorkerRamRoleName }).(pulumi.StringOutput)
 }
 
-// The vswitches used by control plane.  See `workerVswitchIds` below.
+// The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitchIds` to managed control plane vswtiches, which supports modifying control plane vswtiches.
+//
+// Deprecated: Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches
 func (o ManagedKubernetesOutput) WorkerVswitchIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) pulumi.StringArrayOutput { return v.WorkerVswitchIds }).(pulumi.StringArrayOutput)
 }

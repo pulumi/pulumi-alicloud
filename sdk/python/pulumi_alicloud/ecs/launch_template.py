@@ -25,6 +25,7 @@ class LaunchTemplateArgs:
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['LaunchTemplateDataDiskArgs']]]] = None,
+                 default_version_number: Optional[pulumi.Input[int]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_vm_os_config: Optional[pulumi.Input[bool]] = None,
@@ -66,6 +67,7 @@ class LaunchTemplateArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  template_resource_group_id: Optional[pulumi.Input[str]] = None,
                  template_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 update_default_version_number: Optional[pulumi.Input[bool]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  userdata: Optional[pulumi.Input[str]] = None,
                  version_description: Optional[pulumi.Input[str]] = None,
@@ -130,6 +132,8 @@ class LaunchTemplateArgs:
             pulumi.set(__self__, "auto_renew_period", auto_renew_period)
         if data_disks is not None:
             pulumi.set(__self__, "data_disks", data_disks)
+        if default_version_number is not None:
+            pulumi.set(__self__, "default_version_number", default_version_number)
         if deployment_set_id is not None:
             pulumi.set(__self__, "deployment_set_id", deployment_set_id)
         if description is not None:
@@ -227,6 +231,8 @@ class LaunchTemplateArgs:
             pulumi.set(__self__, "template_resource_group_id", template_resource_group_id)
         if template_tags is not None:
             pulumi.set(__self__, "template_tags", template_tags)
+        if update_default_version_number is not None:
+            pulumi.set(__self__, "update_default_version_number", update_default_version_number)
         if user_data is not None:
             pulumi.set(__self__, "user_data", user_data)
         if userdata is not None:
@@ -284,6 +290,15 @@ class LaunchTemplateArgs:
     @data_disks.setter
     def data_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LaunchTemplateDataDiskArgs']]]]):
         pulumi.set(self, "data_disks", value)
+
+    @property
+    @pulumi.getter(name="defaultVersionNumber")
+    def default_version_number(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "default_version_number")
+
+    @default_version_number.setter
+    def default_version_number(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "default_version_number", value)
 
     @property
     @pulumi.getter(name="deploymentSetId")
@@ -748,6 +763,15 @@ class LaunchTemplateArgs:
     @template_tags.setter
     def template_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "template_tags", value)
+
+    @property
+    @pulumi.getter(name="updateDefaultVersionNumber")
+    def update_default_version_number(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "update_default_version_number")
+
+    @update_default_version_number.setter
+    def update_default_version_number(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "update_default_version_number", value)
 
     @property
     @pulumi.getter(name="userData")
@@ -821,6 +845,7 @@ class _LaunchTemplateState:
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['LaunchTemplateDataDiskArgs']]]] = None,
+                 default_version_number: Optional[pulumi.Input[int]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_vm_os_config: Optional[pulumi.Input[bool]] = None,
@@ -838,6 +863,7 @@ class _LaunchTemplateState:
                  internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
                  io_optimized: Optional[pulumi.Input[str]] = None,
                  key_pair_name: Optional[pulumi.Input[str]] = None,
+                 latest_version_number: Optional[pulumi.Input[int]] = None,
                  launch_template_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input['LaunchTemplateNetworkInterfacesArgs']] = None,
@@ -862,6 +888,7 @@ class _LaunchTemplateState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  template_resource_group_id: Optional[pulumi.Input[str]] = None,
                  template_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 update_default_version_number: Optional[pulumi.Input[bool]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  userdata: Optional[pulumi.Input[str]] = None,
                  version_description: Optional[pulumi.Input[str]] = None,
@@ -926,6 +953,8 @@ class _LaunchTemplateState:
             pulumi.set(__self__, "auto_renew_period", auto_renew_period)
         if data_disks is not None:
             pulumi.set(__self__, "data_disks", data_disks)
+        if default_version_number is not None:
+            pulumi.set(__self__, "default_version_number", default_version_number)
         if deployment_set_id is not None:
             pulumi.set(__self__, "deployment_set_id", deployment_set_id)
         if description is not None:
@@ -960,6 +989,8 @@ class _LaunchTemplateState:
             pulumi.set(__self__, "io_optimized", io_optimized)
         if key_pair_name is not None:
             pulumi.set(__self__, "key_pair_name", key_pair_name)
+        if latest_version_number is not None:
+            pulumi.set(__self__, "latest_version_number", latest_version_number)
         if launch_template_name is not None:
             pulumi.set(__self__, "launch_template_name", launch_template_name)
         if name is not None:
@@ -1023,6 +1054,8 @@ class _LaunchTemplateState:
             pulumi.set(__self__, "template_resource_group_id", template_resource_group_id)
         if template_tags is not None:
             pulumi.set(__self__, "template_tags", template_tags)
+        if update_default_version_number is not None:
+            pulumi.set(__self__, "update_default_version_number", update_default_version_number)
         if user_data is not None:
             pulumi.set(__self__, "user_data", user_data)
         if userdata is not None:
@@ -1080,6 +1113,15 @@ class _LaunchTemplateState:
     @data_disks.setter
     def data_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LaunchTemplateDataDiskArgs']]]]):
         pulumi.set(self, "data_disks", value)
+
+    @property
+    @pulumi.getter(name="defaultVersionNumber")
+    def default_version_number(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "default_version_number")
+
+    @default_version_number.setter
+    def default_version_number(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "default_version_number", value)
 
     @property
     @pulumi.getter(name="deploymentSetId")
@@ -1274,6 +1316,15 @@ class _LaunchTemplateState:
     @key_pair_name.setter
     def key_pair_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "key_pair_name", value)
+
+    @property
+    @pulumi.getter(name="latestVersionNumber")
+    def latest_version_number(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "latest_version_number")
+
+    @latest_version_number.setter
+    def latest_version_number(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "latest_version_number", value)
 
     @property
     @pulumi.getter(name="launchTemplateName")
@@ -1544,6 +1595,15 @@ class _LaunchTemplateState:
     @template_tags.setter
     def template_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "template_tags", value)
+
+    @property
+    @pulumi.getter(name="updateDefaultVersionNumber")
+    def update_default_version_number(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "update_default_version_number")
+
+    @update_default_version_number.setter
+    def update_default_version_number(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "update_default_version_number", value)
 
     @property
     @pulumi.getter(name="userData")
@@ -1619,6 +1679,7 @@ class LaunchTemplate(pulumi.CustomResource):
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LaunchTemplateDataDiskArgs', 'LaunchTemplateDataDiskArgsDict']]]]] = None,
+                 default_version_number: Optional[pulumi.Input[int]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_vm_os_config: Optional[pulumi.Input[bool]] = None,
@@ -1660,6 +1721,7 @@ class LaunchTemplate(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  template_resource_group_id: Optional[pulumi.Input[str]] = None,
                  template_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 update_default_version_number: Optional[pulumi.Input[bool]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  userdata: Optional[pulumi.Input[str]] = None,
                  version_description: Optional[pulumi.Input[str]] = None,
@@ -1890,6 +1952,7 @@ class LaunchTemplate(pulumi.CustomResource):
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LaunchTemplateDataDiskArgs', 'LaunchTemplateDataDiskArgsDict']]]]] = None,
+                 default_version_number: Optional[pulumi.Input[int]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_vm_os_config: Optional[pulumi.Input[bool]] = None,
@@ -1931,6 +1994,7 @@ class LaunchTemplate(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  template_resource_group_id: Optional[pulumi.Input[str]] = None,
                  template_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 update_default_version_number: Optional[pulumi.Input[bool]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  userdata: Optional[pulumi.Input[str]] = None,
                  version_description: Optional[pulumi.Input[str]] = None,
@@ -1950,6 +2014,7 @@ class LaunchTemplate(pulumi.CustomResource):
             __props__.__dict__["auto_renew"] = auto_renew
             __props__.__dict__["auto_renew_period"] = auto_renew_period
             __props__.__dict__["data_disks"] = data_disks
+            __props__.__dict__["default_version_number"] = default_version_number
             __props__.__dict__["deployment_set_id"] = deployment_set_id
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_vm_os_config"] = enable_vm_os_config
@@ -1991,12 +2056,14 @@ class LaunchTemplate(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["template_resource_group_id"] = template_resource_group_id
             __props__.__dict__["template_tags"] = template_tags
+            __props__.__dict__["update_default_version_number"] = update_default_version_number
             __props__.__dict__["user_data"] = user_data
             __props__.__dict__["userdata"] = userdata
             __props__.__dict__["version_description"] = version_description
             __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["latest_version_number"] = None
         super(LaunchTemplate, __self__).__init__(
             'alicloud:ecs/launchTemplate:LaunchTemplate',
             resource_name,
@@ -2011,6 +2078,7 @@ class LaunchTemplate(pulumi.CustomResource):
             auto_renew: Optional[pulumi.Input[bool]] = None,
             auto_renew_period: Optional[pulumi.Input[int]] = None,
             data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LaunchTemplateDataDiskArgs', 'LaunchTemplateDataDiskArgsDict']]]]] = None,
+            default_version_number: Optional[pulumi.Input[int]] = None,
             deployment_set_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             enable_vm_os_config: Optional[pulumi.Input[bool]] = None,
@@ -2028,6 +2096,7 @@ class LaunchTemplate(pulumi.CustomResource):
             internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
             io_optimized: Optional[pulumi.Input[str]] = None,
             key_pair_name: Optional[pulumi.Input[str]] = None,
+            latest_version_number: Optional[pulumi.Input[int]] = None,
             launch_template_name: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_interfaces: Optional[pulumi.Input[Union['LaunchTemplateNetworkInterfacesArgs', 'LaunchTemplateNetworkInterfacesArgsDict']]] = None,
@@ -2052,6 +2121,7 @@ class LaunchTemplate(pulumi.CustomResource):
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             template_resource_group_id: Optional[pulumi.Input[str]] = None,
             template_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            update_default_version_number: Optional[pulumi.Input[bool]] = None,
             user_data: Optional[pulumi.Input[str]] = None,
             userdata: Optional[pulumi.Input[str]] = None,
             version_description: Optional[pulumi.Input[str]] = None,
@@ -2121,6 +2191,7 @@ class LaunchTemplate(pulumi.CustomResource):
         __props__.__dict__["auto_renew"] = auto_renew
         __props__.__dict__["auto_renew_period"] = auto_renew_period
         __props__.__dict__["data_disks"] = data_disks
+        __props__.__dict__["default_version_number"] = default_version_number
         __props__.__dict__["deployment_set_id"] = deployment_set_id
         __props__.__dict__["description"] = description
         __props__.__dict__["enable_vm_os_config"] = enable_vm_os_config
@@ -2138,6 +2209,7 @@ class LaunchTemplate(pulumi.CustomResource):
         __props__.__dict__["internet_max_bandwidth_out"] = internet_max_bandwidth_out
         __props__.__dict__["io_optimized"] = io_optimized
         __props__.__dict__["key_pair_name"] = key_pair_name
+        __props__.__dict__["latest_version_number"] = latest_version_number
         __props__.__dict__["launch_template_name"] = launch_template_name
         __props__.__dict__["name"] = name
         __props__.__dict__["network_interfaces"] = network_interfaces
@@ -2162,6 +2234,7 @@ class LaunchTemplate(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["template_resource_group_id"] = template_resource_group_id
         __props__.__dict__["template_tags"] = template_tags
+        __props__.__dict__["update_default_version_number"] = update_default_version_number
         __props__.__dict__["user_data"] = user_data
         __props__.__dict__["userdata"] = userdata
         __props__.__dict__["version_description"] = version_description
@@ -2195,6 +2268,11 @@ class LaunchTemplate(pulumi.CustomResource):
         The list of data disks created with instance.
         """
         return pulumi.get(self, "data_disks")
+
+    @property
+    @pulumi.getter(name="defaultVersionNumber")
+    def default_version_number(self) -> pulumi.Output[int]:
+        return pulumi.get(self, "default_version_number")
 
     @property
     @pulumi.getter(name="deploymentSetId")
@@ -2321,6 +2399,11 @@ class LaunchTemplate(pulumi.CustomResource):
         - The password logon method for Linux instances is set to forbidden upon initialization.
         """
         return pulumi.get(self, "key_pair_name")
+
+    @property
+    @pulumi.getter(name="latestVersionNumber")
+    def latest_version_number(self) -> pulumi.Output[int]:
+        return pulumi.get(self, "latest_version_number")
 
     @property
     @pulumi.getter(name="launchTemplateName")
@@ -2495,6 +2578,11 @@ class LaunchTemplate(pulumi.CustomResource):
     @pulumi.getter(name="templateTags")
     def template_tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         return pulumi.get(self, "template_tags")
+
+    @property
+    @pulumi.getter(name="updateDefaultVersionNumber")
+    def update_default_version_number(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "update_default_version_number")
 
     @property
     @pulumi.getter(name="userData")

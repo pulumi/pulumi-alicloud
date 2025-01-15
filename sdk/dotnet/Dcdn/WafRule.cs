@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Dcdn
     public partial class WafRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Specifies the action of the rule. Valid values: `block`, `monitor`, `js`.
+        /// Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
         /// </summary>
         [Output("action")]
         public Output<string?> Action { get; private set; } = null!;
@@ -192,7 +192,7 @@ namespace Pulumi.AliCloud.Dcdn
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas.
+        /// The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `waf_group`.
         /// </summary>
         [Output("wafGroupIds")]
         public Output<string?> WafGroupIds { get; private set; } = null!;
@@ -244,7 +244,7 @@ namespace Pulumi.AliCloud.Dcdn
     public sealed class WafRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies the action of the rule. Valid values: `block`, `monitor`, `js`.
+        /// Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
@@ -358,7 +358,7 @@ namespace Pulumi.AliCloud.Dcdn
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas.
+        /// The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `waf_group`.
         /// </summary>
         [Input("wafGroupIds")]
         public Input<string>? WafGroupIds { get; set; }
@@ -372,7 +372,7 @@ namespace Pulumi.AliCloud.Dcdn
     public sealed class WafRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies the action of the rule. Valid values: `block`, `monitor`, `js`.
+        /// Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
@@ -498,7 +498,7 @@ namespace Pulumi.AliCloud.Dcdn
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas.
+        /// The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `waf_group`.
         /// </summary>
         [Input("wafGroupIds")]
         public Input<string>? WafGroupIds { get; set; }

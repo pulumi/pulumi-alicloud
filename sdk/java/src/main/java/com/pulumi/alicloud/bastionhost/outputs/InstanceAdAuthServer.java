@@ -58,7 +58,7 @@ public final class InstanceAdAuthServer {
      * @return The password of the account that is used for the AD server.
      * 
      */
-    private String password;
+    private @Nullable String password;
     /**
      * @return The port that is used to access the AD server.
      * 
@@ -136,8 +136,8 @@ public final class InstanceAdAuthServer {
      * @return The password of the account that is used for the AD server.
      * 
      */
-    public String password() {
-        return this.password;
+    public Optional<String> password() {
+        return Optional.ofNullable(this.password);
     }
     /**
      * @return The port that is used to access the AD server.
@@ -178,7 +178,7 @@ public final class InstanceAdAuthServer {
         private Boolean isSsl;
         private @Nullable String mobileMapping;
         private @Nullable String nameMapping;
-        private String password;
+        private @Nullable String password;
         private Integer port;
         private String server;
         private @Nullable String standbyServer;
@@ -256,10 +256,8 @@ public final class InstanceAdAuthServer {
             return this;
         }
         @CustomType.Setter
-        public Builder password(String password) {
-            if (password == null) {
-              throw new MissingRequiredPropertyException("InstanceAdAuthServer", "password");
-            }
+        public Builder password(@Nullable String password) {
+
             this.password = password;
             return this;
         }

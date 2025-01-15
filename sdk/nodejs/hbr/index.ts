@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { CrossAccountArgs, CrossAccountState } from "./crossAccount";
+export type CrossAccount = import("./crossAccount").CrossAccount;
+export const CrossAccount: typeof import("./crossAccount").CrossAccount = null as any;
+utilities.lazyLoad(exports, ["CrossAccount"], () => require("./crossAccount"));
+
 export { EcsBackupClientArgs, EcsBackupClientState } from "./ecsBackupClient";
 export type EcsBackupClient = import("./ecsBackupClient").EcsBackupClient;
 export const EcsBackupClient: typeof import("./ecsBackupClient").EcsBackupClient = null as any;
@@ -160,6 +165,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:hbr/crossAccount:CrossAccount":
+                return new CrossAccount(name, <any>undefined, { urn })
             case "alicloud:hbr/ecsBackupClient:EcsBackupClient":
                 return new EcsBackupClient(name, <any>undefined, { urn })
             case "alicloud:hbr/ecsBackupPlan:EcsBackupPlan":
@@ -193,6 +200,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "hbr/crossAccount", _module)
 pulumi.runtime.registerResourceModule("alicloud", "hbr/ecsBackupClient", _module)
 pulumi.runtime.registerResourceModule("alicloud", "hbr/ecsBackupPlan", _module)
 pulumi.runtime.registerResourceModule("alicloud", "hbr/hanaBackupClient", _module)

@@ -23,25 +23,27 @@ import * as utilities from "../utilities";
  * const default = alicloud.vpn.getGatewayZones({
  *     spec: "5M",
  * });
- * const defaultGetNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "^default-NODELETING$",
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     cidrBlock: "172.16.0.0/16",
+ *     vpcName: name,
  * });
- * const default0 = Promise.all([defaultGetNetworks, _default]).then(([defaultGetNetworks, _default]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultGetNetworks.ids?.[0],
- *     zoneId: _default.ids?.[0],
- * }));
- * const default1 = Promise.all([defaultGetNetworks, _default]).then(([defaultGetNetworks, _default]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultGetNetworks.ids?.[0],
- *     zoneId: _default.ids?.[1],
- * }));
+ * const default0 = new alicloud.vpc.Switch("default0", {
+ *     cidrBlock: "172.16.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: _default.then(_default => _default.ids?.[0]),
+ * });
+ * const default1 = new alicloud.vpc.Switch("default1", {
+ *     cidrBlock: "172.16.1.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: _default.then(_default => _default.ids?.[1]),
+ * });
  * const HA_VPN = new alicloud.vpn.Gateway("HA-VPN", {
  *     vpnType: "Normal",
- *     disasterRecoveryVswitchId: default1.then(default1 => default1.ids?.[0]),
+ *     disasterRecoveryVswitchId: default1.id,
  *     vpnGatewayName: name,
- *     vswitchId: default0.then(default0 => default0.ids?.[0]),
+ *     vswitchId: default0.id,
  *     autoPay: true,
- *     vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
+ *     vpcId: defaultNetwork.id,
  *     networkType: "public",
  *     paymentType: "Subscription",
  *     enableIpsec: true,
@@ -253,8 +255,6 @@ export class Connection extends pulumi.CustomResource {
     public readonly vpnConnectionName!: pulumi.Output<string>;
     /**
      * The ID of the VPN gateway.
-     *
-     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     public readonly vpnGatewayId!: pulumi.Output<string>;
 
@@ -422,8 +422,6 @@ export interface ConnectionState {
     vpnConnectionName?: pulumi.Input<string>;
     /**
      * The ID of the VPN gateway.
-     *
-     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     vpnGatewayId?: pulumi.Input<string>;
 }
@@ -508,8 +506,6 @@ export interface ConnectionArgs {
     vpnConnectionName?: pulumi.Input<string>;
     /**
      * The ID of the VPN gateway.
-     *
-     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     vpnGatewayId: pulumi.Input<string>;
 }

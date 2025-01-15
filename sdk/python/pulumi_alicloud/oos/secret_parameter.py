@@ -23,6 +23,7 @@ class SecretParameterArgs:
                  value: pulumi.Input[str],
                  constraints: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 dkms_instance_id: Optional[pulumi.Input[str]] = None,
                  key_id: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -37,6 +38,7 @@ class SecretParameterArgs:
                * `MinLength`: The minimum length of the encryption parameter.
                * `MaxLength`: The maximum length of the encryption parameter.
         :param pulumi.Input[str] description: The description of the encryption parameter. The description must be `1` to `200` characters in length.
+        :param pulumi.Input[str] dkms_instance_id: The ID of the KMS instance.
         :param pulumi.Input[str] key_id: The Customer Master Key (CMK) of Key Management Service (KMS) that is used to encrypt the parameter.
         :param pulumi.Input[str] resource_group_id: The ID of the Resource Group.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
@@ -48,6 +50,8 @@ class SecretParameterArgs:
             pulumi.set(__self__, "constraints", constraints)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if dkms_instance_id is not None:
+            pulumi.set(__self__, "dkms_instance_id", dkms_instance_id)
         if key_id is not None:
             pulumi.set(__self__, "key_id", key_id)
         if resource_group_id is not None:
@@ -110,6 +114,18 @@ class SecretParameterArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="dkmsInstanceId")
+    def dkms_instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the KMS instance.
+        """
+        return pulumi.get(self, "dkms_instance_id")
+
+    @dkms_instance_id.setter
+    def dkms_instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dkms_instance_id", value)
+
+    @property
     @pulumi.getter(name="keyId")
     def key_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -162,7 +178,9 @@ class SecretParameterArgs:
 class _SecretParameterState:
     def __init__(__self__, *,
                  constraints: Optional[pulumi.Input[str]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 dkms_instance_id: Optional[pulumi.Input[str]] = None,
                  key_id: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  secret_parameter_name: Optional[pulumi.Input[str]] = None,
@@ -176,7 +194,9 @@ class _SecretParameterState:
                * `AllowedPattern`: The pattern that is allowed for the encryption parameter. It must be a regular expression.
                * `MinLength`: The minimum length of the encryption parameter.
                * `MaxLength`: The maximum length of the encryption parameter.
+        :param pulumi.Input[str] create_time: Parameter creation time
         :param pulumi.Input[str] description: The description of the encryption parameter. The description must be `1` to `200` characters in length.
+        :param pulumi.Input[str] dkms_instance_id: The ID of the KMS instance.
         :param pulumi.Input[str] key_id: The Customer Master Key (CMK) of Key Management Service (KMS) that is used to encrypt the parameter.
         :param pulumi.Input[str] resource_group_id: The ID of the Resource Group.
         :param pulumi.Input[str] secret_parameter_name: The name of the encryption parameter.  The name must be `2` to `180` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/) and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, `ALICLOUD`, or `OOS`.
@@ -186,8 +206,12 @@ class _SecretParameterState:
         """
         if constraints is not None:
             pulumi.set(__self__, "constraints", constraints)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if dkms_instance_id is not None:
+            pulumi.set(__self__, "dkms_instance_id", dkms_instance_id)
         if key_id is not None:
             pulumi.set(__self__, "key_id", key_id)
         if resource_group_id is not None:
@@ -218,6 +242,18 @@ class _SecretParameterState:
         pulumi.set(self, "constraints", value)
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Parameter creation time
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -228,6 +264,18 @@ class _SecretParameterState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="dkmsInstanceId")
+    def dkms_instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the KMS instance.
+        """
+        return pulumi.get(self, "dkms_instance_id")
+
+    @dkms_instance_id.setter
+    def dkms_instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dkms_instance_id", value)
 
     @property
     @pulumi.getter(name="keyId")
@@ -309,6 +357,7 @@ class SecretParameter(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  constraints: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 dkms_instance_id: Optional[pulumi.Input[str]] = None,
                  key_id: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  secret_parameter_name: Optional[pulumi.Input[str]] = None,
@@ -317,9 +366,9 @@ class SecretParameter(pulumi.CustomResource):
                  value: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a OOS Secret Parameter resource.
+        Provides a Operation Orchestration Service (OOS) Secret Parameter resource.
 
-        For information about OOS Secret Parameter and how to use it, see [What is Secret Parameter](https://www.alibabacloud.com/help/en/doc-detail/183418.html).
+        For information about Operation Orchestration Service (OOS) Secret Parameter and how to use it, see [What is Secret Parameter](https://www.alibabacloud.com/help/en/doc-detail/183418.html).
 
         > **NOTE:** Available since v1.147.0+.
 
@@ -351,10 +400,10 @@ class SecretParameter(pulumi.CustomResource):
 
         ## Import
 
-        OOS Secret Parameter can be imported using the id, e.g.
+        Operation Orchestration Service (OOS) Secret Parameter can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:oos/secretParameter:SecretParameter example <secret_parameter_name>
+        $ pulumi import alicloud:oos/secretParameter:SecretParameter example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -365,6 +414,7 @@ class SecretParameter(pulumi.CustomResource):
                * `MinLength`: The minimum length of the encryption parameter.
                * `MaxLength`: The maximum length of the encryption parameter.
         :param pulumi.Input[str] description: The description of the encryption parameter. The description must be `1` to `200` characters in length.
+        :param pulumi.Input[str] dkms_instance_id: The ID of the KMS instance.
         :param pulumi.Input[str] key_id: The Customer Master Key (CMK) of Key Management Service (KMS) that is used to encrypt the parameter.
         :param pulumi.Input[str] resource_group_id: The ID of the Resource Group.
         :param pulumi.Input[str] secret_parameter_name: The name of the encryption parameter.  The name must be `2` to `180` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/) and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, `ALICLOUD`, or `OOS`.
@@ -379,9 +429,9 @@ class SecretParameter(pulumi.CustomResource):
                  args: SecretParameterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a OOS Secret Parameter resource.
+        Provides a Operation Orchestration Service (OOS) Secret Parameter resource.
 
-        For information about OOS Secret Parameter and how to use it, see [What is Secret Parameter](https://www.alibabacloud.com/help/en/doc-detail/183418.html).
+        For information about Operation Orchestration Service (OOS) Secret Parameter and how to use it, see [What is Secret Parameter](https://www.alibabacloud.com/help/en/doc-detail/183418.html).
 
         > **NOTE:** Available since v1.147.0+.
 
@@ -413,10 +463,10 @@ class SecretParameter(pulumi.CustomResource):
 
         ## Import
 
-        OOS Secret Parameter can be imported using the id, e.g.
+        Operation Orchestration Service (OOS) Secret Parameter can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:oos/secretParameter:SecretParameter example <secret_parameter_name>
+        $ pulumi import alicloud:oos/secretParameter:SecretParameter example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -436,6 +486,7 @@ class SecretParameter(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  constraints: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 dkms_instance_id: Optional[pulumi.Input[str]] = None,
                  key_id: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  secret_parameter_name: Optional[pulumi.Input[str]] = None,
@@ -453,6 +504,7 @@ class SecretParameter(pulumi.CustomResource):
 
             __props__.__dict__["constraints"] = constraints
             __props__.__dict__["description"] = description
+            __props__.__dict__["dkms_instance_id"] = dkms_instance_id
             __props__.__dict__["key_id"] = key_id
             __props__.__dict__["resource_group_id"] = resource_group_id
             if secret_parameter_name is None and not opts.urn:
@@ -463,6 +515,7 @@ class SecretParameter(pulumi.CustomResource):
             if value is None and not opts.urn:
                 raise TypeError("Missing required property 'value'")
             __props__.__dict__["value"] = None if value is None else pulumi.Output.secret(value)
+            __props__.__dict__["create_time"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["value"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(SecretParameter, __self__).__init__(
@@ -476,7 +529,9 @@ class SecretParameter(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             constraints: Optional[pulumi.Input[str]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            dkms_instance_id: Optional[pulumi.Input[str]] = None,
             key_id: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             secret_parameter_name: Optional[pulumi.Input[str]] = None,
@@ -495,7 +550,9 @@ class SecretParameter(pulumi.CustomResource):
                * `AllowedPattern`: The pattern that is allowed for the encryption parameter. It must be a regular expression.
                * `MinLength`: The minimum length of the encryption parameter.
                * `MaxLength`: The maximum length of the encryption parameter.
+        :param pulumi.Input[str] create_time: Parameter creation time
         :param pulumi.Input[str] description: The description of the encryption parameter. The description must be `1` to `200` characters in length.
+        :param pulumi.Input[str] dkms_instance_id: The ID of the KMS instance.
         :param pulumi.Input[str] key_id: The Customer Master Key (CMK) of Key Management Service (KMS) that is used to encrypt the parameter.
         :param pulumi.Input[str] resource_group_id: The ID of the Resource Group.
         :param pulumi.Input[str] secret_parameter_name: The name of the encryption parameter.  The name must be `2` to `180` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/) and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, `ALICLOUD`, or `OOS`.
@@ -508,7 +565,9 @@ class SecretParameter(pulumi.CustomResource):
         __props__ = _SecretParameterState.__new__(_SecretParameterState)
 
         __props__.__dict__["constraints"] = constraints
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
+        __props__.__dict__["dkms_instance_id"] = dkms_instance_id
         __props__.__dict__["key_id"] = key_id
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["secret_parameter_name"] = secret_parameter_name
@@ -530,12 +589,28 @@ class SecretParameter(pulumi.CustomResource):
         return pulumi.get(self, "constraints")
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        Parameter creation time
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the encryption parameter. The description must be `1` to `200` characters in length.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="dkmsInstanceId")
+    def dkms_instance_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the KMS instance.
+        """
+        return pulumi.get(self, "dkms_instance_id")
 
     @property
     @pulumi.getter(name="keyId")
@@ -563,7 +638,7 @@ class SecretParameter(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+    def tags(self) -> pulumi.Output[Mapping[str, str]]:
         """
         A mapping of tags to assign to the resource.
         """

@@ -161,7 +161,11 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly filename!: pulumi.Output<string | undefined>;
     /**
-     * The Function Compute service ID.
+     * The Function Compute service function arn. It formats as `acs:fc:<region>:<uid>:services/<serviceName>.LATEST/functions/<functionName>`.
+     */
+    public /*out*/ readonly functionArn!: pulumi.Output<string>;
+    /**
+     * The Function Compute service function ID.
      */
     public /*out*/ readonly functionId!: pulumi.Output<string>;
     /**
@@ -244,6 +248,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["environmentVariables"] = state ? state.environmentVariables : undefined;
             resourceInputs["filename"] = state ? state.filename : undefined;
+            resourceInputs["functionArn"] = state ? state.functionArn : undefined;
             resourceInputs["functionId"] = state ? state.functionId : undefined;
             resourceInputs["handler"] = state ? state.handler : undefined;
             resourceInputs["initializationTimeout"] = state ? state.initializationTimeout : undefined;
@@ -291,6 +296,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["runtime"] = args ? args.runtime : undefined;
             resourceInputs["service"] = args ? args.service : undefined;
             resourceInputs["timeout"] = args ? args.timeout : undefined;
+            resourceInputs["functionArn"] = undefined /*out*/;
             resourceInputs["functionId"] = undefined /*out*/;
             resourceInputs["lastModified"] = undefined /*out*/;
         }
@@ -329,7 +335,11 @@ export interface FunctionState {
      */
     filename?: pulumi.Input<string>;
     /**
-     * The Function Compute service ID.
+     * The Function Compute service function arn. It formats as `acs:fc:<region>:<uid>:services/<serviceName>.LATEST/functions/<functionName>`.
+     */
+    functionArn?: pulumi.Input<string>;
+    /**
+     * The Function Compute service function ID.
      */
     functionId?: pulumi.Input<string>;
     /**

@@ -102,7 +102,7 @@ export class WafRule extends pulumi.CustomResource {
     }
 
     /**
-     * Specifies the action of the rule. Valid values: `block`, `monitor`, `js`.
+     * Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
      */
     public readonly action!: pulumi.Output<string | undefined>;
     /**
@@ -166,7 +166,7 @@ export class WafRule extends pulumi.CustomResource {
      */
     public readonly status!: pulumi.Output<string>;
     /**
-     * The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas.
+     * The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `wafGroup`.
      */
     public readonly wafGroupIds!: pulumi.Output<string | undefined>;
 
@@ -236,7 +236,7 @@ export class WafRule extends pulumi.CustomResource {
  */
 export interface WafRuleState {
     /**
-     * Specifies the action of the rule. Valid values: `block`, `monitor`, `js`.
+     * Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
      */
     action?: pulumi.Input<string>;
     /**
@@ -300,7 +300,7 @@ export interface WafRuleState {
      */
     status?: pulumi.Input<string>;
     /**
-     * The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas.
+     * The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `wafGroup`.
      */
     wafGroupIds?: pulumi.Input<string>;
 }
@@ -310,7 +310,7 @@ export interface WafRuleState {
  */
 export interface WafRuleArgs {
     /**
-     * Specifies the action of the rule. Valid values: `block`, `monitor`, `js`.
+     * Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
      */
     action?: pulumi.Input<string>;
     /**
@@ -366,7 +366,7 @@ export interface WafRuleArgs {
      */
     status?: pulumi.Input<string>;
     /**
-     * The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas.
+     * The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `wafGroup`.
      */
     wafGroupIds?: pulumi.Input<string>;
 }
