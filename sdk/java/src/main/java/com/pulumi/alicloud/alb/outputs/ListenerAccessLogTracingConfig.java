@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.alb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -14,50 +15,54 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ListenerAccessLogTracingConfig {
     /**
-     * @return Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
+     * @return Xtrace Function.
      * 
-     * &gt; **NOTE:** Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `True`.
+     * Value: True **** Or False * *.
+     * 
+     * Default Value: False * *.
+     * 
+     * &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
      * 
      */
-    private @Nullable Boolean tracingEnabled;
+    private Boolean tracingEnabled;
     /**
-     * @return Xtrace Sampling Rate. Value: `1` to `10000`.
-     * 
-     * &gt; **NOTE:** This attribute is valid when `tracingenabled` is `true`.
+     * @return Xtrace Sampling Rate. Value: 1~10000 **.&gt; `tracingenabled` **True When Effective.
      * 
      */
     private @Nullable Integer tracingSample;
     /**
-     * @return Xtrace Type Value Is `Zipkin`.
+     * @return Xtrace Type Value Is **Zipkin * *.
      * 
-     * &gt; **NOTE:** This attribute is valid when `tracingenabled` is `true`.
+     * &gt; **NOTE:**  `tracingenabled` **True When Effective.
      * 
      */
     private @Nullable String tracingType;
 
     private ListenerAccessLogTracingConfig() {}
     /**
-     * @return Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
+     * @return Xtrace Function.
      * 
-     * &gt; **NOTE:** Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `True`.
+     * Value: True **** Or False * *.
+     * 
+     * Default Value: False * *.
+     * 
+     * &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
      * 
      */
-    public Optional<Boolean> tracingEnabled() {
-        return Optional.ofNullable(this.tracingEnabled);
+    public Boolean tracingEnabled() {
+        return this.tracingEnabled;
     }
     /**
-     * @return Xtrace Sampling Rate. Value: `1` to `10000`.
-     * 
-     * &gt; **NOTE:** This attribute is valid when `tracingenabled` is `true`.
+     * @return Xtrace Sampling Rate. Value: 1~10000 **.&gt; `tracingenabled` **True When Effective.
      * 
      */
     public Optional<Integer> tracingSample() {
         return Optional.ofNullable(this.tracingSample);
     }
     /**
-     * @return Xtrace Type Value Is `Zipkin`.
+     * @return Xtrace Type Value Is **Zipkin * *.
      * 
-     * &gt; **NOTE:** This attribute is valid when `tracingenabled` is `true`.
+     * &gt; **NOTE:**  `tracingenabled` **True When Effective.
      * 
      */
     public Optional<String> tracingType() {
@@ -73,7 +78,7 @@ public final class ListenerAccessLogTracingConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Boolean tracingEnabled;
+        private Boolean tracingEnabled;
         private @Nullable Integer tracingSample;
         private @Nullable String tracingType;
         public Builder() {}
@@ -85,8 +90,10 @@ public final class ListenerAccessLogTracingConfig {
         }
 
         @CustomType.Setter
-        public Builder tracingEnabled(@Nullable Boolean tracingEnabled) {
-
+        public Builder tracingEnabled(Boolean tracingEnabled) {
+            if (tracingEnabled == null) {
+              throw new MissingRequiredPropertyException("ListenerAccessLogTracingConfig", "tracingEnabled");
+            }
             this.tracingEnabled = tracingEnabled;
             return this;
         }

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
     public sealed class ListenerDefaultActionForwardGroupConfigServerGroupTuple
     {
         /// <summary>
-        /// The ID of the destination server group to which requests are forwarded.
+        /// Forwarded to the Destination Server Group ID
         /// </summary>
         public readonly string ServerGroupId;
 

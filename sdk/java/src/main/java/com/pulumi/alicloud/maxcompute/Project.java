@@ -27,8 +27,6 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.77.0.
  * 
- * &gt; **NOTE:** Field `name`, `specification_type`, `order_type` has been removed from provider version 1.227.1.
- * 
  * ## Example Usage
  * 
  * Basic Usage
@@ -111,14 +109,16 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
+     * Used to implement computing resource allocation. Valid values: subQuota Nickname
+     * If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
      * 
      */
     @Export(name="defaultQuota", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> defaultQuota;
 
     /**
-     * @return Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
+     * @return Used to implement computing resource allocation. Valid values: subQuota Nickname
+     * If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
      * 
      */
     public Output<Optional<String>> defaultQuota() {
@@ -139,14 +139,18 @@ public class Project extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ipWhiteList);
     }
     /**
-     * Logical deletion, value: (true/false) true: In this case, the project status will be changed to &#39;DELETING&#39; and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
+     * Whether to logically delete. Default value: true. Value: (ture/false),
+     * 
+     * &gt; **NOTE:** -- ture: In this case, the project status will be changed to&#39; deleting&#39; and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
      * 
      */
     @Export(name="isLogical", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> isLogical;
 
     /**
-     * @return Logical deletion, value: (true/false) true: In this case, the project status will be changed to &#39;DELETING&#39; and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
+     * @return Whether to logically delete. Default value: true. Value: (ture/false),
+     * 
+     * &gt; **NOTE:** -- ture: In this case, the project status will be changed to&#39; deleting&#39; and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
      * 
      */
     public Output<Optional<String>> isLogical() {
@@ -166,17 +170,9 @@ public class Project extends com.pulumi.resources.CustomResource {
     public Output<String> owner() {
         return this.owner;
     }
-    /**
-     * Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
-     * 
-     */
     @Export(name="productType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> productType;
 
-    /**
-     * @return Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
-     * 
-     */
     public Output<Optional<String>> productType() {
         return Codegen.optional(this.productType);
     }
@@ -207,6 +203,20 @@ public class Project extends com.pulumi.resources.CustomResource {
      */
     public Output<ProjectProperties> properties() {
         return this.properties;
+    }
+    /**
+     * The region ID of the resource
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return The region ID of the resource
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
     }
     /**
      * Security-related attributes See `security_properties` below.

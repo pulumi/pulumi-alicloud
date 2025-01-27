@@ -7,9 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides an ALB Server Group resource.
+ * Provides a Application Load Balancer (ALB) Server Group resource.
  *
- * For information about ALB Server Group and how to use it, see [What is Server Group](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createservergroup).
+ * For information about Application Load Balancer (ALB) Server Group and how to use it, see [What is Server Group](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createservergroup).
  *
  * > **NOTE:** Available since v1.131.0.
  *
@@ -103,7 +103,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ALB Server Group can be imported using the id, e.g.
+ * Application Load Balancer (ALB) Server Group can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:alb/serverGroup:ServerGroup example <id>
@@ -138,54 +138,99 @@ export class ServerGroup extends pulumi.CustomResource {
     }
 
     /**
-     * The dry run.
+     * Elegant interrupt configuration. See `connectionDrainConfig` below.
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    public readonly connectionDrainConfig!: pulumi.Output<outputs.alb.ServerGroupConnectionDrainConfig | undefined>;
     /**
-     * The configuration of health checks. See `healthCheckConfig` below.
+     * The creation time of the resource
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Indicates whether cross-zone load balancing is enabled for the server group. Valid values:
+     */
+    public readonly crossZoneEnabled!: pulumi.Output<boolean>;
+    /**
+     * The configuration of health checks See `healthCheckConfig` below.
      */
     public readonly healthCheckConfig!: pulumi.Output<outputs.alb.ServerGroupHealthCheckConfig>;
     /**
-     * The server protocol. Valid values: ` HTTP`, `HTTPS`, `gRPC`. While `serverGroupType` is `Fc` this parameter will not take effect. From version 1.215.0, `protocol` can be set to `gRPC`.
+     * The template ID.
+     */
+    public readonly healthCheckTemplateId!: pulumi.Output<string | undefined>;
+    /**
+     * The backend protocol. Valid values:
+     *
+     * *   `HTTP`: allows you to associate an HTTPS, HTTP, or QUIC listener with the server group. This is the default value.
+     *
+     * *   `HTTPS`: allows you to associate HTTPS listeners with backend servers.
+     *
+     * *   `gRPC`: allows you to associate an HTTPS or QUIC listener with the server group.
+     *
+     * > **NOTE:**   You do not need to specify a backend protocol if you set `ServerGroupType` to `Fc`.
      */
     public readonly protocol!: pulumi.Output<string>;
     /**
-     * The ID of the resource group.
+     * The ID of the resource group to which you want to transfer the cloud resource.
+     *
+     * > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
-     * The scheduling algorithm. Valid values: ` Sch`, ` Wlc`, `Wrr`. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
+     * The scheduling algorithm. Valid values:
+     *
+     * *   `Wrr` (default): The weighted round-robin algorithm is used. Backend servers that have higher weights receive more requests than those that have lower weights.
+     *
+     * *   `Wlc`: The weighted least connections algorithm is used. Requests are distributed based on the weights and the number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections is expected to receive more requests.
+     *
+     * *   `Sch`: The consistent hashing algorithm is used. Requests from the same source IP address are distributed to the same backend server.
+     *
+     * > **NOTE:**  This parameter takes effect when the `ServerGroupType` parameter is set to `Instance` or `Ip`.
      */
     public readonly scheduler!: pulumi.Output<string>;
     /**
-     * The name of the server group.
+     * The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
      */
     public readonly serverGroupName!: pulumi.Output<string>;
     /**
-     * The type of the server group. Default value: `Instance`. Valid values:
-     * - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+     * The type of server group. Valid values:
+     *
+     * - `Instance` (default): allows you to add servers by specifying `Ecs`, `Eni`, or `Eci`.
      * - `Ip`: allows you to add servers by specifying IP addresses.
      * - `Fc`: allows you to add servers by specifying functions of Function Compute.
      */
     public readonly serverGroupType!: pulumi.Output<string>;
     /**
-     * The backend servers. See `servers` below.
+     * List of servers. See `servers` below.
      */
     public readonly servers!: pulumi.Output<outputs.alb.ServerGroupServer[] | undefined>;
     /**
-     * The status of the backend server.
+     * Slow start configuration. See `slowStartConfig` below.
+     */
+    public readonly slowStartConfig!: pulumi.Output<outputs.alb.ServerGroupSlowStartConfig | undefined>;
+    /**
+     * The status of the resource
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The configuration of session persistence. See `stickySessionConfig` below.
+     * The configuration of the sticky session See `stickySessionConfig` below.
      */
-    public readonly stickySessionConfig!: pulumi.Output<outputs.alb.ServerGroupStickySessionConfig>;
+    public readonly stickySessionConfig!: pulumi.Output<outputs.alb.ServerGroupStickySessionConfig | undefined>;
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag of the resource
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
+     * Url consistency hash parameter configuration See `uchConfig` below.
+     */
+    public readonly uchConfig!: pulumi.Output<outputs.alb.ServerGroupUchConfig | undefined>;
+    /**
+     * Specifies whether to enable persistent TCP connections.
+     */
+    public readonly upstreamKeepaliveEnabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * The ID of the virtual private cloud (VPC). You can add only servers that are deployed in the specified VPC to the server group.
+     *
+     * > **NOTE:**   This parameter takes effect when the `ServerGroupType` parameter is set to `Instance` or `Ip`.
      */
     public readonly vpcId!: pulumi.Output<string | undefined>;
 
@@ -202,17 +247,23 @@ export class ServerGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServerGroupState | undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
+            resourceInputs["connectionDrainConfig"] = state ? state.connectionDrainConfig : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["crossZoneEnabled"] = state ? state.crossZoneEnabled : undefined;
             resourceInputs["healthCheckConfig"] = state ? state.healthCheckConfig : undefined;
+            resourceInputs["healthCheckTemplateId"] = state ? state.healthCheckTemplateId : undefined;
             resourceInputs["protocol"] = state ? state.protocol : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["scheduler"] = state ? state.scheduler : undefined;
             resourceInputs["serverGroupName"] = state ? state.serverGroupName : undefined;
             resourceInputs["serverGroupType"] = state ? state.serverGroupType : undefined;
             resourceInputs["servers"] = state ? state.servers : undefined;
+            resourceInputs["slowStartConfig"] = state ? state.slowStartConfig : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["stickySessionConfig"] = state ? state.stickySessionConfig : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["uchConfig"] = state ? state.uchConfig : undefined;
+            resourceInputs["upstreamKeepaliveEnabled"] = state ? state.upstreamKeepaliveEnabled : undefined;
             resourceInputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as ServerGroupArgs | undefined;
@@ -222,17 +273,23 @@ export class ServerGroup extends pulumi.CustomResource {
             if ((!args || args.serverGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serverGroupName'");
             }
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["connectionDrainConfig"] = args ? args.connectionDrainConfig : undefined;
+            resourceInputs["crossZoneEnabled"] = args ? args.crossZoneEnabled : undefined;
             resourceInputs["healthCheckConfig"] = args ? args.healthCheckConfig : undefined;
+            resourceInputs["healthCheckTemplateId"] = args ? args.healthCheckTemplateId : undefined;
             resourceInputs["protocol"] = args ? args.protocol : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["scheduler"] = args ? args.scheduler : undefined;
             resourceInputs["serverGroupName"] = args ? args.serverGroupName : undefined;
             resourceInputs["serverGroupType"] = args ? args.serverGroupType : undefined;
             resourceInputs["servers"] = args ? args.servers : undefined;
+            resourceInputs["slowStartConfig"] = args ? args.slowStartConfig : undefined;
             resourceInputs["stickySessionConfig"] = args ? args.stickySessionConfig : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["uchConfig"] = args ? args.uchConfig : undefined;
+            resourceInputs["upstreamKeepaliveEnabled"] = args ? args.upstreamKeepaliveEnabled : undefined;
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -245,54 +302,99 @@ export class ServerGroup extends pulumi.CustomResource {
  */
 export interface ServerGroupState {
     /**
-     * The dry run.
+     * Elegant interrupt configuration. See `connectionDrainConfig` below.
      */
-    dryRun?: pulumi.Input<boolean>;
+    connectionDrainConfig?: pulumi.Input<inputs.alb.ServerGroupConnectionDrainConfig>;
     /**
-     * The configuration of health checks. See `healthCheckConfig` below.
+     * The creation time of the resource
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * Indicates whether cross-zone load balancing is enabled for the server group. Valid values:
+     */
+    crossZoneEnabled?: pulumi.Input<boolean>;
+    /**
+     * The configuration of health checks See `healthCheckConfig` below.
      */
     healthCheckConfig?: pulumi.Input<inputs.alb.ServerGroupHealthCheckConfig>;
     /**
-     * The server protocol. Valid values: ` HTTP`, `HTTPS`, `gRPC`. While `serverGroupType` is `Fc` this parameter will not take effect. From version 1.215.0, `protocol` can be set to `gRPC`.
+     * The template ID.
+     */
+    healthCheckTemplateId?: pulumi.Input<string>;
+    /**
+     * The backend protocol. Valid values:
+     *
+     * *   `HTTP`: allows you to associate an HTTPS, HTTP, or QUIC listener with the server group. This is the default value.
+     *
+     * *   `HTTPS`: allows you to associate HTTPS listeners with backend servers.
+     *
+     * *   `gRPC`: allows you to associate an HTTPS or QUIC listener with the server group.
+     *
+     * > **NOTE:**   You do not need to specify a backend protocol if you set `ServerGroupType` to `Fc`.
      */
     protocol?: pulumi.Input<string>;
     /**
-     * The ID of the resource group.
+     * The ID of the resource group to which you want to transfer the cloud resource.
+     *
+     * > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The scheduling algorithm. Valid values: ` Sch`, ` Wlc`, `Wrr`. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
+     * The scheduling algorithm. Valid values:
+     *
+     * *   `Wrr` (default): The weighted round-robin algorithm is used. Backend servers that have higher weights receive more requests than those that have lower weights.
+     *
+     * *   `Wlc`: The weighted least connections algorithm is used. Requests are distributed based on the weights and the number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections is expected to receive more requests.
+     *
+     * *   `Sch`: The consistent hashing algorithm is used. Requests from the same source IP address are distributed to the same backend server.
+     *
+     * > **NOTE:**  This parameter takes effect when the `ServerGroupType` parameter is set to `Instance` or `Ip`.
      */
     scheduler?: pulumi.Input<string>;
     /**
-     * The name of the server group.
+     * The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
      */
     serverGroupName?: pulumi.Input<string>;
     /**
-     * The type of the server group. Default value: `Instance`. Valid values:
-     * - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+     * The type of server group. Valid values:
+     *
+     * - `Instance` (default): allows you to add servers by specifying `Ecs`, `Eni`, or `Eci`.
      * - `Ip`: allows you to add servers by specifying IP addresses.
      * - `Fc`: allows you to add servers by specifying functions of Function Compute.
      */
     serverGroupType?: pulumi.Input<string>;
     /**
-     * The backend servers. See `servers` below.
+     * List of servers. See `servers` below.
      */
     servers?: pulumi.Input<pulumi.Input<inputs.alb.ServerGroupServer>[]>;
     /**
-     * The status of the backend server.
+     * Slow start configuration. See `slowStartConfig` below.
+     */
+    slowStartConfig?: pulumi.Input<inputs.alb.ServerGroupSlowStartConfig>;
+    /**
+     * The status of the resource
      */
     status?: pulumi.Input<string>;
     /**
-     * The configuration of session persistence. See `stickySessionConfig` below.
+     * The configuration of the sticky session See `stickySessionConfig` below.
      */
     stickySessionConfig?: pulumi.Input<inputs.alb.ServerGroupStickySessionConfig>;
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag of the resource
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
+     * Url consistency hash parameter configuration See `uchConfig` below.
+     */
+    uchConfig?: pulumi.Input<inputs.alb.ServerGroupUchConfig>;
+    /**
+     * Specifies whether to enable persistent TCP connections.
+     */
+    upstreamKeepaliveEnabled?: pulumi.Input<boolean>;
+    /**
+     * The ID of the virtual private cloud (VPC). You can add only servers that are deployed in the specified VPC to the server group.
+     *
+     * > **NOTE:**   This parameter takes effect when the `ServerGroupType` parameter is set to `Instance` or `Ip`.
      */
     vpcId?: pulumi.Input<string>;
 }
@@ -302,50 +404,91 @@ export interface ServerGroupState {
  */
 export interface ServerGroupArgs {
     /**
-     * The dry run.
+     * Elegant interrupt configuration. See `connectionDrainConfig` below.
      */
-    dryRun?: pulumi.Input<boolean>;
+    connectionDrainConfig?: pulumi.Input<inputs.alb.ServerGroupConnectionDrainConfig>;
     /**
-     * The configuration of health checks. See `healthCheckConfig` below.
+     * Indicates whether cross-zone load balancing is enabled for the server group. Valid values:
+     */
+    crossZoneEnabled?: pulumi.Input<boolean>;
+    /**
+     * The configuration of health checks See `healthCheckConfig` below.
      */
     healthCheckConfig: pulumi.Input<inputs.alb.ServerGroupHealthCheckConfig>;
     /**
-     * The server protocol. Valid values: ` HTTP`, `HTTPS`, `gRPC`. While `serverGroupType` is `Fc` this parameter will not take effect. From version 1.215.0, `protocol` can be set to `gRPC`.
+     * The template ID.
+     */
+    healthCheckTemplateId?: pulumi.Input<string>;
+    /**
+     * The backend protocol. Valid values:
+     *
+     * *   `HTTP`: allows you to associate an HTTPS, HTTP, or QUIC listener with the server group. This is the default value.
+     *
+     * *   `HTTPS`: allows you to associate HTTPS listeners with backend servers.
+     *
+     * *   `gRPC`: allows you to associate an HTTPS or QUIC listener with the server group.
+     *
+     * > **NOTE:**   You do not need to specify a backend protocol if you set `ServerGroupType` to `Fc`.
      */
     protocol?: pulumi.Input<string>;
     /**
-     * The ID of the resource group.
+     * The ID of the resource group to which you want to transfer the cloud resource.
+     *
+     * > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The scheduling algorithm. Valid values: ` Sch`, ` Wlc`, `Wrr`. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
+     * The scheduling algorithm. Valid values:
+     *
+     * *   `Wrr` (default): The weighted round-robin algorithm is used. Backend servers that have higher weights receive more requests than those that have lower weights.
+     *
+     * *   `Wlc`: The weighted least connections algorithm is used. Requests are distributed based on the weights and the number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections is expected to receive more requests.
+     *
+     * *   `Sch`: The consistent hashing algorithm is used. Requests from the same source IP address are distributed to the same backend server.
+     *
+     * > **NOTE:**  This parameter takes effect when the `ServerGroupType` parameter is set to `Instance` or `Ip`.
      */
     scheduler?: pulumi.Input<string>;
     /**
-     * The name of the server group.
+     * The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
      */
     serverGroupName: pulumi.Input<string>;
     /**
-     * The type of the server group. Default value: `Instance`. Valid values:
-     * - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+     * The type of server group. Valid values:
+     *
+     * - `Instance` (default): allows you to add servers by specifying `Ecs`, `Eni`, or `Eci`.
      * - `Ip`: allows you to add servers by specifying IP addresses.
      * - `Fc`: allows you to add servers by specifying functions of Function Compute.
      */
     serverGroupType?: pulumi.Input<string>;
     /**
-     * The backend servers. See `servers` below.
+     * List of servers. See `servers` below.
      */
     servers?: pulumi.Input<pulumi.Input<inputs.alb.ServerGroupServer>[]>;
     /**
-     * The configuration of session persistence. See `stickySessionConfig` below.
+     * Slow start configuration. See `slowStartConfig` below.
+     */
+    slowStartConfig?: pulumi.Input<inputs.alb.ServerGroupSlowStartConfig>;
+    /**
+     * The configuration of the sticky session See `stickySessionConfig` below.
      */
     stickySessionConfig?: pulumi.Input<inputs.alb.ServerGroupStickySessionConfig>;
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag of the resource
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
+     * Url consistency hash parameter configuration See `uchConfig` below.
+     */
+    uchConfig?: pulumi.Input<inputs.alb.ServerGroupUchConfig>;
+    /**
+     * Specifies whether to enable persistent TCP connections.
+     */
+    upstreamKeepaliveEnabled?: pulumi.Input<boolean>;
+    /**
+     * The ID of the virtual private cloud (VPC). You can add only servers that are deployed in the specified VPC to the server group.
+     *
+     * > **NOTE:**   This parameter takes effect when the `ServerGroupType` parameter is set to `Instance` or `Ip`.
      */
     vpcId?: pulumi.Input<string>;
 }

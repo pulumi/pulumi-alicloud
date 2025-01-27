@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Alb.Inputs
     public sealed class LoadBalancerLoadBalancerBillingConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The billing method of the ALB instance. Valid values: `PayAsYouGo`.
+        /// Pay Type
         /// </summary>
         [Input("payType", required: true)]
         public Input<string> PayType { get; set; } = null!;

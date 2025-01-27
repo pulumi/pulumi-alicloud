@@ -50,9 +50,17 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.dataRedundancyType);
     }
 
+    /**
+     * Dedicated cluster id, which is used to support scenarios such as group cloud migration.
+     * 
+     */
     @Import(name="dedicatedClusterId")
     private @Nullable Output<String> dedicatedClusterId;
 
+    /**
+     * @return Dedicated cluster id, which is used to support scenarios such as group cloud migration.
+     * 
+     */
     public Optional<Output<String>> dedicatedClusterId() {
         return Optional.ofNullable(this.dedicatedClusterId);
     }
@@ -103,14 +111,14 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
+     * The protocol type. Value: `HDFS`, `PANGU`.
      * 
      */
     @Import(name="protocolType")
     private @Nullable Output<String> protocolType;
 
     /**
-     * @return The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
+     * @return The protocol type. Value: `HDFS`, `PANGU`.
      * 
      */
     public Optional<Output<String>> protocolType() {
@@ -130,6 +138,21 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> provisionedThroughputInMiBps() {
         return Optional.ofNullable(this.provisionedThroughputInMiBps);
+    }
+
+    /**
+     * (Available since v1.242.0) The region ID of the File System.
+     * 
+     */
+    @Import(name="regionId")
+    private @Nullable Output<String> regionId;
+
+    /**
+     * @return (Available since v1.242.0) The region ID of the File System.
+     * 
+     */
+    public Optional<Output<String>> regionId() {
+        return Optional.ofNullable(this.regionId);
     }
 
     /**
@@ -218,6 +241,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         this.partitionNumber = $.partitionNumber;
         this.protocolType = $.protocolType;
         this.provisionedThroughputInMiBps = $.provisionedThroughputInMiBps;
+        this.regionId = $.regionId;
         this.spaceCapacity = $.spaceCapacity;
         this.storageSetName = $.storageSetName;
         this.storageType = $.storageType;
@@ -289,11 +313,23 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
             return dataRedundancyType(Output.of(dataRedundancyType));
         }
 
+        /**
+         * @param dedicatedClusterId Dedicated cluster id, which is used to support scenarios such as group cloud migration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dedicatedClusterId(@Nullable Output<String> dedicatedClusterId) {
             $.dedicatedClusterId = dedicatedClusterId;
             return this;
         }
 
+        /**
+         * @param dedicatedClusterId Dedicated cluster id, which is used to support scenarios such as group cloud migration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dedicatedClusterId(String dedicatedClusterId) {
             return dedicatedClusterId(Output.of(dedicatedClusterId));
         }
@@ -362,7 +398,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocolType The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
+         * @param protocolType The protocol type. Value: `HDFS`, `PANGU`.
          * 
          * @return builder
          * 
@@ -373,7 +409,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocolType The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
+         * @param protocolType The protocol type. Value: `HDFS`, `PANGU`.
          * 
          * @return builder
          * 
@@ -401,6 +437,27 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder provisionedThroughputInMiBps(Integer provisionedThroughputInMiBps) {
             return provisionedThroughputInMiBps(Output.of(provisionedThroughputInMiBps));
+        }
+
+        /**
+         * @param regionId (Available since v1.242.0) The region ID of the File System.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(@Nullable Output<String> regionId) {
+            $.regionId = regionId;
+            return this;
+        }
+
+        /**
+         * @param regionId (Available since v1.242.0) The region ID of the File System.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(String regionId) {
+            return regionId(Output.of(regionId));
         }
 
         /**

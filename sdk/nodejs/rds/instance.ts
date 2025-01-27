@@ -80,6 +80,13 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly babelfishPort!: pulumi.Output<string>;
     /**
+     * Specifies whether to enable the I/O burst feature of general
+     * ESSDs. Valid values:
+     * - true
+     * - false
+     */
+    public readonly burstingEnabled!: pulumi.Output<boolean | undefined>;
+    /**
      * The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `caType` start  support `MySQL` engine. Value range:
      * - aliyun: a cloud certificate
      * - custom: a custom certificate
@@ -556,6 +563,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["autoUpgradeMinorVersion"] = state ? state.autoUpgradeMinorVersion : undefined;
             resourceInputs["babelfishConfigs"] = state ? state.babelfishConfigs : undefined;
             resourceInputs["babelfishPort"] = state ? state.babelfishPort : undefined;
+            resourceInputs["burstingEnabled"] = state ? state.burstingEnabled : undefined;
             resourceInputs["caType"] = state ? state.caType : undefined;
             resourceInputs["category"] = state ? state.category : undefined;
             resourceInputs["clientCaCert"] = state ? state.clientCaCert : undefined;
@@ -653,6 +661,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["autoUpgradeMinorVersion"] = args ? args.autoUpgradeMinorVersion : undefined;
             resourceInputs["babelfishConfigs"] = args ? args.babelfishConfigs : undefined;
             resourceInputs["babelfishPort"] = args ? args.babelfishPort : undefined;
+            resourceInputs["burstingEnabled"] = args ? args.burstingEnabled : undefined;
             resourceInputs["caType"] = args ? args.caType : undefined;
             resourceInputs["category"] = args ? args.category : undefined;
             resourceInputs["clientCaCert"] = args?.clientCaCert ? pulumi.secret(args.clientCaCert) : undefined;
@@ -778,6 +787,13 @@ export interface InstanceState {
      * > **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
      */
     babelfishPort?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable the I/O burst feature of general
+     * ESSDs. Valid values:
+     * - true
+     * - false
+     */
+    burstingEnabled?: pulumi.Input<boolean>;
     /**
      * The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `caType` start  support `MySQL` engine. Value range:
      * - aliyun: a cloud certificate
@@ -1277,6 +1293,13 @@ export interface InstanceArgs {
      * > **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
      */
     babelfishPort?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable the I/O burst feature of general
+     * ESSDs. Valid values:
+     * - true
+     * - false
+     */
+    burstingEnabled?: pulumi.Input<boolean>;
     /**
      * The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `caType` start  support `MySQL` engine. Value range:
      * - aliyun: a cloud certificate

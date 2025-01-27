@@ -6,9 +6,12 @@ package com.pulumi.alicloud.alb;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.alb.ServerGroupArgs;
 import com.pulumi.alicloud.alb.inputs.ServerGroupState;
+import com.pulumi.alicloud.alb.outputs.ServerGroupConnectionDrainConfig;
 import com.pulumi.alicloud.alb.outputs.ServerGroupHealthCheckConfig;
 import com.pulumi.alicloud.alb.outputs.ServerGroupServer;
+import com.pulumi.alicloud.alb.outputs.ServerGroupSlowStartConfig;
 import com.pulumi.alicloud.alb.outputs.ServerGroupStickySessionConfig;
+import com.pulumi.alicloud.alb.outputs.ServerGroupUchConfig;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -21,9 +24,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides an ALB Server Group resource.
+ * Provides a Application Load Balancer (ALB) Server Group resource.
  * 
- * For information about ALB Server Group and how to use it, see [What is Server Group](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createservergroup).
+ * For information about Application Load Balancer (ALB) Server Group and how to use it, see [What is Server Group](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createservergroup).
  * 
  * &gt; **NOTE:** Available since v1.131.0.
  * 
@@ -164,7 +167,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ALB Server Group can be imported using the id, e.g.
+ * Application Load Balancer (ALB) Server Group can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:alb/serverGroup:ServerGroup example &lt;id&gt;
@@ -174,92 +177,171 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:alb/serverGroup:ServerGroup")
 public class ServerGroup extends com.pulumi.resources.CustomResource {
     /**
-     * The dry run.
+     * Elegant interrupt configuration. See `connection_drain_config` below.
      * 
      */
-    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> dryRun;
+    @Export(name="connectionDrainConfig", refs={ServerGroupConnectionDrainConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ServerGroupConnectionDrainConfig> connectionDrainConfig;
 
     /**
-     * @return The dry run.
+     * @return Elegant interrupt configuration. See `connection_drain_config` below.
      * 
      */
-    public Output<Optional<Boolean>> dryRun() {
-        return Codegen.optional(this.dryRun);
+    public Output<Optional<ServerGroupConnectionDrainConfig>> connectionDrainConfig() {
+        return Codegen.optional(this.connectionDrainConfig);
     }
     /**
-     * The configuration of health checks. See `health_check_config` below.
+     * The creation time of the resource
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return The creation time of the resource
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * Indicates whether cross-zone load balancing is enabled for the server group. Valid values:
+     * 
+     */
+    @Export(name="crossZoneEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> crossZoneEnabled;
+
+    /**
+     * @return Indicates whether cross-zone load balancing is enabled for the server group. Valid values:
+     * 
+     */
+    public Output<Boolean> crossZoneEnabled() {
+        return this.crossZoneEnabled;
+    }
+    /**
+     * The configuration of health checks See `health_check_config` below.
      * 
      */
     @Export(name="healthCheckConfig", refs={ServerGroupHealthCheckConfig.class}, tree="[0]")
     private Output<ServerGroupHealthCheckConfig> healthCheckConfig;
 
     /**
-     * @return The configuration of health checks. See `health_check_config` below.
+     * @return The configuration of health checks See `health_check_config` below.
      * 
      */
     public Output<ServerGroupHealthCheckConfig> healthCheckConfig() {
         return this.healthCheckConfig;
     }
     /**
-     * The server protocol. Valid values: `  HTTP `, `HTTPS`, `gRPC`. While `server_group_type` is `Fc` this parameter will not take effect. From version 1.215.0, `protocol` can be set to `gRPC`.
+     * The template ID.
+     * 
+     */
+    @Export(name="healthCheckTemplateId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> healthCheckTemplateId;
+
+    /**
+     * @return The template ID.
+     * 
+     */
+    public Output<Optional<String>> healthCheckTemplateId() {
+        return Codegen.optional(this.healthCheckTemplateId);
+    }
+    /**
+     * The backend protocol. Valid values:
+     * 
+     * *   `HTTP`: allows you to associate an HTTPS, HTTP, or QUIC listener with the server group. This is the default value.
+     * 
+     * *   `HTTPS`: allows you to associate HTTPS listeners with backend servers.
+     * 
+     * *   `gRPC`: allows you to associate an HTTPS or QUIC listener with the server group.
+     * 
+     * &gt; **NOTE:**   You do not need to specify a backend protocol if you set `ServerGroupType` to `Fc`.
      * 
      */
     @Export(name="protocol", refs={String.class}, tree="[0]")
     private Output<String> protocol;
 
     /**
-     * @return The server protocol. Valid values: `  HTTP `, `HTTPS`, `gRPC`. While `server_group_type` is `Fc` this parameter will not take effect. From version 1.215.0, `protocol` can be set to `gRPC`.
+     * @return The backend protocol. Valid values:
+     * 
+     * *   `HTTP`: allows you to associate an HTTPS, HTTP, or QUIC listener with the server group. This is the default value.
+     * 
+     * *   `HTTPS`: allows you to associate HTTPS listeners with backend servers.
+     * 
+     * *   `gRPC`: allows you to associate an HTTPS or QUIC listener with the server group.
+     * 
+     * &gt; **NOTE:**   You do not need to specify a backend protocol if you set `ServerGroupType` to `Fc`.
      * 
      */
     public Output<String> protocol() {
         return this.protocol;
     }
     /**
-     * The ID of the resource group.
+     * The ID of the resource group to which you want to transfer the cloud resource.
+     * 
+     * &gt; **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group.
+     * @return The ID of the resource group to which you want to transfer the cloud resource.
+     * 
+     * &gt; **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
      * 
      */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
     }
     /**
-     * The scheduling algorithm. Valid values: `  Sch `, `  Wlc `, `Wrr`. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
+     * The scheduling algorithm. Valid values:
+     * 
+     * *   `Wrr` (default): The weighted round-robin algorithm is used. Backend servers that have higher weights receive more requests than those that have lower weights.
+     * 
+     * *   `Wlc`: The weighted least connections algorithm is used. Requests are distributed based on the weights and the number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections is expected to receive more requests.
+     * 
+     * *   `Sch`: The consistent hashing algorithm is used. Requests from the same source IP address are distributed to the same backend server.
+     * 
+     * &gt; **NOTE:**  This parameter takes effect when the `ServerGroupType` parameter is set to `Instance` or `Ip`.
      * 
      */
     @Export(name="scheduler", refs={String.class}, tree="[0]")
     private Output<String> scheduler;
 
     /**
-     * @return The scheduling algorithm. Valid values: `  Sch `, `  Wlc `, `Wrr`. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
+     * @return The scheduling algorithm. Valid values:
+     * 
+     * *   `Wrr` (default): The weighted round-robin algorithm is used. Backend servers that have higher weights receive more requests than those that have lower weights.
+     * 
+     * *   `Wlc`: The weighted least connections algorithm is used. Requests are distributed based on the weights and the number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections is expected to receive more requests.
+     * 
+     * *   `Sch`: The consistent hashing algorithm is used. Requests from the same source IP address are distributed to the same backend server.
+     * 
+     * &gt; **NOTE:**  This parameter takes effect when the `ServerGroupType` parameter is set to `Instance` or `Ip`.
      * 
      */
     public Output<String> scheduler() {
         return this.scheduler;
     }
     /**
-     * The name of the server group.
+     * The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
      * 
      */
     @Export(name="serverGroupName", refs={String.class}, tree="[0]")
     private Output<String> serverGroupName;
 
     /**
-     * @return The name of the server group.
+     * @return The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
      * 
      */
     public Output<String> serverGroupName() {
         return this.serverGroupName;
     }
     /**
-     * The type of the server group. Default value: `Instance`. Valid values:
-     * - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+     * The type of server group. Valid values:
+     * 
+     * - `Instance` (default): allows you to add servers by specifying `Ecs`, `Eni`, or `Eci`.
      * - `Ip`: allows you to add servers by specifying IP addresses.
      * - `Fc`: allows you to add servers by specifying functions of Function Compute.
      * 
@@ -268,8 +350,9 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
     private Output<String> serverGroupType;
 
     /**
-     * @return The type of the server group. Default value: `Instance`. Valid values:
-     * - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+     * @return The type of server group. Valid values:
+     * 
+     * - `Instance` (default): allows you to add servers by specifying `Ecs`, `Eni`, or `Eci`.
      * - `Ip`: allows you to add servers by specifying IP addresses.
      * - `Fc`: allows you to add servers by specifying functions of Function Compute.
      * 
@@ -278,70 +361,116 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
         return this.serverGroupType;
     }
     /**
-     * The backend servers. See `servers` below.
+     * List of servers. See `servers` below.
      * 
      */
     @Export(name="servers", refs={List.class,ServerGroupServer.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ServerGroupServer>> servers;
 
     /**
-     * @return The backend servers. See `servers` below.
+     * @return List of servers. See `servers` below.
      * 
      */
     public Output<Optional<List<ServerGroupServer>>> servers() {
         return Codegen.optional(this.servers);
     }
     /**
-     * The status of the backend server.
+     * Slow start configuration. See `slow_start_config` below.
+     * 
+     */
+    @Export(name="slowStartConfig", refs={ServerGroupSlowStartConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ServerGroupSlowStartConfig> slowStartConfig;
+
+    /**
+     * @return Slow start configuration. See `slow_start_config` below.
+     * 
+     */
+    public Output<Optional<ServerGroupSlowStartConfig>> slowStartConfig() {
+        return Codegen.optional(this.slowStartConfig);
+    }
+    /**
+     * The status of the resource
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the backend server.
+     * @return The status of the resource
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The configuration of session persistence. See `sticky_session_config` below.
+     * The configuration of the sticky session See `sticky_session_config` below.
      * 
      */
     @Export(name="stickySessionConfig", refs={ServerGroupStickySessionConfig.class}, tree="[0]")
-    private Output<ServerGroupStickySessionConfig> stickySessionConfig;
+    private Output</* @Nullable */ ServerGroupStickySessionConfig> stickySessionConfig;
 
     /**
-     * @return The configuration of session persistence. See `sticky_session_config` below.
+     * @return The configuration of the sticky session See `sticky_session_config` below.
      * 
      */
-    public Output<ServerGroupStickySessionConfig> stickySessionConfig() {
-        return this.stickySessionConfig;
+    public Output<Optional<ServerGroupStickySessionConfig>> stickySessionConfig() {
+        return Codegen.optional(this.stickySessionConfig);
     }
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag of the resource
      * 
      */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return The tag of the resource
      * 
      */
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
+     * Url consistency hash parameter configuration See `uch_config` below.
+     * 
+     */
+    @Export(name="uchConfig", refs={ServerGroupUchConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ServerGroupUchConfig> uchConfig;
+
+    /**
+     * @return Url consistency hash parameter configuration See `uch_config` below.
+     * 
+     */
+    public Output<Optional<ServerGroupUchConfig>> uchConfig() {
+        return Codegen.optional(this.uchConfig);
+    }
+    /**
+     * Specifies whether to enable persistent TCP connections.
+     * 
+     */
+    @Export(name="upstreamKeepaliveEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> upstreamKeepaliveEnabled;
+
+    /**
+     * @return Specifies whether to enable persistent TCP connections.
+     * 
+     */
+    public Output<Optional<Boolean>> upstreamKeepaliveEnabled() {
+        return Codegen.optional(this.upstreamKeepaliveEnabled);
+    }
+    /**
+     * The ID of the virtual private cloud (VPC). You can add only servers that are deployed in the specified VPC to the server group.
+     * 
+     * &gt; **NOTE:**   This parameter takes effect when the `ServerGroupType` parameter is set to `Instance` or `Ip`.
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vpcId;
 
     /**
-     * @return The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
+     * @return The ID of the virtual private cloud (VPC). You can add only servers that are deployed in the specified VPC to the server group.
+     * 
+     * &gt; **NOTE:**   This parameter takes effect when the `ServerGroupType` parameter is set to `Instance` or `Ip`.
      * 
      */
     public Output<Optional<String>> vpcId() {

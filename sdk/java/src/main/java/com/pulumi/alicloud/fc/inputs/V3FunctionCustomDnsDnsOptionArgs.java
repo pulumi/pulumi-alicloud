@@ -16,14 +16,14 @@ public final class V3FunctionCustomDnsDnsOptionArgs extends com.pulumi.resources
     public static final V3FunctionCustomDnsDnsOptionArgs Empty = new V3FunctionCustomDnsDnsOptionArgs();
 
     /**
-     * Configuration Item Name.
+     * Configuration Item Name
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Configuration Item Name.
+     * @return Configuration Item Name
      * 
      */
     public Optional<Output<String>> name() {
@@ -31,14 +31,14 @@ public final class V3FunctionCustomDnsDnsOptionArgs extends com.pulumi.resources
     }
 
     /**
-     * Configuration Item Value.
+     * Configuration Item Value
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return Configuration Item Value.
+     * @return Configuration Item Value
      * 
      */
     public Optional<Output<String>> value() {
@@ -71,7 +71,7 @@ public final class V3FunctionCustomDnsDnsOptionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param name Configuration Item Name.
+         * @param name Configuration Item Name
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class V3FunctionCustomDnsDnsOptionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param name Configuration Item Name.
+         * @param name Configuration Item Name
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class V3FunctionCustomDnsDnsOptionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param value Configuration Item Value.
+         * @param value Configuration Item Value
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class V3FunctionCustomDnsDnsOptionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param value Configuration Item Value.
+         * @param value Configuration Item Value
          * 
          * @return builder
          * 

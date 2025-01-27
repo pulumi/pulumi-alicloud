@@ -16,14 +16,18 @@ public final class ProjectIpWhiteListArgs extends com.pulumi.resources.ResourceA
     public static final ProjectIpWhiteListArgs Empty = new ProjectIpWhiteListArgs();
 
     /**
-     * Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.&gt; **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
+     * Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.
+     * 
+     * &gt; **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
      * 
      */
     @Import(name="ipList")
     private @Nullable Output<String> ipList;
 
     /**
-     * @return Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.&gt; **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
+     * @return Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.
+     * 
+     * &gt; **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
      * 
      */
     public Optional<Output<String>> ipList() {
@@ -31,14 +35,18 @@ public final class ProjectIpWhiteListArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.&gt; **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
+     * Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.
+     * 
+     * &gt; **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
      * 
      */
     @Import(name="vpcIpList")
     private @Nullable Output<String> vpcIpList;
 
     /**
-     * @return Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.&gt; **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
+     * @return Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.
+     * 
+     * &gt; **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
      * 
      */
     public Optional<Output<String>> vpcIpList() {
@@ -71,7 +79,9 @@ public final class ProjectIpWhiteListArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ipList Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.&gt; **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
+         * @param ipList Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.
+         * 
+         * &gt; **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
          * 
          * @return builder
          * 
@@ -82,7 +92,9 @@ public final class ProjectIpWhiteListArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ipList Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.&gt; **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
+         * @param ipList Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.
+         * 
+         * &gt; **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
          * 
          * @return builder
          * 
@@ -92,7 +104,9 @@ public final class ProjectIpWhiteListArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param vpcIpList Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.&gt; **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
+         * @param vpcIpList Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.
+         * 
+         * &gt; **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
          * 
          * @return builder
          * 
@@ -103,7 +117,9 @@ public final class ProjectIpWhiteListArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param vpcIpList Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.&gt; **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
+         * @param vpcIpList Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.
+         * 
+         * &gt; **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
          * 
          * @return builder
          * 

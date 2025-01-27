@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Dfs
 {
     /// <summary>
-    /// Provides a DFS Mount Point resource.
+    /// Provides a Apsara File Storage for HDFS (DFS) Mount Point resource.
     /// 
-    /// For information about DFS Mount Point and how to use it, see [What is Mount Point](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
+    /// For information about Apsara File Storage for HDFS (DFS) Mount Point and how to use it, see [What is Mount Point](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
     /// 
     /// &gt; **NOTE:** Available since v1.140.0.
     /// 
@@ -30,9 +30,7 @@ namespace Pulumi.AliCloud.Dfs
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var @default = AliCloud.Dfs.GetZones.Invoke();
-    /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+    ///     var @default = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "10.4.0.0/16",
@@ -42,15 +40,15 @@ namespace Pulumi.AliCloud.Dfs
     ///     {
     ///         VswitchName = name,
     ///         CidrBlock = "10.4.0.0/24",
-    ///         VpcId = defaultNetwork.Id,
-    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId)),
+    ///         VpcId = @default.Id,
+    ///         ZoneId = "cn-hangzhou-e",
     ///     });
     /// 
     ///     var defaultFileSystem = new AliCloud.Dfs.FileSystem("default", new()
     ///     {
-    ///         StorageType = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Options[0]?.StorageType)),
-    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId)),
-    ///         ProtocolType = "HDFS",
+    ///         StorageType = "STANDARD",
+    ///         ZoneId = "cn-hangzhou-e",
+    ///         ProtocolType = "PANGU",
     ///         Description = name,
     ///         FileSystemName = name,
     ///         ThroughputMode = "Provisioned",
@@ -68,7 +66,7 @@ namespace Pulumi.AliCloud.Dfs
     ///     var defaultMountPoint = new AliCloud.Dfs.MountPoint("default", new()
     ///     {
     ///         Description = name,
-    ///         VpcId = defaultNetwork.Id,
+    ///         VpcId = @default.Id,
     ///         FileSystemId = defaultFileSystem.Id,
     ///         AccessGroupId = defaultAccessGroup.Id,
     ///         NetworkType = "VPC",
@@ -80,7 +78,7 @@ namespace Pulumi.AliCloud.Dfs
     /// 
     /// ## Import
     /// 
-    /// DFS Mount Point can be imported using the id, e.g.
+    /// Apsara File Storage for HDFS (DFS) Mount Point can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:dfs/mountPoint:MountPoint example &lt;file_system_id&gt;:&lt;mount_point_id&gt;
@@ -130,6 +128,12 @@ namespace Pulumi.AliCloud.Dfs
         /// </summary>
         [Output("networkType")]
         public Output<string> NetworkType { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.242.0) The region ID of the Mount Point.
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
 
         /// <summary>
         /// Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.
@@ -292,6 +296,12 @@ namespace Pulumi.AliCloud.Dfs
         /// </summary>
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }
+
+        /// <summary>
+        /// (Available since v1.242.0) The region ID of the Mount Point.
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
 
         /// <summary>
         /// Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.

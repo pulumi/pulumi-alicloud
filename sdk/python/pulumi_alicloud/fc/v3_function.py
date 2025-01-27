@@ -42,6 +42,7 @@ class V3FunctionArgs:
                  nas_config: Optional[pulumi.Input['V3FunctionNasConfigArgs']] = None,
                  oss_mount_config: Optional[pulumi.Input['V3FunctionOssMountConfigArgs']] = None,
                  role: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  timeout: Optional[pulumi.Input[int]] = None,
                  vpc_config: Optional[pulumi.Input['V3FunctionVpcConfigArgs']] = None):
         """
@@ -67,6 +68,7 @@ class V3FunctionArgs:
         :param pulumi.Input['V3FunctionNasConfigArgs'] nas_config: NAS configuration. After this parameter is configured, the function can access the specified NAS resource. See `nas_config` below.
         :param pulumi.Input['V3FunctionOssMountConfigArgs'] oss_mount_config: OSS mount configuration See `oss_mount_config` below.
         :param pulumi.Input[str] role: The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
         :param pulumi.Input[int] timeout: The maximum running time of the function, in seconds.
         :param pulumi.Input['V3FunctionVpcConfigArgs'] vpc_config: VPC configuration. After this parameter is configured, the function can access the specified VPC resources. See `vpc_config` below.
         """
@@ -110,6 +112,8 @@ class V3FunctionArgs:
             pulumi.set(__self__, "oss_mount_config", oss_mount_config)
         if role is not None:
             pulumi.set(__self__, "role", role)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if timeout is not None:
             pulumi.set(__self__, "timeout", timeout)
         if vpc_config is not None:
@@ -369,6 +373,18 @@ class V3FunctionArgs:
 
     @property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The tag of the resource
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
     def timeout(self) -> Optional[pulumi.Input[int]]:
         """
         The maximum running time of the function, in seconds.
@@ -427,6 +443,7 @@ class _V3FunctionState:
                  state: Optional[pulumi.Input[str]] = None,
                  state_reason: Optional[pulumi.Input[str]] = None,
                  state_reason_code: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  timeout: Optional[pulumi.Input[int]] = None,
                  tracing_config: Optional[pulumi.Input['V3FunctionTracingConfigArgs']] = None,
                  vpc_config: Optional[pulumi.Input['V3FunctionVpcConfigArgs']] = None):
@@ -464,6 +481,7 @@ class _V3FunctionState:
         :param pulumi.Input[str] state: Function Status
         :param pulumi.Input[str] state_reason: The reason why the function is in the current state
         :param pulumi.Input[str] state_reason_code: The status code of the reason the function is in the current state.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
         :param pulumi.Input[int] timeout: The maximum running time of the function, in seconds.
         :param pulumi.Input['V3FunctionTracingConfigArgs'] tracing_config: Tracing configuration
         :param pulumi.Input['V3FunctionVpcConfigArgs'] vpc_config: VPC configuration. After this parameter is configured, the function can access the specified VPC resources. See `vpc_config` below.
@@ -532,6 +550,8 @@ class _V3FunctionState:
             pulumi.set(__self__, "state_reason", state_reason)
         if state_reason_code is not None:
             pulumi.set(__self__, "state_reason_code", state_reason_code)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if timeout is not None:
             pulumi.set(__self__, "timeout", timeout)
         if tracing_config is not None:
@@ -925,6 +945,18 @@ class _V3FunctionState:
 
     @property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The tag of the resource
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
     def timeout(self) -> Optional[pulumi.Input[int]]:
         """
         The maximum running time of the function, in seconds.
@@ -986,15 +1018,16 @@ class V3Function(pulumi.CustomResource):
                  oss_mount_config: Optional[pulumi.Input[Union['V3FunctionOssMountConfigArgs', 'V3FunctionOssMountConfigArgsDict']]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  runtime: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  timeout: Optional[pulumi.Input[int]] = None,
                  vpc_config: Optional[pulumi.Input[Union['V3FunctionVpcConfigArgs', 'V3FunctionVpcConfigArgsDict']]] = None,
                  __props__=None):
         """
-        Provides a FCV3 Function resource.
+        Provides a Function Compute Service V3 (FCV3) Function resource.
 
         The resource scheduling and running of Function Compute is based on functions. The FC function consists of function code and function configuration.
 
-        For information about FCV3 Function and how to use it, see [What is Function](https://www.alibabacloud.com/help/en/functioncompute/developer-reference/api-fc-2023-03-30-getfunction).
+        For information about Function Compute Service V3 (FCV3) Function and how to use it, see [What is Function](https://www.alibabacloud.com/help/en/functioncompute/developer-reference/api-fc-2023-03-30-getfunction).
 
         > **NOTE:** Available since v1.228.0.
 
@@ -1075,7 +1108,7 @@ class V3Function(pulumi.CustomResource):
 
         ## Import
 
-        FCV3 Function can be imported using the id, e.g.
+        Function Compute Service V3 (FCV3) Function can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:fc/v3Function:V3Function example <id>
@@ -1104,6 +1137,7 @@ class V3Function(pulumi.CustomResource):
         :param pulumi.Input[Union['V3FunctionOssMountConfigArgs', 'V3FunctionOssMountConfigArgsDict']] oss_mount_config: OSS mount configuration See `oss_mount_config` below.
         :param pulumi.Input[str] role: The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
         :param pulumi.Input[str] runtime: Function runtime type
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
         :param pulumi.Input[int] timeout: The maximum running time of the function, in seconds.
         :param pulumi.Input[Union['V3FunctionVpcConfigArgs', 'V3FunctionVpcConfigArgsDict']] vpc_config: VPC configuration. After this parameter is configured, the function can access the specified VPC resources. See `vpc_config` below.
         """
@@ -1114,11 +1148,11 @@ class V3Function(pulumi.CustomResource):
                  args: V3FunctionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a FCV3 Function resource.
+        Provides a Function Compute Service V3 (FCV3) Function resource.
 
         The resource scheduling and running of Function Compute is based on functions. The FC function consists of function code and function configuration.
 
-        For information about FCV3 Function and how to use it, see [What is Function](https://www.alibabacloud.com/help/en/functioncompute/developer-reference/api-fc-2023-03-30-getfunction).
+        For information about Function Compute Service V3 (FCV3) Function and how to use it, see [What is Function](https://www.alibabacloud.com/help/en/functioncompute/developer-reference/api-fc-2023-03-30-getfunction).
 
         > **NOTE:** Available since v1.228.0.
 
@@ -1199,7 +1233,7 @@ class V3Function(pulumi.CustomResource):
 
         ## Import
 
-        FCV3 Function can be imported using the id, e.g.
+        Function Compute Service V3 (FCV3) Function can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:fc/v3Function:V3Function example <id>
@@ -1241,6 +1275,7 @@ class V3Function(pulumi.CustomResource):
                  oss_mount_config: Optional[pulumi.Input[Union['V3FunctionOssMountConfigArgs', 'V3FunctionOssMountConfigArgsDict']]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  runtime: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  timeout: Optional[pulumi.Input[int]] = None,
                  vpc_config: Optional[pulumi.Input[Union['V3FunctionVpcConfigArgs', 'V3FunctionVpcConfigArgsDict']]] = None,
                  __props__=None):
@@ -1277,6 +1312,7 @@ class V3Function(pulumi.CustomResource):
             if runtime is None and not opts.urn:
                 raise TypeError("Missing required property 'runtime'")
             __props__.__dict__["runtime"] = runtime
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["timeout"] = timeout
             __props__.__dict__["vpc_config"] = vpc_config
             __props__.__dict__["code_size"] = None
@@ -1335,6 +1371,7 @@ class V3Function(pulumi.CustomResource):
             state: Optional[pulumi.Input[str]] = None,
             state_reason: Optional[pulumi.Input[str]] = None,
             state_reason_code: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             timeout: Optional[pulumi.Input[int]] = None,
             tracing_config: Optional[pulumi.Input[Union['V3FunctionTracingConfigArgs', 'V3FunctionTracingConfigArgsDict']]] = None,
             vpc_config: Optional[pulumi.Input[Union['V3FunctionVpcConfigArgs', 'V3FunctionVpcConfigArgsDict']]] = None) -> 'V3Function':
@@ -1377,6 +1414,7 @@ class V3Function(pulumi.CustomResource):
         :param pulumi.Input[str] state: Function Status
         :param pulumi.Input[str] state_reason: The reason why the function is in the current state
         :param pulumi.Input[str] state_reason_code: The status code of the reason the function is in the current state.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
         :param pulumi.Input[int] timeout: The maximum running time of the function, in seconds.
         :param pulumi.Input[Union['V3FunctionTracingConfigArgs', 'V3FunctionTracingConfigArgsDict']] tracing_config: Tracing configuration
         :param pulumi.Input[Union['V3FunctionVpcConfigArgs', 'V3FunctionVpcConfigArgsDict']] vpc_config: VPC configuration. After this parameter is configured, the function can access the specified VPC resources. See `vpc_config` below.
@@ -1417,6 +1455,7 @@ class V3Function(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         __props__.__dict__["state_reason"] = state_reason
         __props__.__dict__["state_reason_code"] = state_reason_code
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["timeout"] = timeout
         __props__.__dict__["tracing_config"] = tracing_config
         __props__.__dict__["vpc_config"] = vpc_config
@@ -1677,6 +1716,14 @@ class V3Function(pulumi.CustomResource):
         The status code of the reason the function is in the current state.
         """
         return pulumi.get(self, "state_reason_code")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        The tag of the resource
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter

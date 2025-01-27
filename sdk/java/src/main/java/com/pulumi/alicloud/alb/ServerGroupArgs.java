@@ -3,9 +3,12 @@
 
 package com.pulumi.alicloud.alb;
 
+import com.pulumi.alicloud.alb.inputs.ServerGroupConnectionDrainConfigArgs;
 import com.pulumi.alicloud.alb.inputs.ServerGroupHealthCheckConfigArgs;
 import com.pulumi.alicloud.alb.inputs.ServerGroupServerArgs;
+import com.pulumi.alicloud.alb.inputs.ServerGroupSlowStartConfigArgs;
 import com.pulumi.alicloud.alb.inputs.ServerGroupStickySessionConfigArgs;
+import com.pulumi.alicloud.alb.inputs.ServerGroupUchConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -23,29 +26,44 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
     public static final ServerGroupArgs Empty = new ServerGroupArgs();
 
     /**
-     * The dry run.
+     * Elegant interrupt configuration. See `connection_drain_config` below.
      * 
      */
-    @Import(name="dryRun")
-    private @Nullable Output<Boolean> dryRun;
+    @Import(name="connectionDrainConfig")
+    private @Nullable Output<ServerGroupConnectionDrainConfigArgs> connectionDrainConfig;
 
     /**
-     * @return The dry run.
+     * @return Elegant interrupt configuration. See `connection_drain_config` below.
      * 
      */
-    public Optional<Output<Boolean>> dryRun() {
-        return Optional.ofNullable(this.dryRun);
+    public Optional<Output<ServerGroupConnectionDrainConfigArgs>> connectionDrainConfig() {
+        return Optional.ofNullable(this.connectionDrainConfig);
     }
 
     /**
-     * The configuration of health checks. See `health_check_config` below.
+     * Indicates whether cross-zone load balancing is enabled for the server group. Valid values:
+     * 
+     */
+    @Import(name="crossZoneEnabled")
+    private @Nullable Output<Boolean> crossZoneEnabled;
+
+    /**
+     * @return Indicates whether cross-zone load balancing is enabled for the server group. Valid values:
+     * 
+     */
+    public Optional<Output<Boolean>> crossZoneEnabled() {
+        return Optional.ofNullable(this.crossZoneEnabled);
+    }
+
+    /**
+     * The configuration of health checks See `health_check_config` below.
      * 
      */
     @Import(name="healthCheckConfig", required=true)
     private Output<ServerGroupHealthCheckConfigArgs> healthCheckConfig;
 
     /**
-     * @return The configuration of health checks. See `health_check_config` below.
+     * @return The configuration of health checks See `health_check_config` below.
      * 
      */
     public Output<ServerGroupHealthCheckConfigArgs> healthCheckConfig() {
@@ -53,14 +71,45 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The server protocol. Valid values: `  HTTP `, `HTTPS`, `gRPC`. While `server_group_type` is `Fc` this parameter will not take effect. From version 1.215.0, `protocol` can be set to `gRPC`.
+     * The template ID.
+     * 
+     */
+    @Import(name="healthCheckTemplateId")
+    private @Nullable Output<String> healthCheckTemplateId;
+
+    /**
+     * @return The template ID.
+     * 
+     */
+    public Optional<Output<String>> healthCheckTemplateId() {
+        return Optional.ofNullable(this.healthCheckTemplateId);
+    }
+
+    /**
+     * The backend protocol. Valid values:
+     * 
+     * *   `HTTP`: allows you to associate an HTTPS, HTTP, or QUIC listener with the server group. This is the default value.
+     * 
+     * *   `HTTPS`: allows you to associate HTTPS listeners with backend servers.
+     * 
+     * *   `gRPC`: allows you to associate an HTTPS or QUIC listener with the server group.
+     * 
+     * &gt; **NOTE:**   You do not need to specify a backend protocol if you set `ServerGroupType` to `Fc`.
      * 
      */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
     /**
-     * @return The server protocol. Valid values: `  HTTP `, `HTTPS`, `gRPC`. While `server_group_type` is `Fc` this parameter will not take effect. From version 1.215.0, `protocol` can be set to `gRPC`.
+     * @return The backend protocol. Valid values:
+     * 
+     * *   `HTTP`: allows you to associate an HTTPS, HTTP, or QUIC listener with the server group. This is the default value.
+     * 
+     * *   `HTTPS`: allows you to associate HTTPS listeners with backend servers.
+     * 
+     * *   `gRPC`: allows you to associate an HTTPS or QUIC listener with the server group.
+     * 
+     * &gt; **NOTE:**   You do not need to specify a backend protocol if you set `ServerGroupType` to `Fc`.
      * 
      */
     public Optional<Output<String>> protocol() {
@@ -68,14 +117,18 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the resource group.
+     * The ID of the resource group to which you want to transfer the cloud resource.
+     * 
+     * &gt; **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group.
+     * @return The ID of the resource group to which you want to transfer the cloud resource.
+     * 
+     * &gt; **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -83,14 +136,30 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The scheduling algorithm. Valid values: `  Sch `, `  Wlc `, `Wrr`. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
+     * The scheduling algorithm. Valid values:
+     * 
+     * *   `Wrr` (default): The weighted round-robin algorithm is used. Backend servers that have higher weights receive more requests than those that have lower weights.
+     * 
+     * *   `Wlc`: The weighted least connections algorithm is used. Requests are distributed based on the weights and the number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections is expected to receive more requests.
+     * 
+     * *   `Sch`: The consistent hashing algorithm is used. Requests from the same source IP address are distributed to the same backend server.
+     * 
+     * &gt; **NOTE:**  This parameter takes effect when the `ServerGroupType` parameter is set to `Instance` or `Ip`.
      * 
      */
     @Import(name="scheduler")
     private @Nullable Output<String> scheduler;
 
     /**
-     * @return The scheduling algorithm. Valid values: `  Sch `, `  Wlc `, `Wrr`. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
+     * @return The scheduling algorithm. Valid values:
+     * 
+     * *   `Wrr` (default): The weighted round-robin algorithm is used. Backend servers that have higher weights receive more requests than those that have lower weights.
+     * 
+     * *   `Wlc`: The weighted least connections algorithm is used. Requests are distributed based on the weights and the number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections is expected to receive more requests.
+     * 
+     * *   `Sch`: The consistent hashing algorithm is used. Requests from the same source IP address are distributed to the same backend server.
+     * 
+     * &gt; **NOTE:**  This parameter takes effect when the `ServerGroupType` parameter is set to `Instance` or `Ip`.
      * 
      */
     public Optional<Output<String>> scheduler() {
@@ -98,14 +167,14 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the server group.
+     * The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
      * 
      */
     @Import(name="serverGroupName", required=true)
     private Output<String> serverGroupName;
 
     /**
-     * @return The name of the server group.
+     * @return The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
      * 
      */
     public Output<String> serverGroupName() {
@@ -113,8 +182,9 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the server group. Default value: `Instance`. Valid values:
-     * - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+     * The type of server group. Valid values:
+     * 
+     * - `Instance` (default): allows you to add servers by specifying `Ecs`, `Eni`, or `Eci`.
      * - `Ip`: allows you to add servers by specifying IP addresses.
      * - `Fc`: allows you to add servers by specifying functions of Function Compute.
      * 
@@ -123,8 +193,9 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> serverGroupType;
 
     /**
-     * @return The type of the server group. Default value: `Instance`. Valid values:
-     * - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+     * @return The type of server group. Valid values:
+     * 
+     * - `Instance` (default): allows you to add servers by specifying `Ecs`, `Eni`, or `Eci`.
      * - `Ip`: allows you to add servers by specifying IP addresses.
      * - `Fc`: allows you to add servers by specifying functions of Function Compute.
      * 
@@ -134,14 +205,14 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The backend servers. See `servers` below.
+     * List of servers. See `servers` below.
      * 
      */
     @Import(name="servers")
     private @Nullable Output<List<ServerGroupServerArgs>> servers;
 
     /**
-     * @return The backend servers. See `servers` below.
+     * @return List of servers. See `servers` below.
      * 
      */
     public Optional<Output<List<ServerGroupServerArgs>>> servers() {
@@ -149,14 +220,29 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of session persistence. See `sticky_session_config` below.
+     * Slow start configuration. See `slow_start_config` below.
+     * 
+     */
+    @Import(name="slowStartConfig")
+    private @Nullable Output<ServerGroupSlowStartConfigArgs> slowStartConfig;
+
+    /**
+     * @return Slow start configuration. See `slow_start_config` below.
+     * 
+     */
+    public Optional<Output<ServerGroupSlowStartConfigArgs>> slowStartConfig() {
+        return Optional.ofNullable(this.slowStartConfig);
+    }
+
+    /**
+     * The configuration of the sticky session See `sticky_session_config` below.
      * 
      */
     @Import(name="stickySessionConfig")
     private @Nullable Output<ServerGroupStickySessionConfigArgs> stickySessionConfig;
 
     /**
-     * @return The configuration of session persistence. See `sticky_session_config` below.
+     * @return The configuration of the sticky session See `sticky_session_config` below.
      * 
      */
     public Optional<Output<ServerGroupStickySessionConfigArgs>> stickySessionConfig() {
@@ -164,14 +250,14 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag of the resource
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return The tag of the resource
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -179,14 +265,48 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
+     * Url consistency hash parameter configuration See `uch_config` below.
+     * 
+     */
+    @Import(name="uchConfig")
+    private @Nullable Output<ServerGroupUchConfigArgs> uchConfig;
+
+    /**
+     * @return Url consistency hash parameter configuration See `uch_config` below.
+     * 
+     */
+    public Optional<Output<ServerGroupUchConfigArgs>> uchConfig() {
+        return Optional.ofNullable(this.uchConfig);
+    }
+
+    /**
+     * Specifies whether to enable persistent TCP connections.
+     * 
+     */
+    @Import(name="upstreamKeepaliveEnabled")
+    private @Nullable Output<Boolean> upstreamKeepaliveEnabled;
+
+    /**
+     * @return Specifies whether to enable persistent TCP connections.
+     * 
+     */
+    public Optional<Output<Boolean>> upstreamKeepaliveEnabled() {
+        return Optional.ofNullable(this.upstreamKeepaliveEnabled);
+    }
+
+    /**
+     * The ID of the virtual private cloud (VPC). You can add only servers that are deployed in the specified VPC to the server group.
+     * 
+     * &gt; **NOTE:**   This parameter takes effect when the `ServerGroupType` parameter is set to `Instance` or `Ip`.
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
+     * @return The ID of the virtual private cloud (VPC). You can add only servers that are deployed in the specified VPC to the server group.
+     * 
+     * &gt; **NOTE:**   This parameter takes effect when the `ServerGroupType` parameter is set to `Instance` or `Ip`.
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -196,16 +316,21 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
     private ServerGroupArgs() {}
 
     private ServerGroupArgs(ServerGroupArgs $) {
-        this.dryRun = $.dryRun;
+        this.connectionDrainConfig = $.connectionDrainConfig;
+        this.crossZoneEnabled = $.crossZoneEnabled;
         this.healthCheckConfig = $.healthCheckConfig;
+        this.healthCheckTemplateId = $.healthCheckTemplateId;
         this.protocol = $.protocol;
         this.resourceGroupId = $.resourceGroupId;
         this.scheduler = $.scheduler;
         this.serverGroupName = $.serverGroupName;
         this.serverGroupType = $.serverGroupType;
         this.servers = $.servers;
+        this.slowStartConfig = $.slowStartConfig;
         this.stickySessionConfig = $.stickySessionConfig;
         this.tags = $.tags;
+        this.uchConfig = $.uchConfig;
+        this.upstreamKeepaliveEnabled = $.upstreamKeepaliveEnabled;
         this.vpcId = $.vpcId;
     }
 
@@ -228,28 +353,49 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dryRun The dry run.
+         * @param connectionDrainConfig Elegant interrupt configuration. See `connection_drain_config` below.
          * 
          * @return builder
          * 
          */
-        public Builder dryRun(@Nullable Output<Boolean> dryRun) {
-            $.dryRun = dryRun;
+        public Builder connectionDrainConfig(@Nullable Output<ServerGroupConnectionDrainConfigArgs> connectionDrainConfig) {
+            $.connectionDrainConfig = connectionDrainConfig;
             return this;
         }
 
         /**
-         * @param dryRun The dry run.
+         * @param connectionDrainConfig Elegant interrupt configuration. See `connection_drain_config` below.
          * 
          * @return builder
          * 
          */
-        public Builder dryRun(Boolean dryRun) {
-            return dryRun(Output.of(dryRun));
+        public Builder connectionDrainConfig(ServerGroupConnectionDrainConfigArgs connectionDrainConfig) {
+            return connectionDrainConfig(Output.of(connectionDrainConfig));
         }
 
         /**
-         * @param healthCheckConfig The configuration of health checks. See `health_check_config` below.
+         * @param crossZoneEnabled Indicates whether cross-zone load balancing is enabled for the server group. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossZoneEnabled(@Nullable Output<Boolean> crossZoneEnabled) {
+            $.crossZoneEnabled = crossZoneEnabled;
+            return this;
+        }
+
+        /**
+         * @param crossZoneEnabled Indicates whether cross-zone load balancing is enabled for the server group. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossZoneEnabled(Boolean crossZoneEnabled) {
+            return crossZoneEnabled(Output.of(crossZoneEnabled));
+        }
+
+        /**
+         * @param healthCheckConfig The configuration of health checks See `health_check_config` below.
          * 
          * @return builder
          * 
@@ -260,7 +406,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckConfig The configuration of health checks. See `health_check_config` below.
+         * @param healthCheckConfig The configuration of health checks See `health_check_config` below.
          * 
          * @return builder
          * 
@@ -270,7 +416,36 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocol The server protocol. Valid values: `  HTTP `, `HTTPS`, `gRPC`. While `server_group_type` is `Fc` this parameter will not take effect. From version 1.215.0, `protocol` can be set to `gRPC`.
+         * @param healthCheckTemplateId The template ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder healthCheckTemplateId(@Nullable Output<String> healthCheckTemplateId) {
+            $.healthCheckTemplateId = healthCheckTemplateId;
+            return this;
+        }
+
+        /**
+         * @param healthCheckTemplateId The template ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder healthCheckTemplateId(String healthCheckTemplateId) {
+            return healthCheckTemplateId(Output.of(healthCheckTemplateId));
+        }
+
+        /**
+         * @param protocol The backend protocol. Valid values:
+         * 
+         * *   `HTTP`: allows you to associate an HTTPS, HTTP, or QUIC listener with the server group. This is the default value.
+         * 
+         * *   `HTTPS`: allows you to associate HTTPS listeners with backend servers.
+         * 
+         * *   `gRPC`: allows you to associate an HTTPS or QUIC listener with the server group.
+         * 
+         * &gt; **NOTE:**   You do not need to specify a backend protocol if you set `ServerGroupType` to `Fc`.
          * 
          * @return builder
          * 
@@ -281,7 +456,15 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocol The server protocol. Valid values: `  HTTP `, `HTTPS`, `gRPC`. While `server_group_type` is `Fc` this parameter will not take effect. From version 1.215.0, `protocol` can be set to `gRPC`.
+         * @param protocol The backend protocol. Valid values:
+         * 
+         * *   `HTTP`: allows you to associate an HTTPS, HTTP, or QUIC listener with the server group. This is the default value.
+         * 
+         * *   `HTTPS`: allows you to associate HTTPS listeners with backend servers.
+         * 
+         * *   `gRPC`: allows you to associate an HTTPS or QUIC listener with the server group.
+         * 
+         * &gt; **NOTE:**   You do not need to specify a backend protocol if you set `ServerGroupType` to `Fc`.
          * 
          * @return builder
          * 
@@ -291,7 +474,9 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group.
+         * @param resourceGroupId The ID of the resource group to which you want to transfer the cloud resource.
+         * 
+         * &gt; **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
          * 
          * @return builder
          * 
@@ -302,7 +487,9 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group.
+         * @param resourceGroupId The ID of the resource group to which you want to transfer the cloud resource.
+         * 
+         * &gt; **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
          * 
          * @return builder
          * 
@@ -312,7 +499,15 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scheduler The scheduling algorithm. Valid values: `  Sch `, `  Wlc `, `Wrr`. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
+         * @param scheduler The scheduling algorithm. Valid values:
+         * 
+         * *   `Wrr` (default): The weighted round-robin algorithm is used. Backend servers that have higher weights receive more requests than those that have lower weights.
+         * 
+         * *   `Wlc`: The weighted least connections algorithm is used. Requests are distributed based on the weights and the number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections is expected to receive more requests.
+         * 
+         * *   `Sch`: The consistent hashing algorithm is used. Requests from the same source IP address are distributed to the same backend server.
+         * 
+         * &gt; **NOTE:**  This parameter takes effect when the `ServerGroupType` parameter is set to `Instance` or `Ip`.
          * 
          * @return builder
          * 
@@ -323,7 +518,15 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scheduler The scheduling algorithm. Valid values: `  Sch `, `  Wlc `, `Wrr`. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
+         * @param scheduler The scheduling algorithm. Valid values:
+         * 
+         * *   `Wrr` (default): The weighted round-robin algorithm is used. Backend servers that have higher weights receive more requests than those that have lower weights.
+         * 
+         * *   `Wlc`: The weighted least connections algorithm is used. Requests are distributed based on the weights and the number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections is expected to receive more requests.
+         * 
+         * *   `Sch`: The consistent hashing algorithm is used. Requests from the same source IP address are distributed to the same backend server.
+         * 
+         * &gt; **NOTE:**  This parameter takes effect when the `ServerGroupType` parameter is set to `Instance` or `Ip`.
          * 
          * @return builder
          * 
@@ -333,7 +536,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverGroupName The name of the server group.
+         * @param serverGroupName The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
          * 
          * @return builder
          * 
@@ -344,7 +547,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverGroupName The name of the server group.
+         * @param serverGroupName The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
          * 
          * @return builder
          * 
@@ -354,8 +557,9 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverGroupType The type of the server group. Default value: `Instance`. Valid values:
-         * - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+         * @param serverGroupType The type of server group. Valid values:
+         * 
+         * - `Instance` (default): allows you to add servers by specifying `Ecs`, `Eni`, or `Eci`.
          * - `Ip`: allows you to add servers by specifying IP addresses.
          * - `Fc`: allows you to add servers by specifying functions of Function Compute.
          * 
@@ -368,8 +572,9 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverGroupType The type of the server group. Default value: `Instance`. Valid values:
-         * - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+         * @param serverGroupType The type of server group. Valid values:
+         * 
+         * - `Instance` (default): allows you to add servers by specifying `Ecs`, `Eni`, or `Eci`.
          * - `Ip`: allows you to add servers by specifying IP addresses.
          * - `Fc`: allows you to add servers by specifying functions of Function Compute.
          * 
@@ -381,7 +586,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param servers The backend servers. See `servers` below.
+         * @param servers List of servers. See `servers` below.
          * 
          * @return builder
          * 
@@ -392,7 +597,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param servers The backend servers. See `servers` below.
+         * @param servers List of servers. See `servers` below.
          * 
          * @return builder
          * 
@@ -402,7 +607,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param servers The backend servers. See `servers` below.
+         * @param servers List of servers. See `servers` below.
          * 
          * @return builder
          * 
@@ -412,7 +617,28 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stickySessionConfig The configuration of session persistence. See `sticky_session_config` below.
+         * @param slowStartConfig Slow start configuration. See `slow_start_config` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder slowStartConfig(@Nullable Output<ServerGroupSlowStartConfigArgs> slowStartConfig) {
+            $.slowStartConfig = slowStartConfig;
+            return this;
+        }
+
+        /**
+         * @param slowStartConfig Slow start configuration. See `slow_start_config` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder slowStartConfig(ServerGroupSlowStartConfigArgs slowStartConfig) {
+            return slowStartConfig(Output.of(slowStartConfig));
+        }
+
+        /**
+         * @param stickySessionConfig The configuration of the sticky session See `sticky_session_config` below.
          * 
          * @return builder
          * 
@@ -423,7 +649,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stickySessionConfig The configuration of session persistence. See `sticky_session_config` below.
+         * @param stickySessionConfig The configuration of the sticky session See `sticky_session_config` below.
          * 
          * @return builder
          * 
@@ -433,7 +659,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 
@@ -444,7 +670,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 
@@ -454,7 +680,51 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
+         * @param uchConfig Url consistency hash parameter configuration See `uch_config` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uchConfig(@Nullable Output<ServerGroupUchConfigArgs> uchConfig) {
+            $.uchConfig = uchConfig;
+            return this;
+        }
+
+        /**
+         * @param uchConfig Url consistency hash parameter configuration See `uch_config` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uchConfig(ServerGroupUchConfigArgs uchConfig) {
+            return uchConfig(Output.of(uchConfig));
+        }
+
+        /**
+         * @param upstreamKeepaliveEnabled Specifies whether to enable persistent TCP connections.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder upstreamKeepaliveEnabled(@Nullable Output<Boolean> upstreamKeepaliveEnabled) {
+            $.upstreamKeepaliveEnabled = upstreamKeepaliveEnabled;
+            return this;
+        }
+
+        /**
+         * @param upstreamKeepaliveEnabled Specifies whether to enable persistent TCP connections.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder upstreamKeepaliveEnabled(Boolean upstreamKeepaliveEnabled) {
+            return upstreamKeepaliveEnabled(Output.of(upstreamKeepaliveEnabled));
+        }
+
+        /**
+         * @param vpcId The ID of the virtual private cloud (VPC). You can add only servers that are deployed in the specified VPC to the server group.
+         * 
+         * &gt; **NOTE:**   This parameter takes effect when the `ServerGroupType` parameter is set to `Instance` or `Ip`.
          * 
          * @return builder
          * 
@@ -465,7 +735,9 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
+         * @param vpcId The ID of the virtual private cloud (VPC). You can add only servers that are deployed in the specified VPC to the server group.
+         * 
+         * &gt; **NOTE:**   This parameter takes effect when the `ServerGroupType` parameter is set to `Instance` or `Ip`.
          * 
          * @return builder
          * 

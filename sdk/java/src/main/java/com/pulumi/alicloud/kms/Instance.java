@@ -24,67 +24,6 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.210.0.
  * 
- * ## Example Usage
- * 
- * Basic Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
- * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
- * import com.pulumi.alicloud.kms.Instance;
- * import com.pulumi.alicloud.kms.InstanceArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("terraform-example");
- *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex("^default-NODELETING$")
- *             .cidrBlock("172.16.0.0/16")
- *             .build());
- * 
- *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(default_.ids()[0])
- *             .zoneId("cn-hangzhou-h")
- *             .build());
- * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
- *             .productVersion("3")
- *             .vpcId(default_.ids()[0])
- *             .zoneIds(            
- *                 "cn-hangzhou-h",
- *                 "cn-hangzhou-g")
- *             .vswitchIds(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
- *             .vpcNum("1")
- *             .keyNum("1000")
- *             .secretNum("0")
- *             .spec("1000")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * KMS Instance can be imported using the id, e.g.

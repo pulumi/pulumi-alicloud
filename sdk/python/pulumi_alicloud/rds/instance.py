@@ -31,6 +31,7 @@ class InstanceArgs:
                  auto_upgrade_minor_version: Optional[pulumi.Input[str]] = None,
                  babelfish_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBabelfishConfigArgs']]]] = None,
                  babelfish_port: Optional[pulumi.Input[str]] = None,
+                 bursting_enabled: Optional[pulumi.Input[bool]] = None,
                  ca_type: Optional[pulumi.Input[str]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  client_ca_cert: Optional[pulumi.Input[str]] = None,
@@ -147,6 +148,10 @@ class InstanceArgs:
         :param pulumi.Input[str] babelfish_port: The TDS port of the instance for which Babelfish is enabled.
                
                > **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
+        :param pulumi.Input[bool] bursting_enabled: Specifies whether to enable the I/O burst feature of general
+               ESSDs. Valid values:
+               - true
+               - false
         :param pulumi.Input[str] ca_type: The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `ca_type` start  support `MySQL` engine. Value range:
                - aliyun: a cloud certificate
                - custom: a custom certificate
@@ -353,6 +358,8 @@ class InstanceArgs:
             pulumi.set(__self__, "babelfish_configs", babelfish_configs)
         if babelfish_port is not None:
             pulumi.set(__self__, "babelfish_port", babelfish_port)
+        if bursting_enabled is not None:
+            pulumi.set(__self__, "bursting_enabled", bursting_enabled)
         if ca_type is not None:
             pulumi.set(__self__, "ca_type", ca_type)
         if category is not None:
@@ -651,6 +658,21 @@ class InstanceArgs:
     @babelfish_port.setter
     def babelfish_port(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "babelfish_port", value)
+
+    @property
+    @pulumi.getter(name="burstingEnabled")
+    def bursting_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable the I/O burst feature of general
+        ESSDs. Valid values:
+        - true
+        - false
+        """
+        return pulumi.get(self, "bursting_enabled")
+
+    @bursting_enabled.setter
+    def bursting_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "bursting_enabled", value)
 
     @property
     @pulumi.getter(name="caType")
@@ -1601,6 +1623,7 @@ class _InstanceState:
                  auto_upgrade_minor_version: Optional[pulumi.Input[str]] = None,
                  babelfish_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBabelfishConfigArgs']]]] = None,
                  babelfish_port: Optional[pulumi.Input[str]] = None,
+                 bursting_enabled: Optional[pulumi.Input[bool]] = None,
                  ca_type: Optional[pulumi.Input[str]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  client_ca_cert: Optional[pulumi.Input[str]] = None,
@@ -1698,6 +1721,10 @@ class _InstanceState:
         :param pulumi.Input[str] babelfish_port: The TDS port of the instance for which Babelfish is enabled.
                
                > **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
+        :param pulumi.Input[bool] bursting_enabled: Specifies whether to enable the I/O burst feature of general
+               ESSDs. Valid values:
+               - true
+               - false
         :param pulumi.Input[str] ca_type: The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `ca_type` start  support `MySQL` engine. Value range:
                - aliyun: a cloud certificate
                - custom: a custom certificate
@@ -1933,6 +1960,8 @@ class _InstanceState:
             pulumi.set(__self__, "babelfish_configs", babelfish_configs)
         if babelfish_port is not None:
             pulumi.set(__self__, "babelfish_port", babelfish_port)
+        if bursting_enabled is not None:
+            pulumi.set(__self__, "bursting_enabled", bursting_enabled)
         if ca_type is not None:
             pulumi.set(__self__, "ca_type", ca_type)
         if category is not None:
@@ -2177,6 +2206,21 @@ class _InstanceState:
     @babelfish_port.setter
     def babelfish_port(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "babelfish_port", value)
+
+    @property
+    @pulumi.getter(name="burstingEnabled")
+    def bursting_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable the I/O burst feature of general
+        ESSDs. Valid values:
+        - true
+        - false
+        """
+        return pulumi.get(self, "bursting_enabled")
+
+    @bursting_enabled.setter
+    def bursting_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "bursting_enabled", value)
 
     @property
     @pulumi.getter(name="caType")
@@ -3261,6 +3305,7 @@ class Instance(pulumi.CustomResource):
                  auto_upgrade_minor_version: Optional[pulumi.Input[str]] = None,
                  babelfish_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceBabelfishConfigArgs', 'InstanceBabelfishConfigArgsDict']]]]] = None,
                  babelfish_port: Optional[pulumi.Input[str]] = None,
+                 bursting_enabled: Optional[pulumi.Input[bool]] = None,
                  ca_type: Optional[pulumi.Input[str]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  client_ca_cert: Optional[pulumi.Input[str]] = None,
@@ -3363,6 +3408,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] babelfish_port: The TDS port of the instance for which Babelfish is enabled.
                
                > **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
+        :param pulumi.Input[bool] bursting_enabled: Specifies whether to enable the I/O burst feature of general
+               ESSDs. Valid values:
+               - true
+               - false
         :param pulumi.Input[str] ca_type: The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `ca_type` start  support `MySQL` engine. Value range:
                - aliyun: a cloud certificate
                - custom: a custom certificate
@@ -3617,6 +3666,7 @@ class Instance(pulumi.CustomResource):
                  auto_upgrade_minor_version: Optional[pulumi.Input[str]] = None,
                  babelfish_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceBabelfishConfigArgs', 'InstanceBabelfishConfigArgsDict']]]]] = None,
                  babelfish_port: Optional[pulumi.Input[str]] = None,
+                 bursting_enabled: Optional[pulumi.Input[bool]] = None,
                  ca_type: Optional[pulumi.Input[str]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  client_ca_cert: Optional[pulumi.Input[str]] = None,
@@ -3704,6 +3754,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["auto_upgrade_minor_version"] = auto_upgrade_minor_version
             __props__.__dict__["babelfish_configs"] = babelfish_configs
             __props__.__dict__["babelfish_port"] = babelfish_port
+            __props__.__dict__["bursting_enabled"] = bursting_enabled
             __props__.__dict__["ca_type"] = ca_type
             __props__.__dict__["category"] = category
             __props__.__dict__["client_ca_cert"] = None if client_ca_cert is None else pulumi.Output.secret(client_ca_cert)
@@ -3807,6 +3858,7 @@ class Instance(pulumi.CustomResource):
             auto_upgrade_minor_version: Optional[pulumi.Input[str]] = None,
             babelfish_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceBabelfishConfigArgs', 'InstanceBabelfishConfigArgsDict']]]]] = None,
             babelfish_port: Optional[pulumi.Input[str]] = None,
+            bursting_enabled: Optional[pulumi.Input[bool]] = None,
             ca_type: Optional[pulumi.Input[str]] = None,
             category: Optional[pulumi.Input[str]] = None,
             client_ca_cert: Optional[pulumi.Input[str]] = None,
@@ -3909,6 +3961,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] babelfish_port: The TDS port of the instance for which Babelfish is enabled.
                
                > **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
+        :param pulumi.Input[bool] bursting_enabled: Specifies whether to enable the I/O burst feature of general
+               ESSDs. Valid values:
+               - true
+               - false
         :param pulumi.Input[str] ca_type: The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `ca_type` start  support `MySQL` engine. Value range:
                - aliyun: a cloud certificate
                - custom: a custom certificate
@@ -4142,6 +4198,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["auto_upgrade_minor_version"] = auto_upgrade_minor_version
         __props__.__dict__["babelfish_configs"] = babelfish_configs
         __props__.__dict__["babelfish_port"] = babelfish_port
+        __props__.__dict__["bursting_enabled"] = bursting_enabled
         __props__.__dict__["ca_type"] = ca_type
         __props__.__dict__["category"] = category
         __props__.__dict__["client_ca_cert"] = client_ca_cert
@@ -4280,6 +4337,17 @@ class Instance(pulumi.CustomResource):
         > **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
         """
         return pulumi.get(self, "babelfish_port")
+
+    @property
+    @pulumi.getter(name="burstingEnabled")
+    def bursting_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Specifies whether to enable the I/O burst feature of general
+        ESSDs. Valid values:
+        - true
+        - false
+        """
+        return pulumi.get(self, "bursting_enabled")
 
     @property
     @pulumi.getter(name="caType")

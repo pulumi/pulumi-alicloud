@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.FC.Outputs
     public sealed class V3FunctionCustomDnsDnsOption
     {
         /// <summary>
-        /// Configuration Item Name.
+        /// Configuration Item Name
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Configuration Item Value.
+        /// Configuration Item Value
         /// </summary>
         public readonly string? Value;
 

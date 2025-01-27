@@ -13,52 +13,60 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ListenerXForwardedForConfig {
     /**
-     * @return The Custom Header Field Names Only When `x_forwarded_for_client_cert_client_verify_enabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+     * @return The Custom Header Field Names Only When xforwardedforclientcertclientverifyenabled Has a Value of True, this Value Will Not Take Effect until.
      * 
      */
     private @Nullable String xForwardedForClientCertClientVerifyAlias;
     /**
-     * @return Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
+     * @return Indicates Whether the X-Forwarded-Clientcert-clientverify Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
      * 
      */
     private @Nullable Boolean xForwardedForClientCertClientVerifyEnabled;
     /**
-     * @return The Custom Header Field Names Only When `x_forwarded_for_client_certfingerprint_enabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+     * @return The Custom Header Field Names Only When xforwardedforclientcertfingerprintenabled, Which Evaluates to True When the Entry into Force of.
      * 
      */
     private @Nullable String xForwardedForClientCertFingerPrintAlias;
     /**
-     * @return Indicates Whether the `X-Forwarded-client_cert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+     * @return Indicates Whether the X-Forwarded-Clientcert-fingerprint Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
      * 
      */
     private @Nullable Boolean xForwardedForClientCertFingerPrintEnabled;
     /**
-     * @return The Custom Header Field Names Only When `x_forwarded_for_client_cert_issuer_dn_enabled`, Which Evaluates to True When the Entry into Force of.
+     * @return The Custom Header Field Names Only When xforwardedforclientcertsubjectdnenabled, Which Evaluates to True When the Entry into Force of.
      * 
      */
     private @Nullable String xForwardedForClientCertIssuerDnAlias;
     /**
-     * @return Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+     * @return Indicates Whether the X-Forwarded-Clientcert-issuerdn Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
      * 
      */
     private @Nullable Boolean xForwardedForClientCertIssuerDnEnabled;
     /**
-     * @return The name of the custom header. This parameter is valid only if `x_forwarded_for_client_certsubjectdn_enabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+     * @return The Custom Header Field Name,
      * 
      */
     private @Nullable String xForwardedForClientCertSubjectDnAlias;
     /**
-     * @return Specifies whether to use the `X-Forwarded-client_cert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+     * @return Indicates Whether the X-Forwarded-Clientcert-subjectdn Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Owner Information.
      * 
      */
     private @Nullable Boolean xForwardedForClientCertSubjectDnEnabled;
     /**
-     * @return Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value: true, false. Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
+     * @return Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value:
+     * 
+     * true: Yes.
+     * 
+     * false (default): No.
+     * 
+     * Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
      * 
      */
     private @Nullable Boolean xForwardedForClientSourceIpsEnabled;
     /**
-     * @return Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+     * @return Specify the trusted proxy IP.
+     * 
+     * Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
      * 
      */
     private @Nullable String xForwardedForClientSourceIpsTrusted;
@@ -73,87 +81,121 @@ public final class ListenerXForwardedForConfig {
      */
     private @Nullable Boolean xForwardedForEnabled;
     /**
+     * @return Whether to enable the X-Forwarded-Host header field to obtain the domain name of the client accessing the Application Load Balancer. Value:
+     * 
+     * true: Yes.
+     * 
+     * false (default): No.
+     * 
+     * HTTP, HTTPS, and QUIC listeners support this parameter.
+     * 
+     */
+    private @Nullable Boolean xForwardedForHostEnabled;
+    /**
+     * @return Schema for processing X-Forwarded-For header fields. This value takes effect only when XForwardedForEnabled is true. Value:
+     * 
+     * append (default): append.
+     * 
+     * remove: Delete.
+     * 
+     * Configure append to add the last hop IP address to the X-Forwarded-For header field before sending the request to the backend service.
+     * 
+     * Configure remove to delete the X-Forwarded-For header before the request is sent to the backend service, regardless of whether the request carries X-Forwarded-For header fields.
+     * 
+     * HTTP and HTTPS listeners support this parameter.
+     * 
+     */
+    private @Nullable String xForwardedForProcessingMode;
+    /**
      * @return Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
      * 
      */
     private @Nullable Boolean xForwardedForProtoEnabled;
     /**
-     * @return Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
+     * @return Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id
      * 
      */
     private @Nullable Boolean xForwardedForSlbIdEnabled;
     /**
-     * @return Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
+     * @return Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port
      * 
      */
     private @Nullable Boolean xForwardedForSlbPortEnabled;
 
     private ListenerXForwardedForConfig() {}
     /**
-     * @return The Custom Header Field Names Only When `x_forwarded_for_client_cert_client_verify_enabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+     * @return The Custom Header Field Names Only When xforwardedforclientcertclientverifyenabled Has a Value of True, this Value Will Not Take Effect until.
      * 
      */
     public Optional<String> xForwardedForClientCertClientVerifyAlias() {
         return Optional.ofNullable(this.xForwardedForClientCertClientVerifyAlias);
     }
     /**
-     * @return Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
+     * @return Indicates Whether the X-Forwarded-Clientcert-clientverify Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
      * 
      */
     public Optional<Boolean> xForwardedForClientCertClientVerifyEnabled() {
         return Optional.ofNullable(this.xForwardedForClientCertClientVerifyEnabled);
     }
     /**
-     * @return The Custom Header Field Names Only When `x_forwarded_for_client_certfingerprint_enabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+     * @return The Custom Header Field Names Only When xforwardedforclientcertfingerprintenabled, Which Evaluates to True When the Entry into Force of.
      * 
      */
     public Optional<String> xForwardedForClientCertFingerPrintAlias() {
         return Optional.ofNullable(this.xForwardedForClientCertFingerPrintAlias);
     }
     /**
-     * @return Indicates Whether the `X-Forwarded-client_cert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+     * @return Indicates Whether the X-Forwarded-Clientcert-fingerprint Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
      * 
      */
     public Optional<Boolean> xForwardedForClientCertFingerPrintEnabled() {
         return Optional.ofNullable(this.xForwardedForClientCertFingerPrintEnabled);
     }
     /**
-     * @return The Custom Header Field Names Only When `x_forwarded_for_client_cert_issuer_dn_enabled`, Which Evaluates to True When the Entry into Force of.
+     * @return The Custom Header Field Names Only When xforwardedforclientcertsubjectdnenabled, Which Evaluates to True When the Entry into Force of.
      * 
      */
     public Optional<String> xForwardedForClientCertIssuerDnAlias() {
         return Optional.ofNullable(this.xForwardedForClientCertIssuerDnAlias);
     }
     /**
-     * @return Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+     * @return Indicates Whether the X-Forwarded-Clientcert-issuerdn Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
      * 
      */
     public Optional<Boolean> xForwardedForClientCertIssuerDnEnabled() {
         return Optional.ofNullable(this.xForwardedForClientCertIssuerDnEnabled);
     }
     /**
-     * @return The name of the custom header. This parameter is valid only if `x_forwarded_for_client_certsubjectdn_enabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+     * @return The Custom Header Field Name,
      * 
      */
     public Optional<String> xForwardedForClientCertSubjectDnAlias() {
         return Optional.ofNullable(this.xForwardedForClientCertSubjectDnAlias);
     }
     /**
-     * @return Specifies whether to use the `X-Forwarded-client_cert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+     * @return Indicates Whether the X-Forwarded-Clientcert-subjectdn Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Owner Information.
      * 
      */
     public Optional<Boolean> xForwardedForClientCertSubjectDnEnabled() {
         return Optional.ofNullable(this.xForwardedForClientCertSubjectDnEnabled);
     }
     /**
-     * @return Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value: true, false. Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
+     * @return Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value:
+     * 
+     * true: Yes.
+     * 
+     * false (default): No.
+     * 
+     * Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
      * 
      */
     public Optional<Boolean> xForwardedForClientSourceIpsEnabled() {
         return Optional.ofNullable(this.xForwardedForClientSourceIpsEnabled);
     }
     /**
-     * @return Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+     * @return Specify the trusted proxy IP.
+     * 
+     * Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
      * 
      */
     public Optional<String> xForwardedForClientSourceIpsTrusted() {
@@ -174,6 +216,36 @@ public final class ListenerXForwardedForConfig {
         return Optional.ofNullable(this.xForwardedForEnabled);
     }
     /**
+     * @return Whether to enable the X-Forwarded-Host header field to obtain the domain name of the client accessing the Application Load Balancer. Value:
+     * 
+     * true: Yes.
+     * 
+     * false (default): No.
+     * 
+     * HTTP, HTTPS, and QUIC listeners support this parameter.
+     * 
+     */
+    public Optional<Boolean> xForwardedForHostEnabled() {
+        return Optional.ofNullable(this.xForwardedForHostEnabled);
+    }
+    /**
+     * @return Schema for processing X-Forwarded-For header fields. This value takes effect only when XForwardedForEnabled is true. Value:
+     * 
+     * append (default): append.
+     * 
+     * remove: Delete.
+     * 
+     * Configure append to add the last hop IP address to the X-Forwarded-For header field before sending the request to the backend service.
+     * 
+     * Configure remove to delete the X-Forwarded-For header before the request is sent to the backend service, regardless of whether the request carries X-Forwarded-For header fields.
+     * 
+     * HTTP and HTTPS listeners support this parameter.
+     * 
+     */
+    public Optional<String> xForwardedForProcessingMode() {
+        return Optional.ofNullable(this.xForwardedForProcessingMode);
+    }
+    /**
      * @return Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
      * 
      */
@@ -181,14 +253,14 @@ public final class ListenerXForwardedForConfig {
         return Optional.ofNullable(this.xForwardedForProtoEnabled);
     }
     /**
-     * @return Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
+     * @return Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id
      * 
      */
     public Optional<Boolean> xForwardedForSlbIdEnabled() {
         return Optional.ofNullable(this.xForwardedForSlbIdEnabled);
     }
     /**
-     * @return Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
+     * @return Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port
      * 
      */
     public Optional<Boolean> xForwardedForSlbPortEnabled() {
@@ -216,6 +288,8 @@ public final class ListenerXForwardedForConfig {
         private @Nullable String xForwardedForClientSourceIpsTrusted;
         private @Nullable Boolean xForwardedForClientSrcPortEnabled;
         private @Nullable Boolean xForwardedForEnabled;
+        private @Nullable Boolean xForwardedForHostEnabled;
+        private @Nullable String xForwardedForProcessingMode;
         private @Nullable Boolean xForwardedForProtoEnabled;
         private @Nullable Boolean xForwardedForSlbIdEnabled;
         private @Nullable Boolean xForwardedForSlbPortEnabled;
@@ -234,6 +308,8 @@ public final class ListenerXForwardedForConfig {
     	      this.xForwardedForClientSourceIpsTrusted = defaults.xForwardedForClientSourceIpsTrusted;
     	      this.xForwardedForClientSrcPortEnabled = defaults.xForwardedForClientSrcPortEnabled;
     	      this.xForwardedForEnabled = defaults.xForwardedForEnabled;
+    	      this.xForwardedForHostEnabled = defaults.xForwardedForHostEnabled;
+    	      this.xForwardedForProcessingMode = defaults.xForwardedForProcessingMode;
     	      this.xForwardedForProtoEnabled = defaults.xForwardedForProtoEnabled;
     	      this.xForwardedForSlbIdEnabled = defaults.xForwardedForSlbIdEnabled;
     	      this.xForwardedForSlbPortEnabled = defaults.xForwardedForSlbPortEnabled;
@@ -312,6 +388,18 @@ public final class ListenerXForwardedForConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder xForwardedForHostEnabled(@Nullable Boolean xForwardedForHostEnabled) {
+
+            this.xForwardedForHostEnabled = xForwardedForHostEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder xForwardedForProcessingMode(@Nullable String xForwardedForProcessingMode) {
+
+            this.xForwardedForProcessingMode = xForwardedForProcessingMode;
+            return this;
+        }
+        @CustomType.Setter
         public Builder xForwardedForProtoEnabled(@Nullable Boolean xForwardedForProtoEnabled) {
 
             this.xForwardedForProtoEnabled = xForwardedForProtoEnabled;
@@ -343,6 +431,8 @@ public final class ListenerXForwardedForConfig {
             _resultValue.xForwardedForClientSourceIpsTrusted = xForwardedForClientSourceIpsTrusted;
             _resultValue.xForwardedForClientSrcPortEnabled = xForwardedForClientSrcPortEnabled;
             _resultValue.xForwardedForEnabled = xForwardedForEnabled;
+            _resultValue.xForwardedForHostEnabled = xForwardedForHostEnabled;
+            _resultValue.xForwardedForProcessingMode = xForwardedForProcessingMode;
             _resultValue.xForwardedForProtoEnabled = xForwardedForProtoEnabled;
             _resultValue.xForwardedForSlbIdEnabled = xForwardedForSlbIdEnabled;
             _resultValue.xForwardedForSlbPortEnabled = xForwardedForSlbPortEnabled;

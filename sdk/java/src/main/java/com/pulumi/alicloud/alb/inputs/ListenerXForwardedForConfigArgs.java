@@ -17,14 +17,14 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
     public static final ListenerXForwardedForConfigArgs Empty = new ListenerXForwardedForConfigArgs();
 
     /**
-     * The Custom Header Field Names Only When `x_forwarded_for_client_cert_client_verify_enabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+     * The Custom Header Field Names Only When xforwardedforclientcertclientverifyenabled Has a Value of True, this Value Will Not Take Effect until.
      * 
      */
     @Import(name="xForwardedForClientCertClientVerifyAlias")
     private @Nullable Output<String> xForwardedForClientCertClientVerifyAlias;
 
     /**
-     * @return The Custom Header Field Names Only When `x_forwarded_for_client_cert_client_verify_enabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+     * @return The Custom Header Field Names Only When xforwardedforclientcertclientverifyenabled Has a Value of True, this Value Will Not Take Effect until.
      * 
      */
     public Optional<Output<String>> xForwardedForClientCertClientVerifyAlias() {
@@ -32,14 +32,14 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
+     * Indicates Whether the X-Forwarded-Clientcert-clientverify Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
      * 
      */
     @Import(name="xForwardedForClientCertClientVerifyEnabled")
     private @Nullable Output<Boolean> xForwardedForClientCertClientVerifyEnabled;
 
     /**
-     * @return Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
+     * @return Indicates Whether the X-Forwarded-Clientcert-clientverify Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
      * 
      */
     public Optional<Output<Boolean>> xForwardedForClientCertClientVerifyEnabled() {
@@ -47,14 +47,14 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * The Custom Header Field Names Only When `x_forwarded_for_client_certfingerprint_enabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+     * The Custom Header Field Names Only When xforwardedforclientcertfingerprintenabled, Which Evaluates to True When the Entry into Force of.
      * 
      */
     @Import(name="xForwardedForClientCertFingerPrintAlias")
     private @Nullable Output<String> xForwardedForClientCertFingerPrintAlias;
 
     /**
-     * @return The Custom Header Field Names Only When `x_forwarded_for_client_certfingerprint_enabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+     * @return The Custom Header Field Names Only When xforwardedforclientcertfingerprintenabled, Which Evaluates to True When the Entry into Force of.
      * 
      */
     public Optional<Output<String>> xForwardedForClientCertFingerPrintAlias() {
@@ -62,14 +62,14 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Indicates Whether the `X-Forwarded-client_cert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+     * Indicates Whether the X-Forwarded-Clientcert-fingerprint Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
      * 
      */
     @Import(name="xForwardedForClientCertFingerPrintEnabled")
     private @Nullable Output<Boolean> xForwardedForClientCertFingerPrintEnabled;
 
     /**
-     * @return Indicates Whether the `X-Forwarded-client_cert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+     * @return Indicates Whether the X-Forwarded-Clientcert-fingerprint Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
      * 
      */
     public Optional<Output<Boolean>> xForwardedForClientCertFingerPrintEnabled() {
@@ -77,14 +77,14 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * The Custom Header Field Names Only When `x_forwarded_for_client_cert_issuer_dn_enabled`, Which Evaluates to True When the Entry into Force of.
+     * The Custom Header Field Names Only When xforwardedforclientcertsubjectdnenabled, Which Evaluates to True When the Entry into Force of.
      * 
      */
     @Import(name="xForwardedForClientCertIssuerDnAlias")
     private @Nullable Output<String> xForwardedForClientCertIssuerDnAlias;
 
     /**
-     * @return The Custom Header Field Names Only When `x_forwarded_for_client_cert_issuer_dn_enabled`, Which Evaluates to True When the Entry into Force of.
+     * @return The Custom Header Field Names Only When xforwardedforclientcertsubjectdnenabled, Which Evaluates to True When the Entry into Force of.
      * 
      */
     public Optional<Output<String>> xForwardedForClientCertIssuerDnAlias() {
@@ -92,14 +92,14 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+     * Indicates Whether the X-Forwarded-Clientcert-issuerdn Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
      * 
      */
     @Import(name="xForwardedForClientCertIssuerDnEnabled")
     private @Nullable Output<Boolean> xForwardedForClientCertIssuerDnEnabled;
 
     /**
-     * @return Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+     * @return Indicates Whether the X-Forwarded-Clientcert-issuerdn Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
      * 
      */
     public Optional<Output<Boolean>> xForwardedForClientCertIssuerDnEnabled() {
@@ -107,14 +107,14 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * The name of the custom header. This parameter is valid only if `x_forwarded_for_client_certsubjectdn_enabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+     * The Custom Header Field Name,
      * 
      */
     @Import(name="xForwardedForClientCertSubjectDnAlias")
     private @Nullable Output<String> xForwardedForClientCertSubjectDnAlias;
 
     /**
-     * @return The name of the custom header. This parameter is valid only if `x_forwarded_for_client_certsubjectdn_enabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+     * @return The Custom Header Field Name,
      * 
      */
     public Optional<Output<String>> xForwardedForClientCertSubjectDnAlias() {
@@ -122,14 +122,14 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Specifies whether to use the `X-Forwarded-client_cert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+     * Indicates Whether the X-Forwarded-Clientcert-subjectdn Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Owner Information.
      * 
      */
     @Import(name="xForwardedForClientCertSubjectDnEnabled")
     private @Nullable Output<Boolean> xForwardedForClientCertSubjectDnEnabled;
 
     /**
-     * @return Specifies whether to use the `X-Forwarded-client_cert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+     * @return Indicates Whether the X-Forwarded-Clientcert-subjectdn Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Owner Information.
      * 
      */
     public Optional<Output<Boolean>> xForwardedForClientCertSubjectDnEnabled() {
@@ -137,14 +137,26 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value: true, false. Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
+     * Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value:
+     * 
+     * true: Yes.
+     * 
+     * false (default): No.
+     * 
+     * Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
      * 
      */
     @Import(name="xForwardedForClientSourceIpsEnabled")
     private @Nullable Output<Boolean> xForwardedForClientSourceIpsEnabled;
 
     /**
-     * @return Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value: true, false. Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
+     * @return Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value:
+     * 
+     * true: Yes.
+     * 
+     * false (default): No.
+     * 
+     * Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
      * 
      */
     public Optional<Output<Boolean>> xForwardedForClientSourceIpsEnabled() {
@@ -152,14 +164,18 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+     * Specify the trusted proxy IP.
+     * 
+     * Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
      * 
      */
     @Import(name="xForwardedForClientSourceIpsTrusted")
     private @Nullable Output<String> xForwardedForClientSourceIpsTrusted;
 
     /**
-     * @return Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+     * @return Specify the trusted proxy IP.
+     * 
+     * Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
      * 
      */
     public Optional<Output<String>> xForwardedForClientSourceIpsTrusted() {
@@ -197,6 +213,68 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
     }
 
     /**
+     * Whether to enable the X-Forwarded-Host header field to obtain the domain name of the client accessing the Application Load Balancer. Value:
+     * 
+     * true: Yes.
+     * 
+     * false (default): No.
+     * 
+     * HTTP, HTTPS, and QUIC listeners support this parameter.
+     * 
+     */
+    @Import(name="xForwardedForHostEnabled")
+    private @Nullable Output<Boolean> xForwardedForHostEnabled;
+
+    /**
+     * @return Whether to enable the X-Forwarded-Host header field to obtain the domain name of the client accessing the Application Load Balancer. Value:
+     * 
+     * true: Yes.
+     * 
+     * false (default): No.
+     * 
+     * HTTP, HTTPS, and QUIC listeners support this parameter.
+     * 
+     */
+    public Optional<Output<Boolean>> xForwardedForHostEnabled() {
+        return Optional.ofNullable(this.xForwardedForHostEnabled);
+    }
+
+    /**
+     * Schema for processing X-Forwarded-For header fields. This value takes effect only when XForwardedForEnabled is true. Value:
+     * 
+     * append (default): append.
+     * 
+     * remove: Delete.
+     * 
+     * Configure append to add the last hop IP address to the X-Forwarded-For header field before sending the request to the backend service.
+     * 
+     * Configure remove to delete the X-Forwarded-For header before the request is sent to the backend service, regardless of whether the request carries X-Forwarded-For header fields.
+     * 
+     * HTTP and HTTPS listeners support this parameter.
+     * 
+     */
+    @Import(name="xForwardedForProcessingMode")
+    private @Nullable Output<String> xForwardedForProcessingMode;
+
+    /**
+     * @return Schema for processing X-Forwarded-For header fields. This value takes effect only when XForwardedForEnabled is true. Value:
+     * 
+     * append (default): append.
+     * 
+     * remove: Delete.
+     * 
+     * Configure append to add the last hop IP address to the X-Forwarded-For header field before sending the request to the backend service.
+     * 
+     * Configure remove to delete the X-Forwarded-For header before the request is sent to the backend service, regardless of whether the request carries X-Forwarded-For header fields.
+     * 
+     * HTTP and HTTPS listeners support this parameter.
+     * 
+     */
+    public Optional<Output<String>> xForwardedForProcessingMode() {
+        return Optional.ofNullable(this.xForwardedForProcessingMode);
+    }
+
+    /**
      * Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
      * 
      */
@@ -212,14 +290,14 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
+     * Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id
      * 
      */
     @Import(name="xForwardedForSlbIdEnabled")
     private @Nullable Output<Boolean> xForwardedForSlbIdEnabled;
 
     /**
-     * @return Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
+     * @return Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id
      * 
      */
     public Optional<Output<Boolean>> xForwardedForSlbIdEnabled() {
@@ -227,14 +305,14 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
+     * Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port
      * 
      */
     @Import(name="xForwardedForSlbPortEnabled")
     private @Nullable Output<Boolean> xForwardedForSlbPortEnabled;
 
     /**
-     * @return Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
+     * @return Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port
      * 
      */
     public Optional<Output<Boolean>> xForwardedForSlbPortEnabled() {
@@ -256,6 +334,8 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
         this.xForwardedForClientSourceIpsTrusted = $.xForwardedForClientSourceIpsTrusted;
         this.xForwardedForClientSrcPortEnabled = $.xForwardedForClientSrcPortEnabled;
         this.xForwardedForEnabled = $.xForwardedForEnabled;
+        this.xForwardedForHostEnabled = $.xForwardedForHostEnabled;
+        this.xForwardedForProcessingMode = $.xForwardedForProcessingMode;
         this.xForwardedForProtoEnabled = $.xForwardedForProtoEnabled;
         this.xForwardedForSlbIdEnabled = $.xForwardedForSlbIdEnabled;
         this.xForwardedForSlbPortEnabled = $.xForwardedForSlbPortEnabled;
@@ -280,7 +360,7 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param xForwardedForClientCertClientVerifyAlias The Custom Header Field Names Only When `x_forwarded_for_client_cert_client_verify_enabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+         * @param xForwardedForClientCertClientVerifyAlias The Custom Header Field Names Only When xforwardedforclientcertclientverifyenabled Has a Value of True, this Value Will Not Take Effect until.
          * 
          * @return builder
          * 
@@ -291,7 +371,7 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param xForwardedForClientCertClientVerifyAlias The Custom Header Field Names Only When `x_forwarded_for_client_cert_client_verify_enabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+         * @param xForwardedForClientCertClientVerifyAlias The Custom Header Field Names Only When xforwardedforclientcertclientverifyenabled Has a Value of True, this Value Will Not Take Effect until.
          * 
          * @return builder
          * 
@@ -301,7 +381,7 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param xForwardedForClientCertClientVerifyEnabled Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
+         * @param xForwardedForClientCertClientVerifyEnabled Indicates Whether the X-Forwarded-Clientcert-clientverify Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
          * 
          * @return builder
          * 
@@ -312,7 +392,7 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param xForwardedForClientCertClientVerifyEnabled Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
+         * @param xForwardedForClientCertClientVerifyEnabled Indicates Whether the X-Forwarded-Clientcert-clientverify Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
          * 
          * @return builder
          * 
@@ -322,7 +402,7 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param xForwardedForClientCertFingerPrintAlias The Custom Header Field Names Only When `x_forwarded_for_client_certfingerprint_enabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+         * @param xForwardedForClientCertFingerPrintAlias The Custom Header Field Names Only When xforwardedforclientcertfingerprintenabled, Which Evaluates to True When the Entry into Force of.
          * 
          * @return builder
          * 
@@ -333,7 +413,7 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param xForwardedForClientCertFingerPrintAlias The Custom Header Field Names Only When `x_forwarded_for_client_certfingerprint_enabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+         * @param xForwardedForClientCertFingerPrintAlias The Custom Header Field Names Only When xforwardedforclientcertfingerprintenabled, Which Evaluates to True When the Entry into Force of.
          * 
          * @return builder
          * 
@@ -343,7 +423,7 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param xForwardedForClientCertFingerPrintEnabled Indicates Whether the `X-Forwarded-client_cert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+         * @param xForwardedForClientCertFingerPrintEnabled Indicates Whether the X-Forwarded-Clientcert-fingerprint Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
          * 
          * @return builder
          * 
@@ -354,7 +434,7 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param xForwardedForClientCertFingerPrintEnabled Indicates Whether the `X-Forwarded-client_cert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+         * @param xForwardedForClientCertFingerPrintEnabled Indicates Whether the X-Forwarded-Clientcert-fingerprint Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
          * 
          * @return builder
          * 
@@ -364,7 +444,7 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param xForwardedForClientCertIssuerDnAlias The Custom Header Field Names Only When `x_forwarded_for_client_cert_issuer_dn_enabled`, Which Evaluates to True When the Entry into Force of.
+         * @param xForwardedForClientCertIssuerDnAlias The Custom Header Field Names Only When xforwardedforclientcertsubjectdnenabled, Which Evaluates to True When the Entry into Force of.
          * 
          * @return builder
          * 
@@ -375,7 +455,7 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param xForwardedForClientCertIssuerDnAlias The Custom Header Field Names Only When `x_forwarded_for_client_cert_issuer_dn_enabled`, Which Evaluates to True When the Entry into Force of.
+         * @param xForwardedForClientCertIssuerDnAlias The Custom Header Field Names Only When xforwardedforclientcertsubjectdnenabled, Which Evaluates to True When the Entry into Force of.
          * 
          * @return builder
          * 
@@ -385,7 +465,7 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param xForwardedForClientCertIssuerDnEnabled Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+         * @param xForwardedForClientCertIssuerDnEnabled Indicates Whether the X-Forwarded-Clientcert-issuerdn Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
          * 
          * @return builder
          * 
@@ -396,7 +476,7 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param xForwardedForClientCertIssuerDnEnabled Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+         * @param xForwardedForClientCertIssuerDnEnabled Indicates Whether the X-Forwarded-Clientcert-issuerdn Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
          * 
          * @return builder
          * 
@@ -406,7 +486,7 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param xForwardedForClientCertSubjectDnAlias The name of the custom header. This parameter is valid only if `x_forwarded_for_client_certsubjectdn_enabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+         * @param xForwardedForClientCertSubjectDnAlias The Custom Header Field Name,
          * 
          * @return builder
          * 
@@ -417,7 +497,7 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param xForwardedForClientCertSubjectDnAlias The name of the custom header. This parameter is valid only if `x_forwarded_for_client_certsubjectdn_enabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+         * @param xForwardedForClientCertSubjectDnAlias The Custom Header Field Name,
          * 
          * @return builder
          * 
@@ -427,7 +507,7 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param xForwardedForClientCertSubjectDnEnabled Specifies whether to use the `X-Forwarded-client_cert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+         * @param xForwardedForClientCertSubjectDnEnabled Indicates Whether the X-Forwarded-Clientcert-subjectdn Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Owner Information.
          * 
          * @return builder
          * 
@@ -438,7 +518,7 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param xForwardedForClientCertSubjectDnEnabled Specifies whether to use the `X-Forwarded-client_cert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+         * @param xForwardedForClientCertSubjectDnEnabled Indicates Whether the X-Forwarded-Clientcert-subjectdn Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Owner Information.
          * 
          * @return builder
          * 
@@ -448,7 +528,13 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param xForwardedForClientSourceIpsEnabled Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value: true, false. Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
+         * @param xForwardedForClientSourceIpsEnabled Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value:
+         * 
+         * true: Yes.
+         * 
+         * false (default): No.
+         * 
+         * Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
          * 
          * @return builder
          * 
@@ -459,7 +545,13 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param xForwardedForClientSourceIpsEnabled Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value: true, false. Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
+         * @param xForwardedForClientSourceIpsEnabled Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value:
+         * 
+         * true: Yes.
+         * 
+         * false (default): No.
+         * 
+         * Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
          * 
          * @return builder
          * 
@@ -469,7 +561,9 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param xForwardedForClientSourceIpsTrusted Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+         * @param xForwardedForClientSourceIpsTrusted Specify the trusted proxy IP.
+         * 
+         * Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
          * 
          * @return builder
          * 
@@ -480,7 +574,9 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param xForwardedForClientSourceIpsTrusted Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+         * @param xForwardedForClientSourceIpsTrusted Specify the trusted proxy IP.
+         * 
+         * Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
          * 
          * @return builder
          * 
@@ -532,6 +628,80 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
         }
 
         /**
+         * @param xForwardedForHostEnabled Whether to enable the X-Forwarded-Host header field to obtain the domain name of the client accessing the Application Load Balancer. Value:
+         * 
+         * true: Yes.
+         * 
+         * false (default): No.
+         * 
+         * HTTP, HTTPS, and QUIC listeners support this parameter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder xForwardedForHostEnabled(@Nullable Output<Boolean> xForwardedForHostEnabled) {
+            $.xForwardedForHostEnabled = xForwardedForHostEnabled;
+            return this;
+        }
+
+        /**
+         * @param xForwardedForHostEnabled Whether to enable the X-Forwarded-Host header field to obtain the domain name of the client accessing the Application Load Balancer. Value:
+         * 
+         * true: Yes.
+         * 
+         * false (default): No.
+         * 
+         * HTTP, HTTPS, and QUIC listeners support this parameter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder xForwardedForHostEnabled(Boolean xForwardedForHostEnabled) {
+            return xForwardedForHostEnabled(Output.of(xForwardedForHostEnabled));
+        }
+
+        /**
+         * @param xForwardedForProcessingMode Schema for processing X-Forwarded-For header fields. This value takes effect only when XForwardedForEnabled is true. Value:
+         * 
+         * append (default): append.
+         * 
+         * remove: Delete.
+         * 
+         * Configure append to add the last hop IP address to the X-Forwarded-For header field before sending the request to the backend service.
+         * 
+         * Configure remove to delete the X-Forwarded-For header before the request is sent to the backend service, regardless of whether the request carries X-Forwarded-For header fields.
+         * 
+         * HTTP and HTTPS listeners support this parameter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder xForwardedForProcessingMode(@Nullable Output<String> xForwardedForProcessingMode) {
+            $.xForwardedForProcessingMode = xForwardedForProcessingMode;
+            return this;
+        }
+
+        /**
+         * @param xForwardedForProcessingMode Schema for processing X-Forwarded-For header fields. This value takes effect only when XForwardedForEnabled is true. Value:
+         * 
+         * append (default): append.
+         * 
+         * remove: Delete.
+         * 
+         * Configure append to add the last hop IP address to the X-Forwarded-For header field before sending the request to the backend service.
+         * 
+         * Configure remove to delete the X-Forwarded-For header before the request is sent to the backend service, regardless of whether the request carries X-Forwarded-For header fields.
+         * 
+         * HTTP and HTTPS listeners support this parameter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder xForwardedForProcessingMode(String xForwardedForProcessingMode) {
+            return xForwardedForProcessingMode(Output.of(xForwardedForProcessingMode));
+        }
+
+        /**
          * @param xForwardedForProtoEnabled Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
          * 
          * @return builder
@@ -553,7 +723,7 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param xForwardedForSlbIdEnabled Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
+         * @param xForwardedForSlbIdEnabled Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id
          * 
          * @return builder
          * 
@@ -564,7 +734,7 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param xForwardedForSlbIdEnabled Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
+         * @param xForwardedForSlbIdEnabled Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id
          * 
          * @return builder
          * 
@@ -574,7 +744,7 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param xForwardedForSlbPortEnabled Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
+         * @param xForwardedForSlbPortEnabled Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port
          * 
          * @return builder
          * 
@@ -585,7 +755,7 @@ public final class ListenerXForwardedForConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param xForwardedForSlbPortEnabled Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
+         * @param xForwardedForSlbPortEnabled Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port
          * 
          * @return builder
          * 

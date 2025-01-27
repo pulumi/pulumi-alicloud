@@ -2201,6 +2201,12 @@ public final class AlbFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.alb.ServerGroup;
+     * import com.pulumi.alicloud.alb.ServerGroupArgs;
+     * import com.pulumi.alicloud.alb.inputs.ServerGroupHealthCheckConfigArgs;
+     * import com.pulumi.alicloud.alb.inputs.ServerGroupStickySessionConfigArgs;
      * import com.pulumi.alicloud.alb.AlbFunctions;
      * import com.pulumi.alicloud.alb.inputs.GetServerGroupsArgs;
      * import java.util.List;
@@ -2216,14 +2222,30 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AlbFunctions.getServerGroups();
-     * 
-     *         ctx.export("albServerGroupId1", ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
-     *         final var nameRegex = AlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
-     *             .nameRegex("^my-ServerGroup")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Network("default", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("192.168.0.0/16")
      *             .build());
      * 
-     *         ctx.export("albServerGroupId2", nameRegex.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
+     *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()
+     *             .protocol("HTTP")
+     *             .vpcId(default_.id())
+     *             .serverGroupName(name)
+     *             .healthCheckConfig(ServerGroupHealthCheckConfigArgs.builder()
+     *                 .healthCheckEnabled("false")
+     *                 .build())
+     *             .stickySessionConfig(ServerGroupStickySessionConfigArgs.builder()
+     *                 .stickySessionEnabled("false")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var ids = AlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
+     *             .ids(defaultServerGroup.id())
+     *             .build());
+     * 
+     *         ctx.export("albServerGroupId0", ids.applyValue(getServerGroupsResult -> getServerGroupsResult).applyValue(ids -> ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id())));
      *     }
      * }
      * }
@@ -2251,6 +2273,12 @@ public final class AlbFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.alb.ServerGroup;
+     * import com.pulumi.alicloud.alb.ServerGroupArgs;
+     * import com.pulumi.alicloud.alb.inputs.ServerGroupHealthCheckConfigArgs;
+     * import com.pulumi.alicloud.alb.inputs.ServerGroupStickySessionConfigArgs;
      * import com.pulumi.alicloud.alb.AlbFunctions;
      * import com.pulumi.alicloud.alb.inputs.GetServerGroupsArgs;
      * import java.util.List;
@@ -2266,14 +2294,30 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AlbFunctions.getServerGroups();
-     * 
-     *         ctx.export("albServerGroupId1", ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
-     *         final var nameRegex = AlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
-     *             .nameRegex("^my-ServerGroup")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Network("default", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("192.168.0.0/16")
      *             .build());
      * 
-     *         ctx.export("albServerGroupId2", nameRegex.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
+     *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()
+     *             .protocol("HTTP")
+     *             .vpcId(default_.id())
+     *             .serverGroupName(name)
+     *             .healthCheckConfig(ServerGroupHealthCheckConfigArgs.builder()
+     *                 .healthCheckEnabled("false")
+     *                 .build())
+     *             .stickySessionConfig(ServerGroupStickySessionConfigArgs.builder()
+     *                 .stickySessionEnabled("false")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var ids = AlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
+     *             .ids(defaultServerGroup.id())
+     *             .build());
+     * 
+     *         ctx.export("albServerGroupId0", ids.applyValue(getServerGroupsResult -> getServerGroupsResult).applyValue(ids -> ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id())));
      *     }
      * }
      * }
@@ -2301,6 +2345,12 @@ public final class AlbFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.alb.ServerGroup;
+     * import com.pulumi.alicloud.alb.ServerGroupArgs;
+     * import com.pulumi.alicloud.alb.inputs.ServerGroupHealthCheckConfigArgs;
+     * import com.pulumi.alicloud.alb.inputs.ServerGroupStickySessionConfigArgs;
      * import com.pulumi.alicloud.alb.AlbFunctions;
      * import com.pulumi.alicloud.alb.inputs.GetServerGroupsArgs;
      * import java.util.List;
@@ -2316,14 +2366,30 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AlbFunctions.getServerGroups();
-     * 
-     *         ctx.export("albServerGroupId1", ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
-     *         final var nameRegex = AlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
-     *             .nameRegex("^my-ServerGroup")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Network("default", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("192.168.0.0/16")
      *             .build());
      * 
-     *         ctx.export("albServerGroupId2", nameRegex.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
+     *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()
+     *             .protocol("HTTP")
+     *             .vpcId(default_.id())
+     *             .serverGroupName(name)
+     *             .healthCheckConfig(ServerGroupHealthCheckConfigArgs.builder()
+     *                 .healthCheckEnabled("false")
+     *                 .build())
+     *             .stickySessionConfig(ServerGroupStickySessionConfigArgs.builder()
+     *                 .stickySessionEnabled("false")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var ids = AlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
+     *             .ids(defaultServerGroup.id())
+     *             .build());
+     * 
+     *         ctx.export("albServerGroupId0", ids.applyValue(getServerGroupsResult -> getServerGroupsResult).applyValue(ids -> ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id())));
      *     }
      * }
      * }
@@ -2351,6 +2417,12 @@ public final class AlbFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.alb.ServerGroup;
+     * import com.pulumi.alicloud.alb.ServerGroupArgs;
+     * import com.pulumi.alicloud.alb.inputs.ServerGroupHealthCheckConfigArgs;
+     * import com.pulumi.alicloud.alb.inputs.ServerGroupStickySessionConfigArgs;
      * import com.pulumi.alicloud.alb.AlbFunctions;
      * import com.pulumi.alicloud.alb.inputs.GetServerGroupsArgs;
      * import java.util.List;
@@ -2366,14 +2438,30 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AlbFunctions.getServerGroups();
-     * 
-     *         ctx.export("albServerGroupId1", ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
-     *         final var nameRegex = AlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
-     *             .nameRegex("^my-ServerGroup")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Network("default", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("192.168.0.0/16")
      *             .build());
      * 
-     *         ctx.export("albServerGroupId2", nameRegex.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
+     *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()
+     *             .protocol("HTTP")
+     *             .vpcId(default_.id())
+     *             .serverGroupName(name)
+     *             .healthCheckConfig(ServerGroupHealthCheckConfigArgs.builder()
+     *                 .healthCheckEnabled("false")
+     *                 .build())
+     *             .stickySessionConfig(ServerGroupStickySessionConfigArgs.builder()
+     *                 .stickySessionEnabled("false")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var ids = AlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
+     *             .ids(defaultServerGroup.id())
+     *             .build());
+     * 
+     *         ctx.export("albServerGroupId0", ids.applyValue(getServerGroupsResult -> getServerGroupsResult).applyValue(ids -> ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id())));
      *     }
      * }
      * }
@@ -2401,6 +2489,12 @@ public final class AlbFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.alb.ServerGroup;
+     * import com.pulumi.alicloud.alb.ServerGroupArgs;
+     * import com.pulumi.alicloud.alb.inputs.ServerGroupHealthCheckConfigArgs;
+     * import com.pulumi.alicloud.alb.inputs.ServerGroupStickySessionConfigArgs;
      * import com.pulumi.alicloud.alb.AlbFunctions;
      * import com.pulumi.alicloud.alb.inputs.GetServerGroupsArgs;
      * import java.util.List;
@@ -2416,14 +2510,30 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AlbFunctions.getServerGroups();
-     * 
-     *         ctx.export("albServerGroupId1", ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
-     *         final var nameRegex = AlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
-     *             .nameRegex("^my-ServerGroup")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Network("default", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("192.168.0.0/16")
      *             .build());
      * 
-     *         ctx.export("albServerGroupId2", nameRegex.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
+     *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()
+     *             .protocol("HTTP")
+     *             .vpcId(default_.id())
+     *             .serverGroupName(name)
+     *             .healthCheckConfig(ServerGroupHealthCheckConfigArgs.builder()
+     *                 .healthCheckEnabled("false")
+     *                 .build())
+     *             .stickySessionConfig(ServerGroupStickySessionConfigArgs.builder()
+     *                 .stickySessionEnabled("false")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var ids = AlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
+     *             .ids(defaultServerGroup.id())
+     *             .build());
+     * 
+     *         ctx.export("albServerGroupId0", ids.applyValue(getServerGroupsResult -> getServerGroupsResult).applyValue(ids -> ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id())));
      *     }
      * }
      * }
@@ -2451,6 +2561,12 @@ public final class AlbFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.alb.ServerGroup;
+     * import com.pulumi.alicloud.alb.ServerGroupArgs;
+     * import com.pulumi.alicloud.alb.inputs.ServerGroupHealthCheckConfigArgs;
+     * import com.pulumi.alicloud.alb.inputs.ServerGroupStickySessionConfigArgs;
      * import com.pulumi.alicloud.alb.AlbFunctions;
      * import com.pulumi.alicloud.alb.inputs.GetServerGroupsArgs;
      * import java.util.List;
@@ -2466,14 +2582,30 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AlbFunctions.getServerGroups();
-     * 
-     *         ctx.export("albServerGroupId1", ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
-     *         final var nameRegex = AlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
-     *             .nameRegex("^my-ServerGroup")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Network("default", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("192.168.0.0/16")
      *             .build());
      * 
-     *         ctx.export("albServerGroupId2", nameRegex.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
+     *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()
+     *             .protocol("HTTP")
+     *             .vpcId(default_.id())
+     *             .serverGroupName(name)
+     *             .healthCheckConfig(ServerGroupHealthCheckConfigArgs.builder()
+     *                 .healthCheckEnabled("false")
+     *                 .build())
+     *             .stickySessionConfig(ServerGroupStickySessionConfigArgs.builder()
+     *                 .stickySessionEnabled("false")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var ids = AlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
+     *             .ids(defaultServerGroup.id())
+     *             .build());
+     * 
+     *         ctx.export("albServerGroupId0", ids.applyValue(getServerGroupsResult -> getServerGroupsResult).applyValue(ids -> ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id())));
      *     }
      * }
      * }
@@ -2501,6 +2633,12 @@ public final class AlbFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.alb.ServerGroup;
+     * import com.pulumi.alicloud.alb.ServerGroupArgs;
+     * import com.pulumi.alicloud.alb.inputs.ServerGroupHealthCheckConfigArgs;
+     * import com.pulumi.alicloud.alb.inputs.ServerGroupStickySessionConfigArgs;
      * import com.pulumi.alicloud.alb.AlbFunctions;
      * import com.pulumi.alicloud.alb.inputs.GetServerGroupsArgs;
      * import java.util.List;
@@ -2516,14 +2654,30 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AlbFunctions.getServerGroups();
-     * 
-     *         ctx.export("albServerGroupId1", ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
-     *         final var nameRegex = AlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
-     *             .nameRegex("^my-ServerGroup")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Network("default", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("192.168.0.0/16")
      *             .build());
      * 
-     *         ctx.export("albServerGroupId2", nameRegex.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
+     *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()
+     *             .protocol("HTTP")
+     *             .vpcId(default_.id())
+     *             .serverGroupName(name)
+     *             .healthCheckConfig(ServerGroupHealthCheckConfigArgs.builder()
+     *                 .healthCheckEnabled("false")
+     *                 .build())
+     *             .stickySessionConfig(ServerGroupStickySessionConfigArgs.builder()
+     *                 .stickySessionEnabled("false")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var ids = AlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
+     *             .ids(defaultServerGroup.id())
+     *             .build());
+     * 
+     *         ctx.export("albServerGroupId0", ids.applyValue(getServerGroupsResult -> getServerGroupsResult).applyValue(ids -> ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id())));
      *     }
      * }
      * }

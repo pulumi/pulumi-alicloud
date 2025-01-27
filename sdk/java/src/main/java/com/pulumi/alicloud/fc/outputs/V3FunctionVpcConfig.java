@@ -13,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class V3FunctionVpcConfig {
     /**
-     * @return Security group ID.
+     * @return Security group ID
      * 
      */
     private @Nullable String securityGroupId;
     /**
-     * @return VPC network ID.
+     * @return VPC network ID
      * 
      */
     private @Nullable String vpcId;
     /**
-     * @return Switch List.
+     * @return Switch List
      * 
      */
     private @Nullable List<String> vswitchIds;
 
     private V3FunctionVpcConfig() {}
     /**
-     * @return Security group ID.
+     * @return Security group ID
      * 
      */
     public Optional<String> securityGroupId() {
         return Optional.ofNullable(this.securityGroupId);
     }
     /**
-     * @return VPC network ID.
+     * @return VPC network ID
      * 
      */
     public Optional<String> vpcId() {
         return Optional.ofNullable(this.vpcId);
     }
     /**
-     * @return Switch List.
+     * @return Switch List
      * 
      */
     public List<String> vswitchIds() {

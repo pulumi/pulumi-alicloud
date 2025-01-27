@@ -633,6 +633,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "alb/loadBalancerZoneShiftedAttachment",
+  "fqn": "pulumi_alicloud.alb",
+  "classes": {
+   "alicloud:alb/loadBalancerZoneShiftedAttachment:LoadBalancerZoneShiftedAttachment": "LoadBalancerZoneShiftedAttachment"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "alb/rule",
   "fqn": "pulumi_alicloud.alb",
   "classes": {
@@ -3897,6 +3905,30 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "esa/httpRequestHeaderModificationRule",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/httpRequestHeaderModificationRule:HttpRequestHeaderModificationRule": "HttpRequestHeaderModificationRule"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "esa/list",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/list:List": "List"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "esa/page",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/page:Page": "Page"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "esa/ratePlanInstance",
   "fqn": "pulumi_alicloud.esa",
   "classes": {
@@ -5221,6 +5253,46 @@ _utilities.register(
   "fqn": "pulumi_alicloud.maxcompute",
   "classes": {
    "alicloud:maxcompute/project:Project": "Project"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "maxcompute/quotaPlan",
+  "fqn": "pulumi_alicloud.maxcompute",
+  "classes": {
+   "alicloud:maxcompute/quotaPlan:QuotaPlan": "QuotaPlan"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "maxcompute/quotaSchedule",
+  "fqn": "pulumi_alicloud.maxcompute",
+  "classes": {
+   "alicloud:maxcompute/quotaSchedule:QuotaSchedule": "QuotaSchedule"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "maxcompute/role",
+  "fqn": "pulumi_alicloud.maxcompute",
+  "classes": {
+   "alicloud:maxcompute/role:Role": "Role"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "maxcompute/roleUserAttachment",
+  "fqn": "pulumi_alicloud.maxcompute",
+  "classes": {
+   "alicloud:maxcompute/roleUserAttachment:RoleUserAttachment": "RoleUserAttachment"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "maxcompute/tunnelQuotaTimer",
+  "fqn": "pulumi_alicloud.maxcompute",
+  "classes": {
+   "alicloud:maxcompute/tunnelQuotaTimer:TunnelQuotaTimer": "TunnelQuotaTimer"
   }
  },
  {
@@ -7605,6 +7677,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.vpc",
   "classes": {
    "alicloud:vpc/ipamIpamScope:IpamIpamScope": "IpamIpamScope"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "vpc/ipamService",
+  "fqn": "pulumi_alicloud.vpc",
+  "classes": {
+   "alicloud:vpc/ipamService:IpamService": "IpamService"
   }
  },
  {

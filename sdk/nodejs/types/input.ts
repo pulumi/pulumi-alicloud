@@ -741,21 +741,23 @@ export namespace alb {
 
     export interface ListenerAccessLogTracingConfig {
         /**
-         * Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
+         * Xtrace Function.
          *
-         * > **NOTE:** Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `True`.
+         * Value: True **** Or False * *.
+         *
+         * Default Value: False * *.
+         *
+         * > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
          */
-        tracingEnabled?: pulumi.Input<boolean>;
+        tracingEnabled: pulumi.Input<boolean>;
         /**
-         * Xtrace Sampling Rate. Value: `1` to `10000`.
-         *
-         * > **NOTE:** This attribute is valid when `tracingenabled` is `true`.
+         * Xtrace Sampling Rate. Value: 1~10000 **.> `tracingenabled` **True When Effective.
          */
         tracingSample?: pulumi.Input<number>;
         /**
-         * Xtrace Type Value Is `Zipkin`.
+         * Xtrace Type Value Is **Zipkin * *.
          *
-         * > **NOTE:** This attribute is valid when `tracingenabled` is `true`.
+         * > **NOTE:**  `tracingenabled` **True When Effective.
          */
         tracingType?: pulumi.Input<string>;
     }
@@ -777,39 +779,46 @@ export namespace alb {
          */
         aclId?: pulumi.Input<string>;
         /**
-         * The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
+         * The Current IP Address of the Listened State
          */
         status?: pulumi.Input<string>;
     }
 
+    export interface ListenerCaCertificate {
+        /**
+         * The ID of the certificate. Currently, only server certificates are supported.
+         */
+        certificateId?: pulumi.Input<string>;
+    }
+
     export interface ListenerCertificates {
         /**
-         * The ID of the Certificate.
+         * The ID of the certificate. Currently, only server certificates are supported.
          */
         certificateId?: pulumi.Input<string>;
     }
 
     export interface ListenerDefaultAction {
         /**
-         * The configurations of the actions. This parameter is required if Type is set to FowardGroup. See `forwardGroupConfig` below for details.
+         * Forwarding Action Configurations See `forwardGroupConfig` below.
          */
-        forwardGroupConfig: pulumi.Input<inputs.alb.ListenerDefaultActionForwardGroupConfig>;
+        forwardGroupConfig?: pulumi.Input<inputs.alb.ListenerDefaultActionForwardGroupConfig>;
         /**
-         * Action Type.
+         * Action Type
          */
         type: pulumi.Input<string>;
     }
 
     export interface ListenerDefaultActionForwardGroupConfig {
         /**
-         * The destination server group to which requests are forwarded. See `serverGroupTuples` below for details.
+         * The Forwarding Destination Server Group See `serverGroupTuples` below.
          */
         serverGroupTuples: pulumi.Input<pulumi.Input<inputs.alb.ListenerDefaultActionForwardGroupConfigServerGroupTuple>[]>;
     }
 
     export interface ListenerDefaultActionForwardGroupConfigServerGroupTuple {
         /**
-         * The ID of the destination server group to which requests are forwarded.
+         * Forwarded to the Destination Server Group ID
          */
         serverGroupId: pulumi.Input<string>;
     }
@@ -820,52 +829,58 @@ export namespace alb {
          */
         quicListenerId?: pulumi.Input<string>;
         /**
-         * Indicates Whether to Enable the QuIC Upgrade.
-         *
-         * > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
+         * Indicates Whether to Enable the QuIC Upgrade
          */
         quicUpgradeEnabled?: pulumi.Input<boolean>;
     }
 
     export interface ListenerXForwardedForConfig {
         /**
-         * The Custom Header Field Names Only When `xForwardedForClientCertClientVerifyEnabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+         * The Custom Header Field Names Only When xforwardedforclientcertclientverifyenabled Has a Value of True, this Value Will Not Take Effect until.
          */
         xForwardedForClientCertClientVerifyAlias?: pulumi.Input<string>;
         /**
-         * Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
+         * Indicates Whether the X-Forwarded-Clientcert-clientverify Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
          */
         xForwardedForClientCertClientVerifyEnabled?: pulumi.Input<boolean>;
         /**
-         * The Custom Header Field Names Only When `xForwardedForClientCertfingerprintEnabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+         * The Custom Header Field Names Only When xforwardedforclientcertfingerprintenabled, Which Evaluates to True When the Entry into Force of.
          */
         xForwardedForClientCertFingerPrintAlias?: pulumi.Input<string>;
         /**
-         * Indicates Whether the `X-Forwarded-client_cert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+         * Indicates Whether the X-Forwarded-Clientcert-fingerprint Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
          */
         xForwardedForClientCertFingerPrintEnabled?: pulumi.Input<boolean>;
         /**
-         * The Custom Header Field Names Only When `xForwardedForClientCertIssuerDnEnabled`, Which Evaluates to True When the Entry into Force of.
+         * The Custom Header Field Names Only When xforwardedforclientcertsubjectdnenabled, Which Evaluates to True When the Entry into Force of.
          */
         xForwardedForClientCertIssuerDnAlias?: pulumi.Input<string>;
         /**
-         * Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+         * Indicates Whether the X-Forwarded-Clientcert-issuerdn Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
          */
         xForwardedForClientCertIssuerDnEnabled?: pulumi.Input<boolean>;
         /**
-         * The name of the custom header. This parameter is valid only if `xForwardedForClientCertsubjectdnEnabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+         * The Custom Header Field Name,
          */
         xForwardedForClientCertSubjectDnAlias?: pulumi.Input<string>;
         /**
-         * Specifies whether to use the `X-Forwarded-client_cert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+         * Indicates Whether the X-Forwarded-Clientcert-subjectdn Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Owner Information.
          */
         xForwardedForClientCertSubjectDnEnabled?: pulumi.Input<boolean>;
         /**
-         * Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value: true, false. Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
+         * Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value:
+         *
+         * true: Yes.
+         *
+         * false (default): No.
+         *
+         * Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
          */
         xForwardedForClientSourceIpsEnabled?: pulumi.Input<boolean>;
         /**
-         * Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+         * Specify the trusted proxy IP.
+         *
+         * Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
          */
         xForwardedForClientSourceIpsTrusted?: pulumi.Input<string>;
         /**
@@ -877,15 +892,39 @@ export namespace alb {
          */
         xForwardedForEnabled?: pulumi.Input<boolean>;
         /**
+         * Whether to enable the X-Forwarded-Host header field to obtain the domain name of the client accessing the Application Load Balancer. Value:
+         *
+         * true: Yes.
+         *
+         * false (default): No.
+         *
+         * HTTP, HTTPS, and QUIC listeners support this parameter.
+         */
+        xForwardedForHostEnabled?: pulumi.Input<boolean>;
+        /**
+         * Schema for processing X-Forwarded-For header fields. This value takes effect only when XForwardedForEnabled is true. Value:
+         *
+         * append (default): append.
+         *
+         * remove: Delete.
+         *
+         * Configure append to add the last hop IP address to the X-Forwarded-For header field before sending the request to the backend service.
+         *
+         * Configure remove to delete the X-Forwarded-For header before the request is sent to the backend service, regardless of whether the request carries X-Forwarded-For header fields.
+         *
+         * HTTP and HTTPS listeners support this parameter.
+         */
+        xForwardedForProcessingMode?: pulumi.Input<string>;
+        /**
          * Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
          */
         xForwardedForProtoEnabled?: pulumi.Input<boolean>;
         /**
-         * Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
+         * Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id
          */
         xForwardedForSlbIdEnabled?: pulumi.Input<boolean>;
         /**
-         * Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
+         * Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port
          */
         xForwardedForSlbPortEnabled?: pulumi.Input<boolean>;
     }
@@ -894,61 +933,72 @@ export namespace alb {
         /**
          * The project to which the access log is shipped.
          */
-        logProject: pulumi.Input<string>;
+        logProject?: pulumi.Input<string>;
         /**
          * The Logstore to which the access log is shipped.
          */
-        logStore: pulumi.Input<string>;
+        logStore?: pulumi.Input<string>;
+    }
+
+    export interface LoadBalancerDeletionProtectionConfig {
+        /**
+         * Remove the Protection Status
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * Deletion Protection Turn-on Time Use Greenwich Mean Time, in the Format of Yyyy-MM-ddTHH: mm: SSZ
+         */
+        enabledTime?: pulumi.Input<string>;
     }
 
     export interface LoadBalancerLoadBalancerBillingConfig {
         /**
-         * The billing method of the ALB instance. Valid values: `PayAsYouGo`.
+         * Pay Type
          */
         payType: pulumi.Input<string>;
     }
 
     export interface LoadBalancerModificationProtectionConfig {
         /**
-         * The reason for enabling the configuration read-only mode. **NOTE:** `reason` takes effect only if `status` is set to `ConsoleProtection`.
+         * Managed Instance
          */
         reason?: pulumi.Input<string>;
         /**
-         * Specifies whether to enable the configuration read-only mode. Valid values: `ConsoleProtection`, `NonProtection`.
+         * Load Balancing Modify the Protection Status
          */
         status?: pulumi.Input<string>;
     }
 
     export interface LoadBalancerZoneMapping {
         /**
-         * The IP address of the ALB instance.
+         * The SLB Instance Address
          */
         loadBalancerAddresses?: pulumi.Input<pulumi.Input<inputs.alb.LoadBalancerZoneMappingLoadBalancerAddress>[]>;
         /**
-         * The ID of the VSwitch.
+         * The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
          */
         vswitchId: pulumi.Input<string>;
         /**
-         * The zone ID of the ALB instance.
+         * The ID of the zone to which the SLB instance belongs.
          */
         zoneId: pulumi.Input<string>;
     }
 
     export interface LoadBalancerZoneMappingLoadBalancerAddress {
         /**
-         * IP address. The Public IP Address, and Private IP Address from the Address Type.
+         * IP Address. The Public IP Address, and Private IP Address from the Address Type
          */
         address?: pulumi.Input<string>;
         /**
-         * The ID of the EIP.
+         * The ID of the EIP instance.
          */
         allocationId?: pulumi.Input<string>;
         /**
-         * The type of the EIP.
+         * The type of the EIP instance.
          */
         eipType?: pulumi.Input<string>;
         /**
-         * Ipv6 address.
+         * Ipv6 address
          */
         ipv6Address?: pulumi.Input<string>;
     }
@@ -1299,119 +1349,249 @@ export namespace alb {
         values?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
+    export interface ServerGroupConnectionDrainConfig {
+        /**
+         * Specifies whether to enable connection draining. Valid values:
+         */
+        connectionDrainEnabled?: pulumi.Input<boolean>;
+        /**
+         * The timeout period of connection draining.
+         *
+         * Valid values: `0` to `900`.
+         *
+         * Default value: `300`.
+         */
+        connectionDrainTimeout?: pulumi.Input<number>;
+    }
+
     export interface ServerGroupHealthCheckConfig {
         /**
-         * The HTTP status codes that are used to indicate whether the backend server passes the health check. Valid values:
-         * - If `healthCheckProtocol` is set to `HTTP` or `HTTPS`. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`.
-         * - If `healthCheckProtocol` is set to `gRPC`. Valid values: `0` to `99`. Default value: `0`.
+         * The status code for a successful health check
          */
         healthCheckCodes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * The backend port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`. A value of 0 indicates that a backend server port is used for health checks.
+         * The backend port that is used for health checks.
+         *
+         * Valid values: `0` to `65535`.
+         *
+         * If you set the value to `0`, the backend port is used for health checks.
+         *
+         * > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
          */
         healthCheckConnectPort?: pulumi.Input<number>;
         /**
-         * Specifies whether to enable the health check feature. Valid values: `true`, `false`.
+         * Specifies whether to enable the health check feature. Valid values:
          */
         healthCheckEnabled: pulumi.Input<boolean>;
         /**
          * The domain name that is used for health checks.
+         *
+         * *   **Backend Server Internal IP** (default): Use the internal IP address of backend servers as the health check domain name.
+         *
+         * *   **Custom Domain Name**: Enter a domain name.
+         *
+         * *   The domain name must be 1 to 80 characters in length.
+         * *   The domain name can contain lowercase letters, digits, hyphens (-), and periods (.).
+         * *   The domain name must contain at least one period (.) but cannot start or end with a period (.).
+         * *   The rightmost domain label of the domain name can contain only letters, and cannot contain digits or hyphens (-).
+         * *   The domain name cannot start or end with a hyphen (-).
+         *
+         * > **NOTE:**   This parameter takes effect only if `HealthCheckProtocol` is set to `HTTP`, `HTTPS`, or `gRPC`.
          */
         healthCheckHost?: pulumi.Input<string>;
         /**
-         * The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0` and `HTTP1.1`. **NOTE:** This parameter takes effect only when `healthCheckProtocol` is set to `HTTP` or `HTTPS`.
+         * The HTTP version that is used for health checks. Valid values:
+         *
+         * *   **HTTP1.0**
+         *
+         * *   **HTTP1.1**
+         *
+         * > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to true and `HealthCheckProtocol` to `HTTP` or `HTTPS`.
          */
         healthCheckHttpVersion?: pulumi.Input<string>;
         /**
-         * The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
+         * The interval at which health checks are performed. Unit: seconds.
+         *
+         * Valid values: `1` to `50`.
+         *
+         * > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
          */
         healthCheckInterval?: pulumi.Input<number>;
         /**
-         * The HTTP method that is used for health checks. Default value: `GET`. Valid values: `GET`, `POST`, `HEAD`. **NOTE:** This parameter takes effect only when `healthCheckProtocol` is set to `HTTP`, `HTTPS`, or `gRPC`. From version 1.215.0, `healthCheckMethod` can be set to `POST`.
+         * The HTTP method that is used for health checks. Valid values:
+         *
+         * *   `GET`: If the length of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
+         *
+         * *   `POST`: gRPC health checks use the POST method by default.
+         *
+         * *   `HEAD`: HTTP and HTTPS health checks use the HEAD method by default.
+         *
+         * > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to true and `HealthCheckProtocol` to `HTTP`, `HTTPS`, or `gRPC`.
          */
         healthCheckMethod?: pulumi.Input<string>;
         /**
-         * The path that is used for health checks. **NOTE:** This parameter takes effect only when `healthCheckProtocol` is set to `HTTP` or `HTTPS`.
+         * The URL that is used for health checks.
+         *
+         * The URL must be 1 to 80 characters in length, and can contain letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : ' , +`. The URL must start with a forward slash (`/`).
+         *
+         * > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true` and `HealthCheckProtocol` to `HTTP` or `HTTPS`.
          */
         healthCheckPath?: pulumi.Input<string>;
         /**
-         * The protocol that is used for health checks. Valid values: `HTTP`, `HTTPS`, `TCP` and `gRPC`.
+         * The protocol that is used for health checks. Valid values:
+         *
+         * - `HTTP`: HTTP health checks simulate browser behaviors by sending HEAD or GET requests to probe the availability of backend servers.
+         * - `HTTPS`: HTTPS health checks simulate browser behaviors by sending HEAD or GET requests to probe the availability of backend servers. HTTPS provides higher security than HTTP because HTTPS supports data encryption.
+         * - `TCP`: TCP health checks send TCP SYN packets to a backend server to probe the availability of backend servers.
+         * - `gRPC`: gRPC health checks send POST or GET requests to a backend server to check whether the backend server is healthy.
          */
         healthCheckProtocol?: pulumi.Input<string>;
         /**
-         * The timeout period for a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If the value of `healthCheckTimeout` is smaller than the value of `healthCheckInterval`, the value of `healthCheckTimeout` is ignored and the value of `healthCheckInterval` is used.
+         * The timeout period of a health check response. If a backend ECS instance does not respond within the specified timeout period, the ECS instance fails the health check. Unit: seconds.
+         *
+         * Valid values: `1` to `300`.
+         *
+         * > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
          */
         healthCheckTimeout?: pulumi.Input<number>;
         /**
-         * The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
+         * The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health check status of the backend server changes from `fail` to `success`.
+         *
+         * Valid values: `2` to `10`.
+         *
+         * Default value: `3`.
          */
         healthyThreshold?: pulumi.Input<number>;
         /**
-         * The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
+         * The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health check status of the backend server changes from `success` to `fail`.
+         *
+         * Valid values: `2` to `10`.
+         *
+         * Default value: `3`.
          */
         unhealthyThreshold?: pulumi.Input<number>;
     }
 
     export interface ServerGroupServer {
         /**
-         * The description of the backend server.
+         * The description of the backend server. The description must be 2 to 256 characters in length, and cannot start with http:// or https://.
          */
         description?: pulumi.Input<string>;
         /**
-         * The port used by the backend server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `serverType` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `serverType` to `Fc`.
+         * The port that is used by the backend server. Valid values: `1` to `65535`. You can specify at most 200 servers in each call.
+         *
+         * > **NOTE:**   This parameter is required if you set `ServerType` to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to set this parameter if `ServerType` is set to `Fc`.
          */
         port?: pulumi.Input<number>;
         /**
-         * Specifies whether to enable the remote IP address feature. You can specify up to 40 servers in each call. **Note:** If `serverType` is set to `Ip`, this parameter is available.
+         * Specifies whether to enable the remote IP feature. You can specify at most 200 servers in each call. Default values:
          */
         remoteIpEnabled?: pulumi.Input<boolean>;
         /**
-         * The ID of the backend server.
-         * - If `serverGroupType` is set to `Instance`, set the parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
-         * - If `serverGroupType` is set to `Ip`, set the parameter to an IP address specified in the server group.
-         * - If `serverGroupType` is set to `Fc`, set the parameter to the Alibaba Cloud Resource Name (ARN) of a function specified in the server group.
+         * The ID of the server group.
+         */
+        serverGroupId?: pulumi.Input<string>;
+        /**
+         * The ID of the backend server. You can specify at most 200 servers in each call.
+         *
+         * *   If the server group is of the `Instance` type, set ServerId to the ID of a resource of the `Ecs`, `Eni`, or `Eci` type.
+         *
+         * *   If the server group is of the `Ip` type, set ServerId to IP addresses.
+         *
+         * > **NOTE:**   You cannot perform this operation on a server group of the Function Compute type. You can call the [ListServerGroups](https://www.alibabacloud.com/help/en/doc-detail/213627.html) operation to query the type of server groups.
          */
         serverId: pulumi.Input<string>;
         /**
-         * The IP address of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. **Note:** If `serverGroupType` is set to `Fc`, you do not need to configure parameters, otherwise this attribute is required. If `serverGroupType` is set to `Ip`, the value of this property is the same as the `serverId` value.
+         * The IP address of the backend server. You can specify at most 200 servers in each call.
+         *
+         * > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
          */
         serverIp?: pulumi.Input<string>;
         /**
-         * The type of the server. The type of the server. Valid values:
-         * - `Ecs`: an ECS instance.
-         * - `Eni`: an ENI.
-         * - `Eci`: an elastic container instance.
-         * - `Ip`(Available since v1.194.0): an IP address.
-         * - `Fc`(Available since v1.194.0): a function.
+         * The type of the backend server. You can specify at most 200 servers in each call. Default values:
+         *
+         * - `Ecs`: Elastic Compute Service (ECS) instance
+         * - `Eni`: elastic network interface (ENI)
+         * - `Eci`: elastic container instance
+         * - `Ip`: IP address
+         * - `Fc`: Function Compute
          */
         serverType: pulumi.Input<string>;
         /**
-         * The status of the backend server.
+         * The status of the resource
          */
         status?: pulumi.Input<string>;
         /**
-         * The weight of the server. Default value: `100`. Valid values: `0` to `100`. If the value is set to `0`, no requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `serverType` to `Fc`.
+         * The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
+         *
+         * > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
          */
         weight?: pulumi.Input<number>;
     }
 
+    export interface ServerGroupSlowStartConfig {
+        /**
+         * The duration of a slow start.
+         *
+         * Valid values: 30 to 900.
+         *
+         * Default value: 30.
+         */
+        slowStartDuration?: pulumi.Input<number>;
+        /**
+         * Indicates whether slow starts are enabled. Valid values:
+         */
+        slowStartEnabled?: pulumi.Input<boolean>;
+    }
+
     export interface ServerGroupStickySessionConfig {
         /**
-         * The cookie to be configured on the server. **NOTE:** This parameter takes effect when the `stickySessionEnabled` parameter is set to `true` and the `stickySessionType` parameter is set to `Server`.
+         * The cookie to be configured on the server.
+         *
+         * The cookie must be 1 to 200 characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($).
+         *
+         * > **NOTE:**  This parameter takes effect when the `StickySessionEnabled` parameter is set to `true` and the `StickySessionType` parameter is set to `Server`.
          */
         cookie?: pulumi.Input<string>;
         /**
-         * The timeout period of a cookie. Unit: seconds. Default value: `1000`. Valid values: `1` to `86400`. **NOTE:** This parameter takes effect when the `stickySessionEnabled` parameter is set to `true` and the `stickySessionType` parameter is set to `Insert`.
+         * The maximum amount of time to wait before the session cookie expires. Unit: seconds.
+         *
+         * Valid values: `1` to `86400`.
+         *
+         * Default value: `1000`.
+         *
+         * > **NOTE:**   This parameter takes effect only when `StickySessionEnabled` is set to `true` and `StickySessionType` is set to `Insert`.
          */
         cookieTimeout?: pulumi.Input<number>;
         /**
-         * Specifies whether to enable session persistence. Default value: `false`. Valid values: `true`, `false`. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
+         * Specifies whether to enable session persistence. Valid values:
          */
         stickySessionEnabled?: pulumi.Input<boolean>;
         /**
-         * The method that is used to handle a cookie. Valid values: `Server`, `Insert`.
+         * The method that is used to handle a cookie. Valid values:
+         *
+         * *   `Insert`: inserts a cookie.
+         *
+         * ALB inserts a cookie (SERVERID) into the first HTTP or HTTPS response packet that is sent to a client. The next request from the client contains this cookie and the listener forwards this request to the recorded backend server.
+         *
+         * *   `Server`: rewrites a cookie.
+         *
+         * When ALB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. Subsequent requests to ALB carry this user-defined cookie, and ALB determines the destination servers of the requests based on the cookies.
+         *
+         * > **NOTE:**  This parameter takes effect when the `StickySessionEnabled` parameter is set to `true` for the server group.
          */
         stickySessionType?: pulumi.Input<string>;
+    }
+
+    export interface ServerGroupUchConfig {
+        /**
+         * The parameter type. Only QueryString can be filled.
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * Consistency hash parameter value
+         */
+        value?: pulumi.Input<string>;
     }
 }
 
@@ -2712,6 +2892,13 @@ export namespace cen {
          * The name of the stream classification rule.  The name must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
          */
         trafficMatchRuleName?: pulumi.Input<string>;
+    }
+
+    export interface TransitRouterMulticastDomainOptions {
+        /**
+         * Whether to enable IGMP function for multicast domain. Default value: `disable`. Valid values: `enable`, `disable`.
+         */
+        igmpv2Support?: pulumi.Input<string>;
     }
 
     export interface TransitRouterVpcAttachmentZoneMapping {
@@ -4658,6 +4845,10 @@ export namespace cs {
          */
         allowedUnsafeSysctls?: pulumi.Input<pulumi.Input<string>[]>;
         /**
+         * The list of IP addresses of the cluster DNS servers.
+         */
+        clusterDns?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
          * The maximum number of log files that can exist in each container.
          */
         containerLogMaxFiles?: pulumi.Input<string>;
@@ -4665,6 +4856,22 @@ export namespace cs {
          * The maximum size that can be reached before a log file is rotated.
          */
         containerLogMaxSize?: pulumi.Input<string>;
+        /**
+         * Specifies the maximum number of concurrent workers required to perform log rotation operations.
+         */
+        containerLogMaxWorkers?: pulumi.Input<string>;
+        /**
+         * Specifies the duration for which container logs are monitored for log rotation.
+         */
+        containerLogMonitorInterval?: pulumi.Input<string>;
+        /**
+         * CPU CFS quota constraint switch.
+         */
+        cpuCfsQuota?: pulumi.Input<string>;
+        /**
+         * CPU CFS quota period value.
+         */
+        cpuCfsQuotaPeriod?: pulumi.Input<string>;
         /**
          * Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
          */
@@ -4694,6 +4901,14 @@ export namespace cs {
          */
         featureGates?: pulumi.Input<{[key: string]: pulumi.Input<boolean>}>;
         /**
+         * If the image usage exceeds this threshold, image garbage collection will continue.
+         */
+        imageGcHighThresholdPercent?: pulumi.Input<string>;
+        /**
+         * Image garbage collection is not performed when the image usage is below this threshold.
+         */
+        imageGcLowThresholdPercent?: pulumi.Input<string>;
+        /**
          * Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
          */
         kubeApiBurst?: pulumi.Input<string>;
@@ -4710,6 +4925,14 @@ export namespace cs {
          */
         maxPods?: pulumi.Input<string>;
         /**
+         * The policy to be used by the memory manager.
+         */
+        memoryManagerPolicy?: pulumi.Input<string>;
+        /**
+         * The maximum number of PIDs that can be used in a Pod.
+         */
+        podPidsLimit?: pulumi.Input<string>;
+        /**
          * Read-only port number.
          */
         readOnlyPort?: pulumi.Input<string>;
@@ -4722,6 +4945,10 @@ export namespace cs {
          */
         registryPullQps?: pulumi.Input<string>;
         /**
+         * Reserve memory for NUMA nodes. See `reservedMemory` below.
+         */
+        reservedMemories?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolKubeletConfigurationReservedMemory>[]>;
+        /**
          * Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
          */
         serializeImagePulls?: pulumi.Input<string>;
@@ -4729,6 +4956,36 @@ export namespace cs {
          * Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
          */
         systemReserved?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Name of the Topology Manager policy used.
+         */
+        topologyManagerPolicy?: pulumi.Input<string>;
+        /**
+         * OpenTelemetry tracks the configuration information for client settings versioning. See `tracing` below.
+         */
+        tracing?: pulumi.Input<inputs.cs.NodePoolKubeletConfigurationTracing>;
+    }
+
+    export interface NodePoolKubeletConfigurationReservedMemory {
+        /**
+         * Memory resource limit.
+         */
+        limits?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * The NUMA node.
+         */
+        numaNode?: pulumi.Input<number>;
+    }
+
+    export interface NodePoolKubeletConfigurationTracing {
+        /**
+         * The endpoint of the collector.
+         */
+        endpoint?: pulumi.Input<string>;
+        /**
+         * Number of samples to be collected per million span.
+         */
+        samplingRatePerMillion?: pulumi.Input<string>;
     }
 
     export interface NodePoolLabel {
@@ -8959,6 +9216,24 @@ export namespace ens {
 }
 
 export namespace esa {
+    export interface HttpRequestHeaderModificationRuleRequestHeaderModification {
+        /**
+         * Request Header Name.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Mode of operation. Value range:
+         * add: add.
+         * del: delete
+         * modify: change.
+         */
+        operation: pulumi.Input<string>;
+        /**
+         * Request header value
+         */
+        value?: pulumi.Input<string>;
+    }
+
     export interface RecordAuthConf {
         /**
          * The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
@@ -10473,19 +10748,19 @@ export namespace fc {
 
     export interface V3FunctionCustomContainerConfig {
         /**
-         * (Deprecated) Image Acceleration Information (Obsolete).
+         * (Deprecated since v1.242.0) Image Acceleration Information (Obsolete)
          *
          * @deprecated Field 'acceleration_info' has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
          */
         accelerationInfo?: pulumi.Input<inputs.fc.V3FunctionCustomContainerConfigAccelerationInfo>;
         /**
-         * Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete).
+         * Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
          *
          * @deprecated Field 'acceleration_type' has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
          */
         accelerationType?: pulumi.Input<string>;
         /**
-         * ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete).
+         * ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
          *
          * @deprecated Field 'acr_instance_id' has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
          */
@@ -10518,7 +10793,7 @@ export namespace fc {
 
     export interface V3FunctionCustomContainerConfigAccelerationInfo {
         /**
-         * Image Acceleration Status (Deprecated).
+         * Image Acceleration Status (Deprecated)
          *
          * @deprecated Field 'status' has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated)
          */
@@ -10540,22 +10815,22 @@ export namespace fc {
          */
         dnsOptions?: pulumi.Input<pulumi.Input<inputs.fc.V3FunctionCustomDnsDnsOption>[]>;
         /**
-         * IP Address List of DNS servers.
+         * IP Address List of DNS servers
          */
         nameServers?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * DNS search domain list.
+         * DNS search domain list
          */
         searches?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface V3FunctionCustomDnsDnsOption {
         /**
-         * Configuration Item Name.
+         * Configuration Item Name
          */
         name?: pulumi.Input<string>;
         /**
-         * Configuration Item Value.
+         * Configuration Item Value
          */
         value?: pulumi.Input<string>;
     }
@@ -10590,14 +10865,14 @@ export namespace fc {
 
     export interface V3FunctionGpuConfig {
         /**
-         * GPU memory specification, unit: MB, multiple of 1024MB.
+         * GPU memory specification, unit: MB, multiple of 1024MB
          */
         gpuMemorySize?: pulumi.Input<number>;
         /**
          * GPU card architecture.
-         * - fc.gpu.tesla indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
-         * - fc.gpu.ampere indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
-         * - fc.gpu.ada Indicates the GPU instance Ada Lovelace architecture family card type.
+         * - fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
+         * - fc.gpu.ampere.1 indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
+         * - fc.gpu.ada.1 Indicates the GPU instance Ada Lovelace architecture family card type.
          */
         gpuType?: pulumi.Input<string>;
     }
@@ -10645,7 +10920,7 @@ export namespace fc {
          */
         enableRequestMetrics?: pulumi.Input<boolean>;
         /**
-         * Log Line First Matching Rules.
+         * Log Line First Matching Rules
          */
         logBeginRule?: pulumi.Input<string>;
         /**
@@ -10660,15 +10935,15 @@ export namespace fc {
 
     export interface V3FunctionNasConfig {
         /**
-         * Group ID.
+         * Group ID
          */
         groupId?: pulumi.Input<number>;
         /**
-         * Mount point list. See `mountPoints` below.
+         * Mount point list See `mountPoints` below.
          */
         mountPoints?: pulumi.Input<pulumi.Input<inputs.fc.V3FunctionNasConfigMountPoint>[]>;
         /**
-         * Account ID.
+         * Account ID
          */
         userId?: pulumi.Input<number>;
     }
@@ -10680,34 +10955,34 @@ export namespace fc {
         enableTls?: pulumi.Input<boolean>;
         mountDir?: pulumi.Input<string>;
         /**
-         * NAS server address.
+         * NAS server address
          */
         serverAddr?: pulumi.Input<string>;
     }
 
     export interface V3FunctionOssMountConfig {
         /**
-         * OSS mount point list. See `mountPoints` below.
+         * OSS mount point list See `mountPoints` below.
          */
         mountPoints?: pulumi.Input<pulumi.Input<inputs.fc.V3FunctionOssMountConfigMountPoint>[]>;
     }
 
     export interface V3FunctionOssMountConfigMountPoint {
         /**
-         * OSS Bucket name.
+         * OSS Bucket name
          */
         bucketName?: pulumi.Input<string>;
         /**
-         * Path of the mounted OSS Bucket.
+         * Path of the mounted OSS Bucket
          */
         bucketPath?: pulumi.Input<string>;
         /**
-         * OSS access endpoint.
+         * OSS access endpoint
          */
         endpoint?: pulumi.Input<string>;
         mountDir?: pulumi.Input<string>;
         /**
-         * Read-only.
+         * Read-only
          */
         readOnly?: pulumi.Input<boolean>;
     }
@@ -10725,15 +11000,15 @@ export namespace fc {
 
     export interface V3FunctionVpcConfig {
         /**
-         * Security group ID.
+         * Security group ID
          */
         securityGroupId?: pulumi.Input<string>;
         /**
-         * VPC network ID.
+         * VPC network ID
          */
         vpcId?: pulumi.Input<string>;
         /**
-         * Switch List.
+         * Switch List
          */
         vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -12150,47 +12425,63 @@ export namespace marketplace {
 export namespace maxcompute {
     export interface ProjectIpWhiteList {
         /**
-         * Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.> **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
+         * Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.
+         *
+         * > **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
          */
         ipList?: pulumi.Input<string>;
         /**
-         * Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.> **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
+         * Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.
+         *
+         * > **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
          */
         vpcIpList?: pulumi.Input<string>;
     }
 
     export interface ProjectProperties {
         /**
-         * Whether to allow full table scan. Default: false.
+         * Whether to allow full table scan. Default: false
          */
         allowFullScan?: pulumi.Input<boolean>;
         /**
-         * Whether to turn on Decimal2.0.
+         * Whether to turn on Decimal2.0
          */
         enableDecimal2?: pulumi.Input<boolean>;
         /**
          * Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
-         * > **NOTE :**:  To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.  To configure the permissions and IP whitelist parameters of the MaxCompute project, you must have the management permissions (Admin) of the corresponding project, including Super_Administrator, Admin, or custom management permissions. For more information, see the project management permissions list.  You can turn on storage encryption only for projects that have not turned on storage encryption. For projects that have turned on storage encryption, you cannot turn off storage encryption or change the encryption algorithm. See `encryption` below.
+         * > **NOTE :**:
+         * To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.
+         *
+         * To configure the permissions and IP whitelist parameters of the MaxCompute project, you must have the management permissions (Admin) of the corresponding project, including Super_Administrator, Admin, or custom management permissions. For more information, see the project management permissions list.
+         *
+         * You can turn on storage encryption only for projects that have not turned on storage encryption. For projects that have turned on storage encryption, you cannot turn off storage encryption or change the encryption algorithm. See `encryption` below.
          */
         encryption?: pulumi.Input<inputs.maxcompute.ProjectPropertiesEncryption>;
         /**
-         * Set the number of days to retain backup data. During this time, you can restore the current version to any backup version. The value range of days is [0,30], and the default value is 1. 0 means backup is turned off. The effective policy after adjusting the backup cycle is: Extend the backup cycle: The new backup cycle takes effect on the same day. Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
+         * Set the number of days to retain backup data. During this time, you can restore the current version to any backup version. The value range of days is [0,30], and the default value is 1. 0 means backup is turned off.
+         * The effective policy after adjusting the backup cycle is:
+         * Extend the backup cycle: The new backup cycle takes effect on the same day.
+         * Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
          */
         retentionDays?: pulumi.Input<number>;
         /**
-         * Set the maximum threshold of single SQL consumption, that is, set the ODPS. SQL. metering.value.max attribute. For details, see [Consumption Monitoring Alarm](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control). Unit: scan volume (GB)* complexity. .
+         * Set the maximum threshold for single SQL Consumption, that is, set the ODPS. SQL. metering.value.max attribute. For more information, see [Consumption control](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-controll).
+         * Unit: scan volume (GB)* complexity.
          */
         sqlMeteringMax?: pulumi.Input<string>;
         /**
-         * Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property,. See `tableLifecycle` below.
+         * Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property, See `tableLifecycle` below.
          */
         tableLifecycle?: pulumi.Input<inputs.maxcompute.ProjectPropertiesTableLifecycle>;
         /**
-         * Project time zone, example value: Asia/Shanghai.
+         * Project time zone, example value: Asia/Shanghai
          */
         timezone?: pulumi.Input<string>;
         /**
-         * Data type version. Value:(1/2/hive) 1: The original MaxCompute type system. 2: New type system introduced by MaxCompute 2.0. hive: the type system of the Hive compatibility mode introduced by MaxCompute 2.0.
+         * Data type version. Value:(1/2/hive)
+         * 1: The original MaxCompute type system.
+         * 2: New type system introduced by MaxCompute 2.0.
+         * hive: the type system of the Hive compatibility mode introduced by MaxCompute 2.0.
          */
         typeSystem?: pulumi.Input<string>;
     }
@@ -12201,7 +12492,9 @@ export namespace maxcompute {
          */
         algorithm?: pulumi.Input<string>;
         /**
-         * Only enable function is supported. Value: (true).
+         * Only enable function is supported. Value: (true)
+         *
+         * > **NOTE:** cannot be turned off after the function is turned on
          */
         enable?: pulumi.Input<boolean>;
         /**
@@ -12239,7 +12532,7 @@ export namespace maxcompute {
          */
         objectCreatorHasGrantPermission?: pulumi.Input<boolean>;
         /**
-         * Project protection. See `projectProtection` below.
+         * Project protection See `projectProtection` below.
          */
         projectProtection?: pulumi.Input<inputs.maxcompute.ProjectSecurityPropertiesProjectProtection>;
         /**
@@ -12254,13 +12547,126 @@ export namespace maxcompute {
 
     export interface ProjectSecurityPropertiesProjectProtection {
         /**
-         * Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection).
+         * Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection)
          */
         exceptionPolicy?: pulumi.Input<string>;
         /**
-         * Whether enabled, value:(true/false).
+         * Whether enabled, value:(true/false)
          */
         protected?: pulumi.Input<boolean>;
+    }
+
+    export interface QuotaPlanQuota {
+        /**
+         * Level 2 Quota CU configuration See `parameter` below.
+         */
+        parameter?: pulumi.Input<inputs.maxcompute.QuotaPlanQuotaParameter>;
+        /**
+         * Secondary Quota list
+         *
+         * > **NOTE:** need to list all secondary Quota
+         * See `subQuotaInfoList` below.
+         */
+        subQuotaInfoLists?: pulumi.Input<pulumi.Input<inputs.maxcompute.QuotaPlanQuotaSubQuotaInfoList>[]>;
+    }
+
+    export interface QuotaPlanQuotaParameter {
+        /**
+         * The value of elastic Reserved CUs.
+         *
+         * > **NOTE:**  The total number of elastically reserved CUs in all the level-2 quotas is equal to the number of elastically reserved CUs in the level-1 quota..
+         */
+        elasticReservedCu: pulumi.Input<number>;
+        /**
+         * The value of maxCU in Reserved CUs.
+         */
+        maxCu?: pulumi.Input<number>;
+        /**
+         * The value of minCU in Reserved CUs.
+         */
+        minCu?: pulumi.Input<number>;
+    }
+
+    export interface QuotaPlanQuotaSubQuotaInfoList {
+        /**
+         * The nickname of the level-2 quota.
+         */
+        nickName: pulumi.Input<string>;
+        /**
+         * The parameters of level-1 quota.
+         */
+        parameter?: pulumi.Input<inputs.maxcompute.QuotaPlanQuotaSubQuotaInfoListParameter>;
+    }
+
+    export interface QuotaPlanQuotaSubQuotaInfoListParameter {
+        /**
+         * The value of elastic Reserved CUs.
+         *
+         * > **NOTE:**  The total number of elastically reserved CUs in all the level-2 quotas is equal to the number of elastically reserved CUs in the level-1 quota..
+         */
+        elasticReservedCu: pulumi.Input<number>;
+        /**
+         * The value of maxCU in Reserved CUs.
+         */
+        maxCu: pulumi.Input<number>;
+        /**
+         * The value of minCU in Reserved CUs.
+         */
+        minCu: pulumi.Input<number>;
+    }
+
+    export interface QuotaScheduleScheduleList {
+        /**
+         * The value of effective condition. See `condition` below.
+         */
+        condition?: pulumi.Input<inputs.maxcompute.QuotaScheduleScheduleListCondition>;
+        /**
+         * The name of the quota plan.
+         */
+        plan: pulumi.Input<string>;
+        /**
+         * The type of the quota plan. Valid values: daily 
+         *
+         * > **NOTE:** Currently, only daily is supported.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface QuotaScheduleScheduleListCondition {
+        /**
+         * Effective time. The format is HH:mm, sample value: 00:00
+         *
+         * > **NOTE:** The configuration must start from the effective time of 00:00. The input time must be either a whole hour or a half hour, and the minimum interval between each schedule is 30 minutes.
+         */
+        at: pulumi.Input<string>;
+    }
+
+    export interface TunnelQuotaTimerQuotaTimer {
+        /**
+         * The time-sharing configuration start time. Reference value: 00:00
+         */
+        beginTime: pulumi.Input<string>;
+        /**
+         * The end time of the timesharing configuration. Reference value: 24:00
+         */
+        endTime: pulumi.Input<string>;
+        /**
+         * Time-sharing configuration parameters. See `tunnelQuotaParameter` below.
+         */
+        tunnelQuotaParameter?: pulumi.Input<inputs.maxcompute.TunnelQuotaTimerQuotaTimerTunnelQuotaParameter>;
+    }
+
+    export interface TunnelQuotaTimerQuotaTimerTunnelQuotaParameter {
+        /**
+         * The number of elastic reserved concurrency (Slot).
+         */
+        elasticReservedSlotNum: pulumi.Input<number>;
+        /**
+         * The number of reserved concurrency (Slot).
+         *
+         * > **NOTE:** The reserved concurrency (Slot) cannot be modified. The number of concurrency slots must be the same as that of the purchased tunnel quota.
+         */
+        slotNum: pulumi.Input<number>;
     }
 }
 

@@ -9,6 +9,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ListenerDefaultActionArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,29 +18,29 @@ public final class ListenerDefaultActionArgs extends com.pulumi.resources.Resour
     public static final ListenerDefaultActionArgs Empty = new ListenerDefaultActionArgs();
 
     /**
-     * The configurations of the actions. This parameter is required if Type is set to FowardGroup. See `forward_group_config` below for details.
+     * Forwarding Action Configurations See `forward_group_config` below.
      * 
      */
-    @Import(name="forwardGroupConfig", required=true)
-    private Output<ListenerDefaultActionForwardGroupConfigArgs> forwardGroupConfig;
+    @Import(name="forwardGroupConfig")
+    private @Nullable Output<ListenerDefaultActionForwardGroupConfigArgs> forwardGroupConfig;
 
     /**
-     * @return The configurations of the actions. This parameter is required if Type is set to FowardGroup. See `forward_group_config` below for details.
+     * @return Forwarding Action Configurations See `forward_group_config` below.
      * 
      */
-    public Output<ListenerDefaultActionForwardGroupConfigArgs> forwardGroupConfig() {
-        return this.forwardGroupConfig;
+    public Optional<Output<ListenerDefaultActionForwardGroupConfigArgs>> forwardGroupConfig() {
+        return Optional.ofNullable(this.forwardGroupConfig);
     }
 
     /**
-     * Action Type.
+     * Action Type
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return Action Type.
+     * @return Action Type
      * 
      */
     public Output<String> type() {
@@ -71,18 +73,18 @@ public final class ListenerDefaultActionArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param forwardGroupConfig The configurations of the actions. This parameter is required if Type is set to FowardGroup. See `forward_group_config` below for details.
+         * @param forwardGroupConfig Forwarding Action Configurations See `forward_group_config` below.
          * 
          * @return builder
          * 
          */
-        public Builder forwardGroupConfig(Output<ListenerDefaultActionForwardGroupConfigArgs> forwardGroupConfig) {
+        public Builder forwardGroupConfig(@Nullable Output<ListenerDefaultActionForwardGroupConfigArgs> forwardGroupConfig) {
             $.forwardGroupConfig = forwardGroupConfig;
             return this;
         }
 
         /**
-         * @param forwardGroupConfig The configurations of the actions. This parameter is required if Type is set to FowardGroup. See `forward_group_config` below for details.
+         * @param forwardGroupConfig Forwarding Action Configurations See `forward_group_config` below.
          * 
          * @return builder
          * 
@@ -92,7 +94,7 @@ public final class ListenerDefaultActionArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param type Action Type.
+         * @param type Action Type
          * 
          * @return builder
          * 
@@ -103,7 +105,7 @@ public final class ListenerDefaultActionArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param type Action Type.
+         * @param type Action Type
          * 
          * @return builder
          * 
@@ -113,9 +115,6 @@ public final class ListenerDefaultActionArgs extends com.pulumi.resources.Resour
         }
 
         public ListenerDefaultActionArgs build() {
-            if ($.forwardGroupConfig == null) {
-                throw new MissingRequiredPropertyException("ListenerDefaultActionArgs", "forwardGroupConfig");
-            }
             if ($.type == null) {
                 throw new MissingRequiredPropertyException("ListenerDefaultActionArgs", "type");
             }

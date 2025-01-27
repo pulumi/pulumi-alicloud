@@ -9,21 +9,58 @@ import * as utilities from "../utilities";
 /**
  * This data source provides available scaling rule resources.
  *
+ * > **NOTE:** Available since v1.39.0
+ *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const scalingrulesDs = alicloud.ess.getScalingRules({
- *     scalingGroupId: "scaling_group_id",
- *     ids: [
- *         "scaling_rule_id1",
- *         "scaling_rule_id2",
- *     ],
- *     nameRegex: "scaling_rule_name",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-ex";
+ * const defaultInteger = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
  * });
- * export const firstScalingRule = scalingrulesDs.then(scalingrulesDs => scalingrulesDs.rules?.[0]?.id);
+ * const myName = `${name}-${defaultInteger.result}`;
+ * const default = alicloud.getZones({
+ *     availableDiskCategory: "cloud_efficiency",
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: myName,
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ *     vswitchName: myName,
+ * });
+ * const defaultScalingGroup = new alicloud.ess.ScalingGroup("default", {
+ *     minSize: 1,
+ *     maxSize: 1,
+ *     scalingGroupName: myName,
+ *     removalPolicies: [
+ *         "OldestInstance",
+ *         "NewestInstance",
+ *     ],
+ *     vswitchIds: [defaultSwitch.id],
+ * });
+ * const defaultScalingRule = new alicloud.ess.ScalingRule("default", {
+ *     scalingGroupId: defaultScalingGroup.id,
+ *     scalingRuleName: myName,
+ *     adjustmentType: "PercentChangeInCapacity",
+ *     adjustmentValue: 1,
+ * });
+ * const scalingrulesDs = alicloud.ess.getScalingRulesOutput({
+ *     scalingGroupId: defaultScalingGroup.id,
+ *     ids: [defaultScalingRule.id],
+ *     nameRegex: myName,
+ * });
+ * export const firstScalingRule = scalingrulesDs.apply(scalingrulesDs => scalingrulesDs.rules?.[0]?.id);
  * ```
  */
 export function getScalingRules(args?: GetScalingRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetScalingRulesResult> {
@@ -98,21 +135,58 @@ export interface GetScalingRulesResult {
 /**
  * This data source provides available scaling rule resources.
  *
+ * > **NOTE:** Available since v1.39.0
+ *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const scalingrulesDs = alicloud.ess.getScalingRules({
- *     scalingGroupId: "scaling_group_id",
- *     ids: [
- *         "scaling_rule_id1",
- *         "scaling_rule_id2",
- *     ],
- *     nameRegex: "scaling_rule_name",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-ex";
+ * const defaultInteger = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
  * });
- * export const firstScalingRule = scalingrulesDs.then(scalingrulesDs => scalingrulesDs.rules?.[0]?.id);
+ * const myName = `${name}-${defaultInteger.result}`;
+ * const default = alicloud.getZones({
+ *     availableDiskCategory: "cloud_efficiency",
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: myName,
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ *     vswitchName: myName,
+ * });
+ * const defaultScalingGroup = new alicloud.ess.ScalingGroup("default", {
+ *     minSize: 1,
+ *     maxSize: 1,
+ *     scalingGroupName: myName,
+ *     removalPolicies: [
+ *         "OldestInstance",
+ *         "NewestInstance",
+ *     ],
+ *     vswitchIds: [defaultSwitch.id],
+ * });
+ * const defaultScalingRule = new alicloud.ess.ScalingRule("default", {
+ *     scalingGroupId: defaultScalingGroup.id,
+ *     scalingRuleName: myName,
+ *     adjustmentType: "PercentChangeInCapacity",
+ *     adjustmentValue: 1,
+ * });
+ * const scalingrulesDs = alicloud.ess.getScalingRulesOutput({
+ *     scalingGroupId: defaultScalingGroup.id,
+ *     ids: [defaultScalingRule.id],
+ *     nameRegex: myName,
+ * });
+ * export const firstScalingRule = scalingrulesDs.apply(scalingrulesDs => scalingrulesDs.rules?.[0]?.id);
  * ```
  */
 export function getScalingRulesOutput(args?: GetScalingRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetScalingRulesResult> {

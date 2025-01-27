@@ -18,7 +18,9 @@ public final class ProjectPropertiesEncryption {
      */
     private @Nullable String algorithm;
     /**
-     * @return Only enable function is supported. Value: (true).
+     * @return Only enable function is supported. Value: (true)
+     * 
+     * &gt; **NOTE:** cannot be turned off after the function is turned on
      * 
      */
     private @Nullable Boolean enable;
@@ -37,7 +39,9 @@ public final class ProjectPropertiesEncryption {
         return Optional.ofNullable(this.algorithm);
     }
     /**
-     * @return Only enable function is supported. Value: (true).
+     * @return Only enable function is supported. Value: (true)
+     * 
+     * &gt; **NOTE:** cannot be turned off after the function is turned on
      * 
      */
     public Optional<Boolean> enable() {

@@ -15,9 +15,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a DFS Mount Point resource.
+ * Provides a Apsara File Storage for HDFS (DFS) Mount Point resource.
  * 
- * For information about DFS Mount Point and how to use it, see [What is Mount Point](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
+ * For information about Apsara File Storage for HDFS (DFS) Mount Point and how to use it, see [What is Mount Point](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
  * 
  * &gt; **NOTE:** Available since v1.140.0.
  * 
@@ -33,8 +33,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.dfs.DfsFunctions;
- * import com.pulumi.alicloud.dfs.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
@@ -60,9 +58,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         final var default = DfsFunctions.getZones();
- * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *         var default_ = new Network("default", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("10.4.0.0/16")
  *             .build());
@@ -70,14 +66,14 @@ import javax.annotation.Nullable;
  *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("10.4.0.0/24")
- *             .vpcId(defaultNetwork.id())
- *             .zoneId(default_.zones()[0].zoneId())
+ *             .vpcId(default_.id())
+ *             .zoneId("cn-hangzhou-e")
  *             .build());
  * 
  *         var defaultFileSystem = new FileSystem("defaultFileSystem", FileSystemArgs.builder()
- *             .storageType(default_.zones()[0].options()[0].storageType())
- *             .zoneId(default_.zones()[0].zoneId())
- *             .protocolType("HDFS")
+ *             .storageType("STANDARD")
+ *             .zoneId("cn-hangzhou-e")
+ *             .protocolType("PANGU")
  *             .description(name)
  *             .fileSystemName(name)
  *             .throughputMode("Provisioned")
@@ -93,7 +89,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultMountPoint = new MountPoint("defaultMountPoint", MountPointArgs.builder()
  *             .description(name)
- *             .vpcId(defaultNetwork.id())
+ *             .vpcId(default_.id())
  *             .fileSystemId(defaultFileSystem.id())
  *             .accessGroupId(defaultAccessGroup.id())
  *             .networkType("VPC")
@@ -108,7 +104,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * DFS Mount Point can be imported using the id, e.g.
+ * Apsara File Storage for HDFS (DFS) Mount Point can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:dfs/mountPoint:MountPoint example &lt;file_system_id&gt;:&lt;mount_point_id&gt;
@@ -214,6 +210,20 @@ public class MountPoint extends com.pulumi.resources.CustomResource {
      */
     public Output<String> networkType() {
         return this.networkType;
+    }
+    /**
+     * (Available since v1.242.0) The region ID of the Mount Point.
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return (Available since v1.242.0) The region ID of the Mount Point.
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
     }
     /**
      * Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.

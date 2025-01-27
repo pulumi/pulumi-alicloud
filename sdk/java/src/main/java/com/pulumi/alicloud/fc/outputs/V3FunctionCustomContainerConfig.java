@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class V3FunctionCustomContainerConfig {
     /**
-     * @return (Deprecated) Image Acceleration Information (Obsolete).
+     * @return (Deprecated since v1.242.0) Image Acceleration Information (Obsolete)
      * 
      * @deprecated
      * Field &#39;acceleration_info&#39; has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
@@ -25,7 +25,7 @@ public final class V3FunctionCustomContainerConfig {
     @Deprecated /* Field 'acceleration_info' has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete) */
     private @Nullable V3FunctionCustomContainerConfigAccelerationInfo accelerationInfo;
     /**
-     * @return Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete).
+     * @return Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
      * 
      * @deprecated
      * Field &#39;acceleration_type&#39; has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
@@ -34,7 +34,7 @@ public final class V3FunctionCustomContainerConfig {
     @Deprecated /* Field 'acceleration_type' has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete) */
     private @Nullable String accelerationType;
     /**
-     * @return ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete).
+     * @return ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
      * 
      * @deprecated
      * Field &#39;acr_instance_id&#39; has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
@@ -75,7 +75,7 @@ public final class V3FunctionCustomContainerConfig {
 
     private V3FunctionCustomContainerConfig() {}
     /**
-     * @return (Deprecated) Image Acceleration Information (Obsolete).
+     * @return (Deprecated since v1.242.0) Image Acceleration Information (Obsolete)
      * 
      * @deprecated
      * Field &#39;acceleration_info&#39; has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
@@ -86,7 +86,7 @@ public final class V3FunctionCustomContainerConfig {
         return Optional.ofNullable(this.accelerationInfo);
     }
     /**
-     * @return Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete).
+     * @return Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
      * 
      * @deprecated
      * Field &#39;acceleration_type&#39; has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
@@ -97,7 +97,7 @@ public final class V3FunctionCustomContainerConfig {
         return Optional.ofNullable(this.accelerationType);
     }
     /**
-     * @return ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete).
+     * @return ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
      * 
      * @deprecated
      * Field &#39;acr_instance_id&#39; has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)

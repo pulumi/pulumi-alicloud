@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The port that is used by the server. Valid values: `1` to `65535`.
+        /// The port that is used by the server.
         /// </summary>
         public readonly int Port;
         /// <summary>
@@ -30,15 +30,15 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly string ServerIp;
         /// <summary>
-        /// The type of the server. The type of the server. Valid values: `Ecs`, `Eni` and `Eci`.
+        /// The type of the server. The type of the server.
         /// </summary>
         public readonly string ServerType;
         /// <summary>
-        /// The status of the resource.
+        /// The status of the Server Group. Valid values: `Available`, `Configuring`, `Provisioning`.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The weight of the server.  Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the server.
+        /// The weight of the server.
         /// </summary>
         public readonly int Weight;
 

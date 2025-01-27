@@ -1833,9 +1833,9 @@ class V3FunctionCustomContainerConfig(dict):
                  port: Optional[int] = None,
                  resolved_image_uri: Optional[str] = None):
         """
-        :param 'V3FunctionCustomContainerConfigAccelerationInfoArgs' acceleration_info: (Deprecated) Image Acceleration Information (Obsolete).
-        :param str acceleration_type: Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete).
-        :param str acr_instance_id: ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete).
+        :param 'V3FunctionCustomContainerConfigAccelerationInfoArgs' acceleration_info: (Deprecated since v1.242.0) Image Acceleration Information (Obsolete)
+        :param str acceleration_type: Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
+        :param str acr_instance_id: ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
         :param Sequence[str] commands: Container startup parameters.
         :param Sequence[str] entrypoints: Container start command.
         :param 'V3FunctionCustomContainerConfigHealthCheckConfigArgs' health_check_config: Function custom health check configuration See `health_check_config` below.
@@ -1867,7 +1867,7 @@ class V3FunctionCustomContainerConfig(dict):
     @_utilities.deprecated("""Field 'acceleration_info' has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)""")
     def acceleration_info(self) -> Optional['outputs.V3FunctionCustomContainerConfigAccelerationInfo']:
         """
-        (Deprecated) Image Acceleration Information (Obsolete).
+        (Deprecated since v1.242.0) Image Acceleration Information (Obsolete)
         """
         return pulumi.get(self, "acceleration_info")
 
@@ -1876,7 +1876,7 @@ class V3FunctionCustomContainerConfig(dict):
     @_utilities.deprecated("""Field 'acceleration_type' has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)""")
     def acceleration_type(self) -> Optional[str]:
         """
-        Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete).
+        Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
         """
         return pulumi.get(self, "acceleration_type")
 
@@ -1885,7 +1885,7 @@ class V3FunctionCustomContainerConfig(dict):
     @_utilities.deprecated("""Field 'acr_instance_id' has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)""")
     def acr_instance_id(self) -> Optional[str]:
         """
-        ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete).
+        ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
         """
         return pulumi.get(self, "acr_instance_id")
 
@@ -1943,7 +1943,7 @@ class V3FunctionCustomContainerConfigAccelerationInfo(dict):
     def __init__(__self__, *,
                  status: Optional[str] = None):
         """
-        :param str status: Image Acceleration Status (Deprecated).
+        :param str status: Image Acceleration Status (Deprecated)
         """
         if status is not None:
             pulumi.set(__self__, "status", status)
@@ -1953,7 +1953,7 @@ class V3FunctionCustomContainerConfigAccelerationInfo(dict):
     @_utilities.deprecated("""Field 'status' has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated)""")
     def status(self) -> Optional[str]:
         """
-        Image Acceleration Status (Deprecated).
+        Image Acceleration Status (Deprecated)
         """
         return pulumi.get(self, "status")
 
@@ -2065,8 +2065,8 @@ class V3FunctionCustomDns(dict):
                  searches: Optional[Sequence[str]] = None):
         """
         :param Sequence['V3FunctionCustomDnsDnsOptionArgs'] dns_options: List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required. See `dns_options` below.
-        :param Sequence[str] name_servers: IP Address List of DNS servers.
-        :param Sequence[str] searches: DNS search domain list.
+        :param Sequence[str] name_servers: IP Address List of DNS servers
+        :param Sequence[str] searches: DNS search domain list
         """
         if dns_options is not None:
             pulumi.set(__self__, "dns_options", dns_options)
@@ -2087,7 +2087,7 @@ class V3FunctionCustomDns(dict):
     @pulumi.getter(name="nameServers")
     def name_servers(self) -> Optional[Sequence[str]]:
         """
-        IP Address List of DNS servers.
+        IP Address List of DNS servers
         """
         return pulumi.get(self, "name_servers")
 
@@ -2095,7 +2095,7 @@ class V3FunctionCustomDns(dict):
     @pulumi.getter
     def searches(self) -> Optional[Sequence[str]]:
         """
-        DNS search domain list.
+        DNS search domain list
         """
         return pulumi.get(self, "searches")
 
@@ -2106,8 +2106,8 @@ class V3FunctionCustomDnsDnsOption(dict):
                  name: Optional[str] = None,
                  value: Optional[str] = None):
         """
-        :param str name: Configuration Item Name.
-        :param str value: Configuration Item Value.
+        :param str name: Configuration Item Name
+        :param str value: Configuration Item Value
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -2118,7 +2118,7 @@ class V3FunctionCustomDnsDnsOption(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Configuration Item Name.
+        Configuration Item Name
         """
         return pulumi.get(self, "name")
 
@@ -2126,7 +2126,7 @@ class V3FunctionCustomDnsDnsOption(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        Configuration Item Value.
+        Configuration Item Value
         """
         return pulumi.get(self, "value")
 
@@ -2308,11 +2308,11 @@ class V3FunctionGpuConfig(dict):
                  gpu_memory_size: Optional[int] = None,
                  gpu_type: Optional[str] = None):
         """
-        :param int gpu_memory_size: GPU memory specification, unit: MB, multiple of 1024MB.
+        :param int gpu_memory_size: GPU memory specification, unit: MB, multiple of 1024MB
         :param str gpu_type: GPU card architecture.
-               - fc.gpu.tesla indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
-               - fc.gpu.ampere indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
-               - fc.gpu.ada Indicates the GPU instance Ada Lovelace architecture family card type.
+               - fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
+               - fc.gpu.ampere.1 indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
+               - fc.gpu.ada.1 Indicates the GPU instance Ada Lovelace architecture family card type.
         """
         if gpu_memory_size is not None:
             pulumi.set(__self__, "gpu_memory_size", gpu_memory_size)
@@ -2323,7 +2323,7 @@ class V3FunctionGpuConfig(dict):
     @pulumi.getter(name="gpuMemorySize")
     def gpu_memory_size(self) -> Optional[int]:
         """
-        GPU memory specification, unit: MB, multiple of 1024MB.
+        GPU memory specification, unit: MB, multiple of 1024MB
         """
         return pulumi.get(self, "gpu_memory_size")
 
@@ -2332,9 +2332,9 @@ class V3FunctionGpuConfig(dict):
     def gpu_type(self) -> Optional[str]:
         """
         GPU card architecture.
-        - fc.gpu.tesla indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
-        - fc.gpu.ampere indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
-        - fc.gpu.ada Indicates the GPU instance Ada Lovelace architecture family card type.
+        - fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
+        - fc.gpu.ampere.1 indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
+        - fc.gpu.ada.1 Indicates the GPU instance Ada Lovelace architecture family card type.
         """
         return pulumi.get(self, "gpu_type")
 
@@ -2481,7 +2481,7 @@ class V3FunctionLogConfig(dict):
         """
         :param bool enable_instance_metrics: After this feature is enabled, you can view core metrics such as instance-level CPU usage, memory usage, instance network status, and the number of requests within an instance. false: The default value, which means that instance-level metrics are turned off. true: indicates that instance-level metrics are enabled.
         :param bool enable_request_metrics: After this function is enabled, you can view the time and memory consumed by a call to all functions under this service. false: indicates that request-level metrics are turned off. true: The default value, indicating that request-level metrics are enabled.
-        :param str log_begin_rule: Log Line First Matching Rules.
+        :param str log_begin_rule: Log Line First Matching Rules
         :param str logstore: The Logstore name of log service.
         :param str project: The name of the log service Project.
         """
@@ -2516,7 +2516,7 @@ class V3FunctionLogConfig(dict):
     @pulumi.getter(name="logBeginRule")
     def log_begin_rule(self) -> Optional[str]:
         """
-        Log Line First Matching Rules.
+        Log Line First Matching Rules
         """
         return pulumi.get(self, "log_begin_rule")
 
@@ -2565,9 +2565,9 @@ class V3FunctionNasConfig(dict):
                  mount_points: Optional[Sequence['outputs.V3FunctionNasConfigMountPoint']] = None,
                  user_id: Optional[int] = None):
         """
-        :param int group_id: Group ID.
-        :param Sequence['V3FunctionNasConfigMountPointArgs'] mount_points: Mount point list. See `mount_points` below.
-        :param int user_id: Account ID.
+        :param int group_id: Group ID
+        :param Sequence['V3FunctionNasConfigMountPointArgs'] mount_points: Mount point list See `mount_points` below.
+        :param int user_id: Account ID
         """
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
@@ -2580,7 +2580,7 @@ class V3FunctionNasConfig(dict):
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[int]:
         """
-        Group ID.
+        Group ID
         """
         return pulumi.get(self, "group_id")
 
@@ -2588,7 +2588,7 @@ class V3FunctionNasConfig(dict):
     @pulumi.getter(name="mountPoints")
     def mount_points(self) -> Optional[Sequence['outputs.V3FunctionNasConfigMountPoint']]:
         """
-        Mount point list. See `mount_points` below.
+        Mount point list See `mount_points` below.
         """
         return pulumi.get(self, "mount_points")
 
@@ -2596,7 +2596,7 @@ class V3FunctionNasConfig(dict):
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[int]:
         """
-        Account ID.
+        Account ID
         """
         return pulumi.get(self, "user_id")
 
@@ -2630,7 +2630,7 @@ class V3FunctionNasConfigMountPoint(dict):
                  server_addr: Optional[str] = None):
         """
         :param bool enable_tls: Use transport encryption to mount. Note: only general-purpose NAS supports transmission encryption.
-        :param str server_addr: NAS server address.
+        :param str server_addr: NAS server address
         """
         if enable_tls is not None:
             pulumi.set(__self__, "enable_tls", enable_tls)
@@ -2656,7 +2656,7 @@ class V3FunctionNasConfigMountPoint(dict):
     @pulumi.getter(name="serverAddr")
     def server_addr(self) -> Optional[str]:
         """
-        NAS server address.
+        NAS server address
         """
         return pulumi.get(self, "server_addr")
 
@@ -2683,7 +2683,7 @@ class V3FunctionOssMountConfig(dict):
     def __init__(__self__, *,
                  mount_points: Optional[Sequence['outputs.V3FunctionOssMountConfigMountPoint']] = None):
         """
-        :param Sequence['V3FunctionOssMountConfigMountPointArgs'] mount_points: OSS mount point list. See `mount_points` below.
+        :param Sequence['V3FunctionOssMountConfigMountPointArgs'] mount_points: OSS mount point list See `mount_points` below.
         """
         if mount_points is not None:
             pulumi.set(__self__, "mount_points", mount_points)
@@ -2692,7 +2692,7 @@ class V3FunctionOssMountConfig(dict):
     @pulumi.getter(name="mountPoints")
     def mount_points(self) -> Optional[Sequence['outputs.V3FunctionOssMountConfigMountPoint']]:
         """
-        OSS mount point list. See `mount_points` below.
+        OSS mount point list See `mount_points` below.
         """
         return pulumi.get(self, "mount_points")
 
@@ -2729,10 +2729,10 @@ class V3FunctionOssMountConfigMountPoint(dict):
                  mount_dir: Optional[str] = None,
                  read_only: Optional[bool] = None):
         """
-        :param str bucket_name: OSS Bucket name.
-        :param str bucket_path: Path of the mounted OSS Bucket.
-        :param str endpoint: OSS access endpoint.
-        :param bool read_only: Read-only.
+        :param str bucket_name: OSS Bucket name
+        :param str bucket_path: Path of the mounted OSS Bucket
+        :param str endpoint: OSS access endpoint
+        :param bool read_only: Read-only
         """
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
@@ -2749,7 +2749,7 @@ class V3FunctionOssMountConfigMountPoint(dict):
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> Optional[str]:
         """
-        OSS Bucket name.
+        OSS Bucket name
         """
         return pulumi.get(self, "bucket_name")
 
@@ -2757,7 +2757,7 @@ class V3FunctionOssMountConfigMountPoint(dict):
     @pulumi.getter(name="bucketPath")
     def bucket_path(self) -> Optional[str]:
         """
-        Path of the mounted OSS Bucket.
+        Path of the mounted OSS Bucket
         """
         return pulumi.get(self, "bucket_path")
 
@@ -2765,7 +2765,7 @@ class V3FunctionOssMountConfigMountPoint(dict):
     @pulumi.getter
     def endpoint(self) -> Optional[str]:
         """
-        OSS access endpoint.
+        OSS access endpoint
         """
         return pulumi.get(self, "endpoint")
 
@@ -2778,7 +2778,7 @@ class V3FunctionOssMountConfigMountPoint(dict):
     @pulumi.getter(name="readOnly")
     def read_only(self) -> Optional[bool]:
         """
-        Read-only.
+        Read-only
         """
         return pulumi.get(self, "read_only")
 
@@ -2842,9 +2842,9 @@ class V3FunctionVpcConfig(dict):
                  vpc_id: Optional[str] = None,
                  vswitch_ids: Optional[Sequence[str]] = None):
         """
-        :param str security_group_id: Security group ID.
-        :param str vpc_id: VPC network ID.
-        :param Sequence[str] vswitch_ids: Switch List.
+        :param str security_group_id: Security group ID
+        :param str vpc_id: VPC network ID
+        :param Sequence[str] vswitch_ids: Switch List
         """
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
@@ -2857,7 +2857,7 @@ class V3FunctionVpcConfig(dict):
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[str]:
         """
-        Security group ID.
+        Security group ID
         """
         return pulumi.get(self, "security_group_id")
 
@@ -2865,7 +2865,7 @@ class V3FunctionVpcConfig(dict):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[str]:
         """
-        VPC network ID.
+        VPC network ID
         """
         return pulumi.get(self, "vpc_id")
 
@@ -2873,7 +2873,7 @@ class V3FunctionVpcConfig(dict):
     @pulumi.getter(name="vswitchIds")
     def vswitch_ids(self) -> Optional[Sequence[str]]:
         """
-        Switch List.
+        Switch List
         """
         return pulumi.get(self, "vswitch_ids")
 

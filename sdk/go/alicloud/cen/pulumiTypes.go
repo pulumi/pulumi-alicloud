@@ -200,6 +200,143 @@ func (o TrafficMarkingPolicyTrafficMatchRuleArrayOutput) Index(i pulumi.IntInput
 	}).(TrafficMarkingPolicyTrafficMatchRuleOutput)
 }
 
+type TransitRouterMulticastDomainOptions struct {
+	// Whether to enable IGMP function for multicast domain. Default value: `disable`. Valid values: `enable`, `disable`.
+	Igmpv2Support *string `pulumi:"igmpv2Support"`
+}
+
+// TransitRouterMulticastDomainOptionsInput is an input type that accepts TransitRouterMulticastDomainOptionsArgs and TransitRouterMulticastDomainOptionsOutput values.
+// You can construct a concrete instance of `TransitRouterMulticastDomainOptionsInput` via:
+//
+//	TransitRouterMulticastDomainOptionsArgs{...}
+type TransitRouterMulticastDomainOptionsInput interface {
+	pulumi.Input
+
+	ToTransitRouterMulticastDomainOptionsOutput() TransitRouterMulticastDomainOptionsOutput
+	ToTransitRouterMulticastDomainOptionsOutputWithContext(context.Context) TransitRouterMulticastDomainOptionsOutput
+}
+
+type TransitRouterMulticastDomainOptionsArgs struct {
+	// Whether to enable IGMP function for multicast domain. Default value: `disable`. Valid values: `enable`, `disable`.
+	Igmpv2Support pulumi.StringPtrInput `pulumi:"igmpv2Support"`
+}
+
+func (TransitRouterMulticastDomainOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransitRouterMulticastDomainOptions)(nil)).Elem()
+}
+
+func (i TransitRouterMulticastDomainOptionsArgs) ToTransitRouterMulticastDomainOptionsOutput() TransitRouterMulticastDomainOptionsOutput {
+	return i.ToTransitRouterMulticastDomainOptionsOutputWithContext(context.Background())
+}
+
+func (i TransitRouterMulticastDomainOptionsArgs) ToTransitRouterMulticastDomainOptionsOutputWithContext(ctx context.Context) TransitRouterMulticastDomainOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterMulticastDomainOptionsOutput)
+}
+
+func (i TransitRouterMulticastDomainOptionsArgs) ToTransitRouterMulticastDomainOptionsPtrOutput() TransitRouterMulticastDomainOptionsPtrOutput {
+	return i.ToTransitRouterMulticastDomainOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i TransitRouterMulticastDomainOptionsArgs) ToTransitRouterMulticastDomainOptionsPtrOutputWithContext(ctx context.Context) TransitRouterMulticastDomainOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterMulticastDomainOptionsOutput).ToTransitRouterMulticastDomainOptionsPtrOutputWithContext(ctx)
+}
+
+// TransitRouterMulticastDomainOptionsPtrInput is an input type that accepts TransitRouterMulticastDomainOptionsArgs, TransitRouterMulticastDomainOptionsPtr and TransitRouterMulticastDomainOptionsPtrOutput values.
+// You can construct a concrete instance of `TransitRouterMulticastDomainOptionsPtrInput` via:
+//
+//	        TransitRouterMulticastDomainOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type TransitRouterMulticastDomainOptionsPtrInput interface {
+	pulumi.Input
+
+	ToTransitRouterMulticastDomainOptionsPtrOutput() TransitRouterMulticastDomainOptionsPtrOutput
+	ToTransitRouterMulticastDomainOptionsPtrOutputWithContext(context.Context) TransitRouterMulticastDomainOptionsPtrOutput
+}
+
+type transitRouterMulticastDomainOptionsPtrType TransitRouterMulticastDomainOptionsArgs
+
+func TransitRouterMulticastDomainOptionsPtr(v *TransitRouterMulticastDomainOptionsArgs) TransitRouterMulticastDomainOptionsPtrInput {
+	return (*transitRouterMulticastDomainOptionsPtrType)(v)
+}
+
+func (*transitRouterMulticastDomainOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransitRouterMulticastDomainOptions)(nil)).Elem()
+}
+
+func (i *transitRouterMulticastDomainOptionsPtrType) ToTransitRouterMulticastDomainOptionsPtrOutput() TransitRouterMulticastDomainOptionsPtrOutput {
+	return i.ToTransitRouterMulticastDomainOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *transitRouterMulticastDomainOptionsPtrType) ToTransitRouterMulticastDomainOptionsPtrOutputWithContext(ctx context.Context) TransitRouterMulticastDomainOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterMulticastDomainOptionsPtrOutput)
+}
+
+type TransitRouterMulticastDomainOptionsOutput struct{ *pulumi.OutputState }
+
+func (TransitRouterMulticastDomainOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransitRouterMulticastDomainOptions)(nil)).Elem()
+}
+
+func (o TransitRouterMulticastDomainOptionsOutput) ToTransitRouterMulticastDomainOptionsOutput() TransitRouterMulticastDomainOptionsOutput {
+	return o
+}
+
+func (o TransitRouterMulticastDomainOptionsOutput) ToTransitRouterMulticastDomainOptionsOutputWithContext(ctx context.Context) TransitRouterMulticastDomainOptionsOutput {
+	return o
+}
+
+func (o TransitRouterMulticastDomainOptionsOutput) ToTransitRouterMulticastDomainOptionsPtrOutput() TransitRouterMulticastDomainOptionsPtrOutput {
+	return o.ToTransitRouterMulticastDomainOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o TransitRouterMulticastDomainOptionsOutput) ToTransitRouterMulticastDomainOptionsPtrOutputWithContext(ctx context.Context) TransitRouterMulticastDomainOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransitRouterMulticastDomainOptions) *TransitRouterMulticastDomainOptions {
+		return &v
+	}).(TransitRouterMulticastDomainOptionsPtrOutput)
+}
+
+// Whether to enable IGMP function for multicast domain. Default value: `disable`. Valid values: `enable`, `disable`.
+func (o TransitRouterMulticastDomainOptionsOutput) Igmpv2Support() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransitRouterMulticastDomainOptions) *string { return v.Igmpv2Support }).(pulumi.StringPtrOutput)
+}
+
+type TransitRouterMulticastDomainOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (TransitRouterMulticastDomainOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransitRouterMulticastDomainOptions)(nil)).Elem()
+}
+
+func (o TransitRouterMulticastDomainOptionsPtrOutput) ToTransitRouterMulticastDomainOptionsPtrOutput() TransitRouterMulticastDomainOptionsPtrOutput {
+	return o
+}
+
+func (o TransitRouterMulticastDomainOptionsPtrOutput) ToTransitRouterMulticastDomainOptionsPtrOutputWithContext(ctx context.Context) TransitRouterMulticastDomainOptionsPtrOutput {
+	return o
+}
+
+func (o TransitRouterMulticastDomainOptionsPtrOutput) Elem() TransitRouterMulticastDomainOptionsOutput {
+	return o.ApplyT(func(v *TransitRouterMulticastDomainOptions) TransitRouterMulticastDomainOptions {
+		if v != nil {
+			return *v
+		}
+		var ret TransitRouterMulticastDomainOptions
+		return ret
+	}).(TransitRouterMulticastDomainOptionsOutput)
+}
+
+// Whether to enable IGMP function for multicast domain. Default value: `disable`. Valid values: `enable`, `disable`.
+func (o TransitRouterMulticastDomainOptionsPtrOutput) Igmpv2Support() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransitRouterMulticastDomainOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Igmpv2Support
+	}).(pulumi.StringPtrOutput)
+}
+
 type TransitRouterVpcAttachmentZoneMapping struct {
 	// The ID of the vSwitch that you want to add to the VPC connection.  You can specify at most 10 vSwitches in each call.
 	// - If the VPC connection belongs to the current Alibaba Cloud account, you can call the [DescribeVSwitches](https://www.alibabacloud.com/help/en/doc-detail/35748.html) operation to query the IDs of the vSwitches and zones of the VPC.
@@ -6361,6 +6498,8 @@ func (o GetVbrHealthChecksCheckArrayOutput) Index(i pulumi.IntInput) GetVbrHealt
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TrafficMarkingPolicyTrafficMatchRuleInput)(nil)).Elem(), TrafficMarkingPolicyTrafficMatchRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TrafficMarkingPolicyTrafficMatchRuleArrayInput)(nil)).Elem(), TrafficMarkingPolicyTrafficMatchRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterMulticastDomainOptionsInput)(nil)).Elem(), TransitRouterMulticastDomainOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterMulticastDomainOptionsPtrInput)(nil)).Elem(), TransitRouterMulticastDomainOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterVpcAttachmentZoneMappingInput)(nil)).Elem(), TransitRouterVpcAttachmentZoneMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterVpcAttachmentZoneMappingArrayInput)(nil)).Elem(), TransitRouterVpcAttachmentZoneMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterVpnAttachmentZoneInput)(nil)).Elem(), TransitRouterVpnAttachmentZoneArgs{})
@@ -6439,6 +6578,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVbrHealthChecksCheckArrayInput)(nil)).Elem(), GetVbrHealthChecksCheckArray{})
 	pulumi.RegisterOutputType(TrafficMarkingPolicyTrafficMatchRuleOutput{})
 	pulumi.RegisterOutputType(TrafficMarkingPolicyTrafficMatchRuleArrayOutput{})
+	pulumi.RegisterOutputType(TransitRouterMulticastDomainOptionsOutput{})
+	pulumi.RegisterOutputType(TransitRouterMulticastDomainOptionsPtrOutput{})
 	pulumi.RegisterOutputType(TransitRouterVpcAttachmentZoneMappingOutput{})
 	pulumi.RegisterOutputType(TransitRouterVpcAttachmentZoneMappingArrayOutput{})
 	pulumi.RegisterOutputType(TransitRouterVpnAttachmentZoneOutput{})

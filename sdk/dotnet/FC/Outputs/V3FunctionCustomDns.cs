@@ -18,11 +18,11 @@ namespace Pulumi.AliCloud.FC.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.V3FunctionCustomDnsDnsOption> DnsOptions;
         /// <summary>
-        /// IP Address List of DNS servers.
+        /// IP Address List of DNS servers
         /// </summary>
         public readonly ImmutableArray<string> NameServers;
         /// <summary>
-        /// DNS search domain list.
+        /// DNS search domain list
         /// </summary>
         public readonly ImmutableArray<string> Searches;
 

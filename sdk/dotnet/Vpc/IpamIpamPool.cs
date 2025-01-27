@@ -110,6 +110,12 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> RegionId { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// The instance ID of the source IPAM address pool.
         /// 
         /// &gt; **NOTE:**  If this parameter is not entered, the created address pool is the parent address pool.
@@ -244,6 +250,12 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? PoolRegionId { get; set; }
 
         /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
         /// The instance ID of the source IPAM address pool.
         /// 
         /// &gt; **NOTE:**  If this parameter is not entered, the created address pool is the parent address pool.
@@ -350,6 +362,12 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("regionId")]
         public Input<string>? RegionId { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
         /// The instance ID of the source IPAM address pool.

@@ -16,54 +16,6 @@ namespace Pulumi.AliCloud.Kms
     /// 
     /// &gt; **NOTE:** Available since v1.210.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var @default = AliCloud.Vpc.GetNetworks.Invoke(new()
-    ///     {
-    ///         NameRegex = "^default-NODELETING$",
-    ///         CidrBlock = "172.16.0.0/16",
-    ///     });
-    /// 
-    ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
-    ///     {
-    ///         VpcId = @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         ZoneId = "cn-hangzhou-h",
-    ///     });
-    /// 
-    ///     var defaultInstance = new AliCloud.Kms.Instance("default", new()
-    ///     {
-    ///         ProductVersion = "3",
-    ///         VpcId = @default.Apply(@default =&gt; @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0])),
-    ///         ZoneIds = new[]
-    ///         {
-    ///             "cn-hangzhou-h",
-    ///             "cn-hangzhou-g",
-    ///         },
-    ///         VswitchIds = new[]
-    ///         {
-    ///             defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
-    ///         },
-    ///         VpcNum = 1,
-    ///         KeyNum = 1000,
-    ///         SecretNum = 0,
-    ///         Spec = 1000,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// KMS Instance can be imported using the id, e.g.

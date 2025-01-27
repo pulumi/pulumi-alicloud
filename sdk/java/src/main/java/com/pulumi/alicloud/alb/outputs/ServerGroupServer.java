@@ -15,114 +15,146 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServerGroupServer {
     /**
-     * @return The description of the backend server.
+     * @return The description of the backend server. The description must be 2 to 256 characters in length, and cannot start with http:// or https://.
      * 
      */
     private @Nullable String description;
     /**
-     * @return The port used by the backend server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `server_type` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `server_type` to `Fc`.
+     * @return The port that is used by the backend server. Valid values: `1` to `65535`. You can specify at most 200 servers in each call.
+     * 
+     * &gt; **NOTE:**   This parameter is required if you set `ServerType` to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to set this parameter if `ServerType` is set to `Fc`.
      * 
      */
     private @Nullable Integer port;
     /**
-     * @return Specifies whether to enable the remote IP address feature. You can specify up to 40 servers in each call. **Note:** If `server_type` is set to `Ip`, this parameter is available.
+     * @return Specifies whether to enable the remote IP feature. You can specify at most 200 servers in each call. Default values:
      * 
      */
     private @Nullable Boolean remoteIpEnabled;
     /**
-     * @return The ID of the backend server.
-     * - If `server_group_type` is set to `Instance`, set the parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
-     * - If `server_group_type` is set to `Ip`, set the parameter to an IP address specified in the server group.
-     * - If `server_group_type` is set to `Fc`, set the parameter to the Alibaba Cloud Resource Name (ARN) of a function specified in the server group.
+     * @return The ID of the server group.
+     * 
+     */
+    private @Nullable String serverGroupId;
+    /**
+     * @return The ID of the backend server. You can specify at most 200 servers in each call.
+     * 
+     * *   If the server group is of the `Instance` type, set ServerId to the ID of a resource of the `Ecs`, `Eni`, or `Eci` type.
+     * 
+     * *   If the server group is of the `Ip` type, set ServerId to IP addresses.
+     * 
+     * &gt; **NOTE:**   You cannot perform this operation on a server group of the Function Compute type. You can call the [ListServerGroups](https://www.alibabacloud.com/help/en/doc-detail/213627.html) operation to query the type of server groups.
      * 
      */
     private String serverId;
     /**
-     * @return The IP address of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. **Note:** If `server_group_type` is set to `Fc`, you do not need to configure parameters, otherwise this attribute is required. If `server_group_type` is set to `Ip`, the value of this property is the same as the `server_id` value.
+     * @return The IP address of the backend server. You can specify at most 200 servers in each call.
+     * 
+     * &gt; **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
      * 
      */
     private @Nullable String serverIp;
     /**
-     * @return The type of the server. The type of the server. Valid values:
-     * - `Ecs`: an ECS instance.
-     * - `Eni`: an ENI.
-     * - `Eci`: an elastic container instance.
-     * - `Ip`(Available since v1.194.0): an IP address.
-     * - `Fc`(Available since v1.194.0): a function.
+     * @return The type of the backend server. You can specify at most 200 servers in each call. Default values:
+     * 
+     * - `Ecs`: Elastic Compute Service (ECS) instance
+     * - `Eni`: elastic network interface (ENI)
+     * - `Eci`: elastic container instance
+     * - `Ip`: IP address
+     * - `Fc`: Function Compute
      * 
      */
     private String serverType;
     /**
-     * @return The status of the backend server.
+     * @return The status of the resource
      * 
      */
     private @Nullable String status;
     /**
-     * @return The weight of the server. Default value: `100`. Valid values: `0` to `100`. If the value is set to `0`, no requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `server_type` to `Fc`.
+     * @return The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
+     * 
+     * &gt; **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
      * 
      */
     private @Nullable Integer weight;
 
     private ServerGroupServer() {}
     /**
-     * @return The description of the backend server.
+     * @return The description of the backend server. The description must be 2 to 256 characters in length, and cannot start with http:// or https://.
      * 
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return The port used by the backend server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `server_type` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `server_type` to `Fc`.
+     * @return The port that is used by the backend server. Valid values: `1` to `65535`. You can specify at most 200 servers in each call.
+     * 
+     * &gt; **NOTE:**   This parameter is required if you set `ServerType` to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to set this parameter if `ServerType` is set to `Fc`.
      * 
      */
     public Optional<Integer> port() {
         return Optional.ofNullable(this.port);
     }
     /**
-     * @return Specifies whether to enable the remote IP address feature. You can specify up to 40 servers in each call. **Note:** If `server_type` is set to `Ip`, this parameter is available.
+     * @return Specifies whether to enable the remote IP feature. You can specify at most 200 servers in each call. Default values:
      * 
      */
     public Optional<Boolean> remoteIpEnabled() {
         return Optional.ofNullable(this.remoteIpEnabled);
     }
     /**
-     * @return The ID of the backend server.
-     * - If `server_group_type` is set to `Instance`, set the parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
-     * - If `server_group_type` is set to `Ip`, set the parameter to an IP address specified in the server group.
-     * - If `server_group_type` is set to `Fc`, set the parameter to the Alibaba Cloud Resource Name (ARN) of a function specified in the server group.
+     * @return The ID of the server group.
+     * 
+     */
+    public Optional<String> serverGroupId() {
+        return Optional.ofNullable(this.serverGroupId);
+    }
+    /**
+     * @return The ID of the backend server. You can specify at most 200 servers in each call.
+     * 
+     * *   If the server group is of the `Instance` type, set ServerId to the ID of a resource of the `Ecs`, `Eni`, or `Eci` type.
+     * 
+     * *   If the server group is of the `Ip` type, set ServerId to IP addresses.
+     * 
+     * &gt; **NOTE:**   You cannot perform this operation on a server group of the Function Compute type. You can call the [ListServerGroups](https://www.alibabacloud.com/help/en/doc-detail/213627.html) operation to query the type of server groups.
      * 
      */
     public String serverId() {
         return this.serverId;
     }
     /**
-     * @return The IP address of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. **Note:** If `server_group_type` is set to `Fc`, you do not need to configure parameters, otherwise this attribute is required. If `server_group_type` is set to `Ip`, the value of this property is the same as the `server_id` value.
+     * @return The IP address of the backend server. You can specify at most 200 servers in each call.
+     * 
+     * &gt; **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
      * 
      */
     public Optional<String> serverIp() {
         return Optional.ofNullable(this.serverIp);
     }
     /**
-     * @return The type of the server. The type of the server. Valid values:
-     * - `Ecs`: an ECS instance.
-     * - `Eni`: an ENI.
-     * - `Eci`: an elastic container instance.
-     * - `Ip`(Available since v1.194.0): an IP address.
-     * - `Fc`(Available since v1.194.0): a function.
+     * @return The type of the backend server. You can specify at most 200 servers in each call. Default values:
+     * 
+     * - `Ecs`: Elastic Compute Service (ECS) instance
+     * - `Eni`: elastic network interface (ENI)
+     * - `Eci`: elastic container instance
+     * - `Ip`: IP address
+     * - `Fc`: Function Compute
      * 
      */
     public String serverType() {
         return this.serverType;
     }
     /**
-     * @return The status of the backend server.
+     * @return The status of the resource
      * 
      */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
     /**
-     * @return The weight of the server. Default value: `100`. Valid values: `0` to `100`. If the value is set to `0`, no requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `server_type` to `Fc`.
+     * @return The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
+     * 
+     * &gt; **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
      * 
      */
     public Optional<Integer> weight() {
@@ -141,6 +173,7 @@ public final class ServerGroupServer {
         private @Nullable String description;
         private @Nullable Integer port;
         private @Nullable Boolean remoteIpEnabled;
+        private @Nullable String serverGroupId;
         private String serverId;
         private @Nullable String serverIp;
         private String serverType;
@@ -152,6 +185,7 @@ public final class ServerGroupServer {
     	      this.description = defaults.description;
     	      this.port = defaults.port;
     	      this.remoteIpEnabled = defaults.remoteIpEnabled;
+    	      this.serverGroupId = defaults.serverGroupId;
     	      this.serverId = defaults.serverId;
     	      this.serverIp = defaults.serverIp;
     	      this.serverType = defaults.serverType;
@@ -175,6 +209,12 @@ public final class ServerGroupServer {
         public Builder remoteIpEnabled(@Nullable Boolean remoteIpEnabled) {
 
             this.remoteIpEnabled = remoteIpEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder serverGroupId(@Nullable String serverGroupId) {
+
+            this.serverGroupId = serverGroupId;
             return this;
         }
         @CustomType.Setter
@@ -216,6 +256,7 @@ public final class ServerGroupServer {
             _resultValue.description = description;
             _resultValue.port = port;
             _resultValue.remoteIpEnabled = remoteIpEnabled;
+            _resultValue.serverGroupId = serverGroupId;
             _resultValue.serverId = serverId;
             _resultValue.serverIp = serverIp;
             _resultValue.serverType = serverType;

@@ -31,11 +31,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a FCV3 Function resource.
+ * Provides a Function Compute Service V3 (FCV3) Function resource.
  * 
  * The resource scheduling and running of Function Compute is based on functions. The FC function consists of function code and function configuration.
  * 
- * For information about FCV3 Function and how to use it, see [What is Function](https://www.alibabacloud.com/help/en/functioncompute/developer-reference/api-fc-2023-03-30-getfunction).
+ * For information about Function Compute Service V3 (FCV3) Function and how to use it, see [What is Function](https://www.alibabacloud.com/help/en/functioncompute/developer-reference/api-fc-2023-03-30-getfunction).
  * 
  * &gt; **NOTE:** Available since v1.228.0.
  * 
@@ -152,7 +152,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * FCV3 Function can be imported using the id, e.g.
+ * Function Compute Service V3 (FCV3) Function can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:fc/v3Function:V3Function example &lt;id&gt;
@@ -608,6 +608,20 @@ public class V3Function extends com.pulumi.resources.CustomResource {
      */
     public Output<String> stateReasonCode() {
         return this.stateReasonCode;
+    }
+    /**
+     * The tag of the resource
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return The tag of the resource
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * The maximum running time of the function, in seconds.

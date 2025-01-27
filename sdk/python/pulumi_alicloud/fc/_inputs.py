@@ -2317,15 +2317,15 @@ if not MYPY:
     class V3FunctionCustomContainerConfigArgsDict(TypedDict):
         acceleration_info: NotRequired[pulumi.Input['V3FunctionCustomContainerConfigAccelerationInfoArgsDict']]
         """
-        (Deprecated) Image Acceleration Information (Obsolete).
+        (Deprecated since v1.242.0) Image Acceleration Information (Obsolete)
         """
         acceleration_type: NotRequired[pulumi.Input[str]]
         """
-        Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete).
+        Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
         """
         acr_instance_id: NotRequired[pulumi.Input[str]]
         """
-        ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete).
+        ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
         """
         commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -2367,9 +2367,9 @@ class V3FunctionCustomContainerConfigArgs:
                  port: Optional[pulumi.Input[int]] = None,
                  resolved_image_uri: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['V3FunctionCustomContainerConfigAccelerationInfoArgs'] acceleration_info: (Deprecated) Image Acceleration Information (Obsolete).
-        :param pulumi.Input[str] acceleration_type: Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete).
-        :param pulumi.Input[str] acr_instance_id: ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete).
+        :param pulumi.Input['V3FunctionCustomContainerConfigAccelerationInfoArgs'] acceleration_info: (Deprecated since v1.242.0) Image Acceleration Information (Obsolete)
+        :param pulumi.Input[str] acceleration_type: Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
+        :param pulumi.Input[str] acr_instance_id: ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Container startup parameters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] entrypoints: Container start command.
         :param pulumi.Input['V3FunctionCustomContainerConfigHealthCheckConfigArgs'] health_check_config: Function custom health check configuration See `health_check_config` below.
@@ -2410,7 +2410,7 @@ class V3FunctionCustomContainerConfigArgs:
     @_utilities.deprecated("""Field 'acceleration_info' has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)""")
     def acceleration_info(self) -> Optional[pulumi.Input['V3FunctionCustomContainerConfigAccelerationInfoArgs']]:
         """
-        (Deprecated) Image Acceleration Information (Obsolete).
+        (Deprecated since v1.242.0) Image Acceleration Information (Obsolete)
         """
         return pulumi.get(self, "acceleration_info")
 
@@ -2423,7 +2423,7 @@ class V3FunctionCustomContainerConfigArgs:
     @_utilities.deprecated("""Field 'acceleration_type' has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)""")
     def acceleration_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete).
+        Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
         """
         return pulumi.get(self, "acceleration_type")
 
@@ -2436,7 +2436,7 @@ class V3FunctionCustomContainerConfigArgs:
     @_utilities.deprecated("""Field 'acr_instance_id' has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)""")
     def acr_instance_id(self) -> Optional[pulumi.Input[str]]:
         """
-        ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete).
+        ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
         """
         return pulumi.get(self, "acr_instance_id")
 
@@ -2521,7 +2521,7 @@ if not MYPY:
     class V3FunctionCustomContainerConfigAccelerationInfoArgsDict(TypedDict):
         status: NotRequired[pulumi.Input[str]]
         """
-        Image Acceleration Status (Deprecated).
+        Image Acceleration Status (Deprecated)
         """
 elif False:
     V3FunctionCustomContainerConfigAccelerationInfoArgsDict: TypeAlias = Mapping[str, Any]
@@ -2531,7 +2531,7 @@ class V3FunctionCustomContainerConfigAccelerationInfoArgs:
     def __init__(__self__, *,
                  status: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] status: Image Acceleration Status (Deprecated).
+        :param pulumi.Input[str] status: Image Acceleration Status (Deprecated)
         """
         if status is not None:
             warnings.warn("""Field 'status' has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated)""", DeprecationWarning)
@@ -2544,7 +2544,7 @@ class V3FunctionCustomContainerConfigAccelerationInfoArgs:
     @_utilities.deprecated("""Field 'status' has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated)""")
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Image Acceleration Status (Deprecated).
+        Image Acceleration Status (Deprecated)
         """
         return pulumi.get(self, "status")
 
@@ -2649,11 +2649,11 @@ if not MYPY:
         """
         name_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        IP Address List of DNS servers.
+        IP Address List of DNS servers
         """
         searches: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        DNS search domain list.
+        DNS search domain list
         """
 elif False:
     V3FunctionCustomDnsArgsDict: TypeAlias = Mapping[str, Any]
@@ -2666,8 +2666,8 @@ class V3FunctionCustomDnsArgs:
                  searches: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['V3FunctionCustomDnsDnsOptionArgs']]] dns_options: List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required. See `dns_options` below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] name_servers: IP Address List of DNS servers.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] searches: DNS search domain list.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] name_servers: IP Address List of DNS servers
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] searches: DNS search domain list
         """
         if dns_options is not None:
             pulumi.set(__self__, "dns_options", dns_options)
@@ -2692,7 +2692,7 @@ class V3FunctionCustomDnsArgs:
     @pulumi.getter(name="nameServers")
     def name_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        IP Address List of DNS servers.
+        IP Address List of DNS servers
         """
         return pulumi.get(self, "name_servers")
 
@@ -2704,7 +2704,7 @@ class V3FunctionCustomDnsArgs:
     @pulumi.getter
     def searches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        DNS search domain list.
+        DNS search domain list
         """
         return pulumi.get(self, "searches")
 
@@ -2717,11 +2717,11 @@ if not MYPY:
     class V3FunctionCustomDnsDnsOptionArgsDict(TypedDict):
         name: NotRequired[pulumi.Input[str]]
         """
-        Configuration Item Name.
+        Configuration Item Name
         """
         value: NotRequired[pulumi.Input[str]]
         """
-        Configuration Item Value.
+        Configuration Item Value
         """
 elif False:
     V3FunctionCustomDnsDnsOptionArgsDict: TypeAlias = Mapping[str, Any]
@@ -2732,8 +2732,8 @@ class V3FunctionCustomDnsDnsOptionArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: Configuration Item Name.
-        :param pulumi.Input[str] value: Configuration Item Value.
+        :param pulumi.Input[str] name: Configuration Item Name
+        :param pulumi.Input[str] value: Configuration Item Value
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -2744,7 +2744,7 @@ class V3FunctionCustomDnsDnsOptionArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Configuration Item Name.
+        Configuration Item Name
         """
         return pulumi.get(self, "name")
 
@@ -2756,7 +2756,7 @@ class V3FunctionCustomDnsDnsOptionArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        Configuration Item Value.
+        Configuration Item Value
         """
         return pulumi.get(self, "value")
 
@@ -2949,14 +2949,14 @@ if not MYPY:
     class V3FunctionGpuConfigArgsDict(TypedDict):
         gpu_memory_size: NotRequired[pulumi.Input[int]]
         """
-        GPU memory specification, unit: MB, multiple of 1024MB.
+        GPU memory specification, unit: MB, multiple of 1024MB
         """
         gpu_type: NotRequired[pulumi.Input[str]]
         """
         GPU card architecture.
-        - fc.gpu.tesla indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
-        - fc.gpu.ampere indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
-        - fc.gpu.ada Indicates the GPU instance Ada Lovelace architecture family card type.
+        - fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
+        - fc.gpu.ampere.1 indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
+        - fc.gpu.ada.1 Indicates the GPU instance Ada Lovelace architecture family card type.
         """
 elif False:
     V3FunctionGpuConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -2967,11 +2967,11 @@ class V3FunctionGpuConfigArgs:
                  gpu_memory_size: Optional[pulumi.Input[int]] = None,
                  gpu_type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[int] gpu_memory_size: GPU memory specification, unit: MB, multiple of 1024MB.
+        :param pulumi.Input[int] gpu_memory_size: GPU memory specification, unit: MB, multiple of 1024MB
         :param pulumi.Input[str] gpu_type: GPU card architecture.
-               - fc.gpu.tesla indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
-               - fc.gpu.ampere indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
-               - fc.gpu.ada Indicates the GPU instance Ada Lovelace architecture family card type.
+               - fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
+               - fc.gpu.ampere.1 indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
+               - fc.gpu.ada.1 Indicates the GPU instance Ada Lovelace architecture family card type.
         """
         if gpu_memory_size is not None:
             pulumi.set(__self__, "gpu_memory_size", gpu_memory_size)
@@ -2982,7 +2982,7 @@ class V3FunctionGpuConfigArgs:
     @pulumi.getter(name="gpuMemorySize")
     def gpu_memory_size(self) -> Optional[pulumi.Input[int]]:
         """
-        GPU memory specification, unit: MB, multiple of 1024MB.
+        GPU memory specification, unit: MB, multiple of 1024MB
         """
         return pulumi.get(self, "gpu_memory_size")
 
@@ -2995,9 +2995,9 @@ class V3FunctionGpuConfigArgs:
     def gpu_type(self) -> Optional[pulumi.Input[str]]:
         """
         GPU card architecture.
-        - fc.gpu.tesla indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
-        - fc.gpu.ampere indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
-        - fc.gpu.ada Indicates the GPU instance Ada Lovelace architecture family card type.
+        - fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
+        - fc.gpu.ampere.1 indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
+        - fc.gpu.ada.1 Indicates the GPU instance Ada Lovelace architecture family card type.
         """
         return pulumi.get(self, "gpu_type")
 
@@ -3174,7 +3174,7 @@ if not MYPY:
         """
         log_begin_rule: NotRequired[pulumi.Input[str]]
         """
-        Log Line First Matching Rules.
+        Log Line First Matching Rules
         """
         logstore: NotRequired[pulumi.Input[str]]
         """
@@ -3198,7 +3198,7 @@ class V3FunctionLogConfigArgs:
         """
         :param pulumi.Input[bool] enable_instance_metrics: After this feature is enabled, you can view core metrics such as instance-level CPU usage, memory usage, instance network status, and the number of requests within an instance. false: The default value, which means that instance-level metrics are turned off. true: indicates that instance-level metrics are enabled.
         :param pulumi.Input[bool] enable_request_metrics: After this function is enabled, you can view the time and memory consumed by a call to all functions under this service. false: indicates that request-level metrics are turned off. true: The default value, indicating that request-level metrics are enabled.
-        :param pulumi.Input[str] log_begin_rule: Log Line First Matching Rules.
+        :param pulumi.Input[str] log_begin_rule: Log Line First Matching Rules
         :param pulumi.Input[str] logstore: The Logstore name of log service.
         :param pulumi.Input[str] project: The name of the log service Project.
         """
@@ -3241,7 +3241,7 @@ class V3FunctionLogConfigArgs:
     @pulumi.getter(name="logBeginRule")
     def log_begin_rule(self) -> Optional[pulumi.Input[str]]:
         """
-        Log Line First Matching Rules.
+        Log Line First Matching Rules
         """
         return pulumi.get(self, "log_begin_rule")
 
@@ -3278,15 +3278,15 @@ if not MYPY:
     class V3FunctionNasConfigArgsDict(TypedDict):
         group_id: NotRequired[pulumi.Input[int]]
         """
-        Group ID.
+        Group ID
         """
         mount_points: NotRequired[pulumi.Input[Sequence[pulumi.Input['V3FunctionNasConfigMountPointArgsDict']]]]
         """
-        Mount point list. See `mount_points` below.
+        Mount point list See `mount_points` below.
         """
         user_id: NotRequired[pulumi.Input[int]]
         """
-        Account ID.
+        Account ID
         """
 elif False:
     V3FunctionNasConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -3298,9 +3298,9 @@ class V3FunctionNasConfigArgs:
                  mount_points: Optional[pulumi.Input[Sequence[pulumi.Input['V3FunctionNasConfigMountPointArgs']]]] = None,
                  user_id: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[int] group_id: Group ID.
-        :param pulumi.Input[Sequence[pulumi.Input['V3FunctionNasConfigMountPointArgs']]] mount_points: Mount point list. See `mount_points` below.
-        :param pulumi.Input[int] user_id: Account ID.
+        :param pulumi.Input[int] group_id: Group ID
+        :param pulumi.Input[Sequence[pulumi.Input['V3FunctionNasConfigMountPointArgs']]] mount_points: Mount point list See `mount_points` below.
+        :param pulumi.Input[int] user_id: Account ID
         """
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
@@ -3313,7 +3313,7 @@ class V3FunctionNasConfigArgs:
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[pulumi.Input[int]]:
         """
-        Group ID.
+        Group ID
         """
         return pulumi.get(self, "group_id")
 
@@ -3325,7 +3325,7 @@ class V3FunctionNasConfigArgs:
     @pulumi.getter(name="mountPoints")
     def mount_points(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V3FunctionNasConfigMountPointArgs']]]]:
         """
-        Mount point list. See `mount_points` below.
+        Mount point list See `mount_points` below.
         """
         return pulumi.get(self, "mount_points")
 
@@ -3337,7 +3337,7 @@ class V3FunctionNasConfigArgs:
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[int]]:
         """
-        Account ID.
+        Account ID
         """
         return pulumi.get(self, "user_id")
 
@@ -3355,7 +3355,7 @@ if not MYPY:
         mount_dir: NotRequired[pulumi.Input[str]]
         server_addr: NotRequired[pulumi.Input[str]]
         """
-        NAS server address.
+        NAS server address
         """
 elif False:
     V3FunctionNasConfigMountPointArgsDict: TypeAlias = Mapping[str, Any]
@@ -3368,7 +3368,7 @@ class V3FunctionNasConfigMountPointArgs:
                  server_addr: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] enable_tls: Use transport encryption to mount. Note: only general-purpose NAS supports transmission encryption.
-        :param pulumi.Input[str] server_addr: NAS server address.
+        :param pulumi.Input[str] server_addr: NAS server address
         """
         if enable_tls is not None:
             pulumi.set(__self__, "enable_tls", enable_tls)
@@ -3402,7 +3402,7 @@ class V3FunctionNasConfigMountPointArgs:
     @pulumi.getter(name="serverAddr")
     def server_addr(self) -> Optional[pulumi.Input[str]]:
         """
-        NAS server address.
+        NAS server address
         """
         return pulumi.get(self, "server_addr")
 
@@ -3415,7 +3415,7 @@ if not MYPY:
     class V3FunctionOssMountConfigArgsDict(TypedDict):
         mount_points: NotRequired[pulumi.Input[Sequence[pulumi.Input['V3FunctionOssMountConfigMountPointArgsDict']]]]
         """
-        OSS mount point list. See `mount_points` below.
+        OSS mount point list See `mount_points` below.
         """
 elif False:
     V3FunctionOssMountConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -3425,7 +3425,7 @@ class V3FunctionOssMountConfigArgs:
     def __init__(__self__, *,
                  mount_points: Optional[pulumi.Input[Sequence[pulumi.Input['V3FunctionOssMountConfigMountPointArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['V3FunctionOssMountConfigMountPointArgs']]] mount_points: OSS mount point list. See `mount_points` below.
+        :param pulumi.Input[Sequence[pulumi.Input['V3FunctionOssMountConfigMountPointArgs']]] mount_points: OSS mount point list See `mount_points` below.
         """
         if mount_points is not None:
             pulumi.set(__self__, "mount_points", mount_points)
@@ -3434,7 +3434,7 @@ class V3FunctionOssMountConfigArgs:
     @pulumi.getter(name="mountPoints")
     def mount_points(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V3FunctionOssMountConfigMountPointArgs']]]]:
         """
-        OSS mount point list. See `mount_points` below.
+        OSS mount point list See `mount_points` below.
         """
         return pulumi.get(self, "mount_points")
 
@@ -3447,20 +3447,20 @@ if not MYPY:
     class V3FunctionOssMountConfigMountPointArgsDict(TypedDict):
         bucket_name: NotRequired[pulumi.Input[str]]
         """
-        OSS Bucket name.
+        OSS Bucket name
         """
         bucket_path: NotRequired[pulumi.Input[str]]
         """
-        Path of the mounted OSS Bucket.
+        Path of the mounted OSS Bucket
         """
         endpoint: NotRequired[pulumi.Input[str]]
         """
-        OSS access endpoint.
+        OSS access endpoint
         """
         mount_dir: NotRequired[pulumi.Input[str]]
         read_only: NotRequired[pulumi.Input[bool]]
         """
-        Read-only.
+        Read-only
         """
 elif False:
     V3FunctionOssMountConfigMountPointArgsDict: TypeAlias = Mapping[str, Any]
@@ -3474,10 +3474,10 @@ class V3FunctionOssMountConfigMountPointArgs:
                  mount_dir: Optional[pulumi.Input[str]] = None,
                  read_only: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] bucket_name: OSS Bucket name.
-        :param pulumi.Input[str] bucket_path: Path of the mounted OSS Bucket.
-        :param pulumi.Input[str] endpoint: OSS access endpoint.
-        :param pulumi.Input[bool] read_only: Read-only.
+        :param pulumi.Input[str] bucket_name: OSS Bucket name
+        :param pulumi.Input[str] bucket_path: Path of the mounted OSS Bucket
+        :param pulumi.Input[str] endpoint: OSS access endpoint
+        :param pulumi.Input[bool] read_only: Read-only
         """
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
@@ -3494,7 +3494,7 @@ class V3FunctionOssMountConfigMountPointArgs:
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> Optional[pulumi.Input[str]]:
         """
-        OSS Bucket name.
+        OSS Bucket name
         """
         return pulumi.get(self, "bucket_name")
 
@@ -3506,7 +3506,7 @@ class V3FunctionOssMountConfigMountPointArgs:
     @pulumi.getter(name="bucketPath")
     def bucket_path(self) -> Optional[pulumi.Input[str]]:
         """
-        Path of the mounted OSS Bucket.
+        Path of the mounted OSS Bucket
         """
         return pulumi.get(self, "bucket_path")
 
@@ -3518,7 +3518,7 @@ class V3FunctionOssMountConfigMountPointArgs:
     @pulumi.getter
     def endpoint(self) -> Optional[pulumi.Input[str]]:
         """
-        OSS access endpoint.
+        OSS access endpoint
         """
         return pulumi.get(self, "endpoint")
 
@@ -3539,7 +3539,7 @@ class V3FunctionOssMountConfigMountPointArgs:
     @pulumi.getter(name="readOnly")
     def read_only(self) -> Optional[pulumi.Input[bool]]:
         """
-        Read-only.
+        Read-only
         """
         return pulumi.get(self, "read_only")
 
@@ -3604,15 +3604,15 @@ if not MYPY:
     class V3FunctionVpcConfigArgsDict(TypedDict):
         security_group_id: NotRequired[pulumi.Input[str]]
         """
-        Security group ID.
+        Security group ID
         """
         vpc_id: NotRequired[pulumi.Input[str]]
         """
-        VPC network ID.
+        VPC network ID
         """
         vswitch_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        Switch List.
+        Switch List
         """
 elif False:
     V3FunctionVpcConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -3624,9 +3624,9 @@ class V3FunctionVpcConfigArgs:
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] security_group_id: Security group ID.
-        :param pulumi.Input[str] vpc_id: VPC network ID.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: Switch List.
+        :param pulumi.Input[str] security_group_id: Security group ID
+        :param pulumi.Input[str] vpc_id: VPC network ID
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: Switch List
         """
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
@@ -3639,7 +3639,7 @@ class V3FunctionVpcConfigArgs:
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Security group ID.
+        Security group ID
         """
         return pulumi.get(self, "security_group_id")
 
@@ -3651,7 +3651,7 @@ class V3FunctionVpcConfigArgs:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
-        VPC network ID.
+        VPC network ID
         """
         return pulumi.get(self, "vpc_id")
 
@@ -3663,7 +3663,7 @@ class V3FunctionVpcConfigArgs:
     @pulumi.getter(name="vswitchIds")
     def vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Switch List.
+        Switch List
         """
         return pulumi.get(self, "vswitch_ids")
 

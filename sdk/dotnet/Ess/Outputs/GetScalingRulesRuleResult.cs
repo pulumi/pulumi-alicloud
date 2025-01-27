@@ -30,6 +30,14 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// (Available since v1.242.0) The maximum number of ECS instances that can be added to the scaling group.
+        /// </summary>
+        public readonly int InitialMaxSize;
+        /// <summary>
+        /// (Available since v1.242.0) The predefined metric of the scaling rule.
+        /// </summary>
+        public readonly string MetricName;
+        /// <summary>
         /// Min adjustment magnitude of scaling rule.
         /// </summary>
         public readonly int MinAdjustmentMagnitude;
@@ -38,6 +46,22 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// (Available since v1.242.0) The mode of the predictive scaling rule.
+        /// </summary>
+        public readonly string PredictiveScalingMode;
+        /// <summary>
+        /// (Available since v1.242.0) The amount of buffer time before the prediction task is executed. By default, all prediction tasks that are automatically created by a predictive scaling rule are executed on the hour. You can set a buffer time to execute prediction tasks and prepare resources in advance.
+        /// </summary>
+        public readonly int PredictiveTaskBufferTime;
+        /// <summary>
+        /// (Available since v1.242.0) The action on the predicted maximum value.
+        /// </summary>
+        public readonly string PredictiveValueBehavior;
+        /// <summary>
+        /// (Available since v1.242.0) The ratio based on which the predicted value is increased if you set predictive_value_behavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value that is increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks.
+        /// </summary>
+        public readonly int PredictiveValueBuffer;
+        /// <summary>
         /// Scaling group id the scaling rules belong to.
         /// </summary>
         public readonly string ScalingGroupId;
@@ -45,6 +69,10 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// Ari of scaling rule.
         /// </summary>
         public readonly string ScalingRuleAri;
+        /// <summary>
+        /// (Available since v1.242.0) The target value of the metric.
+        /// </summary>
+        public readonly double TargetValue;
         /// <summary>
         /// Type of scaling rule.
         /// </summary>
@@ -60,13 +88,27 @@ namespace Pulumi.AliCloud.Ess.Outputs
 
             string id,
 
+            int initialMaxSize,
+
+            string metricName,
+
             int minAdjustmentMagnitude,
 
             string name,
 
+            string predictiveScalingMode,
+
+            int predictiveTaskBufferTime,
+
+            string predictiveValueBehavior,
+
+            int predictiveValueBuffer,
+
             string scalingGroupId,
 
             string scalingRuleAri,
+
+            double targetValue,
 
             string type)
         {
@@ -74,10 +116,17 @@ namespace Pulumi.AliCloud.Ess.Outputs
             AdjustmentValue = adjustmentValue;
             Cooldown = cooldown;
             Id = id;
+            InitialMaxSize = initialMaxSize;
+            MetricName = metricName;
             MinAdjustmentMagnitude = minAdjustmentMagnitude;
             Name = name;
+            PredictiveScalingMode = predictiveScalingMode;
+            PredictiveTaskBufferTime = predictiveTaskBufferTime;
+            PredictiveValueBehavior = predictiveValueBehavior;
+            PredictiveValueBuffer = predictiveValueBuffer;
             ScalingGroupId = scalingGroupId;
             ScalingRuleAri = scalingRuleAri;
+            TargetValue = targetValue;
             Type = type;
         }
     }

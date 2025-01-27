@@ -17,14 +17,14 @@ public final class V3FunctionVpcConfigArgs extends com.pulumi.resources.Resource
     public static final V3FunctionVpcConfigArgs Empty = new V3FunctionVpcConfigArgs();
 
     /**
-     * Security group ID.
+     * Security group ID
      * 
      */
     @Import(name="securityGroupId")
     private @Nullable Output<String> securityGroupId;
 
     /**
-     * @return Security group ID.
+     * @return Security group ID
      * 
      */
     public Optional<Output<String>> securityGroupId() {
@@ -32,14 +32,14 @@ public final class V3FunctionVpcConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * VPC network ID.
+     * VPC network ID
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return VPC network ID.
+     * @return VPC network ID
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -47,14 +47,14 @@ public final class V3FunctionVpcConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Switch List.
+     * Switch List
      * 
      */
     @Import(name="vswitchIds")
     private @Nullable Output<List<String>> vswitchIds;
 
     /**
-     * @return Switch List.
+     * @return Switch List
      * 
      */
     public Optional<Output<List<String>>> vswitchIds() {
@@ -88,7 +88,7 @@ public final class V3FunctionVpcConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param securityGroupId Security group ID.
+         * @param securityGroupId Security group ID
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class V3FunctionVpcConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param securityGroupId Security group ID.
+         * @param securityGroupId Security group ID
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class V3FunctionVpcConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param vpcId VPC network ID.
+         * @param vpcId VPC network ID
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class V3FunctionVpcConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param vpcId VPC network ID.
+         * @param vpcId VPC network ID
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class V3FunctionVpcConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param vswitchIds Switch List.
+         * @param vswitchIds Switch List
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class V3FunctionVpcConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param vswitchIds Switch List.
+         * @param vswitchIds Switch List
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class V3FunctionVpcConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param vswitchIds Switch List.
+         * @param vswitchIds Switch List
          * 
          * @return builder
          * 

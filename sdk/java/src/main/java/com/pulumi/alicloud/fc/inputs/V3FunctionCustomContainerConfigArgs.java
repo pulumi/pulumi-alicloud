@@ -20,7 +20,7 @@ public final class V3FunctionCustomContainerConfigArgs extends com.pulumi.resour
     public static final V3FunctionCustomContainerConfigArgs Empty = new V3FunctionCustomContainerConfigArgs();
 
     /**
-     * (Deprecated) Image Acceleration Information (Obsolete).
+     * (Deprecated since v1.242.0) Image Acceleration Information (Obsolete)
      * 
      * @deprecated
      * Field &#39;acceleration_info&#39; has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
@@ -31,7 +31,7 @@ public final class V3FunctionCustomContainerConfigArgs extends com.pulumi.resour
     private @Nullable Output<V3FunctionCustomContainerConfigAccelerationInfoArgs> accelerationInfo;
 
     /**
-     * @return (Deprecated) Image Acceleration Information (Obsolete).
+     * @return (Deprecated since v1.242.0) Image Acceleration Information (Obsolete)
      * 
      * @deprecated
      * Field &#39;acceleration_info&#39; has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
@@ -43,7 +43,7 @@ public final class V3FunctionCustomContainerConfigArgs extends com.pulumi.resour
     }
 
     /**
-     * Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete).
+     * Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
      * 
      * @deprecated
      * Field &#39;acceleration_type&#39; has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
@@ -54,7 +54,7 @@ public final class V3FunctionCustomContainerConfigArgs extends com.pulumi.resour
     private @Nullable Output<String> accelerationType;
 
     /**
-     * @return Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete).
+     * @return Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
      * 
      * @deprecated
      * Field &#39;acceleration_type&#39; has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
@@ -66,7 +66,7 @@ public final class V3FunctionCustomContainerConfigArgs extends com.pulumi.resour
     }
 
     /**
-     * ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete).
+     * ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
      * 
      * @deprecated
      * Field &#39;acr_instance_id&#39; has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
@@ -77,7 +77,7 @@ public final class V3FunctionCustomContainerConfigArgs extends com.pulumi.resour
     private @Nullable Output<String> acrInstanceId;
 
     /**
-     * @return ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete).
+     * @return ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
      * 
      * @deprecated
      * Field &#39;acr_instance_id&#39; has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
@@ -211,7 +211,7 @@ public final class V3FunctionCustomContainerConfigArgs extends com.pulumi.resour
         }
 
         /**
-         * @param accelerationInfo (Deprecated) Image Acceleration Information (Obsolete).
+         * @param accelerationInfo (Deprecated since v1.242.0) Image Acceleration Information (Obsolete)
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class V3FunctionCustomContainerConfigArgs extends com.pulumi.resour
         }
 
         /**
-         * @param accelerationInfo (Deprecated) Image Acceleration Information (Obsolete).
+         * @param accelerationInfo (Deprecated since v1.242.0) Image Acceleration Information (Obsolete)
          * 
          * @return builder
          * 
@@ -240,7 +240,7 @@ public final class V3FunctionCustomContainerConfigArgs extends com.pulumi.resour
         }
 
         /**
-         * @param accelerationType Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete).
+         * @param accelerationType Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class V3FunctionCustomContainerConfigArgs extends com.pulumi.resour
         }
 
         /**
-         * @param accelerationType Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete).
+         * @param accelerationType Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
          * 
          * @return builder
          * 
@@ -269,7 +269,7 @@ public final class V3FunctionCustomContainerConfigArgs extends com.pulumi.resour
         }
 
         /**
-         * @param acrInstanceId ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete).
+         * @param acrInstanceId ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class V3FunctionCustomContainerConfigArgs extends com.pulumi.resour
         }
 
         /**
-         * @param acrInstanceId ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete).
+         * @param acrInstanceId ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
          * 
          * @return builder
          * 

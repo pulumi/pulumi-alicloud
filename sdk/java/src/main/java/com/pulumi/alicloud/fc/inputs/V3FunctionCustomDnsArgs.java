@@ -33,14 +33,14 @@ public final class V3FunctionCustomDnsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * IP Address List of DNS servers.
+     * IP Address List of DNS servers
      * 
      */
     @Import(name="nameServers")
     private @Nullable Output<List<String>> nameServers;
 
     /**
-     * @return IP Address List of DNS servers.
+     * @return IP Address List of DNS servers
      * 
      */
     public Optional<Output<List<String>>> nameServers() {
@@ -48,14 +48,14 @@ public final class V3FunctionCustomDnsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * DNS search domain list.
+     * DNS search domain list
      * 
      */
     @Import(name="searches")
     private @Nullable Output<List<String>> searches;
 
     /**
-     * @return DNS search domain list.
+     * @return DNS search domain list
      * 
      */
     public Optional<Output<List<String>>> searches() {
@@ -120,7 +120,7 @@ public final class V3FunctionCustomDnsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param nameServers IP Address List of DNS servers.
+         * @param nameServers IP Address List of DNS servers
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class V3FunctionCustomDnsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param nameServers IP Address List of DNS servers.
+         * @param nameServers IP Address List of DNS servers
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class V3FunctionCustomDnsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param nameServers IP Address List of DNS servers.
+         * @param nameServers IP Address List of DNS servers
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class V3FunctionCustomDnsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param searches DNS search domain list.
+         * @param searches DNS search domain list
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class V3FunctionCustomDnsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param searches DNS search domain list.
+         * @param searches DNS search domain list
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class V3FunctionCustomDnsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param searches DNS search domain list.
+         * @param searches DNS search domain list
          * 
          * @return builder
          * 

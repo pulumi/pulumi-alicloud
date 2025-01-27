@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.FC.Outputs
     public sealed class V3FunctionCustomContainerConfig
     {
         /// <summary>
-        /// (Deprecated) Image Acceleration Information (Obsolete).
+        /// (Deprecated since v1.242.0) Image Acceleration Information (Obsolete)
         /// </summary>
         public readonly Outputs.V3FunctionCustomContainerConfigAccelerationInfo? AccelerationInfo;
         /// <summary>
-        /// Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete).
+        /// Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
         /// </summary>
         public readonly string? AccelerationType;
         /// <summary>
-        /// ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete).
+        /// ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
         /// </summary>
         public readonly string? AcrInstanceId;
         /// <summary>

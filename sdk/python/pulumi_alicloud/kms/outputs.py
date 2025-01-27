@@ -17,6 +17,7 @@ from .. import _utilities
 __all__ = [
     'InstanceBindVpc',
     'GetAliasesAliasResult',
+    'GetInstancesInstanceResult',
     'GetKeyVersionsVersionResult',
     'GetKeysKeyResult',
     'GetSecretVersionsVersionResult',
@@ -139,6 +140,24 @@ class GetAliasesAliasResult(dict):
         ID of the key.
         """
         return pulumi.get(self, "key_id")
+
+
+@pulumi.output_type
+class GetInstancesInstanceResult(dict):
+    def __init__(__self__, *,
+                 instance_id: str):
+        """
+        :param str instance_id: The first ID of the resource
+        """
+        pulumi.set(__self__, "instance_id", instance_id)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The first ID of the resource
+        """
+        return pulumi.get(self, "instance_id")
 
 
 @pulumi.output_type

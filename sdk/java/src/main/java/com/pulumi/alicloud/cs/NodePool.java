@@ -35,7 +35,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ACK Nodepool can be imported using the id, e.g.
+ * Container Service for Kubernetes (ACK) Nodepool can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:cs/nodePool:NodePool example &lt;cluster_id&gt;:&lt;node_pool_id&gt;
@@ -657,6 +657,28 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<NodePoolPrivatePoolOptions>> privatePoolOptions() {
         return Codegen.optional(this.privatePoolOptions);
+    }
+    /**
+     * The name of the Worker RAM role.
+     * * If it is empty, the default Worker RAM role created in the cluster will be used.
+     * * If the specified RAM role is not empty, the specified RAM role must be a **Common Service role**, and its **trusted service** configuration must be **cloud server**. For more information, see [Create a common service role](https://help.aliyun.com/document_detail/116800.html). If the specified RAM role is not the default Worker RAM role created in the cluster, the role name cannot start with &#39;KubernetesMasterRole-&#39;or &#39;KubernetesWorkerRole.
+     * 
+     * &gt; **NOTE:**  This parameter is only supported for ACK-managed clusters of 1.22 or later versions.
+     * 
+     */
+    @Export(name="ramRoleName", refs={String.class}, tree="[0]")
+    private Output<String> ramRoleName;
+
+    /**
+     * @return The name of the Worker RAM role.
+     * * If it is empty, the default Worker RAM role created in the cluster will be used.
+     * * If the specified RAM role is not empty, the specified RAM role must be a **Common Service role**, and its **trusted service** configuration must be **cloud server**. For more information, see [Create a common service role](https://help.aliyun.com/document_detail/116800.html). If the specified RAM role is not the default Worker RAM role created in the cluster, the role name cannot start with &#39;KubernetesMasterRole-&#39;or &#39;KubernetesWorkerRole.
+     * 
+     * &gt; **NOTE:**  This parameter is only supported for ACK-managed clusters of 1.22 or later versions.
+     * 
+     */
+    public Output<String> ramRoleName() {
+        return this.ramRoleName;
     }
     /**
      * The list of RDS instances.

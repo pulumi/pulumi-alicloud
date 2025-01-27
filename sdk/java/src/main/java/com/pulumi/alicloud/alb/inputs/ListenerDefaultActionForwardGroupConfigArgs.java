@@ -16,14 +16,14 @@ public final class ListenerDefaultActionForwardGroupConfigArgs extends com.pulum
     public static final ListenerDefaultActionForwardGroupConfigArgs Empty = new ListenerDefaultActionForwardGroupConfigArgs();
 
     /**
-     * The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
+     * The Forwarding Destination Server Group See `server_group_tuples` below.
      * 
      */
     @Import(name="serverGroupTuples", required=true)
     private Output<List<ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs>> serverGroupTuples;
 
     /**
-     * @return The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
+     * @return The Forwarding Destination Server Group See `server_group_tuples` below.
      * 
      */
     public Output<List<ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs>> serverGroupTuples() {
@@ -55,7 +55,7 @@ public final class ListenerDefaultActionForwardGroupConfigArgs extends com.pulum
         }
 
         /**
-         * @param serverGroupTuples The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
+         * @param serverGroupTuples The Forwarding Destination Server Group See `server_group_tuples` below.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ListenerDefaultActionForwardGroupConfigArgs extends com.pulum
         }
 
         /**
-         * @param serverGroupTuples The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
+         * @param serverGroupTuples The Forwarding Destination Server Group See `server_group_tuples` below.
          * 
          * @return builder
          * 
@@ -76,7 +76,7 @@ public final class ListenerDefaultActionForwardGroupConfigArgs extends com.pulum
         }
 
         /**
-         * @param serverGroupTuples The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
+         * @param serverGroupTuples The Forwarding Destination Server Group See `server_group_tuples` below.
          * 
          * @return builder
          * 

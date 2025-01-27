@@ -24,6 +24,18 @@ namespace Pulumi.AliCloud.CS.Inputs
             set => _allowedUnsafeSysctls = value;
         }
 
+        [Input("clusterDns")]
+        private InputList<string>? _clusterDns;
+
+        /// <summary>
+        /// The list of IP addresses of the cluster DNS servers.
+        /// </summary>
+        public InputList<string> ClusterDns
+        {
+            get => _clusterDns ?? (_clusterDns = new InputList<string>());
+            set => _clusterDns = value;
+        }
+
         /// <summary>
         /// The maximum number of log files that can exist in each container.
         /// </summary>
@@ -35,6 +47,30 @@ namespace Pulumi.AliCloud.CS.Inputs
         /// </summary>
         [Input("containerLogMaxSize")]
         public Input<string>? ContainerLogMaxSize { get; set; }
+
+        /// <summary>
+        /// Specifies the maximum number of concurrent workers required to perform log rotation operations.
+        /// </summary>
+        [Input("containerLogMaxWorkers")]
+        public Input<string>? ContainerLogMaxWorkers { get; set; }
+
+        /// <summary>
+        /// Specifies the duration for which container logs are monitored for log rotation.
+        /// </summary>
+        [Input("containerLogMonitorInterval")]
+        public Input<string>? ContainerLogMonitorInterval { get; set; }
+
+        /// <summary>
+        /// CPU CFS quota constraint switch.
+        /// </summary>
+        [Input("cpuCfsQuota")]
+        public Input<string>? CpuCfsQuota { get; set; }
+
+        /// <summary>
+        /// CPU CFS quota period value.
+        /// </summary>
+        [Input("cpuCfsQuotaPeriod")]
+        public Input<string>? CpuCfsQuotaPeriod { get; set; }
 
         /// <summary>
         /// Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
@@ -103,6 +139,18 @@ namespace Pulumi.AliCloud.CS.Inputs
         }
 
         /// <summary>
+        /// If the image usage exceeds this threshold, image garbage collection will continue.
+        /// </summary>
+        [Input("imageGcHighThresholdPercent")]
+        public Input<string>? ImageGcHighThresholdPercent { get; set; }
+
+        /// <summary>
+        /// Image garbage collection is not performed when the image usage is below this threshold.
+        /// </summary>
+        [Input("imageGcLowThresholdPercent")]
+        public Input<string>? ImageGcLowThresholdPercent { get; set; }
+
+        /// <summary>
         /// Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
         /// </summary>
         [Input("kubeApiBurst")]
@@ -133,6 +181,18 @@ namespace Pulumi.AliCloud.CS.Inputs
         public Input<string>? MaxPods { get; set; }
 
         /// <summary>
+        /// The policy to be used by the memory manager.
+        /// </summary>
+        [Input("memoryManagerPolicy")]
+        public Input<string>? MemoryManagerPolicy { get; set; }
+
+        /// <summary>
+        /// The maximum number of PIDs that can be used in a Pod.
+        /// </summary>
+        [Input("podPidsLimit")]
+        public Input<string>? PodPidsLimit { get; set; }
+
+        /// <summary>
         /// Read-only port number.
         /// </summary>
         [Input("readOnlyPort")]
@@ -149,6 +209,18 @@ namespace Pulumi.AliCloud.CS.Inputs
         /// </summary>
         [Input("registryPullQps")]
         public Input<string>? RegistryPullQps { get; set; }
+
+        [Input("reservedMemories")]
+        private InputList<Inputs.NodePoolKubeletConfigurationReservedMemoryGetArgs>? _reservedMemories;
+
+        /// <summary>
+        /// Reserve memory for NUMA nodes. See `reserved_memory` below.
+        /// </summary>
+        public InputList<Inputs.NodePoolKubeletConfigurationReservedMemoryGetArgs> ReservedMemories
+        {
+            get => _reservedMemories ?? (_reservedMemories = new InputList<Inputs.NodePoolKubeletConfigurationReservedMemoryGetArgs>());
+            set => _reservedMemories = value;
+        }
 
         /// <summary>
         /// Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version &lt; 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
@@ -167,6 +239,18 @@ namespace Pulumi.AliCloud.CS.Inputs
             get => _systemReserved ?? (_systemReserved = new InputMap<string>());
             set => _systemReserved = value;
         }
+
+        /// <summary>
+        /// Name of the Topology Manager policy used.
+        /// </summary>
+        [Input("topologyManagerPolicy")]
+        public Input<string>? TopologyManagerPolicy { get; set; }
+
+        /// <summary>
+        /// OpenTelemetry tracks the configuration information for client settings versioning. See `tracing` below.
+        /// </summary>
+        [Input("tracing")]
+        public Input<Inputs.NodePoolKubeletConfigurationTracingGetArgs>? Tracing { get; set; }
 
         public NodePoolKubeletConfigurationGetArgs()
         {

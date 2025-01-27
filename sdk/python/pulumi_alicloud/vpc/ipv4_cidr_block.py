@@ -19,35 +19,26 @@ __all__ = ['Ipv4CidrBlockArgs', 'Ipv4CidrBlock']
 @pulumi.input_type
 class Ipv4CidrBlockArgs:
     def __init__(__self__, *,
-                 secondary_cidr_block: pulumi.Input[str],
-                 vpc_id: pulumi.Input[str]):
+                 vpc_id: pulumi.Input[str],
+                 ipv4_ipam_pool_id: Optional[pulumi.Input[str]] = None,
+                 secondary_cidr_block: Optional[pulumi.Input[str]] = None,
+                 secondary_cidr_mask: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a Ipv4CidrBlock resource.
-        :param pulumi.Input[str] secondary_cidr_block: The IPv4 CIDR block. Take note of the following requirements:
-               * You can specify one of the following standard IPv4 CIDR blocks or their subnets as the secondary IPv4 CIDR block: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8.
-               * You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, or their subnets as the secondary IPv4 CIDR block of the VPC.
-               * The CIDR block cannot start with 0. The subnet mask must be 8 to 28 bits in length.
-               * The secondary CIDR block cannot overlap with the primary CIDR block or an existing secondary CIDR block.
         :param pulumi.Input[str] vpc_id: The ID of the VPC.
+        :param pulumi.Input[str] ipv4_ipam_pool_id: The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
+        :param pulumi.Input[str] secondary_cidr_block: Additional network segment information.
+        :param pulumi.Input[int] secondary_cidr_mask: Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+               
+               > **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
         """
-        pulumi.set(__self__, "secondary_cidr_block", secondary_cidr_block)
         pulumi.set(__self__, "vpc_id", vpc_id)
-
-    @property
-    @pulumi.getter(name="secondaryCidrBlock")
-    def secondary_cidr_block(self) -> pulumi.Input[str]:
-        """
-        The IPv4 CIDR block. Take note of the following requirements:
-        * You can specify one of the following standard IPv4 CIDR blocks or their subnets as the secondary IPv4 CIDR block: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8.
-        * You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, or their subnets as the secondary IPv4 CIDR block of the VPC.
-        * The CIDR block cannot start with 0. The subnet mask must be 8 to 28 bits in length.
-        * The secondary CIDR block cannot overlap with the primary CIDR block or an existing secondary CIDR block.
-        """
-        return pulumi.get(self, "secondary_cidr_block")
-
-    @secondary_cidr_block.setter
-    def secondary_cidr_block(self, value: pulumi.Input[str]):
-        pulumi.set(self, "secondary_cidr_block", value)
+        if ipv4_ipam_pool_id is not None:
+            pulumi.set(__self__, "ipv4_ipam_pool_id", ipv4_ipam_pool_id)
+        if secondary_cidr_block is not None:
+            pulumi.set(__self__, "secondary_cidr_block", secondary_cidr_block)
+        if secondary_cidr_mask is not None:
+            pulumi.set(__self__, "secondary_cidr_mask", secondary_cidr_mask)
 
     @property
     @pulumi.getter(name="vpcId")
@@ -61,41 +52,123 @@ class Ipv4CidrBlockArgs:
     def vpc_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "vpc_id", value)
 
+    @property
+    @pulumi.getter(name="ipv4IpamPoolId")
+    def ipv4_ipam_pool_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
+        """
+        return pulumi.get(self, "ipv4_ipam_pool_id")
 
-@pulumi.input_type
-class _Ipv4CidrBlockState:
-    def __init__(__self__, *,
-                 secondary_cidr_block: Optional[pulumi.Input[str]] = None,
-                 vpc_id: Optional[pulumi.Input[str]] = None):
-        """
-        Input properties used for looking up and filtering Ipv4CidrBlock resources.
-        :param pulumi.Input[str] secondary_cidr_block: The IPv4 CIDR block. Take note of the following requirements:
-               * You can specify one of the following standard IPv4 CIDR blocks or their subnets as the secondary IPv4 CIDR block: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8.
-               * You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, or their subnets as the secondary IPv4 CIDR block of the VPC.
-               * The CIDR block cannot start with 0. The subnet mask must be 8 to 28 bits in length.
-               * The secondary CIDR block cannot overlap with the primary CIDR block or an existing secondary CIDR block.
-        :param pulumi.Input[str] vpc_id: The ID of the VPC.
-        """
-        if secondary_cidr_block is not None:
-            pulumi.set(__self__, "secondary_cidr_block", secondary_cidr_block)
-        if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+    @ipv4_ipam_pool_id.setter
+    def ipv4_ipam_pool_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv4_ipam_pool_id", value)
 
     @property
     @pulumi.getter(name="secondaryCidrBlock")
     def secondary_cidr_block(self) -> Optional[pulumi.Input[str]]:
         """
-        The IPv4 CIDR block. Take note of the following requirements:
-        * You can specify one of the following standard IPv4 CIDR blocks or their subnets as the secondary IPv4 CIDR block: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8.
-        * You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, or their subnets as the secondary IPv4 CIDR block of the VPC.
-        * The CIDR block cannot start with 0. The subnet mask must be 8 to 28 bits in length.
-        * The secondary CIDR block cannot overlap with the primary CIDR block or an existing secondary CIDR block.
+        Additional network segment information.
         """
         return pulumi.get(self, "secondary_cidr_block")
 
     @secondary_cidr_block.setter
     def secondary_cidr_block(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secondary_cidr_block", value)
+
+    @property
+    @pulumi.getter(name="secondaryCidrMask")
+    def secondary_cidr_mask(self) -> Optional[pulumi.Input[int]]:
+        """
+        Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+
+        > **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+        """
+        return pulumi.get(self, "secondary_cidr_mask")
+
+    @secondary_cidr_mask.setter
+    def secondary_cidr_mask(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "secondary_cidr_mask", value)
+
+
+@pulumi.input_type
+class _Ipv4CidrBlockState:
+    def __init__(__self__, *,
+                 ipv4_ipam_pool_id: Optional[pulumi.Input[str]] = None,
+                 region_id: Optional[pulumi.Input[str]] = None,
+                 secondary_cidr_block: Optional[pulumi.Input[str]] = None,
+                 secondary_cidr_mask: Optional[pulumi.Input[int]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Ipv4CidrBlock resources.
+        :param pulumi.Input[str] ipv4_ipam_pool_id: The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
+        :param pulumi.Input[str] region_id: The ID of the region where the VPC resides.
+        :param pulumi.Input[str] secondary_cidr_block: Additional network segment information.
+        :param pulumi.Input[int] secondary_cidr_mask: Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+               
+               > **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC.
+        """
+        if ipv4_ipam_pool_id is not None:
+            pulumi.set(__self__, "ipv4_ipam_pool_id", ipv4_ipam_pool_id)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
+        if secondary_cidr_block is not None:
+            pulumi.set(__self__, "secondary_cidr_block", secondary_cidr_block)
+        if secondary_cidr_mask is not None:
+            pulumi.set(__self__, "secondary_cidr_mask", secondary_cidr_mask)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter(name="ipv4IpamPoolId")
+    def ipv4_ipam_pool_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
+        """
+        return pulumi.get(self, "ipv4_ipam_pool_id")
+
+    @ipv4_ipam_pool_id.setter
+    def ipv4_ipam_pool_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv4_ipam_pool_id", value)
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the region where the VPC resides.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region_id", value)
+
+    @property
+    @pulumi.getter(name="secondaryCidrBlock")
+    def secondary_cidr_block(self) -> Optional[pulumi.Input[str]]:
+        """
+        Additional network segment information.
+        """
+        return pulumi.get(self, "secondary_cidr_block")
+
+    @secondary_cidr_block.setter
+    def secondary_cidr_block(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secondary_cidr_block", value)
+
+    @property
+    @pulumi.getter(name="secondaryCidrMask")
+    def secondary_cidr_mask(self) -> Optional[pulumi.Input[int]]:
+        """
+        Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+
+        > **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+        """
+        return pulumi.get(self, "secondary_cidr_mask")
+
+    @secondary_cidr_mask.setter
+    def secondary_cidr_mask(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "secondary_cidr_mask", value)
 
     @property
     @pulumi.getter(name="vpcId")
@@ -115,11 +188,15 @@ class Ipv4CidrBlock(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 ipv4_ipam_pool_id: Optional[pulumi.Input[str]] = None,
                  secondary_cidr_block: Optional[pulumi.Input[str]] = None,
+                 secondary_cidr_mask: Optional[pulumi.Input[int]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a VPC Ipv4 Cidr Block resource. VPC IPv4 additional network segment.
+        Provides a VPC Ipv4 Cidr Block resource.
+
+        VPC IPv4 additional network segment.
 
         For information about VPC Ipv4 Cidr Block and how to use it, see [What is Ipv4 Cidr Block](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/associatevpccidrblock).
 
@@ -153,11 +230,11 @@ class Ipv4CidrBlock(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] secondary_cidr_block: The IPv4 CIDR block. Take note of the following requirements:
-               * You can specify one of the following standard IPv4 CIDR blocks or their subnets as the secondary IPv4 CIDR block: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8.
-               * You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, or their subnets as the secondary IPv4 CIDR block of the VPC.
-               * The CIDR block cannot start with 0. The subnet mask must be 8 to 28 bits in length.
-               * The secondary CIDR block cannot overlap with the primary CIDR block or an existing secondary CIDR block.
+        :param pulumi.Input[str] ipv4_ipam_pool_id: The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
+        :param pulumi.Input[str] secondary_cidr_block: Additional network segment information.
+        :param pulumi.Input[int] secondary_cidr_mask: Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+               
+               > **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
         :param pulumi.Input[str] vpc_id: The ID of the VPC.
         """
         ...
@@ -167,7 +244,9 @@ class Ipv4CidrBlock(pulumi.CustomResource):
                  args: Ipv4CidrBlockArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a VPC Ipv4 Cidr Block resource. VPC IPv4 additional network segment.
+        Provides a VPC Ipv4 Cidr Block resource.
+
+        VPC IPv4 additional network segment.
 
         For information about VPC Ipv4 Cidr Block and how to use it, see [What is Ipv4 Cidr Block](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/associatevpccidrblock).
 
@@ -214,7 +293,9 @@ class Ipv4CidrBlock(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 ipv4_ipam_pool_id: Optional[pulumi.Input[str]] = None,
                  secondary_cidr_block: Optional[pulumi.Input[str]] = None,
+                 secondary_cidr_mask: Optional[pulumi.Input[int]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -225,12 +306,13 @@ class Ipv4CidrBlock(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = Ipv4CidrBlockArgs.__new__(Ipv4CidrBlockArgs)
 
-            if secondary_cidr_block is None and not opts.urn:
-                raise TypeError("Missing required property 'secondary_cidr_block'")
+            __props__.__dict__["ipv4_ipam_pool_id"] = ipv4_ipam_pool_id
             __props__.__dict__["secondary_cidr_block"] = secondary_cidr_block
+            __props__.__dict__["secondary_cidr_mask"] = secondary_cidr_mask
             if vpc_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vpc_id'")
             __props__.__dict__["vpc_id"] = vpc_id
+            __props__.__dict__["region_id"] = None
         super(Ipv4CidrBlock, __self__).__init__(
             'alicloud:vpc/ipv4CidrBlock:Ipv4CidrBlock',
             resource_name,
@@ -241,7 +323,10 @@ class Ipv4CidrBlock(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            ipv4_ipam_pool_id: Optional[pulumi.Input[str]] = None,
+            region_id: Optional[pulumi.Input[str]] = None,
             secondary_cidr_block: Optional[pulumi.Input[str]] = None,
+            secondary_cidr_mask: Optional[pulumi.Input[int]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None) -> 'Ipv4CidrBlock':
         """
         Get an existing Ipv4CidrBlock resource's state with the given name, id, and optional extra
@@ -250,32 +335,58 @@ class Ipv4CidrBlock(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] secondary_cidr_block: The IPv4 CIDR block. Take note of the following requirements:
-               * You can specify one of the following standard IPv4 CIDR blocks or their subnets as the secondary IPv4 CIDR block: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8.
-               * You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, or their subnets as the secondary IPv4 CIDR block of the VPC.
-               * The CIDR block cannot start with 0. The subnet mask must be 8 to 28 bits in length.
-               * The secondary CIDR block cannot overlap with the primary CIDR block or an existing secondary CIDR block.
+        :param pulumi.Input[str] ipv4_ipam_pool_id: The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
+        :param pulumi.Input[str] region_id: The ID of the region where the VPC resides.
+        :param pulumi.Input[str] secondary_cidr_block: Additional network segment information.
+        :param pulumi.Input[int] secondary_cidr_mask: Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+               
+               > **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
         :param pulumi.Input[str] vpc_id: The ID of the VPC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _Ipv4CidrBlockState.__new__(_Ipv4CidrBlockState)
 
+        __props__.__dict__["ipv4_ipam_pool_id"] = ipv4_ipam_pool_id
+        __props__.__dict__["region_id"] = region_id
         __props__.__dict__["secondary_cidr_block"] = secondary_cidr_block
+        __props__.__dict__["secondary_cidr_mask"] = secondary_cidr_mask
         __props__.__dict__["vpc_id"] = vpc_id
         return Ipv4CidrBlock(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="ipv4IpamPoolId")
+    def ipv4_ipam_pool_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
+        """
+        return pulumi.get(self, "ipv4_ipam_pool_id")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the region where the VPC resides.
+        """
+        return pulumi.get(self, "region_id")
 
     @property
     @pulumi.getter(name="secondaryCidrBlock")
     def secondary_cidr_block(self) -> pulumi.Output[str]:
         """
-        The IPv4 CIDR block. Take note of the following requirements:
-        * You can specify one of the following standard IPv4 CIDR blocks or their subnets as the secondary IPv4 CIDR block: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8.
-        * You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, or their subnets as the secondary IPv4 CIDR block of the VPC.
-        * The CIDR block cannot start with 0. The subnet mask must be 8 to 28 bits in length.
-        * The secondary CIDR block cannot overlap with the primary CIDR block or an existing secondary CIDR block.
+        Additional network segment information.
         """
         return pulumi.get(self, "secondary_cidr_block")
+
+    @property
+    @pulumi.getter(name="secondaryCidrMask")
+    def secondary_cidr_mask(self) -> pulumi.Output[Optional[int]]:
+        """
+        Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+
+        > **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+        """
+        return pulumi.get(self, "secondary_cidr_mask")
 
     @property
     @pulumi.getter(name="vpcId")

@@ -13,50 +13,50 @@ import java.util.Objects;
 @CustomType
 public final class GetServerGroupsGroupStickySessionConfig {
     /**
-     * @return the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession` parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
+     * @return the cookie that is configured on the server.
      * 
      */
     private String cookie;
     /**
-     * @return The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
+     * @return The timeout period of a cookie. The timeout period of a cookie.
      * 
      */
     private Integer cookieTimeout;
     /**
-     * @return Indicates whether sticky session is enabled. Values: `true` and `false`. Default value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
+     * @return Indicates whether sticky session is enabled.
      * 
      */
     private Boolean stickySessionEnabled;
     /**
-     * @return The method that is used to handle a cookie. Values: `Server` and `Insert`.
+     * @return The method that is used to handle a cookie.
      * 
      */
     private String stickySessionType;
 
     private GetServerGroupsGroupStickySessionConfig() {}
     /**
-     * @return the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession` parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
+     * @return the cookie that is configured on the server.
      * 
      */
     public String cookie() {
         return this.cookie;
     }
     /**
-     * @return The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
+     * @return The timeout period of a cookie. The timeout period of a cookie.
      * 
      */
     public Integer cookieTimeout() {
         return this.cookieTimeout;
     }
     /**
-     * @return Indicates whether sticky session is enabled. Values: `true` and `false`. Default value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
+     * @return Indicates whether sticky session is enabled.
      * 
      */
     public Boolean stickySessionEnabled() {
         return this.stickySessionEnabled;
     }
     /**
-     * @return The method that is used to handle a cookie. Values: `Server` and `Insert`.
+     * @return The method that is used to handle a cookie.
      * 
      */
     public String stickySessionType() {

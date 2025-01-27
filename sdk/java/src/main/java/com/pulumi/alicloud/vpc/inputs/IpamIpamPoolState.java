@@ -215,6 +215,21 @@ public final class IpamIpamPoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of the resource group.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
      * The instance ID of the source IPAM address pool.
      * 
      * &gt; **NOTE:**  If this parameter is not entered, the created address pool is the parent address pool.
@@ -278,6 +293,7 @@ public final class IpamIpamPoolState extends com.pulumi.resources.ResourceArgs {
         this.ipamScopeId = $.ipamScopeId;
         this.poolRegionId = $.poolRegionId;
         this.regionId = $.regionId;
+        this.resourceGroupId = $.resourceGroupId;
         this.sourceIpamPoolId = $.sourceIpamPoolId;
         this.status = $.status;
         this.tags = $.tags;
@@ -567,6 +583,27 @@ public final class IpamIpamPoolState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder regionId(String regionId) {
             return regionId(Output.of(regionId));
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
         }
 
         /**

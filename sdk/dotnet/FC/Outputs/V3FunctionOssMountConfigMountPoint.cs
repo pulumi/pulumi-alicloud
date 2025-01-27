@@ -14,20 +14,20 @@ namespace Pulumi.AliCloud.FC.Outputs
     public sealed class V3FunctionOssMountConfigMountPoint
     {
         /// <summary>
-        /// OSS Bucket name.
+        /// OSS Bucket name
         /// </summary>
         public readonly string? BucketName;
         /// <summary>
-        /// Path of the mounted OSS Bucket.
+        /// Path of the mounted OSS Bucket
         /// </summary>
         public readonly string? BucketPath;
         /// <summary>
-        /// OSS access endpoint.
+        /// OSS access endpoint
         /// </summary>
         public readonly string? Endpoint;
         public readonly string? MountDir;
         /// <summary>
-        /// Read-only.
+        /// Read-only
         /// </summary>
         public readonly bool? ReadOnly;
 

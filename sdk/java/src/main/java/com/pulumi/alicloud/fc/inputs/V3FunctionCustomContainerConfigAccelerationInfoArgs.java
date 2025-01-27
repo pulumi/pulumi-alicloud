@@ -16,7 +16,7 @@ public final class V3FunctionCustomContainerConfigAccelerationInfoArgs extends c
     public static final V3FunctionCustomContainerConfigAccelerationInfoArgs Empty = new V3FunctionCustomContainerConfigAccelerationInfoArgs();
 
     /**
-     * Image Acceleration Status (Deprecated).
+     * Image Acceleration Status (Deprecated)
      * 
      * @deprecated
      * Field &#39;status&#39; has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated)
@@ -27,7 +27,7 @@ public final class V3FunctionCustomContainerConfigAccelerationInfoArgs extends c
     private @Nullable Output<String> status;
 
     /**
-     * @return Image Acceleration Status (Deprecated).
+     * @return Image Acceleration Status (Deprecated)
      * 
      * @deprecated
      * Field &#39;status&#39; has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated)
@@ -63,7 +63,7 @@ public final class V3FunctionCustomContainerConfigAccelerationInfoArgs extends c
         }
 
         /**
-         * @param status Image Acceleration Status (Deprecated).
+         * @param status Image Acceleration Status (Deprecated)
          * 
          * @return builder
          * 
@@ -78,7 +78,7 @@ public final class V3FunctionCustomContainerConfigAccelerationInfoArgs extends c
         }
 
         /**
-         * @param status Image Acceleration Status (Deprecated).
+         * @param status Image Acceleration Status (Deprecated)
          * 
          * @return builder
          * 

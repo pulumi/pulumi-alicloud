@@ -320,6 +320,11 @@ export type IpamIpamScope = import("./ipamIpamScope").IpamIpamScope;
 export const IpamIpamScope: typeof import("./ipamIpamScope").IpamIpamScope = null as any;
 utilities.lazyLoad(exports, ["IpamIpamScope"], () => require("./ipamIpamScope"));
 
+export { IpamServiceArgs, IpamServiceState } from "./ipamService";
+export type IpamService = import("./ipamService").IpamService;
+export const IpamService: typeof import("./ipamService").IpamService = null as any;
+utilities.lazyLoad(exports, ["IpamService"], () => require("./ipamService"));
+
 export { Ipv4CidrBlockArgs, Ipv4CidrBlockState } from "./ipv4CidrBlock";
 export type Ipv4CidrBlock = import("./ipv4CidrBlock").Ipv4CidrBlock;
 export const Ipv4CidrBlock: typeof import("./ipv4CidrBlock").Ipv4CidrBlock = null as any;
@@ -540,6 +545,8 @@ const _module = {
                 return new IpamIpamPoolCidr(name, <any>undefined, { urn })
             case "alicloud:vpc/ipamIpamScope:IpamIpamScope":
                 return new IpamIpamScope(name, <any>undefined, { urn })
+            case "alicloud:vpc/ipamService:IpamService":
+                return new IpamService(name, <any>undefined, { urn })
             case "alicloud:vpc/ipv4CidrBlock:Ipv4CidrBlock":
                 return new Ipv4CidrBlock(name, <any>undefined, { urn })
             case "alicloud:vpc/ipv4Gateway:Ipv4Gateway":
@@ -635,6 +642,7 @@ pulumi.runtime.registerResourceModule("alicloud", "vpc/ipamIpamPool", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/ipamIpamPoolAllocation", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/ipamIpamPoolCidr", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/ipamIpamScope", _module)
+pulumi.runtime.registerResourceModule("alicloud", "vpc/ipamService", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/ipv4CidrBlock", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/ipv4Gateway", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/ipv6Address", _module)

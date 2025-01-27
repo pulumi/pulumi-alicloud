@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.MaxCompute.Outputs
     public sealed class ProjectSecurityPropertiesProjectProtection
     {
         /// <summary>
-        /// Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection).
+        /// Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection)
         /// </summary>
         public readonly string? ExceptionPolicy;
         /// <summary>
-        /// Whether enabled, value:(true/false).
+        /// Whether enabled, value:(true/false)
         /// </summary>
         public readonly bool? Protected;
 

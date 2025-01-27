@@ -15,8 +15,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.77.0.
  *
- * > **NOTE:** Field `name`, `specificationType`, `orderType` has been removed from provider version 1.227.1.
- *
  * ## Example Usage
  *
  * Basic Usage
@@ -80,7 +78,8 @@ export class Project extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
+     * Used to implement computing resource allocation. Valid values: subQuota Nickname
+     * If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
      */
     public readonly defaultQuota!: pulumi.Output<string | undefined>;
     /**
@@ -88,16 +87,15 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly ipWhiteList!: pulumi.Output<outputs.maxcompute.ProjectIpWhiteList | undefined>;
     /**
-     * Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
+     * Whether to logically delete. Default value: true. Value: (ture/false),
+     *
+     * > **NOTE:** -- ture: In this case, the project status will be changed to' deleting' and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
      */
     public readonly isLogical!: pulumi.Output<string | undefined>;
     /**
      * Project owner
      */
     public /*out*/ readonly owner!: pulumi.Output<string>;
-    /**
-     * Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
-     */
     public readonly productType!: pulumi.Output<string | undefined>;
     /**
      * The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
@@ -107,6 +105,10 @@ export class Project extends pulumi.CustomResource {
      * Project base attributes See `properties` below.
      */
     public readonly properties!: pulumi.Output<outputs.maxcompute.ProjectProperties>;
+    /**
+     * The region ID of the resource
+     */
+    public /*out*/ readonly regionId!: pulumi.Output<string>;
     /**
      * Security-related attributes See `securityProperties` below.
      */
@@ -146,6 +148,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["productType"] = state ? state.productType : undefined;
             resourceInputs["projectName"] = state ? state.projectName : undefined;
             resourceInputs["properties"] = state ? state.properties : undefined;
+            resourceInputs["regionId"] = state ? state.regionId : undefined;
             resourceInputs["securityProperties"] = state ? state.securityProperties : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -164,6 +167,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["owner"] = undefined /*out*/;
+            resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -184,7 +188,8 @@ export interface ProjectState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
+     * Used to implement computing resource allocation. Valid values: subQuota Nickname
+     * If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
      */
     defaultQuota?: pulumi.Input<string>;
     /**
@@ -192,16 +197,15 @@ export interface ProjectState {
      */
     ipWhiteList?: pulumi.Input<inputs.maxcompute.ProjectIpWhiteList>;
     /**
-     * Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
+     * Whether to logically delete. Default value: true. Value: (ture/false),
+     *
+     * > **NOTE:** -- ture: In this case, the project status will be changed to' deleting' and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
      */
     isLogical?: pulumi.Input<string>;
     /**
      * Project owner
      */
     owner?: pulumi.Input<string>;
-    /**
-     * Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
-     */
     productType?: pulumi.Input<string>;
     /**
      * The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
@@ -211,6 +215,10 @@ export interface ProjectState {
      * Project base attributes See `properties` below.
      */
     properties?: pulumi.Input<inputs.maxcompute.ProjectProperties>;
+    /**
+     * The region ID of the resource
+     */
+    regionId?: pulumi.Input<string>;
     /**
      * Security-related attributes See `securityProperties` below.
      */
@@ -238,7 +246,8 @@ export interface ProjectArgs {
      */
     comment?: pulumi.Input<string>;
     /**
-     * Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
+     * Used to implement computing resource allocation. Valid values: subQuota Nickname
+     * If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
      */
     defaultQuota?: pulumi.Input<string>;
     /**
@@ -246,12 +255,11 @@ export interface ProjectArgs {
      */
     ipWhiteList?: pulumi.Input<inputs.maxcompute.ProjectIpWhiteList>;
     /**
-     * Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
+     * Whether to logically delete. Default value: true. Value: (ture/false),
+     *
+     * > **NOTE:** -- ture: In this case, the project status will be changed to' deleting' and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
      */
     isLogical?: pulumi.Input<string>;
-    /**
-     * Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
-     */
     productType?: pulumi.Input<string>;
     /**
      * The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.

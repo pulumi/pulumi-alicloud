@@ -17,7 +17,7 @@ public final class GetServerGroupsGroupServer {
      */
     private String description;
     /**
-     * @return The port that is used by the server. Valid values: `1` to `65535`.
+     * @return The port that is used by the server.
      * 
      */
     private Integer port;
@@ -32,17 +32,17 @@ public final class GetServerGroupsGroupServer {
      */
     private String serverIp;
     /**
-     * @return The type of the server. The type of the server. Valid values: `Ecs`, `Eni` and `Eci`.
+     * @return The type of the server. The type of the server.
      * 
      */
     private String serverType;
     /**
-     * @return The status of the resource.
+     * @return The status of the Server Group. Valid values: `Available`, `Configuring`, `Provisioning`.
      * 
      */
     private String status;
     /**
-     * @return The weight of the server.  Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the server.
+     * @return The weight of the server.
      * 
      */
     private Integer weight;
@@ -56,7 +56,7 @@ public final class GetServerGroupsGroupServer {
         return this.description;
     }
     /**
-     * @return The port that is used by the server. Valid values: `1` to `65535`.
+     * @return The port that is used by the server.
      * 
      */
     public Integer port() {
@@ -77,21 +77,21 @@ public final class GetServerGroupsGroupServer {
         return this.serverIp;
     }
     /**
-     * @return The type of the server. The type of the server. Valid values: `Ecs`, `Eni` and `Eci`.
+     * @return The type of the server. The type of the server.
      * 
      */
     public String serverType() {
         return this.serverType;
     }
     /**
-     * @return The status of the resource.
+     * @return The status of the Server Group. Valid values: `Available`, `Configuring`, `Provisioning`.
      * 
      */
     public String status() {
         return this.status;
     }
     /**
-     * @return The weight of the server.  Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the server.
+     * @return The weight of the server.
      * 
      */
     public Integer weight() {

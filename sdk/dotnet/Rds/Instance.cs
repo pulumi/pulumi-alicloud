@@ -70,6 +70,15 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> BabelfishPort { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to enable the I/O burst feature of general
+        /// ESSDs. Valid values:
+        /// - true
+        /// - false
+        /// </summary>
+        [Output("burstingEnabled")]
+        public Output<bool?> BurstingEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `ca_type` start  support `MySQL` engine. Value range:
         /// - aliyun: a cloud certificate
         /// - custom: a custom certificate
@@ -782,6 +791,15 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? BabelfishPort { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable the I/O burst feature of general
+        /// ESSDs. Valid values:
+        /// - true
+        /// - false
+        /// </summary>
+        [Input("burstingEnabled")]
+        public Input<bool>? BurstingEnabled { get; set; }
+
+        /// <summary>
         /// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `ca_type` start  support `MySQL` engine. Value range:
         /// - aliyun: a cloud certificate
         /// - custom: a custom certificate
@@ -1475,6 +1493,15 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("babelfishPort")]
         public Input<string>? BabelfishPort { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable the I/O burst feature of general
+        /// ESSDs. Valid values:
+        /// - true
+        /// - false
+        /// </summary>
+        [Input("burstingEnabled")]
+        public Input<bool>? BurstingEnabled { get; set; }
 
         /// <summary>
         /// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `ca_type` start  support `MySQL` engine. Value range:

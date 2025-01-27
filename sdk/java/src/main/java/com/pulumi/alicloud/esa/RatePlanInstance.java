@@ -17,6 +17,57 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a ESA Rate Plan Instance resource.
+ * 
+ * For information about ESA Rate Plan Instance and how to use it, see [What is Rate Plan Instance](https://www.alibabacloud.com/help/en/).
+ * 
+ * &gt; **NOTE:** Available since v1.234.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.esa.RatePlanInstance;
+ * import com.pulumi.alicloud.esa.RatePlanInstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new RatePlanInstance("default", RatePlanInstanceArgs.builder()
+ *             .type("NS")
+ *             .autoRenew(true)
+ *             .period("1")
+ *             .paymentType("Subscription")
+ *             .coverage("overseas")
+ *             .planName("basic")
+ *             .autoPay(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * ESA Rate Plan Instance can be imported using the id, e.g.
@@ -119,14 +170,14 @@ public class RatePlanInstance extends com.pulumi.resources.CustomResource {
         return this.instanceStatus;
     }
     /**
-     * The payment type of the resource, Valid vales: Subscription.
+     * The payment type of the resource
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
-     * @return The payment type of the resource, Valid vales: Subscription.
+     * @return The payment type of the resource
      * 
      */
     public Output<String> paymentType() {

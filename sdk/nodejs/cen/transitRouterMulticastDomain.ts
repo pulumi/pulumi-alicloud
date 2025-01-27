@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -19,19 +21,21 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.cen.Instance("example", {
- *     cenInstanceName: "tf_example",
- *     description: "an example for cen",
- * });
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const example = new alicloud.cen.Instance("example", {cenInstanceName: name});
  * const exampleTransitRouter = new alicloud.cen.TransitRouter("example", {
- *     transitRouterName: "tf_example",
+ *     transitRouterName: name,
  *     cenId: example.id,
  *     supportMulticast: true,
  * });
- * const exampleTransitRouterMulticastDomain = new alicloud.cen.TransitRouterMulticastDomain("example", {
+ * const _default = new alicloud.cen.TransitRouterMulticastDomain("default", {
  *     transitRouterId: exampleTransitRouter.transitRouterId,
- *     transitRouterMulticastDomainName: "tf_example",
- *     transitRouterMulticastDomainDescription: "tf_example",
+ *     transitRouterMulticastDomainName: name,
+ *     transitRouterMulticastDomainDescription: name,
+ *     options: {
+ *         igmpv2Support: "disable",
+ *     },
  * });
  * ```
  *
@@ -72,6 +76,14 @@ export class TransitRouterMulticastDomain extends pulumi.CustomResource {
     }
 
     /**
+     * The function options of the multicast domain. See `options` below.
+     */
+    public readonly options!: pulumi.Output<outputs.cen.TransitRouterMulticastDomainOptions>;
+    /**
+     * (Available since v1.242.0) The region ID of the transit router.
+     */
+    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    /**
      * The status of the Transit Router Multicast Domain.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
@@ -80,15 +92,15 @@ export class TransitRouterMulticastDomain extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The ID of the transit router.
+     * The ID of the forwarding router instance.
      */
     public readonly transitRouterId!: pulumi.Output<string>;
     /**
-     * The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+     * The description of the multicast domain.
      */
     public readonly transitRouterMulticastDomainDescription!: pulumi.Output<string | undefined>;
     /**
-     * The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+     * The name of the multicast domain.
      */
     public readonly transitRouterMulticastDomainName!: pulumi.Output<string | undefined>;
 
@@ -105,6 +117,8 @@ export class TransitRouterMulticastDomain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TransitRouterMulticastDomainState | undefined;
+            resourceInputs["options"] = state ? state.options : undefined;
+            resourceInputs["regionId"] = state ? state.regionId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["transitRouterId"] = state ? state.transitRouterId : undefined;
@@ -115,10 +129,12 @@ export class TransitRouterMulticastDomain extends pulumi.CustomResource {
             if ((!args || args.transitRouterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'transitRouterId'");
             }
+            resourceInputs["options"] = args ? args.options : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["transitRouterId"] = args ? args.transitRouterId : undefined;
             resourceInputs["transitRouterMulticastDomainDescription"] = args ? args.transitRouterMulticastDomainDescription : undefined;
             resourceInputs["transitRouterMulticastDomainName"] = args ? args.transitRouterMulticastDomainName : undefined;
+            resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -131,6 +147,14 @@ export class TransitRouterMulticastDomain extends pulumi.CustomResource {
  */
 export interface TransitRouterMulticastDomainState {
     /**
+     * The function options of the multicast domain. See `options` below.
+     */
+    options?: pulumi.Input<inputs.cen.TransitRouterMulticastDomainOptions>;
+    /**
+     * (Available since v1.242.0) The region ID of the transit router.
+     */
+    regionId?: pulumi.Input<string>;
+    /**
      * The status of the Transit Router Multicast Domain.
      */
     status?: pulumi.Input<string>;
@@ -139,15 +163,15 @@ export interface TransitRouterMulticastDomainState {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The ID of the transit router.
+     * The ID of the forwarding router instance.
      */
     transitRouterId?: pulumi.Input<string>;
     /**
-     * The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+     * The description of the multicast domain.
      */
     transitRouterMulticastDomainDescription?: pulumi.Input<string>;
     /**
-     * The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+     * The name of the multicast domain.
      */
     transitRouterMulticastDomainName?: pulumi.Input<string>;
 }
@@ -157,19 +181,23 @@ export interface TransitRouterMulticastDomainState {
  */
 export interface TransitRouterMulticastDomainArgs {
     /**
+     * The function options of the multicast domain. See `options` below.
+     */
+    options?: pulumi.Input<inputs.cen.TransitRouterMulticastDomainOptions>;
+    /**
      * A mapping of tags to assign to the resource.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The ID of the transit router.
+     * The ID of the forwarding router instance.
      */
     transitRouterId: pulumi.Input<string>;
     /**
-     * The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+     * The description of the multicast domain.
      */
     transitRouterMulticastDomainDescription?: pulumi.Input<string>;
     /**
-     * The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+     * The name of the multicast domain.
      */
     transitRouterMulticastDomainName?: pulumi.Input<string>;
 }

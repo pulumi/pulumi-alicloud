@@ -11,6 +11,7 @@ from .ciphertext import *
 from .client_key import *
 from .get_aliases import *
 from .get_ciphertext import *
+from .get_instances import *
 from .get_key_versions import *
 from .get_keys import *
 from .get_plaintext import *

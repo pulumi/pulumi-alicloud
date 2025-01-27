@@ -41,7 +41,7 @@ class RatePlanInstanceArgs:
                global: global.
                
                overseas: Global (excluding Mainland China).
-        :param pulumi.Input[str] payment_type: The payment type of the resource, Valid vales: Subscription.
+        :param pulumi.Input[str] payment_type: The payment type of the resource
         :param pulumi.Input[int] period: Purchase cycle (in months).
         :param pulumi.Input[str] plan_name: The plan name, which is obtained from the DescribeRatePlanPrice interface.
         :param pulumi.Input[str] type: Site access type:
@@ -115,7 +115,7 @@ class RatePlanInstanceArgs:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The payment type of the resource, Valid vales: Subscription.
+        The payment type of the resource
         """
         return pulumi.get(self, "payment_type")
 
@@ -194,7 +194,7 @@ class _RatePlanInstanceState:
                overseas: Global (excluding Mainland China).
         :param pulumi.Input[str] create_time: The new purchase time of the package instance.
         :param pulumi.Input[str] instance_status: Renewing: renewing
-        :param pulumi.Input[str] payment_type: The payment type of the resource, Valid vales: Subscription.
+        :param pulumi.Input[str] payment_type: The payment type of the resource
         :param pulumi.Input[int] period: Purchase cycle (in months).
         :param pulumi.Input[str] plan_name: The plan name, which is obtained from the DescribeRatePlanPrice interface.
         :param pulumi.Input[str] status: The status of the resource
@@ -299,7 +299,7 @@ class _RatePlanInstanceState:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The payment type of the resource, Valid vales: Subscription.
+        The payment type of the resource
         """
         return pulumi.get(self, "payment_type")
 
@@ -374,6 +374,34 @@ class RatePlanInstance(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Provides a ESA Rate Plan Instance resource.
+
+        For information about ESA Rate Plan Instance and how to use it, see [What is Rate Plan Instance](https://www.alibabacloud.com/help/en/).
+
+        > **NOTE:** Available since v1.234.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.esa.RatePlanInstance("default",
+            type="NS",
+            auto_renew=True,
+            period=1,
+            payment_type="Subscription",
+            coverage="overseas",
+            plan_name="basic",
+            auto_pay=True)
+        ```
+
         ## Import
 
         ESA Rate Plan Instance can be imported using the id, e.g.
@@ -397,7 +425,7 @@ class RatePlanInstance(pulumi.CustomResource):
                global: global.
                
                overseas: Global (excluding Mainland China).
-        :param pulumi.Input[str] payment_type: The payment type of the resource, Valid vales: Subscription.
+        :param pulumi.Input[str] payment_type: The payment type of the resource
         :param pulumi.Input[int] period: Purchase cycle (in months).
         :param pulumi.Input[str] plan_name: The plan name, which is obtained from the DescribeRatePlanPrice interface.
         :param pulumi.Input[str] type: Site access type:
@@ -413,6 +441,34 @@ class RatePlanInstance(pulumi.CustomResource):
                  args: Optional[RatePlanInstanceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a ESA Rate Plan Instance resource.
+
+        For information about ESA Rate Plan Instance and how to use it, see [What is Rate Plan Instance](https://www.alibabacloud.com/help/en/).
+
+        > **NOTE:** Available since v1.234.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.esa.RatePlanInstance("default",
+            type="NS",
+            auto_renew=True,
+            period=1,
+            payment_type="Subscription",
+            coverage="overseas",
+            plan_name="basic",
+            auto_pay=True)
+        ```
+
         ## Import
 
         ESA Rate Plan Instance can be imported using the id, e.g.
@@ -504,7 +560,7 @@ class RatePlanInstance(pulumi.CustomResource):
                overseas: Global (excluding Mainland China).
         :param pulumi.Input[str] create_time: The new purchase time of the package instance.
         :param pulumi.Input[str] instance_status: Renewing: renewing
-        :param pulumi.Input[str] payment_type: The payment type of the resource, Valid vales: Subscription.
+        :param pulumi.Input[str] payment_type: The payment type of the resource
         :param pulumi.Input[int] period: Purchase cycle (in months).
         :param pulumi.Input[str] plan_name: The plan name, which is obtained from the DescribeRatePlanPrice interface.
         :param pulumi.Input[str] status: The status of the resource
@@ -584,7 +640,7 @@ class RatePlanInstance(pulumi.CustomResource):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[str]:
         """
-        The payment type of the resource, Valid vales: Subscription.
+        The payment type of the resource
         """
         return pulumi.get(self, "payment_type")
 

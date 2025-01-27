@@ -88,6 +88,21 @@ public final class IpamIpamScopeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of the resource group.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
      * The tag of the resource.
      * 
      */
@@ -109,6 +124,7 @@ public final class IpamIpamScopeArgs extends com.pulumi.resources.ResourceArgs {
         this.ipamScopeDescription = $.ipamScopeDescription;
         this.ipamScopeName = $.ipamScopeName;
         this.ipamScopeType = $.ipamScopeType;
+        this.resourceGroupId = $.resourceGroupId;
         this.tags = $.tags;
     }
 
@@ -222,6 +238,27 @@ public final class IpamIpamScopeArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ipamScopeType(String ipamScopeType) {
             return ipamScopeType(Output.of(ipamScopeType));
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
         }
 
         /**

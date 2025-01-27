@@ -14,9 +14,13 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type ProjectIpWhiteList struct {
-	// Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.> **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
+	// Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.
+	//
+	// > **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
 	IpList *string `pulumi:"ipList"`
-	// Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.> **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
+	// Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.
+	//
+	// > **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
 	VpcIpList *string `pulumi:"vpcIpList"`
 }
 
@@ -32,9 +36,13 @@ type ProjectIpWhiteListInput interface {
 }
 
 type ProjectIpWhiteListArgs struct {
-	// Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.> **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
+	// Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.
+	//
+	// > **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
 	IpList pulumi.StringPtrInput `pulumi:"ipList"`
-	// Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.> **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
+	// Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.
+	//
+	// > **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
 	VpcIpList pulumi.StringPtrInput `pulumi:"vpcIpList"`
 }
 
@@ -115,12 +123,16 @@ func (o ProjectIpWhiteListOutput) ToProjectIpWhiteListPtrOutputWithContext(ctx c
 	}).(ProjectIpWhiteListPtrOutput)
 }
 
-// Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.> **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
+// Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.
+//
+// > **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
 func (o ProjectIpWhiteListOutput) IpList() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectIpWhiteList) *string { return v.IpList }).(pulumi.StringPtrOutput)
 }
 
-// Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.> **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
+// Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.
+//
+// > **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
 func (o ProjectIpWhiteListOutput) VpcIpList() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectIpWhiteList) *string { return v.VpcIpList }).(pulumi.StringPtrOutput)
 }
@@ -149,7 +161,9 @@ func (o ProjectIpWhiteListPtrOutput) Elem() ProjectIpWhiteListOutput {
 	}).(ProjectIpWhiteListOutput)
 }
 
-// Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.> **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
+// Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.
+//
+// > **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
 func (o ProjectIpWhiteListPtrOutput) IpList() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectIpWhiteList) *string {
 		if v == nil {
@@ -159,7 +173,9 @@ func (o ProjectIpWhiteListPtrOutput) IpList() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.> **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
+// Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.
+//
+// > **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
 func (o ProjectIpWhiteListPtrOutput) VpcIpList() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectIpWhiteList) *string {
 		if v == nil {
@@ -170,22 +186,34 @@ func (o ProjectIpWhiteListPtrOutput) VpcIpList() pulumi.StringPtrOutput {
 }
 
 type ProjectProperties struct {
-	// Whether to allow full table scan. Default: false.
+	// Whether to allow full table scan. Default: false
 	AllowFullScan *bool `pulumi:"allowFullScan"`
-	// Whether to turn on Decimal2.0.
+	// Whether to turn on Decimal2.0
 	EnableDecimal2 *bool `pulumi:"enableDecimal2"`
 	// Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
-	// > **NOTE :**:  To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.  To configure the permissions and IP whitelist parameters of the MaxCompute project, you must have the management permissions (Admin) of the corresponding project, including Super_Administrator, Admin, or custom management permissions. For more information, see the project management permissions list.  You can turn on storage encryption only for projects that have not turned on storage encryption. For projects that have turned on storage encryption, you cannot turn off storage encryption or change the encryption algorithm. See `encryption` below.
+	// > **NOTE :**:
+	// To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.
+	//
+	// To configure the permissions and IP whitelist parameters of the MaxCompute project, you must have the management permissions (Admin) of the corresponding project, including Super_Administrator, Admin, or custom management permissions. For more information, see the project management permissions list.
+	//
+	// You can turn on storage encryption only for projects that have not turned on storage encryption. For projects that have turned on storage encryption, you cannot turn off storage encryption or change the encryption algorithm. See `encryption` below.
 	Encryption *ProjectPropertiesEncryption `pulumi:"encryption"`
-	// Set the number of days to retain backup data. During this time, you can restore the current version to any backup version. The value range of days is [0,30], and the default value is 1. 0 means backup is turned off. The effective policy after adjusting the backup cycle is: Extend the backup cycle: The new backup cycle takes effect on the same day. Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
+	// Set the number of days to retain backup data. During this time, you can restore the current version to any backup version. The value range of days is [0,30], and the default value is 1. 0 means backup is turned off.
+	// The effective policy after adjusting the backup cycle is:
+	// Extend the backup cycle: The new backup cycle takes effect on the same day.
+	// Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
 	RetentionDays *int `pulumi:"retentionDays"`
-	// Set the maximum threshold of single SQL consumption, that is, set the ODPS. SQL. metering.value.max attribute. For details, see [Consumption Monitoring Alarm](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control). Unit: scan volume (GB)* complexity. .
+	// Set the maximum threshold for single SQL Consumption, that is, set the ODPS. SQL. metering.value.max attribute. For more information, see [Consumption control](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-controll).
+	// Unit: scan volume (GB)* complexity.
 	SqlMeteringMax *string `pulumi:"sqlMeteringMax"`
-	// Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property,. See `tableLifecycle` below.
+	// Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property, See `tableLifecycle` below.
 	TableLifecycle *ProjectPropertiesTableLifecycle `pulumi:"tableLifecycle"`
-	// Project time zone, example value: Asia/Shanghai.
+	// Project time zone, example value: Asia/Shanghai
 	Timezone *string `pulumi:"timezone"`
-	// Data type version. Value:(1/2/hive) 1: The original MaxCompute type system. 2: New type system introduced by MaxCompute 2.0. hive: the type system of the Hive compatibility mode introduced by MaxCompute 2.0.
+	// Data type version. Value:(1/2/hive)
+	// 1: The original MaxCompute type system.
+	// 2: New type system introduced by MaxCompute 2.0.
+	// hive: the type system of the Hive compatibility mode introduced by MaxCompute 2.0.
 	TypeSystem *string `pulumi:"typeSystem"`
 }
 
@@ -201,22 +229,34 @@ type ProjectPropertiesInput interface {
 }
 
 type ProjectPropertiesArgs struct {
-	// Whether to allow full table scan. Default: false.
+	// Whether to allow full table scan. Default: false
 	AllowFullScan pulumi.BoolPtrInput `pulumi:"allowFullScan"`
-	// Whether to turn on Decimal2.0.
+	// Whether to turn on Decimal2.0
 	EnableDecimal2 pulumi.BoolPtrInput `pulumi:"enableDecimal2"`
 	// Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
-	// > **NOTE :**:  To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.  To configure the permissions and IP whitelist parameters of the MaxCompute project, you must have the management permissions (Admin) of the corresponding project, including Super_Administrator, Admin, or custom management permissions. For more information, see the project management permissions list.  You can turn on storage encryption only for projects that have not turned on storage encryption. For projects that have turned on storage encryption, you cannot turn off storage encryption or change the encryption algorithm. See `encryption` below.
+	// > **NOTE :**:
+	// To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.
+	//
+	// To configure the permissions and IP whitelist parameters of the MaxCompute project, you must have the management permissions (Admin) of the corresponding project, including Super_Administrator, Admin, or custom management permissions. For more information, see the project management permissions list.
+	//
+	// You can turn on storage encryption only for projects that have not turned on storage encryption. For projects that have turned on storage encryption, you cannot turn off storage encryption or change the encryption algorithm. See `encryption` below.
 	Encryption ProjectPropertiesEncryptionPtrInput `pulumi:"encryption"`
-	// Set the number of days to retain backup data. During this time, you can restore the current version to any backup version. The value range of days is [0,30], and the default value is 1. 0 means backup is turned off. The effective policy after adjusting the backup cycle is: Extend the backup cycle: The new backup cycle takes effect on the same day. Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
+	// Set the number of days to retain backup data. During this time, you can restore the current version to any backup version. The value range of days is [0,30], and the default value is 1. 0 means backup is turned off.
+	// The effective policy after adjusting the backup cycle is:
+	// Extend the backup cycle: The new backup cycle takes effect on the same day.
+	// Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
 	RetentionDays pulumi.IntPtrInput `pulumi:"retentionDays"`
-	// Set the maximum threshold of single SQL consumption, that is, set the ODPS. SQL. metering.value.max attribute. For details, see [Consumption Monitoring Alarm](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control). Unit: scan volume (GB)* complexity. .
+	// Set the maximum threshold for single SQL Consumption, that is, set the ODPS. SQL. metering.value.max attribute. For more information, see [Consumption control](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-controll).
+	// Unit: scan volume (GB)* complexity.
 	SqlMeteringMax pulumi.StringPtrInput `pulumi:"sqlMeteringMax"`
-	// Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property,. See `tableLifecycle` below.
+	// Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property, See `tableLifecycle` below.
 	TableLifecycle ProjectPropertiesTableLifecyclePtrInput `pulumi:"tableLifecycle"`
-	// Project time zone, example value: Asia/Shanghai.
+	// Project time zone, example value: Asia/Shanghai
 	Timezone pulumi.StringPtrInput `pulumi:"timezone"`
-	// Data type version. Value:(1/2/hive) 1: The original MaxCompute type system. 2: New type system introduced by MaxCompute 2.0. hive: the type system of the Hive compatibility mode introduced by MaxCompute 2.0.
+	// Data type version. Value:(1/2/hive)
+	// 1: The original MaxCompute type system.
+	// 2: New type system introduced by MaxCompute 2.0.
+	// hive: the type system of the Hive compatibility mode introduced by MaxCompute 2.0.
 	TypeSystem pulumi.StringPtrInput `pulumi:"typeSystem"`
 }
 
@@ -297,43 +337,55 @@ func (o ProjectPropertiesOutput) ToProjectPropertiesPtrOutputWithContext(ctx con
 	}).(ProjectPropertiesPtrOutput)
 }
 
-// Whether to allow full table scan. Default: false.
+// Whether to allow full table scan. Default: false
 func (o ProjectPropertiesOutput) AllowFullScan() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProjectProperties) *bool { return v.AllowFullScan }).(pulumi.BoolPtrOutput)
 }
 
-// Whether to turn on Decimal2.0.
+// Whether to turn on Decimal2.0
 func (o ProjectPropertiesOutput) EnableDecimal2() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProjectProperties) *bool { return v.EnableDecimal2 }).(pulumi.BoolPtrOutput)
 }
 
 // Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
-// > **NOTE :**:  To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.  To configure the permissions and IP whitelist parameters of the MaxCompute project, you must have the management permissions (Admin) of the corresponding project, including Super_Administrator, Admin, or custom management permissions. For more information, see the project management permissions list.  You can turn on storage encryption only for projects that have not turned on storage encryption. For projects that have turned on storage encryption, you cannot turn off storage encryption or change the encryption algorithm. See `encryption` below.
+// > **NOTE :**:
+// To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.
+//
+// To configure the permissions and IP whitelist parameters of the MaxCompute project, you must have the management permissions (Admin) of the corresponding project, including Super_Administrator, Admin, or custom management permissions. For more information, see the project management permissions list.
+//
+// You can turn on storage encryption only for projects that have not turned on storage encryption. For projects that have turned on storage encryption, you cannot turn off storage encryption or change the encryption algorithm. See `encryption` below.
 func (o ProjectPropertiesOutput) Encryption() ProjectPropertiesEncryptionPtrOutput {
 	return o.ApplyT(func(v ProjectProperties) *ProjectPropertiesEncryption { return v.Encryption }).(ProjectPropertiesEncryptionPtrOutput)
 }
 
-// Set the number of days to retain backup data. During this time, you can restore the current version to any backup version. The value range of days is [0,30], and the default value is 1. 0 means backup is turned off. The effective policy after adjusting the backup cycle is: Extend the backup cycle: The new backup cycle takes effect on the same day. Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
+// Set the number of days to retain backup data. During this time, you can restore the current version to any backup version. The value range of days is [0,30], and the default value is 1. 0 means backup is turned off.
+// The effective policy after adjusting the backup cycle is:
+// Extend the backup cycle: The new backup cycle takes effect on the same day.
+// Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
 func (o ProjectPropertiesOutput) RetentionDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ProjectProperties) *int { return v.RetentionDays }).(pulumi.IntPtrOutput)
 }
 
-// Set the maximum threshold of single SQL consumption, that is, set the ODPS. SQL. metering.value.max attribute. For details, see [Consumption Monitoring Alarm](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control). Unit: scan volume (GB)* complexity. .
+// Set the maximum threshold for single SQL Consumption, that is, set the ODPS. SQL. metering.value.max attribute. For more information, see [Consumption control](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-controll).
+// Unit: scan volume (GB)* complexity.
 func (o ProjectPropertiesOutput) SqlMeteringMax() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectProperties) *string { return v.SqlMeteringMax }).(pulumi.StringPtrOutput)
 }
 
-// Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property,. See `tableLifecycle` below.
+// Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property, See `tableLifecycle` below.
 func (o ProjectPropertiesOutput) TableLifecycle() ProjectPropertiesTableLifecyclePtrOutput {
 	return o.ApplyT(func(v ProjectProperties) *ProjectPropertiesTableLifecycle { return v.TableLifecycle }).(ProjectPropertiesTableLifecyclePtrOutput)
 }
 
-// Project time zone, example value: Asia/Shanghai.
+// Project time zone, example value: Asia/Shanghai
 func (o ProjectPropertiesOutput) Timezone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectProperties) *string { return v.Timezone }).(pulumi.StringPtrOutput)
 }
 
-// Data type version. Value:(1/2/hive) 1: The original MaxCompute type system. 2: New type system introduced by MaxCompute 2.0. hive: the type system of the Hive compatibility mode introduced by MaxCompute 2.0.
+// Data type version. Value:(1/2/hive)
+// 1: The original MaxCompute type system.
+// 2: New type system introduced by MaxCompute 2.0.
+// hive: the type system of the Hive compatibility mode introduced by MaxCompute 2.0.
 func (o ProjectPropertiesOutput) TypeSystem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectProperties) *string { return v.TypeSystem }).(pulumi.StringPtrOutput)
 }
@@ -362,7 +414,7 @@ func (o ProjectPropertiesPtrOutput) Elem() ProjectPropertiesOutput {
 	}).(ProjectPropertiesOutput)
 }
 
-// Whether to allow full table scan. Default: false.
+// Whether to allow full table scan. Default: false
 func (o ProjectPropertiesPtrOutput) AllowFullScan() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProjectProperties) *bool {
 		if v == nil {
@@ -372,7 +424,7 @@ func (o ProjectPropertiesPtrOutput) AllowFullScan() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether to turn on Decimal2.0.
+// Whether to turn on Decimal2.0
 func (o ProjectPropertiesPtrOutput) EnableDecimal2() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProjectProperties) *bool {
 		if v == nil {
@@ -383,7 +435,12 @@ func (o ProjectPropertiesPtrOutput) EnableDecimal2() pulumi.BoolPtrOutput {
 }
 
 // Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
-// > **NOTE :**:  To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.  To configure the permissions and IP whitelist parameters of the MaxCompute project, you must have the management permissions (Admin) of the corresponding project, including Super_Administrator, Admin, or custom management permissions. For more information, see the project management permissions list.  You can turn on storage encryption only for projects that have not turned on storage encryption. For projects that have turned on storage encryption, you cannot turn off storage encryption or change the encryption algorithm. See `encryption` below.
+// > **NOTE :**:
+// To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.
+//
+// To configure the permissions and IP whitelist parameters of the MaxCompute project, you must have the management permissions (Admin) of the corresponding project, including Super_Administrator, Admin, or custom management permissions. For more information, see the project management permissions list.
+//
+// You can turn on storage encryption only for projects that have not turned on storage encryption. For projects that have turned on storage encryption, you cannot turn off storage encryption or change the encryption algorithm. See `encryption` below.
 func (o ProjectPropertiesPtrOutput) Encryption() ProjectPropertiesEncryptionPtrOutput {
 	return o.ApplyT(func(v *ProjectProperties) *ProjectPropertiesEncryption {
 		if v == nil {
@@ -393,7 +450,10 @@ func (o ProjectPropertiesPtrOutput) Encryption() ProjectPropertiesEncryptionPtrO
 	}).(ProjectPropertiesEncryptionPtrOutput)
 }
 
-// Set the number of days to retain backup data. During this time, you can restore the current version to any backup version. The value range of days is [0,30], and the default value is 1. 0 means backup is turned off. The effective policy after adjusting the backup cycle is: Extend the backup cycle: The new backup cycle takes effect on the same day. Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
+// Set the number of days to retain backup data. During this time, you can restore the current version to any backup version. The value range of days is [0,30], and the default value is 1. 0 means backup is turned off.
+// The effective policy after adjusting the backup cycle is:
+// Extend the backup cycle: The new backup cycle takes effect on the same day.
+// Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
 func (o ProjectPropertiesPtrOutput) RetentionDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ProjectProperties) *int {
 		if v == nil {
@@ -403,7 +463,8 @@ func (o ProjectPropertiesPtrOutput) RetentionDays() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Set the maximum threshold of single SQL consumption, that is, set the ODPS. SQL. metering.value.max attribute. For details, see [Consumption Monitoring Alarm](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control). Unit: scan volume (GB)* complexity. .
+// Set the maximum threshold for single SQL Consumption, that is, set the ODPS. SQL. metering.value.max attribute. For more information, see [Consumption control](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-controll).
+// Unit: scan volume (GB)* complexity.
 func (o ProjectPropertiesPtrOutput) SqlMeteringMax() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectProperties) *string {
 		if v == nil {
@@ -413,7 +474,7 @@ func (o ProjectPropertiesPtrOutput) SqlMeteringMax() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property,. See `tableLifecycle` below.
+// Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property, See `tableLifecycle` below.
 func (o ProjectPropertiesPtrOutput) TableLifecycle() ProjectPropertiesTableLifecyclePtrOutput {
 	return o.ApplyT(func(v *ProjectProperties) *ProjectPropertiesTableLifecycle {
 		if v == nil {
@@ -423,7 +484,7 @@ func (o ProjectPropertiesPtrOutput) TableLifecycle() ProjectPropertiesTableLifec
 	}).(ProjectPropertiesTableLifecyclePtrOutput)
 }
 
-// Project time zone, example value: Asia/Shanghai.
+// Project time zone, example value: Asia/Shanghai
 func (o ProjectPropertiesPtrOutput) Timezone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectProperties) *string {
 		if v == nil {
@@ -433,7 +494,10 @@ func (o ProjectPropertiesPtrOutput) Timezone() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Data type version. Value:(1/2/hive) 1: The original MaxCompute type system. 2: New type system introduced by MaxCompute 2.0. hive: the type system of the Hive compatibility mode introduced by MaxCompute 2.0.
+// Data type version. Value:(1/2/hive)
+// 1: The original MaxCompute type system.
+// 2: New type system introduced by MaxCompute 2.0.
+// hive: the type system of the Hive compatibility mode introduced by MaxCompute 2.0.
 func (o ProjectPropertiesPtrOutput) TypeSystem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectProperties) *string {
 		if v == nil {
@@ -446,7 +510,9 @@ func (o ProjectPropertiesPtrOutput) TypeSystem() pulumi.StringPtrOutput {
 type ProjectPropertiesEncryption struct {
 	// The encryption algorithm supported by the key, including AES256, AESCTR, and RC4.
 	Algorithm *string `pulumi:"algorithm"`
-	// Only enable function is supported. Value: (true).
+	// Only enable function is supported. Value: (true)
+	//
+	// > **NOTE:** cannot be turned off after the function is turned on
 	Enable *bool `pulumi:"enable"`
 	// The encryption algorithm Key, the Key type used by the project, including the Default Key (MaxCompute Default Key) and the self-contained Key (BYOK). The MaxCompute Default Key is the Default Key created inside MaxCompute.
 	Key *string `pulumi:"key"`
@@ -466,7 +532,9 @@ type ProjectPropertiesEncryptionInput interface {
 type ProjectPropertiesEncryptionArgs struct {
 	// The encryption algorithm supported by the key, including AES256, AESCTR, and RC4.
 	Algorithm pulumi.StringPtrInput `pulumi:"algorithm"`
-	// Only enable function is supported. Value: (true).
+	// Only enable function is supported. Value: (true)
+	//
+	// > **NOTE:** cannot be turned off after the function is turned on
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
 	// The encryption algorithm Key, the Key type used by the project, including the Default Key (MaxCompute Default Key) and the self-contained Key (BYOK). The MaxCompute Default Key is the Default Key created inside MaxCompute.
 	Key pulumi.StringPtrInput `pulumi:"key"`
@@ -554,7 +622,9 @@ func (o ProjectPropertiesEncryptionOutput) Algorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectPropertiesEncryption) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
 }
 
-// Only enable function is supported. Value: (true).
+// Only enable function is supported. Value: (true)
+//
+// > **NOTE:** cannot be turned off after the function is turned on
 func (o ProjectPropertiesEncryptionOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProjectPropertiesEncryption) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
@@ -598,7 +668,9 @@ func (o ProjectPropertiesEncryptionPtrOutput) Algorithm() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Only enable function is supported. Value: (true).
+// Only enable function is supported. Value: (true)
+//
+// > **NOTE:** cannot be turned off after the function is turned on
 func (o ProjectPropertiesEncryptionPtrOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProjectPropertiesEncryption) *bool {
 		if v == nil {
@@ -783,7 +855,7 @@ type ProjectSecurityProperties struct {
 	ObjectCreatorHasAccessPermission *bool `pulumi:"objectCreatorHasAccessPermission"`
 	// The ObjectCreatorHasGrantPermission attribute is set to allow the object creator to have the authorization permission on the object. The default is the allowed state.
 	ObjectCreatorHasGrantPermission *bool `pulumi:"objectCreatorHasGrantPermission"`
-	// Project protection. See `projectProtection` below.
+	// Project protection See `projectProtection` below.
 	ProjectProtection *ProjectSecurityPropertiesProjectProtection `pulumi:"projectProtection"`
 	// Set whether to use the [ACL permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-permissions), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
 	UsingAcl *bool `pulumi:"usingAcl"`
@@ -811,7 +883,7 @@ type ProjectSecurityPropertiesArgs struct {
 	ObjectCreatorHasAccessPermission pulumi.BoolPtrInput `pulumi:"objectCreatorHasAccessPermission"`
 	// The ObjectCreatorHasGrantPermission attribute is set to allow the object creator to have the authorization permission on the object. The default is the allowed state.
 	ObjectCreatorHasGrantPermission pulumi.BoolPtrInput `pulumi:"objectCreatorHasGrantPermission"`
-	// Project protection. See `projectProtection` below.
+	// Project protection See `projectProtection` below.
 	ProjectProtection ProjectSecurityPropertiesProjectProtectionPtrInput `pulumi:"projectProtection"`
 	// Set whether to use the [ACL permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-permissions), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
 	UsingAcl pulumi.BoolPtrInput `pulumi:"usingAcl"`
@@ -916,7 +988,7 @@ func (o ProjectSecurityPropertiesOutput) ObjectCreatorHasGrantPermission() pulum
 	return o.ApplyT(func(v ProjectSecurityProperties) *bool { return v.ObjectCreatorHasGrantPermission }).(pulumi.BoolPtrOutput)
 }
 
-// Project protection. See `projectProtection` below.
+// Project protection See `projectProtection` below.
 func (o ProjectSecurityPropertiesOutput) ProjectProtection() ProjectSecurityPropertiesProjectProtectionPtrOutput {
 	return o.ApplyT(func(v ProjectSecurityProperties) *ProjectSecurityPropertiesProjectProtection {
 		return v.ProjectProtection
@@ -997,7 +1069,7 @@ func (o ProjectSecurityPropertiesPtrOutput) ObjectCreatorHasGrantPermission() pu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Project protection. See `projectProtection` below.
+// Project protection See `projectProtection` below.
 func (o ProjectSecurityPropertiesPtrOutput) ProjectProtection() ProjectSecurityPropertiesProjectProtectionPtrOutput {
 	return o.ApplyT(func(v *ProjectSecurityProperties) *ProjectSecurityPropertiesProjectProtection {
 		if v == nil {
@@ -1028,9 +1100,9 @@ func (o ProjectSecurityPropertiesPtrOutput) UsingPolicy() pulumi.BoolPtrOutput {
 }
 
 type ProjectSecurityPropertiesProjectProtection struct {
-	// Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection).
+	// Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection)
 	ExceptionPolicy *string `pulumi:"exceptionPolicy"`
-	// Whether enabled, value:(true/false).
+	// Whether enabled, value:(true/false)
 	Protected *bool `pulumi:"protected"`
 }
 
@@ -1046,9 +1118,9 @@ type ProjectSecurityPropertiesProjectProtectionInput interface {
 }
 
 type ProjectSecurityPropertiesProjectProtectionArgs struct {
-	// Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection).
+	// Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection)
 	ExceptionPolicy pulumi.StringPtrInput `pulumi:"exceptionPolicy"`
-	// Whether enabled, value:(true/false).
+	// Whether enabled, value:(true/false)
 	Protected pulumi.BoolPtrInput `pulumi:"protected"`
 }
 
@@ -1129,12 +1201,12 @@ func (o ProjectSecurityPropertiesProjectProtectionOutput) ToProjectSecurityPrope
 	}).(ProjectSecurityPropertiesProjectProtectionPtrOutput)
 }
 
-// Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection).
+// Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection)
 func (o ProjectSecurityPropertiesProjectProtectionOutput) ExceptionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectSecurityPropertiesProjectProtection) *string { return v.ExceptionPolicy }).(pulumi.StringPtrOutput)
 }
 
-// Whether enabled, value:(true/false).
+// Whether enabled, value:(true/false)
 func (o ProjectSecurityPropertiesProjectProtectionOutput) Protected() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProjectSecurityPropertiesProjectProtection) *bool { return v.Protected }).(pulumi.BoolPtrOutput)
 }
@@ -1163,7 +1235,7 @@ func (o ProjectSecurityPropertiesProjectProtectionPtrOutput) Elem() ProjectSecur
 	}).(ProjectSecurityPropertiesProjectProtectionOutput)
 }
 
-// Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection).
+// Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection)
 func (o ProjectSecurityPropertiesProjectProtectionPtrOutput) ExceptionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectSecurityPropertiesProjectProtection) *string {
 		if v == nil {
@@ -1173,7 +1245,7 @@ func (o ProjectSecurityPropertiesProjectProtectionPtrOutput) ExceptionPolicy() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// Whether enabled, value:(true/false).
+// Whether enabled, value:(true/false)
 func (o ProjectSecurityPropertiesProjectProtectionPtrOutput) Protected() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProjectSecurityPropertiesProjectProtection) *bool {
 		if v == nil {
@@ -1181,6 +1253,1193 @@ func (o ProjectSecurityPropertiesProjectProtectionPtrOutput) Protected() pulumi.
 		}
 		return v.Protected
 	}).(pulumi.BoolPtrOutput)
+}
+
+type QuotaPlanQuota struct {
+	// Level 2 Quota CU configuration See `parameter` below.
+	Parameter *QuotaPlanQuotaParameter `pulumi:"parameter"`
+	// Secondary Quota list
+	//
+	// > **NOTE:** need to list all secondary Quota
+	// See `subQuotaInfoList` below.
+	SubQuotaInfoLists []QuotaPlanQuotaSubQuotaInfoList `pulumi:"subQuotaInfoLists"`
+}
+
+// QuotaPlanQuotaInput is an input type that accepts QuotaPlanQuotaArgs and QuotaPlanQuotaOutput values.
+// You can construct a concrete instance of `QuotaPlanQuotaInput` via:
+//
+//	QuotaPlanQuotaArgs{...}
+type QuotaPlanQuotaInput interface {
+	pulumi.Input
+
+	ToQuotaPlanQuotaOutput() QuotaPlanQuotaOutput
+	ToQuotaPlanQuotaOutputWithContext(context.Context) QuotaPlanQuotaOutput
+}
+
+type QuotaPlanQuotaArgs struct {
+	// Level 2 Quota CU configuration See `parameter` below.
+	Parameter QuotaPlanQuotaParameterPtrInput `pulumi:"parameter"`
+	// Secondary Quota list
+	//
+	// > **NOTE:** need to list all secondary Quota
+	// See `subQuotaInfoList` below.
+	SubQuotaInfoLists QuotaPlanQuotaSubQuotaInfoListArrayInput `pulumi:"subQuotaInfoLists"`
+}
+
+func (QuotaPlanQuotaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuotaPlanQuota)(nil)).Elem()
+}
+
+func (i QuotaPlanQuotaArgs) ToQuotaPlanQuotaOutput() QuotaPlanQuotaOutput {
+	return i.ToQuotaPlanQuotaOutputWithContext(context.Background())
+}
+
+func (i QuotaPlanQuotaArgs) ToQuotaPlanQuotaOutputWithContext(ctx context.Context) QuotaPlanQuotaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QuotaPlanQuotaOutput)
+}
+
+func (i QuotaPlanQuotaArgs) ToQuotaPlanQuotaPtrOutput() QuotaPlanQuotaPtrOutput {
+	return i.ToQuotaPlanQuotaPtrOutputWithContext(context.Background())
+}
+
+func (i QuotaPlanQuotaArgs) ToQuotaPlanQuotaPtrOutputWithContext(ctx context.Context) QuotaPlanQuotaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QuotaPlanQuotaOutput).ToQuotaPlanQuotaPtrOutputWithContext(ctx)
+}
+
+// QuotaPlanQuotaPtrInput is an input type that accepts QuotaPlanQuotaArgs, QuotaPlanQuotaPtr and QuotaPlanQuotaPtrOutput values.
+// You can construct a concrete instance of `QuotaPlanQuotaPtrInput` via:
+//
+//	        QuotaPlanQuotaArgs{...}
+//
+//	or:
+//
+//	        nil
+type QuotaPlanQuotaPtrInput interface {
+	pulumi.Input
+
+	ToQuotaPlanQuotaPtrOutput() QuotaPlanQuotaPtrOutput
+	ToQuotaPlanQuotaPtrOutputWithContext(context.Context) QuotaPlanQuotaPtrOutput
+}
+
+type quotaPlanQuotaPtrType QuotaPlanQuotaArgs
+
+func QuotaPlanQuotaPtr(v *QuotaPlanQuotaArgs) QuotaPlanQuotaPtrInput {
+	return (*quotaPlanQuotaPtrType)(v)
+}
+
+func (*quotaPlanQuotaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QuotaPlanQuota)(nil)).Elem()
+}
+
+func (i *quotaPlanQuotaPtrType) ToQuotaPlanQuotaPtrOutput() QuotaPlanQuotaPtrOutput {
+	return i.ToQuotaPlanQuotaPtrOutputWithContext(context.Background())
+}
+
+func (i *quotaPlanQuotaPtrType) ToQuotaPlanQuotaPtrOutputWithContext(ctx context.Context) QuotaPlanQuotaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QuotaPlanQuotaPtrOutput)
+}
+
+type QuotaPlanQuotaOutput struct{ *pulumi.OutputState }
+
+func (QuotaPlanQuotaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuotaPlanQuota)(nil)).Elem()
+}
+
+func (o QuotaPlanQuotaOutput) ToQuotaPlanQuotaOutput() QuotaPlanQuotaOutput {
+	return o
+}
+
+func (o QuotaPlanQuotaOutput) ToQuotaPlanQuotaOutputWithContext(ctx context.Context) QuotaPlanQuotaOutput {
+	return o
+}
+
+func (o QuotaPlanQuotaOutput) ToQuotaPlanQuotaPtrOutput() QuotaPlanQuotaPtrOutput {
+	return o.ToQuotaPlanQuotaPtrOutputWithContext(context.Background())
+}
+
+func (o QuotaPlanQuotaOutput) ToQuotaPlanQuotaPtrOutputWithContext(ctx context.Context) QuotaPlanQuotaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QuotaPlanQuota) *QuotaPlanQuota {
+		return &v
+	}).(QuotaPlanQuotaPtrOutput)
+}
+
+// Level 2 Quota CU configuration See `parameter` below.
+func (o QuotaPlanQuotaOutput) Parameter() QuotaPlanQuotaParameterPtrOutput {
+	return o.ApplyT(func(v QuotaPlanQuota) *QuotaPlanQuotaParameter { return v.Parameter }).(QuotaPlanQuotaParameterPtrOutput)
+}
+
+// Secondary Quota list
+//
+// > **NOTE:** need to list all secondary Quota
+// See `subQuotaInfoList` below.
+func (o QuotaPlanQuotaOutput) SubQuotaInfoLists() QuotaPlanQuotaSubQuotaInfoListArrayOutput {
+	return o.ApplyT(func(v QuotaPlanQuota) []QuotaPlanQuotaSubQuotaInfoList { return v.SubQuotaInfoLists }).(QuotaPlanQuotaSubQuotaInfoListArrayOutput)
+}
+
+type QuotaPlanQuotaPtrOutput struct{ *pulumi.OutputState }
+
+func (QuotaPlanQuotaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QuotaPlanQuota)(nil)).Elem()
+}
+
+func (o QuotaPlanQuotaPtrOutput) ToQuotaPlanQuotaPtrOutput() QuotaPlanQuotaPtrOutput {
+	return o
+}
+
+func (o QuotaPlanQuotaPtrOutput) ToQuotaPlanQuotaPtrOutputWithContext(ctx context.Context) QuotaPlanQuotaPtrOutput {
+	return o
+}
+
+func (o QuotaPlanQuotaPtrOutput) Elem() QuotaPlanQuotaOutput {
+	return o.ApplyT(func(v *QuotaPlanQuota) QuotaPlanQuota {
+		if v != nil {
+			return *v
+		}
+		var ret QuotaPlanQuota
+		return ret
+	}).(QuotaPlanQuotaOutput)
+}
+
+// Level 2 Quota CU configuration See `parameter` below.
+func (o QuotaPlanQuotaPtrOutput) Parameter() QuotaPlanQuotaParameterPtrOutput {
+	return o.ApplyT(func(v *QuotaPlanQuota) *QuotaPlanQuotaParameter {
+		if v == nil {
+			return nil
+		}
+		return v.Parameter
+	}).(QuotaPlanQuotaParameterPtrOutput)
+}
+
+// Secondary Quota list
+//
+// > **NOTE:** need to list all secondary Quota
+// See `subQuotaInfoList` below.
+func (o QuotaPlanQuotaPtrOutput) SubQuotaInfoLists() QuotaPlanQuotaSubQuotaInfoListArrayOutput {
+	return o.ApplyT(func(v *QuotaPlanQuota) []QuotaPlanQuotaSubQuotaInfoList {
+		if v == nil {
+			return nil
+		}
+		return v.SubQuotaInfoLists
+	}).(QuotaPlanQuotaSubQuotaInfoListArrayOutput)
+}
+
+type QuotaPlanQuotaParameter struct {
+	// The value of elastic Reserved CUs.
+	//
+	// > **NOTE:**  The total number of elastically reserved CUs in all the level-2 quotas is equal to the number of elastically reserved CUs in the level-1 quota..
+	ElasticReservedCu int `pulumi:"elasticReservedCu"`
+	// The value of maxCU in Reserved CUs.
+	MaxCu *int `pulumi:"maxCu"`
+	// The value of minCU in Reserved CUs.
+	MinCu *int `pulumi:"minCu"`
+}
+
+// QuotaPlanQuotaParameterInput is an input type that accepts QuotaPlanQuotaParameterArgs and QuotaPlanQuotaParameterOutput values.
+// You can construct a concrete instance of `QuotaPlanQuotaParameterInput` via:
+//
+//	QuotaPlanQuotaParameterArgs{...}
+type QuotaPlanQuotaParameterInput interface {
+	pulumi.Input
+
+	ToQuotaPlanQuotaParameterOutput() QuotaPlanQuotaParameterOutput
+	ToQuotaPlanQuotaParameterOutputWithContext(context.Context) QuotaPlanQuotaParameterOutput
+}
+
+type QuotaPlanQuotaParameterArgs struct {
+	// The value of elastic Reserved CUs.
+	//
+	// > **NOTE:**  The total number of elastically reserved CUs in all the level-2 quotas is equal to the number of elastically reserved CUs in the level-1 quota..
+	ElasticReservedCu pulumi.IntInput `pulumi:"elasticReservedCu"`
+	// The value of maxCU in Reserved CUs.
+	MaxCu pulumi.IntPtrInput `pulumi:"maxCu"`
+	// The value of minCU in Reserved CUs.
+	MinCu pulumi.IntPtrInput `pulumi:"minCu"`
+}
+
+func (QuotaPlanQuotaParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuotaPlanQuotaParameter)(nil)).Elem()
+}
+
+func (i QuotaPlanQuotaParameterArgs) ToQuotaPlanQuotaParameterOutput() QuotaPlanQuotaParameterOutput {
+	return i.ToQuotaPlanQuotaParameterOutputWithContext(context.Background())
+}
+
+func (i QuotaPlanQuotaParameterArgs) ToQuotaPlanQuotaParameterOutputWithContext(ctx context.Context) QuotaPlanQuotaParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QuotaPlanQuotaParameterOutput)
+}
+
+func (i QuotaPlanQuotaParameterArgs) ToQuotaPlanQuotaParameterPtrOutput() QuotaPlanQuotaParameterPtrOutput {
+	return i.ToQuotaPlanQuotaParameterPtrOutputWithContext(context.Background())
+}
+
+func (i QuotaPlanQuotaParameterArgs) ToQuotaPlanQuotaParameterPtrOutputWithContext(ctx context.Context) QuotaPlanQuotaParameterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QuotaPlanQuotaParameterOutput).ToQuotaPlanQuotaParameterPtrOutputWithContext(ctx)
+}
+
+// QuotaPlanQuotaParameterPtrInput is an input type that accepts QuotaPlanQuotaParameterArgs, QuotaPlanQuotaParameterPtr and QuotaPlanQuotaParameterPtrOutput values.
+// You can construct a concrete instance of `QuotaPlanQuotaParameterPtrInput` via:
+//
+//	        QuotaPlanQuotaParameterArgs{...}
+//
+//	or:
+//
+//	        nil
+type QuotaPlanQuotaParameterPtrInput interface {
+	pulumi.Input
+
+	ToQuotaPlanQuotaParameterPtrOutput() QuotaPlanQuotaParameterPtrOutput
+	ToQuotaPlanQuotaParameterPtrOutputWithContext(context.Context) QuotaPlanQuotaParameterPtrOutput
+}
+
+type quotaPlanQuotaParameterPtrType QuotaPlanQuotaParameterArgs
+
+func QuotaPlanQuotaParameterPtr(v *QuotaPlanQuotaParameterArgs) QuotaPlanQuotaParameterPtrInput {
+	return (*quotaPlanQuotaParameterPtrType)(v)
+}
+
+func (*quotaPlanQuotaParameterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QuotaPlanQuotaParameter)(nil)).Elem()
+}
+
+func (i *quotaPlanQuotaParameterPtrType) ToQuotaPlanQuotaParameterPtrOutput() QuotaPlanQuotaParameterPtrOutput {
+	return i.ToQuotaPlanQuotaParameterPtrOutputWithContext(context.Background())
+}
+
+func (i *quotaPlanQuotaParameterPtrType) ToQuotaPlanQuotaParameterPtrOutputWithContext(ctx context.Context) QuotaPlanQuotaParameterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QuotaPlanQuotaParameterPtrOutput)
+}
+
+type QuotaPlanQuotaParameterOutput struct{ *pulumi.OutputState }
+
+func (QuotaPlanQuotaParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuotaPlanQuotaParameter)(nil)).Elem()
+}
+
+func (o QuotaPlanQuotaParameterOutput) ToQuotaPlanQuotaParameterOutput() QuotaPlanQuotaParameterOutput {
+	return o
+}
+
+func (o QuotaPlanQuotaParameterOutput) ToQuotaPlanQuotaParameterOutputWithContext(ctx context.Context) QuotaPlanQuotaParameterOutput {
+	return o
+}
+
+func (o QuotaPlanQuotaParameterOutput) ToQuotaPlanQuotaParameterPtrOutput() QuotaPlanQuotaParameterPtrOutput {
+	return o.ToQuotaPlanQuotaParameterPtrOutputWithContext(context.Background())
+}
+
+func (o QuotaPlanQuotaParameterOutput) ToQuotaPlanQuotaParameterPtrOutputWithContext(ctx context.Context) QuotaPlanQuotaParameterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QuotaPlanQuotaParameter) *QuotaPlanQuotaParameter {
+		return &v
+	}).(QuotaPlanQuotaParameterPtrOutput)
+}
+
+// The value of elastic Reserved CUs.
+//
+// > **NOTE:**  The total number of elastically reserved CUs in all the level-2 quotas is equal to the number of elastically reserved CUs in the level-1 quota..
+func (o QuotaPlanQuotaParameterOutput) ElasticReservedCu() pulumi.IntOutput {
+	return o.ApplyT(func(v QuotaPlanQuotaParameter) int { return v.ElasticReservedCu }).(pulumi.IntOutput)
+}
+
+// The value of maxCU in Reserved CUs.
+func (o QuotaPlanQuotaParameterOutput) MaxCu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v QuotaPlanQuotaParameter) *int { return v.MaxCu }).(pulumi.IntPtrOutput)
+}
+
+// The value of minCU in Reserved CUs.
+func (o QuotaPlanQuotaParameterOutput) MinCu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v QuotaPlanQuotaParameter) *int { return v.MinCu }).(pulumi.IntPtrOutput)
+}
+
+type QuotaPlanQuotaParameterPtrOutput struct{ *pulumi.OutputState }
+
+func (QuotaPlanQuotaParameterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QuotaPlanQuotaParameter)(nil)).Elem()
+}
+
+func (o QuotaPlanQuotaParameterPtrOutput) ToQuotaPlanQuotaParameterPtrOutput() QuotaPlanQuotaParameterPtrOutput {
+	return o
+}
+
+func (o QuotaPlanQuotaParameterPtrOutput) ToQuotaPlanQuotaParameterPtrOutputWithContext(ctx context.Context) QuotaPlanQuotaParameterPtrOutput {
+	return o
+}
+
+func (o QuotaPlanQuotaParameterPtrOutput) Elem() QuotaPlanQuotaParameterOutput {
+	return o.ApplyT(func(v *QuotaPlanQuotaParameter) QuotaPlanQuotaParameter {
+		if v != nil {
+			return *v
+		}
+		var ret QuotaPlanQuotaParameter
+		return ret
+	}).(QuotaPlanQuotaParameterOutput)
+}
+
+// The value of elastic Reserved CUs.
+//
+// > **NOTE:**  The total number of elastically reserved CUs in all the level-2 quotas is equal to the number of elastically reserved CUs in the level-1 quota..
+func (o QuotaPlanQuotaParameterPtrOutput) ElasticReservedCu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *QuotaPlanQuotaParameter) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ElasticReservedCu
+	}).(pulumi.IntPtrOutput)
+}
+
+// The value of maxCU in Reserved CUs.
+func (o QuotaPlanQuotaParameterPtrOutput) MaxCu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *QuotaPlanQuotaParameter) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxCu
+	}).(pulumi.IntPtrOutput)
+}
+
+// The value of minCU in Reserved CUs.
+func (o QuotaPlanQuotaParameterPtrOutput) MinCu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *QuotaPlanQuotaParameter) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinCu
+	}).(pulumi.IntPtrOutput)
+}
+
+type QuotaPlanQuotaSubQuotaInfoList struct {
+	// The nickname of the level-2 quota.
+	NickName string `pulumi:"nickName"`
+	// The parameters of level-1 quota.
+	Parameter *QuotaPlanQuotaSubQuotaInfoListParameter `pulumi:"parameter"`
+}
+
+// QuotaPlanQuotaSubQuotaInfoListInput is an input type that accepts QuotaPlanQuotaSubQuotaInfoListArgs and QuotaPlanQuotaSubQuotaInfoListOutput values.
+// You can construct a concrete instance of `QuotaPlanQuotaSubQuotaInfoListInput` via:
+//
+//	QuotaPlanQuotaSubQuotaInfoListArgs{...}
+type QuotaPlanQuotaSubQuotaInfoListInput interface {
+	pulumi.Input
+
+	ToQuotaPlanQuotaSubQuotaInfoListOutput() QuotaPlanQuotaSubQuotaInfoListOutput
+	ToQuotaPlanQuotaSubQuotaInfoListOutputWithContext(context.Context) QuotaPlanQuotaSubQuotaInfoListOutput
+}
+
+type QuotaPlanQuotaSubQuotaInfoListArgs struct {
+	// The nickname of the level-2 quota.
+	NickName pulumi.StringInput `pulumi:"nickName"`
+	// The parameters of level-1 quota.
+	Parameter QuotaPlanQuotaSubQuotaInfoListParameterPtrInput `pulumi:"parameter"`
+}
+
+func (QuotaPlanQuotaSubQuotaInfoListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuotaPlanQuotaSubQuotaInfoList)(nil)).Elem()
+}
+
+func (i QuotaPlanQuotaSubQuotaInfoListArgs) ToQuotaPlanQuotaSubQuotaInfoListOutput() QuotaPlanQuotaSubQuotaInfoListOutput {
+	return i.ToQuotaPlanQuotaSubQuotaInfoListOutputWithContext(context.Background())
+}
+
+func (i QuotaPlanQuotaSubQuotaInfoListArgs) ToQuotaPlanQuotaSubQuotaInfoListOutputWithContext(ctx context.Context) QuotaPlanQuotaSubQuotaInfoListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QuotaPlanQuotaSubQuotaInfoListOutput)
+}
+
+// QuotaPlanQuotaSubQuotaInfoListArrayInput is an input type that accepts QuotaPlanQuotaSubQuotaInfoListArray and QuotaPlanQuotaSubQuotaInfoListArrayOutput values.
+// You can construct a concrete instance of `QuotaPlanQuotaSubQuotaInfoListArrayInput` via:
+//
+//	QuotaPlanQuotaSubQuotaInfoListArray{ QuotaPlanQuotaSubQuotaInfoListArgs{...} }
+type QuotaPlanQuotaSubQuotaInfoListArrayInput interface {
+	pulumi.Input
+
+	ToQuotaPlanQuotaSubQuotaInfoListArrayOutput() QuotaPlanQuotaSubQuotaInfoListArrayOutput
+	ToQuotaPlanQuotaSubQuotaInfoListArrayOutputWithContext(context.Context) QuotaPlanQuotaSubQuotaInfoListArrayOutput
+}
+
+type QuotaPlanQuotaSubQuotaInfoListArray []QuotaPlanQuotaSubQuotaInfoListInput
+
+func (QuotaPlanQuotaSubQuotaInfoListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]QuotaPlanQuotaSubQuotaInfoList)(nil)).Elem()
+}
+
+func (i QuotaPlanQuotaSubQuotaInfoListArray) ToQuotaPlanQuotaSubQuotaInfoListArrayOutput() QuotaPlanQuotaSubQuotaInfoListArrayOutput {
+	return i.ToQuotaPlanQuotaSubQuotaInfoListArrayOutputWithContext(context.Background())
+}
+
+func (i QuotaPlanQuotaSubQuotaInfoListArray) ToQuotaPlanQuotaSubQuotaInfoListArrayOutputWithContext(ctx context.Context) QuotaPlanQuotaSubQuotaInfoListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QuotaPlanQuotaSubQuotaInfoListArrayOutput)
+}
+
+type QuotaPlanQuotaSubQuotaInfoListOutput struct{ *pulumi.OutputState }
+
+func (QuotaPlanQuotaSubQuotaInfoListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuotaPlanQuotaSubQuotaInfoList)(nil)).Elem()
+}
+
+func (o QuotaPlanQuotaSubQuotaInfoListOutput) ToQuotaPlanQuotaSubQuotaInfoListOutput() QuotaPlanQuotaSubQuotaInfoListOutput {
+	return o
+}
+
+func (o QuotaPlanQuotaSubQuotaInfoListOutput) ToQuotaPlanQuotaSubQuotaInfoListOutputWithContext(ctx context.Context) QuotaPlanQuotaSubQuotaInfoListOutput {
+	return o
+}
+
+// The nickname of the level-2 quota.
+func (o QuotaPlanQuotaSubQuotaInfoListOutput) NickName() pulumi.StringOutput {
+	return o.ApplyT(func(v QuotaPlanQuotaSubQuotaInfoList) string { return v.NickName }).(pulumi.StringOutput)
+}
+
+// The parameters of level-1 quota.
+func (o QuotaPlanQuotaSubQuotaInfoListOutput) Parameter() QuotaPlanQuotaSubQuotaInfoListParameterPtrOutput {
+	return o.ApplyT(func(v QuotaPlanQuotaSubQuotaInfoList) *QuotaPlanQuotaSubQuotaInfoListParameter { return v.Parameter }).(QuotaPlanQuotaSubQuotaInfoListParameterPtrOutput)
+}
+
+type QuotaPlanQuotaSubQuotaInfoListArrayOutput struct{ *pulumi.OutputState }
+
+func (QuotaPlanQuotaSubQuotaInfoListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]QuotaPlanQuotaSubQuotaInfoList)(nil)).Elem()
+}
+
+func (o QuotaPlanQuotaSubQuotaInfoListArrayOutput) ToQuotaPlanQuotaSubQuotaInfoListArrayOutput() QuotaPlanQuotaSubQuotaInfoListArrayOutput {
+	return o
+}
+
+func (o QuotaPlanQuotaSubQuotaInfoListArrayOutput) ToQuotaPlanQuotaSubQuotaInfoListArrayOutputWithContext(ctx context.Context) QuotaPlanQuotaSubQuotaInfoListArrayOutput {
+	return o
+}
+
+func (o QuotaPlanQuotaSubQuotaInfoListArrayOutput) Index(i pulumi.IntInput) QuotaPlanQuotaSubQuotaInfoListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) QuotaPlanQuotaSubQuotaInfoList {
+		return vs[0].([]QuotaPlanQuotaSubQuotaInfoList)[vs[1].(int)]
+	}).(QuotaPlanQuotaSubQuotaInfoListOutput)
+}
+
+type QuotaPlanQuotaSubQuotaInfoListParameter struct {
+	// The value of elastic Reserved CUs.
+	//
+	// > **NOTE:**  The total number of elastically reserved CUs in all the level-2 quotas is equal to the number of elastically reserved CUs in the level-1 quota..
+	ElasticReservedCu int `pulumi:"elasticReservedCu"`
+	// The value of maxCU in Reserved CUs.
+	MaxCu int `pulumi:"maxCu"`
+	// The value of minCU in Reserved CUs.
+	MinCu int `pulumi:"minCu"`
+}
+
+// QuotaPlanQuotaSubQuotaInfoListParameterInput is an input type that accepts QuotaPlanQuotaSubQuotaInfoListParameterArgs and QuotaPlanQuotaSubQuotaInfoListParameterOutput values.
+// You can construct a concrete instance of `QuotaPlanQuotaSubQuotaInfoListParameterInput` via:
+//
+//	QuotaPlanQuotaSubQuotaInfoListParameterArgs{...}
+type QuotaPlanQuotaSubQuotaInfoListParameterInput interface {
+	pulumi.Input
+
+	ToQuotaPlanQuotaSubQuotaInfoListParameterOutput() QuotaPlanQuotaSubQuotaInfoListParameterOutput
+	ToQuotaPlanQuotaSubQuotaInfoListParameterOutputWithContext(context.Context) QuotaPlanQuotaSubQuotaInfoListParameterOutput
+}
+
+type QuotaPlanQuotaSubQuotaInfoListParameterArgs struct {
+	// The value of elastic Reserved CUs.
+	//
+	// > **NOTE:**  The total number of elastically reserved CUs in all the level-2 quotas is equal to the number of elastically reserved CUs in the level-1 quota..
+	ElasticReservedCu pulumi.IntInput `pulumi:"elasticReservedCu"`
+	// The value of maxCU in Reserved CUs.
+	MaxCu pulumi.IntInput `pulumi:"maxCu"`
+	// The value of minCU in Reserved CUs.
+	MinCu pulumi.IntInput `pulumi:"minCu"`
+}
+
+func (QuotaPlanQuotaSubQuotaInfoListParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuotaPlanQuotaSubQuotaInfoListParameter)(nil)).Elem()
+}
+
+func (i QuotaPlanQuotaSubQuotaInfoListParameterArgs) ToQuotaPlanQuotaSubQuotaInfoListParameterOutput() QuotaPlanQuotaSubQuotaInfoListParameterOutput {
+	return i.ToQuotaPlanQuotaSubQuotaInfoListParameterOutputWithContext(context.Background())
+}
+
+func (i QuotaPlanQuotaSubQuotaInfoListParameterArgs) ToQuotaPlanQuotaSubQuotaInfoListParameterOutputWithContext(ctx context.Context) QuotaPlanQuotaSubQuotaInfoListParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QuotaPlanQuotaSubQuotaInfoListParameterOutput)
+}
+
+func (i QuotaPlanQuotaSubQuotaInfoListParameterArgs) ToQuotaPlanQuotaSubQuotaInfoListParameterPtrOutput() QuotaPlanQuotaSubQuotaInfoListParameterPtrOutput {
+	return i.ToQuotaPlanQuotaSubQuotaInfoListParameterPtrOutputWithContext(context.Background())
+}
+
+func (i QuotaPlanQuotaSubQuotaInfoListParameterArgs) ToQuotaPlanQuotaSubQuotaInfoListParameterPtrOutputWithContext(ctx context.Context) QuotaPlanQuotaSubQuotaInfoListParameterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QuotaPlanQuotaSubQuotaInfoListParameterOutput).ToQuotaPlanQuotaSubQuotaInfoListParameterPtrOutputWithContext(ctx)
+}
+
+// QuotaPlanQuotaSubQuotaInfoListParameterPtrInput is an input type that accepts QuotaPlanQuotaSubQuotaInfoListParameterArgs, QuotaPlanQuotaSubQuotaInfoListParameterPtr and QuotaPlanQuotaSubQuotaInfoListParameterPtrOutput values.
+// You can construct a concrete instance of `QuotaPlanQuotaSubQuotaInfoListParameterPtrInput` via:
+//
+//	        QuotaPlanQuotaSubQuotaInfoListParameterArgs{...}
+//
+//	or:
+//
+//	        nil
+type QuotaPlanQuotaSubQuotaInfoListParameterPtrInput interface {
+	pulumi.Input
+
+	ToQuotaPlanQuotaSubQuotaInfoListParameterPtrOutput() QuotaPlanQuotaSubQuotaInfoListParameterPtrOutput
+	ToQuotaPlanQuotaSubQuotaInfoListParameterPtrOutputWithContext(context.Context) QuotaPlanQuotaSubQuotaInfoListParameterPtrOutput
+}
+
+type quotaPlanQuotaSubQuotaInfoListParameterPtrType QuotaPlanQuotaSubQuotaInfoListParameterArgs
+
+func QuotaPlanQuotaSubQuotaInfoListParameterPtr(v *QuotaPlanQuotaSubQuotaInfoListParameterArgs) QuotaPlanQuotaSubQuotaInfoListParameterPtrInput {
+	return (*quotaPlanQuotaSubQuotaInfoListParameterPtrType)(v)
+}
+
+func (*quotaPlanQuotaSubQuotaInfoListParameterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QuotaPlanQuotaSubQuotaInfoListParameter)(nil)).Elem()
+}
+
+func (i *quotaPlanQuotaSubQuotaInfoListParameterPtrType) ToQuotaPlanQuotaSubQuotaInfoListParameterPtrOutput() QuotaPlanQuotaSubQuotaInfoListParameterPtrOutput {
+	return i.ToQuotaPlanQuotaSubQuotaInfoListParameterPtrOutputWithContext(context.Background())
+}
+
+func (i *quotaPlanQuotaSubQuotaInfoListParameterPtrType) ToQuotaPlanQuotaSubQuotaInfoListParameterPtrOutputWithContext(ctx context.Context) QuotaPlanQuotaSubQuotaInfoListParameterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QuotaPlanQuotaSubQuotaInfoListParameterPtrOutput)
+}
+
+type QuotaPlanQuotaSubQuotaInfoListParameterOutput struct{ *pulumi.OutputState }
+
+func (QuotaPlanQuotaSubQuotaInfoListParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuotaPlanQuotaSubQuotaInfoListParameter)(nil)).Elem()
+}
+
+func (o QuotaPlanQuotaSubQuotaInfoListParameterOutput) ToQuotaPlanQuotaSubQuotaInfoListParameterOutput() QuotaPlanQuotaSubQuotaInfoListParameterOutput {
+	return o
+}
+
+func (o QuotaPlanQuotaSubQuotaInfoListParameterOutput) ToQuotaPlanQuotaSubQuotaInfoListParameterOutputWithContext(ctx context.Context) QuotaPlanQuotaSubQuotaInfoListParameterOutput {
+	return o
+}
+
+func (o QuotaPlanQuotaSubQuotaInfoListParameterOutput) ToQuotaPlanQuotaSubQuotaInfoListParameterPtrOutput() QuotaPlanQuotaSubQuotaInfoListParameterPtrOutput {
+	return o.ToQuotaPlanQuotaSubQuotaInfoListParameterPtrOutputWithContext(context.Background())
+}
+
+func (o QuotaPlanQuotaSubQuotaInfoListParameterOutput) ToQuotaPlanQuotaSubQuotaInfoListParameterPtrOutputWithContext(ctx context.Context) QuotaPlanQuotaSubQuotaInfoListParameterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QuotaPlanQuotaSubQuotaInfoListParameter) *QuotaPlanQuotaSubQuotaInfoListParameter {
+		return &v
+	}).(QuotaPlanQuotaSubQuotaInfoListParameterPtrOutput)
+}
+
+// The value of elastic Reserved CUs.
+//
+// > **NOTE:**  The total number of elastically reserved CUs in all the level-2 quotas is equal to the number of elastically reserved CUs in the level-1 quota..
+func (o QuotaPlanQuotaSubQuotaInfoListParameterOutput) ElasticReservedCu() pulumi.IntOutput {
+	return o.ApplyT(func(v QuotaPlanQuotaSubQuotaInfoListParameter) int { return v.ElasticReservedCu }).(pulumi.IntOutput)
+}
+
+// The value of maxCU in Reserved CUs.
+func (o QuotaPlanQuotaSubQuotaInfoListParameterOutput) MaxCu() pulumi.IntOutput {
+	return o.ApplyT(func(v QuotaPlanQuotaSubQuotaInfoListParameter) int { return v.MaxCu }).(pulumi.IntOutput)
+}
+
+// The value of minCU in Reserved CUs.
+func (o QuotaPlanQuotaSubQuotaInfoListParameterOutput) MinCu() pulumi.IntOutput {
+	return o.ApplyT(func(v QuotaPlanQuotaSubQuotaInfoListParameter) int { return v.MinCu }).(pulumi.IntOutput)
+}
+
+type QuotaPlanQuotaSubQuotaInfoListParameterPtrOutput struct{ *pulumi.OutputState }
+
+func (QuotaPlanQuotaSubQuotaInfoListParameterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QuotaPlanQuotaSubQuotaInfoListParameter)(nil)).Elem()
+}
+
+func (o QuotaPlanQuotaSubQuotaInfoListParameterPtrOutput) ToQuotaPlanQuotaSubQuotaInfoListParameterPtrOutput() QuotaPlanQuotaSubQuotaInfoListParameterPtrOutput {
+	return o
+}
+
+func (o QuotaPlanQuotaSubQuotaInfoListParameterPtrOutput) ToQuotaPlanQuotaSubQuotaInfoListParameterPtrOutputWithContext(ctx context.Context) QuotaPlanQuotaSubQuotaInfoListParameterPtrOutput {
+	return o
+}
+
+func (o QuotaPlanQuotaSubQuotaInfoListParameterPtrOutput) Elem() QuotaPlanQuotaSubQuotaInfoListParameterOutput {
+	return o.ApplyT(func(v *QuotaPlanQuotaSubQuotaInfoListParameter) QuotaPlanQuotaSubQuotaInfoListParameter {
+		if v != nil {
+			return *v
+		}
+		var ret QuotaPlanQuotaSubQuotaInfoListParameter
+		return ret
+	}).(QuotaPlanQuotaSubQuotaInfoListParameterOutput)
+}
+
+// The value of elastic Reserved CUs.
+//
+// > **NOTE:**  The total number of elastically reserved CUs in all the level-2 quotas is equal to the number of elastically reserved CUs in the level-1 quota..
+func (o QuotaPlanQuotaSubQuotaInfoListParameterPtrOutput) ElasticReservedCu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *QuotaPlanQuotaSubQuotaInfoListParameter) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ElasticReservedCu
+	}).(pulumi.IntPtrOutput)
+}
+
+// The value of maxCU in Reserved CUs.
+func (o QuotaPlanQuotaSubQuotaInfoListParameterPtrOutput) MaxCu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *QuotaPlanQuotaSubQuotaInfoListParameter) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxCu
+	}).(pulumi.IntPtrOutput)
+}
+
+// The value of minCU in Reserved CUs.
+func (o QuotaPlanQuotaSubQuotaInfoListParameterPtrOutput) MinCu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *QuotaPlanQuotaSubQuotaInfoListParameter) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MinCu
+	}).(pulumi.IntPtrOutput)
+}
+
+type QuotaScheduleScheduleList struct {
+	// The value of effective condition. See `condition` below.
+	Condition *QuotaScheduleScheduleListCondition `pulumi:"condition"`
+	// The name of the quota plan.
+	Plan string `pulumi:"plan"`
+	// The type of the quota plan. Valid values: daily
+	//
+	// > **NOTE:** Currently, only daily is supported.
+	Type string `pulumi:"type"`
+}
+
+// QuotaScheduleScheduleListInput is an input type that accepts QuotaScheduleScheduleListArgs and QuotaScheduleScheduleListOutput values.
+// You can construct a concrete instance of `QuotaScheduleScheduleListInput` via:
+//
+//	QuotaScheduleScheduleListArgs{...}
+type QuotaScheduleScheduleListInput interface {
+	pulumi.Input
+
+	ToQuotaScheduleScheduleListOutput() QuotaScheduleScheduleListOutput
+	ToQuotaScheduleScheduleListOutputWithContext(context.Context) QuotaScheduleScheduleListOutput
+}
+
+type QuotaScheduleScheduleListArgs struct {
+	// The value of effective condition. See `condition` below.
+	Condition QuotaScheduleScheduleListConditionPtrInput `pulumi:"condition"`
+	// The name of the quota plan.
+	Plan pulumi.StringInput `pulumi:"plan"`
+	// The type of the quota plan. Valid values: daily
+	//
+	// > **NOTE:** Currently, only daily is supported.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (QuotaScheduleScheduleListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuotaScheduleScheduleList)(nil)).Elem()
+}
+
+func (i QuotaScheduleScheduleListArgs) ToQuotaScheduleScheduleListOutput() QuotaScheduleScheduleListOutput {
+	return i.ToQuotaScheduleScheduleListOutputWithContext(context.Background())
+}
+
+func (i QuotaScheduleScheduleListArgs) ToQuotaScheduleScheduleListOutputWithContext(ctx context.Context) QuotaScheduleScheduleListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QuotaScheduleScheduleListOutput)
+}
+
+// QuotaScheduleScheduleListArrayInput is an input type that accepts QuotaScheduleScheduleListArray and QuotaScheduleScheduleListArrayOutput values.
+// You can construct a concrete instance of `QuotaScheduleScheduleListArrayInput` via:
+//
+//	QuotaScheduleScheduleListArray{ QuotaScheduleScheduleListArgs{...} }
+type QuotaScheduleScheduleListArrayInput interface {
+	pulumi.Input
+
+	ToQuotaScheduleScheduleListArrayOutput() QuotaScheduleScheduleListArrayOutput
+	ToQuotaScheduleScheduleListArrayOutputWithContext(context.Context) QuotaScheduleScheduleListArrayOutput
+}
+
+type QuotaScheduleScheduleListArray []QuotaScheduleScheduleListInput
+
+func (QuotaScheduleScheduleListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]QuotaScheduleScheduleList)(nil)).Elem()
+}
+
+func (i QuotaScheduleScheduleListArray) ToQuotaScheduleScheduleListArrayOutput() QuotaScheduleScheduleListArrayOutput {
+	return i.ToQuotaScheduleScheduleListArrayOutputWithContext(context.Background())
+}
+
+func (i QuotaScheduleScheduleListArray) ToQuotaScheduleScheduleListArrayOutputWithContext(ctx context.Context) QuotaScheduleScheduleListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QuotaScheduleScheduleListArrayOutput)
+}
+
+type QuotaScheduleScheduleListOutput struct{ *pulumi.OutputState }
+
+func (QuotaScheduleScheduleListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuotaScheduleScheduleList)(nil)).Elem()
+}
+
+func (o QuotaScheduleScheduleListOutput) ToQuotaScheduleScheduleListOutput() QuotaScheduleScheduleListOutput {
+	return o
+}
+
+func (o QuotaScheduleScheduleListOutput) ToQuotaScheduleScheduleListOutputWithContext(ctx context.Context) QuotaScheduleScheduleListOutput {
+	return o
+}
+
+// The value of effective condition. See `condition` below.
+func (o QuotaScheduleScheduleListOutput) Condition() QuotaScheduleScheduleListConditionPtrOutput {
+	return o.ApplyT(func(v QuotaScheduleScheduleList) *QuotaScheduleScheduleListCondition { return v.Condition }).(QuotaScheduleScheduleListConditionPtrOutput)
+}
+
+// The name of the quota plan.
+func (o QuotaScheduleScheduleListOutput) Plan() pulumi.StringOutput {
+	return o.ApplyT(func(v QuotaScheduleScheduleList) string { return v.Plan }).(pulumi.StringOutput)
+}
+
+// The type of the quota plan. Valid values: daily
+//
+// > **NOTE:** Currently, only daily is supported.
+func (o QuotaScheduleScheduleListOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v QuotaScheduleScheduleList) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type QuotaScheduleScheduleListArrayOutput struct{ *pulumi.OutputState }
+
+func (QuotaScheduleScheduleListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]QuotaScheduleScheduleList)(nil)).Elem()
+}
+
+func (o QuotaScheduleScheduleListArrayOutput) ToQuotaScheduleScheduleListArrayOutput() QuotaScheduleScheduleListArrayOutput {
+	return o
+}
+
+func (o QuotaScheduleScheduleListArrayOutput) ToQuotaScheduleScheduleListArrayOutputWithContext(ctx context.Context) QuotaScheduleScheduleListArrayOutput {
+	return o
+}
+
+func (o QuotaScheduleScheduleListArrayOutput) Index(i pulumi.IntInput) QuotaScheduleScheduleListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) QuotaScheduleScheduleList {
+		return vs[0].([]QuotaScheduleScheduleList)[vs[1].(int)]
+	}).(QuotaScheduleScheduleListOutput)
+}
+
+type QuotaScheduleScheduleListCondition struct {
+	// Effective time. The format is HH:mm, sample value: 00:00
+	//
+	// > **NOTE:** The configuration must start from the effective time of 00:00. The input time must be either a whole hour or a half hour, and the minimum interval between each schedule is 30 minutes.
+	At string `pulumi:"at"`
+}
+
+// QuotaScheduleScheduleListConditionInput is an input type that accepts QuotaScheduleScheduleListConditionArgs and QuotaScheduleScheduleListConditionOutput values.
+// You can construct a concrete instance of `QuotaScheduleScheduleListConditionInput` via:
+//
+//	QuotaScheduleScheduleListConditionArgs{...}
+type QuotaScheduleScheduleListConditionInput interface {
+	pulumi.Input
+
+	ToQuotaScheduleScheduleListConditionOutput() QuotaScheduleScheduleListConditionOutput
+	ToQuotaScheduleScheduleListConditionOutputWithContext(context.Context) QuotaScheduleScheduleListConditionOutput
+}
+
+type QuotaScheduleScheduleListConditionArgs struct {
+	// Effective time. The format is HH:mm, sample value: 00:00
+	//
+	// > **NOTE:** The configuration must start from the effective time of 00:00. The input time must be either a whole hour or a half hour, and the minimum interval between each schedule is 30 minutes.
+	At pulumi.StringInput `pulumi:"at"`
+}
+
+func (QuotaScheduleScheduleListConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuotaScheduleScheduleListCondition)(nil)).Elem()
+}
+
+func (i QuotaScheduleScheduleListConditionArgs) ToQuotaScheduleScheduleListConditionOutput() QuotaScheduleScheduleListConditionOutput {
+	return i.ToQuotaScheduleScheduleListConditionOutputWithContext(context.Background())
+}
+
+func (i QuotaScheduleScheduleListConditionArgs) ToQuotaScheduleScheduleListConditionOutputWithContext(ctx context.Context) QuotaScheduleScheduleListConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QuotaScheduleScheduleListConditionOutput)
+}
+
+func (i QuotaScheduleScheduleListConditionArgs) ToQuotaScheduleScheduleListConditionPtrOutput() QuotaScheduleScheduleListConditionPtrOutput {
+	return i.ToQuotaScheduleScheduleListConditionPtrOutputWithContext(context.Background())
+}
+
+func (i QuotaScheduleScheduleListConditionArgs) ToQuotaScheduleScheduleListConditionPtrOutputWithContext(ctx context.Context) QuotaScheduleScheduleListConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QuotaScheduleScheduleListConditionOutput).ToQuotaScheduleScheduleListConditionPtrOutputWithContext(ctx)
+}
+
+// QuotaScheduleScheduleListConditionPtrInput is an input type that accepts QuotaScheduleScheduleListConditionArgs, QuotaScheduleScheduleListConditionPtr and QuotaScheduleScheduleListConditionPtrOutput values.
+// You can construct a concrete instance of `QuotaScheduleScheduleListConditionPtrInput` via:
+//
+//	        QuotaScheduleScheduleListConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type QuotaScheduleScheduleListConditionPtrInput interface {
+	pulumi.Input
+
+	ToQuotaScheduleScheduleListConditionPtrOutput() QuotaScheduleScheduleListConditionPtrOutput
+	ToQuotaScheduleScheduleListConditionPtrOutputWithContext(context.Context) QuotaScheduleScheduleListConditionPtrOutput
+}
+
+type quotaScheduleScheduleListConditionPtrType QuotaScheduleScheduleListConditionArgs
+
+func QuotaScheduleScheduleListConditionPtr(v *QuotaScheduleScheduleListConditionArgs) QuotaScheduleScheduleListConditionPtrInput {
+	return (*quotaScheduleScheduleListConditionPtrType)(v)
+}
+
+func (*quotaScheduleScheduleListConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QuotaScheduleScheduleListCondition)(nil)).Elem()
+}
+
+func (i *quotaScheduleScheduleListConditionPtrType) ToQuotaScheduleScheduleListConditionPtrOutput() QuotaScheduleScheduleListConditionPtrOutput {
+	return i.ToQuotaScheduleScheduleListConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *quotaScheduleScheduleListConditionPtrType) ToQuotaScheduleScheduleListConditionPtrOutputWithContext(ctx context.Context) QuotaScheduleScheduleListConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QuotaScheduleScheduleListConditionPtrOutput)
+}
+
+type QuotaScheduleScheduleListConditionOutput struct{ *pulumi.OutputState }
+
+func (QuotaScheduleScheduleListConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuotaScheduleScheduleListCondition)(nil)).Elem()
+}
+
+func (o QuotaScheduleScheduleListConditionOutput) ToQuotaScheduleScheduleListConditionOutput() QuotaScheduleScheduleListConditionOutput {
+	return o
+}
+
+func (o QuotaScheduleScheduleListConditionOutput) ToQuotaScheduleScheduleListConditionOutputWithContext(ctx context.Context) QuotaScheduleScheduleListConditionOutput {
+	return o
+}
+
+func (o QuotaScheduleScheduleListConditionOutput) ToQuotaScheduleScheduleListConditionPtrOutput() QuotaScheduleScheduleListConditionPtrOutput {
+	return o.ToQuotaScheduleScheduleListConditionPtrOutputWithContext(context.Background())
+}
+
+func (o QuotaScheduleScheduleListConditionOutput) ToQuotaScheduleScheduleListConditionPtrOutputWithContext(ctx context.Context) QuotaScheduleScheduleListConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QuotaScheduleScheduleListCondition) *QuotaScheduleScheduleListCondition {
+		return &v
+	}).(QuotaScheduleScheduleListConditionPtrOutput)
+}
+
+// Effective time. The format is HH:mm, sample value: 00:00
+//
+// > **NOTE:** The configuration must start from the effective time of 00:00. The input time must be either a whole hour or a half hour, and the minimum interval between each schedule is 30 minutes.
+func (o QuotaScheduleScheduleListConditionOutput) At() pulumi.StringOutput {
+	return o.ApplyT(func(v QuotaScheduleScheduleListCondition) string { return v.At }).(pulumi.StringOutput)
+}
+
+type QuotaScheduleScheduleListConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (QuotaScheduleScheduleListConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QuotaScheduleScheduleListCondition)(nil)).Elem()
+}
+
+func (o QuotaScheduleScheduleListConditionPtrOutput) ToQuotaScheduleScheduleListConditionPtrOutput() QuotaScheduleScheduleListConditionPtrOutput {
+	return o
+}
+
+func (o QuotaScheduleScheduleListConditionPtrOutput) ToQuotaScheduleScheduleListConditionPtrOutputWithContext(ctx context.Context) QuotaScheduleScheduleListConditionPtrOutput {
+	return o
+}
+
+func (o QuotaScheduleScheduleListConditionPtrOutput) Elem() QuotaScheduleScheduleListConditionOutput {
+	return o.ApplyT(func(v *QuotaScheduleScheduleListCondition) QuotaScheduleScheduleListCondition {
+		if v != nil {
+			return *v
+		}
+		var ret QuotaScheduleScheduleListCondition
+		return ret
+	}).(QuotaScheduleScheduleListConditionOutput)
+}
+
+// Effective time. The format is HH:mm, sample value: 00:00
+//
+// > **NOTE:** The configuration must start from the effective time of 00:00. The input time must be either a whole hour or a half hour, and the minimum interval between each schedule is 30 minutes.
+func (o QuotaScheduleScheduleListConditionPtrOutput) At() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QuotaScheduleScheduleListCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.At
+	}).(pulumi.StringPtrOutput)
+}
+
+type TunnelQuotaTimerQuotaTimer struct {
+	// The time-sharing configuration start time. Reference value: 00:00
+	BeginTime string `pulumi:"beginTime"`
+	// The end time of the timesharing configuration. Reference value: 24:00
+	EndTime string `pulumi:"endTime"`
+	// Time-sharing configuration parameters. See `tunnelQuotaParameter` below.
+	TunnelQuotaParameter *TunnelQuotaTimerQuotaTimerTunnelQuotaParameter `pulumi:"tunnelQuotaParameter"`
+}
+
+// TunnelQuotaTimerQuotaTimerInput is an input type that accepts TunnelQuotaTimerQuotaTimerArgs and TunnelQuotaTimerQuotaTimerOutput values.
+// You can construct a concrete instance of `TunnelQuotaTimerQuotaTimerInput` via:
+//
+//	TunnelQuotaTimerQuotaTimerArgs{...}
+type TunnelQuotaTimerQuotaTimerInput interface {
+	pulumi.Input
+
+	ToTunnelQuotaTimerQuotaTimerOutput() TunnelQuotaTimerQuotaTimerOutput
+	ToTunnelQuotaTimerQuotaTimerOutputWithContext(context.Context) TunnelQuotaTimerQuotaTimerOutput
+}
+
+type TunnelQuotaTimerQuotaTimerArgs struct {
+	// The time-sharing configuration start time. Reference value: 00:00
+	BeginTime pulumi.StringInput `pulumi:"beginTime"`
+	// The end time of the timesharing configuration. Reference value: 24:00
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// Time-sharing configuration parameters. See `tunnelQuotaParameter` below.
+	TunnelQuotaParameter TunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrInput `pulumi:"tunnelQuotaParameter"`
+}
+
+func (TunnelQuotaTimerQuotaTimerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelQuotaTimerQuotaTimer)(nil)).Elem()
+}
+
+func (i TunnelQuotaTimerQuotaTimerArgs) ToTunnelQuotaTimerQuotaTimerOutput() TunnelQuotaTimerQuotaTimerOutput {
+	return i.ToTunnelQuotaTimerQuotaTimerOutputWithContext(context.Background())
+}
+
+func (i TunnelQuotaTimerQuotaTimerArgs) ToTunnelQuotaTimerQuotaTimerOutputWithContext(ctx context.Context) TunnelQuotaTimerQuotaTimerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelQuotaTimerQuotaTimerOutput)
+}
+
+// TunnelQuotaTimerQuotaTimerArrayInput is an input type that accepts TunnelQuotaTimerQuotaTimerArray and TunnelQuotaTimerQuotaTimerArrayOutput values.
+// You can construct a concrete instance of `TunnelQuotaTimerQuotaTimerArrayInput` via:
+//
+//	TunnelQuotaTimerQuotaTimerArray{ TunnelQuotaTimerQuotaTimerArgs{...} }
+type TunnelQuotaTimerQuotaTimerArrayInput interface {
+	pulumi.Input
+
+	ToTunnelQuotaTimerQuotaTimerArrayOutput() TunnelQuotaTimerQuotaTimerArrayOutput
+	ToTunnelQuotaTimerQuotaTimerArrayOutputWithContext(context.Context) TunnelQuotaTimerQuotaTimerArrayOutput
+}
+
+type TunnelQuotaTimerQuotaTimerArray []TunnelQuotaTimerQuotaTimerInput
+
+func (TunnelQuotaTimerQuotaTimerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TunnelQuotaTimerQuotaTimer)(nil)).Elem()
+}
+
+func (i TunnelQuotaTimerQuotaTimerArray) ToTunnelQuotaTimerQuotaTimerArrayOutput() TunnelQuotaTimerQuotaTimerArrayOutput {
+	return i.ToTunnelQuotaTimerQuotaTimerArrayOutputWithContext(context.Background())
+}
+
+func (i TunnelQuotaTimerQuotaTimerArray) ToTunnelQuotaTimerQuotaTimerArrayOutputWithContext(ctx context.Context) TunnelQuotaTimerQuotaTimerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelQuotaTimerQuotaTimerArrayOutput)
+}
+
+type TunnelQuotaTimerQuotaTimerOutput struct{ *pulumi.OutputState }
+
+func (TunnelQuotaTimerQuotaTimerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelQuotaTimerQuotaTimer)(nil)).Elem()
+}
+
+func (o TunnelQuotaTimerQuotaTimerOutput) ToTunnelQuotaTimerQuotaTimerOutput() TunnelQuotaTimerQuotaTimerOutput {
+	return o
+}
+
+func (o TunnelQuotaTimerQuotaTimerOutput) ToTunnelQuotaTimerQuotaTimerOutputWithContext(ctx context.Context) TunnelQuotaTimerQuotaTimerOutput {
+	return o
+}
+
+// The time-sharing configuration start time. Reference value: 00:00
+func (o TunnelQuotaTimerQuotaTimerOutput) BeginTime() pulumi.StringOutput {
+	return o.ApplyT(func(v TunnelQuotaTimerQuotaTimer) string { return v.BeginTime }).(pulumi.StringOutput)
+}
+
+// The end time of the timesharing configuration. Reference value: 24:00
+func (o TunnelQuotaTimerQuotaTimerOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v TunnelQuotaTimerQuotaTimer) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Time-sharing configuration parameters. See `tunnelQuotaParameter` below.
+func (o TunnelQuotaTimerQuotaTimerOutput) TunnelQuotaParameter() TunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrOutput {
+	return o.ApplyT(func(v TunnelQuotaTimerQuotaTimer) *TunnelQuotaTimerQuotaTimerTunnelQuotaParameter {
+		return v.TunnelQuotaParameter
+	}).(TunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrOutput)
+}
+
+type TunnelQuotaTimerQuotaTimerArrayOutput struct{ *pulumi.OutputState }
+
+func (TunnelQuotaTimerQuotaTimerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TunnelQuotaTimerQuotaTimer)(nil)).Elem()
+}
+
+func (o TunnelQuotaTimerQuotaTimerArrayOutput) ToTunnelQuotaTimerQuotaTimerArrayOutput() TunnelQuotaTimerQuotaTimerArrayOutput {
+	return o
+}
+
+func (o TunnelQuotaTimerQuotaTimerArrayOutput) ToTunnelQuotaTimerQuotaTimerArrayOutputWithContext(ctx context.Context) TunnelQuotaTimerQuotaTimerArrayOutput {
+	return o
+}
+
+func (o TunnelQuotaTimerQuotaTimerArrayOutput) Index(i pulumi.IntInput) TunnelQuotaTimerQuotaTimerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TunnelQuotaTimerQuotaTimer {
+		return vs[0].([]TunnelQuotaTimerQuotaTimer)[vs[1].(int)]
+	}).(TunnelQuotaTimerQuotaTimerOutput)
+}
+
+type TunnelQuotaTimerQuotaTimerTunnelQuotaParameter struct {
+	// The number of elastic reserved concurrency (Slot).
+	ElasticReservedSlotNum int `pulumi:"elasticReservedSlotNum"`
+	// The number of reserved concurrency (Slot).
+	//
+	// > **NOTE:** The reserved concurrency (Slot) cannot be modified. The number of concurrency slots must be the same as that of the purchased tunnel quota.
+	SlotNum int `pulumi:"slotNum"`
+}
+
+// TunnelQuotaTimerQuotaTimerTunnelQuotaParameterInput is an input type that accepts TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs and TunnelQuotaTimerQuotaTimerTunnelQuotaParameterOutput values.
+// You can construct a concrete instance of `TunnelQuotaTimerQuotaTimerTunnelQuotaParameterInput` via:
+//
+//	TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs{...}
+type TunnelQuotaTimerQuotaTimerTunnelQuotaParameterInput interface {
+	pulumi.Input
+
+	ToTunnelQuotaTimerQuotaTimerTunnelQuotaParameterOutput() TunnelQuotaTimerQuotaTimerTunnelQuotaParameterOutput
+	ToTunnelQuotaTimerQuotaTimerTunnelQuotaParameterOutputWithContext(context.Context) TunnelQuotaTimerQuotaTimerTunnelQuotaParameterOutput
+}
+
+type TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs struct {
+	// The number of elastic reserved concurrency (Slot).
+	ElasticReservedSlotNum pulumi.IntInput `pulumi:"elasticReservedSlotNum"`
+	// The number of reserved concurrency (Slot).
+	//
+	// > **NOTE:** The reserved concurrency (Slot) cannot be modified. The number of concurrency slots must be the same as that of the purchased tunnel quota.
+	SlotNum pulumi.IntInput `pulumi:"slotNum"`
+}
+
+func (TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelQuotaTimerQuotaTimerTunnelQuotaParameter)(nil)).Elem()
+}
+
+func (i TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs) ToTunnelQuotaTimerQuotaTimerTunnelQuotaParameterOutput() TunnelQuotaTimerQuotaTimerTunnelQuotaParameterOutput {
+	return i.ToTunnelQuotaTimerQuotaTimerTunnelQuotaParameterOutputWithContext(context.Background())
+}
+
+func (i TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs) ToTunnelQuotaTimerQuotaTimerTunnelQuotaParameterOutputWithContext(ctx context.Context) TunnelQuotaTimerQuotaTimerTunnelQuotaParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelQuotaTimerQuotaTimerTunnelQuotaParameterOutput)
+}
+
+func (i TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs) ToTunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrOutput() TunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrOutput {
+	return i.ToTunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrOutputWithContext(context.Background())
+}
+
+func (i TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs) ToTunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrOutputWithContext(ctx context.Context) TunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelQuotaTimerQuotaTimerTunnelQuotaParameterOutput).ToTunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrOutputWithContext(ctx)
+}
+
+// TunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrInput is an input type that accepts TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs, TunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtr and TunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrOutput values.
+// You can construct a concrete instance of `TunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrInput` via:
+//
+//	        TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs{...}
+//
+//	or:
+//
+//	        nil
+type TunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrInput interface {
+	pulumi.Input
+
+	ToTunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrOutput() TunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrOutput
+	ToTunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrOutputWithContext(context.Context) TunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrOutput
+}
+
+type tunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrType TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs
+
+func TunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtr(v *TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs) TunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrInput {
+	return (*tunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrType)(v)
+}
+
+func (*tunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TunnelQuotaTimerQuotaTimerTunnelQuotaParameter)(nil)).Elem()
+}
+
+func (i *tunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrType) ToTunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrOutput() TunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrOutput {
+	return i.ToTunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrOutputWithContext(context.Background())
+}
+
+func (i *tunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrType) ToTunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrOutputWithContext(ctx context.Context) TunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrOutput)
+}
+
+type TunnelQuotaTimerQuotaTimerTunnelQuotaParameterOutput struct{ *pulumi.OutputState }
+
+func (TunnelQuotaTimerQuotaTimerTunnelQuotaParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelQuotaTimerQuotaTimerTunnelQuotaParameter)(nil)).Elem()
+}
+
+func (o TunnelQuotaTimerQuotaTimerTunnelQuotaParameterOutput) ToTunnelQuotaTimerQuotaTimerTunnelQuotaParameterOutput() TunnelQuotaTimerQuotaTimerTunnelQuotaParameterOutput {
+	return o
+}
+
+func (o TunnelQuotaTimerQuotaTimerTunnelQuotaParameterOutput) ToTunnelQuotaTimerQuotaTimerTunnelQuotaParameterOutputWithContext(ctx context.Context) TunnelQuotaTimerQuotaTimerTunnelQuotaParameterOutput {
+	return o
+}
+
+func (o TunnelQuotaTimerQuotaTimerTunnelQuotaParameterOutput) ToTunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrOutput() TunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrOutput {
+	return o.ToTunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrOutputWithContext(context.Background())
+}
+
+func (o TunnelQuotaTimerQuotaTimerTunnelQuotaParameterOutput) ToTunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrOutputWithContext(ctx context.Context) TunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TunnelQuotaTimerQuotaTimerTunnelQuotaParameter) *TunnelQuotaTimerQuotaTimerTunnelQuotaParameter {
+		return &v
+	}).(TunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrOutput)
+}
+
+// The number of elastic reserved concurrency (Slot).
+func (o TunnelQuotaTimerQuotaTimerTunnelQuotaParameterOutput) ElasticReservedSlotNum() pulumi.IntOutput {
+	return o.ApplyT(func(v TunnelQuotaTimerQuotaTimerTunnelQuotaParameter) int { return v.ElasticReservedSlotNum }).(pulumi.IntOutput)
+}
+
+// The number of reserved concurrency (Slot).
+//
+// > **NOTE:** The reserved concurrency (Slot) cannot be modified. The number of concurrency slots must be the same as that of the purchased tunnel quota.
+func (o TunnelQuotaTimerQuotaTimerTunnelQuotaParameterOutput) SlotNum() pulumi.IntOutput {
+	return o.ApplyT(func(v TunnelQuotaTimerQuotaTimerTunnelQuotaParameter) int { return v.SlotNum }).(pulumi.IntOutput)
+}
+
+type TunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrOutput struct{ *pulumi.OutputState }
+
+func (TunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TunnelQuotaTimerQuotaTimerTunnelQuotaParameter)(nil)).Elem()
+}
+
+func (o TunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrOutput) ToTunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrOutput() TunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrOutput {
+	return o
+}
+
+func (o TunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrOutput) ToTunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrOutputWithContext(ctx context.Context) TunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrOutput {
+	return o
+}
+
+func (o TunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrOutput) Elem() TunnelQuotaTimerQuotaTimerTunnelQuotaParameterOutput {
+	return o.ApplyT(func(v *TunnelQuotaTimerQuotaTimerTunnelQuotaParameter) TunnelQuotaTimerQuotaTimerTunnelQuotaParameter {
+		if v != nil {
+			return *v
+		}
+		var ret TunnelQuotaTimerQuotaTimerTunnelQuotaParameter
+		return ret
+	}).(TunnelQuotaTimerQuotaTimerTunnelQuotaParameterOutput)
+}
+
+// The number of elastic reserved concurrency (Slot).
+func (o TunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrOutput) ElasticReservedSlotNum() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TunnelQuotaTimerQuotaTimerTunnelQuotaParameter) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ElasticReservedSlotNum
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of reserved concurrency (Slot).
+//
+// > **NOTE:** The reserved concurrency (Slot) cannot be modified. The number of concurrency slots must be the same as that of the purchased tunnel quota.
+func (o TunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrOutput) SlotNum() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TunnelQuotaTimerQuotaTimerTunnelQuotaParameter) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.SlotNum
+	}).(pulumi.IntPtrOutput)
 }
 
 type GetProjectsProject struct {
@@ -1861,6 +3120,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectSecurityPropertiesPtrInput)(nil)).Elem(), ProjectSecurityPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectSecurityPropertiesProjectProtectionInput)(nil)).Elem(), ProjectSecurityPropertiesProjectProtectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectSecurityPropertiesProjectProtectionPtrInput)(nil)).Elem(), ProjectSecurityPropertiesProjectProtectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QuotaPlanQuotaInput)(nil)).Elem(), QuotaPlanQuotaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QuotaPlanQuotaPtrInput)(nil)).Elem(), QuotaPlanQuotaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QuotaPlanQuotaParameterInput)(nil)).Elem(), QuotaPlanQuotaParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QuotaPlanQuotaParameterPtrInput)(nil)).Elem(), QuotaPlanQuotaParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QuotaPlanQuotaSubQuotaInfoListInput)(nil)).Elem(), QuotaPlanQuotaSubQuotaInfoListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QuotaPlanQuotaSubQuotaInfoListArrayInput)(nil)).Elem(), QuotaPlanQuotaSubQuotaInfoListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QuotaPlanQuotaSubQuotaInfoListParameterInput)(nil)).Elem(), QuotaPlanQuotaSubQuotaInfoListParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QuotaPlanQuotaSubQuotaInfoListParameterPtrInput)(nil)).Elem(), QuotaPlanQuotaSubQuotaInfoListParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QuotaScheduleScheduleListInput)(nil)).Elem(), QuotaScheduleScheduleListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QuotaScheduleScheduleListArrayInput)(nil)).Elem(), QuotaScheduleScheduleListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QuotaScheduleScheduleListConditionInput)(nil)).Elem(), QuotaScheduleScheduleListConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QuotaScheduleScheduleListConditionPtrInput)(nil)).Elem(), QuotaScheduleScheduleListConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelQuotaTimerQuotaTimerInput)(nil)).Elem(), TunnelQuotaTimerQuotaTimerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelQuotaTimerQuotaTimerArrayInput)(nil)).Elem(), TunnelQuotaTimerQuotaTimerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelQuotaTimerQuotaTimerTunnelQuotaParameterInput)(nil)).Elem(), TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrInput)(nil)).Elem(), TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectInput)(nil)).Elem(), GetProjectsProjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectArrayInput)(nil)).Elem(), GetProjectsProjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectIpWhiteListInput)(nil)).Elem(), GetProjectsProjectIpWhiteListArgs{})
@@ -1881,6 +3156,22 @@ func init() {
 	pulumi.RegisterOutputType(ProjectSecurityPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ProjectSecurityPropertiesProjectProtectionOutput{})
 	pulumi.RegisterOutputType(ProjectSecurityPropertiesProjectProtectionPtrOutput{})
+	pulumi.RegisterOutputType(QuotaPlanQuotaOutput{})
+	pulumi.RegisterOutputType(QuotaPlanQuotaPtrOutput{})
+	pulumi.RegisterOutputType(QuotaPlanQuotaParameterOutput{})
+	pulumi.RegisterOutputType(QuotaPlanQuotaParameterPtrOutput{})
+	pulumi.RegisterOutputType(QuotaPlanQuotaSubQuotaInfoListOutput{})
+	pulumi.RegisterOutputType(QuotaPlanQuotaSubQuotaInfoListArrayOutput{})
+	pulumi.RegisterOutputType(QuotaPlanQuotaSubQuotaInfoListParameterOutput{})
+	pulumi.RegisterOutputType(QuotaPlanQuotaSubQuotaInfoListParameterPtrOutput{})
+	pulumi.RegisterOutputType(QuotaScheduleScheduleListOutput{})
+	pulumi.RegisterOutputType(QuotaScheduleScheduleListArrayOutput{})
+	pulumi.RegisterOutputType(QuotaScheduleScheduleListConditionOutput{})
+	pulumi.RegisterOutputType(QuotaScheduleScheduleListConditionPtrOutput{})
+	pulumi.RegisterOutputType(TunnelQuotaTimerQuotaTimerOutput{})
+	pulumi.RegisterOutputType(TunnelQuotaTimerQuotaTimerArrayOutput{})
+	pulumi.RegisterOutputType(TunnelQuotaTimerQuotaTimerTunnelQuotaParameterOutput{})
+	pulumi.RegisterOutputType(TunnelQuotaTimerQuotaTimerTunnelQuotaParameterPtrOutput{})
 	pulumi.RegisterOutputType(GetProjectsProjectOutput{})
 	pulumi.RegisterOutputType(GetProjectsProjectArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectsProjectIpWhiteListOutput{})

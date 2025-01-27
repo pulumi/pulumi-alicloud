@@ -157,6 +157,7 @@ class _MountPointState:
                  file_system_id: Optional[pulumi.Input[str]] = None,
                  mount_point_id: Optional[pulumi.Input[str]] = None,
                  network_type: Optional[pulumi.Input[str]] = None,
+                 region_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None):
@@ -169,6 +170,7 @@ class _MountPointState:
         :param pulumi.Input[str] file_system_id: Unique file system identifier, used to retrieve specified file system resources.
         :param pulumi.Input[str] mount_point_id: The unique identifier of the Mount point, which is used to retrieve the specified mount point resources.
         :param pulumi.Input[str] network_type: The network type of the Mount point.  Only VPC (VPC) is supported.
+        :param pulumi.Input[str] region_id: (Available since v1.242.0) The region ID of the Mount Point.
         :param pulumi.Input[str] status: Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.
         :param pulumi.Input[str] vpc_id: The ID of the VPC. Specifies the VPC environment to which the mount point belongs.
         :param pulumi.Input[str] vswitch_id: VSwitch ID, which specifies the VSwitch resource used to create the mount point.
@@ -187,6 +189,8 @@ class _MountPointState:
             pulumi.set(__self__, "mount_point_id", mount_point_id)
         if network_type is not None:
             pulumi.set(__self__, "network_type", network_type)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if vpc_id is not None:
@@ -279,6 +283,18 @@ class _MountPointState:
         pulumi.set(self, "network_type", value)
 
     @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.242.0) The region ID of the Mount Point.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region_id", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -330,9 +346,9 @@ class MountPoint(pulumi.CustomResource):
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a DFS Mount Point resource.
+        Provides a Apsara File Storage for HDFS (DFS) Mount Point resource.
 
-        For information about DFS Mount Point and how to use it, see [What is Mount Point](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
+        For information about Apsara File Storage for HDFS (DFS) Mount Point and how to use it, see [What is Mount Point](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
 
         > **NOTE:** Available since v1.140.0.
 
@@ -348,19 +364,18 @@ class MountPoint(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default = alicloud.dfs.get_zones()
-        default_network = alicloud.vpc.Network("default",
+        default = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
         default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
             cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default.zones[0].zone_id)
+            vpc_id=default.id,
+            zone_id="cn-hangzhou-e")
         default_file_system = alicloud.dfs.FileSystem("default",
-            storage_type=default.zones[0].options[0].storage_type,
-            zone_id=default.zones[0].zone_id,
-            protocol_type="HDFS",
+            storage_type="STANDARD",
+            zone_id="cn-hangzhou-e",
+            protocol_type="PANGU",
             description=name,
             file_system_name=name,
             throughput_mode="Provisioned",
@@ -372,7 +387,7 @@ class MountPoint(pulumi.CustomResource):
             network_type="VPC")
         default_mount_point = alicloud.dfs.MountPoint("default",
             description=name,
-            vpc_id=default_network.id,
+            vpc_id=default.id,
             file_system_id=default_file_system.id,
             access_group_id=default_access_group.id,
             network_type="VPC",
@@ -381,7 +396,7 @@ class MountPoint(pulumi.CustomResource):
 
         ## Import
 
-        DFS Mount Point can be imported using the id, e.g.
+        Apsara File Storage for HDFS (DFS) Mount Point can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:dfs/mountPoint:MountPoint example <file_system_id>:<mount_point_id>
@@ -405,9 +420,9 @@ class MountPoint(pulumi.CustomResource):
                  args: MountPointArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a DFS Mount Point resource.
+        Provides a Apsara File Storage for HDFS (DFS) Mount Point resource.
 
-        For information about DFS Mount Point and how to use it, see [What is Mount Point](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
+        For information about Apsara File Storage for HDFS (DFS) Mount Point and how to use it, see [What is Mount Point](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
 
         > **NOTE:** Available since v1.140.0.
 
@@ -423,19 +438,18 @@ class MountPoint(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default = alicloud.dfs.get_zones()
-        default_network = alicloud.vpc.Network("default",
+        default = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
         default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
             cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default.zones[0].zone_id)
+            vpc_id=default.id,
+            zone_id="cn-hangzhou-e")
         default_file_system = alicloud.dfs.FileSystem("default",
-            storage_type=default.zones[0].options[0].storage_type,
-            zone_id=default.zones[0].zone_id,
-            protocol_type="HDFS",
+            storage_type="STANDARD",
+            zone_id="cn-hangzhou-e",
+            protocol_type="PANGU",
             description=name,
             file_system_name=name,
             throughput_mode="Provisioned",
@@ -447,7 +461,7 @@ class MountPoint(pulumi.CustomResource):
             network_type="VPC")
         default_mount_point = alicloud.dfs.MountPoint("default",
             description=name,
-            vpc_id=default_network.id,
+            vpc_id=default.id,
             file_system_id=default_file_system.id,
             access_group_id=default_access_group.id,
             network_type="VPC",
@@ -456,7 +470,7 @@ class MountPoint(pulumi.CustomResource):
 
         ## Import
 
-        DFS Mount Point can be imported using the id, e.g.
+        Apsara File Storage for HDFS (DFS) Mount Point can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:dfs/mountPoint:MountPoint example <file_system_id>:<mount_point_id>
@@ -514,6 +528,7 @@ class MountPoint(pulumi.CustomResource):
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["mount_point_id"] = None
+            __props__.__dict__["region_id"] = None
         super(MountPoint, __self__).__init__(
             'alicloud:dfs/mountPoint:MountPoint',
             resource_name,
@@ -531,6 +546,7 @@ class MountPoint(pulumi.CustomResource):
             file_system_id: Optional[pulumi.Input[str]] = None,
             mount_point_id: Optional[pulumi.Input[str]] = None,
             network_type: Optional[pulumi.Input[str]] = None,
+            region_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None) -> 'MountPoint':
@@ -548,6 +564,7 @@ class MountPoint(pulumi.CustomResource):
         :param pulumi.Input[str] file_system_id: Unique file system identifier, used to retrieve specified file system resources.
         :param pulumi.Input[str] mount_point_id: The unique identifier of the Mount point, which is used to retrieve the specified mount point resources.
         :param pulumi.Input[str] network_type: The network type of the Mount point.  Only VPC (VPC) is supported.
+        :param pulumi.Input[str] region_id: (Available since v1.242.0) The region ID of the Mount Point.
         :param pulumi.Input[str] status: Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.
         :param pulumi.Input[str] vpc_id: The ID of the VPC. Specifies the VPC environment to which the mount point belongs.
         :param pulumi.Input[str] vswitch_id: VSwitch ID, which specifies the VSwitch resource used to create the mount point.
@@ -563,6 +580,7 @@ class MountPoint(pulumi.CustomResource):
         __props__.__dict__["file_system_id"] = file_system_id
         __props__.__dict__["mount_point_id"] = mount_point_id
         __props__.__dict__["network_type"] = network_type
+        __props__.__dict__["region_id"] = region_id
         __props__.__dict__["status"] = status
         __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
@@ -623,6 +641,14 @@ class MountPoint(pulumi.CustomResource):
         The network type of the Mount point.  Only VPC (VPC) is supported.
         """
         return pulumi.get(self, "network_type")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.242.0) The region ID of the Mount Point.
+        """
+        return pulumi.get(self, "region_id")
 
     @property
     @pulumi.getter

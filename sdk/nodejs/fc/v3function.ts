@@ -7,11 +7,11 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a FCV3 Function resource.
+ * Provides a Function Compute Service V3 (FCV3) Function resource.
  *
  * The resource scheduling and running of Function Compute is based on functions. The FC function consists of function code and function configuration.
  *
- * For information about FCV3 Function and how to use it, see [What is Function](https://www.alibabacloud.com/help/en/functioncompute/developer-reference/api-fc-2023-03-30-getfunction).
+ * For information about Function Compute Service V3 (FCV3) Function and how to use it, see [What is Function](https://www.alibabacloud.com/help/en/functioncompute/developer-reference/api-fc-2023-03-30-getfunction).
  *
  * > **NOTE:** Available since v1.228.0.
  *
@@ -92,7 +92,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * FCV3 Function can be imported using the id, e.g.
+ * Function Compute Service V3 (FCV3) Function can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:fc/v3Function:V3Function example <id>
@@ -255,6 +255,10 @@ export class V3Function extends pulumi.CustomResource {
      */
     public /*out*/ readonly stateReasonCode!: pulumi.Output<string>;
     /**
+     * The tag of the resource
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The maximum running time of the function, in seconds.
      */
     public readonly timeout!: pulumi.Output<number>;
@@ -312,6 +316,7 @@ export class V3Function extends pulumi.CustomResource {
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["stateReason"] = state ? state.stateReason : undefined;
             resourceInputs["stateReasonCode"] = state ? state.stateReasonCode : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["timeout"] = state ? state.timeout : undefined;
             resourceInputs["tracingConfig"] = state ? state.tracingConfig : undefined;
             resourceInputs["vpcConfig"] = state ? state.vpcConfig : undefined;
@@ -344,6 +349,7 @@ export class V3Function extends pulumi.CustomResource {
             resourceInputs["ossMountConfig"] = args ? args.ossMountConfig : undefined;
             resourceInputs["role"] = args ? args.role : undefined;
             resourceInputs["runtime"] = args ? args.runtime : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["timeout"] = args ? args.timeout : undefined;
             resourceInputs["vpcConfig"] = args ? args.vpcConfig : undefined;
             resourceInputs["codeSize"] = undefined /*out*/;
@@ -499,6 +505,10 @@ export interface V3FunctionState {
      */
     stateReasonCode?: pulumi.Input<string>;
     /**
+     * The tag of the resource
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The maximum running time of the function, in seconds.
      */
     timeout?: pulumi.Input<number>;
@@ -600,6 +610,10 @@ export interface V3FunctionArgs {
      * Function runtime type
      */
     runtime: pulumi.Input<string>;
+    /**
+     * The tag of the resource
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The maximum running time of the function, in seconds.
      */

@@ -244,17 +244,19 @@ func (o AclAclEntryArrayOutput) Index(i pulumi.IntInput) AclAclEntryOutput {
 }
 
 type ListenerAccessLogTracingConfig struct {
-	// Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
+	// Xtrace Function.
 	//
-	// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `True`.
-	TracingEnabled *bool `pulumi:"tracingEnabled"`
-	// Xtrace Sampling Rate. Value: `1` to `10000`.
+	// Value: True **** Or False * *.
 	//
-	// > **NOTE:** This attribute is valid when `tracingenabled` is `true`.
+	// Default Value: False * *.
+	//
+	// > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+	TracingEnabled bool `pulumi:"tracingEnabled"`
+	// Xtrace Sampling Rate. Value: 1~10000 **.> `tracingenabled` **True When Effective.
 	TracingSample *int `pulumi:"tracingSample"`
-	// Xtrace Type Value Is `Zipkin`.
+	// Xtrace Type Value Is **Zipkin * *.
 	//
-	// > **NOTE:** This attribute is valid when `tracingenabled` is `true`.
+	// > **NOTE:**  `tracingenabled` **True When Effective.
 	TracingType *string `pulumi:"tracingType"`
 }
 
@@ -270,17 +272,19 @@ type ListenerAccessLogTracingConfigInput interface {
 }
 
 type ListenerAccessLogTracingConfigArgs struct {
-	// Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
+	// Xtrace Function.
 	//
-	// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `True`.
-	TracingEnabled pulumi.BoolPtrInput `pulumi:"tracingEnabled"`
-	// Xtrace Sampling Rate. Value: `1` to `10000`.
+	// Value: True **** Or False * *.
 	//
-	// > **NOTE:** This attribute is valid when `tracingenabled` is `true`.
+	// Default Value: False * *.
+	//
+	// > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+	TracingEnabled pulumi.BoolInput `pulumi:"tracingEnabled"`
+	// Xtrace Sampling Rate. Value: 1~10000 **.> `tracingenabled` **True When Effective.
 	TracingSample pulumi.IntPtrInput `pulumi:"tracingSample"`
-	// Xtrace Type Value Is `Zipkin`.
+	// Xtrace Type Value Is **Zipkin * *.
 	//
-	// > **NOTE:** This attribute is valid when `tracingenabled` is `true`.
+	// > **NOTE:**  `tracingenabled` **True When Effective.
 	TracingType pulumi.StringPtrInput `pulumi:"tracingType"`
 }
 
@@ -361,23 +365,25 @@ func (o ListenerAccessLogTracingConfigOutput) ToListenerAccessLogTracingConfigPt
 	}).(ListenerAccessLogTracingConfigPtrOutput)
 }
 
-// Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
+// Xtrace Function.
 //
-// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `True`.
-func (o ListenerAccessLogTracingConfigOutput) TracingEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ListenerAccessLogTracingConfig) *bool { return v.TracingEnabled }).(pulumi.BoolPtrOutput)
+// Value: True **** Or False * *.
+//
+// Default Value: False * *.
+//
+// > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+func (o ListenerAccessLogTracingConfigOutput) TracingEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ListenerAccessLogTracingConfig) bool { return v.TracingEnabled }).(pulumi.BoolOutput)
 }
 
-// Xtrace Sampling Rate. Value: `1` to `10000`.
-//
-// > **NOTE:** This attribute is valid when `tracingenabled` is `true`.
+// Xtrace Sampling Rate. Value: 1~10000 **.> `tracingenabled` **True When Effective.
 func (o ListenerAccessLogTracingConfigOutput) TracingSample() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ListenerAccessLogTracingConfig) *int { return v.TracingSample }).(pulumi.IntPtrOutput)
 }
 
-// Xtrace Type Value Is `Zipkin`.
+// Xtrace Type Value Is **Zipkin * *.
 //
-// > **NOTE:** This attribute is valid when `tracingenabled` is `true`.
+// > **NOTE:**  `tracingenabled` **True When Effective.
 func (o ListenerAccessLogTracingConfigOutput) TracingType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListenerAccessLogTracingConfig) *string { return v.TracingType }).(pulumi.StringPtrOutput)
 }
@@ -406,21 +412,23 @@ func (o ListenerAccessLogTracingConfigPtrOutput) Elem() ListenerAccessLogTracing
 	}).(ListenerAccessLogTracingConfigOutput)
 }
 
-// Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
+// Xtrace Function.
 //
-// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `True`.
+// Value: True **** Or False * *.
+//
+// Default Value: False * *.
+//
+// > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
 func (o ListenerAccessLogTracingConfigPtrOutput) TracingEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ListenerAccessLogTracingConfig) *bool {
 		if v == nil {
 			return nil
 		}
-		return v.TracingEnabled
+		return &v.TracingEnabled
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Xtrace Sampling Rate. Value: `1` to `10000`.
-//
-// > **NOTE:** This attribute is valid when `tracingenabled` is `true`.
+// Xtrace Sampling Rate. Value: 1~10000 **.> `tracingenabled` **True When Effective.
 func (o ListenerAccessLogTracingConfigPtrOutput) TracingSample() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ListenerAccessLogTracingConfig) *int {
 		if v == nil {
@@ -430,9 +438,9 @@ func (o ListenerAccessLogTracingConfigPtrOutput) TracingSample() pulumi.IntPtrOu
 	}).(pulumi.IntPtrOutput)
 }
 
-// Xtrace Type Value Is `Zipkin`.
+// Xtrace Type Value Is **Zipkin * *.
 //
-// > **NOTE:** This attribute is valid when `tracingenabled` is `true`.
+// > **NOTE:**  `tracingenabled` **True When Effective.
 func (o ListenerAccessLogTracingConfigPtrOutput) TracingType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ListenerAccessLogTracingConfig) *string {
 		if v == nil {
@@ -601,7 +609,7 @@ func (o ListenerAclConfigPtrOutput) AclType() pulumi.StringPtrOutput {
 type ListenerAclConfigAclRelation struct {
 	// Snooping Binding of the Access Policy Group ID List.
 	AclId *string `pulumi:"aclId"`
-	// The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
+	// The Current IP Address of the Listened State
 	Status *string `pulumi:"status"`
 }
 
@@ -619,7 +627,7 @@ type ListenerAclConfigAclRelationInput interface {
 type ListenerAclConfigAclRelationArgs struct {
 	// Snooping Binding of the Access Policy Group ID List.
 	AclId pulumi.StringPtrInput `pulumi:"aclId"`
-	// The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
+	// The Current IP Address of the Listened State
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -679,7 +687,7 @@ func (o ListenerAclConfigAclRelationOutput) AclId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListenerAclConfigAclRelation) *string { return v.AclId }).(pulumi.StringPtrOutput)
 }
 
-// The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
+// The Current IP Address of the Listened State
 func (o ListenerAclConfigAclRelationOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListenerAclConfigAclRelation) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -704,8 +712,105 @@ func (o ListenerAclConfigAclRelationArrayOutput) Index(i pulumi.IntInput) Listen
 	}).(ListenerAclConfigAclRelationOutput)
 }
 
+type ListenerCaCertificate struct {
+	// The ID of the certificate. Currently, only server certificates are supported.
+	CertificateId *string `pulumi:"certificateId"`
+}
+
+// ListenerCaCertificateInput is an input type that accepts ListenerCaCertificateArgs and ListenerCaCertificateOutput values.
+// You can construct a concrete instance of `ListenerCaCertificateInput` via:
+//
+//	ListenerCaCertificateArgs{...}
+type ListenerCaCertificateInput interface {
+	pulumi.Input
+
+	ToListenerCaCertificateOutput() ListenerCaCertificateOutput
+	ToListenerCaCertificateOutputWithContext(context.Context) ListenerCaCertificateOutput
+}
+
+type ListenerCaCertificateArgs struct {
+	// The ID of the certificate. Currently, only server certificates are supported.
+	CertificateId pulumi.StringPtrInput `pulumi:"certificateId"`
+}
+
+func (ListenerCaCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerCaCertificate)(nil)).Elem()
+}
+
+func (i ListenerCaCertificateArgs) ToListenerCaCertificateOutput() ListenerCaCertificateOutput {
+	return i.ToListenerCaCertificateOutputWithContext(context.Background())
+}
+
+func (i ListenerCaCertificateArgs) ToListenerCaCertificateOutputWithContext(ctx context.Context) ListenerCaCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerCaCertificateOutput)
+}
+
+// ListenerCaCertificateArrayInput is an input type that accepts ListenerCaCertificateArray and ListenerCaCertificateArrayOutput values.
+// You can construct a concrete instance of `ListenerCaCertificateArrayInput` via:
+//
+//	ListenerCaCertificateArray{ ListenerCaCertificateArgs{...} }
+type ListenerCaCertificateArrayInput interface {
+	pulumi.Input
+
+	ToListenerCaCertificateArrayOutput() ListenerCaCertificateArrayOutput
+	ToListenerCaCertificateArrayOutputWithContext(context.Context) ListenerCaCertificateArrayOutput
+}
+
+type ListenerCaCertificateArray []ListenerCaCertificateInput
+
+func (ListenerCaCertificateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ListenerCaCertificate)(nil)).Elem()
+}
+
+func (i ListenerCaCertificateArray) ToListenerCaCertificateArrayOutput() ListenerCaCertificateArrayOutput {
+	return i.ToListenerCaCertificateArrayOutputWithContext(context.Background())
+}
+
+func (i ListenerCaCertificateArray) ToListenerCaCertificateArrayOutputWithContext(ctx context.Context) ListenerCaCertificateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerCaCertificateArrayOutput)
+}
+
+type ListenerCaCertificateOutput struct{ *pulumi.OutputState }
+
+func (ListenerCaCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerCaCertificate)(nil)).Elem()
+}
+
+func (o ListenerCaCertificateOutput) ToListenerCaCertificateOutput() ListenerCaCertificateOutput {
+	return o
+}
+
+func (o ListenerCaCertificateOutput) ToListenerCaCertificateOutputWithContext(ctx context.Context) ListenerCaCertificateOutput {
+	return o
+}
+
+// The ID of the certificate. Currently, only server certificates are supported.
+func (o ListenerCaCertificateOutput) CertificateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListenerCaCertificate) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
+}
+
+type ListenerCaCertificateArrayOutput struct{ *pulumi.OutputState }
+
+func (ListenerCaCertificateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ListenerCaCertificate)(nil)).Elem()
+}
+
+func (o ListenerCaCertificateArrayOutput) ToListenerCaCertificateArrayOutput() ListenerCaCertificateArrayOutput {
+	return o
+}
+
+func (o ListenerCaCertificateArrayOutput) ToListenerCaCertificateArrayOutputWithContext(ctx context.Context) ListenerCaCertificateArrayOutput {
+	return o
+}
+
+func (o ListenerCaCertificateArrayOutput) Index(i pulumi.IntInput) ListenerCaCertificateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ListenerCaCertificate {
+		return vs[0].([]ListenerCaCertificate)[vs[1].(int)]
+	}).(ListenerCaCertificateOutput)
+}
+
 type ListenerCertificates struct {
-	// The ID of the Certificate.
+	// The ID of the certificate. Currently, only server certificates are supported.
 	CertificateId *string `pulumi:"certificateId"`
 }
 
@@ -721,7 +826,7 @@ type ListenerCertificatesInput interface {
 }
 
 type ListenerCertificatesArgs struct {
-	// The ID of the Certificate.
+	// The ID of the certificate. Currently, only server certificates are supported.
 	CertificateId pulumi.StringPtrInput `pulumi:"certificateId"`
 }
 
@@ -802,7 +907,7 @@ func (o ListenerCertificatesOutput) ToListenerCertificatesPtrOutputWithContext(c
 	}).(ListenerCertificatesPtrOutput)
 }
 
-// The ID of the Certificate.
+// The ID of the certificate. Currently, only server certificates are supported.
 func (o ListenerCertificatesOutput) CertificateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListenerCertificates) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
 }
@@ -831,7 +936,7 @@ func (o ListenerCertificatesPtrOutput) Elem() ListenerCertificatesOutput {
 	}).(ListenerCertificatesOutput)
 }
 
-// The ID of the Certificate.
+// The ID of the certificate. Currently, only server certificates are supported.
 func (o ListenerCertificatesPtrOutput) CertificateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ListenerCertificates) *string {
 		if v == nil {
@@ -842,9 +947,9 @@ func (o ListenerCertificatesPtrOutput) CertificateId() pulumi.StringPtrOutput {
 }
 
 type ListenerDefaultAction struct {
-	// The configurations of the actions. This parameter is required if Type is set to FowardGroup. See `forwardGroupConfig` below for details.
-	ForwardGroupConfig ListenerDefaultActionForwardGroupConfig `pulumi:"forwardGroupConfig"`
-	// Action Type.
+	// Forwarding Action Configurations See `forwardGroupConfig` below.
+	ForwardGroupConfig *ListenerDefaultActionForwardGroupConfig `pulumi:"forwardGroupConfig"`
+	// Action Type
 	Type string `pulumi:"type"`
 }
 
@@ -860,9 +965,9 @@ type ListenerDefaultActionInput interface {
 }
 
 type ListenerDefaultActionArgs struct {
-	// The configurations of the actions. This parameter is required if Type is set to FowardGroup. See `forwardGroupConfig` below for details.
-	ForwardGroupConfig ListenerDefaultActionForwardGroupConfigInput `pulumi:"forwardGroupConfig"`
-	// Action Type.
+	// Forwarding Action Configurations See `forwardGroupConfig` below.
+	ForwardGroupConfig ListenerDefaultActionForwardGroupConfigPtrInput `pulumi:"forwardGroupConfig"`
+	// Action Type
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -917,12 +1022,12 @@ func (o ListenerDefaultActionOutput) ToListenerDefaultActionOutputWithContext(ct
 	return o
 }
 
-// The configurations of the actions. This parameter is required if Type is set to FowardGroup. See `forwardGroupConfig` below for details.
-func (o ListenerDefaultActionOutput) ForwardGroupConfig() ListenerDefaultActionForwardGroupConfigOutput {
-	return o.ApplyT(func(v ListenerDefaultAction) ListenerDefaultActionForwardGroupConfig { return v.ForwardGroupConfig }).(ListenerDefaultActionForwardGroupConfigOutput)
+// Forwarding Action Configurations See `forwardGroupConfig` below.
+func (o ListenerDefaultActionOutput) ForwardGroupConfig() ListenerDefaultActionForwardGroupConfigPtrOutput {
+	return o.ApplyT(func(v ListenerDefaultAction) *ListenerDefaultActionForwardGroupConfig { return v.ForwardGroupConfig }).(ListenerDefaultActionForwardGroupConfigPtrOutput)
 }
 
-// Action Type.
+// Action Type
 func (o ListenerDefaultActionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ListenerDefaultAction) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -948,7 +1053,7 @@ func (o ListenerDefaultActionArrayOutput) Index(i pulumi.IntInput) ListenerDefau
 }
 
 type ListenerDefaultActionForwardGroupConfig struct {
-	// The destination server group to which requests are forwarded. See `serverGroupTuples` below for details.
+	// The Forwarding Destination Server Group See `serverGroupTuples` below.
 	ServerGroupTuples []ListenerDefaultActionForwardGroupConfigServerGroupTuple `pulumi:"serverGroupTuples"`
 }
 
@@ -964,7 +1069,7 @@ type ListenerDefaultActionForwardGroupConfigInput interface {
 }
 
 type ListenerDefaultActionForwardGroupConfigArgs struct {
-	// The destination server group to which requests are forwarded. See `serverGroupTuples` below for details.
+	// The Forwarding Destination Server Group See `serverGroupTuples` below.
 	ServerGroupTuples ListenerDefaultActionForwardGroupConfigServerGroupTupleArrayInput `pulumi:"serverGroupTuples"`
 }
 
@@ -978,6 +1083,47 @@ func (i ListenerDefaultActionForwardGroupConfigArgs) ToListenerDefaultActionForw
 
 func (i ListenerDefaultActionForwardGroupConfigArgs) ToListenerDefaultActionForwardGroupConfigOutputWithContext(ctx context.Context) ListenerDefaultActionForwardGroupConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ListenerDefaultActionForwardGroupConfigOutput)
+}
+
+func (i ListenerDefaultActionForwardGroupConfigArgs) ToListenerDefaultActionForwardGroupConfigPtrOutput() ListenerDefaultActionForwardGroupConfigPtrOutput {
+	return i.ToListenerDefaultActionForwardGroupConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ListenerDefaultActionForwardGroupConfigArgs) ToListenerDefaultActionForwardGroupConfigPtrOutputWithContext(ctx context.Context) ListenerDefaultActionForwardGroupConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerDefaultActionForwardGroupConfigOutput).ToListenerDefaultActionForwardGroupConfigPtrOutputWithContext(ctx)
+}
+
+// ListenerDefaultActionForwardGroupConfigPtrInput is an input type that accepts ListenerDefaultActionForwardGroupConfigArgs, ListenerDefaultActionForwardGroupConfigPtr and ListenerDefaultActionForwardGroupConfigPtrOutput values.
+// You can construct a concrete instance of `ListenerDefaultActionForwardGroupConfigPtrInput` via:
+//
+//	        ListenerDefaultActionForwardGroupConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ListenerDefaultActionForwardGroupConfigPtrInput interface {
+	pulumi.Input
+
+	ToListenerDefaultActionForwardGroupConfigPtrOutput() ListenerDefaultActionForwardGroupConfigPtrOutput
+	ToListenerDefaultActionForwardGroupConfigPtrOutputWithContext(context.Context) ListenerDefaultActionForwardGroupConfigPtrOutput
+}
+
+type listenerDefaultActionForwardGroupConfigPtrType ListenerDefaultActionForwardGroupConfigArgs
+
+func ListenerDefaultActionForwardGroupConfigPtr(v *ListenerDefaultActionForwardGroupConfigArgs) ListenerDefaultActionForwardGroupConfigPtrInput {
+	return (*listenerDefaultActionForwardGroupConfigPtrType)(v)
+}
+
+func (*listenerDefaultActionForwardGroupConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListenerDefaultActionForwardGroupConfig)(nil)).Elem()
+}
+
+func (i *listenerDefaultActionForwardGroupConfigPtrType) ToListenerDefaultActionForwardGroupConfigPtrOutput() ListenerDefaultActionForwardGroupConfigPtrOutput {
+	return i.ToListenerDefaultActionForwardGroupConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *listenerDefaultActionForwardGroupConfigPtrType) ToListenerDefaultActionForwardGroupConfigPtrOutputWithContext(ctx context.Context) ListenerDefaultActionForwardGroupConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerDefaultActionForwardGroupConfigPtrOutput)
 }
 
 type ListenerDefaultActionForwardGroupConfigOutput struct{ *pulumi.OutputState }
@@ -994,15 +1140,59 @@ func (o ListenerDefaultActionForwardGroupConfigOutput) ToListenerDefaultActionFo
 	return o
 }
 
-// The destination server group to which requests are forwarded. See `serverGroupTuples` below for details.
+func (o ListenerDefaultActionForwardGroupConfigOutput) ToListenerDefaultActionForwardGroupConfigPtrOutput() ListenerDefaultActionForwardGroupConfigPtrOutput {
+	return o.ToListenerDefaultActionForwardGroupConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ListenerDefaultActionForwardGroupConfigOutput) ToListenerDefaultActionForwardGroupConfigPtrOutputWithContext(ctx context.Context) ListenerDefaultActionForwardGroupConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListenerDefaultActionForwardGroupConfig) *ListenerDefaultActionForwardGroupConfig {
+		return &v
+	}).(ListenerDefaultActionForwardGroupConfigPtrOutput)
+}
+
+// The Forwarding Destination Server Group See `serverGroupTuples` below.
 func (o ListenerDefaultActionForwardGroupConfigOutput) ServerGroupTuples() ListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput {
 	return o.ApplyT(func(v ListenerDefaultActionForwardGroupConfig) []ListenerDefaultActionForwardGroupConfigServerGroupTuple {
 		return v.ServerGroupTuples
 	}).(ListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput)
 }
 
+type ListenerDefaultActionForwardGroupConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ListenerDefaultActionForwardGroupConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListenerDefaultActionForwardGroupConfig)(nil)).Elem()
+}
+
+func (o ListenerDefaultActionForwardGroupConfigPtrOutput) ToListenerDefaultActionForwardGroupConfigPtrOutput() ListenerDefaultActionForwardGroupConfigPtrOutput {
+	return o
+}
+
+func (o ListenerDefaultActionForwardGroupConfigPtrOutput) ToListenerDefaultActionForwardGroupConfigPtrOutputWithContext(ctx context.Context) ListenerDefaultActionForwardGroupConfigPtrOutput {
+	return o
+}
+
+func (o ListenerDefaultActionForwardGroupConfigPtrOutput) Elem() ListenerDefaultActionForwardGroupConfigOutput {
+	return o.ApplyT(func(v *ListenerDefaultActionForwardGroupConfig) ListenerDefaultActionForwardGroupConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ListenerDefaultActionForwardGroupConfig
+		return ret
+	}).(ListenerDefaultActionForwardGroupConfigOutput)
+}
+
+// The Forwarding Destination Server Group See `serverGroupTuples` below.
+func (o ListenerDefaultActionForwardGroupConfigPtrOutput) ServerGroupTuples() ListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput {
+	return o.ApplyT(func(v *ListenerDefaultActionForwardGroupConfig) []ListenerDefaultActionForwardGroupConfigServerGroupTuple {
+		if v == nil {
+			return nil
+		}
+		return v.ServerGroupTuples
+	}).(ListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput)
+}
+
 type ListenerDefaultActionForwardGroupConfigServerGroupTuple struct {
-	// The ID of the destination server group to which requests are forwarded.
+	// Forwarded to the Destination Server Group ID
 	ServerGroupId string `pulumi:"serverGroupId"`
 }
 
@@ -1018,7 +1208,7 @@ type ListenerDefaultActionForwardGroupConfigServerGroupTupleInput interface {
 }
 
 type ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs struct {
-	// The ID of the destination server group to which requests are forwarded.
+	// Forwarded to the Destination Server Group ID
 	ServerGroupId pulumi.StringInput `pulumi:"serverGroupId"`
 }
 
@@ -1073,7 +1263,7 @@ func (o ListenerDefaultActionForwardGroupConfigServerGroupTupleOutput) ToListene
 	return o
 }
 
-// The ID of the destination server group to which requests are forwarded.
+// Forwarded to the Destination Server Group ID
 func (o ListenerDefaultActionForwardGroupConfigServerGroupTupleOutput) ServerGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v ListenerDefaultActionForwardGroupConfigServerGroupTuple) string { return v.ServerGroupId }).(pulumi.StringOutput)
 }
@@ -1101,9 +1291,7 @@ func (o ListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput) Inde
 type ListenerQuicConfig struct {
 	// There Is a Need to Correlate the QuIC Listener ID. The Https Listener, in Effect at the Time. quicupgradeenabled True When Required.
 	QuicListenerId *string `pulumi:"quicListenerId"`
-	// Indicates Whether to Enable the QuIC Upgrade.
-	//
-	// > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
+	// Indicates Whether to Enable the QuIC Upgrade
 	QuicUpgradeEnabled *bool `pulumi:"quicUpgradeEnabled"`
 }
 
@@ -1121,9 +1309,7 @@ type ListenerQuicConfigInput interface {
 type ListenerQuicConfigArgs struct {
 	// There Is a Need to Correlate the QuIC Listener ID. The Https Listener, in Effect at the Time. quicupgradeenabled True When Required.
 	QuicListenerId pulumi.StringPtrInput `pulumi:"quicListenerId"`
-	// Indicates Whether to Enable the QuIC Upgrade.
-	//
-	// > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
+	// Indicates Whether to Enable the QuIC Upgrade
 	QuicUpgradeEnabled pulumi.BoolPtrInput `pulumi:"quicUpgradeEnabled"`
 }
 
@@ -1209,9 +1395,7 @@ func (o ListenerQuicConfigOutput) QuicListenerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListenerQuicConfig) *string { return v.QuicListenerId }).(pulumi.StringPtrOutput)
 }
 
-// Indicates Whether to Enable the QuIC Upgrade.
-//
-// > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
+// Indicates Whether to Enable the QuIC Upgrade
 func (o ListenerQuicConfigOutput) QuicUpgradeEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ListenerQuicConfig) *bool { return v.QuicUpgradeEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -1250,9 +1434,7 @@ func (o ListenerQuicConfigPtrOutput) QuicListenerId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Indicates Whether to Enable the QuIC Upgrade.
-//
-// > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
+// Indicates Whether to Enable the QuIC Upgrade
 func (o ListenerQuicConfigPtrOutput) QuicUpgradeEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ListenerQuicConfig) *bool {
 		if v == nil {
@@ -1263,35 +1445,63 @@ func (o ListenerQuicConfigPtrOutput) QuicUpgradeEnabled() pulumi.BoolPtrOutput {
 }
 
 type ListenerXForwardedForConfig struct {
-	// The Custom Header Field Names Only When `xForwardedForClientCertClientVerifyEnabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+	// The Custom Header Field Names Only When xforwardedforclientcertclientverifyenabled Has a Value of True, this Value Will Not Take Effect until.
 	XForwardedForClientCertClientVerifyAlias *string `pulumi:"xForwardedForClientCertClientVerifyAlias"`
-	// Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
+	// Indicates Whether the X-Forwarded-Clientcert-clientverify Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
 	XForwardedForClientCertClientVerifyEnabled *bool `pulumi:"xForwardedForClientCertClientVerifyEnabled"`
-	// The Custom Header Field Names Only When `xForwardedForClientCertfingerprintEnabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+	// The Custom Header Field Names Only When xforwardedforclientcertfingerprintenabled, Which Evaluates to True When the Entry into Force of.
 	XForwardedForClientCertFingerPrintAlias *string `pulumi:"xForwardedForClientCertFingerPrintAlias"`
-	// Indicates Whether the `X-Forwarded-client_cert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+	// Indicates Whether the X-Forwarded-Clientcert-fingerprint Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
 	XForwardedForClientCertFingerPrintEnabled *bool `pulumi:"xForwardedForClientCertFingerPrintEnabled"`
-	// The Custom Header Field Names Only When `xForwardedForClientCertIssuerDnEnabled`, Which Evaluates to True When the Entry into Force of.
+	// The Custom Header Field Names Only When xforwardedforclientcertsubjectdnenabled, Which Evaluates to True When the Entry into Force of.
 	XForwardedForClientCertIssuerDnAlias *string `pulumi:"xForwardedForClientCertIssuerDnAlias"`
-	// Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+	// Indicates Whether the X-Forwarded-Clientcert-issuerdn Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
 	XForwardedForClientCertIssuerDnEnabled *bool `pulumi:"xForwardedForClientCertIssuerDnEnabled"`
-	// The name of the custom header. This parameter is valid only if `xForwardedForClientCertsubjectdnEnabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+	// The Custom Header Field Name,
 	XForwardedForClientCertSubjectDnAlias *string `pulumi:"xForwardedForClientCertSubjectDnAlias"`
-	// Specifies whether to use the `X-Forwarded-client_cert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+	// Indicates Whether the X-Forwarded-Clientcert-subjectdn Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Owner Information.
 	XForwardedForClientCertSubjectDnEnabled *bool `pulumi:"xForwardedForClientCertSubjectDnEnabled"`
-	// Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value: true, false. Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
+	// Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value:
+	//
+	// true: Yes.
+	//
+	// false (default): No.
+	//
+	// Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
 	XForwardedForClientSourceIpsEnabled *bool `pulumi:"xForwardedForClientSourceIpsEnabled"`
-	// Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+	// Specify the trusted proxy IP.
+	//
+	// Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
 	XForwardedForClientSourceIpsTrusted *string `pulumi:"xForwardedForClientSourceIpsTrusted"`
 	// Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
 	XForwardedForClientSrcPortEnabled *bool `pulumi:"xForwardedForClientSrcPortEnabled"`
 	// Whether to Enable by X-Forwarded-For Header Field Is Used to Obtain the Client IP Addresses.
 	XForwardedForEnabled *bool `pulumi:"xForwardedForEnabled"`
+	// Whether to enable the X-Forwarded-Host header field to obtain the domain name of the client accessing the Application Load Balancer. Value:
+	//
+	// true: Yes.
+	//
+	// false (default): No.
+	//
+	// HTTP, HTTPS, and QUIC listeners support this parameter.
+	XForwardedForHostEnabled *bool `pulumi:"xForwardedForHostEnabled"`
+	// Schema for processing X-Forwarded-For header fields. This value takes effect only when XForwardedForEnabled is true. Value:
+	//
+	// append (default): append.
+	//
+	// remove: Delete.
+	//
+	// Configure append to add the last hop IP address to the X-Forwarded-For header field before sending the request to the backend service.
+	//
+	// Configure remove to delete the X-Forwarded-For header before the request is sent to the backend service, regardless of whether the request carries X-Forwarded-For header fields.
+	//
+	// HTTP and HTTPS listeners support this parameter.
+	XForwardedForProcessingMode *string `pulumi:"xForwardedForProcessingMode"`
 	// Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
 	XForwardedForProtoEnabled *bool `pulumi:"xForwardedForProtoEnabled"`
-	// Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
+	// Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id
 	XForwardedForSlbIdEnabled *bool `pulumi:"xForwardedForSlbIdEnabled"`
-	// Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
+	// Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port
 	XForwardedForSlbPortEnabled *bool `pulumi:"xForwardedForSlbPortEnabled"`
 }
 
@@ -1307,35 +1517,63 @@ type ListenerXForwardedForConfigInput interface {
 }
 
 type ListenerXForwardedForConfigArgs struct {
-	// The Custom Header Field Names Only When `xForwardedForClientCertClientVerifyEnabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+	// The Custom Header Field Names Only When xforwardedforclientcertclientverifyenabled Has a Value of True, this Value Will Not Take Effect until.
 	XForwardedForClientCertClientVerifyAlias pulumi.StringPtrInput `pulumi:"xForwardedForClientCertClientVerifyAlias"`
-	// Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
+	// Indicates Whether the X-Forwarded-Clientcert-clientverify Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
 	XForwardedForClientCertClientVerifyEnabled pulumi.BoolPtrInput `pulumi:"xForwardedForClientCertClientVerifyEnabled"`
-	// The Custom Header Field Names Only When `xForwardedForClientCertfingerprintEnabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+	// The Custom Header Field Names Only When xforwardedforclientcertfingerprintenabled, Which Evaluates to True When the Entry into Force of.
 	XForwardedForClientCertFingerPrintAlias pulumi.StringPtrInput `pulumi:"xForwardedForClientCertFingerPrintAlias"`
-	// Indicates Whether the `X-Forwarded-client_cert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+	// Indicates Whether the X-Forwarded-Clientcert-fingerprint Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
 	XForwardedForClientCertFingerPrintEnabled pulumi.BoolPtrInput `pulumi:"xForwardedForClientCertFingerPrintEnabled"`
-	// The Custom Header Field Names Only When `xForwardedForClientCertIssuerDnEnabled`, Which Evaluates to True When the Entry into Force of.
+	// The Custom Header Field Names Only When xforwardedforclientcertsubjectdnenabled, Which Evaluates to True When the Entry into Force of.
 	XForwardedForClientCertIssuerDnAlias pulumi.StringPtrInput `pulumi:"xForwardedForClientCertIssuerDnAlias"`
-	// Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+	// Indicates Whether the X-Forwarded-Clientcert-issuerdn Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
 	XForwardedForClientCertIssuerDnEnabled pulumi.BoolPtrInput `pulumi:"xForwardedForClientCertIssuerDnEnabled"`
-	// The name of the custom header. This parameter is valid only if `xForwardedForClientCertsubjectdnEnabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+	// The Custom Header Field Name,
 	XForwardedForClientCertSubjectDnAlias pulumi.StringPtrInput `pulumi:"xForwardedForClientCertSubjectDnAlias"`
-	// Specifies whether to use the `X-Forwarded-client_cert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+	// Indicates Whether the X-Forwarded-Clientcert-subjectdn Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Owner Information.
 	XForwardedForClientCertSubjectDnEnabled pulumi.BoolPtrInput `pulumi:"xForwardedForClientCertSubjectDnEnabled"`
-	// Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value: true, false. Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
+	// Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value:
+	//
+	// true: Yes.
+	//
+	// false (default): No.
+	//
+	// Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
 	XForwardedForClientSourceIpsEnabled pulumi.BoolPtrInput `pulumi:"xForwardedForClientSourceIpsEnabled"`
-	// Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+	// Specify the trusted proxy IP.
+	//
+	// Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
 	XForwardedForClientSourceIpsTrusted pulumi.StringPtrInput `pulumi:"xForwardedForClientSourceIpsTrusted"`
 	// Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
 	XForwardedForClientSrcPortEnabled pulumi.BoolPtrInput `pulumi:"xForwardedForClientSrcPortEnabled"`
 	// Whether to Enable by X-Forwarded-For Header Field Is Used to Obtain the Client IP Addresses.
 	XForwardedForEnabled pulumi.BoolPtrInput `pulumi:"xForwardedForEnabled"`
+	// Whether to enable the X-Forwarded-Host header field to obtain the domain name of the client accessing the Application Load Balancer. Value:
+	//
+	// true: Yes.
+	//
+	// false (default): No.
+	//
+	// HTTP, HTTPS, and QUIC listeners support this parameter.
+	XForwardedForHostEnabled pulumi.BoolPtrInput `pulumi:"xForwardedForHostEnabled"`
+	// Schema for processing X-Forwarded-For header fields. This value takes effect only when XForwardedForEnabled is true. Value:
+	//
+	// append (default): append.
+	//
+	// remove: Delete.
+	//
+	// Configure append to add the last hop IP address to the X-Forwarded-For header field before sending the request to the backend service.
+	//
+	// Configure remove to delete the X-Forwarded-For header before the request is sent to the backend service, regardless of whether the request carries X-Forwarded-For header fields.
+	//
+	// HTTP and HTTPS listeners support this parameter.
+	XForwardedForProcessingMode pulumi.StringPtrInput `pulumi:"xForwardedForProcessingMode"`
 	// Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
 	XForwardedForProtoEnabled pulumi.BoolPtrInput `pulumi:"xForwardedForProtoEnabled"`
-	// Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
+	// Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id
 	XForwardedForSlbIdEnabled pulumi.BoolPtrInput `pulumi:"xForwardedForSlbIdEnabled"`
-	// Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
+	// Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port
 	XForwardedForSlbPortEnabled pulumi.BoolPtrInput `pulumi:"xForwardedForSlbPortEnabled"`
 }
 
@@ -1416,52 +1654,60 @@ func (o ListenerXForwardedForConfigOutput) ToListenerXForwardedForConfigPtrOutpu
 	}).(ListenerXForwardedForConfigPtrOutput)
 }
 
-// The Custom Header Field Names Only When `xForwardedForClientCertClientVerifyEnabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+// The Custom Header Field Names Only When xforwardedforclientcertclientverifyenabled Has a Value of True, this Value Will Not Take Effect until.
 func (o ListenerXForwardedForConfigOutput) XForwardedForClientCertClientVerifyAlias() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListenerXForwardedForConfig) *string { return v.XForwardedForClientCertClientVerifyAlias }).(pulumi.StringPtrOutput)
 }
 
-// Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
+// Indicates Whether the X-Forwarded-Clientcert-clientverify Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
 func (o ListenerXForwardedForConfigOutput) XForwardedForClientCertClientVerifyEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ListenerXForwardedForConfig) *bool { return v.XForwardedForClientCertClientVerifyEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The Custom Header Field Names Only When `xForwardedForClientCertfingerprintEnabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+// The Custom Header Field Names Only When xforwardedforclientcertfingerprintenabled, Which Evaluates to True When the Entry into Force of.
 func (o ListenerXForwardedForConfigOutput) XForwardedForClientCertFingerPrintAlias() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListenerXForwardedForConfig) *string { return v.XForwardedForClientCertFingerPrintAlias }).(pulumi.StringPtrOutput)
 }
 
-// Indicates Whether the `X-Forwarded-client_cert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+// Indicates Whether the X-Forwarded-Clientcert-fingerprint Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
 func (o ListenerXForwardedForConfigOutput) XForwardedForClientCertFingerPrintEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ListenerXForwardedForConfig) *bool { return v.XForwardedForClientCertFingerPrintEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The Custom Header Field Names Only When `xForwardedForClientCertIssuerDnEnabled`, Which Evaluates to True When the Entry into Force of.
+// The Custom Header Field Names Only When xforwardedforclientcertsubjectdnenabled, Which Evaluates to True When the Entry into Force of.
 func (o ListenerXForwardedForConfigOutput) XForwardedForClientCertIssuerDnAlias() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListenerXForwardedForConfig) *string { return v.XForwardedForClientCertIssuerDnAlias }).(pulumi.StringPtrOutput)
 }
 
-// Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+// Indicates Whether the X-Forwarded-Clientcert-issuerdn Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
 func (o ListenerXForwardedForConfigOutput) XForwardedForClientCertIssuerDnEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ListenerXForwardedForConfig) *bool { return v.XForwardedForClientCertIssuerDnEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The name of the custom header. This parameter is valid only if `xForwardedForClientCertsubjectdnEnabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+// The Custom Header Field Name,
 func (o ListenerXForwardedForConfigOutput) XForwardedForClientCertSubjectDnAlias() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListenerXForwardedForConfig) *string { return v.XForwardedForClientCertSubjectDnAlias }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether to use the `X-Forwarded-client_cert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+// Indicates Whether the X-Forwarded-Clientcert-subjectdn Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Owner Information.
 func (o ListenerXForwardedForConfigOutput) XForwardedForClientCertSubjectDnEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ListenerXForwardedForConfig) *bool { return v.XForwardedForClientCertSubjectDnEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value: true, false. Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
+// Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value:
+//
+// true: Yes.
+//
+// false (default): No.
+//
+// Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
 func (o ListenerXForwardedForConfigOutput) XForwardedForClientSourceIpsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ListenerXForwardedForConfig) *bool { return v.XForwardedForClientSourceIpsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+// Specify the trusted proxy IP.
+//
+// Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
 func (o ListenerXForwardedForConfigOutput) XForwardedForClientSourceIpsTrusted() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListenerXForwardedForConfig) *string { return v.XForwardedForClientSourceIpsTrusted }).(pulumi.StringPtrOutput)
 }
@@ -1476,17 +1722,43 @@ func (o ListenerXForwardedForConfigOutput) XForwardedForEnabled() pulumi.BoolPtr
 	return o.ApplyT(func(v ListenerXForwardedForConfig) *bool { return v.XForwardedForEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Whether to enable the X-Forwarded-Host header field to obtain the domain name of the client accessing the Application Load Balancer. Value:
+//
+// true: Yes.
+//
+// false (default): No.
+//
+// HTTP, HTTPS, and QUIC listeners support this parameter.
+func (o ListenerXForwardedForConfigOutput) XForwardedForHostEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListenerXForwardedForConfig) *bool { return v.XForwardedForHostEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Schema for processing X-Forwarded-For header fields. This value takes effect only when XForwardedForEnabled is true. Value:
+//
+// append (default): append.
+//
+// remove: Delete.
+//
+// Configure append to add the last hop IP address to the X-Forwarded-For header field before sending the request to the backend service.
+//
+// Configure remove to delete the X-Forwarded-For header before the request is sent to the backend service, regardless of whether the request carries X-Forwarded-For header fields.
+//
+// HTTP and HTTPS listeners support this parameter.
+func (o ListenerXForwardedForConfigOutput) XForwardedForProcessingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListenerXForwardedForConfig) *string { return v.XForwardedForProcessingMode }).(pulumi.StringPtrOutput)
+}
+
 // Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
 func (o ListenerXForwardedForConfigOutput) XForwardedForProtoEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ListenerXForwardedForConfig) *bool { return v.XForwardedForProtoEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
+// Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id
 func (o ListenerXForwardedForConfigOutput) XForwardedForSlbIdEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ListenerXForwardedForConfig) *bool { return v.XForwardedForSlbIdEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
+// Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port
 func (o ListenerXForwardedForConfigOutput) XForwardedForSlbPortEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ListenerXForwardedForConfig) *bool { return v.XForwardedForSlbPortEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -1515,7 +1787,7 @@ func (o ListenerXForwardedForConfigPtrOutput) Elem() ListenerXForwardedForConfig
 	}).(ListenerXForwardedForConfigOutput)
 }
 
-// The Custom Header Field Names Only When `xForwardedForClientCertClientVerifyEnabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+// The Custom Header Field Names Only When xforwardedforclientcertclientverifyenabled Has a Value of True, this Value Will Not Take Effect until.
 func (o ListenerXForwardedForConfigPtrOutput) XForwardedForClientCertClientVerifyAlias() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ListenerXForwardedForConfig) *string {
 		if v == nil {
@@ -1525,7 +1797,7 @@ func (o ListenerXForwardedForConfigPtrOutput) XForwardedForClientCertClientVerif
 	}).(pulumi.StringPtrOutput)
 }
 
-// Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
+// Indicates Whether the X-Forwarded-Clientcert-clientverify Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
 func (o ListenerXForwardedForConfigPtrOutput) XForwardedForClientCertClientVerifyEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ListenerXForwardedForConfig) *bool {
 		if v == nil {
@@ -1535,7 +1807,7 @@ func (o ListenerXForwardedForConfigPtrOutput) XForwardedForClientCertClientVerif
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The Custom Header Field Names Only When `xForwardedForClientCertfingerprintEnabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+// The Custom Header Field Names Only When xforwardedforclientcertfingerprintenabled, Which Evaluates to True When the Entry into Force of.
 func (o ListenerXForwardedForConfigPtrOutput) XForwardedForClientCertFingerPrintAlias() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ListenerXForwardedForConfig) *string {
 		if v == nil {
@@ -1545,7 +1817,7 @@ func (o ListenerXForwardedForConfigPtrOutput) XForwardedForClientCertFingerPrint
 	}).(pulumi.StringPtrOutput)
 }
 
-// Indicates Whether the `X-Forwarded-client_cert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+// Indicates Whether the X-Forwarded-Clientcert-fingerprint Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
 func (o ListenerXForwardedForConfigPtrOutput) XForwardedForClientCertFingerPrintEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ListenerXForwardedForConfig) *bool {
 		if v == nil {
@@ -1555,7 +1827,7 @@ func (o ListenerXForwardedForConfigPtrOutput) XForwardedForClientCertFingerPrint
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The Custom Header Field Names Only When `xForwardedForClientCertIssuerDnEnabled`, Which Evaluates to True When the Entry into Force of.
+// The Custom Header Field Names Only When xforwardedforclientcertsubjectdnenabled, Which Evaluates to True When the Entry into Force of.
 func (o ListenerXForwardedForConfigPtrOutput) XForwardedForClientCertIssuerDnAlias() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ListenerXForwardedForConfig) *string {
 		if v == nil {
@@ -1565,7 +1837,7 @@ func (o ListenerXForwardedForConfigPtrOutput) XForwardedForClientCertIssuerDnAli
 	}).(pulumi.StringPtrOutput)
 }
 
-// Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+// Indicates Whether the X-Forwarded-Clientcert-issuerdn Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
 func (o ListenerXForwardedForConfigPtrOutput) XForwardedForClientCertIssuerDnEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ListenerXForwardedForConfig) *bool {
 		if v == nil {
@@ -1575,7 +1847,7 @@ func (o ListenerXForwardedForConfigPtrOutput) XForwardedForClientCertIssuerDnEna
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The name of the custom header. This parameter is valid only if `xForwardedForClientCertsubjectdnEnabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+// The Custom Header Field Name,
 func (o ListenerXForwardedForConfigPtrOutput) XForwardedForClientCertSubjectDnAlias() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ListenerXForwardedForConfig) *string {
 		if v == nil {
@@ -1585,7 +1857,7 @@ func (o ListenerXForwardedForConfigPtrOutput) XForwardedForClientCertSubjectDnAl
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether to use the `X-Forwarded-client_cert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+// Indicates Whether the X-Forwarded-Clientcert-subjectdn Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Owner Information.
 func (o ListenerXForwardedForConfigPtrOutput) XForwardedForClientCertSubjectDnEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ListenerXForwardedForConfig) *bool {
 		if v == nil {
@@ -1595,7 +1867,13 @@ func (o ListenerXForwardedForConfigPtrOutput) XForwardedForClientCertSubjectDnEn
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value: true, false. Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
+// Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value:
+//
+// true: Yes.
+//
+// false (default): No.
+//
+// Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
 func (o ListenerXForwardedForConfigPtrOutput) XForwardedForClientSourceIpsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ListenerXForwardedForConfig) *bool {
 		if v == nil {
@@ -1605,7 +1883,9 @@ func (o ListenerXForwardedForConfigPtrOutput) XForwardedForClientSourceIpsEnable
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+// Specify the trusted proxy IP.
+//
+// Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
 func (o ListenerXForwardedForConfigPtrOutput) XForwardedForClientSourceIpsTrusted() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ListenerXForwardedForConfig) *string {
 		if v == nil {
@@ -1635,6 +1915,42 @@ func (o ListenerXForwardedForConfigPtrOutput) XForwardedForEnabled() pulumi.Bool
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Whether to enable the X-Forwarded-Host header field to obtain the domain name of the client accessing the Application Load Balancer. Value:
+//
+// true: Yes.
+//
+// false (default): No.
+//
+// HTTP, HTTPS, and QUIC listeners support this parameter.
+func (o ListenerXForwardedForConfigPtrOutput) XForwardedForHostEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListenerXForwardedForConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.XForwardedForHostEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Schema for processing X-Forwarded-For header fields. This value takes effect only when XForwardedForEnabled is true. Value:
+//
+// append (default): append.
+//
+// remove: Delete.
+//
+// Configure append to add the last hop IP address to the X-Forwarded-For header field before sending the request to the backend service.
+//
+// Configure remove to delete the X-Forwarded-For header before the request is sent to the backend service, regardless of whether the request carries X-Forwarded-For header fields.
+//
+// HTTP and HTTPS listeners support this parameter.
+func (o ListenerXForwardedForConfigPtrOutput) XForwardedForProcessingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListenerXForwardedForConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.XForwardedForProcessingMode
+	}).(pulumi.StringPtrOutput)
+}
+
 // Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
 func (o ListenerXForwardedForConfigPtrOutput) XForwardedForProtoEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ListenerXForwardedForConfig) *bool {
@@ -1645,7 +1961,7 @@ func (o ListenerXForwardedForConfigPtrOutput) XForwardedForProtoEnabled() pulumi
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
+// Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id
 func (o ListenerXForwardedForConfigPtrOutput) XForwardedForSlbIdEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ListenerXForwardedForConfig) *bool {
 		if v == nil {
@@ -1655,7 +1971,7 @@ func (o ListenerXForwardedForConfigPtrOutput) XForwardedForSlbIdEnabled() pulumi
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
+// Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port
 func (o ListenerXForwardedForConfigPtrOutput) XForwardedForSlbPortEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ListenerXForwardedForConfig) *bool {
 		if v == nil {
@@ -1667,9 +1983,9 @@ func (o ListenerXForwardedForConfigPtrOutput) XForwardedForSlbPortEnabled() pulu
 
 type LoadBalancerAccessLogConfig struct {
 	// The project to which the access log is shipped.
-	LogProject string `pulumi:"logProject"`
+	LogProject *string `pulumi:"logProject"`
 	// The Logstore to which the access log is shipped.
-	LogStore string `pulumi:"logStore"`
+	LogStore *string `pulumi:"logStore"`
 }
 
 // LoadBalancerAccessLogConfigInput is an input type that accepts LoadBalancerAccessLogConfigArgs and LoadBalancerAccessLogConfigOutput values.
@@ -1685,9 +2001,9 @@ type LoadBalancerAccessLogConfigInput interface {
 
 type LoadBalancerAccessLogConfigArgs struct {
 	// The project to which the access log is shipped.
-	LogProject pulumi.StringInput `pulumi:"logProject"`
+	LogProject pulumi.StringPtrInput `pulumi:"logProject"`
 	// The Logstore to which the access log is shipped.
-	LogStore pulumi.StringInput `pulumi:"logStore"`
+	LogStore pulumi.StringPtrInput `pulumi:"logStore"`
 }
 
 func (LoadBalancerAccessLogConfigArgs) ElementType() reflect.Type {
@@ -1768,13 +2084,13 @@ func (o LoadBalancerAccessLogConfigOutput) ToLoadBalancerAccessLogConfigPtrOutpu
 }
 
 // The project to which the access log is shipped.
-func (o LoadBalancerAccessLogConfigOutput) LogProject() pulumi.StringOutput {
-	return o.ApplyT(func(v LoadBalancerAccessLogConfig) string { return v.LogProject }).(pulumi.StringOutput)
+func (o LoadBalancerAccessLogConfigOutput) LogProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerAccessLogConfig) *string { return v.LogProject }).(pulumi.StringPtrOutput)
 }
 
 // The Logstore to which the access log is shipped.
-func (o LoadBalancerAccessLogConfigOutput) LogStore() pulumi.StringOutput {
-	return o.ApplyT(func(v LoadBalancerAccessLogConfig) string { return v.LogStore }).(pulumi.StringOutput)
+func (o LoadBalancerAccessLogConfigOutput) LogStore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerAccessLogConfig) *string { return v.LogStore }).(pulumi.StringPtrOutput)
 }
 
 type LoadBalancerAccessLogConfigPtrOutput struct{ *pulumi.OutputState }
@@ -1807,7 +2123,7 @@ func (o LoadBalancerAccessLogConfigPtrOutput) LogProject() pulumi.StringPtrOutpu
 		if v == nil {
 			return nil
 		}
-		return &v.LogProject
+		return v.LogProject
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1817,12 +2133,168 @@ func (o LoadBalancerAccessLogConfigPtrOutput) LogStore() pulumi.StringPtrOutput 
 		if v == nil {
 			return nil
 		}
-		return &v.LogStore
+		return v.LogStore
+	}).(pulumi.StringPtrOutput)
+}
+
+type LoadBalancerDeletionProtectionConfig struct {
+	// Remove the Protection Status
+	Enabled *bool `pulumi:"enabled"`
+	// Deletion Protection Turn-on Time Use Greenwich Mean Time, in the Format of Yyyy-MM-ddTHH: mm: SSZ
+	EnabledTime *string `pulumi:"enabledTime"`
+}
+
+// LoadBalancerDeletionProtectionConfigInput is an input type that accepts LoadBalancerDeletionProtectionConfigArgs and LoadBalancerDeletionProtectionConfigOutput values.
+// You can construct a concrete instance of `LoadBalancerDeletionProtectionConfigInput` via:
+//
+//	LoadBalancerDeletionProtectionConfigArgs{...}
+type LoadBalancerDeletionProtectionConfigInput interface {
+	pulumi.Input
+
+	ToLoadBalancerDeletionProtectionConfigOutput() LoadBalancerDeletionProtectionConfigOutput
+	ToLoadBalancerDeletionProtectionConfigOutputWithContext(context.Context) LoadBalancerDeletionProtectionConfigOutput
+}
+
+type LoadBalancerDeletionProtectionConfigArgs struct {
+	// Remove the Protection Status
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Deletion Protection Turn-on Time Use Greenwich Mean Time, in the Format of Yyyy-MM-ddTHH: mm: SSZ
+	EnabledTime pulumi.StringPtrInput `pulumi:"enabledTime"`
+}
+
+func (LoadBalancerDeletionProtectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerDeletionProtectionConfig)(nil)).Elem()
+}
+
+func (i LoadBalancerDeletionProtectionConfigArgs) ToLoadBalancerDeletionProtectionConfigOutput() LoadBalancerDeletionProtectionConfigOutput {
+	return i.ToLoadBalancerDeletionProtectionConfigOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerDeletionProtectionConfigArgs) ToLoadBalancerDeletionProtectionConfigOutputWithContext(ctx context.Context) LoadBalancerDeletionProtectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerDeletionProtectionConfigOutput)
+}
+
+func (i LoadBalancerDeletionProtectionConfigArgs) ToLoadBalancerDeletionProtectionConfigPtrOutput() LoadBalancerDeletionProtectionConfigPtrOutput {
+	return i.ToLoadBalancerDeletionProtectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerDeletionProtectionConfigArgs) ToLoadBalancerDeletionProtectionConfigPtrOutputWithContext(ctx context.Context) LoadBalancerDeletionProtectionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerDeletionProtectionConfigOutput).ToLoadBalancerDeletionProtectionConfigPtrOutputWithContext(ctx)
+}
+
+// LoadBalancerDeletionProtectionConfigPtrInput is an input type that accepts LoadBalancerDeletionProtectionConfigArgs, LoadBalancerDeletionProtectionConfigPtr and LoadBalancerDeletionProtectionConfigPtrOutput values.
+// You can construct a concrete instance of `LoadBalancerDeletionProtectionConfigPtrInput` via:
+//
+//	        LoadBalancerDeletionProtectionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoadBalancerDeletionProtectionConfigPtrInput interface {
+	pulumi.Input
+
+	ToLoadBalancerDeletionProtectionConfigPtrOutput() LoadBalancerDeletionProtectionConfigPtrOutput
+	ToLoadBalancerDeletionProtectionConfigPtrOutputWithContext(context.Context) LoadBalancerDeletionProtectionConfigPtrOutput
+}
+
+type loadBalancerDeletionProtectionConfigPtrType LoadBalancerDeletionProtectionConfigArgs
+
+func LoadBalancerDeletionProtectionConfigPtr(v *LoadBalancerDeletionProtectionConfigArgs) LoadBalancerDeletionProtectionConfigPtrInput {
+	return (*loadBalancerDeletionProtectionConfigPtrType)(v)
+}
+
+func (*loadBalancerDeletionProtectionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerDeletionProtectionConfig)(nil)).Elem()
+}
+
+func (i *loadBalancerDeletionProtectionConfigPtrType) ToLoadBalancerDeletionProtectionConfigPtrOutput() LoadBalancerDeletionProtectionConfigPtrOutput {
+	return i.ToLoadBalancerDeletionProtectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *loadBalancerDeletionProtectionConfigPtrType) ToLoadBalancerDeletionProtectionConfigPtrOutputWithContext(ctx context.Context) LoadBalancerDeletionProtectionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerDeletionProtectionConfigPtrOutput)
+}
+
+type LoadBalancerDeletionProtectionConfigOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerDeletionProtectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerDeletionProtectionConfig)(nil)).Elem()
+}
+
+func (o LoadBalancerDeletionProtectionConfigOutput) ToLoadBalancerDeletionProtectionConfigOutput() LoadBalancerDeletionProtectionConfigOutput {
+	return o
+}
+
+func (o LoadBalancerDeletionProtectionConfigOutput) ToLoadBalancerDeletionProtectionConfigOutputWithContext(ctx context.Context) LoadBalancerDeletionProtectionConfigOutput {
+	return o
+}
+
+func (o LoadBalancerDeletionProtectionConfigOutput) ToLoadBalancerDeletionProtectionConfigPtrOutput() LoadBalancerDeletionProtectionConfigPtrOutput {
+	return o.ToLoadBalancerDeletionProtectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o LoadBalancerDeletionProtectionConfigOutput) ToLoadBalancerDeletionProtectionConfigPtrOutputWithContext(ctx context.Context) LoadBalancerDeletionProtectionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerDeletionProtectionConfig) *LoadBalancerDeletionProtectionConfig {
+		return &v
+	}).(LoadBalancerDeletionProtectionConfigPtrOutput)
+}
+
+// Remove the Protection Status
+func (o LoadBalancerDeletionProtectionConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LoadBalancerDeletionProtectionConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Deletion Protection Turn-on Time Use Greenwich Mean Time, in the Format of Yyyy-MM-ddTHH: mm: SSZ
+func (o LoadBalancerDeletionProtectionConfigOutput) EnabledTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerDeletionProtectionConfig) *string { return v.EnabledTime }).(pulumi.StringPtrOutput)
+}
+
+type LoadBalancerDeletionProtectionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerDeletionProtectionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerDeletionProtectionConfig)(nil)).Elem()
+}
+
+func (o LoadBalancerDeletionProtectionConfigPtrOutput) ToLoadBalancerDeletionProtectionConfigPtrOutput() LoadBalancerDeletionProtectionConfigPtrOutput {
+	return o
+}
+
+func (o LoadBalancerDeletionProtectionConfigPtrOutput) ToLoadBalancerDeletionProtectionConfigPtrOutputWithContext(ctx context.Context) LoadBalancerDeletionProtectionConfigPtrOutput {
+	return o
+}
+
+func (o LoadBalancerDeletionProtectionConfigPtrOutput) Elem() LoadBalancerDeletionProtectionConfigOutput {
+	return o.ApplyT(func(v *LoadBalancerDeletionProtectionConfig) LoadBalancerDeletionProtectionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret LoadBalancerDeletionProtectionConfig
+		return ret
+	}).(LoadBalancerDeletionProtectionConfigOutput)
+}
+
+// Remove the Protection Status
+func (o LoadBalancerDeletionProtectionConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerDeletionProtectionConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Deletion Protection Turn-on Time Use Greenwich Mean Time, in the Format of Yyyy-MM-ddTHH: mm: SSZ
+func (o LoadBalancerDeletionProtectionConfigPtrOutput) EnabledTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerDeletionProtectionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnabledTime
 	}).(pulumi.StringPtrOutput)
 }
 
 type LoadBalancerLoadBalancerBillingConfig struct {
-	// The billing method of the ALB instance. Valid values: `PayAsYouGo`.
+	// Pay Type
 	PayType string `pulumi:"payType"`
 }
 
@@ -1838,7 +2310,7 @@ type LoadBalancerLoadBalancerBillingConfigInput interface {
 }
 
 type LoadBalancerLoadBalancerBillingConfigArgs struct {
-	// The billing method of the ALB instance. Valid values: `PayAsYouGo`.
+	// Pay Type
 	PayType pulumi.StringInput `pulumi:"payType"`
 }
 
@@ -1919,7 +2391,7 @@ func (o LoadBalancerLoadBalancerBillingConfigOutput) ToLoadBalancerLoadBalancerB
 	}).(LoadBalancerLoadBalancerBillingConfigPtrOutput)
 }
 
-// The billing method of the ALB instance. Valid values: `PayAsYouGo`.
+// Pay Type
 func (o LoadBalancerLoadBalancerBillingConfigOutput) PayType() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerLoadBalancerBillingConfig) string { return v.PayType }).(pulumi.StringOutput)
 }
@@ -1948,7 +2420,7 @@ func (o LoadBalancerLoadBalancerBillingConfigPtrOutput) Elem() LoadBalancerLoadB
 	}).(LoadBalancerLoadBalancerBillingConfigOutput)
 }
 
-// The billing method of the ALB instance. Valid values: `PayAsYouGo`.
+// Pay Type
 func (o LoadBalancerLoadBalancerBillingConfigPtrOutput) PayType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancerLoadBalancerBillingConfig) *string {
 		if v == nil {
@@ -1959,9 +2431,9 @@ func (o LoadBalancerLoadBalancerBillingConfigPtrOutput) PayType() pulumi.StringP
 }
 
 type LoadBalancerModificationProtectionConfig struct {
-	// The reason for enabling the configuration read-only mode. **NOTE:** `reason` takes effect only if `status` is set to `ConsoleProtection`.
+	// Managed Instance
 	Reason *string `pulumi:"reason"`
-	// Specifies whether to enable the configuration read-only mode. Valid values: `ConsoleProtection`, `NonProtection`.
+	// Load Balancing Modify the Protection Status
 	Status *string `pulumi:"status"`
 }
 
@@ -1977,9 +2449,9 @@ type LoadBalancerModificationProtectionConfigInput interface {
 }
 
 type LoadBalancerModificationProtectionConfigArgs struct {
-	// The reason for enabling the configuration read-only mode. **NOTE:** `reason` takes effect only if `status` is set to `ConsoleProtection`.
+	// Managed Instance
 	Reason pulumi.StringPtrInput `pulumi:"reason"`
-	// Specifies whether to enable the configuration read-only mode. Valid values: `ConsoleProtection`, `NonProtection`.
+	// Load Balancing Modify the Protection Status
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -2060,12 +2532,12 @@ func (o LoadBalancerModificationProtectionConfigOutput) ToLoadBalancerModificati
 	}).(LoadBalancerModificationProtectionConfigPtrOutput)
 }
 
-// The reason for enabling the configuration read-only mode. **NOTE:** `reason` takes effect only if `status` is set to `ConsoleProtection`.
+// Managed Instance
 func (o LoadBalancerModificationProtectionConfigOutput) Reason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerModificationProtectionConfig) *string { return v.Reason }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether to enable the configuration read-only mode. Valid values: `ConsoleProtection`, `NonProtection`.
+// Load Balancing Modify the Protection Status
 func (o LoadBalancerModificationProtectionConfigOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerModificationProtectionConfig) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -2094,7 +2566,7 @@ func (o LoadBalancerModificationProtectionConfigPtrOutput) Elem() LoadBalancerMo
 	}).(LoadBalancerModificationProtectionConfigOutput)
 }
 
-// The reason for enabling the configuration read-only mode. **NOTE:** `reason` takes effect only if `status` is set to `ConsoleProtection`.
+// Managed Instance
 func (o LoadBalancerModificationProtectionConfigPtrOutput) Reason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancerModificationProtectionConfig) *string {
 		if v == nil {
@@ -2104,7 +2576,7 @@ func (o LoadBalancerModificationProtectionConfigPtrOutput) Reason() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether to enable the configuration read-only mode. Valid values: `ConsoleProtection`, `NonProtection`.
+// Load Balancing Modify the Protection Status
 func (o LoadBalancerModificationProtectionConfigPtrOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancerModificationProtectionConfig) *string {
 		if v == nil {
@@ -2115,11 +2587,11 @@ func (o LoadBalancerModificationProtectionConfigPtrOutput) Status() pulumi.Strin
 }
 
 type LoadBalancerZoneMapping struct {
-	// The IP address of the ALB instance.
+	// The SLB Instance Address
 	LoadBalancerAddresses []LoadBalancerZoneMappingLoadBalancerAddress `pulumi:"loadBalancerAddresses"`
-	// The ID of the VSwitch.
+	// The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
 	VswitchId string `pulumi:"vswitchId"`
-	// The zone ID of the ALB instance.
+	// The ID of the zone to which the SLB instance belongs.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -2135,11 +2607,11 @@ type LoadBalancerZoneMappingInput interface {
 }
 
 type LoadBalancerZoneMappingArgs struct {
-	// The IP address of the ALB instance.
+	// The SLB Instance Address
 	LoadBalancerAddresses LoadBalancerZoneMappingLoadBalancerAddressArrayInput `pulumi:"loadBalancerAddresses"`
-	// The ID of the VSwitch.
+	// The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
-	// The zone ID of the ALB instance.
+	// The ID of the zone to which the SLB instance belongs.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -2194,19 +2666,19 @@ func (o LoadBalancerZoneMappingOutput) ToLoadBalancerZoneMappingOutputWithContex
 	return o
 }
 
-// The IP address of the ALB instance.
+// The SLB Instance Address
 func (o LoadBalancerZoneMappingOutput) LoadBalancerAddresses() LoadBalancerZoneMappingLoadBalancerAddressArrayOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMapping) []LoadBalancerZoneMappingLoadBalancerAddress {
 		return v.LoadBalancerAddresses
 	}).(LoadBalancerZoneMappingLoadBalancerAddressArrayOutput)
 }
 
-// The ID of the VSwitch.
+// The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
 func (o LoadBalancerZoneMappingOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMapping) string { return v.VswitchId }).(pulumi.StringOutput)
 }
 
-// The zone ID of the ALB instance.
+// The ID of the zone to which the SLB instance belongs.
 func (o LoadBalancerZoneMappingOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMapping) string { return v.ZoneId }).(pulumi.StringOutput)
 }
@@ -2232,13 +2704,13 @@ func (o LoadBalancerZoneMappingArrayOutput) Index(i pulumi.IntInput) LoadBalance
 }
 
 type LoadBalancerZoneMappingLoadBalancerAddress struct {
-	// IP address. The Public IP Address, and Private IP Address from the Address Type.
+	// IP Address. The Public IP Address, and Private IP Address from the Address Type
 	Address *string `pulumi:"address"`
-	// The ID of the EIP.
+	// The ID of the EIP instance.
 	AllocationId *string `pulumi:"allocationId"`
-	// The type of the EIP.
+	// The type of the EIP instance.
 	EipType *string `pulumi:"eipType"`
-	// Ipv6 address.
+	// Ipv6 address
 	Ipv6Address *string `pulumi:"ipv6Address"`
 }
 
@@ -2254,13 +2726,13 @@ type LoadBalancerZoneMappingLoadBalancerAddressInput interface {
 }
 
 type LoadBalancerZoneMappingLoadBalancerAddressArgs struct {
-	// IP address. The Public IP Address, and Private IP Address from the Address Type.
+	// IP Address. The Public IP Address, and Private IP Address from the Address Type
 	Address pulumi.StringPtrInput `pulumi:"address"`
-	// The ID of the EIP.
+	// The ID of the EIP instance.
 	AllocationId pulumi.StringPtrInput `pulumi:"allocationId"`
-	// The type of the EIP.
+	// The type of the EIP instance.
 	EipType pulumi.StringPtrInput `pulumi:"eipType"`
-	// Ipv6 address.
+	// Ipv6 address
 	Ipv6Address pulumi.StringPtrInput `pulumi:"ipv6Address"`
 }
 
@@ -2315,22 +2787,22 @@ func (o LoadBalancerZoneMappingLoadBalancerAddressOutput) ToLoadBalancerZoneMapp
 	return o
 }
 
-// IP address. The Public IP Address, and Private IP Address from the Address Type.
+// IP Address. The Public IP Address, and Private IP Address from the Address Type
 func (o LoadBalancerZoneMappingLoadBalancerAddressOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMappingLoadBalancerAddress) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the EIP.
+// The ID of the EIP instance.
 func (o LoadBalancerZoneMappingLoadBalancerAddressOutput) AllocationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMappingLoadBalancerAddress) *string { return v.AllocationId }).(pulumi.StringPtrOutput)
 }
 
-// The type of the EIP.
+// The type of the EIP instance.
 func (o LoadBalancerZoneMappingLoadBalancerAddressOutput) EipType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMappingLoadBalancerAddress) *string { return v.EipType }).(pulumi.StringPtrOutput)
 }
 
-// Ipv6 address.
+// Ipv6 address
 func (o LoadBalancerZoneMappingLoadBalancerAddressOutput) Ipv6Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMappingLoadBalancerAddress) *string { return v.Ipv6Address }).(pulumi.StringPtrOutput)
 }
@@ -6321,32 +6793,259 @@ func (o RuleRuleConditionSourceIpConfigPtrOutput) Values() pulumi.StringArrayOut
 	}).(pulumi.StringArrayOutput)
 }
 
+type ServerGroupConnectionDrainConfig struct {
+	// Specifies whether to enable connection draining. Valid values:
+	ConnectionDrainEnabled *bool `pulumi:"connectionDrainEnabled"`
+	// The timeout period of connection draining.
+	//
+	// Valid values: `0` to `900`.
+	//
+	// Default value: `300`.
+	ConnectionDrainTimeout *int `pulumi:"connectionDrainTimeout"`
+}
+
+// ServerGroupConnectionDrainConfigInput is an input type that accepts ServerGroupConnectionDrainConfigArgs and ServerGroupConnectionDrainConfigOutput values.
+// You can construct a concrete instance of `ServerGroupConnectionDrainConfigInput` via:
+//
+//	ServerGroupConnectionDrainConfigArgs{...}
+type ServerGroupConnectionDrainConfigInput interface {
+	pulumi.Input
+
+	ToServerGroupConnectionDrainConfigOutput() ServerGroupConnectionDrainConfigOutput
+	ToServerGroupConnectionDrainConfigOutputWithContext(context.Context) ServerGroupConnectionDrainConfigOutput
+}
+
+type ServerGroupConnectionDrainConfigArgs struct {
+	// Specifies whether to enable connection draining. Valid values:
+	ConnectionDrainEnabled pulumi.BoolPtrInput `pulumi:"connectionDrainEnabled"`
+	// The timeout period of connection draining.
+	//
+	// Valid values: `0` to `900`.
+	//
+	// Default value: `300`.
+	ConnectionDrainTimeout pulumi.IntPtrInput `pulumi:"connectionDrainTimeout"`
+}
+
+func (ServerGroupConnectionDrainConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerGroupConnectionDrainConfig)(nil)).Elem()
+}
+
+func (i ServerGroupConnectionDrainConfigArgs) ToServerGroupConnectionDrainConfigOutput() ServerGroupConnectionDrainConfigOutput {
+	return i.ToServerGroupConnectionDrainConfigOutputWithContext(context.Background())
+}
+
+func (i ServerGroupConnectionDrainConfigArgs) ToServerGroupConnectionDrainConfigOutputWithContext(ctx context.Context) ServerGroupConnectionDrainConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupConnectionDrainConfigOutput)
+}
+
+func (i ServerGroupConnectionDrainConfigArgs) ToServerGroupConnectionDrainConfigPtrOutput() ServerGroupConnectionDrainConfigPtrOutput {
+	return i.ToServerGroupConnectionDrainConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServerGroupConnectionDrainConfigArgs) ToServerGroupConnectionDrainConfigPtrOutputWithContext(ctx context.Context) ServerGroupConnectionDrainConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupConnectionDrainConfigOutput).ToServerGroupConnectionDrainConfigPtrOutputWithContext(ctx)
+}
+
+// ServerGroupConnectionDrainConfigPtrInput is an input type that accepts ServerGroupConnectionDrainConfigArgs, ServerGroupConnectionDrainConfigPtr and ServerGroupConnectionDrainConfigPtrOutput values.
+// You can construct a concrete instance of `ServerGroupConnectionDrainConfigPtrInput` via:
+//
+//	        ServerGroupConnectionDrainConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServerGroupConnectionDrainConfigPtrInput interface {
+	pulumi.Input
+
+	ToServerGroupConnectionDrainConfigPtrOutput() ServerGroupConnectionDrainConfigPtrOutput
+	ToServerGroupConnectionDrainConfigPtrOutputWithContext(context.Context) ServerGroupConnectionDrainConfigPtrOutput
+}
+
+type serverGroupConnectionDrainConfigPtrType ServerGroupConnectionDrainConfigArgs
+
+func ServerGroupConnectionDrainConfigPtr(v *ServerGroupConnectionDrainConfigArgs) ServerGroupConnectionDrainConfigPtrInput {
+	return (*serverGroupConnectionDrainConfigPtrType)(v)
+}
+
+func (*serverGroupConnectionDrainConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerGroupConnectionDrainConfig)(nil)).Elem()
+}
+
+func (i *serverGroupConnectionDrainConfigPtrType) ToServerGroupConnectionDrainConfigPtrOutput() ServerGroupConnectionDrainConfigPtrOutput {
+	return i.ToServerGroupConnectionDrainConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serverGroupConnectionDrainConfigPtrType) ToServerGroupConnectionDrainConfigPtrOutputWithContext(ctx context.Context) ServerGroupConnectionDrainConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupConnectionDrainConfigPtrOutput)
+}
+
+type ServerGroupConnectionDrainConfigOutput struct{ *pulumi.OutputState }
+
+func (ServerGroupConnectionDrainConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerGroupConnectionDrainConfig)(nil)).Elem()
+}
+
+func (o ServerGroupConnectionDrainConfigOutput) ToServerGroupConnectionDrainConfigOutput() ServerGroupConnectionDrainConfigOutput {
+	return o
+}
+
+func (o ServerGroupConnectionDrainConfigOutput) ToServerGroupConnectionDrainConfigOutputWithContext(ctx context.Context) ServerGroupConnectionDrainConfigOutput {
+	return o
+}
+
+func (o ServerGroupConnectionDrainConfigOutput) ToServerGroupConnectionDrainConfigPtrOutput() ServerGroupConnectionDrainConfigPtrOutput {
+	return o.ToServerGroupConnectionDrainConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServerGroupConnectionDrainConfigOutput) ToServerGroupConnectionDrainConfigPtrOutputWithContext(ctx context.Context) ServerGroupConnectionDrainConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerGroupConnectionDrainConfig) *ServerGroupConnectionDrainConfig {
+		return &v
+	}).(ServerGroupConnectionDrainConfigPtrOutput)
+}
+
+// Specifies whether to enable connection draining. Valid values:
+func (o ServerGroupConnectionDrainConfigOutput) ConnectionDrainEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServerGroupConnectionDrainConfig) *bool { return v.ConnectionDrainEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The timeout period of connection draining.
+//
+// Valid values: `0` to `900`.
+//
+// Default value: `300`.
+func (o ServerGroupConnectionDrainConfigOutput) ConnectionDrainTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServerGroupConnectionDrainConfig) *int { return v.ConnectionDrainTimeout }).(pulumi.IntPtrOutput)
+}
+
+type ServerGroupConnectionDrainConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServerGroupConnectionDrainConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerGroupConnectionDrainConfig)(nil)).Elem()
+}
+
+func (o ServerGroupConnectionDrainConfigPtrOutput) ToServerGroupConnectionDrainConfigPtrOutput() ServerGroupConnectionDrainConfigPtrOutput {
+	return o
+}
+
+func (o ServerGroupConnectionDrainConfigPtrOutput) ToServerGroupConnectionDrainConfigPtrOutputWithContext(ctx context.Context) ServerGroupConnectionDrainConfigPtrOutput {
+	return o
+}
+
+func (o ServerGroupConnectionDrainConfigPtrOutput) Elem() ServerGroupConnectionDrainConfigOutput {
+	return o.ApplyT(func(v *ServerGroupConnectionDrainConfig) ServerGroupConnectionDrainConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ServerGroupConnectionDrainConfig
+		return ret
+	}).(ServerGroupConnectionDrainConfigOutput)
+}
+
+// Specifies whether to enable connection draining. Valid values:
+func (o ServerGroupConnectionDrainConfigPtrOutput) ConnectionDrainEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServerGroupConnectionDrainConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionDrainEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The timeout period of connection draining.
+//
+// Valid values: `0` to `900`.
+//
+// Default value: `300`.
+func (o ServerGroupConnectionDrainConfigPtrOutput) ConnectionDrainTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServerGroupConnectionDrainConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionDrainTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
 type ServerGroupHealthCheckConfig struct {
-	// The HTTP status codes that are used to indicate whether the backend server passes the health check. Valid values:
-	// - If `healthCheckProtocol` is set to `HTTP` or `HTTPS`. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`.
-	// - If `healthCheckProtocol` is set to `gRPC`. Valid values: `0` to `99`. Default value: `0`.
+	// The status code for a successful health check
 	HealthCheckCodes []string `pulumi:"healthCheckCodes"`
-	// The backend port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`. A value of 0 indicates that a backend server port is used for health checks.
+	// The backend port that is used for health checks.
+	//
+	// Valid values: `0` to `65535`.
+	//
+	// If you set the value to `0`, the backend port is used for health checks.
+	//
+	// > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
 	HealthCheckConnectPort *int `pulumi:"healthCheckConnectPort"`
-	// Specifies whether to enable the health check feature. Valid values: `true`, `false`.
+	// Specifies whether to enable the health check feature. Valid values:
 	HealthCheckEnabled bool `pulumi:"healthCheckEnabled"`
 	// The domain name that is used for health checks.
+	//
+	// *   **Backend Server Internal IP** (default): Use the internal IP address of backend servers as the health check domain name.
+	//
+	// *   **Custom Domain Name**: Enter a domain name.
+	//
+	// *   The domain name must be 1 to 80 characters in length.
+	// *   The domain name can contain lowercase letters, digits, hyphens (-), and periods (.).
+	// *   The domain name must contain at least one period (.) but cannot start or end with a period (.).
+	// *   The rightmost domain label of the domain name can contain only letters, and cannot contain digits or hyphens (-).
+	// *   The domain name cannot start or end with a hyphen (-).
+	//
+	// > **NOTE:**   This parameter takes effect only if `HealthCheckProtocol` is set to `HTTP`, `HTTPS`, or `gRPC`.
 	HealthCheckHost *string `pulumi:"healthCheckHost"`
-	// The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0` and `HTTP1.1`. **NOTE:** This parameter takes effect only when `healthCheckProtocol` is set to `HTTP` or `HTTPS`.
+	// The HTTP version that is used for health checks. Valid values:
+	//
+	// *   **HTTP1.0**
+	//
+	// *   **HTTP1.1**
+	//
+	// > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to true and `HealthCheckProtocol` to `HTTP` or `HTTPS`.
 	HealthCheckHttpVersion *string `pulumi:"healthCheckHttpVersion"`
-	// The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
+	// The interval at which health checks are performed. Unit: seconds.
+	//
+	// Valid values: `1` to `50`.
+	//
+	// > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
 	HealthCheckInterval *int `pulumi:"healthCheckInterval"`
-	// The HTTP method that is used for health checks. Default value: `GET`. Valid values: `GET`, `POST`, `HEAD`. **NOTE:** This parameter takes effect only when `healthCheckProtocol` is set to `HTTP`, `HTTPS`, or `gRPC`. From version 1.215.0, `healthCheckMethod` can be set to `POST`.
+	// The HTTP method that is used for health checks. Valid values:
+	//
+	// *   `GET`: If the length of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
+	//
+	// *   `POST`: gRPC health checks use the POST method by default.
+	//
+	// *   `HEAD`: HTTP and HTTPS health checks use the HEAD method by default.
+	//
+	// > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to true and `HealthCheckProtocol` to `HTTP`, `HTTPS`, or `gRPC`.
 	HealthCheckMethod *string `pulumi:"healthCheckMethod"`
-	// The path that is used for health checks. **NOTE:** This parameter takes effect only when `healthCheckProtocol` is set to `HTTP` or `HTTPS`.
+	// The URL that is used for health checks.
+	//
+	// The URL must be 1 to 80 characters in length, and can contain letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : ' , +`. The URL must start with a forward slash (`/`).
+	//
+	// > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true` and `HealthCheckProtocol` to `HTTP` or `HTTPS`.
 	HealthCheckPath *string `pulumi:"healthCheckPath"`
-	// The protocol that is used for health checks. Valid values: `HTTP`, `HTTPS`, `TCP` and `gRPC`.
+	// The protocol that is used for health checks. Valid values:
+	//
+	// - `HTTP`: HTTP health checks simulate browser behaviors by sending HEAD or GET requests to probe the availability of backend servers.
+	// - `HTTPS`: HTTPS health checks simulate browser behaviors by sending HEAD or GET requests to probe the availability of backend servers. HTTPS provides higher security than HTTP because HTTPS supports data encryption.
+	// - `TCP`: TCP health checks send TCP SYN packets to a backend server to probe the availability of backend servers.
+	// - `gRPC`: gRPC health checks send POST or GET requests to a backend server to check whether the backend server is healthy.
 	HealthCheckProtocol *string `pulumi:"healthCheckProtocol"`
-	// The timeout period for a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If the value of `healthCheckTimeout` is smaller than the value of `healthCheckInterval`, the value of `healthCheckTimeout` is ignored and the value of `healthCheckInterval` is used.
+	// The timeout period of a health check response. If a backend ECS instance does not respond within the specified timeout period, the ECS instance fails the health check. Unit: seconds.
+	//
+	// Valid values: `1` to `300`.
+	//
+	// > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
 	HealthCheckTimeout *int `pulumi:"healthCheckTimeout"`
-	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
+	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health check status of the backend server changes from `fail` to `success`.
+	//
+	// Valid values: `2` to `10`.
+	//
+	// Default value: `3`.
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
-	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
+	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health check status of the backend server changes from `success` to `fail`.
+	//
+	// Valid values: `2` to `10`.
+	//
+	// Default value: `3`.
 	UnhealthyThreshold *int `pulumi:"unhealthyThreshold"`
 }
 
@@ -6362,31 +7061,86 @@ type ServerGroupHealthCheckConfigInput interface {
 }
 
 type ServerGroupHealthCheckConfigArgs struct {
-	// The HTTP status codes that are used to indicate whether the backend server passes the health check. Valid values:
-	// - If `healthCheckProtocol` is set to `HTTP` or `HTTPS`. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`.
-	// - If `healthCheckProtocol` is set to `gRPC`. Valid values: `0` to `99`. Default value: `0`.
+	// The status code for a successful health check
 	HealthCheckCodes pulumi.StringArrayInput `pulumi:"healthCheckCodes"`
-	// The backend port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`. A value of 0 indicates that a backend server port is used for health checks.
+	// The backend port that is used for health checks.
+	//
+	// Valid values: `0` to `65535`.
+	//
+	// If you set the value to `0`, the backend port is used for health checks.
+	//
+	// > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
 	HealthCheckConnectPort pulumi.IntPtrInput `pulumi:"healthCheckConnectPort"`
-	// Specifies whether to enable the health check feature. Valid values: `true`, `false`.
+	// Specifies whether to enable the health check feature. Valid values:
 	HealthCheckEnabled pulumi.BoolInput `pulumi:"healthCheckEnabled"`
 	// The domain name that is used for health checks.
+	//
+	// *   **Backend Server Internal IP** (default): Use the internal IP address of backend servers as the health check domain name.
+	//
+	// *   **Custom Domain Name**: Enter a domain name.
+	//
+	// *   The domain name must be 1 to 80 characters in length.
+	// *   The domain name can contain lowercase letters, digits, hyphens (-), and periods (.).
+	// *   The domain name must contain at least one period (.) but cannot start or end with a period (.).
+	// *   The rightmost domain label of the domain name can contain only letters, and cannot contain digits or hyphens (-).
+	// *   The domain name cannot start or end with a hyphen (-).
+	//
+	// > **NOTE:**   This parameter takes effect only if `HealthCheckProtocol` is set to `HTTP`, `HTTPS`, or `gRPC`.
 	HealthCheckHost pulumi.StringPtrInput `pulumi:"healthCheckHost"`
-	// The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0` and `HTTP1.1`. **NOTE:** This parameter takes effect only when `healthCheckProtocol` is set to `HTTP` or `HTTPS`.
+	// The HTTP version that is used for health checks. Valid values:
+	//
+	// *   **HTTP1.0**
+	//
+	// *   **HTTP1.1**
+	//
+	// > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to true and `HealthCheckProtocol` to `HTTP` or `HTTPS`.
 	HealthCheckHttpVersion pulumi.StringPtrInput `pulumi:"healthCheckHttpVersion"`
-	// The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
+	// The interval at which health checks are performed. Unit: seconds.
+	//
+	// Valid values: `1` to `50`.
+	//
+	// > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
 	HealthCheckInterval pulumi.IntPtrInput `pulumi:"healthCheckInterval"`
-	// The HTTP method that is used for health checks. Default value: `GET`. Valid values: `GET`, `POST`, `HEAD`. **NOTE:** This parameter takes effect only when `healthCheckProtocol` is set to `HTTP`, `HTTPS`, or `gRPC`. From version 1.215.0, `healthCheckMethod` can be set to `POST`.
+	// The HTTP method that is used for health checks. Valid values:
+	//
+	// *   `GET`: If the length of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
+	//
+	// *   `POST`: gRPC health checks use the POST method by default.
+	//
+	// *   `HEAD`: HTTP and HTTPS health checks use the HEAD method by default.
+	//
+	// > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to true and `HealthCheckProtocol` to `HTTP`, `HTTPS`, or `gRPC`.
 	HealthCheckMethod pulumi.StringPtrInput `pulumi:"healthCheckMethod"`
-	// The path that is used for health checks. **NOTE:** This parameter takes effect only when `healthCheckProtocol` is set to `HTTP` or `HTTPS`.
+	// The URL that is used for health checks.
+	//
+	// The URL must be 1 to 80 characters in length, and can contain letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : ' , +`. The URL must start with a forward slash (`/`).
+	//
+	// > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true` and `HealthCheckProtocol` to `HTTP` or `HTTPS`.
 	HealthCheckPath pulumi.StringPtrInput `pulumi:"healthCheckPath"`
-	// The protocol that is used for health checks. Valid values: `HTTP`, `HTTPS`, `TCP` and `gRPC`.
+	// The protocol that is used for health checks. Valid values:
+	//
+	// - `HTTP`: HTTP health checks simulate browser behaviors by sending HEAD or GET requests to probe the availability of backend servers.
+	// - `HTTPS`: HTTPS health checks simulate browser behaviors by sending HEAD or GET requests to probe the availability of backend servers. HTTPS provides higher security than HTTP because HTTPS supports data encryption.
+	// - `TCP`: TCP health checks send TCP SYN packets to a backend server to probe the availability of backend servers.
+	// - `gRPC`: gRPC health checks send POST or GET requests to a backend server to check whether the backend server is healthy.
 	HealthCheckProtocol pulumi.StringPtrInput `pulumi:"healthCheckProtocol"`
-	// The timeout period for a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If the value of `healthCheckTimeout` is smaller than the value of `healthCheckInterval`, the value of `healthCheckTimeout` is ignored and the value of `healthCheckInterval` is used.
+	// The timeout period of a health check response. If a backend ECS instance does not respond within the specified timeout period, the ECS instance fails the health check. Unit: seconds.
+	//
+	// Valid values: `1` to `300`.
+	//
+	// > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
 	HealthCheckTimeout pulumi.IntPtrInput `pulumi:"healthCheckTimeout"`
-	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
+	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health check status of the backend server changes from `fail` to `success`.
+	//
+	// Valid values: `2` to `10`.
+	//
+	// Default value: `3`.
 	HealthyThreshold pulumi.IntPtrInput `pulumi:"healthyThreshold"`
-	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
+	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health check status of the backend server changes from `success` to `fail`.
+	//
+	// Valid values: `2` to `10`.
+	//
+	// Default value: `3`.
 	UnhealthyThreshold pulumi.IntPtrInput `pulumi:"unhealthyThreshold"`
 }
 
@@ -6467,64 +7221,119 @@ func (o ServerGroupHealthCheckConfigOutput) ToServerGroupHealthCheckConfigPtrOut
 	}).(ServerGroupHealthCheckConfigPtrOutput)
 }
 
-// The HTTP status codes that are used to indicate whether the backend server passes the health check. Valid values:
-// - If `healthCheckProtocol` is set to `HTTP` or `HTTPS`. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`.
-// - If `healthCheckProtocol` is set to `gRPC`. Valid values: `0` to `99`. Default value: `0`.
+// The status code for a successful health check
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckCodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) []string { return v.HealthCheckCodes }).(pulumi.StringArrayOutput)
 }
 
-// The backend port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`. A value of 0 indicates that a backend server port is used for health checks.
+// The backend port that is used for health checks.
+//
+// Valid values: `0` to `65535`.
+//
+// If you set the value to `0`, the backend port is used for health checks.
+//
+// > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckConnectPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *int { return v.HealthCheckConnectPort }).(pulumi.IntPtrOutput)
 }
 
-// Specifies whether to enable the health check feature. Valid values: `true`, `false`.
+// Specifies whether to enable the health check feature. Valid values:
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) bool { return v.HealthCheckEnabled }).(pulumi.BoolOutput)
 }
 
 // The domain name that is used for health checks.
+//
+// *   **Backend Server Internal IP** (default): Use the internal IP address of backend servers as the health check domain name.
+//
+// *   **Custom Domain Name**: Enter a domain name.
+//
+// *   The domain name must be 1 to 80 characters in length.
+// *   The domain name can contain lowercase letters, digits, hyphens (-), and periods (.).
+// *   The domain name must contain at least one period (.) but cannot start or end with a period (.).
+// *   The rightmost domain label of the domain name can contain only letters, and cannot contain digits or hyphens (-).
+// *   The domain name cannot start or end with a hyphen (-).
+//
+// > **NOTE:**   This parameter takes effect only if `HealthCheckProtocol` is set to `HTTP`, `HTTPS`, or `gRPC`.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckHost() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *string { return v.HealthCheckHost }).(pulumi.StringPtrOutput)
 }
 
-// The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0` and `HTTP1.1`. **NOTE:** This parameter takes effect only when `healthCheckProtocol` is set to `HTTP` or `HTTPS`.
+// The HTTP version that is used for health checks. Valid values:
+//
+// *   **HTTP1.0**
+//
+// *   **HTTP1.1**
+//
+// > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to true and `HealthCheckProtocol` to `HTTP` or `HTTPS`.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckHttpVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *string { return v.HealthCheckHttpVersion }).(pulumi.StringPtrOutput)
 }
 
-// The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
+// The interval at which health checks are performed. Unit: seconds.
+//
+// Valid values: `1` to `50`.
+//
+// > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *int { return v.HealthCheckInterval }).(pulumi.IntPtrOutput)
 }
 
-// The HTTP method that is used for health checks. Default value: `GET`. Valid values: `GET`, `POST`, `HEAD`. **NOTE:** This parameter takes effect only when `healthCheckProtocol` is set to `HTTP`, `HTTPS`, or `gRPC`. From version 1.215.0, `healthCheckMethod` can be set to `POST`.
+// The HTTP method that is used for health checks. Valid values:
+//
+// *   `GET`: If the length of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
+//
+// *   `POST`: gRPC health checks use the POST method by default.
+//
+// *   `HEAD`: HTTP and HTTPS health checks use the HEAD method by default.
+//
+// > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to true and `HealthCheckProtocol` to `HTTP`, `HTTPS`, or `gRPC`.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *string { return v.HealthCheckMethod }).(pulumi.StringPtrOutput)
 }
 
-// The path that is used for health checks. **NOTE:** This parameter takes effect only when `healthCheckProtocol` is set to `HTTP` or `HTTPS`.
+// The URL that is used for health checks.
+//
+// The URL must be 1 to 80 characters in length, and can contain letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : ' , +`. The URL must start with a forward slash (`/`).
+//
+// > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true` and `HealthCheckProtocol` to `HTTP` or `HTTPS`.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *string { return v.HealthCheckPath }).(pulumi.StringPtrOutput)
 }
 
-// The protocol that is used for health checks. Valid values: `HTTP`, `HTTPS`, `TCP` and `gRPC`.
+// The protocol that is used for health checks. Valid values:
+//
+// - `HTTP`: HTTP health checks simulate browser behaviors by sending HEAD or GET requests to probe the availability of backend servers.
+// - `HTTPS`: HTTPS health checks simulate browser behaviors by sending HEAD or GET requests to probe the availability of backend servers. HTTPS provides higher security than HTTP because HTTPS supports data encryption.
+// - `TCP`: TCP health checks send TCP SYN packets to a backend server to probe the availability of backend servers.
+// - `gRPC`: gRPC health checks send POST or GET requests to a backend server to check whether the backend server is healthy.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *string { return v.HealthCheckProtocol }).(pulumi.StringPtrOutput)
 }
 
-// The timeout period for a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If the value of `healthCheckTimeout` is smaller than the value of `healthCheckInterval`, the value of `healthCheckTimeout` is ignored and the value of `healthCheckInterval` is used.
+// The timeout period of a health check response. If a backend ECS instance does not respond within the specified timeout period, the ECS instance fails the health check. Unit: seconds.
+//
+// Valid values: `1` to `300`.
+//
+// > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *int { return v.HealthCheckTimeout }).(pulumi.IntPtrOutput)
 }
 
-// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
+// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health check status of the backend server changes from `fail` to `success`.
+//
+// Valid values: `2` to `10`.
+//
+// Default value: `3`.
 func (o ServerGroupHealthCheckConfigOutput) HealthyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *int { return v.HealthyThreshold }).(pulumi.IntPtrOutput)
 }
 
-// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
+// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health check status of the backend server changes from `success` to `fail`.
+//
+// Valid values: `2` to `10`.
+//
+// Default value: `3`.
 func (o ServerGroupHealthCheckConfigOutput) UnhealthyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *int { return v.UnhealthyThreshold }).(pulumi.IntPtrOutput)
 }
@@ -6553,9 +7362,7 @@ func (o ServerGroupHealthCheckConfigPtrOutput) Elem() ServerGroupHealthCheckConf
 	}).(ServerGroupHealthCheckConfigOutput)
 }
 
-// The HTTP status codes that are used to indicate whether the backend server passes the health check. Valid values:
-// - If `healthCheckProtocol` is set to `HTTP` or `HTTPS`. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`.
-// - If `healthCheckProtocol` is set to `gRPC`. Valid values: `0` to `99`. Default value: `0`.
+// The status code for a successful health check
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckCodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) []string {
 		if v == nil {
@@ -6565,7 +7372,13 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckCodes() pulumi.StringA
 	}).(pulumi.StringArrayOutput)
 }
 
-// The backend port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`. A value of 0 indicates that a backend server port is used for health checks.
+// The backend port that is used for health checks.
+//
+// Valid values: `0` to `65535`.
+//
+// If you set the value to `0`, the backend port is used for health checks.
+//
+// > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckConnectPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *int {
 		if v == nil {
@@ -6575,7 +7388,7 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckConnectPort() pulumi.I
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies whether to enable the health check feature. Valid values: `true`, `false`.
+// Specifies whether to enable the health check feature. Valid values:
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *bool {
 		if v == nil {
@@ -6586,6 +7399,18 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckEnabled() pulumi.BoolP
 }
 
 // The domain name that is used for health checks.
+//
+// *   **Backend Server Internal IP** (default): Use the internal IP address of backend servers as the health check domain name.
+//
+// *   **Custom Domain Name**: Enter a domain name.
+//
+// *   The domain name must be 1 to 80 characters in length.
+// *   The domain name can contain lowercase letters, digits, hyphens (-), and periods (.).
+// *   The domain name must contain at least one period (.) but cannot start or end with a period (.).
+// *   The rightmost domain label of the domain name can contain only letters, and cannot contain digits or hyphens (-).
+// *   The domain name cannot start or end with a hyphen (-).
+//
+// > **NOTE:**   This parameter takes effect only if `HealthCheckProtocol` is set to `HTTP`, `HTTPS`, or `gRPC`.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckHost() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *string {
 		if v == nil {
@@ -6595,7 +7420,13 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckHost() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0` and `HTTP1.1`. **NOTE:** This parameter takes effect only when `healthCheckProtocol` is set to `HTTP` or `HTTPS`.
+// The HTTP version that is used for health checks. Valid values:
+//
+// *   **HTTP1.0**
+//
+// *   **HTTP1.1**
+//
+// > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to true and `HealthCheckProtocol` to `HTTP` or `HTTPS`.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckHttpVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *string {
 		if v == nil {
@@ -6605,7 +7436,11 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckHttpVersion() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
+// The interval at which health checks are performed. Unit: seconds.
+//
+// Valid values: `1` to `50`.
+//
+// > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *int {
 		if v == nil {
@@ -6615,7 +7450,15 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckInterval() pulumi.IntP
 	}).(pulumi.IntPtrOutput)
 }
 
-// The HTTP method that is used for health checks. Default value: `GET`. Valid values: `GET`, `POST`, `HEAD`. **NOTE:** This parameter takes effect only when `healthCheckProtocol` is set to `HTTP`, `HTTPS`, or `gRPC`. From version 1.215.0, `healthCheckMethod` can be set to `POST`.
+// The HTTP method that is used for health checks. Valid values:
+//
+// *   `GET`: If the length of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
+//
+// *   `POST`: gRPC health checks use the POST method by default.
+//
+// *   `HEAD`: HTTP and HTTPS health checks use the HEAD method by default.
+//
+// > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to true and `HealthCheckProtocol` to `HTTP`, `HTTPS`, or `gRPC`.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *string {
 		if v == nil {
@@ -6625,7 +7468,11 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckMethod() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// The path that is used for health checks. **NOTE:** This parameter takes effect only when `healthCheckProtocol` is set to `HTTP` or `HTTPS`.
+// The URL that is used for health checks.
+//
+// The URL must be 1 to 80 characters in length, and can contain letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : ' , +`. The URL must start with a forward slash (`/`).
+//
+// > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true` and `HealthCheckProtocol` to `HTTP` or `HTTPS`.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *string {
 		if v == nil {
@@ -6635,7 +7482,12 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckPath() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// The protocol that is used for health checks. Valid values: `HTTP`, `HTTPS`, `TCP` and `gRPC`.
+// The protocol that is used for health checks. Valid values:
+//
+// - `HTTP`: HTTP health checks simulate browser behaviors by sending HEAD or GET requests to probe the availability of backend servers.
+// - `HTTPS`: HTTPS health checks simulate browser behaviors by sending HEAD or GET requests to probe the availability of backend servers. HTTPS provides higher security than HTTP because HTTPS supports data encryption.
+// - `TCP`: TCP health checks send TCP SYN packets to a backend server to probe the availability of backend servers.
+// - `gRPC`: gRPC health checks send POST or GET requests to a backend server to check whether the backend server is healthy.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *string {
 		if v == nil {
@@ -6645,7 +7497,11 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckProtocol() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// The timeout period for a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If the value of `healthCheckTimeout` is smaller than the value of `healthCheckInterval`, the value of `healthCheckTimeout` is ignored and the value of `healthCheckInterval` is used.
+// The timeout period of a health check response. If a backend ECS instance does not respond within the specified timeout period, the ECS instance fails the health check. Unit: seconds.
+//
+// Valid values: `1` to `300`.
+//
+// > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *int {
 		if v == nil {
@@ -6655,7 +7511,11 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckTimeout() pulumi.IntPt
 	}).(pulumi.IntPtrOutput)
 }
 
-// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
+// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health check status of the backend server changes from `fail` to `success`.
+//
+// Valid values: `2` to `10`.
+//
+// Default value: `3`.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *int {
 		if v == nil {
@@ -6665,7 +7525,11 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthyThreshold() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
-// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
+// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health check status of the backend server changes from `success` to `fail`.
+//
+// Valid values: `2` to `10`.
+//
+// Default value: `3`.
 func (o ServerGroupHealthCheckConfigPtrOutput) UnhealthyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *int {
 		if v == nil {
@@ -6676,29 +7540,41 @@ func (o ServerGroupHealthCheckConfigPtrOutput) UnhealthyThreshold() pulumi.IntPt
 }
 
 type ServerGroupServer struct {
-	// The description of the backend server.
+	// The description of the backend server. The description must be 2 to 256 characters in length, and cannot start with http:// or https://.
 	Description *string `pulumi:"description"`
-	// The port used by the backend server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `serverType` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `serverType` to `Fc`.
+	// The port that is used by the backend server. Valid values: `1` to `65535`. You can specify at most 200 servers in each call.
+	//
+	// > **NOTE:**   This parameter is required if you set `ServerType` to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to set this parameter if `ServerType` is set to `Fc`.
 	Port *int `pulumi:"port"`
-	// Specifies whether to enable the remote IP address feature. You can specify up to 40 servers in each call. **Note:** If `serverType` is set to `Ip`, this parameter is available.
+	// Specifies whether to enable the remote IP feature. You can specify at most 200 servers in each call. Default values:
 	RemoteIpEnabled *bool `pulumi:"remoteIpEnabled"`
-	// The ID of the backend server.
-	// - If `serverGroupType` is set to `Instance`, set the parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
-	// - If `serverGroupType` is set to `Ip`, set the parameter to an IP address specified in the server group.
-	// - If `serverGroupType` is set to `Fc`, set the parameter to the Alibaba Cloud Resource Name (ARN) of a function specified in the server group.
+	// The ID of the server group.
+	ServerGroupId *string `pulumi:"serverGroupId"`
+	// The ID of the backend server. You can specify at most 200 servers in each call.
+	//
+	// *   If the server group is of the `Instance` type, set ServerId to the ID of a resource of the `Ecs`, `Eni`, or `Eci` type.
+	//
+	// *   If the server group is of the `Ip` type, set ServerId to IP addresses.
+	//
+	// > **NOTE:**   You cannot perform this operation on a server group of the Function Compute type. You can call the [ListServerGroups](https://www.alibabacloud.com/help/en/doc-detail/213627.html) operation to query the type of server groups.
 	ServerId string `pulumi:"serverId"`
-	// The IP address of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. **Note:** If `serverGroupType` is set to `Fc`, you do not need to configure parameters, otherwise this attribute is required. If `serverGroupType` is set to `Ip`, the value of this property is the same as the `serverId` value.
+	// The IP address of the backend server. You can specify at most 200 servers in each call.
+	//
+	// > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
 	ServerIp *string `pulumi:"serverIp"`
-	// The type of the server. The type of the server. Valid values:
-	// - `Ecs`: an ECS instance.
-	// - `Eni`: an ENI.
-	// - `Eci`: an elastic container instance.
-	// - `Ip`(Available since v1.194.0): an IP address.
-	// - `Fc`(Available since v1.194.0): a function.
+	// The type of the backend server. You can specify at most 200 servers in each call. Default values:
+	//
+	// - `Ecs`: Elastic Compute Service (ECS) instance
+	// - `Eni`: elastic network interface (ENI)
+	// - `Eci`: elastic container instance
+	// - `Ip`: IP address
+	// - `Fc`: Function Compute
 	ServerType string `pulumi:"serverType"`
-	// The status of the backend server.
+	// The status of the resource
 	Status *string `pulumi:"status"`
-	// The weight of the server. Default value: `100`. Valid values: `0` to `100`. If the value is set to `0`, no requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `serverType` to `Fc`.
+	// The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
+	//
+	// > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
 	Weight *int `pulumi:"weight"`
 }
 
@@ -6714,29 +7590,41 @@ type ServerGroupServerInput interface {
 }
 
 type ServerGroupServerArgs struct {
-	// The description of the backend server.
+	// The description of the backend server. The description must be 2 to 256 characters in length, and cannot start with http:// or https://.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The port used by the backend server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `serverType` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `serverType` to `Fc`.
+	// The port that is used by the backend server. Valid values: `1` to `65535`. You can specify at most 200 servers in each call.
+	//
+	// > **NOTE:**   This parameter is required if you set `ServerType` to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to set this parameter if `ServerType` is set to `Fc`.
 	Port pulumi.IntPtrInput `pulumi:"port"`
-	// Specifies whether to enable the remote IP address feature. You can specify up to 40 servers in each call. **Note:** If `serverType` is set to `Ip`, this parameter is available.
+	// Specifies whether to enable the remote IP feature. You can specify at most 200 servers in each call. Default values:
 	RemoteIpEnabled pulumi.BoolPtrInput `pulumi:"remoteIpEnabled"`
-	// The ID of the backend server.
-	// - If `serverGroupType` is set to `Instance`, set the parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
-	// - If `serverGroupType` is set to `Ip`, set the parameter to an IP address specified in the server group.
-	// - If `serverGroupType` is set to `Fc`, set the parameter to the Alibaba Cloud Resource Name (ARN) of a function specified in the server group.
+	// The ID of the server group.
+	ServerGroupId pulumi.StringPtrInput `pulumi:"serverGroupId"`
+	// The ID of the backend server. You can specify at most 200 servers in each call.
+	//
+	// *   If the server group is of the `Instance` type, set ServerId to the ID of a resource of the `Ecs`, `Eni`, or `Eci` type.
+	//
+	// *   If the server group is of the `Ip` type, set ServerId to IP addresses.
+	//
+	// > **NOTE:**   You cannot perform this operation on a server group of the Function Compute type. You can call the [ListServerGroups](https://www.alibabacloud.com/help/en/doc-detail/213627.html) operation to query the type of server groups.
 	ServerId pulumi.StringInput `pulumi:"serverId"`
-	// The IP address of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. **Note:** If `serverGroupType` is set to `Fc`, you do not need to configure parameters, otherwise this attribute is required. If `serverGroupType` is set to `Ip`, the value of this property is the same as the `serverId` value.
+	// The IP address of the backend server. You can specify at most 200 servers in each call.
+	//
+	// > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
 	ServerIp pulumi.StringPtrInput `pulumi:"serverIp"`
-	// The type of the server. The type of the server. Valid values:
-	// - `Ecs`: an ECS instance.
-	// - `Eni`: an ENI.
-	// - `Eci`: an elastic container instance.
-	// - `Ip`(Available since v1.194.0): an IP address.
-	// - `Fc`(Available since v1.194.0): a function.
+	// The type of the backend server. You can specify at most 200 servers in each call. Default values:
+	//
+	// - `Ecs`: Elastic Compute Service (ECS) instance
+	// - `Eni`: elastic network interface (ENI)
+	// - `Eci`: elastic container instance
+	// - `Ip`: IP address
+	// - `Fc`: Function Compute
 	ServerType pulumi.StringInput `pulumi:"serverType"`
-	// The status of the backend server.
+	// The status of the resource
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// The weight of the server. Default value: `100`. Valid values: `0` to `100`. If the value is set to `0`, no requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `serverType` to `Fc`.
+	// The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
+	//
+	// > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
 	Weight pulumi.IntPtrInput `pulumi:"weight"`
 }
 
@@ -6791,50 +7679,65 @@ func (o ServerGroupServerOutput) ToServerGroupServerOutputWithContext(ctx contex
 	return o
 }
 
-// The description of the backend server.
+// The description of the backend server. The description must be 2 to 256 characters in length, and cannot start with http:// or https://.
 func (o ServerGroupServerOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupServer) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The port used by the backend server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `serverType` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `serverType` to `Fc`.
+// The port that is used by the backend server. Valid values: `1` to `65535`. You can specify at most 200 servers in each call.
+//
+// > **NOTE:**   This parameter is required if you set `ServerType` to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to set this parameter if `ServerType` is set to `Fc`.
 func (o ServerGroupServerOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupServer) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// Specifies whether to enable the remote IP address feature. You can specify up to 40 servers in each call. **Note:** If `serverType` is set to `Ip`, this parameter is available.
+// Specifies whether to enable the remote IP feature. You can specify at most 200 servers in each call. Default values:
 func (o ServerGroupServerOutput) RemoteIpEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServerGroupServer) *bool { return v.RemoteIpEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The ID of the backend server.
-// - If `serverGroupType` is set to `Instance`, set the parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
-// - If `serverGroupType` is set to `Ip`, set the parameter to an IP address specified in the server group.
-// - If `serverGroupType` is set to `Fc`, set the parameter to the Alibaba Cloud Resource Name (ARN) of a function specified in the server group.
+// The ID of the server group.
+func (o ServerGroupServerOutput) ServerGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerGroupServer) *string { return v.ServerGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the backend server. You can specify at most 200 servers in each call.
+//
+// *   If the server group is of the `Instance` type, set ServerId to the ID of a resource of the `Ecs`, `Eni`, or `Eci` type.
+//
+// *   If the server group is of the `Ip` type, set ServerId to IP addresses.
+//
+// > **NOTE:**   You cannot perform this operation on a server group of the Function Compute type. You can call the [ListServerGroups](https://www.alibabacloud.com/help/en/doc-detail/213627.html) operation to query the type of server groups.
 func (o ServerGroupServerOutput) ServerId() pulumi.StringOutput {
 	return o.ApplyT(func(v ServerGroupServer) string { return v.ServerId }).(pulumi.StringOutput)
 }
 
-// The IP address of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. **Note:** If `serverGroupType` is set to `Fc`, you do not need to configure parameters, otherwise this attribute is required. If `serverGroupType` is set to `Ip`, the value of this property is the same as the `serverId` value.
+// The IP address of the backend server. You can specify at most 200 servers in each call.
+//
+// > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
 func (o ServerGroupServerOutput) ServerIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupServer) *string { return v.ServerIp }).(pulumi.StringPtrOutput)
 }
 
-// The type of the server. The type of the server. Valid values:
-// - `Ecs`: an ECS instance.
-// - `Eni`: an ENI.
-// - `Eci`: an elastic container instance.
-// - `Ip`(Available since v1.194.0): an IP address.
-// - `Fc`(Available since v1.194.0): a function.
+// The type of the backend server. You can specify at most 200 servers in each call. Default values:
+//
+// - `Ecs`: Elastic Compute Service (ECS) instance
+// - `Eni`: elastic network interface (ENI)
+// - `Eci`: elastic container instance
+// - `Ip`: IP address
+// - `Fc`: Function Compute
 func (o ServerGroupServerOutput) ServerType() pulumi.StringOutput {
 	return o.ApplyT(func(v ServerGroupServer) string { return v.ServerType }).(pulumi.StringOutput)
 }
 
-// The status of the backend server.
+// The status of the resource
 func (o ServerGroupServerOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupServer) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// The weight of the server. Default value: `100`. Valid values: `0` to `100`. If the value is set to `0`, no requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `serverType` to `Fc`.
+// The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
+//
+// > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
 func (o ServerGroupServerOutput) Weight() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupServer) *int { return v.Weight }).(pulumi.IntPtrOutput)
 }
@@ -6859,14 +7762,206 @@ func (o ServerGroupServerArrayOutput) Index(i pulumi.IntInput) ServerGroupServer
 	}).(ServerGroupServerOutput)
 }
 
+type ServerGroupSlowStartConfig struct {
+	// The duration of a slow start.
+	//
+	// Valid values: 30 to 900.
+	//
+	// Default value: 30.
+	SlowStartDuration *int `pulumi:"slowStartDuration"`
+	// Indicates whether slow starts are enabled. Valid values:
+	SlowStartEnabled *bool `pulumi:"slowStartEnabled"`
+}
+
+// ServerGroupSlowStartConfigInput is an input type that accepts ServerGroupSlowStartConfigArgs and ServerGroupSlowStartConfigOutput values.
+// You can construct a concrete instance of `ServerGroupSlowStartConfigInput` via:
+//
+//	ServerGroupSlowStartConfigArgs{...}
+type ServerGroupSlowStartConfigInput interface {
+	pulumi.Input
+
+	ToServerGroupSlowStartConfigOutput() ServerGroupSlowStartConfigOutput
+	ToServerGroupSlowStartConfigOutputWithContext(context.Context) ServerGroupSlowStartConfigOutput
+}
+
+type ServerGroupSlowStartConfigArgs struct {
+	// The duration of a slow start.
+	//
+	// Valid values: 30 to 900.
+	//
+	// Default value: 30.
+	SlowStartDuration pulumi.IntPtrInput `pulumi:"slowStartDuration"`
+	// Indicates whether slow starts are enabled. Valid values:
+	SlowStartEnabled pulumi.BoolPtrInput `pulumi:"slowStartEnabled"`
+}
+
+func (ServerGroupSlowStartConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerGroupSlowStartConfig)(nil)).Elem()
+}
+
+func (i ServerGroupSlowStartConfigArgs) ToServerGroupSlowStartConfigOutput() ServerGroupSlowStartConfigOutput {
+	return i.ToServerGroupSlowStartConfigOutputWithContext(context.Background())
+}
+
+func (i ServerGroupSlowStartConfigArgs) ToServerGroupSlowStartConfigOutputWithContext(ctx context.Context) ServerGroupSlowStartConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupSlowStartConfigOutput)
+}
+
+func (i ServerGroupSlowStartConfigArgs) ToServerGroupSlowStartConfigPtrOutput() ServerGroupSlowStartConfigPtrOutput {
+	return i.ToServerGroupSlowStartConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServerGroupSlowStartConfigArgs) ToServerGroupSlowStartConfigPtrOutputWithContext(ctx context.Context) ServerGroupSlowStartConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupSlowStartConfigOutput).ToServerGroupSlowStartConfigPtrOutputWithContext(ctx)
+}
+
+// ServerGroupSlowStartConfigPtrInput is an input type that accepts ServerGroupSlowStartConfigArgs, ServerGroupSlowStartConfigPtr and ServerGroupSlowStartConfigPtrOutput values.
+// You can construct a concrete instance of `ServerGroupSlowStartConfigPtrInput` via:
+//
+//	        ServerGroupSlowStartConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServerGroupSlowStartConfigPtrInput interface {
+	pulumi.Input
+
+	ToServerGroupSlowStartConfigPtrOutput() ServerGroupSlowStartConfigPtrOutput
+	ToServerGroupSlowStartConfigPtrOutputWithContext(context.Context) ServerGroupSlowStartConfigPtrOutput
+}
+
+type serverGroupSlowStartConfigPtrType ServerGroupSlowStartConfigArgs
+
+func ServerGroupSlowStartConfigPtr(v *ServerGroupSlowStartConfigArgs) ServerGroupSlowStartConfigPtrInput {
+	return (*serverGroupSlowStartConfigPtrType)(v)
+}
+
+func (*serverGroupSlowStartConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerGroupSlowStartConfig)(nil)).Elem()
+}
+
+func (i *serverGroupSlowStartConfigPtrType) ToServerGroupSlowStartConfigPtrOutput() ServerGroupSlowStartConfigPtrOutput {
+	return i.ToServerGroupSlowStartConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serverGroupSlowStartConfigPtrType) ToServerGroupSlowStartConfigPtrOutputWithContext(ctx context.Context) ServerGroupSlowStartConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupSlowStartConfigPtrOutput)
+}
+
+type ServerGroupSlowStartConfigOutput struct{ *pulumi.OutputState }
+
+func (ServerGroupSlowStartConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerGroupSlowStartConfig)(nil)).Elem()
+}
+
+func (o ServerGroupSlowStartConfigOutput) ToServerGroupSlowStartConfigOutput() ServerGroupSlowStartConfigOutput {
+	return o
+}
+
+func (o ServerGroupSlowStartConfigOutput) ToServerGroupSlowStartConfigOutputWithContext(ctx context.Context) ServerGroupSlowStartConfigOutput {
+	return o
+}
+
+func (o ServerGroupSlowStartConfigOutput) ToServerGroupSlowStartConfigPtrOutput() ServerGroupSlowStartConfigPtrOutput {
+	return o.ToServerGroupSlowStartConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServerGroupSlowStartConfigOutput) ToServerGroupSlowStartConfigPtrOutputWithContext(ctx context.Context) ServerGroupSlowStartConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerGroupSlowStartConfig) *ServerGroupSlowStartConfig {
+		return &v
+	}).(ServerGroupSlowStartConfigPtrOutput)
+}
+
+// The duration of a slow start.
+//
+// Valid values: 30 to 900.
+//
+// Default value: 30.
+func (o ServerGroupSlowStartConfigOutput) SlowStartDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServerGroupSlowStartConfig) *int { return v.SlowStartDuration }).(pulumi.IntPtrOutput)
+}
+
+// Indicates whether slow starts are enabled. Valid values:
+func (o ServerGroupSlowStartConfigOutput) SlowStartEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServerGroupSlowStartConfig) *bool { return v.SlowStartEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type ServerGroupSlowStartConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServerGroupSlowStartConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerGroupSlowStartConfig)(nil)).Elem()
+}
+
+func (o ServerGroupSlowStartConfigPtrOutput) ToServerGroupSlowStartConfigPtrOutput() ServerGroupSlowStartConfigPtrOutput {
+	return o
+}
+
+func (o ServerGroupSlowStartConfigPtrOutput) ToServerGroupSlowStartConfigPtrOutputWithContext(ctx context.Context) ServerGroupSlowStartConfigPtrOutput {
+	return o
+}
+
+func (o ServerGroupSlowStartConfigPtrOutput) Elem() ServerGroupSlowStartConfigOutput {
+	return o.ApplyT(func(v *ServerGroupSlowStartConfig) ServerGroupSlowStartConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ServerGroupSlowStartConfig
+		return ret
+	}).(ServerGroupSlowStartConfigOutput)
+}
+
+// The duration of a slow start.
+//
+// Valid values: 30 to 900.
+//
+// Default value: 30.
+func (o ServerGroupSlowStartConfigPtrOutput) SlowStartDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServerGroupSlowStartConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SlowStartDuration
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates whether slow starts are enabled. Valid values:
+func (o ServerGroupSlowStartConfigPtrOutput) SlowStartEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServerGroupSlowStartConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SlowStartEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ServerGroupStickySessionConfig struct {
-	// The cookie to be configured on the server. **NOTE:** This parameter takes effect when the `stickySessionEnabled` parameter is set to `true` and the `stickySessionType` parameter is set to `Server`.
+	// The cookie to be configured on the server.
+	//
+	// The cookie must be 1 to 200 characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($).
+	//
+	// > **NOTE:**  This parameter takes effect when the `StickySessionEnabled` parameter is set to `true` and the `StickySessionType` parameter is set to `Server`.
 	Cookie *string `pulumi:"cookie"`
-	// The timeout period of a cookie. Unit: seconds. Default value: `1000`. Valid values: `1` to `86400`. **NOTE:** This parameter takes effect when the `stickySessionEnabled` parameter is set to `true` and the `stickySessionType` parameter is set to `Insert`.
+	// The maximum amount of time to wait before the session cookie expires. Unit: seconds.
+	//
+	// Valid values: `1` to `86400`.
+	//
+	// Default value: `1000`.
+	//
+	// > **NOTE:**   This parameter takes effect only when `StickySessionEnabled` is set to `true` and `StickySessionType` is set to `Insert`.
 	CookieTimeout *int `pulumi:"cookieTimeout"`
-	// Specifies whether to enable session persistence. Default value: `false`. Valid values: `true`, `false`. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
+	// Specifies whether to enable session persistence. Valid values:
 	StickySessionEnabled *bool `pulumi:"stickySessionEnabled"`
-	// The method that is used to handle a cookie. Valid values: `Server`, `Insert`.
+	// The method that is used to handle a cookie. Valid values:
+	//
+	// *   `Insert`: inserts a cookie.
+	//
+	// ALB inserts a cookie (SERVERID) into the first HTTP or HTTPS response packet that is sent to a client. The next request from the client contains this cookie and the listener forwards this request to the recorded backend server.
+	//
+	// *   `Server`: rewrites a cookie.
+	//
+	// When ALB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. Subsequent requests to ALB carry this user-defined cookie, and ALB determines the destination servers of the requests based on the cookies.
+	//
+	// > **NOTE:**  This parameter takes effect when the `StickySessionEnabled` parameter is set to `true` for the server group.
 	StickySessionType *string `pulumi:"stickySessionType"`
 }
 
@@ -6882,13 +7977,33 @@ type ServerGroupStickySessionConfigInput interface {
 }
 
 type ServerGroupStickySessionConfigArgs struct {
-	// The cookie to be configured on the server. **NOTE:** This parameter takes effect when the `stickySessionEnabled` parameter is set to `true` and the `stickySessionType` parameter is set to `Server`.
+	// The cookie to be configured on the server.
+	//
+	// The cookie must be 1 to 200 characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($).
+	//
+	// > **NOTE:**  This parameter takes effect when the `StickySessionEnabled` parameter is set to `true` and the `StickySessionType` parameter is set to `Server`.
 	Cookie pulumi.StringPtrInput `pulumi:"cookie"`
-	// The timeout period of a cookie. Unit: seconds. Default value: `1000`. Valid values: `1` to `86400`. **NOTE:** This parameter takes effect when the `stickySessionEnabled` parameter is set to `true` and the `stickySessionType` parameter is set to `Insert`.
+	// The maximum amount of time to wait before the session cookie expires. Unit: seconds.
+	//
+	// Valid values: `1` to `86400`.
+	//
+	// Default value: `1000`.
+	//
+	// > **NOTE:**   This parameter takes effect only when `StickySessionEnabled` is set to `true` and `StickySessionType` is set to `Insert`.
 	CookieTimeout pulumi.IntPtrInput `pulumi:"cookieTimeout"`
-	// Specifies whether to enable session persistence. Default value: `false`. Valid values: `true`, `false`. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
+	// Specifies whether to enable session persistence. Valid values:
 	StickySessionEnabled pulumi.BoolPtrInput `pulumi:"stickySessionEnabled"`
-	// The method that is used to handle a cookie. Valid values: `Server`, `Insert`.
+	// The method that is used to handle a cookie. Valid values:
+	//
+	// *   `Insert`: inserts a cookie.
+	//
+	// ALB inserts a cookie (SERVERID) into the first HTTP or HTTPS response packet that is sent to a client. The next request from the client contains this cookie and the listener forwards this request to the recorded backend server.
+	//
+	// *   `Server`: rewrites a cookie.
+	//
+	// When ALB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. Subsequent requests to ALB carry this user-defined cookie, and ALB determines the destination servers of the requests based on the cookies.
+	//
+	// > **NOTE:**  This parameter takes effect when the `StickySessionEnabled` parameter is set to `true` for the server group.
 	StickySessionType pulumi.StringPtrInput `pulumi:"stickySessionType"`
 }
 
@@ -6969,22 +8084,42 @@ func (o ServerGroupStickySessionConfigOutput) ToServerGroupStickySessionConfigPt
 	}).(ServerGroupStickySessionConfigPtrOutput)
 }
 
-// The cookie to be configured on the server. **NOTE:** This parameter takes effect when the `stickySessionEnabled` parameter is set to `true` and the `stickySessionType` parameter is set to `Server`.
+// The cookie to be configured on the server.
+//
+// The cookie must be 1 to 200 characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($).
+//
+// > **NOTE:**  This parameter takes effect when the `StickySessionEnabled` parameter is set to `true` and the `StickySessionType` parameter is set to `Server`.
 func (o ServerGroupStickySessionConfigOutput) Cookie() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupStickySessionConfig) *string { return v.Cookie }).(pulumi.StringPtrOutput)
 }
 
-// The timeout period of a cookie. Unit: seconds. Default value: `1000`. Valid values: `1` to `86400`. **NOTE:** This parameter takes effect when the `stickySessionEnabled` parameter is set to `true` and the `stickySessionType` parameter is set to `Insert`.
+// The maximum amount of time to wait before the session cookie expires. Unit: seconds.
+//
+// Valid values: `1` to `86400`.
+//
+// Default value: `1000`.
+//
+// > **NOTE:**   This parameter takes effect only when `StickySessionEnabled` is set to `true` and `StickySessionType` is set to `Insert`.
 func (o ServerGroupStickySessionConfigOutput) CookieTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupStickySessionConfig) *int { return v.CookieTimeout }).(pulumi.IntPtrOutput)
 }
 
-// Specifies whether to enable session persistence. Default value: `false`. Valid values: `true`, `false`. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
+// Specifies whether to enable session persistence. Valid values:
 func (o ServerGroupStickySessionConfigOutput) StickySessionEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServerGroupStickySessionConfig) *bool { return v.StickySessionEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The method that is used to handle a cookie. Valid values: `Server`, `Insert`.
+// The method that is used to handle a cookie. Valid values:
+//
+// *   `Insert`: inserts a cookie.
+//
+// ALB inserts a cookie (SERVERID) into the first HTTP or HTTPS response packet that is sent to a client. The next request from the client contains this cookie and the listener forwards this request to the recorded backend server.
+//
+// *   `Server`: rewrites a cookie.
+//
+// When ALB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. Subsequent requests to ALB carry this user-defined cookie, and ALB determines the destination servers of the requests based on the cookies.
+//
+// > **NOTE:**  This parameter takes effect when the `StickySessionEnabled` parameter is set to `true` for the server group.
 func (o ServerGroupStickySessionConfigOutput) StickySessionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupStickySessionConfig) *string { return v.StickySessionType }).(pulumi.StringPtrOutput)
 }
@@ -7013,7 +8148,11 @@ func (o ServerGroupStickySessionConfigPtrOutput) Elem() ServerGroupStickySession
 	}).(ServerGroupStickySessionConfigOutput)
 }
 
-// The cookie to be configured on the server. **NOTE:** This parameter takes effect when the `stickySessionEnabled` parameter is set to `true` and the `stickySessionType` parameter is set to `Server`.
+// The cookie to be configured on the server.
+//
+// The cookie must be 1 to 200 characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($).
+//
+// > **NOTE:**  This parameter takes effect when the `StickySessionEnabled` parameter is set to `true` and the `StickySessionType` parameter is set to `Server`.
 func (o ServerGroupStickySessionConfigPtrOutput) Cookie() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroupStickySessionConfig) *string {
 		if v == nil {
@@ -7023,7 +8162,13 @@ func (o ServerGroupStickySessionConfigPtrOutput) Cookie() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// The timeout period of a cookie. Unit: seconds. Default value: `1000`. Valid values: `1` to `86400`. **NOTE:** This parameter takes effect when the `stickySessionEnabled` parameter is set to `true` and the `stickySessionType` parameter is set to `Insert`.
+// The maximum amount of time to wait before the session cookie expires. Unit: seconds.
+//
+// Valid values: `1` to `86400`.
+//
+// Default value: `1000`.
+//
+// > **NOTE:**   This parameter takes effect only when `StickySessionEnabled` is set to `true` and `StickySessionType` is set to `Insert`.
 func (o ServerGroupStickySessionConfigPtrOutput) CookieTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupStickySessionConfig) *int {
 		if v == nil {
@@ -7033,7 +8178,7 @@ func (o ServerGroupStickySessionConfigPtrOutput) CookieTimeout() pulumi.IntPtrOu
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies whether to enable session persistence. Default value: `false`. Valid values: `true`, `false`. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
+// Specifies whether to enable session persistence. Valid values:
 func (o ServerGroupStickySessionConfigPtrOutput) StickySessionEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServerGroupStickySessionConfig) *bool {
 		if v == nil {
@@ -7043,13 +8188,179 @@ func (o ServerGroupStickySessionConfigPtrOutput) StickySessionEnabled() pulumi.B
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The method that is used to handle a cookie. Valid values: `Server`, `Insert`.
+// The method that is used to handle a cookie. Valid values:
+//
+// *   `Insert`: inserts a cookie.
+//
+// ALB inserts a cookie (SERVERID) into the first HTTP or HTTPS response packet that is sent to a client. The next request from the client contains this cookie and the listener forwards this request to the recorded backend server.
+//
+// *   `Server`: rewrites a cookie.
+//
+// When ALB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. Subsequent requests to ALB carry this user-defined cookie, and ALB determines the destination servers of the requests based on the cookies.
+//
+// > **NOTE:**  This parameter takes effect when the `StickySessionEnabled` parameter is set to `true` for the server group.
 func (o ServerGroupStickySessionConfigPtrOutput) StickySessionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroupStickySessionConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.StickySessionType
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServerGroupUchConfig struct {
+	// The parameter type. Only QueryString can be filled.
+	Type *string `pulumi:"type"`
+	// Consistency hash parameter value
+	Value *string `pulumi:"value"`
+}
+
+// ServerGroupUchConfigInput is an input type that accepts ServerGroupUchConfigArgs and ServerGroupUchConfigOutput values.
+// You can construct a concrete instance of `ServerGroupUchConfigInput` via:
+//
+//	ServerGroupUchConfigArgs{...}
+type ServerGroupUchConfigInput interface {
+	pulumi.Input
+
+	ToServerGroupUchConfigOutput() ServerGroupUchConfigOutput
+	ToServerGroupUchConfigOutputWithContext(context.Context) ServerGroupUchConfigOutput
+}
+
+type ServerGroupUchConfigArgs struct {
+	// The parameter type. Only QueryString can be filled.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Consistency hash parameter value
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ServerGroupUchConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerGroupUchConfig)(nil)).Elem()
+}
+
+func (i ServerGroupUchConfigArgs) ToServerGroupUchConfigOutput() ServerGroupUchConfigOutput {
+	return i.ToServerGroupUchConfigOutputWithContext(context.Background())
+}
+
+func (i ServerGroupUchConfigArgs) ToServerGroupUchConfigOutputWithContext(ctx context.Context) ServerGroupUchConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupUchConfigOutput)
+}
+
+func (i ServerGroupUchConfigArgs) ToServerGroupUchConfigPtrOutput() ServerGroupUchConfigPtrOutput {
+	return i.ToServerGroupUchConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServerGroupUchConfigArgs) ToServerGroupUchConfigPtrOutputWithContext(ctx context.Context) ServerGroupUchConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupUchConfigOutput).ToServerGroupUchConfigPtrOutputWithContext(ctx)
+}
+
+// ServerGroupUchConfigPtrInput is an input type that accepts ServerGroupUchConfigArgs, ServerGroupUchConfigPtr and ServerGroupUchConfigPtrOutput values.
+// You can construct a concrete instance of `ServerGroupUchConfigPtrInput` via:
+//
+//	        ServerGroupUchConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServerGroupUchConfigPtrInput interface {
+	pulumi.Input
+
+	ToServerGroupUchConfigPtrOutput() ServerGroupUchConfigPtrOutput
+	ToServerGroupUchConfigPtrOutputWithContext(context.Context) ServerGroupUchConfigPtrOutput
+}
+
+type serverGroupUchConfigPtrType ServerGroupUchConfigArgs
+
+func ServerGroupUchConfigPtr(v *ServerGroupUchConfigArgs) ServerGroupUchConfigPtrInput {
+	return (*serverGroupUchConfigPtrType)(v)
+}
+
+func (*serverGroupUchConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerGroupUchConfig)(nil)).Elem()
+}
+
+func (i *serverGroupUchConfigPtrType) ToServerGroupUchConfigPtrOutput() ServerGroupUchConfigPtrOutput {
+	return i.ToServerGroupUchConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serverGroupUchConfigPtrType) ToServerGroupUchConfigPtrOutputWithContext(ctx context.Context) ServerGroupUchConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupUchConfigPtrOutput)
+}
+
+type ServerGroupUchConfigOutput struct{ *pulumi.OutputState }
+
+func (ServerGroupUchConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerGroupUchConfig)(nil)).Elem()
+}
+
+func (o ServerGroupUchConfigOutput) ToServerGroupUchConfigOutput() ServerGroupUchConfigOutput {
+	return o
+}
+
+func (o ServerGroupUchConfigOutput) ToServerGroupUchConfigOutputWithContext(ctx context.Context) ServerGroupUchConfigOutput {
+	return o
+}
+
+func (o ServerGroupUchConfigOutput) ToServerGroupUchConfigPtrOutput() ServerGroupUchConfigPtrOutput {
+	return o.ToServerGroupUchConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServerGroupUchConfigOutput) ToServerGroupUchConfigPtrOutputWithContext(ctx context.Context) ServerGroupUchConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerGroupUchConfig) *ServerGroupUchConfig {
+		return &v
+	}).(ServerGroupUchConfigPtrOutput)
+}
+
+// The parameter type. Only QueryString can be filled.
+func (o ServerGroupUchConfigOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerGroupUchConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Consistency hash parameter value
+func (o ServerGroupUchConfigOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerGroupUchConfig) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ServerGroupUchConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServerGroupUchConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerGroupUchConfig)(nil)).Elem()
+}
+
+func (o ServerGroupUchConfigPtrOutput) ToServerGroupUchConfigPtrOutput() ServerGroupUchConfigPtrOutput {
+	return o
+}
+
+func (o ServerGroupUchConfigPtrOutput) ToServerGroupUchConfigPtrOutputWithContext(ctx context.Context) ServerGroupUchConfigPtrOutput {
+	return o
+}
+
+func (o ServerGroupUchConfigPtrOutput) Elem() ServerGroupUchConfigOutput {
+	return o.ApplyT(func(v *ServerGroupUchConfig) ServerGroupUchConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ServerGroupUchConfig
+		return ret
+	}).(ServerGroupUchConfigOutput)
+}
+
+// The parameter type. Only QueryString can be filled.
+func (o ServerGroupUchConfigPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerGroupUchConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Consistency hash parameter value
+func (o ServerGroupUchConfigPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerGroupUchConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -12879,27 +14190,27 @@ func (o GetSecurityPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetSecuri
 }
 
 type GetServerGroupsGroup struct {
-	// The configuration of health checks.
+	// The configuration of health checks. **Note:** `healthCheckConfig` takes effect only if `enableDetails` is set to `true`.
 	HealthCheckConfigs []GetServerGroupsGroupHealthCheckConfig `pulumi:"healthCheckConfigs"`
 	// The ID of the Server Group.
 	Id string `pulumi:"id"`
-	// The server protocol. Valid values: `HTTP` and `HTTPS`. Default value: `HTTP`.
+	// The backend protocol.
 	Protocol string `pulumi:"protocol"`
-	// The scheduling algorithm. Valid values: `Wrr`, `Wlc` and `Sch`.
+	// The scheduling algorithm.
 	Scheduler string `pulumi:"scheduler"`
-	// The first ID of the res ource.
+	// The ID of the Server Group.
 	ServerGroupId string `pulumi:"serverGroupId"`
-	// The name of the resource.
+	// The names of the Server Group.
 	ServerGroupName string `pulumi:"serverGroupName"`
-	// The backend server.
+	// The backend server. **Note:** `servers` takes effect only if `enableDetails` is set to `true`.
 	Servers []GetServerGroupsGroupServer `pulumi:"servers"`
-	// The status of the resource.
+	// The status of the Server Group. Valid values: `Available`, `Configuring`, `Provisioning`.
 	Status string `pulumi:"status"`
-	// The configuration of the sticky session.
+	// The configuration of the sticky session. **Note:** `stickySessionConfig` takes effect only if `enableDetails` is set to `true`.
 	StickySessionConfigs []GetServerGroupsGroupStickySessionConfig `pulumi:"stickySessionConfigs"`
-	// A map of tags assigned to the group.
+	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
-	// The ID of the VPC that you want to access.
+	// The ID of the virtual private cloud (VPC).
 	VpcId string `pulumi:"vpcId"`
 }
 
@@ -12915,27 +14226,27 @@ type GetServerGroupsGroupInput interface {
 }
 
 type GetServerGroupsGroupArgs struct {
-	// The configuration of health checks.
+	// The configuration of health checks. **Note:** `healthCheckConfig` takes effect only if `enableDetails` is set to `true`.
 	HealthCheckConfigs GetServerGroupsGroupHealthCheckConfigArrayInput `pulumi:"healthCheckConfigs"`
 	// The ID of the Server Group.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The server protocol. Valid values: `HTTP` and `HTTPS`. Default value: `HTTP`.
+	// The backend protocol.
 	Protocol pulumi.StringInput `pulumi:"protocol"`
-	// The scheduling algorithm. Valid values: `Wrr`, `Wlc` and `Sch`.
+	// The scheduling algorithm.
 	Scheduler pulumi.StringInput `pulumi:"scheduler"`
-	// The first ID of the res ource.
+	// The ID of the Server Group.
 	ServerGroupId pulumi.StringInput `pulumi:"serverGroupId"`
-	// The name of the resource.
+	// The names of the Server Group.
 	ServerGroupName pulumi.StringInput `pulumi:"serverGroupName"`
-	// The backend server.
+	// The backend server. **Note:** `servers` takes effect only if `enableDetails` is set to `true`.
 	Servers GetServerGroupsGroupServerArrayInput `pulumi:"servers"`
-	// The status of the resource.
+	// The status of the Server Group. Valid values: `Available`, `Configuring`, `Provisioning`.
 	Status pulumi.StringInput `pulumi:"status"`
-	// The configuration of the sticky session.
+	// The configuration of the sticky session. **Note:** `stickySessionConfig` takes effect only if `enableDetails` is set to `true`.
 	StickySessionConfigs GetServerGroupsGroupStickySessionConfigArrayInput `pulumi:"stickySessionConfigs"`
-	// A map of tags assigned to the group.
+	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// The ID of the VPC that you want to access.
+	// The ID of the virtual private cloud (VPC).
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 }
 
@@ -12990,7 +14301,7 @@ func (o GetServerGroupsGroupOutput) ToGetServerGroupsGroupOutputWithContext(ctx 
 	return o
 }
 
-// The configuration of health checks.
+// The configuration of health checks. **Note:** `healthCheckConfig` takes effect only if `enableDetails` is set to `true`.
 func (o GetServerGroupsGroupOutput) HealthCheckConfigs() GetServerGroupsGroupHealthCheckConfigArrayOutput {
 	return o.ApplyT(func(v GetServerGroupsGroup) []GetServerGroupsGroupHealthCheckConfig { return v.HealthCheckConfigs }).(GetServerGroupsGroupHealthCheckConfigArrayOutput)
 }
@@ -13000,47 +14311,47 @@ func (o GetServerGroupsGroupOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The server protocol. Valid values: `HTTP` and `HTTPS`. Default value: `HTTP`.
+// The backend protocol.
 func (o GetServerGroupsGroupOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerGroupsGroup) string { return v.Protocol }).(pulumi.StringOutput)
 }
 
-// The scheduling algorithm. Valid values: `Wrr`, `Wlc` and `Sch`.
+// The scheduling algorithm.
 func (o GetServerGroupsGroupOutput) Scheduler() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerGroupsGroup) string { return v.Scheduler }).(pulumi.StringOutput)
 }
 
-// The first ID of the res ource.
+// The ID of the Server Group.
 func (o GetServerGroupsGroupOutput) ServerGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerGroupsGroup) string { return v.ServerGroupId }).(pulumi.StringOutput)
 }
 
-// The name of the resource.
+// The names of the Server Group.
 func (o GetServerGroupsGroupOutput) ServerGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerGroupsGroup) string { return v.ServerGroupName }).(pulumi.StringOutput)
 }
 
-// The backend server.
+// The backend server. **Note:** `servers` takes effect only if `enableDetails` is set to `true`.
 func (o GetServerGroupsGroupOutput) Servers() GetServerGroupsGroupServerArrayOutput {
 	return o.ApplyT(func(v GetServerGroupsGroup) []GetServerGroupsGroupServer { return v.Servers }).(GetServerGroupsGroupServerArrayOutput)
 }
 
-// The status of the resource.
+// The status of the Server Group. Valid values: `Available`, `Configuring`, `Provisioning`.
 func (o GetServerGroupsGroupOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerGroupsGroup) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The configuration of the sticky session.
+// The configuration of the sticky session. **Note:** `stickySessionConfig` takes effect only if `enableDetails` is set to `true`.
 func (o GetServerGroupsGroupOutput) StickySessionConfigs() GetServerGroupsGroupStickySessionConfigArrayOutput {
 	return o.ApplyT(func(v GetServerGroupsGroup) []GetServerGroupsGroupStickySessionConfig { return v.StickySessionConfigs }).(GetServerGroupsGroupStickySessionConfigArrayOutput)
 }
 
-// A map of tags assigned to the group.
+// A mapping of tags to assign to the resource.
 func (o GetServerGroupsGroupOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetServerGroupsGroup) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The ID of the VPC that you want to access.
+// The ID of the virtual private cloud (VPC).
 func (o GetServerGroupsGroupOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerGroupsGroup) string { return v.VpcId }).(pulumi.StringOutput)
 }
@@ -13066,29 +14377,29 @@ func (o GetServerGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetServerGroup
 }
 
 type GetServerGroupsGroupHealthCheckConfig struct {
-	// The status code for a successful health check. Multiple status codes can be specified as a list. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+	// The status code for a successful health check. Multiple status codes can be specified as a list.
 	HealthCheckCodes []string `pulumi:"healthCheckCodes"`
-	// The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of `0` indicates that a backend server port is used for health checks.
+	// The port of the backend server that is used for health checks.
 	HealthCheckConnectPort int `pulumi:"healthCheckConnectPort"`
-	// Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
+	// Indicates whether health checks are enabled.
 	HealthCheckEnabled bool `pulumi:"healthCheckEnabled"`
 	// The domain name that is used for health checks.
 	HealthCheckHost string `pulumi:"healthCheckHost"`
-	// HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+	// HTTP protocol version.
 	HealthCheckHttpVersion string `pulumi:"healthCheckHttpVersion"`
-	// The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
+	// The time interval between two consecutive health checks.
 	HealthCheckInterval int `pulumi:"healthCheckInterval"`
-	// Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+	// Health check method.
 	HealthCheckMethod string `pulumi:"healthCheckMethod"`
-	// The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+	// The forwarding rule path of health checks.
 	HealthCheckPath string `pulumi:"healthCheckPath"`
-	// Health check protocol. Valid values: `HTTP` and `TCP`.
+	// Health check protocol.
 	HealthCheckProtocol string `pulumi:"healthCheckProtocol"`
-	// The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: `1` to `300`. Default value: `5`. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
+	// The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy.
 	HealthCheckTimeout int `pulumi:"healthCheckTimeout"`
-	// The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: `2` to `10`. Default value: `3`.
+	// The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success.
 	HealthyThreshold int `pulumi:"healthyThreshold"`
-	// The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
+	// The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail.
 	UnhealthyThreshold int `pulumi:"unhealthyThreshold"`
 }
 
@@ -13104,29 +14415,29 @@ type GetServerGroupsGroupHealthCheckConfigInput interface {
 }
 
 type GetServerGroupsGroupHealthCheckConfigArgs struct {
-	// The status code for a successful health check. Multiple status codes can be specified as a list. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+	// The status code for a successful health check. Multiple status codes can be specified as a list.
 	HealthCheckCodes pulumi.StringArrayInput `pulumi:"healthCheckCodes"`
-	// The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of `0` indicates that a backend server port is used for health checks.
+	// The port of the backend server that is used for health checks.
 	HealthCheckConnectPort pulumi.IntInput `pulumi:"healthCheckConnectPort"`
-	// Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
+	// Indicates whether health checks are enabled.
 	HealthCheckEnabled pulumi.BoolInput `pulumi:"healthCheckEnabled"`
 	// The domain name that is used for health checks.
 	HealthCheckHost pulumi.StringInput `pulumi:"healthCheckHost"`
-	// HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+	// HTTP protocol version.
 	HealthCheckHttpVersion pulumi.StringInput `pulumi:"healthCheckHttpVersion"`
-	// The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
+	// The time interval between two consecutive health checks.
 	HealthCheckInterval pulumi.IntInput `pulumi:"healthCheckInterval"`
-	// Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+	// Health check method.
 	HealthCheckMethod pulumi.StringInput `pulumi:"healthCheckMethod"`
-	// The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+	// The forwarding rule path of health checks.
 	HealthCheckPath pulumi.StringInput `pulumi:"healthCheckPath"`
-	// Health check protocol. Valid values: `HTTP` and `TCP`.
+	// Health check protocol.
 	HealthCheckProtocol pulumi.StringInput `pulumi:"healthCheckProtocol"`
-	// The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: `1` to `300`. Default value: `5`. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
+	// The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy.
 	HealthCheckTimeout pulumi.IntInput `pulumi:"healthCheckTimeout"`
-	// The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: `2` to `10`. Default value: `3`.
+	// The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success.
 	HealthyThreshold pulumi.IntInput `pulumi:"healthyThreshold"`
-	// The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
+	// The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail.
 	UnhealthyThreshold pulumi.IntInput `pulumi:"unhealthyThreshold"`
 }
 
@@ -13181,17 +14492,17 @@ func (o GetServerGroupsGroupHealthCheckConfigOutput) ToGetServerGroupsGroupHealt
 	return o
 }
 
-// The status code for a successful health check. Multiple status codes can be specified as a list. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+// The status code for a successful health check. Multiple status codes can be specified as a list.
 func (o GetServerGroupsGroupHealthCheckConfigOutput) HealthCheckCodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServerGroupsGroupHealthCheckConfig) []string { return v.HealthCheckCodes }).(pulumi.StringArrayOutput)
 }
 
-// The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of `0` indicates that a backend server port is used for health checks.
+// The port of the backend server that is used for health checks.
 func (o GetServerGroupsGroupHealthCheckConfigOutput) HealthCheckConnectPort() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServerGroupsGroupHealthCheckConfig) int { return v.HealthCheckConnectPort }).(pulumi.IntOutput)
 }
 
-// Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
+// Indicates whether health checks are enabled.
 func (o GetServerGroupsGroupHealthCheckConfigOutput) HealthCheckEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServerGroupsGroupHealthCheckConfig) bool { return v.HealthCheckEnabled }).(pulumi.BoolOutput)
 }
@@ -13201,42 +14512,42 @@ func (o GetServerGroupsGroupHealthCheckConfigOutput) HealthCheckHost() pulumi.St
 	return o.ApplyT(func(v GetServerGroupsGroupHealthCheckConfig) string { return v.HealthCheckHost }).(pulumi.StringOutput)
 }
 
-// HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+// HTTP protocol version.
 func (o GetServerGroupsGroupHealthCheckConfigOutput) HealthCheckHttpVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerGroupsGroupHealthCheckConfig) string { return v.HealthCheckHttpVersion }).(pulumi.StringOutput)
 }
 
-// The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
+// The time interval between two consecutive health checks.
 func (o GetServerGroupsGroupHealthCheckConfigOutput) HealthCheckInterval() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServerGroupsGroupHealthCheckConfig) int { return v.HealthCheckInterval }).(pulumi.IntOutput)
 }
 
-// Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+// Health check method.
 func (o GetServerGroupsGroupHealthCheckConfigOutput) HealthCheckMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerGroupsGroupHealthCheckConfig) string { return v.HealthCheckMethod }).(pulumi.StringOutput)
 }
 
-// The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+// The forwarding rule path of health checks.
 func (o GetServerGroupsGroupHealthCheckConfigOutput) HealthCheckPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerGroupsGroupHealthCheckConfig) string { return v.HealthCheckPath }).(pulumi.StringOutput)
 }
 
-// Health check protocol. Valid values: `HTTP` and `TCP`.
+// Health check protocol.
 func (o GetServerGroupsGroupHealthCheckConfigOutput) HealthCheckProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerGroupsGroupHealthCheckConfig) string { return v.HealthCheckProtocol }).(pulumi.StringOutput)
 }
 
-// The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: `1` to `300`. Default value: `5`. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
+// The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy.
 func (o GetServerGroupsGroupHealthCheckConfigOutput) HealthCheckTimeout() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServerGroupsGroupHealthCheckConfig) int { return v.HealthCheckTimeout }).(pulumi.IntOutput)
 }
 
-// The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: `2` to `10`. Default value: `3`.
+// The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success.
 func (o GetServerGroupsGroupHealthCheckConfigOutput) HealthyThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServerGroupsGroupHealthCheckConfig) int { return v.HealthyThreshold }).(pulumi.IntOutput)
 }
 
-// The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
+// The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail.
 func (o GetServerGroupsGroupHealthCheckConfigOutput) UnhealthyThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServerGroupsGroupHealthCheckConfig) int { return v.UnhealthyThreshold }).(pulumi.IntOutput)
 }
@@ -13264,17 +14575,17 @@ func (o GetServerGroupsGroupHealthCheckConfigArrayOutput) Index(i pulumi.IntInpu
 type GetServerGroupsGroupServer struct {
 	// The description of the server.
 	Description string `pulumi:"description"`
-	// The port that is used by the server. Valid values: `1` to `65535`.
+	// The port that is used by the server.
 	Port int `pulumi:"port"`
 	// The ID of the ECS instance, ENI instance or ECI instance.
 	ServerId string `pulumi:"serverId"`
 	// The IP address of the ENI instance when it is in the inclusive ENI mode.
 	ServerIp string `pulumi:"serverIp"`
-	// The type of the server. The type of the server. Valid values: `Ecs`, `Eni` and `Eci`.
+	// The type of the server. The type of the server.
 	ServerType string `pulumi:"serverType"`
-	// The status of the resource.
+	// The status of the Server Group. Valid values: `Available`, `Configuring`, `Provisioning`.
 	Status string `pulumi:"status"`
-	// The weight of the server.  Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the server.
+	// The weight of the server.
 	Weight int `pulumi:"weight"`
 }
 
@@ -13292,17 +14603,17 @@ type GetServerGroupsGroupServerInput interface {
 type GetServerGroupsGroupServerArgs struct {
 	// The description of the server.
 	Description pulumi.StringInput `pulumi:"description"`
-	// The port that is used by the server. Valid values: `1` to `65535`.
+	// The port that is used by the server.
 	Port pulumi.IntInput `pulumi:"port"`
 	// The ID of the ECS instance, ENI instance or ECI instance.
 	ServerId pulumi.StringInput `pulumi:"serverId"`
 	// The IP address of the ENI instance when it is in the inclusive ENI mode.
 	ServerIp pulumi.StringInput `pulumi:"serverIp"`
-	// The type of the server. The type of the server. Valid values: `Ecs`, `Eni` and `Eci`.
+	// The type of the server. The type of the server.
 	ServerType pulumi.StringInput `pulumi:"serverType"`
-	// The status of the resource.
+	// The status of the Server Group. Valid values: `Available`, `Configuring`, `Provisioning`.
 	Status pulumi.StringInput `pulumi:"status"`
-	// The weight of the server.  Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the server.
+	// The weight of the server.
 	Weight pulumi.IntInput `pulumi:"weight"`
 }
 
@@ -13362,7 +14673,7 @@ func (o GetServerGroupsGroupServerOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerGroupsGroupServer) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The port that is used by the server. Valid values: `1` to `65535`.
+// The port that is used by the server.
 func (o GetServerGroupsGroupServerOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServerGroupsGroupServer) int { return v.Port }).(pulumi.IntOutput)
 }
@@ -13377,17 +14688,17 @@ func (o GetServerGroupsGroupServerOutput) ServerIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerGroupsGroupServer) string { return v.ServerIp }).(pulumi.StringOutput)
 }
 
-// The type of the server. The type of the server. Valid values: `Ecs`, `Eni` and `Eci`.
+// The type of the server. The type of the server.
 func (o GetServerGroupsGroupServerOutput) ServerType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerGroupsGroupServer) string { return v.ServerType }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The status of the Server Group. Valid values: `Available`, `Configuring`, `Provisioning`.
 func (o GetServerGroupsGroupServerOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerGroupsGroupServer) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The weight of the server.  Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the server.
+// The weight of the server.
 func (o GetServerGroupsGroupServerOutput) Weight() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServerGroupsGroupServer) int { return v.Weight }).(pulumi.IntOutput)
 }
@@ -13413,13 +14724,13 @@ func (o GetServerGroupsGroupServerArrayOutput) Index(i pulumi.IntInput) GetServe
 }
 
 type GetServerGroupsGroupStickySessionConfig struct {
-	// the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession` parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
+	// the cookie that is configured on the server.
 	Cookie string `pulumi:"cookie"`
-	// The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
+	// The timeout period of a cookie. The timeout period of a cookie.
 	CookieTimeout int `pulumi:"cookieTimeout"`
-	// Indicates whether sticky session is enabled. Values: `true` and `false`. Default value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
+	// Indicates whether sticky session is enabled.
 	StickySessionEnabled bool `pulumi:"stickySessionEnabled"`
-	// The method that is used to handle a cookie. Values: `Server` and `Insert`.
+	// The method that is used to handle a cookie.
 	StickySessionType string `pulumi:"stickySessionType"`
 }
 
@@ -13435,13 +14746,13 @@ type GetServerGroupsGroupStickySessionConfigInput interface {
 }
 
 type GetServerGroupsGroupStickySessionConfigArgs struct {
-	// the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession` parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
+	// the cookie that is configured on the server.
 	Cookie pulumi.StringInput `pulumi:"cookie"`
-	// The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
+	// The timeout period of a cookie. The timeout period of a cookie.
 	CookieTimeout pulumi.IntInput `pulumi:"cookieTimeout"`
-	// Indicates whether sticky session is enabled. Values: `true` and `false`. Default value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
+	// Indicates whether sticky session is enabled.
 	StickySessionEnabled pulumi.BoolInput `pulumi:"stickySessionEnabled"`
-	// The method that is used to handle a cookie. Values: `Server` and `Insert`.
+	// The method that is used to handle a cookie.
 	StickySessionType pulumi.StringInput `pulumi:"stickySessionType"`
 }
 
@@ -13496,22 +14807,22 @@ func (o GetServerGroupsGroupStickySessionConfigOutput) ToGetServerGroupsGroupSti
 	return o
 }
 
-// the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession` parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
+// the cookie that is configured on the server.
 func (o GetServerGroupsGroupStickySessionConfigOutput) Cookie() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerGroupsGroupStickySessionConfig) string { return v.Cookie }).(pulumi.StringOutput)
 }
 
-// The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
+// The timeout period of a cookie. The timeout period of a cookie.
 func (o GetServerGroupsGroupStickySessionConfigOutput) CookieTimeout() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServerGroupsGroupStickySessionConfig) int { return v.CookieTimeout }).(pulumi.IntOutput)
 }
 
-// Indicates whether sticky session is enabled. Values: `true` and `false`. Default value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
+// Indicates whether sticky session is enabled.
 func (o GetServerGroupsGroupStickySessionConfigOutput) StickySessionEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServerGroupsGroupStickySessionConfig) bool { return v.StickySessionEnabled }).(pulumi.BoolOutput)
 }
 
-// The method that is used to handle a cookie. Values: `Server` and `Insert`.
+// The method that is used to handle a cookie.
 func (o GetServerGroupsGroupStickySessionConfigOutput) StickySessionType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerGroupsGroupStickySessionConfig) string { return v.StickySessionType }).(pulumi.StringOutput)
 }
@@ -13786,11 +15097,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ListenerAclConfigPtrInput)(nil)).Elem(), ListenerAclConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListenerAclConfigAclRelationInput)(nil)).Elem(), ListenerAclConfigAclRelationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListenerAclConfigAclRelationArrayInput)(nil)).Elem(), ListenerAclConfigAclRelationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerCaCertificateInput)(nil)).Elem(), ListenerCaCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerCaCertificateArrayInput)(nil)).Elem(), ListenerCaCertificateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListenerCertificatesInput)(nil)).Elem(), ListenerCertificatesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListenerCertificatesPtrInput)(nil)).Elem(), ListenerCertificatesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListenerDefaultActionInput)(nil)).Elem(), ListenerDefaultActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListenerDefaultActionArrayInput)(nil)).Elem(), ListenerDefaultActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListenerDefaultActionForwardGroupConfigInput)(nil)).Elem(), ListenerDefaultActionForwardGroupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerDefaultActionForwardGroupConfigPtrInput)(nil)).Elem(), ListenerDefaultActionForwardGroupConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListenerDefaultActionForwardGroupConfigServerGroupTupleInput)(nil)).Elem(), ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListenerDefaultActionForwardGroupConfigServerGroupTupleArrayInput)(nil)).Elem(), ListenerDefaultActionForwardGroupConfigServerGroupTupleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListenerQuicConfigInput)(nil)).Elem(), ListenerQuicConfigArgs{})
@@ -13799,6 +15113,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ListenerXForwardedForConfigPtrInput)(nil)).Elem(), ListenerXForwardedForConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerAccessLogConfigInput)(nil)).Elem(), LoadBalancerAccessLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerAccessLogConfigPtrInput)(nil)).Elem(), LoadBalancerAccessLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerDeletionProtectionConfigInput)(nil)).Elem(), LoadBalancerDeletionProtectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerDeletionProtectionConfigPtrInput)(nil)).Elem(), LoadBalancerDeletionProtectionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerLoadBalancerBillingConfigInput)(nil)).Elem(), LoadBalancerLoadBalancerBillingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerLoadBalancerBillingConfigPtrInput)(nil)).Elem(), LoadBalancerLoadBalancerBillingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerModificationProtectionConfigInput)(nil)).Elem(), LoadBalancerModificationProtectionConfigArgs{})
@@ -13859,12 +15175,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionResponseStatusCodeConfigPtrInput)(nil)).Elem(), RuleRuleConditionResponseStatusCodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionSourceIpConfigInput)(nil)).Elem(), RuleRuleConditionSourceIpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionSourceIpConfigPtrInput)(nil)).Elem(), RuleRuleConditionSourceIpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupConnectionDrainConfigInput)(nil)).Elem(), ServerGroupConnectionDrainConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupConnectionDrainConfigPtrInput)(nil)).Elem(), ServerGroupConnectionDrainConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupHealthCheckConfigInput)(nil)).Elem(), ServerGroupHealthCheckConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupHealthCheckConfigPtrInput)(nil)).Elem(), ServerGroupHealthCheckConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupServerInput)(nil)).Elem(), ServerGroupServerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupServerArrayInput)(nil)).Elem(), ServerGroupServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupSlowStartConfigInput)(nil)).Elem(), ServerGroupSlowStartConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupSlowStartConfigPtrInput)(nil)).Elem(), ServerGroupSlowStartConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupStickySessionConfigInput)(nil)).Elem(), ServerGroupStickySessionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupStickySessionConfigPtrInput)(nil)).Elem(), ServerGroupStickySessionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupUchConfigInput)(nil)).Elem(), ServerGroupUchConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupUchConfigPtrInput)(nil)).Elem(), ServerGroupUchConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAclsAclInput)(nil)).Elem(), GetAclsAclArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAclsAclArrayInput)(nil)).Elem(), GetAclsAclArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAclsAclAclEntryInput)(nil)).Elem(), GetAclsAclAclEntryArgs{})
@@ -13979,11 +15301,14 @@ func init() {
 	pulumi.RegisterOutputType(ListenerAclConfigPtrOutput{})
 	pulumi.RegisterOutputType(ListenerAclConfigAclRelationOutput{})
 	pulumi.RegisterOutputType(ListenerAclConfigAclRelationArrayOutput{})
+	pulumi.RegisterOutputType(ListenerCaCertificateOutput{})
+	pulumi.RegisterOutputType(ListenerCaCertificateArrayOutput{})
 	pulumi.RegisterOutputType(ListenerCertificatesOutput{})
 	pulumi.RegisterOutputType(ListenerCertificatesPtrOutput{})
 	pulumi.RegisterOutputType(ListenerDefaultActionOutput{})
 	pulumi.RegisterOutputType(ListenerDefaultActionArrayOutput{})
 	pulumi.RegisterOutputType(ListenerDefaultActionForwardGroupConfigOutput{})
+	pulumi.RegisterOutputType(ListenerDefaultActionForwardGroupConfigPtrOutput{})
 	pulumi.RegisterOutputType(ListenerDefaultActionForwardGroupConfigServerGroupTupleOutput{})
 	pulumi.RegisterOutputType(ListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput{})
 	pulumi.RegisterOutputType(ListenerQuicConfigOutput{})
@@ -13992,6 +15317,8 @@ func init() {
 	pulumi.RegisterOutputType(ListenerXForwardedForConfigPtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerAccessLogConfigOutput{})
 	pulumi.RegisterOutputType(LoadBalancerAccessLogConfigPtrOutput{})
+	pulumi.RegisterOutputType(LoadBalancerDeletionProtectionConfigOutput{})
+	pulumi.RegisterOutputType(LoadBalancerDeletionProtectionConfigPtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerLoadBalancerBillingConfigOutput{})
 	pulumi.RegisterOutputType(LoadBalancerLoadBalancerBillingConfigPtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerModificationProtectionConfigOutput{})
@@ -14052,12 +15379,18 @@ func init() {
 	pulumi.RegisterOutputType(RuleRuleConditionResponseStatusCodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(RuleRuleConditionSourceIpConfigOutput{})
 	pulumi.RegisterOutputType(RuleRuleConditionSourceIpConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServerGroupConnectionDrainConfigOutput{})
+	pulumi.RegisterOutputType(ServerGroupConnectionDrainConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServerGroupHealthCheckConfigOutput{})
 	pulumi.RegisterOutputType(ServerGroupHealthCheckConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServerGroupServerOutput{})
 	pulumi.RegisterOutputType(ServerGroupServerArrayOutput{})
+	pulumi.RegisterOutputType(ServerGroupSlowStartConfigOutput{})
+	pulumi.RegisterOutputType(ServerGroupSlowStartConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServerGroupStickySessionConfigOutput{})
 	pulumi.RegisterOutputType(ServerGroupStickySessionConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServerGroupUchConfigOutput{})
+	pulumi.RegisterOutputType(ServerGroupUchConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetAclsAclOutput{})
 	pulumi.RegisterOutputType(GetAclsAclArrayOutput{})
 	pulumi.RegisterOutputType(GetAclsAclAclEntryOutput{})

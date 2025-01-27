@@ -93,6 +93,8 @@ type IpamIpamScope struct {
 	IpamScopeType pulumi.StringPtrOutput `pulumi:"ipamScopeType"`
 	// The region ID of the resource.
 	RegionId pulumi.StringOutput `pulumi:"regionId"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tag of the resource.
@@ -149,6 +151,8 @@ type ipamIpamScopeState struct {
 	IpamScopeType *string `pulumi:"ipamScopeType"`
 	// The region ID of the resource.
 	RegionId *string `pulumi:"regionId"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// The tag of the resource.
@@ -173,6 +177,8 @@ type IpamIpamScopeState struct {
 	IpamScopeType pulumi.StringPtrInput
 	// The region ID of the resource.
 	RegionId pulumi.StringPtrInput
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringPtrInput
 	// The status of the resource.
 	Status pulumi.StringPtrInput
 	// The tag of the resource.
@@ -197,6 +203,8 @@ type ipamIpamScopeArgs struct {
 	//
 	// > **NOTE:**  Currently, only the role scope of the private network is supported.
 	IpamScopeType *string `pulumi:"ipamScopeType"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The tag of the resource.
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -216,6 +224,8 @@ type IpamIpamScopeArgs struct {
 	//
 	// > **NOTE:**  Currently, only the role scope of the private network is supported.
 	IpamScopeType pulumi.StringPtrInput
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringPtrInput
 	// The tag of the resource.
 	Tags pulumi.StringMapInput
 }
@@ -340,6 +350,11 @@ func (o IpamIpamScopeOutput) IpamScopeType() pulumi.StringPtrOutput {
 // The region ID of the resource.
 func (o IpamIpamScopeOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpamIpamScope) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group.
+func (o IpamIpamScopeOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpamIpamScope) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
 // The status of the resource.

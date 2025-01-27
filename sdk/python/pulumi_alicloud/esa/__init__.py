@@ -5,6 +5,9 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .http_request_header_modification_rule import *
+from .list import *
+from .page import *
 from .rate_plan_instance import *
 from .record import *
 from .site import *

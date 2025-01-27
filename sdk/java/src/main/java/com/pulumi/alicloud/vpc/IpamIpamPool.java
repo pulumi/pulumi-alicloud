@@ -222,6 +222,20 @@ public class IpamIpamPool extends com.pulumi.resources.CustomResource {
         return this.regionId;
     }
     /**
+     * The ID of the resource group.
+     * 
+     */
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
      * The instance ID of the source IPAM address pool.
      * 
      * &gt; **NOTE:**  If this parameter is not entered, the created address pool is the parent address pool.

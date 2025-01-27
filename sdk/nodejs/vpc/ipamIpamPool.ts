@@ -106,6 +106,10 @@ export class IpamIpamPool extends pulumi.CustomResource {
      */
     public /*out*/ readonly regionId!: pulumi.Output<string>;
     /**
+     * The ID of the resource group.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
      * The instance ID of the source IPAM address pool.
      *
      * > **NOTE:**  If this parameter is not entered, the created address pool is the parent address pool.
@@ -145,6 +149,7 @@ export class IpamIpamPool extends pulumi.CustomResource {
             resourceInputs["ipamScopeId"] = state ? state.ipamScopeId : undefined;
             resourceInputs["poolRegionId"] = state ? state.poolRegionId : undefined;
             resourceInputs["regionId"] = state ? state.regionId : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["sourceIpamPoolId"] = state ? state.sourceIpamPoolId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -163,6 +168,7 @@ export class IpamIpamPool extends pulumi.CustomResource {
             resourceInputs["ipamPoolName"] = args ? args.ipamPoolName : undefined;
             resourceInputs["ipamScopeId"] = args ? args.ipamScopeId : undefined;
             resourceInputs["poolRegionId"] = args ? args.poolRegionId : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["sourceIpamPoolId"] = args ? args.sourceIpamPoolId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -235,6 +241,10 @@ export interface IpamIpamPoolState {
      */
     regionId?: pulumi.Input<string>;
     /**
+     * The ID of the resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
      * The instance ID of the source IPAM address pool.
      *
      * > **NOTE:**  If this parameter is not entered, the created address pool is the parent address pool.
@@ -302,6 +312,10 @@ export interface IpamIpamPoolArgs {
      * The effective region of the IPAM address pool.
      */
     poolRegionId?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The instance ID of the source IPAM address pool.
      *

@@ -17,14 +17,14 @@ public final class V3FunctionOssMountConfigMountPointArgs extends com.pulumi.res
     public static final V3FunctionOssMountConfigMountPointArgs Empty = new V3FunctionOssMountConfigMountPointArgs();
 
     /**
-     * OSS Bucket name.
+     * OSS Bucket name
      * 
      */
     @Import(name="bucketName")
     private @Nullable Output<String> bucketName;
 
     /**
-     * @return OSS Bucket name.
+     * @return OSS Bucket name
      * 
      */
     public Optional<Output<String>> bucketName() {
@@ -32,14 +32,14 @@ public final class V3FunctionOssMountConfigMountPointArgs extends com.pulumi.res
     }
 
     /**
-     * Path of the mounted OSS Bucket.
+     * Path of the mounted OSS Bucket
      * 
      */
     @Import(name="bucketPath")
     private @Nullable Output<String> bucketPath;
 
     /**
-     * @return Path of the mounted OSS Bucket.
+     * @return Path of the mounted OSS Bucket
      * 
      */
     public Optional<Output<String>> bucketPath() {
@@ -47,14 +47,14 @@ public final class V3FunctionOssMountConfigMountPointArgs extends com.pulumi.res
     }
 
     /**
-     * OSS access endpoint.
+     * OSS access endpoint
      * 
      */
     @Import(name="endpoint")
     private @Nullable Output<String> endpoint;
 
     /**
-     * @return OSS access endpoint.
+     * @return OSS access endpoint
      * 
      */
     public Optional<Output<String>> endpoint() {
@@ -69,14 +69,14 @@ public final class V3FunctionOssMountConfigMountPointArgs extends com.pulumi.res
     }
 
     /**
-     * Read-only.
+     * Read-only
      * 
      */
     @Import(name="readOnly")
     private @Nullable Output<Boolean> readOnly;
 
     /**
-     * @return Read-only.
+     * @return Read-only
      * 
      */
     public Optional<Output<Boolean>> readOnly() {
@@ -112,7 +112,7 @@ public final class V3FunctionOssMountConfigMountPointArgs extends com.pulumi.res
         }
 
         /**
-         * @param bucketName OSS Bucket name.
+         * @param bucketName OSS Bucket name
          * 
          * @return builder
          * 
@@ -123,7 +123,7 @@ public final class V3FunctionOssMountConfigMountPointArgs extends com.pulumi.res
         }
 
         /**
-         * @param bucketName OSS Bucket name.
+         * @param bucketName OSS Bucket name
          * 
          * @return builder
          * 
@@ -133,7 +133,7 @@ public final class V3FunctionOssMountConfigMountPointArgs extends com.pulumi.res
         }
 
         /**
-         * @param bucketPath Path of the mounted OSS Bucket.
+         * @param bucketPath Path of the mounted OSS Bucket
          * 
          * @return builder
          * 
@@ -144,7 +144,7 @@ public final class V3FunctionOssMountConfigMountPointArgs extends com.pulumi.res
         }
 
         /**
-         * @param bucketPath Path of the mounted OSS Bucket.
+         * @param bucketPath Path of the mounted OSS Bucket
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class V3FunctionOssMountConfigMountPointArgs extends com.pulumi.res
         }
 
         /**
-         * @param endpoint OSS access endpoint.
+         * @param endpoint OSS access endpoint
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class V3FunctionOssMountConfigMountPointArgs extends com.pulumi.res
         }
 
         /**
-         * @param endpoint OSS access endpoint.
+         * @param endpoint OSS access endpoint
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class V3FunctionOssMountConfigMountPointArgs extends com.pulumi.res
         }
 
         /**
-         * @param readOnly Read-only.
+         * @param readOnly Read-only
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class V3FunctionOssMountConfigMountPointArgs extends com.pulumi.res
         }
 
         /**
-         * @param readOnly Read-only.
+         * @param readOnly Read-only
          * 
          * @return builder
          * 

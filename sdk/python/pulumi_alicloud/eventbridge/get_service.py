@@ -77,9 +77,7 @@ def get_service(enable: Optional[str] = None,
 
     For information about Event Bridge and how to use it, see [What is Event Bridge](https://www.alibabacloud.com/help/en/doc-detail/163239.htm).
 
-    > **NOTE:** Available in v1.126.0+
-
-    > **NOTE:** This data source supports `cn-shanghai`, `cn-hangzhou` and `ap-southeast-1` regions.
+    > **NOTE:** Available since v1.126.0.
 
     ## Example Usage
 
@@ -111,9 +109,7 @@ def get_service_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
 
     For information about Event Bridge and how to use it, see [What is Event Bridge](https://www.alibabacloud.com/help/en/doc-detail/163239.htm).
 
-    > **NOTE:** Available in v1.126.0+
-
-    > **NOTE:** This data source supports `cn-shanghai`, `cn-hangzhou` and `ap-southeast-1` regions.
+    > **NOTE:** Available since v1.126.0.
 
     ## Example Usage
 

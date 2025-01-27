@@ -62,6 +62,7 @@ class NodePoolArgs:
                  platform: Optional[pulumi.Input[str]] = None,
                  pre_user_data: Optional[pulumi.Input[str]] = None,
                  private_pool_options: Optional[pulumi.Input['NodePoolPrivatePoolOptionsArgs']] = None,
+                 ram_role_name: Optional[pulumi.Input[str]] = None,
                  rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  rolling_policy: Optional[pulumi.Input['NodePoolRollingPolicyArgs']] = None,
@@ -148,6 +149,11 @@ class NodePoolArgs:
         :param pulumi.Input[str] platform: Operating system release, using `image_type` instead.
         :param pulumi.Input[str] pre_user_data: Node pre custom data, base64-encoded, the script executed before the node is initialized.
         :param pulumi.Input['NodePoolPrivatePoolOptionsArgs'] private_pool_options: Private node pool configuration. See `private_pool_options` below.
+        :param pulumi.Input[str] ram_role_name: The name of the Worker RAM role.
+               * If it is empty, the default Worker RAM role created in the cluster will be used.
+               * If the specified RAM role is not empty, the specified RAM role must be a **Common Service role**, and its **trusted service** configuration must be **cloud server**. For more information, see [Create a common service role](https://help.aliyun.com/document_detail/116800.html). If the specified RAM role is not the default Worker RAM role created in the cluster, the role name cannot start with 'KubernetesMasterRole-'or 'KubernetesWorkerRole.
+               
+               > **NOTE:**  This parameter is only supported for ACK-managed clusters of 1.22 or later versions.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: The list of RDS instances.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group
         :param pulumi.Input['NodePoolRollingPolicyArgs'] rolling_policy: Rotary configuration. See `rolling_policy` below.
@@ -280,6 +286,8 @@ class NodePoolArgs:
             pulumi.set(__self__, "pre_user_data", pre_user_data)
         if private_pool_options is not None:
             pulumi.set(__self__, "private_pool_options", private_pool_options)
+        if ram_role_name is not None:
+            pulumi.set(__self__, "ram_role_name", ram_role_name)
         if rds_instances is not None:
             pulumi.set(__self__, "rds_instances", rds_instances)
         if resource_group_id is not None:
@@ -855,6 +863,22 @@ class NodePoolArgs:
         pulumi.set(self, "private_pool_options", value)
 
     @property
+    @pulumi.getter(name="ramRoleName")
+    def ram_role_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Worker RAM role.
+        * If it is empty, the default Worker RAM role created in the cluster will be used.
+        * If the specified RAM role is not empty, the specified RAM role must be a **Common Service role**, and its **trusted service** configuration must be **cloud server**. For more information, see [Create a common service role](https://help.aliyun.com/document_detail/116800.html). If the specified RAM role is not the default Worker RAM role created in the cluster, the role name cannot start with 'KubernetesMasterRole-'or 'KubernetesWorkerRole.
+
+        > **NOTE:**  This parameter is only supported for ACK-managed clusters of 1.22 or later versions.
+        """
+        return pulumi.get(self, "ram_role_name")
+
+    @ram_role_name.setter
+    def ram_role_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ram_role_name", value)
+
+    @property
     @pulumi.getter(name="rdsInstances")
     def rds_instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -1281,6 +1305,7 @@ class _NodePoolState:
                  platform: Optional[pulumi.Input[str]] = None,
                  pre_user_data: Optional[pulumi.Input[str]] = None,
                  private_pool_options: Optional[pulumi.Input['NodePoolPrivatePoolOptionsArgs']] = None,
+                 ram_role_name: Optional[pulumi.Input[str]] = None,
                  rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  rolling_policy: Optional[pulumi.Input['NodePoolRollingPolicyArgs']] = None,
@@ -1369,6 +1394,11 @@ class _NodePoolState:
         :param pulumi.Input[str] platform: Operating system release, using `image_type` instead.
         :param pulumi.Input[str] pre_user_data: Node pre custom data, base64-encoded, the script executed before the node is initialized.
         :param pulumi.Input['NodePoolPrivatePoolOptionsArgs'] private_pool_options: Private node pool configuration. See `private_pool_options` below.
+        :param pulumi.Input[str] ram_role_name: The name of the Worker RAM role.
+               * If it is empty, the default Worker RAM role created in the cluster will be used.
+               * If the specified RAM role is not empty, the specified RAM role must be a **Common Service role**, and its **trusted service** configuration must be **cloud server**. For more information, see [Create a common service role](https://help.aliyun.com/document_detail/116800.html). If the specified RAM role is not the default Worker RAM role created in the cluster, the role name cannot start with 'KubernetesMasterRole-'or 'KubernetesWorkerRole.
+               
+               > **NOTE:**  This parameter is only supported for ACK-managed clusters of 1.22 or later versions.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: The list of RDS instances.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group
         :param pulumi.Input['NodePoolRollingPolicyArgs'] rolling_policy: Rotary configuration. See `rolling_policy` below.
@@ -1506,6 +1536,8 @@ class _NodePoolState:
             pulumi.set(__self__, "pre_user_data", pre_user_data)
         if private_pool_options is not None:
             pulumi.set(__self__, "private_pool_options", private_pool_options)
+        if ram_role_name is not None:
+            pulumi.set(__self__, "ram_role_name", ram_role_name)
         if rds_instances is not None:
             pulumi.set(__self__, "rds_instances", rds_instances)
         if resource_group_id is not None:
@@ -2085,6 +2117,22 @@ class _NodePoolState:
         pulumi.set(self, "private_pool_options", value)
 
     @property
+    @pulumi.getter(name="ramRoleName")
+    def ram_role_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Worker RAM role.
+        * If it is empty, the default Worker RAM role created in the cluster will be used.
+        * If the specified RAM role is not empty, the specified RAM role must be a **Common Service role**, and its **trusted service** configuration must be **cloud server**. For more information, see [Create a common service role](https://help.aliyun.com/document_detail/116800.html). If the specified RAM role is not the default Worker RAM role created in the cluster, the role name cannot start with 'KubernetesMasterRole-'or 'KubernetesWorkerRole.
+
+        > **NOTE:**  This parameter is only supported for ACK-managed clusters of 1.22 or later versions.
+        """
+        return pulumi.get(self, "ram_role_name")
+
+    @ram_role_name.setter
+    def ram_role_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ram_role_name", value)
+
+    @property
     @pulumi.getter(name="rdsInstances")
     def rds_instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -2536,6 +2584,7 @@ class NodePool(pulumi.CustomResource):
                  platform: Optional[pulumi.Input[str]] = None,
                  pre_user_data: Optional[pulumi.Input[str]] = None,
                  private_pool_options: Optional[pulumi.Input[Union['NodePoolPrivatePoolOptionsArgs', 'NodePoolPrivatePoolOptionsArgsDict']]] = None,
+                 ram_role_name: Optional[pulumi.Input[str]] = None,
                  rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  rolling_policy: Optional[pulumi.Input[Union['NodePoolRollingPolicyArgs', 'NodePoolRollingPolicyArgsDict']]] = None,
@@ -2576,7 +2625,7 @@ class NodePool(pulumi.CustomResource):
 
         ## Import
 
-        ACK Nodepool can be imported using the id, e.g.
+        Container Service for Kubernetes (ACK) Nodepool can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:cs/nodePool:NodePool example <cluster_id>:<node_pool_id>
@@ -2636,6 +2685,11 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] platform: Operating system release, using `image_type` instead.
         :param pulumi.Input[str] pre_user_data: Node pre custom data, base64-encoded, the script executed before the node is initialized.
         :param pulumi.Input[Union['NodePoolPrivatePoolOptionsArgs', 'NodePoolPrivatePoolOptionsArgsDict']] private_pool_options: Private node pool configuration. See `private_pool_options` below.
+        :param pulumi.Input[str] ram_role_name: The name of the Worker RAM role.
+               * If it is empty, the default Worker RAM role created in the cluster will be used.
+               * If the specified RAM role is not empty, the specified RAM role must be a **Common Service role**, and its **trusted service** configuration must be **cloud server**. For more information, see [Create a common service role](https://help.aliyun.com/document_detail/116800.html). If the specified RAM role is not the default Worker RAM role created in the cluster, the role name cannot start with 'KubernetesMasterRole-'or 'KubernetesWorkerRole.
+               
+               > **NOTE:**  This parameter is only supported for ACK-managed clusters of 1.22 or later versions.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: The list of RDS instances.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group
         :param pulumi.Input[Union['NodePoolRollingPolicyArgs', 'NodePoolRollingPolicyArgsDict']] rolling_policy: Rotary configuration. See `rolling_policy` below.
@@ -2691,7 +2745,7 @@ class NodePool(pulumi.CustomResource):
 
         ## Import
 
-        ACK Nodepool can be imported using the id, e.g.
+        Container Service for Kubernetes (ACK) Nodepool can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:cs/nodePool:NodePool example <cluster_id>:<node_pool_id>
@@ -2752,6 +2806,7 @@ class NodePool(pulumi.CustomResource):
                  platform: Optional[pulumi.Input[str]] = None,
                  pre_user_data: Optional[pulumi.Input[str]] = None,
                  private_pool_options: Optional[pulumi.Input[Union['NodePoolPrivatePoolOptionsArgs', 'NodePoolPrivatePoolOptionsArgsDict']]] = None,
+                 ram_role_name: Optional[pulumi.Input[str]] = None,
                  rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  rolling_policy: Optional[pulumi.Input[Union['NodePoolRollingPolicyArgs', 'NodePoolRollingPolicyArgsDict']]] = None,
@@ -2837,6 +2892,7 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["platform"] = platform
             __props__.__dict__["pre_user_data"] = pre_user_data
             __props__.__dict__["private_pool_options"] = private_pool_options
+            __props__.__dict__["ram_role_name"] = ram_role_name
             __props__.__dict__["rds_instances"] = rds_instances
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["rolling_policy"] = rolling_policy
@@ -2926,6 +2982,7 @@ class NodePool(pulumi.CustomResource):
             platform: Optional[pulumi.Input[str]] = None,
             pre_user_data: Optional[pulumi.Input[str]] = None,
             private_pool_options: Optional[pulumi.Input[Union['NodePoolPrivatePoolOptionsArgs', 'NodePoolPrivatePoolOptionsArgsDict']]] = None,
+            ram_role_name: Optional[pulumi.Input[str]] = None,
             rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             rolling_policy: Optional[pulumi.Input[Union['NodePoolRollingPolicyArgs', 'NodePoolRollingPolicyArgsDict']]] = None,
@@ -3019,6 +3076,11 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] platform: Operating system release, using `image_type` instead.
         :param pulumi.Input[str] pre_user_data: Node pre custom data, base64-encoded, the script executed before the node is initialized.
         :param pulumi.Input[Union['NodePoolPrivatePoolOptionsArgs', 'NodePoolPrivatePoolOptionsArgsDict']] private_pool_options: Private node pool configuration. See `private_pool_options` below.
+        :param pulumi.Input[str] ram_role_name: The name of the Worker RAM role.
+               * If it is empty, the default Worker RAM role created in the cluster will be used.
+               * If the specified RAM role is not empty, the specified RAM role must be a **Common Service role**, and its **trusted service** configuration must be **cloud server**. For more information, see [Create a common service role](https://help.aliyun.com/document_detail/116800.html). If the specified RAM role is not the default Worker RAM role created in the cluster, the role name cannot start with 'KubernetesMasterRole-'or 'KubernetesWorkerRole.
+               
+               > **NOTE:**  This parameter is only supported for ACK-managed clusters of 1.22 or later versions.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: The list of RDS instances.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group
         :param pulumi.Input[Union['NodePoolRollingPolicyArgs', 'NodePoolRollingPolicyArgsDict']] rolling_policy: Rotary configuration. See `rolling_policy` below.
@@ -3107,6 +3169,7 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["platform"] = platform
         __props__.__dict__["pre_user_data"] = pre_user_data
         __props__.__dict__["private_pool_options"] = private_pool_options
+        __props__.__dict__["ram_role_name"] = ram_role_name
         __props__.__dict__["rds_instances"] = rds_instances
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["rolling_policy"] = rolling_policy
@@ -3485,6 +3548,18 @@ class NodePool(pulumi.CustomResource):
         Private node pool configuration. See `private_pool_options` below.
         """
         return pulumi.get(self, "private_pool_options")
+
+    @property
+    @pulumi.getter(name="ramRoleName")
+    def ram_role_name(self) -> pulumi.Output[str]:
+        """
+        The name of the Worker RAM role.
+        * If it is empty, the default Worker RAM role created in the cluster will be used.
+        * If the specified RAM role is not empty, the specified RAM role must be a **Common Service role**, and its **trusted service** configuration must be **cloud server**. For more information, see [Create a common service role](https://help.aliyun.com/document_detail/116800.html). If the specified RAM role is not the default Worker RAM role created in the cluster, the role name cannot start with 'KubernetesMasterRole-'or 'KubernetesWorkerRole.
+
+        > **NOTE:**  This parameter is only supported for ACK-managed clusters of 1.22 or later versions.
+        """
+        return pulumi.get(self, "ram_role_name")
 
     @property
     @pulumi.getter(name="rdsInstances")

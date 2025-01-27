@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.FC.Inputs
         private InputList<string>? _nameServers;
 
         /// <summary>
-        /// IP Address List of DNS servers.
+        /// IP Address List of DNS servers
         /// </summary>
         public InputList<string> NameServers
         {
@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.FC.Inputs
         private InputList<string>? _searches;
 
         /// <summary>
-        /// DNS search domain list.
+        /// DNS search domain list
         /// </summary>
         public InputList<string> Searches
         {

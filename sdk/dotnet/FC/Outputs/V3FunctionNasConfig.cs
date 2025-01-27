@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.FC.Outputs
     public sealed class V3FunctionNasConfig
     {
         /// <summary>
-        /// Group ID.
+        /// Group ID
         /// </summary>
         public readonly int? GroupId;
         /// <summary>
-        /// Mount point list. See `mount_points` below.
+        /// Mount point list See `mount_points` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.V3FunctionNasConfigMountPoint> MountPoints;
         /// <summary>
-        /// Account ID.
+        /// Account ID
         /// </summary>
         public readonly int? UserId;
 

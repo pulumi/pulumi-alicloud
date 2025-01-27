@@ -106,6 +106,12 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> RegionId { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// The status of the resource.
         /// </summary>
         [Output("status")]
@@ -193,6 +199,12 @@ namespace Pulumi.AliCloud.Vpc
         [Input("ipamScopeType")]
         public Input<string>? IpamScopeType { get; set; }
 
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
         [Input("tags")]
         private InputMap<string>? _tags;
 
@@ -254,6 +266,12 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("regionId")]
         public Input<string>? RegionId { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
         /// The status of the resource.

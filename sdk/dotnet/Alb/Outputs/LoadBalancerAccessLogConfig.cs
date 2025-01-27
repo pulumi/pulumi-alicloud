@@ -16,17 +16,17 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// <summary>
         /// The project to which the access log is shipped.
         /// </summary>
-        public readonly string LogProject;
+        public readonly string? LogProject;
         /// <summary>
         /// The Logstore to which the access log is shipped.
         /// </summary>
-        public readonly string LogStore;
+        public readonly string? LogStore;
 
         [OutputConstructor]
         private LoadBalancerAccessLogConfig(
-            string logProject,
+            string? logProject,
 
-            string logStore)
+            string? logStore)
         {
             LogProject = logProject;
             LogStore = logStore;

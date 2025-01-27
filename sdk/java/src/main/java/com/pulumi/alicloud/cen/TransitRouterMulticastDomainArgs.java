@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.cen;
 
+import com.pulumi.alicloud.cen.inputs.TransitRouterMulticastDomainOptionsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -16,6 +17,21 @@ import javax.annotation.Nullable;
 public final class TransitRouterMulticastDomainArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final TransitRouterMulticastDomainArgs Empty = new TransitRouterMulticastDomainArgs();
+
+    /**
+     * The function options of the multicast domain. See `options` below.
+     * 
+     */
+    @Import(name="options")
+    private @Nullable Output<TransitRouterMulticastDomainOptionsArgs> options;
+
+    /**
+     * @return The function options of the multicast domain. See `options` below.
+     * 
+     */
+    public Optional<Output<TransitRouterMulticastDomainOptionsArgs>> options() {
+        return Optional.ofNullable(this.options);
+    }
 
     /**
      * A mapping of tags to assign to the resource.
@@ -33,14 +49,14 @@ public final class TransitRouterMulticastDomainArgs extends com.pulumi.resources
     }
 
     /**
-     * The ID of the transit router.
+     * The ID of the forwarding router instance.
      * 
      */
     @Import(name="transitRouterId", required=true)
     private Output<String> transitRouterId;
 
     /**
-     * @return The ID of the transit router.
+     * @return The ID of the forwarding router instance.
      * 
      */
     public Output<String> transitRouterId() {
@@ -48,14 +64,14 @@ public final class TransitRouterMulticastDomainArgs extends com.pulumi.resources
     }
 
     /**
-     * The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (_), and hyphens (-).
+     * The description of the multicast domain.
      * 
      */
     @Import(name="transitRouterMulticastDomainDescription")
     private @Nullable Output<String> transitRouterMulticastDomainDescription;
 
     /**
-     * @return The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (_), and hyphens (-).
+     * @return The description of the multicast domain.
      * 
      */
     public Optional<Output<String>> transitRouterMulticastDomainDescription() {
@@ -63,14 +79,14 @@ public final class TransitRouterMulticastDomainArgs extends com.pulumi.resources
     }
 
     /**
-     * The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (_), and hyphens (-).
+     * The name of the multicast domain.
      * 
      */
     @Import(name="transitRouterMulticastDomainName")
     private @Nullable Output<String> transitRouterMulticastDomainName;
 
     /**
-     * @return The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (_), and hyphens (-).
+     * @return The name of the multicast domain.
      * 
      */
     public Optional<Output<String>> transitRouterMulticastDomainName() {
@@ -80,6 +96,7 @@ public final class TransitRouterMulticastDomainArgs extends com.pulumi.resources
     private TransitRouterMulticastDomainArgs() {}
 
     private TransitRouterMulticastDomainArgs(TransitRouterMulticastDomainArgs $) {
+        this.options = $.options;
         this.tags = $.tags;
         this.transitRouterId = $.transitRouterId;
         this.transitRouterMulticastDomainDescription = $.transitRouterMulticastDomainDescription;
@@ -105,6 +122,27 @@ public final class TransitRouterMulticastDomainArgs extends com.pulumi.resources
         }
 
         /**
+         * @param options The function options of the multicast domain. See `options` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder options(@Nullable Output<TransitRouterMulticastDomainOptionsArgs> options) {
+            $.options = options;
+            return this;
+        }
+
+        /**
+         * @param options The function options of the multicast domain. See `options` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder options(TransitRouterMulticastDomainOptionsArgs options) {
+            return options(Output.of(options));
+        }
+
+        /**
          * @param tags A mapping of tags to assign to the resource.
          * 
          * @return builder
@@ -126,7 +164,7 @@ public final class TransitRouterMulticastDomainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param transitRouterId The ID of the transit router.
+         * @param transitRouterId The ID of the forwarding router instance.
          * 
          * @return builder
          * 
@@ -137,7 +175,7 @@ public final class TransitRouterMulticastDomainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param transitRouterId The ID of the transit router.
+         * @param transitRouterId The ID of the forwarding router instance.
          * 
          * @return builder
          * 
@@ -147,7 +185,7 @@ public final class TransitRouterMulticastDomainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param transitRouterMulticastDomainDescription The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (_), and hyphens (-).
+         * @param transitRouterMulticastDomainDescription The description of the multicast domain.
          * 
          * @return builder
          * 
@@ -158,7 +196,7 @@ public final class TransitRouterMulticastDomainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param transitRouterMulticastDomainDescription The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (_), and hyphens (-).
+         * @param transitRouterMulticastDomainDescription The description of the multicast domain.
          * 
          * @return builder
          * 
@@ -168,7 +206,7 @@ public final class TransitRouterMulticastDomainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param transitRouterMulticastDomainName The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (_), and hyphens (-).
+         * @param transitRouterMulticastDomainName The name of the multicast domain.
          * 
          * @return builder
          * 
@@ -179,7 +217,7 @@ public final class TransitRouterMulticastDomainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param transitRouterMulticastDomainName The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (_), and hyphens (-).
+         * @param transitRouterMulticastDomainName The name of the multicast domain.
          * 
          * @return builder
          * 

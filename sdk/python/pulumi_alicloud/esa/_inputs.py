@@ -15,6 +15,8 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'HttpRequestHeaderModificationRuleRequestHeaderModificationArgs',
+    'HttpRequestHeaderModificationRuleRequestHeaderModificationArgsDict',
     'RecordAuthConfArgs',
     'RecordAuthConfArgsDict',
     'RecordDataArgs',
@@ -22,6 +24,85 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class HttpRequestHeaderModificationRuleRequestHeaderModificationArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Request Header Name.
+        """
+        operation: pulumi.Input[str]
+        """
+        Mode of operation. Value range:
+        add: add.
+        del: delete
+        modify: change.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Request header value
+        """
+elif False:
+    HttpRequestHeaderModificationRuleRequestHeaderModificationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class HttpRequestHeaderModificationRuleRequestHeaderModificationArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 operation: pulumi.Input[str],
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Request Header Name.
+        :param pulumi.Input[str] operation: Mode of operation. Value range:
+               add: add.
+               del: delete
+               modify: change.
+        :param pulumi.Input[str] value: Request header value
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "operation", operation)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Request Header Name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def operation(self) -> pulumi.Input[str]:
+        """
+        Mode of operation. Value range:
+        add: add.
+        del: delete
+        modify: change.
+        """
+        return pulumi.get(self, "operation")
+
+    @operation.setter
+    def operation(self, value: pulumi.Input[str]):
+        pulumi.set(self, "operation", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Request header value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
 
 if not MYPY:
     class RecordAuthConfArgsDict(TypedDict):

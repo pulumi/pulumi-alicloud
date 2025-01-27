@@ -11,7 +11,6 @@ import java.lang.String;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetScalingGroupsGroup {
@@ -25,6 +24,16 @@ public final class GetScalingGroupsGroup {
      * 
      */
     private String activeScalingConfiguration;
+    /**
+     * @return (Available since v1.242.0) The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The allocation policy applies to pay-as-you-go and preemptible instances.
+     * 
+     */
+    private String allocationStrategy;
+    /**
+     * @return (Available since v1.242.0) Indicates whether instances in the scaling group are evenly distributed across multiple zones.
+     * 
+     */
+    private Boolean azBalance;
     /**
      * @return Default cooldown time of scaling group.
      * 
@@ -41,10 +50,25 @@ public final class GetScalingGroupsGroup {
      */
     private List<String> dbInstanceIds;
     /**
+     * @return (Available since v1.242.0) The expected number of ECS instances in the scaling group. Auto Scaling automatically maintains the expected number of ECS instances that you specified.
+     * 
+     */
+    private Integer desiredCapacity;
+    /**
+     * @return (Available since v1.242.0) Indicates whether the Expected Number of Instances feature is enabled.
+     * 
+     */
+    private Boolean enableDesiredCapacity;
+    /**
      * @return Whether the scaling group deletion protection is enabled.
      * 
      */
     private Boolean groupDeletionProtection;
+    /**
+     * @return (Available since v1.242.0) The type of the instances in the scaling group.
+     * 
+     */
+    private String groupType;
     /**
      * @return The health check method of the scaling group.
      * 
@@ -55,6 +79,11 @@ public final class GetScalingGroupsGroup {
      * 
      */
     private String id;
+    /**
+     * @return (Available since v1.242.0) The number of instances that are in the Initialized state and ready to be scaled out in the scaling group.
+     * 
+     */
+    private Integer initCapacity;
     /**
      * @return Active launch template ID for scaling group.
      * 
@@ -76,6 +105,11 @@ public final class GetScalingGroupsGroup {
      */
     private List<String> loadBalancerIds;
     /**
+     * @return (Available since v1.242.0) The maximum life span of each instance in the scaling group. Unit: seconds.
+     * 
+     */
+    private Integer maxInstanceLifetime;
+    /**
      * @return The maximum number of ECS instances.
      * 
      */
@@ -91,15 +125,45 @@ public final class GetScalingGroupsGroup {
      */
     private String modificationTime;
     /**
+     * @return (Available since v1.242.0) The ID of the CloudMonitor application group that is associated with the scaling group.
+     * 
+     */
+    private String monitorGroupId;
+    /**
+     * @return (Available since v1.242.0) The scaling policy of the multi-zone scaling group of the ECS type.
+     * 
+     */
+    private String multiAzPolicy;
+    /**
      * @return Name of the scaling group.
      * 
      */
     private String name;
     /**
-     * @return Number of pending instances in scaling group.
+     * @return (Available since v1.242.0) The lower limit of the number of pay-as-you-go instances in the scaling group.
+     * 
+     */
+    private Integer onDemandBaseCapacity;
+    /**
+     * @return (Available since v1.242.0) The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. OnDemandBaseCapacity specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group.
+     * 
+     */
+    private Integer onDemandPercentageAboveBaseCapacity;
+    /**
+     * @return (Available since v1.242.0) The number of ECS instances that are being added to the scaling group and still being configured.
      * 
      */
     private Integer pendingCapacity;
+    /**
+     * @return (Available since v1.242.0) The number of ECS instances that are in the Pending Add state in the scaling group.
+     * 
+     */
+    private Integer pendingWaitCapacity;
+    /**
+     * @return (Available since v1.242.0) The number of ECS instances that are in the Protected state in the scaling group.
+     * 
+     */
+    private Integer protectedCapacity;
     /**
      * @return Region ID the scaling group belongs to.
      * 
@@ -111,20 +175,75 @@ public final class GetScalingGroupsGroup {
      */
     private List<String> removalPolicies;
     /**
-     * @return Number of removing instances in scaling group.
+     * @return (Available since v1.242.0) The number of ECS instances that are being removed from the scaling group.
      * 
      */
     private Integer removingCapacity;
+    /**
+     * @return (Available since v1.242.0) The number of ECS instances that are in the Pending Remove state in the scaling group.
+     * 
+     */
+    private Integer removingWaitCapacity;
+    /**
+     * @return (Available since v1.242.0) The ID of the resource group to which the scaling group that you want to query belongs.
+     * 
+     */
+    private String resourceGroupId;
+    /**
+     * @return (Available since v1.242.0) The reclaim mode of the scaling group.
+     * 
+     */
+    private String scalingPolicy;
+    /**
+     * @return (Available since v1.242.0) The allocation policy of preemptible instances. This parameter indicates the method used by Auto Scaling to select instance types to create the required number of preemptible instances. This parameter takes effect only if you set multi_az_policy to COMPOSABLE.
+     * 
+     */
+    private String spotAllocationStrategy;
+    /**
+     * @return (Available since v1.242.0) The number of preemptible instances in the scaling group.
+     * 
+     */
+    private Integer spotCapacity;
+    /**
+     * @return (Available since v1.242.0) The number of instance types. Auto Scaling creates preemptible instances of multiple instance types that are provided at the lowest price.
+     * 
+     */
+    private Integer spotInstancePools;
+    /**
+     * @return (Available since v1.242.0) Indicates whether supplementation of preemptible instances is enabled. If this parameter is set to true, Auto Scaling creates an instance to replace a preemptible instance when Auto Scaling receives a system message indicating that the preemptible instance is to be reclaimed.
+     * 
+     */
+    private Boolean spotInstanceRemedy;
+    /**
+     * @return (Available since v1.242.0) The number of instances that are in the Standby state in the scaling group.
+     * 
+     */
+    private Integer standbyCapacity;
+    /**
+     * @return (Available since v1.242.0) The period of time that is required by an ECS instance to enter the Stopped state during the scale-in process. Unit: seconds.
+     * 
+     */
+    private Integer stopInstanceTimeout;
+    /**
+     * @return (Available since v1.242.0) The number of instances that are in Economical Mode in the scaling group.
+     * 
+     */
+    private Integer stoppedCapacity;
     /**
      * @return The Process in suspension.
      * 
      */
     private List<String> suspendedProcesses;
     /**
+     * @return (Available since v1.242.0) Indicates whether Auto Scaling stops executing the scaling operation in the scaling group.
+     * 
+     */
+    private Boolean systemSuspended;
+    /**
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private @Nullable Map<String,String> tags;
+    private Map<String,String> tags;
     /**
      * @return Number of instances in scaling group.
      * 
@@ -167,6 +286,20 @@ public final class GetScalingGroupsGroup {
         return this.activeScalingConfiguration;
     }
     /**
+     * @return (Available since v1.242.0) The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The allocation policy applies to pay-as-you-go and preemptible instances.
+     * 
+     */
+    public String allocationStrategy() {
+        return this.allocationStrategy;
+    }
+    /**
+     * @return (Available since v1.242.0) Indicates whether instances in the scaling group are evenly distributed across multiple zones.
+     * 
+     */
+    public Boolean azBalance() {
+        return this.azBalance;
+    }
+    /**
      * @return Default cooldown time of scaling group.
      * 
      */
@@ -188,11 +321,32 @@ public final class GetScalingGroupsGroup {
         return this.dbInstanceIds;
     }
     /**
+     * @return (Available since v1.242.0) The expected number of ECS instances in the scaling group. Auto Scaling automatically maintains the expected number of ECS instances that you specified.
+     * 
+     */
+    public Integer desiredCapacity() {
+        return this.desiredCapacity;
+    }
+    /**
+     * @return (Available since v1.242.0) Indicates whether the Expected Number of Instances feature is enabled.
+     * 
+     */
+    public Boolean enableDesiredCapacity() {
+        return this.enableDesiredCapacity;
+    }
+    /**
      * @return Whether the scaling group deletion protection is enabled.
      * 
      */
     public Boolean groupDeletionProtection() {
         return this.groupDeletionProtection;
+    }
+    /**
+     * @return (Available since v1.242.0) The type of the instances in the scaling group.
+     * 
+     */
+    public String groupType() {
+        return this.groupType;
     }
     /**
      * @return The health check method of the scaling group.
@@ -207,6 +361,13 @@ public final class GetScalingGroupsGroup {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return (Available since v1.242.0) The number of instances that are in the Initialized state and ready to be scaled out in the scaling group.
+     * 
+     */
+    public Integer initCapacity() {
+        return this.initCapacity;
     }
     /**
      * @return Active launch template ID for scaling group.
@@ -237,6 +398,13 @@ public final class GetScalingGroupsGroup {
         return this.loadBalancerIds;
     }
     /**
+     * @return (Available since v1.242.0) The maximum life span of each instance in the scaling group. Unit: seconds.
+     * 
+     */
+    public Integer maxInstanceLifetime() {
+        return this.maxInstanceLifetime;
+    }
+    /**
      * @return The maximum number of ECS instances.
      * 
      */
@@ -258,6 +426,20 @@ public final class GetScalingGroupsGroup {
         return this.modificationTime;
     }
     /**
+     * @return (Available since v1.242.0) The ID of the CloudMonitor application group that is associated with the scaling group.
+     * 
+     */
+    public String monitorGroupId() {
+        return this.monitorGroupId;
+    }
+    /**
+     * @return (Available since v1.242.0) The scaling policy of the multi-zone scaling group of the ECS type.
+     * 
+     */
+    public String multiAzPolicy() {
+        return this.multiAzPolicy;
+    }
+    /**
      * @return Name of the scaling group.
      * 
      */
@@ -265,11 +447,39 @@ public final class GetScalingGroupsGroup {
         return this.name;
     }
     /**
-     * @return Number of pending instances in scaling group.
+     * @return (Available since v1.242.0) The lower limit of the number of pay-as-you-go instances in the scaling group.
+     * 
+     */
+    public Integer onDemandBaseCapacity() {
+        return this.onDemandBaseCapacity;
+    }
+    /**
+     * @return (Available since v1.242.0) The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. OnDemandBaseCapacity specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group.
+     * 
+     */
+    public Integer onDemandPercentageAboveBaseCapacity() {
+        return this.onDemandPercentageAboveBaseCapacity;
+    }
+    /**
+     * @return (Available since v1.242.0) The number of ECS instances that are being added to the scaling group and still being configured.
      * 
      */
     public Integer pendingCapacity() {
         return this.pendingCapacity;
+    }
+    /**
+     * @return (Available since v1.242.0) The number of ECS instances that are in the Pending Add state in the scaling group.
+     * 
+     */
+    public Integer pendingWaitCapacity() {
+        return this.pendingWaitCapacity;
+    }
+    /**
+     * @return (Available since v1.242.0) The number of ECS instances that are in the Protected state in the scaling group.
+     * 
+     */
+    public Integer protectedCapacity() {
+        return this.protectedCapacity;
     }
     /**
      * @return Region ID the scaling group belongs to.
@@ -286,11 +496,81 @@ public final class GetScalingGroupsGroup {
         return this.removalPolicies;
     }
     /**
-     * @return Number of removing instances in scaling group.
+     * @return (Available since v1.242.0) The number of ECS instances that are being removed from the scaling group.
      * 
      */
     public Integer removingCapacity() {
         return this.removingCapacity;
+    }
+    /**
+     * @return (Available since v1.242.0) The number of ECS instances that are in the Pending Remove state in the scaling group.
+     * 
+     */
+    public Integer removingWaitCapacity() {
+        return this.removingWaitCapacity;
+    }
+    /**
+     * @return (Available since v1.242.0) The ID of the resource group to which the scaling group that you want to query belongs.
+     * 
+     */
+    public String resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
+     * @return (Available since v1.242.0) The reclaim mode of the scaling group.
+     * 
+     */
+    public String scalingPolicy() {
+        return this.scalingPolicy;
+    }
+    /**
+     * @return (Available since v1.242.0) The allocation policy of preemptible instances. This parameter indicates the method used by Auto Scaling to select instance types to create the required number of preemptible instances. This parameter takes effect only if you set multi_az_policy to COMPOSABLE.
+     * 
+     */
+    public String spotAllocationStrategy() {
+        return this.spotAllocationStrategy;
+    }
+    /**
+     * @return (Available since v1.242.0) The number of preemptible instances in the scaling group.
+     * 
+     */
+    public Integer spotCapacity() {
+        return this.spotCapacity;
+    }
+    /**
+     * @return (Available since v1.242.0) The number of instance types. Auto Scaling creates preemptible instances of multiple instance types that are provided at the lowest price.
+     * 
+     */
+    public Integer spotInstancePools() {
+        return this.spotInstancePools;
+    }
+    /**
+     * @return (Available since v1.242.0) Indicates whether supplementation of preemptible instances is enabled. If this parameter is set to true, Auto Scaling creates an instance to replace a preemptible instance when Auto Scaling receives a system message indicating that the preemptible instance is to be reclaimed.
+     * 
+     */
+    public Boolean spotInstanceRemedy() {
+        return this.spotInstanceRemedy;
+    }
+    /**
+     * @return (Available since v1.242.0) The number of instances that are in the Standby state in the scaling group.
+     * 
+     */
+    public Integer standbyCapacity() {
+        return this.standbyCapacity;
+    }
+    /**
+     * @return (Available since v1.242.0) The period of time that is required by an ECS instance to enter the Stopped state during the scale-in process. Unit: seconds.
+     * 
+     */
+    public Integer stopInstanceTimeout() {
+        return this.stopInstanceTimeout;
+    }
+    /**
+     * @return (Available since v1.242.0) The number of instances that are in Economical Mode in the scaling group.
+     * 
+     */
+    public Integer stoppedCapacity() {
+        return this.stoppedCapacity;
     }
     /**
      * @return The Process in suspension.
@@ -300,11 +580,18 @@ public final class GetScalingGroupsGroup {
         return this.suspendedProcesses;
     }
     /**
+     * @return (Available since v1.242.0) Indicates whether Auto Scaling stops executing the scaling operation in the scaling group.
+     * 
+     */
+    public Boolean systemSuspended() {
+        return this.systemSuspended;
+    }
+    /**
      * @return A mapping of tags to assign to the resource.
      * 
      */
     public Map<String,String> tags() {
-        return this.tags == null ? Map.of() : this.tags;
+        return this.tags;
     }
     /**
      * @return Number of instances in scaling group.
@@ -353,26 +640,50 @@ public final class GetScalingGroupsGroup {
     public static final class Builder {
         private Integer activeCapacity;
         private String activeScalingConfiguration;
+        private String allocationStrategy;
+        private Boolean azBalance;
         private Integer cooldownTime;
         private String creationTime;
         private List<String> dbInstanceIds;
+        private Integer desiredCapacity;
+        private Boolean enableDesiredCapacity;
         private Boolean groupDeletionProtection;
+        private String groupType;
         private String healthCheckType;
         private String id;
+        private Integer initCapacity;
         private String launchTemplateId;
         private String launchTemplateVersion;
         private String lifecycleState;
         private List<String> loadBalancerIds;
+        private Integer maxInstanceLifetime;
         private Integer maxSize;
         private Integer minSize;
         private String modificationTime;
+        private String monitorGroupId;
+        private String multiAzPolicy;
         private String name;
+        private Integer onDemandBaseCapacity;
+        private Integer onDemandPercentageAboveBaseCapacity;
         private Integer pendingCapacity;
+        private Integer pendingWaitCapacity;
+        private Integer protectedCapacity;
         private String regionId;
         private List<String> removalPolicies;
         private Integer removingCapacity;
+        private Integer removingWaitCapacity;
+        private String resourceGroupId;
+        private String scalingPolicy;
+        private String spotAllocationStrategy;
+        private Integer spotCapacity;
+        private Integer spotInstancePools;
+        private Boolean spotInstanceRemedy;
+        private Integer standbyCapacity;
+        private Integer stopInstanceTimeout;
+        private Integer stoppedCapacity;
         private List<String> suspendedProcesses;
-        private @Nullable Map<String,String> tags;
+        private Boolean systemSuspended;
+        private Map<String,String> tags;
         private Integer totalCapacity;
         private Integer totalInstanceCount;
         private String vpcId;
@@ -383,25 +694,49 @@ public final class GetScalingGroupsGroup {
     	      Objects.requireNonNull(defaults);
     	      this.activeCapacity = defaults.activeCapacity;
     	      this.activeScalingConfiguration = defaults.activeScalingConfiguration;
+    	      this.allocationStrategy = defaults.allocationStrategy;
+    	      this.azBalance = defaults.azBalance;
     	      this.cooldownTime = defaults.cooldownTime;
     	      this.creationTime = defaults.creationTime;
     	      this.dbInstanceIds = defaults.dbInstanceIds;
+    	      this.desiredCapacity = defaults.desiredCapacity;
+    	      this.enableDesiredCapacity = defaults.enableDesiredCapacity;
     	      this.groupDeletionProtection = defaults.groupDeletionProtection;
+    	      this.groupType = defaults.groupType;
     	      this.healthCheckType = defaults.healthCheckType;
     	      this.id = defaults.id;
+    	      this.initCapacity = defaults.initCapacity;
     	      this.launchTemplateId = defaults.launchTemplateId;
     	      this.launchTemplateVersion = defaults.launchTemplateVersion;
     	      this.lifecycleState = defaults.lifecycleState;
     	      this.loadBalancerIds = defaults.loadBalancerIds;
+    	      this.maxInstanceLifetime = defaults.maxInstanceLifetime;
     	      this.maxSize = defaults.maxSize;
     	      this.minSize = defaults.minSize;
     	      this.modificationTime = defaults.modificationTime;
+    	      this.monitorGroupId = defaults.monitorGroupId;
+    	      this.multiAzPolicy = defaults.multiAzPolicy;
     	      this.name = defaults.name;
+    	      this.onDemandBaseCapacity = defaults.onDemandBaseCapacity;
+    	      this.onDemandPercentageAboveBaseCapacity = defaults.onDemandPercentageAboveBaseCapacity;
     	      this.pendingCapacity = defaults.pendingCapacity;
+    	      this.pendingWaitCapacity = defaults.pendingWaitCapacity;
+    	      this.protectedCapacity = defaults.protectedCapacity;
     	      this.regionId = defaults.regionId;
     	      this.removalPolicies = defaults.removalPolicies;
     	      this.removingCapacity = defaults.removingCapacity;
+    	      this.removingWaitCapacity = defaults.removingWaitCapacity;
+    	      this.resourceGroupId = defaults.resourceGroupId;
+    	      this.scalingPolicy = defaults.scalingPolicy;
+    	      this.spotAllocationStrategy = defaults.spotAllocationStrategy;
+    	      this.spotCapacity = defaults.spotCapacity;
+    	      this.spotInstancePools = defaults.spotInstancePools;
+    	      this.spotInstanceRemedy = defaults.spotInstanceRemedy;
+    	      this.standbyCapacity = defaults.standbyCapacity;
+    	      this.stopInstanceTimeout = defaults.stopInstanceTimeout;
+    	      this.stoppedCapacity = defaults.stoppedCapacity;
     	      this.suspendedProcesses = defaults.suspendedProcesses;
+    	      this.systemSuspended = defaults.systemSuspended;
     	      this.tags = defaults.tags;
     	      this.totalCapacity = defaults.totalCapacity;
     	      this.totalInstanceCount = defaults.totalInstanceCount;
@@ -424,6 +759,22 @@ public final class GetScalingGroupsGroup {
               throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "activeScalingConfiguration");
             }
             this.activeScalingConfiguration = activeScalingConfiguration;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder allocationStrategy(String allocationStrategy) {
+            if (allocationStrategy == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "allocationStrategy");
+            }
+            this.allocationStrategy = allocationStrategy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder azBalance(Boolean azBalance) {
+            if (azBalance == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "azBalance");
+            }
+            this.azBalance = azBalance;
             return this;
         }
         @CustomType.Setter
@@ -454,11 +805,35 @@ public final class GetScalingGroupsGroup {
             return dbInstanceIds(List.of(dbInstanceIds));
         }
         @CustomType.Setter
+        public Builder desiredCapacity(Integer desiredCapacity) {
+            if (desiredCapacity == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "desiredCapacity");
+            }
+            this.desiredCapacity = desiredCapacity;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableDesiredCapacity(Boolean enableDesiredCapacity) {
+            if (enableDesiredCapacity == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "enableDesiredCapacity");
+            }
+            this.enableDesiredCapacity = enableDesiredCapacity;
+            return this;
+        }
+        @CustomType.Setter
         public Builder groupDeletionProtection(Boolean groupDeletionProtection) {
             if (groupDeletionProtection == null) {
               throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "groupDeletionProtection");
             }
             this.groupDeletionProtection = groupDeletionProtection;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder groupType(String groupType) {
+            if (groupType == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "groupType");
+            }
+            this.groupType = groupType;
             return this;
         }
         @CustomType.Setter
@@ -475,6 +850,14 @@ public final class GetScalingGroupsGroup {
               throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder initCapacity(Integer initCapacity) {
+            if (initCapacity == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "initCapacity");
+            }
+            this.initCapacity = initCapacity;
             return this;
         }
         @CustomType.Setter
@@ -513,6 +896,14 @@ public final class GetScalingGroupsGroup {
             return loadBalancerIds(List.of(loadBalancerIds));
         }
         @CustomType.Setter
+        public Builder maxInstanceLifetime(Integer maxInstanceLifetime) {
+            if (maxInstanceLifetime == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "maxInstanceLifetime");
+            }
+            this.maxInstanceLifetime = maxInstanceLifetime;
+            return this;
+        }
+        @CustomType.Setter
         public Builder maxSize(Integer maxSize) {
             if (maxSize == null) {
               throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "maxSize");
@@ -537,6 +928,22 @@ public final class GetScalingGroupsGroup {
             return this;
         }
         @CustomType.Setter
+        public Builder monitorGroupId(String monitorGroupId) {
+            if (monitorGroupId == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "monitorGroupId");
+            }
+            this.monitorGroupId = monitorGroupId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder multiAzPolicy(String multiAzPolicy) {
+            if (multiAzPolicy == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "multiAzPolicy");
+            }
+            this.multiAzPolicy = multiAzPolicy;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "name");
@@ -545,11 +952,43 @@ public final class GetScalingGroupsGroup {
             return this;
         }
         @CustomType.Setter
+        public Builder onDemandBaseCapacity(Integer onDemandBaseCapacity) {
+            if (onDemandBaseCapacity == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "onDemandBaseCapacity");
+            }
+            this.onDemandBaseCapacity = onDemandBaseCapacity;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder onDemandPercentageAboveBaseCapacity(Integer onDemandPercentageAboveBaseCapacity) {
+            if (onDemandPercentageAboveBaseCapacity == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "onDemandPercentageAboveBaseCapacity");
+            }
+            this.onDemandPercentageAboveBaseCapacity = onDemandPercentageAboveBaseCapacity;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pendingCapacity(Integer pendingCapacity) {
             if (pendingCapacity == null) {
               throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "pendingCapacity");
             }
             this.pendingCapacity = pendingCapacity;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pendingWaitCapacity(Integer pendingWaitCapacity) {
+            if (pendingWaitCapacity == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "pendingWaitCapacity");
+            }
+            this.pendingWaitCapacity = pendingWaitCapacity;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder protectedCapacity(Integer protectedCapacity) {
+            if (protectedCapacity == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "protectedCapacity");
+            }
+            this.protectedCapacity = protectedCapacity;
             return this;
         }
         @CustomType.Setter
@@ -580,6 +1019,86 @@ public final class GetScalingGroupsGroup {
             return this;
         }
         @CustomType.Setter
+        public Builder removingWaitCapacity(Integer removingWaitCapacity) {
+            if (removingWaitCapacity == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "removingWaitCapacity");
+            }
+            this.removingWaitCapacity = removingWaitCapacity;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder resourceGroupId(String resourceGroupId) {
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder scalingPolicy(String scalingPolicy) {
+            if (scalingPolicy == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "scalingPolicy");
+            }
+            this.scalingPolicy = scalingPolicy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder spotAllocationStrategy(String spotAllocationStrategy) {
+            if (spotAllocationStrategy == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "spotAllocationStrategy");
+            }
+            this.spotAllocationStrategy = spotAllocationStrategy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder spotCapacity(Integer spotCapacity) {
+            if (spotCapacity == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "spotCapacity");
+            }
+            this.spotCapacity = spotCapacity;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder spotInstancePools(Integer spotInstancePools) {
+            if (spotInstancePools == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "spotInstancePools");
+            }
+            this.spotInstancePools = spotInstancePools;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder spotInstanceRemedy(Boolean spotInstanceRemedy) {
+            if (spotInstanceRemedy == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "spotInstanceRemedy");
+            }
+            this.spotInstanceRemedy = spotInstanceRemedy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder standbyCapacity(Integer standbyCapacity) {
+            if (standbyCapacity == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "standbyCapacity");
+            }
+            this.standbyCapacity = standbyCapacity;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder stopInstanceTimeout(Integer stopInstanceTimeout) {
+            if (stopInstanceTimeout == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "stopInstanceTimeout");
+            }
+            this.stopInstanceTimeout = stopInstanceTimeout;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder stoppedCapacity(Integer stoppedCapacity) {
+            if (stoppedCapacity == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "stoppedCapacity");
+            }
+            this.stoppedCapacity = stoppedCapacity;
+            return this;
+        }
+        @CustomType.Setter
         public Builder suspendedProcesses(List<String> suspendedProcesses) {
             if (suspendedProcesses == null) {
               throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "suspendedProcesses");
@@ -591,8 +1110,18 @@ public final class GetScalingGroupsGroup {
             return suspendedProcesses(List.of(suspendedProcesses));
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,String> tags) {
-
+        public Builder systemSuspended(Boolean systemSuspended) {
+            if (systemSuspended == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "systemSuspended");
+            }
+            this.systemSuspended = systemSuspended;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder tags(Map<String,String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetScalingGroupsGroup", "tags");
+            }
             this.tags = tags;
             return this;
         }
@@ -643,25 +1172,49 @@ public final class GetScalingGroupsGroup {
             final var _resultValue = new GetScalingGroupsGroup();
             _resultValue.activeCapacity = activeCapacity;
             _resultValue.activeScalingConfiguration = activeScalingConfiguration;
+            _resultValue.allocationStrategy = allocationStrategy;
+            _resultValue.azBalance = azBalance;
             _resultValue.cooldownTime = cooldownTime;
             _resultValue.creationTime = creationTime;
             _resultValue.dbInstanceIds = dbInstanceIds;
+            _resultValue.desiredCapacity = desiredCapacity;
+            _resultValue.enableDesiredCapacity = enableDesiredCapacity;
             _resultValue.groupDeletionProtection = groupDeletionProtection;
+            _resultValue.groupType = groupType;
             _resultValue.healthCheckType = healthCheckType;
             _resultValue.id = id;
+            _resultValue.initCapacity = initCapacity;
             _resultValue.launchTemplateId = launchTemplateId;
             _resultValue.launchTemplateVersion = launchTemplateVersion;
             _resultValue.lifecycleState = lifecycleState;
             _resultValue.loadBalancerIds = loadBalancerIds;
+            _resultValue.maxInstanceLifetime = maxInstanceLifetime;
             _resultValue.maxSize = maxSize;
             _resultValue.minSize = minSize;
             _resultValue.modificationTime = modificationTime;
+            _resultValue.monitorGroupId = monitorGroupId;
+            _resultValue.multiAzPolicy = multiAzPolicy;
             _resultValue.name = name;
+            _resultValue.onDemandBaseCapacity = onDemandBaseCapacity;
+            _resultValue.onDemandPercentageAboveBaseCapacity = onDemandPercentageAboveBaseCapacity;
             _resultValue.pendingCapacity = pendingCapacity;
+            _resultValue.pendingWaitCapacity = pendingWaitCapacity;
+            _resultValue.protectedCapacity = protectedCapacity;
             _resultValue.regionId = regionId;
             _resultValue.removalPolicies = removalPolicies;
             _resultValue.removingCapacity = removingCapacity;
+            _resultValue.removingWaitCapacity = removingWaitCapacity;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.scalingPolicy = scalingPolicy;
+            _resultValue.spotAllocationStrategy = spotAllocationStrategy;
+            _resultValue.spotCapacity = spotCapacity;
+            _resultValue.spotInstancePools = spotInstancePools;
+            _resultValue.spotInstanceRemedy = spotInstanceRemedy;
+            _resultValue.standbyCapacity = standbyCapacity;
+            _resultValue.stopInstanceTimeout = stopInstanceTimeout;
+            _resultValue.stoppedCapacity = stoppedCapacity;
             _resultValue.suspendedProcesses = suspendedProcesses;
+            _resultValue.systemSuspended = systemSuspended;
             _resultValue.tags = tags;
             _resultValue.totalCapacity = totalCapacity;
             _resultValue.totalInstanceCount = totalInstanceCount;

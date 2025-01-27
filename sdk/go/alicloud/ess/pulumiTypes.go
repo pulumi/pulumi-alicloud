@@ -5171,18 +5171,30 @@ type GetScalingGroupsGroup struct {
 	ActiveCapacity int `pulumi:"activeCapacity"`
 	// Active scaling configuration for scaling group.
 	ActiveScalingConfiguration string `pulumi:"activeScalingConfiguration"`
+	// (Available since v1.242.0) The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The allocation policy applies to pay-as-you-go and preemptible instances.
+	AllocationStrategy string `pulumi:"allocationStrategy"`
+	// (Available since v1.242.0) Indicates whether instances in the scaling group are evenly distributed across multiple zones.
+	AzBalance bool `pulumi:"azBalance"`
 	// Default cooldown time of scaling group.
 	CooldownTime int `pulumi:"cooldownTime"`
 	// Creation time of scaling group.
 	CreationTime string `pulumi:"creationTime"`
 	// Db instances id which the ECS instance attached to.
 	DbInstanceIds []string `pulumi:"dbInstanceIds"`
+	// (Available since v1.242.0) The expected number of ECS instances in the scaling group. Auto Scaling automatically maintains the expected number of ECS instances that you specified.
+	DesiredCapacity int `pulumi:"desiredCapacity"`
+	// (Available since v1.242.0) Indicates whether the Expected Number of Instances feature is enabled.
+	EnableDesiredCapacity bool `pulumi:"enableDesiredCapacity"`
 	// Whether the scaling group deletion protection is enabled.
 	GroupDeletionProtection bool `pulumi:"groupDeletionProtection"`
+	// (Available since v1.242.0) The type of the instances in the scaling group.
+	GroupType string `pulumi:"groupType"`
 	// The health check method of the scaling group.
 	HealthCheckType string `pulumi:"healthCheckType"`
 	// ID of the scaling group.
 	Id string `pulumi:"id"`
+	// (Available since v1.242.0) The number of instances that are in the Initialized state and ready to be scaled out in the scaling group.
+	InitCapacity int `pulumi:"initCapacity"`
 	// Active launch template ID for scaling group.
 	LaunchTemplateId string `pulumi:"launchTemplateId"`
 	// Version of active launch template.
@@ -5191,24 +5203,60 @@ type GetScalingGroupsGroup struct {
 	LifecycleState string `pulumi:"lifecycleState"`
 	// Slb instances id which the ECS instance attached to.
 	LoadBalancerIds []string `pulumi:"loadBalancerIds"`
+	// (Available since v1.242.0) The maximum life span of each instance in the scaling group. Unit: seconds.
+	MaxInstanceLifetime int `pulumi:"maxInstanceLifetime"`
 	// The maximum number of ECS instances.
 	MaxSize int `pulumi:"maxSize"`
 	// The minimum number of ECS instances.
 	MinSize int `pulumi:"minSize"`
 	// The modification time.
 	ModificationTime string `pulumi:"modificationTime"`
+	// (Available since v1.242.0) The ID of the CloudMonitor application group that is associated with the scaling group.
+	MonitorGroupId string `pulumi:"monitorGroupId"`
+	// (Available since v1.242.0) The scaling policy of the multi-zone scaling group of the ECS type.
+	MultiAzPolicy string `pulumi:"multiAzPolicy"`
 	// Name of the scaling group.
 	Name string `pulumi:"name"`
-	// Number of pending instances in scaling group.
+	// (Available since v1.242.0) The lower limit of the number of pay-as-you-go instances in the scaling group.
+	OnDemandBaseCapacity int `pulumi:"onDemandBaseCapacity"`
+	// (Available since v1.242.0) The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. OnDemandBaseCapacity specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group.
+	OnDemandPercentageAboveBaseCapacity int `pulumi:"onDemandPercentageAboveBaseCapacity"`
+	// (Available since v1.242.0) The number of ECS instances that are being added to the scaling group and still being configured.
 	PendingCapacity int `pulumi:"pendingCapacity"`
+	// (Available since v1.242.0) The number of ECS instances that are in the Pending Add state in the scaling group.
+	PendingWaitCapacity int `pulumi:"pendingWaitCapacity"`
+	// (Available since v1.242.0) The number of ECS instances that are in the Protected state in the scaling group.
+	ProtectedCapacity int `pulumi:"protectedCapacity"`
 	// Region ID the scaling group belongs to.
 	RegionId string `pulumi:"regionId"`
 	// Removal policy used to select the ECS instance to remove from the scaling group.
 	RemovalPolicies []string `pulumi:"removalPolicies"`
-	// Number of removing instances in scaling group.
+	// (Available since v1.242.0) The number of ECS instances that are being removed from the scaling group.
 	RemovingCapacity int `pulumi:"removingCapacity"`
+	// (Available since v1.242.0) The number of ECS instances that are in the Pending Remove state in the scaling group.
+	RemovingWaitCapacity int `pulumi:"removingWaitCapacity"`
+	// (Available since v1.242.0) The ID of the resource group to which the scaling group that you want to query belongs.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// (Available since v1.242.0) The reclaim mode of the scaling group.
+	ScalingPolicy string `pulumi:"scalingPolicy"`
+	// (Available since v1.242.0) The allocation policy of preemptible instances. This parameter indicates the method used by Auto Scaling to select instance types to create the required number of preemptible instances. This parameter takes effect only if you set multiAzPolicy to COMPOSABLE.
+	SpotAllocationStrategy string `pulumi:"spotAllocationStrategy"`
+	// (Available since v1.242.0) The number of preemptible instances in the scaling group.
+	SpotCapacity int `pulumi:"spotCapacity"`
+	// (Available since v1.242.0) The number of instance types. Auto Scaling creates preemptible instances of multiple instance types that are provided at the lowest price.
+	SpotInstancePools int `pulumi:"spotInstancePools"`
+	// (Available since v1.242.0) Indicates whether supplementation of preemptible instances is enabled. If this parameter is set to true, Auto Scaling creates an instance to replace a preemptible instance when Auto Scaling receives a system message indicating that the preemptible instance is to be reclaimed.
+	SpotInstanceRemedy bool `pulumi:"spotInstanceRemedy"`
+	// (Available since v1.242.0) The number of instances that are in the Standby state in the scaling group.
+	StandbyCapacity int `pulumi:"standbyCapacity"`
+	// (Available since v1.242.0) The period of time that is required by an ECS instance to enter the Stopped state during the scale-in process. Unit: seconds.
+	StopInstanceTimeout int `pulumi:"stopInstanceTimeout"`
+	// (Available since v1.242.0) The number of instances that are in Economical Mode in the scaling group.
+	StoppedCapacity int `pulumi:"stoppedCapacity"`
 	// The Process in suspension.
 	SuspendedProcesses []string `pulumi:"suspendedProcesses"`
+	// (Available since v1.242.0) Indicates whether Auto Scaling stops executing the scaling operation in the scaling group.
+	SystemSuspended bool `pulumi:"systemSuspended"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
 	// Number of instances in scaling group.
@@ -5239,18 +5287,30 @@ type GetScalingGroupsGroupArgs struct {
 	ActiveCapacity pulumi.IntInput `pulumi:"activeCapacity"`
 	// Active scaling configuration for scaling group.
 	ActiveScalingConfiguration pulumi.StringInput `pulumi:"activeScalingConfiguration"`
+	// (Available since v1.242.0) The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The allocation policy applies to pay-as-you-go and preemptible instances.
+	AllocationStrategy pulumi.StringInput `pulumi:"allocationStrategy"`
+	// (Available since v1.242.0) Indicates whether instances in the scaling group are evenly distributed across multiple zones.
+	AzBalance pulumi.BoolInput `pulumi:"azBalance"`
 	// Default cooldown time of scaling group.
 	CooldownTime pulumi.IntInput `pulumi:"cooldownTime"`
 	// Creation time of scaling group.
 	CreationTime pulumi.StringInput `pulumi:"creationTime"`
 	// Db instances id which the ECS instance attached to.
 	DbInstanceIds pulumi.StringArrayInput `pulumi:"dbInstanceIds"`
+	// (Available since v1.242.0) The expected number of ECS instances in the scaling group. Auto Scaling automatically maintains the expected number of ECS instances that you specified.
+	DesiredCapacity pulumi.IntInput `pulumi:"desiredCapacity"`
+	// (Available since v1.242.0) Indicates whether the Expected Number of Instances feature is enabled.
+	EnableDesiredCapacity pulumi.BoolInput `pulumi:"enableDesiredCapacity"`
 	// Whether the scaling group deletion protection is enabled.
 	GroupDeletionProtection pulumi.BoolInput `pulumi:"groupDeletionProtection"`
+	// (Available since v1.242.0) The type of the instances in the scaling group.
+	GroupType pulumi.StringInput `pulumi:"groupType"`
 	// The health check method of the scaling group.
 	HealthCheckType pulumi.StringInput `pulumi:"healthCheckType"`
 	// ID of the scaling group.
 	Id pulumi.StringInput `pulumi:"id"`
+	// (Available since v1.242.0) The number of instances that are in the Initialized state and ready to be scaled out in the scaling group.
+	InitCapacity pulumi.IntInput `pulumi:"initCapacity"`
 	// Active launch template ID for scaling group.
 	LaunchTemplateId pulumi.StringInput `pulumi:"launchTemplateId"`
 	// Version of active launch template.
@@ -5259,24 +5319,60 @@ type GetScalingGroupsGroupArgs struct {
 	LifecycleState pulumi.StringInput `pulumi:"lifecycleState"`
 	// Slb instances id which the ECS instance attached to.
 	LoadBalancerIds pulumi.StringArrayInput `pulumi:"loadBalancerIds"`
+	// (Available since v1.242.0) The maximum life span of each instance in the scaling group. Unit: seconds.
+	MaxInstanceLifetime pulumi.IntInput `pulumi:"maxInstanceLifetime"`
 	// The maximum number of ECS instances.
 	MaxSize pulumi.IntInput `pulumi:"maxSize"`
 	// The minimum number of ECS instances.
 	MinSize pulumi.IntInput `pulumi:"minSize"`
 	// The modification time.
 	ModificationTime pulumi.StringInput `pulumi:"modificationTime"`
+	// (Available since v1.242.0) The ID of the CloudMonitor application group that is associated with the scaling group.
+	MonitorGroupId pulumi.StringInput `pulumi:"monitorGroupId"`
+	// (Available since v1.242.0) The scaling policy of the multi-zone scaling group of the ECS type.
+	MultiAzPolicy pulumi.StringInput `pulumi:"multiAzPolicy"`
 	// Name of the scaling group.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Number of pending instances in scaling group.
+	// (Available since v1.242.0) The lower limit of the number of pay-as-you-go instances in the scaling group.
+	OnDemandBaseCapacity pulumi.IntInput `pulumi:"onDemandBaseCapacity"`
+	// (Available since v1.242.0) The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. OnDemandBaseCapacity specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group.
+	OnDemandPercentageAboveBaseCapacity pulumi.IntInput `pulumi:"onDemandPercentageAboveBaseCapacity"`
+	// (Available since v1.242.0) The number of ECS instances that are being added to the scaling group and still being configured.
 	PendingCapacity pulumi.IntInput `pulumi:"pendingCapacity"`
+	// (Available since v1.242.0) The number of ECS instances that are in the Pending Add state in the scaling group.
+	PendingWaitCapacity pulumi.IntInput `pulumi:"pendingWaitCapacity"`
+	// (Available since v1.242.0) The number of ECS instances that are in the Protected state in the scaling group.
+	ProtectedCapacity pulumi.IntInput `pulumi:"protectedCapacity"`
 	// Region ID the scaling group belongs to.
 	RegionId pulumi.StringInput `pulumi:"regionId"`
 	// Removal policy used to select the ECS instance to remove from the scaling group.
 	RemovalPolicies pulumi.StringArrayInput `pulumi:"removalPolicies"`
-	// Number of removing instances in scaling group.
+	// (Available since v1.242.0) The number of ECS instances that are being removed from the scaling group.
 	RemovingCapacity pulumi.IntInput `pulumi:"removingCapacity"`
+	// (Available since v1.242.0) The number of ECS instances that are in the Pending Remove state in the scaling group.
+	RemovingWaitCapacity pulumi.IntInput `pulumi:"removingWaitCapacity"`
+	// (Available since v1.242.0) The ID of the resource group to which the scaling group that you want to query belongs.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// (Available since v1.242.0) The reclaim mode of the scaling group.
+	ScalingPolicy pulumi.StringInput `pulumi:"scalingPolicy"`
+	// (Available since v1.242.0) The allocation policy of preemptible instances. This parameter indicates the method used by Auto Scaling to select instance types to create the required number of preemptible instances. This parameter takes effect only if you set multiAzPolicy to COMPOSABLE.
+	SpotAllocationStrategy pulumi.StringInput `pulumi:"spotAllocationStrategy"`
+	// (Available since v1.242.0) The number of preemptible instances in the scaling group.
+	SpotCapacity pulumi.IntInput `pulumi:"spotCapacity"`
+	// (Available since v1.242.0) The number of instance types. Auto Scaling creates preemptible instances of multiple instance types that are provided at the lowest price.
+	SpotInstancePools pulumi.IntInput `pulumi:"spotInstancePools"`
+	// (Available since v1.242.0) Indicates whether supplementation of preemptible instances is enabled. If this parameter is set to true, Auto Scaling creates an instance to replace a preemptible instance when Auto Scaling receives a system message indicating that the preemptible instance is to be reclaimed.
+	SpotInstanceRemedy pulumi.BoolInput `pulumi:"spotInstanceRemedy"`
+	// (Available since v1.242.0) The number of instances that are in the Standby state in the scaling group.
+	StandbyCapacity pulumi.IntInput `pulumi:"standbyCapacity"`
+	// (Available since v1.242.0) The period of time that is required by an ECS instance to enter the Stopped state during the scale-in process. Unit: seconds.
+	StopInstanceTimeout pulumi.IntInput `pulumi:"stopInstanceTimeout"`
+	// (Available since v1.242.0) The number of instances that are in Economical Mode in the scaling group.
+	StoppedCapacity pulumi.IntInput `pulumi:"stoppedCapacity"`
 	// The Process in suspension.
 	SuspendedProcesses pulumi.StringArrayInput `pulumi:"suspendedProcesses"`
+	// (Available since v1.242.0) Indicates whether Auto Scaling stops executing the scaling operation in the scaling group.
+	SystemSuspended pulumi.BoolInput `pulumi:"systemSuspended"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// Number of instances in scaling group.
@@ -5352,6 +5448,16 @@ func (o GetScalingGroupsGroupOutput) ActiveScalingConfiguration() pulumi.StringO
 	return o.ApplyT(func(v GetScalingGroupsGroup) string { return v.ActiveScalingConfiguration }).(pulumi.StringOutput)
 }
 
+// (Available since v1.242.0) The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The allocation policy applies to pay-as-you-go and preemptible instances.
+func (o GetScalingGroupsGroupOutput) AllocationStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) string { return v.AllocationStrategy }).(pulumi.StringOutput)
+}
+
+// (Available since v1.242.0) Indicates whether instances in the scaling group are evenly distributed across multiple zones.
+func (o GetScalingGroupsGroupOutput) AzBalance() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) bool { return v.AzBalance }).(pulumi.BoolOutput)
+}
+
 // Default cooldown time of scaling group.
 func (o GetScalingGroupsGroupOutput) CooldownTime() pulumi.IntOutput {
 	return o.ApplyT(func(v GetScalingGroupsGroup) int { return v.CooldownTime }).(pulumi.IntOutput)
@@ -5367,9 +5473,24 @@ func (o GetScalingGroupsGroupOutput) DbInstanceIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetScalingGroupsGroup) []string { return v.DbInstanceIds }).(pulumi.StringArrayOutput)
 }
 
+// (Available since v1.242.0) The expected number of ECS instances in the scaling group. Auto Scaling automatically maintains the expected number of ECS instances that you specified.
+func (o GetScalingGroupsGroupOutput) DesiredCapacity() pulumi.IntOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) int { return v.DesiredCapacity }).(pulumi.IntOutput)
+}
+
+// (Available since v1.242.0) Indicates whether the Expected Number of Instances feature is enabled.
+func (o GetScalingGroupsGroupOutput) EnableDesiredCapacity() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) bool { return v.EnableDesiredCapacity }).(pulumi.BoolOutput)
+}
+
 // Whether the scaling group deletion protection is enabled.
 func (o GetScalingGroupsGroupOutput) GroupDeletionProtection() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetScalingGroupsGroup) bool { return v.GroupDeletionProtection }).(pulumi.BoolOutput)
+}
+
+// (Available since v1.242.0) The type of the instances in the scaling group.
+func (o GetScalingGroupsGroupOutput) GroupType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) string { return v.GroupType }).(pulumi.StringOutput)
 }
 
 // The health check method of the scaling group.
@@ -5380,6 +5501,11 @@ func (o GetScalingGroupsGroupOutput) HealthCheckType() pulumi.StringOutput {
 // ID of the scaling group.
 func (o GetScalingGroupsGroupOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetScalingGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (Available since v1.242.0) The number of instances that are in the Initialized state and ready to be scaled out in the scaling group.
+func (o GetScalingGroupsGroupOutput) InitCapacity() pulumi.IntOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) int { return v.InitCapacity }).(pulumi.IntOutput)
 }
 
 // Active launch template ID for scaling group.
@@ -5402,6 +5528,11 @@ func (o GetScalingGroupsGroupOutput) LoadBalancerIds() pulumi.StringArrayOutput 
 	return o.ApplyT(func(v GetScalingGroupsGroup) []string { return v.LoadBalancerIds }).(pulumi.StringArrayOutput)
 }
 
+// (Available since v1.242.0) The maximum life span of each instance in the scaling group. Unit: seconds.
+func (o GetScalingGroupsGroupOutput) MaxInstanceLifetime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) int { return v.MaxInstanceLifetime }).(pulumi.IntOutput)
+}
+
 // The maximum number of ECS instances.
 func (o GetScalingGroupsGroupOutput) MaxSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GetScalingGroupsGroup) int { return v.MaxSize }).(pulumi.IntOutput)
@@ -5417,14 +5548,44 @@ func (o GetScalingGroupsGroupOutput) ModificationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetScalingGroupsGroup) string { return v.ModificationTime }).(pulumi.StringOutput)
 }
 
+// (Available since v1.242.0) The ID of the CloudMonitor application group that is associated with the scaling group.
+func (o GetScalingGroupsGroupOutput) MonitorGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) string { return v.MonitorGroupId }).(pulumi.StringOutput)
+}
+
+// (Available since v1.242.0) The scaling policy of the multi-zone scaling group of the ECS type.
+func (o GetScalingGroupsGroupOutput) MultiAzPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) string { return v.MultiAzPolicy }).(pulumi.StringOutput)
+}
+
 // Name of the scaling group.
 func (o GetScalingGroupsGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetScalingGroupsGroup) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Number of pending instances in scaling group.
+// (Available since v1.242.0) The lower limit of the number of pay-as-you-go instances in the scaling group.
+func (o GetScalingGroupsGroupOutput) OnDemandBaseCapacity() pulumi.IntOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) int { return v.OnDemandBaseCapacity }).(pulumi.IntOutput)
+}
+
+// (Available since v1.242.0) The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. OnDemandBaseCapacity specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group.
+func (o GetScalingGroupsGroupOutput) OnDemandPercentageAboveBaseCapacity() pulumi.IntOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) int { return v.OnDemandPercentageAboveBaseCapacity }).(pulumi.IntOutput)
+}
+
+// (Available since v1.242.0) The number of ECS instances that are being added to the scaling group and still being configured.
 func (o GetScalingGroupsGroupOutput) PendingCapacity() pulumi.IntOutput {
 	return o.ApplyT(func(v GetScalingGroupsGroup) int { return v.PendingCapacity }).(pulumi.IntOutput)
+}
+
+// (Available since v1.242.0) The number of ECS instances that are in the Pending Add state in the scaling group.
+func (o GetScalingGroupsGroupOutput) PendingWaitCapacity() pulumi.IntOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) int { return v.PendingWaitCapacity }).(pulumi.IntOutput)
+}
+
+// (Available since v1.242.0) The number of ECS instances that are in the Protected state in the scaling group.
+func (o GetScalingGroupsGroupOutput) ProtectedCapacity() pulumi.IntOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) int { return v.ProtectedCapacity }).(pulumi.IntOutput)
 }
 
 // Region ID the scaling group belongs to.
@@ -5437,14 +5598,69 @@ func (o GetScalingGroupsGroupOutput) RemovalPolicies() pulumi.StringArrayOutput 
 	return o.ApplyT(func(v GetScalingGroupsGroup) []string { return v.RemovalPolicies }).(pulumi.StringArrayOutput)
 }
 
-// Number of removing instances in scaling group.
+// (Available since v1.242.0) The number of ECS instances that are being removed from the scaling group.
 func (o GetScalingGroupsGroupOutput) RemovingCapacity() pulumi.IntOutput {
 	return o.ApplyT(func(v GetScalingGroupsGroup) int { return v.RemovingCapacity }).(pulumi.IntOutput)
+}
+
+// (Available since v1.242.0) The number of ECS instances that are in the Pending Remove state in the scaling group.
+func (o GetScalingGroupsGroupOutput) RemovingWaitCapacity() pulumi.IntOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) int { return v.RemovingWaitCapacity }).(pulumi.IntOutput)
+}
+
+// (Available since v1.242.0) The ID of the resource group to which the scaling group that you want to query belongs.
+func (o GetScalingGroupsGroupOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// (Available since v1.242.0) The reclaim mode of the scaling group.
+func (o GetScalingGroupsGroupOutput) ScalingPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) string { return v.ScalingPolicy }).(pulumi.StringOutput)
+}
+
+// (Available since v1.242.0) The allocation policy of preemptible instances. This parameter indicates the method used by Auto Scaling to select instance types to create the required number of preemptible instances. This parameter takes effect only if you set multiAzPolicy to COMPOSABLE.
+func (o GetScalingGroupsGroupOutput) SpotAllocationStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) string { return v.SpotAllocationStrategy }).(pulumi.StringOutput)
+}
+
+// (Available since v1.242.0) The number of preemptible instances in the scaling group.
+func (o GetScalingGroupsGroupOutput) SpotCapacity() pulumi.IntOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) int { return v.SpotCapacity }).(pulumi.IntOutput)
+}
+
+// (Available since v1.242.0) The number of instance types. Auto Scaling creates preemptible instances of multiple instance types that are provided at the lowest price.
+func (o GetScalingGroupsGroupOutput) SpotInstancePools() pulumi.IntOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) int { return v.SpotInstancePools }).(pulumi.IntOutput)
+}
+
+// (Available since v1.242.0) Indicates whether supplementation of preemptible instances is enabled. If this parameter is set to true, Auto Scaling creates an instance to replace a preemptible instance when Auto Scaling receives a system message indicating that the preemptible instance is to be reclaimed.
+func (o GetScalingGroupsGroupOutput) SpotInstanceRemedy() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) bool { return v.SpotInstanceRemedy }).(pulumi.BoolOutput)
+}
+
+// (Available since v1.242.0) The number of instances that are in the Standby state in the scaling group.
+func (o GetScalingGroupsGroupOutput) StandbyCapacity() pulumi.IntOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) int { return v.StandbyCapacity }).(pulumi.IntOutput)
+}
+
+// (Available since v1.242.0) The period of time that is required by an ECS instance to enter the Stopped state during the scale-in process. Unit: seconds.
+func (o GetScalingGroupsGroupOutput) StopInstanceTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) int { return v.StopInstanceTimeout }).(pulumi.IntOutput)
+}
+
+// (Available since v1.242.0) The number of instances that are in Economical Mode in the scaling group.
+func (o GetScalingGroupsGroupOutput) StoppedCapacity() pulumi.IntOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) int { return v.StoppedCapacity }).(pulumi.IntOutput)
 }
 
 // The Process in suspension.
 func (o GetScalingGroupsGroupOutput) SuspendedProcesses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetScalingGroupsGroup) []string { return v.SuspendedProcesses }).(pulumi.StringArrayOutput)
+}
+
+// (Available since v1.242.0) Indicates whether Auto Scaling stops executing the scaling operation in the scaling group.
+func (o GetScalingGroupsGroupOutput) SystemSuspended() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) bool { return v.SystemSuspended }).(pulumi.BoolOutput)
 }
 
 // A mapping of tags to assign to the resource.
@@ -5506,14 +5722,28 @@ type GetScalingRulesRule struct {
 	Cooldown int `pulumi:"cooldown"`
 	// ID of the scaling rule.
 	Id string `pulumi:"id"`
+	// (Available since v1.242.0) The maximum number of ECS instances that can be added to the scaling group.
+	InitialMaxSize int `pulumi:"initialMaxSize"`
+	// (Available since v1.242.0) The predefined metric of the scaling rule.
+	MetricName string `pulumi:"metricName"`
 	// Min adjustment magnitude of scaling rule.
 	MinAdjustmentMagnitude int `pulumi:"minAdjustmentMagnitude"`
 	// Name of the scaling rule.
 	Name string `pulumi:"name"`
+	// (Available since v1.242.0) The mode of the predictive scaling rule.
+	PredictiveScalingMode string `pulumi:"predictiveScalingMode"`
+	// (Available since v1.242.0) The amount of buffer time before the prediction task is executed. By default, all prediction tasks that are automatically created by a predictive scaling rule are executed on the hour. You can set a buffer time to execute prediction tasks and prepare resources in advance.
+	PredictiveTaskBufferTime int `pulumi:"predictiveTaskBufferTime"`
+	// (Available since v1.242.0) The action on the predicted maximum value.
+	PredictiveValueBehavior string `pulumi:"predictiveValueBehavior"`
+	// (Available since v1.242.0) The ratio based on which the predicted value is increased if you set predictiveValueBehavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value that is increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks.
+	PredictiveValueBuffer int `pulumi:"predictiveValueBuffer"`
 	// Scaling group id the scaling rules belong to.
 	ScalingGroupId string `pulumi:"scalingGroupId"`
 	// Ari of scaling rule.
 	ScalingRuleAri string `pulumi:"scalingRuleAri"`
+	// (Available since v1.242.0) The target value of the metric.
+	TargetValue float64 `pulumi:"targetValue"`
 	// Type of scaling rule.
 	Type string `pulumi:"type"`
 }
@@ -5538,14 +5768,28 @@ type GetScalingRulesRuleArgs struct {
 	Cooldown pulumi.IntInput `pulumi:"cooldown"`
 	// ID of the scaling rule.
 	Id pulumi.StringInput `pulumi:"id"`
+	// (Available since v1.242.0) The maximum number of ECS instances that can be added to the scaling group.
+	InitialMaxSize pulumi.IntInput `pulumi:"initialMaxSize"`
+	// (Available since v1.242.0) The predefined metric of the scaling rule.
+	MetricName pulumi.StringInput `pulumi:"metricName"`
 	// Min adjustment magnitude of scaling rule.
 	MinAdjustmentMagnitude pulumi.IntInput `pulumi:"minAdjustmentMagnitude"`
 	// Name of the scaling rule.
 	Name pulumi.StringInput `pulumi:"name"`
+	// (Available since v1.242.0) The mode of the predictive scaling rule.
+	PredictiveScalingMode pulumi.StringInput `pulumi:"predictiveScalingMode"`
+	// (Available since v1.242.0) The amount of buffer time before the prediction task is executed. By default, all prediction tasks that are automatically created by a predictive scaling rule are executed on the hour. You can set a buffer time to execute prediction tasks and prepare resources in advance.
+	PredictiveTaskBufferTime pulumi.IntInput `pulumi:"predictiveTaskBufferTime"`
+	// (Available since v1.242.0) The action on the predicted maximum value.
+	PredictiveValueBehavior pulumi.StringInput `pulumi:"predictiveValueBehavior"`
+	// (Available since v1.242.0) The ratio based on which the predicted value is increased if you set predictiveValueBehavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value that is increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks.
+	PredictiveValueBuffer pulumi.IntInput `pulumi:"predictiveValueBuffer"`
 	// Scaling group id the scaling rules belong to.
 	ScalingGroupId pulumi.StringInput `pulumi:"scalingGroupId"`
 	// Ari of scaling rule.
 	ScalingRuleAri pulumi.StringInput `pulumi:"scalingRuleAri"`
+	// (Available since v1.242.0) The target value of the metric.
+	TargetValue pulumi.Float64Input `pulumi:"targetValue"`
 	// Type of scaling rule.
 	Type pulumi.StringInput `pulumi:"type"`
 }
@@ -5621,6 +5865,16 @@ func (o GetScalingRulesRuleOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetScalingRulesRule) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// (Available since v1.242.0) The maximum number of ECS instances that can be added to the scaling group.
+func (o GetScalingRulesRuleOutput) InitialMaxSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetScalingRulesRule) int { return v.InitialMaxSize }).(pulumi.IntOutput)
+}
+
+// (Available since v1.242.0) The predefined metric of the scaling rule.
+func (o GetScalingRulesRuleOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingRulesRule) string { return v.MetricName }).(pulumi.StringOutput)
+}
+
 // Min adjustment magnitude of scaling rule.
 func (o GetScalingRulesRuleOutput) MinAdjustmentMagnitude() pulumi.IntOutput {
 	return o.ApplyT(func(v GetScalingRulesRule) int { return v.MinAdjustmentMagnitude }).(pulumi.IntOutput)
@@ -5631,6 +5885,26 @@ func (o GetScalingRulesRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetScalingRulesRule) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// (Available since v1.242.0) The mode of the predictive scaling rule.
+func (o GetScalingRulesRuleOutput) PredictiveScalingMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingRulesRule) string { return v.PredictiveScalingMode }).(pulumi.StringOutput)
+}
+
+// (Available since v1.242.0) The amount of buffer time before the prediction task is executed. By default, all prediction tasks that are automatically created by a predictive scaling rule are executed on the hour. You can set a buffer time to execute prediction tasks and prepare resources in advance.
+func (o GetScalingRulesRuleOutput) PredictiveTaskBufferTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetScalingRulesRule) int { return v.PredictiveTaskBufferTime }).(pulumi.IntOutput)
+}
+
+// (Available since v1.242.0) The action on the predicted maximum value.
+func (o GetScalingRulesRuleOutput) PredictiveValueBehavior() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingRulesRule) string { return v.PredictiveValueBehavior }).(pulumi.StringOutput)
+}
+
+// (Available since v1.242.0) The ratio based on which the predicted value is increased if you set predictiveValueBehavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value that is increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks.
+func (o GetScalingRulesRuleOutput) PredictiveValueBuffer() pulumi.IntOutput {
+	return o.ApplyT(func(v GetScalingRulesRule) int { return v.PredictiveValueBuffer }).(pulumi.IntOutput)
+}
+
 // Scaling group id the scaling rules belong to.
 func (o GetScalingRulesRuleOutput) ScalingGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetScalingRulesRule) string { return v.ScalingGroupId }).(pulumi.StringOutput)
@@ -5639,6 +5913,11 @@ func (o GetScalingRulesRuleOutput) ScalingGroupId() pulumi.StringOutput {
 // Ari of scaling rule.
 func (o GetScalingRulesRuleOutput) ScalingRuleAri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetScalingRulesRule) string { return v.ScalingRuleAri }).(pulumi.StringOutput)
+}
+
+// (Available since v1.242.0) The target value of the metric.
+func (o GetScalingRulesRuleOutput) TargetValue() pulumi.Float64Output {
+	return o.ApplyT(func(v GetScalingRulesRule) float64 { return v.TargetValue }).(pulumi.Float64Output)
 }
 
 // Type of scaling rule.

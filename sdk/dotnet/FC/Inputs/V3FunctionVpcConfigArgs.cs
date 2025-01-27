@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.FC.Inputs
     public sealed class V3FunctionVpcConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Security group ID.
+        /// Security group ID
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
 
         /// <summary>
-        /// VPC network ID.
+        /// VPC network ID
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.FC.Inputs
         private InputList<string>? _vswitchIds;
 
         /// <summary>
-        /// Switch List.
+        /// Switch List
         /// </summary>
         public InputList<string> VswitchIds
         {

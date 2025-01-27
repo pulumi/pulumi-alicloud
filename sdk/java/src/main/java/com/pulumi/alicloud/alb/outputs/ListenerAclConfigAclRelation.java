@@ -17,7 +17,7 @@ public final class ListenerAclConfigAclRelation {
      */
     private @Nullable String aclId;
     /**
-     * @return The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
+     * @return The Current IP Address of the Listened State
      * 
      */
     private @Nullable String status;
@@ -31,7 +31,7 @@ public final class ListenerAclConfigAclRelation {
         return Optional.ofNullable(this.aclId);
     }
     /**
-     * @return The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
+     * @return The Current IP Address of the Listened State
      * 
      */
     public Optional<String> status() {

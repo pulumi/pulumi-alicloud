@@ -26,6 +26,7 @@ from .load_balancer import *
 from .load_balancer_access_log_config_attachment import *
 from .load_balancer_common_bandwidth_package_attachment import *
 from .load_balancer_security_group_attachment import *
+from .load_balancer_zone_shifted_attachment import *
 from .rule import *
 from .security_policy import *
 from .server_group import *

@@ -77,14 +77,14 @@ public final class ProjectSecurityPropertiesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Project protection. See `project_protection` below.
+     * Project protection See `project_protection` below.
      * 
      */
     @Import(name="projectProtection")
     private @Nullable Output<ProjectSecurityPropertiesProjectProtectionArgs> projectProtection;
 
     /**
-     * @return Project protection. See `project_protection` below.
+     * @return Project protection See `project_protection` below.
      * 
      */
     public Optional<Output<ProjectSecurityPropertiesProjectProtectionArgs>> projectProtection() {
@@ -236,7 +236,7 @@ public final class ProjectSecurityPropertiesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param projectProtection Project protection. See `project_protection` below.
+         * @param projectProtection Project protection See `project_protection` below.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class ProjectSecurityPropertiesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param projectProtection Project protection. See `project_protection` below.
+         * @param projectProtection Project protection See `project_protection` below.
          * 
          * @return builder
          * 

@@ -179,6 +179,20 @@ public class IpamIpamScope extends com.pulumi.resources.CustomResource {
         return this.regionId;
     }
     /**
+     * The ID of the resource group.
+     * 
+     */
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
      * The status of the resource.
      * 
      */

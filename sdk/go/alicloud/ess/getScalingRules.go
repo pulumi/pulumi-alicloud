@@ -13,6 +13,8 @@ import (
 
 // This data source provides available scaling rule resources.
 //
+// > **NOTE:** Available since v1.39.0
+//
 // ## Example Usage
 //
 // ```go
@@ -20,25 +22,89 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ess"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			scalingrulesDs, err := ess.GetScalingRules(ctx, &ess.GetScalingRulesArgs{
-//				ScalingGroupId: pulumi.StringRef("scaling_group_id"),
-//				Ids: []string{
-//					"scaling_rule_id1",
-//					"scaling_rule_id2",
-//				},
-//				NameRegex: pulumi.StringRef("scaling_rule_name"),
+//			cfg := config.New(ctx, "")
+//			name := "terraform-ex"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myName := fmt.Sprintf("%v-%v", name, defaultInteger.Result)
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstScalingRule", scalingrulesDs.Rules[0].Id)
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(myName),
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/24"),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				VswitchName: pulumi.String(myName),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultScalingGroup, err := ess.NewScalingGroup(ctx, "default", &ess.ScalingGroupArgs{
+//				MinSize:          pulumi.Int(1),
+//				MaxSize:          pulumi.Int(1),
+//				ScalingGroupName: pulumi.String(myName),
+//				RemovalPolicies: pulumi.StringArray{
+//					pulumi.String("OldestInstance"),
+//					pulumi.String("NewestInstance"),
+//				},
+//				VswitchIds: pulumi.StringArray{
+//					defaultSwitch.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultScalingRule, err := ess.NewScalingRule(ctx, "default", &ess.ScalingRuleArgs{
+//				ScalingGroupId:  defaultScalingGroup.ID(),
+//				ScalingRuleName: pulumi.String(myName),
+//				AdjustmentType:  pulumi.String("PercentChangeInCapacity"),
+//				AdjustmentValue: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			scalingrulesDs := ess.GetScalingRulesOutput(ctx, ess.GetScalingRulesOutputArgs{
+//				ScalingGroupId: defaultScalingGroup.ID(),
+//				Ids: pulumi.StringArray{
+//					defaultScalingRule.ID(),
+//				},
+//				NameRegex: pulumi.String(myName),
+//			}, nil)
+//			ctx.Export("firstScalingRule", scalingrulesDs.ApplyT(func(scalingrulesDs ess.GetScalingRulesResult) (*string, error) {
+//				return &scalingrulesDs.Rules[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}

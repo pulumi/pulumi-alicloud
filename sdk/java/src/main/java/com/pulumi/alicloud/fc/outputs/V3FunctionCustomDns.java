@@ -18,12 +18,12 @@ public final class V3FunctionCustomDns {
      */
     private @Nullable List<V3FunctionCustomDnsDnsOption> dnsOptions;
     /**
-     * @return IP Address List of DNS servers.
+     * @return IP Address List of DNS servers
      * 
      */
     private @Nullable List<String> nameServers;
     /**
-     * @return DNS search domain list.
+     * @return DNS search domain list
      * 
      */
     private @Nullable List<String> searches;
@@ -37,14 +37,14 @@ public final class V3FunctionCustomDns {
         return this.dnsOptions == null ? List.of() : this.dnsOptions;
     }
     /**
-     * @return IP Address List of DNS servers.
+     * @return IP Address List of DNS servers
      * 
      */
     public List<String> nameServers() {
         return this.nameServers == null ? List.of() : this.nameServers;
     }
     /**
-     * @return DNS search domain list.
+     * @return DNS search domain list
      * 
      */
     public List<String> searches() {

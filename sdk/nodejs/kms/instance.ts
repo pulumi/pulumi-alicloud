@@ -13,39 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.210.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
- * const default = alicloud.vpc.getNetworks({
- *     nameRegex: "^default-NODELETING$",
- *     cidrBlock: "172.16.0.0/16",
- * });
- * const defaultGetSwitches = _default.then(_default => alicloud.vpc.getSwitches({
- *     vpcId: _default.ids?.[0],
- *     zoneId: "cn-hangzhou-h",
- * }));
- * const defaultInstance = new alicloud.kms.Instance("default", {
- *     productVersion: "3",
- *     vpcId: _default.then(_default => _default.ids?.[0]),
- *     zoneIds: [
- *         "cn-hangzhou-h",
- *         "cn-hangzhou-g",
- *     ],
- *     vswitchIds: [defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0])],
- *     vpcNum: 1,
- *     keyNum: 1000,
- *     secretNum: 0,
- *     spec: 1000,
- * });
- * ```
- *
  * ## Import
  *
  * KMS Instance can be imported using the id, e.g.

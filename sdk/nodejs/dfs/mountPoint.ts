@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a DFS Mount Point resource.
+ * Provides a Apsara File Storage for HDFS (DFS) Mount Point resource.
  *
- * For information about DFS Mount Point and how to use it, see [What is Mount Point](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
+ * For information about Apsara File Storage for HDFS (DFS) Mount Point and how to use it, see [What is Mount Point](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
  *
  * > **NOTE:** Available since v1.140.0.
  *
@@ -21,21 +21,20 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const default = alicloud.dfs.getZones({});
- * const defaultNetwork = new alicloud.vpc.Network("default", {
+ * const _default = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "10.4.0.0/16",
  * });
  * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vswitchName: name,
  *     cidrBlock: "10.4.0.0/24",
- *     vpcId: defaultNetwork.id,
- *     zoneId: _default.then(_default => _default.zones?.[0]?.zoneId),
+ *     vpcId: _default.id,
+ *     zoneId: "cn-hangzhou-e",
  * });
  * const defaultFileSystem = new alicloud.dfs.FileSystem("default", {
- *     storageType: _default.then(_default => _default.zones?.[0]?.options?.[0]?.storageType),
- *     zoneId: _default.then(_default => _default.zones?.[0]?.zoneId),
- *     protocolType: "HDFS",
+ *     storageType: "STANDARD",
+ *     zoneId: "cn-hangzhou-e",
+ *     protocolType: "PANGU",
  *     description: name,
  *     fileSystemName: name,
  *     throughputMode: "Provisioned",
@@ -49,7 +48,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultMountPoint = new alicloud.dfs.MountPoint("default", {
  *     description: name,
- *     vpcId: defaultNetwork.id,
+ *     vpcId: _default.id,
  *     fileSystemId: defaultFileSystem.id,
  *     accessGroupId: defaultAccessGroup.id,
  *     networkType: "VPC",
@@ -59,7 +58,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * DFS Mount Point can be imported using the id, e.g.
+ * Apsara File Storage for HDFS (DFS) Mount Point can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:dfs/mountPoint:MountPoint example <file_system_id>:<mount_point_id>
@@ -122,6 +121,10 @@ export class MountPoint extends pulumi.CustomResource {
      */
     public readonly networkType!: pulumi.Output<string>;
     /**
+     * (Available since v1.242.0) The region ID of the Mount Point.
+     */
+    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    /**
      * Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.
      */
     public readonly status!: pulumi.Output<string>;
@@ -154,6 +157,7 @@ export class MountPoint extends pulumi.CustomResource {
             resourceInputs["fileSystemId"] = state ? state.fileSystemId : undefined;
             resourceInputs["mountPointId"] = state ? state.mountPointId : undefined;
             resourceInputs["networkType"] = state ? state.networkType : undefined;
+            resourceInputs["regionId"] = state ? state.regionId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["vpcId"] = state ? state.vpcId : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
@@ -184,6 +188,7 @@ export class MountPoint extends pulumi.CustomResource {
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["mountPointId"] = undefined /*out*/;
+            resourceInputs["regionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MountPoint.__pulumiType, name, resourceInputs, opts);
@@ -222,6 +227,10 @@ export interface MountPointState {
      * The network type of the Mount point.  Only VPC (VPC) is supported.
      */
     networkType?: pulumi.Input<string>;
+    /**
+     * (Available since v1.242.0) The region ID of the Mount Point.
+     */
+    regionId?: pulumi.Input<string>;
     /**
      * Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.
      */

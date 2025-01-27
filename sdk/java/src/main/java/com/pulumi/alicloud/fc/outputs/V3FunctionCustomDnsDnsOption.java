@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class V3FunctionCustomDnsDnsOption {
     /**
-     * @return Configuration Item Name.
+     * @return Configuration Item Name
      * 
      */
     private @Nullable String name;
     /**
-     * @return Configuration Item Value.
+     * @return Configuration Item Value
      * 
      */
     private @Nullable String value;
 
     private V3FunctionCustomDnsDnsOption() {}
     /**
-     * @return Configuration Item Name.
+     * @return Configuration Item Name
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Configuration Item Value.
+     * @return Configuration Item Value
      * 
      */
     public Optional<String> value() {

@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cen;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.cen.TransitRouterMulticastDomainArgs;
 import com.pulumi.alicloud.cen.inputs.TransitRouterMulticastDomainState;
+import com.pulumi.alicloud.cen.outputs.TransitRouterMulticastDomainOptions;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -40,6 +41,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.cen.TransitRouterArgs;
  * import com.pulumi.alicloud.cen.TransitRouterMulticastDomain;
  * import com.pulumi.alicloud.cen.TransitRouterMulticastDomainArgs;
+ * import com.pulumi.alicloud.cen.inputs.TransitRouterMulticastDomainOptionsArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -53,21 +55,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
  *         var example = new Instance("example", InstanceArgs.builder()
- *             .cenInstanceName("tf_example")
- *             .description("an example for cen")
+ *             .cenInstanceName(name)
  *             .build());
  * 
  *         var exampleTransitRouter = new TransitRouter("exampleTransitRouter", TransitRouterArgs.builder()
- *             .transitRouterName("tf_example")
+ *             .transitRouterName(name)
  *             .cenId(example.id())
  *             .supportMulticast(true)
  *             .build());
  * 
- *         var exampleTransitRouterMulticastDomain = new TransitRouterMulticastDomain("exampleTransitRouterMulticastDomain", TransitRouterMulticastDomainArgs.builder()
+ *         var default_ = new TransitRouterMulticastDomain("default", TransitRouterMulticastDomainArgs.builder()
  *             .transitRouterId(exampleTransitRouter.transitRouterId())
- *             .transitRouterMulticastDomainName("tf_example")
- *             .transitRouterMulticastDomainDescription("tf_example")
+ *             .transitRouterMulticastDomainName(name)
+ *             .transitRouterMulticastDomainDescription(name)
+ *             .options(TransitRouterMulticastDomainOptionsArgs.builder()
+ *                 .igmpv2Support("disable")
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -87,6 +93,34 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:cen/transitRouterMulticastDomain:TransitRouterMulticastDomain")
 public class TransitRouterMulticastDomain extends com.pulumi.resources.CustomResource {
+    /**
+     * The function options of the multicast domain. See `options` below.
+     * 
+     */
+    @Export(name="options", refs={TransitRouterMulticastDomainOptions.class}, tree="[0]")
+    private Output<TransitRouterMulticastDomainOptions> options;
+
+    /**
+     * @return The function options of the multicast domain. See `options` below.
+     * 
+     */
+    public Output<TransitRouterMulticastDomainOptions> options() {
+        return this.options;
+    }
+    /**
+     * (Available since v1.242.0) The region ID of the transit router.
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return (Available since v1.242.0) The region ID of the transit router.
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
+    }
     /**
      * The status of the Transit Router Multicast Domain.
      * 
@@ -116,42 +150,42 @@ public class TransitRouterMulticastDomain extends com.pulumi.resources.CustomRes
         return Codegen.optional(this.tags);
     }
     /**
-     * The ID of the transit router.
+     * The ID of the forwarding router instance.
      * 
      */
     @Export(name="transitRouterId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterId;
 
     /**
-     * @return The ID of the transit router.
+     * @return The ID of the forwarding router instance.
      * 
      */
     public Output<String> transitRouterId() {
         return this.transitRouterId;
     }
     /**
-     * The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (_), and hyphens (-).
+     * The description of the multicast domain.
      * 
      */
     @Export(name="transitRouterMulticastDomainDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transitRouterMulticastDomainDescription;
 
     /**
-     * @return The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (_), and hyphens (-).
+     * @return The description of the multicast domain.
      * 
      */
     public Output<Optional<String>> transitRouterMulticastDomainDescription() {
         return Codegen.optional(this.transitRouterMulticastDomainDescription);
     }
     /**
-     * The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (_), and hyphens (-).
+     * The name of the multicast domain.
      * 
      */
     @Export(name="transitRouterMulticastDomainName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transitRouterMulticastDomainName;
 
     /**
-     * @return The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (_), and hyphens (-).
+     * @return The name of the multicast domain.
      * 
      */
     public Output<Optional<String>> transitRouterMulticastDomainName() {

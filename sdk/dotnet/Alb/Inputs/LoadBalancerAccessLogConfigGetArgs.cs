@@ -15,14 +15,14 @@ namespace Pulumi.AliCloud.Alb.Inputs
         /// <summary>
         /// The project to which the access log is shipped.
         /// </summary>
-        [Input("logProject", required: true)]
-        public Input<string> LogProject { get; set; } = null!;
+        [Input("logProject")]
+        public Input<string>? LogProject { get; set; }
 
         /// <summary>
         /// The Logstore to which the access log is shipped.
         /// </summary>
-        [Input("logStore", required: true)]
-        public Input<string> LogStore { get; set; } = null!;
+        [Input("logStore")]
+        public Input<string>? LogStore { get; set; }
 
         public LoadBalancerAccessLogConfigGetArgs()
         {

@@ -139,6 +139,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies whether to enable the I/O burst feature of general
+     * ESSDs. Valid values:
+     * - true
+     * - false
+     * 
+     */
+    @Import(name="burstingEnabled")
+    private @Nullable Output<Boolean> burstingEnabled;
+
+    /**
+     * @return Specifies whether to enable the I/O burst feature of general
+     * ESSDs. Valid values:
+     * - true
+     * - false
+     * 
+     */
+    public Optional<Output<Boolean>> burstingEnabled() {
+        return Optional.ofNullable(this.burstingEnabled);
+    }
+
+    /**
      * The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `ca_type` start  support `MySQL` engine. Value range:
      * - aliyun: a cloud certificate
      * - custom: a custom certificate
@@ -1531,6 +1552,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.autoUpgradeMinorVersion = $.autoUpgradeMinorVersion;
         this.babelfishConfigs = $.babelfishConfigs;
         this.babelfishPort = $.babelfishPort;
+        this.burstingEnabled = $.burstingEnabled;
         this.caType = $.caType;
         this.category = $.category;
         this.clientCaCert = $.clientCaCert;
@@ -1783,6 +1805,33 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder babelfishPort(String babelfishPort) {
             return babelfishPort(Output.of(babelfishPort));
+        }
+
+        /**
+         * @param burstingEnabled Specifies whether to enable the I/O burst feature of general
+         * ESSDs. Valid values:
+         * - true
+         * - false
+         * 
+         * @return builder
+         * 
+         */
+        public Builder burstingEnabled(@Nullable Output<Boolean> burstingEnabled) {
+            $.burstingEnabled = burstingEnabled;
+            return this;
+        }
+
+        /**
+         * @param burstingEnabled Specifies whether to enable the I/O burst feature of general
+         * ESSDs. Valid values:
+         * - true
+         * - false
+         * 
+         * @return builder
+         * 
+         */
+        public Builder burstingEnabled(Boolean burstingEnabled) {
+            return burstingEnabled(Output.of(burstingEnabled));
         }
 
         /**

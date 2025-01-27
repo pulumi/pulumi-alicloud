@@ -12,7 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a VPC Ipv4 Cidr Block resource. VPC IPv4 additional network segment.
+// Provides a VPC Ipv4 Cidr Block resource.
+//
+// VPC IPv4 additional network segment.
 //
 // For information about VPC Ipv4 Cidr Block and how to use it, see [What is Ipv4 Cidr Block](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/associatevpccidrblock).
 //
@@ -69,12 +71,16 @@ import (
 type Ipv4CidrBlock struct {
 	pulumi.CustomResourceState
 
-	// The IPv4 CIDR block. Take note of the following requirements:
-	// * You can specify one of the following standard IPv4 CIDR blocks or their subnets as the secondary IPv4 CIDR block: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8.
-	// * You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, or their subnets as the secondary IPv4 CIDR block of the VPC.
-	// * The CIDR block cannot start with 0. The subnet mask must be 8 to 28 bits in length.
-	// * The secondary CIDR block cannot overlap with the primary CIDR block or an existing secondary CIDR block.
+	// The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
+	Ipv4IpamPoolId pulumi.StringPtrOutput `pulumi:"ipv4IpamPoolId"`
+	// The ID of the region where the VPC resides.
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
+	// Additional network segment information.
 	SecondaryCidrBlock pulumi.StringOutput `pulumi:"secondaryCidrBlock"`
+	// Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+	//
+	// > **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+	SecondaryCidrMask pulumi.IntPtrOutput `pulumi:"secondaryCidrMask"`
 	// The ID of the VPC.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 }
@@ -86,9 +92,6 @@ func NewIpv4CidrBlock(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.SecondaryCidrBlock == nil {
-		return nil, errors.New("invalid value for required argument 'SecondaryCidrBlock'")
-	}
 	if args.VpcId == nil {
 		return nil, errors.New("invalid value for required argument 'VpcId'")
 	}
@@ -115,23 +118,31 @@ func GetIpv4CidrBlock(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Ipv4CidrBlock resources.
 type ipv4CidrBlockState struct {
-	// The IPv4 CIDR block. Take note of the following requirements:
-	// * You can specify one of the following standard IPv4 CIDR blocks or their subnets as the secondary IPv4 CIDR block: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8.
-	// * You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, or their subnets as the secondary IPv4 CIDR block of the VPC.
-	// * The CIDR block cannot start with 0. The subnet mask must be 8 to 28 bits in length.
-	// * The secondary CIDR block cannot overlap with the primary CIDR block or an existing secondary CIDR block.
+	// The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
+	Ipv4IpamPoolId *string `pulumi:"ipv4IpamPoolId"`
+	// The ID of the region where the VPC resides.
+	RegionId *string `pulumi:"regionId"`
+	// Additional network segment information.
 	SecondaryCidrBlock *string `pulumi:"secondaryCidrBlock"`
+	// Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+	//
+	// > **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+	SecondaryCidrMask *int `pulumi:"secondaryCidrMask"`
 	// The ID of the VPC.
 	VpcId *string `pulumi:"vpcId"`
 }
 
 type Ipv4CidrBlockState struct {
-	// The IPv4 CIDR block. Take note of the following requirements:
-	// * You can specify one of the following standard IPv4 CIDR blocks or their subnets as the secondary IPv4 CIDR block: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8.
-	// * You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, or their subnets as the secondary IPv4 CIDR block of the VPC.
-	// * The CIDR block cannot start with 0. The subnet mask must be 8 to 28 bits in length.
-	// * The secondary CIDR block cannot overlap with the primary CIDR block or an existing secondary CIDR block.
+	// The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
+	Ipv4IpamPoolId pulumi.StringPtrInput
+	// The ID of the region where the VPC resides.
+	RegionId pulumi.StringPtrInput
+	// Additional network segment information.
 	SecondaryCidrBlock pulumi.StringPtrInput
+	// Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+	//
+	// > **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+	SecondaryCidrMask pulumi.IntPtrInput
 	// The ID of the VPC.
 	VpcId pulumi.StringPtrInput
 }
@@ -141,24 +152,28 @@ func (Ipv4CidrBlockState) ElementType() reflect.Type {
 }
 
 type ipv4CidrBlockArgs struct {
-	// The IPv4 CIDR block. Take note of the following requirements:
-	// * You can specify one of the following standard IPv4 CIDR blocks or their subnets as the secondary IPv4 CIDR block: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8.
-	// * You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, or their subnets as the secondary IPv4 CIDR block of the VPC.
-	// * The CIDR block cannot start with 0. The subnet mask must be 8 to 28 bits in length.
-	// * The secondary CIDR block cannot overlap with the primary CIDR block or an existing secondary CIDR block.
-	SecondaryCidrBlock string `pulumi:"secondaryCidrBlock"`
+	// The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
+	Ipv4IpamPoolId *string `pulumi:"ipv4IpamPoolId"`
+	// Additional network segment information.
+	SecondaryCidrBlock *string `pulumi:"secondaryCidrBlock"`
+	// Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+	//
+	// > **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+	SecondaryCidrMask *int `pulumi:"secondaryCidrMask"`
 	// The ID of the VPC.
 	VpcId string `pulumi:"vpcId"`
 }
 
 // The set of arguments for constructing a Ipv4CidrBlock resource.
 type Ipv4CidrBlockArgs struct {
-	// The IPv4 CIDR block. Take note of the following requirements:
-	// * You can specify one of the following standard IPv4 CIDR blocks or their subnets as the secondary IPv4 CIDR block: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8.
-	// * You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, or their subnets as the secondary IPv4 CIDR block of the VPC.
-	// * The CIDR block cannot start with 0. The subnet mask must be 8 to 28 bits in length.
-	// * The secondary CIDR block cannot overlap with the primary CIDR block or an existing secondary CIDR block.
-	SecondaryCidrBlock pulumi.StringInput
+	// The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
+	Ipv4IpamPoolId pulumi.StringPtrInput
+	// Additional network segment information.
+	SecondaryCidrBlock pulumi.StringPtrInput
+	// Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+	//
+	// > **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+	SecondaryCidrMask pulumi.IntPtrInput
 	// The ID of the VPC.
 	VpcId pulumi.StringInput
 }
@@ -250,13 +265,26 @@ func (o Ipv4CidrBlockOutput) ToIpv4CidrBlockOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The IPv4 CIDR block. Take note of the following requirements:
-// * You can specify one of the following standard IPv4 CIDR blocks or their subnets as the secondary IPv4 CIDR block: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8.
-// * You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, or their subnets as the secondary IPv4 CIDR block of the VPC.
-// * The CIDR block cannot start with 0. The subnet mask must be 8 to 28 bits in length.
-// * The secondary CIDR block cannot overlap with the primary CIDR block or an existing secondary CIDR block.
+// The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
+func (o Ipv4CidrBlockOutput) Ipv4IpamPoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Ipv4CidrBlock) pulumi.StringPtrOutput { return v.Ipv4IpamPoolId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the region where the VPC resides.
+func (o Ipv4CidrBlockOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ipv4CidrBlock) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// Additional network segment information.
 func (o Ipv4CidrBlockOutput) SecondaryCidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ipv4CidrBlock) pulumi.StringOutput { return v.SecondaryCidrBlock }).(pulumi.StringOutput)
+}
+
+// Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+//
+// > **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+func (o Ipv4CidrBlockOutput) SecondaryCidrMask() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Ipv4CidrBlock) pulumi.IntPtrOutput { return v.SecondaryCidrMask }).(pulumi.IntPtrOutput)
 }
 
 // The ID of the VPC.

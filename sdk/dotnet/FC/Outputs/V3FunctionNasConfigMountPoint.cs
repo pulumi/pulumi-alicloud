@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.FC.Outputs
         public readonly bool? EnableTls;
         public readonly string? MountDir;
         /// <summary>
-        /// NAS server address.
+        /// NAS server address
         /// </summary>
         public readonly string? ServerAddr;
 

@@ -19,12 +19,27 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const ids = alicloud.alb.getServerGroups({});
- * export const albServerGroupId1 = ids.then(ids => ids.groups?.[0]?.id);
- * const nameRegex = alicloud.alb.getServerGroups({
- *     nameRegex: "^my-ServerGroup",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "192.168.0.0/16",
  * });
- * export const albServerGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
+ * const defaultServerGroup = new alicloud.alb.ServerGroup("default", {
+ *     protocol: "HTTP",
+ *     vpcId: _default.id,
+ *     serverGroupName: name,
+ *     healthCheckConfig: {
+ *         healthCheckEnabled: false,
+ *     },
+ *     stickySessionConfig: {
+ *         stickySessionEnabled: false,
+ *     },
+ * });
+ * const ids = alicloud.alb.getServerGroupsOutput({
+ *     ids: [defaultServerGroup.id],
+ * });
+ * export const albServerGroupId0 = ids.apply(ids => ids.groups?.[0]?.id);
  * ```
  */
 export function getServerGroups(args?: GetServerGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetServerGroupsResult> {
@@ -49,7 +64,7 @@ export function getServerGroups(args?: GetServerGroupsArgs, opts?: pulumi.Invoke
  */
 export interface GetServerGroupsArgs {
     /**
-     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      */
     enableDetails?: boolean;
     /**
@@ -69,23 +84,23 @@ export interface GetServerGroupsArgs {
      */
     resourceGroupId?: string;
     /**
-     * The server group ids.
+     * The server group IDs.
      */
     serverGroupIds?: string[];
     /**
-     * The name of the resource.
+     * The names of the Server Group.
      */
     serverGroupName?: string;
     /**
-     * The status of the resource.
+     * The status of the Server Group. Valid values: `Available`, `Configuring`, `Provisioning`.
      */
     status?: string;
     /**
-     * A map of tags assigned to the group.
+     * A mapping of tags to assign to the resource.
      */
     tags?: {[key: string]: string};
     /**
-     * The ID of the VPC that you want to access.
+     * The ID of the virtual private cloud (VPC).
      */
     vpcId?: string;
 }
@@ -96,7 +111,7 @@ export interface GetServerGroupsArgs {
 export interface GetServerGroupsResult {
     readonly enableDetails?: boolean;
     /**
-     * A list of Alb Server Groups. Each element contains the following attributes:
+     * A list of Server Groups. Each element contains the following attributes:
      */
     readonly groups: outputs.alb.GetServerGroupsGroup[];
     /**
@@ -113,19 +128,19 @@ export interface GetServerGroupsResult {
     readonly resourceGroupId?: string;
     readonly serverGroupIds?: string[];
     /**
-     * The name of the resource.
+     * The name of the Server Group.
      */
     readonly serverGroupName?: string;
     /**
-     * The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+     * The status of the server.
      */
     readonly status?: string;
     /**
-     * The tags of the resource.
+     * The tags of the resource. **Note:** `tags` takes effect only if `enableDetails` is set to `true`.
      */
     readonly tags?: {[key: string]: string};
     /**
-     * The ID of the VPC that you want to access.
+     * The ID of the VPC.
      */
     readonly vpcId?: string;
 }
@@ -142,12 +157,27 @@ export interface GetServerGroupsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const ids = alicloud.alb.getServerGroups({});
- * export const albServerGroupId1 = ids.then(ids => ids.groups?.[0]?.id);
- * const nameRegex = alicloud.alb.getServerGroups({
- *     nameRegex: "^my-ServerGroup",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "192.168.0.0/16",
  * });
- * export const albServerGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
+ * const defaultServerGroup = new alicloud.alb.ServerGroup("default", {
+ *     protocol: "HTTP",
+ *     vpcId: _default.id,
+ *     serverGroupName: name,
+ *     healthCheckConfig: {
+ *         healthCheckEnabled: false,
+ *     },
+ *     stickySessionConfig: {
+ *         stickySessionEnabled: false,
+ *     },
+ * });
+ * const ids = alicloud.alb.getServerGroupsOutput({
+ *     ids: [defaultServerGroup.id],
+ * });
+ * export const albServerGroupId0 = ids.apply(ids => ids.groups?.[0]?.id);
  * ```
  */
 export function getServerGroupsOutput(args?: GetServerGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServerGroupsResult> {
@@ -172,7 +202,7 @@ export function getServerGroupsOutput(args?: GetServerGroupsOutputArgs, opts?: p
  */
 export interface GetServerGroupsOutputArgs {
     /**
-     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      */
     enableDetails?: pulumi.Input<boolean>;
     /**
@@ -192,23 +222,23 @@ export interface GetServerGroupsOutputArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The server group ids.
+     * The server group IDs.
      */
     serverGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name of the resource.
+     * The names of the Server Group.
      */
     serverGroupName?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the Server Group. Valid values: `Available`, `Configuring`, `Provisioning`.
      */
     status?: pulumi.Input<string>;
     /**
-     * A map of tags assigned to the group.
+     * A mapping of tags to assign to the resource.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The ID of the VPC that you want to access.
+     * The ID of the virtual private cloud (VPC).
      */
     vpcId?: pulumi.Input<string>;
 }

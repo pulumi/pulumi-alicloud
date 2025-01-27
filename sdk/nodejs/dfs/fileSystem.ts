@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a DFS File System resource.
+ * Provides a Apsara File Storage for HDFS (DFS) File System resource.
  *
- * For information about DFS File System and how to use it, see [What is File System](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
+ * For information about Apsara File Storage for HDFS (DFS) File System and how to use it, see [What is File System](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
  *
  * > **NOTE:** Available since v1.140.0.
  *
@@ -21,11 +21,10 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const default = alicloud.dfs.getZones({});
- * const defaultFileSystem = new alicloud.dfs.FileSystem("default", {
- *     storageType: _default.then(_default => _default.zones?.[0]?.options?.[0]?.storageType),
- *     zoneId: _default.then(_default => _default.zones?.[0]?.zoneId),
- *     protocolType: "HDFS",
+ * const _default = new alicloud.dfs.FileSystem("default", {
+ *     storageType: "PERFORMANCE",
+ *     zoneId: "cn-hangzhou-b",
+ *     protocolType: "PANGU",
  *     description: name,
  *     fileSystemName: name,
  *     throughputMode: "Provisioned",
@@ -36,7 +35,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * DFS File System can be imported using the id, e.g.
+ * Apsara File Storage for HDFS (DFS) File System can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:dfs/fileSystem:FileSystem example <id>
@@ -80,6 +79,9 @@ export class FileSystem extends pulumi.CustomResource {
      * - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
      */
     public readonly dataRedundancyType!: pulumi.Output<string | undefined>;
+    /**
+     * Dedicated cluster id, which is used to support scenarios such as group cloud migration.
+     */
     public readonly dedicatedClusterId!: pulumi.Output<string | undefined>;
     /**
      * The description of the file system resource. No more than 32 characters in length.
@@ -94,13 +96,17 @@ export class FileSystem extends pulumi.CustomResource {
      */
     public readonly partitionNumber!: pulumi.Output<number | undefined>;
     /**
-     * The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
+     * The protocol type. Value: `HDFS`, `PANGU`.
      */
     public readonly protocolType!: pulumi.Output<string>;
     /**
      * Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
      */
     public readonly provisionedThroughputInMiBps!: pulumi.Output<number | undefined>;
+    /**
+     * (Available since v1.242.0) The region ID of the File System.
+     */
+    public /*out*/ readonly regionId!: pulumi.Output<string>;
     /**
      * File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.
      */
@@ -143,6 +149,7 @@ export class FileSystem extends pulumi.CustomResource {
             resourceInputs["partitionNumber"] = state ? state.partitionNumber : undefined;
             resourceInputs["protocolType"] = state ? state.protocolType : undefined;
             resourceInputs["provisionedThroughputInMiBps"] = state ? state.provisionedThroughputInMiBps : undefined;
+            resourceInputs["regionId"] = state ? state.regionId : undefined;
             resourceInputs["spaceCapacity"] = state ? state.spaceCapacity : undefined;
             resourceInputs["storageSetName"] = state ? state.storageSetName : undefined;
             resourceInputs["storageType"] = state ? state.storageType : undefined;
@@ -175,6 +182,7 @@ export class FileSystem extends pulumi.CustomResource {
             resourceInputs["throughputMode"] = args ? args.throughputMode : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["regionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(FileSystem.__pulumiType, name, resourceInputs, opts);
@@ -195,6 +203,9 @@ export interface FileSystemState {
      * - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
      */
     dataRedundancyType?: pulumi.Input<string>;
+    /**
+     * Dedicated cluster id, which is used to support scenarios such as group cloud migration.
+     */
     dedicatedClusterId?: pulumi.Input<string>;
     /**
      * The description of the file system resource. No more than 32 characters in length.
@@ -209,13 +220,17 @@ export interface FileSystemState {
      */
     partitionNumber?: pulumi.Input<number>;
     /**
-     * The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
+     * The protocol type. Value: `HDFS`, `PANGU`.
      */
     protocolType?: pulumi.Input<string>;
     /**
      * Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
      */
     provisionedThroughputInMiBps?: pulumi.Input<number>;
+    /**
+     * (Available since v1.242.0) The region ID of the File System.
+     */
+    regionId?: pulumi.Input<string>;
     /**
      * File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.
      */
@@ -248,6 +263,9 @@ export interface FileSystemArgs {
      * - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
      */
     dataRedundancyType?: pulumi.Input<string>;
+    /**
+     * Dedicated cluster id, which is used to support scenarios such as group cloud migration.
+     */
     dedicatedClusterId?: pulumi.Input<string>;
     /**
      * The description of the file system resource. No more than 32 characters in length.
@@ -262,7 +280,7 @@ export interface FileSystemArgs {
      */
     partitionNumber?: pulumi.Input<number>;
     /**
-     * The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
+     * The protocol type. Value: `HDFS`, `PANGU`.
      */
     protocolType: pulumi.Input<string>;
     /**

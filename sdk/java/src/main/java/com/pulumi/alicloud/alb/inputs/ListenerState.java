@@ -5,6 +5,7 @@ package com.pulumi.alicloud.alb.inputs;
 
 import com.pulumi.alicloud.alb.inputs.ListenerAccessLogTracingConfigArgs;
 import com.pulumi.alicloud.alb.inputs.ListenerAclConfigArgs;
+import com.pulumi.alicloud.alb.inputs.ListenerCaCertificateArgs;
 import com.pulumi.alicloud.alb.inputs.ListenerCertificatesArgs;
 import com.pulumi.alicloud.alb.inputs.ListenerDefaultActionArgs;
 import com.pulumi.alicloud.alb.inputs.ListenerQuicConfigArgs;
@@ -26,18 +27,26 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     public static final ListenerState Empty = new ListenerState();
 
     /**
-     * Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+     * Access Log Whether to Enable Carry Custom Header Field.
      * 
-     * &gt; **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
+     * Value: True **** Or False * *.
+     * 
+     * Default Value: False * *.
+     * 
+     * &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
      * 
      */
     @Import(name="accessLogRecordCustomizedHeadersEnabled")
     private @Nullable Output<Boolean> accessLogRecordCustomizedHeadersEnabled;
 
     /**
-     * @return Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+     * @return Access Log Whether to Enable Carry Custom Header Field.
      * 
-     * &gt; **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
+     * Value: True **** Or False * *.
+     * 
+     * Default Value: False * *.
+     * 
+     * &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
      * 
      */
     public Optional<Output<Boolean>> accessLogRecordCustomizedHeadersEnabled() {
@@ -45,14 +54,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Xtrace Configuration Information. See `access_log_tracing_config` below for details.
+     * Xtrace Configuration Information. See `access_log_tracing_config` below.
      * 
      */
     @Import(name="accessLogTracingConfig")
     private @Nullable Output<ListenerAccessLogTracingConfigArgs> accessLogTracingConfig;
 
     /**
-     * @return Xtrace Configuration Information. See `access_log_tracing_config` below for details.
+     * @return Xtrace Configuration Information. See `access_log_tracing_config` below.
      * 
      */
     public Optional<Output<ListenerAccessLogTracingConfigArgs>> accessLogTracingConfig() {
@@ -83,14 +92,44 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The default certificate of the Listener. See `certificates` below for details. **NOTE:** When `listener_protocol` is `HTTPS`, The default certificate must be set one。
+     * The list of certificates. See `ca_certificates` below.
+     * 
+     */
+    @Import(name="caCertificates")
+    private @Nullable Output<List<ListenerCaCertificateArgs>> caCertificates;
+
+    /**
+     * @return The list of certificates. See `ca_certificates` below.
+     * 
+     */
+    public Optional<Output<List<ListenerCaCertificateArgs>>> caCertificates() {
+        return Optional.ofNullable(this.caCertificates);
+    }
+
+    /**
+     * Whether to turn on two-way authentication. Value:
+     * 
+     */
+    @Import(name="caEnabled")
+    private @Nullable Output<Boolean> caEnabled;
+
+    /**
+     * @return Whether to turn on two-way authentication. Value:
+     * 
+     */
+    public Optional<Output<Boolean>> caEnabled() {
+        return Optional.ofNullable(this.caEnabled);
+    }
+
+    /**
+     * The list of certificates. See `certificates` below.
      * 
      */
     @Import(name="certificates")
     private @Nullable Output<ListenerCertificatesArgs> certificates;
 
     /**
-     * @return The default certificate of the Listener. See `certificates` below for details. **NOTE:** When `listener_protocol` is `HTTPS`, The default certificate must be set one。
+     * @return The list of certificates. See `certificates` below.
      * 
      */
     public Optional<Output<ListenerCertificatesArgs>> certificates() {
@@ -98,14 +137,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Default Rule Action List. See `default_actions` below for details.
+     * The Default Rule Action List See `default_actions` below.
      * 
      */
     @Import(name="defaultActions")
     private @Nullable Output<List<ListenerDefaultActionArgs>> defaultActions;
 
     /**
-     * @return The Default Rule Action List. See `default_actions` below for details.
+     * @return The Default Rule Action List See `default_actions` below.
      * 
      */
     public Optional<Output<List<ListenerDefaultActionArgs>>> defaultActions() {
@@ -113,14 +152,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The dry run.
+     * Whether to PreCheck only this request. Value:
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return The dry run.
+     * @return Whether to PreCheck only this request. Value:
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -128,14 +167,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
+     * Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: True Or False. Default Value: TRUE.
      * 
      */
     @Import(name="gzipEnabled")
     private @Nullable Output<Boolean> gzipEnabled;
 
     /**
-     * @return Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
+     * @return Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: True Or False. Default Value: TRUE.
      * 
      */
     public Optional<Output<Boolean>> gzipEnabled() {
@@ -143,18 +182,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
-     * 
-     * &gt; **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
+     * Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE.
      * 
      */
     @Import(name="http2Enabled")
     private @Nullable Output<Boolean> http2Enabled;
 
     /**
-     * @return Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
-     * 
-     * &gt; **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
+     * @return Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE.
      * 
      */
     public Optional<Output<Boolean>> http2Enabled() {
@@ -162,14 +197,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
+     * Specify the Connection Idle Timeout Value: 1 to 60 miao.
      * 
      */
     @Import(name="idleTimeout")
     private @Nullable Output<Integer> idleTimeout;
 
     /**
-     * @return Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
+     * @return Specify the Connection Idle Timeout Value: 1 to 60 miao.
      * 
      */
     public Optional<Output<Integer>> idleTimeout() {
@@ -177,14 +212,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\x00-\xff]|[\w.,;/{@literal @}-]){2,256}$/`.
+     * Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
      * 
      */
     @Import(name="listenerDescription")
     private @Nullable Output<String> listenerDescription;
 
     /**
-     * @return The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\x00-\xff]|[\w.,;/{@literal @}-]){2,256}$/`.
+     * @return Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
      * 
      */
     public Optional<Output<String>> listenerDescription() {
@@ -192,14 +227,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ALB Instance Front-End, and Those of the Ports Used. Value: `1` to `65535`.
+     * The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
      * 
      */
     @Import(name="listenerPort")
     private @Nullable Output<Integer> listenerPort;
 
     /**
-     * @return The ALB Instance Front-End, and Those of the Ports Used. Value: `1` to `65535`.
+     * @return The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
      * 
      */
     public Optional<Output<Integer>> listenerPort() {
@@ -207,14 +242,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
+     * Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
      * 
      */
     @Import(name="listenerProtocol")
     private @Nullable Output<String> listenerProtocol;
 
     /**
-     * @return Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
+     * @return Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
      * 
      */
     public Optional<Output<String>> listenerProtocol() {
@@ -222,14 +257,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ALB Instance Id.
+     * The SLB Instance Id.
      * 
      */
     @Import(name="loadBalancerId")
     private @Nullable Output<String> loadBalancerId;
 
     /**
-     * @return The ALB Instance Id.
+     * @return The SLB Instance Id.
      * 
      */
     public Optional<Output<String>> loadBalancerId() {
@@ -237,14 +272,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configuration Associated with the QuIC Listening. See `quic_config` below for details.
+     * Configuration Associated with the QuIC Listening See `quic_config` below.
      * 
      */
     @Import(name="quicConfig")
     private @Nullable Output<ListenerQuicConfigArgs> quicConfig;
 
     /**
-     * @return Configuration Associated with the QuIC Listening. See `quic_config` below for details.
+     * @return Configuration Associated with the QuIC Listening See `quic_config` below.
      * 
      */
     public Optional<Output<ListenerQuicConfigArgs>> quicConfig() {
@@ -252,14 +287,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+     * The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
      * 
      */
     @Import(name="requestTimeout")
     private @Nullable Output<Integer> requestTimeout;
 
     /**
-     * @return The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+     * @return The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
      * 
      */
     public Optional<Output<Integer>> requestTimeout() {
@@ -267,18 +302,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Security Policy.
-     * 
-     * &gt; **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
+     * Security Policy
      * 
      */
     @Import(name="securityPolicyId")
     private @Nullable Output<String> securityPolicyId;
 
     /**
-     * @return Security Policy.
-     * 
-     * &gt; **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
+     * @return Security Policy
      * 
      */
     public Optional<Output<String>> securityPolicyId() {
@@ -286,14 +317,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
+     * The Current IP Address of the Listened State
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
+     * @return The Current IP Address of the Listened State
      * 
      */
     public Optional<Output<String>> status() {
@@ -301,14 +332,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag of the resource
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return The tag of the resource
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -316,14 +347,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The `x_forward_for` Related Attribute Configuration. See `x_forwarded_for_config` below for details. **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
+     * xforwardfor Related Attribute Configuration See `x_forwarded_for_config` below.
      * 
      */
     @Import(name="xForwardedForConfig")
     private @Nullable Output<ListenerXForwardedForConfigArgs> xForwardedForConfig;
 
     /**
-     * @return The `x_forward_for` Related Attribute Configuration. See `x_forwarded_for_config` below for details. **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
+     * @return xforwardfor Related Attribute Configuration See `x_forwarded_for_config` below.
      * 
      */
     public Optional<Output<ListenerXForwardedForConfigArgs>> xForwardedForConfig() {
@@ -336,6 +367,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         this.accessLogRecordCustomizedHeadersEnabled = $.accessLogRecordCustomizedHeadersEnabled;
         this.accessLogTracingConfig = $.accessLogTracingConfig;
         this.aclConfig = $.aclConfig;
+        this.caCertificates = $.caCertificates;
+        this.caEnabled = $.caEnabled;
         this.certificates = $.certificates;
         this.defaultActions = $.defaultActions;
         this.dryRun = $.dryRun;
@@ -373,9 +406,13 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessLogRecordCustomizedHeadersEnabled Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+         * @param accessLogRecordCustomizedHeadersEnabled Access Log Whether to Enable Carry Custom Header Field.
          * 
-         * &gt; **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
+         * Value: True **** Or False * *.
+         * 
+         * Default Value: False * *.
+         * 
+         * &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
          * 
          * @return builder
          * 
@@ -386,9 +423,13 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessLogRecordCustomizedHeadersEnabled Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+         * @param accessLogRecordCustomizedHeadersEnabled Access Log Whether to Enable Carry Custom Header Field.
          * 
-         * &gt; **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
+         * Value: True **** Or False * *.
+         * 
+         * Default Value: False * *.
+         * 
+         * &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
          * 
          * @return builder
          * 
@@ -398,7 +439,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessLogTracingConfig Xtrace Configuration Information. See `access_log_tracing_config` below for details.
+         * @param accessLogTracingConfig Xtrace Configuration Information. See `access_log_tracing_config` below.
          * 
          * @return builder
          * 
@@ -409,7 +450,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessLogTracingConfig Xtrace Configuration Information. See `access_log_tracing_config` below for details.
+         * @param accessLogTracingConfig Xtrace Configuration Information. See `access_log_tracing_config` below.
          * 
          * @return builder
          * 
@@ -448,7 +489,59 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificates The default certificate of the Listener. See `certificates` below for details. **NOTE:** When `listener_protocol` is `HTTPS`, The default certificate must be set one。
+         * @param caCertificates The list of certificates. See `ca_certificates` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder caCertificates(@Nullable Output<List<ListenerCaCertificateArgs>> caCertificates) {
+            $.caCertificates = caCertificates;
+            return this;
+        }
+
+        /**
+         * @param caCertificates The list of certificates. See `ca_certificates` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder caCertificates(List<ListenerCaCertificateArgs> caCertificates) {
+            return caCertificates(Output.of(caCertificates));
+        }
+
+        /**
+         * @param caCertificates The list of certificates. See `ca_certificates` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder caCertificates(ListenerCaCertificateArgs... caCertificates) {
+            return caCertificates(List.of(caCertificates));
+        }
+
+        /**
+         * @param caEnabled Whether to turn on two-way authentication. Value:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder caEnabled(@Nullable Output<Boolean> caEnabled) {
+            $.caEnabled = caEnabled;
+            return this;
+        }
+
+        /**
+         * @param caEnabled Whether to turn on two-way authentication. Value:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder caEnabled(Boolean caEnabled) {
+            return caEnabled(Output.of(caEnabled));
+        }
+
+        /**
+         * @param certificates The list of certificates. See `certificates` below.
          * 
          * @return builder
          * 
@@ -459,7 +552,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificates The default certificate of the Listener. See `certificates` below for details. **NOTE:** When `listener_protocol` is `HTTPS`, The default certificate must be set one。
+         * @param certificates The list of certificates. See `certificates` below.
          * 
          * @return builder
          * 
@@ -469,7 +562,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultActions The Default Rule Action List. See `default_actions` below for details.
+         * @param defaultActions The Default Rule Action List See `default_actions` below.
          * 
          * @return builder
          * 
@@ -480,7 +573,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultActions The Default Rule Action List. See `default_actions` below for details.
+         * @param defaultActions The Default Rule Action List See `default_actions` below.
          * 
          * @return builder
          * 
@@ -490,7 +583,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultActions The Default Rule Action List. See `default_actions` below for details.
+         * @param defaultActions The Default Rule Action List See `default_actions` below.
          * 
          * @return builder
          * 
@@ -500,7 +593,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dryRun The dry run.
+         * @param dryRun Whether to PreCheck only this request. Value:
          * 
          * @return builder
          * 
@@ -511,7 +604,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dryRun The dry run.
+         * @param dryRun Whether to PreCheck only this request. Value:
          * 
          * @return builder
          * 
@@ -521,7 +614,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gzipEnabled Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
+         * @param gzipEnabled Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: True Or False. Default Value: TRUE.
          * 
          * @return builder
          * 
@@ -532,7 +625,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gzipEnabled Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
+         * @param gzipEnabled Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: True Or False. Default Value: TRUE.
          * 
          * @return builder
          * 
@@ -542,9 +635,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param http2Enabled Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
-         * 
-         * &gt; **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
+         * @param http2Enabled Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE.
          * 
          * @return builder
          * 
@@ -555,9 +646,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param http2Enabled Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
-         * 
-         * &gt; **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
+         * @param http2Enabled Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE.
          * 
          * @return builder
          * 
@@ -567,7 +656,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param idleTimeout Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
+         * @param idleTimeout Specify the Connection Idle Timeout Value: 1 to 60 miao.
          * 
          * @return builder
          * 
@@ -578,7 +667,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param idleTimeout Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
+         * @param idleTimeout Specify the Connection Idle Timeout Value: 1 to 60 miao.
          * 
          * @return builder
          * 
@@ -588,7 +677,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param listenerDescription The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\x00-\xff]|[\w.,;/{@literal @}-]){2,256}$/`.
+         * @param listenerDescription Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
          * 
          * @return builder
          * 
@@ -599,7 +688,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param listenerDescription The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\x00-\xff]|[\w.,;/{@literal @}-]){2,256}$/`.
+         * @param listenerDescription Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
          * 
          * @return builder
          * 
@@ -609,7 +698,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param listenerPort The ALB Instance Front-End, and Those of the Ports Used. Value: `1` to `65535`.
+         * @param listenerPort The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
          * 
          * @return builder
          * 
@@ -620,7 +709,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param listenerPort The ALB Instance Front-End, and Those of the Ports Used. Value: `1` to `65535`.
+         * @param listenerPort The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
          * 
          * @return builder
          * 
@@ -630,7 +719,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param listenerProtocol Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
+         * @param listenerProtocol Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
          * 
          * @return builder
          * 
@@ -641,7 +730,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param listenerProtocol Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
+         * @param listenerProtocol Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
          * 
          * @return builder
          * 
@@ -651,7 +740,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancerId The ALB Instance Id.
+         * @param loadBalancerId The SLB Instance Id.
          * 
          * @return builder
          * 
@@ -662,7 +751,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancerId The ALB Instance Id.
+         * @param loadBalancerId The SLB Instance Id.
          * 
          * @return builder
          * 
@@ -672,7 +761,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param quicConfig Configuration Associated with the QuIC Listening. See `quic_config` below for details.
+         * @param quicConfig Configuration Associated with the QuIC Listening See `quic_config` below.
          * 
          * @return builder
          * 
@@ -683,7 +772,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param quicConfig Configuration Associated with the QuIC Listening. See `quic_config` below for details.
+         * @param quicConfig Configuration Associated with the QuIC Listening See `quic_config` below.
          * 
          * @return builder
          * 
@@ -693,7 +782,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param requestTimeout The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+         * @param requestTimeout The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
          * 
          * @return builder
          * 
@@ -704,7 +793,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param requestTimeout The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+         * @param requestTimeout The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
          * 
          * @return builder
          * 
@@ -714,9 +803,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityPolicyId Security Policy.
-         * 
-         * &gt; **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
+         * @param securityPolicyId Security Policy
          * 
          * @return builder
          * 
@@ -727,9 +814,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityPolicyId Security Policy.
-         * 
-         * &gt; **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
+         * @param securityPolicyId Security Policy
          * 
          * @return builder
          * 
@@ -739,7 +824,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
+         * @param status The Current IP Address of the Listened State
          * 
          * @return builder
          * 
@@ -750,7 +835,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
+         * @param status The Current IP Address of the Listened State
          * 
          * @return builder
          * 
@@ -760,7 +845,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 
@@ -771,7 +856,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 
@@ -781,7 +866,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param xForwardedForConfig The `x_forward_for` Related Attribute Configuration. See `x_forwarded_for_config` below for details. **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
+         * @param xForwardedForConfig xforwardfor Related Attribute Configuration See `x_forwarded_for_config` below.
          * 
          * @return builder
          * 
@@ -792,7 +877,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param xForwardedForConfig The `x_forward_for` Related Attribute Configuration. See `x_forwarded_for_config` below for details. **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
+         * @param xForwardedForConfig xforwardfor Related Attribute Configuration See `x_forwarded_for_config` below.
          * 
          * @return builder
          * 

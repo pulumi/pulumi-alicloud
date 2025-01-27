@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.FC.Inputs
         public Input<bool>? EnableRequestMetrics { get; set; }
 
         /// <summary>
-        /// Log Line First Matching Rules.
+        /// Log Line First Matching Rules
         /// </summary>
         [Input("logBeginRule")]
         public Input<string>? LogBeginRule { get; set; }

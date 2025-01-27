@@ -3,6 +3,8 @@
 
 package com.pulumi.alicloud.cs.inputs;
 
+import com.pulumi.alicloud.cs.inputs.NodePoolKubeletConfigurationReservedMemoryArgs;
+import com.pulumi.alicloud.cs.inputs.NodePoolKubeletConfigurationTracingArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -34,6 +36,21 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
     }
 
     /**
+     * The list of IP addresses of the cluster DNS servers.
+     * 
+     */
+    @Import(name="clusterDns")
+    private @Nullable Output<List<String>> clusterDns;
+
+    /**
+     * @return The list of IP addresses of the cluster DNS servers.
+     * 
+     */
+    public Optional<Output<List<String>>> clusterDns() {
+        return Optional.ofNullable(this.clusterDns);
+    }
+
+    /**
      * The maximum number of log files that can exist in each container.
      * 
      */
@@ -61,6 +78,66 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
      */
     public Optional<Output<String>> containerLogMaxSize() {
         return Optional.ofNullable(this.containerLogMaxSize);
+    }
+
+    /**
+     * Specifies the maximum number of concurrent workers required to perform log rotation operations.
+     * 
+     */
+    @Import(name="containerLogMaxWorkers")
+    private @Nullable Output<String> containerLogMaxWorkers;
+
+    /**
+     * @return Specifies the maximum number of concurrent workers required to perform log rotation operations.
+     * 
+     */
+    public Optional<Output<String>> containerLogMaxWorkers() {
+        return Optional.ofNullable(this.containerLogMaxWorkers);
+    }
+
+    /**
+     * Specifies the duration for which container logs are monitored for log rotation.
+     * 
+     */
+    @Import(name="containerLogMonitorInterval")
+    private @Nullable Output<String> containerLogMonitorInterval;
+
+    /**
+     * @return Specifies the duration for which container logs are monitored for log rotation.
+     * 
+     */
+    public Optional<Output<String>> containerLogMonitorInterval() {
+        return Optional.ofNullable(this.containerLogMonitorInterval);
+    }
+
+    /**
+     * CPU CFS quota constraint switch.
+     * 
+     */
+    @Import(name="cpuCfsQuota")
+    private @Nullable Output<String> cpuCfsQuota;
+
+    /**
+     * @return CPU CFS quota constraint switch.
+     * 
+     */
+    public Optional<Output<String>> cpuCfsQuota() {
+        return Optional.ofNullable(this.cpuCfsQuota);
+    }
+
+    /**
+     * CPU CFS quota period value.
+     * 
+     */
+    @Import(name="cpuCfsQuotaPeriod")
+    private @Nullable Output<String> cpuCfsQuotaPeriod;
+
+    /**
+     * @return CPU CFS quota period value.
+     * 
+     */
+    public Optional<Output<String>> cpuCfsQuotaPeriod() {
+        return Optional.ofNullable(this.cpuCfsQuotaPeriod);
     }
 
     /**
@@ -169,6 +246,36 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
     }
 
     /**
+     * If the image usage exceeds this threshold, image garbage collection will continue.
+     * 
+     */
+    @Import(name="imageGcHighThresholdPercent")
+    private @Nullable Output<String> imageGcHighThresholdPercent;
+
+    /**
+     * @return If the image usage exceeds this threshold, image garbage collection will continue.
+     * 
+     */
+    public Optional<Output<String>> imageGcHighThresholdPercent() {
+        return Optional.ofNullable(this.imageGcHighThresholdPercent);
+    }
+
+    /**
+     * Image garbage collection is not performed when the image usage is below this threshold.
+     * 
+     */
+    @Import(name="imageGcLowThresholdPercent")
+    private @Nullable Output<String> imageGcLowThresholdPercent;
+
+    /**
+     * @return Image garbage collection is not performed when the image usage is below this threshold.
+     * 
+     */
+    public Optional<Output<String>> imageGcLowThresholdPercent() {
+        return Optional.ofNullable(this.imageGcLowThresholdPercent);
+    }
+
+    /**
      * Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
      * 
      */
@@ -229,6 +336,36 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
     }
 
     /**
+     * The policy to be used by the memory manager.
+     * 
+     */
+    @Import(name="memoryManagerPolicy")
+    private @Nullable Output<String> memoryManagerPolicy;
+
+    /**
+     * @return The policy to be used by the memory manager.
+     * 
+     */
+    public Optional<Output<String>> memoryManagerPolicy() {
+        return Optional.ofNullable(this.memoryManagerPolicy);
+    }
+
+    /**
+     * The maximum number of PIDs that can be used in a Pod.
+     * 
+     */
+    @Import(name="podPidsLimit")
+    private @Nullable Output<String> podPidsLimit;
+
+    /**
+     * @return The maximum number of PIDs that can be used in a Pod.
+     * 
+     */
+    public Optional<Output<String>> podPidsLimit() {
+        return Optional.ofNullable(this.podPidsLimit);
+    }
+
+    /**
      * Read-only port number.
      * 
      */
@@ -274,6 +411,21 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
     }
 
     /**
+     * Reserve memory for NUMA nodes. See `reserved_memory` below.
+     * 
+     */
+    @Import(name="reservedMemories")
+    private @Nullable Output<List<NodePoolKubeletConfigurationReservedMemoryArgs>> reservedMemories;
+
+    /**
+     * @return Reserve memory for NUMA nodes. See `reserved_memory` below.
+     * 
+     */
+    public Optional<Output<List<NodePoolKubeletConfigurationReservedMemoryArgs>>> reservedMemories() {
+        return Optional.ofNullable(this.reservedMemories);
+    }
+
+    /**
      * Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version &lt; 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
      * 
      */
@@ -303,12 +455,47 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
         return Optional.ofNullable(this.systemReserved);
     }
 
+    /**
+     * Name of the Topology Manager policy used.
+     * 
+     */
+    @Import(name="topologyManagerPolicy")
+    private @Nullable Output<String> topologyManagerPolicy;
+
+    /**
+     * @return Name of the Topology Manager policy used.
+     * 
+     */
+    public Optional<Output<String>> topologyManagerPolicy() {
+        return Optional.ofNullable(this.topologyManagerPolicy);
+    }
+
+    /**
+     * OpenTelemetry tracks the configuration information for client settings versioning. See `tracing` below.
+     * 
+     */
+    @Import(name="tracing")
+    private @Nullable Output<NodePoolKubeletConfigurationTracingArgs> tracing;
+
+    /**
+     * @return OpenTelemetry tracks the configuration information for client settings versioning. See `tracing` below.
+     * 
+     */
+    public Optional<Output<NodePoolKubeletConfigurationTracingArgs>> tracing() {
+        return Optional.ofNullable(this.tracing);
+    }
+
     private NodePoolKubeletConfigurationArgs() {}
 
     private NodePoolKubeletConfigurationArgs(NodePoolKubeletConfigurationArgs $) {
         this.allowedUnsafeSysctls = $.allowedUnsafeSysctls;
+        this.clusterDns = $.clusterDns;
         this.containerLogMaxFiles = $.containerLogMaxFiles;
         this.containerLogMaxSize = $.containerLogMaxSize;
+        this.containerLogMaxWorkers = $.containerLogMaxWorkers;
+        this.containerLogMonitorInterval = $.containerLogMonitorInterval;
+        this.cpuCfsQuota = $.cpuCfsQuota;
+        this.cpuCfsQuotaPeriod = $.cpuCfsQuotaPeriod;
         this.cpuManagerPolicy = $.cpuManagerPolicy;
         this.eventBurst = $.eventBurst;
         this.eventRecordQps = $.eventRecordQps;
@@ -316,15 +503,22 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
         this.evictionSoft = $.evictionSoft;
         this.evictionSoftGracePeriod = $.evictionSoftGracePeriod;
         this.featureGates = $.featureGates;
+        this.imageGcHighThresholdPercent = $.imageGcHighThresholdPercent;
+        this.imageGcLowThresholdPercent = $.imageGcLowThresholdPercent;
         this.kubeApiBurst = $.kubeApiBurst;
         this.kubeApiQps = $.kubeApiQps;
         this.kubeReserved = $.kubeReserved;
         this.maxPods = $.maxPods;
+        this.memoryManagerPolicy = $.memoryManagerPolicy;
+        this.podPidsLimit = $.podPidsLimit;
         this.readOnlyPort = $.readOnlyPort;
         this.registryBurst = $.registryBurst;
         this.registryPullQps = $.registryPullQps;
+        this.reservedMemories = $.reservedMemories;
         this.serializeImagePulls = $.serializeImagePulls;
         this.systemReserved = $.systemReserved;
+        this.topologyManagerPolicy = $.topologyManagerPolicy;
+        this.tracing = $.tracing;
     }
 
     public static Builder builder() {
@@ -377,6 +571,37 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
         }
 
         /**
+         * @param clusterDns The list of IP addresses of the cluster DNS servers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterDns(@Nullable Output<List<String>> clusterDns) {
+            $.clusterDns = clusterDns;
+            return this;
+        }
+
+        /**
+         * @param clusterDns The list of IP addresses of the cluster DNS servers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterDns(List<String> clusterDns) {
+            return clusterDns(Output.of(clusterDns));
+        }
+
+        /**
+         * @param clusterDns The list of IP addresses of the cluster DNS servers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterDns(String... clusterDns) {
+            return clusterDns(List.of(clusterDns));
+        }
+
+        /**
          * @param containerLogMaxFiles The maximum number of log files that can exist in each container.
          * 
          * @return builder
@@ -416,6 +641,90 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
          */
         public Builder containerLogMaxSize(String containerLogMaxSize) {
             return containerLogMaxSize(Output.of(containerLogMaxSize));
+        }
+
+        /**
+         * @param containerLogMaxWorkers Specifies the maximum number of concurrent workers required to perform log rotation operations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder containerLogMaxWorkers(@Nullable Output<String> containerLogMaxWorkers) {
+            $.containerLogMaxWorkers = containerLogMaxWorkers;
+            return this;
+        }
+
+        /**
+         * @param containerLogMaxWorkers Specifies the maximum number of concurrent workers required to perform log rotation operations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder containerLogMaxWorkers(String containerLogMaxWorkers) {
+            return containerLogMaxWorkers(Output.of(containerLogMaxWorkers));
+        }
+
+        /**
+         * @param containerLogMonitorInterval Specifies the duration for which container logs are monitored for log rotation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder containerLogMonitorInterval(@Nullable Output<String> containerLogMonitorInterval) {
+            $.containerLogMonitorInterval = containerLogMonitorInterval;
+            return this;
+        }
+
+        /**
+         * @param containerLogMonitorInterval Specifies the duration for which container logs are monitored for log rotation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder containerLogMonitorInterval(String containerLogMonitorInterval) {
+            return containerLogMonitorInterval(Output.of(containerLogMonitorInterval));
+        }
+
+        /**
+         * @param cpuCfsQuota CPU CFS quota constraint switch.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cpuCfsQuota(@Nullable Output<String> cpuCfsQuota) {
+            $.cpuCfsQuota = cpuCfsQuota;
+            return this;
+        }
+
+        /**
+         * @param cpuCfsQuota CPU CFS quota constraint switch.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cpuCfsQuota(String cpuCfsQuota) {
+            return cpuCfsQuota(Output.of(cpuCfsQuota));
+        }
+
+        /**
+         * @param cpuCfsQuotaPeriod CPU CFS quota period value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cpuCfsQuotaPeriod(@Nullable Output<String> cpuCfsQuotaPeriod) {
+            $.cpuCfsQuotaPeriod = cpuCfsQuotaPeriod;
+            return this;
+        }
+
+        /**
+         * @param cpuCfsQuotaPeriod CPU CFS quota period value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cpuCfsQuotaPeriod(String cpuCfsQuotaPeriod) {
+            return cpuCfsQuotaPeriod(Output.of(cpuCfsQuotaPeriod));
         }
 
         /**
@@ -566,6 +875,48 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
         }
 
         /**
+         * @param imageGcHighThresholdPercent If the image usage exceeds this threshold, image garbage collection will continue.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageGcHighThresholdPercent(@Nullable Output<String> imageGcHighThresholdPercent) {
+            $.imageGcHighThresholdPercent = imageGcHighThresholdPercent;
+            return this;
+        }
+
+        /**
+         * @param imageGcHighThresholdPercent If the image usage exceeds this threshold, image garbage collection will continue.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageGcHighThresholdPercent(String imageGcHighThresholdPercent) {
+            return imageGcHighThresholdPercent(Output.of(imageGcHighThresholdPercent));
+        }
+
+        /**
+         * @param imageGcLowThresholdPercent Image garbage collection is not performed when the image usage is below this threshold.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageGcLowThresholdPercent(@Nullable Output<String> imageGcLowThresholdPercent) {
+            $.imageGcLowThresholdPercent = imageGcLowThresholdPercent;
+            return this;
+        }
+
+        /**
+         * @param imageGcLowThresholdPercent Image garbage collection is not performed when the image usage is below this threshold.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageGcLowThresholdPercent(String imageGcLowThresholdPercent) {
+            return imageGcLowThresholdPercent(Output.of(imageGcLowThresholdPercent));
+        }
+
+        /**
          * @param kubeApiBurst Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
          * 
          * @return builder
@@ -650,6 +1001,48 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
         }
 
         /**
+         * @param memoryManagerPolicy The policy to be used by the memory manager.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memoryManagerPolicy(@Nullable Output<String> memoryManagerPolicy) {
+            $.memoryManagerPolicy = memoryManagerPolicy;
+            return this;
+        }
+
+        /**
+         * @param memoryManagerPolicy The policy to be used by the memory manager.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memoryManagerPolicy(String memoryManagerPolicy) {
+            return memoryManagerPolicy(Output.of(memoryManagerPolicy));
+        }
+
+        /**
+         * @param podPidsLimit The maximum number of PIDs that can be used in a Pod.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder podPidsLimit(@Nullable Output<String> podPidsLimit) {
+            $.podPidsLimit = podPidsLimit;
+            return this;
+        }
+
+        /**
+         * @param podPidsLimit The maximum number of PIDs that can be used in a Pod.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder podPidsLimit(String podPidsLimit) {
+            return podPidsLimit(Output.of(podPidsLimit));
+        }
+
+        /**
          * @param readOnlyPort Read-only port number.
          * 
          * @return builder
@@ -713,6 +1106,37 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
         }
 
         /**
+         * @param reservedMemories Reserve memory for NUMA nodes. See `reserved_memory` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservedMemories(@Nullable Output<List<NodePoolKubeletConfigurationReservedMemoryArgs>> reservedMemories) {
+            $.reservedMemories = reservedMemories;
+            return this;
+        }
+
+        /**
+         * @param reservedMemories Reserve memory for NUMA nodes. See `reserved_memory` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservedMemories(List<NodePoolKubeletConfigurationReservedMemoryArgs> reservedMemories) {
+            return reservedMemories(Output.of(reservedMemories));
+        }
+
+        /**
+         * @param reservedMemories Reserve memory for NUMA nodes. See `reserved_memory` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservedMemories(NodePoolKubeletConfigurationReservedMemoryArgs... reservedMemories) {
+            return reservedMemories(List.of(reservedMemories));
+        }
+
+        /**
          * @param serializeImagePulls Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version &lt; 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
          * 
          * @return builder
@@ -752,6 +1176,48 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
          */
         public Builder systemReserved(Map<String,String> systemReserved) {
             return systemReserved(Output.of(systemReserved));
+        }
+
+        /**
+         * @param topologyManagerPolicy Name of the Topology Manager policy used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder topologyManagerPolicy(@Nullable Output<String> topologyManagerPolicy) {
+            $.topologyManagerPolicy = topologyManagerPolicy;
+            return this;
+        }
+
+        /**
+         * @param topologyManagerPolicy Name of the Topology Manager policy used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder topologyManagerPolicy(String topologyManagerPolicy) {
+            return topologyManagerPolicy(Output.of(topologyManagerPolicy));
+        }
+
+        /**
+         * @param tracing OpenTelemetry tracks the configuration information for client settings versioning. See `tracing` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tracing(@Nullable Output<NodePoolKubeletConfigurationTracingArgs> tracing) {
+            $.tracing = tracing;
+            return this;
+        }
+
+        /**
+         * @param tracing OpenTelemetry tracks the configuration information for client settings versioning. See `tracing` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tracing(NodePoolKubeletConfigurationTracingArgs tracing) {
+            return tracing(Output.of(tracing));
         }
 
         public NodePoolKubeletConfigurationArgs build() {

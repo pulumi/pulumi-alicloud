@@ -102,6 +102,10 @@ export class IpamIpamScope extends pulumi.CustomResource {
      */
     public /*out*/ readonly regionId!: pulumi.Output<string>;
     /**
+     * The ID of the resource group.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
      * The status of the resource.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
@@ -129,6 +133,7 @@ export class IpamIpamScope extends pulumi.CustomResource {
             resourceInputs["ipamScopeName"] = state ? state.ipamScopeName : undefined;
             resourceInputs["ipamScopeType"] = state ? state.ipamScopeType : undefined;
             resourceInputs["regionId"] = state ? state.regionId : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
@@ -140,6 +145,7 @@ export class IpamIpamScope extends pulumi.CustomResource {
             resourceInputs["ipamScopeDescription"] = args ? args.ipamScopeDescription : undefined;
             resourceInputs["ipamScopeName"] = args ? args.ipamScopeName : undefined;
             resourceInputs["ipamScopeType"] = args ? args.ipamScopeType : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
@@ -185,6 +191,10 @@ export interface IpamIpamScopeState {
      */
     regionId?: pulumi.Input<string>;
     /**
+     * The ID of the resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
      * The status of the resource.
      */
     status?: pulumi.Input<string>;
@@ -220,6 +230,10 @@ export interface IpamIpamScopeArgs {
      * > **NOTE:**  Currently, only the role scope of the private network is supported.
      */
     ipamScopeType?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The tag of the resource.
      */

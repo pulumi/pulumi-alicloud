@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a DFS Mount Point resource.
+// Provides a Apsara File Storage for HDFS (DFS) Mount Point resource.
 //
-// For information about DFS Mount Point and how to use it, see [What is Mount Point](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
+// For information about Apsara File Storage for HDFS (DFS) Mount Point and how to use it, see [What is Mount Point](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
 //
 // > **NOTE:** Available since v1.140.0.
 //
@@ -41,11 +41,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_default, err := dfs.GetZones(ctx, &dfs.GetZonesArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//			_, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
@@ -55,16 +51,16 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(_default.Zones[0].ZoneId),
+//				VpcId:       _default.ID(),
+//				ZoneId:      pulumi.String("cn-hangzhou-e"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultFileSystem, err := dfs.NewFileSystem(ctx, "default", &dfs.FileSystemArgs{
-//				StorageType:                  pulumi.String(_default.Zones[0].Options[0].StorageType),
-//				ZoneId:                       pulumi.String(_default.Zones[0].ZoneId),
-//				ProtocolType:                 pulumi.String("HDFS"),
+//				StorageType:                  pulumi.String("STANDARD"),
+//				ZoneId:                       pulumi.String("cn-hangzhou-e"),
+//				ProtocolType:                 pulumi.String("PANGU"),
 //				Description:                  pulumi.String(name),
 //				FileSystemName:               pulumi.String(name),
 //				ThroughputMode:               pulumi.String("Provisioned"),
@@ -84,7 +80,7 @@ import (
 //			}
 //			_, err = dfs.NewMountPoint(ctx, "default", &dfs.MountPointArgs{
 //				Description:   pulumi.String(name),
-//				VpcId:         defaultNetwork.ID(),
+//				VpcId:         _default.ID(),
 //				FileSystemId:  defaultFileSystem.ID(),
 //				AccessGroupId: defaultAccessGroup.ID(),
 //				NetworkType:   pulumi.String("VPC"),
@@ -101,7 +97,7 @@ import (
 //
 // ## Import
 //
-// DFS Mount Point can be imported using the id, e.g.
+// Apsara File Storage for HDFS (DFS) Mount Point can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:dfs/mountPoint:MountPoint example <file_system_id>:<mount_point_id>
@@ -123,6 +119,8 @@ type MountPoint struct {
 	MountPointId pulumi.StringOutput `pulumi:"mountPointId"`
 	// The network type of the Mount point.  Only VPC (VPC) is supported.
 	NetworkType pulumi.StringOutput `pulumi:"networkType"`
+	// (Available since v1.242.0) The region ID of the Mount Point.
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
 	// Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The ID of the VPC. Specifies the VPC environment to which the mount point belongs.
@@ -190,6 +188,8 @@ type mountPointState struct {
 	MountPointId *string `pulumi:"mountPointId"`
 	// The network type of the Mount point.  Only VPC (VPC) is supported.
 	NetworkType *string `pulumi:"networkType"`
+	// (Available since v1.242.0) The region ID of the Mount Point.
+	RegionId *string `pulumi:"regionId"`
 	// Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.
 	Status *string `pulumi:"status"`
 	// The ID of the VPC. Specifies the VPC environment to which the mount point belongs.
@@ -213,6 +213,8 @@ type MountPointState struct {
 	MountPointId pulumi.StringPtrInput
 	// The network type of the Mount point.  Only VPC (VPC) is supported.
 	NetworkType pulumi.StringPtrInput
+	// (Available since v1.242.0) The region ID of the Mount Point.
+	RegionId pulumi.StringPtrInput
 	// Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.
 	Status pulumi.StringPtrInput
 	// The ID of the VPC. Specifies the VPC environment to which the mount point belongs.
@@ -384,6 +386,11 @@ func (o MountPointOutput) MountPointId() pulumi.StringOutput {
 // The network type of the Mount point.  Only VPC (VPC) is supported.
 func (o MountPointOutput) NetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v *MountPoint) pulumi.StringOutput { return v.NetworkType }).(pulumi.StringOutput)
+}
+
+// (Available since v1.242.0) The region ID of the Mount Point.
+func (o MountPointOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MountPoint) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
 }
 
 // Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.

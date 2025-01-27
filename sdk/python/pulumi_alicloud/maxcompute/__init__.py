@@ -8,5 +8,10 @@ import typing
 from .get_projects import *
 from .get_service import *
 from .project import *
+from .quota_plan import *
+from .quota_schedule import *
+from .role import *
+from .role_user_attachment import *
+from .tunnel_quota_timer import *
 from ._inputs import *
 from . import outputs

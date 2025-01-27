@@ -17,14 +17,14 @@ public final class ProjectSecurityPropertiesProjectProtectionArgs extends com.pu
     public static final ProjectSecurityPropertiesProjectProtectionArgs Empty = new ProjectSecurityPropertiesProjectProtectionArgs();
 
     /**
-     * Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection).
+     * Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection)
      * 
      */
     @Import(name="exceptionPolicy")
     private @Nullable Output<String> exceptionPolicy;
 
     /**
-     * @return Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection).
+     * @return Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection)
      * 
      */
     public Optional<Output<String>> exceptionPolicy() {
@@ -32,14 +32,14 @@ public final class ProjectSecurityPropertiesProjectProtectionArgs extends com.pu
     }
 
     /**
-     * Whether enabled, value:(true/false).
+     * Whether enabled, value:(true/false)
      * 
      */
     @Import(name="protected")
     private @Nullable Output<Boolean> protected_;
 
     /**
-     * @return Whether enabled, value:(true/false).
+     * @return Whether enabled, value:(true/false)
      * 
      */
     public Optional<Output<Boolean>> protected_() {
@@ -72,7 +72,7 @@ public final class ProjectSecurityPropertiesProjectProtectionArgs extends com.pu
         }
 
         /**
-         * @param exceptionPolicy Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection).
+         * @param exceptionPolicy Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection)
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ProjectSecurityPropertiesProjectProtectionArgs extends com.pu
         }
 
         /**
-         * @param exceptionPolicy Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection).
+         * @param exceptionPolicy Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection)
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class ProjectSecurityPropertiesProjectProtectionArgs extends com.pu
         }
 
         /**
-         * @param protected_ Whether enabled, value:(true/false).
+         * @param protected_ Whether enabled, value:(true/false)
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ProjectSecurityPropertiesProjectProtectionArgs extends com.pu
         }
 
         /**
-         * @param protected_ Whether enabled, value:(true/false).
+         * @param protected_ Whether enabled, value:(true/false)
          * 
          * @return builder
          * 

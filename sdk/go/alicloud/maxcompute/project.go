@@ -19,8 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.77.0.
 //
-// > **NOTE:** Field `name`, `specificationType`, `orderType` has been removed from provider version 1.227.1.
-//
 // ## Example Usage
 //
 // # Basic Usage
@@ -72,20 +70,24 @@ type Project struct {
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
 	// Represents the creation time of the project
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
+	// Used to implement computing resource allocation. Valid values: subQuota Nickname
+	// If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
 	DefaultQuota pulumi.StringPtrOutput `pulumi:"defaultQuota"`
 	// IP whitelist See `ipWhiteList` below.
 	IpWhiteList ProjectIpWhiteListPtrOutput `pulumi:"ipWhiteList"`
-	// Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
+	// Whether to logically delete. Default value: true. Value: (ture/false),
+	//
+	// > **NOTE:** -- ture: In this case, the project status will be changed to' deleting' and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
 	IsLogical pulumi.StringPtrOutput `pulumi:"isLogical"`
 	// Project owner
-	Owner pulumi.StringOutput `pulumi:"owner"`
-	// Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
+	Owner       pulumi.StringOutput    `pulumi:"owner"`
 	ProductType pulumi.StringPtrOutput `pulumi:"productType"`
 	// The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
 	ProjectName pulumi.StringOutput `pulumi:"projectName"`
 	// Project base attributes See `properties` below.
 	Properties ProjectPropertiesOutput `pulumi:"properties"`
+	// The region ID of the resource
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
 	// Security-related attributes See `securityProperties` below.
 	SecurityProperties ProjectSecurityPropertiesOutput `pulumi:"securityProperties"`
 	// The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
@@ -130,20 +132,24 @@ type projectState struct {
 	Comment *string `pulumi:"comment"`
 	// Represents the creation time of the project
 	CreateTime *string `pulumi:"createTime"`
-	// Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
+	// Used to implement computing resource allocation. Valid values: subQuota Nickname
+	// If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
 	DefaultQuota *string `pulumi:"defaultQuota"`
 	// IP whitelist See `ipWhiteList` below.
 	IpWhiteList *ProjectIpWhiteList `pulumi:"ipWhiteList"`
-	// Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
+	// Whether to logically delete. Default value: true. Value: (ture/false),
+	//
+	// > **NOTE:** -- ture: In this case, the project status will be changed to' deleting' and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
 	IsLogical *string `pulumi:"isLogical"`
 	// Project owner
-	Owner *string `pulumi:"owner"`
-	// Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
+	Owner       *string `pulumi:"owner"`
 	ProductType *string `pulumi:"productType"`
 	// The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
 	ProjectName *string `pulumi:"projectName"`
 	// Project base attributes See `properties` below.
 	Properties *ProjectProperties `pulumi:"properties"`
+	// The region ID of the resource
+	RegionId *string `pulumi:"regionId"`
 	// Security-related attributes See `securityProperties` below.
 	SecurityProperties *ProjectSecurityProperties `pulumi:"securityProperties"`
 	// The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
@@ -159,20 +165,24 @@ type ProjectState struct {
 	Comment pulumi.StringPtrInput
 	// Represents the creation time of the project
 	CreateTime pulumi.StringPtrInput
-	// Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
+	// Used to implement computing resource allocation. Valid values: subQuota Nickname
+	// If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
 	DefaultQuota pulumi.StringPtrInput
 	// IP whitelist See `ipWhiteList` below.
 	IpWhiteList ProjectIpWhiteListPtrInput
-	// Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
+	// Whether to logically delete. Default value: true. Value: (ture/false),
+	//
+	// > **NOTE:** -- ture: In this case, the project status will be changed to' deleting' and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
 	IsLogical pulumi.StringPtrInput
 	// Project owner
-	Owner pulumi.StringPtrInput
-	// Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
+	Owner       pulumi.StringPtrInput
 	ProductType pulumi.StringPtrInput
 	// The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
 	ProjectName pulumi.StringPtrInput
 	// Project base attributes See `properties` below.
 	Properties ProjectPropertiesPtrInput
+	// The region ID of the resource
+	RegionId pulumi.StringPtrInput
 	// Security-related attributes See `securityProperties` below.
 	SecurityProperties ProjectSecurityPropertiesPtrInput
 	// The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
@@ -190,13 +200,15 @@ func (ProjectState) ElementType() reflect.Type {
 type projectArgs struct {
 	// Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
 	Comment *string `pulumi:"comment"`
-	// Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
+	// Used to implement computing resource allocation. Valid values: subQuota Nickname
+	// If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
 	DefaultQuota *string `pulumi:"defaultQuota"`
 	// IP whitelist See `ipWhiteList` below.
 	IpWhiteList *ProjectIpWhiteList `pulumi:"ipWhiteList"`
-	// Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
-	IsLogical *string `pulumi:"isLogical"`
-	// Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
+	// Whether to logically delete. Default value: true. Value: (ture/false),
+	//
+	// > **NOTE:** -- ture: In this case, the project status will be changed to' deleting' and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
+	IsLogical   *string `pulumi:"isLogical"`
 	ProductType *string `pulumi:"productType"`
 	// The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
 	ProjectName *string `pulumi:"projectName"`
@@ -214,13 +226,15 @@ type projectArgs struct {
 type ProjectArgs struct {
 	// Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
 	Comment pulumi.StringPtrInput
-	// Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
+	// Used to implement computing resource allocation. Valid values: subQuota Nickname
+	// If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
 	DefaultQuota pulumi.StringPtrInput
 	// IP whitelist See `ipWhiteList` below.
 	IpWhiteList ProjectIpWhiteListPtrInput
-	// Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
-	IsLogical pulumi.StringPtrInput
-	// Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
+	// Whether to logically delete. Default value: true. Value: (ture/false),
+	//
+	// > **NOTE:** -- ture: In this case, the project status will be changed to' deleting' and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
+	IsLogical   pulumi.StringPtrInput
 	ProductType pulumi.StringPtrInput
 	// The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
 	ProjectName pulumi.StringPtrInput
@@ -331,7 +345,8 @@ func (o ProjectOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
+// Used to implement computing resource allocation. Valid values: subQuota Nickname
+// If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
 func (o ProjectOutput) DefaultQuota() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.DefaultQuota }).(pulumi.StringPtrOutput)
 }
@@ -341,7 +356,9 @@ func (o ProjectOutput) IpWhiteList() ProjectIpWhiteListPtrOutput {
 	return o.ApplyT(func(v *Project) ProjectIpWhiteListPtrOutput { return v.IpWhiteList }).(ProjectIpWhiteListPtrOutput)
 }
 
-// Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
+// Whether to logically delete. Default value: true. Value: (ture/false),
+//
+// > **NOTE:** -- ture: In this case, the project status will be changed to' deleting' and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
 func (o ProjectOutput) IsLogical() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.IsLogical }).(pulumi.StringPtrOutput)
 }
@@ -351,7 +368,6 @@ func (o ProjectOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }
 
-// Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
 func (o ProjectOutput) ProductType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.ProductType }).(pulumi.StringPtrOutput)
 }
@@ -364,6 +380,11 @@ func (o ProjectOutput) ProjectName() pulumi.StringOutput {
 // Project base attributes See `properties` below.
 func (o ProjectOutput) Properties() ProjectPropertiesOutput {
 	return o.ApplyT(func(v *Project) ProjectPropertiesOutput { return v.Properties }).(ProjectPropertiesOutput)
+}
+
+// The region ID of the resource
+func (o ProjectOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
 }
 
 // Security-related attributes See `securityProperties` below.

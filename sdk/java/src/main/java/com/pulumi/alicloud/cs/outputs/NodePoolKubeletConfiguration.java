@@ -3,6 +3,8 @@
 
 package com.pulumi.alicloud.cs.outputs;
 
+import com.pulumi.alicloud.cs.outputs.NodePoolKubeletConfigurationReservedMemory;
+import com.pulumi.alicloud.cs.outputs.NodePoolKubeletConfigurationTracing;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.String;
@@ -20,6 +22,11 @@ public final class NodePoolKubeletConfiguration {
      */
     private @Nullable List<String> allowedUnsafeSysctls;
     /**
+     * @return The list of IP addresses of the cluster DNS servers.
+     * 
+     */
+    private @Nullable List<String> clusterDns;
+    /**
      * @return The maximum number of log files that can exist in each container.
      * 
      */
@@ -29,6 +36,26 @@ public final class NodePoolKubeletConfiguration {
      * 
      */
     private @Nullable String containerLogMaxSize;
+    /**
+     * @return Specifies the maximum number of concurrent workers required to perform log rotation operations.
+     * 
+     */
+    private @Nullable String containerLogMaxWorkers;
+    /**
+     * @return Specifies the duration for which container logs are monitored for log rotation.
+     * 
+     */
+    private @Nullable String containerLogMonitorInterval;
+    /**
+     * @return CPU CFS quota constraint switch.
+     * 
+     */
+    private @Nullable String cpuCfsQuota;
+    /**
+     * @return CPU CFS quota period value.
+     * 
+     */
+    private @Nullable String cpuCfsQuotaPeriod;
     /**
      * @return Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
      * 
@@ -65,6 +92,16 @@ public final class NodePoolKubeletConfiguration {
      */
     private @Nullable Map<String,Boolean> featureGates;
     /**
+     * @return If the image usage exceeds this threshold, image garbage collection will continue.
+     * 
+     */
+    private @Nullable String imageGcHighThresholdPercent;
+    /**
+     * @return Image garbage collection is not performed when the image usage is below this threshold.
+     * 
+     */
+    private @Nullable String imageGcLowThresholdPercent;
+    /**
      * @return Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
      * 
      */
@@ -85,6 +122,16 @@ public final class NodePoolKubeletConfiguration {
      */
     private @Nullable String maxPods;
     /**
+     * @return The policy to be used by the memory manager.
+     * 
+     */
+    private @Nullable String memoryManagerPolicy;
+    /**
+     * @return The maximum number of PIDs that can be used in a Pod.
+     * 
+     */
+    private @Nullable String podPidsLimit;
+    /**
      * @return Read-only port number.
      * 
      */
@@ -100,6 +147,11 @@ public final class NodePoolKubeletConfiguration {
      */
     private @Nullable String registryPullQps;
     /**
+     * @return Reserve memory for NUMA nodes. See `reserved_memory` below.
+     * 
+     */
+    private @Nullable List<NodePoolKubeletConfigurationReservedMemory> reservedMemories;
+    /**
      * @return Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version &lt; 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
      * 
      */
@@ -109,6 +161,16 @@ public final class NodePoolKubeletConfiguration {
      * 
      */
     private @Nullable Map<String,String> systemReserved;
+    /**
+     * @return Name of the Topology Manager policy used.
+     * 
+     */
+    private @Nullable String topologyManagerPolicy;
+    /**
+     * @return OpenTelemetry tracks the configuration information for client settings versioning. See `tracing` below.
+     * 
+     */
+    private @Nullable NodePoolKubeletConfigurationTracing tracing;
 
     private NodePoolKubeletConfiguration() {}
     /**
@@ -117,6 +179,13 @@ public final class NodePoolKubeletConfiguration {
      */
     public List<String> allowedUnsafeSysctls() {
         return this.allowedUnsafeSysctls == null ? List.of() : this.allowedUnsafeSysctls;
+    }
+    /**
+     * @return The list of IP addresses of the cluster DNS servers.
+     * 
+     */
+    public List<String> clusterDns() {
+        return this.clusterDns == null ? List.of() : this.clusterDns;
     }
     /**
      * @return The maximum number of log files that can exist in each container.
@@ -131,6 +200,34 @@ public final class NodePoolKubeletConfiguration {
      */
     public Optional<String> containerLogMaxSize() {
         return Optional.ofNullable(this.containerLogMaxSize);
+    }
+    /**
+     * @return Specifies the maximum number of concurrent workers required to perform log rotation operations.
+     * 
+     */
+    public Optional<String> containerLogMaxWorkers() {
+        return Optional.ofNullable(this.containerLogMaxWorkers);
+    }
+    /**
+     * @return Specifies the duration for which container logs are monitored for log rotation.
+     * 
+     */
+    public Optional<String> containerLogMonitorInterval() {
+        return Optional.ofNullable(this.containerLogMonitorInterval);
+    }
+    /**
+     * @return CPU CFS quota constraint switch.
+     * 
+     */
+    public Optional<String> cpuCfsQuota() {
+        return Optional.ofNullable(this.cpuCfsQuota);
+    }
+    /**
+     * @return CPU CFS quota period value.
+     * 
+     */
+    public Optional<String> cpuCfsQuotaPeriod() {
+        return Optional.ofNullable(this.cpuCfsQuotaPeriod);
     }
     /**
      * @return Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
@@ -182,6 +279,20 @@ public final class NodePoolKubeletConfiguration {
         return this.featureGates == null ? Map.of() : this.featureGates;
     }
     /**
+     * @return If the image usage exceeds this threshold, image garbage collection will continue.
+     * 
+     */
+    public Optional<String> imageGcHighThresholdPercent() {
+        return Optional.ofNullable(this.imageGcHighThresholdPercent);
+    }
+    /**
+     * @return Image garbage collection is not performed when the image usage is below this threshold.
+     * 
+     */
+    public Optional<String> imageGcLowThresholdPercent() {
+        return Optional.ofNullable(this.imageGcLowThresholdPercent);
+    }
+    /**
      * @return Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
      * 
      */
@@ -210,6 +321,20 @@ public final class NodePoolKubeletConfiguration {
         return Optional.ofNullable(this.maxPods);
     }
     /**
+     * @return The policy to be used by the memory manager.
+     * 
+     */
+    public Optional<String> memoryManagerPolicy() {
+        return Optional.ofNullable(this.memoryManagerPolicy);
+    }
+    /**
+     * @return The maximum number of PIDs that can be used in a Pod.
+     * 
+     */
+    public Optional<String> podPidsLimit() {
+        return Optional.ofNullable(this.podPidsLimit);
+    }
+    /**
      * @return Read-only port number.
      * 
      */
@@ -231,6 +356,13 @@ public final class NodePoolKubeletConfiguration {
         return Optional.ofNullable(this.registryPullQps);
     }
     /**
+     * @return Reserve memory for NUMA nodes. See `reserved_memory` below.
+     * 
+     */
+    public List<NodePoolKubeletConfigurationReservedMemory> reservedMemories() {
+        return this.reservedMemories == null ? List.of() : this.reservedMemories;
+    }
+    /**
      * @return Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version &lt; 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
      * 
      */
@@ -244,6 +376,20 @@ public final class NodePoolKubeletConfiguration {
     public Map<String,String> systemReserved() {
         return this.systemReserved == null ? Map.of() : this.systemReserved;
     }
+    /**
+     * @return Name of the Topology Manager policy used.
+     * 
+     */
+    public Optional<String> topologyManagerPolicy() {
+        return Optional.ofNullable(this.topologyManagerPolicy);
+    }
+    /**
+     * @return OpenTelemetry tracks the configuration information for client settings versioning. See `tracing` below.
+     * 
+     */
+    public Optional<NodePoolKubeletConfigurationTracing> tracing() {
+        return Optional.ofNullable(this.tracing);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -255,8 +401,13 @@ public final class NodePoolKubeletConfiguration {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> allowedUnsafeSysctls;
+        private @Nullable List<String> clusterDns;
         private @Nullable String containerLogMaxFiles;
         private @Nullable String containerLogMaxSize;
+        private @Nullable String containerLogMaxWorkers;
+        private @Nullable String containerLogMonitorInterval;
+        private @Nullable String cpuCfsQuota;
+        private @Nullable String cpuCfsQuotaPeriod;
         private @Nullable String cpuManagerPolicy;
         private @Nullable String eventBurst;
         private @Nullable String eventRecordQps;
@@ -264,21 +415,33 @@ public final class NodePoolKubeletConfiguration {
         private @Nullable Map<String,String> evictionSoft;
         private @Nullable Map<String,String> evictionSoftGracePeriod;
         private @Nullable Map<String,Boolean> featureGates;
+        private @Nullable String imageGcHighThresholdPercent;
+        private @Nullable String imageGcLowThresholdPercent;
         private @Nullable String kubeApiBurst;
         private @Nullable String kubeApiQps;
         private @Nullable Map<String,String> kubeReserved;
         private @Nullable String maxPods;
+        private @Nullable String memoryManagerPolicy;
+        private @Nullable String podPidsLimit;
         private @Nullable String readOnlyPort;
         private @Nullable String registryBurst;
         private @Nullable String registryPullQps;
+        private @Nullable List<NodePoolKubeletConfigurationReservedMemory> reservedMemories;
         private @Nullable String serializeImagePulls;
         private @Nullable Map<String,String> systemReserved;
+        private @Nullable String topologyManagerPolicy;
+        private @Nullable NodePoolKubeletConfigurationTracing tracing;
         public Builder() {}
         public Builder(NodePoolKubeletConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedUnsafeSysctls = defaults.allowedUnsafeSysctls;
+    	      this.clusterDns = defaults.clusterDns;
     	      this.containerLogMaxFiles = defaults.containerLogMaxFiles;
     	      this.containerLogMaxSize = defaults.containerLogMaxSize;
+    	      this.containerLogMaxWorkers = defaults.containerLogMaxWorkers;
+    	      this.containerLogMonitorInterval = defaults.containerLogMonitorInterval;
+    	      this.cpuCfsQuota = defaults.cpuCfsQuota;
+    	      this.cpuCfsQuotaPeriod = defaults.cpuCfsQuotaPeriod;
     	      this.cpuManagerPolicy = defaults.cpuManagerPolicy;
     	      this.eventBurst = defaults.eventBurst;
     	      this.eventRecordQps = defaults.eventRecordQps;
@@ -286,15 +449,22 @@ public final class NodePoolKubeletConfiguration {
     	      this.evictionSoft = defaults.evictionSoft;
     	      this.evictionSoftGracePeriod = defaults.evictionSoftGracePeriod;
     	      this.featureGates = defaults.featureGates;
+    	      this.imageGcHighThresholdPercent = defaults.imageGcHighThresholdPercent;
+    	      this.imageGcLowThresholdPercent = defaults.imageGcLowThresholdPercent;
     	      this.kubeApiBurst = defaults.kubeApiBurst;
     	      this.kubeApiQps = defaults.kubeApiQps;
     	      this.kubeReserved = defaults.kubeReserved;
     	      this.maxPods = defaults.maxPods;
+    	      this.memoryManagerPolicy = defaults.memoryManagerPolicy;
+    	      this.podPidsLimit = defaults.podPidsLimit;
     	      this.readOnlyPort = defaults.readOnlyPort;
     	      this.registryBurst = defaults.registryBurst;
     	      this.registryPullQps = defaults.registryPullQps;
+    	      this.reservedMemories = defaults.reservedMemories;
     	      this.serializeImagePulls = defaults.serializeImagePulls;
     	      this.systemReserved = defaults.systemReserved;
+    	      this.topologyManagerPolicy = defaults.topologyManagerPolicy;
+    	      this.tracing = defaults.tracing;
         }
 
         @CustomType.Setter
@@ -307,6 +477,15 @@ public final class NodePoolKubeletConfiguration {
             return allowedUnsafeSysctls(List.of(allowedUnsafeSysctls));
         }
         @CustomType.Setter
+        public Builder clusterDns(@Nullable List<String> clusterDns) {
+
+            this.clusterDns = clusterDns;
+            return this;
+        }
+        public Builder clusterDns(String... clusterDns) {
+            return clusterDns(List.of(clusterDns));
+        }
+        @CustomType.Setter
         public Builder containerLogMaxFiles(@Nullable String containerLogMaxFiles) {
 
             this.containerLogMaxFiles = containerLogMaxFiles;
@@ -316,6 +495,30 @@ public final class NodePoolKubeletConfiguration {
         public Builder containerLogMaxSize(@Nullable String containerLogMaxSize) {
 
             this.containerLogMaxSize = containerLogMaxSize;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder containerLogMaxWorkers(@Nullable String containerLogMaxWorkers) {
+
+            this.containerLogMaxWorkers = containerLogMaxWorkers;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder containerLogMonitorInterval(@Nullable String containerLogMonitorInterval) {
+
+            this.containerLogMonitorInterval = containerLogMonitorInterval;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cpuCfsQuota(@Nullable String cpuCfsQuota) {
+
+            this.cpuCfsQuota = cpuCfsQuota;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cpuCfsQuotaPeriod(@Nullable String cpuCfsQuotaPeriod) {
+
+            this.cpuCfsQuotaPeriod = cpuCfsQuotaPeriod;
             return this;
         }
         @CustomType.Setter
@@ -361,6 +564,18 @@ public final class NodePoolKubeletConfiguration {
             return this;
         }
         @CustomType.Setter
+        public Builder imageGcHighThresholdPercent(@Nullable String imageGcHighThresholdPercent) {
+
+            this.imageGcHighThresholdPercent = imageGcHighThresholdPercent;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder imageGcLowThresholdPercent(@Nullable String imageGcLowThresholdPercent) {
+
+            this.imageGcLowThresholdPercent = imageGcLowThresholdPercent;
+            return this;
+        }
+        @CustomType.Setter
         public Builder kubeApiBurst(@Nullable String kubeApiBurst) {
 
             this.kubeApiBurst = kubeApiBurst;
@@ -385,6 +600,18 @@ public final class NodePoolKubeletConfiguration {
             return this;
         }
         @CustomType.Setter
+        public Builder memoryManagerPolicy(@Nullable String memoryManagerPolicy) {
+
+            this.memoryManagerPolicy = memoryManagerPolicy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder podPidsLimit(@Nullable String podPidsLimit) {
+
+            this.podPidsLimit = podPidsLimit;
+            return this;
+        }
+        @CustomType.Setter
         public Builder readOnlyPort(@Nullable String readOnlyPort) {
 
             this.readOnlyPort = readOnlyPort;
@@ -403,6 +630,15 @@ public final class NodePoolKubeletConfiguration {
             return this;
         }
         @CustomType.Setter
+        public Builder reservedMemories(@Nullable List<NodePoolKubeletConfigurationReservedMemory> reservedMemories) {
+
+            this.reservedMemories = reservedMemories;
+            return this;
+        }
+        public Builder reservedMemories(NodePoolKubeletConfigurationReservedMemory... reservedMemories) {
+            return reservedMemories(List.of(reservedMemories));
+        }
+        @CustomType.Setter
         public Builder serializeImagePulls(@Nullable String serializeImagePulls) {
 
             this.serializeImagePulls = serializeImagePulls;
@@ -414,11 +650,28 @@ public final class NodePoolKubeletConfiguration {
             this.systemReserved = systemReserved;
             return this;
         }
+        @CustomType.Setter
+        public Builder topologyManagerPolicy(@Nullable String topologyManagerPolicy) {
+
+            this.topologyManagerPolicy = topologyManagerPolicy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder tracing(@Nullable NodePoolKubeletConfigurationTracing tracing) {
+
+            this.tracing = tracing;
+            return this;
+        }
         public NodePoolKubeletConfiguration build() {
             final var _resultValue = new NodePoolKubeletConfiguration();
             _resultValue.allowedUnsafeSysctls = allowedUnsafeSysctls;
+            _resultValue.clusterDns = clusterDns;
             _resultValue.containerLogMaxFiles = containerLogMaxFiles;
             _resultValue.containerLogMaxSize = containerLogMaxSize;
+            _resultValue.containerLogMaxWorkers = containerLogMaxWorkers;
+            _resultValue.containerLogMonitorInterval = containerLogMonitorInterval;
+            _resultValue.cpuCfsQuota = cpuCfsQuota;
+            _resultValue.cpuCfsQuotaPeriod = cpuCfsQuotaPeriod;
             _resultValue.cpuManagerPolicy = cpuManagerPolicy;
             _resultValue.eventBurst = eventBurst;
             _resultValue.eventRecordQps = eventRecordQps;
@@ -426,15 +679,22 @@ public final class NodePoolKubeletConfiguration {
             _resultValue.evictionSoft = evictionSoft;
             _resultValue.evictionSoftGracePeriod = evictionSoftGracePeriod;
             _resultValue.featureGates = featureGates;
+            _resultValue.imageGcHighThresholdPercent = imageGcHighThresholdPercent;
+            _resultValue.imageGcLowThresholdPercent = imageGcLowThresholdPercent;
             _resultValue.kubeApiBurst = kubeApiBurst;
             _resultValue.kubeApiQps = kubeApiQps;
             _resultValue.kubeReserved = kubeReserved;
             _resultValue.maxPods = maxPods;
+            _resultValue.memoryManagerPolicy = memoryManagerPolicy;
+            _resultValue.podPidsLimit = podPidsLimit;
             _resultValue.readOnlyPort = readOnlyPort;
             _resultValue.registryBurst = registryBurst;
             _resultValue.registryPullQps = registryPullQps;
+            _resultValue.reservedMemories = reservedMemories;
             _resultValue.serializeImagePulls = serializeImagePulls;
             _resultValue.systemReserved = systemReserved;
+            _resultValue.topologyManagerPolicy = topologyManagerPolicy;
+            _resultValue.tracing = tracing;
             return _resultValue;
         }
     }

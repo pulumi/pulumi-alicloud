@@ -34,10 +34,12 @@ class ProjectArgs:
         """
         The set of arguments for constructing a Project resource.
         :param pulumi.Input[str] comment: Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
-        :param pulumi.Input[str] default_quota: Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
+        :param pulumi.Input[str] default_quota: Used to implement computing resource allocation. Valid values: subQuota Nickname
+               If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
         :param pulumi.Input['ProjectIpWhiteListArgs'] ip_white_list: IP whitelist See `ip_white_list` below.
-        :param pulumi.Input[str] is_logical: Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
-        :param pulumi.Input[str] product_type: Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
+        :param pulumi.Input[str] is_logical: Whether to logically delete. Default value: true. Value: (ture/false),
+               
+               > **NOTE:** -- ture: In this case, the project status will be changed to' deleting' and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
         :param pulumi.Input[str] project_name: The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
         :param pulumi.Input['ProjectPropertiesArgs'] properties: Project base attributes See `properties` below.
         :param pulumi.Input['ProjectSecurityPropertiesArgs'] security_properties: Security-related attributes See `security_properties` below.
@@ -81,7 +83,8 @@ class ProjectArgs:
     @pulumi.getter(name="defaultQuota")
     def default_quota(self) -> Optional[pulumi.Input[str]]:
         """
-        Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
+        Used to implement computing resource allocation. Valid values: subQuota Nickname
+        If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
         """
         return pulumi.get(self, "default_quota")
 
@@ -105,7 +108,9 @@ class ProjectArgs:
     @pulumi.getter(name="isLogical")
     def is_logical(self) -> Optional[pulumi.Input[str]]:
         """
-        Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
+        Whether to logically delete. Default value: true. Value: (ture/false),
+
+        > **NOTE:** -- ture: In this case, the project status will be changed to' deleting' and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
         """
         return pulumi.get(self, "is_logical")
 
@@ -116,9 +121,6 @@ class ProjectArgs:
     @property
     @pulumi.getter(name="productType")
     def product_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
-        """
         return pulumi.get(self, "product_type")
 
     @product_type.setter
@@ -198,6 +200,7 @@ class _ProjectState:
                  product_type: Optional[pulumi.Input[str]] = None,
                  project_name: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input['ProjectPropertiesArgs']] = None,
+                 region_id: Optional[pulumi.Input[str]] = None,
                  security_properties: Optional[pulumi.Input['ProjectSecurityPropertiesArgs']] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -206,13 +209,16 @@ class _ProjectState:
         Input properties used for looking up and filtering Project resources.
         :param pulumi.Input[str] comment: Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
         :param pulumi.Input[str] create_time: Represents the creation time of the project
-        :param pulumi.Input[str] default_quota: Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
+        :param pulumi.Input[str] default_quota: Used to implement computing resource allocation. Valid values: subQuota Nickname
+               If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
         :param pulumi.Input['ProjectIpWhiteListArgs'] ip_white_list: IP whitelist See `ip_white_list` below.
-        :param pulumi.Input[str] is_logical: Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
+        :param pulumi.Input[str] is_logical: Whether to logically delete. Default value: true. Value: (ture/false),
+               
+               > **NOTE:** -- ture: In this case, the project status will be changed to' deleting' and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
         :param pulumi.Input[str] owner: Project owner
-        :param pulumi.Input[str] product_type: Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
         :param pulumi.Input[str] project_name: The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
         :param pulumi.Input['ProjectPropertiesArgs'] properties: Project base attributes See `properties` below.
+        :param pulumi.Input[str] region_id: The region ID of the resource
         :param pulumi.Input['ProjectSecurityPropertiesArgs'] security_properties: Security-related attributes See `security_properties` below.
         :param pulumi.Input[str] status: The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
@@ -236,6 +242,8 @@ class _ProjectState:
             pulumi.set(__self__, "project_name", project_name)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
         if security_properties is not None:
             pulumi.set(__self__, "security_properties", security_properties)
         if status is not None:
@@ -273,7 +281,8 @@ class _ProjectState:
     @pulumi.getter(name="defaultQuota")
     def default_quota(self) -> Optional[pulumi.Input[str]]:
         """
-        Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
+        Used to implement computing resource allocation. Valid values: subQuota Nickname
+        If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
         """
         return pulumi.get(self, "default_quota")
 
@@ -297,7 +306,9 @@ class _ProjectState:
     @pulumi.getter(name="isLogical")
     def is_logical(self) -> Optional[pulumi.Input[str]]:
         """
-        Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
+        Whether to logically delete. Default value: true. Value: (ture/false),
+
+        > **NOTE:** -- ture: In this case, the project status will be changed to' deleting' and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
         """
         return pulumi.get(self, "is_logical")
 
@@ -320,9 +331,6 @@ class _ProjectState:
     @property
     @pulumi.getter(name="productType")
     def product_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
-        """
         return pulumi.get(self, "product_type")
 
     @product_type.setter
@@ -352,6 +360,18 @@ class _ProjectState:
     @properties.setter
     def properties(self, value: Optional[pulumi.Input['ProjectPropertiesArgs']]):
         pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region ID of the resource
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region_id", value)
 
     @property
     @pulumi.getter(name="securityProperties")
@@ -427,8 +447,6 @@ class Project(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.77.0.
 
-        > **NOTE:** Field `name`, `specification_type`, `order_type` has been removed from provider version 1.227.1.
-
         ## Example Usage
 
         Basic Usage
@@ -459,10 +477,12 @@ class Project(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
-        :param pulumi.Input[str] default_quota: Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
+        :param pulumi.Input[str] default_quota: Used to implement computing resource allocation. Valid values: subQuota Nickname
+               If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
         :param pulumi.Input[Union['ProjectIpWhiteListArgs', 'ProjectIpWhiteListArgsDict']] ip_white_list: IP whitelist See `ip_white_list` below.
-        :param pulumi.Input[str] is_logical: Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
-        :param pulumi.Input[str] product_type: Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
+        :param pulumi.Input[str] is_logical: Whether to logically delete. Default value: true. Value: (ture/false),
+               
+               > **NOTE:** -- ture: In this case, the project status will be changed to' deleting' and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
         :param pulumi.Input[str] project_name: The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
         :param pulumi.Input[Union['ProjectPropertiesArgs', 'ProjectPropertiesArgsDict']] properties: Project base attributes See `properties` below.
         :param pulumi.Input[Union['ProjectSecurityPropertiesArgs', 'ProjectSecurityPropertiesArgsDict']] security_properties: Security-related attributes See `security_properties` below.
@@ -483,8 +503,6 @@ class Project(pulumi.CustomResource):
         For information about Max Compute Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/maxcompute/).
 
         > **NOTE:** Available since v1.77.0.
-
-        > **NOTE:** Field `name`, `specification_type`, `order_type` has been removed from provider version 1.227.1.
 
         ## Example Usage
 
@@ -559,6 +577,7 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["create_time"] = None
             __props__.__dict__["owner"] = None
+            __props__.__dict__["region_id"] = None
             __props__.__dict__["type"] = None
         super(Project, __self__).__init__(
             'alicloud:maxcompute/project:Project',
@@ -579,6 +598,7 @@ class Project(pulumi.CustomResource):
             product_type: Optional[pulumi.Input[str]] = None,
             project_name: Optional[pulumi.Input[str]] = None,
             properties: Optional[pulumi.Input[Union['ProjectPropertiesArgs', 'ProjectPropertiesArgsDict']]] = None,
+            region_id: Optional[pulumi.Input[str]] = None,
             security_properties: Optional[pulumi.Input[Union['ProjectSecurityPropertiesArgs', 'ProjectSecurityPropertiesArgsDict']]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -592,13 +612,16 @@ class Project(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
         :param pulumi.Input[str] create_time: Represents the creation time of the project
-        :param pulumi.Input[str] default_quota: Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
+        :param pulumi.Input[str] default_quota: Used to implement computing resource allocation. Valid values: subQuota Nickname
+               If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
         :param pulumi.Input[Union['ProjectIpWhiteListArgs', 'ProjectIpWhiteListArgsDict']] ip_white_list: IP whitelist See `ip_white_list` below.
-        :param pulumi.Input[str] is_logical: Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
+        :param pulumi.Input[str] is_logical: Whether to logically delete. Default value: true. Value: (ture/false),
+               
+               > **NOTE:** -- ture: In this case, the project status will be changed to' deleting' and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
         :param pulumi.Input[str] owner: Project owner
-        :param pulumi.Input[str] product_type: Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
         :param pulumi.Input[str] project_name: The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
         :param pulumi.Input[Union['ProjectPropertiesArgs', 'ProjectPropertiesArgsDict']] properties: Project base attributes See `properties` below.
+        :param pulumi.Input[str] region_id: The region ID of the resource
         :param pulumi.Input[Union['ProjectSecurityPropertiesArgs', 'ProjectSecurityPropertiesArgsDict']] security_properties: Security-related attributes See `security_properties` below.
         :param pulumi.Input[str] status: The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
@@ -617,6 +640,7 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["product_type"] = product_type
         __props__.__dict__["project_name"] = project_name
         __props__.__dict__["properties"] = properties
+        __props__.__dict__["region_id"] = region_id
         __props__.__dict__["security_properties"] = security_properties
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
@@ -643,7 +667,8 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="defaultQuota")
     def default_quota(self) -> pulumi.Output[Optional[str]]:
         """
-        Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
+        Used to implement computing resource allocation. Valid values: subQuota Nickname
+        If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
         """
         return pulumi.get(self, "default_quota")
 
@@ -659,7 +684,9 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="isLogical")
     def is_logical(self) -> pulumi.Output[Optional[str]]:
         """
-        Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
+        Whether to logically delete. Default value: true. Value: (ture/false),
+
+        > **NOTE:** -- ture: In this case, the project status will be changed to' deleting' and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
         """
         return pulumi.get(self, "is_logical")
 
@@ -674,9 +701,6 @@ class Project(pulumi.CustomResource):
     @property
     @pulumi.getter(name="productType")
     def product_type(self) -> pulumi.Output[Optional[str]]:
-        """
-        Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
-        """
         return pulumi.get(self, "product_type")
 
     @property
@@ -694,6 +718,14 @@ class Project(pulumi.CustomResource):
         Project base attributes See `properties` below.
         """
         return pulumi.get(self, "properties")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[str]:
+        """
+        The region ID of the resource
+        """
+        return pulumi.get(self, "region_id")
 
     @property
     @pulumi.getter(name="securityProperties")

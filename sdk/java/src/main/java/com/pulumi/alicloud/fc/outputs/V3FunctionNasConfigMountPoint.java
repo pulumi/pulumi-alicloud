@@ -19,7 +19,7 @@ public final class V3FunctionNasConfigMountPoint {
     private @Nullable Boolean enableTls;
     private @Nullable String mountDir;
     /**
-     * @return NAS server address.
+     * @return NAS server address
      * 
      */
     private @Nullable String serverAddr;
@@ -36,7 +36,7 @@ public final class V3FunctionNasConfigMountPoint {
         return Optional.ofNullable(this.mountDir);
     }
     /**
-     * @return NAS server address.
+     * @return NAS server address
      * 
      */
     public Optional<String> serverAddr() {

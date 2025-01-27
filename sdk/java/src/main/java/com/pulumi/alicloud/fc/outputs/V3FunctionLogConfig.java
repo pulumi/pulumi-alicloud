@@ -23,7 +23,7 @@ public final class V3FunctionLogConfig {
      */
     private @Nullable Boolean enableRequestMetrics;
     /**
-     * @return Log Line First Matching Rules.
+     * @return Log Line First Matching Rules
      * 
      */
     private @Nullable String logBeginRule;
@@ -54,7 +54,7 @@ public final class V3FunctionLogConfig {
         return Optional.ofNullable(this.enableRequestMetrics);
     }
     /**
-     * @return Log Line First Matching Rules.
+     * @return Log Line First Matching Rules
      * 
      */
     public Optional<String> logBeginRule() {

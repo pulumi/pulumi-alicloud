@@ -22,6 +22,14 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly string ActiveScalingConfiguration;
         /// <summary>
+        /// (Available since v1.242.0) The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The allocation policy applies to pay-as-you-go and preemptible instances.
+        /// </summary>
+        public readonly string AllocationStrategy;
+        /// <summary>
+        /// (Available since v1.242.0) Indicates whether instances in the scaling group are evenly distributed across multiple zones.
+        /// </summary>
+        public readonly bool AzBalance;
+        /// <summary>
         /// Default cooldown time of scaling group.
         /// </summary>
         public readonly int CooldownTime;
@@ -34,9 +42,21 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly ImmutableArray<string> DbInstanceIds;
         /// <summary>
+        /// (Available since v1.242.0) The expected number of ECS instances in the scaling group. Auto Scaling automatically maintains the expected number of ECS instances that you specified.
+        /// </summary>
+        public readonly int DesiredCapacity;
+        /// <summary>
+        /// (Available since v1.242.0) Indicates whether the Expected Number of Instances feature is enabled.
+        /// </summary>
+        public readonly bool EnableDesiredCapacity;
+        /// <summary>
         /// Whether the scaling group deletion protection is enabled.
         /// </summary>
         public readonly bool GroupDeletionProtection;
+        /// <summary>
+        /// (Available since v1.242.0) The type of the instances in the scaling group.
+        /// </summary>
+        public readonly string GroupType;
         /// <summary>
         /// The health check method of the scaling group.
         /// </summary>
@@ -45,6 +65,10 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// ID of the scaling group.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// (Available since v1.242.0) The number of instances that are in the Initialized state and ready to be scaled out in the scaling group.
+        /// </summary>
+        public readonly int InitCapacity;
         /// <summary>
         /// Active launch template ID for scaling group.
         /// </summary>
@@ -62,6 +86,10 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly ImmutableArray<string> LoadBalancerIds;
         /// <summary>
+        /// (Available since v1.242.0) The maximum life span of each instance in the scaling group. Unit: seconds.
+        /// </summary>
+        public readonly int MaxInstanceLifetime;
+        /// <summary>
         /// The maximum number of ECS instances.
         /// </summary>
         public readonly int MaxSize;
@@ -74,13 +102,37 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly string ModificationTime;
         /// <summary>
+        /// (Available since v1.242.0) The ID of the CloudMonitor application group that is associated with the scaling group.
+        /// </summary>
+        public readonly string MonitorGroupId;
+        /// <summary>
+        /// (Available since v1.242.0) The scaling policy of the multi-zone scaling group of the ECS type.
+        /// </summary>
+        public readonly string MultiAzPolicy;
+        /// <summary>
         /// Name of the scaling group.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Number of pending instances in scaling group.
+        /// (Available since v1.242.0) The lower limit of the number of pay-as-you-go instances in the scaling group.
+        /// </summary>
+        public readonly int OnDemandBaseCapacity;
+        /// <summary>
+        /// (Available since v1.242.0) The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. OnDemandBaseCapacity specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group.
+        /// </summary>
+        public readonly int OnDemandPercentageAboveBaseCapacity;
+        /// <summary>
+        /// (Available since v1.242.0) The number of ECS instances that are being added to the scaling group and still being configured.
         /// </summary>
         public readonly int PendingCapacity;
+        /// <summary>
+        /// (Available since v1.242.0) The number of ECS instances that are in the Pending Add state in the scaling group.
+        /// </summary>
+        public readonly int PendingWaitCapacity;
+        /// <summary>
+        /// (Available since v1.242.0) The number of ECS instances that are in the Protected state in the scaling group.
+        /// </summary>
+        public readonly int ProtectedCapacity;
         /// <summary>
         /// Region ID the scaling group belongs to.
         /// </summary>
@@ -90,17 +142,61 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly ImmutableArray<string> RemovalPolicies;
         /// <summary>
-        /// Number of removing instances in scaling group.
+        /// (Available since v1.242.0) The number of ECS instances that are being removed from the scaling group.
         /// </summary>
         public readonly int RemovingCapacity;
+        /// <summary>
+        /// (Available since v1.242.0) The number of ECS instances that are in the Pending Remove state in the scaling group.
+        /// </summary>
+        public readonly int RemovingWaitCapacity;
+        /// <summary>
+        /// (Available since v1.242.0) The ID of the resource group to which the scaling group that you want to query belongs.
+        /// </summary>
+        public readonly string ResourceGroupId;
+        /// <summary>
+        /// (Available since v1.242.0) The reclaim mode of the scaling group.
+        /// </summary>
+        public readonly string ScalingPolicy;
+        /// <summary>
+        /// (Available since v1.242.0) The allocation policy of preemptible instances. This parameter indicates the method used by Auto Scaling to select instance types to create the required number of preemptible instances. This parameter takes effect only if you set multi_az_policy to COMPOSABLE.
+        /// </summary>
+        public readonly string SpotAllocationStrategy;
+        /// <summary>
+        /// (Available since v1.242.0) The number of preemptible instances in the scaling group.
+        /// </summary>
+        public readonly int SpotCapacity;
+        /// <summary>
+        /// (Available since v1.242.0) The number of instance types. Auto Scaling creates preemptible instances of multiple instance types that are provided at the lowest price.
+        /// </summary>
+        public readonly int SpotInstancePools;
+        /// <summary>
+        /// (Available since v1.242.0) Indicates whether supplementation of preemptible instances is enabled. If this parameter is set to true, Auto Scaling creates an instance to replace a preemptible instance when Auto Scaling receives a system message indicating that the preemptible instance is to be reclaimed.
+        /// </summary>
+        public readonly bool SpotInstanceRemedy;
+        /// <summary>
+        /// (Available since v1.242.0) The number of instances that are in the Standby state in the scaling group.
+        /// </summary>
+        public readonly int StandbyCapacity;
+        /// <summary>
+        /// (Available since v1.242.0) The period of time that is required by an ECS instance to enter the Stopped state during the scale-in process. Unit: seconds.
+        /// </summary>
+        public readonly int StopInstanceTimeout;
+        /// <summary>
+        /// (Available since v1.242.0) The number of instances that are in Economical Mode in the scaling group.
+        /// </summary>
+        public readonly int StoppedCapacity;
         /// <summary>
         /// The Process in suspension.
         /// </summary>
         public readonly ImmutableArray<string> SuspendedProcesses;
         /// <summary>
+        /// (Available since v1.242.0) Indicates whether Auto Scaling stops executing the scaling operation in the scaling group.
+        /// </summary>
+        public readonly bool SystemSuspended;
+        /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public readonly ImmutableDictionary<string, string>? Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// Number of instances in scaling group.
         /// </summary>
@@ -128,17 +224,29 @@ namespace Pulumi.AliCloud.Ess.Outputs
 
             string activeScalingConfiguration,
 
+            string allocationStrategy,
+
+            bool azBalance,
+
             int cooldownTime,
 
             string creationTime,
 
             ImmutableArray<string> dbInstanceIds,
 
+            int desiredCapacity,
+
+            bool enableDesiredCapacity,
+
             bool groupDeletionProtection,
+
+            string groupType,
 
             string healthCheckType,
 
             string id,
+
+            int initCapacity,
 
             string launchTemplateId,
 
@@ -148,15 +256,29 @@ namespace Pulumi.AliCloud.Ess.Outputs
 
             ImmutableArray<string> loadBalancerIds,
 
+            int maxInstanceLifetime,
+
             int maxSize,
 
             int minSize,
 
             string modificationTime,
 
+            string monitorGroupId,
+
+            string multiAzPolicy,
+
             string name,
 
+            int onDemandBaseCapacity,
+
+            int onDemandPercentageAboveBaseCapacity,
+
             int pendingCapacity,
+
+            int pendingWaitCapacity,
+
+            int protectedCapacity,
 
             string regionId,
 
@@ -164,9 +286,31 @@ namespace Pulumi.AliCloud.Ess.Outputs
 
             int removingCapacity,
 
+            int removingWaitCapacity,
+
+            string resourceGroupId,
+
+            string scalingPolicy,
+
+            string spotAllocationStrategy,
+
+            int spotCapacity,
+
+            int spotInstancePools,
+
+            bool spotInstanceRemedy,
+
+            int standbyCapacity,
+
+            int stopInstanceTimeout,
+
+            int stoppedCapacity,
+
             ImmutableArray<string> suspendedProcesses,
 
-            ImmutableDictionary<string, string>? tags,
+            bool systemSuspended,
+
+            ImmutableDictionary<string, string> tags,
 
             int totalCapacity,
 
@@ -180,25 +324,49 @@ namespace Pulumi.AliCloud.Ess.Outputs
         {
             ActiveCapacity = activeCapacity;
             ActiveScalingConfiguration = activeScalingConfiguration;
+            AllocationStrategy = allocationStrategy;
+            AzBalance = azBalance;
             CooldownTime = cooldownTime;
             CreationTime = creationTime;
             DbInstanceIds = dbInstanceIds;
+            DesiredCapacity = desiredCapacity;
+            EnableDesiredCapacity = enableDesiredCapacity;
             GroupDeletionProtection = groupDeletionProtection;
+            GroupType = groupType;
             HealthCheckType = healthCheckType;
             Id = id;
+            InitCapacity = initCapacity;
             LaunchTemplateId = launchTemplateId;
             LaunchTemplateVersion = launchTemplateVersion;
             LifecycleState = lifecycleState;
             LoadBalancerIds = loadBalancerIds;
+            MaxInstanceLifetime = maxInstanceLifetime;
             MaxSize = maxSize;
             MinSize = minSize;
             ModificationTime = modificationTime;
+            MonitorGroupId = monitorGroupId;
+            MultiAzPolicy = multiAzPolicy;
             Name = name;
+            OnDemandBaseCapacity = onDemandBaseCapacity;
+            OnDemandPercentageAboveBaseCapacity = onDemandPercentageAboveBaseCapacity;
             PendingCapacity = pendingCapacity;
+            PendingWaitCapacity = pendingWaitCapacity;
+            ProtectedCapacity = protectedCapacity;
             RegionId = regionId;
             RemovalPolicies = removalPolicies;
             RemovingCapacity = removingCapacity;
+            RemovingWaitCapacity = removingWaitCapacity;
+            ResourceGroupId = resourceGroupId;
+            ScalingPolicy = scalingPolicy;
+            SpotAllocationStrategy = spotAllocationStrategy;
+            SpotCapacity = spotCapacity;
+            SpotInstancePools = spotInstancePools;
+            SpotInstanceRemedy = spotInstanceRemedy;
+            StandbyCapacity = standbyCapacity;
+            StopInstanceTimeout = stopInstanceTimeout;
+            StoppedCapacity = stoppedCapacity;
             SuspendedProcesses = suspendedProcesses;
+            SystemSuspended = systemSuspended;
             Tags = tags;
             TotalCapacity = totalCapacity;
             TotalInstanceCount = totalInstanceCount;

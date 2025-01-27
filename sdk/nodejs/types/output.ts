@@ -2049,7 +2049,7 @@ export namespace alb {
 
     export interface GetServerGroupsGroup {
         /**
-         * The configuration of health checks.
+         * The configuration of health checks. **Note:** `healthCheckConfig` takes effect only if `enableDetails` is set to `true`.
          */
         healthCheckConfigs: outputs.alb.GetServerGroupsGroupHealthCheckConfig[];
         /**
@@ -2057,54 +2057,54 @@ export namespace alb {
          */
         id: string;
         /**
-         * The server protocol. Valid values: `HTTP` and `HTTPS`. Default value: `HTTP`.
+         * The backend protocol.
          */
         protocol: string;
         /**
-         * The scheduling algorithm. Valid values: `Wrr`, `Wlc` and `Sch`.
+         * The scheduling algorithm.
          */
         scheduler: string;
         /**
-         * The first ID of the res ource.
+         * The ID of the Server Group.
          */
         serverGroupId: string;
         /**
-         * The name of the resource.
+         * The names of the Server Group.
          */
         serverGroupName: string;
         /**
-         * The backend server.
+         * The backend server. **Note:** `servers` takes effect only if `enableDetails` is set to `true`.
          */
         servers: outputs.alb.GetServerGroupsGroupServer[];
         /**
-         * The status of the resource.
+         * The status of the Server Group. Valid values: `Available`, `Configuring`, `Provisioning`.
          */
         status: string;
         /**
-         * The configuration of the sticky session.
+         * The configuration of the sticky session. **Note:** `stickySessionConfig` takes effect only if `enableDetails` is set to `true`.
          */
         stickySessionConfigs: outputs.alb.GetServerGroupsGroupStickySessionConfig[];
         /**
-         * A map of tags assigned to the group.
+         * A mapping of tags to assign to the resource.
          */
         tags: {[key: string]: string};
         /**
-         * The ID of the VPC that you want to access.
+         * The ID of the virtual private cloud (VPC).
          */
         vpcId: string;
     }
 
     export interface GetServerGroupsGroupHealthCheckConfig {
         /**
-         * The status code for a successful health check. Multiple status codes can be specified as a list. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+         * The status code for a successful health check. Multiple status codes can be specified as a list.
          */
         healthCheckCodes: string[];
         /**
-         * The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of `0` indicates that a backend server port is used for health checks.
+         * The port of the backend server that is used for health checks.
          */
         healthCheckConnectPort: number;
         /**
-         * Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
+         * Indicates whether health checks are enabled.
          */
         healthCheckEnabled: boolean;
         /**
@@ -2112,35 +2112,35 @@ export namespace alb {
          */
         healthCheckHost: string;
         /**
-         * HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+         * HTTP protocol version.
          */
         healthCheckHttpVersion: string;
         /**
-         * The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
+         * The time interval between two consecutive health checks.
          */
         healthCheckInterval: number;
         /**
-         * Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+         * Health check method.
          */
         healthCheckMethod: string;
         /**
-         * The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+         * The forwarding rule path of health checks.
          */
         healthCheckPath: string;
         /**
-         * Health check protocol. Valid values: `HTTP` and `TCP`.
+         * Health check protocol.
          */
         healthCheckProtocol: string;
         /**
-         * The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: `1` to `300`. Default value: `5`. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
+         * The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy.
          */
         healthCheckTimeout: number;
         /**
-         * The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: `2` to `10`. Default value: `3`.
+         * The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success.
          */
         healthyThreshold: number;
         /**
-         * The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
+         * The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail.
          */
         unhealthyThreshold: number;
     }
@@ -2151,7 +2151,7 @@ export namespace alb {
          */
         description: string;
         /**
-         * The port that is used by the server. Valid values: `1` to `65535`.
+         * The port that is used by the server.
          */
         port: number;
         /**
@@ -2163,34 +2163,34 @@ export namespace alb {
          */
         serverIp: string;
         /**
-         * The type of the server. The type of the server. Valid values: `Ecs`, `Eni` and `Eci`.
+         * The type of the server. The type of the server.
          */
         serverType: string;
         /**
-         * The status of the resource.
+         * The status of the Server Group. Valid values: `Available`, `Configuring`, `Provisioning`.
          */
         status: string;
         /**
-         * The weight of the server.  Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the server.
+         * The weight of the server.
          */
         weight: number;
     }
 
     export interface GetServerGroupsGroupStickySessionConfig {
         /**
-         * the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession` parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
+         * the cookie that is configured on the server.
          */
         cookie: string;
         /**
-         * The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
+         * The timeout period of a cookie. The timeout period of a cookie.
          */
         cookieTimeout: number;
         /**
-         * Indicates whether sticky session is enabled. Values: `true` and `false`. Default value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
+         * Indicates whether sticky session is enabled.
          */
         stickySessionEnabled: boolean;
         /**
-         * The method that is used to handle a cookie. Values: `Server` and `Insert`.
+         * The method that is used to handle a cookie.
          */
         stickySessionType: string;
     }
@@ -2231,21 +2231,23 @@ export namespace alb {
 
     export interface ListenerAccessLogTracingConfig {
         /**
-         * Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
+         * Xtrace Function.
          *
-         * > **NOTE:** Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `True`.
+         * Value: True **** Or False * *.
+         *
+         * Default Value: False * *.
+         *
+         * > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
          */
-        tracingEnabled?: boolean;
+        tracingEnabled: boolean;
         /**
-         * Xtrace Sampling Rate. Value: `1` to `10000`.
-         *
-         * > **NOTE:** This attribute is valid when `tracingenabled` is `true`.
+         * Xtrace Sampling Rate. Value: 1~10000 **.> `tracingenabled` **True When Effective.
          */
         tracingSample?: number;
         /**
-         * Xtrace Type Value Is `Zipkin`.
+         * Xtrace Type Value Is **Zipkin * *.
          *
-         * > **NOTE:** This attribute is valid when `tracingenabled` is `true`.
+         * > **NOTE:**  `tracingenabled` **True When Effective.
          */
         tracingType?: string;
     }
@@ -2267,39 +2269,46 @@ export namespace alb {
          */
         aclId: string;
         /**
-         * The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
+         * The Current IP Address of the Listened State
          */
         status: string;
     }
 
+    export interface ListenerCaCertificate {
+        /**
+         * The ID of the certificate. Currently, only server certificates are supported.
+         */
+        certificateId?: string;
+    }
+
     export interface ListenerCertificates {
         /**
-         * The ID of the Certificate.
+         * The ID of the certificate. Currently, only server certificates are supported.
          */
         certificateId?: string;
     }
 
     export interface ListenerDefaultAction {
         /**
-         * The configurations of the actions. This parameter is required if Type is set to FowardGroup. See `forwardGroupConfig` below for details.
+         * Forwarding Action Configurations See `forwardGroupConfig` below.
          */
-        forwardGroupConfig: outputs.alb.ListenerDefaultActionForwardGroupConfig;
+        forwardGroupConfig?: outputs.alb.ListenerDefaultActionForwardGroupConfig;
         /**
-         * Action Type.
+         * Action Type
          */
         type: string;
     }
 
     export interface ListenerDefaultActionForwardGroupConfig {
         /**
-         * The destination server group to which requests are forwarded. See `serverGroupTuples` below for details.
+         * The Forwarding Destination Server Group See `serverGroupTuples` below.
          */
         serverGroupTuples: outputs.alb.ListenerDefaultActionForwardGroupConfigServerGroupTuple[];
     }
 
     export interface ListenerDefaultActionForwardGroupConfigServerGroupTuple {
         /**
-         * The ID of the destination server group to which requests are forwarded.
+         * Forwarded to the Destination Server Group ID
          */
         serverGroupId: string;
     }
@@ -2310,52 +2319,58 @@ export namespace alb {
          */
         quicListenerId?: string;
         /**
-         * Indicates Whether to Enable the QuIC Upgrade.
-         *
-         * > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
+         * Indicates Whether to Enable the QuIC Upgrade
          */
         quicUpgradeEnabled: boolean;
     }
 
     export interface ListenerXForwardedForConfig {
         /**
-         * The Custom Header Field Names Only When `xForwardedForClientCertClientVerifyEnabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+         * The Custom Header Field Names Only When xforwardedforclientcertclientverifyenabled Has a Value of True, this Value Will Not Take Effect until.
          */
         xForwardedForClientCertClientVerifyAlias?: string;
         /**
-         * Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
+         * Indicates Whether the X-Forwarded-Clientcert-clientverify Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
          */
         xForwardedForClientCertClientVerifyEnabled: boolean;
         /**
-         * The Custom Header Field Names Only When `xForwardedForClientCertfingerprintEnabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+         * The Custom Header Field Names Only When xforwardedforclientcertfingerprintenabled, Which Evaluates to True When the Entry into Force of.
          */
         xForwardedForClientCertFingerPrintAlias?: string;
         /**
-         * Indicates Whether the `X-Forwarded-client_cert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+         * Indicates Whether the X-Forwarded-Clientcert-fingerprint Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
          */
         xForwardedForClientCertFingerPrintEnabled: boolean;
         /**
-         * The Custom Header Field Names Only When `xForwardedForClientCertIssuerDnEnabled`, Which Evaluates to True When the Entry into Force of.
+         * The Custom Header Field Names Only When xforwardedforclientcertsubjectdnenabled, Which Evaluates to True When the Entry into Force of.
          */
         xForwardedForClientCertIssuerDnAlias?: string;
         /**
-         * Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+         * Indicates Whether the X-Forwarded-Clientcert-issuerdn Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
          */
         xForwardedForClientCertIssuerDnEnabled: boolean;
         /**
-         * The name of the custom header. This parameter is valid only if `xForwardedForClientCertsubjectdnEnabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+         * The Custom Header Field Name,
          */
         xForwardedForClientCertSubjectDnAlias?: string;
         /**
-         * Specifies whether to use the `X-Forwarded-client_cert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+         * Indicates Whether the X-Forwarded-Clientcert-subjectdn Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Owner Information.
          */
         xForwardedForClientCertSubjectDnEnabled: boolean;
         /**
-         * Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value: true, false. Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
+         * Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value:
+         *
+         * true: Yes.
+         *
+         * false (default): No.
+         *
+         * Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
          */
         xForwardedForClientSourceIpsEnabled?: boolean;
         /**
-         * Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+         * Specify the trusted proxy IP.
+         *
+         * Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
          */
         xForwardedForClientSourceIpsTrusted?: string;
         /**
@@ -2367,15 +2382,39 @@ export namespace alb {
          */
         xForwardedForEnabled: boolean;
         /**
+         * Whether to enable the X-Forwarded-Host header field to obtain the domain name of the client accessing the Application Load Balancer. Value:
+         *
+         * true: Yes.
+         *
+         * false (default): No.
+         *
+         * HTTP, HTTPS, and QUIC listeners support this parameter.
+         */
+        xForwardedForHostEnabled?: boolean;
+        /**
+         * Schema for processing X-Forwarded-For header fields. This value takes effect only when XForwardedForEnabled is true. Value:
+         *
+         * append (default): append.
+         *
+         * remove: Delete.
+         *
+         * Configure append to add the last hop IP address to the X-Forwarded-For header field before sending the request to the backend service.
+         *
+         * Configure remove to delete the X-Forwarded-For header before the request is sent to the backend service, regardless of whether the request carries X-Forwarded-For header fields.
+         *
+         * HTTP and HTTPS listeners support this parameter.
+         */
+        xForwardedForProcessingMode: string;
+        /**
          * Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
          */
         xForwardedForProtoEnabled: boolean;
         /**
-         * Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
+         * Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id
          */
         xForwardedForSlbIdEnabled: boolean;
         /**
-         * Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
+         * Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port
          */
         xForwardedForSlbPortEnabled: boolean;
     }
@@ -2391,54 +2430,65 @@ export namespace alb {
         logStore: string;
     }
 
+    export interface LoadBalancerDeletionProtectionConfig {
+        /**
+         * Remove the Protection Status
+         */
+        enabled?: boolean;
+        /**
+         * Deletion Protection Turn-on Time Use Greenwich Mean Time, in the Format of Yyyy-MM-ddTHH: mm: SSZ
+         */
+        enabledTime: string;
+    }
+
     export interface LoadBalancerLoadBalancerBillingConfig {
         /**
-         * The billing method of the ALB instance. Valid values: `PayAsYouGo`.
+         * Pay Type
          */
         payType: string;
     }
 
     export interface LoadBalancerModificationProtectionConfig {
         /**
-         * The reason for enabling the configuration read-only mode. **NOTE:** `reason` takes effect only if `status` is set to `ConsoleProtection`.
+         * Managed Instance
          */
-        reason: string;
+        reason?: string;
         /**
-         * Specifies whether to enable the configuration read-only mode. Valid values: `ConsoleProtection`, `NonProtection`.
+         * Load Balancing Modify the Protection Status
          */
-        status: string;
+        status?: string;
     }
 
     export interface LoadBalancerZoneMapping {
         /**
-         * The IP address of the ALB instance.
+         * The SLB Instance Address
          */
         loadBalancerAddresses: outputs.alb.LoadBalancerZoneMappingLoadBalancerAddress[];
         /**
-         * The ID of the VSwitch.
+         * The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
          */
         vswitchId: string;
         /**
-         * The zone ID of the ALB instance.
+         * The ID of the zone to which the SLB instance belongs.
          */
         zoneId: string;
     }
 
     export interface LoadBalancerZoneMappingLoadBalancerAddress {
         /**
-         * IP address. The Public IP Address, and Private IP Address from the Address Type.
+         * IP Address. The Public IP Address, and Private IP Address from the Address Type
          */
         address: string;
         /**
-         * The ID of the EIP.
+         * The ID of the EIP instance.
          */
         allocationId: string;
         /**
-         * The type of the EIP.
+         * The type of the EIP instance.
          */
         eipType: string;
         /**
-         * Ipv6 address.
+         * Ipv6 address
          */
         ipv6Address: string;
     }
@@ -2789,119 +2839,249 @@ export namespace alb {
         values?: string[];
     }
 
+    export interface ServerGroupConnectionDrainConfig {
+        /**
+         * Specifies whether to enable connection draining. Valid values:
+         */
+        connectionDrainEnabled: boolean;
+        /**
+         * The timeout period of connection draining.
+         *
+         * Valid values: `0` to `900`.
+         *
+         * Default value: `300`.
+         */
+        connectionDrainTimeout: number;
+    }
+
     export interface ServerGroupHealthCheckConfig {
         /**
-         * The HTTP status codes that are used to indicate whether the backend server passes the health check. Valid values:
-         * - If `healthCheckProtocol` is set to `HTTP` or `HTTPS`. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. Default value: `http2xx`.
-         * - If `healthCheckProtocol` is set to `gRPC`. Valid values: `0` to `99`. Default value: `0`.
+         * The status code for a successful health check
          */
         healthCheckCodes: string[];
         /**
-         * The backend port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`. A value of 0 indicates that a backend server port is used for health checks.
+         * The backend port that is used for health checks.
+         *
+         * Valid values: `0` to `65535`.
+         *
+         * If you set the value to `0`, the backend port is used for health checks.
+         *
+         * > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
          */
         healthCheckConnectPort: number;
         /**
-         * Specifies whether to enable the health check feature. Valid values: `true`, `false`.
+         * Specifies whether to enable the health check feature. Valid values:
          */
         healthCheckEnabled: boolean;
         /**
          * The domain name that is used for health checks.
+         *
+         * *   **Backend Server Internal IP** (default): Use the internal IP address of backend servers as the health check domain name.
+         *
+         * *   **Custom Domain Name**: Enter a domain name.
+         *
+         * *   The domain name must be 1 to 80 characters in length.
+         * *   The domain name can contain lowercase letters, digits, hyphens (-), and periods (.).
+         * *   The domain name must contain at least one period (.) but cannot start or end with a period (.).
+         * *   The rightmost domain label of the domain name can contain only letters, and cannot contain digits or hyphens (-).
+         * *   The domain name cannot start or end with a hyphen (-).
+         *
+         * > **NOTE:**   This parameter takes effect only if `HealthCheckProtocol` is set to `HTTP`, `HTTPS`, or `gRPC`.
          */
         healthCheckHost: string;
         /**
-         * The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0` and `HTTP1.1`. **NOTE:** This parameter takes effect only when `healthCheckProtocol` is set to `HTTP` or `HTTPS`.
+         * The HTTP version that is used for health checks. Valid values:
+         *
+         * *   **HTTP1.0**
+         *
+         * *   **HTTP1.1**
+         *
+         * > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to true and `HealthCheckProtocol` to `HTTP` or `HTTPS`.
          */
         healthCheckHttpVersion: string;
         /**
-         * The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
+         * The interval at which health checks are performed. Unit: seconds.
+         *
+         * Valid values: `1` to `50`.
+         *
+         * > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
          */
         healthCheckInterval: number;
         /**
-         * The HTTP method that is used for health checks. Default value: `GET`. Valid values: `GET`, `POST`, `HEAD`. **NOTE:** This parameter takes effect only when `healthCheckProtocol` is set to `HTTP`, `HTTPS`, or `gRPC`. From version 1.215.0, `healthCheckMethod` can be set to `POST`.
+         * The HTTP method that is used for health checks. Valid values:
+         *
+         * *   `GET`: If the length of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
+         *
+         * *   `POST`: gRPC health checks use the POST method by default.
+         *
+         * *   `HEAD`: HTTP and HTTPS health checks use the HEAD method by default.
+         *
+         * > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to true and `HealthCheckProtocol` to `HTTP`, `HTTPS`, or `gRPC`.
          */
         healthCheckMethod: string;
         /**
-         * The path that is used for health checks. **NOTE:** This parameter takes effect only when `healthCheckProtocol` is set to `HTTP` or `HTTPS`.
+         * The URL that is used for health checks.
+         *
+         * The URL must be 1 to 80 characters in length, and can contain letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : ' , +`. The URL must start with a forward slash (`/`).
+         *
+         * > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true` and `HealthCheckProtocol` to `HTTP` or `HTTPS`.
          */
         healthCheckPath: string;
         /**
-         * The protocol that is used for health checks. Valid values: `HTTP`, `HTTPS`, `TCP` and `gRPC`.
+         * The protocol that is used for health checks. Valid values:
+         *
+         * - `HTTP`: HTTP health checks simulate browser behaviors by sending HEAD or GET requests to probe the availability of backend servers.
+         * - `HTTPS`: HTTPS health checks simulate browser behaviors by sending HEAD or GET requests to probe the availability of backend servers. HTTPS provides higher security than HTTP because HTTPS supports data encryption.
+         * - `TCP`: TCP health checks send TCP SYN packets to a backend server to probe the availability of backend servers.
+         * - `gRPC`: gRPC health checks send POST or GET requests to a backend server to check whether the backend server is healthy.
          */
         healthCheckProtocol: string;
         /**
-         * The timeout period for a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If the value of `healthCheckTimeout` is smaller than the value of `healthCheckInterval`, the value of `healthCheckTimeout` is ignored and the value of `healthCheckInterval` is used.
+         * The timeout period of a health check response. If a backend ECS instance does not respond within the specified timeout period, the ECS instance fails the health check. Unit: seconds.
+         *
+         * Valid values: `1` to `300`.
+         *
+         * > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
          */
         healthCheckTimeout: number;
         /**
-         * The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
+         * The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health check status of the backend server changes from `fail` to `success`.
+         *
+         * Valid values: `2` to `10`.
+         *
+         * Default value: `3`.
          */
         healthyThreshold: number;
         /**
-         * The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
+         * The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health check status of the backend server changes from `success` to `fail`.
+         *
+         * Valid values: `2` to `10`.
+         *
+         * Default value: `3`.
          */
         unhealthyThreshold: number;
     }
 
     export interface ServerGroupServer {
         /**
-         * The description of the backend server.
+         * The description of the backend server. The description must be 2 to 256 characters in length, and cannot start with http:// or https://.
          */
         description?: string;
         /**
-         * The port used by the backend server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `serverType` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `serverType` to `Fc`.
+         * The port that is used by the backend server. Valid values: `1` to `65535`. You can specify at most 200 servers in each call.
+         *
+         * > **NOTE:**   This parameter is required if you set `ServerType` to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to set this parameter if `ServerType` is set to `Fc`.
          */
         port?: number;
         /**
-         * Specifies whether to enable the remote IP address feature. You can specify up to 40 servers in each call. **Note:** If `serverType` is set to `Ip`, this parameter is available.
+         * Specifies whether to enable the remote IP feature. You can specify at most 200 servers in each call. Default values:
          */
         remoteIpEnabled: boolean;
         /**
-         * The ID of the backend server.
-         * - If `serverGroupType` is set to `Instance`, set the parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
-         * - If `serverGroupType` is set to `Ip`, set the parameter to an IP address specified in the server group.
-         * - If `serverGroupType` is set to `Fc`, set the parameter to the Alibaba Cloud Resource Name (ARN) of a function specified in the server group.
+         * The ID of the server group.
+         */
+        serverGroupId: string;
+        /**
+         * The ID of the backend server. You can specify at most 200 servers in each call.
+         *
+         * *   If the server group is of the `Instance` type, set ServerId to the ID of a resource of the `Ecs`, `Eni`, or `Eci` type.
+         *
+         * *   If the server group is of the `Ip` type, set ServerId to IP addresses.
+         *
+         * > **NOTE:**   You cannot perform this operation on a server group of the Function Compute type. You can call the [ListServerGroups](https://www.alibabacloud.com/help/en/doc-detail/213627.html) operation to query the type of server groups.
          */
         serverId: string;
         /**
-         * The IP address of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. **Note:** If `serverGroupType` is set to `Fc`, you do not need to configure parameters, otherwise this attribute is required. If `serverGroupType` is set to `Ip`, the value of this property is the same as the `serverId` value.
+         * The IP address of the backend server. You can specify at most 200 servers in each call.
+         *
+         * > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
          */
         serverIp: string;
         /**
-         * The type of the server. The type of the server. Valid values:
-         * - `Ecs`: an ECS instance.
-         * - `Eni`: an ENI.
-         * - `Eci`: an elastic container instance.
-         * - `Ip`(Available since v1.194.0): an IP address.
-         * - `Fc`(Available since v1.194.0): a function.
+         * The type of the backend server. You can specify at most 200 servers in each call. Default values:
+         *
+         * - `Ecs`: Elastic Compute Service (ECS) instance
+         * - `Eni`: elastic network interface (ENI)
+         * - `Eci`: elastic container instance
+         * - `Ip`: IP address
+         * - `Fc`: Function Compute
          */
         serverType: string;
         /**
-         * The status of the backend server.
+         * The status of the resource
          */
         status: string;
         /**
-         * The weight of the server. Default value: `100`. Valid values: `0` to `100`. If the value is set to `0`, no requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `serverType` to `Fc`.
+         * The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
+         *
+         * > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
          */
-        weight?: number;
+        weight: number;
+    }
+
+    export interface ServerGroupSlowStartConfig {
+        /**
+         * The duration of a slow start.
+         *
+         * Valid values: 30 to 900.
+         *
+         * Default value: 30.
+         */
+        slowStartDuration: number;
+        /**
+         * Indicates whether slow starts are enabled. Valid values:
+         */
+        slowStartEnabled: boolean;
     }
 
     export interface ServerGroupStickySessionConfig {
         /**
-         * The cookie to be configured on the server. **NOTE:** This parameter takes effect when the `stickySessionEnabled` parameter is set to `true` and the `stickySessionType` parameter is set to `Server`.
+         * The cookie to be configured on the server.
+         *
+         * The cookie must be 1 to 200 characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($).
+         *
+         * > **NOTE:**  This parameter takes effect when the `StickySessionEnabled` parameter is set to `true` and the `StickySessionType` parameter is set to `Server`.
          */
         cookie: string;
         /**
-         * The timeout period of a cookie. Unit: seconds. Default value: `1000`. Valid values: `1` to `86400`. **NOTE:** This parameter takes effect when the `stickySessionEnabled` parameter is set to `true` and the `stickySessionType` parameter is set to `Insert`.
+         * The maximum amount of time to wait before the session cookie expires. Unit: seconds.
+         *
+         * Valid values: `1` to `86400`.
+         *
+         * Default value: `1000`.
+         *
+         * > **NOTE:**   This parameter takes effect only when `StickySessionEnabled` is set to `true` and `StickySessionType` is set to `Insert`.
          */
         cookieTimeout: number;
         /**
-         * Specifies whether to enable session persistence. Default value: `false`. Valid values: `true`, `false`. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
+         * Specifies whether to enable session persistence. Valid values:
          */
         stickySessionEnabled?: boolean;
         /**
-         * The method that is used to handle a cookie. Valid values: `Server`, `Insert`.
+         * The method that is used to handle a cookie. Valid values:
+         *
+         * *   `Insert`: inserts a cookie.
+         *
+         * ALB inserts a cookie (SERVERID) into the first HTTP or HTTPS response packet that is sent to a client. The next request from the client contains this cookie and the listener forwards this request to the recorded backend server.
+         *
+         * *   `Server`: rewrites a cookie.
+         *
+         * When ALB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. Subsequent requests to ALB carry this user-defined cookie, and ALB determines the destination servers of the requests based on the cookies.
+         *
+         * > **NOTE:**  This parameter takes effect when the `StickySessionEnabled` parameter is set to `true` for the server group.
          */
         stickySessionType: string;
+    }
+
+    export interface ServerGroupUchConfig {
+        /**
+         * The parameter type. Only QueryString can be filled.
+         */
+        type?: string;
+        /**
+         * Consistency hash parameter value
+         */
+        value?: string;
     }
 
 }
@@ -7655,6 +7835,13 @@ export namespace cen {
          * The name of the stream classification rule.  The name must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
          */
         trafficMatchRuleName: string;
+    }
+
+    export interface TransitRouterMulticastDomainOptions {
+        /**
+         * Whether to enable IGMP function for multicast domain. Default value: `disable`. Valid values: `enable`, `disable`.
+         */
+        igmpv2Support: string;
     }
 
     export interface TransitRouterVpcAttachmentZoneMapping {
@@ -15047,6 +15234,10 @@ export namespace cs {
          */
         allowedUnsafeSysctls?: string[];
         /**
+         * The list of IP addresses of the cluster DNS servers.
+         */
+        clusterDns?: string[];
+        /**
          * The maximum number of log files that can exist in each container.
          */
         containerLogMaxFiles?: string;
@@ -15054,6 +15245,22 @@ export namespace cs {
          * The maximum size that can be reached before a log file is rotated.
          */
         containerLogMaxSize?: string;
+        /**
+         * Specifies the maximum number of concurrent workers required to perform log rotation operations.
+         */
+        containerLogMaxWorkers?: string;
+        /**
+         * Specifies the duration for which container logs are monitored for log rotation.
+         */
+        containerLogMonitorInterval?: string;
+        /**
+         * CPU CFS quota constraint switch.
+         */
+        cpuCfsQuota?: string;
+        /**
+         * CPU CFS quota period value.
+         */
+        cpuCfsQuotaPeriod?: string;
         /**
          * Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
          */
@@ -15083,6 +15290,14 @@ export namespace cs {
          */
         featureGates?: {[key: string]: boolean};
         /**
+         * If the image usage exceeds this threshold, image garbage collection will continue.
+         */
+        imageGcHighThresholdPercent?: string;
+        /**
+         * Image garbage collection is not performed when the image usage is below this threshold.
+         */
+        imageGcLowThresholdPercent?: string;
+        /**
          * Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
          */
         kubeApiBurst?: string;
@@ -15099,6 +15314,14 @@ export namespace cs {
          */
         maxPods?: string;
         /**
+         * The policy to be used by the memory manager.
+         */
+        memoryManagerPolicy?: string;
+        /**
+         * The maximum number of PIDs that can be used in a Pod.
+         */
+        podPidsLimit?: string;
+        /**
          * Read-only port number.
          */
         readOnlyPort?: string;
@@ -15111,6 +15334,10 @@ export namespace cs {
          */
         registryPullQps?: string;
         /**
+         * Reserve memory for NUMA nodes. See `reservedMemory` below.
+         */
+        reservedMemories?: outputs.cs.NodePoolKubeletConfigurationReservedMemory[];
+        /**
          * Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
          */
         serializeImagePulls?: string;
@@ -15118,6 +15345,36 @@ export namespace cs {
          * Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
          */
         systemReserved?: {[key: string]: string};
+        /**
+         * Name of the Topology Manager policy used.
+         */
+        topologyManagerPolicy?: string;
+        /**
+         * OpenTelemetry tracks the configuration information for client settings versioning. See `tracing` below.
+         */
+        tracing?: outputs.cs.NodePoolKubeletConfigurationTracing;
+    }
+
+    export interface NodePoolKubeletConfigurationReservedMemory {
+        /**
+         * Memory resource limit.
+         */
+        limits?: {[key: string]: string};
+        /**
+         * The NUMA node.
+         */
+        numaNode?: number;
+    }
+
+    export interface NodePoolKubeletConfigurationTracing {
+        /**
+         * The endpoint of the collector.
+         */
+        endpoint?: string;
+        /**
+         * Number of samples to be collected per million span.
+         */
+        samplingRatePerMillion?: string;
     }
 
     export interface NodePoolLabel {
@@ -28736,6 +28993,24 @@ export namespace ens {
 }
 
 export namespace esa {
+    export interface HttpRequestHeaderModificationRuleRequestHeaderModification {
+        /**
+         * Request Header Name.
+         */
+        name: string;
+        /**
+         * Mode of operation. Value range:
+         * add: add.
+         * del: delete
+         * modify: change.
+         */
+        operation: string;
+        /**
+         * Request header value
+         */
+        value?: string;
+    }
+
     export interface RecordAuthConf {
         /**
          * The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
@@ -29568,6 +29843,14 @@ export namespace ess {
          */
         activeScalingConfiguration: string;
         /**
+         * (Available since v1.242.0) The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The allocation policy applies to pay-as-you-go and preemptible instances.
+         */
+        allocationStrategy: string;
+        /**
+         * (Available since v1.242.0) Indicates whether instances in the scaling group are evenly distributed across multiple zones.
+         */
+        azBalance: boolean;
+        /**
          * Default cooldown time of scaling group.
          */
         cooldownTime: number;
@@ -29580,9 +29863,21 @@ export namespace ess {
          */
         dbInstanceIds: string[];
         /**
+         * (Available since v1.242.0) The expected number of ECS instances in the scaling group. Auto Scaling automatically maintains the expected number of ECS instances that you specified.
+         */
+        desiredCapacity: number;
+        /**
+         * (Available since v1.242.0) Indicates whether the Expected Number of Instances feature is enabled.
+         */
+        enableDesiredCapacity: boolean;
+        /**
          * Whether the scaling group deletion protection is enabled.
          */
         groupDeletionProtection: boolean;
+        /**
+         * (Available since v1.242.0) The type of the instances in the scaling group.
+         */
+        groupType: string;
         /**
          * The health check method of the scaling group.
          */
@@ -29591,6 +29886,10 @@ export namespace ess {
          * ID of the scaling group.
          */
         id: string;
+        /**
+         * (Available since v1.242.0) The number of instances that are in the Initialized state and ready to be scaled out in the scaling group.
+         */
+        initCapacity: number;
         /**
          * Active launch template ID for scaling group.
          */
@@ -29608,6 +29907,10 @@ export namespace ess {
          */
         loadBalancerIds: string[];
         /**
+         * (Available since v1.242.0) The maximum life span of each instance in the scaling group. Unit: seconds.
+         */
+        maxInstanceLifetime: number;
+        /**
          * The maximum number of ECS instances.
          */
         maxSize: number;
@@ -29620,13 +29923,37 @@ export namespace ess {
          */
         modificationTime: string;
         /**
+         * (Available since v1.242.0) The ID of the CloudMonitor application group that is associated with the scaling group.
+         */
+        monitorGroupId: string;
+        /**
+         * (Available since v1.242.0) The scaling policy of the multi-zone scaling group of the ECS type.
+         */
+        multiAzPolicy: string;
+        /**
          * Name of the scaling group.
          */
         name: string;
         /**
-         * Number of pending instances in scaling group.
+         * (Available since v1.242.0) The lower limit of the number of pay-as-you-go instances in the scaling group.
+         */
+        onDemandBaseCapacity: number;
+        /**
+         * (Available since v1.242.0) The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. OnDemandBaseCapacity specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group.
+         */
+        onDemandPercentageAboveBaseCapacity: number;
+        /**
+         * (Available since v1.242.0) The number of ECS instances that are being added to the scaling group and still being configured.
          */
         pendingCapacity: number;
+        /**
+         * (Available since v1.242.0) The number of ECS instances that are in the Pending Add state in the scaling group.
+         */
+        pendingWaitCapacity: number;
+        /**
+         * (Available since v1.242.0) The number of ECS instances that are in the Protected state in the scaling group.
+         */
+        protectedCapacity: number;
         /**
          * Region ID the scaling group belongs to.
          */
@@ -29636,17 +29963,61 @@ export namespace ess {
          */
         removalPolicies: string[];
         /**
-         * Number of removing instances in scaling group.
+         * (Available since v1.242.0) The number of ECS instances that are being removed from the scaling group.
          */
         removingCapacity: number;
+        /**
+         * (Available since v1.242.0) The number of ECS instances that are in the Pending Remove state in the scaling group.
+         */
+        removingWaitCapacity: number;
+        /**
+         * (Available since v1.242.0) The ID of the resource group to which the scaling group that you want to query belongs.
+         */
+        resourceGroupId: string;
+        /**
+         * (Available since v1.242.0) The reclaim mode of the scaling group.
+         */
+        scalingPolicy: string;
+        /**
+         * (Available since v1.242.0) The allocation policy of preemptible instances. This parameter indicates the method used by Auto Scaling to select instance types to create the required number of preemptible instances. This parameter takes effect only if you set multiAzPolicy to COMPOSABLE.
+         */
+        spotAllocationStrategy: string;
+        /**
+         * (Available since v1.242.0) The number of preemptible instances in the scaling group.
+         */
+        spotCapacity: number;
+        /**
+         * (Available since v1.242.0) The number of instance types. Auto Scaling creates preemptible instances of multiple instance types that are provided at the lowest price.
+         */
+        spotInstancePools: number;
+        /**
+         * (Available since v1.242.0) Indicates whether supplementation of preemptible instances is enabled. If this parameter is set to true, Auto Scaling creates an instance to replace a preemptible instance when Auto Scaling receives a system message indicating that the preemptible instance is to be reclaimed.
+         */
+        spotInstanceRemedy: boolean;
+        /**
+         * (Available since v1.242.0) The number of instances that are in the Standby state in the scaling group.
+         */
+        standbyCapacity: number;
+        /**
+         * (Available since v1.242.0) The period of time that is required by an ECS instance to enter the Stopped state during the scale-in process. Unit: seconds.
+         */
+        stopInstanceTimeout: number;
+        /**
+         * (Available since v1.242.0) The number of instances that are in Economical Mode in the scaling group.
+         */
+        stoppedCapacity: number;
         /**
          * The Process in suspension.
          */
         suspendedProcesses: string[];
         /**
+         * (Available since v1.242.0) Indicates whether Auto Scaling stops executing the scaling operation in the scaling group.
+         */
+        systemSuspended: boolean;
+        /**
          * A mapping of tags to assign to the resource.
          */
-        tags?: {[key: string]: string};
+        tags: {[key: string]: string};
         /**
          * Number of instances in scaling group.
          */
@@ -29687,6 +30058,14 @@ export namespace ess {
          */
         id: string;
         /**
+         * (Available since v1.242.0) The maximum number of ECS instances that can be added to the scaling group.
+         */
+        initialMaxSize: number;
+        /**
+         * (Available since v1.242.0) The predefined metric of the scaling rule.
+         */
+        metricName: string;
+        /**
          * Min adjustment magnitude of scaling rule.
          */
         minAdjustmentMagnitude: number;
@@ -29695,6 +30074,22 @@ export namespace ess {
          */
         name: string;
         /**
+         * (Available since v1.242.0) The mode of the predictive scaling rule.
+         */
+        predictiveScalingMode: string;
+        /**
+         * (Available since v1.242.0) The amount of buffer time before the prediction task is executed. By default, all prediction tasks that are automatically created by a predictive scaling rule are executed on the hour. You can set a buffer time to execute prediction tasks and prepare resources in advance.
+         */
+        predictiveTaskBufferTime: number;
+        /**
+         * (Available since v1.242.0) The action on the predicted maximum value.
+         */
+        predictiveValueBehavior: string;
+        /**
+         * (Available since v1.242.0) The ratio based on which the predicted value is increased if you set predictiveValueBehavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value that is increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks.
+         */
+        predictiveValueBuffer: number;
+        /**
          * Scaling group id the scaling rules belong to.
          */
         scalingGroupId: string;
@@ -29702,6 +30097,10 @@ export namespace ess {
          * Ari of scaling rule.
          */
         scalingRuleAri: string;
+        /**
+         * (Available since v1.242.0) The target value of the metric.
+         */
+        targetValue: number;
         /**
          * Type of scaling rule.
          */
@@ -31738,19 +32137,19 @@ export namespace fc {
 
     export interface V3FunctionCustomContainerConfig {
         /**
-         * (Deprecated) Image Acceleration Information (Obsolete).
+         * (Deprecated since v1.242.0) Image Acceleration Information (Obsolete)
          *
          * @deprecated Field 'acceleration_info' has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
          */
         accelerationInfo: outputs.fc.V3FunctionCustomContainerConfigAccelerationInfo;
         /**
-         * Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete).
+         * Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
          *
          * @deprecated Field 'acceleration_type' has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
          */
         accelerationType?: string;
         /**
-         * ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete).
+         * ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
          *
          * @deprecated Field 'acr_instance_id' has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
          */
@@ -31783,7 +32182,7 @@ export namespace fc {
 
     export interface V3FunctionCustomContainerConfigAccelerationInfo {
         /**
-         * Image Acceleration Status (Deprecated).
+         * Image Acceleration Status (Deprecated)
          *
          * @deprecated Field 'status' has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated)
          */
@@ -31805,22 +32204,22 @@ export namespace fc {
          */
         dnsOptions?: outputs.fc.V3FunctionCustomDnsDnsOption[];
         /**
-         * IP Address List of DNS servers.
+         * IP Address List of DNS servers
          */
         nameServers?: string[];
         /**
-         * DNS search domain list.
+         * DNS search domain list
          */
         searches?: string[];
     }
 
     export interface V3FunctionCustomDnsDnsOption {
         /**
-         * Configuration Item Name.
+         * Configuration Item Name
          */
         name?: string;
         /**
-         * Configuration Item Value.
+         * Configuration Item Value
          */
         value?: string;
     }
@@ -31855,14 +32254,14 @@ export namespace fc {
 
     export interface V3FunctionGpuConfig {
         /**
-         * GPU memory specification, unit: MB, multiple of 1024MB.
+         * GPU memory specification, unit: MB, multiple of 1024MB
          */
         gpuMemorySize?: number;
         /**
          * GPU card architecture.
-         * - fc.gpu.tesla indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
-         * - fc.gpu.ampere indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
-         * - fc.gpu.ada Indicates the GPU instance Ada Lovelace architecture family card type.
+         * - fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
+         * - fc.gpu.ampere.1 indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
+         * - fc.gpu.ada.1 Indicates the GPU instance Ada Lovelace architecture family card type.
          */
         gpuType?: string;
     }
@@ -31910,7 +32309,7 @@ export namespace fc {
          */
         enableRequestMetrics: boolean;
         /**
-         * Log Line First Matching Rules.
+         * Log Line First Matching Rules
          */
         logBeginRule: string;
         /**
@@ -31925,15 +32324,15 @@ export namespace fc {
 
     export interface V3FunctionNasConfig {
         /**
-         * Group ID.
+         * Group ID
          */
         groupId: number;
         /**
-         * Mount point list. See `mountPoints` below.
+         * Mount point list See `mountPoints` below.
          */
         mountPoints?: outputs.fc.V3FunctionNasConfigMountPoint[];
         /**
-         * Account ID.
+         * Account ID
          */
         userId: number;
     }
@@ -31945,34 +32344,34 @@ export namespace fc {
         enableTls?: boolean;
         mountDir?: string;
         /**
-         * NAS server address.
+         * NAS server address
          */
         serverAddr?: string;
     }
 
     export interface V3FunctionOssMountConfig {
         /**
-         * OSS mount point list. See `mountPoints` below.
+         * OSS mount point list See `mountPoints` below.
          */
         mountPoints?: outputs.fc.V3FunctionOssMountConfigMountPoint[];
     }
 
     export interface V3FunctionOssMountConfigMountPoint {
         /**
-         * OSS Bucket name.
+         * OSS Bucket name
          */
         bucketName?: string;
         /**
-         * Path of the mounted OSS Bucket.
+         * Path of the mounted OSS Bucket
          */
         bucketPath?: string;
         /**
-         * OSS access endpoint.
+         * OSS access endpoint
          */
         endpoint?: string;
         mountDir?: string;
         /**
-         * Read-only.
+         * Read-only
          */
         readOnly?: boolean;
     }
@@ -31990,15 +32389,15 @@ export namespace fc {
 
     export interface V3FunctionVpcConfig {
         /**
-         * Security group ID.
+         * Security group ID
          */
         securityGroupId?: string;
         /**
-         * VPC network ID.
+         * VPC network ID
          */
         vpcId?: string;
         /**
-         * Switch List.
+         * Switch List
          */
         vswitchIds?: string[];
     }
@@ -36072,6 +36471,13 @@ export namespace kms {
         keyId: string;
     }
 
+    export interface GetInstancesInstance {
+        /**
+         * The first ID of the resource
+         */
+        instanceId: string;
+    }
+
     export interface GetKeyVersionsVersion {
         /**
          * Date and time when the key version was created (UTC time).
@@ -37469,47 +37875,63 @@ export namespace maxcompute {
 
     export interface ProjectIpWhiteList {
         /**
-         * Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.> **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
+         * Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.
+         *
+         * > **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
          */
         ipList?: string;
         /**
-         * Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.> **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
+         * Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.
+         *
+         * > **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
          */
         vpcIpList?: string;
     }
 
     export interface ProjectProperties {
         /**
-         * Whether to allow full table scan. Default: false.
+         * Whether to allow full table scan. Default: false
          */
         allowFullScan?: boolean;
         /**
-         * Whether to turn on Decimal2.0.
+         * Whether to turn on Decimal2.0
          */
         enableDecimal2?: boolean;
         /**
          * Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
-         * > **NOTE :**:  To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.  To configure the permissions and IP whitelist parameters of the MaxCompute project, you must have the management permissions (Admin) of the corresponding project, including Super_Administrator, Admin, or custom management permissions. For more information, see the project management permissions list.  You can turn on storage encryption only for projects that have not turned on storage encryption. For projects that have turned on storage encryption, you cannot turn off storage encryption or change the encryption algorithm. See `encryption` below.
+         * > **NOTE :**:
+         * To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.
+         *
+         * To configure the permissions and IP whitelist parameters of the MaxCompute project, you must have the management permissions (Admin) of the corresponding project, including Super_Administrator, Admin, or custom management permissions. For more information, see the project management permissions list.
+         *
+         * You can turn on storage encryption only for projects that have not turned on storage encryption. For projects that have turned on storage encryption, you cannot turn off storage encryption or change the encryption algorithm. See `encryption` below.
          */
         encryption?: outputs.maxcompute.ProjectPropertiesEncryption;
         /**
-         * Set the number of days to retain backup data. During this time, you can restore the current version to any backup version. The value range of days is [0,30], and the default value is 1. 0 means backup is turned off. The effective policy after adjusting the backup cycle is: Extend the backup cycle: The new backup cycle takes effect on the same day. Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
+         * Set the number of days to retain backup data. During this time, you can restore the current version to any backup version. The value range of days is [0,30], and the default value is 1. 0 means backup is turned off.
+         * The effective policy after adjusting the backup cycle is:
+         * Extend the backup cycle: The new backup cycle takes effect on the same day.
+         * Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
          */
         retentionDays?: number;
         /**
-         * Set the maximum threshold of single SQL consumption, that is, set the ODPS. SQL. metering.value.max attribute. For details, see [Consumption Monitoring Alarm](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control). Unit: scan volume (GB)* complexity. .
+         * Set the maximum threshold for single SQL Consumption, that is, set the ODPS. SQL. metering.value.max attribute. For more information, see [Consumption control](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-controll).
+         * Unit: scan volume (GB)* complexity.
          */
         sqlMeteringMax?: string;
         /**
-         * Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property,. See `tableLifecycle` below.
+         * Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property, See `tableLifecycle` below.
          */
         tableLifecycle: outputs.maxcompute.ProjectPropertiesTableLifecycle;
         /**
-         * Project time zone, example value: Asia/Shanghai.
+         * Project time zone, example value: Asia/Shanghai
          */
         timezone: string;
         /**
-         * Data type version. Value:(1/2/hive) 1: The original MaxCompute type system. 2: New type system introduced by MaxCompute 2.0. hive: the type system of the Hive compatibility mode introduced by MaxCompute 2.0.
+         * Data type version. Value:(1/2/hive)
+         * 1: The original MaxCompute type system.
+         * 2: New type system introduced by MaxCompute 2.0.
+         * hive: the type system of the Hive compatibility mode introduced by MaxCompute 2.0.
          */
         typeSystem?: string;
     }
@@ -37520,7 +37942,9 @@ export namespace maxcompute {
          */
         algorithm?: string;
         /**
-         * Only enable function is supported. Value: (true).
+         * Only enable function is supported. Value: (true)
+         *
+         * > **NOTE:** cannot be turned off after the function is turned on
          */
         enable?: boolean;
         /**
@@ -37558,7 +37982,7 @@ export namespace maxcompute {
          */
         objectCreatorHasGrantPermission?: boolean;
         /**
-         * Project protection. See `projectProtection` below.
+         * Project protection See `projectProtection` below.
          */
         projectProtection?: outputs.maxcompute.ProjectSecurityPropertiesProjectProtection;
         /**
@@ -37573,13 +37997,126 @@ export namespace maxcompute {
 
     export interface ProjectSecurityPropertiesProjectProtection {
         /**
-         * Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection).
+         * Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection)
          */
         exceptionPolicy?: string;
         /**
-         * Whether enabled, value:(true/false).
+         * Whether enabled, value:(true/false)
          */
         protected?: boolean;
+    }
+
+    export interface QuotaPlanQuota {
+        /**
+         * Level 2 Quota CU configuration See `parameter` below.
+         */
+        parameter?: outputs.maxcompute.QuotaPlanQuotaParameter;
+        /**
+         * Secondary Quota list
+         *
+         * > **NOTE:** need to list all secondary Quota
+         * See `subQuotaInfoList` below.
+         */
+        subQuotaInfoLists?: outputs.maxcompute.QuotaPlanQuotaSubQuotaInfoList[];
+    }
+
+    export interface QuotaPlanQuotaParameter {
+        /**
+         * The value of elastic Reserved CUs.
+         *
+         * > **NOTE:**  The total number of elastically reserved CUs in all the level-2 quotas is equal to the number of elastically reserved CUs in the level-1 quota..
+         */
+        elasticReservedCu: number;
+        /**
+         * The value of maxCU in Reserved CUs.
+         */
+        maxCu: number;
+        /**
+         * The value of minCU in Reserved CUs.
+         */
+        minCu: number;
+    }
+
+    export interface QuotaPlanQuotaSubQuotaInfoList {
+        /**
+         * The nickname of the level-2 quota.
+         */
+        nickName: string;
+        /**
+         * The parameters of level-1 quota.
+         */
+        parameter?: outputs.maxcompute.QuotaPlanQuotaSubQuotaInfoListParameter;
+    }
+
+    export interface QuotaPlanQuotaSubQuotaInfoListParameter {
+        /**
+         * The value of elastic Reserved CUs.
+         *
+         * > **NOTE:**  The total number of elastically reserved CUs in all the level-2 quotas is equal to the number of elastically reserved CUs in the level-1 quota..
+         */
+        elasticReservedCu: number;
+        /**
+         * The value of maxCU in Reserved CUs.
+         */
+        maxCu: number;
+        /**
+         * The value of minCU in Reserved CUs.
+         */
+        minCu: number;
+    }
+
+    export interface QuotaScheduleScheduleList {
+        /**
+         * The value of effective condition. See `condition` below.
+         */
+        condition?: outputs.maxcompute.QuotaScheduleScheduleListCondition;
+        /**
+         * The name of the quota plan.
+         */
+        plan: string;
+        /**
+         * The type of the quota plan. Valid values: daily 
+         *
+         * > **NOTE:** Currently, only daily is supported.
+         */
+        type: string;
+    }
+
+    export interface QuotaScheduleScheduleListCondition {
+        /**
+         * Effective time. The format is HH:mm, sample value: 00:00
+         *
+         * > **NOTE:** The configuration must start from the effective time of 00:00. The input time must be either a whole hour or a half hour, and the minimum interval between each schedule is 30 minutes.
+         */
+        at: string;
+    }
+
+    export interface TunnelQuotaTimerQuotaTimer {
+        /**
+         * The time-sharing configuration start time. Reference value: 00:00
+         */
+        beginTime: string;
+        /**
+         * The end time of the timesharing configuration. Reference value: 24:00
+         */
+        endTime: string;
+        /**
+         * Time-sharing configuration parameters. See `tunnelQuotaParameter` below.
+         */
+        tunnelQuotaParameter?: outputs.maxcompute.TunnelQuotaTimerQuotaTimerTunnelQuotaParameter;
+    }
+
+    export interface TunnelQuotaTimerQuotaTimerTunnelQuotaParameter {
+        /**
+         * The number of elastic reserved concurrency (Slot).
+         */
+        elasticReservedSlotNum: number;
+        /**
+         * The number of reserved concurrency (Slot).
+         *
+         * > **NOTE:** The reserved concurrency (Slot) cannot be modified. The number of concurrency slots must be the same as that of the purchased tunnel quota.
+         */
+        slotNum: number;
     }
 
 }

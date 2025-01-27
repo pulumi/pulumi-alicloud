@@ -19,14 +19,14 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
     public static final LoadBalancerZoneMappingArgs Empty = new LoadBalancerZoneMappingArgs();
 
     /**
-     * The IP address of the ALB instance.
+     * The SLB Instance Address
      * 
      */
     @Import(name="loadBalancerAddresses")
     private @Nullable Output<List<LoadBalancerZoneMappingLoadBalancerAddressArgs>> loadBalancerAddresses;
 
     /**
-     * @return The IP address of the ALB instance.
+     * @return The SLB Instance Address
      * 
      */
     public Optional<Output<List<LoadBalancerZoneMappingLoadBalancerAddressArgs>>> loadBalancerAddresses() {
@@ -34,14 +34,14 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The ID of the VSwitch.
+     * The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
      * 
      */
     @Import(name="vswitchId", required=true)
     private Output<String> vswitchId;
 
     /**
-     * @return The ID of the VSwitch.
+     * @return The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
      * 
      */
     public Output<String> vswitchId() {
@@ -49,14 +49,14 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The zone ID of the ALB instance.
+     * The ID of the zone to which the SLB instance belongs.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone ID of the ALB instance.
+     * @return The ID of the zone to which the SLB instance belongs.
      * 
      */
     public Output<String> zoneId() {
@@ -90,7 +90,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param loadBalancerAddresses The IP address of the ALB instance.
+         * @param loadBalancerAddresses The SLB Instance Address
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param loadBalancerAddresses The IP address of the ALB instance.
+         * @param loadBalancerAddresses The SLB Instance Address
          * 
          * @return builder
          * 
@@ -111,7 +111,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param loadBalancerAddresses The IP address of the ALB instance.
+         * @param loadBalancerAddresses The SLB Instance Address
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param vswitchId The ID of the VSwitch.
+         * @param vswitchId The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param vswitchId The ID of the VSwitch.
+         * @param vswitchId The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param zoneId The zone ID of the ALB instance.
+         * @param zoneId The ID of the zone to which the SLB instance belongs.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param zoneId The zone ID of the ALB instance.
+         * @param zoneId The ID of the zone to which the SLB instance belongs.
          * 
          * @return builder
          * 

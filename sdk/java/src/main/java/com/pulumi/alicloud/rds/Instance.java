@@ -143,6 +143,26 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.babelfishPort;
     }
     /**
+     * Specifies whether to enable the I/O burst feature of general
+     * ESSDs. Valid values:
+     * - true
+     * - false
+     * 
+     */
+    @Export(name="burstingEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> burstingEnabled;
+
+    /**
+     * @return Specifies whether to enable the I/O burst feature of general
+     * ESSDs. Valid values:
+     * - true
+     * - false
+     * 
+     */
+    public Output<Optional<Boolean>> burstingEnabled() {
+        return Codegen.optional(this.burstingEnabled);
+    }
+    /**
      * The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `ca_type` start  support `MySQL` engine. Value range:
      * - aliyun: a cloud certificate
      * - custom: a custom certificate

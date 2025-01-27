@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.FC.Inputs
         private InputList<Inputs.V3FunctionOssMountConfigMountPointGetArgs>? _mountPoints;
 
         /// <summary>
-        /// OSS mount point list. See `mount_points` below.
+        /// OSS mount point list See `mount_points` below.
         /// </summary>
         public InputList<Inputs.V3FunctionOssMountConfigMountPointGetArgs> MountPoints
         {

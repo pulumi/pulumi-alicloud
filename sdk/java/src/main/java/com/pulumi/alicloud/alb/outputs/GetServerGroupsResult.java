@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 public final class GetServerGroupsResult {
     private @Nullable Boolean enableDetails;
     /**
-     * @return A list of Alb Server Groups. Each element contains the following attributes:
+     * @return A list of Server Groups. Each element contains the following attributes:
      * 
      */
     private List<GetServerGroupsGroup> groups;
@@ -38,22 +38,22 @@ public final class GetServerGroupsResult {
     private @Nullable String resourceGroupId;
     private @Nullable List<String> serverGroupIds;
     /**
-     * @return The name of the resource.
+     * @return The name of the Server Group.
      * 
      */
     private @Nullable String serverGroupName;
     /**
-     * @return The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+     * @return The status of the server.
      * 
      */
     private @Nullable String status;
     /**
-     * @return The tags of the resource.
+     * @return The tags of the resource. **Note:** `tags` takes effect only if `enable_details` is set to `true`.
      * 
      */
     private @Nullable Map<String,String> tags;
     /**
-     * @return The ID of the VPC that you want to access.
+     * @return The ID of the VPC.
      * 
      */
     private @Nullable String vpcId;
@@ -63,7 +63,7 @@ public final class GetServerGroupsResult {
         return Optional.ofNullable(this.enableDetails);
     }
     /**
-     * @return A list of Alb Server Groups. Each element contains the following attributes:
+     * @return A list of Server Groups. Each element contains the following attributes:
      * 
      */
     public List<GetServerGroupsGroup> groups() {
@@ -99,28 +99,28 @@ public final class GetServerGroupsResult {
         return this.serverGroupIds == null ? List.of() : this.serverGroupIds;
     }
     /**
-     * @return The name of the resource.
+     * @return The name of the Server Group.
      * 
      */
     public Optional<String> serverGroupName() {
         return Optional.ofNullable(this.serverGroupName);
     }
     /**
-     * @return The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+     * @return The status of the server.
      * 
      */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
     /**
-     * @return The tags of the resource.
+     * @return The tags of the resource. **Note:** `tags` takes effect only if `enable_details` is set to `true`.
      * 
      */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
     /**
-     * @return The ID of the VPC that you want to access.
+     * @return The ID of the VPC.
      * 
      */
     public Optional<String> vpcId() {

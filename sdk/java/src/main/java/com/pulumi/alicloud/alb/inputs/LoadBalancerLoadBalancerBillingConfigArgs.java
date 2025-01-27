@@ -15,14 +15,14 @@ public final class LoadBalancerLoadBalancerBillingConfigArgs extends com.pulumi.
     public static final LoadBalancerLoadBalancerBillingConfigArgs Empty = new LoadBalancerLoadBalancerBillingConfigArgs();
 
     /**
-     * The billing method of the ALB instance. Valid values: `PayAsYouGo`.
+     * Pay Type
      * 
      */
     @Import(name="payType", required=true)
     private Output<String> payType;
 
     /**
-     * @return The billing method of the ALB instance. Valid values: `PayAsYouGo`.
+     * @return Pay Type
      * 
      */
     public Output<String> payType() {
@@ -54,7 +54,7 @@ public final class LoadBalancerLoadBalancerBillingConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param payType The billing method of the ALB instance. Valid values: `PayAsYouGo`.
+         * @param payType Pay Type
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class LoadBalancerLoadBalancerBillingConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param payType The billing method of the ALB instance. Valid values: `PayAsYouGo`.
+         * @param payType Pay Type
          * 
          * @return builder
          * 

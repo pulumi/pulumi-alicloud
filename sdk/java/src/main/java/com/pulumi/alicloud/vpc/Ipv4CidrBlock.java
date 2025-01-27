@@ -10,11 +10,15 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Integer;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a VPC Ipv4 Cidr Block resource. VPC IPv4 additional network segment.
+ * Provides a VPC Ipv4 Cidr Block resource.
+ * 
+ * VPC IPv4 additional network segment.
  * 
  * For information about VPC Ipv4 Cidr Block and how to use it, see [What is Ipv4 Cidr Block](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/associatevpccidrblock).
  * 
@@ -78,26 +82,64 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpc/ipv4CidrBlock:Ipv4CidrBlock")
 public class Ipv4CidrBlock extends com.pulumi.resources.CustomResource {
     /**
-     * The IPv4 CIDR block. Take note of the following requirements:
-     * * You can specify one of the following standard IPv4 CIDR blocks or their subnets as the secondary IPv4 CIDR block: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8.
-     * * You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, or their subnets as the secondary IPv4 CIDR block of the VPC.
-     * * The CIDR block cannot start with 0. The subnet mask must be 8 to 28 bits in length.
-     * * The secondary CIDR block cannot overlap with the primary CIDR block or an existing secondary CIDR block.
+     * The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
+     * 
+     */
+    @Export(name="ipv4IpamPoolId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> ipv4IpamPoolId;
+
+    /**
+     * @return The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
+     * 
+     */
+    public Output<Optional<String>> ipv4IpamPoolId() {
+        return Codegen.optional(this.ipv4IpamPoolId);
+    }
+    /**
+     * The ID of the region where the VPC resides.
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return The ID of the region where the VPC resides.
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
+    }
+    /**
+     * Additional network segment information.
      * 
      */
     @Export(name="secondaryCidrBlock", refs={String.class}, tree="[0]")
     private Output<String> secondaryCidrBlock;
 
     /**
-     * @return The IPv4 CIDR block. Take note of the following requirements:
-     * * You can specify one of the following standard IPv4 CIDR blocks or their subnets as the secondary IPv4 CIDR block: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8.
-     * * You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, or their subnets as the secondary IPv4 CIDR block of the VPC.
-     * * The CIDR block cannot start with 0. The subnet mask must be 8 to 28 bits in length.
-     * * The secondary CIDR block cannot overlap with the primary CIDR block or an existing secondary CIDR block.
+     * @return Additional network segment information.
      * 
      */
     public Output<String> secondaryCidrBlock() {
         return this.secondaryCidrBlock;
+    }
+    /**
+     * Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+     * 
+     * &gt; **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+     * 
+     */
+    @Export(name="secondaryCidrMask", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> secondaryCidrMask;
+
+    /**
+     * @return Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+     * 
+     * &gt; **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+     * 
+     */
+    public Output<Optional<Integer>> secondaryCidrMask() {
+        return Codegen.optional(this.secondaryCidrMask);
     }
     /**
      * The ID of the VPC.

@@ -18,7 +18,9 @@ namespace Pulumi.AliCloud.MaxCompute.Outputs
         /// </summary>
         public readonly string? Algorithm;
         /// <summary>
-        /// Only enable function is supported. Value: (true).
+        /// Only enable function is supported. Value: (true)
+        /// 
+        /// &gt; **NOTE:** cannot be turned off after the function is turned on
         /// </summary>
         public readonly bool? Enable;
         /// <summary>

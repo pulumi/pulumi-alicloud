@@ -17,6 +17,7 @@ from . import outputs
 
 __all__ = [
     'TrafficMarkingPolicyTrafficMatchRule',
+    'TransitRouterMulticastDomainOptions',
     'TransitRouterVpcAttachmentZoneMapping',
     'TransitRouterVpnAttachmentZone',
     'GetBandwidthLimitsLimitResult',
@@ -213,6 +214,42 @@ class TrafficMarkingPolicyTrafficMatchRule(dict):
         The name of the stream classification rule.  The name must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
         """
         return pulumi.get(self, "traffic_match_rule_name")
+
+
+@pulumi.output_type
+class TransitRouterMulticastDomainOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "igmpv2Support":
+            suggest = "igmpv2_support"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TransitRouterMulticastDomainOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TransitRouterMulticastDomainOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TransitRouterMulticastDomainOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 igmpv2_support: Optional[str] = None):
+        """
+        :param str igmpv2_support: Whether to enable IGMP function for multicast domain. Default value: `disable`. Valid values: `enable`, `disable`.
+        """
+        if igmpv2_support is not None:
+            pulumi.set(__self__, "igmpv2_support", igmpv2_support)
+
+    @property
+    @pulumi.getter(name="igmpv2Support")
+    def igmpv2_support(self) -> Optional[str]:
+        """
+        Whether to enable IGMP function for multicast domain. Default value: `disable`. Valid values: `enable`, `disable`.
+        """
+        return pulumi.get(self, "igmpv2_support")
 
 
 @pulumi.output_type

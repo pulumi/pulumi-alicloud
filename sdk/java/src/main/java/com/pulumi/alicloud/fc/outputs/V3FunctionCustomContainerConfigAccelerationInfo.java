@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class V3FunctionCustomContainerConfigAccelerationInfo {
     /**
-     * @return Image Acceleration Status (Deprecated).
+     * @return Image Acceleration Status (Deprecated)
      * 
      * @deprecated
      * Field &#39;status&#39; has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated)
@@ -23,7 +23,7 @@ public final class V3FunctionCustomContainerConfigAccelerationInfo {
 
     private V3FunctionCustomContainerConfigAccelerationInfo() {}
     /**
-     * @return Image Acceleration Status (Deprecated).
+     * @return Image Acceleration Status (Deprecated)
      * 
      * @deprecated
      * Field &#39;status&#39; has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated)

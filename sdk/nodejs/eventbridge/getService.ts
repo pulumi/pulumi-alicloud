@@ -9,9 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Event Bridge and how to use it, see [What is Event Bridge](https://www.alibabacloud.com/help/en/doc-detail/163239.htm).
  *
- * > **NOTE:** Available in v1.126.0+
- *
- * > **NOTE:** This data source supports `cn-shanghai`, `cn-hangzhou` and `ap-southeast-1` regions.
+ * > **NOTE:** Available since v1.126.0.
  *
  * ## Example Usage
  *
@@ -63,9 +61,7 @@ export interface GetServiceResult {
  *
  * For information about Event Bridge and how to use it, see [What is Event Bridge](https://www.alibabacloud.com/help/en/doc-detail/163239.htm).
  *
- * > **NOTE:** Available in v1.126.0+
- *
- * > **NOTE:** This data source supports `cn-shanghai`, `cn-hangzhou` and `ap-southeast-1` regions.
+ * > **NOTE:** Available since v1.126.0.
  *
  * ## Example Usage
  *

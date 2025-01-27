@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ACK Nodepool can be imported using the id, e.g.
+ * Container Service for Kubernetes (ACK) Nodepool can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:cs/nodePool:NodePool example <cluster_id>:<node_pool_id>
@@ -232,6 +232,14 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly privatePoolOptions!: pulumi.Output<outputs.cs.NodePoolPrivatePoolOptions | undefined>;
     /**
+     * The name of the Worker RAM role.
+     * * If it is empty, the default Worker RAM role created in the cluster will be used.
+     * * If the specified RAM role is not empty, the specified RAM role must be a **Common Service role**, and its **trusted service** configuration must be **cloud server**. For more information, see [Create a common service role](https://help.aliyun.com/document_detail/116800.html). If the specified RAM role is not the default Worker RAM role created in the cluster, the role name cannot start with 'KubernetesMasterRole-'or 'KubernetesWorkerRole.
+     *
+     * > **NOTE:**  This parameter is only supported for ACK-managed clusters of 1.22 or later versions.
+     */
+    public readonly ramRoleName!: pulumi.Output<string>;
+    /**
      * The list of RDS instances.
      */
     public readonly rdsInstances!: pulumi.Output<string[] | undefined>;
@@ -429,6 +437,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["platform"] = state ? state.platform : undefined;
             resourceInputs["preUserData"] = state ? state.preUserData : undefined;
             resourceInputs["privatePoolOptions"] = state ? state.privatePoolOptions : undefined;
+            resourceInputs["ramRoleName"] = state ? state.ramRoleName : undefined;
             resourceInputs["rdsInstances"] = state ? state.rdsInstances : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["rollingPolicy"] = state ? state.rollingPolicy : undefined;
@@ -513,6 +522,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["platform"] = args ? args.platform : undefined;
             resourceInputs["preUserData"] = args ? args.preUserData : undefined;
             resourceInputs["privatePoolOptions"] = args ? args.privatePoolOptions : undefined;
+            resourceInputs["ramRoleName"] = args ? args.ramRoleName : undefined;
             resourceInputs["rdsInstances"] = args ? args.rdsInstances : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["rollingPolicy"] = args ? args.rollingPolicy : undefined;
@@ -743,6 +753,14 @@ export interface NodePoolState {
      * Private node pool configuration. See `privatePoolOptions` below.
      */
     privatePoolOptions?: pulumi.Input<inputs.cs.NodePoolPrivatePoolOptions>;
+    /**
+     * The name of the Worker RAM role.
+     * * If it is empty, the default Worker RAM role created in the cluster will be used.
+     * * If the specified RAM role is not empty, the specified RAM role must be a **Common Service role**, and its **trusted service** configuration must be **cloud server**. For more information, see [Create a common service role](https://help.aliyun.com/document_detail/116800.html). If the specified RAM role is not the default Worker RAM role created in the cluster, the role name cannot start with 'KubernetesMasterRole-'or 'KubernetesWorkerRole.
+     *
+     * > **NOTE:**  This parameter is only supported for ACK-managed clusters of 1.22 or later versions.
+     */
+    ramRoleName?: pulumi.Input<string>;
     /**
      * The list of RDS instances.
      */
@@ -1072,6 +1090,14 @@ export interface NodePoolArgs {
      * Private node pool configuration. See `privatePoolOptions` below.
      */
     privatePoolOptions?: pulumi.Input<inputs.cs.NodePoolPrivatePoolOptions>;
+    /**
+     * The name of the Worker RAM role.
+     * * If it is empty, the default Worker RAM role created in the cluster will be used.
+     * * If the specified RAM role is not empty, the specified RAM role must be a **Common Service role**, and its **trusted service** configuration must be **cloud server**. For more information, see [Create a common service role](https://help.aliyun.com/document_detail/116800.html). If the specified RAM role is not the default Worker RAM role created in the cluster, the role name cannot start with 'KubernetesMasterRole-'or 'KubernetesWorkerRole.
+     *
+     * > **NOTE:**  This parameter is only supported for ACK-managed clusters of 1.22 or later versions.
+     */
+    ramRoleName?: pulumi.Input<string>;
     /**
      * The list of RDS instances.
      */

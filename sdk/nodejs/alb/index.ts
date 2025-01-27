@@ -110,6 +110,11 @@ export type LoadBalancerSecurityGroupAttachment = import("./loadBalancerSecurity
 export const LoadBalancerSecurityGroupAttachment: typeof import("./loadBalancerSecurityGroupAttachment").LoadBalancerSecurityGroupAttachment = null as any;
 utilities.lazyLoad(exports, ["LoadBalancerSecurityGroupAttachment"], () => require("./loadBalancerSecurityGroupAttachment"));
 
+export { LoadBalancerZoneShiftedAttachmentArgs, LoadBalancerZoneShiftedAttachmentState } from "./loadBalancerZoneShiftedAttachment";
+export type LoadBalancerZoneShiftedAttachment = import("./loadBalancerZoneShiftedAttachment").LoadBalancerZoneShiftedAttachment;
+export const LoadBalancerZoneShiftedAttachment: typeof import("./loadBalancerZoneShiftedAttachment").LoadBalancerZoneShiftedAttachment = null as any;
+utilities.lazyLoad(exports, ["LoadBalancerZoneShiftedAttachment"], () => require("./loadBalancerZoneShiftedAttachment"));
+
 export { RuleArgs, RuleState } from "./rule";
 export type Rule = import("./rule").Rule;
 export const Rule: typeof import("./rule").Rule = null as any;
@@ -152,6 +157,8 @@ const _module = {
                 return new LoadBalancerCommonBandwidthPackageAttachment(name, <any>undefined, { urn })
             case "alicloud:alb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment":
                 return new LoadBalancerSecurityGroupAttachment(name, <any>undefined, { urn })
+            case "alicloud:alb/loadBalancerZoneShiftedAttachment:LoadBalancerZoneShiftedAttachment":
+                return new LoadBalancerZoneShiftedAttachment(name, <any>undefined, { urn })
             case "alicloud:alb/rule:Rule":
                 return new Rule(name, <any>undefined, { urn })
             case "alicloud:alb/securityPolicy:SecurityPolicy":
@@ -174,6 +181,7 @@ pulumi.runtime.registerResourceModule("alicloud", "alb/loadBalancer", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alb/loadBalancerAccessLogConfigAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alb/loadBalancerCommonBandwidthPackageAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alb/loadBalancerSecurityGroupAttachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "alb/loadBalancerZoneShiftedAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alb/rule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alb/securityPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alb/serverGroup", _module)

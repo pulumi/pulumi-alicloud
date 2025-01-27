@@ -69,6 +69,10 @@ __all__ = [
     'NodePoolDataDiskArgsDict',
     'NodePoolKubeletConfigurationArgs',
     'NodePoolKubeletConfigurationArgsDict',
+    'NodePoolKubeletConfigurationReservedMemoryArgs',
+    'NodePoolKubeletConfigurationReservedMemoryArgsDict',
+    'NodePoolKubeletConfigurationTracingArgs',
+    'NodePoolKubeletConfigurationTracingArgsDict',
     'NodePoolLabelArgs',
     'NodePoolLabelArgsDict',
     'NodePoolManagementArgs',
@@ -2772,6 +2776,10 @@ if not MYPY:
         """
         Allowed sysctl mode whitelist.
         """
+        cluster_dns: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The list of IP addresses of the cluster DNS servers.
+        """
         container_log_max_files: NotRequired[pulumi.Input[str]]
         """
         The maximum number of log files that can exist in each container.
@@ -2779,6 +2787,22 @@ if not MYPY:
         container_log_max_size: NotRequired[pulumi.Input[str]]
         """
         The maximum size that can be reached before a log file is rotated.
+        """
+        container_log_max_workers: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the maximum number of concurrent workers required to perform log rotation operations.
+        """
+        container_log_monitor_interval: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the duration for which container logs are monitored for log rotation.
+        """
+        cpu_cfs_quota: NotRequired[pulumi.Input[str]]
+        """
+        CPU CFS quota constraint switch.
+        """
+        cpu_cfs_quota_period: NotRequired[pulumi.Input[str]]
+        """
+        CPU CFS quota period value.
         """
         cpu_manager_policy: NotRequired[pulumi.Input[str]]
         """
@@ -2808,6 +2832,14 @@ if not MYPY:
         """
         Feature switch to enable configuration of experimental features.
         """
+        image_gc_high_threshold_percent: NotRequired[pulumi.Input[str]]
+        """
+        If the image usage exceeds this threshold, image garbage collection will continue.
+        """
+        image_gc_low_threshold_percent: NotRequired[pulumi.Input[str]]
+        """
+        Image garbage collection is not performed when the image usage is below this threshold.
+        """
         kube_api_burst: NotRequired[pulumi.Input[str]]
         """
         Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
@@ -2824,6 +2856,14 @@ if not MYPY:
         """
         The maximum number of running pods.
         """
+        memory_manager_policy: NotRequired[pulumi.Input[str]]
+        """
+        The policy to be used by the memory manager.
+        """
+        pod_pids_limit: NotRequired[pulumi.Input[str]]
+        """
+        The maximum number of PIDs that can be used in a Pod.
+        """
         read_only_port: NotRequired[pulumi.Input[str]]
         """
         Read-only port number.
@@ -2836,6 +2876,10 @@ if not MYPY:
         """
         Same as registryPullQPS. The limit of registry pulls per second. Setting it to `0` means no limit. Valid value is `[0-50]`.
         """
+        reserved_memories: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodePoolKubeletConfigurationReservedMemoryArgsDict']]]]
+        """
+        Reserve memory for NUMA nodes. See `reserved_memory` below.
+        """
         serialize_image_pulls: NotRequired[pulumi.Input[str]]
         """
         Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
@@ -2844,6 +2888,14 @@ if not MYPY:
         """
         Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
         """
+        topology_manager_policy: NotRequired[pulumi.Input[str]]
+        """
+        Name of the Topology Manager policy used.
+        """
+        tracing: NotRequired[pulumi.Input['NodePoolKubeletConfigurationTracingArgsDict']]
+        """
+        OpenTelemetry tracks the configuration information for client settings versioning. See `tracing` below.
+        """
 elif False:
     NodePoolKubeletConfigurationArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -2851,8 +2903,13 @@ elif False:
 class NodePoolKubeletConfigurationArgs:
     def __init__(__self__, *,
                  allowed_unsafe_sysctls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 cluster_dns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  container_log_max_files: Optional[pulumi.Input[str]] = None,
                  container_log_max_size: Optional[pulumi.Input[str]] = None,
+                 container_log_max_workers: Optional[pulumi.Input[str]] = None,
+                 container_log_monitor_interval: Optional[pulumi.Input[str]] = None,
+                 cpu_cfs_quota: Optional[pulumi.Input[str]] = None,
+                 cpu_cfs_quota_period: Optional[pulumi.Input[str]] = None,
                  cpu_manager_policy: Optional[pulumi.Input[str]] = None,
                  event_burst: Optional[pulumi.Input[str]] = None,
                  event_record_qps: Optional[pulumi.Input[str]] = None,
@@ -2860,19 +2917,31 @@ class NodePoolKubeletConfigurationArgs:
                  eviction_soft: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  eviction_soft_grace_period: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  feature_gates: Optional[pulumi.Input[Mapping[str, pulumi.Input[bool]]]] = None,
+                 image_gc_high_threshold_percent: Optional[pulumi.Input[str]] = None,
+                 image_gc_low_threshold_percent: Optional[pulumi.Input[str]] = None,
                  kube_api_burst: Optional[pulumi.Input[str]] = None,
                  kube_api_qps: Optional[pulumi.Input[str]] = None,
                  kube_reserved: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  max_pods: Optional[pulumi.Input[str]] = None,
+                 memory_manager_policy: Optional[pulumi.Input[str]] = None,
+                 pod_pids_limit: Optional[pulumi.Input[str]] = None,
                  read_only_port: Optional[pulumi.Input[str]] = None,
                  registry_burst: Optional[pulumi.Input[str]] = None,
                  registry_pull_qps: Optional[pulumi.Input[str]] = None,
+                 reserved_memories: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolKubeletConfigurationReservedMemoryArgs']]]] = None,
                  serialize_image_pulls: Optional[pulumi.Input[str]] = None,
-                 system_reserved: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 system_reserved: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 topology_manager_policy: Optional[pulumi.Input[str]] = None,
+                 tracing: Optional[pulumi.Input['NodePoolKubeletConfigurationTracingArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_unsafe_sysctls: Allowed sysctl mode whitelist.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cluster_dns: The list of IP addresses of the cluster DNS servers.
         :param pulumi.Input[str] container_log_max_files: The maximum number of log files that can exist in each container.
         :param pulumi.Input[str] container_log_max_size: The maximum size that can be reached before a log file is rotated.
+        :param pulumi.Input[str] container_log_max_workers: Specifies the maximum number of concurrent workers required to perform log rotation operations.
+        :param pulumi.Input[str] container_log_monitor_interval: Specifies the duration for which container logs are monitored for log rotation.
+        :param pulumi.Input[str] cpu_cfs_quota: CPU CFS quota constraint switch.
+        :param pulumi.Input[str] cpu_cfs_quota_period: CPU CFS quota period value.
         :param pulumi.Input[str] cpu_manager_policy: Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
         :param pulumi.Input[str] event_burst: Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `event_record_qps`. It is only used when `event_record_qps` is greater than 0. Valid value is `[0-100]`.
         :param pulumi.Input[str] event_record_qps: Same as eventRecordQPS. The maximum event creations per second. If 0, there is no limit enforced. Valid value is `[0-50]`.
@@ -2880,22 +2949,39 @@ class NodePoolKubeletConfigurationArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] eviction_soft: Same as evictionSoft. The map of signal names to quantities that defines soft eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] eviction_soft_grace_period: Same as evictionSoftGracePeriod. The map of signal names to quantities that defines grace periods for each soft eviction signal. For example: `{"memory.available" = "30s"}`.
         :param pulumi.Input[Mapping[str, pulumi.Input[bool]]] feature_gates: Feature switch to enable configuration of experimental features.
+        :param pulumi.Input[str] image_gc_high_threshold_percent: If the image usage exceeds this threshold, image garbage collection will continue.
+        :param pulumi.Input[str] image_gc_low_threshold_percent: Image garbage collection is not performed when the image usage is below this threshold.
         :param pulumi.Input[str] kube_api_burst: Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
         :param pulumi.Input[str] kube_api_qps: Same as kubeAPIQPS. The QPS to use while talking with kubernetes api-server. Valid value is `[0-50]`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kube_reserved: Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
         :param pulumi.Input[str] max_pods: The maximum number of running pods.
+        :param pulumi.Input[str] memory_manager_policy: The policy to be used by the memory manager.
+        :param pulumi.Input[str] pod_pids_limit: The maximum number of PIDs that can be used in a Pod.
         :param pulumi.Input[str] read_only_port: Read-only port number.
         :param pulumi.Input[str] registry_burst: Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registry_pull_qps`. Only used if `registry_pull_qps` is greater than 0. Valid value is `[0-100]`.
         :param pulumi.Input[str] registry_pull_qps: Same as registryPullQPS. The limit of registry pulls per second. Setting it to `0` means no limit. Valid value is `[0-50]`.
+        :param pulumi.Input[Sequence[pulumi.Input['NodePoolKubeletConfigurationReservedMemoryArgs']]] reserved_memories: Reserve memory for NUMA nodes. See `reserved_memory` below.
         :param pulumi.Input[str] serialize_image_pulls: Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] system_reserved: Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
+        :param pulumi.Input[str] topology_manager_policy: Name of the Topology Manager policy used.
+        :param pulumi.Input['NodePoolKubeletConfigurationTracingArgs'] tracing: OpenTelemetry tracks the configuration information for client settings versioning. See `tracing` below.
         """
         if allowed_unsafe_sysctls is not None:
             pulumi.set(__self__, "allowed_unsafe_sysctls", allowed_unsafe_sysctls)
+        if cluster_dns is not None:
+            pulumi.set(__self__, "cluster_dns", cluster_dns)
         if container_log_max_files is not None:
             pulumi.set(__self__, "container_log_max_files", container_log_max_files)
         if container_log_max_size is not None:
             pulumi.set(__self__, "container_log_max_size", container_log_max_size)
+        if container_log_max_workers is not None:
+            pulumi.set(__self__, "container_log_max_workers", container_log_max_workers)
+        if container_log_monitor_interval is not None:
+            pulumi.set(__self__, "container_log_monitor_interval", container_log_monitor_interval)
+        if cpu_cfs_quota is not None:
+            pulumi.set(__self__, "cpu_cfs_quota", cpu_cfs_quota)
+        if cpu_cfs_quota_period is not None:
+            pulumi.set(__self__, "cpu_cfs_quota_period", cpu_cfs_quota_period)
         if cpu_manager_policy is not None:
             pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
         if event_burst is not None:
@@ -2910,6 +2996,10 @@ class NodePoolKubeletConfigurationArgs:
             pulumi.set(__self__, "eviction_soft_grace_period", eviction_soft_grace_period)
         if feature_gates is not None:
             pulumi.set(__self__, "feature_gates", feature_gates)
+        if image_gc_high_threshold_percent is not None:
+            pulumi.set(__self__, "image_gc_high_threshold_percent", image_gc_high_threshold_percent)
+        if image_gc_low_threshold_percent is not None:
+            pulumi.set(__self__, "image_gc_low_threshold_percent", image_gc_low_threshold_percent)
         if kube_api_burst is not None:
             pulumi.set(__self__, "kube_api_burst", kube_api_burst)
         if kube_api_qps is not None:
@@ -2918,16 +3008,26 @@ class NodePoolKubeletConfigurationArgs:
             pulumi.set(__self__, "kube_reserved", kube_reserved)
         if max_pods is not None:
             pulumi.set(__self__, "max_pods", max_pods)
+        if memory_manager_policy is not None:
+            pulumi.set(__self__, "memory_manager_policy", memory_manager_policy)
+        if pod_pids_limit is not None:
+            pulumi.set(__self__, "pod_pids_limit", pod_pids_limit)
         if read_only_port is not None:
             pulumi.set(__self__, "read_only_port", read_only_port)
         if registry_burst is not None:
             pulumi.set(__self__, "registry_burst", registry_burst)
         if registry_pull_qps is not None:
             pulumi.set(__self__, "registry_pull_qps", registry_pull_qps)
+        if reserved_memories is not None:
+            pulumi.set(__self__, "reserved_memories", reserved_memories)
         if serialize_image_pulls is not None:
             pulumi.set(__self__, "serialize_image_pulls", serialize_image_pulls)
         if system_reserved is not None:
             pulumi.set(__self__, "system_reserved", system_reserved)
+        if topology_manager_policy is not None:
+            pulumi.set(__self__, "topology_manager_policy", topology_manager_policy)
+        if tracing is not None:
+            pulumi.set(__self__, "tracing", tracing)
 
     @property
     @pulumi.getter(name="allowedUnsafeSysctls")
@@ -2940,6 +3040,18 @@ class NodePoolKubeletConfigurationArgs:
     @allowed_unsafe_sysctls.setter
     def allowed_unsafe_sysctls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "allowed_unsafe_sysctls", value)
+
+    @property
+    @pulumi.getter(name="clusterDns")
+    def cluster_dns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of IP addresses of the cluster DNS servers.
+        """
+        return pulumi.get(self, "cluster_dns")
+
+    @cluster_dns.setter
+    def cluster_dns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "cluster_dns", value)
 
     @property
     @pulumi.getter(name="containerLogMaxFiles")
@@ -2964,6 +3076,54 @@ class NodePoolKubeletConfigurationArgs:
     @container_log_max_size.setter
     def container_log_max_size(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "container_log_max_size", value)
+
+    @property
+    @pulumi.getter(name="containerLogMaxWorkers")
+    def container_log_max_workers(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the maximum number of concurrent workers required to perform log rotation operations.
+        """
+        return pulumi.get(self, "container_log_max_workers")
+
+    @container_log_max_workers.setter
+    def container_log_max_workers(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "container_log_max_workers", value)
+
+    @property
+    @pulumi.getter(name="containerLogMonitorInterval")
+    def container_log_monitor_interval(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the duration for which container logs are monitored for log rotation.
+        """
+        return pulumi.get(self, "container_log_monitor_interval")
+
+    @container_log_monitor_interval.setter
+    def container_log_monitor_interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "container_log_monitor_interval", value)
+
+    @property
+    @pulumi.getter(name="cpuCfsQuota")
+    def cpu_cfs_quota(self) -> Optional[pulumi.Input[str]]:
+        """
+        CPU CFS quota constraint switch.
+        """
+        return pulumi.get(self, "cpu_cfs_quota")
+
+    @cpu_cfs_quota.setter
+    def cpu_cfs_quota(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cpu_cfs_quota", value)
+
+    @property
+    @pulumi.getter(name="cpuCfsQuotaPeriod")
+    def cpu_cfs_quota_period(self) -> Optional[pulumi.Input[str]]:
+        """
+        CPU CFS quota period value.
+        """
+        return pulumi.get(self, "cpu_cfs_quota_period")
+
+    @cpu_cfs_quota_period.setter
+    def cpu_cfs_quota_period(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cpu_cfs_quota_period", value)
 
     @property
     @pulumi.getter(name="cpuManagerPolicy")
@@ -3050,6 +3210,30 @@ class NodePoolKubeletConfigurationArgs:
         pulumi.set(self, "feature_gates", value)
 
     @property
+    @pulumi.getter(name="imageGcHighThresholdPercent")
+    def image_gc_high_threshold_percent(self) -> Optional[pulumi.Input[str]]:
+        """
+        If the image usage exceeds this threshold, image garbage collection will continue.
+        """
+        return pulumi.get(self, "image_gc_high_threshold_percent")
+
+    @image_gc_high_threshold_percent.setter
+    def image_gc_high_threshold_percent(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_gc_high_threshold_percent", value)
+
+    @property
+    @pulumi.getter(name="imageGcLowThresholdPercent")
+    def image_gc_low_threshold_percent(self) -> Optional[pulumi.Input[str]]:
+        """
+        Image garbage collection is not performed when the image usage is below this threshold.
+        """
+        return pulumi.get(self, "image_gc_low_threshold_percent")
+
+    @image_gc_low_threshold_percent.setter
+    def image_gc_low_threshold_percent(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_gc_low_threshold_percent", value)
+
+    @property
     @pulumi.getter(name="kubeApiBurst")
     def kube_api_burst(self) -> Optional[pulumi.Input[str]]:
         """
@@ -3098,6 +3282,30 @@ class NodePoolKubeletConfigurationArgs:
         pulumi.set(self, "max_pods", value)
 
     @property
+    @pulumi.getter(name="memoryManagerPolicy")
+    def memory_manager_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The policy to be used by the memory manager.
+        """
+        return pulumi.get(self, "memory_manager_policy")
+
+    @memory_manager_policy.setter
+    def memory_manager_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "memory_manager_policy", value)
+
+    @property
+    @pulumi.getter(name="podPidsLimit")
+    def pod_pids_limit(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum number of PIDs that can be used in a Pod.
+        """
+        return pulumi.get(self, "pod_pids_limit")
+
+    @pod_pids_limit.setter
+    def pod_pids_limit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pod_pids_limit", value)
+
+    @property
     @pulumi.getter(name="readOnlyPort")
     def read_only_port(self) -> Optional[pulumi.Input[str]]:
         """
@@ -3134,6 +3342,18 @@ class NodePoolKubeletConfigurationArgs:
         pulumi.set(self, "registry_pull_qps", value)
 
     @property
+    @pulumi.getter(name="reservedMemories")
+    def reserved_memories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolKubeletConfigurationReservedMemoryArgs']]]]:
+        """
+        Reserve memory for NUMA nodes. See `reserved_memory` below.
+        """
+        return pulumi.get(self, "reserved_memories")
+
+    @reserved_memories.setter
+    def reserved_memories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolKubeletConfigurationReservedMemoryArgs']]]]):
+        pulumi.set(self, "reserved_memories", value)
+
+    @property
     @pulumi.getter(name="serializeImagePulls")
     def serialize_image_pulls(self) -> Optional[pulumi.Input[str]]:
         """
@@ -3156,6 +3376,134 @@ class NodePoolKubeletConfigurationArgs:
     @system_reserved.setter
     def system_reserved(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "system_reserved", value)
+
+    @property
+    @pulumi.getter(name="topologyManagerPolicy")
+    def topology_manager_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the Topology Manager policy used.
+        """
+        return pulumi.get(self, "topology_manager_policy")
+
+    @topology_manager_policy.setter
+    def topology_manager_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "topology_manager_policy", value)
+
+    @property
+    @pulumi.getter
+    def tracing(self) -> Optional[pulumi.Input['NodePoolKubeletConfigurationTracingArgs']]:
+        """
+        OpenTelemetry tracks the configuration information for client settings versioning. See `tracing` below.
+        """
+        return pulumi.get(self, "tracing")
+
+    @tracing.setter
+    def tracing(self, value: Optional[pulumi.Input['NodePoolKubeletConfigurationTracingArgs']]):
+        pulumi.set(self, "tracing", value)
+
+
+if not MYPY:
+    class NodePoolKubeletConfigurationReservedMemoryArgsDict(TypedDict):
+        limits: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Memory resource limit.
+        """
+        numa_node: NotRequired[pulumi.Input[int]]
+        """
+        The NUMA node.
+        """
+elif False:
+    NodePoolKubeletConfigurationReservedMemoryArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NodePoolKubeletConfigurationReservedMemoryArgs:
+    def __init__(__self__, *,
+                 limits: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 numa_node: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] limits: Memory resource limit.
+        :param pulumi.Input[int] numa_node: The NUMA node.
+        """
+        if limits is not None:
+            pulumi.set(__self__, "limits", limits)
+        if numa_node is not None:
+            pulumi.set(__self__, "numa_node", numa_node)
+
+    @property
+    @pulumi.getter
+    def limits(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Memory resource limit.
+        """
+        return pulumi.get(self, "limits")
+
+    @limits.setter
+    def limits(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "limits", value)
+
+    @property
+    @pulumi.getter(name="numaNode")
+    def numa_node(self) -> Optional[pulumi.Input[int]]:
+        """
+        The NUMA node.
+        """
+        return pulumi.get(self, "numa_node")
+
+    @numa_node.setter
+    def numa_node(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "numa_node", value)
+
+
+if not MYPY:
+    class NodePoolKubeletConfigurationTracingArgsDict(TypedDict):
+        endpoint: NotRequired[pulumi.Input[str]]
+        """
+        The endpoint of the collector.
+        """
+        sampling_rate_per_million: NotRequired[pulumi.Input[str]]
+        """
+        Number of samples to be collected per million span.
+        """
+elif False:
+    NodePoolKubeletConfigurationTracingArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NodePoolKubeletConfigurationTracingArgs:
+    def __init__(__self__, *,
+                 endpoint: Optional[pulumi.Input[str]] = None,
+                 sampling_rate_per_million: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] endpoint: The endpoint of the collector.
+        :param pulumi.Input[str] sampling_rate_per_million: Number of samples to be collected per million span.
+        """
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if sampling_rate_per_million is not None:
+            pulumi.set(__self__, "sampling_rate_per_million", sampling_rate_per_million)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The endpoint of the collector.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint", value)
+
+    @property
+    @pulumi.getter(name="samplingRatePerMillion")
+    def sampling_rate_per_million(self) -> Optional[pulumi.Input[str]]:
+        """
+        Number of samples to be collected per million span.
+        """
+        return pulumi.get(self, "sampling_rate_per_million")
+
+    @sampling_rate_per_million.setter
+    def sampling_rate_per_million(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sampling_rate_per_million", value)
 
 
 if not MYPY:

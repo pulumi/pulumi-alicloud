@@ -9,20 +9,51 @@ import * as utilities from "../utilities";
 /**
  * This data source provides available scaling group resources.
  *
+ * > **NOTE:** Available since v1.39.0
+ *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const scalinggroupsDs = alicloud.ess.getScalingGroups({
- *     ids: [
- *         "scaling_group_id1",
- *         "scaling_group_id2",
- *     ],
- *     nameRegex: "scaling_group_name",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultInteger = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
  * });
- * export const firstScalingGroup = scalinggroupsDs.then(scalinggroupsDs => scalinggroupsDs.groups?.[0]?.id);
+ * const myName = `${name}-${defaultInteger.result}`;
+ * const default = alicloud.getZones({
+ *     availableDiskCategory: "cloud_efficiency",
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: myName,
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ *     vswitchName: myName,
+ * });
+ * const defaultScalingGroup = new alicloud.ess.ScalingGroup("default", {
+ *     minSize: 1,
+ *     maxSize: 1,
+ *     scalingGroupName: myName,
+ *     removalPolicies: [
+ *         "OldestInstance",
+ *         "NewestInstance",
+ *     ],
+ *     vswitchIds: [defaultSwitch.id],
+ * });
+ * const scalinggroupsDs = alicloud.ess.getScalingGroupsOutput({
+ *     ids: [defaultScalingGroup.id],
+ *     nameRegex: myName,
+ * });
+ * export const firstScalingGroup = scalinggroupsDs.apply(scalinggroupsDs => scalinggroupsDs.groups?.[0]?.id);
  * ```
  */
 export function getScalingGroups(args?: GetScalingGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetScalingGroupsResult> {
@@ -79,20 +110,51 @@ export interface GetScalingGroupsResult {
 /**
  * This data source provides available scaling group resources.
  *
+ * > **NOTE:** Available since v1.39.0
+ *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const scalinggroupsDs = alicloud.ess.getScalingGroups({
- *     ids: [
- *         "scaling_group_id1",
- *         "scaling_group_id2",
- *     ],
- *     nameRegex: "scaling_group_name",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultInteger = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
  * });
- * export const firstScalingGroup = scalinggroupsDs.then(scalinggroupsDs => scalinggroupsDs.groups?.[0]?.id);
+ * const myName = `${name}-${defaultInteger.result}`;
+ * const default = alicloud.getZones({
+ *     availableDiskCategory: "cloud_efficiency",
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: myName,
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ *     vswitchName: myName,
+ * });
+ * const defaultScalingGroup = new alicloud.ess.ScalingGroup("default", {
+ *     minSize: 1,
+ *     maxSize: 1,
+ *     scalingGroupName: myName,
+ *     removalPolicies: [
+ *         "OldestInstance",
+ *         "NewestInstance",
+ *     ],
+ *     vswitchIds: [defaultSwitch.id],
+ * });
+ * const scalinggroupsDs = alicloud.ess.getScalingGroupsOutput({
+ *     ids: [defaultScalingGroup.id],
+ *     nameRegex: myName,
+ * });
+ * export const firstScalingGroup = scalinggroupsDs.apply(scalinggroupsDs => scalinggroupsDs.groups?.[0]?.id);
  * ```
  */
 export function getScalingGroupsOutput(args?: GetScalingGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetScalingGroupsResult> {
