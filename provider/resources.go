@@ -261,6 +261,7 @@ var mappedMods = map[string]string{
 	"log":                   logMod,
 	"market":                marketPlaceMod,
 	"maxcompute":            maxComputeMod,
+	"max_compute":           maxComputeMod,
 	"message":               messageMod,
 	"mhub":                  mhubMod,
 	"mns":                   mnsMod,
