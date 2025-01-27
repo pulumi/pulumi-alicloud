@@ -25,24 +25,48 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := alb.GetServerGroups(ctx, &alb.GetServerGroupsArgs{}, nil)
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("192.168.0.0/16"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("albServerGroupId1", ids.Groups[0].Id)
-//			nameRegex, err := alb.GetServerGroups(ctx, &alb.GetServerGroupsArgs{
-//				NameRegex: pulumi.StringRef("^my-ServerGroup"),
+//			defaultServerGroup, err := alb.NewServerGroup(ctx, "default", &alb.ServerGroupArgs{
+//				Protocol:        pulumi.String("HTTP"),
+//				VpcId:           _default.ID(),
+//				ServerGroupName: pulumi.String(name),
+//				HealthCheckConfig: &alb.ServerGroupHealthCheckConfigArgs{
+//					HealthCheckEnabled: pulumi.Bool(false),
+//				},
+//				StickySessionConfig: &alb.ServerGroupStickySessionConfigArgs{
+//					StickySessionEnabled: pulumi.Bool(false),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ids := alb.GetServerGroupsOutput(ctx, alb.GetServerGroupsOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultServerGroup.ID(),
+//				},
 //			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("albServerGroupId2", nameRegex.Groups[0].Id)
+//			ctx.Export("albServerGroupId0", ids.ApplyT(func(ids alb.GetServerGroupsResult) (*string, error) {
+//				return &ids.Groups[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}
@@ -60,7 +84,7 @@ func GetServerGroups(ctx *pulumi.Context, args *GetServerGroupsArgs, opts ...pul
 
 // A collection of arguments for invoking getServerGroups.
 type GetServerGroupsArgs struct {
-	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	// Whether to query the detailed list of resource attributes. Default value: `false`.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Server Group IDs.
 	Ids []string `pulumi:"ids"`
@@ -70,22 +94,22 @@ type GetServerGroupsArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The server group ids.
+	// The server group IDs.
 	ServerGroupIds []string `pulumi:"serverGroupIds"`
-	// The name of the resource.
+	// The names of the Server Group.
 	ServerGroupName *string `pulumi:"serverGroupName"`
-	// The status of the resource.
+	// The status of the Server Group. Valid values: `Available`, `Configuring`, `Provisioning`.
 	Status *string `pulumi:"status"`
-	// A map of tags assigned to the group.
+	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
-	// The ID of the VPC that you want to access.
+	// The ID of the virtual private cloud (VPC).
 	VpcId *string `pulumi:"vpcId"`
 }
 
 // A collection of values returned by getServerGroups.
 type GetServerGroupsResult struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
-	// A list of Alb Server Groups. Each element contains the following attributes:
+	// A list of Server Groups. Each element contains the following attributes:
 	Groups []GetServerGroupsGroup `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
 	Id        string   `pulumi:"id"`
@@ -96,13 +120,13 @@ type GetServerGroupsResult struct {
 	OutputFile      *string  `pulumi:"outputFile"`
 	ResourceGroupId *string  `pulumi:"resourceGroupId"`
 	ServerGroupIds  []string `pulumi:"serverGroupIds"`
-	// The name of the resource.
+	// The name of the Server Group.
 	ServerGroupName *string `pulumi:"serverGroupName"`
-	// The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+	// The status of the server.
 	Status *string `pulumi:"status"`
-	// The tags of the resource.
+	// The tags of the resource. **Note:** `tags` takes effect only if `enableDetails` is set to `true`.
 	Tags map[string]string `pulumi:"tags"`
-	// The ID of the VPC that you want to access.
+	// The ID of the VPC.
 	VpcId *string `pulumi:"vpcId"`
 }
 
@@ -117,7 +141,7 @@ func GetServerGroupsOutput(ctx *pulumi.Context, args GetServerGroupsOutputArgs, 
 
 // A collection of arguments for invoking getServerGroups.
 type GetServerGroupsOutputArgs struct {
-	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	// Whether to query the detailed list of resource attributes. Default value: `false`.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of Server Group IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -127,15 +151,15 @@ type GetServerGroupsOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
-	// The server group ids.
+	// The server group IDs.
 	ServerGroupIds pulumi.StringArrayInput `pulumi:"serverGroupIds"`
-	// The name of the resource.
+	// The names of the Server Group.
 	ServerGroupName pulumi.StringPtrInput `pulumi:"serverGroupName"`
-	// The status of the resource.
+	// The status of the Server Group. Valid values: `Available`, `Configuring`, `Provisioning`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// A map of tags assigned to the group.
+	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// The ID of the VPC that you want to access.
+	// The ID of the virtual private cloud (VPC).
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
 }
 
@@ -162,7 +186,7 @@ func (o GetServerGroupsResultOutput) EnableDetails() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetServerGroupsResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
 }
 
-// A list of Alb Server Groups. Each element contains the following attributes:
+// A list of Server Groups. Each element contains the following attributes:
 func (o GetServerGroupsResultOutput) Groups() GetServerGroupsGroupArrayOutput {
 	return o.ApplyT(func(v GetServerGroupsResult) []GetServerGroupsGroup { return v.Groups }).(GetServerGroupsGroupArrayOutput)
 }
@@ -197,22 +221,22 @@ func (o GetServerGroupsResultOutput) ServerGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServerGroupsResult) []string { return v.ServerGroupIds }).(pulumi.StringArrayOutput)
 }
 
-// The name of the resource.
+// The name of the Server Group.
 func (o GetServerGroupsResultOutput) ServerGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServerGroupsResult) *string { return v.ServerGroupName }).(pulumi.StringPtrOutput)
 }
 
-// The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+// The status of the server.
 func (o GetServerGroupsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServerGroupsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// The tags of the resource.
+// The tags of the resource. **Note:** `tags` takes effect only if `enableDetails` is set to `true`.
 func (o GetServerGroupsResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetServerGroupsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The ID of the VPC that you want to access.
+// The ID of the VPC.
 func (o GetServerGroupsResultOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServerGroupsResult) *string { return v.VpcId }).(pulumi.StringPtrOutput)
 }

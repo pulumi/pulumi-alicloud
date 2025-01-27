@@ -16,7 +16,7 @@ import java.util.Objects;
 @CustomType
 public final class GetServerGroupsGroup {
     /**
-     * @return The configuration of health checks.
+     * @return The configuration of health checks. **Note:** `health_check_config` takes effect only if `enable_details` is set to `true`.
      * 
      */
     private List<GetServerGroupsGroupHealthCheckConfig> healthCheckConfigs;
@@ -26,54 +26,54 @@ public final class GetServerGroupsGroup {
      */
     private String id;
     /**
-     * @return The server protocol. Valid values: `HTTP` and `HTTPS`. Default value: `HTTP`.
+     * @return The backend protocol.
      * 
      */
     private String protocol;
     /**
-     * @return The scheduling algorithm. Valid values: `Wrr`, `Wlc` and `Sch`.
+     * @return The scheduling algorithm.
      * 
      */
     private String scheduler;
     /**
-     * @return The first ID of the res ource.
+     * @return The ID of the Server Group.
      * 
      */
     private String serverGroupId;
     /**
-     * @return The name of the resource.
+     * @return The names of the Server Group.
      * 
      */
     private String serverGroupName;
     /**
-     * @return The backend server.
+     * @return The backend server. **Note:** `servers` takes effect only if `enable_details` is set to `true`.
      * 
      */
     private List<GetServerGroupsGroupServer> servers;
     /**
-     * @return The status of the resource.
+     * @return The status of the Server Group. Valid values: `Available`, `Configuring`, `Provisioning`.
      * 
      */
     private String status;
     /**
-     * @return The configuration of the sticky session.
+     * @return The configuration of the sticky session. **Note:** `sticky_session_config` takes effect only if `enable_details` is set to `true`.
      * 
      */
     private List<GetServerGroupsGroupStickySessionConfig> stickySessionConfigs;
     /**
-     * @return A map of tags assigned to the group.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     private Map<String,String> tags;
     /**
-     * @return The ID of the VPC that you want to access.
+     * @return The ID of the virtual private cloud (VPC).
      * 
      */
     private String vpcId;
 
     private GetServerGroupsGroup() {}
     /**
-     * @return The configuration of health checks.
+     * @return The configuration of health checks. **Note:** `health_check_config` takes effect only if `enable_details` is set to `true`.
      * 
      */
     public List<GetServerGroupsGroupHealthCheckConfig> healthCheckConfigs() {
@@ -87,63 +87,63 @@ public final class GetServerGroupsGroup {
         return this.id;
     }
     /**
-     * @return The server protocol. Valid values: `HTTP` and `HTTPS`. Default value: `HTTP`.
+     * @return The backend protocol.
      * 
      */
     public String protocol() {
         return this.protocol;
     }
     /**
-     * @return The scheduling algorithm. Valid values: `Wrr`, `Wlc` and `Sch`.
+     * @return The scheduling algorithm.
      * 
      */
     public String scheduler() {
         return this.scheduler;
     }
     /**
-     * @return The first ID of the res ource.
+     * @return The ID of the Server Group.
      * 
      */
     public String serverGroupId() {
         return this.serverGroupId;
     }
     /**
-     * @return The name of the resource.
+     * @return The names of the Server Group.
      * 
      */
     public String serverGroupName() {
         return this.serverGroupName;
     }
     /**
-     * @return The backend server.
+     * @return The backend server. **Note:** `servers` takes effect only if `enable_details` is set to `true`.
      * 
      */
     public List<GetServerGroupsGroupServer> servers() {
         return this.servers;
     }
     /**
-     * @return The status of the resource.
+     * @return The status of the Server Group. Valid values: `Available`, `Configuring`, `Provisioning`.
      * 
      */
     public String status() {
         return this.status;
     }
     /**
-     * @return The configuration of the sticky session.
+     * @return The configuration of the sticky session. **Note:** `sticky_session_config` takes effect only if `enable_details` is set to `true`.
      * 
      */
     public List<GetServerGroupsGroupStickySessionConfig> stickySessionConfigs() {
         return this.stickySessionConfigs;
     }
     /**
-     * @return A map of tags assigned to the group.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     public Map<String,String> tags() {
         return this.tags;
     }
     /**
-     * @return The ID of the VPC that you want to access.
+     * @return The ID of the virtual private cloud (VPC).
      * 
      */
     public String vpcId() {

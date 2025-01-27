@@ -14,50 +14,90 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServerGroupStickySessionConfig {
     /**
-     * @return The cookie to be configured on the server. **NOTE:** This parameter takes effect when the `sticky_session_enabled` parameter is set to `true` and the `sticky_session_type` parameter is set to `Server`.
+     * @return The cookie to be configured on the server.
+     * 
+     * The cookie must be 1 to 200 characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($).
+     * 
+     * &gt; **NOTE:**  This parameter takes effect when the `StickySessionEnabled` parameter is set to `true` and the `StickySessionType` parameter is set to `Server`.
      * 
      */
     private @Nullable String cookie;
     /**
-     * @return The timeout period of a cookie. Unit: seconds. Default value: `1000`. Valid values: `1` to `86400`. **NOTE:** This parameter takes effect when the `sticky_session_enabled` parameter is set to `true` and the `sticky_session_type` parameter is set to `Insert`.
+     * @return The maximum amount of time to wait before the session cookie expires. Unit: seconds.
+     * 
+     * Valid values: `1` to `86400`.
+     * 
+     * Default value: `1000`.
+     * 
+     * &gt; **NOTE:**   This parameter takes effect only when `StickySessionEnabled` is set to `true` and `StickySessionType` is set to `Insert`.
      * 
      */
     private @Nullable Integer cookieTimeout;
     /**
-     * @return Specifies whether to enable session persistence. Default value: `false`. Valid values: `true`, `false`. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
+     * @return Specifies whether to enable session persistence. Valid values:
      * 
      */
     private @Nullable Boolean stickySessionEnabled;
     /**
-     * @return The method that is used to handle a cookie. Valid values: `Server`, `Insert`.
+     * @return The method that is used to handle a cookie. Valid values:
+     * 
+     * *   `Insert`: inserts a cookie.
+     * 
+     * ALB inserts a cookie (SERVERID) into the first HTTP or HTTPS response packet that is sent to a client. The next request from the client contains this cookie and the listener forwards this request to the recorded backend server.
+     * 
+     * *   `Server`: rewrites a cookie.
+     * 
+     * When ALB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. Subsequent requests to ALB carry this user-defined cookie, and ALB determines the destination servers of the requests based on the cookies.
+     * 
+     * &gt; **NOTE:**  This parameter takes effect when the `StickySessionEnabled` parameter is set to `true` for the server group.
      * 
      */
     private @Nullable String stickySessionType;
 
     private ServerGroupStickySessionConfig() {}
     /**
-     * @return The cookie to be configured on the server. **NOTE:** This parameter takes effect when the `sticky_session_enabled` parameter is set to `true` and the `sticky_session_type` parameter is set to `Server`.
+     * @return The cookie to be configured on the server.
+     * 
+     * The cookie must be 1 to 200 characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($).
+     * 
+     * &gt; **NOTE:**  This parameter takes effect when the `StickySessionEnabled` parameter is set to `true` and the `StickySessionType` parameter is set to `Server`.
      * 
      */
     public Optional<String> cookie() {
         return Optional.ofNullable(this.cookie);
     }
     /**
-     * @return The timeout period of a cookie. Unit: seconds. Default value: `1000`. Valid values: `1` to `86400`. **NOTE:** This parameter takes effect when the `sticky_session_enabled` parameter is set to `true` and the `sticky_session_type` parameter is set to `Insert`.
+     * @return The maximum amount of time to wait before the session cookie expires. Unit: seconds.
+     * 
+     * Valid values: `1` to `86400`.
+     * 
+     * Default value: `1000`.
+     * 
+     * &gt; **NOTE:**   This parameter takes effect only when `StickySessionEnabled` is set to `true` and `StickySessionType` is set to `Insert`.
      * 
      */
     public Optional<Integer> cookieTimeout() {
         return Optional.ofNullable(this.cookieTimeout);
     }
     /**
-     * @return Specifies whether to enable session persistence. Default value: `false`. Valid values: `true`, `false`. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
+     * @return Specifies whether to enable session persistence. Valid values:
      * 
      */
     public Optional<Boolean> stickySessionEnabled() {
         return Optional.ofNullable(this.stickySessionEnabled);
     }
     /**
-     * @return The method that is used to handle a cookie. Valid values: `Server`, `Insert`.
+     * @return The method that is used to handle a cookie. Valid values:
+     * 
+     * *   `Insert`: inserts a cookie.
+     * 
+     * ALB inserts a cookie (SERVERID) into the first HTTP or HTTPS response packet that is sent to a client. The next request from the client contains this cookie and the listener forwards this request to the recorded backend server.
+     * 
+     * *   `Server`: rewrites a cookie.
+     * 
+     * When ALB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. Subsequent requests to ALB carry this user-defined cookie, and ALB determines the destination servers of the requests based on the cookies.
+     * 
+     * &gt; **NOTE:**  This parameter takes effect when the `StickySessionEnabled` parameter is set to `true` for the server group.
      * 
      */
     public Optional<String> stickySessionType() {

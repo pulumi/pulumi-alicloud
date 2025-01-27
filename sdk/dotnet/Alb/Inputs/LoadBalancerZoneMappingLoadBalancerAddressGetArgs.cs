@@ -13,25 +13,25 @@ namespace Pulumi.AliCloud.Alb.Inputs
     public sealed class LoadBalancerZoneMappingLoadBalancerAddressGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// IP address. The Public IP Address, and Private IP Address from the Address Type.
+        /// IP Address. The Public IP Address, and Private IP Address from the Address Type
         /// </summary>
         [Input("address")]
         public Input<string>? Address { get; set; }
 
         /// <summary>
-        /// The ID of the EIP.
+        /// The ID of the EIP instance.
         /// </summary>
         [Input("allocationId")]
         public Input<string>? AllocationId { get; set; }
 
         /// <summary>
-        /// The type of the EIP.
+        /// The type of the EIP instance.
         /// </summary>
         [Input("eipType")]
         public Input<string>? EipType { get; set; }
 
         /// <summary>
-        /// Ipv6 address.
+        /// Ipv6 address
         /// </summary>
         [Input("ipv6Address")]
         public Input<string>? Ipv6Address { get; set; }

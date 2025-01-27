@@ -512,6 +512,21 @@ public final class V3FunctionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The tag of the resource
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return The tag of the resource
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
      * The maximum running time of the function, in seconds.
      * 
      */
@@ -591,6 +606,7 @@ public final class V3FunctionState extends com.pulumi.resources.ResourceArgs {
         this.state = $.state;
         this.stateReason = $.stateReason;
         this.stateReasonCode = $.stateReasonCode;
+        this.tags = $.tags;
         this.timeout = $.timeout;
         this.tracingConfig = $.tracingConfig;
         this.vpcConfig = $.vpcConfig;
@@ -1294,6 +1310,27 @@ public final class V3FunctionState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder stateReasonCode(String stateReasonCode) {
             return stateReasonCode(Output.of(stateReasonCode));
+        }
+
+        /**
+         * @param tags The tag of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tag of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         /**

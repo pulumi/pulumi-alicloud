@@ -18,14 +18,14 @@ public final class GetServerGroupsPlainArgs extends com.pulumi.resources.InvokeA
     public static final GetServerGroupsPlainArgs Empty = new GetServerGroupsPlainArgs();
 
     /**
-     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      * 
      */
     @Import(name="enableDetails")
     private @Nullable Boolean enableDetails;
 
     /**
-     * @return Default to `false`. Set it to `true` can output more details about resource attributes.
+     * @return Whether to query the detailed list of resource attributes. Default value: `false`.
      * 
      */
     public Optional<Boolean> enableDetails() {
@@ -93,14 +93,14 @@ public final class GetServerGroupsPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The server group ids.
+     * The server group IDs.
      * 
      */
     @Import(name="serverGroupIds")
     private @Nullable List<String> serverGroupIds;
 
     /**
-     * @return The server group ids.
+     * @return The server group IDs.
      * 
      */
     public Optional<List<String>> serverGroupIds() {
@@ -108,14 +108,14 @@ public final class GetServerGroupsPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The name of the resource.
+     * The names of the Server Group.
      * 
      */
     @Import(name="serverGroupName")
     private @Nullable String serverGroupName;
 
     /**
-     * @return The name of the resource.
+     * @return The names of the Server Group.
      * 
      */
     public Optional<String> serverGroupName() {
@@ -123,14 +123,14 @@ public final class GetServerGroupsPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The status of the resource.
+     * The status of the Server Group. Valid values: `Available`, `Configuring`, `Provisioning`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the Server Group. Valid values: `Available`, `Configuring`, `Provisioning`.
      * 
      */
     public Optional<String> status() {
@@ -138,14 +138,14 @@ public final class GetServerGroupsPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * A map of tags assigned to the group.
+     * A mapping of tags to assign to the resource.
      * 
      */
     @Import(name="tags")
     private @Nullable Map<String,String> tags;
 
     /**
-     * @return A map of tags assigned to the group.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     public Optional<Map<String,String>> tags() {
@@ -153,14 +153,14 @@ public final class GetServerGroupsPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The ID of the VPC that you want to access.
+     * The ID of the virtual private cloud (VPC).
      * 
      */
     @Import(name="vpcId")
     private @Nullable String vpcId;
 
     /**
-     * @return The ID of the VPC that you want to access.
+     * @return The ID of the virtual private cloud (VPC).
      * 
      */
     public Optional<String> vpcId() {
@@ -201,7 +201,7 @@ public final class GetServerGroupsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param enableDetails Default to `false`. Set it to `true` can output more details about resource attributes.
+         * @param enableDetails Whether to query the detailed list of resource attributes. Default value: `false`.
          * 
          * @return builder
          * 
@@ -266,7 +266,7 @@ public final class GetServerGroupsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param serverGroupIds The server group ids.
+         * @param serverGroupIds The server group IDs.
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class GetServerGroupsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param serverGroupIds The server group ids.
+         * @param serverGroupIds The server group IDs.
          * 
          * @return builder
          * 
@@ -287,7 +287,7 @@ public final class GetServerGroupsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param serverGroupName The name of the resource.
+         * @param serverGroupName The names of the Server Group.
          * 
          * @return builder
          * 
@@ -298,7 +298,7 @@ public final class GetServerGroupsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the Server Group. Valid values: `Available`, `Configuring`, `Provisioning`.
          * 
          * @return builder
          * 
@@ -309,7 +309,7 @@ public final class GetServerGroupsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param tags A map of tags assigned to the group.
+         * @param tags A mapping of tags to assign to the resource.
          * 
          * @return builder
          * 
@@ -320,7 +320,7 @@ public final class GetServerGroupsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param vpcId The ID of the VPC that you want to access.
+         * @param vpcId The ID of the virtual private cloud (VPC).
          * 
          * @return builder
          * 

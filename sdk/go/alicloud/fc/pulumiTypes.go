@@ -5443,15 +5443,15 @@ func (o V3FunctionCodePtrOutput) ZipFile() pulumi.StringPtrOutput {
 }
 
 type V3FunctionCustomContainerConfig struct {
-	// (Deprecated) Image Acceleration Information (Obsolete).
+	// (Deprecated since v1.242.0) Image Acceleration Information (Obsolete)
 	//
 	// Deprecated: Field 'acceleration_info' has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
 	AccelerationInfo *V3FunctionCustomContainerConfigAccelerationInfo `pulumi:"accelerationInfo"`
-	// Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete).
+	// Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
 	//
 	// Deprecated: Field 'acceleration_type' has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
 	AccelerationType *string `pulumi:"accelerationType"`
-	// ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete).
+	// ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
 	//
 	// Deprecated: Field 'acr_instance_id' has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
 	AcrInstanceId *string `pulumi:"acrInstanceId"`
@@ -5481,15 +5481,15 @@ type V3FunctionCustomContainerConfigInput interface {
 }
 
 type V3FunctionCustomContainerConfigArgs struct {
-	// (Deprecated) Image Acceleration Information (Obsolete).
+	// (Deprecated since v1.242.0) Image Acceleration Information (Obsolete)
 	//
 	// Deprecated: Field 'acceleration_info' has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
 	AccelerationInfo V3FunctionCustomContainerConfigAccelerationInfoPtrInput `pulumi:"accelerationInfo"`
-	// Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete).
+	// Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
 	//
 	// Deprecated: Field 'acceleration_type' has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
 	AccelerationType pulumi.StringPtrInput `pulumi:"accelerationType"`
-	// ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete).
+	// ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
 	//
 	// Deprecated: Field 'acr_instance_id' has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
 	AcrInstanceId pulumi.StringPtrInput `pulumi:"acrInstanceId"`
@@ -5584,7 +5584,7 @@ func (o V3FunctionCustomContainerConfigOutput) ToV3FunctionCustomContainerConfig
 	}).(V3FunctionCustomContainerConfigPtrOutput)
 }
 
-// (Deprecated) Image Acceleration Information (Obsolete).
+// (Deprecated since v1.242.0) Image Acceleration Information (Obsolete)
 //
 // Deprecated: Field 'acceleration_info' has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
 func (o V3FunctionCustomContainerConfigOutput) AccelerationInfo() V3FunctionCustomContainerConfigAccelerationInfoPtrOutput {
@@ -5593,14 +5593,14 @@ func (o V3FunctionCustomContainerConfigOutput) AccelerationInfo() V3FunctionCust
 	}).(V3FunctionCustomContainerConfigAccelerationInfoPtrOutput)
 }
 
-// Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete).
+// Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
 //
 // Deprecated: Field 'acceleration_type' has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
 func (o V3FunctionCustomContainerConfigOutput) AccelerationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3FunctionCustomContainerConfig) *string { return v.AccelerationType }).(pulumi.StringPtrOutput)
 }
 
-// ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete).
+// ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
 //
 // Deprecated: Field 'acr_instance_id' has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
 func (o V3FunctionCustomContainerConfigOutput) AcrInstanceId() pulumi.StringPtrOutput {
@@ -5663,7 +5663,7 @@ func (o V3FunctionCustomContainerConfigPtrOutput) Elem() V3FunctionCustomContain
 	}).(V3FunctionCustomContainerConfigOutput)
 }
 
-// (Deprecated) Image Acceleration Information (Obsolete).
+// (Deprecated since v1.242.0) Image Acceleration Information (Obsolete)
 //
 // Deprecated: Field 'acceleration_info' has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
 func (o V3FunctionCustomContainerConfigPtrOutput) AccelerationInfo() V3FunctionCustomContainerConfigAccelerationInfoPtrOutput {
@@ -5675,7 +5675,7 @@ func (o V3FunctionCustomContainerConfigPtrOutput) AccelerationInfo() V3FunctionC
 	}).(V3FunctionCustomContainerConfigAccelerationInfoPtrOutput)
 }
 
-// Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete).
+// Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
 //
 // Deprecated: Field 'acceleration_type' has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
 func (o V3FunctionCustomContainerConfigPtrOutput) AccelerationType() pulumi.StringPtrOutput {
@@ -5687,7 +5687,7 @@ func (o V3FunctionCustomContainerConfigPtrOutput) AccelerationType() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete).
+// ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
 //
 // Deprecated: Field 'acr_instance_id' has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
 func (o V3FunctionCustomContainerConfigPtrOutput) AcrInstanceId() pulumi.StringPtrOutput {
@@ -5760,7 +5760,7 @@ func (o V3FunctionCustomContainerConfigPtrOutput) ResolvedImageUri() pulumi.Stri
 }
 
 type V3FunctionCustomContainerConfigAccelerationInfo struct {
-	// Image Acceleration Status (Deprecated).
+	// Image Acceleration Status (Deprecated)
 	//
 	// Deprecated: Field 'status' has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated)
 	Status *string `pulumi:"status"`
@@ -5778,7 +5778,7 @@ type V3FunctionCustomContainerConfigAccelerationInfoInput interface {
 }
 
 type V3FunctionCustomContainerConfigAccelerationInfoArgs struct {
-	// Image Acceleration Status (Deprecated).
+	// Image Acceleration Status (Deprecated)
 	//
 	// Deprecated: Field 'status' has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated)
 	Status pulumi.StringPtrInput `pulumi:"status"`
@@ -5861,7 +5861,7 @@ func (o V3FunctionCustomContainerConfigAccelerationInfoOutput) ToV3FunctionCusto
 	}).(V3FunctionCustomContainerConfigAccelerationInfoPtrOutput)
 }
 
-// Image Acceleration Status (Deprecated).
+// Image Acceleration Status (Deprecated)
 //
 // Deprecated: Field 'status' has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated)
 func (o V3FunctionCustomContainerConfigAccelerationInfoOutput) Status() pulumi.StringPtrOutput {
@@ -5892,7 +5892,7 @@ func (o V3FunctionCustomContainerConfigAccelerationInfoPtrOutput) Elem() V3Funct
 	}).(V3FunctionCustomContainerConfigAccelerationInfoOutput)
 }
 
-// Image Acceleration Status (Deprecated).
+// Image Acceleration Status (Deprecated)
 //
 // Deprecated: Field 'status' has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated)
 func (o V3FunctionCustomContainerConfigAccelerationInfoPtrOutput) Status() pulumi.StringPtrOutput {
@@ -6115,9 +6115,9 @@ func (o V3FunctionCustomContainerConfigHealthCheckConfigPtrOutput) TimeoutSecond
 type V3FunctionCustomDns struct {
 	// List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required. See `dnsOptions` below.
 	DnsOptions []V3FunctionCustomDnsDnsOption `pulumi:"dnsOptions"`
-	// IP Address List of DNS servers.
+	// IP Address List of DNS servers
 	NameServers []string `pulumi:"nameServers"`
-	// DNS search domain list.
+	// DNS search domain list
 	Searches []string `pulumi:"searches"`
 }
 
@@ -6135,9 +6135,9 @@ type V3FunctionCustomDnsInput interface {
 type V3FunctionCustomDnsArgs struct {
 	// List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required. See `dnsOptions` below.
 	DnsOptions V3FunctionCustomDnsDnsOptionArrayInput `pulumi:"dnsOptions"`
-	// IP Address List of DNS servers.
+	// IP Address List of DNS servers
 	NameServers pulumi.StringArrayInput `pulumi:"nameServers"`
-	// DNS search domain list.
+	// DNS search domain list
 	Searches pulumi.StringArrayInput `pulumi:"searches"`
 }
 
@@ -6223,12 +6223,12 @@ func (o V3FunctionCustomDnsOutput) DnsOptions() V3FunctionCustomDnsDnsOptionArra
 	return o.ApplyT(func(v V3FunctionCustomDns) []V3FunctionCustomDnsDnsOption { return v.DnsOptions }).(V3FunctionCustomDnsDnsOptionArrayOutput)
 }
 
-// IP Address List of DNS servers.
+// IP Address List of DNS servers
 func (o V3FunctionCustomDnsOutput) NameServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v V3FunctionCustomDns) []string { return v.NameServers }).(pulumi.StringArrayOutput)
 }
 
-// DNS search domain list.
+// DNS search domain list
 func (o V3FunctionCustomDnsOutput) Searches() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v V3FunctionCustomDns) []string { return v.Searches }).(pulumi.StringArrayOutput)
 }
@@ -6267,7 +6267,7 @@ func (o V3FunctionCustomDnsPtrOutput) DnsOptions() V3FunctionCustomDnsDnsOptionA
 	}).(V3FunctionCustomDnsDnsOptionArrayOutput)
 }
 
-// IP Address List of DNS servers.
+// IP Address List of DNS servers
 func (o V3FunctionCustomDnsPtrOutput) NameServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *V3FunctionCustomDns) []string {
 		if v == nil {
@@ -6277,7 +6277,7 @@ func (o V3FunctionCustomDnsPtrOutput) NameServers() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// DNS search domain list.
+// DNS search domain list
 func (o V3FunctionCustomDnsPtrOutput) Searches() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *V3FunctionCustomDns) []string {
 		if v == nil {
@@ -6288,9 +6288,9 @@ func (o V3FunctionCustomDnsPtrOutput) Searches() pulumi.StringArrayOutput {
 }
 
 type V3FunctionCustomDnsDnsOption struct {
-	// Configuration Item Name.
+	// Configuration Item Name
 	Name *string `pulumi:"name"`
-	// Configuration Item Value.
+	// Configuration Item Value
 	Value *string `pulumi:"value"`
 }
 
@@ -6306,9 +6306,9 @@ type V3FunctionCustomDnsDnsOptionInput interface {
 }
 
 type V3FunctionCustomDnsDnsOptionArgs struct {
-	// Configuration Item Name.
+	// Configuration Item Name
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Configuration Item Value.
+	// Configuration Item Value
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -6363,12 +6363,12 @@ func (o V3FunctionCustomDnsDnsOptionOutput) ToV3FunctionCustomDnsDnsOptionOutput
 	return o
 }
 
-// Configuration Item Name.
+// Configuration Item Name
 func (o V3FunctionCustomDnsDnsOptionOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3FunctionCustomDnsDnsOption) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Configuration Item Value.
+// Configuration Item Value
 func (o V3FunctionCustomDnsDnsOptionOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3FunctionCustomDnsDnsOption) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -6798,12 +6798,12 @@ func (o V3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutput) TimeoutSeconds(
 }
 
 type V3FunctionGpuConfig struct {
-	// GPU memory specification, unit: MB, multiple of 1024MB.
+	// GPU memory specification, unit: MB, multiple of 1024MB
 	GpuMemorySize *int `pulumi:"gpuMemorySize"`
 	// GPU card architecture.
-	// - fc.gpu.tesla indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
-	// - fc.gpu.ampere indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
-	// - fc.gpu.ada Indicates the GPU instance Ada Lovelace architecture family card type.
+	// - fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
+	// - fc.gpu.ampere.1 indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
+	// - fc.gpu.ada.1 Indicates the GPU instance Ada Lovelace architecture family card type.
 	GpuType *string `pulumi:"gpuType"`
 }
 
@@ -6819,12 +6819,12 @@ type V3FunctionGpuConfigInput interface {
 }
 
 type V3FunctionGpuConfigArgs struct {
-	// GPU memory specification, unit: MB, multiple of 1024MB.
+	// GPU memory specification, unit: MB, multiple of 1024MB
 	GpuMemorySize pulumi.IntPtrInput `pulumi:"gpuMemorySize"`
 	// GPU card architecture.
-	// - fc.gpu.tesla indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
-	// - fc.gpu.ampere indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
-	// - fc.gpu.ada Indicates the GPU instance Ada Lovelace architecture family card type.
+	// - fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
+	// - fc.gpu.ampere.1 indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
+	// - fc.gpu.ada.1 Indicates the GPU instance Ada Lovelace architecture family card type.
 	GpuType pulumi.StringPtrInput `pulumi:"gpuType"`
 }
 
@@ -6905,15 +6905,15 @@ func (o V3FunctionGpuConfigOutput) ToV3FunctionGpuConfigPtrOutputWithContext(ctx
 	}).(V3FunctionGpuConfigPtrOutput)
 }
 
-// GPU memory specification, unit: MB, multiple of 1024MB.
+// GPU memory specification, unit: MB, multiple of 1024MB
 func (o V3FunctionGpuConfigOutput) GpuMemorySize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v V3FunctionGpuConfig) *int { return v.GpuMemorySize }).(pulumi.IntPtrOutput)
 }
 
 // GPU card architecture.
-// - fc.gpu.tesla indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
-// - fc.gpu.ampere indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
-// - fc.gpu.ada Indicates the GPU instance Ada Lovelace architecture family card type.
+// - fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
+// - fc.gpu.ampere.1 indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
+// - fc.gpu.ada.1 Indicates the GPU instance Ada Lovelace architecture family card type.
 func (o V3FunctionGpuConfigOutput) GpuType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3FunctionGpuConfig) *string { return v.GpuType }).(pulumi.StringPtrOutput)
 }
@@ -6942,7 +6942,7 @@ func (o V3FunctionGpuConfigPtrOutput) Elem() V3FunctionGpuConfigOutput {
 	}).(V3FunctionGpuConfigOutput)
 }
 
-// GPU memory specification, unit: MB, multiple of 1024MB.
+// GPU memory specification, unit: MB, multiple of 1024MB
 func (o V3FunctionGpuConfigPtrOutput) GpuMemorySize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *V3FunctionGpuConfig) *int {
 		if v == nil {
@@ -6953,9 +6953,9 @@ func (o V3FunctionGpuConfigPtrOutput) GpuMemorySize() pulumi.IntPtrOutput {
 }
 
 // GPU card architecture.
-// - fc.gpu.tesla indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
-// - fc.gpu.ampere indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
-// - fc.gpu.ada Indicates the GPU instance Ada Lovelace architecture family card type.
+// - fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
+// - fc.gpu.ampere.1 indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
+// - fc.gpu.ada.1 Indicates the GPU instance Ada Lovelace architecture family card type.
 func (o V3FunctionGpuConfigPtrOutput) GpuType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V3FunctionGpuConfig) *string {
 		if v == nil {
@@ -7440,7 +7440,7 @@ type V3FunctionLogConfig struct {
 	EnableInstanceMetrics *bool `pulumi:"enableInstanceMetrics"`
 	// After this function is enabled, you can view the time and memory consumed by a call to all functions under this service. false: indicates that request-level metrics are turned off. true: The default value, indicating that request-level metrics are enabled.
 	EnableRequestMetrics *bool `pulumi:"enableRequestMetrics"`
-	// Log Line First Matching Rules.
+	// Log Line First Matching Rules
 	LogBeginRule *string `pulumi:"logBeginRule"`
 	// The Logstore name of log service.
 	Logstore *string `pulumi:"logstore"`
@@ -7464,7 +7464,7 @@ type V3FunctionLogConfigArgs struct {
 	EnableInstanceMetrics pulumi.BoolPtrInput `pulumi:"enableInstanceMetrics"`
 	// After this function is enabled, you can view the time and memory consumed by a call to all functions under this service. false: indicates that request-level metrics are turned off. true: The default value, indicating that request-level metrics are enabled.
 	EnableRequestMetrics pulumi.BoolPtrInput `pulumi:"enableRequestMetrics"`
-	// Log Line First Matching Rules.
+	// Log Line First Matching Rules
 	LogBeginRule pulumi.StringPtrInput `pulumi:"logBeginRule"`
 	// The Logstore name of log service.
 	Logstore pulumi.StringPtrInput `pulumi:"logstore"`
@@ -7559,7 +7559,7 @@ func (o V3FunctionLogConfigOutput) EnableRequestMetrics() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v V3FunctionLogConfig) *bool { return v.EnableRequestMetrics }).(pulumi.BoolPtrOutput)
 }
 
-// Log Line First Matching Rules.
+// Log Line First Matching Rules
 func (o V3FunctionLogConfigOutput) LogBeginRule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3FunctionLogConfig) *string { return v.LogBeginRule }).(pulumi.StringPtrOutput)
 }
@@ -7618,7 +7618,7 @@ func (o V3FunctionLogConfigPtrOutput) EnableRequestMetrics() pulumi.BoolPtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Log Line First Matching Rules.
+// Log Line First Matching Rules
 func (o V3FunctionLogConfigPtrOutput) LogBeginRule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V3FunctionLogConfig) *string {
 		if v == nil {
@@ -7649,11 +7649,11 @@ func (o V3FunctionLogConfigPtrOutput) Project() pulumi.StringPtrOutput {
 }
 
 type V3FunctionNasConfig struct {
-	// Group ID.
+	// Group ID
 	GroupId *int `pulumi:"groupId"`
-	// Mount point list. See `mountPoints` below.
+	// Mount point list See `mountPoints` below.
 	MountPoints []V3FunctionNasConfigMountPoint `pulumi:"mountPoints"`
-	// Account ID.
+	// Account ID
 	UserId *int `pulumi:"userId"`
 }
 
@@ -7669,11 +7669,11 @@ type V3FunctionNasConfigInput interface {
 }
 
 type V3FunctionNasConfigArgs struct {
-	// Group ID.
+	// Group ID
 	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
-	// Mount point list. See `mountPoints` below.
+	// Mount point list See `mountPoints` below.
 	MountPoints V3FunctionNasConfigMountPointArrayInput `pulumi:"mountPoints"`
-	// Account ID.
+	// Account ID
 	UserId pulumi.IntPtrInput `pulumi:"userId"`
 }
 
@@ -7754,17 +7754,17 @@ func (o V3FunctionNasConfigOutput) ToV3FunctionNasConfigPtrOutputWithContext(ctx
 	}).(V3FunctionNasConfigPtrOutput)
 }
 
-// Group ID.
+// Group ID
 func (o V3FunctionNasConfigOutput) GroupId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v V3FunctionNasConfig) *int { return v.GroupId }).(pulumi.IntPtrOutput)
 }
 
-// Mount point list. See `mountPoints` below.
+// Mount point list See `mountPoints` below.
 func (o V3FunctionNasConfigOutput) MountPoints() V3FunctionNasConfigMountPointArrayOutput {
 	return o.ApplyT(func(v V3FunctionNasConfig) []V3FunctionNasConfigMountPoint { return v.MountPoints }).(V3FunctionNasConfigMountPointArrayOutput)
 }
 
-// Account ID.
+// Account ID
 func (o V3FunctionNasConfigOutput) UserId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v V3FunctionNasConfig) *int { return v.UserId }).(pulumi.IntPtrOutput)
 }
@@ -7793,7 +7793,7 @@ func (o V3FunctionNasConfigPtrOutput) Elem() V3FunctionNasConfigOutput {
 	}).(V3FunctionNasConfigOutput)
 }
 
-// Group ID.
+// Group ID
 func (o V3FunctionNasConfigPtrOutput) GroupId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *V3FunctionNasConfig) *int {
 		if v == nil {
@@ -7803,7 +7803,7 @@ func (o V3FunctionNasConfigPtrOutput) GroupId() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Mount point list. See `mountPoints` below.
+// Mount point list See `mountPoints` below.
 func (o V3FunctionNasConfigPtrOutput) MountPoints() V3FunctionNasConfigMountPointArrayOutput {
 	return o.ApplyT(func(v *V3FunctionNasConfig) []V3FunctionNasConfigMountPoint {
 		if v == nil {
@@ -7813,7 +7813,7 @@ func (o V3FunctionNasConfigPtrOutput) MountPoints() V3FunctionNasConfigMountPoin
 	}).(V3FunctionNasConfigMountPointArrayOutput)
 }
 
-// Account ID.
+// Account ID
 func (o V3FunctionNasConfigPtrOutput) UserId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *V3FunctionNasConfig) *int {
 		if v == nil {
@@ -7827,7 +7827,7 @@ type V3FunctionNasConfigMountPoint struct {
 	// Use transport encryption to mount. Note: only general-purpose NAS supports transmission encryption.
 	EnableTls *bool   `pulumi:"enableTls"`
 	MountDir  *string `pulumi:"mountDir"`
-	// NAS server address.
+	// NAS server address
 	ServerAddr *string `pulumi:"serverAddr"`
 }
 
@@ -7846,7 +7846,7 @@ type V3FunctionNasConfigMountPointArgs struct {
 	// Use transport encryption to mount. Note: only general-purpose NAS supports transmission encryption.
 	EnableTls pulumi.BoolPtrInput   `pulumi:"enableTls"`
 	MountDir  pulumi.StringPtrInput `pulumi:"mountDir"`
-	// NAS server address.
+	// NAS server address
 	ServerAddr pulumi.StringPtrInput `pulumi:"serverAddr"`
 }
 
@@ -7910,7 +7910,7 @@ func (o V3FunctionNasConfigMountPointOutput) MountDir() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3FunctionNasConfigMountPoint) *string { return v.MountDir }).(pulumi.StringPtrOutput)
 }
 
-// NAS server address.
+// NAS server address
 func (o V3FunctionNasConfigMountPointOutput) ServerAddr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3FunctionNasConfigMountPoint) *string { return v.ServerAddr }).(pulumi.StringPtrOutput)
 }
@@ -7936,7 +7936,7 @@ func (o V3FunctionNasConfigMountPointArrayOutput) Index(i pulumi.IntInput) V3Fun
 }
 
 type V3FunctionOssMountConfig struct {
-	// OSS mount point list. See `mountPoints` below.
+	// OSS mount point list See `mountPoints` below.
 	MountPoints []V3FunctionOssMountConfigMountPoint `pulumi:"mountPoints"`
 }
 
@@ -7952,7 +7952,7 @@ type V3FunctionOssMountConfigInput interface {
 }
 
 type V3FunctionOssMountConfigArgs struct {
-	// OSS mount point list. See `mountPoints` below.
+	// OSS mount point list See `mountPoints` below.
 	MountPoints V3FunctionOssMountConfigMountPointArrayInput `pulumi:"mountPoints"`
 }
 
@@ -8033,7 +8033,7 @@ func (o V3FunctionOssMountConfigOutput) ToV3FunctionOssMountConfigPtrOutputWithC
 	}).(V3FunctionOssMountConfigPtrOutput)
 }
 
-// OSS mount point list. See `mountPoints` below.
+// OSS mount point list See `mountPoints` below.
 func (o V3FunctionOssMountConfigOutput) MountPoints() V3FunctionOssMountConfigMountPointArrayOutput {
 	return o.ApplyT(func(v V3FunctionOssMountConfig) []V3FunctionOssMountConfigMountPoint { return v.MountPoints }).(V3FunctionOssMountConfigMountPointArrayOutput)
 }
@@ -8062,7 +8062,7 @@ func (o V3FunctionOssMountConfigPtrOutput) Elem() V3FunctionOssMountConfigOutput
 	}).(V3FunctionOssMountConfigOutput)
 }
 
-// OSS mount point list. See `mountPoints` below.
+// OSS mount point list See `mountPoints` below.
 func (o V3FunctionOssMountConfigPtrOutput) MountPoints() V3FunctionOssMountConfigMountPointArrayOutput {
 	return o.ApplyT(func(v *V3FunctionOssMountConfig) []V3FunctionOssMountConfigMountPoint {
 		if v == nil {
@@ -8073,14 +8073,14 @@ func (o V3FunctionOssMountConfigPtrOutput) MountPoints() V3FunctionOssMountConfi
 }
 
 type V3FunctionOssMountConfigMountPoint struct {
-	// OSS Bucket name.
+	// OSS Bucket name
 	BucketName *string `pulumi:"bucketName"`
-	// Path of the mounted OSS Bucket.
+	// Path of the mounted OSS Bucket
 	BucketPath *string `pulumi:"bucketPath"`
-	// OSS access endpoint.
+	// OSS access endpoint
 	Endpoint *string `pulumi:"endpoint"`
 	MountDir *string `pulumi:"mountDir"`
-	// Read-only.
+	// Read-only
 	ReadOnly *bool `pulumi:"readOnly"`
 }
 
@@ -8096,14 +8096,14 @@ type V3FunctionOssMountConfigMountPointInput interface {
 }
 
 type V3FunctionOssMountConfigMountPointArgs struct {
-	// OSS Bucket name.
+	// OSS Bucket name
 	BucketName pulumi.StringPtrInput `pulumi:"bucketName"`
-	// Path of the mounted OSS Bucket.
+	// Path of the mounted OSS Bucket
 	BucketPath pulumi.StringPtrInput `pulumi:"bucketPath"`
-	// OSS access endpoint.
+	// OSS access endpoint
 	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
 	MountDir pulumi.StringPtrInput `pulumi:"mountDir"`
-	// Read-only.
+	// Read-only
 	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
 }
 
@@ -8158,17 +8158,17 @@ func (o V3FunctionOssMountConfigMountPointOutput) ToV3FunctionOssMountConfigMoun
 	return o
 }
 
-// OSS Bucket name.
+// OSS Bucket name
 func (o V3FunctionOssMountConfigMountPointOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3FunctionOssMountConfigMountPoint) *string { return v.BucketName }).(pulumi.StringPtrOutput)
 }
 
-// Path of the mounted OSS Bucket.
+// Path of the mounted OSS Bucket
 func (o V3FunctionOssMountConfigMountPointOutput) BucketPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3FunctionOssMountConfigMountPoint) *string { return v.BucketPath }).(pulumi.StringPtrOutput)
 }
 
-// OSS access endpoint.
+// OSS access endpoint
 func (o V3FunctionOssMountConfigMountPointOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3FunctionOssMountConfigMountPoint) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
 }
@@ -8177,7 +8177,7 @@ func (o V3FunctionOssMountConfigMountPointOutput) MountDir() pulumi.StringPtrOut
 	return o.ApplyT(func(v V3FunctionOssMountConfigMountPoint) *string { return v.MountDir }).(pulumi.StringPtrOutput)
 }
 
-// Read-only.
+// Read-only
 func (o V3FunctionOssMountConfigMountPointOutput) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v V3FunctionOssMountConfigMountPoint) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
 }
@@ -8359,11 +8359,11 @@ func (o V3FunctionTracingConfigPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type V3FunctionVpcConfig struct {
-	// Security group ID.
+	// Security group ID
 	SecurityGroupId *string `pulumi:"securityGroupId"`
-	// VPC network ID.
+	// VPC network ID
 	VpcId *string `pulumi:"vpcId"`
-	// Switch List.
+	// Switch List
 	VswitchIds []string `pulumi:"vswitchIds"`
 }
 
@@ -8379,11 +8379,11 @@ type V3FunctionVpcConfigInput interface {
 }
 
 type V3FunctionVpcConfigArgs struct {
-	// Security group ID.
+	// Security group ID
 	SecurityGroupId pulumi.StringPtrInput `pulumi:"securityGroupId"`
-	// VPC network ID.
+	// VPC network ID
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
-	// Switch List.
+	// Switch List
 	VswitchIds pulumi.StringArrayInput `pulumi:"vswitchIds"`
 }
 
@@ -8464,17 +8464,17 @@ func (o V3FunctionVpcConfigOutput) ToV3FunctionVpcConfigPtrOutputWithContext(ctx
 	}).(V3FunctionVpcConfigPtrOutput)
 }
 
-// Security group ID.
+// Security group ID
 func (o V3FunctionVpcConfigOutput) SecurityGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3FunctionVpcConfig) *string { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
 }
 
-// VPC network ID.
+// VPC network ID
 func (o V3FunctionVpcConfigOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3FunctionVpcConfig) *string { return v.VpcId }).(pulumi.StringPtrOutput)
 }
 
-// Switch List.
+// Switch List
 func (o V3FunctionVpcConfigOutput) VswitchIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v V3FunctionVpcConfig) []string { return v.VswitchIds }).(pulumi.StringArrayOutput)
 }
@@ -8503,7 +8503,7 @@ func (o V3FunctionVpcConfigPtrOutput) Elem() V3FunctionVpcConfigOutput {
 	}).(V3FunctionVpcConfigOutput)
 }
 
-// Security group ID.
+// Security group ID
 func (o V3FunctionVpcConfigPtrOutput) SecurityGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V3FunctionVpcConfig) *string {
 		if v == nil {
@@ -8513,7 +8513,7 @@ func (o V3FunctionVpcConfigPtrOutput) SecurityGroupId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// VPC network ID.
+// VPC network ID
 func (o V3FunctionVpcConfigPtrOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V3FunctionVpcConfig) *string {
 		if v == nil {
@@ -8523,7 +8523,7 @@ func (o V3FunctionVpcConfigPtrOutput) VpcId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Switch List.
+// Switch List
 func (o V3FunctionVpcConfigPtrOutput) VswitchIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *V3FunctionVpcConfig) []string {
 		if v == nil {

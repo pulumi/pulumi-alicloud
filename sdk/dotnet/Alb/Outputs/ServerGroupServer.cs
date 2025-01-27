@@ -14,43 +14,57 @@ namespace Pulumi.AliCloud.Alb.Outputs
     public sealed class ServerGroupServer
     {
         /// <summary>
-        /// The description of the backend server.
+        /// The description of the backend server. The description must be 2 to 256 characters in length, and cannot start with http:// or https://.
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// The port used by the backend server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `server_type` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `server_type` to `Fc`.
+        /// The port that is used by the backend server. Valid values: `1` to `65535`. You can specify at most 200 servers in each call.
+        /// 
+        /// &gt; **NOTE:**   This parameter is required if you set `ServerType` to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to set this parameter if `ServerType` is set to `Fc`.
         /// </summary>
         public readonly int? Port;
         /// <summary>
-        /// Specifies whether to enable the remote IP address feature. You can specify up to 40 servers in each call. **Note:** If `server_type` is set to `Ip`, this parameter is available.
+        /// Specifies whether to enable the remote IP feature. You can specify at most 200 servers in each call. Default values:
         /// </summary>
         public readonly bool? RemoteIpEnabled;
         /// <summary>
-        /// The ID of the backend server.
-        /// - If `server_group_type` is set to `Instance`, set the parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
-        /// - If `server_group_type` is set to `Ip`, set the parameter to an IP address specified in the server group.
-        /// - If `server_group_type` is set to `Fc`, set the parameter to the Alibaba Cloud Resource Name (ARN) of a function specified in the server group.
+        /// The ID of the server group.
+        /// </summary>
+        public readonly string? ServerGroupId;
+        /// <summary>
+        /// The ID of the backend server. You can specify at most 200 servers in each call.
+        /// 
+        /// *   If the server group is of the `Instance` type, set ServerId to the ID of a resource of the `Ecs`, `Eni`, or `Eci` type.
+        /// 
+        /// *   If the server group is of the `Ip` type, set ServerId to IP addresses.
+        /// 
+        /// &gt; **NOTE:**   You cannot perform this operation on a server group of the Function Compute type. You can call the [ListServerGroups](https://www.alibabacloud.com/help/en/doc-detail/213627.html) operation to query the type of server groups.
         /// </summary>
         public readonly string ServerId;
         /// <summary>
-        /// The IP address of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. **Note:** If `server_group_type` is set to `Fc`, you do not need to configure parameters, otherwise this attribute is required. If `server_group_type` is set to `Ip`, the value of this property is the same as the `server_id` value.
+        /// The IP address of the backend server. You can specify at most 200 servers in each call.
+        /// 
+        /// &gt; **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
         /// </summary>
         public readonly string? ServerIp;
         /// <summary>
-        /// The type of the server. The type of the server. Valid values:
-        /// - `Ecs`: an ECS instance.
-        /// - `Eni`: an ENI.
-        /// - `Eci`: an elastic container instance.
-        /// - `Ip`(Available since v1.194.0): an IP address.
-        /// - `Fc`(Available since v1.194.0): a function.
+        /// The type of the backend server. You can specify at most 200 servers in each call. Default values:
+        /// 
+        /// - `Ecs`: Elastic Compute Service (ECS) instance
+        /// - `Eni`: elastic network interface (ENI)
+        /// - `Eci`: elastic container instance
+        /// - `Ip`: IP address
+        /// - `Fc`: Function Compute
         /// </summary>
         public readonly string ServerType;
         /// <summary>
-        /// The status of the backend server.
+        /// The status of the resource
         /// </summary>
         public readonly string? Status;
         /// <summary>
-        /// The weight of the server. Default value: `100`. Valid values: `0` to `100`. If the value is set to `0`, no requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `server_type` to `Fc`.
+        /// The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
+        /// 
+        /// &gt; **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
         /// </summary>
         public readonly int? Weight;
 
@@ -61,6 +75,8 @@ namespace Pulumi.AliCloud.Alb.Outputs
             int? port,
 
             bool? remoteIpEnabled,
+
+            string? serverGroupId,
 
             string serverId,
 
@@ -75,6 +91,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
             Description = description;
             Port = port;
             RemoteIpEnabled = remoteIpEnabled;
+            ServerGroupId = serverGroupId;
             ServerId = serverId;
             ServerIp = serverIp;
             ServerType = serverType;

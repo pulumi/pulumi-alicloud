@@ -16,14 +16,14 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
     public static final LoadBalancerZoneMappingLoadBalancerAddressArgs Empty = new LoadBalancerZoneMappingLoadBalancerAddressArgs();
 
     /**
-     * IP address. The Public IP Address, and Private IP Address from the Address Type.
+     * IP Address. The Public IP Address, and Private IP Address from the Address Type
      * 
      */
     @Import(name="address")
     private @Nullable Output<String> address;
 
     /**
-     * @return IP address. The Public IP Address, and Private IP Address from the Address Type.
+     * @return IP Address. The Public IP Address, and Private IP Address from the Address Type
      * 
      */
     public Optional<Output<String>> address() {
@@ -31,14 +31,14 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
     }
 
     /**
-     * The ID of the EIP.
+     * The ID of the EIP instance.
      * 
      */
     @Import(name="allocationId")
     private @Nullable Output<String> allocationId;
 
     /**
-     * @return The ID of the EIP.
+     * @return The ID of the EIP instance.
      * 
      */
     public Optional<Output<String>> allocationId() {
@@ -46,14 +46,14 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
     }
 
     /**
-     * The type of the EIP.
+     * The type of the EIP instance.
      * 
      */
     @Import(name="eipType")
     private @Nullable Output<String> eipType;
 
     /**
-     * @return The type of the EIP.
+     * @return The type of the EIP instance.
      * 
      */
     public Optional<Output<String>> eipType() {
@@ -61,14 +61,14 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
     }
 
     /**
-     * Ipv6 address.
+     * Ipv6 address
      * 
      */
     @Import(name="ipv6Address")
     private @Nullable Output<String> ipv6Address;
 
     /**
-     * @return Ipv6 address.
+     * @return Ipv6 address
      * 
      */
     public Optional<Output<String>> ipv6Address() {
@@ -103,7 +103,7 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
         }
 
         /**
-         * @param address IP address. The Public IP Address, and Private IP Address from the Address Type.
+         * @param address IP Address. The Public IP Address, and Private IP Address from the Address Type
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
         }
 
         /**
-         * @param address IP address. The Public IP Address, and Private IP Address from the Address Type.
+         * @param address IP Address. The Public IP Address, and Private IP Address from the Address Type
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
         }
 
         /**
-         * @param allocationId The ID of the EIP.
+         * @param allocationId The ID of the EIP instance.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
         }
 
         /**
-         * @param allocationId The ID of the EIP.
+         * @param allocationId The ID of the EIP instance.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
         }
 
         /**
-         * @param eipType The type of the EIP.
+         * @param eipType The type of the EIP instance.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
         }
 
         /**
-         * @param eipType The type of the EIP.
+         * @param eipType The type of the EIP instance.
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
         }
 
         /**
-         * @param ipv6Address Ipv6 address.
+         * @param ipv6Address Ipv6 address
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
         }
 
         /**
-         * @param ipv6Address Ipv6 address.
+         * @param ipv6Address Ipv6 address
          * 
          * @return builder
          * 

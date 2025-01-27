@@ -18,9 +18,7 @@ public final class ListenerQuicConfig {
      */
     private @Nullable String quicListenerId;
     /**
-     * @return Indicates Whether to Enable the QuIC Upgrade.
-     * 
-     * &gt; **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
+     * @return Indicates Whether to Enable the QuIC Upgrade
      * 
      */
     private @Nullable Boolean quicUpgradeEnabled;
@@ -34,9 +32,7 @@ public final class ListenerQuicConfig {
         return Optional.ofNullable(this.quicListenerId);
     }
     /**
-     * @return Indicates Whether to Enable the QuIC Upgrade.
-     * 
-     * &gt; **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
+     * @return Indicates Whether to Enable the QuIC Upgrade
      * 
      */
     public Optional<Boolean> quicUpgradeEnabled() {

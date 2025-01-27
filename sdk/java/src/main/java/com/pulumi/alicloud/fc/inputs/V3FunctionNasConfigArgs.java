@@ -18,14 +18,14 @@ public final class V3FunctionNasConfigArgs extends com.pulumi.resources.Resource
     public static final V3FunctionNasConfigArgs Empty = new V3FunctionNasConfigArgs();
 
     /**
-     * Group ID.
+     * Group ID
      * 
      */
     @Import(name="groupId")
     private @Nullable Output<Integer> groupId;
 
     /**
-     * @return Group ID.
+     * @return Group ID
      * 
      */
     public Optional<Output<Integer>> groupId() {
@@ -33,14 +33,14 @@ public final class V3FunctionNasConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Mount point list. See `mount_points` below.
+     * Mount point list See `mount_points` below.
      * 
      */
     @Import(name="mountPoints")
     private @Nullable Output<List<V3FunctionNasConfigMountPointArgs>> mountPoints;
 
     /**
-     * @return Mount point list. See `mount_points` below.
+     * @return Mount point list See `mount_points` below.
      * 
      */
     public Optional<Output<List<V3FunctionNasConfigMountPointArgs>>> mountPoints() {
@@ -48,14 +48,14 @@ public final class V3FunctionNasConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Account ID.
+     * Account ID
      * 
      */
     @Import(name="userId")
     private @Nullable Output<Integer> userId;
 
     /**
-     * @return Account ID.
+     * @return Account ID
      * 
      */
     public Optional<Output<Integer>> userId() {
@@ -89,7 +89,7 @@ public final class V3FunctionNasConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param groupId Group ID.
+         * @param groupId Group ID
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class V3FunctionNasConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param groupId Group ID.
+         * @param groupId Group ID
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class V3FunctionNasConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param mountPoints Mount point list. See `mount_points` below.
+         * @param mountPoints Mount point list See `mount_points` below.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class V3FunctionNasConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param mountPoints Mount point list. See `mount_points` below.
+         * @param mountPoints Mount point list See `mount_points` below.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class V3FunctionNasConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param mountPoints Mount point list. See `mount_points` below.
+         * @param mountPoints Mount point list See `mount_points` below.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class V3FunctionNasConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param userId Account ID.
+         * @param userId Account ID
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class V3FunctionNasConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param userId Account ID.
+         * @param userId Account ID
          * 
          * @return builder
          * 

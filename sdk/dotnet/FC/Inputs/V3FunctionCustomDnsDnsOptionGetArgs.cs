@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.FC.Inputs
     public sealed class V3FunctionCustomDnsDnsOptionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Configuration Item Name.
+        /// Configuration Item Name
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Configuration Item Value.
+        /// Configuration Item Value
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

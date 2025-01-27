@@ -121,6 +121,21 @@ public final class MountPointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Available since v1.242.0) The region ID of the Mount Point.
+     * 
+     */
+    @Import(name="regionId")
+    private @Nullable Output<String> regionId;
+
+    /**
+     * @return (Available since v1.242.0) The region ID of the Mount Point.
+     * 
+     */
+    public Optional<Output<String>> regionId() {
+        return Optional.ofNullable(this.regionId);
+    }
+
+    /**
      * Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.
      * 
      */
@@ -175,6 +190,7 @@ public final class MountPointState extends com.pulumi.resources.ResourceArgs {
         this.fileSystemId = $.fileSystemId;
         this.mountPointId = $.mountPointId;
         this.networkType = $.networkType;
+        this.regionId = $.regionId;
         this.status = $.status;
         this.vpcId = $.vpcId;
         this.vswitchId = $.vswitchId;
@@ -343,6 +359,27 @@ public final class MountPointState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder networkType(String networkType) {
             return networkType(Output.of(networkType));
+        }
+
+        /**
+         * @param regionId (Available since v1.242.0) The region ID of the Mount Point.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(@Nullable Output<String> regionId) {
+            $.regionId = regionId;
+            return this;
+        }
+
+        /**
+         * @param regionId (Available since v1.242.0) The region ID of the Mount Point.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(String regionId) {
+            return regionId(Output.of(regionId));
         }
 
         /**

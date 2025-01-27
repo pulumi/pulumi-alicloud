@@ -98,10 +98,10 @@ type Kubernetes struct {
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapOutput `pulumi:"kmsEncryptionContext"`
-	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+	// The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
 	//
-	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
-	LoadBalancerSpec pulumi.StringPtrOutput `pulumi:"loadBalancerSpec"`
+	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU
+	LoadBalancerSpec pulumi.StringOutput `pulumi:"loadBalancerSpec"`
 	// Enable master payment auto-renew, defaults to false.
 	MasterAutoRenew pulumi.BoolPtrOutput `pulumi:"masterAutoRenew"`
 	// Master payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
@@ -275,9 +275,9 @@ type kubernetesState struct {
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
-	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+	// The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
 	//
-	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
+	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU
 	LoadBalancerSpec *string `pulumi:"loadBalancerSpec"`
 	// Enable master payment auto-renew, defaults to false.
 	MasterAutoRenew *bool `pulumi:"masterAutoRenew"`
@@ -410,9 +410,9 @@ type KubernetesState struct {
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapInput
-	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+	// The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
 	//
-	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
+	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU
 	LoadBalancerSpec pulumi.StringPtrInput
 	// Enable master payment auto-renew, defaults to false.
 	MasterAutoRenew pulumi.BoolPtrInput
@@ -545,9 +545,9 @@ type kubernetesArgs struct {
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
-	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+	// The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
 	//
-	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
+	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU
 	LoadBalancerSpec *string `pulumi:"loadBalancerSpec"`
 	// Enable master payment auto-renew, defaults to false.
 	MasterAutoRenew *bool `pulumi:"masterAutoRenew"`
@@ -663,9 +663,9 @@ type KubernetesArgs struct {
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapInput
-	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+	// The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
 	//
-	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
+	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU
 	LoadBalancerSpec pulumi.StringPtrInput
 	// Enable master payment auto-renew, defaults to false.
 	MasterAutoRenew pulumi.BoolPtrInput
@@ -924,11 +924,11 @@ func (o KubernetesOutput) KmsEncryptionContext() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Kubernetes) pulumi.StringMapOutput { return v.KmsEncryptionContext }).(pulumi.StringMapOutput)
 }
 
-// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+// The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
 //
-// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
-func (o KubernetesOutput) LoadBalancerSpec() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Kubernetes) pulumi.StringPtrOutput { return v.LoadBalancerSpec }).(pulumi.StringPtrOutput)
+// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU
+func (o KubernetesOutput) LoadBalancerSpec() pulumi.StringOutput {
+	return o.ApplyT(func(v *Kubernetes) pulumi.StringOutput { return v.LoadBalancerSpec }).(pulumi.StringOutput)
 }
 
 // Enable master payment auto-renew, defaults to false.

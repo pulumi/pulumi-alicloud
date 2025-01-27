@@ -15,14 +15,14 @@ public final class ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs e
     public static final ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs Empty = new ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs();
 
     /**
-     * The ID of the destination server group to which requests are forwarded.
+     * Forwarded to the Destination Server Group ID
      * 
      */
     @Import(name="serverGroupId", required=true)
     private Output<String> serverGroupId;
 
     /**
-     * @return The ID of the destination server group to which requests are forwarded.
+     * @return Forwarded to the Destination Server Group ID
      * 
      */
     public Output<String> serverGroupId() {
@@ -54,7 +54,7 @@ public final class ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs e
         }
 
         /**
-         * @param serverGroupId The ID of the destination server group to which requests are forwarded.
+         * @param serverGroupId Forwarded to the Destination Server Group ID
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs e
         }
 
         /**
-         * @param serverGroupId The ID of the destination server group to which requests are forwarded.
+         * @param serverGroupId Forwarded to the Destination Server Group ID
          * 
          * @return builder
          * 

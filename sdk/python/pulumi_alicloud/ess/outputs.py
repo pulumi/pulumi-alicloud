@@ -3347,88 +3347,159 @@ class GetScalingGroupsGroupResult(dict):
     def __init__(__self__, *,
                  active_capacity: int,
                  active_scaling_configuration: str,
+                 allocation_strategy: str,
+                 az_balance: bool,
                  cooldown_time: int,
                  creation_time: str,
                  db_instance_ids: Sequence[str],
+                 desired_capacity: int,
+                 enable_desired_capacity: bool,
                  group_deletion_protection: bool,
+                 group_type: str,
                  health_check_type: str,
                  id: str,
+                 init_capacity: int,
                  launch_template_id: str,
                  launch_template_version: str,
                  lifecycle_state: str,
                  load_balancer_ids: Sequence[str],
+                 max_instance_lifetime: int,
                  max_size: int,
                  min_size: int,
                  modification_time: str,
+                 monitor_group_id: str,
+                 multi_az_policy: str,
                  name: str,
+                 on_demand_base_capacity: int,
+                 on_demand_percentage_above_base_capacity: int,
                  pending_capacity: int,
+                 pending_wait_capacity: int,
+                 protected_capacity: int,
                  region_id: str,
                  removal_policies: Sequence[str],
                  removing_capacity: int,
+                 removing_wait_capacity: int,
+                 resource_group_id: str,
+                 scaling_policy: str,
+                 spot_allocation_strategy: str,
+                 spot_capacity: int,
+                 spot_instance_pools: int,
+                 spot_instance_remedy: bool,
+                 standby_capacity: int,
+                 stop_instance_timeout: int,
+                 stopped_capacity: int,
                  suspended_processes: Sequence[str],
+                 system_suspended: bool,
+                 tags: Mapping[str, str],
                  total_capacity: int,
                  total_instance_count: int,
                  vpc_id: str,
                  vswitch_id: str,
-                 vswitch_ids: Sequence[str],
-                 tags: Optional[Mapping[str, str]] = None):
+                 vswitch_ids: Sequence[str]):
         """
         :param int active_capacity: Number of active instances in scaling group.
         :param str active_scaling_configuration: Active scaling configuration for scaling group.
+        :param str allocation_strategy: (Available since v1.242.0) The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The allocation policy applies to pay-as-you-go and preemptible instances.
+        :param bool az_balance: (Available since v1.242.0) Indicates whether instances in the scaling group are evenly distributed across multiple zones.
         :param int cooldown_time: Default cooldown time of scaling group.
         :param str creation_time: Creation time of scaling group.
         :param Sequence[str] db_instance_ids: Db instances id which the ECS instance attached to.
+        :param int desired_capacity: (Available since v1.242.0) The expected number of ECS instances in the scaling group. Auto Scaling automatically maintains the expected number of ECS instances that you specified.
+        :param bool enable_desired_capacity: (Available since v1.242.0) Indicates whether the Expected Number of Instances feature is enabled.
         :param bool group_deletion_protection: Whether the scaling group deletion protection is enabled.
+        :param str group_type: (Available since v1.242.0) The type of the instances in the scaling group.
         :param str health_check_type: The health check method of the scaling group.
         :param str id: ID of the scaling group.
+        :param int init_capacity: (Available since v1.242.0) The number of instances that are in the Initialized state and ready to be scaled out in the scaling group.
         :param str launch_template_id: Active launch template ID for scaling group.
         :param str launch_template_version: Version of active launch template.
         :param str lifecycle_state: Lifecycle state of scaling group.
         :param Sequence[str] load_balancer_ids: Slb instances id which the ECS instance attached to.
+        :param int max_instance_lifetime: (Available since v1.242.0) The maximum life span of each instance in the scaling group. Unit: seconds.
         :param int max_size: The maximum number of ECS instances.
         :param int min_size: The minimum number of ECS instances.
         :param str modification_time: The modification time.
+        :param str monitor_group_id: (Available since v1.242.0) The ID of the CloudMonitor application group that is associated with the scaling group.
+        :param str multi_az_policy: (Available since v1.242.0) The scaling policy of the multi-zone scaling group of the ECS type.
         :param str name: Name of the scaling group.
-        :param int pending_capacity: Number of pending instances in scaling group.
+        :param int on_demand_base_capacity: (Available since v1.242.0) The lower limit of the number of pay-as-you-go instances in the scaling group.
+        :param int on_demand_percentage_above_base_capacity: (Available since v1.242.0) The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. OnDemandBaseCapacity specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group.
+        :param int pending_capacity: (Available since v1.242.0) The number of ECS instances that are being added to the scaling group and still being configured.
+        :param int pending_wait_capacity: (Available since v1.242.0) The number of ECS instances that are in the Pending Add state in the scaling group.
+        :param int protected_capacity: (Available since v1.242.0) The number of ECS instances that are in the Protected state in the scaling group.
         :param str region_id: Region ID the scaling group belongs to.
         :param Sequence[str] removal_policies: Removal policy used to select the ECS instance to remove from the scaling group.
-        :param int removing_capacity: Number of removing instances in scaling group.
+        :param int removing_capacity: (Available since v1.242.0) The number of ECS instances that are being removed from the scaling group.
+        :param int removing_wait_capacity: (Available since v1.242.0) The number of ECS instances that are in the Pending Remove state in the scaling group.
+        :param str resource_group_id: (Available since v1.242.0) The ID of the resource group to which the scaling group that you want to query belongs.
+        :param str scaling_policy: (Available since v1.242.0) The reclaim mode of the scaling group.
+        :param str spot_allocation_strategy: (Available since v1.242.0) The allocation policy of preemptible instances. This parameter indicates the method used by Auto Scaling to select instance types to create the required number of preemptible instances. This parameter takes effect only if you set multi_az_policy to COMPOSABLE.
+        :param int spot_capacity: (Available since v1.242.0) The number of preemptible instances in the scaling group.
+        :param int spot_instance_pools: (Available since v1.242.0) The number of instance types. Auto Scaling creates preemptible instances of multiple instance types that are provided at the lowest price.
+        :param bool spot_instance_remedy: (Available since v1.242.0) Indicates whether supplementation of preemptible instances is enabled. If this parameter is set to true, Auto Scaling creates an instance to replace a preemptible instance when Auto Scaling receives a system message indicating that the preemptible instance is to be reclaimed.
+        :param int standby_capacity: (Available since v1.242.0) The number of instances that are in the Standby state in the scaling group.
+        :param int stop_instance_timeout: (Available since v1.242.0) The period of time that is required by an ECS instance to enter the Stopped state during the scale-in process. Unit: seconds.
+        :param int stopped_capacity: (Available since v1.242.0) The number of instances that are in Economical Mode in the scaling group.
         :param Sequence[str] suspended_processes: The Process in suspension.
+        :param bool system_suspended: (Available since v1.242.0) Indicates whether Auto Scaling stops executing the scaling operation in the scaling group.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
         :param int total_capacity: Number of instances in scaling group.
         :param int total_instance_count: The number of all ECS instances in the scaling group.
         :param str vpc_id: The ID of the VPC to which the scaling group belongs.
         :param str vswitch_id: The ID of the vSwitch to which the scaling group belongs.
         :param Sequence[str] vswitch_ids: Vswitches id in which the ECS instance launched.
-        :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "active_capacity", active_capacity)
         pulumi.set(__self__, "active_scaling_configuration", active_scaling_configuration)
+        pulumi.set(__self__, "allocation_strategy", allocation_strategy)
+        pulumi.set(__self__, "az_balance", az_balance)
         pulumi.set(__self__, "cooldown_time", cooldown_time)
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "db_instance_ids", db_instance_ids)
+        pulumi.set(__self__, "desired_capacity", desired_capacity)
+        pulumi.set(__self__, "enable_desired_capacity", enable_desired_capacity)
         pulumi.set(__self__, "group_deletion_protection", group_deletion_protection)
+        pulumi.set(__self__, "group_type", group_type)
         pulumi.set(__self__, "health_check_type", health_check_type)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "init_capacity", init_capacity)
         pulumi.set(__self__, "launch_template_id", launch_template_id)
         pulumi.set(__self__, "launch_template_version", launch_template_version)
         pulumi.set(__self__, "lifecycle_state", lifecycle_state)
         pulumi.set(__self__, "load_balancer_ids", load_balancer_ids)
+        pulumi.set(__self__, "max_instance_lifetime", max_instance_lifetime)
         pulumi.set(__self__, "max_size", max_size)
         pulumi.set(__self__, "min_size", min_size)
         pulumi.set(__self__, "modification_time", modification_time)
+        pulumi.set(__self__, "monitor_group_id", monitor_group_id)
+        pulumi.set(__self__, "multi_az_policy", multi_az_policy)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "on_demand_base_capacity", on_demand_base_capacity)
+        pulumi.set(__self__, "on_demand_percentage_above_base_capacity", on_demand_percentage_above_base_capacity)
         pulumi.set(__self__, "pending_capacity", pending_capacity)
+        pulumi.set(__self__, "pending_wait_capacity", pending_wait_capacity)
+        pulumi.set(__self__, "protected_capacity", protected_capacity)
         pulumi.set(__self__, "region_id", region_id)
         pulumi.set(__self__, "removal_policies", removal_policies)
         pulumi.set(__self__, "removing_capacity", removing_capacity)
+        pulumi.set(__self__, "removing_wait_capacity", removing_wait_capacity)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "scaling_policy", scaling_policy)
+        pulumi.set(__self__, "spot_allocation_strategy", spot_allocation_strategy)
+        pulumi.set(__self__, "spot_capacity", spot_capacity)
+        pulumi.set(__self__, "spot_instance_pools", spot_instance_pools)
+        pulumi.set(__self__, "spot_instance_remedy", spot_instance_remedy)
+        pulumi.set(__self__, "standby_capacity", standby_capacity)
+        pulumi.set(__self__, "stop_instance_timeout", stop_instance_timeout)
+        pulumi.set(__self__, "stopped_capacity", stopped_capacity)
         pulumi.set(__self__, "suspended_processes", suspended_processes)
+        pulumi.set(__self__, "system_suspended", system_suspended)
+        pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "total_capacity", total_capacity)
         pulumi.set(__self__, "total_instance_count", total_instance_count)
         pulumi.set(__self__, "vpc_id", vpc_id)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         pulumi.set(__self__, "vswitch_ids", vswitch_ids)
-        if tags is not None:
-            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="activeCapacity")
@@ -3445,6 +3516,22 @@ class GetScalingGroupsGroupResult(dict):
         Active scaling configuration for scaling group.
         """
         return pulumi.get(self, "active_scaling_configuration")
+
+    @property
+    @pulumi.getter(name="allocationStrategy")
+    def allocation_strategy(self) -> str:
+        """
+        (Available since v1.242.0) The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The allocation policy applies to pay-as-you-go and preemptible instances.
+        """
+        return pulumi.get(self, "allocation_strategy")
+
+    @property
+    @pulumi.getter(name="azBalance")
+    def az_balance(self) -> bool:
+        """
+        (Available since v1.242.0) Indicates whether instances in the scaling group are evenly distributed across multiple zones.
+        """
+        return pulumi.get(self, "az_balance")
 
     @property
     @pulumi.getter(name="cooldownTime")
@@ -3471,12 +3558,36 @@ class GetScalingGroupsGroupResult(dict):
         return pulumi.get(self, "db_instance_ids")
 
     @property
+    @pulumi.getter(name="desiredCapacity")
+    def desired_capacity(self) -> int:
+        """
+        (Available since v1.242.0) The expected number of ECS instances in the scaling group. Auto Scaling automatically maintains the expected number of ECS instances that you specified.
+        """
+        return pulumi.get(self, "desired_capacity")
+
+    @property
+    @pulumi.getter(name="enableDesiredCapacity")
+    def enable_desired_capacity(self) -> bool:
+        """
+        (Available since v1.242.0) Indicates whether the Expected Number of Instances feature is enabled.
+        """
+        return pulumi.get(self, "enable_desired_capacity")
+
+    @property
     @pulumi.getter(name="groupDeletionProtection")
     def group_deletion_protection(self) -> bool:
         """
         Whether the scaling group deletion protection is enabled.
         """
         return pulumi.get(self, "group_deletion_protection")
+
+    @property
+    @pulumi.getter(name="groupType")
+    def group_type(self) -> str:
+        """
+        (Available since v1.242.0) The type of the instances in the scaling group.
+        """
+        return pulumi.get(self, "group_type")
 
     @property
     @pulumi.getter(name="healthCheckType")
@@ -3493,6 +3604,14 @@ class GetScalingGroupsGroupResult(dict):
         ID of the scaling group.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="initCapacity")
+    def init_capacity(self) -> int:
+        """
+        (Available since v1.242.0) The number of instances that are in the Initialized state and ready to be scaled out in the scaling group.
+        """
+        return pulumi.get(self, "init_capacity")
 
     @property
     @pulumi.getter(name="launchTemplateId")
@@ -3527,6 +3646,14 @@ class GetScalingGroupsGroupResult(dict):
         return pulumi.get(self, "load_balancer_ids")
 
     @property
+    @pulumi.getter(name="maxInstanceLifetime")
+    def max_instance_lifetime(self) -> int:
+        """
+        (Available since v1.242.0) The maximum life span of each instance in the scaling group. Unit: seconds.
+        """
+        return pulumi.get(self, "max_instance_lifetime")
+
+    @property
     @pulumi.getter(name="maxSize")
     def max_size(self) -> int:
         """
@@ -3551,6 +3678,22 @@ class GetScalingGroupsGroupResult(dict):
         return pulumi.get(self, "modification_time")
 
     @property
+    @pulumi.getter(name="monitorGroupId")
+    def monitor_group_id(self) -> str:
+        """
+        (Available since v1.242.0) The ID of the CloudMonitor application group that is associated with the scaling group.
+        """
+        return pulumi.get(self, "monitor_group_id")
+
+    @property
+    @pulumi.getter(name="multiAzPolicy")
+    def multi_az_policy(self) -> str:
+        """
+        (Available since v1.242.0) The scaling policy of the multi-zone scaling group of the ECS type.
+        """
+        return pulumi.get(self, "multi_az_policy")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -3559,12 +3702,44 @@ class GetScalingGroupsGroupResult(dict):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="onDemandBaseCapacity")
+    def on_demand_base_capacity(self) -> int:
+        """
+        (Available since v1.242.0) The lower limit of the number of pay-as-you-go instances in the scaling group.
+        """
+        return pulumi.get(self, "on_demand_base_capacity")
+
+    @property
+    @pulumi.getter(name="onDemandPercentageAboveBaseCapacity")
+    def on_demand_percentage_above_base_capacity(self) -> int:
+        """
+        (Available since v1.242.0) The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. OnDemandBaseCapacity specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group.
+        """
+        return pulumi.get(self, "on_demand_percentage_above_base_capacity")
+
+    @property
     @pulumi.getter(name="pendingCapacity")
     def pending_capacity(self) -> int:
         """
-        Number of pending instances in scaling group.
+        (Available since v1.242.0) The number of ECS instances that are being added to the scaling group and still being configured.
         """
         return pulumi.get(self, "pending_capacity")
+
+    @property
+    @pulumi.getter(name="pendingWaitCapacity")
+    def pending_wait_capacity(self) -> int:
+        """
+        (Available since v1.242.0) The number of ECS instances that are in the Pending Add state in the scaling group.
+        """
+        return pulumi.get(self, "pending_wait_capacity")
+
+    @property
+    @pulumi.getter(name="protectedCapacity")
+    def protected_capacity(self) -> int:
+        """
+        (Available since v1.242.0) The number of ECS instances that are in the Protected state in the scaling group.
+        """
+        return pulumi.get(self, "protected_capacity")
 
     @property
     @pulumi.getter(name="regionId")
@@ -3586,9 +3761,89 @@ class GetScalingGroupsGroupResult(dict):
     @pulumi.getter(name="removingCapacity")
     def removing_capacity(self) -> int:
         """
-        Number of removing instances in scaling group.
+        (Available since v1.242.0) The number of ECS instances that are being removed from the scaling group.
         """
         return pulumi.get(self, "removing_capacity")
+
+    @property
+    @pulumi.getter(name="removingWaitCapacity")
+    def removing_wait_capacity(self) -> int:
+        """
+        (Available since v1.242.0) The number of ECS instances that are in the Pending Remove state in the scaling group.
+        """
+        return pulumi.get(self, "removing_wait_capacity")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        (Available since v1.242.0) The ID of the resource group to which the scaling group that you want to query belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="scalingPolicy")
+    def scaling_policy(self) -> str:
+        """
+        (Available since v1.242.0) The reclaim mode of the scaling group.
+        """
+        return pulumi.get(self, "scaling_policy")
+
+    @property
+    @pulumi.getter(name="spotAllocationStrategy")
+    def spot_allocation_strategy(self) -> str:
+        """
+        (Available since v1.242.0) The allocation policy of preemptible instances. This parameter indicates the method used by Auto Scaling to select instance types to create the required number of preemptible instances. This parameter takes effect only if you set multi_az_policy to COMPOSABLE.
+        """
+        return pulumi.get(self, "spot_allocation_strategy")
+
+    @property
+    @pulumi.getter(name="spotCapacity")
+    def spot_capacity(self) -> int:
+        """
+        (Available since v1.242.0) The number of preemptible instances in the scaling group.
+        """
+        return pulumi.get(self, "spot_capacity")
+
+    @property
+    @pulumi.getter(name="spotInstancePools")
+    def spot_instance_pools(self) -> int:
+        """
+        (Available since v1.242.0) The number of instance types. Auto Scaling creates preemptible instances of multiple instance types that are provided at the lowest price.
+        """
+        return pulumi.get(self, "spot_instance_pools")
+
+    @property
+    @pulumi.getter(name="spotInstanceRemedy")
+    def spot_instance_remedy(self) -> bool:
+        """
+        (Available since v1.242.0) Indicates whether supplementation of preemptible instances is enabled. If this parameter is set to true, Auto Scaling creates an instance to replace a preemptible instance when Auto Scaling receives a system message indicating that the preemptible instance is to be reclaimed.
+        """
+        return pulumi.get(self, "spot_instance_remedy")
+
+    @property
+    @pulumi.getter(name="standbyCapacity")
+    def standby_capacity(self) -> int:
+        """
+        (Available since v1.242.0) The number of instances that are in the Standby state in the scaling group.
+        """
+        return pulumi.get(self, "standby_capacity")
+
+    @property
+    @pulumi.getter(name="stopInstanceTimeout")
+    def stop_instance_timeout(self) -> int:
+        """
+        (Available since v1.242.0) The period of time that is required by an ECS instance to enter the Stopped state during the scale-in process. Unit: seconds.
+        """
+        return pulumi.get(self, "stop_instance_timeout")
+
+    @property
+    @pulumi.getter(name="stoppedCapacity")
+    def stopped_capacity(self) -> int:
+        """
+        (Available since v1.242.0) The number of instances that are in Economical Mode in the scaling group.
+        """
+        return pulumi.get(self, "stopped_capacity")
 
     @property
     @pulumi.getter(name="suspendedProcesses")
@@ -3597,6 +3852,22 @@ class GetScalingGroupsGroupResult(dict):
         The Process in suspension.
         """
         return pulumi.get(self, "suspended_processes")
+
+    @property
+    @pulumi.getter(name="systemSuspended")
+    def system_suspended(self) -> bool:
+        """
+        (Available since v1.242.0) Indicates whether Auto Scaling stops executing the scaling operation in the scaling group.
+        """
+        return pulumi.get(self, "system_suspended")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, str]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="totalCapacity")
@@ -3638,14 +3909,6 @@ class GetScalingGroupsGroupResult(dict):
         """
         return pulumi.get(self, "vswitch_ids")
 
-    @property
-    @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, str]]:
-        """
-        A mapping of tags to assign to the resource.
-        """
-        return pulumi.get(self, "tags")
-
 
 @pulumi.output_type
 class GetScalingRulesRuleResult(dict):
@@ -3654,30 +3917,51 @@ class GetScalingRulesRuleResult(dict):
                  adjustment_value: int,
                  cooldown: int,
                  id: str,
+                 initial_max_size: int,
+                 metric_name: str,
                  min_adjustment_magnitude: int,
                  name: str,
+                 predictive_scaling_mode: str,
+                 predictive_task_buffer_time: int,
+                 predictive_value_behavior: str,
+                 predictive_value_buffer: int,
                  scaling_group_id: str,
                  scaling_rule_ari: str,
+                 target_value: float,
                  type: str):
         """
         :param str adjustment_type: Adjustment type of the scaling rule.
         :param int adjustment_value: Adjustment value of the scaling rule.
         :param int cooldown: Cooldown time of the scaling rule.
         :param str id: ID of the scaling rule.
+        :param int initial_max_size: (Available since v1.242.0) The maximum number of ECS instances that can be added to the scaling group.
+        :param str metric_name: (Available since v1.242.0) The predefined metric of the scaling rule.
         :param int min_adjustment_magnitude: Min adjustment magnitude of scaling rule.
         :param str name: Name of the scaling rule.
+        :param str predictive_scaling_mode: (Available since v1.242.0) The mode of the predictive scaling rule.
+        :param int predictive_task_buffer_time: (Available since v1.242.0) The amount of buffer time before the prediction task is executed. By default, all prediction tasks that are automatically created by a predictive scaling rule are executed on the hour. You can set a buffer time to execute prediction tasks and prepare resources in advance.
+        :param str predictive_value_behavior: (Available since v1.242.0) The action on the predicted maximum value.
+        :param int predictive_value_buffer: (Available since v1.242.0) The ratio based on which the predicted value is increased if you set predictive_value_behavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value that is increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks.
         :param str scaling_group_id: Scaling group id the scaling rules belong to.
         :param str scaling_rule_ari: Ari of scaling rule.
+        :param float target_value: (Available since v1.242.0) The target value of the metric.
         :param str type: Type of scaling rule.
         """
         pulumi.set(__self__, "adjustment_type", adjustment_type)
         pulumi.set(__self__, "adjustment_value", adjustment_value)
         pulumi.set(__self__, "cooldown", cooldown)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "initial_max_size", initial_max_size)
+        pulumi.set(__self__, "metric_name", metric_name)
         pulumi.set(__self__, "min_adjustment_magnitude", min_adjustment_magnitude)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "predictive_scaling_mode", predictive_scaling_mode)
+        pulumi.set(__self__, "predictive_task_buffer_time", predictive_task_buffer_time)
+        pulumi.set(__self__, "predictive_value_behavior", predictive_value_behavior)
+        pulumi.set(__self__, "predictive_value_buffer", predictive_value_buffer)
         pulumi.set(__self__, "scaling_group_id", scaling_group_id)
         pulumi.set(__self__, "scaling_rule_ari", scaling_rule_ari)
+        pulumi.set(__self__, "target_value", target_value)
         pulumi.set(__self__, "type", type)
 
     @property
@@ -3713,6 +3997,22 @@ class GetScalingRulesRuleResult(dict):
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter(name="initialMaxSize")
+    def initial_max_size(self) -> int:
+        """
+        (Available since v1.242.0) The maximum number of ECS instances that can be added to the scaling group.
+        """
+        return pulumi.get(self, "initial_max_size")
+
+    @property
+    @pulumi.getter(name="metricName")
+    def metric_name(self) -> str:
+        """
+        (Available since v1.242.0) The predefined metric of the scaling rule.
+        """
+        return pulumi.get(self, "metric_name")
+
+    @property
     @pulumi.getter(name="minAdjustmentMagnitude")
     def min_adjustment_magnitude(self) -> int:
         """
@@ -3729,6 +4029,38 @@ class GetScalingRulesRuleResult(dict):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="predictiveScalingMode")
+    def predictive_scaling_mode(self) -> str:
+        """
+        (Available since v1.242.0) The mode of the predictive scaling rule.
+        """
+        return pulumi.get(self, "predictive_scaling_mode")
+
+    @property
+    @pulumi.getter(name="predictiveTaskBufferTime")
+    def predictive_task_buffer_time(self) -> int:
+        """
+        (Available since v1.242.0) The amount of buffer time before the prediction task is executed. By default, all prediction tasks that are automatically created by a predictive scaling rule are executed on the hour. You can set a buffer time to execute prediction tasks and prepare resources in advance.
+        """
+        return pulumi.get(self, "predictive_task_buffer_time")
+
+    @property
+    @pulumi.getter(name="predictiveValueBehavior")
+    def predictive_value_behavior(self) -> str:
+        """
+        (Available since v1.242.0) The action on the predicted maximum value.
+        """
+        return pulumi.get(self, "predictive_value_behavior")
+
+    @property
+    @pulumi.getter(name="predictiveValueBuffer")
+    def predictive_value_buffer(self) -> int:
+        """
+        (Available since v1.242.0) The ratio based on which the predicted value is increased if you set predictive_value_behavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value that is increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks.
+        """
+        return pulumi.get(self, "predictive_value_buffer")
+
+    @property
     @pulumi.getter(name="scalingGroupId")
     def scaling_group_id(self) -> str:
         """
@@ -3743,6 +4075,14 @@ class GetScalingRulesRuleResult(dict):
         Ari of scaling rule.
         """
         return pulumi.get(self, "scaling_rule_ari")
+
+    @property
+    @pulumi.getter(name="targetValue")
+    def target_value(self) -> float:
+        """
+        (Available since v1.242.0) The target value of the metric.
+        """
+        return pulumi.get(self, "target_value")
 
     @property
     @pulumi.getter

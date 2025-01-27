@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.FC.Inputs
         public Input<string>? MountDir { get; set; }
 
         /// <summary>
-        /// NAS server address.
+        /// NAS server address
         /// </summary>
         [Input("serverAddr")]
         public Input<string>? ServerAddr { get; set; }

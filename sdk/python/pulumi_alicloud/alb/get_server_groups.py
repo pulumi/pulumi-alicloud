@@ -77,7 +77,7 @@ class GetServerGroupsResult:
     @pulumi.getter
     def groups(self) -> Sequence['outputs.GetServerGroupsGroupResult']:
         """
-        A list of Alb Server Groups. Each element contains the following attributes:
+        A list of Server Groups. Each element contains the following attributes:
         """
         return pulumi.get(self, "groups")
 
@@ -126,7 +126,7 @@ class GetServerGroupsResult:
     @pulumi.getter(name="serverGroupName")
     def server_group_name(self) -> Optional[str]:
         """
-        The name of the resource.
+        The name of the Server Group.
         """
         return pulumi.get(self, "server_group_name")
 
@@ -134,7 +134,7 @@ class GetServerGroupsResult:
     @pulumi.getter
     def status(self) -> Optional[str]:
         """
-        The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+        The status of the server.
         """
         return pulumi.get(self, "status")
 
@@ -142,7 +142,7 @@ class GetServerGroupsResult:
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, str]]:
         """
-        The tags of the resource.
+        The tags of the resource. **Note:** `tags` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "tags")
 
@@ -150,7 +150,7 @@ class GetServerGroupsResult:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[str]:
         """
-        The ID of the VPC that you want to access.
+        The ID of the VPC.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -200,23 +200,38 @@ def get_server_groups(enable_details: Optional[bool] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    ids = alicloud.alb.get_server_groups()
-    pulumi.export("albServerGroupId1", ids.groups[0].id)
-    name_regex = alicloud.alb.get_server_groups(name_regex="^my-ServerGroup")
-    pulumi.export("albServerGroupId2", name_regex.groups[0].id)
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.vpc.Network("default",
+        vpc_name=name,
+        cidr_block="192.168.0.0/16")
+    default_server_group = alicloud.alb.ServerGroup("default",
+        protocol="HTTP",
+        vpc_id=default.id,
+        server_group_name=name,
+        health_check_config={
+            "health_check_enabled": False,
+        },
+        sticky_session_config={
+            "sticky_session_enabled": False,
+        })
+    ids = alicloud.alb.get_server_groups_output(ids=[default_server_group.id])
+    pulumi.export("albServerGroupId0", ids.groups[0].id)
     ```
 
 
-    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param bool enable_details: Whether to query the detailed list of resource attributes. Default value: `false`.
     :param Sequence[str] ids: A list of Server Group IDs.
     :param str name_regex: A regex string to filter results by Server Group name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
-    :param Sequence[str] server_group_ids: The server group ids.
-    :param str server_group_name: The name of the resource.
-    :param str status: The status of the resource.
-    :param Mapping[str, str] tags: A map of tags assigned to the group.
-    :param str vpc_id: The ID of the VPC that you want to access.
+    :param Sequence[str] server_group_ids: The server group IDs.
+    :param str server_group_name: The names of the Server Group.
+    :param str status: The status of the Server Group. Valid values: `Available`, `Configuring`, `Provisioning`.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
+    :param str vpc_id: The ID of the virtual private cloud (VPC).
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -270,23 +285,38 @@ def get_server_groups_output(enable_details: Optional[pulumi.Input[Optional[bool
     import pulumi
     import pulumi_alicloud as alicloud
 
-    ids = alicloud.alb.get_server_groups()
-    pulumi.export("albServerGroupId1", ids.groups[0].id)
-    name_regex = alicloud.alb.get_server_groups(name_regex="^my-ServerGroup")
-    pulumi.export("albServerGroupId2", name_regex.groups[0].id)
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.vpc.Network("default",
+        vpc_name=name,
+        cidr_block="192.168.0.0/16")
+    default_server_group = alicloud.alb.ServerGroup("default",
+        protocol="HTTP",
+        vpc_id=default.id,
+        server_group_name=name,
+        health_check_config={
+            "health_check_enabled": False,
+        },
+        sticky_session_config={
+            "sticky_session_enabled": False,
+        })
+    ids = alicloud.alb.get_server_groups_output(ids=[default_server_group.id])
+    pulumi.export("albServerGroupId0", ids.groups[0].id)
     ```
 
 
-    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param bool enable_details: Whether to query the detailed list of resource attributes. Default value: `false`.
     :param Sequence[str] ids: A list of Server Group IDs.
     :param str name_regex: A regex string to filter results by Server Group name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
-    :param Sequence[str] server_group_ids: The server group ids.
-    :param str server_group_name: The name of the resource.
-    :param str status: The status of the resource.
-    :param Mapping[str, str] tags: A map of tags assigned to the group.
-    :param str vpc_id: The ID of the VPC that you want to access.
+    :param Sequence[str] server_group_ids: The server group IDs.
+    :param str server_group_name: The names of the Server Group.
+    :param str status: The status of the Server Group. Valid values: `Available`, `Configuring`, `Provisioning`.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
+    :param str vpc_id: The ID of the virtual private cloud (VPC).
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details

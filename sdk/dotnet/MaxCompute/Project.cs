@@ -18,8 +18,6 @@ namespace Pulumi.AliCloud.MaxCompute
     /// 
     /// &gt; **NOTE:** Available since v1.77.0.
     /// 
-    /// &gt; **NOTE:** Field `name`, `specification_type`, `order_type` has been removed from provider version 1.227.1.
-    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage
@@ -69,7 +67,8 @@ namespace Pulumi.AliCloud.MaxCompute
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
+        /// Used to implement computing resource allocation. Valid values: subQuota Nickname
+        /// If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
         /// </summary>
         [Output("defaultQuota")]
         public Output<string?> DefaultQuota { get; private set; } = null!;
@@ -81,7 +80,9 @@ namespace Pulumi.AliCloud.MaxCompute
         public Output<Outputs.ProjectIpWhiteList?> IpWhiteList { get; private set; } = null!;
 
         /// <summary>
-        /// Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
+        /// Whether to logically delete. Default value: true. Value: (ture/false),
+        /// 
+        /// &gt; **NOTE:** -- ture: In this case, the project status will be changed to' deleting' and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
         /// </summary>
         [Output("isLogical")]
         public Output<string?> IsLogical { get; private set; } = null!;
@@ -92,9 +93,6 @@ namespace Pulumi.AliCloud.MaxCompute
         [Output("owner")]
         public Output<string> Owner { get; private set; } = null!;
 
-        /// <summary>
-        /// Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
-        /// </summary>
         [Output("productType")]
         public Output<string?> ProductType { get; private set; } = null!;
 
@@ -109,6 +107,12 @@ namespace Pulumi.AliCloud.MaxCompute
         /// </summary>
         [Output("properties")]
         public Output<Outputs.ProjectProperties> Properties { get; private set; } = null!;
+
+        /// <summary>
+        /// The region ID of the resource
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
 
         /// <summary>
         /// Security-related attributes See `security_properties` below.
@@ -187,7 +191,8 @@ namespace Pulumi.AliCloud.MaxCompute
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
+        /// Used to implement computing resource allocation. Valid values: subQuota Nickname
+        /// If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
         /// </summary>
         [Input("defaultQuota")]
         public Input<string>? DefaultQuota { get; set; }
@@ -199,14 +204,13 @@ namespace Pulumi.AliCloud.MaxCompute
         public Input<Inputs.ProjectIpWhiteListArgs>? IpWhiteList { get; set; }
 
         /// <summary>
-        /// Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
+        /// Whether to logically delete. Default value: true. Value: (ture/false),
+        /// 
+        /// &gt; **NOTE:** -- ture: In this case, the project status will be changed to' deleting' and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
         /// </summary>
         [Input("isLogical")]
         public Input<string>? IsLogical { get; set; }
 
-        /// <summary>
-        /// Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
-        /// </summary>
         [Input("productType")]
         public Input<string>? ProductType { get; set; }
 
@@ -267,7 +271,8 @@ namespace Pulumi.AliCloud.MaxCompute
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
+        /// Used to implement computing resource allocation. Valid values: subQuota Nickname
+        /// If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
         /// </summary>
         [Input("defaultQuota")]
         public Input<string>? DefaultQuota { get; set; }
@@ -279,7 +284,9 @@ namespace Pulumi.AliCloud.MaxCompute
         public Input<Inputs.ProjectIpWhiteListGetArgs>? IpWhiteList { get; set; }
 
         /// <summary>
-        /// Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
+        /// Whether to logically delete. Default value: true. Value: (ture/false),
+        /// 
+        /// &gt; **NOTE:** -- ture: In this case, the project status will be changed to' deleting' and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
         /// </summary>
         [Input("isLogical")]
         public Input<string>? IsLogical { get; set; }
@@ -290,9 +297,6 @@ namespace Pulumi.AliCloud.MaxCompute
         [Input("owner")]
         public Input<string>? Owner { get; set; }
 
-        /// <summary>
-        /// Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
-        /// </summary>
         [Input("productType")]
         public Input<string>? ProductType { get; set; }
 
@@ -307,6 +311,12 @@ namespace Pulumi.AliCloud.MaxCompute
         /// </summary>
         [Input("properties")]
         public Input<Inputs.ProjectPropertiesGetArgs>? Properties { get; set; }
+
+        /// <summary>
+        /// The region ID of the resource
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
 
         /// <summary>
         /// Security-related attributes See `security_properties` below.

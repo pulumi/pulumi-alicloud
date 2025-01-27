@@ -29,6 +29,7 @@ class IpamIpamPoolArgs:
                  ipam_pool_description: Optional[pulumi.Input[str]] = None,
                  ipam_pool_name: Optional[pulumi.Input[str]] = None,
                  pool_region_id: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  source_ipam_pool_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
@@ -51,6 +52,7 @@ class IpamIpamPoolArgs:
                It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
         :param pulumi.Input[str] ipam_pool_name: The name of the resource.
         :param pulumi.Input[str] pool_region_id: The effective region of the IPAM address pool.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] source_ipam_pool_id: The instance ID of the source IPAM address pool.
                
                > **NOTE:**  If this parameter is not entered, the created address pool is the parent address pool.
@@ -75,6 +77,8 @@ class IpamIpamPoolArgs:
             pulumi.set(__self__, "ipam_pool_name", ipam_pool_name)
         if pool_region_id is not None:
             pulumi.set(__self__, "pool_region_id", pool_region_id)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if source_ipam_pool_id is not None:
             pulumi.set(__self__, "source_ipam_pool_id", source_ipam_pool_id)
         if tags is not None:
@@ -209,6 +213,18 @@ class IpamIpamPoolArgs:
         pulumi.set(self, "pool_region_id", value)
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
     @pulumi.getter(name="sourceIpamPoolId")
     def source_ipam_pool_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -250,6 +266,7 @@ class _IpamIpamPoolState:
                  ipam_scope_id: Optional[pulumi.Input[str]] = None,
                  pool_region_id: Optional[pulumi.Input[str]] = None,
                  region_id: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  source_ipam_pool_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
@@ -275,6 +292,7 @@ class _IpamIpamPoolState:
         :param pulumi.Input[str] ipam_scope_id: Ipam scope id.
         :param pulumi.Input[str] pool_region_id: The effective region of the IPAM address pool.
         :param pulumi.Input[str] region_id: The ID of the IPAM hosting region.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] source_ipam_pool_id: The instance ID of the source IPAM address pool.
                
                > **NOTE:**  If this parameter is not entered, the created address pool is the parent address pool.
@@ -305,6 +323,8 @@ class _IpamIpamPoolState:
             pulumi.set(__self__, "pool_region_id", pool_region_id)
         if region_id is not None:
             pulumi.set(__self__, "region_id", region_id)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if source_ipam_pool_id is not None:
             pulumi.set(__self__, "source_ipam_pool_id", source_ipam_pool_id)
         if status is not None:
@@ -465,6 +485,18 @@ class _IpamIpamPoolState:
         pulumi.set(self, "region_id", value)
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
     @pulumi.getter(name="sourceIpamPoolId")
     def source_ipam_pool_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -518,6 +550,7 @@ class IpamIpamPool(pulumi.CustomResource):
                  ipam_pool_name: Optional[pulumi.Input[str]] = None,
                  ipam_scope_id: Optional[pulumi.Input[str]] = None,
                  pool_region_id: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  source_ipam_pool_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -558,6 +591,7 @@ class IpamIpamPool(pulumi.CustomResource):
         :param pulumi.Input[str] ipam_pool_name: The name of the resource.
         :param pulumi.Input[str] ipam_scope_id: Ipam scope id.
         :param pulumi.Input[str] pool_region_id: The effective region of the IPAM address pool.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] source_ipam_pool_id: The instance ID of the source IPAM address pool.
                
                > **NOTE:**  If this parameter is not entered, the created address pool is the parent address pool.
@@ -611,6 +645,7 @@ class IpamIpamPool(pulumi.CustomResource):
                  ipam_pool_name: Optional[pulumi.Input[str]] = None,
                  ipam_scope_id: Optional[pulumi.Input[str]] = None,
                  pool_region_id: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  source_ipam_pool_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -634,6 +669,7 @@ class IpamIpamPool(pulumi.CustomResource):
                 raise TypeError("Missing required property 'ipam_scope_id'")
             __props__.__dict__["ipam_scope_id"] = ipam_scope_id
             __props__.__dict__["pool_region_id"] = pool_region_id
+            __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["source_ipam_pool_id"] = source_ipam_pool_id
             __props__.__dict__["tags"] = tags
             __props__.__dict__["create_time"] = None
@@ -661,6 +697,7 @@ class IpamIpamPool(pulumi.CustomResource):
             ipam_scope_id: Optional[pulumi.Input[str]] = None,
             pool_region_id: Optional[pulumi.Input[str]] = None,
             region_id: Optional[pulumi.Input[str]] = None,
+            resource_group_id: Optional[pulumi.Input[str]] = None,
             source_ipam_pool_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'IpamIpamPool':
@@ -691,6 +728,7 @@ class IpamIpamPool(pulumi.CustomResource):
         :param pulumi.Input[str] ipam_scope_id: Ipam scope id.
         :param pulumi.Input[str] pool_region_id: The effective region of the IPAM address pool.
         :param pulumi.Input[str] region_id: The ID of the IPAM hosting region.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] source_ipam_pool_id: The instance ID of the source IPAM address pool.
                
                > **NOTE:**  If this parameter is not entered, the created address pool is the parent address pool.
@@ -713,6 +751,7 @@ class IpamIpamPool(pulumi.CustomResource):
         __props__.__dict__["ipam_scope_id"] = ipam_scope_id
         __props__.__dict__["pool_region_id"] = pool_region_id
         __props__.__dict__["region_id"] = region_id
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["source_ipam_pool_id"] = source_ipam_pool_id
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
@@ -821,6 +860,14 @@ class IpamIpamPool(pulumi.CustomResource):
         The ID of the IPAM hosting region.
         """
         return pulumi.get(self, "region_id")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter(name="sourceIpamPoolId")

@@ -29,30 +29,38 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			example, err := cen.NewInstance(ctx, "example", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String("tf_example"),
-//				Description:     pulumi.String("an example for cen"),
+//				CenInstanceName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "example", &cen.TransitRouterArgs{
-//				TransitRouterName: pulumi.String("tf_example"),
+//				TransitRouterName: pulumi.String(name),
 //				CenId:             example.ID(),
 //				SupportMulticast:  pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cen.NewTransitRouterMulticastDomain(ctx, "example", &cen.TransitRouterMulticastDomainArgs{
+//			_, err = cen.NewTransitRouterMulticastDomain(ctx, "default", &cen.TransitRouterMulticastDomainArgs{
 //				TransitRouterId:                         exampleTransitRouter.TransitRouterId,
-//				TransitRouterMulticastDomainName:        pulumi.String("tf_example"),
-//				TransitRouterMulticastDomainDescription: pulumi.String("tf_example"),
+//				TransitRouterMulticastDomainName:        pulumi.String(name),
+//				TransitRouterMulticastDomainDescription: pulumi.String(name),
+//				Options: &cen.TransitRouterMulticastDomainOptionsArgs{
+//					Igmpv2Support: pulumi.String("disable"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -73,15 +81,19 @@ import (
 type TransitRouterMulticastDomain struct {
 	pulumi.CustomResourceState
 
+	// The function options of the multicast domain. See `options` below.
+	Options TransitRouterMulticastDomainOptionsOutput `pulumi:"options"`
+	// (Available since v1.242.0) The region ID of the transit router.
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
 	// The status of the Transit Router Multicast Domain.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The ID of the transit router.
+	// The ID of the forwarding router instance.
 	TransitRouterId pulumi.StringOutput `pulumi:"transitRouterId"`
-	// The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+	// The description of the multicast domain.
 	TransitRouterMulticastDomainDescription pulumi.StringPtrOutput `pulumi:"transitRouterMulticastDomainDescription"`
-	// The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+	// The name of the multicast domain.
 	TransitRouterMulticastDomainName pulumi.StringPtrOutput `pulumi:"transitRouterMulticastDomainName"`
 }
 
@@ -118,28 +130,36 @@ func GetTransitRouterMulticastDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TransitRouterMulticastDomain resources.
 type transitRouterMulticastDomainState struct {
+	// The function options of the multicast domain. See `options` below.
+	Options *TransitRouterMulticastDomainOptions `pulumi:"options"`
+	// (Available since v1.242.0) The region ID of the transit router.
+	RegionId *string `pulumi:"regionId"`
 	// The status of the Transit Router Multicast Domain.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
-	// The ID of the transit router.
+	// The ID of the forwarding router instance.
 	TransitRouterId *string `pulumi:"transitRouterId"`
-	// The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+	// The description of the multicast domain.
 	TransitRouterMulticastDomainDescription *string `pulumi:"transitRouterMulticastDomainDescription"`
-	// The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+	// The name of the multicast domain.
 	TransitRouterMulticastDomainName *string `pulumi:"transitRouterMulticastDomainName"`
 }
 
 type TransitRouterMulticastDomainState struct {
+	// The function options of the multicast domain. See `options` below.
+	Options TransitRouterMulticastDomainOptionsPtrInput
+	// (Available since v1.242.0) The region ID of the transit router.
+	RegionId pulumi.StringPtrInput
 	// The status of the Transit Router Multicast Domain.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
-	// The ID of the transit router.
+	// The ID of the forwarding router instance.
 	TransitRouterId pulumi.StringPtrInput
-	// The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+	// The description of the multicast domain.
 	TransitRouterMulticastDomainDescription pulumi.StringPtrInput
-	// The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+	// The name of the multicast domain.
 	TransitRouterMulticastDomainName pulumi.StringPtrInput
 }
 
@@ -148,25 +168,29 @@ func (TransitRouterMulticastDomainState) ElementType() reflect.Type {
 }
 
 type transitRouterMulticastDomainArgs struct {
+	// The function options of the multicast domain. See `options` below.
+	Options *TransitRouterMulticastDomainOptions `pulumi:"options"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
-	// The ID of the transit router.
+	// The ID of the forwarding router instance.
 	TransitRouterId string `pulumi:"transitRouterId"`
-	// The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+	// The description of the multicast domain.
 	TransitRouterMulticastDomainDescription *string `pulumi:"transitRouterMulticastDomainDescription"`
-	// The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+	// The name of the multicast domain.
 	TransitRouterMulticastDomainName *string `pulumi:"transitRouterMulticastDomainName"`
 }
 
 // The set of arguments for constructing a TransitRouterMulticastDomain resource.
 type TransitRouterMulticastDomainArgs struct {
+	// The function options of the multicast domain. See `options` below.
+	Options TransitRouterMulticastDomainOptionsPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
-	// The ID of the transit router.
+	// The ID of the forwarding router instance.
 	TransitRouterId pulumi.StringInput
-	// The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+	// The description of the multicast domain.
 	TransitRouterMulticastDomainDescription pulumi.StringPtrInput
-	// The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+	// The name of the multicast domain.
 	TransitRouterMulticastDomainName pulumi.StringPtrInput
 }
 
@@ -257,6 +281,16 @@ func (o TransitRouterMulticastDomainOutput) ToTransitRouterMulticastDomainOutput
 	return o
 }
 
+// The function options of the multicast domain. See `options` below.
+func (o TransitRouterMulticastDomainOutput) Options() TransitRouterMulticastDomainOptionsOutput {
+	return o.ApplyT(func(v *TransitRouterMulticastDomain) TransitRouterMulticastDomainOptionsOutput { return v.Options }).(TransitRouterMulticastDomainOptionsOutput)
+}
+
+// (Available since v1.242.0) The region ID of the transit router.
+func (o TransitRouterMulticastDomainOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterMulticastDomain) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
+}
+
 // The status of the Transit Router Multicast Domain.
 func (o TransitRouterMulticastDomainOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterMulticastDomain) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
@@ -267,19 +301,19 @@ func (o TransitRouterMulticastDomainOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *TransitRouterMulticastDomain) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The ID of the transit router.
+// The ID of the forwarding router instance.
 func (o TransitRouterMulticastDomainOutput) TransitRouterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterMulticastDomain) pulumi.StringOutput { return v.TransitRouterId }).(pulumi.StringOutput)
 }
 
-// The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+// The description of the multicast domain.
 func (o TransitRouterMulticastDomainOutput) TransitRouterMulticastDomainDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransitRouterMulticastDomain) pulumi.StringPtrOutput {
 		return v.TransitRouterMulticastDomainDescription
 	}).(pulumi.StringPtrOutput)
 }
 
-// The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+// The name of the multicast domain.
 func (o TransitRouterMulticastDomainOutput) TransitRouterMulticastDomainName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransitRouterMulticastDomain) pulumi.StringPtrOutput {
 		return v.TransitRouterMulticastDomainName

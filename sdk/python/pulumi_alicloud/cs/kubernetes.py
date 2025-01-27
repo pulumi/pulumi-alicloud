@@ -96,7 +96,7 @@ class KubernetesArgs:
         :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
         :param pulumi.Input[bool] master_auto_renew: Enable master payment auto-renew, defaults to false.
         :param pulumi.Input[int] master_auto_renew_period: Master payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         :param pulumi.Input[str] master_disk_category: The system disk category of master node. Its valid value are `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
@@ -170,8 +170,8 @@ class KubernetesArgs:
         if kms_encryption_context is not None:
             pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
         if load_balancer_spec is not None:
-            warnings.warn("""Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.""", DeprecationWarning)
-            pulumi.log.warn("""load_balancer_spec is deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.""")
+            warnings.warn("""Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU""", DeprecationWarning)
+            pulumi.log.warn("""load_balancer_spec is deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU""")
         if load_balancer_spec is not None:
             pulumi.set(__self__, "load_balancer_spec", load_balancer_spec)
         if master_auto_renew is not None:
@@ -464,10 +464,10 @@ class KubernetesArgs:
 
     @property
     @pulumi.getter(name="loadBalancerSpec")
-    @_utilities.deprecated("""Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.""")
+    @_utilities.deprecated("""Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU""")
     def load_balancer_spec(self) -> Optional[pulumi.Input[str]]:
         """
-        The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+        The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
         """
         return pulumi.get(self, "load_balancer_spec")
 
@@ -949,7 +949,7 @@ class _KubernetesState:
         :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
         :param pulumi.Input[bool] master_auto_renew: Enable master payment auto-renew, defaults to false.
         :param pulumi.Input[int] master_auto_renew_period: Master payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         :param pulumi.Input[str] master_disk_category: The system disk category of master node. Its valid value are `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
@@ -1034,8 +1034,8 @@ class _KubernetesState:
         if kms_encryption_context is not None:
             pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
         if load_balancer_spec is not None:
-            warnings.warn("""Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.""", DeprecationWarning)
-            pulumi.log.warn("""load_balancer_spec is deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.""")
+            warnings.warn("""Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU""", DeprecationWarning)
+            pulumi.log.warn("""load_balancer_spec is deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU""")
         if load_balancer_spec is not None:
             pulumi.set(__self__, "load_balancer_spec", load_balancer_spec)
         if master_auto_renew is not None:
@@ -1346,10 +1346,10 @@ class _KubernetesState:
 
     @property
     @pulumi.getter(name="loadBalancerSpec")
-    @_utilities.deprecated("""Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.""")
+    @_utilities.deprecated("""Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU""")
     def load_balancer_spec(self) -> Optional[pulumi.Input[str]]:
         """
-        The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+        The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
         """
         return pulumi.get(self, "load_balancer_spec")
 
@@ -1976,7 +1976,7 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
         :param pulumi.Input[bool] master_auto_renew: Enable master payment auto-renew, defaults to false.
         :param pulumi.Input[int] master_auto_renew_period: Master payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         :param pulumi.Input[str] master_disk_category: The system disk category of master node. Its valid value are `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
@@ -2308,7 +2308,7 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
         :param pulumi.Input[bool] master_auto_renew: Enable master payment auto-renew, defaults to false.
         :param pulumi.Input[int] master_auto_renew_period: Master payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         :param pulumi.Input[str] master_disk_category: The system disk category of master node. Its valid value are `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
@@ -2572,10 +2572,10 @@ class Kubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="loadBalancerSpec")
-    @_utilities.deprecated("""Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.""")
-    def load_balancer_spec(self) -> pulumi.Output[Optional[str]]:
+    @_utilities.deprecated("""Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU""")
+    def load_balancer_spec(self) -> pulumi.Output[str]:
         """
-        The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+        The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
         """
         return pulumi.get(self, "load_balancer_spec")
 

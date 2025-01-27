@@ -960,9 +960,7 @@ public final class EventbridgeFunctions {
      * 
      * For information about Event Bridge and how to use it, see [What is Event Bridge](https://www.alibabacloud.com/help/en/doc-detail/163239.htm).
      * 
-     * &gt; **NOTE:** Available in v1.126.0+
-     * 
-     * &gt; **NOTE:** This data source supports `cn-shanghai`, `cn-hangzhou` and `ap-southeast-1` regions.
+     * &gt; **NOTE:** Available since v1.126.0.
      * 
      * ## Example Usage
      * 
@@ -1008,9 +1006,7 @@ public final class EventbridgeFunctions {
      * 
      * For information about Event Bridge and how to use it, see [What is Event Bridge](https://www.alibabacloud.com/help/en/doc-detail/163239.htm).
      * 
-     * &gt; **NOTE:** Available in v1.126.0+
-     * 
-     * &gt; **NOTE:** This data source supports `cn-shanghai`, `cn-hangzhou` and `ap-southeast-1` regions.
+     * &gt; **NOTE:** Available since v1.126.0.
      * 
      * ## Example Usage
      * 
@@ -1056,9 +1052,7 @@ public final class EventbridgeFunctions {
      * 
      * For information about Event Bridge and how to use it, see [What is Event Bridge](https://www.alibabacloud.com/help/en/doc-detail/163239.htm).
      * 
-     * &gt; **NOTE:** Available in v1.126.0+
-     * 
-     * &gt; **NOTE:** This data source supports `cn-shanghai`, `cn-hangzhou` and `ap-southeast-1` regions.
+     * &gt; **NOTE:** Available since v1.126.0.
      * 
      * ## Example Usage
      * 
@@ -1104,9 +1098,7 @@ public final class EventbridgeFunctions {
      * 
      * For information about Event Bridge and how to use it, see [What is Event Bridge](https://www.alibabacloud.com/help/en/doc-detail/163239.htm).
      * 
-     * &gt; **NOTE:** Available in v1.126.0+
-     * 
-     * &gt; **NOTE:** This data source supports `cn-shanghai`, `cn-hangzhou` and `ap-southeast-1` regions.
+     * &gt; **NOTE:** Available since v1.126.0.
      * 
      * ## Example Usage
      * 
@@ -1152,9 +1144,7 @@ public final class EventbridgeFunctions {
      * 
      * For information about Event Bridge and how to use it, see [What is Event Bridge](https://www.alibabacloud.com/help/en/doc-detail/163239.htm).
      * 
-     * &gt; **NOTE:** Available in v1.126.0+
-     * 
-     * &gt; **NOTE:** This data source supports `cn-shanghai`, `cn-hangzhou` and `ap-southeast-1` regions.
+     * &gt; **NOTE:** Available since v1.126.0.
      * 
      * ## Example Usage
      * 
@@ -1200,9 +1190,7 @@ public final class EventbridgeFunctions {
      * 
      * For information about Event Bridge and how to use it, see [What is Event Bridge](https://www.alibabacloud.com/help/en/doc-detail/163239.htm).
      * 
-     * &gt; **NOTE:** Available in v1.126.0+
-     * 
-     * &gt; **NOTE:** This data source supports `cn-shanghai`, `cn-hangzhou` and `ap-southeast-1` regions.
+     * &gt; **NOTE:** Available since v1.126.0.
      * 
      * ## Example Usage
      * 
@@ -1248,9 +1236,7 @@ public final class EventbridgeFunctions {
      * 
      * For information about Event Bridge and how to use it, see [What is Event Bridge](https://www.alibabacloud.com/help/en/doc-detail/163239.htm).
      * 
-     * &gt; **NOTE:** Available in v1.126.0+
-     * 
-     * &gt; **NOTE:** This data source supports `cn-shanghai`, `cn-hangzhou` and `ap-southeast-1` regions.
+     * &gt; **NOTE:** Available since v1.126.0.
      * 
      * ## Example Usage
      * 

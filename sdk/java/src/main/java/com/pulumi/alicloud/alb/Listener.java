@@ -8,6 +8,7 @@ import com.pulumi.alicloud.alb.ListenerArgs;
 import com.pulumi.alicloud.alb.inputs.ListenerState;
 import com.pulumi.alicloud.alb.outputs.ListenerAccessLogTracingConfig;
 import com.pulumi.alicloud.alb.outputs.ListenerAclConfig;
+import com.pulumi.alicloud.alb.outputs.ListenerCaCertificate;
 import com.pulumi.alicloud.alb.outputs.ListenerCertificates;
 import com.pulumi.alicloud.alb.outputs.ListenerDefaultAction;
 import com.pulumi.alicloud.alb.outputs.ListenerQuicConfig;
@@ -43,32 +44,40 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:alb/listener:Listener")
 public class Listener extends com.pulumi.resources.CustomResource {
     /**
-     * Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+     * Access Log Whether to Enable Carry Custom Header Field.
      * 
-     * &gt; **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
+     * Value: True **** Or False * *.
+     * 
+     * Default Value: False * *.
+     * 
+     * &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
      * 
      */
     @Export(name="accessLogRecordCustomizedHeadersEnabled", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> accessLogRecordCustomizedHeadersEnabled;
+    private Output</* @Nullable */ Boolean> accessLogRecordCustomizedHeadersEnabled;
 
     /**
-     * @return Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+     * @return Access Log Whether to Enable Carry Custom Header Field.
      * 
-     * &gt; **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
+     * Value: True **** Or False * *.
+     * 
+     * Default Value: False * *.
+     * 
+     * &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
      * 
      */
-    public Output<Boolean> accessLogRecordCustomizedHeadersEnabled() {
-        return this.accessLogRecordCustomizedHeadersEnabled;
+    public Output<Optional<Boolean>> accessLogRecordCustomizedHeadersEnabled() {
+        return Codegen.optional(this.accessLogRecordCustomizedHeadersEnabled);
     }
     /**
-     * Xtrace Configuration Information. See `access_log_tracing_config` below for details.
+     * Xtrace Configuration Information. See `access_log_tracing_config` below.
      * 
      */
     @Export(name="accessLogTracingConfig", refs={ListenerAccessLogTracingConfig.class}, tree="[0]")
     private Output</* @Nullable */ ListenerAccessLogTracingConfig> accessLogTracingConfig;
 
     /**
-     * @return Xtrace Configuration Information. See `access_log_tracing_config` below for details.
+     * @return Xtrace Configuration Information. See `access_log_tracing_config` below.
      * 
      */
     public Output<Optional<ListenerAccessLogTracingConfig>> accessLogTracingConfig() {
@@ -93,232 +102,252 @@ public class Listener extends com.pulumi.resources.CustomResource {
         return this.aclConfig;
     }
     /**
-     * The default certificate of the Listener. See `certificates` below for details. **NOTE:** When `listener_protocol` is `HTTPS`, The default certificate must be set one。
+     * The list of certificates. See `ca_certificates` below.
+     * 
+     */
+    @Export(name="caCertificates", refs={List.class,ListenerCaCertificate.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ListenerCaCertificate>> caCertificates;
+
+    /**
+     * @return The list of certificates. See `ca_certificates` below.
+     * 
+     */
+    public Output<Optional<List<ListenerCaCertificate>>> caCertificates() {
+        return Codegen.optional(this.caCertificates);
+    }
+    /**
+     * Whether to turn on two-way authentication. Value:
+     * 
+     */
+    @Export(name="caEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> caEnabled;
+
+    /**
+     * @return Whether to turn on two-way authentication. Value:
+     * 
+     */
+    public Output<Optional<Boolean>> caEnabled() {
+        return Codegen.optional(this.caEnabled);
+    }
+    /**
+     * The list of certificates. See `certificates` below.
      * 
      */
     @Export(name="certificates", refs={ListenerCertificates.class}, tree="[0]")
     private Output</* @Nullable */ ListenerCertificates> certificates;
 
     /**
-     * @return The default certificate of the Listener. See `certificates` below for details. **NOTE:** When `listener_protocol` is `HTTPS`, The default certificate must be set one。
+     * @return The list of certificates. See `certificates` below.
      * 
      */
     public Output<Optional<ListenerCertificates>> certificates() {
         return Codegen.optional(this.certificates);
     }
     /**
-     * The Default Rule Action List. See `default_actions` below for details.
+     * The Default Rule Action List See `default_actions` below.
      * 
      */
     @Export(name="defaultActions", refs={List.class,ListenerDefaultAction.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ListenerDefaultAction>> defaultActions;
+    private Output<List<ListenerDefaultAction>> defaultActions;
 
     /**
-     * @return The Default Rule Action List. See `default_actions` below for details.
+     * @return The Default Rule Action List See `default_actions` below.
      * 
      */
-    public Output<Optional<List<ListenerDefaultAction>>> defaultActions() {
-        return Codegen.optional(this.defaultActions);
+    public Output<List<ListenerDefaultAction>> defaultActions() {
+        return this.defaultActions;
     }
     /**
-     * The dry run.
+     * Whether to PreCheck only this request. Value:
      * 
      */
     @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
-     * @return The dry run.
+     * @return Whether to PreCheck only this request. Value:
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
+     * Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: True Or False. Default Value: TRUE.
      * 
      */
     @Export(name="gzipEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> gzipEnabled;
 
     /**
-     * @return Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
+     * @return Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: True Or False. Default Value: TRUE.
      * 
      */
     public Output<Boolean> gzipEnabled() {
         return this.gzipEnabled;
     }
     /**
-     * Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
-     * 
-     * &gt; **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
+     * Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE.
      * 
      */
     @Export(name="http2Enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> http2Enabled;
 
     /**
-     * @return Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
-     * 
-     * &gt; **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
+     * @return Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE.
      * 
      */
     public Output<Boolean> http2Enabled() {
         return this.http2Enabled;
     }
     /**
-     * Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
+     * Specify the Connection Idle Timeout Value: 1 to 60 miao.
      * 
      */
     @Export(name="idleTimeout", refs={Integer.class}, tree="[0]")
     private Output<Integer> idleTimeout;
 
     /**
-     * @return Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
+     * @return Specify the Connection Idle Timeout Value: 1 to 60 miao.
      * 
      */
     public Output<Integer> idleTimeout() {
         return this.idleTimeout;
     }
     /**
-     * The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\x00-\xff]|[\w.,;/{@literal @}-]){2,256}$/`.
+     * Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
      * 
      */
     @Export(name="listenerDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> listenerDescription;
 
     /**
-     * @return The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\x00-\xff]|[\w.,;/{@literal @}-]){2,256}$/`.
+     * @return Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
      * 
      */
     public Output<Optional<String>> listenerDescription() {
         return Codegen.optional(this.listenerDescription);
     }
     /**
-     * The ALB Instance Front-End, and Those of the Ports Used. Value: `1` to `65535`.
+     * The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
      * 
      */
     @Export(name="listenerPort", refs={Integer.class}, tree="[0]")
     private Output<Integer> listenerPort;
 
     /**
-     * @return The ALB Instance Front-End, and Those of the Ports Used. Value: `1` to `65535`.
+     * @return The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
      * 
      */
     public Output<Integer> listenerPort() {
         return this.listenerPort;
     }
     /**
-     * Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
+     * Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
      * 
      */
     @Export(name="listenerProtocol", refs={String.class}, tree="[0]")
     private Output<String> listenerProtocol;
 
     /**
-     * @return Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
+     * @return Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
      * 
      */
     public Output<String> listenerProtocol() {
         return this.listenerProtocol;
     }
     /**
-     * The ALB Instance Id.
+     * The SLB Instance Id.
      * 
      */
     @Export(name="loadBalancerId", refs={String.class}, tree="[0]")
     private Output<String> loadBalancerId;
 
     /**
-     * @return The ALB Instance Id.
+     * @return The SLB Instance Id.
      * 
      */
     public Output<String> loadBalancerId() {
         return this.loadBalancerId;
     }
     /**
-     * Configuration Associated with the QuIC Listening. See `quic_config` below for details.
+     * Configuration Associated with the QuIC Listening See `quic_config` below.
      * 
      */
     @Export(name="quicConfig", refs={ListenerQuicConfig.class}, tree="[0]")
     private Output<ListenerQuicConfig> quicConfig;
 
     /**
-     * @return Configuration Associated with the QuIC Listening. See `quic_config` below for details.
+     * @return Configuration Associated with the QuIC Listening See `quic_config` below.
      * 
      */
     public Output<ListenerQuicConfig> quicConfig() {
         return this.quicConfig;
     }
     /**
-     * The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+     * The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
      * 
      */
     @Export(name="requestTimeout", refs={Integer.class}, tree="[0]")
     private Output<Integer> requestTimeout;
 
     /**
-     * @return The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+     * @return The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
      * 
      */
     public Output<Integer> requestTimeout() {
         return this.requestTimeout;
     }
     /**
-     * Security Policy.
-     * 
-     * &gt; **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
+     * Security Policy
      * 
      */
     @Export(name="securityPolicyId", refs={String.class}, tree="[0]")
     private Output<String> securityPolicyId;
 
     /**
-     * @return Security Policy.
-     * 
-     * &gt; **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
+     * @return Security Policy
      * 
      */
     public Output<String> securityPolicyId() {
         return this.securityPolicyId;
     }
     /**
-     * The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
+     * The Current IP Address of the Listened State
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
+     * @return The Current IP Address of the Listened State
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag of the resource
      * 
      */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return The tag of the resource
      * 
      */
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * The `x_forward_for` Related Attribute Configuration. See `x_forwarded_for_config` below for details. **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
+     * xforwardfor Related Attribute Configuration See `x_forwarded_for_config` below.
      * 
      */
     @Export(name="xForwardedForConfig", refs={ListenerXForwardedForConfig.class}, tree="[0]")
     private Output<ListenerXForwardedForConfig> xForwardedForConfig;
 
     /**
-     * @return The `x_forward_for` Related Attribute Configuration. See `x_forwarded_for_config` below for details. **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
+     * @return xforwardfor Related Attribute Configuration See `x_forwarded_for_config` below.
      * 
      */
     public Output<ListenerXForwardedForConfig> xForwardedForConfig() {

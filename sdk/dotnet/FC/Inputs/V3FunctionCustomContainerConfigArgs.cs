@@ -13,19 +13,19 @@ namespace Pulumi.AliCloud.FC.Inputs
     public sealed class V3FunctionCustomContainerConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Deprecated) Image Acceleration Information (Obsolete).
+        /// (Deprecated since v1.242.0) Image Acceleration Information (Obsolete)
         /// </summary>
         [Input("accelerationInfo")]
         public Input<Inputs.V3FunctionCustomContainerConfigAccelerationInfoArgs>? AccelerationInfo { get; set; }
 
         /// <summary>
-        /// Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete).
+        /// Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
         /// </summary>
         [Input("accelerationType")]
         public Input<string>? AccelerationType { get; set; }
 
         /// <summary>
-        /// ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete).
+        /// ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
         /// </summary>
         [Input("acrInstanceId")]
         public Input<string>? AcrInstanceId { get; set; }

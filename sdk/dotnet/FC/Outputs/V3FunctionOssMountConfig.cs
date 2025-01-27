@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.FC.Outputs
     public sealed class V3FunctionOssMountConfig
     {
         /// <summary>
-        /// OSS mount point list. See `mount_points` below.
+        /// OSS mount point list See `mount_points` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.V3FunctionOssMountConfigMountPoint> MountPoints;
 

@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.FC.Outputs
         /// </summary>
         public readonly bool? EnableRequestMetrics;
         /// <summary>
-        /// Log Line First Matching Rules.
+        /// Log Line First Matching Rules
         /// </summary>
         public readonly string? LogBeginRule;
         /// <summary>

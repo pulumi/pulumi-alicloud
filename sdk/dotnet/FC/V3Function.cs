@@ -10,11 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.FC
 {
     /// <summary>
-    /// Provides a FCV3 Function resource.
+    /// Provides a Function Compute Service V3 (FCV3) Function resource.
     /// 
     /// The resource scheduling and running of Function Compute is based on functions. The FC function consists of function code and function configuration.
     /// 
-    /// For information about FCV3 Function and how to use it, see [What is Function](https://www.alibabacloud.com/help/en/functioncompute/developer-reference/api-fc-2023-03-30-getfunction).
+    /// For information about Function Compute Service V3 (FCV3) Function and how to use it, see [What is Function](https://www.alibabacloud.com/help/en/functioncompute/developer-reference/api-fc-2023-03-30-getfunction).
     /// 
     /// &gt; **NOTE:** Available since v1.228.0.
     /// 
@@ -122,7 +122,7 @@ namespace Pulumi.AliCloud.FC
     /// 
     /// ## Import
     /// 
-    /// FCV3 Function can be imported using the id, e.g.
+    /// Function Compute Service V3 (FCV3) Function can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:fc/v3Function:V3Function example &lt;id&gt;
@@ -322,6 +322,12 @@ namespace Pulumi.AliCloud.FC
         /// </summary>
         [Output("stateReasonCode")]
         public Output<string> StateReasonCode { get; private set; } = null!;
+
+        /// <summary>
+        /// The tag of the resource
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The maximum running time of the function, in seconds.
@@ -532,6 +538,18 @@ namespace Pulumi.AliCloud.FC
         /// </summary>
         [Input("runtime", required: true)]
         public Input<string> Runtime { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tag of the resource
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The maximum running time of the function, in seconds.
@@ -760,6 +778,18 @@ namespace Pulumi.AliCloud.FC
         /// </summary>
         [Input("stateReasonCode")]
         public Input<string>? StateReasonCode { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tag of the resource
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The maximum running time of the function, in seconds.

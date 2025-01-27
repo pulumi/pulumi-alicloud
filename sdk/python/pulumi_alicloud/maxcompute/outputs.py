@@ -22,6 +22,14 @@ __all__ = [
     'ProjectPropertiesTableLifecycle',
     'ProjectSecurityProperties',
     'ProjectSecurityPropertiesProjectProtection',
+    'QuotaPlanQuota',
+    'QuotaPlanQuotaParameter',
+    'QuotaPlanQuotaSubQuotaInfoList',
+    'QuotaPlanQuotaSubQuotaInfoListParameter',
+    'QuotaScheduleScheduleList',
+    'QuotaScheduleScheduleListCondition',
+    'TunnelQuotaTimerQuotaTimer',
+    'TunnelQuotaTimerQuotaTimerTunnelQuotaParameter',
     'GetProjectsProjectResult',
     'GetProjectsProjectIpWhiteListResult',
     'GetProjectsProjectPropertiesResult',
@@ -56,8 +64,12 @@ class ProjectIpWhiteList(dict):
                  ip_list: Optional[str] = None,
                  vpc_ip_list: Optional[str] = None):
         """
-        :param str ip_list: Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.> **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
-        :param str vpc_ip_list: Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.> **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
+        :param str ip_list: Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.
+               
+               > **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
+        :param str vpc_ip_list: Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.
+               
+               > **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
         """
         if ip_list is not None:
             pulumi.set(__self__, "ip_list", ip_list)
@@ -68,7 +80,9 @@ class ProjectIpWhiteList(dict):
     @pulumi.getter(name="ipList")
     def ip_list(self) -> Optional[str]:
         """
-        Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.> **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
+        Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.
+
+        > **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
         """
         return pulumi.get(self, "ip_list")
 
@@ -76,7 +90,9 @@ class ProjectIpWhiteList(dict):
     @pulumi.getter(name="vpcIpList")
     def vpc_ip_list(self) -> Optional[str]:
         """
-        Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.> **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
+        Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.
+
+        > **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
         """
         return pulumi.get(self, "vpc_ip_list")
 
@@ -120,15 +136,27 @@ class ProjectProperties(dict):
                  timezone: Optional[str] = None,
                  type_system: Optional[str] = None):
         """
-        :param bool allow_full_scan: Whether to allow full table scan. Default: false.
-        :param bool enable_decimal2: Whether to turn on Decimal2.0.
+        :param bool allow_full_scan: Whether to allow full table scan. Default: false
+        :param bool enable_decimal2: Whether to turn on Decimal2.0
         :param 'ProjectPropertiesEncryptionArgs' encryption: Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
-               > **NOTE :**:  To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.  To configure the permissions and IP whitelist parameters of the MaxCompute project, you must have the management permissions (Admin) of the corresponding project, including Super_Administrator, Admin, or custom management permissions. For more information, see the project management permissions list.  You can turn on storage encryption only for projects that have not turned on storage encryption. For projects that have turned on storage encryption, you cannot turn off storage encryption or change the encryption algorithm. See `encryption` below.
-        :param int retention_days: Set the number of days to retain backup data. During this time, you can restore the current version to any backup version. The value range of days is [0,30], and the default value is 1. 0 means backup is turned off. The effective policy after adjusting the backup cycle is: Extend the backup cycle: The new backup cycle takes effect on the same day. Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
-        :param str sql_metering_max: Set the maximum threshold of single SQL consumption, that is, set the ODPS. SQL. metering.value.max attribute. For details, see [Consumption Monitoring Alarm](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control). Unit: scan volume (GB)* complexity. .
-        :param 'ProjectPropertiesTableLifecycleArgs' table_lifecycle: Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property,. See `table_lifecycle` below.
-        :param str timezone: Project time zone, example value: Asia/Shanghai.
-        :param str type_system: Data type version. Value:(1/2/hive) 1: The original MaxCompute type system. 2: New type system introduced by MaxCompute 2.0. hive: the type system of the Hive compatibility mode introduced by MaxCompute 2.0.
+               > **NOTE :**:
+               To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.
+               
+               To configure the permissions and IP whitelist parameters of the MaxCompute project, you must have the management permissions (Admin) of the corresponding project, including Super_Administrator, Admin, or custom management permissions. For more information, see the project management permissions list.
+               
+               You can turn on storage encryption only for projects that have not turned on storage encryption. For projects that have turned on storage encryption, you cannot turn off storage encryption or change the encryption algorithm. See `encryption` below.
+        :param int retention_days: Set the number of days to retain backup data. During this time, you can restore the current version to any backup version. The value range of days is [0,30], and the default value is 1. 0 means backup is turned off.
+               The effective policy after adjusting the backup cycle is:
+               Extend the backup cycle: The new backup cycle takes effect on the same day.
+               Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
+        :param str sql_metering_max: Set the maximum threshold for single SQL Consumption, that is, set the ODPS. SQL. metering.value.max attribute. For more information, see [Consumption control](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-controll).
+               Unit: scan volume (GB)* complexity.
+        :param 'ProjectPropertiesTableLifecycleArgs' table_lifecycle: Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property, See `table_lifecycle` below.
+        :param str timezone: Project time zone, example value: Asia/Shanghai
+        :param str type_system: Data type version. Value:(1/2/hive)
+               1: The original MaxCompute type system.
+               2: New type system introduced by MaxCompute 2.0.
+               hive: the type system of the Hive compatibility mode introduced by MaxCompute 2.0.
         """
         if allow_full_scan is not None:
             pulumi.set(__self__, "allow_full_scan", allow_full_scan)
@@ -151,7 +179,7 @@ class ProjectProperties(dict):
     @pulumi.getter(name="allowFullScan")
     def allow_full_scan(self) -> Optional[bool]:
         """
-        Whether to allow full table scan. Default: false.
+        Whether to allow full table scan. Default: false
         """
         return pulumi.get(self, "allow_full_scan")
 
@@ -159,7 +187,7 @@ class ProjectProperties(dict):
     @pulumi.getter(name="enableDecimal2")
     def enable_decimal2(self) -> Optional[bool]:
         """
-        Whether to turn on Decimal2.0.
+        Whether to turn on Decimal2.0
         """
         return pulumi.get(self, "enable_decimal2")
 
@@ -168,7 +196,12 @@ class ProjectProperties(dict):
     def encryption(self) -> Optional['outputs.ProjectPropertiesEncryption']:
         """
         Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
-        > **NOTE :**:  To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.  To configure the permissions and IP whitelist parameters of the MaxCompute project, you must have the management permissions (Admin) of the corresponding project, including Super_Administrator, Admin, or custom management permissions. For more information, see the project management permissions list.  You can turn on storage encryption only for projects that have not turned on storage encryption. For projects that have turned on storage encryption, you cannot turn off storage encryption or change the encryption algorithm. See `encryption` below.
+        > **NOTE :**:
+        To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.
+
+        To configure the permissions and IP whitelist parameters of the MaxCompute project, you must have the management permissions (Admin) of the corresponding project, including Super_Administrator, Admin, or custom management permissions. For more information, see the project management permissions list.
+
+        You can turn on storage encryption only for projects that have not turned on storage encryption. For projects that have turned on storage encryption, you cannot turn off storage encryption or change the encryption algorithm. See `encryption` below.
         """
         return pulumi.get(self, "encryption")
 
@@ -176,7 +209,10 @@ class ProjectProperties(dict):
     @pulumi.getter(name="retentionDays")
     def retention_days(self) -> Optional[int]:
         """
-        Set the number of days to retain backup data. During this time, you can restore the current version to any backup version. The value range of days is [0,30], and the default value is 1. 0 means backup is turned off. The effective policy after adjusting the backup cycle is: Extend the backup cycle: The new backup cycle takes effect on the same day. Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
+        Set the number of days to retain backup data. During this time, you can restore the current version to any backup version. The value range of days is [0,30], and the default value is 1. 0 means backup is turned off.
+        The effective policy after adjusting the backup cycle is:
+        Extend the backup cycle: The new backup cycle takes effect on the same day.
+        Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
         """
         return pulumi.get(self, "retention_days")
 
@@ -184,7 +220,8 @@ class ProjectProperties(dict):
     @pulumi.getter(name="sqlMeteringMax")
     def sql_metering_max(self) -> Optional[str]:
         """
-        Set the maximum threshold of single SQL consumption, that is, set the ODPS. SQL. metering.value.max attribute. For details, see [Consumption Monitoring Alarm](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control). Unit: scan volume (GB)* complexity. .
+        Set the maximum threshold for single SQL Consumption, that is, set the ODPS. SQL. metering.value.max attribute. For more information, see [Consumption control](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-controll).
+        Unit: scan volume (GB)* complexity.
         """
         return pulumi.get(self, "sql_metering_max")
 
@@ -192,7 +229,7 @@ class ProjectProperties(dict):
     @pulumi.getter(name="tableLifecycle")
     def table_lifecycle(self) -> Optional['outputs.ProjectPropertiesTableLifecycle']:
         """
-        Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property,. See `table_lifecycle` below.
+        Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property, See `table_lifecycle` below.
         """
         return pulumi.get(self, "table_lifecycle")
 
@@ -200,7 +237,7 @@ class ProjectProperties(dict):
     @pulumi.getter
     def timezone(self) -> Optional[str]:
         """
-        Project time zone, example value: Asia/Shanghai.
+        Project time zone, example value: Asia/Shanghai
         """
         return pulumi.get(self, "timezone")
 
@@ -208,7 +245,10 @@ class ProjectProperties(dict):
     @pulumi.getter(name="typeSystem")
     def type_system(self) -> Optional[str]:
         """
-        Data type version. Value:(1/2/hive) 1: The original MaxCompute type system. 2: New type system introduced by MaxCompute 2.0. hive: the type system of the Hive compatibility mode introduced by MaxCompute 2.0.
+        Data type version. Value:(1/2/hive)
+        1: The original MaxCompute type system.
+        2: New type system introduced by MaxCompute 2.0.
+        hive: the type system of the Hive compatibility mode introduced by MaxCompute 2.0.
         """
         return pulumi.get(self, "type_system")
 
@@ -221,7 +261,9 @@ class ProjectPropertiesEncryption(dict):
                  key: Optional[str] = None):
         """
         :param str algorithm: The encryption algorithm supported by the key, including AES256, AESCTR, and RC4.
-        :param bool enable: Only enable function is supported. Value: (true).
+        :param bool enable: Only enable function is supported. Value: (true)
+               
+               > **NOTE:** cannot be turned off after the function is turned on
         :param str key: The encryption algorithm Key, the Key type used by the project, including the Default Key (MaxCompute Default Key) and the self-contained Key (BYOK). The MaxCompute Default Key is the Default Key created inside MaxCompute.
         """
         if algorithm is not None:
@@ -243,7 +285,9 @@ class ProjectPropertiesEncryption(dict):
     @pulumi.getter
     def enable(self) -> Optional[bool]:
         """
-        Only enable function is supported. Value: (true).
+        Only enable function is supported. Value: (true)
+
+        > **NOTE:** cannot be turned off after the function is turned on
         """
         return pulumi.get(self, "enable")
 
@@ -331,7 +375,7 @@ class ProjectSecurityProperties(dict):
         :param bool label_security: Set whether to use the [Label permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/label-based-access-control), that is, set the LabelSecurity attribute, which is not used by default.
         :param bool object_creator_has_access_permission: Sets whether to allow the creator of the object to have access to the object, I .e. sets the attribute. The default is the allowed state.
         :param bool object_creator_has_grant_permission: The ObjectCreatorHasGrantPermission attribute is set to allow the object creator to have the authorization permission on the object. The default is the allowed state.
-        :param 'ProjectSecurityPropertiesProjectProtectionArgs' project_protection: Project protection. See `project_protection` below.
+        :param 'ProjectSecurityPropertiesProjectProtectionArgs' project_protection: Project protection See `project_protection` below.
         :param bool using_acl: Set whether to use the [ACL permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-permissions), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
         :param bool using_policy: Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
         """
@@ -386,7 +430,7 @@ class ProjectSecurityProperties(dict):
     @pulumi.getter(name="projectProtection")
     def project_protection(self) -> Optional['outputs.ProjectSecurityPropertiesProjectProtection']:
         """
-        Project protection. See `project_protection` below.
+        Project protection See `project_protection` below.
         """
         return pulumi.get(self, "project_protection")
 
@@ -430,8 +474,8 @@ class ProjectSecurityPropertiesProjectProtection(dict):
                  exception_policy: Optional[str] = None,
                  protected: Optional[bool] = None):
         """
-        :param str exception_policy: Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection).
-        :param bool protected: Whether enabled, value:(true/false).
+        :param str exception_policy: Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection)
+        :param bool protected: Whether enabled, value:(true/false)
         """
         if exception_policy is not None:
             pulumi.set(__self__, "exception_policy", exception_policy)
@@ -442,7 +486,7 @@ class ProjectSecurityPropertiesProjectProtection(dict):
     @pulumi.getter(name="exceptionPolicy")
     def exception_policy(self) -> Optional[str]:
         """
-        Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection).
+        Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection)
         """
         return pulumi.get(self, "exception_policy")
 
@@ -450,9 +494,423 @@ class ProjectSecurityPropertiesProjectProtection(dict):
     @pulumi.getter
     def protected(self) -> Optional[bool]:
         """
-        Whether enabled, value:(true/false).
+        Whether enabled, value:(true/false)
         """
         return pulumi.get(self, "protected")
+
+
+@pulumi.output_type
+class QuotaPlanQuota(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "subQuotaInfoLists":
+            suggest = "sub_quota_info_lists"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QuotaPlanQuota. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QuotaPlanQuota.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QuotaPlanQuota.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 parameter: Optional['outputs.QuotaPlanQuotaParameter'] = None,
+                 sub_quota_info_lists: Optional[Sequence['outputs.QuotaPlanQuotaSubQuotaInfoList']] = None):
+        """
+        :param 'QuotaPlanQuotaParameterArgs' parameter: Level 2 Quota CU configuration See `parameter` below.
+        :param Sequence['QuotaPlanQuotaSubQuotaInfoListArgs'] sub_quota_info_lists: Secondary Quota list
+               
+               > **NOTE:** need to list all secondary Quota
+               See `sub_quota_info_list` below.
+        """
+        if parameter is not None:
+            pulumi.set(__self__, "parameter", parameter)
+        if sub_quota_info_lists is not None:
+            pulumi.set(__self__, "sub_quota_info_lists", sub_quota_info_lists)
+
+    @property
+    @pulumi.getter
+    def parameter(self) -> Optional['outputs.QuotaPlanQuotaParameter']:
+        """
+        Level 2 Quota CU configuration See `parameter` below.
+        """
+        return pulumi.get(self, "parameter")
+
+    @property
+    @pulumi.getter(name="subQuotaInfoLists")
+    def sub_quota_info_lists(self) -> Optional[Sequence['outputs.QuotaPlanQuotaSubQuotaInfoList']]:
+        """
+        Secondary Quota list
+
+        > **NOTE:** need to list all secondary Quota
+        See `sub_quota_info_list` below.
+        """
+        return pulumi.get(self, "sub_quota_info_lists")
+
+
+@pulumi.output_type
+class QuotaPlanQuotaParameter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "elasticReservedCu":
+            suggest = "elastic_reserved_cu"
+        elif key == "maxCu":
+            suggest = "max_cu"
+        elif key == "minCu":
+            suggest = "min_cu"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QuotaPlanQuotaParameter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QuotaPlanQuotaParameter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QuotaPlanQuotaParameter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 elastic_reserved_cu: int,
+                 max_cu: Optional[int] = None,
+                 min_cu: Optional[int] = None):
+        """
+        :param int elastic_reserved_cu: The value of elastic Reserved CUs.
+               
+               > **NOTE:**  The total number of elastically reserved CUs in all the level-2 quotas is equal to the number of elastically reserved CUs in the level-1 quota..
+        :param int max_cu: The value of maxCU in Reserved CUs.
+        :param int min_cu: The value of minCU in Reserved CUs.
+        """
+        pulumi.set(__self__, "elastic_reserved_cu", elastic_reserved_cu)
+        if max_cu is not None:
+            pulumi.set(__self__, "max_cu", max_cu)
+        if min_cu is not None:
+            pulumi.set(__self__, "min_cu", min_cu)
+
+    @property
+    @pulumi.getter(name="elasticReservedCu")
+    def elastic_reserved_cu(self) -> int:
+        """
+        The value of elastic Reserved CUs.
+
+        > **NOTE:**  The total number of elastically reserved CUs in all the level-2 quotas is equal to the number of elastically reserved CUs in the level-1 quota..
+        """
+        return pulumi.get(self, "elastic_reserved_cu")
+
+    @property
+    @pulumi.getter(name="maxCu")
+    def max_cu(self) -> Optional[int]:
+        """
+        The value of maxCU in Reserved CUs.
+        """
+        return pulumi.get(self, "max_cu")
+
+    @property
+    @pulumi.getter(name="minCu")
+    def min_cu(self) -> Optional[int]:
+        """
+        The value of minCU in Reserved CUs.
+        """
+        return pulumi.get(self, "min_cu")
+
+
+@pulumi.output_type
+class QuotaPlanQuotaSubQuotaInfoList(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nickName":
+            suggest = "nick_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QuotaPlanQuotaSubQuotaInfoList. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QuotaPlanQuotaSubQuotaInfoList.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QuotaPlanQuotaSubQuotaInfoList.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 nick_name: str,
+                 parameter: Optional['outputs.QuotaPlanQuotaSubQuotaInfoListParameter'] = None):
+        """
+        :param str nick_name: The nickname of the level-2 quota.
+        :param 'QuotaPlanQuotaSubQuotaInfoListParameterArgs' parameter: The parameters of level-1 quota.
+        """
+        pulumi.set(__self__, "nick_name", nick_name)
+        if parameter is not None:
+            pulumi.set(__self__, "parameter", parameter)
+
+    @property
+    @pulumi.getter(name="nickName")
+    def nick_name(self) -> str:
+        """
+        The nickname of the level-2 quota.
+        """
+        return pulumi.get(self, "nick_name")
+
+    @property
+    @pulumi.getter
+    def parameter(self) -> Optional['outputs.QuotaPlanQuotaSubQuotaInfoListParameter']:
+        """
+        The parameters of level-1 quota.
+        """
+        return pulumi.get(self, "parameter")
+
+
+@pulumi.output_type
+class QuotaPlanQuotaSubQuotaInfoListParameter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "elasticReservedCu":
+            suggest = "elastic_reserved_cu"
+        elif key == "maxCu":
+            suggest = "max_cu"
+        elif key == "minCu":
+            suggest = "min_cu"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QuotaPlanQuotaSubQuotaInfoListParameter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QuotaPlanQuotaSubQuotaInfoListParameter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QuotaPlanQuotaSubQuotaInfoListParameter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 elastic_reserved_cu: int,
+                 max_cu: int,
+                 min_cu: int):
+        """
+        :param int elastic_reserved_cu: The value of elastic Reserved CUs.
+               
+               > **NOTE:**  The total number of elastically reserved CUs in all the level-2 quotas is equal to the number of elastically reserved CUs in the level-1 quota..
+        :param int max_cu: The value of maxCU in Reserved CUs.
+        :param int min_cu: The value of minCU in Reserved CUs.
+        """
+        pulumi.set(__self__, "elastic_reserved_cu", elastic_reserved_cu)
+        pulumi.set(__self__, "max_cu", max_cu)
+        pulumi.set(__self__, "min_cu", min_cu)
+
+    @property
+    @pulumi.getter(name="elasticReservedCu")
+    def elastic_reserved_cu(self) -> int:
+        """
+        The value of elastic Reserved CUs.
+
+        > **NOTE:**  The total number of elastically reserved CUs in all the level-2 quotas is equal to the number of elastically reserved CUs in the level-1 quota..
+        """
+        return pulumi.get(self, "elastic_reserved_cu")
+
+    @property
+    @pulumi.getter(name="maxCu")
+    def max_cu(self) -> int:
+        """
+        The value of maxCU in Reserved CUs.
+        """
+        return pulumi.get(self, "max_cu")
+
+    @property
+    @pulumi.getter(name="minCu")
+    def min_cu(self) -> int:
+        """
+        The value of minCU in Reserved CUs.
+        """
+        return pulumi.get(self, "min_cu")
+
+
+@pulumi.output_type
+class QuotaScheduleScheduleList(dict):
+    def __init__(__self__, *,
+                 plan: str,
+                 type: str,
+                 condition: Optional['outputs.QuotaScheduleScheduleListCondition'] = None):
+        """
+        :param str plan: The name of the quota plan.
+        :param str type: The type of the quota plan. Valid values: daily 
+               
+               > **NOTE:** Currently, only daily is supported.
+        :param 'QuotaScheduleScheduleListConditionArgs' condition: The value of effective condition. See `condition` below.
+        """
+        pulumi.set(__self__, "plan", plan)
+        pulumi.set(__self__, "type", type)
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+
+    @property
+    @pulumi.getter
+    def plan(self) -> str:
+        """
+        The name of the quota plan.
+        """
+        return pulumi.get(self, "plan")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the quota plan. Valid values: daily 
+
+        > **NOTE:** Currently, only daily is supported.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional['outputs.QuotaScheduleScheduleListCondition']:
+        """
+        The value of effective condition. See `condition` below.
+        """
+        return pulumi.get(self, "condition")
+
+
+@pulumi.output_type
+class QuotaScheduleScheduleListCondition(dict):
+    def __init__(__self__, *,
+                 at: str):
+        """
+        :param str at: Effective time. The format is HH:mm, sample value: 00:00
+               
+               > **NOTE:** The configuration must start from the effective time of 00:00. The input time must be either a whole hour or a half hour, and the minimum interval between each schedule is 30 minutes.
+        """
+        pulumi.set(__self__, "at", at)
+
+    @property
+    @pulumi.getter
+    def at(self) -> str:
+        """
+        Effective time. The format is HH:mm, sample value: 00:00
+
+        > **NOTE:** The configuration must start from the effective time of 00:00. The input time must be either a whole hour or a half hour, and the minimum interval between each schedule is 30 minutes.
+        """
+        return pulumi.get(self, "at")
+
+
+@pulumi.output_type
+class TunnelQuotaTimerQuotaTimer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "beginTime":
+            suggest = "begin_time"
+        elif key == "endTime":
+            suggest = "end_time"
+        elif key == "tunnelQuotaParameter":
+            suggest = "tunnel_quota_parameter"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TunnelQuotaTimerQuotaTimer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TunnelQuotaTimerQuotaTimer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TunnelQuotaTimerQuotaTimer.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 begin_time: str,
+                 end_time: str,
+                 tunnel_quota_parameter: Optional['outputs.TunnelQuotaTimerQuotaTimerTunnelQuotaParameter'] = None):
+        """
+        :param str begin_time: The time-sharing configuration start time. Reference value: 00:00
+        :param str end_time: The end time of the timesharing configuration. Reference value: 24:00
+        :param 'TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs' tunnel_quota_parameter: Time-sharing configuration parameters. See `tunnel_quota_parameter` below.
+        """
+        pulumi.set(__self__, "begin_time", begin_time)
+        pulumi.set(__self__, "end_time", end_time)
+        if tunnel_quota_parameter is not None:
+            pulumi.set(__self__, "tunnel_quota_parameter", tunnel_quota_parameter)
+
+    @property
+    @pulumi.getter(name="beginTime")
+    def begin_time(self) -> str:
+        """
+        The time-sharing configuration start time. Reference value: 00:00
+        """
+        return pulumi.get(self, "begin_time")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        """
+        The end time of the timesharing configuration. Reference value: 24:00
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="tunnelQuotaParameter")
+    def tunnel_quota_parameter(self) -> Optional['outputs.TunnelQuotaTimerQuotaTimerTunnelQuotaParameter']:
+        """
+        Time-sharing configuration parameters. See `tunnel_quota_parameter` below.
+        """
+        return pulumi.get(self, "tunnel_quota_parameter")
+
+
+@pulumi.output_type
+class TunnelQuotaTimerQuotaTimerTunnelQuotaParameter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "elasticReservedSlotNum":
+            suggest = "elastic_reserved_slot_num"
+        elif key == "slotNum":
+            suggest = "slot_num"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TunnelQuotaTimerQuotaTimerTunnelQuotaParameter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TunnelQuotaTimerQuotaTimerTunnelQuotaParameter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TunnelQuotaTimerQuotaTimerTunnelQuotaParameter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 elastic_reserved_slot_num: int,
+                 slot_num: int):
+        """
+        :param int elastic_reserved_slot_num: The number of elastic reserved concurrency (Slot).
+        :param int slot_num: The number of reserved concurrency (Slot).
+               
+               > **NOTE:** The reserved concurrency (Slot) cannot be modified. The number of concurrency slots must be the same as that of the purchased tunnel quota.
+        """
+        pulumi.set(__self__, "elastic_reserved_slot_num", elastic_reserved_slot_num)
+        pulumi.set(__self__, "slot_num", slot_num)
+
+    @property
+    @pulumi.getter(name="elasticReservedSlotNum")
+    def elastic_reserved_slot_num(self) -> int:
+        """
+        The number of elastic reserved concurrency (Slot).
+        """
+        return pulumi.get(self, "elastic_reserved_slot_num")
+
+    @property
+    @pulumi.getter(name="slotNum")
+    def slot_num(self) -> int:
+        """
+        The number of reserved concurrency (Slot).
+
+        > **NOTE:** The reserved concurrency (Slot) cannot be modified. The number of concurrency slots must be the same as that of the purchased tunnel quota.
+        """
+        return pulumi.get(self, "slot_num")
 
 
 @pulumi.output_type

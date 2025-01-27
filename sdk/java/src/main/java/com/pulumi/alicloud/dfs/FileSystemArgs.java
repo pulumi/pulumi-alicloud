@@ -36,9 +36,17 @@ public final class FileSystemArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.dataRedundancyType);
     }
 
+    /**
+     * Dedicated cluster id, which is used to support scenarios such as group cloud migration.
+     * 
+     */
     @Import(name="dedicatedClusterId")
     private @Nullable Output<String> dedicatedClusterId;
 
+    /**
+     * @return Dedicated cluster id, which is used to support scenarios such as group cloud migration.
+     * 
+     */
     public Optional<Output<String>> dedicatedClusterId() {
         return Optional.ofNullable(this.dedicatedClusterId);
     }
@@ -89,14 +97,14 @@ public final class FileSystemArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
+     * The protocol type. Value: `HDFS`, `PANGU`.
      * 
      */
     @Import(name="protocolType", required=true)
     private Output<String> protocolType;
 
     /**
-     * @return The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
+     * @return The protocol type. Value: `HDFS`, `PANGU`.
      * 
      */
     public Output<String> protocolType() {
@@ -253,11 +261,23 @@ public final class FileSystemArgs extends com.pulumi.resources.ResourceArgs {
             return dataRedundancyType(Output.of(dataRedundancyType));
         }
 
+        /**
+         * @param dedicatedClusterId Dedicated cluster id, which is used to support scenarios such as group cloud migration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dedicatedClusterId(@Nullable Output<String> dedicatedClusterId) {
             $.dedicatedClusterId = dedicatedClusterId;
             return this;
         }
 
+        /**
+         * @param dedicatedClusterId Dedicated cluster id, which is used to support scenarios such as group cloud migration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dedicatedClusterId(String dedicatedClusterId) {
             return dedicatedClusterId(Output.of(dedicatedClusterId));
         }
@@ -326,7 +346,7 @@ public final class FileSystemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocolType The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
+         * @param protocolType The protocol type. Value: `HDFS`, `PANGU`.
          * 
          * @return builder
          * 
@@ -337,7 +357,7 @@ public final class FileSystemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocolType The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
+         * @param protocolType The protocol type. Value: `HDFS`, `PANGU`.
          * 
          * @return builder
          * 

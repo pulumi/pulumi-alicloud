@@ -5,6 +5,33 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a ESA Rate Plan Instance resource.
+ *
+ * For information about ESA Rate Plan Instance and how to use it, see [What is Rate Plan Instance](https://www.alibabacloud.com/help/en/).
+ *
+ * > **NOTE:** Available since v1.234.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.esa.RatePlanInstance("default", {
+ *     type: "NS",
+ *     autoRenew: true,
+ *     period: 1,
+ *     paymentType: "Subscription",
+ *     coverage: "overseas",
+ *     planName: "basic",
+ *     autoPay: true,
+ * });
+ * ```
+ *
  * ## Import
  *
  * ESA Rate Plan Instance can be imported using the id, e.g.
@@ -72,7 +99,7 @@ export class RatePlanInstance extends pulumi.CustomResource {
      */
     public /*out*/ readonly instanceStatus!: pulumi.Output<string>;
     /**
-     * The payment type of the resource, Valid vales: Subscription.
+     * The payment type of the resource
      */
     public readonly paymentType!: pulumi.Output<string>;
     /**
@@ -172,7 +199,7 @@ export interface RatePlanInstanceState {
      */
     instanceStatus?: pulumi.Input<string>;
     /**
-     * The payment type of the resource, Valid vales: Subscription.
+     * The payment type of the resource
      */
     paymentType?: pulumi.Input<string>;
     /**
@@ -224,7 +251,7 @@ export interface RatePlanInstanceArgs {
      */
     coverage?: pulumi.Input<string>;
     /**
-     * The payment type of the resource, Valid vales: Subscription.
+     * The payment type of the resource
      */
     paymentType?: pulumi.Input<string>;
     /**

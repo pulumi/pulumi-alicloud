@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Dfs
 {
     /// <summary>
-    /// Provides a DFS File System resource.
+    /// Provides a Apsara File Storage for HDFS (DFS) File System resource.
     /// 
-    /// For information about DFS File System and how to use it, see [What is File System](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
+    /// For information about Apsara File Storage for HDFS (DFS) File System and how to use it, see [What is File System](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
     /// 
     /// &gt; **NOTE:** Available since v1.140.0.
     /// 
@@ -30,13 +30,11 @@ namespace Pulumi.AliCloud.Dfs
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var @default = AliCloud.Dfs.GetZones.Invoke();
-    /// 
-    ///     var defaultFileSystem = new AliCloud.Dfs.FileSystem("default", new()
+    ///     var @default = new AliCloud.Dfs.FileSystem("default", new()
     ///     {
-    ///         StorageType = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Options[0]?.StorageType)),
-    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId)),
-    ///         ProtocolType = "HDFS",
+    ///         StorageType = "PERFORMANCE",
+    ///         ZoneId = "cn-hangzhou-b",
+    ///         ProtocolType = "PANGU",
     ///         Description = name,
     ///         FileSystemName = name,
     ///         ThroughputMode = "Provisioned",
@@ -49,7 +47,7 @@ namespace Pulumi.AliCloud.Dfs
     /// 
     /// ## Import
     /// 
-    /// DFS File System can be imported using the id, e.g.
+    /// Apsara File Storage for HDFS (DFS) File System can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:dfs/fileSystem:FileSystem example &lt;id&gt;
@@ -72,6 +70,9 @@ namespace Pulumi.AliCloud.Dfs
         [Output("dataRedundancyType")]
         public Output<string?> DataRedundancyType { get; private set; } = null!;
 
+        /// <summary>
+        /// Dedicated cluster id, which is used to support scenarios such as group cloud migration.
+        /// </summary>
         [Output("dedicatedClusterId")]
         public Output<string?> DedicatedClusterId { get; private set; } = null!;
 
@@ -94,7 +95,7 @@ namespace Pulumi.AliCloud.Dfs
         public Output<int?> PartitionNumber { get; private set; } = null!;
 
         /// <summary>
-        /// The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
+        /// The protocol type. Value: `HDFS`, `PANGU`.
         /// </summary>
         [Output("protocolType")]
         public Output<string> ProtocolType { get; private set; } = null!;
@@ -104,6 +105,12 @@ namespace Pulumi.AliCloud.Dfs
         /// </summary>
         [Output("provisionedThroughputInMiBps")]
         public Output<int?> ProvisionedThroughputInMiBps { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.242.0) The region ID of the File System.
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
 
         /// <summary>
         /// File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.
@@ -189,6 +196,9 @@ namespace Pulumi.AliCloud.Dfs
         [Input("dataRedundancyType")]
         public Input<string>? DataRedundancyType { get; set; }
 
+        /// <summary>
+        /// Dedicated cluster id, which is used to support scenarios such as group cloud migration.
+        /// </summary>
         [Input("dedicatedClusterId")]
         public Input<string>? DedicatedClusterId { get; set; }
 
@@ -211,7 +221,7 @@ namespace Pulumi.AliCloud.Dfs
         public Input<int>? PartitionNumber { get; set; }
 
         /// <summary>
-        /// The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
+        /// The protocol type. Value: `HDFS`, `PANGU`.
         /// </summary>
         [Input("protocolType", required: true)]
         public Input<string> ProtocolType { get; set; } = null!;
@@ -274,6 +284,9 @@ namespace Pulumi.AliCloud.Dfs
         [Input("dataRedundancyType")]
         public Input<string>? DataRedundancyType { get; set; }
 
+        /// <summary>
+        /// Dedicated cluster id, which is used to support scenarios such as group cloud migration.
+        /// </summary>
         [Input("dedicatedClusterId")]
         public Input<string>? DedicatedClusterId { get; set; }
 
@@ -296,7 +309,7 @@ namespace Pulumi.AliCloud.Dfs
         public Input<int>? PartitionNumber { get; set; }
 
         /// <summary>
-        /// The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
+        /// The protocol type. Value: `HDFS`, `PANGU`.
         /// </summary>
         [Input("protocolType")]
         public Input<string>? ProtocolType { get; set; }
@@ -306,6 +319,12 @@ namespace Pulumi.AliCloud.Dfs
         /// </summary>
         [Input("provisionedThroughputInMiBps")]
         public Input<int>? ProvisionedThroughputInMiBps { get; set; }
+
+        /// <summary>
+        /// (Available since v1.242.0) The region ID of the File System.
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
 
         /// <summary>
         /// File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.

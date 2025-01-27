@@ -5,6 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { HttpRequestHeaderModificationRuleArgs, HttpRequestHeaderModificationRuleState } from "./httpRequestHeaderModificationRule";
+export type HttpRequestHeaderModificationRule = import("./httpRequestHeaderModificationRule").HttpRequestHeaderModificationRule;
+export const HttpRequestHeaderModificationRule: typeof import("./httpRequestHeaderModificationRule").HttpRequestHeaderModificationRule = null as any;
+utilities.lazyLoad(exports, ["HttpRequestHeaderModificationRule"], () => require("./httpRequestHeaderModificationRule"));
+
+export { ListArgs, ListState } from "./list";
+export type List = import("./list").List;
+export const List: typeof import("./list").List = null as any;
+utilities.lazyLoad(exports, ["List"], () => require("./list"));
+
+export { PageArgs, PageState } from "./page";
+export type Page = import("./page").Page;
+export const Page: typeof import("./page").Page = null as any;
+utilities.lazyLoad(exports, ["Page"], () => require("./page"));
+
 export { RatePlanInstanceArgs, RatePlanInstanceState } from "./ratePlanInstance";
 export type RatePlanInstance = import("./ratePlanInstance").RatePlanInstance;
 export const RatePlanInstance: typeof import("./ratePlanInstance").RatePlanInstance = null as any;
@@ -25,6 +40,12 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:esa/httpRequestHeaderModificationRule:HttpRequestHeaderModificationRule":
+                return new HttpRequestHeaderModificationRule(name, <any>undefined, { urn })
+            case "alicloud:esa/list:List":
+                return new List(name, <any>undefined, { urn })
+            case "alicloud:esa/page:Page":
+                return new Page(name, <any>undefined, { urn })
             case "alicloud:esa/ratePlanInstance:RatePlanInstance":
                 return new RatePlanInstance(name, <any>undefined, { urn })
             case "alicloud:esa/record:Record":
@@ -36,6 +57,9 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "esa/httpRequestHeaderModificationRule", _module)
+pulumi.runtime.registerResourceModule("alicloud", "esa/list", _module)
+pulumi.runtime.registerResourceModule("alicloud", "esa/page", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/ratePlanInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/record", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/site", _module)

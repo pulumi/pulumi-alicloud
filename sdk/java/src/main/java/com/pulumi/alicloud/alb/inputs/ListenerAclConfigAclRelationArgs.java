@@ -31,14 +31,14 @@ public final class ListenerAclConfigAclRelationArgs extends com.pulumi.resources
     }
 
     /**
-     * The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
+     * The Current IP Address of the Listened State
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
+     * @return The Current IP Address of the Listened State
      * 
      */
     public Optional<Output<String>> status() {
@@ -92,7 +92,7 @@ public final class ListenerAclConfigAclRelationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param status The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
+         * @param status The Current IP Address of the Listened State
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ListenerAclConfigAclRelationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param status The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
+         * @param status The Current IP Address of the Listened State
          * 
          * @return builder
          * 

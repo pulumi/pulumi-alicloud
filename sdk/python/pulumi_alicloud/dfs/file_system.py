@@ -34,12 +34,13 @@ class FileSystemArgs:
         """
         The set of arguments for constructing a FileSystem resource.
         :param pulumi.Input[str] file_system_name: The file system name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
-        :param pulumi.Input[str] protocol_type: The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
+        :param pulumi.Input[str] protocol_type: The protocol type. Value: `HDFS`, `PANGU`.
         :param pulumi.Input[int] space_capacity: File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.
         :param pulumi.Input[str] storage_type: The storage media type. Value: STANDARD (default): STANDARD PERFORMANCE: PERFORMANCE type.
         :param pulumi.Input[str] data_redundancy_type: Redundancy mode of the file system. Value:
                - LRS (default): Local redundancy.
                - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
+        :param pulumi.Input[str] dedicated_cluster_id: Dedicated cluster id, which is used to support scenarios such as group cloud migration.
         :param pulumi.Input[str] description: The description of the file system resource. No more than 32 characters in length.
         :param pulumi.Input[int] partition_number: Save set sequence number, the user selects the content of the specified sequence number in the Save set.
         :param pulumi.Input[int] provisioned_throughput_in_mi_bps: Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
@@ -84,7 +85,7 @@ class FileSystemArgs:
     @pulumi.getter(name="protocolType")
     def protocol_type(self) -> pulumi.Input[str]:
         """
-        The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
+        The protocol type. Value: `HDFS`, `PANGU`.
         """
         return pulumi.get(self, "protocol_type")
 
@@ -133,6 +134,9 @@ class FileSystemArgs:
     @property
     @pulumi.getter(name="dedicatedClusterId")
     def dedicated_cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Dedicated cluster id, which is used to support scenarios such as group cloud migration.
+        """
         return pulumi.get(self, "dedicated_cluster_id")
 
     @dedicated_cluster_id.setter
@@ -223,6 +227,7 @@ class _FileSystemState:
                  partition_number: Optional[pulumi.Input[int]] = None,
                  protocol_type: Optional[pulumi.Input[str]] = None,
                  provisioned_throughput_in_mi_bps: Optional[pulumi.Input[int]] = None,
+                 region_id: Optional[pulumi.Input[str]] = None,
                  space_capacity: Optional[pulumi.Input[int]] = None,
                  storage_set_name: Optional[pulumi.Input[str]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
@@ -234,11 +239,13 @@ class _FileSystemState:
         :param pulumi.Input[str] data_redundancy_type: Redundancy mode of the file system. Value:
                - LRS (default): Local redundancy.
                - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
+        :param pulumi.Input[str] dedicated_cluster_id: Dedicated cluster id, which is used to support scenarios such as group cloud migration.
         :param pulumi.Input[str] description: The description of the file system resource. No more than 32 characters in length.
         :param pulumi.Input[str] file_system_name: The file system name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
         :param pulumi.Input[int] partition_number: Save set sequence number, the user selects the content of the specified sequence number in the Save set.
-        :param pulumi.Input[str] protocol_type: The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
+        :param pulumi.Input[str] protocol_type: The protocol type. Value: `HDFS`, `PANGU`.
         :param pulumi.Input[int] provisioned_throughput_in_mi_bps: Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
+        :param pulumi.Input[str] region_id: (Available since v1.242.0) The region ID of the File System.
         :param pulumi.Input[int] space_capacity: File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.
         :param pulumi.Input[str] storage_set_name: Save set identity, used to select a user-specified save set.
         :param pulumi.Input[str] storage_type: The storage media type. Value: STANDARD (default): STANDARD PERFORMANCE: PERFORMANCE type.
@@ -261,6 +268,8 @@ class _FileSystemState:
             pulumi.set(__self__, "protocol_type", protocol_type)
         if provisioned_throughput_in_mi_bps is not None:
             pulumi.set(__self__, "provisioned_throughput_in_mi_bps", provisioned_throughput_in_mi_bps)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
         if space_capacity is not None:
             pulumi.set(__self__, "space_capacity", space_capacity)
         if storage_set_name is not None:
@@ -301,6 +310,9 @@ class _FileSystemState:
     @property
     @pulumi.getter(name="dedicatedClusterId")
     def dedicated_cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Dedicated cluster id, which is used to support scenarios such as group cloud migration.
+        """
         return pulumi.get(self, "dedicated_cluster_id")
 
     @dedicated_cluster_id.setter
@@ -347,7 +359,7 @@ class _FileSystemState:
     @pulumi.getter(name="protocolType")
     def protocol_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
+        The protocol type. Value: `HDFS`, `PANGU`.
         """
         return pulumi.get(self, "protocol_type")
 
@@ -366,6 +378,18 @@ class _FileSystemState:
     @provisioned_throughput_in_mi_bps.setter
     def provisioned_throughput_in_mi_bps(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "provisioned_throughput_in_mi_bps", value)
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.242.0) The region ID of the File System.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region_id", value)
 
     @property
     @pulumi.getter(name="spaceCapacity")
@@ -447,9 +471,9 @@ class FileSystem(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a DFS File System resource.
+        Provides a Apsara File Storage for HDFS (DFS) File System resource.
 
-        For information about DFS File System and how to use it, see [What is File System](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
+        For information about Apsara File Storage for HDFS (DFS) File System and how to use it, see [What is File System](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
 
         > **NOTE:** Available since v1.140.0.
 
@@ -465,11 +489,10 @@ class FileSystem(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default = alicloud.dfs.get_zones()
-        default_file_system = alicloud.dfs.FileSystem("default",
-            storage_type=default.zones[0].options[0].storage_type,
-            zone_id=default.zones[0].zone_id,
-            protocol_type="HDFS",
+        default = alicloud.dfs.FileSystem("default",
+            storage_type="PERFORMANCE",
+            zone_id="cn-hangzhou-b",
+            protocol_type="PANGU",
             description=name,
             file_system_name=name,
             throughput_mode="Provisioned",
@@ -479,7 +502,7 @@ class FileSystem(pulumi.CustomResource):
 
         ## Import
 
-        DFS File System can be imported using the id, e.g.
+        Apsara File Storage for HDFS (DFS) File System can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:dfs/fileSystem:FileSystem example <id>
@@ -490,10 +513,11 @@ class FileSystem(pulumi.CustomResource):
         :param pulumi.Input[str] data_redundancy_type: Redundancy mode of the file system. Value:
                - LRS (default): Local redundancy.
                - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
+        :param pulumi.Input[str] dedicated_cluster_id: Dedicated cluster id, which is used to support scenarios such as group cloud migration.
         :param pulumi.Input[str] description: The description of the file system resource. No more than 32 characters in length.
         :param pulumi.Input[str] file_system_name: The file system name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
         :param pulumi.Input[int] partition_number: Save set sequence number, the user selects the content of the specified sequence number in the Save set.
-        :param pulumi.Input[str] protocol_type: The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
+        :param pulumi.Input[str] protocol_type: The protocol type. Value: `HDFS`, `PANGU`.
         :param pulumi.Input[int] provisioned_throughput_in_mi_bps: Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
         :param pulumi.Input[int] space_capacity: File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.
         :param pulumi.Input[str] storage_set_name: Save set identity, used to select a user-specified save set.
@@ -508,9 +532,9 @@ class FileSystem(pulumi.CustomResource):
                  args: FileSystemArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a DFS File System resource.
+        Provides a Apsara File Storage for HDFS (DFS) File System resource.
 
-        For information about DFS File System and how to use it, see [What is File System](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
+        For information about Apsara File Storage for HDFS (DFS) File System and how to use it, see [What is File System](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
 
         > **NOTE:** Available since v1.140.0.
 
@@ -526,11 +550,10 @@ class FileSystem(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default = alicloud.dfs.get_zones()
-        default_file_system = alicloud.dfs.FileSystem("default",
-            storage_type=default.zones[0].options[0].storage_type,
-            zone_id=default.zones[0].zone_id,
-            protocol_type="HDFS",
+        default = alicloud.dfs.FileSystem("default",
+            storage_type="PERFORMANCE",
+            zone_id="cn-hangzhou-b",
+            protocol_type="PANGU",
             description=name,
             file_system_name=name,
             throughput_mode="Provisioned",
@@ -540,7 +563,7 @@ class FileSystem(pulumi.CustomResource):
 
         ## Import
 
-        DFS File System can be imported using the id, e.g.
+        Apsara File Storage for HDFS (DFS) File System can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:dfs/fileSystem:FileSystem example <id>
@@ -603,6 +626,7 @@ class FileSystem(pulumi.CustomResource):
             __props__.__dict__["throughput_mode"] = throughput_mode
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["region_id"] = None
         super(FileSystem, __self__).__init__(
             'alicloud:dfs/fileSystem:FileSystem',
             resource_name,
@@ -621,6 +645,7 @@ class FileSystem(pulumi.CustomResource):
             partition_number: Optional[pulumi.Input[int]] = None,
             protocol_type: Optional[pulumi.Input[str]] = None,
             provisioned_throughput_in_mi_bps: Optional[pulumi.Input[int]] = None,
+            region_id: Optional[pulumi.Input[str]] = None,
             space_capacity: Optional[pulumi.Input[int]] = None,
             storage_set_name: Optional[pulumi.Input[str]] = None,
             storage_type: Optional[pulumi.Input[str]] = None,
@@ -637,11 +662,13 @@ class FileSystem(pulumi.CustomResource):
         :param pulumi.Input[str] data_redundancy_type: Redundancy mode of the file system. Value:
                - LRS (default): Local redundancy.
                - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
+        :param pulumi.Input[str] dedicated_cluster_id: Dedicated cluster id, which is used to support scenarios such as group cloud migration.
         :param pulumi.Input[str] description: The description of the file system resource. No more than 32 characters in length.
         :param pulumi.Input[str] file_system_name: The file system name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
         :param pulumi.Input[int] partition_number: Save set sequence number, the user selects the content of the specified sequence number in the Save set.
-        :param pulumi.Input[str] protocol_type: The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
+        :param pulumi.Input[str] protocol_type: The protocol type. Value: `HDFS`, `PANGU`.
         :param pulumi.Input[int] provisioned_throughput_in_mi_bps: Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
+        :param pulumi.Input[str] region_id: (Available since v1.242.0) The region ID of the File System.
         :param pulumi.Input[int] space_capacity: File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.
         :param pulumi.Input[str] storage_set_name: Save set identity, used to select a user-specified save set.
         :param pulumi.Input[str] storage_type: The storage media type. Value: STANDARD (default): STANDARD PERFORMANCE: PERFORMANCE type.
@@ -660,6 +687,7 @@ class FileSystem(pulumi.CustomResource):
         __props__.__dict__["partition_number"] = partition_number
         __props__.__dict__["protocol_type"] = protocol_type
         __props__.__dict__["provisioned_throughput_in_mi_bps"] = provisioned_throughput_in_mi_bps
+        __props__.__dict__["region_id"] = region_id
         __props__.__dict__["space_capacity"] = space_capacity
         __props__.__dict__["storage_set_name"] = storage_set_name
         __props__.__dict__["storage_type"] = storage_type
@@ -688,6 +716,9 @@ class FileSystem(pulumi.CustomResource):
     @property
     @pulumi.getter(name="dedicatedClusterId")
     def dedicated_cluster_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Dedicated cluster id, which is used to support scenarios such as group cloud migration.
+        """
         return pulumi.get(self, "dedicated_cluster_id")
 
     @property
@@ -718,7 +749,7 @@ class FileSystem(pulumi.CustomResource):
     @pulumi.getter(name="protocolType")
     def protocol_type(self) -> pulumi.Output[str]:
         """
-        The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
+        The protocol type. Value: `HDFS`, `PANGU`.
         """
         return pulumi.get(self, "protocol_type")
 
@@ -729,6 +760,14 @@ class FileSystem(pulumi.CustomResource):
         Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
         """
         return pulumi.get(self, "provisioned_throughput_in_mi_bps")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.242.0) The region ID of the File System.
+        """
+        return pulumi.get(self, "region_id")
 
     @property
     @pulumi.getter(name="spaceCapacity")

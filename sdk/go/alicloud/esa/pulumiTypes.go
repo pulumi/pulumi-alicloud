@@ -13,6 +13,130 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type HttpRequestHeaderModificationRuleRequestHeaderModification struct {
+	// Request Header Name.
+	Name string `pulumi:"name"`
+	// Mode of operation. Value range:
+	// add: add.
+	// del: delete
+	// modify: change.
+	Operation string `pulumi:"operation"`
+	// Request header value
+	Value *string `pulumi:"value"`
+}
+
+// HttpRequestHeaderModificationRuleRequestHeaderModificationInput is an input type that accepts HttpRequestHeaderModificationRuleRequestHeaderModificationArgs and HttpRequestHeaderModificationRuleRequestHeaderModificationOutput values.
+// You can construct a concrete instance of `HttpRequestHeaderModificationRuleRequestHeaderModificationInput` via:
+//
+//	HttpRequestHeaderModificationRuleRequestHeaderModificationArgs{...}
+type HttpRequestHeaderModificationRuleRequestHeaderModificationInput interface {
+	pulumi.Input
+
+	ToHttpRequestHeaderModificationRuleRequestHeaderModificationOutput() HttpRequestHeaderModificationRuleRequestHeaderModificationOutput
+	ToHttpRequestHeaderModificationRuleRequestHeaderModificationOutputWithContext(context.Context) HttpRequestHeaderModificationRuleRequestHeaderModificationOutput
+}
+
+type HttpRequestHeaderModificationRuleRequestHeaderModificationArgs struct {
+	// Request Header Name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Mode of operation. Value range:
+	// add: add.
+	// del: delete
+	// modify: change.
+	Operation pulumi.StringInput `pulumi:"operation"`
+	// Request header value
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (HttpRequestHeaderModificationRuleRequestHeaderModificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRequestHeaderModificationRuleRequestHeaderModification)(nil)).Elem()
+}
+
+func (i HttpRequestHeaderModificationRuleRequestHeaderModificationArgs) ToHttpRequestHeaderModificationRuleRequestHeaderModificationOutput() HttpRequestHeaderModificationRuleRequestHeaderModificationOutput {
+	return i.ToHttpRequestHeaderModificationRuleRequestHeaderModificationOutputWithContext(context.Background())
+}
+
+func (i HttpRequestHeaderModificationRuleRequestHeaderModificationArgs) ToHttpRequestHeaderModificationRuleRequestHeaderModificationOutputWithContext(ctx context.Context) HttpRequestHeaderModificationRuleRequestHeaderModificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRequestHeaderModificationRuleRequestHeaderModificationOutput)
+}
+
+// HttpRequestHeaderModificationRuleRequestHeaderModificationArrayInput is an input type that accepts HttpRequestHeaderModificationRuleRequestHeaderModificationArray and HttpRequestHeaderModificationRuleRequestHeaderModificationArrayOutput values.
+// You can construct a concrete instance of `HttpRequestHeaderModificationRuleRequestHeaderModificationArrayInput` via:
+//
+//	HttpRequestHeaderModificationRuleRequestHeaderModificationArray{ HttpRequestHeaderModificationRuleRequestHeaderModificationArgs{...} }
+type HttpRequestHeaderModificationRuleRequestHeaderModificationArrayInput interface {
+	pulumi.Input
+
+	ToHttpRequestHeaderModificationRuleRequestHeaderModificationArrayOutput() HttpRequestHeaderModificationRuleRequestHeaderModificationArrayOutput
+	ToHttpRequestHeaderModificationRuleRequestHeaderModificationArrayOutputWithContext(context.Context) HttpRequestHeaderModificationRuleRequestHeaderModificationArrayOutput
+}
+
+type HttpRequestHeaderModificationRuleRequestHeaderModificationArray []HttpRequestHeaderModificationRuleRequestHeaderModificationInput
+
+func (HttpRequestHeaderModificationRuleRequestHeaderModificationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HttpRequestHeaderModificationRuleRequestHeaderModification)(nil)).Elem()
+}
+
+func (i HttpRequestHeaderModificationRuleRequestHeaderModificationArray) ToHttpRequestHeaderModificationRuleRequestHeaderModificationArrayOutput() HttpRequestHeaderModificationRuleRequestHeaderModificationArrayOutput {
+	return i.ToHttpRequestHeaderModificationRuleRequestHeaderModificationArrayOutputWithContext(context.Background())
+}
+
+func (i HttpRequestHeaderModificationRuleRequestHeaderModificationArray) ToHttpRequestHeaderModificationRuleRequestHeaderModificationArrayOutputWithContext(ctx context.Context) HttpRequestHeaderModificationRuleRequestHeaderModificationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRequestHeaderModificationRuleRequestHeaderModificationArrayOutput)
+}
+
+type HttpRequestHeaderModificationRuleRequestHeaderModificationOutput struct{ *pulumi.OutputState }
+
+func (HttpRequestHeaderModificationRuleRequestHeaderModificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRequestHeaderModificationRuleRequestHeaderModification)(nil)).Elem()
+}
+
+func (o HttpRequestHeaderModificationRuleRequestHeaderModificationOutput) ToHttpRequestHeaderModificationRuleRequestHeaderModificationOutput() HttpRequestHeaderModificationRuleRequestHeaderModificationOutput {
+	return o
+}
+
+func (o HttpRequestHeaderModificationRuleRequestHeaderModificationOutput) ToHttpRequestHeaderModificationRuleRequestHeaderModificationOutputWithContext(ctx context.Context) HttpRequestHeaderModificationRuleRequestHeaderModificationOutput {
+	return o
+}
+
+// Request Header Name.
+func (o HttpRequestHeaderModificationRuleRequestHeaderModificationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpRequestHeaderModificationRuleRequestHeaderModification) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Mode of operation. Value range:
+// add: add.
+// del: delete
+// modify: change.
+func (o HttpRequestHeaderModificationRuleRequestHeaderModificationOutput) Operation() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpRequestHeaderModificationRuleRequestHeaderModification) string { return v.Operation }).(pulumi.StringOutput)
+}
+
+// Request header value
+func (o HttpRequestHeaderModificationRuleRequestHeaderModificationOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRequestHeaderModificationRuleRequestHeaderModification) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type HttpRequestHeaderModificationRuleRequestHeaderModificationArrayOutput struct{ *pulumi.OutputState }
+
+func (HttpRequestHeaderModificationRuleRequestHeaderModificationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HttpRequestHeaderModificationRuleRequestHeaderModification)(nil)).Elem()
+}
+
+func (o HttpRequestHeaderModificationRuleRequestHeaderModificationArrayOutput) ToHttpRequestHeaderModificationRuleRequestHeaderModificationArrayOutput() HttpRequestHeaderModificationRuleRequestHeaderModificationArrayOutput {
+	return o
+}
+
+func (o HttpRequestHeaderModificationRuleRequestHeaderModificationArrayOutput) ToHttpRequestHeaderModificationRuleRequestHeaderModificationArrayOutputWithContext(ctx context.Context) HttpRequestHeaderModificationRuleRequestHeaderModificationArrayOutput {
+	return o
+}
+
+func (o HttpRequestHeaderModificationRuleRequestHeaderModificationArrayOutput) Index(i pulumi.IntInput) HttpRequestHeaderModificationRuleRequestHeaderModificationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HttpRequestHeaderModificationRuleRequestHeaderModification {
+		return vs[0].([]HttpRequestHeaderModificationRuleRequestHeaderModification)[vs[1].(int)]
+	}).(HttpRequestHeaderModificationRuleRequestHeaderModificationOutput)
+}
+
 type RecordAuthConf struct {
 	// The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
 	AccessKey *string `pulumi:"accessKey"`
@@ -647,10 +771,14 @@ func (o RecordDataPtrOutput) Weight() pulumi.IntPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRequestHeaderModificationRuleRequestHeaderModificationInput)(nil)).Elem(), HttpRequestHeaderModificationRuleRequestHeaderModificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRequestHeaderModificationRuleRequestHeaderModificationArrayInput)(nil)).Elem(), HttpRequestHeaderModificationRuleRequestHeaderModificationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecordAuthConfInput)(nil)).Elem(), RecordAuthConfArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecordAuthConfPtrInput)(nil)).Elem(), RecordAuthConfArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecordDataInput)(nil)).Elem(), RecordDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecordDataPtrInput)(nil)).Elem(), RecordDataArgs{})
+	pulumi.RegisterOutputType(HttpRequestHeaderModificationRuleRequestHeaderModificationOutput{})
+	pulumi.RegisterOutputType(HttpRequestHeaderModificationRuleRequestHeaderModificationArrayOutput{})
 	pulumi.RegisterOutputType(RecordAuthConfOutput{})
 	pulumi.RegisterOutputType(RecordAuthConfPtrOutput{})
 	pulumi.RegisterOutputType(RecordDataOutput{})

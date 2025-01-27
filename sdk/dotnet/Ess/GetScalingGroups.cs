@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Ess
         /// <summary>
         /// This data source provides available scaling group resources. 
         /// 
+        /// &gt; **NOTE:** Available since v1.39.0
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -21,17 +23,63 @@ namespace Pulumi.AliCloud.Ess
         /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
+        /// using Random = Pulumi.Random;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var defaultInteger = new Random.Index.Integer("default", new()
+        ///     {
+        ///         Min = 10000,
+        ///         Max = 99999,
+        ///     });
+        /// 
+        ///     var myName = $"{name}-{defaultInteger.Result}";
+        /// 
+        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableDiskCategory = "cloud_efficiency",
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+        ///     {
+        ///         VpcName = myName,
+        ///         CidrBlock = "172.16.0.0/16",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+        ///     {
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = "172.16.0.0/24",
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///         VswitchName = myName,
+        ///     });
+        /// 
+        ///     var defaultScalingGroup = new AliCloud.Ess.ScalingGroup("default", new()
+        ///     {
+        ///         MinSize = 1,
+        ///         MaxSize = 1,
+        ///         ScalingGroupName = myName,
+        ///         RemovalPolicies = new[]
+        ///         {
+        ///             "OldestInstance",
+        ///             "NewestInstance",
+        ///         },
+        ///         VswitchIds = new[]
+        ///         {
+        ///             defaultSwitch.Id,
+        ///         },
+        ///     });
+        /// 
         ///     var scalinggroupsDs = AliCloud.Ess.GetScalingGroups.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             "scaling_group_id1",
-        ///             "scaling_group_id2",
+        ///             defaultScalingGroup.Id,
         ///         },
-        ///         NameRegex = "scaling_group_name",
+        ///         NameRegex = myName,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -47,6 +95,8 @@ namespace Pulumi.AliCloud.Ess
         /// <summary>
         /// This data source provides available scaling group resources. 
         /// 
+        /// &gt; **NOTE:** Available since v1.39.0
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -54,17 +104,63 @@ namespace Pulumi.AliCloud.Ess
         /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
+        /// using Random = Pulumi.Random;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var defaultInteger = new Random.Index.Integer("default", new()
+        ///     {
+        ///         Min = 10000,
+        ///         Max = 99999,
+        ///     });
+        /// 
+        ///     var myName = $"{name}-{defaultInteger.Result}";
+        /// 
+        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableDiskCategory = "cloud_efficiency",
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+        ///     {
+        ///         VpcName = myName,
+        ///         CidrBlock = "172.16.0.0/16",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+        ///     {
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = "172.16.0.0/24",
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///         VswitchName = myName,
+        ///     });
+        /// 
+        ///     var defaultScalingGroup = new AliCloud.Ess.ScalingGroup("default", new()
+        ///     {
+        ///         MinSize = 1,
+        ///         MaxSize = 1,
+        ///         ScalingGroupName = myName,
+        ///         RemovalPolicies = new[]
+        ///         {
+        ///             "OldestInstance",
+        ///             "NewestInstance",
+        ///         },
+        ///         VswitchIds = new[]
+        ///         {
+        ///             defaultSwitch.Id,
+        ///         },
+        ///     });
+        /// 
         ///     var scalinggroupsDs = AliCloud.Ess.GetScalingGroups.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             "scaling_group_id1",
-        ///             "scaling_group_id2",
+        ///             defaultScalingGroup.Id,
         ///         },
-        ///         NameRegex = "scaling_group_name",
+        ///         NameRegex = myName,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -80,6 +176,8 @@ namespace Pulumi.AliCloud.Ess
         /// <summary>
         /// This data source provides available scaling group resources. 
         /// 
+        /// &gt; **NOTE:** Available since v1.39.0
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,17 +185,63 @@ namespace Pulumi.AliCloud.Ess
         /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
+        /// using Random = Pulumi.Random;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var defaultInteger = new Random.Index.Integer("default", new()
+        ///     {
+        ///         Min = 10000,
+        ///         Max = 99999,
+        ///     });
+        /// 
+        ///     var myName = $"{name}-{defaultInteger.Result}";
+        /// 
+        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableDiskCategory = "cloud_efficiency",
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+        ///     {
+        ///         VpcName = myName,
+        ///         CidrBlock = "172.16.0.0/16",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+        ///     {
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = "172.16.0.0/24",
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///         VswitchName = myName,
+        ///     });
+        /// 
+        ///     var defaultScalingGroup = new AliCloud.Ess.ScalingGroup("default", new()
+        ///     {
+        ///         MinSize = 1,
+        ///         MaxSize = 1,
+        ///         ScalingGroupName = myName,
+        ///         RemovalPolicies = new[]
+        ///         {
+        ///             "OldestInstance",
+        ///             "NewestInstance",
+        ///         },
+        ///         VswitchIds = new[]
+        ///         {
+        ///             defaultSwitch.Id,
+        ///         },
+        ///     });
+        /// 
         ///     var scalinggroupsDs = AliCloud.Ess.GetScalingGroups.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             "scaling_group_id1",
-        ///             "scaling_group_id2",
+        ///             defaultScalingGroup.Id,
         ///         },
-        ///         NameRegex = "scaling_group_name",
+        ///         NameRegex = myName,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;

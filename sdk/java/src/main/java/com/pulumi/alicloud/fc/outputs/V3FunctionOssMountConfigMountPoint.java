@@ -13,44 +13,44 @@ import javax.annotation.Nullable;
 @CustomType
 public final class V3FunctionOssMountConfigMountPoint {
     /**
-     * @return OSS Bucket name.
+     * @return OSS Bucket name
      * 
      */
     private @Nullable String bucketName;
     /**
-     * @return Path of the mounted OSS Bucket.
+     * @return Path of the mounted OSS Bucket
      * 
      */
     private @Nullable String bucketPath;
     /**
-     * @return OSS access endpoint.
+     * @return OSS access endpoint
      * 
      */
     private @Nullable String endpoint;
     private @Nullable String mountDir;
     /**
-     * @return Read-only.
+     * @return Read-only
      * 
      */
     private @Nullable Boolean readOnly;
 
     private V3FunctionOssMountConfigMountPoint() {}
     /**
-     * @return OSS Bucket name.
+     * @return OSS Bucket name
      * 
      */
     public Optional<String> bucketName() {
         return Optional.ofNullable(this.bucketName);
     }
     /**
-     * @return Path of the mounted OSS Bucket.
+     * @return Path of the mounted OSS Bucket
      * 
      */
     public Optional<String> bucketPath() {
         return Optional.ofNullable(this.bucketPath);
     }
     /**
-     * @return OSS access endpoint.
+     * @return OSS access endpoint
      * 
      */
     public Optional<String> endpoint() {
@@ -60,7 +60,7 @@ public final class V3FunctionOssMountConfigMountPoint {
         return Optional.ofNullable(this.mountDir);
     }
     /**
-     * @return Read-only.
+     * @return Read-only
      * 
      */
     public Optional<Boolean> readOnly() {

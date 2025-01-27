@@ -13,19 +13,19 @@ namespace Pulumi.AliCloud.FC.Inputs
     public sealed class V3FunctionOssMountConfigMountPointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// OSS Bucket name.
+        /// OSS Bucket name
         /// </summary>
         [Input("bucketName")]
         public Input<string>? BucketName { get; set; }
 
         /// <summary>
-        /// Path of the mounted OSS Bucket.
+        /// Path of the mounted OSS Bucket
         /// </summary>
         [Input("bucketPath")]
         public Input<string>? BucketPath { get; set; }
 
         /// <summary>
-        /// OSS access endpoint.
+        /// OSS access endpoint
         /// </summary>
         [Input("endpoint")]
         public Input<string>? Endpoint { get; set; }
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.FC.Inputs
         public Input<string>? MountDir { get; set; }
 
         /// <summary>
-        /// Read-only.
+        /// Read-only
         /// </summary>
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }

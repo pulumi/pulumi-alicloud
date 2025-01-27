@@ -17,14 +17,14 @@ public final class V3FunctionGpuConfigArgs extends com.pulumi.resources.Resource
     public static final V3FunctionGpuConfigArgs Empty = new V3FunctionGpuConfigArgs();
 
     /**
-     * GPU memory specification, unit: MB, multiple of 1024MB.
+     * GPU memory specification, unit: MB, multiple of 1024MB
      * 
      */
     @Import(name="gpuMemorySize")
     private @Nullable Output<Integer> gpuMemorySize;
 
     /**
-     * @return GPU memory specification, unit: MB, multiple of 1024MB.
+     * @return GPU memory specification, unit: MB, multiple of 1024MB
      * 
      */
     public Optional<Output<Integer>> gpuMemorySize() {
@@ -33,9 +33,9 @@ public final class V3FunctionGpuConfigArgs extends com.pulumi.resources.Resource
 
     /**
      * GPU card architecture.
-     * - fc.gpu.tesla indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
-     * - fc.gpu.ampere indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
-     * - fc.gpu.ada Indicates the GPU instance Ada Lovelace architecture family card type.
+     * - fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
+     * - fc.gpu.ampere.1 indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
+     * - fc.gpu.ada.1 Indicates the GPU instance Ada Lovelace architecture family card type.
      * 
      */
     @Import(name="gpuType")
@@ -43,9 +43,9 @@ public final class V3FunctionGpuConfigArgs extends com.pulumi.resources.Resource
 
     /**
      * @return GPU card architecture.
-     * - fc.gpu.tesla indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
-     * - fc.gpu.ampere indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
-     * - fc.gpu.ada Indicates the GPU instance Ada Lovelace architecture family card type.
+     * - fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
+     * - fc.gpu.ampere.1 indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
+     * - fc.gpu.ada.1 Indicates the GPU instance Ada Lovelace architecture family card type.
      * 
      */
     public Optional<Output<String>> gpuType() {
@@ -78,7 +78,7 @@ public final class V3FunctionGpuConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param gpuMemorySize GPU memory specification, unit: MB, multiple of 1024MB.
+         * @param gpuMemorySize GPU memory specification, unit: MB, multiple of 1024MB
          * 
          * @return builder
          * 
@@ -89,7 +89,7 @@ public final class V3FunctionGpuConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param gpuMemorySize GPU memory specification, unit: MB, multiple of 1024MB.
+         * @param gpuMemorySize GPU memory specification, unit: MB, multiple of 1024MB
          * 
          * @return builder
          * 
@@ -100,9 +100,9 @@ public final class V3FunctionGpuConfigArgs extends com.pulumi.resources.Resource
 
         /**
          * @param gpuType GPU card architecture.
-         * - fc.gpu.tesla indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
-         * - fc.gpu.ampere indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
-         * - fc.gpu.ada Indicates the GPU instance Ada Lovelace architecture family card type.
+         * - fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
+         * - fc.gpu.ampere.1 indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
+         * - fc.gpu.ada.1 Indicates the GPU instance Ada Lovelace architecture family card type.
          * 
          * @return builder
          * 
@@ -114,9 +114,9 @@ public final class V3FunctionGpuConfigArgs extends com.pulumi.resources.Resource
 
         /**
          * @param gpuType GPU card architecture.
-         * - fc.gpu.tesla indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
-         * - fc.gpu.ampere indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
-         * - fc.gpu.ada Indicates the GPU instance Ada Lovelace architecture family card type.
+         * - fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
+         * - fc.gpu.ampere.1 indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
+         * - fc.gpu.ada.1 Indicates the GPU instance Ada Lovelace architecture family card type.
          * 
          * @return builder
          * 

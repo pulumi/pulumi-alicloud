@@ -333,22 +333,22 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.kmsEncryptionContext);
     }
     /**
-     * The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+     * The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
      * 
      * @deprecated
-     * Field &#39;load_balancer_spec&#39; has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
+     * Field &#39;load_balancer_spec&#39; has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU
      * 
      */
-    @Deprecated /* Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore. */
+    @Deprecated /* Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU */
     @Export(name="loadBalancerSpec", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> loadBalancerSpec;
+    private Output<String> loadBalancerSpec;
 
     /**
-     * @return The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+     * @return The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
      * 
      */
-    public Output<Optional<String>> loadBalancerSpec() {
-        return Codegen.optional(this.loadBalancerSpec);
+    public Output<String> loadBalancerSpec() {
+        return this.loadBalancerSpec;
     }
     /**
      * Enable master payment auto-renew, defaults to false.

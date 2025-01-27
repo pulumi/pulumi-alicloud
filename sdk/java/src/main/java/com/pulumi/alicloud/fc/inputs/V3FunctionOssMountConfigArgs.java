@@ -17,14 +17,14 @@ public final class V3FunctionOssMountConfigArgs extends com.pulumi.resources.Res
     public static final V3FunctionOssMountConfigArgs Empty = new V3FunctionOssMountConfigArgs();
 
     /**
-     * OSS mount point list. See `mount_points` below.
+     * OSS mount point list See `mount_points` below.
      * 
      */
     @Import(name="mountPoints")
     private @Nullable Output<List<V3FunctionOssMountConfigMountPointArgs>> mountPoints;
 
     /**
-     * @return OSS mount point list. See `mount_points` below.
+     * @return OSS mount point list See `mount_points` below.
      * 
      */
     public Optional<Output<List<V3FunctionOssMountConfigMountPointArgs>>> mountPoints() {
@@ -56,7 +56,7 @@ public final class V3FunctionOssMountConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param mountPoints OSS mount point list. See `mount_points` below.
+         * @param mountPoints OSS mount point list See `mount_points` below.
          * 
          * @return builder
          * 
@@ -67,7 +67,7 @@ public final class V3FunctionOssMountConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param mountPoints OSS mount point list. See `mount_points` below.
+         * @param mountPoints OSS mount point list See `mount_points` below.
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class V3FunctionOssMountConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param mountPoints OSS mount point list. See `mount_points` below.
+         * @param mountPoints OSS mount point list See `mount_points` below.
          * 
          * @return builder
          * 

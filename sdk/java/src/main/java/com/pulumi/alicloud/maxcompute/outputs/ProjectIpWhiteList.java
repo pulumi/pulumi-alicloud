@@ -12,26 +12,34 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ProjectIpWhiteList {
     /**
-     * @return Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.&gt; **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
+     * @return Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.
+     * 
+     * &gt; **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
      * 
      */
     private @Nullable String ipList;
     /**
-     * @return Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.&gt; **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
+     * @return Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.
+     * 
+     * &gt; **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
      * 
      */
     private @Nullable String vpcIpList;
 
     private ProjectIpWhiteList() {}
     /**
-     * @return Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.&gt; **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
+     * @return Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.
+     * 
+     * &gt; **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
      * 
      */
     public Optional<String> ipList() {
         return Optional.ofNullable(this.ipList);
     }
     /**
-     * @return Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.&gt; **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
+     * @return Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.
+     * 
+     * &gt; **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
      * 
      */
     public Optional<String> vpcIpList() {

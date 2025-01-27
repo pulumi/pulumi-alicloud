@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Alb.Outputs
     public sealed class LoadBalancerModificationProtectionConfig
     {
         /// <summary>
-        /// The reason for enabling the configuration read-only mode. **NOTE:** `reason` takes effect only if `status` is set to `ConsoleProtection`.
+        /// Managed Instance
         /// </summary>
         public readonly string? Reason;
         /// <summary>
-        /// Specifies whether to enable the configuration read-only mode. Valid values: `ConsoleProtection`, `NonProtection`.
+        /// Load Balancing Modify the Protection Status
         /// </summary>
         public readonly string? Status;
 

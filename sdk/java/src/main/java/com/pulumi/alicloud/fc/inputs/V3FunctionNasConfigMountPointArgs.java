@@ -39,14 +39,14 @@ public final class V3FunctionNasConfigMountPointArgs extends com.pulumi.resource
     }
 
     /**
-     * NAS server address.
+     * NAS server address
      * 
      */
     @Import(name="serverAddr")
     private @Nullable Output<String> serverAddr;
 
     /**
-     * @return NAS server address.
+     * @return NAS server address
      * 
      */
     public Optional<Output<String>> serverAddr() {
@@ -110,7 +110,7 @@ public final class V3FunctionNasConfigMountPointArgs extends com.pulumi.resource
         }
 
         /**
-         * @param serverAddr NAS server address.
+         * @param serverAddr NAS server address
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class V3FunctionNasConfigMountPointArgs extends com.pulumi.resource
         }
 
         /**
-         * @param serverAddr NAS server address.
+         * @param serverAddr NAS server address
          * 
          * @return builder
          * 

@@ -19,7 +19,9 @@ namespace Pulumi.AliCloud.MaxCompute.Inputs
         public Input<string>? Algorithm { get; set; }
 
         /// <summary>
-        /// Only enable function is supported. Value: (true).
+        /// Only enable function is supported. Value: (true)
+        /// 
+        /// &gt; **NOTE:** cannot be turned off after the function is turned on
         /// </summary>
         [Input("enable")]
         public Input<bool>? Enable { get; set; }

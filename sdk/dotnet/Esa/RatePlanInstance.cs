@@ -10,6 +10,40 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Esa
 {
     /// <summary>
+    /// Provides a ESA Rate Plan Instance resource.
+    /// 
+    /// For information about ESA Rate Plan Instance and how to use it, see [What is Rate Plan Instance](https://www.alibabacloud.com/help/en/).
+    /// 
+    /// &gt; **NOTE:** Available since v1.234.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new AliCloud.Esa.RatePlanInstance("default", new()
+    ///     {
+    ///         Type = "NS",
+    ///         AutoRenew = true,
+    ///         Period = 1,
+    ///         PaymentType = "Subscription",
+    ///         Coverage = "overseas",
+    ///         PlanName = "basic",
+    ///         AutoPay = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ESA Rate Plan Instance can be imported using the id, e.g.
@@ -62,7 +96,7 @@ namespace Pulumi.AliCloud.Esa
         public Output<string> InstanceStatus { get; private set; } = null!;
 
         /// <summary>
-        /// The payment type of the resource, Valid vales: Subscription.
+        /// The payment type of the resource
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
@@ -170,7 +204,7 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? Coverage { get; set; }
 
         /// <summary>
-        /// The payment type of the resource, Valid vales: Subscription.
+        /// The payment type of the resource
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
@@ -246,7 +280,7 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? InstanceStatus { get; set; }
 
         /// <summary>
-        /// The payment type of the resource, Valid vales: Subscription.
+        /// The payment type of the resource
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }

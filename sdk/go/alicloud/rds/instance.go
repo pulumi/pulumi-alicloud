@@ -46,6 +46,11 @@ type Instance struct {
 	//
 	// > **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
 	BabelfishPort pulumi.StringOutput `pulumi:"babelfishPort"`
+	// Specifies whether to enable the I/O burst feature of general
+	// ESSDs. Valid values:
+	// - true
+	// - false
+	BurstingEnabled pulumi.BoolPtrOutput `pulumi:"burstingEnabled"`
 	// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `caType` start  support `MySQL` engine. Value range:
 	// - aliyun: a cloud certificate
 	// - custom: a custom certificate
@@ -427,6 +432,11 @@ type instanceState struct {
 	//
 	// > **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
 	BabelfishPort *string `pulumi:"babelfishPort"`
+	// Specifies whether to enable the I/O burst feature of general
+	// ESSDs. Valid values:
+	// - true
+	// - false
+	BurstingEnabled *bool `pulumi:"burstingEnabled"`
 	// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `caType` start  support `MySQL` engine. Value range:
 	// - aliyun: a cloud certificate
 	// - custom: a custom certificate
@@ -756,6 +766,11 @@ type InstanceState struct {
 	//
 	// > **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
 	BabelfishPort pulumi.StringPtrInput
+	// Specifies whether to enable the I/O burst feature of general
+	// ESSDs. Valid values:
+	// - true
+	// - false
+	BurstingEnabled pulumi.BoolPtrInput
 	// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `caType` start  support `MySQL` engine. Value range:
 	// - aliyun: a cloud certificate
 	// - custom: a custom certificate
@@ -1089,6 +1104,11 @@ type instanceArgs struct {
 	//
 	// > **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
 	BabelfishPort *string `pulumi:"babelfishPort"`
+	// Specifies whether to enable the I/O burst feature of general
+	// ESSDs. Valid values:
+	// - true
+	// - false
+	BurstingEnabled *bool `pulumi:"burstingEnabled"`
 	// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `caType` start  support `MySQL` engine. Value range:
 	// - aliyun: a cloud certificate
 	// - custom: a custom certificate
@@ -1409,6 +1429,11 @@ type InstanceArgs struct {
 	//
 	// > **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
 	BabelfishPort pulumi.StringPtrInput
+	// Specifies whether to enable the I/O burst feature of general
+	// ESSDs. Valid values:
+	// - true
+	// - false
+	BurstingEnabled pulumi.BoolPtrInput
 	// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `caType` start  support `MySQL` engine. Value range:
 	// - aliyun: a cloud certificate
 	// - custom: a custom certificate
@@ -1830,6 +1855,14 @@ func (o InstanceOutput) BabelfishConfigs() InstanceBabelfishConfigArrayOutput {
 // > **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
 func (o InstanceOutput) BabelfishPort() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.BabelfishPort }).(pulumi.StringOutput)
+}
+
+// Specifies whether to enable the I/O burst feature of general
+// ESSDs. Valid values:
+// - true
+// - false
+func (o InstanceOutput) BurstingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.BurstingEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `caType` start  support `MySQL` engine. Value range:

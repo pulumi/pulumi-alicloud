@@ -687,6 +687,29 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The name of the Worker RAM role.
+     * * If it is empty, the default Worker RAM role created in the cluster will be used.
+     * * If the specified RAM role is not empty, the specified RAM role must be a **Common Service role**, and its **trusted service** configuration must be **cloud server**. For more information, see [Create a common service role](https://help.aliyun.com/document_detail/116800.html). If the specified RAM role is not the default Worker RAM role created in the cluster, the role name cannot start with &#39;KubernetesMasterRole-&#39;or &#39;KubernetesWorkerRole.
+     * 
+     * &gt; **NOTE:**  This parameter is only supported for ACK-managed clusters of 1.22 or later versions.
+     * 
+     */
+    @Import(name="ramRoleName")
+    private @Nullable Output<String> ramRoleName;
+
+    /**
+     * @return The name of the Worker RAM role.
+     * * If it is empty, the default Worker RAM role created in the cluster will be used.
+     * * If the specified RAM role is not empty, the specified RAM role must be a **Common Service role**, and its **trusted service** configuration must be **cloud server**. For more information, see [Create a common service role](https://help.aliyun.com/document_detail/116800.html). If the specified RAM role is not the default Worker RAM role created in the cluster, the role name cannot start with &#39;KubernetesMasterRole-&#39;or &#39;KubernetesWorkerRole.
+     * 
+     * &gt; **NOTE:**  This parameter is only supported for ACK-managed clusters of 1.22 or later versions.
+     * 
+     */
+    public Optional<Output<String>> ramRoleName() {
+        return Optional.ofNullable(this.ramRoleName);
+    }
+
+    /**
      * The list of RDS instances.
      * 
      */
@@ -1235,6 +1258,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         this.platform = $.platform;
         this.preUserData = $.preUserData;
         this.privatePoolOptions = $.privatePoolOptions;
+        this.ramRoleName = $.ramRoleName;
         this.rdsInstances = $.rdsInstances;
         this.resourceGroupId = $.resourceGroupId;
         this.rollingPolicy = $.rollingPolicy;
@@ -2221,6 +2245,35 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder privatePoolOptions(NodePoolPrivatePoolOptionsArgs privatePoolOptions) {
             return privatePoolOptions(Output.of(privatePoolOptions));
+        }
+
+        /**
+         * @param ramRoleName The name of the Worker RAM role.
+         * * If it is empty, the default Worker RAM role created in the cluster will be used.
+         * * If the specified RAM role is not empty, the specified RAM role must be a **Common Service role**, and its **trusted service** configuration must be **cloud server**. For more information, see [Create a common service role](https://help.aliyun.com/document_detail/116800.html). If the specified RAM role is not the default Worker RAM role created in the cluster, the role name cannot start with &#39;KubernetesMasterRole-&#39;or &#39;KubernetesWorkerRole.
+         * 
+         * &gt; **NOTE:**  This parameter is only supported for ACK-managed clusters of 1.22 or later versions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ramRoleName(@Nullable Output<String> ramRoleName) {
+            $.ramRoleName = ramRoleName;
+            return this;
+        }
+
+        /**
+         * @param ramRoleName The name of the Worker RAM role.
+         * * If it is empty, the default Worker RAM role created in the cluster will be used.
+         * * If the specified RAM role is not empty, the specified RAM role must be a **Common Service role**, and its **trusted service** configuration must be **cloud server**. For more information, see [Create a common service role](https://help.aliyun.com/document_detail/116800.html). If the specified RAM role is not the default Worker RAM role created in the cluster, the role name cannot start with &#39;KubernetesMasterRole-&#39;or &#39;KubernetesWorkerRole.
+         * 
+         * &gt; **NOTE:**  This parameter is only supported for ACK-managed clusters of 1.22 or later versions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ramRoleName(String ramRoleName) {
+            return ramRoleName(Output.of(ramRoleName));
         }
 
         /**

@@ -28,24 +28,29 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var example = new AliCloud.Cen.Instance("example", new()
     ///     {
-    ///         CenInstanceName = "tf_example",
-    ///         Description = "an example for cen",
+    ///         CenInstanceName = name,
     ///     });
     /// 
     ///     var exampleTransitRouter = new AliCloud.Cen.TransitRouter("example", new()
     ///     {
-    ///         TransitRouterName = "tf_example",
+    ///         TransitRouterName = name,
     ///         CenId = example.Id,
     ///         SupportMulticast = true,
     ///     });
     /// 
-    ///     var exampleTransitRouterMulticastDomain = new AliCloud.Cen.TransitRouterMulticastDomain("example", new()
+    ///     var @default = new AliCloud.Cen.TransitRouterMulticastDomain("default", new()
     ///     {
     ///         TransitRouterId = exampleTransitRouter.TransitRouterId,
-    ///         TransitRouterMulticastDomainName = "tf_example",
-    ///         TransitRouterMulticastDomainDescription = "tf_example",
+    ///         TransitRouterMulticastDomainName = name,
+    ///         TransitRouterMulticastDomainDescription = name,
+    ///         Options = new AliCloud.Cen.Inputs.TransitRouterMulticastDomainOptionsArgs
+    ///         {
+    ///             Igmpv2Support = "disable",
+    ///         },
     ///     });
     /// 
     /// });
@@ -63,6 +68,18 @@ namespace Pulumi.AliCloud.Cen
     public partial class TransitRouterMulticastDomain : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The function options of the multicast domain. See `options` below.
+        /// </summary>
+        [Output("options")]
+        public Output<Outputs.TransitRouterMulticastDomainOptions> Options { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.242.0) The region ID of the transit router.
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
+
+        /// <summary>
         /// The status of the Transit Router Multicast Domain.
         /// </summary>
         [Output("status")]
@@ -75,19 +92,19 @@ namespace Pulumi.AliCloud.Cen
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the transit router.
+        /// The ID of the forwarding router instance.
         /// </summary>
         [Output("transitRouterId")]
         public Output<string> TransitRouterId { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+        /// The description of the multicast domain.
         /// </summary>
         [Output("transitRouterMulticastDomainDescription")]
         public Output<string?> TransitRouterMulticastDomainDescription { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+        /// The name of the multicast domain.
         /// </summary>
         [Output("transitRouterMulticastDomainName")]
         public Output<string?> TransitRouterMulticastDomainName { get; private set; } = null!;
@@ -138,6 +155,12 @@ namespace Pulumi.AliCloud.Cen
 
     public sealed class TransitRouterMulticastDomainArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The function options of the multicast domain. See `options` below.
+        /// </summary>
+        [Input("options")]
+        public Input<Inputs.TransitRouterMulticastDomainOptionsArgs>? Options { get; set; }
+
         [Input("tags")]
         private InputMap<string>? _tags;
 
@@ -151,19 +174,19 @@ namespace Pulumi.AliCloud.Cen
         }
 
         /// <summary>
-        /// The ID of the transit router.
+        /// The ID of the forwarding router instance.
         /// </summary>
         [Input("transitRouterId", required: true)]
         public Input<string> TransitRouterId { get; set; } = null!;
 
         /// <summary>
-        /// The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+        /// The description of the multicast domain.
         /// </summary>
         [Input("transitRouterMulticastDomainDescription")]
         public Input<string>? TransitRouterMulticastDomainDescription { get; set; }
 
         /// <summary>
-        /// The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+        /// The name of the multicast domain.
         /// </summary>
         [Input("transitRouterMulticastDomainName")]
         public Input<string>? TransitRouterMulticastDomainName { get; set; }
@@ -176,6 +199,18 @@ namespace Pulumi.AliCloud.Cen
 
     public sealed class TransitRouterMulticastDomainState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The function options of the multicast domain. See `options` below.
+        /// </summary>
+        [Input("options")]
+        public Input<Inputs.TransitRouterMulticastDomainOptionsGetArgs>? Options { get; set; }
+
+        /// <summary>
+        /// (Available since v1.242.0) The region ID of the transit router.
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
+
         /// <summary>
         /// The status of the Transit Router Multicast Domain.
         /// </summary>
@@ -195,19 +230,19 @@ namespace Pulumi.AliCloud.Cen
         }
 
         /// <summary>
-        /// The ID of the transit router.
+        /// The ID of the forwarding router instance.
         /// </summary>
         [Input("transitRouterId")]
         public Input<string>? TransitRouterId { get; set; }
 
         /// <summary>
-        /// The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+        /// The description of the multicast domain.
         /// </summary>
         [Input("transitRouterMulticastDomainDescription")]
         public Input<string>? TransitRouterMulticastDomainDescription { get; set; }
 
         /// <summary>
-        /// The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+        /// The name of the multicast domain.
         /// </summary>
         [Input("transitRouterMulticastDomainName")]
         public Input<string>? TransitRouterMulticastDomainName { get; set; }

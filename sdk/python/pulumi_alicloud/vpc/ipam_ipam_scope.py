@@ -23,6 +23,7 @@ class IpamIpamScopeArgs:
                  ipam_scope_description: Optional[pulumi.Input[str]] = None,
                  ipam_scope_name: Optional[pulumi.Input[str]] = None,
                  ipam_scope_type: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a IpamIpamScope resource.
@@ -36,6 +37,7 @@ class IpamIpamScopeArgs:
                
                
                > **NOTE:**  Currently, only the role scope of the private network is supported.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         """
         pulumi.set(__self__, "ipam_id", ipam_id)
@@ -45,6 +47,8 @@ class IpamIpamScopeArgs:
             pulumi.set(__self__, "ipam_scope_name", ipam_scope_name)
         if ipam_scope_type is not None:
             pulumi.set(__self__, "ipam_scope_type", ipam_scope_type)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -103,6 +107,18 @@ class IpamIpamScopeArgs:
         pulumi.set(self, "ipam_scope_type", value)
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -124,6 +140,7 @@ class _IpamIpamScopeState:
                  ipam_scope_name: Optional[pulumi.Input[str]] = None,
                  ipam_scope_type: Optional[pulumi.Input[str]] = None,
                  region_id: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
@@ -140,6 +157,7 @@ class _IpamIpamScopeState:
                
                > **NOTE:**  Currently, only the role scope of the private network is supported.
         :param pulumi.Input[str] region_id: The region ID of the resource.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         """
@@ -155,6 +173,8 @@ class _IpamIpamScopeState:
             pulumi.set(__self__, "ipam_scope_type", ipam_scope_type)
         if region_id is not None:
             pulumi.set(__self__, "region_id", region_id)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if tags is not None:
@@ -239,6 +259,18 @@ class _IpamIpamScopeState:
         pulumi.set(self, "region_id", value)
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -272,6 +304,7 @@ class IpamIpamScope(pulumi.CustomResource):
                  ipam_scope_description: Optional[pulumi.Input[str]] = None,
                  ipam_scope_name: Optional[pulumi.Input[str]] = None,
                  ipam_scope_type: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -325,6 +358,7 @@ class IpamIpamScope(pulumi.CustomResource):
                
                
                > **NOTE:**  Currently, only the role scope of the private network is supported.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         """
         ...
@@ -391,6 +425,7 @@ class IpamIpamScope(pulumi.CustomResource):
                  ipam_scope_description: Optional[pulumi.Input[str]] = None,
                  ipam_scope_name: Optional[pulumi.Input[str]] = None,
                  ipam_scope_type: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -407,6 +442,7 @@ class IpamIpamScope(pulumi.CustomResource):
             __props__.__dict__["ipam_scope_description"] = ipam_scope_description
             __props__.__dict__["ipam_scope_name"] = ipam_scope_name
             __props__.__dict__["ipam_scope_type"] = ipam_scope_type
+            __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["tags"] = tags
             __props__.__dict__["create_time"] = None
             __props__.__dict__["region_id"] = None
@@ -427,6 +463,7 @@ class IpamIpamScope(pulumi.CustomResource):
             ipam_scope_name: Optional[pulumi.Input[str]] = None,
             ipam_scope_type: Optional[pulumi.Input[str]] = None,
             region_id: Optional[pulumi.Input[str]] = None,
+            resource_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'IpamIpamScope':
         """
@@ -448,6 +485,7 @@ class IpamIpamScope(pulumi.CustomResource):
                
                > **NOTE:**  Currently, only the role scope of the private network is supported.
         :param pulumi.Input[str] region_id: The region ID of the resource.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         """
@@ -461,6 +499,7 @@ class IpamIpamScope(pulumi.CustomResource):
         __props__.__dict__["ipam_scope_name"] = ipam_scope_name
         __props__.__dict__["ipam_scope_type"] = ipam_scope_type
         __props__.__dict__["region_id"] = region_id
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
         return IpamIpamScope(resource_name, opts=opts, __props__=__props__)
@@ -518,6 +557,14 @@ class IpamIpamScope(pulumi.CustomResource):
         The region ID of the resource.
         """
         return pulumi.get(self, "region_id")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter

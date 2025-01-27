@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.FC.Inputs
     public sealed class V3FunctionNasConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Group ID.
+        /// Group ID
         /// </summary>
         [Input("groupId")]
         public Input<int>? GroupId { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.FC.Inputs
         private InputList<Inputs.V3FunctionNasConfigMountPointGetArgs>? _mountPoints;
 
         /// <summary>
-        /// Mount point list. See `mount_points` below.
+        /// Mount point list See `mount_points` below.
         /// </summary>
         public InputList<Inputs.V3FunctionNasConfigMountPointGetArgs> MountPoints
         {
@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.FC.Inputs
         }
 
         /// <summary>
-        /// Account ID.
+        /// Account ID
         /// </summary>
         [Input("userId")]
         public Input<int>? UserId { get; set; }

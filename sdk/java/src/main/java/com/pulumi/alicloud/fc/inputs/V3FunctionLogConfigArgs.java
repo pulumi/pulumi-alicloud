@@ -47,14 +47,14 @@ public final class V3FunctionLogConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Log Line First Matching Rules.
+     * Log Line First Matching Rules
      * 
      */
     @Import(name="logBeginRule")
     private @Nullable Output<String> logBeginRule;
 
     /**
-     * @return Log Line First Matching Rules.
+     * @return Log Line First Matching Rules
      * 
      */
     public Optional<Output<String>> logBeginRule() {
@@ -162,7 +162,7 @@ public final class V3FunctionLogConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param logBeginRule Log Line First Matching Rules.
+         * @param logBeginRule Log Line First Matching Rules
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class V3FunctionLogConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param logBeginRule Log Line First Matching Rules.
+         * @param logBeginRule Log Line First Matching Rules
          * 
          * @return builder
          * 

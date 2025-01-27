@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Alb
 {
     /// <summary>
-    /// Provides an ALB Server Group resource.
+    /// Provides a Application Load Balancer (ALB) Server Group resource.
     /// 
-    /// For information about ALB Server Group and how to use it, see [What is Server Group](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createservergroup).
+    /// For information about Application Load Balancer (ALB) Server Group and how to use it, see [What is Server Group](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createservergroup).
     /// 
     /// &gt; **NOTE:** Available since v1.131.0.
     /// 
@@ -139,7 +139,7 @@ namespace Pulumi.AliCloud.Alb
     /// 
     /// ## Import
     /// 
-    /// ALB Server Group can be imported using the id, e.g.
+    /// Application Load Balancer (ALB) Server Group can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:alb/serverGroup:ServerGroup example &lt;id&gt;
@@ -149,44 +149,81 @@ namespace Pulumi.AliCloud.Alb
     public partial class ServerGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The dry run.
+        /// Elegant interrupt configuration. See `connection_drain_config` below.
         /// </summary>
-        [Output("dryRun")]
-        public Output<bool?> DryRun { get; private set; } = null!;
+        [Output("connectionDrainConfig")]
+        public Output<Outputs.ServerGroupConnectionDrainConfig?> ConnectionDrainConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of health checks. See `health_check_config` below.
+        /// The creation time of the resource
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether cross-zone load balancing is enabled for the server group. Valid values:
+        /// </summary>
+        [Output("crossZoneEnabled")]
+        public Output<bool> CrossZoneEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// The configuration of health checks See `health_check_config` below.
         /// </summary>
         [Output("healthCheckConfig")]
         public Output<Outputs.ServerGroupHealthCheckConfig> HealthCheckConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The server protocol. Valid values: ` HTTP`, `HTTPS`, `gRPC`. While `server_group_type` is `Fc` this parameter will not take effect. From version 1.215.0, `protocol` can be set to `gRPC`.
+        /// The template ID.
+        /// </summary>
+        [Output("healthCheckTemplateId")]
+        public Output<string?> HealthCheckTemplateId { get; private set; } = null!;
+
+        /// <summary>
+        /// The backend protocol. Valid values:
+        /// 
+        /// *   `HTTP`: allows you to associate an HTTPS, HTTP, or QUIC listener with the server group. This is the default value.
+        /// 
+        /// *   `HTTPS`: allows you to associate HTTPS listeners with backend servers.
+        /// 
+        /// *   `gRPC`: allows you to associate an HTTPS or QUIC listener with the server group.
+        /// 
+        /// &gt; **NOTE:**   You do not need to specify a backend protocol if you set `ServerGroupType` to `Fc`.
         /// </summary>
         [Output("protocol")]
         public Output<string> Protocol { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the resource group.
+        /// The ID of the resource group to which you want to transfer the cloud resource.
+        /// 
+        /// &gt; **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The scheduling algorithm. Valid values: ` Sch`, ` Wlc`, `Wrr`. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
+        /// The scheduling algorithm. Valid values:
+        /// 
+        /// *   `Wrr` (default): The weighted round-robin algorithm is used. Backend servers that have higher weights receive more requests than those that have lower weights.
+        /// 
+        /// *   `Wlc`: The weighted least connections algorithm is used. Requests are distributed based on the weights and the number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections is expected to receive more requests.
+        /// 
+        /// *   `Sch`: The consistent hashing algorithm is used. Requests from the same source IP address are distributed to the same backend server.
+        /// 
+        /// &gt; **NOTE:**  This parameter takes effect when the `ServerGroupType` parameter is set to `Instance` or `Ip`.
         /// </summary>
         [Output("scheduler")]
         public Output<string> Scheduler { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the server group.
+        /// The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
         /// </summary>
         [Output("serverGroupName")]
         public Output<string> ServerGroupName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the server group. Default value: `Instance`. Valid values:
-        /// - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+        /// The type of server group. Valid values:
+        /// 
+        /// - `Instance` (default): allows you to add servers by specifying `Ecs`, `Eni`, or `Eci`.
         /// - `Ip`: allows you to add servers by specifying IP addresses.
         /// - `Fc`: allows you to add servers by specifying functions of Function Compute.
         /// </summary>
@@ -194,31 +231,51 @@ namespace Pulumi.AliCloud.Alb
         public Output<string> ServerGroupType { get; private set; } = null!;
 
         /// <summary>
-        /// The backend servers. See `servers` below.
+        /// List of servers. See `servers` below.
         /// </summary>
         [Output("servers")]
         public Output<ImmutableArray<Outputs.ServerGroupServer>> Servers { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the backend server.
+        /// Slow start configuration. See `slow_start_config` below.
+        /// </summary>
+        [Output("slowStartConfig")]
+        public Output<Outputs.ServerGroupSlowStartConfig?> SlowStartConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of the resource
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of session persistence. See `sticky_session_config` below.
+        /// The configuration of the sticky session See `sticky_session_config` below.
         /// </summary>
         [Output("stickySessionConfig")]
-        public Output<Outputs.ServerGroupStickySessionConfig> StickySessionConfig { get; private set; } = null!;
+        public Output<Outputs.ServerGroupStickySessionConfig?> StickySessionConfig { get; private set; } = null!;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tag of the resource
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
+        /// Url consistency hash parameter configuration See `uch_config` below.
+        /// </summary>
+        [Output("uchConfig")]
+        public Output<Outputs.ServerGroupUchConfig?> UchConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to enable persistent TCP connections.
+        /// </summary>
+        [Output("upstreamKeepaliveEnabled")]
+        public Output<bool?> UpstreamKeepaliveEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the virtual private cloud (VPC). You can add only servers that are deployed in the specified VPC to the server group.
+        /// 
+        /// &gt; **NOTE:**   This parameter takes effect when the `ServerGroupType` parameter is set to `Instance` or `Ip`.
         /// </summary>
         [Output("vpcId")]
         public Output<string?> VpcId { get; private set; } = null!;
@@ -270,44 +327,75 @@ namespace Pulumi.AliCloud.Alb
     public sealed class ServerGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The dry run.
+        /// Elegant interrupt configuration. See `connection_drain_config` below.
         /// </summary>
-        [Input("dryRun")]
-        public Input<bool>? DryRun { get; set; }
+        [Input("connectionDrainConfig")]
+        public Input<Inputs.ServerGroupConnectionDrainConfigArgs>? ConnectionDrainConfig { get; set; }
 
         /// <summary>
-        /// The configuration of health checks. See `health_check_config` below.
+        /// Indicates whether cross-zone load balancing is enabled for the server group. Valid values:
+        /// </summary>
+        [Input("crossZoneEnabled")]
+        public Input<bool>? CrossZoneEnabled { get; set; }
+
+        /// <summary>
+        /// The configuration of health checks See `health_check_config` below.
         /// </summary>
         [Input("healthCheckConfig", required: true)]
         public Input<Inputs.ServerGroupHealthCheckConfigArgs> HealthCheckConfig { get; set; } = null!;
 
         /// <summary>
-        /// The server protocol. Valid values: ` HTTP`, `HTTPS`, `gRPC`. While `server_group_type` is `Fc` this parameter will not take effect. From version 1.215.0, `protocol` can be set to `gRPC`.
+        /// The template ID.
+        /// </summary>
+        [Input("healthCheckTemplateId")]
+        public Input<string>? HealthCheckTemplateId { get; set; }
+
+        /// <summary>
+        /// The backend protocol. Valid values:
+        /// 
+        /// *   `HTTP`: allows you to associate an HTTPS, HTTP, or QUIC listener with the server group. This is the default value.
+        /// 
+        /// *   `HTTPS`: allows you to associate HTTPS listeners with backend servers.
+        /// 
+        /// *   `gRPC`: allows you to associate an HTTPS or QUIC listener with the server group.
+        /// 
+        /// &gt; **NOTE:**   You do not need to specify a backend protocol if you set `ServerGroupType` to `Fc`.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// The ID of the resource group.
+        /// The ID of the resource group to which you want to transfer the cloud resource.
+        /// 
+        /// &gt; **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The scheduling algorithm. Valid values: ` Sch`, ` Wlc`, `Wrr`. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
+        /// The scheduling algorithm. Valid values:
+        /// 
+        /// *   `Wrr` (default): The weighted round-robin algorithm is used. Backend servers that have higher weights receive more requests than those that have lower weights.
+        /// 
+        /// *   `Wlc`: The weighted least connections algorithm is used. Requests are distributed based on the weights and the number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections is expected to receive more requests.
+        /// 
+        /// *   `Sch`: The consistent hashing algorithm is used. Requests from the same source IP address are distributed to the same backend server.
+        /// 
+        /// &gt; **NOTE:**  This parameter takes effect when the `ServerGroupType` parameter is set to `Instance` or `Ip`.
         /// </summary>
         [Input("scheduler")]
         public Input<string>? Scheduler { get; set; }
 
         /// <summary>
-        /// The name of the server group.
+        /// The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
         /// </summary>
         [Input("serverGroupName", required: true)]
         public Input<string> ServerGroupName { get; set; } = null!;
 
         /// <summary>
-        /// The type of the server group. Default value: `Instance`. Valid values:
-        /// - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+        /// The type of server group. Valid values:
+        /// 
+        /// - `Instance` (default): allows you to add servers by specifying `Ecs`, `Eni`, or `Eci`.
         /// - `Ip`: allows you to add servers by specifying IP addresses.
         /// - `Fc`: allows you to add servers by specifying functions of Function Compute.
         /// </summary>
@@ -318,7 +406,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.ServerGroupServerArgs>? _servers;
 
         /// <summary>
-        /// The backend servers. See `servers` below.
+        /// List of servers. See `servers` below.
         /// </summary>
         public InputList<Inputs.ServerGroupServerArgs> Servers
         {
@@ -327,7 +415,13 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// The configuration of session persistence. See `sticky_session_config` below.
+        /// Slow start configuration. See `slow_start_config` below.
+        /// </summary>
+        [Input("slowStartConfig")]
+        public Input<Inputs.ServerGroupSlowStartConfigArgs>? SlowStartConfig { get; set; }
+
+        /// <summary>
+        /// The configuration of the sticky session See `sticky_session_config` below.
         /// </summary>
         [Input("stickySessionConfig")]
         public Input<Inputs.ServerGroupStickySessionConfigArgs>? StickySessionConfig { get; set; }
@@ -336,7 +430,7 @@ namespace Pulumi.AliCloud.Alb
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tag of the resource
         /// </summary>
         public InputMap<string> Tags
         {
@@ -345,7 +439,21 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
+        /// Url consistency hash parameter configuration See `uch_config` below.
+        /// </summary>
+        [Input("uchConfig")]
+        public Input<Inputs.ServerGroupUchConfigArgs>? UchConfig { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable persistent TCP connections.
+        /// </summary>
+        [Input("upstreamKeepaliveEnabled")]
+        public Input<bool>? UpstreamKeepaliveEnabled { get; set; }
+
+        /// <summary>
+        /// The ID of the virtual private cloud (VPC). You can add only servers that are deployed in the specified VPC to the server group.
+        /// 
+        /// &gt; **NOTE:**   This parameter takes effect when the `ServerGroupType` parameter is set to `Instance` or `Ip`.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
@@ -359,44 +467,81 @@ namespace Pulumi.AliCloud.Alb
     public sealed class ServerGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The dry run.
+        /// Elegant interrupt configuration. See `connection_drain_config` below.
         /// </summary>
-        [Input("dryRun")]
-        public Input<bool>? DryRun { get; set; }
+        [Input("connectionDrainConfig")]
+        public Input<Inputs.ServerGroupConnectionDrainConfigGetArgs>? ConnectionDrainConfig { get; set; }
 
         /// <summary>
-        /// The configuration of health checks. See `health_check_config` below.
+        /// The creation time of the resource
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Indicates whether cross-zone load balancing is enabled for the server group. Valid values:
+        /// </summary>
+        [Input("crossZoneEnabled")]
+        public Input<bool>? CrossZoneEnabled { get; set; }
+
+        /// <summary>
+        /// The configuration of health checks See `health_check_config` below.
         /// </summary>
         [Input("healthCheckConfig")]
         public Input<Inputs.ServerGroupHealthCheckConfigGetArgs>? HealthCheckConfig { get; set; }
 
         /// <summary>
-        /// The server protocol. Valid values: ` HTTP`, `HTTPS`, `gRPC`. While `server_group_type` is `Fc` this parameter will not take effect. From version 1.215.0, `protocol` can be set to `gRPC`.
+        /// The template ID.
+        /// </summary>
+        [Input("healthCheckTemplateId")]
+        public Input<string>? HealthCheckTemplateId { get; set; }
+
+        /// <summary>
+        /// The backend protocol. Valid values:
+        /// 
+        /// *   `HTTP`: allows you to associate an HTTPS, HTTP, or QUIC listener with the server group. This is the default value.
+        /// 
+        /// *   `HTTPS`: allows you to associate HTTPS listeners with backend servers.
+        /// 
+        /// *   `gRPC`: allows you to associate an HTTPS or QUIC listener with the server group.
+        /// 
+        /// &gt; **NOTE:**   You do not need to specify a backend protocol if you set `ServerGroupType` to `Fc`.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// The ID of the resource group.
+        /// The ID of the resource group to which you want to transfer the cloud resource.
+        /// 
+        /// &gt; **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The scheduling algorithm. Valid values: ` Sch`, ` Wlc`, `Wrr`. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
+        /// The scheduling algorithm. Valid values:
+        /// 
+        /// *   `Wrr` (default): The weighted round-robin algorithm is used. Backend servers that have higher weights receive more requests than those that have lower weights.
+        /// 
+        /// *   `Wlc`: The weighted least connections algorithm is used. Requests are distributed based on the weights and the number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections is expected to receive more requests.
+        /// 
+        /// *   `Sch`: The consistent hashing algorithm is used. Requests from the same source IP address are distributed to the same backend server.
+        /// 
+        /// &gt; **NOTE:**  This parameter takes effect when the `ServerGroupType` parameter is set to `Instance` or `Ip`.
         /// </summary>
         [Input("scheduler")]
         public Input<string>? Scheduler { get; set; }
 
         /// <summary>
-        /// The name of the server group.
+        /// The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
         /// </summary>
         [Input("serverGroupName")]
         public Input<string>? ServerGroupName { get; set; }
 
         /// <summary>
-        /// The type of the server group. Default value: `Instance`. Valid values:
-        /// - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+        /// The type of server group. Valid values:
+        /// 
+        /// - `Instance` (default): allows you to add servers by specifying `Ecs`, `Eni`, or `Eci`.
         /// - `Ip`: allows you to add servers by specifying IP addresses.
         /// - `Fc`: allows you to add servers by specifying functions of Function Compute.
         /// </summary>
@@ -407,7 +552,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.ServerGroupServerGetArgs>? _servers;
 
         /// <summary>
-        /// The backend servers. See `servers` below.
+        /// List of servers. See `servers` below.
         /// </summary>
         public InputList<Inputs.ServerGroupServerGetArgs> Servers
         {
@@ -416,13 +561,19 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// The status of the backend server.
+        /// Slow start configuration. See `slow_start_config` below.
+        /// </summary>
+        [Input("slowStartConfig")]
+        public Input<Inputs.ServerGroupSlowStartConfigGetArgs>? SlowStartConfig { get; set; }
+
+        /// <summary>
+        /// The status of the resource
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The configuration of session persistence. See `sticky_session_config` below.
+        /// The configuration of the sticky session See `sticky_session_config` below.
         /// </summary>
         [Input("stickySessionConfig")]
         public Input<Inputs.ServerGroupStickySessionConfigGetArgs>? StickySessionConfig { get; set; }
@@ -431,7 +582,7 @@ namespace Pulumi.AliCloud.Alb
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tag of the resource
         /// </summary>
         public InputMap<string> Tags
         {
@@ -440,7 +591,21 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
+        /// Url consistency hash parameter configuration See `uch_config` below.
+        /// </summary>
+        [Input("uchConfig")]
+        public Input<Inputs.ServerGroupUchConfigGetArgs>? UchConfig { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable persistent TCP connections.
+        /// </summary>
+        [Input("upstreamKeepaliveEnabled")]
+        public Input<bool>? UpstreamKeepaliveEnabled { get; set; }
+
+        /// <summary>
+        /// The ID of the virtual private cloud (VPC). You can add only servers that are deployed in the specified VPC to the server group.
+        /// 
+        /// &gt; **NOTE:**   This parameter takes effect when the `ServerGroupType` parameter is set to `Instance` or `Ip`.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }

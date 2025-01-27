@@ -83,14 +83,14 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The payment type of the resource, Valid vales: Subscription.
+     * The payment type of the resource
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return The payment type of the resource, Valid vales: Subscription.
+     * @return The payment type of the resource
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -264,7 +264,7 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param paymentType The payment type of the resource, Valid vales: Subscription.
+         * @param paymentType The payment type of the resource
          * 
          * @return builder
          * 
@@ -275,7 +275,7 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param paymentType The payment type of the resource, Valid vales: Subscription.
+         * @param paymentType The payment type of the resource
          * 
          * @return builder
          * 

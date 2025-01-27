@@ -12,11 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a FCV3 Function resource.
+// Provides a Function Compute Service V3 (FCV3) Function resource.
 //
 // The resource scheduling and running of Function Compute is based on functions. The FC function consists of function code and function configuration.
 //
-// For information about FCV3 Function and how to use it, see [What is Function](https://www.alibabacloud.com/help/en/functioncompute/developer-reference/api-fc-2023-03-30-getfunction).
+// For information about Function Compute Service V3 (FCV3) Function and how to use it, see [What is Function](https://www.alibabacloud.com/help/en/functioncompute/developer-reference/api-fc-2023-03-30-getfunction).
 //
 // > **NOTE:** Available since v1.228.0.
 //
@@ -132,7 +132,7 @@ import (
 //
 // ## Import
 //
-// FCV3 Function can be imported using the id, e.g.
+// Function Compute Service V3 (FCV3) Function can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:fc/v3Function:V3Function example <id>
@@ -204,6 +204,8 @@ type V3Function struct {
 	StateReason pulumi.StringOutput `pulumi:"stateReason"`
 	// The status code of the reason the function is in the current state.
 	StateReasonCode pulumi.StringOutput `pulumi:"stateReasonCode"`
+	// The tag of the resource
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The maximum running time of the function, in seconds.
 	Timeout pulumi.IntOutput `pulumi:"timeout"`
 	// Tracing configuration
@@ -319,6 +321,8 @@ type v3functionState struct {
 	StateReason *string `pulumi:"stateReason"`
 	// The status code of the reason the function is in the current state.
 	StateReasonCode *string `pulumi:"stateReasonCode"`
+	// The tag of the resource
+	Tags map[string]string `pulumi:"tags"`
 	// The maximum running time of the function, in seconds.
 	Timeout *int `pulumi:"timeout"`
 	// Tracing configuration
@@ -392,6 +396,8 @@ type V3FunctionState struct {
 	StateReason pulumi.StringPtrInput
 	// The status code of the reason the function is in the current state.
 	StateReasonCode pulumi.StringPtrInput
+	// The tag of the resource
+	Tags pulumi.StringMapInput
 	// The maximum running time of the function, in seconds.
 	Timeout pulumi.IntPtrInput
 	// Tracing configuration
@@ -447,6 +453,8 @@ type v3functionArgs struct {
 	Role *string `pulumi:"role"`
 	// Function runtime type
 	Runtime string `pulumi:"runtime"`
+	// The tag of the resource
+	Tags map[string]string `pulumi:"tags"`
 	// The maximum running time of the function, in seconds.
 	Timeout *int `pulumi:"timeout"`
 	// VPC configuration. After this parameter is configured, the function can access the specified VPC resources. See `vpcConfig` below.
@@ -497,6 +505,8 @@ type V3FunctionArgs struct {
 	Role pulumi.StringPtrInput
 	// Function runtime type
 	Runtime pulumi.StringInput
+	// The tag of the resource
+	Tags pulumi.StringMapInput
 	// The maximum running time of the function, in seconds.
 	Timeout pulumi.IntPtrInput
 	// VPC configuration. After this parameter is configured, the function can access the specified VPC resources. See `vpcConfig` below.
@@ -748,6 +758,11 @@ func (o V3FunctionOutput) StateReason() pulumi.StringOutput {
 // The status code of the reason the function is in the current state.
 func (o V3FunctionOutput) StateReasonCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *V3Function) pulumi.StringOutput { return v.StateReasonCode }).(pulumi.StringOutput)
+}
+
+// The tag of the resource
+func (o V3FunctionOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *V3Function) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The maximum running time of the function, in seconds.

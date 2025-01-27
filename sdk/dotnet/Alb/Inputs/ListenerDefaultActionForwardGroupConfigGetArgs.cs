@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Alb.Inputs
         private InputList<Inputs.ListenerDefaultActionForwardGroupConfigServerGroupTupleGetArgs>? _serverGroupTuples;
 
         /// <summary>
-        /// The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
+        /// The Forwarding Destination Server Group See `server_group_tuples` below.
         /// </summary>
         public InputList<Inputs.ListenerDefaultActionForwardGroupConfigServerGroupTupleGetArgs> ServerGroupTuples
         {

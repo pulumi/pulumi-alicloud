@@ -18,67 +18,6 @@ import (
 //
 // > **NOTE:** Available since v1.210.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "terraform-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			_default, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
-//				CidrBlock: pulumi.StringRef("172.16.0.0/16"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId:  pulumi.StringRef(_default.Ids[0]),
-//				ZoneId: pulumi.StringRef("cn-hangzhou-h"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = kms.NewInstance(ctx, "default", &kms.InstanceArgs{
-//				ProductVersion: pulumi.String("3"),
-//				VpcId:          pulumi.String(_default.Ids[0]),
-//				ZoneIds: pulumi.StringArray{
-//					pulumi.String("cn-hangzhou-h"),
-//					pulumi.String("cn-hangzhou-g"),
-//				},
-//				VswitchIds: pulumi.StringArray{
-//					pulumi.String(defaultGetSwitches.Ids[0]),
-//				},
-//				VpcNum:    pulumi.Int(1),
-//				KeyNum:    pulumi.Int(1000),
-//				SecretNum: pulumi.Int(0),
-//				Spec:      pulumi.Int(1000),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // KMS Instance can be imported using the id, e.g.

@@ -28,15 +28,19 @@ namespace Pulumi.AliCloud.Alb
     public partial class Listener : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+        /// Access Log Whether to Enable Carry Custom Header Field.
         /// 
-        /// &gt; **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
+        /// Value: True **** Or False * *.
+        /// 
+        /// Default Value: False * *.
+        /// 
+        /// &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
         /// </summary>
         [Output("accessLogRecordCustomizedHeadersEnabled")]
-        public Output<bool> AccessLogRecordCustomizedHeadersEnabled { get; private set; } = null!;
+        public Output<bool?> AccessLogRecordCustomizedHeadersEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Xtrace Configuration Information. See `access_log_tracing_config` below for details.
+        /// Xtrace Configuration Information. See `access_log_tracing_config` below.
         /// </summary>
         [Output("accessLogTracingConfig")]
         public Output<Outputs.ListenerAccessLogTracingConfig?> AccessLogTracingConfig { get; private set; } = null!;
@@ -48,101 +52,109 @@ namespace Pulumi.AliCloud.Alb
         public Output<Outputs.ListenerAclConfig> AclConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The default certificate of the Listener. See `certificates` below for details. **NOTE:** When `listener_protocol` is `HTTPS`, The default certificate must be set one。
+        /// The list of certificates. See `ca_certificates` below.
+        /// </summary>
+        [Output("caCertificates")]
+        public Output<ImmutableArray<Outputs.ListenerCaCertificate>> CaCertificates { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to turn on two-way authentication. Value:
+        /// </summary>
+        [Output("caEnabled")]
+        public Output<bool?> CaEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// The list of certificates. See `certificates` below.
         /// </summary>
         [Output("certificates")]
         public Output<Outputs.ListenerCertificates?> Certificates { get; private set; } = null!;
 
         /// <summary>
-        /// The Default Rule Action List. See `default_actions` below for details.
+        /// The Default Rule Action List See `default_actions` below.
         /// </summary>
         [Output("defaultActions")]
         public Output<ImmutableArray<Outputs.ListenerDefaultAction>> DefaultActions { get; private set; } = null!;
 
         /// <summary>
-        /// The dry run.
+        /// Whether to PreCheck only this request. Value:
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
+        /// Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: True Or False. Default Value: TRUE.
         /// </summary>
         [Output("gzipEnabled")]
         public Output<bool> GzipEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
-        /// 
-        /// &gt; **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
+        /// Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE.
         /// </summary>
         [Output("http2Enabled")]
         public Output<bool> Http2Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
+        /// Specify the Connection Idle Timeout Value: 1 to 60 miao.
         /// </summary>
         [Output("idleTimeout")]
         public Output<int> IdleTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\x00-\xff]|[\w.,;/@-]){2,256}$/`.
+        /// Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
         /// </summary>
         [Output("listenerDescription")]
         public Output<string?> ListenerDescription { get; private set; } = null!;
 
         /// <summary>
-        /// The ALB Instance Front-End, and Those of the Ports Used. Value: `1` to `65535`.
+        /// The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
         /// </summary>
         [Output("listenerPort")]
         public Output<int> ListenerPort { get; private set; } = null!;
 
         /// <summary>
-        /// Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
+        /// Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
         /// </summary>
         [Output("listenerProtocol")]
         public Output<string> ListenerProtocol { get; private set; } = null!;
 
         /// <summary>
-        /// The ALB Instance Id.
+        /// The SLB Instance Id.
         /// </summary>
         [Output("loadBalancerId")]
         public Output<string> LoadBalancerId { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration Associated with the QuIC Listening. See `quic_config` below for details.
+        /// Configuration Associated with the QuIC Listening See `quic_config` below.
         /// </summary>
         [Output("quicConfig")]
         public Output<Outputs.ListenerQuicConfig> QuicConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+        /// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         /// </summary>
         [Output("requestTimeout")]
         public Output<int> RequestTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// Security Policy.
-        /// 
-        /// &gt; **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
+        /// Security Policy
         /// </summary>
         [Output("securityPolicyId")]
         public Output<string> SecurityPolicyId { get; private set; } = null!;
 
         /// <summary>
-        /// The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
+        /// The Current IP Address of the Listened State
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tag of the resource
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The `x_forward_for` Related Attribute Configuration. See `x_forwarded_for_config` below for details. **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
+        /// xforwardfor Related Attribute Configuration See `x_forwarded_for_config` below.
         /// </summary>
         [Output("xForwardedForConfig")]
         public Output<Outputs.ListenerXForwardedForConfig> XForwardedForConfig { get; private set; } = null!;
@@ -194,15 +206,19 @@ namespace Pulumi.AliCloud.Alb
     public sealed class ListenerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+        /// Access Log Whether to Enable Carry Custom Header Field.
         /// 
-        /// &gt; **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
+        /// Value: True **** Or False * *.
+        /// 
+        /// Default Value: False * *.
+        /// 
+        /// &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
         /// </summary>
         [Input("accessLogRecordCustomizedHeadersEnabled")]
         public Input<bool>? AccessLogRecordCustomizedHeadersEnabled { get; set; }
 
         /// <summary>
-        /// Xtrace Configuration Information. See `access_log_tracing_config` below for details.
+        /// Xtrace Configuration Information. See `access_log_tracing_config` below.
         /// </summary>
         [Input("accessLogTracingConfig")]
         public Input<Inputs.ListenerAccessLogTracingConfigArgs>? AccessLogTracingConfig { get; set; }
@@ -213,17 +229,35 @@ namespace Pulumi.AliCloud.Alb
         [Input("aclConfig")]
         public Input<Inputs.ListenerAclConfigArgs>? AclConfig { get; set; }
 
+        [Input("caCertificates")]
+        private InputList<Inputs.ListenerCaCertificateArgs>? _caCertificates;
+
         /// <summary>
-        /// The default certificate of the Listener. See `certificates` below for details. **NOTE:** When `listener_protocol` is `HTTPS`, The default certificate must be set one。
+        /// The list of certificates. See `ca_certificates` below.
+        /// </summary>
+        public InputList<Inputs.ListenerCaCertificateArgs> CaCertificates
+        {
+            get => _caCertificates ?? (_caCertificates = new InputList<Inputs.ListenerCaCertificateArgs>());
+            set => _caCertificates = value;
+        }
+
+        /// <summary>
+        /// Whether to turn on two-way authentication. Value:
+        /// </summary>
+        [Input("caEnabled")]
+        public Input<bool>? CaEnabled { get; set; }
+
+        /// <summary>
+        /// The list of certificates. See `certificates` below.
         /// </summary>
         [Input("certificates")]
         public Input<Inputs.ListenerCertificatesArgs>? Certificates { get; set; }
 
-        [Input("defaultActions")]
+        [Input("defaultActions", required: true)]
         private InputList<Inputs.ListenerDefaultActionArgs>? _defaultActions;
 
         /// <summary>
-        /// The Default Rule Action List. See `default_actions` below for details.
+        /// The Default Rule Action List See `default_actions` below.
         /// </summary>
         public InputList<Inputs.ListenerDefaultActionArgs> DefaultActions
         {
@@ -232,77 +266,73 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// The dry run.
+        /// Whether to PreCheck only this request. Value:
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
+        /// Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: True Or False. Default Value: TRUE.
         /// </summary>
         [Input("gzipEnabled")]
         public Input<bool>? GzipEnabled { get; set; }
 
         /// <summary>
-        /// Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
-        /// 
-        /// &gt; **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
+        /// Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE.
         /// </summary>
         [Input("http2Enabled")]
         public Input<bool>? Http2Enabled { get; set; }
 
         /// <summary>
-        /// Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
+        /// Specify the Connection Idle Timeout Value: 1 to 60 miao.
         /// </summary>
         [Input("idleTimeout")]
         public Input<int>? IdleTimeout { get; set; }
 
         /// <summary>
-        /// The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\x00-\xff]|[\w.,;/@-]){2,256}$/`.
+        /// Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
         /// </summary>
         [Input("listenerDescription")]
         public Input<string>? ListenerDescription { get; set; }
 
         /// <summary>
-        /// The ALB Instance Front-End, and Those of the Ports Used. Value: `1` to `65535`.
+        /// The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
         /// </summary>
         [Input("listenerPort", required: true)]
         public Input<int> ListenerPort { get; set; } = null!;
 
         /// <summary>
-        /// Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
+        /// Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
         /// </summary>
         [Input("listenerProtocol", required: true)]
         public Input<string> ListenerProtocol { get; set; } = null!;
 
         /// <summary>
-        /// The ALB Instance Id.
+        /// The SLB Instance Id.
         /// </summary>
         [Input("loadBalancerId", required: true)]
         public Input<string> LoadBalancerId { get; set; } = null!;
 
         /// <summary>
-        /// Configuration Associated with the QuIC Listening. See `quic_config` below for details.
+        /// Configuration Associated with the QuIC Listening See `quic_config` below.
         /// </summary>
         [Input("quicConfig")]
         public Input<Inputs.ListenerQuicConfigArgs>? QuicConfig { get; set; }
 
         /// <summary>
-        /// The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+        /// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         /// </summary>
         [Input("requestTimeout")]
         public Input<int>? RequestTimeout { get; set; }
 
         /// <summary>
-        /// Security Policy.
-        /// 
-        /// &gt; **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
+        /// Security Policy
         /// </summary>
         [Input("securityPolicyId")]
         public Input<string>? SecurityPolicyId { get; set; }
 
         /// <summary>
-        /// The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
+        /// The Current IP Address of the Listened State
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -311,7 +341,7 @@ namespace Pulumi.AliCloud.Alb
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tag of the resource
         /// </summary>
         public InputMap<string> Tags
         {
@@ -320,7 +350,7 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// The `x_forward_for` Related Attribute Configuration. See `x_forwarded_for_config` below for details. **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
+        /// xforwardfor Related Attribute Configuration See `x_forwarded_for_config` below.
         /// </summary>
         [Input("xForwardedForConfig")]
         public Input<Inputs.ListenerXForwardedForConfigArgs>? XForwardedForConfig { get; set; }
@@ -334,15 +364,19 @@ namespace Pulumi.AliCloud.Alb
     public sealed class ListenerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+        /// Access Log Whether to Enable Carry Custom Header Field.
         /// 
-        /// &gt; **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
+        /// Value: True **** Or False * *.
+        /// 
+        /// Default Value: False * *.
+        /// 
+        /// &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
         /// </summary>
         [Input("accessLogRecordCustomizedHeadersEnabled")]
         public Input<bool>? AccessLogRecordCustomizedHeadersEnabled { get; set; }
 
         /// <summary>
-        /// Xtrace Configuration Information. See `access_log_tracing_config` below for details.
+        /// Xtrace Configuration Information. See `access_log_tracing_config` below.
         /// </summary>
         [Input("accessLogTracingConfig")]
         public Input<Inputs.ListenerAccessLogTracingConfigGetArgs>? AccessLogTracingConfig { get; set; }
@@ -353,8 +387,26 @@ namespace Pulumi.AliCloud.Alb
         [Input("aclConfig")]
         public Input<Inputs.ListenerAclConfigGetArgs>? AclConfig { get; set; }
 
+        [Input("caCertificates")]
+        private InputList<Inputs.ListenerCaCertificateGetArgs>? _caCertificates;
+
         /// <summary>
-        /// The default certificate of the Listener. See `certificates` below for details. **NOTE:** When `listener_protocol` is `HTTPS`, The default certificate must be set one。
+        /// The list of certificates. See `ca_certificates` below.
+        /// </summary>
+        public InputList<Inputs.ListenerCaCertificateGetArgs> CaCertificates
+        {
+            get => _caCertificates ?? (_caCertificates = new InputList<Inputs.ListenerCaCertificateGetArgs>());
+            set => _caCertificates = value;
+        }
+
+        /// <summary>
+        /// Whether to turn on two-way authentication. Value:
+        /// </summary>
+        [Input("caEnabled")]
+        public Input<bool>? CaEnabled { get; set; }
+
+        /// <summary>
+        /// The list of certificates. See `certificates` below.
         /// </summary>
         [Input("certificates")]
         public Input<Inputs.ListenerCertificatesGetArgs>? Certificates { get; set; }
@@ -363,7 +415,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.ListenerDefaultActionGetArgs>? _defaultActions;
 
         /// <summary>
-        /// The Default Rule Action List. See `default_actions` below for details.
+        /// The Default Rule Action List See `default_actions` below.
         /// </summary>
         public InputList<Inputs.ListenerDefaultActionGetArgs> DefaultActions
         {
@@ -372,77 +424,73 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// The dry run.
+        /// Whether to PreCheck only this request. Value:
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
+        /// Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: True Or False. Default Value: TRUE.
         /// </summary>
         [Input("gzipEnabled")]
         public Input<bool>? GzipEnabled { get; set; }
 
         /// <summary>
-        /// Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
-        /// 
-        /// &gt; **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
+        /// Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE.
         /// </summary>
         [Input("http2Enabled")]
         public Input<bool>? Http2Enabled { get; set; }
 
         /// <summary>
-        /// Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
+        /// Specify the Connection Idle Timeout Value: 1 to 60 miao.
         /// </summary>
         [Input("idleTimeout")]
         public Input<int>? IdleTimeout { get; set; }
 
         /// <summary>
-        /// The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\x00-\xff]|[\w.,;/@-]){2,256}$/`.
+        /// Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
         /// </summary>
         [Input("listenerDescription")]
         public Input<string>? ListenerDescription { get; set; }
 
         /// <summary>
-        /// The ALB Instance Front-End, and Those of the Ports Used. Value: `1` to `65535`.
+        /// The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
         /// </summary>
         [Input("listenerPort")]
         public Input<int>? ListenerPort { get; set; }
 
         /// <summary>
-        /// Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
+        /// Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
         /// </summary>
         [Input("listenerProtocol")]
         public Input<string>? ListenerProtocol { get; set; }
 
         /// <summary>
-        /// The ALB Instance Id.
+        /// The SLB Instance Id.
         /// </summary>
         [Input("loadBalancerId")]
         public Input<string>? LoadBalancerId { get; set; }
 
         /// <summary>
-        /// Configuration Associated with the QuIC Listening. See `quic_config` below for details.
+        /// Configuration Associated with the QuIC Listening See `quic_config` below.
         /// </summary>
         [Input("quicConfig")]
         public Input<Inputs.ListenerQuicConfigGetArgs>? QuicConfig { get; set; }
 
         /// <summary>
-        /// The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
+        /// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 miao. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         /// </summary>
         [Input("requestTimeout")]
         public Input<int>? RequestTimeout { get; set; }
 
         /// <summary>
-        /// Security Policy.
-        /// 
-        /// &gt; **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
+        /// Security Policy
         /// </summary>
         [Input("securityPolicyId")]
         public Input<string>? SecurityPolicyId { get; set; }
 
         /// <summary>
-        /// The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
+        /// The Current IP Address of the Listened State
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -451,7 +499,7 @@ namespace Pulumi.AliCloud.Alb
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tag of the resource
         /// </summary>
         public InputMap<string> Tags
         {
@@ -460,7 +508,7 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// The `x_forward_for` Related Attribute Configuration. See `x_forwarded_for_config` below for details. **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
+        /// xforwardfor Related Attribute Configuration See `x_forwarded_for_config` below.
         /// </summary>
         [Input("xForwardedForConfig")]
         public Input<Inputs.ListenerXForwardedForConfigGetArgs>? XForwardedForConfig { get; set; }

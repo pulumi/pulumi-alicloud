@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.FC.Outputs
     public sealed class V3FunctionVpcConfig
     {
         /// <summary>
-        /// Security group ID.
+        /// Security group ID
         /// </summary>
         public readonly string? SecurityGroupId;
         /// <summary>
-        /// VPC network ID.
+        /// VPC network ID
         /// </summary>
         public readonly string? VpcId;
         /// <summary>
-        /// Switch List.
+        /// Switch List
         /// </summary>
         public readonly ImmutableArray<string> VswitchIds;
 

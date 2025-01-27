@@ -35,14 +35,16 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
+     * Used to implement computing resource allocation. Valid values: subQuota Nickname
+     * If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
      * 
      */
     @Import(name="defaultQuota")
     private @Nullable Output<String> defaultQuota;
 
     /**
-     * @return Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
+     * @return Used to implement computing resource allocation. Valid values: subQuota Nickname
+     * If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
      * 
      */
     public Optional<Output<String>> defaultQuota() {
@@ -65,31 +67,27 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Logical deletion, value: (true/false) true: In this case, the project status will be changed to &#39;DELETING&#39; and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
+     * Whether to logically delete. Default value: true. Value: (ture/false),
+     * 
+     * &gt; **NOTE:** -- ture: In this case, the project status will be changed to&#39; deleting&#39; and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
      * 
      */
     @Import(name="isLogical")
     private @Nullable Output<String> isLogical;
 
     /**
-     * @return Logical deletion, value: (true/false) true: In this case, the project status will be changed to &#39;DELETING&#39; and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
+     * @return Whether to logically delete. Default value: true. Value: (ture/false),
+     * 
+     * &gt; **NOTE:** -- ture: In this case, the project status will be changed to&#39; deleting&#39; and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
      * 
      */
     public Optional<Output<String>> isLogical() {
         return Optional.ofNullable(this.isLogical);
     }
 
-    /**
-     * Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
-     * 
-     */
     @Import(name="productType")
     private @Nullable Output<String> productType;
 
-    /**
-     * @return Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
-     * 
-     */
     public Optional<Output<String>> productType() {
         return Optional.ofNullable(this.productType);
     }
@@ -224,7 +222,8 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultQuota Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
+         * @param defaultQuota Used to implement computing resource allocation. Valid values: subQuota Nickname
+         * If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
          * 
          * @return builder
          * 
@@ -235,7 +234,8 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultQuota Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
+         * @param defaultQuota Used to implement computing resource allocation. Valid values: subQuota Nickname
+         * If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
          * 
          * @return builder
          * 
@@ -266,7 +266,9 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isLogical Logical deletion, value: (true/false) true: In this case, the project status will be changed to &#39;DELETING&#39; and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
+         * @param isLogical Whether to logically delete. Default value: true. Value: (ture/false),
+         * 
+         * &gt; **NOTE:** -- ture: In this case, the project status will be changed to&#39; deleting&#39; and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
          * 
          * @return builder
          * 
@@ -277,7 +279,9 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isLogical Logical deletion, value: (true/false) true: In this case, the project status will be changed to &#39;DELETING&#39; and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
+         * @param isLogical Whether to logically delete. Default value: true. Value: (ture/false),
+         * 
+         * &gt; **NOTE:** -- ture: In this case, the project status will be changed to&#39; deleting&#39; and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
          * 
          * @return builder
          * 
@@ -286,23 +290,11 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
             return isLogical(Output.of(isLogical));
         }
 
-        /**
-         * @param productType Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder productType(@Nullable Output<String> productType) {
             $.productType = productType;
             return this;
         }
 
-        /**
-         * @param productType Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder productType(String productType) {
             return productType(Output.of(productType));
         }

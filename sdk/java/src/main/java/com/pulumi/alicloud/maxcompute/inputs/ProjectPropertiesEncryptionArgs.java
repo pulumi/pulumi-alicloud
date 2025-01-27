@@ -32,14 +32,18 @@ public final class ProjectPropertiesEncryptionArgs extends com.pulumi.resources.
     }
 
     /**
-     * Only enable function is supported. Value: (true).
+     * Only enable function is supported. Value: (true)
+     * 
+     * &gt; **NOTE:** cannot be turned off after the function is turned on
      * 
      */
     @Import(name="enable")
     private @Nullable Output<Boolean> enable;
 
     /**
-     * @return Only enable function is supported. Value: (true).
+     * @return Only enable function is supported. Value: (true)
+     * 
+     * &gt; **NOTE:** cannot be turned off after the function is turned on
      * 
      */
     public Optional<Output<Boolean>> enable() {
@@ -109,7 +113,9 @@ public final class ProjectPropertiesEncryptionArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param enable Only enable function is supported. Value: (true).
+         * @param enable Only enable function is supported. Value: (true)
+         * 
+         * &gt; **NOTE:** cannot be turned off after the function is turned on
          * 
          * @return builder
          * 
@@ -120,7 +126,9 @@ public final class ProjectPropertiesEncryptionArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param enable Only enable function is supported. Value: (true).
+         * @param enable Only enable function is supported. Value: (true)
+         * 
+         * &gt; **NOTE:** cannot be turned off after the function is turned on
          * 
          * @return builder
          * 

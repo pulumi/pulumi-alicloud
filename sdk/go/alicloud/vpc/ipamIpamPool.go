@@ -62,6 +62,8 @@ type IpamIpamPool struct {
 	PoolRegionId pulumi.StringPtrOutput `pulumi:"poolRegionId"`
 	// The ID of the IPAM hosting region.
 	RegionId pulumi.StringOutput `pulumi:"regionId"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The instance ID of the source IPAM address pool.
 	//
 	// > **NOTE:**  If this parameter is not entered, the created address pool is the parent address pool.
@@ -137,6 +139,8 @@ type ipamIpamPoolState struct {
 	PoolRegionId *string `pulumi:"poolRegionId"`
 	// The ID of the IPAM hosting region.
 	RegionId *string `pulumi:"regionId"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The instance ID of the source IPAM address pool.
 	//
 	// > **NOTE:**  If this parameter is not entered, the created address pool is the parent address pool.
@@ -180,6 +184,8 @@ type IpamIpamPoolState struct {
 	PoolRegionId pulumi.StringPtrInput
 	// The ID of the IPAM hosting region.
 	RegionId pulumi.StringPtrInput
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringPtrInput
 	// The instance ID of the source IPAM address pool.
 	//
 	// > **NOTE:**  If this parameter is not entered, the created address pool is the parent address pool.
@@ -223,6 +229,8 @@ type ipamIpamPoolArgs struct {
 	IpamScopeId string `pulumi:"ipamScopeId"`
 	// The effective region of the IPAM address pool.
 	PoolRegionId *string `pulumi:"poolRegionId"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The instance ID of the source IPAM address pool.
 	//
 	// > **NOTE:**  If this parameter is not entered, the created address pool is the parent address pool.
@@ -261,6 +269,8 @@ type IpamIpamPoolArgs struct {
 	IpamScopeId pulumi.StringInput
 	// The effective region of the IPAM address pool.
 	PoolRegionId pulumi.StringPtrInput
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringPtrInput
 	// The instance ID of the source IPAM address pool.
 	//
 	// > **NOTE:**  If this parameter is not entered, the created address pool is the parent address pool.
@@ -422,6 +432,11 @@ func (o IpamIpamPoolOutput) PoolRegionId() pulumi.StringPtrOutput {
 // The ID of the IPAM hosting region.
 func (o IpamIpamPoolOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpamIpamPool) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group.
+func (o IpamIpamPoolOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpamIpamPool) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
 // The instance ID of the source IPAM address pool.

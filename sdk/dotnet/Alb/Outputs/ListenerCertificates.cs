@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
     public sealed class ListenerCertificates
     {
         /// <summary>
-        /// The ID of the Certificate.
+        /// The ID of the certificate. Currently, only server certificates are supported.
         /// </summary>
         public readonly string? CertificateId;
 

@@ -16,14 +16,14 @@ public final class ListenerCertificatesArgs extends com.pulumi.resources.Resourc
     public static final ListenerCertificatesArgs Empty = new ListenerCertificatesArgs();
 
     /**
-     * The ID of the Certificate.
+     * The ID of the certificate. Currently, only server certificates are supported.
      * 
      */
     @Import(name="certificateId")
     private @Nullable Output<String> certificateId;
 
     /**
-     * @return The ID of the Certificate.
+     * @return The ID of the certificate. Currently, only server certificates are supported.
      * 
      */
     public Optional<Output<String>> certificateId() {
@@ -55,7 +55,7 @@ public final class ListenerCertificatesArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param certificateId The ID of the Certificate.
+         * @param certificateId The ID of the certificate. Currently, only server certificates are supported.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ListenerCertificatesArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param certificateId The ID of the Certificate.
+         * @param certificateId The ID of the certificate. Currently, only server certificates are supported.
          * 
          * @return builder
          * 

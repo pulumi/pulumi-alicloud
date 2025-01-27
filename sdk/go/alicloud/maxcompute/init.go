@@ -23,6 +23,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:maxcompute/project:Project":
 		r = &Project{}
+	case "alicloud:maxcompute/quotaPlan:QuotaPlan":
+		r = &QuotaPlan{}
+	case "alicloud:maxcompute/quotaSchedule:QuotaSchedule":
+		r = &QuotaSchedule{}
+	case "alicloud:maxcompute/role:Role":
+		r = &Role{}
+	case "alicloud:maxcompute/roleUserAttachment:RoleUserAttachment":
+		r = &RoleUserAttachment{}
+	case "alicloud:maxcompute/tunnelQuotaTimer:TunnelQuotaTimer":
+		r = &TunnelQuotaTimer{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -39,6 +49,31 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"maxcompute/project",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"maxcompute/quotaPlan",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"maxcompute/quotaSchedule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"maxcompute/role",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"maxcompute/roleUserAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"maxcompute/tunnelQuotaTimer",
 		&module{version},
 	)
 }

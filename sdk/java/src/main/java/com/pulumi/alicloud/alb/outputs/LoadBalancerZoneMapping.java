@@ -14,38 +14,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class LoadBalancerZoneMapping {
     /**
-     * @return The IP address of the ALB instance.
+     * @return The SLB Instance Address
      * 
      */
     private @Nullable List<LoadBalancerZoneMappingLoadBalancerAddress> loadBalancerAddresses;
     /**
-     * @return The ID of the VSwitch.
+     * @return The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
      * 
      */
     private String vswitchId;
     /**
-     * @return The zone ID of the ALB instance.
+     * @return The ID of the zone to which the SLB instance belongs.
      * 
      */
     private String zoneId;
 
     private LoadBalancerZoneMapping() {}
     /**
-     * @return The IP address of the ALB instance.
+     * @return The SLB Instance Address
      * 
      */
     public List<LoadBalancerZoneMappingLoadBalancerAddress> loadBalancerAddresses() {
         return this.loadBalancerAddresses == null ? List.of() : this.loadBalancerAddresses;
     }
     /**
-     * @return The ID of the VSwitch.
+     * @return The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
      * 
      */
     public String vswitchId() {
         return this.vswitchId;
     }
     /**
-     * @return The zone ID of the ALB instance.
+     * @return The ID of the zone to which the SLB instance belongs.
      * 
      */
     public String zoneId() {

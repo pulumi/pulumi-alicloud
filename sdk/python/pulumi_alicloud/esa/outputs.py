@@ -15,9 +15,57 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'HttpRequestHeaderModificationRuleRequestHeaderModification',
     'RecordAuthConf',
     'RecordData',
 ]
+
+@pulumi.output_type
+class HttpRequestHeaderModificationRuleRequestHeaderModification(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 operation: str,
+                 value: Optional[str] = None):
+        """
+        :param str name: Request Header Name.
+        :param str operation: Mode of operation. Value range:
+               add: add.
+               del: delete
+               modify: change.
+        :param str value: Request header value
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "operation", operation)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Request Header Name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def operation(self) -> str:
+        """
+        Mode of operation. Value range:
+        add: add.
+        del: delete
+        modify: change.
+        """
+        return pulumi.get(self, "operation")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        Request header value
+        """
+        return pulumi.get(self, "value")
+
 
 @pulumi.output_type
 class RecordAuthConf(dict):

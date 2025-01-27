@@ -4,9 +4,10 @@
 package com.pulumi.alicloud.alb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class LoadBalancerAccessLogConfig {
@@ -14,27 +15,27 @@ public final class LoadBalancerAccessLogConfig {
      * @return The project to which the access log is shipped.
      * 
      */
-    private String logProject;
+    private @Nullable String logProject;
     /**
      * @return The Logstore to which the access log is shipped.
      * 
      */
-    private String logStore;
+    private @Nullable String logStore;
 
     private LoadBalancerAccessLogConfig() {}
     /**
      * @return The project to which the access log is shipped.
      * 
      */
-    public String logProject() {
-        return this.logProject;
+    public Optional<String> logProject() {
+        return Optional.ofNullable(this.logProject);
     }
     /**
      * @return The Logstore to which the access log is shipped.
      * 
      */
-    public String logStore() {
-        return this.logStore;
+    public Optional<String> logStore() {
+        return Optional.ofNullable(this.logStore);
     }
 
     public static Builder builder() {
@@ -46,8 +47,8 @@ public final class LoadBalancerAccessLogConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String logProject;
-        private String logStore;
+        private @Nullable String logProject;
+        private @Nullable String logStore;
         public Builder() {}
         public Builder(LoadBalancerAccessLogConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -56,18 +57,14 @@ public final class LoadBalancerAccessLogConfig {
         }
 
         @CustomType.Setter
-        public Builder logProject(String logProject) {
-            if (logProject == null) {
-              throw new MissingRequiredPropertyException("LoadBalancerAccessLogConfig", "logProject");
-            }
+        public Builder logProject(@Nullable String logProject) {
+
             this.logProject = logProject;
             return this;
         }
         @CustomType.Setter
-        public Builder logStore(String logStore) {
-            if (logStore == null) {
-              throw new MissingRequiredPropertyException("LoadBalancerAccessLogConfig", "logStore");
-            }
+        public Builder logStore(@Nullable String logStore) {
+
             this.logStore = logStore;
             return this;
         }

@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ListenerCertificates {
     /**
-     * @return The ID of the Certificate.
+     * @return The ID of the certificate. Currently, only server certificates are supported.
      * 
      */
     private @Nullable String certificateId;
 
     private ListenerCertificates() {}
     /**
-     * @return The ID of the Certificate.
+     * @return The ID of the certificate. Currently, only server certificates are supported.
      * 
      */
     public Optional<String> certificateId() {

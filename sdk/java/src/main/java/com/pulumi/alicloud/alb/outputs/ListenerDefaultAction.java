@@ -8,30 +8,32 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ListenerDefaultAction {
     /**
-     * @return The configurations of the actions. This parameter is required if Type is set to FowardGroup. See `forward_group_config` below for details.
+     * @return Forwarding Action Configurations See `forward_group_config` below.
      * 
      */
-    private ListenerDefaultActionForwardGroupConfig forwardGroupConfig;
+    private @Nullable ListenerDefaultActionForwardGroupConfig forwardGroupConfig;
     /**
-     * @return Action Type.
+     * @return Action Type
      * 
      */
     private String type;
 
     private ListenerDefaultAction() {}
     /**
-     * @return The configurations of the actions. This parameter is required if Type is set to FowardGroup. See `forward_group_config` below for details.
+     * @return Forwarding Action Configurations See `forward_group_config` below.
      * 
      */
-    public ListenerDefaultActionForwardGroupConfig forwardGroupConfig() {
-        return this.forwardGroupConfig;
+    public Optional<ListenerDefaultActionForwardGroupConfig> forwardGroupConfig() {
+        return Optional.ofNullable(this.forwardGroupConfig);
     }
     /**
-     * @return Action Type.
+     * @return Action Type
      * 
      */
     public String type() {
@@ -47,7 +49,7 @@ public final class ListenerDefaultAction {
     }
     @CustomType.Builder
     public static final class Builder {
-        private ListenerDefaultActionForwardGroupConfig forwardGroupConfig;
+        private @Nullable ListenerDefaultActionForwardGroupConfig forwardGroupConfig;
         private String type;
         public Builder() {}
         public Builder(ListenerDefaultAction defaults) {
@@ -57,10 +59,8 @@ public final class ListenerDefaultAction {
         }
 
         @CustomType.Setter
-        public Builder forwardGroupConfig(ListenerDefaultActionForwardGroupConfig forwardGroupConfig) {
-            if (forwardGroupConfig == null) {
-              throw new MissingRequiredPropertyException("ListenerDefaultAction", "forwardGroupConfig");
-            }
+        public Builder forwardGroupConfig(@Nullable ListenerDefaultActionForwardGroupConfig forwardGroupConfig) {
+
             this.forwardGroupConfig = forwardGroupConfig;
             return this;
         }

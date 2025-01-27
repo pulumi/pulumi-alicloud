@@ -14,17 +14,17 @@ namespace Pulumi.AliCloud.Alb.Outputs
     public sealed class ListenerDefaultAction
     {
         /// <summary>
-        /// The configurations of the actions. This parameter is required if Type is set to FowardGroup. See `forward_group_config` below for details.
+        /// Forwarding Action Configurations See `forward_group_config` below.
         /// </summary>
-        public readonly Outputs.ListenerDefaultActionForwardGroupConfig ForwardGroupConfig;
+        public readonly Outputs.ListenerDefaultActionForwardGroupConfig? ForwardGroupConfig;
         /// <summary>
-        /// Action Type.
+        /// Action Type
         /// </summary>
         public readonly string Type;
 
         [OutputConstructor]
         private ListenerDefaultAction(
-            Outputs.ListenerDefaultActionForwardGroupConfig forwardGroupConfig,
+            Outputs.ListenerDefaultActionForwardGroupConfig? forwardGroupConfig,
 
             string type)
         {

@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['TransitRouterMulticastDomainArgs', 'TransitRouterMulticastDomain']
 
@@ -20,17 +22,21 @@ __all__ = ['TransitRouterMulticastDomainArgs', 'TransitRouterMulticastDomain']
 class TransitRouterMulticastDomainArgs:
     def __init__(__self__, *,
                  transit_router_id: pulumi.Input[str],
+                 options: Optional[pulumi.Input['TransitRouterMulticastDomainOptionsArgs']] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  transit_router_multicast_domain_description: Optional[pulumi.Input[str]] = None,
                  transit_router_multicast_domain_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TransitRouterMulticastDomain resource.
-        :param pulumi.Input[str] transit_router_id: The ID of the transit router.
+        :param pulumi.Input[str] transit_router_id: The ID of the forwarding router instance.
+        :param pulumi.Input['TransitRouterMulticastDomainOptionsArgs'] options: The function options of the multicast domain. See `options` below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] transit_router_multicast_domain_description: The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
-        :param pulumi.Input[str] transit_router_multicast_domain_name: The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+        :param pulumi.Input[str] transit_router_multicast_domain_description: The description of the multicast domain.
+        :param pulumi.Input[str] transit_router_multicast_domain_name: The name of the multicast domain.
         """
         pulumi.set(__self__, "transit_router_id", transit_router_id)
+        if options is not None:
+            pulumi.set(__self__, "options", options)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if transit_router_multicast_domain_description is not None:
@@ -42,13 +48,25 @@ class TransitRouterMulticastDomainArgs:
     @pulumi.getter(name="transitRouterId")
     def transit_router_id(self) -> pulumi.Input[str]:
         """
-        The ID of the transit router.
+        The ID of the forwarding router instance.
         """
         return pulumi.get(self, "transit_router_id")
 
     @transit_router_id.setter
     def transit_router_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "transit_router_id", value)
+
+    @property
+    @pulumi.getter
+    def options(self) -> Optional[pulumi.Input['TransitRouterMulticastDomainOptionsArgs']]:
+        """
+        The function options of the multicast domain. See `options` below.
+        """
+        return pulumi.get(self, "options")
+
+    @options.setter
+    def options(self, value: Optional[pulumi.Input['TransitRouterMulticastDomainOptionsArgs']]):
+        pulumi.set(self, "options", value)
 
     @property
     @pulumi.getter
@@ -66,7 +84,7 @@ class TransitRouterMulticastDomainArgs:
     @pulumi.getter(name="transitRouterMulticastDomainDescription")
     def transit_router_multicast_domain_description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+        The description of the multicast domain.
         """
         return pulumi.get(self, "transit_router_multicast_domain_description")
 
@@ -78,7 +96,7 @@ class TransitRouterMulticastDomainArgs:
     @pulumi.getter(name="transitRouterMulticastDomainName")
     def transit_router_multicast_domain_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+        The name of the multicast domain.
         """
         return pulumi.get(self, "transit_router_multicast_domain_name")
 
@@ -90,6 +108,8 @@ class TransitRouterMulticastDomainArgs:
 @pulumi.input_type
 class _TransitRouterMulticastDomainState:
     def __init__(__self__, *,
+                 options: Optional[pulumi.Input['TransitRouterMulticastDomainOptionsArgs']] = None,
+                 region_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  transit_router_id: Optional[pulumi.Input[str]] = None,
@@ -97,12 +117,18 @@ class _TransitRouterMulticastDomainState:
                  transit_router_multicast_domain_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering TransitRouterMulticastDomain resources.
+        :param pulumi.Input['TransitRouterMulticastDomainOptionsArgs'] options: The function options of the multicast domain. See `options` below.
+        :param pulumi.Input[str] region_id: (Available since v1.242.0) The region ID of the transit router.
         :param pulumi.Input[str] status: The status of the Transit Router Multicast Domain.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] transit_router_id: The ID of the transit router.
-        :param pulumi.Input[str] transit_router_multicast_domain_description: The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
-        :param pulumi.Input[str] transit_router_multicast_domain_name: The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+        :param pulumi.Input[str] transit_router_id: The ID of the forwarding router instance.
+        :param pulumi.Input[str] transit_router_multicast_domain_description: The description of the multicast domain.
+        :param pulumi.Input[str] transit_router_multicast_domain_name: The name of the multicast domain.
         """
+        if options is not None:
+            pulumi.set(__self__, "options", options)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if tags is not None:
@@ -113,6 +139,30 @@ class _TransitRouterMulticastDomainState:
             pulumi.set(__self__, "transit_router_multicast_domain_description", transit_router_multicast_domain_description)
         if transit_router_multicast_domain_name is not None:
             pulumi.set(__self__, "transit_router_multicast_domain_name", transit_router_multicast_domain_name)
+
+    @property
+    @pulumi.getter
+    def options(self) -> Optional[pulumi.Input['TransitRouterMulticastDomainOptionsArgs']]:
+        """
+        The function options of the multicast domain. See `options` below.
+        """
+        return pulumi.get(self, "options")
+
+    @options.setter
+    def options(self, value: Optional[pulumi.Input['TransitRouterMulticastDomainOptionsArgs']]):
+        pulumi.set(self, "options", value)
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.242.0) The region ID of the transit router.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region_id", value)
 
     @property
     @pulumi.getter
@@ -142,7 +192,7 @@ class _TransitRouterMulticastDomainState:
     @pulumi.getter(name="transitRouterId")
     def transit_router_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the transit router.
+        The ID of the forwarding router instance.
         """
         return pulumi.get(self, "transit_router_id")
 
@@ -154,7 +204,7 @@ class _TransitRouterMulticastDomainState:
     @pulumi.getter(name="transitRouterMulticastDomainDescription")
     def transit_router_multicast_domain_description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+        The description of the multicast domain.
         """
         return pulumi.get(self, "transit_router_multicast_domain_description")
 
@@ -166,7 +216,7 @@ class _TransitRouterMulticastDomainState:
     @pulumi.getter(name="transitRouterMulticastDomainName")
     def transit_router_multicast_domain_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+        The name of the multicast domain.
         """
         return pulumi.get(self, "transit_router_multicast_domain_name")
 
@@ -180,6 +230,7 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 options: Optional[pulumi.Input[Union['TransitRouterMulticastDomainOptionsArgs', 'TransitRouterMulticastDomainOptionsArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  transit_router_id: Optional[pulumi.Input[str]] = None,
                  transit_router_multicast_domain_description: Optional[pulumi.Input[str]] = None,
@@ -200,17 +251,22 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.cen.Instance("example",
-            cen_instance_name="tf_example",
-            description="an example for cen")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        example = alicloud.cen.Instance("example", cen_instance_name=name)
         example_transit_router = alicloud.cen.TransitRouter("example",
-            transit_router_name="tf_example",
+            transit_router_name=name,
             cen_id=example.id,
             support_multicast=True)
-        example_transit_router_multicast_domain = alicloud.cen.TransitRouterMulticastDomain("example",
+        default = alicloud.cen.TransitRouterMulticastDomain("default",
             transit_router_id=example_transit_router.transit_router_id,
-            transit_router_multicast_domain_name="tf_example",
-            transit_router_multicast_domain_description="tf_example")
+            transit_router_multicast_domain_name=name,
+            transit_router_multicast_domain_description=name,
+            options={
+                "igmpv2_support": "disable",
+            })
         ```
 
         ## Import
@@ -223,10 +279,11 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['TransitRouterMulticastDomainOptionsArgs', 'TransitRouterMulticastDomainOptionsArgsDict']] options: The function options of the multicast domain. See `options` below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] transit_router_id: The ID of the transit router.
-        :param pulumi.Input[str] transit_router_multicast_domain_description: The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
-        :param pulumi.Input[str] transit_router_multicast_domain_name: The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+        :param pulumi.Input[str] transit_router_id: The ID of the forwarding router instance.
+        :param pulumi.Input[str] transit_router_multicast_domain_description: The description of the multicast domain.
+        :param pulumi.Input[str] transit_router_multicast_domain_name: The name of the multicast domain.
         """
         ...
     @overload
@@ -249,17 +306,22 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.cen.Instance("example",
-            cen_instance_name="tf_example",
-            description="an example for cen")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        example = alicloud.cen.Instance("example", cen_instance_name=name)
         example_transit_router = alicloud.cen.TransitRouter("example",
-            transit_router_name="tf_example",
+            transit_router_name=name,
             cen_id=example.id,
             support_multicast=True)
-        example_transit_router_multicast_domain = alicloud.cen.TransitRouterMulticastDomain("example",
+        default = alicloud.cen.TransitRouterMulticastDomain("default",
             transit_router_id=example_transit_router.transit_router_id,
-            transit_router_multicast_domain_name="tf_example",
-            transit_router_multicast_domain_description="tf_example")
+            transit_router_multicast_domain_name=name,
+            transit_router_multicast_domain_description=name,
+            options={
+                "igmpv2_support": "disable",
+            })
         ```
 
         ## Import
@@ -285,6 +347,7 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 options: Optional[pulumi.Input[Union['TransitRouterMulticastDomainOptionsArgs', 'TransitRouterMulticastDomainOptionsArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  transit_router_id: Optional[pulumi.Input[str]] = None,
                  transit_router_multicast_domain_description: Optional[pulumi.Input[str]] = None,
@@ -298,12 +361,14 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TransitRouterMulticastDomainArgs.__new__(TransitRouterMulticastDomainArgs)
 
+            __props__.__dict__["options"] = options
             __props__.__dict__["tags"] = tags
             if transit_router_id is None and not opts.urn:
                 raise TypeError("Missing required property 'transit_router_id'")
             __props__.__dict__["transit_router_id"] = transit_router_id
             __props__.__dict__["transit_router_multicast_domain_description"] = transit_router_multicast_domain_description
             __props__.__dict__["transit_router_multicast_domain_name"] = transit_router_multicast_domain_name
+            __props__.__dict__["region_id"] = None
             __props__.__dict__["status"] = None
         super(TransitRouterMulticastDomain, __self__).__init__(
             'alicloud:cen/transitRouterMulticastDomain:TransitRouterMulticastDomain',
@@ -315,6 +380,8 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            options: Optional[pulumi.Input[Union['TransitRouterMulticastDomainOptionsArgs', 'TransitRouterMulticastDomainOptionsArgsDict']]] = None,
+            region_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             transit_router_id: Optional[pulumi.Input[str]] = None,
@@ -327,22 +394,42 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['TransitRouterMulticastDomainOptionsArgs', 'TransitRouterMulticastDomainOptionsArgsDict']] options: The function options of the multicast domain. See `options` below.
+        :param pulumi.Input[str] region_id: (Available since v1.242.0) The region ID of the transit router.
         :param pulumi.Input[str] status: The status of the Transit Router Multicast Domain.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] transit_router_id: The ID of the transit router.
-        :param pulumi.Input[str] transit_router_multicast_domain_description: The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
-        :param pulumi.Input[str] transit_router_multicast_domain_name: The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+        :param pulumi.Input[str] transit_router_id: The ID of the forwarding router instance.
+        :param pulumi.Input[str] transit_router_multicast_domain_description: The description of the multicast domain.
+        :param pulumi.Input[str] transit_router_multicast_domain_name: The name of the multicast domain.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _TransitRouterMulticastDomainState.__new__(_TransitRouterMulticastDomainState)
 
+        __props__.__dict__["options"] = options
+        __props__.__dict__["region_id"] = region_id
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
         __props__.__dict__["transit_router_id"] = transit_router_id
         __props__.__dict__["transit_router_multicast_domain_description"] = transit_router_multicast_domain_description
         __props__.__dict__["transit_router_multicast_domain_name"] = transit_router_multicast_domain_name
         return TransitRouterMulticastDomain(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def options(self) -> pulumi.Output['outputs.TransitRouterMulticastDomainOptions']:
+        """
+        The function options of the multicast domain. See `options` below.
+        """
+        return pulumi.get(self, "options")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.242.0) The region ID of the transit router.
+        """
+        return pulumi.get(self, "region_id")
 
     @property
     @pulumi.getter
@@ -364,7 +451,7 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
     @pulumi.getter(name="transitRouterId")
     def transit_router_id(self) -> pulumi.Output[str]:
         """
-        The ID of the transit router.
+        The ID of the forwarding router instance.
         """
         return pulumi.get(self, "transit_router_id")
 
@@ -372,7 +459,7 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
     @pulumi.getter(name="transitRouterMulticastDomainDescription")
     def transit_router_multicast_domain_description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+        The description of the multicast domain.
         """
         return pulumi.get(self, "transit_router_multicast_domain_description")
 
@@ -380,7 +467,7 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
     @pulumi.getter(name="transitRouterMulticastDomainName")
     def transit_router_multicast_domain_name(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+        The name of the multicast domain.
         """
         return pulumi.get(self, "transit_router_multicast_domain_name")
 

@@ -21,6 +21,7 @@ __all__ = [
     'ListenerAccessLogTracingConfig',
     'ListenerAclConfig',
     'ListenerAclConfigAclRelation',
+    'ListenerCaCertificate',
     'ListenerCertificates',
     'ListenerDefaultAction',
     'ListenerDefaultActionForwardGroupConfig',
@@ -28,6 +29,7 @@ __all__ = [
     'ListenerQuicConfig',
     'ListenerXForwardedForConfig',
     'LoadBalancerAccessLogConfig',
+    'LoadBalancerDeletionProtectionConfig',
     'LoadBalancerLoadBalancerBillingConfig',
     'LoadBalancerModificationProtectionConfig',
     'LoadBalancerZoneMapping',
@@ -58,9 +60,12 @@ __all__ = [
     'RuleRuleConditionResponseHeaderConfig',
     'RuleRuleConditionResponseStatusCodeConfig',
     'RuleRuleConditionSourceIpConfig',
+    'ServerGroupConnectionDrainConfig',
     'ServerGroupHealthCheckConfig',
     'ServerGroupServer',
+    'ServerGroupSlowStartConfig',
     'ServerGroupStickySessionConfig',
+    'ServerGroupUchConfig',
     'GetAclsAclResult',
     'GetAclsAclAclEntryResult',
     'GetAscriptsAscriptResult',
@@ -238,22 +243,23 @@ class ListenerAccessLogTracingConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 tracing_enabled: Optional[bool] = None,
+                 tracing_enabled: bool,
                  tracing_sample: Optional[int] = None,
                  tracing_type: Optional[str] = None):
         """
-        :param bool tracing_enabled: Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
+        :param bool tracing_enabled: Xtrace Function.
                
-               > **NOTE:** Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `True`.
-        :param int tracing_sample: Xtrace Sampling Rate. Value: `1` to `10000`.
+               Value: True **** Or False * *.
                
-               > **NOTE:** This attribute is valid when `tracingenabled` is `true`.
-        :param str tracing_type: Xtrace Type Value Is `Zipkin`.
+               Default Value: False * *.
                
-               > **NOTE:** This attribute is valid when `tracingenabled` is `true`.
+               > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
+        :param int tracing_sample: Xtrace Sampling Rate. Value: 1~10000 **.> `tracingenabled` **True When Effective.
+        :param str tracing_type: Xtrace Type Value Is **Zipkin * *.
+               
+               > **NOTE:**  `tracingenabled` **True When Effective.
         """
-        if tracing_enabled is not None:
-            pulumi.set(__self__, "tracing_enabled", tracing_enabled)
+        pulumi.set(__self__, "tracing_enabled", tracing_enabled)
         if tracing_sample is not None:
             pulumi.set(__self__, "tracing_sample", tracing_sample)
         if tracing_type is not None:
@@ -261,11 +267,15 @@ class ListenerAccessLogTracingConfig(dict):
 
     @property
     @pulumi.getter(name="tracingEnabled")
-    def tracing_enabled(self) -> Optional[bool]:
+    def tracing_enabled(self) -> bool:
         """
-        Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
+        Xtrace Function.
 
-        > **NOTE:** Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `True`.
+        Value: True **** Or False * *.
+
+        Default Value: False * *.
+
+        > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
         """
         return pulumi.get(self, "tracing_enabled")
 
@@ -273,9 +283,7 @@ class ListenerAccessLogTracingConfig(dict):
     @pulumi.getter(name="tracingSample")
     def tracing_sample(self) -> Optional[int]:
         """
-        Xtrace Sampling Rate. Value: `1` to `10000`.
-
-        > **NOTE:** This attribute is valid when `tracingenabled` is `true`.
+        Xtrace Sampling Rate. Value: 1~10000 **.> `tracingenabled` **True When Effective.
         """
         return pulumi.get(self, "tracing_sample")
 
@@ -283,9 +291,9 @@ class ListenerAccessLogTracingConfig(dict):
     @pulumi.getter(name="tracingType")
     def tracing_type(self) -> Optional[str]:
         """
-        Xtrace Type Value Is `Zipkin`.
+        Xtrace Type Value Is **Zipkin * *.
 
-        > **NOTE:** This attribute is valid when `tracingenabled` is `true`.
+        > **NOTE:**  `tracingenabled` **True When Effective.
         """
         return pulumi.get(self, "tracing_type")
 
@@ -364,7 +372,7 @@ class ListenerAclConfigAclRelation(dict):
                  status: Optional[str] = None):
         """
         :param str acl_id: Snooping Binding of the Access Policy Group ID List.
-        :param str status: The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
+        :param str status: The Current IP Address of the Listened State
         """
         if acl_id is not None:
             pulumi.set(__self__, "acl_id", acl_id)
@@ -383,9 +391,45 @@ class ListenerAclConfigAclRelation(dict):
     @pulumi.getter
     def status(self) -> Optional[str]:
         """
-        The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
+        The Current IP Address of the Listened State
         """
         return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class ListenerCaCertificate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certificateId":
+            suggest = "certificate_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ListenerCaCertificate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ListenerCaCertificate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ListenerCaCertificate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 certificate_id: Optional[str] = None):
+        """
+        :param str certificate_id: The ID of the certificate. Currently, only server certificates are supported.
+        """
+        if certificate_id is not None:
+            pulumi.set(__self__, "certificate_id", certificate_id)
+
+    @property
+    @pulumi.getter(name="certificateId")
+    def certificate_id(self) -> Optional[str]:
+        """
+        The ID of the certificate. Currently, only server certificates are supported.
+        """
+        return pulumi.get(self, "certificate_id")
 
 
 @pulumi.output_type
@@ -410,7 +454,7 @@ class ListenerCertificates(dict):
     def __init__(__self__, *,
                  certificate_id: Optional[str] = None):
         """
-        :param str certificate_id: The ID of the Certificate.
+        :param str certificate_id: The ID of the certificate. Currently, only server certificates are supported.
         """
         if certificate_id is not None:
             pulumi.set(__self__, "certificate_id", certificate_id)
@@ -419,7 +463,7 @@ class ListenerCertificates(dict):
     @pulumi.getter(name="certificateId")
     def certificate_id(self) -> Optional[str]:
         """
-        The ID of the Certificate.
+        The ID of the certificate. Currently, only server certificates are supported.
         """
         return pulumi.get(self, "certificate_id")
 
@@ -444,30 +488,31 @@ class ListenerDefaultAction(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 forward_group_config: 'outputs.ListenerDefaultActionForwardGroupConfig',
-                 type: str):
+                 type: str,
+                 forward_group_config: Optional['outputs.ListenerDefaultActionForwardGroupConfig'] = None):
         """
-        :param 'ListenerDefaultActionForwardGroupConfigArgs' forward_group_config: The configurations of the actions. This parameter is required if Type is set to FowardGroup. See `forward_group_config` below for details.
-        :param str type: Action Type.
+        :param str type: Action Type
+        :param 'ListenerDefaultActionForwardGroupConfigArgs' forward_group_config: Forwarding Action Configurations See `forward_group_config` below.
         """
-        pulumi.set(__self__, "forward_group_config", forward_group_config)
         pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter(name="forwardGroupConfig")
-    def forward_group_config(self) -> 'outputs.ListenerDefaultActionForwardGroupConfig':
-        """
-        The configurations of the actions. This parameter is required if Type is set to FowardGroup. See `forward_group_config` below for details.
-        """
-        return pulumi.get(self, "forward_group_config")
+        if forward_group_config is not None:
+            pulumi.set(__self__, "forward_group_config", forward_group_config)
 
     @property
     @pulumi.getter
     def type(self) -> str:
         """
-        Action Type.
+        Action Type
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="forwardGroupConfig")
+    def forward_group_config(self) -> Optional['outputs.ListenerDefaultActionForwardGroupConfig']:
+        """
+        Forwarding Action Configurations See `forward_group_config` below.
+        """
+        return pulumi.get(self, "forward_group_config")
 
 
 @pulumi.output_type
@@ -492,7 +537,7 @@ class ListenerDefaultActionForwardGroupConfig(dict):
     def __init__(__self__, *,
                  server_group_tuples: Sequence['outputs.ListenerDefaultActionForwardGroupConfigServerGroupTuple']):
         """
-        :param Sequence['ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs'] server_group_tuples: The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
+        :param Sequence['ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs'] server_group_tuples: The Forwarding Destination Server Group See `server_group_tuples` below.
         """
         pulumi.set(__self__, "server_group_tuples", server_group_tuples)
 
@@ -500,7 +545,7 @@ class ListenerDefaultActionForwardGroupConfig(dict):
     @pulumi.getter(name="serverGroupTuples")
     def server_group_tuples(self) -> Sequence['outputs.ListenerDefaultActionForwardGroupConfigServerGroupTuple']:
         """
-        The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
+        The Forwarding Destination Server Group See `server_group_tuples` below.
         """
         return pulumi.get(self, "server_group_tuples")
 
@@ -527,7 +572,7 @@ class ListenerDefaultActionForwardGroupConfigServerGroupTuple(dict):
     def __init__(__self__, *,
                  server_group_id: str):
         """
-        :param str server_group_id: The ID of the destination server group to which requests are forwarded.
+        :param str server_group_id: Forwarded to the Destination Server Group ID
         """
         pulumi.set(__self__, "server_group_id", server_group_id)
 
@@ -535,7 +580,7 @@ class ListenerDefaultActionForwardGroupConfigServerGroupTuple(dict):
     @pulumi.getter(name="serverGroupId")
     def server_group_id(self) -> str:
         """
-        The ID of the destination server group to which requests are forwarded.
+        Forwarded to the Destination Server Group ID
         """
         return pulumi.get(self, "server_group_id")
 
@@ -566,9 +611,7 @@ class ListenerQuicConfig(dict):
                  quic_upgrade_enabled: Optional[bool] = None):
         """
         :param str quic_listener_id: There Is a Need to Correlate the QuIC Listener ID. The Https Listener, in Effect at the Time. quicupgradeenabled True When Required.
-        :param bool quic_upgrade_enabled: Indicates Whether to Enable the QuIC Upgrade.
-               
-               > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
+        :param bool quic_upgrade_enabled: Indicates Whether to Enable the QuIC Upgrade
         """
         if quic_listener_id is not None:
             pulumi.set(__self__, "quic_listener_id", quic_listener_id)
@@ -587,9 +630,7 @@ class ListenerQuicConfig(dict):
     @pulumi.getter(name="quicUpgradeEnabled")
     def quic_upgrade_enabled(self) -> Optional[bool]:
         """
-        Indicates Whether to Enable the QuIC Upgrade.
-
-        > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
+        Indicates Whether to Enable the QuIC Upgrade
         """
         return pulumi.get(self, "quic_upgrade_enabled")
 
@@ -623,6 +664,10 @@ class ListenerXForwardedForConfig(dict):
             suggest = "x_forwarded_for_client_src_port_enabled"
         elif key == "xForwardedForEnabled":
             suggest = "x_forwarded_for_enabled"
+        elif key == "xForwardedForHostEnabled":
+            suggest = "x_forwarded_for_host_enabled"
+        elif key == "xForwardedForProcessingMode":
+            suggest = "x_forwarded_for_processing_mode"
         elif key == "xForwardedForProtoEnabled":
             suggest = "x_forwarded_for_proto_enabled"
         elif key == "xForwardedForSlbIdEnabled":
@@ -654,25 +699,53 @@ class ListenerXForwardedForConfig(dict):
                  x_forwarded_for_client_source_ips_trusted: Optional[str] = None,
                  x_forwarded_for_client_src_port_enabled: Optional[bool] = None,
                  x_forwarded_for_enabled: Optional[bool] = None,
+                 x_forwarded_for_host_enabled: Optional[bool] = None,
+                 x_forwarded_for_processing_mode: Optional[str] = None,
                  x_forwarded_for_proto_enabled: Optional[bool] = None,
                  x_forwarded_for_slb_id_enabled: Optional[bool] = None,
                  x_forwarded_for_slb_port_enabled: Optional[bool] = None):
         """
-        :param str x_forwarded_for_client_cert_client_verify_alias: The Custom Header Field Names Only When `x_forwarded_for_client_cert_client_verify_enabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-        :param bool x_forwarded_for_client_cert_client_verify_enabled: Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
-        :param str x_forwarded_for_client_cert_finger_print_alias: The Custom Header Field Names Only When `x_forwarded_for_client_certfingerprint_enabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-        :param bool x_forwarded_for_client_cert_finger_print_enabled: Indicates Whether the `X-Forwarded-client_cert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
-        :param str x_forwarded_for_client_cert_issuer_dn_alias: The Custom Header Field Names Only When `x_forwarded_for_client_cert_issuer_dn_enabled`, Which Evaluates to True When the Entry into Force of.
-        :param bool x_forwarded_for_client_cert_issuer_dn_enabled: Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
-        :param str x_forwarded_for_client_cert_subject_dn_alias: The name of the custom header. This parameter is valid only if `x_forwarded_for_client_certsubjectdn_enabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-        :param bool x_forwarded_for_client_cert_subject_dn_enabled: Specifies whether to use the `X-Forwarded-client_cert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
-        :param bool x_forwarded_for_client_source_ips_enabled: Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value: true, false. Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
-        :param str x_forwarded_for_client_source_ips_trusted: Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+        :param str x_forwarded_for_client_cert_client_verify_alias: The Custom Header Field Names Only When xforwardedforclientcertclientverifyenabled Has a Value of True, this Value Will Not Take Effect until.
+        :param bool x_forwarded_for_client_cert_client_verify_enabled: Indicates Whether the X-Forwarded-Clientcert-clientverify Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
+        :param str x_forwarded_for_client_cert_finger_print_alias: The Custom Header Field Names Only When xforwardedforclientcertfingerprintenabled, Which Evaluates to True When the Entry into Force of.
+        :param bool x_forwarded_for_client_cert_finger_print_enabled: Indicates Whether the X-Forwarded-Clientcert-fingerprint Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+        :param str x_forwarded_for_client_cert_issuer_dn_alias: The Custom Header Field Names Only When xforwardedforclientcertsubjectdnenabled, Which Evaluates to True When the Entry into Force of.
+        :param bool x_forwarded_for_client_cert_issuer_dn_enabled: Indicates Whether the X-Forwarded-Clientcert-issuerdn Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+        :param str x_forwarded_for_client_cert_subject_dn_alias: The Custom Header Field Name,
+        :param bool x_forwarded_for_client_cert_subject_dn_enabled: Indicates Whether the X-Forwarded-Clientcert-subjectdn Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Owner Information.
+        :param bool x_forwarded_for_client_source_ips_enabled: Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value:
+               
+               true: Yes.
+               
+               false (default): No.
+               
+               Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
+        :param str x_forwarded_for_client_source_ips_trusted: Specify the trusted proxy IP.
+               
+               Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
         :param bool x_forwarded_for_client_src_port_enabled: Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
         :param bool x_forwarded_for_enabled: Whether to Enable by X-Forwarded-For Header Field Is Used to Obtain the Client IP Addresses.
+        :param bool x_forwarded_for_host_enabled: Whether to enable the X-Forwarded-Host header field to obtain the domain name of the client accessing the Application Load Balancer. Value:
+               
+               true: Yes.
+               
+               false (default): No.
+               
+               HTTP, HTTPS, and QUIC listeners support this parameter.
+        :param str x_forwarded_for_processing_mode: Schema for processing X-Forwarded-For header fields. This value takes effect only when XForwardedForEnabled is true. Value:
+               
+               append (default): append.
+               
+               remove: Delete.
+               
+               Configure append to add the last hop IP address to the X-Forwarded-For header field before sending the request to the backend service.
+               
+               Configure remove to delete the X-Forwarded-For header before the request is sent to the backend service, regardless of whether the request carries X-Forwarded-For header fields.
+               
+               HTTP and HTTPS listeners support this parameter.
         :param bool x_forwarded_for_proto_enabled: Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
-        :param bool x_forwarded_for_slb_id_enabled: Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
-        :param bool x_forwarded_for_slb_port_enabled: Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
+        :param bool x_forwarded_for_slb_id_enabled: Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id
+        :param bool x_forwarded_for_slb_port_enabled: Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port
         """
         if x_forwarded_for_client_cert_client_verify_alias is not None:
             pulumi.set(__self__, "x_forwarded_for_client_cert_client_verify_alias", x_forwarded_for_client_cert_client_verify_alias)
@@ -698,6 +771,10 @@ class ListenerXForwardedForConfig(dict):
             pulumi.set(__self__, "x_forwarded_for_client_src_port_enabled", x_forwarded_for_client_src_port_enabled)
         if x_forwarded_for_enabled is not None:
             pulumi.set(__self__, "x_forwarded_for_enabled", x_forwarded_for_enabled)
+        if x_forwarded_for_host_enabled is not None:
+            pulumi.set(__self__, "x_forwarded_for_host_enabled", x_forwarded_for_host_enabled)
+        if x_forwarded_for_processing_mode is not None:
+            pulumi.set(__self__, "x_forwarded_for_processing_mode", x_forwarded_for_processing_mode)
         if x_forwarded_for_proto_enabled is not None:
             pulumi.set(__self__, "x_forwarded_for_proto_enabled", x_forwarded_for_proto_enabled)
         if x_forwarded_for_slb_id_enabled is not None:
@@ -709,7 +786,7 @@ class ListenerXForwardedForConfig(dict):
     @pulumi.getter(name="xForwardedForClientCertClientVerifyAlias")
     def x_forwarded_for_client_cert_client_verify_alias(self) -> Optional[str]:
         """
-        The Custom Header Field Names Only When `x_forwarded_for_client_cert_client_verify_enabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+        The Custom Header Field Names Only When xforwardedforclientcertclientverifyenabled Has a Value of True, this Value Will Not Take Effect until.
         """
         return pulumi.get(self, "x_forwarded_for_client_cert_client_verify_alias")
 
@@ -717,7 +794,7 @@ class ListenerXForwardedForConfig(dict):
     @pulumi.getter(name="xForwardedForClientCertClientVerifyEnabled")
     def x_forwarded_for_client_cert_client_verify_enabled(self) -> Optional[bool]:
         """
-        Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
+        Indicates Whether the X-Forwarded-Clientcert-clientverify Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
         """
         return pulumi.get(self, "x_forwarded_for_client_cert_client_verify_enabled")
 
@@ -725,7 +802,7 @@ class ListenerXForwardedForConfig(dict):
     @pulumi.getter(name="xForwardedForClientCertFingerPrintAlias")
     def x_forwarded_for_client_cert_finger_print_alias(self) -> Optional[str]:
         """
-        The Custom Header Field Names Only When `x_forwarded_for_client_certfingerprint_enabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+        The Custom Header Field Names Only When xforwardedforclientcertfingerprintenabled, Which Evaluates to True When the Entry into Force of.
         """
         return pulumi.get(self, "x_forwarded_for_client_cert_finger_print_alias")
 
@@ -733,7 +810,7 @@ class ListenerXForwardedForConfig(dict):
     @pulumi.getter(name="xForwardedForClientCertFingerPrintEnabled")
     def x_forwarded_for_client_cert_finger_print_enabled(self) -> Optional[bool]:
         """
-        Indicates Whether the `X-Forwarded-client_cert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+        Indicates Whether the X-Forwarded-Clientcert-fingerprint Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
         """
         return pulumi.get(self, "x_forwarded_for_client_cert_finger_print_enabled")
 
@@ -741,7 +818,7 @@ class ListenerXForwardedForConfig(dict):
     @pulumi.getter(name="xForwardedForClientCertIssuerDnAlias")
     def x_forwarded_for_client_cert_issuer_dn_alias(self) -> Optional[str]:
         """
-        The Custom Header Field Names Only When `x_forwarded_for_client_cert_issuer_dn_enabled`, Which Evaluates to True When the Entry into Force of.
+        The Custom Header Field Names Only When xforwardedforclientcertsubjectdnenabled, Which Evaluates to True When the Entry into Force of.
         """
         return pulumi.get(self, "x_forwarded_for_client_cert_issuer_dn_alias")
 
@@ -749,7 +826,7 @@ class ListenerXForwardedForConfig(dict):
     @pulumi.getter(name="xForwardedForClientCertIssuerDnEnabled")
     def x_forwarded_for_client_cert_issuer_dn_enabled(self) -> Optional[bool]:
         """
-        Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+        Indicates Whether the X-Forwarded-Clientcert-issuerdn Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
         """
         return pulumi.get(self, "x_forwarded_for_client_cert_issuer_dn_enabled")
 
@@ -757,7 +834,7 @@ class ListenerXForwardedForConfig(dict):
     @pulumi.getter(name="xForwardedForClientCertSubjectDnAlias")
     def x_forwarded_for_client_cert_subject_dn_alias(self) -> Optional[str]:
         """
-        The name of the custom header. This parameter is valid only if `x_forwarded_for_client_certsubjectdn_enabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+        The Custom Header Field Name,
         """
         return pulumi.get(self, "x_forwarded_for_client_cert_subject_dn_alias")
 
@@ -765,7 +842,7 @@ class ListenerXForwardedForConfig(dict):
     @pulumi.getter(name="xForwardedForClientCertSubjectDnEnabled")
     def x_forwarded_for_client_cert_subject_dn_enabled(self) -> Optional[bool]:
         """
-        Specifies whether to use the `X-Forwarded-client_cert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+        Indicates Whether the X-Forwarded-Clientcert-subjectdn Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Owner Information.
         """
         return pulumi.get(self, "x_forwarded_for_client_cert_subject_dn_enabled")
 
@@ -773,7 +850,13 @@ class ListenerXForwardedForConfig(dict):
     @pulumi.getter(name="xForwardedForClientSourceIpsEnabled")
     def x_forwarded_for_client_source_ips_enabled(self) -> Optional[bool]:
         """
-        Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value: true, false. Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
+        Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value:
+
+        true: Yes.
+
+        false (default): No.
+
+        Note HTTP, HTTPS, and QUIC listeners support this parameter. The function corresponding to this parameter is not open by default. Please contact the account manager if you need to use it.
         """
         return pulumi.get(self, "x_forwarded_for_client_source_ips_enabled")
 
@@ -781,7 +864,9 @@ class ListenerXForwardedForConfig(dict):
     @pulumi.getter(name="xForwardedForClientSourceIpsTrusted")
     def x_forwarded_for_client_source_ips_trusted(self) -> Optional[str]:
         """
-        Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+        Specify the trusted proxy IP.
+
+        Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
         """
         return pulumi.get(self, "x_forwarded_for_client_source_ips_trusted")
 
@@ -802,6 +887,38 @@ class ListenerXForwardedForConfig(dict):
         return pulumi.get(self, "x_forwarded_for_enabled")
 
     @property
+    @pulumi.getter(name="xForwardedForHostEnabled")
+    def x_forwarded_for_host_enabled(self) -> Optional[bool]:
+        """
+        Whether to enable the X-Forwarded-Host header field to obtain the domain name of the client accessing the Application Load Balancer. Value:
+
+        true: Yes.
+
+        false (default): No.
+
+        HTTP, HTTPS, and QUIC listeners support this parameter.
+        """
+        return pulumi.get(self, "x_forwarded_for_host_enabled")
+
+    @property
+    @pulumi.getter(name="xForwardedForProcessingMode")
+    def x_forwarded_for_processing_mode(self) -> Optional[str]:
+        """
+        Schema for processing X-Forwarded-For header fields. This value takes effect only when XForwardedForEnabled is true. Value:
+
+        append (default): append.
+
+        remove: Delete.
+
+        Configure append to add the last hop IP address to the X-Forwarded-For header field before sending the request to the backend service.
+
+        Configure remove to delete the X-Forwarded-For header before the request is sent to the backend service, regardless of whether the request carries X-Forwarded-For header fields.
+
+        HTTP and HTTPS listeners support this parameter.
+        """
+        return pulumi.get(self, "x_forwarded_for_processing_mode")
+
+    @property
     @pulumi.getter(name="xForwardedForProtoEnabled")
     def x_forwarded_for_proto_enabled(self) -> Optional[bool]:
         """
@@ -813,7 +930,7 @@ class ListenerXForwardedForConfig(dict):
     @pulumi.getter(name="xForwardedForSlbIdEnabled")
     def x_forwarded_for_slb_id_enabled(self) -> Optional[bool]:
         """
-        Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
+        Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id
         """
         return pulumi.get(self, "x_forwarded_for_slb_id_enabled")
 
@@ -821,7 +938,7 @@ class ListenerXForwardedForConfig(dict):
     @pulumi.getter(name="xForwardedForSlbPortEnabled")
     def x_forwarded_for_slb_port_enabled(self) -> Optional[bool]:
         """
-        Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
+        Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port
         """
         return pulumi.get(self, "x_forwarded_for_slb_port_enabled")
 
@@ -848,18 +965,20 @@ class LoadBalancerAccessLogConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 log_project: str,
-                 log_store: str):
+                 log_project: Optional[str] = None,
+                 log_store: Optional[str] = None):
         """
         :param str log_project: The project to which the access log is shipped.
         :param str log_store: The Logstore to which the access log is shipped.
         """
-        pulumi.set(__self__, "log_project", log_project)
-        pulumi.set(__self__, "log_store", log_store)
+        if log_project is not None:
+            pulumi.set(__self__, "log_project", log_project)
+        if log_store is not None:
+            pulumi.set(__self__, "log_store", log_store)
 
     @property
     @pulumi.getter(name="logProject")
-    def log_project(self) -> str:
+    def log_project(self) -> Optional[str]:
         """
         The project to which the access log is shipped.
         """
@@ -867,11 +986,59 @@ class LoadBalancerAccessLogConfig(dict):
 
     @property
     @pulumi.getter(name="logStore")
-    def log_store(self) -> str:
+    def log_store(self) -> Optional[str]:
         """
         The Logstore to which the access log is shipped.
         """
         return pulumi.get(self, "log_store")
+
+
+@pulumi.output_type
+class LoadBalancerDeletionProtectionConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enabledTime":
+            suggest = "enabled_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerDeletionProtectionConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadBalancerDeletionProtectionConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadBalancerDeletionProtectionConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 enabled_time: Optional[str] = None):
+        """
+        :param bool enabled: Remove the Protection Status
+        :param str enabled_time: Deletion Protection Turn-on Time Use Greenwich Mean Time, in the Format of Yyyy-MM-ddTHH: mm: SSZ
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if enabled_time is not None:
+            pulumi.set(__self__, "enabled_time", enabled_time)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Remove the Protection Status
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="enabledTime")
+    def enabled_time(self) -> Optional[str]:
+        """
+        Deletion Protection Turn-on Time Use Greenwich Mean Time, in the Format of Yyyy-MM-ddTHH: mm: SSZ
+        """
+        return pulumi.get(self, "enabled_time")
 
 
 @pulumi.output_type
@@ -896,7 +1063,7 @@ class LoadBalancerLoadBalancerBillingConfig(dict):
     def __init__(__self__, *,
                  pay_type: str):
         """
-        :param str pay_type: The billing method of the ALB instance. Valid values: `PayAsYouGo`.
+        :param str pay_type: Pay Type
         """
         pulumi.set(__self__, "pay_type", pay_type)
 
@@ -904,7 +1071,7 @@ class LoadBalancerLoadBalancerBillingConfig(dict):
     @pulumi.getter(name="payType")
     def pay_type(self) -> str:
         """
-        The billing method of the ALB instance. Valid values: `PayAsYouGo`.
+        Pay Type
         """
         return pulumi.get(self, "pay_type")
 
@@ -915,8 +1082,8 @@ class LoadBalancerModificationProtectionConfig(dict):
                  reason: Optional[str] = None,
                  status: Optional[str] = None):
         """
-        :param str reason: The reason for enabling the configuration read-only mode. **NOTE:** `reason` takes effect only if `status` is set to `ConsoleProtection`.
-        :param str status: Specifies whether to enable the configuration read-only mode. Valid values: `ConsoleProtection`, `NonProtection`.
+        :param str reason: Managed Instance
+        :param str status: Load Balancing Modify the Protection Status
         """
         if reason is not None:
             pulumi.set(__self__, "reason", reason)
@@ -927,7 +1094,7 @@ class LoadBalancerModificationProtectionConfig(dict):
     @pulumi.getter
     def reason(self) -> Optional[str]:
         """
-        The reason for enabling the configuration read-only mode. **NOTE:** `reason` takes effect only if `status` is set to `ConsoleProtection`.
+        Managed Instance
         """
         return pulumi.get(self, "reason")
 
@@ -935,7 +1102,7 @@ class LoadBalancerModificationProtectionConfig(dict):
     @pulumi.getter
     def status(self) -> Optional[str]:
         """
-        Specifies whether to enable the configuration read-only mode. Valid values: `ConsoleProtection`, `NonProtection`.
+        Load Balancing Modify the Protection Status
         """
         return pulumi.get(self, "status")
 
@@ -968,9 +1135,9 @@ class LoadBalancerZoneMapping(dict):
                  zone_id: str,
                  load_balancer_addresses: Optional[Sequence['outputs.LoadBalancerZoneMappingLoadBalancerAddress']] = None):
         """
-        :param str vswitch_id: The ID of the VSwitch.
-        :param str zone_id: The zone ID of the ALB instance.
-        :param Sequence['LoadBalancerZoneMappingLoadBalancerAddressArgs'] load_balancer_addresses: The IP address of the ALB instance.
+        :param str vswitch_id: The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+        :param str zone_id: The ID of the zone to which the SLB instance belongs.
+        :param Sequence['LoadBalancerZoneMappingLoadBalancerAddressArgs'] load_balancer_addresses: The SLB Instance Address
         """
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         pulumi.set(__self__, "zone_id", zone_id)
@@ -981,7 +1148,7 @@ class LoadBalancerZoneMapping(dict):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> str:
         """
-        The ID of the VSwitch.
+        The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -989,7 +1156,7 @@ class LoadBalancerZoneMapping(dict):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> str:
         """
-        The zone ID of the ALB instance.
+        The ID of the zone to which the SLB instance belongs.
         """
         return pulumi.get(self, "zone_id")
 
@@ -997,7 +1164,7 @@ class LoadBalancerZoneMapping(dict):
     @pulumi.getter(name="loadBalancerAddresses")
     def load_balancer_addresses(self) -> Optional[Sequence['outputs.LoadBalancerZoneMappingLoadBalancerAddress']]:
         """
-        The IP address of the ALB instance.
+        The SLB Instance Address
         """
         return pulumi.get(self, "load_balancer_addresses")
 
@@ -1031,10 +1198,10 @@ class LoadBalancerZoneMappingLoadBalancerAddress(dict):
                  eip_type: Optional[str] = None,
                  ipv6_address: Optional[str] = None):
         """
-        :param str address: IP address. The Public IP Address, and Private IP Address from the Address Type.
-        :param str allocation_id: The ID of the EIP.
-        :param str eip_type: The type of the EIP.
-        :param str ipv6_address: Ipv6 address.
+        :param str address: IP Address. The Public IP Address, and Private IP Address from the Address Type
+        :param str allocation_id: The ID of the EIP instance.
+        :param str eip_type: The type of the EIP instance.
+        :param str ipv6_address: Ipv6 address
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -1049,7 +1216,7 @@ class LoadBalancerZoneMappingLoadBalancerAddress(dict):
     @pulumi.getter
     def address(self) -> Optional[str]:
         """
-        IP address. The Public IP Address, and Private IP Address from the Address Type.
+        IP Address. The Public IP Address, and Private IP Address from the Address Type
         """
         return pulumi.get(self, "address")
 
@@ -1057,7 +1224,7 @@ class LoadBalancerZoneMappingLoadBalancerAddress(dict):
     @pulumi.getter(name="allocationId")
     def allocation_id(self) -> Optional[str]:
         """
-        The ID of the EIP.
+        The ID of the EIP instance.
         """
         return pulumi.get(self, "allocation_id")
 
@@ -1065,7 +1232,7 @@ class LoadBalancerZoneMappingLoadBalancerAddress(dict):
     @pulumi.getter(name="eipType")
     def eip_type(self) -> Optional[str]:
         """
-        The type of the EIP.
+        The type of the EIP instance.
         """
         return pulumi.get(self, "eip_type")
 
@@ -1073,7 +1240,7 @@ class LoadBalancerZoneMappingLoadBalancerAddress(dict):
     @pulumi.getter(name="ipv6Address")
     def ipv6_address(self) -> Optional[str]:
         """
-        Ipv6 address.
+        Ipv6 address
         """
         return pulumi.get(self, "ipv6_address")
 
@@ -2337,6 +2504,64 @@ class RuleRuleConditionSourceIpConfig(dict):
 
 
 @pulumi.output_type
+class ServerGroupConnectionDrainConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionDrainEnabled":
+            suggest = "connection_drain_enabled"
+        elif key == "connectionDrainTimeout":
+            suggest = "connection_drain_timeout"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerGroupConnectionDrainConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerGroupConnectionDrainConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerGroupConnectionDrainConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_drain_enabled: Optional[bool] = None,
+                 connection_drain_timeout: Optional[int] = None):
+        """
+        :param bool connection_drain_enabled: Specifies whether to enable connection draining. Valid values:
+        :param int connection_drain_timeout: The timeout period of connection draining.
+               
+               Valid values: `0` to `900`.
+               
+               Default value: `300`.
+        """
+        if connection_drain_enabled is not None:
+            pulumi.set(__self__, "connection_drain_enabled", connection_drain_enabled)
+        if connection_drain_timeout is not None:
+            pulumi.set(__self__, "connection_drain_timeout", connection_drain_timeout)
+
+    @property
+    @pulumi.getter(name="connectionDrainEnabled")
+    def connection_drain_enabled(self) -> Optional[bool]:
+        """
+        Specifies whether to enable connection draining. Valid values:
+        """
+        return pulumi.get(self, "connection_drain_enabled")
+
+    @property
+    @pulumi.getter(name="connectionDrainTimeout")
+    def connection_drain_timeout(self) -> Optional[int]:
+        """
+        The timeout period of connection draining.
+
+        Valid values: `0` to `900`.
+
+        Default value: `300`.
+        """
+        return pulumi.get(self, "connection_drain_timeout")
+
+
+@pulumi.output_type
 class ServerGroupHealthCheckConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -2391,20 +2616,75 @@ class ServerGroupHealthCheckConfig(dict):
                  healthy_threshold: Optional[int] = None,
                  unhealthy_threshold: Optional[int] = None):
         """
-        :param bool health_check_enabled: Specifies whether to enable the health check feature. Valid values: `true`, `false`.
-        :param Sequence[str] health_check_codes: The HTTP status codes that are used to indicate whether the backend server passes the health check. Valid values:
-               - If `health_check_protocol` is set to `HTTP` or `HTTPS`. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. Default value: `http_2xx`.
-               - If `health_check_protocol` is set to `gRPC`. Valid values: `0` to `99`. Default value: `0`.
-        :param int health_check_connect_port: The backend port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`. A value of 0 indicates that a backend server port is used for health checks.
+        :param bool health_check_enabled: Specifies whether to enable the health check feature. Valid values:
+        :param Sequence[str] health_check_codes: The status code for a successful health check
+        :param int health_check_connect_port: The backend port that is used for health checks.
+               
+               Valid values: `0` to `65535`.
+               
+               If you set the value to `0`, the backend port is used for health checks.
+               
+               > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
         :param str health_check_host: The domain name that is used for health checks.
-        :param str health_check_http_version: The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0` and `HTTP1.1`. **NOTE:** This parameter takes effect only when `health_check_protocol` is set to `HTTP` or `HTTPS`.
-        :param int health_check_interval: The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
-        :param str health_check_method: The HTTP method that is used for health checks. Default value: `GET`. Valid values: `GET`, `POST`, `HEAD`. **NOTE:** This parameter takes effect only when `health_check_protocol` is set to `HTTP`, `HTTPS`, or `gRPC`. From version 1.215.0, `health_check_method` can be set to `POST`.
-        :param str health_check_path: The path that is used for health checks. **NOTE:** This parameter takes effect only when `health_check_protocol` is set to `HTTP` or `HTTPS`.
-        :param str health_check_protocol: The protocol that is used for health checks. Valid values: `HTTP`, `HTTPS`, `TCP` and `gRPC`.
-        :param int health_check_timeout: The timeout period for a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If the value of `health_check_timeout` is smaller than the value of `health_check_interval`, the value of `health_check_timeout` is ignored and the value of `health_check_interval` is used.
-        :param int healthy_threshold: The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
-        :param int unhealthy_threshold: The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
+               
+               *   **Backend Server Internal IP** (default): Use the internal IP address of backend servers as the health check domain name.
+               
+               *   **Custom Domain Name**: Enter a domain name.
+               
+               *   The domain name must be 1 to 80 characters in length.
+               *   The domain name can contain lowercase letters, digits, hyphens (-), and periods (.).
+               *   The domain name must contain at least one period (.) but cannot start or end with a period (.).
+               *   The rightmost domain label of the domain name can contain only letters, and cannot contain digits or hyphens (-).
+               *   The domain name cannot start or end with a hyphen (-).
+               
+               > **NOTE:**   This parameter takes effect only if `HealthCheckProtocol` is set to `HTTP`, `HTTPS`, or `gRPC`.
+        :param str health_check_http_version: The HTTP version that is used for health checks. Valid values:
+               
+               *   **HTTP1.0**
+               
+               *   **HTTP1.1**
+               
+               > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to true and `HealthCheckProtocol` to `HTTP` or `HTTPS`.
+        :param int health_check_interval: The interval at which health checks are performed. Unit: seconds.
+               
+               Valid values: `1` to `50`.
+               
+               > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
+        :param str health_check_method: The HTTP method that is used for health checks. Valid values:
+               
+               *   `GET`: If the length of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
+               
+               *   `POST`: gRPC health checks use the POST method by default.
+               
+               *   `HEAD`: HTTP and HTTPS health checks use the HEAD method by default.
+               
+               > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to true and `HealthCheckProtocol` to `HTTP`, `HTTPS`, or `gRPC`.
+        :param str health_check_path: The URL that is used for health checks.
+               
+               The URL must be 1 to 80 characters in length, and can contain letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : ' , +`. The URL must start with a forward slash (`/`).
+               
+               > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true` and `HealthCheckProtocol` to `HTTP` or `HTTPS`.
+        :param str health_check_protocol: The protocol that is used for health checks. Valid values:
+               
+               - `HTTP`: HTTP health checks simulate browser behaviors by sending HEAD or GET requests to probe the availability of backend servers.
+               - `HTTPS`: HTTPS health checks simulate browser behaviors by sending HEAD or GET requests to probe the availability of backend servers. HTTPS provides higher security than HTTP because HTTPS supports data encryption.
+               - `TCP`: TCP health checks send TCP SYN packets to a backend server to probe the availability of backend servers.
+               - `gRPC`: gRPC health checks send POST or GET requests to a backend server to check whether the backend server is healthy.
+        :param int health_check_timeout: The timeout period of a health check response. If a backend ECS instance does not respond within the specified timeout period, the ECS instance fails the health check. Unit: seconds.
+               
+               Valid values: `1` to `300`.
+               
+               > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
+        :param int healthy_threshold: The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health check status of the backend server changes from `fail` to `success`.
+               
+               Valid values: `2` to `10`.
+               
+               Default value: `3`.
+        :param int unhealthy_threshold: The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health check status of the backend server changes from `success` to `fail`.
+               
+               Valid values: `2` to `10`.
+               
+               Default value: `3`.
         """
         pulumi.set(__self__, "health_check_enabled", health_check_enabled)
         if health_check_codes is not None:
@@ -2434,7 +2714,7 @@ class ServerGroupHealthCheckConfig(dict):
     @pulumi.getter(name="healthCheckEnabled")
     def health_check_enabled(self) -> bool:
         """
-        Specifies whether to enable the health check feature. Valid values: `true`, `false`.
+        Specifies whether to enable the health check feature. Valid values:
         """
         return pulumi.get(self, "health_check_enabled")
 
@@ -2442,9 +2722,7 @@ class ServerGroupHealthCheckConfig(dict):
     @pulumi.getter(name="healthCheckCodes")
     def health_check_codes(self) -> Optional[Sequence[str]]:
         """
-        The HTTP status codes that are used to indicate whether the backend server passes the health check. Valid values:
-        - If `health_check_protocol` is set to `HTTP` or `HTTPS`. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. Default value: `http_2xx`.
-        - If `health_check_protocol` is set to `gRPC`. Valid values: `0` to `99`. Default value: `0`.
+        The status code for a successful health check
         """
         return pulumi.get(self, "health_check_codes")
 
@@ -2452,7 +2730,13 @@ class ServerGroupHealthCheckConfig(dict):
     @pulumi.getter(name="healthCheckConnectPort")
     def health_check_connect_port(self) -> Optional[int]:
         """
-        The backend port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`. A value of 0 indicates that a backend server port is used for health checks.
+        The backend port that is used for health checks.
+
+        Valid values: `0` to `65535`.
+
+        If you set the value to `0`, the backend port is used for health checks.
+
+        > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
         """
         return pulumi.get(self, "health_check_connect_port")
 
@@ -2461,6 +2745,18 @@ class ServerGroupHealthCheckConfig(dict):
     def health_check_host(self) -> Optional[str]:
         """
         The domain name that is used for health checks.
+
+        *   **Backend Server Internal IP** (default): Use the internal IP address of backend servers as the health check domain name.
+
+        *   **Custom Domain Name**: Enter a domain name.
+
+        *   The domain name must be 1 to 80 characters in length.
+        *   The domain name can contain lowercase letters, digits, hyphens (-), and periods (.).
+        *   The domain name must contain at least one period (.) but cannot start or end with a period (.).
+        *   The rightmost domain label of the domain name can contain only letters, and cannot contain digits or hyphens (-).
+        *   The domain name cannot start or end with a hyphen (-).
+
+        > **NOTE:**   This parameter takes effect only if `HealthCheckProtocol` is set to `HTTP`, `HTTPS`, or `gRPC`.
         """
         return pulumi.get(self, "health_check_host")
 
@@ -2468,7 +2764,13 @@ class ServerGroupHealthCheckConfig(dict):
     @pulumi.getter(name="healthCheckHttpVersion")
     def health_check_http_version(self) -> Optional[str]:
         """
-        The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0` and `HTTP1.1`. **NOTE:** This parameter takes effect only when `health_check_protocol` is set to `HTTP` or `HTTPS`.
+        The HTTP version that is used for health checks. Valid values:
+
+        *   **HTTP1.0**
+
+        *   **HTTP1.1**
+
+        > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to true and `HealthCheckProtocol` to `HTTP` or `HTTPS`.
         """
         return pulumi.get(self, "health_check_http_version")
 
@@ -2476,7 +2778,11 @@ class ServerGroupHealthCheckConfig(dict):
     @pulumi.getter(name="healthCheckInterval")
     def health_check_interval(self) -> Optional[int]:
         """
-        The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
+        The interval at which health checks are performed. Unit: seconds.
+
+        Valid values: `1` to `50`.
+
+        > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
         """
         return pulumi.get(self, "health_check_interval")
 
@@ -2484,7 +2790,15 @@ class ServerGroupHealthCheckConfig(dict):
     @pulumi.getter(name="healthCheckMethod")
     def health_check_method(self) -> Optional[str]:
         """
-        The HTTP method that is used for health checks. Default value: `GET`. Valid values: `GET`, `POST`, `HEAD`. **NOTE:** This parameter takes effect only when `health_check_protocol` is set to `HTTP`, `HTTPS`, or `gRPC`. From version 1.215.0, `health_check_method` can be set to `POST`.
+        The HTTP method that is used for health checks. Valid values:
+
+        *   `GET`: If the length of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
+
+        *   `POST`: gRPC health checks use the POST method by default.
+
+        *   `HEAD`: HTTP and HTTPS health checks use the HEAD method by default.
+
+        > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to true and `HealthCheckProtocol` to `HTTP`, `HTTPS`, or `gRPC`.
         """
         return pulumi.get(self, "health_check_method")
 
@@ -2492,7 +2806,11 @@ class ServerGroupHealthCheckConfig(dict):
     @pulumi.getter(name="healthCheckPath")
     def health_check_path(self) -> Optional[str]:
         """
-        The path that is used for health checks. **NOTE:** This parameter takes effect only when `health_check_protocol` is set to `HTTP` or `HTTPS`.
+        The URL that is used for health checks.
+
+        The URL must be 1 to 80 characters in length, and can contain letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : ' , +`. The URL must start with a forward slash (`/`).
+
+        > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true` and `HealthCheckProtocol` to `HTTP` or `HTTPS`.
         """
         return pulumi.get(self, "health_check_path")
 
@@ -2500,7 +2818,12 @@ class ServerGroupHealthCheckConfig(dict):
     @pulumi.getter(name="healthCheckProtocol")
     def health_check_protocol(self) -> Optional[str]:
         """
-        The protocol that is used for health checks. Valid values: `HTTP`, `HTTPS`, `TCP` and `gRPC`.
+        The protocol that is used for health checks. Valid values:
+
+        - `HTTP`: HTTP health checks simulate browser behaviors by sending HEAD or GET requests to probe the availability of backend servers.
+        - `HTTPS`: HTTPS health checks simulate browser behaviors by sending HEAD or GET requests to probe the availability of backend servers. HTTPS provides higher security than HTTP because HTTPS supports data encryption.
+        - `TCP`: TCP health checks send TCP SYN packets to a backend server to probe the availability of backend servers.
+        - `gRPC`: gRPC health checks send POST or GET requests to a backend server to check whether the backend server is healthy.
         """
         return pulumi.get(self, "health_check_protocol")
 
@@ -2508,7 +2831,11 @@ class ServerGroupHealthCheckConfig(dict):
     @pulumi.getter(name="healthCheckTimeout")
     def health_check_timeout(self) -> Optional[int]:
         """
-        The timeout period for a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If the value of `health_check_timeout` is smaller than the value of `health_check_interval`, the value of `health_check_timeout` is ignored and the value of `health_check_interval` is used.
+        The timeout period of a health check response. If a backend ECS instance does not respond within the specified timeout period, the ECS instance fails the health check. Unit: seconds.
+
+        Valid values: `1` to `300`.
+
+        > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
         """
         return pulumi.get(self, "health_check_timeout")
 
@@ -2516,7 +2843,11 @@ class ServerGroupHealthCheckConfig(dict):
     @pulumi.getter(name="healthyThreshold")
     def healthy_threshold(self) -> Optional[int]:
         """
-        The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
+        The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health check status of the backend server changes from `fail` to `success`.
+
+        Valid values: `2` to `10`.
+
+        Default value: `3`.
         """
         return pulumi.get(self, "healthy_threshold")
 
@@ -2524,7 +2855,11 @@ class ServerGroupHealthCheckConfig(dict):
     @pulumi.getter(name="unhealthyThreshold")
     def unhealthy_threshold(self) -> Optional[int]:
         """
-        The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
+        The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health check status of the backend server changes from `success` to `fail`.
+
+        Valid values: `2` to `10`.
+
+        Default value: `3`.
         """
         return pulumi.get(self, "unhealthy_threshold")
 
@@ -2540,6 +2875,8 @@ class ServerGroupServer(dict):
             suggest = "server_type"
         elif key == "remoteIpEnabled":
             suggest = "remote_ip_enabled"
+        elif key == "serverGroupId":
+            suggest = "server_group_id"
         elif key == "serverIp":
             suggest = "server_ip"
 
@@ -2560,26 +2897,38 @@ class ServerGroupServer(dict):
                  description: Optional[str] = None,
                  port: Optional[int] = None,
                  remote_ip_enabled: Optional[bool] = None,
+                 server_group_id: Optional[str] = None,
                  server_ip: Optional[str] = None,
                  status: Optional[str] = None,
                  weight: Optional[int] = None):
         """
-        :param str server_id: The ID of the backend server.
-               - If `server_group_type` is set to `Instance`, set the parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
-               - If `server_group_type` is set to `Ip`, set the parameter to an IP address specified in the server group.
-               - If `server_group_type` is set to `Fc`, set the parameter to the Alibaba Cloud Resource Name (ARN) of a function specified in the server group.
-        :param str server_type: The type of the server. The type of the server. Valid values:
-               - `Ecs`: an ECS instance.
-               - `Eni`: an ENI.
-               - `Eci`: an elastic container instance.
-               - `Ip`(Available since v1.194.0): an IP address.
-               - `Fc`(Available since v1.194.0): a function.
-        :param str description: The description of the backend server.
-        :param int port: The port used by the backend server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `server_type` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `server_type` to `Fc`.
-        :param bool remote_ip_enabled: Specifies whether to enable the remote IP address feature. You can specify up to 40 servers in each call. **Note:** If `server_type` is set to `Ip`, this parameter is available.
-        :param str server_ip: The IP address of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. **Note:** If `server_group_type` is set to `Fc`, you do not need to configure parameters, otherwise this attribute is required. If `server_group_type` is set to `Ip`, the value of this property is the same as the `server_id` value.
-        :param str status: The status of the backend server.
-        :param int weight: The weight of the server. Default value: `100`. Valid values: `0` to `100`. If the value is set to `0`, no requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `server_type` to `Fc`.
+        :param str server_id: The ID of the backend server. You can specify at most 200 servers in each call.
+               
+               *   If the server group is of the `Instance` type, set ServerId to the ID of a resource of the `Ecs`, `Eni`, or `Eci` type.
+               
+               *   If the server group is of the `Ip` type, set ServerId to IP addresses.
+               
+               > **NOTE:**   You cannot perform this operation on a server group of the Function Compute type. You can call the [ListServerGroups](https://www.alibabacloud.com/help/en/doc-detail/213627.html) operation to query the type of server groups.
+        :param str server_type: The type of the backend server. You can specify at most 200 servers in each call. Default values:
+               
+               - `Ecs`: Elastic Compute Service (ECS) instance
+               - `Eni`: elastic network interface (ENI)
+               - `Eci`: elastic container instance
+               - `Ip`: IP address
+               - `Fc`: Function Compute
+        :param str description: The description of the backend server. The description must be 2 to 256 characters in length, and cannot start with http:// or https://.
+        :param int port: The port that is used by the backend server. Valid values: `1` to `65535`. You can specify at most 200 servers in each call.
+               
+               > **NOTE:**   This parameter is required if you set `ServerType` to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to set this parameter if `ServerType` is set to `Fc`.
+        :param bool remote_ip_enabled: Specifies whether to enable the remote IP feature. You can specify at most 200 servers in each call. Default values:
+        :param str server_group_id: The ID of the server group.
+        :param str server_ip: The IP address of the backend server. You can specify at most 200 servers in each call.
+               
+               > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
+        :param str status: The status of the resource
+        :param int weight: The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
+               
+               > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
         """
         pulumi.set(__self__, "server_id", server_id)
         pulumi.set(__self__, "server_type", server_type)
@@ -2589,6 +2938,8 @@ class ServerGroupServer(dict):
             pulumi.set(__self__, "port", port)
         if remote_ip_enabled is not None:
             pulumi.set(__self__, "remote_ip_enabled", remote_ip_enabled)
+        if server_group_id is not None:
+            pulumi.set(__self__, "server_group_id", server_group_id)
         if server_ip is not None:
             pulumi.set(__self__, "server_ip", server_ip)
         if status is not None:
@@ -2600,10 +2951,13 @@ class ServerGroupServer(dict):
     @pulumi.getter(name="serverId")
     def server_id(self) -> str:
         """
-        The ID of the backend server.
-        - If `server_group_type` is set to `Instance`, set the parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
-        - If `server_group_type` is set to `Ip`, set the parameter to an IP address specified in the server group.
-        - If `server_group_type` is set to `Fc`, set the parameter to the Alibaba Cloud Resource Name (ARN) of a function specified in the server group.
+        The ID of the backend server. You can specify at most 200 servers in each call.
+
+        *   If the server group is of the `Instance` type, set ServerId to the ID of a resource of the `Ecs`, `Eni`, or `Eci` type.
+
+        *   If the server group is of the `Ip` type, set ServerId to IP addresses.
+
+        > **NOTE:**   You cannot perform this operation on a server group of the Function Compute type. You can call the [ListServerGroups](https://www.alibabacloud.com/help/en/doc-detail/213627.html) operation to query the type of server groups.
         """
         return pulumi.get(self, "server_id")
 
@@ -2611,12 +2965,13 @@ class ServerGroupServer(dict):
     @pulumi.getter(name="serverType")
     def server_type(self) -> str:
         """
-        The type of the server. The type of the server. Valid values:
-        - `Ecs`: an ECS instance.
-        - `Eni`: an ENI.
-        - `Eci`: an elastic container instance.
-        - `Ip`(Available since v1.194.0): an IP address.
-        - `Fc`(Available since v1.194.0): a function.
+        The type of the backend server. You can specify at most 200 servers in each call. Default values:
+
+        - `Ecs`: Elastic Compute Service (ECS) instance
+        - `Eni`: elastic network interface (ENI)
+        - `Eci`: elastic container instance
+        - `Ip`: IP address
+        - `Fc`: Function Compute
         """
         return pulumi.get(self, "server_type")
 
@@ -2624,7 +2979,7 @@ class ServerGroupServer(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        The description of the backend server.
+        The description of the backend server. The description must be 2 to 256 characters in length, and cannot start with http:// or https://.
         """
         return pulumi.get(self, "description")
 
@@ -2632,7 +2987,9 @@ class ServerGroupServer(dict):
     @pulumi.getter
     def port(self) -> Optional[int]:
         """
-        The port used by the backend server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `server_type` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `server_type` to `Fc`.
+        The port that is used by the backend server. Valid values: `1` to `65535`. You can specify at most 200 servers in each call.
+
+        > **NOTE:**   This parameter is required if you set `ServerType` to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to set this parameter if `ServerType` is set to `Fc`.
         """
         return pulumi.get(self, "port")
 
@@ -2640,15 +2997,25 @@ class ServerGroupServer(dict):
     @pulumi.getter(name="remoteIpEnabled")
     def remote_ip_enabled(self) -> Optional[bool]:
         """
-        Specifies whether to enable the remote IP address feature. You can specify up to 40 servers in each call. **Note:** If `server_type` is set to `Ip`, this parameter is available.
+        Specifies whether to enable the remote IP feature. You can specify at most 200 servers in each call. Default values:
         """
         return pulumi.get(self, "remote_ip_enabled")
+
+    @property
+    @pulumi.getter(name="serverGroupId")
+    def server_group_id(self) -> Optional[str]:
+        """
+        The ID of the server group.
+        """
+        return pulumi.get(self, "server_group_id")
 
     @property
     @pulumi.getter(name="serverIp")
     def server_ip(self) -> Optional[str]:
         """
-        The IP address of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. **Note:** If `server_group_type` is set to `Fc`, you do not need to configure parameters, otherwise this attribute is required. If `server_group_type` is set to `Ip`, the value of this property is the same as the `server_id` value.
+        The IP address of the backend server. You can specify at most 200 servers in each call.
+
+        > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
         """
         return pulumi.get(self, "server_ip")
 
@@ -2656,7 +3023,7 @@ class ServerGroupServer(dict):
     @pulumi.getter
     def status(self) -> Optional[str]:
         """
-        The status of the backend server.
+        The status of the resource
         """
         return pulumi.get(self, "status")
 
@@ -2664,9 +3031,69 @@ class ServerGroupServer(dict):
     @pulumi.getter
     def weight(self) -> Optional[int]:
         """
-        The weight of the server. Default value: `100`. Valid values: `0` to `100`. If the value is set to `0`, no requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `server_type` to `Fc`.
+        The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
+
+        > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
         """
         return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
+class ServerGroupSlowStartConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "slowStartDuration":
+            suggest = "slow_start_duration"
+        elif key == "slowStartEnabled":
+            suggest = "slow_start_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerGroupSlowStartConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerGroupSlowStartConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerGroupSlowStartConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 slow_start_duration: Optional[int] = None,
+                 slow_start_enabled: Optional[bool] = None):
+        """
+        :param int slow_start_duration: The duration of a slow start.
+               
+               Valid values: 30 to 900.
+               
+               Default value: 30.
+        :param bool slow_start_enabled: Indicates whether slow starts are enabled. Valid values:
+        """
+        if slow_start_duration is not None:
+            pulumi.set(__self__, "slow_start_duration", slow_start_duration)
+        if slow_start_enabled is not None:
+            pulumi.set(__self__, "slow_start_enabled", slow_start_enabled)
+
+    @property
+    @pulumi.getter(name="slowStartDuration")
+    def slow_start_duration(self) -> Optional[int]:
+        """
+        The duration of a slow start.
+
+        Valid values: 30 to 900.
+
+        Default value: 30.
+        """
+        return pulumi.get(self, "slow_start_duration")
+
+    @property
+    @pulumi.getter(name="slowStartEnabled")
+    def slow_start_enabled(self) -> Optional[bool]:
+        """
+        Indicates whether slow starts are enabled. Valid values:
+        """
+        return pulumi.get(self, "slow_start_enabled")
 
 
 @pulumi.output_type
@@ -2698,10 +3125,30 @@ class ServerGroupStickySessionConfig(dict):
                  sticky_session_enabled: Optional[bool] = None,
                  sticky_session_type: Optional[str] = None):
         """
-        :param str cookie: The cookie to be configured on the server. **NOTE:** This parameter takes effect when the `sticky_session_enabled` parameter is set to `true` and the `sticky_session_type` parameter is set to `Server`.
-        :param int cookie_timeout: The timeout period of a cookie. Unit: seconds. Default value: `1000`. Valid values: `1` to `86400`. **NOTE:** This parameter takes effect when the `sticky_session_enabled` parameter is set to `true` and the `sticky_session_type` parameter is set to `Insert`.
-        :param bool sticky_session_enabled: Specifies whether to enable session persistence. Default value: `false`. Valid values: `true`, `false`. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
-        :param str sticky_session_type: The method that is used to handle a cookie. Valid values: `Server`, `Insert`.
+        :param str cookie: The cookie to be configured on the server.
+               
+               The cookie must be 1 to 200 characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($).
+               
+               > **NOTE:**  This parameter takes effect when the `StickySessionEnabled` parameter is set to `true` and the `StickySessionType` parameter is set to `Server`.
+        :param int cookie_timeout: The maximum amount of time to wait before the session cookie expires. Unit: seconds.
+               
+               Valid values: `1` to `86400`.
+               
+               Default value: `1000`.
+               
+               > **NOTE:**   This parameter takes effect only when `StickySessionEnabled` is set to `true` and `StickySessionType` is set to `Insert`.
+        :param bool sticky_session_enabled: Specifies whether to enable session persistence. Valid values:
+        :param str sticky_session_type: The method that is used to handle a cookie. Valid values:
+               
+               *   `Insert`: inserts a cookie.
+               
+               ALB inserts a cookie (SERVERID) into the first HTTP or HTTPS response packet that is sent to a client. The next request from the client contains this cookie and the listener forwards this request to the recorded backend server.
+               
+               *   `Server`: rewrites a cookie.
+               
+               When ALB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. Subsequent requests to ALB carry this user-defined cookie, and ALB determines the destination servers of the requests based on the cookies.
+               
+               > **NOTE:**  This parameter takes effect when the `StickySessionEnabled` parameter is set to `true` for the server group.
         """
         if cookie is not None:
             pulumi.set(__self__, "cookie", cookie)
@@ -2716,7 +3163,11 @@ class ServerGroupStickySessionConfig(dict):
     @pulumi.getter
     def cookie(self) -> Optional[str]:
         """
-        The cookie to be configured on the server. **NOTE:** This parameter takes effect when the `sticky_session_enabled` parameter is set to `true` and the `sticky_session_type` parameter is set to `Server`.
+        The cookie to be configured on the server.
+
+        The cookie must be 1 to 200 characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($).
+
+        > **NOTE:**  This parameter takes effect when the `StickySessionEnabled` parameter is set to `true` and the `StickySessionType` parameter is set to `Server`.
         """
         return pulumi.get(self, "cookie")
 
@@ -2724,7 +3175,13 @@ class ServerGroupStickySessionConfig(dict):
     @pulumi.getter(name="cookieTimeout")
     def cookie_timeout(self) -> Optional[int]:
         """
-        The timeout period of a cookie. Unit: seconds. Default value: `1000`. Valid values: `1` to `86400`. **NOTE:** This parameter takes effect when the `sticky_session_enabled` parameter is set to `true` and the `sticky_session_type` parameter is set to `Insert`.
+        The maximum amount of time to wait before the session cookie expires. Unit: seconds.
+
+        Valid values: `1` to `86400`.
+
+        Default value: `1000`.
+
+        > **NOTE:**   This parameter takes effect only when `StickySessionEnabled` is set to `true` and `StickySessionType` is set to `Insert`.
         """
         return pulumi.get(self, "cookie_timeout")
 
@@ -2732,7 +3189,7 @@ class ServerGroupStickySessionConfig(dict):
     @pulumi.getter(name="stickySessionEnabled")
     def sticky_session_enabled(self) -> Optional[bool]:
         """
-        Specifies whether to enable session persistence. Default value: `false`. Valid values: `true`, `false`. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
+        Specifies whether to enable session persistence. Valid values:
         """
         return pulumi.get(self, "sticky_session_enabled")
 
@@ -2740,9 +3197,50 @@ class ServerGroupStickySessionConfig(dict):
     @pulumi.getter(name="stickySessionType")
     def sticky_session_type(self) -> Optional[str]:
         """
-        The method that is used to handle a cookie. Valid values: `Server`, `Insert`.
+        The method that is used to handle a cookie. Valid values:
+
+        *   `Insert`: inserts a cookie.
+
+        ALB inserts a cookie (SERVERID) into the first HTTP or HTTPS response packet that is sent to a client. The next request from the client contains this cookie and the listener forwards this request to the recorded backend server.
+
+        *   `Server`: rewrites a cookie.
+
+        When ALB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. Subsequent requests to ALB carry this user-defined cookie, and ALB determines the destination servers of the requests based on the cookies.
+
+        > **NOTE:**  This parameter takes effect when the `StickySessionEnabled` parameter is set to `true` for the server group.
         """
         return pulumi.get(self, "sticky_session_type")
+
+
+@pulumi.output_type
+class ServerGroupUchConfig(dict):
+    def __init__(__self__, *,
+                 type: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str type: The parameter type. Only QueryString can be filled.
+        :param str value: Consistency hash parameter value
+        """
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        The parameter type. Only QueryString can be filled.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        Consistency hash parameter value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -5152,17 +5650,17 @@ class GetServerGroupsGroupResult(dict):
                  tags: Mapping[str, str],
                  vpc_id: str):
         """
-        :param Sequence['GetServerGroupsGroupHealthCheckConfigArgs'] health_check_configs: The configuration of health checks.
+        :param Sequence['GetServerGroupsGroupHealthCheckConfigArgs'] health_check_configs: The configuration of health checks. **Note:** `health_check_config` takes effect only if `enable_details` is set to `true`.
         :param str id: The ID of the Server Group.
-        :param str protocol: The server protocol. Valid values: `HTTP` and `HTTPS`. Default value: `HTTP`.
-        :param str scheduler: The scheduling algorithm. Valid values: `Wrr`, `Wlc` and `Sch`.
-        :param str server_group_id: The first ID of the res ource.
-        :param str server_group_name: The name of the resource.
-        :param Sequence['GetServerGroupsGroupServerArgs'] servers: The backend server.
-        :param str status: The status of the resource.
-        :param Sequence['GetServerGroupsGroupStickySessionConfigArgs'] sticky_session_configs: The configuration of the sticky session.
-        :param Mapping[str, str] tags: A map of tags assigned to the group.
-        :param str vpc_id: The ID of the VPC that you want to access.
+        :param str protocol: The backend protocol.
+        :param str scheduler: The scheduling algorithm.
+        :param str server_group_id: The ID of the Server Group.
+        :param str server_group_name: The names of the Server Group.
+        :param Sequence['GetServerGroupsGroupServerArgs'] servers: The backend server. **Note:** `servers` takes effect only if `enable_details` is set to `true`.
+        :param str status: The status of the Server Group. Valid values: `Available`, `Configuring`, `Provisioning`.
+        :param Sequence['GetServerGroupsGroupStickySessionConfigArgs'] sticky_session_configs: The configuration of the sticky session. **Note:** `sticky_session_config` takes effect only if `enable_details` is set to `true`.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
+        :param str vpc_id: The ID of the virtual private cloud (VPC).
         """
         pulumi.set(__self__, "health_check_configs", health_check_configs)
         pulumi.set(__self__, "id", id)
@@ -5180,7 +5678,7 @@ class GetServerGroupsGroupResult(dict):
     @pulumi.getter(name="healthCheckConfigs")
     def health_check_configs(self) -> Sequence['outputs.GetServerGroupsGroupHealthCheckConfigResult']:
         """
-        The configuration of health checks.
+        The configuration of health checks. **Note:** `health_check_config` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "health_check_configs")
 
@@ -5196,7 +5694,7 @@ class GetServerGroupsGroupResult(dict):
     @pulumi.getter
     def protocol(self) -> str:
         """
-        The server protocol. Valid values: `HTTP` and `HTTPS`. Default value: `HTTP`.
+        The backend protocol.
         """
         return pulumi.get(self, "protocol")
 
@@ -5204,7 +5702,7 @@ class GetServerGroupsGroupResult(dict):
     @pulumi.getter
     def scheduler(self) -> str:
         """
-        The scheduling algorithm. Valid values: `Wrr`, `Wlc` and `Sch`.
+        The scheduling algorithm.
         """
         return pulumi.get(self, "scheduler")
 
@@ -5212,7 +5710,7 @@ class GetServerGroupsGroupResult(dict):
     @pulumi.getter(name="serverGroupId")
     def server_group_id(self) -> str:
         """
-        The first ID of the res ource.
+        The ID of the Server Group.
         """
         return pulumi.get(self, "server_group_id")
 
@@ -5220,7 +5718,7 @@ class GetServerGroupsGroupResult(dict):
     @pulumi.getter(name="serverGroupName")
     def server_group_name(self) -> str:
         """
-        The name of the resource.
+        The names of the Server Group.
         """
         return pulumi.get(self, "server_group_name")
 
@@ -5228,7 +5726,7 @@ class GetServerGroupsGroupResult(dict):
     @pulumi.getter
     def servers(self) -> Sequence['outputs.GetServerGroupsGroupServerResult']:
         """
-        The backend server.
+        The backend server. **Note:** `servers` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "servers")
 
@@ -5236,7 +5734,7 @@ class GetServerGroupsGroupResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the resource.
+        The status of the Server Group. Valid values: `Available`, `Configuring`, `Provisioning`.
         """
         return pulumi.get(self, "status")
 
@@ -5244,7 +5742,7 @@ class GetServerGroupsGroupResult(dict):
     @pulumi.getter(name="stickySessionConfigs")
     def sticky_session_configs(self) -> Sequence['outputs.GetServerGroupsGroupStickySessionConfigResult']:
         """
-        The configuration of the sticky session.
+        The configuration of the sticky session. **Note:** `sticky_session_config` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "sticky_session_configs")
 
@@ -5252,7 +5750,7 @@ class GetServerGroupsGroupResult(dict):
     @pulumi.getter
     def tags(self) -> Mapping[str, str]:
         """
-        A map of tags assigned to the group.
+        A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -5260,7 +5758,7 @@ class GetServerGroupsGroupResult(dict):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> str:
         """
-        The ID of the VPC that you want to access.
+        The ID of the virtual private cloud (VPC).
         """
         return pulumi.get(self, "vpc_id")
 
@@ -5281,18 +5779,18 @@ class GetServerGroupsGroupHealthCheckConfigResult(dict):
                  healthy_threshold: int,
                  unhealthy_threshold: int):
         """
-        :param Sequence[str] health_check_codes: The status code for a successful health check. Multiple status codes can be specified as a list. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. Default value: `http_2xx`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
-        :param int health_check_connect_port: The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of `0` indicates that a backend server port is used for health checks.
-        :param bool health_check_enabled: Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
+        :param Sequence[str] health_check_codes: The status code for a successful health check. Multiple status codes can be specified as a list.
+        :param int health_check_connect_port: The port of the backend server that is used for health checks.
+        :param bool health_check_enabled: Indicates whether health checks are enabled.
         :param str health_check_host: The domain name that is used for health checks.
-        :param str health_check_http_version: HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
-        :param int health_check_interval: The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
-        :param str health_check_method: Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
-        :param str health_check_path: The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
-        :param str health_check_protocol: Health check protocol. Valid values: `HTTP` and `TCP`.
-        :param int health_check_timeout: The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: `1` to `300`. Default value: `5`. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
-        :param int healthy_threshold: The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: `2` to `10`. Default value: `3`.
-        :param int unhealthy_threshold: The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
+        :param str health_check_http_version: HTTP protocol version.
+        :param int health_check_interval: The time interval between two consecutive health checks.
+        :param str health_check_method: Health check method.
+        :param str health_check_path: The forwarding rule path of health checks.
+        :param str health_check_protocol: Health check protocol.
+        :param int health_check_timeout: The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy.
+        :param int healthy_threshold: The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success.
+        :param int unhealthy_threshold: The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail.
         """
         pulumi.set(__self__, "health_check_codes", health_check_codes)
         pulumi.set(__self__, "health_check_connect_port", health_check_connect_port)
@@ -5311,7 +5809,7 @@ class GetServerGroupsGroupHealthCheckConfigResult(dict):
     @pulumi.getter(name="healthCheckCodes")
     def health_check_codes(self) -> Sequence[str]:
         """
-        The status code for a successful health check. Multiple status codes can be specified as a list. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. Default value: `http_2xx`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+        The status code for a successful health check. Multiple status codes can be specified as a list.
         """
         return pulumi.get(self, "health_check_codes")
 
@@ -5319,7 +5817,7 @@ class GetServerGroupsGroupHealthCheckConfigResult(dict):
     @pulumi.getter(name="healthCheckConnectPort")
     def health_check_connect_port(self) -> int:
         """
-        The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of `0` indicates that a backend server port is used for health checks.
+        The port of the backend server that is used for health checks.
         """
         return pulumi.get(self, "health_check_connect_port")
 
@@ -5327,7 +5825,7 @@ class GetServerGroupsGroupHealthCheckConfigResult(dict):
     @pulumi.getter(name="healthCheckEnabled")
     def health_check_enabled(self) -> bool:
         """
-        Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
+        Indicates whether health checks are enabled.
         """
         return pulumi.get(self, "health_check_enabled")
 
@@ -5343,7 +5841,7 @@ class GetServerGroupsGroupHealthCheckConfigResult(dict):
     @pulumi.getter(name="healthCheckHttpVersion")
     def health_check_http_version(self) -> str:
         """
-        HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+        HTTP protocol version.
         """
         return pulumi.get(self, "health_check_http_version")
 
@@ -5351,7 +5849,7 @@ class GetServerGroupsGroupHealthCheckConfigResult(dict):
     @pulumi.getter(name="healthCheckInterval")
     def health_check_interval(self) -> int:
         """
-        The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
+        The time interval between two consecutive health checks.
         """
         return pulumi.get(self, "health_check_interval")
 
@@ -5359,7 +5857,7 @@ class GetServerGroupsGroupHealthCheckConfigResult(dict):
     @pulumi.getter(name="healthCheckMethod")
     def health_check_method(self) -> str:
         """
-        Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+        Health check method.
         """
         return pulumi.get(self, "health_check_method")
 
@@ -5367,7 +5865,7 @@ class GetServerGroupsGroupHealthCheckConfigResult(dict):
     @pulumi.getter(name="healthCheckPath")
     def health_check_path(self) -> str:
         """
-        The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+        The forwarding rule path of health checks.
         """
         return pulumi.get(self, "health_check_path")
 
@@ -5375,7 +5873,7 @@ class GetServerGroupsGroupHealthCheckConfigResult(dict):
     @pulumi.getter(name="healthCheckProtocol")
     def health_check_protocol(self) -> str:
         """
-        Health check protocol. Valid values: `HTTP` and `TCP`.
+        Health check protocol.
         """
         return pulumi.get(self, "health_check_protocol")
 
@@ -5383,7 +5881,7 @@ class GetServerGroupsGroupHealthCheckConfigResult(dict):
     @pulumi.getter(name="healthCheckTimeout")
     def health_check_timeout(self) -> int:
         """
-        The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: `1` to `300`. Default value: `5`. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
+        The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy.
         """
         return pulumi.get(self, "health_check_timeout")
 
@@ -5391,7 +5889,7 @@ class GetServerGroupsGroupHealthCheckConfigResult(dict):
     @pulumi.getter(name="healthyThreshold")
     def healthy_threshold(self) -> int:
         """
-        The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: `2` to `10`. Default value: `3`.
+        The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success.
         """
         return pulumi.get(self, "healthy_threshold")
 
@@ -5399,7 +5897,7 @@ class GetServerGroupsGroupHealthCheckConfigResult(dict):
     @pulumi.getter(name="unhealthyThreshold")
     def unhealthy_threshold(self) -> int:
         """
-        The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
+        The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail.
         """
         return pulumi.get(self, "unhealthy_threshold")
 
@@ -5416,12 +5914,12 @@ class GetServerGroupsGroupServerResult(dict):
                  weight: int):
         """
         :param str description: The description of the server.
-        :param int port: The port that is used by the server. Valid values: `1` to `65535`.
+        :param int port: The port that is used by the server.
         :param str server_id: The ID of the ECS instance, ENI instance or ECI instance.
         :param str server_ip: The IP address of the ENI instance when it is in the inclusive ENI mode.
-        :param str server_type: The type of the server. The type of the server. Valid values: `Ecs`, `Eni` and `Eci`.
-        :param str status: The status of the resource.
-        :param int weight: The weight of the server.  Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the server.
+        :param str server_type: The type of the server. The type of the server.
+        :param str status: The status of the Server Group. Valid values: `Available`, `Configuring`, `Provisioning`.
+        :param int weight: The weight of the server.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "port", port)
@@ -5443,7 +5941,7 @@ class GetServerGroupsGroupServerResult(dict):
     @pulumi.getter
     def port(self) -> int:
         """
-        The port that is used by the server. Valid values: `1` to `65535`.
+        The port that is used by the server.
         """
         return pulumi.get(self, "port")
 
@@ -5467,7 +5965,7 @@ class GetServerGroupsGroupServerResult(dict):
     @pulumi.getter(name="serverType")
     def server_type(self) -> str:
         """
-        The type of the server. The type of the server. Valid values: `Ecs`, `Eni` and `Eci`.
+        The type of the server. The type of the server.
         """
         return pulumi.get(self, "server_type")
 
@@ -5475,7 +5973,7 @@ class GetServerGroupsGroupServerResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the resource.
+        The status of the Server Group. Valid values: `Available`, `Configuring`, `Provisioning`.
         """
         return pulumi.get(self, "status")
 
@@ -5483,7 +5981,7 @@ class GetServerGroupsGroupServerResult(dict):
     @pulumi.getter
     def weight(self) -> int:
         """
-        The weight of the server.  Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the server.
+        The weight of the server.
         """
         return pulumi.get(self, "weight")
 
@@ -5496,10 +5994,10 @@ class GetServerGroupsGroupStickySessionConfigResult(dict):
                  sticky_session_enabled: bool,
                  sticky_session_type: str):
         """
-        :param str cookie: the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession` parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
-        :param int cookie_timeout: The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
-        :param bool sticky_session_enabled: Indicates whether sticky session is enabled. Values: `true` and `false`. Default value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
-        :param str sticky_session_type: The method that is used to handle a cookie. Values: `Server` and `Insert`.
+        :param str cookie: the cookie that is configured on the server.
+        :param int cookie_timeout: The timeout period of a cookie. The timeout period of a cookie.
+        :param bool sticky_session_enabled: Indicates whether sticky session is enabled.
+        :param str sticky_session_type: The method that is used to handle a cookie.
         """
         pulumi.set(__self__, "cookie", cookie)
         pulumi.set(__self__, "cookie_timeout", cookie_timeout)
@@ -5510,7 +6008,7 @@ class GetServerGroupsGroupStickySessionConfigResult(dict):
     @pulumi.getter
     def cookie(self) -> str:
         """
-        the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession` parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
+        the cookie that is configured on the server.
         """
         return pulumi.get(self, "cookie")
 
@@ -5518,7 +6016,7 @@ class GetServerGroupsGroupStickySessionConfigResult(dict):
     @pulumi.getter(name="cookieTimeout")
     def cookie_timeout(self) -> int:
         """
-        The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
+        The timeout period of a cookie. The timeout period of a cookie.
         """
         return pulumi.get(self, "cookie_timeout")
 
@@ -5526,7 +6024,7 @@ class GetServerGroupsGroupStickySessionConfigResult(dict):
     @pulumi.getter(name="stickySessionEnabled")
     def sticky_session_enabled(self) -> bool:
         """
-        Indicates whether sticky session is enabled. Values: `true` and `false`. Default value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
+        Indicates whether sticky session is enabled.
         """
         return pulumi.get(self, "sticky_session_enabled")
 
@@ -5534,7 +6032,7 @@ class GetServerGroupsGroupStickySessionConfigResult(dict):
     @pulumi.getter(name="stickySessionType")
     def sticky_session_type(self) -> str:
         """
-        The method that is used to handle a cookie. Values: `Server` and `Insert`.
+        The method that is used to handle a cookie.
         """
         return pulumi.get(self, "sticky_session_type")
 

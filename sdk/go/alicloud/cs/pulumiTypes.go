@@ -4056,10 +4056,20 @@ func (o NodePoolDataDiskArrayOutput) Index(i pulumi.IntInput) NodePoolDataDiskOu
 type NodePoolKubeletConfiguration struct {
 	// Allowed sysctl mode whitelist.
 	AllowedUnsafeSysctls []string `pulumi:"allowedUnsafeSysctls"`
+	// The list of IP addresses of the cluster DNS servers.
+	ClusterDns []string `pulumi:"clusterDns"`
 	// The maximum number of log files that can exist in each container.
 	ContainerLogMaxFiles *string `pulumi:"containerLogMaxFiles"`
 	// The maximum size that can be reached before a log file is rotated.
 	ContainerLogMaxSize *string `pulumi:"containerLogMaxSize"`
+	// Specifies the maximum number of concurrent workers required to perform log rotation operations.
+	ContainerLogMaxWorkers *string `pulumi:"containerLogMaxWorkers"`
+	// Specifies the duration for which container logs are monitored for log rotation.
+	ContainerLogMonitorInterval *string `pulumi:"containerLogMonitorInterval"`
+	// CPU CFS quota constraint switch.
+	CpuCfsQuota *string `pulumi:"cpuCfsQuota"`
+	// CPU CFS quota period value.
+	CpuCfsQuotaPeriod *string `pulumi:"cpuCfsQuotaPeriod"`
 	// Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
 	CpuManagerPolicy *string `pulumi:"cpuManagerPolicy"`
 	// Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `eventRecordQps`. It is only used when `eventRecordQps` is greater than 0. Valid value is `[0-100]`.
@@ -4074,6 +4084,10 @@ type NodePoolKubeletConfiguration struct {
 	EvictionSoftGracePeriod map[string]string `pulumi:"evictionSoftGracePeriod"`
 	// Feature switch to enable configuration of experimental features.
 	FeatureGates map[string]bool `pulumi:"featureGates"`
+	// If the image usage exceeds this threshold, image garbage collection will continue.
+	ImageGcHighThresholdPercent *string `pulumi:"imageGcHighThresholdPercent"`
+	// Image garbage collection is not performed when the image usage is below this threshold.
+	ImageGcLowThresholdPercent *string `pulumi:"imageGcLowThresholdPercent"`
 	// Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
 	KubeApiBurst *string `pulumi:"kubeApiBurst"`
 	// Same as kubeAPIQPS. The QPS to use while talking with kubernetes api-server. Valid value is `[0-50]`.
@@ -4082,16 +4096,26 @@ type NodePoolKubeletConfiguration struct {
 	KubeReserved map[string]string `pulumi:"kubeReserved"`
 	// The maximum number of running pods.
 	MaxPods *string `pulumi:"maxPods"`
+	// The policy to be used by the memory manager.
+	MemoryManagerPolicy *string `pulumi:"memoryManagerPolicy"`
+	// The maximum number of PIDs that can be used in a Pod.
+	PodPidsLimit *string `pulumi:"podPidsLimit"`
 	// Read-only port number.
 	ReadOnlyPort *string `pulumi:"readOnlyPort"`
 	// Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registryPullQps`. Only used if `registryPullQps` is greater than 0. Valid value is `[0-100]`.
 	RegistryBurst *string `pulumi:"registryBurst"`
 	// Same as registryPullQPS. The limit of registry pulls per second. Setting it to `0` means no limit. Valid value is `[0-50]`.
 	RegistryPullQps *string `pulumi:"registryPullQps"`
+	// Reserve memory for NUMA nodes. See `reservedMemory` below.
+	ReservedMemories []NodePoolKubeletConfigurationReservedMemory `pulumi:"reservedMemories"`
 	// Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
 	SerializeImagePulls *string `pulumi:"serializeImagePulls"`
 	// Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
 	SystemReserved map[string]string `pulumi:"systemReserved"`
+	// Name of the Topology Manager policy used.
+	TopologyManagerPolicy *string `pulumi:"topologyManagerPolicy"`
+	// OpenTelemetry tracks the configuration information for client settings versioning. See `tracing` below.
+	Tracing *NodePoolKubeletConfigurationTracing `pulumi:"tracing"`
 }
 
 // NodePoolKubeletConfigurationInput is an input type that accepts NodePoolKubeletConfigurationArgs and NodePoolKubeletConfigurationOutput values.
@@ -4108,10 +4132,20 @@ type NodePoolKubeletConfigurationInput interface {
 type NodePoolKubeletConfigurationArgs struct {
 	// Allowed sysctl mode whitelist.
 	AllowedUnsafeSysctls pulumi.StringArrayInput `pulumi:"allowedUnsafeSysctls"`
+	// The list of IP addresses of the cluster DNS servers.
+	ClusterDns pulumi.StringArrayInput `pulumi:"clusterDns"`
 	// The maximum number of log files that can exist in each container.
 	ContainerLogMaxFiles pulumi.StringPtrInput `pulumi:"containerLogMaxFiles"`
 	// The maximum size that can be reached before a log file is rotated.
 	ContainerLogMaxSize pulumi.StringPtrInput `pulumi:"containerLogMaxSize"`
+	// Specifies the maximum number of concurrent workers required to perform log rotation operations.
+	ContainerLogMaxWorkers pulumi.StringPtrInput `pulumi:"containerLogMaxWorkers"`
+	// Specifies the duration for which container logs are monitored for log rotation.
+	ContainerLogMonitorInterval pulumi.StringPtrInput `pulumi:"containerLogMonitorInterval"`
+	// CPU CFS quota constraint switch.
+	CpuCfsQuota pulumi.StringPtrInput `pulumi:"cpuCfsQuota"`
+	// CPU CFS quota period value.
+	CpuCfsQuotaPeriod pulumi.StringPtrInput `pulumi:"cpuCfsQuotaPeriod"`
 	// Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
 	CpuManagerPolicy pulumi.StringPtrInput `pulumi:"cpuManagerPolicy"`
 	// Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `eventRecordQps`. It is only used when `eventRecordQps` is greater than 0. Valid value is `[0-100]`.
@@ -4126,6 +4160,10 @@ type NodePoolKubeletConfigurationArgs struct {
 	EvictionSoftGracePeriod pulumi.StringMapInput `pulumi:"evictionSoftGracePeriod"`
 	// Feature switch to enable configuration of experimental features.
 	FeatureGates pulumi.BoolMapInput `pulumi:"featureGates"`
+	// If the image usage exceeds this threshold, image garbage collection will continue.
+	ImageGcHighThresholdPercent pulumi.StringPtrInput `pulumi:"imageGcHighThresholdPercent"`
+	// Image garbage collection is not performed when the image usage is below this threshold.
+	ImageGcLowThresholdPercent pulumi.StringPtrInput `pulumi:"imageGcLowThresholdPercent"`
 	// Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
 	KubeApiBurst pulumi.StringPtrInput `pulumi:"kubeApiBurst"`
 	// Same as kubeAPIQPS. The QPS to use while talking with kubernetes api-server. Valid value is `[0-50]`.
@@ -4134,16 +4172,26 @@ type NodePoolKubeletConfigurationArgs struct {
 	KubeReserved pulumi.StringMapInput `pulumi:"kubeReserved"`
 	// The maximum number of running pods.
 	MaxPods pulumi.StringPtrInput `pulumi:"maxPods"`
+	// The policy to be used by the memory manager.
+	MemoryManagerPolicy pulumi.StringPtrInput `pulumi:"memoryManagerPolicy"`
+	// The maximum number of PIDs that can be used in a Pod.
+	PodPidsLimit pulumi.StringPtrInput `pulumi:"podPidsLimit"`
 	// Read-only port number.
 	ReadOnlyPort pulumi.StringPtrInput `pulumi:"readOnlyPort"`
 	// Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registryPullQps`. Only used if `registryPullQps` is greater than 0. Valid value is `[0-100]`.
 	RegistryBurst pulumi.StringPtrInput `pulumi:"registryBurst"`
 	// Same as registryPullQPS. The limit of registry pulls per second. Setting it to `0` means no limit. Valid value is `[0-50]`.
 	RegistryPullQps pulumi.StringPtrInput `pulumi:"registryPullQps"`
+	// Reserve memory for NUMA nodes. See `reservedMemory` below.
+	ReservedMemories NodePoolKubeletConfigurationReservedMemoryArrayInput `pulumi:"reservedMemories"`
 	// Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
 	SerializeImagePulls pulumi.StringPtrInput `pulumi:"serializeImagePulls"`
 	// Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
 	SystemReserved pulumi.StringMapInput `pulumi:"systemReserved"`
+	// Name of the Topology Manager policy used.
+	TopologyManagerPolicy pulumi.StringPtrInput `pulumi:"topologyManagerPolicy"`
+	// OpenTelemetry tracks the configuration information for client settings versioning. See `tracing` below.
+	Tracing NodePoolKubeletConfigurationTracingPtrInput `pulumi:"tracing"`
 }
 
 func (NodePoolKubeletConfigurationArgs) ElementType() reflect.Type {
@@ -4228,6 +4276,11 @@ func (o NodePoolKubeletConfigurationOutput) AllowedUnsafeSysctls() pulumi.String
 	return o.ApplyT(func(v NodePoolKubeletConfiguration) []string { return v.AllowedUnsafeSysctls }).(pulumi.StringArrayOutput)
 }
 
+// The list of IP addresses of the cluster DNS servers.
+func (o NodePoolKubeletConfigurationOutput) ClusterDns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfiguration) []string { return v.ClusterDns }).(pulumi.StringArrayOutput)
+}
+
 // The maximum number of log files that can exist in each container.
 func (o NodePoolKubeletConfigurationOutput) ContainerLogMaxFiles() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolKubeletConfiguration) *string { return v.ContainerLogMaxFiles }).(pulumi.StringPtrOutput)
@@ -4236,6 +4289,26 @@ func (o NodePoolKubeletConfigurationOutput) ContainerLogMaxFiles() pulumi.String
 // The maximum size that can be reached before a log file is rotated.
 func (o NodePoolKubeletConfigurationOutput) ContainerLogMaxSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolKubeletConfiguration) *string { return v.ContainerLogMaxSize }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the maximum number of concurrent workers required to perform log rotation operations.
+func (o NodePoolKubeletConfigurationOutput) ContainerLogMaxWorkers() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfiguration) *string { return v.ContainerLogMaxWorkers }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the duration for which container logs are monitored for log rotation.
+func (o NodePoolKubeletConfigurationOutput) ContainerLogMonitorInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfiguration) *string { return v.ContainerLogMonitorInterval }).(pulumi.StringPtrOutput)
+}
+
+// CPU CFS quota constraint switch.
+func (o NodePoolKubeletConfigurationOutput) CpuCfsQuota() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfiguration) *string { return v.CpuCfsQuota }).(pulumi.StringPtrOutput)
+}
+
+// CPU CFS quota period value.
+func (o NodePoolKubeletConfigurationOutput) CpuCfsQuotaPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfiguration) *string { return v.CpuCfsQuotaPeriod }).(pulumi.StringPtrOutput)
 }
 
 // Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
@@ -4273,6 +4346,16 @@ func (o NodePoolKubeletConfigurationOutput) FeatureGates() pulumi.BoolMapOutput 
 	return o.ApplyT(func(v NodePoolKubeletConfiguration) map[string]bool { return v.FeatureGates }).(pulumi.BoolMapOutput)
 }
 
+// If the image usage exceeds this threshold, image garbage collection will continue.
+func (o NodePoolKubeletConfigurationOutput) ImageGcHighThresholdPercent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfiguration) *string { return v.ImageGcHighThresholdPercent }).(pulumi.StringPtrOutput)
+}
+
+// Image garbage collection is not performed when the image usage is below this threshold.
+func (o NodePoolKubeletConfigurationOutput) ImageGcLowThresholdPercent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfiguration) *string { return v.ImageGcLowThresholdPercent }).(pulumi.StringPtrOutput)
+}
+
 // Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
 func (o NodePoolKubeletConfigurationOutput) KubeApiBurst() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolKubeletConfiguration) *string { return v.KubeApiBurst }).(pulumi.StringPtrOutput)
@@ -4293,6 +4376,16 @@ func (o NodePoolKubeletConfigurationOutput) MaxPods() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolKubeletConfiguration) *string { return v.MaxPods }).(pulumi.StringPtrOutput)
 }
 
+// The policy to be used by the memory manager.
+func (o NodePoolKubeletConfigurationOutput) MemoryManagerPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfiguration) *string { return v.MemoryManagerPolicy }).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of PIDs that can be used in a Pod.
+func (o NodePoolKubeletConfigurationOutput) PodPidsLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfiguration) *string { return v.PodPidsLimit }).(pulumi.StringPtrOutput)
+}
+
 // Read-only port number.
 func (o NodePoolKubeletConfigurationOutput) ReadOnlyPort() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolKubeletConfiguration) *string { return v.ReadOnlyPort }).(pulumi.StringPtrOutput)
@@ -4308,6 +4401,13 @@ func (o NodePoolKubeletConfigurationOutput) RegistryPullQps() pulumi.StringPtrOu
 	return o.ApplyT(func(v NodePoolKubeletConfiguration) *string { return v.RegistryPullQps }).(pulumi.StringPtrOutput)
 }
 
+// Reserve memory for NUMA nodes. See `reservedMemory` below.
+func (o NodePoolKubeletConfigurationOutput) ReservedMemories() NodePoolKubeletConfigurationReservedMemoryArrayOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfiguration) []NodePoolKubeletConfigurationReservedMemory {
+		return v.ReservedMemories
+	}).(NodePoolKubeletConfigurationReservedMemoryArrayOutput)
+}
+
 // Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
 func (o NodePoolKubeletConfigurationOutput) SerializeImagePulls() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolKubeletConfiguration) *string { return v.SerializeImagePulls }).(pulumi.StringPtrOutput)
@@ -4316,6 +4416,16 @@ func (o NodePoolKubeletConfigurationOutput) SerializeImagePulls() pulumi.StringP
 // Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
 func (o NodePoolKubeletConfigurationOutput) SystemReserved() pulumi.StringMapOutput {
 	return o.ApplyT(func(v NodePoolKubeletConfiguration) map[string]string { return v.SystemReserved }).(pulumi.StringMapOutput)
+}
+
+// Name of the Topology Manager policy used.
+func (o NodePoolKubeletConfigurationOutput) TopologyManagerPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfiguration) *string { return v.TopologyManagerPolicy }).(pulumi.StringPtrOutput)
+}
+
+// OpenTelemetry tracks the configuration information for client settings versioning. See `tracing` below.
+func (o NodePoolKubeletConfigurationOutput) Tracing() NodePoolKubeletConfigurationTracingPtrOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfiguration) *NodePoolKubeletConfigurationTracing { return v.Tracing }).(NodePoolKubeletConfigurationTracingPtrOutput)
 }
 
 type NodePoolKubeletConfigurationPtrOutput struct{ *pulumi.OutputState }
@@ -4352,6 +4462,16 @@ func (o NodePoolKubeletConfigurationPtrOutput) AllowedUnsafeSysctls() pulumi.Str
 	}).(pulumi.StringArrayOutput)
 }
 
+// The list of IP addresses of the cluster DNS servers.
+func (o NodePoolKubeletConfigurationPtrOutput) ClusterDns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterDns
+	}).(pulumi.StringArrayOutput)
+}
+
 // The maximum number of log files that can exist in each container.
 func (o NodePoolKubeletConfigurationPtrOutput) ContainerLogMaxFiles() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolKubeletConfiguration) *string {
@@ -4369,6 +4489,46 @@ func (o NodePoolKubeletConfigurationPtrOutput) ContainerLogMaxSize() pulumi.Stri
 			return nil
 		}
 		return v.ContainerLogMaxSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the maximum number of concurrent workers required to perform log rotation operations.
+func (o NodePoolKubeletConfigurationPtrOutput) ContainerLogMaxWorkers() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerLogMaxWorkers
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the duration for which container logs are monitored for log rotation.
+func (o NodePoolKubeletConfigurationPtrOutput) ContainerLogMonitorInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerLogMonitorInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+// CPU CFS quota constraint switch.
+func (o NodePoolKubeletConfigurationPtrOutput) CpuCfsQuota() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CpuCfsQuota
+	}).(pulumi.StringPtrOutput)
+}
+
+// CPU CFS quota period value.
+func (o NodePoolKubeletConfigurationPtrOutput) CpuCfsQuotaPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CpuCfsQuotaPeriod
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4442,6 +4602,26 @@ func (o NodePoolKubeletConfigurationPtrOutput) FeatureGates() pulumi.BoolMapOutp
 	}).(pulumi.BoolMapOutput)
 }
 
+// If the image usage exceeds this threshold, image garbage collection will continue.
+func (o NodePoolKubeletConfigurationPtrOutput) ImageGcHighThresholdPercent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageGcHighThresholdPercent
+	}).(pulumi.StringPtrOutput)
+}
+
+// Image garbage collection is not performed when the image usage is below this threshold.
+func (o NodePoolKubeletConfigurationPtrOutput) ImageGcLowThresholdPercent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageGcLowThresholdPercent
+	}).(pulumi.StringPtrOutput)
+}
+
 // Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
 func (o NodePoolKubeletConfigurationPtrOutput) KubeApiBurst() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolKubeletConfiguration) *string {
@@ -4482,6 +4662,26 @@ func (o NodePoolKubeletConfigurationPtrOutput) MaxPods() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// The policy to be used by the memory manager.
+func (o NodePoolKubeletConfigurationPtrOutput) MemoryManagerPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MemoryManagerPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of PIDs that can be used in a Pod.
+func (o NodePoolKubeletConfigurationPtrOutput) PodPidsLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PodPidsLimit
+	}).(pulumi.StringPtrOutput)
+}
+
 // Read-only port number.
 func (o NodePoolKubeletConfigurationPtrOutput) ReadOnlyPort() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolKubeletConfiguration) *string {
@@ -4512,6 +4712,16 @@ func (o NodePoolKubeletConfigurationPtrOutput) RegistryPullQps() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Reserve memory for NUMA nodes. See `reservedMemory` below.
+func (o NodePoolKubeletConfigurationPtrOutput) ReservedMemories() NodePoolKubeletConfigurationReservedMemoryArrayOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) []NodePoolKubeletConfigurationReservedMemory {
+		if v == nil {
+			return nil
+		}
+		return v.ReservedMemories
+	}).(NodePoolKubeletConfigurationReservedMemoryArrayOutput)
+}
+
 // Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
 func (o NodePoolKubeletConfigurationPtrOutput) SerializeImagePulls() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolKubeletConfiguration) *string {
@@ -4530,6 +4740,288 @@ func (o NodePoolKubeletConfigurationPtrOutput) SystemReserved() pulumi.StringMap
 		}
 		return v.SystemReserved
 	}).(pulumi.StringMapOutput)
+}
+
+// Name of the Topology Manager policy used.
+func (o NodePoolKubeletConfigurationPtrOutput) TopologyManagerPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TopologyManagerPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// OpenTelemetry tracks the configuration information for client settings versioning. See `tracing` below.
+func (o NodePoolKubeletConfigurationPtrOutput) Tracing() NodePoolKubeletConfigurationTracingPtrOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) *NodePoolKubeletConfigurationTracing {
+		if v == nil {
+			return nil
+		}
+		return v.Tracing
+	}).(NodePoolKubeletConfigurationTracingPtrOutput)
+}
+
+type NodePoolKubeletConfigurationReservedMemory struct {
+	// Memory resource limit.
+	Limits map[string]string `pulumi:"limits"`
+	// The NUMA node.
+	NumaNode *int `pulumi:"numaNode"`
+}
+
+// NodePoolKubeletConfigurationReservedMemoryInput is an input type that accepts NodePoolKubeletConfigurationReservedMemoryArgs and NodePoolKubeletConfigurationReservedMemoryOutput values.
+// You can construct a concrete instance of `NodePoolKubeletConfigurationReservedMemoryInput` via:
+//
+//	NodePoolKubeletConfigurationReservedMemoryArgs{...}
+type NodePoolKubeletConfigurationReservedMemoryInput interface {
+	pulumi.Input
+
+	ToNodePoolKubeletConfigurationReservedMemoryOutput() NodePoolKubeletConfigurationReservedMemoryOutput
+	ToNodePoolKubeletConfigurationReservedMemoryOutputWithContext(context.Context) NodePoolKubeletConfigurationReservedMemoryOutput
+}
+
+type NodePoolKubeletConfigurationReservedMemoryArgs struct {
+	// Memory resource limit.
+	Limits pulumi.StringMapInput `pulumi:"limits"`
+	// The NUMA node.
+	NumaNode pulumi.IntPtrInput `pulumi:"numaNode"`
+}
+
+func (NodePoolKubeletConfigurationReservedMemoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolKubeletConfigurationReservedMemory)(nil)).Elem()
+}
+
+func (i NodePoolKubeletConfigurationReservedMemoryArgs) ToNodePoolKubeletConfigurationReservedMemoryOutput() NodePoolKubeletConfigurationReservedMemoryOutput {
+	return i.ToNodePoolKubeletConfigurationReservedMemoryOutputWithContext(context.Background())
+}
+
+func (i NodePoolKubeletConfigurationReservedMemoryArgs) ToNodePoolKubeletConfigurationReservedMemoryOutputWithContext(ctx context.Context) NodePoolKubeletConfigurationReservedMemoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolKubeletConfigurationReservedMemoryOutput)
+}
+
+// NodePoolKubeletConfigurationReservedMemoryArrayInput is an input type that accepts NodePoolKubeletConfigurationReservedMemoryArray and NodePoolKubeletConfigurationReservedMemoryArrayOutput values.
+// You can construct a concrete instance of `NodePoolKubeletConfigurationReservedMemoryArrayInput` via:
+//
+//	NodePoolKubeletConfigurationReservedMemoryArray{ NodePoolKubeletConfigurationReservedMemoryArgs{...} }
+type NodePoolKubeletConfigurationReservedMemoryArrayInput interface {
+	pulumi.Input
+
+	ToNodePoolKubeletConfigurationReservedMemoryArrayOutput() NodePoolKubeletConfigurationReservedMemoryArrayOutput
+	ToNodePoolKubeletConfigurationReservedMemoryArrayOutputWithContext(context.Context) NodePoolKubeletConfigurationReservedMemoryArrayOutput
+}
+
+type NodePoolKubeletConfigurationReservedMemoryArray []NodePoolKubeletConfigurationReservedMemoryInput
+
+func (NodePoolKubeletConfigurationReservedMemoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodePoolKubeletConfigurationReservedMemory)(nil)).Elem()
+}
+
+func (i NodePoolKubeletConfigurationReservedMemoryArray) ToNodePoolKubeletConfigurationReservedMemoryArrayOutput() NodePoolKubeletConfigurationReservedMemoryArrayOutput {
+	return i.ToNodePoolKubeletConfigurationReservedMemoryArrayOutputWithContext(context.Background())
+}
+
+func (i NodePoolKubeletConfigurationReservedMemoryArray) ToNodePoolKubeletConfigurationReservedMemoryArrayOutputWithContext(ctx context.Context) NodePoolKubeletConfigurationReservedMemoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolKubeletConfigurationReservedMemoryArrayOutput)
+}
+
+type NodePoolKubeletConfigurationReservedMemoryOutput struct{ *pulumi.OutputState }
+
+func (NodePoolKubeletConfigurationReservedMemoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolKubeletConfigurationReservedMemory)(nil)).Elem()
+}
+
+func (o NodePoolKubeletConfigurationReservedMemoryOutput) ToNodePoolKubeletConfigurationReservedMemoryOutput() NodePoolKubeletConfigurationReservedMemoryOutput {
+	return o
+}
+
+func (o NodePoolKubeletConfigurationReservedMemoryOutput) ToNodePoolKubeletConfigurationReservedMemoryOutputWithContext(ctx context.Context) NodePoolKubeletConfigurationReservedMemoryOutput {
+	return o
+}
+
+// Memory resource limit.
+func (o NodePoolKubeletConfigurationReservedMemoryOutput) Limits() pulumi.StringMapOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfigurationReservedMemory) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
+}
+
+// The NUMA node.
+func (o NodePoolKubeletConfigurationReservedMemoryOutput) NumaNode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfigurationReservedMemory) *int { return v.NumaNode }).(pulumi.IntPtrOutput)
+}
+
+type NodePoolKubeletConfigurationReservedMemoryArrayOutput struct{ *pulumi.OutputState }
+
+func (NodePoolKubeletConfigurationReservedMemoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodePoolKubeletConfigurationReservedMemory)(nil)).Elem()
+}
+
+func (o NodePoolKubeletConfigurationReservedMemoryArrayOutput) ToNodePoolKubeletConfigurationReservedMemoryArrayOutput() NodePoolKubeletConfigurationReservedMemoryArrayOutput {
+	return o
+}
+
+func (o NodePoolKubeletConfigurationReservedMemoryArrayOutput) ToNodePoolKubeletConfigurationReservedMemoryArrayOutputWithContext(ctx context.Context) NodePoolKubeletConfigurationReservedMemoryArrayOutput {
+	return o
+}
+
+func (o NodePoolKubeletConfigurationReservedMemoryArrayOutput) Index(i pulumi.IntInput) NodePoolKubeletConfigurationReservedMemoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodePoolKubeletConfigurationReservedMemory {
+		return vs[0].([]NodePoolKubeletConfigurationReservedMemory)[vs[1].(int)]
+	}).(NodePoolKubeletConfigurationReservedMemoryOutput)
+}
+
+type NodePoolKubeletConfigurationTracing struct {
+	// The endpoint of the collector.
+	Endpoint *string `pulumi:"endpoint"`
+	// Number of samples to be collected per million span.
+	SamplingRatePerMillion *string `pulumi:"samplingRatePerMillion"`
+}
+
+// NodePoolKubeletConfigurationTracingInput is an input type that accepts NodePoolKubeletConfigurationTracingArgs and NodePoolKubeletConfigurationTracingOutput values.
+// You can construct a concrete instance of `NodePoolKubeletConfigurationTracingInput` via:
+//
+//	NodePoolKubeletConfigurationTracingArgs{...}
+type NodePoolKubeletConfigurationTracingInput interface {
+	pulumi.Input
+
+	ToNodePoolKubeletConfigurationTracingOutput() NodePoolKubeletConfigurationTracingOutput
+	ToNodePoolKubeletConfigurationTracingOutputWithContext(context.Context) NodePoolKubeletConfigurationTracingOutput
+}
+
+type NodePoolKubeletConfigurationTracingArgs struct {
+	// The endpoint of the collector.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// Number of samples to be collected per million span.
+	SamplingRatePerMillion pulumi.StringPtrInput `pulumi:"samplingRatePerMillion"`
+}
+
+func (NodePoolKubeletConfigurationTracingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolKubeletConfigurationTracing)(nil)).Elem()
+}
+
+func (i NodePoolKubeletConfigurationTracingArgs) ToNodePoolKubeletConfigurationTracingOutput() NodePoolKubeletConfigurationTracingOutput {
+	return i.ToNodePoolKubeletConfigurationTracingOutputWithContext(context.Background())
+}
+
+func (i NodePoolKubeletConfigurationTracingArgs) ToNodePoolKubeletConfigurationTracingOutputWithContext(ctx context.Context) NodePoolKubeletConfigurationTracingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolKubeletConfigurationTracingOutput)
+}
+
+func (i NodePoolKubeletConfigurationTracingArgs) ToNodePoolKubeletConfigurationTracingPtrOutput() NodePoolKubeletConfigurationTracingPtrOutput {
+	return i.ToNodePoolKubeletConfigurationTracingPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolKubeletConfigurationTracingArgs) ToNodePoolKubeletConfigurationTracingPtrOutputWithContext(ctx context.Context) NodePoolKubeletConfigurationTracingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolKubeletConfigurationTracingOutput).ToNodePoolKubeletConfigurationTracingPtrOutputWithContext(ctx)
+}
+
+// NodePoolKubeletConfigurationTracingPtrInput is an input type that accepts NodePoolKubeletConfigurationTracingArgs, NodePoolKubeletConfigurationTracingPtr and NodePoolKubeletConfigurationTracingPtrOutput values.
+// You can construct a concrete instance of `NodePoolKubeletConfigurationTracingPtrInput` via:
+//
+//	        NodePoolKubeletConfigurationTracingArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodePoolKubeletConfigurationTracingPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolKubeletConfigurationTracingPtrOutput() NodePoolKubeletConfigurationTracingPtrOutput
+	ToNodePoolKubeletConfigurationTracingPtrOutputWithContext(context.Context) NodePoolKubeletConfigurationTracingPtrOutput
+}
+
+type nodePoolKubeletConfigurationTracingPtrType NodePoolKubeletConfigurationTracingArgs
+
+func NodePoolKubeletConfigurationTracingPtr(v *NodePoolKubeletConfigurationTracingArgs) NodePoolKubeletConfigurationTracingPtrInput {
+	return (*nodePoolKubeletConfigurationTracingPtrType)(v)
+}
+
+func (*nodePoolKubeletConfigurationTracingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolKubeletConfigurationTracing)(nil)).Elem()
+}
+
+func (i *nodePoolKubeletConfigurationTracingPtrType) ToNodePoolKubeletConfigurationTracingPtrOutput() NodePoolKubeletConfigurationTracingPtrOutput {
+	return i.ToNodePoolKubeletConfigurationTracingPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolKubeletConfigurationTracingPtrType) ToNodePoolKubeletConfigurationTracingPtrOutputWithContext(ctx context.Context) NodePoolKubeletConfigurationTracingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolKubeletConfigurationTracingPtrOutput)
+}
+
+type NodePoolKubeletConfigurationTracingOutput struct{ *pulumi.OutputState }
+
+func (NodePoolKubeletConfigurationTracingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolKubeletConfigurationTracing)(nil)).Elem()
+}
+
+func (o NodePoolKubeletConfigurationTracingOutput) ToNodePoolKubeletConfigurationTracingOutput() NodePoolKubeletConfigurationTracingOutput {
+	return o
+}
+
+func (o NodePoolKubeletConfigurationTracingOutput) ToNodePoolKubeletConfigurationTracingOutputWithContext(ctx context.Context) NodePoolKubeletConfigurationTracingOutput {
+	return o
+}
+
+func (o NodePoolKubeletConfigurationTracingOutput) ToNodePoolKubeletConfigurationTracingPtrOutput() NodePoolKubeletConfigurationTracingPtrOutput {
+	return o.ToNodePoolKubeletConfigurationTracingPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolKubeletConfigurationTracingOutput) ToNodePoolKubeletConfigurationTracingPtrOutputWithContext(ctx context.Context) NodePoolKubeletConfigurationTracingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolKubeletConfigurationTracing) *NodePoolKubeletConfigurationTracing {
+		return &v
+	}).(NodePoolKubeletConfigurationTracingPtrOutput)
+}
+
+// The endpoint of the collector.
+func (o NodePoolKubeletConfigurationTracingOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfigurationTracing) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// Number of samples to be collected per million span.
+func (o NodePoolKubeletConfigurationTracingOutput) SamplingRatePerMillion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfigurationTracing) *string { return v.SamplingRatePerMillion }).(pulumi.StringPtrOutput)
+}
+
+type NodePoolKubeletConfigurationTracingPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolKubeletConfigurationTracingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolKubeletConfigurationTracing)(nil)).Elem()
+}
+
+func (o NodePoolKubeletConfigurationTracingPtrOutput) ToNodePoolKubeletConfigurationTracingPtrOutput() NodePoolKubeletConfigurationTracingPtrOutput {
+	return o
+}
+
+func (o NodePoolKubeletConfigurationTracingPtrOutput) ToNodePoolKubeletConfigurationTracingPtrOutputWithContext(ctx context.Context) NodePoolKubeletConfigurationTracingPtrOutput {
+	return o
+}
+
+func (o NodePoolKubeletConfigurationTracingPtrOutput) Elem() NodePoolKubeletConfigurationTracingOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfigurationTracing) NodePoolKubeletConfigurationTracing {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolKubeletConfigurationTracing
+		return ret
+	}).(NodePoolKubeletConfigurationTracingOutput)
+}
+
+// The endpoint of the collector.
+func (o NodePoolKubeletConfigurationTracingPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfigurationTracing) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of samples to be collected per million span.
+func (o NodePoolKubeletConfigurationTracingPtrOutput) SamplingRatePerMillion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfigurationTracing) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SamplingRatePerMillion
+	}).(pulumi.StringPtrOutput)
 }
 
 type NodePoolLabel struct {
@@ -10810,6 +11302,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolDataDiskArrayInput)(nil)).Elem(), NodePoolDataDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolKubeletConfigurationInput)(nil)).Elem(), NodePoolKubeletConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolKubeletConfigurationPtrInput)(nil)).Elem(), NodePoolKubeletConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolKubeletConfigurationReservedMemoryInput)(nil)).Elem(), NodePoolKubeletConfigurationReservedMemoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolKubeletConfigurationReservedMemoryArrayInput)(nil)).Elem(), NodePoolKubeletConfigurationReservedMemoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolKubeletConfigurationTracingInput)(nil)).Elem(), NodePoolKubeletConfigurationTracingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolKubeletConfigurationTracingPtrInput)(nil)).Elem(), NodePoolKubeletConfigurationTracingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolLabelInput)(nil)).Elem(), NodePoolLabelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolLabelArrayInput)(nil)).Elem(), NodePoolLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolManagementInput)(nil)).Elem(), NodePoolManagementArgs{})
@@ -10943,6 +11439,10 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolDataDiskArrayOutput{})
 	pulumi.RegisterOutputType(NodePoolKubeletConfigurationOutput{})
 	pulumi.RegisterOutputType(NodePoolKubeletConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolKubeletConfigurationReservedMemoryOutput{})
+	pulumi.RegisterOutputType(NodePoolKubeletConfigurationReservedMemoryArrayOutput{})
+	pulumi.RegisterOutputType(NodePoolKubeletConfigurationTracingOutput{})
+	pulumi.RegisterOutputType(NodePoolKubeletConfigurationTracingPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolLabelOutput{})
 	pulumi.RegisterOutputType(NodePoolLabelArrayOutput{})
 	pulumi.RegisterOutputType(NodePoolManagementOutput{})

@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public Input<string>? AclId { get; set; }
 
         /// <summary>
-        /// The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
+        /// The Current IP Address of the Listened State
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

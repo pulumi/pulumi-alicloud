@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.FC.Outputs
     public sealed class V3FunctionCustomContainerConfigAccelerationInfo
     {
         /// <summary>
-        /// Image Acceleration Status (Deprecated).
+        /// Image Acceleration Status (Deprecated)
         /// </summary>
         public readonly string? Status;
 

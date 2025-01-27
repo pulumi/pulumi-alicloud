@@ -17,6 +17,8 @@ from .. import _utilities
 __all__ = [
     'TrafficMarkingPolicyTrafficMatchRuleArgs',
     'TrafficMarkingPolicyTrafficMatchRuleArgsDict',
+    'TransitRouterMulticastDomainOptionsArgs',
+    'TransitRouterMulticastDomainOptionsArgsDict',
     'TransitRouterVpcAttachmentZoneMappingArgs',
     'TransitRouterVpcAttachmentZoneMappingArgsDict',
     'TransitRouterVpnAttachmentZoneArgs',
@@ -233,6 +235,38 @@ class TrafficMarkingPolicyTrafficMatchRuleArgs:
     @traffic_match_rule_name.setter
     def traffic_match_rule_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "traffic_match_rule_name", value)
+
+
+if not MYPY:
+    class TransitRouterMulticastDomainOptionsArgsDict(TypedDict):
+        igmpv2_support: NotRequired[pulumi.Input[str]]
+        """
+        Whether to enable IGMP function for multicast domain. Default value: `disable`. Valid values: `enable`, `disable`.
+        """
+elif False:
+    TransitRouterMulticastDomainOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TransitRouterMulticastDomainOptionsArgs:
+    def __init__(__self__, *,
+                 igmpv2_support: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] igmpv2_support: Whether to enable IGMP function for multicast domain. Default value: `disable`. Valid values: `enable`, `disable`.
+        """
+        if igmpv2_support is not None:
+            pulumi.set(__self__, "igmpv2_support", igmpv2_support)
+
+    @property
+    @pulumi.getter(name="igmpv2Support")
+    def igmpv2_support(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to enable IGMP function for multicast domain. Default value: `disable`. Valid values: `enable`, `disable`.
+        """
+        return pulumi.get(self, "igmpv2_support")
+
+    @igmpv2_support.setter
+    def igmpv2_support(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "igmpv2_support", value)
 
 
 if not MYPY:

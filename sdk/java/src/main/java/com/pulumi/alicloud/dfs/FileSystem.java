@@ -16,9 +16,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a DFS File System resource.
+ * Provides a Apsara File Storage for HDFS (DFS) File System resource.
  * 
- * For information about DFS File System and how to use it, see [What is File System](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
+ * For information about Apsara File Storage for HDFS (DFS) File System and how to use it, see [What is File System](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
  * 
  * &gt; **NOTE:** Available since v1.140.0.
  * 
@@ -34,8 +34,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.dfs.DfsFunctions;
- * import com.pulumi.alicloud.dfs.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.dfs.FileSystem;
  * import com.pulumi.alicloud.dfs.FileSystemArgs;
  * import java.util.List;
@@ -53,12 +51,10 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         final var default = DfsFunctions.getZones();
- * 
- *         var defaultFileSystem = new FileSystem("defaultFileSystem", FileSystemArgs.builder()
- *             .storageType(default_.zones()[0].options()[0].storageType())
- *             .zoneId(default_.zones()[0].zoneId())
- *             .protocolType("HDFS")
+ *         var default_ = new FileSystem("default", FileSystemArgs.builder()
+ *             .storageType("PERFORMANCE")
+ *             .zoneId("cn-hangzhou-b")
+ *             .protocolType("PANGU")
  *             .description(name)
  *             .fileSystemName(name)
  *             .throughputMode("Provisioned")
@@ -74,7 +70,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * DFS File System can be imported using the id, e.g.
+ * Apsara File Storage for HDFS (DFS) File System can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:dfs/fileSystem:FileSystem example &lt;id&gt;
@@ -115,9 +111,17 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> dataRedundancyType() {
         return Codegen.optional(this.dataRedundancyType);
     }
+    /**
+     * Dedicated cluster id, which is used to support scenarios such as group cloud migration.
+     * 
+     */
     @Export(name="dedicatedClusterId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dedicatedClusterId;
 
+    /**
+     * @return Dedicated cluster id, which is used to support scenarios such as group cloud migration.
+     * 
+     */
     public Output<Optional<String>> dedicatedClusterId() {
         return Codegen.optional(this.dedicatedClusterId);
     }
@@ -164,14 +168,14 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.partitionNumber);
     }
     /**
-     * The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
+     * The protocol type. Value: `HDFS`, `PANGU`.
      * 
      */
     @Export(name="protocolType", refs={String.class}, tree="[0]")
     private Output<String> protocolType;
 
     /**
-     * @return The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
+     * @return The protocol type. Value: `HDFS`, `PANGU`.
      * 
      */
     public Output<String> protocolType() {
@@ -190,6 +194,20 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> provisionedThroughputInMiBps() {
         return Codegen.optional(this.provisionedThroughputInMiBps);
+    }
+    /**
+     * (Available since v1.242.0) The region ID of the File System.
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return (Available since v1.242.0) The region ID of the File System.
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
     }
     /**
      * File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.

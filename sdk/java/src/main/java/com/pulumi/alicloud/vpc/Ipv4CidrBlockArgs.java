@@ -6,8 +6,11 @@ package com.pulumi.alicloud.vpc;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class Ipv4CidrBlockArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,26 +18,52 @@ public final class Ipv4CidrBlockArgs extends com.pulumi.resources.ResourceArgs {
     public static final Ipv4CidrBlockArgs Empty = new Ipv4CidrBlockArgs();
 
     /**
-     * The IPv4 CIDR block. Take note of the following requirements:
-     * * You can specify one of the following standard IPv4 CIDR blocks or their subnets as the secondary IPv4 CIDR block: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8.
-     * * You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, or their subnets as the secondary IPv4 CIDR block of the VPC.
-     * * The CIDR block cannot start with 0. The subnet mask must be 8 to 28 bits in length.
-     * * The secondary CIDR block cannot overlap with the primary CIDR block or an existing secondary CIDR block.
+     * The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
      * 
      */
-    @Import(name="secondaryCidrBlock", required=true)
-    private Output<String> secondaryCidrBlock;
+    @Import(name="ipv4IpamPoolId")
+    private @Nullable Output<String> ipv4IpamPoolId;
 
     /**
-     * @return The IPv4 CIDR block. Take note of the following requirements:
-     * * You can specify one of the following standard IPv4 CIDR blocks or their subnets as the secondary IPv4 CIDR block: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8.
-     * * You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, or their subnets as the secondary IPv4 CIDR block of the VPC.
-     * * The CIDR block cannot start with 0. The subnet mask must be 8 to 28 bits in length.
-     * * The secondary CIDR block cannot overlap with the primary CIDR block or an existing secondary CIDR block.
+     * @return The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
      * 
      */
-    public Output<String> secondaryCidrBlock() {
-        return this.secondaryCidrBlock;
+    public Optional<Output<String>> ipv4IpamPoolId() {
+        return Optional.ofNullable(this.ipv4IpamPoolId);
+    }
+
+    /**
+     * Additional network segment information.
+     * 
+     */
+    @Import(name="secondaryCidrBlock")
+    private @Nullable Output<String> secondaryCidrBlock;
+
+    /**
+     * @return Additional network segment information.
+     * 
+     */
+    public Optional<Output<String>> secondaryCidrBlock() {
+        return Optional.ofNullable(this.secondaryCidrBlock);
+    }
+
+    /**
+     * Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+     * 
+     * &gt; **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+     * 
+     */
+    @Import(name="secondaryCidrMask")
+    private @Nullable Output<Integer> secondaryCidrMask;
+
+    /**
+     * @return Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+     * 
+     * &gt; **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+     * 
+     */
+    public Optional<Output<Integer>> secondaryCidrMask() {
+        return Optional.ofNullable(this.secondaryCidrMask);
     }
 
     /**
@@ -55,7 +84,9 @@ public final class Ipv4CidrBlockArgs extends com.pulumi.resources.ResourceArgs {
     private Ipv4CidrBlockArgs() {}
 
     private Ipv4CidrBlockArgs(Ipv4CidrBlockArgs $) {
+        this.ipv4IpamPoolId = $.ipv4IpamPoolId;
         this.secondaryCidrBlock = $.secondaryCidrBlock;
+        this.secondaryCidrMask = $.secondaryCidrMask;
         this.vpcId = $.vpcId;
     }
 
@@ -78,32 +109,70 @@ public final class Ipv4CidrBlockArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secondaryCidrBlock The IPv4 CIDR block. Take note of the following requirements:
-         * * You can specify one of the following standard IPv4 CIDR blocks or their subnets as the secondary IPv4 CIDR block: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8.
-         * * You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, or their subnets as the secondary IPv4 CIDR block of the VPC.
-         * * The CIDR block cannot start with 0. The subnet mask must be 8 to 28 bits in length.
-         * * The secondary CIDR block cannot overlap with the primary CIDR block or an existing secondary CIDR block.
+         * @param ipv4IpamPoolId The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
          * 
          * @return builder
          * 
          */
-        public Builder secondaryCidrBlock(Output<String> secondaryCidrBlock) {
+        public Builder ipv4IpamPoolId(@Nullable Output<String> ipv4IpamPoolId) {
+            $.ipv4IpamPoolId = ipv4IpamPoolId;
+            return this;
+        }
+
+        /**
+         * @param ipv4IpamPoolId The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv4IpamPoolId(String ipv4IpamPoolId) {
+            return ipv4IpamPoolId(Output.of(ipv4IpamPoolId));
+        }
+
+        /**
+         * @param secondaryCidrBlock Additional network segment information.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryCidrBlock(@Nullable Output<String> secondaryCidrBlock) {
             $.secondaryCidrBlock = secondaryCidrBlock;
             return this;
         }
 
         /**
-         * @param secondaryCidrBlock The IPv4 CIDR block. Take note of the following requirements:
-         * * You can specify one of the following standard IPv4 CIDR blocks or their subnets as the secondary IPv4 CIDR block: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8.
-         * * You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, or their subnets as the secondary IPv4 CIDR block of the VPC.
-         * * The CIDR block cannot start with 0. The subnet mask must be 8 to 28 bits in length.
-         * * The secondary CIDR block cannot overlap with the primary CIDR block or an existing secondary CIDR block.
+         * @param secondaryCidrBlock Additional network segment information.
          * 
          * @return builder
          * 
          */
         public Builder secondaryCidrBlock(String secondaryCidrBlock) {
             return secondaryCidrBlock(Output.of(secondaryCidrBlock));
+        }
+
+        /**
+         * @param secondaryCidrMask Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+         * 
+         * &gt; **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryCidrMask(@Nullable Output<Integer> secondaryCidrMask) {
+            $.secondaryCidrMask = secondaryCidrMask;
+            return this;
+        }
+
+        /**
+         * @param secondaryCidrMask Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+         * 
+         * &gt; **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryCidrMask(Integer secondaryCidrMask) {
+            return secondaryCidrMask(Output.of(secondaryCidrMask));
         }
 
         /**
@@ -128,9 +197,6 @@ public final class Ipv4CidrBlockArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public Ipv4CidrBlockArgs build() {
-            if ($.secondaryCidrBlock == null) {
-                throw new MissingRequiredPropertyException("Ipv4CidrBlockArgs", "secondaryCidrBlock");
-            }
             if ($.vpcId == null) {
                 throw new MissingRequiredPropertyException("Ipv4CidrBlockArgs", "vpcId");
             }

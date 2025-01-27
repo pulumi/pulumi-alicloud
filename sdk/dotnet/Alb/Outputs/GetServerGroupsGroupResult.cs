@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
     public sealed class GetServerGroupsGroupResult
     {
         /// <summary>
-        /// The configuration of health checks.
+        /// The configuration of health checks. **Note:** `health_check_config` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServerGroupsGroupHealthCheckConfigResult> HealthCheckConfigs;
         /// <summary>
@@ -22,39 +22,39 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The server protocol. Valid values: `HTTP` and `HTTPS`. Default value: `HTTP`.
+        /// The backend protocol.
         /// </summary>
         public readonly string Protocol;
         /// <summary>
-        /// The scheduling algorithm. Valid values: `Wrr`, `Wlc` and `Sch`.
+        /// The scheduling algorithm.
         /// </summary>
         public readonly string Scheduler;
         /// <summary>
-        /// The first ID of the res ource.
+        /// The ID of the Server Group.
         /// </summary>
         public readonly string ServerGroupId;
         /// <summary>
-        /// The name of the resource.
+        /// The names of the Server Group.
         /// </summary>
         public readonly string ServerGroupName;
         /// <summary>
-        /// The backend server.
+        /// The backend server. **Note:** `servers` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServerGroupsGroupServerResult> Servers;
         /// <summary>
-        /// The status of the resource.
+        /// The status of the Server Group. Valid values: `Available`, `Configuring`, `Provisioning`.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The configuration of the sticky session.
+        /// The configuration of the sticky session. **Note:** `sticky_session_config` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServerGroupsGroupStickySessionConfigResult> StickySessionConfigs;
         /// <summary>
-        /// A map of tags assigned to the group.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
-        /// The ID of the VPC that you want to access.
+        /// The ID of the virtual private cloud (VPC).
         /// </summary>
         public readonly string VpcId;
 

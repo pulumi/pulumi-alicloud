@@ -21,6 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:esa/httpRequestHeaderModificationRule:HttpRequestHeaderModificationRule":
+		r = &HttpRequestHeaderModificationRule{}
+	case "alicloud:esa/list:List":
+		r = &List{}
+	case "alicloud:esa/page:Page":
+		r = &Page{}
 	case "alicloud:esa/ratePlanInstance:RatePlanInstance":
 		r = &RatePlanInstance{}
 	case "alicloud:esa/record:Record":
@@ -40,6 +46,21 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/httpRequestHeaderModificationRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/list",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/page",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"esa/ratePlanInstance",

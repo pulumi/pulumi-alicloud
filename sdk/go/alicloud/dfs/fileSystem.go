@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a DFS File System resource.
+// Provides a Apsara File Storage for HDFS (DFS) File System resource.
 //
-// For information about DFS File System and how to use it, see [What is File System](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
+// For information about Apsara File Storage for HDFS (DFS) File System and how to use it, see [What is File System](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
 //
 // > **NOTE:** Available since v1.140.0.
 //
@@ -40,14 +40,10 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_default, err := dfs.GetZones(ctx, &dfs.GetZonesArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = dfs.NewFileSystem(ctx, "default", &dfs.FileSystemArgs{
-//				StorageType:                  pulumi.String(_default.Zones[0].Options[0].StorageType),
-//				ZoneId:                       pulumi.String(_default.Zones[0].ZoneId),
-//				ProtocolType:                 pulumi.String("HDFS"),
+//			_, err := dfs.NewFileSystem(ctx, "default", &dfs.FileSystemArgs{
+//				StorageType:                  pulumi.String("PERFORMANCE"),
+//				ZoneId:                       pulumi.String("cn-hangzhou-b"),
+//				ProtocolType:                 pulumi.String("PANGU"),
 //				Description:                  pulumi.String(name),
 //				FileSystemName:               pulumi.String(name),
 //				ThroughputMode:               pulumi.String("Provisioned"),
@@ -65,7 +61,7 @@ import (
 //
 // ## Import
 //
-// DFS File System can be imported using the id, e.g.
+// Apsara File Storage for HDFS (DFS) File System can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:dfs/fileSystem:FileSystem example <id>
@@ -79,6 +75,7 @@ type FileSystem struct {
 	// - LRS (default): Local redundancy.
 	// - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
 	DataRedundancyType pulumi.StringPtrOutput `pulumi:"dataRedundancyType"`
+	// Dedicated cluster id, which is used to support scenarios such as group cloud migration.
 	DedicatedClusterId pulumi.StringPtrOutput `pulumi:"dedicatedClusterId"`
 	// The description of the file system resource. No more than 32 characters in length.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -86,10 +83,12 @@ type FileSystem struct {
 	FileSystemName pulumi.StringOutput `pulumi:"fileSystemName"`
 	// Save set sequence number, the user selects the content of the specified sequence number in the Save set.
 	PartitionNumber pulumi.IntPtrOutput `pulumi:"partitionNumber"`
-	// The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
+	// The protocol type. Value: `HDFS`, `PANGU`.
 	ProtocolType pulumi.StringOutput `pulumi:"protocolType"`
 	// Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
 	ProvisionedThroughputInMiBps pulumi.IntPtrOutput `pulumi:"provisionedThroughputInMiBps"`
+	// (Available since v1.242.0) The region ID of the File System.
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
 	// File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.
 	SpaceCapacity pulumi.IntOutput `pulumi:"spaceCapacity"`
 	// Save set identity, used to select a user-specified save set.
@@ -150,6 +149,7 @@ type fileSystemState struct {
 	// - LRS (default): Local redundancy.
 	// - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
 	DataRedundancyType *string `pulumi:"dataRedundancyType"`
+	// Dedicated cluster id, which is used to support scenarios such as group cloud migration.
 	DedicatedClusterId *string `pulumi:"dedicatedClusterId"`
 	// The description of the file system resource. No more than 32 characters in length.
 	Description *string `pulumi:"description"`
@@ -157,10 +157,12 @@ type fileSystemState struct {
 	FileSystemName *string `pulumi:"fileSystemName"`
 	// Save set sequence number, the user selects the content of the specified sequence number in the Save set.
 	PartitionNumber *int `pulumi:"partitionNumber"`
-	// The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
+	// The protocol type. Value: `HDFS`, `PANGU`.
 	ProtocolType *string `pulumi:"protocolType"`
 	// Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
 	ProvisionedThroughputInMiBps *int `pulumi:"provisionedThroughputInMiBps"`
+	// (Available since v1.242.0) The region ID of the File System.
+	RegionId *string `pulumi:"regionId"`
 	// File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.
 	SpaceCapacity *int `pulumi:"spaceCapacity"`
 	// Save set identity, used to select a user-specified save set.
@@ -180,6 +182,7 @@ type FileSystemState struct {
 	// - LRS (default): Local redundancy.
 	// - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
 	DataRedundancyType pulumi.StringPtrInput
+	// Dedicated cluster id, which is used to support scenarios such as group cloud migration.
 	DedicatedClusterId pulumi.StringPtrInput
 	// The description of the file system resource. No more than 32 characters in length.
 	Description pulumi.StringPtrInput
@@ -187,10 +190,12 @@ type FileSystemState struct {
 	FileSystemName pulumi.StringPtrInput
 	// Save set sequence number, the user selects the content of the specified sequence number in the Save set.
 	PartitionNumber pulumi.IntPtrInput
-	// The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
+	// The protocol type. Value: `HDFS`, `PANGU`.
 	ProtocolType pulumi.StringPtrInput
 	// Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
 	ProvisionedThroughputInMiBps pulumi.IntPtrInput
+	// (Available since v1.242.0) The region ID of the File System.
+	RegionId pulumi.StringPtrInput
 	// File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.
 	SpaceCapacity pulumi.IntPtrInput
 	// Save set identity, used to select a user-specified save set.
@@ -212,6 +217,7 @@ type fileSystemArgs struct {
 	// - LRS (default): Local redundancy.
 	// - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
 	DataRedundancyType *string `pulumi:"dataRedundancyType"`
+	// Dedicated cluster id, which is used to support scenarios such as group cloud migration.
 	DedicatedClusterId *string `pulumi:"dedicatedClusterId"`
 	// The description of the file system resource. No more than 32 characters in length.
 	Description *string `pulumi:"description"`
@@ -219,7 +225,7 @@ type fileSystemArgs struct {
 	FileSystemName string `pulumi:"fileSystemName"`
 	// Save set sequence number, the user selects the content of the specified sequence number in the Save set.
 	PartitionNumber *int `pulumi:"partitionNumber"`
-	// The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
+	// The protocol type. Value: `HDFS`, `PANGU`.
 	ProtocolType string `pulumi:"protocolType"`
 	// Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
 	ProvisionedThroughputInMiBps *int `pulumi:"provisionedThroughputInMiBps"`
@@ -241,6 +247,7 @@ type FileSystemArgs struct {
 	// - LRS (default): Local redundancy.
 	// - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
 	DataRedundancyType pulumi.StringPtrInput
+	// Dedicated cluster id, which is used to support scenarios such as group cloud migration.
 	DedicatedClusterId pulumi.StringPtrInput
 	// The description of the file system resource. No more than 32 characters in length.
 	Description pulumi.StringPtrInput
@@ -248,7 +255,7 @@ type FileSystemArgs struct {
 	FileSystemName pulumi.StringInput
 	// Save set sequence number, the user selects the content of the specified sequence number in the Save set.
 	PartitionNumber pulumi.IntPtrInput
-	// The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
+	// The protocol type. Value: `HDFS`, `PANGU`.
 	ProtocolType pulumi.StringInput
 	// Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
 	ProvisionedThroughputInMiBps pulumi.IntPtrInput
@@ -363,6 +370,7 @@ func (o FileSystemOutput) DataRedundancyType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.StringPtrOutput { return v.DataRedundancyType }).(pulumi.StringPtrOutput)
 }
 
+// Dedicated cluster id, which is used to support scenarios such as group cloud migration.
 func (o FileSystemOutput) DedicatedClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.StringPtrOutput { return v.DedicatedClusterId }).(pulumi.StringPtrOutput)
 }
@@ -382,7 +390,7 @@ func (o FileSystemOutput) PartitionNumber() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.IntPtrOutput { return v.PartitionNumber }).(pulumi.IntPtrOutput)
 }
 
-// The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
+// The protocol type. Value: `HDFS`, `PANGU`.
 func (o FileSystemOutput) ProtocolType() pulumi.StringOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.StringOutput { return v.ProtocolType }).(pulumi.StringOutput)
 }
@@ -390,6 +398,11 @@ func (o FileSystemOutput) ProtocolType() pulumi.StringOutput {
 // Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
 func (o FileSystemOutput) ProvisionedThroughputInMiBps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.IntPtrOutput { return v.ProvisionedThroughputInMiBps }).(pulumi.IntPtrOutput)
+}
+
+// (Available since v1.242.0) The region ID of the File System.
+func (o FileSystemOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FileSystem) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
 }
 
 // File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.

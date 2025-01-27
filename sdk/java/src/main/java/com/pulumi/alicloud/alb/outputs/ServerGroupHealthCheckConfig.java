@@ -16,87 +16,146 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServerGroupHealthCheckConfig {
     /**
-     * @return The HTTP status codes that are used to indicate whether the backend server passes the health check. Valid values:
-     * - If `health_check_protocol` is set to `HTTP` or `HTTPS`. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. Default value: `http_2xx`.
-     * - If `health_check_protocol` is set to `gRPC`. Valid values: `0` to `99`. Default value: `0`.
+     * @return The status code for a successful health check
      * 
      */
     private @Nullable List<String> healthCheckCodes;
     /**
-     * @return The backend port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`. A value of 0 indicates that a backend server port is used for health checks.
+     * @return The backend port that is used for health checks.
+     * 
+     * Valid values: `0` to `65535`.
+     * 
+     * If you set the value to `0`, the backend port is used for health checks.
+     * 
+     * &gt; **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
      * 
      */
     private @Nullable Integer healthCheckConnectPort;
     /**
-     * @return Specifies whether to enable the health check feature. Valid values: `true`, `false`.
+     * @return Specifies whether to enable the health check feature. Valid values:
      * 
      */
     private Boolean healthCheckEnabled;
     /**
      * @return The domain name that is used for health checks.
      * 
+     * *   **Backend Server Internal IP** (default): Use the internal IP address of backend servers as the health check domain name.
+     * 
+     * *   **Custom Domain Name**: Enter a domain name.
+     * 
+     * *   The domain name must be 1 to 80 characters in length.
+     * *   The domain name can contain lowercase letters, digits, hyphens (-), and periods (.).
+     * *   The domain name must contain at least one period (.) but cannot start or end with a period (.).
+     * *   The rightmost domain label of the domain name can contain only letters, and cannot contain digits or hyphens (-).
+     * *   The domain name cannot start or end with a hyphen (-).
+     * 
+     * &gt; **NOTE:**   This parameter takes effect only if `HealthCheckProtocol` is set to `HTTP`, `HTTPS`, or `gRPC`.
+     * 
      */
     private @Nullable String healthCheckHost;
     /**
-     * @return The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0` and `HTTP1.1`. **NOTE:** This parameter takes effect only when `health_check_protocol` is set to `HTTP` or `HTTPS`.
+     * @return The HTTP version that is used for health checks. Valid values:
+     * 
+     * *   **HTTP1.0**
+     * 
+     * *   **HTTP1.1**
+     * 
+     * &gt; **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to true and `HealthCheckProtocol` to `HTTP` or `HTTPS`.
      * 
      */
     private @Nullable String healthCheckHttpVersion;
     /**
-     * @return The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
+     * @return The interval at which health checks are performed. Unit: seconds.
+     * 
+     * Valid values: `1` to `50`.
+     * 
+     * &gt; **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
      * 
      */
     private @Nullable Integer healthCheckInterval;
     /**
-     * @return The HTTP method that is used for health checks. Default value: `GET`. Valid values: `GET`, `POST`, `HEAD`. **NOTE:** This parameter takes effect only when `health_check_protocol` is set to `HTTP`, `HTTPS`, or `gRPC`. From version 1.215.0, `health_check_method` can be set to `POST`.
+     * @return The HTTP method that is used for health checks. Valid values:
+     * 
+     * *   `GET`: If the length of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
+     * 
+     * *   `POST`: gRPC health checks use the POST method by default.
+     * 
+     * *   `HEAD`: HTTP and HTTPS health checks use the HEAD method by default.
+     * 
+     * &gt; **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to true and `HealthCheckProtocol` to `HTTP`, `HTTPS`, or `gRPC`.
      * 
      */
     private @Nullable String healthCheckMethod;
     /**
-     * @return The path that is used for health checks. **NOTE:** This parameter takes effect only when `health_check_protocol` is set to `HTTP` or `HTTPS`.
+     * @return The URL that is used for health checks.
+     * 
+     * The URL must be 1 to 80 characters in length, and can contain letters, digits, and the following special characters: `- / . % ? # &amp; =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] {@literal @} $ ^ : &#39; , +`. The URL must start with a forward slash (`/`).
+     * 
+     * &gt; **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true` and `HealthCheckProtocol` to `HTTP` or `HTTPS`.
      * 
      */
     private @Nullable String healthCheckPath;
     /**
-     * @return The protocol that is used for health checks. Valid values: `HTTP`, `HTTPS`, `TCP` and `gRPC`.
+     * @return The protocol that is used for health checks. Valid values:
+     * 
+     * - `HTTP`: HTTP health checks simulate browser behaviors by sending HEAD or GET requests to probe the availability of backend servers.
+     * - `HTTPS`: HTTPS health checks simulate browser behaviors by sending HEAD or GET requests to probe the availability of backend servers. HTTPS provides higher security than HTTP because HTTPS supports data encryption.
+     * - `TCP`: TCP health checks send TCP SYN packets to a backend server to probe the availability of backend servers.
+     * - `gRPC`: gRPC health checks send POST or GET requests to a backend server to check whether the backend server is healthy.
      * 
      */
     private @Nullable String healthCheckProtocol;
     /**
-     * @return The timeout period for a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If the value of `health_check_timeout` is smaller than the value of `health_check_interval`, the value of `health_check_timeout` is ignored and the value of `health_check_interval` is used.
+     * @return The timeout period of a health check response. If a backend ECS instance does not respond within the specified timeout period, the ECS instance fails the health check. Unit: seconds.
+     * 
+     * Valid values: `1` to `300`.
+     * 
+     * &gt; **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
      * 
      */
     private @Nullable Integer healthCheckTimeout;
     /**
-     * @return The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
+     * @return The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health check status of the backend server changes from `fail` to `success`.
+     * 
+     * Valid values: `2` to `10`.
+     * 
+     * Default value: `3`.
      * 
      */
     private @Nullable Integer healthyThreshold;
     /**
-     * @return The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
+     * @return The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health check status of the backend server changes from `success` to `fail`.
+     * 
+     * Valid values: `2` to `10`.
+     * 
+     * Default value: `3`.
      * 
      */
     private @Nullable Integer unhealthyThreshold;
 
     private ServerGroupHealthCheckConfig() {}
     /**
-     * @return The HTTP status codes that are used to indicate whether the backend server passes the health check. Valid values:
-     * - If `health_check_protocol` is set to `HTTP` or `HTTPS`. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. Default value: `http_2xx`.
-     * - If `health_check_protocol` is set to `gRPC`. Valid values: `0` to `99`. Default value: `0`.
+     * @return The status code for a successful health check
      * 
      */
     public List<String> healthCheckCodes() {
         return this.healthCheckCodes == null ? List.of() : this.healthCheckCodes;
     }
     /**
-     * @return The backend port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`. A value of 0 indicates that a backend server port is used for health checks.
+     * @return The backend port that is used for health checks.
+     * 
+     * Valid values: `0` to `65535`.
+     * 
+     * If you set the value to `0`, the backend port is used for health checks.
+     * 
+     * &gt; **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
      * 
      */
     public Optional<Integer> healthCheckConnectPort() {
         return Optional.ofNullable(this.healthCheckConnectPort);
     }
     /**
-     * @return Specifies whether to enable the health check feature. Valid values: `true`, `false`.
+     * @return Specifies whether to enable the health check feature. Valid values:
      * 
      */
     public Boolean healthCheckEnabled() {
@@ -105,61 +164,112 @@ public final class ServerGroupHealthCheckConfig {
     /**
      * @return The domain name that is used for health checks.
      * 
+     * *   **Backend Server Internal IP** (default): Use the internal IP address of backend servers as the health check domain name.
+     * 
+     * *   **Custom Domain Name**: Enter a domain name.
+     * 
+     * *   The domain name must be 1 to 80 characters in length.
+     * *   The domain name can contain lowercase letters, digits, hyphens (-), and periods (.).
+     * *   The domain name must contain at least one period (.) but cannot start or end with a period (.).
+     * *   The rightmost domain label of the domain name can contain only letters, and cannot contain digits or hyphens (-).
+     * *   The domain name cannot start or end with a hyphen (-).
+     * 
+     * &gt; **NOTE:**   This parameter takes effect only if `HealthCheckProtocol` is set to `HTTP`, `HTTPS`, or `gRPC`.
+     * 
      */
     public Optional<String> healthCheckHost() {
         return Optional.ofNullable(this.healthCheckHost);
     }
     /**
-     * @return The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0` and `HTTP1.1`. **NOTE:** This parameter takes effect only when `health_check_protocol` is set to `HTTP` or `HTTPS`.
+     * @return The HTTP version that is used for health checks. Valid values:
+     * 
+     * *   **HTTP1.0**
+     * 
+     * *   **HTTP1.1**
+     * 
+     * &gt; **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to true and `HealthCheckProtocol` to `HTTP` or `HTTPS`.
      * 
      */
     public Optional<String> healthCheckHttpVersion() {
         return Optional.ofNullable(this.healthCheckHttpVersion);
     }
     /**
-     * @return The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
+     * @return The interval at which health checks are performed. Unit: seconds.
+     * 
+     * Valid values: `1` to `50`.
+     * 
+     * &gt; **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
      * 
      */
     public Optional<Integer> healthCheckInterval() {
         return Optional.ofNullable(this.healthCheckInterval);
     }
     /**
-     * @return The HTTP method that is used for health checks. Default value: `GET`. Valid values: `GET`, `POST`, `HEAD`. **NOTE:** This parameter takes effect only when `health_check_protocol` is set to `HTTP`, `HTTPS`, or `gRPC`. From version 1.215.0, `health_check_method` can be set to `POST`.
+     * @return The HTTP method that is used for health checks. Valid values:
+     * 
+     * *   `GET`: If the length of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
+     * 
+     * *   `POST`: gRPC health checks use the POST method by default.
+     * 
+     * *   `HEAD`: HTTP and HTTPS health checks use the HEAD method by default.
+     * 
+     * &gt; **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to true and `HealthCheckProtocol` to `HTTP`, `HTTPS`, or `gRPC`.
      * 
      */
     public Optional<String> healthCheckMethod() {
         return Optional.ofNullable(this.healthCheckMethod);
     }
     /**
-     * @return The path that is used for health checks. **NOTE:** This parameter takes effect only when `health_check_protocol` is set to `HTTP` or `HTTPS`.
+     * @return The URL that is used for health checks.
+     * 
+     * The URL must be 1 to 80 characters in length, and can contain letters, digits, and the following special characters: `- / . % ? # &amp; =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] {@literal @} $ ^ : &#39; , +`. The URL must start with a forward slash (`/`).
+     * 
+     * &gt; **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true` and `HealthCheckProtocol` to `HTTP` or `HTTPS`.
      * 
      */
     public Optional<String> healthCheckPath() {
         return Optional.ofNullable(this.healthCheckPath);
     }
     /**
-     * @return The protocol that is used for health checks. Valid values: `HTTP`, `HTTPS`, `TCP` and `gRPC`.
+     * @return The protocol that is used for health checks. Valid values:
+     * 
+     * - `HTTP`: HTTP health checks simulate browser behaviors by sending HEAD or GET requests to probe the availability of backend servers.
+     * - `HTTPS`: HTTPS health checks simulate browser behaviors by sending HEAD or GET requests to probe the availability of backend servers. HTTPS provides higher security than HTTP because HTTPS supports data encryption.
+     * - `TCP`: TCP health checks send TCP SYN packets to a backend server to probe the availability of backend servers.
+     * - `gRPC`: gRPC health checks send POST or GET requests to a backend server to check whether the backend server is healthy.
      * 
      */
     public Optional<String> healthCheckProtocol() {
         return Optional.ofNullable(this.healthCheckProtocol);
     }
     /**
-     * @return The timeout period for a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If the value of `health_check_timeout` is smaller than the value of `health_check_interval`, the value of `health_check_timeout` is ignored and the value of `health_check_interval` is used.
+     * @return The timeout period of a health check response. If a backend ECS instance does not respond within the specified timeout period, the ECS instance fails the health check. Unit: seconds.
+     * 
+     * Valid values: `1` to `300`.
+     * 
+     * &gt; **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
      * 
      */
     public Optional<Integer> healthCheckTimeout() {
         return Optional.ofNullable(this.healthCheckTimeout);
     }
     /**
-     * @return The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
+     * @return The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health check status of the backend server changes from `fail` to `success`.
+     * 
+     * Valid values: `2` to `10`.
+     * 
+     * Default value: `3`.
      * 
      */
     public Optional<Integer> healthyThreshold() {
         return Optional.ofNullable(this.healthyThreshold);
     }
     /**
-     * @return The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
+     * @return The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health check status of the backend server changes from `success` to `fail`.
+     * 
+     * Valid values: `2` to `10`.
+     * 
+     * Default value: `3`.
      * 
      */
     public Optional<Integer> unhealthyThreshold() {

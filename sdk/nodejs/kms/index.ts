@@ -35,6 +35,11 @@ export const getCiphertext: typeof import("./getCiphertext").getCiphertext = nul
 export const getCiphertextOutput: typeof import("./getCiphertext").getCiphertextOutput = null as any;
 utilities.lazyLoad(exports, ["getCiphertext","getCiphertextOutput"], () => require("./getCiphertext"));
 
+export { GetInstancesArgs, GetInstancesResult, GetInstancesOutputArgs } from "./getInstances";
+export const getInstances: typeof import("./getInstances").getInstances = null as any;
+export const getInstancesOutput: typeof import("./getInstances").getInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getInstances","getInstancesOutput"], () => require("./getInstances"));
+
 export { GetKeyVersionsArgs, GetKeyVersionsResult, GetKeyVersionsOutputArgs } from "./getKeyVersions";
 export const getKeyVersions: typeof import("./getKeyVersions").getKeyVersions = null as any;
 export const getKeyVersionsOutput: typeof import("./getKeyVersions").getKeyVersionsOutput = null as any;

@@ -28,17 +28,40 @@ namespace Pulumi.AliCloud.Alb
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ids = AliCloud.Alb.GetServerGroups.Invoke();
-        /// 
-        ///     var nameRegex = AliCloud.Alb.GetServerGroups.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = new AliCloud.Vpc.Network("default", new()
         ///     {
-        ///         NameRegex = "^my-ServerGroup",
+        ///         VpcName = name,
+        ///         CidrBlock = "192.168.0.0/16",
+        ///     });
+        /// 
+        ///     var defaultServerGroup = new AliCloud.Alb.ServerGroup("default", new()
+        ///     {
+        ///         Protocol = "HTTP",
+        ///         VpcId = @default.Id,
+        ///         ServerGroupName = name,
+        ///         HealthCheckConfig = new AliCloud.Alb.Inputs.ServerGroupHealthCheckConfigArgs
+        ///         {
+        ///             HealthCheckEnabled = false,
+        ///         },
+        ///         StickySessionConfig = new AliCloud.Alb.Inputs.ServerGroupStickySessionConfigArgs
+        ///         {
+        ///             StickySessionEnabled = false,
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Alb.GetServerGroups.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultServerGroup.Id,
+        ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["albServerGroupId1"] = ids.Apply(getServerGroupsResult =&gt; getServerGroupsResult.Groups[0]?.Id),
-        ///         ["albServerGroupId2"] = nameRegex.Apply(getServerGroupsResult =&gt; getServerGroupsResult.Groups[0]?.Id),
+        ///         ["albServerGroupId0"] = ids.Apply(getServerGroupsResult =&gt; getServerGroupsResult.Groups[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -63,17 +86,40 @@ namespace Pulumi.AliCloud.Alb
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ids = AliCloud.Alb.GetServerGroups.Invoke();
-        /// 
-        ///     var nameRegex = AliCloud.Alb.GetServerGroups.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = new AliCloud.Vpc.Network("default", new()
         ///     {
-        ///         NameRegex = "^my-ServerGroup",
+        ///         VpcName = name,
+        ///         CidrBlock = "192.168.0.0/16",
+        ///     });
+        /// 
+        ///     var defaultServerGroup = new AliCloud.Alb.ServerGroup("default", new()
+        ///     {
+        ///         Protocol = "HTTP",
+        ///         VpcId = @default.Id,
+        ///         ServerGroupName = name,
+        ///         HealthCheckConfig = new AliCloud.Alb.Inputs.ServerGroupHealthCheckConfigArgs
+        ///         {
+        ///             HealthCheckEnabled = false,
+        ///         },
+        ///         StickySessionConfig = new AliCloud.Alb.Inputs.ServerGroupStickySessionConfigArgs
+        ///         {
+        ///             StickySessionEnabled = false,
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Alb.GetServerGroups.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultServerGroup.Id,
+        ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["albServerGroupId1"] = ids.Apply(getServerGroupsResult =&gt; getServerGroupsResult.Groups[0]?.Id),
-        ///         ["albServerGroupId2"] = nameRegex.Apply(getServerGroupsResult =&gt; getServerGroupsResult.Groups[0]?.Id),
+        ///         ["albServerGroupId0"] = ids.Apply(getServerGroupsResult =&gt; getServerGroupsResult.Groups[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -98,17 +144,40 @@ namespace Pulumi.AliCloud.Alb
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ids = AliCloud.Alb.GetServerGroups.Invoke();
-        /// 
-        ///     var nameRegex = AliCloud.Alb.GetServerGroups.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = new AliCloud.Vpc.Network("default", new()
         ///     {
-        ///         NameRegex = "^my-ServerGroup",
+        ///         VpcName = name,
+        ///         CidrBlock = "192.168.0.0/16",
+        ///     });
+        /// 
+        ///     var defaultServerGroup = new AliCloud.Alb.ServerGroup("default", new()
+        ///     {
+        ///         Protocol = "HTTP",
+        ///         VpcId = @default.Id,
+        ///         ServerGroupName = name,
+        ///         HealthCheckConfig = new AliCloud.Alb.Inputs.ServerGroupHealthCheckConfigArgs
+        ///         {
+        ///             HealthCheckEnabled = false,
+        ///         },
+        ///         StickySessionConfig = new AliCloud.Alb.Inputs.ServerGroupStickySessionConfigArgs
+        ///         {
+        ///             StickySessionEnabled = false,
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Alb.GetServerGroups.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultServerGroup.Id,
+        ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["albServerGroupId1"] = ids.Apply(getServerGroupsResult =&gt; getServerGroupsResult.Groups[0]?.Id),
-        ///         ["albServerGroupId2"] = nameRegex.Apply(getServerGroupsResult =&gt; getServerGroupsResult.Groups[0]?.Id),
+        ///         ["albServerGroupId0"] = ids.Apply(getServerGroupsResult =&gt; getServerGroupsResult.Groups[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -121,7 +190,7 @@ namespace Pulumi.AliCloud.Alb
     public sealed class GetServerGroupsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Whether to query the detailed list of resource attributes. Default value: `false`.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -160,7 +229,7 @@ namespace Pulumi.AliCloud.Alb
         private List<string>? _serverGroupIds;
 
         /// <summary>
-        /// The server group ids.
+        /// The server group IDs.
         /// </summary>
         public List<string> ServerGroupIds
         {
@@ -169,13 +238,13 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// The name of the resource.
+        /// The names of the Server Group.
         /// </summary>
         [Input("serverGroupName")]
         public string? ServerGroupName { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the Server Group. Valid values: `Available`, `Configuring`, `Provisioning`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -184,7 +253,7 @@ namespace Pulumi.AliCloud.Alb
         private Dictionary<string, string>? _tags;
 
         /// <summary>
-        /// A map of tags assigned to the group.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         public Dictionary<string, string> Tags
         {
@@ -193,7 +262,7 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// The ID of the VPC that you want to access.
+        /// The ID of the virtual private cloud (VPC).
         /// </summary>
         [Input("vpcId")]
         public string? VpcId { get; set; }
@@ -207,7 +276,7 @@ namespace Pulumi.AliCloud.Alb
     public sealed class GetServerGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Whether to query the detailed list of resource attributes. Default value: `false`.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -246,7 +315,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<string>? _serverGroupIds;
 
         /// <summary>
-        /// The server group ids.
+        /// The server group IDs.
         /// </summary>
         public InputList<string> ServerGroupIds
         {
@@ -255,13 +324,13 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// The name of the resource.
+        /// The names of the Server Group.
         /// </summary>
         [Input("serverGroupName")]
         public Input<string>? ServerGroupName { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the Server Group. Valid values: `Available`, `Configuring`, `Provisioning`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -270,7 +339,7 @@ namespace Pulumi.AliCloud.Alb
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A map of tags assigned to the group.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -279,7 +348,7 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// The ID of the VPC that you want to access.
+        /// The ID of the virtual private cloud (VPC).
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
@@ -296,7 +365,7 @@ namespace Pulumi.AliCloud.Alb
     {
         public readonly bool? EnableDetails;
         /// <summary>
-        /// A list of Alb Server Groups. Each element contains the following attributes:
+        /// A list of Server Groups. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServerGroupsGroupResult> Groups;
         /// <summary>
@@ -313,19 +382,19 @@ namespace Pulumi.AliCloud.Alb
         public readonly string? ResourceGroupId;
         public readonly ImmutableArray<string> ServerGroupIds;
         /// <summary>
-        /// The name of the resource.
+        /// The name of the Server Group.
         /// </summary>
         public readonly string? ServerGroupName;
         /// <summary>
-        /// The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+        /// The status of the server.
         /// </summary>
         public readonly string? Status;
         /// <summary>
-        /// The tags of the resource.
+        /// The tags of the resource. **Note:** `tags` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
-        /// The ID of the VPC that you want to access.
+        /// The ID of the VPC.
         /// </summary>
         public readonly string? VpcId;
 

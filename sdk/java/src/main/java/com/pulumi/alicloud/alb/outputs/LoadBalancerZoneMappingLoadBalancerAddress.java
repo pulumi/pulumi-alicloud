@@ -12,50 +12,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class LoadBalancerZoneMappingLoadBalancerAddress {
     /**
-     * @return IP address. The Public IP Address, and Private IP Address from the Address Type.
+     * @return IP Address. The Public IP Address, and Private IP Address from the Address Type
      * 
      */
     private @Nullable String address;
     /**
-     * @return The ID of the EIP.
+     * @return The ID of the EIP instance.
      * 
      */
     private @Nullable String allocationId;
     /**
-     * @return The type of the EIP.
+     * @return The type of the EIP instance.
      * 
      */
     private @Nullable String eipType;
     /**
-     * @return Ipv6 address.
+     * @return Ipv6 address
      * 
      */
     private @Nullable String ipv6Address;
 
     private LoadBalancerZoneMappingLoadBalancerAddress() {}
     /**
-     * @return IP address. The Public IP Address, and Private IP Address from the Address Type.
+     * @return IP Address. The Public IP Address, and Private IP Address from the Address Type
      * 
      */
     public Optional<String> address() {
         return Optional.ofNullable(this.address);
     }
     /**
-     * @return The ID of the EIP.
+     * @return The ID of the EIP instance.
      * 
      */
     public Optional<String> allocationId() {
         return Optional.ofNullable(this.allocationId);
     }
     /**
-     * @return The type of the EIP.
+     * @return The type of the EIP instance.
      * 
      */
     public Optional<String> eipType() {
         return Optional.ofNullable(this.eipType);
     }
     /**
-     * @return Ipv6 address.
+     * @return Ipv6 address
      * 
      */
     public Optional<String> ipv6Address() {

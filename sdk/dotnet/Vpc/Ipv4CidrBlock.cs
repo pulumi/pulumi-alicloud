@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
-    /// Provides a VPC Ipv4 Cidr Block resource. VPC IPv4 additional network segment.
+    /// Provides a VPC Ipv4 Cidr Block resource.
+    /// 
+    /// VPC IPv4 additional network segment.
     /// 
     /// For information about VPC Ipv4 Cidr Block and how to use it, see [What is Ipv4 Cidr Block](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/associatevpccidrblock).
     /// 
@@ -56,14 +58,30 @@ namespace Pulumi.AliCloud.Vpc
     public partial class Ipv4CidrBlock : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The IPv4 CIDR block. Take note of the following requirements:
-        /// * You can specify one of the following standard IPv4 CIDR blocks or their subnets as the secondary IPv4 CIDR block: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8.
-        /// * You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, or their subnets as the secondary IPv4 CIDR block of the VPC.
-        /// * The CIDR block cannot start with 0. The subnet mask must be 8 to 28 bits in length.
-        /// * The secondary CIDR block cannot overlap with the primary CIDR block or an existing secondary CIDR block.
+        /// The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
+        /// </summary>
+        [Output("ipv4IpamPoolId")]
+        public Output<string?> Ipv4IpamPoolId { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the region where the VPC resides.
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
+
+        /// <summary>
+        /// Additional network segment information.
         /// </summary>
         [Output("secondaryCidrBlock")]
         public Output<string> SecondaryCidrBlock { get; private set; } = null!;
+
+        /// <summary>
+        /// Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+        /// 
+        /// &gt; **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+        /// </summary>
+        [Output("secondaryCidrMask")]
+        public Output<int?> SecondaryCidrMask { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the VPC.
@@ -118,14 +136,24 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class Ipv4CidrBlockArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The IPv4 CIDR block. Take note of the following requirements:
-        /// * You can specify one of the following standard IPv4 CIDR blocks or their subnets as the secondary IPv4 CIDR block: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8.
-        /// * You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, or their subnets as the secondary IPv4 CIDR block of the VPC.
-        /// * The CIDR block cannot start with 0. The subnet mask must be 8 to 28 bits in length.
-        /// * The secondary CIDR block cannot overlap with the primary CIDR block or an existing secondary CIDR block.
+        /// The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
         /// </summary>
-        [Input("secondaryCidrBlock", required: true)]
-        public Input<string> SecondaryCidrBlock { get; set; } = null!;
+        [Input("ipv4IpamPoolId")]
+        public Input<string>? Ipv4IpamPoolId { get; set; }
+
+        /// <summary>
+        /// Additional network segment information.
+        /// </summary>
+        [Input("secondaryCidrBlock")]
+        public Input<string>? SecondaryCidrBlock { get; set; }
+
+        /// <summary>
+        /// Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+        /// 
+        /// &gt; **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+        /// </summary>
+        [Input("secondaryCidrMask")]
+        public Input<int>? SecondaryCidrMask { get; set; }
 
         /// <summary>
         /// The ID of the VPC.
@@ -142,14 +170,30 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class Ipv4CidrBlockState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The IPv4 CIDR block. Take note of the following requirements:
-        /// * You can specify one of the following standard IPv4 CIDR blocks or their subnets as the secondary IPv4 CIDR block: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8.
-        /// * You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, or their subnets as the secondary IPv4 CIDR block of the VPC.
-        /// * The CIDR block cannot start with 0. The subnet mask must be 8 to 28 bits in length.
-        /// * The secondary CIDR block cannot overlap with the primary CIDR block or an existing secondary CIDR block.
+        /// The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
+        /// </summary>
+        [Input("ipv4IpamPoolId")]
+        public Input<string>? Ipv4IpamPoolId { get; set; }
+
+        /// <summary>
+        /// The ID of the region where the VPC resides.
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
+
+        /// <summary>
+        /// Additional network segment information.
         /// </summary>
         [Input("secondaryCidrBlock")]
         public Input<string>? SecondaryCidrBlock { get; set; }
+
+        /// <summary>
+        /// Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
+        /// 
+        /// &gt; **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+        /// </summary>
+        [Input("secondaryCidrMask")]
+        public Input<int>? SecondaryCidrMask { get; set; }
 
         /// <summary>
         /// The ID of the VPC.

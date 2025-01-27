@@ -11,6 +11,52 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a ESA Rate Plan Instance resource.
+//
+// For information about ESA Rate Plan Instance and how to use it, see [What is Rate Plan Instance](https://www.alibabacloud.com/help/en/).
+//
+// > **NOTE:** Available since v1.234.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/esa"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := esa.NewRatePlanInstance(ctx, "default", &esa.RatePlanInstanceArgs{
+//				Type:        pulumi.String("NS"),
+//				AutoRenew:   pulumi.Bool(true),
+//				Period:      pulumi.Int(1),
+//				PaymentType: pulumi.String("Subscription"),
+//				Coverage:    pulumi.String("overseas"),
+//				PlanName:    pulumi.String("basic"),
+//				AutoPay:     pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ESA Rate Plan Instance can be imported using the id, e.g.
@@ -41,7 +87,7 @@ type RatePlanInstance struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Renewing: renewing
 	InstanceStatus pulumi.StringOutput `pulumi:"instanceStatus"`
-	// The payment type of the resource, Valid vales: Subscription.
+	// The payment type of the resource
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// Purchase cycle (in months).
 	Period pulumi.IntPtrOutput `pulumi:"period"`
@@ -107,7 +153,7 @@ type ratePlanInstanceState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Renewing: renewing
 	InstanceStatus *string `pulumi:"instanceStatus"`
-	// The payment type of the resource, Valid vales: Subscription.
+	// The payment type of the resource
 	PaymentType *string `pulumi:"paymentType"`
 	// Purchase cycle (in months).
 	Period *int `pulumi:"period"`
@@ -144,7 +190,7 @@ type RatePlanInstanceState struct {
 	CreateTime pulumi.StringPtrInput
 	// Renewing: renewing
 	InstanceStatus pulumi.StringPtrInput
-	// The payment type of the resource, Valid vales: Subscription.
+	// The payment type of the resource
 	PaymentType pulumi.StringPtrInput
 	// Purchase cycle (in months).
 	Period pulumi.IntPtrInput
@@ -181,7 +227,7 @@ type ratePlanInstanceArgs struct {
 	//
 	// overseas: Global (excluding Mainland China).
 	Coverage *string `pulumi:"coverage"`
-	// The payment type of the resource, Valid vales: Subscription.
+	// The payment type of the resource
 	PaymentType *string `pulumi:"paymentType"`
 	// Purchase cycle (in months).
 	Period *int `pulumi:"period"`
@@ -213,7 +259,7 @@ type RatePlanInstanceArgs struct {
 	//
 	// overseas: Global (excluding Mainland China).
 	Coverage pulumi.StringPtrInput
-	// The payment type of the resource, Valid vales: Subscription.
+	// The payment type of the resource
 	PaymentType pulumi.StringPtrInput
 	// Purchase cycle (in months).
 	Period pulumi.IntPtrInput
@@ -349,7 +395,7 @@ func (o RatePlanInstanceOutput) InstanceStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *RatePlanInstance) pulumi.StringOutput { return v.InstanceStatus }).(pulumi.StringOutput)
 }
 
-// The payment type of the resource, Valid vales: Subscription.
+// The payment type of the resource
 func (o RatePlanInstanceOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *RatePlanInstance) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }

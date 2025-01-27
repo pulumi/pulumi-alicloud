@@ -14,38 +14,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class V3FunctionNasConfig {
     /**
-     * @return Group ID.
+     * @return Group ID
      * 
      */
     private @Nullable Integer groupId;
     /**
-     * @return Mount point list. See `mount_points` below.
+     * @return Mount point list See `mount_points` below.
      * 
      */
     private @Nullable List<V3FunctionNasConfigMountPoint> mountPoints;
     /**
-     * @return Account ID.
+     * @return Account ID
      * 
      */
     private @Nullable Integer userId;
 
     private V3FunctionNasConfig() {}
     /**
-     * @return Group ID.
+     * @return Group ID
      * 
      */
     public Optional<Integer> groupId() {
         return Optional.ofNullable(this.groupId);
     }
     /**
-     * @return Mount point list. See `mount_points` below.
+     * @return Mount point list See `mount_points` below.
      * 
      */
     public List<V3FunctionNasConfigMountPoint> mountPoints() {
         return this.mountPoints == null ? List.of() : this.mountPoints;
     }
     /**
-     * @return Account ID.
+     * @return Account ID
      * 
      */
     public Optional<Integer> userId() {

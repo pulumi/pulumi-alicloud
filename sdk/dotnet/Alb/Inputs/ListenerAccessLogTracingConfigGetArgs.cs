@@ -13,25 +13,27 @@ namespace Pulumi.AliCloud.Alb.Inputs
     public sealed class ListenerAccessLogTracingConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
+        /// Xtrace Function.
         /// 
-        /// &gt; **NOTE:** Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `True`.
+        /// Value: True **** Or False * *.
+        /// 
+        /// Default Value: False * *.
+        /// 
+        /// &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
         /// </summary>
-        [Input("tracingEnabled")]
-        public Input<bool>? TracingEnabled { get; set; }
+        [Input("tracingEnabled", required: true)]
+        public Input<bool> TracingEnabled { get; set; } = null!;
 
         /// <summary>
-        /// Xtrace Sampling Rate. Value: `1` to `10000`.
-        /// 
-        /// &gt; **NOTE:** This attribute is valid when `tracingenabled` is `true`.
+        /// Xtrace Sampling Rate. Value: 1~10000 **.&gt; `tracingenabled` **True When Effective.
         /// </summary>
         [Input("tracingSample")]
         public Input<int>? TracingSample { get; set; }
 
         /// <summary>
-        /// Xtrace Type Value Is `Zipkin`.
+        /// Xtrace Type Value Is **Zipkin * *.
         /// 
-        /// &gt; **NOTE:** This attribute is valid when `tracingenabled` is `true`.
+        /// &gt; **NOTE:**  `tracingenabled` **True When Effective.
         /// </summary>
         [Input("tracingType")]
         public Input<string>? TracingType { get; set; }

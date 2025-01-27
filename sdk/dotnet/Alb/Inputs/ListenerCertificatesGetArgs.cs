@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Alb.Inputs
     public sealed class ListenerCertificatesGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the Certificate.
+        /// The ID of the certificate. Currently, only server certificates are supported.
         /// </summary>
         [Input("certificateId")]
         public Input<string>? CertificateId { get; set; }

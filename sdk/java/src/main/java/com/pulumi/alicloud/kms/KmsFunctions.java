@@ -8,6 +8,8 @@ import com.pulumi.alicloud.kms.inputs.GetAliasesArgs;
 import com.pulumi.alicloud.kms.inputs.GetAliasesPlainArgs;
 import com.pulumi.alicloud.kms.inputs.GetCiphertextArgs;
 import com.pulumi.alicloud.kms.inputs.GetCiphertextPlainArgs;
+import com.pulumi.alicloud.kms.inputs.GetInstancesArgs;
+import com.pulumi.alicloud.kms.inputs.GetInstancesPlainArgs;
 import com.pulumi.alicloud.kms.inputs.GetKeyVersionsArgs;
 import com.pulumi.alicloud.kms.inputs.GetKeyVersionsPlainArgs;
 import com.pulumi.alicloud.kms.inputs.GetKeysArgs;
@@ -22,6 +24,7 @@ import com.pulumi.alicloud.kms.inputs.GetServiceArgs;
 import com.pulumi.alicloud.kms.inputs.GetServicePlainArgs;
 import com.pulumi.alicloud.kms.outputs.GetAliasesResult;
 import com.pulumi.alicloud.kms.outputs.GetCiphertextResult;
+import com.pulumi.alicloud.kms.outputs.GetInstancesResult;
 import com.pulumi.alicloud.kms.outputs.GetKeyVersionsResult;
 import com.pulumi.alicloud.kms.outputs.GetKeysResult;
 import com.pulumi.alicloud.kms.outputs.GetPlaintextResult;
@@ -614,6 +617,69 @@ public final class KmsFunctions {
      */
     public static CompletableFuture<GetCiphertextResult> getCiphertextPlain(GetCiphertextPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:kms/getCiphertext:getCiphertext", TypeShape.of(GetCiphertextResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Kms Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.242.0.
+     * 
+     */
+    public static Output<GetInstancesResult> getInstances() {
+        return getInstances(GetInstancesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Kms Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.242.0.
+     * 
+     */
+    public static CompletableFuture<GetInstancesResult> getInstancesPlain() {
+        return getInstancesPlain(GetInstancesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Kms Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.242.0.
+     * 
+     */
+    public static Output<GetInstancesResult> getInstances(GetInstancesArgs args) {
+        return getInstances(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Kms Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.242.0.
+     * 
+     */
+    public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args) {
+        return getInstancesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Kms Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.242.0.
+     * 
+     */
+    public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:kms/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Kms Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.242.0.
+     * 
+     */
+    public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:kms/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Kms Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.242.0.
+     * 
+     */
+    public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:kms/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides a list of KMS KeyVersions in an Alibaba Cloud account according to the specified filters.

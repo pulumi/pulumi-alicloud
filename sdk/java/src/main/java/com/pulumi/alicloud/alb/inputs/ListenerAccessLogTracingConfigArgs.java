@@ -5,6 +5,7 @@ package com.pulumi.alicloud.alb.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -18,37 +19,41 @@ public final class ListenerAccessLogTracingConfigArgs extends com.pulumi.resourc
     public static final ListenerAccessLogTracingConfigArgs Empty = new ListenerAccessLogTracingConfigArgs();
 
     /**
-     * Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
+     * Xtrace Function.
      * 
-     * &gt; **NOTE:** Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `True`.
+     * Value: True **** Or False * *.
+     * 
+     * Default Value: False * *.
+     * 
+     * &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
      * 
      */
-    @Import(name="tracingEnabled")
-    private @Nullable Output<Boolean> tracingEnabled;
+    @Import(name="tracingEnabled", required=true)
+    private Output<Boolean> tracingEnabled;
 
     /**
-     * @return Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
+     * @return Xtrace Function.
      * 
-     * &gt; **NOTE:** Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `True`.
+     * Value: True **** Or False * *.
+     * 
+     * Default Value: False * *.
+     * 
+     * &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
      * 
      */
-    public Optional<Output<Boolean>> tracingEnabled() {
-        return Optional.ofNullable(this.tracingEnabled);
+    public Output<Boolean> tracingEnabled() {
+        return this.tracingEnabled;
     }
 
     /**
-     * Xtrace Sampling Rate. Value: `1` to `10000`.
-     * 
-     * &gt; **NOTE:** This attribute is valid when `tracingenabled` is `true`.
+     * Xtrace Sampling Rate. Value: 1~10000 **.&gt; `tracingenabled` **True When Effective.
      * 
      */
     @Import(name="tracingSample")
     private @Nullable Output<Integer> tracingSample;
 
     /**
-     * @return Xtrace Sampling Rate. Value: `1` to `10000`.
-     * 
-     * &gt; **NOTE:** This attribute is valid when `tracingenabled` is `true`.
+     * @return Xtrace Sampling Rate. Value: 1~10000 **.&gt; `tracingenabled` **True When Effective.
      * 
      */
     public Optional<Output<Integer>> tracingSample() {
@@ -56,18 +61,18 @@ public final class ListenerAccessLogTracingConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Xtrace Type Value Is `Zipkin`.
+     * Xtrace Type Value Is **Zipkin * *.
      * 
-     * &gt; **NOTE:** This attribute is valid when `tracingenabled` is `true`.
+     * &gt; **NOTE:**  `tracingenabled` **True When Effective.
      * 
      */
     @Import(name="tracingType")
     private @Nullable Output<String> tracingType;
 
     /**
-     * @return Xtrace Type Value Is `Zipkin`.
+     * @return Xtrace Type Value Is **Zipkin * *.
      * 
-     * &gt; **NOTE:** This attribute is valid when `tracingenabled` is `true`.
+     * &gt; **NOTE:**  `tracingenabled` **True When Effective.
      * 
      */
     public Optional<Output<String>> tracingType() {
@@ -101,22 +106,30 @@ public final class ListenerAccessLogTracingConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param tracingEnabled Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
+         * @param tracingEnabled Xtrace Function.
          * 
-         * &gt; **NOTE:** Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `True`.
+         * Value: True **** Or False * *.
+         * 
+         * Default Value: False * *.
+         * 
+         * &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
          * 
          * @return builder
          * 
          */
-        public Builder tracingEnabled(@Nullable Output<Boolean> tracingEnabled) {
+        public Builder tracingEnabled(Output<Boolean> tracingEnabled) {
             $.tracingEnabled = tracingEnabled;
             return this;
         }
 
         /**
-         * @param tracingEnabled Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
+         * @param tracingEnabled Xtrace Function.
          * 
-         * &gt; **NOTE:** Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `True`.
+         * Value: True **** Or False * *.
+         * 
+         * Default Value: False * *.
+         * 
+         * &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the **True * *.
          * 
          * @return builder
          * 
@@ -126,9 +139,7 @@ public final class ListenerAccessLogTracingConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param tracingSample Xtrace Sampling Rate. Value: `1` to `10000`.
-         * 
-         * &gt; **NOTE:** This attribute is valid when `tracingenabled` is `true`.
+         * @param tracingSample Xtrace Sampling Rate. Value: 1~10000 **.&gt; `tracingenabled` **True When Effective.
          * 
          * @return builder
          * 
@@ -139,9 +150,7 @@ public final class ListenerAccessLogTracingConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param tracingSample Xtrace Sampling Rate. Value: `1` to `10000`.
-         * 
-         * &gt; **NOTE:** This attribute is valid when `tracingenabled` is `true`.
+         * @param tracingSample Xtrace Sampling Rate. Value: 1~10000 **.&gt; `tracingenabled` **True When Effective.
          * 
          * @return builder
          * 
@@ -151,9 +160,9 @@ public final class ListenerAccessLogTracingConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param tracingType Xtrace Type Value Is `Zipkin`.
+         * @param tracingType Xtrace Type Value Is **Zipkin * *.
          * 
-         * &gt; **NOTE:** This attribute is valid when `tracingenabled` is `true`.
+         * &gt; **NOTE:**  `tracingenabled` **True When Effective.
          * 
          * @return builder
          * 
@@ -164,9 +173,9 @@ public final class ListenerAccessLogTracingConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param tracingType Xtrace Type Value Is `Zipkin`.
+         * @param tracingType Xtrace Type Value Is **Zipkin * *.
          * 
-         * &gt; **NOTE:** This attribute is valid when `tracingenabled` is `true`.
+         * &gt; **NOTE:**  `tracingenabled` **True When Effective.
          * 
          * @return builder
          * 
@@ -176,6 +185,9 @@ public final class ListenerAccessLogTracingConfigArgs extends com.pulumi.resourc
         }
 
         public ListenerAccessLogTracingConfigArgs build() {
+            if ($.tracingEnabled == null) {
+                throw new MissingRequiredPropertyException("ListenerAccessLogTracingConfigArgs", "tracingEnabled");
+            }
             return $;
         }
     }

@@ -5,9 +5,10 @@ package com.pulumi.alicloud.alb.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class LoadBalancerAccessLogConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -18,30 +19,30 @@ public final class LoadBalancerAccessLogConfigArgs extends com.pulumi.resources.
      * The project to which the access log is shipped.
      * 
      */
-    @Import(name="logProject", required=true)
-    private Output<String> logProject;
+    @Import(name="logProject")
+    private @Nullable Output<String> logProject;
 
     /**
      * @return The project to which the access log is shipped.
      * 
      */
-    public Output<String> logProject() {
-        return this.logProject;
+    public Optional<Output<String>> logProject() {
+        return Optional.ofNullable(this.logProject);
     }
 
     /**
      * The Logstore to which the access log is shipped.
      * 
      */
-    @Import(name="logStore", required=true)
-    private Output<String> logStore;
+    @Import(name="logStore")
+    private @Nullable Output<String> logStore;
 
     /**
      * @return The Logstore to which the access log is shipped.
      * 
      */
-    public Output<String> logStore() {
-        return this.logStore;
+    public Optional<Output<String>> logStore() {
+        return Optional.ofNullable(this.logStore);
     }
 
     private LoadBalancerAccessLogConfigArgs() {}
@@ -75,7 +76,7 @@ public final class LoadBalancerAccessLogConfigArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder logProject(Output<String> logProject) {
+        public Builder logProject(@Nullable Output<String> logProject) {
             $.logProject = logProject;
             return this;
         }
@@ -96,7 +97,7 @@ public final class LoadBalancerAccessLogConfigArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder logStore(Output<String> logStore) {
+        public Builder logStore(@Nullable Output<String> logStore) {
             $.logStore = logStore;
             return this;
         }
@@ -112,12 +113,6 @@ public final class LoadBalancerAccessLogConfigArgs extends com.pulumi.resources.
         }
 
         public LoadBalancerAccessLogConfigArgs build() {
-            if ($.logProject == null) {
-                throw new MissingRequiredPropertyException("LoadBalancerAccessLogConfigArgs", "logProject");
-            }
-            if ($.logStore == null) {
-                throw new MissingRequiredPropertyException("LoadBalancerAccessLogConfigArgs", "logStore");
-            }
             return $;
         }
     }

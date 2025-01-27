@@ -137,18 +137,50 @@ def get_scaling_rules(ids: Optional[Sequence[str]] = None,
     """
     This data source provides available scaling rule resources.
 
+    > **NOTE:** Available since v1.39.0
+
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
+    import pulumi_random as random
 
-    scalingrules_ds = alicloud.ess.get_scaling_rules(scaling_group_id="scaling_group_id",
-        ids=[
-            "scaling_rule_id1",
-            "scaling_rule_id2",
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-ex"
+    default_integer = random.index.Integer("default",
+        min=10000,
+        max=99999)
+    my_name = f"{name}-{default_integer['result']}"
+    default = alicloud.get_zones(available_disk_category="cloud_efficiency",
+        available_resource_creation="VSwitch")
+    default_network = alicloud.vpc.Network("default",
+        vpc_name=my_name,
+        cidr_block="172.16.0.0/16")
+    default_switch = alicloud.vpc.Switch("default",
+        vpc_id=default_network.id,
+        cidr_block="172.16.0.0/24",
+        zone_id=default.zones[0].id,
+        vswitch_name=my_name)
+    default_scaling_group = alicloud.ess.ScalingGroup("default",
+        min_size=1,
+        max_size=1,
+        scaling_group_name=my_name,
+        removal_policies=[
+            "OldestInstance",
+            "NewestInstance",
         ],
-        name_regex="scaling_rule_name")
+        vswitch_ids=[default_switch.id])
+    default_scaling_rule = alicloud.ess.ScalingRule("default",
+        scaling_group_id=default_scaling_group.id,
+        scaling_rule_name=my_name,
+        adjustment_type="PercentChangeInCapacity",
+        adjustment_value=1)
+    scalingrules_ds = alicloud.ess.get_scaling_rules_output(scaling_group_id=default_scaling_group.id,
+        ids=[default_scaling_rule.id],
+        name_regex=my_name)
     pulumi.export("firstScalingRule", scalingrules_ds.rules[0].id)
     ```
 
@@ -186,18 +218,50 @@ def get_scaling_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     """
     This data source provides available scaling rule resources.
 
+    > **NOTE:** Available since v1.39.0
+
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
+    import pulumi_random as random
 
-    scalingrules_ds = alicloud.ess.get_scaling_rules(scaling_group_id="scaling_group_id",
-        ids=[
-            "scaling_rule_id1",
-            "scaling_rule_id2",
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-ex"
+    default_integer = random.index.Integer("default",
+        min=10000,
+        max=99999)
+    my_name = f"{name}-{default_integer['result']}"
+    default = alicloud.get_zones(available_disk_category="cloud_efficiency",
+        available_resource_creation="VSwitch")
+    default_network = alicloud.vpc.Network("default",
+        vpc_name=my_name,
+        cidr_block="172.16.0.0/16")
+    default_switch = alicloud.vpc.Switch("default",
+        vpc_id=default_network.id,
+        cidr_block="172.16.0.0/24",
+        zone_id=default.zones[0].id,
+        vswitch_name=my_name)
+    default_scaling_group = alicloud.ess.ScalingGroup("default",
+        min_size=1,
+        max_size=1,
+        scaling_group_name=my_name,
+        removal_policies=[
+            "OldestInstance",
+            "NewestInstance",
         ],
-        name_regex="scaling_rule_name")
+        vswitch_ids=[default_switch.id])
+    default_scaling_rule = alicloud.ess.ScalingRule("default",
+        scaling_group_id=default_scaling_group.id,
+        scaling_rule_name=my_name,
+        adjustment_type="PercentChangeInCapacity",
+        adjustment_value=1)
+    scalingrules_ds = alicloud.ess.get_scaling_rules_output(scaling_group_id=default_scaling_group.id,
+        ids=[default_scaling_rule.id],
+        name_regex=my_name)
     pulumi.export("firstScalingRule", scalingrules_ds.rules[0].id)
     ```
 

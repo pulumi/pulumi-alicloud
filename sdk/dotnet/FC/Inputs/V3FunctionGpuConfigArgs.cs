@@ -13,16 +13,16 @@ namespace Pulumi.AliCloud.FC.Inputs
     public sealed class V3FunctionGpuConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// GPU memory specification, unit: MB, multiple of 1024MB.
+        /// GPU memory specification, unit: MB, multiple of 1024MB
         /// </summary>
         [Input("gpuMemorySize")]
         public Input<int>? GpuMemorySize { get; set; }
 
         /// <summary>
         /// GPU card architecture.
-        /// - fc.gpu.tesla indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
-        /// - fc.gpu.ampere indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
-        /// - fc.gpu.ada Indicates the GPU instance Ada Lovelace architecture family card type.
+        /// - fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
+        /// - fc.gpu.ampere.1 indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
+        /// - fc.gpu.ada.1 Indicates the GPU instance Ada Lovelace architecture family card type.
         /// </summary>
         [Input("gpuType")]
         public Input<string>? GpuType { get; set; }

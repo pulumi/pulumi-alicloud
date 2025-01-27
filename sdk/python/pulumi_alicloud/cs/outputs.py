@@ -43,6 +43,8 @@ __all__ = [
     'ManagedKubernetesRrsaMetadata',
     'NodePoolDataDisk',
     'NodePoolKubeletConfiguration',
+    'NodePoolKubeletConfigurationReservedMemory',
+    'NodePoolKubeletConfigurationTracing',
     'NodePoolLabel',
     'NodePoolManagement',
     'NodePoolManagementAutoRepairPolicy',
@@ -2065,10 +2067,20 @@ class NodePoolKubeletConfiguration(dict):
         suggest = None
         if key == "allowedUnsafeSysctls":
             suggest = "allowed_unsafe_sysctls"
+        elif key == "clusterDns":
+            suggest = "cluster_dns"
         elif key == "containerLogMaxFiles":
             suggest = "container_log_max_files"
         elif key == "containerLogMaxSize":
             suggest = "container_log_max_size"
+        elif key == "containerLogMaxWorkers":
+            suggest = "container_log_max_workers"
+        elif key == "containerLogMonitorInterval":
+            suggest = "container_log_monitor_interval"
+        elif key == "cpuCfsQuota":
+            suggest = "cpu_cfs_quota"
+        elif key == "cpuCfsQuotaPeriod":
+            suggest = "cpu_cfs_quota_period"
         elif key == "cpuManagerPolicy":
             suggest = "cpu_manager_policy"
         elif key == "eventBurst":
@@ -2083,6 +2095,10 @@ class NodePoolKubeletConfiguration(dict):
             suggest = "eviction_soft_grace_period"
         elif key == "featureGates":
             suggest = "feature_gates"
+        elif key == "imageGcHighThresholdPercent":
+            suggest = "image_gc_high_threshold_percent"
+        elif key == "imageGcLowThresholdPercent":
+            suggest = "image_gc_low_threshold_percent"
         elif key == "kubeApiBurst":
             suggest = "kube_api_burst"
         elif key == "kubeApiQps":
@@ -2091,16 +2107,24 @@ class NodePoolKubeletConfiguration(dict):
             suggest = "kube_reserved"
         elif key == "maxPods":
             suggest = "max_pods"
+        elif key == "memoryManagerPolicy":
+            suggest = "memory_manager_policy"
+        elif key == "podPidsLimit":
+            suggest = "pod_pids_limit"
         elif key == "readOnlyPort":
             suggest = "read_only_port"
         elif key == "registryBurst":
             suggest = "registry_burst"
         elif key == "registryPullQps":
             suggest = "registry_pull_qps"
+        elif key == "reservedMemories":
+            suggest = "reserved_memories"
         elif key == "serializeImagePulls":
             suggest = "serialize_image_pulls"
         elif key == "systemReserved":
             suggest = "system_reserved"
+        elif key == "topologyManagerPolicy":
+            suggest = "topology_manager_policy"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in NodePoolKubeletConfiguration. Access the value via the '{suggest}' property getter instead.")
@@ -2115,8 +2139,13 @@ class NodePoolKubeletConfiguration(dict):
 
     def __init__(__self__, *,
                  allowed_unsafe_sysctls: Optional[Sequence[str]] = None,
+                 cluster_dns: Optional[Sequence[str]] = None,
                  container_log_max_files: Optional[str] = None,
                  container_log_max_size: Optional[str] = None,
+                 container_log_max_workers: Optional[str] = None,
+                 container_log_monitor_interval: Optional[str] = None,
+                 cpu_cfs_quota: Optional[str] = None,
+                 cpu_cfs_quota_period: Optional[str] = None,
                  cpu_manager_policy: Optional[str] = None,
                  event_burst: Optional[str] = None,
                  event_record_qps: Optional[str] = None,
@@ -2124,19 +2153,31 @@ class NodePoolKubeletConfiguration(dict):
                  eviction_soft: Optional[Mapping[str, str]] = None,
                  eviction_soft_grace_period: Optional[Mapping[str, str]] = None,
                  feature_gates: Optional[Mapping[str, bool]] = None,
+                 image_gc_high_threshold_percent: Optional[str] = None,
+                 image_gc_low_threshold_percent: Optional[str] = None,
                  kube_api_burst: Optional[str] = None,
                  kube_api_qps: Optional[str] = None,
                  kube_reserved: Optional[Mapping[str, str]] = None,
                  max_pods: Optional[str] = None,
+                 memory_manager_policy: Optional[str] = None,
+                 pod_pids_limit: Optional[str] = None,
                  read_only_port: Optional[str] = None,
                  registry_burst: Optional[str] = None,
                  registry_pull_qps: Optional[str] = None,
+                 reserved_memories: Optional[Sequence['outputs.NodePoolKubeletConfigurationReservedMemory']] = None,
                  serialize_image_pulls: Optional[str] = None,
-                 system_reserved: Optional[Mapping[str, str]] = None):
+                 system_reserved: Optional[Mapping[str, str]] = None,
+                 topology_manager_policy: Optional[str] = None,
+                 tracing: Optional['outputs.NodePoolKubeletConfigurationTracing'] = None):
         """
         :param Sequence[str] allowed_unsafe_sysctls: Allowed sysctl mode whitelist.
+        :param Sequence[str] cluster_dns: The list of IP addresses of the cluster DNS servers.
         :param str container_log_max_files: The maximum number of log files that can exist in each container.
         :param str container_log_max_size: The maximum size that can be reached before a log file is rotated.
+        :param str container_log_max_workers: Specifies the maximum number of concurrent workers required to perform log rotation operations.
+        :param str container_log_monitor_interval: Specifies the duration for which container logs are monitored for log rotation.
+        :param str cpu_cfs_quota: CPU CFS quota constraint switch.
+        :param str cpu_cfs_quota_period: CPU CFS quota period value.
         :param str cpu_manager_policy: Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
         :param str event_burst: Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `event_record_qps`. It is only used when `event_record_qps` is greater than 0. Valid value is `[0-100]`.
         :param str event_record_qps: Same as eventRecordQPS. The maximum event creations per second. If 0, there is no limit enforced. Valid value is `[0-50]`.
@@ -2144,22 +2185,39 @@ class NodePoolKubeletConfiguration(dict):
         :param Mapping[str, str] eviction_soft: Same as evictionSoft. The map of signal names to quantities that defines soft eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
         :param Mapping[str, str] eviction_soft_grace_period: Same as evictionSoftGracePeriod. The map of signal names to quantities that defines grace periods for each soft eviction signal. For example: `{"memory.available" = "30s"}`.
         :param Mapping[str, bool] feature_gates: Feature switch to enable configuration of experimental features.
+        :param str image_gc_high_threshold_percent: If the image usage exceeds this threshold, image garbage collection will continue.
+        :param str image_gc_low_threshold_percent: Image garbage collection is not performed when the image usage is below this threshold.
         :param str kube_api_burst: Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
         :param str kube_api_qps: Same as kubeAPIQPS. The QPS to use while talking with kubernetes api-server. Valid value is `[0-50]`.
         :param Mapping[str, str] kube_reserved: Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
         :param str max_pods: The maximum number of running pods.
+        :param str memory_manager_policy: The policy to be used by the memory manager.
+        :param str pod_pids_limit: The maximum number of PIDs that can be used in a Pod.
         :param str read_only_port: Read-only port number.
         :param str registry_burst: Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registry_pull_qps`. Only used if `registry_pull_qps` is greater than 0. Valid value is `[0-100]`.
         :param str registry_pull_qps: Same as registryPullQPS. The limit of registry pulls per second. Setting it to `0` means no limit. Valid value is `[0-50]`.
+        :param Sequence['NodePoolKubeletConfigurationReservedMemoryArgs'] reserved_memories: Reserve memory for NUMA nodes. See `reserved_memory` below.
         :param str serialize_image_pulls: Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
         :param Mapping[str, str] system_reserved: Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
+        :param str topology_manager_policy: Name of the Topology Manager policy used.
+        :param 'NodePoolKubeletConfigurationTracingArgs' tracing: OpenTelemetry tracks the configuration information for client settings versioning. See `tracing` below.
         """
         if allowed_unsafe_sysctls is not None:
             pulumi.set(__self__, "allowed_unsafe_sysctls", allowed_unsafe_sysctls)
+        if cluster_dns is not None:
+            pulumi.set(__self__, "cluster_dns", cluster_dns)
         if container_log_max_files is not None:
             pulumi.set(__self__, "container_log_max_files", container_log_max_files)
         if container_log_max_size is not None:
             pulumi.set(__self__, "container_log_max_size", container_log_max_size)
+        if container_log_max_workers is not None:
+            pulumi.set(__self__, "container_log_max_workers", container_log_max_workers)
+        if container_log_monitor_interval is not None:
+            pulumi.set(__self__, "container_log_monitor_interval", container_log_monitor_interval)
+        if cpu_cfs_quota is not None:
+            pulumi.set(__self__, "cpu_cfs_quota", cpu_cfs_quota)
+        if cpu_cfs_quota_period is not None:
+            pulumi.set(__self__, "cpu_cfs_quota_period", cpu_cfs_quota_period)
         if cpu_manager_policy is not None:
             pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
         if event_burst is not None:
@@ -2174,6 +2232,10 @@ class NodePoolKubeletConfiguration(dict):
             pulumi.set(__self__, "eviction_soft_grace_period", eviction_soft_grace_period)
         if feature_gates is not None:
             pulumi.set(__self__, "feature_gates", feature_gates)
+        if image_gc_high_threshold_percent is not None:
+            pulumi.set(__self__, "image_gc_high_threshold_percent", image_gc_high_threshold_percent)
+        if image_gc_low_threshold_percent is not None:
+            pulumi.set(__self__, "image_gc_low_threshold_percent", image_gc_low_threshold_percent)
         if kube_api_burst is not None:
             pulumi.set(__self__, "kube_api_burst", kube_api_burst)
         if kube_api_qps is not None:
@@ -2182,16 +2244,26 @@ class NodePoolKubeletConfiguration(dict):
             pulumi.set(__self__, "kube_reserved", kube_reserved)
         if max_pods is not None:
             pulumi.set(__self__, "max_pods", max_pods)
+        if memory_manager_policy is not None:
+            pulumi.set(__self__, "memory_manager_policy", memory_manager_policy)
+        if pod_pids_limit is not None:
+            pulumi.set(__self__, "pod_pids_limit", pod_pids_limit)
         if read_only_port is not None:
             pulumi.set(__self__, "read_only_port", read_only_port)
         if registry_burst is not None:
             pulumi.set(__self__, "registry_burst", registry_burst)
         if registry_pull_qps is not None:
             pulumi.set(__self__, "registry_pull_qps", registry_pull_qps)
+        if reserved_memories is not None:
+            pulumi.set(__self__, "reserved_memories", reserved_memories)
         if serialize_image_pulls is not None:
             pulumi.set(__self__, "serialize_image_pulls", serialize_image_pulls)
         if system_reserved is not None:
             pulumi.set(__self__, "system_reserved", system_reserved)
+        if topology_manager_policy is not None:
+            pulumi.set(__self__, "topology_manager_policy", topology_manager_policy)
+        if tracing is not None:
+            pulumi.set(__self__, "tracing", tracing)
 
     @property
     @pulumi.getter(name="allowedUnsafeSysctls")
@@ -2200,6 +2272,14 @@ class NodePoolKubeletConfiguration(dict):
         Allowed sysctl mode whitelist.
         """
         return pulumi.get(self, "allowed_unsafe_sysctls")
+
+    @property
+    @pulumi.getter(name="clusterDns")
+    def cluster_dns(self) -> Optional[Sequence[str]]:
+        """
+        The list of IP addresses of the cluster DNS servers.
+        """
+        return pulumi.get(self, "cluster_dns")
 
     @property
     @pulumi.getter(name="containerLogMaxFiles")
@@ -2216,6 +2296,38 @@ class NodePoolKubeletConfiguration(dict):
         The maximum size that can be reached before a log file is rotated.
         """
         return pulumi.get(self, "container_log_max_size")
+
+    @property
+    @pulumi.getter(name="containerLogMaxWorkers")
+    def container_log_max_workers(self) -> Optional[str]:
+        """
+        Specifies the maximum number of concurrent workers required to perform log rotation operations.
+        """
+        return pulumi.get(self, "container_log_max_workers")
+
+    @property
+    @pulumi.getter(name="containerLogMonitorInterval")
+    def container_log_monitor_interval(self) -> Optional[str]:
+        """
+        Specifies the duration for which container logs are monitored for log rotation.
+        """
+        return pulumi.get(self, "container_log_monitor_interval")
+
+    @property
+    @pulumi.getter(name="cpuCfsQuota")
+    def cpu_cfs_quota(self) -> Optional[str]:
+        """
+        CPU CFS quota constraint switch.
+        """
+        return pulumi.get(self, "cpu_cfs_quota")
+
+    @property
+    @pulumi.getter(name="cpuCfsQuotaPeriod")
+    def cpu_cfs_quota_period(self) -> Optional[str]:
+        """
+        CPU CFS quota period value.
+        """
+        return pulumi.get(self, "cpu_cfs_quota_period")
 
     @property
     @pulumi.getter(name="cpuManagerPolicy")
@@ -2274,6 +2386,22 @@ class NodePoolKubeletConfiguration(dict):
         return pulumi.get(self, "feature_gates")
 
     @property
+    @pulumi.getter(name="imageGcHighThresholdPercent")
+    def image_gc_high_threshold_percent(self) -> Optional[str]:
+        """
+        If the image usage exceeds this threshold, image garbage collection will continue.
+        """
+        return pulumi.get(self, "image_gc_high_threshold_percent")
+
+    @property
+    @pulumi.getter(name="imageGcLowThresholdPercent")
+    def image_gc_low_threshold_percent(self) -> Optional[str]:
+        """
+        Image garbage collection is not performed when the image usage is below this threshold.
+        """
+        return pulumi.get(self, "image_gc_low_threshold_percent")
+
+    @property
     @pulumi.getter(name="kubeApiBurst")
     def kube_api_burst(self) -> Optional[str]:
         """
@@ -2306,6 +2434,22 @@ class NodePoolKubeletConfiguration(dict):
         return pulumi.get(self, "max_pods")
 
     @property
+    @pulumi.getter(name="memoryManagerPolicy")
+    def memory_manager_policy(self) -> Optional[str]:
+        """
+        The policy to be used by the memory manager.
+        """
+        return pulumi.get(self, "memory_manager_policy")
+
+    @property
+    @pulumi.getter(name="podPidsLimit")
+    def pod_pids_limit(self) -> Optional[str]:
+        """
+        The maximum number of PIDs that can be used in a Pod.
+        """
+        return pulumi.get(self, "pod_pids_limit")
+
+    @property
     @pulumi.getter(name="readOnlyPort")
     def read_only_port(self) -> Optional[str]:
         """
@@ -2330,6 +2474,14 @@ class NodePoolKubeletConfiguration(dict):
         return pulumi.get(self, "registry_pull_qps")
 
     @property
+    @pulumi.getter(name="reservedMemories")
+    def reserved_memories(self) -> Optional[Sequence['outputs.NodePoolKubeletConfigurationReservedMemory']]:
+        """
+        Reserve memory for NUMA nodes. See `reserved_memory` below.
+        """
+        return pulumi.get(self, "reserved_memories")
+
+    @property
     @pulumi.getter(name="serializeImagePulls")
     def serialize_image_pulls(self) -> Optional[str]:
         """
@@ -2344,6 +2496,118 @@ class NodePoolKubeletConfiguration(dict):
         Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
         """
         return pulumi.get(self, "system_reserved")
+
+    @property
+    @pulumi.getter(name="topologyManagerPolicy")
+    def topology_manager_policy(self) -> Optional[str]:
+        """
+        Name of the Topology Manager policy used.
+        """
+        return pulumi.get(self, "topology_manager_policy")
+
+    @property
+    @pulumi.getter
+    def tracing(self) -> Optional['outputs.NodePoolKubeletConfigurationTracing']:
+        """
+        OpenTelemetry tracks the configuration information for client settings versioning. See `tracing` below.
+        """
+        return pulumi.get(self, "tracing")
+
+
+@pulumi.output_type
+class NodePoolKubeletConfigurationReservedMemory(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "numaNode":
+            suggest = "numa_node"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolKubeletConfigurationReservedMemory. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolKubeletConfigurationReservedMemory.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolKubeletConfigurationReservedMemory.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 limits: Optional[Mapping[str, str]] = None,
+                 numa_node: Optional[int] = None):
+        """
+        :param Mapping[str, str] limits: Memory resource limit.
+        :param int numa_node: The NUMA node.
+        """
+        if limits is not None:
+            pulumi.set(__self__, "limits", limits)
+        if numa_node is not None:
+            pulumi.set(__self__, "numa_node", numa_node)
+
+    @property
+    @pulumi.getter
+    def limits(self) -> Optional[Mapping[str, str]]:
+        """
+        Memory resource limit.
+        """
+        return pulumi.get(self, "limits")
+
+    @property
+    @pulumi.getter(name="numaNode")
+    def numa_node(self) -> Optional[int]:
+        """
+        The NUMA node.
+        """
+        return pulumi.get(self, "numa_node")
+
+
+@pulumi.output_type
+class NodePoolKubeletConfigurationTracing(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "samplingRatePerMillion":
+            suggest = "sampling_rate_per_million"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolKubeletConfigurationTracing. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolKubeletConfigurationTracing.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolKubeletConfigurationTracing.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 endpoint: Optional[str] = None,
+                 sampling_rate_per_million: Optional[str] = None):
+        """
+        :param str endpoint: The endpoint of the collector.
+        :param str sampling_rate_per_million: Number of samples to be collected per million span.
+        """
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if sampling_rate_per_million is not None:
+            pulumi.set(__self__, "sampling_rate_per_million", sampling_rate_per_million)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[str]:
+        """
+        The endpoint of the collector.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="samplingRatePerMillion")
+    def sampling_rate_per_million(self) -> Optional[str]:
+        """
+        Number of samples to be collected per million span.
+        """
+        return pulumi.get(self, "sampling_rate_per_million")
 
 
 @pulumi.output_type

@@ -18,6 +18,10 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AllowedUnsafeSysctls;
         /// <summary>
+        /// The list of IP addresses of the cluster DNS servers.
+        /// </summary>
+        public readonly ImmutableArray<string> ClusterDns;
+        /// <summary>
         /// The maximum number of log files that can exist in each container.
         /// </summary>
         public readonly string? ContainerLogMaxFiles;
@@ -25,6 +29,22 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// The maximum size that can be reached before a log file is rotated.
         /// </summary>
         public readonly string? ContainerLogMaxSize;
+        /// <summary>
+        /// Specifies the maximum number of concurrent workers required to perform log rotation operations.
+        /// </summary>
+        public readonly string? ContainerLogMaxWorkers;
+        /// <summary>
+        /// Specifies the duration for which container logs are monitored for log rotation.
+        /// </summary>
+        public readonly string? ContainerLogMonitorInterval;
+        /// <summary>
+        /// CPU CFS quota constraint switch.
+        /// </summary>
+        public readonly string? CpuCfsQuota;
+        /// <summary>
+        /// CPU CFS quota period value.
+        /// </summary>
+        public readonly string? CpuCfsQuotaPeriod;
         /// <summary>
         /// Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
         /// </summary>
@@ -54,6 +74,14 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, bool>? FeatureGates;
         /// <summary>
+        /// If the image usage exceeds this threshold, image garbage collection will continue.
+        /// </summary>
+        public readonly string? ImageGcHighThresholdPercent;
+        /// <summary>
+        /// Image garbage collection is not performed when the image usage is below this threshold.
+        /// </summary>
+        public readonly string? ImageGcLowThresholdPercent;
+        /// <summary>
         /// Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
         /// </summary>
         public readonly string? KubeApiBurst;
@@ -70,6 +98,14 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string? MaxPods;
         /// <summary>
+        /// The policy to be used by the memory manager.
+        /// </summary>
+        public readonly string? MemoryManagerPolicy;
+        /// <summary>
+        /// The maximum number of PIDs that can be used in a Pod.
+        /// </summary>
+        public readonly string? PodPidsLimit;
+        /// <summary>
         /// Read-only port number.
         /// </summary>
         public readonly string? ReadOnlyPort;
@@ -82,6 +118,10 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string? RegistryPullQps;
         /// <summary>
+        /// Reserve memory for NUMA nodes. See `reserved_memory` below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.NodePoolKubeletConfigurationReservedMemory> ReservedMemories;
+        /// <summary>
         /// Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version &lt; 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
         /// </summary>
         public readonly string? SerializeImagePulls;
@@ -89,14 +129,32 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? SystemReserved;
+        /// <summary>
+        /// Name of the Topology Manager policy used.
+        /// </summary>
+        public readonly string? TopologyManagerPolicy;
+        /// <summary>
+        /// OpenTelemetry tracks the configuration information for client settings versioning. See `tracing` below.
+        /// </summary>
+        public readonly Outputs.NodePoolKubeletConfigurationTracing? Tracing;
 
         [OutputConstructor]
         private NodePoolKubeletConfiguration(
             ImmutableArray<string> allowedUnsafeSysctls,
 
+            ImmutableArray<string> clusterDns,
+
             string? containerLogMaxFiles,
 
             string? containerLogMaxSize,
+
+            string? containerLogMaxWorkers,
+
+            string? containerLogMonitorInterval,
+
+            string? cpuCfsQuota,
+
+            string? cpuCfsQuotaPeriod,
 
             string? cpuManagerPolicy,
 
@@ -112,6 +170,10 @@ namespace Pulumi.AliCloud.CS.Outputs
 
             ImmutableDictionary<string, bool>? featureGates,
 
+            string? imageGcHighThresholdPercent,
+
+            string? imageGcLowThresholdPercent,
+
             string? kubeApiBurst,
 
             string? kubeApiQps,
@@ -120,19 +182,34 @@ namespace Pulumi.AliCloud.CS.Outputs
 
             string? maxPods,
 
+            string? memoryManagerPolicy,
+
+            string? podPidsLimit,
+
             string? readOnlyPort,
 
             string? registryBurst,
 
             string? registryPullQps,
 
+            ImmutableArray<Outputs.NodePoolKubeletConfigurationReservedMemory> reservedMemories,
+
             string? serializeImagePulls,
 
-            ImmutableDictionary<string, string>? systemReserved)
+            ImmutableDictionary<string, string>? systemReserved,
+
+            string? topologyManagerPolicy,
+
+            Outputs.NodePoolKubeletConfigurationTracing? tracing)
         {
             AllowedUnsafeSysctls = allowedUnsafeSysctls;
+            ClusterDns = clusterDns;
             ContainerLogMaxFiles = containerLogMaxFiles;
             ContainerLogMaxSize = containerLogMaxSize;
+            ContainerLogMaxWorkers = containerLogMaxWorkers;
+            ContainerLogMonitorInterval = containerLogMonitorInterval;
+            CpuCfsQuota = cpuCfsQuota;
+            CpuCfsQuotaPeriod = cpuCfsQuotaPeriod;
             CpuManagerPolicy = cpuManagerPolicy;
             EventBurst = eventBurst;
             EventRecordQps = eventRecordQps;
@@ -140,15 +217,22 @@ namespace Pulumi.AliCloud.CS.Outputs
             EvictionSoft = evictionSoft;
             EvictionSoftGracePeriod = evictionSoftGracePeriod;
             FeatureGates = featureGates;
+            ImageGcHighThresholdPercent = imageGcHighThresholdPercent;
+            ImageGcLowThresholdPercent = imageGcLowThresholdPercent;
             KubeApiBurst = kubeApiBurst;
             KubeApiQps = kubeApiQps;
             KubeReserved = kubeReserved;
             MaxPods = maxPods;
+            MemoryManagerPolicy = memoryManagerPolicy;
+            PodPidsLimit = podPidsLimit;
             ReadOnlyPort = readOnlyPort;
             RegistryBurst = registryBurst;
             RegistryPullQps = registryPullQps;
+            ReservedMemories = reservedMemories;
             SerializeImagePulls = serializeImagePulls;
             SystemReserved = systemReserved;
+            TopologyManagerPolicy = topologyManagerPolicy;
+            Tracing = tracing;
         }
     }
 }
