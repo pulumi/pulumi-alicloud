@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.pvtz.getResolverZones({
+ * const _default = alicloud.pvtz.getResolverZones({
  *     status: "NORMAL",
  * });
  * export const firstZonesId = _default.then(_default => _default.zones?.[0]?.zoneId);
@@ -73,7 +73,7 @@ export interface GetResolverZonesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.pvtz.getResolverZones({
+ * const _default = alicloud.pvtz.getResolverZones({
  *     status: "NORMAL",
  * });
  * export const firstZonesId = _default.then(_default => _default.zones?.[0]?.zoneId);

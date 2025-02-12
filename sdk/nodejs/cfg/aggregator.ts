@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
- * const default = alicloud.resourcemanager.getAccounts({
+ * const _default = alicloud.resourcemanager.getAccounts({
  *     status: "CreateSuccess",
  * });
  * const defaultAggregator = new alicloud.cfg.Aggregator("default", {

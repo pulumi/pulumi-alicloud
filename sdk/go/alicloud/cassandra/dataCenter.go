@@ -43,7 +43,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cassandra.NewCluster(ctx, "default", &cassandra.ClusterArgs{
+//			_default, err := cassandra.NewCluster(ctx, "default", &cassandra.ClusterArgs{
 //				ClusterName:       pulumi.String("cassandra-cluster-name-tf"),
 //				DataCenterName:    pulumi.String("dc-1"),
 //				AutoRenew:         pulumi.Bool(false),

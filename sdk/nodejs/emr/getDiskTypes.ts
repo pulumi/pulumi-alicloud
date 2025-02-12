@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.emr.getDiskTypes({
+ * const _default = alicloud.emr.getDiskTypes({
  *     destinationResource: "DataDisk",
  *     instanceChargeType: "PostPaid",
  *     clusterType: "HADOOP",
@@ -105,7 +105,7 @@ export interface GetDiskTypesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.emr.getDiskTypes({
+ * const _default = alicloud.emr.getDiskTypes({
  *     destinationResource: "DataDisk",
  *     instanceChargeType: "PostPaid",
  *     clusterType: "HADOOP",

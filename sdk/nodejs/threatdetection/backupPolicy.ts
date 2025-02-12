@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.threatdetection.getAssets({
+ * const _default = alicloud.threatdetection.getAssets({
  *     machineTypes: "ecs",
  * });
  * const defaultBackupPolicy = new alicloud.threatdetection.BackupPolicy("default", {

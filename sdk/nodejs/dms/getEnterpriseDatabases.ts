@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.dms.getEnterpriseDatabases({
+ * const _default = alicloud.dms.getEnterpriseDatabases({
  *     nameRegex: "test2",
  *     instanceId: "2195118",
  * });
@@ -94,7 +94,7 @@ export interface GetEnterpriseDatabasesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.dms.getEnterpriseDatabases({
+ * const _default = alicloud.dms.getEnterpriseDatabases({
  *     nameRegex: "test2",
  *     instanceId: "2195118",
  * });

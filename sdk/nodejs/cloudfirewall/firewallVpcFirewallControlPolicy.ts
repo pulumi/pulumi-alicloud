@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const default = alicloud.getAccount({});
+ * const _default = alicloud.getAccount({});
  * const defaultInstance = new alicloud.cen.Instance("default", {
  *     cenInstanceName: name,
  *     description: "example_value",

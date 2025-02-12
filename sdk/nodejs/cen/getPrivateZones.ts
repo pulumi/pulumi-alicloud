@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const this = alicloud.cen.getPrivateZones({
+ * const _this = alicloud.cen.getPrivateZones({
  *     cenId: "cen-o40h17ll9w********",
  *     ids: ["cn-hangzhou"],
  *     status: "Active",
@@ -106,7 +106,7 @@ export interface GetPrivateZonesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const this = alicloud.cen.getPrivateZones({
+ * const _this = alicloud.cen.getPrivateZones({
  *     cenId: "cen-o40h17ll9w********",
  *     ids: ["cn-hangzhou"],
  *     status: "Active",

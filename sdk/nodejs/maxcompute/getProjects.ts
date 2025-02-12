@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *     comment: name,
  *     productType: "PayAsYouGo",
  * });
- * const default = alicloud.maxcompute.getProjectsOutput({
+ * const _default = alicloud.maxcompute.getProjectsOutput({
  *     nameRegex: defaultProject.projectName,
  * });
  * export const alicloudMaxcomputeProjectExampleId = _default.apply(_default => _default.projects?.[0]?.projectName);
@@ -101,7 +101,7 @@ export interface GetProjectsResult {
  *     comment: name,
  *     productType: "PayAsYouGo",
  * });
- * const default = alicloud.maxcompute.getProjectsOutput({
+ * const _default = alicloud.maxcompute.getProjectsOutput({
  *     nameRegex: defaultProject.projectName,
  * });
  * export const alicloudMaxcomputeProjectExampleId = _default.apply(_default => _default.projects?.[0]?.projectName);

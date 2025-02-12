@@ -37,7 +37,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := cloudfirewall.NewAddressBook(ctx, "default", &cloudfirewall.AddressBookArgs{
+//			_default, err := cloudfirewall.NewAddressBook(ctx, "default", &cloudfirewall.AddressBookArgs{
 //				GroupName:     pulumi.String(name),
 //				GroupType:     pulumi.String("ip"),
 //				Description:   pulumi.String("tf-description"),

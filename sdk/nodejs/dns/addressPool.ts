@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
  * const domainName = config.get("domainName") || "alicloud-provider.com";
- * const default = alicloud.resourcemanager.getResourceGroups({});
+ * const _default = alicloud.resourcemanager.getResourceGroups({});
  * const defaultAlarmContactGroup = new alicloud.cms.AlarmContactGroup("default", {alarmContactGroupName: name});
  * const defaultGtmInstance = new alicloud.dns.GtmInstance("default", {
  *     instanceName: name,

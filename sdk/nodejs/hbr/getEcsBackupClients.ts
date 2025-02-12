@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.ecs.getInstances({
+ * const _default = alicloud.ecs.getInstances({
  *     nameRegex: "ecs_instance_name",
  *     status: "Running",
  * });
@@ -90,7 +90,7 @@ export interface GetEcsBackupClientsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.ecs.getInstances({
+ * const _default = alicloud.ecs.getInstances({
  *     nameRegex: "ecs_instance_name",
  *     status: "Running",
  * });

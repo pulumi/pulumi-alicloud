@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.actiontrail.getGlobalEventsStorageRegion({});
+ * const _default = alicloud.actiontrail.getGlobalEventsStorageRegion({});
  * export const alicloudActiontrailGlobalEventsStorageRegion1 = _default.then(_default => _default.storageRegion);
  * ```
  */
@@ -50,7 +50,7 @@ export interface GetGlobalEventsStorageRegionResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.actiontrail.getGlobalEventsStorageRegion({});
+ * const _default = alicloud.actiontrail.getGlobalEventsStorageRegion({});
  * export const alicloudActiontrailGlobalEventsStorageRegion1 = _default.then(_default => _default.storageRegion);
  * ```
  */

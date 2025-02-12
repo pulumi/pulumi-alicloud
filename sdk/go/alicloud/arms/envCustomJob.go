@@ -39,7 +39,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//			_default, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
 //				Max: 99999,
 //				Min: 10000,
 //			})
@@ -59,7 +59,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = arms.NewEnvironment(ctx, "env-ecs", &arms.EnvironmentArgs{
+//			env_ecs, err := arms.NewEnvironment(ctx, "env-ecs", &arms.EnvironmentArgs{
 //				EnvironmentType:    pulumi.String("ECS"),
 //				EnvironmentName:    pulumi.Sprintf("terraform-example-%v", _default.Result),
 //				BindResourceId:     vpc.ID(),

@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const default = alicloud.databasefilesystem.getInstances({});
+ * const _default = alicloud.databasefilesystem.getInstances({});
  * const example = new alicloud.databasefilesystem.Snapshot("example", {
  *     instanceId: _default.then(_default => _default.instances?.[0]?.id),
  *     retentionDays: 50,

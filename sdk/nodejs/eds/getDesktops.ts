@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *     desktopAccessType: "Internet",
  *     officeSiteName: "your_office_site_name",
  * });
- * const default = alicloud.eds.getBundles({
+ * const _default = alicloud.eds.getBundles({
  *     bundleType: "SYSTEM",
  * });
  * const defaultEcdPolicyGroup = new alicloud.eds.EcdPolicyGroup("default", {
@@ -155,7 +155,7 @@ export interface GetDesktopsResult {
  *     desktopAccessType: "Internet",
  *     officeSiteName: "your_office_site_name",
  * });
- * const default = alicloud.eds.getBundles({
+ * const _default = alicloud.eds.getBundles({
  *     bundleType: "SYSTEM",
  * });
  * const defaultEcdPolicyGroup = new alicloud.eds.EcdPolicyGroup("default", {

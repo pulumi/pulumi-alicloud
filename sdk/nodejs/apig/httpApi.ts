@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * const name = config.get("name") || "terraform-example";
  * const protocol = config.get("protocol") || "HTTP";
  * const protocolHttps = config.get("protocolHttps") || "HTTPS";
- * const default = alicloud.resourcemanager.getResourceGroups({});
+ * const _default = alicloud.resourcemanager.getResourceGroups({});
  * const defaultHttpApi = new alicloud.apig.HttpApi("default", {
  *     httpApiName: name,
  *     protocols: [protocol],

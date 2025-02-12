@@ -39,7 +39,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := rdc.NewOrganization(ctx, "default", &rdc.OrganizationArgs{
+//			_default, err := rdc.NewOrganization(ctx, "default", &rdc.OrganizationArgs{
 //				OrganizationName: pulumi.String(name),
 //				Source:           pulumi.String(name),
 //			})

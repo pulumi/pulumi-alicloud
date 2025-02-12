@@ -69,7 +69,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpc.NewPeerConnection(ctx, "default", &vpc.PeerConnectionArgs{
+//			_default, err := vpc.NewPeerConnection(ctx, "default", &vpc.PeerConnectionArgs{
 //				PeerConnectionName: pulumi.String(name),
 //				VpcId:              local.ID(),
 //				AcceptingAliUid:    pulumi.String(accepting.Id),

@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *     min: 10000,
  *     max: 99999,
  * });
- * const default = alicloud.simpleapplicationserver.getImages({
+ * const _default = alicloud.simpleapplicationserver.getImages({
  *     platform: "Linux",
  * });
  * const defaultGetServerPlans = alicloud.simpleapplicationserver.getServerPlans({

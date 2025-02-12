@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *     max: 999,
  *     min: 1,
  * });
- * const default = alicloud.resourcemanager.getResourceGroups({});
+ * const _default = alicloud.resourcemanager.getResourceGroups({});
  * const defaultkguw4R = new alicloud.dataworks.Project("defaultkguw4R", {
  *     status: "Available",
  *     description: "tf_desc",

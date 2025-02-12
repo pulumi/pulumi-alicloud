@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example-sls";
- * const this = alicloud.getAccount({});
+ * const _this = alicloud.getAccount({});
  * const thisGetRegions = alicloud.getRegions({
  *     current: true,
  * });

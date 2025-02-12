@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  *     cidr: "10.0.0.0/8",
  *     ipamPoolId: defaultIpamPool.id,
  * });
- * const default = alicloud.vpc.getIpamIpamPoolCidrsOutput({
+ * const _default = alicloud.vpc.getIpamIpamPoolCidrsOutput({
  *     cidr: "10.0.0.0/8",
  *     ipamPoolId: defaultIpamIpamPoolCidr.ipamPoolId,
  * });
@@ -108,7 +108,7 @@ export interface GetIpamIpamPoolCidrsResult {
  *     cidr: "10.0.0.0/8",
  *     ipamPoolId: defaultIpamPool.id,
  * });
- * const default = alicloud.vpc.getIpamIpamPoolCidrsOutput({
+ * const _default = alicloud.vpc.getIpamIpamPoolCidrsOutput({
  *     cidr: "10.0.0.0/8",
  *     ipamPoolId: defaultIpamIpamPoolCidr.ipamPoolId,
  * });

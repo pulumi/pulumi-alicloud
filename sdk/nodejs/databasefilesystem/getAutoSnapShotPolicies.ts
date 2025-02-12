@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.databasefilesystem.getAutoSnapShotPolicies({
+ * const _default = alicloud.databasefilesystem.getAutoSnapShotPolicies({
  *     ids: [defaultAlicloudDbfsAutoSnapShotPolicy.id],
  * });
  * export const alicloudDbfsAutoSnapShotPolicyExampleId = _default.then(_default => _default.autoSnapShotPolicies?.[0]?.id);
@@ -91,7 +91,7 @@ export interface GetAutoSnapShotPoliciesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.databasefilesystem.getAutoSnapShotPolicies({
+ * const _default = alicloud.databasefilesystem.getAutoSnapShotPolicies({
  *     ids: [defaultAlicloudDbfsAutoSnapShotPolicy.id],
  * });
  * export const alicloudDbfsAutoSnapShotPolicyExampleId = _default.then(_default => _default.autoSnapShotPolicies?.[0]?.id);

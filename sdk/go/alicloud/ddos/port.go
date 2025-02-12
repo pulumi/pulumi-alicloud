@@ -40,7 +40,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := ddos.NewDdosCooInstance(ctx, "default", &ddos.DdosCooInstanceArgs{
+//			_default, err := ddos.NewDdosCooInstance(ctx, "default", &ddos.DdosCooInstanceArgs{
 //				Name:             pulumi.String(name),
 //				Bandwidth:        pulumi.String("30"),
 //				BaseBandwidth:    pulumi.String("30"),

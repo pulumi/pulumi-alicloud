@@ -42,7 +42,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//			_default, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
 //				Max: 99999,
 //				Min: 10000,
 //			})

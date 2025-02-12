@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.cen.getTransitRouterRouteTablePropagations({
+ * const _default = alicloud.cen.getTransitRouterRouteTablePropagations({
  *     transitRouterRouteTableId: "rtb-id1",
  * });
  * export const firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType = _default.then(_default => _default.propagations?.[0]?.resourceType);
@@ -92,7 +92,7 @@ export interface GetTransitRouterRouteTablePropagationsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.cen.getTransitRouterRouteTablePropagations({
+ * const _default = alicloud.cen.getTransitRouterRouteTablePropagations({
  *     transitRouterRouteTableId: "rtb-id1",
  * });
  * export const firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType = _default.then(_default => _default.propagations?.[0]?.resourceType);

@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.ecs.getInstanceTypeFamilies({
+ * const _default = alicloud.ecs.getInstanceTypeFamilies({
  *     instanceChargeType: "PrePaid",
  * });
  * export const firstInstanceTypeFamilyId = _default.then(_default => _default.families?.[0]?.id);
@@ -95,7 +95,7 @@ export interface GetInstanceTypeFamiliesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.ecs.getInstanceTypeFamilies({
+ * const _default = alicloud.ecs.getInstanceTypeFamilies({
  *     instanceChargeType: "PrePaid",
  * });
  * export const firstInstanceTypeFamilyId = _default.then(_default => _default.families?.[0]?.id);

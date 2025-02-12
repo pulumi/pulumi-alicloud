@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const default = alicloud.ecs.getInstanceTypes({
+ * const _default = alicloud.ecs.getInstanceTypes({
  *     instanceTypeFamily: "ecs.g7",
  * });
  * const defaultGetZones = _default.then(_default => alicloud.getZones({

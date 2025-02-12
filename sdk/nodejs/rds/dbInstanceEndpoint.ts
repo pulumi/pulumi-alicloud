@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const default = alicloud.rds.getZones({
+ * const _default = alicloud.rds.getZones({
  *     engine: "MySQL",
  *     engineVersion: "8.0",
  *     instanceChargeType: "PostPaid",

@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *         spec: "opensearch.share.common",
  *     },
  * });
- * const default = alicloud.opensearch.getAppGroupsOutput({
+ * const _default = alicloud.opensearch.getAppGroupsOutput({
  *     ids: [defaultAppGroup.id],
  * });
  * export const appGroups = _default.apply(_default => _default.groups);
@@ -131,7 +131,7 @@ export interface GetAppGroupsResult {
  *         spec: "opensearch.share.common",
  *     },
  * });
- * const default = alicloud.opensearch.getAppGroupsOutput({
+ * const _default = alicloud.opensearch.getAppGroupsOutput({
  *     ids: [defaultAppGroup.id],
  * });
  * export const appGroups = _default.apply(_default => _default.groups);

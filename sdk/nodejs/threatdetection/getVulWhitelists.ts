@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.threatdetection.getVulWhitelists({
+ * const _default = alicloud.threatdetection.getVulWhitelists({
  *     ids: ["example_id"],
  * });
  * export const alicloudThreatDetectionVulWhitelistExampleId = _default.then(_default => _default.whitelists?.[0]?.id);
@@ -82,7 +82,7 @@ export interface GetVulWhitelistsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.threatdetection.getVulWhitelists({
+ * const _default = alicloud.threatdetection.getVulWhitelists({
  *     ids: ["example_id"],
  * });
  * export const alicloudThreatDetectionVulWhitelistExampleId = _default.then(_default => _default.whitelists?.[0]?.id);

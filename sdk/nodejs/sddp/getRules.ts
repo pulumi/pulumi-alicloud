@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *     riskLevelId: "4",
  *     productCode: "ODPS",
  * });
- * const default = alicloud.sddp.getRulesOutput({
+ * const _default = alicloud.sddp.getRulesOutput({
  *     ids: [defaultRule.id],
  * });
  * export const sddpRuleId = _default.apply(_default => _default.id);
@@ -178,7 +178,7 @@ export interface GetRulesResult {
  *     riskLevelId: "4",
  *     productCode: "ODPS",
  * });
- * const default = alicloud.sddp.getRulesOutput({
+ * const _default = alicloud.sddp.getRulesOutput({
  *     ids: [defaultRule.id],
  * });
  * export const sddpRuleId = _default.apply(_default => _default.id);

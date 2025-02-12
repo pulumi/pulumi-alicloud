@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     max: 99999,
  * });
  * const myName = `${name}-${defaultInteger.result}`;
- * const default = alicloud.getRegions({
+ * const _default = alicloud.getRegions({
  *     current: true,
  * });
  * const defaultGetAccount = alicloud.getAccount({});

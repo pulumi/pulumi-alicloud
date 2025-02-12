@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const default = alicloud.resourcemanager.getResourceGroups({});
+ * const _default = alicloud.resourcemanager.getResourceGroups({});
  * const defaultbFzA4a = new alicloud.vpc.Network("defaultbFzA4a", {
  *     description: "example-terraform",
  *     cidrBlock: "172.16.0.0/12",

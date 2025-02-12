@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *     envLanguage: "zh",
  *     quotaCategory: "WhiteListLabel",
  * });
- * const default = pulumi.all([defaultQuotaApplication.quotaCategory, defaultQuotaApplication.id]).apply(([quotaCategory, id]) => alicloud.quotas.getQuotaApplicationsOutput({
+ * const _default = pulumi.all([defaultQuotaApplication.quotaCategory, defaultQuotaApplication.id]).apply(([quotaCategory, id]) => alicloud.quotas.getQuotaApplicationsOutput({
  *     productCode: "vpc",
  *     enableDetails: true,
  *     quotaCategory: quotaCategory,
@@ -137,7 +137,7 @@ export interface GetQuotaApplicationsResult {
  *     envLanguage: "zh",
  *     quotaCategory: "WhiteListLabel",
  * });
- * const default = pulumi.all([defaultQuotaApplication.quotaCategory, defaultQuotaApplication.id]).apply(([quotaCategory, id]) => alicloud.quotas.getQuotaApplicationsOutput({
+ * const _default = pulumi.all([defaultQuotaApplication.quotaCategory, defaultQuotaApplication.id]).apply(([quotaCategory, id]) => alicloud.quotas.getQuotaApplicationsOutput({
  *     productCode: "vpc",
  *     enableDetails: true,
  *     quotaCategory: quotaCategory,

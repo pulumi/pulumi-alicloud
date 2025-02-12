@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.cen.getTransitRouterPrefixListAssociations({
+ * const _default = alicloud.cen.getTransitRouterPrefixListAssociations({
  *     transitRouterId: "tr-6ehx7q2jze8ch5ji0****",
  *     transitRouterTableId: "vtb-6ehgc262hr170qgyc****",
  * });
@@ -109,7 +109,7 @@ export interface GetTransitRouterPrefixListAssociationsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.cen.getTransitRouterPrefixListAssociations({
+ * const _default = alicloud.cen.getTransitRouterPrefixListAssociations({
  *     transitRouterId: "tr-6ehx7q2jze8ch5ji0****",
  *     transitRouterTableId: "vtb-6ehgc262hr170qgyc****",
  * });

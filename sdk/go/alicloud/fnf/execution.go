@@ -41,7 +41,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
+//			_default, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
 //				Name: pulumi.String(name),
 //				Document: pulumi.String(`  {
 //	    "Statement": [

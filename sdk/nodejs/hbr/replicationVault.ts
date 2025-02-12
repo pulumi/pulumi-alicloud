@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const sourceRegion = config.get("sourceRegion") || "cn-hangzhou";
- * const default = alicloud.hbr.getReplicationVaultRegions({});
+ * const _default = alicloud.hbr.getReplicationVaultRegions({});
  * const defaultInteger = new random.index.Integer("default", {
  *     min: 10000,
  *     max: 99999,

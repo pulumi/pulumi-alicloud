@@ -34,7 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cen.NewInstance(ctx, "default", &cen.InstanceArgs{
+//			_default, err := cen.NewInstance(ctx, "default", &cen.InstanceArgs{
 //				CenInstanceName: pulumi.String("tf-example"),
 //			})
 //			if err != nil {

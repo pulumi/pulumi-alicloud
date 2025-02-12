@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.hbr.getReplicationVaultRegions({});
+ * const _default = alicloud.hbr.getReplicationVaultRegions({});
  * export const hbrReplicationVaultRegionRegionId1 = _default.then(_default => _default.regions?.[0]?.replicationRegionId);
  * ```
  */
@@ -65,7 +65,7 @@ export interface GetReplicationVaultRegionsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.hbr.getReplicationVaultRegions({});
+ * const _default = alicloud.hbr.getReplicationVaultRegions({});
  * export const hbrReplicationVaultRegionRegionId1 = _default.then(_default => _default.regions?.[0]?.replicationRegionId);
  * ```
  */

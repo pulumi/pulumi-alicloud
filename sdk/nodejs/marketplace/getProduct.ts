@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.marketplace.getProduct({
+ * const _default = alicloud.marketplace.getProduct({
  *     productCode: "cmapi022206",
  * });
  * export const productName = _default.then(_default => _default.products?.[0]?.name);
@@ -73,7 +73,7 @@ export interface GetProductResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.marketplace.getProduct({
+ * const _default = alicloud.marketplace.getProduct({
  *     productCode: "cmapi022206",
  * });
  * export const productName = _default.then(_default => _default.products?.[0]?.name);

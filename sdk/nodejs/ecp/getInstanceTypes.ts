@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.ecp.getInstanceTypes({});
+ * const _default = alicloud.ecp.getInstanceTypes({});
  * export const firstEcpInstanceTypesInstanceType = _default.then(_default => _default.instanceTypes?.[0]?.instanceType);
  * ```
  */
@@ -65,7 +65,7 @@ export interface GetInstanceTypesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.ecp.getInstanceTypes({});
+ * const _default = alicloud.ecp.getInstanceTypes({});
  * export const firstEcpInstanceTypesInstanceType = _default.then(_default => _default.instanceTypes?.[0]?.instanceType);
  * ```
  */

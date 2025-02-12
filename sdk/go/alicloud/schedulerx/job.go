@@ -70,7 +70,7 @@ import (
 //				return err
 //			}
 //			json1 := string(tmpJSON1)
-//			_, err = schedulerx.NewAppGroup(ctx, "default", &schedulerx.AppGroupArgs{
+//			_default, err := schedulerx.NewAppGroup(ctx, "default", &schedulerx.AppGroupArgs{
 //				MaxJobs:             pulumi.Int(100),
 //				MonitorContactsJson: pulumi.String(json0),
 //				DeleteJobs:          pulumi.Bool(false),

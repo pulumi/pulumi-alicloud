@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * // Declare the data source
- * const default = alicloud.dms.getUserTenants({
+ * const _default = alicloud.dms.getUserTenants({
  *     status: "ACTIVE",
  * });
  * export const tid = _default.then(_default => _default.ids?.[0]);
@@ -90,7 +90,7 @@ export interface GetUserTenantsResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * // Declare the data source
- * const default = alicloud.dms.getUserTenants({
+ * const _default = alicloud.dms.getUserTenants({
  *     status: "ACTIVE",
  * });
  * export const tid = _default.then(_default => _default.ids?.[0]);

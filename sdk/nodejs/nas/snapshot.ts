@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "testacc";
- * const default = alicloud.nas.getZones({
+ * const _default = alicloud.nas.getZones({
  *     fileSystemType: "extreme",
  * });
  * const defaultFileSystem = new alicloud.nas.FileSystem("default", {

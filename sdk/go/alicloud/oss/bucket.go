@@ -36,14 +36,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//			_default, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
 //				Max: 99999,
 //				Min: 10000,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = oss.NewBucket(ctx, "bucket-acl", &oss.BucketArgs{
+//			bucket_acl, err := oss.NewBucket(ctx, "bucket-acl", &oss.BucketArgs{
 //				Bucket: pulumi.Sprintf("example-value-%v", _default.Result),
 //			})
 //			if err != nil {
@@ -79,7 +79,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//			_default, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
 //				Max: 99999,
 //				Min: 10000,
 //			})
@@ -119,14 +119,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//			_default, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
 //				Max: 99999,
 //				Min: 10000,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = oss.NewBucket(ctx, "bucket-target", &oss.BucketArgs{
+//			bucket_target, err := oss.NewBucket(ctx, "bucket-target", &oss.BucketArgs{
 //				Bucket: pulumi.Sprintf("example-value-%v", _default.Result),
 //			})
 //			if err != nil {
@@ -172,14 +172,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//			_default, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
 //				Max: 99999,
 //				Min: 10000,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = oss.NewBucket(ctx, "bucket-referer", &oss.BucketArgs{
+//			bucket_referer, err := oss.NewBucket(ctx, "bucket-referer", &oss.BucketArgs{
 //				Bucket: pulumi.Sprintf("example-value-%v", _default.Result),
 //				RefererConfig: &oss.BucketRefererConfigArgs{
 //					AllowEmpty: pulumi.Bool(false),

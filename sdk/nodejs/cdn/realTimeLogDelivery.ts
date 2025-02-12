@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  *     maxSplitShardCount: 60,
  *     appendMeta: true,
  * });
- * const default = alicloud.getRegions({
+ * const _default = alicloud.getRegions({
  *     current: true,
  * });
  * const defaultRealTimeLogDelivery = new alicloud.cdn.RealTimeLogDelivery("default", {

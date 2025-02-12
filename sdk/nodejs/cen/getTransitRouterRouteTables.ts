@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  *     transitRouterRouteTableDescription: "desp",
  *     transitRouterRouteTableName: name,
  * });
- * const default = alicloud.cen.getTransitRouterRouteTablesOutput({
+ * const _default = alicloud.cen.getTransitRouterRouteTablesOutput({
  *     transitRouterId: defaultTransitRouter.transitRouterId,
  * });
  * export const firstTransitRouterRouteTableType = _default.apply(_default => _default.tables?.[0]?.transitRouterRouteTableType);
@@ -153,7 +153,7 @@ export interface GetTransitRouterRouteTablesResult {
  *     transitRouterRouteTableDescription: "desp",
  *     transitRouterRouteTableName: name,
  * });
- * const default = alicloud.cen.getTransitRouterRouteTablesOutput({
+ * const _default = alicloud.cen.getTransitRouterRouteTablesOutput({
  *     transitRouterId: defaultTransitRouter.transitRouterId,
  * });
  * export const firstTransitRouterRouteTableType = _default.apply(_default => _default.tables?.[0]?.transitRouterRouteTableType);

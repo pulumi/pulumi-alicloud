@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  *     description: name,
  *     publishCidrRoute: true,
  * });
- * const default = alicloud.cen.getTransitRouterAvailableResources({});
+ * const _default = alicloud.cen.getTransitRouterAvailableResources({});
  * const defaultCustomerGateway = new alicloud.vpn.CustomerGateway("default", {
  *     customerGatewayName: name,
  *     ipAddress: "42.104.22.210",

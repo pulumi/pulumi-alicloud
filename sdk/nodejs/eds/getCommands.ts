@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *     desktopAccessType: "Internet",
  *     officeSiteName: "your_office_site_name",
  * });
- * const default = alicloud.eds.getBundles({
+ * const _default = alicloud.eds.getBundles({
  *     bundleType: "SYSTEM",
  *     nameRegex: "windows",
  * });
@@ -138,7 +138,7 @@ export interface GetCommandsResult {
  *     desktopAccessType: "Internet",
  *     officeSiteName: "your_office_site_name",
  * });
- * const default = alicloud.eds.getBundles({
+ * const _default = alicloud.eds.getBundles({
  *     bundleType: "SYSTEM",
  *     nameRegex: "windows",
  * });

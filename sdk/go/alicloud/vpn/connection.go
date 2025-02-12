@@ -70,7 +70,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpn.NewGateway(ctx, "HA-VPN", &vpn.GatewayArgs{
+//			HA_VPN, err := vpn.NewGateway(ctx, "HA-VPN", &vpn.GatewayArgs{
 //				VpnType:                   pulumi.String("Normal"),
 //				DisasterRecoveryVswitchId: default1.ID(),
 //				VpnGatewayName:            pulumi.String(name),

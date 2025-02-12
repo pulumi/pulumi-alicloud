@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.hbr.getEcsBackupPlans({
+ * const _default = alicloud.hbr.getEcsBackupPlans({
  *     nameRegex: "plan-name",
  * });
  * const defaultGetBackupJobs = Promise.all([_default, _default]).then(([_default, _default1]) => alicloud.hbr.getBackupJobs({
@@ -138,7 +138,7 @@ export interface GetBackupJobsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.hbr.getEcsBackupPlans({
+ * const _default = alicloud.hbr.getEcsBackupPlans({
  *     nameRegex: "plan-name",
  * });
  * const defaultGetBackupJobs = Promise.all([_default, _default]).then(([_default, _default1]) => alicloud.hbr.getBackupJobs({

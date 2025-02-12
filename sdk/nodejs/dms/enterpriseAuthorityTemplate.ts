@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const default = alicloud.dms.getUserTenants({
+ * const _default = alicloud.dms.getUserTenants({
  *     status: "ACTIVE",
  * });
  * const defaultEnterpriseAuthorityTemplate = new alicloud.dms.EnterpriseAuthorityTemplate("default", {

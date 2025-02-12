@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.tag.getMetaTags({
+ * const _default = alicloud.tag.getMetaTags({
  *     keyName: "example_value",
  * });
  * export const tagMetaTagDefault1 = _default.then(_default => _default.tags?.valueName);
@@ -73,7 +73,7 @@ export interface GetMetaTagsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.tag.getMetaTags({
+ * const _default = alicloud.tag.getMetaTags({
  *     keyName: "example_value",
  * });
  * export const tagMetaTagDefault1 = _default.then(_default => _default.tags?.valueName);

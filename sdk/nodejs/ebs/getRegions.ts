@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.ebs.getRegions({
+ * const _default = alicloud.ebs.getRegions({
  *     regionId: "cn-hangzhou",
  * });
  * export const regions = _default.then(_default => _default.regions);
@@ -73,7 +73,7 @@ export interface GetRegionsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.ebs.getRegions({
+ * const _default = alicloud.ebs.getRegions({
  *     regionId: "cn-hangzhou",
  * });
  * export const regions = _default.then(_default => _default.regions);

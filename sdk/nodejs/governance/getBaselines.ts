@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  *     description: name,
  *     baselineName: `${name}-${defaultInteger.result}`,
  * });
- * const default = pulumi.all([defaultBaseline.id, defaultBaseline.baselineName]).apply(([id, baselineName]) => alicloud.governance.getBaselinesOutput({
+ * const _default = pulumi.all([defaultBaseline.id, defaultBaseline.baselineName]).apply(([id, baselineName]) => alicloud.governance.getBaselinesOutput({
  *     ids: [id],
  *     nameRegex: baselineName,
  * }));
@@ -144,7 +144,7 @@ export interface GetBaselinesResult {
  *     description: name,
  *     baselineName: `${name}-${defaultInteger.result}`,
  * });
- * const default = pulumi.all([defaultBaseline.id, defaultBaseline.baselineName]).apply(([id, baselineName]) => alicloud.governance.getBaselinesOutput({
+ * const _default = pulumi.all([defaultBaseline.id, defaultBaseline.baselineName]).apply(([id, baselineName]) => alicloud.governance.getBaselinesOutput({
  *     ids: [id],
  *     nameRegex: baselineName,
  * }));

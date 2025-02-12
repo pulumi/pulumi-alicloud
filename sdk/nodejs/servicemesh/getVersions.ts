@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.servicemesh.getVersions({
+ * const _default = alicloud.servicemesh.getVersions({
  *     edition: "Default",
  * });
  * export const serviceMeshVersion = versions[0].version;
@@ -81,7 +81,7 @@ export interface GetVersionsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.servicemesh.getVersions({
+ * const _default = alicloud.servicemesh.getVersions({
  *     edition: "Default",
  * });
  * export const serviceMeshVersion = versions[0].version;

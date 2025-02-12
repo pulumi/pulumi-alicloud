@@ -41,7 +41,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := ecs.NewEipAddress(ctx, "default", &ecs.EipAddressArgs{
+//			_default, err := ecs.NewEipAddress(ctx, "default", &ecs.EipAddressArgs{
 //				AddressName:        pulumi.String(name),
 //				Isp:                pulumi.String("BGP"),
 //				InternetChargeType: pulumi.String("PayByBandwidth"),

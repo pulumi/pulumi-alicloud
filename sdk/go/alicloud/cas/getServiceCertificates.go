@@ -37,7 +37,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := cas.NewServiceCertificate(ctx, "default", &cas.ServiceCertificateArgs{
+//			_default, err := cas.NewServiceCertificate(ctx, "default", &cas.ServiceCertificateArgs{
 //				CertificateName: pulumi.String(name),
 //				Cert: pulumi.String(`-----BEGIN CERTIFICATE-----
 //

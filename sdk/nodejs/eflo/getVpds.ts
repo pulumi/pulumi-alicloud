@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.eflo.getVpds({
+ * const _default = alicloud.eflo.getVpds({
  *     ids: [defaultAlicloudEfloVpd.id],
  *     nameRegex: defaultAlicloudEfloVpd.name,
  *     vpdName: "RMC-Terraform-Test",
@@ -135,7 +135,7 @@ export interface GetVpdsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.eflo.getVpds({
+ * const _default = alicloud.eflo.getVpds({
  *     ids: [defaultAlicloudEfloVpd.id],
  *     nameRegex: defaultAlicloudEfloVpd.name,
  *     vpdName: "RMC-Terraform-Test",

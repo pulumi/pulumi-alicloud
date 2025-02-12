@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const default = alicloud.cloudcontrol.getResourceTypes({
+ * const _default = alicloud.cloudcontrol.getResourceTypes({
  *     product: "VPC",
  *     ids: ["VSwitch"],
  * });
@@ -87,7 +87,7 @@ export interface GetResourceTypesResult {
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const default = alicloud.cloudcontrol.getResourceTypes({
+ * const _default = alicloud.cloudcontrol.getResourceTypes({
  *     product: "VPC",
  *     ids: ["VSwitch"],
  * });

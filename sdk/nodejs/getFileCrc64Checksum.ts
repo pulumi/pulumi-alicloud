@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.getFileCrc64Checksum({
+ * const _default = alicloud.getFileCrc64Checksum({
  *     filename: "exampleFileName",
  * });
  * export const fileCrc64Checksum = defualt.checksum;
@@ -66,7 +66,7 @@ export interface GetFileCrc64ChecksumResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.getFileCrc64Checksum({
+ * const _default = alicloud.getFileCrc64Checksum({
  *     filename: "exampleFileName",
  * });
  * export const fileCrc64Checksum = defualt.checksum;

@@ -37,7 +37,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := ram.NewUser(ctx, "default", &ram.UserArgs{
+//			_default, err := ram.NewUser(ctx, "default", &ram.UserArgs{
 //				Name:        pulumi.String(name),
 //				DisplayName: pulumi.String(name),
 //				Mobile:      pulumi.String("86-18688888888"),

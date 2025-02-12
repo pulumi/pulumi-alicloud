@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.cloudstoragegateway.getStocks({
+ * const _default = alicloud.cloudstoragegateway.getStocks({
  *     gatewayClass: "Advanced",
  * });
  * export const zoneId = _default.then(_default => _default.stocks?.[0]?.zoneId);
@@ -73,7 +73,7 @@ export interface GetStocksResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.cloudstoragegateway.getStocks({
+ * const _default = alicloud.cloudstoragegateway.getStocks({
  *     gatewayClass: "Advanced",
  * });
  * export const zoneId = _default.then(_default => _default.stocks?.[0]?.zoneId);

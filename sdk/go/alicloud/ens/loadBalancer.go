@@ -49,7 +49,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ens.NewVswitch(ctx, "switch", &ens.VswitchArgs{
+//			_switch, err := ens.NewVswitch(ctx, "switch", &ens.VswitchArgs{
 //				Description: pulumi.String(name),
 //				CidrBlock:   pulumi.String("192.168.2.0/24"),
 //				VswitchName: pulumi.String(name),

@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * const default = alicloud.getAccount({});
+ * const _default = alicloud.getAccount({});
  * const defaultGetRegions = alicloud.getRegions({
  *     current: true,
  * });

@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const default = alicloud.resourcemanager.getResourceGroups({});
+ * const _default = alicloud.resourcemanager.getResourceGroups({});
  * const defaultIpam = new alicloud.vpc.IpamIpam("defaultIpam", {operatingRegionLists: ["cn-hangzhou"]});
  * const defaultIpamPool = new alicloud.vpc.IpamIpamPool("defaultIpamPool", {
  *     ipamScopeId: defaultIpam.privateDefaultScopeId,
@@ -140,7 +140,7 @@ export interface GetIpamIpamPoolAllocationsResult {
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const default = alicloud.resourcemanager.getResourceGroups({});
+ * const _default = alicloud.resourcemanager.getResourceGroups({});
  * const defaultIpam = new alicloud.vpc.IpamIpam("defaultIpam", {operatingRegionLists: ["cn-hangzhou"]});
  * const defaultIpamPool = new alicloud.vpc.IpamIpamPool("defaultIpamPool", {
  *     ipamScopeId: defaultIpam.privateDefaultScopeId,

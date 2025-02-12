@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.dts.getInstances({
+ * const _default = alicloud.dts.getInstances({
  *     ids: [defaultAlicloudDtsInstance.id],
  *     resourceGroupId: "example_value",
  * });
@@ -101,7 +101,7 @@ export interface GetInstancesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.dts.getInstances({
+ * const _default = alicloud.dts.getInstances({
  *     ids: [defaultAlicloudDtsInstance.id],
  *     resourceGroupId: "example_value",
  * });

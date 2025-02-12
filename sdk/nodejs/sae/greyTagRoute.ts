@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *     max: 99999,
  *     min: 10000,
  * });
- * const default = alicloud.getRegions({
+ * const _default = alicloud.getRegions({
  *     current: true,
  * });
  * const defaultGetZones = alicloud.getZones({

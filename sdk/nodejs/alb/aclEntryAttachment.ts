@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
- * const default = alicloud.resourcemanager.getResourceGroups({});
+ * const _default = alicloud.resourcemanager.getResourceGroups({});
  * const defaultAcl = new alicloud.alb.Acl("default", {
  *     aclName: name,
  *     resourceGroupId: _default.then(_default => _default.groups?.[0]?.id),

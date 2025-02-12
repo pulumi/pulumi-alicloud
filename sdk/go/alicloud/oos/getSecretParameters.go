@@ -37,7 +37,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := oos.NewSecretParameter(ctx, "default", &oos.SecretParameterArgs{
+//			_default, err := oos.NewSecretParameter(ctx, "default", &oos.SecretParameterArgs{
 //				SecretParameterName: pulumi.String(name),
 //				Value:               pulumi.String("tf-testacc-oos_secret_parameter"),
 //				Type:                pulumi.String("Secret"),

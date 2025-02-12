@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.threatdetection.getAssets({});
+ * const _default = alicloud.threatdetection.getAssets({});
  * export const alicloudThreatDetectionAssetExampleId = _default.then(_default => _default.assets?.[0]?.id);
  * ```
  */
@@ -116,7 +116,7 @@ export interface GetAssetsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.threatdetection.getAssets({});
+ * const _default = alicloud.threatdetection.getAssets({});
  * export const alicloudThreatDetectionAssetExampleId = _default.then(_default => _default.assets?.[0]?.id);
  * ```
  */

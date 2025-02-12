@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.getAccount({});
+ * const _default = alicloud.getAccount({});
  * const example = new alicloud.vpc.PrefixList("example", {entrys: [{
  *     cidr: "192.168.0.0/16",
  * }]});

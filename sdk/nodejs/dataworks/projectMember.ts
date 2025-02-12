@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  *     displayName: `${name}${randint.id}`,
  *     name: `${name}${randint.id}`,
  * });
- * const default = alicloud.resourcemanager.getResourceGroups({});
+ * const _default = alicloud.resourcemanager.getResourceGroups({});
  * const defaultQeRfvU = new alicloud.dataworks.Project("defaultQeRfvU", {
  *     status: "Available",
  *     description: "tf_desc",

@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  *     email: "123@163.com",
  *     mobile: "153xxxxx906",
  * });
- * const default = defaultMscSubContract.id.apply(id => alicloud.getMscSubContactVerificationMessageOutput({
+ * const _default = defaultMscSubContract.id.apply(id => alicloud.getMscSubContactVerificationMessageOutput({
  *     contactId: id,
  *     type: 1,
  * }));
@@ -81,7 +81,7 @@ export interface GetMscSubContactVerificationMessageResult {
  *     email: "123@163.com",
  *     mobile: "153xxxxx906",
  * });
- * const default = defaultMscSubContract.id.apply(id => alicloud.getMscSubContactVerificationMessageOutput({
+ * const _default = defaultMscSubContract.id.apply(id => alicloud.getMscSubContactVerificationMessageOutput({
  *     contactId: id,
  *     type: 1,
  * }));

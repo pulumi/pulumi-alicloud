@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const default = alicloud.expressconnect.getPhysicalConnections({
+ * const _default = alicloud.expressconnect.getPhysicalConnections({
  *     nameRegex: "preserved-NODELETING",
  * });
  * const createQos = new alicloud.expressconnect.TrafficQos("createQos", {

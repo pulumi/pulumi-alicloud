@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-testAccClusters";
- * const default = alicloud.resourcemanager.getResourceGroups({
+ * const _default = alicloud.resourcemanager.getResourceGroups({
  *     status: "OK",
  * });
  * const defaultGetMainVersions = alicloud.emr.getMainVersions({});
@@ -277,7 +277,7 @@ export interface GetClustersResult {
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-testAccClusters";
- * const default = alicloud.resourcemanager.getResourceGroups({
+ * const _default = alicloud.resourcemanager.getResourceGroups({
  *     status: "OK",
  * });
  * const defaultGetMainVersions = alicloud.emr.getMainVersions({});

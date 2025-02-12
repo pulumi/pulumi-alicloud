@@ -39,7 +39,7 @@ import (
 //			if param := cfg.Get("topic"); param != "" {
 //				topic = param
 //			}
-//			_, err := rocketmq.NewInstance(ctx, "default", &rocketmq.InstanceArgs{
+//			_default, err := rocketmq.NewInstance(ctx, "default", &rocketmq.InstanceArgs{
 //				InstanceName: pulumi.String(name),
 //				Remark:       pulumi.String("default_ons_instance_remark"),
 //			})

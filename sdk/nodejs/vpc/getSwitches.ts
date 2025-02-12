@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "vswitchDatasourceName";
- * const default = alicloud.getZones({});
+ * const _default = alicloud.getZones({});
  * const vpc = new alicloud.vpc.Network("vpc", {
  *     cidrBlock: "172.16.0.0/16",
  *     vpcName: name,
@@ -188,7 +188,7 @@ export interface GetSwitchesResult {
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "vswitchDatasourceName";
- * const default = alicloud.getZones({});
+ * const _default = alicloud.getZones({});
  * const vpc = new alicloud.vpc.Network("vpc", {
  *     cidrBlock: "172.16.0.0/16",
  *     vpcName: name,

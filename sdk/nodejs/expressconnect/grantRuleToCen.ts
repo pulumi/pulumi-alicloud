@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  *     detectMultiplier: 10,
  * });
  * const exampleInstance = new alicloud.cen.Instance("example", {cenInstanceName: name});
- * const default = alicloud.getAccount({});
+ * const _default = alicloud.getAccount({});
  * const exampleGrantRuleToCen = new alicloud.expressconnect.GrantRuleToCen("example", {
  *     cenId: exampleInstance.id,
  *     cenOwnerId: _default.then(_default => _default.id),

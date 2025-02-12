@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.ecs.getInstanceTypes({
+ * const _default = alicloud.ecs.getInstanceTypes({
  *     instanceTypeFamily: "ecs.g6",
  * });
  * const defaultReservedInstance = new alicloud.ecs.ReservedInstance("default", {

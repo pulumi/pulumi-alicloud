@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tfexample";
- * const default = alicloud.getAccount({});
+ * const _default = alicloud.getAccount({});
  * const example = new alicloud.resourcemanager.Role("example", {
  *     roleName: name,
  *     assumeRolePolicyDocument: _default.then(_default => `     {

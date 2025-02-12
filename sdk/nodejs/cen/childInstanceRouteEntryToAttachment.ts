@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const default = alicloud.cen.getTransitRouterAvailableResources({});
+ * const _default = alicloud.cen.getTransitRouterAvailableResources({});
  * const masterZone = _default.then(_default => _default.resources?.[0]?.masterZones?.[0]);
  * const slaveZone = _default.then(_default => _default.resources?.[0]?.slaveZones?.[1]);
  * const example = new alicloud.vpc.Network("example", {
