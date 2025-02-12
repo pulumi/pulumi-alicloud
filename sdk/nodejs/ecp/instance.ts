@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const default = alicloud.ecp.getZones({});
+ * const _default = alicloud.ecp.getZones({});
  * const defaultGetInstanceTypes = alicloud.ecp.getInstanceTypes({});
  * const defaultInteger = new random.index.Integer("default", {
  *     min: 10000,

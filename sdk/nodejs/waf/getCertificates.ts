@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.waf.getCertificates({
+ * const _default = alicloud.waf.getCertificates({
  *     ids: ["your_certificate_id"],
  *     instanceId: "your_instance_id",
  *     domain: "your_domain_name",
@@ -105,7 +105,7 @@ export interface GetCertificatesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.waf.getCertificates({
+ * const _default = alicloud.waf.getCertificates({
  *     ids: ["your_certificate_id"],
  *     instanceId: "your_instance_id",
  *     domain: "your_domain_name",

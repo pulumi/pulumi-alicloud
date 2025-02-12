@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.actiontrail.getTrails({
+ * const _default = alicloud.actiontrail.getTrails({
  *     nameRegex: "tf-testacc-actiontrail",
  * });
  * export const trailName = _default.then(_default => _default.trails?.[0]?.id);
@@ -112,7 +112,7 @@ export interface GetTrailsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.actiontrail.getTrails({
+ * const _default = alicloud.actiontrail.getTrails({
  *     nameRegex: "tf-testacc-actiontrail",
  * });
  * export const trailName = _default.then(_default => _default.trails?.[0]?.id);

@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
- * const default = alicloud.adb.getZones({});
+ * const _default = alicloud.adb.getZones({});
  * const defaultGetResourceGroups = alicloud.resourcemanager.getResourceGroups({
  *     status: "OK",
  * });

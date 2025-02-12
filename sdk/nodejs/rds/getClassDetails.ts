@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.rds.getClassDetails({
+ * const _default = alicloud.rds.getClassDetails({
  *     commodityCode: "bards",
  *     classCode: "mysql.n4.medium.2c",
  *     engineVersion: "8.0",
@@ -144,7 +144,7 @@ export interface GetClassDetailsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.rds.getClassDetails({
+ * const _default = alicloud.rds.getClassDetails({
  *     commodityCode: "bards",
  *     classCode: "mysql.n4.medium.2c",
  *     engineVersion: "8.0",

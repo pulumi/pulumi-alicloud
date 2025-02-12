@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.chatbot.getAgents({});
+ * const _default = alicloud.chatbot.getAgents({});
  * const defaultPublishTask = new alicloud.chatbot.PublishTask("default", {
  *     bizType: "faq",
  *     agentKey: _default.then(_default => _default.agents?.[0]?.agentKey),

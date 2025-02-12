@@ -44,7 +44,7 @@ import (
 //			if param := cfg.Get("secretKey"); param != "" {
 //				secretKey = param
 //			}
-//			_, err := amqp.NewInstance(ctx, "default", &amqp.InstanceArgs{
+//			_default, err := amqp.NewInstance(ctx, "default", &amqp.InstanceArgs{
 //				InstanceType:  pulumi.String("enterprise"),
 //				MaxTps:        pulumi.String("3000"),
 //				QueueCapacity: pulumi.String("200"),

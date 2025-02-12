@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * export = async () => {
  *     const config = new pulumi.Config();
  *     const name = config.get("name") || "tf_example";
- *     const default = await alicloud.bastionhost.getInstances({});
+ *     const _default = await alicloud.bastionhost.getInstances({});
  *     const defaultGetZones = await alicloud.getZones({
  *         availableResourceCreation: "VSwitch",
  *     });

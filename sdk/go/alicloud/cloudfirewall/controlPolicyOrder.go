@@ -40,7 +40,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := cloudfirewall.NewControlPolicy(ctx, "default", &cloudfirewall.ControlPolicyArgs{
+//			_default, err := cloudfirewall.NewControlPolicy(ctx, "default", &cloudfirewall.ControlPolicyArgs{
 //				Direction:       pulumi.String("in"),
 //				ApplicationName: pulumi.String("ANY"),
 //				Description:     pulumi.String(name),

@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.eflo.getSubnets({
+ * const _default = alicloud.eflo.getSubnets({
  *     nameRegex: defaultAlicloudEfloSubnet.name,
  *     subnetName: "SubnetTestForTerraform",
  *     vpdId: vpdId,
@@ -154,7 +154,7 @@ export interface GetSubnetsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.eflo.getSubnets({
+ * const _default = alicloud.eflo.getSubnets({
  *     nameRegex: defaultAlicloudEfloSubnet.name,
  *     subnetName: "SubnetTestForTerraform",
  *     vpdId: vpdId,

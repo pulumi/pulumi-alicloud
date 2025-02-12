@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *     max: 999,
  *     min: 1,
  * });
- * const default = alicloud.resourcemanager.getResourceGroups({});
+ * const _default = alicloud.resourcemanager.getResourceGroups({});
  * const defaultProject = new alicloud.dataworks.Project("default", {
  *     status: "Available",
  *     description: "tf_desc",

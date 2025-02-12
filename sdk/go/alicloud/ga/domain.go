@@ -34,7 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ga.NewAccelerator(ctx, "default", &ga.AcceleratorArgs{
+//			_default, err := ga.NewAccelerator(ctx, "default", &ga.AcceleratorArgs{
 //				Duration:      pulumi.Int(1),
 //				AutoUseCoupon: pulumi.Bool(true),
 //				Spec:          pulumi.String("1"),

@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *     transitRouterDescription: "desd",
  *     transitRouterName: name,
  * });
- * const default = alicloud.cen.getTransitRouterAvailableResources({});
+ * const _default = alicloud.cen.getTransitRouterAvailableResources({});
  * const defaultCustomerGateway = new alicloud.vpn.CustomerGateway("default", {
  *     name: name,
  *     ipAddress: "42.104.22.210",
@@ -173,7 +173,7 @@ export interface GetGatewayVcoRoutesResult {
  *     transitRouterDescription: "desd",
  *     transitRouterName: name,
  * });
- * const default = alicloud.cen.getTransitRouterAvailableResources({});
+ * const _default = alicloud.cen.getTransitRouterAvailableResources({});
  * const defaultCustomerGateway = new alicloud.vpn.CustomerGateway("default", {
  *     name: name,
  *     ipAddress: "42.104.22.210",

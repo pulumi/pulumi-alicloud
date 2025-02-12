@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.polardb.getParameterGroups({
+ * const _default = alicloud.polardb.getParameterGroups({
  *     dbType: "MySQL",
  *     dbVersion: "8.0",
  * });
@@ -112,7 +112,7 @@ export interface GetParameterGroupsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.polardb.getParameterGroups({
+ * const _default = alicloud.polardb.getParameterGroups({
  *     dbType: "MySQL",
  *     dbVersion: "8.0",
  * });

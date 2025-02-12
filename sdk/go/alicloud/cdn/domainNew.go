@@ -39,7 +39,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//			_default, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
 //				Min: 10000,
 //				Max: 99999,
 //			})

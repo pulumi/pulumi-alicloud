@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.vpn.getGatewayZones({
+ * const _default = alicloud.vpn.getGatewayZones({
  *     spec: "5M",
  * });
  * ```
@@ -87,7 +87,7 @@ export interface GetGatewayZonesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.vpn.getGatewayZones({
+ * const _default = alicloud.vpn.getGatewayZones({
  *     spec: "5M",
  * });
  * ```

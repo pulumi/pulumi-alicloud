@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.threatdetection.getHoneyPots({
+ * const _default = alicloud.threatdetection.getHoneyPots({
  *     ids: ["xxxx"],
  *     honeypotName: "tf-example",
  *     nodeId: "a44e1ab3-6945-444c-889d-5bacee7056e8",
@@ -120,7 +120,7 @@ export interface GetHoneyPotsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.threatdetection.getHoneyPots({
+ * const _default = alicloud.threatdetection.getHoneyPots({
  *     ids: ["xxxx"],
  *     honeypotName: "tf-example",
  *     nodeId: "a44e1ab3-6945-444c-889d-5bacee7056e8",

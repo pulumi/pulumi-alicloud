@@ -37,7 +37,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := resourcemanager.NewFolder(ctx, "default", &resourcemanager.FolderArgs{
+//			_default, err := resourcemanager.NewFolder(ctx, "default", &resourcemanager.FolderArgs{
 //				FolderName: pulumi.String(name),
 //			})
 //			if err != nil {

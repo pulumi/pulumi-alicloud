@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.ga.getCustomRoutingPortMappings({
+ * const _default = alicloud.ga.getCustomRoutingPortMappings({
  *     acceleratorId: "your_accelerator_id",
  * });
  * export const gaCustomRoutingPortMappingsAcceleratorId1 = _default.then(_default => _default.customRoutingPortMappings?.[0]?.acceleratorId);
@@ -111,7 +111,7 @@ export interface GetCustomRoutingPortMappingsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.ga.getCustomRoutingPortMappings({
+ * const _default = alicloud.ga.getCustomRoutingPortMappings({
  *     acceleratorId: "your_accelerator_id",
  * });
  * export const gaCustomRoutingPortMappingsAcceleratorId1 = _default.then(_default => _default.customRoutingPortMappings?.[0]?.acceleratorId);

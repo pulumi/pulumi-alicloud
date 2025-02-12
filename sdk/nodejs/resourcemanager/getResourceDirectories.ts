@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.resourcemanager.getResourceDirectories({});
+ * const _default = alicloud.resourcemanager.getResourceDirectories({});
  * export const resourceDirectoryId = _default.then(_default => _default.directories?.[0]?.id);
  * ```
  */
@@ -64,7 +64,7 @@ export interface GetResourceDirectoriesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.resourcemanager.getResourceDirectories({});
+ * const _default = alicloud.resourcemanager.getResourceDirectories({});
  * export const resourceDirectoryId = _default.then(_default => _default.directories?.[0]?.id);
  * ```
  */

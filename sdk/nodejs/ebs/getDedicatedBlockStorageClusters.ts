@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.ebs.getDedicatedBlockStorageClusters({
+ * const _default = alicloud.ebs.getDedicatedBlockStorageClusters({
  *     ids: ["example_id"],
  *     nameRegex: defaultAlicloudEbsDedicatedBlockStorageCluster.name,
  * });
@@ -86,7 +86,7 @@ export interface GetDedicatedBlockStorageClustersResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.ebs.getDedicatedBlockStorageClusters({
+ * const _default = alicloud.ebs.getDedicatedBlockStorageClusters({
  *     ids: ["example_id"],
  *     nameRegex: defaultAlicloudEbsDedicatedBlockStorageCluster.name,
  * });

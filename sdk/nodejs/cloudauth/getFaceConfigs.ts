@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     bizName: "example-value",
  *     bizType: "example-value",
  * });
- * const default = alicloud.cloudauth.getFaceConfigsOutput({
+ * const _default = alicloud.cloudauth.getFaceConfigsOutput({
  *     ids: [defaultFaceConfig.id],
  *     nameRegex: defaultFaceConfig.bizName,
  * });
@@ -89,7 +89,7 @@ export interface GetFaceConfigsResult {
  *     bizName: "example-value",
  *     bizType: "example-value",
  * });
- * const default = alicloud.cloudauth.getFaceConfigsOutput({
+ * const _default = alicloud.cloudauth.getFaceConfigsOutput({
  *     ids: [defaultFaceConfig.id],
  *     nameRegex: defaultFaceConfig.bizName,
  * });

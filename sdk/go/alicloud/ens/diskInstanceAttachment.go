@@ -40,7 +40,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := ens.NewDisk(ctx, "default", &ens.DiskArgs{
+//			_default, err := ens.NewDisk(ctx, "default", &ens.DiskArgs{
 //				Size:        pulumi.Int(20),
 //				EnsRegionId: pulumi.String("cn-chenzhou-telecom_unicom_cmcc"),
 //				PaymentType: pulumi.String("PayAsYouGo"),

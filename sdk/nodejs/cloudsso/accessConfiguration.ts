@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const default = alicloud.cloudsso.getDirectories({});
+ * const _default = alicloud.cloudsso.getDirectories({});
  * const defaultAccessConfiguration = new alicloud.cloudsso.AccessConfiguration("default", {
  *     directoryId: _default.then(_default => _default.directories?.[0]?.id),
  *     accessConfigurationName: name,

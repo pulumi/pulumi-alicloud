@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.resourcemanager.getPolicyVersions({
+ * const _default = alicloud.resourcemanager.getPolicyVersions({
  *     policyName: "tftest",
  *     policyType: "Custom",
  * });
@@ -93,7 +93,7 @@ export interface GetPolicyVersionsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.resourcemanager.getPolicyVersions({
+ * const _default = alicloud.resourcemanager.getPolicyVersions({
  *     policyName: "tftest",
  *     policyType: "Custom",
  * });

@@ -40,7 +40,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := dfs.NewAccessGroup(ctx, "default", &dfs.AccessGroupArgs{
+//			_default, err := dfs.NewAccessGroup(ctx, "default", &dfs.AccessGroupArgs{
 //				NetworkType:     pulumi.String("VPC"),
 //				AccessGroupName: pulumi.String(name),
 //				Description:     pulumi.String(name),

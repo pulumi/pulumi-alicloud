@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.emr.getMainVersions({
+ * const _default = alicloud.emr.getMainVersions({
  *     emrVersion: "EMR-3.22.0",
  *     clusterTypes: [
  *         "HADOOP",
@@ -93,7 +93,7 @@ export interface GetMainVersionsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.emr.getMainVersions({
+ * const _default = alicloud.emr.getMainVersions({
  *     emrVersion: "EMR-3.22.0",
  *     clusterTypes: [
  *         "HADOOP",

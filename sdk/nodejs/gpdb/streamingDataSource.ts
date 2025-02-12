@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  *     "topic": "ziyuan_example"
  * }
  * `;
- * const default = alicloud.getZones({
+ * const _default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
  * const defaultDfkYOR = new alicloud.vpc.Network("defaultDfkYOR", {cidrBlock: "192.168.0.0/16"});

@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  * const zone1 = config.get("zone1") || "cn-hangzhou-h";
  * const firewallNameUpdate = config.get("firewallNameUpdate") || "tf-example-1";
  * const zone2 = config.get("zone2") || "cn-hangzhou-i";
- * const default = alicloud.cen.getTransitRouterAvailableResources({});
+ * const _default = alicloud.cen.getTransitRouterAvailableResources({});
  * const defaultGetZones = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });

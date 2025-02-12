@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * export = async () => {
- *     const default = await alicloud.resourcemanager.getResourceDirectories({});
+ *     const _default = await alicloud.resourcemanager.getResourceDirectories({});
  *     const defaultResourceDirectory: alicloud.resourcemanager.ResourceDirectory[] = [];
  *     for (const range = {value: 0}; range.value < (_default.directories.length > 0 ? 0 : 1); range.value++) {
  *         defaultResourceDirectory.push(new alicloud.resourcemanager.ResourceDirectory(`default-${range.value}`, {status: "Enabled"}));

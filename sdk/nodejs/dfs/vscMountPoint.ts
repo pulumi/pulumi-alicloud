@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *     min: 10000,
  *     max: 99999,
  * });
- * const default = alicloud.dfs.getZones({});
+ * const _default = alicloud.dfs.getZones({});
  * const zoneId = _default.then(_default => _default.zones?.[0]?.zoneId);
  * const storageType = _default.then(_default => _default.zones?.[0]?.options?.[0]?.storageType);
  * const defaultFileSystem = new alicloud.dfs.FileSystem("default", {

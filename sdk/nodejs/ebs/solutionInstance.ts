@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * const name = config.get("name") || "terraform-example";
  * const zoneId = config.get("zoneId") || "cn-shanghai-l";
  * const regionId = config.get("regionId") || "cn-shanghai";
- * const default = alicloud.resourcemanager.getResourceGroups({});
+ * const _default = alicloud.resourcemanager.getResourceGroups({});
  * const defaultSolutionInstance = new alicloud.ebs.SolutionInstance("default", {
  *     solutionInstanceName: name,
  *     resourceGroupId: _default.then(_default => _default.ids?.[0]),

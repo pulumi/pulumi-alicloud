@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.resourcemanager.getAccounts({
+ * const _default = alicloud.resourcemanager.getAccounts({
  *     status: "CreateSuccess",
  * });
  * const defaultTemplateApplications = new alicloud.quotas.TemplateApplications("default", {
@@ -141,7 +141,7 @@ export interface GetTemplateApplicationsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.resourcemanager.getAccounts({
+ * const _default = alicloud.resourcemanager.getAccounts({
  *     status: "CreateSuccess",
  * });
  * const defaultTemplateApplications = new alicloud.quotas.TemplateApplications("default", {

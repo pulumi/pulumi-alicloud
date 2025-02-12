@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const this = alicloud.polardb.getNodeClasses({
+ * const _this = alicloud.polardb.getNodeClasses({
  *     dbType: "MySQL",
  *     dbVersion: "8.0",
  *     payType: "PostPaid",
@@ -51,7 +51,7 @@ import * as utilities from "../utilities";
  *     dbName: polardbClustersDs.apply(polardbClustersDs => `tfaccountpri_${polardbClustersDs.clusters?.[0]?.id}`),
  *     dbDescription: "from terraform",
  * });
- * const default = pulumi.all([polardbClustersDs, defaultDatabase.dbName]).apply(([polardbClustersDs, dbName]) => alicloud.polardb.getDatabasesOutput({
+ * const _default = pulumi.all([polardbClustersDs, defaultDatabase.dbName]).apply(([polardbClustersDs, dbName]) => alicloud.polardb.getDatabasesOutput({
  *     dbClusterId: polardbClustersDs.clusters?.[0]?.id,
  *     nameRegex: dbName,
  * }));
@@ -111,7 +111,7 @@ export interface GetDatabasesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const this = alicloud.polardb.getNodeClasses({
+ * const _this = alicloud.polardb.getNodeClasses({
  *     dbType: "MySQL",
  *     dbVersion: "8.0",
  *     payType: "PostPaid",
@@ -144,7 +144,7 @@ export interface GetDatabasesResult {
  *     dbName: polardbClustersDs.apply(polardbClustersDs => `tfaccountpri_${polardbClustersDs.clusters?.[0]?.id}`),
  *     dbDescription: "from terraform",
  * });
- * const default = pulumi.all([polardbClustersDs, defaultDatabase.dbName]).apply(([polardbClustersDs, dbName]) => alicloud.polardb.getDatabasesOutput({
+ * const _default = pulumi.all([polardbClustersDs, defaultDatabase.dbName]).apply(([polardbClustersDs, dbName]) => alicloud.polardb.getDatabasesOutput({
  *     dbClusterId: polardbClustersDs.clusters?.[0]?.id,
  *     nameRegex: dbName,
  * }));

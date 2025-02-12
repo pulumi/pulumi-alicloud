@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * export = async () => {
  *     const config = new pulumi.Config();
  *     const name = config.get("name") || "tf-example";
- *     const default = await alicloud.cloudsso.getDirectories({});
+ *     const _default = await alicloud.cloudsso.getDirectories({});
  *     const defaultDirectory: alicloud.cloudsso.Directory[] = [];
  *     for (const range = {value: 0}; range.value < (_default.ids.length > 0 ? 0 : 1); range.value++) {
  *         defaultDirectory.push(new alicloud.cloudsso.Directory(`default-${range.value}`, {directoryName: name}));

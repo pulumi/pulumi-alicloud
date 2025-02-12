@@ -34,7 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ga.NewAcl(ctx, "default", &ga.AclArgs{
+//			_default, err := ga.NewAcl(ctx, "default", &ga.AclArgs{
 //				AclName:          pulumi.String("tf-example-value"),
 //				AddressIpVersion: pulumi.String("IPv4"),
 //			})

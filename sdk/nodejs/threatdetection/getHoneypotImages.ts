@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.threatdetection.getHoneypotImages({
+ * const _default = alicloud.threatdetection.getHoneypotImages({
  *     ids: ["sha256:02882320c9a55303410127c5dc4ae2dc470150f9d7f2483102d994f5e5f4d9df"],
  *     nameRegex: "^meta",
  * });
@@ -89,7 +89,7 @@ export interface GetHoneypotImagesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.threatdetection.getHoneypotImages({
+ * const _default = alicloud.threatdetection.getHoneypotImages({
  *     ids: ["sha256:02882320c9a55303410127c5dc4ae2dc470150f9d7f2483102d994f5e5f4d9df"],
  *     nameRegex: "^meta",
  * });

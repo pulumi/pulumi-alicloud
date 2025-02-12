@@ -34,7 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := apigateway.NewGroup(ctx, "default", &apigateway.GroupArgs{
+//			_default, err := apigateway.NewGroup(ctx, "default", &apigateway.GroupArgs{
 //				Name:        pulumi.String("example_value"),
 //				Description: pulumi.String("example_value"),
 //			})

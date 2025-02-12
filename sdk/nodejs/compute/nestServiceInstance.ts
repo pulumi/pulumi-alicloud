@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tfexample";
- * const default = alicloud.resourcemanager.getResourceGroups({});
+ * const _default = alicloud.resourcemanager.getResourceGroups({});
  * const defaultGetZones = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",

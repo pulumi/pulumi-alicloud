@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const creation = config.get("creation") || "Rds";
  * const name = config.get("name") || "dbaccountmysql";
- * const default = alicloud.getZones({
+ * const _default = alicloud.getZones({
  *     availableResourceCreation: creation,
  * });
  * const defaultNetwork = new alicloud.vpc.Network("default", {

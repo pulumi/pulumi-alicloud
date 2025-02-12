@@ -40,7 +40,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := message.NewServiceTopic(ctx, "default", &message.ServiceTopicArgs{
+//			_default, err := message.NewServiceTopic(ctx, "default", &message.ServiceTopicArgs{
 //				TopicName:      pulumi.String(name),
 //				MaxMessageSize: pulumi.Int(12357),
 //				LoggingEnabled: pulumi.Bool(true),

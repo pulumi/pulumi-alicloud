@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *     min: 10000,
  *     max: 99999,
  * });
- * const default = alicloud.getZones({
+ * const _default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
  * const defaultNetwork = new alicloud.vpc.Network("default", {cidrBlock: "172.16.0.0/12"});

@@ -44,7 +44,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := eventbridge.NewConnection(ctx, "default", &eventbridge.ConnectionArgs{
+//			_default, err := eventbridge.NewConnection(ctx, "default", &eventbridge.ConnectionArgs{
 //				ConnectionName: pulumi.String(name),
 //				NetworkParameters: &eventbridge.ConnectionNetworkParametersArgs{
 //					NetworkType: pulumi.String("PublicNetwork"),

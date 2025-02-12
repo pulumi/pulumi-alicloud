@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.gwlb.getZones({});
+ * const _default = alicloud.gwlb.getZones({});
  * export const alicloudGwlbZoneExampleId = _default.then(_default => _default.zones?.[0]?.id);
  * ```
  */
@@ -82,7 +82,7 @@ export interface GetZonesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.gwlb.getZones({});
+ * const _default = alicloud.gwlb.getZones({});
  * export const alicloudGwlbZoneExampleId = _default.then(_default => _default.zones?.[0]?.id);
  * ```
  */

@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const default = alicloud.resourcemanager.getResourceGroups({
+ * const _default = alicloud.resourcemanager.getResourceGroups({
  *     status: "OK",
  * });
  * const defaultPublicIpAddressPool = new alicloud.vpc.PublicIpAddressPool("default", {

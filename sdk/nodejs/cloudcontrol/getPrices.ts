@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const default = alicloud.cloudcontrol.getPrices({
+ * const _default = alicloud.cloudcontrol.getPrices({
  *     desireAttributes: {
  *         AddressType: "internet",
  *         PaymentType: "PayAsYouGo",
@@ -92,7 +92,7 @@ export interface GetPricesResult {
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const default = alicloud.cloudcontrol.getPrices({
+ * const _default = alicloud.cloudcontrol.getPrices({
  *     desireAttributes: {
  *         AddressType: "internet",
  *         PaymentType: "PayAsYouGo",

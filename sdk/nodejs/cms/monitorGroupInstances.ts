@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *     cidrBlock: "192.168.0.0/16",
  * });
  * const defaultMonitorGroup = new alicloud.cms.MonitorGroup("default", {monitorGroupName: name});
- * const default = alicloud.getRegions({
+ * const _default = alicloud.getRegions({
  *     current: true,
  * });
  * const example = new alicloud.cms.MonitorGroupInstances("example", {

@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
- * const default = alicloud.getZones({
+ * const _default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
  * const defaultGetNetworks = alicloud.vpc.getNetworks({

@@ -40,7 +40,7 @@ import (
 //			if param := cfg.Get("region"); param != "" {
 //				region = param
 //			}
-//			_, err := ga.NewBasicAccelerator(ctx, "default", &ga.BasicAcceleratorArgs{
+//			_default, err := ga.NewBasicAccelerator(ctx, "default", &ga.BasicAcceleratorArgs{
 //				Duration:             pulumi.Int(1),
 //				BasicAcceleratorName: pulumi.String("terraform-example"),
 //				Description:          pulumi.String("terraform-example"),

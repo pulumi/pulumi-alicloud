@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
- * const default = alicloud.vpc.getNetworks({
+ * const _default = alicloud.vpc.getNetworks({
  *     nameRegex: "default-NODELETING",
  * });
  * const defaultGetRegions = alicloud.getRegions({

@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.ecp.getZones({});
+ * const _default = alicloud.ecp.getZones({});
  * export const alicloudNasZonesId = _default.then(_default => _default.zones?.[0]?.zoneId);
  * ```
  */
@@ -65,7 +65,7 @@ export interface GetZonesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.ecp.getZones({});
+ * const _default = alicloud.ecp.getZones({});
  * export const alicloudNasZonesId = _default.then(_default => _default.zones?.[0]?.zoneId);
  * ```
  */

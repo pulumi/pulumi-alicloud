@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.vpc.getNetworks({
+ * const _default = alicloud.vpc.getNetworks({
  *     nameRegex: "default-NODELETING",
  * });
  * const defaultGetSwitches = _default.then(_default => alicloud.vpc.getSwitches({
@@ -109,7 +109,7 @@ export interface GetGatewaySmbUsersResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.vpc.getNetworks({
+ * const _default = alicloud.vpc.getNetworks({
  *     nameRegex: "default-NODELETING",
  * });
  * const defaultGetSwitches = _default.then(_default => alicloud.vpc.getSwitches({

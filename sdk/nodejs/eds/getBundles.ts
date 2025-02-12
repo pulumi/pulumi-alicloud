@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.eds.getBundles({
+ * const _default = alicloud.eds.getBundles({
  *     bundleType: "SYSTEM",
  * });
  * ```
@@ -88,7 +88,7 @@ export interface GetBundlesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.eds.getBundles({
+ * const _default = alicloud.eds.getBundles({
  *     bundleType: "SYSTEM",
  * });
  * ```

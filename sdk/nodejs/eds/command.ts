@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  *         cidrIp: "1.2.3.4/24",
  *     }],
  * });
- * const default = alicloud.eds.getBundles({
+ * const _default = alicloud.eds.getBundles({
  *     bundleType: "SYSTEM",
  * });
  * const defaultDesktop = new alicloud.eds.Desktop("default", {

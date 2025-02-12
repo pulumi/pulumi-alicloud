@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *     desktopAccessType: "Internet",
  *     officeSiteName: "your_simple_office_site_name",
  * });
- * const default = alicloud.eds.getBundles({
+ * const _default = alicloud.eds.getBundles({
  *     bundleType: "SYSTEM",
  * });
  * const defaultEcdPolicyGroup = new alicloud.eds.EcdPolicyGroup("default", {
@@ -150,7 +150,7 @@ export interface GetImagesResult {
  *     desktopAccessType: "Internet",
  *     officeSiteName: "your_simple_office_site_name",
  * });
- * const default = alicloud.eds.getBundles({
+ * const _default = alicloud.eds.getBundles({
  *     bundleType: "SYSTEM",
  * });
  * const defaultEcdPolicyGroup = new alicloud.eds.EcdPolicyGroup("default", {

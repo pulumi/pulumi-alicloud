@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ram.NewGroup(ctx, "default", &ram.GroupArgs{
+//			_default, err := ram.NewGroup(ctx, "default", &ram.GroupArgs{
 //				Name:     pulumi.String("group1"),
 //				Comments: pulumi.String("group comments"),
 //				Force:    pulumi.Bool(true),

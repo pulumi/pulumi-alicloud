@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     code: "access_failed_cnt",
  *     value: "10",
  * });
- * const default = alicloud.sddp.getConfigsOutput({
+ * const _default = alicloud.sddp.getConfigsOutput({
  *     ids: [defaultConfig.id],
  *     outputFile: "./t.json",
  * });
@@ -88,7 +88,7 @@ export interface GetConfigsResult {
  *     code: "access_failed_cnt",
  *     value: "10",
  * });
- * const default = alicloud.sddp.getConfigsOutput({
+ * const _default = alicloud.sddp.getConfigsOutput({
  *     ids: [defaultConfig.id],
  *     outputFile: "./t.json",
  * });

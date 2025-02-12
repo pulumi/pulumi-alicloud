@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.expressconnect.getVbrPconnAssociations({
+ * const _default = alicloud.expressconnect.getVbrPconnAssociations({
  *     ids: ["example_id"],
  *     vbrId: defaultAlicloudExpressConnectVbrPconnAssociation.vbrId,
  * });
@@ -88,7 +88,7 @@ export interface GetVbrPconnAssociationsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.expressconnect.getVbrPconnAssociations({
+ * const _default = alicloud.expressconnect.getVbrPconnAssociations({
  *     ids: ["example_id"],
  *     vbrId: defaultAlicloudExpressConnectVbrPconnAssociation.vbrId,
  * });

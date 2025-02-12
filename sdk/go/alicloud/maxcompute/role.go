@@ -42,7 +42,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := maxcompute.NewProject(ctx, "default", &maxcompute.ProjectArgs{
+//			_default, err := maxcompute.NewProject(ctx, "default", &maxcompute.ProjectArgs{
 //				DefaultQuota: pulumi.String("默认后付费Quota"),
 //				ProjectName:  pulumi.String(name),
 //				Comment:      pulumi.String(name),

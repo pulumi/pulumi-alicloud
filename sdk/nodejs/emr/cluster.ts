@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.emr.getMainVersions({});
+ * const _default = alicloud.emr.getMainVersions({});
  * const defaultGetInstanceTypes = _default.then(_default => alicloud.emr.getInstanceTypes({
  *     destinationResource: "InstanceType",
  *     clusterType: _default.mainVersions?.[0]?.clusterTypes?.[0],
@@ -158,7 +158,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.emr.getMainVersions({});
+ * const _default = alicloud.emr.getMainVersions({});
  * const defaultGetInstanceTypes = _default.then(_default => alicloud.emr.getInstanceTypes({
  *     destinationResource: "InstanceType",
  *     clusterType: _default.mainVersions?.[0]?.clusterTypes?.[0],
@@ -293,7 +293,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.emr.getMainVersions({});
+ * const _default = alicloud.emr.getMainVersions({});
  * const defaultGetInstanceTypes = _default.then(_default => alicloud.emr.getInstanceTypes({
  *     destinationResource: "InstanceType",
  *     clusterType: _default.mainVersions?.[0]?.clusterTypes?.[0],
@@ -422,7 +422,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.emr.getMainVersions({});
+ * const _default = alicloud.emr.getMainVersions({});
  * const defaultGetInstanceTypes = _default.then(_default => alicloud.emr.getInstanceTypes({
  *     destinationResource: "InstanceType",
  *     clusterType: _default.mainVersions?.[0]?.clusterTypes?.[0],

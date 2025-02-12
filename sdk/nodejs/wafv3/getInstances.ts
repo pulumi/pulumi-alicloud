@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.wafv3.getInstances({});
+ * const _default = alicloud.wafv3.getInstances({});
  * export const alicloudWafv3InstanceExampleId = _default.then(_default => _default.instances?.[0]?.id);
  * ```
  */
@@ -73,7 +73,7 @@ export interface GetInstancesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.wafv3.getInstances({});
+ * const _default = alicloud.wafv3.getInstances({});
  * export const alicloudWafv3InstanceExampleId = _default.then(_default => _default.instances?.[0]?.id);
  * ```
  */

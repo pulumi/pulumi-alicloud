@@ -38,7 +38,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//			_default, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
 //				Max: 99999,
 //				Min: 10000,
 //			})
@@ -137,7 +137,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//			_default, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
 //				Max: 99999,
 //				Min: 10000,
 //			})
@@ -295,7 +295,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//			_default, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
 //				Max: 99999,
 //				Min: 10000,
 //			})

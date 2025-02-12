@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *     startTime: "05:00:00",
  *     riskSubTypeName: "hc_exploit_redis",
  * });
- * const default = defaultBaselineStrategy.id.apply(id => alicloud.threatdetection.getBaselineStrategiesOutput({
+ * const _default = defaultBaselineStrategy.id.apply(id => alicloud.threatdetection.getBaselineStrategiesOutput({
  *     ids: [id],
  *     nameRegex: defaultBaselineStrategy.name,
  *     customType: "custom",
@@ -116,7 +116,7 @@ export interface GetBaselineStrategiesResult {
  *     startTime: "05:00:00",
  *     riskSubTypeName: "hc_exploit_redis",
  * });
- * const default = defaultBaselineStrategy.id.apply(id => alicloud.threatdetection.getBaselineStrategiesOutput({
+ * const _default = defaultBaselineStrategy.id.apply(id => alicloud.threatdetection.getBaselineStrategiesOutput({
  *     ids: [id],
  *     nameRegex: defaultBaselineStrategy.name,
  *     customType: "custom",

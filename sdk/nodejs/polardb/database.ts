@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.polardb.getNodeClasses({
+ * const _default = alicloud.polardb.getNodeClasses({
  *     dbType: "MySQL",
  *     dbVersion: "8.0",
  *     payType: "PostPaid",

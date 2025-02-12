@@ -69,7 +69,7 @@ import * as utilities from "../utilities";
  * `,
  *     force: true,
  * });
- * const default = alicloud.getAccount({});
+ * const _default = alicloud.getAccount({});
  * const example = new alicloud.hbr.OtsBackupPlan("example", {
  *     otsBackupPlanName: `terraform-example-${defaultInteger.result}`,
  *     vaultId: defaultVault.id,

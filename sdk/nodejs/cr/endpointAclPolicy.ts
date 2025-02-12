@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  *     instanceType: "Advanced",
  *     instanceName: `${name}-${defaultInteger.result}`,
  * });
- * const default = alicloud.cr.getEndpointAclServiceOutput({
+ * const _default = alicloud.cr.getEndpointAclServiceOutput({
  *     endpointType: "internet",
  *     enable: true,
  *     instanceId: defaultRegistryEnterpriseInstance.id,

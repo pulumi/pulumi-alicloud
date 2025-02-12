@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.ddos.getDdosCooInstances({
+ * const _default = alicloud.ddos.getDdosCooInstances({
  *     nameRegex: "tf",
  * });
  * export const instance = _default.then(_default => _default.instances.map(__item => __item.id));
@@ -86,7 +86,7 @@ export interface GetDdosCooInstancesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.ddos.getDdosCooInstances({
+ * const _default = alicloud.ddos.getDdosCooInstances({
  *     nameRegex: "tf",
  * });
  * export const instance = _default.then(_default => _default.instances.map(__item => __item.id));

@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.getMscSubSubscriptions({});
+ * const _default = alicloud.getMscSubSubscriptions({});
  * export const mscSubSubscriptionId1 = _default.then(_default => _default.subscriptions?.[0]?.id);
  * ```
  */
@@ -68,7 +68,7 @@ export interface GetMscSubSubscriptionsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.getMscSubSubscriptions({});
+ * const _default = alicloud.getMscSubSubscriptions({});
  * export const mscSubSubscriptionId1 = _default.then(_default => _default.subscriptions?.[0]?.id);
  * ```
  */

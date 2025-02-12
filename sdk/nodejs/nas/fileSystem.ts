@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const default = alicloud.nas.getZones({
+ * const _default = alicloud.nas.getZones({
  *     fileSystemType: "standard",
  * });
  * const defaultFileSystem = new alicloud.nas.FileSystem("default", {
@@ -49,7 +49,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const default = alicloud.nas.getZones({
+ * const _default = alicloud.nas.getZones({
  *     fileSystemType: "extreme",
  * });
  * const defaultFileSystem = new alicloud.nas.FileSystem("default", {
@@ -69,7 +69,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const default = alicloud.nas.getZones({
+ * const _default = alicloud.nas.getZones({
  *     fileSystemType: "cpfs",
  * });
  * const defaultNetwork = new alicloud.vpc.Network("default", {

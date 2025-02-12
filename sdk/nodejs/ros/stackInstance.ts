@@ -23,8 +23,8 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const this = alicloud.getAccount({});
- * const default = alicloud.ros.getRegions({});
+ * const _this = alicloud.getAccount({});
+ * const _default = alicloud.ros.getRegions({});
  * const defaultStackGroup = new alicloud.ros.StackGroup("default", {
  *     stackGroupName: name,
  *     templateBody: "{\"ROSTemplateFormatVersion\":\"2015-09-01\", \"Parameters\": {\"VpcName\": {\"Type\": \"String\"},\"InstanceType\": {\"Type\": \"String\"}}}",

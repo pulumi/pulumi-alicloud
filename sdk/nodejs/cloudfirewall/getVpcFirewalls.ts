@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.cloudfirewall.getVpcFirewalls({
+ * const _default = alicloud.cloudfirewall.getVpcFirewalls({
  *     ids: ["id-example"],
  *     memberUid: "1415189284827022",
  *     status: "closed",
@@ -148,7 +148,7 @@ export interface GetVpcFirewallsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.cloudfirewall.getVpcFirewalls({
+ * const _default = alicloud.cloudfirewall.getVpcFirewalls({
  *     ids: ["id-example"],
  *     memberUid: "1415189284827022",
  *     status: "closed",

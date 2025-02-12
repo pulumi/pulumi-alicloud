@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
- * const default = alicloud.cen.getTransitRouterAvailableResources({});
+ * const _default = alicloud.cen.getTransitRouterAvailableResources({});
  * const zone = _default.then(_default => _default.resources?.[0]?.masterZones?.[1]);
  * const example = new alicloud.vpc.Network("example", {
  *     vpcName: name,

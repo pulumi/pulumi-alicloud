@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const region = config.get("region") || "cn-chengdu";
  * const name = config.get("name") || "terraform-example";
- * const default = alicloud.getZones({});
+ * const _default = alicloud.getZones({});
  * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "172.16.0.0/16",

@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * const anotherUid = config.get("anotherUid") || "xxxx";
  * const yourAccount = alicloud.getAccount({});
  * const childAccount = alicloud.getAccount({});
- * const default = alicloud.getRegions({
+ * const _default = alicloud.getRegions({
  *     current: true,
  * });
  * const example = new alicloud.cen.Instance("example", {

@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := arms.NewAlertRobot(ctx, "default", &arms.AlertRobotArgs{
+//			_default, err := arms.NewAlertRobot(ctx, "default", &arms.AlertRobotArgs{
 //				AlertRobotName: pulumi.String("my-AlertRobot"),
 //				RobotType:      pulumi.String("wechat"),
 //				RobotAddr:      pulumi.String("https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=1c704e23"),

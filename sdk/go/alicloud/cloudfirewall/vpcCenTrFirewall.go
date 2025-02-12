@@ -145,7 +145,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cen.NewTransitRouterVpcAttachment(ctx, "tr-vpc1", &cen.TransitRouterVpcAttachmentArgs{
+//			tr_vpc1, err := cen.NewTransitRouterVpcAttachment(ctx, "tr-vpc1", &cen.TransitRouterVpcAttachmentArgs{
 //				ZoneMappings: cen.TransitRouterVpcAttachmentZoneMappingArray{
 //					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
 //						VswitchId: vpc1vsw1.ID(),

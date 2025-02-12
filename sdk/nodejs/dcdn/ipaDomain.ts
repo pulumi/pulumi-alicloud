@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *     min: 10000,
  *     max: 99999,
  * });
- * const default = alicloud.resourcemanager.getResourceGroups({});
+ * const _default = alicloud.resourcemanager.getResourceGroups({});
  * const example = new alicloud.dcdn.IpaDomain("example", {
  *     domainName: `example-${defaultInteger.result}.com`,
  *     resourceGroupId: _default.then(_default => _default.groups?.[0]?.id),

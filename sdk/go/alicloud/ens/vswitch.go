@@ -40,7 +40,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := ens.NewNetwork(ctx, "default", &ens.NetworkArgs{
+//			_default, err := ens.NewNetwork(ctx, "default", &ens.NetworkArgs{
 //				NetworkName: pulumi.String(name),
 //				Description: pulumi.String(name),
 //				CidrBlock:   pulumi.String("192.168.2.0/24"),

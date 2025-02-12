@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const region = config.get("region") || "cn-hangzhou";
  * const name = config.get("name") || "tf-example";
- * const default = alicloud.getRegions({
+ * const _default = alicloud.getRegions({
  *     current: true,
  * });
  * const example = new alicloud.ga.Accelerator("example", {

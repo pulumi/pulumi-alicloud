@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.ecs.getInstanceTypes({
+ * const _default = alicloud.ecs.getInstanceTypes({
  *     instanceTypeFamily: "ecs.g5",
  * });
  * const defaultGetZones = _default.then(_default => alicloud.getZones({

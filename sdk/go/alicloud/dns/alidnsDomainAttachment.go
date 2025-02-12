@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dns.NewDomainGroup(ctx, "default", &dns.DomainGroupArgs{
+//			_default, err := dns.NewDomainGroup(ctx, "default", &dns.DomainGroupArgs{
 //				DomainGroupName: pulumi.String("tf-example"),
 //			})
 //			if err != nil {

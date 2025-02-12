@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *     vpcName: name,
  *     cidrBlock: "192.168.0.0/24",
  * });
- * const default = alicloud.getZones({
+ * const _default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
  * const vswitch = new alicloud.vpc.Switch("vswitch", {
@@ -245,7 +245,7 @@ export interface GetNetworkInterfacesResult {
  *     vpcName: name,
  *     cidrBlock: "192.168.0.0/24",
  * });
- * const default = alicloud.getZones({
+ * const _default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
  * const vswitch = new alicloud.vpc.Switch("vswitch", {

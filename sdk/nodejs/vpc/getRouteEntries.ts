@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.getZones({
+ * const _default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
  * const defaultGetInstanceTypes = _default.then(_default => alicloud.ecs.getInstanceTypes({
@@ -158,7 +158,7 @@ export interface GetRouteEntriesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.getZones({
+ * const _default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
  * const defaultGetInstanceTypes = _default.then(_default => alicloud.ecs.getInstanceTypes({

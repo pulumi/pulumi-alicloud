@@ -56,7 +56,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = log.NewProject(ctx, "default", &log.ProjectArgs{
+//			_default, err := log.NewProject(ctx, "default", &log.ProjectArgs{
 //				ProjectName: pulumi.String(name),
 //			})
 //			if err != nil {

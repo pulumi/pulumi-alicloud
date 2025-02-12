@@ -40,7 +40,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := cms.NewMonitorGroup(ctx, "default", &cms.MonitorGroupArgs{
+//			_default, err := cms.NewMonitorGroup(ctx, "default", &cms.MonitorGroupArgs{
 //				MonitorGroupName: pulumi.String(name),
 //			})
 //			if err != nil {

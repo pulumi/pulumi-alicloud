@@ -45,7 +45,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := random.NewUuid(ctx, "default", nil)
+//			_default, err := random.NewUuid(ctx, "default", nil)
 //			if err != nil {
 //				return err
 //			}

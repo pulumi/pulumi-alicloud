@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const default = alicloud.getRegions({
+ * const _default = alicloud.getRegions({
  *     current: true,
  * });
  * const defaultGetRegions = _default.then(_default => alicloud.ebs.getRegions({

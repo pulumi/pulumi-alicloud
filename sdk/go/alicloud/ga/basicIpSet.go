@@ -40,7 +40,7 @@ import (
 //			if param := cfg.Get("region"); param != "" {
 //				region = param
 //			}
-//			_, err := ga.NewBasicAccelerator(ctx, "default", &ga.BasicAcceleratorArgs{
+//			_default, err := ga.NewBasicAccelerator(ctx, "default", &ga.BasicAcceleratorArgs{
 //				Duration:             pulumi.Int(1),
 //				PricingCycle:         pulumi.String("Month"),
 //				BandwidthBillingType: pulumi.String("CDT"),

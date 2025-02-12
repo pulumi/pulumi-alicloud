@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const default = alicloud.eds.getImages({
+ * const _default = alicloud.eds.getImages({
  *     imageType: "SYSTEM",
  *     osType: "Windows",
  *     desktopInstanceType: "eds.hf.4c8g",

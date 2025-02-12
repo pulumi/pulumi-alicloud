@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.wafv3.getInstances({});
+ * const _default = alicloud.wafv3.getInstances({});
  * const ids = _default.then(_default => alicloud.wafv3.getDomains({
  *     instanceId: _default.ids?.[0],
  *     ids: ["example_id"],
@@ -115,7 +115,7 @@ export interface GetDomainsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.wafv3.getInstances({});
+ * const _default = alicloud.wafv3.getInstances({});
  * const ids = _default.then(_default => alicloud.wafv3.getDomains({
  *     instanceId: _default.ids?.[0],
  *     ids: ["example_id"],

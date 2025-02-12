@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.getAccount({});
+ * const _default = alicloud.getAccount({});
  * const source = new alicloud.cms.Namespace("source", {namespace: "your-source-namespace"});
  * const defaultNamespace = new alicloud.cms.Namespace("default", {namespace: "your-namespace"});
  * const defaultServiceHybridDoubleWrite = new alicloud.cloudmonitor.ServiceHybridDoubleWrite("default", {
@@ -121,7 +121,7 @@ export interface GetServiceHybridDoubleWritesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.getAccount({});
+ * const _default = alicloud.getAccount({});
  * const source = new alicloud.cms.Namespace("source", {namespace: "your-source-namespace"});
  * const defaultNamespace = new alicloud.cms.Namespace("default", {namespace: "your-namespace"});
  * const defaultServiceHybridDoubleWrite = new alicloud.cloudmonitor.ServiceHybridDoubleWrite("default", {

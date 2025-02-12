@@ -43,7 +43,7 @@ import (
 //				name = param
 //			}
 //			zoneId := "cn-hangzhou-h"
-//			_, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//			_default, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("192.168.0.0/16"),
 //			})

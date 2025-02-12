@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.servicecatalog.getProvisionedProducts({
+ * const _default = alicloud.servicecatalog.getProvisionedProducts({
  *     ids: ["IdExample"],
  *     nameRegex: "NameRegexExample",
  * });
@@ -126,7 +126,7 @@ export interface GetProvisionedProductsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.servicecatalog.getProvisionedProducts({
+ * const _default = alicloud.servicecatalog.getProvisionedProducts({
  *     ids: ["IdExample"],
  *     nameRegex: "NameRegexExample",
  * });

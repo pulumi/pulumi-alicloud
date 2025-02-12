@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const default = alicloud.vpn.getGateways({});
+ * const _default = alicloud.vpn.getGateways({});
  * const defaultCustomerGateway = new alicloud.vpn.CustomerGateway("defaultCustomerGateway", {
  *     description: "defaultCustomerGateway",
  *     ipAddress: "2.2.2.5",

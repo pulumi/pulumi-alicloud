@@ -38,7 +38,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := apigateway.NewAccessControlList(ctx, "default", &apigateway.AccessControlListArgs{
+//			_default, err := apigateway.NewAccessControlList(ctx, "default", &apigateway.AccessControlListArgs{
 //				AccessControlListName: pulumi.String(name),
 //				AddressIpVersion:      pulumi.String("ipv4"),
 //			})

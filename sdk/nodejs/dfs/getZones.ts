@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.dfs.getZones({});
+ * const _default = alicloud.dfs.getZones({});
  * ```
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
@@ -64,7 +64,7 @@ export interface GetZonesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.dfs.getZones({});
+ * const _default = alicloud.dfs.getZones({});
  * ```
  */
 export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZonesResult> {

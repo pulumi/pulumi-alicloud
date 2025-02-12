@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.eds.getSimpleOfficeSites({
+ * const _default = alicloud.eds.getSimpleOfficeSites({
  *     ids: ["example_id"],
  *     status: "REGISTERED",
  * });
@@ -87,7 +87,7 @@ export interface GetSimpleOfficeSitesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.eds.getSimpleOfficeSites({
+ * const _default = alicloud.eds.getSimpleOfficeSites({
  *     ids: ["example_id"],
  *     status: "REGISTERED",
  * });

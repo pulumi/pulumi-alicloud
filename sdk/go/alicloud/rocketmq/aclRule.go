@@ -42,7 +42,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := rocketmq.NewAcl(ctx, "default", &rocketmq.AclArgs{
+//			_default, err := rocketmq.NewAcl(ctx, "default", &rocketmq.AclArgs{
 //				Name: pulumi.String(name),
 //			})
 //			if err != nil {

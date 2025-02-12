@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
  * const spec = config.get("spec") || "5";
- * const default = alicloud.vpn.getGatewayZones({
+ * const _default = alicloud.vpn.getGatewayZones({
  *     spec: "5M",
  * });
  * const defaultNetwork = new alicloud.vpc.Network("default", {

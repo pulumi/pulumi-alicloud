@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *         For: "example",
  *     },
  * });
- * const default = alicloud.getZones({
+ * const _default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
  * const defaultNetwork = new alicloud.vpc.Network("default", {
