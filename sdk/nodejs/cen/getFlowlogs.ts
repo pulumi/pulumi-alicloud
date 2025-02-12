@@ -51,7 +51,7 @@ import * as utilities from "../utilities";
  *     transitRouterId: defaultVw2U9u.transitRouterId,
  *     description: "flowlog-resource-example-1",
  * });
- * const default = alicloud.cen.getFlowlogsOutput({
+ * const _default = alicloud.cen.getFlowlogsOutput({
  *     ids: [defaultFlowLog.id],
  * });
  * export const firstCenFlowlogId = _default.apply(_default => _default.flowlogs?.[0]?.id);
@@ -264,7 +264,7 @@ export interface GetFlowlogsResult {
  *     transitRouterId: defaultVw2U9u.transitRouterId,
  *     description: "flowlog-resource-example-1",
  * });
- * const default = alicloud.cen.getFlowlogsOutput({
+ * const _default = alicloud.cen.getFlowlogsOutput({
  *     ids: [defaultFlowLog.id],
  * });
  * export const firstCenFlowlogId = _default.apply(_default => _default.flowlogs?.[0]?.id);

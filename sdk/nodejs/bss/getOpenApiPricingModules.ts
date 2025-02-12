@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.bss.getOpenApiPricingModules({
+ * const _default = alicloud.bss.getOpenApiPricingModules({
  *     nameRegex: "国内月均日峰值带宽",
  *     productCode: "cdn",
  *     productType: "CDN",
@@ -101,7 +101,7 @@ export interface GetOpenApiPricingModulesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.bss.getOpenApiPricingModules({
+ * const _default = alicloud.bss.getOpenApiPricingModules({
  *     nameRegex: "国内月均日峰值带宽",
  *     productCode: "cdn",
  *     productType: "CDN",

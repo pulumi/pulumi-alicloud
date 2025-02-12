@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.cen.getTransitRouters({
+ * const _default = alicloud.cen.getTransitRouters({
  *     cenId: "cen-id1",
  * });
  * export const firstTransitRoutersType = _default.then(_default => _default.transitRouters?.[0]?.type);
@@ -114,7 +114,7 @@ export interface GetTransitRoutersResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.cen.getTransitRouters({
+ * const _default = alicloud.cen.getTransitRouters({
  *     cenId: "cen-id1",
  * });
  * export const firstTransitRoutersType = _default.then(_default => _default.transitRouters?.[0]?.type);

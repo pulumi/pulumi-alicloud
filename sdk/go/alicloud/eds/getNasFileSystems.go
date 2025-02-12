@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := eds.NewSimpleOfficeSite(ctx, "default", &eds.SimpleOfficeSiteArgs{
+//			_default, err := eds.NewSimpleOfficeSite(ctx, "default", &eds.SimpleOfficeSiteArgs{
 //				CidrBlock:            pulumi.String("172.16.0.0/12"),
 //				DesktopAccessType:    pulumi.String("Internet"),
 //				OfficeSiteName:       pulumi.String("your_office_site_name"),

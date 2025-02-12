@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.cddc.getDedicatedHostGroups({
+ * const _default = alicloud.cddc.getDedicatedHostGroups({
  *     engine: "MongoDB",
  * });
  * export const cddcDedicatedHostGroupId = _default.then(_default => _default.id);
@@ -86,7 +86,7 @@ export interface GetDedicatedHostGroupsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.cddc.getDedicatedHostGroups({
+ * const _default = alicloud.cddc.getDedicatedHostGroups({
  *     engine: "MongoDB",
  * });
  * export const cddcDedicatedHostGroupId = _default.then(_default => _default.id);

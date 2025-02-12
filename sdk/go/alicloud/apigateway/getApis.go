@@ -37,7 +37,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := apigateway.NewGroup(ctx, "default", &apigateway.GroupArgs{
+//			_default, err := apigateway.NewGroup(ctx, "default", &apigateway.GroupArgs{
 //				Name:        pulumi.String(name),
 //				Description: pulumi.String(name),
 //			})

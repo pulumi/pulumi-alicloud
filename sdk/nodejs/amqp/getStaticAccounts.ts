@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.amqp.getStaticAccounts({
+ * const _default = alicloud.amqp.getStaticAccounts({
  *     instanceId: "amqp-cn-0ju2y01zs001",
  * });
  * export const alicloudAmqpStaticAccountExampleId = _default.then(_default => _default.accounts?.[0]?.id);
@@ -81,7 +81,7 @@ export interface GetStaticAccountsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.amqp.getStaticAccounts({
+ * const _default = alicloud.amqp.getStaticAccounts({
  *     instanceId: "amqp-cn-0ju2y01zs001",
  * });
  * export const alicloudAmqpStaticAccountExampleId = _default.then(_default => _default.accounts?.[0]?.id);

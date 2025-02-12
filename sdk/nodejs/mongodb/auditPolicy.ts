@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const default = alicloud.mongodb.getZones({});
+ * const _default = alicloud.mongodb.getZones({});
  * const index = _default.then(_default => _default.zones).length.then(length => length - 1);
  * const zoneId = _default.then(_default => _default.zones[index].id);
  * const defaultNetwork = new alicloud.vpc.Network("default", {

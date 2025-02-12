@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.sddp.getInstances({});
+ * const _default = alicloud.sddp.getInstances({});
  * export const sddpInstanceId = _default.then(_default => _default.instances?.[0]);
  * ```
  */
@@ -68,7 +68,7 @@ export interface GetInstancesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.sddp.getInstances({});
+ * const _default = alicloud.sddp.getInstances({});
  * export const sddpInstanceId = _default.then(_default => _default.instances?.[0]);
  * ```
  */

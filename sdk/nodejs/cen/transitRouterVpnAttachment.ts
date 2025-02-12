@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
- * const default = alicloud.cen.getTransitRouterAvailableResources({});
+ * const _default = alicloud.cen.getTransitRouterAvailableResources({});
  * const example = new alicloud.cen.Instance("example", {cenInstanceName: name});
  * const exampleTransitRouter = new alicloud.cen.TransitRouter("example", {
  *     cenId: example.id,

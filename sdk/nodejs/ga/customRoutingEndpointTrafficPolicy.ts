@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const region = config.get("region") || "cn-hangzhou";
  * const name = config.get("name") || "tf-example";
- * const default = alicloud.getZones({});
+ * const _default = alicloud.getZones({});
  * const defaultGetAccelerators = alicloud.ga.getAccelerators({
  *     status: "active",
  *     bandwidthBillingType: "BandwidthPackage",

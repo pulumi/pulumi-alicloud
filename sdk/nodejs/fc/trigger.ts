@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * const default = alicloud.getAccount({});
+ * const _default = alicloud.getAccount({});
  * const defaultGetRegions = alicloud.getRegions({
  *     current: true,
  * });
@@ -133,7 +133,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * const default = alicloud.getAccount({});
+ * const _default = alicloud.getAccount({});
  * const defaultGetRegions = alicloud.getRegions({
  *     current: true,
  * });
@@ -216,7 +216,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * const default = alicloud.getAccount({});
+ * const _default = alicloud.getAccount({});
  * const defaultInteger = new random.index.Integer("default", {
  *     max: 99999,
  *     min: 10000,
@@ -330,7 +330,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * const default = alicloud.getAccount({});
+ * const _default = alicloud.getAccount({});
  * const defaultGetRegions = alicloud.getRegions({
  *     current: true,
  * });

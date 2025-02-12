@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const default = alicloud.wafv3.getInstances({});
+ * const _default = alicloud.wafv3.getInstances({});
  * const defaultDefenseTemplate = new alicloud.wafv3.DefenseTemplate("default", {
  *     status: "1",
  *     instanceId: _default.then(_default => _default.ids?.[0]),

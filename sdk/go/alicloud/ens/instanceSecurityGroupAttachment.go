@@ -40,7 +40,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := ens.NewInstance(ctx, "default", &ens.InstanceArgs{
+//			_default, err := ens.NewInstance(ctx, "default", &ens.InstanceArgs{
 //				SystemDisk: &ens.InstanceSystemDiskArgs{
 //					Size: pulumi.Int(20),
 //				},

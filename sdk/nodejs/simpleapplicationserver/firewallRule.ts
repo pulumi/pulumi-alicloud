@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
- * const default = alicloud.simpleapplicationserver.getImages({});
+ * const _default = alicloud.simpleapplicationserver.getImages({});
  * const defaultGetServerPlans = alicloud.simpleapplicationserver.getServerPlans({});
  * const defaultInstance = new alicloud.simpleapplicationserver.Instance("default", {
  *     paymentType: "Subscription",

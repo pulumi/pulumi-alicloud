@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  *     pendingWindowInDays: 7,
  *     status: "Enabled",
  * });
- * const default = alicloud.getZones({
+ * const _default = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
  *     availableInstanceType: instanceType,

@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const default = alicloud.getRegions({
+ * const _default = alicloud.getRegions({
  *     current: true,
  * });
  * const defaultInteger = new random.index.Integer("default", {

@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *     cidrBlock: "172.16.0.0/12",
  *     vpcName: name,
  * });
- * const default = alicloud.getZones({
+ * const _default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
  * const fooSwitch = new alicloud.vpc.Switch("foo", {

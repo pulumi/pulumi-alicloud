@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.cms.getHybridMonitorDatas({
+ * const _default = alicloud.cms.getHybridMonitorDatas({
  *     namespace: "example_value",
  *     promSql: "AliyunEcs_cpu_total",
  *     start: "1657505665",
@@ -99,7 +99,7 @@ export interface GetHybridMonitorDatasResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.cms.getHybridMonitorDatas({
+ * const _default = alicloud.cms.getHybridMonitorDatas({
  *     namespace: "example_value",
  *     promSql: "AliyunEcs_cpu_total",
  *     start: "1657505665",

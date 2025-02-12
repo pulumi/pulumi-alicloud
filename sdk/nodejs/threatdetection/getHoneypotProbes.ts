@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  *     displayName: name,
  *     arp: true,
  * });
- * const default = alicloud.threatdetection.getHoneypotProbesOutput({
+ * const _default = alicloud.threatdetection.getHoneypotProbesOutput({
  *     ids: [defaultHoneypotProbe.id],
  *     displayName: name,
  *     probeType: "host_probe",
@@ -145,7 +145,7 @@ export interface GetHoneypotProbesResult {
  *     displayName: name,
  *     arp: true,
  * });
- * const default = alicloud.threatdetection.getHoneypotProbesOutput({
+ * const _default = alicloud.threatdetection.getHoneypotProbesOutput({
  *     ids: [defaultHoneypotProbe.id],
  *     displayName: name,
  *     probeType: "host_probe",

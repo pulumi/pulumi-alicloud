@@ -34,7 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := arms.NewAlertContact(ctx, "default", &arms.AlertContactArgs{
+//			_default, err := arms.NewAlertContact(ctx, "default", &arms.AlertContactArgs{
 //				AlertContactName: pulumi.String("example_value"),
 //				Email:            pulumi.String("example_value@aaa.com"),
 //			})

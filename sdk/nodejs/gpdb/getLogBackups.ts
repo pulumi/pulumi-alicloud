@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.gpdb.getInstances({
+ * const _default = alicloud.gpdb.getInstances({
  *     nameRegex: "^default-NODELETING$",
  * });
  * const defaultGetLogBackups = Promise.all([_default, _default]).then(([_default, _default1]) => alicloud.gpdb.getLogBackups({
@@ -113,7 +113,7 @@ export interface GetLogBackupsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.gpdb.getInstances({
+ * const _default = alicloud.gpdb.getInstances({
  *     nameRegex: "^default-NODELETING$",
  * });
  * const defaultGetLogBackups = Promise.all([_default, _default]).then(([_default, _default1]) => alicloud.gpdb.getLogBackups({

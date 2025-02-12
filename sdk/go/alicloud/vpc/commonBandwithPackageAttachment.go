@@ -35,7 +35,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := vpc.NewCommonBandwithPackage(ctx, "default", &vpc.CommonBandwithPackageArgs{
+//			_default, err := vpc.NewCommonBandwithPackage(ctx, "default", &vpc.CommonBandwithPackageArgs{
 //				Bandwidth:          pulumi.String("3"),
 //				InternetChargeType: pulumi.String("PayByTraffic"),
 //			})

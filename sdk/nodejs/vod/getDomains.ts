@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  *         key2: "value2",
  *     },
  * });
- * const default = alicloud.vod.getDomainsOutput({
+ * const _default = alicloud.vod.getDomainsOutput({
  *     ids: [defaultDomain.id],
  *     tags: {
  *         key1: "value1",
@@ -130,7 +130,7 @@ export interface GetDomainsResult {
  *         key2: "value2",
  *     },
  * });
- * const default = alicloud.vod.getDomainsOutput({
+ * const _default = alicloud.vod.getDomainsOutput({
  *     ids: [defaultDomain.id],
  *     tags: {
  *         key1: "value1",

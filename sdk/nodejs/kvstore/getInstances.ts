@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.kvstore.getInstances({
+ * const _default = alicloud.kvstore.getInstances({
  *     nameRegex: "testname",
  * });
  * export const firstInstanceName = _default.then(_default => _default.instances?.[0]?.name);
@@ -226,7 +226,7 @@ export interface GetInstancesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.kvstore.getInstances({
+ * const _default = alicloud.kvstore.getInstances({
  *     nameRegex: "testname",
  * });
  * export const firstInstanceName = _default.then(_default => _default.instances?.[0]?.name);

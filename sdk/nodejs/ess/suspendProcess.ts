@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *     max: 99999,
  * });
  * const myName = `${name}-${defaultInteger.result}`;
- * const default = alicloud.getZones({
+ * const _default = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
  * });

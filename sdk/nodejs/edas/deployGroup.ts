@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *     min: 10000,
  *     max: 99999,
  * });
- * const default = alicloud.getRegions({
+ * const _default = alicloud.getRegions({
  *     current: true,
  * });
  * const defaultNetwork = new alicloud.vpc.Network("default", {

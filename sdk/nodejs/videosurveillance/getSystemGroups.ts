@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *     playDomain: "your_plan_domain",
  *     pushDomain: "your_push_domain",
  * });
- * const default = alicloud.videosurveillance.getSystemGroupsOutput({
+ * const _default = alicloud.videosurveillance.getSystemGroupsOutput({
  *     ids: [defaultSystemGroup.id],
  * });
  * export const vsGroup = _default.apply(_default => _default.ids?.[0]);
@@ -112,7 +112,7 @@ export interface GetSystemGroupsResult {
  *     playDomain: "your_plan_domain",
  *     pushDomain: "your_push_domain",
  * });
- * const default = alicloud.videosurveillance.getSystemGroupsOutput({
+ * const _default = alicloud.videosurveillance.getSystemGroupsOutput({
  *     ids: [defaultSystemGroup.id],
  * });
  * export const vsGroup = _default.apply(_default => _default.ids?.[0]);

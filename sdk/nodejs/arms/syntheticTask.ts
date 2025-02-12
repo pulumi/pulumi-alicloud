@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const default = alicloud.resourcemanager.getResourceGroups({});
+ * const _default = alicloud.resourcemanager.getResourceGroups({});
  * const defaultSyntheticTask = new alicloud.arms.SyntheticTask("default", {
  *     monitors: [{
  *         cityCode: "1200101",

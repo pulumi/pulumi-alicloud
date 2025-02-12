@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.ecs.getInstances({
+ * const _default = alicloud.ecs.getInstances({
  *     nameRegex: "no-deleteing-hbr-ecs-server-backup-plan",
  *     status: "Running",
  * });
@@ -86,7 +86,7 @@ export interface GetServerBackupPlansResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.ecs.getInstances({
+ * const _default = alicloud.ecs.getInstances({
  *     nameRegex: "no-deleteing-hbr-ecs-server-backup-plan",
  *     status: "Running",
  * });

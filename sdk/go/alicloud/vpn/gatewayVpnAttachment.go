@@ -40,7 +40,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := vpn.NewCustomerGateway(ctx, "default", &vpn.CustomerGatewayArgs{
+//			_default, err := vpn.NewCustomerGateway(ctx, "default", &vpn.CustomerGatewayArgs{
 //				CustomerGatewayName: pulumi.String(name),
 //				IpAddress:           pulumi.String("42.104.22.210"),
 //				Asn:                 pulumi.String("45014"),

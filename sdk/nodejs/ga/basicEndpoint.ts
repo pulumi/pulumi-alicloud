@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const region = config.get("region") || "cn-shenzhen";
  * const endpointRegion = config.get("endpointRegion") || "cn-hangzhou";
- * const default = alicloud.getZones({
+ * const _default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
  * const defaultNetwork = new alicloud.vpc.Network("default", {

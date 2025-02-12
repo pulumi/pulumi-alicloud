@@ -55,7 +55,7 @@ import * as utilities from "../utilities";
  *     max: 99999,
  *     min: 10000,
  * });
- * const default = alicloud.vpc.getNetworks({
+ * const _default = alicloud.vpc.getNetworks({
  *     nameRegex: "^default-NODELETING$",
  * });
  * const defaultGetSwitches = _default.then(_default => alicloud.vpc.getSwitches({

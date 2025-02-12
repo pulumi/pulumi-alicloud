@@ -35,7 +35,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := rocketmq.NewInstance(ctx, "default", &rocketmq.InstanceArgs{
+//			_default, err := rocketmq.NewInstance(ctx, "default", &rocketmq.InstanceArgs{
 //				Name:   pulumi.String(name),
 //				Remark: pulumi.String("default_ons_instance_remark"),
 //			})

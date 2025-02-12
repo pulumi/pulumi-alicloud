@@ -55,7 +55,7 @@ import (
 //			//	  secret_key = "secret_key"
 //			//	  alias      = "cen_account"
 //			//	}
-//			_, err := cloudconnect.NewNetwork(ctx, "default", &cloudconnect.NetworkArgs{
+//			_default, err := cloudconnect.NewNetwork(ctx, "default", &cloudconnect.NetworkArgs{
 //				Name:        pulumi.String(name),
 //				Description: pulumi.String(name),
 //				CidrBlock:   pulumi.String("192.168.0.0/24"),

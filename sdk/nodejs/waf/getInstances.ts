@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.waf.getInstances({
+ * const _default = alicloud.waf.getInstances({
  *     ids: ["waf-cn-09k********"],
  *     status: 1,
  *     resourceGroupId: "rg-acfmwvv********",
@@ -103,7 +103,7 @@ export interface GetInstancesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.waf.getInstances({
+ * const _default = alicloud.waf.getInstances({
  *     ids: ["waf-cn-09k********"],
  *     status: 1,
  *     resourceGroupId: "rg-acfmwvv********",

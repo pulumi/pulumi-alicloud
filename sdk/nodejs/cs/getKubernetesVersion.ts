@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * // Query the managed kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
- * const default = alicloud.cs.getKubernetesVersion({
+ * const _default = alicloud.cs.getKubernetesVersion({
  *     clusterType: "ManagedKubernetes",
  *     kubernetesVersion: "1.22.3-aliyun.1",
  *     profile: "Default",
@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * // Query the kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
- * const default = alicloud.cs.getKubernetesVersion({
+ * const _default = alicloud.cs.getKubernetesVersion({
  *     clusterType: "Kubernetes",
  *     kubernetesVersion: "1.22.3-aliyun.1",
  *     profile: "Default",
@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * // Query the serverless kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
- * const default = alicloud.cs.getKubernetesVersion({
+ * const _default = alicloud.cs.getKubernetesVersion({
  *     clusterType: "ManagedKubernetes",
  *     kubernetesVersion: "1.22.3-aliyun.1",
  *     profile: "Serverless",
@@ -57,7 +57,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * // Query the edge kubernetes cluster metadata of version 1.20.11-aliyunedge.1 in the region specified by the client.
- * const default = alicloud.cs.getKubernetesVersion({
+ * const _default = alicloud.cs.getKubernetesVersion({
  *     clusterType: "ManagedKubernetes",
  *     kubernetesVersion: "1.20.11-aliyunedge.1",
  *     profile: "Edge",
@@ -120,7 +120,7 @@ export interface GetKubernetesVersionResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * // Query the managed kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
- * const default = alicloud.cs.getKubernetesVersion({
+ * const _default = alicloud.cs.getKubernetesVersion({
  *     clusterType: "ManagedKubernetes",
  *     kubernetesVersion: "1.22.3-aliyun.1",
  *     profile: "Default",
@@ -133,7 +133,7 @@ export interface GetKubernetesVersionResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * // Query the kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
- * const default = alicloud.cs.getKubernetesVersion({
+ * const _default = alicloud.cs.getKubernetesVersion({
  *     clusterType: "Kubernetes",
  *     kubernetesVersion: "1.22.3-aliyun.1",
  *     profile: "Default",
@@ -146,7 +146,7 @@ export interface GetKubernetesVersionResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * // Query the serverless kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
- * const default = alicloud.cs.getKubernetesVersion({
+ * const _default = alicloud.cs.getKubernetesVersion({
  *     clusterType: "ManagedKubernetes",
  *     kubernetesVersion: "1.22.3-aliyun.1",
  *     profile: "Serverless",
@@ -159,7 +159,7 @@ export interface GetKubernetesVersionResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * // Query the edge kubernetes cluster metadata of version 1.20.11-aliyunedge.1 in the region specified by the client.
- * const default = alicloud.cs.getKubernetesVersion({
+ * const _default = alicloud.cs.getKubernetesVersion({
  *     clusterType: "ManagedKubernetes",
  *     kubernetesVersion: "1.20.11-aliyunedge.1",
  *     profile: "Edge",

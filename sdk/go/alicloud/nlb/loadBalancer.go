@@ -162,7 +162,7 @@ import (
 //				}
 //				vsw = append(vsw, __res)
 //			}
-//			_, err = vpc.NewIpv6Gateway(ctx, "default", &vpc.Ipv6GatewayArgs{
+//			_default, err := vpc.NewIpv6Gateway(ctx, "default", &vpc.Ipv6GatewayArgs{
 //				Ipv6GatewayName: pulumi.String(name),
 //				VpcId:           vpc.ID(),
 //			})

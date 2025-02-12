@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * export = async () => {
- *     const this = await alicloud.polardb.getNodeClasses({
+ *     const _this = await alicloud.polardb.getNodeClasses({
  *         dbType: "MySQL",
  *         dbVersion: "8.0",
  *         payType: "PostPaid",
@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  *         accountDescription: "tf_account_description",
  *         accountType: "Normal",
  *     });
- *     const default = pulumi.all([polardbClustersDs, account.accountName]).apply(([polardbClustersDs, accountName]) => alicloud.polardb.getAccountsOutput({
+ *     const _default = pulumi.all([polardbClustersDs, account.accountName]).apply(([polardbClustersDs, accountName]) => alicloud.polardb.getAccountsOutput({
  *         dbClusterId: polardbClustersDs.clusters?.[0]?.id,
  *         nameRegex: accountName,
  *     }));
@@ -118,7 +118,7 @@ export interface GetAccountsResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * export = async () => {
- *     const this = await alicloud.polardb.getNodeClasses({
+ *     const _this = await alicloud.polardb.getNodeClasses({
  *         dbType: "MySQL",
  *         dbVersion: "8.0",
  *         payType: "PostPaid",
@@ -153,7 +153,7 @@ export interface GetAccountsResult {
  *         accountDescription: "tf_account_description",
  *         accountType: "Normal",
  *     });
- *     const default = pulumi.all([polardbClustersDs, account.accountName]).apply(([polardbClustersDs, accountName]) => alicloud.polardb.getAccountsOutput({
+ *     const _default = pulumi.all([polardbClustersDs, account.accountName]).apply(([polardbClustersDs, accountName]) => alicloud.polardb.getAccountsOutput({
  *         dbClusterId: polardbClustersDs.clusters?.[0]?.id,
  *         nameRegex: accountName,
  *     }));

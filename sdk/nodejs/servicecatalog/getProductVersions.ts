@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.servicecatalog.getProductVersions({
+ * const _default = alicloud.servicecatalog.getProductVersions({
  *     nameRegex: "1.0.0",
  *     productId: "prod-bp125x4k29wb7q",
  * });
@@ -98,7 +98,7 @@ export interface GetProductVersionsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.servicecatalog.getProductVersions({
+ * const _default = alicloud.servicecatalog.getProductVersions({
  *     nameRegex: "1.0.0",
  *     productId: "prod-bp125x4k29wb7q",
  * });

@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * export = async () => {
- *     const default = await alicloud.ga.getAccelerators({
+ *     const _default = await alicloud.ga.getAccelerators({
  *         status: "active",
  *     });
  *     const defaultAccelerator: alicloud.ga.Accelerator[] = [];
@@ -123,7 +123,7 @@ export interface GetDomainsResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * export = async () => {
- *     const default = await alicloud.ga.getAccelerators({
+ *     const _default = await alicloud.ga.getAccelerators({
  *         status: "active",
  *     });
  *     const defaultAccelerator: alicloud.ga.Accelerator[] = [];

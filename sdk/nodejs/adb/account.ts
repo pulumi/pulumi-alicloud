@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const creation = config.get("creation") || "ADB";
  * const name = config.get("name") || "tfexample";
- * const default = alicloud.adb.getZones({});
+ * const _default = alicloud.adb.getZones({});
  * const defaultGetNetworks = alicloud.vpc.getNetworks({
  *     nameRegex: "^default-NODELETING$",
  * });

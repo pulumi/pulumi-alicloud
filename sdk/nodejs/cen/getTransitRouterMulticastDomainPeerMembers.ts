@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.cen.getTransitRouterMulticastDomainPeerMembers({
+ * const _default = alicloud.cen.getTransitRouterMulticastDomainPeerMembers({
  *     transitRouterMulticastDomainId: "tr-mcast-domain-2d9oq455uk533zfrxx",
  * });
  * export const alicloudCenTransitRouterMulticastDomainPeerMemberExampleId = _default.then(_default => _default.members?.[0]?.id);
@@ -110,7 +110,7 @@ export interface GetTransitRouterMulticastDomainPeerMembersResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.cen.getTransitRouterMulticastDomainPeerMembers({
+ * const _default = alicloud.cen.getTransitRouterMulticastDomainPeerMembers({
  *     transitRouterMulticastDomainId: "tr-mcast-domain-2d9oq455uk533zfrxx",
  * });
  * export const alicloudCenTransitRouterMulticastDomainPeerMemberExampleId = _default.then(_default => _default.members?.[0]?.id);

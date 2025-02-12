@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.emr.getInstanceTypes({
+ * const _default = alicloud.emr.getInstanceTypes({
  *     destinationResource: "InstanceType",
  *     instanceChargeType: "PostPaid",
  *     supportLocalStorage: false,
@@ -125,7 +125,7 @@ export interface GetInstanceTypesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.emr.getInstanceTypes({
+ * const _default = alicloud.emr.getInstanceTypes({
  *     destinationResource: "InstanceType",
  *     instanceChargeType: "PostPaid",
  *     supportLocalStorage: false,

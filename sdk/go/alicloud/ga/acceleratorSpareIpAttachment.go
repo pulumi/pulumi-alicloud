@@ -34,7 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ga.NewAccelerator(ctx, "default", &ga.AcceleratorArgs{
+//			_default, err := ga.NewAccelerator(ctx, "default", &ga.AcceleratorArgs{
 //				Duration:        pulumi.Int(1),
 //				Spec:            pulumi.String("1"),
 //				AcceleratorName: pulumi.String("terraform-example"),

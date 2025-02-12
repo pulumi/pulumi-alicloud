@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const default = alicloud.resourcemanager.getResourceGroups({});
+ * const _default = alicloud.resourcemanager.getResourceGroups({});
  * const defaultIpamIpam = new alicloud.vpc.IpamIpam("default", {
  *     ipamDescription: "This is my first Ipam.",
  *     ipamName: name,
@@ -133,7 +133,7 @@ export interface GetIpamIpamsResult {
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const default = alicloud.resourcemanager.getResourceGroups({});
+ * const _default = alicloud.resourcemanager.getResourceGroups({});
  * const defaultIpamIpam = new alicloud.vpc.IpamIpam("default", {
  *     ipamDescription: "This is my first Ipam.",
  *     ipamName: name,

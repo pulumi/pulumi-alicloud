@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-testacc";
- * const default = alicloud.getZones({
+ * const _default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
  * const vpc = new alicloud.vpc.Network("vpc", {
@@ -155,7 +155,7 @@ export interface GetApplicationsResult {
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-testacc";
- * const default = alicloud.getZones({
+ * const _default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
  * const vpc = new alicloud.vpc.Network("vpc", {

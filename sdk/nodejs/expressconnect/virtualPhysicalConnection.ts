@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  *     max: 2999,
  *     min: 1,
  * });
- * const default = alicloud.getAccount({});
+ * const _default = alicloud.getAccount({});
  * const exampleVirtualPhysicalConnection = new alicloud.expressconnect.VirtualPhysicalConnection("example", {
  *     virtualPhysicalConnectionName: name,
  *     description: name,

@@ -38,7 +38,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+//			_default, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				Name: pulumi.String("default"),
 //			})
 //			if err != nil {

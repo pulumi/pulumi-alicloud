@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.cms.getMetricRuleBlackLists({
+ * const _default = alicloud.cms.getMetricRuleBlackLists({
  *     ids: [defaultAlicloudCmsMetricRuleBlackLists.id],
  *     category: "ecs",
  *     namespace: "acs_ecs_dashboard",
@@ -123,7 +123,7 @@ export interface GetMetricRuleBlackListsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.cms.getMetricRuleBlackLists({
+ * const _default = alicloud.cms.getMetricRuleBlackLists({
  *     ids: [defaultAlicloudCmsMetricRuleBlackLists.id],
  *     category: "ecs",
  *     namespace: "acs_ecs_dashboard",

@@ -40,7 +40,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := esa.NewRatePlanInstance(ctx, "default", &esa.RatePlanInstanceArgs{
+//			_default, err := esa.NewRatePlanInstance(ctx, "default", &esa.RatePlanInstanceArgs{
 //				Type:        pulumi.String("NS"),
 //				AutoRenew:   pulumi.Bool(false),
 //				Period:      pulumi.Int(1),

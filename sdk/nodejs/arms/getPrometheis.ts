@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const default = alicloud.vpc.getNetworks({
+ * const _default = alicloud.vpc.getNetworks({
  *     nameRegex: "default-NODELETING",
  * });
  * const defaultGetSwitches = _default.then(_default => alicloud.vpc.getSwitches({
@@ -139,7 +139,7 @@ export interface GetPrometheisResult {
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const default = alicloud.vpc.getNetworks({
+ * const _default = alicloud.vpc.getNetworks({
  *     nameRegex: "default-NODELETING",
  * });
  * const defaultGetSwitches = _default.then(_default => alicloud.vpc.getSwitches({

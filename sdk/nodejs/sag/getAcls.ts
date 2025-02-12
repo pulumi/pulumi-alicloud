@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.sag.getAcls({
+ * const _default = alicloud.sag.getAcls({
  *     ids: [defaultAlicloudSagAcls.id],
  *     nameRegex: "^tf-testAcc.*",
  * });
@@ -91,7 +91,7 @@ export interface GetAclsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.sag.getAcls({
+ * const _default = alicloud.sag.getAcls({
  *     ids: [defaultAlicloudSagAcls.id],
  *     nameRegex: "^tf-testAcc.*",
  * });

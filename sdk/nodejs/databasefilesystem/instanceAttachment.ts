@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
  * const zoneId = "cn-hangzhou-i";
- * const default = alicloud.databasefilesystem.getInstances({});
+ * const _default = alicloud.databasefilesystem.getInstances({});
  * const defaultGetInstanceTypes = alicloud.ecs.getInstanceTypes({
  *     availabilityZone: zoneId,
  *     instanceTypeFamily: "ecs.g7se",

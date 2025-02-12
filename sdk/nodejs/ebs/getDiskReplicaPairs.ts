@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.ebs.getDiskReplicaPairs({
+ * const _default = alicloud.ebs.getDiskReplicaPairs({
  *     ids: [defaultAlicloudEbsDiskReplicaPair.id],
  * });
  * export const alicloudEbsDiskReplicaPairExampleId = _default.then(_default => _default.pairs?.[0]?.id);
@@ -87,7 +87,7 @@ export interface GetDiskReplicaPairsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.ebs.getDiskReplicaPairs({
+ * const _default = alicloud.ebs.getDiskReplicaPairs({
  *     ids: [defaultAlicloudEbsDiskReplicaPair.id],
  * });
  * export const alicloudEbsDiskReplicaPairExampleId = _default.then(_default => _default.pairs?.[0]?.id);

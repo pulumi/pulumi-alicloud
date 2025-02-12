@@ -38,7 +38,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := apigateway.NewInstance(ctx, "default", &apigateway.InstanceArgs{
+//			_default, err := apigateway.NewInstance(ctx, "default", &apigateway.InstanceArgs{
 //				InstanceName: pulumi.String(name),
 //				InstanceSpec: pulumi.String("api.s1.small"),
 //				HttpsPolicy:  pulumi.String("HTTPS2_TLS1_0"),

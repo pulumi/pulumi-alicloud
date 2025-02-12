@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const this = alicloud.polardb.getNodeClasses({
+ * const _this = alicloud.polardb.getNodeClasses({
  *     dbType: "MySQL",
  *     dbVersion: "8.0",
  *     payType: "PostPaid",
@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  *     descriptionRegex: cluster.description,
  *     status: "Running",
  * });
- * const default = polardbClustersDs.apply(polardbClustersDs => alicloud.polardb.getEndpointsOutput({
+ * const _default = polardbClustersDs.apply(polardbClustersDs => alicloud.polardb.getEndpointsOutput({
  *     dbClusterId: polardbClustersDs.clusters?.[0]?.id,
  * }));
  * export const endpoint = _default.apply(_default => _default.endpoints?.[0]?.dbEndpointId);
@@ -104,7 +104,7 @@ export interface GetEndpointsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const this = alicloud.polardb.getNodeClasses({
+ * const _this = alicloud.polardb.getNodeClasses({
  *     dbType: "MySQL",
  *     dbVersion: "8.0",
  *     payType: "PostPaid",
@@ -132,7 +132,7 @@ export interface GetEndpointsResult {
  *     descriptionRegex: cluster.description,
  *     status: "Running",
  * });
- * const default = polardbClustersDs.apply(polardbClustersDs => alicloud.polardb.getEndpointsOutput({
+ * const _default = polardbClustersDs.apply(polardbClustersDs => alicloud.polardb.getEndpointsOutput({
  *     dbClusterId: polardbClustersDs.clusters?.[0]?.id,
  * }));
  * export const endpoint = _default.apply(_default => _default.endpoints?.[0]?.dbEndpointId);

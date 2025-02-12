@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *     bandwidth: 10,
  *     officeSiteId: defaultSimpleOfficeSite.id,
  * });
- * const default = alicloud.eds.getNetworkPackagesOutput({
+ * const _default = alicloud.eds.getNetworkPackagesOutput({
  *     ids: [defaultNetworkPackage.id],
  * });
  * export const ecdNetworkPackageId1 = _default.apply(_default => _default.packages?.[0]?.id);
@@ -97,7 +97,7 @@ export interface GetNetworkPackagesResult {
  *     bandwidth: 10,
  *     officeSiteId: defaultSimpleOfficeSite.id,
  * });
- * const default = alicloud.eds.getNetworkPackagesOutput({
+ * const _default = alicloud.eds.getNetworkPackagesOutput({
  *     ids: [defaultNetworkPackage.id],
  * });
  * export const ecdNetworkPackageId1 = _default.apply(_default => _default.packages?.[0]?.id);

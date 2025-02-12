@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  *     storageType: "cloud_essd",
  *     vswitchId: "your_vswitch_id",
  * });
- * const default = alicloud.clickhouse.getDbClustersOutput({
+ * const _default = alicloud.clickhouse.getDbClustersOutput({
  *     ids: [defaultDbCluster.id],
  * });
  * export const dbCluster = _default.apply(_default => _default.ids?.[0]);
@@ -113,7 +113,7 @@ export interface GetDbClustersResult {
  *     storageType: "cloud_essd",
  *     vswitchId: "your_vswitch_id",
  * });
- * const default = alicloud.clickhouse.getDbClustersOutput({
+ * const _default = alicloud.clickhouse.getDbClustersOutput({
  *     ids: [defaultDbCluster.id],
  * });
  * export const dbCluster = _default.apply(_default => _default.ids?.[0]);

@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * const name = config.get("name") || "tf-example";
  * const region = "cn-hangzhou";
  * const zoneId = "cn-hangzhou-h";
- * const default = alicloud.getZones({
+ * const _default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
  * const defaultGetNetworks = alicloud.vpc.getNetworks({

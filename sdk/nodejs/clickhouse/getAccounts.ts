@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * const name = config.get("name") || "oneaccountname";
  * const pwd = config.get("pwd") || "Tf-onepwd";
  * const type = config.get("type") || "Normal";
- * const default = alicloud.clickhouse.getRegions({
+ * const _default = alicloud.clickhouse.getRegions({
  *     current: true,
  * });
  * const defaultNetwork = new alicloud.vpc.Network("default", {
@@ -145,7 +145,7 @@ export interface GetAccountsResult {
  * const name = config.get("name") || "oneaccountname";
  * const pwd = config.get("pwd") || "Tf-onepwd";
  * const type = config.get("type") || "Normal";
- * const default = alicloud.clickhouse.getRegions({
+ * const _default = alicloud.clickhouse.getRegions({
  *     current: true,
  * });
  * const defaultNetwork = new alicloud.vpc.Network("default", {

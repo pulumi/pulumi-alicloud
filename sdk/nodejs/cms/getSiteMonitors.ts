@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  * }
  * `,
  * });
- * const default = alicloud.cms.getSiteMonitorsOutput({
+ * const _default = alicloud.cms.getSiteMonitorsOutput({
  *     ids: [defaultSiteMonitor.id],
  *     taskType: "HTTP",
  * });
@@ -160,7 +160,7 @@ export interface GetSiteMonitorsResult {
  * }
  * `,
  * });
- * const default = alicloud.cms.getSiteMonitorsOutput({
+ * const _default = alicloud.cms.getSiteMonitorsOutput({
  *     ids: [defaultSiteMonitor.id],
  *     taskType: "HTTP",
  * });

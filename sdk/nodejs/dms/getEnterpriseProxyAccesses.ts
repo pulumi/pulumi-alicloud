@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     indepAccount: "dmstest",
  *     userId: "104442",
  * });
- * const default = alicloud.dms.getEnterpriseProxyAccessesOutput({
+ * const _default = alicloud.dms.getEnterpriseProxyAccessesOutput({
  *     ids: [defaultEnterpriseProxyAccess.id],
  *     proxyId: "1881",
  * });
@@ -99,7 +99,7 @@ export interface GetEnterpriseProxyAccessesResult {
  *     indepAccount: "dmstest",
  *     userId: "104442",
  * });
- * const default = alicloud.dms.getEnterpriseProxyAccessesOutput({
+ * const _default = alicloud.dms.getEnterpriseProxyAccessesOutput({
  *     ids: [defaultEnterpriseProxyAccess.id],
  *     proxyId: "1881",
  * });

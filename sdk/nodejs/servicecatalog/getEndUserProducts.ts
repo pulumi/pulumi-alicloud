@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.servicecatalog.getEndUserProducts({
+ * const _default = alicloud.servicecatalog.getEndUserProducts({
  *     nameRegex: "ram模板创建",
  * });
  * export const alicloudServiceCatalogEndUserProductExampleId = _default.then(_default => _default.endUserProducts?.[0]?.id);
@@ -99,7 +99,7 @@ export interface GetEndUserProductsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.servicecatalog.getEndUserProducts({
+ * const _default = alicloud.servicecatalog.getEndUserProducts({
  *     nameRegex: "ram模板创建",
  * });
  * export const alicloudServiceCatalogEndUserProductExampleId = _default.then(_default => _default.endUserProducts?.[0]?.id);

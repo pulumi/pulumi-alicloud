@@ -41,7 +41,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := oss.NewBucket(ctx, "default", &oss.BucketArgs{
+//			_default, err := oss.NewBucket(ctx, "default", &oss.BucketArgs{
 //				Bucket: pulumi.String(name),
 //			})
 //			if err != nil {

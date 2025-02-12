@@ -34,7 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := amqp.NewInstance(ctx, "default", &amqp.InstanceArgs{
+//			_default, err := amqp.NewInstance(ctx, "default", &amqp.InstanceArgs{
 //				InstanceType:  pulumi.String("enterprise"),
 //				MaxTps:        pulumi.String("3000"),
 //				QueueCapacity: pulumi.String("200"),

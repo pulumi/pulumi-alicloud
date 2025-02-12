@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const this = alicloud.cen.getRouteMaps({
+ * const _this = alicloud.cen.getRouteMaps({
  *     cenId: "cen-ihdlgo87ai********",
  *     ids: ["cen-ihdlgo87ai:cenrmap-bnh97kb3mn********"],
  *     descriptionRegex: "datasource_test",
@@ -121,7 +121,7 @@ export interface GetRouteMapsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const this = alicloud.cen.getRouteMaps({
+ * const _this = alicloud.cen.getRouteMaps({
  *     cenId: "cen-ihdlgo87ai********",
  *     ids: ["cen-ihdlgo87ai:cenrmap-bnh97kb3mn********"],
  *     descriptionRegex: "datasource_test",

@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const this = alicloud.dns.getDomainTxtGuid({
+ * const _this = alicloud.dns.getDomainTxtGuid({
  *     domainName: "test111.abc",
  *     type: "ADD_SUB_DOMAIN",
  * });
@@ -87,7 +87,7 @@ export interface GetDomainTxtGuidResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const this = alicloud.dns.getDomainTxtGuid({
+ * const _this = alicloud.dns.getDomainTxtGuid({
  *     domainName: "test111.abc",
  *     type: "ADD_SUB_DOMAIN",
  * });

@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * const name = config.get("name") || "terraform-example";
  * const regionId = config.get("regionId") || "cn-hangzhou";
  * const azone = config.get("azone") || "cn-hangzhou-g";
- * const default = alicloud.getZones({
+ * const _default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
  * const defaultkyVC70 = new alicloud.vpc.Network("defaultkyVC70", {

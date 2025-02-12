@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.hbr.getEcsBackupPlans({
+ * const _default = alicloud.hbr.getEcsBackupPlans({
  *     nameRegex: "plan-tf-used-dont-delete",
  * });
  * const defaultGetOssBackupPlans = alicloud.hbr.getOssBackupPlans({
