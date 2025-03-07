@@ -1559,9 +1559,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 
 			"alicloud_esa_kv_namespace": {
-				Tok: resource(esaMod, "KVNamespace"),
+				Tok: resource(esaMod, "KvNamespace"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"namespace": {CSharpName: "NamespaceValue"},
+					"kv_namespace": {CSharpName: "NamespaceValue"},
 				},
 			},
 		},
