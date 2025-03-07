@@ -6,18 +6,20 @@ package com.pulumi.alicloud.message;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.message.ServiceSubscriptionArgs;
 import com.pulumi.alicloud.message.inputs.ServiceSubscriptionState;
+import com.pulumi.alicloud.message.outputs.ServiceSubscriptionDlqPolicy;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Message Notification Service Subscription resource.
+ * Provides a Message Service Subscription resource.
  * 
- * For information about Message Notification Service Subscription and how to use it, see [What is Subscription](https://www.alibabacloud.com/help/en/message-service/latest/subscribe-1).
+ * For information about Message Service Subscription and how to use it, see [What is Subscription](https://www.alibabacloud.com/help/en/message-service/latest/subscribe-1).
  * 
  * &gt; **NOTE:** Available since v1.188.0.
  * 
@@ -51,11 +53,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf-example");
+ *         final var name = config.get("name").orElse("terraform-example");
  *         var default_ = new ServiceTopic("default", ServiceTopicArgs.builder()
  *             .topicName(name)
- *             .maxMessageSize(12357)
- *             .loggingEnabled(true)
+ *             .maxMessageSize(16888)
+ *             .enableLogging(true)
  *             .build());
  * 
  *         var defaultServiceSubscription = new ServiceSubscription("defaultServiceSubscription", ServiceSubscriptionArgs.builder()
@@ -63,7 +65,7 @@ import javax.annotation.Nullable;
  *             .subscriptionName(name)
  *             .endpoint("http://example.com")
  *             .pushType("http")
- *             .filterTag("tf-example")
+ *             .filterTag(name)
  *             .notifyContentFormat("XML")
  *             .notifyStrategy("BACKOFF_RETRY")
  *             .build());
@@ -76,7 +78,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Message Notification Service Subscription can be imported using the id, e.g.
+ * Message Service Subscription can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:message/serviceSubscription:ServiceSubscription example &lt;topic_name&gt;:&lt;subscription_name&gt;
@@ -85,6 +87,34 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:message/serviceSubscription:ServiceSubscription")
 public class ServiceSubscription extends com.pulumi.resources.CustomResource {
+    /**
+     * (Available since v1.244.0) The time when the subscription was created.
+     * 
+     */
+    @Export(name="createTime", refs={Integer.class}, tree="[0]")
+    private Output<Integer> createTime;
+
+    /**
+     * @return (Available since v1.244.0) The time when the subscription was created.
+     * 
+     */
+    public Output<Integer> createTime() {
+        return this.createTime;
+    }
+    /**
+     * The dead-letter queue policy. See `dlq_policy` below.
+     * 
+     */
+    @Export(name="dlqPolicy", refs={ServiceSubscriptionDlqPolicy.class}, tree="[0]")
+    private Output<ServiceSubscriptionDlqPolicy> dlqPolicy;
+
+    /**
+     * @return The dead-letter queue policy. See `dlq_policy` below.
+     * 
+     */
+    public Output<ServiceSubscriptionDlqPolicy> dlqPolicy() {
+        return this.dlqPolicy;
+    }
     /**
      * The endpoint has three format. Available values format:
      * - `HTTP Format`: http://xxx.com/xxx

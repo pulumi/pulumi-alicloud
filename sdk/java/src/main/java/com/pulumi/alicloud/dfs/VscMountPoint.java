@@ -17,9 +17,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a DFS Vsc Mount Point resource. VSC mount point.
+ * Provides a Apsara File Storage for HDFS (DFS) Vsc Mount Point resource.
  * 
- * For information about DFS Vsc Mount Point and how to use it, see [What is Vsc Mount Point](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
+ * For information about Apsara File Storage for HDFS (DFS) Vsc Mount Point and how to use it, see [What is Vsc Mount Point](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
  * 
  * &gt; **NOTE:** Available since v1.218.0.
  * 
@@ -37,10 +37,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
  * import com.pulumi.random.IntegerArgs;
- * import com.pulumi.alicloud.dfs.DfsFunctions;
- * import com.pulumi.alicloud.dfs.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.dfs.FileSystem;
  * import com.pulumi.alicloud.dfs.FileSystemArgs;
+ * import com.pulumi.alicloud.dfs.VscMountPoint;
+ * import com.pulumi.alicloud.dfs.VscMountPointArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -56,26 +56,25 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         final var default = DfsFunctions.getZones();
- * 
- *         final var zoneId = default_.zones()[0].zoneId();
- * 
- *         final var storageType = default_.zones()[0].options()[0].storageType();
- * 
  *         var defaultFileSystem = new FileSystem("defaultFileSystem", FileSystemArgs.builder()
- *             .protocolType("HDFS")
- *             .description(name)
- *             .fileSystemName(String.format("%s-%s", name,defaultInteger.result()))
  *             .spaceCapacity("1024")
- *             .throughputMode("Provisioned")
- *             .provisionedThroughputInMiBps("512")
- *             .storageType(storageType)
- *             .zoneId(zoneId)
+ *             .description("for vsc mountpoint RMC test")
+ *             .storageType("PERFORMANCE")
+ *             .zoneId("cn-hangzhou-b")
+ *             .protocolType("PANGU")
+ *             .dataRedundancyType("LRS")
+ *             .fileSystemName(name)
+ *             .build());
+ * 
+ *         var defaultFsForRMCVscMp = new VscMountPoint("defaultFsForRMCVscMp", VscMountPointArgs.builder()
+ *             .fileSystemId(defaultFileSystem.id())
+ *             .aliasPrefix(name)
+ *             .description(name)
  *             .build());
  * 
  *     }
@@ -86,7 +85,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * DFS Vsc Mount Point can be imported using the id, e.g.
+ * Apsara File Storage for HDFS (DFS) Vsc Mount Point can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:dfs/vscMountPoint:VscMountPoint example &lt;file_system_id&gt;:&lt;mount_point_id&gt;

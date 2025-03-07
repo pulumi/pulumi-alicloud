@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Esa
     ///     var @default = new AliCloud.Esa.KvNamespace("default", new()
     ///     {
     ///         Description = "this is a example namespace.",
-    ///         KvNamespace = "example_namespace",
+    ///         NamespaceValue = "example_namespace",
     ///     });
     /// 
     /// });
@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.Esa
         /// KV storage space name
         /// </summary>
         [Output("kvNamespace")]
-        public Output<string> KvNamespace { get; private set; } = null!;
+        public Output<string> NamespaceValue { get; private set; } = null!;
 
         /// <summary>
         /// KV storage space State
@@ -122,7 +122,7 @@ namespace Pulumi.AliCloud.Esa
         /// KV storage space name
         /// </summary>
         [Input("kvNamespace", required: true)]
-        public Input<string> KvNamespace { get; set; } = null!;
+        public Input<string> NamespaceValue { get; set; } = null!;
 
         public KvNamespaceArgs()
         {
@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.Esa
         /// KV storage space name
         /// </summary>
         [Input("kvNamespace")]
-        public Input<string>? KvNamespace { get; set; }
+        public Input<string>? NamespaceValue { get; set; }
 
         /// <summary>
         /// KV storage space State

@@ -32,6 +32,27 @@ public final class GetBasicAcceleratorsPlainArgs extends com.pulumi.resources.In
     }
 
     /**
+     * The bandwidth billing method. Valid values:
+     * - `BandwidthPackage`: billed based on bandwidth plans.
+     * - `CDT`: billed through Cloud Data Transfer (CDT) and based on data transfer.
+     * - `CDT95`: billed through CDT and based on the 95th percentile bandwidth. This bandwidth billing method is available only for users that are included in the whitelist.
+     * 
+     */
+    @Import(name="bandwidthBillingType")
+    private @Nullable String bandwidthBillingType;
+
+    /**
+     * @return The bandwidth billing method. Valid values:
+     * - `BandwidthPackage`: billed based on bandwidth plans.
+     * - `CDT`: billed through Cloud Data Transfer (CDT) and based on data transfer.
+     * - `CDT95`: billed through CDT and based on the 95th percentile bandwidth. This bandwidth billing method is available only for users that are included in the whitelist.
+     * 
+     */
+    public Optional<String> bandwidthBillingType() {
+        return Optional.ofNullable(this.bandwidthBillingType);
+    }
+
+    /**
      * A list of Global Accelerator Basic Accelerator IDs.
      * 
      */
@@ -109,6 +130,7 @@ public final class GetBasicAcceleratorsPlainArgs extends com.pulumi.resources.In
 
     private GetBasicAcceleratorsPlainArgs(GetBasicAcceleratorsPlainArgs $) {
         this.acceleratorId = $.acceleratorId;
+        this.bandwidthBillingType = $.bandwidthBillingType;
         this.ids = $.ids;
         this.nameRegex = $.nameRegex;
         this.outputFile = $.outputFile;
@@ -143,6 +165,20 @@ public final class GetBasicAcceleratorsPlainArgs extends com.pulumi.resources.In
          */
         public Builder acceleratorId(@Nullable String acceleratorId) {
             $.acceleratorId = acceleratorId;
+            return this;
+        }
+
+        /**
+         * @param bandwidthBillingType The bandwidth billing method. Valid values:
+         * - `BandwidthPackage`: billed based on bandwidth plans.
+         * - `CDT`: billed through Cloud Data Transfer (CDT) and based on data transfer.
+         * - `CDT95`: billed through CDT and based on the 95th percentile bandwidth. This bandwidth billing method is available only for users that are included in the whitelist.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bandwidthBillingType(@Nullable String bandwidthBillingType) {
+            $.bandwidthBillingType = bandwidthBillingType;
             return this;
         }
 

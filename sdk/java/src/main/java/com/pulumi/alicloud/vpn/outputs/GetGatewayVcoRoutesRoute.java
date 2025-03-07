@@ -42,7 +42,7 @@ public final class GetGatewayVcoRoutesRoute {
      */
     private String source;
     /**
-     * @return The status of the vpn route entry.
+     * @return The status of the vpn route entry. Valid values: `normal`, `published`.
      * 
      */
     private String status;
@@ -101,7 +101,7 @@ public final class GetGatewayVcoRoutesRoute {
         return this.source;
     }
     /**
-     * @return The status of the vpn route entry.
+     * @return The status of the vpn route entry. Valid values: `normal`, `published`.
      * 
      */
     public String status() {

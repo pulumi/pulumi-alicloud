@@ -63,14 +63,14 @@ public final class SearchIndexSchemaFieldSchemaArgs extends com.pulumi.resources
     }
 
     /**
-     * Specifies the type of the field. Use FieldType.XXX to set the type.
+     * Specifies the type of the field. Valid values: Text, Long, Double, Boolean, Keyword, Date, GeoPoint, Nested.
      * 
      */
     @Import(name="fieldType", required=true)
     private Output<String> fieldType;
 
     /**
-     * @return Specifies the type of the field. Use FieldType.XXX to set the type.
+     * @return Specifies the type of the field. Valid values: Text, Long, Double, Boolean, Keyword, Date, GeoPoint, Nested.
      * 
      */
     public Output<String> fieldType() {
@@ -216,7 +216,7 @@ public final class SearchIndexSchemaFieldSchemaArgs extends com.pulumi.resources
         }
 
         /**
-         * @param fieldType Specifies the type of the field. Use FieldType.XXX to set the type.
+         * @param fieldType Specifies the type of the field. Valid values: Text, Long, Double, Boolean, Keyword, Date, GeoPoint, Nested.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class SearchIndexSchemaFieldSchemaArgs extends com.pulumi.resources
         }
 
         /**
-         * @param fieldType Specifies the type of the field. Use FieldType.XXX to set the type.
+         * @param fieldType Specifies the type of the field. Valid values: Text, Long, Double, Boolean, Keyword, Date, GeoPoint, Nested.
          * 
          * @return builder
          * 

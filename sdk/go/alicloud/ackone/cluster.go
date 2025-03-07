@@ -71,6 +71,7 @@ import (
 //						defaultyVSwitch.ID(),
 //					},
 //				},
+//				Profile: pulumi.String("XFlow"),
 //			})
 //			if err != nil {
 //				return err
@@ -91,6 +92,8 @@ import (
 type Cluster struct {
 	pulumi.CustomResourceState
 
+	// (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is 'Default'. It has to be false when cluster is deleted.
+	ArgocdEnabled pulumi.BoolOutput `pulumi:"argocdEnabled"`
 	// Cluster name.
 	ClusterName pulumi.StringOutput `pulumi:"clusterName"`
 	// Cluster creation time.
@@ -98,6 +101,8 @@ type Cluster struct {
 	// Cluster network information. See `network` below.
 	Network ClusterNetworkOutput `pulumi:"network"`
 	// Cluster attributes. Valid values: 'Default', 'XFlow'.
+	//
+	// **Note**: When profile is Default, vswitches might not be deleted when cluster is deleted because there are some remaining resources in the vswitches. We are still fixing this problem.
 	Profile pulumi.StringOutput `pulumi:"profile"`
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -136,6 +141,8 @@ func GetCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Cluster resources.
 type clusterState struct {
+	// (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is 'Default'. It has to be false when cluster is deleted.
+	ArgocdEnabled *bool `pulumi:"argocdEnabled"`
 	// Cluster name.
 	ClusterName *string `pulumi:"clusterName"`
 	// Cluster creation time.
@@ -143,12 +150,16 @@ type clusterState struct {
 	// Cluster network information. See `network` below.
 	Network *ClusterNetwork `pulumi:"network"`
 	// Cluster attributes. Valid values: 'Default', 'XFlow'.
+	//
+	// **Note**: When profile is Default, vswitches might not be deleted when cluster is deleted because there are some remaining resources in the vswitches. We are still fixing this problem.
 	Profile *string `pulumi:"profile"`
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 }
 
 type ClusterState struct {
+	// (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is 'Default'. It has to be false when cluster is deleted.
+	ArgocdEnabled pulumi.BoolPtrInput
 	// Cluster name.
 	ClusterName pulumi.StringPtrInput
 	// Cluster creation time.
@@ -156,6 +167,8 @@ type ClusterState struct {
 	// Cluster network information. See `network` below.
 	Network ClusterNetworkPtrInput
 	// Cluster attributes. Valid values: 'Default', 'XFlow'.
+	//
+	// **Note**: When profile is Default, vswitches might not be deleted when cluster is deleted because there are some remaining resources in the vswitches. We are still fixing this problem.
 	Profile pulumi.StringPtrInput
 	// The status of the resource.
 	Status pulumi.StringPtrInput
@@ -166,21 +179,29 @@ func (ClusterState) ElementType() reflect.Type {
 }
 
 type clusterArgs struct {
+	// (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is 'Default'. It has to be false when cluster is deleted.
+	ArgocdEnabled *bool `pulumi:"argocdEnabled"`
 	// Cluster name.
 	ClusterName *string `pulumi:"clusterName"`
 	// Cluster network information. See `network` below.
 	Network ClusterNetwork `pulumi:"network"`
 	// Cluster attributes. Valid values: 'Default', 'XFlow'.
+	//
+	// **Note**: When profile is Default, vswitches might not be deleted when cluster is deleted because there are some remaining resources in the vswitches. We are still fixing this problem.
 	Profile *string `pulumi:"profile"`
 }
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
+	// (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is 'Default'. It has to be false when cluster is deleted.
+	ArgocdEnabled pulumi.BoolPtrInput
 	// Cluster name.
 	ClusterName pulumi.StringPtrInput
 	// Cluster network information. See `network` below.
 	Network ClusterNetworkInput
 	// Cluster attributes. Valid values: 'Default', 'XFlow'.
+	//
+	// **Note**: When profile is Default, vswitches might not be deleted when cluster is deleted because there are some remaining resources in the vswitches. We are still fixing this problem.
 	Profile pulumi.StringPtrInput
 }
 
@@ -271,6 +292,11 @@ func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOu
 	return o
 }
 
+// (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is 'Default'. It has to be false when cluster is deleted.
+func (o ClusterOutput) ArgocdEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolOutput { return v.ArgocdEnabled }).(pulumi.BoolOutput)
+}
+
 // Cluster name.
 func (o ClusterOutput) ClusterName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterName }).(pulumi.StringOutput)
@@ -287,6 +313,8 @@ func (o ClusterOutput) Network() ClusterNetworkOutput {
 }
 
 // Cluster attributes. Valid values: 'Default', 'XFlow'.
+//
+// **Note**: When profile is Default, vswitches might not be deleted when cluster is deleted because there are some remaining resources in the vswitches. We are still fixing this problem.
 func (o ClusterOutput) Profile() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Profile }).(pulumi.StringOutput)
 }

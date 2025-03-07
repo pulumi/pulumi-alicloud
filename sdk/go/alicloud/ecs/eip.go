@@ -78,8 +78,8 @@ type Eip struct {
 	// - false: Disable deletion protection.
 	DeletionProtection pulumi.BoolOutput `pulumi:"deletionProtection"`
 	// Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-	Description                    pulumi.StringPtrOutput `pulumi:"description"`
-	HighDefinitionMonitorLogStatus pulumi.StringOutput    `pulumi:"highDefinitionMonitorLogStatus"`
+	Description                    pulumi.StringOutput `pulumi:"description"`
+	HighDefinitionMonitorLogStatus pulumi.StringOutput `pulumi:"highDefinitionMonitorLogStatus"`
 	// (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.
@@ -468,8 +468,8 @@ func (o EipOutput) DeletionProtection() pulumi.BoolOutput {
 }
 
 // Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-func (o EipOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Eip) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o EipOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 func (o EipOutput) HighDefinitionMonitorLogStatus() pulumi.StringOutput {

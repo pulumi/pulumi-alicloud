@@ -29,7 +29,7 @@ public final class SearchIndexSchemaFieldSchema {
      */
     private String fieldName;
     /**
-     * @return Specifies the type of the field. Use FieldType.XXX to set the type.
+     * @return Specifies the type of the field. Valid values: Text, Long, Double, Boolean, Keyword, Date, GeoPoint, Nested.
      * 
      */
     private String fieldType;
@@ -72,7 +72,7 @@ public final class SearchIndexSchemaFieldSchema {
         return this.fieldName;
     }
     /**
-     * @return Specifies the type of the field. Use FieldType.XXX to set the type.
+     * @return Specifies the type of the field. Valid values: Text, Long, Double, Boolean, Keyword, Date, GeoPoint, Nested.
      * 
      */
     public String fieldType() {

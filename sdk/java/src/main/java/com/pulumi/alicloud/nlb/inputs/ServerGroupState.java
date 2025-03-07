@@ -134,6 +134,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The protocol used to forward requests to the backend servers. Valid values:
+     * 
      * - `TCP` (default)
      * - `UDP`
      * - `TCPSSL`
@@ -144,6 +145,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The protocol used to forward requests to the backend servers. Valid values:
+     * 
      * - `TCP` (default)
      * - `UDP`
      * - `TCPSSL`
@@ -154,8 +156,22 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the new resource group.
+     * The ID of the region where the NLB instance is deployed.
      * 
+     */
+    @Import(name="regionId")
+    private @Nullable Output<String> regionId;
+
+    /**
+     * @return The ID of the region where the NLB instance is deployed.
+     * 
+     */
+    public Optional<Output<String>> regionId() {
+        return Optional.ofNullable(this.regionId);
+    }
+
+    /**
+     * The ID of the new resource group.
      * You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
      * 
      */
@@ -164,7 +180,6 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The ID of the new resource group.
-     * 
      * You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
      * 
      */
@@ -174,6 +189,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The scheduling algorithm. Valid values:
+     * 
      * - **Wrr:** The weighted round-robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights. This is the default value.
      * - **rr:** The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
      * - **sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
@@ -185,6 +201,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The scheduling algorithm. Valid values:
+     * 
      * - **Wrr:** The weighted round-robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights. This is the default value.
      * - **rr:** The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
      * - **sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
@@ -197,7 +214,6 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The new name of the server group.
-     * 
      * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
      * 
      */
@@ -206,7 +222,6 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The new name of the server group.
-     * 
      * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
      * 
      */
@@ -216,6 +231,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The type of server group. Valid values:
+     * 
      * - `Instance`: allows you to add servers of the `Ecs`, `Eni`, or `Eci` type. This is the default value.
      * - `Ip`: allows you to add servers by specifying IP addresses.
      * 
@@ -225,6 +241,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The type of server group. Valid values:
+     * 
      * - `Instance`: allows you to add servers of the `Ecs`, `Eni`, or `Eci` type. This is the default value.
      * - `Ip`: allows you to add servers by specifying IP addresses.
      * 
@@ -297,6 +314,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         this.healthCheck = $.healthCheck;
         this.preserveClientIpEnabled = $.preserveClientIpEnabled;
         this.protocol = $.protocol;
+        this.regionId = $.regionId;
         this.resourceGroupId = $.resourceGroupId;
         this.scheduler = $.scheduler;
         this.serverGroupName = $.serverGroupName;
@@ -481,6 +499,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param protocol The protocol used to forward requests to the backend servers. Valid values:
+         * 
          * - `TCP` (default)
          * - `UDP`
          * - `TCPSSL`
@@ -495,6 +514,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param protocol The protocol used to forward requests to the backend servers. Valid values:
+         * 
          * - `TCP` (default)
          * - `UDP`
          * - `TCPSSL`
@@ -507,8 +527,28 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the new resource group.
+         * @param regionId The ID of the region where the NLB instance is deployed.
          * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(@Nullable Output<String> regionId) {
+            $.regionId = regionId;
+            return this;
+        }
+
+        /**
+         * @param regionId The ID of the region where the NLB instance is deployed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(String regionId) {
+            return regionId(Output.of(regionId));
+        }
+
+        /**
+         * @param resourceGroupId The ID of the new resource group.
          * You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
          * 
          * @return builder
@@ -521,7 +561,6 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param resourceGroupId The ID of the new resource group.
-         * 
          * You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
          * 
          * @return builder
@@ -533,6 +572,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param scheduler The scheduling algorithm. Valid values:
+         * 
          * - **Wrr:** The weighted round-robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights. This is the default value.
          * - **rr:** The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
          * - **sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
@@ -548,6 +588,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param scheduler The scheduling algorithm. Valid values:
+         * 
          * - **Wrr:** The weighted round-robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights. This is the default value.
          * - **rr:** The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
          * - **sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
@@ -562,7 +603,6 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param serverGroupName The new name of the server group.
-         * 
          * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
          * 
          * @return builder
@@ -575,7 +615,6 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param serverGroupName The new name of the server group.
-         * 
          * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
          * 
          * @return builder
@@ -587,6 +626,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param serverGroupType The type of server group. Valid values:
+         * 
          * - `Instance`: allows you to add servers of the `Ecs`, `Eni`, or `Eci` type. This is the default value.
          * - `Ip`: allows you to add servers by specifying IP addresses.
          * 
@@ -600,6 +640,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param serverGroupType The type of server group. Valid values:
+         * 
          * - `Instance`: allows you to add servers of the `Ecs`, `Eni`, or `Eci` type. This is the default value.
          * - `Ip`: allows you to add servers by specifying IP addresses.
          * 

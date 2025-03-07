@@ -15,10 +15,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Tag Policy resource.
+ * Provides a TAG Policy resource.
  * 
- * For information about Tag Policy and how to use it,
- * see [What is Policy](https://www.alibabacloud.com/help/en/resource-management/latest/create-policy).
+ * For information about TAG Policy and how to use it, see [What is Policy](https://www.alibabacloud.com/help/en/resource-management/latest/create-policy).
  * 
  * &gt; **NOTE:** Available since v1.203.0.
  * 
@@ -68,7 +67,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Tag Policy can be imported using the id, e.g.
+ * TAG Policy can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:tag/policy:Policy example &lt;id&gt;
@@ -78,14 +77,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:tag/policy:Policy")
 public class Policy extends com.pulumi.resources.CustomResource {
     /**
-     * The content of the policy.
+     * The document of the tag policy.
      * 
      */
     @Export(name="policyContent", refs={String.class}, tree="[0]")
     private Output<String> policyContent;
 
     /**
-     * @return The content of the policy.
+     * @return The document of the tag policy.
      * 
      */
     public Output<String> policyContent() {
@@ -106,30 +105,28 @@ public class Policy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.policyDesc);
     }
     /**
-     * The name of the policy. name must be 1 to 128 characters in length and can contain letters,
-     * digits, and hyphens (-).
+     * The name of the tag policy. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
      * 
      */
     @Export(name="policyName", refs={String.class}, tree="[0]")
     private Output<String> policyName;
 
     /**
-     * @return The name of the policy. name must be 1 to 128 characters in length and can contain letters,
-     * digits, and hyphens (-).
+     * @return The name of the tag policy. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
      * 
      */
     public Output<String> policyName() {
         return this.policyName;
     }
     /**
-     * The type of the tag policy. Valid values: `USER`, `RD`.
+     * The mode of the Tag Policy feature. Valid values: `USER`, `RD`.
      * 
      */
     @Export(name="userType", refs={String.class}, tree="[0]")
     private Output<String> userType;
 
     /**
-     * @return The type of the tag policy. Valid values: `USER`, `RD`.
+     * @return The mode of the Tag Policy feature. Valid values: `USER`, `RD`.
      * 
      */
     public Output<String> userType() {

@@ -2958,8 +2958,10 @@ func (o GetDhcpOptionsSetsSetArrayOutput) Index(i pulumi.IntInput) GetDhcpOption
 }
 
 type GetEnhancedNatAvailableZonesZone struct {
+	// Name of the available zone.
 	LocalName string `pulumi:"localName"`
-	ZoneId    string `pulumi:"zoneId"`
+	// The ID of the available zone.
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // GetEnhancedNatAvailableZonesZoneInput is an input type that accepts GetEnhancedNatAvailableZonesZoneArgs and GetEnhancedNatAvailableZonesZoneOutput values.
@@ -2974,8 +2976,10 @@ type GetEnhancedNatAvailableZonesZoneInput interface {
 }
 
 type GetEnhancedNatAvailableZonesZoneArgs struct {
+	// Name of the available zone.
 	LocalName pulumi.StringInput `pulumi:"localName"`
-	ZoneId    pulumi.StringInput `pulumi:"zoneId"`
+	// The ID of the available zone.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
 func (GetEnhancedNatAvailableZonesZoneArgs) ElementType() reflect.Type {
@@ -3029,10 +3033,12 @@ func (o GetEnhancedNatAvailableZonesZoneOutput) ToGetEnhancedNatAvailableZonesZo
 	return o
 }
 
+// Name of the available zone.
 func (o GetEnhancedNatAvailableZonesZoneOutput) LocalName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnhancedNatAvailableZonesZone) string { return v.LocalName }).(pulumi.StringOutput)
 }
 
+// The ID of the available zone.
 func (o GetEnhancedNatAvailableZonesZoneOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnhancedNatAvailableZonesZone) string { return v.ZoneId }).(pulumi.StringOutput)
 }
@@ -9995,7 +10001,7 @@ type GetTrafficMirrorFiltersFilter struct {
 	TrafficMirrorFilterDescription string `pulumi:"trafficMirrorFilterDescription"`
 	// The ID of the filter.
 	TrafficMirrorFilterId string `pulumi:"trafficMirrorFilterId"`
-	// The name of the filter.
+	// The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
 	TrafficMirrorFilterName string `pulumi:"trafficMirrorFilterName"`
 }
 
@@ -10019,7 +10025,7 @@ type GetTrafficMirrorFiltersFilterArgs struct {
 	TrafficMirrorFilterDescription pulumi.StringInput `pulumi:"trafficMirrorFilterDescription"`
 	// The ID of the filter.
 	TrafficMirrorFilterId pulumi.StringInput `pulumi:"trafficMirrorFilterId"`
-	// The name of the filter.
+	// The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
 	TrafficMirrorFilterName pulumi.StringInput `pulumi:"trafficMirrorFilterName"`
 }
 
@@ -10094,7 +10100,7 @@ func (o GetTrafficMirrorFiltersFilterOutput) TrafficMirrorFilterId() pulumi.Stri
 	return o.ApplyT(func(v GetTrafficMirrorFiltersFilter) string { return v.TrafficMirrorFilterId }).(pulumi.StringOutput)
 }
 
-// The name of the filter.
+// The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
 func (o GetTrafficMirrorFiltersFilterOutput) TrafficMirrorFilterName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrafficMirrorFiltersFilter) string { return v.TrafficMirrorFilterName }).(pulumi.StringOutput)
 }

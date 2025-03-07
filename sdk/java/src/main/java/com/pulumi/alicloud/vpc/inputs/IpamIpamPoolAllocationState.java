@@ -67,7 +67,6 @@ public final class IpamIpamPoolAllocationState extends com.pulumi.resources.Reso
 
     /**
      * The description of the ipam pool alloctaion.
-     * 
      * It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with &#39;http:// &#39;or &#39;https. If it is not filled in, it is empty. The default value is empty.
      * 
      */
@@ -76,7 +75,6 @@ public final class IpamIpamPoolAllocationState extends com.pulumi.resources.Reso
 
     /**
      * @return The description of the ipam pool alloctaion.
-     * 
      * It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with &#39;http:// &#39;or &#39;https. If it is not filled in, it is empty. The default value is empty.
      * 
      */
@@ -86,7 +84,6 @@ public final class IpamIpamPoolAllocationState extends com.pulumi.resources.Reso
 
     /**
      * The name of the ipam pool allocation.
-     * 
      * It must be 1 to 128 characters in length and cannot start with &#39;http:// &#39;or &#39;https.
      * 
      */
@@ -95,7 +92,6 @@ public final class IpamIpamPoolAllocationState extends com.pulumi.resources.Reso
 
     /**
      * @return The name of the ipam pool allocation.
-     * 
      * It must be 1 to 128 characters in length and cannot start with &#39;http:// &#39;or &#39;https.
      * 
      */
@@ -120,6 +116,7 @@ public final class IpamIpamPoolAllocationState extends com.pulumi.resources.Reso
 
     /**
      * When the IPAM Pool to which CIDR is allocated has the region attribute, this attribute is the IPAM Pool region.
+     * When the IPAM Pool to which CIDR is allocated does not have the region attribute, this attribute is the IPAM region.
      * 
      */
     @Import(name="regionId")
@@ -127,6 +124,7 @@ public final class IpamIpamPoolAllocationState extends com.pulumi.resources.Reso
 
     /**
      * @return When the IPAM Pool to which CIDR is allocated has the region attribute, this attribute is the IPAM Pool region.
+     * When the IPAM Pool to which CIDR is allocated does not have the region attribute, this attribute is the IPAM region.
      * 
      */
     public Optional<Output<String>> regionId() {
@@ -248,7 +246,6 @@ public final class IpamIpamPoolAllocationState extends com.pulumi.resources.Reso
 
         /**
          * @param ipamPoolAllocationDescription The description of the ipam pool alloctaion.
-         * 
          * It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with &#39;http:// &#39;or &#39;https. If it is not filled in, it is empty. The default value is empty.
          * 
          * @return builder
@@ -261,7 +258,6 @@ public final class IpamIpamPoolAllocationState extends com.pulumi.resources.Reso
 
         /**
          * @param ipamPoolAllocationDescription The description of the ipam pool alloctaion.
-         * 
          * It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with &#39;http:// &#39;or &#39;https. If it is not filled in, it is empty. The default value is empty.
          * 
          * @return builder
@@ -273,7 +269,6 @@ public final class IpamIpamPoolAllocationState extends com.pulumi.resources.Reso
 
         /**
          * @param ipamPoolAllocationName The name of the ipam pool allocation.
-         * 
          * It must be 1 to 128 characters in length and cannot start with &#39;http:// &#39;or &#39;https.
          * 
          * @return builder
@@ -286,7 +281,6 @@ public final class IpamIpamPoolAllocationState extends com.pulumi.resources.Reso
 
         /**
          * @param ipamPoolAllocationName The name of the ipam pool allocation.
-         * 
          * It must be 1 to 128 characters in length and cannot start with &#39;http:// &#39;or &#39;https.
          * 
          * @return builder
@@ -319,6 +313,7 @@ public final class IpamIpamPoolAllocationState extends com.pulumi.resources.Reso
 
         /**
          * @param regionId When the IPAM Pool to which CIDR is allocated has the region attribute, this attribute is the IPAM Pool region.
+         * When the IPAM Pool to which CIDR is allocated does not have the region attribute, this attribute is the IPAM region.
          * 
          * @return builder
          * 
@@ -330,6 +325,7 @@ public final class IpamIpamPoolAllocationState extends com.pulumi.resources.Reso
 
         /**
          * @param regionId When the IPAM Pool to which CIDR is allocated has the region attribute, this attribute is the IPAM Pool region.
+         * When the IPAM Pool to which CIDR is allocated does not have the region attribute, this attribute is the IPAM region.
          * 
          * @return builder
          * 

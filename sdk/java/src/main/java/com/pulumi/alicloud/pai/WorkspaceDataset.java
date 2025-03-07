@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a PAI Workspace Dataset resource.
  * 
- * For information about PAI Workspace Dataset and how to use it, see [What is Dataset](https://www.alibabacloud.com/help/en/).
+ * For information about PAI Workspace Dataset and how to use it, see [What is Dataset](https://next.api.alibabacloud.com/document/AIWorkSpace/2021-02-04/CreateDataset).
  * 
  * &gt; **NOTE:** Available since v1.236.0.
  * 

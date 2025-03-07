@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Vpn Gateway Vco Routes of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.183.0+.
+// > **NOTE:** Available since v1.183.0.
 //
 // ## Example Usage
 //
@@ -166,15 +166,18 @@ type GetGatewayVcoRoutesArgs struct {
 // A collection of values returned by getGatewayVcoRoutes.
 type GetGatewayVcoRoutesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id              string                     `pulumi:"id"`
-	Ids             []string                   `pulumi:"ids"`
-	OutputFile      *string                    `pulumi:"outputFile"`
-	PageNumber      *int                       `pulumi:"pageNumber"`
-	PageSize        *int                       `pulumi:"pageSize"`
-	RouteEntryType  *string                    `pulumi:"routeEntryType"`
-	Routes          []GetGatewayVcoRoutesRoute `pulumi:"routes"`
-	Status          *string                    `pulumi:"status"`
-	VpnConnectionId string                     `pulumi:"vpnConnectionId"`
+	Id             string   `pulumi:"id"`
+	Ids            []string `pulumi:"ids"`
+	OutputFile     *string  `pulumi:"outputFile"`
+	PageNumber     *int     `pulumi:"pageNumber"`
+	PageSize       *int     `pulumi:"pageSize"`
+	RouteEntryType *string  `pulumi:"routeEntryType"`
+	// A list of Vpn Gateway Vco Routes. Each element contains the following attributes:
+	Routes []GetGatewayVcoRoutesRoute `pulumi:"routes"`
+	// The status of the vpn route entry.
+	Status *string `pulumi:"status"`
+	// The id of the vpn connection.
+	VpnConnectionId string `pulumi:"vpnConnectionId"`
 }
 
 func GetGatewayVcoRoutesOutput(ctx *pulumi.Context, args GetGatewayVcoRoutesOutputArgs, opts ...pulumi.InvokeOption) GetGatewayVcoRoutesResultOutput {
@@ -246,14 +249,17 @@ func (o GetGatewayVcoRoutesResultOutput) RouteEntryType() pulumi.StringPtrOutput
 	return o.ApplyT(func(v GetGatewayVcoRoutesResult) *string { return v.RouteEntryType }).(pulumi.StringPtrOutput)
 }
 
+// A list of Vpn Gateway Vco Routes. Each element contains the following attributes:
 func (o GetGatewayVcoRoutesResultOutput) Routes() GetGatewayVcoRoutesRouteArrayOutput {
 	return o.ApplyT(func(v GetGatewayVcoRoutesResult) []GetGatewayVcoRoutesRoute { return v.Routes }).(GetGatewayVcoRoutesRouteArrayOutput)
 }
 
+// The status of the vpn route entry.
 func (o GetGatewayVcoRoutesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGatewayVcoRoutesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// The id of the vpn connection.
 func (o GetGatewayVcoRoutesResultOutput) VpnConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVcoRoutesResult) string { return v.VpnConnectionId }).(pulumi.StringOutput)
 }

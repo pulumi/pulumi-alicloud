@@ -14,7 +14,7 @@ import (
 
 // Provides a ESA Site resource.
 //
-// For information about ESA Site and how to use it, see [What is Site](https://www.alibabacloud.com/help/en/).
+// For information about ESA Site and how to use it, see [What is Site](https://www.alibabacloud.com/help/en/edge-security-acceleration/esa/user-guide/site-management).
 //
 // > **NOTE:** Available since v1.234.0.
 //
@@ -95,16 +95,36 @@ type Site struct {
 
 	// Site Access Type
 	AccessType pulumi.StringPtrOutput `pulumi:"accessType"`
+	// Add the Visitor geolocation header. Value range:
+	// - on
+	// - off
+	AddClientGeolocationHeader pulumi.StringPtrOutput `pulumi:"addClientGeolocationHeader"`
+	// Add the "ali-real-client-ip" header containing the real client IP. Value range:
+	// - on
+	// - off
+	AddRealClientIpHeader pulumi.StringPtrOutput `pulumi:"addRealClientIpHeader"`
+	// Multi-level cache architecture pattern. Value range:
+	// edge: edge caching layer.
+	// edge_smart: Edge Cache layer + Smart Cache layer.
+	// edge_regional: Edge Cache layer + regional cache layer.
+	// edge_regional_smart: Edge Cache layer + regional cache layer + intelligent cache layer.
+	CacheArchitectureMode pulumi.StringOutput `pulumi:"cacheArchitectureMode"`
 	// Acceleration area
 	Coverage pulumi.StringPtrOutput `pulumi:"coverage"`
 	// Creation time
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The ID of the associated package instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
+	// IPv6 switch. Value:
+	// - on
+	// - off
+	Ipv6Enable pulumi.StringOutput `pulumi:"ipv6Enable"`
 	// The ID of the resource group
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// Site Name
 	SiteName pulumi.StringOutput `pulumi:"siteName"`
+	// The version number of the site. For a site with version management enabled, you can use this parameter to specify the effective site version. The default version is 0.
+	SiteVersion pulumi.IntPtrOutput `pulumi:"siteVersion"`
 	// The status of the resource
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Resource tags
@@ -149,16 +169,36 @@ func GetSite(ctx *pulumi.Context,
 type siteState struct {
 	// Site Access Type
 	AccessType *string `pulumi:"accessType"`
+	// Add the Visitor geolocation header. Value range:
+	// - on
+	// - off
+	AddClientGeolocationHeader *string `pulumi:"addClientGeolocationHeader"`
+	// Add the "ali-real-client-ip" header containing the real client IP. Value range:
+	// - on
+	// - off
+	AddRealClientIpHeader *string `pulumi:"addRealClientIpHeader"`
+	// Multi-level cache architecture pattern. Value range:
+	// edge: edge caching layer.
+	// edge_smart: Edge Cache layer + Smart Cache layer.
+	// edge_regional: Edge Cache layer + regional cache layer.
+	// edge_regional_smart: Edge Cache layer + regional cache layer + intelligent cache layer.
+	CacheArchitectureMode *string `pulumi:"cacheArchitectureMode"`
 	// Acceleration area
 	Coverage *string `pulumi:"coverage"`
 	// Creation time
 	CreateTime *string `pulumi:"createTime"`
 	// The ID of the associated package instance.
 	InstanceId *string `pulumi:"instanceId"`
+	// IPv6 switch. Value:
+	// - on
+	// - off
+	Ipv6Enable *string `pulumi:"ipv6Enable"`
 	// The ID of the resource group
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Site Name
 	SiteName *string `pulumi:"siteName"`
+	// The version number of the site. For a site with version management enabled, you can use this parameter to specify the effective site version. The default version is 0.
+	SiteVersion *int `pulumi:"siteVersion"`
 	// The status of the resource
 	Status *string `pulumi:"status"`
 	// Resource tags
@@ -168,16 +208,36 @@ type siteState struct {
 type SiteState struct {
 	// Site Access Type
 	AccessType pulumi.StringPtrInput
+	// Add the Visitor geolocation header. Value range:
+	// - on
+	// - off
+	AddClientGeolocationHeader pulumi.StringPtrInput
+	// Add the "ali-real-client-ip" header containing the real client IP. Value range:
+	// - on
+	// - off
+	AddRealClientIpHeader pulumi.StringPtrInput
+	// Multi-level cache architecture pattern. Value range:
+	// edge: edge caching layer.
+	// edge_smart: Edge Cache layer + Smart Cache layer.
+	// edge_regional: Edge Cache layer + regional cache layer.
+	// edge_regional_smart: Edge Cache layer + regional cache layer + intelligent cache layer.
+	CacheArchitectureMode pulumi.StringPtrInput
 	// Acceleration area
 	Coverage pulumi.StringPtrInput
 	// Creation time
 	CreateTime pulumi.StringPtrInput
 	// The ID of the associated package instance.
 	InstanceId pulumi.StringPtrInput
+	// IPv6 switch. Value:
+	// - on
+	// - off
+	Ipv6Enable pulumi.StringPtrInput
 	// The ID of the resource group
 	ResourceGroupId pulumi.StringPtrInput
 	// Site Name
 	SiteName pulumi.StringPtrInput
+	// The version number of the site. For a site with version management enabled, you can use this parameter to specify the effective site version. The default version is 0.
+	SiteVersion pulumi.IntPtrInput
 	// The status of the resource
 	Status pulumi.StringPtrInput
 	// Resource tags
@@ -191,14 +251,34 @@ func (SiteState) ElementType() reflect.Type {
 type siteArgs struct {
 	// Site Access Type
 	AccessType *string `pulumi:"accessType"`
+	// Add the Visitor geolocation header. Value range:
+	// - on
+	// - off
+	AddClientGeolocationHeader *string `pulumi:"addClientGeolocationHeader"`
+	// Add the "ali-real-client-ip" header containing the real client IP. Value range:
+	// - on
+	// - off
+	AddRealClientIpHeader *string `pulumi:"addRealClientIpHeader"`
+	// Multi-level cache architecture pattern. Value range:
+	// edge: edge caching layer.
+	// edge_smart: Edge Cache layer + Smart Cache layer.
+	// edge_regional: Edge Cache layer + regional cache layer.
+	// edge_regional_smart: Edge Cache layer + regional cache layer + intelligent cache layer.
+	CacheArchitectureMode *string `pulumi:"cacheArchitectureMode"`
 	// Acceleration area
 	Coverage *string `pulumi:"coverage"`
 	// The ID of the associated package instance.
 	InstanceId string `pulumi:"instanceId"`
+	// IPv6 switch. Value:
+	// - on
+	// - off
+	Ipv6Enable *string `pulumi:"ipv6Enable"`
 	// The ID of the resource group
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Site Name
 	SiteName string `pulumi:"siteName"`
+	// The version number of the site. For a site with version management enabled, you can use this parameter to specify the effective site version. The default version is 0.
+	SiteVersion *int `pulumi:"siteVersion"`
 	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -207,14 +287,34 @@ type siteArgs struct {
 type SiteArgs struct {
 	// Site Access Type
 	AccessType pulumi.StringPtrInput
+	// Add the Visitor geolocation header. Value range:
+	// - on
+	// - off
+	AddClientGeolocationHeader pulumi.StringPtrInput
+	// Add the "ali-real-client-ip" header containing the real client IP. Value range:
+	// - on
+	// - off
+	AddRealClientIpHeader pulumi.StringPtrInput
+	// Multi-level cache architecture pattern. Value range:
+	// edge: edge caching layer.
+	// edge_smart: Edge Cache layer + Smart Cache layer.
+	// edge_regional: Edge Cache layer + regional cache layer.
+	// edge_regional_smart: Edge Cache layer + regional cache layer + intelligent cache layer.
+	CacheArchitectureMode pulumi.StringPtrInput
 	// Acceleration area
 	Coverage pulumi.StringPtrInput
 	// The ID of the associated package instance.
 	InstanceId pulumi.StringInput
+	// IPv6 switch. Value:
+	// - on
+	// - off
+	Ipv6Enable pulumi.StringPtrInput
 	// The ID of the resource group
 	ResourceGroupId pulumi.StringPtrInput
 	// Site Name
 	SiteName pulumi.StringInput
+	// The version number of the site. For a site with version management enabled, you can use this parameter to specify the effective site version. The default version is 0.
+	SiteVersion pulumi.IntPtrInput
 	// Resource tags
 	Tags pulumi.StringMapInput
 }
@@ -311,6 +411,29 @@ func (o SiteOutput) AccessType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Site) pulumi.StringPtrOutput { return v.AccessType }).(pulumi.StringPtrOutput)
 }
 
+// Add the Visitor geolocation header. Value range:
+// - on
+// - off
+func (o SiteOutput) AddClientGeolocationHeader() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Site) pulumi.StringPtrOutput { return v.AddClientGeolocationHeader }).(pulumi.StringPtrOutput)
+}
+
+// Add the "ali-real-client-ip" header containing the real client IP. Value range:
+// - on
+// - off
+func (o SiteOutput) AddRealClientIpHeader() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Site) pulumi.StringPtrOutput { return v.AddRealClientIpHeader }).(pulumi.StringPtrOutput)
+}
+
+// Multi-level cache architecture pattern. Value range:
+// edge: edge caching layer.
+// edge_smart: Edge Cache layer + Smart Cache layer.
+// edge_regional: Edge Cache layer + regional cache layer.
+// edge_regional_smart: Edge Cache layer + regional cache layer + intelligent cache layer.
+func (o SiteOutput) CacheArchitectureMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Site) pulumi.StringOutput { return v.CacheArchitectureMode }).(pulumi.StringOutput)
+}
+
 // Acceleration area
 func (o SiteOutput) Coverage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Site) pulumi.StringPtrOutput { return v.Coverage }).(pulumi.StringPtrOutput)
@@ -326,6 +449,13 @@ func (o SiteOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Site) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
+// IPv6 switch. Value:
+// - on
+// - off
+func (o SiteOutput) Ipv6Enable() pulumi.StringOutput {
+	return o.ApplyT(func(v *Site) pulumi.StringOutput { return v.Ipv6Enable }).(pulumi.StringOutput)
+}
+
 // The ID of the resource group
 func (o SiteOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Site) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
@@ -334,6 +464,11 @@ func (o SiteOutput) ResourceGroupId() pulumi.StringOutput {
 // Site Name
 func (o SiteOutput) SiteName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Site) pulumi.StringOutput { return v.SiteName }).(pulumi.StringOutput)
+}
+
+// The version number of the site. For a site with version management enabled, you can use this parameter to specify the effective site version. The default version is 0.
+func (o SiteOutput) SiteVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Site) pulumi.IntPtrOutput { return v.SiteVersion }).(pulumi.IntPtrOutput)
 }
 
 // The status of the resource

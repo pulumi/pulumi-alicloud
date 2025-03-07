@@ -12,11 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a ALB Load Balancer Security Group Attachment resource.
+// Provides a Application Load Balancer (ALB) Load Balancer Security Group Attachment resource.
 //
-// Bind a security group to an application-type Server Load Balancer instance.
+// Attachment between Application Load Balancer and Security Group.
 //
-// For information about ALB Load Balancer Security Group Attachment and how to use it, see [What is Load Balancer Security Group Attachment](https://www.alibabacloud.com/help/en/).
+// For information about Application Load Balancer (ALB) Load Balancer Security Group Attachment and how to use it, see [What is Load Balancer Security Group Attachment](https://next.api.alibabacloud.com/document/Alb/2020-06-16/LoadBalancerJoinSecurityGroup).
 //
 // > **NOTE:** Available since v1.226.0.
 //
@@ -121,7 +121,7 @@ import (
 //
 // ## Import
 //
-// ALB Load Balancer Security Group Attachment can be imported using the id, e.g.
+// Application Load Balancer (ALB) Load Balancer Security Group Attachment can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:alb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment example <load_balancer_id>:<security_group_id>
@@ -129,9 +129,11 @@ import (
 type LoadBalancerSecurityGroupAttachment struct {
 	pulumi.CustomResourceState
 
-	// The ID of the load balancing instance.
+	// Whether to PreCheck only this request. Value:
+	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
+	// The ID of the Application Load Balancer.
 	LoadBalancerId pulumi.StringOutput `pulumi:"loadBalancerId"`
-	// Security group ID collection.
+	// The ID of the security group.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 }
 
@@ -168,16 +170,20 @@ func GetLoadBalancerSecurityGroupAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LoadBalancerSecurityGroupAttachment resources.
 type loadBalancerSecurityGroupAttachmentState struct {
-	// The ID of the load balancing instance.
+	// Whether to PreCheck only this request. Value:
+	DryRun *bool `pulumi:"dryRun"`
+	// The ID of the Application Load Balancer.
 	LoadBalancerId *string `pulumi:"loadBalancerId"`
-	// Security group ID collection.
+	// The ID of the security group.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 }
 
 type LoadBalancerSecurityGroupAttachmentState struct {
-	// The ID of the load balancing instance.
+	// Whether to PreCheck only this request. Value:
+	DryRun pulumi.BoolPtrInput
+	// The ID of the Application Load Balancer.
 	LoadBalancerId pulumi.StringPtrInput
-	// Security group ID collection.
+	// The ID of the security group.
 	SecurityGroupId pulumi.StringPtrInput
 }
 
@@ -186,17 +192,21 @@ func (LoadBalancerSecurityGroupAttachmentState) ElementType() reflect.Type {
 }
 
 type loadBalancerSecurityGroupAttachmentArgs struct {
-	// The ID of the load balancing instance.
+	// Whether to PreCheck only this request. Value:
+	DryRun *bool `pulumi:"dryRun"`
+	// The ID of the Application Load Balancer.
 	LoadBalancerId string `pulumi:"loadBalancerId"`
-	// Security group ID collection.
+	// The ID of the security group.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 }
 
 // The set of arguments for constructing a LoadBalancerSecurityGroupAttachment resource.
 type LoadBalancerSecurityGroupAttachmentArgs struct {
-	// The ID of the load balancing instance.
+	// Whether to PreCheck only this request. Value:
+	DryRun pulumi.BoolPtrInput
+	// The ID of the Application Load Balancer.
 	LoadBalancerId pulumi.StringInput
-	// Security group ID collection.
+	// The ID of the security group.
 	SecurityGroupId pulumi.StringPtrInput
 }
 
@@ -287,12 +297,17 @@ func (o LoadBalancerSecurityGroupAttachmentOutput) ToLoadBalancerSecurityGroupAt
 	return o
 }
 
-// The ID of the load balancing instance.
+// Whether to PreCheck only this request. Value:
+func (o LoadBalancerSecurityGroupAttachmentOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerSecurityGroupAttachment) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the Application Load Balancer.
 func (o LoadBalancerSecurityGroupAttachmentOutput) LoadBalancerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancerSecurityGroupAttachment) pulumi.StringOutput { return v.LoadBalancerId }).(pulumi.StringOutput)
 }
 
-// Security group ID collection.
+// The ID of the security group.
 func (o LoadBalancerSecurityGroupAttachmentOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancerSecurityGroupAttachment) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
 }

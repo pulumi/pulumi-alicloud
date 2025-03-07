@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.message;
 
+import com.pulumi.alicloud.message.inputs.ServiceQueueDlqPolicyArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -32,6 +33,21 @@ public final class ServiceQueueArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> delaySeconds() {
         return Optional.ofNullable(this.delaySeconds);
+    }
+
+    /**
+     * The dead-letter queue policy. See `dlq_policy` below.
+     * 
+     */
+    @Import(name="dlqPolicy")
+    private @Nullable Output<ServiceQueueDlqPolicyArgs> dlqPolicy;
+
+    /**
+     * @return The dead-letter queue policy. See `dlq_policy` below.
+     * 
+     */
+    public Optional<Output<ServiceQueueDlqPolicyArgs>> dlqPolicy() {
+        return Optional.ofNullable(this.dlqPolicy);
     }
 
     /**
@@ -143,6 +159,7 @@ public final class ServiceQueueArgs extends com.pulumi.resources.ResourceArgs {
 
     private ServiceQueueArgs(ServiceQueueArgs $) {
         this.delaySeconds = $.delaySeconds;
+        this.dlqPolicy = $.dlqPolicy;
         this.loggingEnabled = $.loggingEnabled;
         this.maximumMessageSize = $.maximumMessageSize;
         this.messageRetentionPeriod = $.messageRetentionPeriod;
@@ -189,6 +206,27 @@ public final class ServiceQueueArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder delaySeconds(Integer delaySeconds) {
             return delaySeconds(Output.of(delaySeconds));
+        }
+
+        /**
+         * @param dlqPolicy The dead-letter queue policy. See `dlq_policy` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dlqPolicy(@Nullable Output<ServiceQueueDlqPolicyArgs> dlqPolicy) {
+            $.dlqPolicy = dlqPolicy;
+            return this;
+        }
+
+        /**
+         * @param dlqPolicy The dead-letter queue policy. See `dlq_policy` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dlqPolicy(ServiceQueueDlqPolicyArgs dlqPolicy) {
+            return dlqPolicy(Output.of(dlqPolicy));
         }
 
         /**

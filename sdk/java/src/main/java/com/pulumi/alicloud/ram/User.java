@@ -36,6 +36,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.ram.User;
  * import com.pulumi.alicloud.ram.UserArgs;
  * import java.util.List;
@@ -51,9 +53,14 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
  *         // Create a new RAM user.
  *         var user = new User("user", UserArgs.builder()
- *             .name("terraform-example")
+ *             .name(String.format("terraform-example-%s", default_.result()))
  *             .displayName("user_display_name")
  *             .mobile("86-18688888888")
  *             .email("hello.uuu}{@literal @}{@code aaa.com")

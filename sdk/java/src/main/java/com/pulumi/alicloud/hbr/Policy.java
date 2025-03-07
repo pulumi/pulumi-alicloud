@@ -17,9 +17,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a HBR Policy resource.
+ * Provides a Hybrid Backup Recovery (HBR) Policy resource.
  * 
- * For information about HBR Policy and how to use it, see [What is Policy](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicyv2).
+ * For information about Hybrid Backup Recovery (HBR) Policy and how to use it, see [What is Policy](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicyv2).
  * 
  * &gt; **NOTE:** Available since v1.221.0.
  * 
@@ -88,7 +88,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * HBR Policy can be imported using the id, e.g.
+ * Hybrid Backup Recovery (HBR) Policy can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:hbr/policy:Policy example &lt;id&gt;
@@ -138,6 +138,24 @@ public class Policy extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> policyName() {
         return Codegen.optional(this.policyName);
+    }
+    /**
+     * The policy type. Valid values:
+     * - `STANDARD`: The general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
+     * - `UDM_ECS_ONLY`: The ECS instance backup policy. This type of policy applies only to ECS instance backup.
+     * 
+     */
+    @Export(name="policyType", refs={String.class}, tree="[0]")
+    private Output<String> policyType;
+
+    /**
+     * @return The policy type. Valid values:
+     * - `STANDARD`: The general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
+     * - `UDM_ECS_ONLY`: The ECS instance backup policy. This type of policy applies only to ECS instance backup.
+     * 
+     */
+    public Output<String> policyType() {
+        return this.policyType;
     }
     /**
      * A list of policy rules See `rules` below.

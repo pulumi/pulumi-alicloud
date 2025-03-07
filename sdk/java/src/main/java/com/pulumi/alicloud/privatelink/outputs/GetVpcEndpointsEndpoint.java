@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 @CustomType
@@ -67,6 +68,11 @@ public final class GetVpcEndpointsEndpoint {
      * 
      */
     private String status;
+    /**
+     * @return Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{&#34;key1&#34;:&#34;value1&#34;}`.
+     * 
+     */
+    private Map<String,String> tags;
     /**
      * @return The name of Vpc Endpoint.
      * 
@@ -157,6 +163,13 @@ public final class GetVpcEndpointsEndpoint {
         return this.status;
     }
     /**
+     * @return Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{&#34;key1&#34;:&#34;value1&#34;}`.
+     * 
+     */
+    public Map<String,String> tags() {
+        return this.tags;
+    }
+    /**
      * @return The name of Vpc Endpoint.
      * 
      */
@@ -191,6 +204,7 @@ public final class GetVpcEndpointsEndpoint {
         private String serviceId;
         private String serviceName;
         private String status;
+        private Map<String,String> tags;
         private String vpcEndpointName;
         private String vpcId;
         public Builder() {}
@@ -207,6 +221,7 @@ public final class GetVpcEndpointsEndpoint {
     	      this.serviceId = defaults.serviceId;
     	      this.serviceName = defaults.serviceName;
     	      this.status = defaults.status;
+    	      this.tags = defaults.tags;
     	      this.vpcEndpointName = defaults.vpcEndpointName;
     	      this.vpcId = defaults.vpcId;
         }
@@ -303,6 +318,14 @@ public final class GetVpcEndpointsEndpoint {
             return this;
         }
         @CustomType.Setter
+        public Builder tags(Map<String,String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointsEndpoint", "tags");
+            }
+            this.tags = tags;
+            return this;
+        }
+        @CustomType.Setter
         public Builder vpcEndpointName(String vpcEndpointName) {
             if (vpcEndpointName == null) {
               throw new MissingRequiredPropertyException("GetVpcEndpointsEndpoint", "vpcEndpointName");
@@ -331,6 +354,7 @@ public final class GetVpcEndpointsEndpoint {
             _resultValue.serviceId = serviceId;
             _resultValue.serviceName = serviceName;
             _resultValue.status = status;
+            _resultValue.tags = tags;
             _resultValue.vpcEndpointName = vpcEndpointName;
             _resultValue.vpcId = vpcId;
             return _resultValue;

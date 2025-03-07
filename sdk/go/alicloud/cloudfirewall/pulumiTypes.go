@@ -2852,6 +2852,585 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 	}).(GetInstancesInstanceOutput)
 }
 
+type GetNatFirewallsFirewall struct {
+	// Alibaba Cloud account ID
+	AliUid int `pulumi:"aliUid"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// Member Account ID
+	MemberUid int `pulumi:"memberUid"`
+	// NAT gateway ID
+	NatGatewayId string `pulumi:"natGatewayId"`
+	// NAT Gateway name
+	NatGatewayName string `pulumi:"natGatewayName"`
+	// The list of routes to be switched by the NAT gateway.
+	NatRouteEntryLists []GetNatFirewallsFirewallNatRouteEntryList `pulumi:"natRouteEntryLists"`
+	// NAT firewall ID
+	ProxyId string `pulumi:"proxyId"`
+	// NAT firewall name
+	ProxyName string `pulumi:"proxyName"`
+	// Whether strict mode is enabled1-Enable strict mode0-Disable strict mode
+	StrictMode int `pulumi:"strictMode"`
+	// The ID of the VPC instance.
+	VpcId string `pulumi:"vpcId"`
+}
+
+// GetNatFirewallsFirewallInput is an input type that accepts GetNatFirewallsFirewallArgs and GetNatFirewallsFirewallOutput values.
+// You can construct a concrete instance of `GetNatFirewallsFirewallInput` via:
+//
+//	GetNatFirewallsFirewallArgs{...}
+type GetNatFirewallsFirewallInput interface {
+	pulumi.Input
+
+	ToGetNatFirewallsFirewallOutput() GetNatFirewallsFirewallOutput
+	ToGetNatFirewallsFirewallOutputWithContext(context.Context) GetNatFirewallsFirewallOutput
+}
+
+type GetNatFirewallsFirewallArgs struct {
+	// Alibaba Cloud account ID
+	AliUid pulumi.IntInput `pulumi:"aliUid"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Member Account ID
+	MemberUid pulumi.IntInput `pulumi:"memberUid"`
+	// NAT gateway ID
+	NatGatewayId pulumi.StringInput `pulumi:"natGatewayId"`
+	// NAT Gateway name
+	NatGatewayName pulumi.StringInput `pulumi:"natGatewayName"`
+	// The list of routes to be switched by the NAT gateway.
+	NatRouteEntryLists GetNatFirewallsFirewallNatRouteEntryListArrayInput `pulumi:"natRouteEntryLists"`
+	// NAT firewall ID
+	ProxyId pulumi.StringInput `pulumi:"proxyId"`
+	// NAT firewall name
+	ProxyName pulumi.StringInput `pulumi:"proxyName"`
+	// Whether strict mode is enabled1-Enable strict mode0-Disable strict mode
+	StrictMode pulumi.IntInput `pulumi:"strictMode"`
+	// The ID of the VPC instance.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+}
+
+func (GetNatFirewallsFirewallArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNatFirewallsFirewall)(nil)).Elem()
+}
+
+func (i GetNatFirewallsFirewallArgs) ToGetNatFirewallsFirewallOutput() GetNatFirewallsFirewallOutput {
+	return i.ToGetNatFirewallsFirewallOutputWithContext(context.Background())
+}
+
+func (i GetNatFirewallsFirewallArgs) ToGetNatFirewallsFirewallOutputWithContext(ctx context.Context) GetNatFirewallsFirewallOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNatFirewallsFirewallOutput)
+}
+
+// GetNatFirewallsFirewallArrayInput is an input type that accepts GetNatFirewallsFirewallArray and GetNatFirewallsFirewallArrayOutput values.
+// You can construct a concrete instance of `GetNatFirewallsFirewallArrayInput` via:
+//
+//	GetNatFirewallsFirewallArray{ GetNatFirewallsFirewallArgs{...} }
+type GetNatFirewallsFirewallArrayInput interface {
+	pulumi.Input
+
+	ToGetNatFirewallsFirewallArrayOutput() GetNatFirewallsFirewallArrayOutput
+	ToGetNatFirewallsFirewallArrayOutputWithContext(context.Context) GetNatFirewallsFirewallArrayOutput
+}
+
+type GetNatFirewallsFirewallArray []GetNatFirewallsFirewallInput
+
+func (GetNatFirewallsFirewallArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNatFirewallsFirewall)(nil)).Elem()
+}
+
+func (i GetNatFirewallsFirewallArray) ToGetNatFirewallsFirewallArrayOutput() GetNatFirewallsFirewallArrayOutput {
+	return i.ToGetNatFirewallsFirewallArrayOutputWithContext(context.Background())
+}
+
+func (i GetNatFirewallsFirewallArray) ToGetNatFirewallsFirewallArrayOutputWithContext(ctx context.Context) GetNatFirewallsFirewallArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNatFirewallsFirewallArrayOutput)
+}
+
+type GetNatFirewallsFirewallOutput struct{ *pulumi.OutputState }
+
+func (GetNatFirewallsFirewallOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNatFirewallsFirewall)(nil)).Elem()
+}
+
+func (o GetNatFirewallsFirewallOutput) ToGetNatFirewallsFirewallOutput() GetNatFirewallsFirewallOutput {
+	return o
+}
+
+func (o GetNatFirewallsFirewallOutput) ToGetNatFirewallsFirewallOutputWithContext(ctx context.Context) GetNatFirewallsFirewallOutput {
+	return o
+}
+
+// Alibaba Cloud account ID
+func (o GetNatFirewallsFirewallOutput) AliUid() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNatFirewallsFirewall) int { return v.AliUid }).(pulumi.IntOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetNatFirewallsFirewallOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatFirewallsFirewall) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Member Account ID
+func (o GetNatFirewallsFirewallOutput) MemberUid() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNatFirewallsFirewall) int { return v.MemberUid }).(pulumi.IntOutput)
+}
+
+// NAT gateway ID
+func (o GetNatFirewallsFirewallOutput) NatGatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatFirewallsFirewall) string { return v.NatGatewayId }).(pulumi.StringOutput)
+}
+
+// NAT Gateway name
+func (o GetNatFirewallsFirewallOutput) NatGatewayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatFirewallsFirewall) string { return v.NatGatewayName }).(pulumi.StringOutput)
+}
+
+// The list of routes to be switched by the NAT gateway.
+func (o GetNatFirewallsFirewallOutput) NatRouteEntryLists() GetNatFirewallsFirewallNatRouteEntryListArrayOutput {
+	return o.ApplyT(func(v GetNatFirewallsFirewall) []GetNatFirewallsFirewallNatRouteEntryList {
+		return v.NatRouteEntryLists
+	}).(GetNatFirewallsFirewallNatRouteEntryListArrayOutput)
+}
+
+// NAT firewall ID
+func (o GetNatFirewallsFirewallOutput) ProxyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatFirewallsFirewall) string { return v.ProxyId }).(pulumi.StringOutput)
+}
+
+// NAT firewall name
+func (o GetNatFirewallsFirewallOutput) ProxyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatFirewallsFirewall) string { return v.ProxyName }).(pulumi.StringOutput)
+}
+
+// Whether strict mode is enabled1-Enable strict mode0-Disable strict mode
+func (o GetNatFirewallsFirewallOutput) StrictMode() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNatFirewallsFirewall) int { return v.StrictMode }).(pulumi.IntOutput)
+}
+
+// The ID of the VPC instance.
+func (o GetNatFirewallsFirewallOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatFirewallsFirewall) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+type GetNatFirewallsFirewallArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNatFirewallsFirewallArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNatFirewallsFirewall)(nil)).Elem()
+}
+
+func (o GetNatFirewallsFirewallArrayOutput) ToGetNatFirewallsFirewallArrayOutput() GetNatFirewallsFirewallArrayOutput {
+	return o
+}
+
+func (o GetNatFirewallsFirewallArrayOutput) ToGetNatFirewallsFirewallArrayOutputWithContext(ctx context.Context) GetNatFirewallsFirewallArrayOutput {
+	return o
+}
+
+func (o GetNatFirewallsFirewallArrayOutput) Index(i pulumi.IntInput) GetNatFirewallsFirewallOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNatFirewallsFirewall {
+		return vs[0].([]GetNatFirewallsFirewall)[vs[1].(int)]
+	}).(GetNatFirewallsFirewallOutput)
+}
+
+type GetNatFirewallsFirewallNatRouteEntryList struct {
+	// The destination network segment of the default route.
+	DestinationCidr string `pulumi:"destinationCidr"`
+	// The next hop address of the original NAT gateway.
+	NexthopId string `pulumi:"nexthopId"`
+	// The network type of the next hop. Value: NatGateway : NAT Gateway.
+	NexthopType string `pulumi:"nexthopType"`
+	// The route table where the default route of the NAT gateway is located.
+	RouteTableId string `pulumi:"routeTableId"`
+}
+
+// GetNatFirewallsFirewallNatRouteEntryListInput is an input type that accepts GetNatFirewallsFirewallNatRouteEntryListArgs and GetNatFirewallsFirewallNatRouteEntryListOutput values.
+// You can construct a concrete instance of `GetNatFirewallsFirewallNatRouteEntryListInput` via:
+//
+//	GetNatFirewallsFirewallNatRouteEntryListArgs{...}
+type GetNatFirewallsFirewallNatRouteEntryListInput interface {
+	pulumi.Input
+
+	ToGetNatFirewallsFirewallNatRouteEntryListOutput() GetNatFirewallsFirewallNatRouteEntryListOutput
+	ToGetNatFirewallsFirewallNatRouteEntryListOutputWithContext(context.Context) GetNatFirewallsFirewallNatRouteEntryListOutput
+}
+
+type GetNatFirewallsFirewallNatRouteEntryListArgs struct {
+	// The destination network segment of the default route.
+	DestinationCidr pulumi.StringInput `pulumi:"destinationCidr"`
+	// The next hop address of the original NAT gateway.
+	NexthopId pulumi.StringInput `pulumi:"nexthopId"`
+	// The network type of the next hop. Value: NatGateway : NAT Gateway.
+	NexthopType pulumi.StringInput `pulumi:"nexthopType"`
+	// The route table where the default route of the NAT gateway is located.
+	RouteTableId pulumi.StringInput `pulumi:"routeTableId"`
+}
+
+func (GetNatFirewallsFirewallNatRouteEntryListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNatFirewallsFirewallNatRouteEntryList)(nil)).Elem()
+}
+
+func (i GetNatFirewallsFirewallNatRouteEntryListArgs) ToGetNatFirewallsFirewallNatRouteEntryListOutput() GetNatFirewallsFirewallNatRouteEntryListOutput {
+	return i.ToGetNatFirewallsFirewallNatRouteEntryListOutputWithContext(context.Background())
+}
+
+func (i GetNatFirewallsFirewallNatRouteEntryListArgs) ToGetNatFirewallsFirewallNatRouteEntryListOutputWithContext(ctx context.Context) GetNatFirewallsFirewallNatRouteEntryListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNatFirewallsFirewallNatRouteEntryListOutput)
+}
+
+// GetNatFirewallsFirewallNatRouteEntryListArrayInput is an input type that accepts GetNatFirewallsFirewallNatRouteEntryListArray and GetNatFirewallsFirewallNatRouteEntryListArrayOutput values.
+// You can construct a concrete instance of `GetNatFirewallsFirewallNatRouteEntryListArrayInput` via:
+//
+//	GetNatFirewallsFirewallNatRouteEntryListArray{ GetNatFirewallsFirewallNatRouteEntryListArgs{...} }
+type GetNatFirewallsFirewallNatRouteEntryListArrayInput interface {
+	pulumi.Input
+
+	ToGetNatFirewallsFirewallNatRouteEntryListArrayOutput() GetNatFirewallsFirewallNatRouteEntryListArrayOutput
+	ToGetNatFirewallsFirewallNatRouteEntryListArrayOutputWithContext(context.Context) GetNatFirewallsFirewallNatRouteEntryListArrayOutput
+}
+
+type GetNatFirewallsFirewallNatRouteEntryListArray []GetNatFirewallsFirewallNatRouteEntryListInput
+
+func (GetNatFirewallsFirewallNatRouteEntryListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNatFirewallsFirewallNatRouteEntryList)(nil)).Elem()
+}
+
+func (i GetNatFirewallsFirewallNatRouteEntryListArray) ToGetNatFirewallsFirewallNatRouteEntryListArrayOutput() GetNatFirewallsFirewallNatRouteEntryListArrayOutput {
+	return i.ToGetNatFirewallsFirewallNatRouteEntryListArrayOutputWithContext(context.Background())
+}
+
+func (i GetNatFirewallsFirewallNatRouteEntryListArray) ToGetNatFirewallsFirewallNatRouteEntryListArrayOutputWithContext(ctx context.Context) GetNatFirewallsFirewallNatRouteEntryListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNatFirewallsFirewallNatRouteEntryListArrayOutput)
+}
+
+type GetNatFirewallsFirewallNatRouteEntryListOutput struct{ *pulumi.OutputState }
+
+func (GetNatFirewallsFirewallNatRouteEntryListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNatFirewallsFirewallNatRouteEntryList)(nil)).Elem()
+}
+
+func (o GetNatFirewallsFirewallNatRouteEntryListOutput) ToGetNatFirewallsFirewallNatRouteEntryListOutput() GetNatFirewallsFirewallNatRouteEntryListOutput {
+	return o
+}
+
+func (o GetNatFirewallsFirewallNatRouteEntryListOutput) ToGetNatFirewallsFirewallNatRouteEntryListOutputWithContext(ctx context.Context) GetNatFirewallsFirewallNatRouteEntryListOutput {
+	return o
+}
+
+// The destination network segment of the default route.
+func (o GetNatFirewallsFirewallNatRouteEntryListOutput) DestinationCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatFirewallsFirewallNatRouteEntryList) string { return v.DestinationCidr }).(pulumi.StringOutput)
+}
+
+// The next hop address of the original NAT gateway.
+func (o GetNatFirewallsFirewallNatRouteEntryListOutput) NexthopId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatFirewallsFirewallNatRouteEntryList) string { return v.NexthopId }).(pulumi.StringOutput)
+}
+
+// The network type of the next hop. Value: NatGateway : NAT Gateway.
+func (o GetNatFirewallsFirewallNatRouteEntryListOutput) NexthopType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatFirewallsFirewallNatRouteEntryList) string { return v.NexthopType }).(pulumi.StringOutput)
+}
+
+// The route table where the default route of the NAT gateway is located.
+func (o GetNatFirewallsFirewallNatRouteEntryListOutput) RouteTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatFirewallsFirewallNatRouteEntryList) string { return v.RouteTableId }).(pulumi.StringOutput)
+}
+
+type GetNatFirewallsFirewallNatRouteEntryListArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNatFirewallsFirewallNatRouteEntryListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNatFirewallsFirewallNatRouteEntryList)(nil)).Elem()
+}
+
+func (o GetNatFirewallsFirewallNatRouteEntryListArrayOutput) ToGetNatFirewallsFirewallNatRouteEntryListArrayOutput() GetNatFirewallsFirewallNatRouteEntryListArrayOutput {
+	return o
+}
+
+func (o GetNatFirewallsFirewallNatRouteEntryListArrayOutput) ToGetNatFirewallsFirewallNatRouteEntryListArrayOutputWithContext(ctx context.Context) GetNatFirewallsFirewallNatRouteEntryListArrayOutput {
+	return o
+}
+
+func (o GetNatFirewallsFirewallNatRouteEntryListArrayOutput) Index(i pulumi.IntInput) GetNatFirewallsFirewallNatRouteEntryListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNatFirewallsFirewallNatRouteEntryList {
+		return vs[0].([]GetNatFirewallsFirewallNatRouteEntryList)[vs[1].(int)]
+	}).(GetNatFirewallsFirewallNatRouteEntryListOutput)
+}
+
+type GetVpcCenTrFirewallsFirewall struct {
+	// The ID of the CEN instance.
+	CenId string `pulumi:"cenId"`
+	// The name of the CEN instance.
+	CenName string `pulumi:"cenName"`
+	// Firewall ID
+	FirewallId string `pulumi:"firewallId"`
+	// The name of Cloud Firewall.
+	FirewallName string `pulumi:"firewallName"`
+	// The status of the VPC boundary firewall. Value:-**opened**: opened-**closed**: closed-**notconfigured**: indicates that the VPC boundary firewall has not been configured yet.-**configured**: indicates that the VPC boundary firewall has been configured.-**creating**: indicates that a VPC boundary firewall is being created.-**opening**: indicates that the VPC border firewall is being enabled.-**deleting**: indicates that the VPC boundary firewall is being deleted.> If this parameter is not set, the VPC boundary firewall in all states is queried.
+	FirewallSwitchStatus string `pulumi:"firewallSwitchStatus"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// IPS configuration information.
+	IpsConfig GetVpcCenTrFirewallsFirewallIpsConfig `pulumi:"ipsConfig"`
+	// Whether the wall can be opened automatically. Value:-**passed**: can automatically open the wall-**failed**: The wall cannot be opened automatically-**unknown**: unknown status
+	PrecheckStatus string `pulumi:"precheckStatus"`
+	// The region ID of the transit router instance.
+	RegionNo string `pulumi:"regionNo"`
+	// Geographically open. Value:-**enable**: enabled, indicating that the VPC border firewall can be configured for the region.-**disable**: Not enabled, indicating that the VPC boundary firewall is not allowed for the region.
+	RegionStatus string `pulumi:"regionStatus"`
+	// The operation result code of creating the VPC boundary firewall. Value:-**RegionDisable**: indicates that the region where the network instance is located is not supported by the VPC border firewall. You cannot create a VPC border firewall.-**Empty string**, indicating that the network instance can create a VPC firewall.
+	ResultCode string `pulumi:"resultCode"`
+	// The routing pattern. Value: managed: indicates automatic mode
+	RouteMode string `pulumi:"routeMode"`
+	// The ID of the transit router instance.
+	TransitRouterId string `pulumi:"transitRouterId"`
+}
+
+// GetVpcCenTrFirewallsFirewallInput is an input type that accepts GetVpcCenTrFirewallsFirewallArgs and GetVpcCenTrFirewallsFirewallOutput values.
+// You can construct a concrete instance of `GetVpcCenTrFirewallsFirewallInput` via:
+//
+//	GetVpcCenTrFirewallsFirewallArgs{...}
+type GetVpcCenTrFirewallsFirewallInput interface {
+	pulumi.Input
+
+	ToGetVpcCenTrFirewallsFirewallOutput() GetVpcCenTrFirewallsFirewallOutput
+	ToGetVpcCenTrFirewallsFirewallOutputWithContext(context.Context) GetVpcCenTrFirewallsFirewallOutput
+}
+
+type GetVpcCenTrFirewallsFirewallArgs struct {
+	// The ID of the CEN instance.
+	CenId pulumi.StringInput `pulumi:"cenId"`
+	// The name of the CEN instance.
+	CenName pulumi.StringInput `pulumi:"cenName"`
+	// Firewall ID
+	FirewallId pulumi.StringInput `pulumi:"firewallId"`
+	// The name of Cloud Firewall.
+	FirewallName pulumi.StringInput `pulumi:"firewallName"`
+	// The status of the VPC boundary firewall. Value:-**opened**: opened-**closed**: closed-**notconfigured**: indicates that the VPC boundary firewall has not been configured yet.-**configured**: indicates that the VPC boundary firewall has been configured.-**creating**: indicates that a VPC boundary firewall is being created.-**opening**: indicates that the VPC border firewall is being enabled.-**deleting**: indicates that the VPC boundary firewall is being deleted.> If this parameter is not set, the VPC boundary firewall in all states is queried.
+	FirewallSwitchStatus pulumi.StringInput `pulumi:"firewallSwitchStatus"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// IPS configuration information.
+	IpsConfig GetVpcCenTrFirewallsFirewallIpsConfigInput `pulumi:"ipsConfig"`
+	// Whether the wall can be opened automatically. Value:-**passed**: can automatically open the wall-**failed**: The wall cannot be opened automatically-**unknown**: unknown status
+	PrecheckStatus pulumi.StringInput `pulumi:"precheckStatus"`
+	// The region ID of the transit router instance.
+	RegionNo pulumi.StringInput `pulumi:"regionNo"`
+	// Geographically open. Value:-**enable**: enabled, indicating that the VPC border firewall can be configured for the region.-**disable**: Not enabled, indicating that the VPC boundary firewall is not allowed for the region.
+	RegionStatus pulumi.StringInput `pulumi:"regionStatus"`
+	// The operation result code of creating the VPC boundary firewall. Value:-**RegionDisable**: indicates that the region where the network instance is located is not supported by the VPC border firewall. You cannot create a VPC border firewall.-**Empty string**, indicating that the network instance can create a VPC firewall.
+	ResultCode pulumi.StringInput `pulumi:"resultCode"`
+	// The routing pattern. Value: managed: indicates automatic mode
+	RouteMode pulumi.StringInput `pulumi:"routeMode"`
+	// The ID of the transit router instance.
+	TransitRouterId pulumi.StringInput `pulumi:"transitRouterId"`
+}
+
+func (GetVpcCenTrFirewallsFirewallArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcCenTrFirewallsFirewall)(nil)).Elem()
+}
+
+func (i GetVpcCenTrFirewallsFirewallArgs) ToGetVpcCenTrFirewallsFirewallOutput() GetVpcCenTrFirewallsFirewallOutput {
+	return i.ToGetVpcCenTrFirewallsFirewallOutputWithContext(context.Background())
+}
+
+func (i GetVpcCenTrFirewallsFirewallArgs) ToGetVpcCenTrFirewallsFirewallOutputWithContext(ctx context.Context) GetVpcCenTrFirewallsFirewallOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcCenTrFirewallsFirewallOutput)
+}
+
+// GetVpcCenTrFirewallsFirewallArrayInput is an input type that accepts GetVpcCenTrFirewallsFirewallArray and GetVpcCenTrFirewallsFirewallArrayOutput values.
+// You can construct a concrete instance of `GetVpcCenTrFirewallsFirewallArrayInput` via:
+//
+//	GetVpcCenTrFirewallsFirewallArray{ GetVpcCenTrFirewallsFirewallArgs{...} }
+type GetVpcCenTrFirewallsFirewallArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcCenTrFirewallsFirewallArrayOutput() GetVpcCenTrFirewallsFirewallArrayOutput
+	ToGetVpcCenTrFirewallsFirewallArrayOutputWithContext(context.Context) GetVpcCenTrFirewallsFirewallArrayOutput
+}
+
+type GetVpcCenTrFirewallsFirewallArray []GetVpcCenTrFirewallsFirewallInput
+
+func (GetVpcCenTrFirewallsFirewallArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcCenTrFirewallsFirewall)(nil)).Elem()
+}
+
+func (i GetVpcCenTrFirewallsFirewallArray) ToGetVpcCenTrFirewallsFirewallArrayOutput() GetVpcCenTrFirewallsFirewallArrayOutput {
+	return i.ToGetVpcCenTrFirewallsFirewallArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcCenTrFirewallsFirewallArray) ToGetVpcCenTrFirewallsFirewallArrayOutputWithContext(ctx context.Context) GetVpcCenTrFirewallsFirewallArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcCenTrFirewallsFirewallArrayOutput)
+}
+
+type GetVpcCenTrFirewallsFirewallOutput struct{ *pulumi.OutputState }
+
+func (GetVpcCenTrFirewallsFirewallOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcCenTrFirewallsFirewall)(nil)).Elem()
+}
+
+func (o GetVpcCenTrFirewallsFirewallOutput) ToGetVpcCenTrFirewallsFirewallOutput() GetVpcCenTrFirewallsFirewallOutput {
+	return o
+}
+
+func (o GetVpcCenTrFirewallsFirewallOutput) ToGetVpcCenTrFirewallsFirewallOutputWithContext(ctx context.Context) GetVpcCenTrFirewallsFirewallOutput {
+	return o
+}
+
+// The ID of the CEN instance.
+func (o GetVpcCenTrFirewallsFirewallOutput) CenId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcCenTrFirewallsFirewall) string { return v.CenId }).(pulumi.StringOutput)
+}
+
+// The name of the CEN instance.
+func (o GetVpcCenTrFirewallsFirewallOutput) CenName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcCenTrFirewallsFirewall) string { return v.CenName }).(pulumi.StringOutput)
+}
+
+// Firewall ID
+func (o GetVpcCenTrFirewallsFirewallOutput) FirewallId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcCenTrFirewallsFirewall) string { return v.FirewallId }).(pulumi.StringOutput)
+}
+
+// The name of Cloud Firewall.
+func (o GetVpcCenTrFirewallsFirewallOutput) FirewallName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcCenTrFirewallsFirewall) string { return v.FirewallName }).(pulumi.StringOutput)
+}
+
+// The status of the VPC boundary firewall. Value:-**opened**: opened-**closed**: closed-**notconfigured**: indicates that the VPC boundary firewall has not been configured yet.-**configured**: indicates that the VPC boundary firewall has been configured.-**creating**: indicates that a VPC boundary firewall is being created.-**opening**: indicates that the VPC border firewall is being enabled.-**deleting**: indicates that the VPC boundary firewall is being deleted.> If this parameter is not set, the VPC boundary firewall in all states is queried.
+func (o GetVpcCenTrFirewallsFirewallOutput) FirewallSwitchStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcCenTrFirewallsFirewall) string { return v.FirewallSwitchStatus }).(pulumi.StringOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetVpcCenTrFirewallsFirewallOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcCenTrFirewallsFirewall) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// IPS configuration information.
+func (o GetVpcCenTrFirewallsFirewallOutput) IpsConfig() GetVpcCenTrFirewallsFirewallIpsConfigOutput {
+	return o.ApplyT(func(v GetVpcCenTrFirewallsFirewall) GetVpcCenTrFirewallsFirewallIpsConfig { return v.IpsConfig }).(GetVpcCenTrFirewallsFirewallIpsConfigOutput)
+}
+
+// Whether the wall can be opened automatically. Value:-**passed**: can automatically open the wall-**failed**: The wall cannot be opened automatically-**unknown**: unknown status
+func (o GetVpcCenTrFirewallsFirewallOutput) PrecheckStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcCenTrFirewallsFirewall) string { return v.PrecheckStatus }).(pulumi.StringOutput)
+}
+
+// The region ID of the transit router instance.
+func (o GetVpcCenTrFirewallsFirewallOutput) RegionNo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcCenTrFirewallsFirewall) string { return v.RegionNo }).(pulumi.StringOutput)
+}
+
+// Geographically open. Value:-**enable**: enabled, indicating that the VPC border firewall can be configured for the region.-**disable**: Not enabled, indicating that the VPC boundary firewall is not allowed for the region.
+func (o GetVpcCenTrFirewallsFirewallOutput) RegionStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcCenTrFirewallsFirewall) string { return v.RegionStatus }).(pulumi.StringOutput)
+}
+
+// The operation result code of creating the VPC boundary firewall. Value:-**RegionDisable**: indicates that the region where the network instance is located is not supported by the VPC border firewall. You cannot create a VPC border firewall.-**Empty string**, indicating that the network instance can create a VPC firewall.
+func (o GetVpcCenTrFirewallsFirewallOutput) ResultCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcCenTrFirewallsFirewall) string { return v.ResultCode }).(pulumi.StringOutput)
+}
+
+// The routing pattern. Value: managed: indicates automatic mode
+func (o GetVpcCenTrFirewallsFirewallOutput) RouteMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcCenTrFirewallsFirewall) string { return v.RouteMode }).(pulumi.StringOutput)
+}
+
+// The ID of the transit router instance.
+func (o GetVpcCenTrFirewallsFirewallOutput) TransitRouterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcCenTrFirewallsFirewall) string { return v.TransitRouterId }).(pulumi.StringOutput)
+}
+
+type GetVpcCenTrFirewallsFirewallArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcCenTrFirewallsFirewallArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcCenTrFirewallsFirewall)(nil)).Elem()
+}
+
+func (o GetVpcCenTrFirewallsFirewallArrayOutput) ToGetVpcCenTrFirewallsFirewallArrayOutput() GetVpcCenTrFirewallsFirewallArrayOutput {
+	return o
+}
+
+func (o GetVpcCenTrFirewallsFirewallArrayOutput) ToGetVpcCenTrFirewallsFirewallArrayOutputWithContext(ctx context.Context) GetVpcCenTrFirewallsFirewallArrayOutput {
+	return o
+}
+
+func (o GetVpcCenTrFirewallsFirewallArrayOutput) Index(i pulumi.IntInput) GetVpcCenTrFirewallsFirewallOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcCenTrFirewallsFirewall {
+		return vs[0].([]GetVpcCenTrFirewallsFirewall)[vs[1].(int)]
+	}).(GetVpcCenTrFirewallsFirewallOutput)
+}
+
+type GetVpcCenTrFirewallsFirewallIpsConfig struct {
+	// Basic rule switch. Value:-**1**: On-**0**: Closed state.
+	BasicRules int `pulumi:"basicRules"`
+	// Virtual patch switch. Value:-**1**: On-**0**: Closed state.
+	EnableAllPatch int `pulumi:"enableAllPatch"`
+	// IPS defense mode. Value:-**1**: Intercept mode-**0**: Observation mode.
+	RunMode int `pulumi:"runMode"`
+}
+
+// GetVpcCenTrFirewallsFirewallIpsConfigInput is an input type that accepts GetVpcCenTrFirewallsFirewallIpsConfigArgs and GetVpcCenTrFirewallsFirewallIpsConfigOutput values.
+// You can construct a concrete instance of `GetVpcCenTrFirewallsFirewallIpsConfigInput` via:
+//
+//	GetVpcCenTrFirewallsFirewallIpsConfigArgs{...}
+type GetVpcCenTrFirewallsFirewallIpsConfigInput interface {
+	pulumi.Input
+
+	ToGetVpcCenTrFirewallsFirewallIpsConfigOutput() GetVpcCenTrFirewallsFirewallIpsConfigOutput
+	ToGetVpcCenTrFirewallsFirewallIpsConfigOutputWithContext(context.Context) GetVpcCenTrFirewallsFirewallIpsConfigOutput
+}
+
+type GetVpcCenTrFirewallsFirewallIpsConfigArgs struct {
+	// Basic rule switch. Value:-**1**: On-**0**: Closed state.
+	BasicRules pulumi.IntInput `pulumi:"basicRules"`
+	// Virtual patch switch. Value:-**1**: On-**0**: Closed state.
+	EnableAllPatch pulumi.IntInput `pulumi:"enableAllPatch"`
+	// IPS defense mode. Value:-**1**: Intercept mode-**0**: Observation mode.
+	RunMode pulumi.IntInput `pulumi:"runMode"`
+}
+
+func (GetVpcCenTrFirewallsFirewallIpsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcCenTrFirewallsFirewallIpsConfig)(nil)).Elem()
+}
+
+func (i GetVpcCenTrFirewallsFirewallIpsConfigArgs) ToGetVpcCenTrFirewallsFirewallIpsConfigOutput() GetVpcCenTrFirewallsFirewallIpsConfigOutput {
+	return i.ToGetVpcCenTrFirewallsFirewallIpsConfigOutputWithContext(context.Background())
+}
+
+func (i GetVpcCenTrFirewallsFirewallIpsConfigArgs) ToGetVpcCenTrFirewallsFirewallIpsConfigOutputWithContext(ctx context.Context) GetVpcCenTrFirewallsFirewallIpsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcCenTrFirewallsFirewallIpsConfigOutput)
+}
+
+type GetVpcCenTrFirewallsFirewallIpsConfigOutput struct{ *pulumi.OutputState }
+
+func (GetVpcCenTrFirewallsFirewallIpsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcCenTrFirewallsFirewallIpsConfig)(nil)).Elem()
+}
+
+func (o GetVpcCenTrFirewallsFirewallIpsConfigOutput) ToGetVpcCenTrFirewallsFirewallIpsConfigOutput() GetVpcCenTrFirewallsFirewallIpsConfigOutput {
+	return o
+}
+
+func (o GetVpcCenTrFirewallsFirewallIpsConfigOutput) ToGetVpcCenTrFirewallsFirewallIpsConfigOutputWithContext(ctx context.Context) GetVpcCenTrFirewallsFirewallIpsConfigOutput {
+	return o
+}
+
+// Basic rule switch. Value:-**1**: On-**0**: Closed state.
+func (o GetVpcCenTrFirewallsFirewallIpsConfigOutput) BasicRules() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpcCenTrFirewallsFirewallIpsConfig) int { return v.BasicRules }).(pulumi.IntOutput)
+}
+
+// Virtual patch switch. Value:-**1**: On-**0**: Closed state.
+func (o GetVpcCenTrFirewallsFirewallIpsConfigOutput) EnableAllPatch() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpcCenTrFirewallsFirewallIpsConfig) int { return v.EnableAllPatch }).(pulumi.IntOutput)
+}
+
+// IPS defense mode. Value:-**1**: Intercept mode-**0**: Observation mode.
+func (o GetVpcCenTrFirewallsFirewallIpsConfigOutput) RunMode() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpcCenTrFirewallsFirewallIpsConfig) int { return v.RunMode }).(pulumi.IntOutput)
+}
+
 type GetVpcFirewallCensCen struct {
 	// The ID of the CEN instance.
 	CenId string `pulumi:"cenId"`
@@ -4798,6 +5377,13 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceMembersMemberArrayInput)(nil)).Elem(), GetInstanceMembersMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNatFirewallsFirewallInput)(nil)).Elem(), GetNatFirewallsFirewallArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNatFirewallsFirewallArrayInput)(nil)).Elem(), GetNatFirewallsFirewallArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNatFirewallsFirewallNatRouteEntryListInput)(nil)).Elem(), GetNatFirewallsFirewallNatRouteEntryListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNatFirewallsFirewallNatRouteEntryListArrayInput)(nil)).Elem(), GetNatFirewallsFirewallNatRouteEntryListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcCenTrFirewallsFirewallInput)(nil)).Elem(), GetVpcCenTrFirewallsFirewallArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcCenTrFirewallsFirewallArrayInput)(nil)).Elem(), GetVpcCenTrFirewallsFirewallArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcCenTrFirewallsFirewallIpsConfigInput)(nil)).Elem(), GetVpcCenTrFirewallsFirewallIpsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcFirewallCensCenInput)(nil)).Elem(), GetVpcFirewallCensCenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcFirewallCensCenArrayInput)(nil)).Elem(), GetVpcFirewallCensCenArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcFirewallCensCenLocalVpcInput)(nil)).Elem(), GetVpcFirewallCensCenLocalVpcArgs{})
@@ -4858,6 +5444,13 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceMembersMemberArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetNatFirewallsFirewallOutput{})
+	pulumi.RegisterOutputType(GetNatFirewallsFirewallArrayOutput{})
+	pulumi.RegisterOutputType(GetNatFirewallsFirewallNatRouteEntryListOutput{})
+	pulumi.RegisterOutputType(GetNatFirewallsFirewallNatRouteEntryListArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcCenTrFirewallsFirewallOutput{})
+	pulumi.RegisterOutputType(GetVpcCenTrFirewallsFirewallArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcCenTrFirewallsFirewallIpsConfigOutput{})
 	pulumi.RegisterOutputType(GetVpcFirewallCensCenOutput{})
 	pulumi.RegisterOutputType(GetVpcFirewallCensCenArrayOutput{})
 	pulumi.RegisterOutputType(GetVpcFirewallCensCenLocalVpcOutput{})

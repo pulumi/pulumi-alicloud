@@ -155,7 +155,7 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> description;
+    private Output<String> description;
 
     /**
      * @return The description of the EIP.
@@ -165,8 +165,8 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:**   You cannot specify this parameter if you create a subscription EIP.
      * 
      */
-    public Output<Optional<String>> description() {
-        return Codegen.optional(this.description);
+    public Output<String> description() {
+        return this.description;
     }
     /**
      * The status of fine-grained monitoring. Valid values:

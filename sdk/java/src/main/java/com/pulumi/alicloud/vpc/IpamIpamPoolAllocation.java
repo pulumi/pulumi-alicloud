@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * Allocates or reserves a CIDR from an IPAM address pool.
  * 
- * For information about Vpc Ipam Ipam Pool Allocation and how to use it, see [What is Ipam Pool Allocation](https://www.alibabacloud.com/help/en/).
+ * For information about Vpc Ipam Ipam Pool Allocation and how to use it, see [What is Ipam Pool Allocation](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPoolAllocation).
  * 
  * &gt; **NOTE:** Available since v1.238.0.
  * 
@@ -145,7 +145,6 @@ public class IpamIpamPoolAllocation extends com.pulumi.resources.CustomResource 
     }
     /**
      * The description of the ipam pool alloctaion.
-     * 
      * It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with &#39;http:// &#39;or &#39;https. If it is not filled in, it is empty. The default value is empty.
      * 
      */
@@ -154,7 +153,6 @@ public class IpamIpamPoolAllocation extends com.pulumi.resources.CustomResource 
 
     /**
      * @return The description of the ipam pool alloctaion.
-     * 
      * It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with &#39;http:// &#39;or &#39;https. If it is not filled in, it is empty. The default value is empty.
      * 
      */
@@ -163,7 +161,6 @@ public class IpamIpamPoolAllocation extends com.pulumi.resources.CustomResource 
     }
     /**
      * The name of the ipam pool allocation.
-     * 
      * It must be 1 to 128 characters in length and cannot start with &#39;http:// &#39;or &#39;https.
      * 
      */
@@ -172,7 +169,6 @@ public class IpamIpamPoolAllocation extends com.pulumi.resources.CustomResource 
 
     /**
      * @return The name of the ipam pool allocation.
-     * 
      * It must be 1 to 128 characters in length and cannot start with &#39;http:// &#39;or &#39;https.
      * 
      */
@@ -195,6 +191,7 @@ public class IpamIpamPoolAllocation extends com.pulumi.resources.CustomResource 
     }
     /**
      * When the IPAM Pool to which CIDR is allocated has the region attribute, this attribute is the IPAM Pool region.
+     * When the IPAM Pool to which CIDR is allocated does not have the region attribute, this attribute is the IPAM region.
      * 
      */
     @Export(name="regionId", refs={String.class}, tree="[0]")
@@ -202,6 +199,7 @@ public class IpamIpamPoolAllocation extends com.pulumi.resources.CustomResource 
 
     /**
      * @return When the IPAM Pool to which CIDR is allocated has the region attribute, this attribute is the IPAM Pool region.
+     * When the IPAM Pool to which CIDR is allocated does not have the region attribute, this attribute is the IPAM region.
      * 
      */
     public Output<String> regionId() {

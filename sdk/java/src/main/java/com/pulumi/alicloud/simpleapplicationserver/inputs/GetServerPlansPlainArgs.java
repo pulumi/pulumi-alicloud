@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.simpleapplicationserver.inputs;
 
 import com.pulumi.core.annotations.Import;
+import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -96,13 +97,13 @@ public final class GetServerPlansPlainArgs extends com.pulumi.resources.InvokeAr
      * 
      */
     @Import(name="memory")
-    private @Nullable Integer memory;
+    private @Nullable Double memory;
 
     /**
      * @return The memory size. Unit: GB.
      * 
      */
-    public Optional<Integer> memory() {
+    public Optional<Double> memory() {
         return Optional.ofNullable(this.memory);
     }
 
@@ -238,7 +239,7 @@ public final class GetServerPlansPlainArgs extends com.pulumi.resources.InvokeAr
          * @return builder
          * 
          */
-        public Builder memory(@Nullable Integer memory) {
+        public Builder memory(@Nullable Double memory) {
             $.memory = memory;
             return this;
         }

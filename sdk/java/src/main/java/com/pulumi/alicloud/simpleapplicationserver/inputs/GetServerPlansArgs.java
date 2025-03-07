@@ -5,6 +5,7 @@ package com.pulumi.alicloud.simpleapplicationserver.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -97,13 +98,13 @@ public final class GetServerPlansArgs extends com.pulumi.resources.InvokeArgs {
      * 
      */
     @Import(name="memory")
-    private @Nullable Output<Integer> memory;
+    private @Nullable Output<Double> memory;
 
     /**
      * @return The memory size. Unit: GB.
      * 
      */
-    public Optional<Output<Integer>> memory() {
+    public Optional<Output<Double>> memory() {
         return Optional.ofNullable(this.memory);
     }
 
@@ -289,7 +290,7 @@ public final class GetServerPlansArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder memory(@Nullable Output<Integer> memory) {
+        public Builder memory(@Nullable Output<Double> memory) {
             $.memory = memory;
             return this;
         }
@@ -300,7 +301,7 @@ public final class GetServerPlansArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder memory(Integer memory) {
+        public Builder memory(Double memory) {
             return memory(Output.of(memory));
         }
 

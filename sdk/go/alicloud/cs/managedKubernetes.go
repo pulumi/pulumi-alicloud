@@ -94,6 +94,8 @@ type ManagedKubernetes struct {
 	EnableRrsa pulumi.BoolPtrOutput `pulumi:"enableRrsa"`
 	// The disk encryption key.
 	EncryptionProviderKey pulumi.StringPtrOutput `pulumi:"encryptionProviderKey"`
+	// The IP address family that the cluster network uses. Valid values:
+	IpStack pulumi.StringOutput `pulumi:"ipStack"`
 	// Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
 	IsEnterpriseSecurityGroup pulumi.BoolOutput `pulumi:"isEnterpriseSecurityGroup"`
 	// The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
@@ -135,11 +137,6 @@ type ManagedKubernetes struct {
 	// The public ip of load balancer.
 	SlbInternet pulumi.StringOutput `pulumi:"slbInternet"`
 	// Whether to create internet load balancer for API Server. Default to true.
-	//
-	// > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
-	// If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
-	//
-	// *Computed params*
 	SlbInternetEnabled pulumi.BoolPtrOutput `pulumi:"slbInternetEnabled"`
 	// The ID of private load balancer where the current cluster master node is located.
 	SlbIntranet pulumi.StringOutput `pulumi:"slbIntranet"`
@@ -239,6 +236,8 @@ type managedKubernetesState struct {
 	EnableRrsa *bool `pulumi:"enableRrsa"`
 	// The disk encryption key.
 	EncryptionProviderKey *string `pulumi:"encryptionProviderKey"`
+	// The IP address family that the cluster network uses. Valid values:
+	IpStack *string `pulumi:"ipStack"`
 	// Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
 	IsEnterpriseSecurityGroup *bool `pulumi:"isEnterpriseSecurityGroup"`
 	// The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
@@ -280,11 +279,6 @@ type managedKubernetesState struct {
 	// The public ip of load balancer.
 	SlbInternet *string `pulumi:"slbInternet"`
 	// Whether to create internet load balancer for API Server. Default to true.
-	//
-	// > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
-	// If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
-	//
-	// *Computed params*
 	SlbInternetEnabled *bool `pulumi:"slbInternetEnabled"`
 	// The ID of private load balancer where the current cluster master node is located.
 	SlbIntranet *string `pulumi:"slbIntranet"`
@@ -355,6 +349,8 @@ type ManagedKubernetesState struct {
 	EnableRrsa pulumi.BoolPtrInput
 	// The disk encryption key.
 	EncryptionProviderKey pulumi.StringPtrInput
+	// The IP address family that the cluster network uses. Valid values:
+	IpStack pulumi.StringPtrInput
 	// Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
 	IsEnterpriseSecurityGroup pulumi.BoolPtrInput
 	// The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
@@ -396,11 +392,6 @@ type ManagedKubernetesState struct {
 	// The public ip of load balancer.
 	SlbInternet pulumi.StringPtrInput
 	// Whether to create internet load balancer for API Server. Default to true.
-	//
-	// > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
-	// If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
-	//
-	// *Computed params*
 	SlbInternetEnabled pulumi.BoolPtrInput
 	// The ID of private load balancer where the current cluster master node is located.
 	SlbIntranet pulumi.StringPtrInput
@@ -471,6 +462,8 @@ type managedKubernetesArgs struct {
 	EnableRrsa *bool `pulumi:"enableRrsa"`
 	// The disk encryption key.
 	EncryptionProviderKey *string `pulumi:"encryptionProviderKey"`
+	// The IP address family that the cluster network uses. Valid values:
+	IpStack *string `pulumi:"ipStack"`
 	// Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
 	IsEnterpriseSecurityGroup *bool `pulumi:"isEnterpriseSecurityGroup"`
 	// The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
@@ -504,11 +497,6 @@ type managedKubernetesArgs struct {
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr *string `pulumi:"serviceCidr"`
 	// Whether to create internet load balancer for API Server. Default to true.
-	//
-	// > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
-	// If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
-	//
-	// *Computed params*
 	SlbInternetEnabled *bool `pulumi:"slbInternetEnabled"`
 	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
 	Tags map[string]string `pulumi:"tags"`
@@ -570,6 +558,8 @@ type ManagedKubernetesArgs struct {
 	EnableRrsa pulumi.BoolPtrInput
 	// The disk encryption key.
 	EncryptionProviderKey pulumi.StringPtrInput
+	// The IP address family that the cluster network uses. Valid values:
+	IpStack pulumi.StringPtrInput
 	// Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
 	IsEnterpriseSecurityGroup pulumi.BoolPtrInput
 	// The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
@@ -603,11 +593,6 @@ type ManagedKubernetesArgs struct {
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr pulumi.StringPtrInput
 	// Whether to create internet load balancer for API Server. Default to true.
-	//
-	// > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
-	// If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
-	//
-	// *Computed params*
 	SlbInternetEnabled pulumi.BoolPtrInput
 	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
 	Tags pulumi.StringMapInput
@@ -809,6 +794,11 @@ func (o ManagedKubernetesOutput) EncryptionProviderKey() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v *ManagedKubernetes) pulumi.StringPtrOutput { return v.EncryptionProviderKey }).(pulumi.StringPtrOutput)
 }
 
+// The IP address family that the cluster network uses. Valid values:
+func (o ManagedKubernetesOutput) IpStack() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedKubernetes) pulumi.StringOutput { return v.IpStack }).(pulumi.StringOutput)
+}
+
 // Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
 func (o ManagedKubernetesOutput) IsEnterpriseSecurityGroup() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) pulumi.BoolOutput { return v.IsEnterpriseSecurityGroup }).(pulumi.BoolOutput)
@@ -910,11 +900,6 @@ func (o ManagedKubernetesOutput) SlbInternet() pulumi.StringOutput {
 }
 
 // Whether to create internet load balancer for API Server. Default to true.
-//
-// > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
-// If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
-//
-// *Computed params*
 func (o ManagedKubernetesOutput) SlbInternetEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) pulumi.BoolPtrOutput { return v.SlbInternetEnabled }).(pulumi.BoolPtrOutput)
 }

@@ -28,17 +28,21 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			_, err := ecs.NewEcsDeploymentSet(ctx, "default", &ecs.EcsDeploymentSetArgs{
 //				Strategy:          pulumi.String("Availability"),
-//				Domain:            pulumi.String("Default"),
-//				Granularity:       pulumi.String("Host"),
-//				DeploymentSetName: pulumi.String("example_value"),
-//				Description:       pulumi.String("example_value"),
+//				DeploymentSetName: pulumi.String(name),
+//				Description:       pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -59,20 +63,24 @@ import (
 type EcsDeploymentSet struct {
 	pulumi.CustomResourceState
 
-	// The name of the deployment set. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+	// The name of the deployment set. The name must be `2` to `128` characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
 	DeploymentSetName pulumi.StringPtrOutput `pulumi:"deploymentSetName"`
-	// The description of the deployment set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	// The description of the deployment set. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The deployment domain. Valid values: `Default`.
-	Domain pulumi.StringPtrOutput `pulumi:"domain"`
-	// The deployment granularity. Valid values: `Host`.
-	Granularity pulumi.StringPtrOutput `pulumi:"granularity"`
-	// The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
-	// * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
-	// * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
+	// Field `domain` has been deprecated from provider version 1.243.0.
+	//
+	// Deprecated: Field `domain` has been deprecated from provider version 1.243.0.
+	Domain pulumi.StringOutput `pulumi:"domain"`
+	// Field `granularity` has been deprecated from provider version 1.243.0.
+	//
+	// Deprecated: Field `granularity` has been deprecated from provider version 1.243.0.
+	Granularity pulumi.StringOutput `pulumi:"granularity"`
+	// The emergency solution to use in the situation where instances in the deployment set cannot be evenly distributed to different zones due to resource insufficiency after the instances failover. Valid values:
+	// - `CancelMembershipAndStart` - Removes the instances from the deployment set and starts the instances immediately after they are failed over.
+	// - `KeepStopped`- Leaves the instances in the Stopped state and starts them after resources are replenished.
 	OnUnableToRedeployFailedInstance pulumi.StringPtrOutput `pulumi:"onUnableToRedeployFailedInstance"`
-	// The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
-	Strategy pulumi.StringPtrOutput `pulumi:"strategy"`
+	// The deployment strategy. Default value: `Availability`. Valid values: `Availability`, `AvailabilityGroup`, `LowLatency`.
+	Strategy pulumi.StringOutput `pulumi:"strategy"`
 }
 
 // NewEcsDeploymentSet registers a new resource with the given unique name, arguments, and options.
@@ -105,36 +113,44 @@ func GetEcsDeploymentSet(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EcsDeploymentSet resources.
 type ecsDeploymentSetState struct {
-	// The name of the deployment set. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+	// The name of the deployment set. The name must be `2` to `128` characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
 	DeploymentSetName *string `pulumi:"deploymentSetName"`
-	// The description of the deployment set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	// The description of the deployment set. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`
-	// The deployment domain. Valid values: `Default`.
+	// Field `domain` has been deprecated from provider version 1.243.0.
+	//
+	// Deprecated: Field `domain` has been deprecated from provider version 1.243.0.
 	Domain *string `pulumi:"domain"`
-	// The deployment granularity. Valid values: `Host`.
+	// Field `granularity` has been deprecated from provider version 1.243.0.
+	//
+	// Deprecated: Field `granularity` has been deprecated from provider version 1.243.0.
 	Granularity *string `pulumi:"granularity"`
-	// The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
-	// * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
-	// * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
+	// The emergency solution to use in the situation where instances in the deployment set cannot be evenly distributed to different zones due to resource insufficiency after the instances failover. Valid values:
+	// - `CancelMembershipAndStart` - Removes the instances from the deployment set and starts the instances immediately after they are failed over.
+	// - `KeepStopped`- Leaves the instances in the Stopped state and starts them after resources are replenished.
 	OnUnableToRedeployFailedInstance *string `pulumi:"onUnableToRedeployFailedInstance"`
-	// The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
+	// The deployment strategy. Default value: `Availability`. Valid values: `Availability`, `AvailabilityGroup`, `LowLatency`.
 	Strategy *string `pulumi:"strategy"`
 }
 
 type EcsDeploymentSetState struct {
-	// The name of the deployment set. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+	// The name of the deployment set. The name must be `2` to `128` characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
 	DeploymentSetName pulumi.StringPtrInput
-	// The description of the deployment set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	// The description of the deployment set. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrInput
-	// The deployment domain. Valid values: `Default`.
+	// Field `domain` has been deprecated from provider version 1.243.0.
+	//
+	// Deprecated: Field `domain` has been deprecated from provider version 1.243.0.
 	Domain pulumi.StringPtrInput
-	// The deployment granularity. Valid values: `Host`.
+	// Field `granularity` has been deprecated from provider version 1.243.0.
+	//
+	// Deprecated: Field `granularity` has been deprecated from provider version 1.243.0.
 	Granularity pulumi.StringPtrInput
-	// The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
-	// * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
-	// * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
+	// The emergency solution to use in the situation where instances in the deployment set cannot be evenly distributed to different zones due to resource insufficiency after the instances failover. Valid values:
+	// - `CancelMembershipAndStart` - Removes the instances from the deployment set and starts the instances immediately after they are failed over.
+	// - `KeepStopped`- Leaves the instances in the Stopped state and starts them after resources are replenished.
 	OnUnableToRedeployFailedInstance pulumi.StringPtrInput
-	// The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
+	// The deployment strategy. Default value: `Availability`. Valid values: `Availability`, `AvailabilityGroup`, `LowLatency`.
 	Strategy pulumi.StringPtrInput
 }
 
@@ -143,37 +159,45 @@ func (EcsDeploymentSetState) ElementType() reflect.Type {
 }
 
 type ecsDeploymentSetArgs struct {
-	// The name of the deployment set. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+	// The name of the deployment set. The name must be `2` to `128` characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
 	DeploymentSetName *string `pulumi:"deploymentSetName"`
-	// The description of the deployment set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	// The description of the deployment set. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`
-	// The deployment domain. Valid values: `Default`.
+	// Field `domain` has been deprecated from provider version 1.243.0.
+	//
+	// Deprecated: Field `domain` has been deprecated from provider version 1.243.0.
 	Domain *string `pulumi:"domain"`
-	// The deployment granularity. Valid values: `Host`.
+	// Field `granularity` has been deprecated from provider version 1.243.0.
+	//
+	// Deprecated: Field `granularity` has been deprecated from provider version 1.243.0.
 	Granularity *string `pulumi:"granularity"`
-	// The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
-	// * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
-	// * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
+	// The emergency solution to use in the situation where instances in the deployment set cannot be evenly distributed to different zones due to resource insufficiency after the instances failover. Valid values:
+	// - `CancelMembershipAndStart` - Removes the instances from the deployment set and starts the instances immediately after they are failed over.
+	// - `KeepStopped`- Leaves the instances in the Stopped state and starts them after resources are replenished.
 	OnUnableToRedeployFailedInstance *string `pulumi:"onUnableToRedeployFailedInstance"`
-	// The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
+	// The deployment strategy. Default value: `Availability`. Valid values: `Availability`, `AvailabilityGroup`, `LowLatency`.
 	Strategy *string `pulumi:"strategy"`
 }
 
 // The set of arguments for constructing a EcsDeploymentSet resource.
 type EcsDeploymentSetArgs struct {
-	// The name of the deployment set. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+	// The name of the deployment set. The name must be `2` to `128` characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
 	DeploymentSetName pulumi.StringPtrInput
-	// The description of the deployment set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	// The description of the deployment set. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrInput
-	// The deployment domain. Valid values: `Default`.
+	// Field `domain` has been deprecated from provider version 1.243.0.
+	//
+	// Deprecated: Field `domain` has been deprecated from provider version 1.243.0.
 	Domain pulumi.StringPtrInput
-	// The deployment granularity. Valid values: `Host`.
+	// Field `granularity` has been deprecated from provider version 1.243.0.
+	//
+	// Deprecated: Field `granularity` has been deprecated from provider version 1.243.0.
 	Granularity pulumi.StringPtrInput
-	// The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
-	// * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
-	// * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
+	// The emergency solution to use in the situation where instances in the deployment set cannot be evenly distributed to different zones due to resource insufficiency after the instances failover. Valid values:
+	// - `CancelMembershipAndStart` - Removes the instances from the deployment set and starts the instances immediately after they are failed over.
+	// - `KeepStopped`- Leaves the instances in the Stopped state and starts them after resources are replenished.
 	OnUnableToRedeployFailedInstance pulumi.StringPtrInput
-	// The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
+	// The deployment strategy. Default value: `Availability`. Valid values: `Availability`, `AvailabilityGroup`, `LowLatency`.
 	Strategy pulumi.StringPtrInput
 }
 
@@ -264,36 +288,40 @@ func (o EcsDeploymentSetOutput) ToEcsDeploymentSetOutputWithContext(ctx context.
 	return o
 }
 
-// The name of the deployment set. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+// The name of the deployment set. The name must be `2` to `128` characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
 func (o EcsDeploymentSetOutput) DeploymentSetName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsDeploymentSet) pulumi.StringPtrOutput { return v.DeploymentSetName }).(pulumi.StringPtrOutput)
 }
 
-// The description of the deployment set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+// The description of the deployment set. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
 func (o EcsDeploymentSetOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsDeploymentSet) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The deployment domain. Valid values: `Default`.
-func (o EcsDeploymentSetOutput) Domain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EcsDeploymentSet) pulumi.StringPtrOutput { return v.Domain }).(pulumi.StringPtrOutput)
+// Field `domain` has been deprecated from provider version 1.243.0.
+//
+// Deprecated: Field `domain` has been deprecated from provider version 1.243.0.
+func (o EcsDeploymentSetOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsDeploymentSet) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
 }
 
-// The deployment granularity. Valid values: `Host`.
-func (o EcsDeploymentSetOutput) Granularity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EcsDeploymentSet) pulumi.StringPtrOutput { return v.Granularity }).(pulumi.StringPtrOutput)
+// Field `granularity` has been deprecated from provider version 1.243.0.
+//
+// Deprecated: Field `granularity` has been deprecated from provider version 1.243.0.
+func (o EcsDeploymentSetOutput) Granularity() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsDeploymentSet) pulumi.StringOutput { return v.Granularity }).(pulumi.StringOutput)
 }
 
-// The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
-// * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
-// * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
+// The emergency solution to use in the situation where instances in the deployment set cannot be evenly distributed to different zones due to resource insufficiency after the instances failover. Valid values:
+// - `CancelMembershipAndStart` - Removes the instances from the deployment set and starts the instances immediately after they are failed over.
+// - `KeepStopped`- Leaves the instances in the Stopped state and starts them after resources are replenished.
 func (o EcsDeploymentSetOutput) OnUnableToRedeployFailedInstance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsDeploymentSet) pulumi.StringPtrOutput { return v.OnUnableToRedeployFailedInstance }).(pulumi.StringPtrOutput)
 }
 
-// The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
-func (o EcsDeploymentSetOutput) Strategy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EcsDeploymentSet) pulumi.StringPtrOutput { return v.Strategy }).(pulumi.StringPtrOutput)
+// The deployment strategy. Default value: `Availability`. Valid values: `Availability`, `AvailabilityGroup`, `LowLatency`.
+func (o EcsDeploymentSetOutput) Strategy() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsDeploymentSet) pulumi.StringOutput { return v.Strategy }).(pulumi.StringOutput)
 }
 
 type EcsDeploymentSetArrayOutput struct{ *pulumi.OutputState }

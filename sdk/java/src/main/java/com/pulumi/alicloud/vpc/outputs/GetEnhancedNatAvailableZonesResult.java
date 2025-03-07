@@ -19,8 +19,16 @@ public final class GetEnhancedNatAvailableZonesResult {
      * 
      */
     private String id;
+    /**
+     * @return (Optional) A list of available zones IDs by the enhanced NAT gateway.
+     * 
+     */
     private List<String> ids;
     private @Nullable String outputFile;
+    /**
+     * @return A list of available zones. Each element contains the following attributes:
+     * 
+     */
     private List<GetEnhancedNatAvailableZonesZone> zones;
 
     private GetEnhancedNatAvailableZonesResult() {}
@@ -31,12 +39,20 @@ public final class GetEnhancedNatAvailableZonesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return (Optional) A list of available zones IDs by the enhanced NAT gateway.
+     * 
+     */
     public List<String> ids() {
         return this.ids;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of available zones. Each element contains the following attributes:
+     * 
+     */
     public List<GetEnhancedNatAvailableZonesZone> zones() {
         return this.zones;
     }

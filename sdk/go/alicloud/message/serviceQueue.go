@@ -71,6 +71,8 @@ type ServiceQueue struct {
 	CreateTime pulumi.IntOutput `pulumi:"createTime"`
 	// The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
 	DelaySeconds pulumi.IntOutput `pulumi:"delaySeconds"`
+	// The dead-letter queue policy. See `dlqPolicy` below.
+	DlqPolicy ServiceQueueDlqPolicyOutput `pulumi:"dlqPolicy"`
 	// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
 	LoggingEnabled pulumi.BoolPtrOutput `pulumi:"loggingEnabled"`
 	// The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
@@ -124,6 +126,8 @@ type serviceQueueState struct {
 	CreateTime *int `pulumi:"createTime"`
 	// The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
 	DelaySeconds *int `pulumi:"delaySeconds"`
+	// The dead-letter queue policy. See `dlqPolicy` below.
+	DlqPolicy *ServiceQueueDlqPolicy `pulumi:"dlqPolicy"`
 	// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
 	LoggingEnabled *bool `pulumi:"loggingEnabled"`
 	// The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
@@ -145,6 +149,8 @@ type ServiceQueueState struct {
 	CreateTime pulumi.IntPtrInput
 	// The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
 	DelaySeconds pulumi.IntPtrInput
+	// The dead-letter queue policy. See `dlqPolicy` below.
+	DlqPolicy ServiceQueueDlqPolicyPtrInput
 	// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
 	LoggingEnabled pulumi.BoolPtrInput
 	// The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
@@ -168,6 +174,8 @@ func (ServiceQueueState) ElementType() reflect.Type {
 type serviceQueueArgs struct {
 	// The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
 	DelaySeconds *int `pulumi:"delaySeconds"`
+	// The dead-letter queue policy. See `dlqPolicy` below.
+	DlqPolicy *ServiceQueueDlqPolicy `pulumi:"dlqPolicy"`
 	// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
 	LoggingEnabled *bool `pulumi:"loggingEnabled"`
 	// The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
@@ -188,6 +196,8 @@ type serviceQueueArgs struct {
 type ServiceQueueArgs struct {
 	// The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
 	DelaySeconds pulumi.IntPtrInput
+	// The dead-letter queue policy. See `dlqPolicy` below.
+	DlqPolicy ServiceQueueDlqPolicyPtrInput
 	// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
 	LoggingEnabled pulumi.BoolPtrInput
 	// The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
@@ -299,6 +309,11 @@ func (o ServiceQueueOutput) CreateTime() pulumi.IntOutput {
 // The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
 func (o ServiceQueueOutput) DelaySeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v *ServiceQueue) pulumi.IntOutput { return v.DelaySeconds }).(pulumi.IntOutput)
+}
+
+// The dead-letter queue policy. See `dlqPolicy` below.
+func (o ServiceQueueOutput) DlqPolicy() ServiceQueueDlqPolicyOutput {
+	return o.ApplyT(func(v *ServiceQueue) ServiceQueueDlqPolicyOutput { return v.DlqPolicy }).(ServiceQueueDlqPolicyOutput)
 }
 
 // Specifies whether to enable the logging feature. Default value: `false`. Valid values:

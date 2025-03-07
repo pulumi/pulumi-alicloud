@@ -73,7 +73,7 @@ public final class ClusterNodeGroup {
      */
     private String nodeGroupName;
     /**
-     * @return The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0.
+     * @return The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0. Node group type of MASTER-EXTEND is available since v1.243.0.
      * 
      */
     private String nodeGroupType;
@@ -195,7 +195,7 @@ public final class ClusterNodeGroup {
         return this.nodeGroupName;
     }
     /**
-     * @return The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0.
+     * @return The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0. Node group type of MASTER-EXTEND is available since v1.243.0.
      * 
      */
     public String nodeGroupType() {

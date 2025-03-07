@@ -72,6 +72,8 @@ type GetVpcEndpointsArgs struct {
 	ServiceName *string `pulumi:"serviceName"`
 	// The status of Vpc Endpoint.
 	Status *string `pulumi:"status"`
+	// Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+	Tags map[string]string `pulumi:"tags"`
 	// The name of Vpc Endpoint.
 	VpcEndpointName *string `pulumi:"vpcEndpointName"`
 	// The private network to which the terminal node belongs..
@@ -96,6 +98,8 @@ type GetVpcEndpointsResult struct {
 	ServiceName *string `pulumi:"serviceName"`
 	// The status of Vpc Endpoint.
 	Status *string `pulumi:"status"`
+	// Tag tags of Vpc Endpoint.
+	Tags map[string]string `pulumi:"tags"`
 	// The name of Vpc Endpoint.
 	VpcEndpointName *string `pulumi:"vpcEndpointName"`
 	// The private network to which the terminal node belongs.
@@ -127,6 +131,8 @@ type GetVpcEndpointsOutputArgs struct {
 	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
 	// The status of Vpc Endpoint.
 	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The name of Vpc Endpoint.
 	VpcEndpointName pulumi.StringPtrInput `pulumi:"vpcEndpointName"`
 	// The private network to which the terminal node belongs..
@@ -196,6 +202,11 @@ func (o GetVpcEndpointsResultOutput) ServiceName() pulumi.StringPtrOutput {
 // The status of Vpc Endpoint.
 func (o GetVpcEndpointsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpcEndpointsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Tag tags of Vpc Endpoint.
+func (o GetVpcEndpointsResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetVpcEndpointsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The name of Vpc Endpoint.

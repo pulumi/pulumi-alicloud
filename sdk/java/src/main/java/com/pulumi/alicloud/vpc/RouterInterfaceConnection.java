@@ -15,10 +15,10 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **DEPRECATED:**  This resource has been deprecated from version `1.199.0`. Please use new resource alicloud_express_connect_router_interface.
+ * 
  * Provides a VPC router interface connection resource to connect two router interfaces which are in two different VPCs.
  * After that, all of the two router interfaces will be active.
- * 
- * &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.199.0`. Please use new resource alicloud_express_connect_router_interface.
  * 
  * &gt; **NOTE:** At present, Router interface does not support changing opposite router interface, the connection delete action is only deactivating it to inactive, not modifying the connection to empty.
  * 

@@ -13,7 +13,7 @@ import (
 
 // This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
 //
-// > **NOTE:** Available since v1.34.0+.
+// > **NOTE:** Available since v1.34.0.
 //
 // > **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kubeConfigFilePrefix`.
 //
@@ -62,7 +62,9 @@ type GetKubernetesClustersArgs struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// Cluster IDs to filter.
 	Ids []string `pulumi:"ids"`
-	// The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/k8s`, then it will be named with `~/.kube/k8s-clusterID-kubeconfig`. From version 1.187.0+, kubeConfig will not export kubeConfig if this field is not set.
+	// The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/k8s`, then it will be named with `~/.kube/k8s-clusterID-kubeconfig`. From version 1.243.0, kubeConfig will not export kubeConfig if this field is not set. Please use the attribute outputFile of new DataSource `cs.getClusterCredential` to replace it.
+	//
+	// Deprecated: Field 'kube_config_file_prefix' has been deprecated from provider version 1.243.0. From version 1.243.0, please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
 	KubeConfigFilePrefix *string `pulumi:"kubeConfigFilePrefix"`
 	// A regex string to filter results by cluster name.
 	NameRegex *string `pulumi:"nameRegex"`
@@ -78,9 +80,10 @@ type GetKubernetesClustersResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of matched Kubernetes clusters' ids.
-	Ids                  []string `pulumi:"ids"`
-	KubeConfigFilePrefix *string  `pulumi:"kubeConfigFilePrefix"`
-	NameRegex            *string  `pulumi:"nameRegex"`
+	Ids []string `pulumi:"ids"`
+	// Deprecated: Field 'kube_config_file_prefix' has been deprecated from provider version 1.243.0. From version 1.243.0, please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
+	KubeConfigFilePrefix *string `pulumi:"kubeConfigFilePrefix"`
+	NameRegex            *string `pulumi:"nameRegex"`
 	// A list of matched Kubernetes clusters' names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
@@ -101,7 +104,9 @@ type GetKubernetesClustersOutputArgs struct {
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// Cluster IDs to filter.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/k8s`, then it will be named with `~/.kube/k8s-clusterID-kubeconfig`. From version 1.187.0+, kubeConfig will not export kubeConfig if this field is not set.
+	// The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/k8s`, then it will be named with `~/.kube/k8s-clusterID-kubeconfig`. From version 1.243.0, kubeConfig will not export kubeConfig if this field is not set. Please use the attribute outputFile of new DataSource `cs.getClusterCredential` to replace it.
+	//
+	// Deprecated: Field 'kube_config_file_prefix' has been deprecated from provider version 1.243.0. From version 1.243.0, please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
 	KubeConfigFilePrefix pulumi.StringPtrInput `pulumi:"kubeConfigFilePrefix"`
 	// A regex string to filter results by cluster name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
@@ -147,6 +152,7 @@ func (o GetKubernetesClustersResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetKubernetesClustersResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// Deprecated: Field 'kube_config_file_prefix' has been deprecated from provider version 1.243.0. From version 1.243.0, please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
 func (o GetKubernetesClustersResultOutput) KubeConfigFilePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKubernetesClustersResult) *string { return v.KubeConfigFilePrefix }).(pulumi.StringPtrOutput)
 }

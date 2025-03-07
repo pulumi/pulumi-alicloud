@@ -18,8 +18,6 @@ import javax.annotation.Nullable;
 /**
  * Anti-DDoS Advanced instance resource. &#34;Ddosbgp&#34; is the short term of this product.
  * 
- * &gt; **NOTE:** The endpoint of bssopenapi used only support &#34;business.aliyuncs.com&#34; at present.
- * 
  * &gt; **NOTE:** Available since v1.183.0.
  * 
  * ## Example Usage

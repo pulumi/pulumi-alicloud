@@ -5,7 +5,9 @@ package com.pulumi.alicloud.hbr.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +16,21 @@ import javax.annotation.Nullable;
 public final class VaultState extends com.pulumi.resources.ResourceArgs {
 
     public static final VaultState Empty = new VaultState();
+
+    /**
+     * (Available since v1.243.0) The time when the backup vault was created.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return (Available since v1.243.0) The time when the backup vault was created.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
 
     /**
      * The description of Vault. Defaults to an empty string.
@@ -65,6 +82,36 @@ public final class VaultState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Available since v1.243.0) The ID of the region in which the backup vault resides.
+     * 
+     */
+    @Import(name="regionId")
+    private @Nullable Output<String> regionId;
+
+    /**
+     * @return (Available since v1.243.0) The ID of the region in which the backup vault resides.
+     * 
+     */
+    public Optional<Output<String>> regionId() {
+        return Optional.ofNullable(this.regionId);
+    }
+
+    /**
+     * The ID of the resource group.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
      * The status of the Vault.
      * 
      */
@@ -77,6 +124,21 @@ public final class VaultState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * The tag of the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return The tag of the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
     }
 
     /**
@@ -124,16 +186,36 @@ public final class VaultState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.vaultType);
     }
 
+    /**
+     * Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
+     * 
+     */
+    @Import(name="wormEnabled")
+    private @Nullable Output<Boolean> wormEnabled;
+
+    /**
+     * @return Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> wormEnabled() {
+        return Optional.ofNullable(this.wormEnabled);
+    }
+
     private VaultState() {}
 
     private VaultState(VaultState $) {
+        this.createTime = $.createTime;
         this.description = $.description;
         this.encryptType = $.encryptType;
         this.kmsKeyId = $.kmsKeyId;
+        this.regionId = $.regionId;
+        this.resourceGroupId = $.resourceGroupId;
         this.status = $.status;
+        this.tags = $.tags;
         this.vaultName = $.vaultName;
         this.vaultStorageClass = $.vaultStorageClass;
         this.vaultType = $.vaultType;
+        this.wormEnabled = $.wormEnabled;
     }
 
     public static Builder builder() {
@@ -152,6 +234,27 @@ public final class VaultState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(VaultState defaults) {
             $ = new VaultState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param createTime (Available since v1.243.0) The time when the backup vault was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime (Available since v1.243.0) The time when the backup vault was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
         }
 
         /**
@@ -222,6 +325,48 @@ public final class VaultState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param regionId (Available since v1.243.0) The ID of the region in which the backup vault resides.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(@Nullable Output<String> regionId) {
+            $.regionId = regionId;
+            return this;
+        }
+
+        /**
+         * @param regionId (Available since v1.243.0) The ID of the region in which the backup vault resides.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(String regionId) {
+            return regionId(Output.of(regionId));
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
          * @param status The status of the Vault.
          * 
          * @return builder
@@ -240,6 +385,27 @@ public final class VaultState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param tags The tag of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tag of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         /**
@@ -303,6 +469,27 @@ public final class VaultState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder vaultType(String vaultType) {
             return vaultType(Output.of(vaultType));
+        }
+
+        /**
+         * @param wormEnabled Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wormEnabled(@Nullable Output<Boolean> wormEnabled) {
+            $.wormEnabled = wormEnabled;
+            return this;
+        }
+
+        /**
+         * @param wormEnabled Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wormEnabled(Boolean wormEnabled) {
+            return wormEnabled(Output.of(wormEnabled));
         }
 
         public VaultState build() {

@@ -6,6 +6,7 @@ package com.pulumi.alicloud.esa;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -30,6 +31,67 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> accessType() {
         return Optional.ofNullable(this.accessType);
+    }
+
+    /**
+     * Add the Visitor geolocation header. Value range:
+     * - on
+     * - off
+     * 
+     */
+    @Import(name="addClientGeolocationHeader")
+    private @Nullable Output<String> addClientGeolocationHeader;
+
+    /**
+     * @return Add the Visitor geolocation header. Value range:
+     * - on
+     * - off
+     * 
+     */
+    public Optional<Output<String>> addClientGeolocationHeader() {
+        return Optional.ofNullable(this.addClientGeolocationHeader);
+    }
+
+    /**
+     * Add the &#34;ali-real-client-ip&#34; header containing the real client IP. Value range:
+     * - on
+     * - off
+     * 
+     */
+    @Import(name="addRealClientIpHeader")
+    private @Nullable Output<String> addRealClientIpHeader;
+
+    /**
+     * @return Add the &#34;ali-real-client-ip&#34; header containing the real client IP. Value range:
+     * - on
+     * - off
+     * 
+     */
+    public Optional<Output<String>> addRealClientIpHeader() {
+        return Optional.ofNullable(this.addRealClientIpHeader);
+    }
+
+    /**
+     * Multi-level cache architecture pattern. Value range:
+     * edge: edge caching layer.
+     * edge_smart: Edge Cache layer + Smart Cache layer.
+     * edge_regional: Edge Cache layer + regional cache layer.
+     * edge_regional_smart: Edge Cache layer + regional cache layer + intelligent cache layer.
+     * 
+     */
+    @Import(name="cacheArchitectureMode")
+    private @Nullable Output<String> cacheArchitectureMode;
+
+    /**
+     * @return Multi-level cache architecture pattern. Value range:
+     * edge: edge caching layer.
+     * edge_smart: Edge Cache layer + Smart Cache layer.
+     * edge_regional: Edge Cache layer + regional cache layer.
+     * edge_regional_smart: Edge Cache layer + regional cache layer + intelligent cache layer.
+     * 
+     */
+    public Optional<Output<String>> cacheArchitectureMode() {
+        return Optional.ofNullable(this.cacheArchitectureMode);
     }
 
     /**
@@ -63,6 +125,25 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * IPv6 switch. Value:
+     * - on
+     * - off
+     * 
+     */
+    @Import(name="ipv6Enable")
+    private @Nullable Output<String> ipv6Enable;
+
+    /**
+     * @return IPv6 switch. Value:
+     * - on
+     * - off
+     * 
+     */
+    public Optional<Output<String>> ipv6Enable() {
+        return Optional.ofNullable(this.ipv6Enable);
+    }
+
+    /**
      * The ID of the resource group
      * 
      */
@@ -93,6 +174,21 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The version number of the site. For a site with version management enabled, you can use this parameter to specify the effective site version. The default version is 0.
+     * 
+     */
+    @Import(name="siteVersion")
+    private @Nullable Output<Integer> siteVersion;
+
+    /**
+     * @return The version number of the site. For a site with version management enabled, you can use this parameter to specify the effective site version. The default version is 0.
+     * 
+     */
+    public Optional<Output<Integer>> siteVersion() {
+        return Optional.ofNullable(this.siteVersion);
+    }
+
+    /**
      * Resource tags
      * 
      */
@@ -111,10 +207,15 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
 
     private SiteArgs(SiteArgs $) {
         this.accessType = $.accessType;
+        this.addClientGeolocationHeader = $.addClientGeolocationHeader;
+        this.addRealClientIpHeader = $.addRealClientIpHeader;
+        this.cacheArchitectureMode = $.cacheArchitectureMode;
         this.coverage = $.coverage;
         this.instanceId = $.instanceId;
+        this.ipv6Enable = $.ipv6Enable;
         this.resourceGroupId = $.resourceGroupId;
         this.siteName = $.siteName;
+        this.siteVersion = $.siteVersion;
         this.tags = $.tags;
     }
 
@@ -155,6 +256,85 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder accessType(String accessType) {
             return accessType(Output.of(accessType));
+        }
+
+        /**
+         * @param addClientGeolocationHeader Add the Visitor geolocation header. Value range:
+         * - on
+         * - off
+         * 
+         * @return builder
+         * 
+         */
+        public Builder addClientGeolocationHeader(@Nullable Output<String> addClientGeolocationHeader) {
+            $.addClientGeolocationHeader = addClientGeolocationHeader;
+            return this;
+        }
+
+        /**
+         * @param addClientGeolocationHeader Add the Visitor geolocation header. Value range:
+         * - on
+         * - off
+         * 
+         * @return builder
+         * 
+         */
+        public Builder addClientGeolocationHeader(String addClientGeolocationHeader) {
+            return addClientGeolocationHeader(Output.of(addClientGeolocationHeader));
+        }
+
+        /**
+         * @param addRealClientIpHeader Add the &#34;ali-real-client-ip&#34; header containing the real client IP. Value range:
+         * - on
+         * - off
+         * 
+         * @return builder
+         * 
+         */
+        public Builder addRealClientIpHeader(@Nullable Output<String> addRealClientIpHeader) {
+            $.addRealClientIpHeader = addRealClientIpHeader;
+            return this;
+        }
+
+        /**
+         * @param addRealClientIpHeader Add the &#34;ali-real-client-ip&#34; header containing the real client IP. Value range:
+         * - on
+         * - off
+         * 
+         * @return builder
+         * 
+         */
+        public Builder addRealClientIpHeader(String addRealClientIpHeader) {
+            return addRealClientIpHeader(Output.of(addRealClientIpHeader));
+        }
+
+        /**
+         * @param cacheArchitectureMode Multi-level cache architecture pattern. Value range:
+         * edge: edge caching layer.
+         * edge_smart: Edge Cache layer + Smart Cache layer.
+         * edge_regional: Edge Cache layer + regional cache layer.
+         * edge_regional_smart: Edge Cache layer + regional cache layer + intelligent cache layer.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cacheArchitectureMode(@Nullable Output<String> cacheArchitectureMode) {
+            $.cacheArchitectureMode = cacheArchitectureMode;
+            return this;
+        }
+
+        /**
+         * @param cacheArchitectureMode Multi-level cache architecture pattern. Value range:
+         * edge: edge caching layer.
+         * edge_smart: Edge Cache layer + Smart Cache layer.
+         * edge_regional: Edge Cache layer + regional cache layer.
+         * edge_regional_smart: Edge Cache layer + regional cache layer + intelligent cache layer.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cacheArchitectureMode(String cacheArchitectureMode) {
+            return cacheArchitectureMode(Output.of(cacheArchitectureMode));
         }
 
         /**
@@ -200,6 +380,31 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param ipv6Enable IPv6 switch. Value:
+         * - on
+         * - off
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6Enable(@Nullable Output<String> ipv6Enable) {
+            $.ipv6Enable = ipv6Enable;
+            return this;
+        }
+
+        /**
+         * @param ipv6Enable IPv6 switch. Value:
+         * - on
+         * - off
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6Enable(String ipv6Enable) {
+            return ipv6Enable(Output.of(ipv6Enable));
+        }
+
+        /**
          * @param resourceGroupId The ID of the resource group
          * 
          * @return builder
@@ -239,6 +444,27 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder siteName(String siteName) {
             return siteName(Output.of(siteName));
+        }
+
+        /**
+         * @param siteVersion The version number of the site. For a site with version management enabled, you can use this parameter to specify the effective site version. The default version is 0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder siteVersion(@Nullable Output<Integer> siteVersion) {
+            $.siteVersion = siteVersion;
+            return this;
+        }
+
+        /**
+         * @param siteVersion The version number of the site. For a site with version management enabled, you can use this parameter to specify the effective site version. The default version is 0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder siteVersion(Integer siteVersion) {
+            return siteVersion(Output.of(siteVersion));
         }
 
         /**

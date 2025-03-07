@@ -15,7 +15,10 @@ import java.util.Objects;
 @CustomType
 public final class GetBasicAcceleratorsAccelerator {
     /**
-     * @return The bandwidth billing method.
+     * @return The bandwidth billing method. Valid values:
+     * - `BandwidthPackage`: billed based on bandwidth plans.
+     * - `CDT`: billed through Cloud Data Transfer (CDT) and based on data transfer.
+     * - `CDT95`: billed through CDT and based on the 95th percentile bandwidth. This bandwidth billing method is available only for users that are included in the whitelist.
      * 
      */
     private String bandwidthBillingType;
@@ -70,7 +73,7 @@ public final class GetBasicAcceleratorsAccelerator {
      */
     private String id;
     /**
-     * @return The billing method of the Global Accelerator Basic Accelerator instance. Only `PREPAY` is returned, which indicates the subscription billing method.
+     * @return The billing method of the Global Accelerator Basic Accelerator instance.
      * 
      */
     private String instanceChargeType;
@@ -87,7 +90,10 @@ public final class GetBasicAcceleratorsAccelerator {
 
     private GetBasicAcceleratorsAccelerator() {}
     /**
-     * @return The bandwidth billing method.
+     * @return The bandwidth billing method. Valid values:
+     * - `BandwidthPackage`: billed based on bandwidth plans.
+     * - `CDT`: billed through Cloud Data Transfer (CDT) and based on data transfer.
+     * - `CDT95`: billed through CDT and based on the 95th percentile bandwidth. This bandwidth billing method is available only for users that are included in the whitelist.
      * 
      */
     public String bandwidthBillingType() {
@@ -164,7 +170,7 @@ public final class GetBasicAcceleratorsAccelerator {
         return this.id;
     }
     /**
-     * @return The billing method of the Global Accelerator Basic Accelerator instance. Only `PREPAY` is returned, which indicates the subscription billing method.
+     * @return The billing method of the Global Accelerator Basic Accelerator instance.
      * 
      */
     public String instanceChargeType() {

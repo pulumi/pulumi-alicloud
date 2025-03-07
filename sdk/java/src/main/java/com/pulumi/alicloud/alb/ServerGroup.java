@@ -219,6 +219,24 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
         return this.crossZoneEnabled;
     }
     /**
+     * Whether to PreCheck only this request. Value:
+     * true: Send a check request,
+     * false (default): Send a normal request.
+     * 
+     */
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> dryRun;
+
+    /**
+     * @return Whether to PreCheck only this request. Value:
+     * true: Send a check request,
+     * false (default): Send a normal request.
+     * 
+     */
+    public Output<Optional<Boolean>> dryRun() {
+        return Codegen.optional(this.dryRun);
+    }
+    /**
      * The configuration of health checks See `health_check_config` below.
      * 
      */
@@ -233,18 +251,36 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
         return this.healthCheckConfig;
     }
     /**
-     * The template ID.
+     * The ID of the resource group to which you want to transfer the cloud resource.
+     * 
+     * &gt; **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
      * 
      */
     @Export(name="healthCheckTemplateId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthCheckTemplateId;
 
     /**
-     * @return The template ID.
+     * @return The ID of the resource group to which you want to transfer the cloud resource.
+     * 
+     * &gt; **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
      * 
      */
     public Output<Optional<String>> healthCheckTemplateId() {
         return Codegen.optional(this.healthCheckTemplateId);
+    }
+    /**
+     * Enable Ipv6
+     * 
+     */
+    @Export(name="ipv6Enabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> ipv6Enabled;
+
+    /**
+     * @return Enable Ipv6
+     * 
+     */
+    public Output<Optional<Boolean>> ipv6Enabled() {
+        return Codegen.optional(this.ipv6Enabled);
     }
     /**
      * The backend protocol. Valid values:
@@ -277,18 +313,14 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
         return this.protocol;
     }
     /**
-     * The ID of the resource group to which you want to transfer the cloud resource.
-     * 
-     * &gt; **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
+     * Elegant interrupt configuration.
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group to which you want to transfer the cloud resource.
-     * 
-     * &gt; **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
+     * @return Elegant interrupt configuration.
      * 
      */
     public Output<String> resourceGroupId() {
@@ -375,6 +407,20 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.servers);
     }
     /**
+     * Only applicable to the ALB Ingress scenario, indicating the K8s Service name corresponding to the server group.
+     * 
+     */
+    @Export(name="serviceName", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> serviceName;
+
+    /**
+     * @return Only applicable to the ALB Ingress scenario, indicating the K8s Service name corresponding to the server group.
+     * 
+     */
+    public Output<Optional<String>> serviceName() {
+        return Codegen.optional(this.serviceName);
+    }
+    /**
      * Slow start configuration. See `slow_start_config` below.
      * 
      */
@@ -403,28 +449,28 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * The configuration of the sticky session See `sticky_session_config` below.
+     * The configuration of health checks See `sticky_session_config` below.
      * 
      */
     @Export(name="stickySessionConfig", refs={ServerGroupStickySessionConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServerGroupStickySessionConfig> stickySessionConfig;
 
     /**
-     * @return The configuration of the sticky session See `sticky_session_config` below.
+     * @return The configuration of health checks See `sticky_session_config` below.
      * 
      */
     public Output<Optional<ServerGroupStickySessionConfig>> stickySessionConfig() {
         return Codegen.optional(this.stickySessionConfig);
     }
     /**
-     * The tag of the resource
+     * The creation time of the resource
      * 
      */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
-     * @return The tag of the resource
+     * @return The creation time of the resource
      * 
      */
     public Output<Optional<Map<String,String>>> tags() {

@@ -6,6 +6,7 @@ package com.pulumi.alicloud.alb;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,14 +18,29 @@ public final class LoadBalancerSecurityGroupAttachmentArgs extends com.pulumi.re
     public static final LoadBalancerSecurityGroupAttachmentArgs Empty = new LoadBalancerSecurityGroupAttachmentArgs();
 
     /**
-     * The ID of the load balancing instance.
+     * Whether to PreCheck only this request. Value:
+     * 
+     */
+    @Import(name="dryRun")
+    private @Nullable Output<Boolean> dryRun;
+
+    /**
+     * @return Whether to PreCheck only this request. Value:
+     * 
+     */
+    public Optional<Output<Boolean>> dryRun() {
+        return Optional.ofNullable(this.dryRun);
+    }
+
+    /**
+     * The ID of the Application Load Balancer.
      * 
      */
     @Import(name="loadBalancerId", required=true)
     private Output<String> loadBalancerId;
 
     /**
-     * @return The ID of the load balancing instance.
+     * @return The ID of the Application Load Balancer.
      * 
      */
     public Output<String> loadBalancerId() {
@@ -32,14 +48,14 @@ public final class LoadBalancerSecurityGroupAttachmentArgs extends com.pulumi.re
     }
 
     /**
-     * Security group ID collection.
+     * The ID of the security group.
      * 
      */
     @Import(name="securityGroupId")
     private @Nullable Output<String> securityGroupId;
 
     /**
-     * @return Security group ID collection.
+     * @return The ID of the security group.
      * 
      */
     public Optional<Output<String>> securityGroupId() {
@@ -49,6 +65,7 @@ public final class LoadBalancerSecurityGroupAttachmentArgs extends com.pulumi.re
     private LoadBalancerSecurityGroupAttachmentArgs() {}
 
     private LoadBalancerSecurityGroupAttachmentArgs(LoadBalancerSecurityGroupAttachmentArgs $) {
+        this.dryRun = $.dryRun;
         this.loadBalancerId = $.loadBalancerId;
         this.securityGroupId = $.securityGroupId;
     }
@@ -72,7 +89,28 @@ public final class LoadBalancerSecurityGroupAttachmentArgs extends com.pulumi.re
         }
 
         /**
-         * @param loadBalancerId The ID of the load balancing instance.
+         * @param dryRun Whether to PreCheck only this request. Value:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dryRun(@Nullable Output<Boolean> dryRun) {
+            $.dryRun = dryRun;
+            return this;
+        }
+
+        /**
+         * @param dryRun Whether to PreCheck only this request. Value:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dryRun(Boolean dryRun) {
+            return dryRun(Output.of(dryRun));
+        }
+
+        /**
+         * @param loadBalancerId The ID of the Application Load Balancer.
          * 
          * @return builder
          * 
@@ -83,7 +121,7 @@ public final class LoadBalancerSecurityGroupAttachmentArgs extends com.pulumi.re
         }
 
         /**
-         * @param loadBalancerId The ID of the load balancing instance.
+         * @param loadBalancerId The ID of the Application Load Balancer.
          * 
          * @return builder
          * 
@@ -93,7 +131,7 @@ public final class LoadBalancerSecurityGroupAttachmentArgs extends com.pulumi.re
         }
 
         /**
-         * @param securityGroupId Security group ID collection.
+         * @param securityGroupId The ID of the security group.
          * 
          * @return builder
          * 
@@ -104,7 +142,7 @@ public final class LoadBalancerSecurityGroupAttachmentArgs extends com.pulumi.re
         }
 
         /**
-         * @param securityGroupId Security group ID collection.
+         * @param securityGroupId The ID of the security group.
          * 
          * @return builder
          * 

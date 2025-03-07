@@ -19,14 +19,89 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
     public static final LoadBalancerZoneMappingArgs Empty = new LoadBalancerZoneMappingArgs();
 
     /**
-     * The SLB Instance Address
+     * An IP address of the IPv4 type.
+     * 
+     */
+    @Import(name="address")
+    private @Nullable Output<String> address;
+
+    /**
+     * @return An IP address of the IPv4 type.
+     * 
+     */
+    public Optional<Output<String>> address() {
+        return Optional.ofNullable(this.address);
+    }
+
+    /**
+     * The ID of the EIP instance.
+     * 
+     */
+    @Import(name="allocationId")
+    private @Nullable Output<String> allocationId;
+
+    /**
+     * @return The ID of the EIP instance.
+     * 
+     */
+    public Optional<Output<String>> allocationId() {
+        return Optional.ofNullable(this.allocationId);
+    }
+
+    /**
+     * The type of the EIP instance.
+     * 
+     */
+    @Import(name="eipType")
+    private @Nullable Output<String> eipType;
+
+    /**
+     * @return The type of the EIP instance.
+     * 
+     */
+    public Optional<Output<String>> eipType() {
+        return Optional.ofNullable(this.eipType);
+    }
+
+    /**
+     * IPv4 private network address.
+     * 
+     */
+    @Import(name="intranetAddress")
+    private @Nullable Output<String> intranetAddress;
+
+    /**
+     * @return IPv4 private network address.
+     * 
+     */
+    public Optional<Output<String>> intranetAddress() {
+        return Optional.ofNullable(this.intranetAddress);
+    }
+
+    /**
+     * An IP address of the IPv6 type.
+     * 
+     */
+    @Import(name="ipv6Address")
+    private @Nullable Output<String> ipv6Address;
+
+    /**
+     * @return An IP address of the IPv6 type.
+     * 
+     */
+    public Optional<Output<String>> ipv6Address() {
+        return Optional.ofNullable(this.ipv6Address);
+    }
+
+    /**
+     * The instance address.
      * 
      */
     @Import(name="loadBalancerAddresses")
     private @Nullable Output<List<LoadBalancerZoneMappingLoadBalancerAddressArgs>> loadBalancerAddresses;
 
     /**
-     * @return The SLB Instance Address
+     * @return The instance address.
      * 
      */
     public Optional<Output<List<LoadBalancerZoneMappingLoadBalancerAddressArgs>>> loadBalancerAddresses() {
@@ -66,6 +141,11 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
     private LoadBalancerZoneMappingArgs() {}
 
     private LoadBalancerZoneMappingArgs(LoadBalancerZoneMappingArgs $) {
+        this.address = $.address;
+        this.allocationId = $.allocationId;
+        this.eipType = $.eipType;
+        this.intranetAddress = $.intranetAddress;
+        this.ipv6Address = $.ipv6Address;
         this.loadBalancerAddresses = $.loadBalancerAddresses;
         this.vswitchId = $.vswitchId;
         this.zoneId = $.zoneId;
@@ -90,7 +170,112 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param loadBalancerAddresses The SLB Instance Address
+         * @param address An IP address of the IPv4 type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder address(@Nullable Output<String> address) {
+            $.address = address;
+            return this;
+        }
+
+        /**
+         * @param address An IP address of the IPv4 type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder address(String address) {
+            return address(Output.of(address));
+        }
+
+        /**
+         * @param allocationId The ID of the EIP instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allocationId(@Nullable Output<String> allocationId) {
+            $.allocationId = allocationId;
+            return this;
+        }
+
+        /**
+         * @param allocationId The ID of the EIP instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allocationId(String allocationId) {
+            return allocationId(Output.of(allocationId));
+        }
+
+        /**
+         * @param eipType The type of the EIP instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder eipType(@Nullable Output<String> eipType) {
+            $.eipType = eipType;
+            return this;
+        }
+
+        /**
+         * @param eipType The type of the EIP instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder eipType(String eipType) {
+            return eipType(Output.of(eipType));
+        }
+
+        /**
+         * @param intranetAddress IPv4 private network address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder intranetAddress(@Nullable Output<String> intranetAddress) {
+            $.intranetAddress = intranetAddress;
+            return this;
+        }
+
+        /**
+         * @param intranetAddress IPv4 private network address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder intranetAddress(String intranetAddress) {
+            return intranetAddress(Output.of(intranetAddress));
+        }
+
+        /**
+         * @param ipv6Address An IP address of the IPv6 type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6Address(@Nullable Output<String> ipv6Address) {
+            $.ipv6Address = ipv6Address;
+            return this;
+        }
+
+        /**
+         * @param ipv6Address An IP address of the IPv6 type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6Address(String ipv6Address) {
+            return ipv6Address(Output.of(ipv6Address));
+        }
+
+        /**
+         * @param loadBalancerAddresses The instance address.
          * 
          * @return builder
          * 
@@ -101,7 +286,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param loadBalancerAddresses The SLB Instance Address
+         * @param loadBalancerAddresses The instance address.
          * 
          * @return builder
          * 
@@ -111,7 +296,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param loadBalancerAddresses The SLB Instance Address
+         * @param loadBalancerAddresses The instance address.
          * 
          * @return builder
          * 

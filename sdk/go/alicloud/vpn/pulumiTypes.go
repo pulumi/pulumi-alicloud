@@ -4476,7 +4476,7 @@ type GetGatewayVcoRoutesRoute struct {
 	RouteDest string `pulumi:"routeDest"`
 	// The source CIDR block of the destination route.
 	Source string `pulumi:"source"`
-	// The status of the vpn route entry.
+	// The status of the vpn route entry. Valid values: `normal`, `published`.
 	Status string `pulumi:"status"`
 	// The id of the vpn connection.
 	VpnConnectionId string `pulumi:"vpnConnectionId"`
@@ -4508,7 +4508,7 @@ type GetGatewayVcoRoutesRouteArgs struct {
 	RouteDest pulumi.StringInput `pulumi:"routeDest"`
 	// The source CIDR block of the destination route.
 	Source pulumi.StringInput `pulumi:"source"`
-	// The status of the vpn route entry.
+	// The status of the vpn route entry. Valid values: `normal`, `published`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The id of the vpn connection.
 	VpnConnectionId pulumi.StringInput `pulumi:"vpnConnectionId"`
@@ -4597,7 +4597,7 @@ func (o GetGatewayVcoRoutesRouteOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVcoRoutesRoute) string { return v.Source }).(pulumi.StringOutput)
 }
 
-// The status of the vpn route entry.
+// The status of the vpn route entry. Valid values: `normal`, `published`.
 func (o GetGatewayVcoRoutesRouteOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVcoRoutesRoute) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -4659,7 +4659,7 @@ type GetGatewayVpnAttachmentsAttachment struct {
 	NetworkType string `pulumi:"networkType"`
 	// The CIDR block of the on-premises data center.
 	RemoteSubnet string `pulumi:"remoteSubnet"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
 	Status string `pulumi:"status"`
 	// The name of the IPsec-VPN connection.
 	VpnAttachmentName string `pulumi:"vpnAttachmentName"`
@@ -4705,7 +4705,7 @@ type GetGatewayVpnAttachmentsAttachmentArgs struct {
 	NetworkType pulumi.StringInput `pulumi:"networkType"`
 	// The CIDR block of the on-premises data center.
 	RemoteSubnet pulumi.StringInput `pulumi:"remoteSubnet"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The name of the IPsec-VPN connection.
 	VpnAttachmentName pulumi.StringInput `pulumi:"vpnAttachmentName"`
@@ -4837,7 +4837,7 @@ func (o GetGatewayVpnAttachmentsAttachmentOutput) RemoteSubnet() pulumi.StringOu
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachment) string { return v.RemoteSubnet }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
 func (o GetGatewayVpnAttachmentsAttachmentOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachment) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -4877,7 +4877,7 @@ type GetGatewayVpnAttachmentsAttachmentBgpConfig struct {
 	LocalAsn string `pulumi:"localAsn"`
 	// The BGP IP address on the Alibaba Cloud side.
 	LocalBgpIp string `pulumi:"localBgpIp"`
-	// The negotiation status of the BGP routing protocol.
+	// The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
 	Status string `pulumi:"status"`
 	// The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
 	TunnelCidr string `pulumi:"tunnelCidr"`
@@ -4899,7 +4899,7 @@ type GetGatewayVpnAttachmentsAttachmentBgpConfigArgs struct {
 	LocalAsn pulumi.StringInput `pulumi:"localAsn"`
 	// The BGP IP address on the Alibaba Cloud side.
 	LocalBgpIp pulumi.StringInput `pulumi:"localBgpIp"`
-	// The negotiation status of the BGP routing protocol.
+	// The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
 	TunnelCidr pulumi.StringInput `pulumi:"tunnelCidr"`
@@ -4966,7 +4966,7 @@ func (o GetGatewayVpnAttachmentsAttachmentBgpConfigOutput) LocalBgpIp() pulumi.S
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentBgpConfig) string { return v.LocalBgpIp }).(pulumi.StringOutput)
 }
 
-// The negotiation status of the BGP routing protocol.
+// The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
 func (o GetGatewayVpnAttachmentsAttachmentBgpConfigOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentBgpConfig) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -5003,13 +5003,13 @@ type GetGatewayVpnAttachmentsAttachmentHealthCheckConfig struct {
 	Enable bool `pulumi:"enable"`
 	// The interval between two consecutive health checks. Unit: seconds.
 	Interval int `pulumi:"interval"`
-	// Whether to revoke the published route when the health check fails.
+	// (Optional) Whether to revoke the published route when the health check fails.
 	Policy string `pulumi:"policy"`
 	// The maximum number of health check retries.
 	Retry int `pulumi:"retry"`
 	// The source IP address.
 	Sip string `pulumi:"sip"`
-	// The status of the health check.
+	// The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
 	Status string `pulumi:"status"`
 }
 
@@ -5031,13 +5031,13 @@ type GetGatewayVpnAttachmentsAttachmentHealthCheckConfigArgs struct {
 	Enable pulumi.BoolInput `pulumi:"enable"`
 	// The interval between two consecutive health checks. Unit: seconds.
 	Interval pulumi.IntInput `pulumi:"interval"`
-	// Whether to revoke the published route when the health check fails.
+	// (Optional) Whether to revoke the published route when the health check fails.
 	Policy pulumi.StringInput `pulumi:"policy"`
 	// The maximum number of health check retries.
 	Retry pulumi.IntInput `pulumi:"retry"`
 	// The source IP address.
 	Sip pulumi.StringInput `pulumi:"sip"`
-	// The status of the health check.
+	// The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -5107,7 +5107,7 @@ func (o GetGatewayVpnAttachmentsAttachmentHealthCheckConfigOutput) Interval() pu
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentHealthCheckConfig) int { return v.Interval }).(pulumi.IntOutput)
 }
 
-// Whether to revoke the published route when the health check fails.
+// (Optional) Whether to revoke the published route when the health check fails.
 func (o GetGatewayVpnAttachmentsAttachmentHealthCheckConfigOutput) Policy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentHealthCheckConfig) string { return v.Policy }).(pulumi.StringOutput)
 }
@@ -5122,7 +5122,7 @@ func (o GetGatewayVpnAttachmentsAttachmentHealthCheckConfigOutput) Sip() pulumi.
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentHealthCheckConfig) string { return v.Sip }).(pulumi.StringOutput)
 }
 
-// The status of the health check.
+// The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
 func (o GetGatewayVpnAttachmentsAttachmentHealthCheckConfigOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentHealthCheckConfig) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -5561,7 +5561,7 @@ type GetGatewaysGateway struct {
 	DisasterRecoveryVswitchId string `pulumi:"disasterRecoveryVswitchId"`
 	// Indicates whether the IPsec-VPN feature is enabled.
 	EnableIpsec string `pulumi:"enableIpsec"`
-	// Whether the ssl function is enabled.
+	// Whether the ssl function is enabled. It has been deprecated from provider version 1.243.0, and using `sslVpn` instead.
 	EnableSsl string `pulumi:"enableSsl"`
 	// The expiration time of the VPN gateway.
 	EndTime string `pulumi:"endTime"`
@@ -5581,6 +5581,8 @@ type GetGatewaysGateway struct {
 	Specification string `pulumi:"specification"`
 	// Total count of ssl vpn connections.
 	SslConnections int `pulumi:"sslConnections"`
+	// Indicates whether the SSL-VPN feature is enabled. Valid value is `enable`, `disable`.
+	SslVpn string `pulumi:"sslVpn"`
 	// The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
 	SslVpnInternetIp string `pulumi:"sslVpnInternetIp"`
 	// Limit search to specific status - valid value is "Init", "Provisioning", "Active", "Updating", "Deleting".
@@ -5621,7 +5623,7 @@ type GetGatewaysGatewayArgs struct {
 	DisasterRecoveryVswitchId pulumi.StringInput `pulumi:"disasterRecoveryVswitchId"`
 	// Indicates whether the IPsec-VPN feature is enabled.
 	EnableIpsec pulumi.StringInput `pulumi:"enableIpsec"`
-	// Whether the ssl function is enabled.
+	// Whether the ssl function is enabled. It has been deprecated from provider version 1.243.0, and using `sslVpn` instead.
 	EnableSsl pulumi.StringInput `pulumi:"enableSsl"`
 	// The expiration time of the VPN gateway.
 	EndTime pulumi.StringInput `pulumi:"endTime"`
@@ -5641,6 +5643,8 @@ type GetGatewaysGatewayArgs struct {
 	Specification pulumi.StringInput `pulumi:"specification"`
 	// Total count of ssl vpn connections.
 	SslConnections pulumi.IntInput `pulumi:"sslConnections"`
+	// Indicates whether the SSL-VPN feature is enabled. Valid value is `enable`, `disable`.
+	SslVpn pulumi.StringInput `pulumi:"sslVpn"`
 	// The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
 	SslVpnInternetIp pulumi.StringInput `pulumi:"sslVpnInternetIp"`
 	// Limit search to specific status - valid value is "Init", "Provisioning", "Active", "Updating", "Deleting".
@@ -5741,7 +5745,7 @@ func (o GetGatewaysGatewayOutput) EnableIpsec() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGateway) string { return v.EnableIpsec }).(pulumi.StringOutput)
 }
 
-// Whether the ssl function is enabled.
+// Whether the ssl function is enabled. It has been deprecated from provider version 1.243.0, and using `sslVpn` instead.
 func (o GetGatewaysGatewayOutput) EnableSsl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGateway) string { return v.EnableSsl }).(pulumi.StringOutput)
 }
@@ -5789,6 +5793,11 @@ func (o GetGatewaysGatewayOutput) Specification() pulumi.StringOutput {
 // Total count of ssl vpn connections.
 func (o GetGatewaysGatewayOutput) SslConnections() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGatewaysGateway) int { return v.SslConnections }).(pulumi.IntOutput)
+}
+
+// Indicates whether the SSL-VPN feature is enabled. Valid value is `enable`, `disable`.
+func (o GetGatewaysGatewayOutput) SslVpn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.SslVpn }).(pulumi.StringOutput)
 }
 
 // The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.

@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *             .instanceName(name)
  *             .instanceSpec("api.s1.small")
  *             .httpsPolicy("HTTPS2_TLS1_0")
- *             .zoneId("cn-hangzhou-MAZ6")
+ *             .zoneId("cn-hangzhou-MAZ6(i,j,k)")
  *             .paymentType("PayAsYouGo")
  *             .instanceType("normal")
  *             .build());
@@ -123,7 +123,7 @@ import javax.annotation.Nullable;
  * 
  *         var securityGroup = new SecurityGroup("securityGroup", SecurityGroupArgs.builder()
  *             .vpcId(vpc.id())
- *             .name(name)
+ *             .securityGroupName(name)
  *             .build());
  * 
  *         var vpcIntegrationInstance = new Instance("vpcIntegrationInstance", InstanceArgs.builder()
@@ -359,6 +359,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> pricingCycle() {
         return Codegen.optional(this.pricingCycle);
+    }
+    /**
+     * Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
+     * 
+     */
+    @Export(name="skipWaitSwitch", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> skipWaitSwitch;
+
+    /**
+     * @return Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
+     * 
+     */
+    public Output<Optional<Boolean>> skipWaitSwitch() {
+        return Codegen.optional(this.skipWaitSwitch);
     }
     /**
      * The status of the resource.

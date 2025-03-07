@@ -997,14 +997,14 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloud_efficiency`: a high-efficiency cloud disk. `cloud_ssd`:SSD cloud disk. `cloud_essd`: ESSD cloud disk.
+     * The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `system_disk_category`.
      * 
      */
     @Import(name="systemDiskCategories")
     private @Nullable Output<List<String>> systemDiskCategories;
 
     /**
-     * @return The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloud_efficiency`: a high-efficiency cloud disk. `cloud_ssd`:SSD cloud disk. `cloud_essd`: ESSD cloud disk.
+     * @return The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `system_disk_category`.
      * 
      */
     public Optional<Output<List<String>>> systemDiskCategories() {
@@ -1012,14 +1012,14 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`.
+     * The category of the system disk for nodes. Default value: `cloud_efficiency`. Valid values:
      * 
      */
     @Import(name="systemDiskCategory")
     private @Nullable Output<String> systemDiskCategory;
 
     /**
-     * @return The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`.
+     * @return The category of the system disk for nodes. Default value: `cloud_efficiency`. Valid values:
      * 
      */
     public Optional<Output<String>> systemDiskCategory() {
@@ -1110,14 +1110,22 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
+     * The size of the system disk. Unit: GiB. The value of this parameter must be at least 1 and greater than or equal to the image size. Default value: 40 or the size of the image, whichever is larger.
+     * - Basic disk: 20 to 500.
+     * - ESSD (cloud_essd): The valid values vary based on the performance level of the ESSD. PL0 ESSD: 1 to 2048. PL1 ESSD: 20 to 2048. PL2 ESSD: 461 to 2048. PL3 ESSD: 1261 to 2048.
+     * - ESSD AutoPL disk (cloud_auto): 1 to 2048.
+     * - Other disk categories: 20 to 2048.
      * 
      */
     @Import(name="systemDiskSize")
     private @Nullable Output<Integer> systemDiskSize;
 
     /**
-     * @return The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
+     * @return The size of the system disk. Unit: GiB. The value of this parameter must be at least 1 and greater than or equal to the image size. Default value: 40 or the size of the image, whichever is larger.
+     * - Basic disk: 20 to 500.
+     * - ESSD (cloud_essd): The valid values vary based on the performance level of the ESSD. PL0 ESSD: 1 to 2048. PL1 ESSD: 20 to 2048. PL2 ESSD: 461 to 2048. PL3 ESSD: 1261 to 2048.
+     * - ESSD AutoPL disk (cloud_auto): 1 to 2048.
+     * - Other disk categories: 20 to 2048.
      * 
      */
     public Optional<Output<Integer>> systemDiskSize() {
@@ -2734,7 +2742,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDiskCategories The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloud_efficiency`: a high-efficiency cloud disk. `cloud_ssd`:SSD cloud disk. `cloud_essd`: ESSD cloud disk.
+         * @param systemDiskCategories The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `system_disk_category`.
          * 
          * @return builder
          * 
@@ -2745,7 +2753,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDiskCategories The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloud_efficiency`: a high-efficiency cloud disk. `cloud_ssd`:SSD cloud disk. `cloud_essd`: ESSD cloud disk.
+         * @param systemDiskCategories The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `system_disk_category`.
          * 
          * @return builder
          * 
@@ -2755,7 +2763,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDiskCategories The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloud_efficiency`: a high-efficiency cloud disk. `cloud_ssd`:SSD cloud disk. `cloud_essd`: ESSD cloud disk.
+         * @param systemDiskCategories The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `system_disk_category`.
          * 
          * @return builder
          * 
@@ -2765,7 +2773,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDiskCategory The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`.
+         * @param systemDiskCategory The category of the system disk for nodes. Default value: `cloud_efficiency`. Valid values:
          * 
          * @return builder
          * 
@@ -2776,7 +2784,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDiskCategory The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`.
+         * @param systemDiskCategory The category of the system disk for nodes. Default value: `cloud_efficiency`. Valid values:
          * 
          * @return builder
          * 
@@ -2899,7 +2907,11 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDiskSize The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
+         * @param systemDiskSize The size of the system disk. Unit: GiB. The value of this parameter must be at least 1 and greater than or equal to the image size. Default value: 40 or the size of the image, whichever is larger.
+         * - Basic disk: 20 to 500.
+         * - ESSD (cloud_essd): The valid values vary based on the performance level of the ESSD. PL0 ESSD: 1 to 2048. PL1 ESSD: 20 to 2048. PL2 ESSD: 461 to 2048. PL3 ESSD: 1261 to 2048.
+         * - ESSD AutoPL disk (cloud_auto): 1 to 2048.
+         * - Other disk categories: 20 to 2048.
          * 
          * @return builder
          * 
@@ -2910,7 +2922,11 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDiskSize The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
+         * @param systemDiskSize The size of the system disk. Unit: GiB. The value of this parameter must be at least 1 and greater than or equal to the image size. Default value: 40 or the size of the image, whichever is larger.
+         * - Basic disk: 20 to 500.
+         * - ESSD (cloud_essd): The valid values vary based on the performance level of the ESSD. PL0 ESSD: 1 to 2048. PL1 ESSD: 20 to 2048. PL2 ESSD: 461 to 2048. PL3 ESSD: 1261 to 2048.
+         * - ESSD AutoPL disk (cloud_auto): 1 to 2048.
+         * - Other disk categories: 20 to 2048.
          * 
          * @return builder
          * 

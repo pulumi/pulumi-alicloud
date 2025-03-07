@@ -4582,7 +4582,7 @@ public final class CmsFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:cms/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Cloud Monitor Service Site Monitor available to the user.[What is Site Monitor](https://www.alibabacloud.com/help/en/)
+     * This data source provides Cloud Monitor Service Site Monitor available to the user.[What is Site Monitor](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor)
      * 
      * &gt; **NOTE:** Available since v1.224.0.
      * 
@@ -4668,7 +4668,7 @@ public final class CmsFunctions {
         return getSiteMonitors(GetSiteMonitorsArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Cloud Monitor Service Site Monitor available to the user.[What is Site Monitor](https://www.alibabacloud.com/help/en/)
+     * This data source provides Cloud Monitor Service Site Monitor available to the user.[What is Site Monitor](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor)
      * 
      * &gt; **NOTE:** Available since v1.224.0.
      * 
@@ -4754,7 +4754,7 @@ public final class CmsFunctions {
         return getSiteMonitorsPlain(GetSiteMonitorsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Cloud Monitor Service Site Monitor available to the user.[What is Site Monitor](https://www.alibabacloud.com/help/en/)
+     * This data source provides Cloud Monitor Service Site Monitor available to the user.[What is Site Monitor](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor)
      * 
      * &gt; **NOTE:** Available since v1.224.0.
      * 
@@ -4840,7 +4840,7 @@ public final class CmsFunctions {
         return getSiteMonitors(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Cloud Monitor Service Site Monitor available to the user.[What is Site Monitor](https://www.alibabacloud.com/help/en/)
+     * This data source provides Cloud Monitor Service Site Monitor available to the user.[What is Site Monitor](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor)
      * 
      * &gt; **NOTE:** Available since v1.224.0.
      * 
@@ -4926,7 +4926,7 @@ public final class CmsFunctions {
         return getSiteMonitorsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Cloud Monitor Service Site Monitor available to the user.[What is Site Monitor](https://www.alibabacloud.com/help/en/)
+     * This data source provides Cloud Monitor Service Site Monitor available to the user.[What is Site Monitor](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor)
      * 
      * &gt; **NOTE:** Available since v1.224.0.
      * 
@@ -5012,7 +5012,7 @@ public final class CmsFunctions {
         return Deployment.getInstance().invoke("alicloud:cms/getSiteMonitors:getSiteMonitors", TypeShape.of(GetSiteMonitorsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Cloud Monitor Service Site Monitor available to the user.[What is Site Monitor](https://www.alibabacloud.com/help/en/)
+     * This data source provides Cloud Monitor Service Site Monitor available to the user.[What is Site Monitor](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor)
      * 
      * &gt; **NOTE:** Available since v1.224.0.
      * 
@@ -5098,7 +5098,7 @@ public final class CmsFunctions {
         return Deployment.getInstance().invoke("alicloud:cms/getSiteMonitors:getSiteMonitors", TypeShape.of(GetSiteMonitorsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Cloud Monitor Service Site Monitor available to the user.[What is Site Monitor](https://www.alibabacloud.com/help/en/)
+     * This data source provides Cloud Monitor Service Site Monitor available to the user.[What is Site Monitor](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor)
      * 
      * &gt; **NOTE:** Available since v1.224.0.
      * 

@@ -75,19 +75,19 @@ import (
 type Vswitch struct {
 	pulumi.CustomResourceState
 
-	// IPv4 CIDR block of the VSwitch instance.
+	// The CIDR block of the vSwitch.
 	CidrBlock pulumi.StringOutput `pulumi:"cidrBlock"`
-	// The creation time of the VSwitch instance, in the UTC time format, yyyy-MM-ddTHH:mm:ssZ.
+	// The time when the VPC was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Description of the VSwitch Instance.
+	// The description of the vSwitch.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// ENS Region ID.
 	EnsRegionId pulumi.StringOutput `pulumi:"ensRegionId"`
-	// Network ID of the VSwitch instance.
+	// The ID of the network to which the vSwitch that you want to create belongs.
 	NetworkId pulumi.StringOutput `pulumi:"networkId"`
-	// Status of the switch instance.
+	// The status of the vSwitch.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Name of the switch instance.
+	// The name of the vSwitch.
 	VswitchName pulumi.StringPtrOutput `pulumi:"vswitchName"`
 }
 
@@ -127,36 +127,36 @@ func GetVswitch(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Vswitch resources.
 type vswitchState struct {
-	// IPv4 CIDR block of the VSwitch instance.
+	// The CIDR block of the vSwitch.
 	CidrBlock *string `pulumi:"cidrBlock"`
-	// The creation time of the VSwitch instance, in the UTC time format, yyyy-MM-ddTHH:mm:ssZ.
+	// The time when the VPC was created.
 	CreateTime *string `pulumi:"createTime"`
-	// Description of the VSwitch Instance.
+	// The description of the vSwitch.
 	Description *string `pulumi:"description"`
 	// ENS Region ID.
 	EnsRegionId *string `pulumi:"ensRegionId"`
-	// Network ID of the VSwitch instance.
+	// The ID of the network to which the vSwitch that you want to create belongs.
 	NetworkId *string `pulumi:"networkId"`
-	// Status of the switch instance.
+	// The status of the vSwitch.
 	Status *string `pulumi:"status"`
-	// Name of the switch instance.
+	// The name of the vSwitch.
 	VswitchName *string `pulumi:"vswitchName"`
 }
 
 type VswitchState struct {
-	// IPv4 CIDR block of the VSwitch instance.
+	// The CIDR block of the vSwitch.
 	CidrBlock pulumi.StringPtrInput
-	// The creation time of the VSwitch instance, in the UTC time format, yyyy-MM-ddTHH:mm:ssZ.
+	// The time when the VPC was created.
 	CreateTime pulumi.StringPtrInput
-	// Description of the VSwitch Instance.
+	// The description of the vSwitch.
 	Description pulumi.StringPtrInput
 	// ENS Region ID.
 	EnsRegionId pulumi.StringPtrInput
-	// Network ID of the VSwitch instance.
+	// The ID of the network to which the vSwitch that you want to create belongs.
 	NetworkId pulumi.StringPtrInput
-	// Status of the switch instance.
+	// The status of the vSwitch.
 	Status pulumi.StringPtrInput
-	// Name of the switch instance.
+	// The name of the vSwitch.
 	VswitchName pulumi.StringPtrInput
 }
 
@@ -165,29 +165,29 @@ func (VswitchState) ElementType() reflect.Type {
 }
 
 type vswitchArgs struct {
-	// IPv4 CIDR block of the VSwitch instance.
+	// The CIDR block of the vSwitch.
 	CidrBlock string `pulumi:"cidrBlock"`
-	// Description of the VSwitch Instance.
+	// The description of the vSwitch.
 	Description *string `pulumi:"description"`
 	// ENS Region ID.
 	EnsRegionId string `pulumi:"ensRegionId"`
-	// Network ID of the VSwitch instance.
+	// The ID of the network to which the vSwitch that you want to create belongs.
 	NetworkId *string `pulumi:"networkId"`
-	// Name of the switch instance.
+	// The name of the vSwitch.
 	VswitchName *string `pulumi:"vswitchName"`
 }
 
 // The set of arguments for constructing a Vswitch resource.
 type VswitchArgs struct {
-	// IPv4 CIDR block of the VSwitch instance.
+	// The CIDR block of the vSwitch.
 	CidrBlock pulumi.StringInput
-	// Description of the VSwitch Instance.
+	// The description of the vSwitch.
 	Description pulumi.StringPtrInput
 	// ENS Region ID.
 	EnsRegionId pulumi.StringInput
-	// Network ID of the VSwitch instance.
+	// The ID of the network to which the vSwitch that you want to create belongs.
 	NetworkId pulumi.StringPtrInput
-	// Name of the switch instance.
+	// The name of the vSwitch.
 	VswitchName pulumi.StringPtrInput
 }
 
@@ -278,17 +278,17 @@ func (o VswitchOutput) ToVswitchOutputWithContext(ctx context.Context) VswitchOu
 	return o
 }
 
-// IPv4 CIDR block of the VSwitch instance.
+// The CIDR block of the vSwitch.
 func (o VswitchOutput) CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vswitch) pulumi.StringOutput { return v.CidrBlock }).(pulumi.StringOutput)
 }
 
-// The creation time of the VSwitch instance, in the UTC time format, yyyy-MM-ddTHH:mm:ssZ.
+// The time when the VPC was created.
 func (o VswitchOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vswitch) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Description of the VSwitch Instance.
+// The description of the vSwitch.
 func (o VswitchOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Vswitch) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -298,17 +298,17 @@ func (o VswitchOutput) EnsRegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vswitch) pulumi.StringOutput { return v.EnsRegionId }).(pulumi.StringOutput)
 }
 
-// Network ID of the VSwitch instance.
+// The ID of the network to which the vSwitch that you want to create belongs.
 func (o VswitchOutput) NetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vswitch) pulumi.StringOutput { return v.NetworkId }).(pulumi.StringOutput)
 }
 
-// Status of the switch instance.
+// The status of the vSwitch.
 func (o VswitchOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vswitch) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Name of the switch instance.
+// The name of the vSwitch.
 func (o VswitchOutput) VswitchName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Vswitch) pulumi.StringPtrOutput { return v.VswitchName }).(pulumi.StringPtrOutput)
 }

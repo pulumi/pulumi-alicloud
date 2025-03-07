@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:ackone/cluster:Cluster":
 		r = &Cluster{}
+	case "alicloud:ackone/membershipAttachment:MembershipAttachment":
+		r = &MembershipAttachment{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -39,6 +41,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ackone/cluster",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ackone/membershipAttachment",
 		&module{version},
 	)
 }

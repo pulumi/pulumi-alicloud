@@ -48,16 +48,24 @@ public final class GetServerlessKubernetesClustersArgs extends com.pulumi.resour
     }
 
     /**
-     * The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/serverless`, then it will be named with `~/.kube/serverless-clusterID-kubeconfig`. From version 1.187.0+, kube_config will not export kube_config if this field is not set.
+     * The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/serverless`, then it will be named with `~/.kube/serverless-clusterID-kubeconfig`. From version 1.243.0, kube_config will not export kube_config if this field is not set. Please use the attribute output_file of new DataSource `alicloud.cs.getClusterCredential` to replace it
+     * 
+     * @deprecated
+     * Field &#39;kube_config_file_prefix&#39; has been deprecated from provider version 1.243.0. From version 1.243.0, please use the attribute &#39;output_file&#39; of new DataSource &#39;alicloud_cs_cluster_credential&#39; to replace it.
      * 
      */
+    @Deprecated /* Field 'kube_config_file_prefix' has been deprecated from provider version 1.243.0. From version 1.243.0, please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it. */
     @Import(name="kubeConfigFilePrefix")
     private @Nullable Output<String> kubeConfigFilePrefix;
 
     /**
-     * @return The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/serverless`, then it will be named with `~/.kube/serverless-clusterID-kubeconfig`. From version 1.187.0+, kube_config will not export kube_config if this field is not set.
+     * @return The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/serverless`, then it will be named with `~/.kube/serverless-clusterID-kubeconfig`. From version 1.243.0, kube_config will not export kube_config if this field is not set. Please use the attribute output_file of new DataSource `alicloud.cs.getClusterCredential` to replace it
+     * 
+     * @deprecated
+     * Field &#39;kube_config_file_prefix&#39; has been deprecated from provider version 1.243.0. From version 1.243.0, please use the attribute &#39;output_file&#39; of new DataSource &#39;alicloud_cs_cluster_credential&#39; to replace it.
      * 
      */
+    @Deprecated /* Field 'kube_config_file_prefix' has been deprecated from provider version 1.243.0. From version 1.243.0, please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it. */
     public Optional<Output<String>> kubeConfigFilePrefix() {
         return Optional.ofNullable(this.kubeConfigFilePrefix);
     }
@@ -173,22 +181,30 @@ public final class GetServerlessKubernetesClustersArgs extends com.pulumi.resour
         }
 
         /**
-         * @param kubeConfigFilePrefix The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/serverless`, then it will be named with `~/.kube/serverless-clusterID-kubeconfig`. From version 1.187.0+, kube_config will not export kube_config if this field is not set.
+         * @param kubeConfigFilePrefix The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/serverless`, then it will be named with `~/.kube/serverless-clusterID-kubeconfig`. From version 1.243.0, kube_config will not export kube_config if this field is not set. Please use the attribute output_file of new DataSource `alicloud.cs.getClusterCredential` to replace it
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;kube_config_file_prefix&#39; has been deprecated from provider version 1.243.0. From version 1.243.0, please use the attribute &#39;output_file&#39; of new DataSource &#39;alicloud_cs_cluster_credential&#39; to replace it.
+         * 
          */
+        @Deprecated /* Field 'kube_config_file_prefix' has been deprecated from provider version 1.243.0. From version 1.243.0, please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it. */
         public Builder kubeConfigFilePrefix(@Nullable Output<String> kubeConfigFilePrefix) {
             $.kubeConfigFilePrefix = kubeConfigFilePrefix;
             return this;
         }
 
         /**
-         * @param kubeConfigFilePrefix The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/serverless`, then it will be named with `~/.kube/serverless-clusterID-kubeconfig`. From version 1.187.0+, kube_config will not export kube_config if this field is not set.
+         * @param kubeConfigFilePrefix The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/serverless`, then it will be named with `~/.kube/serverless-clusterID-kubeconfig`. From version 1.243.0, kube_config will not export kube_config if this field is not set. Please use the attribute output_file of new DataSource `alicloud.cs.getClusterCredential` to replace it
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;kube_config_file_prefix&#39; has been deprecated from provider version 1.243.0. From version 1.243.0, please use the attribute &#39;output_file&#39; of new DataSource &#39;alicloud_cs_cluster_credential&#39; to replace it.
+         * 
          */
+        @Deprecated /* Field 'kube_config_file_prefix' has been deprecated from provider version 1.243.0. From version 1.243.0, please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it. */
         public Builder kubeConfigFilePrefix(String kubeConfigFilePrefix) {
             return kubeConfigFilePrefix(Output.of(kubeConfigFilePrefix));
         }

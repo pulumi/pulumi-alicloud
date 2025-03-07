@@ -34,7 +34,6 @@ public final class IpamIpamState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The description of IPAM.
-     * 
      * It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with &#39;http: // &#39;or &#39;https. If the description is not filled in, it is blank. The default value is blank.
      * 
      */
@@ -43,7 +42,6 @@ public final class IpamIpamState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The description of IPAM.
-     * 
      * It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with &#39;http: // &#39;or &#39;https. If the description is not filled in, it is blank. The default value is blank.
      * 
      */
@@ -211,7 +209,6 @@ public final class IpamIpamState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ipamDescription The description of IPAM.
-         * 
          * It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with &#39;http: // &#39;or &#39;https. If the description is not filled in, it is blank. The default value is blank.
          * 
          * @return builder
@@ -224,7 +221,6 @@ public final class IpamIpamState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ipamDescription The description of IPAM.
-         * 
          * It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with &#39;http: // &#39;or &#39;https. If the description is not filled in, it is blank. The default value is blank.
          * 
          * @return builder

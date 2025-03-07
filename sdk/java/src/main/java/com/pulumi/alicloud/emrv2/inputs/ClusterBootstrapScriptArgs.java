@@ -34,14 +34,14 @@ public final class ClusterBootstrapScriptArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The bootstrap scripts execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ .
+     * The bootstrap scripts execution moment, ’BEFORE_INSTALL’, ‘AFTER_STARTED’ or ‘BEFORE_START’. The execution moment of BEFORE_START is available since v1.243.0.
      * 
      */
     @Import(name="executionMoment", required=true)
     private Output<String> executionMoment;
 
     /**
-     * @return The bootstrap scripts execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ .
+     * @return The bootstrap scripts execution moment, ’BEFORE_INSTALL’, ‘AFTER_STARTED’ or ‘BEFORE_START’. The execution moment of BEFORE_START is available since v1.243.0.
      * 
      */
     public Output<String> executionMoment() {
@@ -183,7 +183,7 @@ public final class ClusterBootstrapScriptArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param executionMoment The bootstrap scripts execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ .
+         * @param executionMoment The bootstrap scripts execution moment, ’BEFORE_INSTALL’, ‘AFTER_STARTED’ or ‘BEFORE_START’. The execution moment of BEFORE_START is available since v1.243.0.
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class ClusterBootstrapScriptArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param executionMoment The bootstrap scripts execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ .
+         * @param executionMoment The bootstrap scripts execution moment, ’BEFORE_INSTALL’, ‘AFTER_STARTED’ or ‘BEFORE_START’. The execution moment of BEFORE_START is available since v1.243.0.
          * 
          * @return builder
          * 

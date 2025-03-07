@@ -13,6 +13,10 @@ import (
 
 // This data source provides a list of KMS keys in an Alibaba Cloud account according to the specified filters.
 //
+// For information about KMS Key and how to use it, see [What is Key](https://www.alibabacloud.com/help/en/kms/developer-reference/api-createkey).
+//
+// > **NOTE:** Available since v1.85.0.
+//
 // ## Example Usage
 //
 // ```go
@@ -55,7 +59,8 @@ func GetKeys(ctx *pulumi.Context, args *GetKeysArgs, opts ...pulumi.InvokeOption
 type GetKeysArgs struct {
 	// A regex string to filter the results by the KMS key description.
 	DescriptionRegex *string `pulumi:"descriptionRegex"`
-	EnableDetails    *bool   `pulumi:"enableDetails"`
+	// Default to `true`. Set it to `true` can output more details about resource attributes.
+	EnableDetails *bool `pulumi:"enableDetails"`
 	// The CMK filter. The filter consists of one or more key-value pairs.
 	// You can specify a maximum of 10 key-value pairs. More details see API [ListKeys](https://www.alibabacloud.com/help/en/key-management-service/latest/listkeys).
 	Filters *string `pulumi:"filters"`
@@ -96,7 +101,8 @@ func GetKeysOutput(ctx *pulumi.Context, args GetKeysOutputArgs, opts ...pulumi.I
 type GetKeysOutputArgs struct {
 	// A regex string to filter the results by the KMS key description.
 	DescriptionRegex pulumi.StringPtrInput `pulumi:"descriptionRegex"`
-	EnableDetails    pulumi.BoolPtrInput   `pulumi:"enableDetails"`
+	// Default to `true`. Set it to `true` can output more details about resource attributes.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// The CMK filter. The filter consists of one or more key-value pairs.
 	// You can specify a maximum of 10 key-value pairs. More details see API [ListKeys](https://www.alibabacloud.com/help/en/key-management-service/latest/listkeys).
 	Filters pulumi.StringPtrInput `pulumi:"filters"`

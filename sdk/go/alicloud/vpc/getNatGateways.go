@@ -13,7 +13,62 @@ import (
 
 // This data source provides a list of Nat Gateways owned by an Alibaba Cloud account.
 //
-// > **NOTE:** Available in 1.37.0+.
+// > **NOTE:** Available since v1.37.0.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "natGatewaysDatasource"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			fooNetwork, err := vpc.NewNetwork(ctx, "foo", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			fooNatGateway, err := vpc.NewNatGateway(ctx, "foo", &vpc.NatGatewayArgs{
+//				VpcId:          fooNetwork.ID(),
+//				Specification:  pulumi.String("Small"),
+//				NatGatewayName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_ = vpc.GetNatGatewaysOutput(ctx, vpc.GetNatGatewaysOutputArgs{
+//				VpcId:     fooNetwork.ID(),
+//				NameRegex: fooNatGateway.Name,
+//				Ids: pulumi.StringArray{
+//					fooNatGateway.ID(),
+//				},
+//			}, nil)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetNatGateways(ctx *pulumi.Context, args *GetNatGatewaysArgs, opts ...pulumi.InvokeOption) (*GetNatGatewaysResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNatGatewaysResult

@@ -21,7 +21,6 @@ public final class IpamIpamPoolArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The default network mask assigned by the IPAM address pool.
-     * 
      * IPv4 network mask value range: **0 to 32** bits.
      * 
      */
@@ -30,7 +29,6 @@ public final class IpamIpamPoolArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The default network mask assigned by the IPAM address pool.
-     * 
      * IPv4 network mask value range: **0 to 32** bits.
      * 
      */
@@ -40,7 +38,6 @@ public final class IpamIpamPoolArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The maximum network mask assigned by the IPAM address pool.
-     * 
      * IPv4 network mask value range: **0 to 32** bits.
      * 
      */
@@ -49,7 +46,6 @@ public final class IpamIpamPoolArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The maximum network mask assigned by the IPAM address pool.
-     * 
      * IPv4 network mask value range: **0 to 32** bits.
      * 
      */
@@ -59,7 +55,6 @@ public final class IpamIpamPoolArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The minimum Network mask assigned by the IPAM address pool.
-     * 
      * IPv4 network mask value range: **0 to 32** bits.
      * 
      */
@@ -68,7 +63,6 @@ public final class IpamIpamPoolArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The minimum Network mask assigned by the IPAM address pool.
-     * 
      * IPv4 network mask value range: **0 to 32** bits.
      * 
      */
@@ -123,7 +117,6 @@ public final class IpamIpamPoolArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The description of the IPAM address pool.
-     * 
      * It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with &#39;http:// &#39;or &#39;https. If it is not filled in, it is empty. The default value is empty.
      * 
      */
@@ -132,7 +125,6 @@ public final class IpamIpamPoolArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The description of the IPAM address pool.
-     * 
      * It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with &#39;http:// &#39;or &#39;https. If it is not filled in, it is empty. The default value is empty.
      * 
      */
@@ -272,7 +264,6 @@ public final class IpamIpamPoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param allocationDefaultCidrMask The default network mask assigned by the IPAM address pool.
-         * 
          * IPv4 network mask value range: **0 to 32** bits.
          * 
          * @return builder
@@ -285,7 +276,6 @@ public final class IpamIpamPoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param allocationDefaultCidrMask The default network mask assigned by the IPAM address pool.
-         * 
          * IPv4 network mask value range: **0 to 32** bits.
          * 
          * @return builder
@@ -297,7 +287,6 @@ public final class IpamIpamPoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param allocationMaxCidrMask The maximum network mask assigned by the IPAM address pool.
-         * 
          * IPv4 network mask value range: **0 to 32** bits.
          * 
          * @return builder
@@ -310,7 +299,6 @@ public final class IpamIpamPoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param allocationMaxCidrMask The maximum network mask assigned by the IPAM address pool.
-         * 
          * IPv4 network mask value range: **0 to 32** bits.
          * 
          * @return builder
@@ -322,7 +310,6 @@ public final class IpamIpamPoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param allocationMinCidrMask The minimum Network mask assigned by the IPAM address pool.
-         * 
          * IPv4 network mask value range: **0 to 32** bits.
          * 
          * @return builder
@@ -335,7 +322,6 @@ public final class IpamIpamPoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param allocationMinCidrMask The minimum Network mask assigned by the IPAM address pool.
-         * 
          * IPv4 network mask value range: **0 to 32** bits.
          * 
          * @return builder
@@ -410,7 +396,6 @@ public final class IpamIpamPoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ipamPoolDescription The description of the IPAM address pool.
-         * 
          * It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with &#39;http:// &#39;or &#39;https. If it is not filled in, it is empty. The default value is empty.
          * 
          * @return builder
@@ -423,7 +408,6 @@ public final class IpamIpamPoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ipamPoolDescription The description of the IPAM address pool.
-         * 
          * It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with &#39;http:// &#39;or &#39;https. If it is not filled in, it is empty. The default value is empty.
          * 
          * @return builder

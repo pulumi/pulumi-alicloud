@@ -66,10 +66,12 @@ import javax.annotation.Nullable;
  *             .status("CreateSuccess")
  *             .build());
  * 
+ *         final var last = default_.accounts().length() - 1;
+ * 
  *         var defaultAggregator = new Aggregator("defaultAggregator", AggregatorArgs.builder()
  *             .aggregatorAccounts(AggregatorAggregatorAccountArgs.builder()
- *                 .accountId(default_.accounts()[0].accountId())
- *                 .accountName(default_.accounts()[0].displayName())
+ *                 .accountId(default_.accounts()[last].accountId())
+ *                 .accountName(default_.accounts()[last].displayName())
  *                 .accountType("ResourceDirectory")
  *                 .build())
  *             .aggregatorName(name)

@@ -6,6 +6,7 @@ package com.pulumi.alicloud.nlb;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.nlb.ListenerArgs;
 import com.pulumi.alicloud.nlb.inputs.ListenerState;
+import com.pulumi.alicloud.nlb.outputs.ListenerProxyProtocolConfig;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -19,9 +20,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a NLB Listener resource.
+ * Provides a Network Load Balancer (NLB) Listener resource.
  * 
- * For information about NLB Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-nlb-2022-04-30-createlistener).
+ * For information about Network Load Balancer (NLB) Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-nlb-2022-04-30-createlistener).
  * 
  * &gt; **NOTE:** Available since v1.191.0.
  * 
@@ -170,7 +171,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * NLB Listener can be imported using the id, e.g.
+ * Network Load Balancer (NLB) Listener can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:nlb/listener:Listener example &lt;id&gt;
@@ -321,7 +322,6 @@ public class Listener extends com.pulumi.resources.CustomResource {
     }
     /**
      * Enter a name for the listener.
-     * 
      * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (\_), and hyphens (-).
      * 
      */
@@ -330,7 +330,6 @@ public class Listener extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Enter a name for the listener.
-     * 
      * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (\_), and hyphens (-).
      * 
      */
@@ -339,7 +338,6 @@ public class Listener extends com.pulumi.resources.CustomResource {
     }
     /**
      * The listener port. Valid values: `0` to `65535`.
-     * 
      * If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
      * 
      */
@@ -348,7 +346,6 @@ public class Listener extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The listener port. Valid values: `0` to `65535`.
-     * 
      * If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
      * 
      */
@@ -402,6 +399,20 @@ public class Listener extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.mss);
     }
     /**
+     * The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxy_protocol_config` below.
+     * 
+     */
+    @Export(name="proxyProtocolConfig", refs={ListenerProxyProtocolConfig.class}, tree="[0]")
+    private Output<ListenerProxyProtocolConfig> proxyProtocolConfig;
+
+    /**
+     * @return The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxy_protocol_config` below.
+     * 
+     */
+    public Output<ListenerProxyProtocolConfig> proxyProtocolConfig() {
+        return this.proxyProtocolConfig;
+    }
+    /**
      * Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
      * 
      */
@@ -414,6 +425,22 @@ public class Listener extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> proxyProtocolEnabled() {
         return this.proxyProtocolEnabled;
+    }
+    /**
+     * The ID of the region where the Network Load Balancer (NLB) instance is deployed.
+     * You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/443657.html) operation to query the most recent region list.
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return The ID of the region where the Network Load Balancer (NLB) instance is deployed.
+     * You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/443657.html) operation to query the most recent region list.
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
     }
     /**
      * Specifies whether to enable fine-grained monitoring. Valid values:

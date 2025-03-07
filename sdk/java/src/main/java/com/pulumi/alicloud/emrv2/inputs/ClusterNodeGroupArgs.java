@@ -177,14 +177,14 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0.
+     * The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0. Node group type of MASTER-EXTEND is available since v1.243.0.
      * 
      */
     @Import(name="nodeGroupType", required=true)
     private Output<String> nodeGroupType;
 
     /**
-     * @return The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0.
+     * @return The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0. Node group type of MASTER-EXTEND is available since v1.243.0.
      * 
      */
     public Output<String> nodeGroupType() {
@@ -610,7 +610,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param nodeGroupType The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0.
+         * @param nodeGroupType The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0. Node group type of MASTER-EXTEND is available since v1.243.0.
          * 
          * @return builder
          * 
@@ -621,7 +621,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param nodeGroupType The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0.
+         * @param nodeGroupType The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0. Node group type of MASTER-EXTEND is available since v1.243.0.
          * 
          * @return builder
          * 

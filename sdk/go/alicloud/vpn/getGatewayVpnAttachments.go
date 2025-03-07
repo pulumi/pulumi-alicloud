@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.181.0+.
+// > **NOTE:** Available since v1.181.0+.
 //
 // ## Example Usage
 //
@@ -80,16 +80,19 @@ type GetGatewayVpnAttachmentsArgs struct {
 
 // A collection of values returned by getGatewayVpnAttachments.
 type GetGatewayVpnAttachmentsResult struct {
+	// A list of Vpn Gateway Vpn Attachments. Each element contains the following attributes:
 	Attachments []GetGatewayVpnAttachmentsAttachment `pulumi:"attachments"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Vpn Attachment names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 	PageNumber *int     `pulumi:"pageNumber"`
 	PageSize   *int     `pulumi:"pageSize"`
-	Status     *string  `pulumi:"status"`
+	// The status of the resource.
+	Status *string `pulumi:"status"`
 	// Deprecated: The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
 	VpnGatewayId *string `pulumi:"vpnGatewayId"`
 }
@@ -140,6 +143,7 @@ func (o GetGatewayVpnAttachmentsResultOutput) ToGetGatewayVpnAttachmentsResultOu
 	return o
 }
 
+// A list of Vpn Gateway Vpn Attachments. Each element contains the following attributes:
 func (o GetGatewayVpnAttachmentsResultOutput) Attachments() GetGatewayVpnAttachmentsAttachmentArrayOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsResult) []GetGatewayVpnAttachmentsAttachment { return v.Attachments }).(GetGatewayVpnAttachmentsAttachmentArrayOutput)
 }
@@ -157,6 +161,7 @@ func (o GetGatewayVpnAttachmentsResultOutput) NameRegex() pulumi.StringPtrOutput
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Vpn Attachment names.
 func (o GetGatewayVpnAttachmentsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -173,6 +178,7 @@ func (o GetGatewayVpnAttachmentsResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
+// The status of the resource.
 func (o GetGatewayVpnAttachmentsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

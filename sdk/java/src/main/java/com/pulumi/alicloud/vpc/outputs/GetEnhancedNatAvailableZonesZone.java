@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEnhancedNatAvailableZonesZone {
+    /**
+     * @return Name of the available zone.
+     * 
+     */
     private String localName;
+    /**
+     * @return The ID of the available zone.
+     * 
+     */
     private String zoneId;
 
     private GetEnhancedNatAvailableZonesZone() {}
+    /**
+     * @return Name of the available zone.
+     * 
+     */
     public String localName() {
         return this.localName;
     }
+    /**
+     * @return The ID of the available zone.
+     * 
+     */
     public String zoneId() {
         return this.zoneId;
     }

@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Esa
         /// The certificate content.
         /// </summary>
         [Output("certificate")]
-        public Output<string> Certificate { get; private set; } = null!;
+        public Output<string> CertificateValue { get; private set; } = null!;
 
         /// <summary>
         /// Creation time.
@@ -201,7 +201,7 @@ namespace Pulumi.AliCloud.Esa
         /// The certificate content.
         /// </summary>
         [Input("certificate")]
-        public Input<string>? Certificate { get; set; }
+        public Input<string>? CertificateValue { get; set; }
 
         /// <summary>
         /// The certificate ID on Certificate Management Service. Valid values:
@@ -274,7 +274,7 @@ namespace Pulumi.AliCloud.Esa
         /// The certificate content.
         /// </summary>
         [Input("certificate")]
-        public Input<string>? Certificate { get; set; }
+        public Input<string>? CertificateValue { get; set; }
 
         /// <summary>
         /// Creation time.

@@ -260,6 +260,7 @@ type Instance struct {
 	// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverlessConfig` below.
 	ServerlessConfigs InstanceServerlessConfigArrayOutput `pulumi:"serverlessConfigs"`
 	// The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
+	// > **NOTE:** This parameter takes effect when sqlCollectorStatus is set to Enabled and does not take effect when sqlCollectorStatus is set to Disabled.
 	SqlCollectorConfigValue pulumi.IntPtrOutput `pulumi:"sqlCollectorConfigValue"`
 	// The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
 	SqlCollectorStatus pulumi.StringOutput `pulumi:"sqlCollectorStatus"`
@@ -646,6 +647,7 @@ type instanceState struct {
 	// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverlessConfig` below.
 	ServerlessConfigs []InstanceServerlessConfig `pulumi:"serverlessConfigs"`
 	// The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
+	// > **NOTE:** This parameter takes effect when sqlCollectorStatus is set to Enabled and does not take effect when sqlCollectorStatus is set to Disabled.
 	SqlCollectorConfigValue *int `pulumi:"sqlCollectorConfigValue"`
 	// The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
 	SqlCollectorStatus *string `pulumi:"sqlCollectorStatus"`
@@ -980,6 +982,7 @@ type InstanceState struct {
 	// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverlessConfig` below.
 	ServerlessConfigs InstanceServerlessConfigArrayInput
 	// The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
+	// > **NOTE:** This parameter takes effect when sqlCollectorStatus is set to Enabled and does not take effect when sqlCollectorStatus is set to Disabled.
 	SqlCollectorConfigValue pulumi.IntPtrInput
 	// The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
 	SqlCollectorStatus pulumi.StringPtrInput
@@ -1312,6 +1315,7 @@ type instanceArgs struct {
 	// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverlessConfig` below.
 	ServerlessConfigs []InstanceServerlessConfig `pulumi:"serverlessConfigs"`
 	// The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
+	// > **NOTE:** This parameter takes effect when sqlCollectorStatus is set to Enabled and does not take effect when sqlCollectorStatus is set to Disabled.
 	SqlCollectorConfigValue *int `pulumi:"sqlCollectorConfigValue"`
 	// The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
 	SqlCollectorStatus *string `pulumi:"sqlCollectorStatus"`
@@ -1637,6 +1641,7 @@ type InstanceArgs struct {
 	// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverlessConfig` below.
 	ServerlessConfigs InstanceServerlessConfigArrayInput
 	// The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
+	// > **NOTE:** This parameter takes effect when sqlCollectorStatus is set to Enabled and does not take effect when sqlCollectorStatus is set to Disabled.
 	SqlCollectorConfigValue pulumi.IntPtrInput
 	// The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
 	SqlCollectorStatus pulumi.StringPtrInput
@@ -2236,6 +2241,7 @@ func (o InstanceOutput) ServerlessConfigs() InstanceServerlessConfigArrayOutput 
 }
 
 // The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
+// > **NOTE:** This parameter takes effect when sqlCollectorStatus is set to Enabled and does not take effect when sqlCollectorStatus is set to Disabled.
 func (o InstanceOutput) SqlCollectorConfigValue() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.SqlCollectorConfigValue }).(pulumi.IntPtrOutput)
 }

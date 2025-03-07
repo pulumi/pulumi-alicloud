@@ -63,14 +63,14 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`.
+     * The type of data disk. Default value: `cloud_efficiency`. Valid values:
      * 
      */
     @Import(name="category")
     private @Nullable Output<String> category;
 
     /**
-     * @return The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`.
+     * @return The type of data disk. Default value: `cloud_efficiency`. Valid values:
      * 
      */
     public Optional<Output<String>> category() {
@@ -108,14 +108,14 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The Mount path. Works when auto_format is true.
+     * The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
      * 
      */
     @Import(name="fileSystem")
     private @Nullable Output<String> fileSystem;
 
     /**
-     * @return The Mount path. Works when auto_format is true.
+     * @return The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
      * 
      */
     public Optional<Output<String>> fileSystem() {
@@ -138,14 +138,14 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
+     * The Mount path. Works when auto_format is true.
      * 
      */
     @Import(name="mountTarget")
     private @Nullable Output<String> mountTarget;
 
     /**
-     * @return The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
+     * @return The Mount path. Works when auto_format is true.
      * 
      */
     public Optional<Output<String>> mountTarget() {
@@ -328,7 +328,7 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param category The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`.
+         * @param category The type of data disk. Default value: `cloud_efficiency`. Valid values:
          * 
          * @return builder
          * 
@@ -339,7 +339,7 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param category The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`.
+         * @param category The type of data disk. Default value: `cloud_efficiency`. Valid values:
          * 
          * @return builder
          * 
@@ -391,7 +391,7 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param fileSystem The Mount path. Works when auto_format is true.
+         * @param fileSystem The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
          * 
          * @return builder
          * 
@@ -402,7 +402,7 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param fileSystem The Mount path. Works when auto_format is true.
+         * @param fileSystem The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
          * 
          * @return builder
          * 
@@ -433,7 +433,7 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param mountTarget The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
+         * @param mountTarget The Mount path. Works when auto_format is true.
          * 
          * @return builder
          * 
@@ -444,7 +444,7 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param mountTarget The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
+         * @param mountTarget The Mount path. Works when auto_format is true.
          * 
          * @return builder
          * 

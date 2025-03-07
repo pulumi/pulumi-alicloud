@@ -16,7 +16,7 @@ import (
 //
 // IP Address Management Scope.
 //
-// For information about Vpc Ipam Ipam Scope and how to use it, see [What is Ipam Scope](https://www.alibabacloud.com/help/en/).
+// For information about Vpc Ipam Ipam Scope and how to use it, see [What is Ipam Scope](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamScope).
 //
 // > **NOTE:** Available since v1.234.0.
 //
@@ -81,7 +81,6 @@ type IpamIpamScope struct {
 	// The id of the Ipam instance.
 	IpamId pulumi.StringOutput `pulumi:"ipamId"`
 	// The description of the IPAM's scope of action.
-	//
 	// It must be 2 to 256 characters in length and must start with a lowercase letter, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
 	IpamScopeDescription pulumi.StringPtrOutput `pulumi:"ipamScopeDescription"`
 	// The name of the resource.
@@ -139,7 +138,6 @@ type ipamIpamScopeState struct {
 	// The id of the Ipam instance.
 	IpamId *string `pulumi:"ipamId"`
 	// The description of the IPAM's scope of action.
-	//
 	// It must be 2 to 256 characters in length and must start with a lowercase letter, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
 	IpamScopeDescription *string `pulumi:"ipamScopeDescription"`
 	// The name of the resource.
@@ -165,7 +163,6 @@ type IpamIpamScopeState struct {
 	// The id of the Ipam instance.
 	IpamId pulumi.StringPtrInput
 	// The description of the IPAM's scope of action.
-	//
 	// It must be 2 to 256 characters in length and must start with a lowercase letter, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
 	IpamScopeDescription pulumi.StringPtrInput
 	// The name of the resource.
@@ -193,7 +190,6 @@ type ipamIpamScopeArgs struct {
 	// The id of the Ipam instance.
 	IpamId string `pulumi:"ipamId"`
 	// The description of the IPAM's scope of action.
-	//
 	// It must be 2 to 256 characters in length and must start with a lowercase letter, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
 	IpamScopeDescription *string `pulumi:"ipamScopeDescription"`
 	// The name of the resource.
@@ -214,7 +210,6 @@ type IpamIpamScopeArgs struct {
 	// The id of the Ipam instance.
 	IpamId pulumi.StringInput
 	// The description of the IPAM's scope of action.
-	//
 	// It must be 2 to 256 characters in length and must start with a lowercase letter, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
 	IpamScopeDescription pulumi.StringPtrInput
 	// The name of the resource.
@@ -328,7 +323,6 @@ func (o IpamIpamScopeOutput) IpamId() pulumi.StringOutput {
 }
 
 // The description of the IPAM's scope of action.
-//
 // It must be 2 to 256 characters in length and must start with a lowercase letter, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
 func (o IpamIpamScopeOutput) IpamScopeDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IpamIpamScope) pulumi.StringPtrOutput { return v.IpamScopeDescription }).(pulumi.StringPtrOutput)

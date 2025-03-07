@@ -6,7 +6,9 @@ package com.pulumi.alicloud.hbr;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -66,6 +68,36 @@ public final class VaultArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of the resource group.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * The tag of the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return The tag of the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
      * The name of Vault.
      * 
      */
@@ -110,15 +142,33 @@ public final class VaultArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.vaultType);
     }
 
+    /**
+     * Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
+     * 
+     */
+    @Import(name="wormEnabled")
+    private @Nullable Output<Boolean> wormEnabled;
+
+    /**
+     * @return Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> wormEnabled() {
+        return Optional.ofNullable(this.wormEnabled);
+    }
+
     private VaultArgs() {}
 
     private VaultArgs(VaultArgs $) {
         this.description = $.description;
         this.encryptType = $.encryptType;
         this.kmsKeyId = $.kmsKeyId;
+        this.resourceGroupId = $.resourceGroupId;
+        this.tags = $.tags;
         this.vaultName = $.vaultName;
         this.vaultStorageClass = $.vaultStorageClass;
         this.vaultType = $.vaultType;
+        this.wormEnabled = $.wormEnabled;
     }
 
     public static Builder builder() {
@@ -207,6 +257,48 @@ public final class VaultArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param tags The tag of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tag of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
          * @param vaultName The name of Vault.
          * 
          * @return builder
@@ -267,6 +359,27 @@ public final class VaultArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder vaultType(String vaultType) {
             return vaultType(Output.of(vaultType));
+        }
+
+        /**
+         * @param wormEnabled Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wormEnabled(@Nullable Output<Boolean> wormEnabled) {
+            $.wormEnabled = wormEnabled;
+            return this;
+        }
+
+        /**
+         * @param wormEnabled Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wormEnabled(Boolean wormEnabled) {
+            return wormEnabled(Output.of(wormEnabled));
         }
 
         public VaultArgs build() {

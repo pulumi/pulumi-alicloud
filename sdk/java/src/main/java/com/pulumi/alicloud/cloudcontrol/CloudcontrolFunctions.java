@@ -22,7 +22,7 @@ import java.util.concurrent.CompletableFuture;
 
 public final class CloudcontrolFunctions {
     /**
-     * This data source provides Cloud Control Price available to the user.[What is Price](https://www.alibabacloud.com/help/en/)
+     * This data source provides Cloud Control Price available to the user.[What is Price](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/GetPrice)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -74,7 +74,7 @@ public final class CloudcontrolFunctions {
         return getPrices(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Cloud Control Price available to the user.[What is Price](https://www.alibabacloud.com/help/en/)
+     * This data source provides Cloud Control Price available to the user.[What is Price](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/GetPrice)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -126,7 +126,7 @@ public final class CloudcontrolFunctions {
         return getPricesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Cloud Control Price available to the user.[What is Price](https://www.alibabacloud.com/help/en/)
+     * This data source provides Cloud Control Price available to the user.[What is Price](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/GetPrice)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -178,7 +178,7 @@ public final class CloudcontrolFunctions {
         return Deployment.getInstance().invoke("alicloud:cloudcontrol/getPrices:getPrices", TypeShape.of(GetPricesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Cloud Control Price available to the user.[What is Price](https://www.alibabacloud.com/help/en/)
+     * This data source provides Cloud Control Price available to the user.[What is Price](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/GetPrice)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -230,7 +230,7 @@ public final class CloudcontrolFunctions {
         return Deployment.getInstance().invoke("alicloud:cloudcontrol/getPrices:getPrices", TypeShape.of(GetPricesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Cloud Control Price available to the user.[What is Price](https://www.alibabacloud.com/help/en/)
+     * This data source provides Cloud Control Price available to the user.[What is Price](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/GetPrice)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -282,7 +282,7 @@ public final class CloudcontrolFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:cloudcontrol/getPrices:getPrices", TypeShape.of(GetPricesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Cloud Control Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/)
+     * This data source provides Cloud Control Product available to the user.[What is Product](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/ListProducts)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -328,7 +328,7 @@ public final class CloudcontrolFunctions {
         return getProducts(GetProductsArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Cloud Control Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/)
+     * This data source provides Cloud Control Product available to the user.[What is Product](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/ListProducts)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -374,7 +374,7 @@ public final class CloudcontrolFunctions {
         return getProductsPlain(GetProductsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Cloud Control Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/)
+     * This data source provides Cloud Control Product available to the user.[What is Product](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/ListProducts)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -420,7 +420,7 @@ public final class CloudcontrolFunctions {
         return getProducts(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Cloud Control Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/)
+     * This data source provides Cloud Control Product available to the user.[What is Product](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/ListProducts)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -466,7 +466,7 @@ public final class CloudcontrolFunctions {
         return getProductsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Cloud Control Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/)
+     * This data source provides Cloud Control Product available to the user.[What is Product](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/ListProducts)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -512,7 +512,7 @@ public final class CloudcontrolFunctions {
         return Deployment.getInstance().invoke("alicloud:cloudcontrol/getProducts:getProducts", TypeShape.of(GetProductsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Cloud Control Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/)
+     * This data source provides Cloud Control Product available to the user.[What is Product](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/ListProducts)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -558,7 +558,7 @@ public final class CloudcontrolFunctions {
         return Deployment.getInstance().invoke("alicloud:cloudcontrol/getProducts:getProducts", TypeShape.of(GetProductsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Cloud Control Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/)
+     * This data source provides Cloud Control Product available to the user.[What is Product](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/ListProducts)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -604,7 +604,7 @@ public final class CloudcontrolFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:cloudcontrol/getProducts:getProducts", TypeShape.of(GetProductsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Cloud Control Resource Type available to the user.[What is Resource Type](https://www.alibabacloud.com/help/en/)
+     * This data source provides Cloud Control Resource Type available to the user.[What is Resource Type](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/GetResourceType)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -651,7 +651,7 @@ public final class CloudcontrolFunctions {
         return getResourceTypes(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Cloud Control Resource Type available to the user.[What is Resource Type](https://www.alibabacloud.com/help/en/)
+     * This data source provides Cloud Control Resource Type available to the user.[What is Resource Type](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/GetResourceType)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -698,7 +698,7 @@ public final class CloudcontrolFunctions {
         return getResourceTypesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Cloud Control Resource Type available to the user.[What is Resource Type](https://www.alibabacloud.com/help/en/)
+     * This data source provides Cloud Control Resource Type available to the user.[What is Resource Type](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/GetResourceType)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -745,7 +745,7 @@ public final class CloudcontrolFunctions {
         return Deployment.getInstance().invoke("alicloud:cloudcontrol/getResourceTypes:getResourceTypes", TypeShape.of(GetResourceTypesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Cloud Control Resource Type available to the user.[What is Resource Type](https://www.alibabacloud.com/help/en/)
+     * This data source provides Cloud Control Resource Type available to the user.[What is Resource Type](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/GetResourceType)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -792,7 +792,7 @@ public final class CloudcontrolFunctions {
         return Deployment.getInstance().invoke("alicloud:cloudcontrol/getResourceTypes:getResourceTypes", TypeShape.of(GetResourceTypesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Cloud Control Resource Type available to the user.[What is Resource Type](https://www.alibabacloud.com/help/en/)
+     * This data source provides Cloud Control Resource Type available to the user.[What is Resource Type](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/GetResourceType)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 

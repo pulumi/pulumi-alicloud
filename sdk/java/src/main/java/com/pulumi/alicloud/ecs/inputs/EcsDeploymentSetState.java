@@ -16,14 +16,14 @@ public final class EcsDeploymentSetState extends com.pulumi.resources.ResourceAr
     public static final EcsDeploymentSetState Empty = new EcsDeploymentSetState();
 
     /**
-     * The name of the deployment set. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+     * The name of the deployment set. The name must be `2` to `128` characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
      * 
      */
     @Import(name="deploymentSetName")
     private @Nullable Output<String> deploymentSetName;
 
     /**
-     * @return The name of the deployment set. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+     * @return The name of the deployment set. The name must be `2` to `128` characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
      * 
      */
     public Optional<Output<String>> deploymentSetName() {
@@ -31,14 +31,14 @@ public final class EcsDeploymentSetState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The description of the deployment set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+     * The description of the deployment set. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the deployment set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+     * @return The description of the deployment set. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
      * 
      */
     public Optional<Output<String>> description() {
@@ -46,48 +46,64 @@ public final class EcsDeploymentSetState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The deployment domain. Valid values: `Default`.
+     * Field `domain` has been deprecated from provider version 1.243.0.
+     * 
+     * @deprecated
+     * Field `domain` has been deprecated from provider version 1.243.0.
      * 
      */
+    @Deprecated /* Field `domain` has been deprecated from provider version 1.243.0. */
     @Import(name="domain")
     private @Nullable Output<String> domain;
 
     /**
-     * @return The deployment domain. Valid values: `Default`.
+     * @return Field `domain` has been deprecated from provider version 1.243.0.
+     * 
+     * @deprecated
+     * Field `domain` has been deprecated from provider version 1.243.0.
      * 
      */
+    @Deprecated /* Field `domain` has been deprecated from provider version 1.243.0. */
     public Optional<Output<String>> domain() {
         return Optional.ofNullable(this.domain);
     }
 
     /**
-     * The deployment granularity. Valid values: `Host`.
+     * Field `granularity` has been deprecated from provider version 1.243.0.
+     * 
+     * @deprecated
+     * Field `granularity` has been deprecated from provider version 1.243.0.
      * 
      */
+    @Deprecated /* Field `granularity` has been deprecated from provider version 1.243.0. */
     @Import(name="granularity")
     private @Nullable Output<String> granularity;
 
     /**
-     * @return The deployment granularity. Valid values: `Host`.
+     * @return Field `granularity` has been deprecated from provider version 1.243.0.
+     * 
+     * @deprecated
+     * Field `granularity` has been deprecated from provider version 1.243.0.
      * 
      */
+    @Deprecated /* Field `granularity` has been deprecated from provider version 1.243.0. */
     public Optional<Output<String>> granularity() {
         return Optional.ofNullable(this.granularity);
     }
 
     /**
-     * The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
-     * * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
-     * * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
+     * The emergency solution to use in the situation where instances in the deployment set cannot be evenly distributed to different zones due to resource insufficiency after the instances failover. Valid values:
+     * - `CancelMembershipAndStart` - Removes the instances from the deployment set and starts the instances immediately after they are failed over.
+     * - `KeepStopped`- Leaves the instances in the Stopped state and starts them after resources are replenished.
      * 
      */
     @Import(name="onUnableToRedeployFailedInstance")
     private @Nullable Output<String> onUnableToRedeployFailedInstance;
 
     /**
-     * @return The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
-     * * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
-     * * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
+     * @return The emergency solution to use in the situation where instances in the deployment set cannot be evenly distributed to different zones due to resource insufficiency after the instances failover. Valid values:
+     * - `CancelMembershipAndStart` - Removes the instances from the deployment set and starts the instances immediately after they are failed over.
+     * - `KeepStopped`- Leaves the instances in the Stopped state and starts them after resources are replenished.
      * 
      */
     public Optional<Output<String>> onUnableToRedeployFailedInstance() {
@@ -95,14 +111,14 @@ public final class EcsDeploymentSetState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
+     * The deployment strategy. Default value: `Availability`. Valid values: `Availability`, `AvailabilityGroup`, `LowLatency`.
      * 
      */
     @Import(name="strategy")
     private @Nullable Output<String> strategy;
 
     /**
-     * @return The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
+     * @return The deployment strategy. Default value: `Availability`. Valid values: `Availability`, `AvailabilityGroup`, `LowLatency`.
      * 
      */
     public Optional<Output<String>> strategy() {
@@ -139,7 +155,7 @@ public final class EcsDeploymentSetState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param deploymentSetName The name of the deployment set. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+         * @param deploymentSetName The name of the deployment set. The name must be `2` to `128` characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -150,7 +166,7 @@ public final class EcsDeploymentSetState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param deploymentSetName The name of the deployment set. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+         * @param deploymentSetName The name of the deployment set. The name must be `2` to `128` characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -160,7 +176,7 @@ public final class EcsDeploymentSetState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param description The description of the deployment set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+         * @param description The description of the deployment set. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -171,7 +187,7 @@ public final class EcsDeploymentSetState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param description The description of the deployment set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+         * @param description The description of the deployment set. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -181,51 +197,67 @@ public final class EcsDeploymentSetState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param domain The deployment domain. Valid values: `Default`.
+         * @param domain Field `domain` has been deprecated from provider version 1.243.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `domain` has been deprecated from provider version 1.243.0.
+         * 
          */
+        @Deprecated /* Field `domain` has been deprecated from provider version 1.243.0. */
         public Builder domain(@Nullable Output<String> domain) {
             $.domain = domain;
             return this;
         }
 
         /**
-         * @param domain The deployment domain. Valid values: `Default`.
+         * @param domain Field `domain` has been deprecated from provider version 1.243.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `domain` has been deprecated from provider version 1.243.0.
+         * 
          */
+        @Deprecated /* Field `domain` has been deprecated from provider version 1.243.0. */
         public Builder domain(String domain) {
             return domain(Output.of(domain));
         }
 
         /**
-         * @param granularity The deployment granularity. Valid values: `Host`.
+         * @param granularity Field `granularity` has been deprecated from provider version 1.243.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `granularity` has been deprecated from provider version 1.243.0.
+         * 
          */
+        @Deprecated /* Field `granularity` has been deprecated from provider version 1.243.0. */
         public Builder granularity(@Nullable Output<String> granularity) {
             $.granularity = granularity;
             return this;
         }
 
         /**
-         * @param granularity The deployment granularity. Valid values: `Host`.
+         * @param granularity Field `granularity` has been deprecated from provider version 1.243.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `granularity` has been deprecated from provider version 1.243.0.
+         * 
          */
+        @Deprecated /* Field `granularity` has been deprecated from provider version 1.243.0. */
         public Builder granularity(String granularity) {
             return granularity(Output.of(granularity));
         }
 
         /**
-         * @param onUnableToRedeployFailedInstance The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
-         * * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
-         * * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
+         * @param onUnableToRedeployFailedInstance The emergency solution to use in the situation where instances in the deployment set cannot be evenly distributed to different zones due to resource insufficiency after the instances failover. Valid values:
+         * - `CancelMembershipAndStart` - Removes the instances from the deployment set and starts the instances immediately after they are failed over.
+         * - `KeepStopped`- Leaves the instances in the Stopped state and starts them after resources are replenished.
          * 
          * @return builder
          * 
@@ -236,9 +268,9 @@ public final class EcsDeploymentSetState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param onUnableToRedeployFailedInstance The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
-         * * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
-         * * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
+         * @param onUnableToRedeployFailedInstance The emergency solution to use in the situation where instances in the deployment set cannot be evenly distributed to different zones due to resource insufficiency after the instances failover. Valid values:
+         * - `CancelMembershipAndStart` - Removes the instances from the deployment set and starts the instances immediately after they are failed over.
+         * - `KeepStopped`- Leaves the instances in the Stopped state and starts them after resources are replenished.
          * 
          * @return builder
          * 
@@ -248,7 +280,7 @@ public final class EcsDeploymentSetState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param strategy The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
+         * @param strategy The deployment strategy. Default value: `Availability`. Valid values: `Availability`, `AvailabilityGroup`, `LowLatency`.
          * 
          * @return builder
          * 
@@ -259,7 +291,7 @@ public final class EcsDeploymentSetState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param strategy The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
+         * @param strategy The deployment strategy. Default value: `Availability`. Valid values: `Availability`, `AvailabilityGroup`, `LowLatency`.
          * 
          * @return builder
          * 

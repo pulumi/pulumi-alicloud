@@ -82,7 +82,7 @@ public final class GetGatewayVpnAttachmentsAttachment {
      */
     private String remoteSubnet;
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
      * 
      */
     private String status;
@@ -190,7 +190,7 @@ public final class GetGatewayVpnAttachmentsAttachment {
         return this.remoteSubnet;
     }
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
      * 
      */
     public String status() {

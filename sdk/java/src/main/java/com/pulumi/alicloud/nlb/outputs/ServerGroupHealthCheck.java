@@ -16,9 +16,7 @@ import javax.annotation.Nullable;
 public final class ServerGroupHealthCheck {
     /**
      * @return The port that you want to use for health checks on backend servers.
-     * 
      * Valid values: `0` to `65535`.
-     * 
      * Default value: `0`. If you set the value to 0, the port of the backend server is used for health checks.
      * 
      */
@@ -40,6 +38,11 @@ public final class ServerGroupHealthCheck {
      */
     private @Nullable Boolean healthCheckEnabled;
     /**
+     * @return health check response character string. The value contains a maximum of 512 characters
+     * 
+     */
+    private @Nullable String healthCheckExp;
+    /**
      * @return The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\_2xx` (default), `http\_3xx`, `http\_4xx`, and `http\_5xx`.
      * 
      * &gt; **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
@@ -48,13 +51,16 @@ public final class ServerGroupHealthCheck {
     private @Nullable List<String> healthCheckHttpCodes;
     /**
      * @return The interval at which health checks are performed. Unit: seconds.
-     * 
      * Valid values: `5` to `50`.
-     * 
      * Default value: `10`.
      * 
      */
     private @Nullable Integer healthCheckInterval;
+    /**
+     * @return UDP healthy check request string, the value is a character string of 512 characters
+     * 
+     */
+    private @Nullable String healthCheckReq;
     /**
      * @return The protocol that you want to use for health checks. Valid values: `TCP` (default) and `HTTP`.
      * 
@@ -71,9 +77,7 @@ public final class ServerGroupHealthCheck {
     private @Nullable String healthCheckUrl;
     /**
      * @return The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
-     * 
      * Valid values: `2` to `10`.
-     * 
      * Default value: `2`.
      * 
      */
@@ -87,9 +91,7 @@ public final class ServerGroupHealthCheck {
     private @Nullable String httpCheckMethod;
     /**
      * @return The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
-     * 
      * Valid values: `2` to `10`.
-     * 
      * Default value: `2`.
      * 
      */
@@ -98,9 +100,7 @@ public final class ServerGroupHealthCheck {
     private ServerGroupHealthCheck() {}
     /**
      * @return The port that you want to use for health checks on backend servers.
-     * 
      * Valid values: `0` to `65535`.
-     * 
      * Default value: `0`. If you set the value to 0, the port of the backend server is used for health checks.
      * 
      */
@@ -130,6 +130,13 @@ public final class ServerGroupHealthCheck {
         return Optional.ofNullable(this.healthCheckEnabled);
     }
     /**
+     * @return health check response character string. The value contains a maximum of 512 characters
+     * 
+     */
+    public Optional<String> healthCheckExp() {
+        return Optional.ofNullable(this.healthCheckExp);
+    }
+    /**
      * @return The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\_2xx` (default), `http\_3xx`, `http\_4xx`, and `http\_5xx`.
      * 
      * &gt; **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
@@ -140,14 +147,19 @@ public final class ServerGroupHealthCheck {
     }
     /**
      * @return The interval at which health checks are performed. Unit: seconds.
-     * 
      * Valid values: `5` to `50`.
-     * 
      * Default value: `10`.
      * 
      */
     public Optional<Integer> healthCheckInterval() {
         return Optional.ofNullable(this.healthCheckInterval);
+    }
+    /**
+     * @return UDP healthy check request string, the value is a character string of 512 characters
+     * 
+     */
+    public Optional<String> healthCheckReq() {
+        return Optional.ofNullable(this.healthCheckReq);
     }
     /**
      * @return The protocol that you want to use for health checks. Valid values: `TCP` (default) and `HTTP`.
@@ -169,9 +181,7 @@ public final class ServerGroupHealthCheck {
     }
     /**
      * @return The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
-     * 
      * Valid values: `2` to `10`.
-     * 
      * Default value: `2`.
      * 
      */
@@ -189,9 +199,7 @@ public final class ServerGroupHealthCheck {
     }
     /**
      * @return The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
-     * 
      * Valid values: `2` to `10`.
-     * 
      * Default value: `2`.
      * 
      */
@@ -212,8 +220,10 @@ public final class ServerGroupHealthCheck {
         private @Nullable Integer healthCheckConnectTimeout;
         private @Nullable String healthCheckDomain;
         private @Nullable Boolean healthCheckEnabled;
+        private @Nullable String healthCheckExp;
         private @Nullable List<String> healthCheckHttpCodes;
         private @Nullable Integer healthCheckInterval;
+        private @Nullable String healthCheckReq;
         private @Nullable String healthCheckType;
         private @Nullable String healthCheckUrl;
         private @Nullable Integer healthyThreshold;
@@ -226,8 +236,10 @@ public final class ServerGroupHealthCheck {
     	      this.healthCheckConnectTimeout = defaults.healthCheckConnectTimeout;
     	      this.healthCheckDomain = defaults.healthCheckDomain;
     	      this.healthCheckEnabled = defaults.healthCheckEnabled;
+    	      this.healthCheckExp = defaults.healthCheckExp;
     	      this.healthCheckHttpCodes = defaults.healthCheckHttpCodes;
     	      this.healthCheckInterval = defaults.healthCheckInterval;
+    	      this.healthCheckReq = defaults.healthCheckReq;
     	      this.healthCheckType = defaults.healthCheckType;
     	      this.healthCheckUrl = defaults.healthCheckUrl;
     	      this.healthyThreshold = defaults.healthyThreshold;
@@ -260,6 +272,12 @@ public final class ServerGroupHealthCheck {
             return this;
         }
         @CustomType.Setter
+        public Builder healthCheckExp(@Nullable String healthCheckExp) {
+
+            this.healthCheckExp = healthCheckExp;
+            return this;
+        }
+        @CustomType.Setter
         public Builder healthCheckHttpCodes(@Nullable List<String> healthCheckHttpCodes) {
 
             this.healthCheckHttpCodes = healthCheckHttpCodes;
@@ -272,6 +290,12 @@ public final class ServerGroupHealthCheck {
         public Builder healthCheckInterval(@Nullable Integer healthCheckInterval) {
 
             this.healthCheckInterval = healthCheckInterval;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder healthCheckReq(@Nullable String healthCheckReq) {
+
+            this.healthCheckReq = healthCheckReq;
             return this;
         }
         @CustomType.Setter
@@ -310,8 +334,10 @@ public final class ServerGroupHealthCheck {
             _resultValue.healthCheckConnectTimeout = healthCheckConnectTimeout;
             _resultValue.healthCheckDomain = healthCheckDomain;
             _resultValue.healthCheckEnabled = healthCheckEnabled;
+            _resultValue.healthCheckExp = healthCheckExp;
             _resultValue.healthCheckHttpCodes = healthCheckHttpCodes;
             _resultValue.healthCheckInterval = healthCheckInterval;
+            _resultValue.healthCheckReq = healthCheckReq;
             _resultValue.healthCheckType = healthCheckType;
             _resultValue.healthCheckUrl = healthCheckUrl;
             _resultValue.healthyThreshold = healthyThreshold;

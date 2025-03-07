@@ -48,7 +48,6 @@ public final class IpamIpamScopeState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The description of the IPAM&#39;s scope of action.
-     * 
      * It must be 2 to 256 characters in length and must start with a lowercase letter, but cannot start with &#39;http:// &#39;or &#39;https. If it is not filled in, it is empty. The default value is empty.
      * 
      */
@@ -57,7 +56,6 @@ public final class IpamIpamScopeState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The description of the IPAM&#39;s scope of action.
-     * 
      * It must be 2 to 256 characters in length and must start with a lowercase letter, but cannot start with &#39;http:// &#39;or &#39;https. If it is not filled in, it is empty. The default value is empty.
      * 
      */
@@ -237,7 +235,6 @@ public final class IpamIpamScopeState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param ipamScopeDescription The description of the IPAM&#39;s scope of action.
-         * 
          * It must be 2 to 256 characters in length and must start with a lowercase letter, but cannot start with &#39;http:// &#39;or &#39;https. If it is not filled in, it is empty. The default value is empty.
          * 
          * @return builder
@@ -250,7 +247,6 @@ public final class IpamIpamScopeState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param ipamScopeDescription The description of the IPAM&#39;s scope of action.
-         * 
          * It must be 2 to 256 characters in length and must start with a lowercase letter, but cannot start with &#39;http:// &#39;or &#39;https. If it is not filled in, it is empty. The default value is empty.
          * 
          * @return builder

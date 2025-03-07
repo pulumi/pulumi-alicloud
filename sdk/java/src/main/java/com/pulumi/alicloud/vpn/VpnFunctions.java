@@ -684,7 +684,7 @@ public final class VpnFunctions {
     /**
      * This data source provides the Vpn Gateway Vco Routes of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.183.0+.
+     * &gt; **NOTE:** Available since v1.183.0.
      * 
      * ## Example Usage
      * 
@@ -830,7 +830,7 @@ public final class VpnFunctions {
     /**
      * This data source provides the Vpn Gateway Vco Routes of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.183.0+.
+     * &gt; **NOTE:** Available since v1.183.0.
      * 
      * ## Example Usage
      * 
@@ -976,7 +976,7 @@ public final class VpnFunctions {
     /**
      * This data source provides the Vpn Gateway Vco Routes of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.183.0+.
+     * &gt; **NOTE:** Available since v1.183.0.
      * 
      * ## Example Usage
      * 
@@ -1122,7 +1122,7 @@ public final class VpnFunctions {
     /**
      * This data source provides the Vpn Gateway Vco Routes of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.183.0+.
+     * &gt; **NOTE:** Available since v1.183.0.
      * 
      * ## Example Usage
      * 
@@ -1268,7 +1268,7 @@ public final class VpnFunctions {
     /**
      * This data source provides the Vpn Gateway Vco Routes of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.183.0+.
+     * &gt; **NOTE:** Available since v1.183.0.
      * 
      * ## Example Usage
      * 
@@ -1414,7 +1414,7 @@ public final class VpnFunctions {
     /**
      * This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.181.0+.
+     * &gt; **NOTE:** Available since v1.181.0+.
      * 
      * ## Example Usage
      * 
@@ -1466,7 +1466,7 @@ public final class VpnFunctions {
     /**
      * This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.181.0+.
+     * &gt; **NOTE:** Available since v1.181.0+.
      * 
      * ## Example Usage
      * 
@@ -1518,7 +1518,7 @@ public final class VpnFunctions {
     /**
      * This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.181.0+.
+     * &gt; **NOTE:** Available since v1.181.0+.
      * 
      * ## Example Usage
      * 
@@ -1570,7 +1570,7 @@ public final class VpnFunctions {
     /**
      * This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.181.0+.
+     * &gt; **NOTE:** Available since v1.181.0+.
      * 
      * ## Example Usage
      * 
@@ -1622,7 +1622,7 @@ public final class VpnFunctions {
     /**
      * This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.181.0+.
+     * &gt; **NOTE:** Available since v1.181.0+.
      * 
      * ## Example Usage
      * 
@@ -1674,7 +1674,7 @@ public final class VpnFunctions {
     /**
      * This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.181.0+.
+     * &gt; **NOTE:** Available since v1.181.0+.
      * 
      * ## Example Usage
      * 
@@ -1726,7 +1726,7 @@ public final class VpnFunctions {
     /**
      * This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.181.0+.
+     * &gt; **NOTE:** Available since v1.181.0+.
      * 
      * ## Example Usage
      * 

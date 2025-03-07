@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a ESA Record resource.
  * 
- * For information about ESA Record and how to use it, see [What is Record](https://www.alibabacloud.com/help/en/).
+ * For information about ESA Record and how to use it, see [What is Record](https://www.alibabacloud.com/help/en/edge-security-acceleration/esa/user-guide/add-parsing-record/).
  * 
  * &gt; **NOTE:** Available since v1.240.0.
  * 

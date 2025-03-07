@@ -13,7 +13,7 @@ import (
 
 // This data source provides a list of Snat Entries owned by an Alibaba Cloud account.
 //
-// > **NOTE:** Available in 1.37.0+.
+// > **NOTE:** Available since 1.37.0+.
 //
 // ## Example Usage
 //
@@ -135,8 +135,9 @@ type GetSnatEntriesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Optional) A list of Snat Entries IDs.
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Snat Entries names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 	// The name of snat entry.
@@ -221,6 +222,7 @@ func (o GetSnatEntriesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSnatEntriesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Snat Entries names.
 func (o GetSnatEntriesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSnatEntriesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

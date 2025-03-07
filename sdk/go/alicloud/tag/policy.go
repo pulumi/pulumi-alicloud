@@ -12,10 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Tag Policy resource.
+// Provides a TAG Policy resource.
 //
-// For information about Tag Policy and how to use it,
-// see [What is Policy](https://www.alibabacloud.com/help/en/resource-management/latest/create-policy).
+// For information about TAG Policy and how to use it, see [What is Policy](https://www.alibabacloud.com/help/en/resource-management/latest/create-policy).
 //
 // > **NOTE:** Available since v1.203.0.
 //
@@ -58,7 +57,7 @@ import (
 //
 // ## Import
 //
-// Tag Policy can be imported using the id, e.g.
+// TAG Policy can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:tag/policy:Policy example <id>
@@ -66,14 +65,13 @@ import (
 type Policy struct {
 	pulumi.CustomResourceState
 
-	// The content of the policy.
+	// The document of the tag policy.
 	PolicyContent pulumi.StringOutput `pulumi:"policyContent"`
 	// The description of the policy. The description must be 1 to 512 characters in length.
 	PolicyDesc pulumi.StringPtrOutput `pulumi:"policyDesc"`
-	// The name of the policy. name must be 1 to 128 characters in length and can contain letters,
-	// digits, and hyphens (-).
+	// The name of the tag policy. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
 	PolicyName pulumi.StringOutput `pulumi:"policyName"`
-	// The type of the tag policy. Valid values: `USER`, `RD`.
+	// The mode of the Tag Policy feature. Valid values: `USER`, `RD`.
 	UserType pulumi.StringOutput `pulumi:"userType"`
 }
 
@@ -113,26 +111,24 @@ func GetPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Policy resources.
 type policyState struct {
-	// The content of the policy.
+	// The document of the tag policy.
 	PolicyContent *string `pulumi:"policyContent"`
 	// The description of the policy. The description must be 1 to 512 characters in length.
 	PolicyDesc *string `pulumi:"policyDesc"`
-	// The name of the policy. name must be 1 to 128 characters in length and can contain letters,
-	// digits, and hyphens (-).
+	// The name of the tag policy. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
 	PolicyName *string `pulumi:"policyName"`
-	// The type of the tag policy. Valid values: `USER`, `RD`.
+	// The mode of the Tag Policy feature. Valid values: `USER`, `RD`.
 	UserType *string `pulumi:"userType"`
 }
 
 type PolicyState struct {
-	// The content of the policy.
+	// The document of the tag policy.
 	PolicyContent pulumi.StringPtrInput
 	// The description of the policy. The description must be 1 to 512 characters in length.
 	PolicyDesc pulumi.StringPtrInput
-	// The name of the policy. name must be 1 to 128 characters in length and can contain letters,
-	// digits, and hyphens (-).
+	// The name of the tag policy. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
 	PolicyName pulumi.StringPtrInput
-	// The type of the tag policy. Valid values: `USER`, `RD`.
+	// The mode of the Tag Policy feature. Valid values: `USER`, `RD`.
 	UserType pulumi.StringPtrInput
 }
 
@@ -141,27 +137,25 @@ func (PolicyState) ElementType() reflect.Type {
 }
 
 type policyArgs struct {
-	// The content of the policy.
+	// The document of the tag policy.
 	PolicyContent string `pulumi:"policyContent"`
 	// The description of the policy. The description must be 1 to 512 characters in length.
 	PolicyDesc *string `pulumi:"policyDesc"`
-	// The name of the policy. name must be 1 to 128 characters in length and can contain letters,
-	// digits, and hyphens (-).
+	// The name of the tag policy. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
 	PolicyName string `pulumi:"policyName"`
-	// The type of the tag policy. Valid values: `USER`, `RD`.
+	// The mode of the Tag Policy feature. Valid values: `USER`, `RD`.
 	UserType *string `pulumi:"userType"`
 }
 
 // The set of arguments for constructing a Policy resource.
 type PolicyArgs struct {
-	// The content of the policy.
+	// The document of the tag policy.
 	PolicyContent pulumi.StringInput
 	// The description of the policy. The description must be 1 to 512 characters in length.
 	PolicyDesc pulumi.StringPtrInput
-	// The name of the policy. name must be 1 to 128 characters in length and can contain letters,
-	// digits, and hyphens (-).
+	// The name of the tag policy. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
 	PolicyName pulumi.StringInput
-	// The type of the tag policy. Valid values: `USER`, `RD`.
+	// The mode of the Tag Policy feature. Valid values: `USER`, `RD`.
 	UserType pulumi.StringPtrInput
 }
 
@@ -252,7 +246,7 @@ func (o PolicyOutput) ToPolicyOutputWithContext(ctx context.Context) PolicyOutpu
 	return o
 }
 
-// The content of the policy.
+// The document of the tag policy.
 func (o PolicyOutput) PolicyContent() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.PolicyContent }).(pulumi.StringOutput)
 }
@@ -262,13 +256,12 @@ func (o PolicyOutput) PolicyDesc() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringPtrOutput { return v.PolicyDesc }).(pulumi.StringPtrOutput)
 }
 
-// The name of the policy. name must be 1 to 128 characters in length and can contain letters,
-// digits, and hyphens (-).
+// The name of the tag policy. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
 func (o PolicyOutput) PolicyName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.PolicyName }).(pulumi.StringOutput)
 }
 
-// The type of the tag policy. Valid values: `USER`, `RD`.
+// The mode of the Tag Policy feature. Valid values: `USER`, `RD`.
 func (o PolicyOutput) UserType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.UserType }).(pulumi.StringOutput)
 }

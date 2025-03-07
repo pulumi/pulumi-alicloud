@@ -12,15 +12,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Vpc Flow Log resource. While it uses vpc.FlowLog to build a vpc flow log resource, it will be active by default.
+// Provides a VPC Flow Log resource.
 //
-// For information about Vpc Flow Log and how to use it, see [What is Flow Log](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/flow-logs-overview).
+// While it uses vpc.FlowLog to build a vpc flow log resource, it will be active by default.
+//
+// For information about VPC Flow Log and how to use it, see [What is Flow Log](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/flow-logs-overview).
 //
 // > **NOTE:** Available since v1.117.0.
 //
 // ## Import
 //
-// Vpc Flow Log can be imported using the id, e.g.
+// VPC Flow Log can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:vpc/flowLog:FlowLog example <id>
@@ -28,11 +30,11 @@ import (
 type FlowLog struct {
 	pulumi.CustomResourceState
 
-	// Data aggregation interval.
+	// Data aggregation interval
 	AggregationInterval pulumi.StringOutput `pulumi:"aggregationInterval"`
-	// Business status.
+	// Business status
 	BusinessStatus pulumi.StringOutput `pulumi:"businessStatus"`
-	// Creation time.
+	// Creation time
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The Description of the VPC Flow Log.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -40,23 +42,35 @@ type FlowLog struct {
 	FlowLogId pulumi.StringOutput `pulumi:"flowLogId"`
 	// The Name of the VPC Flow Log.
 	FlowLogName pulumi.StringPtrOutput `pulumi:"flowLogName"`
+	// The IP address type of the collected traffic.
+	IpVersion pulumi.StringOutput `pulumi:"ipVersion"`
 	// The name of the logstore.
 	LogStoreName pulumi.StringOutput `pulumi:"logStoreName"`
 	// The name of the project.
 	ProjectName pulumi.StringOutput `pulumi:"projectName"`
+	// (Available since v1.243.0) The region ID.
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The ID of the resource.
 	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
-	// The resource type of the traffic captured by the flow log:-**NetworkInterface**: ENI.-**VSwitch**: All ENIs in the VSwitch.-**VPC**: All ENIs in the VPC.
+	// The resource type of the traffic captured by the flow log:
+	// - `NetworkInterface`: ENI.
+	// - `VSwitch`: All ENIs in the VSwitch.
+	// - `VPC`: All ENIs in the VPC.
 	ResourceType pulumi.StringOutput `pulumi:"resourceType"`
-	// The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
+	// The status of the VPC Flow Log. Valid values: `Active` and `Inactive`.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tag of the current instance resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
+	// The collected flow path. Value:
+	// - *all**: indicates full acquisition.
+	// - *internetGateway**: indicates public network traffic collection.
 	TrafficPaths pulumi.StringArrayOutput `pulumi:"trafficPaths"`
-	// The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
+	// The type of traffic collected. Valid values:
+	// - *All**: All traffic.
+	// - *Allow**: Access control allowedtraffic.
+	// - *Drop**: Access control denied traffic.
 	TrafficType pulumi.StringOutput `pulumi:"trafficType"`
 }
 
@@ -105,11 +119,11 @@ func GetFlowLog(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FlowLog resources.
 type flowLogState struct {
-	// Data aggregation interval.
+	// Data aggregation interval
 	AggregationInterval *string `pulumi:"aggregationInterval"`
-	// Business status.
+	// Business status
 	BusinessStatus *string `pulumi:"businessStatus"`
-	// Creation time.
+	// Creation time
 	CreateTime *string `pulumi:"createTime"`
 	// The Description of the VPC Flow Log.
 	Description *string `pulumi:"description"`
@@ -117,32 +131,44 @@ type flowLogState struct {
 	FlowLogId *string `pulumi:"flowLogId"`
 	// The Name of the VPC Flow Log.
 	FlowLogName *string `pulumi:"flowLogName"`
+	// The IP address type of the collected traffic.
+	IpVersion *string `pulumi:"ipVersion"`
 	// The name of the logstore.
 	LogStoreName *string `pulumi:"logStoreName"`
 	// The name of the project.
 	ProjectName *string `pulumi:"projectName"`
+	// (Available since v1.243.0) The region ID.
+	RegionId *string `pulumi:"regionId"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The ID of the resource.
 	ResourceId *string `pulumi:"resourceId"`
-	// The resource type of the traffic captured by the flow log:-**NetworkInterface**: ENI.-**VSwitch**: All ENIs in the VSwitch.-**VPC**: All ENIs in the VPC.
+	// The resource type of the traffic captured by the flow log:
+	// - `NetworkInterface`: ENI.
+	// - `VSwitch`: All ENIs in the VSwitch.
+	// - `VPC`: All ENIs in the VPC.
 	ResourceType *string `pulumi:"resourceType"`
-	// The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
+	// The status of the VPC Flow Log. Valid values: `Active` and `Inactive`.
 	Status *string `pulumi:"status"`
 	// The tag of the current instance resource.
 	Tags map[string]string `pulumi:"tags"`
-	// The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
+	// The collected flow path. Value:
+	// - *all**: indicates full acquisition.
+	// - *internetGateway**: indicates public network traffic collection.
 	TrafficPaths []string `pulumi:"trafficPaths"`
-	// The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
+	// The type of traffic collected. Valid values:
+	// - *All**: All traffic.
+	// - *Allow**: Access control allowedtraffic.
+	// - *Drop**: Access control denied traffic.
 	TrafficType *string `pulumi:"trafficType"`
 }
 
 type FlowLogState struct {
-	// Data aggregation interval.
+	// Data aggregation interval
 	AggregationInterval pulumi.StringPtrInput
-	// Business status.
+	// Business status
 	BusinessStatus pulumi.StringPtrInput
-	// Creation time.
+	// Creation time
 	CreateTime pulumi.StringPtrInput
 	// The Description of the VPC Flow Log.
 	Description pulumi.StringPtrInput
@@ -150,23 +176,35 @@ type FlowLogState struct {
 	FlowLogId pulumi.StringPtrInput
 	// The Name of the VPC Flow Log.
 	FlowLogName pulumi.StringPtrInput
+	// The IP address type of the collected traffic.
+	IpVersion pulumi.StringPtrInput
 	// The name of the logstore.
 	LogStoreName pulumi.StringPtrInput
 	// The name of the project.
 	ProjectName pulumi.StringPtrInput
+	// (Available since v1.243.0) The region ID.
+	RegionId pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// The ID of the resource.
 	ResourceId pulumi.StringPtrInput
-	// The resource type of the traffic captured by the flow log:-**NetworkInterface**: ENI.-**VSwitch**: All ENIs in the VSwitch.-**VPC**: All ENIs in the VPC.
+	// The resource type of the traffic captured by the flow log:
+	// - `NetworkInterface`: ENI.
+	// - `VSwitch`: All ENIs in the VSwitch.
+	// - `VPC`: All ENIs in the VPC.
 	ResourceType pulumi.StringPtrInput
-	// The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
+	// The status of the VPC Flow Log. Valid values: `Active` and `Inactive`.
 	Status pulumi.StringPtrInput
 	// The tag of the current instance resource.
 	Tags pulumi.StringMapInput
-	// The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
+	// The collected flow path. Value:
+	// - *all**: indicates full acquisition.
+	// - *internetGateway**: indicates public network traffic collection.
 	TrafficPaths pulumi.StringArrayInput
-	// The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
+	// The type of traffic collected. Valid values:
+	// - *All**: All traffic.
+	// - *Allow**: Access control allowedtraffic.
+	// - *Drop**: Access control denied traffic.
 	TrafficType pulumi.StringPtrInput
 }
 
@@ -175,12 +213,14 @@ func (FlowLogState) ElementType() reflect.Type {
 }
 
 type flowLogArgs struct {
-	// Data aggregation interval.
+	// Data aggregation interval
 	AggregationInterval *string `pulumi:"aggregationInterval"`
 	// The Description of the VPC Flow Log.
 	Description *string `pulumi:"description"`
 	// The Name of the VPC Flow Log.
 	FlowLogName *string `pulumi:"flowLogName"`
+	// The IP address type of the collected traffic.
+	IpVersion *string `pulumi:"ipVersion"`
 	// The name of the logstore.
 	LogStoreName string `pulumi:"logStoreName"`
 	// The name of the project.
@@ -189,26 +229,36 @@ type flowLogArgs struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The ID of the resource.
 	ResourceId string `pulumi:"resourceId"`
-	// The resource type of the traffic captured by the flow log:-**NetworkInterface**: ENI.-**VSwitch**: All ENIs in the VSwitch.-**VPC**: All ENIs in the VPC.
+	// The resource type of the traffic captured by the flow log:
+	// - `NetworkInterface`: ENI.
+	// - `VSwitch`: All ENIs in the VSwitch.
+	// - `VPC`: All ENIs in the VPC.
 	ResourceType string `pulumi:"resourceType"`
-	// The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
+	// The status of the VPC Flow Log. Valid values: `Active` and `Inactive`.
 	Status *string `pulumi:"status"`
 	// The tag of the current instance resource.
 	Tags map[string]string `pulumi:"tags"`
-	// The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
+	// The collected flow path. Value:
+	// - *all**: indicates full acquisition.
+	// - *internetGateway**: indicates public network traffic collection.
 	TrafficPaths []string `pulumi:"trafficPaths"`
-	// The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
+	// The type of traffic collected. Valid values:
+	// - *All**: All traffic.
+	// - *Allow**: Access control allowedtraffic.
+	// - *Drop**: Access control denied traffic.
 	TrafficType string `pulumi:"trafficType"`
 }
 
 // The set of arguments for constructing a FlowLog resource.
 type FlowLogArgs struct {
-	// Data aggregation interval.
+	// Data aggregation interval
 	AggregationInterval pulumi.StringPtrInput
 	// The Description of the VPC Flow Log.
 	Description pulumi.StringPtrInput
 	// The Name of the VPC Flow Log.
 	FlowLogName pulumi.StringPtrInput
+	// The IP address type of the collected traffic.
+	IpVersion pulumi.StringPtrInput
 	// The name of the logstore.
 	LogStoreName pulumi.StringInput
 	// The name of the project.
@@ -217,15 +267,23 @@ type FlowLogArgs struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// The ID of the resource.
 	ResourceId pulumi.StringInput
-	// The resource type of the traffic captured by the flow log:-**NetworkInterface**: ENI.-**VSwitch**: All ENIs in the VSwitch.-**VPC**: All ENIs in the VPC.
+	// The resource type of the traffic captured by the flow log:
+	// - `NetworkInterface`: ENI.
+	// - `VSwitch`: All ENIs in the VSwitch.
+	// - `VPC`: All ENIs in the VPC.
 	ResourceType pulumi.StringInput
-	// The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
+	// The status of the VPC Flow Log. Valid values: `Active` and `Inactive`.
 	Status pulumi.StringPtrInput
 	// The tag of the current instance resource.
 	Tags pulumi.StringMapInput
-	// The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
+	// The collected flow path. Value:
+	// - *all**: indicates full acquisition.
+	// - *internetGateway**: indicates public network traffic collection.
 	TrafficPaths pulumi.StringArrayInput
-	// The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
+	// The type of traffic collected. Valid values:
+	// - *All**: All traffic.
+	// - *Allow**: Access control allowedtraffic.
+	// - *Drop**: Access control denied traffic.
 	TrafficType pulumi.StringInput
 }
 
@@ -316,17 +374,17 @@ func (o FlowLogOutput) ToFlowLogOutputWithContext(ctx context.Context) FlowLogOu
 	return o
 }
 
-// Data aggregation interval.
+// Data aggregation interval
 func (o FlowLogOutput) AggregationInterval() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlowLog) pulumi.StringOutput { return v.AggregationInterval }).(pulumi.StringOutput)
 }
 
-// Business status.
+// Business status
 func (o FlowLogOutput) BusinessStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlowLog) pulumi.StringOutput { return v.BusinessStatus }).(pulumi.StringOutput)
 }
 
-// Creation time.
+// Creation time
 func (o FlowLogOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlowLog) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -346,6 +404,11 @@ func (o FlowLogOutput) FlowLogName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlowLog) pulumi.StringPtrOutput { return v.FlowLogName }).(pulumi.StringPtrOutput)
 }
 
+// The IP address type of the collected traffic.
+func (o FlowLogOutput) IpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *FlowLog) pulumi.StringOutput { return v.IpVersion }).(pulumi.StringOutput)
+}
+
 // The name of the logstore.
 func (o FlowLogOutput) LogStoreName() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlowLog) pulumi.StringOutput { return v.LogStoreName }).(pulumi.StringOutput)
@@ -354,6 +417,11 @@ func (o FlowLogOutput) LogStoreName() pulumi.StringOutput {
 // The name of the project.
 func (o FlowLogOutput) ProjectName() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlowLog) pulumi.StringOutput { return v.ProjectName }).(pulumi.StringOutput)
+}
+
+// (Available since v1.243.0) The region ID.
+func (o FlowLogOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FlowLog) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
 }
 
 // The ID of the resource group.
@@ -366,12 +434,15 @@ func (o FlowLogOutput) ResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlowLog) pulumi.StringOutput { return v.ResourceId }).(pulumi.StringOutput)
 }
 
-// The resource type of the traffic captured by the flow log:-**NetworkInterface**: ENI.-**VSwitch**: All ENIs in the VSwitch.-**VPC**: All ENIs in the VPC.
+// The resource type of the traffic captured by the flow log:
+// - `NetworkInterface`: ENI.
+// - `VSwitch`: All ENIs in the VSwitch.
+// - `VPC`: All ENIs in the VPC.
 func (o FlowLogOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlowLog) pulumi.StringOutput { return v.ResourceType }).(pulumi.StringOutput)
 }
 
-// The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
+// The status of the VPC Flow Log. Valid values: `Active` and `Inactive`.
 func (o FlowLogOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlowLog) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
@@ -381,12 +452,17 @@ func (o FlowLogOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *FlowLog) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
+// The collected flow path. Value:
+// - *all**: indicates full acquisition.
+// - *internetGateway**: indicates public network traffic collection.
 func (o FlowLogOutput) TrafficPaths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FlowLog) pulumi.StringArrayOutput { return v.TrafficPaths }).(pulumi.StringArrayOutput)
 }
 
-// The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
+// The type of traffic collected. Valid values:
+// - *All**: All traffic.
+// - *Allow**: Access control allowedtraffic.
+// - *Drop**: Access control denied traffic.
 func (o FlowLogOutput) TrafficType() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlowLog) pulumi.StringOutput { return v.TrafficType }).(pulumi.StringOutput)
 }

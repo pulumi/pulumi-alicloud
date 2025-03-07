@@ -157,6 +157,13 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.antiddosPublic);
     }
 
+    @Import(name="apig")
+    private @Nullable Output<String> apig;
+
+    public Optional<Output<String>> apig() {
+        return Optional.ofNullable(this.apig);
+    }
+
     /**
      * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Api Gateway endpoints.
      * 
@@ -395,6 +402,21 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> clickhouse() {
         return Optional.ofNullable(this.clickhouse);
+    }
+
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Api Gateway endpoints.
+     * 
+     */
+    @Import(name="cloudapi")
+    private @Nullable Output<String> cloudapi;
+
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Api Gateway endpoints.
+     * 
+     */
+    public Optional<Output<String>> cloudapi() {
+        return Optional.ofNullable(this.cloudapi);
     }
 
     /**
@@ -2304,6 +2326,7 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         this.alikafka = $.alikafka;
         this.amqp = $.amqp;
         this.antiddosPublic = $.antiddosPublic;
+        this.apig = $.apig;
         this.apigateway = $.apigateway;
         this.arms = $.arms;
         this.bastionhost = $.bastionhost;
@@ -2320,6 +2343,7 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         this.cds = $.cds;
         this.chatbot = $.chatbot;
         this.clickhouse = $.clickhouse;
+        this.cloudapi = $.cloudapi;
         this.cloudauth = $.cloudauth;
         this.cloudfirewall = $.cloudfirewall;
         this.cloudfw = $.cloudfw;
@@ -2668,6 +2692,15 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
             return antiddosPublic(Output.of(antiddosPublic));
         }
 
+        public Builder apig(@Nullable Output<String> apig) {
+            $.apig = apig;
+            return this;
+        }
+
+        public Builder apig(String apig) {
+            return apig(Output.of(apig));
+        }
+
         /**
          * @param apigateway Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Api Gateway endpoints.
          * 
@@ -3002,6 +3035,27 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder clickhouse(String clickhouse) {
             return clickhouse(Output.of(clickhouse));
+        }
+
+        /**
+         * @param cloudapi Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Api Gateway endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudapi(@Nullable Output<String> cloudapi) {
+            $.cloudapi = cloudapi;
+            return this;
+        }
+
+        /**
+         * @param cloudapi Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Api Gateway endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudapi(String cloudapi) {
+            return cloudapi(Output.of(cloudapi));
         }
 
         /**

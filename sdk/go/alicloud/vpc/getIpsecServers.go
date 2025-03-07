@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Vpn Ipsec Servers of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.161.0+.
+// > **NOTE:** Available since v1.161.0+.
 //
 // ## Example Usage
 //
@@ -79,14 +79,18 @@ type GetIpsecServersArgs struct {
 // A collection of values returned by getIpsecServers.
 type GetIpsecServersResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id              string                  `pulumi:"id"`
-	Ids             []string                `pulumi:"ids"`
-	IpsecServerName *string                 `pulumi:"ipsecServerName"`
-	NameRegex       *string                 `pulumi:"nameRegex"`
-	Names           []string                `pulumi:"names"`
-	OutputFile      *string                 `pulumi:"outputFile"`
-	Servers         []GetIpsecServersServer `pulumi:"servers"`
-	VpnGatewayId    *string                 `pulumi:"vpnGatewayId"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// The name of the IPsec server.
+	IpsecServerName *string `pulumi:"ipsecServerName"`
+	NameRegex       *string `pulumi:"nameRegex"`
+	// A list of Ipsec Server names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Vpn Ipsec Servers. Each element contains the following attributes:
+	Servers []GetIpsecServersServer `pulumi:"servers"`
+	// The ID of the VPN gateway.
+	VpnGatewayId *string `pulumi:"vpnGatewayId"`
 }
 
 func GetIpsecServersOutput(ctx *pulumi.Context, args GetIpsecServersOutputArgs, opts ...pulumi.InvokeOption) GetIpsecServersResultOutput {
@@ -140,6 +144,7 @@ func (o GetIpsecServersResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetIpsecServersResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The name of the IPsec server.
 func (o GetIpsecServersResultOutput) IpsecServerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetIpsecServersResult) *string { return v.IpsecServerName }).(pulumi.StringPtrOutput)
 }
@@ -148,6 +153,7 @@ func (o GetIpsecServersResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetIpsecServersResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ipsec Server names.
 func (o GetIpsecServersResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetIpsecServersResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -156,10 +162,12 @@ func (o GetIpsecServersResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetIpsecServersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Vpn Ipsec Servers. Each element contains the following attributes:
 func (o GetIpsecServersResultOutput) Servers() GetIpsecServersServerArrayOutput {
 	return o.ApplyT(func(v GetIpsecServersResult) []GetIpsecServersServer { return v.Servers }).(GetIpsecServersServerArrayOutput)
 }
 
+// The ID of the VPN gateway.
 func (o GetIpsecServersResultOutput) VpnGatewayId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetIpsecServersResult) *string { return v.VpnGatewayId }).(pulumi.StringPtrOutput)
 }

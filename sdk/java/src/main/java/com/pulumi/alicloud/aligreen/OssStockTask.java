@@ -268,14 +268,22 @@ public class OssStockTask extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.imageScanLimit);
     }
     /**
-     * The image moderation scenario included in the oss stock scan task.Valid values: porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection
+     * The image moderation scenario included in the oss stock scan task.Valid values:
+     * porn: pornography detection
+     * terrorism: terrorist content detection
+     * ad: ad violation detection
+     * live: undesirable scene detection
      * 
      */
     @Export(name="imageScenes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> imageScenes;
 
     /**
-     * @return The image moderation scenario included in the oss stock scan task.Valid values: porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection
+     * @return The image moderation scenario included in the oss stock scan task.Valid values:
+     * porn: pornography detection
+     * terrorism: terrorist content detection
+     * ad: ad violation detection
+     * live: undesirable scene detection
      * 
      */
     public Output<Optional<List<String>>> imageScenes() {
@@ -450,14 +458,24 @@ public class OssStockTask extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.videoScanLimit);
     }
     /**
-     * The video detection scenarios included in the oss stock scan task. porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection antispam: Video voice antispam
+     * The video detection scenarios included in the oss stock scan task.
+     * porn: pornography detection
+     * terrorism: terrorist content detection
+     * ad: ad violation detection
+     * live: undesirable scene detection
+     * antispam: Video voice antispam
      * 
      */
     @Export(name="videoScenes", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> videoScenes;
 
     /**
-     * @return The video detection scenarios included in the oss stock scan task. porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection antispam: Video voice antispam
+     * @return The video detection scenarios included in the oss stock scan task.
+     * porn: pornography detection
+     * terrorism: terrorist content detection
+     * ad: ad violation detection
+     * live: undesirable scene detection
+     * antispam: Video voice antispam
      * 
      */
     public Output<Optional<String>> videoScenes() {

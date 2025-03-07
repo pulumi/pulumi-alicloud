@@ -9,12 +9,38 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class LoadBalancerZoneMapping {
     /**
-     * @return The SLB Instance Address
+     * @return An IP address of the IPv4 type.
+     * 
+     */
+    private @Nullable String address;
+    /**
+     * @return The ID of the EIP instance.
+     * 
+     */
+    private @Nullable String allocationId;
+    /**
+     * @return The type of the EIP instance.
+     * 
+     */
+    private @Nullable String eipType;
+    /**
+     * @return IPv4 private network address.
+     * 
+     */
+    private @Nullable String intranetAddress;
+    /**
+     * @return An IP address of the IPv6 type.
+     * 
+     */
+    private @Nullable String ipv6Address;
+    /**
+     * @return The instance address.
      * 
      */
     private @Nullable List<LoadBalancerZoneMappingLoadBalancerAddress> loadBalancerAddresses;
@@ -31,7 +57,42 @@ public final class LoadBalancerZoneMapping {
 
     private LoadBalancerZoneMapping() {}
     /**
-     * @return The SLB Instance Address
+     * @return An IP address of the IPv4 type.
+     * 
+     */
+    public Optional<String> address() {
+        return Optional.ofNullable(this.address);
+    }
+    /**
+     * @return The ID of the EIP instance.
+     * 
+     */
+    public Optional<String> allocationId() {
+        return Optional.ofNullable(this.allocationId);
+    }
+    /**
+     * @return The type of the EIP instance.
+     * 
+     */
+    public Optional<String> eipType() {
+        return Optional.ofNullable(this.eipType);
+    }
+    /**
+     * @return IPv4 private network address.
+     * 
+     */
+    public Optional<String> intranetAddress() {
+        return Optional.ofNullable(this.intranetAddress);
+    }
+    /**
+     * @return An IP address of the IPv6 type.
+     * 
+     */
+    public Optional<String> ipv6Address() {
+        return Optional.ofNullable(this.ipv6Address);
+    }
+    /**
+     * @return The instance address.
      * 
      */
     public List<LoadBalancerZoneMappingLoadBalancerAddress> loadBalancerAddresses() {
@@ -61,17 +122,57 @@ public final class LoadBalancerZoneMapping {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String address;
+        private @Nullable String allocationId;
+        private @Nullable String eipType;
+        private @Nullable String intranetAddress;
+        private @Nullable String ipv6Address;
         private @Nullable List<LoadBalancerZoneMappingLoadBalancerAddress> loadBalancerAddresses;
         private String vswitchId;
         private String zoneId;
         public Builder() {}
         public Builder(LoadBalancerZoneMapping defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.address = defaults.address;
+    	      this.allocationId = defaults.allocationId;
+    	      this.eipType = defaults.eipType;
+    	      this.intranetAddress = defaults.intranetAddress;
+    	      this.ipv6Address = defaults.ipv6Address;
     	      this.loadBalancerAddresses = defaults.loadBalancerAddresses;
     	      this.vswitchId = defaults.vswitchId;
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
+        public Builder address(@Nullable String address) {
+
+            this.address = address;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder allocationId(@Nullable String allocationId) {
+
+            this.allocationId = allocationId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder eipType(@Nullable String eipType) {
+
+            this.eipType = eipType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder intranetAddress(@Nullable String intranetAddress) {
+
+            this.intranetAddress = intranetAddress;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipv6Address(@Nullable String ipv6Address) {
+
+            this.ipv6Address = ipv6Address;
+            return this;
+        }
         @CustomType.Setter
         public Builder loadBalancerAddresses(@Nullable List<LoadBalancerZoneMappingLoadBalancerAddress> loadBalancerAddresses) {
 
@@ -99,6 +200,11 @@ public final class LoadBalancerZoneMapping {
         }
         public LoadBalancerZoneMapping build() {
             final var _resultValue = new LoadBalancerZoneMapping();
+            _resultValue.address = address;
+            _resultValue.allocationId = allocationId;
+            _resultValue.eipType = eipType;
+            _resultValue.intranetAddress = intranetAddress;
+            _resultValue.ipv6Address = ipv6Address;
             _resultValue.loadBalancerAddresses = loadBalancerAddresses;
             _resultValue.vswitchId = vswitchId;
             _resultValue.zoneId = zoneId;

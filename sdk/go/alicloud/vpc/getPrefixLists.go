@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Vpc Prefix Lists of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.182.0+.
+// > **NOTE:** Available since v1.182.0.
 //
 // ## Example Usage
 //
@@ -76,13 +76,16 @@ type GetPrefixListsArgs struct {
 type GetPrefixListsResult struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id             string               `pulumi:"id"`
-	Ids            []string             `pulumi:"ids"`
-	Lists          []GetPrefixListsList `pulumi:"lists"`
-	NameRegex      *string              `pulumi:"nameRegex"`
-	Names          []string             `pulumi:"names"`
-	OutputFile     *string              `pulumi:"outputFile"`
-	PrefixListName *string              `pulumi:"prefixListName"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// A list of Vpc Prefix Lists. Each element contains the following attributes:
+	Lists     []GetPrefixListsList `pulumi:"lists"`
+	NameRegex *string              `pulumi:"nameRegex"`
+	// A list of Prefix List names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The name of the prefix list.
+	PrefixListName *string `pulumi:"prefixListName"`
 }
 
 func GetPrefixListsOutput(ctx *pulumi.Context, args GetPrefixListsOutputArgs, opts ...pulumi.InvokeOption) GetPrefixListsResultOutput {
@@ -140,6 +143,7 @@ func (o GetPrefixListsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPrefixListsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// A list of Vpc Prefix Lists. Each element contains the following attributes:
 func (o GetPrefixListsResultOutput) Lists() GetPrefixListsListArrayOutput {
 	return o.ApplyT(func(v GetPrefixListsResult) []GetPrefixListsList { return v.Lists }).(GetPrefixListsListArrayOutput)
 }
@@ -148,6 +152,7 @@ func (o GetPrefixListsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPrefixListsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Prefix List names.
 func (o GetPrefixListsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPrefixListsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -156,6 +161,7 @@ func (o GetPrefixListsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPrefixListsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The name of the prefix list.
 func (o GetPrefixListsResultOutput) PrefixListName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPrefixListsResult) *string { return v.PrefixListName }).(pulumi.StringPtrOutput)
 }

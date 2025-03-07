@@ -19,14 +19,14 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
     public static final FlowLogArgs Empty = new FlowLogArgs();
 
     /**
-     * Data aggregation interval.
+     * Data aggregation interval
      * 
      */
     @Import(name="aggregationInterval")
     private @Nullable Output<String> aggregationInterval;
 
     /**
-     * @return Data aggregation interval.
+     * @return Data aggregation interval
      * 
      */
     public Optional<Output<String>> aggregationInterval() {
@@ -61,6 +61,21 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> flowLogName() {
         return Optional.ofNullable(this.flowLogName);
+    }
+
+    /**
+     * The IP address type of the collected traffic.
+     * 
+     */
+    @Import(name="ipVersion")
+    private @Nullable Output<String> ipVersion;
+
+    /**
+     * @return The IP address type of the collected traffic.
+     * 
+     */
+    public Optional<Output<String>> ipVersion() {
+        return Optional.ofNullable(this.ipVersion);
     }
 
     /**
@@ -124,14 +139,20 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The resource type of the traffic captured by the flow log:-**NetworkInterface**: ENI.-**VSwitch**: All ENIs in the VSwitch.-**VPC**: All ENIs in the VPC.
+     * The resource type of the traffic captured by the flow log:
+     * - `NetworkInterface`: ENI.
+     * - `VSwitch`: All ENIs in the VSwitch.
+     * - `VPC`: All ENIs in the VPC.
      * 
      */
     @Import(name="resourceType", required=true)
     private Output<String> resourceType;
 
     /**
-     * @return The resource type of the traffic captured by the flow log:-**NetworkInterface**: ENI.-**VSwitch**: All ENIs in the VSwitch.-**VPC**: All ENIs in the VPC.
+     * @return The resource type of the traffic captured by the flow log:
+     * - `NetworkInterface`: ENI.
+     * - `VSwitch`: All ENIs in the VSwitch.
+     * - `VPC`: All ENIs in the VPC.
      * 
      */
     public Output<String> resourceType() {
@@ -139,14 +160,14 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
+     * The status of the VPC Flow Log. Valid values: `Active` and `Inactive`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
+     * @return The status of the VPC Flow Log. Valid values: `Active` and `Inactive`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -169,14 +190,18 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
+     * The collected flow path. Value:
+     * - *all**: indicates full acquisition.
+     * - *internetGateway**: indicates public network traffic collection.
      * 
      */
     @Import(name="trafficPaths")
     private @Nullable Output<List<String>> trafficPaths;
 
     /**
-     * @return The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
+     * @return The collected flow path. Value:
+     * - *all**: indicates full acquisition.
+     * - *internetGateway**: indicates public network traffic collection.
      * 
      */
     public Optional<Output<List<String>>> trafficPaths() {
@@ -184,14 +209,20 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
+     * The type of traffic collected. Valid values:
+     * - *All**: All traffic.
+     * - *Allow**: Access control allowedtraffic.
+     * - *Drop**: Access control denied traffic.
      * 
      */
     @Import(name="trafficType", required=true)
     private Output<String> trafficType;
 
     /**
-     * @return The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
+     * @return The type of traffic collected. Valid values:
+     * - *All**: All traffic.
+     * - *Allow**: Access control allowedtraffic.
+     * - *Drop**: Access control denied traffic.
      * 
      */
     public Output<String> trafficType() {
@@ -204,6 +235,7 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
         this.aggregationInterval = $.aggregationInterval;
         this.description = $.description;
         this.flowLogName = $.flowLogName;
+        this.ipVersion = $.ipVersion;
         this.logStoreName = $.logStoreName;
         this.projectName = $.projectName;
         this.resourceGroupId = $.resourceGroupId;
@@ -234,7 +266,7 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aggregationInterval Data aggregation interval.
+         * @param aggregationInterval Data aggregation interval
          * 
          * @return builder
          * 
@@ -245,7 +277,7 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aggregationInterval Data aggregation interval.
+         * @param aggregationInterval Data aggregation interval
          * 
          * @return builder
          * 
@@ -294,6 +326,27 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder flowLogName(String flowLogName) {
             return flowLogName(Output.of(flowLogName));
+        }
+
+        /**
+         * @param ipVersion The IP address type of the collected traffic.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipVersion(@Nullable Output<String> ipVersion) {
+            $.ipVersion = ipVersion;
+            return this;
+        }
+
+        /**
+         * @param ipVersion The IP address type of the collected traffic.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipVersion(String ipVersion) {
+            return ipVersion(Output.of(ipVersion));
         }
 
         /**
@@ -381,7 +434,10 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceType The resource type of the traffic captured by the flow log:-**NetworkInterface**: ENI.-**VSwitch**: All ENIs in the VSwitch.-**VPC**: All ENIs in the VPC.
+         * @param resourceType The resource type of the traffic captured by the flow log:
+         * - `NetworkInterface`: ENI.
+         * - `VSwitch`: All ENIs in the VSwitch.
+         * - `VPC`: All ENIs in the VPC.
          * 
          * @return builder
          * 
@@ -392,7 +448,10 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceType The resource type of the traffic captured by the flow log:-**NetworkInterface**: ENI.-**VSwitch**: All ENIs in the VSwitch.-**VPC**: All ENIs in the VPC.
+         * @param resourceType The resource type of the traffic captured by the flow log:
+         * - `NetworkInterface`: ENI.
+         * - `VSwitch`: All ENIs in the VSwitch.
+         * - `VPC`: All ENIs in the VPC.
          * 
          * @return builder
          * 
@@ -402,7 +461,7 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
+         * @param status The status of the VPC Flow Log. Valid values: `Active` and `Inactive`.
          * 
          * @return builder
          * 
@@ -413,7 +472,7 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
+         * @param status The status of the VPC Flow Log. Valid values: `Active` and `Inactive`.
          * 
          * @return builder
          * 
@@ -444,7 +503,9 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param trafficPaths The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
+         * @param trafficPaths The collected flow path. Value:
+         * - *all**: indicates full acquisition.
+         * - *internetGateway**: indicates public network traffic collection.
          * 
          * @return builder
          * 
@@ -455,7 +516,9 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param trafficPaths The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
+         * @param trafficPaths The collected flow path. Value:
+         * - *all**: indicates full acquisition.
+         * - *internetGateway**: indicates public network traffic collection.
          * 
          * @return builder
          * 
@@ -465,7 +528,9 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param trafficPaths The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
+         * @param trafficPaths The collected flow path. Value:
+         * - *all**: indicates full acquisition.
+         * - *internetGateway**: indicates public network traffic collection.
          * 
          * @return builder
          * 
@@ -475,7 +540,10 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param trafficType The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
+         * @param trafficType The type of traffic collected. Valid values:
+         * - *All**: All traffic.
+         * - *Allow**: Access control allowedtraffic.
+         * - *Drop**: Access control denied traffic.
          * 
          * @return builder
          * 
@@ -486,7 +554,10 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param trafficType The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
+         * @param trafficType The type of traffic collected. Valid values:
+         * - *All**: All traffic.
+         * - *Allow**: Access control allowedtraffic.
+         * - *Drop**: Access control denied traffic.
          * 
          * @return builder
          * 

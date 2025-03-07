@@ -10,14 +10,18 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a HBR Backup vault resource.
+ * Provides a Hybrid Backup Recovery (HBR) Vault resource.
  * 
- * For information about HBR Backup vault and how to use it, see [What is Backup vault](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-hbr-2017-09-08-createvault).
+ * Where backup or archived data is stored.
+ * 
+ * For information about Hybrid Backup Recovery (HBR) Vault and how to use it, see [What is Vault](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-hbr-2017-09-08-createvault).
  * 
  * &gt; **NOTE:** Available since v1.129.0.
  * 
@@ -67,7 +71,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * HBR Vault can be imported using the id, e.g.
+ * Hybrid Backup Recovery (HBR) Vault can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:hbr/vault:Vault example &lt;id&gt;
@@ -76,6 +80,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:hbr/vault:Vault")
 public class Vault extends com.pulumi.resources.CustomResource {
+    /**
+     * (Available since v1.243.0) The time when the backup vault was created.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return (Available since v1.243.0) The time when the backup vault was created.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
     /**
      * The description of Vault. Defaults to an empty string.
      * 
@@ -123,6 +141,34 @@ public class Vault extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.kmsKeyId);
     }
     /**
+     * (Available since v1.243.0) The ID of the region in which the backup vault resides.
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return (Available since v1.243.0) The ID of the region in which the backup vault resides.
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
+    }
+    /**
+     * The ID of the resource group.
+     * 
+     */
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
      * The status of the Vault.
      * 
      */
@@ -135,6 +181,20 @@ public class Vault extends com.pulumi.resources.CustomResource {
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * The tag of the resource.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return The tag of the resource.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * The name of Vault.
@@ -177,6 +237,20 @@ public class Vault extends com.pulumi.resources.CustomResource {
      */
     public Output<String> vaultType() {
         return this.vaultType;
+    }
+    /**
+     * Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
+     * 
+     */
+    @Export(name="wormEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> wormEnabled;
+
+    /**
+     * @return Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
+     * 
+     */
+    public Output<Optional<Boolean>> wormEnabled() {
+        return Codegen.optional(this.wormEnabled);
     }
 
     /**

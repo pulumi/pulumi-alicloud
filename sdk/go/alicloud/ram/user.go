@@ -28,16 +28,26 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			// Create a new RAM user.
-//			_, err := ram.NewUser(ctx, "user", &ram.UserArgs{
-//				Name:        pulumi.String("terraform-example"),
+//			_, err = ram.NewUser(ctx, "user", &ram.UserArgs{
+//				Name:        pulumi.Sprintf("terraform-example-%v", _default.Result),
 //				DisplayName: pulumi.String("user_display_name"),
 //				Mobile:      pulumi.String("86-18688888888"),
 //				Email:       pulumi.String("hello.uuu@aaa.com"),

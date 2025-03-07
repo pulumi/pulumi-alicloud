@@ -137,6 +137,494 @@ func (o HttpRequestHeaderModificationRuleRequestHeaderModificationArrayOutput) I
 	}).(HttpRequestHeaderModificationRuleRequestHeaderModificationOutput)
 }
 
+type HttpResponseHeaderModificationRuleResponseHeaderModification struct {
+	// The response header name.
+	Name string `pulumi:"name"`
+	// Mode of operation.
+	Operation string `pulumi:"operation"`
+	// The response header value.
+	Value *string `pulumi:"value"`
+}
+
+// HttpResponseHeaderModificationRuleResponseHeaderModificationInput is an input type that accepts HttpResponseHeaderModificationRuleResponseHeaderModificationArgs and HttpResponseHeaderModificationRuleResponseHeaderModificationOutput values.
+// You can construct a concrete instance of `HttpResponseHeaderModificationRuleResponseHeaderModificationInput` via:
+//
+//	HttpResponseHeaderModificationRuleResponseHeaderModificationArgs{...}
+type HttpResponseHeaderModificationRuleResponseHeaderModificationInput interface {
+	pulumi.Input
+
+	ToHttpResponseHeaderModificationRuleResponseHeaderModificationOutput() HttpResponseHeaderModificationRuleResponseHeaderModificationOutput
+	ToHttpResponseHeaderModificationRuleResponseHeaderModificationOutputWithContext(context.Context) HttpResponseHeaderModificationRuleResponseHeaderModificationOutput
+}
+
+type HttpResponseHeaderModificationRuleResponseHeaderModificationArgs struct {
+	// The response header name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Mode of operation.
+	Operation pulumi.StringInput `pulumi:"operation"`
+	// The response header value.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (HttpResponseHeaderModificationRuleResponseHeaderModificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpResponseHeaderModificationRuleResponseHeaderModification)(nil)).Elem()
+}
+
+func (i HttpResponseHeaderModificationRuleResponseHeaderModificationArgs) ToHttpResponseHeaderModificationRuleResponseHeaderModificationOutput() HttpResponseHeaderModificationRuleResponseHeaderModificationOutput {
+	return i.ToHttpResponseHeaderModificationRuleResponseHeaderModificationOutputWithContext(context.Background())
+}
+
+func (i HttpResponseHeaderModificationRuleResponseHeaderModificationArgs) ToHttpResponseHeaderModificationRuleResponseHeaderModificationOutputWithContext(ctx context.Context) HttpResponseHeaderModificationRuleResponseHeaderModificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpResponseHeaderModificationRuleResponseHeaderModificationOutput)
+}
+
+// HttpResponseHeaderModificationRuleResponseHeaderModificationArrayInput is an input type that accepts HttpResponseHeaderModificationRuleResponseHeaderModificationArray and HttpResponseHeaderModificationRuleResponseHeaderModificationArrayOutput values.
+// You can construct a concrete instance of `HttpResponseHeaderModificationRuleResponseHeaderModificationArrayInput` via:
+//
+//	HttpResponseHeaderModificationRuleResponseHeaderModificationArray{ HttpResponseHeaderModificationRuleResponseHeaderModificationArgs{...} }
+type HttpResponseHeaderModificationRuleResponseHeaderModificationArrayInput interface {
+	pulumi.Input
+
+	ToHttpResponseHeaderModificationRuleResponseHeaderModificationArrayOutput() HttpResponseHeaderModificationRuleResponseHeaderModificationArrayOutput
+	ToHttpResponseHeaderModificationRuleResponseHeaderModificationArrayOutputWithContext(context.Context) HttpResponseHeaderModificationRuleResponseHeaderModificationArrayOutput
+}
+
+type HttpResponseHeaderModificationRuleResponseHeaderModificationArray []HttpResponseHeaderModificationRuleResponseHeaderModificationInput
+
+func (HttpResponseHeaderModificationRuleResponseHeaderModificationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HttpResponseHeaderModificationRuleResponseHeaderModification)(nil)).Elem()
+}
+
+func (i HttpResponseHeaderModificationRuleResponseHeaderModificationArray) ToHttpResponseHeaderModificationRuleResponseHeaderModificationArrayOutput() HttpResponseHeaderModificationRuleResponseHeaderModificationArrayOutput {
+	return i.ToHttpResponseHeaderModificationRuleResponseHeaderModificationArrayOutputWithContext(context.Background())
+}
+
+func (i HttpResponseHeaderModificationRuleResponseHeaderModificationArray) ToHttpResponseHeaderModificationRuleResponseHeaderModificationArrayOutputWithContext(ctx context.Context) HttpResponseHeaderModificationRuleResponseHeaderModificationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpResponseHeaderModificationRuleResponseHeaderModificationArrayOutput)
+}
+
+type HttpResponseHeaderModificationRuleResponseHeaderModificationOutput struct{ *pulumi.OutputState }
+
+func (HttpResponseHeaderModificationRuleResponseHeaderModificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpResponseHeaderModificationRuleResponseHeaderModification)(nil)).Elem()
+}
+
+func (o HttpResponseHeaderModificationRuleResponseHeaderModificationOutput) ToHttpResponseHeaderModificationRuleResponseHeaderModificationOutput() HttpResponseHeaderModificationRuleResponseHeaderModificationOutput {
+	return o
+}
+
+func (o HttpResponseHeaderModificationRuleResponseHeaderModificationOutput) ToHttpResponseHeaderModificationRuleResponseHeaderModificationOutputWithContext(ctx context.Context) HttpResponseHeaderModificationRuleResponseHeaderModificationOutput {
+	return o
+}
+
+// The response header name.
+func (o HttpResponseHeaderModificationRuleResponseHeaderModificationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpResponseHeaderModificationRuleResponseHeaderModification) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Mode of operation.
+func (o HttpResponseHeaderModificationRuleResponseHeaderModificationOutput) Operation() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpResponseHeaderModificationRuleResponseHeaderModification) string { return v.Operation }).(pulumi.StringOutput)
+}
+
+// The response header value.
+func (o HttpResponseHeaderModificationRuleResponseHeaderModificationOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpResponseHeaderModificationRuleResponseHeaderModification) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type HttpResponseHeaderModificationRuleResponseHeaderModificationArrayOutput struct{ *pulumi.OutputState }
+
+func (HttpResponseHeaderModificationRuleResponseHeaderModificationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HttpResponseHeaderModificationRuleResponseHeaderModification)(nil)).Elem()
+}
+
+func (o HttpResponseHeaderModificationRuleResponseHeaderModificationArrayOutput) ToHttpResponseHeaderModificationRuleResponseHeaderModificationArrayOutput() HttpResponseHeaderModificationRuleResponseHeaderModificationArrayOutput {
+	return o
+}
+
+func (o HttpResponseHeaderModificationRuleResponseHeaderModificationArrayOutput) ToHttpResponseHeaderModificationRuleResponseHeaderModificationArrayOutputWithContext(ctx context.Context) HttpResponseHeaderModificationRuleResponseHeaderModificationArrayOutput {
+	return o
+}
+
+func (o HttpResponseHeaderModificationRuleResponseHeaderModificationArrayOutput) Index(i pulumi.IntInput) HttpResponseHeaderModificationRuleResponseHeaderModificationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HttpResponseHeaderModificationRuleResponseHeaderModification {
+		return vs[0].([]HttpResponseHeaderModificationRuleResponseHeaderModification)[vs[1].(int)]
+	}).(HttpResponseHeaderModificationRuleResponseHeaderModificationOutput)
+}
+
+type OriginPoolOrigin struct {
+	// Origin Address.
+	Address *string `pulumi:"address"`
+	// The authentication information. When the source Station is an OSS or S3 and other source stations need to be authenticated, the authentication-related configuration information needs to be transmitted. See `authConf` below.
+	AuthConf *OriginPoolOriginAuthConf `pulumi:"authConf"`
+	// Whether the source station is enabled:
+	Enabled *bool `pulumi:"enabled"`
+	// The request header that is sent when returning to the source. Only Host is supported.
+	Header *string `pulumi:"header"`
+	// Origin Name.
+	Name *string `pulumi:"name"`
+	// Origin ID.
+	OriginId *int `pulumi:"originId"`
+	// Source station type:
+	Type *string `pulumi:"type"`
+	// Weight, 0-100.
+	Weight *int `pulumi:"weight"`
+}
+
+// OriginPoolOriginInput is an input type that accepts OriginPoolOriginArgs and OriginPoolOriginOutput values.
+// You can construct a concrete instance of `OriginPoolOriginInput` via:
+//
+//	OriginPoolOriginArgs{...}
+type OriginPoolOriginInput interface {
+	pulumi.Input
+
+	ToOriginPoolOriginOutput() OriginPoolOriginOutput
+	ToOriginPoolOriginOutputWithContext(context.Context) OriginPoolOriginOutput
+}
+
+type OriginPoolOriginArgs struct {
+	// Origin Address.
+	Address pulumi.StringPtrInput `pulumi:"address"`
+	// The authentication information. When the source Station is an OSS or S3 and other source stations need to be authenticated, the authentication-related configuration information needs to be transmitted. See `authConf` below.
+	AuthConf OriginPoolOriginAuthConfPtrInput `pulumi:"authConf"`
+	// Whether the source station is enabled:
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The request header that is sent when returning to the source. Only Host is supported.
+	Header pulumi.StringPtrInput `pulumi:"header"`
+	// Origin Name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Origin ID.
+	OriginId pulumi.IntPtrInput `pulumi:"originId"`
+	// Source station type:
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Weight, 0-100.
+	Weight pulumi.IntPtrInput `pulumi:"weight"`
+}
+
+func (OriginPoolOriginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OriginPoolOrigin)(nil)).Elem()
+}
+
+func (i OriginPoolOriginArgs) ToOriginPoolOriginOutput() OriginPoolOriginOutput {
+	return i.ToOriginPoolOriginOutputWithContext(context.Background())
+}
+
+func (i OriginPoolOriginArgs) ToOriginPoolOriginOutputWithContext(ctx context.Context) OriginPoolOriginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OriginPoolOriginOutput)
+}
+
+// OriginPoolOriginArrayInput is an input type that accepts OriginPoolOriginArray and OriginPoolOriginArrayOutput values.
+// You can construct a concrete instance of `OriginPoolOriginArrayInput` via:
+//
+//	OriginPoolOriginArray{ OriginPoolOriginArgs{...} }
+type OriginPoolOriginArrayInput interface {
+	pulumi.Input
+
+	ToOriginPoolOriginArrayOutput() OriginPoolOriginArrayOutput
+	ToOriginPoolOriginArrayOutputWithContext(context.Context) OriginPoolOriginArrayOutput
+}
+
+type OriginPoolOriginArray []OriginPoolOriginInput
+
+func (OriginPoolOriginArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OriginPoolOrigin)(nil)).Elem()
+}
+
+func (i OriginPoolOriginArray) ToOriginPoolOriginArrayOutput() OriginPoolOriginArrayOutput {
+	return i.ToOriginPoolOriginArrayOutputWithContext(context.Background())
+}
+
+func (i OriginPoolOriginArray) ToOriginPoolOriginArrayOutputWithContext(ctx context.Context) OriginPoolOriginArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OriginPoolOriginArrayOutput)
+}
+
+type OriginPoolOriginOutput struct{ *pulumi.OutputState }
+
+func (OriginPoolOriginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OriginPoolOrigin)(nil)).Elem()
+}
+
+func (o OriginPoolOriginOutput) ToOriginPoolOriginOutput() OriginPoolOriginOutput {
+	return o
+}
+
+func (o OriginPoolOriginOutput) ToOriginPoolOriginOutputWithContext(ctx context.Context) OriginPoolOriginOutput {
+	return o
+}
+
+// Origin Address.
+func (o OriginPoolOriginOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OriginPoolOrigin) *string { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+// The authentication information. When the source Station is an OSS or S3 and other source stations need to be authenticated, the authentication-related configuration information needs to be transmitted. See `authConf` below.
+func (o OriginPoolOriginOutput) AuthConf() OriginPoolOriginAuthConfPtrOutput {
+	return o.ApplyT(func(v OriginPoolOrigin) *OriginPoolOriginAuthConf { return v.AuthConf }).(OriginPoolOriginAuthConfPtrOutput)
+}
+
+// Whether the source station is enabled:
+func (o OriginPoolOriginOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OriginPoolOrigin) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The request header that is sent when returning to the source. Only Host is supported.
+func (o OriginPoolOriginOutput) Header() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OriginPoolOrigin) *string { return v.Header }).(pulumi.StringPtrOutput)
+}
+
+// Origin Name.
+func (o OriginPoolOriginOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OriginPoolOrigin) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Origin ID.
+func (o OriginPoolOriginOutput) OriginId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OriginPoolOrigin) *int { return v.OriginId }).(pulumi.IntPtrOutput)
+}
+
+// Source station type:
+func (o OriginPoolOriginOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OriginPoolOrigin) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Weight, 0-100.
+func (o OriginPoolOriginOutput) Weight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OriginPoolOrigin) *int { return v.Weight }).(pulumi.IntPtrOutput)
+}
+
+type OriginPoolOriginArrayOutput struct{ *pulumi.OutputState }
+
+func (OriginPoolOriginArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OriginPoolOrigin)(nil)).Elem()
+}
+
+func (o OriginPoolOriginArrayOutput) ToOriginPoolOriginArrayOutput() OriginPoolOriginArrayOutput {
+	return o
+}
+
+func (o OriginPoolOriginArrayOutput) ToOriginPoolOriginArrayOutputWithContext(ctx context.Context) OriginPoolOriginArrayOutput {
+	return o
+}
+
+func (o OriginPoolOriginArrayOutput) Index(i pulumi.IntInput) OriginPoolOriginOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OriginPoolOrigin {
+		return vs[0].([]OriginPoolOrigin)[vs[1].(int)]
+	}).(OriginPoolOriginOutput)
+}
+
+type OriginPoolOriginAuthConf struct {
+	// The AccessKey to be passed when AuthType is set to privateCrossAccount or private.
+	AccessKey *string `pulumi:"accessKey"`
+	// Authentication type.
+	AuthType *string `pulumi:"authType"`
+	// The Region of the source station to be transmitted when the source station is AWS S3.
+	Region *string `pulumi:"region"`
+	// The SecretKey to be passed when AuthType is set to privateCrossAccount or private.
+	SecretKey *string `pulumi:"secretKey"`
+	// The signature version to be transmitted when the source station is AWS S3.
+	Version *string `pulumi:"version"`
+}
+
+// OriginPoolOriginAuthConfInput is an input type that accepts OriginPoolOriginAuthConfArgs and OriginPoolOriginAuthConfOutput values.
+// You can construct a concrete instance of `OriginPoolOriginAuthConfInput` via:
+//
+//	OriginPoolOriginAuthConfArgs{...}
+type OriginPoolOriginAuthConfInput interface {
+	pulumi.Input
+
+	ToOriginPoolOriginAuthConfOutput() OriginPoolOriginAuthConfOutput
+	ToOriginPoolOriginAuthConfOutputWithContext(context.Context) OriginPoolOriginAuthConfOutput
+}
+
+type OriginPoolOriginAuthConfArgs struct {
+	// The AccessKey to be passed when AuthType is set to privateCrossAccount or private.
+	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
+	// Authentication type.
+	AuthType pulumi.StringPtrInput `pulumi:"authType"`
+	// The Region of the source station to be transmitted when the source station is AWS S3.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The SecretKey to be passed when AuthType is set to privateCrossAccount or private.
+	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
+	// The signature version to be transmitted when the source station is AWS S3.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (OriginPoolOriginAuthConfArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OriginPoolOriginAuthConf)(nil)).Elem()
+}
+
+func (i OriginPoolOriginAuthConfArgs) ToOriginPoolOriginAuthConfOutput() OriginPoolOriginAuthConfOutput {
+	return i.ToOriginPoolOriginAuthConfOutputWithContext(context.Background())
+}
+
+func (i OriginPoolOriginAuthConfArgs) ToOriginPoolOriginAuthConfOutputWithContext(ctx context.Context) OriginPoolOriginAuthConfOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OriginPoolOriginAuthConfOutput)
+}
+
+func (i OriginPoolOriginAuthConfArgs) ToOriginPoolOriginAuthConfPtrOutput() OriginPoolOriginAuthConfPtrOutput {
+	return i.ToOriginPoolOriginAuthConfPtrOutputWithContext(context.Background())
+}
+
+func (i OriginPoolOriginAuthConfArgs) ToOriginPoolOriginAuthConfPtrOutputWithContext(ctx context.Context) OriginPoolOriginAuthConfPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OriginPoolOriginAuthConfOutput).ToOriginPoolOriginAuthConfPtrOutputWithContext(ctx)
+}
+
+// OriginPoolOriginAuthConfPtrInput is an input type that accepts OriginPoolOriginAuthConfArgs, OriginPoolOriginAuthConfPtr and OriginPoolOriginAuthConfPtrOutput values.
+// You can construct a concrete instance of `OriginPoolOriginAuthConfPtrInput` via:
+//
+//	        OriginPoolOriginAuthConfArgs{...}
+//
+//	or:
+//
+//	        nil
+type OriginPoolOriginAuthConfPtrInput interface {
+	pulumi.Input
+
+	ToOriginPoolOriginAuthConfPtrOutput() OriginPoolOriginAuthConfPtrOutput
+	ToOriginPoolOriginAuthConfPtrOutputWithContext(context.Context) OriginPoolOriginAuthConfPtrOutput
+}
+
+type originPoolOriginAuthConfPtrType OriginPoolOriginAuthConfArgs
+
+func OriginPoolOriginAuthConfPtr(v *OriginPoolOriginAuthConfArgs) OriginPoolOriginAuthConfPtrInput {
+	return (*originPoolOriginAuthConfPtrType)(v)
+}
+
+func (*originPoolOriginAuthConfPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OriginPoolOriginAuthConf)(nil)).Elem()
+}
+
+func (i *originPoolOriginAuthConfPtrType) ToOriginPoolOriginAuthConfPtrOutput() OriginPoolOriginAuthConfPtrOutput {
+	return i.ToOriginPoolOriginAuthConfPtrOutputWithContext(context.Background())
+}
+
+func (i *originPoolOriginAuthConfPtrType) ToOriginPoolOriginAuthConfPtrOutputWithContext(ctx context.Context) OriginPoolOriginAuthConfPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OriginPoolOriginAuthConfPtrOutput)
+}
+
+type OriginPoolOriginAuthConfOutput struct{ *pulumi.OutputState }
+
+func (OriginPoolOriginAuthConfOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OriginPoolOriginAuthConf)(nil)).Elem()
+}
+
+func (o OriginPoolOriginAuthConfOutput) ToOriginPoolOriginAuthConfOutput() OriginPoolOriginAuthConfOutput {
+	return o
+}
+
+func (o OriginPoolOriginAuthConfOutput) ToOriginPoolOriginAuthConfOutputWithContext(ctx context.Context) OriginPoolOriginAuthConfOutput {
+	return o
+}
+
+func (o OriginPoolOriginAuthConfOutput) ToOriginPoolOriginAuthConfPtrOutput() OriginPoolOriginAuthConfPtrOutput {
+	return o.ToOriginPoolOriginAuthConfPtrOutputWithContext(context.Background())
+}
+
+func (o OriginPoolOriginAuthConfOutput) ToOriginPoolOriginAuthConfPtrOutputWithContext(ctx context.Context) OriginPoolOriginAuthConfPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OriginPoolOriginAuthConf) *OriginPoolOriginAuthConf {
+		return &v
+	}).(OriginPoolOriginAuthConfPtrOutput)
+}
+
+// The AccessKey to be passed when AuthType is set to privateCrossAccount or private.
+func (o OriginPoolOriginAuthConfOutput) AccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OriginPoolOriginAuthConf) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
+}
+
+// Authentication type.
+func (o OriginPoolOriginAuthConfOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OriginPoolOriginAuthConf) *string { return v.AuthType }).(pulumi.StringPtrOutput)
+}
+
+// The Region of the source station to be transmitted when the source station is AWS S3.
+func (o OriginPoolOriginAuthConfOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OriginPoolOriginAuthConf) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// The SecretKey to be passed when AuthType is set to privateCrossAccount or private.
+func (o OriginPoolOriginAuthConfOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OriginPoolOriginAuthConf) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
+}
+
+// The signature version to be transmitted when the source station is AWS S3.
+func (o OriginPoolOriginAuthConfOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OriginPoolOriginAuthConf) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type OriginPoolOriginAuthConfPtrOutput struct{ *pulumi.OutputState }
+
+func (OriginPoolOriginAuthConfPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OriginPoolOriginAuthConf)(nil)).Elem()
+}
+
+func (o OriginPoolOriginAuthConfPtrOutput) ToOriginPoolOriginAuthConfPtrOutput() OriginPoolOriginAuthConfPtrOutput {
+	return o
+}
+
+func (o OriginPoolOriginAuthConfPtrOutput) ToOriginPoolOriginAuthConfPtrOutputWithContext(ctx context.Context) OriginPoolOriginAuthConfPtrOutput {
+	return o
+}
+
+func (o OriginPoolOriginAuthConfPtrOutput) Elem() OriginPoolOriginAuthConfOutput {
+	return o.ApplyT(func(v *OriginPoolOriginAuthConf) OriginPoolOriginAuthConf {
+		if v != nil {
+			return *v
+		}
+		var ret OriginPoolOriginAuthConf
+		return ret
+	}).(OriginPoolOriginAuthConfOutput)
+}
+
+// The AccessKey to be passed when AuthType is set to privateCrossAccount or private.
+func (o OriginPoolOriginAuthConfPtrOutput) AccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OriginPoolOriginAuthConf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Authentication type.
+func (o OriginPoolOriginAuthConfPtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OriginPoolOriginAuthConf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Region of the source station to be transmitted when the source station is AWS S3.
+func (o OriginPoolOriginAuthConfPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OriginPoolOriginAuthConf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SecretKey to be passed when AuthType is set to privateCrossAccount or private.
+func (o OriginPoolOriginAuthConfPtrOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OriginPoolOriginAuthConf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The signature version to be transmitted when the source station is AWS S3.
+func (o OriginPoolOriginAuthConfPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OriginPoolOriginAuthConf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
 type RecordAuthConf struct {
 	// The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
 	AccessKey *string `pulumi:"accessKey"`
@@ -770,17 +1258,339 @@ func (o RecordDataPtrOutput) Weight() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type WaitingRoomHostNameAndPath struct {
+	// The domain name.
+	Domain string `pulumi:"domain"`
+	// The path.
+	Path string `pulumi:"path"`
+	// The subdomain.
+	Subdomain string `pulumi:"subdomain"`
+}
+
+// WaitingRoomHostNameAndPathInput is an input type that accepts WaitingRoomHostNameAndPathArgs and WaitingRoomHostNameAndPathOutput values.
+// You can construct a concrete instance of `WaitingRoomHostNameAndPathInput` via:
+//
+//	WaitingRoomHostNameAndPathArgs{...}
+type WaitingRoomHostNameAndPathInput interface {
+	pulumi.Input
+
+	ToWaitingRoomHostNameAndPathOutput() WaitingRoomHostNameAndPathOutput
+	ToWaitingRoomHostNameAndPathOutputWithContext(context.Context) WaitingRoomHostNameAndPathOutput
+}
+
+type WaitingRoomHostNameAndPathArgs struct {
+	// The domain name.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// The path.
+	Path pulumi.StringInput `pulumi:"path"`
+	// The subdomain.
+	Subdomain pulumi.StringInput `pulumi:"subdomain"`
+}
+
+func (WaitingRoomHostNameAndPathArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WaitingRoomHostNameAndPath)(nil)).Elem()
+}
+
+func (i WaitingRoomHostNameAndPathArgs) ToWaitingRoomHostNameAndPathOutput() WaitingRoomHostNameAndPathOutput {
+	return i.ToWaitingRoomHostNameAndPathOutputWithContext(context.Background())
+}
+
+func (i WaitingRoomHostNameAndPathArgs) ToWaitingRoomHostNameAndPathOutputWithContext(ctx context.Context) WaitingRoomHostNameAndPathOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WaitingRoomHostNameAndPathOutput)
+}
+
+// WaitingRoomHostNameAndPathArrayInput is an input type that accepts WaitingRoomHostNameAndPathArray and WaitingRoomHostNameAndPathArrayOutput values.
+// You can construct a concrete instance of `WaitingRoomHostNameAndPathArrayInput` via:
+//
+//	WaitingRoomHostNameAndPathArray{ WaitingRoomHostNameAndPathArgs{...} }
+type WaitingRoomHostNameAndPathArrayInput interface {
+	pulumi.Input
+
+	ToWaitingRoomHostNameAndPathArrayOutput() WaitingRoomHostNameAndPathArrayOutput
+	ToWaitingRoomHostNameAndPathArrayOutputWithContext(context.Context) WaitingRoomHostNameAndPathArrayOutput
+}
+
+type WaitingRoomHostNameAndPathArray []WaitingRoomHostNameAndPathInput
+
+func (WaitingRoomHostNameAndPathArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WaitingRoomHostNameAndPath)(nil)).Elem()
+}
+
+func (i WaitingRoomHostNameAndPathArray) ToWaitingRoomHostNameAndPathArrayOutput() WaitingRoomHostNameAndPathArrayOutput {
+	return i.ToWaitingRoomHostNameAndPathArrayOutputWithContext(context.Background())
+}
+
+func (i WaitingRoomHostNameAndPathArray) ToWaitingRoomHostNameAndPathArrayOutputWithContext(ctx context.Context) WaitingRoomHostNameAndPathArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WaitingRoomHostNameAndPathArrayOutput)
+}
+
+type WaitingRoomHostNameAndPathOutput struct{ *pulumi.OutputState }
+
+func (WaitingRoomHostNameAndPathOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WaitingRoomHostNameAndPath)(nil)).Elem()
+}
+
+func (o WaitingRoomHostNameAndPathOutput) ToWaitingRoomHostNameAndPathOutput() WaitingRoomHostNameAndPathOutput {
+	return o
+}
+
+func (o WaitingRoomHostNameAndPathOutput) ToWaitingRoomHostNameAndPathOutputWithContext(ctx context.Context) WaitingRoomHostNameAndPathOutput {
+	return o
+}
+
+// The domain name.
+func (o WaitingRoomHostNameAndPathOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v WaitingRoomHostNameAndPath) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The path.
+func (o WaitingRoomHostNameAndPathOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v WaitingRoomHostNameAndPath) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// The subdomain.
+func (o WaitingRoomHostNameAndPathOutput) Subdomain() pulumi.StringOutput {
+	return o.ApplyT(func(v WaitingRoomHostNameAndPath) string { return v.Subdomain }).(pulumi.StringOutput)
+}
+
+type WaitingRoomHostNameAndPathArrayOutput struct{ *pulumi.OutputState }
+
+func (WaitingRoomHostNameAndPathArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WaitingRoomHostNameAndPath)(nil)).Elem()
+}
+
+func (o WaitingRoomHostNameAndPathArrayOutput) ToWaitingRoomHostNameAndPathArrayOutput() WaitingRoomHostNameAndPathArrayOutput {
+	return o
+}
+
+func (o WaitingRoomHostNameAndPathArrayOutput) ToWaitingRoomHostNameAndPathArrayOutputWithContext(ctx context.Context) WaitingRoomHostNameAndPathArrayOutput {
+	return o
+}
+
+func (o WaitingRoomHostNameAndPathArrayOutput) Index(i pulumi.IntInput) WaitingRoomHostNameAndPathOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WaitingRoomHostNameAndPath {
+		return vs[0].([]WaitingRoomHostNameAndPath)[vs[1].(int)]
+	}).(WaitingRoomHostNameAndPathOutput)
+}
+
+type GetSitesSite struct {
+	// Access type. Value:-**NS**: Managed access via NS.-**CNAME**: access through CNAME.
+	AccessType string `pulumi:"accessType"`
+	// Acceleration area
+	Coverage string `pulumi:"coverage"`
+	// Creation time
+	CreateTime string `pulumi:"createTime"`
+	// The ID of the resource supplied above.
+	Id int `pulumi:"id"`
+	// The ID of the associated package instance.
+	InstanceId string `pulumi:"instanceId"`
+	// Modification time
+	ModifyTime string `pulumi:"modifyTime"`
+	// Site Resolution Name Server List
+	NameServerList string `pulumi:"nameServerList"`
+	// The ID of the resource group
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// Site ID
+	SiteId int `pulumi:"siteId"`
+	// Site Name
+	SiteName string `pulumi:"siteName"`
+	// The status of the resource
+	Status string `pulumi:"status"`
+}
+
+// GetSitesSiteInput is an input type that accepts GetSitesSiteArgs and GetSitesSiteOutput values.
+// You can construct a concrete instance of `GetSitesSiteInput` via:
+//
+//	GetSitesSiteArgs{...}
+type GetSitesSiteInput interface {
+	pulumi.Input
+
+	ToGetSitesSiteOutput() GetSitesSiteOutput
+	ToGetSitesSiteOutputWithContext(context.Context) GetSitesSiteOutput
+}
+
+type GetSitesSiteArgs struct {
+	// Access type. Value:-**NS**: Managed access via NS.-**CNAME**: access through CNAME.
+	AccessType pulumi.StringInput `pulumi:"accessType"`
+	// Acceleration area
+	Coverage pulumi.StringInput `pulumi:"coverage"`
+	// Creation time
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The ID of the resource supplied above.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The ID of the associated package instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// Modification time
+	ModifyTime pulumi.StringInput `pulumi:"modifyTime"`
+	// Site Resolution Name Server List
+	NameServerList pulumi.StringInput `pulumi:"nameServerList"`
+	// The ID of the resource group
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// Site ID
+	SiteId pulumi.IntInput `pulumi:"siteId"`
+	// Site Name
+	SiteName pulumi.StringInput `pulumi:"siteName"`
+	// The status of the resource
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetSitesSiteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSitesSite)(nil)).Elem()
+}
+
+func (i GetSitesSiteArgs) ToGetSitesSiteOutput() GetSitesSiteOutput {
+	return i.ToGetSitesSiteOutputWithContext(context.Background())
+}
+
+func (i GetSitesSiteArgs) ToGetSitesSiteOutputWithContext(ctx context.Context) GetSitesSiteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSitesSiteOutput)
+}
+
+// GetSitesSiteArrayInput is an input type that accepts GetSitesSiteArray and GetSitesSiteArrayOutput values.
+// You can construct a concrete instance of `GetSitesSiteArrayInput` via:
+//
+//	GetSitesSiteArray{ GetSitesSiteArgs{...} }
+type GetSitesSiteArrayInput interface {
+	pulumi.Input
+
+	ToGetSitesSiteArrayOutput() GetSitesSiteArrayOutput
+	ToGetSitesSiteArrayOutputWithContext(context.Context) GetSitesSiteArrayOutput
+}
+
+type GetSitesSiteArray []GetSitesSiteInput
+
+func (GetSitesSiteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSitesSite)(nil)).Elem()
+}
+
+func (i GetSitesSiteArray) ToGetSitesSiteArrayOutput() GetSitesSiteArrayOutput {
+	return i.ToGetSitesSiteArrayOutputWithContext(context.Background())
+}
+
+func (i GetSitesSiteArray) ToGetSitesSiteArrayOutputWithContext(ctx context.Context) GetSitesSiteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSitesSiteArrayOutput)
+}
+
+type GetSitesSiteOutput struct{ *pulumi.OutputState }
+
+func (GetSitesSiteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSitesSite)(nil)).Elem()
+}
+
+func (o GetSitesSiteOutput) ToGetSitesSiteOutput() GetSitesSiteOutput {
+	return o
+}
+
+func (o GetSitesSiteOutput) ToGetSitesSiteOutputWithContext(ctx context.Context) GetSitesSiteOutput {
+	return o
+}
+
+// Access type. Value:-**NS**: Managed access via NS.-**CNAME**: access through CNAME.
+func (o GetSitesSiteOutput) AccessType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSitesSite) string { return v.AccessType }).(pulumi.StringOutput)
+}
+
+// Acceleration area
+func (o GetSitesSiteOutput) Coverage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSitesSite) string { return v.Coverage }).(pulumi.StringOutput)
+}
+
+// Creation time
+func (o GetSitesSiteOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSitesSite) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetSitesSiteOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSitesSite) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The ID of the associated package instance.
+func (o GetSitesSiteOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSitesSite) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// Modification time
+func (o GetSitesSiteOutput) ModifyTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSitesSite) string { return v.ModifyTime }).(pulumi.StringOutput)
+}
+
+// Site Resolution Name Server List
+func (o GetSitesSiteOutput) NameServerList() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSitesSite) string { return v.NameServerList }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group
+func (o GetSitesSiteOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSitesSite) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// Site ID
+func (o GetSitesSiteOutput) SiteId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSitesSite) int { return v.SiteId }).(pulumi.IntOutput)
+}
+
+// Site Name
+func (o GetSitesSiteOutput) SiteName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSitesSite) string { return v.SiteName }).(pulumi.StringOutput)
+}
+
+// The status of the resource
+func (o GetSitesSiteOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSitesSite) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetSitesSiteArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSitesSiteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSitesSite)(nil)).Elem()
+}
+
+func (o GetSitesSiteArrayOutput) ToGetSitesSiteArrayOutput() GetSitesSiteArrayOutput {
+	return o
+}
+
+func (o GetSitesSiteArrayOutput) ToGetSitesSiteArrayOutputWithContext(ctx context.Context) GetSitesSiteArrayOutput {
+	return o
+}
+
+func (o GetSitesSiteArrayOutput) Index(i pulumi.IntInput) GetSitesSiteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSitesSite {
+		return vs[0].([]GetSitesSite)[vs[1].(int)]
+	}).(GetSitesSiteOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRequestHeaderModificationRuleRequestHeaderModificationInput)(nil)).Elem(), HttpRequestHeaderModificationRuleRequestHeaderModificationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRequestHeaderModificationRuleRequestHeaderModificationArrayInput)(nil)).Elem(), HttpRequestHeaderModificationRuleRequestHeaderModificationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpResponseHeaderModificationRuleResponseHeaderModificationInput)(nil)).Elem(), HttpResponseHeaderModificationRuleResponseHeaderModificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpResponseHeaderModificationRuleResponseHeaderModificationArrayInput)(nil)).Elem(), HttpResponseHeaderModificationRuleResponseHeaderModificationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OriginPoolOriginInput)(nil)).Elem(), OriginPoolOriginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OriginPoolOriginArrayInput)(nil)).Elem(), OriginPoolOriginArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OriginPoolOriginAuthConfInput)(nil)).Elem(), OriginPoolOriginAuthConfArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OriginPoolOriginAuthConfPtrInput)(nil)).Elem(), OriginPoolOriginAuthConfArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecordAuthConfInput)(nil)).Elem(), RecordAuthConfArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecordAuthConfPtrInput)(nil)).Elem(), RecordAuthConfArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecordDataInput)(nil)).Elem(), RecordDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecordDataPtrInput)(nil)).Elem(), RecordDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WaitingRoomHostNameAndPathInput)(nil)).Elem(), WaitingRoomHostNameAndPathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WaitingRoomHostNameAndPathArrayInput)(nil)).Elem(), WaitingRoomHostNameAndPathArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSitesSiteInput)(nil)).Elem(), GetSitesSiteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSitesSiteArrayInput)(nil)).Elem(), GetSitesSiteArray{})
 	pulumi.RegisterOutputType(HttpRequestHeaderModificationRuleRequestHeaderModificationOutput{})
 	pulumi.RegisterOutputType(HttpRequestHeaderModificationRuleRequestHeaderModificationArrayOutput{})
+	pulumi.RegisterOutputType(HttpResponseHeaderModificationRuleResponseHeaderModificationOutput{})
+	pulumi.RegisterOutputType(HttpResponseHeaderModificationRuleResponseHeaderModificationArrayOutput{})
+	pulumi.RegisterOutputType(OriginPoolOriginOutput{})
+	pulumi.RegisterOutputType(OriginPoolOriginArrayOutput{})
+	pulumi.RegisterOutputType(OriginPoolOriginAuthConfOutput{})
+	pulumi.RegisterOutputType(OriginPoolOriginAuthConfPtrOutput{})
 	pulumi.RegisterOutputType(RecordAuthConfOutput{})
 	pulumi.RegisterOutputType(RecordAuthConfPtrOutput{})
 	pulumi.RegisterOutputType(RecordDataOutput{})
 	pulumi.RegisterOutputType(RecordDataPtrOutput{})
+	pulumi.RegisterOutputType(WaitingRoomHostNameAndPathOutput{})
+	pulumi.RegisterOutputType(WaitingRoomHostNameAndPathArrayOutput{})
+	pulumi.RegisterOutputType(GetSitesSiteOutput{})
+	pulumi.RegisterOutputType(GetSitesSiteArrayOutput{})
 }

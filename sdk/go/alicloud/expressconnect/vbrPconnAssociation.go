@@ -67,7 +67,7 @@ import (
 //			_, err = expressconnect.NewVbrPconnAssociation(ctx, "example", &expressconnect.VbrPconnAssociationArgs{
 //				PeerGatewayIp:         pulumi.String("10.0.0.6"),
 //				LocalGatewayIp:        pulumi.String("10.0.0.5"),
-//				PhysicalConnectionId:  pulumi.String(example.Connections[2].Id),
+//				PhysicalConnectionId:  pulumi.String(example.Connections[1].Id),
 //				VbrId:                 _default.ID(),
 //				PeeringSubnetMask:     pulumi.String("255.255.255.252"),
 //				VlanId:                pulumi.Int(1122),

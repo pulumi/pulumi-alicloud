@@ -20,14 +20,16 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
     public static final CommonBandwithPackageState Empty = new CommonBandwithPackageState();
 
     /**
-     * The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s. Valid values: `1` to `1000`. Default value: `1`.
+     * The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+     * Valid values: `1` to `1000`. Default value: `1`.
      * 
      */
     @Import(name="bandwidth")
     private @Nullable Output<String> bandwidth;
 
     /**
-     * @return The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s. Valid values: `1` to `1000`. Default value: `1`.
+     * @return The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+     * Valid values: `1` to `1000`. Default value: `1`.
      * 
      */
     public Optional<Output<String>> bandwidth() {
@@ -35,14 +37,14 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The name of the Internet Shared Bandwidth instance. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+     * The description of the EIP bandwidth plan. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
      * 
      */
     @Import(name="bandwidthPackageName")
     private @Nullable Output<String> bandwidthPackageName;
 
     /**
-     * @return The name of the Internet Shared Bandwidth instance. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+     * @return The description of the EIP bandwidth plan. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
      * 
      */
     public Optional<Output<String>> bandwidthPackageName() {
@@ -80,14 +82,16 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The description of the Internet Shared Bandwidth instance. The description must be 2 to 256 characters in length and start with a letter. The description cannot start with `http://` or `https://`.
+     * The description of the Internet Shared Bandwidth instance.
+     * The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the Internet Shared Bandwidth instance. The description must be 2 to 256 characters in length and start with a letter. The description cannot start with `http://` or `https://`.
+     * @return The description of the Internet Shared Bandwidth instance.
+     * The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
      * 
      */
     public Optional<Output<String>> description() {
@@ -110,14 +114,24 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The billing method of the Internet Shared Bandwidth instance. Set the value to `PayByTraffic`, which specifies the pay-by-data-transfer billing method.
+     * Billing method of Internet Shared Bandwidth. Valid values:
+     * `PayByTraffic`: billed by primary traffic.
+     * 
+     * - `PayByBandwidth` (default): Billing by bandwidth.
+     * - `PayBy95`: Billed as Enhanced 95.
+     * - `PayByDominantTraffic`: billed by primary traffic.
      * 
      */
     @Import(name="internetChargeType")
     private @Nullable Output<String> internetChargeType;
 
     /**
-     * @return The billing method of the Internet Shared Bandwidth instance. Set the value to `PayByTraffic`, which specifies the pay-by-data-transfer billing method.
+     * @return Billing method of Internet Shared Bandwidth. Valid values:
+     * `PayByTraffic`: billed by primary traffic.
+     * 
+     * - `PayByBandwidth` (default): Billing by bandwidth.
+     * - `PayBy95`: Billed as Enhanced 95.
+     * - `PayByDominantTraffic`: billed by primary traffic.
      * 
      */
     public Optional<Output<String>> internetChargeType() {
@@ -126,10 +140,12 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
 
     /**
      * The line type. Valid values:
-     * - `BGP` All regions support BGP (Multi-ISP).
+     * 
+     * - `BGP` (default) All regions support BGP (Multi-ISP).
      * - `BGP_PRO` BGP (Multi-ISP) Pro lines are available in the China (Hong Kong), Singapore, Japan (Tokyo), Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions.
      * 
      * If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+     * 
      * - `ChinaTelecom`
      * - `ChinaUnicom`
      * - `ChinaMobile`
@@ -145,10 +161,12 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
 
     /**
      * @return The line type. Valid values:
-     * - `BGP` All regions support BGP (Multi-ISP).
+     * 
+     * - `BGP` (default) All regions support BGP (Multi-ISP).
      * - `BGP_PRO` BGP (Multi-ISP) Pro lines are available in the China (Hong Kong), Singapore, Japan (Tokyo), Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions.
      * 
      * If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+     * 
      * - `ChinaTelecom`
      * - `ChinaUnicom`
      * - `ChinaMobile`
@@ -343,7 +361,8 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param bandwidth The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s. Valid values: `1` to `1000`. Default value: `1`.
+         * @param bandwidth The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+         * Valid values: `1` to `1000`. Default value: `1`.
          * 
          * @return builder
          * 
@@ -354,7 +373,8 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param bandwidth The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s. Valid values: `1` to `1000`. Default value: `1`.
+         * @param bandwidth The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+         * Valid values: `1` to `1000`. Default value: `1`.
          * 
          * @return builder
          * 
@@ -364,7 +384,7 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param bandwidthPackageName The name of the Internet Shared Bandwidth instance. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+         * @param bandwidthPackageName The description of the EIP bandwidth plan. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -375,7 +395,7 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param bandwidthPackageName The name of the Internet Shared Bandwidth instance. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+         * @param bandwidthPackageName The description of the EIP bandwidth plan. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -427,7 +447,8 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param description The description of the Internet Shared Bandwidth instance. The description must be 2 to 256 characters in length and start with a letter. The description cannot start with `http://` or `https://`.
+         * @param description The description of the Internet Shared Bandwidth instance.
+         * The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -438,7 +459,8 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param description The description of the Internet Shared Bandwidth instance. The description must be 2 to 256 characters in length and start with a letter. The description cannot start with `http://` or `https://`.
+         * @param description The description of the Internet Shared Bandwidth instance.
+         * The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -469,7 +491,12 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param internetChargeType The billing method of the Internet Shared Bandwidth instance. Set the value to `PayByTraffic`, which specifies the pay-by-data-transfer billing method.
+         * @param internetChargeType Billing method of Internet Shared Bandwidth. Valid values:
+         * `PayByTraffic`: billed by primary traffic.
+         * 
+         * - `PayByBandwidth` (default): Billing by bandwidth.
+         * - `PayBy95`: Billed as Enhanced 95.
+         * - `PayByDominantTraffic`: billed by primary traffic.
          * 
          * @return builder
          * 
@@ -480,7 +507,12 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param internetChargeType The billing method of the Internet Shared Bandwidth instance. Set the value to `PayByTraffic`, which specifies the pay-by-data-transfer billing method.
+         * @param internetChargeType Billing method of Internet Shared Bandwidth. Valid values:
+         * `PayByTraffic`: billed by primary traffic.
+         * 
+         * - `PayByBandwidth` (default): Billing by bandwidth.
+         * - `PayBy95`: Billed as Enhanced 95.
+         * - `PayByDominantTraffic`: billed by primary traffic.
          * 
          * @return builder
          * 
@@ -491,10 +523,12 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
 
         /**
          * @param isp The line type. Valid values:
-         * - `BGP` All regions support BGP (Multi-ISP).
+         * 
+         * - `BGP` (default) All regions support BGP (Multi-ISP).
          * - `BGP_PRO` BGP (Multi-ISP) Pro lines are available in the China (Hong Kong), Singapore, Japan (Tokyo), Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions.
          * 
          * If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+         * 
          * - `ChinaTelecom`
          * - `ChinaUnicom`
          * - `ChinaMobile`
@@ -514,10 +548,12 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
 
         /**
          * @param isp The line type. Valid values:
-         * - `BGP` All regions support BGP (Multi-ISP).
+         * 
+         * - `BGP` (default) All regions support BGP (Multi-ISP).
          * - `BGP_PRO` BGP (Multi-ISP) Pro lines are available in the China (Hong Kong), Singapore, Japan (Tokyo), Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions.
          * 
          * If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+         * 
          * - `ChinaTelecom`
          * - `ChinaUnicom`
          * - `ChinaMobile`

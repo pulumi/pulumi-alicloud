@@ -31,7 +31,7 @@ public final class GetTrafficMirrorFiltersFilter {
      */
     private String trafficMirrorFilterId;
     /**
-     * @return The name of the filter.
+     * @return The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
      * 
      */
     private String trafficMirrorFilterName;
@@ -66,7 +66,7 @@ public final class GetTrafficMirrorFiltersFilter {
         return this.trafficMirrorFilterId;
     }
     /**
-     * @return The name of the filter.
+     * @return The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
      * 
      */
     public String trafficMirrorFilterName() {

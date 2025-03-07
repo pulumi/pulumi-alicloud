@@ -13,6 +13,181 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ListenerProxyProtocolConfig struct {
+	// Whether to enable carrying PrivateLinkEpId to backend servers through Proxy Protocol.
+	ProxyProtocolConfigPrivateLinkEpIdEnabled *bool `pulumi:"proxyProtocolConfigPrivateLinkEpIdEnabled"`
+	// Whether to enable carrying PrivateLinkEpsId to backend servers through the Proxy Protocol.
+	ProxyProtocolConfigPrivateLinkEpsIdEnabled *bool `pulumi:"proxyProtocolConfigPrivateLinkEpsIdEnabled"`
+	// Whether to enable carrying VpcId to backend servers through Proxy Protocol.
+	ProxyProtocolConfigVpcIdEnabled *bool `pulumi:"proxyProtocolConfigVpcIdEnabled"`
+}
+
+// ListenerProxyProtocolConfigInput is an input type that accepts ListenerProxyProtocolConfigArgs and ListenerProxyProtocolConfigOutput values.
+// You can construct a concrete instance of `ListenerProxyProtocolConfigInput` via:
+//
+//	ListenerProxyProtocolConfigArgs{...}
+type ListenerProxyProtocolConfigInput interface {
+	pulumi.Input
+
+	ToListenerProxyProtocolConfigOutput() ListenerProxyProtocolConfigOutput
+	ToListenerProxyProtocolConfigOutputWithContext(context.Context) ListenerProxyProtocolConfigOutput
+}
+
+type ListenerProxyProtocolConfigArgs struct {
+	// Whether to enable carrying PrivateLinkEpId to backend servers through Proxy Protocol.
+	ProxyProtocolConfigPrivateLinkEpIdEnabled pulumi.BoolPtrInput `pulumi:"proxyProtocolConfigPrivateLinkEpIdEnabled"`
+	// Whether to enable carrying PrivateLinkEpsId to backend servers through the Proxy Protocol.
+	ProxyProtocolConfigPrivateLinkEpsIdEnabled pulumi.BoolPtrInput `pulumi:"proxyProtocolConfigPrivateLinkEpsIdEnabled"`
+	// Whether to enable carrying VpcId to backend servers through Proxy Protocol.
+	ProxyProtocolConfigVpcIdEnabled pulumi.BoolPtrInput `pulumi:"proxyProtocolConfigVpcIdEnabled"`
+}
+
+func (ListenerProxyProtocolConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerProxyProtocolConfig)(nil)).Elem()
+}
+
+func (i ListenerProxyProtocolConfigArgs) ToListenerProxyProtocolConfigOutput() ListenerProxyProtocolConfigOutput {
+	return i.ToListenerProxyProtocolConfigOutputWithContext(context.Background())
+}
+
+func (i ListenerProxyProtocolConfigArgs) ToListenerProxyProtocolConfigOutputWithContext(ctx context.Context) ListenerProxyProtocolConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerProxyProtocolConfigOutput)
+}
+
+func (i ListenerProxyProtocolConfigArgs) ToListenerProxyProtocolConfigPtrOutput() ListenerProxyProtocolConfigPtrOutput {
+	return i.ToListenerProxyProtocolConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ListenerProxyProtocolConfigArgs) ToListenerProxyProtocolConfigPtrOutputWithContext(ctx context.Context) ListenerProxyProtocolConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerProxyProtocolConfigOutput).ToListenerProxyProtocolConfigPtrOutputWithContext(ctx)
+}
+
+// ListenerProxyProtocolConfigPtrInput is an input type that accepts ListenerProxyProtocolConfigArgs, ListenerProxyProtocolConfigPtr and ListenerProxyProtocolConfigPtrOutput values.
+// You can construct a concrete instance of `ListenerProxyProtocolConfigPtrInput` via:
+//
+//	        ListenerProxyProtocolConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ListenerProxyProtocolConfigPtrInput interface {
+	pulumi.Input
+
+	ToListenerProxyProtocolConfigPtrOutput() ListenerProxyProtocolConfigPtrOutput
+	ToListenerProxyProtocolConfigPtrOutputWithContext(context.Context) ListenerProxyProtocolConfigPtrOutput
+}
+
+type listenerProxyProtocolConfigPtrType ListenerProxyProtocolConfigArgs
+
+func ListenerProxyProtocolConfigPtr(v *ListenerProxyProtocolConfigArgs) ListenerProxyProtocolConfigPtrInput {
+	return (*listenerProxyProtocolConfigPtrType)(v)
+}
+
+func (*listenerProxyProtocolConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListenerProxyProtocolConfig)(nil)).Elem()
+}
+
+func (i *listenerProxyProtocolConfigPtrType) ToListenerProxyProtocolConfigPtrOutput() ListenerProxyProtocolConfigPtrOutput {
+	return i.ToListenerProxyProtocolConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *listenerProxyProtocolConfigPtrType) ToListenerProxyProtocolConfigPtrOutputWithContext(ctx context.Context) ListenerProxyProtocolConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerProxyProtocolConfigPtrOutput)
+}
+
+type ListenerProxyProtocolConfigOutput struct{ *pulumi.OutputState }
+
+func (ListenerProxyProtocolConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerProxyProtocolConfig)(nil)).Elem()
+}
+
+func (o ListenerProxyProtocolConfigOutput) ToListenerProxyProtocolConfigOutput() ListenerProxyProtocolConfigOutput {
+	return o
+}
+
+func (o ListenerProxyProtocolConfigOutput) ToListenerProxyProtocolConfigOutputWithContext(ctx context.Context) ListenerProxyProtocolConfigOutput {
+	return o
+}
+
+func (o ListenerProxyProtocolConfigOutput) ToListenerProxyProtocolConfigPtrOutput() ListenerProxyProtocolConfigPtrOutput {
+	return o.ToListenerProxyProtocolConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ListenerProxyProtocolConfigOutput) ToListenerProxyProtocolConfigPtrOutputWithContext(ctx context.Context) ListenerProxyProtocolConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListenerProxyProtocolConfig) *ListenerProxyProtocolConfig {
+		return &v
+	}).(ListenerProxyProtocolConfigPtrOutput)
+}
+
+// Whether to enable carrying PrivateLinkEpId to backend servers through Proxy Protocol.
+func (o ListenerProxyProtocolConfigOutput) ProxyProtocolConfigPrivateLinkEpIdEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListenerProxyProtocolConfig) *bool { return v.ProxyProtocolConfigPrivateLinkEpIdEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable carrying PrivateLinkEpsId to backend servers through the Proxy Protocol.
+func (o ListenerProxyProtocolConfigOutput) ProxyProtocolConfigPrivateLinkEpsIdEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListenerProxyProtocolConfig) *bool { return v.ProxyProtocolConfigPrivateLinkEpsIdEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable carrying VpcId to backend servers through Proxy Protocol.
+func (o ListenerProxyProtocolConfigOutput) ProxyProtocolConfigVpcIdEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListenerProxyProtocolConfig) *bool { return v.ProxyProtocolConfigVpcIdEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type ListenerProxyProtocolConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ListenerProxyProtocolConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListenerProxyProtocolConfig)(nil)).Elem()
+}
+
+func (o ListenerProxyProtocolConfigPtrOutput) ToListenerProxyProtocolConfigPtrOutput() ListenerProxyProtocolConfigPtrOutput {
+	return o
+}
+
+func (o ListenerProxyProtocolConfigPtrOutput) ToListenerProxyProtocolConfigPtrOutputWithContext(ctx context.Context) ListenerProxyProtocolConfigPtrOutput {
+	return o
+}
+
+func (o ListenerProxyProtocolConfigPtrOutput) Elem() ListenerProxyProtocolConfigOutput {
+	return o.ApplyT(func(v *ListenerProxyProtocolConfig) ListenerProxyProtocolConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ListenerProxyProtocolConfig
+		return ret
+	}).(ListenerProxyProtocolConfigOutput)
+}
+
+// Whether to enable carrying PrivateLinkEpId to backend servers through Proxy Protocol.
+func (o ListenerProxyProtocolConfigPtrOutput) ProxyProtocolConfigPrivateLinkEpIdEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListenerProxyProtocolConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyProtocolConfigPrivateLinkEpIdEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable carrying PrivateLinkEpsId to backend servers through the Proxy Protocol.
+func (o ListenerProxyProtocolConfigPtrOutput) ProxyProtocolConfigPrivateLinkEpsIdEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListenerProxyProtocolConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyProtocolConfigPrivateLinkEpsIdEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable carrying VpcId to backend servers through Proxy Protocol.
+func (o ListenerProxyProtocolConfigPtrOutput) ProxyProtocolConfigVpcIdEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListenerProxyProtocolConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyProtocolConfigVpcIdEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type LoadBalancerDeletionProtectionConfig struct {
 	// Specifies whether to enable deletion protection. Valid values:
 	Enabled *bool `pulumi:"enabled"`
@@ -563,9 +738,7 @@ func (o LoadBalancerZoneMappingArrayOutput) Index(i pulumi.IntInput) LoadBalance
 
 type ServerGroupHealthCheck struct {
 	// The port that you want to use for health checks on backend servers.
-	//
 	// Valid values: `0` to `65535`.
-	//
 	// Default value: `0`. If you set the value to 0, the port of the backend server is used for health checks.
 	HealthCheckConnectPort *int `pulumi:"healthCheckConnectPort"`
 	// The maximum timeout period of a health check. Unit: seconds. Valid values: `1` to `300`. Default value: `5`.
@@ -575,16 +748,18 @@ type ServerGroupHealthCheck struct {
 	HealthCheckDomain *string `pulumi:"healthCheckDomain"`
 	// Specifies whether to enable the health check feature. Valid values:
 	HealthCheckEnabled *bool `pulumi:"healthCheckEnabled"`
+	// health check response character string. The value contains a maximum of 512 characters
+	HealthCheckExp *string `pulumi:"healthCheckExp"`
 	// The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\_2xx` (default), `http\_3xx`, `http\_4xx`, and `http\_5xx`.
 	//
 	// > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
 	HealthCheckHttpCodes []string `pulumi:"healthCheckHttpCodes"`
 	// The interval at which health checks are performed. Unit: seconds.
-	//
 	// Valid values: `5` to `50`.
-	//
 	// Default value: `10`.
 	HealthCheckInterval *int `pulumi:"healthCheckInterval"`
+	// UDP healthy check request string, the value is a character string of 512 characters
+	HealthCheckReq *string `pulumi:"healthCheckReq"`
 	// The protocol that you want to use for health checks. Valid values: `TCP` (default) and `HTTP`.
 	HealthCheckType *string `pulumi:"healthCheckType"`
 	// The path to which health check requests are sent.
@@ -594,9 +769,7 @@ type ServerGroupHealthCheck struct {
 	// > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
 	HealthCheckUrl *string `pulumi:"healthCheckUrl"`
 	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
-	//
 	// Valid values: `2` to `10`.
-	//
 	// Default value: `2`.
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
 	// The HTTP method that is used for health checks. Valid values: `GET` (default) and `HEAD`.
@@ -604,9 +777,7 @@ type ServerGroupHealthCheck struct {
 	// > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
 	HttpCheckMethod *string `pulumi:"httpCheckMethod"`
 	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
-	//
 	// Valid values: `2` to `10`.
-	//
 	// Default value: `2`.
 	UnhealthyThreshold *int `pulumi:"unhealthyThreshold"`
 }
@@ -624,9 +795,7 @@ type ServerGroupHealthCheckInput interface {
 
 type ServerGroupHealthCheckArgs struct {
 	// The port that you want to use for health checks on backend servers.
-	//
 	// Valid values: `0` to `65535`.
-	//
 	// Default value: `0`. If you set the value to 0, the port of the backend server is used for health checks.
 	HealthCheckConnectPort pulumi.IntPtrInput `pulumi:"healthCheckConnectPort"`
 	// The maximum timeout period of a health check. Unit: seconds. Valid values: `1` to `300`. Default value: `5`.
@@ -636,16 +805,18 @@ type ServerGroupHealthCheckArgs struct {
 	HealthCheckDomain pulumi.StringPtrInput `pulumi:"healthCheckDomain"`
 	// Specifies whether to enable the health check feature. Valid values:
 	HealthCheckEnabled pulumi.BoolPtrInput `pulumi:"healthCheckEnabled"`
+	// health check response character string. The value contains a maximum of 512 characters
+	HealthCheckExp pulumi.StringPtrInput `pulumi:"healthCheckExp"`
 	// The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\_2xx` (default), `http\_3xx`, `http\_4xx`, and `http\_5xx`.
 	//
 	// > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
 	HealthCheckHttpCodes pulumi.StringArrayInput `pulumi:"healthCheckHttpCodes"`
 	// The interval at which health checks are performed. Unit: seconds.
-	//
 	// Valid values: `5` to `50`.
-	//
 	// Default value: `10`.
 	HealthCheckInterval pulumi.IntPtrInput `pulumi:"healthCheckInterval"`
+	// UDP healthy check request string, the value is a character string of 512 characters
+	HealthCheckReq pulumi.StringPtrInput `pulumi:"healthCheckReq"`
 	// The protocol that you want to use for health checks. Valid values: `TCP` (default) and `HTTP`.
 	HealthCheckType pulumi.StringPtrInput `pulumi:"healthCheckType"`
 	// The path to which health check requests are sent.
@@ -655,9 +826,7 @@ type ServerGroupHealthCheckArgs struct {
 	// > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
 	HealthCheckUrl pulumi.StringPtrInput `pulumi:"healthCheckUrl"`
 	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
-	//
 	// Valid values: `2` to `10`.
-	//
 	// Default value: `2`.
 	HealthyThreshold pulumi.IntPtrInput `pulumi:"healthyThreshold"`
 	// The HTTP method that is used for health checks. Valid values: `GET` (default) and `HEAD`.
@@ -665,9 +834,7 @@ type ServerGroupHealthCheckArgs struct {
 	// > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
 	HttpCheckMethod pulumi.StringPtrInput `pulumi:"httpCheckMethod"`
 	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
-	//
 	// Valid values: `2` to `10`.
-	//
 	// Default value: `2`.
 	UnhealthyThreshold pulumi.IntPtrInput `pulumi:"unhealthyThreshold"`
 }
@@ -750,9 +917,7 @@ func (o ServerGroupHealthCheckOutput) ToServerGroupHealthCheckPtrOutputWithConte
 }
 
 // The port that you want to use for health checks on backend servers.
-//
 // Valid values: `0` to `65535`.
-//
 // Default value: `0`. If you set the value to 0, the port of the backend server is used for health checks.
 func (o ServerGroupHealthCheckOutput) HealthCheckConnectPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheck) *int { return v.HealthCheckConnectPort }).(pulumi.IntPtrOutput)
@@ -774,6 +939,11 @@ func (o ServerGroupHealthCheckOutput) HealthCheckEnabled() pulumi.BoolPtrOutput 
 	return o.ApplyT(func(v ServerGroupHealthCheck) *bool { return v.HealthCheckEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// health check response character string. The value contains a maximum of 512 characters
+func (o ServerGroupHealthCheckOutput) HealthCheckExp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerGroupHealthCheck) *string { return v.HealthCheckExp }).(pulumi.StringPtrOutput)
+}
+
 // The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\_2xx` (default), `http\_3xx`, `http\_4xx`, and `http\_5xx`.
 //
 // > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
@@ -782,12 +952,15 @@ func (o ServerGroupHealthCheckOutput) HealthCheckHttpCodes() pulumi.StringArrayO
 }
 
 // The interval at which health checks are performed. Unit: seconds.
-//
 // Valid values: `5` to `50`.
-//
 // Default value: `10`.
 func (o ServerGroupHealthCheckOutput) HealthCheckInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheck) *int { return v.HealthCheckInterval }).(pulumi.IntPtrOutput)
+}
+
+// UDP healthy check request string, the value is a character string of 512 characters
+func (o ServerGroupHealthCheckOutput) HealthCheckReq() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerGroupHealthCheck) *string { return v.HealthCheckReq }).(pulumi.StringPtrOutput)
 }
 
 // The protocol that you want to use for health checks. Valid values: `TCP` (default) and `HTTP`.
@@ -805,9 +978,7 @@ func (o ServerGroupHealthCheckOutput) HealthCheckUrl() pulumi.StringPtrOutput {
 }
 
 // The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
-//
 // Valid values: `2` to `10`.
-//
 // Default value: `2`.
 func (o ServerGroupHealthCheckOutput) HealthyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheck) *int { return v.HealthyThreshold }).(pulumi.IntPtrOutput)
@@ -821,9 +992,7 @@ func (o ServerGroupHealthCheckOutput) HttpCheckMethod() pulumi.StringPtrOutput {
 }
 
 // The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
-//
 // Valid values: `2` to `10`.
-//
 // Default value: `2`.
 func (o ServerGroupHealthCheckOutput) UnhealthyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheck) *int { return v.UnhealthyThreshold }).(pulumi.IntPtrOutput)
@@ -854,9 +1023,7 @@ func (o ServerGroupHealthCheckPtrOutput) Elem() ServerGroupHealthCheckOutput {
 }
 
 // The port that you want to use for health checks on backend servers.
-//
 // Valid values: `0` to `65535`.
-//
 // Default value: `0`. If you set the value to 0, the port of the backend server is used for health checks.
 func (o ServerGroupHealthCheckPtrOutput) HealthCheckConnectPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheck) *int {
@@ -898,6 +1065,16 @@ func (o ServerGroupHealthCheckPtrOutput) HealthCheckEnabled() pulumi.BoolPtrOutp
 	}).(pulumi.BoolPtrOutput)
 }
 
+// health check response character string. The value contains a maximum of 512 characters
+func (o ServerGroupHealthCheckPtrOutput) HealthCheckExp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerGroupHealthCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HealthCheckExp
+	}).(pulumi.StringPtrOutput)
+}
+
 // The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\_2xx` (default), `http\_3xx`, `http\_4xx`, and `http\_5xx`.
 //
 // > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
@@ -911,9 +1088,7 @@ func (o ServerGroupHealthCheckPtrOutput) HealthCheckHttpCodes() pulumi.StringArr
 }
 
 // The interval at which health checks are performed. Unit: seconds.
-//
 // Valid values: `5` to `50`.
-//
 // Default value: `10`.
 func (o ServerGroupHealthCheckPtrOutput) HealthCheckInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheck) *int {
@@ -922,6 +1097,16 @@ func (o ServerGroupHealthCheckPtrOutput) HealthCheckInterval() pulumi.IntPtrOutp
 		}
 		return v.HealthCheckInterval
 	}).(pulumi.IntPtrOutput)
+}
+
+// UDP healthy check request string, the value is a character string of 512 characters
+func (o ServerGroupHealthCheckPtrOutput) HealthCheckReq() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerGroupHealthCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HealthCheckReq
+	}).(pulumi.StringPtrOutput)
 }
 
 // The protocol that you want to use for health checks. Valid values: `TCP` (default) and `HTTP`.
@@ -949,9 +1134,7 @@ func (o ServerGroupHealthCheckPtrOutput) HealthCheckUrl() pulumi.StringPtrOutput
 }
 
 // The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
-//
 // Valid values: `2` to `10`.
-//
 // Default value: `2`.
 func (o ServerGroupHealthCheckPtrOutput) HealthyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheck) *int {
@@ -975,9 +1158,7 @@ func (o ServerGroupHealthCheckPtrOutput) HttpCheckMethod() pulumi.StringPtrOutpu
 }
 
 // The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
-//
 // Valid values: `2` to `10`.
-//
 // Default value: `2`.
 func (o ServerGroupHealthCheckPtrOutput) UnhealthyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheck) *int {
@@ -2645,6 +2826,8 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerProxyProtocolConfigInput)(nil)).Elem(), ListenerProxyProtocolConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerProxyProtocolConfigPtrInput)(nil)).Elem(), ListenerProxyProtocolConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerDeletionProtectionConfigInput)(nil)).Elem(), LoadBalancerDeletionProtectionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerDeletionProtectionConfigPtrInput)(nil)).Elem(), LoadBalancerDeletionProtectionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerModificationProtectionConfigInput)(nil)).Elem(), LoadBalancerModificationProtectionConfigArgs{})
@@ -2671,6 +2854,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerGroupsGroupHealthCheckArrayInput)(nil)).Elem(), GetServerGroupsGroupHealthCheckArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
+	pulumi.RegisterOutputType(ListenerProxyProtocolConfigOutput{})
+	pulumi.RegisterOutputType(ListenerProxyProtocolConfigPtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerDeletionProtectionConfigOutput{})
 	pulumi.RegisterOutputType(LoadBalancerDeletionProtectionConfigPtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerModificationProtectionConfigOutput{})

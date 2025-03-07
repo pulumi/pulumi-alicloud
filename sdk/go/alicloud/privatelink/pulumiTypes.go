@@ -710,6 +710,8 @@ type GetVpcEndpointsEndpoint struct {
 	ServiceName string `pulumi:"serviceName"`
 	// The status of Vpc Endpoint.
 	Status string `pulumi:"status"`
+	// Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+	Tags map[string]string `pulumi:"tags"`
 	// The name of Vpc Endpoint.
 	VpcEndpointName string `pulumi:"vpcEndpointName"`
 	// The private network to which the terminal node belongs..
@@ -750,6 +752,8 @@ type GetVpcEndpointsEndpointArgs struct {
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 	// The status of Vpc Endpoint.
 	Status pulumi.StringInput `pulumi:"status"`
+	// Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The name of Vpc Endpoint.
 	VpcEndpointName pulumi.StringInput `pulumi:"vpcEndpointName"`
 	// The private network to which the terminal node belongs..
@@ -860,6 +864,11 @@ func (o GetVpcEndpointsEndpointOutput) ServiceName() pulumi.StringOutput {
 // The status of Vpc Endpoint.
 func (o GetVpcEndpointsEndpointOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcEndpointsEndpoint) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+func (o GetVpcEndpointsEndpointOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetVpcEndpointsEndpoint) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The name of Vpc Endpoint.

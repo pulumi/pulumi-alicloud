@@ -28,7 +28,7 @@ public final class GetGatewayVpnAttachmentsAttachmentHealthCheckConfig {
      */
     private Integer interval;
     /**
-     * @return Whether to revoke the published route when the health check fails.
+     * @return (Optional) Whether to revoke the published route when the health check fails.
      * 
      */
     private String policy;
@@ -43,7 +43,7 @@ public final class GetGatewayVpnAttachmentsAttachmentHealthCheckConfig {
      */
     private String sip;
     /**
-     * @return The status of the health check.
+     * @return The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
      * 
      */
     private String status;
@@ -71,7 +71,7 @@ public final class GetGatewayVpnAttachmentsAttachmentHealthCheckConfig {
         return this.interval;
     }
     /**
-     * @return Whether to revoke the published route when the health check fails.
+     * @return (Optional) Whether to revoke the published route when the health check fails.
      * 
      */
     public String policy() {
@@ -92,7 +92,7 @@ public final class GetGatewayVpnAttachmentsAttachmentHealthCheckConfig {
         return this.sip;
     }
     /**
-     * @return The status of the health check.
+     * @return The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
      * 
      */
     public String status() {

@@ -31,22 +31,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := ga.GetBasicAccelerators(ctx, &ga.GetBasicAcceleratorsArgs{
-//				Ids: []string{
-//					"example_id",
-//				},
+//			_default, err := ga.GetBasicAccelerators(ctx, &ga.GetBasicAcceleratorsArgs{
+//				Status: pulumi.StringRef("active"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("gaBasicAcceleratorId1", ids.Accelerators[0].Id)
-//			nameRegex, err := ga.GetBasicAccelerators(ctx, &ga.GetBasicAcceleratorsArgs{
-//				NameRegex: pulumi.StringRef("tf-example"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("gaBasicAcceleratorId2", nameRegex.Accelerators[0].Id)
+//			ctx.Export("gaBasicAcceleratorId1", _default.Accelerators[0].Id)
 //			return nil
 //		})
 //	}
@@ -66,6 +57,11 @@ func GetBasicAccelerators(ctx *pulumi.Context, args *GetBasicAcceleratorsArgs, o
 type GetBasicAcceleratorsArgs struct {
 	// The ID of the Global Accelerator Basic Accelerator instance.
 	AcceleratorId *string `pulumi:"acceleratorId"`
+	// The bandwidth billing method. Valid values:
+	// - `BandwidthPackage`: billed based on bandwidth plans.
+	// - `CDT`: billed through Cloud Data Transfer (CDT) and based on data transfer.
+	// - `CDT95`: billed through CDT and based on the 95th percentile bandwidth. This bandwidth billing method is available only for users that are included in the whitelist.
+	BandwidthBillingType *string `pulumi:"bandwidthBillingType"`
 	// A list of Global Accelerator Basic Accelerator IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Global Accelerator Basic Accelerator name.
@@ -83,6 +79,8 @@ type GetBasicAcceleratorsResult struct {
 	AcceleratorId *string `pulumi:"acceleratorId"`
 	// A list of Global Accelerator Basic Accelerators. Each element contains the following attributes:
 	Accelerators []GetBasicAcceleratorsAccelerator `pulumi:"accelerators"`
+	// The bandwidth billing method.
+	BandwidthBillingType *string `pulumi:"bandwidthBillingType"`
 	// The provider-assigned unique ID for this managed resource.
 	Id        string   `pulumi:"id"`
 	Ids       []string `pulumi:"ids"`
@@ -109,6 +107,11 @@ func GetBasicAcceleratorsOutput(ctx *pulumi.Context, args GetBasicAcceleratorsOu
 type GetBasicAcceleratorsOutputArgs struct {
 	// The ID of the Global Accelerator Basic Accelerator instance.
 	AcceleratorId pulumi.StringPtrInput `pulumi:"acceleratorId"`
+	// The bandwidth billing method. Valid values:
+	// - `BandwidthPackage`: billed based on bandwidth plans.
+	// - `CDT`: billed through Cloud Data Transfer (CDT) and based on data transfer.
+	// - `CDT95`: billed through CDT and based on the 95th percentile bandwidth. This bandwidth billing method is available only for users that are included in the whitelist.
+	BandwidthBillingType pulumi.StringPtrInput `pulumi:"bandwidthBillingType"`
 	// A list of Global Accelerator Basic Accelerator IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Global Accelerator Basic Accelerator name.
@@ -147,6 +150,11 @@ func (o GetBasicAcceleratorsResultOutput) AcceleratorId() pulumi.StringPtrOutput
 // A list of Global Accelerator Basic Accelerators. Each element contains the following attributes:
 func (o GetBasicAcceleratorsResultOutput) Accelerators() GetBasicAcceleratorsAcceleratorArrayOutput {
 	return o.ApplyT(func(v GetBasicAcceleratorsResult) []GetBasicAcceleratorsAccelerator { return v.Accelerators }).(GetBasicAcceleratorsAcceleratorArrayOutput)
+}
+
+// The bandwidth billing method.
+func (o GetBasicAcceleratorsResultOutput) BandwidthBillingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetBasicAcceleratorsResult) *string { return v.BandwidthBillingType }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

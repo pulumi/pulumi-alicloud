@@ -7,6 +7,7 @@ import com.pulumi.alicloud.ackone.inputs.ClusterNetworkArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,6 +17,21 @@ import javax.annotation.Nullable;
 public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ClusterArgs Empty = new ClusterArgs();
+
+    /**
+     * (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is &#39;Default&#39;. It has to be false when cluster is deleted.
+     * 
+     */
+    @Import(name="argocdEnabled")
+    private @Nullable Output<Boolean> argocdEnabled;
+
+    /**
+     * @return (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is &#39;Default&#39;. It has to be false when cluster is deleted.
+     * 
+     */
+    public Optional<Output<Boolean>> argocdEnabled() {
+        return Optional.ofNullable(this.argocdEnabled);
+    }
 
     /**
      * Cluster name.
@@ -50,12 +66,16 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Cluster attributes. Valid values: &#39;Default&#39;, &#39;XFlow&#39;.
      * 
+     * **Note**: When profile is Default, vswitches might not be deleted when cluster is deleted because there are some remaining resources in the vswitches. We are still fixing this problem.
+     * 
      */
     @Import(name="profile")
     private @Nullable Output<String> profile;
 
     /**
      * @return Cluster attributes. Valid values: &#39;Default&#39;, &#39;XFlow&#39;.
+     * 
+     * **Note**: When profile is Default, vswitches might not be deleted when cluster is deleted because there are some remaining resources in the vswitches. We are still fixing this problem.
      * 
      */
     public Optional<Output<String>> profile() {
@@ -65,6 +85,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     private ClusterArgs() {}
 
     private ClusterArgs(ClusterArgs $) {
+        this.argocdEnabled = $.argocdEnabled;
         this.clusterName = $.clusterName;
         this.network = $.network;
         this.profile = $.profile;
@@ -86,6 +107,27 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ClusterArgs defaults) {
             $ = new ClusterArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param argocdEnabled (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is &#39;Default&#39;. It has to be false when cluster is deleted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder argocdEnabled(@Nullable Output<Boolean> argocdEnabled) {
+            $.argocdEnabled = argocdEnabled;
+            return this;
+        }
+
+        /**
+         * @param argocdEnabled (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is &#39;Default&#39;. It has to be false when cluster is deleted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder argocdEnabled(Boolean argocdEnabled) {
+            return argocdEnabled(Output.of(argocdEnabled));
         }
 
         /**
@@ -133,6 +175,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param profile Cluster attributes. Valid values: &#39;Default&#39;, &#39;XFlow&#39;.
          * 
+         * **Note**: When profile is Default, vswitches might not be deleted when cluster is deleted because there are some remaining resources in the vswitches. We are still fixing this problem.
+         * 
          * @return builder
          * 
          */
@@ -143,6 +187,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param profile Cluster attributes. Valid values: &#39;Default&#39;, &#39;XFlow&#39;.
+         * 
+         * **Note**: When profile is Default, vswitches might not be deleted when cluster is deleted because there are some remaining resources in the vswitches. We are still fixing this problem.
          * 
          * @return builder
          * 

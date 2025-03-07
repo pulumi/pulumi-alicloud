@@ -115,6 +115,21 @@ public final class GetGatewaysPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
+     * Indicates whether the SSL-VPN feature is enabled. Valid value is `enable`, `disable`.
+     * 
+     */
+    @Import(name="sslVpn")
+    private @Nullable String sslVpn;
+
+    /**
+     * @return Indicates whether the SSL-VPN feature is enabled. Valid value is `enable`, `disable`.
+     * 
+     */
+    public Optional<String> sslVpn() {
+        return Optional.ofNullable(this.sslVpn);
+    }
+
+    /**
      * Limit search to specific status - valid value is &#34;Init&#34;, &#34;Provisioning&#34;, &#34;Active&#34;, &#34;Updating&#34;, &#34;Deleting&#34;.
      * 
      */
@@ -153,6 +168,7 @@ public final class GetGatewaysPlainArgs extends com.pulumi.resources.InvokeArgs 
         this.includeReservationData = $.includeReservationData;
         this.nameRegex = $.nameRegex;
         this.outputFile = $.outputFile;
+        this.sslVpn = $.sslVpn;
         this.status = $.status;
         this.vpcId = $.vpcId;
     }
@@ -252,6 +268,17 @@ public final class GetGatewaysPlainArgs extends com.pulumi.resources.InvokeArgs 
          */
         public Builder outputFile(@Nullable String outputFile) {
             $.outputFile = outputFile;
+            return this;
+        }
+
+        /**
+         * @param sslVpn Indicates whether the SSL-VPN feature is enabled. Valid value is `enable`, `disable`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslVpn(@Nullable String sslVpn) {
+            $.sslVpn = sslVpn;
             return this;
         }
 

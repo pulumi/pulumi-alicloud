@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
 /**
  * ## Import
  * 
- * CBWP Common Bandwidth Package can be imported using the id, e.g.
+ * EIP Bandwidth Plan (CBWP) Common Bandwidth Package can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:vpc/commonBandwithPackage:CommonBandwithPackage example &lt;id&gt;
@@ -31,28 +31,30 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpc/commonBandwithPackage:CommonBandwithPackage")
 public class CommonBandwithPackage extends com.pulumi.resources.CustomResource {
     /**
-     * The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s. Valid values: `1` to `1000`. Default value: `1`.
+     * The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+     * Valid values: `1` to `1000`. Default value: `1`.
      * 
      */
     @Export(name="bandwidth", refs={String.class}, tree="[0]")
     private Output<String> bandwidth;
 
     /**
-     * @return The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s. Valid values: `1` to `1000`. Default value: `1`.
+     * @return The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+     * Valid values: `1` to `1000`. Default value: `1`.
      * 
      */
     public Output<String> bandwidth() {
         return this.bandwidth;
     }
     /**
-     * The name of the Internet Shared Bandwidth instance. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+     * The description of the EIP bandwidth plan. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
      * 
      */
     @Export(name="bandwidthPackageName", refs={String.class}, tree="[0]")
     private Output<String> bandwidthPackageName;
 
     /**
-     * @return The name of the Internet Shared Bandwidth instance. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+     * @return The description of the EIP bandwidth plan. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
      * 
      */
     public Output<String> bandwidthPackageName() {
@@ -87,14 +89,16 @@ public class CommonBandwithPackage extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.deletionProtection);
     }
     /**
-     * The description of the Internet Shared Bandwidth instance. The description must be 2 to 256 characters in length and start with a letter. The description cannot start with `http://` or `https://`.
+     * The description of the Internet Shared Bandwidth instance.
+     * The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the Internet Shared Bandwidth instance. The description must be 2 to 256 characters in length and start with a letter. The description cannot start with `http://` or `https://`.
+     * @return The description of the Internet Shared Bandwidth instance.
+     * The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
      * 
      */
     public Output<Optional<String>> description() {
@@ -115,14 +119,24 @@ public class CommonBandwithPackage extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.force);
     }
     /**
-     * The billing method of the Internet Shared Bandwidth instance. Set the value to `PayByTraffic`, which specifies the pay-by-data-transfer billing method.
+     * Billing method of Internet Shared Bandwidth. Valid values:
+     * `PayByTraffic`: billed by primary traffic.
+     * 
+     * - `PayByBandwidth` (default): Billing by bandwidth.
+     * - `PayBy95`: Billed as Enhanced 95.
+     * - `PayByDominantTraffic`: billed by primary traffic.
      * 
      */
     @Export(name="internetChargeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> internetChargeType;
 
     /**
-     * @return The billing method of the Internet Shared Bandwidth instance. Set the value to `PayByTraffic`, which specifies the pay-by-data-transfer billing method.
+     * @return Billing method of Internet Shared Bandwidth. Valid values:
+     * `PayByTraffic`: billed by primary traffic.
+     * 
+     * - `PayByBandwidth` (default): Billing by bandwidth.
+     * - `PayBy95`: Billed as Enhanced 95.
+     * - `PayByDominantTraffic`: billed by primary traffic.
      * 
      */
     public Output<Optional<String>> internetChargeType() {
@@ -130,10 +144,12 @@ public class CommonBandwithPackage extends com.pulumi.resources.CustomResource {
     }
     /**
      * The line type. Valid values:
-     * - `BGP` All regions support BGP (Multi-ISP).
+     * 
+     * - `BGP` (default) All regions support BGP (Multi-ISP).
      * - `BGP_PRO` BGP (Multi-ISP) Pro lines are available in the China (Hong Kong), Singapore, Japan (Tokyo), Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions.
      * 
      * If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+     * 
      * - `ChinaTelecom`
      * - `ChinaUnicom`
      * - `ChinaMobile`
@@ -149,10 +165,12 @@ public class CommonBandwithPackage extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The line type. Valid values:
-     * - `BGP` All regions support BGP (Multi-ISP).
+     * 
+     * - `BGP` (default) All regions support BGP (Multi-ISP).
      * - `BGP_PRO` BGP (Multi-ISP) Pro lines are available in the China (Hong Kong), Singapore, Japan (Tokyo), Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions.
      * 
      * If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+     * 
      * - `ChinaTelecom`
      * - `ChinaUnicom`
      * - `ChinaMobile`

@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * 
  * IP Address Management Pool.
  * 
- * For information about Vpc Ipam Ipam Pool and how to use it, see [What is Ipam Pool](https://www.alibabacloud.com/help/en/).
+ * For information about Vpc Ipam Ipam Pool and how to use it, see [What is Ipam Pool](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPool).
  * 
  * &gt; **NOTE:** Available since v1.234.0.
  * 
@@ -39,7 +39,6 @@ import javax.annotation.Nullable;
 public class IpamIpamPool extends com.pulumi.resources.CustomResource {
     /**
      * The default network mask assigned by the IPAM address pool.
-     * 
      * IPv4 network mask value range: **0 to 32** bits.
      * 
      */
@@ -48,7 +47,6 @@ public class IpamIpamPool extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The default network mask assigned by the IPAM address pool.
-     * 
      * IPv4 network mask value range: **0 to 32** bits.
      * 
      */
@@ -57,7 +55,6 @@ public class IpamIpamPool extends com.pulumi.resources.CustomResource {
     }
     /**
      * The maximum network mask assigned by the IPAM address pool.
-     * 
      * IPv4 network mask value range: **0 to 32** bits.
      * 
      */
@@ -66,7 +63,6 @@ public class IpamIpamPool extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The maximum network mask assigned by the IPAM address pool.
-     * 
      * IPv4 network mask value range: **0 to 32** bits.
      * 
      */
@@ -75,7 +71,6 @@ public class IpamIpamPool extends com.pulumi.resources.CustomResource {
     }
     /**
      * The minimum Network mask assigned by the IPAM address pool.
-     * 
      * IPv4 network mask value range: **0 to 32** bits.
      * 
      */
@@ -84,7 +79,6 @@ public class IpamIpamPool extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The minimum Network mask assigned by the IPAM address pool.
-     * 
      * IPv4 network mask value range: **0 to 32** bits.
      * 
      */
@@ -149,7 +143,6 @@ public class IpamIpamPool extends com.pulumi.resources.CustomResource {
     }
     /**
      * The description of the IPAM address pool.
-     * 
      * It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with &#39;http:// &#39;or &#39;https. If it is not filled in, it is empty. The default value is empty.
      * 
      */
@@ -158,7 +151,6 @@ public class IpamIpamPool extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The description of the IPAM address pool.
-     * 
      * It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with &#39;http:// &#39;or &#39;https. If it is not filled in, it is empty. The default value is empty.
      * 
      */

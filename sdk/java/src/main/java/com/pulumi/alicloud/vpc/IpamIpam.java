@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * IP Address Management.
  * 
- * For information about Vpc Ipam Ipam and how to use it, see [What is Ipam](https://www.alibabacloud.com/help/en/).
+ * For information about Vpc Ipam Ipam and how to use it, see [What is Ipam](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpam).
  * 
  * &gt; **NOTE:** Available since v1.234.0.
  * 
@@ -97,7 +97,6 @@ public class IpamIpam extends com.pulumi.resources.CustomResource {
     }
     /**
      * The description of IPAM.
-     * 
      * It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with &#39;http: // &#39;or &#39;https. If the description is not filled in, it is blank. The default value is blank.
      * 
      */
@@ -106,7 +105,6 @@ public class IpamIpam extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The description of IPAM.
-     * 
      * It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with &#39;http: // &#39;or &#39;https. If the description is not filled in, it is blank. The default value is blank.
      * 
      */

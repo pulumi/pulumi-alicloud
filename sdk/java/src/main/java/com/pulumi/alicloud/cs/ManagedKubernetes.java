@@ -322,6 +322,20 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.encryptionProviderKey);
     }
     /**
+     * The IP address family that the cluster network uses. Valid values:
+     * 
+     */
+    @Export(name="ipStack", refs={String.class}, tree="[0]")
+    private Output<String> ipStack;
+
+    /**
+     * @return The IP address family that the cluster network uses. Valid values:
+     * 
+     */
+    public Output<String> ipStack() {
+        return this.ipStack;
+    }
+    /**
      * Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
      * 
      */
@@ -592,22 +606,12 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
     /**
      * Whether to create internet load balancer for API Server. Default to true.
      * 
-     * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
-     * If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
-     * 
-     * *Computed params*
-     * 
      */
     @Export(name="slbInternetEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> slbInternetEnabled;
 
     /**
      * @return Whether to create internet load balancer for API Server. Default to true.
-     * 
-     * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
-     * If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
-     * 
-     * *Computed params*
      * 
      */
     public Output<Optional<Boolean>> slbInternetEnabled() {

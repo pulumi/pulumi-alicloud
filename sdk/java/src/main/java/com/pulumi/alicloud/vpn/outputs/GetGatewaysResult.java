@@ -53,6 +53,11 @@ public final class GetGatewaysResult {
     private List<String> names;
     private @Nullable String outputFile;
     /**
+     * @return Whether the ssl function is enabled.
+     * 
+     */
+    private @Nullable String sslVpn;
+    /**
      * @return The status of the VPN
      * 
      */
@@ -120,6 +125,13 @@ public final class GetGatewaysResult {
         return Optional.ofNullable(this.outputFile);
     }
     /**
+     * @return Whether the ssl function is enabled.
+     * 
+     */
+    public Optional<String> sslVpn() {
+        return Optional.ofNullable(this.sslVpn);
+    }
+    /**
      * @return The status of the VPN
      * 
      */
@@ -152,6 +164,7 @@ public final class GetGatewaysResult {
         private @Nullable String nameRegex;
         private List<String> names;
         private @Nullable String outputFile;
+        private @Nullable String sslVpn;
         private @Nullable String status;
         private @Nullable String vpcId;
         public Builder() {}
@@ -166,6 +179,7 @@ public final class GetGatewaysResult {
     	      this.nameRegex = defaults.nameRegex;
     	      this.names = defaults.names;
     	      this.outputFile = defaults.outputFile;
+    	      this.sslVpn = defaults.sslVpn;
     	      this.status = defaults.status;
     	      this.vpcId = defaults.vpcId;
         }
@@ -242,6 +256,12 @@ public final class GetGatewaysResult {
             return this;
         }
         @CustomType.Setter
+        public Builder sslVpn(@Nullable String sslVpn) {
+
+            this.sslVpn = sslVpn;
+            return this;
+        }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
 
             this.status = status;
@@ -264,6 +284,7 @@ public final class GetGatewaysResult {
             _resultValue.nameRegex = nameRegex;
             _resultValue.names = names;
             _resultValue.outputFile = outputFile;
+            _resultValue.sslVpn = sslVpn;
             _resultValue.status = status;
             _resultValue.vpcId = vpcId;
             return _resultValue;

@@ -97,6 +97,9 @@ import javax.annotation.Nullable;
  * 
  *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
  *             .bundleType("SYSTEM")
+ *             .bundleIds(            
+ *                 "bundle_eds_enterprise_office_4c8g_s8d2_win2019_edu",
+ *                 "bundle_eds_enterprise_office_8c16g_s8d2_win2019_edu")
  *             .build());
  * 
  *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()

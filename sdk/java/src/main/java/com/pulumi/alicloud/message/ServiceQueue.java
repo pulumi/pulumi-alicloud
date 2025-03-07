@@ -6,6 +6,7 @@ package com.pulumi.alicloud.message;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.message.ServiceQueueArgs;
 import com.pulumi.alicloud.message.inputs.ServiceQueueState;
+import com.pulumi.alicloud.message.outputs.ServiceQueueDlqPolicy;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -106,6 +107,20 @@ public class ServiceQueue extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> delaySeconds() {
         return this.delaySeconds;
+    }
+    /**
+     * The dead-letter queue policy. See `dlq_policy` below.
+     * 
+     */
+    @Export(name="dlqPolicy", refs={ServiceQueueDlqPolicy.class}, tree="[0]")
+    private Output<ServiceQueueDlqPolicy> dlqPolicy;
+
+    /**
+     * @return The dead-letter queue policy. See `dlq_policy` below.
+     * 
+     */
+    public Output<ServiceQueueDlqPolicy> dlqPolicy() {
+        return this.dlqPolicy;
     }
     /**
      * Specifies whether to enable the logging feature. Default value: `false`. Valid values:

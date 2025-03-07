@@ -13,6 +13,337 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ServiceQueueDlqPolicy struct {
+	// The queue to which dead-letter messages are delivered.
+	DeadLetterTargetQueue *string `pulumi:"deadLetterTargetQueue"`
+	// Specifies whether to enable the dead-letter message delivery. Valid values: `true`, `false`.
+	Enabled *bool `pulumi:"enabled"`
+	// The maximum number of retries.
+	MaxReceiveCount *int `pulumi:"maxReceiveCount"`
+}
+
+// ServiceQueueDlqPolicyInput is an input type that accepts ServiceQueueDlqPolicyArgs and ServiceQueueDlqPolicyOutput values.
+// You can construct a concrete instance of `ServiceQueueDlqPolicyInput` via:
+//
+//	ServiceQueueDlqPolicyArgs{...}
+type ServiceQueueDlqPolicyInput interface {
+	pulumi.Input
+
+	ToServiceQueueDlqPolicyOutput() ServiceQueueDlqPolicyOutput
+	ToServiceQueueDlqPolicyOutputWithContext(context.Context) ServiceQueueDlqPolicyOutput
+}
+
+type ServiceQueueDlqPolicyArgs struct {
+	// The queue to which dead-letter messages are delivered.
+	DeadLetterTargetQueue pulumi.StringPtrInput `pulumi:"deadLetterTargetQueue"`
+	// Specifies whether to enable the dead-letter message delivery. Valid values: `true`, `false`.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The maximum number of retries.
+	MaxReceiveCount pulumi.IntPtrInput `pulumi:"maxReceiveCount"`
+}
+
+func (ServiceQueueDlqPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceQueueDlqPolicy)(nil)).Elem()
+}
+
+func (i ServiceQueueDlqPolicyArgs) ToServiceQueueDlqPolicyOutput() ServiceQueueDlqPolicyOutput {
+	return i.ToServiceQueueDlqPolicyOutputWithContext(context.Background())
+}
+
+func (i ServiceQueueDlqPolicyArgs) ToServiceQueueDlqPolicyOutputWithContext(ctx context.Context) ServiceQueueDlqPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceQueueDlqPolicyOutput)
+}
+
+func (i ServiceQueueDlqPolicyArgs) ToServiceQueueDlqPolicyPtrOutput() ServiceQueueDlqPolicyPtrOutput {
+	return i.ToServiceQueueDlqPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceQueueDlqPolicyArgs) ToServiceQueueDlqPolicyPtrOutputWithContext(ctx context.Context) ServiceQueueDlqPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceQueueDlqPolicyOutput).ToServiceQueueDlqPolicyPtrOutputWithContext(ctx)
+}
+
+// ServiceQueueDlqPolicyPtrInput is an input type that accepts ServiceQueueDlqPolicyArgs, ServiceQueueDlqPolicyPtr and ServiceQueueDlqPolicyPtrOutput values.
+// You can construct a concrete instance of `ServiceQueueDlqPolicyPtrInput` via:
+//
+//	        ServiceQueueDlqPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceQueueDlqPolicyPtrInput interface {
+	pulumi.Input
+
+	ToServiceQueueDlqPolicyPtrOutput() ServiceQueueDlqPolicyPtrOutput
+	ToServiceQueueDlqPolicyPtrOutputWithContext(context.Context) ServiceQueueDlqPolicyPtrOutput
+}
+
+type serviceQueueDlqPolicyPtrType ServiceQueueDlqPolicyArgs
+
+func ServiceQueueDlqPolicyPtr(v *ServiceQueueDlqPolicyArgs) ServiceQueueDlqPolicyPtrInput {
+	return (*serviceQueueDlqPolicyPtrType)(v)
+}
+
+func (*serviceQueueDlqPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceQueueDlqPolicy)(nil)).Elem()
+}
+
+func (i *serviceQueueDlqPolicyPtrType) ToServiceQueueDlqPolicyPtrOutput() ServiceQueueDlqPolicyPtrOutput {
+	return i.ToServiceQueueDlqPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceQueueDlqPolicyPtrType) ToServiceQueueDlqPolicyPtrOutputWithContext(ctx context.Context) ServiceQueueDlqPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceQueueDlqPolicyPtrOutput)
+}
+
+type ServiceQueueDlqPolicyOutput struct{ *pulumi.OutputState }
+
+func (ServiceQueueDlqPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceQueueDlqPolicy)(nil)).Elem()
+}
+
+func (o ServiceQueueDlqPolicyOutput) ToServiceQueueDlqPolicyOutput() ServiceQueueDlqPolicyOutput {
+	return o
+}
+
+func (o ServiceQueueDlqPolicyOutput) ToServiceQueueDlqPolicyOutputWithContext(ctx context.Context) ServiceQueueDlqPolicyOutput {
+	return o
+}
+
+func (o ServiceQueueDlqPolicyOutput) ToServiceQueueDlqPolicyPtrOutput() ServiceQueueDlqPolicyPtrOutput {
+	return o.ToServiceQueueDlqPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceQueueDlqPolicyOutput) ToServiceQueueDlqPolicyPtrOutputWithContext(ctx context.Context) ServiceQueueDlqPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceQueueDlqPolicy) *ServiceQueueDlqPolicy {
+		return &v
+	}).(ServiceQueueDlqPolicyPtrOutput)
+}
+
+// The queue to which dead-letter messages are delivered.
+func (o ServiceQueueDlqPolicyOutput) DeadLetterTargetQueue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceQueueDlqPolicy) *string { return v.DeadLetterTargetQueue }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to enable the dead-letter message delivery. Valid values: `true`, `false`.
+func (o ServiceQueueDlqPolicyOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServiceQueueDlqPolicy) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The maximum number of retries.
+func (o ServiceQueueDlqPolicyOutput) MaxReceiveCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceQueueDlqPolicy) *int { return v.MaxReceiveCount }).(pulumi.IntPtrOutput)
+}
+
+type ServiceQueueDlqPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceQueueDlqPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceQueueDlqPolicy)(nil)).Elem()
+}
+
+func (o ServiceQueueDlqPolicyPtrOutput) ToServiceQueueDlqPolicyPtrOutput() ServiceQueueDlqPolicyPtrOutput {
+	return o
+}
+
+func (o ServiceQueueDlqPolicyPtrOutput) ToServiceQueueDlqPolicyPtrOutputWithContext(ctx context.Context) ServiceQueueDlqPolicyPtrOutput {
+	return o
+}
+
+func (o ServiceQueueDlqPolicyPtrOutput) Elem() ServiceQueueDlqPolicyOutput {
+	return o.ApplyT(func(v *ServiceQueueDlqPolicy) ServiceQueueDlqPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceQueueDlqPolicy
+		return ret
+	}).(ServiceQueueDlqPolicyOutput)
+}
+
+// The queue to which dead-letter messages are delivered.
+func (o ServiceQueueDlqPolicyPtrOutput) DeadLetterTargetQueue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceQueueDlqPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeadLetterTargetQueue
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to enable the dead-letter message delivery. Valid values: `true`, `false`.
+func (o ServiceQueueDlqPolicyPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceQueueDlqPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The maximum number of retries.
+func (o ServiceQueueDlqPolicyPtrOutput) MaxReceiveCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceQueueDlqPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxReceiveCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type ServiceSubscriptionDlqPolicy struct {
+	// The queue to which dead-letter messages are delivered.
+	DeadLetterTargetQueue *string `pulumi:"deadLetterTargetQueue"`
+	// Specifies whether to enable the dead-letter message delivery. Valid values: `true`, `false`.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ServiceSubscriptionDlqPolicyInput is an input type that accepts ServiceSubscriptionDlqPolicyArgs and ServiceSubscriptionDlqPolicyOutput values.
+// You can construct a concrete instance of `ServiceSubscriptionDlqPolicyInput` via:
+//
+//	ServiceSubscriptionDlqPolicyArgs{...}
+type ServiceSubscriptionDlqPolicyInput interface {
+	pulumi.Input
+
+	ToServiceSubscriptionDlqPolicyOutput() ServiceSubscriptionDlqPolicyOutput
+	ToServiceSubscriptionDlqPolicyOutputWithContext(context.Context) ServiceSubscriptionDlqPolicyOutput
+}
+
+type ServiceSubscriptionDlqPolicyArgs struct {
+	// The queue to which dead-letter messages are delivered.
+	DeadLetterTargetQueue pulumi.StringPtrInput `pulumi:"deadLetterTargetQueue"`
+	// Specifies whether to enable the dead-letter message delivery. Valid values: `true`, `false`.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ServiceSubscriptionDlqPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceSubscriptionDlqPolicy)(nil)).Elem()
+}
+
+func (i ServiceSubscriptionDlqPolicyArgs) ToServiceSubscriptionDlqPolicyOutput() ServiceSubscriptionDlqPolicyOutput {
+	return i.ToServiceSubscriptionDlqPolicyOutputWithContext(context.Background())
+}
+
+func (i ServiceSubscriptionDlqPolicyArgs) ToServiceSubscriptionDlqPolicyOutputWithContext(ctx context.Context) ServiceSubscriptionDlqPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceSubscriptionDlqPolicyOutput)
+}
+
+func (i ServiceSubscriptionDlqPolicyArgs) ToServiceSubscriptionDlqPolicyPtrOutput() ServiceSubscriptionDlqPolicyPtrOutput {
+	return i.ToServiceSubscriptionDlqPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceSubscriptionDlqPolicyArgs) ToServiceSubscriptionDlqPolicyPtrOutputWithContext(ctx context.Context) ServiceSubscriptionDlqPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceSubscriptionDlqPolicyOutput).ToServiceSubscriptionDlqPolicyPtrOutputWithContext(ctx)
+}
+
+// ServiceSubscriptionDlqPolicyPtrInput is an input type that accepts ServiceSubscriptionDlqPolicyArgs, ServiceSubscriptionDlqPolicyPtr and ServiceSubscriptionDlqPolicyPtrOutput values.
+// You can construct a concrete instance of `ServiceSubscriptionDlqPolicyPtrInput` via:
+//
+//	        ServiceSubscriptionDlqPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceSubscriptionDlqPolicyPtrInput interface {
+	pulumi.Input
+
+	ToServiceSubscriptionDlqPolicyPtrOutput() ServiceSubscriptionDlqPolicyPtrOutput
+	ToServiceSubscriptionDlqPolicyPtrOutputWithContext(context.Context) ServiceSubscriptionDlqPolicyPtrOutput
+}
+
+type serviceSubscriptionDlqPolicyPtrType ServiceSubscriptionDlqPolicyArgs
+
+func ServiceSubscriptionDlqPolicyPtr(v *ServiceSubscriptionDlqPolicyArgs) ServiceSubscriptionDlqPolicyPtrInput {
+	return (*serviceSubscriptionDlqPolicyPtrType)(v)
+}
+
+func (*serviceSubscriptionDlqPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceSubscriptionDlqPolicy)(nil)).Elem()
+}
+
+func (i *serviceSubscriptionDlqPolicyPtrType) ToServiceSubscriptionDlqPolicyPtrOutput() ServiceSubscriptionDlqPolicyPtrOutput {
+	return i.ToServiceSubscriptionDlqPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceSubscriptionDlqPolicyPtrType) ToServiceSubscriptionDlqPolicyPtrOutputWithContext(ctx context.Context) ServiceSubscriptionDlqPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceSubscriptionDlqPolicyPtrOutput)
+}
+
+type ServiceSubscriptionDlqPolicyOutput struct{ *pulumi.OutputState }
+
+func (ServiceSubscriptionDlqPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceSubscriptionDlqPolicy)(nil)).Elem()
+}
+
+func (o ServiceSubscriptionDlqPolicyOutput) ToServiceSubscriptionDlqPolicyOutput() ServiceSubscriptionDlqPolicyOutput {
+	return o
+}
+
+func (o ServiceSubscriptionDlqPolicyOutput) ToServiceSubscriptionDlqPolicyOutputWithContext(ctx context.Context) ServiceSubscriptionDlqPolicyOutput {
+	return o
+}
+
+func (o ServiceSubscriptionDlqPolicyOutput) ToServiceSubscriptionDlqPolicyPtrOutput() ServiceSubscriptionDlqPolicyPtrOutput {
+	return o.ToServiceSubscriptionDlqPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceSubscriptionDlqPolicyOutput) ToServiceSubscriptionDlqPolicyPtrOutputWithContext(ctx context.Context) ServiceSubscriptionDlqPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceSubscriptionDlqPolicy) *ServiceSubscriptionDlqPolicy {
+		return &v
+	}).(ServiceSubscriptionDlqPolicyPtrOutput)
+}
+
+// The queue to which dead-letter messages are delivered.
+func (o ServiceSubscriptionDlqPolicyOutput) DeadLetterTargetQueue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceSubscriptionDlqPolicy) *string { return v.DeadLetterTargetQueue }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to enable the dead-letter message delivery. Valid values: `true`, `false`.
+func (o ServiceSubscriptionDlqPolicyOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServiceSubscriptionDlqPolicy) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ServiceSubscriptionDlqPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceSubscriptionDlqPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceSubscriptionDlqPolicy)(nil)).Elem()
+}
+
+func (o ServiceSubscriptionDlqPolicyPtrOutput) ToServiceSubscriptionDlqPolicyPtrOutput() ServiceSubscriptionDlqPolicyPtrOutput {
+	return o
+}
+
+func (o ServiceSubscriptionDlqPolicyPtrOutput) ToServiceSubscriptionDlqPolicyPtrOutputWithContext(ctx context.Context) ServiceSubscriptionDlqPolicyPtrOutput {
+	return o
+}
+
+func (o ServiceSubscriptionDlqPolicyPtrOutput) Elem() ServiceSubscriptionDlqPolicyOutput {
+	return o.ApplyT(func(v *ServiceSubscriptionDlqPolicy) ServiceSubscriptionDlqPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceSubscriptionDlqPolicy
+		return ret
+	}).(ServiceSubscriptionDlqPolicyOutput)
+}
+
+// The queue to which dead-letter messages are delivered.
+func (o ServiceSubscriptionDlqPolicyPtrOutput) DeadLetterTargetQueue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceSubscriptionDlqPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeadLetterTargetQueue
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to enable the dead-letter message delivery. Valid values: `true`, `false`.
+func (o ServiceSubscriptionDlqPolicyPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceSubscriptionDlqPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type GetServiceQueuesQueue struct {
 	// The total number of messages that are in the Active state in the queue. The value is an approximate number.
 	ActiveMessages int `pulumi:"activeMessages"`
@@ -602,12 +933,20 @@ func (o GetServiceTopicsTopicArrayOutput) Index(i pulumi.IntInput) GetServiceTop
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceQueueDlqPolicyInput)(nil)).Elem(), ServiceQueueDlqPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceQueueDlqPolicyPtrInput)(nil)).Elem(), ServiceQueueDlqPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceSubscriptionDlqPolicyInput)(nil)).Elem(), ServiceSubscriptionDlqPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceSubscriptionDlqPolicyPtrInput)(nil)).Elem(), ServiceSubscriptionDlqPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceQueuesQueueInput)(nil)).Elem(), GetServiceQueuesQueueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceQueuesQueueArrayInput)(nil)).Elem(), GetServiceQueuesQueueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceSubscriptionsSubscriptionInput)(nil)).Elem(), GetServiceSubscriptionsSubscriptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceSubscriptionsSubscriptionArrayInput)(nil)).Elem(), GetServiceSubscriptionsSubscriptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTopicsTopicInput)(nil)).Elem(), GetServiceTopicsTopicArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTopicsTopicArrayInput)(nil)).Elem(), GetServiceTopicsTopicArray{})
+	pulumi.RegisterOutputType(ServiceQueueDlqPolicyOutput{})
+	pulumi.RegisterOutputType(ServiceQueueDlqPolicyPtrOutput{})
+	pulumi.RegisterOutputType(ServiceSubscriptionDlqPolicyOutput{})
+	pulumi.RegisterOutputType(ServiceSubscriptionDlqPolicyPtrOutput{})
 	pulumi.RegisterOutputType(GetServiceQueuesQueueOutput{})
 	pulumi.RegisterOutputType(GetServiceQueuesQueueArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceSubscriptionsSubscriptionOutput{})
